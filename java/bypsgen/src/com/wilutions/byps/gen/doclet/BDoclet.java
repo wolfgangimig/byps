@@ -35,8 +35,8 @@ import com.wilutions.byps.gen.js.PropertiesJS;
  */
 public class BDoclet extends Doclet {
 	
-	private static File fileClassDB = new File("d:\\temp\\classdb.xml");
-	private static File fileClassDB_P = new File("d:\\temp\\classdbP.xml");
+	private static File fileClassDB = new File("classdb.xml");
+	private static File fileClassDB_P = new File("classdbP.xml");
 	private static PropertiesC propsC;
 	private static PropertiesCS propsCS;
 	private static PropertiesCpp propsCpp;
@@ -150,10 +150,10 @@ public class BDoclet extends Doclet {
 		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
 		"-gencpp.max-fsize", "10000",
 
-		"-genj.dir-api", "D:\\dev\\BYPS2\\java\\bypsexample2\\src-api",
-		"-genj.dir-ser", "D:\\dev\\BYPS2\\java\\bypsexample2\\src-ser",
-		"-genj.dir-ser-bin", "D:\\dev\\BYPS2\\java\\bypsexample2\\src-ser-bin",
-		"-genj.dir-ser-json", "D:\\dev\\BYPS2\\java\\bypsexample2\\src-ser-json",
+		"-genj.dir-api", "..\\bypsexample2\\src-api",
+		"-genj.dir-ser", "..\\bypsexample2\\src-ser",
+		"-genj.dir-ser-bin", "..\\bypsexample2\\src-ser-bin",
+		"-genj.dir-ser-json", "..\\bypsexample2\\src-ser-json",
 		
 		"-verbose",
 		
@@ -173,17 +173,17 @@ public class BDoclet extends Doclet {
 	
 	private static String[] bypstest_ser = new String[] {
 		
-		"-genj.dir-api", "D:\\dev\\BYPS2\\java\\bypstest-ser\\src-api",
-		"-genj.dir-ser", "D:\\dev\\BYPS2\\java\\bypstest-ser\\src-ser",
-		"-genj.dir-ser-bin", "D:\\dev\\BYPS2\\java\\bypstest-ser\\src-ser-bin",
-		"-genj.dir-ser-json", "D:\\dev\\BYPS2\\java\\bypstest-ser-json\\src",
+		"-genj.dir-api", "..\\bypstest-ser\\src-api",
+		"-genj.dir-ser", "..\\bypstest-ser\\src-ser",
+		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
+		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
 
 		"-gencs.dir-api",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-api",
 		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
 		"-gencs.dir-ser-bin", "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser-bin",
 		"-gencs.upfirst",     "true",
 		
-		"-genjs.dest", "D:\\dev\\BYPS2\\java\\bypstest-srv\\WebContent\\testser.js",
+		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
 		
 		"-verbose",
 		
@@ -211,10 +211,10 @@ public class BDoclet extends Doclet {
 	
 	private static String[] byps_ix_ser = new String[] {
 		
-		"-genj.dir-api", "D:\\dev\\BYPS2\\java\\byps-ix-ser\\src-api",
-		"-genj.dir-ser", "D:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser",
-		"-genj.dir-ser-bin", "D:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
-		"-genj.dir-ser-json", "D:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-json",
+		"-genj.dir-api", "..\\byps-ix-ser\\src-api",
+		"-genj.dir-ser", "..\\byps-ix-ser\\src-ser",
+		"-genj.dir-ser-bin", "..\\byps-ix-ser\\src-ser-bin",
+		"-genj.dir-ser-json", "..\\byps-ix-ser\\src-ser-json",
 
 		"-gencs.dir-api",     "D:\\dev\\BYPS2\\csharp\\byps\\byps-ix-ser\\src-api",
 		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps-ix-ser\\src-ser",
