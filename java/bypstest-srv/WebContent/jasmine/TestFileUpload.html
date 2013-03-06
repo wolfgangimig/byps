@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Test File Upload</title>
+
+  <script type="text/javascript" src="../json2.js"></script>
+  <script type="text/javascript" src="../byps.js"></script>
+  <script type="text/javascript" src="../testser.js"></script>
+
+  <script type="text/javascript">
+	  var url = "/bypstest-srv/bypsservlet";
+	  var client = com.wilutions.byps.test.api.createClient_Testser(url, true);
+  </script>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td><h1>Test file upload with HTML file input element</h1>
+</td></tr>
+
+<tr><td>
+This test uploads a file to the server. After the upload is completed the file is downloaded and displayed in the iframe below.
+<tr><td>
+
+<tr><td>
+
+	<table border="2">
+	
+		<tr><td>
+		Select a file and click the submit button.
+		</td></tr>
+		
+		<tr><td>
+			<form id="uploadFormId" method="post" enctype="multipart/form-data" 
+			
+				action="/bypstest-srv/bypsservlet?uploadHandler=htmlform"       
+			    
+			    target="uploadResultFrame"  									  
+			    
+			    >
+			    
+				<script type="text/javascript">
+					function onUploadResult() {
+						
+						var iFrame = document.getElementById('uploadResultFrame');
+						var iFrameBody;
+						if (iFrame.contentDocument) { // FF
+							iFrameBody = iFrame.contentDocument.getElementsByTagName('body')[0];
+						} else if (iFrame.contentWindow) { // IE
+							iFrameBody = iFrame.contentWindow.document.getElementsByTagName('body')[0];
+						}
+						
+						var ret = iFrameBody.innerHTML;
+						if (ret) {
+			
+							var streamIds = JSON.parse(ret);
+			
+							var stream = new com.wilutions.byps.BContentStream(streamIds[0]);
+							client.remoteStreams.setImage(stream);
+			
+			 				var inputStream = client.remoteStreams.getImage();
+							
+							// The downloadUrl can be downloaded only once and expires after HConstants.REQUEST_TIMEOUT_MILLIS (see bypshttp).
+			 				var downloadUrl = inputStream.url;
+			 				
+			 				var fileViewer = document.getElementById('fileViewer');
+			 				fileViewer.src = downloadUrl;
+
+			 				// Delete upload information. Otherwise it would be sent again 
+			 				// if the page was re-loaded.
+			 				iFrame.src = "about:blank";
+						}
+			
+						return ret;
+					}
+				</script>
+			    
+				<table>
+					<tr><td><input name="uploadElement1" type="file"></td></tr>
+					<tr><td><iframe id="uploadResultFrame" name="uploadResultFrame" onload="onUploadResult()" style="visibility:hidden;display:none"></iframe></td></tr>
+					<tr><td><input type="submit" ></td></tr>
+				</table>
+				
+			</form>
+		</td></tr>
+	</table>
+</td></tr>
+
+<tr><td>
+	<table border="2">
+		<tr><td>
+			Uploaded File
+		</td></tr>
+		<tr><td>
+			<iframe id="fileViewer" name="fileViewer" style="width:100;height:100"></iframe>
+		</td></tr>
+	</table>
+</td></tr>
+
+</table>
+</body>
+</html>

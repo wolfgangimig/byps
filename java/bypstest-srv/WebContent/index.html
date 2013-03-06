@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JavaScript API</title>
+
+<script type="text/javascript" src="json2.js">
+</script>
+
+<script type="text/javascript" src="byps.js">
+</script>
+
+<script type="text/javascript" src="testser.js">
+</script>
+
+<script type="text/javascript">
+
+
+var url = "/bypstest-srv/bypsservlet";
+var client = com.wilutions.byps.test.api.createClient_Testser(url);
+
+function test() {
+
+	var arr = [];
+	var b = Array.isArray(arr);
+	
+	var bout = client.transport.getOutput();
+	
+	var root = {
+			_typeId : 111, 
+			alpha:1, 
+			beta:2, 
+			gamma:{
+				_typeId: 222,
+				a:11,
+				b:12
+			}
+	};
+	
+	var msg = bout.store(root);
+	
+	var bin = client.transport.getInput(msg.jsonText);
+	
+	var root2 = bin.load();
+	
+}
+
+function test4() {
+	var inputStream = client.remoteStreams.getTextStream();
+	window.location.href = inputStream.url;
+};
+
+function onResult() {
+	var iFrame =  document.getElementById('uploadResultFrame');
+   var iFrameBody;
+   if ( iFrame.contentDocument ) 
+   { // FF
+     iFrameBody = iFrame.contentDocument.getElementsByTagName('body')[0];
+   }
+   else if ( iFrame.contentWindow ) 
+   { // IE
+     iFrameBody = iFrame.contentWindow.document.getElementsByTagName('body')[0];
+   }
+   var ret = iFrameBody.innerHTML;
+   if (ret) {
+	   
+	   var streamIds = JSON.parse(ret);
+   
+	   var stream = new com.wilutions.byps.BContentStream(streamIds[0]);
+	   client.remoteStreams.setImage(stream);
+	   
+		var inputStream = client.remoteStreams.getImage();
+		window.open(inputStream.url, "stream" + inputStream.streamId);
+   }
+   
+   return ret;
+}
+
+function test3() {
+	
+	var obj = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+	obj.boolVal = true;
+	obj.temp = "tempvalue";
+	
+	client.remotePrimitiveTypes.setObject(obj);
+	
+	var obj2 = client.remotePrimitiveTypes.getObject();
+	
+	
+	try {
+		var targetId = client.transport.targetId;
+		var myId = document.getElementById("myId").value;
+		var otherId = document.getElementById("otherId").value;
+		
+		client.serverIF.registerWithClientMap(myId);
+		
+		var otherIF = client.serverIF.getClient(otherId);
+		var otherTargetId = otherIF.transport.targetId;
+		
+		// Invoke interface of second client.
+		var r = otherIF.incrementInt(7);
+		
+		alert(r);
+	}
+	catch (e) {
+		alert(e);
+	}
+	
+	
+};
+
+
+function test2() {
+	
+	
+	var obj = new com.wilutions.byps.test.api.enu.UsePlanets();
+	var jstext = JSON.stringify(obj);
+	
+	try {
+		client.remotePrimitiveTypes.setBool(true);
+		
+/* 		var val = client.remotePrimitiveTypes.getBool({
+			setAsyncResult : function(ret) {
+				alert(ret);
+			},
+			setException : function(ex) {
+				alert(ex);
+			}
+		});
+ */
+		
+		var asyncResult = {
+				setAsyncResult : function(ret) {
+					alert("incr=" + ret);
+				},
+				setException : function(ex) {
+					alert("Error:" + ex);
+				}
+		}
+		
+		var val = client.serverIF.callClientIncrementInt(4, asyncResult);
+		
+		
+	} catch (ex) {
+		alert(ex);
+	}
+	
+};
+
+function test1() {
+	var targetId = new com.wilutions.byps.BTargetId();
+	var code = com.wilutions.byps.BException.CORRUPT;
+	
+	var hdr = new com.wilutions.byps.BNegotiate();
+	var str = JSON.stringify(["N","S",0,"_",""]);
+	var str2 = hdr.toJSON();
+	alert(str + " -- " + str2);
+	
+	var arr = JSON.parse(str);
+	var v = arr[4];
+	
+	var hdr2 = new com.wilutions.byps.BNegotiate();
+	hdr2.parse(str);
+	alert(hdr2);
+};
+
+</script>
+
+</head>
+<body>
+Meine ID = <input value="1" id="myId"/>
+Andere ID = <input value="2" id="otherId"/>
+<input type="button" value="test" onclick="test3()"/>
+
+<form id="uploadFormId" method="post" action="/bypstest-srv/bypsservlet?uploadId=1"
+      enctype="multipart/form-data" target="uploadResultFrame">
+	<table>
+		<tr><td><input name="uploadElement1" type="file"></td></tr>
+		<tr><td><input name="uploadElement2" type="file"></td></tr>
+		<tr><td><iframe id="uploadResultFrame" name="uploadResultFrame" onload="onResult()"></iframe></td></tr>
+		<tr><td><input type="submit" ></td></tr>
+	</table>
+
+
+
+</form>
+<div id="uploadResultDiv"></div>
+</body>
+</html>

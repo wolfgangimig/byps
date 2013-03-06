@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk7"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-ser"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/byps"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Logging"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-ser-json"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

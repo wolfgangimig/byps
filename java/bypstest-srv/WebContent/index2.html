@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JavaScript API</title>
+
+<script type="text/javascript" src="json2.js">
+</script>
+
+<script type="text/javascript" src="byps.js">
+</script>
+
+<script type="text/javascript" src="testser.js">
+</script>
+
+<script type="text/javascript">
+
+
+com.wilutions.byps.test.api.ClientIFImpl = function() {
+
+	this.incrementInt = function(a) {
+		alert("incrementInt");
+		return a+1;
+	}
+	
+};
+com.wilutions.byps.test.api.ClientIFImpl.prototype = new com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF();
+
+var url = "/bypstest-srv/bypsservlet";
+var client = com.wilutions.byps.test.api.createClient_Testser(url, true);
+client.addRemote(new com.wilutions.byps.test.api.ClientIFImpl()); 
+
+function test() {
+	
+	
+
+	try {
+		var targetId  = client.transport.targetId;
+		var myId = document.getElementById("myId").value;
+		client.serverIF.registerWithClientMap(myId);
+		
+	}
+	catch (e) {
+		alert(e);
+	}
+	
+	
+}
+
+
+function test2() {
+	
+	
+	var obj = new com.wilutions.byps.test.api.enu.UsePlanets();
+	var jstext = JSON.stringify(obj);
+	
+	try {
+		client.remotePrimitiveTypes.setBool(true);
+		
+/* 		var val = client.remotePrimitiveTypes.getBool({
+			setAsyncResult : function(ret) {
+				alert(ret);
+			},
+			setException : function(ex) {
+				alert(ex);
+			}
+		});
+ */
+		
+		var asyncResult = function(ret, ex) {
+			alert("incr=" + ret + ", ex=" + ex);
+		};
+		
+		var val = client.serverIF.callClientIncrementInt(4, asyncResult);
+		
+		
+	} catch (ex) {
+		alert(ex);
+	}
+	
+};
+
+function test1() {
+	var targetId = new com.wilutions.byps.BTargetId();
+	var code = com.wilutions.byps.BException.CORRUPT;
+	
+	var hdr = new com.wilutions.byps.BNegotiate();
+	var str = JSON.stringify(["N","S",0,"_",""]);
+	var str2 = hdr.toJSON();
+	alert(str + " -- " + str2);
+	
+	var arr = JSON.parse(str);
+	var v = arr[4];
+	
+	var hdr2 = new com.wilutions.byps.BNegotiate();
+	hdr2.parse(str);
+	alert(hdr2);
+};
+
+</script>
+
+</head>
+<body>
+Meine ID = <input value="2" id="myId"/>
+Andere ID = <input value="1" id="otherId"/>
+<input type="button" value="test" onclick="test()"/>
+</body>
+</html>

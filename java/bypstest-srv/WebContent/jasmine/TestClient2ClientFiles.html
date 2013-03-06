@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Test Client to Client File Exchange</title>
+
+<script type="text/javascript" src="../json2.js"></script>
+<script type="text/javascript" src="../byps.js"></script>
+<script type="text/javascript" src="../testser.js"></script>
+
+<script type="text/javascript">
+	var url = "/bypstest-srv/bypsservlet";
+	var client = com.wilutions.byps.test.api.createClient_Testser(url, true);
+
+	// Define an implementation for the ClientIF interface function sendChat
+	com.wilutions.byps.test.api.ClientIFImpl = function() {
+		
+		this.putStreams = function(streams, ctrl) {
+			var streamFrame = document.getElementById("streamFrame");
+			streamFrame.src = streams[0].url;
+		}
+	};
+	com.wilutions.byps.test.api.ClientIFImpl.prototype = new com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF();
+	client.addRemote(new com.wilutions.byps.test.api.ClientIFImpl()); 
+	
+	// Create a random ID for this client connection
+	// and register this ID with a global HashMap in the server.
+	var clientId = Math.floor(Math.random() * 1000 * 1000);
+	client.serverIF.registerWithClientMap(clientId);
+	
+</script>
+
+<script type="text/javascript">
+
+	function onRefreshClientIds() {
+		var edMyId = document.getElementById("edMyId");
+		edMyId.value = clientId;
+		
+		var lb = document.getElementById("lbClientIds");
+		lb.innerHTML = "";
+		
+		var asyncResult = function(result, exception) {
+			if (exception) {
+				alert(exception.toString());
+			}
+			else {
+				var clientIds = result;
+				for (var i = 0; i < clientIds.length; i++) {
+					if (clientIds[i] != clientId) {
+						lb.options[lb.length] = new Option(clientIds[i], clientIds[i]);  
+					}
+				}
+			}
+		};
+		client.serverIF.getClientIds(asyncResult);
+	};
+	
+	function getSelectedClientId() {
+		var lb = document.getElementById("lbClientIds");
+		for (var i = 0; i < lb.length; i++) {
+			if (lb.options[i].selected) {
+				return lb.options[i].value;
+			}
+		}
+		return 0;
+	};
+	
+	function onLoadBody() {
+		onRefreshClientIds();
+	};
+	
+	function onSend() {
+		try {
+			var iFrame = document.getElementById('uploadResultFrame');
+			var iFrameBody;
+			if (iFrame.contentDocument) { // FF
+				iFrameBody = iFrame.contentDocument.getElementsByTagName('body')[0];
+			} else if (iFrame.contentWindow) { // IE
+				iFrameBody = iFrame.contentWindow.document.getElementsByTagName('body')[0];
+			}
+			
+			var ret = iFrameBody.innerHTML;
+			if (ret) {
+
+				var streamIds = JSON.parse(ret);
+				var stream = new com.wilutions.byps.BContentStream(streamIds[0]);
+				
+				var sendToClientId = getSelectedClientId();
+				if (!sendToClientId) throw "No client selected"; 
+		
+				client.serverIF.getClient(sendToClientId, function(sendToClient, exception) {
+					
+					if (exception) {
+						alert(exception.toString());
+						return;
+					}
+					
+					var ctrl = 0;
+					sendToClient.putStreams([stream], ctrl, function(result, exception) {
+						if (exception) {
+							alert(exception.toString());
+						}
+					});
+					
+				});
+			}
+		}
+		catch (e) {
+			alert(e);
+		}
+	};
+</script>
+
+</head>
+<body onload="onLoadBody()">
+
+	<table>
+		<tr>
+			<td><h1>Test client-to-client communication (chat with
+					structured data).</h1></td>
+		</tr>
+
+
+		<tr><td>
+			<ol>
+				<li>In order to execute this test, a second browser has to be started on a different computer. 
+				Or an independent second browser instance of a different vendor has to be started - browser
+				instances of the same vendor might use the same HTTP session ID.</li>  
+				<li>The second browser has to navigate to the same URL ("/bypstest-srv/jasmine/TestClientToClient.html"). 
+				The JavaScript code will register the client with the server. The client receives thereby an ID
+				which is shown in the "Send Form" at "My client ID".</li>
+				<li>The "Refresh" button has to be clicked on the first browser. This action updates the listbox next to "Select other ID".
+				It shows the client ID of the second browser. This ID has to be selected.</li>
+				<li>A file has to be selected. Then, "Send" button has to be clicked.
+				The second browser receives the file and displays its content inside the iframe below "Received File". 
+			</ol>
+		</td></tr>
+
+		<tr><td>
+			<form id="uploadFormId" method="post" enctype="multipart/form-data" 
+			
+				action="/bypstest-srv/bypsservlet?uploadHandler=htmlform"       
+			    
+			    target="uploadResultFrame"  									  
+			    
+			    >
+			    
+				<table border="2">
+					<tr>
+						<td colspan="3">Send Form</td>
+					</tr>
+					<tr>
+						<td>My client ID:</td>
+						<td><input id="edMyId" readonly /></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Select other ID:</td>
+						<td><select id="lbClientIds" size="3"></select></td>
+						<td><input type="button" value="Refresh" onclick="onRefreshClientIds()" /></td>
+					</tr>
+					<tr>
+						<td>File:</td>
+						<td><input name="uploadElement1" type="file"></td>
+						<td><input type="submit" value="Send" /></td>
+					</tr>
+				</table>
+				<iframe id="uploadResultFrame" name="uploadResultFrame" onload="onSend()" style="visibility:hidden;display:none"></iframe>
+			</form>
+		</td></tr>
+
+		<tr>
+			<td>
+				<table border="2" style="width:400px;height:400px">
+					<tr>
+						<td>Received File</td>
+					</tr>
+					<tr >
+						<td style="width:100%;height:100%"><iframe id="streamFrame" style="width:100%;height:100%"></iframe></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+	</table>
+</body>
+</html>

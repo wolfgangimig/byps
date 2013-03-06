@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery File Upload Example</title>
+
+  <script type="text/javascript" src="../json2.js"></script>
+  <script type="text/javascript" src="../byps.js"></script>
+  <script type="text/javascript" src="../testser.js"></script>
+
+  <script type="text/javascript">
+	  var url = "/bypstest-srv/bypsservlet";
+	  var client = com.wilutions.byps.test.api.createClient_Testser(url, true);
+  </script>
+
+</head>
+<body>
+
+	<input id="fileupload" type="file" name="files[]"
+
+		data-url="/bypstest-srv/bypsservlet?uploadHandler=blueimp"			
+		
+ 	multiple>
+
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/vendor/jquery.ui.widget.js"></script>
+	<script src="js/jquery.iframe-transport.js"></script>
+	<script src="js/jquery.fileupload.js"></script>
+	<script>
+		$(function() {
+			$('#fileupload').fileupload({
+				dataType : 'json',
+				done : function(e, data) {
+					$.each(data.result.files, function(index, file) {
+						
+						var streamId = file.streamId;
+						
+						var stream = new com.wilutions.byps.BContentStream(streamId);
+						client.remoteStreams.setImage(stream);
+						
+						var inputStream = client.remoteStreams.getImage();
+						var downloadUrl = inputStream.url;
+						
+						// The downloadUrl can be downloaded only once and expires after HConstants.REQUEST_TIMEOUT_MILLIS (see bypshttp).
+						
+						$('<p/>').text("name=" + file.name + ", size=" + file.size + ", streamId=" + streamId).appendTo(document.body);
+						$('<a />').attr({href: downloadUrl}).text("download file").appendTo(document.body);
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>
