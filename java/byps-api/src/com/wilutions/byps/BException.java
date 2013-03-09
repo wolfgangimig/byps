@@ -7,9 +7,8 @@ import java.io.IOException;
  */
 public final class BException extends IOException {
 	
-	// Die Klasse ist final, weil ich in abgeleiteten Klassen im JSerializer.internalRead 
-	// die Elemente code, msg, details nicht setzen kann. 
-	
+	// This class is declared final, because JSerializer.internalRead of a 
+	// child class could not set the final fields of BException.
 	
 	private static final long serialVersionUID = 20L;
 
