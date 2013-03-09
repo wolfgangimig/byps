@@ -2,29 +2,62 @@ package com.wilutions.byps;
 
 import java.nio.ByteBuffer;
 
+/**
+ * This class identifies a client.
+ * Target IDs are generated during protocol negotiation.
+ * They are internally used in the generated code an in the communication layer.
+ */
 public class BTargetId {
 	
+	/**
+	 * First ID value.
+	 */
 	public final long v1;
+	
+	/**
+	 * Second ID value.
+	 */
 	public final long v2;
 	
+	/**
+	 * Constructor.
+	 * @param v1
+	 * @param v2
+	 */
 	public BTargetId(long v1, long v2) {
 		this.v1 = v1;
 		this.v2 = v2;
 	}
 	
+	/**
+	 * Default constructor.
+	 */
 	public BTargetId() {
 		v1 = v2 = 0;
 	}
 	
+	/**
+	 * Returns true, if the ID is zero.
+	 * @return true, if the ID is zero.
+	 */
 	public boolean isZero() {
 		return v1 == 0 && v2 == 0;
 	}
 	
+	/**
+	 * Serialize the object into a buffer.
+	 * @param buf Destination buffer.
+	 */
 	public void write(ByteBuffer buf) {
 		buf.putLong(v1);
 		buf.putLong(v2);
 	}
 	
+	/**
+	 * Deserialize a target ID from a buffer.
+	 * @param buf Source buffer
+	 * @return target ID
+	 */
 	public static BTargetId read(ByteBuffer buf) {
 		long v1 = buf.getLong();
 		long v2 = buf.getLong();
@@ -47,6 +80,10 @@ public class BTargetId {
 		return v;
 	}
 	
+	/**
+	 * Print the target ID into a String.
+	 * @return target ID as String.
+	 */
 	@Override
 	public String toString() {
 		if (isZero()) return "";
@@ -56,6 +93,11 @@ public class BTargetId {
 		return builder.toString();
 	}
 	
+	/**
+	 * Create a target ID from String.
+	 * @param s String representation
+	 * @return target ID
+	 */
 	public static BTargetId parseString(String s) {
 		if (s.length() < 32) return new BTargetId();
 		long v1 = hexToLong(s, 0);
