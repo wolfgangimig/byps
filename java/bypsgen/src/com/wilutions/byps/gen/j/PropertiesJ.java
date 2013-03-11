@@ -1,6 +1,5 @@
 package com.wilutions.byps.gen.j;
 
-import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.GeneratorProperties;
 
 @SuppressWarnings("serial")
@@ -17,18 +16,9 @@ public class PropertiesJ extends GeneratorProperties {
 	 */
 	public final static String HASHCODE_AND_EQUALS = "-genj.hasheq";
 	
-	
-	public int addArgs(String[] args, int idx) throws GeneratorException {
-		String key = args[idx++];
-		String value = "";
-		if (key.equals(HASHCODE_AND_EQUALS)) {
-			value = "1";
-		}
-		else {
-			if (idx >= args.length) throw new GeneratorException("Missing value for argument " + args[idx]);  
-			value = args[idx++];
-		}
-		super.put(key, value);
-		return idx;
+	public PropertiesJ(GeneratorProperties defaultProps) {
+		super(defaultProps);
 	}
+	
+
 }

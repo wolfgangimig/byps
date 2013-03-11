@@ -22,7 +22,7 @@ class PrintContext extends PrintContextBase {
 	public final static String INTERFACE_SUFFIX = "";
 	
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
-		super(classDB);
+		super(classDB, props);
 		
 		destFile = props.getMandatoryPropertyFile(PropertiesJS.DEST_FILE);
 	}

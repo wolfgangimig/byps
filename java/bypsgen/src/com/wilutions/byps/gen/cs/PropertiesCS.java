@@ -13,27 +13,10 @@ public class PropertiesCS extends GeneratorProperties {
 	public static final String DEST_DIR_SER = "-gencs.dir-ser";
 	public static final String UPPER_CASE_FIRST_LETTER = "-gencs.upfirst";
 
-	/**
-	 * Generate functions hashCode and equals.
-	 */
-	public final static String HASHCODE_AND_EQUALS = "-genj.hasheq";
-	
-	
-	public int addArgs(String[] args, int idx) throws GeneratorException {
-		String key = args[idx++];
-		String value = "";
-		if (key.equals(HASHCODE_AND_EQUALS)) {
-			value = "1";
-		}
-		else {
-			if (idx >= args.length) throw new GeneratorException("Missing value for argument " + args[idx]);  
-			value = args[idx++];
-		}
-		super.put(key, value);
-		return idx;
+	public PropertiesCS(GeneratorProperties defaultProps) {
+		super(defaultProps);
 	}
-	
-	
+		
 	public boolean isUppercaseFirstLetter() throws GeneratorException
 	{
 		return getOptionalPropertyBoolean(UPPER_CASE_FIRST_LETTER, true);

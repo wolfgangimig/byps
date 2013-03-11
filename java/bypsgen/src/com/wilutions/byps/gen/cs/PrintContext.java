@@ -26,10 +26,9 @@ public class PrintContext extends PrintContextBase {
 	public final static String STUB_PREFIX = "BStub_";
 	public final static String SKELETON_PREFIX = "BSkeleton_";
 	public final static String INTERFACE_SUFFIX = "";
-	private PropertiesCS props;
 
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
-		super(classDB);
+		super(classDB, props);
 		
 		dirApi = props.getMandatoryPropertyFile(PropertiesCS.DEST_DIR_API);
 		dirSer = props.getOptionalPropertyFile(PropertiesCS.DEST_DIR_SER, dirApi);
@@ -39,7 +38,6 @@ public class PrintContext extends PrintContextBase {
 		dirSerBin.mkdirs();
 		dirSer.mkdirs();
 		
-		this.props = (PropertiesCS)props;
 	}
 
 	CodePrinter getPrinterForApiClass(TypeInfo tinfo, String namePrefix, boolean inSerDir) throws IOException {
@@ -314,7 +312,7 @@ public class PrintContext extends PrintContextBase {
 	}
 	
 	public String makePublicMemberName(String name) throws GeneratorException {
-		if (props.isUppercaseFirstLetter()) {
+		if (((PropertiesCS)props).isUppercaseFirstLetter()) {
 			name = Utils.firstCharToUpper(name);
 		}
 		return name;

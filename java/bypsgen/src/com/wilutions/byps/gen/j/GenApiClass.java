@@ -57,7 +57,9 @@ class GenApiClass {
 	}
 	
 	private String accessToString(MemberAccess a) {
-		if (a == MemberAccess.PUBLIC) return "public ";
+		if (a == MemberAccess.PUBLIC) {
+			return pctxt.isGenerateChangedMembers() ? "protected " : "public ";
+		}
 		if (a == MemberAccess.PROTECTED) return "protected ";
 		if (a == MemberAccess.PRIVATE)return "private ";
 		return "";

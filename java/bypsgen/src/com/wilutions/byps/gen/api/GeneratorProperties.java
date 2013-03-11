@@ -14,6 +14,25 @@ public class GeneratorProperties extends Properties {
 	
 	public final static String BINARY_MODEL = "-bmodel";
 	
+	public final static String CHANGED_MEMBERS  = "-gen.changedmembers";
+	
+	public GeneratorProperties(GeneratorProperties defaultProps) {
+		super(defaultProps);
+	}
+	
+	public GeneratorProperties() {
+		super();
+	}
+	
+	public int addArgs(String[] args, int idx) throws GeneratorException {
+		String key = args[idx++];
+		String value = "";
+		if (idx >= args.length) throw new GeneratorException("Missing value for argument " + args[idx]);  
+		value = args[idx++];
+		put(key, value);
+		return idx;
+	}
+
 	public String getProperty(String key, String defaultValue, boolean mandatory) throws GeneratorException {
 		String s = getProperty(key);
 		if (s == null || s.length() == 0) {

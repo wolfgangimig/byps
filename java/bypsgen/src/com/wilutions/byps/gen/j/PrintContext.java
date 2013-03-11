@@ -25,7 +25,7 @@ class PrintContext extends PrintContextBase {
 	public final static String INTERFACE_SUFFIX = "";
 	
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
-		super(classDB);
+		super(classDB, props);
 		
 		dirApi = props.getMandatoryPropertyFile(PropertiesJ.DEST_DIR_API);
 		dirSer = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_SER, dirApi);

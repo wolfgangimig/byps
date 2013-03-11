@@ -13,6 +13,7 @@ import com.sun.javadoc.Doclet;
 import com.sun.javadoc.LanguageVersion;
 import com.sun.javadoc.RootDoc;
 import com.wilutions.byps.gen.api.GeneratorException;
+import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.c.GeneratorC;
 import com.wilutions.byps.gen.c.PropertiesC;
 import com.wilutions.byps.gen.cpp.GeneratorCpp;
@@ -207,6 +208,8 @@ public class BDoclet extends Doclet {
 		
 		"--sourcepath", 
 		"../bypstest-api/src",
+		
+		"-gen.changedmembers",
 	};
 	
 	private static String[] byps_ix_ser = new String[] {
@@ -223,6 +226,7 @@ public class BDoclet extends Doclet {
 		
 		"-allserials",
 		"-allremotes",
+		"-changedmembers",
 		
 		"-verbose",
 		
@@ -244,6 +248,8 @@ public class BDoclet extends Doclet {
 			args = bypstest_ser;
 		}
 		
+		GeneratorProperties defaultProps = new GeneratorProperties();
+		
 		try {
 			List<String> javadocParams = new ArrayList<String>();
 			
@@ -251,23 +257,23 @@ public class BDoclet extends Doclet {
 				
 				String arg = args[argIdx];
 				if (arg.startsWith(PropertiesC.OPT_PREFIX)) {
-					if (propsC == null) propsC = new PropertiesC(); 
+					if (propsC == null) propsC = new PropertiesC(defaultProps); 
 					argIdx = propsC.addArgs(args, argIdx);
 				}
 				else if (arg.startsWith(PropertiesCpp.OPT_PREFIX)) {
-					if (propsCpp == null) propsCpp = new PropertiesCpp();
+					if (propsCpp == null) propsCpp = new PropertiesCpp(defaultProps);
 					argIdx = propsCpp.addArgs(args, argIdx);
 				}
 				else if (arg.startsWith(PropertiesJ.OPT_PREFIX)) {
-					if (propsJ == null) propsJ = new PropertiesJ();
+					if (propsJ == null) propsJ = new PropertiesJ(defaultProps);
 					argIdx = propsJ.addArgs(args, argIdx);
 				}
 				else if (arg.startsWith(PropertiesCS.OPT_PREFIX)) {
-					if (propsCS == null) propsCS = new PropertiesCS();
+					if (propsCS == null) propsCS = new PropertiesCS(defaultProps);
 					argIdx = propsCS.addArgs(args, argIdx);
 				}
 				else if (arg.startsWith(PropertiesJS.OPT_PREFIX)) {
-					if (propsJS == null) propsJS = new PropertiesJS();
+					if (propsJS == null) propsJS = new PropertiesJS(defaultProps);
 					argIdx = propsJS.addArgs(args, argIdx);
 				}
 				else if (arg.equals("-allserials")) {
@@ -276,6 +282,10 @@ public class BDoclet extends Doclet {
 				}
 				else if (arg.equals("-allremotes")) {
 					convertOptions |= BConvert.OPT_ALL_INTERFACES_ARE_REMOTES;
+					argIdx++;
+				}
+				else if (arg.equals("-changedmembers")) {
+					defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");
 					argIdx++;
 				}
 				else if (arg.equals("--packages")) {

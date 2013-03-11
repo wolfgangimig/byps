@@ -33,7 +33,7 @@ class PrintContext extends PrintContextBase {
 	CodePrinter prImplAllH;
 
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
-		super(classDB);
+		super(classDB, props);
 		
 		dirApi = props.getMandatoryPropertyFile(PropertiesCpp.DEST_DIR_API);
 		dirImplC = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL_C, dirApi);

@@ -1,6 +1,5 @@
 package com.wilutions.byps.gen.c;
 
-import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.GeneratorProperties;
 
 @SuppressWarnings("serial")
@@ -18,13 +17,8 @@ public class PropertiesC extends GeneratorProperties {
 	 */
 	public final static String API_NAME = "-genc.api.name";
 	
-
-	public int addArgs(String[] args, int idx) throws GeneratorException {
-		String key = args[idx++];
-		String value = "";
-		if (idx >= args.length) throw new GeneratorException("Missing value for argument " + args[idx]);  
-		value = args[idx++];
-		super.put(key, value);
-		return idx;
+	public PropertiesC(GeneratorProperties defaultProps) {
+		super(defaultProps);
 	}
+	
 }

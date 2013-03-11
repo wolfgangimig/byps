@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
+import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
@@ -12,13 +13,14 @@ import com.wilutions.byps.gen.db.ClassDB;
 
 public class PrintContextBase {
 	
-	public PrintContextBase(ClassDB classDB) {
+	public PrintContextBase(ClassDB classDB, GeneratorProperties props) {
 		this.classDB = classDB;
 		this.apiDesc = classDB.getApiDescriptor();
 		this.bmodel = apiDesc.bmodel;
 		this.registry = classDB.getRegistry();
 		this.apiName = apiDesc.name;
 		this.apiPack = apiDesc.basePackage;
+		this.props = props;
 	}
 	
 	public String getSerializerClassName(TypeInfo tinfo, BBinaryModel pformat) {
@@ -76,6 +78,9 @@ public class PrintContextBase {
 		}
 	}
 	
+	public boolean isGenerateChangedMembers() {
+		return props.containsKey(GeneratorProperties.CHANGED_MEMBERS);
+	}
 
 	protected String apiName;
 	public final String apiPack;
@@ -83,5 +88,5 @@ public class PrintContextBase {
 	public final ClassDB classDB;
 	protected final BRegistryForClassDB registry;
 	protected final BApiDescriptor apiDesc;
-
+	public final GeneratorProperties props;
 }
