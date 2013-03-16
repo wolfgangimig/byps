@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BResult_RemotePrimitiveTypes_getChar extends BMethodResult<Character> implements BSerializable {
+public final class BResult_RemotePrimitiveTypes_getChar extends BMethodResult<Character> implements Serializable {
 
 	
 	private final static long serialVersionUID = 1271018118L;

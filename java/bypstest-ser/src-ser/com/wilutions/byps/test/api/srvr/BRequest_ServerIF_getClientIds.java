@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ServerIF_getClientIds implements BMethodRequest, BSerializable {
+public final class BRequest_ServerIF_getClientIds implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 2063368540L;
@@ -21,7 +22,7 @@ public final class BRequest_ServerIF_getClientIds implements BMethodRequest, BSe
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final ServerIF remoteT = (ServerIF)remote;			
+			final ServerIFAsync remoteT = (ServerIFAsync)remote;			
 			BAsyncResultSendMethod<java.util.Set<java.lang.Integer>> outerResult = new BAsyncResultSendMethod<java.util.Set<java.lang.Integer>>(asyncResult, new BResult_ServerIF_getClientIds());			
 			remoteT.async_getClientIds(outerResult);
 		} catch (Throwable e) {

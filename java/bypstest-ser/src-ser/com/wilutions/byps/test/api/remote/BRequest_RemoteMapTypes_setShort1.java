@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setShort1 implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteMapTypes_setShort1 implements BMethodRequest, Serializable {
 
 	public java.util.Map<java.lang.Long,java.lang.Short> short1;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteMapTypes_setShort1 implements BMethodRequest, 
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteMapTypes remoteT = (RemoteMapTypes)remote;			
+			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteMapTypes_setShort1());			
 			remoteT.async_setShort1(short1, outerResult);
 		} catch (Throwable e) {

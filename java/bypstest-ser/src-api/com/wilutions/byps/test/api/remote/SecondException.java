@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class SecondException extends java.lang.Exception implements BSerializable {
+public class SecondException extends java.lang.Exception implements Serializable {
 
 	private java.lang.String msg;
 	

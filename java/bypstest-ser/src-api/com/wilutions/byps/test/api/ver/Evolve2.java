@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class Evolve2 implements BSerializable {
+public class Evolve2 implements Serializable {
 
 	int n1;
 	

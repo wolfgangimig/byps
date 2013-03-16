@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes4dim_getInt implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteArrayTypes4dim_getInt implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 1589603233L;
@@ -21,7 +22,7 @@ public final class BRequest_RemoteArrayTypes4dim_getInt implements BMethodReques
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteArrayTypes4dim remoteT = (RemoteArrayTypes4dim)remote;			
+			final RemoteArrayTypes4dimAsync remoteT = (RemoteArrayTypes4dimAsync)remote;			
 			BAsyncResultSendMethod<int[][][][]> outerResult = new BAsyncResultSendMethod<int[][][][]>(asyncResult, new BResult_RemoteArrayTypes4dim_getInt());			
 			remoteT.async_getInt(outerResult);
 		} catch (Throwable e) {

@@ -6,6 +6,7 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
  * Example for an inline class.
@@ -17,7 +18,7 @@ import com.wilutions.byps.*;
  * @inline 
 */
 @SuppressWarnings("all")
-public class Point2D implements BSerializable {
+public class Point2D implements Serializable {
 
 	public short x;
 	public short y;

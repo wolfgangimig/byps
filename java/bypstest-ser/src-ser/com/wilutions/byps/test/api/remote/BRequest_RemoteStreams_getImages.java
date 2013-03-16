@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteStreams_getImages implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteStreams_getImages implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 1158979935L;
@@ -21,7 +22,7 @@ public final class BRequest_RemoteStreams_getImages implements BMethodRequest, B
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteStreams remoteT = (RemoteStreams)remote;			
+			final RemoteStreamsAsync remoteT = (RemoteStreamsAsync)remote;			
 			BAsyncResultSendMethod<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> outerResult = new BAsyncResultSendMethod<java.util.TreeMap<java.lang.Integer,java.io.InputStream>>(asyncResult, new BResult_RemoteStreams_getImages());			
 			remoteT.async_getImages(outerResult);
 		} catch (Throwable e) {

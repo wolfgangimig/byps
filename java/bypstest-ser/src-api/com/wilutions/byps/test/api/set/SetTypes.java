@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class SetTypes implements BSerializable {
+public class SetTypes implements Serializable {
 
 	public java.util.Set<java.lang.Boolean> boolean1;
 	public java.util.HashSet<java.lang.Byte> byte1;

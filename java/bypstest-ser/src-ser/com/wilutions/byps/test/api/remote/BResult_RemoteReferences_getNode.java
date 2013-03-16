@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BResult_RemoteReferences_getNode extends BMethodResult<com.wilutions.byps.test.api.refs.Node> implements BSerializable {
+public final class BResult_RemoteReferences_getNode extends BMethodResult<com.wilutions.byps.test.api.refs.Node> implements Serializable {
 
 	
 	private final static long serialVersionUID = 1480397220L;

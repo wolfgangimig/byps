@@ -147,19 +147,19 @@ public class BClient_Testser extends BClient {
 		return null;
 	}
 	
-	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes1dim remoteArrayTypes1dim;
-	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes4dim remoteArrayTypes4dim;
-	public final com.wilutions.byps.test.api.remote.RemoteEnums remoteEnums;
-	public final com.wilutions.byps.test.api.remote.RemoteException remoteException;
-	public final com.wilutions.byps.test.api.remote.RemoteInlineInstance remoteInlineInstance;
-	public final com.wilutions.byps.test.api.remote.RemoteListTypes remoteListTypes;
-	public final com.wilutions.byps.test.api.remote.RemoteMapTypes remoteMapTypes;
-	public final com.wilutions.byps.test.api.remote.RemotePrimitiveTypes remotePrimitiveTypes;
-	public final com.wilutions.byps.test.api.remote.RemoteReferences remoteReferences;
-	public final com.wilutions.byps.test.api.remote.RemoteSetTypes remoteSetTypes;
-	public final com.wilutions.byps.test.api.remote.RemoteStreams remoteStreams;
-	public final com.wilutions.byps.test.api.srvr.ClientIF clientIF;
-	public final com.wilutions.byps.test.api.srvr.ServerIF serverIF;
-	public final com.wilutions.byps.test.api.ver.EvolveIF evolveIF;
+	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes1dimAsync remoteArrayTypes1dim;
+	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes4dimAsync remoteArrayTypes4dim;
+	public final com.wilutions.byps.test.api.remote.RemoteEnumsAsync remoteEnums;
+	public final com.wilutions.byps.test.api.remote.RemoteExceptionAsync remoteException;
+	public final com.wilutions.byps.test.api.remote.RemoteInlineInstanceAsync remoteInlineInstance;
+	public final com.wilutions.byps.test.api.remote.RemoteListTypesAsync remoteListTypes;
+	public final com.wilutions.byps.test.api.remote.RemoteMapTypesAsync remoteMapTypes;
+	public final com.wilutions.byps.test.api.remote.RemotePrimitiveTypesAsync remotePrimitiveTypes;
+	public final com.wilutions.byps.test.api.remote.RemoteReferencesAsync remoteReferences;
+	public final com.wilutions.byps.test.api.remote.RemoteSetTypesAsync remoteSetTypes;
+	public final com.wilutions.byps.test.api.remote.RemoteStreamsAsync remoteStreams;
+	public final com.wilutions.byps.test.api.srvr.ClientIFAsync clientIF;
+	public final com.wilutions.byps.test.api.srvr.ServerIFAsync serverIF;
+	public final com.wilutions.byps.test.api.ver.EvolveIFAsync evolveIF;
 	
 }

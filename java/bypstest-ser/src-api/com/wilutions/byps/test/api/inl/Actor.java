@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class Actor implements BSerializable {
+public class Actor implements Serializable {
 
 	public Point2D[] shape;
 	public Matrix2D position;

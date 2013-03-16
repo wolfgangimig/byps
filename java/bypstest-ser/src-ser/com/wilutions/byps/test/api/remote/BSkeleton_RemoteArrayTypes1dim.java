@@ -14,7 +14,7 @@ import com.wilutions.byps.*;
  * The framework calls only the asynchronous function.
  */
 @SuppressWarnings("all")
-public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteArrayTypes1dim {
+public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteArrayTypes1dimAsync {
 	
 	public final static long serialVersionUID = 1557084481L;
 	

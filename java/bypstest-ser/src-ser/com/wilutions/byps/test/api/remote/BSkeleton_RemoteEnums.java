@@ -14,7 +14,7 @@ import com.wilutions.byps.*;
  * The framework calls only the asynchronous function.
  */
 @SuppressWarnings("all")
-public class BSkeleton_RemoteEnums extends BSkeleton implements RemoteEnums {
+public class BSkeleton_RemoteEnums extends BSkeleton implements RemoteEnumsAsync {
 	
 	public final static long serialVersionUID = 359349400L;
 	

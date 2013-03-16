@@ -507,8 +507,6 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 1633500852) return com.wilutions.byps.test.api.BSerializer_1633500852.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getString1
 		if (typeId == 1089360425) return com.wilutions.byps.test.api.remote.BSerializer_1089360425.instance;
-		// com.wilutions.byps.test.api.cons.HebrewZ
-		if (typeId == 1039162031) return com.wilutions.byps.test.api.cons.BSerializer_1039162031.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
 		if (typeId == 1610481740) return com.wilutions.byps.test.api.remote.BSerializer_1610481740.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
@@ -537,8 +535,6 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 2080023171) return com.wilutions.byps.test.api.remote.BSerializer_2080023171.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getBool
 		if (typeId == 1329185616) return com.wilutions.byps.test.api.remote.BSerializer_1329185616.instance;
-		// com.wilutions.byps.test.api.cons.HebrewZ[]
-		if (typeId == 2092671091) return com.wilutions.byps.test.api.BSerializer_2092671091.instance;
 		// double[]
 		if (typeId == 1359468275) return com.wilutions.byps.test.api.BSerializer_1359468275.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
@@ -661,8 +657,6 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 382600378) return com.wilutions.byps.test.api.remote.BSerializer_382600378.instance;
 		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_getStreams
 		if (typeId == 865920738) return com.wilutions.byps.test.api.srvr.BSerializer_865920738.instance;
-		// com.wilutions.byps.test.api.cons.HebrewC
-		if (typeId == 1039162054) return com.wilutions.byps.test.api.cons.BSerializer_1039162054.instance;
 		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getClient
 		if (typeId == 98720592) return com.wilutions.byps.test.api.ver.BSerializer_98720592.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getPrimitiveTypes1
@@ -703,10 +697,10 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 1339779778) return com.wilutions.byps.test.api.remote.BSerializer_1339779778.instance;
 		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getEvolve
 		if (typeId == 32041374) return com.wilutions.byps.test.api.ver.BSerializer_32041374.instance;
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
-		if (typeId == 161104028) return com.wilutions.byps.test.api.remote.BSerializer_161104028.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
 		if (typeId == 2091006964) return com.wilutions.byps.test.api.remote.BSerializer_2091006964.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
+		if (typeId == 161104028) return com.wilutions.byps.test.api.remote.BSerializer_161104028.instance;
 		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_setPartner
 		if (typeId == 1188403123) return com.wilutions.byps.test.api.srvr.BSerializer_1188403123.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setInt
@@ -795,10 +789,10 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 1402482290) return com.wilutions.byps.test.api.remote.BSerializer_1402482290.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
 		if (typeId == 589243771) return com.wilutions.byps.test.api.remote.BSerializer_589243771.instance;
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setBool
-		if (typeId == 343675807) return com.wilutions.byps.test.api.remote.BSerializer_343675807.instance;
 		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds
 		if (typeId == 2063368540) return com.wilutions.byps.test.api.srvr.BSerializer_2063368540.instance;
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setBool
+		if (typeId == 343675807) return com.wilutions.byps.test.api.remote.BSerializer_343675807.instance;
 		// short[]
 		if (typeId == 2067161310) return com.wilutions.byps.test.api.BSerializer_2067161310.instance;
 		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_getEvolve
@@ -851,8 +845,6 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 504012638) return com.wilutions.byps.test.api.remote.BSerializer_504012638.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setBoolean1
 		if (typeId == 1712214692) return com.wilutions.byps.test.api.remote.BSerializer_1712214692.instance;
-		// com.wilutions.byps.test.api.cons.AllTypesZ[][]
-		if (typeId == 1981543076) return com.wilutions.byps.test.api.BSerializer_1981543076.instance;
 		// com.wilutions.byps.test.api.list.ListListTypes
 		if (typeId == 3002) return com.wilutions.byps.test.api.list.BSerializer_3002.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setShort
@@ -947,8 +939,6 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 1609477282) return com.wilutions.byps.test.api.remote.BSerializer_1609477282.instance;
 		// com.wilutions.byps.test.api.ver.BStub_EvolveIF
 		if (typeId == 2078696281) return com.wilutions.byps.test.api.ver.BSerializer_2078696281.instance;
-		// com.wilutions.byps.test.api.cons.AllTypesC
-		if (typeId == 619221761) return com.wilutions.byps.test.api.cons.BSerializer_619221761.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
 		if (typeId == 2032874980) return com.wilutions.byps.test.api.remote.BSerializer_2032874980.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
@@ -963,8 +953,6 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 1201775504) return com.wilutions.byps.test.api.BSerializer_1201775504.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
 		if (typeId == 1071498593) return com.wilutions.byps.test.api.remote.BSerializer_1071498593.instance;
-		// com.wilutions.byps.test.api.cons.AllTypesZ
-		if (typeId == 619221784) return com.wilutions.byps.test.api.cons.BSerializer_619221784.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_setImage
 		if (typeId == 676539072) return com.wilutions.byps.test.api.remote.BSerializer_676539072.instance;
 		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_getTextStream

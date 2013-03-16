@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_setActorArray4dim implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteInlineInstance_setActorArray4dim implements BMethodRequest, Serializable {
 
 	public com.wilutions.byps.test.api.inl.Actor[][][][] actorArray;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteInlineInstance_setActorArray4dim implements BM
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteInlineInstance remoteT = (RemoteInlineInstance)remote;			
+			final RemoteInlineInstanceAsync remoteT = (RemoteInlineInstanceAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteInlineInstance_setActorArray4dim());			
 			remoteT.async_setActorArray4dim(actorArray, outerResult);
 		} catch (Throwable e) {

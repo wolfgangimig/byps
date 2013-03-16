@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteException_throwNullPointerException implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteException_throwNullPointerException implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 1888829108L;
@@ -21,7 +22,7 @@ public final class BRequest_RemoteException_throwNullPointerException implements
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteException remoteT = (RemoteException)remote;			
+			final RemoteExceptionAsync remoteT = (RemoteExceptionAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteException_throwNullPointerException());			
 			remoteT.async_throwNullPointerException(outerResult);
 		} catch (Throwable e) {

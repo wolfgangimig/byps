@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BResult_ServerIF_getClient extends BMethodResult<ClientIF> implements BSerializable {
+public final class BResult_ServerIF_getClient extends BMethodResult<ClientIF> implements Serializable {
 
 	
 	private final static long serialVersionUID = 1309389154L;

@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteInlineInstance extends BStub implements RemoteInlineInstance, java.io.Serializable {
+public class BStub_RemoteInlineInstance extends BStub implements RemoteInlineInstanceAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 1206670536L;
 	

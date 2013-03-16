@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteStreams_throwLastException implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteStreams_throwLastException implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 2047657918L;
@@ -21,7 +22,7 @@ public final class BRequest_RemoteStreams_throwLastException implements BMethodR
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteStreams remoteT = (RemoteStreams)remote;			
+			final RemoteStreamsAsync remoteT = (RemoteStreamsAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteStreams_throwLastException());			
 			remoteT.async_throwLastException(outerResult);
 		} catch (Throwable e) {

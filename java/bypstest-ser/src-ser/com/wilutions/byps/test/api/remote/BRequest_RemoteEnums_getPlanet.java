@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteEnums_getPlanet implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteEnums_getPlanet implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 627010462L;
@@ -21,7 +22,7 @@ public final class BRequest_RemoteEnums_getPlanet implements BMethodRequest, BSe
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteEnums remoteT = (RemoteEnums)remote;			
+			final RemoteEnumsAsync remoteT = (RemoteEnumsAsync)remote;			
 			BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets> outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets>(asyncResult, new BResult_RemoteEnums_getPlanet());			
 			remoteT.async_getPlanet(outerResult);
 		} catch (Throwable e) {

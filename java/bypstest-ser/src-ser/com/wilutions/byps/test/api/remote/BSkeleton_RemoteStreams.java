@@ -14,7 +14,7 @@ import com.wilutions.byps.*;
  * The framework calls only the asynchronous function.
  */
 @SuppressWarnings("all")
-public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreams {
+public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsAsync {
 	
 	public final static long serialVersionUID = 2028487863L;
 	

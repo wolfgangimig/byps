@@ -6,13 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
- * @BSerializable 
- * @BSerializable 
 */
 @SuppressWarnings("all")
-public class Class1Collections implements BSerializable {
+public class Class1Collections implements Serializable {
 
 	public java.util.List<Class1> list1;
 	public java.util.Map<java.lang.String,Class1> map1;

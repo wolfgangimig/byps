@@ -14,7 +14,7 @@ import com.wilutions.byps.*;
  * The framework calls only the asynchronous function.
  */
 @SuppressWarnings("all")
-public class BSkeleton_RemoteMapTypes extends BSkeleton implements RemoteMapTypes {
+public class BSkeleton_RemoteMapTypes extends BSkeleton implements RemoteMapTypesAsync {
 	
 	public final static long serialVersionUID = 80483097L;
 	

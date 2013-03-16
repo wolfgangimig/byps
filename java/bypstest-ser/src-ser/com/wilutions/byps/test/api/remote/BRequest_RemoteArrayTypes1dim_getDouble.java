@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes1dim_getDouble implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteArrayTypes1dim_getDouble implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 935089666L;
@@ -21,7 +22,7 @@ public final class BRequest_RemoteArrayTypes1dim_getDouble implements BMethodReq
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteArrayTypes1dim remoteT = (RemoteArrayTypes1dim)remote;			
+			final RemoteArrayTypes1dimAsync remoteT = (RemoteArrayTypes1dimAsync)remote;			
 			BAsyncResultSendMethod<double[]> outerResult = new BAsyncResultSendMethod<double[]>(asyncResult, new BResult_RemoteArrayTypes1dim_getDouble());			
 			remoteT.async_getDouble(outerResult);
 		} catch (Throwable e) {

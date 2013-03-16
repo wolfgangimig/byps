@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemotePrimitiveTypes_sendAllTypes implements BMethodRequest, BSerializable {
+public final class BRequest_RemotePrimitiveTypes_sendAllTypes implements BMethodRequest, Serializable {
 
 	public boolean b;
 	public char c;
@@ -31,7 +32,7 @@ public final class BRequest_RemotePrimitiveTypes_sendAllTypes implements BMethod
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemotePrimitiveTypes remoteT = (RemotePrimitiveTypes)remote;			
+			final RemotePrimitiveTypesAsync remoteT = (RemotePrimitiveTypesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemotePrimitiveTypes_sendAllTypes());			
 			remoteT.async_sendAllTypes(b, c, s, i, l, f, d, str, pt, o, outerResult);
 		} catch (Throwable e) {

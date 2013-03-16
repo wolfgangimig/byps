@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemotePrimitiveTypes extends BStub implements RemotePrimitiveTypes, java.io.Serializable {
+public class BStub_RemotePrimitiveTypes extends BStub implements RemotePrimitiveTypesAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 1341983932L;
 	

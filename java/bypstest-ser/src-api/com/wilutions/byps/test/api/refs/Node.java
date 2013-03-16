@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class Node implements BSerializable {
+public class Node implements Serializable {
 
 	public Node next;
 	public Node me;

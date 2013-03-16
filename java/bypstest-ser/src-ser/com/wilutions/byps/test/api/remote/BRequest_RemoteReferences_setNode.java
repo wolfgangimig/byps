@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteReferences_setNode implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteReferences_setNode implements BMethodRequest, Serializable {
 
 	public com.wilutions.byps.test.api.refs.Node v;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteReferences_setNode implements BMethodRequest, 
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteReferences remoteT = (RemoteReferences)remote;			
+			final RemoteReferencesAsync remoteT = (RemoteReferencesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteReferences_setNode());			
 			remoteT.async_setNode(v, outerResult);
 		} catch (Throwable e) {

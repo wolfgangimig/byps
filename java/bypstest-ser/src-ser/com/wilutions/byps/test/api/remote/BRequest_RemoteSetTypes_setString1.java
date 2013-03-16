@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteSetTypes_setString1 implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteSetTypes_setString1 implements BMethodRequest, Serializable {
 
 	public java.util.Set<java.lang.String> string1;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteSetTypes_setString1 implements BMethodRequest,
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteSetTypes remoteT = (RemoteSetTypes)remote;			
+			final RemoteSetTypesAsync remoteT = (RemoteSetTypesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteSetTypes_setString1());			
 			remoteT.async_setString1(string1, outerResult);
 		} catch (Throwable e) {

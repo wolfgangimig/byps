@@ -14,7 +14,7 @@ import com.wilutions.byps.*;
  * The framework calls only the asynchronous function.
  */
 @SuppressWarnings("all")
-public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetTypes {
+public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetTypesAsync {
 	
 	public final static long serialVersionUID = 1156008353L;
 	

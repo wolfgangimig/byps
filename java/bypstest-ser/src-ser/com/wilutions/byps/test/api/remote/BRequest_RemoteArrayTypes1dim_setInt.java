@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes1dim_setInt implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteArrayTypes1dim_setInt implements BMethodRequest, Serializable {
 
 	public int[] v;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteArrayTypes1dim_setInt implements BMethodReques
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteArrayTypes1dim remoteT = (RemoteArrayTypes1dim)remote;			
+			final RemoteArrayTypes1dimAsync remoteT = (RemoteArrayTypes1dimAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteArrayTypes1dim_setInt());			
 			remoteT.async_setInt(v, outerResult);
 		} catch (Throwable e) {

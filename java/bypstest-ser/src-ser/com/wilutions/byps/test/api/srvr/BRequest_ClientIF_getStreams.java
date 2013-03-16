@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ClientIF_getStreams implements BMethodRequest, BSerializable {
+public final class BRequest_ClientIF_getStreams implements BMethodRequest, Serializable {
 
 	public int ctrl;
 	
@@ -22,7 +23,7 @@ public final class BRequest_ClientIF_getStreams implements BMethodRequest, BSeri
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final ClientIF remoteT = (ClientIF)remote;			
+			final ClientIFAsync remoteT = (ClientIFAsync)remote;			
 			BAsyncResultSendMethod<java.util.List<java.io.InputStream>> outerResult = new BAsyncResultSendMethod<java.util.List<java.io.InputStream>>(asyncResult, new BResult_ClientIF_getStreams());			
 			remoteT.async_getStreams(ctrl, outerResult);
 		} catch (Throwable e) {

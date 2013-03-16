@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src-ser"/>
-	<classpathentry kind="src" path="src-api"/>
 	<classpathentry kind="src" path="src-ser-bin"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
@@ -18,5 +17,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

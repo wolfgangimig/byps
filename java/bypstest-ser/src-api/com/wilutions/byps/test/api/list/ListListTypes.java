@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class ListListTypes implements BSerializable {
+public class ListListTypes implements Serializable {
 
 	public java.util.List<java.util.List<java.lang.Integer>> int2;
 	public java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> int3;

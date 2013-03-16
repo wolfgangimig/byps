@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setPrimitiveTypes1 implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteMapTypes_setPrimitiveTypes1 implements BMethodRequest, Serializable {
 
 	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteMapTypes_setPrimitiveTypes1 implements BMethod
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteMapTypes remoteT = (RemoteMapTypes)remote;			
+			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteMapTypes_setPrimitiveTypes1());			
 			remoteT.async_setPrimitiveTypes1(primitiveTypes1, outerResult);
 		} catch (Throwable e) {

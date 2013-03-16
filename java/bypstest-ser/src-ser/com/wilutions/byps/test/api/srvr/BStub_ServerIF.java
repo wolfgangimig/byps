@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_ServerIF extends BStub implements ServerIF, java.io.Serializable {
+public class BStub_ServerIF extends BStub implements ServerIFAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 1313562065L;
 	

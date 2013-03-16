@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteException_throwBException implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteException_throwBException implements BMethodRequest, Serializable {
 
 	public int code;
 	public java.lang.String msg;
@@ -23,7 +24,7 @@ public final class BRequest_RemoteException_throwBException implements BMethodRe
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteException remoteT = (RemoteException)remote;			
+			final RemoteExceptionAsync remoteT = (RemoteExceptionAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteException_throwBException());			
 			remoteT.async_throwBException(code, msg, outerResult);
 		} catch (Throwable e) {

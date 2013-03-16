@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteListTypes extends BStub implements RemoteListTypes, java.io.Serializable {
+public class BStub_RemoteListTypes extends BStub implements RemoteListTypesAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 380156079L;
 	

@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteEnums extends BStub implements RemoteEnums, java.io.Serializable {
+public class BStub_RemoteEnums extends BStub implements RemoteEnumsAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 359349400L;
 	

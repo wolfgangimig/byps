@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteListTypes_setInt3 implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteListTypes_setInt3 implements BMethodRequest, Serializable {
 
 	public java.util.List<java.util.List<java.lang.Integer>> int3;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteListTypes_setInt3 implements BMethodRequest, B
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteListTypes remoteT = (RemoteListTypes)remote;			
+			final RemoteListTypesAsync remoteT = (RemoteListTypesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteListTypes_setInt3());			
 			remoteT.async_setInt3(int3, outerResult);
 		} catch (Throwable e) {

@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ClientIF_sendChat implements BMethodRequest, BSerializable {
+public final class BRequest_ClientIF_sendChat implements BMethodRequest, Serializable {
 
 	public ChatStructure cs;
 	
@@ -22,7 +23,7 @@ public final class BRequest_ClientIF_sendChat implements BMethodRequest, BSerial
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final ClientIF remoteT = (ClientIF)remote;			
+			final ClientIFAsync remoteT = (ClientIFAsync)remote;			
 			BAsyncResultSendMethod<ChatStructure> outerResult = new BAsyncResultSendMethod<ChatStructure>(asyncResult, new BResult_ClientIF_sendChat());			
 			remoteT.async_sendChat(cs, outerResult);
 		} catch (Throwable e) {

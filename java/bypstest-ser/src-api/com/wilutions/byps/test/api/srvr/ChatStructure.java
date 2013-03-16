@@ -6,13 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
- * @BSerializable 
- * @BSerializable 
 */
 @SuppressWarnings("all")
-public class ChatStructure implements BSerializable {
+public class ChatStructure implements Serializable {
 
 	public java.lang.String msg;
 	public double sentAt;

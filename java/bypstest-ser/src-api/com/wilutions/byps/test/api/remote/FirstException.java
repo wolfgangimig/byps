@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class FirstException extends java.lang.Exception implements BSerializable {
+public class FirstException extends java.lang.Exception implements Serializable {
 
 	public java.util.List<java.lang.String> listOfStrings;
 	private java.lang.Throwable cause;

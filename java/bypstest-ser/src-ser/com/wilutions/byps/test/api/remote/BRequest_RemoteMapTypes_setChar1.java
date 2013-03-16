@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setChar1 implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteMapTypes_setChar1 implements BMethodRequest, Serializable {
 
 	public java.util.TreeMap<java.lang.Float,java.lang.Character> char1;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteMapTypes_setChar1 implements BMethodRequest, B
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteMapTypes remoteT = (RemoteMapTypes)remote;			
+			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteMapTypes_setChar1());			
 			remoteT.async_setChar1(char1, outerResult);
 		} catch (Throwable e) {

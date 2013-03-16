@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_getActorMap implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteInlineInstance_getActorMap implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 304319631L;
@@ -21,7 +22,7 @@ public final class BRequest_RemoteInlineInstance_getActorMap implements BMethodR
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteInlineInstance remoteT = (RemoteInlineInstance)remote;			
+			final RemoteInlineInstanceAsync remoteT = (RemoteInlineInstanceAsync)remote;			
 			BAsyncResultSendMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>>(asyncResult, new BResult_RemoteInlineInstance_getActorMap());			
 			remoteT.async_getActorMap(outerResult);
 		} catch (Throwable e) {

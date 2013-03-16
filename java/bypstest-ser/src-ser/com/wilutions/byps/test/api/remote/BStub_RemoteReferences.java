@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteReferences extends BStub implements RemoteReferences, java.io.Serializable {
+public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 2086824050L;
 	

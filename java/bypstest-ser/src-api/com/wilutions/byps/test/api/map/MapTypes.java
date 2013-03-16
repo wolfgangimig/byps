@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class MapTypes implements BSerializable {
+public class MapTypes implements Serializable {
 
 	public java.util.Map<java.lang.String,java.lang.Boolean> boolean1;
 	public java.util.HashMap<java.lang.Double,java.lang.Byte> byte1;

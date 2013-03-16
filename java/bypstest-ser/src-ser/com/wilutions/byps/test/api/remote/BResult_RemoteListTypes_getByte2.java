@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BResult_RemoteListTypes_getByte2 extends BMethodResult<java.util.List<byte[]>> implements BSerializable {
+public final class BResult_RemoteListTypes_getByte2 extends BMethodResult<java.util.List<byte[]>> implements Serializable {
 
 	
 	private final static long serialVersionUID = 495081043L;

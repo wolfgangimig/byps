@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setByte2 implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteMapTypes_setByte2 implements BMethodRequest, Serializable {
 
 	public java.util.Map<java.lang.Integer,byte[]> byte2;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteMapTypes_setByte2 implements BMethodRequest, B
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteMapTypes remoteT = (RemoteMapTypes)remote;			
+			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteMapTypes_setByte2());			
 			remoteT.async_setByte2(byte2, outerResult);
 		} catch (Throwable e) {

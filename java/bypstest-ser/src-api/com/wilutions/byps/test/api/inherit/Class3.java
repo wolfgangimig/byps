@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class Class3 extends Class2 implements BSerializable {
+public class Class3 extends Class2 implements Serializable {
 
 	public int int3;
 	

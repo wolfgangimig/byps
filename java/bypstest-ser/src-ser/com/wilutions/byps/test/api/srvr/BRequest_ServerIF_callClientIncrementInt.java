@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ServerIF_callClientIncrementInt implements BMethodRequest, BSerializable {
+public final class BRequest_ServerIF_callClientIncrementInt implements BMethodRequest, Serializable {
 
 	public int v;
 	
@@ -22,7 +23,7 @@ public final class BRequest_ServerIF_callClientIncrementInt implements BMethodRe
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final ServerIF remoteT = (ServerIF)remote;			
+			final ServerIFAsync remoteT = (ServerIFAsync)remote;			
 			BAsyncResultSendMethod<Integer> outerResult = new BAsyncResultSendMethod<Integer>(asyncResult, new BResult_ServerIF_callClientIncrementInt());			
 			remoteT.async_callClientIncrementInt(v, outerResult);
 		} catch (Throwable e) {

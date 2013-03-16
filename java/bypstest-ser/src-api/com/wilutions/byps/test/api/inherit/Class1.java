@@ -6,14 +6,13 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
  * Base class for ...
- * @BSerializable 
- * @BSerializable 
 */
 @SuppressWarnings("all")
-public class Class1 implements BSerializable {
+public class Class1 implements Serializable {
 
 	public int int1;
 	public Class1 nextClass1;

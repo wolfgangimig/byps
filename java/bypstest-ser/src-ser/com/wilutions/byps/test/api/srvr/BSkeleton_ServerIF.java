@@ -14,7 +14,7 @@ import com.wilutions.byps.*;
  * The framework calls only the asynchronous function.
  */
 @SuppressWarnings("all")
-public class BSkeleton_ServerIF extends BSkeleton implements ServerIF {
+public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	public final static long serialVersionUID = 1313562065L;
 	

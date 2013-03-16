@@ -6,12 +6,13 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
  * Example class with private and protected members
 */
 @SuppressWarnings("all")
-public class PrivateMembers implements BSerializable {
+public class PrivateMembers implements Serializable {
 
 	private boolean boolVal;
 	private byte byteVal;

@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteMapTypes extends BStub implements RemoteMapTypes, java.io.Serializable {
+public class BStub_RemoteMapTypes extends BStub implements RemoteMapTypesAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 80483097L;
 	

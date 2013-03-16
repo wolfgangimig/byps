@@ -6,12 +6,13 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
  * Example class with primitive types like boolean, int, String.
 */
 @SuppressWarnings("all")
-public class PrimitiveTypes implements BSerializable {
+public class PrimitiveTypes implements Serializable {
 
 	/**
 	 * Boolean value.
@@ -34,7 +35,7 @@ public class PrimitiveTypes implements BSerializable {
 	public double doubleVal;
 	public java.lang.String stringVal;
 	/**
-	 * This element can refer a an arbitrary type that implements BSerializable.
+	 * This element can refer a an arbitrary type that implements Serializable.
 	 * It cannot hold an array, List, ArrayList, etc.
 	*/
 	public java.lang.Object objVal;

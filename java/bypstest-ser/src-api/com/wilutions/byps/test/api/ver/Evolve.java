@@ -6,12 +6,13 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
  * Example class with elements that belong to different versions.
 */
 @SuppressWarnings("all")
-public class Evolve implements BSerializable {
+public class Evolve implements Serializable {
 
 	public boolean bool1;
 	public byte byte1;

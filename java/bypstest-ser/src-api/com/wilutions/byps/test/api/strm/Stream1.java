@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class Stream1 implements BSerializable {
+public class Stream1 implements Serializable {
 
 	public java.io.InputStream is1;
 	private java.lang.String contentType;

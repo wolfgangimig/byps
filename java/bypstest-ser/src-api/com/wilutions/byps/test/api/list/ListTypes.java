@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class ListTypes implements BSerializable {
+public class ListTypes implements Serializable {
 
 	public java.util.List<java.lang.Boolean> boolean1;
 	public java.util.List<java.lang.Byte> byte1;

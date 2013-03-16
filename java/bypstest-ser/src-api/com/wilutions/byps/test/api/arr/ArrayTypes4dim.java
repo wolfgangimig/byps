@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class ArrayTypes4dim implements BSerializable {
+public class ArrayTypes4dim implements Serializable {
 
 	public boolean[][][][] boolean4;
 	public byte[][][][] byte4;

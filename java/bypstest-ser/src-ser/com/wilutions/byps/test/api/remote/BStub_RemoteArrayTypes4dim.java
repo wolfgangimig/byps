@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteArrayTypes4dim extends BStub implements RemoteArrayTypes4dim, java.io.Serializable {
+public class BStub_RemoteArrayTypes4dim extends BStub implements RemoteArrayTypes4dimAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 1557173854L;
 	

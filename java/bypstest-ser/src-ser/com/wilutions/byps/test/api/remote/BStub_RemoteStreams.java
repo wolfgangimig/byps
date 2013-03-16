@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteStreams extends BStub implements RemoteStreams, java.io.Serializable {
+public class BStub_RemoteStreams extends BStub implements RemoteStreamsAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 2028487863L;
 	

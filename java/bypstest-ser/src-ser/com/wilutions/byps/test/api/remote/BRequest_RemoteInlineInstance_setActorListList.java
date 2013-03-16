@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_setActorListList implements BMethodRequest, BSerializable {
+public final class BRequest_RemoteInlineInstance_setActorListList implements BMethodRequest, Serializable {
 
 	public java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> actorListList;
 	
@@ -22,7 +23,7 @@ public final class BRequest_RemoteInlineInstance_setActorListList implements BMe
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemoteInlineInstance remoteT = (RemoteInlineInstance)remote;			
+			final RemoteInlineInstanceAsync remoteT = (RemoteInlineInstanceAsync)remote;			
 			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteInlineInstance_setActorListList());			
 			remoteT.async_setActorListList(actorListList, outerResult);
 		} catch (Throwable e) {

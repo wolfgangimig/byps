@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public class UsePlanets implements BSerializable {
+public class UsePlanets implements Serializable {
 
 	public EnumPlanets planet;
 	private EnumPlanets planet2;

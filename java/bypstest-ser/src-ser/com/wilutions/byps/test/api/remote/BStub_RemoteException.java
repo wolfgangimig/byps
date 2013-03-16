@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_RemoteException extends BStub implements RemoteException, java.io.Serializable {
+public class BStub_RemoteException extends BStub implements RemoteExceptionAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 1959416539L;
 	

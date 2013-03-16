@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BResult_RemoteEnums_getPlanet extends BMethodResult<com.wilutions.byps.test.api.enu.EnumPlanets> implements BSerializable {
+public final class BResult_RemoteEnums_getPlanet extends BMethodResult<com.wilutions.byps.test.api.enu.EnumPlanets> implements Serializable {
 
 	
 	private final static long serialVersionUID = 839369882L;

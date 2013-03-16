@@ -6,12 +6,13 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
  * @inline 
 */
 @SuppressWarnings("all")
-public final class Matrix2D implements BSerializable {
+public final class Matrix2D implements Serializable {
 
 	public float _11;
 	public float _12;

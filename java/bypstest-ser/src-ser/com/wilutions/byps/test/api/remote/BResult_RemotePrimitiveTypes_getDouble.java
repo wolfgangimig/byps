@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BResult_RemotePrimitiveTypes_getDouble extends BMethodResult<Double> implements BSerializable {
+public final class BResult_RemotePrimitiveTypes_getDouble extends BMethodResult<Double> implements Serializable {
 
 	
 	private final static long serialVersionUID = 1642021643L;

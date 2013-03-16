@@ -6,11 +6,12 @@
  */
 
 import com.wilutions.byps.*;
+import java.io.Serializable;
 
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemotePrimitiveTypes_getByte implements BMethodRequest, BSerializable {
+public final class BRequest_RemotePrimitiveTypes_getByte implements BMethodRequest, Serializable {
 
 	
 	private final static long serialVersionUID = 2091006964L;
@@ -21,7 +22,7 @@ public final class BRequest_RemotePrimitiveTypes_getByte implements BMethodReque
 	@Override
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
-			final RemotePrimitiveTypes remoteT = (RemotePrimitiveTypes)remote;			
+			final RemotePrimitiveTypesAsync remoteT = (RemotePrimitiveTypesAsync)remote;			
 			BAsyncResultSendMethod<Byte> outerResult = new BAsyncResultSendMethod<Byte>(asyncResult, new BResult_RemotePrimitiveTypes_getByte());			
 			remoteT.async_getByte(outerResult);
 		} catch (Throwable e) {

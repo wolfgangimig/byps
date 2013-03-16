@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public class BStub_EvolveIF extends BStub implements EvolveIF, java.io.Serializable {
+public class BStub_EvolveIF extends BStub implements EvolveIFAsync, java.io.Serializable {
 	
 	public final static long serialVersionUID = 2078696281L;
 	
