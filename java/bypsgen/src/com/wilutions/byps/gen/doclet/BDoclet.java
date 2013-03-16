@@ -30,8 +30,6 @@ import com.wilutions.byps.gen.js.PropertiesJS;
 
 
 /**
- * TODO verbiete Elementname _typeId
- * @author Wolfgang
  *
  */
 public class BDoclet extends Doclet {
@@ -275,14 +273,6 @@ public class BDoclet extends Doclet {
 				else if (arg.startsWith(PropertiesJS.OPT_PREFIX)) {
 					if (propsJS == null) propsJS = new PropertiesJS(defaultProps);
 					argIdx = propsJS.addArgs(args, argIdx);
-				}
-				else if (arg.equals("-allserials")) {
-					convertOptions |= BConvert.OPT_ALL_CLASSES_ARE_SERIALS;
-					argIdx++;
-				}
-				else if (arg.equals("-allremotes")) {
-					convertOptions |= BConvert.OPT_ALL_INTERFACES_ARE_REMOTES;
-					argIdx++;
 				}
 				else if (arg.equals("-changedmembers")) {
 					defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");

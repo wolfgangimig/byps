@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-ser-json"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,11 +1,10 @@
 package com.wilutions.byps.test.api.srvr;
 
+import java.io.Serializable;
+
 /**
- * 
- * @BSerializable
- *
  */
-public class ChatStructure {
+public class ChatStructure implements Serializable {
 	
 	private final static long serialVersionUID = 7007;
 	

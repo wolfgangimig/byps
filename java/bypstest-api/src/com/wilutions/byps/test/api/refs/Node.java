@@ -1,8 +1,9 @@
 package com.wilutions.byps.test.api.refs;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+
+import java.io.Serializable;
 
 public class Node implements Serializable {
 

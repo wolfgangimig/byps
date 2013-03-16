@@ -24,7 +24,7 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
-	private GenRemoteClass(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
+	protected GenRemoteClass(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
 		this.rinfo = rinfo;
 		this.pr = pr;
 		this.interfaceName = IMPL_SUFFIX + rinfo.name;
@@ -42,15 +42,6 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "printMember");
 	}
 	
-	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
-		
-		CodePrinter mpr = pctxt.printDeclareMethodAsync(pr, rinfo, methodInfo);
-		mpr.println(";");
-		
-		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
-	}
-
 	private void generate() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 
@@ -71,7 +62,6 @@ class GenRemoteClass {
 		
 		for (MethodInfo minfo : rinfo.methods) {
 			printMethod(minfo);
-			printMethodAsync(minfo);
 			pr.println();
 		}
 		
@@ -84,8 +74,8 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
-	private final String interfaceName;
-	private final RemoteInfo rinfo;
-	private final CodePrinter pr;
-	private final PrintContext pctxt;
+	protected final String interfaceName;
+	protected final RemoteInfo rinfo;
+	protected final CodePrinter pr;
+	protected final PrintContext pctxt;
 }

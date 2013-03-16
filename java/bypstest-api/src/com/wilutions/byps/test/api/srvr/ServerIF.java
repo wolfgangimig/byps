@@ -4,23 +4,24 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Set;
 
+import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
 
 public interface ServerIF extends BRemote {
 
-	public int callClientIncrementInt(int v);
+	public int callClientIncrementInt(int v) throws BException, InterruptedException;
 	
-	public void setPartner(ClientIF client);
+	public void setPartner(ClientIF client) throws BException, InterruptedException;
 	
-	public ClientIF getPartner();
+	public ClientIF getPartner() throws BException, InterruptedException;
 	
-	public List<InputStream> getStreamsFromClient();
+	public List<InputStream> getStreamsFromClient() throws BException, InterruptedException;
 	
-	public void putStreamsOnClient(List<InputStream> streams);
+	public void putStreamsOnClient(List<InputStream> streams) throws BException, InterruptedException;
 	
-	public void registerWithClientMap(int id);
+	public void registerWithClientMap(int id) throws BException, InterruptedException;
 	
-	public ClientIF getClient(int id);
+	public ClientIF getClient(int id) throws BException, InterruptedException;
 	
-	public Set<Integer> getClientIds();
+	public Set<Integer> getClientIds() throws BException, InterruptedException;
 }

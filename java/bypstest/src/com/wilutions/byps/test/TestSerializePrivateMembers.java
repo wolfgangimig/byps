@@ -31,6 +31,7 @@ public class TestSerializePrivateMembers {
 		log.info("testPrivateMembers(");
 		
 		PrivateMembers obj = new PrivateMembers();
+		obj.setStringVal("");
 		
 		// Test with null values
 		internalTestPrivateMembers(obj);

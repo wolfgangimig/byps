@@ -58,6 +58,7 @@ public class GeneratorJ implements Generator {
 		Collection<RemoteInfo> remotes = classDB.getRemotes();
 		for (RemoteInfo rinfo : remotes) {
 			GenRemoteClass.generate(pctxt, rinfo);
+			GenRemoteClassAsync.generate(pctxt, rinfo);
 			GenRemoteStub.generate(pctxt, rinfo);
 			GenRemoteSkeleton.generate(pctxt, rinfo);
 		}		

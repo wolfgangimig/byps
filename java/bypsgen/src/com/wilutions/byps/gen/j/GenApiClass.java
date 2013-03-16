@@ -340,11 +340,11 @@ class GenApiClass {
 		log.debug(")printRemoteId");
 	}
 	
-	private void printExecuteAsync() {
+	private void printExecuteAsync() throws GeneratorException {
 		pr.println("try {");
 		pr.beginBlock();
 		
-		String remoteType = methodInfo.remoteInfo.toString(serInfo.pack);
+		String remoteType = methodInfo.remoteInfo.getRemoteAsync().toString(serInfo.pack);
 		pr.print("final ").print(remoteType).print(" remoteT = (").print(remoteType).print(")remote;");
 		pr.println();
 
@@ -618,6 +618,7 @@ class GenApiClass {
 //			pr.println("import com.wilutions.byps.*;");
 //		}
 		pr.println("import com.wilutions.byps.*;");
+		pr.println("import java.io.Serializable;");
 		pr.println();
 		
 		pctxt.printComments(pr, serInfo.comments);
@@ -630,16 +631,16 @@ class GenApiClass {
 			if (serInfo.isResultClass()) {
 				String rtype = pctxt.getReturnTypeAsObjType(methodInfo, serInfo.pack);
 				String baseClass = "BMethodResult<" + rtype + ">";
-				mpr.print(" extends ").print(baseClass).print(" implements BSerializable");
+				mpr.print(" extends ").print(baseClass).print(" implements Serializable");
 			}
 			else if (serInfo.isRequestClass()) {
-				mpr.print(" implements BMethodRequest, BSerializable");
+				mpr.print(" implements BMethodRequest, Serializable");
 			}
 			else {
 				if (serInfo.baseInfo != null) {
 					mpr.print(" extends ").print(serInfo.baseInfo.toString(serInfo.pack));
 				}
-				mpr.print(" implements BSerializable");
+				mpr.print(" implements Serializable");
 			}
 			
 			mpr.println(" {");

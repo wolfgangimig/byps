@@ -1,9 +1,10 @@
 package com.wilutions.byps.test.api.ver;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import java.io.Serializable;
 
 /**
  * Example class with elements that belong to different versions.

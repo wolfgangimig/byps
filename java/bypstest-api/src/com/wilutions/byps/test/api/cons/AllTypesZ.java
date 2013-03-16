@@ -2,7 +2,7 @@ package com.wilutions.byps.test.api.cons;
 
 /**
  * 
- * @BSerializable
+ * @Serializable
  *
  */
 public class AllTypesZ {

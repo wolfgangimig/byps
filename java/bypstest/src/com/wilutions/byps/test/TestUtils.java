@@ -188,13 +188,16 @@ public class TestUtils {
 		try {
 			if (a != b) {
 				if (a == null && b != null) {
-					throw new AssertionError(msg + " a is null <> b is {" + b + "}");
+					if (!(b instanceof String)) {
+						throw new AssertionError(msg + " a is null <> b is {" + b + "}");
+					}
 				}
-				if (a != null && b == null) {
-					throw new AssertionError(msg + " a is {" + a + "} <> b is null");
+				else if (a != null && b == null) {
+					if (!(a instanceof String)) {
+						throw new AssertionError(msg + " a is {" + a + "} <> b is null");
+					}
 				}
-				
-				if (a instanceof boolean[]) {
+				else if (a instanceof boolean[]) {
 					boolean[] x = (boolean[])a;
 					boolean[] y = (boolean[])b;
 					if (x.length != y.length) {
@@ -278,7 +281,7 @@ public class TestUtils {
 					String[] x = (String[])a;
 					String[] y = (String[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+						throw new AssertionError(msg + " a[].length != b[].length");
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);

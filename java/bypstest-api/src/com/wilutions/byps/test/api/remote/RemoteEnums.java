@@ -1,15 +1,15 @@
 package com.wilutions.byps.test.api.remote;
 
+import com.wilutions.byps.BException;
+import com.wilutions.byps.BRemote;
 import com.wilutions.byps.test.api.enu.EnumPlanets;
 
 /**
  * 
- * @BRemote
- *
  */
-public interface RemoteEnums {
+public interface RemoteEnums extends BRemote {
 
-	EnumPlanets getPlanet();
+	EnumPlanets getPlanet() throws BException, InterruptedException;
 	
-	void setPlanet(EnumPlanets planet);
+	void setPlanet(EnumPlanets planet) throws BException, InterruptedException;
 }

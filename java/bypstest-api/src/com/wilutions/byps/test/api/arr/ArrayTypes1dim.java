@@ -1,7 +1,6 @@
 package com.wilutions.byps.test.api.arr;
 
 import java.io.Serializable;
-
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 
 public class ArrayTypes1dim implements Serializable {

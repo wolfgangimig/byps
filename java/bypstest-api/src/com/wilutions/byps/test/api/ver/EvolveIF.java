@@ -1,19 +1,19 @@
 package com.wilutions.byps.test.api.ver;
 
-/**
- * 
- * @BRemote
- *
- */
-public interface EvolveIF {
+import com.wilutions.byps.BException;
+import com.wilutions.byps.BRemote;
 
-	public void setEvolve(Evolve obj);
+/**
+ */
+public interface EvolveIF extends BRemote {
+
+	public void setEvolve(Evolve obj) throws BException, InterruptedException;
 	
-	public Evolve getEvolve();
+	public Evolve getEvolve() throws BException, InterruptedException;
 	
-	public void setClient(EvolveIF partner);
+	public void setClient(EvolveIF partner) throws BException, InterruptedException;
 	
-	public EvolveIF getClient();
+	public EvolveIF getClient() throws BException, InterruptedException;
 	
-	public void sendEvolveToClient();
+	public void sendEvolveToClient() throws BException, InterruptedException;
 }

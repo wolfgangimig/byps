@@ -1,9 +1,11 @@
 package com.wilutions.byps.test.api.enu;
 
+import java.io.Serializable;
+
 /**
  * Sample enum.
  */
-public enum EnumPlanets {
+public enum EnumPlanets implements Serializable {
 	/**
 	 * ... is the closest planet to the Sun ...
 	 */

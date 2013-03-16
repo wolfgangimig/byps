@@ -23,7 +23,6 @@ public class SetTypes implements Serializable {
 	public Set< PrimitiveTypes> primitiveTypes1;
 	public Set< byte[]> byte2;
 	public Set< int[]> int2;
-	@SuppressWarnings("rawtypes")
-	public Set obj1;
+	public Set<Object> obj1;
 
 }

@@ -22,7 +22,6 @@ class PrintContext extends PrintContextBase {
 	
 	public final static String STUB_PREFIX = "BStub_";
 	public final static String SKELETON_PREFIX = "BSkeleton_";
-	public final static String INTERFACE_SUFFIX = "";
 	
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
 		super(classDB, props);

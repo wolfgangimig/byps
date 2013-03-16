@@ -1,8 +1,9 @@
 package com.wilutions.byps.test.api.enu;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
+
+import java.io.Serializable;
 
 public class UsePlanets implements Serializable {
 
@@ -17,6 +18,16 @@ public class UsePlanets implements Serializable {
 	public ArrayList<EnumPlanets> listOfPlanets;
 
 	public Map<String, EnumPlanets> mapOfPlanets;
+
+	public EnumPlanets getPlanet2() {
+		return planet2;
+	}
+
+	public void setPlanet2(EnumPlanets planet2) {
+		this.planet2 = planet2;
+	}
 	
 	// public Map<EnumPlanets, String> mapKeyPlanets; JavaScript erlaubt nur Number und String als Key-Typen
+	
+	
 }

@@ -3,7 +3,6 @@ package com.wilutions.byps.gen.doclet;
 import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.Array;
-import java.rmi.Remote;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -27,7 +26,7 @@ import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
-import com.wilutions.byps.BSerializable;
+import java.io.Serializable;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -42,17 +41,8 @@ public class BConvert {
 	
 	public ClassDB classDB;
 	
-	/**
-	 * All classes are serializable.
-	 * The classes do neither need to implement Serializable nor need to be tagged with BSerializable.   
-	 */
-	public final static int OPT_ALL_CLASSES_ARE_SERIALS = 0x1;
-	
-	/**
-	 * All interfaces are remote interfaces.
-	 * The remote interfaces do neither need to extend Remote nor need to be tagged with BRemote. 
-	 */
-	public final static int OPT_ALL_INTERFACES_ARE_REMOTES = 0x2;
+	public final static HashSet<String> FORBIDDEN_FIELD_NAMES = new HashSet<String>(
+			Arrays.asList("_typeId"));
 	
 	public BConvert(int options) {
 		this.options = options;
@@ -129,16 +119,6 @@ public class BConvert {
 
 	private boolean isRemote(ClassDoc c) {
 		
-		if ((options & OPT_ALL_INTERFACES_ARE_REMOTES) != 0) {
-			if (c.isInterface()) {
-				return true;
-			}
-		}
-		
-		boolean doesImplementRemote = doesImplement(c, Remote.class.getName(), "Remote");
-		log.debug("does implement Remote: " + doesImplementRemote);
-		if (doesImplementRemote) return doesImplementRemote;
-
 		boolean doesImplementBRemote = doesImplement(c, BRemote.class.getName(), "BRemote");
 		log.debug("does implement BRemote: " + doesImplementBRemote);
 		if (doesImplementBRemote) return doesImplementBRemote;
@@ -148,19 +128,9 @@ public class BConvert {
 	
 	private boolean isSerializable(ClassDoc c) {
 		
-		if ((options & OPT_ALL_CLASSES_ARE_SERIALS) != 0) {
-			if (!c.isInterface()) {
-				return true;
-			}
-		}
-		
 		boolean doesImplementSerializable = doesImplement(c, Serializable.class.getName(), "Serializable");
 		log.debug("does implement Serializable: " + doesImplementSerializable);
 		if (doesImplementSerializable) return true;
-		
-		boolean doesImplementBSerializable = doesImplement(c, BSerializable.class.getName(), "BSerializable");
-		log.debug("does implement BSerializable: " + doesImplementBSerializable);
-		if (doesImplementBSerializable) return true;
 
 		return false;
 	}
@@ -214,11 +184,7 @@ public class BConvert {
 
 			// List, ArrayList, LinkedList ohne Argumenttype?
 			if (tinfo.typeArgs.size() == 0) {
-				log.debug("no type argruments, add Object type");
-				tinfo.typeArgs.add(new TypeInfo("Object", "java.lang.Object", "", null, false, false, false));
-				if (tinfo.isMapType()) {
-					tinfo.typeArgs.add(new TypeInfo("Object", "java.lang.Object", "", null, false, false, false));
-				}
+				throw new GeneratorException("Missing argument types in " + errorContext);
 			}
 			else {
 				// List<?>, List<Integer>, Map<?,?> ... 
@@ -283,23 +249,17 @@ public class BConvert {
 		log.debug("doesImplement(" + cls + ","+ interfaceQname);
 		boolean ret = cls.qualifiedTypeName().equals(interfaceQname);
 		if (!ret) {
-			
-			ret = cls.tags(tagName).length != 0;
-			log.debug("has tag=" + ret);
-			if (!ret) {
-
-				ClassDoc[] interfaces = cls.interfaces();
-				if (interfaces != null) {
-					for (ClassDoc ifc : interfaces) {
-						ret = doesImplement(ifc, interfaceQname, tagName);
-						if (ret) break;
-					}
+			ClassDoc[] interfaces = cls.interfaces();
+			if (interfaces != null) {
+				for (ClassDoc ifc : interfaces) {
+					ret = doesImplement(ifc, interfaceQname, tagName);
+					if (ret) break;
 				}
-				if (!ret) {
-					ClassDoc superclass = cls.superclass();
-					if (superclass != null) {
-						ret = doesImplement(superclass, interfaceQname, tagName);
-					}
+			}
+			if (!ret) {
+				ClassDoc superclass = cls.superclass();
+				if (superclass != null) {
+					ret = doesImplement(superclass, interfaceQname, tagName);
 				}
 			}
 		}
@@ -331,7 +291,7 @@ public class BConvert {
 		String qname = type.qualifiedTypeName();
 		if (wtype != null) {
 
-			// Wildcard parameter machen keinen Sinn.
+			// Wildcard Parameter machen keinen Sinn.
 			// Die Elemente werden sowohl als Konsument als auch als Produzent verwendet.
 			// http://www.torsten-horn.de/techdocs/java-generics.htm#Wildcard-extends-versus-T-extends
 			String msg = errorContext + ": Wildcard parameter types are unsupported, please replace type=\"" + type +"\" by \"Object\".";
@@ -368,6 +328,10 @@ public class BConvert {
 	
 	private MemberInfo makeMemberInfo(FieldDoc field, String errorContext) throws GeneratorException {
 		String name = field.name();
+		if (FORBIDDEN_FIELD_NAMES.contains(name)) {
+			throw new GeneratorException("Forbidden field name " + name + " in " + errorContext);
+		}
+		
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
 		addSummaryAndRemarksCommentInfo(field, cinfos);
 		addTagCommentInfos(field.tags(), cinfos);
@@ -721,18 +685,40 @@ public class BConvert {
 		addTagCommentInfos(method.tags(), cinfos);
 		
 		SerialInfo requestInfo = makeMethodRequest(remoteName, remoteQName, method);
-		makeSerialInfoForMembersOfCollectionTypes(requestInfo.members, remoteQName + "." + method + " parameter ");
+		makeSerialInfoForMembersOfCollectionTypes(requestInfo.members, method + ", parameter ");
 
 		SerialInfo resultInfo = makeMethodResult(remoteName, remoteQName, method);
-		makeSerialInfoForMembersOfCollectionTypes(resultInfo.members, remoteQName + "." + method + " return ");
+		makeSerialInfoForMembersOfCollectionTypes(resultInfo.members, method + ", return value ");
 				
+		boolean foundBException = false;
+		boolean foundInterruptedException = false;
 		ArrayList<TypeInfo> exceptions = new ArrayList<TypeInfo>();
+		
 		for (Type ex : method.thrownExceptionTypes()) {
-			if (ex.toString().equals(InterruptedException.class.getName())) continue;
-			if (ex.toString().equals(BException.class.getName())) continue;
+			if (ex.toString().equals(InterruptedException.class.getName())) {
+				foundInterruptedException = true;
+				continue;
+			}
+			if (ex.toString().equals(BException.class.getName())) {
+				foundBException = true; 
+				continue;
+			}
 			if (ex.toString().equals(IOException.class.getName())) continue;
+			
+			if (!isSerializable(ex.asClassDoc())) {
+				throw new GeneratorException("Custom exception class \"" + ex.toString() + "\" must implement BSerializable.");
+			}
+			
 			TypeInfo exInfo = makeElementTypeInfo(ex, remoteQName);
 			exceptions.add( exInfo );
+		}
+		
+		if (!foundBException) {
+			throw new GeneratorException("Method " + remoteQName + "." + method.name() + " must throw BException");
+		}
+		
+		if (!foundInterruptedException) {
+			throw new GeneratorException("Method " + remoteQName + "." + method.name() + " must throw InterruptedException");
 		}
 		
 		MethodInfo minfo = new MethodInfo(

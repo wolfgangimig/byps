@@ -1,7 +1,9 @@
 package com.wilutions.byps;
 
+import java.io.Serializable;
 
-public interface BMethodRequest extends BSerializable {
+
+public interface BMethodRequest extends Serializable {
 	
 	public int getRemoteId();
 	

@@ -2,12 +2,12 @@ package com.wilutions.byps.gen.db;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Random;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRegistry;
-import com.wilutions.byps.BSerializable;
 import com.wilutions.byps.BSerializer;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.TypeInfo;
@@ -50,7 +50,7 @@ public class BRegistryForClassDB extends BRegistry {
 			else if (qname.equals(Double.class.getName())) typeId = TYPEID_DOUBLE;
 			else if (qname.equals(Void.class.getName())) typeId = TYPEID_VOID;
 			else if (qname.equals(Object.class.getName())) typeId = TYPEID_OBJECT;
-			else if (qname.equals(BSerializable.class.getName())) typeId = TYPEID_OBJECT;
+			else if (qname.equals(Serializable.class.getName())) typeId = TYPEID_OBJECT;
 			else if (qname.equals(String.class.getName())) typeId = TYPEID_STRING;
 			else if (qname.equals(IOException.class.getName())) typeId = TYPEID_EXCEPTION;
 			else if (qname.equals(InputStream.class.getName())) typeId = TYPEID_STREAM;

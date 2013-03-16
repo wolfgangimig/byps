@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BApiDescriptor;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
 
@@ -153,11 +154,12 @@ public class GenClient {
 		pr.println("}");
 	}
 
-	private void printDefineStubs() {
+	private void printDefineStubs() throws GeneratorException {
 		log.debug("printDefineStubs");
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			String varName = getRemoteVariableName(rinfo);
-			pr.print("public final ").print(rinfo.toString(pack)).print(" ").print(varName).println(";");
+			String remoteName = rinfo.getRemoteAsync().toString(pack);
+			pr.print("public final ").print(remoteName).print(" ").print(varName).println(";");
 		}
 		log.debug(")printDefineStubs");
 	}

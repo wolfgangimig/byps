@@ -22,6 +22,5 @@ public class ListTypes implements Serializable {
 	public List< byte[]> byte2;
 	public List< int[]> int2;
 	public List< int[][][][]> int4;
-	@SuppressWarnings("rawtypes")
-	public List obj1;
+	public List<Object> obj1;
 }

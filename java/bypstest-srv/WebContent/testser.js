@@ -22,7 +22,6 @@ com.wilutions.byps.test.api.map = com.wilutions.byps.test.api.map || {};
 com.wilutions.byps.test.api.strm = com.wilutions.byps.test.api.strm || {};
 com.wilutions.byps.test.api.priv = com.wilutions.byps.test.api.priv || {};
 com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
-com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 
 /**
  * ----------------------------------------------
@@ -243,16 +242,6 @@ com.wilutions.byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, i
 
 
 /**
- * @BSerializable 
- * @BSerializable 
-*/
-com.wilutions.byps.test.api.cons.HebrewZ = function(core) {
-	this._typeId = 1039162031;
-	this.core = core || "";
-};
-
-
-/**
 */
 com.wilutions.byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4, short4, int4, long4, float4, double4, string4, primitiveTypes4) {
 	this._typeId = 2004;
@@ -307,8 +296,6 @@ com.wilutions.byps.test.api.inl.Point2D = function(x, y) {
 
 
 /**
- * @BSerializable 
- * @BSerializable 
 */
 com.wilutions.byps.test.api.srvr.ChatStructure = function(msg, sentAt, receivedAt) {
 	this._typeId = 7007;
@@ -340,8 +327,6 @@ com.wilutions.byps.test.api.inherit.Class2 = function(int1, nextClass1, int2) {
 
 
 /**
- * @BSerializable 
- * @BSerializable 
 */
 com.wilutions.byps.test.api.inherit.Class1Collections = function(list1, map1, set1) {
 	this._typeId = 6004;
@@ -353,8 +338,6 @@ com.wilutions.byps.test.api.inherit.Class1Collections = function(list1, map1, se
 
 /**
  * Base class for ...
- * @BSerializable 
- * @BSerializable 
 */
 com.wilutions.byps.test.api.inherit.Class1 = function(int1, nextClass1) {
 	this._typeId = 6001;
@@ -419,29 +402,6 @@ com.wilutions.byps.test.api.strm.Stream1 = function(is1, contentType, arrStream,
 com.wilutions.byps.test.api.ver.Evolve2 = function(n1) {
 	this._typeId = 573592593;
 	this.n1 = n1 || 0;
-};
-
-
-/**
- * @BSerializable 
- * @BSerializable 
-*/
-com.wilutions.byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short1, int1, long1, float1, double1, string1, hebrew1, byte2, int2, string2, hebrew2) {
-	this._typeId = 619221784;
-	this.bool1 = bool1 || false;
-	this.byte1 = byte1 || 0;
-	this.char1 = char1 || '';
-	this.short1 = short1 || 0;
-	this.int1 = int1 || 0;
-	this.long1 = long1 || '0';
-	this.float1 = float1 || 0;
-	this.double1 = double1 || 0;
-	this.string1 = string1 || "";
-	this.hebrew1 = hebrew1 || null;
-	this.byte2 = byte2 || null;
-	this.int2 = int2 || null;
-	this.string2 = string2 || null;
-	this.hebrew2 = hebrew2 || null;
 };
 
 
@@ -525,43 +485,6 @@ com.wilutions.byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, cha
  * ----------------------------------------------
 */
 
-com.wilutions.byps.test.api.cons.HebrewC_Type = function() {
-	this.aleph = "\u05d0";
-	this.beth = "\u05d1";
-	this.ALEPH = new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0");
-	this.BETH = new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1");
-};
-
-com.wilutions.byps.test.api.cons.AllTypesC_Type = function() {
-	this.bool1s = true;
-	this.bool2s = false;
-	this.byte1s = 1;
-	this.char1s = '\u0002';
-	this.stringNull = "";
-	/**
-	 * This constant holds the currency symbol for Euro.
-	 * It is defined "final static" and thus cannot be changed.
-	*/
-	this.char2s = '\u20ac';
-	this.short1s = 3;
-	this.int1s = 4;
-	this.long1s = "6148914691236517205";
-	this.float1s = 6.8;
-	this.double1s = 7.8;
-	this.string1s = "Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'\u0000";
-	/**
-	 * This defines a complex constant.
-	 * It is an instance of the class AllTypesZ.
-	 * The field value cannot be changed, but it's contents could.
-	*/
-	this.ALL = new com.wilutions.byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4", 5.0, 6.0, "777", new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"), [1,2,3], [-4,-5], ["a","b"], [new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"),new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1")]);
-	this.arrInt = [1,2,3];
-	this.arrInt4 = [[[[1,2],[4,5]],[[11,12],[14,15]]],[[[21,22],[24,25]],[[211,212],[214,215]]]];
-	this.arrStrings = ["s1","s2"];
-	this.arrStrings4 = [[[["s1","s2"]]]];
-	this.arrALL = [[new com.wilutions.byps.test.api.cons.AllTypesZ(false, 0, '\u0000', 0, 0, "0", 0.0, 0.0, "", null, null, null, null, null)],[new com.wilutions.byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4", 5.0, 6.0, "777", new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"), [1,2,3], [-4,-5], ["a","b"], [new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"),new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1")])]];
-};
-
 com.wilutions.byps.test.api.enu.EnumPlanets = {
 	/**
 	 * ... is the closest planet to the Sun ...
@@ -577,18 +500,6 @@ com.wilutions.byps.test.api.enu.EnumPlanets = {
  * API constants
  * ----------------------------------------------
 */
-
-/**
- * @BSerializable 
- * @BSerializable 
-*/
-com.wilutions.byps.test.api.cons.HebrewC = new com.wilutions.byps.test.api.cons.HebrewC_Type();
-
-/**
- * @BSerializable 
- * @BSerializable 
-*/
-com.wilutions.byps.test.api.cons.AllTypesC = new com.wilutions.byps.test.api.cons.AllTypesC_Type();
 
 
 /**
@@ -4012,7 +3923,6 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 
 /**
  * Interface with functions using 1-dimensional arrays.
- * @BRemote 
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transport) {
 	
@@ -4200,7 +4110,6 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 
 /**
  * Interface with functions using 4-dimensional arrays.
- * @BRemote 
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transport) {
 	
@@ -4387,7 +4296,6 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 };
 
 /**
- * @BRemote 
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 	
@@ -4414,7 +4322,6 @@ com.wilutions.byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 };
 
 /**
- * @BRemote 
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteException = function(transport) {
 	
@@ -4459,7 +4366,6 @@ com.wilutions.byps.test.api.remote.BStub_RemoteException = function(transport) {
 };
 
 /**
- * @BRemote 
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transport) {
 	
@@ -5050,7 +4956,6 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 };
 
 /**
- * @BRemote 
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transport) {
 	
@@ -5679,7 +5584,6 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 };
 
 /**
- * @BRemote 
 */
 com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
@@ -9690,15 +9594,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.cons.HebrewZ
-		1039162031 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"core":10 // String
-			},
-			null,
-			false // inlineInstance
-		),
-		
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
 		1610481740 : new com.wilutions.byps.BSerializer(
 			null,
@@ -9832,12 +9727,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				"result":945713488 // boolean[][][][]
 			},
 			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.cons.HebrewZ[]
-		2092671091 : new com.wilutions.byps.BSerializerArray(
-			1039162031, // Element type: com.wilutions.byps.test.api.cons.HebrewZ
-			1
 		),
 		
 		// double[]
@@ -10291,13 +10180,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.cons.HebrewC
-		1039162054 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
 		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getClient
 		98720592 : new com.wilutions.byps.BSerializer(
 			null,
@@ -10458,18 +10340,18 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
+		2091006964 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
 		161104028 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
 				"v":7 // float
 			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
-		2091006964 : new com.wilutions.byps.BSerializer(
-			null,
 			null,
 			false // inlineInstance
 		),
@@ -10818,18 +10700,18 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds
+		2063368540 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setBool
 		343675807 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
 				"result":19 // void
 			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds
-		2063368540 : new com.wilutions.byps.BSerializer(
-			null,
 			null,
 			false // inlineInstance
 		),
@@ -11039,12 +10921,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			},
 			null,
 			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.cons.AllTypesZ[][]
-		1981543076 : new com.wilutions.byps.BSerializerArray(
-			619221784, // Element type: com.wilutions.byps.test.api.cons.AllTypesZ
-			2
 		),
 		
 		// com.wilutions.byps.test.api.list.ListListTypes
@@ -11439,13 +11315,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 		// com.wilutions.byps.test.api.ver.BStub_EvolveIF
 		2078696281 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.ver.BStub_EvolveIF),
 		
-		// com.wilutions.byps.test.api.cons.AllTypesC
-		619221761 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
 		2032874980 : new com.wilutions.byps.BSerializer(
 			null,
@@ -11502,33 +11371,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			},
 			{// names of inline elements
 				"v":2067161310 // short[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.cons.AllTypesZ
-		619221784 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"bool1":1, // boolean
-				"byte1":2, // byte
-				"char1":4, // char
-				"short1":3, // short
-				"int1":5, // int
-				"long1":6, // long
-				"float1":7, // float
-				"double1":8, // double
-				"string1":10, // String
-				"hebrew1":1039162031, // com.wilutions.byps.test.api.cons.HebrewZ
-				"byte2":1374008726, // byte[]
-				"int2":100361105, // int[]
-				"string2":1888107655, // String[]
-				"hebrew2":2092671091 // com.wilutions.byps.test.api.cons.HebrewZ[]
-			},
-			{// names of inline elements
-				"byte2":1374008726, // byte[]
-				"int2":100361105, // int[]
-				"string2":1888107655, // String[]
-				"hebrew2":2092671091 // com.wilutions.byps.test.api.cons.HebrewZ[]
 			},
 			false // inlineInstance
 		),

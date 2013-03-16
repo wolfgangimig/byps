@@ -5221,35 +5221,6 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
-            <typeName>com.wilutions.byps.test.api.cons.HebrewZ</typeName>
-            <typeId>1039162031</typeId>
-            <members>
-                <member>
-                    <name>core</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-            </comments>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
-        </serial>
-        <serial>
             <typeName>com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getShort1</typeName>
             <typeId>1610481740</typeId>
             <members/>
@@ -5529,16 +5500,6 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.cons.HebrewZ[]</typeName>
-            <typeId>2092671091</typeId>
-            <members/>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
         </serial>
         <serial>
             <typeName>double[]</typeName>
@@ -6584,66 +6545,6 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
-            <typeName>com.wilutions.byps.test.api.cons.HebrewC</typeName>
-            <typeId>1039162054</typeId>
-            <members>
-                <member>
-                    <name>aleph</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                    <value>IteQIg==</value>
-                </member>
-                <member>
-                    <name>beth</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                    <value>IteRIg==</value>
-                </member>
-                <member>
-                    <name>ALEPH</name>
-                    <typeName>com.wilutions.byps.test.api.cons.HebrewZ</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>eyJjb3JlIjoi15AifQ==</value>
-                </member>
-                <member>
-                    <name>BETH</name>
-                    <typeName>com.wilutions.byps.test.api.cons.HebrewZ</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>eyJjb3JlIjoi15EifQ==</value>
-                </member>
-            </members>
-            <comments>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-            </comments>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
-        </serial>
-        <serial>
             <typeName>com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getClient</typeName>
             <typeId>98720592</typeId>
             <members/>
@@ -6785,16 +6686,7 @@
                     <since>0</since>
                 </member>
             </members>
-            <comments>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-            </comments>
+            <comments/>
             <baseFullName></baseFullName>
             <isInline>false</isInline>
             <isEnum>false</isEnum>
@@ -6991,6 +6883,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte</typeName>
+            <typeId>2091006964</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat</typeName>
             <typeId>161104028</typeId>
             <members>
@@ -7004,16 +6906,6 @@
                     <since>0</since>
                 </member>
             </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte</typeName>
-            <typeId>2091006964</typeId>
-            <members/>
             <comments/>
             <baseFullName></baseFullName>
             <isInline>false</isInline>
@@ -7502,16 +7394,7 @@
                     <since>0</since>
                 </member>
             </members>
-            <comments>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-            </comments>
+            <comments/>
             <baseFullName></baseFullName>
             <isInline>false</isInline>
             <isEnum>false</isEnum>
@@ -8036,14 +7919,6 @@
                     <kind>@summary</kind>
                     <text>Base class for ...</text>
                 </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
             </comments>
             <baseFullName></baseFullName>
             <isInline>false</isInline>
@@ -8252,16 +8127,6 @@
                     <since>0</since>
                 </member>
             </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.cons.AllTypesZ[][]</typeName>
-            <typeId>1981543076</typeId>
-            <members/>
             <comments/>
             <baseFullName></baseFullName>
             <isInline>false</isInline>
@@ -9230,223 +9095,6 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
-            <typeName>com.wilutions.byps.test.api.cons.AllTypesC</typeName>
-            <typeId>619221761</typeId>
-            <members>
-                <member>
-                    <name>bool1s</name>
-                    <typeName>boolean</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>dHJ1ZQ==</value>
-                </member>
-                <member>
-                    <name>bool2s</name>
-                    <typeName>boolean</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>ZmFsc2U=</value>
-                </member>
-                <member>
-                    <name>byte1s</name>
-                    <typeName>byte</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>MQ==</value>
-                </member>
-                <member>
-                    <name>char1s</name>
-                    <typeName>char</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>IgIi</value>
-                </member>
-                <member>
-                    <name>stringNull</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value></value>
-                </member>
-                <member>
-                    <name>char2s</name>
-                    <comments>
-                        <kind>@summary</kind>
-                        <text>This constant holds the currency symbol for Euro.</text>
-                    </comments>
-                    <comments>
-                        <kind>@remarks</kind>
-                        <text>It is defined &quot;final static&quot; and thus cannot be changed.</text>
-                    </comments>
-                    <typeName>char</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>IuKCrCI=</value>
-                </member>
-                <member>
-                    <name>short1s</name>
-                    <typeName>short</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>Mw==</value>
-                </member>
-                <member>
-                    <name>int1s</name>
-                    <typeName>int</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>NA==</value>
-                </member>
-                <member>
-                    <name>long1s</name>
-                    <typeName>long</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>NjE0ODkxNDY5MTIzNjUxNzIwNQ==</value>
-                </member>
-                <member>
-                    <name>float1s</name>
-                    <typeName>float</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>Ni44</value>
-                </member>
-                <member>
-                    <name>double1s</name>
-                    <typeName>double</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>Ny44</value>
-                </member>
-                <member>
-                    <name>string1s</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>IkFhX1/CtsK2X1/igqzigqxfXwkNCiInACI=</value>
-                </member>
-                <member>
-                    <name>ALL</name>
-                    <comments>
-                        <kind>@summary</kind>
-                        <text>This defines a complex constant.</text>
-                    </comments>
-                    <comments>
-                        <kind>@remarks</kind>
-                        <text>It is an instance of the class AllTypesZ.
- The field value cannot be changed, but it's contents could.</text>
-                    </comments>
-                    <typeName>com.wilutions.byps.test.api.cons.AllTypesZ</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>eyJib29sMSI6dHJ1ZSwiYnl0ZTEiOjEsImNoYXIxIjoiQSIsInNob3J0MSI6MiwiaW50MSI6MywibG9uZzEiOjQsImZsb2F0MSI6NS4wLCJkb3VibGUxIjo2LjAsInN0cmluZzEiOiI3NzciLCJoZWJyZXcxIjp7ImNvcmUiOiLXkCJ9LCJieXRlMiI6WzEsMiwzXSwiaW50MiI6Wy00LC01XSwic3RyaW5nMiI6WyJhIiwiYiJdLCJoZWJyZXcyIjpbeyJjb3JlIjoi15AifSx7ImNvcmUiOiLXkSJ9XX0=</value>
-                </member>
-                <member>
-                    <name>arrInt</name>
-                    <typeName>int[]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>WzEsMiwzXQ==</value>
-                </member>
-                <member>
-                    <name>arrInt4</name>
-                    <typeName>int[][][][]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>W1tbWzEsMl0sWzQsNV1dLFtbMTEsMTJdLFsxNCwxNV1dXSxbW1syMSwyMl0sWzI0LDI1XV0sW1syMTEsMjEyXSxbMjE0LDIxNV1dXV0=</value>
-                </member>
-                <member>
-                    <name>arrStrings</name>
-                    <typeName>java.lang.String[]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>WyJzMSIsInMyIl0=</value>
-                </member>
-                <member>
-                    <name>arrStrings4</name>
-                    <typeName>java.lang.String[][][][]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>W1tbWyJzMSIsInMyIl1dXV0=</value>
-                </member>
-                <member>
-                    <name>arrALL</name>
-                    <typeName>com.wilutions.byps.test.api.cons.AllTypesZ[][]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>true</isStatic>
-                    <isFinal>true</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                    <value>W1t7ImJvb2wxIjpmYWxzZSwiYnl0ZTEiOjAsImNoYXIxIjoiACIsInNob3J0MSI6MCwiaW50MSI6MCwibG9uZzEiOjAsImZsb2F0MSI6MC4wLCJkb3VibGUxIjowLjAsInN0cmluZzEiOiIifV0sW3siYm9vbDEiOnRydWUsImJ5dGUxIjoxLCJjaGFyMSI6IkEiLCJzaG9ydDEiOjIsImludDEiOjMsImxvbmcxIjo0LCJmbG9hdDEiOjUuMCwiZG91YmxlMSI6Ni4wLCJzdHJpbmcxIjoiNzc3IiwiaGVicmV3MSI6eyJjb3JlIjoi15AifSwiYnl0ZTIiOlsxLDIsM10sImludDIiOlstNCwtNV0sInN0cmluZzIiOlsiYSIsImIiXSwiaGVicmV3MiI6W3siY29yZSI6IteQIn0seyJjb3JlIjoi15EifV19XV0=</value>
-                </member>
-            </members>
-            <comments>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-            </comments>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
-        </serial>
-        <serial>
             <typeName>com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar</typeName>
             <typeId>2032874980</typeId>
             <members/>
@@ -9565,152 +9213,6 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.cons.AllTypesZ</typeName>
-            <typeId>619221784</typeId>
-            <members>
-                <member>
-                    <name>bool1</name>
-                    <typeName>boolean</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>byte1</name>
-                    <typeName>byte</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>char1</name>
-                    <typeName>char</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>short1</name>
-                    <typeName>short</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>int1</name>
-                    <typeName>int</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>long1</name>
-                    <typeName>long</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>float1</name>
-                    <typeName>float</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>double1</name>
-                    <typeName>double</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>string1</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>hebrew1</name>
-                    <typeName>com.wilutions.byps.test.api.cons.HebrewZ</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>byte2</name>
-                    <typeName>byte[]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>int2</name>
-                    <typeName>int[]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>string2</name>
-                    <typeName>java.lang.String[]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>hebrew2</name>
-                    <typeName>com.wilutions.byps.test.api.cons.HebrewZ[]</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-                <comment>
-                    <kind>@BSerializable</kind>
-                    <text></text>
-                </comment>
-            </comments>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
         </serial>
         <serial>
             <typeName>com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setObject</typeName>
@@ -10333,7 +9835,7 @@
                     <name>objVal</name>
                     <comments>
                         <kind>@summary</kind>
-                        <text>This element can refer a an arbitrary type that implements BSerializable.</text>
+                        <text>This element can refer a an arbitrary type that implements Serializable.</text>
                     </comments>
                     <comments>
                         <kind>@remarks</kind>
@@ -11120,10 +10622,6 @@
                     <kind>@summary</kind>
                     <text>Interface with functions using 1-dimensional arrays.</text>
                 </comment>
-                <comment>
-                    <kind>@BRemote</kind>
-                    <text></text>
-                </comment>
             </comments>
         </remote>
         <remote>
@@ -11312,10 +10810,6 @@
                     <kind>@summary</kind>
                     <text>Interface with functions using 4-dimensional arrays.</text>
                 </comment>
-                <comment>
-                    <kind>@BRemote</kind>
-                    <text></text>
-                </comment>
             </comments>
         </remote>
         <remote>
@@ -11339,12 +10833,7 @@
                     <comments/>
                 </method>
             </methods>
-            <comments>
-                <comment>
-                    <kind>@BRemote</kind>
-                    <text></text>
-                </comment>
-            </comments>
+            <comments/>
         </remote>
         <remote>
             <typeName>com.wilutions.byps.test.api.remote.RemoteException</typeName>
@@ -11397,12 +10886,7 @@
                     </comments>
                 </method>
             </methods>
-            <comments>
-                <comment>
-                    <kind>@BRemote</kind>
-                    <text></text>
-                </comment>
-            </comments>
+            <comments/>
         </remote>
         <remote>
             <typeName>com.wilutions.byps.test.api.remote.RemoteInlineInstance</typeName>
@@ -11521,12 +11005,7 @@
                     <comments/>
                 </method>
             </methods>
-            <comments>
-                <comment>
-                    <kind>@BRemote</kind>
-                    <text></text>
-                </comment>
-            </comments>
+            <comments/>
         </remote>
         <remote>
             <typeName>com.wilutions.byps.test.api.remote.RemoteListTypes</typeName>
@@ -12195,12 +11674,7 @@
                     <comments/>
                 </method>
             </methods>
-            <comments>
-                <comment>
-                    <kind>@BRemote</kind>
-                    <text></text>
-                </comment>
-            </comments>
+            <comments/>
         </remote>
         <remote>
             <typeName>com.wilutions.byps.test.api.remote.RemoteReferences</typeName>
@@ -12650,12 +12124,7 @@
                     <comments/>
                 </method>
             </methods>
-            <comments>
-                <comment>
-                    <kind>@BRemote</kind>
-                    <text></text>
-                </comment>
-            </comments>
+            <comments/>
         </remote>
     </remotes>
 </ns2:xmlClassDB>

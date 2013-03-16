@@ -28,7 +28,7 @@ class GenRemoteStub {
 		this.rinfo = rinfo;
 		this.pr = pr;
 		this.className = pctxt.getStubClassQName(rinfo, rinfo.pack);
-		this.interfaceName = rinfo.name + PrintContext.INTERFACE_SUFFIX;
+		this.interfaceName = rinfo.name;
 		this.pctxt = pctxt;
 	}
 	
@@ -138,7 +138,7 @@ class GenRemoteStub {
 		pr.println();
 
 		pr.print("public class ").print(className)
-		.print(" extends BStub implements " + interfaceName)
+		.print(" extends BStub implements ").print(rinfo.getRemoteAsync().name)
 		.print(", java.io.Serializable {");
 		pr.println();
 		

@@ -28,7 +28,7 @@ class GenRemoteSkeleton {
 		this.rinfo = rinfo;
 		this.pr = pr;
 		this.className = pctxt.getSkeletonClassQName(rinfo, rinfo.pack);
-		this.interfaceName = rinfo.name + PrintContext.INTERFACE_SUFFIX;
+		this.interfaceName = rinfo.name;
 		this.pctxt = pctxt;
 	}
 	
@@ -130,7 +130,7 @@ class GenRemoteSkeleton {
 		pr.println("@SuppressWarnings(\"all\")");
 		pr.print("public class ").print(className)
 			.print(" extends BSkeleton")
-			.print(" implements " + interfaceName)
+			.print(" implements ").print(rinfo.getRemoteAsync().name)
 			.print(" {"); // implementiert nicht Serializable, sonst will Eclipse auch eine serialVersionUID der Implementierungsklasse.
 		pr.println();
 

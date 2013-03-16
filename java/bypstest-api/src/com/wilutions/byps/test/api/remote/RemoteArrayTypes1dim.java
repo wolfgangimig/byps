@@ -1,36 +1,38 @@
 package com.wilutions.byps.test.api.remote;
 
+import com.wilutions.byps.BException;
+import com.wilutions.byps.BRemote;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 
 /**
  * Interface with functions using 1-dimensional arrays.
- * @BRemote
+ * 
  *
  */
-public interface RemoteArrayTypes1dim {
+public interface RemoteArrayTypes1dim extends BRemote {
 	
-	public void setBool(boolean[] v);
-	public void setByte(byte[] v);
-	public void setChar(char[] v);
-	public void setShort(short[] v);
-	public void setInt(int[] v);
-	public void setLong(long[] v);
-	public void setFloat(float[] v);
-	public void setDouble(double[] v);
-	public void setString(String[] v);
-	public void setPrimitiveTypes(PrimitiveTypes[] v);
-	public void setObject(Object[] v);
+	public void setBool(boolean[] v) throws BException, InterruptedException;
+	public void setByte(byte[] v) throws BException, InterruptedException;
+	public void setChar(char[] v) throws BException, InterruptedException;
+	public void setShort(short[] v) throws BException, InterruptedException;
+	public void setInt(int[] v) throws BException, InterruptedException;
+	public void setLong(long[] v) throws BException, InterruptedException;
+	public void setFloat(float[] v) throws BException, InterruptedException;
+	public void setDouble(double[] v) throws BException, InterruptedException;
+	public void setString(String[] v) throws BException, InterruptedException;
+	public void setPrimitiveTypes(PrimitiveTypes[] v) throws BException, InterruptedException;
+	public void setObject(Object[] v) throws BException, InterruptedException;
 
-	public boolean[] getBool();
-	public byte[] getByte();
-	public char[] getChar();
-	public short[] getShort();
-	public int[] getInt();
-	public long[] getLong();
-	public float[] getFloat();
-	public double[] getDouble();
-	public String[] getString();
-	public PrimitiveTypes[] getPrimitiveTypes();
-	public Object[] getObject();
+	public boolean[] getBool() throws BException, InterruptedException;
+	public byte[] getByte() throws BException, InterruptedException;
+	public char[] getChar() throws BException, InterruptedException;
+	public short[] getShort() throws BException, InterruptedException;
+	public int[] getInt() throws BException, InterruptedException;
+	public long[] getLong() throws BException, InterruptedException;
+	public float[] getFloat() throws BException, InterruptedException;
+	public double[] getDouble() throws BException, InterruptedException;
+	public String[] getString() throws BException, InterruptedException;
+	public PrimitiveTypes[] getPrimitiveTypes() throws BException, InterruptedException;
+	public Object[] getObject() throws BException, InterruptedException;
 
 }

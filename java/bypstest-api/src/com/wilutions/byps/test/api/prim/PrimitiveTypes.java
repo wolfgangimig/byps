@@ -31,7 +31,7 @@ public class PrimitiveTypes implements Serializable {
 	public String stringVal;
 	
 	/**
-	 * This element can refer a an arbitrary type that implements BSerializable.
+	 * This element can refer a an arbitrary type that implements Serializable.
 	 * It cannot hold an array, List, ArrayList, etc. 
 	 */
 	public Object objVal; 

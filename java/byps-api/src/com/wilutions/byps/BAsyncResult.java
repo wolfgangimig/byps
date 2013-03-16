@@ -2,7 +2,7 @@ package com.wilutions.byps;
 
 /**
  * This is the base class for handling asynchronous results.
- * @param <T>
+ * @param <T> Result type.
  */
 public interface BAsyncResult<T> {
 	

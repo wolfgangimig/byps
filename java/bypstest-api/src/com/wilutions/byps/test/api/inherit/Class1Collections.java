@@ -1,18 +1,16 @@
 package com.wilutions.byps.test.api.inherit;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * 
- * @BSerializable
- *
  */
-public class Class1Collections {
+public class Class1Collections implements Serializable {
 	
-	@SuppressWarnings("unused")
-	private static long serialVersionUID = 6004L;
+	private static final long serialVersionUID = 6004L;
 
 	public List<Class1> list1;
 	public Map<String, Class1> map1;

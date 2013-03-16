@@ -1,12 +1,12 @@
 package com.wilutions.byps.test.api.inherit;
 
+import java.io.Serializable;
+
 /**
  * Base class for ... 
- * @BSerializable
  */
-public class Class1 {
+public class Class1 implements Serializable {
 
-	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 6001L;
 
 	public int int1;

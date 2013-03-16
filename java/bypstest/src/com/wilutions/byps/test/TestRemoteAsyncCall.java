@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BSyncResult;
 import com.wilutions.byps.test.api.BClient_Testser;
-import com.wilutions.byps.test.api.remote.RemotePrimitiveTypes;
+import com.wilutions.byps.test.api.remote.RemotePrimitiveTypesAsync;
 
 /**
  * Test asynchronous execution.
@@ -17,7 +17,7 @@ import com.wilutions.byps.test.api.remote.RemotePrimitiveTypes;
 public class TestRemoteAsyncCall {
 	
 	BClient_Testser client;
-	RemotePrimitiveTypes remote;
+	RemotePrimitiveTypesAsync remote;
 	private Log log = LogFactory.getLog(TestRemoteAsyncCall.class);
 
 	@Before
