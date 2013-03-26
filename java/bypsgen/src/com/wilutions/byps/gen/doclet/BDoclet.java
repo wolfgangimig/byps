@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.PropertyConfigurator;
 
 import com.sun.javadoc.Doclet;
 import com.sun.javadoc.LanguageVersion;
@@ -34,8 +36,8 @@ import com.wilutions.byps.gen.js.PropertiesJS;
  */
 public class BDoclet extends Doclet {
 	
+	private static File fileClassDB_New = new File("classdb_new.xml");
 	private static File fileClassDB = new File("classdb.xml");
-	private static File fileClassDB_P = new File("classdbP.xml");
 	private static PropertiesC propsC;
 	private static PropertiesCS propsCS;
 	private static PropertiesCpp propsCpp;
@@ -53,10 +55,10 @@ public class BDoclet extends Doclet {
 		try {
 			
 			ClassDB prevClassDB = null;
-			if (fileClassDB_P != null) {
+			if (fileClassDB != null) {
 				log.info("Read previous API definitions from ClassDB file ==============");
-				log.info(fileClassDB_P.getAbsolutePath());
-				prevClassDB = XmlClassDB.read(fileClassDB_P, false);
+				log.info(fileClassDB.getAbsolutePath());
+				prevClassDB = XmlClassDB.read(fileClassDB, false);
 				log.info("");
 			}
 			
@@ -65,6 +67,11 @@ public class BDoclet extends Doclet {
 					prevClassDB, root, 
 					compileSource,
 					convertOptions);
+			log.info("");
+			
+			log.info("Write new API definitions into ClassDB file ==============");
+			log.info(fileClassDB_New.getAbsolutePath());
+			XmlClassDB.write(fileClassDB_New, jdocClassDB);
 			log.info("");
 			
 			if (prevClassDB != null) {
@@ -76,14 +83,9 @@ public class BDoclet extends Doclet {
 				log.info("");
 			}
 			
-			log.info("Write new API definitions into ClassDB file ==============");
-			log.info(fileClassDB.getAbsolutePath());
-			XmlClassDB.write(fileClassDB, jdocClassDB);
-			log.info("");
-			
 			log.info("Read API definitions from ClassDB file ==============");
-			log.info(fileClassDB.getAbsolutePath());
-			jdocClassDB = XmlClassDB.read(fileClassDB, true);
+			log.info(fileClassDB_New.getAbsolutePath());
+			jdocClassDB = XmlClassDB.read(fileClassDB_New, true);
 			log.info("");
 			
 			log.info("Validate API definitions ==============");
@@ -131,6 +133,13 @@ public class BDoclet extends Doclet {
 				log.info("");
 			}			
 			
+			// Rename new classdb.xml
+			log.info("Write " + fileClassDB);
+			if (fileClassDB.exists()) {
+				fileClassDB.delete();
+			}
+			fileClassDB_New.renameTo(fileClassDB);
+			
 		} catch (Exception e) {
 			log.error("Failed", e);
 			return false;
@@ -172,7 +181,6 @@ public class BDoclet extends Doclet {
 	
 	private static String[] bypstest_ser = new String[] {
 		
-		"-genj.dir-api", "..\\bypstest-ser\\src-api",
 		"-genj.dir-ser", "..\\bypstest-ser\\src-ser",
 		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
 		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
@@ -186,23 +194,23 @@ public class BDoclet extends Doclet {
 		
 		"-verbose",
 		
-		"--packages",
-		"com.wilutions.byps.test.api",
-		"com.wilutions.byps.test.api.prim",
-		"com.wilutions.byps.test.api.arr",
-		"com.wilutions.byps.test.api.list",
-		"com.wilutions.byps.test.api.map",
-		"com.wilutions.byps.test.api.set",
-		"com.wilutions.byps.test.api.inherit",
-		"com.wilutions.byps.test.api.priv",
-		"com.wilutions.byps.test.api.cons",
-		"com.wilutions.byps.test.api.remote",
-		"com.wilutions.byps.test.api.refs",
-		"com.wilutions.byps.test.api.enu",
-		"com.wilutions.byps.test.api.inl",
-		"com.wilutions.byps.test.api.strm",
-		"com.wilutions.byps.test.api.srvr",
-		"com.wilutions.byps.test.api.ver",
+//		"--packages",
+//		"com.wilutions.byps.test.api",
+//		"com.wilutions.byps.test.api.prim",
+//		"com.wilutions.byps.test.api.arr",
+//		"com.wilutions.byps.test.api.list",
+//		"com.wilutions.byps.test.api.map",
+//		"com.wilutions.byps.test.api.set",
+//		"com.wilutions.byps.test.api.inherit",
+//		"com.wilutions.byps.test.api.priv",
+//		"com.wilutions.byps.test.api.cons",
+//		"com.wilutions.byps.test.api.remote",
+//		"com.wilutions.byps.test.api.refs",
+//		"com.wilutions.byps.test.api.enu",
+//		"com.wilutions.byps.test.api.inl",
+//		"com.wilutions.byps.test.api.strm",
+//		"com.wilutions.byps.test.api.srvr",
+//		"com.wilutions.byps.test.api.ver",
 		
 		"--sourcepath", 
 		"../bypstest-api/src",
@@ -242,14 +250,19 @@ public class BDoclet extends Doclet {
 	
 	public static void main(String[] args) {
 
+
+		configureLog4j("WARN");
+		
 		if (args == null || args.length == 0) {
 			args = bypstest_ser;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();
+		defaultProps.put(PropertiesCS.UPPER_CASE_FIRST_LETTER, "true");
 		
 		try {
 			List<String> javadocParams = new ArrayList<String>();
+			List<String> javadocPacks = new ArrayList<String>();
 			
 			for (int argIdx = 0; argIdx < args.length; ) {
 				
@@ -278,14 +291,6 @@ public class BDoclet extends Doclet {
 					defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");
 					argIdx++;
 				}
-				else if (arg.equals("--packages")) {
-					argIdx++;
-					for (; argIdx < args.length; argIdx++) {
-						arg = args[argIdx];
-						if (arg.startsWith("-")) break; 
-						javadocParams.add(arg);
-					}
-				}
 				else if (arg.startsWith("--")) {
 					boolean isSourcePath = arg.startsWith("--sourcepath");
 					boolean isClassPath = arg.startsWith("--classpath");
@@ -303,6 +308,7 @@ public class BDoclet extends Doclet {
 								if (!dir.exists()) {
 									throw new IOException("sourcepath=" + dir.getAbsolutePath() + " does not exist");
 								}
+								findPackages(javadocPacks, dir, "");
 							}
 						}
 						else if (isClassPath) {
@@ -342,16 +348,22 @@ public class BDoclet extends Doclet {
 			
 			
 			log.info("Compile source files ==============");
-			log.info(Arrays.toString(sourceDirs));
+			log.info("source dirs=" + Arrays.toString(sourceDirs));
 			compileSource = new CompileSource(tempDir, sourceDirs, classpath);
 
 			
 			javadocParams.add(0, "-private");
 			javadocParams.add(1, "-doclet");
 			javadocParams.add(2, BDoclet.class.getName());
-
+			
+			if (!javadocParams.contains("-sourcepath")) {
+				throw new GeneratorException("Missing argument --sourcepath");
+			}
+			javadocParams.addAll(javadocPacks);
+			
 			String[] javadocArgs = javadocParams.toArray(new String[javadocParams.size()]);
 			
+			log.info("Generate serialisation layer ==============");
 			com.sun.tools.javadoc.Main.execute(javadocArgs);  
 
 			System.out.println("Finished");
@@ -362,7 +374,24 @@ public class BDoclet extends Doclet {
 		
 	}
 
-
+	private static void findPackages(List<String> javadocParams, File src, String pack) {
+		File[] files = src.listFiles();
+		boolean foundFile = false;
+		for (File f : files) {
+			if (f.isDirectory()) {
+				String pack1 = pack.length() != 0 ? (pack + ".") : "";
+				findPackages(javadocParams, f, pack1 + f.getName());
+			}
+			else {
+				if (!foundFile) {
+					if (f.getName().endsWith(".java")) {
+						foundFile = true;
+						javadocParams.add(pack);
+					}
+				}
+			}
+		}
+	}
 
    /**
     * NOTE: Without this method present and returning LanguageVersion.JAVA_1_5,
@@ -372,4 +401,15 @@ public class BDoclet extends Doclet {
    public static LanguageVersion languageVersion() {
       return LanguageVersion.JAVA_1_5;
    }
+   
+   private static void configureLog4j(String level) {
+	   Properties props = new Properties();
+	   
+	   props.put("log4j.rootLogger", level + ", stdout");
+	   props.put("log4j.appender.stdout","org.apache.log4j.ConsoleAppender");
+	   props.put("log4j.appender.stdout.layout","org.apache.log4j.PatternLayout");
+	   props.put("log4j.appender.stdout.layout.ConversionPattern","%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
+
+	   PropertyConfigurator.configure(props);
+  }
 }

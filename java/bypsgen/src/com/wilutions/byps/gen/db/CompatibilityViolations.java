@@ -1,7 +1,7 @@
 package com.wilutions.byps.gen.db;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -24,6 +24,6 @@ public class CompatibilityViolations implements Iterable<CompatibilityViolation>
 		return lst.size();
 	}
 
-	private List<CompatibilityViolation> lst = new LinkedList<CompatibilityViolation>();
+	private List<CompatibilityViolation> lst = new ArrayList<CompatibilityViolation>();
 	private Log log = LogFactory.getLog(CompatibilityViolations.class);
 }

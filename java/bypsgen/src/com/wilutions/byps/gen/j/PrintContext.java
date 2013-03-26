@@ -26,12 +26,12 @@ class PrintContext extends PrintContextBase {
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
 		super(classDB, props);
 		
-		dirApi = props.getMandatoryPropertyFile(PropertiesJ.DEST_DIR_API);
-		dirSer = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_SER, dirApi);
+		dirApi = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_API, null);
+		dirSer = props.getMandatoryPropertyFile(PropertiesJ.DEST_DIR_SER);
 		dirSerBin = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_SER_BIN, dirSer);
 		dirSerJson = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_SER_Json, dirSer);
 	
-		dirApi.mkdirs();
+		if (dirApi != null) dirApi.mkdirs();
 		dirSerBin.mkdirs();
 		dirSerJson.mkdirs();
 		dirSer.mkdirs();
@@ -44,6 +44,10 @@ class PrintContext extends PrintContextBase {
 	}
 
 	CodePrinter getPrinterForApiClass(TypeInfo tinfo, String namePrefix, boolean inSerDir) throws IOException {
+		
+		// Return null, if API classes should not be generated.
+		if (!inSerDir && dirApi == null) return null;
+		
 		String packDirs = Utils.getPackageAsSubdir(tinfo.pack); 
 		File file = new File(inSerDir ? dirSer : dirApi, packDirs);
 		file.mkdirs();

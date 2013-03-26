@@ -19,8 +19,10 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 		log.info("generate " + rinfo.qname);
 		CodePrinter pr = pctxt.getPrinterForApiClass(rinfo, IMPL_SUFFIX, false);
-		new GenRemoteClass(pctxt, rinfo, pr).generate();
-		pr.close();
+		if (pr != null) {
+			new GenRemoteClass(pctxt, rinfo, pr).generate();
+			pr.close();
+		}
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	

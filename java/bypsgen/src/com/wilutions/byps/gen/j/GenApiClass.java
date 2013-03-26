@@ -43,8 +43,10 @@ class GenApiClass {
 			log.info("Generate API class for type " + serInfo.typeId + ": " + serInfo);
 			CodePrinter pr = pctxt.getPrinterForApiClass(serInfo, "",
 					serInfo.isResultClass() || serInfo.isRequestClass());
-			new GenApiClass(pctxt, serInfo, pr).generate();
-			pr.close();
+			if (pr != null) {
+				new GenApiClass(pctxt, serInfo, pr).generate();
+				pr.close();
+			}
 		}
 		log.debug(")generate");
 	}

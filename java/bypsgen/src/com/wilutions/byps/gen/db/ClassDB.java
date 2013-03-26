@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -574,11 +575,11 @@ public class ClassDB {
 		return ret;
 	}
 	
-	private HashMap<String,RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
+	private TreeMap<String,RemoteInfo> remotes = new TreeMap<String, RemoteInfo>();
 	
 	private ArrayList<MethodInfo> methods;
 	
-    private HashMap<String,SerialInfo> serials = new HashMap<String, SerialInfo>();
+    private TreeMap<String,SerialInfo> serials = new TreeMap<String, SerialInfo>();
     
     private HashMap<String,MethodInfo> mapQnameToMethodInfo = new HashMap<String, MethodInfo>();
     

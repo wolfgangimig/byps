@@ -8,4 +8,8 @@ public class CompatibilityViolation {
 		this.msg = msg;
 	}
 	
+	public String toString()
+	{
+		return msg;
+	}
 }

@@ -31,7 +31,7 @@ public class CompatibleClassDB {
 			ensureCompatibleMethodInfos(viols);
 			
 			for (CompatibilityViolation viol : viols) {
-				//log.error(viol.msg);
+				log.error(viol.msg);
 			}
 		}
 		
@@ -55,8 +55,8 @@ public class CompatibleClassDB {
 		Collection<SerialInfo> sinfos = classDB.getSerials(); 
 		//log.debug("#serials=" + sinfos.size());
 		for (SerialInfo sinfo : sinfos) {
-			String qname = sinfo.qname;
-			SerialInfo sinfoP = prevClassDB.getSerInfo(qname);
+			String fullName = sinfo.toString();
+			SerialInfo sinfoP = prevClassDB.getSerInfo(fullName);
 			//log.debug("sinfo.qname=" + qname + ", sinfoP=" + sinfoP);
 			if (sinfoP != null) {
 				int n1 = viols.size();

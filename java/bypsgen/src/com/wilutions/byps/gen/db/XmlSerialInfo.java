@@ -64,7 +64,8 @@ public class XmlSerialInfo implements XmlInfo {
 		TypeInfo t = TypeInfo.fromXmlFullName(typeName);
 		log.debug("typeInfo=" + t);
 		
-		SerialInfo serInfo = classDB.createSerialInfo(t.name, comments, t.qname, "", 
+		SerialInfo serInfo = classDB.createSerialInfo(t.name, comments, t.qname, 
+				this.baseFullName, 
 				t.dims,
 				t.typeArgs, 
 				null, 

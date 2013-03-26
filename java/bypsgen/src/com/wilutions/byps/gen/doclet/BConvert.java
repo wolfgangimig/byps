@@ -26,7 +26,6 @@ import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
-import java.io.Serializable;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -45,7 +44,6 @@ public class BConvert {
 			Arrays.asList("_typeId"));
 	
 	public BConvert(int options) {
-		this.options = options;
 	}
 	
 	public static ClassDB makeClassDB(ClassDB prevClassDB, RootDoc rdoc, ConstFieldReader constReader, int opts) throws GeneratorException {
@@ -774,6 +772,5 @@ public class BConvert {
 			"java.util.Set", "java.util.HashSet", "java.util.TreeSet"));
 
 	private static Log log = LogFactory.getLog(BConvert.class);
-	private final int options;
 
 }

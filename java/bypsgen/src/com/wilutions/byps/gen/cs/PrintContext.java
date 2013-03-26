@@ -30,8 +30,8 @@ public class PrintContext extends PrintContextBase {
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
 		super(classDB, props);
 		
-		dirApi = props.getMandatoryPropertyFile(PropertiesCS.DEST_DIR_API);
-		dirSer = props.getOptionalPropertyFile(PropertiesCS.DEST_DIR_SER, dirApi);
+		dirSer = props.getMandatoryPropertyFile(PropertiesCS.DEST_DIR_SER);
+		dirApi = props.getOptionalPropertyFile(PropertiesCS.DEST_DIR_API, dirSer);
 		dirSerBin = props.getOptionalPropertyFile(PropertiesCS.DEST_DIR_SER_BIN, dirSer);
 	
 		dirApi.mkdirs();

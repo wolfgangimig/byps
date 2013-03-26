@@ -80,7 +80,7 @@ public class Utils {
 	}
 	
 	public static void purgeDir(File dir, String[] exts) throws IOException {
-		if (!dir.exists()) return;
+		if (dir == null || !dir.exists()) return;
 		
 		File[] files = dir.listFiles();
 		for (File f : files) {
