@@ -46,9 +46,22 @@ public class ClassDB {
     }
     
     public void add(SerialInfo v) {
-    	if (serials.put(v.toString(), v) == null) {
+    	SerialInfo p = serials.get(v.toString());
+    	
+    	// Während der Code analysiert wird, kann es dazu kommen, dass 
+    	// eine Klasse zuerst als Array-Typ (z. B. Point2D[]) gefunden wird,
+    	// bevor sie als Serializable eingelesen wird. 
+    	// In diesem Fall ist keine Information darüber verfügbar,
+    	// ob die Klasse "inline" ist. Sie gelangt hier also zunächst 
+    	// mit isInline=false in die Map.
+    	// Wenn sie später als Serializable aufgenommen wird,
+    	// tausche ich sie aus.
+    	
+    	if (p == null) {
     		log.info("Add serializable Class " + v);
+    		serials.put(v.toString(), v);
     	}
+    	
     }
     
     /**

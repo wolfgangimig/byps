@@ -181,17 +181,22 @@ public class BDoclet extends Doclet {
 	
 	private static String[] bypstest_ser = new String[] {
 		
-		"-genj.dir-ser", "..\\bypstest-ser\\src-ser",
-		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
-		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
+//		"-genj.dir-ser", "..\\bypstest-ser\\src-ser",
+//		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
+//		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
+//
+//		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
+//		"-gencs.upfirst",     "true",
+//		
+//		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
+		
+		"-gencpp.dir-api", "d:\\projekt\\qt\\byps\\bypstest-gen\\api",
+		"-gencpp.dir-impl", "d:\\projekt\\qt\\byps\\bypstest-gen\\impl",
+//		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest-gen\\api",
+//		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest-gen\\impl",
+		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
+		"-gencpp.max-fsize", "10000",
 
-		"-gencs.dir-api",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-api",
-		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
-		"-gencs.dir-ser-bin", "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser-bin",
-		"-gencs.upfirst",     "true",
-		
-		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
-		
 		"-verbose",
 		
 //		"--packages",
@@ -251,7 +256,7 @@ public class BDoclet extends Doclet {
 	public static void main(String[] args) {
 
 
-		configureLog4j("WARN");
+		configureLog4j("INFO");
 		
 		if (args == null || args.length == 0) {
 			args = bypstest_ser;

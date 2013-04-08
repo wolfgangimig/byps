@@ -6,8 +6,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
 
+import com.wilutions.byps.gen.api.CommentInfo;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.GeneratorProperties;
+import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
+import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.db.ClassDB;
@@ -25,19 +29,15 @@ class PrintContext extends PrintContextBase {
 	 */
 	CodePrinter prApiAllH;
 
-	/**
-	 * Forward-Dekl der API
-	 */
-	CodePrinter prApiFwdH;
-	
 	CodePrinter prImplAllH;
 
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
 		super(classDB, props);
 		
 		dirApi = props.getMandatoryPropertyFile(PropertiesCpp.DEST_DIR_API);
-		dirImplC = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL_C, dirApi);
-		dirImplH = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL_H, dirImplC);
+		File dirImpl = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL, dirApi);
+		dirImplC = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL_C, dirImpl);
+		dirImplH = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL_H, dirImpl);
 		packageAliasMap = props.getPropertyAsMap(PropertiesCpp.PACK_ALIAS, null);
 		maxFileSize = props.getOptionalPropertyInt(PropertiesCpp.MAX_FILE_SIZE, 100 * 1000);
 		
@@ -45,17 +45,8 @@ class PrintContext extends PrintContextBase {
 		dirImplC.mkdirs();
 		dirImplH.mkdirs();
 
-		File fileApiFwdH = new File(dirApi, apiName + "-fwd.h");
-		prApiFwdH = new CodePrinter(new FileOutputStream(fileApiFwdH));
-		printDoNotModify(prApiFwdH, "Forward declarations of API classes and pointer types");
-		prApiFwdH.print("#ifndef __{0}__", apiName + "_fwd_H"); prApiFwdH.println();
-		prApiFwdH.print("#define __{0}__", apiName + "_fwd_H"); prApiFwdH.println();
-		prApiFwdH.println();
-		prApiFwdH.println("#include <Byps-api.h>");
-		prApiFwdH.println();
-
 		File fileApiAllH = new File(dirApi, apiName + "-api.h");
-		prApiAllH = new CodePrinter(new FileOutputStream(fileApiAllH));
+		prApiAllH = new CodePrinter(new FileOutputStream(fileApiAllH), false);
 		prApiAllH.print("#ifndef __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.print("#define __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.println();
@@ -64,16 +55,16 @@ class PrintContext extends PrintContextBase {
 		prApiAllH.println("#pragma pack(push, 8)");
 		
 		File fileImplAllH = new File(dirImplH, apiName + "-impl.h");
-		prImplAllH = new CodePrinter(new FileOutputStream(fileImplAllH));
+		prImplAllH = new CodePrinter(new FileOutputStream(fileImplAllH), false);
 		prImplAllH.print("#ifndef __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.print("#define __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.println();
-		prImplAllH.println("#include <Byps.hpp>");
+		prImplAllH.println("#include <Byps-impl.h>");
 		prImplAllH.print("#include <{0}>", apiName + "-api.h").println();
 		prImplAllH.println();
 
 		OutputStream osImplC = new SplitFileOutputStreamSource(null, apiName + "-impl-{0}.cpp", maxFileSize);
-		prImplC = new CodePrinter(osImplC);
+		prImplC = new CodePrinter(osImplC, false);
 		
 	}
 	
@@ -84,10 +75,6 @@ class PrintContext extends PrintContextBase {
 		prApiAllH.println("#pragma pack(pop)");
 		prApiAllH.println("#endif");
 		prApiAllH.close();
-		
-		prApiFwdH.println();
-		prApiFwdH.println("#endif");
-		prApiFwdH.close();
 		
 		prImplAllH.println();
 		prImplAllH.println("#endif");
@@ -181,7 +168,7 @@ class PrintContext extends PrintContextBase {
 		}
 		@Override
 		public void onOpenedSplitFile() throws IOException {
-			CodePrinter prImplC = new CodePrinter(this);
+			CodePrinter prImplC = new CodePrinter(this, false);
 			prImplC.print("#include \"{0}\"",
 					getDirRelative(dirImplC.getAbsolutePath(), dirImplH.getAbsolutePath()) + apiName + "-impl.h");
 			prImplC.println(); 
@@ -279,18 +266,98 @@ class PrintContext extends PrintContextBase {
 	}
 	
 	void printLine(CodePrinter pr) {
-		pr.println("////////////////////////////////////////////////////");
+		pr.println("//-------------------------------------------------");
 	}
 
 	String getReturnType(MethodInfo methodInfo, String pack) {
 		TypeInfo rtype = methodInfo.resultInfo.members.get(0).type;
 		TypeInfoCpp cppInfo = new TypeInfoCpp(rtype);
 		String qname = cppInfo.getQTypeName();
-		if (rtype.isArrayType() || rtype.isCollectionType()) {
-			qname = "byps_ptr< " + qname + " >";
-		}
 		return qname;
 	}
+	
+	private void printComment(CodePrinter pr, Iterable<CommentInfo> comments, String jkind, String cskindBegin, String cskindEnd) throws IOException {
+		for (CommentInfo cmt : comments) {
+			if (!cmt.kind.equals(jkind)) continue;
+			String t = cmt.text.trim().replace("\r", "\n"); 
+			pr.print("/// ").print(cskindBegin).println();
+			for (String line : t.split("\n")) {
+				pr.print("/// ").println(line.trim());
+			}
+			pr.print("/// ").print(cskindEnd).println();
+			break;
+		}
+	}
+
+	public void printComments(CodePrinter pr, Iterable<CommentInfo> comments) throws IOException {
+		if (comments != null) {
+			printComment(pr, comments, CommentInfo.KIND_SUMMARY, "<summary>", "</summary>");
+			printComment(pr, comments, CommentInfo.KIND_REMARKS, "<remarks>", "</remarks>");
+		}
+	}
+
+	public CodePrinter printDefineMethod(CodePrinter pr, RemoteInfo rinfo,
+			MethodInfo methodInfo) {
+		return pr;
+	}
+
+	public CodePrinter printDefineMethodAsync(CodePrinter pr,
+			RemoteInfo rinfo, MethodInfo methodInfo) {
+		return pr;
+	}
+
+	public String makePublicMemberName(String name) throws GeneratorException {
+		if (((PropertiesCpp)props).isUppercaseFirstLetter()) {
+			name = Utils.firstCharToUpper(name);
+		}
+		return name;
+	}
+
+	public CodePrinter printDeclareMethodAsync(CodePrinter pr,
+			RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
+		String methodName = makePublicMemberName(methodInfo.name);
+		CodePrinter mpr = pr.print("void ").print("async_").print(methodName).print("(");
+		
+		boolean first = true;
+		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+			if (first) first = false; else mpr.print(", ");
+			TypeInfoCpp tinfoCpp = new TypeInfoCpp(pinfo.type);
+			mpr.print(tinfoCpp.toString(rinfo.pack)).print(" ").print(pinfo.name);
+		}
+		
+		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+		String rtype = tinfoCpp.toString(rinfo.pack);
+		if (rtype.equals("void")) rtype = "bool";
+		String asyncResultType = "byps_ptr< BAsyncResult< " + rtype + " > >";
+		if (!first) mpr.print(", ");
+		mpr.print(asyncResultType).print(" asyncResult) ");
+
+		return mpr;
+	}
+
+	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo,
+			MethodInfo methodInfo) throws GeneratorException {
+		String methodName = makePublicMemberName(methodInfo.name);
+
+		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+		String rtype = tinfoCpp.toString(rinfo.pack);
+
+		CodePrinter mpr = pr.print(rtype).print(" ").print(methodName).print("(");
+		
+		boolean first = true;
+		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+			if (first) first = false; else mpr.print(", ");
+			tinfoCpp = new TypeInfoCpp(pinfo.type);
+			mpr.print(tinfoCpp.toString(rinfo.pack)).print(" ").print(pinfo.name);
+		}
+		
+		mpr.print(") ");
+
+		return mpr;
+	}
+
 
 	private File dirApi;
 	private File dirImplH;

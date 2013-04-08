@@ -8,6 +8,7 @@ public class PropertiesCpp extends GeneratorProperties {
 	public final static String DEST_DIR_API = "-gencpp.dir-api";
 	public final static String DEST_DIR_IMPL_H = "-gencpp.dir-impl.h";
 	public final static String DEST_DIR_IMPL_C = "-gencpp.dir-impl.c";
+	public final static String DEST_DIR_IMPL = "-gencpp.dir-impl";
 	public final static String PACK_ALIAS = "-gencpp.pack.alias";
 	public final static String MAX_FILE_SIZE = "-gencpp.max-fsize";
 	
@@ -19,6 +20,10 @@ public class PropertiesCpp extends GeneratorProperties {
 	
 	public PropertiesCpp(GeneratorProperties defaultProps) {
 		super(defaultProps);
+	}
+
+	public boolean isUppercaseFirstLetter() {
+		return false;
 	}
 	
 }

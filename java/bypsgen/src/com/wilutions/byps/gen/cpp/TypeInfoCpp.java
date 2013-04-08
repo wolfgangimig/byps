@@ -79,12 +79,17 @@ class TypeInfoCpp {
 			purpose = Purpose.TYPE;
 		}
 		
-		for (int i = 0; i < tinfo.dims.length(); i+=2) {
-			tbuf.append("vector< "); 
+		if (tinfo.dims.length() != 0) {
+			tbuf.append("byps_ptr< ");
+			for (int i = 0; i < tinfo.dims.length(); i+=2) {
+				tbuf.append("std::vector< "); 
+			}
+			TypeInfo tinfoArg = new TypeInfo(tinfo.name, tinfo.qname, "", null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
+			tbuf.append(makeCppName(tinfoArg, currentPackage, Purpose.TYPE));
+			if (purpose == Purpose.PARAM || purpose == Purpose.RETURN) tbuf.append("&");
 		}
-		
-		if (tinfo.qname.equals("boolean")) tbuf.append("int8_t");
-		else if (tinfo.qname.equals("java.lang.Boolean")) tbuf.append("int8_t");
+		else if (tinfo.qname.equals("boolean")) tbuf.append("bool");
+		else if (tinfo.qname.equals("java.lang.Boolean")) tbuf.append("bool");
 		else if (tinfo.qname.equals("byte")) tbuf.append("int8_t");
 		else if (tinfo.qname.equals("java.lang.Byte")) tbuf.append("int8_t");
 		else if (tinfo.qname.equals("char")) tbuf.append("wchar_t");
@@ -105,33 +110,45 @@ class TypeInfoCpp {
 		
 		else if (tinfo.qname.equals("java.lang.String")) {
 			if (purpose == Purpose.PARAM) tbuf.append("const ");
-			tbuf.append("wstring");
-			if (purpose == Purpose.PARAM || purpose == Purpose.RETURN) tbuf.append("&");
+			tbuf.append("std::wstring");
+			if (purpose == Purpose.PARAM) tbuf.append("&");
 		}
 		
-		else if (tinfo.name.equals("List")) {
-			if (purpose == Purpose.PARAM) tbuf.append("const ");
-			tbuf.append("vector< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
-			if (purpose == Purpose.PARAM || purpose == Purpose.RETURN) tbuf.append("&");
+		else if (tinfo.qname.equals("java.io.InputStream")) {
+			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
+			tbuf.append("std::istream");
+			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
-		else if (tinfo.name.equals("Map")) {
-			if (purpose == Purpose.PARAM) tbuf.append("const ");
-			tbuf.append("map< ")
+		
+		else if (tinfo.qname.equals("java.lang.Exception") || tinfo.qname.equals("java.lang.Throwable")) {
+			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
+			tbuf.append("std::exception");
+			if (purpose != Purpose.CLASS) tbuf.append(" >");
+		}
+		
+		else if (tinfo.isListType()) {
+			tbuf.append("byps_ptr< ");
+			tbuf.append("std::vector< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
+			tbuf.append(" >");
+		}
+		else if (tinfo.isMapType()) {
+			tbuf.append("byps_ptr< ");
+			tbuf.append("std::map< ")
 				.append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" , ")
 				.append(makeCppName(tinfo.typeArgs.get(1), currentPackage, Purpose.TYPE)).append(" >");
-			if (purpose == Purpose.PARAM || purpose == Purpose.RETURN) tbuf.append("&");
+			tbuf.append(" >");
 		}
-		else if (tinfo.name.equals("Set")) {
-			if (purpose == Purpose.PARAM) tbuf.append("const ");
-			tbuf.append("set< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
-			if (purpose == Purpose.PARAM || purpose == Purpose.RETURN) tbuf.append("&");
+		else if (tinfo.isSetType()) {
+			tbuf.append("byps_ptr< ");
+			tbuf.append("std::set< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
+			tbuf.append(" >");
 		}
 		
 		else {
 			// User def type
 			String qname = tinfo.toString(currentPackage);
 			qname = qname.replaceAll("\\.", "::");
-			if (!tinfo.isInline) {
+			if (!tinfo.isEnum && !tinfo.isInline) {
 				int p = qname.lastIndexOf(":");
 				String ns = "";
 				if (p >= 0) {
@@ -144,14 +161,13 @@ class TypeInfoCpp {
 			tbuf.append(qname);
 		}
 		
-		for (int i = 0; i < tinfo.dims.length(); i+=2) {
-			tbuf.append(" >"); // std::vector< 
+		if (tinfo.dims.length() != 0) {
+			for (int i = 0; i < tinfo.dims.length(); i+=2) {
+				tbuf.append(" >"); // std::vector< 
+			}
+			tbuf.append(" >"); // byps_ptr< 
 		}
 		
-		if (tinfo.dims.length() != 0) {
-			if (purpose == Purpose.PARAM || purpose == Purpose.RETURN) tbuf.append("&");
-		}
-
 		return tbuf.toString();
 	}
 
@@ -163,7 +179,7 @@ class TypeInfoCpp {
 	static String makeEndNamespace(String pack) {
 		String[] ns = pack.split("\\.");
 		StringBuilder sbuf = new StringBuilder();
-		for (int i = 0; i < ns.length; i++) sbuf.append("} /* ").append(ns[i]).append(" */ ");
+		for (int i = 0; i < ns.length; i++) sbuf.append("}");
 		return sbuf.toString();
 	}
 	

@@ -327,8 +327,8 @@
             <comments/>
             <baseFullName></baseFullName>
             <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
+            <isEnum>true</isEnum>
+            <isFinal>true</isFinal>
         </serial>
         <serial>
             <typeName>com.wilutions.byps.test.api.enu.UsePlanets</typeName>
@@ -696,7 +696,7 @@
             <members/>
             <comments/>
             <baseFullName></baseFullName>
-            <isInline>false</isInline>
+            <isInline>true</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
         </serial>
@@ -9792,7 +9792,7 @@
             <baseFullName></baseFullName>
             <isInline>false</isInline>
             <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
+            <isFinal>true</isFinal>
         </serial>
         <serial>
             <typeName>java.lang.String[][][][]</typeName>
@@ -9802,7 +9802,7 @@
             <baseFullName></baseFullName>
             <isInline>false</isInline>
             <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
+            <isFinal>true</isFinal>
         </serial>
         <serial>
             <typeName>java.util.ArrayList{com.wilutions.byps.test.api.enu.EnumPlanets}</typeName>

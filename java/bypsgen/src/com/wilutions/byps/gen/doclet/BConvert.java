@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -39,7 +40,7 @@ import com.wilutions.byps.gen.db.ConstFieldReader;
 public class BConvert {
 	
 	public ClassDB classDB;
-	
+
 	public final static HashSet<String> FORBIDDEN_FIELD_NAMES = new HashSet<String>(
 			Arrays.asList("_typeId"));
 	
@@ -104,9 +105,9 @@ public class BConvert {
 				continue;
 			}
 			
-			log.info("Skip class " + c.qualifiedName() + ", neither Remote nor Serializable. Either implement com.wilutions.byps.BRemote or java.io.Serializable. Or tag with @BRemote or @BSerializable");
+			log.warn("Skip class " + c.qualifiedName() + ", neither Remote nor Serializable. Either implement com.wilutions.byps.BRemote or java.io.Serializable. Or tag with @BRemote or @BSerializable");
 		}
-
+		
 		log.info("Assign type IDs -------------------");
 		
 		classDB.assignTypeIds();
@@ -174,6 +175,8 @@ public class BConvert {
 	private void makeSerialInfoForCollectionType(TypeInfo tinfo, String errorContext) throws GeneratorException {
 		log.debug("makeSerialInfoForCollectionType(" + tinfo);
 		
+		
+		
 		// Create SerialInfo for List and Map and Set
 		log.debug("isCollectionType=" + tinfo.isCollectionType());
 		if (tinfo.isCollectionType()) {
@@ -206,7 +209,7 @@ public class BConvert {
 			}
 			
 			SerialInfo serInfo = classDB.createSerialInfo(tinfo.name, null, tinfo.qname, null, "", tinfo.typeArgs,
-					null, tinfo.isEnum, false, false);
+					null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
 			classDB.add(serInfo);
 		}
 
@@ -225,7 +228,7 @@ public class BConvert {
 			}
 			
 			SerialInfo sinfo = classDB.createSerialInfo(tinfo.name, null, tinfo.qname, null, 
-					tinfo.dims, tinfo.typeArgs, null, tinfo.isEnum, false, false);
+					tinfo.dims, tinfo.typeArgs, null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
 			classDB.add(sinfo);
 		}
 		
@@ -235,12 +238,6 @@ public class BConvert {
 		}
 
 		log.debug(")makeSerialInfoForCollectionType");
-	}
-
-	private void makeSerialInfoForMembersOfCollectionTypes(List<MemberInfo> minfos, String errorContext) throws GeneratorException {
-		for (MemberInfo minfo : minfos) {
-			makeSerialInfoForCollectionType(minfo.type, errorContext + "." + minfo.name);
-		}
 	}
 	
 	private boolean doesImplement(ClassDoc cls, String interfaceQname, String tagName) {
@@ -300,24 +297,27 @@ public class BConvert {
 			ParameterizedType ptype = type.asParameterizedType();
 			List<TypeInfo> argInfos = getParameterizedTypeArgs(ptype, errorContext);
 			
-			// Es dürfte zum Aufstellen der classDB hier nur der Klassenname des Elements von Bedeutung sein.
-			// Die Klasse wird auch als Serializable in der Hauptschleife gefunden. Dort sind alle Eigenschaften
-			// - insbes. isInline - ermittelbar.
-//			ClassDoc cls = type.asClassDoc();
-//			boolean isEnum = false;
-//			boolean inlineInstance = false;
-//
-//			if (cls != null) {
-//				isEnum = cls.isEnum() || cls.isEnumConstant();
-//				inlineInstance = cls.isFinal() && type.dimension().length() == 0; // cls.dimenstion is without [][][]...
-//			}
-
+			ClassDoc cls = type.asClassDoc();
+			boolean isEnum = false;
+			boolean isInline = false; 
+			boolean isFinal = false;
+			
+			if (cls != null) {
+				isEnum = cls.isEnum() || cls.isEnumConstant();
+				isInline = isInline(cls);
+				isFinal = cls.isFinal();
+			}
+			
 			tinfo = classDB.createTypeInfo(
 					type.simpleTypeName(),
 					qname,
 					type.dimension(),
 					argInfos,
-					false, false, false);
+					isEnum, 
+					isFinal, 
+					isInline);
+			
+			makeSerialInfoForCollectionType(tinfo, errorContext);
 		}
 		
 
@@ -340,7 +340,7 @@ public class BConvert {
 		
 		// Constant or Enum?
 		String value = null;
-		if ((field.isFinal() && field.isStatic() || field.isEnumConstant())) {
+		if (((field.isFinal() && field.isStatic()) || field.isEnumConstant())) {
 			ClassDoc cls = field.containingClass();
 			TypeInfo ctype = new TypeInfo(cls.name(), cls.qualifiedName(), "", null, field.isEnumConstant(), false, false);
 			Object valueObj = classDB.fieldReader.getValue(ctype, name);
@@ -430,7 +430,7 @@ public class BConvert {
 		return pinfo;
 	}
 	
-	private void makeSerialInfo(ClassDoc cls) throws GeneratorException {
+	private SerialInfo makeSerialInfo(ClassDoc cls) throws GeneratorException {
 		log.debug("makeSerialInfo(" + cls);
 		String name = cls.simpleTypeName();
 		String qname = cls.qualifiedTypeName();
@@ -491,9 +491,8 @@ public class BConvert {
 				members, cls.isEnum(), cls.isFinal(), isInline);
 		classDB.add(sinfo);
 		
-		makeSerialInfoForMembersOfCollectionTypes(sinfo.members, qname);
-		
 		log.debug(")makeSerialInfo");
+		return sinfo;
 	}
 	
 	private void checkSupportedFieldType(String name, Type type) throws GeneratorException {
@@ -683,10 +682,8 @@ public class BConvert {
 		addTagCommentInfos(method.tags(), cinfos);
 		
 		SerialInfo requestInfo = makeMethodRequest(remoteName, remoteQName, method);
-		makeSerialInfoForMembersOfCollectionTypes(requestInfo.members, method + ", parameter ");
 
 		SerialInfo resultInfo = makeMethodResult(remoteName, remoteQName, method);
-		makeSerialInfoForMembersOfCollectionTypes(resultInfo.members, method + ", return value ");
 				
 		boolean foundBException = false;
 		boolean foundInterruptedException = false;
