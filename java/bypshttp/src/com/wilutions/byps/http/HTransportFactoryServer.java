@@ -2,7 +2,6 @@ package com.wilutions.byps.http;
 
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BClient;
-import com.wilutions.byps.BClientR;
 import com.wilutions.byps.BRemoteRegistry;
 import com.wilutions.byps.BServer;
 import com.wilutions.byps.BServerR;
@@ -30,8 +29,8 @@ public class HTransportFactoryServer implements BTransportFactory {
 	}
 
 	@Override
-	public BClientR createClientR(BClient client) {
-		return new BClientR(transportClientR, client);
+	public BClient createClientR(BClient client) {
+		return client;
 	}
 
 	@Override

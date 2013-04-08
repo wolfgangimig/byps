@@ -57,7 +57,7 @@ public abstract class HSession  {
 
 	public final void setTargetId(BTargetId v) {
 		getServer().transport.setTargetId(v);
-		getServer().clientR.client.transport.setTargetId(v);
+		getServer().clientR.transport.setTargetId(v);
 	}
 	
 	public final String getId() {
@@ -72,7 +72,7 @@ public abstract class HSession  {
 	public abstract BServer getServer();
 	
 	public BClient getClientR() {
-		return getServer().clientR.client;
+		return getServer().clientR;
 	}
 	
 	private final Log log = LogFactory.getLog(HSession.class);
