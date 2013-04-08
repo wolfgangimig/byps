@@ -56,13 +56,12 @@ public class BTransport {
 	}
 
 	public BInput getInput(BMessageHeader header, ByteBuffer buf) throws BException {
+		if (protocol == null) throw new BException(BException.INTERNAL, "No protocol negotiated.");
+		
+		// header is null in the test cases that check the serialization.
 		if (header == null) {
 			header = new BMessageHeader();
 			header.read(buf);
-		}
-		
-		if (protocol == null) {
-			protocol = getProtocolForMagic(header.magic);
 		}
 		
 		return protocol.getInput(this, header, buf);
@@ -238,30 +237,6 @@ public class BTransport {
 	
 	public synchronized void setTargetId(BTargetId v) {
 		this.targetId = v;
-	}
-	
-	private BProtocol getProtocolForMagic(int magic) throws BException {
-		BProtocol ret = null;
-	
-		if (magic == BMessageHeader.MAGIC_BINARY_STREAM) {
-			// Version, ByteOrder wird in BInput gelesen 
-			ret = new BProtocolS(apiDesc);
-		}
-		
-		// If non of the above tests applies, it must be a JSON message.
-		if (ret == null) {
-			ret = new BProtocolJson(apiDesc);
-		}
-		
-		return ret;
-	}
-	
-	public BServerR createServerR(BServer server) {
-		return null;
-	}
-	
-	public BClientR createClientR(BClient client) {
-		return null;
 	}
 	
 	public String toString() {

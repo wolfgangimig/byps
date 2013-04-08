@@ -23,8 +23,6 @@ public abstract class BInputBin extends BInput {
 		return readObj(false, null);
 	}
 	
-	protected abstract Object loadObj(BSerializer ser) throws BException;
-	
 	public abstract Object readObj(boolean isUnique, BSerializer ser) throws BException;
 
 	@Override

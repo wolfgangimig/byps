@@ -37,7 +37,7 @@ public abstract class BOutput {
 	public abstract ByteBuffer toByteBuffer();
 	
 	public BMessage toMessage() {
-		final BMessage msg = new BMessage(header, toByteBuffer(), getStreamRequests());
+		final BMessage msg = new BMessage(header, toByteBuffer(), streams);
 		return msg;
 	}
 	
@@ -99,10 +99,6 @@ public abstract class BOutput {
 		return streamRequest;
 	}
 	
-	public List<BStreamRequest> getStreamRequests() {
-		return streams;
-	}
-		
 	protected BObjMap objMap;
 	protected List<BStreamRequest> streams;
 

@@ -10,11 +10,11 @@ import org.apache.commons.logging.LogFactory;
 public class BServer {
 	
 	public final BTransport transport;
-	public final BClientR clientR;
+	public final BClient clientR;
 	
 	protected final Map<Integer, BRemote> remotes;
 	
-	public BServer(BTransport transport, BClientR clientR) {
+	public BServer(BTransport transport, BClient clientR) {
 		this.transport = transport;
 		this.clientR = clientR;
 		this.remotes = new HashMap<Integer, BRemote>();
@@ -29,7 +29,7 @@ public class BServer {
 	public void addRemote(int remoteId, BSkeleton remoteImpl) {
 		if (remoteImpl != null) {
 			remotes.put(remoteId, remoteImpl);
-			remoteImpl.BSkeleton_setTransport(transport);
+			remoteImpl.BSkeleton_setTargetId(transport.getTargetId());
 		}
 	}
 	
@@ -42,10 +42,10 @@ public class BServer {
 	
 	public void recv(BTargetId clientTargetId, Object methodObj, final BAsyncResult<Object> methodResult) throws Throwable {
 		if (log.isDebugEnabled()) log.debug("recv(");
-		
-		BMethodRequest method = (BMethodRequest)methodObj;
-		
+				
 		try {
+			BMethodRequest method = (BMethodRequest)methodObj;
+			
 			BRemote remote = null;
 			final int remoteId = method.getRemoteId();
 			final BTargetId serverTargetId = this.transport.getTargetId();
@@ -60,7 +60,7 @@ public class BServer {
 				remote = remotes.get(remoteId);
 				if (log.isDebugEnabled()) log.debug("client calls its server-side: remoteId=" + remoteId + ", remote=" + remote);
 			}
-			else {
+			else if (this.transport.remoteRegistry != null) { // should not be null for server-side transport
 				
 				// Es wird eine andere Target-ID angesteuert.
 				// Ermittle hier die BRemote-Schnittstelle dieser Target-ID.

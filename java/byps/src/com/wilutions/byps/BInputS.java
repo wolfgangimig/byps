@@ -11,13 +11,6 @@ public class BInputS extends BInputBin {
 	}
 
 	@Override
-	protected Object loadObj(BSerializer ser) throws BException {
-		int strmVersion = header.version;
-		if (strmVersion <= 0) throw new BException(BException.CORRUPT, "Invalid stream version " + strmVersion);
-		return readObj(false, ser);
-	}
-
-	@Override
 	public Object readObj(boolean isUnique, BSerializer ser) throws BException {
 		Object obj = null;
 		
