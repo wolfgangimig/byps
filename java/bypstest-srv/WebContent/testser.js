@@ -10,11 +10,11 @@ com.wilutions.byps.test = com.wilutions.byps.test || {};
 com.wilutions.byps.test.api = com.wilutions.byps.test.api || {};
 com.wilutions.byps.test.api.arr = com.wilutions.byps.test.api.arr || {};
 com.wilutions.byps.test.api.set = com.wilutions.byps.test.api.set || {};
-com.wilutions.byps.test.api.enu = com.wilutions.byps.test.api.enu || {};
 com.wilutions.byps.test.api.list = com.wilutions.byps.test.api.list || {};
+com.wilutions.byps.test.api.enu = com.wilutions.byps.test.api.enu || {};
+com.wilutions.byps.test.api.remote = com.wilutions.byps.test.api.remote || {};
 com.wilutions.byps.test.api.ver = com.wilutions.byps.test.api.ver || {};
 com.wilutions.byps.test.api.inherit = com.wilutions.byps.test.api.inherit || {};
-com.wilutions.byps.test.api.remote = com.wilutions.byps.test.api.remote || {};
 com.wilutions.byps.test.api.inl = com.wilutions.byps.test.api.inl || {};
 com.wilutions.byps.test.api.prim = com.wilutions.byps.test.api.prim || {};
 com.wilutions.byps.test.api.refs = com.wilutions.byps.test.api.refs || {};
@@ -98,97 +98,10 @@ com.wilutions.byps.test.api.BClient_Testser.prototype = new com.wilutions.byps.B
 
 /**
 */
-com.wilutions.byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1) {
-	this._typeId = 2001;
-	this.boolean1 = boolean1 || null;
-	this.byte1 = byte1 || null;
-	this.char1 = char1 || null;
-	this.short1 = short1 || null;
-	this.int1 = int1 || null;
-	this.long1 = long1 || null;
-	this.float1 = float1 || null;
-	this.double1 = double1 || null;
-	this.string1 = string1 || null;
-	this.primitiveTypes1 = primitiveTypes1 || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4, short4, int4, long4, float4, double4, string4, primitiveTypes4) {
-	this._typeId = 2004;
-	this.boolean4 = boolean4 || null;
-	this.byte4 = byte4 || null;
-	this.char4 = char4 || null;
-	this.short4 = short4 || null;
-	this.int4 = int4 || null;
-	this.long4 = long4 || null;
-	this.float4 = float4 || null;
-	this.double4 = double4 || null;
-	this.string4 = string4 || null;
-	this.primitiveTypes4 = primitiveTypes4 || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.enu.UsePlanets = function(planet, planet2, arrayOfPlanets, listOfPlanets, mapOfPlanets) {
-	this._typeId = 10000;
-	this.planet = planet || null;
-	this.planet2 = planet2 || null;
-	this.arrayOfPlanets = arrayOfPlanets || null;
-	this.listOfPlanets = listOfPlanets || null;
-	this.mapOfPlanets = mapOfPlanets || null;
-};
-
-
-/**
- * Base class for ...
-*/
-com.wilutions.byps.test.api.inherit.Class1 = function(int1, nextClass1) {
-	this._typeId = 6001;
-	this.int1 = int1 || 0;
-	this.nextClass1 = nextClass1 || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.inherit.Class1Collections = function(list1, map1, set1) {
-	this._typeId = 6004;
-	this.list1 = list1 || null;
-	this.map1 = map1 || null;
-	this.set1 = set1 || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.inherit.Class2 = function(int1, nextClass1, int2) {
-	this._typeId = 6002;
-	this.int1 = int1 || 0;
-	this.nextClass1 = nextClass1 || null;
-	this.int2 = int2 || 0;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.inherit.Class3 = function(int1, nextClass1, int2, int3) {
-	this._typeId = 6003;
-	this.int1 = int1 || 0;
-	this.nextClass1 = nextClass1 || null;
-	this.int2 = int2 || 0;
-	this.int3 = int3 || 0;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.inl.Actor = function(shape, position) {
-	this._typeId = 171948703;
-	this.shape = shape || null;
-	this.position = position || null;
+com.wilutions.byps.test.api.remote.FirstException = function(listOfStrings, cause) {
+	this._typeId = 11000;
+	this.listOfStrings = listOfStrings || null;
+	this.cause = cause || null;
 };
 
 
@@ -210,123 +123,6 @@ com.wilutions.byps.test.api.inl.Matrix2D = function(_11, _12, _13, _21, _22, _23
 
 
 /**
- * Example for an inline class.
- * Final classes cannot be evolved or derived.
- * Objects of final classes are serialized without
- * the overhead of type and reference information.
- * This optimization is especially useful in the case of
- * large arrays of small objects being serialized.
- * @inline 
-*/
-com.wilutions.byps.test.api.inl.Point2D = function(x, y) {
-	// this._typeId = 1835035436;
-	this.x = x || 0;
-	this.y = y || 0;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.list.ListListTypes = function(int2, int3, int24) {
-	this._typeId = 3002;
-	this.int2 = int2 || null;
-	this.int3 = int3 || null;
-	this.int24 = int24 || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, int4, obj1) {
-	this._typeId = 3001;
-	this.boolean1 = boolean1 || null;
-	this.byte1 = byte1 || null;
-	this.char1 = char1 || null;
-	this.short1 = short1 || null;
-	this.int1 = int1 || null;
-	this.long1 = long1 || null;
-	this.float1 = float1 || null;
-	this.double1 = double1 || null;
-	this.string1 = string1 || null;
-	this.primitiveTypes1 = primitiveTypes1 || null;
-	this.byte2 = byte2 || null;
-	this.int2 = int2 || null;
-	this.int4 = int4 || null;
-	this.obj1 = obj1 || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.map.MapTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
-	this._typeId = 4001;
-	this.boolean1 = boolean1 || null;
-	this.byte1 = byte1 || null;
-	this.char1 = char1 || null;
-	this.short1 = short1 || null;
-	this.int1 = int1 || null;
-	this.long1 = long1 || null;
-	this.float1 = float1 || null;
-	this.double1 = double1 || null;
-	this.string1 = string1 || null;
-	this.primitiveTypes1 = primitiveTypes1 || null;
-	this.byte2 = byte2 || null;
-	this.int2 = int2 || null;
-	this.obj1 = obj1 || null;
-};
-
-
-/**
- * Example class with primitive types like boolean, int, String.
-*/
-com.wilutions.byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, objVal, objVal2, value, temp) {
-	this._typeId = 1000;
-	this.boolVal = boolVal || false;
-	this.byteVal = byteVal || 0;
-	this.charVal = charVal || '';
-	this.shortVal = shortVal || 0;
-	this.intVal = intVal || 0;
-	this.longVal = longVal || '0';
-	this.floatVal = floatVal || 0;
-	this.doubleVal = doubleVal || 0;
-	this.stringVal = stringVal || "";
-	this.objVal = objVal || null;
-	this.objVal2 = objVal2 || null;
-	this.value = value || false;
-	this.temp = temp || null;
-};
-
-
-/**
- * Example class with private and protected members
-*/
-com.wilutions.byps.test.api.priv.PrivateMembers = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, primitiveTypes, arrBool, arrInt, arrString, arrPrimitiveTypes, listBool, listInt, listString, listPrimitiveTypes, mapIntListString, protInt, pprotInt) {
-	this._typeId = 8001;
-	this.boolVal = boolVal || false;
-	this.byteVal = byteVal || 0;
-	this.charVal = charVal || '';
-	this.shortVal = shortVal || 0;
-	this.intVal = intVal || 0;
-	this.longVal = longVal || '0';
-	this.floatVal = floatVal || 0;
-	this.doubleVal = doubleVal || 0;
-	this.stringVal = stringVal || "";
-	this.primitiveTypes = primitiveTypes || null;
-	this.arrBool = arrBool || null;
-	this.arrInt = arrInt || null;
-	this.arrString = arrString || null;
-	this.arrPrimitiveTypes = arrPrimitiveTypes || null;
-	this.listBool = listBool || null;
-	this.listInt = listInt || null;
-	this.listString = listString || null;
-	this.listPrimitiveTypes = listPrimitiveTypes || null;
-	this.mapIntListString = mapIntListString || null;
-	this.protInt = protInt || 0;
-	this.pprotInt = pprotInt || 0;
-};
-
-
-/**
 */
 com.wilutions.byps.test.api.refs.Node = function(next, me, mapOfNodes, listOfNodes) {
 	this._typeId = 9001;
@@ -334,15 +130,6 @@ com.wilutions.byps.test.api.refs.Node = function(next, me, mapOfNodes, listOfNod
 	this.me = me || null;
 	this.mapOfNodes = mapOfNodes || null;
 	this.listOfNodes = listOfNodes || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.remote.FirstException = function(listOfStrings, cause) {
-	this._typeId = 11000;
-	this.listOfStrings = listOfStrings || null;
-	this.cause = cause || null;
 };
 
 
@@ -356,8 +143,17 @@ com.wilutions.byps.test.api.remote.SecondException = function(msg) {
 
 /**
 */
-com.wilutions.byps.test.api.set.SetTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
-	this._typeId = 5001;
+com.wilutions.byps.test.api.inl.Actor = function(shape, position) {
+	this._typeId = 171948703;
+	this.shape = shape || null;
+	this.position = position || null;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1) {
+	this._typeId = 2001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
 	this.char1 = char1 || null;
@@ -368,31 +164,6 @@ com.wilutions.byps.test.api.set.SetTypes = function(boolean1, byte1, char1, shor
 	this.double1 = double1 || null;
 	this.string1 = string1 || null;
 	this.primitiveTypes1 = primitiveTypes1 || null;
-	this.byte2 = byte2 || null;
-	this.int2 = int2 || null;
-	this.obj1 = obj1 || null;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.srvr.ChatStructure = function(msg, sentAt, receivedAt) {
-	this._typeId = 7007;
-	this.msg = msg || "";
-	this.sentAt = sentAt || 0;
-	this.receivedAt = receivedAt || 0;
-};
-
-
-/**
-*/
-com.wilutions.byps.test.api.strm.Stream1 = function(is1, contentType, arrStream, listStream, mapStream) {
-	this._typeId = 1541129345;
-	this.is1 = is1 || null;
-	this.contentType = contentType || "";
-	this.arrStream = arrStream || null;
-	this.listStream = listStream || null;
-	this.mapStream = mapStream || null;
 };
 
 
@@ -472,9 +243,238 @@ com.wilutions.byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, i
 
 /**
 */
+com.wilutions.byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4, short4, int4, long4, float4, double4, string4, primitiveTypes4) {
+	this._typeId = 2004;
+	this.boolean4 = boolean4 || null;
+	this.byte4 = byte4 || null;
+	this.char4 = char4 || null;
+	this.short4 = short4 || null;
+	this.int4 = int4 || null;
+	this.long4 = long4 || null;
+	this.float4 = float4 || null;
+	this.double4 = double4 || null;
+	this.string4 = string4 || null;
+	this.primitiveTypes4 = primitiveTypes4 || null;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, int4, obj1) {
+	this._typeId = 3001;
+	this.boolean1 = boolean1 || null;
+	this.byte1 = byte1 || null;
+	this.char1 = char1 || null;
+	this.short1 = short1 || null;
+	this.int1 = int1 || null;
+	this.long1 = long1 || null;
+	this.float1 = float1 || null;
+	this.double1 = double1 || null;
+	this.string1 = string1 || null;
+	this.primitiveTypes1 = primitiveTypes1 || null;
+	this.byte2 = byte2 || null;
+	this.int2 = int2 || null;
+	this.int4 = int4 || null;
+	this.obj1 = obj1 || null;
+};
+
+
+/**
+ * Example for an inline class.
+ * Final classes cannot be evolved or derived.
+ * Objects of final classes are serialized without
+ * the overhead of type and reference information.
+ * This optimization is especially useful in the case of
+ * large arrays of small objects being serialized.
+ * @inline 
+*/
+com.wilutions.byps.test.api.inl.Point2D = function(x, y) {
+	// this._typeId = 1835035436;
+	this.x = x || 0;
+	this.y = y || 0;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.srvr.ChatStructure = function(msg, sentAt, receivedAt) {
+	this._typeId = 7007;
+	this.msg = msg || "";
+	this.sentAt = sentAt || 0;
+	this.receivedAt = receivedAt || 0;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.inherit.Class3 = function(int1, nextClass1, int2, int3) {
+	this._typeId = 6003;
+	this.int1 = int1 || 0;
+	this.nextClass1 = nextClass1 || null;
+	this.int2 = int2 || 0;
+	this.int3 = int3 || 0;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.inherit.Class2 = function(int1, nextClass1, int2) {
+	this._typeId = 6002;
+	this.int1 = int1 || 0;
+	this.nextClass1 = nextClass1 || null;
+	this.int2 = int2 || 0;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.inherit.Class1Collections = function(list1, map1, set1) {
+	this._typeId = 6004;
+	this.list1 = list1 || null;
+	this.map1 = map1 || null;
+	this.set1 = set1 || null;
+};
+
+
+/**
+ * Base class for ...
+*/
+com.wilutions.byps.test.api.inherit.Class1 = function(int1, nextClass1) {
+	this._typeId = 6001;
+	this.int1 = int1 || 0;
+	this.nextClass1 = nextClass1 || null;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.list.ListListTypes = function(int2, int3, int24) {
+	this._typeId = 3002;
+	this.int2 = int2 || null;
+	this.int3 = int3 || null;
+	this.int24 = int24 || null;
+};
+
+
+/**
+ * Example class with private and protected members
+*/
+com.wilutions.byps.test.api.priv.PrivateMembers = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, primitiveTypes, arrBool, arrInt, arrString, arrPrimitiveTypes, listBool, listInt, listString, listPrimitiveTypes, mapIntListString, protInt, pprotInt) {
+	this._typeId = 8001;
+	this.boolVal = boolVal || false;
+	this.byteVal = byteVal || 0;
+	this.charVal = charVal || '';
+	this.shortVal = shortVal || 0;
+	this.intVal = intVal || 0;
+	this.longVal = longVal || '0';
+	this.floatVal = floatVal || 0;
+	this.doubleVal = doubleVal || 0;
+	this.stringVal = stringVal || "";
+	this.primitiveTypes = primitiveTypes || null;
+	this.arrBool = arrBool || null;
+	this.arrInt = arrInt || null;
+	this.arrString = arrString || null;
+	this.arrPrimitiveTypes = arrPrimitiveTypes || null;
+	this.listBool = listBool || null;
+	this.listInt = listInt || null;
+	this.listString = listString || null;
+	this.listPrimitiveTypes = listPrimitiveTypes || null;
+	this.mapIntListString = mapIntListString || null;
+	this.protInt = protInt || 0;
+	this.pprotInt = pprotInt || 0;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.strm.Stream1 = function(is1, contentType, arrStream, listStream, mapStream) {
+	this._typeId = 1541129345;
+	this.is1 = is1 || null;
+	this.contentType = contentType || "";
+	this.arrStream = arrStream || null;
+	this.listStream = listStream || null;
+	this.mapStream = mapStream || null;
+};
+
+
+/**
+*/
 com.wilutions.byps.test.api.ver.Evolve2 = function(n1) {
 	this._typeId = 573592593;
 	this.n1 = n1 || 0;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.map.MapTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
+	this._typeId = 4001;
+	this.boolean1 = boolean1 || null;
+	this.byte1 = byte1 || null;
+	this.char1 = char1 || null;
+	this.short1 = short1 || null;
+	this.int1 = int1 || null;
+	this.long1 = long1 || null;
+	this.float1 = float1 || null;
+	this.double1 = double1 || null;
+	this.string1 = string1 || null;
+	this.primitiveTypes1 = primitiveTypes1 || null;
+	this.byte2 = byte2 || null;
+	this.int2 = int2 || null;
+	this.obj1 = obj1 || null;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.set.SetTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
+	this._typeId = 5001;
+	this.boolean1 = boolean1 || null;
+	this.byte1 = byte1 || null;
+	this.char1 = char1 || null;
+	this.short1 = short1 || null;
+	this.int1 = int1 || null;
+	this.long1 = long1 || null;
+	this.float1 = float1 || null;
+	this.double1 = double1 || null;
+	this.string1 = string1 || null;
+	this.primitiveTypes1 = primitiveTypes1 || null;
+	this.byte2 = byte2 || null;
+	this.int2 = int2 || null;
+	this.obj1 = obj1 || null;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.enu.UsePlanets = function(planet, planet2, arrayOfPlanets, listOfPlanets, mapOfPlanets) {
+	this._typeId = 10000;
+	this.planet = planet || null;
+	this.planet2 = planet2 || null;
+	this.arrayOfPlanets = arrayOfPlanets || null;
+	this.listOfPlanets = listOfPlanets || null;
+	this.mapOfPlanets = mapOfPlanets || null;
+};
+
+
+/**
+ * Example class with primitive types like boolean, int, String.
+*/
+com.wilutions.byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, objVal, objVal2, value, temp) {
+	this._typeId = 1000;
+	this.boolVal = boolVal || false;
+	this.byteVal = byteVal || 0;
+	this.charVal = charVal || '';
+	this.shortVal = shortVal || 0;
+	this.intVal = intVal || 0;
+	this.longVal = longVal || '0';
+	this.floatVal = floatVal || 0;
+	this.doubleVal = doubleVal || 0;
+	this.stringVal = stringVal || "";
+	this.objVal = objVal || null;
+	this.objVal2 = objVal2 || null;
+	this.value = value || false;
+	this.temp = temp || null;
 };
 
 
@@ -7453,768 +7453,21 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 	
 	this._serializerMap = {
 		
-		// boolean[]
-		2058423690 : new com.wilutions.byps.BSerializerArray(
-			1, // Element type: boolean
-			1
-		),
-		
-		// boolean[][][][]
-		945713488 : new com.wilutions.byps.BSerializerArray(
-			1, // Element type: boolean
-			4
-		),
-		
-		// byte[]
-		1374008726 : new com.wilutions.byps.BSerializerArray(
-			2, // Element type: byte
-			1
-		),
-		
-		// byte[][][][]
-		1201775504 : new com.wilutions.byps.BSerializerArray(
-			2, // Element type: byte
-			4
-		),
-		
-		// char[]
-		1361632968 : new com.wilutions.byps.BSerializerArray(
-			4, // Element type: char
-			1
-		),
-		
-		// char[][][][]
-		769021986 : new com.wilutions.byps.BSerializerArray(
-			4, // Element type: char
-			4
-		),
-		
-		// com.wilutions.byps.test.api.arr.ArrayTypes1dim
-		2001 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setPrimitiveTypes1
+		9045852 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"boolean1":2058423690, // boolean[]
-				"byte1":1374008726, // byte[]
-				"char1":1361632968, // char[]
-				"short1":2067161310, // short[]
-				"int1":100361105, // int[]
-				"long1":1097129250, // long[]
-				"float1":766441794, // float[]
-				"double1":1359468275, // double[]
-				"string1":1888107655, // String[]
-				"primitiveTypes1":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"result":19 // void
 			},
-			{// names of inline elements
-				"boolean1":2058423690, // boolean[]
-				"byte1":1374008726, // byte[]
-				"char1":1361632968, // char[]
-				"short1":2067161310, // short[]
-				"int1":100361105, // int[]
-				"long1":1097129250, // long[]
-				"float1":766441794, // float[]
-				"double1":1359468275, // double[]
-				"string1":1888107655, // String[]
-				"primitiveTypes1":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-			},
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.arr.ArrayTypes4dim
-		2004 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setShort1
+		571404176 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"boolean4":945713488, // boolean[][][][]
-				"byte4":1201775504, // byte[][][][]
-				"char4":769021986, // char[][][][]
-				"short4":1859644668, // short[][][][]
-				"int4":39910537, // int[][][][]
-				"long4":846419204, // long[][][][]
-				"float4":1516687588, // float[][][][]
-				"double4":2087445849, // double[][][][]
-				"string4":588723219, // String[][][][]
-				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
-			{// names of inline elements
-				"boolean4":945713488, // boolean[][][][]
-				"byte4":1201775504, // byte[][][][]
-				"char4":769021986, // char[][][][]
-				"short4":1859644668, // short[][][][]
-				"int4":39910537, // int[][][][]
-				"long4":846419204, // long[][][][]
-				"float4":1516687588, // float[][][][]
-				"double4":2087445849, // double[][][][]
-				"string4":588723219, // String[][][][]
-				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.enu.EnumPlanets[]
-		1092048313 : new com.wilutions.byps.BSerializerArray(
-			1042475995, // Element type: com.wilutions.byps.test.api.enu.EnumPlanets
-			1
-		),
-		
-		// com.wilutions.byps.test.api.enu.UsePlanets
-		10000 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"planet":1042475995, // com.wilutions.byps.test.api.enu.EnumPlanets
-				"planet2":1042475995, // com.wilutions.byps.test.api.enu.EnumPlanets
-				"arrayOfPlanets":1092048313, // com.wilutions.byps.test.api.enu.EnumPlanets[]
-				"listOfPlanets":1590740862, // ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
-				"mapOfPlanets":252873856 // Map<String,com.wilutions.byps.test.api.enu.EnumPlanets>
-			},
-			{// names of inline elements
-				"arrayOfPlanets":1092048313, // com.wilutions.byps.test.api.enu.EnumPlanets[]
-				"listOfPlanets":1590740862, // ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
-				"mapOfPlanets":252873856 // Map<String,com.wilutions.byps.test.api.enu.EnumPlanets>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inherit.Class1
-		6001 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int1":5, // int
-				"nextClass1":6001 // com.wilutions.byps.test.api.inherit.Class1
+				"result":19 // void
 			},
 			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inherit.Class1Collections
-		6004 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"list1":317887457, // List<com.wilutions.byps.test.api.inherit.Class1>
-				"map1":981592984, // Map<String,com.wilutions.byps.test.api.inherit.Class1>
-				"set1":2114305573 // Set<com.wilutions.byps.test.api.inherit.Class1>
-			},
-			{// names of inline elements
-				"list1":317887457, // List<com.wilutions.byps.test.api.inherit.Class1>
-				"map1":981592984, // Map<String,com.wilutions.byps.test.api.inherit.Class1>
-				"set1":2114305573 // Set<com.wilutions.byps.test.api.inherit.Class1>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inherit.Class2
-		6002 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int2":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inherit.Class3
-		6003 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int3":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inl.Actor
-		171948703 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"shape":2049740106, // com.wilutions.byps.test.api.inl.Point2D[]
-				"position":135329019 // com.wilutions.byps.test.api.inl.Matrix2D
-			},
-			{// names of inline elements
-				"shape":2049740106, // com.wilutions.byps.test.api.inl.Point2D[]
-				"position":135329019 // com.wilutions.byps.test.api.inl.Matrix2D
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inl.Actor[]
-		1784131613 : new com.wilutions.byps.BSerializerArray(
-			171948703, // Element type: com.wilutions.byps.test.api.inl.Actor
-			1
-		),
-		
-		// com.wilutions.byps.test.api.inl.Actor[][][][]
-		193284349 : new com.wilutions.byps.BSerializerArray(
-			171948703, // Element type: com.wilutions.byps.test.api.inl.Actor
-			4
-		),
-		
-		// com.wilutions.byps.test.api.inl.Matrix2D
-		135329019 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"_11":7, // float
-				"_12":7, // float
-				"_13":7, // float
-				"_21":7, // float
-				"_22":7, // float
-				"_23":7, // float
-				"_31":7, // float
-				"_32":7, // float
-				"_33":7 // float
-			},
-			null,
-			true // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inl.Point2D
-		1835035436 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"x":3, // short
-				"y":3 // short
-			},
-			null,
-			true // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.inl.Point2D[]
-		2049740106 : new com.wilutions.byps.BSerializerArray(
-			1835035436, // Element type: com.wilutions.byps.test.api.inl.Point2D
-			1
-		),
-		
-		// com.wilutions.byps.test.api.list.ListListTypes
-		3002 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int2":1746702954, // List<List<Integer>>
-				"int3":1633500852, // List<Map<Integer,List<TreeSet<Integer>>>>
-				"int24":1865834185 // List<List<int[][][][]>>
-			},
-			{// names of inline elements
-				"int2":1746702954, // List<List<Integer>>
-				"int3":1633500852, // List<Map<Integer,List<TreeSet<Integer>>>>
-				"int24":1865834185 // List<List<int[][][][]>>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.list.ListTypes
-		3001 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"boolean1":1617670280, // List<Boolean>
-				"byte1":1059148284, // List<Byte>
-				"char1":1661807911, // List<Character>
-				"short1":1997002548, // List<Short>
-				"int1":181681714, // List<Integer>
-				"long1":1050216688, // List<Long>
-				"float1":1628501332, // List<Float>
-				"double1":1555345627, // List<Double>
-				"string1":2123584667, // List<String>
-				"primitiveTypes1":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"byte2":1174971318, // List<byte[]>
-				"int2":1752158699, // List<int[]>
-				"int4":1088217157, // List<int[][][][]>
-				"obj1":12 // List<Object>
-			},
-			{// names of inline elements
-				"boolean1":1617670280, // List<Boolean>
-				"byte1":1059148284, // List<Byte>
-				"char1":1661807911, // List<Character>
-				"short1":1997002548, // List<Short>
-				"int1":181681714, // List<Integer>
-				"long1":1050216688, // List<Long>
-				"float1":1628501332, // List<Float>
-				"double1":1555345627, // List<Double>
-				"string1":2123584667, // List<String>
-				"primitiveTypes1":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"byte2":1174971318, // List<byte[]>
-				"int2":1752158699, // List<int[]>
-				"int4":1088217157, // List<int[][][][]>
-				"obj1":12 // List<Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.map.MapTypes
-		4001 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"boolean1":1279823631, // Map<String,Boolean>
-				"byte1":1972793385, // HashMap<Double,Byte>
-				"char1":8789515, // TreeMap<Float,Character>
-				"short1":601099730, // Map<Long,Short>
-				"int1":1347703734, // Map<Integer,Integer>
-				"long1":1973996106, // Map<Short,Long>
-				"float1":94341197, // Map<Character,Float>
-				"double1":1487265161, // Map<Byte,Double>
-				"string1":1710660846, // Map<String,String>
-				"primitiveTypes1":703065817, // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"byte2":1799280818, // Map<Integer,byte[]>
-				"int2":1633750383, // Map<Integer,int[]>
-				"obj1":1488550492 // Map<String,Object>
-			},
-			{// names of inline elements
-				"boolean1":1279823631, // Map<String,Boolean>
-				"byte1":1972793385, // HashMap<Double,Byte>
-				"char1":8789515, // TreeMap<Float,Character>
-				"short1":601099730, // Map<Long,Short>
-				"int1":1347703734, // Map<Integer,Integer>
-				"long1":1973996106, // Map<Short,Long>
-				"float1":94341197, // Map<Character,Float>
-				"double1":1487265161, // Map<Byte,Double>
-				"string1":1710660846, // Map<String,String>
-				"primitiveTypes1":703065817, // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"byte2":1799280818, // Map<Integer,byte[]>
-				"int2":1633750383, // Map<Integer,int[]>
-				"obj1":1488550492 // Map<String,Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes
-		1000 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"boolVal":1, // boolean
-				"byteVal":2, // byte
-				"charVal":4, // char
-				"shortVal":3, // short
-				"intVal":5, // int
-				"longVal":6, // long
-				"floatVal":7, // float
-				"doubleVal":8, // double
-				"stringVal":10, // String
-				"objVal":21, // Object
-				"objVal2":21, // Object
-				"value":1, // boolean
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-		801243127 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
-			1
-		),
-		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-		1503107601 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
-			4
-		),
-		
-		// com.wilutions.byps.test.api.priv.PrivateMembers
-		8001 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"boolVal":1, // boolean
-				"byteVal":2, // byte
-				"charVal":4, // char
-				"shortVal":3, // short
-				"intVal":5, // int
-				"longVal":6, // long
-				"floatVal":7, // float
-				"doubleVal":8, // double
-				"stringVal":10, // String
-				"primitiveTypes":1000, // com.wilutions.byps.test.api.prim.PrimitiveTypes
-				"arrBool":2058423690, // boolean[]
-				"arrInt":100361105, // int[]
-				"arrString":1888107655, // String[]
-				"arrPrimitiveTypes":801243127, // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-				"listBool":1617670280, // List<Boolean>
-				"listInt":181681714, // List<Integer>
-				"listString":2123584667, // List<String>
-				"listPrimitiveTypes":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"mapIntListString":132175071, // Map<Integer,List<String>>
-				"protInt":5, // int
-				"pprotInt":5 // int
-			},
-			{// names of inline elements
-				"arrBool":2058423690, // boolean[]
-				"arrInt":100361105, // int[]
-				"arrString":1888107655, // String[]
-				"arrPrimitiveTypes":801243127, // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-				"listBool":1617670280, // List<Boolean>
-				"listInt":181681714, // List<Integer>
-				"listString":2123584667, // List<String>
-				"listPrimitiveTypes":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"mapIntListString":132175071, // Map<Integer,List<String>>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.refs.Node
-		9001 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"next":9001, // com.wilutions.byps.test.api.refs.Node
-				"me":9001, // com.wilutions.byps.test.api.refs.Node
-				"mapOfNodes":1768677016, // Map<String,com.wilutions.byps.test.api.refs.Node>
-				"listOfNodes":202657921 // List<com.wilutions.byps.test.api.refs.Node>
-			},
-			{// names of inline elements
-				"mapOfNodes":1768677016, // Map<String,com.wilutions.byps.test.api.refs.Node>
-				"listOfNodes":202657921 // List<com.wilutions.byps.test.api.refs.Node>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool
-		1645604187 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte
-		1645613945 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar
-		1645626823 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
-		935089666 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat
-		522273269 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt
-		1609477282 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
-		1645902061 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject
-		1237679472 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
-		825201405 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort
-		510386133 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString
-		1369061954 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool
-		589253529 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":2058423690 // boolean[]
-			},
-			{// names of inline elements
-				"v":2058423690 // boolean[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
-		589243771 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1374008726 // byte[]
-			},
-			{// names of inline elements
-				"v":1374008726 // byte[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar
-		589230893 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1361632968 // char[]
-			},
-			{// names of inline elements
-				"v":1361632968 // char[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
-		720472590 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1359468275 // double[]
-			},
-			{// names of inline elements
-				"v":1359468275 // double[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat
-		1083385729 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":766441794 // float[]
-			},
-			{// names of inline elements
-				"v":766441794 // float[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt
-		1265927470 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":100361105 // int[]
-			},
-			{// names of inline elements
-				"v":100361105 // int[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong
-		588955655 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1097129250 // long[]
-			},
-			{// names of inline elements
-				"v":1097129250 // long[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject
-		1023062396 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":183594037 // Object[]
-			},
-			{// names of inline elements
-				"v":183594037 // Object[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
-		1765354225 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-			},
-			{// names of inline elements
-				"v":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
-		1071498593 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":2067161310 // short[]
-			},
-			{// names of inline elements
-				"v":2067161310 // short[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString
-		1154444878 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1888107655 // String[]
-			},
-			{// names of inline elements
-				"v":1888107655 // String[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool
-		2032852344 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte
-		2032862102 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
-		2032874980 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
-		581586209 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat
-		1402482290 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt
-		1589603233 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong
-		2033150218 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject
-		278996403 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
-		1650564320 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort
-		1390595154 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString
-		147613921 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool
-		202005372 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":945713488 // boolean[][][][]
-			},
-			{// names of inline elements
-				"v":945713488 // boolean[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte
-		201995614 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1201775504 // byte[][][][]
-			},
-			{// names of inline elements
-				"v":1201775504 // byte[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar
-		201982736 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":769021986 // char[][][][]
-			},
-			{// names of inline elements
-				"v":769021986 // char[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble
-		796203285 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":2087445849 // double[][][][]
-			},
-			{// names of inline elements
-				"v":2087445849 // double[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat
-		1963594750 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1516687588 // float[][][][]
-			},
-			{// names of inline elements
-				"v":1516687588 // float[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt
-		1933153045 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":39910537 // int[][][][]
-			},
-			{// names of inline elements
-				"v":39910537 // int[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong
-		201707498 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":846419204 // long[][][][]
-			},
-			{// names of inline elements
-				"v":846419204 // long[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject
-		493613479 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":124584219 // Object[][][][]
-			},
-			{// names of inline elements
-				"v":124584219 // Object[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
-		710411500 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
-			{// names of inline elements
-				"v":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
 			false // inlineInstance
 		),
 		
@@ -8229,507 +7482,17 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
-		362230997 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":588723219 // String[][][][]
-			},
-			{// names of inline elements
-				"v":588723219 // String[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_getPlanet
-		627010462 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_setPlanet
-		412393386 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"planet":1042475995 // com.wilutions.byps.test.api.enu.EnumPlanets
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwBException
-		641509600 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"code":5, // int
-				"msg":10 // String
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwException
-		67092708 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"what":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwFirstException
-		533533486 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwNullPointerException
-		1888829108 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActor
-		261822861 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorArray1dim
-		699915651 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorArray4dim
-		700005024 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorList
-		843952075 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorListList
-		248580343 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorMap
-		304319631 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorSet
-		304325525 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActor
-		299289599 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"act":171948703 // com.wilutions.byps.test.api.inl.Actor
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorArray1dim
-		240237169 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"actorArray":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
-			},
-			{// names of inline elements
-				"actorArray":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorArray4dim
-		240147796 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"actorArray":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
-			},
-			{// names of inline elements
-				"actorArray":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorList
-		1902022593 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"actorList":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
-			},
-			{// names of inline elements
-				"actorList":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorListList
-		2080023171 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"actorListList":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
-			},
-			{// names of inline elements
-				"actorListList":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorMap
-		215739803 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"actorMap":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
-			},
-			{// names of inline elements
-				"actorMap":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorSet
-		215745697 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"actorSet":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
-			},
-			{// names of inline elements
-				"actorSet":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1
-		1794077576 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte1
-		1319541530 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte2
-		1319541531 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getChar1
-		1319940748 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
-		1741299407 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getFloat1
-		1941525372 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt1
-		874047761 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt2
-		874047762 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt3
-		874047763 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt4
-		874047764 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getLong1
-		1328473126 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getObj1
-		874214665 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1
-		1940572240 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getShort1
-		1573024156 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getString1
-		1173060367 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1
-		1882657404 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"boolean1":1617670280 // List<Boolean>
-			},
-			{// names of inline elements
-				"boolean1":1617670280 // List<Boolean>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte1
-		758429070 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"byte1":1059148284 // List<Byte>
-			},
-			{// names of inline elements
-				"byte1":1059148284 // List<Byte>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte2
-		758429071 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"byte2":1174971318 // List<byte[]>
-			},
-			{// names of inline elements
-				"byte2":1174971318 // List<byte[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setChar1
-		758828288 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"char1":1661807911 // List<Character>
-			},
-			{// names of inline elements
-				"char1":1661807911 // List<Character>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
-		195505829 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"double1":1555345627 // List<Double>
-			},
-			{// names of inline elements
-				"double1":1555345627 // List<Double>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setFloat1
-		2138824848 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"float1":1628501332 // List<Float>
-			},
-			{// names of inline elements
-				"float1":1628501332 // List<Float>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt1
-		1360809955 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int1":181681714 // List<Integer>
-			},
-			{// names of inline elements
-				"int1":181681714 // List<Integer>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt2
-		1360809954 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int2":1752158699 // List<int[]>
-			},
-			{// names of inline elements
-				"int2":1752158699 // List<int[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt3
-		1360809953 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int3":1746702954 // List<List<Integer>>
-			},
-			{// names of inline elements
-				"int3":1746702954 // List<List<Integer>>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt4
-		1360809952 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int4":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
-			},
-			{// names of inline elements
-				"int4":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setLong1
-		767360666 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"long1":1050216688 // List<Long>
-			},
-			{// names of inline elements
-				"long1":1050216688 // List<Long>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setObj1
-		1360643051 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"obj1":12 // List<Object>
-			},
-			{// names of inline elements
-				"obj1":12 // List<Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1
-		1434361404 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"primitiveTypes1":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			{// names of inline elements
-				"primitiveTypes1":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setShort1
-		1787641232 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"short1":1997002548 // List<Short>
-			},
-			{// names of inline elements
-				"short1":1997002548 // List<Short>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setString1
-		763744869 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"string1":2123584667 // List<String>
-			},
-			{// names of inline elements
-				"string1":2123584667 // List<String>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1
-		461626272 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte1
-		1348711374 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte2
-		1348711373 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getChar1
-		1348312156 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
-		1836864439 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1
-		1241980524 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getInt1
 		1013140231 : new com.wilutions.byps.BSerializer(
 			null,
 			null,
 			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+		801243127 : new com.wilutions.byps.BSerializerArray(
+			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
+			1
 		),
 		
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getInt2
@@ -8739,126 +7502,67 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getLong1
-		1339779778 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getObj1
-		1012973327 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1
-		77071512 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
-		1610481740 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getString1
-		1268625399 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1
-		550206100 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_sendChat
+		1101039945 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"boolean1":1279823631 // Map<String,Boolean>
+				"result":7007 // com.wilutions.byps.test.api.srvr.ChatStructure
 			},
-			{// names of inline elements
-				"boolean1":1279823631 // Map<String,Boolean>
-			},
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte1
-		1909823834 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"byte1":1972793385 // HashMap<Double,Byte>
-			},
-			{// names of inline elements
-				"byte1":1972793385 // HashMap<Double,Byte>
-			},
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
+		581586209 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte2
-		1909823833 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setString1
+		879708485 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"byte2":1799280818 // Map<Integer,byte[]>
+				"result":19 // void
 			},
-			{// names of inline elements
-				"byte2":1799280818 // Map<Integer,byte[]>
-			},
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setChar1
-		1909424616 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"char1":8789515 // TreeMap<Float,Character>
-			},
-			{// names of inline elements
-				"char1":8789515 // TreeMap<Float,Character>
-			},
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getString1
+		615539953 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1
-		99940797 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"double1":1487265161 // Map<Byte,Double>
-			},
-			{// names of inline elements
-				"double1":1487265161 // Map<Byte,Double>
-			},
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getObj1
+		68205653 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1
-		1027363448 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setByte1
+		1165932788 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"float1":94341197 // Map<Character,Float>
+				"result":19 // void
 			},
-			{// names of inline elements
-				"float1":94341197 // Map<Character,Float>
-			},
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt1
-		1046969349 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int1":1347703734 // Map<Integer,Integer>
-			},
-			{// names of inline elements
-				"int1":1347703734 // Map<Integer,Integer>
-			},
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject
+		1237679472 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt2
-		1046969350 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setByte2
+		1165932789 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"int2":1633750383 // Map<Integer,int[]>
+				"result":19 // void
 			},
-			{// names of inline elements
-				"int2":1633750383 // Map<Integer,int[]>
-			},
+			null,
 			false // inlineInstance
 		),
 		
@@ -8873,683 +7577,8 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setObj1
-		1047136253 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"obj1":1488550492 // Map<String,Object>
-			},
-			{// names of inline elements
-				"obj1":1488550492 // Map<String,Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1
-		842962140 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"primitiveTypes1":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			{// names of inline elements
-				"primitiveTypes1":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setShort1
-		1395864664 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"short1":601099730 // Map<Long,Short>
-			},
-			{// names of inline elements
-				"short1":601099730 // Map<Long,Short>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setString1
-		668179837 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"string1":1710660846 // Map<String,String>
-			},
-			{// names of inline elements
-				"string1":1710660846 // Map<String,String>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_add
-		1073583639 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"a":5, // int
-				"b":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool
-		2090997206 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
-		2091006964 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar
-		2091019842 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
-		538948675 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat
-		400008432 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt
-		1318015101 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong
-		2091295080 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject
-		236358869 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes
-		1881962430 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort
-		411895568 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
-		104976387 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
-		1794219594 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"b":1, // boolean
-				"c":4, // char
-				"s":3, // short
-				"i":5, // int
-				"l":6, // long
-				"f":7, // float
-				"d":8, // double
-				"str":10, // String
-				"pt":1000, // com.wilutions.byps.test.api.prim.PrimitiveTypes
-				"o":21 // Object
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool
-		143860510 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1 // boolean
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte
-		143850752 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":2 // byte
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar
-		143837874 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":4 // char
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble
-		753565751 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":8 // double
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
-		161104028 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":7 // float
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt
-		974465289 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong
-		143562636 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":6 // long
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject
-		450975945 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":21 // Object
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes
-		941809610 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":1000 // com.wilutions.byps.test.api.prim.PrimitiveTypes
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort
-		149216892 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":3 // short
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
-		319593463 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":10 // String
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
-		1856936054 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_getNode
-		655936732 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_setNode
-		1404172848 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":9001 // com.wilutions.byps.test.api.refs.Node
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
-		1690813926 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
-		2125684552 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte2
-		2125684551 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getChar1
-		2125285334 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
-		1183778993 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1
-		1369351514 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt1
-		68372557 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt2
-		68372556 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getLong1
-		2116752956 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getObj1
-		68205653 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1
-		1802821742 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getShort1
-		1000850298 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getString1
-		615539953 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1
-		1779393754 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"boolean1":1365696060 // Set<Boolean>
-			},
-			{// names of inline elements
-				"boolean1":1365696060 // Set<Boolean>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte1
-		1608170284 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"byte1":31512998 // HashSet<Byte>
-			},
-			{// names of inline elements
-				"byte1":31512998 // HashSet<Byte>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte2
-		1608170285 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"byte2":2052431866 // Set<byte[]>
-			},
-			{// names of inline elements
-				"byte2":2052431866 // Set<byte[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setChar1
-		1608569502 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"char1":936607009 // TreeSet<Character>
-			},
-			{// names of inline elements
-				"char1":936607009 // TreeSet<Character>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1
-		753026243 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"double1":1320560671 // Set<Double>
-			},
-			{// names of inline elements
-				"double1":1320560671 // Set<Double>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1
-		1583968590 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"float1":1898022288 // Set<Float>
-			},
-			{// names of inline elements
-				"float1":1898022288 // Set<Float>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt1
-		1991737023 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int1":1493282670 // Set<Integer>
-			},
-			{// names of inline elements
-				"int1":1493282670 // Set<Integer>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt2
-		1991737024 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"int2":1406124761 // Set<int[]>
-			},
-			{// names of inline elements
-				"int2":1406124761 // Set<int[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setLong1
-		1617101880 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"long1":1457164460 // Set<Long>
-			},
-			{// names of inline elements
-				"long1":1457164460 // Set<Long>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setObj1
-		1991903927 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"obj1":14 // Set<Object>
-			},
-			{// names of inline elements
-				"obj1":14 // Set<Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1
-		1572111902 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"primitiveTypes1":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			{// names of inline elements
-				"primitiveTypes1":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setShort1
-		1215467374 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"short1":2028443792 // Set<Short>
-			},
-			{// names of inline elements
-				"short1":2028443792 // Set<Short>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setString1
-		1321265283 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"string1":1888799711 // Set<String>
-			},
-			{// names of inline elements
-				"string1":1888799711 // Set<String>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImage
-		1902276204 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImages
-		1158979935 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getTextStream
-		1083407988 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImage
-		1831578632 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"istrm":15 // java.io.InputStream
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImages
-		944362859 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"istrms":779528402, // Map<Integer,java.io.InputStream>
-				"doNotReadStreamAtKey":5 // int
-			},
-			{// names of inline elements
-				"istrms":779528402, // Map<Integer,java.io.InputStream>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_throwLastException
-		2047657918 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getBool
-		1716433773 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2058423690 // boolean[]
-			},
-			{// names of inline elements
-				"result":2058423690 // boolean[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getByte
-		1716424015 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1374008726 // byte[]
-			},
-			{// names of inline elements
-				"result":1374008726 // byte[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getChar
-		1716411137 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1361632968 // char[]
-			},
-			{// names of inline elements
-				"result":1361632968 // char[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getDouble
-		167983302 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1359468275 // double[]
-			},
-			{// names of inline elements
-				"result":1359468275 // double[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getFloat
-		1666234925 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":766441794 // float[]
-			},
-			{// names of inline elements
-				"result":766441794 // float[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getInt
-		193909466 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":100361105 // int[]
-			},
-			{// names of inline elements
-				"result":100361105 // int[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getLong
-		1716135899 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1097129250 // long[]
-			},
-			{// names of inline elements
-				"result":1097129250 // long[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getObject
-		134606504 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":183594037 // Object[]
-			},
-			{// names of inline elements
-				"result":183594037 // Object[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getPrimitiveTypes
-		251124165 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-			},
-			{// names of inline elements
-				"result":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getShort
-		1654347789 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2067161310 // short[]
-			},
-			{// names of inline elements
-				"result":2067161310 // short[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getString
-		265988986 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1888107655 // String[]
-			},
-			{// names of inline elements
-				"result":1888107655 // String[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setBool
-		343675807 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorList
+		1540936711 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
 				"result":19 // void
 			},
@@ -9557,137 +7586,12 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setByte
-		343685565 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setBoolean1
+		483027038 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
 				"result":19 // void
 			},
 			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setChar
-		343698443 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setDouble
-		382600378 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setFloat
-		2067619911 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setInt
-		149640346 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setLong
-		343973681 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setObject
-		80010572 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setPrimitiveTypes
-		1191276985 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setShort
-		2079507047 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setString
-		51371910 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getBool
-		1329185616 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":945713488 // boolean[][][][]
-			},
-			{// names of inline elements
-				"result":945713488 // boolean[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getByte
-		1329175858 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1201775504 // byte[][][][]
-			},
-			{// names of inline elements
-				"result":1201775504 // byte[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getChar
-		1329162980 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":769021986 // char[][][][]
-			},
-			{// names of inline elements
-				"result":769021986 // char[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getDouble
-		1684659177 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2087445849 // double[][][][]
-			},
-			{// names of inline elements
-				"result":2087445849 // double[][][][]
-			},
 			false // inlineInstance
 		),
 		
@@ -9702,191 +7606,64 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getInt
-		1289796247 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1
+		1802821742 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_setPlanet
+		412393386 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"result":39910537 // int[][][][]
+				"planet":1042475995 // com.wilutions.byps.test.api.enu.EnumPlanets
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwException
+		67092708 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"what":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorMap
+		304319631 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject
+		1023062396 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":183594037 // Object[]
 			},
 			{// names of inline elements
-				"result":39910537 // int[][][][]
+				"v":183594037 // Object[]
 			},
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getLong
-		1328887742 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":846419204 // long[][][][]
-			},
-			{// names of inline elements
-				"result":846419204 // long[][][][]
-			},
-			false // inlineInstance
+		// Object[]
+		183594037 : new com.wilutions.byps.BSerializerArray(
+			21, // Element type: Object
+			1
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getObject
-		1382069371 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":124584219 // Object[][][][]
-			},
-			{// names of inline elements
-				"result":124584219 // Object[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getPrimitiveTypes
-		2070325736 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
-			{// names of inline elements
-				"result":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getShort
-		1760410486 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1859644668 // short[][][][]
-			},
-			{// names of inline elements
-				"result":1859644668 // short[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getString
-		1250686889 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":588723219 // String[][][][]
-			},
-			{// names of inline elements
-				"result":588723219 // String[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setBool
-		730923964 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString
+		147613921 : new com.wilutions.byps.BSerializer(
+			null,
 			null,
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setByte
-		730933722 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setChar
-		730946600 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setDouble
-		1899276253 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setFloat
-		1187410890 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setInt
-		946246435 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setLong
-		731221838 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setObject
-		1596686447 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setPrimitiveTypes
-		1284488740 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setShort
-		1199298026 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setString
-		1465303965 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteEnums_getPlanet
-		839369882 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1042475995 // com.wilutions.byps.test.api.enu.EnumPlanets
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteEnums_setPlanet
-		1053986958 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteException_throwBException
-		805985960 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setShort1
+		1576112584 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
 				"result":19 // void
 			},
@@ -9903,8 +7680,8 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteException_throwFirstException
-		1025539738 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setString1
+		1532793931 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
 				"result":19 // void
 			},
@@ -9912,97 +7689,10 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteException_throwNullPointerException
-		2113544940 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActor
-		882138795 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":171948703 // com.wilutions.byps.test.api.inl.Actor
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorArray1dim
-		1273992891 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
-			},
-			{// names of inline elements
-				"result":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorArray4dim
-		1274082264 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
-			},
-			{// names of inline elements
-				"result":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorList
-		8055917 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
-			},
-			{// names of inline elements
-				"result":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorListList
-		922798383 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
-			},
-			{// names of inline elements
-				"result":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorMap
-		1108119495 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
-			},
-			{// names of inline elements
-				"result":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorSet
-		1108125389 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
-			},
-			{// names of inline elements
-				"result":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActor
-		1443251255 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
+		// float[]
+		766441794 : new com.wilutions.byps.BSerializerArray(
+			7, // Element type: float
+			1
 		),
 		
 		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorArray1dim
@@ -10014,59 +7704,55 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorArray4dim
-		333929444 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1
+		842962140 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorList
-		1540936711 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorListList
-		1540726085 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorMap
-		1019539667 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorSet
-		1019545561 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getBoolean1
-		378509760 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1617670280 // List<Boolean>
+				"primitiveTypes1":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
 			},
 			{// names of inline elements
-				"result":1617670280 // List<Boolean>
+				"primitiveTypes1":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
 			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getPrimitiveTypes
+		251124165 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+			},
+			{// names of inline elements
+				"result":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getFloat1
+		2101155294 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1898022288 // Set<Float>
+			},
+			{// names of inline elements
+				"result":1898022288 // Set<Float>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_add
+		1073583639 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"a":5, // int
+				"b":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool
+		143860510 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1 // boolean
+			},
+			null,
 			false // inlineInstance
 		),
 		
@@ -10092,6 +7778,484 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject
+		236358869 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteEnums_setPlanet
+		1053986958 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwBException
+		641509600 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"code":5, // int
+				"msg":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getPrimitiveTypes
+		1838927626 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1000 // com.wilutions.byps.test.api.prim.PrimitiveTypes
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteReferences
+		2086824050 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteReferences),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1
+		1882657404 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolean1":1617670280 // List<Boolean>
+			},
+			{// names of inline elements
+				"boolean1":1617670280 // List<Boolean>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getPrimitiveTypes1
+		929079504 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			{// names of inline elements
+				"result":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setChar
+		789091462 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.FirstException
+		11000 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"listOfStrings":2123584667, // List<String>
+				"cause":20 // Throwable
+			},
+			{// names of inline elements
+				"listOfStrings":2123584667, // List<String>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setString1
+		1321265283 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"string1":1888799711 // Set<String>
+			},
+			{// names of inline elements
+				"string1":1888799711 // Set<String>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort
+		510386133 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setByte
+		789078584 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorArray1dim
+		1273992891 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
+			},
+			{// names of inline elements
+				"result":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
+		1650564320 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
+		1765354225 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+			},
+			{// names of inline elements
+				"v":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar
+		1645626823 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getString1
+		1057096751 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1710660846 // Map<String,String>
+			},
+			{// names of inline elements
+				"result":1710660846 // Map<String,String>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setByte
+		730933722 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setChar1
+		65632200 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClient
+		2107407220 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"id":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getChar
+		1329162980 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":769021986 // char[][][][]
+			},
+			{// names of inline elements
+				"result":769021986 // char[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorArray4dim
+		1274082264 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
+			},
+			{// names of inline elements
+				"result":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getChar1
+		1727444466 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":936607009 // TreeSet<Character>
+			},
+			{// names of inline elements
+				"result":936607009 // TreeSet<Character>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getLong
+		1328887742 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":846419204 // long[][][][]
+			},
+			{// names of inline elements
+				"result":846419204 // long[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getObj1
+		1012973327 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool
+		202005372 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":945713488 // boolean[][][][]
+			},
+			{// names of inline elements
+				"v":945713488 // boolean[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getFloat
+		743953224 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":7 // float
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_setPartner
+		2075320443 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt
+		1933153045 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":39910537 // int[][][][]
+			},
+			{// names of inline elements
+				"v":39910537 // int[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_add
+		249123151 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_putStreams
+		1274042587 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
+		1836864439 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setPrimitiveTypes
+		1191276985 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getPrimitiveTypes
+		2070325736 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+			},
+			{// names of inline elements
+				"result":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte
+		201995614 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1201775504 // byte[][][][]
+			},
+			{// names of inline elements
+				"v":1201775504 // byte[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwNullPointerException
+		1888829108 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt2
+		68372556 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setObj1
+		1360643051 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"obj1":12 // List<Object>
+			},
+			{// names of inline elements
+				"obj1":12 // List<Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getInt2
+		773709362 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1633750383 // Map<Integer,int[]>
+			},
+			{// names of inline elements
+				"result":1633750383 // Map<Integer,int[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorSet
+		215745697 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"actorSet":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
+			},
+			{// names of inline elements
+				"actorSet":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt1
+		68372557 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getInt1
+		773709361 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1347703734 // Map<Integer,Integer>
+			},
+			{// names of inline elements
+				"result":1347703734 // Map<Integer,Integer>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorMap
+		215739803 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"actorMap":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
+			},
+			{// names of inline elements
+				"actorMap":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1
+		1572111902 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"primitiveTypes1":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			{// names of inline elements
+				"primitiveTypes1":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getInt
+		1289796247 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":39910537 // int[][][][]
+			},
+			{// names of inline elements
+				"result":39910537 // int[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// boolean[][][][]
+		945713488 : new com.wilutions.byps.BSerializerArray(
+			1, // Element type: boolean
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getChar
+		1271018118 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":4 // char
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
+		710411500 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+			},
+			{// names of inline elements
+				"v":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
+		538948675 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setInt2
+		516380680 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_getImage
+		115426612 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":15 // java.io.InputStream
+			},
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getChar1
 		495480260 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
@@ -10103,16 +8267,848 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getDouble1
-		521121385 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setLong
+		343973681 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"result":1555345627 // List<Double>
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getPartner
+		748402113 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setInt1
+		516380681 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar
+		143837874 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":4 // char
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteReferences_getNode
+		1480397220 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":9001 // com.wilutions.byps.test.api.refs.Node
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setInt
+		149640346 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_getClient
+		811360678 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getDouble
+		1642021643 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":8 // double
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setDouble
+		1899276253 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setString
+		1465303965 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
+		1856936054 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setFloat
+		2067619911 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat
+		400008432 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorMap
+		1108119495 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
 			},
 			{// names of inline elements
-				"result":1555345627 // List<Double>
+				"result":1930448581 // Map<Integer,com.wilutions.byps.test.api.inl.Actor>
 			},
 			false // inlineInstance
 		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorList
+		1902022593 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"actorList":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
+			},
+			{// names of inline elements
+				"actorList":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1
+		1434361404 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"primitiveTypes1":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			{// names of inline elements
+				"primitiveTypes1":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getBoolean1
+		1800794520 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1279823631 // Map<String,Boolean>
+			},
+			{// names of inline elements
+				"result":1279823631 // Map<String,Boolean>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_incrementInt
+		1720916535 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inl.Actor[]
+		1784131613 : new com.wilutions.byps.BSerializerArray(
+			171948703, // Element type: com.wilutions.byps.test.api.inl.Actor
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActor
+		882138795 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":171948703 // com.wilutions.byps.test.api.inl.Actor
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setString
+		1422666431 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong
+		2091295080 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setDouble1
+		1837040675 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
+		319593463 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setBool
+		730923964 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_setImages
+		502125363 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setPrimitiveTypes
+		1515886850 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt
+		1589603233 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getObj1
+		874214665 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setByte1
+		1942905966 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setByte2
+		1942905967 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inl.Point2D[]
+		2049740106 : new com.wilutions.byps.BSerializerArray(
+			1835035436, // Element type: com.wilutions.byps.test.api.inl.Point2D
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getShort1
+		1825310786 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2028443792 // Set<Short>
+			},
+			{// names of inline elements
+				"result":2028443792 // Set<Short>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getInt
+		97552715 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient
+		1367013829 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"streams":1218831438 // List<java.io.InputStream>
+			},
+			{// names of inline elements
+				"streams":1218831438 // List<java.io.InputStream>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActor
+		261822861 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_getImages
+		716742439 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":476459792 // TreeMap<Integer,java.io.InputStream>
+			},
+			{// names of inline elements
+				"result":476459792 // TreeMap<Integer,java.io.InputStream>
+			},
+			false // inlineInstance
+		),
+		
+		// long[]
+		1097129250 : new com.wilutions.byps.BSerializerArray(
+			6, // Element type: long
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setShort
+		1293178548 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setPrimitiveTypes1
+		1870847402 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool
+		1645604187 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImage
+		1831578632 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"istrm":15 // java.io.InputStream
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getShort
+		1654347789 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2067161310 // short[]
+			},
+			{// names of inline elements
+				"result":2067161310 // short[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_setClient
+		1025977754 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inl.Matrix2D
+		135329019 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"_11":7, // float
+				"_12":7, // float
+				"_13":7, // float
+				"_21":7, // float
+				"_22":7, // float
+				"_23":7, // float
+				"_31":7, // float
+				"_32":7, // float
+				"_33":7 // float
+			},
+			null,
+			true // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1
+		1583968590 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"float1":1898022288 // Set<Float>
+			},
+			{// names of inline elements
+				"float1":1898022288 // Set<Float>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_putStreamsOnClient
+		1000905741 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setObj1
+		1460981451 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getLong1
+		1782017274 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1973996106 // Map<Short,Long>
+			},
+			{// names of inline elements
+				"result":1973996106 // Map<Short,Long>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte2
+		1909823833 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"byte2":1799280818 // Map<Integer,byte[]>
+			},
+			{// names of inline elements
+				"byte2":1799280818 // Map<Integer,byte[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong
+		143562636 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":6 // long
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte1
+		1909823834 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"byte1":1972793385 // HashMap<Double,Byte>
+			},
+			{// names of inline elements
+				"byte1":1972793385 // HashMap<Double,Byte>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.refs.Node
+		9001 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"next":9001, // com.wilutions.byps.test.api.refs.Node
+				"me":9001, // com.wilutions.byps.test.api.refs.Node
+				"mapOfNodes":1768677016, // Map<String,com.wilutions.byps.test.api.refs.Node>
+				"listOfNodes":202657921 // List<com.wilutions.byps.test.api.refs.Node>
+			},
+			{// names of inline elements
+				"mapOfNodes":1768677016, // Map<String,com.wilutions.byps.test.api.refs.Node>
+				"listOfNodes":202657921 // List<com.wilutions.byps.test.api.refs.Node>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getByte
+		1329175858 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1201775504 // byte[][][][]
+			},
+			{// names of inline elements
+				"result":1201775504 // byte[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt2
+		1046969350 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int2":1633750383 // Map<Integer,int[]>
+			},
+			{// names of inline elements
+				"int2":1633750383 // Map<Integer,int[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt1
+		1046969349 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int1":1347703734 // Map<Integer,Integer>
+			},
+			{// names of inline elements
+				"int1":1347703734 // Map<Integer,Integer>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes
+		941809610 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1000 // com.wilutions.byps.test.api.prim.PrimitiveTypes
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
+		825201405 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// char[]
+		1361632968 : new com.wilutions.byps.BSerializerArray(
+			4, // Element type: char
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getObj1
+		1718643939 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":14 // Set<Object>
+			},
+			{// names of inline elements
+				"result":14 // Set<Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setObj1
+		1802880547 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1
+		1027363448 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"float1":94341197 // Map<Character,Float>
+			},
+			{// names of inline elements
+				"float1":94341197 // Map<Character,Float>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt
+		974465289 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImage
+		1902276204 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.enu.EnumPlanets[]
+		1092048313 : new com.wilutions.byps.BSerializerArray(
+			1042475995, // Element type: com.wilutions.byps.test.api.enu.EnumPlanets
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorSet
+		1019545561 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorArray4dim
+		240147796 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"actorArray":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
+			},
+			{// names of inline elements
+				"actorArray":193284349 // com.wilutions.byps.test.api.inl.Actor[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat
+		1083385729 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":766441794 // float[]
+			},
+			{// names of inline elements
+				"v":766441794 // float[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteReferences_setNode
+		579712360 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_putStreams
+		242798857 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"strm":1218831438, // List<java.io.InputStream>
+				"ctrl":5 // int
+			},
+			{// names of inline elements
+				"strm":1218831438, // List<java.io.InputStream>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1
+		1940572240 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getChar
+		1716411137 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1361632968 // char[]
+			},
+			{// names of inline elements
+				"result":1361632968 // char[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getByte2
+		1727045249 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2052431866 // Set<byte[]>
+			},
+			{// names of inline elements
+				"result":2052431866 // Set<byte[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getByte1
+		1727045248 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":31512998 // HashSet<Byte>
+			},
+			{// names of inline elements
+				"result":31512998 // HashSet<Byte>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_sendEvolveToClient
+		1931893518 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.SecondException
+		11001 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"msg":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setChar1
+		758828288 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"char1":1661807911 // List<Character>
+			},
+			{// names of inline elements
+				"char1":1661807911 // List<Character>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte2
+		1348711373 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte1
+		1348711374 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorSet
+		304325525 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
+		1741299407 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_getPlanet
+		627010462 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setChar1
+		1909424616 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"char1":8789515 // TreeMap<Float,Character>
+			},
+			{// names of inline elements
+				"char1":8789515 // TreeMap<Float,Character>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1
+		99940797 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"double1":1487265161 // Map<Byte,Double>
+			},
+			{// names of inline elements
+				"double1":1487265161 // Map<Byte,Double>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setLong
+		731221838 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteException
+		1959416539 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteException),
+		
+		// com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+		1503107601 : new com.wilutions.byps.BSerializerArray(
+			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setString1
+		1268801635 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap
+		1921080901 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"id":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_getStreams
+		1897164468 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1218831438 // List<java.io.InputStream>
+			},
+			{// names of inline elements
+				"result":1218831438 // List<java.io.InputStream>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorListList
+		922798383 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
+			},
+			{// names of inline elements
+				"result":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
+			},
+			false // inlineInstance
+		),
+		
+		// int[][][][]
+		39910537 : new com.wilutions.byps.BSerializerArray(
+			5, // Element type: int
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes
+		1156008353 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes),
 		
 		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getFloat1
 		1729996724 : new com.wilutions.byps.BSerializer(
@@ -10121,6 +9117,97 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			},
 			{// names of inline elements
 				"result":1628501332 // List<Float>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorList
+		843952075 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getLong
+		1270742880 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":6 // long
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setFloat1
+		202902960 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setChar1
+		1608569502 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"char1":936607009 // TreeSet<Character>
+			},
+			{// names of inline elements
+				"char1":936607009 // TreeSet<Character>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setChar1
+		1166332006 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getInt4
+		431810268 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
+			},
+			{// names of inline elements
+				"result":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setLong1
+		767360666 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"long1":1050216688 // List<Long>
+			},
+			{// names of inline elements
+				"long1":1050216688 // List<Long>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1
+		753026243 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"double1":1320560671 // Set<Double>
+			},
+			{// names of inline elements
+				"double1":1320560671 // Set<Double>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inl.Actor
+		171948703 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"shape":2049740106, // com.wilutions.byps.test.api.inl.Point2D[]
+				"position":135329019 // com.wilutions.byps.test.api.inl.Matrix2D
+			},
+			{// names of inline elements
+				"shape":2049740106, // com.wilutions.byps.test.api.inl.Point2D[]
+				"position":135329019 // com.wilutions.byps.test.api.inl.Matrix2D
 			},
 			false // inlineInstance
 		),
@@ -10158,258 +9245,70 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getInt4
-		431810268 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar
+		201982736 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"result":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
+				"v":769021986 // char[][][][]
 			},
 			{// names of inline elements
-				"result":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
+				"v":769021986 // char[][][][]
 			},
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getLong1
-		504012638 : new com.wilutions.byps.BSerializer(
+		// int[]
+		100361105 : new com.wilutions.byps.BSerializerArray(
+			5, // Element type: int
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte2
+		1608170285 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"result":1050216688 // List<Long>
+				"byte2":2052431866 // Set<byte[]>
 			},
 			{// names of inline elements
-				"result":1050216688 // List<Long>
+				"byte2":2052431866 // Set<byte[]>
 			},
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getObj1
-		431977169 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte1
+		1608170284 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"result":12 // List<Object>
+				"byte1":31512998 // HashSet<Byte>
 			},
 			{// names of inline elements
-				"result":12 // List<Object>
+				"byte1":31512998 // HashSet<Byte>
 			},
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getPrimitiveTypes1
-		1298128264 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.arr.ArrayTypes1dim
+		2001 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"result":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"boolean1":2058423690, // boolean[]
+				"byte1":1374008726, // byte[]
+				"char1":1361632968, // char[]
+				"short1":2067161310, // short[]
+				"int1":100361105, // int[]
+				"long1":1097129250, // long[]
+				"float1":766441794, // float[]
+				"double1":1359468275, // double[]
+				"string1":1888107655, // String[]
+				"primitiveTypes1":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
 			},
 			{// names of inline elements
-				"result":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getShort1
-		1361495508 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1997002548 // List<Short>
-			},
-			{// names of inline elements
-				"result":1997002548 // List<Short>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getString1
-		1089360425 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2123584667 // List<String>
-			},
-			{// names of inline elements
-				"result":2123584667 // List<String>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setBoolean1
-		467089588 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setByte1
-		66031418 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setByte2
-		66031417 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setChar1
-		65632200 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setDouble1
-		1837040675 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setFloat1
-		1944613800 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt1
-		1803047451 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt2
-		1803047450 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt3
-		1803047449 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt4
-		1803047448 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setLong1
-		57099822 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setObj1
-		1802880547 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setPrimitiveTypes1
-		2076805380 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setShort1
-		1576112584 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setString1
-		1268801635 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getBoolean1
-		1800794520 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1279823631 // Map<String,Boolean>
-			},
-			{// names of inline elements
-				"result":1279823631 // Map<String,Boolean>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getByte1
-		1790948870 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1972793385 // HashMap<Double,Byte>
-			},
-			{// names of inline elements
-				"result":1972793385 // HashMap<Double,Byte>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getByte2
-		1790948869 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1799280818 // Map<Integer,byte[]>
-			},
-			{// names of inline elements
-				"result":1799280818 // Map<Integer,byte[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getChar1
-		1790549652 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":8789515 // TreeMap<Float,Character>
-			},
-			{// names of inline elements
-				"result":8789515 // TreeMap<Float,Character>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getDouble1
-		1625335791 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1487265161 // Map<Byte,Double>
-			},
-			{// names of inline elements
-				"result":1487265161 // Map<Byte,Double>
+				"boolean1":2058423690, // boolean[]
+				"byte1":1374008726, // byte[]
+				"char1":1361632968, // char[]
+				"short1":2067161310, // short[]
+				"int1":100361105, // int[]
+				"long1":1097129250, // long[]
+				"float1":766441794, // float[]
+				"double1":1359468275, // double[]
+				"string1":1888107655, // String[]
+				"primitiveTypes1":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
 			},
 			false // inlineInstance
 		),
@@ -10425,1189 +9324,8 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getInt1
-		773709361 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1347703734 // Map<Integer,Integer>
-			},
-			{// names of inline elements
-				"result":1347703734 // Map<Integer,Integer>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getInt2
-		773709362 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1633750383 // Map<Integer,int[]>
-			},
-			{// names of inline elements
-				"result":1633750383 // Map<Integer,int[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getLong1
-		1782017274 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1973996106 // Map<Short,Long>
-			},
-			{// names of inline elements
-				"result":1973996106 // Map<Short,Long>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getObj1
-		773876265 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1488550492 // Map<String,Object>
-			},
-			{// names of inline elements
-				"result":1488550492 // Map<String,Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getPrimitiveTypes1
-		929079504 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			{// names of inline elements
-				"result":703065817 // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getShort1
-		786021252 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":601099730 // Map<Long,Short>
-			},
-			{// names of inline elements
-				"result":601099730 // Map<Long,Short>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getString1
-		1057096751 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1710660846 // Map<String,String>
-			},
-			{// names of inline elements
-				"result":1710660846 // Map<String,String>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setBoolean1
-		1712214692 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setByte1
-		1942905966 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setByte2
-		1942905967 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setChar1
-		1943305184 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setDouble1
-		311469445 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setFloat1
-		202902960 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setInt1
-		1461148355 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setInt2
-		1461148354 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setLong1
-		1951837562 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setObj1
-		1460981451 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setPrimitiveTypes1
-		9045852 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setShort1
-		571404176 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setString1
-		879708485 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_add
-		249123151 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getBool
-		1271040754 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1 // boolean
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getByte
-		1271030996 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2 // byte
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getChar
-		1271018118 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":4 // char
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getDouble
-		1642021643 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":8 // double
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getFloat
-		743953224 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":7 // float
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getInt
-		97552715 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getLong
-		1270742880 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":6 // long
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getObject
-		1339431837 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":21 // Object
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getPrimitiveTypes
-		1838927626 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1000 // com.wilutions.byps.test.api.prim.PrimitiveTypes
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getShort
-		732066088 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":3 // short
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getString
-		1208049355 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":10 // String
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_sendAllTypes
-		942211602 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setBool
-		789068826 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setByte
-		789078584 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setChar
-		789091462 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setDouble
-		1856638719 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setFloat
-		1305065684 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setInt
-		441102527 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setLong
-		789366700 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setObject
-		1554048913 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setPrimitiveTypes
-		1515886850 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setShort
-		1293178548 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setString
-		1422666431 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_voidFunctionVoid
-		1763813202 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteReferences_getNode
-		1480397220 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":9001 // com.wilutions.byps.test.api.refs.Node
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteReferences_setNode
-		579712360 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getBoolean1
-		571606866 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1365696060 // Set<Boolean>
-			},
-			{// names of inline elements
-				"result":1365696060 // Set<Boolean>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getByte1
-		1727045248 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":31512998 // HashSet<Byte>
-			},
-			{// names of inline elements
-				"result":31512998 // HashSet<Byte>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getByte2
-		1727045249 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2052431866 // Set<byte[]>
-			},
-			{// names of inline elements
-				"result":2052431866 // Set<byte[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getChar1
-		1727444466 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":936607009 // TreeSet<Character>
-			},
-			{// names of inline elements
-				"result":936607009 // TreeSet<Character>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getDouble1
-		972250345 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1320560671 // Set<Double>
-			},
-			{// names of inline elements
-				"result":1320560671 // Set<Double>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getFloat1
-		2101155294 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1898022288 // Set<Float>
-			},
-			{// names of inline elements
-				"result":1898022288 // Set<Float>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getInt1
-		1718477035 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1493282670 // Set<Integer>
-			},
-			{// names of inline elements
-				"result":1493282670 // Set<Integer>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getInt2
-		1718477036 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1406124761 // Set<int[]>
-			},
-			{// names of inline elements
-				"result":1406124761 // Set<int[]>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getLong1
-		1735976844 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1457164460 // Set<Long>
-			},
-			{// names of inline elements
-				"result":1457164460 // Set<Long>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getObj1
-		1718643939 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":14 // Set<Object>
-			},
-			{// names of inline elements
-				"result":14 // Set<Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getPrimitiveTypes1
-		950813750 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			{// names of inline elements
-				"result":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getShort1
-		1825310786 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2028443792 // Set<Short>
-			},
-			{// names of inline elements
-				"result":2028443792 // Set<Short>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getString1
-		404011305 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1888799711 // Set<String>
-			},
-			{// names of inline elements
-				"result":1888799711 // Set<String>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setBoolean1
-		483027038 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setByte1
-		1165932788 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setByte2
-		1165932789 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setChar1
-		1166332006 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setDouble1
-		964554891 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setFloat1
-		1886538218 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setInt1
-		516380681 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setInt2
-		516380680 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setLong1
-		1174864384 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setObj1
-		516213777 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setPrimitiveTypes1
-		1870847402 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setShort1
-		2039927862 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setString1
-		1532793931 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_getImage
-		115426612 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":15 // java.io.InputStream
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_getImages
-		716742439 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":476459792 // TreeMap<Integer,java.io.InputStream>
-			},
-			{// names of inline elements
-				"result":476459792 // TreeMap<Integer,java.io.InputStream>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_getTextStream
-		1795991492 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":15 // java.io.InputStream
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_setImage
-		676539072 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_setImages
-		502125363 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_throwLastException
-		1243858054 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim
-		1557084481 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim
-		1557173854 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteEnums
-		359349400 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteEnums),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteException
-		1959416539 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteException),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance
-		1206670536 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteListTypes
-		380156079 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteListTypes),
-		
 		// com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes
 		80483097 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes
-		1341983932 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteReferences
-		2086824050 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteReferences),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes
-		1156008353 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes),
-		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteStreams
-		2028487863 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteStreams),
-		
-		// com.wilutions.byps.test.api.remote.FirstException
-		11000 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"listOfStrings":2123584667, // List<String>
-				"cause":20 // Throwable
-			},
-			{// names of inline elements
-				"listOfStrings":2123584667, // List<String>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.remote.SecondException
-		11001 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"msg":10 // String
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.set.SetTypes
-		5001 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"boolean1":1365696060, // Set<Boolean>
-				"byte1":31512998, // HashSet<Byte>
-				"char1":936607009, // TreeSet<Character>
-				"short1":2028443792, // Set<Short>
-				"int1":1493282670, // Set<Integer>
-				"long1":1457164460, // Set<Long>
-				"float1":1898022288, // Set<Float>
-				"double1":1320560671, // Set<Double>
-				"string1":1888799711, // Set<String>
-				"primitiveTypes1":1280571537, // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"byte2":2052431866, // Set<byte[]>
-				"int2":1406124761, // Set<int[]>
-				"obj1":14 // Set<Object>
-			},
-			{// names of inline elements
-				"boolean1":1365696060, // Set<Boolean>
-				"byte1":31512998, // HashSet<Byte>
-				"char1":936607009, // TreeSet<Character>
-				"short1":2028443792, // Set<Short>
-				"int1":1493282670, // Set<Integer>
-				"long1":1457164460, // Set<Long>
-				"float1":1898022288, // Set<Float>
-				"double1":1320560671, // Set<Double>
-				"string1":1888799711, // Set<String>
-				"primitiveTypes1":1280571537, // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-				"byte2":2052431866, // Set<byte[]>
-				"int2":1406124761, // Set<int[]>
-				"obj1":14 // Set<Object>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_getStreams
-		865920738 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"ctrl":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_incrementInt
-		1461829915 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"a":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_putStreams
-		242798857 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"strm":1218831438, // List<java.io.InputStream>
-				"ctrl":5 // int
-			},
-			{// names of inline elements
-				"strm":1218831438, // List<java.io.InputStream>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_sendChat
-		1352392091 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"cs":7007 // com.wilutions.byps.test.api.srvr.ChatStructure
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt
-		1252575894 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"v":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClient
-		2107407220 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"id":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds
-		2063368540 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getPartner
-		748402113 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
-		1415283169 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient
-		1367013829 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"streams":1218831438 // List<java.io.InputStream>
-			},
-			{// names of inline elements
-				"streams":1218831438 // List<java.io.InputStream>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap
-		1921080901 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"id":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_setPartner
-		1188403123 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"client":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_getStreams
-		1897164468 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1218831438 // List<java.io.InputStream>
-			},
-			{// names of inline elements
-				"result":1218831438 // List<java.io.InputStream>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_incrementInt
-		1720916535 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_putStreams
-		1274042587 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ClientIF_sendChat
-		1101039945 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":7007 // com.wilutions.byps.test.api.srvr.ChatStructure
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_callClientIncrementInt
-		846649496 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":5 // int
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getClient
-		1309389154 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getClientIds
-		1119377910 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1493282670 // Set<Integer>
-			},
-			{// names of inline elements
-				"result":1493282670 // Set<Integer>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getPartner
-		282841617 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getStreamsFromClient
-		2117724017 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1218831438 // List<java.io.InputStream>
-			},
-			{// names of inline elements
-				"result":1218831438 // List<java.io.InputStream>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_putStreamsOnClient
-		1000905741 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_registerWithClientMap
-		227959465 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_setPartner
-		2075320443 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BStub_ClientIF
-		1784257353 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.srvr.BStub_ClientIF),
-		
-		// com.wilutions.byps.test.api.srvr.BStub_ServerIF
-		1313562065 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.srvr.BStub_ServerIF),
-		
-		// com.wilutions.byps.test.api.srvr.ChatStructure
-		7007 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"msg":10, // String
-				"sentAt":8, // double
-				"receivedAt":8 // double
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.strm.Stream1
-		1541129345 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"is1":15, // java.io.InputStream
-				"contentType":10, // String
-				"arrStream":1950626768, // java.io.InputStream[]
-				"listStream":1218831438, // List<java.io.InputStream>
-				"mapStream":779528402 // Map<Integer,java.io.InputStream>
-			},
-			{// names of inline elements
-				"arrStream":1950626768, // java.io.InputStream[]
-				"listStream":1218831438, // List<java.io.InputStream>
-				"mapStream":779528402 // Map<Integer,java.io.InputStream>
-			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getClient
-		98720592 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getEvolve
-		32041374 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient
-		1425170268 : new com.wilutions.byps.BSerializer(
-			null,
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setClient
-		313337668 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"partner":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setEvolve
-		246658450 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"obj":1391985860 // com.wilutions.byps.test.api.ver.Evolve
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_getClient
-		811360678 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_getEvolve
-		744681460 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1391985860 // com.wilutions.byps.test.api.ver.Evolve
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_sendEvolveToClient
-		1931893518 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_setClient
-		1025977754 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_setEvolve
-		959298536 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":19 // void
-			},
-			null,
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.ver.BStub_EvolveIF
-		2078696281 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.ver.BStub_EvolveIF),
 		
 		// com.wilutions.byps.test.api.ver.Evolve
 		1391985860 : new com.wilutions.byps.BSerializer(
@@ -11717,12 +9435,297 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
-		// com.wilutions.byps.test.api.ver.Evolve2
-		573592593 : new com.wilutions.byps.BSerializer(
+		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim
+		1557173854 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getClientIds
+		1119377910 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
-				"n1":5 // int
+				"result":1493282670 // Set<Integer>
+			},
+			{// names of inline elements
+				"result":1493282670 // Set<Integer>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_registerWithClientMap
+		227959465 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
 			},
 			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getBoolean1
+		378509760 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1617670280 // List<Boolean>
+			},
+			{// names of inline elements
+				"result":1617670280 // List<Boolean>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteException_throwNullPointerException
+		2113544940 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat
+		1963594750 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1516687588 // float[][][][]
+			},
+			{// names of inline elements
+				"v":1516687588 // float[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_setNode
+		1404172848 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":9001 // com.wilutions.byps.test.api.refs.Node
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getChar1
+		1319940748 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_throwLastException
+		1243858054 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteStreams
+		2028487863 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteStreams),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getChar1
+		1790549652 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":8789515 // TreeMap<Float,Character>
+			},
+			{// names of inline elements
+				"result":8789515 // TreeMap<Float,Character>
+			},
+			false // inlineInstance
+		),
+		
+		// char[][][][]
+		769021986 : new com.wilutions.byps.BSerializerArray(
+			4, // Element type: char
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setFloat1
+		2138824848 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"float1":1628501332 // List<Float>
+			},
+			{// names of inline elements
+				"float1":1628501332 // List<Float>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort
+		1390595154 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
+		362230997 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":588723219 // String[][][][]
+			},
+			{// names of inline elements
+				"v":588723219 // String[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte
+		143850752 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":2 // byte
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getDouble
+		167983302 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1359468275 // double[]
+			},
+			{// names of inline elements
+				"result":1359468275 // double[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getString1
+		1089360425 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2123584667 // List<String>
+			},
+			{// names of inline elements
+				"result":2123584667 // List<String>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
+		1610481740 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
+		195505829 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"double1":1555345627 // List<Double>
+			},
+			{// names of inline elements
+				"double1":1555345627 // List<Double>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setEvolve
+		246658450 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"obj":1391985860 // com.wilutions.byps.test.api.ver.Evolve
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
+		935089666 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.arr.ArrayTypes4dim
+		2004 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolean4":945713488, // boolean[][][][]
+				"byte4":1201775504, // byte[][][][]
+				"char4":769021986, // char[][][][]
+				"short4":1859644668, // short[][][][]
+				"int4":39910537, // int[][][][]
+				"long4":846419204, // long[][][][]
+				"float4":1516687588, // float[][][][]
+				"double4":2087445849, // double[][][][]
+				"string4":588723219, // String[][][][]
+				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+			},
+			{// names of inline elements
+				"boolean4":945713488, // boolean[][][][]
+				"byte4":1201775504, // byte[][][][]
+				"char4":769021986, // char[][][][]
+				"short4":1859644668, // short[][][][]
+				"int4":39910537, // int[][][][]
+				"long4":846419204, // long[][][][]
+				"float4":1516687588, // float[][][][]
+				"double4":2087445849, // double[][][][]
+				"string4":588723219, // String[][][][]
+				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteEnums
+		359349400 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteEnums),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort
+		149216892 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":3 // short
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool
+		2090997206 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1
+		77071512 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getChar1
+		2125285334 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// short[][][][]
+		1859644668 : new com.wilutions.byps.BSerializerArray(
+			3, // Element type: short
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getObject
+		1382069371 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":124584219 // Object[][][][]
+			},
+			{// names of inline elements
+				"result":124584219 // Object[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorListList
+		2080023171 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"actorListList":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
+			},
+			{// names of inline elements
+				"actorListList":1398598597 // List<List<com.wilutions.byps.test.api.inl.Actor>>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getBool
+		1329185616 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":945713488 // boolean[][][][]
+			},
+			{// names of inline elements
+				"result":945713488 // boolean[][][][]
+			},
 			false // inlineInstance
 		),
 		
@@ -11732,46 +9735,55 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			1
 		),
 		
-		// double[][][][]
-		2087445849 : new com.wilutions.byps.BSerializerArray(
-			8, // Element type: double
-			4
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
+		1645902061 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
 		),
 		
-		// float[]
-		766441794 : new com.wilutions.byps.BSerializerArray(
-			7, // Element type: float
-			1
+		// com.wilutions.byps.test.api.list.ListTypes
+		3001 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolean1":1617670280, // List<Boolean>
+				"byte1":1059148284, // List<Byte>
+				"char1":1661807911, // List<Character>
+				"short1":1997002548, // List<Short>
+				"int1":181681714, // List<Integer>
+				"long1":1050216688, // List<Long>
+				"float1":1628501332, // List<Float>
+				"double1":1555345627, // List<Double>
+				"string1":2123584667, // List<String>
+				"primitiveTypes1":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"byte2":1174971318, // List<byte[]>
+				"int2":1752158699, // List<int[]>
+				"int4":1088217157, // List<int[][][][]>
+				"obj1":12 // List<Object>
+			},
+			{// names of inline elements
+				"boolean1":1617670280, // List<Boolean>
+				"byte1":1059148284, // List<Byte>
+				"char1":1661807911, // List<Character>
+				"short1":1997002548, // List<Short>
+				"int1":181681714, // List<Integer>
+				"long1":1050216688, // List<Long>
+				"float1":1628501332, // List<Float>
+				"double1":1555345627, // List<Double>
+				"string1":2123584667, // List<String>
+				"primitiveTypes1":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"byte2":1174971318, // List<byte[]>
+				"int2":1752158699, // List<int[]>
+				"int4":1088217157, // List<int[][][][]>
+				"obj1":12 // List<Object>
+			},
+			false // inlineInstance
 		),
 		
-		// float[][][][]
-		1516687588 : new com.wilutions.byps.BSerializerArray(
-			7, // Element type: float
-			4
-		),
-		
-		// int[]
-		100361105 : new com.wilutions.byps.BSerializerArray(
-			5, // Element type: int
-			1
-		),
-		
-		// int[][][][]
-		39910537 : new com.wilutions.byps.BSerializerArray(
-			5, // Element type: int
-			4
-		),
-		
-		// java.io.InputStream[]
-		1950626768 : new com.wilutions.byps.BSerializerArray(
-			15, // Element type: java.io.InputStream
-			1
-		),
-		
-		// Object[]
-		183594037 : new com.wilutions.byps.BSerializerArray(
-			21, // Element type: Object
-			1
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwFirstException
+		533533486 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
 		),
 		
 		// Object[][][][]
@@ -11780,10 +9792,87 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			4
 		),
 		
-		// String[]
-		1888107655 : new com.wilutions.byps.BSerializerArray(
-			10, // Element type: String
-			1
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte2
+		1319541531 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// double[][][][]
+		2087445849 : new com.wilutions.byps.BSerializerArray(
+			8, // Element type: double
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte1
+		1319541530 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getDouble1
+		521121385 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1555345627 // List<Double>
+			},
+			{// names of inline elements
+				"result":1555345627 // List<Double>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorArray4dim
+		333929444 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setBoolean1
+		467089588 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt4
+		874047764 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt
+		1252575894 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setChar
+		730946600 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setByte
+		343685565 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
 		),
 		
 		// String[][][][]
@@ -11792,16 +9881,839 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			4
 		),
 		
-		// long[]
-		1097129250 : new com.wilutions.byps.BSerializerArray(
-			6, // Element type: long
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt1
+		874047761 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getPrimitiveTypes1
+		950813750 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			{// names of inline elements
+				"result":1280571537 // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_sendAllTypes
+		942211602 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt3
+		874047763 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool
+		589253529 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":2058423690 // boolean[]
+			},
+			{// names of inline elements
+				"v":2058423690 // boolean[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt2
+		874047762 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getBool
+		1271040754 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1 // boolean
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// java.io.InputStream[]
+		1950626768 : new com.wilutions.byps.BSerializerArray(
+			15, // Element type: java.io.InputStream
 			1
 		),
 		
-		// long[][][][]
-		846419204 : new com.wilutions.byps.BSerializerArray(
-			6, // Element type: long
-			4
+		// com.wilutions.byps.test.api.srvr.BStub_ServerIF
+		1313562065 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.srvr.BStub_ServerIF),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1
+		1779393754 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolean1":1365696060 // Set<Boolean>
+			},
+			{// names of inline elements
+				"boolean1":1365696060 // Set<Boolean>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getLong1
+		1735976844 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1457164460 // Set<Long>
+			},
+			{// names of inline elements
+				"result":1457164460 // Set<Long>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getBool
+		1716433773 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2058423690 // boolean[]
+			},
+			{// names of inline elements
+				"result":2058423690 // boolean[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setDouble
+		1856638719 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setDouble1
+		964554891 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setLong1
+		1617101880 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"long1":1457164460 // Set<Long>
+			},
+			{// names of inline elements
+				"long1":1457164460 // Set<Long>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActor
+		299289599 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"act":171948703 // com.wilutions.byps.test.api.inl.Actor
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setFloat
+		1187410890 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getObject
+		134606504 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":183594037 // Object[]
+			},
+			{// names of inline elements
+				"result":183594037 // Object[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient
+		1425170268 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong
+		2033150218 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool
+		2032852344 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong
+		588955655 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1097129250 // long[]
+			},
+			{// names of inline elements
+				"v":1097129250 // long[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1
+		1369351514 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getBoolean1
+		571606866 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1365696060 // Set<Boolean>
+			},
+			{// names of inline elements
+				"result":1365696060 // Set<Boolean>
+			},
+			false // inlineInstance
+		),
+		
+		// boolean[]
+		2058423690 : new com.wilutions.byps.BSerializerArray(
+			1, // Element type: boolean
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setString
+		51371910 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setObject
+		80010572 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar
+		589230893 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1361632968 // char[]
+			},
+			{// names of inline elements
+				"v":1361632968 // char[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1
+		1241980524 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inl.Point2D
+		1835035436 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"x":3, // short
+				"y":3 // short
+			},
+			null,
+			true // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setDouble1
+		311469445 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteException_throwBException
+		805985960 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setDouble
+		382600378 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_getStreams
+		865920738 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"ctrl":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getClient
+		98720592 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getPrimitiveTypes1
+		1298128264 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			{// names of inline elements
+				"result":1544333227 // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setChar
+		343698443 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getShort
+		1760410486 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1859644668 // short[][][][]
+			},
+			{// names of inline elements
+				"result":1859644668 // short[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// String[]
+		1888107655 : new com.wilutions.byps.BSerializerArray(
+			10, // Element type: String
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setShort1
+		1395864664 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"short1":601099730 // Map<Long,Short>
+			},
+			{// names of inline elements
+				"short1":601099730 // Map<Long,Short>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.ChatStructure
+		7007 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"msg":10, // String
+				"sentAt":8, // double
+				"receivedAt":8 // double
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActor
+		1443251255 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setLong1
+		1951837562 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setPrimitiveTypes1
+		2076805380 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// byte[]
+		1374008726 : new com.wilutions.byps.BSerializerArray(
+			2, // Element type: byte
+			1
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setString1
+		763744869 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"string1":2123584667 // List<String>
+			},
+			{// names of inline elements
+				"string1":2123584667 // List<String>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_voidFunctionVoid
+		1763813202 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_sendChat
+		1352392091 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"cs":7007 // com.wilutions.byps.test.api.srvr.ChatStructure
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong
+		201707498 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":846419204 // long[][][][]
+			},
+			{// names of inline elements
+				"v":846419204 // long[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getString1
+		1268625399 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getLong1
+		1339779778 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getEvolve
+		32041374 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
+		161104028 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":7 // float
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
+		2091006964 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_setPartner
+		1188403123 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"client":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setInt
+		946246435 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setLong1
+		57099822 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getTextStream
+		1083407988 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim
+		1557084481 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim),
+		
+		// com.wilutions.byps.test.api.srvr.BStub_ClientIF
+		1784257353 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.srvr.BStub_ClientIF),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setByte1
+		66031418 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1
+		550206100 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolean1":1279823631 // Map<String,Boolean>
+			},
+			{// names of inline elements
+				"boolean1":1279823631 // Map<String,Boolean>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setByte2
+		66031417 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte2
+		758429071 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"byte2":1174971318 // List<byte[]>
+			},
+			{// names of inline elements
+				"byte2":1174971318 // List<byte[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte1
+		758429070 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"byte1":1059148284 // List<Byte>
+			},
+			{// names of inline elements
+				"byte1":1059148284 // List<Byte>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setLong
+		789366700 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getString1
+		1173060367 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getLong1
+		2116752956 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getDouble
+		1684659177 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2087445849 // double[][][][]
+			},
+			{// names of inline elements
+				"result":2087445849 // double[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getShort1
+		1573024156 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorArray1dim
+		699915651 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_getNode
+		655936732 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setLong1
+		1174864384 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble
+		796203285 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":2087445849 // double[][][][]
+			},
+			{// names of inline elements
+				"v":2087445849 // double[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getClient
+		1309389154 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setInt
+		441102527 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteListTypes
+		380156079 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteListTypes),
+		
+		// com.wilutions.byps.test.api.inherit.Class3
+		6003 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int3":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inherit.Class2
+		6002 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int2":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1
+		1794077576 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt
+		1265927470 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":100361105 // int[]
+			},
+			{// names of inline elements
+				"v":100361105 // int[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inherit.Class1Collections
+		6004 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"list1":317887457, // List<com.wilutions.byps.test.api.inherit.Class1>
+				"map1":981592984, // Map<String,com.wilutions.byps.test.api.inherit.Class1>
+				"set1":2114305573 // Set<com.wilutions.byps.test.api.inherit.Class1>
+			},
+			{// names of inline elements
+				"list1":317887457, // List<com.wilutions.byps.test.api.inherit.Class1>
+				"map1":981592984, // Map<String,com.wilutions.byps.test.api.inherit.Class1>
+				"set1":2114305573 // Set<com.wilutions.byps.test.api.inherit.Class1>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar
+		2091019842 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorArray4dim
+		700005024 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString
+		1154444878 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1888107655 // String[]
+			},
+			{// names of inline elements
+				"v":1888107655 // String[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setObj1
+		1991903927 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"obj1":14 // Set<Object>
+			},
+			{// names of inline elements
+				"obj1":14 // Set<Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getLong
+		1716135899 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1097129250 // long[]
+			},
+			{// names of inline elements
+				"result":1097129250 // long[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
+		2125684552 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte2
+		2125684551 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getDouble1
+		972250345 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1320560671 // Set<Double>
+			},
+			{// names of inline elements
+				"result":1320560671 // Set<Double>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString
+		1369061954 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorMap
+		1019539667 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat
+		1402482290 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
+		589243771 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1374008726 // byte[]
+			},
+			{// names of inline elements
+				"v":1374008726 // byte[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds
+		2063368540 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setBool
+		343675807 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
 		),
 		
 		// short[]
@@ -11810,10 +10722,1098 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			1
 		),
 		
-		// short[][][][]
-		1859644668 : new com.wilutions.byps.BSerializerArray(
-			3, // Element type: short
+		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_getEvolve
+		744681460 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1391985860 // com.wilutions.byps.test.api.ver.Evolve
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteException_throwFirstException
+		1025539738 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// long[][][][]
+		846419204 : new com.wilutions.byps.BSerializerArray(
+			6, // Element type: long
 			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getFloat1
+		1941525372 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImages
+		1158979935 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
+		1794219594 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"b":1, // boolean
+				"c":4, // char
+				"s":3, // short
+				"i":5, // int
+				"l":6, // long
+				"f":7, // float
+				"d":8, // double
+				"str":10, // String
+				"pt":1000, // com.wilutions.byps.test.api.prim.PrimitiveTypes
+				"o":21 // Object
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte
+		2032862102 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setShort1
+		1787641232 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"short1":1997002548 // List<Short>
+			},
+			{// names of inline elements
+				"short1":1997002548 // List<Short>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject
+		450975945 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":21 // Object
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getPartner
+		282841617 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inherit.Class1
+		6001 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int1":5, // int
+				"nextClass1":6001 // com.wilutions.byps.test.api.inherit.Class1
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setObj1
+		516213777 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getObject
+		1339431837 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":21 // Object
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// float[][][][]
+		1516687588 : new com.wilutions.byps.BSerializerArray(
+			7, // Element type: float
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getShort1
+		1000850298 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setChar1
+		1943305184 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorSet
+		1108125389 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
+			},
+			{// names of inline elements
+				"result":797794691 // Set<com.wilutions.byps.test.api.inl.Actor>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_throwLastException
+		2047657918 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject
+		278996403 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes
+		1341983932 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setShort1
+		1215467374 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"short1":2028443792 // Set<Short>
+			},
+			{// names of inline elements
+				"short1":2028443792 // Set<Short>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getLong1
+		504012638 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1050216688 // List<Long>
+			},
+			{// names of inline elements
+				"result":1050216688 // List<Long>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setBoolean1
+		1712214692 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.list.ListListTypes
+		3002 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int2":1746702954, // List<List<Integer>>
+				"int3":1633500852, // List<Map<Integer,List<TreeSet<Integer>>>>
+				"int24":1865834185 // List<List<int[][][][]>>
+			},
+			{// names of inline elements
+				"int2":1746702954, // List<List<Integer>>
+				"int3":1633500852, // List<Map<Integer,List<TreeSet<Integer>>>>
+				"int24":1865834185 // List<List<int[][][][]>>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setShort
+		1199298026 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getString1
+		404011305 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1888799711 // Set<String>
+			},
+			{// names of inline elements
+				"result":1888799711 // Set<String>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble
+		753565751 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":8 // double
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte
+		1645613945 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt4
+		1360809952 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int4":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
+			},
+			{// names of inline elements
+				"int4":1633500852 // List<Map<Integer,List<TreeSet<Integer>>>>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setBool
+		789068826 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getShort1
+		786021252 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":601099730 // Map<Long,Short>
+			},
+			{// names of inline elements
+				"result":601099730 // Map<Long,Short>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
+		1690813926 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getByte
+		1271030996 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2 // byte
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.priv.PrivateMembers
+		8001 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolVal":1, // boolean
+				"byteVal":2, // byte
+				"charVal":4, // char
+				"shortVal":3, // short
+				"intVal":5, // int
+				"longVal":6, // long
+				"floatVal":7, // float
+				"doubleVal":8, // double
+				"stringVal":10, // String
+				"primitiveTypes":1000, // com.wilutions.byps.test.api.prim.PrimitiveTypes
+				"arrBool":2058423690, // boolean[]
+				"arrInt":100361105, // int[]
+				"arrString":1888107655, // String[]
+				"arrPrimitiveTypes":801243127, // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"listBool":1617670280, // List<Boolean>
+				"listInt":181681714, // List<Integer>
+				"listString":2123584667, // List<String>
+				"listPrimitiveTypes":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"mapIntListString":132175071, // Map<Integer,List<String>>
+				"protInt":5, // int
+				"pprotInt":5 // int
+			},
+			{// names of inline elements
+				"arrBool":2058423690, // boolean[]
+				"arrInt":100361105, // int[]
+				"arrString":1888107655, // String[]
+				"arrPrimitiveTypes":801243127, // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"listBool":1617670280, // List<Boolean>
+				"listInt":181681714, // List<Integer>
+				"listString":2123584667, // List<String>
+				"listPrimitiveTypes":1544333227, // List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"mapIntListString":132175071, // Map<Integer,List<String>>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt1
+		1360809955 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int1":181681714 // List<Integer>
+			},
+			{// names of inline elements
+				"int1":181681714 // List<Integer>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt2
+		1360809954 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int2":1752158699 // List<int[]>
+			},
+			{// names of inline elements
+				"int2":1752158699 // List<int[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt3
+		1360809953 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int3":1746702954 // List<List<Integer>>
+			},
+			{// names of inline elements
+				"int3":1746702954 // List<List<Integer>>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setFloat1
+		1944613800 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_getStreamsFromClient
+		2117724017 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1218831438 // List<java.io.InputStream>
+			},
+			{// names of inline elements
+				"result":1218831438 // List<java.io.InputStream>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getLong1
+		1328473126 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getShort1
+		1361495508 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1997002548 // List<Short>
+			},
+			{// names of inline elements
+				"result":1997002548 // List<Short>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setFloat
+		1305065684 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.strm.Stream1
+		1541129345 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"is1":15, // java.io.InputStream
+				"contentType":10, // String
+				"arrStream":1950626768, // java.io.InputStream[]
+				"listStream":1218831438, // List<java.io.InputStream>
+				"mapStream":779528402 // Map<Integer,java.io.InputStream>
+			},
+			{// names of inline elements
+				"arrStream":1950626768, // java.io.InputStream[]
+				"listStream":1218831438, // List<java.io.InputStream>
+				"mapStream":779528402 // Map<Integer,java.io.InputStream>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat
+		522273269 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
+		104976387 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BResult_EvolveIF_setEvolve
+		959298536 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getString
+		1208049355 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getInt2
+		1718477036 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1406124761 // Set<int[]>
+			},
+			{// names of inline elements
+				"result":1406124761 // Set<int[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getDouble1
+		1625335791 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1487265161 // Map<Byte,Double>
+			},
+			{// names of inline elements
+				"result":1487265161 // Map<Byte,Double>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setObj1
+		1047136253 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"obj1":1488550492 // Map<String,Object>
+			},
+			{// names of inline elements
+				"obj1":1488550492 // Map<String,Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_getInt1
+		1718477035 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1493282670 // Set<Integer>
+			},
+			{// names of inline elements
+				"result":1493282670 // Set<Integer>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_incrementInt
+		1461829915 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"a":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setInt1
+		1461148355 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.Evolve2
+		573592593 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"n1":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteEnums_getPlanet
+		839369882 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1042475995 // com.wilutions.byps.test.api.enu.EnumPlanets
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getChar1
+		1348312156 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_setInt2
+		1461148354 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getObj1
+		773876265 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1488550492 // Map<String,Object>
+			},
+			{// names of inline elements
+				"result":1488550492 // Map<String,Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setClient
+		313337668 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"partner":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt
+		1609477282 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.ver.BStub_EvolveIF
+		2078696281 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.ver.BStub_EvolveIF),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
+		2032874980 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
+		720472590 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":1359468275 // double[]
+			},
+			{// names of inline elements
+				"v":1359468275 // double[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActorListList
+		248580343 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getFloat
+		1666234925 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":766441794 // float[]
+			},
+			{// names of inline elements
+				"result":766441794 // float[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
+		1415283169 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// byte[][][][]
+		1201775504 : new com.wilutions.byps.BSerializerArray(
+			2, // Element type: byte
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
+		1071498593 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":2067161310 // short[]
+			},
+			{// names of inline elements
+				"v":2067161310 // short[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_setImage
+		676539072 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_setObject
+		1554048913 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteStreams_getTextStream
+		1795991492 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":15 // java.io.InputStream
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.map.MapTypes
+		4001 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolean1":1279823631, // Map<String,Boolean>
+				"byte1":1972793385, // HashMap<Double,Byte>
+				"char1":8789515, // TreeMap<Float,Character>
+				"short1":601099730, // Map<Long,Short>
+				"int1":1347703734, // Map<Integer,Integer>
+				"long1":1973996106, // Map<Short,Long>
+				"float1":94341197, // Map<Character,Float>
+				"double1":1487265161, // Map<Byte,Double>
+				"string1":1710660846, // Map<String,String>
+				"primitiveTypes1":703065817, // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"byte2":1799280818, // Map<Integer,byte[]>
+				"int2":1633750383, // Map<Integer,int[]>
+				"obj1":1488550492 // Map<String,Object>
+			},
+			{// names of inline elements
+				"boolean1":1279823631, // Map<String,Boolean>
+				"byte1":1972793385, // HashMap<Double,Byte>
+				"char1":8789515, // TreeMap<Float,Character>
+				"short1":601099730, // Map<Long,Short>
+				"int1":1347703734, // Map<Integer,Integer>
+				"long1":1973996106, // Map<Short,Long>
+				"float1":94341197, // Map<Character,Float>
+				"double1":1487265161, // Map<Byte,Double>
+				"string1":1710660846, // Map<String,String>
+				"primitiveTypes1":703065817, // Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"byte2":1799280818, // Map<Integer,byte[]>
+				"int2":1633750383, // Map<Integer,int[]>
+				"obj1":1488550492 // Map<String,Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setObject
+		1596686447 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt1
+		1991737023 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int1":1493282670 // Set<Integer>
+			},
+			{// names of inline elements
+				"int1":1493282670 // Set<Integer>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_getString
+		1250686889 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":588723219 // String[][][][]
+			},
+			{// names of inline elements
+				"result":588723219 // String[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemotePrimitiveTypes_getShort
+		732066088 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":3 // short
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_setShort
+		2079507047 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.set.SetTypes
+		5001 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolean1":1365696060, // Set<Boolean>
+				"byte1":31512998, // HashSet<Byte>
+				"char1":936607009, // TreeSet<Character>
+				"short1":2028443792, // Set<Short>
+				"int1":1493282670, // Set<Integer>
+				"long1":1457164460, // Set<Long>
+				"float1":1898022288, // Set<Float>
+				"double1":1320560671, // Set<Double>
+				"string1":1888799711, // Set<String>
+				"primitiveTypes1":1280571537, // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"byte2":2052431866, // Set<byte[]>
+				"int2":1406124761, // Set<int[]>
+				"obj1":14 // Set<Object>
+			},
+			{// names of inline elements
+				"boolean1":1365696060, // Set<Boolean>
+				"byte1":31512998, // HashSet<Byte>
+				"char1":936607009, // TreeSet<Character>
+				"short1":2028443792, // Set<Short>
+				"int1":1493282670, // Set<Integer>
+				"long1":1457164460, // Set<Long>
+				"float1":1898022288, // Set<Float>
+				"double1":1320560671, // Set<Double>
+				"string1":1888799711, // Set<String>
+				"primitiveTypes1":1280571537, // Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"byte2":2052431866, // Set<byte[]>
+				"int2":1406124761, // Set<int[]>
+				"obj1":14 // Set<Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_setActorListList
+		1540726085 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort
+		411895568 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActorList
+		8055917 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
+			},
+			{// names of inline elements
+				"result":494001343 // List<com.wilutions.byps.test.api.inl.Actor>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.enu.UsePlanets
+		10000 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"planet":1042475995, // com.wilutions.byps.test.api.enu.EnumPlanets
+				"planet2":1042475995, // com.wilutions.byps.test.api.enu.EnumPlanets
+				"arrayOfPlanets":1092048313, // com.wilutions.byps.test.api.enu.EnumPlanets[]
+				"listOfPlanets":1590740862, // ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
+				"mapOfPlanets":252873856 // Map<String,com.wilutions.byps.test.api.enu.EnumPlanets>
+			},
+			{// names of inline elements
+				"arrayOfPlanets":1092048313, // com.wilutions.byps.test.api.enu.EnumPlanets[]
+				"listOfPlanets":1590740862, // ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
+				"mapOfPlanets":252873856 // Map<String,com.wilutions.byps.test.api.enu.EnumPlanets>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes
+		1881962430 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.prim.PrimitiveTypes
+		1000 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"boolVal":1, // boolean
+				"byteVal":2, // byte
+				"charVal":4, // char
+				"shortVal":3, // short
+				"intVal":5, // int
+				"longVal":6, // long
+				"floatVal":7, // float
+				"doubleVal":8, // double
+				"stringVal":10, // String
+				"objVal":21, // Object
+				"objVal2":21, // Object
+				"value":1, // boolean
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
+		1183778993 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt2
+		1803047450 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt
+		1318015101 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt3
+		1803047449 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt1
+		1803047451 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setFloat1
+		1886538218 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getByte2
+		1790948869 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1799280818 // Map<Integer,byte[]>
+			},
+			{// names of inline elements
+				"result":1799280818 // Map<Integer,byte[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteMapTypes_getByte1
+		1790948870 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1972793385 // HashMap<Double,Byte>
+			},
+			{// names of inline elements
+				"result":1972793385 // HashMap<Double,Byte>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_setInt4
+		1803047448 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes4dim_setPrimitiveTypes
+		1284488740 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt2
+		1991737024 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"int2":1406124761 // Set<int[]>
+			},
+			{// names of inline elements
+				"int2":1406124761 // Set<int[]>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActorArray1dim
+		240237169 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"actorArray":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
+			},
+			{// names of inline elements
+				"actorArray":1784131613 // com.wilutions.byps.test.api.inl.Actor[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance
+		1206670536 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setString1
+		668179837 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"string1":1710660846 // Map<String,String>
+			},
+			{// names of inline elements
+				"string1":1710660846 // Map<String,String>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1
+		461626272 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getString
+		265988986 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1888107655 // String[]
+			},
+			{// names of inline elements
+				"result":1888107655 // String[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteListTypes_getObj1
+		431977169 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":12 // List<Object>
+			},
+			{// names of inline elements
+				"result":12 // List<Object>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteSetTypes_setShort1
+		2039927862 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":19 // void
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.inl.Actor[][][][]
+		193284349 : new com.wilutions.byps.BSerializerArray(
+			171948703, // Element type: com.wilutions.byps.test.api.inl.Actor
+			4
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getInt
+		193909466 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":100361105 // int[]
+			},
+			{// names of inline elements
+				"result":100361105 // int[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImages
+		944362859 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"istrms":779528402, // Map<Integer,java.io.InputStream>
+				"doNotReadStreamAtKey":5 // int
+			},
+			{// names of inline elements
+				"istrms":779528402, // Map<Integer,java.io.InputStream>
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject
+		493613479 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"v":124584219 // Object[][][][]
+			},
+			{// names of inline elements
+				"v":124584219 // Object[][][][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.srvr.BResult_ServerIF_callClientIncrementInt
+		846649496 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BResult_RemoteArrayTypes1dim_getByte
+		1716424015 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1374008726 // byte[]
+			},
+			{// names of inline elements
+				"result":1374008726 // byte[]
+			},
+			false // inlineInstance
 		),
 	};
 };
