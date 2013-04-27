@@ -1,10 +1,13 @@
 package com.wilutions.byps.gen.cpp;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -25,22 +28,20 @@ class GenApiClass {
 		CodePrinter prCpp = null;
 
 		if (serInfo.isBuiltInType()) {
-			// Für int, long, java.lang.String, java.lang.Object, java.util.Map, usw.
-			// werden keine Forward-Decl benötigt
+			
 		}
-		else if (serInfo.isCollectionType()) {
-			// keine Forward-Decl für vector, set, map
+		else if (serInfo.isStubType()) {
+			// GenRemoteStub
 		}
-		else if (serInfo.isArrayType()) {
-			// keine Forward-Decl für int[] usw. -> wird zu vector<int>
-		}
-		else if (isResultClass(serInfo) || isRequestClass(serInfo)) {
-			prH = pctxt.prImplAllH;
-			prCpp = pctxt.prImplC;
+		else if (serInfo.isCollectionType() || serInfo.isArrayType() || 
+				serInfo.isResultClass() || serInfo.isRequestClass() ||
+				serInfo.isStubType()) {
+			prH = pctxt.getPrImplAllH();
+			prCpp = pctxt.getPrImplC();
 		}
 		else {
-			prH = pctxt.prApiAllH;
-			prCpp = pctxt.prImplC;
+			prH = pctxt.getPrApiAllH();
+			prCpp = pctxt.getPrImplC();
 		}
 
 		if (prH != null && prCpp != null) {
@@ -80,7 +81,7 @@ class GenApiClass {
 			String t = ""; // minfo.isTransient is unsupported by C++
 			
 			TypeInfoCpp cppMInfo = new TypeInfoCpp(minfo.type);
-			String typeName = cppMInfo.toString(serInfo.pack);
+			String typeName = cppMInfo.getTypeName(serInfo.pack);
 	
 			prH.print(access).print(f).print(s).print(t)
 			  .print(typeName).print(" ").print(minfo.name)
@@ -133,7 +134,7 @@ class GenApiClass {
 				prH.print(minfo.name).println(" = v;");
 			}
 			
-			if (isResultClass(serInfo)) {
+			if (serInfo.isResultClass()) {
 				prH.println("if (resp != null) resp.ready(this);");
 			}
 			
@@ -152,7 +153,7 @@ class GenApiClass {
 			if (enumInfo != null && enumInfo.members.size() != 0) {
 				MemberInfo minfo = enumInfo.members.get(0);
 				TypeInfoCpp mtinfoCpp = new TypeInfoCpp(minfo.type);
-				return mtinfoCpp.namespace + "::" + enumInfo.members.get(0).name;
+				return mtinfoCpp.namespace + "::" + enumInfo.name + "::" + minfo.name;
 			}
 		}
 		else if (tinfo.qname.equals("boolean")) return "false";
@@ -170,10 +171,15 @@ class GenApiClass {
 		
 		String qname = cppInfo.getQClassName();
 		
-		prH.print("public: ").print(serInfo.name).println("();");
+		if (serInfo.isStubType()) {
+			prH.print("public: ").print(serInfo.name).println("(PTransport transport);");
+			prC.print(qname).print("::").print(serInfo.name).println("(PTransport transport) : BStub(transport) {");
+		}
+		else {
+			prH.print("public: ").print(serInfo.name).println("();");
+			prC.print(qname).print("::").print(serInfo.name).println("() {");
+		}
 		
-		// Default constructor
-		prC.print(qname).print("::").print(serInfo.name).println("() {");
 		prC.beginBlock();
 		for (MemberInfo minfo : serInfo.members) {
 			String defaultValue = getDefaultValue(minfo.type);
@@ -183,37 +189,34 @@ class GenApiClass {
 		prC.endBlock();
 		prC.println("}");
 
-		// Constructor with initializer list
-		if (serInfo.members.size() != 0) {
-			boolean first = true;
-			StringBuilder sbuf = new StringBuilder();
-			sbuf.append(serInfo.name).append("(");
-			for (MemberInfo minfo : serInfo.members) {
-				if (first) first = false; else sbuf.append(", ");
-				TypeInfoCpp mtinfoCpp = new TypeInfoCpp(minfo.type);
-				sbuf.append(mtinfoCpp.toString(serInfo.pack)).append(" ").append(minfo.name);
-			}
-			sbuf.append(")");
-			
-			prH.print("public: ").print(sbuf.toString()).println(";");
-			prC.print(qname).print("::").print(sbuf.toString()).println(" {");
-			
-			prC.beginBlock();
-			for (MemberInfo minfo : serInfo.members) {
-				prC.print("this->").print(minfo.name).print(" = ").print(minfo.name).println(";");
-			}
-			prC.endBlock();
-			prC.println("}");
-		}
+//      Konstruktor mit Initialisierungsliste macht keinen Sinn, weil er sich ändert, wenn Datenelemente hinzukommen. 
+//		if (serInfo.members.size() != 0) {
+//			boolean first = true;
+//			StringBuilder sbuf = new StringBuilder();
+//			sbuf.append(serInfo.name).append("(");
+//			for (MemberInfo minfo : serInfo.members) {
+//				if (first) first = false; else sbuf.append(", ");
+//				TypeInfoCpp mtinfoCpp = new TypeInfoCpp(minfo.type);
+//				sbuf.append(mtinfoCpp.toString(serInfo.pack)).append(" ").append(minfo.name);
+//			}
+//			sbuf.append(")");
+//			
+//			prH.print("public: ").print(sbuf.toString()).println(";");
+//			prC.print(qname).print("::").print(sbuf.toString()).println(" {");
+//			
+//			prC.beginBlock();
+//			for (MemberInfo minfo : serInfo.members) {
+//				prC.print("this->").print(minfo.name).print(" = ").print(minfo.name).println(";");
+//			}
+//			prC.endBlock();
+//			prC.println("}");
+//		}
 		
 	}
 
-	private void printDestructor() throws IOException {
-		String qname = cppInfo.getQClassName();
-		prH.print("public: virtual ~").print(serInfo.name).println("() throw();");
-		prC.print(qname).print("::~").print(serInfo.name).println("() throw() {");
-		prC.println("}");
-	}
+//	private void printDestructor() throws IOException {
+//		prH.print("public: virtual ~").print(serInfo.name).println("() throw() {}");
+//	}
 	
 	private void generateEnum() throws IOException
 	{
@@ -224,19 +227,21 @@ class GenApiClass {
 
 		pctxt.printComments(prH, serInfo.comments);
 		
-		prH.print("enum ").print(className).println(" {");
+		prH.print("namespace ").print(className).println(" {");
 		
 		prH.beginBlock();
 		
-		for (MemberInfo minfo : serInfo.members) {
+		for (int i = 0; i < serInfo.members.size(); i++) {
+			MemberInfo minfo = serInfo.members.get(i);
 			pctxt.printComments(prH, minfo.comments);
-			prH.print(minfo.name).print(" = ").print(minfo.value).println(",");
+			prH.print("const int32_t ").print(minfo.name).print(" = ").print(minfo.value)
+			   .println(";");
 		}
 		
 		prH.println();
 		
 		prH.endBlock();
-		prH.println("};");
+		prH.println("}");
 
 		endClass(prH);
 	}
@@ -257,12 +262,21 @@ class GenApiClass {
 	}
 	
 	private void generate() throws IOException {
-		if (serInfo.isEnum) {
-			generateEnum();
+		if (serInfo.isCollectionType() || serInfo.isArrayType()) {
+			printSerializer();
+			
 		}
 		else {
-			generateClass();
+			if (serInfo.isEnum) {
+				generateEnum();
+			}
+			else {
+				generateClass();
+				printSerializer();
+			}
 		}
+
+
 	}
 	
 	private void generateClass() throws IOException {
@@ -275,19 +289,24 @@ class GenApiClass {
 
 		pctxt.printComments(prH, serInfo.comments);
 		
+		prC.println();
+		pctxt.printLine(prC);
+		prC.println("// Implementation of class " + className);
+		prC.println();
+		
 		//pr.println("@SuppressWarnings(\"serial\")");
 
 		{
 			CodePrinter mpr = prH.print("class ").print(className);
-			if (isResultClass(serInfo)) {
+			if (serInfo.isResultClass()) {
 				String rtype = pctxt.getReturnType(methodInfo, serInfo.pack);
 				if (rtype.equals("void")) rtype = "bool";
-				String baseClass = "BMethodResult< " + rtype + ", " + serInfo.typeId + " >";
+				String baseClass = "BMethodResult< " + rtype + " >";
 				mpr.print(" : public ").print(baseClass);
 			}
-			else if (isRequestClass(serInfo)) {
+			else if (serInfo.isRequestClass()) {
 				int remoteId = methodInfo.remoteInfo.typeId;
-				mpr.print(" : public BMethodRequestT< " + serInfo.typeId + ", " + remoteId + " >");
+				mpr.print(" : public BMethodRequestT< " + remoteId + " >");
 			}
 			else 
 			{
@@ -295,7 +314,7 @@ class GenApiClass {
 					mpr.print(" : public ").print(baseCppInfo.getClassName(serInfo.pack));
 				}
 				else {
-					mpr.print(" : public BSerializableT<" + serInfo.typeId + ">");
+					mpr.print(" : public BSerializable");
 				}
 			}
 			
@@ -304,41 +323,133 @@ class GenApiClass {
 		
 		prH.beginBlock();
 		
-		if (!isResultClass(serInfo)) {
+		if (!serInfo.isResultClass()) {
 			for (MemberInfo minfo : serInfo.members) {
 				printMember(minfo);
 			}
 		}
 		else {} // Result Klasse erbt Element result von BMethodResult
 		
-		if (!isResultClass(serInfo) && !isRequestClass(serInfo)) {
+		if (!serInfo.isResultClass() && !serInfo.isRequestClass()) {
 			printConstructors();
 		}
 		
-		printDestructor();
+		//printDestructor();
 
 		for (MemberInfo minfo : serInfo.members) {
 			printGetSet(minfo);
 		}
+
 		
-		TypeInfoCpp stinfoCpp = TypeInfoCpp.makeSerializerTypeInfoCpp(pctxt, serInfo);
-		prH.print("private: friend class ").print(stinfoCpp.getClassName(serInfo.pack)).println(";");
+		if (!serInfo.isResultClass()) {
+			printSerialize();
+		}
 		
 		prH.endBlock();
 		prH.println("};");
-
+		
 		endClass(prH);
 		
+		prC.println();
+
+	}
+	
+	private void printSerialize() {		
+
+		prH.print("public: void ")
+		.print("serialize(BIO& ar, const unsigned int version")
+		.println(");");
+
+		prC.print("void ")
+			.print(cppInfo.getClassName(""))
+			.print("::serialize(BIO& ").print("ar")
+			.print(", const unsigned int ").print("version")
+			.println(") {");
+		prC.beginBlock();
+		
+		if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
+			prC.print(serInfo.baseInfo.name).print("::serialize(ar, version);").println();
+		}
+		
+		printSerializeMembers(serInfo.getTypeMembers());
+		printSerializeMembers(serInfo.getPointerMembers());
+		
+		prC.endBlock();
+		prC.println("}");
+	}
+	
+	private void printSerializer() {		
+		String className = cppInfo.getClassName("");
+		
+		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);
+		prC.println(regCppInfo.namespaceBegin);
+		
+		prC.print("POBJECT ").print("BSerializer_" + serInfo.typeId)
+			.print("(BIO& bio, void* pObj)").println("{");
+		prC.beginBlock();
+		
+		prC.print("if (!pObj) return POBJECT(new ").print(className).println("());");
+		prC.print(className).print("& r = * ").print("reinterpret_cast<").print(className).print("*>(pObj);").println();
+		prC.println("bio & r;");
+		prC.println("return POBJECT();");
+
+		prC.endBlock();
+		prC.println("}");
+		
+		prC.println(regCppInfo.namespaceEnd);
+	}
+	
+
+	private void printSerializeMembers(List<MemberInfo> members) {
+		List<Integer> sinceStack = new ArrayList<Integer>();
+
+		for (MemberInfo minfo : members) {
+			if (minfo.isTransient) {
+				prC.print("// skip transient member ").print(minfo.name).println();
+			}
+			else if (minfo.type.typeId == BRegistry.TYPEID_VOID) {
+				// Type void can be used by method return values 
+			}
+			else {
+				printSerializeMember(minfo, sinceStack);
+			}
+		}
+		
+		for (int i = 0; i < sinceStack.size(); i++) {
+			prC.endBlock();
+			prC.println("}");
+		}
 	}
 
-	public static boolean isResultClass(TypeInfo serInfo) {
-		return serInfo.name.startsWith(MethodInfo.METHOD_RESULT_NAME_PREFIX);
+	private void printSerializeMember(MemberInfo minfo, List<Integer> sinceStack) {
+		if (minfo.since != 0) {
+			if (sinceStack.size() == 0 || sinceStack.get(sinceStack.size()-1) != minfo.since) {
+				sinceStack.add(minfo.since);
+				prC.print("if (version >= ").print(minfo.since).print(") {").println();
+				prC.beginBlock();
+			}
+		}
+		
+		if (serInfo.typeId == 839369882) {
+			serInfo.typeId = 839369882;
+		}
+		
+		TypeInfo tinfo = minfo.type;
+		if (tinfo.isEnum){
+//			prC.print("{ int32_t v = this->").print(minfo.name).print("; ")
+//			   .print("ar & v; ")
+//			   .print("this->").print(minfo.name).print(" = v; }")
+//			   .println();
+			prC.print("ar & ").print(minfo.name).print(";")
+			   .println();
+		}
+		else {
+			prC.print("ar & ").print(minfo.name).print(";")
+			   .println();
+		}
 	}
 
-	public static boolean isRequestClass(TypeInfo serInfo) {
-		return serInfo.name.startsWith(MethodInfo.METHOD_REQUEST_NAME_PREFIX);
-	}
-
+	
 	private final SerialInfo serInfo;
 	private final TypeInfoCpp cppInfo;
 	private final TypeInfoCpp baseCppInfo;

@@ -73,6 +73,13 @@ public class Utils {
 		return s;
 	}
 	
+	public static String firstCharToLower(String s) {
+		if (s != null && s.length() != 0) {
+			s = s.substring(0,1).toLowerCase() + s.substring(1);
+		}
+		return s;
+	}
+	
 	public static void purgeDirs(File[] dirs, String[] exts) throws IOException {
 		for (File dir : dirs) {
 			purgeDir(dir, exts);

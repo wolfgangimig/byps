@@ -327,40 +327,41 @@ class GenApiClass {
 		pr.println();
 		pr.println();
 		
-		if (isValueClass()) {
-
-			List<MemberInfo> constrMembers = new ArrayList<MemberInfo>();
-			for (MemberInfo minfo : serInfo.members) {
-				if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
-				if (minfo.isStatic) continue;
-				constrMembers.add(minfo);
-			}
-			
-			if (constrMembers.size() != 0) {
-				CodePrinter mpr = pr.print("public ").print(serInfo.name).print("(");
-				boolean first = true;
-				for (MemberInfo minfo : constrMembers) {
-					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
-					if (minfo.isStatic) continue;
-					if (!first) mpr.print(", "); else first = false; 
-			
-					String typeName = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
-					  mpr.print(typeName).print(" @").print(minfo.name);
-				}
-				mpr.println(") {");
-	
-				pr.beginBlock();
-				for (MemberInfo minfo : constrMembers) {
-					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
-					if (minfo.isStatic) continue;
-					pr.print("this._").print(minfo.name).print(" = @").print(minfo.name).println(";");
-				}
-				pr.endBlock();
-				
-				pr.print("}");
-				pr.println();
-			}
-		}
+//      Konstruktor mit Initialisierungsliste macht keinen Sinn, weil er sich ändert, wenn Datenelemente hinzukommen. 
+//		if (isValueClass()) {
+//
+//			List<MemberInfo> constrMembers = new ArrayList<MemberInfo>();
+//			for (MemberInfo minfo : serInfo.members) {
+//				if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
+//				if (minfo.isStatic) continue;
+//				constrMembers.add(minfo);
+//			}
+//			
+//			if (constrMembers.size() != 0) {
+//				CodePrinter mpr = pr.print("public ").print(serInfo.name).print("(");
+//				boolean first = true;
+//				for (MemberInfo minfo : constrMembers) {
+//					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
+//					if (minfo.isStatic) continue;
+//					if (!first) mpr.print(", "); else first = false; 
+//			
+//					String typeName = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
+//					  mpr.print(typeName).print(" @").print(minfo.name);
+//				}
+//				mpr.println(") {");
+//	
+//				pr.beginBlock();
+//				for (MemberInfo minfo : constrMembers) {
+//					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
+//					if (minfo.isStatic) continue;
+//					pr.print("this._").print(minfo.name).print(" = @").print(minfo.name).println(";");
+//				}
+//				pr.endBlock();
+//				
+//				pr.print("}");
+//				pr.println();
+//			}
+//		}
 		
 		log.debug(")printConstructors");
 	}

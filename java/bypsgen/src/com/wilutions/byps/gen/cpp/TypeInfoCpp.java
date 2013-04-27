@@ -73,20 +73,14 @@ class TypeInfoCpp {
 		StringBuilder tbuf = new StringBuilder();
 		
 		if (tinfo.dims.length() != 0) {
-			if (purpose == Purpose.PARAM) {
-				tbuf.append("const ");
-			}
-			purpose = Purpose.TYPE;
-		}
-		
-		if (tinfo.dims.length() != 0) {
-			tbuf.append("byps_ptr< ");
-			for (int i = 0; i < tinfo.dims.length(); i+=2) {
-				tbuf.append("std::vector< "); 
-			}
+			int ndims = tinfo.dims.length() / 2;
+			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
+			tbuf.append("BArray").append(ndims).append("< ");
 			TypeInfo tinfoArg = new TypeInfo(tinfo.name, tinfo.qname, "", null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
 			tbuf.append(makeCppName(tinfoArg, currentPackage, Purpose.TYPE));
-			if (purpose == Purpose.PARAM || purpose == Purpose.RETURN) tbuf.append("&");
+			tbuf.append(" > ");
+			if (purpose != Purpose.CLASS) tbuf.append(">");
+			
 		}
 		else if (tinfo.qname.equals("boolean")) tbuf.append("bool");
 		else if (tinfo.qname.equals("java.lang.Boolean")) tbuf.append("bool");
@@ -127,21 +121,30 @@ class TypeInfoCpp {
 		}
 		
 		else if (tinfo.isListType()) {
-			tbuf.append("byps_ptr< ");
+			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
 			tbuf.append("std::vector< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
-			tbuf.append(" >");
+			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
 		else if (tinfo.isMapType()) {
-			tbuf.append("byps_ptr< ");
+			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
 			tbuf.append("std::map< ")
 				.append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" , ")
 				.append(makeCppName(tinfo.typeArgs.get(1), currentPackage, Purpose.TYPE)).append(" >");
-			tbuf.append(" >");
+			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
 		else if (tinfo.isSetType()) {
-			tbuf.append("byps_ptr< ");
+			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
 			tbuf.append("std::set< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
-			tbuf.append(" >");
+			if (purpose != Purpose.CLASS) tbuf.append(" >");
+		}
+		
+		else if (tinfo.isEnum) {
+			if (purpose == Purpose.CLASS) {
+				tbuf.append(tinfo.name); // Enum wird als namespace definiert
+			}
+			else {
+				tbuf.append("int32_t");
+			}
 		}
 		
 		else {
@@ -155,17 +158,23 @@ class TypeInfoCpp {
 					ns = qname.substring(0, p+1);
 				}
 				qname = ns;
-				if (purpose != Purpose.CLASS) qname += POINTER_CLASS_PREFIX;
-				qname += tinfo.name;
+				
+				if (purpose != Purpose.CLASS) {
+					if (tinfo.name.startsWith("BClient_") || 
+						tinfo.name.startsWith("BServer_") ||
+						tinfo.name.startsWith("BStub_") || 
+						tinfo.name.startsWith("BSkeleton_")) {
+						qname += POINTER_CLASS_PREFIX + tinfo.name.substring(1);
+					}
+					else {
+						qname += POINTER_CLASS_PREFIX + tinfo.name;
+					}
+				}
+				else {
+					qname += tinfo.name;
+				}
 			}
 			tbuf.append(qname);
-		}
-		
-		if (tinfo.dims.length() != 0) {
-			for (int i = 0; i < tinfo.dims.length(); i+=2) {
-				tbuf.append(" >"); // std::vector< 
-			}
-			tbuf.append(" >"); // byps_ptr< 
 		}
 		
 		return tbuf.toString();

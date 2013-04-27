@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
 
+import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.GeneratorProperties;
@@ -22,14 +23,14 @@ import com.wilutions.byps.gen.utils.Utils;
 
 class PrintContext extends PrintContextBase {
 	
-	CodePrinter prImplC;
+	private CodePrinter prImplC;
 
 	/**
 	 * Schreibt in den Header für öffentliche Definitionen.
 	 */
-	CodePrinter prApiAllH;
+	private CodePrinter prApiAllH;
 
-	CodePrinter prImplAllH;
+	private CodePrinter prImplAllH;
 
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
 		super(classDB, props);
@@ -50,20 +51,18 @@ class PrintContext extends PrintContextBase {
 		prApiAllH.print("#ifndef __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.print("#define __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.println();
-		prApiAllH.println("#include <Byps-api.h>");
-		prApiAllH.println("#include \"" + apiName + "-fwd.h\"");
-		prApiAllH.println("#pragma pack(push, 8)");
+		prApiAllH.println("#include <Byps.h>");
 		
 		File fileImplAllH = new File(dirImplH, apiName + "-impl.h");
 		prImplAllH = new CodePrinter(new FileOutputStream(fileImplAllH), false);
 		prImplAllH.print("#ifndef __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.print("#define __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.println();
-		prImplAllH.println("#include <Byps-impl.h>");
+		prImplAllH.println("#include <Byps.hpp>");
 		prImplAllH.print("#include <{0}>", apiName + "-api.h").println();
 		prImplAllH.println();
 
-		OutputStream osImplC = new SplitFileOutputStreamSource(null, apiName + "-impl-{0}.cpp", maxFileSize);
+		OutputStream osImplC = new SplitFileOutputStreamSource(null, apiName + "-impl-%03d.cpp", maxFileSize);
 		prImplC = new CodePrinter(osImplC, false);
 		
 	}
@@ -72,7 +71,6 @@ class PrintContext extends PrintContextBase {
 		prImplC.close();
 
 		prApiAllH.println();
-		prApiAllH.println("#pragma pack(pop)");
 		prApiAllH.println("#endif");
 		prApiAllH.close();
 		
@@ -168,16 +166,22 @@ class PrintContext extends PrintContextBase {
 		}
 		@Override
 		public void onOpenedSplitFile() throws IOException {
-			CodePrinter prImplC = new CodePrinter(this, false);
-			prImplC.print("#include \"{0}\"",
-					getDirRelative(dirImplC.getAbsolutePath(), dirImplH.getAbsolutePath()) + apiName + "-impl.h");
-			prImplC.println(); 
-			prImplC.println("using namespace std;");
-			prImplC.println("using namespace com::wilutions::byps;");
-			prImplC.println();
-			prImplC.flush();
+			printIncludeUsingForCpp(this);
 		}
 	};
+
+	private void printIncludeUsingForCpp(OutputStream os) throws IOException {
+		CodePrinter prImplC = new CodePrinter(os, false);
+		prImplC.print("#include \"{0}\"",
+				getDirRelative(dirImplC.getAbsolutePath(), dirImplH.getAbsolutePath()) + apiName + "-impl.h");
+		prImplC.println(); 
+		printDisableAllWarnings(prImplC);
+		prImplC.println(); 
+		prImplC.println("using namespace std;");
+		prImplC.println("using namespace com::wilutions::byps;");
+		prImplC.println();
+		prImplC.flush();
+	}
 
 	/**
 	 * Return the directory dirAbs relative to dirBase
@@ -312,11 +316,30 @@ class PrintContext extends PrintContextBase {
 		}
 		return name;
 	}
+	
+	enum EMethodDecl {
+		Header, StubImpl, SkeletonImpl
+	}
 
 	public CodePrinter printDeclareMethodAsync(CodePrinter pr,
-			RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
-		String methodName = makePublicMemberName(methodInfo.name);
-		CodePrinter mpr = pr.print("void ").print("async_").print(methodName).print("(");
+			RemoteInfo rinfo, MethodInfo methodInfo, EMethodDecl methodDecl) throws GeneratorException {
+		String methodName = "async_" + makePublicMemberName(methodInfo.name);
+		
+		String classNameMethodName = methodName;
+		String accessDecl = "public: virtual ";
+		switch (methodDecl) {
+		case SkeletonImpl: 
+			classNameMethodName = getSkeletonTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
+			accessDecl = "";
+			break;
+		case StubImpl: 
+			classNameMethodName = getStubTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
+			accessDecl = "";
+			break;
+		default: break;
+		}
+
+		CodePrinter mpr = pr.print(accessDecl).print("void ").print(classNameMethodName).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
@@ -337,14 +360,28 @@ class PrintContext extends PrintContextBase {
 	}
 
 	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo,
-			MethodInfo methodInfo) throws GeneratorException {
+			MethodInfo methodInfo, EMethodDecl methodDecl) throws GeneratorException {
 		String methodName = makePublicMemberName(methodInfo.name);
 
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
 		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
 		String rtype = tinfoCpp.toString(rinfo.pack);
+		
+		String classNameMethodName = methodName;
+		String accessDecl = "public: virtual ";
+		switch (methodDecl) {
+		case SkeletonImpl: 
+			classNameMethodName = getSkeletonTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
+			accessDecl = "";
+			break;
+		case StubImpl: 
+			classNameMethodName = getStubTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
+			accessDecl = "";
+			break;
+		default: break;
+		}
 
-		CodePrinter mpr = pr.print(rtype).print(" ").print(methodName).print("(");
+		CodePrinter mpr = pr.print(accessDecl).print(rtype).print(" ").print(classNameMethodName).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
@@ -358,13 +395,94 @@ class PrintContext extends PrintContextBase {
 		return mpr;
 	}
 
+	String getSerializerInstance(TypeInfo tinfo, BBinaryModel pformat) {
+		if (tinfo.isInline || tinfo.isArrayType() || tinfo.isCollectionType()) {
+			String pack = getSerializerPackage(tinfo);
+			String s = pack + "." + getSerializerClassName(tinfo, pformat) + "()";
+			return s;
+		}
+		else {
+			return null;
+		}
+	}
+
+	public String getRegistryClassName(BBinaryModel pformat) {
+		return "BRegistry_" + apiName;
+	}
+
+	public TypeInfoCpp getRegistryTypeInfoCpp(BBinaryModel pformat) {
+		String registryClassName = getRegistryClassName(pformat);
+		String pack = getRegistryPackage();
+		TypeInfo regInfo = new TypeInfo(registryClassName, pack + "." + registryClassName, "", null, false, false, false);
+		return new TypeInfoCpp(regInfo);
+	}
+	
+	public String getRegistryPackage() {
+		return apiPack;
+	}
+
+	public TypeInfoCpp getClientTypeInfoCpp() {
+		String cs = "BClient_" + apiName;
+		TypeInfo regInfo = new TypeInfo(cs, apiPack + "." + cs, "", null, false, false, false);
+		return new TypeInfoCpp(regInfo);
+	}
+	
+	public String getApiDescriptorPackage() {
+		return apiPack;
+	}
+	
+	public TypeInfoCpp getServerTypeInfoCpp() {
+		String cs = "BServer_" + apiName;
+		TypeInfo regInfo = new TypeInfo(cs, apiPack + "." + cs, "", null, false, false, false);
+		return new TypeInfoCpp(regInfo);
+	}
+	
+	public TypeInfoCpp getStubTypeInfoCpp(RemoteInfo rinfo) {
+		String cs = "BStub_" + rinfo.name;
+		TypeInfo regInfo = new TypeInfo(cs, rinfo.pack + "." + cs, "", null, false, false, false);
+		return new TypeInfoCpp(regInfo);
+	}
+	
+	public TypeInfoCpp getSkeletonTypeInfoCpp(RemoteInfo rinfo) {
+		String cs = "BSkeleton_" + rinfo.name;
+		TypeInfo regInfo = new TypeInfo(cs, rinfo.pack + "." + cs, "", null, false, false, false);
+		return new TypeInfoCpp(regInfo);
+	}
+	
+	public CodePrinter getPrImplC() {
+		prImplC.flush();
+		return prImplC;
+	}
+	
+	public CodePrinter getPrImplCForRegistry() throws IOException {
+//		File regFile = new File(dirImplC, apiName + "-impl-reg.cpp");
+//		FileOutputStream fos = new FileOutputStream(regFile);
+//		printIncludeUsingForCpp(fos);
+//		CodePrinter pr = new CodePrinter(fos, false);
+//		return pr;
+		return getPrImplC();
+	}
+
+	public CodePrinter getPrApiAllH() {
+		return prApiAllH;
+	}
+
+	public CodePrinter getPrImplAllH() {
+		return prImplAllH;
+	}
+
+
+	public void printDisableAllWarnings(CodePrinter pr) {
+		pr.println("#if __GNUC__");
+		pr.println("#pragma GCC diagnostic ignored \"-Wunused-parameter\"");
+		pr.println("#endif");
+	}
 
 	private File dirApi;
 	private File dirImplH;
 	private File dirImplC;
 	private int maxFileSize;
 	private Map<String,String> packageAliasMap;
-
 
 
 

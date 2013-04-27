@@ -232,7 +232,7 @@ public class GenSerStruct {
 
 		{ 
 			CodePrinter mpr = pr.print("public class ").print(serializerName).print(" : ");
-			if (serInfo.baseInfo != null) {
+			if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
 				mpr.print(baseSerializerName);
 			}
 			else {

@@ -13,30 +13,30 @@ public abstract class SplitFileOutputStream extends OutputStream {
 		this.dir = dir;
 		this.maxFileSize = maxFileSize;
 		this.fileNameFormat = fileNameFormat;
-		this.bos = new ByteArrayOutputStream();
-		onOpenedSplitFile();
+		ensureOpen();
 	}
 	
 	@Override
 	public void write(int b) throws IOException {
+		ensureOpen();
 		bos.write(b);
 	}
 	
 	@Override
 	public void write(byte[] b) throws IOException {
+		ensureOpen();
 		bos.write(b);
 	}
 	
 	@Override
 	public void write(byte[] b, int off, int len) throws IOException {
+		ensureOpen();
 		bos.write(b, off, len);
 	}
 
 	@Override
 	public void flush() throws IOException {
-		if (bos.size() >= maxFileSize) {
-			internalFlush();
-		}
+		internalFlushIfFull();
 	}
 	
 	@Override
@@ -44,9 +44,18 @@ public abstract class SplitFileOutputStream extends OutputStream {
 		internalFlush();
 	}
 	
+	private void internalFlushIfFull() throws IOException {
+		if (bos != null) {
+			int bos_size = bos.size();
+			if (bos_size >= maxFileSize) {
+				internalFlush();
+			}
+		}
+	}
+	
 	private void internalFlush() throws IOException {
 
-		String fname = MessageFormat.format(fileNameFormat, ++fileCount);
+		String fname = String.format(fileNameFormat, ++fileCount);
 		File splitFile = new File(dir, fname);
 		FileOutputStream fos = null;
 		try {
@@ -56,9 +65,15 @@ public abstract class SplitFileOutputStream extends OutputStream {
 		finally {
 			if (fos != null) fos.close();
 		}
-		bos.reset();
+		bos = null;
 		
 		onClosedSplitFile(splitFile);
+	}
+	
+	private void ensureOpen() throws IOException {
+		if (bos != null) return;
+		bos = new ByteArrayOutputStream();
+		onOpenedSplitFile();
 	}
 	
 	public abstract void onOpenedSplitFile() throws IOException ;

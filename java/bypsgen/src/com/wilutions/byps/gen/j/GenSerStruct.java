@@ -274,7 +274,7 @@ public class GenSerStruct {
 		pr.println("@SuppressWarnings(\"all\")");
 		{ 
 			CodePrinter mpr = pr.print("public class ").print(serializerName).print(" extends ");
-			if (serInfo.baseInfo != null) {
+			if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
 				mpr.print(baseSerializerName);
 			}
 			else {

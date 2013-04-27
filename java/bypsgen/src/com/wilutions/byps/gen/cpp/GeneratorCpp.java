@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.gen.api.Generator;
 import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -23,6 +24,9 @@ public class GeneratorCpp implements Generator {
 		pctxt = new PrintContext(classDB, props);
 		printSerials(classDB.getSerials());
 		printRemotes(classDB.getRemotes());
+		GenRegistry.generate(pctxt, classDB.getSerials(), BBinaryModel.MEDIUM);
+		GenClient.generate(pctxt, classDB.getApiDescriptor());
+		GenServer.generate(pctxt, classDB.getApiDescriptor());
 		pctxt.close();
 	}
 	
@@ -33,6 +37,8 @@ public class GeneratorCpp implements Generator {
 		
 		for (RemoteInfo rinfo : remotes) {
 			GenRemoteClass.generate(pctxt, rinfo);
+			GenRemoteSkeleton.generate(pctxt, rinfo);
+			GenRemoteStub.generate(pctxt, rinfo);
 		}
 	}
 
@@ -81,7 +87,6 @@ public class GeneratorCpp implements Generator {
 		
 		for (SerialInfo sinfo : arr) {
 			GenApiClass.generate(pctxt, sinfo);
-			//GenSerClass.generate(pctxt, sinfo);
 		}
 	}
 	

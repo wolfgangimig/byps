@@ -7,13 +7,13 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
+import com.wilutions.byps.gen.cpp.PrintContext.EMethodDecl;
 import com.wilutions.byps.gen.utils.CodePrinter;
 
 class GenRemoteClass {
 	
 	static Log log = LogFactory.getLog(GenRemoteClass.class);
 	
-	private final static String IMPL_SUFFIX = "";
 	
 	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
@@ -26,10 +26,9 @@ class GenRemoteClass {
 		this.pctxt = pctxt;
 		this.cppInfo = new TypeInfoCpp(rinfo);
 		this.baseCppInfo = cppInfo.getBaseInfo();
-		this.prH = pctxt.prApiAllH;
-		this.prC = pctxt.prImplC;
+		this.prH = pctxt.getPrApiAllH();
+		this.prC = pctxt.getPrImplC();
 		this.rinfo = rinfo;
-		this.interfaceName = IMPL_SUFFIX + rinfo.name;
 	}
 	
 	private void printMethod(MethodInfo methodInfo) throws IOException {
@@ -37,9 +36,7 @@ class GenRemoteClass {
 		
 		pctxt.printComments(prH, methodInfo.comments);
 		
-		CodePrinter mpr = prH.print("virtual ");
-		pctxt.printDeclareMethod(mpr, rinfo, methodInfo);
-		mpr.println(" = 0;");
+		pctxt.printDeclareMethod(prH, rinfo, methodInfo, EMethodDecl.Header).println(" = 0;");
 		
 		//log.debug(GeneratorJ.class.getName(), "printMember");
 	}
@@ -47,9 +44,7 @@ class GenRemoteClass {
 	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
-		CodePrinter mpr = prH.print("virtual ");
-		pctxt.printDeclareMethodAsync(mpr, rinfo, methodInfo);
-		mpr.println(" = 0;");
+		pctxt.printDeclareMethodAsync(prH, rinfo, methodInfo, EMethodDecl.Header).println(" = 0;");
 		
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 	}
@@ -67,7 +62,7 @@ class GenRemoteClass {
 		
 		//beginClass(prC, className);
 
-		prH.print("class ").print(interfaceName).println(" : public BRemote");
+		prH.print("class ").print(rinfo.name).println(" : public virtual BRemote");
 		prH.println("{");
 		
 		prH.beginBlock();
@@ -109,7 +104,6 @@ class GenRemoteClass {
 	}
 	
 
-	private final String interfaceName;
 	private final RemoteInfo rinfo;
 	private final TypeInfoCpp cppInfo;
 	private final TypeInfoCpp baseCppInfo;

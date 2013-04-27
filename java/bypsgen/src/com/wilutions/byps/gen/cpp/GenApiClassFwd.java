@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
 
@@ -17,6 +18,8 @@ class GenApiClassFwd {
 		log.info("Generate type " + tinfo.typeId + ": " + tinfo);
 		CodePrinter prH = null;
 		CodePrinter prCpp = null;
+		
+		SerialInfo serInfo = (tinfo instanceof SerialInfo) ? (SerialInfo)tinfo : null;
 		
 		if (tinfo.isBuiltInType()) {
 			// Für int, long, java.lang.String, java.lang.Object, java.util.Map, usw.
@@ -37,13 +40,14 @@ class GenApiClassFwd {
 		else if (tinfo.isArrayType()) {
 			// keine Forward-Decl für int[] usw. -> wird zu vector<int>
 		}
-		else if (GenApiClass.isResultClass(tinfo) || GenApiClass.isRequestClass(tinfo)) {
-			prH = pctxt.prImplAllH;
-			prCpp = pctxt.prImplC;
+		else if (serInfo != null && 
+				(serInfo.isResultClass() || serInfo.isRequestClass())) {
+			prH = pctxt.getPrImplAllH();
+			prCpp = pctxt.getPrImplC();
 		}
 		else {
-			prH = pctxt.prApiAllH;
-			prCpp = pctxt.prImplC;
+			prH = pctxt.getPrApiAllH();
+			prCpp = pctxt.getPrImplC();
 		}
 
 		if (prH != null && prCpp != null) {
