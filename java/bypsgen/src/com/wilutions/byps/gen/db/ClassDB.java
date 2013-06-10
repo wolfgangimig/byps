@@ -401,6 +401,12 @@ public class ClassDB {
 		return sinfo;
 	}
 
+	private SerialInfo makeValueClassSerialInfo() throws GeneratorException {
+		SerialInfo sinfo = new SerialInfo("BValueClass", null, "com.wilutions.byps.BValueClass", null, "", null, null, false, false, false);
+		sinfo.typeId = BRegistry.TYPEID_VALUECLASS;
+		return sinfo;
+	}
+
 	public ClassDB(ConstFieldReader tidProv) throws GeneratorException {
 		this.fieldReader = tidProv;
 		SerialInfo sinfo = makeExceptionSerialInfo();
@@ -414,6 +420,8 @@ public class ClassDB {
 	  	sinfo = makeListOfObjectSerialInfo();
 	  	serials.put(sinfo.toString(), sinfo);
 	  	sinfo = makeSetOfObjectSerialInfo();
+	  	serials.put(sinfo.toString(), sinfo);
+	  	sinfo = makeValueClassSerialInfo();
 	  	serials.put(sinfo.toString(), sinfo);
 	}
 	

@@ -83,6 +83,11 @@ public class TestRemoteServerR {
 	//@Test
 	public void testLoop10() throws InterruptedException, IOException {
 		setUp();
+		
+		for (int i = 0; i < 100; i++) {
+			testCallClientFromServer();
+		}
+		
 		for (int i = 0; i < 1; i++) {
 			Thread.sleep(rand.nextInt(1000));
 			testCallClient1FromServer1();
@@ -140,6 +145,38 @@ public class TestRemoteServerR {
 		log.info("callClientIncrementInt OK");
 		
 		TestUtils.assertEquals(log, "incrementInt", 6, r);
+		
+		log.info(")testCallClientFromServer");
+	}
+	
+	/**
+	 * Call a server function which in turn calls a client function many times simultaneously.
+	 * @throws BException
+	 * @throws InterruptedException
+	 */
+	@Test
+	public void testCallClientFromServerParallel() throws BException, InterruptedException {
+		log.info("testCallClientFromServerParallel(");
+		
+		// (1) Provide implementation for interface ClientIF
+		client.addRemote(new BSkeleton_ClientIF() {
+			@Override
+			public int incrementInt(int a) throws BException, InterruptedException {
+				log.info("incrementInt(");
+				Thread.sleep(500);
+				log.info(")incrementInt");
+				return a+1;
+			}
+		});
+		
+		// (2) Call server method. 
+		// On the server, this method calls the client-side interface 
+		// from step (1)
+		log.info("callClientIncrementInt...");
+		int r = remote.callClientParallel(10);
+		log.info("callClientIncrementInt OK");
+		
+		TestUtils.assertEquals(log, "callClientParallel", 10, r);
 		
 		log.info(")testCallClientFromServer");
 	}

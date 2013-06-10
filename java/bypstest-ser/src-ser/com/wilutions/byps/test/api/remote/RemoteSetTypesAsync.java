@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteSetTypesAsync extends RemoteSetTypes {
+public interface RemoteSetTypesAsync extends RemoteSetTypes, BRemote {
 
 	public void async_getBoolean1(final BAsyncResult<java.util.Set<java.lang.Boolean>> asyncResult) ;
 	

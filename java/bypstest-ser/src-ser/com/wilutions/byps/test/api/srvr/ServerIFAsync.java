@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface ServerIFAsync extends ServerIF {
+public interface ServerIFAsync extends ServerIF, BRemote {
 
 	public void async_callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) ;
 	
@@ -24,6 +24,8 @@ public interface ServerIFAsync extends ServerIF {
 	public void async_getClient(int id, final BAsyncResult<ClientIF> asyncResult) ;
 	
 	public void async_getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) ;
+	
+	public void async_callClientParallel(int v, final BAsyncResult<Integer> asyncResult) ;
 	
 	
 }

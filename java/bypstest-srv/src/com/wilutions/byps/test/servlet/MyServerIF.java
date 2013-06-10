@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -108,5 +112,34 @@ public class MyServerIF extends BSkeleton_ServerIF {
 	@Override
 	public Set<Integer> getClientIds() throws BException, InterruptedException {
 		return clientMap.keySet();
+	}
+	
+	@Override
+	public int callClientParallel(int nbOfCalls) throws BException,
+			InterruptedException {
+		if (log.isDebugEnabled()) log.debug("callClientParallel(" + nbOfCalls);
+		final ClientIF clientIF = getClientIF();
+		final AtomicInteger ret = new AtomicInteger(0);
+		ExecutorService tpool = Executors.newCachedThreadPool();
+		for (int i = 0; i < nbOfCalls; i++) {
+			Runnable run = new Runnable() {
+				public void run() {
+					try {
+						if (log.isDebugEnabled()) log.debug("clientIF.incrementInt(");
+						int v = clientIF.incrementInt(0);
+						if (log.isDebugEnabled()) log.debug(")clientIF.incrementInt");
+						ret.addAndGet(v);
+					}
+					catch (Exception e) {
+						log.error(e);
+					}
+				}
+			};
+			tpool.execute(run);
+		}
+		tpool.shutdown();
+		tpool.awaitTermination(10, TimeUnit.SECONDS);
+		if (log.isDebugEnabled()) log.debug(")callClientParallel");
+		return ret.get();
 	}
 }

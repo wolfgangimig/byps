@@ -112,7 +112,7 @@ public class HWireServer extends BWire {
     }
 
 	@Override
-	public InputStream getStream(long messageId, long streamId) throws IOException {
+	public BContentStream getStream(long messageId, long streamId) throws IOException {
     	if (log.isDebugEnabled()) log.debug("getStream(messageId=" + messageId + ", streamId=" + streamId);
 		MyIncomingInputStream is = new MyIncomingInputStream(messageId, streamId);
     	if (log.isDebugEnabled()) log.debug(")getStream=" + is);

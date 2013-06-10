@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteArrayTypes1dimAsync extends RemoteArrayTypes1dim {
+public interface RemoteArrayTypes1dimAsync extends RemoteArrayTypes1dim, BRemote {
 
 	public void async_setBool(boolean[] v, final BAsyncResult<Object> asyncResult) ;
 	

@@ -33,6 +33,8 @@ public class TestUtilsHttp {
 	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	
+	private static Executor tpool = Executors.newCachedThreadPool();
+	
 	public static BClient_Testser createClient() throws BException, InterruptedException {
 		return createClient(TestUtils.bmodel, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
 	}
@@ -51,8 +53,6 @@ public class TestUtilsHttp {
 			registry = new BRegistry_Testser(bmodel);
 		}
 		
-		Executor threadPool = Executors.newCachedThreadPool();
-		
 		System.setProperty("http.maxConnections", "100");
 		
 		// Define an API descriptor with an application version from static member appVersion.
@@ -66,8 +66,8 @@ public class TestUtilsHttp {
 				registry
 				);
 
-		BWire wire = new HWireClient(url, flags, threadPool);
-		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire); 
+		BWire wire = new HWireClient(url, flags, 120*1000, tpool);
+		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 3); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 
@@ -77,7 +77,7 @@ public class TestUtilsHttp {
 		syncResult.getResult();
 		return client;
 	}
-	
+		
 	public static ArrayList<InputStream> makeTestStreams() throws IOException {
 		log.info("makeTestStreams(");
 		ArrayList<InputStream> ret = new ArrayList<InputStream>();

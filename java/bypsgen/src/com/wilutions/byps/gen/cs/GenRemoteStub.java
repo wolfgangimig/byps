@@ -51,7 +51,8 @@ class GenRemoteStub {
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
-			mpr.print(pinfo.name);
+			String mname = pctxt.makeValidMemberName(pinfo.name);
+			mpr.print(mname);
 		}
 		if (!first) mpr.print(", ");
 		mpr.print("asyncResult");
@@ -108,7 +109,8 @@ class GenRemoteStub {
 		pr.println();
 		
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-			pr.print("req._").print(pinfo.name).print(" = ").print(pinfo.name).print(";").println();
+			String mname = pctxt.makeValidMemberName(pinfo.name);
+			pr.print("req._").print(pinfo.name).print(" = ").print(mname).print(";").println();
 		}
 		
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
@@ -131,7 +133,7 @@ class GenRemoteStub {
 		
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
 		String asyncProgModel = "BAsyncProgModel<" + rtype + ">";
-		pr.print(asyncProgModel).print(" ret = new ").print(asyncProgModel).print("(callback, state);").println();
+		pr.print(asyncProgModel).print(" _byps_ret = new ").print(asyncProgModel).print("(callback, state);").println();
         
 		String methodName = pctxt.makePublicMemberName(methodInfo.name);
 		mpr = pr.print("async_").print(methodName).print("(");
@@ -139,12 +141,13 @@ class GenRemoteStub {
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
-			mpr.print(pinfo.name);
+			String mname = pctxt.makeValidMemberName(pinfo.name);
+			mpr.print(mname);
 		}
 		if (!first) mpr = mpr.print(", ");
-		mpr.print("ret);").println();
+		mpr.print("_byps_ret);").println();
 		
-		pr.println("return ret;");
+		pr.println("return _byps_ret;");
 		pr.endBlock();
 		pr.println("}");
 	}

@@ -157,7 +157,7 @@ public class BMessageHeader {
 	}
 	
 	public final void read(ByteBuffer buf) throws BException {
-		int magic = readProtocol(buf);
+		magic = readProtocol(buf);
 		switch (magic) {
 		case MAGIC_BINARY_STREAM_LE: 
 			byteOrder = ByteOrder.LITTLE_ENDIAN;

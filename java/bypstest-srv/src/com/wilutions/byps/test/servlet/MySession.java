@@ -58,7 +58,6 @@ public class MySession extends HSession {
 		server.addRemote(new MyRemoteListTypes());
 		server.addRemote(new MyRemoteArrayTypes4dim());
 		server.addRemote(new MyRemoteMapTypes());
-		server.addRemote(new MyRemoteException());
 		server.addRemote(new MyServerIF(this));
 		server.addRemote(myRemoteStreams);
 		server.addRemote(new MyEvolve(this));

@@ -24,26 +24,45 @@ public class CompileSource implements ConstFieldReader {
 
 	public CompileSource(String tempDir, String[] sourceDirs, String classpath) throws GeneratorException {
 		
-		String jhome = System.getProperty("java.home");
 		
 		File foutDir = new File(tempDir, "bin");
 		foutDir.mkdirs();
 		
-		compile(new String[] {
-				"-g:none",
-//				"-classpath", classpath,
-				"-bootclasspath", jhome + "\\lib\\rt.jar", 
-				"-source", "1.5", "-target", "1.5",
-				"-d", foutDir.getAbsolutePath()}, 
-				sourceDirs);
+		ArrayList<String> params = new ArrayList<String>();
+		
+		params.add("-g:none");
+		
+		if (classpath != null && classpath.length() != 0) {
+			params.add("-classpath");
+			params.add(classpath);
+		}
+		
+		String jhome = System.getProperty("java.home");
+		params.add("-bootclasspath");
+		params.add(jhome + "\\lib\\rt.jar");
+		
+		params.add("-source");
+		params.add("1.5");
+		
+		params.add("-target");
+		params.add("1.5");
+		
+		params.add("-d");
+		params.add(foutDir.getAbsolutePath());
+		
+		compile(params.toArray(new String[0]), sourceDirs);
 
 		
 		// -classpath erlaubt mir, zus. JARs einzubinden. so kann ich die IX-Klassen übersetzen.
 		// Wenn ich die Testklassen übersetzen will, ist aber BRemote nicht mehr bekannt. Wie das?
 		
 		try {
-			URL[] urls = new URL[] { foutDir.toURI().toURL() };
-			classLoader = new URLClassLoader(urls);
+			ArrayList<URL> urls = new ArrayList<URL>();
+			urls.add(foutDir.toURI().toURL());
+			for (String f : classpath.split(";")) {
+				urls.add(new File(f).toURI().toURL());
+			}
+			classLoader = new URLClassLoader(urls.toArray(new URL[0]));
 		} catch (MalformedURLException e) {
 			throw new GeneratorException("Initialize ClassLoader with directory=\"" + foutDir + "\" failed: " + e);
 		}

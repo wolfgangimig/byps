@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemotePrimitiveTypesAsync extends RemotePrimitiveTypes {
+public interface RemotePrimitiveTypesAsync extends RemotePrimitiveTypes, BRemote {
 
 	public void async_voidFunctionVoid(final BAsyncResult<Object> asyncResult) ;
 	

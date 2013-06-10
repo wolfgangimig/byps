@@ -18,6 +18,12 @@ public class PropertiesCpp extends GeneratorProperties {
 	 */
 	public final static String API_NAME = "-gencpp.api.name";
 	
+	/**
+	 * Compiler unterstützt C++11 Lambda Funktionen.
+	 * Option muss true sein.
+	 */
+	public static final String LAMBDA = "-gencpp.lambda";
+	
 	public PropertiesCpp(GeneratorProperties defaultProps) {
 		super(defaultProps);
 	}

@@ -36,33 +36,5 @@ describe("Tests for receiving results and exceptions asynchonously.", function()
 	});
 	
     
-	var asyncException = null;
-	var asyncThrowException = function() {
-		
-		var asyncResult = function(result, exception) {
-			asyncException = exception;
-		};
-		
-		client.remoteException.throwBException(123, "teststring", asyncResult);
-	};
-
-	it("testThrowBExceptionAsync", function() {
-		log.info("testThrowBExceptionAsync(");
-		
-		runs(function() {
-			asyncThrowException();
-		}, "exec asyncThrowException");
-		
-		waitsFor(function() {
-			return asyncException && 
-				asyncException.code == 123 &&
-				asyncException.msg == "teststring" &&
-				asyncException.details == "java.io.IOException: Hello IOException";
-			
-		}, "Expected exception", 5000);
-
-		log.info(")testThrowBExceptionAsync");
-		
-	});
 
 });

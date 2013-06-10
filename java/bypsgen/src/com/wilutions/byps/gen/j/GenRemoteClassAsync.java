@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.wilutions.byps.BRemote;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -50,7 +51,7 @@ class GenRemoteClassAsync extends GenRemoteClass {
 		pr.println();
 
 		String superClass = interfaceName.substring(0, interfaceName.indexOf(RemoteInfo.ASYNC_SUFFIX));
-		pr.print("public interface ").print(interfaceName).print(" extends ").print(superClass).println(" {");
+		pr.print("public interface ").print(interfaceName).print(" extends ").print(superClass).println(", BRemote {");
 		pr.println();
 		
 		pr.beginBlock();

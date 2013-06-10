@@ -130,5 +130,19 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
+	@Override
+	public int callClientParallel(int v) throws BException, InterruptedException {
+		throw new BException(BException.UNSUPPORTED_METHOD, "");
+	}
+	@Override
+	public void async_callClientParallel(int v, final BAsyncResult<Integer> asyncResult) {
+		try {
+			int ret = callClientParallel(v);
+			asyncResult.setAsyncResult(ret, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
 	
 }

@@ -31,16 +31,18 @@ class PrintContext extends PrintContextBase {
 	private CodePrinter prApiAllH;
 
 	private CodePrinter prImplAllH;
-
+	
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
 		super(classDB, props);
+		
+		lambdaSupported = props.getOptionalPropertyBoolean(PropertiesCpp.LAMBDA, true);
 		
 		dirApi = props.getMandatoryPropertyFile(PropertiesCpp.DEST_DIR_API);
 		File dirImpl = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL, dirApi);
 		dirImplC = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL_C, dirImpl);
 		dirImplH = props.getOptionalPropertyFile(PropertiesCpp.DEST_DIR_IMPL_H, dirImpl);
 		packageAliasMap = props.getPropertyAsMap(PropertiesCpp.PACK_ALIAS, null);
-		maxFileSize = props.getOptionalPropertyInt(PropertiesCpp.MAX_FILE_SIZE, 100 * 1000);
+		maxFileSize = props.getOptionalPropertyInt(PropertiesCpp.MAX_FILE_SIZE, 50 * 1000);
 		
 		dirApi.mkdirs();
 		dirImplC.mkdirs();
@@ -58,10 +60,10 @@ class PrintContext extends PrintContextBase {
 		prImplAllH.print("#ifndef __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.print("#define __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.println();
-		prImplAllH.println("#include <Byps.hpp>");
+		prImplAllH.println("#include <Byps-impl.h>");
 		prImplAllH.print("#include <{0}>", apiName + "-api.h").println();
 		prImplAllH.println();
-
+		
 		OutputStream osImplC = new SplitFileOutputStreamSource(null, apiName + "-impl-%03d.cpp", maxFileSize);
 		prImplC = new CodePrinter(osImplC, false);
 		
@@ -175,8 +177,6 @@ class PrintContext extends PrintContextBase {
 		prImplC.print("#include \"{0}\"",
 				getDirRelative(dirImplC.getAbsolutePath(), dirImplH.getAbsolutePath()) + apiName + "-impl.h");
 		prImplC.println(); 
-		printDisableAllWarnings(prImplC);
-		prImplC.println(); 
 		prImplC.println("using namespace std;");
 		prImplC.println("using namespace com::wilutions::byps;");
 		prImplC.println();
@@ -273,11 +273,10 @@ class PrintContext extends PrintContextBase {
 		pr.println("//-------------------------------------------------");
 	}
 
-	String getReturnType(MethodInfo methodInfo, String pack) {
+	TypeInfoCpp getReturnType(MethodInfo methodInfo) {
 		TypeInfo rtype = methodInfo.resultInfo.members.get(0).type;
 		TypeInfoCpp cppInfo = new TypeInfoCpp(rtype);
-		String qname = cppInfo.getQTypeName();
-		return qname;
+		return cppInfo;
 	}
 	
 	private void printComment(CodePrinter pr, Iterable<CommentInfo> comments, String jkind, String cskindBegin, String cskindEnd) throws IOException {
@@ -352,9 +351,14 @@ class PrintContext extends PrintContextBase {
 		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
 		String rtype = tinfoCpp.toString(rinfo.pack);
 		if (rtype.equals("void")) rtype = "bool";
-		String asyncResultType = "byps_ptr< BAsyncResult< " + rtype + " > >";
 		if (!first) mpr.print(", ");
-		mpr.print(asyncResultType).print(" asyncResult) ");
+		
+		if (lambdaSupported) {
+			mpr.print("std::function< void (").print(rtype).print(", BException ex) > asyncResult) ");
+		}
+		else {
+			mpr.print("byps_ptr<BAsyncResultT<").print(rtype).print(" > > asyncResult) ");
+		}
 
 		return mpr;
 	}
@@ -471,18 +475,20 @@ class PrintContext extends PrintContextBase {
 		return prImplAllH;
 	}
 
-
-	public void printDisableAllWarnings(CodePrinter pr) {
-		pr.println("#if __GNUC__");
-		pr.println("#pragma GCC diagnostic ignored \"-Wunused-parameter\"");
-		pr.println("#endif");
+	public String getApiDescriptorClassName() {
+		String tdescClassName = "BApiDescriptor_" + apiName;
+		return tdescClassName;
 	}
+
+
 
 	private File dirApi;
 	private File dirImplH;
 	private File dirImplC;
 	private int maxFileSize;
 	private Map<String,String> packageAliasMap;
+
+	public final boolean lambdaSupported;
 
 
 

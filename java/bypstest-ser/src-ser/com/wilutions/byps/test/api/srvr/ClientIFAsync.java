@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface ClientIFAsync extends ClientIF {
+public interface ClientIFAsync extends ClientIF, BRemote {
 
 	public void async_incrementInt(int a, final BAsyncResult<Integer> asyncResult) ;
 	

@@ -10,6 +10,14 @@ public class BContentStreamWrapper extends BContentStream {
 	public BContentStreamWrapper() {
 	}
 	
+	public BContentStreamWrapper(InputStream innerStream) {
+		this(innerStream, "application/octet-stream", -1L, 0L);
+	}
+	
+	public BContentStreamWrapper(InputStream innerStream, String contentType, long contentLength) {
+		this(innerStream, contentType, contentLength, 0L);
+	}
+	
 	public BContentStreamWrapper(InputStream innerStream, String contentType, long contentLength, long lifetimeMillis) {
 		super(
 			makeValidContentType(innerStream, contentType),

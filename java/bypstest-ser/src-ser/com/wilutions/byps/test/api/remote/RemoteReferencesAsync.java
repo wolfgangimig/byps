@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteReferencesAsync extends RemoteReferences {
+public interface RemoteReferencesAsync extends RemoteReferences, BRemote {
 
 	public void async_getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) ;
 	

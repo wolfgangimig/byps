@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteInlineInstanceAsync extends RemoteInlineInstance {
+public interface RemoteInlineInstanceAsync extends RemoteInlineInstance, BRemote {
 
 	public void async_setActor(com.wilutions.byps.test.api.inl.Actor act, final BAsyncResult<Object> asyncResult) ;
 	

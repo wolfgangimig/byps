@@ -208,19 +208,19 @@ public abstract class HHttpServlet extends HttpServlet {
             }
             else if (cancelStr != null && cancelStr.length() != 0) {
             	
-            	// If messageId==-1 the client is about to disconnect. 
+            	long messageId = Long.parseLong(messageIdStr);
             	
-            	if (messageIdStr.equals("-1")) {
+            	if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
                 	if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
             		sess.wireServer.activeMessages.cleanup(true);
             	}
-            	else if (messageIdStr.equals("-2")) {
+            	else if (messageId == HWireClient.MESSAGEID_DISCONNECT) {
                 	if (log.isDebugEnabled()) log.debug("sess.done");
             		sess.done();
             	}
             	else {
                 	if (log.isDebugEnabled()) log.debug("activeMessages.cancelMessage");
-            		sess.wireServer.activeMessages.cancelMessage(Long.parseLong(messageIdStr));
+            		sess.wireServer.activeMessages.cancelMessage(messageId);
             	}
             	response.setStatus(HttpServletResponse.SC_OK);
             	response.getOutputStream().close();

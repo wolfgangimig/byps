@@ -25,6 +25,7 @@ public abstract class BRegistry {
 	public final static int TYPEID_STUB = 16;
 	public final static int TYPEID_EXCEPTION = 20;
 	public final static int TYPEID_OBJECT = 21;
+	public final static int TYPEID_VALUECLASS = 22;
 	public final static int TYPEID_HEADER = 30;
 	
 	public final static int TYPEID_VOID = 19;

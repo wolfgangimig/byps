@@ -62,9 +62,8 @@ class GenApiClass {
 	
 	private String accessToString(MemberAccess a) {
 		if (a == MemberAccess.PUBLIC) return "public: ";
-		if (a == MemberAccess.PROTECTED) return "protected: ";
 		if (a == MemberAccess.PRIVATE)return "private: ";
-		return "";
+		return "protected: ";
 	}
 	
 	private void printMember(MemberInfo minfo) throws IOException {
@@ -166,52 +165,44 @@ class GenApiClass {
 //		else if (tinfo.qname.equals("double")) return "0";
 //		else if (tinfo.qname.equals("java.lang.Double")) return "0";
 	}
-
+	
 	private void printConstructors() throws IOException {
 		
 		String qname = cppInfo.getQClassName();
 		
-		if (serInfo.isStubType()) {
-			prH.print("public: ").print(serInfo.name).println("(PTransport transport);");
-			prC.print(qname).print("::").print(serInfo.name).println("(PTransport transport) : BStub(transport) {");
+		if (serInfo.isRequestClass()) {
+			
+		}
+		else if (serInfo.isResultClass() ) {
+			TypeInfoCpp rtype = pctxt.getReturnType(serInfo.methodInfo);
+			int rtypeId = rtype.tinfo.typeId;
+			prH.print("public: ").print(serInfo.name).println("();");
+			prC.print(qname).print("::").print(serInfo.name).println("()");
+			prC.beginBlock();
+			prC.print(": BMethodResult(").print(rtypeId).println(") {");
+			prC.endBlock();
+			prC.println("}");
 		}
 		else {
-			prH.print("public: ").print(serInfo.name).println("();");
-			prC.print(qname).print("::").print(serInfo.name).println("() {");
-		}
 		
-		prC.beginBlock();
-		for (MemberInfo minfo : serInfo.members) {
-			String defaultValue = getDefaultValue(minfo.type);
-			if (defaultValue == null) continue;
-			prC.print(minfo.name).print(" = ").print(defaultValue).println(";");
-		}
-		prC.endBlock();
-		prC.println("}");
-
-//      Konstruktor mit Initialisierungsliste macht keinen Sinn, weil er sich ändert, wenn Datenelemente hinzukommen. 
-//		if (serInfo.members.size() != 0) {
-//			boolean first = true;
-//			StringBuilder sbuf = new StringBuilder();
-//			sbuf.append(serInfo.name).append("(");
-//			for (MemberInfo minfo : serInfo.members) {
-//				if (first) first = false; else sbuf.append(", ");
-//				TypeInfoCpp mtinfoCpp = new TypeInfoCpp(minfo.type);
-//				sbuf.append(mtinfoCpp.toString(serInfo.pack)).append(" ").append(minfo.name);
-//			}
-//			sbuf.append(")");
-//			
-//			prH.print("public: ").print(sbuf.toString()).println(";");
-//			prC.print(qname).print("::").print(sbuf.toString()).println(" {");
-//			
-//			prC.beginBlock();
-//			for (MemberInfo minfo : serInfo.members) {
-//				prC.print("this->").print(minfo.name).print(" = ").print(minfo.name).println(";");
-//			}
-//			prC.endBlock();
-//			prC.println("}");
-//		}
-		
+			if (serInfo.isStubType()) {
+				prH.print("public: ").print(serInfo.name).println("(PTransport transport);");
+				prC.print(qname).print("::").print(serInfo.name).println("(PTransport transport) : BStub(transport) {");
+			}
+			else {
+				prH.print("public: ").print(serInfo.name).println("();");
+				prC.print(qname).print("::").print(serInfo.name).println("() {");
+			}
+			
+			prC.beginBlock();
+			for (MemberInfo minfo : serInfo.members) {
+				String defaultValue = getDefaultValue(minfo.type);
+				if (defaultValue == null) continue;
+				prC.print(minfo.name).print(" = ").print(defaultValue).println(";");
+			}
+			prC.endBlock();
+			prC.println("}");
+		}	
 	}
 
 //	private void printDestructor() throws IOException {
@@ -222,7 +213,7 @@ class GenApiClass {
 	{
 		String className = cppInfo.getClassName(serInfo.pack);
 		
-		beginClass(prH, className);
+		beginClass(prH, className, serInfo.typeId);
 		prH.println();
 
 		pctxt.printComments(prH, serInfo.comments);
@@ -246,10 +237,11 @@ class GenApiClass {
 		endClass(prH);
 	}
 	
-	private void beginClass(CodePrinter pr, String className) throws IOException {
+	private void beginClass(CodePrinter pr, String className, int typeId) throws IOException {
 		pr.println();
 		pctxt.printLine(pr);
 		pr.print("// ").println(className);
+		pr.print("// typeId=" + typeId).println();
 		pr.println();
 
 		pr.print(cppInfo.namespaceBegin).println();
@@ -283,7 +275,7 @@ class GenApiClass {
 		
 		String className = cppInfo.getClassName(serInfo.pack);
 		
-		beginClass(prH, className);
+		beginClass(prH, className, serInfo.typeId);
 		prH.println("using namespace com::wilutions::byps;");
 		prH.println();
 
@@ -299,10 +291,7 @@ class GenApiClass {
 		{
 			CodePrinter mpr = prH.print("class ").print(className);
 			if (serInfo.isResultClass()) {
-				String rtype = pctxt.getReturnType(methodInfo, serInfo.pack);
-				if (rtype.equals("void")) rtype = "bool";
-				String baseClass = "BMethodResult< " + rtype + " >";
-				mpr.print(" : public ").print(baseClass);
+				mpr.print(" : public BMethodResult");
 			}
 			else if (serInfo.isRequestClass()) {
 				int remoteId = methodInfo.remoteInfo.typeId;
@@ -327,12 +316,12 @@ class GenApiClass {
 			for (MemberInfo minfo : serInfo.members) {
 				printMember(minfo);
 			}
+			prH.println();
 		}
 		else {} // Result Klasse erbt Element result von BMethodResult
 		
-		if (!serInfo.isResultClass() && !serInfo.isRequestClass()) {
-			printConstructors();
-		}
+		printConstructors();
+		prH.println();
 		
 		//printDestructor();
 
@@ -345,6 +334,10 @@ class GenApiClass {
 			printSerialize();
 		}
 		
+		if (serInfo.isRequestClass()) {
+			printExecute();
+		}
+		
 		prH.endBlock();
 		prH.println("};");
 		
@@ -352,6 +345,63 @@ class GenApiClass {
 		
 		prC.println();
 
+	}
+	
+	private void printExecute() {
+		prH.println("public: virtual void execute(PRemote remote, PAsyncResult asyncResult);");
+		
+		prC.print("void ")
+		   .print(cppInfo.getClassName(""))
+		   .print("::execute(PRemote remote, PAsyncResult asyncResult) {");
+		prC.println();
+		prC.beginBlock();
+		
+		String remoteName = methodInfo.remoteInfo.toString(serInfo.pack);
+		prC.print("P").print(remoteName)
+		   .print(" r = byps_ptr_cast<").print(remoteName).print(">(remote)")
+		   .println(";");
+		
+		CodePrinter mpr = prC.print("r->async_").print(methodInfo.name).print("(");
+		boolean first = true;
+		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+			if (first) first = false; else mpr.print(", ");
+			mpr = mpr.print(pinfo.name);
+		}		
+		
+		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+		String rtype = tinfoCpp.toString(serInfo.pack);
+		if (rtype.equals("void")) rtype = "bool";
+		if (!first) mpr.print(", ");
+		
+		String resultClassName = methodInfo.resultInfo.name;
+
+		if (pctxt.lambdaSupported) {
+			mpr.print("[=](").print(rtype).print(" result, BException ex) {").println();
+			prC.beginBlock();
+			prC.println("if (ex) {");
+			prC.beginBlock();
+			prC.println("asyncResult->setAsyncResult(BVariant(ex));");
+			prC.endBlock();
+			prC.println("}");
+			prC.println("else {");
+			prC.beginBlock();
+			prC.print("PMethodResult methodResult(new ").print(resultClassName).print("());").println();
+			prC.println("methodResult->result = BVariant(result);");
+			prC.println("asyncResult->setAsyncResult(BVariant(methodResult));");
+			prC.endBlock();
+			prC.println("}");
+			prC.endBlock();
+			prC.println("});");
+		}
+		else {
+			// Geringe Prio: execute() ohne Lambda ergänzen 
+			
+			throw new IllegalStateException("!lambdasupported");
+		}
+
+		prC.endBlock();
+		prC.println("}");
 	}
 	
 	private void printSerialize() {		
@@ -384,15 +434,22 @@ class GenApiClass {
 		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);
 		prC.println(regCppInfo.namespaceBegin);
 		
-		prC.print("POBJECT ").print("BSerializer_" + serInfo.typeId)
-			.print("(BIO& bio, void* pObj)").println("{");
+		prC.print("void ").print("BSerializer_" + serInfo.typeId)
+			.print("(BIO& bio, POBJECT& pObj, void* pBase)").println("{");
 		prC.beginBlock();
 		
-		prC.print("if (!pObj) return POBJECT(new ").print(className).println("());");
-		prC.print(className).print("& r = * ").print("reinterpret_cast<").print(className).print("*>(pObj);").println();
+		prC.println("void* p = pBase ? pBase : pObj.get();");
+		prC.println("if (p) { ");
+		prC.beginBlock();
+		prC.print(className).print("& r = * ").print("reinterpret_cast<").print(className).print("*>(p);").println();
 		prC.println("bio & r;");
-		prC.println("return POBJECT();");
-
+		prC.endBlock();
+		prC.println("} else {");
+		prC.beginBlock();
+		prC.print("pObj = POBJECT(new ").print(className).println("());");
+		prC.endBlock();
+		prC.println("}");
+		
 		prC.endBlock();
 		prC.println("}");
 		

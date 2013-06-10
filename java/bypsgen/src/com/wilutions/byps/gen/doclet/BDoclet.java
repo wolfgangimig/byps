@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 
@@ -44,7 +46,7 @@ public class BDoclet extends Doclet {
 	private static PropertiesJ propsJ;
 	private static PropertiesJS propsJS;
 	private static String[] sourceDirs = null;
-	private static String classpath = ".";
+	private static String classpath = "";
 	private static int convertOptions = 0;
 	private static String tempDir;
 	private static CompileSource compileSource;
@@ -150,6 +152,7 @@ public class BDoclet extends Doclet {
 		return true;
 	}
 	
+	@SuppressWarnings("unused")
 	private static String[] bypsexample = new String[] {
 		
 		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\byps-example\\Example-api",
@@ -179,23 +182,24 @@ public class BDoclet extends Doclet {
 		"../bypsexample/src;../bypsexample/src-prototype",
 	};
 	
+	@SuppressWarnings("unused")
 	private static String[] bypstest_ser = new String[] {
 		
-//		"-genj.dir-ser", "..\\bypstest-ser\\src-ser",
-//		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
-//		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
-//
-//		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
-//		"-gencs.upfirst",     "true",
+		"-genj.dir-ser", "..\\bypstest-ser\\src-ser",
+		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
+		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
+
+		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
+		"-gencs.upfirst",     "true",
 //		
 //		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
 		
 //		"-gencpp.dir-api", "..\\..\\cpp\\byps\\bypstest-gen\\api",
 //		"-gencpp.dir-impl", "..\\..\\cpp\\byps\\bypstest-gen\\impl",
-		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp\\byps\\bypstest-gen\\api",
-		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp\\byps\\bypstest-gen\\impl",
+		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\bypstest-gen\\api",
+		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\bypstest-gen\\impl",
 		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
-		"-gencpp.max-fsize", "100000",
+		"-gencpp.max-fsize", "50000",
 
 		"-verbose",
 		
@@ -220,24 +224,21 @@ public class BDoclet extends Doclet {
 		"--sourcepath", 
 		"../bypstest-api/src",
 		
-		"-gen.changedmembers",
+//		"-gen.changedmembers",
 	};
 	
 	private static String[] byps_ix_ser = new String[] {
 		
-		"-genj.dir-api", "..\\byps-ix-ser\\src-api",
-		"-genj.dir-ser", "..\\byps-ix-ser\\src-ser",
-		"-genj.dir-ser-bin", "..\\byps-ix-ser\\src-ser-bin",
-		"-genj.dir-ser-json", "..\\byps-ix-ser\\src-ser-json",
+		"-genj.dir-ser", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser",
+		"-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
+		"-genj.dir-ser-json", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-json",
 
-		"-gencs.dir-api",     "D:\\dev\\BYPS2\\csharp\\byps\\byps-ix-ser\\src-api",
-		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps-ix-ser\\src-ser",
-		"-gencs.dir-ser-bin", "D:\\dev\\BYPS2\\csharp\\byps\\byps-ix-ser\\src-ser-bin",
-		"-gencs.upfirst",     "true",
+		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps_ix_ser\\src-ser",
+		"-gencs.upfirst",     "false",
 		
 		"-allserials",
 		"-allremotes",
-		"-changedmembers",
+		"-gen.changedmembers",
 		
 		"-verbose",
 		
@@ -245,7 +246,7 @@ public class BDoclet extends Doclet {
 		"de.elo.ix.client",
 		
 		"--sourcepath", 
-		"d:\\java\\workspace\\Eloix-api\\src;d:\\java\\workspace\\Eloix-api\\src-gen",
+		"d:\\dev\\BYPS2\\java\\byps-ix-api\\src;d:\\dev\\BYPS2\\java\\byps-ix-api\\src-gen",
 		
 		"--classpath",
 		"d:\\java\\lib\\EloixClient\\EloixClient.jar;d:\\java\\lib\\EloixClient\\javautils.jar"
@@ -267,7 +268,8 @@ public class BDoclet extends Doclet {
 		
 		try {
 			List<String> javadocParams = new ArrayList<String>();
-			List<String> javadocPacks = new ArrayList<String>();
+			Collection<String> javadocPacks = null;
+			Collection<String> javadocPacksInSourceDirs = null;
 			
 			for (int argIdx = 0; argIdx < args.length; ) {
 				
@@ -292,40 +294,66 @@ public class BDoclet extends Doclet {
 					if (propsJS == null) propsJS = new PropertiesJS(defaultProps);
 					argIdx = propsJS.addArgs(args, argIdx);
 				}
-				else if (arg.equals("-changedmembers")) {
+				else if (arg.equals(GeneratorProperties.CHANGED_MEMBERS)) {
 					defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");
+					argIdx++;
+				}
+				else if (arg.equals("-allserials")) {
+					convertOptions |= BConvert.OPT_ALL_SERIALS;
+					argIdx++;
+				}
+				else if (arg.equals("-allremotes")) {
+					convertOptions |= BConvert.OPT_ALL_REMOTES;
 					argIdx++;
 				}
 				else if (arg.startsWith("--")) {
 					boolean isSourcePath = arg.startsWith("--sourcepath");
 					boolean isClassPath = arg.startsWith("--classpath");
+					boolean isPackages = arg.startsWith("--packages");
 					int idx = 0;
-					javadocParams.add(idx++, arg.substring(1));
+					
+					if (isClassPath) {}
+					else if (isSourcePath) javadocParams.add(idx++, "-sourcepath");
+					else if (isPackages) {}
+					else javadocParams.add(idx++, arg.substring(1));
+					
 					argIdx++;
 					for (; argIdx < args.length; argIdx++) {
 						arg = args[argIdx];
 						if (arg.startsWith("-")) break; 
-						javadocParams.add(idx++, arg);
-						if (isSourcePath) {
+						
+						if (isPackages) {
+							javadocPacks = Arrays.asList(arg.split(";"));
+						}
+						else if (isSourcePath) {
+
+							javadocParams.add(idx++, arg);
+			
+							javadocPacksInSourceDirs = new HashSet<String>();
+
 							sourceDirs = arg.split(";");
 							for (int i = 0; i < sourceDirs.length; i++) {
 								File dir = new File(sourceDirs[i]);
 								if (!dir.exists()) {
 									throw new IOException("sourcepath=" + dir.getAbsolutePath() + " does not exist");
 								}
-								findPackages(javadocPacks, dir, "");
+								findPackages(javadocPacksInSourceDirs, dir, "");
 							}
 						}
 						else if (isClassPath) {
-							classpath = ".";
+							
+							classpath = System.getProperty("java.class.path");
 							String[] elms = arg.split(";");
 							for (int i = 0; i < elms.length; i++) {
-								File dir = new File(elms[i]);
-								if (!dir.exists()) {
-									throw new IOException("classpath=" + dir.getAbsolutePath() + " does not exist");
+								File file = new File(elms[i]);
+								if (!file.exists()) {
+									throw new IOException("classpath=" + file.getAbsolutePath() + " does not exist");
 								}
-								classpath += ";" + dir.getAbsolutePath();
+								classpath += ";" + file.getAbsolutePath();
 							}
+						}
+						else {
+							javadocParams.add(idx++, arg);
 						}
 					}
 				}
@@ -364,7 +392,17 @@ public class BDoclet extends Doclet {
 			if (!javadocParams.contains("-sourcepath")) {
 				throw new GeneratorException("Missing argument --sourcepath");
 			}
-			javadocParams.addAll(javadocPacks);
+			
+			if (classpath != null && classpath.length() != 0) {
+				javadocParams.add("-classpath");
+				javadocParams.add(classpath);
+			}
+			
+//			String jhome = System.getProperty("java.home");
+//			javadocParams.add("-bootclasspath");
+//			javadocParams.add(jhome + "\\lib\\rt.jar;"+classpath);
+
+			javadocParams.addAll(javadocPacks != null ? javadocPacks : javadocPacksInSourceDirs);
 			
 			String[] javadocArgs = javadocParams.toArray(new String[javadocParams.size()]);
 			
@@ -379,7 +417,7 @@ public class BDoclet extends Doclet {
 		
 	}
 
-	private static void findPackages(List<String> javadocParams, File src, String pack) {
+	private static void findPackages(Collection<String> javadocParams, File src, String pack) {
 		File[] files = src.listFiles();
 		boolean foundFile = false;
 		for (File f : files) {

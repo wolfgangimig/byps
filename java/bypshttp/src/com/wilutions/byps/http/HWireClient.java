@@ -15,9 +15,11 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,33 +40,45 @@ import com.wilutions.byps.BTestAdapter;
 import com.wilutions.byps.BWire;
 
 public class HWireClient extends BWire {
+	
+	protected final static long MESSAGEID_CANCEL_ALL_REQUESTS = -1;
+	protected final static long MESSAGEID_DISCONNECT = -2;
 
 	protected final String surl;
 	protected final static int CHUNK_SIZE = 10 * 1000;
 	protected final Log log = LogFactory.getLog(HWireClient.class);
-	protected final HashSet<RequestToCancel> openRequestsToCancel = new HashSet<RequestToCancel>();
+	protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
 	protected final Executor threadPool;
+	protected final boolean isMyThreadPool;
 	protected final HTestAdapter testAdapter;
-
-	protected boolean cancelAllRequests;
+	protected volatile boolean cancelAllRequests;
+	protected volatile boolean isDone;
 	protected Statistics stats = new Statistics();
+	
+	protected long timeoutMillisClient;
 
 	/**
 	 * Initializes a new client-side HTTP communication.
 	 * @param url URL to server.
 	 * @param flags A combination of BWire.FLAG_* values.
-	 * @param threadPool A thread pool.
+	 * @param timeoutSeconds Read timeout in seconds. A timeout of zero is interpreted as an infinite timeout. 
+	 * @param threadPool A thread pool. If null, a thread pool is internally created.
 	 * @see BWire#FLAG_GZIP
 	 */
-	public HWireClient(String url, int flags, Executor threadPool) {
+	public HWireClient(String url, int flags, int timeoutSeconds, Executor threadPool) {
 		super(flags);
 		
 		if (url == null || url.length() == 0) throw new IllegalStateException("Missing URL");
-		if (threadPool == null) throw new IllegalStateException("Missing thread pool");
 		
 		this.surl = url;
-		this.threadPool = threadPool;
+		this.timeoutMillisClient = (long)timeoutSeconds * 1000L; 
 		
+		this.isMyThreadPool = threadPool == null;
+		if (threadPool == null) {
+			threadPool = Executors.newCachedThreadPool();
+		}
+		this.threadPool = threadPool;
+	
 		this.testAdapter = new HTestAdapter(this);
 		
 		// Wenn die Anwendung als Java Webstart gestartet wird, dann bekommt Sie 
@@ -107,50 +121,17 @@ public class HWireClient extends BWire {
 	
 	@Override
 	public synchronized void send(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
-		if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
-
-		// Convert the BMessage into single RequestToCancel objects.
-		// One RequestToCancel is created for msg.buf.
-		// For each stream in msg.streams further RequestToCancel objects are created.
-		
-		int nbOfRequests = 1 + (msg.streams != null ? msg.streams.size() : 0);
-		ArrayList<RequestToCancel> requests = new ArrayList<RequestToCancel>(nbOfRequests);
-		
-		// If the BMessage contains streams, the given asyncResult is wrapped into an
-		// outerResult in order to pass only the first exception to the caller. 
-		BAsyncResult<BMessage> outerResult = asyncResult;
-		if (nbOfRequests > 1) {
-			if (log.isDebugEnabled()) log.debug("wrap asyncResult");
-			outerResult = new BSendResult(asyncResult, nbOfRequests);
-		}
+		internalSend(msg, asyncResult, this.timeoutMillisClient);
+	}
 	
-		// Create RequestToCancel for msg.buf
-		RequestToCancel req = createRequestForMessage(msg.header.messageId, msg.buf, outerResult);
-		requests.add(req);
-		
-		// Create RequestToCancel objects for each stream.
-		if (msg.streams != null) {
-			for (BStreamRequest stream : msg.streams) {
-				req = createRequestForPutStream(msg.header.messageId, stream, outerResult);
-				requests.add(req);
-			}
-		}
-
-		// Execute the RequestToCancel objects in the thread pool
-		if (log.isDebugEnabled()) log.debug("put requests into thread pool");
-		for (RequestToCancel r : requests) {
-			if (!executeRequest(r)) {
-				cancelMessage(msg.header.messageId);
-				break;
-			}
-		}
-		
-		if (log.isDebugEnabled()) log.debug(")send");
+	@Override
+	public void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult) {
+		internalSend(msg, asyncResult, 0);
 	}
 
 	protected boolean executeRequest(RequestToCancel r) {
 		if (log.isDebugEnabled()) log.debug("executeRequest(" + r);
-		for (int retry = 0; retry < 10; retry++) {
+		for (int retry = 0; retry < 10 && !isDone; retry++) {
 			try {
 				threadPool.execute(r);
 				if (log.isDebugEnabled()) log.debug(")executeRequest=true");
@@ -177,26 +158,68 @@ public class HWireClient extends BWire {
 		throw new IllegalStateException("putStreams is only for the server side");
 	}
 	
-	protected RequestToCancel createRequestForMessage(long messageId, ByteBuffer buf, BAsyncResult<BMessage> asyncResult) {
-		RequestToCancel r =  new RequestToCancel(messageId, buf, null, 0L, 0L, asyncResult);
+	protected synchronized void internalSend(final BMessage msg, final BAsyncResult<BMessage> asyncResult, long timeout) {
+		if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
+
+		// Convert the BMessage into single RequestToCancel objects.
+		// One RequestToCancel is created for msg.buf.
+		// For each stream in msg.streams further RequestToCancel objects are created.
+		
+		int nbOfRequests = 1 + (msg.streams != null ? msg.streams.size() : 0);
+		ArrayList<RequestToCancel> requests = new ArrayList<RequestToCancel>(nbOfRequests);
+		
+		// If the BMessage contains streams, the given asyncResult is wrapped into an
+		// outerResult in order to pass only the first exception to the caller. 
+		BAsyncResult<BMessage> outerResult = asyncResult;
+		if (nbOfRequests > 1) {
+			if (log.isDebugEnabled()) log.debug("wrap asyncResult");
+			outerResult = new BSendResult(asyncResult, nbOfRequests);
+		}
+	
+		// Create RequestToCancel for msg.buf
+		RequestToCancel req = createRequestForMessage(msg.header.messageId, timeout, msg.buf, outerResult);
+		requests.add(req);
+		
+		// Create RequestToCancel objects for each stream.
+		if (msg.streams != null) {
+			for (BStreamRequest stream : msg.streams) {
+				req = createRequestForPutStream(msg.header.messageId, stream, outerResult);
+				requests.add(req);
+			}
+		}
+
+		// Execute the RequestToCancel objects in the thread pool
+		if (log.isDebugEnabled()) log.debug("put requests into thread pool");
+		for (RequestToCancel r : requests) {
+			if (!executeRequest(r)) {
+				cancelMessage(msg.header.messageId);
+				break;
+			}
+		}
+		
+		if (log.isDebugEnabled()) log.debug(")send");
+	}
+
+	protected RequestToCancel createRequestForMessage(long messageId, long timeout, ByteBuffer buf, BAsyncResult<BMessage> asyncResult) {
+		RequestToCancel r =  new RequestToCancel(messageId, buf, null, 0L, 0L, timeout, asyncResult);
 		addRequest(r);
 		return r;
 	}
 	
 	protected RequestToCancel createRequestForPutStream(long messageId, BStreamRequest streamRequest, BAsyncResult<BMessage> asyncResult) {
-		RequestToCancel r = new RequestToCancel(messageId, null, streamRequest, streamRequest.streamId, 0L, asyncResult);
+		RequestToCancel r = new RequestToCancel(messageId, null, streamRequest, streamRequest.streamId, 0L, this.timeoutMillisClient, asyncResult);
 		addRequest(r);
 		return r;
 	}
 	
 	protected RequestToCancel createRequestForGetStream(long messageId, long streamId, BAsyncResult<BMessage> asyncResult) {
-		RequestToCancel r = new RequestToCancel(messageId, null, null, streamId, 0L, asyncResult);
+		RequestToCancel r = new RequestToCancel(messageId, null, null, streamId, 0L, this.timeoutMillisClient, asyncResult);
 		addRequest(r);
 		return r;
 	}
 	
 	protected RequestToCancel createRequestForCancelMessage(long messageId) {
-		RequestToCancel r = new RequestToCancel(0L, null, null, 0L, messageId, new BAsyncResult<BMessage>() {
+		RequestToCancel r = new RequestToCancel(0L, null, null, 0L, messageId, this.timeoutMillisClient, new BAsyncResult<BMessage>() {
 			public void setAsyncResult(BMessage msg, Throwable e) {}
 		});
 		addRequest(r);
@@ -212,17 +235,19 @@ public class HWireClient extends BWire {
 		final long cancelMessageId;
 		final BAsyncResult<BMessage> asyncResult;
 		final AtomicBoolean isOpen = new AtomicBoolean(true);
+		final long timeoutMillisRequest;
 
 		volatile boolean _canceled;
 		AtomicReference<HttpURLConnection> conn = new AtomicReference<HttpURLConnection>();
 		
 		protected RequestToCancel(long messageId, ByteBuffer buf, BStreamRequest streamRequest,
-				long streamId, long cancelMessageId, BAsyncResult<BMessage> asyncResult) {
+				long streamId, long cancelMessageId, long timeout, BAsyncResult<BMessage> asyncResult) {
 			this.messageId = messageId;
 			this.streamId = streamId;
 			this.buf = buf;
 			this.streamRequest = streamRequest;
 			this.cancelMessageId = cancelMessageId;
+			this.timeoutMillisRequest = timeout;
 			this.asyncResult = asyncResult;
 		}
 
@@ -353,6 +378,9 @@ public class HWireClient extends BWire {
 				
 				conn = (HttpURLConnection)url.openConnection();
 				request.setConnection(conn);
+				
+				conn.setConnectTimeout((int)timeoutMillisClient);
+				conn.setReadTimeout((int)request.timeoutMillisRequest); // is 0 for a long-poll request
 	
 				conn.setDoInput(true);
 				conn.setDoOutput(true);
@@ -407,13 +435,16 @@ public class HWireClient extends BWire {
 				}
 				catch (IOException e) {
 					if (log.isDebugEnabled()) log.debug("received exception: " + e);
-					is = conn.getErrorStream();
-					if (is== null) throw e;
-					bufferFromStream(is, false);
 					
 					int statusCode = conn.getResponseCode();
 					if (log.isDebugEnabled()) log.debug("Throw HTTP status=" + statusCode);
-					throw new BException(BException.IOERROR, "HTTP " + statusCode);
+
+					is = conn.getErrorStream();
+					if (is != null) {
+						bufferFromStream(is, false);
+					}
+					
+					throw new HException(statusCode);
 				}
 				finally {
 					if (is != null) {
@@ -488,6 +519,8 @@ public class HWireClient extends BWire {
 			conn = (HttpURLConnection)url.openConnection();
 			request.setConnection(conn);
 	
+			conn.setConnectTimeout((int)timeoutMillisClient);
+
 			conn.setUseCaches(false);
 			
 			conn.setDoInput(true);
@@ -659,7 +692,10 @@ public class HWireClient extends BWire {
 				conn = (HttpURLConnection)url.openConnection();
 				request = createRequestForGetStream(messageId, streamId, this);
 				request.setConnection(conn);
-				
+		
+				conn.setConnectTimeout((int)timeoutMillisClient);
+				conn.setReadTimeout((int)timeoutMillisClient);
+
 				conn.setDoInput(true);
 				conn.setDoOutput(false);
 				conn.setRequestMethod("GET");
@@ -730,20 +766,27 @@ public class HWireClient extends BWire {
 	}
 
 	@Override
-	public InputStream getStream(long messageId, long strmId) throws IOException {
+	public BContentStream getStream(long messageId, long strmId) throws IOException {
 		if (log.isDebugEnabled()) log.debug("getStream(messageId=" + messageId + ", streamId=" + strmId);
-		InputStream is = new MyInputStream(messageId, strmId);
+		BContentStream is = new MyInputStream(messageId, strmId);
 		if (log.isDebugEnabled()) log.debug(")getStream="+ is);
 		return is;
 	}
 	
-	protected synchronized void internalCancelAllRequests() {
+	protected void internalCancelAllRequests(long cancelMessageId) {
 		if (log.isDebugEnabled()) log.debug("internalCancelAllRequests(");
 		cancelAllRequests = true;
 		
-		if (log.isDebugEnabled()) log.debug("cancel requests on client, #requests=" + openRequestsToCancel.size());
-		for (RequestToCancel robj : openRequestsToCancel) {
+		ArrayList<RequestToCancel> arr = new ArrayList<RequestToCancel>(openRequestsToCancel.keySet());
+		
+		if (log.isDebugEnabled()) log.debug("cancel requests on client, #requests=" + arr.size());
+		for (RequestToCancel robj : arr) {
 			robj.cancel();
+		}
+		
+		// Notify the server about the canceled messages
+		if (cancelMessageId != 0) {
+			sendCancelMessage(cancelMessageId);
 		}
 		
 		if (log.isDebugEnabled()) log.debug(")internalCancelAllRequests");
@@ -751,27 +794,31 @@ public class HWireClient extends BWire {
 	
 	@Override
 	public void cancelAllRequests() {
-		internalCancelAllRequests();
-
-		// Notify the server about the canceled messages
-		sendCancelMessage(-1L);
+		internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS);
 	}
 	
 	@Override
 	public void done() {
-		super.done();
 		
-		// Notify the server
-		sendCancelMessage(-2L);
+		internalCancelAllRequests(MESSAGEID_DISCONNECT);
+		
+		isDone = true;
+		
+		if (isMyThreadPool) {
+			if (threadPool instanceof ExecutorService) {
+				ExecutorService tp = (ExecutorService)threadPool;
+				tp.shutdown();
+			}
+		}
 	}
 	
-	protected synchronized void addRequest(RequestToCancel robj) {
+	protected void addRequest(RequestToCancel robj) {
 		if (log.isDebugEnabled()) log.debug("addRequest(robj=" + robj);
-		openRequestsToCancel.add(robj);
+		openRequestsToCancel.put(robj, Boolean.TRUE);
 		if (log.isDebugEnabled()) log.debug(")addRequest=" + robj);
 	}
 	
-	protected synchronized void removeRequest(RequestToCancel robj, ByteBuffer buf, Throwable ex) {
+	protected void removeRequest(RequestToCancel robj, ByteBuffer buf, Throwable ex) {
 		if (log.isDebugEnabled()) log.debug("removeRequest(" + robj);
 		if (robj == null) return;
 		openRequestsToCancel.remove(robj);
@@ -785,7 +832,7 @@ public class HWireClient extends BWire {
 		
 		ArrayList<RequestToCancel> arr = null;
 		synchronized(this) {
-			arr = new ArrayList<RequestToCancel>(openRequestsToCancel);
+			arr = new ArrayList<RequestToCancel>(openRequestsToCancel.keySet());
 		}
 		
 		for (RequestToCancel robj : arr) {
@@ -831,6 +878,9 @@ public class HWireClient extends BWire {
 					conn = (HttpURLConnection)url.openConnection();
 					request.setConnection(conn);
 					
+					conn.setConnectTimeout((int)timeoutMillisClient);
+					conn.setReadTimeout((int)timeoutMillisClient);
+
 					conn.setDoInput(true);
 					conn.setDoOutput(false);
 					conn.setRequestMethod("GET");
@@ -875,7 +925,7 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug("testAdapter(fnct=" + fnct + ", " + Arrays.toString(args));
 		
 		if (fnct.equals(HTestAdapter.KILL_CONNECTIONS)) {
-			internalCancelAllRequests();
+			internalCancelAllRequests(0);
 			return "";
 		}
 		
@@ -896,6 +946,8 @@ public class HWireClient extends BWire {
 				if (log.isDebugEnabled()) log.debug("open connection, url=" + url);
 
 				conn = (HttpURLConnection)url.openConnection();
+				conn.setConnectTimeout((int)timeoutMillisClient);
+				conn.setReadTimeout((int)timeoutMillisClient);
 				conn.setDoInput(true);
 				conn.setDoOutput(false);
 				conn.setRequestMethod("GET");

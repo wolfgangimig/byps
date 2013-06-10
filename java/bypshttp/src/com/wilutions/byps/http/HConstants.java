@@ -11,7 +11,7 @@ public class HConstants {
      * How long a request can take.
      * A request can last up to this number of milliseconds. 
      */
-	public final static long REQUEST_TIMEOUT_MILLIS = 600 * 1000L;
+	public final static long REQUEST_TIMEOUT_MILLIS = 60 * 60 * 1000L;
 	
 	/**
 	 * Time for internal cleanup operations.

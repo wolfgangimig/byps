@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteListTypesAsync extends RemoteListTypes {
+public interface RemoteListTypesAsync extends RemoteListTypes, BRemote {
 
 	public void async_getBoolean1(final BAsyncResult<java.util.List<java.lang.Boolean>> asyncResult) ;
 	

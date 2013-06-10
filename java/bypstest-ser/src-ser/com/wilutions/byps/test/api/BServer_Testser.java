@@ -48,11 +48,6 @@ public class BServer_Testser extends BServer {
 		return this;
 	}
 	
-	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteException remoteSkeleton) {
-		addRemote(1959416539, remoteSkeleton);
-		return this;
-	}
-	
 	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance remoteSkeleton) {
 		addRemote(1206670536, remoteSkeleton);
 		return this;

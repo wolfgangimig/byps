@@ -30,7 +30,7 @@ initParams={
 )
 public class BypsServlet extends HHttpServlet {
 	private static final long serialVersionUID = 1L;
-    private File tempDir = new File("c:\\temp");
+    private File tempDir = new File("d:\\temp\\bypssrv");
 
     public BypsServlet() {
 		// temp. Verzeichnis für Streams
@@ -40,6 +40,7 @@ public class BypsServlet extends HHttpServlet {
 				tempDir = new File(tempDirStr);
 			}
 		}   
+		tempDir.mkdirs();
     }
     
     @Override

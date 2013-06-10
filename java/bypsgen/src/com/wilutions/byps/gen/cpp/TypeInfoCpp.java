@@ -100,7 +100,14 @@ class TypeInfoCpp {
 		else if (tinfo.qname.equals("java.lang.Double")) tbuf.append("double");
 		else if (tinfo.qname.equals("void")) tbuf.append("void");
 
-		else if (tinfo.qname.equals("java.lang.Object")) tbuf.append("PSerializable");
+		else if (tinfo.qname.equals("java.lang.Object")) {
+			if (purpose == Purpose.CLASS) {
+				tbuf.append("BSerializable");
+			}
+			else {
+				tbuf.append("PSerializable");
+			}
+		}
 		
 		else if (tinfo.qname.equals("java.lang.String")) {
 			if (purpose == Purpose.PARAM) tbuf.append("const ");
@@ -109,9 +116,7 @@ class TypeInfoCpp {
 		}
 		
 		else if (tinfo.qname.equals("java.io.InputStream")) {
-			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("std::istream");
-			if (purpose != Purpose.CLASS) tbuf.append(" >");
+			tbuf.append(purpose == Purpose.CLASS ? "BContentStream" : "PContentStream");
 		}
 		
 		else if (tinfo.qname.equals("java.lang.Exception") || tinfo.qname.equals("java.lang.Throwable")) {

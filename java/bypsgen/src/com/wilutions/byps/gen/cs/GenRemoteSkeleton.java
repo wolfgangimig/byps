@@ -78,7 +78,8 @@ class GenRemoteSkeleton {
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
-			mpr.print(pinfo.name);
+			String mname = pctxt.makeValidMemberName(pinfo.name);
+			mpr.print(mname);
 		}
 		mpr.println(");");
 		
@@ -113,7 +114,7 @@ class GenRemoteSkeleton {
 	private void printMethodBeginAsync(MethodInfo methodInfo) throws GeneratorException {
 		CodePrinter mpr = pr.print("public ");
 		mpr = pctxt.printDeclareMethodBeginAsync(mpr, rinfo, methodInfo);
-		mpr.println("{");
+		mpr.println(" {");
 		pr.beginBlock();
 		pr.println("throw new BException(BException.INTERNAL, \"\");");
 		pr.endBlock();
@@ -122,8 +123,9 @@ class GenRemoteSkeleton {
 	
 	private void printMethodEndAsync(MethodInfo methodInfo) throws GeneratorException {
 		CodePrinter mpr = pr.print("public ");
-		mpr = pctxt.printDeclareMethodEndAsync(pr, rinfo, methodInfo);
+		mpr = pctxt.printDeclareMethodEndAsync(mpr, rinfo, methodInfo);
 		mpr.println(" {");
+		pr.beginBlock();
 		pr.println("throw new BException(BException.INTERNAL, \"\");");
 		pr.endBlock();
 		pr.println("}");

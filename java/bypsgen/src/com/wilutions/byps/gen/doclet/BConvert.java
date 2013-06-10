@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -41,10 +40,14 @@ public class BConvert {
 	
 	public ClassDB classDB;
 
+	public static final int OPT_ALL_SERIALS = 0x1;
+	public static final int OPT_ALL_REMOTES = 0x2;
+	
 	public final static HashSet<String> FORBIDDEN_FIELD_NAMES = new HashSet<String>(
 			Arrays.asList("_typeId"));
 	
 	public BConvert(int options) {
+		this.options = options;
 	}
 	
 	public static ClassDB makeClassDB(ClassDB prevClassDB, RootDoc rdoc, ConstFieldReader constReader, int opts) throws GeneratorException {
@@ -122,6 +125,8 @@ public class BConvert {
 		log.debug("does implement BRemote: " + doesImplementBRemote);
 		if (doesImplementBRemote) return doesImplementBRemote;
 		
+		if ((options & OPT_ALL_REMOTES) != 0 && c.isInterface()) return true;
+		
 		return false;
 	}
 	
@@ -131,6 +136,8 @@ public class BConvert {
 		log.debug("does implement Serializable: " + doesImplementSerializable);
 		if (doesImplementSerializable) return true;
 
+		if ((options & OPT_ALL_SERIALS) != 0 && !c.isInterface()) return true;
+		
 		return false;
 	}
 	
@@ -699,13 +706,17 @@ public class BConvert {
 				continue;
 			}
 			if (ex.toString().equals(IOException.class.getName())) continue;
+	
 			
-			if (!isSerializable(ex.asClassDoc())) {
-				throw new GeneratorException("Custom exception class \"" + ex.toString() + "\" must implement BSerializable.");
-			}
-			
-			TypeInfo exInfo = makeElementTypeInfo(ex, remoteQName);
-			exceptions.add( exInfo );
+			// Currently, I don't know how to deal with custom exception classes in C++
+			throw new GeneratorException("Custom exception classes are unsupported, see \"" + remoteQName + " " + method.name() + " " + ex + "\".");
+
+//			if (!isSerializable(ex.asClassDoc())) {
+//				throw new GeneratorException("Custom exception class \"" + ex.toString() + "\" must implement BSerializable.");
+//			}
+//			
+//			TypeInfo exInfo = makeElementTypeInfo(ex, remoteQName);
+//			exceptions.add( exInfo );
 		}
 		
 		if (!foundBException) {
@@ -769,5 +780,6 @@ public class BConvert {
 			"java.util.Set", "java.util.HashSet", "java.util.TreeSet"));
 
 	private static Log log = LogFactory.getLog(BConvert.class);
-
+	
+	private final int options;
 }

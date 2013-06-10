@@ -66,7 +66,9 @@ public class GenSerStruct {
 		else {
 			// has base class?
 			if (serInfo.baseInfo != null) {
-				kw = "new "; 
+				if (!serInfo.baseInfo.isExceptionType()) {
+					kw = "new "; 
+				}
 			}
 		}
 

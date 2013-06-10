@@ -30,6 +30,7 @@ import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BBuffer;
 import com.wilutions.byps.BClient;
 import com.wilutions.byps.BContentStream;
+import com.wilutions.byps.BContentStreamWrapper;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BNegotiate;
@@ -116,13 +117,16 @@ public class TestUtils {
 		}
 
 		@Override
-		public InputStream getStream(long messageId, long streamId)
+		public BContentStream getStream(long messageId, long streamId)
 				throws IOException {
 			HashMap<Long, ByteBuffer> map = mapStreams.get(messageId);
 			if (map == null) throw new IOException("Stream not found.");
 			ByteBuffer buf = map.get(streamId);
 			if (buf == null) throw new IOException("Stream not found.");
-			return new ByteArrayInputStream(buf.array(), buf.position(), buf.remaining());
+			return new BContentStreamWrapper(
+					new ByteArrayInputStream(buf.array(), buf.position(), buf.remaining()),
+					"application/octet-stream",
+					buf.remaining());
 		}
 	}
 

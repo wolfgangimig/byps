@@ -275,6 +275,11 @@ class GenApiClass {
 				  .print("(").print(memberType).print(" v) {").println();
 				pr.beginBlock();
 				pr.print(minfo.name).println(" = v;");
+				
+//				if (pctxt.isGenerateChangedMembers()) {
+//					pr.print("changedMembers |= ").print(pctxt.getElementSelector(serInfo, minfo))
+//					  .print(";").println();
+//				}
 			}
 			
 			if (serInfo.isResultClass()) {

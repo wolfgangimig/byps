@@ -10,6 +10,13 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public final static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
 
+	public BContentStream(String contentType, long contentLength) {
+		this.lifetimeMillis = 0;
+		this.contentType = contentType != null && contentType.length() != 0 ? contentType : DEFAULT_CONTENT_TYPE;
+		this.contentLength = contentLength;
+		extendLifetime();
+	}
+	
 	public BContentStream(String contentType, long contentLength, long lifetimeMillis) {
 		this.lifetimeMillis = lifetimeMillis;
 		this.contentType = contentType != null && contentType.length() != 0 ? contentType : DEFAULT_CONTENT_TYPE;

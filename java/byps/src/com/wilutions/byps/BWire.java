@@ -49,7 +49,7 @@ public class BWire {
 	 * Send bytes in buf and receive result in asyncResult.
 	 * Override this function to implement a useful transport of bytes.
 	 * Die Funktion wird nur clientseitig benötigt
-	 * @param buf
+	 * @param msg
 	 * @param asyncResult
 	 * @return null oder ein CancelSend-Objekt, dass die Send-Operation abbrechen kann.
 	 */
@@ -66,6 +66,14 @@ public class BWire {
 		asyncResult.setAsyncResult(omsg, null);
 	}
 	
+	/**
+	 * Send message with infinite read timeout.
+	 * @param msg
+	 * @param asyncResult
+	 */
+	public void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult) {
+		send(msg, asyncResult);
+	}
 	
 	/**
 	 * Die Funktion wird client- und serverseitig benötig
@@ -92,7 +100,7 @@ public class BWire {
 	 * @return
 	 * @throws IOException
 	 */
-	public InputStream getStream(long messageId, long strmId) throws IOException {
+	public BContentStream getStream(long messageId, long strmId) throws IOException {
 		return null;
 	}
 	

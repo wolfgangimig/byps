@@ -1,7 +1,6 @@
 package com.wilutions.byps.http;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BAsyncResult;
+import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BStreamRequest;
@@ -208,7 +208,7 @@ public class HWireClientR extends BWire {
 	};
 	
 	@Override
-	public InputStream getStream(long messageId, long strmId)
+	public BContentStream getStream(long messageId, long strmId)
 			throws IOException {
 		return wireServer.getStream(messageId, strmId);
 	}

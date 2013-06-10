@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteEnumsAsync extends RemoteEnums {
+public interface RemoteEnumsAsync extends RemoteEnums, BRemote {
 
 	public void async_getPlanet(final BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) ;
 	

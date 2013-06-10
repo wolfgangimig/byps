@@ -457,6 +457,11 @@ class PrintContext extends PrintContextBase {
 		}
 	}
 
+	public String getElementSelector(TypeInfo serInfo, MemberInfo minfo) {
+		return getElementSelectorClassName(serInfo) + "." + getElementSelectorName(minfo);
+	}
+
+
 	public final File dirApi;
 	public final File dirSerBin;
 	public final File dirSerJson;

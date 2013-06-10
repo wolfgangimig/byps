@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteMapTypesAsync extends RemoteMapTypes {
+public interface RemoteMapTypesAsync extends RemoteMapTypes, BRemote {
 
 	public void async_getBoolean1(final BAsyncResult<java.util.Map<java.lang.String,java.lang.Boolean>> asyncResult) ;
 	

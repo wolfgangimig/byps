@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface RemoteStreamsAsync extends RemoteStreams {
+public interface RemoteStreamsAsync extends RemoteStreams, BRemote {
 
 	public void async_getImage(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	

@@ -86,17 +86,22 @@ class GenApiClass {
 			
 			String f = minfo.isFinal ? "readonly " : "";
 			String s = minfo.isStatic ? "static " : "";
+			String n = "";
+			
+			if (serInfo.baseInfo != null && serInfo.baseInfo.findMember(minfo.name) != null) {
+				n = "new ";
+			}
 			
 			String memberName = "";
 			if (minfo.isStatic) {
-				memberName = Utils.firstCharToUpper(minfo.name);
+				memberName = pctxt.makePublicMemberName(minfo.name);
 			}
 			else {
 				memberName = "_" + minfo.name;
 			}
 			
 			String typeName = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
-			CodePrinter mpr = pr.print(access).print(f).print(s)
+			CodePrinter mpr = pr.print(access).print(f).print(s).print(n)
 			  .print(typeName).print(" ").print(memberName);
 			
 			String value = minfo.value;
@@ -291,6 +296,9 @@ class GenApiClass {
 				pr.println("{");
 				pr.beginBlock();
 				pr.print("this._").print(minfo.name).println(" = value;");
+				
+				pctxt.printSetChangedMember(pr, serInfo, minfo);
+				
 				if (serInfo.isResultClass()) {
 					pr.println("if (resp != null) resp.ready(this);");
 				}
@@ -327,43 +335,46 @@ class GenApiClass {
 		pr.println();
 		pr.println();
 		
-//      Konstruktor mit Initialisierungsliste macht keinen Sinn, weil er sich ändert, wenn Datenelemente hinzukommen. 
-//		if (isValueClass()) {
-//
-//			List<MemberInfo> constrMembers = new ArrayList<MemberInfo>();
-//			for (MemberInfo minfo : serInfo.members) {
-//				if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
-//				if (minfo.isStatic) continue;
-//				constrMembers.add(minfo);
-//			}
-//			
-//			if (constrMembers.size() != 0) {
-//				CodePrinter mpr = pr.print("public ").print(serInfo.name).print("(");
-//				boolean first = true;
-//				for (MemberInfo minfo : constrMembers) {
-//					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
-//					if (minfo.isStatic) continue;
-//					if (!first) mpr.print(", "); else first = false; 
-//			
-//					String typeName = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
-//					  mpr.print(typeName).print(" @").print(minfo.name);
-//				}
-//				mpr.println(") {");
-//	
-//				pr.beginBlock();
-//				for (MemberInfo minfo : constrMembers) {
-//					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
-//					if (minfo.isStatic) continue;
-//					pr.print("this._").print(minfo.name).print(" = @").print(minfo.name).println(";");
-//				}
-//				pr.endBlock();
-//				
-//				pr.print("}");
-//				pr.println();
-//			}
-//		}
+		if (isValueClass()) {
+
+			List<MemberInfo> constrMembers = new ArrayList<MemberInfo>();
+			for (MemberInfo minfo : serInfo.members) {
+				if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
+				if (minfo.isStatic) continue;
+				constrMembers.add(minfo);
+			}
+			
+			if (constrMembers.size() != 0) {
+				CodePrinter mpr = pr.print("internal ").print(serInfo.name).print("(");
+				boolean first = true;
+				for (MemberInfo minfo : constrMembers) {
+					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
+					if (minfo.isStatic) continue;
+					if (!first) mpr.print(", "); else first = false; 
+			
+					String typeName = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
+					  mpr.print(typeName).print(" @").print(minfo.name);
+				}
+				mpr.println(") {");
+	
+				pr.beginBlock();
+				for (MemberInfo minfo : constrMembers) {
+					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
+					if (minfo.isStatic) continue;
+					pr.print("this._").print(minfo.name).print(" = @").print(minfo.name).println(";");
+				}
+				pr.endBlock();
+				
+				pr.print("}");
+				pr.println();
+			}
+		}
 		
 		log.debug(")printConstructors");
+	}
+
+	private boolean isValueClass() {
+		return true;
 	}
 
 	private void printRemoteId() throws IOException {
@@ -687,6 +698,9 @@ class GenApiClass {
 				TypeInfo csinfo = pctxt.toCSharp(serInfo.baseInfo);
 				mpr.print(" : ").print(csinfo.toString(serInfo.pack)).print(", BSerializable");
 			}
+			else if (pctxt.isGenerateChangedMembers()) {
+				mpr.print(" : BValueClass");
+			}
 			else {
 				mpr.print(" : BSerializable");
 			}
@@ -768,10 +782,6 @@ class GenApiClass {
 
 		
 		log.debug(")generate");
-	}
-
-	private boolean isValueClass() {
-		return methodInfo == null;
 	}
 
 	private final SerialInfo serInfo;

@@ -97,5 +97,12 @@ public class SerialInfo extends TypeInfo implements Comparable<SerialInfo> {
 		return hasTransientMembers;
 	}
 	
-
+	public MemberInfo findMember(String memberName) {
+		for (MemberInfo m : members) {
+			if (m.name.equals(memberName)) {
+				return m;
+			}
+		}
+		return null;
+	}
 }

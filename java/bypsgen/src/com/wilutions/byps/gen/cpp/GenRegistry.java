@@ -56,6 +56,7 @@ public class GenRegistry {
 		prH.println();
 		
 		prH.print(regCppInfo.namespaceEnd).println();
+		prH.println();
 		
 		printDeclareSerializer(pctxt.getPrImplAllH());
 		
@@ -105,9 +106,9 @@ public class GenRegistry {
 			if (serInfo.isBuiltInType()) continue;
 			if (!serInfo.isPointerType()) continue;
 			
-			pr.print("POBJECT BSerializer_" + serInfo.typeId)
-			.print("(BIO&, void*")
-			.println(");");
+			pr.print("// Serializer for ").print(serInfo.toString()).println();
+			pr.print("void ").print("BSerializer_" + serInfo.typeId)
+			.print("(BIO& bio, POBJECT& pObj, void* pBase)").println(";");
 
 		}
 		

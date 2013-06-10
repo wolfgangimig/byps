@@ -347,21 +347,35 @@ com.wilutions.byps.BAsyncResult = function(result, exception) {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BWireClient = function(rurl) {
+com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 	
 	var me = this;
 	this.rurl = rurl;
+	this.flags = flags || 0;
+	
+	this.timeoutMillisClient = timeoutSeconds ? (timeoutSeconds * 1000) : (-1);
 	
 	this.openRequestsToCancel = {};
 		
 	// Send function.
 	// The streams are already sent by a HTML file upload.
 	this.send = function(requestMessage, asyncResult) {
-		
+		return this._internalSend(requestMessage, asyncResult, this.timeoutMillisClient);
+	};
+	
+	this.sendR = function(requestMessage, asyncResult) {
+		return this._internalSend(requestMessage, asyncResult, 0);
+	};
+
+	this._internalSend = function(requestMessage, asyncResult, timeoutMillis) {
 		var requestId = Math.random();
 		var xhr = new XMLHttpRequest();
 		
 		this.openRequestsToCancel[requestId] = xhr;
+		
+		if (timeoutMillis >= 0) {
+			xhr.timeout = timeoutMillis;
+		}
 		
 		xhr.open('POST', me.rurl, !!asyncResult);
 		
@@ -906,22 +920,21 @@ com.wilutions.byps.BServerR = function(transport, server) {
 		
 		var nextAsyncMethod = function(message, exception) {
 			try {
-				if (exception) {
-					asyncResult(null, exception);
-				}
-				else {
-					if (message.jsonText) {
-						me.transport.recv(me.server, message, asyncResult);
-					} else {
-						me._methodResult = me._makeInitMessage();
-					}
+				if (!exception && message.jsonText) {
+					me.transport.recv(me.server, message, asyncResult);
+				} else {
+					window.setTimeout(function() {
+							var methodResult = me._makeInitMessage();
+							me._run(methodResult);
+						}, 
+						60 * 1000);
 				}
 			} catch (ex) {
 				asyncResult(null, ex);
 			};
 		};
 		
-		transport.wire.send(methodResult, nextAsyncMethod);
+		transport.wire.sendR(methodResult, nextAsyncMethod);
 	};
 	
 	this._makeInitMessage = function() {

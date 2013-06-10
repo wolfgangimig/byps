@@ -108,5 +108,17 @@ public class BStub_ServerIF extends BStub implements ServerIFAsync, java.io.Seri
 		transport.send(req, outerResult);
 	}
 	
+	public int callClientParallel(int v) throws BException, InterruptedException {
+		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
+		async_callClientParallel(v, asyncResult);
+		return asyncResult.getResult();		
+	}
+	public void async_callClientParallel(int v, final BAsyncResult<Integer> asyncResult) {
+		BRequest_ServerIF_callClientParallel req = new BRequest_ServerIF_callClientParallel();		
+		req.v = v;
+		BAsyncResultReceiveMethod<Integer> outerResult = new BAsyncResultReceiveMethod<Integer>(asyncResult);
+		transport.send(req, outerResult);
+	}
+	
 	
 }

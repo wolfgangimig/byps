@@ -35,12 +35,15 @@ public abstract class HSession  {
 	}
 	
 	public void done() {
-			
+		if (log.isDebugEnabled()) log.debug("done(");
+
 		httpSess.removeAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
 		httpSess.invalidate();
 		
 		wireServer.done();
 		wireClientR.done();
+		
+		if (log.isDebugEnabled()) log.debug(")done");
 	}
 	
 	public void removeExpiredResources() {

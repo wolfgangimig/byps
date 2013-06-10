@@ -40,7 +40,7 @@ class GenRemoteSkeleton {
 		pctxt.printDeclareMethod(prC, rinfo, methodInfo, EMethodDecl.SkeletonImpl).println(" {");
 		
 		prC.beginBlock();
-		prC.println("throw BException(EX_UNSUPPORTED_METHOD, \"\");");
+		prC.println("throw BException(EX_UNSUPPORTED_METHOD, L\"\");");
 		prC.endBlock();
 		prC.println("}");
 		
@@ -82,16 +82,26 @@ class GenRemoteSkeleton {
 		}
 		mpr.println(");");
 		
-		prC.println("asyncResult->setAsyncResult(ret, NULL);");
+		if (pctxt.lambdaSupported) {
+			prC.println("asyncResult(ret, BException());");
+		}
+		else {
+			prC.println("asyncResult->setAsyncResult(BVariant(ret));");
+		}
 		
 		prC.endBlock();
 //		pr.println("} catch (RemoteException e) {");
 //		pr.beginBlock();
 //		pr.println("asyncResult.setException(e);");
 //		pr.endBlock();
-		prC.println("} catch (const BException& e) {");
+		prC.println("} catch (const std::exception& ex) {");
 		prC.beginBlock();
-		prC.print("asyncResult->setAsyncResult(ret, &e);").println();
+		if (pctxt.lambdaSupported) {
+			prC.print("asyncResult(ret, ex);").println();
+		}
+		else {
+			prC.print("asyncResult->setAsyncResult(BVariant(ex));").println();
+		}
 		prC.endBlock();
 //		pr.println("} finally {");
 //		pr.beginBlock();

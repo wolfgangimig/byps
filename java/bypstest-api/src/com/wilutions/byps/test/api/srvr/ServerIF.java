@@ -24,4 +24,7 @@ public interface ServerIF extends BRemote {
 	public ClientIF getClient(int id) throws BException, InterruptedException;
 	
 	public Set<Integer> getClientIds() throws BException, InterruptedException;
+
+	public int callClientParallel(int v) throws BException, InterruptedException;
+	
 }

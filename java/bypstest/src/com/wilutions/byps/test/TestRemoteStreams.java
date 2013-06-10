@@ -47,6 +47,7 @@ public class TestRemoteStreams {
 	
 	/**
 	 * Send and receive a stream.
+	 * It's sent by HTTP chunked encoding.
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */

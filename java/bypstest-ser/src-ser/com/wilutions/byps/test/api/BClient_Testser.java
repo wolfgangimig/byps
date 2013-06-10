@@ -27,7 +27,6 @@ public class BClient_Testser extends BClient {
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
 		remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(transport);
-		remoteException = new com.wilutions.byps.test.api.remote.BStub_RemoteException(transport);
 		remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(transport);
 		remoteListTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteListTypes(transport);
 		remoteMapTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes(transport);
@@ -52,11 +51,6 @@ public class BClient_Testser extends BClient {
 	
 	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums remoteSkeleton) {
 		serverR.server.addRemote(359349400, remoteSkeleton);
-		return this;
-	}
-	
-	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteException remoteSkeleton) {
-		serverR.server.addRemote(1959416539, remoteSkeleton);
 		return this;
 	}
 	
@@ -115,7 +109,6 @@ public class BClient_Testser extends BClient {
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
 		remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(transport);
-		remoteException = new com.wilutions.byps.test.api.remote.BStub_RemoteException(transport);
 		remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(transport);
 		remoteListTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteListTypes(transport);
 		remoteMapTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes(transport);
@@ -133,7 +126,6 @@ public class BClient_Testser extends BClient {
 		if (remoteId == 1557084481) return remoteArrayTypes1dim;
 		if (remoteId == 1557173854) return remoteArrayTypes4dim;
 		if (remoteId == 359349400) return remoteEnums;
-		if (remoteId == 1959416539) return remoteException;
 		if (remoteId == 1206670536) return remoteInlineInstance;
 		if (remoteId == 380156079) return remoteListTypes;
 		if (remoteId == 80483097) return remoteMapTypes;
@@ -150,7 +142,6 @@ public class BClient_Testser extends BClient {
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes1dimAsync remoteArrayTypes1dim;
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes4dimAsync remoteArrayTypes4dim;
 	public final com.wilutions.byps.test.api.remote.RemoteEnumsAsync remoteEnums;
-	public final com.wilutions.byps.test.api.remote.RemoteExceptionAsync remoteException;
 	public final com.wilutions.byps.test.api.remote.RemoteInlineInstanceAsync remoteInlineInstance;
 	public final com.wilutions.byps.test.api.remote.RemoteListTypesAsync remoteListTypes;
 	public final com.wilutions.byps.test.api.remote.RemoteMapTypesAsync remoteMapTypes;

@@ -79,7 +79,18 @@ public class PrintContextBase {
 	}
 	
 	public boolean isGenerateChangedMembers() {
-		return props.containsKey(GeneratorProperties.CHANGED_MEMBERS);
+		String val = props.getProperty(GeneratorProperties.CHANGED_MEMBERS);
+		return val != null && val.equalsIgnoreCase("true");
+	}
+	
+	public String getElementSelectorClassName(TypeInfo tinfo) {
+		String s = tinfo.name + "C";
+		return s;
+	}
+	
+	public String getElementSelectorName(MemberInfo minfo) {
+		String s = "mb" + Utils.firstCharToUpper(minfo.name);
+		return s;
 	}
 
 	protected String apiName;

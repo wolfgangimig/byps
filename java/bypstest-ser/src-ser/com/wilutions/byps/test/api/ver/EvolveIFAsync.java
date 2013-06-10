@@ -7,7 +7,7 @@
 
 import com.wilutions.byps.*;
 
-public interface EvolveIFAsync extends EvolveIF {
+public interface EvolveIFAsync extends EvolveIF, BRemote {
 
 	public void async_setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) ;
 	

@@ -2135,75 +2135,6 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwBException</typeName>
-            <typeId>641509600</typeId>
-            <members>
-                <member>
-                    <name>code</name>
-                    <typeName>int</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>msg</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwException</typeName>
-            <typeId>67092708</typeId>
-            <members>
-                <member>
-                    <name>what</name>
-                    <typeName>int</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwFirstException</typeName>
-            <typeId>533533486</typeId>
-            <members/>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwNullPointerException</typeName>
-            <typeId>1888829108</typeId>
-            <members/>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
             <typeName>com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActor</typeName>
             <typeId>261822861</typeId>
             <members/>
@@ -5153,86 +5084,6 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwBException</typeName>
-            <typeId>805985960</typeId>
-            <members>
-                <member>
-                    <name>result</name>
-                    <typeName>void</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwException</typeName>
-            <typeId>1170165676</typeId>
-            <members>
-                <member>
-                    <name>result</name>
-                    <typeName>void</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwFirstException</typeName>
-            <typeId>1025539738</typeId>
-            <members>
-                <member>
-                    <name>result</name>
-                    <typeName>void</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwNullPointerException</typeName>
-            <typeId>2113544940</typeId>
-            <members>
-                <member>
-                    <name>result</name>
-                    <typeName>void</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName></baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>true</isFinal>
-        </serial>
-        <serial>
             <typeName>com.wilutions.byps.test.api.remote.BResult_RemoteInlineInstance_getActor</typeName>
             <typeId>882138795</typeId>
             <members>
@@ -7813,55 +7664,6 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
-            <typeName>com.wilutions.byps.test.api.remote.FirstException</typeName>
-            <typeId>11000</typeId>
-            <members>
-                <member>
-                    <name>listOfStrings</name>
-                    <typeName>java.util.List{java.lang.String}</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PUBLIC</access>
-                    <since>0</since>
-                </member>
-                <member>
-                    <name>cause</name>
-                    <typeName>java.lang.Throwable</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName>java.lang.Exception</baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
-        </serial>
-        <serial>
-            <typeName>com.wilutions.byps.test.api.remote.SecondException</typeName>
-            <typeId>11001</typeId>
-            <members>
-                <member>
-                    <name>msg</name>
-                    <typeName>java.lang.String</typeName>
-                    <isTransient>false</isTransient>
-                    <isStatic>false</isStatic>
-                    <isFinal>false</isFinal>
-                    <access>PRIVATE</access>
-                    <since>0</since>
-                </member>
-            </members>
-            <comments/>
-            <baseFullName>java.lang.Exception</baseFullName>
-            <isInline>false</isInline>
-            <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
-        </serial>
-        <serial>
             <typeName>com.wilutions.byps.test.api.set.SetTypes</typeName>
             <typeId>5001</typeId>
             <members>
@@ -8099,6 +7901,26 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientParallel</typeName>
+            <typeId>1340180893</typeId>
+            <members>
+                <member>
+                    <name>v</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClient</typeName>
             <typeId>2107407220</typeId>
             <members>
@@ -8291,6 +8113,26 @@
         <serial>
             <typeName>com.wilutions.byps.test.api.srvr.BResult_ServerIF_callClientIncrementInt</typeName>
             <typeId>846649496</typeId>
+            <members>
+                <member>
+                    <name>result</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>com.wilutions.byps.test.api.srvr.BResult_ServerIF_callClientParallel</typeName>
+            <typeId>586866833</typeId>
             <members>
                 <member>
                     <name>result</name>
@@ -10836,59 +10678,6 @@
             <comments/>
         </remote>
         <remote>
-            <typeName>com.wilutions.byps.test.api.remote.RemoteException</typeName>
-            <typeId>1959416539</typeId>
-            <methods>
-                <method>
-                    <name>throwBException</name>
-                    <remoteName>com.wilutions.byps.test.api.remote.RemoteException</remoteName>
-                    <requestTypeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwBException</requestTypeName>
-                    <resultTypeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwBException</resultTypeName>
-                    <exceptionTypeNames/>
-                    <comments/>
-                </method>
-                <method>
-                    <name>throwFirstException</name>
-                    <remoteName>com.wilutions.byps.test.api.remote.RemoteException</remoteName>
-                    <requestTypeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwFirstException</requestTypeName>
-                    <resultTypeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwFirstException</resultTypeName>
-                    <exceptionTypeNames>
-                        <exceptionTypeName>com.wilutions.byps.test.api.remote.FirstException</exceptionTypeName>
-                    </exceptionTypeNames>
-                    <comments/>
-                </method>
-                <method>
-                    <name>throwException</name>
-                    <remoteName>com.wilutions.byps.test.api.remote.RemoteException</remoteName>
-                    <requestTypeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwException</requestTypeName>
-                    <resultTypeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwException</resultTypeName>
-                    <exceptionTypeNames>
-                        <exceptionTypeName>com.wilutions.byps.test.api.remote.FirstException</exceptionTypeName>
-                        <exceptionTypeName>com.wilutions.byps.test.api.remote.SecondException</exceptionTypeName>
-                    </exceptionTypeNames>
-                    <comments/>
-                </method>
-                <method>
-                    <name>throwNullPointerException</name>
-                    <remoteName>com.wilutions.byps.test.api.remote.RemoteException</remoteName>
-                    <requestTypeName>com.wilutions.byps.test.api.remote.BRequest_RemoteException_throwNullPointerException</requestTypeName>
-                    <resultTypeName>com.wilutions.byps.test.api.remote.BResult_RemoteException_throwNullPointerException</resultTypeName>
-                    <exceptionTypeNames/>
-                    <comments>
-                        <comment>
-                            <kind>@summary</kind>
-                            <text>Throw an exception that cannot be serialized.</text>
-                        </comment>
-                        <comment>
-                            <kind>@remarks</kind>
-                            <text>The exception message is wrapped into a BException.</text>
-                        </comment>
-                    </comments>
-                </method>
-            </methods>
-            <comments/>
-        </remote>
-        <remote>
             <typeName>com.wilutions.byps.test.api.remote.RemoteInlineInstance</typeName>
             <typeId>1206670536</typeId>
             <methods>
@@ -12073,6 +11862,14 @@
                     <remoteName>com.wilutions.byps.test.api.srvr.ServerIF</remoteName>
                     <requestTypeName>com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds</requestTypeName>
                     <resultTypeName>com.wilutions.byps.test.api.srvr.BResult_ServerIF_getClientIds</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>callClientParallel</name>
+                    <remoteName>com.wilutions.byps.test.api.srvr.ServerIF</remoteName>
+                    <requestTypeName>com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientParallel</requestTypeName>
+                    <resultTypeName>com.wilutions.byps.test.api.srvr.BResult_ServerIF_callClientParallel</resultTypeName>
                     <exceptionTypeNames/>
                     <comments/>
                 </method>

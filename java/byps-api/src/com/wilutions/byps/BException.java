@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Exceptions of this class are thrown during serialization and communication.
  */
-public final class BException extends IOException {
+public class BException extends IOException {
 	
 	// This class is declared final, because JSerializer.internalRead of a 
 	// child class could not set the final fields of BException.

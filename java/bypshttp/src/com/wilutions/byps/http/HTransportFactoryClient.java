@@ -11,9 +11,11 @@ import com.wilutions.byps.BWire;
 public class HTransportFactoryClient implements BTransportFactory {
 	
 	private final BTransport transport;
+	private final int nbOfServerRConns;
 	
-	public HTransportFactoryClient(BApiDescriptor apiDesc, BWire wire) {
+	public HTransportFactoryClient(BApiDescriptor apiDesc, BWire wire, int nbOfServerRConns) {
 		this.transport = new BTransport(apiDesc, wire, null);
+		this.nbOfServerRConns = nbOfServerRConns;
 	}
 
 	@Override
@@ -33,7 +35,7 @@ public class HTransportFactoryClient implements BTransportFactory {
 
 	@Override
 	public BServerR createServerR(BServer server) {
-		return new HServerR(transport, server);
+		return new HServerR(transport, server, nbOfServerRConns);
 	}
 	
 }

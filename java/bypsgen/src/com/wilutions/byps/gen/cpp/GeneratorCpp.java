@@ -25,6 +25,7 @@ public class GeneratorCpp implements Generator {
 		printSerials(classDB.getSerials());
 		printRemotes(classDB.getRemotes());
 		GenRegistry.generate(pctxt, classDB.getSerials(), BBinaryModel.MEDIUM);
+		GenApiDescriptor.generate(pctxt, classDB.getApiDescriptor());
 		GenClient.generate(pctxt, classDB.getApiDescriptor());
 		GenServer.generate(pctxt, classDB.getApiDescriptor());
 		pctxt.close();

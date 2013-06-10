@@ -125,6 +125,8 @@ public class TestRemoteDifferentVersions {
 		
 		TestSerializeDifferentVersions.compareEvolve(log, obj, refObj[0], clientVersion, serverVersion);
 		
+		client2.done();
+
 		log.info(")internaltestServerCallsClient");
 	}
 
@@ -177,6 +179,9 @@ public class TestRemoteDifferentVersions {
 		remoteOfClient2.setEvolve(obj);
 		
 		TestSerializeDifferentVersions.compareEvolve(log, obj, refObj[0], clientVersion, clientVersion2);
+		
+		client1.done();
+		client2.done();
 		
 		log.info(")internaltestClientCallsAnotherClient");
 	}

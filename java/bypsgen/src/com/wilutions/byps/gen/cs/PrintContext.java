@@ -280,7 +280,8 @@ public class PrintContext extends PrintContextBase {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
 			cstype = toCSharp(pinfo.type);
-			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(pinfo.name);
+			String mname = makeValidMemberName(pinfo.name);
+			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
 		}
 		
 		mpr.print(")");
@@ -288,14 +289,15 @@ public class PrintContext extends PrintContextBase {
 	}
 	
 	public CodePrinter printDeclareMethodBeginAsync(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
-		String methodName = makePublicMemberName(methodInfo.name);
+		String methodName = Utils.firstCharToUpper(methodInfo.name);
 		CodePrinter mpr = pr.print("IAsyncResult Begin").print(methodName).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);
-			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(pinfo.name);
+			String mname = makeValidMemberName(pinfo.name);
+			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
 		}
 		
 		if (!first) mpr = mpr.print(", ");
@@ -305,7 +307,7 @@ public class PrintContext extends PrintContextBase {
 	}
 	
 	public CodePrinter printDeclareMethodEndAsync(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
-		String methodName = makePublicMemberName(methodInfo.name);
+		String methodName = Utils.firstCharToUpper(methodInfo.name);
 		String rtype = getReturnTypeAsObjType(methodInfo, rinfo.pack);
 		CodePrinter mpr = pr.print(rtype).print(" End").print(methodName).print("(IAsyncResult asyncResult)");
 		return mpr;
@@ -317,6 +319,12 @@ public class PrintContext extends PrintContextBase {
 		}
 		return name;
 	}
+	
+	public String makeValidMemberName(String mname) {
+		if (mname.equals("value")) return mname = "@value";
+		if (mname.equals("params")) return mname = "@params";
+		return mname;
+	}
 
 	public CodePrinter printDeclareMethodAsync(CodePrinter pr,
 			RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
@@ -327,7 +335,8 @@ public class PrintContext extends PrintContextBase {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);
-			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(pinfo.name);
+			String mname = makeValidMemberName(pinfo.name);
+			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
 		}
 		
 		String rtype = getReturnTypeAsObjType(methodInfo, rinfo.pack);
@@ -580,6 +589,27 @@ public class PrintContext extends PrintContextBase {
 		if (!rinfo.pack.equals(pack)) className += rinfo.pack + ".";
 		className += PrintContext.SKELETON_PREFIX + rinfo.name;
 		return className;
+	}
+
+	public String getElementSelector(TypeInfo serInfo, MemberInfo minfo) {
+		return getElementSelectorClassName(serInfo) + "." + getElementSelectorName(minfo);
+	}
+
+	public void printSetChangedMember(CodePrinter pr, SerialInfo serInfo, MemberInfo minfo) {
+		if (isGenerateChangedMembers()) {
+			SerialInfo serInfoC = classDB.getSerInfo(serInfo.qname + "C");
+			if (serInfoC != null) {
+				String elementSelectorName = getElementSelector(serInfo, minfo);
+				MemberInfo minfoC = serInfoC.findMember(elementSelectorName);
+				if (minfoC != null) {
+					if (minfoC.name.equals(elementSelectorName)) {
+						pr.print("setChangedMember(").print(elementSelectorName)
+						  .print(");").println();
+					}
+				}
+			}
+		}
+	
 	}
 
 

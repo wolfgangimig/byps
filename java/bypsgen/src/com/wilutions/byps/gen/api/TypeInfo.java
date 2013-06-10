@@ -258,7 +258,9 @@ public class TypeInfo {
 		if (isMapType() && typeArgs.get(0).isAnyType() && typeArgs.get(1).isAnyType()) return true;
 		if (isPrimitiveType()) return true;
 		if (isExceptionType()) return true;
-		return qname.equals("java.lang.Object") || qname.equals("java.lang.String");
+		return qname.equals("java.lang.Object") 
+				|| qname.equals("java.lang.String")
+				|| qname.equals("com.wilutions.byps.BValueClass");
 	}
 	
 	public boolean isPointerType() {
