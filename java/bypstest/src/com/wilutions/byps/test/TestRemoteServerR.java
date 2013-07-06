@@ -266,7 +266,7 @@ public class TestRemoteServerR {
 		// Pass the interface of the second client to the server side of the first client
 		client.serverIF.setPartner(partner);
 		
-		// Invoke interface of second client.
+		// Invoke interface of second client from the server.
 		int r = remote.callClientIncrementInt(7);
 		TestUtils.assertEquals(log, "incrementInt", 8, r);
 		

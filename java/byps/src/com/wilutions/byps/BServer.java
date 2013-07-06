@@ -1,8 +1,8 @@
 package com.wilutions.byps;
 
 import java.nio.ByteBuffer;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,7 +17,7 @@ public class BServer {
 	public BServer(BTransport transport, BClient clientR) {
 		this.transport = transport;
 		this.clientR = clientR;
-		this.remotes = new HashMap<Integer, BRemote>();
+		this.remotes = new ConcurrentHashMap<Integer, BRemote>();
 	}
 	
 	public BServer(BServer rhs) {

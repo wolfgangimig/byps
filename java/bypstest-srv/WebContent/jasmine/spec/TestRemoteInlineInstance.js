@@ -17,6 +17,12 @@ describe("Tests for sending and receiving inline types.", function() {
 		}
 		return obj;
 	};
+	
+	var x = 0;
+	createPoint2D = function() {
+		var obj = new com.wilutions.byps.test.api.inl.Point2D(x++,x*x);
+		return obj;
+	};
 
 	it("testRemoteInlineInstance", function() {
 		log.info("testRemoteInlineInstance(");
@@ -32,10 +38,10 @@ describe("Tests for sending and receiving inline types.", function() {
 	it("testRemoteInlineInstanceArray1dim", function() {
 		log.info("testRemoteInlineInstanceArray1dim(");
 		
-		var actorArray = [createActor(), createActor()];
-		remote.setActorArray1dim(actorArray);
+		var point2DArray = [createPoint2D(), createPoint2D()];
+		remote.setPoint2DArray1dim(point2DArray);
 		
-		TestUtils.assertEquals(log, "actor", actorArray, remote.getActorArray1dim());
+		TestUtils.assertEquals(log, "actor", point2DArray, remote.getPoint2DArray1dim());
 		
 		log.info(")testRemoteInlineInstanceArray1dim");
 	});
@@ -43,23 +49,23 @@ describe("Tests for sending and receiving inline types.", function() {
 	it("testRemoteInlineInstanceArray4dim", function() {
 		log.info("testRemoteInlineInstanceArray4dim(");
 		
-		var actorArray = [[[[createActor(), createActor()]]]];
-		remote.setActorArray4dim(actorArray);
+		var point2DArray = [[[[createPoint2D(), createPoint2D()]]]];
+		remote.setPoint2DArray4dim(point2DArray);
 		
-		TestUtils.assertEquals(log, "actor", actorArray, remote.getActorArray4dim());
-		
+		TestUtils.assertEquals(log, "point2D", point2DArray, remote.getPoint2DArray4dim());
+
 		log.info(")testRemoteInlineInstanceArray4dim");
 	});
 
 	it("testRemoteInlineInstanceList", function() {
 		log.info("testRemoteInlineInstanceList(");
 		
-		var actorList = [];
-		actorList.push(createActor());
-		actorList.push(createActor());
-		remote.setActorList(actorList);
+		var point2DList = [];
+		point2DList.push(createPoint2D());
+		point2DList.push(createPoint2D());
+		remote.setPoint2DList(point2DList);
 		
-		TestUtils.assertEquals(log, "actor", actorList, remote.getActorList());
+		TestUtils.assertEquals(log, "point2D", point2DList, remote.getPoint2DList());
 		
 		log.info(")testRemoteInlineInstanceList");
 	});
@@ -67,41 +73,28 @@ describe("Tests for sending and receiving inline types.", function() {
 	it("testRemoteInlineInstanceListList", function() {
 		log.info("testRemoteInlineInstanceListList(");
 		
-		var actorListList = [];
-		var actorList = [];
-		actorListList.push(actorList);
-		actorList.push(createActor());
-		actorList.push(createActor());
-		remote.setActorListList(actorListList);
+		var point2DListList = [];
+		var point2DList = [];
+		point2DListList.push(point2DList);
+		point2DList.push(createPoint2D());
+		point2DList.push(createPoint2D());
+		remote.setPoint2DListList(point2DListList);
 		
-		TestUtils.assertEquals(log, "actor", actorListList, remote.getActorListList());
+		TestUtils.assertEquals(log, "point2D", point2DListList, remote.getPoint2DListList());
 		
 		log.info(")testRemoteInlineInstanceListList");
 	});
 
-	it("testRemoteInlineInstanceSet", function() {
-		log.info("testRemoteInlineInstanceSet(");
-		
-		var actorSet = [];
-		actorSet.push(createActor());
-		actorSet.push(createActor());
-		remote.setActorSet(actorSet);
-		
-		TestUtils.assertEquals(log, "actor", actorSet, remote.getActorSet());
-		
-		log.info(")testRemoteInlineInstanceSet");
-	});
-
 	it("testRemoteInlineInstanceMap", function() {
 		log.info("testRemoteInlineInstanceMap(");
+
+		var point2DMap = {};
+		point2DMap[11] = createPoint2D();
+		point2DMap[12] = createPoint2D();
+		remote.setPoint2DMap(point2DMap);
 		
-		var actorMap = {};
-		actorMap[11] = createActor();
-		actorMap[12] = createActor();
-		remote.setActorMap(actorMap);
-		
-		TestUtils.assertEquals(log, "actor", actorMap, remote.getActorMap());
-		
+		TestUtils.assertEquals(log, "point2D", point2DMap, remote.getPoint2DMap());
+
 		log.info(")testRemoteInlineInstanceMap");
 	});
 

@@ -24,7 +24,7 @@ public final class BRequest_RemoteSetTypes_setFloat1 implements BMethodRequest, 
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteSetTypesAsync remoteT = (RemoteSetTypesAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteSetTypes_setFloat1());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setFloat1(float1, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

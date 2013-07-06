@@ -89,7 +89,8 @@ com.wilutions.byps.BSerializer = function(persistentNames, inlineNames, inlineIn
 			if (inlineNames) {
 				var typeId = inlineNames[ename];
 				if (typeId) {
-					bout.writeElement(obj, ename, bout.registry.getSerializer(typeId));
+					var ser = bout.registry.getSerializer(typeId);
+					bout.writeElement(obj, ename, ser);
 					continue;
 				}
 			}
@@ -114,7 +115,8 @@ com.wilutions.byps.BSerializer = function(persistentNames, inlineNames, inlineIn
 			if (inlineNames) {
 				var typeId = inlineNames[ename];
 				if (typeId) {
-					bin.readElement(obj, ename, bin.registry.getSerializer(typeId));
+					var ser = bin.registry.getSerializer(typeId);
+					bin.readElement(obj, ename, ser);
 					continue;
 				}
 			}
@@ -150,16 +152,15 @@ com.wilutions.byps.BSerializerArray = function(elementTypeId, nbOfDimensions) {
 		}
 	};
 	
-	var getSerializer = function(registry) {
+	var getElementSerializer = function(registry) {
 		if (elementSerializer === undefined) {
 			elementSerializer = registry.getSerializer(elementTypeId);
-			if (!elementSerializer.inlineInstance) elementSerializer = null;
 		}
 		return elementSerializer;
 	};
 	
 	this.write = function(obj, bout) {
-		var ser = getSerializer(bout.registry);
+		var ser = getElementSerializer(bout.registry);
 		writeDim(obj, nbOfDimensions, bout, ser);
 	};
 	
@@ -177,8 +178,45 @@ com.wilutions.byps.BSerializerArray = function(elementTypeId, nbOfDimensions) {
 	};
 	
 	this.read = function(obj, bin) {
-		var ser = getSerializer(bin.registry);
+		var ser = getElementSerializer(bin.registry);
 		readDim(obj, nbOfDimensions, bin, ser);
+		return obj;
+	};
+	
+};
+
+//------------------------------------------------------------------------------------------------
+//Serializer for Map
+
+com.wilutions.byps.BSerializerMap = function(valueTypeId) {
+
+	var valueSerializer = undefined;
+
+	var getValueSerializer = function(registry) {
+		if (valueSerializer === undefined) {
+			valueSerializer = registry.getSerializer(valueTypeId);
+		}
+		return valueSerializer;
+	};
+	
+	this.write = function(obj, bout) {
+		var ser = getValueSerializer(bout.registry);
+		for (var ename in obj) {
+			if (ename == '_typeId' || ename == '*i' || !obj.hasOwnProperty(ename)) {
+				continue;
+			}
+			bout.writeElement(obj, ename, ser);
+		}		
+	};
+	
+	this.read = function(obj, bin) {
+		var ser = getValueSerializer(bin.registry);
+		for (var ename in obj) {
+			if (ename == '_typeId' || ename == '*i' || !obj.hasOwnProperty(ename)) {
+				continue;
+			}
+			bin.readElement(obj, ename, ser);
+		}		
 		return obj;
 	};
 	
@@ -364,7 +402,7 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 	};
 	
 	this.sendR = function(requestMessage, asyncResult) {
-		return this._internalSend(requestMessage, asyncResult, 0);
+		return this._internalSend(requestMessage, asyncResult, 60 * 60 * 1000);
 	};
 
 	this._internalSend = function(requestMessage, asyncResult, timeoutMillis) {
@@ -373,11 +411,11 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 		
 		this.openRequestsToCancel[requestId] = xhr;
 		
-		if (timeoutMillis >= 0) {
+		xhr.open('POST', me.rurl, !!asyncResult);
+		
+		if (timeoutMillis > 0) {
 			xhr.timeout = timeoutMillis;
 		}
-		
-		xhr.open('POST', me.rurl, !!asyncResult);
 		
 		if (asyncResult) {
 			xhr.onreadystatechange = function() {

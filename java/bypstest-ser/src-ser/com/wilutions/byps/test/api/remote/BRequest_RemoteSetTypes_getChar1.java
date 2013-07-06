@@ -23,7 +23,7 @@ public final class BRequest_RemoteSetTypes_getChar1 implements BMethodRequest, S
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteSetTypesAsync remoteT = (RemoteSetTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.TreeSet<java.lang.Character>> outerResult = new BAsyncResultSendMethod<java.util.TreeSet<java.lang.Character>>(asyncResult, new BResult_RemoteSetTypes_getChar1());			
+			BAsyncResultSendMethod<java.util.TreeSet<java.lang.Character>> outerResult = new BAsyncResultSendMethod<java.util.TreeSet<java.lang.Character>>(asyncResult, new com.wilutions.byps.test.api.BResult_936607009());			
 			remoteT.async_getChar1(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

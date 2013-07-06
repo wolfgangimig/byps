@@ -24,7 +24,7 @@ public final class BRequest_ServerIF_getClient implements BMethodRequest, Serial
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final ServerIFAsync remoteT = (ServerIFAsync)remote;			
-			BAsyncResultSendMethod<ClientIF> outerResult = new BAsyncResultSendMethod<ClientIF>(asyncResult, new BResult_ServerIF_getClient());			
+			BAsyncResultSendMethod<ClientIF> outerResult = new BAsyncResultSendMethod<ClientIF>(asyncResult, new com.wilutions.byps.test.api.BResult_1784257353());			
 			remoteT.async_getClient(id, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

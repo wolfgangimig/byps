@@ -24,7 +24,7 @@ public final class BRequest_RemoteListTypes_setString1 implements BMethodRequest
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteListTypesAsync remoteT = (RemoteListTypesAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteListTypes_setString1());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setString1(string1, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

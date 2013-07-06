@@ -23,7 +23,7 @@ public final class BRequest_RemoteMapTypes_getBoolean1 implements BMethodRequest
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Map<java.lang.String,java.lang.Boolean>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.String,java.lang.Boolean>>(asyncResult, new BResult_RemoteMapTypes_getBoolean1());			
+			BAsyncResultSendMethod<java.util.Map<java.lang.String,java.lang.Boolean>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.String,java.lang.Boolean>>(asyncResult, new com.wilutions.byps.test.api.BResult_1279823631());			
 			remoteT.async_getBoolean1(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

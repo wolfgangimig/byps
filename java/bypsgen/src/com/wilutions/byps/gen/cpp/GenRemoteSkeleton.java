@@ -144,6 +144,8 @@ class GenRemoteSkeleton {
 		prH.beginBlock();
 		prH.println();
 		
+		pctxt.print_BSerializable_getTypeId(rinfo, prH);
+
 		for (MethodInfo minfo : rinfo.methods) {
 			printMethod(minfo);
 			printMethodAsync(minfo);

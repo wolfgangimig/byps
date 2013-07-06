@@ -24,7 +24,7 @@ public final class BRequest_ClientIF_sendChat implements BMethodRequest, Seriali
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final ClientIFAsync remoteT = (ClientIFAsync)remote;			
-			BAsyncResultSendMethod<ChatStructure> outerResult = new BAsyncResultSendMethod<ChatStructure>(asyncResult, new BResult_ClientIF_sendChat());			
+			BAsyncResultSendMethod<ChatStructure> outerResult = new BAsyncResultSendMethod<ChatStructure>(asyncResult, new com.wilutions.byps.test.api.BResult_7007());			
 			remoteT.async_sendChat(cs, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

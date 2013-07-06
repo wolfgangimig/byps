@@ -143,7 +143,7 @@ public class ClassDB {
 				
 				String methodQName = method.getQName();
 				if (mapQnameToMethodInfo.get(methodQName) != null) {
-					throw new GeneratorException(methodQName + " already defined.");
+					throw new GeneratorException(methodQName + " already defined. Methods cannot be overloaded. Their names must be unique.");
 				}
 
 				mapQnameToMethodInfo.put(methodQName, method);
@@ -272,7 +272,7 @@ public class ClassDB {
 		log.debug(")updateType");
 	}
 	
-	private int getOrCreateTypeId(TypeInfo tinfo) throws GeneratorException {
+	public int getOrCreateTypeId(TypeInfo tinfo) throws GeneratorException {
 		log.debug("getOrCreateTypeId(" + tinfo);
 		TypeInfo knownType = getKnownType(tinfo.qname, tinfo.dims, tinfo.typeArgs);
 		int typeId = (knownType != null) ? knownType.typeId : 0;

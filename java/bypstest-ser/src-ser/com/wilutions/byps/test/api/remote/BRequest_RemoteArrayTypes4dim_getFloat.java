@@ -23,7 +23,7 @@ public final class BRequest_RemoteArrayTypes4dim_getFloat implements BMethodRequ
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteArrayTypes4dimAsync remoteT = (RemoteArrayTypes4dimAsync)remote;			
-			BAsyncResultSendMethod<float[][][][]> outerResult = new BAsyncResultSendMethod<float[][][][]>(asyncResult, new BResult_RemoteArrayTypes4dim_getFloat());			
+			BAsyncResultSendMethod<float[][][][]> outerResult = new BAsyncResultSendMethod<float[][][][]>(asyncResult, new com.wilutions.byps.test.api.BResult_1516687588());			
 			remoteT.async_getFloat(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

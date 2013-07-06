@@ -25,6 +25,7 @@ public class BClient_Testser extends BClient {
 			)
 		);
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
+		remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
 		remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(transport);
 		remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(transport);
@@ -41,6 +42,11 @@ public class BClient_Testser extends BClient {
 	
 	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim remoteSkeleton) {
 		serverR.server.addRemote(1557084481, remoteSkeleton);
+		return this;
+	}
+	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 remoteSkeleton) {
+		serverR.server.addRemote(2081058997, remoteSkeleton);
 		return this;
 	}
 	
@@ -107,6 +113,7 @@ public class BClient_Testser extends BClient {
 	protected BClient_Testser(BTransport transport) {
 		super(transport, null);
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
+		remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
 		remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(transport);
 		remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(transport);
@@ -124,6 +131,7 @@ public class BClient_Testser extends BClient {
 	@Override
 	public BRemote getStub(int remoteId) {
 		if (remoteId == 1557084481) return remoteArrayTypes1dim;
+		if (remoteId == 2081058997) return remoteArrayTypes23;
 		if (remoteId == 1557173854) return remoteArrayTypes4dim;
 		if (remoteId == 359349400) return remoteEnums;
 		if (remoteId == 1206670536) return remoteInlineInstance;
@@ -140,6 +148,7 @@ public class BClient_Testser extends BClient {
 	}
 	
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes1dimAsync remoteArrayTypes1dim;
+	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes23Async remoteArrayTypes23;
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes4dimAsync remoteArrayTypes4dim;
 	public final com.wilutions.byps.test.api.remote.RemoteEnumsAsync remoteEnums;
 	public final com.wilutions.byps.test.api.remote.RemoteInlineInstanceAsync remoteInlineInstance;

@@ -24,7 +24,7 @@ public final class BRequest_ServerIF_setPartner implements BMethodRequest, Seria
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final ServerIFAsync remoteT = (ServerIFAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_ServerIF_setPartner());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setPartner(client, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

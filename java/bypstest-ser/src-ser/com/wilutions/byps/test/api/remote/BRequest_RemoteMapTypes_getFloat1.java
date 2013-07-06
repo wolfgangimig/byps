@@ -23,7 +23,7 @@ public final class BRequest_RemoteMapTypes_getFloat1 implements BMethodRequest, 
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Map<java.lang.Character,java.lang.Float>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Character,java.lang.Float>>(asyncResult, new BResult_RemoteMapTypes_getFloat1());			
+			BAsyncResultSendMethod<java.util.Map<java.lang.Character,java.lang.Float>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Character,java.lang.Float>>(asyncResult, new com.wilutions.byps.test.api.BResult_94341197());			
 			remoteT.async_getFloat1(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

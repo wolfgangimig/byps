@@ -24,7 +24,7 @@ public final class BRequest_RemotePrimitiveTypes_setFloat implements BMethodRequ
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemotePrimitiveTypesAsync remoteT = (RemotePrimitiveTypesAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemotePrimitiveTypes_setFloat());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setFloat(v, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

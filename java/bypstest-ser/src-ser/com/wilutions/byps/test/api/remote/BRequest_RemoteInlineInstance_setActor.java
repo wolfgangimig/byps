@@ -24,7 +24,7 @@ public final class BRequest_RemoteInlineInstance_setActor implements BMethodRequ
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteInlineInstanceAsync remoteT = (RemoteInlineInstanceAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteInlineInstance_setActor());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setActor(act, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

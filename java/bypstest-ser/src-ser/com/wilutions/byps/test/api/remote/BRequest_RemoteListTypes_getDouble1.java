@@ -23,7 +23,7 @@ public final class BRequest_RemoteListTypes_getDouble1 implements BMethodRequest
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteListTypesAsync remoteT = (RemoteListTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.List<java.lang.Double>> outerResult = new BAsyncResultSendMethod<java.util.List<java.lang.Double>>(asyncResult, new BResult_RemoteListTypes_getDouble1());			
+			BAsyncResultSendMethod<java.util.List<java.lang.Double>> outerResult = new BAsyncResultSendMethod<java.util.List<java.lang.Double>>(asyncResult, new com.wilutions.byps.test.api.BResult_1555345627());			
 			remoteT.async_getDouble1(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

@@ -24,7 +24,7 @@ public final class BRequest_RemoteReferences_setNode implements BMethodRequest, 
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteReferencesAsync remoteT = (RemoteReferencesAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteReferences_setNode());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setNode(v, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

@@ -24,7 +24,7 @@ public final class BRequest_ServerIF_putStreamsOnClient implements BMethodReques
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final ServerIFAsync remoteT = (ServerIFAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_ServerIF_putStreamsOnClient());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_putStreamsOnClient(streams, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

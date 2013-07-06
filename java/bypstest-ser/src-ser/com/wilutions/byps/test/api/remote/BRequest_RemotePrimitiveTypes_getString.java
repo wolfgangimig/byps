@@ -23,7 +23,7 @@ public final class BRequest_RemotePrimitiveTypes_getString implements BMethodReq
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemotePrimitiveTypesAsync remoteT = (RemotePrimitiveTypesAsync)remote;			
-			BAsyncResultSendMethod<String> outerResult = new BAsyncResultSendMethod<String>(asyncResult, new BResult_RemotePrimitiveTypes_getString());			
+			BAsyncResultSendMethod<String> outerResult = new BAsyncResultSendMethod<String>(asyncResult, new com.wilutions.byps.test.api.BResult_10());			
 			remoteT.async_getString(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

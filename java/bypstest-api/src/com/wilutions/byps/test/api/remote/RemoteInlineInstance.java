@@ -7,30 +7,28 @@ import java.util.Set;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
 import com.wilutions.byps.test.api.inl.Actor;
+import com.wilutions.byps.test.api.inl.Point2D;
 
 /**
  * 
  */
 public interface RemoteInlineInstance extends BRemote {
-
+	
 	public void setActor(Actor act) throws BException, InterruptedException;
 	public Actor getActor() throws BException, InterruptedException;
 
-	public void setActorArray1dim(Actor[] actorArray) throws BException, InterruptedException;
-	public Actor[] getActorArray1dim() throws BException, InterruptedException;
+	public void setPoint2DArray1dim(Point2D[] pointArray) throws BException, InterruptedException;
+	public Point2D[] getPoint2DArray1dim() throws BException, InterruptedException;
 
-	public void setActorArray4dim(Actor[][][][] actorArray) throws BException, InterruptedException;
-	public Actor[][][][] getActorArray4dim() throws BException, InterruptedException;
+	public void setPoint2DArray4dim(Point2D[][][][] pointArray) throws BException, InterruptedException;
+	public Point2D[][][][] getPoint2DArray4dim() throws BException, InterruptedException;
 
-	public void setActorList(List<Actor> actorList) throws BException, InterruptedException;
-	public List<Actor> getActorList() throws BException, InterruptedException;
+	public void setPoint2DList(List<Point2D> pointList) throws BException, InterruptedException;
+	public List<Point2D> getPoint2DList() throws BException, InterruptedException;
 	
-	public void setActorListList(List<List<Actor>> actorListList) throws BException, InterruptedException;
-	public List<List<Actor>> getActorListList() throws BException, InterruptedException;
+	public void setPoint2DListList(List<List<Point2D>> pointListList) throws BException, InterruptedException;
+	public List<List<Point2D>> getPoint2DListList() throws BException, InterruptedException;
 	
-	public void setActorSet(Set<Actor> actorSet) throws BException, InterruptedException;
-	public Set<Actor> getActorSet() throws BException, InterruptedException;
-	
-	public void setActorMap(Map<Integer, Actor> actorMap) throws BException, InterruptedException;
-	public Map<Integer, Actor> getActorMap() throws BException, InterruptedException;
+	public void setPoint2DMap(Map<Integer, Point2D> pointMap) throws BException, InterruptedException;
+	public Map<Integer, Point2D> getPoint2DMap() throws BException, InterruptedException;
 }

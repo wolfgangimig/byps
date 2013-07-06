@@ -47,13 +47,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public void setActorArray1dim(com.wilutions.byps.test.api.inl.Actor[] actorArray) throws BException, InterruptedException {
+	public void setPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray) throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_setActorArray1dim(com.wilutions.byps.test.api.inl.Actor[] actorArray, final BAsyncResult<Object> asyncResult) {
+	public void async_setPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray, final BAsyncResult<Object> asyncResult) {
 		try {
-			setActorArray1dim(actorArray);
+			setPoint2DArray1dim(pointArray);
 			asyncResult.setAsyncResult(null, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -61,13 +61,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public com.wilutions.byps.test.api.inl.Actor[] getActorArray1dim() throws BException, InterruptedException {
+	public com.wilutions.byps.test.api.inl.Point2D[] getPoint2DArray1dim() throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_getActorArray1dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Actor[]> asyncResult) {
+	public void async_getPoint2DArray1dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
 		try {
-			com.wilutions.byps.test.api.inl.Actor[] ret = getActorArray1dim();
+			com.wilutions.byps.test.api.inl.Point2D[] ret = getPoint2DArray1dim();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -75,13 +75,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public void setActorArray4dim(com.wilutions.byps.test.api.inl.Actor[][][][] actorArray) throws BException, InterruptedException {
+	public void setPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[][][][] pointArray) throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_setActorArray4dim(com.wilutions.byps.test.api.inl.Actor[][][][] actorArray, final BAsyncResult<Object> asyncResult) {
+	public void async_setPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[][][][] pointArray, final BAsyncResult<Object> asyncResult) {
 		try {
-			setActorArray4dim(actorArray);
+			setPoint2DArray4dim(pointArray);
 			asyncResult.setAsyncResult(null, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -89,13 +89,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public com.wilutions.byps.test.api.inl.Actor[][][][] getActorArray4dim() throws BException, InterruptedException {
+	public com.wilutions.byps.test.api.inl.Point2D[][][][] getPoint2DArray4dim() throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_getActorArray4dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Actor[][][][]> asyncResult) {
+	public void async_getPoint2DArray4dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[][][][]> asyncResult) {
 		try {
-			com.wilutions.byps.test.api.inl.Actor[][][][] ret = getActorArray4dim();
+			com.wilutions.byps.test.api.inl.Point2D[][][][] ret = getPoint2DArray4dim();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -103,13 +103,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public void setActorList(java.util.List<com.wilutions.byps.test.api.inl.Actor> actorList) throws BException, InterruptedException {
+	public void setPoint2DList(java.util.List<com.wilutions.byps.test.api.inl.Point2D> pointList) throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_setActorList(java.util.List<com.wilutions.byps.test.api.inl.Actor> actorList, final BAsyncResult<Object> asyncResult) {
+	public void async_setPoint2DList(java.util.List<com.wilutions.byps.test.api.inl.Point2D> pointList, final BAsyncResult<Object> asyncResult) {
 		try {
-			setActorList(actorList);
+			setPoint2DList(pointList);
 			asyncResult.setAsyncResult(null, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -117,13 +117,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public java.util.List<com.wilutions.byps.test.api.inl.Actor> getActorList() throws BException, InterruptedException {
+	public java.util.List<com.wilutions.byps.test.api.inl.Point2D> getPoint2DList() throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_getActorList(final BAsyncResult<java.util.List<com.wilutions.byps.test.api.inl.Actor>> asyncResult) {
+	public void async_getPoint2DList(final BAsyncResult<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
 		try {
-			java.util.List<com.wilutions.byps.test.api.inl.Actor> ret = getActorList();
+			java.util.List<com.wilutions.byps.test.api.inl.Point2D> ret = getPoint2DList();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -131,13 +131,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public void setActorListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> actorListList) throws BException, InterruptedException {
+	public void setPoint2DListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> pointListList) throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_setActorListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> actorListList, final BAsyncResult<Object> asyncResult) {
+	public void async_setPoint2DListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> pointListList, final BAsyncResult<Object> asyncResult) {
 		try {
-			setActorListList(actorListList);
+			setPoint2DListList(pointListList);
 			asyncResult.setAsyncResult(null, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -145,13 +145,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> getActorListList() throws BException, InterruptedException {
+	public java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> getPoint2DListList() throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_getActorListList(final BAsyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>>> asyncResult) {
+	public void async_getPoint2DListList(final BAsyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>> asyncResult) {
 		try {
-			java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> ret = getActorListList();
+			java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> ret = getPoint2DListList();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -159,13 +159,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public void setActorSet(java.util.Set<com.wilutions.byps.test.api.inl.Actor> actorSet) throws BException, InterruptedException {
+	public void setPoint2DMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap) throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_setActorSet(java.util.Set<com.wilutions.byps.test.api.inl.Actor> actorSet, final BAsyncResult<Object> asyncResult) {
+	public void async_setPoint2DMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap, final BAsyncResult<Object> asyncResult) {
 		try {
-			setActorSet(actorSet);
+			setPoint2DMap(pointMap);
 			asyncResult.setAsyncResult(null, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
@@ -173,41 +173,13 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 	}
 	
 	@Override
-	public java.util.Set<com.wilutions.byps.test.api.inl.Actor> getActorSet() throws BException, InterruptedException {
+	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> getPoint2DMap() throws BException, InterruptedException {
 		throw new BException(BException.UNSUPPORTED_METHOD, "");
 	}
 	@Override
-	public void async_getActorSet(final BAsyncResult<java.util.Set<com.wilutions.byps.test.api.inl.Actor>> asyncResult) {
+	public void async_getPoint2DMap(final BAsyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
 		try {
-			java.util.Set<com.wilutions.byps.test.api.inl.Actor> ret = getActorSet();
-			asyncResult.setAsyncResult(ret, null);
-		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
-		}
-	}
-	
-	@Override
-	public void setActorMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor> actorMap) throws BException, InterruptedException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
-	}
-	@Override
-	public void async_setActorMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor> actorMap, final BAsyncResult<Object> asyncResult) {
-		try {
-			setActorMap(actorMap);
-			asyncResult.setAsyncResult(null, null);
-		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
-		}
-	}
-	
-	@Override
-	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor> getActorMap() throws BException, InterruptedException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
-	}
-	@Override
-	public void async_getActorMap(final BAsyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>> asyncResult) {
-		try {
-			java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor> ret = getActorMap();
+			java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> ret = getPoint2DMap();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

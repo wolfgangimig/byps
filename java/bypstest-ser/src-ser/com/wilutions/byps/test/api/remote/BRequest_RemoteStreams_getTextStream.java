@@ -23,7 +23,7 @@ public final class BRequest_RemoteStreams_getTextStream implements BMethodReques
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteStreamsAsync remoteT = (RemoteStreamsAsync)remote;			
-			BAsyncResultSendMethod<java.io.InputStream> outerResult = new BAsyncResultSendMethod<java.io.InputStream>(asyncResult, new BResult_RemoteStreams_getTextStream());			
+			BAsyncResultSendMethod<java.io.InputStream> outerResult = new BAsyncResultSendMethod<java.io.InputStream>(asyncResult, new com.wilutions.byps.test.api.BResult_15());			
 			remoteT.async_getTextStream(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

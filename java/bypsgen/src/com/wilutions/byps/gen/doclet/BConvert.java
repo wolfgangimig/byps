@@ -270,19 +270,22 @@ public class BConvert {
 		return ret;
 	}
 	
-	private List<TypeInfo> getParameterizedTypeArgs(ParameterizedType ptype, String errorContext) throws GeneratorException {
+	private List<TypeInfo> getParameterizedTypeArgs(ErrorInfo errInfo, ParameterizedType ptype, String errorContext) throws GeneratorException {
+		errInfo = errInfo.copy();
 		List<TypeInfo> argInfos = null;
 		if (ptype != null) {
 			Type[] targs = ptype.typeArguments();
 			argInfos = new ArrayList<TypeInfo>(targs.length);
 			for (int i = 0; i < targs.length; i++) {
-				argInfos.add( makeElementTypeInfo(targs[i], errorContext) );
+				errInfo.typeArg = "<" + targs[i] + ">";
+				argInfos.add( makeElementTypeInfo(errInfo, targs[i], errorContext) );
 			}
 		}
 		return argInfos;
 	}
 	
-	private TypeInfo makeElementTypeInfo(Type type, String errorContext) throws GeneratorException {
+	private TypeInfo makeElementTypeInfo(ErrorInfo errInfo, Type type, String errorContext) throws GeneratorException {
+		errInfo = errInfo.copy();
 		
 		if (type == null) return null;
 		
@@ -302,7 +305,7 @@ public class BConvert {
 		}
 		else {
 			ParameterizedType ptype = type.asParameterizedType();
-			List<TypeInfo> argInfos = getParameterizedTypeArgs(ptype, errorContext);
+			List<TypeInfo> argInfos = getParameterizedTypeArgs(errInfo, ptype, errorContext);
 			
 			ClassDoc cls = type.asClassDoc();
 			boolean isEnum = false;
@@ -324,6 +327,16 @@ public class BConvert {
 					isFinal, 
 					isInline);
 			
+			
+			
+//			if (tinfo.isSetType()) {
+//				TypeInfo targ = tinfo.typeArgs.get(0);
+//				if ( targ.isInline && !targ.isArrayType()) {
+//					// Das geht nicht in C++. Ich müsste einen operator < definieren.
+//					throw new GeneratorException(errInfo + ": Inline classes cannot be used as elements of sets.");
+//				}
+//			}
+			
 			makeSerialInfoForCollectionType(tinfo, errorContext);
 		}
 		
@@ -331,7 +344,9 @@ public class BConvert {
 		return tinfo;
 	}
 	
-	private MemberInfo makeMemberInfo(FieldDoc field, String errorContext) throws GeneratorException {
+	private MemberInfo makeMemberInfo(ErrorInfo errInfo, FieldDoc field, String errorContext) throws GeneratorException {
+		errInfo = errInfo.copy();
+		
 		String name = field.name();
 		if (FORBIDDEN_FIELD_NAMES.contains(name)) {
 			throw new GeneratorException("Forbidden field name " + name + " in " + errorContext);
@@ -341,7 +356,8 @@ public class BConvert {
 		addSummaryAndRemarksCommentInfo(field, cinfos);
 		addTagCommentInfos(field.tags(), cinfos);
 		
-		TypeInfo type = makeElementTypeInfo(field.type(), errorContext + "." + name);
+		errInfo.fieldName = name;
+		TypeInfo type = makeElementTypeInfo(errInfo, field.type(), errorContext + "." + name);
 		
 		int since = getSince(field.tags());
 		
@@ -430,9 +446,11 @@ public class BConvert {
 		return sbuf.toString();
 	}
 
-	private MemberInfo makeMethodParamInfo(Parameter param, String errorContext) throws GeneratorException {
+	private MemberInfo makeMethodParamInfo(ErrorInfo errInfo, Parameter param, String errorContext) throws GeneratorException {
+		errInfo = errInfo.copy();
 		String name = param.name();
-		TypeInfo tinfo = makeElementTypeInfo(param.type(), errorContext + " parameter " + name);
+		errInfo.paramName = name;
+		TypeInfo tinfo = makeElementTypeInfo(errInfo, param.type(), errorContext + " parameter " + name);
 		MemberInfo pinfo = new MemberInfo(name, tinfo);
 		return pinfo;
 	}
@@ -441,7 +459,10 @@ public class BConvert {
 		log.debug("makeSerialInfo(" + cls);
 		String name = cls.simpleTypeName();
 		String qname = cls.qualifiedTypeName();
-				
+
+		ErrorInfo errInfo = new ErrorInfo();
+		errInfo.className = qname;
+		
 		ArrayList<CommentInfo> commentInfos = new ArrayList<CommentInfo>();
 		addSummaryAndRemarksCommentInfo(cls, commentInfos);
 		addTagCommentInfos(cls.tags(), commentInfos);
@@ -458,7 +479,7 @@ public class BConvert {
 			
 			checkSupportedFieldType(field.toString(), field.type());
 			
-			MemberInfo minfo = makeMemberInfo(field, qname);
+			MemberInfo minfo = makeMemberInfo(errInfo, field, qname);
 			if (minfo == null) continue;
 			
 			members.add(minfo);
@@ -467,14 +488,14 @@ public class BConvert {
 		
 		if (cls.isEnum()) {
 			for (FieldDoc field : cls.enumConstants()) {
-				MemberInfo minfo = makeMemberInfo(field, qname);
+				MemberInfo minfo = makeMemberInfo(errInfo, field, qname);
 				if (minfo == null) continue;
 				
 				members.add(minfo);
 			}
 		}
 		
-		List<TypeInfo> argInfos = getParameterizedTypeArgs(cls.asParameterizedType(), qname);
+		List<TypeInfo> argInfos = getParameterizedTypeArgs(errInfo, cls.asParameterizedType(), qname);
 		
 		ClassDoc baseClass = cls.superclass();
 		String baseQname = "";
@@ -620,13 +641,21 @@ public class BConvert {
 		}
 	}
 	
-	private SerialInfo makeMethodRequest(String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
+	private SerialInfo makeMethodRequest(ErrorInfo errInfo, String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
+		errInfo = errInfo.copy();
 		ArrayList<MemberInfo> pinfos = new ArrayList<MemberInfo>(method.parameters().length);
 		Parameter[] params = method.parameters();
+		errInfo.methodName = method.name();
 		for (int i = 0; i < params.length; i++) {
 			Parameter param = params[i];
-			MemberInfo pinfo = makeMethodParamInfo(param, remoteQName);
+			MemberInfo pinfo = makeMethodParamInfo(errInfo, param, remoteQName);
 			checkSupportedFieldType(method.qualifiedName() + ("(...") + param.name() + ("...)"), param.type());
+			
+			if (pinfo.type.isInline && !pinfo.type.isArrayType()) {
+				// Das geht nicht in C++
+				throw new GeneratorException(method + ": Inline classes cannot be used as method parameters.");
+			}
+			
 			pinfos.add(pinfo);
 		}
 
@@ -651,46 +680,67 @@ public class BConvert {
 		return requestInfo;
 	}
 
-	private SerialInfo makeMethodResult(String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
-
+	private SerialInfo makeMethodResult(ErrorInfo errInfo, String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
+		errInfo = errInfo.copy();
 		ArrayList<MemberInfo> rinfos = new ArrayList<MemberInfo>(2);
-		
+				
 		Type rtype = method.returnType();
 		checkSupportedFieldType(method.qualifiedName() + ("(return)"), rtype);
-
-		TypeInfo rinfo = makeElementTypeInfo(rtype, remoteQName);
+		
+		errInfo.methodName = method.name();
+		
+		TypeInfo rinfo = makeElementTypeInfo(errInfo, rtype, remoteQName);
+		rinfo.typeId = classDB.getOrCreateTypeId(rinfo);
+		
+		if (rinfo.isInline && !rinfo.isArrayType()) {
+			// Das geht nicht in C++
+			errInfo.msg = "Inline classes cannot be used as return values.";
+			throw new GeneratorException(errInfo.toString());
+		}
+		
 		rinfos.add( new MemberInfo("result", null, rinfo, true, false, false, false, false, false, false, 0, null) );
 		
-		String methodName = MethodInfo.METHOD_RESULT_NAME_PREFIX + remoteName + "_" + method.name();
-		String remotePack = remoteQName.substring(0, remoteQName.lastIndexOf(".")+1);
-		String methodQName = remotePack + MethodInfo.METHOD_RESULT_NAME_PREFIX + remoteName + "_" + method.name();
+		//String remotePack = remoteQName.substring(0, remoteQName.lastIndexOf(".")+1);
 		
-		SerialInfo resultInfo = classDB.createSerialInfo(
-				methodName, 
-				null, 
-				methodQName, 
-				null, 
-				"", 
-				null, 
-				rinfos,
-				false, // isEnum
-				true, // isFinal
-				false // inlineInstance
-				);
-		classDB.add(resultInfo);
+		String remotePack = classDB.getApiDescriptor().basePackage + ".";
+		
+		String methodName = MethodInfo.METHOD_RESULT_NAME_PREFIX + rinfo.typeId;
+//		String methodName = MethodInfo.METHOD_RESULT_NAME_PREFIX + remoteName + "_" + method.name();
 
+		String methodQName = remotePack + methodName;
+		
+		SerialInfo resultInfo = classDB.getSerInfo(methodQName);
+	
+		if (resultInfo == null) {
+			resultInfo = classDB.createSerialInfo(
+					methodName, 
+					null, 
+					methodQName, 
+					null, 
+					"", 
+					null, 
+					rinfos,
+					false, // isEnum
+					true, // isFinal
+					false // inlineInstance
+					);
+			classDB.add(resultInfo);
+		}
+		
 		return resultInfo;
 	}	
 
-	private MethodInfo makeMethodInfo(String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
-		
+	private MethodInfo makeMethodInfo(ErrorInfo errInfo, String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
+		errInfo = errInfo.copy();
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
 		addSummaryAndRemarksCommentInfo(method, cinfos);
 		addTagCommentInfos(method.tags(), cinfos);
 		
-		SerialInfo requestInfo = makeMethodRequest(remoteName, remoteQName, method);
+		errInfo.methodName = method.name();
+		
+		SerialInfo requestInfo = makeMethodRequest(errInfo, remoteName, remoteQName, method);
 
-		SerialInfo resultInfo = makeMethodResult(remoteName, remoteQName, method);
+		SerialInfo resultInfo = makeMethodResult(errInfo, remoteName, remoteQName, method);
 				
 		boolean foundBException = false;
 		boolean foundInterruptedException = false;
@@ -709,7 +759,8 @@ public class BConvert {
 	
 			
 			// Currently, I don't know how to deal with custom exception classes in C++
-			throw new GeneratorException("Custom exception classes are unsupported, see \"" + remoteQName + " " + method.name() + " " + ex + "\".");
+			errInfo.msg = "Custom exception classes are unsupported.";
+			throw new GeneratorException(errInfo.msg);
 
 //			if (!isSerializable(ex.asClassDoc())) {
 //				throw new GeneratorException("Custom exception class \"" + ex.toString() + "\" must implement BSerializable.");
@@ -738,6 +789,8 @@ public class BConvert {
 	private RemoteInfo makeRemoteInfo(ClassDoc cls) throws GeneratorException {
 		String name = cls.simpleTypeName();
 		String qname = cls.qualifiedTypeName();
+		ErrorInfo errInfo = new ErrorInfo();
+		errInfo.className = qname;
 
 		ClassDoc baseClass = cls.superclass();
 		if (baseClass != null) {
@@ -750,7 +803,7 @@ public class BConvert {
 		ArrayList<MethodInfo> minfos = new ArrayList<MethodInfo>(cls.methods().length);
 		
 		for (MethodDoc method : cls.methods()) {
-			MethodInfo minfo = makeMethodInfo(name, qname, method);
+			MethodInfo minfo = makeMethodInfo(errInfo, name, qname, method);
 			minfos.add(minfo);
 		}
 		

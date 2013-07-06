@@ -49,8 +49,10 @@ class GenRemoteStub {
 		if (returnTypeInfoCpp.tinfo.isVoidType()) rtype = "bool";
 		
 		String syncResultType = (pctxt.lambdaSupported ? "BSyncResultL" : "BSyncResult") + "<" + rtype + " >";
-		prC.print("byps_ptr<").print(syncResultType).print(" > asyncResult(new ")
-		   .print(syncResultType).print("());");
+		//prC.print("byps_ptr<").print(syncResultType).print(" > asyncResult(new ")
+//		prC.print(syncResultType).print("* asyncResult(new ")
+//		   .print(syncResultType).print("());");^
+		prC.print(syncResultType).print(" syncResult(false);");
 		prC.println();
 
 		String methodName = pctxt.makePublicMemberName(methodInfo.name);
@@ -63,14 +65,14 @@ class GenRemoteStub {
 		if (!first) mpr.print(", ");
 		
 		if (pctxt.lambdaSupported) {
-			mpr.print("[=](").print(rtype).println(" v, BException ex) {");
+			mpr.print("[&syncResult](").print(rtype).println(" v, BException ex) {");
 			prC.beginBlock();
-			prC.println("asyncResult->setAsyncResult(v, ex);");
+			prC.println("syncResult.setAsyncResult(v, ex);");
 			prC.endBlock();
 			prC.println("});");
 		}
 		else {
-			mpr.println("asyncResult);");
+			mpr.println("&syncResult);");
 		}
 
 		boolean hasOwnExceptions = methodInfo.exceptions.size() != 0;
@@ -81,37 +83,28 @@ class GenRemoteStub {
 	
 
 		if (returnInfo.type.isVoidType()) {
-			prC.println("asyncResult->getResult();");
+			prC.println("syncResult.getResult();");
 		}
 		else {
-			prC.println("const BVariant& result = asyncResult->getResult();");
-			String rclass = returnTypeInfoCpp.getClassName(rinfo.pack);
-			mpr = prC.print(rtype).print(" ret = ");
-			if (returnInfo.type.isPointerType()) {
-				mpr.print("byps_static_ptr_cast< ").print(rclass).print(" >(")
-				   .print("result.getObject()")
-				   .println(");");
-			}
-			else if (returnInfo.type.isEnum) {
-				mpr.println("result.getInt();");
-			}
-			else {
-				String getter = "undefined";
-				switch(returnTypeInfoCpp.tinfo.typeId){
-				case BRegistry.TYPEID_BOOL : getter = "getBool"; break;
-				case BRegistry.TYPEID_WCHAR : getter = "getChar"; break;
-				case BRegistry.TYPEID_INT8 : getter = "getByte"; break;
-				case BRegistry.TYPEID_INT16 : getter = "getShort"; break;
-				case BRegistry.TYPEID_INT32 : getter = "getInt"; break;
-				case BRegistry.TYPEID_INT64 : getter = "getLong"; break;
-				case BRegistry.TYPEID_FLOAT : getter = "getFloat"; break;
-				case BRegistry.TYPEID_DOUBLE : getter = "getDouble"; break;
-				case BRegistry.TYPEID_STRING : getter = "getStr"; break;
-				}
-				mpr.print("result.").print(getter).print("()")
-				   .println(";");
-			}
-			prC.println("return ret;");
+			prC.println("return syncResult.getResult();");
+
+//			prC.println("const BVariant& result = asyncResult->getResult();");
+//			String rclass = returnTypeInfoCpp.getClassName(rinfo.pack);
+//			if (returnInfo.type.isInheritable()) {
+//				prC.println("PSerializable sret;");
+//				prC.println("result.get(sret);");
+//				prC.print(rtype).print(" ret = byps_ptr_cast<").print(rclass).println(">(sret);");
+//			}
+//			else if (returnInfo.type.isPointerType()) {
+//				prC.println("POBJECT oret;");
+//				prC.println("result.get(oret);");
+//				prC.print(rtype).print(" ret = byps_static_ptr_cast<").print(rclass).println(">(oret);");
+//			}
+//			else {
+//				prC.print(rtype).print(" ret = ").print(rtype).println("();");
+//				prC.println("result.get(ret);");
+//			}
+//			prC.println("return ret;");
 		}
 		
 		if (hasOwnExceptions) {
@@ -139,34 +132,64 @@ class GenRemoteStub {
 		//log.debug(GeneratorJ.class.getName(), "printMethod");
 	}
 	
+//	private void printMethodAsyncResult(MethodInfo methodInfo) throws IOException {
+//		String className = "BAsyncResult_" + rinfo.name + "_" + methodInfo.name;
+//		String resultClassName = pctxt.ge
+//		String rtypeName = pctxt.getReturnTypeName(methodInfo);
+//		String rfnctType = "std::function< void (" + rtypeName + " >, BException ex) >";
+//		prC.print("class ").print(className).print(" : public BAsyncResult").println(" {");
+//		prC.beginBlock();
+//		prC.print(rfnctType).print(" innerResult;").println();
+//		prC.print("public: ").print(className).print("(").print(rfnctType).print(" innerResult) : innerResult(innerResult) {}").println();
+//		prC.print("public: virtual void setAsyncResult(const BVariant& methodResult) {").println();
+//		prC.beginBlock();
+//		prC.print(rtypeName).print(" v = ").print(rtypeName).println("();");
+//		prC.print("if (!methodResult.isException()) {");
+//		prC.beginBlock();
+//		prC.println("PSerializable sobj;");
+//		prC.println("methodResult.get(sobj);");
+//		
+//	}
+	
 	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
 		pctxt.printDeclareMethodAsync(prH, rinfo, methodInfo, EMethodDecl.Header).println(";");
-		
+	
 		pctxt.printDeclareMethodAsync(prC, rinfo, methodInfo, EMethodDecl.StubImpl).println(" {");
 		prC.beginBlock();
 		
 		TypeInfoCpp requestCppInfo = new TypeInfoCpp(methodInfo.requestInfo);
 		String requestClass = requestCppInfo.getClassName(rinfo.pack);
-		String requestType = requestCppInfo.getTypeName(rinfo.pack);
-		prC.print(requestType).print(" req(new ").print(requestClass).print("());");
-		prC.println();
 		
-		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-			prC.print("req->").print(pinfo.name).print(" = ").print(pinfo.name).print(";").println();
+		CodePrinter mpr = prC.print("PSerializable req(new ").print(requestClass).print("(");
+		
+		if (methodInfo.requestInfo.members.size() != 0) {
+			boolean first = true;
+			for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+				if (first) first = false; else mpr = mpr.print(", ");
+				mpr = mpr.print(pinfo.name);
+			}
 		}
+		
+		mpr.println("));");
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
 		boolean isReturnVoid = returnInfo.type.typeId == BRegistry.TYPEID_VOID;
-		String rtype = "bool";
-		if (!isReturnVoid) {
-			TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
-			rtype = tinfoCpp.toString(rinfo.pack);
-		}
 		
-		if (pctxt.lambdaSupported) { 
-			String outerAsyncClass = "BAsyncResultReceiveMethodL<" + rtype + ">";
+		if (pctxt.lambdaSupported) {
+
+			TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+			String outerAsyncClass = "";
+			String rtype = "bool";
+			if (!isReturnVoid) {
+				rtype = tinfoCpp.toString(rinfo.pack);
+			}
+			
+			String resultClassName = MethodInfo.METHOD_RESULT_NAME_PREFIX + tinfoCpp.tinfo.typeId;
+			
+			outerAsyncClass = "BAsyncResultReceiveMethodL< " + rtype + ", " + resultClassName + " >";
+						
 			prC.print("PAsyncResult outerResult( new ")
 			   .print(outerAsyncClass).print("(asyncResult) );").println();
 			
@@ -188,17 +211,34 @@ class GenRemoteStub {
 
 	private void printSerializer() {		
 		String className = pctxt.getStubTypeInfoCpp(rinfo).getQClassName();
+		String remoteClassName = new TypeInfoCpp(rinfo).getQClassName();
 		
 		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);
 		prC.println(regCppInfo.namespaceBegin);
 		
 		prC.print("void ").print("BSerializer_" + rinfo.typeId)
-			.print("(BIO& bio, POBJECT& pObj, void* )").println("{");
+			.print("(BIO& bio, POBJECT& , PSerializable& pObjS, void* )").println("{");
 		prC.beginBlock();
 		
-		prC.print(className).print("* pStub = ").print("reinterpret_cast<").print(className).print("*>(pObj.get());").println();
-		prC.print("pObj = com::wilutions::byps::BSERIALIZER_BStub(bio, pStub, " + rinfo.typeId).println(");");
-			
+		prC.println("BSerializable* p = pObjS.get();");
+		
+		prC.println("if (bio.is_loading) {");
+		prC.beginBlock();
+		prC.println("if (p) return;");
+		prC.println("BTargetId targetId;");
+		prC.println("bio & targetId;");
+		prC.println("PTransport transport(new BTransport(*bio.transport, targetId));");
+		prC.print("pObjS = PSerializable(new ").print(className).print("(transport));").println();
+		prC.endBlock();
+		prC.println("}");
+		prC.println("else {");
+		prC.beginBlock();
+		prC.print(remoteClassName).print("* r = ").print("dynamic_cast<").print(remoteClassName).print("*>(p);").println();
+		prC.println("BTargetId targetId = r->BRemote_getTargetId();");
+		prC.println("bio & targetId;");
+		prC.endBlock();
+		prC.println("}");
+		
 		prC.endBlock();
 		prC.println("}");
 		
@@ -235,6 +275,8 @@ class GenRemoteStub {
 		prH.println();
 		
 		printConstructor();
+		
+		pctxt.print_BSerializable_getTypeId(rinfo, prH);
 		
 		for (MethodInfo minfo : rinfo.methods) {
 			printMethod(minfo);

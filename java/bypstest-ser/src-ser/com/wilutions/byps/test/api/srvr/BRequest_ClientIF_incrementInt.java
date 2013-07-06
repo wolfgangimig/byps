@@ -24,7 +24,7 @@ public final class BRequest_ClientIF_incrementInt implements BMethodRequest, Ser
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final ClientIFAsync remoteT = (ClientIFAsync)remote;			
-			BAsyncResultSendMethod<Integer> outerResult = new BAsyncResultSendMethod<Integer>(asyncResult, new BResult_ClientIF_incrementInt());			
+			BAsyncResultSendMethod<Integer> outerResult = new BAsyncResultSendMethod<Integer>(asyncResult, new com.wilutions.byps.test.api.BResult_5());			
 			remoteT.async_incrementInt(a, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

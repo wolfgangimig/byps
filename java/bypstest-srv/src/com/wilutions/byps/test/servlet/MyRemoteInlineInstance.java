@@ -6,86 +6,78 @@ import java.util.Set;
 
 import com.wilutions.byps.BException;
 import com.wilutions.byps.test.api.inl.Actor;
+import com.wilutions.byps.test.api.inl.Point2D;
 import com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance;
 
 public class MyRemoteInlineInstance extends BSkeleton_RemoteInlineInstance {
 
-	Actor actor;
-	Actor[] actorArray1dim;
-	Actor[][][][] actorArray4dim;
-	List<Actor> actorList;
-	List<List<Actor>> actorListList;
-	Set<Actor> actorSet;
-	Map<Integer, Actor> actorMap;
+	Actor point2D;
+	Point2D[] point2DArray1dim;
+	Point2D[][][][] point2DArray4dim;
+	List<Point2D> point2DList;
+	List<List<Point2D>> point2DListList;
+	Set<Point2D> point2DSet;
+	Map<Integer, Point2D> point2DMap;
 
 	@Override
 	public Actor getActor() throws BException, InterruptedException {
-		return actor;
+		return point2D;
 	}
 
 	@Override
 	public void setActor(Actor act) throws BException, InterruptedException {
-		this.actor = act;
+		this.point2D = act;
 	}
 
 	@Override
-	public Actor[] getActorArray1dim() throws BException, InterruptedException {
-		return actorArray1dim;
+	public Point2D[] getPoint2DArray1dim() throws BException, InterruptedException {
+		return point2DArray1dim;
 	}
 
 	@Override
-	public void setActorArray1dim(Actor[] actorArray1dim) throws BException, InterruptedException {
-		this.actorArray1dim = actorArray1dim;
+	public void setPoint2DArray1dim(Point2D[] point2DArray1dim) throws BException, InterruptedException {
+		this.point2DArray1dim = point2DArray1dim;
 	}
 
 	@Override
-	public Actor[][][][] getActorArray4dim() throws BException, InterruptedException {
-		return actorArray4dim;
+	public Point2D[][][][] getPoint2DArray4dim() throws BException, InterruptedException {
+		return point2DArray4dim;
 	}
 
 	@Override
-	public void setActorArray4dim(Actor[][][][] actorArray4dim) throws BException, InterruptedException {
-		this.actorArray4dim = actorArray4dim;
+	public void setPoint2DArray4dim(Point2D[][][][] point2DArray4dim) throws BException, InterruptedException {
+		this.point2DArray4dim = point2DArray4dim;
 	}
 
 	@Override
-	public List<Actor> getActorList() throws BException, InterruptedException {
-		return actorList;
+	public List<Point2D> getPoint2DList() throws BException, InterruptedException {
+		return point2DList;
 	}
 
 	@Override
-	public void setActorList(List<Actor> actorList) throws BException, InterruptedException {
-		this.actorList = actorList;
+	public void setPoint2DList(List<Point2D> point2DList) throws BException, InterruptedException {
+		this.point2DList = point2DList;
 	}
 
 	@Override
-	public List<List<Actor>> getActorListList() throws BException, InterruptedException {
-		return actorListList;
+	public List<List<Point2D>> getPoint2DListList() throws BException, InterruptedException {
+		return point2DListList;
 	}
 
 	@Override
-	public void setActorListList(List<List<Actor>> actorListList) throws BException, InterruptedException {
-		this.actorListList = actorListList;
+	public void setPoint2DListList(List<List<Point2D>> point2DListList) throws BException, InterruptedException {
+		this.point2DListList = point2DListList;
+	}
+
+
+	@Override
+	public Map<Integer, Point2D> getPoint2DMap() throws BException, InterruptedException {
+		return point2DMap;
 	}
 
 	@Override
-	public Set<Actor> getActorSet() throws BException, InterruptedException {
-		return actorSet;
-	}
-
-	@Override
-	public void setActorSet(Set<Actor> actorSet) throws BException, InterruptedException {
-		this.actorSet = actorSet;
-	}
-
-	@Override
-	public Map<Integer, Actor> getActorMap() throws BException, InterruptedException {
-		return actorMap;
-	}
-
-	@Override
-	public void setActorMap(Map<Integer, Actor> actorMap) throws BException, InterruptedException {
-		this.actorMap = actorMap;
+	public void setPoint2DMap(Map<Integer, Point2D> point2DMap) throws BException, InterruptedException {
+		this.point2DMap = point2DMap;
 	}
 
 }

@@ -66,7 +66,7 @@ public class TestUtilsHttp {
 				registry
 				);
 
-		BWire wire = new HWireClient(url, flags, 120*1000, tpool);
+		BWire wire = new HWireClient(url, flags, 600, tpool);
 		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 3); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);

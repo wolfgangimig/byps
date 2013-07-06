@@ -124,7 +124,7 @@ public abstract class BRegistry {
 //				int typeId = (int)(longTypeId & maxTypeId);
 //				ser = getSerializer(typeId);
 //				mapClassToSerializer.put(clazz, ser);
-//			} catch (Throwable e) {
+//			} catch (Exception e) {
 //				throw BException.createNoSerializer(clazz.getName(), e);
 //			}
 //		}

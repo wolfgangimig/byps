@@ -24,7 +24,7 @@ public final class BRequest_RemoteStreams_setImage implements BMethodRequest, Se
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteStreamsAsync remoteT = (RemoteStreamsAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteStreams_setImage());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setImage(istrm, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

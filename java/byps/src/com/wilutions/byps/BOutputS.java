@@ -25,7 +25,7 @@ public class BOutputS extends BOutputBin {
 			
 			// Inline objects must not be null
 			if (obj == null) {
-				obj = ser.read(null, null, 0);
+				obj = ser.read(null, null, 0); // create object
 			}
 			
 			ser.write(obj, this, header.version);

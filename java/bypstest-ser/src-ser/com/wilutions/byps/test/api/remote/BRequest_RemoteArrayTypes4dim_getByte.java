@@ -23,7 +23,7 @@ public final class BRequest_RemoteArrayTypes4dim_getByte implements BMethodReque
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteArrayTypes4dimAsync remoteT = (RemoteArrayTypes4dimAsync)remote;			
-			BAsyncResultSendMethod<byte[][][][]> outerResult = new BAsyncResultSendMethod<byte[][][][]>(asyncResult, new BResult_RemoteArrayTypes4dim_getByte());			
+			BAsyncResultSendMethod<byte[][][][]> outerResult = new BAsyncResultSendMethod<byte[][][][]>(asyncResult, new com.wilutions.byps.test.api.BResult_1201775504());			
 			remoteT.async_getByte(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

@@ -23,7 +23,7 @@ public final class BRequest_RemoteMapTypes_getInt2 implements BMethodRequest, Se
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Map<java.lang.Integer,int[]>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Integer,int[]>>(asyncResult, new BResult_RemoteMapTypes_getInt2());			
+			BAsyncResultSendMethod<java.util.Map<java.lang.Integer,int[]>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Integer,int[]>>(asyncResult, new com.wilutions.byps.test.api.BResult_1633750383());			
 			remoteT.async_getInt2(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

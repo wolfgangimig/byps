@@ -23,7 +23,7 @@ public final class BRequest_ServerIF_getClientIds implements BMethodRequest, Ser
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final ServerIFAsync remoteT = (ServerIFAsync)remote;			
-			BAsyncResultSendMethod<java.util.Set<java.lang.Integer>> outerResult = new BAsyncResultSendMethod<java.util.Set<java.lang.Integer>>(asyncResult, new BResult_ServerIF_getClientIds());			
+			BAsyncResultSendMethod<java.util.Set<java.lang.Integer>> outerResult = new BAsyncResultSendMethod<java.util.Set<java.lang.Integer>>(asyncResult, new com.wilutions.byps.test.api.BResult_1493282670());			
 			remoteT.async_getClientIds(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

@@ -62,6 +62,7 @@ public class MySession extends HSession {
 		server.addRemote(myRemoteStreams);
 		server.addRemote(new MyEvolve(this));
 		server.addRemote(new MyRemoteInlineInstance());
+		server.addRemote(new MyRemoteArrayTypes23());
 	}
 	
 	@Override

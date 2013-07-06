@@ -279,6 +279,13 @@ class PrintContext extends PrintContextBase {
 		return cppInfo;
 	}
 	
+	String getReturnTypeName(MethodInfo methodInfo) {
+		TypeInfoCpp rtype = getReturnType(methodInfo);
+		String rtypeName = rtype.getQTypeName();
+		if (rtypeName.equals("void")) rtypeName = "bool";
+		return rtypeName;
+	}
+		
 	private void printComment(CodePrinter pr, Iterable<CommentInfo> comments, String jkind, String cskindBegin, String cskindEnd) throws IOException {
 		for (CommentInfo cmt : comments) {
 			if (!cmt.kind.equals(jkind)) continue;
@@ -480,7 +487,11 @@ class PrintContext extends PrintContextBase {
 		return tdescClassName;
 	}
 
-
+	public void print_BSerializable_getTypeId(TypeInfo tinfo, CodePrinter prH) {
+		prH.print("public: virtual BTYPEID BSerializable_getTypeId() { ")
+			.print("return " + tinfo.typeId + "; ").println("}");
+		prH.println();
+	}
 
 	private File dirApi;
 	private File dirImplH;

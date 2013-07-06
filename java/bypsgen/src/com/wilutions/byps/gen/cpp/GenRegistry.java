@@ -108,7 +108,7 @@ public class GenRegistry {
 			
 			pr.print("// Serializer for ").print(serInfo.toString()).println();
 			pr.print("void ").print("BSerializer_" + serInfo.typeId)
-			.print("(BIO& bio, POBJECT& pObj, void* pBase)").println(";");
+			.print("(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase)").println(";");
 
 		}
 		

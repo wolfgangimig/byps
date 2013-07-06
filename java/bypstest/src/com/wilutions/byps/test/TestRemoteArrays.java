@@ -13,8 +13,10 @@ import com.wilutions.byps.test.api.BApiDescriptor_Testser;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.arr.ArrayTypes1dim;
 import com.wilutions.byps.test.api.arr.ArrayTypes4dim;
+import com.wilutions.byps.test.api.inl.Point2D;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 import com.wilutions.byps.test.api.remote.RemoteArrayTypes1dim;
+import com.wilutions.byps.test.api.remote.RemoteArrayTypes23;
 import com.wilutions.byps.test.api.remote.RemoteArrayTypes4dim;
 
 /**
@@ -55,12 +57,12 @@ public class TestRemoteArrays {
 	 * @throws BException
 	 * @throws InterruptedException
 	 */
-//	@Test
+	@Test
 	public void testRemoteArrayTypes1dimPerformance() throws BException, InterruptedException {
 		log.info("testRemoteArrayTypes1dimPerformance(");
 
 		int loopCount = 100;
-		for (int gzip = 0; gzip < 2; gzip++) {
+		for (int gzip = 0; gzip < 1; gzip++) {
 			
 			int flags = gzip != 0 ? BWire.FLAG_GZIP : BWire.FLAG_DEFAULT;
 		
@@ -131,7 +133,7 @@ public class TestRemoteArrays {
 		long[] long1 = new long[] {999,88,7};
 		float[] float1 = new float[] {1.2f, 2.2f, 3.2f};
 		double[] double1 = new double[] {1e1, 1e2, 1e3};
-		String[] string1 = new String[] {"ττττ"};
+		String[] string1 = new String[] {"ττ\0ττ"};
 		PrimitiveTypes[] primitiveTypes1 = new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() };
 		Object[] object1 = new ArrayTypes1dim[] { new ArrayTypes1dim() };
 
@@ -210,5 +212,168 @@ public class TestRemoteArrays {
 		
 		log.info(")testRemoteArrayTypes4dim");
 	}
+
+	/**
+	 * Check serialization of arrays of all supported dimensions.
+	 * @throws InterruptedException 
+	 * @throws BException 
+	 */
+	@Test
+	public void testRemoteArraysDims23() throws BException, InterruptedException{
+		log.info("testRemoteArraysDims23(");
+		
+		{
+			int[] arr1 = new int[3];
+			int[][] arr2 = new int[7][6];
+			int[][][] arr3 = new int[7][5][3];
+			int[][][][] arr4 = new int[3][4][6][7];
+			
+			for (int i2 = 0; i2 < arr2.length; i2++) 
+				for (int i1 = 0; i1 < arr2[i2].length; i1++)
+					arr2[i2][i1] = i2+i1;
+			for (int i3 = 0; i3 < arr3.length; i3++) 
+				for (int i2 = 0; i2 < arr3[i3].length; i2++) 
+					for (int i1 = 0; i1 < arr3[i3][i2].length; i1++)
+						arr3[i3][i2][i1] = i3+i2+i1;
+			for (int i4 = 0; i4 < arr4.length; i4++) 
+				for (int i3 = 0; i3 < arr4[i4].length; i3++) 
+					for (int i2 = 0; i2 < arr4[i4][i3].length; i2++) 
+						for (int i1 = 0; i1 < arr4[i4][i3][i2].length; i1++)
+							arr4[i4][i3][i2][i1] = i4+i3+i2+i1;
+			
+			arr1[0] = arr2[1][1];
+			arr1[1] = arr3[1][1][1];
+			arr1[2] = arr4[1][1][1][1];
+			
+			RemoteArrayTypes23 remote;
+			remote = client.remoteArrayTypes23;
+			
+			int[] arrR = remote.sendArraysInt(arr2, arr3, arr4);
+			TestUtils.assertEquals(log,  "int", arr1, arrR);
+		}
+		
+		{
+			String[] arr1 = new String[3];
+			String[][] arr2 = new String[7][6];
+			String[][][] arr3 = new String[7][5][3];
+			String[][][][] arr4 = new String[3][4][6][7];
+			
+			for (int i2 = 0; i2 < arr2.length; i2++) 
+				for (int i1 = 0; i1 < arr2[i2].length; i1++)
+					arr2[i2][i1] = ""+i2+i1;
+			for (int i3 = 0; i3 < arr3.length; i3++) 
+				for (int i2 = 0; i2 < arr3[i3].length; i2++) 
+					for (int i1 = 0; i1 < arr3[i3][i2].length; i1++)
+						arr3[i3][i2][i1] = ""+i3+i2+i1;
+			for (int i4 = 0; i4 < arr4.length; i4++) 
+				for (int i3 = 0; i3 < arr4[i4].length; i3++) 
+					for (int i2 = 0; i2 < arr4[i4][i3].length; i2++) 
+						for (int i1 = 0; i1 < arr4[i4][i3][i2].length; i1++)
+							arr4[i4][i3][i2][i1] = ""+i4+i3+i2+i1;
+			
+			arr1[0] = arr2[1][1];
+			arr1[1] = arr3[1][1][1];
+			arr1[2] = arr4[1][1][1][1];
+			
+			RemoteArrayTypes23 remote;
+			remote = client.remoteArrayTypes23;
+			
+			String[] arrR = remote.sendArraysString(arr2, arr3, arr4);
+			TestUtils.assertEquals(log,  "String", arr1, arrR);
+		}
+
+		{
+			PrimitiveTypes[] arr1 = new PrimitiveTypes[3];
+			PrimitiveTypes[][] arr2 = new PrimitiveTypes[7][6];
+			PrimitiveTypes[][][] arr3 = new PrimitiveTypes[7][5][3];
+			PrimitiveTypes[][][][] arr4 = new PrimitiveTypes[3][4][6][7];
+			
+			for (int i2 = 0; i2 < arr2.length; i2++) 
+				for (int i1 = 0; i1 < arr2[i2].length; i1++)
+					arr2[i2][i1] = TestUtils.createObjectPrimitiveTypes();
+			for (int i3 = 0; i3 < arr3.length; i3++) 
+				for (int i2 = 0; i2 < arr3[i3].length; i2++) 
+					for (int i1 = 0; i1 < arr3[i3][i2].length; i1++)
+						arr3[i3][i2][i1] = TestUtils.createObjectPrimitiveTypes();
+			for (int i4 = 0; i4 < arr4.length; i4++) 
+				for (int i3 = 0; i3 < arr4[i4].length; i3++) 
+					for (int i2 = 0; i2 < arr4[i4][i3].length; i2++) 
+						for (int i1 = 0; i1 < arr4[i4][i3][i2].length; i1++)
+							arr4[i4][i3][i2][i1] = TestUtils.createObjectPrimitiveTypes();
+			
+			arr1[0] = arr2[1][1];
+			arr1[1] = arr3[1][1][1];
+			arr1[2] = arr4[1][1][1][1];
+		
+			RemoteArrayTypes23 remote;
+			remote = client.remoteArrayTypes23;
+			
+			PrimitiveTypes[] arrR = remote.sendArraysClass(arr2, arr3, arr4);
+			TestUtils.assertEquals(log,  "PrimitiveTypes", arr1, arrR);
+		}
+	
+		{
+			Object[] arr1 = new Object[3];
+			Object[][] arr2 = new Object[7][6];
+			Object[][][] arr3 = new Object[7][5][3];
+			Object[][][][] arr4 = new Object[3][4][6][7];
+			
+			for (int i2 = 0; i2 < arr2.length; i2++) 
+				for (int i1 = 0; i1 < arr2[i2].length; i1++)
+					arr2[i2][i1] = TestUtils.createObjectPrimitiveTypes();
+			for (int i3 = 0; i3 < arr3.length; i3++) 
+				for (int i2 = 0; i2 < arr3[i3].length; i2++) 
+					for (int i1 = 0; i1 < arr3[i3][i2].length; i1++)
+						arr3[i3][i2][i1] = TestUtils.createObjectPrimitiveTypes();
+			for (int i4 = 0; i4 < arr4.length; i4++) 
+				for (int i3 = 0; i3 < arr4[i4].length; i3++) 
+					for (int i2 = 0; i2 < arr4[i4][i3].length; i2++) 
+						for (int i1 = 0; i1 < arr4[i4][i3][i2].length; i1++)
+							arr4[i4][i3][i2][i1] = TestUtils.createObjectPrimitiveTypes();
+			
+			arr1[0] = arr2[1][1];
+			arr1[1] = arr3[1][1][1];
+			arr1[2] = arr4[1][1][1][1];
+		
+			RemoteArrayTypes23 remote;
+			remote = client.remoteArrayTypes23;
+			
+			Object[] arrR = remote.sendArraysObject(arr2, arr3, arr4);
+			TestUtils.assertEquals(log,  "Object", arr1, arrR);
+		}
+		
+		{
+			Point2D[] arr1 = new Point2D[3];
+			Point2D[][] arr2 = new Point2D[7][6];
+			Point2D[][][] arr3 = new Point2D[7][5][3];
+			Point2D[][][][] arr4 = new Point2D[3][4][6][7];
+			
+			for (int i2 = 0; i2 < arr2.length; i2++) 
+				for (int i1 = 0; i1 < arr2[i2].length; i1++)
+					arr2[i2][i1] = TestUtils.createPoint2D();
+			for (int i3 = 0; i3 < arr3.length; i3++) 
+				for (int i2 = 0; i2 < arr3[i3].length; i2++) 
+					for (int i1 = 0; i1 < arr3[i3][i2].length; i1++)
+						arr3[i3][i2][i1] = TestUtils.createPoint2D();
+			for (int i4 = 0; i4 < arr4.length; i4++) 
+				for (int i3 = 0; i3 < arr4[i4].length; i3++) 
+					for (int i2 = 0; i2 < arr4[i4][i3].length; i2++) 
+						for (int i1 = 0; i1 < arr4[i4][i3][i2].length; i1++)
+							arr4[i4][i3][i2][i1] = TestUtils.createPoint2D();
+			
+			arr1[0] = arr2[1][1];
+			arr1[1] = arr3[1][1][1];
+			arr1[2] = arr4[1][1][1][1];
+		
+			RemoteArrayTypes23 remote;
+			remote = client.remoteArrayTypes23;
+			
+			Point2D[] arrR = remote.sendArraysInline(arr2, arr3, arr4);
+			TestUtils.assertEquals(log,  "Point2D", arr1, arrR);
+		}
+		
+		log.info(")testRemoteArraysDims23");
+	}
+	
 
 }

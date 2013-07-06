@@ -23,7 +23,7 @@ public final class BRequest_RemoteSetTypes_getByte2 implements BMethodRequest, S
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteSetTypesAsync remoteT = (RemoteSetTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Set<byte[]>> outerResult = new BAsyncResultSendMethod<java.util.Set<byte[]>>(asyncResult, new BResult_RemoteSetTypes_getByte2());			
+			BAsyncResultSendMethod<java.util.Set<byte[]>> outerResult = new BAsyncResultSendMethod<java.util.Set<byte[]>>(asyncResult, new com.wilutions.byps.test.api.BResult_2052431866());			
 			remoteT.async_getByte2(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

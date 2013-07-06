@@ -113,8 +113,6 @@ public class BTransport {
 		if (log.isDebugEnabled()) log.debug("recv(");
 		
 		final BInput bin = getInput(msg.header, msg.buf);
-		final Object methodObj = bin.load();
-		if (log.isDebugEnabled()) log.debug("messageId=" + bin.header.messageId);
 		
 		BAsyncResult<Object> methodResult = new BAsyncResult<Object>() {
 			
@@ -141,8 +139,16 @@ public class BTransport {
 
 		};
 		
-		final BTargetId clientTargetId = bin.header.targetId;
-		server.recv(clientTargetId, methodObj, methodResult);
+		try {
+			final Object methodObj = bin.load();
+			if (log.isDebugEnabled()) log.debug("messageId=" + bin.header.messageId);
+			
+			final BTargetId clientTargetId = bin.header.targetId;
+			server.recv(clientTargetId, methodObj, methodResult);
+		}
+		catch (Exception e) {
+			methodResult.setAsyncResult(null, e);
+		}
 		
 		if (log.isDebugEnabled()) log.debug(")recv");
 	}

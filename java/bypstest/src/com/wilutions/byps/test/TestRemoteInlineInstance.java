@@ -2,10 +2,8 @@ package com.wilutions.byps.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -42,13 +40,30 @@ public class TestRemoteInlineInstance {
 	private Actor createActor() {
 		Actor obj = new Actor();
 		obj.position = new Matrix2D();
+		
+		obj.position._11 = 11;
+		obj.position._12 = 12;
+		obj.position._13 = 13;
+		obj.position._21 = 21;
+		obj.position._22 = 22;
+		obj.position._23 = 23;
+		obj.position._31 = 31;
+		obj.position._32 = 32;
+		obj.position._33 = 33;
+		
 		obj.shape = new Point2D[3];
 		for (int i = 0; i < obj.shape.length; i++) {
-			obj.shape[i] = new Point2D();
-			obj.shape[i].x = (short)(i + 1);
-			obj.shape[i].y = (short)(obj.shape[i].x * obj.shape[i].x);
+			obj.shape[i] = createPoint2D();
 		}
 		return obj;
+	}
+	
+	short x = 1;
+	private Point2D createPoint2D() {
+		Point2D p = new Point2D();
+		p.x = x++;
+		p.y = (short)(x*x);
+		return p;
 	}
 
 	@Test
@@ -67,10 +82,10 @@ public class TestRemoteInlineInstance {
 	public void testRemoteInlineInstanceArray1dim() throws BException, InterruptedException {
 		log.info("testRemoteInlineInstanceArray1dim(");
 		
-		Actor[] actorArray = new Actor[] {createActor(), createActor()};
-		remote.setActorArray1dim(actorArray);
+		Point2D[] point2DArray = new Point2D[] {createPoint2D(), createPoint2D()};
+		remote.setPoint2DArray1dim(point2DArray);
 		
-		TestUtils.assertEquals(log, "actor", actorArray, remote.getActorArray1dim());
+		TestUtils.assertEquals(log, "point2D", point2DArray, remote.getPoint2DArray1dim());
 		
 		log.info(")testRemoteInlineInstanceArray1dim");
 	}
@@ -79,10 +94,10 @@ public class TestRemoteInlineInstance {
 	public void testRemoteInlineInstanceArray4dim() throws BException, InterruptedException {
 		log.info("testRemoteInlineInstanceArray4dim(");
 		
-		Actor[][][][] actorArray = new Actor[][][][] {{{{createActor(), createActor()}}}};
-		remote.setActorArray4dim(actorArray);
+		Point2D[][][][] point2DArray = new Point2D[][][][] {{{{createPoint2D(), createPoint2D()}}}};
+		remote.setPoint2DArray4dim(point2DArray);
 		
-		TestUtils.assertEquals(log, "actor", actorArray, remote.getActorArray4dim());
+		TestUtils.assertEquals(log, "point2D", point2DArray, remote.getPoint2DArray4dim());
 		
 		log.info(")testRemoteInlineInstanceArray4dim");
 	}
@@ -91,12 +106,12 @@ public class TestRemoteInlineInstance {
 	public void testRemoteInlineInstanceList() throws BException, InterruptedException {
 		log.info("testRemoteInlineInstanceList(");
 		
-		List<Actor> actorList = new ArrayList<Actor>();
-		actorList.add(createActor());
-		actorList.add(createActor());
-		remote.setActorList(actorList);
+		List<Point2D> point2DList = new ArrayList<Point2D>();
+		point2DList.add(createPoint2D());
+		point2DList.add(createPoint2D());
+		remote.setPoint2DList(point2DList);
 		
-		TestUtils.assertEquals(log, "actor", actorList, remote.getActorList());
+		TestUtils.assertEquals(log, "point2D", point2DList, remote.getPoint2DList());
 		
 		log.info(")testRemoteInlineInstanceList");
 	}
@@ -105,42 +120,28 @@ public class TestRemoteInlineInstance {
 	public void testRemoteInlineInstanceListList() throws BException, InterruptedException {
 		log.info("testRemoteInlineInstanceListList(");
 		
-		List<List<Actor>> actorListList = new ArrayList<List<Actor>>();
-		ArrayList<Actor> actorList = new ArrayList<Actor>();
-		actorListList.add(actorList);
-		actorList.add(createActor());
-		actorList.add(createActor());
-		remote.setActorListList(actorListList);
+		List<List<Point2D>> point2DListList = new ArrayList<List<Point2D>>();
+		ArrayList<Point2D> point2DList = new ArrayList<Point2D>();
+		point2DListList.add(point2DList);
+		point2DList.add(createPoint2D());
+		point2DList.add(createPoint2D());
+		remote.setPoint2DListList(point2DListList);
 		
-		TestUtils.assertEquals(log, "actor", actorListList, remote.getActorListList());
+		TestUtils.assertEquals(log, "point2D", point2DListList, remote.getPoint2DListList());
 		
 		log.info(")testRemoteInlineInstanceListList");
-	}
-
-	@Test
-	public void testRemoteInlineInstanceSet() throws BException, InterruptedException {
-		log.info("testRemoteInlineInstanceSet(");
-		
-		Set<Actor> actorSet = new HashSet<Actor>();
-		actorSet.add(createActor());
-		actorSet.add(createActor());
-		remote.setActorSet(actorSet);
-		
-		TestUtils.assertEquals(log, "actor", actorSet, remote.getActorSet());
-		
-		log.info(")testRemoteInlineInstanceSet");
 	}
 
 	@Test
 	public void testRemoteInlineInstanceMap() throws BException, InterruptedException {
 		log.info("testRemoteInlineInstanceMap(");
 		
-		Map<Integer, Actor> actorMap = new HashMap<Integer, Actor>();
-		actorMap.put(11, createActor());
-		actorMap.put(12, createActor());
-		remote.setActorMap(actorMap);
+		Map<Integer, Point2D> point2DMap = new HashMap<Integer, Point2D>();
+		point2DMap.put(11, createPoint2D());
+		point2DMap.put(12, createPoint2D());
+		remote.setPoint2DMap(point2DMap);
 		
-		TestUtils.assertEquals(log, "actor", actorMap, remote.getActorMap());
+		TestUtils.assertEquals(log, "point2D", point2DMap, remote.getPoint2DMap());
 		
 		log.info(")testRemoteInlineInstanceMap");
 	}

@@ -23,7 +23,7 @@ public final class BRequest_EvolveIF_getEvolve implements BMethodRequest, Serial
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final EvolveIFAsync remoteT = (EvolveIFAsync)remote;			
-			BAsyncResultSendMethod<Evolve> outerResult = new BAsyncResultSendMethod<Evolve>(asyncResult, new BResult_EvolveIF_getEvolve());			
+			BAsyncResultSendMethod<Evolve> outerResult = new BAsyncResultSendMethod<Evolve>(asyncResult, new com.wilutions.byps.test.api.BResult_1391985860());			
 			remoteT.async_getEvolve(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

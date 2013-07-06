@@ -57,7 +57,6 @@ public class GenRegistry {
 		for (SerialInfo serInfo : serInfos) {
 			
 			if (serInfo.isBuiltInType()) continue;
-			if (serInfo.isCollectionType()) continue;
 			if (!serInfo.isPointerType()) continue;
 
 			pr.println();
@@ -76,6 +75,24 @@ public class GenRegistry {
 				pr.println(nbOfDimensions + "");
 				pr.endBlock();
 				pr.println("),");
+			}
+			else if (serInfo.isListType() || serInfo.isSetType()) {
+				TypeInfo elmType = serInfo.typeArgs.get(0); 
+				pr.println(serInfo.typeId + " : new com.wilutions.byps.BSerializerArray(");
+				pr.beginBlock();
+				pr.print(elmType.typeId + ", // Element type: ").println(elmType.toString("java.lang"));
+				pr.println("1");
+				pr.endBlock();
+				pr.println("),");				
+			}
+			else if (serInfo.isMapType()) {
+				TypeInfo elmType = serInfo.typeArgs.get(1); 
+				pr.println(serInfo.typeId + " : new com.wilutions.byps.BSerializerMap(");
+				pr.beginBlock();
+				pr.print(elmType.typeId + " // Element type: ").println(elmType.toString("java.lang"));
+				pr.endBlock();
+				pr.println("),");				
+			
 			}
 			else {
 				

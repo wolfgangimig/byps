@@ -36,6 +36,12 @@ public class TestRemotePrimitiveTypes {
 		}
 	}
 	
+	/**
+	 * Send/receive primitive data types.
+	 * Tests with bool, byte, char, int, String etc.
+	 * @throws BException
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void testRemotePrimitiveTypes() throws BException, InterruptedException {
 		log.info("testRemotePrimitiveTypes(");
@@ -62,16 +68,34 @@ public class TestRemotePrimitiveTypes {
 		TestUtils.assertEquals(log,  "String", "ABC", remote.getString());
 		
 		PrimitiveTypes pt = TestUtils.createObjectPrimitiveTypes();
-		remote.setObject(pt);
-		TestUtils.assertEquals(log,  "Object", pt, remote.getObject());
-		
-		pt = TestUtils.createObjectPrimitiveTypes();
 		remote.setPrimitiveTypes(pt);
 		TestUtils.assertEquals(log,  "PrimitiveTypes", pt, remote.getPrimitiveTypes());
 		
 		log.info(")testRemotePrimitiveTypes");
 	}
 	
+	/**
+	 * Send/receive an object of class PrimitiveTypes as Java type Object.
+	 * @throws BException
+	 * @throws InterruptedException
+	 */
+	@Test
+	public void testRemotePrimitvieTypesSendAsObjectType()  throws BException, InterruptedException {
+		log.info("testRemotePrimitvieTypesSendAsObjectType(");
+		
+		PrimitiveTypes pt = TestUtils.createObjectPrimitiveTypes();
+		remote.setObject(pt);
+		TestUtils.assertEquals(log,  "Object", pt, remote.getObject());
+		
+		log.info(")testRemotePrimitvieTypesSendAsObjectType");
+	}
+	
+	/**
+	 * Send all primitive types in one call.
+	 * 
+	 * @throws BException
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void testRemotePrimitiveTypesSendAll() throws BException, InterruptedException {
 		log.info("testRemotePrimitiveTypesSendAll(");
@@ -94,37 +118,49 @@ public class TestRemotePrimitiveTypes {
 		log.info(")testRemotePrimitiveTypesSendAll");
 	}
 	
+	/**
+	 * Send/receive an two references to the same object.
+	 * The received references must also point to the same object.
+	 * @throws BException
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void testPrimitiveTypesReferenceToOtherObject() throws BException, InterruptedException {	
 		log.info("testPrimitiveTypesReferenceToOtherObject(");
 
 		PrimitiveTypes obj1 = new PrimitiveTypes();
 		obj1.intVal = 123;
-		obj1.objVal = obj1.objVal2 = new PrimitiveTypes();
-		((PrimitiveTypes)obj1.objVal).intVal = 456;
-		
+		// two references to the same object
+		obj1.objVal = obj1.objVal2 = new PrimitiveTypes(); 
+				
 		remote.setPrimitiveTypes(obj1);
 		PrimitiveTypes objR = remote.getPrimitiveTypes();
 		
 		TestUtils.assertEquals(log,  "PrimitiveTypes", obj1, objR);
+		// two references to the same object
 		TestUtils.assertTrue(log, "this.objVal != this.objVal2", objR.objVal == objR.objVal2);
 		
 		log.info(")testPrimitiveTypesReferenceToOtherObject");
 	}
 	
+	/**
+	 * Send/receive an object with a reference to itself
+	 * @throws BException
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void testPrimitiveTypesReferenceToSelf() throws BException, InterruptedException {	
 		log.info("testPrimitiveTypesReferenceToSelf(");
 
 		PrimitiveTypes obj1 = new PrimitiveTypes();
 		obj1.intVal = 123;
-		obj1.objVal = obj1.objVal2 = obj1;
+		obj1.objVal = obj1.objVal2 = obj1; // two references to itself 
 		
 		remote.setPrimitiveTypes(obj1);
 		PrimitiveTypes objR = remote.getPrimitiveTypes();
 		
-		TestUtils.assertTrue(log, "this != this.objVal", objR == objR.objVal);
-		TestUtils.assertTrue(log, "this != this.objVal2", objR == objR.objVal2);
+		TestUtils.assertTrue(log, "this != this.objVal", objR == objR.objVal); // self reference
+		TestUtils.assertTrue(log, "this != this.objVal2", objR == objR.objVal2); // self reference
 		
 		log.info(")testPrimitiveTypesReferenceToSelf");
 	}

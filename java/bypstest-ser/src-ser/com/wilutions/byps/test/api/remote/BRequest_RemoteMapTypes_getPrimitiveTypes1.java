@@ -23,7 +23,7 @@ public final class BRequest_RemoteMapTypes_getPrimitiveTypes1 implements BMethod
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>>(asyncResult, new BResult_RemoteMapTypes_getPrimitiveTypes1());			
+			BAsyncResultSendMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>>(asyncResult, new com.wilutions.byps.test.api.BResult_703065817());			
 			remoteT.async_getPrimitiveTypes1(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

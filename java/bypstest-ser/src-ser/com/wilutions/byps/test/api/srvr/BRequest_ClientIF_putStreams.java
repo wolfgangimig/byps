@@ -25,7 +25,7 @@ public final class BRequest_ClientIF_putStreams implements BMethodRequest, Seria
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final ClientIFAsync remoteT = (ClientIFAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_ClientIF_putStreams());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_putStreams(strm, ctrl, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

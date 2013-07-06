@@ -296,6 +296,15 @@ public class TypeInfo {
 		if (qname.equals("java.lang.Throwable")) return true;
 		return false;
 	}
+	
+	public boolean isInheritable() {
+		if (isInline) return false;
+		if (isEnum) return false;
+		if (isCollectionType()) return false;
+		if (isPrimitiveType()) return false;
+		if (isArrayType()) return false;
+		return true;
+	}
 
 	public int getMemberSize(BBinaryModel bmodel) {
 		int size = bmodel.pointerSize;

@@ -23,7 +23,7 @@ public final class BRequest_RemoteSetTypes_getInt1 implements BMethodRequest, Se
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteSetTypesAsync remoteT = (RemoteSetTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Set<java.lang.Integer>> outerResult = new BAsyncResultSendMethod<java.util.Set<java.lang.Integer>>(asyncResult, new BResult_RemoteSetTypes_getInt1());			
+			BAsyncResultSendMethod<java.util.Set<java.lang.Integer>> outerResult = new BAsyncResultSendMethod<java.util.Set<java.lang.Integer>>(asyncResult, new com.wilutions.byps.test.api.BResult_1493282670());			
 			remoteT.async_getInt1(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

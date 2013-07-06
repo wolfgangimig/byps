@@ -38,141 +38,118 @@ public class BStub_RemoteInlineInstance extends BStub implements RemoteInlineIns
 		transport.send(req, outerResult);
 	}
 	
-	public void setActorArray1dim(com.wilutions.byps.test.api.inl.Actor[] actorArray) throws BException, InterruptedException {
+	public void setPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray) throws BException, InterruptedException {
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setActorArray1dim(actorArray, asyncResult);
+		async_setPoint2DArray1dim(pointArray, asyncResult);
 		asyncResult.getResult();		
 	}
-	public void async_setActorArray1dim(com.wilutions.byps.test.api.inl.Actor[] actorArray, final BAsyncResult<Object> asyncResult) {
-		BRequest_RemoteInlineInstance_setActorArray1dim req = new BRequest_RemoteInlineInstance_setActorArray1dim();		
-		req.actorArray = actorArray;
+	public void async_setPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray, final BAsyncResult<Object> asyncResult) {
+		BRequest_RemoteInlineInstance_setPoint2DArray1dim req = new BRequest_RemoteInlineInstance_setPoint2DArray1dim();		
+		req.pointArray = pointArray;
 		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public com.wilutions.byps.test.api.inl.Actor[] getActorArray1dim() throws BException, InterruptedException {
-		final BSyncResult<com.wilutions.byps.test.api.inl.Actor[]> asyncResult = new BSyncResult<com.wilutions.byps.test.api.inl.Actor[]>();		
-		async_getActorArray1dim(asyncResult);
+	public com.wilutions.byps.test.api.inl.Point2D[] getPoint2DArray1dim() throws BException, InterruptedException {
+		final BSyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult = new BSyncResult<com.wilutions.byps.test.api.inl.Point2D[]>();		
+		async_getPoint2DArray1dim(asyncResult);
 		return asyncResult.getResult();		
 	}
-	public void async_getActorArray1dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Actor[]> asyncResult) {
-		BRequest_RemoteInlineInstance_getActorArray1dim req = new BRequest_RemoteInlineInstance_getActorArray1dim();		
-		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Actor[]> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Actor[]>(asyncResult);
+	public void async_getPoint2DArray1dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
+		BRequest_RemoteInlineInstance_getPoint2DArray1dim req = new BRequest_RemoteInlineInstance_getPoint2DArray1dim();		
+		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Point2D[]> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Point2D[]>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public void setActorArray4dim(com.wilutions.byps.test.api.inl.Actor[][][][] actorArray) throws BException, InterruptedException {
+	public void setPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[][][][] pointArray) throws BException, InterruptedException {
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setActorArray4dim(actorArray, asyncResult);
+		async_setPoint2DArray4dim(pointArray, asyncResult);
 		asyncResult.getResult();		
 	}
-	public void async_setActorArray4dim(com.wilutions.byps.test.api.inl.Actor[][][][] actorArray, final BAsyncResult<Object> asyncResult) {
-		BRequest_RemoteInlineInstance_setActorArray4dim req = new BRequest_RemoteInlineInstance_setActorArray4dim();		
-		req.actorArray = actorArray;
+	public void async_setPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[][][][] pointArray, final BAsyncResult<Object> asyncResult) {
+		BRequest_RemoteInlineInstance_setPoint2DArray4dim req = new BRequest_RemoteInlineInstance_setPoint2DArray4dim();		
+		req.pointArray = pointArray;
 		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public com.wilutions.byps.test.api.inl.Actor[][][][] getActorArray4dim() throws BException, InterruptedException {
-		final BSyncResult<com.wilutions.byps.test.api.inl.Actor[][][][]> asyncResult = new BSyncResult<com.wilutions.byps.test.api.inl.Actor[][][][]>();		
-		async_getActorArray4dim(asyncResult);
+	public com.wilutions.byps.test.api.inl.Point2D[][][][] getPoint2DArray4dim() throws BException, InterruptedException {
+		final BSyncResult<com.wilutions.byps.test.api.inl.Point2D[][][][]> asyncResult = new BSyncResult<com.wilutions.byps.test.api.inl.Point2D[][][][]>();		
+		async_getPoint2DArray4dim(asyncResult);
 		return asyncResult.getResult();		
 	}
-	public void async_getActorArray4dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Actor[][][][]> asyncResult) {
-		BRequest_RemoteInlineInstance_getActorArray4dim req = new BRequest_RemoteInlineInstance_getActorArray4dim();		
-		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Actor[][][][]> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Actor[][][][]>(asyncResult);
+	public void async_getPoint2DArray4dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[][][][]> asyncResult) {
+		BRequest_RemoteInlineInstance_getPoint2DArray4dim req = new BRequest_RemoteInlineInstance_getPoint2DArray4dim();		
+		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Point2D[][][][]> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.inl.Point2D[][][][]>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public void setActorList(java.util.List<com.wilutions.byps.test.api.inl.Actor> actorList) throws BException, InterruptedException {
+	public void setPoint2DList(java.util.List<com.wilutions.byps.test.api.inl.Point2D> pointList) throws BException, InterruptedException {
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setActorList(actorList, asyncResult);
+		async_setPoint2DList(pointList, asyncResult);
 		asyncResult.getResult();		
 	}
-	public void async_setActorList(java.util.List<com.wilutions.byps.test.api.inl.Actor> actorList, final BAsyncResult<Object> asyncResult) {
-		BRequest_RemoteInlineInstance_setActorList req = new BRequest_RemoteInlineInstance_setActorList();		
-		req.actorList = actorList;
+	public void async_setPoint2DList(java.util.List<com.wilutions.byps.test.api.inl.Point2D> pointList, final BAsyncResult<Object> asyncResult) {
+		BRequest_RemoteInlineInstance_setPoint2DList req = new BRequest_RemoteInlineInstance_setPoint2DList();		
+		req.pointList = pointList;
 		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public java.util.List<com.wilutions.byps.test.api.inl.Actor> getActorList() throws BException, InterruptedException {
-		final BSyncResult<java.util.List<com.wilutions.byps.test.api.inl.Actor>> asyncResult = new BSyncResult<java.util.List<com.wilutions.byps.test.api.inl.Actor>>();		
-		async_getActorList(asyncResult);
+	public java.util.List<com.wilutions.byps.test.api.inl.Point2D> getPoint2DList() throws BException, InterruptedException {
+		final BSyncResult<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> asyncResult = new BSyncResult<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>();		
+		async_getPoint2DList(asyncResult);
 		return asyncResult.getResult();		
 	}
-	public void async_getActorList(final BAsyncResult<java.util.List<com.wilutions.byps.test.api.inl.Actor>> asyncResult) {
-		BRequest_RemoteInlineInstance_getActorList req = new BRequest_RemoteInlineInstance_getActorList();		
-		BAsyncResultReceiveMethod<java.util.List<com.wilutions.byps.test.api.inl.Actor>> outerResult = new BAsyncResultReceiveMethod<java.util.List<com.wilutions.byps.test.api.inl.Actor>>(asyncResult);
+	public void async_getPoint2DList(final BAsyncResult<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
+		BRequest_RemoteInlineInstance_getPoint2DList req = new BRequest_RemoteInlineInstance_getPoint2DList();		
+		BAsyncResultReceiveMethod<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> outerResult = new BAsyncResultReceiveMethod<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public void setActorListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> actorListList) throws BException, InterruptedException {
+	public void setPoint2DListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> pointListList) throws BException, InterruptedException {
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setActorListList(actorListList, asyncResult);
+		async_setPoint2DListList(pointListList, asyncResult);
 		asyncResult.getResult();		
 	}
-	public void async_setActorListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> actorListList, final BAsyncResult<Object> asyncResult) {
-		BRequest_RemoteInlineInstance_setActorListList req = new BRequest_RemoteInlineInstance_setActorListList();		
-		req.actorListList = actorListList;
+	public void async_setPoint2DListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> pointListList, final BAsyncResult<Object> asyncResult) {
+		BRequest_RemoteInlineInstance_setPoint2DListList req = new BRequest_RemoteInlineInstance_setPoint2DListList();		
+		req.pointListList = pointListList;
 		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>> getActorListList() throws BException, InterruptedException {
-		final BSyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>>> asyncResult = new BSyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>>>();		
-		async_getActorListList(asyncResult);
+	public java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> getPoint2DListList() throws BException, InterruptedException {
+		final BSyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>> asyncResult = new BSyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>>();		
+		async_getPoint2DListList(asyncResult);
 		return asyncResult.getResult();		
 	}
-	public void async_getActorListList(final BAsyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>>> asyncResult) {
-		BRequest_RemoteInlineInstance_getActorListList req = new BRequest_RemoteInlineInstance_getActorListList();		
-		BAsyncResultReceiveMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>>> outerResult = new BAsyncResultReceiveMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Actor>>>(asyncResult);
+	public void async_getPoint2DListList(final BAsyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>> asyncResult) {
+		BRequest_RemoteInlineInstance_getPoint2DListList req = new BRequest_RemoteInlineInstance_getPoint2DListList();		
+		BAsyncResultReceiveMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>> outerResult = new BAsyncResultReceiveMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public void setActorSet(java.util.Set<com.wilutions.byps.test.api.inl.Actor> actorSet) throws BException, InterruptedException {
+	public void setPoint2DMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap) throws BException, InterruptedException {
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setActorSet(actorSet, asyncResult);
+		async_setPoint2DMap(pointMap, asyncResult);
 		asyncResult.getResult();		
 	}
-	public void async_setActorSet(java.util.Set<com.wilutions.byps.test.api.inl.Actor> actorSet, final BAsyncResult<Object> asyncResult) {
-		BRequest_RemoteInlineInstance_setActorSet req = new BRequest_RemoteInlineInstance_setActorSet();		
-		req.actorSet = actorSet;
+	public void async_setPoint2DMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap, final BAsyncResult<Object> asyncResult) {
+		BRequest_RemoteInlineInstance_setPoint2DMap req = new BRequest_RemoteInlineInstance_setPoint2DMap();		
+		req.pointMap = pointMap;
 		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
-	public java.util.Set<com.wilutions.byps.test.api.inl.Actor> getActorSet() throws BException, InterruptedException {
-		final BSyncResult<java.util.Set<com.wilutions.byps.test.api.inl.Actor>> asyncResult = new BSyncResult<java.util.Set<com.wilutions.byps.test.api.inl.Actor>>();		
-		async_getActorSet(asyncResult);
+	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> getPoint2DMap() throws BException, InterruptedException {
+		final BSyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>> asyncResult = new BSyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>>();		
+		async_getPoint2DMap(asyncResult);
 		return asyncResult.getResult();		
 	}
-	public void async_getActorSet(final BAsyncResult<java.util.Set<com.wilutions.byps.test.api.inl.Actor>> asyncResult) {
-		BRequest_RemoteInlineInstance_getActorSet req = new BRequest_RemoteInlineInstance_getActorSet();		
-		BAsyncResultReceiveMethod<java.util.Set<com.wilutions.byps.test.api.inl.Actor>> outerResult = new BAsyncResultReceiveMethod<java.util.Set<com.wilutions.byps.test.api.inl.Actor>>(asyncResult);
-		transport.send(req, outerResult);
-	}
-	
-	public void setActorMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor> actorMap) throws BException, InterruptedException {
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setActorMap(actorMap, asyncResult);
-		asyncResult.getResult();		
-	}
-	public void async_setActorMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor> actorMap, final BAsyncResult<Object> asyncResult) {
-		BRequest_RemoteInlineInstance_setActorMap req = new BRequest_RemoteInlineInstance_setActorMap();		
-		req.actorMap = actorMap;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
-	}
-	
-	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor> getActorMap() throws BException, InterruptedException {
-		final BSyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>> asyncResult = new BSyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>>();		
-		async_getActorMap(asyncResult);
-		return asyncResult.getResult();		
-	}
-	public void async_getActorMap(final BAsyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>> asyncResult) {
-		BRequest_RemoteInlineInstance_getActorMap req = new BRequest_RemoteInlineInstance_getActorMap();		
-		BAsyncResultReceiveMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>> outerResult = new BAsyncResultReceiveMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Actor>>(asyncResult);
+	public void async_getPoint2DMap(final BAsyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
+		BRequest_RemoteInlineInstance_getPoint2DMap req = new BRequest_RemoteInlineInstance_getPoint2DMap();		
+		BAsyncResultReceiveMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>> outerResult = new BAsyncResultReceiveMethod<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	

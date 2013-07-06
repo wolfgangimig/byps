@@ -98,16 +98,16 @@ public class TestRemoteListTypes {
 		for (int i = 0; i < 2; i++) {
 			Map<Integer,List<TreeSet<Integer>>> map = new TreeMap<Integer,List<TreeSet<Integer>>>();
 			for (int j = 0; j < 3; j++) {
-				List<TreeSet<Integer>> set = new ArrayList<TreeSet<Integer>>();
+				List<TreeSet<Integer>> list3 = new ArrayList<TreeSet<Integer>>();
 				for (int k = 0; k < 4; k++) {
-					TreeSet<Integer> list2 = new TreeSet<Integer>();
+					TreeSet<Integer> set = new TreeSet<Integer>();
 					for (int n = 0; n < 5; n++) {
 						Integer pt = (i+1) * (j+1) * (k+1) * (n+1);
-						list2.add(pt);
+						set.add(pt);
 					}
-					set.add(list2);
+					list3.add(set);
 				}
-				map.put(j, set);
+				map.put(j, list3);
 			}
 			list.add(map);
 		}

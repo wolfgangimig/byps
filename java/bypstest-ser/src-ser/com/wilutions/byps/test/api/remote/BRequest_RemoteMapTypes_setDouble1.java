@@ -24,7 +24,7 @@ public final class BRequest_RemoteMapTypes_setDouble1 implements BMethodRequest,
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteMapTypes_setDouble1());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setDouble1(double1, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

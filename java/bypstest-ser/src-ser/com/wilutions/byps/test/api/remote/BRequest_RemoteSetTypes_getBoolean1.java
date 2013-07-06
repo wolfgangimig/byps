@@ -23,7 +23,7 @@ public final class BRequest_RemoteSetTypes_getBoolean1 implements BMethodRequest
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteSetTypesAsync remoteT = (RemoteSetTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Set<java.lang.Boolean>> outerResult = new BAsyncResultSendMethod<java.util.Set<java.lang.Boolean>>(asyncResult, new BResult_RemoteSetTypes_getBoolean1());			
+			BAsyncResultSendMethod<java.util.Set<java.lang.Boolean>> outerResult = new BAsyncResultSendMethod<java.util.Set<java.lang.Boolean>>(asyncResult, new com.wilutions.byps.test.api.BResult_1365696060());			
 			remoteT.async_getBoolean1(outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

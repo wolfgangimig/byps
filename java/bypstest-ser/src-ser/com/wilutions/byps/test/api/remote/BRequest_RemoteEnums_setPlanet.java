@@ -24,7 +24,7 @@ public final class BRequest_RemoteEnums_setPlanet implements BMethodRequest, Ser
 	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
 		try {
 			final RemoteEnumsAsync remoteT = (RemoteEnumsAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new BResult_RemoteEnums_setPlanet());			
+			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
 			remoteT.async_setPlanet(planet, outerResult);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

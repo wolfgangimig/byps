@@ -71,8 +71,16 @@ class TypeInfoCpp {
 	
 	private static String makeCppName(TypeInfo tinfo, String currentPackage, Purpose purpose) {
 		StringBuilder tbuf = new StringBuilder();
-		
-		if (tinfo.dims.length() != 0) {
+
+		if (tinfo.isByteArray1dim()) {
+			if (purpose == Purpose.CLASS) {
+				tbuf.append("BBytes");
+			}
+			else {
+				tbuf.append("PBytes");
+			}
+		}
+		else if (tinfo.dims.length() != 0) {
 			int ndims = tinfo.dims.length() / 2;
 			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
 			tbuf.append("BArray").append(ndims).append("< ");
@@ -143,14 +151,14 @@ class TypeInfoCpp {
 			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
 		
-		else if (tinfo.isEnum) {
-			if (purpose == Purpose.CLASS) {
-				tbuf.append(tinfo.name); // Enum wird als namespace definiert
-			}
-			else {
-				tbuf.append("int32_t");
-			}
-		}
+//		else if (tinfo.isEnum) {
+//			if (purpose == Purpose.CLASS) {
+//				tbuf.append(tinfo.name); // Enum wird als namespace definiert
+//			}
+//			else {
+//				tbuf.append("int32_t");
+//			}
+//		}
 		
 		else {
 			// User def type

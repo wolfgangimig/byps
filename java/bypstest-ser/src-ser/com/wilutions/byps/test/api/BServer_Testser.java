@@ -38,6 +38,11 @@ public class BServer_Testser extends BServer {
 		return this;
 	}
 	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 remoteSkeleton) {
+		addRemote(2081058997, remoteSkeleton);
+		return this;
+	}
+	
 	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim remoteSkeleton) {
 		addRemote(1557173854, remoteSkeleton);
 		return this;

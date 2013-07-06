@@ -566,7 +566,6 @@ public class TestUtils {
 	
 	public static class MyContentStream extends BContentStream {
 		private long pos, nbOfBytes;
-		private int v = 1;
 		
 		public MyContentStream(long nbOfBytes) {
 			this.nbOfBytes = nbOfBytes;
@@ -578,8 +577,7 @@ public class TestUtils {
 				return -1;
 			}
 			else {
-				pos++;
-				return (int)(v++ & 0xFF);
+				return (int)(pos++ & 0xFF);
 			}
 		}
 		
@@ -650,7 +648,13 @@ public class TestUtils {
 		TestUtils.assertEquals(log, "temp files", new String[0], tempFiles);
 	}
 
-
+	private static short x;
+	public static Point2D createPoint2D() {
+		Point2D pt = new Point2D();
+		pt.x = x++;
+		pt.y = (short)(x*x);
+		return pt;
+	}
 }
 
 

@@ -40,8 +40,10 @@ class GenApiClassFwd {
 		else if (tinfo.isArrayType()) {
 			// keine Forward-Decl für int[] usw. -> wird zu vector<int>
 		}
-		else if (serInfo != null && 
-				(serInfo.isResultClass() || serInfo.isRequestClass())) {
+		else if (serInfo != null && serInfo.isResultClass()) {
+			// kein shared_ptr benötigt 
+		}
+		else if (serInfo != null && serInfo.isRequestClass()) {
 			prH = pctxt.getPrImplAllH();
 			prCpp = pctxt.getPrImplC();
 		}
@@ -79,7 +81,16 @@ class GenApiClassFwd {
 			pr.println(cppInfo.namespaceBegin);
 			pr.println();
 			pr.print("class ").print(className).println("; ");
-			pr.print("typedef byps_ptr< ").print(className).print(" > ").print(pclassName).println("; ");
+			
+			boolean declPtrClass = true;
+			if ((tinfo instanceof SerialInfo)) {
+				declPtrClass = !((SerialInfo)tinfo).isRequestClass();
+			}
+			
+			if (declPtrClass) {
+				pr.print("typedef byps_ptr< ").print(className).print(" > ").print(pclassName).println("; ");
+			}
+			
 			pr.println();
 			pr.print(cppInfo.namespaceEnd);
 			pr.println();

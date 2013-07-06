@@ -356,7 +356,7 @@ public class TestRemoteStreams {
 	public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
 		log.info("testRemoteStreamsLargeStream(");
 		
-		long nbOfBytes = 3L * 1000L * 1000L * 1000L;
+		long nbOfBytes = 0x100000000L;
 		
 		log.info("start upload");
 		InputStream istrm = new TestUtils.MyContentStream(nbOfBytes);
