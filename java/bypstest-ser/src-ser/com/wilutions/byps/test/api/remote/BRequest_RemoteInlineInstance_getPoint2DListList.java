@@ -20,13 +20,13 @@ public final class BRequest_RemoteInlineInstance_getPoint2DListList implements B
 	public int getRemoteId() { return 1206670536; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteInlineInstanceAsync remoteT = (RemoteInlineInstanceAsync)remote;			
-			BAsyncResultSendMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>> outerResult = new BAsyncResultSendMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>>(asyncResult, new com.wilutions.byps.test.api.BResult_1463615848());			
-			remoteT.async_getPoint2DListList(outerResult);
+			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
+			BAsyncResultSendMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>> __byps__outerResult = new BAsyncResultSendMethod<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1463615848());			
+			__byps__remoteT.async_getPoint2DListList(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

@@ -22,13 +22,13 @@ public final class BRequest_RemoteStreams_setImages implements BMethodRequest, S
 	public int getRemoteId() { return 2028487863; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteStreamsAsync remoteT = (RemoteStreamsAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			remoteT.async_setImages(istrms, doNotReadStreamAtKey, outerResult);
+			final RemoteStreamsAsync __byps__remoteT = (RemoteStreamsAsync)__byps__remote;			
+			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
+			__byps__remoteT.async_setImages(istrms, doNotReadStreamAtKey, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

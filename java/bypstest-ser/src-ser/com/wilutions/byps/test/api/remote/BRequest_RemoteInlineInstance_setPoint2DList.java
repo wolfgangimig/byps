@@ -21,13 +21,13 @@ public final class BRequest_RemoteInlineInstance_setPoint2DList implements BMeth
 	public int getRemoteId() { return 1206670536; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteInlineInstanceAsync remoteT = (RemoteInlineInstanceAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			remoteT.async_setPoint2DList(pointList, outerResult);
+			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
+			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
+			__byps__remoteT.async_setPoint2DList(pointList, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

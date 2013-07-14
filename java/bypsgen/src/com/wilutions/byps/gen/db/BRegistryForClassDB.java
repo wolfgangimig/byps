@@ -8,6 +8,7 @@ import java.util.Random;
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.BRemote;
 import com.wilutions.byps.BSerializer;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.TypeInfo;
@@ -26,6 +27,9 @@ public class BRegistryForClassDB extends BRegistry {
 	}
 	
 	int getTypeIdForBuiltInType(TypeInfo typeInfo) throws GeneratorException {
+		
+    	// Die funktion gibt's ganz ähnlich auch in ClassDB.getTypeInfo
+    	// kann man eine eliminieren?
 		
 		String qname = typeInfo.qname;
 		int typeId = 0;
@@ -54,6 +58,7 @@ public class BRegistryForClassDB extends BRegistry {
 			else if (qname.equals(String.class.getName())) typeId = TYPEID_STRING;
 			else if (qname.equals(IOException.class.getName())) typeId = TYPEID_EXCEPTION;
 			else if (qname.equals(InputStream.class.getName())) typeId = TYPEID_STREAM;
+			else if (qname.equals(BRemote.class.getName())) typeId = TYPEID_STUB;
 			
 			else if (typeInfo.isListType()) {
 				if (typeInfo.typeArgs.get(0).isAnyType()) {

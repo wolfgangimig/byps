@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BJsonObject;
 import com.wilutions.byps.gen.api.GeneratorException;
@@ -151,7 +152,17 @@ class GenConstClass {
 	private String makeNewArrayInstance(TypeInfo tinfo, BJsonObject js) throws BException, GeneratorException {
 		if (js == null) return "null";
 		StringBuilder sbuf = new StringBuilder();
-		sbuf.append(makeArrayLevel(tinfo, 1, js));
+		if (tinfo.isByteArray1dim()) {
+			byte[] binaryData = new byte[js.size()];
+			for (int i = 0; i < js.size(); i++) {
+				binaryData[i] = js.getByte(i);
+			}
+			String s = Base64.encode(binaryData);
+			sbuf.append("\"").append(s).append("\"");
+		}
+		else {
+			sbuf.append(makeArrayLevel(tinfo, 1, js));
+		}
 		return sbuf.toString();
 	}
 	
@@ -190,7 +201,9 @@ class GenConstClass {
 		sbuf.append("new ").append(sinfo.toString("")).append("(");
 		for (MemberInfo minfo : sinfo.members) {
 			if (minfo.isStatic) continue;
+			
 			if (!first) sbuf.append(", "); else first = false; 
+			
 			if (minfo.type.dims.length() != 0) {
 				sbuf.append(makeNewArrayInstance(minfo.type, (BJsonObject)params.get(minfo.name)));
 			} else if (minfo.type.isPointerType()) {

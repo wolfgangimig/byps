@@ -20,13 +20,13 @@ public final class BRequest_RemoteInlineInstance_getActor implements BMethodRequ
 	public int getRemoteId() { return 1206670536; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteInlineInstanceAsync remoteT = (RemoteInlineInstanceAsync)remote;			
-			BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Actor> outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Actor>(asyncResult, new com.wilutions.byps.test.api.BResult_171948703());			
-			remoteT.async_getActor(outerResult);
+			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
+			BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Actor> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Actor>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_171948703());			
+			__byps__remoteT.async_getActor(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

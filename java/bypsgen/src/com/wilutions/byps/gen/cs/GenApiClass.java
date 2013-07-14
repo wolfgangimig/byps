@@ -88,7 +88,7 @@ class GenApiClass {
 			String s = minfo.isStatic ? "static " : "";
 			String n = "";
 			
-			if (serInfo.baseInfo != null && serInfo.baseInfo.findMember(minfo.name) != null) {
+			if (serInfo.baseInfo != null && serInfo.baseInfo.findMember(minfo.name, null) != null) {
 				n = "new ";
 			}
 			
@@ -121,26 +121,6 @@ class GenApiClass {
 		log.debug(")printMember");
 	}
 	
-	private String printStringChar(char c) {
-		StringBuilder sbuf= new StringBuilder();
-		if (Character.isLetterOrDigit(c)) sbuf.append(c);
-		else if (c == '\\') sbuf.append("\\\\");
-		else if (c == '\t') sbuf.append("\\t");
-		else if (c == '\r') sbuf.append("\\r");
-		else if (c == '\n') sbuf.append("\\n");
-		else if (c == '\b') sbuf.append("\\b");
-		else if (c == '\"') sbuf.append("\\\"");
-		else if (c == '\'') sbuf.append("\\\'");
-		else if (c >= 0x20 && c <= 0x7F) sbuf.append(c);
-		else {
-			sbuf.append("\\u");			
-			String s = Integer.toHexString((int)c);
-			for (int i = s.length(); i < 4; i++) sbuf.append("0");
-			sbuf.append(s);
-		}
-		return sbuf.toString();
-	}
-	
 	private String printConstValue(TypeInfo tinfo, Object value) throws BException, GeneratorException {
 		StringBuilder sbuf = new StringBuilder();
 		
@@ -152,14 +132,14 @@ class GenApiClass {
 			String s = (String)value;
 			sbuf.append("\"");
 			for (int i = 0; i < s.length(); i++) {
-				sbuf.append( printStringChar(s.charAt(i)) );
+				sbuf.append( pctxt.printStringChar(s.charAt(i)) );
 			}
 			sbuf.append("\"");
 		}
 		else if (tinfo.qname.equals("char")) {
 			String s = (String)value;
 			sbuf.append("\'");
-			sbuf.append( printStringChar(s.charAt(0)) );
+			sbuf.append( pctxt.printStringChar(s.charAt(0)) );
 			sbuf.append("\'");
 		}
 		else if (tinfo.qname.equals("boolean")) {
@@ -390,17 +370,17 @@ class GenApiClass {
 		String methodName = pctxt.makePublicMemberName(methodInfo.name);
 		
 		String remoteType = methodInfo.remoteInfo.toString(serInfo.pack);
-		pr.print("").print(remoteType).print(" remoteT = (").print(remoteType).print(")remote;");
+		pr.print("").print(remoteType).print(" __byps__remoteT = (").print(remoteType).print(")__byps__remote;");
 		pr.println();
 
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, serInfo.pack);
 		String outerResultType = "BAsyncResultSendMethod<" + rtype + ">";
-		pr.print(outerResultType).print(" outerResult = new ").print(outerResultType)
-			.print("(asyncResult, new ").print(methodInfo.resultInfo.toString(serInfo.pack))
+		pr.print(outerResultType).print(" __byps__outerResult = new ").print(outerResultType)
+			.print("(__byps__asyncResult, new ").print(methodInfo.resultInfo.toString(serInfo.pack))
 			.print("());");
 		pr.println();
 		
-		CodePrinter mpr = pr.print("remoteT.").print("async_").print(methodName).print("(");
+		CodePrinter mpr = pr.print("__byps__remoteT.").print("async_").print(methodName).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
@@ -408,7 +388,7 @@ class GenApiClass {
 			mpr.print("_").print(pinfo.name);
 		}
 		if (!first) mpr.print(", ");
-		mpr.print("outerResult");
+		mpr.print("__byps__outerResult");
 		mpr.println(");");
 		
 		pr.endBlock();
@@ -416,7 +396,7 @@ class GenApiClass {
 		pr.beginBlock();
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
 		String nullValue = PrintHelper.getDefaultValueForType(returnInfo.type);
-		pr.println("asyncResult.setAsyncResult(" + nullValue + ", e);");
+		pr.println("__byps__asyncResult.setAsyncResult(" + nullValue + ", e);");
 		pr.println("throw e;");
 		pr.endBlock();
 		pr.println("}");
@@ -425,7 +405,7 @@ class GenApiClass {
 	private void printExecute() throws IOException {
 		log.debug("printExecute");
 
-		pr.print("public void ").print("execute(BRemote remote, BAsyncResult<Object> asyncResult) ").println("{");
+		pr.print("public void ").print("execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) ").println("{");
 		pr.beginBlock();
 		
 		printExecuteAsync();

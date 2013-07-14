@@ -93,6 +93,26 @@ public class PrintContextBase {
 		return s;
 	}
 
+	public String printStringChar(char c) {
+		StringBuilder sbuf= new StringBuilder();
+		if (Character.isLetterOrDigit(c)) sbuf.append(c);
+		else if (c == '\0') sbuf.append("\\0");
+		else if (c == '\\') sbuf.append("\\\\");
+		else if (c == '\t') sbuf.append("\\t");
+		else if (c == '\r') sbuf.append("\\r");
+		else if (c == '\n') sbuf.append("\\n");
+		else if (c == '\b') sbuf.append("\\b");
+		else if (c == '\"') sbuf.append("\\\"");
+		else if (c == '\'') sbuf.append("\\\'");
+		else if (c >= 0x20 && c <= 0x7F) sbuf.append(c);
+		else {
+			sbuf.append("\\u");			
+			String s = Integer.toHexString((int)c);
+			for (int i = s.length(); i < 4; i++) sbuf.append("0");
+			sbuf.append(s);
+		}
+		return sbuf.toString();
+	}	
 	protected String apiName;
 	public final String apiPack;
 	public final BBinaryModel bmodel;

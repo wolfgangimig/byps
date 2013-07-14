@@ -30,7 +30,9 @@ public class TestUtilsHttp {
 
 	private static Log log = LogFactory.getLog(TestUtilsHttp.class);
 	
+	public static boolean TEST_LARGE_STREAMS = false;
 	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
+	public static String url2 = "http://localhost:8080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	
 	private static Executor tpool = Executors.newCachedThreadPool();
@@ -77,6 +79,23 @@ public class TestUtilsHttp {
 		syncResult.getResult();
 		return client;
 	}
+	
+	public static BClient_Testser createClient2() throws BException, InterruptedException {
+		
+		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, tpool);
+		
+		final BTransportFactory transportFactory = new HTransportFactoryClient(
+				BApiDescriptor_Testser.instance, wire, 3); 
+		
+		BClient_Testser client = BClient_Testser.createClient(transportFactory);
+
+		BSyncResult<BClient> syncResult = new BSyncResult<BClient>();
+		client.start(syncResult);
+		
+		syncResult.getResult();
+		return client;
+		
+	}
 		
 	public static ArrayList<InputStream> makeTestStreams() throws IOException {
 		log.info("makeTestStreams(");
@@ -87,7 +106,9 @@ public class TestUtilsHttp {
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2));
-		ret.add(new TestUtils.MyContentStream(3L * 1000L * 1000L * 1000L));
+		if (TEST_LARGE_STREAMS) {
+			ret.add(new TestUtils.MyContentStream(3L * 1000L * 1000L * 1000L));
+		}
 		log.info(")makeTestStreams=" + ret);
 		return ret;
 	}

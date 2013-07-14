@@ -85,16 +85,18 @@ public class TestRemoteServerR {
 		setUp();
 		
 		for (int i = 0; i < 100; i++) {
-			testCallClientFromServer();
+			testCallClientFromClientOnOtherServer();
 		}
 		
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 0; i++) {
 			Thread.sleep(rand.nextInt(1000));
 			testCallClient1FromServer1();
 			tearDown(); setUp();
 			testCallClient2FromServer1();
 			tearDown(); setUp();
-			testCallClientFromClient();
+			testCallClientFromClientSameServer();
+			tearDown(); setUp();
+			testCallClientFromClientOnOtherServer();
 			tearDown(); setUp();
 			testCallClientFromClientThrowEx();
 			tearDown(); setUp();
@@ -106,7 +108,9 @@ public class TestRemoteServerR {
 			tearDown(); setUp();
 //			testCallKilledClientFromClient(); might hang due to Tomcat bug, see javadoc of testCallKilledClientFromClient()
 //			tearDown(); setUp();
-			testPutStreamFromClientToClient();
+			testPutStreamFromClientToClientSameServer();
+			tearDown(); setUp();
+			testPutStreamFromClientToClientOnOtherServer();
 			tearDown(); setUp();
 			testReturnStreamFromClientToClient();
 			tearDown(); setUp();
@@ -207,15 +211,57 @@ public class TestRemoteServerR {
 
 	/**
 	 * Call an interface method of another client. 
+	 * Both clients are connected to the same server.
 	 * @throws InterruptedException 
 	 * @throws BException 
 	 */
 	@Test
-	public void testCallClientFromClient() throws BException, InterruptedException {
-		log.info("testCallClientFromClient(");
+	public void testCallClientFromClientSameServer() throws BException, InterruptedException {
+		log.info("testCallClientFromClientSameServer(");
 		
 		// Interface implementation for the second client
-		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
+		BSkeleton_ClientIF remoteImplOfClient2 = new BSkeleton_ClientIF() {
+			@Override
+			public int incrementInt(int a) throws BException, InterruptedException {
+				log.info("incrementInt(" + a + ")");
+				return a + 11;
+			}
+		};
+		
+		// Create second client connected to the same server
+		BClient_Testser client2 = TestUtilsHttp.createClient();
+		client2.addRemote(remoteImplOfClient2);
+		
+		// Publish the interface to all servers
+		client2.remoteServerCtrl.publishRemote("remoteOfClient2", remoteImplOfClient2, true);
+		
+		// First client queries for published interface.
+		// The interface should have been transferred to Server1.
+		ClientIF remoteOfClient2 = (ClientIF)client.remoteServerCtrl.getPublishedRemote("remoteOfClient2");
+		TestUtils.assertTrue(log, "Cannot get interface to client2", remoteOfClient2 != null);
+		
+		// Invoke interface of second client.
+		int r = remoteOfClient2.incrementInt(7);
+		TestUtils.assertEquals(log, "incrementInt", 18, r);
+		
+		client2.remoteServerCtrl.removePublishedRemote("remoteOfClient2");
+		
+		client2.done();
+		log.info(")testCallClientFromClientSameServer");
+	}
+	
+	/**
+	 * Call an interface method of another client. 
+	 * The clients are connected to different servers.
+	 * @throws InterruptedException 
+	 * @throws BException 
+	 */
+	@Test
+	public void testCallClientFromClientOnOtherServer() throws BException, InterruptedException {
+		log.info("testCallClientFromClientOnOtherServer(");
+		
+		// Interface implementation for the second client
+		BSkeleton_ClientIF remoteImplOfClient2 = new BSkeleton_ClientIF() {
 			@Override
 			public int incrementInt(int a) throws BException, InterruptedException {
 				log.info("incrementInt(" + a + ")");
@@ -223,24 +269,30 @@ public class TestRemoteServerR {
 			}
 		};
 		
-		// Create second client
-		BClient_Testser client2 = TestUtilsHttp.createClient();
-		client2.addRemote(partner);
+		// Create second client connected to Server2
+		BClient_Testser client2 = TestUtilsHttp.createClient2();
+		client2.addRemote(remoteImplOfClient2);
 		
-		// Pass the interface of the second client to the server side of the first client
-		client.serverIF.setPartner(partner);
+		// Publish the interface to all servers
+		client2.remoteServerCtrl.publishRemote("remoteOfClient2", remoteImplOfClient2, true);
 		
-		// First client queries the interface of the second client from the server side
-		ClientIF partnerIF = client.serverIF.getPartner();
+		// First client queries for published interface.
+		// The interface should have been transferred to Server1.
+		ClientIF remoteOfClient2 = (ClientIF)client.remoteServerCtrl.getPublishedRemote("remoteOfClient2");
+		TestUtils.assertTrue(log, "Cannot get interface to client2", remoteOfClient2 != null);
 		
 		// Invoke interface of second client.
-		int r = partnerIF.incrementInt(7);
-		TestUtils.assertEquals(log, "incrementInt", 8, r);
+		for (int i = 0; i < 100; i++) {
+			int r = remoteOfClient2.incrementInt(i);
+			TestUtils.assertEquals(log, "incrementInt", i+1, r);
+		}
+		
+		client2.remoteServerCtrl.removePublishedRemote("remoteOfClient2");
 		
 		client2.done();
-		log.info(")testCallClientFromClient");
+		log.info(")testCallClientFromClientOnOtherServer");
 	}
-	
+		
 	/**
 	 * Call client2 interface from server-side of client1.
 	 * @throws BException
@@ -272,6 +324,41 @@ public class TestRemoteServerR {
 		
 		client2.done();
 		log.info(")testCallClient2FromServer1");
+	}
+
+	/**
+	 * Call client interface from the server-side of another server.
+	 * This is similar to testCallClient2FromServer1. The difference is that the client 
+	 * interface to be called is on another server.
+	 * @throws BException
+	 * @throws InterruptedException
+	 */
+	@Test
+	public void testCallClient2FromForeignServer1() throws BException, InterruptedException {
+		log.info("testCallClient2FromForeignServer1(");
+		
+		// Interface implementation for the second client
+		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
+			@Override
+			public int incrementInt(int a) throws BException, InterruptedException {
+				log.info("incrementInt(" + a + ")");
+				return a + 1;
+			}
+		};
+		
+		// Create client2, connected to Server2
+		BClient_Testser client2 = TestUtilsHttp.createClient2();
+		client2.addRemote(partner);
+		
+		// Pass the interface of the client2 to the server side of the first client
+		client.serverIF.setPartner(partner);
+		
+		// Invoke interface of second client from the server.
+		int r = remote.callClientIncrementInt(7);
+		TestUtils.assertEquals(log, "incrementInt", 8, r);
+		
+		client2.done();
+		log.info(")testCallClient2FromForeignServer1");
 	}
 
 	/**
@@ -567,8 +654,8 @@ public class TestRemoteServerR {
 	 * @throws IOException
 	 */
 	@Test
-	public void testPutStreamFromClientToClient() throws InterruptedException, IOException {
-		log.info("testPutStreamFromClientToClient(");
+	public void testPutStreamFromClientToClientSameServer() throws InterruptedException, IOException {
+		log.info("testPutStreamFromClientToClientSameServer(");
 		
 		// Interface implementation for the second client
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
@@ -609,9 +696,59 @@ public class TestRemoteServerR {
 
 		client2.done();
 
-		log.info(")testPutStreamFromClientToClient");
+		log.info(")testPutStreamFromClientToClientSameServer");
 	}
 	
+	/**
+	 * Transfer stream data between clients in an argument of an interface function.
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
+	@Test
+	public void testPutStreamFromClientToClientOnOtherServer() throws InterruptedException, IOException {
+		log.info("testPutStreamFromClientToClientOnOtherServer(");
+		
+		// Interface implementation for the second client
+		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
+			@Override
+			public void putStreams(List<InputStream> streams, int ctrl) throws BException, InterruptedException {
+				log.info("putStreams(" + streams.size());
+				try {
+					final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
+					TestUtils.assertEquals(log, "#streams", arr.size(), streams.size());
+					for (int i = 0; i < arr.size(); i++) {
+						BContentStream estrm = (BContentStream)arr.get(i);
+						BContentStream rstrm = (BContentStream)streams.get(i);
+						log.info("compare streams, estrm.length=" + estrm.getContentLength() + ", rstrm.length=" + rstrm.getContentLength());
+						TestUtils.assertEquals(log, "stream[" + i + "]", estrm, rstrm);
+					}
+				} catch (IOException e) {
+					log.error(e);
+					throw new BException(BException.IOERROR, "", e);
+				}
+				log.info(")putStreams");
+			}
+		};
+
+		// Create second client
+		BClient_Testser client2 = TestUtilsHttp.createClient2();
+		client2.addRemote(partner);
+		
+		// Pass the interface of the second client to the server side of the first client
+		client.serverIF.setPartner(partner);
+		
+		// First client queries the interface of the second client from the server side
+		ClientIF partnerIF = client.serverIF.getPartner();
+		
+		log.info("call client...");
+		final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
+		partnerIF.putStreams(arr, 0);
+		log.info("call client OK");
+
+		client2.done();
+
+		log.info(")testPutStreamFromClientToClientOnOtherServer");
+	}	
 	/**
 	 * A client with JSON serialization calls another client with binary serialization.
 	 * 

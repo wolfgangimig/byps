@@ -9,8 +9,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BClient;
-import com.wilutions.byps.BRemoteRegistry;
 import com.wilutions.byps.BServer;
+import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BTargetId;
 
 public abstract class HSession  {
@@ -20,7 +20,7 @@ public abstract class HSession  {
     final HWireServer wireServer;
     final HWireClientR wireClientR;
     
-	public HSession(HttpSession hsess, File tempDir, BRemoteRegistry stubRegistry) {
+	public HSession(HttpSession hsess, File tempDir, BServerRegistry stubRegistry) {
 		if (log.isDebugEnabled()) log.debug("BSession(");
 		this.httpSess = hsess;
 		
@@ -59,8 +59,7 @@ public abstract class HSession  {
 	}
 
 	public final void setTargetId(BTargetId v) {
-		getServer().transport.setTargetId(v);
-		getServer().clientR.transport.setTargetId(v);
+		getServer().setTargetId(v);
 	}
 	
 	public final String getId() {

@@ -20,13 +20,13 @@ public final class BRequest_RemoteListTypes_getInt3 implements BMethodRequest, S
 	public int getRemoteId() { return 380156079; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteListTypesAsync remoteT = (RemoteListTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.List<java.util.List<java.lang.Integer>>> outerResult = new BAsyncResultSendMethod<java.util.List<java.util.List<java.lang.Integer>>>(asyncResult, new com.wilutions.byps.test.api.BResult_1746702954());			
-			remoteT.async_getInt3(outerResult);
+			final RemoteListTypesAsync __byps__remoteT = (RemoteListTypesAsync)__byps__remote;			
+			BAsyncResultSendMethod<java.util.List<java.util.List<java.lang.Integer>>> __byps__outerResult = new BAsyncResultSendMethod<java.util.List<java.util.List<java.lang.Integer>>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1746702954());			
+			__byps__remoteT.async_getInt3(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

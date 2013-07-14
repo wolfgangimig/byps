@@ -22,13 +22,13 @@ public final class BRequest_RemotePrimitiveTypes_add implements BMethodRequest, 
 	public int getRemoteId() { return 1341983932; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemotePrimitiveTypesAsync remoteT = (RemotePrimitiveTypesAsync)remote;			
-			BAsyncResultSendMethod<Integer> outerResult = new BAsyncResultSendMethod<Integer>(asyncResult, new com.wilutions.byps.test.api.BResult_5());			
-			remoteT.async_add(a, b, outerResult);
+			final RemotePrimitiveTypesAsync __byps__remoteT = (RemotePrimitiveTypesAsync)__byps__remote;			
+			BAsyncResultSendMethod<Integer> __byps__outerResult = new BAsyncResultSendMethod<Integer>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_5());			
+			__byps__remoteT.async_add(a, b, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

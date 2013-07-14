@@ -8,7 +8,7 @@ import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BNegotiate;
 import com.wilutions.byps.BRegistry;
-import com.wilutions.byps.BRemoteRegistry;
+import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BServer;
 import com.wilutions.byps.BTransportFactory;
 import com.wilutions.byps.http.HSession;
@@ -21,6 +21,7 @@ public class MySession extends HSession {
 	
 	private final BServer_Testser server;
 	private final MyRemoteStreams myRemoteStreams = new MyRemoteStreams();
+	private final MyRemoteServerCtrl myRemoteServerCtrl = new MyRemoteServerCtrl();
 	
 	/**
 	 * Application version.
@@ -29,8 +30,8 @@ public class MySession extends HSession {
 	 */
 	public static volatile int appVersion = BApiDescriptor_Testser.instance.version;
 
-	public MySession(HttpSession hsess, File tempDir, BRemoteRegistry stubRegistry) {
-		super(hsess, tempDir, stubRegistry);
+	public MySession(HttpSession hsess, File tempDir, BServerRegistry serverRegistry) {
+		super(hsess, tempDir, serverRegistry);
 		
 		// Define an API descriptor with an application version from static member appVersion.
 		BApiDescriptor myDesc = new BApiDescriptor(
@@ -47,7 +48,7 @@ public class MySession extends HSession {
 		myDesc.addProtocol(BNegotiate.JSON, registryJSON);
 
 		BTransportFactory transportFactory = new HTransportFactoryServer(
-				myDesc, getWireServer(), getWireClientR(), stubRegistry);
+				myDesc, getWireServer(), getWireClientR(), serverRegistry);
 		
 		server = BServer_Testser.createServer(transportFactory);
 		
@@ -63,6 +64,10 @@ public class MySession extends HSession {
 		server.addRemote(new MyEvolve(this));
 		server.addRemote(new MyRemoteInlineInstance());
 		server.addRemote(new MyRemoteArrayTypes23());
+		server.addRemote(new MyRemoteConstants());
+
+		myRemoteServerCtrl.setServerRegistry(serverRegistry); 
+		server.addRemote(myRemoteServerCtrl);
 	}
 	
 	@Override

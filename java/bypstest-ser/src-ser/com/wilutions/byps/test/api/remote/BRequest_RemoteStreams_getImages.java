@@ -20,13 +20,13 @@ public final class BRequest_RemoteStreams_getImages implements BMethodRequest, S
 	public int getRemoteId() { return 2028487863; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteStreamsAsync remoteT = (RemoteStreamsAsync)remote;			
-			BAsyncResultSendMethod<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> outerResult = new BAsyncResultSendMethod<java.util.TreeMap<java.lang.Integer,java.io.InputStream>>(asyncResult, new com.wilutions.byps.test.api.BResult_476459792());			
-			remoteT.async_getImages(outerResult);
+			final RemoteStreamsAsync __byps__remoteT = (RemoteStreamsAsync)__byps__remote;			
+			BAsyncResultSendMethod<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> __byps__outerResult = new BAsyncResultSendMethod<java.util.TreeMap<java.lang.Integer,java.io.InputStream>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_476459792());			
+			__byps__remoteT.async_getImages(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

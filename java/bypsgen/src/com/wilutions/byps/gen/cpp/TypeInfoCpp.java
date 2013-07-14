@@ -1,6 +1,7 @@
 package com.wilutions.byps.gen.cpp;
 
 import com.wilutions.byps.BBinaryModel;
+import com.wilutions.byps.BRemote;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.PrintContextBase;
@@ -108,6 +109,14 @@ class TypeInfoCpp {
 		else if (tinfo.qname.equals("java.lang.Double")) tbuf.append("double");
 		else if (tinfo.qname.equals("void")) tbuf.append("void");
 
+		else if (tinfo.qname.equals(BRemote.class.getName())) {
+			if (purpose == Purpose.CLASS) {
+				tbuf.append("BRemote");
+			}
+			else {
+				tbuf.append("PRemote");
+			}
+		}
 		else if (tinfo.qname.equals("java.lang.Object")) {
 			if (purpose == Purpose.CLASS) {
 				tbuf.append("BSerializable");

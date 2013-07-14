@@ -21,13 +21,13 @@ public final class BRequest_RemoteReferences_setNode implements BMethodRequest, 
 	public int getRemoteId() { return 2086824050; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteReferencesAsync remoteT = (RemoteReferencesAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			remoteT.async_setNode(v, outerResult);
+			final RemoteReferencesAsync __byps__remoteT = (RemoteReferencesAsync)__byps__remote;			
+			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
+			__byps__remoteT.async_setNode(v, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

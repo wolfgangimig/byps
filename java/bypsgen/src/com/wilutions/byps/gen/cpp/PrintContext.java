@@ -493,6 +493,20 @@ class PrintContext extends PrintContextBase {
 		prH.println();
 	}
 
+	public void printSetChangedMember(CodePrinter pr, SerialInfo serInfo, MemberInfo minfo) {
+		if (isGenerateChangedMembers()) {
+			SerialInfo serInfoC = classDB.getSerInfo(serInfo.qname + "C");
+			if (serInfoC != null) {
+				String elementSelectorName = getElementSelectorName(minfo);
+				MemberInfo minfoC = serInfoC.findMember(elementSelectorName, "long");
+				if (minfoC != null) {
+					String elms = getElementSelectorClassName(serInfo) + "." + minfoC.name;
+					pr.print("setChangedMember(").print(elms).print(");").println();
+				}
+			}
+		}
+	
+	}	
 	private File dirApi;
 	private File dirImplH;
 	private File dirImplC;

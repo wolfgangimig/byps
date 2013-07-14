@@ -21,13 +21,13 @@ public final class BRequest_ClientIF_sendChat implements BMethodRequest, Seriali
 	public int getRemoteId() { return 1784257353; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final ClientIFAsync remoteT = (ClientIFAsync)remote;			
-			BAsyncResultSendMethod<ChatStructure> outerResult = new BAsyncResultSendMethod<ChatStructure>(asyncResult, new com.wilutions.byps.test.api.BResult_7007());			
-			remoteT.async_sendChat(cs, outerResult);
+			final ClientIFAsync __byps__remoteT = (ClientIFAsync)__byps__remote;			
+			BAsyncResultSendMethod<ChatStructure> __byps__outerResult = new BAsyncResultSendMethod<ChatStructure>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_7007());			
+			__byps__remoteT.async_sendChat(cs, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

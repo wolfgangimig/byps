@@ -21,13 +21,13 @@ public final class BRequest_RemoteListTypes_setFloat1 implements BMethodRequest,
 	public int getRemoteId() { return 380156079; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteListTypesAsync remoteT = (RemoteListTypesAsync)remote;			
-			BAsyncResultSendMethod<Object> outerResult = new BAsyncResultSendMethod<Object>(asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			remoteT.async_setFloat1(float1, outerResult);
+			final RemoteListTypesAsync __byps__remoteT = (RemoteListTypesAsync)__byps__remote;			
+			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
+			__byps__remoteT.async_setFloat1(float1, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

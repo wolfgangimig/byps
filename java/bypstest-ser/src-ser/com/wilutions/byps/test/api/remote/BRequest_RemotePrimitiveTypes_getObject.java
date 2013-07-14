@@ -20,13 +20,13 @@ public final class BRequest_RemotePrimitiveTypes_getObject implements BMethodReq
 	public int getRemoteId() { return 1341983932; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemotePrimitiveTypesAsync remoteT = (RemotePrimitiveTypesAsync)remote;			
-			BAsyncResultSendMethod<java.lang.Object> outerResult = new BAsyncResultSendMethod<java.lang.Object>(asyncResult, new com.wilutions.byps.test.api.BResult_21());			
-			remoteT.async_getObject(outerResult);
+			final RemotePrimitiveTypesAsync __byps__remoteT = (RemotePrimitiveTypesAsync)__byps__remote;			
+			BAsyncResultSendMethod<java.lang.Object> __byps__outerResult = new BAsyncResultSendMethod<java.lang.Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_21());			
+			__byps__remoteT.async_getObject(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

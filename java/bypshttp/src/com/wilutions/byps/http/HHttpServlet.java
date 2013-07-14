@@ -25,6 +25,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.NDC;
 
+import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BBuffer;
 import com.wilutions.byps.BClient;
@@ -35,11 +36,9 @@ import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BMessageHeader;
 import com.wilutions.byps.BNegotiate;
 import com.wilutions.byps.BProtocol;
-import com.wilutions.byps.BRemote;
-import com.wilutions.byps.BRemoteRegistry;
+import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BServer;
 import com.wilutions.byps.BSyncResult;
-import com.wilutions.byps.BTargetId;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.BWire;
 
@@ -48,46 +47,40 @@ public abstract class HHttpServlet extends HttpServlet {
 	
 	private HCleanupResources cleanupThread; 
 	
-	protected boolean testAdapterEnabled = false;
-	
      /**
      * @see HttpServlet#HttpServlet()
      */
     public HHttpServlet() {
     	if (log.isDebugEnabled()) log.debug("BHttpServlet()");
     	
-    	stubRegistry = new BRemoteRegistry() {
+    	serverRegistry = new HRemoteRegistry(config) {
 
 			@Override
-			public BRemote getRemote(BTargetId targetId, int remoteId) throws BException {
-				if (log.isDebugEnabled()) log.debug("getRemote(targetId=" + targetId + ", remoteId=" + remoteId);
-
-				// Check 
-				int serverId = getTargetIdFactory().getServerId(targetId); 
-				if (serverId != 1) {
-					throw new BException(BException.CLIENT_DIED, "Cannot reach server for targetId=" + targetId); 
-				}
-				
-				// Get client session
-				HSession sess = HSession.getSession(targetId);
-				if (sess == null) {
-					throw new BException(BException.CLIENT_DIED, "Client is not connected, targetId=" + targetId); 
-				}
-				
-				BRemote remote = sess.getClientR().getStub(remoteId);
-				if (log.isDebugEnabled()) log.debug(")getRemote=" + remote);
-				return remote;
+			protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {
+				return HHttpServlet.this.createForwardClientToOtherServer(transport);
 			}
-    		
+
+			@Override
+			protected BApiDescriptor getApiDescriptor() {
+				return HHttpServlet.this.getApiDescriptor();
+			}
+
+     		
     	};
     	
-    	targetIdFact_use_getTargetIdFactory = new HTargetIdFactory(1);
-    	
-    	cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
+     	cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
     }
     
     
-    protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BRemoteRegistry stubRegistry);
+    protected abstract HSession createSession(
+    		HttpServletRequest request, 
+    		HttpServletResponse response, 
+    		HttpSession hsess, 
+    		BServerRegistry stubRegistry);
+    
+    protected abstract BClient createForwardClientToOtherServer(BTransport transport) throws BException;
+    
+    protected abstract BApiDescriptor getApiDescriptor();
     
     protected HTargetIdFactory getTargetIdFactory() {
     	return targetIdFact_use_getTargetIdFactory;
@@ -98,14 +91,18 @@ public abstract class HHttpServlet extends HttpServlet {
 		if (log.isDebugEnabled()) log.debug("init(");
     	super.init();
     	
-    	ServletConfig config = getServletConfig();
-    	String testAdapterEnabledStr = config.getInitParameter("testAdapterEnabled");
-    	testAdapterEnabled = testAdapterEnabledStr != null && Boolean.parseBoolean(testAdapterEnabledStr);
+		// Configuration entries from web.xml
+		ServletConfig servletConfig = getServletConfig();
+		config.init(servletConfig);
+    	
+    	int serverId = config.getMyServerId();
+    	targetIdFact_use_getTargetIdFactory = new HTargetIdFactory(serverId);
     	
  		if (log.isDebugEnabled()) log.debug(")init");
    }
-    
-    @Override
+
+
+   @Override
     public void destroy() {
 		if (log.isDebugEnabled()) log.debug("done(");
     	cleanupThread.done();
@@ -299,8 +296,9 @@ public abstract class HHttpServlet extends HttpServlet {
 	   		if (log.isDebugEnabled()) log.debug("read header");
 			final BMessageHeader header = new BMessageHeader();
 		    header.read(ibuf);
+		    
 		    final boolean isClientR = (header.flags & BMessageHeader.FLAG_RESPONSE) != 0;
-
+		    
 	   		if (log.isDebugEnabled()) log.debug("longpoll=" + isClientR);
 			
 	   		final BMessage msg = new BMessage(header, ibuf, null);
@@ -398,7 +396,7 @@ public abstract class HHttpServlet extends HttpServlet {
 		final HttpSession hsess = req.getSession(true);
     	if (log.isDebugEnabled()) log.debug("new http session=" + hsess.getId());
 
-		final HSession sess = createSession(request, response, hsess, stubRegistry);
+		final HSession sess = createSession(request, response, hsess, serverRegistry);
     	if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
     	if (sess == null) return;
 
@@ -530,7 +528,7 @@ public abstract class HHttpServlet extends HttpServlet {
 	 */
 	protected void doTestAdapter(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		if (!testAdapterEnabled) {
+		if (!config.isTestAdapterEnabled()) {
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			return;
 		}
@@ -779,6 +777,8 @@ public abstract class HHttpServlet extends HttpServlet {
 	}
 	
 	private final Log log = LogFactory.getLog(HHttpServlet.class);
-	private final BRemoteRegistry stubRegistry;
-	private final HTargetIdFactory targetIdFact_use_getTargetIdFactory;
+	private final BServerRegistry serverRegistry;
+	private HTargetIdFactory targetIdFact_use_getTargetIdFactory;
+	protected final HConfig config = new HConfig();
+	
 }

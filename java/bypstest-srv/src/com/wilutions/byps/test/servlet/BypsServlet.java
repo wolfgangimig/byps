@@ -5,17 +5,29 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.wilutions.byps.BRemoteRegistry;
+import org.apache.log4j.Appender;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+import com.wilutions.byps.BApiDescriptor;
+import com.wilutions.byps.BClient;
+import com.wilutions.byps.BException;
+import com.wilutions.byps.BServerRegistry;
+import com.wilutions.byps.BTransport;
 import com.wilutions.byps.http.HFileUploadItem;
 import com.wilutions.byps.http.HHttpServlet;
 import com.wilutions.byps.http.HSession;
 import com.wilutions.byps.http.HTestAdapter;
+import com.wilutions.byps.test.api.BApiDescriptor_Testser;
+import com.wilutions.byps.test.api.BClient_Testser;
 
 /**
  * Servlet implementation class BypsServlet
@@ -44,7 +56,42 @@ public class BypsServlet extends HHttpServlet {
     }
     
     @Override
-    protected HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BRemoteRegistry stubRegistry) {
+    public void init() throws ServletException {
+    	super.init();
+    	
+     	String logLevel = config.getValue("bypshttp.log.level", "WARN");
+     	String logFile = config.getValue("bypshttp.log.file", null);
+     	
+     	if (logFile != null) {
+     		logFile = logFile.replace('/', File.separatorChar); 
+//     		Properties props = new Properties();
+//     		props.put("log4j.rootLogger=", logLevel + ", FI");
+//     		props.put("log4j.appender.FI.File", logFile);
+//     		props.put("log4j.appender.FI", "org.apache.log4j.DailyRollingFileAppender");
+//     		props.put("log4j.appender.FI.DatePattern", "'.'yyyy-MM-dd");
+//     		props.put("log4j.appender.FI.layout", "org.apache.log4j.PatternLayout");
+//     		props.put("log4j.appender.FI.layout.ConversionPattern", "%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
+//     		props.put("log4j.appender.FI.append", "false");
+//     		PropertyConfigurator.configure(props);
+     		
+     		Logger rootLogger = Logger.getRootLogger();
+     		Appender ap = rootLogger.getAppender("FI");
+     		if (ap != null) {
+     			FileAppender fap = (FileAppender)ap;
+     			fap.setFile(logFile);
+     			fap.activateOptions();
+     		}
+     		
+     		if (logLevel.equalsIgnoreCase("DEBUG")) rootLogger.setLevel(Level.DEBUG);
+     		if (logLevel.equalsIgnoreCase("INFO")) rootLogger.setLevel(Level.INFO);
+     		if (logLevel.equalsIgnoreCase("WARN")) rootLogger.setLevel(Level.WARN);
+     		if (logLevel.equalsIgnoreCase("ERROR")) rootLogger.setLevel(Level.ERROR);
+     		
+     	}
+    }
+        
+    @Override
+    protected HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BServerRegistry stubRegistry) {
     	return new MySession(hsess, tempDir, stubRegistry);
     }
     
@@ -106,7 +153,7 @@ public class BypsServlet extends HHttpServlet {
     protected void doTestAdapter(HttpServletRequest request,
     		HttpServletResponse response) throws IOException {
     	
-		if (!testAdapterEnabled) {
+		if (!config.isTestAdapterEnabled()) {
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			return;
 		}
@@ -125,4 +172,14 @@ public class BypsServlet extends HHttpServlet {
 		
 		super.doTestAdapter(request, response);
     }
+    
+    @Override
+    protected BApiDescriptor getApiDescriptor() {
+    	return BApiDescriptor_Testser.instance;
+    }
+
+	@Override
+	public BClient createForwardClientToOtherServer(BTransport transport) throws BException {
+		return BClient_Testser.createClientR(transport);
+	}
 }

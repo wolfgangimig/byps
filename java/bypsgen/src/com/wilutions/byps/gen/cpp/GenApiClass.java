@@ -8,7 +8,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BBinaryModel;
+import com.wilutions.byps.BException;
+import com.wilutions.byps.BJsonObject;
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
@@ -66,6 +69,36 @@ class GenApiClass {
 		return "protected: ";
 	}
 	
+	private boolean canInitializeConstantInline(TypeInfo tinfo) {
+		if (tinfo.isArrayType()) return false;
+		String qname = tinfo.toString();
+		return false 
+			||  qname.equals("boolean")
+			||  qname.equals("java.lang.Boolean")
+			||  qname.equals("byte")
+			||  qname.equals("java.lang.Byte")
+			||  qname.equals("char")
+			||  qname.equals("java.lang.Character")
+			||  qname.equals("short")
+			||  qname.equals("java.lang.Short")
+			||  qname.equals("int")
+			||  qname.equals("java.lang.Integer")
+			||  qname.equals("long")
+			||  qname.equals("java.lang.Long")
+			;
+	}
+	
+	private boolean canInitializeConstantByAssignmentInCpp(TypeInfo tinfo) {
+		if (tinfo.isArrayType()) return false;
+		String qname = tinfo.toString();
+		return false 
+				||  qname.equals("float")
+				||  qname.equals("java.lang.Float")
+				||  qname.equals("double")
+				||  qname.equals("java.lang.Double")
+				||  qname.equals("java.lang.String");
+	}
+	
 	private void printMember(MemberInfo minfo) throws IOException {
 		
 		if (minfo.type.typeId == BRegistry.TYPEID_VOID) {
@@ -75,18 +108,101 @@ class GenApiClass {
 			pctxt.printComments(prH, minfo.comments);
 			
 			String access = accessToString(minfo.access);
-			String f = minfo.isFinal ? "final " : "";
+			String f = minfo.isFinal ? "const " : "";
 			String s = minfo.isStatic ? "static " : "";
 			String t = ""; // minfo.isTransient is unsupported by C++
 			
 			TypeInfoCpp cppMInfo = new TypeInfoCpp(minfo.type);
 			String typeName = cppMInfo.getTypeName(serInfo.pack);
 	
-			prH.print(access).print(f).print(s).print(t)
-			  .print(typeName).print(" ").print(minfo.name)
-			  .println(";");
+			CodePrinter mpr = prH.print(access).print(f).print(s).print(t)
+			  .print(typeName).print(" ").print(minfo.name);
+			
+			
+			String value = minfo.value;
+			if (value != null) {
+				if (value.startsWith("\"")) value = value.substring(1, value.length()-1);
+				
+				if (canInitializeConstantInline(minfo.type)) {
+					mpr = mpr.print(" = ");
+					printConstantValueInline(mpr, minfo.type, value);
+				}
+				else if (canInitializeConstantByAssignmentInCpp(minfo.type)) {
+					CodePrinter mprC = prC.print(f).print(t)
+							  			.print(cppMInfo.toString(serInfo.pack)).print(" ")
+							  			.print(cppInfo.getClassName(serInfo.pack)).print("::")
+							  			.print(minfo.name)
+							  			.print(" = ");
+				
+					printConstValue(mprC, "", minfo.type, value);
+					
+					mprC.println(";");
+					prC.println();
+				}
+				else {
+//					String initFnct = makeInitFunctionName();
+//					prC.print("static ").print(cppMInfo.toString(serInfo.pack)).print(" ").print(initFnct).println("() {");
+//					prC.beginBlock();
+//					CodePrinter mprC = prC.print(cppMInfo.toString(serInfo.pack)).print(" ");
+//					mprC = printConstValue(mprC, "ret", minfo.type, value);
+//					prC.println("return ret;");
+//					prC.endBlock();
+//					prC.println("}");
+					
+					CodePrinter mprC = prC.print(f).print(t)
+			  			.print(cppMInfo.toString(serInfo.pack)).print(" ")
+			  			.print(cppInfo.getClassName(serInfo.pack)).print("::")
+			  			.print(minfo.name)
+			  			.print(" = ");
+					mprC = printConstValue(mprC, "", minfo.type, value);
+					mprC.println(";");
+					prC.println();
+				}
+				
+			}
+			
+			mpr.print(";");
+			if (minfo.isTransient) mpr.print(" // transient");
+			mpr.println();
 		}		
 		
+	}
+	
+	static int initFnctCount = 0;
+	String makeInitFunctionName() {
+		return "init_" + (++initFnctCount);
+	}
+	
+	CodePrinter printConstantValueInline(CodePrinter mpr, TypeInfo tinfo, Object value) {
+		
+		if (tinfo.qname.equals("char")) {
+			String s = (String)value;
+			mpr = mpr.print("L\'");
+			mpr = mpr.print( pctxt.printStringChar(s.charAt(0)) );
+			mpr = mpr.print("\'");
+		}
+		else if (tinfo.qname.equals("boolean")) {
+			if (value instanceof Number) value = ((Number)value).longValue();
+			mpr = mpr.print(""+value);
+		}
+		else if (tinfo.qname.equals("byte")) {
+			if (value instanceof Number) value = ((Number)value).longValue();
+			mpr = mpr.print("(int8_t)" + value);
+		}
+		else if (tinfo.qname.equals("short")) {
+			if (value instanceof Number) value = ((Number)value).longValue();
+			mpr = mpr.print("(int16_t)" + value);
+		}
+		else if (tinfo.qname.equals("int")) {
+			if (value instanceof Number) value = ((Number)value).longValue();
+			mpr = mpr.print(""+value);
+		}
+		else if (tinfo.qname.equals("long")) {
+			if (value instanceof Number) value = ((Number)value).longValue();
+			mpr = mpr.print(value + "LL");
+		}
+	
+		return mpr;
 	}
 	
 //	private void printRemoteId() throws IOException {
@@ -102,7 +218,165 @@ class GenApiClass {
 //		
 //	}
 	
+	private CodePrinter printConstValue(CodePrinter mpr, String path, TypeInfo tinfo, Object value) throws BException, GeneratorException {
+		
+		if (tinfo.dims.length() != 0) {
+			BJsonObject js = BJsonObject.fromString((String)value);
+			mpr = makeNewArrayInstance(mpr, path, tinfo, js);
+		}
+		else {
+			if (canInitializeConstantInline(tinfo)) {
+				mpr = mpr.print(path);
+				mpr = printConstantValueInline(mpr, tinfo, value);
+			}
+			else if (tinfo.qname.equals("java.lang.String")) {
+				String s = (String)value;
+				mpr = mpr.print(path).print("L\"");
+				for (int i = 0; i < s.length(); i++) {
+					mpr = mpr.print( pctxt.printStringChar(s.charAt(i)) );
+				}
+				mpr = mpr.print("\"");
+			}
+			else if (tinfo.qname.equals("double")) {
+				mpr = mpr.print(path).print(""+value);
+			}
+			else if (tinfo.qname.equals("float")) {
+				mpr = mpr.print(path).print(value + "f");
+			}
+			else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
+				mpr = makeNewInstance(mpr, path, tinfo, (BJsonObject)value);
+			}
+			else {
+				BJsonObject js = BJsonObject.fromString((String)value);
+				mpr = makeNewInstance(mpr, path, tinfo, js);
+			}
+		}
+		
+		return mpr;
+	}
+	
+	private int makeArrayInitList(TypeInfo elmType, BJsonObject arr, int dim, String idx, int totalCount) throws BException, GeneratorException {
+		if (dim == 1) {
+			for (int i = 0; i < arr.size(); i++) {
+				CodePrinter mpr = prC;
+				mpr = printConstValue(mpr, "", elmType, arr.get(i));
+				if (--totalCount > 0) mpr.print(", ");
+				mpr.print(" // " + idx + "[" + i + "]");
+				prC.println();
+			}
+		}
+		else {
+			for (int i = 0; i < arr.size(); i++) {
+				totalCount = makeArrayInitList( elmType, 
+						(BJsonObject)arr.get(i), 
+						dim-1, 
+						idx + "[" + i + "]", 
+						totalCount);
+			}			
+		}
+		return totalCount;
+    }
+	
+	private CodePrinter makeNewArrayInstance(CodePrinter mpr, String path, TypeInfo tinfo, BJsonObject js) throws BException, GeneratorException {
+		
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(tinfo);
+		
+		if (js == null) {
+			mpr = mpr.print(tinfoCpp.getTypeName(serInfo.pack)).print("()");
+			return mpr;
+		}
+		
+		int dims = tinfo.dims.length() / 2;
+		
+		mpr = mpr.print(path).print(tinfoCpp.getTypeName(serInfo.pack))
+			.print("(");
+		if (tinfo.isByteArray1dim()) {
+			mpr = mpr.print("BBytes::create");
+		}
+		else { 
+			mpr = mpr.print("new ").print(tinfoCpp.getClassName(""));
+		}
+		mpr.println("(");
+		
+		mpr = prC;
+
+		prC.beginBlock();
+
+		String dimsComment = "";
+		int totalCount = 1;
+		BJsonObject arr = js;
+		for (int i = 0; i < dims; i++) {
+			int size = 0;
+			if (arr != null) {
+				size = arr.size();
+			}
+			
+			totalCount *= size;
+			dimsComment += "[" + size + "]";
+			mpr = mpr.print(""+size).print(", ");
+			arr = (i < dims-1) && (size != 0) ? (BJsonObject)arr.get(0) : null;
+		}
+		mpr.print("// dims=").println(dimsComment);
+		
+		TypeInfo elmType = pctxt.classDB.getTypeInfo(tinfo.qname);
+		makeArrayInitList(elmType, js, dims, "", totalCount);
+		
+		prC.endBlock();
+		
+		prC.print("))");
+		
+		return mpr;
+	}
+	
+	
+	private CodePrinter makeNewInstance(CodePrinter mpr, String path, TypeInfo tinfo, BJsonObject params) throws GeneratorException, BException {
+		// Lookup full SerialInfo of given tinfo
+		SerialInfo sinfo = pctxt.classDB.getSerInfo(tinfo.toString());
+		if (sinfo == null) {
+			throw new GeneratorException("Internal error, typeId=" + tinfo.typeId + " not found in list of serials.");
+		}
+		
+		TypeInfoCpp cppMInfo = new TypeInfoCpp(sinfo);
+		
+		if (params == null) {
+			mpr = mpr.print(cppMInfo.getTypeName(serInfo.pack)).print("()");
+			return mpr;
+		}
+		
+		mpr.print(path)
+			.print(cppMInfo.toString(serInfo.pack))
+			.print("(new ").print(sinfo.toString(serInfo.pack)).println("(");
+		
+		prC.beginBlock();
+		
+		boolean first = true;
+		for (MemberInfo minfo : sinfo.members) {
+			if (minfo.isStatic) continue;
+			
+			if (first) first = false; else mpr.println(",");
+			mpr = prC;
+	
+			Object mvalue = params.get(minfo.name);
+			if (minfo.type.dims.length() != 0) {
+				mpr = makeNewArrayInstance(mpr, "", minfo.type, (BJsonObject)mvalue);
+			} else if (minfo.type.isPointerType()) {
+				mpr = makeNewInstance(mpr, "", minfo.type, (BJsonObject)mvalue);
+			}
+			else {
+				mpr = printConstValue(mpr, "", minfo.type, mvalue);
+			}
+			
+		}
+		
+		mpr.print("))");
+		prC.endBlock();
+		
+		return mpr;
+	}
+	
 	private void printGetSet(MemberInfo minfo) throws IOException {
+		
+		String staticDecl = minfo.isStatic ? "static " : " ";
 
 		if (minfo.access != MemberAccess.PUBLIC) {
 			
@@ -110,7 +384,7 @@ class GenApiClass {
 			String memberType = typeCpp.toString(serInfo.pack);
 			
 			if (!memberType.equals("void")) {
-				prH.print("public: ")
+				prH.print("public: ").print(staticDecl)
 				  .print(memberType).print(" ")
 				  .print("get").print(Utils.firstCharToUpper(minfo.name)).print("() {").println();
 				prH.beginBlock();
@@ -119,27 +393,31 @@ class GenApiClass {
 				prH.println("}");
 			}
 			
-			if (memberType.equals("void")) {
-				prH.print("public: void ")		  
-				  .print("set").print(Utils.firstCharToUpper(minfo.name))
-				  .print("() {").println();
-				prH.beginBlock();
-			}
-			else {
-				prH.print("public: void ")		  
-				  .print("set").print(Utils.firstCharToUpper(minfo.name))
-				  .print("(").print(memberType).print(" v) {").println();
-				prH.beginBlock();
-				prH.print(minfo.name).println(" = v;");
-			}
+			if (!minfo.isFinal) { 
+				if (memberType.equals("void")) {
+					prH.print("public: void ")		  
+					  .print("set").print(Utils.firstCharToUpper(minfo.name))
+					  .print("() {").println();
+					prH.beginBlock();
+				}
+				else {
+					
+					prH.print("public: void ")		  
+					  .print("set").print(Utils.firstCharToUpper(minfo.name))
+					  .print("(").print(memberType).print(" v) {").println();
+					prH.beginBlock();
+					prH.print(minfo.name).println(" = v;");
+					pctxt.printSetChangedMember(prH, serInfo, minfo);				
+				}
 			
-			if (serInfo.isResultClass()) {
-				prH.println("if (resp != null) resp.ready(this);");
+				if (serInfo.isResultClass()) {
+					prH.println("if (resp != null) resp.ready(this);");
+				}
+				
+				prH.endBlock();
+				prH.println("}");
+				prH.println();
 			}
-			
-			prH.endBlock();
-			prH.println("}");
-			prH.println();
 		}
 
 	}
@@ -197,6 +475,7 @@ class GenApiClass {
 			
 			prC.beginBlock();
 			for (MemberInfo minfo : serInfo.members) {
+				if (minfo.isStatic) continue; 
 				String defaultValue = getDefaultValue(minfo.type);
 				if (defaultValue == null) continue;
 				prC.print(minfo.name).print(" = ").print(defaultValue).println(";");
@@ -204,17 +483,26 @@ class GenApiClass {
 			prC.endBlock();
 			prC.println("}");
 			
-			if (serInfo.isRequestClass() && serInfo.members.size() != 0 ) {
-				printCopyConstructor();
-			}
+			printInitConstructor();
 			
 		}	
 	}
 
-	protected void printCopyConstructor() {
+	protected void printInitConstructor() {
+		
+		boolean allMembersStatic = true;
+		for (MemberInfo minfo : serInfo.members) {
+			if (!minfo.isStatic) {
+				allMembersStatic = false;
+				break;
+			}
+		}
+		
+		if (allMembersStatic) return;
+		
 		String qname = cppInfo.getQClassName();
 
-		String constrDecl = makeCopyConstructorDecl();
+		String constrDecl = makeInitConstructorDecl();
 		
 		prH.print("public: ").print(constrDecl).print(";");
 		prC.print(qname).print("::").print(constrDecl);
@@ -230,6 +518,7 @@ class GenApiClass {
 		}
 		
 		for (MemberInfo minfo : serInfo.members) {
+			if (minfo.isStatic) continue;
 			prC.print( first ? ": " : ", " ).print(minfo.name).print("(").print(minfo.name).println(")");
 			first = false;
 		}
@@ -238,7 +527,7 @@ class GenApiClass {
 		
 	}
 
-	protected String makeCopyConstructorDecl() {
+	protected String makeInitConstructorDecl() {
 		StringBuilder constr = new StringBuilder();
 		constr.append(serInfo.name).append("(");
 		
@@ -255,6 +544,7 @@ class GenApiClass {
 		return constrDecl;
 	}
 
+	
 //	private void printDestructor() throws IOException {
 //		prH.print("public: virtual ~").print(serInfo.name).println("() throw() {}");
 //	}
@@ -358,6 +648,8 @@ class GenApiClass {
 		String className = cppInfo.getClassName(serInfo.pack);
 		
 		beginClass(prH, className, serInfo.typeId);
+		prC.println(cppInfo.namespaceBegin);
+		
 		prH.println("using namespace com::wilutions::byps;");
 		prH.println();
 
@@ -435,26 +727,27 @@ class GenApiClass {
 		prH.println("};");
 		
 		endClass(prH);
+		prC.println(cppInfo.namespaceEnd);
 		
 		prC.println();
 
 	}
 
 	private void printExecute() {
-		prH.println("public: virtual void execute(PRemote remote, PAsyncResult asyncResult);");
+		prH.println("public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);");
 		
 		prC.print("void ")
 		   .print(cppInfo.getClassName(""))
-		   .print("::execute(PRemote remote, PAsyncResult asyncResult) {");
+		   .print("::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {");
 		prC.println();
 		prC.beginBlock();
 		
 		String remoteName = methodInfo.remoteInfo.toString(serInfo.pack);
 		prC.print("P").print(remoteName)
-		   .print(" r = byps_ptr_cast<").print(remoteName).print(">(remote)")
+		   .print(" __byps__remoteT = byps_ptr_cast<").print(remoteName).print(">(__byps__remote)")
 		   .println(";");
 		
-		CodePrinter mpr = prC.print("r->async_").print(methodInfo.name).print("(");
+		CodePrinter mpr = prC.print("__byps__remoteT->async_").print(methodInfo.name).print("(");
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
@@ -470,17 +763,17 @@ class GenApiClass {
 		String resultClassName = methodInfo.resultInfo.name;
 
 		if (pctxt.lambdaSupported) {
-			mpr.print("[asyncResult](").print(rtype).print(" result, BException ex) {").println();
+			mpr.print("[__byps__asyncResult](").print(rtype).print(" __byps__result, BException __byps__ex) {").println();
 			prC.beginBlock();
-			prC.println("if (ex) {");
+			prC.println("if (__byps__ex) {");
 			prC.beginBlock();
-			prC.println("asyncResult->setAsyncResult(BVariant(ex));");
+			prC.println("__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));");
 			prC.endBlock();
 			prC.println("}");
 			prC.println("else {");
 			prC.beginBlock();
-			prC.print("PSerializable methodResult(new ").print(resultClassName).print("(result));").println();
-			prC.println("asyncResult->setAsyncResult(BVariant(methodResult));");
+			prC.print("PSerializable __byps__methodResult(new ").print(resultClassName).print("(__byps__result));").println();
+			prC.println("__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));");
 			prC.endBlock();
 			prC.println("}");
 			prC.endBlock();
@@ -611,7 +904,9 @@ class GenApiClass {
 		List<Integer> sinceStack = new ArrayList<Integer>();
 
 		for (MemberInfo minfo : members) {
-			if (minfo.isTransient) {
+			if (minfo.isFinal || minfo.isStatic) {  
+			}
+			else if (minfo.isTransient) {
 				prC.print("// skip transient member ").print(minfo.name).println();
 			}
 			else if (minfo.type.typeId == BRegistry.TYPEID_VOID) {

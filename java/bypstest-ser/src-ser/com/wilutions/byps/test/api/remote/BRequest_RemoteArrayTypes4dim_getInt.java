@@ -20,13 +20,13 @@ public final class BRequest_RemoteArrayTypes4dim_getInt implements BMethodReques
 	public int getRemoteId() { return 1557173854; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteArrayTypes4dimAsync remoteT = (RemoteArrayTypes4dimAsync)remote;			
-			BAsyncResultSendMethod<int[][][][]> outerResult = new BAsyncResultSendMethod<int[][][][]>(asyncResult, new com.wilutions.byps.test.api.BResult_39910537());			
-			remoteT.async_getInt(outerResult);
+			final RemoteArrayTypes4dimAsync __byps__remoteT = (RemoteArrayTypes4dimAsync)__byps__remote;			
+			BAsyncResultSendMethod<int[][][][]> __byps__outerResult = new BAsyncResultSendMethod<int[][][][]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_39910537());			
+			__byps__remoteT.async_getInt(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

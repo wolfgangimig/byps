@@ -23,13 +23,13 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInline implements BMeth
 	public int getRemoteId() { return 2081058997; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteArrayTypes23Async remoteT = (RemoteArrayTypes23Async)remote;			
-			BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]> outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]>(asyncResult, new com.wilutions.byps.test.api.BResult_2049740106());			
-			remoteT.async_sendArraysInline(arr2, arr3, arr4, outerResult);
+			final RemoteArrayTypes23Async __byps__remoteT = (RemoteArrayTypes23Async)__byps__remote;			
+			BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_2049740106());			
+			__byps__remoteT.async_sendArraysInline(arr2, arr3, arr4, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

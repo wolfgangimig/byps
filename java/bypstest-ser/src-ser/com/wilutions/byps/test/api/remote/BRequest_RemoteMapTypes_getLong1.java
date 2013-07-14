@@ -20,13 +20,13 @@ public final class BRequest_RemoteMapTypes_getLong1 implements BMethodRequest, S
 	public int getRemoteId() { return 80483097; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteMapTypesAsync remoteT = (RemoteMapTypesAsync)remote;			
-			BAsyncResultSendMethod<java.util.Map<java.lang.Short,java.lang.Long>> outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Short,java.lang.Long>>(asyncResult, new com.wilutions.byps.test.api.BResult_1973996106());			
-			remoteT.async_getLong1(outerResult);
+			final RemoteMapTypesAsync __byps__remoteT = (RemoteMapTypesAsync)__byps__remote;			
+			BAsyncResultSendMethod<java.util.Map<java.lang.Short,java.lang.Long>> __byps__outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Short,java.lang.Long>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1973996106());			
+			__byps__remoteT.async_getLong1(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

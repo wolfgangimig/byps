@@ -20,13 +20,13 @@ public final class BRequest_RemoteEnums_getPlanet implements BMethodRequest, Ser
 	public int getRemoteId() { return 359349400; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteEnumsAsync remoteT = (RemoteEnumsAsync)remote;			
-			BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets> outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets>(asyncResult, new com.wilutions.byps.test.api.BResult_1042475995());			
-			remoteT.async_getPlanet(outerResult);
+			final RemoteEnumsAsync __byps__remoteT = (RemoteEnumsAsync)__byps__remote;			
+			BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1042475995());			
+			__byps__remoteT.async_getPlanet(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

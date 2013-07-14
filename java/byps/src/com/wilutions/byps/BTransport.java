@@ -12,18 +12,17 @@ public class BTransport {
 	
 	public final BApiDescriptor apiDesc;
 	
-	public final BRemoteRegistry remoteRegistry;
+	public final BServerRegistry serverRegistry;
 	
 	private BTargetId targetId;
 	
 	private BProtocol protocol;
-	
-	
-	public BTransport(BApiDescriptor apiDesc, BWire wire, BRemoteRegistry remoteRegistry) {
+
+	public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
 		this.apiDesc = apiDesc;
 		this.wire = wire;
 		this.targetId = new BTargetId();
-		this.remoteRegistry = remoteRegistry;
+		this.serverRegistry = serverRegistry;
 	}
 	
 	public BTransport(BTransport rhs, BTargetId targetId) {
@@ -31,7 +30,7 @@ public class BTransport {
 		this.wire = rhs.wire;
 		this.targetId = targetId;
 		this.protocol = rhs.getProtocol();
-		this.remoteRegistry = rhs.remoteRegistry;
+		this.serverRegistry = rhs.serverRegistry;
 	}
 	
 	public synchronized void setProtocol(BProtocol protocol) {
@@ -113,8 +112,9 @@ public class BTransport {
 		if (log.isDebugEnabled()) log.debug("recv(");
 		
 		final BInput bin = getInput(msg.header, msg.buf);
-		
-		BAsyncResult<Object> methodResult = new BAsyncResult<Object>() {
+		final BTargetId clientTargetId = bin.header.targetId;
+	
+		final BAsyncResult<Object> methodResult = new BAsyncResult<Object>() {
 			
 			@Override
 			public void setAsyncResult(Object obj, Throwable e) {
@@ -138,19 +138,60 @@ public class BTransport {
 			}
 
 		};
-		
+	
 		try {
+			// Does the clientTargetId belong to another server? 
+			// If so, get the BClient object to forward the message.
+			final BClient client = (serverRegistry != null) ?
+				 serverRegistry.getForwardClientIfForeignTargetId(clientTargetId) : null;
+			
+			// Read message
 			final Object methodObj = bin.load();
 			if (log.isDebugEnabled()) log.debug("messageId=" + bin.header.messageId);
-			
-			final BTargetId clientTargetId = bin.header.targetId;
-			server.recv(clientTargetId, methodObj, methodResult);
+						
+			// Forward message to other server?
+			if (client != null) {
+				forwardMessage(client, clientTargetId, methodObj, methodResult);
+			}
+			else {
+				// Server the message here.
+				server.recv(clientTargetId, methodObj, methodResult);
+			}
 		}
 		catch (Exception e) {
 			methodResult.setAsyncResult(null, e);
 		}
 		
 		if (log.isDebugEnabled()) log.debug(")recv");
+	}
+
+	protected void forwardMessage(final BClient client,
+			final BTargetId clientTargetId, final Object methodObj,
+			final BAsyncResult<Object> methodResult) throws BException {
+		BOutput bout = client.transport.getOutput();
+		bout.header.targetId = clientTargetId;
+		bout.store(methodObj);
+		BMessage forwardMessage = bout.toMessage();
+		
+		BAsyncResult<BMessage> messageResult = new BAsyncResult<BMessage>() {
+			public void setAsyncResult(BMessage result, Throwable ex) {
+				try {
+					if (ex != null) {
+						methodResult.setAsyncResult(null, ex);
+					}
+					else {
+						BInput bin = client.transport.getInput(result.header, result.buf);
+						Object obj = bin.load();
+						methodResult.setAsyncResult(obj, null);
+					}
+				}
+				catch (Exception e) {
+					methodResult.setAsyncResult(null, e);
+				}
+			}
+		};
+		
+		client.transport.wire.send(forwardMessage, messageResult);
 	}
 
 	public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws BException, InterruptedException {

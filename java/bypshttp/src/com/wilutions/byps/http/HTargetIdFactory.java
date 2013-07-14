@@ -21,13 +21,17 @@ public class HTargetIdFactory {
 		return new BTargetId(v1, v2);
 	}
 
-	public int getServerId(BTargetId targetId) {
+	public static int getServerIdFromTargetId(BTargetId targetId) {
 		return (int)(targetId.v1 >> 32);
 	}
 	
+	public int getServerId() {
+		return serverId;
+	}
+	
 	public boolean isSameServer(BTargetId t1, BTargetId t2) {
-		int s1 = getServerId(t1);
-		int s2 = getServerId(t2);
+		int s1 = getServerIdFromTargetId(t1);
+		int s2 = getServerIdFromTargetId(t2);
 		return s1 == s2;
 	}
 	

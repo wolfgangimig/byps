@@ -16,21 +16,9 @@ public abstract class BClient {
 		this.serverR = serverR;
 	}
 	
-	
 	public abstract BRemote getStub(int remoteId);
 	
 	public void done() {
-		
-//		try {
-//			BOutput out = transport.getOutput();
-//			out.header.flags |= BMessageHeader.FLAG_DONE;
-//			out.store(null);
-//			transport.wire.send(out.toByteBuffer(), null, new BAsyncResult<ByteBuffer>() {
-//				public void setAsyncResult(ByteBuffer buf) {}
-//				public void setException(Throwable e) {}
-//			});
-//		} catch (BException e) {
-//		}
 		
 		if (serverR != null) {
 			serverR.done();

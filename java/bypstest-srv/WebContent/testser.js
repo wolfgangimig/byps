@@ -22,6 +22,7 @@ com.wilutions.byps.test.api.map = com.wilutions.byps.test.api.map || {};
 com.wilutions.byps.test.api.strm = com.wilutions.byps.test.api.strm || {};
 com.wilutions.byps.test.api.priv = com.wilutions.byps.test.api.priv || {};
 com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
+com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 
 /**
  * ----------------------------------------------
@@ -75,12 +76,14 @@ com.wilutions.byps.test.api.BClient_Testser = function(transportFactory) {
 	this.remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(this.transport);
 	this.remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(this.transport);
 	this.remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(this.transport);
+	this.remoteConstants = new com.wilutions.byps.test.api.remote.BStub_RemoteConstants(this.transport);
 	this.remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(this.transport);
 	this.remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(this.transport);
 	this.remoteListTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteListTypes(this.transport);
 	this.remoteMapTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes(this.transport);
 	this.remotePrimitiveTypes = new com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes(this.transport);
 	this.remoteReferences = new com.wilutions.byps.test.api.remote.BStub_RemoteReferences(this.transport);
+	this.remoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(this.transport);
 	this.remoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(this.transport);
 	this.remoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(this.transport);
 	this.clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(this.transport);
@@ -127,6 +130,35 @@ com.wilutions.byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4
 	this.double4 = double4 || null;
 	this.string4 = string4 || null;
 	this.primitiveTypes4 = primitiveTypes4 || null;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short1, int1, long1, float1, double1, string1, hebrew1, byte2, int2, string2, hebrew2) {
+	this._typeId = 142458;
+	this.bool1 = bool1 || false;
+	this.byte1 = byte1 || 0;
+	this.char1 = char1 || '';
+	this.short1 = short1 || 0;
+	this.int1 = int1 || 0;
+	this.long1 = long1 || '0';
+	this.float1 = float1 || 0;
+	this.double1 = double1 || 0;
+	this.string1 = string1 || "";
+	this.hebrew1 = hebrew1 || null;
+	this.byte2 = byte2 || null;
+	this.int2 = int2 || null;
+	this.string2 = string2 || null;
+	this.hebrew2 = hebrew2 || null;
+};
+
+
+/**
+*/
+com.wilutions.byps.test.api.cons.HebrewZ = function(core) {
+	this._typeId = 1518668429;
+	this.core = core || "";
 };
 
 
@@ -468,6 +500,43 @@ com.wilutions.byps.test.api.ver.Evolve2 = function(n1) {
  * ----------------------------------------------
 */
 
+com.wilutions.byps.test.api.cons.AllTypesC_Type = function() {
+	this.bool1s = true;
+	this.bool2s = false;
+	this.byte1s = 1;
+	this.char1s = '\u00bf';
+	this.stringNull = "";
+	/**
+	 * This constant holds the currency symbol for Euro.
+	 * It is defined "final static" and thus cannot be changed.
+	*/
+	this.char2s = '\u20ac';
+	this.short1s = 3;
+	this.int1s = 4;
+	this.long1s = "6148914691236517205";
+	this.float1s = 6.8;
+	this.double1s = 7.8;
+	this.string1s = "Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'";
+	/**
+	 * This defines a complex constant.
+	 * It is an instance of the class AllTypesZ.
+	 * The field value cannot be changed, but it's contents could.
+	*/
+	this.ALL = new com.wilutions.byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4", 5.0, 6.0, "777", new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"),new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1")]);
+	this.arrInt = [1,2,3];
+	this.arrInt4 = [[[[1,2],[4,5]],[[11,12],[14,15]]],[[[21,22],[24,25]],[[211,212],[214,215]]]];
+	this.arrStrings = ["s1","s2"];
+	this.arrStrings4 = [[[["s1","s2"]]]];
+	this.arrALL = [[new com.wilutions.byps.test.api.cons.AllTypesZ(false, 0, '\u0000', 0, 0, "0", 0.0, 0.0, "", null, null, null, null, null)],[new com.wilutions.byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4", 5.0, 6.0, "777", new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"),new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1")])]];
+};
+
+com.wilutions.byps.test.api.cons.HebrewC_Type = function() {
+	this.aleph = "\u05d0";
+	this.beth = "\u05d1";
+	this.ALEPH = new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0");
+	this.BETH = new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1");
+};
+
 com.wilutions.byps.test.api.enu.EnumPlanets = {
 	/**
 	 * ... is the closest planet to the Sun ...
@@ -483,6 +552,14 @@ com.wilutions.byps.test.api.enu.EnumPlanets = {
  * API constants
  * ----------------------------------------------
 */
+
+/**
+*/
+com.wilutions.byps.test.api.cons.AllTypesC = new com.wilutions.byps.test.api.cons.AllTypesC_Type();
+
+/**
+*/
+com.wilutions.byps.test.api.cons.HebrewC = new com.wilutions.byps.test.api.cons.HebrewC_Type();
 
 
 /**
@@ -514,12 +591,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setBool = function(v, asyncResult){
+	this.async_setBool = function(v, __byps__asyncResult){
 		try {
 			this.setBool(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -530,12 +607,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setByte = function(v, asyncResult){
+	this.async_setByte = function(v, __byps__asyncResult){
 		try {
 			this.setByte(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -546,12 +623,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setChar = function(v, asyncResult){
+	this.async_setChar = function(v, __byps__asyncResult){
 		try {
 			this.setChar(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -562,12 +639,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setShort = function(v, asyncResult){
+	this.async_setShort = function(v, __byps__asyncResult){
 		try {
 			this.setShort(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -578,12 +655,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setInt = function(v, asyncResult){
+	this.async_setInt = function(v, __byps__asyncResult){
 		try {
 			this.setInt(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -594,12 +671,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setLong = function(v, asyncResult){
+	this.async_setLong = function(v, __byps__asyncResult){
 		try {
 			this.setLong(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -610,12 +687,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setFloat = function(v, asyncResult){
+	this.async_setFloat = function(v, __byps__asyncResult){
 		try {
 			this.setFloat(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -626,12 +703,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setDouble = function(v, asyncResult){
+	this.async_setDouble = function(v, __byps__asyncResult){
 		try {
 			this.setDouble(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -642,12 +719,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setString = function(v, asyncResult){
+	this.async_setString = function(v, __byps__asyncResult){
 		try {
 			this.setString(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -658,12 +735,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setPrimitiveTypes = function(v, asyncResult){
+	this.async_setPrimitiveTypes = function(v, __byps__asyncResult){
 		try {
 			this.setPrimitiveTypes(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -674,12 +751,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_setObject = function(v, asyncResult){
+	this.async_setObject = function(v, __byps__asyncResult){
 		try {
 			this.setObject(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -690,12 +767,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getBool = function(asyncResult){
+	this.async_getBool = function(__byps__asyncResult){
 		try {
-			var ret = this.getBool();
-			asyncResult(ret, null);
+			var __byps__ret = this.getBool();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -706,12 +783,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getByte = function(asyncResult){
+	this.async_getByte = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -722,12 +799,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getChar = function(asyncResult){
+	this.async_getChar = function(__byps__asyncResult){
 		try {
-			var ret = this.getChar();
-			asyncResult(ret, null);
+			var __byps__ret = this.getChar();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -738,12 +815,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getShort = function(asyncResult){
+	this.async_getShort = function(__byps__asyncResult){
 		try {
-			var ret = this.getShort();
-			asyncResult(ret, null);
+			var __byps__ret = this.getShort();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -754,12 +831,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getInt = function(asyncResult){
+	this.async_getInt = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -770,12 +847,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getLong = function(asyncResult){
+	this.async_getLong = function(__byps__asyncResult){
 		try {
-			var ret = this.getLong();
-			asyncResult(ret, null);
+			var __byps__ret = this.getLong();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -786,12 +863,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getFloat = function(asyncResult){
+	this.async_getFloat = function(__byps__asyncResult){
 		try {
-			var ret = this.getFloat();
-			asyncResult(ret, null);
+			var __byps__ret = this.getFloat();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -802,12 +879,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getDouble = function(asyncResult){
+	this.async_getDouble = function(__byps__asyncResult){
 		try {
-			var ret = this.getDouble();
-			asyncResult(ret, null);
+			var __byps__ret = this.getDouble();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -818,12 +895,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getString = function(asyncResult){
+	this.async_getString = function(__byps__asyncResult){
 		try {
-			var ret = this.getString();
-			asyncResult(ret, null);
+			var __byps__ret = this.getString();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -834,12 +911,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getPrimitiveTypes = function(asyncResult){
+	this.async_getPrimitiveTypes = function(__byps__asyncResult){
 		try {
-			var ret = this.getPrimitiveTypes();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPrimitiveTypes();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -850,12 +927,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	};
 	/**
 	*/
-	this.async_getObject = function(asyncResult){
+	this.async_getObject = function(__byps__asyncResult){
 		try {
-			var ret = this.getObject();
-			asyncResult(ret, null);
+			var __byps__ret = this.getObject();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -885,12 +962,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	};
 	/**
 	*/
-	this.async_sendArraysInt = function(arr2, arr3, arr4, asyncResult){
+	this.async_sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult){
 		try {
-			var ret = this.sendArraysInt(arr2, arr3, arr4);
-			asyncResult(ret, null);
+			var __byps__ret = this.sendArraysInt(arr2, arr3, arr4);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -901,12 +978,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	};
 	/**
 	*/
-	this.async_sendArraysString = function(arr2, arr3, arr4, asyncResult){
+	this.async_sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult){
 		try {
-			var ret = this.sendArraysString(arr2, arr3, arr4);
-			asyncResult(ret, null);
+			var __byps__ret = this.sendArraysString(arr2, arr3, arr4);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -917,12 +994,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	};
 	/**
 	*/
-	this.async_sendArraysClass = function(arr2, arr3, arr4, asyncResult){
+	this.async_sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult){
 		try {
-			var ret = this.sendArraysClass(arr2, arr3, arr4);
-			asyncResult(ret, null);
+			var __byps__ret = this.sendArraysClass(arr2, arr3, arr4);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -933,12 +1010,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	};
 	/**
 	*/
-	this.async_sendArraysObject = function(arr2, arr3, arr4, asyncResult){
+	this.async_sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult){
 		try {
-			var ret = this.sendArraysObject(arr2, arr3, arr4);
-			asyncResult(ret, null);
+			var __byps__ret = this.sendArraysObject(arr2, arr3, arr4);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -949,12 +1026,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	};
 	/**
 	*/
-	this.async_sendArraysInline = function(arr2, arr3, arr4, asyncResult){
+	this.async_sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult){
 		try {
-			var ret = this.sendArraysInline(arr2, arr3, arr4);
-			asyncResult(ret, null);
+			var __byps__ret = this.sendArraysInline(arr2, arr3, arr4);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -984,12 +1061,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setBool = function(v, asyncResult){
+	this.async_setBool = function(v, __byps__asyncResult){
 		try {
 			this.setBool(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1000,12 +1077,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setByte = function(v, asyncResult){
+	this.async_setByte = function(v, __byps__asyncResult){
 		try {
 			this.setByte(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1016,12 +1093,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setChar = function(v, asyncResult){
+	this.async_setChar = function(v, __byps__asyncResult){
 		try {
 			this.setChar(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1032,12 +1109,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setShort = function(v, asyncResult){
+	this.async_setShort = function(v, __byps__asyncResult){
 		try {
 			this.setShort(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1048,12 +1125,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setInt = function(v, asyncResult){
+	this.async_setInt = function(v, __byps__asyncResult){
 		try {
 			this.setInt(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1064,12 +1141,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setLong = function(v, asyncResult){
+	this.async_setLong = function(v, __byps__asyncResult){
 		try {
 			this.setLong(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1080,12 +1157,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setFloat = function(v, asyncResult){
+	this.async_setFloat = function(v, __byps__asyncResult){
 		try {
 			this.setFloat(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1096,12 +1173,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setDouble = function(v, asyncResult){
+	this.async_setDouble = function(v, __byps__asyncResult){
 		try {
 			this.setDouble(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1112,12 +1189,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setString = function(v, asyncResult){
+	this.async_setString = function(v, __byps__asyncResult){
 		try {
 			this.setString(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1128,12 +1205,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setPrimitiveTypes = function(v, asyncResult){
+	this.async_setPrimitiveTypes = function(v, __byps__asyncResult){
 		try {
 			this.setPrimitiveTypes(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1144,12 +1221,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_setObject = function(v, asyncResult){
+	this.async_setObject = function(v, __byps__asyncResult){
 		try {
 			this.setObject(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1160,12 +1237,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getBool = function(asyncResult){
+	this.async_getBool = function(__byps__asyncResult){
 		try {
-			var ret = this.getBool();
-			asyncResult(ret, null);
+			var __byps__ret = this.getBool();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1176,12 +1253,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getByte = function(asyncResult){
+	this.async_getByte = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1192,12 +1269,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getChar = function(asyncResult){
+	this.async_getChar = function(__byps__asyncResult){
 		try {
-			var ret = this.getChar();
-			asyncResult(ret, null);
+			var __byps__ret = this.getChar();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1208,12 +1285,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getShort = function(asyncResult){
+	this.async_getShort = function(__byps__asyncResult){
 		try {
-			var ret = this.getShort();
-			asyncResult(ret, null);
+			var __byps__ret = this.getShort();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1224,12 +1301,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getInt = function(asyncResult){
+	this.async_getInt = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1240,12 +1317,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getLong = function(asyncResult){
+	this.async_getLong = function(__byps__asyncResult){
 		try {
-			var ret = this.getLong();
-			asyncResult(ret, null);
+			var __byps__ret = this.getLong();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1256,12 +1333,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getFloat = function(asyncResult){
+	this.async_getFloat = function(__byps__asyncResult){
 		try {
-			var ret = this.getFloat();
-			asyncResult(ret, null);
+			var __byps__ret = this.getFloat();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1272,12 +1349,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getDouble = function(asyncResult){
+	this.async_getDouble = function(__byps__asyncResult){
 		try {
-			var ret = this.getDouble();
-			asyncResult(ret, null);
+			var __byps__ret = this.getDouble();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1288,12 +1365,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getString = function(asyncResult){
+	this.async_getString = function(__byps__asyncResult){
 		try {
-			var ret = this.getString();
-			asyncResult(ret, null);
+			var __byps__ret = this.getString();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1304,12 +1381,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getPrimitiveTypes = function(asyncResult){
+	this.async_getPrimitiveTypes = function(__byps__asyncResult){
 		try {
-			var ret = this.getPrimitiveTypes();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPrimitiveTypes();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1320,12 +1397,63 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	};
 	/**
 	*/
-	this.async_getObject = function(asyncResult){
+	this.async_getObject = function(__byps__asyncResult){
 		try {
-			var ret = this.getObject();
-			asyncResult(ret, null);
+			var __byps__ret = this.getObject();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	
+};
+
+/**
+ * This class provides a skeleton implementation of the interface RemoteConstants.
+ * Use an object of this class as the prototype of your interface implementation.
+ * Either provide an asynchronous or a synchronous function in your implementation.
+ * The framework calls only the asynchronous function.
+ */
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants = function() {
+	
+	this._typeId = 431648293;
+	
+	this.transport = null; // is set in BServer.addRemote
+	
+	this.toJSON = function (key) {
+		return { _typeId : 431648293, targetId : this.transport.targetId };
+	};
+	
+	/**
+	*/
+	this.compare_HebrewC = function(ALEPH, BETH) /* returns void , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	*/
+	this.async_compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult){
+		try {
+			this.compare_HebrewC(ALEPH, BETH);
+			__byps__asyncResult(null, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	/**
+	*/
+	this.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll) /* returns boolean , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	*/
+	this.async_compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult){
+		try {
+			var __byps__ret = this.compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll);
+			__byps__asyncResult(__byps__ret, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1355,12 +1483,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums = function() {
 	};
 	/**
 	*/
-	this.async_getPlanet = function(asyncResult){
+	this.async_getPlanet = function(__byps__asyncResult){
 		try {
-			var ret = this.getPlanet();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPlanet();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1371,12 +1499,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums = function() {
 	};
 	/**
 	*/
-	this.async_setPlanet = function(planet, asyncResult){
+	this.async_setPlanet = function(planet, __byps__asyncResult){
 		try {
 			this.setPlanet(planet);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1406,12 +1534,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_setActor = function(act, asyncResult){
+	this.async_setActor = function(act, __byps__asyncResult){
 		try {
 			this.setActor(act);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1422,12 +1550,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_getActor = function(asyncResult){
+	this.async_getActor = function(__byps__asyncResult){
 		try {
-			var ret = this.getActor();
-			asyncResult(ret, null);
+			var __byps__ret = this.getActor();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1438,12 +1566,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_setPoint2DArray1dim = function(pointArray, asyncResult){
+	this.async_setPoint2DArray1dim = function(pointArray, __byps__asyncResult){
 		try {
 			this.setPoint2DArray1dim(pointArray);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1454,12 +1582,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_getPoint2DArray1dim = function(asyncResult){
+	this.async_getPoint2DArray1dim = function(__byps__asyncResult){
 		try {
-			var ret = this.getPoint2DArray1dim();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPoint2DArray1dim();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1470,12 +1598,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_setPoint2DArray4dim = function(pointArray, asyncResult){
+	this.async_setPoint2DArray4dim = function(pointArray, __byps__asyncResult){
 		try {
 			this.setPoint2DArray4dim(pointArray);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1486,12 +1614,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_getPoint2DArray4dim = function(asyncResult){
+	this.async_getPoint2DArray4dim = function(__byps__asyncResult){
 		try {
-			var ret = this.getPoint2DArray4dim();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPoint2DArray4dim();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1502,12 +1630,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_setPoint2DList = function(pointList, asyncResult){
+	this.async_setPoint2DList = function(pointList, __byps__asyncResult){
 		try {
 			this.setPoint2DList(pointList);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1518,12 +1646,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_getPoint2DList = function(asyncResult){
+	this.async_getPoint2DList = function(__byps__asyncResult){
 		try {
-			var ret = this.getPoint2DList();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPoint2DList();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1534,12 +1662,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_setPoint2DListList = function(pointListList, asyncResult){
+	this.async_setPoint2DListList = function(pointListList, __byps__asyncResult){
 		try {
 			this.setPoint2DListList(pointListList);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1550,12 +1678,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_getPoint2DListList = function(asyncResult){
+	this.async_getPoint2DListList = function(__byps__asyncResult){
 		try {
-			var ret = this.getPoint2DListList();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPoint2DListList();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1566,12 +1694,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_setPoint2DMap = function(pointMap, asyncResult){
+	this.async_setPoint2DMap = function(pointMap, __byps__asyncResult){
 		try {
 			this.setPoint2DMap(pointMap);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1582,12 +1710,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	};
 	/**
 	*/
-	this.async_getPoint2DMap = function(asyncResult){
+	this.async_getPoint2DMap = function(__byps__asyncResult){
 		try {
-			var ret = this.getPoint2DMap();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPoint2DMap();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1617,12 +1745,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getBoolean1 = function(asyncResult){
+	this.async_getBoolean1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getBoolean1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getBoolean1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1633,12 +1761,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setBoolean1 = function(boolean1, asyncResult){
+	this.async_setBoolean1 = function(boolean1, __byps__asyncResult){
 		try {
 			this.setBoolean1(boolean1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1649,12 +1777,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getByte1 = function(asyncResult){
+	this.async_getByte1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1665,12 +1793,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setByte1 = function(byte1, asyncResult){
+	this.async_setByte1 = function(byte1, __byps__asyncResult){
 		try {
 			this.setByte1(byte1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1681,12 +1809,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getChar1 = function(asyncResult){
+	this.async_getChar1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getChar1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getChar1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1697,12 +1825,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setChar1 = function(char1, asyncResult){
+	this.async_setChar1 = function(char1, __byps__asyncResult){
 		try {
 			this.setChar1(char1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1713,12 +1841,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getShort1 = function(asyncResult){
+	this.async_getShort1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getShort1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getShort1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1729,12 +1857,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setShort1 = function(short1, asyncResult){
+	this.async_setShort1 = function(short1, __byps__asyncResult){
 		try {
 			this.setShort1(short1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1745,12 +1873,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt1 = function(asyncResult){
+	this.async_getInt1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1761,12 +1889,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt1 = function(int1, asyncResult){
+	this.async_setInt1 = function(int1, __byps__asyncResult){
 		try {
 			this.setInt1(int1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1777,12 +1905,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getLong1 = function(asyncResult){
+	this.async_getLong1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getLong1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getLong1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1793,12 +1921,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setLong1 = function(long1, asyncResult){
+	this.async_setLong1 = function(long1, __byps__asyncResult){
 		try {
 			this.setLong1(long1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1809,12 +1937,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getFloat1 = function(asyncResult){
+	this.async_getFloat1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getFloat1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getFloat1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1825,12 +1953,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setFloat1 = function(float1, asyncResult){
+	this.async_setFloat1 = function(float1, __byps__asyncResult){
 		try {
 			this.setFloat1(float1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1841,12 +1969,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getDouble1 = function(asyncResult){
+	this.async_getDouble1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getDouble1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getDouble1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1857,12 +1985,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setDouble1 = function(double1, asyncResult){
+	this.async_setDouble1 = function(double1, __byps__asyncResult){
 		try {
 			this.setDouble1(double1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1873,12 +2001,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getString1 = function(asyncResult){
+	this.async_getString1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getString1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getString1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1889,12 +2017,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setString1 = function(string1, asyncResult){
+	this.async_setString1 = function(string1, __byps__asyncResult){
 		try {
 			this.setString1(string1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1905,12 +2033,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getPrimitiveTypes1 = function(asyncResult){
+	this.async_getPrimitiveTypes1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getPrimitiveTypes1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPrimitiveTypes1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1921,12 +2049,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setPrimitiveTypes1 = function(primitiveTypes1, asyncResult){
+	this.async_setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult){
 		try {
 			this.setPrimitiveTypes1(primitiveTypes1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1937,12 +2065,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getByte2 = function(asyncResult){
+	this.async_getByte2 = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte2();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte2();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1953,12 +2081,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setByte2 = function(byte2, asyncResult){
+	this.async_setByte2 = function(byte2, __byps__asyncResult){
 		try {
 			this.setByte2(byte2);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1969,12 +2097,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt2 = function(asyncResult){
+	this.async_getInt2 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt2();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt2();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -1985,12 +2113,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt2 = function(int2, asyncResult){
+	this.async_setInt2 = function(int2, __byps__asyncResult){
 		try {
 			this.setInt2(int2);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2001,12 +2129,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getObj1 = function(asyncResult){
+	this.async_getObj1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getObj1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getObj1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2017,12 +2145,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setObj1 = function(obj1, asyncResult){
+	this.async_setObj1 = function(obj1, __byps__asyncResult){
 		try {
 			this.setObj1(obj1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2033,12 +2161,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt3 = function(asyncResult){
+	this.async_getInt3 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt3();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt3();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2049,12 +2177,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt3 = function(int3, asyncResult){
+	this.async_setInt3 = function(int3, __byps__asyncResult){
 		try {
 			this.setInt3(int3);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2065,12 +2193,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt4 = function(asyncResult){
+	this.async_getInt4 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt4();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt4();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2081,12 +2209,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt4 = function(int4, asyncResult){
+	this.async_setInt4 = function(int4, __byps__asyncResult){
 		try {
 			this.setInt4(int4);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2116,12 +2244,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getBoolean1 = function(asyncResult){
+	this.async_getBoolean1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getBoolean1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getBoolean1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2132,12 +2260,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setBoolean1 = function(boolean1, asyncResult){
+	this.async_setBoolean1 = function(boolean1, __byps__asyncResult){
 		try {
 			this.setBoolean1(boolean1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2148,12 +2276,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getByte1 = function(asyncResult){
+	this.async_getByte1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2164,12 +2292,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setByte1 = function(byte1, asyncResult){
+	this.async_setByte1 = function(byte1, __byps__asyncResult){
 		try {
 			this.setByte1(byte1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2180,12 +2308,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getChar1 = function(asyncResult){
+	this.async_getChar1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getChar1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getChar1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2196,12 +2324,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setChar1 = function(char1, asyncResult){
+	this.async_setChar1 = function(char1, __byps__asyncResult){
 		try {
 			this.setChar1(char1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2212,12 +2340,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getShort1 = function(asyncResult){
+	this.async_getShort1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getShort1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getShort1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2228,12 +2356,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setShort1 = function(short1, asyncResult){
+	this.async_setShort1 = function(short1, __byps__asyncResult){
 		try {
 			this.setShort1(short1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2244,12 +2372,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt1 = function(asyncResult){
+	this.async_getInt1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2260,12 +2388,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt1 = function(int1, asyncResult){
+	this.async_setInt1 = function(int1, __byps__asyncResult){
 		try {
 			this.setInt1(int1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2276,12 +2404,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getLong1 = function(asyncResult){
+	this.async_getLong1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getLong1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getLong1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2292,12 +2420,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setLong1 = function(long1, asyncResult){
+	this.async_setLong1 = function(long1, __byps__asyncResult){
 		try {
 			this.setLong1(long1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2308,12 +2436,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getFloat1 = function(asyncResult){
+	this.async_getFloat1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getFloat1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getFloat1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2324,12 +2452,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setFloat1 = function(float1, asyncResult){
+	this.async_setFloat1 = function(float1, __byps__asyncResult){
 		try {
 			this.setFloat1(float1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2340,12 +2468,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getDouble1 = function(asyncResult){
+	this.async_getDouble1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getDouble1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getDouble1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2356,12 +2484,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setDouble1 = function(double1, asyncResult){
+	this.async_setDouble1 = function(double1, __byps__asyncResult){
 		try {
 			this.setDouble1(double1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2372,12 +2500,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getString1 = function(asyncResult){
+	this.async_getString1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getString1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getString1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2388,12 +2516,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setString1 = function(string1, asyncResult){
+	this.async_setString1 = function(string1, __byps__asyncResult){
 		try {
 			this.setString1(string1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2404,12 +2532,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getPrimitiveTypes1 = function(asyncResult){
+	this.async_getPrimitiveTypes1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getPrimitiveTypes1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPrimitiveTypes1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2420,12 +2548,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setPrimitiveTypes1 = function(primitiveTypes1, asyncResult){
+	this.async_setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult){
 		try {
 			this.setPrimitiveTypes1(primitiveTypes1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2436,12 +2564,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getByte2 = function(asyncResult){
+	this.async_getByte2 = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte2();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte2();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2452,12 +2580,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setByte2 = function(byte2, asyncResult){
+	this.async_setByte2 = function(byte2, __byps__asyncResult){
 		try {
 			this.setByte2(byte2);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2468,12 +2596,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt2 = function(asyncResult){
+	this.async_getInt2 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt2();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt2();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2484,12 +2612,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt2 = function(int2, asyncResult){
+	this.async_setInt2 = function(int2, __byps__asyncResult){
 		try {
 			this.setInt2(int2);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2500,12 +2628,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_getObj1 = function(asyncResult){
+	this.async_getObj1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getObj1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getObj1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2516,12 +2644,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	};
 	/**
 	*/
-	this.async_setObj1 = function(obj1, asyncResult){
+	this.async_setObj1 = function(obj1, __byps__asyncResult){
 		try {
 			this.setObj1(obj1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2551,12 +2679,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_voidFunctionVoid = function(asyncResult){
+	this.async_voidFunctionVoid = function(__byps__asyncResult){
 		try {
 			this.voidFunctionVoid();
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2567,12 +2695,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setBool = function(v, asyncResult){
+	this.async_setBool = function(v, __byps__asyncResult){
 		try {
 			this.setBool(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2583,12 +2711,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setByte = function(v, asyncResult){
+	this.async_setByte = function(v, __byps__asyncResult){
 		try {
 			this.setByte(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2599,12 +2727,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setChar = function(v, asyncResult){
+	this.async_setChar = function(v, __byps__asyncResult){
 		try {
 			this.setChar(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2615,12 +2743,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setShort = function(v, asyncResult){
+	this.async_setShort = function(v, __byps__asyncResult){
 		try {
 			this.setShort(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2631,12 +2759,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt = function(v, asyncResult){
+	this.async_setInt = function(v, __byps__asyncResult){
 		try {
 			this.setInt(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2647,12 +2775,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setLong = function(v, asyncResult){
+	this.async_setLong = function(v, __byps__asyncResult){
 		try {
 			this.setLong(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2663,12 +2791,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setFloat = function(v, asyncResult){
+	this.async_setFloat = function(v, __byps__asyncResult){
 		try {
 			this.setFloat(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2679,12 +2807,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setDouble = function(v, asyncResult){
+	this.async_setDouble = function(v, __byps__asyncResult){
 		try {
 			this.setDouble(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2695,12 +2823,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setString = function(v, asyncResult){
+	this.async_setString = function(v, __byps__asyncResult){
 		try {
 			this.setString(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2711,12 +2839,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setPrimitiveTypes = function(v, asyncResult){
+	this.async_setPrimitiveTypes = function(v, __byps__asyncResult){
 		try {
 			this.setPrimitiveTypes(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2727,12 +2855,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_setObject = function(v, asyncResult){
+	this.async_setObject = function(v, __byps__asyncResult){
 		try {
 			this.setObject(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2743,12 +2871,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getBool = function(asyncResult){
+	this.async_getBool = function(__byps__asyncResult){
 		try {
-			var ret = this.getBool();
-			asyncResult(ret, null);
+			var __byps__ret = this.getBool();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2759,12 +2887,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getByte = function(asyncResult){
+	this.async_getByte = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2775,12 +2903,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getChar = function(asyncResult){
+	this.async_getChar = function(__byps__asyncResult){
 		try {
-			var ret = this.getChar();
-			asyncResult(ret, null);
+			var __byps__ret = this.getChar();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2791,12 +2919,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getShort = function(asyncResult){
+	this.async_getShort = function(__byps__asyncResult){
 		try {
-			var ret = this.getShort();
-			asyncResult(ret, null);
+			var __byps__ret = this.getShort();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2807,12 +2935,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt = function(asyncResult){
+	this.async_getInt = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2823,12 +2951,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getLong = function(asyncResult){
+	this.async_getLong = function(__byps__asyncResult){
 		try {
-			var ret = this.getLong();
-			asyncResult(ret, null);
+			var __byps__ret = this.getLong();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2839,12 +2967,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getFloat = function(asyncResult){
+	this.async_getFloat = function(__byps__asyncResult){
 		try {
-			var ret = this.getFloat();
-			asyncResult(ret, null);
+			var __byps__ret = this.getFloat();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2855,12 +2983,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getDouble = function(asyncResult){
+	this.async_getDouble = function(__byps__asyncResult){
 		try {
-			var ret = this.getDouble();
-			asyncResult(ret, null);
+			var __byps__ret = this.getDouble();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2871,12 +2999,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getString = function(asyncResult){
+	this.async_getString = function(__byps__asyncResult){
 		try {
-			var ret = this.getString();
-			asyncResult(ret, null);
+			var __byps__ret = this.getString();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2887,12 +3015,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getPrimitiveTypes = function(asyncResult){
+	this.async_getPrimitiveTypes = function(__byps__asyncResult){
 		try {
-			var ret = this.getPrimitiveTypes();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPrimitiveTypes();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2903,12 +3031,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_getObject = function(asyncResult){
+	this.async_getObject = function(__byps__asyncResult){
 		try {
-			var ret = this.getObject();
-			asyncResult(ret, null);
+			var __byps__ret = this.getObject();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2919,12 +3047,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, asyncResult){
+	this.async_sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult){
 		try {
 			this.sendAllTypes(b, c, s, i, l, f, d, str, pt, o);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2935,12 +3063,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	};
 	/**
 	*/
-	this.async_add = function(a, b, asyncResult){
+	this.async_add = function(a, b, __byps__asyncResult){
 		try {
-			var ret = this.add(a, b);
-			asyncResult(ret, null);
+			var __byps__ret = this.add(a, b);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2970,12 +3098,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences = function() {
 	};
 	/**
 	*/
-	this.async_getNode = function(asyncResult){
+	this.async_getNode = function(__byps__asyncResult){
 		try {
-			var ret = this.getNode();
-			asyncResult(ret, null);
+			var __byps__ret = this.getNode();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -2986,12 +3114,79 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences = function() {
 	};
 	/**
 	*/
-	this.async_setNode = function(v, asyncResult){
+	this.async_setNode = function(v, __byps__asyncResult){
 		try {
 			this.setNode(v);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	
+};
+
+/**
+ * This class provides a skeleton implementation of the interface RemoteServerCtrl.
+ * Use an object of this class as the prototype of your interface implementation.
+ * Either provide an asynchronous or a synchronous function in your implementation.
+ * The framework calls only the asynchronous function.
+ */
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl = function() {
+	
+	this._typeId = 1124545992;
+	
+	this.transport = null; // is set in BServer.addRemote
+	
+	this.toJSON = function (key) {
+		return { _typeId : 1124545992, targetId : this.transport.targetId };
+	};
+	
+	/**
+	*/
+	this.publishRemote = function(name, remote, fowardToOtherServers) /* returns void , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	*/
+	this.async_publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult){
+		try {
+			this.publishRemote(name, remote, fowardToOtherServers);
+			__byps__asyncResult(null, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	/**
+	*/
+	this.getPublishedRemote = function(name) /* returns com.wilutions.byps.BRemote , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	*/
+	this.async_getPublishedRemote = function(name, __byps__asyncResult){
+		try {
+			var __byps__ret = this.getPublishedRemote(name);
+			__byps__asyncResult(__byps__ret, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	/**
+	*/
+	this.removePublishedRemote = function(name) /* returns void , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	*/
+	this.async_removePublishedRemote = function(name, __byps__asyncResult){
+		try {
+			this.removePublishedRemote(name);
+			__byps__asyncResult(null, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3021,12 +3216,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getBoolean1 = function(asyncResult){
+	this.async_getBoolean1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getBoolean1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getBoolean1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3037,12 +3232,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setBoolean1 = function(boolean1, asyncResult){
+	this.async_setBoolean1 = function(boolean1, __byps__asyncResult){
 		try {
 			this.setBoolean1(boolean1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3053,12 +3248,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getByte1 = function(asyncResult){
+	this.async_getByte1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3069,12 +3264,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setByte1 = function(byte1, asyncResult){
+	this.async_setByte1 = function(byte1, __byps__asyncResult){
 		try {
 			this.setByte1(byte1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3085,12 +3280,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getChar1 = function(asyncResult){
+	this.async_getChar1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getChar1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getChar1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3101,12 +3296,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setChar1 = function(char1, asyncResult){
+	this.async_setChar1 = function(char1, __byps__asyncResult){
 		try {
 			this.setChar1(char1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3117,12 +3312,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getShort1 = function(asyncResult){
+	this.async_getShort1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getShort1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getShort1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3133,12 +3328,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setShort1 = function(short1, asyncResult){
+	this.async_setShort1 = function(short1, __byps__asyncResult){
 		try {
 			this.setShort1(short1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3149,12 +3344,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt1 = function(asyncResult){
+	this.async_getInt1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3165,12 +3360,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt1 = function(int1, asyncResult){
+	this.async_setInt1 = function(int1, __byps__asyncResult){
 		try {
 			this.setInt1(int1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3181,12 +3376,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getLong1 = function(asyncResult){
+	this.async_getLong1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getLong1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getLong1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3197,12 +3392,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setLong1 = function(long1, asyncResult){
+	this.async_setLong1 = function(long1, __byps__asyncResult){
 		try {
 			this.setLong1(long1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3213,12 +3408,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getFloat1 = function(asyncResult){
+	this.async_getFloat1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getFloat1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getFloat1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3229,12 +3424,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setFloat1 = function(float1, asyncResult){
+	this.async_setFloat1 = function(float1, __byps__asyncResult){
 		try {
 			this.setFloat1(float1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3245,12 +3440,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getDouble1 = function(asyncResult){
+	this.async_getDouble1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getDouble1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getDouble1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3261,12 +3456,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setDouble1 = function(double1, asyncResult){
+	this.async_setDouble1 = function(double1, __byps__asyncResult){
 		try {
 			this.setDouble1(double1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3277,12 +3472,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getString1 = function(asyncResult){
+	this.async_getString1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getString1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getString1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3293,12 +3488,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setString1 = function(string1, asyncResult){
+	this.async_setString1 = function(string1, __byps__asyncResult){
 		try {
 			this.setString1(string1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3309,12 +3504,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getPrimitiveTypes1 = function(asyncResult){
+	this.async_getPrimitiveTypes1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getPrimitiveTypes1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPrimitiveTypes1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3325,12 +3520,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setPrimitiveTypes1 = function(primitiveTypes1, asyncResult){
+	this.async_setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult){
 		try {
 			this.setPrimitiveTypes1(primitiveTypes1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3341,12 +3536,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getByte2 = function(asyncResult){
+	this.async_getByte2 = function(__byps__asyncResult){
 		try {
-			var ret = this.getByte2();
-			asyncResult(ret, null);
+			var __byps__ret = this.getByte2();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3357,12 +3552,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setByte2 = function(byte2, asyncResult){
+	this.async_setByte2 = function(byte2, __byps__asyncResult){
 		try {
 			this.setByte2(byte2);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3373,12 +3568,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getInt2 = function(asyncResult){
+	this.async_getInt2 = function(__byps__asyncResult){
 		try {
-			var ret = this.getInt2();
-			asyncResult(ret, null);
+			var __byps__ret = this.getInt2();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3389,12 +3584,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setInt2 = function(int2, asyncResult){
+	this.async_setInt2 = function(int2, __byps__asyncResult){
 		try {
 			this.setInt2(int2);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3405,12 +3600,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_getObj1 = function(asyncResult){
+	this.async_getObj1 = function(__byps__asyncResult){
 		try {
-			var ret = this.getObj1();
-			asyncResult(ret, null);
+			var __byps__ret = this.getObj1();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3421,12 +3616,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	};
 	/**
 	*/
-	this.async_setObj1 = function(obj1, asyncResult){
+	this.async_setObj1 = function(obj1, __byps__asyncResult){
 		try {
 			this.setObj1(obj1);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3456,12 +3651,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	};
 	/**
 	*/
-	this.async_getImage = function(asyncResult){
+	this.async_getImage = function(__byps__asyncResult){
 		try {
-			var ret = this.getImage();
-			asyncResult(ret, null);
+			var __byps__ret = this.getImage();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3472,12 +3667,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	};
 	/**
 	*/
-	this.async_setImage = function(istrm, asyncResult){
+	this.async_setImage = function(istrm, __byps__asyncResult){
 		try {
 			this.setImage(istrm);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3488,12 +3683,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	};
 	/**
 	*/
-	this.async_getImages = function(asyncResult){
+	this.async_getImages = function(__byps__asyncResult){
 		try {
-			var ret = this.getImages();
-			asyncResult(ret, null);
+			var __byps__ret = this.getImages();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3504,12 +3699,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	};
 	/**
 	*/
-	this.async_setImages = function(istrms, doNotReadStreamAtKey, asyncResult){
+	this.async_setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult){
 		try {
 			this.setImages(istrms, doNotReadStreamAtKey);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3520,12 +3715,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	};
 	/**
 	*/
-	this.async_throwLastException = function(asyncResult){
+	this.async_throwLastException = function(__byps__asyncResult){
 		try {
 			this.throwLastException();
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3536,12 +3731,12 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	};
 	/**
 	*/
-	this.async_getTextStream = function(asyncResult){
+	this.async_getTextStream = function(__byps__asyncResult){
 		try {
-			var ret = this.getTextStream();
-			asyncResult(ret, null);
+			var __byps__ret = this.getTextStream();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3571,12 +3766,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	};
 	/**
 	*/
-	this.async_incrementInt = function(a, asyncResult){
+	this.async_incrementInt = function(a, __byps__asyncResult){
 		try {
-			var ret = this.incrementInt(a);
-			asyncResult(ret, null);
+			var __byps__ret = this.incrementInt(a);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3587,12 +3782,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	};
 	/**
 	*/
-	this.async_getStreams = function(ctrl, asyncResult){
+	this.async_getStreams = function(ctrl, __byps__asyncResult){
 		try {
-			var ret = this.getStreams(ctrl);
-			asyncResult(ret, null);
+			var __byps__ret = this.getStreams(ctrl);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3603,12 +3798,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	};
 	/**
 	*/
-	this.async_putStreams = function(strm, ctrl, asyncResult){
+	this.async_putStreams = function(strm, ctrl, __byps__asyncResult){
 		try {
 			this.putStreams(strm, ctrl);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3619,12 +3814,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	};
 	/**
 	*/
-	this.async_sendChat = function(cs, asyncResult){
+	this.async_sendChat = function(cs, __byps__asyncResult){
 		try {
-			var ret = this.sendChat(cs);
-			asyncResult(ret, null);
+			var __byps__ret = this.sendChat(cs);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3654,12 +3849,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_callClientIncrementInt = function(v, asyncResult){
+	this.async_callClientIncrementInt = function(v, __byps__asyncResult){
 		try {
-			var ret = this.callClientIncrementInt(v);
-			asyncResult(ret, null);
+			var __byps__ret = this.callClientIncrementInt(v);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3670,12 +3865,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_setPartner = function(client, asyncResult){
+	this.async_setPartner = function(client, __byps__asyncResult){
 		try {
 			this.setPartner(client);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3686,12 +3881,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_getPartner = function(asyncResult){
+	this.async_getPartner = function(__byps__asyncResult){
 		try {
-			var ret = this.getPartner();
-			asyncResult(ret, null);
+			var __byps__ret = this.getPartner();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3702,12 +3897,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_getStreamsFromClient = function(asyncResult){
+	this.async_getStreamsFromClient = function(__byps__asyncResult){
 		try {
-			var ret = this.getStreamsFromClient();
-			asyncResult(ret, null);
+			var __byps__ret = this.getStreamsFromClient();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3718,12 +3913,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_putStreamsOnClient = function(streams, asyncResult){
+	this.async_putStreamsOnClient = function(streams, __byps__asyncResult){
 		try {
 			this.putStreamsOnClient(streams);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3734,12 +3929,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_registerWithClientMap = function(id, asyncResult){
+	this.async_registerWithClientMap = function(id, __byps__asyncResult){
 		try {
 			this.registerWithClientMap(id);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3750,12 +3945,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_getClient = function(id, asyncResult){
+	this.async_getClient = function(id, __byps__asyncResult){
 		try {
-			var ret = this.getClient(id);
-			asyncResult(ret, null);
+			var __byps__ret = this.getClient(id);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3766,12 +3961,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_getClientIds = function(asyncResult){
+	this.async_getClientIds = function(__byps__asyncResult){
 		try {
-			var ret = this.getClientIds();
-			asyncResult(ret, null);
+			var __byps__ret = this.getClientIds();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3782,12 +3977,12 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	};
 	/**
 	*/
-	this.async_callClientParallel = function(v, asyncResult){
+	this.async_callClientParallel = function(v, __byps__asyncResult){
 		try {
-			var ret = this.callClientParallel(v);
-			asyncResult(ret, null);
+			var __byps__ret = this.callClientParallel(v);
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3817,12 +4012,12 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	};
 	/**
 	*/
-	this.async_setEvolve = function(obj, asyncResult){
+	this.async_setEvolve = function(obj, __byps__asyncResult){
 		try {
 			this.setEvolve(obj);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3833,12 +4028,12 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	};
 	/**
 	*/
-	this.async_getEvolve = function(asyncResult){
+	this.async_getEvolve = function(__byps__asyncResult){
 		try {
-			var ret = this.getEvolve();
-			asyncResult(ret, null);
+			var __byps__ret = this.getEvolve();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3849,12 +4044,12 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	};
 	/**
 	*/
-	this.async_setClient = function(partner, asyncResult){
+	this.async_setClient = function(partner, __byps__asyncResult){
 		try {
 			this.setClient(partner);
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3865,12 +4060,12 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	};
 	/**
 	*/
-	this.async_getClient = function(asyncResult){
+	this.async_getClient = function(__byps__asyncResult){
 		try {
-			var ret = this.getClient();
-			asyncResult(ret, null);
+			var __byps__ret = this.getClient();
+			__byps__asyncResult(__byps__ret, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3881,12 +4076,12 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	};
 	/**
 	*/
-	this.async_sendEvolveToClient = function(asyncResult){
+	this.async_sendEvolveToClient = function(__byps__asyncResult){
 		try {
 			this.sendEvolveToClient();
-			asyncResult(null, null);
+			__byps__asyncResult(null, null);
 		} catch (e) {
-			asyncResult(null, e);
+			__byps__asyncResult(null, e);
 		};
 	};
 	
@@ -3911,7 +4106,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setBool = function(v, asyncResult) {
+	this.setBool = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 589253529, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3919,7 +4114,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setByte = function(v, asyncResult) {
+	this.setByte = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 589243771, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3927,7 +4122,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setChar = function(v, asyncResult) {
+	this.setChar = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 589230893, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3935,7 +4130,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setShort = function(v, asyncResult) {
+	this.setShort = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1071498593, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3943,7 +4138,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setInt = function(v, asyncResult) {
+	this.setInt = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1265927470, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3951,7 +4146,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setLong = function(v, asyncResult) {
+	this.setLong = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 588955655, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3959,7 +4154,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setFloat = function(v, asyncResult) {
+	this.setFloat = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1083385729, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3967,7 +4162,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setDouble = function(v, asyncResult) {
+	this.setDouble = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 720472590, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3975,7 +4170,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setString = function(v, asyncResult) {
+	this.setString = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1154444878, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3983,7 +4178,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setPrimitiveTypes = function(v, asyncResult) {
+	this.setPrimitiveTypes = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1765354225, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3991,7 +4186,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.setObject = function(v, asyncResult) {
+	this.setObject = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1023062396, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -3999,7 +4194,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getBool = function(asyncResult) {
+	this.getBool = function(__byps__asyncResult) {
 		var req =  { _typeId : 1645604187 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4007,7 +4202,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getByte = function(asyncResult) {
+	this.getByte = function(__byps__asyncResult) {
 		var req =  { _typeId : 1645613945 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4015,7 +4210,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getChar = function(asyncResult) {
+	this.getChar = function(__byps__asyncResult) {
 		var req =  { _typeId : 1645626823 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4023,7 +4218,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getShort = function(asyncResult) {
+	this.getShort = function(__byps__asyncResult) {
 		var req =  { _typeId : 510386133 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4031,7 +4226,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getInt = function(asyncResult) {
+	this.getInt = function(__byps__asyncResult) {
 		var req =  { _typeId : 1609477282 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4039,7 +4234,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getLong = function(asyncResult) {
+	this.getLong = function(__byps__asyncResult) {
 		var req =  { _typeId : 1645902061 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4047,7 +4242,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getFloat = function(asyncResult) {
+	this.getFloat = function(__byps__asyncResult) {
 		var req =  { _typeId : 522273269 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4055,7 +4250,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getDouble = function(asyncResult) {
+	this.getDouble = function(__byps__asyncResult) {
 		var req =  { _typeId : 935089666 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4063,7 +4258,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getString = function(asyncResult) {
+	this.getString = function(__byps__asyncResult) {
 		var req =  { _typeId : 1369061954 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4071,7 +4266,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getPrimitiveTypes = function(asyncResult) {
+	this.getPrimitiveTypes = function(__byps__asyncResult) {
 		var req =  { _typeId : 825201405 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4079,7 +4274,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	/**
 	*/
-	this.getObject = function(asyncResult) {
+	this.getObject = function(__byps__asyncResult) {
 		var req =  { _typeId : 1237679472 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4097,7 +4292,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport
 	
 	/**
 	*/
-	this.sendArraysInt = function(arr2, arr3, arr4, asyncResult) {
+	this.sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult) {
 		var req =  { _typeId : 1748523470, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4105,7 +4300,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport
 	
 	/**
 	*/
-	this.sendArraysString = function(arr2, arr3, arr4, asyncResult) {
+	this.sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult) {
 		var req =  { _typeId : 607451410, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4113,7 +4308,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport
 	
 	/**
 	*/
-	this.sendArraysClass = function(arr2, arr3, arr4, asyncResult) {
+	this.sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult) {
 		var req =  { _typeId : 1004457221, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4121,7 +4316,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport
 	
 	/**
 	*/
-	this.sendArraysObject = function(arr2, arr3, arr4, asyncResult) {
+	this.sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult) {
 		var req =  { _typeId : 738833892, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4129,7 +4324,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport
 	
 	/**
 	*/
-	this.sendArraysInline = function(arr2, arr3, arr4, asyncResult) {
+	this.sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult) {
 		var req =  { _typeId : 899462794, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4148,7 +4343,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setBool = function(v, asyncResult) {
+	this.setBool = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 202005372, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4156,7 +4351,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setByte = function(v, asyncResult) {
+	this.setByte = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 201995614, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4164,7 +4359,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setChar = function(v, asyncResult) {
+	this.setChar = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 201982736, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4172,7 +4367,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setShort = function(v, asyncResult) {
+	this.setShort = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1951707614, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4180,7 +4375,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setInt = function(v, asyncResult) {
+	this.setInt = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1933153045, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4188,7 +4383,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setLong = function(v, asyncResult) {
+	this.setLong = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 201707498, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4196,7 +4391,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setFloat = function(v, asyncResult) {
+	this.setFloat = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1963594750, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4204,7 +4399,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setDouble = function(v, asyncResult) {
+	this.setDouble = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 796203285, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4212,7 +4407,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setString = function(v, asyncResult) {
+	this.setString = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 362230997, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4220,7 +4415,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setPrimitiveTypes = function(v, asyncResult) {
+	this.setPrimitiveTypes = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 710411500, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4228,7 +4423,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.setObject = function(v, asyncResult) {
+	this.setObject = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 493613479, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4236,7 +4431,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getBool = function(asyncResult) {
+	this.getBool = function(__byps__asyncResult) {
 		var req =  { _typeId : 2032852344 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4244,7 +4439,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getByte = function(asyncResult) {
+	this.getByte = function(__byps__asyncResult) {
 		var req =  { _typeId : 2032862102 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4252,7 +4447,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getChar = function(asyncResult) {
+	this.getChar = function(__byps__asyncResult) {
 		var req =  { _typeId : 2032874980 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4260,7 +4455,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getShort = function(asyncResult) {
+	this.getShort = function(__byps__asyncResult) {
 		var req =  { _typeId : 1390595154 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4268,7 +4463,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getInt = function(asyncResult) {
+	this.getInt = function(__byps__asyncResult) {
 		var req =  { _typeId : 1589603233 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4276,7 +4471,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getLong = function(asyncResult) {
+	this.getLong = function(__byps__asyncResult) {
 		var req =  { _typeId : 2033150218 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4284,7 +4479,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getFloat = function(asyncResult) {
+	this.getFloat = function(__byps__asyncResult) {
 		var req =  { _typeId : 1402482290 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4292,7 +4487,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getDouble = function(asyncResult) {
+	this.getDouble = function(__byps__asyncResult) {
 		var req =  { _typeId : 581586209 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4300,7 +4495,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getString = function(asyncResult) {
+	this.getString = function(__byps__asyncResult) {
 		var req =  { _typeId : 147613921 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4308,7 +4503,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getPrimitiveTypes = function(asyncResult) {
+	this.getPrimitiveTypes = function(__byps__asyncResult) {
 		var req =  { _typeId : 1650564320 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4316,8 +4511,35 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	/**
 	*/
-	this.getObject = function(asyncResult) {
+	this.getObject = function(__byps__asyncResult) {
 		var req =  { _typeId : 278996403 };
+		var ret = transport.send(req, asyncResult);
+		return ret.result;
+	};
+	
+};
+
+/**
+ * Interface functions to verify constant definitions.
+*/
+com.wilutions.byps.test.api.remote.BStub_RemoteConstants = function(transport) {
+	
+	this._typeId = 431648293;
+	
+	this.transport = transport;
+	
+	/**
+	*/
+	this.compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult) {
+		var req =  { _typeId : 1570751625, ALEPH : ALEPH, BETH : BETH };
+		var ret = transport.send(req, asyncResult);
+		return ret.result;
+	};
+	
+	/**
+	*/
+	this.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult) {
+		var req =  { _typeId : 862752254, bool1s : bool1s, bool2s : bool2s, char1s : char1s, stringNull : stringNull, char2s : char2s, short1s : short1s, int1s : int1s, long1s : long1s, float1s : float1s, double1s : double1s, string1s : string1s, ALL : ALL, arrInt : arrInt, arrInt4 : arrInt4, arrStrings : arrStrings, arrStrings4 : arrStrings4, arrAll : arrAll };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
 	};
@@ -4334,7 +4556,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 	
 	/**
 	*/
-	this.getPlanet = function(asyncResult) {
+	this.getPlanet = function(__byps__asyncResult) {
 		var req =  { _typeId : 627010462 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4342,7 +4564,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 	
 	/**
 	*/
-	this.setPlanet = function(planet, asyncResult) {
+	this.setPlanet = function(planet, __byps__asyncResult) {
 		var req =  { _typeId : 412393386, planet : planet };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4360,7 +4582,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.setActor = function(act, asyncResult) {
+	this.setActor = function(act, __byps__asyncResult) {
 		var req =  { _typeId : 299289599, act : act };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4368,7 +4590,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.getActor = function(asyncResult) {
+	this.getActor = function(__byps__asyncResult) {
 		var req =  { _typeId : 261822861 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4376,7 +4598,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.setPoint2DArray1dim = function(pointArray, asyncResult) {
+	this.setPoint2DArray1dim = function(pointArray, __byps__asyncResult) {
 		var req =  { _typeId : 531757758, pointArray : pointArray };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4384,7 +4606,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.getPoint2DArray1dim = function(asyncResult) {
+	this.getPoint2DArray1dim = function(__byps__asyncResult) {
 		var req =  { _typeId : 1011970102 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4392,7 +4614,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.setPoint2DArray4dim = function(pointArray, asyncResult) {
+	this.setPoint2DArray4dim = function(pointArray, __byps__asyncResult) {
 		var req =  { _typeId : 531668385, pointArray : pointArray };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4400,7 +4622,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.getPoint2DArray4dim = function(asyncResult) {
+	this.getPoint2DArray4dim = function(__byps__asyncResult) {
 		var req =  { _typeId : 1012059475 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4408,7 +4630,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.setPoint2DList = function(pointList, asyncResult) {
+	this.setPoint2DList = function(pointList, __byps__asyncResult) {
 		var req =  { _typeId : 224357548, pointList : pointList };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4416,7 +4638,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.getPoint2DList = function(asyncResult) {
+	this.getPoint2DList = function(__byps__asyncResult) {
 		var req =  { _typeId : 1996093752 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4424,7 +4646,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.setPoint2DListList = function(pointListList, asyncResult) {
+	this.setPoint2DListList = function(pointListList, __byps__asyncResult) {
 		var req =  { _typeId : 1097161578, pointListList : pointListList };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4432,7 +4654,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.getPoint2DListList = function(asyncResult) {
+	this.getPoint2DListList = function(__byps__asyncResult) {
 		var req =  { _typeId : 177127926 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4440,7 +4662,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.setPoint2DMap = function(pointMap, asyncResult) {
+	this.setPoint2DMap = function(pointMap, __byps__asyncResult) {
 		var req =  { _typeId : 546951282, pointMap : pointMap };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4448,7 +4670,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	/**
 	*/
-	this.getPoint2DMap = function(asyncResult) {
+	this.getPoint2DMap = function(__byps__asyncResult) {
 		var req =  { _typeId : 1321082494 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4466,7 +4688,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getBoolean1 = function(asyncResult) {
+	this.getBoolean1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1794077576 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4474,7 +4696,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setBoolean1 = function(boolean1, asyncResult) {
+	this.setBoolean1 = function(boolean1, __byps__asyncResult) {
 		var req =  { _typeId : 1882657404, boolean1 : boolean1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4482,7 +4704,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getByte1 = function(asyncResult) {
+	this.getByte1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1319541530 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4490,7 +4712,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setByte1 = function(byte1, asyncResult) {
+	this.setByte1 = function(byte1, __byps__asyncResult) {
 		var req =  { _typeId : 758429070, byte1 : byte1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4498,7 +4720,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getChar1 = function(asyncResult) {
+	this.getChar1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1319940748 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4506,7 +4728,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setChar1 = function(char1, asyncResult) {
+	this.setChar1 = function(char1, __byps__asyncResult) {
 		var req =  { _typeId : 758828288, char1 : char1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4514,7 +4736,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getShort1 = function(asyncResult) {
+	this.getShort1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1573024156 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4522,7 +4744,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setShort1 = function(short1, asyncResult) {
+	this.setShort1 = function(short1, __byps__asyncResult) {
 		var req =  { _typeId : 1787641232, short1 : short1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4530,7 +4752,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt1 = function(asyncResult) {
+	this.getInt1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 874047761 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4538,7 +4760,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt1 = function(int1, asyncResult) {
+	this.setInt1 = function(int1, __byps__asyncResult) {
 		var req =  { _typeId : 1360809955, int1 : int1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4546,7 +4768,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getLong1 = function(asyncResult) {
+	this.getLong1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1328473126 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4554,7 +4776,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setLong1 = function(long1, asyncResult) {
+	this.setLong1 = function(long1, __byps__asyncResult) {
 		var req =  { _typeId : 767360666, long1 : long1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4562,7 +4784,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getFloat1 = function(asyncResult) {
+	this.getFloat1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1941525372 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4570,7 +4792,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setFloat1 = function(float1, asyncResult) {
+	this.setFloat1 = function(float1, __byps__asyncResult) {
 		var req =  { _typeId : 2138824848, float1 : float1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4578,7 +4800,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getDouble1 = function(asyncResult) {
+	this.getDouble1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1741299407 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4586,7 +4808,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setDouble1 = function(double1, asyncResult) {
+	this.setDouble1 = function(double1, __byps__asyncResult) {
 		var req =  { _typeId : 195505829, double1 : double1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4594,7 +4816,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getString1 = function(asyncResult) {
+	this.getString1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1173060367 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4602,7 +4824,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setString1 = function(string1, asyncResult) {
+	this.setString1 = function(string1, __byps__asyncResult) {
 		var req =  { _typeId : 763744869, string1 : string1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4610,7 +4832,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getPrimitiveTypes1 = function(asyncResult) {
+	this.getPrimitiveTypes1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1940572240 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4618,7 +4840,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setPrimitiveTypes1 = function(primitiveTypes1, asyncResult) {
+	this.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
 		var req =  { _typeId : 1434361404, primitiveTypes1 : primitiveTypes1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4626,7 +4848,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getByte2 = function(asyncResult) {
+	this.getByte2 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1319541531 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4634,7 +4856,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setByte2 = function(byte2, asyncResult) {
+	this.setByte2 = function(byte2, __byps__asyncResult) {
 		var req =  { _typeId : 758429071, byte2 : byte2 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4642,7 +4864,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt2 = function(asyncResult) {
+	this.getInt2 = function(__byps__asyncResult) {
 		var req =  { _typeId : 874047762 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4650,7 +4872,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt2 = function(int2, asyncResult) {
+	this.setInt2 = function(int2, __byps__asyncResult) {
 		var req =  { _typeId : 1360809954, int2 : int2 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4658,7 +4880,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getObj1 = function(asyncResult) {
+	this.getObj1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 874214665 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4666,7 +4888,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setObj1 = function(obj1, asyncResult) {
+	this.setObj1 = function(obj1, __byps__asyncResult) {
 		var req =  { _typeId : 1360643051, obj1 : obj1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4674,7 +4896,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt3 = function(asyncResult) {
+	this.getInt3 = function(__byps__asyncResult) {
 		var req =  { _typeId : 874047763 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4682,7 +4904,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt3 = function(int3, asyncResult) {
+	this.setInt3 = function(int3, __byps__asyncResult) {
 		var req =  { _typeId : 1360809953, int3 : int3 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4690,7 +4912,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt4 = function(asyncResult) {
+	this.getInt4 = function(__byps__asyncResult) {
 		var req =  { _typeId : 874047764 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4698,7 +4920,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt4 = function(int4, asyncResult) {
+	this.setInt4 = function(int4, __byps__asyncResult) {
 		var req =  { _typeId : 1360809952, int4 : int4 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4716,7 +4938,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getBoolean1 = function(asyncResult) {
+	this.getBoolean1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 461626272 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4724,7 +4946,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setBoolean1 = function(boolean1, asyncResult) {
+	this.setBoolean1 = function(boolean1, __byps__asyncResult) {
 		var req =  { _typeId : 550206100, boolean1 : boolean1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4732,7 +4954,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getByte1 = function(asyncResult) {
+	this.getByte1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1348711374 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4740,7 +4962,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setByte1 = function(byte1, asyncResult) {
+	this.setByte1 = function(byte1, __byps__asyncResult) {
 		var req =  { _typeId : 1909823834, byte1 : byte1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4748,7 +4970,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getChar1 = function(asyncResult) {
+	this.getChar1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1348312156 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4756,7 +4978,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setChar1 = function(char1, asyncResult) {
+	this.setChar1 = function(char1, __byps__asyncResult) {
 		var req =  { _typeId : 1909424616, char1 : char1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4764,7 +4986,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getShort1 = function(asyncResult) {
+	this.getShort1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1610481740 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4772,7 +4994,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setShort1 = function(short1, asyncResult) {
+	this.setShort1 = function(short1, __byps__asyncResult) {
 		var req =  { _typeId : 1395864664, short1 : short1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4780,7 +5002,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt1 = function(asyncResult) {
+	this.getInt1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1013140231 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4788,7 +5010,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt1 = function(int1, asyncResult) {
+	this.setInt1 = function(int1, __byps__asyncResult) {
 		var req =  { _typeId : 1046969349, int1 : int1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4796,7 +5018,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getLong1 = function(asyncResult) {
+	this.getLong1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1339779778 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4804,7 +5026,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setLong1 = function(long1, asyncResult) {
+	this.setLong1 = function(long1, __byps__asyncResult) {
 		var req =  { _typeId : 1900892238, long1 : long1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4812,7 +5034,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getFloat1 = function(asyncResult) {
+	this.getFloat1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1241980524 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4820,7 +5042,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setFloat1 = function(float1, asyncResult) {
+	this.setFloat1 = function(float1, __byps__asyncResult) {
 		var req =  { _typeId : 1027363448, float1 : float1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4828,7 +5050,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getDouble1 = function(asyncResult) {
+	this.getDouble1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1836864439 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4836,7 +5058,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setDouble1 = function(double1, asyncResult) {
+	this.setDouble1 = function(double1, __byps__asyncResult) {
 		var req =  { _typeId : 99940797, double1 : double1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4844,7 +5066,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getString1 = function(asyncResult) {
+	this.getString1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1268625399 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4852,7 +5074,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setString1 = function(string1, asyncResult) {
+	this.setString1 = function(string1, __byps__asyncResult) {
 		var req =  { _typeId : 668179837, string1 : string1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4860,7 +5082,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getPrimitiveTypes1 = function(asyncResult) {
+	this.getPrimitiveTypes1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 77071512 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4868,7 +5090,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setPrimitiveTypes1 = function(primitiveTypes1, asyncResult) {
+	this.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
 		var req =  { _typeId : 842962140, primitiveTypes1 : primitiveTypes1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4876,7 +5098,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getByte2 = function(asyncResult) {
+	this.getByte2 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1348711373 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4884,7 +5106,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setByte2 = function(byte2, asyncResult) {
+	this.setByte2 = function(byte2, __byps__asyncResult) {
 		var req =  { _typeId : 1909823833, byte2 : byte2 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4892,7 +5114,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt2 = function(asyncResult) {
+	this.getInt2 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1013140230 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4900,7 +5122,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt2 = function(int2, asyncResult) {
+	this.setInt2 = function(int2, __byps__asyncResult) {
 		var req =  { _typeId : 1046969350, int2 : int2 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4908,7 +5130,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.getObj1 = function(asyncResult) {
+	this.getObj1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1012973327 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4916,7 +5138,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	/**
 	*/
-	this.setObj1 = function(obj1, asyncResult) {
+	this.setObj1 = function(obj1, __byps__asyncResult) {
 		var req =  { _typeId : 1047136253, obj1 : obj1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4934,7 +5156,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.voidFunctionVoid = function(asyncResult) {
+	this.voidFunctionVoid = function(__byps__asyncResult) {
 		var req =  { _typeId : 1856936054 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4942,7 +5164,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setBool = function(v, asyncResult) {
+	this.setBool = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 143860510, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4950,7 +5172,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setByte = function(v, asyncResult) {
+	this.setByte = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 143850752, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4958,7 +5180,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setChar = function(v, asyncResult) {
+	this.setChar = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 143837874, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4966,7 +5188,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setShort = function(v, asyncResult) {
+	this.setShort = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 149216892, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4974,7 +5196,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setInt = function(v, asyncResult) {
+	this.setInt = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 974465289, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4982,7 +5204,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setLong = function(v, asyncResult) {
+	this.setLong = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 143562636, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4990,7 +5212,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setFloat = function(v, asyncResult) {
+	this.setFloat = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 161104028, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -4998,7 +5220,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setDouble = function(v, asyncResult) {
+	this.setDouble = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 753565751, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5006,7 +5228,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setString = function(v, asyncResult) {
+	this.setString = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 319593463, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5014,7 +5236,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setPrimitiveTypes = function(v, asyncResult) {
+	this.setPrimitiveTypes = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 941809610, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5022,7 +5244,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.setObject = function(v, asyncResult) {
+	this.setObject = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 450975945, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5030,7 +5252,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getBool = function(asyncResult) {
+	this.getBool = function(__byps__asyncResult) {
 		var req =  { _typeId : 2090997206 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5038,7 +5260,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getByte = function(asyncResult) {
+	this.getByte = function(__byps__asyncResult) {
 		var req =  { _typeId : 2091006964 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5046,7 +5268,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getChar = function(asyncResult) {
+	this.getChar = function(__byps__asyncResult) {
 		var req =  { _typeId : 2091019842 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5054,7 +5276,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getShort = function(asyncResult) {
+	this.getShort = function(__byps__asyncResult) {
 		var req =  { _typeId : 411895568 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5062,7 +5284,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getInt = function(asyncResult) {
+	this.getInt = function(__byps__asyncResult) {
 		var req =  { _typeId : 1318015101 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5070,7 +5292,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getLong = function(asyncResult) {
+	this.getLong = function(__byps__asyncResult) {
 		var req =  { _typeId : 2091295080 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5078,7 +5300,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getFloat = function(asyncResult) {
+	this.getFloat = function(__byps__asyncResult) {
 		var req =  { _typeId : 400008432 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5086,7 +5308,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getDouble = function(asyncResult) {
+	this.getDouble = function(__byps__asyncResult) {
 		var req =  { _typeId : 538948675 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5094,7 +5316,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getString = function(asyncResult) {
+	this.getString = function(__byps__asyncResult) {
 		var req =  { _typeId : 104976387 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5102,7 +5324,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getPrimitiveTypes = function(asyncResult) {
+	this.getPrimitiveTypes = function(__byps__asyncResult) {
 		var req =  { _typeId : 1881962430 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5110,7 +5332,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.getObject = function(asyncResult) {
+	this.getObject = function(__byps__asyncResult) {
 		var req =  { _typeId : 236358869 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5118,7 +5340,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, asyncResult) {
+	this.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult) {
 		var req =  { _typeId : 1794219594, b : b, c : c, s : s, i : i, l : l, f : f, d : d, str : str, pt : pt, o : o };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5126,7 +5348,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	/**
 	*/
-	this.add = function(a, b, asyncResult) {
+	this.add = function(a, b, __byps__asyncResult) {
 		var req =  { _typeId : 1073583639, a : a, b : b };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5144,7 +5366,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteReferences = function(transport) 
 	
 	/**
 	*/
-	this.getNode = function(asyncResult) {
+	this.getNode = function(__byps__asyncResult) {
 		var req =  { _typeId : 655936732 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5152,8 +5374,42 @@ com.wilutions.byps.test.api.remote.BStub_RemoteReferences = function(transport) 
 	
 	/**
 	*/
-	this.setNode = function(v, asyncResult) {
+	this.setNode = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1404172848, v : v };
+		var ret = transport.send(req, asyncResult);
+		return ret.result;
+	};
+	
+};
+
+/**
+*/
+com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl = function(transport) {
+	
+	this._typeId = 1124545992;
+	
+	this.transport = transport;
+	
+	/**
+	*/
+	this.publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult) {
+		var req =  { _typeId : 1776814809, name : name, remote : remote, fowardToOtherServers : fowardToOtherServers };
+		var ret = transport.send(req, asyncResult);
+		return ret.result;
+	};
+	
+	/**
+	*/
+	this.getPublishedRemote = function(name, __byps__asyncResult) {
+		var req =  { _typeId : 1216543212, name : name };
+		var ret = transport.send(req, asyncResult);
+		return ret.result;
+	};
+	
+	/**
+	*/
+	this.removePublishedRemote = function(name, __byps__asyncResult) {
+		var req =  { _typeId : 1302703010, name : name };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
 	};
@@ -5170,7 +5426,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getBoolean1 = function(asyncResult) {
+	this.getBoolean1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1690813926 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5178,7 +5434,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setBoolean1 = function(boolean1, asyncResult) {
+	this.setBoolean1 = function(boolean1, __byps__asyncResult) {
 		var req =  { _typeId : 1779393754, boolean1 : boolean1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5186,7 +5442,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getByte1 = function(asyncResult) {
+	this.getByte1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 2125684552 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5194,7 +5450,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setByte1 = function(byte1, asyncResult) {
+	this.setByte1 = function(byte1, __byps__asyncResult) {
 		var req =  { _typeId : 1608170284, byte1 : byte1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5202,7 +5458,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getChar1 = function(asyncResult) {
+	this.getChar1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 2125285334 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5210,7 +5466,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setChar1 = function(char1, asyncResult) {
+	this.setChar1 = function(char1, __byps__asyncResult) {
 		var req =  { _typeId : 1608569502, char1 : char1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5218,7 +5474,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getShort1 = function(asyncResult) {
+	this.getShort1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1000850298 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5226,7 +5482,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setShort1 = function(short1, asyncResult) {
+	this.setShort1 = function(short1, __byps__asyncResult) {
 		var req =  { _typeId : 1215467374, short1 : short1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5234,7 +5490,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt1 = function(asyncResult) {
+	this.getInt1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 68372557 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5242,7 +5498,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt1 = function(int1, asyncResult) {
+	this.setInt1 = function(int1, __byps__asyncResult) {
 		var req =  { _typeId : 1991737023, int1 : int1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5250,7 +5506,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getLong1 = function(asyncResult) {
+	this.getLong1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 2116752956 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5258,7 +5514,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setLong1 = function(long1, asyncResult) {
+	this.setLong1 = function(long1, __byps__asyncResult) {
 		var req =  { _typeId : 1617101880, long1 : long1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5266,7 +5522,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getFloat1 = function(asyncResult) {
+	this.getFloat1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1369351514 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5274,7 +5530,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setFloat1 = function(float1, asyncResult) {
+	this.setFloat1 = function(float1, __byps__asyncResult) {
 		var req =  { _typeId : 1583968590, float1 : float1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5282,7 +5538,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getDouble1 = function(asyncResult) {
+	this.getDouble1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1183778993 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5290,7 +5546,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setDouble1 = function(double1, asyncResult) {
+	this.setDouble1 = function(double1, __byps__asyncResult) {
 		var req =  { _typeId : 753026243, double1 : double1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5298,7 +5554,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getString1 = function(asyncResult) {
+	this.getString1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 615539953 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5306,7 +5562,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setString1 = function(string1, asyncResult) {
+	this.setString1 = function(string1, __byps__asyncResult) {
 		var req =  { _typeId : 1321265283, string1 : string1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5314,7 +5570,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getPrimitiveTypes1 = function(asyncResult) {
+	this.getPrimitiveTypes1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 1802821742 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5322,7 +5578,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setPrimitiveTypes1 = function(primitiveTypes1, asyncResult) {
+	this.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
 		var req =  { _typeId : 1572111902, primitiveTypes1 : primitiveTypes1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5330,7 +5586,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getByte2 = function(asyncResult) {
+	this.getByte2 = function(__byps__asyncResult) {
 		var req =  { _typeId : 2125684551 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5338,7 +5594,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setByte2 = function(byte2, asyncResult) {
+	this.setByte2 = function(byte2, __byps__asyncResult) {
 		var req =  { _typeId : 1608170285, byte2 : byte2 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5346,7 +5602,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getInt2 = function(asyncResult) {
+	this.getInt2 = function(__byps__asyncResult) {
 		var req =  { _typeId : 68372556 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5354,7 +5610,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setInt2 = function(int2, asyncResult) {
+	this.setInt2 = function(int2, __byps__asyncResult) {
 		var req =  { _typeId : 1991737024, int2 : int2 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5362,7 +5618,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.getObj1 = function(asyncResult) {
+	this.getObj1 = function(__byps__asyncResult) {
 		var req =  { _typeId : 68205653 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5370,7 +5626,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	/**
 	*/
-	this.setObj1 = function(obj1, asyncResult) {
+	this.setObj1 = function(obj1, __byps__asyncResult) {
 		var req =  { _typeId : 1991903927, obj1 : obj1 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5388,7 +5644,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 	/**
 	*/
-	this.getImage = function(asyncResult) {
+	this.getImage = function(__byps__asyncResult) {
 		var req =  { _typeId : 1902276204 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5396,7 +5652,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 	/**
 	*/
-	this.setImage = function(istrm, asyncResult) {
+	this.setImage = function(istrm, __byps__asyncResult) {
 		var req =  { _typeId : 1831578632, istrm : istrm };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5404,7 +5660,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 	/**
 	*/
-	this.getImages = function(asyncResult) {
+	this.getImages = function(__byps__asyncResult) {
 		var req =  { _typeId : 1158979935 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5412,7 +5668,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 	/**
 	*/
-	this.setImages = function(istrms, doNotReadStreamAtKey, asyncResult) {
+	this.setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult) {
 		var req =  { _typeId : 944362859, istrms : istrms, doNotReadStreamAtKey : doNotReadStreamAtKey };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5420,7 +5676,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 	/**
 	*/
-	this.throwLastException = function(asyncResult) {
+	this.throwLastException = function(__byps__asyncResult) {
 		var req =  { _typeId : 2047657918 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5428,7 +5684,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 	/**
 	*/
-	this.getTextStream = function(asyncResult) {
+	this.getTextStream = function(__byps__asyncResult) {
 		var req =  { _typeId : 1083407988 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5446,7 +5702,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
 	/**
 	*/
-	this.incrementInt = function(a, asyncResult) {
+	this.incrementInt = function(a, __byps__asyncResult) {
 		var req =  { _typeId : 1461829915, a : a };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5454,7 +5710,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
 	/**
 	*/
-	this.getStreams = function(ctrl, asyncResult) {
+	this.getStreams = function(ctrl, __byps__asyncResult) {
 		var req =  { _typeId : 865920738, ctrl : ctrl };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5462,7 +5718,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
 	/**
 	*/
-	this.putStreams = function(strm, ctrl, asyncResult) {
+	this.putStreams = function(strm, ctrl, __byps__asyncResult) {
 		var req =  { _typeId : 242798857, strm : strm, ctrl : ctrl };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5470,7 +5726,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
 	/**
 	*/
-	this.sendChat = function(cs, asyncResult) {
+	this.sendChat = function(cs, __byps__asyncResult) {
 		var req =  { _typeId : 1352392091, cs : cs };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5488,7 +5744,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.callClientIncrementInt = function(v, asyncResult) {
+	this.callClientIncrementInt = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1252575894, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5496,7 +5752,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.setPartner = function(client, asyncResult) {
+	this.setPartner = function(client, __byps__asyncResult) {
 		var req =  { _typeId : 1188403123, client : client };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5504,7 +5760,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.getPartner = function(asyncResult) {
+	this.getPartner = function(__byps__asyncResult) {
 		var req =  { _typeId : 748402113 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5512,7 +5768,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.getStreamsFromClient = function(asyncResult) {
+	this.getStreamsFromClient = function(__byps__asyncResult) {
 		var req =  { _typeId : 1415283169 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5520,7 +5776,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.putStreamsOnClient = function(streams, asyncResult) {
+	this.putStreamsOnClient = function(streams, __byps__asyncResult) {
 		var req =  { _typeId : 1367013829, streams : streams };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5528,7 +5784,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.registerWithClientMap = function(id, asyncResult) {
+	this.registerWithClientMap = function(id, __byps__asyncResult) {
 		var req =  { _typeId : 1921080901, id : id };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5536,7 +5792,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.getClient = function(id, asyncResult) {
+	this.getClient = function(id, __byps__asyncResult) {
 		var req =  { _typeId : 2107407220, id : id };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5544,7 +5800,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.getClientIds = function(asyncResult) {
+	this.getClientIds = function(__byps__asyncResult) {
 		var req =  { _typeId : 2063368540 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5552,7 +5808,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	/**
 	*/
-	this.callClientParallel = function(v, asyncResult) {
+	this.callClientParallel = function(v, __byps__asyncResult) {
 		var req =  { _typeId : 1340180893, v : v };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5570,7 +5826,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
 	/**
 	*/
-	this.setEvolve = function(obj, asyncResult) {
+	this.setEvolve = function(obj, __byps__asyncResult) {
 		var req =  { _typeId : 246658450, obj : obj };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5578,7 +5834,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
 	/**
 	*/
-	this.getEvolve = function(asyncResult) {
+	this.getEvolve = function(__byps__asyncResult) {
 		var req =  { _typeId : 32041374 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5586,7 +5842,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
 	/**
 	*/
-	this.setClient = function(partner, asyncResult) {
+	this.setClient = function(partner, __byps__asyncResult) {
 		var req =  { _typeId : 313337668, partner : partner };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5594,7 +5850,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
 	/**
 	*/
-	this.getClient = function(asyncResult) {
+	this.getClient = function(__byps__asyncResult) {
 		var req =  { _typeId : 98720592 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -5602,7 +5858,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
 	/**
 	*/
-	this.sendEvolveToClient = function(asyncResult) {
+	this.sendEvolveToClient = function(__byps__asyncResult) {
 		var req =  { _typeId : 1425170268 };
 		var ret = transport.send(req, asyncResult);
 		return ret.result;
@@ -6067,6 +6323,26 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 				647080343, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
+				}
+			],
+		
+		
+		// Remote Interface RemoteConstants			
+			// Method compare_HebrewC
+			1570751625 : [ // _typeId of request class
+				431648293, // _typeId of remote interface
+				309901669, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_compare_HebrewC(methodObj.ALEPH, methodObj.BETH, methodResult);
+				}
+			],
+			
+			// Method compare_AllTypesC
+			862752254 : [ // _typeId of request class
+				431648293, // _typeId of remote interface
+				148544162, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_compare_AllTypesC(methodObj.bool1s, methodObj.bool2s, methodObj.char1s, methodObj.stringNull, methodObj.char2s, methodObj.short1s, methodObj.int1s, methodObj.long1s, methodObj.float1s, methodObj.double1s, methodObj.string1s, methodObj.ALL, methodObj.arrInt, methodObj.arrInt4, methodObj.arrStrings, methodObj.arrStrings4, methodObj.arrAll, methodResult);
 				}
 			],
 		
@@ -6956,6 +7232,35 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			],
 		
 		
+		// Remote Interface RemoteServerCtrl			
+			// Method publishRemote
+			1776814809 : [ // _typeId of request class
+				1124545992, // _typeId of remote interface
+				309901669, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_publishRemote(methodObj.name, methodObj.remote, methodObj.fowardToOtherServers, methodResult);
+				}
+			],
+			
+			// Method getPublishedRemote
+			1216543212 : [ // _typeId of request class
+				1124545992, // _typeId of remote interface
+				309901672, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getPublishedRemote(methodObj.name, methodResult);
+				}
+			],
+			
+			// Method removePublishedRemote
+			1302703010 : [ // _typeId of request class
+				1124545992, // _typeId of remote interface
+				309901669, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_removePublishedRemote(methodObj.name, methodResult);
+				}
+			],
+		
+		
 		// Remote Interface RemoteSetTypes			
 			// Method getBoolean1
 			1690813926 : [ // _typeId of request class
@@ -7828,6 +8133,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.BResult_16
+		309901672 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":16 // BRemote
+			},
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.BResult_1617670280
 		732507399 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
@@ -8472,6 +8786,68 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
 			},
 			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.cons.AllTypesC
+		930294276 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.cons.AllTypesZ
+		142458 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"bool1":1, // boolean
+				"byte1":2, // byte
+				"char1":4, // char
+				"short1":3, // short
+				"int1":5, // int
+				"long1":6, // long
+				"float1":7, // float
+				"double1":8, // double
+				"string1":10, // String
+				"hebrew1":1518668429, // com.wilutions.byps.test.api.cons.HebrewZ
+				"byte2":1374008726, // byte[]
+				"int2":100361105, // int[]
+				"string2":1888107655, // String[]
+				"hebrew2":2092671091 // com.wilutions.byps.test.api.cons.HebrewZ[]
+			},
+			{// names of inline elements
+				"byte2":1374008726, // byte[]
+				"int2":100361105, // int[]
+				"string2":1888107655, // String[]
+				"hebrew2":2092671091 // com.wilutions.byps.test.api.cons.HebrewZ[]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.cons.AllTypesZ[][]
+		1981543076 : new com.wilutions.byps.BSerializerArray(
+			142458, // Element type: com.wilutions.byps.test.api.cons.AllTypesZ
+			2
+		),
+		
+		// com.wilutions.byps.test.api.cons.HebrewC
+		691741677 : new com.wilutions.byps.BSerializer(
+			null,
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.cons.HebrewZ
+		1518668429 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"core":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.cons.HebrewZ[]
+		2092671091 : new com.wilutions.byps.BSerializerArray(
+			1518668429, // Element type: com.wilutions.byps.test.api.cons.HebrewZ
+			1
 		),
 		
 		// com.wilutions.byps.test.api.enu.EnumPlanets[]
@@ -9257,6 +9633,47 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{// names of inline elements
 				"v":588723219 // String[][][][]
 			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC
+		862752254 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"bool1s":1, // boolean
+				"bool2s":1, // boolean
+				"char1s":4, // char
+				"stringNull":10, // String
+				"char2s":4, // char
+				"short1s":3, // short
+				"int1s":5, // int
+				"long1s":6, // long
+				"float1s":7, // float
+				"double1s":8, // double
+				"string1s":10, // String
+				"ALL":142458, // com.wilutions.byps.test.api.cons.AllTypesZ
+				"arrInt":100361105, // int[]
+				"arrInt4":39910537, // int[][][][]
+				"arrStrings":1888107655, // String[]
+				"arrStrings4":588723219, // String[][][][]
+				"arrAll":1981543076 // com.wilutions.byps.test.api.cons.AllTypesZ[][]
+			},
+			{// names of inline elements
+				"arrInt":100361105, // int[]
+				"arrInt4":39910537, // int[][][][]
+				"arrStrings":1888107655, // String[]
+				"arrStrings4":588723219, // String[][][][]
+				"arrAll":1981543076 // com.wilutions.byps.test.api.cons.AllTypesZ[][]
+			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC
+		1570751625 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"ALEPH":1518668429, // com.wilutions.byps.test.api.cons.HebrewZ
+				"BETH":1518668429 // com.wilutions.byps.test.api.cons.HebrewZ
+			},
+			null,
 			false // inlineInstance
 		),
 		
@@ -10113,6 +10530,35 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote
+		1216543212 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"name":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote
+		1776814809 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"name":10, // String
+				"remote":16, // BRemote
+				"fowardToOtherServers":1 // boolean
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote
+		1302703010 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"name":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
 		1690813926 : new com.wilutions.byps.BSerializer(
 			null,
@@ -10405,6 +10851,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim
 		1557173854 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim),
 		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteConstants
+		431648293 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteConstants),
+		
 		// com.wilutions.byps.test.api.remote.BStub_RemoteEnums
 		359349400 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteEnums),
 		
@@ -10422,6 +10871,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 		
 		// com.wilutions.byps.test.api.remote.BStub_RemoteReferences
 		2086824050 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteReferences),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl
+		1124545992 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl),
 		
 		// com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes
 		1156008353 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes),

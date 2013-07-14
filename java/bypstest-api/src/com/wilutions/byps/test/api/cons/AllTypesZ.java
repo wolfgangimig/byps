@@ -1,12 +1,12 @@
 package com.wilutions.byps.test.api.cons;
 
-/**
- * 
- * @Serializable
- *
- */
-public class AllTypesZ {
+import java.io.Serializable;
+import java.util.Arrays;
 
+public class AllTypesZ implements Serializable {
+
+	private static final long serialVersionUID = 6007794101104290938L;
+	
 	private boolean bool1;
 	private byte byte1;
 	private char char1;
@@ -15,7 +15,7 @@ public class AllTypesZ {
 	private long long1;
 	private float float1;
 	private double double1;
-	private String string1;
+	private String string1 = "";
 	private HebrewZ hebrew1; 
 	private byte[] byte2;
 	private int[] int2;
@@ -39,7 +39,7 @@ public class AllTypesZ {
 		this.long1 = long1;
 		this.float1 = float1;
 		this.double1 = double1;
-		this.string1 = string1;
+		this.string1 = string1 != null ? string1 : "";
 		this.hebrew1 = hebrew1;
 		this.byte2 = byte2;
 		this.int2 = int2;
@@ -157,6 +157,76 @@ public class AllTypesZ {
 
 	public void setHebrew2(HebrewZ[] hebrew2) {
 		this.hebrew2 = hebrew2;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (bool1 ? 1231 : 1237);
+		result = prime * result + byte1;
+		result = prime * result + Arrays.hashCode(byte2);
+		result = prime * result + char1;
+		long temp;
+		temp = Double.doubleToLongBits(double1);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + Float.floatToIntBits(float1);
+		result = prime * result + ((hebrew1 == null) ? 0 : hebrew1.hashCode());
+		result = prime * result + Arrays.hashCode(hebrew2);
+		result = prime * result + int1;
+		result = prime * result + Arrays.hashCode(int2);
+		result = prime * result + (int) (long1 ^ (long1 >>> 32));
+		result = prime * result + short1;
+		result = prime * result + ((string1 == null) ? 0 : string1.hashCode());
+		result = prime * result + Arrays.hashCode(string2);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AllTypesZ other = (AllTypesZ) obj;
+		if (bool1 != other.bool1)
+			return false;
+		if (byte1 != other.byte1)
+			return false;
+		if (!Arrays.equals(byte2, other.byte2))
+			return false;
+		if (char1 != other.char1)
+			return false;
+		if (Double.doubleToLongBits(double1) != Double
+				.doubleToLongBits(other.double1))
+			return false;
+		if (Float.floatToIntBits(float1) != Float.floatToIntBits(other.float1))
+			return false;
+		if (hebrew1 == null) {
+			if (other.hebrew1 != null)
+				return false;
+		} else if (!hebrew1.equals(other.hebrew1))
+			return false;
+		if (!Arrays.equals(hebrew2, other.hebrew2))
+			return false;
+		if (int1 != other.int1)
+			return false;
+		if (!Arrays.equals(int2, other.int2))
+			return false;
+		if (long1 != other.long1)
+			return false;
+		if (short1 != other.short1)
+			return false;
+		if (string1 == null) {
+			if (other.string1 != null)
+				return false;
+		} else if (!string1.equals(other.string1))
+			return false;
+		if (!Arrays.equals(string2, other.string2))
+			return false;
+		return true;
 	}
 	
 	

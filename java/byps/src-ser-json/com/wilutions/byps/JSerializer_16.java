@@ -33,7 +33,7 @@ public class JSerializer_16 extends BSerializer {
 		final BInputJson bin = ((BInputJson)bin1);
 		BRemote remote = null;
 		final BTargetId targetId = BTargetId.parseString(bin.currentObject.getString("targetId"));
-		final BRemoteRegistry rreg = bin.transport.remoteRegistry;
+		final BServerRegistry rreg = bin.transport.serverRegistry;
 		if (rreg != null) {
 			remote = rreg.getRemote(targetId, typeId);
 		}

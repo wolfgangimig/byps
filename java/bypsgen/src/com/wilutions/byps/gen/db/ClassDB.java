@@ -15,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.BRemote;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -79,6 +80,9 @@ public class ClassDB {
 
     public TypeInfo getTypeInfo(String fullName) {
     	
+    	// Die funktion gibt's ganz ähnlich auch in BRegistryForClassDB-getTypeIdForBuiltInType
+    	// kann man eine eliminieren?
+    	
     	int typeId = -1;
     	if (fullName.equals("boolean")) typeId = BRegistry.TYPEID_BOOL;
 		else if (fullName.equals("byte")) typeId = BRegistry.TYPEID_INT8;
@@ -100,6 +104,7 @@ public class ClassDB {
 		else if (fullName.equals(Float.class.getName())) typeId = BRegistry.TYPEID_FLOAT;
 		else if (fullName.equals(Double.class.getName())) typeId = BRegistry.TYPEID_DOUBLE;
 		else if (fullName.equals(InputStream.class.getName())) typeId = BRegistry.TYPEID_STREAM;
+		else if (fullName.equals(BRemote.class.getName())) typeId = BRegistry.TYPEID_STUB;
 		
     	TypeInfo tinfo = null;
     	if (typeId >= 0) {

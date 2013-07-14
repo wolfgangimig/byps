@@ -27,12 +27,14 @@ public class BClient_Testser extends BClient {
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 		remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
+		remoteConstants = new com.wilutions.byps.test.api.remote.BStub_RemoteConstants(transport);
 		remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(transport);
 		remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(transport);
 		remoteListTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteListTypes(transport);
 		remoteMapTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes(transport);
 		remotePrimitiveTypes = new com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes(transport);
 		remoteReferences = new com.wilutions.byps.test.api.remote.BStub_RemoteReferences(transport);
+		remoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 		remoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(transport);
 		remoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(transport);
 		clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(transport);
@@ -52,6 +54,11 @@ public class BClient_Testser extends BClient {
 	
 	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim remoteSkeleton) {
 		serverR.server.addRemote(1557173854, remoteSkeleton);
+		return this;
+	}
+	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants remoteSkeleton) {
+		serverR.server.addRemote(431648293, remoteSkeleton);
 		return this;
 	}
 	
@@ -85,6 +92,11 @@ public class BClient_Testser extends BClient {
 		return this;
 	}
 	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl remoteSkeleton) {
+		serverR.server.addRemote(1124545992, remoteSkeleton);
+		return this;
+	}
+	
 	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes remoteSkeleton) {
 		serverR.server.addRemote(1156008353, remoteSkeleton);
 		return this;
@@ -115,12 +127,14 @@ public class BClient_Testser extends BClient {
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 		remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
+		remoteConstants = new com.wilutions.byps.test.api.remote.BStub_RemoteConstants(transport);
 		remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(transport);
 		remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(transport);
 		remoteListTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteListTypes(transport);
 		remoteMapTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes(transport);
 		remotePrimitiveTypes = new com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes(transport);
 		remoteReferences = new com.wilutions.byps.test.api.remote.BStub_RemoteReferences(transport);
+		remoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 		remoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(transport);
 		remoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(transport);
 		clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(transport);
@@ -133,12 +147,14 @@ public class BClient_Testser extends BClient {
 		if (remoteId == 1557084481) return remoteArrayTypes1dim;
 		if (remoteId == 2081058997) return remoteArrayTypes23;
 		if (remoteId == 1557173854) return remoteArrayTypes4dim;
+		if (remoteId == 431648293) return remoteConstants;
 		if (remoteId == 359349400) return remoteEnums;
 		if (remoteId == 1206670536) return remoteInlineInstance;
 		if (remoteId == 380156079) return remoteListTypes;
 		if (remoteId == 80483097) return remoteMapTypes;
 		if (remoteId == 1341983932) return remotePrimitiveTypes;
 		if (remoteId == 2086824050) return remoteReferences;
+		if (remoteId == 1124545992) return remoteServerCtrl;
 		if (remoteId == 1156008353) return remoteSetTypes;
 		if (remoteId == 2028487863) return remoteStreams;
 		if (remoteId == 1784257353) return clientIF;
@@ -150,12 +166,14 @@ public class BClient_Testser extends BClient {
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes1dimAsync remoteArrayTypes1dim;
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes23Async remoteArrayTypes23;
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes4dimAsync remoteArrayTypes4dim;
+	public final com.wilutions.byps.test.api.remote.RemoteConstantsAsync remoteConstants;
 	public final com.wilutions.byps.test.api.remote.RemoteEnumsAsync remoteEnums;
 	public final com.wilutions.byps.test.api.remote.RemoteInlineInstanceAsync remoteInlineInstance;
 	public final com.wilutions.byps.test.api.remote.RemoteListTypesAsync remoteListTypes;
 	public final com.wilutions.byps.test.api.remote.RemoteMapTypesAsync remoteMapTypes;
 	public final com.wilutions.byps.test.api.remote.RemotePrimitiveTypesAsync remotePrimitiveTypes;
 	public final com.wilutions.byps.test.api.remote.RemoteReferencesAsync remoteReferences;
+	public final com.wilutions.byps.test.api.remote.RemoteServerCtrlAsync remoteServerCtrl;
 	public final com.wilutions.byps.test.api.remote.RemoteSetTypesAsync remoteSetTypes;
 	public final com.wilutions.byps.test.api.remote.RemoteStreamsAsync remoteStreams;
 	public final com.wilutions.byps.test.api.srvr.ClientIFAsync clientIF;

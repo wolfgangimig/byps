@@ -224,7 +224,7 @@ public class BDoclet extends Doclet {
 		"--sourcepath", 
 		"../bypstest-api/src",
 		
-//		"-gen.changedmembers",
+		//"-gen.changedmembers",
 	};
 	
 	private static String[] byps_ix_ser = new String[] {
@@ -235,6 +235,11 @@ public class BDoclet extends Doclet {
 
 		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps_ix_ser\\src-ser",
 		"-gencs.upfirst",     "false",
+		
+		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\api",
+		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl",
+		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
+		"-gencpp.max-fsize", "50000",
 		
 		"-allserials",
 		"-allremotes",

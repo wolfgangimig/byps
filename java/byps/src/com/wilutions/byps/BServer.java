@@ -12,18 +12,26 @@ public class BServer {
 	public final BTransport transport;
 	public final BClient clientR;
 	
-	protected final Map<Integer, BRemote> remotes;
+	protected final Map<Integer, BSkeleton> remotes;
 	
 	public BServer(BTransport transport, BClient clientR) {
 		this.transport = transport;
 		this.clientR = clientR;
-		this.remotes = new ConcurrentHashMap<Integer, BRemote>();
+		this.remotes = new ConcurrentHashMap<Integer, BSkeleton>();
 	}
 	
 	public BServer(BServer rhs) {
 		this.transport = rhs.transport;
 		this.clientR = rhs.clientR;
 		this.remotes = rhs.remotes;
+	}
+	
+	public void setTargetId(BTargetId targetId) {
+		transport.setTargetId(targetId);
+		if (clientR != null) clientR.transport.setTargetId(targetId);
+		for (BSkeleton remote : remotes.values()) {
+			remote.BSkeleton_setTargetId(targetId);
+		}
 	}
 	
 	public void addRemote(int remoteId, BSkeleton remoteImpl) {
@@ -60,13 +68,13 @@ public class BServer {
 				remote = remotes.get(remoteId);
 				if (log.isDebugEnabled()) log.debug("client calls its server-side: remoteId=" + remoteId + ", remote=" + remote);
 			}
-			else if (this.transport.remoteRegistry != null) { // should not be null for server-side transport
+			else if (this.transport.serverRegistry != null) { // should not be null for server-side transport
 				
 				// Es wird eine andere Target-ID angesteuert.
 				// Ermittle hier die BRemote-Schnittstelle dieser Target-ID.
 				// I.d.R. dürfte sie einem anderen Client gehören.
 				
-				remote = this.transport.remoteRegistry.getRemote(clientTargetId, remoteId);
+				remote = this.transport.serverRegistry.getRemote(clientTargetId, remoteId);
 				if (log.isDebugEnabled()) log.debug("client calls another client: remoteId=" + remoteId + ", remote=" + remote);
 			}
 			

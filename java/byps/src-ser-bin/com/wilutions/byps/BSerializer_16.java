@@ -29,7 +29,7 @@ public class BSerializer_16 extends BSerializer {
 		BInputBin bin = ((BInputBin)bin1);
 		BRemote remote = null;
 		final BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer());
-		final BRemoteRegistry rreg = bin.transport.remoteRegistry;
+		final BServerRegistry rreg = bin.transport.serverRegistry;
 		if (rreg != null) {
 			remote = rreg.getRemote(targetId, typeId);
 		}

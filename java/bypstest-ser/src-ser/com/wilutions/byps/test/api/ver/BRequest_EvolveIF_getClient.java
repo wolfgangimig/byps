@@ -20,13 +20,13 @@ public final class BRequest_EvolveIF_getClient implements BMethodRequest, Serial
 	public int getRemoteId() { return 2078696281; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final EvolveIFAsync remoteT = (EvolveIFAsync)remote;			
-			BAsyncResultSendMethod<EvolveIF> outerResult = new BAsyncResultSendMethod<EvolveIF>(asyncResult, new com.wilutions.byps.test.api.BResult_2078696281());			
-			remoteT.async_getClient(outerResult);
+			final EvolveIFAsync __byps__remoteT = (EvolveIFAsync)__byps__remote;			
+			BAsyncResultSendMethod<EvolveIF> __byps__outerResult = new BAsyncResultSendMethod<EvolveIF>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_2078696281());			
+			__byps__remoteT.async_getClient(__byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	

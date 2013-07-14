@@ -373,7 +373,7 @@ public class BConvert {
 					value = Integer.toString(en.ordinal());  
 				}
 				else {
-					value = serializeObjectToJson(valueObj);
+					value = serializeObjectToJson(errInfo, valueObj);
 				}
 			}
 			else if (type.isStringType() && type.dims.length() == 0) {
@@ -389,7 +389,8 @@ public class BConvert {
 		return minfo;
 	}
 	
-	private String serializeFieldsToJson(Object value) {
+	private String serializeFieldsToJson(ErrorInfo errInfo, Object value) {
+		errInfo = errInfo.copy();
 		StringBuilder sbuf = new StringBuilder();
 		boolean addComma = false;
 		Class<?> clazz = value.getClass();
@@ -403,7 +404,8 @@ public class BConvert {
 					if (fieldValue != null) {
 						if (addComma) sbuf.append(","); else addComma = true;
 						sbuf.append("\"").append(field.getName()).append("\":");
-						sbuf.append(serializeObjectToJson(fieldValue));
+						errInfo.fieldName = field.getName();
+						sbuf.append(serializeObjectToJson(errInfo, fieldValue));
 					}
 					else {
 						Class<?> fclazz = field.getType();
@@ -419,7 +421,9 @@ public class BConvert {
 		return sbuf.toString();
 	}
 	
-	private String serializeObjectToJson(Object value) {
+	private String serializeObjectToJson(ErrorInfo errInfo, Object value) throws GeneratorException {
+		errInfo = errInfo.copy();
+		
 		StringBuilder sbuf = new StringBuilder();
 		Class<?> clazz = value.getClass();
 		if (clazz.isArray()) {
@@ -427,11 +431,13 @@ public class BConvert {
 			for (int i = 0; i < Array.getLength(value); i++) {
 				if (i != 0) sbuf.append(",");
 				Object elm = Array.get(value, i);
-				sbuf.append(serializeObjectToJson(elm));
+				sbuf.append(serializeObjectToJson(errInfo, elm));
 			}
 			sbuf.append("]");
 		}
 		else if (clazz == Character.class) {
+			int ch = (Character)value;
+			if (!Character.isDefined(ch)) throw new GeneratorException("Invalid unicode character at " + errInfo);
 			sbuf.append("\"").append(value).append("\"");
 		}
 		else if (clazz == String.class) {
@@ -441,7 +447,7 @@ public class BConvert {
 			sbuf.append(value);
 		}
 		else {
-			sbuf.append("{").append(serializeFieldsToJson(value)).append("}");
+			sbuf.append("{").append(serializeFieldsToJson(errInfo, value)).append("}");
 		}
 		return sbuf.toString();
 	}

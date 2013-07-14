@@ -95,6 +95,8 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 743592613) return com.wilutions.byps.test.api.JSerializer_743592613.instance;
 		// com.wilutions.byps.test.api.BResult_1555345627
 		if (typeId == 1887708350) return com.wilutions.byps.test.api.JSerializer_1887708350.instance;
+		// com.wilutions.byps.test.api.BResult_16
+		if (typeId == 309901672) return com.wilutions.byps.test.api.JSerializer_309901672.instance;
 		// com.wilutions.byps.test.api.BResult_1617670280
 		if (typeId == 732507399) return com.wilutions.byps.test.api.JSerializer_732507399.instance;
 		// com.wilutions.byps.test.api.BResult_1628501332
@@ -211,6 +213,18 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 2001) return com.wilutions.byps.test.api.arr.JSerializer_2001.instance;
 		// com.wilutions.byps.test.api.arr.ArrayTypes4dim
 		if (typeId == 2004) return com.wilutions.byps.test.api.arr.JSerializer_2004.instance;
+		// com.wilutions.byps.test.api.cons.AllTypesC
+		if (typeId == 930294276) return com.wilutions.byps.test.api.cons.JSerializer_930294276.instance;
+		// com.wilutions.byps.test.api.cons.AllTypesZ
+		if (typeId == 142458) return com.wilutions.byps.test.api.cons.JSerializer_142458.instance;
+		// com.wilutions.byps.test.api.cons.AllTypesZ[][]
+		if (typeId == 1981543076) return com.wilutions.byps.test.api.JSerializer_1981543076.instance;
+		// com.wilutions.byps.test.api.cons.HebrewC
+		if (typeId == 691741677) return com.wilutions.byps.test.api.cons.JSerializer_691741677.instance;
+		// com.wilutions.byps.test.api.cons.HebrewZ
+		if (typeId == 1518668429) return com.wilutions.byps.test.api.cons.JSerializer_1518668429.instance;
+		// com.wilutions.byps.test.api.cons.HebrewZ[]
+		if (typeId == 2092671091) return com.wilutions.byps.test.api.JSerializer_2092671091.instance;
 		// com.wilutions.byps.test.api.enu.EnumPlanets[]
 		if (typeId == 1092048313) return com.wilutions.byps.test.api.JSerializer_1092048313.instance;
 		// com.wilutions.byps.test.api.enu.UsePlanets
@@ -355,6 +369,10 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 1951707614) return com.wilutions.byps.test.api.remote.JSerializer_1951707614.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
 		if (typeId == 362230997) return com.wilutions.byps.test.api.remote.JSerializer_362230997.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC
+		if (typeId == 862752254) return com.wilutions.byps.test.api.remote.JSerializer_862752254.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC
+		if (typeId == 1570751625) return com.wilutions.byps.test.api.remote.JSerializer_1570751625.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_getPlanet
 		if (typeId == 627010462) return com.wilutions.byps.test.api.remote.JSerializer_627010462.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_setPlanet
@@ -549,6 +567,12 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 655936732) return com.wilutions.byps.test.api.remote.JSerializer_655936732.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_setNode
 		if (typeId == 1404172848) return com.wilutions.byps.test.api.remote.JSerializer_1404172848.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote
+		if (typeId == 1216543212) return com.wilutions.byps.test.api.remote.JSerializer_1216543212.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote
+		if (typeId == 1776814809) return com.wilutions.byps.test.api.remote.JSerializer_1776814809.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote
+		if (typeId == 1302703010) return com.wilutions.byps.test.api.remote.JSerializer_1302703010.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
 		if (typeId == 1690813926) return com.wilutions.byps.test.api.remote.JSerializer_1690813926.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
@@ -619,6 +643,8 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 2081058997) return com.wilutions.byps.test.api.remote.JSerializer_2081058997.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim
 		if (typeId == 1557173854) return com.wilutions.byps.test.api.remote.JSerializer_1557173854.instance;
+		// com.wilutions.byps.test.api.remote.BStub_RemoteConstants
+		if (typeId == 431648293) return com.wilutions.byps.test.api.remote.JSerializer_431648293.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteEnums
 		if (typeId == 359349400) return com.wilutions.byps.test.api.remote.JSerializer_359349400.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance
@@ -631,6 +657,8 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 1341983932) return com.wilutions.byps.test.api.remote.JSerializer_1341983932.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteReferences
 		if (typeId == 2086824050) return com.wilutions.byps.test.api.remote.JSerializer_2086824050.instance;
+		// com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl
+		if (typeId == 1124545992) return com.wilutions.byps.test.api.remote.JSerializer_1124545992.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes
 		if (typeId == 1156008353) return com.wilutions.byps.test.api.remote.JSerializer_1156008353.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteStreams

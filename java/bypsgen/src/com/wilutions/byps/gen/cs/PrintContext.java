@@ -591,21 +591,15 @@ public class PrintContext extends PrintContextBase {
 		return className;
 	}
 
-	public String getElementSelector(TypeInfo serInfo, MemberInfo minfo) {
-		return getElementSelectorClassName(serInfo) + "." + getElementSelectorName(minfo);
-	}
-
 	public void printSetChangedMember(CodePrinter pr, SerialInfo serInfo, MemberInfo minfo) {
 		if (isGenerateChangedMembers()) {
 			SerialInfo serInfoC = classDB.getSerInfo(serInfo.qname + "C");
 			if (serInfoC != null) {
-				String elementSelectorName = getElementSelector(serInfo, minfo);
-				MemberInfo minfoC = serInfoC.findMember(elementSelectorName);
+				String elementSelectorName = getElementSelectorName(minfo);
+				MemberInfo minfoC = serInfoC.findMember(elementSelectorName, "long");
 				if (minfoC != null) {
-					if (minfoC.name.equals(elementSelectorName)) {
-						pr.print("setChangedMember(").print(elementSelectorName)
-						  .print(");").println();
-					}
+					String elms = getElementSelectorClassName(serInfo) + "." + minfoC.name;
+					pr.print("setChangedMember(").print(elms).print(");").println();
 				}
 			}
 		}

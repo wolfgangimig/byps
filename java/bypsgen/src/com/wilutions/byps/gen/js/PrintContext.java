@@ -124,7 +124,7 @@ class PrintContext extends PrintContextBase {
 		}
 		
 		if (async) {
-			mpr.print("asyncResult)");
+			mpr.print("__byps__asyncResult)");
 		}
 		else {
 			String returnsClause = "returns " + returnInfo.type;

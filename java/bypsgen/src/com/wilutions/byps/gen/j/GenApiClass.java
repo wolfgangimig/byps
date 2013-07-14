@@ -352,17 +352,17 @@ class GenApiClass {
 		pr.beginBlock();
 		
 		String remoteType = methodInfo.remoteInfo.getRemoteAsync().toString(serInfo.pack);
-		pr.print("final ").print(remoteType).print(" remoteT = (").print(remoteType).print(")remote;");
+		pr.print("final ").print(remoteType).print(" __byps__remoteT = (").print(remoteType).print(")__byps__remote;");
 		pr.println();
 
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, serInfo.pack);
 		String outerResultType = "BAsyncResultSendMethod<" + rtype + ">";
-		pr.print(outerResultType).print(" outerResult = new ").print(outerResultType)
-			.print("(asyncResult, new ").print(methodInfo.resultInfo.toString(serInfo.pack))
+		pr.print(outerResultType).print(" __byps__outerResult = new ").print(outerResultType)
+			.print("(__byps__asyncResult, new ").print(methodInfo.resultInfo.toString(serInfo.pack))
 			.print("());");
 		pr.println();
 		
-		CodePrinter mpr = pr.print("remoteT.").print("async_").print(methodInfo.name).print("(");
+		CodePrinter mpr = pr.print("__byps__remoteT.").print("async_").print(methodInfo.name).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
@@ -370,13 +370,13 @@ class GenApiClass {
 			mpr.print(pinfo.name);
 		}
 		if (!first) mpr.print(", ");
-		mpr.print("outerResult");
+		mpr.print("__byps__outerResult");
 		mpr.println(");");
 		
 		pr.endBlock();
 		pr.println("} catch (Throwable e) {");
 		pr.beginBlock();
-		pr.println("asyncResult.setAsyncResult(null, e);");
+		pr.println("__byps__asyncResult.setAsyncResult(null, e);");
 		pr.println("throw e;");
 		pr.endBlock();
 		pr.println("}");
@@ -386,7 +386,7 @@ class GenApiClass {
 		log.debug("printExecute");
 
 		pr.println("@Override");
-		pr.print("public void ").print("execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable ").println("{");
+		pr.print("public void ").print("execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable ").println("{");
 		pr.beginBlock();
 		
 		printExecuteAsync();

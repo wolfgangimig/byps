@@ -62,7 +62,7 @@ class GenRemoteSkeleton {
 			mpr = pr;
 		}
 		else {
-			mpr = pr.print("var ret = ");
+			mpr = pr.print("var __byps__ret = ");
 		}
 		
 		// Call synchronous method
@@ -75,16 +75,16 @@ class GenRemoteSkeleton {
 		mpr.println(");");
 		
 		if (isReturnVoid) {
-			pr.println("asyncResult(null, null);");
+			pr.println("__byps__asyncResult(null, null);");
 		} 
 		else {
-			pr.println("asyncResult(ret, null);");
+			pr.println("__byps__asyncResult(__byps__ret, null);");
 		}
 		
 		pr.endBlock();
 		pr.println("} catch (e) {");
 		pr.beginBlock();
-		pr.println("asyncResult(null, e);");
+		pr.println("__byps__asyncResult(null, e);");
 		pr.endBlock();
 		pr.println("};");
 		

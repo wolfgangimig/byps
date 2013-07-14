@@ -48,6 +48,11 @@ public class BServer_Testser extends BServer {
 		return this;
 	}
 	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants remoteSkeleton) {
+		addRemote(431648293, remoteSkeleton);
+		return this;
+	}
+	
 	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums remoteSkeleton) {
 		addRemote(359349400, remoteSkeleton);
 		return this;
@@ -75,6 +80,11 @@ public class BServer_Testser extends BServer {
 	
 	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences remoteSkeleton) {
 		addRemote(2086824050, remoteSkeleton);
+		return this;
+	}
+	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl remoteSkeleton) {
+		addRemote(1124545992, remoteSkeleton);
 		return this;
 	}
 	

@@ -23,13 +23,13 @@ public final class BRequest_RemoteArrayTypes23_sendArraysObject implements BMeth
 	public int getRemoteId() { return 2081058997; }
 	
 	@Override
-	public void execute(BRemote remote, BAsyncResult<Object> asyncResult) throws Throwable {
+	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
-			final RemoteArrayTypes23Async remoteT = (RemoteArrayTypes23Async)remote;			
-			BAsyncResultSendMethod<java.lang.Object[]> outerResult = new BAsyncResultSendMethod<java.lang.Object[]>(asyncResult, new com.wilutions.byps.test.api.BResult_183594037());			
-			remoteT.async_sendArraysObject(arr2, arr3, arr4, outerResult);
+			final RemoteArrayTypes23Async __byps__remoteT = (RemoteArrayTypes23Async)__byps__remote;			
+			BAsyncResultSendMethod<java.lang.Object[]> __byps__outerResult = new BAsyncResultSendMethod<java.lang.Object[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_183594037());			
+			__byps__remoteT.async_sendArraysObject(arr2, arr3, arr4, __byps__outerResult);
 		} catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;
 		}
 	}	
