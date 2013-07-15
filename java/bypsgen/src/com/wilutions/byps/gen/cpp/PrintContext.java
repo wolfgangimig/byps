@@ -49,14 +49,14 @@ class PrintContext extends PrintContextBase {
 		dirImplH.mkdirs();
 
 		File fileApiAllH = new File(dirApi, apiName + "-api.h");
-		prApiAllH = new CodePrinter(new FileOutputStream(fileApiAllH), false);
+		prApiAllH = new CodePrinter(new FileOutputStream(fileApiAllH), true);
 		prApiAllH.print("#ifndef __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.print("#define __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.println();
 		prApiAllH.println("#include <Byps.h>");
 		
 		File fileImplAllH = new File(dirImplH, apiName + "-impl.h");
-		prImplAllH = new CodePrinter(new FileOutputStream(fileImplAllH), false);
+		prImplAllH = new CodePrinter(new FileOutputStream(fileImplAllH), true);
 		prImplAllH.print("#ifndef __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.print("#define __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.println();
@@ -173,7 +173,7 @@ class PrintContext extends PrintContextBase {
 	};
 
 	private void printIncludeUsingForCpp(OutputStream os) throws IOException {
-		CodePrinter prImplC = new CodePrinter(os, false);
+		CodePrinter prImplC = new CodePrinter(os, true);
 		prImplC.print("#include \"{0}\"",
 				getDirRelative(dirImplC.getAbsolutePath(), dirImplH.getAbsolutePath()) + apiName + "-impl.h");
 		prImplC.println(); 

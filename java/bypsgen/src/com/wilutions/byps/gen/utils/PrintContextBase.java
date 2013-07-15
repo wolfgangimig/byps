@@ -95,8 +95,8 @@ public class PrintContextBase {
 
 	public String printStringChar(char c) {
 		StringBuilder sbuf= new StringBuilder();
-		if (Character.isLetterOrDigit(c)) sbuf.append(c);
-		else if (c == '\0') sbuf.append("\\0");
+		//if (Character.isLetterOrDigit(c)) sbuf.append(c);
+		if (c == '\0') sbuf.append("\\0");
 		else if (c == '\\') sbuf.append("\\\\");
 		else if (c == '\t') sbuf.append("\\t");
 		else if (c == '\r') sbuf.append("\\r");

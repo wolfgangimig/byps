@@ -1,2 +1,6 @@
 bin
 .metadata
+Debug
+x64\Debug
+Release
+x64\Release

@@ -205,18 +205,6 @@ class GenApiClass {
 		return mpr;
 	}
 	
-//	private void printRemoteId() throws IOException {
-//		prH.println("public: virtual BTYPEID getRemoteId();");
-//		prH.println();
-//		
-//		prC.println("const char* " + this.cppInfo.getQClassName() + "::getRemoteName() {");
-//		prC.beginBlock();
-//		prC.print("return \"").print(methodInfo.remoteInfo.toString()).println("\";");
-//		prC.endBlock();
-//		prC.println("}");
-//		prC.println();
-//		
-//	}
 	
 	private CodePrinter printConstValue(CodePrinter mpr, String path, TypeInfo tinfo, Object value) throws BException, GeneratorException {
 		
@@ -231,11 +219,16 @@ class GenApiClass {
 			}
 			else if (tinfo.qname.equals("java.lang.String")) {
 				String s = (String)value;
-				mpr = mpr.print(path).print("L\"");
-				for (int i = 0; i < s.length(); i++) {
-					mpr = mpr.print( pctxt.printStringChar(s.charAt(i)) );
+				if (s.length() != 0) {
+					mpr = mpr.print(path).print("std::wstring(L\"");
+					for (int i = 0; i < s.length(); i++) {
+						mpr = mpr.print( pctxt.printStringChar(s.charAt(i)) );
+					}
+					mpr = mpr.print("\")");
 				}
-				mpr = mpr.print("\"");
+				else {
+					mpr = mpr.print("std::wstring()");
+				}
 			}
 			else if (tinfo.qname.equals("double")) {
 				mpr = mpr.print(path).print(""+value);
@@ -259,10 +252,10 @@ class GenApiClass {
 		if (dim == 1) {
 			for (int i = 0; i < arr.size(); i++) {
 				CodePrinter mpr = prC;
+				mpr = mpr.print("->set(" + idx);
+				mpr = mpr.print(""+i).print(", ");
 				mpr = printConstValue(mpr, "", elmType, arr.get(i));
-				if (--totalCount > 0) mpr.print(", ");
-				mpr.print(" // " + idx + "[" + i + "]");
-				prC.println();
+				mpr.println(")");
 			}
 		}
 		else {
@@ -270,60 +263,80 @@ class GenApiClass {
 				totalCount = makeArrayInitList( elmType, 
 						(BJsonObject)arr.get(i), 
 						dim-1, 
-						idx + "[" + i + "]", 
+						idx + i + ",", 
 						totalCount);
 			}			
 		}
 		return totalCount;
-    }
+    }	
+
+	private CodePrinter makeByteArrayInitList(TypeInfo elmType, BJsonObject arr) throws BException, GeneratorException {
+		CodePrinter mpr = prC;
+		for (int i = 0; i < arr.size(); i++) {
+			mpr = prC.print(arr.get(i).toString());
+			if (i != arr.size()-1) mpr.println(",");
+		}
+		return mpr;
+    }	
+
 	
 	private CodePrinter makeNewArrayInstance(CodePrinter mpr, String path, TypeInfo tinfo, BJsonObject js) throws BException, GeneratorException {
 		
 		TypeInfoCpp tinfoCpp = new TypeInfoCpp(tinfo);
+		TypeInfo elmType = pctxt.classDB.getTypeInfo(tinfo.qname);
+		
 		
 		if (js == null) {
 			mpr = mpr.print(tinfoCpp.getTypeName(serInfo.pack)).print("()");
 			return mpr;
 		}
 		
-		int dims = tinfo.dims.length() / 2;
-		
-		mpr = mpr.print(path).print(tinfoCpp.getTypeName(serInfo.pack))
-			.print("(");
 		if (tinfo.isByteArray1dim()) {
-			mpr = mpr.print("BBytes::create");
+			mpr.print("BBytes::create(").print(js.size()).println(",");
+			prC.beginBlock();
+			mpr = makeByteArrayInitList(elmType, js);
+			mpr.print(")");
+			prC.endBlock();
 		}
-		else { 
-			mpr = mpr.print("new ").print(tinfoCpp.getClassName(""));
-		}
-		mpr.println("(");
+		else {
 		
-		mpr = prC;
-
-		prC.beginBlock();
-
-		String dimsComment = "";
-		int totalCount = 1;
-		BJsonObject arr = js;
-		for (int i = 0; i < dims; i++) {
-			int size = 0;
-			if (arr != null) {
-				size = arr.size();
+			int dims = tinfo.dims.length() / 2;
+			
+			mpr = mpr.print(path).print(tinfoCpp.getTypeName(serInfo.pack))
+				.print("((");
+			mpr = mpr.print("new ").print(tinfoCpp.getClassName(""));
+			mpr = mpr.print("(");
+	
+			// Print dimensions
+			int totalCount = 1;
+			BJsonObject arr = js;
+			for (int i = 0; i < dims; i++) {
+				int size = 0;
+				if (arr != null) {
+					size = arr.size();
+				}
+				
+				totalCount *= size;
+				
+				if (i != 0) mpr = mpr.print(",");
+				mpr = mpr.print(""+size);
+				
+				arr = (i < dims-1) && (size != 0) ? (BJsonObject)arr.get(0) : null;
 			}
 			
-			totalCount *= size;
-			dimsComment += "[" + size + "]";
-			mpr = mpr.print(""+size).print(", ");
-			arr = (i < dims-1) && (size != 0) ? (BJsonObject)arr.get(0) : null;
+			mpr.println("))");
+			
+			
+			// Print array elements
+			
+			prC.beginBlock();
+			
+			makeArrayInitList(elmType, js, dims, "", totalCount);
+			
+			prC.endBlock();
+			
+			prC.print(")");
 		}
-		mpr.print("// dims=").println(dimsComment);
-		
-		TypeInfo elmType = pctxt.classDB.getTypeInfo(tinfo.qname);
-		makeArrayInitList(elmType, js, dims, "", totalCount);
-		
-		prC.endBlock();
-		
-		prC.print("))");
 		
 		return mpr;
 	}

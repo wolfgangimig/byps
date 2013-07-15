@@ -189,15 +189,15 @@ public class BDoclet extends Doclet {
 		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
 		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
 
-		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
-		"-gencs.upfirst",     "true",
+//		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
+//		"-gencs.upfirst",     "true",
 		
-		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
+		//"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
 		
 //		"-gencpp.dir-api", "..\\..\\cpp\\byps\\bypstest-gen\\api",
 //		"-gencpp.dir-impl", "..\\..\\cpp\\byps\\bypstest-gen\\impl",
-		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\bypstest-gen\\api",
-		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\bypstest-gen\\impl",
+		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp\\byps\\bypstest\\bypstest-gen\\api",
+		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp\\byps\\bypstest\\bypstest-gen\\impl",
 		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
 		"-gencpp.max-fsize", "50000",
 

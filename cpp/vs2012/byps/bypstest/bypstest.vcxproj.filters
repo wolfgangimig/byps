@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="bypstest-gen">
+      <UniqueIdentifier>{5e437b38-4e7b-4759-b7ac-ad7decd1b391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bypstest-gen\api">
+      <UniqueIdentifier>{0382bb6c-44ba-414b-8ffe-8d454e6e2077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bypstest-gen\impl">
+      <UniqueIdentifier>{2f2a3f79-af43-4162-843d-d92a0a936ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{a3ede6be-9122-4aec-a72f-225e33b701b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypstest\bypstest-gen\api\Testser-api.h">
+      <Filter>bypstest-gen\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl.h">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypstest\AllTests.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypstest\TestBase.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypstest\TestUtilHttp.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypstest\TestUtils.h">
+      <Filter>test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bypstest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-001.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-002.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-003.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-004.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-005.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-006.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-007.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-008.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-009.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-010.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-011.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-012.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-013.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-014.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-015.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-016.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-017.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestBase.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteArrays.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteArrays4Dim.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteConstants.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteEnums.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteInlineInstance.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteListTypes.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteMapTypes.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemotePrimitiveTypes.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteServerR.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteSetTypes.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteStreams.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestUtilHttp.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\TestUtils.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
