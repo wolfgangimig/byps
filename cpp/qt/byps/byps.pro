@@ -9,7 +9,6 @@ QT       += core
 QT       -= gui
 
 INCLUDEPATH += ../../common/byps/include
-INCLUDEPATH += d:/boost_1_50_0
 
 QMAKE_CXXFLAGS += -std=c++11
 

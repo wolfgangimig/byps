@@ -4,3 +4,6 @@ Debug
 x64\Debug
 Release
 x64\Release
+*.user
+*.sdf
+*.suo
