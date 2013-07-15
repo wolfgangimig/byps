@@ -78,6 +78,12 @@ class BTestAdapter;
 class BVariant;
 class BWire;
 
+class BRunnable;
+class BThreadPool;
+
+typedef byps_ptr<BRunnable> PRunnable;
+typedef byps_ptr<BThreadPool> PThreadPool;
+
 typedef BAsyncResult* PAsyncResult;
 
 typedef byps_ptr<BApiDescriptor> PApiDescriptor;
@@ -156,7 +162,7 @@ typedef byps_ptr<BContentStream> PContentStream;
 #include "BSkeleton.h"
 #include "BContentStream.h"
 #include "BTestAdapter.h"
-
+#include "BThreadPool.h"
 
 
 

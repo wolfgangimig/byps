@@ -938,7 +938,7 @@ BINLINE HWireClient::HWireClient(const std::wstring& surl, int32_t , int32_t tim
 	, isMyThreadPool(!tpool)
 {
 	if (isMyThreadPool) {
-		this->tpool = HThreadPool::create(10);
+		this->tpool = BThreadPool::create(10);
 	}
 }
 

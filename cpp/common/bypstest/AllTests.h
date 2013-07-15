@@ -19,4 +19,4 @@ TestCase* TestRemoteInlineInstance_create();
 TestCase* TestRemoteEnums_create();
 TestCase* TestRemoteConstants_create();
 
-#define TEST_LARGE_STREAMS
+//#define TEST_LARGE_STREAMS

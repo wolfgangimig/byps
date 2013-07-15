@@ -1,15 +1,16 @@
 #ifndef HTHREADPOOL_HPP_
 #define HTHREADPOOL_HPP_
 
-#include "Bypshttp.h"
+#include "Byps.h"
+
 #include <thread>
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace com { namespace wilutions { namespace byps { 
 
-class HThreadPoolImpl;
-typedef byps_ptr<HThreadPoolImpl> PThreadPoolImpl;
+class BThreadPoolImpl;
+typedef byps_ptr<BThreadPoolImpl> PThreadPoolImpl;
 
-class HThreadPoolImpl : public HThreadPool, public byps_enable_shared_from_this<HThreadPoolImpl> {
+class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<BThreadPoolImpl> {
 	byps_mutex mutex;
 	byps_condition_variable queueItemAdded;
 	byps_condition_variable queueItemRemoved;
@@ -17,8 +18,6 @@ class HThreadPoolImpl : public HThreadPool, public byps_enable_shared_from_this<
 	int maxThreads;
 	int fullLimit;
 	byps_atomic<bool> isDone;
-
-	friend class HThreadPool;
 
 	typedef byps_ptr<std::thread> PThread;
 	std::map<std::thread::id, PThread> allThreads;
@@ -89,7 +88,7 @@ class HThreadPoolImpl : public HThreadPool, public byps_enable_shared_from_this<
 	}
 
 public:
-	HThreadPoolImpl(int maxThreads) 
+	BThreadPoolImpl(int maxThreads) 
 		: maxThreads(maxThreads)
 		, fullLimit(maxThreads * 2)
 		, isDone(false) {
@@ -160,8 +159,8 @@ public:
 	static PThreadPool createInstance();
 };
 
-BINLINE PThreadPool HThreadPool::create(int maxThreads) {
-	PThreadPoolImpl tpool(new HThreadPoolImpl(maxThreads));
+BINLINE PThreadPool BThreadPool::create(int maxThreads) {
+	PThreadPoolImpl tpool(new BThreadPoolImpl(maxThreads));
 	return tpool;
 };
 

@@ -14,8 +14,8 @@ LOGGER_IMPL;
 #include <fstream>
 
 #include "Testser-api.h"
-#include "Byps.h"
-#include "Bypshttp.h"
+#include "Byps.hpp"
+#include "Bypshttp.hpp"
 #include "testfw.h"
 #include "AllTests.h"
 #include "BLogger.h"

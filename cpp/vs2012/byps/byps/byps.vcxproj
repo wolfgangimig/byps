@@ -218,6 +218,8 @@
     <ClInclude Include="..\..\..\common\byps\include\Byps-impl.h" />
     <ClInclude Include="..\..\..\common\byps\include\Byps.h" />
     <ClInclude Include="..\..\..\common\byps\include\Byps.hpp" />
+    <ClInclude Include="..\..\..\common\byps\include\BThreadPool.h" />
+    <ClInclude Include="..\..\..\common\byps\include\BThreadPool.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\platform\any.h" />
     <ClInclude Include="..\..\..\common\byps\include\platform\gcc_x86_x64.h" />
     <ClInclude Include="..\..\..\common\byps\include\platform\msvc_x86_x64.h" />

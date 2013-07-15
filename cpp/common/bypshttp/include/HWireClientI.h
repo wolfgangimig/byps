@@ -290,7 +290,7 @@ private:
 	PWireClient_RequestToCancel messageRequest;
 };
 
-class HWireClient_ExecResult : public HRunnable {
+class HWireClient_ExecResult : public BRunnable {
 	PAsyncResult asyncResult;
 	BVariant var;
 public:

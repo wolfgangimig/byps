@@ -1,20 +1,20 @@
 #ifndef HTHREADPOOL_H_
 #define HTHREADPOOL_H_
 
-#include "Bypshttp.h"
+#include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace com { namespace wilutions { namespace byps { 
 
-class HRunnable {
+class BRunnable {
 public:
-	virtual ~HRunnable() {};
+	virtual ~BRunnable() {};
 	virtual void run() = 0;
 };
 
 
-class HThreadPool {
+class BThreadPool {
 public:
-	virtual ~HThreadPool() {};
+	virtual ~BThreadPool() {};
 
 	virtual bool execute(PRunnable r) = 0;
 

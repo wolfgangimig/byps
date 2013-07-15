@@ -87,6 +87,8 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\dev\BYPS2\cpp\common\byps\include;D:\dev\BYPS2\cpp\common\bypshttp\include;D:\dev\BYPS2\cpp\common\testfw\include;D:\dev\BYPS2\cpp\common\bypstest\bypstest-gen\api;D:\dev\BYPS2\cpp\common\bypstest\bypstest-gen\impl;D:\dev\BYPS2\cpp\common\bypstest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
