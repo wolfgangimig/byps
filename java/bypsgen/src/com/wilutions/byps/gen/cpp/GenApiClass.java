@@ -273,7 +273,9 @@ class GenApiClass {
 	private CodePrinter makeByteArrayInitList(TypeInfo elmType, BJsonObject arr) throws BException, GeneratorException {
 		CodePrinter mpr = prC;
 		for (int i = 0; i < arr.size(); i++) {
-			mpr = prC.print(arr.get(i).toString());
+			Object value = arr.get(i);
+			if (value instanceof Number) value = ((Number)value).longValue();
+			mpr = prC.print("(int8_t)" + value);
 			if (i != arr.size()-1) mpr.println(",");
 		}
 		return mpr;

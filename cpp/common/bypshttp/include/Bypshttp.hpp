@@ -6,6 +6,10 @@
 #include "HWireClient.hpp"
 #include "HServerR.hpp"
 #include "HTransportFactoryClient.hpp"
-#include "HThreadPool.hpp"
+#include "HHttpClient.hpp"
+
+//#ifdef _MSC_VER
+//#include "platform/win/WinHttpClient.hpp"
+//#endif
 
 #endif

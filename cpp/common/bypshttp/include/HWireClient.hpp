@@ -12,6 +12,7 @@ using namespace com::wilutions::byps;
 
 #pragma comment( lib, "winhttp.lib" )
 
+#undef min
 
 BINLINE int64_t HWireClient::makeMessageId() {
 	GUID guid;
@@ -473,7 +474,7 @@ BINLINE void HWireClient_SendMessage::writeDataOrReceiveResponse() {
 
 		int8_t* data = bytes->data + sendIdx;
 		size_t len = bytes->length - sendIdx;
-		len = min(0x7FFFFFFF, len);
+		len = std::min((size_t)0x7FFFFFFF, len);
 
 		BOOL succ = WinHttpWriteData(hRequest, data, (DWORD)len, NULL);
 		if (!succ) {
@@ -854,7 +855,7 @@ BINLINE int32_t HWireClient_GetStream::MyContentStream::read(char* buffer, int32
 			throw pThis->ex;
 		}
 
-		ret = min(pThis->bufferLimit - pThis->bufferPos, len);
+		ret = std::min(pThis->bufferLimit - pThis->bufferPos, len);
 		memcpy(buffer + offs, pThis->buffer + pThis->bufferPos, ret);
 		
 		pThis->bufferPos += ret;
@@ -1210,7 +1211,7 @@ BINLINE void HWireClient::done() {
 	bool expectedDone = false;
 	if (isDone.compare_exchange_strong(expectedDone, true)) {
 
-		BSyncResult<bool > syncResult(false);
+		BSyncResultT<bool > syncResult;
 
 		internalCancelAllRequests(MESSAGEID_DISCONNECT, &syncResult);
 
@@ -1231,7 +1232,7 @@ BINLINE void HWireClient::done() {
 }
 
 BINLINE void HWireClient::cancelAllRequests() {
-	BSyncResult<bool > syncResult(false);
+	BSyncResultT<bool > syncResult;
 	internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS, &syncResult);
 	syncResult.getResult();
 }

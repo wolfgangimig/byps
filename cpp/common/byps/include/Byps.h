@@ -45,7 +45,7 @@ class BRemote;
 class BSerializable;
 class BServerR;
 class BTransport;
-template<typename _Type> class BSyncResult;
+template<typename _Type> class BSyncResultT;
 
 class BApiDescriptor;
 class BBinaryModel;

@@ -8,6 +8,9 @@
 
 namespace com { namespace wilutions { namespace byps { namespace http {
 
+class HWireClient_RequestsToCancel;
+typedef byps_ptr<HWireClient_RequestsToCancel> PWireClient_RequestsToCancel;
+
 class HWireClient :  public BWire, public std::enable_shared_from_this<HWireClient> {
 public:
     const std::wstring url;
@@ -42,8 +45,8 @@ protected:
 
     BException lastException;
     std::wstring urlPath;
-    DWORD urlFlags;
-    DWORD timeoutMillisClient;
+    int32_t urlFlags;
+    int64_t timeoutMillisClient;
     PThreadPool tpool;
     bool isMyThreadPool;
     byps_atomic<bool> isDone;
@@ -52,8 +55,7 @@ protected:
 
     void internalCancelAllRequests(int64_t cancelMessageId, PAsyncResult asyncResult);
 
-    void internalSend(const PMessage& msg, PAsyncResult asyncResult, DWORD timeoutMillis);
-    void internalSendStreamsThenMessage(const PMessage& msg, PAsyncResult asyncResult, DWORD timeoutMillis);
+    void internalSend(const PMessage& msg, PAsyncResult asyncResult, int64_t timeoutMillis);
 
     friend class HWireClient_TestAdapter;
 };

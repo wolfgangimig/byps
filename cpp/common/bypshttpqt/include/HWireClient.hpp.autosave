@@ -283,6 +283,78 @@ BINLINE void HWireClient::sendR(const PMessage& msg, PAsyncResult asyncResult) {
     internalSend(msg, asyncResult, INT64_MAX);
 }
 
+BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncResult, DWORD timeoutMillisRequest) {
+    
+	// Convert the BMessage into single RequestToCancel objects.
+	// One RequestToCancel is created for msg.buf.
+	// For each stream in msg.streams further RequestToCancel objects are created.
+		
+	size_t nbOfRequests = 1 + msg->streams.size();
+	std::vector<PWireClient_RequestToCancel> requests;
+	requests.reserve(nbOfRequests);
+
+	// If the BMessage contains streams, the given asyncResult is wrapped into a
+	// BAsyncRequest object that sets the asynchronous result after the message and all streams
+	// have been sent.
+	PAsyncResult outerResult = asyncResult;
+	if (nbOfRequests > 1) {
+		outerResult = PAsyncResult(new HWireClient_AsyncResultAfterAllRequests(tpool, asyncResult, nbOfRequests));
+	}
+
+	// Create RequestToCancel for message
+    PWireClient_RequestToCancel messageRequest(new HWireClient_SendMessage(
+		urlPath, 
+		urlFlags, 
+		timeoutMillisClient, timeoutMillisRequest,
+		requestsToCancel,
+		outerResult, 
+		msg->header.messageId,
+		msg->buf));
+
+	if (requestsToCancel->add(reinterpret_cast<intptr_t>(messageRequest.get()), messageRequest)) {
+
+		requests.push_back(messageRequest);
+
+		// Create RequestToCancel objects for each stream.
+		for (unsigned i = 0; i < msg->streams.size(); i++) {
+			PStreamRequest stream = msg->streams[i];
+			std::wstringstream ssurl;
+			ssurl << urlPath << L"?messageid=" << stream->messageId << L"&streamid=" << stream->streamId;
+			PWireClient_RequestToCancel streamRequest(new HWireClient_PutStream(
+				ssurl.str(),
+				urlFlags,
+				timeoutMillisClient, timeoutMillisRequest,
+				requestsToCancel,
+				outerResult,
+				stream->strm));
+
+			if (!requestsToCancel->add(reinterpret_cast<intptr_t>(streamRequest.get()), streamRequest)) {
+				streamRequest->close();
+				break;
+			}
+
+			requests.push_back(streamRequest);
+		}
+
+	}
+	
+	// Cannot add messageRequest, the connection was closed.
+	else {
+		messageRequest->close();
+	}
+
+	// Execute the RequestToCancel objects 
+	if (requests.size() != 0) {
+		for (size_t i = 0; i < requests.size(); i++) {
+			PWireClient_RequestToCancel request = requests[i];
+			request->send();
+		}
+	}
+	else {
+		asyncResult->setAsyncResult(BVariant(HException(L"Already disconnected", EX_CANCELED)));
+	}
+}
+
 BINLINE PContentStream HWireClient::getStream(int64_t messageId, int64_t streamId) {
     return PContentStream();
 }

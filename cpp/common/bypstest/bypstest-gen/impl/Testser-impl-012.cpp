@@ -74,7 +74,7 @@ BStub_RemoteArrayTypes23::BStub_RemoteArrayTypes23(PTransport transport)
 	: BStub(transport) {}
 
 byps_ptr< BArray1< int32_t > > BStub_RemoteArrayTypes23::sendArraysInt(byps_ptr< BArray2< int32_t > > arr2, byps_ptr< BArray3< int32_t > > arr3, byps_ptr< BArray4< int32_t > > arr4)  {
-	BSyncResultL<byps_ptr< BArray1< int32_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray1< int32_t > > > syncResult;	
 	async_sendArraysInt(arr2, arr3, arr4, [&syncResult](byps_ptr< BArray1< int32_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -86,7 +86,7 @@ void BStub_RemoteArrayTypes23::async_sendArraysInt(byps_ptr< BArray2< int32_t > 
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray1< std::wstring > > BStub_RemoteArrayTypes23::sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4)  {
-	BSyncResultL<byps_ptr< BArray1< std::wstring > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray1< std::wstring > > > syncResult;	
 	async_sendArraysString(arr2, arr3, arr4, [&syncResult](byps_ptr< BArray1< std::wstring > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -98,7 +98,7 @@ void BStub_RemoteArrayTypes23::async_sendArraysString(byps_ptr< BArray2< std::ws
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayTypes23::sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4)  {
-	BSyncResultL<byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > > syncResult;	
 	async_sendArraysClass(arr2, arr3, arr4, [&syncResult](byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -110,7 +110,7 @@ void BStub_RemoteArrayTypes23::async_sendArraysClass(byps_ptr< BArray2< com::wil
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray1< PSerializable > > BStub_RemoteArrayTypes23::sendArraysObject(byps_ptr< BArray2< PSerializable > > arr2, byps_ptr< BArray3< PSerializable > > arr3, byps_ptr< BArray4< PSerializable > > arr4)  {
-	BSyncResultL<byps_ptr< BArray1< PSerializable > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray1< PSerializable > > > syncResult;	
 	async_sendArraysObject(arr2, arr3, arr4, [&syncResult](byps_ptr< BArray1< PSerializable > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -122,7 +122,7 @@ void BStub_RemoteArrayTypes23::async_sendArraysObject(byps_ptr< BArray2< PSerial
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > BStub_RemoteArrayTypes23::sendArraysInline(byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::inl::Point2D > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > arr4)  {
-	BSyncResultL<byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > > syncResult;	
 	async_sendArraysInline(arr2, arr3, arr4, [&syncResult](byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -428,7 +428,7 @@ BStub_RemoteArrayTypes4dim::BStub_RemoteArrayTypes4dim(PTransport transport)
 	: BStub(transport) {}
 
 void BStub_RemoteArrayTypes4dim::setBool(byps_ptr< BArray4< bool > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setBool(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -440,7 +440,7 @@ void BStub_RemoteArrayTypes4dim::async_setBool(byps_ptr< BArray4< bool > > v, st
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setByte(byps_ptr< BArray4< int8_t > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setByte(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -452,7 +452,7 @@ void BStub_RemoteArrayTypes4dim::async_setByte(byps_ptr< BArray4< int8_t > > v, 
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setChar(byps_ptr< BArray4< wchar_t > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setChar(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -464,7 +464,7 @@ void BStub_RemoteArrayTypes4dim::async_setChar(byps_ptr< BArray4< wchar_t > > v,
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setShort(byps_ptr< BArray4< int16_t > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setShort(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -476,7 +476,7 @@ void BStub_RemoteArrayTypes4dim::async_setShort(byps_ptr< BArray4< int16_t > > v
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setInt(byps_ptr< BArray4< int32_t > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setInt(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -488,7 +488,7 @@ void BStub_RemoteArrayTypes4dim::async_setInt(byps_ptr< BArray4< int32_t > > v, 
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setLong(byps_ptr< BArray4< int64_t > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setLong(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -500,7 +500,7 @@ void BStub_RemoteArrayTypes4dim::async_setLong(byps_ptr< BArray4< int64_t > > v,
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setFloat(byps_ptr< BArray4< float > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setFloat(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -512,7 +512,7 @@ void BStub_RemoteArrayTypes4dim::async_setFloat(byps_ptr< BArray4< float > > v, 
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setDouble(byps_ptr< BArray4< double > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setDouble(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -524,7 +524,7 @@ void BStub_RemoteArrayTypes4dim::async_setDouble(byps_ptr< BArray4< double > > v
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setString(byps_ptr< BArray4< std::wstring > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setString(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -536,7 +536,7 @@ void BStub_RemoteArrayTypes4dim::async_setString(byps_ptr< BArray4< std::wstring
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setPrimitiveTypes(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPrimitiveTypes(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -548,7 +548,7 @@ void BStub_RemoteArrayTypes4dim::async_setPrimitiveTypes(byps_ptr< BArray4< com:
 	transport->send(req, outerResult);
 }
 void BStub_RemoteArrayTypes4dim::setObject(byps_ptr< BArray4< PSerializable > > v)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setObject(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -560,7 +560,7 @@ void BStub_RemoteArrayTypes4dim::async_setObject(byps_ptr< BArray4< PSerializabl
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< bool > > BStub_RemoteArrayTypes4dim::getBool()  {
-	BSyncResultL<byps_ptr< BArray4< bool > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< bool > > > syncResult;	
 	async_getBool([&syncResult](byps_ptr< BArray4< bool > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -572,7 +572,7 @@ void BStub_RemoteArrayTypes4dim::async_getBool(std::function< void (byps_ptr< BA
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< int8_t > > BStub_RemoteArrayTypes4dim::getByte()  {
-	BSyncResultL<byps_ptr< BArray4< int8_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< int8_t > > > syncResult;	
 	async_getByte([&syncResult](byps_ptr< BArray4< int8_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -584,7 +584,7 @@ void BStub_RemoteArrayTypes4dim::async_getByte(std::function< void (byps_ptr< BA
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< wchar_t > > BStub_RemoteArrayTypes4dim::getChar()  {
-	BSyncResultL<byps_ptr< BArray4< wchar_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< wchar_t > > > syncResult;	
 	async_getChar([&syncResult](byps_ptr< BArray4< wchar_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -596,7 +596,7 @@ void BStub_RemoteArrayTypes4dim::async_getChar(std::function< void (byps_ptr< BA
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< int16_t > > BStub_RemoteArrayTypes4dim::getShort()  {
-	BSyncResultL<byps_ptr< BArray4< int16_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< int16_t > > > syncResult;	
 	async_getShort([&syncResult](byps_ptr< BArray4< int16_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -608,7 +608,7 @@ void BStub_RemoteArrayTypes4dim::async_getShort(std::function< void (byps_ptr< B
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< int32_t > > BStub_RemoteArrayTypes4dim::getInt()  {
-	BSyncResultL<byps_ptr< BArray4< int32_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< int32_t > > > syncResult;	
 	async_getInt([&syncResult](byps_ptr< BArray4< int32_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -620,7 +620,7 @@ void BStub_RemoteArrayTypes4dim::async_getInt(std::function< void (byps_ptr< BAr
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< int64_t > > BStub_RemoteArrayTypes4dim::getLong()  {
-	BSyncResultL<byps_ptr< BArray4< int64_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< int64_t > > > syncResult;	
 	async_getLong([&syncResult](byps_ptr< BArray4< int64_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -632,7 +632,7 @@ void BStub_RemoteArrayTypes4dim::async_getLong(std::function< void (byps_ptr< BA
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< float > > BStub_RemoteArrayTypes4dim::getFloat()  {
-	BSyncResultL<byps_ptr< BArray4< float > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< float > > > syncResult;	
 	async_getFloat([&syncResult](byps_ptr< BArray4< float > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -644,7 +644,7 @@ void BStub_RemoteArrayTypes4dim::async_getFloat(std::function< void (byps_ptr< B
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< double > > BStub_RemoteArrayTypes4dim::getDouble()  {
-	BSyncResultL<byps_ptr< BArray4< double > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< double > > > syncResult;	
 	async_getDouble([&syncResult](byps_ptr< BArray4< double > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -656,7 +656,7 @@ void BStub_RemoteArrayTypes4dim::async_getDouble(std::function< void (byps_ptr< 
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< std::wstring > > BStub_RemoteArrayTypes4dim::getString()  {
-	BSyncResultL<byps_ptr< BArray4< std::wstring > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< std::wstring > > > syncResult;	
 	async_getString([&syncResult](byps_ptr< BArray4< std::wstring > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -668,7 +668,7 @@ void BStub_RemoteArrayTypes4dim::async_getString(std::function< void (byps_ptr< 
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayTypes4dim::getPrimitiveTypes()  {
-	BSyncResultL<byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > > syncResult;	
 	async_getPrimitiveTypes([&syncResult](byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -680,7 +680,7 @@ void BStub_RemoteArrayTypes4dim::async_getPrimitiveTypes(std::function< void (by
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< PSerializable > > BStub_RemoteArrayTypes4dim::getObject()  {
-	BSyncResultL<byps_ptr< BArray4< PSerializable > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< PSerializable > > > syncResult;	
 	async_getObject([&syncResult](byps_ptr< BArray4< PSerializable > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -746,7 +746,7 @@ BStub_RemoteConstants::BStub_RemoteConstants(PTransport transport)
 	: BStub(transport) {}
 
 void BStub_RemoteConstants::compare_HebrewC(com::wilutions::byps::test::api::cons::PHebrewZ ALEPH, com::wilutions::byps::test::api::cons::PHebrewZ BETH)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_compare_HebrewC(ALEPH, BETH, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -758,7 +758,7 @@ void BStub_RemoteConstants::async_compare_HebrewC(com::wilutions::byps::test::ap
 	transport->send(req, outerResult);
 }
 bool BStub_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -824,7 +824,7 @@ BStub_RemoteEnums::BStub_RemoteEnums(PTransport transport)
 	: BStub(transport) {}
 
 com::wilutions::byps::test::api::enu::EnumPlanets BStub_RemoteEnums::getPlanet()  {
-	BSyncResultL<com::wilutions::byps::test::api::enu::EnumPlanets > syncResult(false);	
+	BSyncResultT<com::wilutions::byps::test::api::enu::EnumPlanets > syncResult;	
 	async_getPlanet([&syncResult](com::wilutions::byps::test::api::enu::EnumPlanets v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -836,7 +836,7 @@ void BStub_RemoteEnums::async_getPlanet(std::function< void (com::wilutions::byp
 	transport->send(req, outerResult);
 }
 void BStub_RemoteEnums::setPlanet(com::wilutions::byps::test::api::enu::EnumPlanets planet)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPlanet(planet, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});

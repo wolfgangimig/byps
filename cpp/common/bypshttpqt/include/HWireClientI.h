@@ -4,7 +4,7 @@
 #include "HWireClient.h"
 #include <QtNetwork>
 
-namespace com { namespace wilutions { namespace byps { namespace http { namespace internal {
+namespace com { namespace wilutions { namespace byps { namespace http {
 
 class HWireClient_AsyncResultAfterAllRequests;
 class HWireClient_RequestToCancel;
@@ -20,6 +20,8 @@ public:
     QIODevice_PBytes(PBytes bytes);
 
     QIODevice_PBytes();
+
+    PBytes getBytes();
 
     virtual bool isSequential() const;
 
@@ -62,8 +64,9 @@ public:
 
     HWireClient_RequestToCancel(
     const std::wstring& urlPath,
-            DWORD urlFlags,
-            DWORD timeoutMillisClient, DWORD timeoutMillisRequest,
+            int32_t urlFlags,
+            int64_t timeoutMillisClient,
+            int64_t timeoutMillisRequest,
             PWireClient_RequestsToCancel requestsToCancel,
             PAsyncResult asyncResult);
 
@@ -80,9 +83,9 @@ public:
 
 protected:
     QUrl url;
-    DWORD urlFlags;
-    DWORD timeoutMillisClient;
-    DWORD timeoutMillisRequest;
+    int32_t urlFlags;
+    int64_t timeoutMillisClient;
+    int64_t timeoutMillisRequest;
 
     DWORD statusCode;
     std::wstring contentType;
@@ -104,8 +107,30 @@ protected:
 };
 
 
+class HWireClient_SendMessage : public HWireClient_RequestToCancel {
+public:
+    HWireClient_SendMessage(
+        const std::wstring& urlPath,
+        int32_t urlFlags,
+        int64_t timeoutMillisClient,
+        int64_t timeoutMillisRequest,
+        PWireClient_RequestsToCancel requestsToCancel,
+        PAsyncResult asyncResult,
+        int64_t messageId,
+        PBytes bytes);
+    virtual ~HWireClient_SendMessage();
 
+    virtual void send();
 
-}}}}}
+protected:
+    const int64_t messageId;
+    QIODevice_PBytes* requestData;
+    QIODevice_PBytes* responseData;
+
+    virtual void onReadComplete();
+    virtual void finishOnOK();
+};
+
+}}}}
 
 #endif // HWIRECLIENTI_H

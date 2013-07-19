@@ -94,7 +94,7 @@ public:
 		, isDone(false) {
 	}
 
-	virtual ~HThreadPoolImpl() {
+	virtual ~BThreadPoolImpl() {
 	};
 
 	virtual void done() {
@@ -166,6 +166,6 @@ BINLINE PThreadPool BThreadPool::create(int maxThreads) {
 
 
 
-}}}}
+}}}
 
 #endif

@@ -12,6 +12,11 @@
 #include "HWireClient.h"
 #include "HServerR.h"
 #include "HTransportFactoryClient.h"
-#include "HThreadPool.h"
+#include "HHttpClient.h"
+
+
+//#ifdef _MSC_VER
+//#include "platform/win/WinHttpClient.h"
+//#endif
 
 #endif

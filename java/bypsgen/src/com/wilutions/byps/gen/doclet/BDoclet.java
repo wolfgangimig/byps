@@ -196,8 +196,9 @@ public class BDoclet extends Doclet {
 		
 //		"-gencpp.dir-api", "..\\..\\cpp\\byps\\bypstest-gen\\api",
 //		"-gencpp.dir-impl", "..\\..\\cpp\\byps\\bypstest-gen\\impl",
-		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp\\byps\\bypstest\\bypstest-gen\\api",
-		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp\\byps\\bypstest\\bypstest-gen\\impl",
+		
+		"-gencpp.dir-api", "d:\\git\\byps\\cpp\\common\\bypstest\\bypstest-gen\\api",
+		"-gencpp.dir-impl", "d:\\git\\byps\\cpp\\common\\bypstest\\bypstest-gen\\impl",
 		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
 		"-gencpp.max-fsize", "50000",
 

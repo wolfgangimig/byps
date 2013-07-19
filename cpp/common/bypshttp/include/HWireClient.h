@@ -1,7 +1,7 @@
 #ifndef HWIRECLIENT_H_
 #define HWIRECLIENT_H_
 
-
+#include "Byps.h"
 #include "Bypshttp.h"
 
 namespace com { namespace wilutions { namespace byps { namespace http {

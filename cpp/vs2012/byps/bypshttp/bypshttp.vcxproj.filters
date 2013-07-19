@@ -16,6 +16,12 @@
     <Filter Include="include">
       <UniqueIdentifier>{eb8b96a9-4563-4232-9d04-b74250b268eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\platform">
+      <UniqueIdentifier>{bd8f00f6-bf1c-4655-8909-c9ae1269c9da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\platform\win">
+      <UniqueIdentifier>{2fc50f71-8d3f-4b93-9b3b-e8e999b2be33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -45,9 +51,6 @@
     <ClInclude Include="..\..\..\common\bypshttp\include\HServerR.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\bypshttp\include\HThreadPool.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\bypshttp\include\HTransportFactoryClient.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -63,8 +66,17 @@
     <ClInclude Include="..\..\..\common\bypshttp\include\HWireClientI.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\bypshttp\include\HThreadPool.h">
+    <ClInclude Include="..\..\..\common\bypshttp\include\HHttpClient.hpp">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypshttp\include\HHttpClient.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\WinHttpClient.h">
+      <Filter>include\platform\win</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\WinHttpClient.hpp">
+      <Filter>include\platform\win</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

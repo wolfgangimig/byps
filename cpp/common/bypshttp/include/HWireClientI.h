@@ -111,7 +111,8 @@ public:
     HWireClient_SendMessage(
 		const std::wstring& urlPath,
 		DWORD urlFlags,
-		DWORD sendTimeout, DWORD receiveTimeout,
+		DWORD timeoutMillisClient,
+		DWORD timeoutMillisRequest,
 		PWireClient_RequestsToCancel requestsToCancel,
 		PAsyncResult asyncResult,
         int64_t messageId, 

@@ -21,15 +21,27 @@ BINLINE void BClient::done() {
 }
 
 BINLINE void BClient::start() {
-	BSyncResult<PClient> syncResult(false);
+	BSyncResultT<PClient> syncResult;
 	internalStart(&syncResult);
 	syncResult.getResult();
 }
 
 #ifdef CPP11_LAMBDA
 
+class BClientStart_BAsyncResultT : public BAsyncResultT<PClient> {
+	std::function<void (const PClient, BException ex)> innerResult;
+public:
+	BClientStart_BAsyncResultT(std::function<void (const PClient, BException ex)> innerResult) 
+		: innerResult(innerResult) {
+	}
+	virtual void setAsyncResult(PClient result, BException ex) {
+		innerResult(result, ex);
+		delete this;
+	}
+};
+
 BINLINE void BClient::start(PClient client, std::function<void (PClient, BException)> asyncResult) {
-	PAsyncResult outerResult = new BAsyncResultT_BAsyncResultL<PClient>(asyncResult);
+	PAsyncResult outerResult = new BClientStart_BAsyncResultT(asyncResult);
 	client->internalStart(outerResult);
 }
 

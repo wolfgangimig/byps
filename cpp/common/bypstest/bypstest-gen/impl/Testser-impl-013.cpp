@@ -9,7 +9,7 @@ BStub_RemoteInlineInstance::BStub_RemoteInlineInstance(PTransport transport)
 	: BStub(transport) {}
 
 void BStub_RemoteInlineInstance::setActor(com::wilutions::byps::test::api::inl::PActor act)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setActor(act, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -21,7 +21,7 @@ void BStub_RemoteInlineInstance::async_setActor(com::wilutions::byps::test::api:
 	transport->send(req, outerResult);
 }
 com::wilutions::byps::test::api::inl::PActor BStub_RemoteInlineInstance::getActor()  {
-	BSyncResultL<com::wilutions::byps::test::api::inl::PActor > syncResult(false);	
+	BSyncResultT<com::wilutions::byps::test::api::inl::PActor > syncResult;	
 	async_getActor([&syncResult](com::wilutions::byps::test::api::inl::PActor v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -33,7 +33,7 @@ void BStub_RemoteInlineInstance::async_getActor(std::function< void (com::wiluti
 	transport->send(req, outerResult);
 }
 void BStub_RemoteInlineInstance::setPoint2DArray1dim(byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > pointArray)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPoint2DArray1dim(pointArray, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -45,7 +45,7 @@ void BStub_RemoteInlineInstance::async_setPoint2DArray1dim(byps_ptr< BArray1< co
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > BStub_RemoteInlineInstance::getPoint2DArray1dim()  {
-	BSyncResultL<byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > > syncResult;	
 	async_getPoint2DArray1dim([&syncResult](byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -57,7 +57,7 @@ void BStub_RemoteInlineInstance::async_getPoint2DArray1dim(std::function< void (
 	transport->send(req, outerResult);
 }
 void BStub_RemoteInlineInstance::setPoint2DArray4dim(byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > pointArray)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPoint2DArray4dim(pointArray, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -69,7 +69,7 @@ void BStub_RemoteInlineInstance::async_setPoint2DArray4dim(byps_ptr< BArray4< co
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > BStub_RemoteInlineInstance::getPoint2DArray4dim()  {
-	BSyncResultL<byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > > syncResult(false);	
+	BSyncResultT<byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > > syncResult;	
 	async_getPoint2DArray4dim([&syncResult](byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -81,7 +81,7 @@ void BStub_RemoteInlineInstance::async_getPoint2DArray4dim(std::function< void (
 	transport->send(req, outerResult);
 }
 void BStub_RemoteInlineInstance::setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPoint2DList(pointList, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -93,7 +93,7 @@ void BStub_RemoteInlineInstance::async_setPoint2DList(byps_ptr< std::vector< com
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > BStub_RemoteInlineInstance::getPoint2DList()  {
-	BSyncResultL<byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > syncResult;	
 	async_getPoint2DList([&syncResult](byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -105,7 +105,7 @@ void BStub_RemoteInlineInstance::async_getPoint2DList(std::function< void (byps_
 	transport->send(req, outerResult);
 }
 void BStub_RemoteInlineInstance::setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPoint2DListList(pointListList, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -117,7 +117,7 @@ void BStub_RemoteInlineInstance::async_setPoint2DListList(byps_ptr< std::vector<
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > BStub_RemoteInlineInstance::getPoint2DListList()  {
-	BSyncResultL<byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > > syncResult;	
 	async_getPoint2DListList([&syncResult](byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -129,7 +129,7 @@ void BStub_RemoteInlineInstance::async_getPoint2DListList(std::function< void (b
 	transport->send(req, outerResult);
 }
 void BStub_RemoteInlineInstance::setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPoint2DMap(pointMap, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -141,7 +141,7 @@ void BStub_RemoteInlineInstance::async_setPoint2DMap(byps_ptr< std::map< int32_t
 	transport->send(req, outerResult);
 }
 byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > BStub_RemoteInlineInstance::getPoint2DMap()  {
-	BSyncResultL<byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > > syncResult;	
 	async_getPoint2DMap([&syncResult](byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -543,7 +543,7 @@ BStub_RemoteListTypes::BStub_RemoteListTypes(PTransport transport)
 	: BStub(transport) {}
 
 byps_ptr< std::vector< bool > > BStub_RemoteListTypes::getBoolean1()  {
-	BSyncResultL<byps_ptr< std::vector< bool > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< bool > > > syncResult;	
 	async_getBoolean1([&syncResult](byps_ptr< std::vector< bool > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -555,7 +555,7 @@ void BStub_RemoteListTypes::async_getBoolean1(std::function< void (byps_ptr< std
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setBoolean1(byps_ptr< std::vector< bool > > boolean1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setBoolean1(boolean1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -567,7 +567,7 @@ void BStub_RemoteListTypes::async_setBoolean1(byps_ptr< std::vector< bool > > bo
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< int8_t > > BStub_RemoteListTypes::getByte1()  {
-	BSyncResultL<byps_ptr< std::vector< int8_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< int8_t > > > syncResult;	
 	async_getByte1([&syncResult](byps_ptr< std::vector< int8_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -579,7 +579,7 @@ void BStub_RemoteListTypes::async_getByte1(std::function< void (byps_ptr< std::v
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setByte1(byps_ptr< std::vector< int8_t > > byte1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setByte1(byte1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -591,7 +591,7 @@ void BStub_RemoteListTypes::async_setByte1(byps_ptr< std::vector< int8_t > > byt
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< wchar_t > > BStub_RemoteListTypes::getChar1()  {
-	BSyncResultL<byps_ptr< std::vector< wchar_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< wchar_t > > > syncResult;	
 	async_getChar1([&syncResult](byps_ptr< std::vector< wchar_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -603,7 +603,7 @@ void BStub_RemoteListTypes::async_getChar1(std::function< void (byps_ptr< std::v
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setChar1(byps_ptr< std::vector< wchar_t > > char1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setChar1(char1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -615,7 +615,7 @@ void BStub_RemoteListTypes::async_setChar1(byps_ptr< std::vector< wchar_t > > ch
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< int16_t > > BStub_RemoteListTypes::getShort1()  {
-	BSyncResultL<byps_ptr< std::vector< int16_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< int16_t > > > syncResult;	
 	async_getShort1([&syncResult](byps_ptr< std::vector< int16_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -627,7 +627,7 @@ void BStub_RemoteListTypes::async_getShort1(std::function< void (byps_ptr< std::
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setShort1(byps_ptr< std::vector< int16_t > > short1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setShort1(short1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -639,7 +639,7 @@ void BStub_RemoteListTypes::async_setShort1(byps_ptr< std::vector< int16_t > > s
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< int32_t > > BStub_RemoteListTypes::getInt1()  {
-	BSyncResultL<byps_ptr< std::vector< int32_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< int32_t > > > syncResult;	
 	async_getInt1([&syncResult](byps_ptr< std::vector< int32_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -651,7 +651,7 @@ void BStub_RemoteListTypes::async_getInt1(std::function< void (byps_ptr< std::ve
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setInt1(byps_ptr< std::vector< int32_t > > int1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setInt1(int1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -663,7 +663,7 @@ void BStub_RemoteListTypes::async_setInt1(byps_ptr< std::vector< int32_t > > int
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< int64_t > > BStub_RemoteListTypes::getLong1()  {
-	BSyncResultL<byps_ptr< std::vector< int64_t > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< int64_t > > > syncResult;	
 	async_getLong1([&syncResult](byps_ptr< std::vector< int64_t > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -675,7 +675,7 @@ void BStub_RemoteListTypes::async_getLong1(std::function< void (byps_ptr< std::v
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setLong1(byps_ptr< std::vector< int64_t > > long1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setLong1(long1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -687,7 +687,7 @@ void BStub_RemoteListTypes::async_setLong1(byps_ptr< std::vector< int64_t > > lo
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< float > > BStub_RemoteListTypes::getFloat1()  {
-	BSyncResultL<byps_ptr< std::vector< float > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< float > > > syncResult;	
 	async_getFloat1([&syncResult](byps_ptr< std::vector< float > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -699,7 +699,7 @@ void BStub_RemoteListTypes::async_getFloat1(std::function< void (byps_ptr< std::
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setFloat1(byps_ptr< std::vector< float > > float1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setFloat1(float1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -711,7 +711,7 @@ void BStub_RemoteListTypes::async_setFloat1(byps_ptr< std::vector< float > > flo
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< double > > BStub_RemoteListTypes::getDouble1()  {
-	BSyncResultL<byps_ptr< std::vector< double > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< double > > > syncResult;	
 	async_getDouble1([&syncResult](byps_ptr< std::vector< double > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -723,7 +723,7 @@ void BStub_RemoteListTypes::async_getDouble1(std::function< void (byps_ptr< std:
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setDouble1(byps_ptr< std::vector< double > > double1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setDouble1(double1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -735,7 +735,7 @@ void BStub_RemoteListTypes::async_setDouble1(byps_ptr< std::vector< double > > d
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< std::wstring > > BStub_RemoteListTypes::getString1()  {
-	BSyncResultL<byps_ptr< std::vector< std::wstring > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< std::wstring > > > syncResult;	
 	async_getString1([&syncResult](byps_ptr< std::vector< std::wstring > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -747,7 +747,7 @@ void BStub_RemoteListTypes::async_getString1(std::function< void (byps_ptr< std:
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setString1(byps_ptr< std::vector< std::wstring > > string1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setString1(string1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -759,7 +759,7 @@ void BStub_RemoteListTypes::async_setString1(byps_ptr< std::vector< std::wstring
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteListTypes::getPrimitiveTypes1()  {
-	BSyncResultL<byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > > syncResult;	
 	async_getPrimitiveTypes1([&syncResult](byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -771,7 +771,7 @@ void BStub_RemoteListTypes::async_getPrimitiveTypes1(std::function< void (byps_p
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setPrimitiveTypes1(primitiveTypes1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -783,7 +783,7 @@ void BStub_RemoteListTypes::async_setPrimitiveTypes1(byps_ptr< std::vector< com:
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< PBytes > > BStub_RemoteListTypes::getByte2()  {
-	BSyncResultL<byps_ptr< std::vector< PBytes > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< PBytes > > > syncResult;	
 	async_getByte2([&syncResult](byps_ptr< std::vector< PBytes > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -795,7 +795,7 @@ void BStub_RemoteListTypes::async_getByte2(std::function< void (byps_ptr< std::v
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setByte2(byps_ptr< std::vector< PBytes > > byte2)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setByte2(byte2, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -807,7 +807,7 @@ void BStub_RemoteListTypes::async_setByte2(byps_ptr< std::vector< PBytes > > byt
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > BStub_RemoteListTypes::getInt2()  {
-	BSyncResultL<byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > > syncResult;	
 	async_getInt2([&syncResult](byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -819,7 +819,7 @@ void BStub_RemoteListTypes::async_getInt2(std::function< void (byps_ptr< std::ve
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setInt2(int2, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -831,7 +831,7 @@ void BStub_RemoteListTypes::async_setInt2(byps_ptr< std::vector< byps_ptr< BArra
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< PSerializable > > BStub_RemoteListTypes::getObj1()  {
-	BSyncResultL<byps_ptr< std::vector< PSerializable > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< PSerializable > > > syncResult;	
 	async_getObj1([&syncResult](byps_ptr< std::vector< PSerializable > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -843,7 +843,7 @@ void BStub_RemoteListTypes::async_getObj1(std::function< void (byps_ptr< std::ve
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setObj1(byps_ptr< std::vector< PSerializable > > obj1)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setObj1(obj1, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -855,7 +855,7 @@ void BStub_RemoteListTypes::async_setObj1(byps_ptr< std::vector< PSerializable >
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > BStub_RemoteListTypes::getInt3()  {
-	BSyncResultL<byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > > syncResult;	
 	async_getInt3([&syncResult](byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -867,7 +867,7 @@ void BStub_RemoteListTypes::async_getInt3(std::function< void (byps_ptr< std::ve
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setInt3(int3, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -879,7 +879,7 @@ void BStub_RemoteListTypes::async_setInt3(byps_ptr< std::vector< byps_ptr< std::
 	transport->send(req, outerResult);
 }
 byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > BStub_RemoteListTypes::getInt4()  {
-	BSyncResultL<byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > > syncResult(false);	
+	BSyncResultT<byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > > syncResult;	
 	async_getInt4([&syncResult](byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -891,7 +891,7 @@ void BStub_RemoteListTypes::async_getInt4(std::function< void (byps_ptr< std::ve
 	transport->send(req, outerResult);
 }
 void BStub_RemoteListTypes::setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4)  {
-	BSyncResultL<bool > syncResult(false);	
+	BSyncResultT<bool > syncResult;	
 	async_setInt4(int4, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});

@@ -8,14 +8,14 @@ namespace com { namespace wilutions { namespace byps {
 BINLINE void BVariant::serialize(BIO& ar, const unsigned int) {
     switch(type) {
 	case BTYPEID_VOID: break;
-    case BTYPEID_BOOL: ar & boolVal; break;
-    case BTYPEID_WCHAR: ar & charVal; break;
-    case BTYPEID_INT8: ar & byteVal; break;
-    case BTYPEID_INT16: ar & shortVal; break;
-    case BTYPEID_INT32: ar & intVal; break;
-    case BTYPEID_INT64: ar & longVal; break;
-    case BTYPEID_FLOAT: ar & floatVal; break;
-    case BTYPEID_DOUBLE: ar & doubleVal; break;
+    case BTYPEID_BOOL: ar & u.boolVal; break;
+    case BTYPEID_WCHAR: ar & u.charVal; break;
+    case BTYPEID_INT8: ar & u.byteVal; break;
+    case BTYPEID_INT16: ar & u.shortVal; break;
+    case BTYPEID_INT32: ar & u.intVal; break;
+    case BTYPEID_INT64: ar & u.longVal; break;
+    case BTYPEID_FLOAT: ar & u.floatVal; break;
+    case BTYPEID_DOUBLE: ar & u.doubleVal; break;
     case BTYPEID_STRING: ar & strVal; break;
     default:
         if (ar.is_loading) {
