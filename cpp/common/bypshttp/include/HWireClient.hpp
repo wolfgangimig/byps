@@ -108,12 +108,12 @@ BINLINE void HWireClient_RequestToCancel::openRequest(LPCWSTR method) {
 					WINHTTP_DEFAULT_ACCEPT_TYPES, 
 					urlFlags);
 
-	WinHttpSetTimeouts(hRequest, timeoutMillisClient, timeoutMillisClient, timeoutMillisRequest, timeoutMillisRequest);
-
 	if (!hRequest) {
 		DWORD err = ::GetLastError();
 		throw HException(L"WinHttpOpenRequest", err);
 	}
+
+	WinHttpSetTimeouts(hRequest, timeoutMillisClient, timeoutMillisClient, timeoutMillisRequest, timeoutMillisRequest);
 
 	WINHTTP_STATUS_CALLBACK retcb = WinHttpSetStatusCallback(
 		hRequest,
@@ -200,7 +200,7 @@ BINLINE void HWireClient_RequestToCancel::sendRequest() {
 
 	if( !succ ) {
 		DWORD err = GetLastError();
-		throw HException(L"WinHttpSendRequest", err);
+		finishOnError(HException(L"WinHttpSendRequest", err));
 	}
 }
 
@@ -851,7 +851,6 @@ BINLINE int32_t HWireClient_GetStream::MyContentStream::read(char* buffer, int32
 
 		if (pThis->bufferPos > pThis->bufferLimit) {
 			BException ex(EX_INTERNAL, L"Illegal state in HWireClient_GetStream::readData");
-			pThis->finishOnError(ex);
 			throw pThis->ex;
 		}
 

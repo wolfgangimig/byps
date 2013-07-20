@@ -78,6 +78,9 @@
     <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\WinHttpClient.hpp">
       <Filter>include\platform\win</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\WinHttpClientI.h">
+      <Filter>include\platform\win</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

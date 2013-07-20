@@ -15,8 +15,8 @@
 #include "HHttpClient.h"
 
 
-//#ifdef _MSC_VER
-//#include "platform/win/WinHttpClient.h"
-//#endif
+#ifdef _MSC_VER
+#include "platform/win/WinHttpClient.h"
+#endif
 
 #endif

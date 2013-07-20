@@ -8,8 +8,8 @@
 #include "HTransportFactoryClient.hpp"
 #include "HHttpClient.hpp"
 
-//#ifdef _MSC_VER
-//#include "platform/win/WinHttpClient.hpp"
-//#endif
+#ifdef _MSC_VER
+#include "platform/win/WinHttpClient.hpp"
+#endif
 
 #endif

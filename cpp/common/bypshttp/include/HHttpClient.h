@@ -10,26 +10,54 @@ using namespace com::wilutions::byps;
 
 class HHttpClient;
 typedef byps_ptr<HHttpClient> PHttpClient;
+class HHttpRequest;
+typedef byps_ptr<HHttpRequest> PHttpRequest;
+class HHttpGet;
+typedef byps_ptr<HHttpGet> PHttpGet;
+class HHttpPost;
+typedef byps_ptr<HHttpPost> PHttpPost;
+class HHttpPut;
+typedef byps_ptr<HHttpPut> PHttpPut;
 
-struct HHttpClientParams {
-	std::wstring url;
-	int32_t flags;
-	int32_t sendTimeoutSeconds;
-	int32_t receiveTimeoutSeconds;
-	HHttpClientParams();
-	HHttpClientParams(const std::wstring& url, int32_t flags, int32_t sendTimeoutSeconds, int32_t receiveTimeoutSeconds);
+class HHttpRequest {
+public:
+	~HHttpRequest() {}
+
+	virtual void setTimeouts(int32_t connectTimeoutSeconds, int32_t sendrecvTimeoutSeconds) = 0;
+	virtual void cancel() = 0;
+};
+
+class HHttpGet : public virtual HHttpRequest {
+public:
+	~HHttpGet() {}
+
+	virtual PContentStream send() = 0;
+};
+
+class HHttpPost : public virtual  HHttpRequest {
+public:
+	~HHttpPost() {}
+
+	virtual void send(PBytes bytes, PAsyncResult asyncBytesReceived) = 0;
+};
+
+class HHttpPut : public virtual HHttpRequest {
+public:
+	~HHttpPut() {}
+
+	virtual void send(PContentStream strm, PAsyncResult asyncBoolFinished) = 0;
 };
 
 class HHttpClient {
 public:
 	virtual ~HHttpClient() {}
 	
-	virtual void init(HHttpClientParams& params) = 0;
+	virtual void init(const std::wstring& url) = 0;
 	virtual void done() = 0;
 
-	virtual PContentStream get(const HHttpClientParams& params) = 0;
-	virtual void post(const HHttpClientParams& params, PBytes bytes, PAsyncResult asyncBytesReceived) = 0;
-	virtual void put(const HHttpClientParams& params, PContentStream stream, PAsyncResult asyncBoolFinished) = 0;
+	virtual PHttpRequest get(const std::wstring& url) = 0;
+	virtual PHttpRequest post(const std::wstring& url) = 0;
+	virtual PHttpRequest put(const std::wstring& url) = 0;
 
 };
 
