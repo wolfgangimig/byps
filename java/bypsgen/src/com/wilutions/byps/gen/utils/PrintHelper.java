@@ -1,4 +1,4 @@
-package com.wilutions.byps.gen.j;
+package com.wilutions.byps.gen.utils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,10 +20,6 @@ public class PrintHelper {
 		else if (typeId == BRegistry.TYPEID_INT16  ) fnct = "getShort";
 		else if (typeId == BRegistry.TYPEID_INT32  ) fnct = "getInt";
 		else if (typeId == BRegistry.TYPEID_INT64  ) fnct = "getLong";
-//		else if (typeId == BRegistry.TYPEID_UINT8   ) fnct = "getByte";
-//		else if (typeId == BRegistry.TYPEID_UINT16  ) fnct = "getShort";
-//		else if (typeId == BRegistry.TYPEID_UINT32  ) fnct = "getInt";
-//		else if (typeId == BRegistry.TYPEID_UINT64  ) fnct = "getLong";
 		else if (typeId == BRegistry.TYPEID_FLOAT  ) fnct = "getFloat";
 		else if (typeId == BRegistry.TYPEID_DOUBLE ) fnct = "getDouble";
 		else if (typeId == BRegistry.TYPEID_BOOL   ) fnct = "getBoolean";
@@ -45,10 +41,6 @@ public class PrintHelper {
 		else if (typeId == BRegistry.TYPEID_INT16  ) fnct = "putShort";
 		else if (typeId == BRegistry.TYPEID_INT32  ) fnct = "putInt";
 		else if (typeId == BRegistry.TYPEID_INT64  ) fnct = "putLong";
-//		else if (typeId == BRegistry.TYPEID_UINT8   ) fnct = "putByte";
-//		else if (typeId == BRegistry.TYPEID_UINT16  ) fnct = "putShort";
-//		else if (typeId == BRegistry.TYPEID_UINT32  ) fnct = "putInt";
-//		else if (typeId == BRegistry.TYPEID_UINT64  ) fnct = "putLong";
 		else if (typeId == BRegistry.TYPEID_FLOAT  ) fnct = "putFloat";
 		else if (typeId == BRegistry.TYPEID_DOUBLE ) fnct = "putDouble";
 		else if (typeId == BRegistry.TYPEID_BOOL   ) fnct = "putBoolean";
@@ -70,15 +62,10 @@ public class PrintHelper {
 		else if (typeId == BRegistry.TYPEID_INT16  ) fnct = "((short)0)";
 		else if (typeId == BRegistry.TYPEID_INT32  ) fnct = "0";
 		else if (typeId == BRegistry.TYPEID_INT64  ) fnct = "0L";
-//		else if (typeId == BRegistry.TYPEID_UINT8   ) fnct = "((byte)0)";
-//		else if (typeId == BRegistry.TYPEID_UINT16  ) fnct = "((short)0)";
-//		else if (typeId == BRegistry.TYPEID_UINT32  ) fnct = "0";
-//		else if (typeId == BRegistry.TYPEID_UINT64  ) fnct = "0L";
 		else if (typeId == BRegistry.TYPEID_FLOAT  ) fnct = "0.0f";
 		else if (typeId == BRegistry.TYPEID_DOUBLE ) fnct = "0.0";
 		else if (typeId == BRegistry.TYPEID_BOOL   ) fnct = "false";
 		else if (typeId == BRegistry.TYPEID_STRING ) fnct = "\"\"";
-//		else if (typeId == BRegistry.TYPEID_VOID   ) throw new IllegalStateException("void does not have a default value");
 		else {
 			return "null";
 		}

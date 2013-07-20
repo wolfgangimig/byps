@@ -50,6 +50,7 @@ public class BDoclet extends Doclet {
 	private static int convertOptions = 0;
 	private static String tempDir;
 	private static CompileSource compileSource;
+	private static boolean verboseLogging = false;
 	private static Log log = LogFactory.getLog(BDoclet.class);
 
 	public static boolean start(RootDoc root) {
@@ -262,8 +263,7 @@ public class BDoclet extends Doclet {
 	
 	public static void main(String[] args) {
 
-
-		configureLog4j("INFO");
+		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
 			args = bypstest_ser;
@@ -280,7 +280,11 @@ public class BDoclet extends Doclet {
 			for (int argIdx = 0; argIdx < args.length; ) {
 				
 				String arg = args[argIdx];
-				if (arg.startsWith(PropertiesC.OPT_PREFIX)) {
+				if (arg.startsWith("-verbose")) {
+					configureLog4j("INFO");
+					argIdx++;
+				}
+				else if (arg.startsWith(PropertiesC.OPT_PREFIX)) {
 					if (propsC == null) propsC = new PropertiesC(defaultProps); 
 					argIdx = propsC.addArgs(args, argIdx);
 				}
@@ -384,7 +388,6 @@ public class BDoclet extends Doclet {
 				}
 				tempDir = dir.getAbsolutePath();
 			}
-			
 			
 			log.info("Compile source files ==============");
 			log.info("source dirs=" + Arrays.toString(sourceDirs));

@@ -25,6 +25,9 @@ class PrintContext extends PrintContextBase {
 		super(classDB, props);
 		
 		destFile = props.getMandatoryPropertyFile(PropertiesJS.DEST_FILE);
+		
+		File destDir = destFile.getParentFile();
+		destDir.mkdir();
 	}
 	
 	CodePrinter getPrinter() throws IOException {

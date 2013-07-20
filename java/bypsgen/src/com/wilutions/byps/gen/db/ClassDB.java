@@ -507,9 +507,6 @@ public class ClassDB {
 				typeId = makeTypeIdFromNameHash(tinfo);
 			}
 			else if (typeId < registry.getMinTypeIdUser()) {
-//				throw new GeneratorException("Invalid serialVersionUID in" + tinfo.qname + 
-//						", must be a unique number greater than or equal to " + 
-//						registry.getMinTypeIdUser());
 				log.warn("Ignoring serialVersionUID in " + tinfo.qname);
 				typeId = makeTypeIdFromNameHash(tinfo);
 			}

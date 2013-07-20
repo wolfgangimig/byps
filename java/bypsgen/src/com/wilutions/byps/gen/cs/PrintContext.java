@@ -16,9 +16,9 @@ import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.db.ClassDB;
-import com.wilutions.byps.gen.j.PrintHelper;
 import com.wilutions.byps.gen.utils.CodePrinter;
 import com.wilutions.byps.gen.utils.PrintContextBase;
+import com.wilutions.byps.gen.utils.PrintHelper;
 import com.wilutions.byps.gen.utils.Utils;
 
 public class PrintContext extends PrintContextBase {
