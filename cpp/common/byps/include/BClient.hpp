@@ -67,7 +67,7 @@ public:
     virtual void setAsyncResult(const BVariant& result) {
         try {
             if (result.isException()) {
-                innerResult->setAsyncResult(BVariant(result.getException()));
+                innerResult->setAsyncResult(result);
             }
             else {
                 if (client->serverR) {

@@ -17,13 +17,13 @@ public:
 	byps_mutex mutex;
 	byps_condition_variable serverFinished;
 	bool isDone;
-	DWORD sleepMillisBeforeRetry;
+	int32_t sleepMillisBeforeRetry;
 
 	HServerR_SendLongPoll() : isDone(false), sleepMillisBeforeRetry(60 * 1000) {}
 
 	bool checkDoneMaybeWait() {
 		byps_unique_lock lock(mutex);
-		std::chrono::duration<DWORD,std::milli> timeout(sleepMillisBeforeRetry);
+		std::chrono::duration<int32_t,std::milli> timeout(sleepMillisBeforeRetry);
 		return serverFinished.wait_for(lock, timeout, [this]() { return isDone; });
 	}
 

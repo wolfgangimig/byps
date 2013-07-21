@@ -5,6 +5,7 @@
 #include "AllTests.h"
 #include "testfw.hpp"
 #include "BLogger.hpp"
+
 LOGGER_IMPL;
 
 #include <stdarg.h>
@@ -20,6 +21,10 @@ LOGGER_IMPL;
 #include "AllTests.h"
 #include "BLogger.h"
 
+#include "platform/win/WinHttpClient.hpp"
+
+
+
 
 using namespace com::wilutions::byps;
 using namespace com::wilutions::byps::http;
@@ -30,7 +35,11 @@ using namespace com::wilutions::byps::test::api::srvr;
 using namespace com::wilutions::byps::test::api::inl;
 using namespace com::wilutions::byps::test::api::prim;
 
-
+class MyRunnable : public BRunnable {
+public:
+	virtual void run() {
+	}
+};
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -55,20 +64,23 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	BLogger log("main");
 	log.debug() << L"eine logausgabe" << 14;
-	
-	TestSuite suite;
-	suite.add(TestRemoteConstants_create());
-	suite.add(TestRemoteEnums_create());
-	suite.add(TestRemoteInlineInstance_create());
-	suite.add(TestRemoteServerR_create());
-	suite.add(TestRemoteArrays_create());
-	suite.add(TestRemotePrimitiveTypes_create());
-	suite.add(TestRemoteSetTypes_create());
-	suite.add(TestRemoteMapTypes_create());
-	suite.add(TestRemoteArrays4Dim_create());
-	suite.add(TestRemoteListTypes_create());
-	suite.add(TestRemoteStreams_create());
-	suite.run();
+	for (int i = 0; i < 1; i++) {
+
+		TestSuite suite;
+		suite.add(TestRemoteConstants_create());
+		suite.add(TestRemoteEnums_create());
+		suite.add(TestRemoteInlineInstance_create());
+		suite.add(TestRemoteServerR_create());
+		suite.add(TestRemoteArrays_create());
+		suite.add(TestRemotePrimitiveTypes_create());
+		suite.add(TestRemoteSetTypes_create());
+		suite.add(TestRemoteMapTypes_create());
+		suite.add(TestRemoteArrays4Dim_create());
+		suite.add(TestRemoteListTypes_create());
+		suite.add(TestRemoteStreams_create());
+
+		suite.run();
+	}
 
 	//test2();b
 

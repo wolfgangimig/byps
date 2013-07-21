@@ -351,8 +351,8 @@ public:
 		int loopCount = 100;
 		int flags = 0;
 		internalTestPerformance(flags, loopCount, 10);
-		internalTestPerformance(flags, loopCount, 100);
-		internalTestPerformance(flags, loopCount, 1000);
+		//internalTestPerformance(flags, loopCount, 100);
+		//internalTestPerformance(flags, loopCount, 1000);
 
 		//internalTestPerformanceSerialize(loopCount, 1000);
 	}

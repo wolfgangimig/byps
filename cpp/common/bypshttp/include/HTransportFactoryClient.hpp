@@ -25,7 +25,9 @@ BINLINE PClient HTransportFactoryClient::createClientR(PClient) {
 }
 
 BINLINE PServerR HTransportFactoryClient::createServerR(PServer server) {
-	return PServerR( new HServerR(transport, server, nbOfServerRConns) );
+	return nbOfServerRConns ? 
+		PServerR( new HServerR(transport, server, nbOfServerRConns) ) : 
+		PServerR();
 }
 
 

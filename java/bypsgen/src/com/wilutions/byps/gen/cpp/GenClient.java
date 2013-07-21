@@ -186,6 +186,7 @@ public class GenClient {
 		
 		prC.print("void ").print(clientCppInfo.getClassName(pack)).print("::addRemote(").print(typeName).println(" remoteSkeleton) {");
 		prC.beginBlock();
+		prC.println("if (!serverR) throw BException(EX_INTERNAL, L\"Missing reverse server. It should have been created by TransportFactory::createServerR().\");");
 		prC.println("serverR->server->addRemote(" + rinfo.typeId + ", remoteSkeleton);");
 		prC.endBlock();
 		prC.println("}");

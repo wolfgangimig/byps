@@ -24,7 +24,8 @@ public:
 	~HHttpRequest() {}
 
 	virtual void setTimeouts(int32_t connectTimeoutSeconds, int32_t sendrecvTimeoutSeconds) = 0;
-	virtual void cancel() = 0;
+	virtual void close() = 0;
+
 };
 
 class HHttpGet : public virtual HHttpRequest {
@@ -38,7 +39,7 @@ class HHttpPost : public virtual  HHttpRequest {
 public:
 	~HHttpPost() {}
 
-	virtual void send(PBytes bytes, PAsyncResult asyncBytesReceived) = 0;
+	virtual void send(PBytes bytes, const std::wstring& contentType, PAsyncResult asyncBytesReceived) = 0;
 };
 
 class HHttpPut : public virtual HHttpRequest {
@@ -53,11 +54,10 @@ public:
 	virtual ~HHttpClient() {}
 	
 	virtual void init(const std::wstring& url) = 0;
-	virtual void done() = 0;
 
-	virtual PHttpRequest get(const std::wstring& url) = 0;
-	virtual PHttpRequest post(const std::wstring& url) = 0;
-	virtual PHttpRequest put(const std::wstring& url) = 0;
+	virtual PHttpGet get(const std::wstring& url) = 0;
+	virtual PHttpPost post(const std::wstring& url) = 0;
+	virtual PHttpPut put(const std::wstring& url) = 0;
 
 };
 

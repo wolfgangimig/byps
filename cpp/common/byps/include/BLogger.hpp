@@ -20,7 +20,7 @@ BINLINE void BLogFile::println(BLogLevel msglevel, const std::wstring& msg) {
 
     strm << std::setfill(L'0')
          << std::setw(4) << 1900 + now.tm_year << L"-"
-         << std::setw(2) << now.tm_mon << L"-"
+         << std::setw(2) << now.tm_mon+1 << L"-"
          << std::setw(2) << now.tm_mday << L" "
          << std::setw(2) << now.tm_hour << L":"
          << std::setw(2) << now.tm_min << L":"

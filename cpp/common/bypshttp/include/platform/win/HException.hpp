@@ -2,8 +2,9 @@
 #define HEXCEPTION_HPP_
 
 #include "Bypshttp.h"
+#include "HException.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace com { namespace wilutions { namespace byps { namespace http { namespace winhttp {
 
 using namespace com::wilutions::byps;
 
@@ -133,6 +134,6 @@ BINLINE HException::HException(DWORD httpStatus)
 	msg = ss.str();
 }
 
-}}}}
+}}}}}
 
 #endif

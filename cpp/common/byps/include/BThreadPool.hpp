@@ -43,12 +43,16 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 	
 	static void threadFunction(PThreadPoolImpl tpool) {
 		std::thread::id tid = std::this_thread::get_id();
-		byps_unique_lock lock(tpool->mutex);
 
 		while (true) {
-			PRunnable r = tpool->nextRunnableUnsync(lock);
-			if (!r) {
-				break;
+			PRunnable r;
+
+			{
+				byps_unique_lock lock(tpool->mutex);
+				r = tpool->nextRunnableUnsync(lock);
+				if (!r) {
+					break;
+				}
 			}
 
 			try {
@@ -59,7 +63,10 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 
 		}
 
-		tpool->runningThreads[tid] = false;
+		{
+			byps_unique_lock lock(tpool->mutex);
+			tpool->runningThreads[tid] = false;
+		}
 	}
 
 	void removeStoppedThreadsUnsync(std::vector<PThread>& stoppedThreads) {

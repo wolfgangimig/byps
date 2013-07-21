@@ -26,51 +26,67 @@ PClient_Testser BClient_Testser::createClientR(PTransport transport) {
 	return PClient_Testser(new BClient_Testser(transport));
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteArrayTypes1dim remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1557084481, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteArrayTypes23 remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(2081058997, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteArrayTypes4dim remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1557173854, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteConstants remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(431648293, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteEnums remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(359349400, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteInlineInstance remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1206670536, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteListTypes remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(380156079, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteMapTypes remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(80483097, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemotePrimitiveTypes remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1341983932, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteReferences remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(2086824050, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteServerCtrl remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1124545992, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteSetTypes remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1156008353, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteStreams remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(2028487863, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1784257353, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ServerIF remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(1313562065, remoteSkeleton);
 }
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::ver::PSkeleton_EvolveIF remoteSkeleton) {
+	if (!serverR) throw BException(EX_INTERNAL, L"Missing reverse server. It should have been created by TransportFactory::createServerR().");
 	serverR->server->addRemote(2078696281, remoteSkeleton);
 }
 BClient_Testser::BClient_Testser(PTransportFactory transportFactory) 

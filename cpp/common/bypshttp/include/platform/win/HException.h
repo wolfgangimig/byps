@@ -3,7 +3,7 @@
 
 #include "Bypshttp.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace com { namespace wilutions { namespace byps { namespace http { namespace winhttp {
 
 using namespace com::wilutions::byps;
 
@@ -15,6 +15,6 @@ private:
 	LPCWSTR getWinHttpErrorMessage(DWORD err);
 };
 
-}}}}
+}}}}}
 
 #endif

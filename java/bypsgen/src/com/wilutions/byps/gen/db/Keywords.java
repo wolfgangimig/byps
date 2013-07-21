@@ -13,9 +13,9 @@ public class Keywords {
 		if (javaKeywords.contains(ident)) {
 			log.error(errorContext + ": found Java keyword \"" + ident + "\"");
 		}
-//		else if (csharpKeywords.contains(ident)) {
-//			log.error(errorContext + ": found C# keyword \"" + ident + "\"");
-//		}
+		else if (csharpKeywords.contains(ident)) {
+			log.error(errorContext + ": found C# keyword \"" + ident + "\"");
+		}
 		else {
 			ret = true;
 		}

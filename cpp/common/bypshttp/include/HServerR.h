@@ -19,7 +19,7 @@ public:
 
 protected:
 	int nbOfConns;
-	DWORD sleepMillisBeforeRetry;
+	int32_t sleepMillisBeforeRetry;
 	PServerR_SendLongPoll sendLongPoll;
 };
 

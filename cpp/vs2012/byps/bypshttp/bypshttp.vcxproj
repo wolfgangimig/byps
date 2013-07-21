@@ -152,8 +152,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\common\bypshttp\include\Bypshttp.h" />
     <ClInclude Include="..\..\..\common\bypshttp\include\Bypshttp.hpp" />
-    <ClInclude Include="..\..\..\common\bypshttp\include\HException.h" />
-    <ClInclude Include="..\..\..\common\bypshttp\include\HException.hpp" />
     <ClInclude Include="..\..\..\common\bypshttp\include\HHttpClient.h" />
     <ClInclude Include="..\..\..\common\bypshttp\include\HHttpClient.hpp" />
     <ClInclude Include="..\..\..\common\bypshttp\include\HServerR.h" />
@@ -163,6 +161,8 @@
     <ClInclude Include="..\..\..\common\bypshttp\include\HWireClient.h" />
     <ClInclude Include="..\..\..\common\bypshttp\include\HWireClient.hpp" />
     <ClInclude Include="..\..\..\common\bypshttp\include\HWireClientI.h" />
+    <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\HException.h" />
+    <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\HException.hpp" />
     <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\WinHttpClient.h" />
     <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\WinHttpClient.hpp" />
     <ClInclude Include="..\..\..\common\bypshttp\include\platform\win\WinHttpClientI.h" />
