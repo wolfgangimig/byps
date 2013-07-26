@@ -46,7 +46,7 @@ class GenRemoteStub {
 		}
 		mpr.println(" };");
 
-		pr.println("var ret = transport.send(req, asyncResult);");
+		pr.println("var ret = transport.send(req, __byps__asyncResult);");
 		pr.println("return ret.result;");
 				
 		pr.endBlock();
