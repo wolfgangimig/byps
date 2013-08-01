@@ -50,7 +50,7 @@ class GenRemoteClass {
 		pr.print("package ").print(rinfo.pack).print(";").println();
 		pr.println();
 		
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, getClass());
 
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();

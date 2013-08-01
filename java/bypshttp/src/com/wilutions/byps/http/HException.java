@@ -6,7 +6,7 @@ import com.wilutions.byps.BException;
 
 public class HException extends BException {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 20L;
 	
 	private int statusCode;
 

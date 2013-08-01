@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.inl.Actor;
 import com.wilutions.byps.test.api.inl.Matrix2D;
@@ -25,7 +25,7 @@ public class TestRemoteInlineInstance {
 	private Log log = LogFactory.getLog(TestRemoteInlineInstance.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.remoteInlineInstance;
 	}
@@ -67,7 +67,7 @@ public class TestRemoteInlineInstance {
 	}
 
 	@Test
-	public void testRemoteInlineInstance() throws BException, InterruptedException {
+	public void testRemoteInlineInstance() throws RemoteException {
 		log.info("testRemoteInlineInstance(");
 		
 		Actor actor = createActor();
@@ -79,7 +79,7 @@ public class TestRemoteInlineInstance {
 	}
 	
 	@Test
-	public void testRemoteInlineInstanceArray1dim() throws BException, InterruptedException {
+	public void testRemoteInlineInstanceArray1dim() throws RemoteException {
 		log.info("testRemoteInlineInstanceArray1dim(");
 		
 		Point2D[] point2DArray = new Point2D[] {createPoint2D(), createPoint2D()};
@@ -91,7 +91,7 @@ public class TestRemoteInlineInstance {
 	}
 
 	@Test
-	public void testRemoteInlineInstanceArray4dim() throws BException, InterruptedException {
+	public void testRemoteInlineInstanceArray4dim() throws RemoteException {
 		log.info("testRemoteInlineInstanceArray4dim(");
 		
 		Point2D[][][][] point2DArray = new Point2D[][][][] {{{{createPoint2D(), createPoint2D()}}}};
@@ -103,7 +103,7 @@ public class TestRemoteInlineInstance {
 	}
 
 	@Test
-	public void testRemoteInlineInstanceList() throws BException, InterruptedException {
+	public void testRemoteInlineInstanceList() throws RemoteException {
 		log.info("testRemoteInlineInstanceList(");
 		
 		List<Point2D> point2DList = new ArrayList<Point2D>();
@@ -117,7 +117,7 @@ public class TestRemoteInlineInstance {
 	}
 
 	@Test
-	public void testRemoteInlineInstanceListList() throws BException, InterruptedException {
+	public void testRemoteInlineInstanceListList() throws RemoteException {
 		log.info("testRemoteInlineInstanceListList(");
 		
 		List<List<Point2D>> point2DListList = new ArrayList<List<Point2D>>();
@@ -133,7 +133,7 @@ public class TestRemoteInlineInstance {
 	}
 
 	@Test
-	public void testRemoteInlineInstanceMap() throws BException, InterruptedException {
+	public void testRemoteInlineInstanceMap() throws RemoteException {
 		log.info("testRemoteInlineInstanceMap(");
 		
 		Map<Integer, Point2D> point2DMap = new HashMap<Integer, Point2D>();

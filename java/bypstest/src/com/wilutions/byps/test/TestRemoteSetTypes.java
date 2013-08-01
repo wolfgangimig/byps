@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 import com.wilutions.byps.test.api.remote.RemoteSetTypes;
@@ -29,7 +29,7 @@ public class TestRemoteSetTypes {
 	private Log log = LogFactory.getLog(TestRemoteSetTypes.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.remoteSetTypes;
 	}
@@ -42,7 +42,7 @@ public class TestRemoteSetTypes {
 	}
 	
 	@Test
-	public void testRemoteSetTypes() throws BException, InterruptedException {
+	public void testRemoteSetTypes() throws RemoteException {
 		log.info("testRemoteSetTypes(");
 		
 		SetTypes obj = new SetTypes();

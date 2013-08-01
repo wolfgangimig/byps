@@ -55,7 +55,7 @@ public class HActiveMessages {
 		synchronized(msg) {
 			if (msg.isCanceled()) {
 				if (log.isDebugEnabled()) log.debug("Message was canceled");
-				throw new BException(BException.CANCELED, "Message was canceled");
+				throw new BException(BException.CANCELLED, "Message was canceled");
 			}
 		}
 		return msg;

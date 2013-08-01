@@ -3,6 +3,7 @@ package com.wilutions.byps.test.servlet;
 import java.util.Arrays;
 
 import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.cons.AllTypesC;
 import com.wilutions.byps.test.api.cons.AllTypesZ;
 import com.wilutions.byps.test.api.cons.HebrewC;
@@ -71,8 +72,7 @@ public class MyRemoteConstants extends BSkeleton_RemoteConstants {
 	}
 
 	@Override
-	public void compare_HebrewC(HebrewZ ALEPH, HebrewZ BETH) throws BException,
-			InterruptedException {
+	public void compare_HebrewC(HebrewZ ALEPH, HebrewZ BETH) throws RemoteException {
 		compare(HebrewC.ALEPH, ALEPH);
 		compare(HebrewC.BETH, BETH);
 	}
@@ -83,7 +83,7 @@ public class MyRemoteConstants extends BSkeleton_RemoteConstants {
 			int int1s, long long1s, float float1s, double double1s,
 			String string1s, AllTypesZ ALL, int[] arrInt, int[][][][] arrInt4,
 			String[] arrStrings, String[][][][] arrStrings4,
-			AllTypesZ[][] arrAll) throws BException, InterruptedException {
+			AllTypesZ[][] arrAll) throws RemoteException {
 		
 
 		compare(AllTypesC.bool1s, bool1s);

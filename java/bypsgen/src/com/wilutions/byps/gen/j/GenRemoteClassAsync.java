@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.wilutions.byps.BRemote;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -45,7 +44,7 @@ class GenRemoteClassAsync extends GenRemoteClass {
 		pr.print("package ").print(rinfo.pack).print(";").println();
 		pr.println();
 		
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, getClass());
 
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();

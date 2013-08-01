@@ -1,6 +1,6 @@
 package com.wilutions.byps.test.servlet;
 
-import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF;
 import com.wilutions.byps.test.api.ver.BStub_EvolveIF;
 import com.wilutions.byps.test.api.ver.Evolve;
@@ -17,28 +17,28 @@ public class MyEvolve extends BSkeleton_EvolveIF {
 	}
 
 	@Override
-	public void setEvolve(Evolve obj) throws BException, InterruptedException {
+	public void setEvolve(Evolve obj) throws RemoteException {
 		this.obj = obj;
 	}
 
 	@Override
-	public Evolve getEvolve() throws BException, InterruptedException {
+	public Evolve getEvolve() throws RemoteException {
 		return obj;
 	}
 
 	@Override
-	public EvolveIF getClient() throws BException, InterruptedException {
+	public EvolveIF getClient() throws RemoteException {
 		if (client != null) return client;
 		return (EvolveIF)sess.getClientR().getStub((int)BStub_EvolveIF.serialVersionUID);
 	}
 	
 	@Override
-	public void setClient(EvolveIF partner) throws BException, InterruptedException {
+	public void setClient(EvolveIF partner) throws RemoteException {
 		client = partner;
 	}
 
 	@Override
-	public void sendEvolveToClient() throws BException, InterruptedException {
+	public void sendEvolveToClient() throws RemoteException {
 		getClient().setEvolve(obj);
 	}
 }

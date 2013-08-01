@@ -31,17 +31,16 @@ import com.wilutions.byps.BBuffer;
 import com.wilutions.byps.BClient;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BContentStreamWrapper;
-import com.wilutions.byps.BException;
 import com.wilutions.byps.BMessage;
-import com.wilutions.byps.BNegotiate;
 import com.wilutions.byps.BProtocol;
 import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BProtocolS;
-import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.BStreamRequest;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BApiDescriptor_Testser;
+import com.wilutions.byps.test.api.BRegistry_Testser;
 import com.wilutions.byps.test.api.JRegistry_Testser;
 import com.wilutions.byps.test.api.inl.Actor;
 import com.wilutions.byps.test.api.inl.Matrix2D;
@@ -51,7 +50,8 @@ import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 public class TestUtils {
 
 	private static Log log = LogFactory.getLog(TestUtils.class);
-	public static BBinaryModel bmodel = BBinaryModel.JSON;
+	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
+	public static boolean TEST_LARGE_STREAMS = false;
 
 	public static BTransport createTransport() {
 		return createTransport(BWire.FLAG_DEFAULT, 0);
@@ -63,17 +63,18 @@ public class TestUtils {
 		
 		BApiDescriptor apiDesc = new BApiDescriptor("TestSerialize",
 				BApiDescriptor_Testser.instance.basePackage, 
-				BApiDescriptor_Testser.instance.bmodel,
 				version, 
-				BApiDescriptor_Testser.instance.uniqueObjects, 
-				BApiDescriptor_Testser.instance.getProtocols(),
-				BApiDescriptor_Testser.instance.getRegistry());
+				BApiDescriptor_Testser.instance.uniqueObjects);
 		
-		BRegistry registryJSON = new JRegistry_Testser(BBinaryModel.JSON);
-		apiDesc.addProtocol(BNegotiate.JSON, registryJSON);
+		if (protocol == BProtocolJson.BINARY_MODEL) { 
+			apiDesc.addRegistry(new JRegistry_Testser());
+		}
+		else {
+			apiDesc.addRegistry(new BRegistry_Testser());
+		}
 		
 		BProtocol proto = null;
-		if (bmodel == BBinaryModel.JSON) {
+		if (protocol == BProtocolJson.BINARY_MODEL) {
 			proto = new BProtocolJson(apiDesc);
 		}
 		else {
@@ -642,7 +643,7 @@ public class TestUtils {
 		}
 	}
 
-	public static void checkTempDirEmpty(BClient client) throws BException, InterruptedException {
+	public static void checkTempDirEmpty(BClient client) throws RemoteException {
 		log.info("check temp dir is empty");
 		String[] tempFiles = client.transport.wire.getTestAdapter().getServerTempFiles();
 		TestUtils.assertEquals(log, "temp files", new String[0], tempFiles);

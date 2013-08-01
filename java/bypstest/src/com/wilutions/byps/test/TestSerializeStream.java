@@ -11,13 +11,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
-import com.wilutions.byps.BException;
 import com.wilutions.byps.BInput;
 import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BOutput;
 import com.wilutions.byps.BSyncResult;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.strm.Stream1;
 
 /**
@@ -142,7 +142,7 @@ public class TestSerializeStream {
 		log.info(")testSerializeMapStream");
 	}
 
-	private Stream1 internaltestSerializeStream(Stream1 obj) throws BException, InterruptedException {
+	private Stream1 internaltestSerializeStream(Stream1 obj) throws RemoteException {
 		BOutput bout = transport.getOutput();
 		
 		bout.store(obj);

@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.wilutions.byps.BBinaryModel;
+import com.wilutions.byps.BProtocolS;
 
 
 @RunWith(Suite.class)
@@ -35,8 +35,7 @@ import com.wilutions.byps.BBinaryModel;
 public class AllTestsMEDIUM {
 	
 	@BeforeClass
-	public static void setBinaryModel() {
-		TestUtils.bmodel = BBinaryModel.MEDIUM;
+	public static void setProtocol() {
+		TestUtils.protocol = BProtocolS.BINARY_MODEL;
 	}
-	
 }

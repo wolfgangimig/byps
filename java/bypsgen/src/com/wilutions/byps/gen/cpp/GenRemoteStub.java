@@ -10,7 +10,6 @@ import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
-import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.cpp.PrintContext.EMethodDecl;
 import com.wilutions.byps.gen.utils.CodePrinter;
 

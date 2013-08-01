@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BJsonObject;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
@@ -195,7 +196,12 @@ class GenConstClass {
 				sinfo = s; break;
 			}
 		}
-		if (sinfo == null) throw new GeneratorException("Internal error, typeId=" + tinfo.typeId + " not found in list of serials.");
+		if (sinfo == null) {
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = tinfo.toString();
+			errInfo.msg = "Internal error, typeId=" + tinfo.typeId + " not found in list of serials.";
+			throw new GeneratorException(errInfo);
+		}
 		
 		boolean first = true;
 		sbuf.append("new ").append(sinfo.toString("")).append("(");

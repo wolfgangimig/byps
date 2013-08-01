@@ -37,7 +37,7 @@ public class GenRegistry {
 		pr.print("package ").print(pack).print(";").println();
 		pr.println();
 		
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, getClass());
 
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();
@@ -61,9 +61,14 @@ public class GenRegistry {
 	private void printConstructor() {
 		log.debug("printConstructors(");
 		
-		pr.print("public ").print(registryClassName).println("(BBinaryModel bmodel) {");
+		pr.print("public ").print(registryClassName).println("() {");
 		pr.beginBlock();
-		pr.println("super(bmodel);");
+		if (pformat == BBinaryModel.JSON) { 
+			pr.println("super(BBinaryModel.JSON);");
+		}
+		else {
+			pr.println("super(BBinaryModel.MEDIUM);");
+		}
 		pr.endBlock();
 		pr.println("}");
 		pr.println();

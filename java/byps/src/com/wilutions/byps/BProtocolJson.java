@@ -3,6 +3,8 @@ package com.wilutions.byps;
 import java.nio.ByteBuffer;
 
 public class BProtocolJson extends BProtocol {
+	
+	public static final BBinaryModel BINARY_MODEL = BBinaryModel.JSON;
 
 	public BProtocolJson(BApiDescriptor apiDesc) {
 		super(apiDesc, apiDesc.version, null);

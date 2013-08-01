@@ -194,7 +194,7 @@ public class BTransport {
 		client.transport.wire.send(forwardMessage, messageResult);
 	}
 
-	public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws BException, InterruptedException {
+	public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
 		
 		ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
 		final BNegotiate nego = new BNegotiate(apiDesc);
@@ -232,15 +232,15 @@ public class BTransport {
 	private BProtocol createNegotiatedProtocol(BNegotiate nego) throws BException {
 		BProtocol protocol = null;
 		
-		if (nego.protocols.startsWith(BNegotiate.BINARY_STREAM)) {
+		if (nego.protocols.startsWith(BProtocolS.BINARY_MODEL.getProtocolId())) {
 			int negotiatedVersion = Math.min(apiDesc.version, nego.version);
-			nego.protocols = BNegotiate.BINARY_STREAM;
+			nego.protocols = BProtocolS.BINARY_MODEL.getProtocolId();
 			if (nego.byteOrder == null) nego.byteOrder = ByteOrder.BIG_ENDIAN; 
 			nego.version = negotiatedVersion;
 			protocol = new BProtocolS(apiDesc, negotiatedVersion, nego.byteOrder);
 		}
-		else if (nego.protocols.startsWith(BNegotiate.JSON)){
-			nego.protocols = BNegotiate.JSON;
+		else if (nego.protocols.startsWith(BProtocolJson.BINARY_MODEL.getProtocolId())){
+			nego.protocols = BProtocolJson.BINARY_MODEL.getProtocolId();
 			protocol = new BProtocolJson(apiDesc);
 		}
 		else {

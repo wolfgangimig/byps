@@ -14,6 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.sun.tools.javac.Main;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.db.ConstFieldReader;
@@ -64,7 +65,9 @@ public class CompileSource implements ConstFieldReader {
 			}
 			classLoader = new URLClassLoader(urls.toArray(new URL[0]));
 		} catch (MalformedURLException e) {
-			throw new GeneratorException("Initialize ClassLoader with directory=\"" + foutDir + "\" failed: " + e);
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.msg = "Initialize ClassLoader with directory=\"" + foutDir + "\" failed.";
+			throw new GeneratorException(errInfo, e);
 		}
 	    
 	}
@@ -94,7 +97,9 @@ public class CompileSource implements ConstFieldReader {
 			log.debug("OK, " + e);
 		}
 		catch (Throwable e) {
-			throw new GeneratorException("Failed to read serialVersionUID, " + e);
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.msg = "Failed to read serialVersionUID.";
+			throw new GeneratorException(errInfo, e);
 		}
 		return value;
 	}
@@ -114,8 +119,9 @@ public class CompileSource implements ConstFieldReader {
 		
 		String msg = sw.toString();
 		if (status != 0) {
-			if (msg.length() != 0) log.error(msg);
-			throw new GeneratorException("Compile failed.");
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.msg = "Compile failed. " + msg;
+			throw new GeneratorException(errInfo);
 		}
 		else {
 			log.info("Sources successfully compiled.");

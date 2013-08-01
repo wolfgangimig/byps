@@ -5,15 +5,13 @@ import java.io.File;
 import javax.servlet.http.HttpSession;
 
 import com.wilutions.byps.BApiDescriptor;
-import com.wilutions.byps.BBinaryModel;
-import com.wilutions.byps.BNegotiate;
-import com.wilutions.byps.BRegistry;
-import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BServer;
+import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BTransportFactory;
 import com.wilutions.byps.http.HSession;
 import com.wilutions.byps.http.HTransportFactoryServer;
 import com.wilutions.byps.test.api.BApiDescriptor_Testser;
+import com.wilutions.byps.test.api.BRegistry_Testser;
 import com.wilutions.byps.test.api.BServer_Testser;
 import com.wilutions.byps.test.api.JRegistry_Testser;
 
@@ -37,15 +35,12 @@ public class MySession extends HSession {
 		BApiDescriptor myDesc = new BApiDescriptor(
 				BApiDescriptor_Testser.instance.name,
 				BApiDescriptor_Testser.instance.basePackage,
-				BApiDescriptor_Testser.instance.bmodel,
 				appVersion,
-				BApiDescriptor_Testser.instance.uniqueObjects,
-				BApiDescriptor_Testser.instance.getProtocols(),
-				BApiDescriptor_Testser.instance.getRegistry()
+				BApiDescriptor_Testser.instance.uniqueObjects
 				);
 		
-		BRegistry registryJSON = new JRegistry_Testser(BBinaryModel.JSON);
-		myDesc.addProtocol(BNegotiate.JSON, registryJSON);
+		myDesc.addRegistry(new JRegistry_Testser());
+		myDesc.addRegistry(new BRegistry_Testser());
 
 		BTransportFactory transportFactory = new HTransportFactoryServer(
 				myDesc, getWireServer(), getWireClientR(), serverRegistry);

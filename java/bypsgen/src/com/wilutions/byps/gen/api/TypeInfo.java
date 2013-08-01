@@ -3,7 +3,6 @@ package com.wilutions.byps.gen.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.xml.internal.rngom.parse.IllegalSchemaException;
 import com.wilutions.byps.BBinaryModel;
 
 public class TypeInfo {

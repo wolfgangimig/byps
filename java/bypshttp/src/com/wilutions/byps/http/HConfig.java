@@ -96,30 +96,34 @@ public class HConfig {
 		
 		// Server IDs
 		{
+			serverIds = new ArrayList<Integer>();
 			String key = "bypshttp.serverIds";
 			String str = configMap.get(key);
-			String[] ids = str.split(",");
-			serverIds = new ArrayList<Integer>(ids.length);
-			for (int i = 0; i < ids.length; i++) {
-		    	try {
-					serverIds.add(Integer.parseInt(ids[i]));
-		    	}
-		    	catch (NumberFormatException e) {
-		    		throw new IllegalStateException("Invalid serverIds in configuration, serverIds=" + str, e);
-		    	}
+			if (str != null) {
+				String[] ids = str.split(",");
+				for (int i = 0; i < ids.length; i++) {
+			    	try {
+						serverIds.add(Integer.parseInt(ids[i]));
+			    	}
+			    	catch (NumberFormatException e) {
+			    		throw new IllegalStateException("Invalid serverIds in configuration, serverIds=" + str, e);
+			    	}
+				}
 			}
 		}
 		
 		// Server URLs
 		{
 			serverUrls = new HashMap<Integer, String>(serverIds.size());
-			for (Integer serverId : serverIds) {
-				String key = "bypshttp.server." + serverId + ".url";
-				String url = configMap.get(key);
-				if (url == null || url.length() == 0) {
-					throw new IllegalStateException("Missing url for serverId=" + serverId + " in configuration."); 
+			if (serverUrls != null) {
+				for (Integer serverId : serverIds) {
+					String key = "bypshttp.server." + serverId + ".url";
+					String url = configMap.get(key);
+					if (url == null || url.length() == 0) {
+						throw new IllegalStateException("Missing url for serverId=" + serverId + " in configuration."); 
+					}
+					serverUrls.put(serverId, url);
 				}
-				serverUrls.put(serverId, url);
 			}
 		}
 		

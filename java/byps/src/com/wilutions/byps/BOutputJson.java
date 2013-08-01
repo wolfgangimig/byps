@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public class BOutputJson extends BOutput {
 	
 	public BOutputJson(BTransport transport) {
-		super(transport, transport.apiDesc.getRegistry(BBinaryModel.JSON), BMessageHeader.MAGIC_JSON, 0, ByteOrder.BIG_ENDIAN);
+		super(transport, transport.apiDesc.getRegistry(BProtocolJson.BINARY_MODEL), BMessageHeader.MAGIC_JSON, 0, ByteOrder.BIG_ENDIAN);
 		this.objMap = new BObjMap();
 		ByteBuffer buf = ByteBuffer.allocate(10 * 1000);
 		this.bbuf = new BBufferJson(buf);
 	}
 	
 	public BOutputJson(BTransport transport, BMessageHeader requestHeader) {
-		super(transport, transport.apiDesc.getRegistry(BBinaryModel.JSON), requestHeader);
+		super(transport, transport.apiDesc.getRegistry(BProtocolJson.BINARY_MODEL), requestHeader);
 		this.objMap = new BObjMap();
 		ByteBuffer buf = ByteBuffer.allocate(10 * 1000);
 		this.bbuf = new BBufferJson(buf);

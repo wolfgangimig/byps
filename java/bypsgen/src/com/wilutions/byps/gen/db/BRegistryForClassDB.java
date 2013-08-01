@@ -15,8 +15,8 @@ import com.wilutions.byps.gen.api.TypeInfo;
 
 public class BRegistryForClassDB extends BRegistry {
 
-	public BRegistryForClassDB(BBinaryModel bmodel) {
-		super(bmodel);
+	public BRegistryForClassDB() {
+		super(BBinaryModel.MEDIUM);
 	}
 	
 	@Override

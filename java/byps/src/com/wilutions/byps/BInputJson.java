@@ -9,7 +9,7 @@ import org.apache.commons.logging.LogFactory;
 public class BInputJson extends BInput {
 
 	public BInputJson(BMessageHeader header, ByteBuffer buf, BTransport transport) {
-		super(header, transport, transport.apiDesc.getRegistry(BBinaryModel.JSON));
+		super(header, transport, transport.apiDesc.getRegistry(BProtocolJson.BINARY_MODEL));
 		this.bbuf = new BBufferJson(buf);
 	}
 

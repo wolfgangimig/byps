@@ -4,6 +4,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class BProtocolS extends BProtocol {
+	
+	public static final BBinaryModel BINARY_MODEL = BBinaryModel.MEDIUM;
 
 	public BProtocolS(BApiDescriptor apiDesc, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		super(apiDesc, negotiatedVersion, negotiatedByteOrder);

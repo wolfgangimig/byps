@@ -66,7 +66,6 @@ public class GenApiDescriptor {
 		log.debug("printStaticMembers");
 		
 		prH.print("public: const static int32_t VERSION = " + apiDesc.version + ";").println();
-		prH.print("public: static BBinaryModel BMODEL() { return BBinaryModel::" + apiDesc.bmodel + "(); }").println();
 
 		log.debug(")printStaticMembers");
 	}
@@ -79,14 +78,13 @@ public class GenApiDescriptor {
 		String className = cppInfo.tinfo.name;
 		prC.print("PApiDescriptor ").print(className).print("::instance() {").println();
 		prC.beginBlock();
-		prC.println("return PApiDescriptor(new BApiDescriptor(");
+		prC.println("return PApiDescriptor((new BApiDescriptor(");
 		prC.println("\"" + apiDesc.name + "\",");
 		prC.println("\"" + apiDesc.basePackage + "\",");
-		prC.println("BMODEL(),");
 		prC.println("VERSION,");
-		prC.println(apiDesc.uniqueObjects + ",");
-		prC.println("PRegistry(new " + pctxt.getRegistryClassName(BBinaryModel.MEDIUM) + "())");
-		prC.println("));");
+		prC.println(apiDesc.uniqueObjects + ")) // uniqueObjects");
+		prC.print("->addRegistry(PRegistry(new ").print(pctxt.getRegistryClassName(BBinaryModel.MEDIUM)).println("()))");
+		prC.println(");");
 		prC.endBlock();
 		prC.println("};");
 		prC.println();

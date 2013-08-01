@@ -35,7 +35,7 @@ public class GenClient {
 		pr.print("package ").print(pack).print(";").println();
 		pr.println();
 		
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, getClass());
 
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();

@@ -124,7 +124,7 @@ public class GenSerList {
 		pr.print("package ").print(pack).print(";").println();
 		pr.println();
 		
-		pctxt.printDoNotModify(pr, "Serializer for " + serInfo);
+		pctxt.printDoNotModify(pr, getClass(), "Serializer for " + serInfo);
 
 		pr.println("import com.wilutions.byps.*;");
 		pr.println("import java.util.*;");

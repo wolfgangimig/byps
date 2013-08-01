@@ -25,5 +25,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

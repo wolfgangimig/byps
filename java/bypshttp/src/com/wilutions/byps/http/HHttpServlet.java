@@ -365,11 +365,13 @@ public abstract class HHttpServlet extends HttpServlet {
 		}
 		catch (Throwable e) {
 	    	if (log.isWarnEnabled()) log.warn("Failed to process message.", e);
-			HttpServletResponse resp = (HttpServletResponse)rctxt.getResponse();
+			HttpServletResponse resp = rctxt != null ? (HttpServletResponse)rctxt.getResponse() : response; 
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			resp.getWriter().print(e.toString());
 			resp.getWriter().close();
-			rctxt.complete();
+			if (rctxt != null) {
+				rctxt.complete();
+			}
 		}
 		finally {
 			NDC.pop();
@@ -503,7 +505,7 @@ public abstract class HHttpServlet extends HttpServlet {
 	        }
 	        catch (BException e) {
 	        	int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-	        	if (e.code == BException.CANCELED) {
+	        	if (e.code == BException.CANCELLED) {
 	        		status = HttpServletResponse.SC_NOT_ACCEPTABLE;
 	        	}
         		((HttpServletResponse)rctxt.getResponse()).setStatus(status);

@@ -36,7 +36,7 @@ public class HWireClientR extends BWire {
 		
 		canceled = true;
 		
-		BException bex = new BException(BException.CANCELED, "Longpoll canceled");
+		BException bex = new BException(BException.CANCELLED, "Longpoll canceled");
 		
 		// Notify the threads inside the server waiting for results that the 
 		// their calls are canceled.

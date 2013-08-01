@@ -16,8 +16,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.wilutions.byps.BContentStream;
+import com.wilutions.byps.BContentStreamWrapper;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.http.HConstants;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.remote.RemoteStreams;
@@ -33,7 +35,7 @@ public class TestRemoteStreams {
 	private Log log = LogFactory.getLog(TestRemoteStreams.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.remoteStreams;
 	}
@@ -77,27 +79,42 @@ public class TestRemoteStreams {
 	 */
 	@Test
 	public void testRemoteStreamsManyStreams() throws InterruptedException, IOException {
-		log.info("testRemoteStreamsOneStreams(");
+		log.info("testRemoteStreamsManyStreams(");
+		int nbOfStreams = 10;
+		
+		for (int i = 0; i < 1000; i++) {
+			internalTestRemoteStreamsManyStreams(nbOfStreams);
+		}
+		
+		log.info(")testRemoteStreamsManyStreams");
+	}
+	
+	private void internalTestRemoteStreamsManyStreams(int nbOfStreams) throws InterruptedException, IOException {
 		Map<Integer, InputStream> streams = new TreeMap<Integer, InputStream>();
-		for (int i = 0; i < 10; i++) {
-			String str = "hello-" + i;
-			InputStream istrm = new ByteArrayInputStream(str.getBytes());
+		Map<Integer, byte[]> streamBytes = new TreeMap<Integer, byte[]>();
+		for (int i = 0; i < nbOfStreams; i++) {
+			
+			byte[] bytes = new byte[1];
+			ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+			streamBytes.put(i,  bytes);
+			
+			InputStream istrm = new BContentStreamWrapper(
+					bis,
+					"application/octet-stream",
+					bytes.length);
+			
 			streams.put(i, istrm);
 		}
 		remote.setImages(streams, -1);
 		TreeMap<Integer, InputStream> istrmsR = remote.getImages();
 		
 		TestUtils.assertEquals(log, "streams", streams, istrmsR); // Does not compare streams.
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < nbOfStreams; i++) {
+			InputStream istrm = new ByteArrayInputStream(streamBytes.get(i));
 			InputStream istrmR = istrmsR.get(i);
-			ByteBuffer buf = BWire.bufferFromStream(istrmR);
-			String strR = new String(buf.array(), buf.position(), buf.remaining());
-			TestUtils.assertEquals(log, "stream", "hello-" + i, strR);
+			TestUtils.assertEquals(log, "stream", istrm, istrmR);
 		}
-		
-		log.info(")testRemoteStreamsOneStreams");
 	}
-	
 	
 	/**
 	 * Wrapper class for ByteArrayInputStream.
@@ -162,7 +179,7 @@ public class TestRemoteStreams {
 	 * @throws BException 
 	 */
 	@Test
-	public void testRemoteStreamsCloseStreamAfterSend() throws BException, InterruptedException {
+	public void testRemoteStreamsCloseStreamAfterSend() throws RemoteException {
 		log.info("testRemoteStreamsCloseStreamAfterSend(");
 		int count = 100;
 		
@@ -176,13 +193,13 @@ public class TestRemoteStreams {
 		log.info(")testRemoteStreamsCloseStreamAfterSend");
 	}
 
-	protected void internalTestRemoteStreamsClosed() throws BException,
-			InterruptedException {
+	protected void internalTestRemoteStreamsClosed() throws RemoteException {
 		int nbOfStreams = 10;
 		Map<Integer, InputStream> mystreams = new TreeMap<Integer, InputStream>();
 		for (int i = 0; i < nbOfStreams; i++) {
-			String str = "hello-" + i;
-			MyInputStream mystrm = new MyInputStream(str.getBytes(), false, false);
+			String str = "" + i;
+			byte[] buf = str.getBytes();
+			MyInputStream mystrm = new MyInputStream(buf, false, false);
 			mystreams.put(i, mystrm);
 		}
 		remote.setImages(mystreams, 1);
@@ -210,7 +227,7 @@ public class TestRemoteStreams {
 	public void testRemoteStreamsThrowExceptionOnRead() throws InterruptedException, IOException {
 		log.info("testRemoteStreamsThrowExceptionOnRead(");
 		
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			internalTestThrowExOnRead(true, false);
 			internalTestThrowExOnRead(false, true);
 		}
@@ -237,14 +254,15 @@ public class TestRemoteStreams {
 		log.info(")testRemoteStreamsThrowExceptionOnRead");
 
 	}
-
+	
 	private void internalTestThrowExOnRead(boolean throwEx, boolean throwError) throws InterruptedException, IOException {
 		log.info("internalTestThrowExOnRead(throwEx=" + throwEx + ", throwError=" + throwError);
 		
 		Map<Integer, InputStream> streams = new TreeMap<Integer, InputStream>();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 10; i++) {
 			String str = "hello-" + i;
-			InputStream istrm = new MyInputStream(str.getBytes(), i == 1 && throwEx, i == 1 && throwError);
+			byte[] buf = str.getBytes();
+			InputStream istrm = new MyInputStream(buf, i == 1 && throwEx, i == 1 && throwError);
 			streams.put(i, istrm);
 			log.info("strm[" + i + "]=" + str);
 		}
@@ -309,14 +327,14 @@ public class TestRemoteStreams {
 	public void testRemoteStreamsCloneStream() throws InterruptedException, IOException {
 		log.info("testRemoteStreamsCloneStream(");
 		
-		// Use byte array as buffer
+		// Server uses byte array as buffer
 		internalTestCloneStream(1);
 		internalTestCloneStream(0);
 		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER / 2);
 		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER - 1);
 		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER);
 		
-		// Use file as buffer
+		// Server uses file as buffer
 		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER + 1);
 		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER * 2);
 		
@@ -354,6 +372,8 @@ public class TestRemoteStreams {
 	 */
 	@Test
 	public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
+		if (!TestUtils.TEST_LARGE_STREAMS) return;
+		
 		log.info("testRemoteStreamsLargeStream(");
 		
 		long nbOfBytes = 0x100000000L;

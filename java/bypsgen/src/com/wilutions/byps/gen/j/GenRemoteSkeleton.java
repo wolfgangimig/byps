@@ -35,7 +35,6 @@ class GenRemoteSkeleton {
 	private void printMethod(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethod");
 		
-		pr.println("@Override");
 		pctxt.printDeclareMethod(pr, rinfo, methodInfo).println(" {");
 		
 		pr.beginBlock();
@@ -49,7 +48,6 @@ class GenRemoteSkeleton {
 	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
-		pr.println("@Override");
 		CodePrinter mpr = pctxt.printDeclareMethodAsync(pr, rinfo, methodInfo);
 		mpr.println("{");
 		pr.beginBlock();
@@ -115,7 +113,7 @@ class GenRemoteSkeleton {
 		pr.print("package ").print(rinfo.pack).print(";").println();
 		pr.println();
 		
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, getClass());
 		
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();

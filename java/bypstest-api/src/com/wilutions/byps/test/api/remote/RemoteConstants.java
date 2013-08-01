@@ -1,7 +1,7 @@
 package com.wilutions.byps.test.api.remote;
 
-import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.cons.AllTypesZ;
 import com.wilutions.byps.test.api.cons.HebrewZ;
 
@@ -11,7 +11,7 @@ import com.wilutions.byps.test.api.cons.HebrewZ;
  */
 public interface RemoteConstants extends BRemote {
 
-	void compare_HebrewC(HebrewZ ALEPH, HebrewZ BETH) throws BException, InterruptedException;
+	void compare_HebrewC(HebrewZ ALEPH, HebrewZ BETH) throws RemoteException;
 	
 	boolean compare_AllTypesC(
 			boolean bool1s, 
@@ -30,5 +30,5 @@ public interface RemoteConstants extends BRemote {
 			int[][][][] arrInt4,
 			String[] arrStrings,
 			String[][][][] arrStrings4,
-			AllTypesZ[][] arrAll) throws BException, InterruptedException;
+			AllTypesZ[][] arrAll) throws RemoteException;
 }

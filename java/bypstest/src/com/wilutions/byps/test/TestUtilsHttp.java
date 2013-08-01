@@ -12,12 +12,12 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BClient;
-import com.wilutions.byps.BException;
-import com.wilutions.byps.BNegotiate;
+import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.BSyncResult;
 import com.wilutions.byps.BTransportFactory;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.http.HConstants;
 import com.wilutions.byps.http.HTransportFactoryClient;
 import com.wilutions.byps.http.HWireClient;
@@ -30,29 +30,25 @@ public class TestUtilsHttp {
 
 	private static Log log = LogFactory.getLog(TestUtilsHttp.class);
 	
-	public static boolean TEST_LARGE_STREAMS = false;
-	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
-	public static String url2 = "http://localhost:8080/bypstest-srv/bypsservlet";
+	public static String url = "http://localhost:8080/bypstest-srv/bypsservlet";
+	public static String url2 = "http://localhost:6080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	
 	private static Executor tpool = Executors.newCachedThreadPool();
 	
-	public static BClient_Testser createClient() throws BException, InterruptedException {
-		return createClient(TestUtils.bmodel, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
+	public static BClient_Testser createClient() throws RemoteException {
+		return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
 	}
 	
-	public static BClient_Testser createClient(BBinaryModel bmodel, int flags, int appVersion) throws BException, InterruptedException {
+	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, int appVersion) throws RemoteException {
 		
-		String protocol = "";
 		BRegistry registry = null;
 		
-		if (bmodel == BBinaryModel.JSON){
-			protocol = BNegotiate.JSON;
-			registry = new JRegistry_Testser(BBinaryModel.JSON);
+		if (protocolSpec == BProtocolJson.BINARY_MODEL){
+			registry = new JRegistry_Testser();
 		}
 		else {
-			protocol = BNegotiate.BINARY_STREAM;
-			registry = new BRegistry_Testser(bmodel);
+			registry = new BRegistry_Testser();
 		}
 		
 		System.setProperty("http.maxConnections", "100");
@@ -61,12 +57,11 @@ public class TestUtilsHttp {
 		BApiDescriptor myDesc = new BApiDescriptor(
 				BApiDescriptor_Testser.instance.name,
 				BApiDescriptor_Testser.instance.basePackage,
-				BApiDescriptor_Testser.instance.bmodel,
 				appVersion,
-				BApiDescriptor_Testser.instance.uniqueObjects,
-				protocol,
-				registry
+				BApiDescriptor_Testser.instance.uniqueObjects
 				);
+		
+		myDesc.addRegistry(registry);
 
 		BWire wire = new HWireClient(url, flags, 600, tpool);
 		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 3); 
@@ -80,7 +75,7 @@ public class TestUtilsHttp {
 		return client;
 	}
 	
-	public static BClient_Testser createClient2() throws BException, InterruptedException {
+	public static BClient_Testser createClient2() throws RemoteException {
 		
 		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, tpool);
 		
@@ -106,7 +101,7 @@ public class TestUtilsHttp {
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2));
-		if (TEST_LARGE_STREAMS) {
+		if (TestUtils.TEST_LARGE_STREAMS) {
 			ret.add(new TestUtils.MyContentStream(3L * 1000L * 1000L * 1000L));
 		}
 		log.info(")makeTestStreams=" + ret);

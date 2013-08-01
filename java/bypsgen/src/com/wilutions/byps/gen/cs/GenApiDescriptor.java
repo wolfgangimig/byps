@@ -67,7 +67,6 @@ public class GenApiDescriptor {
 		log.debug("printStaticMembers");
 		
 		pr.print("public readonly static int VERSION = " + apiDesc.version + ";").println();
-		pr.print("public readonly static BBinaryModel BMODEL = BBinaryModel." + apiDesc.bmodel + ";").println();
 
 		log.debug(")printStaticMembers");
 	}
@@ -79,13 +78,10 @@ public class GenApiDescriptor {
 		pr.beginBlock();
 		pr.println("\"" + apiDesc.name + "\",");
 		pr.println("\"" + apiDesc.basePackage + "\",");
-		pr.println("BMODEL,");
 		pr.println("VERSION,");
-		pr.println(apiDesc.uniqueObjects + ",");
-		pr.println("new " + pctxt.getRegistryClassName(BBinaryModel.MEDIUM) + "(BMODEL), ");
-		pr.println("null");
+		pr.println(apiDesc.uniqueObjects + ") // uniqueObjects");
+		pr.print(".addRegistry(new ").print(pctxt.getRegistryClassName(BBinaryModel.MEDIUM)).println("());");
 		pr.endBlock();
-		pr.println(");");
 		pr.println();
 
 		log.debug(")printInstance");

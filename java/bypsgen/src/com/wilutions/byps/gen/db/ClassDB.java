@@ -17,6 +17,7 @@ import com.wilutions.byps.BException;
 import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.BRemote;
 import com.wilutions.byps.gen.api.CommentInfo;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
@@ -148,7 +149,10 @@ public class ClassDB {
 				
 				String methodQName = method.getQName();
 				if (mapQnameToMethodInfo.get(methodQName) != null) {
-					throw new GeneratorException(methodQName + " already defined. Methods cannot be overloaded. Their names must be unique.");
+					ErrorInfo errInfo = new ErrorInfo();
+					errInfo.className = rinfo.toString();
+					errInfo.msg = method.name + " already defined. Methods cannot be overloaded. Their names must be unique.";
+					throw new GeneratorException(errInfo);
 				}
 
 				mapQnameToMethodInfo.put(methodQName, method);
@@ -227,7 +231,10 @@ public class ClassDB {
 	private void assignTypeIdToType(TypeInfo tinfo) throws GeneratorException {
 		TypeInfo knownType = getKnownType(tinfo.qname, tinfo.dims, tinfo.typeArgs);
 		if (knownType == null) {
-			throw new GeneratorException(tinfo.qname + ": unexpected type=" + tinfo +", did you miss to derive from the Serializable/BSerializable interface?");
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = tinfo.toString();
+			errInfo.msg = "Unexpected type=" + tinfo +", did you miss to derive from the Serializable/BSerializable interface?";
+			throw new GeneratorException(errInfo);
 		}
 		
 		tinfo.typeId = knownType.typeId;
@@ -250,7 +257,10 @@ public class ClassDB {
 		if (sinfo.baseFullName != null && sinfo.baseFullName.length() != 0) {
 			SerialInfo binfo = serials.get(sinfo.baseFullName);
 			if (binfo == null) {
-				throw new GeneratorException(sinfo.qname + ": missing base class " + sinfo.baseFullName);
+				ErrorInfo errInfo = new ErrorInfo();
+				errInfo.className = sinfo.toString();
+				errInfo.msg = " missing base class " + sinfo.baseFullName;
+				throw new GeneratorException(errInfo);
 			}
 			sinfo.baseInfo = binfo; 
 		}
@@ -514,9 +524,10 @@ public class ClassDB {
 			// Type ID already assigned?
 			TypeInfo prevTypeInfo = getTypeInfoById(typeId);
 			if (prevTypeInfo != null) {
-				String msg = "Failed to assing type ID for " + tinfo + ", Type ID " + typeId + " already defined for " + prevTypeInfo;
-				log.error(msg);
-				throw new GeneratorException(msg);
+				ErrorInfo errInfo = new ErrorInfo();
+				errInfo.className = tinfo.toString();
+				errInfo.msg = "Type ID " + typeId + " is already defined for " + prevTypeInfo;
+				throw new GeneratorException(errInfo);
 			}
 			
 		}
@@ -526,7 +537,7 @@ public class ClassDB {
 	}
 	
 	public void setApiDescriptor(BApiDescriptor apiDesc) {
-		this.registry = new BRegistryForClassDB(apiDesc.bmodel);
+		this.registry = new BRegistryForClassDB();
 		this.apiDesc = apiDesc; //new BApiDescriptor(apiDesc, registry, registry);
 	}
 	

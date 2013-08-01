@@ -19,6 +19,7 @@ import com.wilutions.byps.BBufferJson;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BInput;
 import com.wilutions.byps.BOutput;
+import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.BWire;
 import com.wilutions.byps.test.api.list.ListTypes;
@@ -54,7 +55,7 @@ public class TestSerializePrimitiveTypes {
 	public void internalTestBufferRealloc(ByteOrder border) throws BException {
 		ByteBuffer buf = ByteBuffer.allocate(17);
 		buf.order(border);
-		BBuffer bbuf = BBuffer.create(TestUtils.bmodel, buf);
+		BBuffer bbuf = BBuffer.create(TestUtils.protocol, buf);
 		int count = 3;
 		
 		for (int i = 0; i < count; i++) {
@@ -64,7 +65,7 @@ public class TestSerializePrimitiveTypes {
 		
 		TestUtils.printBuffer(log, bbuf);
 		
-		if (TestUtils.bmodel == BBinaryModel.JSON) {
+		if (TestUtils.protocol == BProtocolJson.BINARY_MODEL) {
 			BBufferJson jbuf = (BBufferJson)bbuf;
 			for (int i = 0; i < count; i++) {
 				if (i != 0) jbuf.nextExpectedJsonChar(',', true);
@@ -133,7 +134,7 @@ public class TestSerializePrimitiveTypes {
 	public void internalTestSerializeStringUTF8(String text) {
 		log.info("internalTestSerializeStringUTF8(" + ((text != null) ? text.substring(0, Math.min(100, text.length())) : text));
 		ByteBuffer buf = ByteBuffer.allocate(1);
-		BBuffer bbuf = BBuffer.create(TestUtils.bmodel, buf);
+		BBuffer bbuf = BBuffer.create(BBinaryModel.MEDIUM, buf);
 		bbuf.putString(text);
 		bbuf.flip();
 		if (text == null || text.length() <= 100) {
@@ -264,7 +265,7 @@ public class TestSerializePrimitiveTypes {
 	private void internalTestChar2(char v) throws BException {
 		log.info("internalTestChar2(" + v);
 		ByteBuffer buf = ByteBuffer.allocate(1000);
-		BBuffer bbuf = BBuffer.create(TestUtils.bmodel, buf);
+		BBuffer bbuf = BBuffer.create(BBinaryModel.MEDIUM, buf);
 		bbuf.putChar(v);
 		bbuf.flip();
 		char vR = bbuf.getChar();
@@ -444,7 +445,7 @@ public class TestSerializePrimitiveTypes {
 	private void internalTestSerializeDouble(double v) throws BException {
 		log.info("internalTestSerializeDouble(" + v);
 		ByteBuffer buf = ByteBuffer.allocate(1000);
-		BBuffer bbuf = BBuffer.create(TestUtils.bmodel, buf);
+		BBuffer bbuf = BBuffer.create(BBinaryModel.MEDIUM, buf);
 		bbuf.putDouble(v);
 		bbuf.flip();
 		TestUtils.printBuffer(log, buf);
@@ -471,7 +472,7 @@ public class TestSerializePrimitiveTypes {
 	private void internalTestSerializeFloat(float v) throws BException {
 		log.info("internalTestSerializeFloat(" + v);
 		ByteBuffer buf = ByteBuffer.allocate(1000);
-		BBuffer bbuf = BBuffer.create(TestUtils.bmodel, buf);
+		BBuffer bbuf = BBuffer.create(BBinaryModel.MEDIUM, buf);
 		bbuf.putFloat(v);
 		bbuf.flip();
 		TestUtils.printBuffer(log, buf);
@@ -522,7 +523,7 @@ public class TestSerializePrimitiveTypes {
 	//@Test
 	public void testPerformancePrimitiveTypes() throws IOException {
 		log.info("testPerformancePrimitiveTypes(");
-		BBinaryModel prevModel = TestUtils.bmodel;
+		BBinaryModel protocol = TestUtils.protocol;
 		try {
 			//int maxLoop = 10000;
 			//for (int loopCount = 10000; loopCount <= maxLoop; loopCount *= 10) {
@@ -532,7 +533,7 @@ public class TestSerializePrimitiveTypes {
 							BBinaryModel bmodel = mod == 0 ? BBinaryModel.MEDIUM : BBinaryModel.JSON;
 							int loopCount = 100 * 1000;
 							int flags = gzip != 0 ? BWire.FLAG_GZIP : BWire.FLAG_DEFAULT;
-							internaltestPerformancePrimitiveTypes(bmodel, objCount, loopCount, flags);
+							internaltestPerformancePrimitiveTypes(protocol, objCount, loopCount, flags);
 						}
 					}
 					log.info("");
@@ -541,15 +542,15 @@ public class TestSerializePrimitiveTypes {
 			
 		}
 		finally {
-			TestUtils.bmodel = prevModel;
+			TestUtils.protocol = protocol;
 		}
 		
 		log.info(")testPerformancePrimitiveTypes");
 	}
 	
-	public void internaltestPerformancePrimitiveTypes(BBinaryModel bmodel, int objCount, int loopCount, int flags) throws IOException {
+	public void internaltestPerformancePrimitiveTypes(BBinaryModel protocol, int objCount, int loopCount, int flags) throws IOException {
 		
-		TestUtils.bmodel = bmodel;
+		TestUtils.protocol = protocol;
 		
 		BTransport transport = TestUtils.createTransport(flags, 0);
 		
@@ -591,7 +592,7 @@ public class TestSerializePrimitiveTypes {
 		}
 		long t4 = System.currentTimeMillis();
 		
-		log.info("bmodel=" + bmodel.toString().substring(0,2) +
+		log.info("bmodel=" + protocol.toString().substring(0,2) +
 				", gzip=" + ((flags & BWire.FLAG_GZIP) != 0) + 
 				", #objs=" + String.format("%6d", objCount) + 
 				", #loops=" + String.format("%6d", loopCount) + 

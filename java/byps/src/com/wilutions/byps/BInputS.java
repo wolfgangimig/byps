@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class BInputS extends BInputBin {
 
 	public BInputS(BMessageHeader header, ByteBuffer buf, BTransport transport) {
-		super(header, buf, transport, transport.apiDesc.getRegistry());
+		super(header, buf, transport, transport.apiDesc.getRegistry(BProtocolS.BINARY_MODEL));
 	}
 
 	@Override

@@ -64,9 +64,9 @@ public class GenRegistry {
 	private void printConstructor() {
 		log.debug("printConstructors(");
 		
-		pr.print("public ").print(registryClassName).println("(BBinaryModel bmodel)");
+		pr.print("public ").print(registryClassName).println("()");
 		pr.beginBlock();
-		pr.println(": base(bmodel) {}");
+		pr.println(": base(BBinaryModel.MEDIUM) {}");
 		pr.endBlock();
 		pr.println();
 

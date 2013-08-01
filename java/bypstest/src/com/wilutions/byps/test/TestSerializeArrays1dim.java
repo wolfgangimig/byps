@@ -12,6 +12,7 @@ import com.wilutions.byps.BBufferJson;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BInput;
 import com.wilutions.byps.BOutput;
+import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.test.api.arr.ArrayTypes1dim;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
@@ -139,7 +140,7 @@ public class TestSerializeArrays1dim {
 	@Test
 	public void testJsonByteArrayBase64() throws BException {
 		log.info("testByteArrayBase64(");
-		if (TestUtils.bmodel == BBinaryModel.JSON) {
+		if (TestUtils.protocol == BProtocolJson.BINARY_MODEL) {
 
 			internalTestSerializeByteArrayBase64(new byte[] {1});
 			internalTestSerializeByteArrayBase64(new byte[] {1,2});

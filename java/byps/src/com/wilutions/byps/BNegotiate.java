@@ -18,10 +18,6 @@ import java.nio.ByteOrder;
  */
 public class BNegotiate {
 	
-	public final static String BINARY_STREAM  = "S";
-//	public final static String BINARY_C  = "C";
-	public final static String JSON  = "J";
-	
 	private final static int NEGOTIATE_MIN_SIZE = 13;  // ["N","J","1"]
 	public final static int NEGOTIATE_MAX_SIZE = 1000;
 	
@@ -44,7 +40,7 @@ public class BNegotiate {
 	 */
 	public BNegotiate(BApiDescriptor apiDesc) {
 		this.version = apiDesc.version;
-		this.protocols = apiDesc.getProtocols();
+		this.protocols = apiDesc.getProtocolIds();
 	}
 	
 	/**

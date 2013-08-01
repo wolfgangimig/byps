@@ -25,26 +25,31 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 		}
 	}
 
-	public T getResult() throws BException, InterruptedException {
+	public T getResult() throws RemoteException {
 		return getResult(Long.MAX_VALUE);
 	}
 	
-	public T getResult(long timeout) throws BException, InterruptedException {
-		synchronized(this) {
-			long t1 = System.currentTimeMillis();
-			while (!done) {
-				this.wait(timeout);
-				long dt = System.currentTimeMillis() - t1;
-				if (dt >= timeout) {
-					ex = new BException(BException.TIMEOUT, "Timeout while waiting for result.");
-					break;
+	public T getResult(long timeout) throws RemoteException {
+		try {
+			synchronized(this) {
+				long t1 = System.currentTimeMillis();
+				while (!done) {
+					this.wait(timeout);
+					long dt = System.currentTimeMillis() - t1;
+					if (dt >= timeout) {
+						ex = new BException(BException.TIMEOUT, "Timeout while waiting for result.");
+						break;
+					}
 				}
+				if (ex != null) {
+					if (ex instanceof BException) throw (BException)ex;
+					throw new BException(BException.REMOTE_ERROR, "", ex);
+				}
+				return result;
 			}
-			if (ex != null) {
-				if (ex instanceof BException) throw (BException)ex;
-				throw new BException(BException.REMOTE_ERROR, "", ex);
-			}
-			return result;
+		}
+		catch (InterruptedException e) {
+			throw new BException(BException.CANCELLED, e.toString(), e);
 		}
 	}
 	
@@ -63,7 +68,7 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 		public boolean cancel(boolean mayInterruptIfRunning) {
 			if (mayInterruptIfRunning) {
 				BSyncResult.this.setAsyncResult(null,
-						new BException(BException.CANCELED, "Operation canceled."));
+						new BException(BException.CANCELLED, "Operation canceled."));
 			}
 			return mayInterruptIfRunning;
 		}
@@ -74,7 +79,7 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 				Throwable tx = BSyncResult.this.ex;
 				if (tx != null && tx instanceof BException) {
 					BException ex = (BException)tx;
-					return ex.code == BException.CANCELED;
+					return ex.code == BException.CANCELLED;
 				}
 			}
 			return false;
@@ -102,7 +107,7 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 				ExecutionException, TimeoutException {
 			try {
 				return (V) BSyncResult.this.getResult(unit.toMillis(timeout));
-			} catch (BException e) {
+			} catch (RemoteException e) {
 				if (e instanceof BException) {
 					BException bex = (BException)e;
 					Throwable cause = bex.getCause();

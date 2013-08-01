@@ -11,6 +11,7 @@ import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BJsonObject;
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -348,7 +349,10 @@ class GenApiClass {
 		// Lookup full SerialInfo of given tinfo
 		SerialInfo sinfo = pctxt.classDB.getSerInfo(tinfo.toString());
 		if (sinfo == null) {
-			throw new GeneratorException("Internal error, typeId=" + tinfo.typeId + " not found in list of serials.");
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = tinfo.toString();
+			errInfo.msg = "Internal error, typeId=" + tinfo.typeId + " not found in list of serials.";
+			throw new GeneratorException(errInfo);
 		}
 		
 		TypeInfoCpp cppMInfo = new TypeInfoCpp(sinfo);

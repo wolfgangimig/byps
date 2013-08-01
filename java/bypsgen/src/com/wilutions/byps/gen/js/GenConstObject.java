@@ -2,19 +2,12 @@ package com.wilutions.byps.gen.js;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.wilutions.byps.BException;
-import com.wilutions.byps.BJsonObject;
-import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
-import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
 
 class GenConstObject {

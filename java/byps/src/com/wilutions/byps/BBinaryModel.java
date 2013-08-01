@@ -26,29 +26,25 @@ public class BBinaryModel {
 		return ret;
 	}
 
-	public static BBinaryModel fromString(String bmodelStr) {
-		if (bmodelStr == null || bmodelStr.length() == 0) return BBinaryModel.MEDIUM;
-		if (bmodelStr.equalsIgnoreCase("LARGE")) return BBinaryModel.LARGE;
-		else if (bmodelStr.equalsIgnoreCase("MEDIUM")) return BBinaryModel.MEDIUM;
-		else if (bmodelStr.equalsIgnoreCase("SMALL")) return BBinaryModel.SMALL;
-		else if (bmodelStr.equalsIgnoreCase("TINY")) return BBinaryModel.TINY;
-		else throw new IllegalStateException("Invalid binary model " + bmodelStr + ". Must be one of NORMAL, SMALL, TINY");
-	}
-	
 	public String toString() {
-		if (this == BBinaryModel.LARGE) return "LARGE";
+//		if (this == BBinaryModel.LARGE) return "L";
 		if (this == BBinaryModel.MEDIUM) return "MEDIUM";
-		if (this == BBinaryModel.SMALL) return "SMALL";
-		if (this == BBinaryModel.TINY) return "TINY";
+//		if (this == BBinaryModel.SMALL) return "A";
+//		if (this == BBinaryModel.TINY) return "T";
 		if (this == BBinaryModel.JSON) return "JSON"; 
 		throw new IllegalStateException("Invalid binary model");
 	}
 	
-	
+	public String getProtocolId() {
+		return (this == BBinaryModel.MEDIUM) ? "S" : "J";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + lengthSize;
+		result = prime * result + packing;
 		result = prime * result + pointerSize;
 		result = prime * result + typeIdSize;
 		return result;
@@ -63,6 +59,10 @@ public class BBinaryModel {
 		if (getClass() != obj.getClass())
 			return false;
 		BBinaryModel other = (BBinaryModel) obj;
+		if (lengthSize != other.lengthSize)
+			return false;
+		if (packing != other.packing)
+			return false;
 		if (pointerSize != other.pointerSize)
 			return false;
 		if (typeIdSize != other.typeIdSize)
@@ -70,4 +70,5 @@ public class BBinaryModel {
 		return true;
 	}
 	
+
 }

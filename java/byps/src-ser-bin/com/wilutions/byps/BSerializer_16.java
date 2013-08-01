@@ -31,7 +31,15 @@ public class BSerializer_16 extends BSerializer {
 		final BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer());
 		final BServerRegistry rreg = bin.transport.serverRegistry;
 		if (rreg != null) {
-			remote = rreg.getRemote(targetId, typeId);
+			try {
+				remote = rreg.getRemote(targetId, typeId);
+			}
+			catch (BException e) {
+				throw e;
+			}
+			catch (RemoteException e) {
+				throw new BException(BException.INTERNAL, e.toString(), e);
+			}
 		}
 		else {
 			final BTransport transport = new BTransport(bin.transport, targetId);

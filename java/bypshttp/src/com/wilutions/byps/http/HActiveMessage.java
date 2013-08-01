@@ -219,6 +219,7 @@ public 	class HActiveMessage {
 		final HttpServletRequest request = (HttpServletRequest)(rctxt.getRequest());
 		final String contentType = request.getContentType();
 		final String contentLengthStr = request.getHeader("Content-Length");
+		if (log.isDebugEnabled()) log.debug("contentType=" + contentType + ", contentLength=" + contentLengthStr);
 		final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
 
 		try {
@@ -253,7 +254,8 @@ public 	class HActiveMessage {
 				}
 			};
 			
-			synchronized (this) {
+			// synchronized (this) -- not needed: method is synchronized 
+			{
 				if (log.isDebugEnabled()) log.debug("put incoming stream into map, streamId=" + streamId);
 				if (incomingStreams == null) {
 					incomingStreams = new HashMap<Long, BContentStream>();
@@ -267,6 +269,10 @@ public 	class HActiveMessage {
 	        if (log.isDebugEnabled()) log.debug("start copying stream, streamId=" + streamId);
 	        istrm.assignStream(rctxt.getRequest().getInputStream());
 	        if (log.isDebugEnabled()) log.debug("end copying stream, streamId=" + streamId);
+	        
+		}
+		catch (BException e) {
+			throw e;
 		}
 		catch (IOException e) {
 			throw new BException(BException.IOERROR, "Failed to add incoming stream", e);
@@ -284,7 +290,7 @@ public 	class HActiveMessage {
 			
 			if (canceled) {
 				if (log.isDebugEnabled()) log.debug("Message has been canceled.");
-				throw new BException(BException.CANCELED, "Message canceled");
+				throw new BException(BException.CANCELLED, "Message canceled");
 			}
 			
 			stream = incomingStreams != null ? incomingStreams.get(streamId) : null;

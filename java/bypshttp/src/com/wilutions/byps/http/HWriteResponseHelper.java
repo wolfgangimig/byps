@@ -32,7 +32,7 @@ public class HWriteResponseHelper {
 			int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 			if (e instanceof BException) {
 				BException bex = (BException)e;
-				if (bex.code == BException.CANCELED) {
+				if (bex.code == BException.CANCELLED) {
 					status = HttpServletResponse.SC_NOT_ACCEPTABLE;
 				}
 			}

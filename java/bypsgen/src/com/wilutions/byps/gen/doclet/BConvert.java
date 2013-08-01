@@ -23,10 +23,11 @@ import com.sun.javadoc.Tag;
 import com.sun.javadoc.Type;
 import com.sun.javadoc.WildcardType;
 import com.wilutions.byps.BApiDescriptor;
-import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.gen.api.CommentInfo;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
@@ -77,9 +78,9 @@ public class BConvert {
 			}
 		}
 		if (!apiDescFound) {
-			String msg = "No API descriptor found. Missing class BApi.";
-			log.error(msg);
-			throw new GeneratorException(msg);
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.msg = "No API descriptor found. Missing class BApi.";
+			throw new GeneratorException(errInfo);
 		}
 
 		log.info("Process classes -------------------");
@@ -97,7 +98,10 @@ public class BConvert {
 			
 			if (isRemote(c)) {
 				if (isSerializable(c)) {
-					throw new GeneratorException("Class \"" + c.qualifiedName() + "\" must be either a Remote or a Serializable.");
+					ErrorInfo errInfo = new ErrorInfo();
+					errInfo.className = c.qualifiedName();
+					errInfo.msg = "Class must be either a Remote or a Serializable";
+					throw new GeneratorException(errInfo);
 				}
 				makeRemoteInfo(c);
 				continue;
@@ -146,7 +150,10 @@ public class BConvert {
 		
 		BApiDescriptor apiDesc = classDB.getApiDescriptor();
 		if (apiDesc != null) {
-			throw new GeneratorException("Duplicate API descriptor: first=" + apiDesc.basePackage + ", second=" + c.containingPackage());
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = c.qualifiedName();
+			errInfo.msg = "Duplicate API descriptor: first definition was " + apiDesc.basePackage;
+			throw new GeneratorException(errInfo);
 		}
 		
 		try {
@@ -156,43 +163,48 @@ public class BConvert {
 			TypeInfo tinfo = new TypeInfo(c.simpleTypeName(), c.qualifiedTypeName(), "", null, false, false, false);
 			String name = (String)constReader.getValue(tinfo,  "NAME");
 			log.debug("api-name=" + name);
-			if (name == null) throw new GeneratorException("Missing \"public final static String NAME = ...\" in " + c);
+			if (name == null) {
+				ErrorInfo errInfo = new ErrorInfo();
+				errInfo.className = c.qualifiedName();
+				errInfo.msg = "Missing \"public final static String NAME = ...\"";
+				throw new GeneratorException(errInfo);				
+			}
 			Integer version = (Integer)constReader.getValue(tinfo, "VERSION");
-			if (version == null) throw new GeneratorException("Missing \"public final static int VERSION = ...\" in " + c);
+			if (version == null) {
+				ErrorInfo errInfo = new ErrorInfo();
+				errInfo.className = c.qualifiedName();
+				errInfo.msg = "Missing \"public final static int VERSION = ...\"";
+				throw new GeneratorException(errInfo);				
+			}
 			log.debug("api-version=" + version);
 			Boolean uniqueObjects = (Boolean)constReader.getValue(tinfo,  "UNIQUE_OBJECTS");
 			if (uniqueObjects == null) uniqueObjects = Boolean.FALSE;
-			String bmodelStr = (String)constReader.getValue(tinfo,  "BINARY_MODEL");
-			if (bmodelStr == null) bmodelStr = "MEDIUM";
-			BBinaryModel bmodel = BBinaryModel.fromString(bmodelStr);
-			
-			apiDesc = new BApiDescriptor(name, pack.toString(), bmodel, version, uniqueObjects, "", null);
+
+			apiDesc = new BApiDescriptor(name, pack.toString(), version, uniqueObjects);
 			classDB.setApiDescriptor(apiDesc);
 
 		}
-		catch (GeneratorException e) {
-			String msg = "Error in class " + c.qualifiedName() + ": " + e.getMessage();
-			throw new GeneratorException(msg);
+		finally {
 		}
 		
 		log.debug(")makeApiDescriptor=" + apiDesc);
 		return apiDesc;
 	}
 
-	private void makeSerialInfoForCollectionType(TypeInfo tinfo, String errorContext) throws GeneratorException {
+	private void makeSerialInfoForCollectionType(ErrorInfo errInfo, TypeInfo tinfo) throws GeneratorException {
 		log.debug("makeSerialInfoForCollectionType(" + tinfo);
-		
-		
+		errInfo = errInfo.copy();
 		
 		// Create SerialInfo for List and Map and Set
 		log.debug("isCollectionType=" + tinfo.isCollectionType());
 		if (tinfo.isCollectionType()) {
 			
-			checkSupportedCollectionType(tinfo);
+			checkSupportedCollectionType(errInfo, tinfo);
 
 			// List, ArrayList, LinkedList ohne Argumenttype?
 			if (tinfo.typeArgs.size() == 0) {
-				throw new GeneratorException("Missing argument types in " + errorContext);
+				errInfo.msg = "Missing argument types.";
+				throw new GeneratorException(errInfo);
 			}
 			else {
 				// List<?>, List<Integer>, Map<?,?> ... 
@@ -209,9 +221,9 @@ public class BConvert {
 				TypeInfo type = tinfo.typeArgs.get(0);
 				// JavaScript supports only numbers and strings as map keys.
 				if (!type.isPrimitiveType()) {
-					throw new GeneratorException(errorContext + 
-							": Map types must be specified with a key type of Boolean, Byte, Short, Integer, Long, Float, Double or String. " + 
-							" The given key type " + tinfo.typeArgs.get(0) + " is not supported.");
+					errInfo.typeArg = type.toString();
+					errInfo.msg = "Map types must be specified with a key type of Boolean, Byte, Short, Integer, Long, Float, Double or String.";
+					throw new GeneratorException(errInfo);
 				}
 			}
 			
@@ -230,8 +242,8 @@ public class BConvert {
 
 				// new List<Integer>[2] leads to this compiler error:
 				// Cannot create a generic array of List<Integer>
-				
-				throw new GeneratorException(tinfo + ": Arrays of collection types are not supported by java. Declare this type without type arguments, e.g. java.util.HashMap instead of java.util.HashMap<Integer,String>.");
+				errInfo.msg = "Arrays of collection types are not supported by java. Declare this type without type arguments, e.g. java.util.HashMap instead of java.util.HashMap<Integer,String>.";
+				throw new GeneratorException(errInfo);
 			}
 			
 			SerialInfo sinfo = classDB.createSerialInfo(tinfo.name, null, tinfo.qname, null, 
@@ -241,7 +253,7 @@ public class BConvert {
 		
 		// Walk recursively though the type arguments
 		for (TypeInfo argInfo : tinfo.typeArgs) {
-			makeSerialInfoForCollectionType(argInfo, errorContext);
+			makeSerialInfoForCollectionType(errInfo, argInfo);
 		}
 
 		log.debug(")makeSerialInfoForCollectionType");
@@ -299,8 +311,8 @@ public class BConvert {
 			// Wildcard Parameter machen keinen Sinn.
 			// Die Elemente werden sowohl als Konsument als auch als Produzent verwendet.
 			// http://www.torsten-horn.de/techdocs/java-generics.htm#Wildcard-extends-versus-T-extends
-			String msg = errorContext + ": Wildcard parameter types are unsupported, please replace type=\"" + type +"\" by \"Object\".";
-			throw new GeneratorException(msg);
+			errInfo.msg = "Wildcard parameter types are unsupported, please replace type=\"" + type +"\" by \"Object\".";
+			throw new GeneratorException(errInfo);
 			
 		}
 		else {
@@ -337,7 +349,7 @@ public class BConvert {
 //				}
 //			}
 			
-			makeSerialInfoForCollectionType(tinfo, errorContext);
+			makeSerialInfoForCollectionType(errInfo, tinfo);
 		}
 		
 
@@ -349,7 +361,9 @@ public class BConvert {
 		
 		String name = field.name();
 		if (FORBIDDEN_FIELD_NAMES.contains(name)) {
-			throw new GeneratorException("Forbidden field name " + name + " in " + errorContext);
+			errInfo.fieldName = name;
+			errInfo.msg = "Forbidden field name";
+			throw new GeneratorException(errInfo);
 		}
 		
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
@@ -359,7 +373,7 @@ public class BConvert {
 		errInfo.fieldName = name;
 		TypeInfo type = makeElementTypeInfo(errInfo, field.type(), errorContext + "." + name);
 		
-		int since = getSince(field.tags());
+		int since = getSince(errInfo, field.tags());
 		
 		// Constant or Enum?
 		String value = null;
@@ -437,7 +451,10 @@ public class BConvert {
 		}
 		else if (clazz == Character.class) {
 			int ch = (Character)value;
-			if (!Character.isDefined(ch)) throw new GeneratorException("Invalid unicode character at " + errInfo);
+			if (!Character.isDefined(ch)) {
+				errInfo.msg = "Invalid unicode character";
+				throw new GeneratorException(errInfo);
+			}
 			sbuf.append("\"").append(value).append("\"");
 		}
 		else if (clazz == String.class) {
@@ -483,7 +500,8 @@ public class BConvert {
 			
 			if (field.name().equals("serialVersionUID")) continue;
 			
-			checkSupportedFieldType(field.toString(), field.type());
+			errInfo.fieldName = field.name();
+			checkSupportedFieldType(errInfo, field.type());
 			
 			MemberInfo minfo = makeMemberInfo(errInfo, field, qname);
 			if (minfo == null) continue;
@@ -529,7 +547,9 @@ public class BConvert {
 		return sinfo;
 	}
 	
-	private void checkSupportedFieldType(String name, Type type) throws GeneratorException {
+	private void checkSupportedFieldType(ErrorInfo errInfo, Type type) throws GeneratorException {
+		errInfo = errInfo.copy();
+		
 		// Do not use reference types of primitives, e.g. java.lang.Integer.
 		// This primitive types cannot be null in all languages, e.g. in C++;
 		String qname = type.qualifiedTypeName();
@@ -537,11 +557,12 @@ public class BConvert {
 		if (qname.startsWith("java.lang.") && 
 			tinfo.isPrimitiveType() && 
 			!qname.equals("java.lang.String")) {
-			String msg = name + ": reference types of primitives cannot be used as class members" +
+			
+			errInfo.msg = "Reference types of primitives cannot be used as class members" +
 					" or function parameters or return values. " + 
 					"Please use the primitive type. " +
 					"Example: use \"int\" instead of \"Integer\".";
-			throw new GeneratorException(msg);
+			throw new GeneratorException(errInfo);
 		}
 	}
 
@@ -555,13 +576,14 @@ public class BConvert {
 		}
 	}
 	
-	private int getSince(Tag[] tags) throws GeneratorException {
+	private int getSince(ErrorInfo errInfo, Tag[] tags) throws GeneratorException {
+		errInfo = errInfo.copy();
 		int n = 0;
 		for (Tag t : tags) {
 			String tkind = t.kind();
 			String ttext = t.text();
 			if (tkind.equals("@since") && ttext != null & ttext.length() != 0) {
-				n = stringVersionToInt(ttext);
+				n = stringVersionToInt(errInfo, ttext);
 				break;
 			}
 		}
@@ -585,7 +607,8 @@ public class BConvert {
 	 * @return Version number in Integer format.
 	 * @throws GeneratorException 
 	 */
-	protected int stringVersionToInt(String strVer) throws GeneratorException {
+	protected int stringVersionToInt(ErrorInfo errInfo, String strVer) throws GeneratorException {
+		errInfo = errInfo.copy();
 		int n = 0;
 		String[] versionNumbers = strVer.split("\\.");
 		for (int i = 0; i < versionNumbers.length; i++) {
@@ -594,13 +617,15 @@ public class BConvert {
 			if (i == versionNumbers.length-1 ||
 				i == versionNumbers.length-2) {
 				if (n1 >= 1000) {
-					throw new GeneratorException("Last version number part must be less than 1000");
+					errInfo.msg = "Last version number part of \"" + strVer + "\" must be less than 1000";
+					throw new GeneratorException(errInfo);
 				}
 				n *= 1000;
 			}
 			else {
 				if (n1 >= 100) {
-					throw new GeneratorException("Last version number part must be less than 1000");
+					errInfo.msg = "Last version number part of \"" + strVer + "\" must be less than 100";
+					throw new GeneratorException(errInfo);
 				}
 				n *= 100;
 			}
@@ -655,11 +680,14 @@ public class BConvert {
 		for (int i = 0; i < params.length; i++) {
 			Parameter param = params[i];
 			MemberInfo pinfo = makeMethodParamInfo(errInfo, param, remoteQName);
-			checkSupportedFieldType(method.qualifiedName() + ("(...") + param.name() + ("...)"), param.type());
+			errInfo.methodName = method.name();
+			errInfo.paramName = param.name();
+			checkSupportedFieldType(errInfo, param.type());
 			
 			if (pinfo.type.isInline && !pinfo.type.isArrayType()) {
 				// Das geht nicht in C++
-				throw new GeneratorException(method + ": Inline classes cannot be used as method parameters.");
+				errInfo.msg = "Inline classes cannot be used as method parameters.";
+				throw new GeneratorException(errInfo);
 			}
 			
 			pinfos.add(pinfo);
@@ -691,7 +719,9 @@ public class BConvert {
 		ArrayList<MemberInfo> rinfos = new ArrayList<MemberInfo>(2);
 				
 		Type rtype = method.returnType();
-		checkSupportedFieldType(method.qualifiedName() + ("(return)"), rtype);
+		errInfo.methodName = method.name();
+		errInfo.fieldName = "return";
+		checkSupportedFieldType(errInfo, rtype);
 		
 		errInfo.methodName = method.name();
 		
@@ -701,7 +731,7 @@ public class BConvert {
 		if (rinfo.isInline && !rinfo.isArrayType()) {
 			// Das geht nicht in C++
 			errInfo.msg = "Inline classes cannot be used as return values.";
-			throw new GeneratorException(errInfo.toString());
+			throw new GeneratorException(errInfo);
 		}
 		
 		rinfos.add( new MemberInfo("result", null, rinfo, true, false, false, false, false, false, false, 0, null) );
@@ -749,15 +779,14 @@ public class BConvert {
 		SerialInfo resultInfo = makeMethodResult(errInfo, remoteName, remoteQName, method);
 				
 		boolean foundBException = false;
-		boolean foundInterruptedException = false;
 		ArrayList<TypeInfo> exceptions = new ArrayList<TypeInfo>();
 		
 		for (Type ex : method.thrownExceptionTypes()) {
-			if (ex.toString().equals(InterruptedException.class.getName())) {
-				foundInterruptedException = true;
+			if (ex.toString().equals(BException.class.getName())) {
+				foundBException = true; 
 				continue;
 			}
-			if (ex.toString().equals(BException.class.getName())) {
+			if (ex.toString().equals(RemoteException.class.getName())) {
 				foundBException = true; 
 				continue;
 			}
@@ -766,7 +795,7 @@ public class BConvert {
 			
 			// Currently, I don't know how to deal with custom exception classes in C++
 			errInfo.msg = "Custom exception classes are unsupported.";
-			throw new GeneratorException(errInfo.msg);
+			throw new GeneratorException(errInfo);
 
 //			if (!isSerializable(ex.asClassDoc())) {
 //				throw new GeneratorException("Custom exception class \"" + ex.toString() + "\" must implement BSerializable.");
@@ -777,11 +806,8 @@ public class BConvert {
 		}
 		
 		if (!foundBException) {
-			throw new GeneratorException("Method " + remoteQName + "." + method.name() + " must throw BException");
-		}
-		
-		if (!foundInterruptedException) {
-			throw new GeneratorException("Method " + remoteQName + "." + method.name() + " must throw InterruptedException");
+			errInfo.msg = "Method must throw BException";
+			throw new GeneratorException(errInfo);
 		}
 		
 		MethodInfo minfo = new MethodInfo(
@@ -800,7 +826,7 @@ public class BConvert {
 
 		ClassDoc baseClass = cls.superclass();
 		if (baseClass != null) {
-			throw new GeneratorException(qname + ": inheritance of Remote interfaces is not supported.");
+			errInfo.msg = "Inheritance of Remote interfaces is not supported.";
 		}
 
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
@@ -820,15 +846,17 @@ public class BConvert {
 		return rinfo;
 	}
 	
-	private void checkSupportedCollectionType(TypeInfo tinfo) throws GeneratorException {
+	private void checkSupportedCollectionType(ErrorInfo errInfo, TypeInfo tinfo) throws GeneratorException {
+		errInfo = errInfo.copy();
 		int p = tinfo.qname.indexOf('<');
 		String qname = p >= 0 ? tinfo.qname.substring(0, p) : tinfo.qname;
 		if (!supportedCollections.contains(qname)) {
 			StringBuilder msg = new StringBuilder();
-			msg.append("Unsupported collection type \"").append(tinfo.toString()).append("\". ");
+			msg.append("Unsupported collection type. ");
 			msg.append("Please use one of this types: ").append(supportedCollections).append(", ");
 			msg.append("e.g. List<Map<Integer,Set<String>>>.");
-			throw new GeneratorException(msg.toString());
+			errInfo.msg = msg.toString();
+			throw new GeneratorException(errInfo);
 		}
 	}
 	

@@ -9,8 +9,15 @@ public class GeneratorException extends IOException {
 		super(msg);
 	}
 	
-	public GeneratorException(String msg, Exception e) {
-		super(msg, e);
+	public GeneratorException(ErrorInfo errInfo) {
+		super(errInfo.toString());
 	}
+	public GeneratorException(ErrorInfo errInfo, Throwable e) {
+		super(errInfo.toString(), e);
+	}
+	
+//	public GeneratorException(String msg, Exception e) {
+//		super(msg, e);
+//	}
 	
 }

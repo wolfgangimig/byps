@@ -155,9 +155,8 @@ public class GenApiDescriptor {
 		pr.beginBlock();
 		pr.println("\"" + apiDesc.name + "\",");
 		pr.println("\"" + apiDesc.basePackage + "\",");
-		pr.println("com.wilutions.byps.BBinaryModel." + apiDesc.bmodel + ",");
 		pr.println(apiDesc.version + ",");
-		pr.println(apiDesc.uniqueObjects + ",");
+		pr.println(apiDesc.uniqueObjects + ", // uniqueObjects");
 		pr.print("new ").print(pctxt.getRegistryClassName()).println("()");
 		pr.endBlock();
 		pr.println(");");

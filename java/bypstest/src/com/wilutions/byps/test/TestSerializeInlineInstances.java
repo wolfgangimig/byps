@@ -7,10 +7,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
-import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BInput;
 import com.wilutions.byps.BOutput;
+import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BTargetId;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.test.api.inl.Actor;
@@ -80,7 +80,7 @@ public class TestSerializeInlineInstances {
 		ByteBuffer buf = bout.toByteBuffer();
 		TestUtils.printBuffer(log, buf);
 		
-		if (TestUtils.bmodel == BBinaryModel.JSON && jsonText != null) { 
+		if (TestUtils.protocol == BProtocolJson.BINARY_MODEL && jsonText != null) { 
 			try {
 				String jsonTextR = new String(buf.array(), buf.position(), buf.limit(), "UTF-8");
 				TestUtils.assertEquals(log, "jsonText", jsonText, jsonTextR);

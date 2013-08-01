@@ -16,6 +16,7 @@ import org.apache.log4j.PropertyConfigurator;
 import com.sun.javadoc.Doclet;
 import com.sun.javadoc.LanguageVersion;
 import com.sun.javadoc.RootDoc;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.c.GeneratorC;
@@ -154,52 +155,20 @@ public class BDoclet extends Doclet {
 	}
 	
 	@SuppressWarnings("unused")
-	private static String[] bypsexample = new String[] {
-		
-		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\byps-example\\Example-api",
-		"-gencpp.dir-impl.c", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\byps-example\\Example-impl",
-		"-gencpp.dir-impl.h", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\byps-example\\Example-impl",
-		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
-		"-gencpp.max-fsize", "10000",
-
-		"-genj.dir-api", "..\\bypsexample2\\src-api",
-		"-genj.dir-ser", "..\\bypsexample2\\src-ser",
-		"-genj.dir-ser-bin", "..\\bypsexample2\\src-ser-bin",
-		"-genj.dir-ser-json", "..\\bypsexample2\\src-ser-json",
-		
-		"-verbose",
-		
-		"--packages",
-		"com.wilutions.byps.example.api",
-		"com.wilutions.byps.sample1and2",
-		"com.wilutions.byps.example.api.list",
-//		"com.wilutions.byps.example.api.set",
-//		"com.wilutions.byps.example.api.map",
-//		"com.wilutions.byps.sample1.sets",
-//		"com.wilutions.byps.sample1.maps",
-//		"com.wilutions.byps.sample2",
-		
-		"--sourcepath", 
-		"../bypsexample/src;../bypsexample/src-prototype",
-	};
-	
-	@SuppressWarnings("unused")
 	private static String[] bypstest_ser = new String[] {
 		
 		"-genj.dir-ser", "..\\bypstest-ser\\src-ser",
 		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
 		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
 
-//		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser",
-//		"-gencs.upfirst",     "true",
+		"-gencs.dir-ser",     "..\\..\\csharp\\byps\\bypstest-ser\\src-ser",
+		"-gencs.upfirst",     "true",
 		
-		//"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
+		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
 		
-//		"-gencpp.dir-api", "..\\..\\cpp\\byps\\bypstest-gen\\api",
-//		"-gencpp.dir-impl", "..\\..\\cpp\\byps\\bypstest-gen\\impl",
+		"-gencpp.dir-api", "..\\..\\cpp\\common\\bypstest-gen\\api",
+		"-gencpp.dir-impl", "..\\..\\cpp\\common\\bypstest-gen\\impl",
 		
-		"-gencpp.dir-api", "d:\\git\\byps\\cpp\\common\\bypstest\\bypstest-gen\\api",
-		"-gencpp.dir-impl", "d:\\git\\byps\\cpp\\common\\bypstest\\bypstest-gen\\impl",
 		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
 		"-gencpp.max-fsize", "50000",
 
@@ -231,29 +200,29 @@ public class BDoclet extends Doclet {
 	
 	private static String[] byps_ix_ser = new String[] {
 		
-		"-genj.dir-ser", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser",
-		"-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
-		"-genj.dir-ser-json", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-json",
-
-		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps_ix_ser\\src-ser",
-		"-gencs.upfirst",     "false",
-		
-		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\api",
-		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl",
-		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
-		"-gencpp.max-fsize", "50000",
+		"-genj.dir-ser", "d:\\java\\workspace\\Eloix-api\\src-byps",
+//		"-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
+//		"-genj.dir-ser-json", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-json",
+//
+//		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps_ix_ser\\src-ser",
+//		"-gencs.upfirst",     "false",
+//		
+//		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\api",
+//		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl",
+//		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
+//		"-gencpp.max-fsize", "50000",
 		
 		"-allserials",
 		"-allremotes",
 		"-gen.changedmembers",
 		
-		"-verbose",
+//		"-verbose",
 		
 		"--packages",
 		"de.elo.ix.client",
 		
 		"--sourcepath", 
-		"d:\\dev\\BYPS2\\java\\byps-ix-api\\src;d:\\dev\\BYPS2\\java\\byps-ix-api\\src-gen",
+		"d:\\java\\workspace\\Eloix-api\\src;d:\\java\\workspace\\Eloix-api\\src-gen",
 		
 		"--classpath",
 		"d:\\java\\lib\\EloixClient\\EloixClient.jar;d:\\java\\lib\\EloixClient\\javautils.jar"
@@ -377,13 +346,17 @@ public class BDoclet extends Doclet {
 				File dir = new File(tempDir);
 				if (!dir.exists()) {
 					if (!dir.mkdirs()) {
-						throw new GeneratorException("Invalid temporary directory=\"" + dir + "\".");
+						ErrorInfo errInfo = new ErrorInfo();
+						errInfo.msg = "Invalid temporary directory=\"" + dir + "\".";
+						throw new GeneratorException(errInfo);
 					}
 				}
 				dir = new File(dir, "byps-gen");
 				if (!dir.exists()) {
 					if (!dir.mkdirs()) {
-						throw new GeneratorException("Invalid temporary directory=\"" + dir + "\".");
+						ErrorInfo errInfo = new ErrorInfo();
+						errInfo.msg = "Invalid temporary directory=\"" + dir + "\".";
+						throw new GeneratorException(errInfo);
 					}
 				}
 				tempDir = dir.getAbsolutePath();
@@ -399,7 +372,9 @@ public class BDoclet extends Doclet {
 			javadocParams.add(2, BDoclet.class.getName());
 			
 			if (!javadocParams.contains("-sourcepath")) {
-				throw new GeneratorException("Missing argument --sourcepath");
+				ErrorInfo errInfo = new ErrorInfo();
+				errInfo.msg = "Missing argument --sourcepath.";
+				throw new GeneratorException(errInfo);
 			}
 			
 			if (classpath != null && classpath.length() != 0) {

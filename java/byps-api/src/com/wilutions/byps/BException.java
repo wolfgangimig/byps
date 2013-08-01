@@ -1,11 +1,10 @@
 package com.wilutions.byps;
 
-import java.io.IOException;
 
 /**
  * Exceptions of this class are thrown during serialization and communication.
  */
-public class BException extends IOException {
+public class BException extends com.wilutions.byps.RemoteException {
 	
 	// This class is declared final, because JSerializer.internalRead of a 
 	// child class could not set the final fields of BException.
@@ -48,9 +47,9 @@ public class BException extends IOException {
 	public final static int GENERATOR_EXCEPTION = 1000;
 
 	/**
-	 * This code is used, if message data of an already canceled request or stream is accessed.
+	 * This code is used, if an operation was cancelled or interrupted.
 	 */
-	public static final int CANCELED = 100;
+	public static final int CANCELLED = 100;
 
 	/**
 	 * This code is used, if an operation exceeds its time limit.

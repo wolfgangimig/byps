@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 import com.wilutions.byps.test.api.remote.RemotePrimitiveTypes;
@@ -24,7 +25,7 @@ public class TestRemotePrimitiveTypes {
 	private Log log = LogFactory.getLog(TestRemotePrimitiveTypes.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.remotePrimitiveTypes;
 	}
@@ -43,7 +44,7 @@ public class TestRemotePrimitiveTypes {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testRemotePrimitiveTypes() throws BException, InterruptedException {
+	public void testRemotePrimitiveTypes() throws RemoteException {
 		log.info("testRemotePrimitiveTypes(");
 		
 		remote.setBool(true);
@@ -80,7 +81,7 @@ public class TestRemotePrimitiveTypes {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testRemotePrimitvieTypesSendAsObjectType()  throws BException, InterruptedException {
+	public void testRemotePrimitvieTypesSendAsObjectType()  throws RemoteException {
 		log.info("testRemotePrimitvieTypesSendAsObjectType(");
 		
 		PrimitiveTypes pt = TestUtils.createObjectPrimitiveTypes();
@@ -97,7 +98,7 @@ public class TestRemotePrimitiveTypes {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testRemotePrimitiveTypesSendAll() throws BException, InterruptedException {
+	public void testRemotePrimitiveTypesSendAll() throws RemoteException {
 		log.info("testRemotePrimitiveTypesSendAll(");
 		
 		PrimitiveTypes pt = TestUtils.createObjectPrimitiveTypes();
@@ -125,7 +126,7 @@ public class TestRemotePrimitiveTypes {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testPrimitiveTypesReferenceToOtherObject() throws BException, InterruptedException {	
+	public void testPrimitiveTypesReferenceToOtherObject() throws RemoteException {	
 		log.info("testPrimitiveTypesReferenceToOtherObject(");
 
 		PrimitiveTypes obj1 = new PrimitiveTypes();
@@ -149,7 +150,7 @@ public class TestRemotePrimitiveTypes {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testPrimitiveTypesReferenceToSelf() throws BException, InterruptedException {	
+	public void testPrimitiveTypesReferenceToSelf() throws RemoteException {	
 		log.info("testPrimitiveTypesReferenceToSelf(");
 
 		PrimitiveTypes obj1 = new PrimitiveTypes();

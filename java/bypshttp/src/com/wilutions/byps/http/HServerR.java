@@ -3,8 +3,6 @@ package com.wilutions.byps.http;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import sun.net.www.protocol.http.HttpURLConnection;
-
 import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BMessage;

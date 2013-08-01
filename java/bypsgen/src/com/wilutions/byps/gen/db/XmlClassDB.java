@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
@@ -48,7 +49,9 @@ public class XmlClassDB {
 			m.marshal( x, fos );
 		}
 		catch (Exception e) {
-			throw new GeneratorException("Cannot write class definitions into file=" + file, e);
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.msg = "Cannot write class definitions into file=" + file;
+			throw new GeneratorException(errInfo, e);
 		}
 		finally {
 			if (fos != null) {
@@ -72,11 +75,15 @@ public class XmlClassDB {
 		}
 		catch (FileNotFoundException e) {
 			if (openExisting) {
-				throw new GeneratorException("Cannot read class definitions from file=" + file, e);
+				ErrorInfo errInfo = new ErrorInfo();
+				errInfo.msg = "Cannot read class definitions from file=" + file;
+				throw new GeneratorException(errInfo, e);
 			}
 		}
 		catch (Exception e) {
-			throw new GeneratorException("Cannot read class definitions from file=" + file, e);
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.msg = "Cannot read class definitions from file=" + file;
+			throw new GeneratorException(errInfo, e);
 		}
 		finally {
 			if (fis != null) {

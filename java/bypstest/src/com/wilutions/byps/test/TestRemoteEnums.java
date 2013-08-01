@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.enu.EnumPlanets;
 import com.wilutions.byps.test.api.remote.RemoteEnums;
@@ -24,7 +25,7 @@ public class TestRemoteEnums {
 	private Log log = LogFactory.getLog(TestRemoteEnums.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.remoteEnums;
 	}
@@ -37,7 +38,7 @@ public class TestRemoteEnums {
 	}
 	
 	@Test
-	public void testRemoteEnums() throws InterruptedException, BException {
+	public void testRemoteEnums() throws RemoteException {
 		log.info("testRemoteEnums(");
 		remote.setPlanet(EnumPlanets.Earth);
 		EnumPlanets r = remote.getPlanet();

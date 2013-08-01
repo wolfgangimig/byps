@@ -20,6 +20,9 @@
         <dependent-module archiveName="bypstest-api.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bypstest-api/bypstest-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="byps-override.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/byps-override/byps-override">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="bypstest-srv"/>
         <property name="java-output-path" value="/bypstest-srv/build/classes"/>
     </wb-module>

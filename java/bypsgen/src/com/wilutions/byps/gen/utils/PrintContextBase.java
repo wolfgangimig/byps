@@ -16,7 +16,6 @@ public class PrintContextBase {
 	public PrintContextBase(ClassDB classDB, GeneratorProperties props) {
 		this.classDB = classDB;
 		this.apiDesc = classDB.getApiDescriptor();
-		this.bmodel = apiDesc.bmodel;
 		this.registry = classDB.getRegistry();
 		this.apiName = apiDesc.name;
 		this.apiPack = apiDesc.basePackage;
@@ -115,7 +114,7 @@ public class PrintContextBase {
 	}	
 	protected String apiName;
 	public final String apiPack;
-	public final BBinaryModel bmodel;
+	public final BBinaryModel bmodel = BBinaryModel.MEDIUM;
 	public final ClassDB classDB;
 	protected final BRegistryForClassDB registry;
 	protected final BApiDescriptor apiDesc;

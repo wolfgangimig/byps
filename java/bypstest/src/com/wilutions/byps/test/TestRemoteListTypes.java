@@ -13,7 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.list.ListListTypes;
 import com.wilutions.byps.test.api.list.ListTypes;
@@ -33,7 +33,7 @@ public class TestRemoteListTypes {
 	private Log log = LogFactory.getLog(TestRemoteListTypes.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.remoteListTypes;
 	}
@@ -46,7 +46,7 @@ public class TestRemoteListTypes {
 	}
 	
 	@Test
-	public void testRemoteListTypes() throws BException, InterruptedException {
+	public void testRemoteListTypes() throws RemoteException {
 		log.info("testRemoteListTypes(");
 		
 		ListTypes obj = new ListTypes();
@@ -90,7 +90,7 @@ public class TestRemoteListTypes {
 	}
 	
 	@Test
-	public void testRemoteListMapSetListInteger() throws BException, InterruptedException {
+	public void testRemoteListMapSetListInteger() throws RemoteException {
 		log.info("testRemoteListMapSetListInteger(");
 		
 		ListListTypes obj = new ListListTypes();
@@ -120,7 +120,7 @@ public class TestRemoteListTypes {
 	}
 
 	@Test
-	public void testRemoteListListInteger() throws BException, InterruptedException {
+	public void testRemoteListListInteger() throws RemoteException {
 		log.info("testRemoteListListInteger(");
 		
 		ListListTypes obj = new ListListTypes();

@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BJsonObject;
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -214,7 +215,12 @@ class GenApiClass {
 				sinfo = s; break;
 			}
 		}
-		if (sinfo == null) throw new GeneratorException("Internal error, typeId=" + tinfo.typeId + " not found in list of serials.");
+		if (sinfo == null) {
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = tinfo.toString();
+			errInfo.msg = "Internal error, typeId=" + tinfo.typeId + " not found in list of serials.";
+			throw new GeneratorException(errInfo);
+		}
 		
 		boolean first = true;
 		sbuf.append("new ").append(sinfo.toString(serInfo.pack)).append("(");
@@ -342,7 +348,6 @@ class GenApiClass {
 
 	private void printRemoteId() throws IOException {
 		log.debug("printRemoteId");
-		pr.println("@Override");
 		pr.print("public int getRemoteId() { return ").print(methodInfo.remoteInfo.typeId).println("; }");
 		log.debug(")printRemoteId");
 	}
@@ -385,7 +390,6 @@ class GenApiClass {
 	private void printExecute() throws IOException {
 		log.debug("printExecute");
 
-		pr.println("@Override");
 		pr.print("public void ").print("execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable ").println("{");
 		pr.beginBlock();
 		
@@ -597,7 +601,7 @@ class GenApiClass {
 	private void generateEnum() throws IOException {
 		pr.print("package ").print(serInfo.pack).print(";").println();
 		pr.println();
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, this.getClass());
 
 		pr.print("public enum ").print(serInfo.name).println(" {");
 		pr.beginBlock();
@@ -618,7 +622,7 @@ class GenApiClass {
 		pr.print("package ").print(serInfo.pack).print(";").println();
 		pr.println();
 
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, getClass());
 
 //		pr.println("import java.io.Serializable;");
 //		if (serInfo.isRequestClass() || serInfo.isResultClass()) {

@@ -6,9 +6,9 @@ import java.util.concurrent.CountDownLatch;
 
 import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BClient;
-import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
 import com.wilutions.byps.BServerRegistry;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl;
 
@@ -64,7 +64,7 @@ public class MyRemoteServerCtrl extends BSkeleton_RemoteServerCtrl {
 
 	@Override
 	public BRemote getPublishedRemote(String name)
-			throws BException, InterruptedException {
+			throws RemoteException {
 		return publishedRemotes.get(name);
 	}
 

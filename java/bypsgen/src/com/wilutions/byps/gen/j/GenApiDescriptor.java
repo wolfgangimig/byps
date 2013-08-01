@@ -35,7 +35,7 @@ public class GenApiDescriptor {
 		pr.print("package ").print(pack).print(";").println();
 		pr.println();
 		
-		pctxt.printDoNotModify(pr);
+		pctxt.printDoNotModify(pr, getClass());
 
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();
@@ -65,7 +65,6 @@ public class GenApiDescriptor {
 		log.debug("printStaticMembers");
 		
 		pr.print("public final static int VERSION = " + apiDesc.version + ";").println();
-		pr.print("public final static BBinaryModel BMODEL = BBinaryModel." + apiDesc.bmodel + ";").println();
 
 		log.debug(")printStaticMembers");
 	}
@@ -77,13 +76,10 @@ public class GenApiDescriptor {
 		pr.beginBlock();
 		pr.println("\"" + apiDesc.name + "\",");
 		pr.println("\"" + apiDesc.basePackage + "\",");
-		pr.println("BMODEL,");
 		pr.println("VERSION,");
-		pr.println(apiDesc.uniqueObjects + ",");
-		pr.println("BNegotiate.BINARY_STREAM,");
-		pr.println("new " + pctxt.getRegistryClassName(BBinaryModel.MEDIUM) + "(BMODEL)");
+		pr.println(apiDesc.uniqueObjects + ") // uniqueObjects");
+		pr.print(".addRegistry(new ").print(pctxt.getRegistryClassName(BBinaryModel.MEDIUM)).println("());");
 		pr.endBlock();
-		pr.println(");");
 		pr.println();
 
 		log.debug(")printInstance");

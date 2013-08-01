@@ -8,13 +8,13 @@ public abstract class BOutputBin extends BOutput {
 	public final BBufferBin bbuf;
 
 	public BOutputBin(BTransport transport, BMessageHeader requestHeader) {
-		super(transport, transport.apiDesc.getRegistry(), requestHeader);
-		this.bbuf = (BBufferBin)BBuffer.create(transport.apiDesc.bmodel, null);
+		super(transport, transport.apiDesc.getRegistry(BProtocolS.BINARY_MODEL), requestHeader);
+		this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	}
 
 	public BOutputBin(BTransport transport, int streamHeaderMagic, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
-		super(transport, transport.apiDesc.getRegistry(), streamHeaderMagic, negotiatedVersion, negotiatedByteOrder);
-		this.bbuf = (BBufferBin)BBuffer.create(transport.apiDesc.bmodel, null);
+		super(transport, transport.apiDesc.getRegistry(BProtocolS.BINARY_MODEL), streamHeaderMagic, negotiatedVersion, negotiatedByteOrder);
+		this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	}
 	
 	@Override

@@ -4,7 +4,6 @@
         <name>Testser</name>
         <apiPack>com.wilutions.byps.test.api</apiPack>
         <version>791</version>
-        <bmodel>MEDIUM</bmodel>
         <uniqueObjects>false</uniqueObjects>
     </apiDesc>
     <serials>

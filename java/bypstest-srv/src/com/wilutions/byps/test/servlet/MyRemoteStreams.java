@@ -15,6 +15,7 @@ import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BContentStreamWrapper;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams;
 
 public class MyRemoteStreams extends BSkeleton_RemoteStreams {
@@ -39,7 +40,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	}
 	
 	@Override
-	public void setImage(InputStream istrm) throws BException, InterruptedException {
+	public void setImage(InputStream istrm) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("setImage(" + istrm);
 		closeImageStream();
 		if (istrm != null) {
@@ -54,7 +55,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	}
 	
 	@Override
-	public InputStream getImage() throws BException, InterruptedException {
+	public InputStream getImage() throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("getImage(");
 		InputStream istrm;
 		try {
@@ -67,7 +68,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	}
 
 	@Override
-	public TreeMap<Integer, InputStream> getImages() throws BException,	InterruptedException {
+	public TreeMap<Integer, InputStream> getImages() throws RemoteException	 {
 		if (log.isDebugEnabled()) log.debug("getImages(");
 		Map<Integer, ByteBuffer> mapStreamBytes = this.mapStreamBytes;
 		if (mapStreamBytes == null) return null;
@@ -82,7 +83,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	}
 
 	@Override
-	public void setImages(Map<Integer, InputStream> istrms, int doNotReadStreamAtKey) throws BException, InterruptedException {
+	public void setImages(Map<Integer, InputStream> istrms, int doNotReadStreamAtKey) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("setImages(");
 		lastException = null;
 		mapStreamBytes = new HashMap<Integer, ByteBuffer>(istrms.size());
@@ -100,6 +101,10 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 				ByteBuffer buf = BWire.bufferFromStream(istrm);
 				if (log.isDebugEnabled()) log.debug("read buf=" + buf);
 				mapStreamBytes.put(k, buf);
+			} catch (BException e) {
+				if (log.isDebugEnabled()) log.debug("received exception=" + e);
+				lastException = e;
+				throw e;
 			} catch (Throwable e) { // If the underlying message is canceled an this istrm is closed, a NPE can occur deep inside CoyoteInputStream.
 				if (log.isDebugEnabled()) log.debug("received exception=" + e);
 				lastException = new BException(BException.IOERROR, "", e);
@@ -110,12 +115,12 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	}
 
 	@Override
-	public void throwLastException() throws BException, InterruptedException {
+	public void throwLastException() throws RemoteException {
 		if (lastException != null) throw lastException;
 	}
 	
 	@Override
-	public InputStream getTextStream() throws BException, InterruptedException {
+	public InputStream getTextStream() throws RemoteException {
 		final String text = "text-stream euro=€";
 		return new BContentStreamWrapper() {
 			@Override

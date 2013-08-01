@@ -17,10 +17,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BProtocolJson;
+import com.wilutions.byps.BProtocolS;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BApiDescriptor_Testser;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF;
@@ -42,7 +44,7 @@ public class TestRemoteServerR {
 	private Log log = LogFactory.getLog(TestRemoteServerR.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.serverIF;
 	}
@@ -129,13 +131,13 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testCallClientFromServer() throws BException, InterruptedException {
+	public void testCallClientFromServer() throws RemoteException {
 		log.info("testCallClientFromServer(");
 		
 		// (1) Provide implementation for interface ClientIF
 		client.addRemote(new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
 				return a + 1;
 			}
@@ -159,15 +161,19 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testCallClientFromServerParallel() throws BException, InterruptedException {
+	public void testCallClientFromServerParallel() throws RemoteException {
 		log.info("testCallClientFromServerParallel(");
 		
 		// (1) Provide implementation for interface ClientIF
 		client.addRemote(new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(");
-				Thread.sleep(500);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					throw new BException(BException.CANCELLED, e.toString(), e);
+				}
 				log.info(")incrementInt");
 				return a+1;
 			}
@@ -192,7 +198,7 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testCallClientFromServerNoRemoteImpl() throws BException, InterruptedException {
+	public void testCallClientFromServerNoRemoteImpl() throws RemoteException {
 		log.info("testCallClientFromServerNoRemoteImpl(");
 		
 		// Do not provide an implementation for the requested interface 
@@ -216,13 +222,13 @@ public class TestRemoteServerR {
 	 * @throws BException 
 	 */
 	@Test
-	public void testCallClientFromClientSameServer() throws BException, InterruptedException {
+	public void testCallClientFromClientSameServer() throws RemoteException {
 		log.info("testCallClientFromClientSameServer(");
 		
 		// Interface implementation for the second client
 		BSkeleton_ClientIF remoteImplOfClient2 = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
 				return a + 11;
 			}
@@ -257,13 +263,13 @@ public class TestRemoteServerR {
 	 * @throws BException 
 	 */
 	@Test
-	public void testCallClientFromClientOnOtherServer() throws BException, InterruptedException {
+	public void testCallClientFromClientOnOtherServer() throws RemoteException {
 		log.info("testCallClientFromClientOnOtherServer(");
 		
 		// Interface implementation for the second client
 		BSkeleton_ClientIF remoteImplOfClient2 = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
 				return a + 1;
 			}
@@ -299,13 +305,13 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testCallClient2FromServer1() throws BException, InterruptedException {
+	public void testCallClient2FromServer1() throws RemoteException {
 		log.info("testCallClient2FromServer1(");
 		
 		// Interface implementation for the second client
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
 				return a + 1;
 			}
@@ -334,13 +340,13 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testCallClient2FromForeignServer1() throws BException, InterruptedException {
+	public void testCallClient2FromForeignServer1() throws RemoteException {
 		log.info("testCallClient2FromForeignServer1(");
 		
 		// Interface implementation for the second client
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
 				return a + 1;
 			}
@@ -372,13 +378,13 @@ public class TestRemoteServerR {
 	 * @see testCallClientFromServer
 	 */
 	@Test
-	public void testCallClient1FromServer1() throws BException, InterruptedException {
+	public void testCallClient1FromServer1() throws RemoteException {
 		log.info("testCallClient1FromServer1(");
 		
 		// Interface implementation for the first client
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
 				return a + 1;
 			}
@@ -398,14 +404,14 @@ public class TestRemoteServerR {
 	}
 
 	@Test
-	public void testCallClientFromClientThrowEx() throws BException, InterruptedException {
+	public void testCallClientFromClientThrowEx() throws RemoteException {
 		log.info("testCallClientFromClientThrowEx(");
 		
 		final int exceptionCode = 1111;
 		
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				throw new BException(exceptionCode, "my exception", "details");
 			}
 		};
@@ -436,12 +442,12 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testCallDeadClientFromClient() throws BException, InterruptedException {
+	public void testCallDeadClientFromClient() throws RemoteException, InterruptedException {
 		log.info("testCallDeadClientFromClient(");
 		
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				return a+1;
 			}
 		};
@@ -491,12 +497,12 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testCallKilledClientFromClient() throws BException, InterruptedException {
+	public void testCallKilledClientFromClient() throws RemoteException {
 		log.info("testCallKilledClientFromClient(");
 		
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				return a+1;
 			}
 		};
@@ -539,7 +545,7 @@ public class TestRemoteServerR {
 		// (1) Provide implementation for interface ClientIF
 		client.addRemote(new BSkeleton_ClientIF() {
 			@Override
-			public void putStreams(List<InputStream> streams, int ctrl) throws BException, InterruptedException {
+			public void putStreams(List<InputStream> streams, int ctrl) throws RemoteException {
 				try {
 					final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
 					TestUtils.assertEquals(log, "streams.length", arr.size(), streams.size());
@@ -576,7 +582,7 @@ public class TestRemoteServerR {
 		// (1) Provide implementation for interface ClientIF
 		client.addRemote(new BSkeleton_ClientIF() {
 			@Override
-			public List<InputStream> getStreams(int ctrl) throws BException,InterruptedException {
+			public List<InputStream> getStreams(int ctrl) throws RemoteException {
 				try {
 					return TestUtilsHttp.makeTestStreams();
 				} catch (IOException e) {
@@ -613,7 +619,7 @@ public class TestRemoteServerR {
 		// Interface implementation for the second client
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public List<InputStream> getStreams(int ctrl) throws BException,InterruptedException {
+			public List<InputStream> getStreams(int ctrl) throws RemoteException {
 				try {
 					return TestUtilsHttp.makeTestStreams();
 				} catch (IOException e) {
@@ -660,7 +666,7 @@ public class TestRemoteServerR {
 		// Interface implementation for the second client
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public void putStreams(List<InputStream> streams, int ctrl) throws BException, InterruptedException {
+			public void putStreams(List<InputStream> streams, int ctrl) throws RemoteException {
 				log.info("putStreams(" + streams.size());
 				try {
 					final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
@@ -711,7 +717,7 @@ public class TestRemoteServerR {
 		// Interface implementation for the second client
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public void putStreams(List<InputStream> streams, int ctrl) throws BException, InterruptedException {
+			public void putStreams(List<InputStream> streams, int ctrl) throws RemoteException {
 				log.info("putStreams(" + streams.size());
 				try {
 					final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
@@ -756,17 +762,17 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testJsonClientCallsBinClient() throws BException, InterruptedException {
+	public void testJsonClientCallsBinClient() throws RemoteException {
 		log.info("testJsonClientCallsBinClient(");
 		
 		// First client
-		BClient_Testser clientJson = TestUtilsHttp.createClient(BBinaryModel.JSON, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
+		BClient_Testser clientJson = TestUtilsHttp.createClient(BProtocolJson.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
 		
 		// Create second client
-		BClient_Testser clientBin = TestUtilsHttp.createClient(BBinaryModel.MEDIUM, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
+		BClient_Testser clientBin = TestUtilsHttp.createClient(BProtocolS.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
-			public int incrementInt(int a) throws BException, InterruptedException {
+			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
 				return a + 1;
 			}

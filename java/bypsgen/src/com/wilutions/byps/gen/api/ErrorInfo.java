@@ -1,4 +1,4 @@
-package com.wilutions.byps.gen.doclet;
+package com.wilutions.byps.gen.api;
 
 public class ErrorInfo {
 	public String className;

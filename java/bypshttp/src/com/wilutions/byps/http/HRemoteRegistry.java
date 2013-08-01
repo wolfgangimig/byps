@@ -17,6 +17,7 @@ import com.wilutions.byps.BSyncResult;
 import com.wilutions.byps.BTargetId;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 
 public abstract class HRemoteRegistry implements BServerRegistry {
 	
@@ -30,7 +31,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 	}
 	
 	@Override
-	public ArrayList<BClient> getForwardClientsToOtherServers() throws BException {
+	public ArrayList<BClient> getForwardClientsToOtherServers() throws RemoteException {
 		ArrayList<BClient> clients = new ArrayList<BClient>();
 		ArrayList<Integer> serverIds = config.getServerIds();
 		for (Integer serverId : serverIds) {
@@ -42,7 +43,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 	}
 	
 	@Override
-	public BClient getForwardClientIfForeignTargetId(BTargetId targetId) throws BException {
+	public BClient getForwardClientIfForeignTargetId(BTargetId targetId) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("getForwardClientIfForeignTargetId(" + targetId);
 		BClient client = null;
 		int serverId = HTargetIdFactory.getServerIdFromTargetId(targetId); 
@@ -56,7 +57,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		return client;
 	}
 
-	protected BClient getForwardClient(int serverId) throws BException {
+	protected BClient getForwardClient(int serverId) throws RemoteException {
 		BClient client = clientMap.get(serverId);
 		if (client == null) {
 			String url = config.getServerUrl(serverId);
@@ -70,12 +71,8 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 			client = createForwardClientToOtherServer(transport);
 			
 			BSyncResult<BClient> syncResult = new BSyncResult<BClient>();
-			try {
-				client.start(syncResult);
-		    	syncResult.getResult();
-			} catch (InterruptedException e) {
-				throw new BException(BException.INTERNAL, e.toString());
-			}
+			client.start(syncResult);
+	    	syncResult.getResult();
 			
 			if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer OK, client=" + client);
 			clientMap.put(serverId, client);
@@ -84,7 +81,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 	}
 
 	@Override
-	public BRemote getRemote(BTargetId targetId, int remoteId) throws BException {
+	public BRemote getRemote(BTargetId targetId, int remoteId) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("getRemote(targetId=" + targetId + ", remoteId=" + remoteId);
 		BRemote remote = null;
 

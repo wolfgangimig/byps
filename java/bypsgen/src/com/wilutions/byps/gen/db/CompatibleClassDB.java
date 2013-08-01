@@ -24,7 +24,6 @@ public class CompatibleClassDB {
 		CompatibilityViolations viols = new CompatibilityViolations();
 		
 		if (prevClassDB != null) {
-			ensureCompatibleBinaryModel(viols);
 			
 			ensureCompatibleSerInfos(viols);
 			
@@ -38,16 +37,6 @@ public class CompatibleClassDB {
 		boolean ret = viols.size() == 0;
 		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatible", ret);
 		return ret;
-	}
-	
-	private void ensureCompatibleBinaryModel(CompatibilityViolations viols) throws GeneratorException {
-		////log.debug(CompatibleClassDB.class.getName(), "ensureCompatibleBinaryModel");
-		if (classDB.getApiDescriptor().bmodel != prevClassDB.getApiDescriptor().bmodel) {
-			viols.add("Modified binary model, previsious model=" + 
-						prevClassDB.getApiDescriptor().bmodel + 
-						", current model=" + classDB.getApiDescriptor().bmodel);
-		}
-		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatibleBinaryModel");
 	}
 	
 	private void ensureCompatibleSerInfos(CompatibilityViolations viols) throws GeneratorException {

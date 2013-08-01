@@ -17,6 +17,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF;
 import com.wilutions.byps.test.api.srvr.BStub_ClientIF;
 import com.wilutions.byps.test.api.srvr.ClientIF;
@@ -48,8 +49,8 @@ public class MyServerIF extends BSkeleton_ServerIF {
 	}
 
 	@Override
-	public int callClientIncrementInt(int v) throws BException,
-			InterruptedException {
+	public int callClientIncrementInt(int v) throws RemoteException
+			 {
 		if (log.isDebugEnabled()) log.debug("callClientIncrementInt(" + v);
 		ClientIF clientIF = getClientIF();
 		if (log.isDebugEnabled()) log.debug("inrementInt ...");
@@ -73,13 +74,13 @@ public class MyServerIF extends BSkeleton_ServerIF {
 	}
 	
 	@Override
-	public void putStreamsOnClient(List<InputStream> streams) throws BException, InterruptedException {
+	public void putStreamsOnClient(List<InputStream> streams) throws RemoteException {
 		ClientIF clientIF = getClientIF();
 		clientIF.putStreams(streams, 0);
 	}
 		
 	@Override
-	public List<InputStream> getStreamsFromClient() throws BException,InterruptedException {
+	public List<InputStream> getStreamsFromClient() throws RemoteException {
 		ClientIF clientIF = getClientIF();
 		List<InputStream> streams = clientIF.getStreams(0);
 		ArrayList<InputStream> retStreams = new ArrayList<InputStream>();
@@ -97,26 +98,26 @@ public class MyServerIF extends BSkeleton_ServerIF {
 	}
 	
 	@Override
-	public void registerWithClientMap(int id) throws BException,
-			InterruptedException {
+	public void registerWithClientMap(int id) throws RemoteException
+			 {
 		if (log.isDebugEnabled()) log.debug("registerWithClientMap(" + id);
 		clientMap.put(id, getClientIF());
 		if (log.isDebugEnabled()) log.debug(")registerWithClientMap");
 	}
 	
 	@Override
-	public ClientIF getClient(int id) throws BException, InterruptedException {
+	public ClientIF getClient(int id) throws RemoteException {
 		return clientMap.get(id);
 	}
 	
 	@Override
-	public Set<Integer> getClientIds() throws BException, InterruptedException {
+	public Set<Integer> getClientIds() throws RemoteException {
 		return clientMap.keySet();
 	}
 	
 	@Override
-	public int callClientParallel(int nbOfCalls) throws BException,
-			InterruptedException {
+	public int callClientParallel(int nbOfCalls) throws RemoteException
+			 {
 		if (log.isDebugEnabled()) log.debug("callClientParallel(" + nbOfCalls);
 		final ClientIF clientIF = getClientIF();
 		final AtomicInteger ret = new AtomicInteger(0);
@@ -138,7 +139,11 @@ public class MyServerIF extends BSkeleton_ServerIF {
 			tpool.execute(run);
 		}
 		tpool.shutdown();
-		tpool.awaitTermination(10, TimeUnit.SECONDS);
+		try {
+			tpool.awaitTermination(10, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			throw new BException(BException.CANCELLED, e.toString(), e);
+		}
 		if (log.isDebugEnabled()) log.debug(")callClientParallel");
 		return ret.get();
 	}

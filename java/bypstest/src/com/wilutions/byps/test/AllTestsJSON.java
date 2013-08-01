@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.wilutions.byps.BBinaryModel;
+import com.wilutions.byps.BProtocolJson;
 
 
 @RunWith(Suite.class)
@@ -35,8 +35,8 @@ import com.wilutions.byps.BBinaryModel;
 public class AllTestsJSON {
 	
 	@BeforeClass
-	public static void setBinaryModel() {
-		TestUtils.bmodel = BBinaryModel.JSON;
+	public static void setProtocol() {
+		TestUtils.protocol = BProtocolJson.BINARY_MODEL;
 	}
 	
 	

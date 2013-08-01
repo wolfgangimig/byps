@@ -4,20 +4,20 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
+import com.wilutions.byps.RemoteException;
 
 public interface RemoteStreams extends BRemote {
 
-	public InputStream getImage() throws BException, InterruptedException;
+	public InputStream getImage() throws RemoteException;
 	
-	public void setImage(InputStream istrm) throws BException, InterruptedException;
+	public void setImage(InputStream istrm) throws RemoteException;
 	
-	public TreeMap<Integer, InputStream> getImages() throws BException, InterruptedException;
+	public TreeMap<Integer, InputStream> getImages() throws RemoteException;
 	
-	public void setImages(Map<Integer, InputStream> istrms, int doNotReadStreamAtKey) throws BException, InterruptedException;
+	public void setImages(Map<Integer, InputStream> istrms, int doNotReadStreamAtKey) throws RemoteException;
 	
-	public void throwLastException() throws BException, InterruptedException;
+	public void throwLastException() throws RemoteException;
 	
-	public InputStream getTextStream() throws BException, InterruptedException;
+	public InputStream getTextStream() throws RemoteException;
 }

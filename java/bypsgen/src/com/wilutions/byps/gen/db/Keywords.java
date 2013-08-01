@@ -13,7 +13,11 @@ public class Keywords {
 		if (javaKeywords.contains(ident)) {
 			log.error(errorContext + ": found Java keyword \"" + ident + "\"");
 		}
-		else if (csharpKeywords.contains(ident)) {
+//		C# keywords are escapted by @
+//		else if (csharpKeywords.contains(ident)) { 
+//		log.error(errorContext + ": found C# keyword \"" + ident + "\"");
+//	}
+		else if (cppKeywords.contains(ident)) {
 			log.error(errorContext + ": found C# keyword \"" + ident + "\"");
 		}
 		else {
@@ -47,9 +51,28 @@ public class Keywords {
 			+ "delegate	internal	short	void " + "do	is	sizeof	while "
 			+ "double	lock	stackalloc " + "else	long	static "
 			+ "enum	namespace	string ";
+	
+	private final static String CPP_KEYWORDS = ""
+			+ "alignas	alignof	and	and_eq	asm	auto "
+			+ "bitand	bitor	bool	break	case	catch "
+			+ "char	char16_t 	char32_t 	class	compl "
+			+ "const	constexpr 	const_cast	continue	decltype  "
+			+ "default	delete	do	double	dynamic_cast	else "
+			+ "enum	explicit	export	extern	false	float	for "
+			+ "friend	goto	if	inline	int	long	mutable "
+			+ "namespace	new	noexcept not	not_eq	nullptr  "
+			+ "operator	or	or_eq	private	protected	public "
+			+ "register	reinterpret_cast	return	short "
+			+ "signed	sizeof	static	static_assert 	static_cast "
+			+ "struct	switch	template	this	thread_local  "
+			+ "throw	true	try	typedef	typeid	typename "
+			+ "union	unsigned	using	virtual	void	volatile "
+			+ "wchar_t	while	xor	xor_eq			 "
+			+ "override final";
 
 	public final static HashSet<String> javaKeywords = makeKeywords(JAVA_KEYWORDS);
 	public final static HashSet<String> csharpKeywords = makeKeywords(CSHARP_KEYWORDS);
+	public final static HashSet<String> cppKeywords = makeKeywords(CPP_KEYWORDS);
 
 	private static HashSet<String> makeKeywords(String slist) {
 		HashSet<String> set = new HashSet<String>();

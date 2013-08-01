@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BProtocolJson;
+import com.wilutions.byps.BProtocolS;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BApiDescriptor_Testser;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.arr.ArrayTypes1dim;
@@ -31,7 +34,7 @@ public class TestRemoteArrays {
 	private Log log = LogFactory.getLog(TestRemoteArrays.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 	}
 	
@@ -58,7 +61,7 @@ public class TestRemoteArrays {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testRemoteArrayTypes1dimPerformance() throws BException, InterruptedException {
+	public void testRemoteArrayTypes1dimPerformance() throws RemoteException {
 		log.info("testRemoteArrayTypes1dimPerformance(");
 
 		int loopCount = 100;
@@ -66,13 +69,13 @@ public class TestRemoteArrays {
 			
 			int flags = gzip != 0 ? BWire.FLAG_GZIP : BWire.FLAG_DEFAULT;
 		
-			internalTestPerformance(BBinaryModel.JSON, flags, loopCount, 10);
-			internalTestPerformance(BBinaryModel.JSON, flags, loopCount, 100);
-			internalTestPerformance(BBinaryModel.JSON, flags, loopCount, 1000);
+			internalTestPerformance(BProtocolJson.BINARY_MODEL, flags, loopCount, 10);
+			internalTestPerformance(BProtocolJson.BINARY_MODEL, flags, loopCount, 100);
+			//internalTestPerformance(BProtocolJson.BINARY_MODEL, flags, loopCount, 1000);
 			
-			internalTestPerformance(BBinaryModel.MEDIUM, flags, loopCount, 10);
-			internalTestPerformance(BBinaryModel.MEDIUM, flags, loopCount, 100);
-			internalTestPerformance(BBinaryModel.MEDIUM, flags, loopCount, 1000);
+			internalTestPerformance(BProtocolS.BINARY_MODEL, flags, loopCount, 10);
+			internalTestPerformance(BProtocolS.BINARY_MODEL, flags, loopCount, 100);
+			//internalTestPerformance(BProtocolS.BINARY_MODEL, flags, loopCount, 1000);
 			//internalTestPerformance(BBinaryModel.MEDIUM, 0, loopCount, 10000);
 		
 		}
@@ -80,9 +83,9 @@ public class TestRemoteArrays {
 		log.info(")testRemoteArrayTypes1dimPerformance");
 	}
 	
-	private void internalTestPerformance(BBinaryModel bmodel, int flags, int loopCount, int objCount) throws BException, InterruptedException {
-		TestUtils.bmodel = bmodel;
-		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.bmodel, flags, BApiDescriptor_Testser.VERSION);
+	private void internalTestPerformance(BBinaryModel protocol, int flags, int loopCount, int objCount) throws RemoteException {
+		TestUtils.protocol = protocol;
+		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, flags, BApiDescriptor_Testser.VERSION);
 		
 		client.transport.wire.clearStatistics();
 
@@ -107,7 +110,7 @@ public class TestRemoteArrays {
 		
 		client.done();
 		
-		log.info("bmodel=" + bmodel.toString().substring(0,2) +
+		log.info("protocol=" + protocol.toString() +
 				", gzip=" + flags + 
 				", #objs=" + String.format("%6d", objCount) + 
 				", #loops=" + String.format("%6d", loopCount) +
@@ -119,7 +122,7 @@ public class TestRemoteArrays {
 	}
 	
 	@Test
-	public void testRemoteArrayTypes1dim() throws BException, InterruptedException {
+	public void testRemoteArrayTypes1dim() throws RemoteException {
 		log.info("testRemoteArrayTypes1dim(");
 
 		RemoteArrayTypes1dim remote;
@@ -166,7 +169,7 @@ public class TestRemoteArrays {
 	}
 
 	@Test
-	public void testRemoteArrayTypes4dim() throws BException, InterruptedException {
+	public void testRemoteArrayTypes4dim() throws RemoteException {
 		log.info("testRemoteArrayTypes4dim(");
 
 		RemoteArrayTypes4dim remote;
@@ -219,7 +222,7 @@ public class TestRemoteArrays {
 	 * @throws BException 
 	 */
 	@Test
-	public void testRemoteArraysDims23() throws BException, InterruptedException{
+	public void testRemoteArraysDims23() throws RemoteException{
 		log.info("testRemoteArraysDims23(");
 		
 		{

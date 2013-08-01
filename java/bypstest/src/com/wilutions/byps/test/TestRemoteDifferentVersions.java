@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BApiDescriptor_Testser;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF;
@@ -25,11 +26,11 @@ public class TestRemoteDifferentVersions {
 	private Log log = LogFactory.getLog(TestRemoteDifferentVersions.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 	}
 	
 	@After
-	public void tearDown() throws BException, InterruptedException {
+	public void tearDown() throws RemoteException {
 		setServerAppVersion(BApiDescriptor_Testser.VERSION);
 	}
 	
@@ -39,7 +40,7 @@ public class TestRemoteDifferentVersions {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testClientCallsServer() throws BException, InterruptedException {
+	public void testClientCallsServer() throws RemoteException {
 		log.info("testClientCallsServer(");
 		
 		for (int clientVersion = 0; clientVersion < 5; clientVersion++) {
@@ -51,13 +52,13 @@ public class TestRemoteDifferentVersions {
 		log.info(")testClientCallsServer");
 	}
 	
-	private void internaltestClientCallsServer(int clientVersion, int serverVersion) throws BException, InterruptedException {
+	private void internaltestClientCallsServer(int clientVersion, int serverVersion) throws RemoteException {
 		log.info("internaltestClientCallsServer(clientVersion=" + clientVersion + ", serverVersion=" + serverVersion);
 		Evolve obj = TestSerializeDifferentVersions.createEvolve(clientVersion);
 		
 		setServerAppVersion(serverVersion);
 		
-		BClient_Testser client2 = TestUtilsHttp.createClient(TestUtils.bmodel, BWire.FLAG_DEFAULT, clientVersion);
+		BClient_Testser client2 = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, clientVersion);
 		client2.evolveIF.setEvolve(obj);
 		Evolve objR = client2.evolveIF.getEvolve();
 		
@@ -74,7 +75,7 @@ public class TestRemoteDifferentVersions {
 	 * @throws BException
 	 * @throws InterruptedException
 	 */
-	private void setServerAppVersion(int version) throws BException, InterruptedException {
+	private void setServerAppVersion(int version) throws RemoteException {
 		BClient_Testser client = TestUtilsHttp.createClient();
 		client.transport.wire.getTestAdapter().setServerAppVersion(version);
 		client.done();
@@ -86,7 +87,7 @@ public class TestRemoteDifferentVersions {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testServerCallsClient() throws BException, InterruptedException {
+	public void testServerCallsClient() throws RemoteException {
 		log.info("testServerCallsClient(");
 		
 		for (int clientVersion = 0; clientVersion < 5; clientVersion++) {
@@ -98,7 +99,7 @@ public class TestRemoteDifferentVersions {
 		log.info(")testServerCallsClient");
 	}
 	
-	private void internaltestServerCallsClient(int clientVersion, int serverVersion) throws BException, InterruptedException {
+	private void internaltestServerCallsClient(int clientVersion, int serverVersion) throws RemoteException {
 		log.info("internaltestServerCallsClient(clientVersion=" + clientVersion + ", serverVersion=" + serverVersion);
 		
 		setServerAppVersion(serverVersion);
@@ -107,10 +108,10 @@ public class TestRemoteDifferentVersions {
 		final Evolve[] refObj = new Evolve[1];
 		
 		// Create a client and provide the setEvolve function.
-		BClient_Testser client2 = TestUtilsHttp.createClient(TestUtils.bmodel, BWire.FLAG_DEFAULT, clientVersion);
+		BClient_Testser client2 = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, clientVersion);
 		client2.addRemote(new BSkeleton_EvolveIF() {
 			@Override
-			public void setEvolve(Evolve obj) throws BException,InterruptedException {
+			public void setEvolve(Evolve obj) throws RemoteException {
 				// store into array element 0
 				refObj[0] = obj;
 			}
@@ -136,7 +137,7 @@ public class TestRemoteDifferentVersions {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void testClientCallsAnotherClient() throws BException, InterruptedException {
+	public void testClientCallsAnotherClient() throws RemoteException {
 		log.info("testClientCallsAnotherClient(");
 		
 		for (int clientVersion = 0; clientVersion < 5; clientVersion++) {
@@ -148,11 +149,11 @@ public class TestRemoteDifferentVersions {
 		log.info(")testClientCallsAnotherClient");
 	}
 	
-	private void internaltestClientCallsAnotherClient(int clientVersion, int clientVersion2) throws BException, InterruptedException {
+	private void internaltestClientCallsAnotherClient(int clientVersion, int clientVersion2) throws RemoteException {
 		log.info("internaltestClientCallsAnotherClient(clientVersion=" + clientVersion + ", clientVersion2=" + clientVersion2);
 		
 		
-		BClient_Testser client1 = TestUtilsHttp.createClient(TestUtils.bmodel, BWire.FLAG_DEFAULT, clientVersion);
+		BClient_Testser client1 = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, clientVersion);
 		
 		// This array receives the result in item 0.
 		final Evolve[] refObj = new Evolve[1];
@@ -160,12 +161,12 @@ public class TestRemoteDifferentVersions {
 		// Create a client and provide the setEvolve function.
 		BSkeleton_EvolveIF remote2 = new BSkeleton_EvolveIF() {
 			@Override
-			public void setEvolve(Evolve obj) throws BException,InterruptedException {
+			public void setEvolve(Evolve obj) throws RemoteException {
 				// store into array element 0
 				refObj[0] = obj;
 			}
 		};
-		BClient_Testser client2 = TestUtilsHttp.createClient(TestUtils.bmodel, BWire.FLAG_DEFAULT, clientVersion2);
+		BClient_Testser client2 = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, clientVersion2);
 		client2.addRemote(remote2);
 		
 		// Pass interface of client2 to the server-side of client1

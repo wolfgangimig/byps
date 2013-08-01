@@ -7,10 +7,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.wilutions.byps.gen.api.CommentInfo;
+import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
@@ -55,47 +53,53 @@ public class XmlMethodInfo implements XmlInfo {
 	public MethodInfo toValue(ClassDB classDB) throws GeneratorException{
 		String requestFullName = TypeInfo.getInfoTypeName(this.requestTypeName);
 		SerialInfo requestInfo = classDB.getSerInfo(requestFullName);
+		if (requestInfo == null) {
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = requestTypeName;
+			errInfo.msg = "Missing class definition";
+			throw new GeneratorException(errInfo);
+		}
 		
 		String resultFullName = TypeInfo.getInfoTypeName(this.resultTypeName);
 		SerialInfo resultInfo = classDB.getSerInfo(resultFullName);
+		if (resultInfo == null) {
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = resultTypeName;
+			errInfo.msg = "Missing class definition";
+			throw new GeneratorException(errInfo);
+		}
 		
 		ArrayList<TypeInfo> exceptions = new ArrayList<TypeInfo>();
 		methodInfo = new MethodInfo(name, comments, requestInfo, resultInfo, exceptions);
-
+		requestInfo.methodInfo = methodInfo;
+		resultInfo.methodInfo = methodInfo;
+		
 		if (exceptionTypeNames != null) {
 			for (String exName : exceptionTypeNames) {
 				SerialInfo exInfo = classDB.getSerInfo(exName);
 				if (exInfo == null) {
-					throw new GeneratorException("Class " + methodInfo + ": Missing exception type=" + exName);
+					ErrorInfo errInfo = new ErrorInfo();
+					errInfo.className = requestInfo.toString();
+					errInfo.methodName = methodInfo.name;
+					errInfo.msg = "Missing exception type=" + exName;
+					throw new GeneratorException(errInfo);
 				}
 				exceptions.add(exInfo);
 			}
 		}
 		
-		if (requestInfo != null) {
-			requestInfo.methodInfo = methodInfo;
-		}
-		else {
-			log.error("Method " + name + ": missing class definition of " + requestFullName);
-		}
-		
-		if (resultInfo != null) {
-			resultInfo.methodInfo = methodInfo;
-		}
-		else {
-			log.error("Method " + name + ": missing class definition of " + resultFullName);
-		}
-
 		String fullName =  TypeInfo.getInfoTypeName(remoteName);
 		methodInfo.remoteInfo = classDB.getRemoteInfo(fullName);
 		if (methodInfo.remoteInfo == null) {
-			throw new GeneratorException("Missing remote class name for method " + methodInfo);
+			ErrorInfo errInfo = new ErrorInfo();
+			errInfo.className = fullName;
+			errInfo.methodName = methodInfo.name;
+			errInfo.msg = "Missing remote class name for method " + methodInfo;
+			throw new GeneratorException(errInfo);
 		}
 
 		return methodInfo;
 	}
-
-	private Log log = LogFactory.getLog(XmlMethodInfo.class);
 
 	@Override
 	public void updateAfterRead(ClassDB classDB) throws GeneratorException {

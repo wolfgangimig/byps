@@ -7,6 +7,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Logging"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FileUpload"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

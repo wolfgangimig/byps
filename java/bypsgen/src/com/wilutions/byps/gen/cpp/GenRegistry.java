@@ -8,7 +8,6 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.gen.api.SerialInfo;
-import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
 
    

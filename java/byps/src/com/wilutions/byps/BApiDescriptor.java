@@ -1,6 +1,6 @@
 package com.wilutions.byps;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This class describes a generated API.
@@ -29,14 +29,8 @@ public class BApiDescriptor {
 	
 	/**
 	 * API interface version.
-	 * The interface version defined in the BApi class of the IDF.
 	 */
 	public final int version;
-	
-	/**
-	 * Reserved.
-	 */
-	public final BBinaryModel bmodel;
 	
 	/**
 	 * Reserved.
@@ -46,53 +40,51 @@ public class BApiDescriptor {
 	/**
 	 * Registry of serialization classes.
 	 */
-	private final ArrayList<BRegistry> registries = new ArrayList<BRegistry>(2);
-	
-	private String protocols;
+	private final HashMap<BBinaryModel, BRegistry> registries = new HashMap<BBinaryModel, BRegistry>();
 	
 	public BApiDescriptor( 
 			String name, String apiPack,
-			BBinaryModel bmodel,
 			int version,
-			boolean uniqueObjects,
-			String protocol,
-			BRegistry registry
+			boolean uniqueObjects
 			) {
 		super();
 		this.name = name;
 		this.basePackage = apiPack;
 		this.version = version;
-		this.bmodel = bmodel;
 		this.uniqueObjects = uniqueObjects;
-		this.protocols = protocol;
-		this.registries.add(registry);
 	}
 	
-	public void addProtocol(String protocol, BRegistry registry) {
-		protocols += protocol;
-		registries.add(registry);
+	/**
+	 * Add a serialization protocol.
+	 * @param protocol Protocol specifier. 
+	 * @param registry
+	 * @see BNegotiate#BINARY_STREAM
+	 * @see BNegotiate#JSON
+	 */
+	public BApiDescriptor addRegistry(BRegistry registry) {
+		registries.put(registry.bmodel, registry);
+		return this;
 	}
 	
-	public BRegistry getRegistry(BBinaryModel bmodel) {
-		for (final BRegistry reg : registries) {
-			if (bmodel == reg.bmodel) return reg;
+	public BRegistry getRegistry(BBinaryModel protocol) {
+		BRegistry ret = registries.get(protocol);
+		if (ret == null) {
+			throw new IllegalStateException("No registry for protocol=" + protocol);
 		}
-		throw new IllegalStateException("No registry for binary model=" + bmodel);
+		return ret;
 	}
 	
-	public BRegistry getRegistry() {
-		return getRegistry(this.bmodel);
-	}
-	
-	public String getProtocols() {
-		return protocols;
+	public String getProtocolIds() {
+		StringBuilder sbuf = new StringBuilder();
+		for (BBinaryModel p : registries.keySet()) sbuf.append(p.getProtocolId());
+		return sbuf.toString();
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder sbuf = new StringBuilder();
 		sbuf.append("[name=").append(name).append(",package=").append(basePackage);
-		sbuf.append(",version=").append(version).append(",binaryModel=").append(bmodel);
+		sbuf.append(",version=").append(version);
 		sbuf.append(",uniqueObjects=").append(uniqueObjects);
 		sbuf.append("]");
 		return sbuf.toString();

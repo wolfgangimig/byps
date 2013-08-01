@@ -3,7 +3,7 @@ package com.wilutions.byps;
 /**
  * This interface has to be used as base for API interfaces. 
  */
-public interface BRemote {
+public interface BRemote extends com.wilutions.byps.Remote {
 	
 	/**
 	 * Gets the target ID.

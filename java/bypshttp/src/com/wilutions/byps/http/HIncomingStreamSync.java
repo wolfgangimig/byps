@@ -100,7 +100,7 @@ public class HIncomingStreamSync extends BContentStream {
 	}
 	
 	public void assignStream(InputStream is) throws BException {
-		if (log.isDebugEnabled()) log.debug("copyToBuffer " + streamId + "(");
+		if (log.isDebugEnabled()) log.debug("assignStream " + streamId + "(");
 		byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
 		int len = 0;
 		long sum = 0;
@@ -126,7 +126,7 @@ public class HIncomingStreamSync extends BContentStream {
 			}
 			writeClose();
 		}
-		if (log.isDebugEnabled()) log.debug(")copyToBuffer");
+		if (log.isDebugEnabled()) log.debug(")assignStream");
 	}
 
 	@Override

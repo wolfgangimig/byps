@@ -27,7 +27,7 @@ public abstract class BClient {
 		transport.wire.done();
 	}
 	
-	public void start(final BAsyncResult<BClient> asyncResult) throws BException, InterruptedException {
+	public void start(final BAsyncResult<BClient> asyncResult) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
 		
 		BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {

@@ -8,7 +8,7 @@ public abstract class BInputBin extends BInput {
 
 	public BInputBin(BMessageHeader header, ByteBuffer buf, BTransport transport, BRegistry registry) {
 		super(header, transport, registry);
-		this.bbuf = (BBufferBin)BBuffer.create(transport.apiDesc.bmodel, buf);
+		this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, buf);
 	}
 
 	public Object load() throws BException {

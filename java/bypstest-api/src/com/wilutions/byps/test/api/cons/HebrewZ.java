@@ -6,7 +6,6 @@ public class HebrewZ implements Serializable {
 
 	private static final long serialVersionUID = 8073826324374162061L;
 	
-	@SuppressWarnings("unused")
 	private String core;
 	
 	protected HebrewZ() {

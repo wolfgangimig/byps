@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wilutions.byps.BException;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.map.MapTypes;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
@@ -26,7 +26,7 @@ public class TestRemoteMapTypes {
 	private Log log = LogFactory.getLog(TestRemoteMapTypes.class);
 
 	@Before
-	public void setUp() throws BException, InterruptedException {
+	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
 		remote = client.remoteMapTypes;
 	}
@@ -39,7 +39,7 @@ public class TestRemoteMapTypes {
 	}
 	
 	@Test
-	public void testRemoteMapTypes() throws BException, InterruptedException {
+	public void testRemoteMapTypes() throws RemoteException {
 		log.info("testRemoteMapTypes(");
 		
 		MapTypes obj = new MapTypes();

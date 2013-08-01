@@ -45,7 +45,7 @@ public class HWireClient extends BWire {
 	protected final static long MESSAGEID_DISCONNECT = -2;
 
 	protected final String surl;
-	protected final static int CHUNK_SIZE = 64 * 1000;
+	protected final static int CHUNK_SIZE = 8 * 1000;
 	protected final Log log = LogFactory.getLog(HWireClient.class);
 	protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
 	protected final Executor threadPool;
@@ -105,11 +105,11 @@ public class HWireClient extends BWire {
 
 		@Override
 		public void setAsyncResult(BMessage msg, Throwable e) {
-			if (msg != null) {
-				this.result = msg;
-			}
 			if (e != null) {
 				ex.compareAndSet(null, e);
+			}
+			if (msg != null && msg.buf != null) {
+				this.result = msg;
 			}
 			
 			if (nbOfOutstandingResults.decrementAndGet() == 0) {
@@ -133,7 +133,7 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug("executeRequest(" + r);
 		
 		if (isDone) {
-			BException e = new BException(BException.CANCELED, "Already disconnected.");
+			BException e = new BException(BException.CANCELLED, "Already disconnected.");
 			throw e;
 		}
 		
@@ -334,7 +334,7 @@ public class HWireClient extends BWire {
 		}
 		
 		public void throwIfCancelled() throws BException {
-			if (_canceled) throw new BException(BException.CANCELED, "Request cancelled");
+			if (_canceled) throw new BException(BException.CANCELLED, "Request cancelled");
 		}
 		
 		@Override
@@ -550,7 +550,7 @@ public class HWireClient extends BWire {
 			catch (Throwable e) {
 				if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
 				if (cancelAllRequests || request.isCanceled()) {
-					BException bex = new BException(BException.CANCELED, "");
+					BException bex = new BException(BException.CANCELLED, "");
 					returnException = bex;
 				}
 				else {
@@ -600,36 +600,37 @@ public class HWireClient extends BWire {
 	
 			conn.setConnectTimeout((int)timeoutMillisClient);
 
-			conn.setUseCaches(false);
+			//conn.setUseCaches(false);
 			
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
 			conn.setRequestMethod("PUT");
 
+			if (contentLength >= 0) {
+				conn.setFixedLengthStreamingMode((int)contentLength);
+//				try {
+//					conn.setFixedLengthStreamingMode(contentLength);
+//					if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
+//				}
+//				catch (NoSuchMethodError ignored) { // Java 6
+//					if (contentLength <= Integer.MAX_VALUE) {
+//						conn.setFixedLengthStreamingMode((int)contentLength);
+//						if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
+//					}
+//					else {
+//						conn.setChunkedStreamingMode(CHUNK_SIZE); 
+//						if (log.isDebugEnabled()) log.debug("Content-Length > 2GB, Java 6 -> Chunked-Encoding");
+//					}
+//				}
+			}
+			else {
+				if (log.isDebugEnabled()) log.debug("Content-Length < 0 -> Chunked-Encoding");
+				conn.setChunkedStreamingMode(CHUNK_SIZE); // Chunked-Encoding + AsyncServlet erst ab Tomcat 7.0.28: https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
+			}
+			
 			String ct = contentType != null ? contentType : BContentStream.DEFAULT_CONTENT_TYPE;
 			conn.setRequestProperty("Content-Type", ct);
 			if (log.isDebugEnabled()) log.debug("Content-Type=" + ct);
-			
-			if (contentLength > 0) {
-				try {
-					conn.setFixedLengthStreamingMode(contentLength);
-					if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
-				}
-				catch (NoSuchMethodError ignored) { // Java 6
-					if (contentLength <= Integer.MAX_VALUE) {
-						conn.setFixedLengthStreamingMode((int)contentLength);
-						if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
-					}
-					else {
-						conn.setChunkedStreamingMode(CHUNK_SIZE); 
-						if (log.isDebugEnabled()) log.debug("Content-Length > 2GB, Java 6 -> Chunked-Encoding");
-					}
-				}
-			}
-			else {
-				if (log.isDebugEnabled()) log.debug("Content-Length <= 0 -> Chunked-Encoding");
-				conn.setChunkedStreamingMode(CHUNK_SIZE); // Chunked-Encoding + AsyncServlet erst ab Tomcat 7.0.28: https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
-			}
 			
 			applySession(conn);
 			
@@ -643,14 +644,21 @@ public class HWireClient extends BWire {
 				os.write(buf, 0, len);
 			}
 			
+			os.flush();
 			os.close();
 			os = null;
 			if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
+			
+			if (contentLength >= 0) {
+				if (contentLength != osbc.sum) {
+					throw new BException(BException.IOERROR, "wrong contentlength written");
+				}
+			}
 
 			if (stats != null) {
 				long endSendMillis = System.currentTimeMillis();
 				synchronized(this) {
-					stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
+//					stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
 				}
 			}
 			
@@ -659,7 +667,11 @@ public class HWireClient extends BWire {
 			request.throwIfCancelled();
 
 			InputStreamByteCount isbc = null;
+			int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
 			try {
+				statusCode = conn.getResponseCode();
+				if (statusCode != HttpURLConnection.HTTP_OK) throw new IOException("HTTP " + statusCode); 
+				
 				InputStream isResp = isbc = new InputStreamByteCount(conn.getInputStream());
 				String enc = conn.getHeaderField("Content-Encoding");
 				boolean gzip = enc != null && enc.equals("gzip");
@@ -671,9 +683,6 @@ public class HWireClient extends BWire {
 				InputStream errStrm = conn.getErrorStream();
 				bufferFromStream(errStrm, false);
 				
-				int statusCode = conn.getResponseCode();
-				if (statusCode != HttpURLConnection.HTTP_OK) throw new IOException("HTTP " + statusCode); 
-
 				throw new BException(BException.IOERROR, "HTTP " + statusCode);
 			}
 
@@ -693,7 +702,7 @@ public class HWireClient extends BWire {
 		catch (Throwable e) {
 			if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
 			if (cancelAllRequests || request.isCanceled()) {
-				BException bex = new BException(BException.CANCELED, "");
+				BException bex = new BException(BException.CANCELLED, "");
 				returnException = bex;
 			}
 			else {
@@ -752,7 +761,7 @@ public class HWireClient extends BWire {
 				throw (IOException)e;
 			}
 			else {
-				throw new BException(BException.CANCELED, "", e);
+				throw new BException(BException.CANCELLED, "", e);
 			}
 		}
 		
