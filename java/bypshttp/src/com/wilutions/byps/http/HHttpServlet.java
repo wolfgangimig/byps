@@ -36,8 +36,8 @@ import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BMessageHeader;
 import com.wilutions.byps.BNegotiate;
 import com.wilutions.byps.BProtocol;
-import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BServer;
+import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BSyncResult;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.BWire;
@@ -129,11 +129,10 @@ public abstract class HHttpServlet extends HttpServlet {
         	final long streamId = Long.parseLong(streamIdStr);
 
         	doPutStream(messageId, streamId, request, response);
-        	
-        	return;
         }
-
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        else {
+        	response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
         
 		if (log.isDebugEnabled()) log.debug(")put");
 	}
@@ -318,17 +317,22 @@ public abstract class HHttpServlet extends HttpServlet {
 				   		// Message already canceled?
 				   		if (asyncResponse == null) return;
 				   		
-				   		final BSyncResult<BMessage> syncResponse = HConstants.PROCESS_MESSAGE_ASYNC ? null : new BSyncResult<BMessage>();
-				   		
 			    		try {
 			    			if (HConstants.PROCESS_MESSAGE_ASYNC) NDC.push(hsess.getId());
 			    			
 			    			// ---------- execute Message ------------------
 							final BServer server = sess.getServer();
 							final BTransport transport = server.transport;
-							transport.recv(server, msg, HConstants.PROCESS_MESSAGE_ASYNC ? asyncResponse : syncResponse);
 							
-				    		if (syncResponse != null) {
+							if (HConstants.PROCESS_MESSAGE_ASYNC) {
+						   		transport.recv(server, msg, asyncResponse);
+							}
+							else {
+								
+						   		final BSyncResult<BMessage> syncResponse = new BSyncResult<BMessage>();
+	
+						   		transport.recv(server, msg, syncResponse);
+								
 				    			if (log.isDebugEnabled()) log.debug("wait for result");
 				    			try {
 									BMessage omsg = syncResponse.getResult(HConstants.REQUEST_TIMEOUT_MILLIS);
@@ -338,7 +342,7 @@ public abstract class HHttpServlet extends HttpServlet {
 									if (log.isDebugEnabled()) log.debug("wait for result failed:", e);
 									asyncResponse.setAsyncResult(null, e);
 								}
-				    		}
+							}
 
 						} catch (Throwable e) {
 					    	if (log.isDebugEnabled()) log.debug("Failed to execute.", e);
@@ -364,7 +368,7 @@ public abstract class HHttpServlet extends HttpServlet {
 		    
 		}
 		catch (Throwable e) {
-	    	if (log.isWarnEnabled()) log.warn("Failed to process message.", e);
+	    	if (log.isInfoEnabled()) log.info("Failed to process message.", e);
 			HttpServletResponse resp = rctxt != null ? (HttpServletResponse)rctxt.getResponse() : response; 
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			resp.getWriter().print(e.toString());
@@ -424,7 +428,7 @@ public abstract class HHttpServlet extends HttpServlet {
 					}
 					
 				} catch (Throwable ex) {
-					if (log.isWarnEnabled()) log.warn("Failed to write negotiate result", e);
+					if (log.isInfoEnabled()) log.info("Failed to write negotiate result", e);
 					try {
 						resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 						resp.getWriter().print(e.toString());
@@ -746,7 +750,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
 		}
 		catch (Throwable e) {
-	    	if (log.isWarnEnabled()) log.warn("Failed to process message.", e);
+	    	if (log.isInfoEnabled()) log.info("Failed to process message.", e);
 	    	response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 	    	response.getWriter().print(e.toString());
 	    	response.getWriter().close();
@@ -776,6 +780,36 @@ public abstract class HHttpServlet extends HttpServlet {
 	
 	protected long getHtmlUploadMaxSize() {
 		return -1L;
+	}
+	
+	@Override
+	protected void service(HttpServletRequest arg0, HttpServletResponse arg1)
+			throws ServletException, IOException {
+		if (log.isDebugEnabled()) log.debug("service(");
+		if (log.isDebugEnabled()) {
+			log.debug("method=" + arg0.getMethod());
+			log.debug("params= " + arg0.getParameterMap());
+		}
+		try {
+			super.service(arg0, arg1);
+			int status = arg1.getStatus();
+			if (status != HttpServletResponse.SC_OK) {
+				if (log.isDebugEnabled()) log.debug("Request failed with HTTP status " + status);
+			}
+		}
+		catch (ServletException e) {
+			if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
+			arg1.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		}
+		catch (IOException e) {
+			if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
+			arg1.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		}
+		catch (Throwable e) {
+			if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
+			arg1.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		}
+		if (log.isDebugEnabled()) log.debug(")service");
 	}
 	
 	private final Log log = LogFactory.getLog(HHttpServlet.class);

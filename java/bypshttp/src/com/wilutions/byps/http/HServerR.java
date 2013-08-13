@@ -27,11 +27,9 @@ public class HServerR extends BServerR {
 	@Override
 	public synchronized void start() throws BException {
 		if (log.isDebugEnabled()) log.debug("start(");
-		for (int i = 0; i < Math.max(1, nbOfConns); i++) {
+		for (int i = 0; i < nbOfConns; i++) {
 			sendLongPoll(null);
 		}
-//		currentLongPoll_access_sync = new LongPoll(null);
-//		workerThread.start();
 		if (log.isDebugEnabled()) log.debug(")start");
 	}
 	

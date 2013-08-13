@@ -36,8 +36,10 @@ public class HIncomingStreamSync extends BContentStream {
 	private int secondBytesWritePos;
 	private int secondBytesCapacity = 1000 * 1000; 
 	private FileOutputStream fos;
-	protected boolean writeClosed;
 	protected IOException ex;
+	
+	private volatile boolean writeClosed;
+	private volatile long lastPartId;
 
 	private File tempDir;
 	
@@ -45,6 +47,9 @@ public class HIncomingStreamSync extends BContentStream {
 		super(contentType, contentLength, lifetimeMillis);
 		this.streamId = streamId;
 		this.tempDir = tempDir;
+		if (contentLength > secondBytesCapacity) {
+			bytesSource = FILE_BYTES;
+		}
 	}
 	
 	private HIncomingStreamSync(HIncomingStreamSync rhs) throws FileNotFoundException {
@@ -76,6 +81,15 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	@Override
 	public synchronized long getContentLength() {
+		
+		while (!writeClosed) {
+			try {
+				wait(10*1000);
+			} catch (InterruptedException e) {
+				throw new IllegalStateException("Interrupted", e);
+			}
+		}
+		
 		switch (bytesSource) {
 			case FIRST_BYTES: return (long)firstBytes.length;
 			case SECOND_BYTES: return (long)secondBytesWritePos;
@@ -99,20 +113,43 @@ public class HIncomingStreamSync extends BContentStream {
 		this.writeClosed = true;
 	}
 	
-	public void assignStream(InputStream is) throws BException {
-		if (log.isDebugEnabled()) log.debug("assignStream " + streamId + "(");
+	public void assignStream(InputStream is) throws IOException {
 		byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
 		int len = 0;
-		long sum = 0;
+		
+		while ((len = is.read(bytes)) != -1) {
+			write(bytes, 0, len);
+		}
+
+		this.readPos = 0;
+		this.writeClosed = true;
+	}
+	
+	public void addStream(HRequestContext rctxt, long partId, boolean lastPart) throws BException {
+		if (log.isDebugEnabled()) log.debug("addStream " + streamId + "(partId=" + partId + ", lastPart="  + lastPart);
+		
+		InputStream is = null;
 		try {
-			while ((len = is.read(bytes)) != -1) {
-				write(bytes, 0, len);
-				sum += len;
+			is = rctxt.getRequest().getInputStream();
+
+			if (partId == 0 && lastPartId == 0) {
+				// OK
+			}
+			else if (lastPartId + 1 == partId) {
+				// OK
+				lastPartId = partId;
+			}
+			else {
+				throw new BException(BException.IOERROR, "Unexpected stream part.");
 			}
 			
-			if (contentLength > 0 && sum != contentLength) {
-				throw new IllegalStateException("Wrong stream size, expected=" + contentLength + ", received=" + sum);
+			byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
+			int len = 0;
+			
+			while ((len = is.read(bytes)) != -1) {
+				write(bytes, 0, len);
 			}
+			
 		}
 		catch (Throwable e) {
 			if (log.isDebugEnabled()) log.debug("exception: ", e);
@@ -124,7 +161,11 @@ public class HIncomingStreamSync extends BContentStream {
 			if (is != null) {
 				try { is.close(); }	catch (IOException ignored) {}
 			}
-			writeClose();
+			
+			// Received all bytes?
+			if (lastPart) {
+				writeClose();
+			}
 		}
 		if (log.isDebugEnabled()) log.debug(")assignStream");
 	}
@@ -145,7 +186,15 @@ public class HIncomingStreamSync extends BContentStream {
 	@Override
 	public synchronized BContentStream cloneInputStream() throws IOException {
 		if (log.isDebugEnabled()) log.debug("cloneInputStream(");
-		if (!writeClosed) throw new BException(BException.INTERNAL, "Stream data is not completely available.");
+		
+		while (!writeClosed) {
+			try {
+				wait(10 * 1000);
+			} catch (InterruptedException e) {
+				throw new BException(BException.CANCELLED, "Cannot copy incoming stream", e);
+			}
+		}
+		
 		HIncomingStreamSync is;
 		try {
 			is = new HIncomingStreamSync(this);
@@ -393,11 +442,12 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	public synchronized void writeClose() {
 		if (log.isDebugEnabled()) log.debug("writeClose(");
+		writeClosed = true;
+		
 		if (fos != null) {
 			try { fos.close(); } catch (IOException ignored) {}
 			fos = null;
 		}
-		writeClosed = true;
 		
 		if (log.isDebugEnabled()) log.debug("notify threads waiting for streamId=" + streamId);
 		this.notifyAll();
@@ -423,5 +473,6 @@ public class HIncomingStreamSync extends BContentStream {
 		
 		if (log.isDebugEnabled()) log.debug(")close");
 	}
+
 	
 }

@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -82,7 +83,7 @@ public class TestRemoteStreams {
 		log.info("testRemoteStreamsManyStreams(");
 		int nbOfStreams = 10;
 		
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 100; i++) {
 			internalTestRemoteStreamsManyStreams(nbOfStreams);
 		}
 		
@@ -150,9 +151,19 @@ public class TestRemoteStreams {
 		@Override
 		public int read() throws IOException {
 			if (throwEx) {
+				log.info("throw IOException");
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+				}
 				throw new IOException("Test Exception");
 			}
 			if (throwError) {
+				log.info("throw IllegalStateException");
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+				}
 				throw new IllegalStateException("Test Error");
 			}
 			if (idx < buf.length) {
@@ -194,20 +205,29 @@ public class TestRemoteStreams {
 	}
 
 	protected void internalTestRemoteStreamsClosed() throws RemoteException {
+		if (log.isDebugEnabled()) log.debug("internaltestRemoteStreamsClosed(");
 		int nbOfStreams = 10;
 		Map<Integer, InputStream> mystreams = new TreeMap<Integer, InputStream>();
 		for (int i = 0; i < nbOfStreams; i++) {
-			String str = "" + i;
+			final String str = "" + i;
 			byte[] buf = str.getBytes();
-			MyInputStream mystrm = new MyInputStream(buf, false, false);
+			MyInputStream mystrm = new MyInputStream(buf, false, false) {
+				public String getContentType() {
+					return "strm-" + str;
+				}
+			};
 			mystreams.put(i, mystrm);
 		}
+		
+		if (log.isDebugEnabled()) log.debug("setImages...");
 		remote.setImages(mystreams, 1);
+		if (log.isDebugEnabled()) log.debug("setImages OK");
 		
 		for (int i = 0; i < nbOfStreams; i++) {
 			MyInputStream istrm = (MyInputStream)mystreams.get(i);
 			TestUtils.assertEquals(log, "InputStream["+i+"].isClosed, istrm=" + istrm, true, istrm.isClosed);
 		}
+		if (log.isDebugEnabled()) log.debug(")internaltestRemoteStreamsClosed");
 	}
 	
 
@@ -275,22 +295,11 @@ public class TestRemoteStreams {
 		}
 		catch (BException e) {
 			log.info("setImages ex=" + e + ", OK");
-			String expectedMessage = throwEx ? "Test Exception" : "Test Error";
-			String expectedDetails = throwEx ? "java.io.IOException: Test Exception" : "java.lang.IllegalStateException: Test Error";
-			TestUtils.assertEquals(log, "Exception Code", BException.IOERROR, e.code);
-			TestUtils.assertEquals(log, "Exception Message", expectedMessage, e.msg);
-			TestUtils.assertEquals(log, "Exception Details", expectedDetails, e.details);
-		}
-		
-		// The server must have received an exception too
-		try {
-			log.info("throwLastException...");
-			remote.throwLastException();
-			Assert.fail("Exception from server expected");
-		}
-		catch (BException e) {
-			log.info("throwLastException OK, ex=" + e);
-			TestUtils.assertEquals(log, "Exception Code", BException.IOERROR, e.code);
+			
+			// The exception is an IOERROR, if the exception thrown in the stream is received first.
+			// This exception cancels the message and it might happen, that we receive the CANCELLED
+			// exception from first.
+			TestUtils.assertTrue(log, "Exception Code", e.code == BException.IOERROR || e.code == BException.CANCELLED);
 		}
 		
 		// All streams must have been closed
@@ -327,72 +336,33 @@ public class TestRemoteStreams {
 	public void testRemoteStreamsCloneStream() throws InterruptedException, IOException {
 		log.info("testRemoteStreamsCloneStream(");
 		
-		// Server uses byte array as buffer
-		internalTestCloneStream(1);
-		internalTestCloneStream(0);
-		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER / 2);
-		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER - 1);
-		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER);
-		
-		// Server uses file as buffer
-		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER + 1);
-		internalTestCloneStream(HConstants.INCOMING_STREAM_BUFFER * 2);
-		
+		ArrayList<InputStream> streams = TestUtilsHttp.makeTestStreams();
+		ArrayList<InputStream> streams2 = TestUtilsHttp.makeTestStreams();
+		for (int i = 0; i < streams.size(); i++) {
+			internalTestCloneStream(streams.get(i), streams2.get(i));
+		}
+		 
 		log.info(")testRemoteStreamsCloneStream");
 	}
 
-	protected void internalTestCloneStream(long nbOfBytes) throws BException,
+	protected void internalTestCloneStream(InputStream istrm, InputStream istrm2) throws BException,
 			InterruptedException, IOException {
 		
-		log.info("start upload");
-		InputStream istrm = new TestUtils.MyContentStream(nbOfBytes);
+		log.info("internalTestCloneStream(" + istrm);
 		remote.setImage(istrm);
 		
-		for (int loop = 0; loop < 5; loop++) {
 			
-			// remote.getImage() clones the stream.
-			log.info("start download");
-			InputStream istrmR = remote.getImage();
-			
-			log.info("compare streams");
-			istrm = new TestUtils.MyContentStream(nbOfBytes);
-			TestUtils.assertEquals(log, "stream[" + loop + "]", istrm, istrmR);
-		}
-		
-		remote.setImage(null);
-		TestUtils.checkTempDirEmpty(client);
-
-	}
-
-	
-	/**
-	 * Check that streams larger than 2GB can be transferred.
-	 * @throws InterruptedException 
-	 * @throws IOException 
-	 */
-	@Test
-	public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
-		if (!TestUtils.TEST_LARGE_STREAMS) return;
-		
-		log.info("testRemoteStreamsLargeStream(");
-		
-		long nbOfBytes = 0x100000000L;
-		
-		log.info("start upload");
-		InputStream istrm = new TestUtils.MyContentStream(nbOfBytes);
-		remote.setImage(istrm);
-		
+		// remote.getImage() clones the stream.
 		log.info("start download");
 		InputStream istrmR = remote.getImage();
 		
 		log.info("compare streams");
-		istrm = new TestUtils.MyContentStream(nbOfBytes);
-		TestUtils.assertEquals(log, "", istrm, istrmR);
+		TestUtils.assertEquals(log, "stream", istrm2, istrmR);
 		
 		remote.setImage(null);
 		TestUtils.checkTempDirEmpty(client);
-		
-		log.info(")testRemoteStreamsLargeStream");
+
+		log.info(")internalTestCloneStream");
 	}
 
 	

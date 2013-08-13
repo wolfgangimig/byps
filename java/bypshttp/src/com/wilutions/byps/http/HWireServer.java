@@ -160,6 +160,7 @@ public class HWireServer extends BWire {
 				throw new IllegalStateException(ex);
 			} catch (Throwable ex) {
 				log.error("Failed to write response.", ex);
+				throw new IllegalStateException(ex);
 			}
 			finally {
 				// Alle Streams zur Anfrage müssen geschlossen sein.
@@ -176,18 +177,17 @@ public class HWireServer extends BWire {
 		}
     };
     
-    private boolean writeResponse(Long messageId, ByteBuffer obuf, Throwable e, boolean isAsync) throws IOException {
+    private void writeResponse(Long messageId, ByteBuffer obuf, Throwable e, boolean isAsync) throws IOException {
 		if (log.isDebugEnabled()) log.debug("writeResponse(messageId=" + messageId + ", obuf=" + obuf + ", exception=" + e);
 		HRequestContext rctxt = activeMessages.getAndRemoveRequestContext(messageId);
 		if (log.isDebugEnabled()) log.debug("async context of messageId: " + rctxt);
 		if (rctxt == null) {
 			if (log.isDebugEnabled()) log.debug("No async context for messageId=" + messageId + ", message already written or an exception occured while it was beeing written before.");
-			return false; // das wär ein Fehler
+			throw new IOException("No async context for message, client might already have closed the connection.");
 		}
 		writeHelper.writeResponse(obuf, e, (HttpServletResponse)rctxt.getResponse(), isAsync);
 		rctxt.complete();
 		if (log.isDebugEnabled()) log.debug(")writeResponse");
-		return true;
     }
 	
 	public BAsyncResult<BMessage> addMessage(final BMessageHeader header, HRequestContext rctxt, Thread workerThread) {

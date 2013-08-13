@@ -71,7 +71,10 @@ public class BContentStreamWrapper extends BContentStream {
 	}
 	@Override
 	public void close() throws IOException {
-		ensureStream().close();
+		InputStream is = innerStream;
+		if (is != null) {
+			is.close();
+		}
 	}
 	@Override
 	public void mark(int readlimit) {

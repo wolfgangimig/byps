@@ -1,5 +1,6 @@
 package com.wilutions.byps.http;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -92,29 +93,43 @@ public class HWireClient extends BWire {
 		setSessionContext(cookieManager);
 	}
 	
-	protected static class AsyncResultAfterAllRequests implements BAsyncResult<BMessage> {
+	protected class AsyncResultAfterAllRequests implements BAsyncResult<BMessage> {
 		final BAsyncResult<BMessage> innerResult;
 		final AtomicInteger nbOfOutstandingResults;
+		final long messageId;
 		volatile BMessage result;
 		final AtomicReference<Throwable> ex = new AtomicReference<Throwable>();
 		
-		public AsyncResultAfterAllRequests(BAsyncResult<BMessage> asyncResult, final int nbOfRequests) {
+		public AsyncResultAfterAllRequests(long messageId, BAsyncResult<BMessage> asyncResult, final int nbOfRequests) {
 			this.innerResult = asyncResult;
 			this.nbOfOutstandingResults = new AtomicInteger(nbOfRequests);
+			this.messageId = messageId;
 		}
 
 		@Override
 		public void setAsyncResult(BMessage msg, Throwable e) {
+			if (log.isDebugEnabled()) log.debug("setAsyncResult(msg=" + msg+ ", ex=" + e);
+			boolean cancelMessage = false;
+			
 			if (e != null) {
-				ex.compareAndSet(null, e);
+				cancelMessage = ex.compareAndSet(null, e);
 			}
 			if (msg != null && msg.buf != null) {
+				if (log.isDebugEnabled()) log.debug("set result");
 				this.result = msg;
 			}
 			
 			if (nbOfOutstandingResults.decrementAndGet() == 0) {
+				if (log.isDebugEnabled()) log.debug("innerResult.setAsyncResult(result=" + result + ", ex=" + ex);
 				innerResult.setAsyncResult(result, ex.get());
 			}
+			
+			if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
+			if (cancelMessage) {
+				sendCancelMessage(messageId);
+			}
+			
+			if (log.isDebugEnabled()) log.debug(")setAsyncResult");
 		}
 
 	}
@@ -159,47 +174,41 @@ public class HWireClient extends BWire {
 	}
 	
 	@Override
-	public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult1) {
-		throw new IllegalStateException("putStreams is only for the server side");
+	public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
+		try {
+			for (BStreamRequest stream : streamRequests) {
+				RequestToCancel req = createRequestForPutStream(stream.messageId, stream, asyncResult);
+				executeRequest(req);
+			}
+		}
+		catch (BException e) {
+			asyncResult.setAsyncResult(null, e);
+		}
 	}
 	
 	protected synchronized void internalSendMessageAndStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult, long timeout) {
 		if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
 
-		// Convert the BMessage into single RequestToCancel objects.
-		// One RequestToCancel is created for msg.buf.
-		// For each stream in msg.streams further RequestToCancel objects are created.
-		
-		int nbOfRequests = 1 + (msg.streams != null ? msg.streams.size() : 0);
-		ArrayList<RequestToCancel> requests = new ArrayList<RequestToCancel>(nbOfRequests);
-		
-		// If the BMessage contains streams, the given asyncResult is wrapped into a
-		// BAsyncRequest object that sets the asynchronous result after the message and all streams
-		// have been sent.
-		BAsyncResult<BMessage> outerResult = asyncResult;
-		if (nbOfRequests > 1) {
-			if (log.isDebugEnabled()) log.debug("wrap asyncResult");
-			outerResult = new AsyncResultAfterAllRequests(asyncResult, nbOfRequests);
-		}
-	
-		// Create RequestToCancel for message
-		RequestToCancel req = createRequestForMessage(msg.header.messageId, timeout, msg.buf, outerResult);
-		requests.add(req);
-		
-		// Create RequestToCancel objects for each stream.
-		if (msg.streams != null) {
-			for (BStreamRequest stream : msg.streams) {
-				req = createRequestForPutStream(msg.header.messageId, stream, outerResult);
-				requests.add(req);
-			}
-		}
-
-		// Execute the RequestToCancel objects in the thread pool
-		if (log.isDebugEnabled()) log.debug("put requests into thread pool");
 		try {
-			for (RequestToCancel r : requests) {
-				executeRequest(r);
+			
+			// If the BMessage contains streams, the given asyncResult is wrapped into a
+			// BAsyncRequest object that sets the asynchronous result after the message and all streams
+			// have been sent.
+			BAsyncResult<BMessage> outerResult = asyncResult;
+			if (msg.streams != null && msg.streams.size() != 0) {
+				if (log.isDebugEnabled()) log.debug("wrap asyncResult");
+				outerResult = new AsyncResultAfterAllRequests(msg.header.messageId, asyncResult, msg.streams.size() + 1);
 			}
+		
+			// Create RequestToCancel for message
+			RequestToCancel req = createRequestForMessage(msg.header.messageId, timeout, msg.buf, outerResult);
+			executeRequest(req);
+			
+			// Create RequestToCancel objects for each stream.
+			if (msg.streams != null && msg.streams.size() != 0) {
+				putStreams(msg.streams, outerResult);
+			}
+			
 		}
 		catch (BException e) {
 			asyncResult.setAsyncResult(null, e);
@@ -223,8 +232,8 @@ public class HWireClient extends BWire {
 		if (nbOfStreams != 0) {
 
 			// Send the streams first and then send the message.
-			// If the message would be sent before the streams, 
-			// a timeout happened for the message if it takes 
+			// If the message is sent before the streams, 
+			// a timeout happens for the message if it takes 
 			// more than timeoutMillisRequest to send the streams.
 			
 			// Create an BAsyncResult that sends the message on setAsyncResult
@@ -248,7 +257,7 @@ public class HWireClient extends BWire {
 			};
 
 			// Create requests for each stream
-			BAsyncResult<BMessage> outerResult = new AsyncResultAfterAllRequests(asyncSendMessage, nbOfStreams);
+			BAsyncResult<BMessage> outerResult = new AsyncResultAfterAllRequests(msg.header.messageId, asyncSendMessage, nbOfStreams);
 			for (BStreamRequest stream : msg.streams) {
 				RequestToCancel streamRequest = createRequestForPutStream(msg.header.messageId, stream, outerResult);
 				requests.add(streamRequest);
@@ -484,7 +493,14 @@ public class HWireClient extends BWire {
 				request.throwIfCancelled();
 				
 				InputStream is = null; 
-				try {				
+				int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
+				
+				try {		
+					statusCode = conn.getResponseCode();
+					if (statusCode != HttpURLConnection.HTTP_OK ){
+						throw new IOException("HTTP status " + statusCode);
+					}
+					
 					InputStreamByteCount isbc = null;
 					is = isbc = new InputStreamByteCount(conn.getInputStream());
 	
@@ -515,15 +531,12 @@ public class HWireClient extends BWire {
 				catch (IOException e) {
 					if (log.isDebugEnabled()) log.debug("received exception: " + e);
 					
-					int statusCode = conn.getResponseCode();
-					if (log.isDebugEnabled()) log.debug("Throw HTTP status=" + statusCode);
-
 					is = conn.getErrorStream();
 					if (is != null) {
 						bufferFromStream(is, false);
 					}
 					
-					throw new HException(statusCode);
+					throw new HException(statusCode, e);
 				}
 				finally {
 					if (is != null) {
@@ -571,128 +584,176 @@ public class HWireClient extends BWire {
 		
 		final long messageId = request.streamRequest.messageId;
 		final long streamId = request.streamRequest.streamId; 
-		final InputStream stream = request.streamRequest.strm;
+		final int maxStreamPartLength = 10 * 1000 * 1000; // should be a multiple of CHUNK_SIZE
+		InputStream stream = request.streamRequest.strm;
 		
 		if (log.isDebugEnabled()) log.debug("internalPutStream(messageId=" + messageId + ", streamId=" + streamId + ", stream=" + stream);
 		ByteBuffer obuf = null;
-		HttpURLConnection conn = null;
-		OutputStream os = null;
-		OutputStreamByteCount osbc = null;
 		
 		String contentType = null;
-		long contentLength = -1L;
+		long totalLength = -1L;
 		if (stream instanceof BContentStream) {
 			BContentStream cstream = (BContentStream)stream;
 			contentType = cstream.getContentType();
-			contentLength = cstream.getContentLength();
+			totalLength = cstream.getContentLength();
 		}
+		else if (stream instanceof ByteArrayInputStream) {
+			contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+			totalLength = ((ByteArrayInputStream)stream).available();
+		}
+
+		if (contentType == null || contentType.length() == 0) {
+			contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+		}
+		if (log.isDebugEnabled()) log.debug("Content-Type=" + contentType);
 		
 		Throwable returnException = null;
 		
 		final long beginSendMillis = System.currentTimeMillis();
 		
 		try {
-			final URL url = new URL(surl + "?messageid=" + messageId + "&streamid=" + streamId);
-			if (log.isDebugEnabled()) log.debug("open connection, url=" + url);
+				// Cannot use neither setFixedLengthStreamingMode nor setChunkedStreamMode
+				// due to a concurrency bug in JVM, Bug ID 9005601
+				// Concurrent requests with setFixedLengthStreamingMode or setChunkedStreamMode
+				// cause Socket read timeout exceptions in Tomcat.
 			
-			conn = (HttpURLConnection)url.openConnection();
-			request.setConnection(conn);
-	
-			conn.setConnectTimeout((int)timeoutMillisClient);
-
-			//conn.setUseCaches(false);
-			
-			conn.setDoInput(true);
-			conn.setDoOutput(true);
-			conn.setRequestMethod("PUT");
-
-			if (contentLength >= 0) {
-				conn.setFixedLengthStreamingMode((int)contentLength);
-//				try {
-//					conn.setFixedLengthStreamingMode(contentLength);
-//					if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
-//				}
-//				catch (NoSuchMethodError ignored) { // Java 6
-//					if (contentLength <= Integer.MAX_VALUE) {
-//						conn.setFixedLengthStreamingMode((int)contentLength);
+//				if (contentLength >= 0) {
+//					conn.setFixedLengthStreamingMode((int)contentLength);
+//					try {
+//						conn.setFixedLengthStreamingMode(contentLength);
 //						if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
 //					}
-//					else {
-//						conn.setChunkedStreamingMode(CHUNK_SIZE); 
-//						if (log.isDebugEnabled()) log.debug("Content-Length > 2GB, Java 6 -> Chunked-Encoding");
+//					catch (NoSuchMethodError ignored) { // Java 6
+//						if (contentLength <= Integer.MAX_VALUE) {
+//							conn.setFixedLengthStreamingMode((int)contentLength);
+//							if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
+//						}
+//						else {
+//							conn.setChunkedStreamingMode(CHUNK_SIZE); 
+//							if (log.isDebugEnabled()) log.debug("Content-Length > 2GB, Java 6 -> Chunked-Encoding");
+//						}
 //					}
 //				}
-			}
-			else {
-				if (log.isDebugEnabled()) log.debug("Content-Length < 0 -> Chunked-Encoding");
-				conn.setChunkedStreamingMode(CHUNK_SIZE); // Chunked-Encoding + AsyncServlet erst ab Tomcat 7.0.28: https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
-			}
-			
-			String ct = contentType != null ? contentType : BContentStream.DEFAULT_CONTENT_TYPE;
-			conn.setRequestProperty("Content-Type", ct);
-			if (log.isDebugEnabled()) log.debug("Content-Type=" + ct);
-			
-			applySession(conn);
-			
-			if (log.isDebugEnabled()) log.debug("write to output stream");
-			
-			os = osbc = new OutputStreamByteCount(conn.getOutputStream());			
-			
-			byte[] buf = new byte[CHUNK_SIZE];
-			int len = 0;
-			while ((len = stream.read(buf)) != -1) {
-				os.write(buf, 0, len);
-			}
-			
-			os.flush();
-			os.close();
-			os = null;
-			if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
-			
-			if (contentLength >= 0) {
-				if (contentLength != osbc.sum) {
-					throw new BException(BException.IOERROR, "wrong contentlength written");
-				}
-			}
-
-			if (stats != null) {
-				long endSendMillis = System.currentTimeMillis();
-				synchronized(this) {
-//					stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
-				}
-			}
-			
-			long beginRecvMillis = System.currentTimeMillis();
-
-			request.throwIfCancelled();
-
-			InputStreamByteCount isbc = null;
-			int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
-			try {
-				statusCode = conn.getResponseCode();
-				if (statusCode != HttpURLConnection.HTTP_OK) throw new IOException("HTTP " + statusCode); 
+//				else {
+//					if (log.isDebugEnabled()) log.debug("Content-Length < 0 -> Chunked-Encoding");
+//					conn.setChunkedStreamingMode(CHUNK_SIZE); // Chunked-Encoding + AsyncServlet erst ab Tomcat 7.0.28: https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
+//				}
 				
-				InputStream isResp = isbc = new InputStreamByteCount(conn.getInputStream());
-				String enc = conn.getHeaderField("Content-Encoding");
-				boolean gzip = enc != null && enc.equals("gzip");
-				obuf = bufferFromStream(isResp, gzip); // closes isResp
-				if (log.isDebugEnabled()) log.debug("received #bytes=" + obuf.remaining());
-			}
-			catch (IOException e) {
-				if (log.isDebugEnabled()) log.debug("Failed to read response", e);
-				InputStream errStrm = conn.getErrorStream();
-				bufferFromStream(errStrm, false);
-				
-				throw new BException(BException.IOERROR, "HTTP " + statusCode);
-			}
-
-			if (stats != null) {
-				long endRecvMillis = System.currentTimeMillis();
-				synchronized(this) {
-					stats.addRecvData(isbc.sum, endRecvMillis-beginRecvMillis);
+			
+			// Compute number of stream parts
+			long nbOfParts = 1; 
+			if (totalLength > 0) {
+				nbOfParts = totalLength / maxStreamPartLength;
+				if ((totalLength % maxStreamPartLength) != 0) {
+					nbOfParts++;
 				}
+				if (log.isDebugEnabled()) log.debug("send stream in #parts=" + nbOfParts);
+			}
+			else if (totalLength < 0) {
+				nbOfParts = Long.MAX_VALUE;
 			}
 			
+			boolean lastPart = false;
+			
+			for (long partId = 0; partId < nbOfParts && !lastPart; partId++) {
+				
+				if (request.isCanceled()) {
+					if (log.isDebugEnabled()) log.debug("request is cancelled.");
+					break;
+				}
+				
+				byte[] buf = new byte[CHUNK_SIZE];
+				int len = stream.read(buf, 0, buf.length);
+				
+				if (totalLength >= 0) {
+					lastPart = partId == nbOfParts-1;
+				}
+				else {
+					lastPart = len < CHUNK_SIZE;
+				}
+				
+				StringBuilder burl = new StringBuilder();
+				burl.append(surl)
+					.append("?messageid=").append(messageId)
+					.append("&streamid=").append(streamId)
+					.append("&partid=").append(partId)
+					.append("&last=").append(lastPart)
+					.append("&total=").append(totalLength);
+					
+				final URL url = new URL(burl.toString());
+				if (log.isDebugEnabled()) log.debug("open connection, url=" + url);
+				
+				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+				OutputStream os = null;
+				OutputStreamByteCount osbc = null;
+				
+				request.setConnection(conn);
+		
+				conn.setConnectTimeout((int)timeoutMillisClient);
+	
+				conn.setDoInput(true);
+				conn.setDoOutput(true);
+				conn.setRequestMethod("PUT");
+				conn.setRequestProperty("Content-Type", contentType);
+				
+				applySession(conn);
+				
+				if (log.isDebugEnabled()) log.debug("write to output stream");
+				
+				os = osbc = new OutputStreamByteCount(conn.getOutputStream());			
+				
+				long sum = 0;
+				while (len != -1) {
+					os.write(buf, 0, len);
+					sum += len;
+					if (sum >= maxStreamPartLength) break;
+					len = stream.read(buf, 0, buf.length);
+				}
+				
+				os.flush();
+				os.close();
+				os = null;
+				if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
+				
+				if (stats != null) {
+					long endSendMillis = System.currentTimeMillis();
+					synchronized(this) {
+						stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
+					}
+				}
+				
+				long beginRecvMillis = System.currentTimeMillis();
+	
+				request.throwIfCancelled();
+	
+				InputStreamByteCount isbc = null;
+				int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
+				try {
+					statusCode = conn.getResponseCode();
+					if (statusCode != HttpURLConnection.HTTP_OK) {
+						throw new IOException("HTTP " + statusCode); 
+					}
+					
+					InputStream isResp = isbc = new InputStreamByteCount(conn.getInputStream());
+					obuf = bufferFromStream(isResp, false); // closes isResp
+					if (log.isDebugEnabled()) log.debug("received #bytes=" + obuf.remaining());
+				}
+				catch (IOException e) {
+					if (log.isDebugEnabled()) log.debug("Failed to read response", e);
+					InputStream errStrm = conn.getErrorStream();
+					bufferFromStream(errStrm, false);
+					
+					throw new BException(BException.IOERROR, "HTTP " + statusCode, e);
+				}
+	
+				if (stats != null) {
+					long endRecvMillis = System.currentTimeMillis();
+					synchronized(this) {
+						stats.addRecvData(isbc.sum, endRecvMillis-beginRecvMillis);
+					}
+				}
+				
+			}
 		}
 		catch (BException e) {
 			// thrown in RequestToCancel.setConnection
@@ -711,15 +772,6 @@ public class HWireClient extends BWire {
 			}
 		}
 		finally {
-			
-			// The POST stream os is non-null at this point, if an error 
-			// occurred while data was sent. If we would close the stream here,
-			// the server would not be informed about this error state. 
-			// conn.disconnect will close the stream and the server receives a "java.io.IOException: Invalid chunk header".
-//			if (os != null) {
-//				if (log.isDebugEnabled()) log.debug("close POST stream");
-//				try { os.close(); } catch (IOException ignored) {}
-//			}
 			
 			if (stream != null) {
 				if (log.isDebugEnabled()) log.debug("close stream, messageId=" + messageId + ", streamId=" + streamId + ", stream=" + stream);

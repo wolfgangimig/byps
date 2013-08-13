@@ -58,23 +58,28 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	@Override
 	public void close() throws IOException {
-		if (log.isDebugEnabled()) log.debug("close(");
+		if (log.isDebugEnabled()) log.debug("close(streamId=" + streamId);
 		
 		boolean alreadyClosed = closed.getAndSet(true);
 		if (log.isDebugEnabled()) log.debug("alreadyClosed=" + alreadyClosed);
-		if (alreadyClosed) {
-			if (log.isDebugEnabled()) log.debug(")close");
-			return;
+		if (!alreadyClosed) {
+		
+			if (log.isDebugEnabled()) log.debug("complete AsyncContext of streamId=" + streamId + " with status=" + HttpServletResponse.SC_OK);
+			
+			// The stream data must be completely read.
+			// Otherwise the data remains in the socket and 
+			// disturbs the next request.
+			int c = 0;
+			while ((c = is.read()) != -1) {
+				if (log.isDebugEnabled()) log.debug("read before close, " + (char)c);
+			}
+			is.close();
+			
+			HttpServletResponse response = (HttpServletResponse)rctxt.getResponse();
+			response.getOutputStream().close();
+			response.setStatus(HttpServletResponse.SC_OK);
+			rctxt.complete();
 		}
-		
-		is.close();
-		
-		if (log.isDebugEnabled()) log.debug("complete AsyncContext with status=" + HttpServletResponse.SC_OK);
-		HttpServletResponse response = (HttpServletResponse)rctxt.getResponse();
-		response.setStatus(HttpServletResponse.SC_OK);
-		response.getOutputStream().close();
-		rctxt.complete();
-		
 		if (log.isDebugEnabled()) log.debug(")close");
 	}
 	

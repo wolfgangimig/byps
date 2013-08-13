@@ -179,8 +179,14 @@ public class TestUtils {
 	
 	public static void assertTrue(Log log, String msg, boolean val) {
 		if (!val) {
+			log.error(msg);
 			throw new AssertionError(msg);
 		}
+	}
+	
+	public static void fail(Log log, String msg) {
+		log.error(msg);
+		throw new AssertionError(msg);
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -566,10 +572,13 @@ public class TestUtils {
 	}
 	
 	public static class MyContentStream extends BContentStream {
-		private long pos, nbOfBytes;
+		private long pos;
+		private final long nbOfBytes;
+		private final boolean chunked;
 		
-		public MyContentStream(long nbOfBytes) {
+		public MyContentStream(long nbOfBytes, boolean chunked) {
 			this.nbOfBytes = nbOfBytes;
+			this.chunked = chunked;
 		}
 
 		@Override
@@ -578,16 +587,22 @@ public class TestUtils {
 				return -1;
 			}
 			else {
-				return (int)(pos++ & 0xFF);
+				int ret = (int)(pos++ & 0xFF);
+				if ((ret % 5) == 0) ret = 0; 
+				return ret;
 			}
 		}
 		
 		public String getContentType() {
-			return "application/byps-" + (nbOfBytes % 3L);
+			return "application/byps-" + nbOfBytes;
 		}
 		
 		public long getContentLength() {
-			return nbOfBytes;
+			return chunked ? -1L : nbOfBytes;
+		}
+		
+		public String toString() {
+			return "[contentLength=" + getContentLength() + ", contentType=" + getContentType() + "]"; 
 		}
 	}
 
@@ -597,7 +612,9 @@ public class TestUtils {
 			if (rstrm instanceof BContentStream) {
 				BContentStream rcs = (BContentStream)rstrm;
 				assertEquals(log, msg + ".contentType", ecs.getContentType(), rcs.getContentType());
-				assertEquals(log, msg + ".contentLength", ecs.getContentLength(), rcs.getContentLength());
+				if (ecs.getContentLength() != -1) {
+					assertEquals(log, msg + ".contentLength", ecs.getContentLength(), rcs.getContentLength());
+				}
 			}
 		}
 		
@@ -620,7 +637,7 @@ public class TestUtils {
                 while (n2 < n)
                 {
                     int n3 = rstrm.read(rbuf, n2, n - n2);
-                    Assert.assertTrue(n3 > 0);
+                    TestUtils.assertTrue(log, "Unexpected end of stream", n3 > 0);
                     n2 += n3;
                 }
 

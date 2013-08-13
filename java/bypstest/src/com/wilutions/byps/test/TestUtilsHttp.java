@@ -64,7 +64,7 @@ public class TestUtilsHttp {
 		myDesc.addRegistry(registry);
 
 		BWire wire = new HWireClient(url, flags, 600, tpool);
-		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 3); 
+		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 1); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 
@@ -95,14 +95,22 @@ public class TestUtilsHttp {
 	public static ArrayList<InputStream> makeTestStreams() throws IOException {
 		log.info("makeTestStreams(");
 		ArrayList<InputStream> ret = new ArrayList<InputStream>();
-		ret.add(new TestUtils.MyContentStream(0));
-		ret.add(new TestUtils.MyContentStream(1));
-		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER-1));
-		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER));
-		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1));
-		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, true));
+		ret.add(new TestUtils.MyContentStream(0, true));
+		ret.add(new TestUtils.MyContentStream(1, true));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER-1, true));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER, true));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1, true));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2, true));
+		ret.add(new TestUtils.MyContentStream(0, false));
+		ret.add(new TestUtils.MyContentStream(1, false));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER-1, false));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER, false));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1, false));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2, false));
+		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, false));
 		if (TestUtils.TEST_LARGE_STREAMS) {
-			ret.add(new TestUtils.MyContentStream(3L * 1000L * 1000L * 1000L));
+			ret.add(new TestUtils.MyContentStream(0x100000000L, false));
 		}
 		log.info(")makeTestStreams=" + ret);
 		return ret;
