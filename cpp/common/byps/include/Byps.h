@@ -163,7 +163,7 @@ typedef byps_ptr<BContentStream> PContentStream;
 #include "BContentStream.h"
 #include "BTestAdapter.h"
 #include "BThreadPool.h"
-
+#include "BUtils.h"
 
 
 #endif

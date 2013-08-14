@@ -1,9 +1,10 @@
 
 #include "TestUtilHttp.h"
+#include <string.h>
 
 #undef min
 
-static std::wstring url = L"http://localhost:6080/bypstest-srv/bypsservlet";
+static std::wstring url = L"http://localhost:8080/bypstest-srv/bypsservlet";
 
 using namespace com::wilutions::byps;
 using namespace com::wilutions::byps::http;
@@ -17,8 +18,6 @@ PClient_Testser TestUtilHttp::createClient() {
 	PTransportFactory transportFactory(new HTransportFactoryClient(apiDesc, wire, 2));
 
 	PClient_Testser client = BClient_Testser::createClient(transportFactory);
-
-	com::wilutions::byps::PTransport transport(client->transport);
 
 	client->start();
 	

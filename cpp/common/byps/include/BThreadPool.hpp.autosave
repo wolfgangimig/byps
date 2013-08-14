@@ -169,7 +169,7 @@ public:
 BINLINE PThreadPool BThreadPool::create(int maxThreads) {
 	PThreadPoolImpl tpool(new BThreadPoolImpl(maxThreads));
 	return tpool;
-};
+}
 
 
 

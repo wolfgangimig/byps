@@ -14,6 +14,11 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+BINLINE BNegotiate::BNegotiate(PApiDescriptor apiDesc) {
+    version = 0;
+	protocols = apiDesc->getProtocolIds();
+}
+
 BINLINE BNegotiate::BNegotiate() {
     version = 0;
 }
@@ -21,7 +26,7 @@ BINLINE BNegotiate::BNegotiate() {
 BINLINE void BNegotiate::write(const PBytes& bytes) {
 	std::stringstream ss;
     ss	<< NEGOTIATE_MAGIC_DOUBLE_QUOTES << ",\""
-		<< NEGOTIATE_BINARY_STREAM << "\","
+		<< protocols << "\","
         << version << ",\""
         << ((BByteOrder::getMyEndian() == BLITTLE_ENDIAN) ? "L" : "B")
 		<< "\", \"\"]";

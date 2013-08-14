@@ -11,4 +11,8 @@
 #include "platform/win/WinHttpClient.hpp"
 #endif
 
+#ifdef QT_NETWORK_LIB
+#include "platform/qt/QTHttpClient.hpp"
+#endif
+
 #endif

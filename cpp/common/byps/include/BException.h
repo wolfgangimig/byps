@@ -25,7 +25,7 @@ const int32_t EX_EXECUTION = 9;
 const int32_t EX_REMOTE = 10;
 const int32_t EX_SERVICE_NOT_IMPLEMENTED = 11; // Server bietet diesen Service (Remote) nicht an.
 const int32_t EX_GENERATOR_EXCEPTION = 1000;
-const int32_t EX_CANCELED = 100;
+const int32_t EX_CANCELLED = 100;
 const int32_t EX_TIMEOUT = 13;
 const int32_t EX_IOERROR = 14;
 const int32_t EX_UNSUPPORTED_METHOD = 17;
@@ -59,9 +59,13 @@ public:
 
 	virtual ~BException() throw() {}
 
-	operator bool() {
+    operator bool() const {
 		return code != 0;
 	}
+
+    bool operator !() const {
+        return code == 0;
+    }
 
     int32_t getCode() const {
         return code;

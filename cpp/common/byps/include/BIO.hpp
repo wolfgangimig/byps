@@ -7,7 +7,7 @@ namespace com { namespace wilutions { namespace byps {
 
 BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, int32_t negotiatedVersion, BByteOrder negotiatedByteOrder)
     : transport(transport)
-    , registry(transport->apiDesc->registry)
+    , registry(transport->apiDesc->getRegistry(bmodel))
     , is_loading(false)
     , header(BMAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder, transport->wire->makeMessageId())
     , bbuf(bmodel, negotiatedByteOrder) {
@@ -16,7 +16,7 @@ BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, int32_t negot
 
 BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, PBytes& pBytes, BMessageHeader header)
     : transport(transport)
-    , registry(transport->apiDesc->registry)
+    , registry(transport->apiDesc->getRegistry(bmodel))
     , is_loading(true)
     , header(header)
     , bbuf(bmodel, pBytes, header.byteOrder) {

@@ -1,6 +1,10 @@
 ﻿
 #include "AllTests.h"
+
+// only used for testing serialization performance in testRemoteArrayTypes1dimPerformance
 #include "Testser-impl.h"
+
+#include <string.h>
 
 
 using namespace com::wilutions::byps;

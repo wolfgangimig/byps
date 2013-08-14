@@ -4343,7 +4343,6 @@ using namespace com::wilutions::byps;
 
 class BApiDescriptor_Testser { 
 	public: const static int32_t VERSION = 791;
-	public: static BBinaryModel BMODEL() { return BBinaryModel::MEDIUM(); }
 	public: static PApiDescriptor instance();
 };
 

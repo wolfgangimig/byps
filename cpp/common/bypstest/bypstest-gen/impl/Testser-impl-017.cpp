@@ -5,14 +5,13 @@ using namespace com::wilutions::byps;
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
 PApiDescriptor BApiDescriptor_Testser::instance() {
-	return PApiDescriptor(new BApiDescriptor(
+	return PApiDescriptor((new BApiDescriptor(
 	"Testser",
 	"com.wilutions.byps.test.api",
-	BMODEL(),
 	VERSION,
-	false,
-	PRegistry(new BRegistry_Testser())
-	));
+	false)) // uniqueObjects
+	->addRegistry(PRegistry(new BRegistry_Testser()))
+	);
 };
 
 }}}}}

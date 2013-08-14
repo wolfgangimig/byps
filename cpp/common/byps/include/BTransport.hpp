@@ -21,7 +21,7 @@ BINLINE POutput BTransport::getOutput() {
     if (!protocol) throw BException(EX_INTERNAL, L"No protocol negotiated.");
 	
 	PTransport pthis = shared_from_this();
-	if (!pthis) throw BException(EX_CANCELED);
+	if (!pthis) throw BException(EX_CANCELLED);
 
     return protocol->getOutput(pthis, BMessageHeader());
 }
@@ -31,7 +31,7 @@ BINLINE POutput BTransport::getResponse(BMessageHeader& requestHeader) {
     if (!protocol) throw BException(EX_INTERNAL, L"No protocol negotiated.");
 
 	PTransport pthis = shared_from_this();
-	if (!pthis) throw BException(EX_CANCELED);
+	if (!pthis) throw BException(EX_CANCELLED);
 
 	BMessageHeader responseHeader(requestHeader);
 	responseHeader.flags |= BHEADER_FLAG_RESPONSE;
@@ -134,7 +134,7 @@ BINLINE void BTransport::negotiateProtocolClient(PAsyncResult asyncResult) {
 	if (!pthis) return;
 
 	PBytes bytes = BBytes::create(NEGOTIATE_MAX_SIZE);
-	BNegotiate nego;
+	BNegotiate nego(apiDesc);
     nego.version = apiDesc->version;
     nego.write(bytes);
 
@@ -181,10 +181,10 @@ BINLINE PProtocol BTransport::createNegotiatedProtocol(BNegotiate& nego) {
 		throw BException(EX_CORRUPT, L"Protocol negotiation failed. Cannot detect protocol.");
 	}
 
-    if (nego.protocols.find(NEGOTIATE_BINARY_STREAM) != std::string::npos) {
+    if (nego.protocols.find(BBinaryModel::MEDIUM().getProtocolId()) != std::string::npos) {
         int32_t negotiatedVersion = std::min(nego.version, apiDesc->version);
         protocol = PProtocol(new BProtocol(apiDesc, negotiatedVersion, nego.byteOrder));
-        nego.protocols = std::string(1, NEGOTIATE_BINARY_STREAM);
+        nego.protocols = BBinaryModel::MEDIUM().getProtocolId();
         nego.version = negotiatedVersion;
 	}
 	else {
@@ -200,7 +200,7 @@ BINLINE PProtocol BTransport::detectProtocolFromInputBuffer(const PBytes&) {
 BINLINE void BTransport::send(const PSerializable& obj, PAsyncResult asyncResult) {
 
 	PTransport pthis = shared_from_this();
-	if (!pthis) throw BException(EX_CANCELED);
+	if (!pthis) throw BException(EX_CANCELLED);
 
 	try {
         POutput outp = getOutput();

@@ -8,9 +8,6 @@ namespace com { namespace wilutions { namespace byps {
 
 #define NEGOTIATE_MAGIC_DOUBLE_QUOTES "[\"N\""
 
-#define NEGOTIATE_BINARY_STREAM 'S'
-
-
 
 // Maximum size of negotiate message
 const size_t NEGOTIATE_MAX_SIZE = 50;
@@ -26,6 +23,7 @@ public:
     BTargetId targetId;
 
 	BNegotiate();
+	BNegotiate(PApiDescriptor apiDesc);
     void write(const PBytes& bytes);
     void read(const PBytes& bytes);
     static bool isNegotiateMessage(PBytes bytes);

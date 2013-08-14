@@ -4,8 +4,11 @@
 #include "TestBase.h"
 #include "TestUtilHttp.h"
 #include "TestUtils.h"
+#include "BLogger.h"
 
 using namespace com::wilutions::test;
+
+void AllTests_run();
 
 TestCase* TestRemoteServerR_create();
 TestCase* TestRemoteStreams_create();

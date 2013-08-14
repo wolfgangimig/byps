@@ -20,9 +20,14 @@ typedef byps_ptr<HHttpClient> PHttpClient;
 #include "HTransportFactoryClient.h"
 #include "HHttpClient.h"
 
+#ifdef QT_NETWORK_LIB
 
-#ifdef _MSC_VER
+#include "platform/qt/QTHttpClient.h"
+
+#elif _MSC_VER
+
 #include "platform/win/WinHttpClient.h"
+
 #endif
 
 #endif

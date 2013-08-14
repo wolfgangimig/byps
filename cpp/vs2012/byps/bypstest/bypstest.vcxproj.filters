@@ -155,5 +155,8 @@
     <ClCompile Include="..\..\..\common\bypstest\TestUtils.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\AllTests.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

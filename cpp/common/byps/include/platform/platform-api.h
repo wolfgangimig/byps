@@ -12,6 +12,7 @@
 #include <memory>
 
 #define byps_ptr std::shared_ptr
+#define byps_weak_ptr std::weak_ptr
 #define byps_ptr_cast std::dynamic_pointer_cast
 #define byps_static_ptr_cast std::static_pointer_cast
 #define byps_enable_shared_from_this std::enable_shared_from_this
@@ -50,6 +51,7 @@ inline struct tm* byps_localtime(struct tm* buf, const std::time_t* t) {
 #include <memory>
 
 #define byps_ptr std::shared_ptr
+#define byps_weak_ptr std::weak_ptr
 #define byps_ptr_cast std::dynamic_pointer_cast
 #define byps_static_ptr_cast std::static_pointer_cast
 #define byps_enable_shared_from_this std::enable_shared_from_this
@@ -89,6 +91,7 @@ inline struct tm* byps_localtime(struct tm* buf, const std::time_t* t) {
 #endif
 
 #define byps_ptr boost::shared_ptr
+#define byps_weak_ptr boost::weak_ptr
 #define byps_ptr_cast boost::dynamic_pointer_cast
 #define byps_static_ptr_cast boost::static_pointer_cast
 #define byps_enable_shared_from_this boost::enable_shared_from_this

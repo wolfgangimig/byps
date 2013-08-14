@@ -34,6 +34,10 @@ public:
 		m_nPacking = rhs.m_nPacking;
 	}
 
+	std::string getProtocolId() {
+		return std::string("S");
+	}
+
 private:
 	BBinaryModel(int32_t nPointerSize, int32_t nTypeIdSize, int32_t nLengthSize, int32_t nPacking)
 	: m_nPointerSize(nPointerSize), m_nTypeIdSize(nTypeIdSize), m_nLengthSize(nLengthSize), m_nPacking(nPacking) {

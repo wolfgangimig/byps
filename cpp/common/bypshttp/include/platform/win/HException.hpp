@@ -111,6 +111,12 @@ BINLINE LPCWSTR HException::getWinHttpErrorMessage(DWORD err) {
 BINLINE HException::HException(LPCWSTR fnctName, DWORD err) 
 	: BException(EX_IOERROR) {
 
+	switch(err) {
+	case ERROR_WINHTTP_TIMEOUT : code = EX_TIMEOUT; break;
+	case ERROR_WINHTTP_OPERATION_CANCELLED : code = EX_CANCELLED; break;
+	default : code = EX_IOERROR;
+	}
+
 	{
 		std::wstringstream ss;
 		ss << L"HTTP communication error";

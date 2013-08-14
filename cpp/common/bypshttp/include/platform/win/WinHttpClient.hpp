@@ -27,8 +27,6 @@ typedef byps_ptr<WinHttpPost> PWinHttpPost;
 class WinHttpPut;
 typedef byps_ptr<WinHttpPut> PWinHttpPut;
 
-class RequestMap;
-typedef byps_ptr<RequestMap> PRequestMap;
 
 class WinHttpRequest : public virtual HHttpRequest, public byps_enable_shared_from_this<WinHttpRequest> {
 protected:
@@ -308,12 +306,12 @@ public:
 	}
 };
 
-class MyContentStream : public BContentStream {
-	PWinHttpGet pThis;
+class GetRequestContentStream : public BContentStream {
+	PWinHttpGet request;
 public:
-	MyContentStream(PWinHttpGet pThis) : pThis(pThis) {
+	GetRequestContentStream(PWinHttpGet request) : request(request) {
 	};
-	virtual ~MyContentStream();
+	virtual ~GetRequestContentStream();
 	virtual const std::wstring& getContentType() const;
 	virtual int64_t getContentLength() const;
 	virtual int32_t read(char* buf, int32_t offs, int32_t len);
@@ -331,7 +329,7 @@ class WinHttpGet : public HHttpGet, public virtual WinHttpRequest {
 	byps_condition_variable waitForWriteComplete;
 	byps_condition_variable waitForSendComplete;
 
-	friend class MyContentStream;
+	friend class GetRequestContentStream;
 
 public:
 	WinHttpGet(HINTERNET hRequest, const std::wstring& url) 
@@ -414,67 +412,66 @@ public:
 		}
 
 		byps_ptr<WinHttpRequest> pRequest = shared_from_this();
-		PContentStream stream = PContentStream(new MyContentStream(byps_ptr_cast<WinHttpGet>(pRequest)));
+		PContentStream stream = PContentStream(new GetRequestContentStream(byps_ptr_cast<WinHttpGet>(pRequest)));
 		return stream;
 	}
 };
 
-BINLINE MyContentStream::~MyContentStream() {
-	pThis->close();
+BINLINE GetRequestContentStream::~GetRequestContentStream() {
+	request->close();
 }
 
-BINLINE const std::wstring& MyContentStream::getContentType() const { 
-	byps_unique_lock lock(pThis->mutex);
-	if (pThis->ex) throw pThis->ex;
-	pThis->waitForHeadersAvailable.wait(lock, [this](){ return pThis->statusCode != 0; });
-	return pThis->contentType; 
+BINLINE const std::wstring& GetRequestContentStream::getContentType() const { 
+	byps_unique_lock lock(request->mutex);
+	if (request->ex) throw request->ex;
+	request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
+	return request->contentType; 
 }
 
-BINLINE int64_t MyContentStream::getContentLength() const {
-	byps_unique_lock lock(pThis->mutex);
-	if (pThis->ex) throw pThis->ex;
-	pThis->waitForHeadersAvailable.wait(lock, [this](){ return pThis->statusCode != 0; });
-	return pThis->contentLength; 
+BINLINE int64_t GetRequestContentStream::getContentLength() const {
+	byps_unique_lock lock(request->mutex);
+	if (request->ex) throw request->ex;
+	request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
+	return request->contentLength; 
 }
 
-BINLINE int32_t MyContentStream::read(char* buffer, int32_t offs, int32_t len) {
-	byps_unique_lock lock(pThis->mutex);
-	if (pThis->ex) throw pThis->ex;
+BINLINE int32_t GetRequestContentStream::read(char* buffer, int32_t offs, int32_t len) {
+	byps_unique_lock lock(request->mutex);
+	if (request->ex) throw request->ex;
 
 	int32_t ret = -1;
 
-	// specify a timeout, thanks to the c++11 gurus: it couldn't be more complex to specify some milliseconds
-	std::chrono::duration<int,std::milli> timeout(100 * 1000);
+	std::chrono::milliseconds timeout(100 * 1000);
 
-	if (pThis->waitForReadComplete.wait_for(lock, timeout, [this](){ 
-			return pThis->ex || pThis->bufferLimit < 0 || pThis->bufferPos < pThis->bufferLimit; 
+	if (request->waitForReadComplete.wait_for(lock, timeout, [this](){ 
+			return request->ex || request->bufferLimit < 0 || request->bufferPos < request->bufferLimit; 
 		}) 
 			== std::cv_status::timeout) {
 
-		pThis->ex = BException(EX_TIMEOUT, L"Read timeout");
-		throw pThis->ex;
+		request->ex = BException(EX_TIMEOUT, L"Read timeout");
+		throw request->ex;
 	}
 
-	if (pThis->ex) {
-		throw pThis->ex;
+	if (request->ex) {
+		throw request->ex;
 	}
-	else if (pThis->bufferLimit < 0) {
+	else if (request->bufferLimit < 0) {
 		// End of stream
 	}
 	else {
 
-		if (pThis->bufferPos > pThis->bufferLimit) {
+		if (request->bufferPos > request->bufferLimit) {
 			BException ex(EX_INTERNAL, L"Illegal state in WinHttpClient::ContentStream::readData");
-			throw pThis->ex;
+			throw request->ex;
 		}
 
-		ret = std::min(pThis->bufferLimit - pThis->bufferPos, len);
-		memcpy(buffer + offs, pThis->buffer + pThis->bufferPos, ret);
+		ret = std::min(request->bufferLimit - request->bufferPos, len);
+		memcpy(buffer + offs, request->buffer + request->bufferPos, ret);
 		
-		pThis->bufferPos += ret;
+		request->bufferPos += ret;
 
-		if (pThis->bufferPos == pThis->bufferLimit) {
-			pThis->waitForWriteComplete.notify_one();
+		if (request->bufferPos == request->bufferLimit) {
+			request->waitForWriteComplete.notify_one();
 		}
 	}
 

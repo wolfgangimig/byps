@@ -94,4 +94,6 @@ HEADERS += \
     ../../common/byps/include/platform/platform-api.h \
     ../../common/byps/include/platform/msvc_x86_x64.h \
     ../../common/byps/include/platform/gcc_x86_x64.h \
-    ../../common/byps/include/platform/any.h
+    ../../common/byps/include/platform/any.h \
+    ../../common/byps/include/BThreadPool.hpp \
+    ../../common/byps/include/BThreadPool.h

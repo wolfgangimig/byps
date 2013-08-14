@@ -11,17 +11,30 @@ class BApiDescriptor {
 public:
     const std::string name;
     const std::string pack;
-    const BBinaryModel bmodel;
     const int32_t version;
     const bool uniqueObjects;
-    const PRegistry registry;
-
+    
     BApiDescriptor(const std::string& name, const std::string& package,
-            const BBinaryModel& bmodel, 
-			int32_t version, bool uniqueObjects, PRegistry registry)
-    :  name(name), pack(package), bmodel(bmodel), version(version), uniqueObjects(uniqueObjects), registry(registry) {
+			int32_t version, bool uniqueObjects)
+    :  name(name), pack(package), version(version), uniqueObjects(uniqueObjects) {
 		
 	}
+
+	BApiDescriptor* addRegistry(PRegistry reg) {
+		this->registry = reg;
+		return this;
+	}
+
+	std::string getProtocolIds() {
+		return std::string("S");
+	}
+
+	PRegistry getRegistry(BBinaryModel ) {
+		return registry;
+	}
+
+protected:
+	PRegistry registry;
 
 };
 

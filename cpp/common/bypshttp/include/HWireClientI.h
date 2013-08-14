@@ -35,12 +35,14 @@ private:
 
 class HWireClient_AsyncResultAfterAllRequests : public BAsyncResult {
 public:
-    HWireClient_AsyncResultAfterAllRequests(PThreadPool tpool, PAsyncResult innerResult, size_t nbOfRequests);
+    HWireClient_AsyncResultAfterAllRequests(byps_ptr<HWireClient> wire, PThreadPool tpool, int64_t messageId, PAsyncResult innerResult, size_t nbOfRequests);
 	virtual ~HWireClient_AsyncResultAfterAllRequests() {}
     virtual void setAsyncResult(const BVariant& obj);
 
 private:
+	byps_weak_ptr<HWireClient> wire;
 	PThreadPool tpool;
+	int64_t messageId;
     PAsyncResult innerResult;
     size_t nbOfRequests;
     byps_mutex mutex;

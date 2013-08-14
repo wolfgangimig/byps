@@ -13,17 +13,21 @@ class HServerR_SendLongPoll;
 typedef byps_ptr<HServerR_SendLongPoll> PServerR_SendLongPoll;
 
 class HServerR_SendLongPoll {
-public:
+
 	byps_mutex mutex;
 	byps_condition_variable serverFinished;
 	bool isDone;
 	int32_t sleepMillisBeforeRetry;
+	byps_atomic<int32_t> nbOfActiveLongPolls;
+	
 
-	HServerR_SendLongPoll() : isDone(false), sleepMillisBeforeRetry(60 * 1000) {}
+public:
+
+	HServerR_SendLongPoll() : isDone(false), sleepMillisBeforeRetry(60 * 1000), nbOfActiveLongPolls(0) {}
 
 	bool checkDoneMaybeWait() {
 		byps_unique_lock lock(mutex);
-		std::chrono::duration<int32_t,std::milli> timeout(sleepMillisBeforeRetry);
+		std::chrono::milliseconds timeout(sleepMillisBeforeRetry);
 		return serverFinished.wait_for(lock, timeout, [this]() { return isDone; });
 	}
 
@@ -79,9 +83,11 @@ class HServerR_LongPoll {
 		virtual void setAsyncResult(const BVariant& varmsg) {
 			bool failed = varmsg.isException();
 			if (failed) {
-				bool isTimeout = varmsg.getException().toString().find(L"HTTP 408") != std::wstring::npos; // HTTP Request Timeout: 408
-				if (isTimeout || !sendLongPoll->checkDoneMaybeWait()) {
-					HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
+				BException ex = varmsg.getException();
+				if (ex.getCode() != EX_CANCELLED) {
+					if (ex.getCode() == EX_TIMEOUT || !sendLongPoll->checkDoneMaybeWait()) {
+						HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
+					}
 				}
 			}
 			else {
@@ -91,6 +97,7 @@ class HServerR_LongPoll {
 				NextAsyncResult* asyncResult = new NextAsyncResult(sendLongPoll, transport, server);
 				transport->recv(server, msg, asyncResult);
 			}
+
 			delete this;
 		}
 	};
@@ -100,6 +107,7 @@ public:
 	
 	HServerR_LongPoll(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server, PMessage methodResult) 
 		: sendLongPoll(sendLongPoll), transport(transport), server(server), methodResult(methodResult) {
+					
 		if (!methodResult) {
 			POutput outp = transport->getOutput();
 			outp->header.flags |= BHEADER_FLAG_RESPONSE;
@@ -127,12 +135,14 @@ BINLINE HServerR::HServerR(PTransport transport, PServer server, int nbOfConns)
 }
 
 BINLINE HServerR::~HServerR() {
+
 }
 
 BINLINE void HServerR::start() {
 	for (int i = 0; i < nbOfConns; i++) {
 		HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
 	}
+
 }
 
 BINLINE void HServerR::done() {

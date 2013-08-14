@@ -14,10 +14,17 @@ BINLINE BClient::~BClient() {
 }
 
 BINLINE void BClient::done() {
+
     if (serverR) {
         serverR->done();
     }
+
+	// Close the wire connection.
+	// In HWireClient it will call internalCancelAllRequests which cancels 
+	// all messages - inclusive long polls from serverR - for this session.
 	transport->wire->done();
+
+
 }
 
 BINLINE void BClient::start() {

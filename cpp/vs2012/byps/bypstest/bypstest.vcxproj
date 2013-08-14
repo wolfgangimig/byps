@@ -162,6 +162,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\bypstest\AllTests.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-001.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-002.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-003.cpp" />

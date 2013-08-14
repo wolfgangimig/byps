@@ -9,7 +9,7 @@ QT       += network
 QT       -= gui
 
 INCLUDEPATH += ../../common/byps/include
-INCLUDEPATH += ../../common/bypshttpqt/include
+INCLUDEPATH += ../../common/bypshttp/include
 
 QMAKE_CXXFLAGS += -std=c++11
 
@@ -23,8 +23,22 @@ TEMPLATE = app
 SOURCES += main.cpp
 
 HEADERS += \
-    ../../common/bypshttpqt/include/HWireClientI.h \
-    ../../common/bypshttpqt/include/HWireClient.hpp \
-    ../../common/bypshttpqt/include/HWireClient.h \
-    ../../common/bypshttpqt/include/BypsHttp.hpp \
-    ../../common/bypshttpqt/include/BypsHttp.h
+    ../../common/bypshttp/include/HWireClientI.h \
+    ../../common/bypshttp/include/HWireClient.hpp \
+    ../../common/bypshttp/include/HWireClient.h \
+    ../../common/bypshttp/include/BypsHttp.hpp \
+    ../../common/bypshttp/include/BypsHttp.h \
+    ../../common/bypshttp/include/HWireClientI.h \
+    ../../common/bypshttp/include/HWireClient.hpp \
+    ../../common/bypshttp/include/HWireClient.h \
+    ../../common/bypshttp/include/HTransportFactoryClient.hpp \
+    ../../common/bypshttp/include/HTransportFactoryClient.h \
+    ../../common/bypshttp/include/HServerR.hpp \
+    ../../common/bypshttp/include/HServerR.h \
+    ../../common/bypshttp/include/HHttpClient.hpp \
+    ../../common/bypshttp/include/HHttpClient.h \
+    ../../common/bypshttp/include/Bypshttp.hpp \
+    ../../common/bypshttp/include/Bypshttp.h \
+    ../../common/bypshttp/include/platform/qt/QTHttpClient.hpp \
+    ../../common/bypshttp/include/platform/qt/QTHttpClient.h \
+    ../../common/bypshttp/include/platform/qt/QTHttpClientI.h

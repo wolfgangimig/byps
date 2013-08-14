@@ -1,5 +1,6 @@
 
 #include "TestUtils.h"
+#include "testfw.h"
 
 using namespace com::wilutions::byps;
 using namespace com::wilutions::test;

@@ -15,6 +15,7 @@ class TestSuite;
 
 }}}
 
+#include <assert.h>
 #include "AssertException.h"
 #include "TestCase.h"
 #include "TestSuite.h"

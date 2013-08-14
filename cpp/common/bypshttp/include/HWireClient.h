@@ -58,8 +58,10 @@ protected:
 	void internalCancelAllRequests(int64_t cancelMessageId, PAsyncResult asyncResult);
 
 	void internalSend(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSeconds);
+	void sendCancelMessage(int64_t messageId);
 
 	friend class HWireClient_TestAdapter;
+	friend class HWireClient_AsyncResultAfterAllRequests;
 };
 
 }}}}

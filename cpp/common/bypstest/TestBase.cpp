@@ -15,7 +15,14 @@ void TestBase::beforeCase() {
 }
 void TestBase::afterCase() {
 	client->done();
+#ifdef _DEBUG
+	assert(client.use_count() == 1);
+	PTransport transport = client->transport;
 	client.reset();
+	long rc = transport.use_count();
+	assert(rc == 1);
+#endif
+	
 }
 
 void TestBase::onError(const std::exception& ex) {

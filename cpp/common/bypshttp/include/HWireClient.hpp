@@ -5,6 +5,7 @@
 #include "HWireClient.h"
 #include "HWireClientI.h"
 #include <strsafe.h>
+#include <thread>
 
 namespace com { namespace wilutions { namespace byps { namespace http {
 
@@ -106,8 +107,10 @@ BINLINE void HWireClient::throwLastException() {
 	}
 }
 
-BINLINE HWireClient_AsyncResultAfterAllRequests::HWireClient_AsyncResultAfterAllRequests(PThreadPool tpool, PAsyncResult innerResult, size_t nbOfRequests)
-    : tpool(tpool)
+BINLINE HWireClient_AsyncResultAfterAllRequests::HWireClient_AsyncResultAfterAllRequests(byps_ptr<HWireClient> wire, PThreadPool tpool, int64_t messageId, PAsyncResult innerResult, size_t nbOfRequests)
+    : wire(wire)
+	, tpool(tpool)
+	, messageId(messageId)
 	, innerResult(innerResult)
 	, nbOfRequests(nbOfRequests) {
 }
@@ -115,6 +118,7 @@ BINLINE HWireClient_AsyncResultAfterAllRequests::HWireClient_AsyncResultAfterAll
 BINLINE void HWireClient_AsyncResultAfterAllRequests::setAsyncResult(const BVariant& obj) {
 	
 	bool deleteThis = false;
+	bool cancelMessage = false;
 
 	{
 		byps_unique_lock lock(mutex);
@@ -124,12 +128,20 @@ BINLINE void HWireClient_AsyncResultAfterAllRequests::setAsyncResult(const BVari
 		}
 		else if (!result.isException()) {
 			 result = obj;
+			 cancelMessage = obj.isException();
 		}
 
 		if (--nbOfRequests == 0) {
 			PRunnable r(new HWireClient_ExecResult(innerResult, result));
 			tpool->execute(r);
 			deleteThis = true;
+		}
+
+		if (cancelMessage) {
+			byps_ptr<HWireClient> wire = this->wire.lock();
+			if (wire) {
+				wire->sendCancelMessage(messageId);
+			}
 		}
 	}
 
@@ -237,7 +249,7 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 		
 	size_t nbOfRequests = 1 + msg->streams.size();
 
-	PAsyncResult outerResult(new HWireClient_AsyncResultAfterAllRequests(tpool, asyncResult, nbOfRequests));
+	PAsyncResult outerResult(new HWireClient_AsyncResultAfterAllRequests(shared_from_this(), tpool, msg->header.messageId, asyncResult, nbOfRequests));
 
 	// Create request for message
     PHttpPost messageRequest = httpClient->post(url);
@@ -273,7 +285,7 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 	// Cannot add messageRequest, the connection was closed.
 	else {
 		messageRequest.reset();
-		asyncResult->setAsyncResult(BVariant(BException(EX_CANCELED, L"Already disconnected")));
+		asyncResult->setAsyncResult(BVariant(BException(EX_CANCELLED, L"Already disconnected")));
 	}
 
 }
@@ -322,7 +334,7 @@ BINLINE PContentStream HWireClient::getStream(int64_t messageId, int64_t streamI
 
 	MyContentStream* stream = new MyContentStream(requestsToCancel);
 	if (!requestsToCancel->add(stream->id, streamRequest)) {
-		throw BException(EX_CANCELED, L"Already disconnected");
+		throw BException(EX_CANCELLED, L"Already disconnected");
 	}
 
 	stream->setInnerStream(streamRequest->send());
@@ -363,24 +375,35 @@ BINLINE void HWireClient::cancelAllRequests() {
 	syncResult.getResult();
 }
 
+BINLINE void HWireClient::sendCancelMessage(int64_t cancelMessageId) {
+	std::wstringstream ss;
+	ss << url << L"?cancel=1&messageid=" << cancelMessageId;
+	
+	PHttpGet cancelRequest = httpClient->get(ss.str());
+	cancelRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsClient);
+	PContentStream strm = cancelRequest->send();
+	strm.reset();
+}
+
 BINLINE void HWireClient::internalCancelAllRequests(int64_t cancelMessageId, PAsyncResult asyncResult) {
 	
-	requestsToCancel->cancel();
-
 	if (cancelMessageId) {
-
-		std::wstringstream ss;
-		ss << url << L"?cancel=1&messageid=" << cancelMessageId;
-	
-		PHttpGet cancelRequest = httpClient->get(ss.str());
-		cancelRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsClient);
-		PContentStream strm = cancelRequest->send();
-		strm.reset();
+		sendCancelMessage(cancelMessageId);
 	}
+
+	requestsToCancel->cancel();
 
 	if (asyncResult) {
 		asyncResult->setAsyncResult(BVariant(true));
 	}
+
+	// Wait a moment until all requests have been finished.
+	// I could manage this with a lot of condition variables,
+	// but it's not worth the effort. 
+	// If the reqeuests are not finished when the function returns,
+	// we leek some memory.
+	std::chrono::milliseconds ms( 100 );
+    std::this_thread::sleep_for( ms );
 }
 
 HWireClient_ExecResult::HWireClient_ExecResult(PAsyncResult asyncResult, BVariant var) 
