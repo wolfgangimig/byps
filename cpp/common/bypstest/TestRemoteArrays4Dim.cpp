@@ -32,6 +32,7 @@ template <typename _T> void assertArray(byps_ptr<BArray4<_T> > arr, byps_ptr<BAr
 class TestRemoteArrays4Dim : public TestBase {
 	static BLogger log;
 public:
+	TestRemoteArrays4Dim(void* app) : TestBase(app) {}
 
 	void testRemoteArray4DimPrimitiveTypes() {
 
@@ -103,6 +104,6 @@ public:
 
 BLogger TestRemoteArrays4Dim::log("TestRemoteArrays4Dim");
 
-TestCase* TestRemoteArrays4Dim_create() {
-	return new TestRemoteArrays4Dim();
+TestCase* TestRemoteArrays4Dim_create(void* app) {
+	return new TestRemoteArrays4Dim(app);
 }

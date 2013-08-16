@@ -18,11 +18,12 @@ const int64_t MESSAGEID_DISCONNECT = -2;
 class HWireClient : public BWire, public std::enable_shared_from_this<HWireClient> {
 	std::mt19937_64 rand;
 	PHttpClient httpClient;
+	void* app;
 
 public:
 	const std::wstring url;
 
-	static PWire create(const std::wstring& url, int32_t flags, int32_t timeoutSeconds, PThreadPool tpool);
+    static PWire create(void* app, const std::wstring& url, int32_t flags, int32_t timeoutSeconds, PThreadPool tpool);
 
 	virtual ~HWireClient();
 
@@ -43,7 +44,7 @@ public:
 	virtual PTestAdapter getTestAdapter();
 
 protected:
-	HWireClient(const std::wstring& url, int32_t flags, int32_t timeoutSeconds, PThreadPool tpool);
+	HWireClient(void* app, const std::wstring& url, int32_t flags, int32_t timeoutSeconds, PThreadPool tpool);
 
 	void init();
 

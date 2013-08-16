@@ -1,5 +1,5 @@
-#ifndef PLATFORM_IMPL_H_
-#define PLATFORM_IMPL_H_
+#ifndef BPLATFORM_IMPL_H_
+#define BPLATFORM_IMPL_H_
 
 #ifdef _MSC_VER
 

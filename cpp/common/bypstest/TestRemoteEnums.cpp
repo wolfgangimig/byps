@@ -13,6 +13,7 @@ using namespace com::wilutions::byps::test::api::remote;
 class TestRemoteEnums : public TestBase {
 	static BLogger log;
 public:
+	TestRemoteEnums(void* app) : TestBase(app) {}
 
 	void testRemoteEnums() {
 		PRemoteEnums remote = client->remoteEnums;
@@ -29,6 +30,6 @@ public:
 
 BLogger TestRemoteEnums::log("TestRemoteEnums");
 
-TestCase* TestRemoteEnums_create() {
-	return new TestRemoteEnums();
+TestCase* TestRemoteEnums_create(void* app) {
+	return new TestRemoteEnums(app);
 }

@@ -35,6 +35,7 @@ template <typename _Key, typename _Value> void assertMap(byps_ptr<std::map<_Key,
 class TestRemoteMapTypes : public TestBase {
 	static BLogger log;
 public:
+	TestRemoteMapTypes(void* app) : TestBase(app) {}
 
 	void testRemoteMapTypes() {
 
@@ -128,6 +129,6 @@ public:
 
 BLogger TestRemoteMapTypes::log("TestRemoteMapTypes");
 
-TestCase* TestRemoteMapTypes_create() {
-	return new TestRemoteMapTypes();
+TestCase* TestRemoteMapTypes_create(void* app) {
+	return new TestRemoteMapTypes(app);
 }

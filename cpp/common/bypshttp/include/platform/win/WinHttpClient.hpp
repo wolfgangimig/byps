@@ -931,7 +931,7 @@ public:
 
 namespace com { namespace wilutions { namespace byps { namespace http { 
 
-BINLINE PHttpClient HttpClient_create() {
+BINLINE PHttpClient HttpClient_create(void* app) {
 	return PHttpClient(new com::wilutions::byps::http::winhttp::WinHttpClient());
 }
 

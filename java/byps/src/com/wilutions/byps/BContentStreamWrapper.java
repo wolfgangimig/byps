@@ -3,15 +3,31 @@ package com.wilutions.byps;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * This class wraps an arbitrary InputStream into a BContentStream.
+ * Use this class to supply content type and content length information for an arbitrary InputStream.
+ * E.g. use this class to wrap a FileInputStream and supply the file length as the content length.
+ *
+ */
 public class BContentStreamWrapper extends BContentStream {
 	
+	/**
+	 * Wrapped stream.
+	 */
 	protected volatile InputStream innerStream;
 
+	/**
+	 * Default constructor.
+	 */
 	public BContentStreamWrapper() {
 	}
 	
+	/**
+	 * 
+	 * @param innerStream
+	 */
 	public BContentStreamWrapper(InputStream innerStream) {
-		this(innerStream, "application/octet-stream", -1L, 0L);
+		this(innerStream, BContentStream.DEFAULT_CONTENT_TYPE, -1L, 0L);
 	}
 	
 	public BContentStreamWrapper(InputStream innerStream, String contentType, long contentLength) {

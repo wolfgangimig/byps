@@ -1,5 +1,8 @@
-#ifndef HTHREADPOOL_HPP_
-#define HTHREADPOOL_HPP_
+#ifndef BTHREADPOOL_HPP_
+#define BTHREADPOOL_HPP_
+
+#ifndef BTHREADPOOL
+#define BTHREADPOOL
 
 #include "Byps.h"
 
@@ -174,5 +177,7 @@ BINLINE PThreadPool BThreadPool::create(int maxThreads) {
 
 
 }}}
+
+#endif // BTHREADPOOL
 
 #endif

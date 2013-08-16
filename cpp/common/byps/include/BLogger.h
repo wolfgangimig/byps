@@ -47,15 +47,15 @@ class BLogger {
 public:
 	BLogger(const char* className);
 
-	bool isDebugEnabled();
-	bool isInfoEnabled();
-	bool isWarnEnabled();
-	bool isErrorEnabled();
+    bool isDebugEnabled() const;
+    bool isInfoEnabled() const;
+    bool isWarnEnabled() const;
+    bool isErrorEnabled() const;
 
-	BLogStream debug(int line = 0);
-	BLogStream info(int line = 0);
-	BLogStream warn(int line = 0);
-	BLogStream error(int line = 0);
+    BLogStream debug(int line = 0) const;
+    BLogStream info(int line = 0) const;
+    BLogStream warn(int line = 0) const;
+    BLogStream error(int line = 0) const;
 
 #ifdef BFSTREAM_WCHAR
     static void init(const std::wstring& fname, BLogLevel level, bool append = false);

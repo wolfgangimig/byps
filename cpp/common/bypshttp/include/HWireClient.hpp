@@ -62,14 +62,15 @@ BINLINE HWireClient_RequestsToCancel::~HWireClient_RequestsToCancel() {
 }
 
 
-BINLINE PWire HWireClient::create(const std::wstring& url, int32_t flags, int32_t timeoutSeconds, PThreadPool tpool) {
-	HWireClient* pThis = new HWireClient(url, flags, timeoutSeconds, tpool);
+BINLINE PWire HWireClient::create(void* app, const std::wstring& url, int32_t flags, int32_t timeoutSeconds, PThreadPool tpool) {
+	HWireClient* pThis = new HWireClient(app, url, flags, timeoutSeconds, tpool);
 	pThis->init();
 	return PWire(pThis);
 }
 
-BINLINE HWireClient::HWireClient(const std::wstring& surl, int32_t , int32_t timeoutSeconds, PThreadPool tpool)
-	: url(surl)
+BINLINE HWireClient::HWireClient(void* app, const std::wstring& surl, int32_t , int32_t timeoutSeconds, PThreadPool tpool)
+	: app(app)
+	, url(surl)
 	, timeoutSecondsClient(timeoutSeconds)
 	, tpool(tpool)
 	, isMyThreadPool(!tpool)
@@ -84,7 +85,7 @@ BINLINE HWireClient::HWireClient(const std::wstring& surl, int32_t , int32_t tim
 BINLINE void HWireClient::init() {
 
 	try {
-		httpClient = HttpClient_create();
+		httpClient = HttpClient_create(app);
 		httpClient->init(url);
 
 		requestsToCancel = PWireClient_RequestsToCancel(new HWireClient_RequestsToCancel());

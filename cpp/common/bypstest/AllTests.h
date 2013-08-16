@@ -8,18 +8,18 @@
 
 using namespace com::wilutions::test;
 
-void AllTests_run();
+void AllTests_run(void* app);
 
-TestCase* TestRemoteServerR_create();
-TestCase* TestRemoteStreams_create();
-TestCase* TestRemotePrimitiveTypes_create();
-TestCase* TestRemoteListTypes_create();
-TestCase* TestRemoteArrays_create();
-TestCase* TestRemoteArrays4Dim_create();
-TestCase* TestRemoteMapTypes_create();
-TestCase* TestRemoteSetTypes_create();
-TestCase* TestRemoteInlineInstance_create();
-TestCase* TestRemoteEnums_create();
-TestCase* TestRemoteConstants_create();
+TestCase* TestRemoteServerR_create(void* app);
+TestCase* TestRemoteStreams_create(void* app);
+TestCase* TestRemotePrimitiveTypes_create(void* app);
+TestCase* TestRemoteListTypes_create(void* app);
+TestCase* TestRemoteArrays_create(void* app);
+TestCase* TestRemoteArrays4Dim_create(void* app);
+TestCase* TestRemoteMapTypes_create(void* app);
+TestCase* TestRemoteSetTypes_create(void* app);
+TestCase* TestRemoteInlineInstance_create(void* app);
+TestCase* TestRemoteEnums_create(void* app);
+TestCase* TestRemoteConstants_create(void* app);
 
 //#define TEST_LARGE_STREAMS

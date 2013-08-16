@@ -6,8 +6,18 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
+/**
+ * This is the base class for writing protocol messages in binary or JSON format. 
+ *
+ */
 public abstract class BBuffer {
 	
+	/**
+	 * Create a buffer for the given binary model.
+	 * @param bmodel
+	 * @param buf Received message bytes or null, if a message has to be send.
+	 * @return Either a BBufferBin or a BBufferJson.
+	 */
 	public static BBuffer create(BBinaryModel bmodel, ByteBuffer buf) {
 		
 		if (bmodel == BBinaryModel.MEDIUM) {
@@ -16,40 +26,38 @@ public abstract class BBuffer {
 		if (bmodel == BBinaryModel.JSON) {
 			return new BBufferJson(buf);
 		}
-		if (bmodel == BBinaryModel.SMALL) {
-			return new BBufferBin.Small(bmodel, buf);
-		}
-		if (bmodel == BBinaryModel.TINY) {
-			return new BBufferBin.Tiny(bmodel, buf);
-		}
-		if (bmodel == BBinaryModel.LARGE) {
-			return new BBufferBin.Large(bmodel, buf);
-		}
+//		if (bmodel == BBinaryModel.SMALL) {
+//			return new BBufferBin.Small(bmodel, buf);
+//		}
+//		if (bmodel == BBinaryModel.TINY) {
+//			return new BBufferBin.Tiny(bmodel, buf);
+//		}
+//		if (bmodel == BBinaryModel.LARGE) {
+//			return new BBufferBin.Large(bmodel, buf);
+//		}
 		throw new IllegalStateException();
 	}
 	
+	/**
+	 * Return internal buffer.
+	 * @return Internal buffer.
+	 */
 	public ByteBuffer getBuffer() {
 		return this.buf;
 	}
 	
-	public void writeTo(OutputStream os) throws IOException  {
-		buf.flip();
-		os.write(buf.array(), 0, buf.limit());
-	}
-	
-	public void readFrom(InputStream is) throws IOException {
-		byte[] arr = new byte[1000];
-		int len = 0;
-		while ((len = is.read(arr)) != -1) {
-			buf.put(arr, 0, len);
-		}
-		buf.flip();
-	}
-	
+	/**
+	 * Clear internal buffer.
+	 */
 	public void clear() {
 		this.buf.clear();
 	}
 	
+	/**
+	 * Returns true, if the supplied array holds a JSON message.
+	 * @param arr Message data.
+	 * @return true, if it is a JSON message.
+	 */
 	private static boolean isJSON(byte[] arr) {
 		boolean ret = false;
 		if (arr.length >= 1) {
@@ -58,6 +66,11 @@ public abstract class BBuffer {
 		return ret;
 	}
 	
+	/**
+	 * Format buffer content in order to print it into the log file.
+	 * @param buf Message buffer.
+	 * @return Buffer content as String.
+	 */
 	public static String toDetailString(ByteBuffer buf) {
 		byte[] arr = buf.array();
 		if (isJSON(arr)) {
@@ -68,6 +81,12 @@ public abstract class BBuffer {
 		}
 	}
 
+	/**
+	 * Format JSON message in order to print it into the log file.
+	 * @param arr Message bytes.
+	 * @param limit Length of message bytes.
+	 * @return Buffer content as String.
+	 */
 	private static String toDetailStringJSON(byte[] arr, int limit) {
 		StringBuilder sbuf = new StringBuilder();
 		final String CRLF = "\r\n";
@@ -138,6 +157,12 @@ public abstract class BBuffer {
 		return sbuf.toString();
 	}
 
+	/**
+	 * Format binary message in order to print it into the log file.
+	 * @param arr Message bytes.
+	 * @param limit Length of message bytes.
+	 * @return Buffer content as String.
+	 */
 	private static String toDetailStringBinary(byte[] arr, int limit) {
 		StringBuilder sbuf = new StringBuilder();
 		sbuf.append("\r\nbyte[] bytes = new byte[] {");
@@ -181,10 +206,20 @@ public abstract class BBuffer {
 		return sbuf.toString();
 	}
 	
+	/**
+	 * Format message data into String.
+	 * @return Content of the internal buffer as String.
+	 */
 	public String toDetailString() {
 		return toDetailString(this.buf);
 	}
 
+	/**
+	 * Protected constructor.
+	 * The create function should be used to create a BBuffer object.
+	 * @param bmodel Binary model.
+	 * @param buf Message bytes or null.
+	 */
 	protected BBuffer(BBinaryModel bmodel, ByteBuffer buf) {
 		this.bmodel = bmodel;
 		this.buf = buf != null ? buf : ByteBuffer.allocate(10 * 1000);

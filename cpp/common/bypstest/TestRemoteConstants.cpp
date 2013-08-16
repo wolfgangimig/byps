@@ -13,6 +13,7 @@ using namespace com::wilutions::byps::test::api::remote;
 class TestRemoteConstants : public TestBase {
 	static BLogger log;
 public:
+	TestRemoteConstants(void* app) : TestBase(app) {}
 
 	void testCompareConstants() {
 		PRemoteConstants remote = client->remoteConstants;
@@ -49,6 +50,6 @@ public:
 
 BLogger TestRemoteConstants::log("TestRemoteConstants");
 
-TestCase* TestRemoteConstants_create() {
-	return new TestRemoteConstants();
+TestCase* TestRemoteConstants_create(void* app) {
+	return new TestRemoteConstants(app);
 }

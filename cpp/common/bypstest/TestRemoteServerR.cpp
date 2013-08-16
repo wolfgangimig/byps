@@ -57,6 +57,7 @@ BLogger ClientIFImplPutStreams::log("ClientIFImplPutStreams");
 class TestRemoteServerR : public TestBase {
 	static BLogger log;
 public:
+	TestRemoteServerR(void* app) : TestBase(app) {}
 
 	/**
 	 * Call a server function which in turn calls a client function.
@@ -121,7 +122,7 @@ public:
 		PSkeleton_ClientIF partner = PSkeleton_ClientIF(new ClientIFImpl());
 		
 		// Create second client
-		PClient_Testser client2 = TestUtilHttp::createClient();
+		PClient_Testser client2 = TestUtilHttp::createClient(app);
 		client2->addRemote(partner);
 		
 		// Pass the interface of the second client to the server side of the first client
@@ -152,7 +153,7 @@ public:
 		PSkeleton_ClientIF partner = PSkeleton_ClientIF(new ClientIFImpl());
 		
 		// Create second client
-		PClient_Testser client2 = TestUtilHttp::createClient();
+		PClient_Testser client2 = TestUtilHttp::createClient(app);
 		client2->addRemote(partner);
 		
 		// Pass the interface of the second client to the server side of the first client
@@ -173,7 +174,7 @@ public:
 		
 		PSkeleton_ClientIF partner(new ClientIFImplThrowEx());
 		
-		PClient_Testser client2 = TestUtilHttp::createClient();
+		PClient_Testser client2 = TestUtilHttp::createClient(app);
 		client2->addRemote(partner);
 		
 		client->serverIF->setPartner(partner);
@@ -195,7 +196,7 @@ public:
 		PSkeleton_ClientIF partner(new ClientIFImpl());
 		
 		l_info << "create second client";
-		PClient_Testser client2 = TestUtilHttp::createClient();
+		PClient_Testser client2 = TestUtilHttp::createClient(app);
 		client2->addRemote(partner);
 		
 		l_info << "submit interface of second client";
@@ -230,7 +231,7 @@ public:
 		PSkeleton_ClientIF partner(new ClientIFImpl());
 		
 		l_info << "create second client";
-		PClient_Testser client2 = TestUtilHttp::createClient();
+		PClient_Testser client2 = TestUtilHttp::createClient(app);
 		client2->addRemote(partner);
 		
 		l_info << "submit interface of second client";
@@ -291,6 +292,6 @@ public:
 
 BLogger TestRemoteServerR::log(__FILE__);
 
-TestCase* TestRemoteServerR_create() {
-	return new TestRemoteServerR();
+TestCase* TestRemoteServerR_create(void* app) {
+	return new TestRemoteServerR(app);
 }

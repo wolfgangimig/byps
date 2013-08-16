@@ -10,9 +10,10 @@
 
 class TestBase : public com::wilutions::test::TestCase {
 	static com::wilutions::byps::BLogger log;
-
+protected:
+	void* app;
 public:
-	TestBase();
+	TestBase(void* app);
 	virtual ~TestBase();
 	virtual void beforeCase();
 	virtual void afterCase();

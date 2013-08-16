@@ -70,7 +70,7 @@ const std::wstring string4 = L"41";
 
 class TestRemoteSetTypes : public TestBase {
 public:
-
+	TestRemoteSetTypes(void* app) : TestBase(app) {}
 
 	void testPrimitiveTypes() {
 
@@ -154,6 +154,6 @@ public:
 	}
 };
 
-TestCase* TestRemoteSetTypes_create() {
-	return new TestRemoteSetTypes();
+TestCase* TestRemoteSetTypes_create(void* app) {
+	return new TestRemoteSetTypes(app);
 }

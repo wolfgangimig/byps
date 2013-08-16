@@ -52,10 +52,10 @@ public abstract class BRegistry {
 	
 	public final int getMaxTypeId() {
 		if (bmodel == BBinaryModel.JSON) return Integer.MAX_VALUE; 
-		if (bmodel == BBinaryModel.LARGE) return Integer.MAX_VALUE;
 		if (bmodel == BBinaryModel.MEDIUM) return Integer.MAX_VALUE;
-		if (bmodel == BBinaryModel.SMALL) return Short.MAX_VALUE;
-		if (bmodel == BBinaryModel.TINY) return Byte.MAX_VALUE; 
+//		if (bmodel == BBinaryModel.SMALL) return Short.MAX_VALUE;
+//		if (bmodel == BBinaryModel.TINY) return Byte.MAX_VALUE; 
+//		if (bmodel == BBinaryModel.LARGE) return Integer.MAX_VALUE;
 		throw new IllegalStateException();
 	}
 	

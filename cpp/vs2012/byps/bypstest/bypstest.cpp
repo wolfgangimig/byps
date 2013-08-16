@@ -26,7 +26,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	for (int i = 0; i < 1; i++) {
-		AllTests_run();
+		AllTests_run(NULL);
 		
 	}
 

@@ -7,7 +7,7 @@
 
 namespace com { namespace wilutions { namespace byps { namespace http { 
 
-PHttpClient HttpClient_create();
+PHttpClient HttpClient_create(void* app);
 
 }}}}
 

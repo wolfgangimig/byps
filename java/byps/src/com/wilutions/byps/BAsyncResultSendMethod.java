@@ -1,6 +1,11 @@
 package com.wilutions.byps;
 
-
+/**
+ * This class connects a BMethodResult to a BAsyncResult.
+ * Objects of this class are used in the generated BRequest classes.
+ *
+ * @param <T> The method's result type.
+ */
 public class BAsyncResultSendMethod<T> implements BAsyncResult<T> {
 
 	private BAsyncResult<Object> innerResult;

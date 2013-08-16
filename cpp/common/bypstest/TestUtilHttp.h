@@ -8,7 +8,7 @@
 
 class TestUtilHttp {
 public:
-	static com::wilutions::byps::test::api::PClient_Testser createClient();
+	static com::wilutions::byps::test::api::PClient_Testser createClient(void* app);
 
 	static byps_ptr<std::vector<com::wilutions::byps::PContentStream> > makeTestStreams();
 

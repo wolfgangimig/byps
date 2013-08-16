@@ -12,7 +12,7 @@ class TestRemoteInlineInstance : public TestBase {
 	static BLogger log;
 
 public:
-
+	TestRemoteInlineInstance(void* app) : TestBase(app) {}
 
 	PActor createActor() {
 		PActor obj(new Actor());
@@ -185,6 +185,6 @@ public:
 
 BLogger TestRemoteInlineInstance::log("TestRemoteInlineInstance");
 
-TestCase* TestRemoteInlineInstance_create() {
-	return new TestRemoteInlineInstance();
+TestCase* TestRemoteInlineInstance_create(void* app) {
+	return new TestRemoteInlineInstance(app);
 }

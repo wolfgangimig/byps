@@ -1,6 +1,11 @@
 package com.wilutions.byps;
 
-
+/**
+ * This class wraps a BMethodResult object into an BAsyncResult.
+ * Objects of this class are used in generated stubs.
+ *
+ * @param <T> The method's result type.
+ */
 public class BAsyncResultReceiveMethod<T> implements BAsyncResult<BMethodResult<T>> {
 	
 	private final BAsyncResult<T> innerResult;

@@ -79,35 +79,35 @@ BINLINE void BLogger::done() {
 	logFile.close();
 }
 
-BINLINE BLogStream BLogger::debug(int line) {
+BINLINE BLogStream BLogger::debug(int line) const {
 	return BLogStream(BLogLevel::Debug, className, line);
 }
 
-BINLINE BLogStream BLogger::info(int line) {
+BINLINE BLogStream BLogger::info(int line) const {
 	return BLogStream(BLogLevel::Info, className, line);
 }
 
-BINLINE BLogStream BLogger::warn(int line) {
+BINLINE BLogStream BLogger::warn(int line) const {
 	return BLogStream(BLogLevel::Warn, className, line);
 }
 
-BINLINE BLogStream BLogger::error(int line) {
+BINLINE BLogStream BLogger::error(int line) const {
 	return BLogStream(BLogLevel::Error, className, line);
 }
 
-BINLINE bool BLogger::isDebugEnabled() {
+BINLINE bool BLogger::isDebugEnabled() const {
 	return logFile.level <= BLogLevel::Debug;
 }
 
-BINLINE bool BLogger::isInfoEnabled() {
+BINLINE bool BLogger::isInfoEnabled() const {
 	return logFile.level <= BLogLevel::Info;
 }
 
-BINLINE bool BLogger::isWarnEnabled() {
+BINLINE bool BLogger::isWarnEnabled() const {
 	return logFile.level <= BLogLevel::Warn;
 }
 
-BINLINE bool BLogger::isErrorEnabled() {
+BINLINE bool BLogger::isErrorEnabled() const {
 	return logFile.level <= BLogLevel::Error;
 }
 

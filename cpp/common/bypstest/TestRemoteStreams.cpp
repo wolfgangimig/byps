@@ -20,6 +20,7 @@ class TestRemoteStreams : public TestBase {
 	static BLogger log;
 
 public:
+	TestRemoteStreams(void* app) : TestBase(app) {}
 
 	/**
 	 * Use class BContentStreamFile to transfer a stream.
@@ -288,6 +289,6 @@ public:
 
 BLogger TestRemoteStreams::log(typeid(TestRemoteStreams).name());
 
-TestCase* TestRemoteStreams_create() {
-	return new TestRemoteStreams();
+TestCase* TestRemoteStreams_create(void* app) {
+	return new TestRemoteStreams(app);
 }

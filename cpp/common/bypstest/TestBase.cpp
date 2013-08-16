@@ -5,13 +5,14 @@ using namespace com::wilutions::byps;
 
 BLogger TestBase::log("TestBase");
 
-TestBase::TestBase() {
+TestBase::TestBase(void* app) 
+	: app(app) {
 }
 TestBase::~TestBase() {
 }
 
 void TestBase::beforeCase() {
-	client = TestUtilHttp::createClient();
+	client = TestUtilHttp::createClient(app);
 }
 void TestBase::afterCase() {
 	client->done();

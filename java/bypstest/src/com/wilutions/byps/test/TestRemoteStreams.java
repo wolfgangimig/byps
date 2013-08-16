@@ -49,14 +49,13 @@ public class TestRemoteStreams {
 	}
 	
 	/**
-	 * Send and receive a stream.
-	 * It's sent by HTTP chunked encoding.
+	 * Send and receive a stream with content length information.
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
 	@Test
-	public void testRemoteStreamsOneStream() throws InterruptedException, IOException {
-		log.info("testRemoteStreamsOneStream(");
+	public void testRemoteStreamsOneStreamContentLength() throws InterruptedException, IOException {
+		log.info("testRemoteStreamsOneStreamContentLength(");
 		
 		String str = "hello";
 		InputStream istrm = new ByteArrayInputStream(str.getBytes());
@@ -70,7 +69,45 @@ public class TestRemoteStreams {
 		remote.setImage(null);
 		TestUtils.checkTempDirEmpty(client);
 		
-		log.info(")testRemoteStreamsOneStream");
+		log.info(")testRemoteStreamsOneStreamContentLength");
+	}
+	
+	/**
+	 * Send and receive a stream without content length information
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
+	@Test
+	public void testRemoteStreamsOneStreamChunked() throws InterruptedException, IOException {
+		log.info("testRemoteStreamsOneStreamChunked(");
+		
+		String str = "hello";
+		final ByteArrayInputStream bis = new ByteArrayInputStream(str.getBytes());
+		InputStream istrm = new BContentStream() {
+			
+			@Override
+			public long getContentLength() {
+				return -1L;
+			}
+
+			@Override
+			public int read() throws IOException {
+				return bis.read();
+			}
+			
+		};
+		
+		remote.setImage(istrm);
+		
+		InputStream istrmR = remote.getImage();
+		ByteBuffer buf = BWire.bufferFromStream(istrmR);
+		String strR = new String(buf.array(), buf.position(), buf.remaining());
+		TestUtils.assertEquals(log, "stream", str, strR);
+		
+		remote.setImage(null);
+		TestUtils.checkTempDirEmpty(client);
+		
+		log.info(")testRemoteStreamsOneStreamChunked");
 	}
 	
 	/**

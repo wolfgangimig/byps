@@ -19,6 +19,9 @@
     <Filter Include="include\platform">
       <UniqueIdentifier>{bbfa7ad2-d8bb-4d0f-b786-224bf7ff151d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\platform\msvc">
+      <UniqueIdentifier>{b13e1b8a-06ae-414a-916e-ca9afbfa9e6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -237,12 +240,6 @@
     <ClInclude Include="..\..\..\common\byps\include\platform\any.h">
       <Filter>include\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\byps\include\platform\gcc_x86_x64.h">
-      <Filter>include\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\common\byps\include\platform\msvc_x86_x64.h">
-      <Filter>include\platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\platform\platform-api.h">
       <Filter>include\platform</Filter>
     </ClInclude>
@@ -254,6 +251,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\BThreadPool.hpp">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\platform\msvc\msvc_x86_x64.h">
+      <Filter>include\platform\msvc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\platform\platform.hpp">
+      <Filter>include\platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

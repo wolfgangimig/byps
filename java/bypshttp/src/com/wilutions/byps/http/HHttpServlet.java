@@ -248,6 +248,10 @@ public abstract class HHttpServlet extends HttpServlet {
 		if (log.isDebugEnabled()) log.debug("doPostMessage(");
 		
 		if (log.isDebugEnabled()) log.debug("read message");
+		String contentType = request.getContentType();
+		String contentLength = request.getHeader("Content-Length");
+		if (log.isDebugEnabled()) log.debug("contentType=" + contentType + ", contentLength=" + contentLength);
+		
         InputStream is = request.getInputStream();
         ByteBuffer ibuf = BWire.bufferFromStream(is);
         

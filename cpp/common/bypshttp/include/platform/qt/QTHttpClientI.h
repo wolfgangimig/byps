@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 #include "Bypshttp.h"
-
+#include "BLogger.h"
 
 namespace com { namespace wilutions { namespace byps { namespace http { namespace qthttp {
 
@@ -24,16 +24,17 @@ typedef byps_ptr<QTHttpPut> PQTHttpPut;
 class QTHttpClient;
 typedef byps_ptr<QTHttpClient> PQTHttpClient;
 
+typedef byps_ptr<QNetworkAccessManager> PNetworkAccessManager;
+
 class QTHttpRequestBridge : public QObject
 {
     Q_OBJECT
+    BLogger log;
 
 public:
-    QTHttpRequestBridge();
+    QTHttpRequestBridge(QNetworkReply* reply, int32_t timeout);
     virtual ~QTHttpRequestBridge() ;
     void close();
-
-    void create(PQTHttpRequest pThis, QNetworkReply* reply);
 
 private slots:
     void httpFinished();
@@ -48,71 +49,50 @@ public:
 
 };
 
+class QTHttpWorkerBridge : public QObject
+{
+    Q_OBJECT
+    BLogger log;
+    PNetworkAccessManager networkManager;
 
-class QTHttpClientCmd {
-    byps_mutex mutex;
-    byps_condition_variable ready;
-    PQTHttpRequest request;
-    BException ex;
 public:
-    const PQTHttpClient httpClient;
+    QTHttpWorkerBridge();
 
-    enum Type { done,
-                createHttpGet,
-                createHttpPost,
-                createHttpPut,
-                sendHttpGet,
-                sendHttpPost,
-                sendHttpPut
-              };
-    const Type type;
-
-    const std::wstring url;
-
-    QTHttpClientCmd(PQTHttpClient httpClient, Type type, const std::wstring& url);
-    QTHttpClientCmd(PQTHttpClient httpClient, Type type, PQTHttpRequest request);
-
-    PQTHttpRequest getRequestAndDeleteThis();
-    PQTHttpRequest getRequest();
-
-    void setRequestAndNotify(PQTHttpRequest request);
-    void setExceptionAndNotify(BException ex);
-
-    void maybeDeleteAfterExec();
+public slots:
+    void createGetRequest(QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge**);
+    void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* bytesToPost, QTHttpRequestBridge**);
+    void createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamToPut, QTHttpRequestBridge**);
 };
 
-
-typedef byps_ptr<QNetworkAccessManager> PNetworkAccessManager;
-
-class QTHttpClientWorker : public QThread {
+class QTHttpWorkerThread : public QThread
+{
     Q_OBJECT
-    PNetworkAccessManager networkManager;
-    bool isEventQueueRunning;
+    BLogger log;
+    QTHttpWorkerBridge* workerBridge;
     byps_mutex mutex;
-    byps_condition_variable running;
-
-    static QNetworkRequest urlToNetworkRequest(const std::wstring& surl);
+    byps_condition_variable waitInit;
 
 public:
-    QTHttpClientWorker();
+    QTHttpWorkerThread();
+    virtual ~QTHttpWorkerThread();
+    QTHttpWorkerBridge* getWorkerBridge();
+
+protected:
     virtual void run();
+};
 
-    void executeCommand(QTHttpClientCmd* cmd);
-    void done();
-    void waitForRunning(); // throws BException
+class QTHttpClientBridge : public QObject
+{
+    Q_OBJECT
 
-private slots:
-    void executeCommandSlot(QTHttpClientCmd* cmd);
-    void onStarted();
+public:
 
 signals:
-    void executeCommandSignal(QTHttpClientCmd* cmd);
-
+    void createGetRequest(QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge**);
+    void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* bytesToPost, QTHttpRequestBridge**);
+    void createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamToPut, QTHttpRequestBridge**);
 
 };
-
-
-
 
 }}}}}
 

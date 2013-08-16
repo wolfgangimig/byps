@@ -4,16 +4,16 @@
 
 #undef min
 
-static std::wstring url = L"http://localhost:8080/bypstest-srv/bypsservlet";
+static std::wstring url = L"http://localhost:5890/bypstest-srv/bypsservlet";
 
 using namespace com::wilutions::byps;
 using namespace com::wilutions::byps::http;
 using namespace com::wilutions::byps::test::api;
 
-PClient_Testser TestUtilHttp::createClient() {
+PClient_Testser TestUtilHttp::createClient(void* app) {
 	PApiDescriptor apiDesc = BApiDescriptor_Testser::instance();
 
-	PWire wire(HWireClient::create(url, 0, 600, PThreadPool()));
+	PWire wire(HWireClient::create(app, url, 0, 600, PThreadPool()));
 
 	PTransportFactory transportFactory(new HTransportFactoryClient(apiDesc, wire, 2));
 

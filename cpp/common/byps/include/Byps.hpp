@@ -31,7 +31,8 @@
 #include "BUtils.hpp"
 #include "BVariant.hpp"
 #include "BWire.hpp"
-#include "BThreadPool.hpp"
 #include "BUtils.hpp"
+
+#include "platform/platform.hpp"
 
 #endif /* BYPS_HPP_ */

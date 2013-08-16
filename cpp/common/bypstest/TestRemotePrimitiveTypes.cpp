@@ -10,6 +10,7 @@ using namespace com::wilutions::byps::test::api::remote;
 
 class TestRemotePrimitiveTypes : public TestBase {
 public:
+	TestRemotePrimitiveTypes(void* app) : TestBase(app) {}
 
 	void testPrimitiveTypesReferenceToOtherObject() {	
         PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
@@ -120,6 +121,6 @@ public:
 	}
 };
 
-TestCase* TestRemotePrimitiveTypes_create() {
-	return new TestRemotePrimitiveTypes();
+TestCase* TestRemotePrimitiveTypes_create(void* app) {
+	return new TestRemotePrimitiveTypes(app);
 }

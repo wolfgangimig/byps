@@ -48,6 +48,7 @@ void assertArrayPoint2D(byps_ptr<BArray1<Point2D> > arr, byps_ptr<BArray1<Point2
 class TestRemoteArrays : public TestBase {
 	static BLogger log;
 public:
+	TestRemoteArrays(void* app) : TestBase(app) {}
 
 	void internalTestRemoteArrayPrimitiveTypes() {
 
@@ -427,7 +428,7 @@ public:
 
 	void internalTestPerformance(int flags, int loopCount, int objCount) {
 
-		PClient_Testser client = TestUtilHttp::createClient();
+		PClient_Testser client = TestUtilHttp::createClient(app);
 		
 		byps_ptr<BArray1<PPrimitiveTypes> > primitiveTypes1(new BArray1<PPrimitiveTypes>(objCount));
 		for (unsigned i = 0; i < primitiveTypes1->length(); i++) {
@@ -470,6 +471,6 @@ public:
 
 BLogger TestRemoteArrays::log("TestRemoteArrays");
 
-TestCase* TestRemoteArrays_create() {
-	return new TestRemoteArrays();
+TestCase* TestRemoteArrays_create(void* app) {
+	return new TestRemoteArrays(app);
 }
