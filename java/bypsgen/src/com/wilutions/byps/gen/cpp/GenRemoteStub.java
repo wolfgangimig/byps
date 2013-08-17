@@ -47,7 +47,7 @@ class GenRemoteStub {
 		String rtype = returnTypeInfoCpp.getTypeName(rinfo.pack);
 		if (returnTypeInfoCpp.tinfo.isVoidType()) rtype = "bool";
 		
-		String syncResultType = "BSyncResultT<" + rtype + " >";
+		String syncResultType = "BSyncResultT< " + rtype + " >";
 		//prC.print("byps_ptr<").print(syncResultType).print(" > asyncResult(new ")
 //		prC.print(syncResultType).print("* asyncResult(new ")
 //		   .print(syncResultType).print("());");^

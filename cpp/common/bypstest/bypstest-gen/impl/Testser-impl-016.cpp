@@ -74,7 +74,7 @@ BStub_EvolveIF::BStub_EvolveIF(PTransport transport)
 	: BStub(transport) {}
 
 void BStub_EvolveIF::setEvolve(PEvolve obj)  {
-	BSyncResultT<bool > syncResult;	
+	BSyncResultT< bool > syncResult;	
 	async_setEvolve(obj, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -86,7 +86,7 @@ void BStub_EvolveIF::async_setEvolve(PEvolve obj, std::function< void (bool, BEx
 	transport->send(req, outerResult);
 }
 PEvolve BStub_EvolveIF::getEvolve()  {
-	BSyncResultT<PEvolve > syncResult;	
+	BSyncResultT< PEvolve > syncResult;	
 	async_getEvolve([&syncResult](PEvolve v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -98,7 +98,7 @@ void BStub_EvolveIF::async_getEvolve(std::function< void (PEvolve, BException ex
 	transport->send(req, outerResult);
 }
 void BStub_EvolveIF::setClient(PEvolveIF partner)  {
-	BSyncResultT<bool > syncResult;	
+	BSyncResultT< bool > syncResult;	
 	async_setClient(partner, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -110,7 +110,7 @@ void BStub_EvolveIF::async_setClient(PEvolveIF partner, std::function< void (boo
 	transport->send(req, outerResult);
 }
 PEvolveIF BStub_EvolveIF::getClient()  {
-	BSyncResultT<PEvolveIF > syncResult;	
+	BSyncResultT< PEvolveIF > syncResult;	
 	async_getClient([&syncResult](PEvolveIF v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
@@ -122,7 +122,7 @@ void BStub_EvolveIF::async_getClient(std::function< void (PEvolveIF, BException 
 	transport->send(req, outerResult);
 }
 void BStub_EvolveIF::sendEvolveToClient()  {
-	BSyncResultT<bool > syncResult;	
+	BSyncResultT< bool > syncResult;	
 	async_sendEvolveToClient([&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
