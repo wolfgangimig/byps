@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE91F63D-5BCD-456A-9B38-5A348DFB067C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>byps</RootNamespace>
+    <AssemblyName>byps</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BApiDescriptor.cs" />
+    <Compile Include="BAsyncProgModel.cs" />
+    <Compile Include="BAsyncResult.cs" />
+    <Compile Include="BAsyncResultReceiveMethod.cs" />
+    <Compile Include="BAsyncResultSendMethod.cs" />
+    <Compile Include="BBinaryModel.cs" />
+    <Compile Include="BBuffer.cs" />
+    <Compile Include="BBufferBin.cs" />
+    <Compile Include="BClient.cs" />
+    <Compile Include="BContentStream.cs" />
+    <Compile Include="BContentStreamWrapper.cs" />
+    <Compile Include="BException.cs" />
+    <Compile Include="BInput.cs" />
+    <Compile Include="BInputBin.cs" />
+    <Compile Include="BInputS.cs" />
+    <Compile Include="BMessage.cs" />
+    <Compile Include="BTestAdapter.cs" />
+    <Compile Include="BValueClass.cs" />
+    <Compile Include="BSerializer_22.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="BMessageHeader.cs" />
+    <Compile Include="BMethodRequest.cs" />
+    <Compile Include="BMethodResult.cs" />
+    <Compile Include="BNegotiate.cs" />
+    <Compile Include="BObjMap.cs" />
+    <Compile Include="BOutput.cs" />
+    <Compile Include="BOutputBin.cs" />
+    <Compile Include="BOutputS.cs" />
+    <Compile Include="BProtocol.cs" />
+    <Compile Include="BProtocolS.cs" />
+    <Compile Include="BRegistry.cs" />
+    <Compile Include="BRemote.cs" />
+    <Compile Include="BRemoteRegistry.cs" />
+    <Compile Include="BSecureRandom.cs" />
+    <Compile Include="BSerializable.cs" />
+    <Compile Include="BSerializer.cs" />
+    <Compile Include="BSerializer_12.cs" />
+    <Compile Include="BSerializer_13.cs" />
+    <Compile Include="BSerializer_14.cs" />
+    <Compile Include="BSerializer_15.cs" />
+    <Compile Include="BSerializer_16.cs" />
+    <Compile Include="BSerializer_20.cs" />
+    <Compile Include="BSkeleton.cs" />
+    <Compile Include="BStreamRequest.cs" />
+    <Compile Include="BStub.cs" />
+    <Compile Include="BSyncResult.cs" />
+    <Compile Include="BTargetId.cs" />
+    <Compile Include="BTransport.cs" />
+    <Compile Include="BTransportFactory.cs" />
+    <Compile Include="BWire.cs" />
+    <Compile Include="ByteBuffer.cs" />
+    <Compile Include="BServer.cs" />
+    <Compile Include="BServerR.cs" />
+    <Compile Include="ByteOrder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
