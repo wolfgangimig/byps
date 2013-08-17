@@ -29,7 +29,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_2091006964(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getByte& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getByte*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getByte& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getByte*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getByte());
@@ -63,7 +63,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_2091019842(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getChar& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getChar*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getChar& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getChar*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getChar());
@@ -97,7 +97,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_538948675(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getDouble& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getDouble*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getDouble& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getDouble*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getDouble());
@@ -131,7 +131,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_400008432(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getFloat& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getFloat*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getFloat& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getFloat*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getFloat());
@@ -165,7 +165,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1318015101(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getInt& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getInt*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getInt& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getInt*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getInt());
@@ -199,7 +199,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_2091295080(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getLong& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getLong*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getLong& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getLong*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getLong());
@@ -233,7 +233,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_236358869(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getObject& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getObject*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getObject& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getObject*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getObject());
@@ -267,7 +267,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1881962430(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getPrimitiveTypes& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getPrimitiveTypes*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getPrimitiveTypes& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getPrimitiveTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getPrimitiveTypes());
@@ -301,7 +301,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_411895568(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getShort& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getShort*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getShort& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getShort*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getShort());
@@ -335,7 +335,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_104976387(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getString& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getString*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getString& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getString*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_getString());
@@ -399,7 +399,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1794219594(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes());
@@ -439,7 +439,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_143860510(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool());
@@ -479,7 +479,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_143850752(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setByte& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setByte*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setByte& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setByte*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setByte());
@@ -519,7 +519,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_143837874(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setChar& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setChar*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setChar& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setChar*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setChar());
@@ -559,7 +559,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_753565751(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setDouble& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setDouble*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setDouble& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setDouble*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setDouble());
@@ -599,7 +599,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_161104028(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setFloat& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setFloat*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setFloat& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setFloat*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setFloat());
@@ -639,7 +639,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_974465289(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setInt& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setInt*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setInt& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setInt*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setInt());
@@ -679,7 +679,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_143562636(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setLong& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setLong*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setLong& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setLong*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setLong());
@@ -718,7 +718,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_450975945(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setObject& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setObject*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setObject& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setObject*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setObject());
@@ -757,7 +757,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_941809610(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes());
@@ -797,7 +797,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_149216892(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort());
@@ -836,7 +836,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_319593463(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString());
@@ -870,7 +870,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1856936054(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid());
@@ -904,7 +904,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_655936732(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_getNode& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_getNode*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_getNode& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_getNode*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_getNode());
@@ -943,7 +943,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1404172848(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_setNode& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_setNode*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_setNode& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_setNode*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_setNode());
@@ -982,7 +982,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1216543212(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote());
@@ -1026,7 +1026,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1776814809(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote());

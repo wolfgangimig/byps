@@ -898,7 +898,7 @@ class GenApiClass {
 		
 		prC.println("if (p) { ");
 		prC.beginBlock();
-		prC.print(className).print("& r = * ").print(cast).print("<").print(className).print("*>(p);").println();
+		prC.print(className).print("& r = * ").print(cast).print("< ").print(className).print("*>(p);").println();
 		prC.print("bio & r;").println();
 		prC.endBlock();
 		prC.println("} else {");

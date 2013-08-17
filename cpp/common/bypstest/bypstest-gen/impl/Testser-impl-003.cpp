@@ -23,7 +23,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_6002(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::inherit::Class2& r = * dynamic_cast<com::wilutions::byps::test::api::inherit::Class2*>(p);
+		com::wilutions::byps::test::api::inherit::Class2& r = * dynamic_cast< com::wilutions::byps::test::api::inherit::Class2*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::Class2());
@@ -51,7 +51,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_6003(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::inherit::Class3& r = * dynamic_cast<com::wilutions::byps::test::api::inherit::Class3*>(p);
+		com::wilutions::byps::test::api::inherit::Class3& r = * dynamic_cast< com::wilutions::byps::test::api::inherit::Class3*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::Class3());
@@ -79,7 +79,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_171948703(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::inl::Actor& r = * dynamic_cast<com::wilutions::byps::test::api::inl::Actor*>(p);
+		com::wilutions::byps::test::api::inl::Actor& r = * dynamic_cast< com::wilutions::byps::test::api::inl::Actor*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inl::Actor());
@@ -109,7 +109,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_3002(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::list::ListListTypes& r = * dynamic_cast<com::wilutions::byps::test::api::list::ListListTypes*>(p);
+		com::wilutions::byps::test::api::list::ListListTypes& r = * dynamic_cast< com::wilutions::byps::test::api::list::ListListTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::list::ListListTypes());
@@ -161,7 +161,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_3001(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::list::ListTypes& r = * dynamic_cast<com::wilutions::byps::test::api::list::ListTypes*>(p);
+		com::wilutions::byps::test::api::list::ListTypes& r = * dynamic_cast< com::wilutions::byps::test::api::list::ListTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::list::ListTypes());
@@ -211,7 +211,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_4001(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::map::MapTypes& r = * dynamic_cast<com::wilutions::byps::test::api::map::MapTypes*>(p);
+		com::wilutions::byps::test::api::map::MapTypes& r = * dynamic_cast< com::wilutions::byps::test::api::map::MapTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::map::MapTypes());
@@ -270,7 +270,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1000(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::prim::PrimitiveTypes& r = * dynamic_cast<com::wilutions::byps::test::api::prim::PrimitiveTypes*>(p);
+		com::wilutions::byps::test::api::prim::PrimitiveTypes& r = * dynamic_cast< com::wilutions::byps::test::api::prim::PrimitiveTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::prim::PrimitiveTypes());
@@ -281,7 +281,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_801243127(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast<BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
+		BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
 		pObj = POBJECT(new BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > ());
@@ -292,7 +292,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1195496149(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast<BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
+		BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
 		pObj = POBJECT(new BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > ());
@@ -303,7 +303,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_2115528243(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast<BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
+		BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
 		pObj = POBJECT(new BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > ());
@@ -314,7 +314,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1503107601(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast<BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
+		BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
 		pObj = POBJECT(new BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > ());
@@ -390,7 +390,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_8001(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::priv::PrivateMembers& r = * dynamic_cast<com::wilutions::byps::test::api::priv::PrivateMembers*>(p);
+		com::wilutions::byps::test::api::priv::PrivateMembers& r = * dynamic_cast< com::wilutions::byps::test::api::priv::PrivateMembers*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::priv::PrivateMembers());
@@ -422,7 +422,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_9001(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::refs::Node& r = * dynamic_cast<com::wilutions::byps::test::api::refs::Node*>(p);
+		com::wilutions::byps::test::api::refs::Node& r = * dynamic_cast< com::wilutions::byps::test::api::refs::Node*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::refs::Node());
@@ -456,7 +456,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1645604187(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool());
@@ -490,7 +490,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1645613945(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte());
@@ -524,7 +524,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1645626823(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar());
@@ -558,7 +558,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_935089666(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble());
@@ -592,7 +592,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_522273269(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat());
@@ -626,7 +626,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1609477282(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt());
@@ -660,7 +660,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1645902061(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong());
@@ -694,7 +694,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1237679472(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject());
@@ -728,7 +728,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_825201405(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes());
@@ -762,7 +762,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_510386133(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort());
@@ -796,7 +796,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1369061954(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString());
@@ -835,7 +835,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_589253529(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setBool& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setBool*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setBool& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setBool*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setBool());
@@ -874,7 +874,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_589243771(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setByte& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setByte*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setByte& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setByte*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setByte());
@@ -913,7 +913,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_589230893(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setChar& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setChar*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setChar& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setChar*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setChar());
@@ -952,7 +952,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_720472590(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setDouble& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setDouble*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setDouble& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setDouble*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setDouble());
@@ -991,7 +991,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1083385729(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setFloat& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setFloat*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setFloat& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setFloat*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setFloat());
@@ -1030,7 +1030,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_1265927470(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setInt& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setInt*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setInt& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setInt*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setInt());
@@ -1069,7 +1069,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 void BSerializer_588955655(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setLong& r = * dynamic_cast<com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setLong*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setLong& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setLong*>(p);
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setLong());
