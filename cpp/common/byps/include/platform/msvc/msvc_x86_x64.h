@@ -31,11 +31,13 @@
 
 #define BFSTREAM_WCHAR
 
-#include "msvc_x86_x64.h"
-
 #ifdef _DEBUG
 #define BDEBUG
 #endif
+
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 
 #include <ctime>
 
