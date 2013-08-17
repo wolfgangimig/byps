@@ -28,15 +28,15 @@ public:
     void operator&(BTargetId& v);
 
     template<typename _Type> void operator&(_Type& obj);
-    template<typename _Type> void operator&(std::basic_string<_Type>& obj);
-    template<typename _Type> void operator&(std::vector<_Type>& obj);
-    template<typename _Key, typename _Type> void operator&(std::map<_Key,_Type>& obj);
-    template<typename _Type> void operator&(std::set<_Type>& obj);
+    template<typename _Type> void operator&(basic_string<_Type>& obj);
+    template<typename _Type> void operator&(vector<_Type>& obj);
+    template<typename _Key, typename _Type> void operator&(map<_Key,_Type>& obj);
+    template<typename _Type> void operator&(set<_Type>& obj);
 
     template<typename _Type> void operator&(byps_ptr<_Type>& ptr);
-    template<typename _Type> void operator&(byps_ptr<std::set<_Type> >& obj);
-    template<typename _Type> void operator&(byps_ptr<std::vector<_Type> >& obj);
-    template<typename _Key, typename _Type> void operator&(byps_ptr<std::map<_Key,_Type> >& obj);
+    template<typename _Type> void operator&(byps_ptr<set<_Type> >& obj);
+    template<typename _Type> void operator&(byps_ptr<vector<_Type> >& obj);
+    template<typename _Key, typename _Type> void operator&(byps_ptr<map<_Key,_Type> >& obj);
 	template<typename _Type> void operator&(byps_ptr<BArray1<_Type> >& obj);
 	template<typename _Type> void operator&(byps_ptr<BArray2<_Type> >& obj);
 	template<typename _Type> void operator&(byps_ptr<BArray3<_Type> >& obj);
@@ -57,13 +57,13 @@ protected:
     virtual void internalStoreObjS(PSerializable, bool , BSERIALIZER, BTYPEID) {}
 
 	void serializeObjS(PSerializable& pObjS);
-	void serializeObj(POBJECT& pObj, const std::type_info* tinfo);
+	void serializeObj(POBJECT& pObj, const type_info* tinfo);
 
     BBuffer bbuf;
 
 };
 
-template<typename _Type> void BIO::operator&(std::basic_string<_Type>& obj) {
+template<typename _Type> void BIO::operator&(basic_string<_Type>& obj) {
     bbuf.serialize(obj);
 }
 
@@ -71,7 +71,7 @@ template<typename _Type> void BIO::operator&(_Type& obj) {
     obj.serialize(*this, header.version);
 }
 
-template<typename _Type> void BIO::operator&(std::vector<_Type>& obj) {
+template<typename _Type> void BIO::operator&(vector<_Type>& obj) {
     if (is_loading) {
         BLENGTH n0 = 0;
         bbuf.serialize(n0);
@@ -92,7 +92,7 @@ template<typename _Type> void BIO::operator&(std::vector<_Type>& obj) {
     }
 }
 
-template<typename _Key, typename _Type> void BIO::operator&(std::map<_Key, _Type>& obj) {
+template<typename _Key, typename _Type> void BIO::operator&(map<_Key, _Type>& obj) {
     if (is_loading) {
         BLENGTH n0 = 0;
         bbuf.serialize(n0);
@@ -107,7 +107,7 @@ template<typename _Key, typename _Type> void BIO::operator&(std::map<_Key, _Type
     else {
         BLENGTH n0 = (BLENGTH)obj.size();
         bbuf.serialize(n0);
-        for (typename std::map<_Key, _Type>::iterator it = obj.begin(); it != obj.end(); it++) {
+        for (typename map<_Key, _Type>::iterator it = obj.begin(); it != obj.end(); it++) {
             _Key k = (*it).first;
             _Type& v = (*it).second;
             (*this) & k;
@@ -116,42 +116,42 @@ template<typename _Key, typename _Type> void BIO::operator&(std::map<_Key, _Type
     }
 }
 
-template<typename _Type> void BIO::operator&(std::set<_Type>& obj) {
+template<typename _Type> void BIO::operator&(set<_Type>& obj) {
     if (is_loading) {
         BLENGTH n0 = 0;
         bbuf.serialize(n0);
         for (BLENGTH i0 = 0; i0 < n0; i0++) {
             _Type v = _Type();
             (*this) & v;
-            obj.insert(typename std::set<_Type>::value_type(v));
+            obj.insert(typename set<_Type>::value_type(v));
         }
     }
     else {
         BLENGTH n0 = (BLENGTH)obj.size();
         bbuf.serialize(n0);
-        for (typename std::set<_Type>::iterator it = obj.begin(); it != obj.end(); it++) {
+        for (typename set<_Type>::iterator it = obj.begin(); it != obj.end(); it++) {
             _Type v = (*it);
             (*this) & v;
         }
     }
 }
 
-template<typename _Type> void BIO::operator&(byps_ptr<std::set<_Type> >& ptr) {
+template<typename _Type> void BIO::operator&(byps_ptr<set<_Type> >& ptr) {
 	POBJECT pObj = ptr;
 	serializeObj(pObj, ptr && !is_loading ? &typeid(*ptr.get()) : NULL);
-	if (is_loading) ptr = byps_static_ptr_cast<std::set<_Type> >(pObj);
+	if (is_loading) ptr = byps_static_ptr_cast<set<_Type> >(pObj);
 }
 
-template<typename _Type> void BIO::operator&(byps_ptr<std::vector<_Type> >& ptr) {
+template<typename _Type> void BIO::operator&(byps_ptr<vector<_Type> >& ptr) {
 	POBJECT pObj = ptr;
 	serializeObj(pObj, ptr && !is_loading ? &typeid(*ptr.get()) : NULL);
-	if (is_loading) ptr = byps_static_ptr_cast<std::vector<_Type> >(pObj);
+	if (is_loading) ptr = byps_static_ptr_cast<vector<_Type> >(pObj);
 }
 
-template<typename _Key, typename _Type> void BIO::operator&(byps_ptr<std::map<_Key,_Type> >& ptr) {
+template<typename _Key, typename _Type> void BIO::operator&(byps_ptr<map<_Key,_Type> >& ptr) {
 	POBJECT pObj = ptr;
 	serializeObj(pObj, ptr && !is_loading ? &typeid(*ptr.get()) : NULL);
-	if (is_loading) ptr = byps_static_ptr_cast<std::map<_Key,_Type> >(pObj);
+	if (is_loading) ptr = byps_static_ptr_cast<map<_Key,_Type> >(pObj);
 }
 
 template<typename _Type> void BIO::operator&(byps_ptr<BArray1<_Type> >& ptr) {

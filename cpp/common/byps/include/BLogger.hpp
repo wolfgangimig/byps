@@ -9,24 +9,24 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE void BLogFile::println(BLogLevel msglevel, const std::wstring& msg) {
+BINLINE void BLogFile::println(BLogLevel msglevel, const wstring& msg) {
 	
 	if (level > msglevel) return;
 
 	
-	std::time_t t = std::time(nullptr);
+	time_t t = time(nullptr);
     struct tm now;
     byps_localtime(&now, &t);
 
-    strm << std::setfill(L'0')
-         << std::setw(4) << 1900 + now.tm_year << L"-"
-         << std::setw(2) << now.tm_mon+1 << L"-"
-         << std::setw(2) << now.tm_mday << L" "
-         << std::setw(2) << now.tm_hour << L":"
-         << std::setw(2) << now.tm_min << L":"
-         << std::setw(2) << now.tm_sec << L" ";
+    strm << setfill(L'0')
+         << setw(4) << 1900 + now.tm_year << L"-"
+         << setw(2) << now.tm_mon+1 << L"-"
+         << setw(2) << now.tm_mday << L" "
+         << setw(2) << now.tm_hour << L":"
+         << setw(2) << now.tm_min << L":"
+         << setw(2) << now.tm_sec << L" ";
 
-	strm << std::this_thread::get_id() << L" ";
+	strm << this_thread::get_id() << L" ";
 
 	switch (msglevel) {
 	case Nothing: break;
@@ -39,24 +39,24 @@ BINLINE void BLogFile::println(BLogLevel msglevel, const std::wstring& msg) {
 
 	strm << msg;
 
-	strm << std::endl;
+	strm << endl;
 }
 
 BINLINE BLogFile::BLogFile() : level(BLogLevel::Nothing) {
 }
 
 #ifdef BFSTREAM_WCHAR
-BINLINE void BLogFile::open(const std::wstring& fname, BLogLevel level, bool append) {
-    std::ios_base::openmode om = std::ios_base::out;
-    if (append) om |= std::ios_base::app;
+BINLINE void BLogFile::open(const wstring& fname, BLogLevel level, bool append) {
+    ios_base::openmode om = ios_base::out;
+    if (append) om |= ios_base::app;
     strm.open(fname, om);
     this->level = level;
 }
 #endif
 
-BINLINE void BLogFile::open(const std::string& fname, BLogLevel level, bool append) {
-    std::ios_base::openmode om = std::ios_base::out;
-    if (append) om |= std::ios_base::app;
+BINLINE void BLogFile::open(const string& fname, BLogLevel level, bool append) {
+    ios_base::openmode om = ios_base::out;
+    if (append) om |= ios_base::app;
     strm.open(fname, om);
     this->level = level;
 }
@@ -66,12 +66,12 @@ BINLINE void BLogFile::close() {
 }
 
 #ifdef BFSTREAM_WCHAR
-BINLINE void BLogger::init(const std::wstring& fname, BLogLevel level, bool append) {
+BINLINE void BLogger::init(const wstring& fname, BLogLevel level, bool append) {
     logFile.open(fname, level, append);
 }
 #endif
 
-BINLINE void BLogger::init(const std::string& fname, BLogLevel level, bool append) {
+BINLINE void BLogger::init(const string& fname, BLogLevel level, bool append) {
     logFile.open(fname, level, append);
 }
 
@@ -128,22 +128,22 @@ BINLINE BLogStream::~BLogStream() {
 	BLogger::logFile.println(level, ss.str());
 }
 
-BINLINE std::basic_ostream<wchar_t>& BLogStream::operator << (const char* msg) {
+BINLINE basic_ostream<wchar_t>& BLogStream::operator << (const char* msg) {
 	return ss << msg;
 }
 
-BINLINE std::basic_ostream<wchar_t>& BLogStream::operator << (const std::wstring& msg) {
+BINLINE basic_ostream<wchar_t>& BLogStream::operator << (const wstring& msg) {
 	return ss << msg;
 }
 
-BINLINE std::basic_ostream<wchar_t>& BLogStream::operator << (const std::string& msg) {
+BINLINE basic_ostream<wchar_t>& BLogStream::operator << (const string& msg) {
 	return ss << msg;
 }
 
 BINLINE BLogger::BLogger(const char* className) : className(className) {
 }
 
-BINLINE std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& ss, const char* msg) {
+BINLINE basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& ss, const char* msg) {
 	const char* p = msg;
 	while (*p) {
 		ss << (wchar_t)(*p);
@@ -152,12 +152,12 @@ BINLINE std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& s
 	return ss;
 }
 
-BINLINE std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& ss, const std::string& msg) {
+BINLINE basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& ss, const string& msg) {
 	return ss << msg.c_str();
 }
 
-BINLINE std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& ss, const std::exception& ex) {
-	std::string msg = ex.what();
+BINLINE basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& ss, const exception& ex) {
+	string msg = ex.what();
 	return ss << msg;
 }
 

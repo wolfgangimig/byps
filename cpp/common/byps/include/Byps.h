@@ -15,14 +15,18 @@
 #include <sstream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <set>
 #include <iostream>
+#include <fstream>
 #include <functional>
 
 #include "platform/platform-api.h"
 
 
 namespace com { namespace wilutions { namespace byps {
+
+using namespace ::std;
 
 typedef int32_t BTYPEID;
 typedef int32_t BPOINTER;
@@ -94,7 +98,7 @@ typedef byps_ptr<BRegistry> PRegistry;
 typedef byps_ptr<BRemote> PRemote;
 typedef byps_ptr<BSerializable> PSerializable;
 typedef byps_ptr<BSkeleton> PSkeleton;
-typedef byps_ptr<std::istream> PStream;
+typedef byps_ptr<istream> PStream;
 typedef byps_ptr<BStreamRequest> PStreamRequest;
 typedef byps_ptr<BVariant> PVariant;
 typedef byps_ptr<BWire> PWire;

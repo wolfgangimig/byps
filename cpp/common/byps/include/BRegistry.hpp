@@ -16,41 +16,41 @@ namespace com { namespace wilutions { namespace byps {
 BINLINE void BSerializer_12(BIO& bio, POBJECT& pObj, PSerializable& , void* ){
 	void* p = pObj.get();
 	if (p) { 
-		std::vector< PSerializable >& r = * reinterpret_cast<std::vector< PSerializable >*>(p);
+		vector< PSerializable >& r = * reinterpret_cast<vector< PSerializable >*>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new std::vector< PSerializable >());
+		pObj = POBJECT(new vector< PSerializable >());
 	}
 }
 
 BINLINE void BSerializer_14(BIO& bio, POBJECT& pObj, PSerializable& , void* ){
 	void* p = pObj.get();
 	if (p) { 
-		std::set< PSerializable >& r = * reinterpret_cast<std::set< PSerializable >*>(p);
+		set< PSerializable >& r = * reinterpret_cast<set< PSerializable >*>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new std::set< PSerializable >());
+		pObj = POBJECT(new set< PSerializable >());
 	}
 }
 
 
 BINLINE BRegistry::BRegistry() {
 	registerClass(typeid(BContentStream), BContentStream::serialize, BTYPEID_STREAM);
-	registerClass(typeid(std::vector<PSerializable>), BSerializer_12, BTYPEID_LIST);
-	registerClass(typeid(std::set<PSerializable>), BSerializer_14, BTYPEID_SET);
+	registerClass(typeid(vector<PSerializable>), BSerializer_12, BTYPEID_LIST);
+	registerClass(typeid(set<PSerializable>), BSerializer_14, BTYPEID_SET);
 }
 
 BINLINE BRegistry::~BRegistry() {
 }
 
-BINLINE void BRegistry::registerClass(const std::type_info& tinfo, BSERIALIZER ser, BTYPEID typeId) {
+BINLINE void BRegistry::registerClass(const type_info& tinfo, BSERIALIZER ser, BTYPEID typeId) {
     mapSerializer[typeId] = ser;
     size_t hc = tinfo.hash_code();
     mapTypeIds[hc] = typeId;
 }
 
 
-BINLINE BSERIALIZER BRegistry::getSerializer(const std::type_info& tinfo, BTYPEID &typeId) {
+BINLINE BSERIALIZER BRegistry::getSerializer(const type_info& tinfo, BTYPEID &typeId) {
     BSERIALIZER ser = NULL;
     size_t hc = tinfo.hash_code();
     typeId = mapTypeIds[hc];
@@ -58,7 +58,7 @@ BINLINE BSERIALIZER BRegistry::getSerializer(const std::type_info& tinfo, BTYPEI
         ser = mapSerializer[typeId];
     }
     if (!ser) {
-        std::wstringstream ss; ss << L"Missing serializer for " << BToStdWString(tinfo.name());
+        wstringstream ss; ss << L"Missing serializer for " << BToStdWString(tinfo.name());
         throw BException(EX_NO_SERIALIZER, ss.str());
     }
     return ser;
@@ -67,7 +67,7 @@ BINLINE BSERIALIZER BRegistry::getSerializer(const std::type_info& tinfo, BTYPEI
 BINLINE BSERIALIZER BRegistry::getSerializer(BTYPEID typeId) {
     BSERIALIZER ser = mapSerializer[typeId];
     if (!ser) {
-        std::wstringstream ss; ss << L"Missing serializer for typeId=" << typeId;
+        wstringstream ss; ss << L"Missing serializer for typeId=" << typeId;
         throw BException(EX_NO_SERIALIZER, ss.str());
     }
     return ser;

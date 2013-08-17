@@ -17,18 +17,18 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 	byps_mutex mutex;
 	byps_condition_variable queueItemAdded;
 	byps_condition_variable queueItemRemoved;
-	std::vector<PRunnable> queue;
+	vector<PRunnable> queue;
 	int maxThreads;
 	int fullLimit;
 	byps_atomic<bool> isDone;
 
-	typedef byps_ptr<std::thread> PThread;
-	std::map<std::thread::id, PThread> allThreads;
-	std::map<std::thread::id, bool> runningThreads;
+	typedef byps_ptr<thread> PThread;
+	map<thread::id, PThread> allThreads;
+	map<thread::id, bool> runningThreads;
 
 	PRunnable nextRunnableUnsync(byps_unique_lock& lock) {
 
-		std::chrono::duration<int,std::milli> timeout(100 * 1000);
+		chrono::duration<int,milli> timeout(100 * 1000);
 
 		bool succ = queueItemAdded.wait_for(lock, timeout, [this](){ 
 			return this->isDone || this->queue.size() != 0; 
@@ -45,7 +45,7 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 	}
 	
 	static void threadFunction(PThreadPoolImpl tpool) {
-		std::thread::id tid = std::this_thread::get_id();
+		thread::id tid = this_thread::get_id();
 
 		while (true) {
 			PRunnable r;
@@ -72,10 +72,10 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 		}
 	}
 
-	void removeStoppedThreadsUnsync(std::vector<PThread>& stoppedThreads) {
-		std::vector<std::thread::id> killIds;
+	void removeStoppedThreadsUnsync(vector<PThread>& stoppedThreads) {
+		vector<thread::id> killIds;
 		killIds.reserve(runningThreads.size());
-		for (std::map<std::thread::id, bool>::iterator it = runningThreads.begin(); it != runningThreads.end(); it++) {
+		for (map<thread::id, bool>::iterator it = runningThreads.begin(); it != runningThreads.end(); it++) {
 			if ((*it).second) continue;
 			killIds.push_back((*it).first);
 		}
@@ -87,7 +87,7 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 		}
 	}
 
-	void killStoppedThreads(std::vector<PThread>& stoppedThreads) {
+	void killStoppedThreads(vector<PThread>& stoppedThreads) {
 		for (unsigned i = 0; i < stoppedThreads.size(); i++) {
 			PThread t = stoppedThreads[i];
 			if (t && t->joinable()) {
@@ -115,11 +115,11 @@ public:
 			queueItemAdded.notify_all();
 			queueItemRemoved.notify_all();
 
-			std::vector<PThread> stoppedThreads;
+			vector<PThread> stoppedThreads;
 			{
 				byps_unique_lock lock(mutex);
 
-				for (std::map<std::thread::id, bool>::iterator it = runningThreads.begin(); it != runningThreads.end(); it++) {
+				for (map<thread::id, bool>::iterator it = runningThreads.begin(); it != runningThreads.end(); it++) {
 					(*it).second = false;
 				}
 				removeStoppedThreadsUnsync(stoppedThreads);
@@ -130,7 +130,7 @@ public:
 
 	virtual bool execute(PRunnable r) {
 		
-		std::vector<PThread> stoppedThreads;
+		vector<PThread> stoppedThreads;
 
 		{
 			byps_unique_lock lock(this->mutex);
@@ -147,7 +147,7 @@ public:
 				// Start new thread, if all threads busy
 				if (queue.size() >= runningThreads.size()) {
 					if (runningThreads.size() < (size_t)maxThreads) {
-						PThread t(new std::thread(threadFunction, pThis));
+						PThread t(new thread(threadFunction, pThis));
 						runningThreads[t->get_id()] = true;
 						allThreads[t->get_id()] = t;
 					}

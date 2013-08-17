@@ -5,6 +5,8 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 class BClient : public byps_enable_shared_from_this<BClient> {
 public:
     const PTransport transport;
@@ -17,7 +19,7 @@ public:
 	void start();
 
 #ifdef CPP11_LAMBDA
-	static void start(PClient client, std::function<void (PClient, BException)> asyncResult); 
+    static void start(PClient client, function<void (PClient, BException)> asyncResult);
 #else
 	static void start(PClient client, byps_ptr<BAsyncResultT<PClient> > asyncResult);
 #endif

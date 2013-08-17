@@ -6,6 +6,8 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 #define NEGOTIATE_MAGIC_DOUBLE_QUOTES "[\"N\""
 
 
@@ -17,7 +19,7 @@ typedef byps_ptr<BNegotiate> PNegotiate;
 
 class BNegotiate {
 public:
-    std::string protocols;
+    string protocols;
     int32_t version;
     BByteOrder byteOrder;
     BTargetId targetId;

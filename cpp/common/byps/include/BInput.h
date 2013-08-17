@@ -12,6 +12,8 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 class BInput : public BIO {
 public:
     BMessageHeader header;
@@ -24,7 +26,7 @@ public:
 
 protected:
 	 
-    typedef std::unordered_map<BPOINTER, POBJECT > IDMAP;
+    typedef unordered_map<BPOINTER, POBJECT > IDMAP;
     IDMAP idMap;
     BPOINTER currentId;
 

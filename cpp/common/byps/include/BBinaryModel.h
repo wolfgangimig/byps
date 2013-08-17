@@ -34,8 +34,8 @@ public:
 		m_nPacking = rhs.m_nPacking;
 	}
 
-	std::string getProtocolId() {
-		return std::string("S");
+	string getProtocolId() {
+		return string("S");
 	}
 
 private:

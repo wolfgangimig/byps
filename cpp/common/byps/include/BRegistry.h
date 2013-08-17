@@ -2,7 +2,6 @@
 #define BREGISTRY_H_
 
 #include "Byps.h"
-#include <unordered_map>
 
 namespace com { namespace wilutions { namespace byps {
 
@@ -29,13 +28,13 @@ const BTYPEID BTYPEID_HEADER = 30;
 const BTYPEID BTYPEID_STRING_UTF16 = BTYPEID_STRING;
 
 class BRegistry {
-    std::unordered_map<BTYPEID, BSERIALIZER> mapSerializer;
-    std::unordered_map<size_t, BTYPEID> mapTypeIds;
+    unordered_map<BTYPEID, BSERIALIZER> mapSerializer;
+    unordered_map<size_t, BTYPEID> mapTypeIds;
 public:
     BRegistry();
     ~BRegistry();
-    void registerClass(const std::type_info& tinfo, BSERIALIZER ser, BTYPEID typeId);
-    BSERIALIZER getSerializer(const std::type_info& tinfo, BTYPEID& typeId);
+    void registerClass(const type_info& tinfo, BSERIALIZER ser, BTYPEID typeId);
+    BSERIALIZER getSerializer(const type_info& tinfo, BTYPEID& typeId);
     BSERIALIZER getSerializer(BTYPEID typeId);
 };
 

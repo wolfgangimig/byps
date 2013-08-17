@@ -36,9 +36,9 @@ BINLINE void BClient::start() {
 #ifdef CPP11_LAMBDA
 
 class BClientStart_BAsyncResultT : public BAsyncResultT<PClient> {
-	std::function<void (const PClient, BException ex)> innerResult;
+	function<void (const PClient, BException ex)> innerResult;
 public:
-	BClientStart_BAsyncResultT(std::function<void (const PClient, BException ex)> innerResult) 
+	BClientStart_BAsyncResultT(function<void (const PClient, BException ex)> innerResult) 
 		: innerResult(innerResult) {
 	}
 	virtual void setAsyncResult(PClient result, BException ex) {
@@ -47,7 +47,7 @@ public:
 	}
 };
 
-BINLINE void BClient::start(PClient client, std::function<void (PClient, BException)> asyncResult) {
+BINLINE void BClient::start(PClient client, function<void (PClient, BException)> asyncResult) {
 	PAsyncResult outerResult = new BClientStart_BAsyncResultT(asyncResult);
 	client->internalStart(outerResult);
 }
@@ -83,7 +83,7 @@ public:
                 innerResult->setAsyncResult(BVariant(client));
             }
         }
-        catch (const std::exception& e) {
+        catch (const exception& e) {
             innerResult->setAsyncResult(BVariant(e));
         }
 		delete this;

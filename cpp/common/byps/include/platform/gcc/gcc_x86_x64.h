@@ -11,25 +11,25 @@
 
 #include <memory>
 
-#define byps_ptr std::shared_ptr
-#define byps_weak_ptr std::weak_ptr
-#define byps_ptr_cast std::dynamic_pointer_cast
-#define byps_static_ptr_cast std::static_pointer_cast
-#define byps_enable_shared_from_this std::enable_shared_from_this
+#define byps_ptr ::std::shared_ptr
+#define byps_weak_ptr ::std::weak_ptr
+#define byps_ptr_cast ::std::dynamic_pointer_cast
+#define byps_static_ptr_cast ::std::static_pointer_cast
+#define byps_enable_shared_from_this ::std::enable_shared_from_this
 
 #include <mutex>
-#define byps_mutex std::mutex
-#define byps_unique_lock std::unique_lock<std::mutex>
+#define byps_mutex ::std::mutex
+#define byps_unique_lock ::std::unique_lock< byps_mutex>
 
 #include <condition_variable>
-#define byps_condition_variable std::condition_variable
+#define byps_condition_variable ::std::condition_variable
 
 #include <atomic>
-#define byps_atomic std::atomic
+#define byps_atomic ::std::atomic
 
 #include <ctime>
 
-inline struct tm* byps_localtime(struct tm* buf, const std::time_t* t) {
+inline struct tm* byps_localtime(struct tm* buf, const ::std::time_t* t) {
     memcpy(buf, localtime(t), sizeof(struct tm));
     return buf;
 }
@@ -75,9 +75,9 @@ inline int64_t BSWAP8(register int64_t v) {
 	return v;
 }
 
-}}}
-
 #endif // __x86_64__
+
+}}}
 
 #endif // BSWAP_FUNCTIONS
 

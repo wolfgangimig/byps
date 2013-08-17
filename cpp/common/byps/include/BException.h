@@ -31,12 +31,12 @@ const int32_t EX_IOERROR = 14;
 const int32_t EX_UNSUPPORTED_METHOD = 17;
 const int32_t EX_CLIENT_DIED = 12;
 
-class BException : public std::exception {
+class BException : public exception {
 public:
-    BException(int32_t code, const std::wstring& msg) throw() : code(code), msg(msg) {
+    BException(int32_t code, const wstring& msg) throw() : code(code), msg(msg) {
 	}
 
-    BException(int32_t code, const std::wstring& msg, const std::wstring& details) throw() : code(code), msg(msg), details(details) {
+    BException(int32_t code, const wstring& msg, const wstring& details) throw() : code(code), msg(msg), details(details) {
 	}
 
     BException(int32_t code) throw() : code(code) {
@@ -45,7 +45,7 @@ public:
     BException(const BException& rhs) throw() : code(rhs.code), msg(rhs.msg), details(rhs.details) {
 	}
 
-	BException(const std::exception& ex) throw() : code(EX_INTERNAL), swhat(ex.what()) {
+	BException(const exception& ex) throw() : code(EX_INTERNAL), swhat(ex.what()) {
 		const BException* bex = dynamic_cast<const BException*>(&ex);
 		if (bex) {
 			code = bex->code;
@@ -71,24 +71,24 @@ public:
         return code;
 	}
 
-    const std::wstring& getMsg() const {
+    const wstring& getMsg() const {
         return msg;
 	}
 
-    const std::wstring& getDetails() const {
+    const wstring& getDetails() const {
         return details;
     }
 
-	const std::wstring toString() const {
-		std::wstringstream ss;
+	const wstring toString() const {
+		wstringstream ss;
 		ss << L"[BYPS:" << code << L"][" << msg << L"][" << details << L"]";
 		return ss.str();
 	}
 
 	virtual const char* what() const throw() {
 		if (swhat.size() == 0) {
-			std::wstring str = toString();
-			std::stringstream ss;
+			wstring str = toString();
+			stringstream ss;
 			for (unsigned i = 0; i < str.size(); i++) {
 				ss << (char)(str[i]);
 			}
@@ -101,9 +101,9 @@ public:
 
 protected:
     int32_t code;
-    std::wstring msg;
-    std::wstring details;
-	std::string swhat;
+    wstring msg;
+    wstring details;
+	string swhat;
 
     
 

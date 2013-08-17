@@ -48,9 +48,9 @@ public:
 
     void serializeLength(BLENGTH& p);
 
-    void serialize(std::wstring& str);
+    void serialize(wstring& str);
 
-    void serialize(std::string& str);
+    void serialize(string& str);
 
     bool isEmpty();
 

@@ -23,13 +23,13 @@ BINLINE bool BTargetId::operator==(const BTargetId& rhs) const {
 BINLINE BTargetId BTargetId::parseString(const char* sz, size_t len) {
 	if (!sz || len < 32) return BTargetId();
 
-	std::stringstream ss;
-	ss << std::string(sz, 16);
+	stringstream ss;
+	ss << string(sz, 16);
 	ss << " ";
-	ss << std::string(sz+16, len-16);
+	ss << string(sz+16, len-16);
 
 	uint64_t v0 = 0, v1 = 0;
-	ss >> std::hex >> v0 >> std::hex >> v1;
+	ss >> hex >> v0 >> hex >> v1;
 
 	return BTargetId((int64_t)v0, (int64_t)v1);
 }

@@ -5,13 +5,15 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 class BMessage {
 public:
     BMessageHeader header;
     PBytes buf;
-    std::vector<PStreamRequest> streams;
+    vector<PStreamRequest> streams;
 
-    BMessage(const BMessageHeader& header, PBytes buf, const std::vector<PStreamRequest>& streams);
+    BMessage(const BMessageHeader& header, PBytes buf, const vector<PStreamRequest>& streams);
 
     bool isEmpty() const;
 };

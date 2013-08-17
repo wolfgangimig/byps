@@ -82,7 +82,7 @@ public:
                 innerResult->setAsyncResult(BVariant(sobj));
             }
 		}
-        catch (const std::exception& ex) {
+        catch (const exception& ex) {
             innerResult->setAsyncResult(BVariant(ex));
 		}
 		delete this;
@@ -121,7 +121,7 @@ public:
                 innerResult->setAsyncResult(BVariant(true));
             }
 		}
-        catch (const std::exception& ex) {
+        catch (const exception& ex) {
             innerResult->setAsyncResult(BVariant(ex));
 		}
 		delete this;
@@ -142,7 +142,7 @@ BINLINE void BTransport::negotiateProtocolClient(PAsyncResult asyncResult) {
 
     BMessageHeader header;
     header.messageId = wire->makeMessageId();
-    std::vector<PStreamRequest> streams;
+    vector<PStreamRequest> streams;
     PMessage msg(new BMessage(header, bytes, streams));
 
     wire->send(msg, outerResult);
@@ -168,7 +168,7 @@ BINLINE PProtocol BTransport::negotiateProtocolServer(const BTargetId& targetId,
             asyncResult->setAsyncResult(BVariant(bytes));
 		}
 	}
-    catch (const std::exception& ex) {
+    catch (const exception& ex) {
         asyncResult->setAsyncResult(BVariant(ex));
 	}
     return protocol;
@@ -181,8 +181,8 @@ BINLINE PProtocol BTransport::createNegotiatedProtocol(BNegotiate& nego) {
 		throw BException(EX_CORRUPT, L"Protocol negotiation failed. Cannot detect protocol.");
 	}
 
-    if (nego.protocols.find(BBinaryModel::MEDIUM().getProtocolId()) != std::string::npos) {
-        int32_t negotiatedVersion = std::min(nego.version, apiDesc->version);
+    if (nego.protocols.find(BBinaryModel::MEDIUM().getProtocolId()) != string::npos) {
+        int32_t negotiatedVersion = min(nego.version, apiDesc->version);
         protocol = PProtocol(new BProtocol(apiDesc, negotiatedVersion, nego.byteOrder));
         nego.protocols = BBinaryModel::MEDIUM().getProtocolId();
         nego.version = negotiatedVersion;
@@ -215,7 +215,7 @@ BINLINE void BTransport::send(const PSerializable& obj, PAsyncResult asyncResult
 		wire->send(msg, outerResult);
 
 	}
-    catch (const std::exception& ex) {
+    catch (const exception& ex) {
         asyncResult->setAsyncResult(BVariant(ex));
 	}
 }
@@ -241,7 +241,7 @@ public:
 
 			innerResult->setAsyncResult(BVariant(msg));
 		}
-		catch (const std::exception& ex) {
+		catch (const exception& ex) {
 			innerResult->setAsyncResult(BVariant(ex));
 		}
 		delete this;

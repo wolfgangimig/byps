@@ -15,18 +15,18 @@ public:
 	BLogFile();
 
 #ifdef BFSTREAM_WCHAR
-	void open(const std::wstring& fname, BLogLevel level, bool append);
+	void open(const wstring& fname, BLogLevel level, bool append);
 #endif
 
-    void open(const std::string& fname, BLogLevel level, bool append);
+    void open(const string& fname, BLogLevel level, bool append);
 
 	void close();
-	void println(BLogLevel msglevel, const std::wstring& msg);
+	void println(BLogLevel msglevel, const wstring& msg);
 
 	BLogLevel level;
 
 private:
-	std::wfstream strm;
+	wfstream strm;
 };
 
 class BLogStream {
@@ -34,13 +34,13 @@ public:
 	BLogStream(BLogLevel level, const char* className, int line);
 	BLogStream(const BLogStream& rhs);
 	~BLogStream();
-	std::basic_ostream<wchar_t>& operator << (const std::wstring& msg);
-	std::basic_ostream<wchar_t>& operator << (const char* msg);
-	std::basic_ostream<wchar_t>& operator << (const std::string& msg);
+	basic_ostream<wchar_t>& operator << (const wstring& msg);
+	basic_ostream<wchar_t>& operator << (const char* msg);
+	basic_ostream<wchar_t>& operator << (const string& msg);
 private:
 	bool print;
 	BLogLevel level;
-	std::wstringstream ss;
+	wstringstream ss;
 };
 
 class BLogger {
@@ -58,9 +58,9 @@ public:
     BLogStream error(int line = 0) const;
 
 #ifdef BFSTREAM_WCHAR
-    static void init(const std::wstring& fname, BLogLevel level, bool append = false);
+    static void init(const wstring& fname, BLogLevel level, bool append = false);
 #endif
-    static void init(const std::string& fname, BLogLevel level, bool append = false);
+    static void init(const string& fname, BLogLevel level, bool append = false);
     static void done();
 
 	static BLogFile logFile;
@@ -72,9 +72,9 @@ public:
 		BLogFile BLogger::logFile;\
 	}}}
 
-std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& , const char* msg);
-std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& , const std::string& msg);
-std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& ss, const std::exception& ex);
+basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& , const char* msg);
+basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& , const string& msg);
+basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& ss, const exception& ex);
 
 }}}
 

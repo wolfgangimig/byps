@@ -6,7 +6,7 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-typedef std::function<void (const BVariant&)> BAsyncResultL;
+typedef function<void (const BVariant&)> BAsyncResultL;
 
 // ---------------------------------------------------------
 
@@ -95,14 +95,14 @@ private:
 
 template<typename _ReturnType, typename _ResultClass> class BAsyncResultReceiveMethodL : public BAsyncResult {
 public:
-    BAsyncResultReceiveMethodL(std::function<void (_ReturnType, BException)> innerResult);
+    BAsyncResultReceiveMethodL(function<void (_ReturnType, BException)> innerResult);
     virtual void setAsyncResult(const BVariant& methodResult);
 
 private:
-    std::function<void (_ReturnType, BException)> innerResult;
+    function<void (_ReturnType, BException)> innerResult;
 };
 
-template<typename _ReturnType, typename _ResultClass> BAsyncResultReceiveMethodL<_ReturnType, _ResultClass>::BAsyncResultReceiveMethodL(std::function<void (_ReturnType, BException )> innerResult) 
+template<typename _ReturnType, typename _ResultClass> BAsyncResultReceiveMethodL<_ReturnType, _ResultClass>::BAsyncResultReceiveMethodL(function<void (_ReturnType, BException )> innerResult)
 	: innerResult(innerResult) {
 }
 

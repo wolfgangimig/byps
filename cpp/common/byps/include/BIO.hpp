@@ -92,7 +92,7 @@ BINLINE void BIO::serializeObjS(PSerializable& pObjS) {
     }
 }
 
-BINLINE void BIO::serializeObj(POBJECT& pObj, const std::type_info* tinfo) {
+BINLINE void BIO::serializeObj(POBJECT& pObj, const type_info* tinfo) {
     if (is_loading) {
 		internalLoadObj(pObj);
     }

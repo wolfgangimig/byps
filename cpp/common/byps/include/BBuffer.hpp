@@ -7,6 +7,7 @@ namespace com {
 namespace wilutions {
 namespace byps {
 
+using namespace ::std;
 
 BINLINE BBuffer::BBuffer(const BBinaryModel& bmodel, BByteOrder byteOrder) :
     bmodel(bmodel),
@@ -150,7 +151,7 @@ BINLINE void BBuffer::serializeLength(BLENGTH& p) {
 	if (!isWrite) p = v;
 }
 
-BINLINE void BBuffer::serialize(std::wstring& str) {
+BINLINE void BBuffer::serialize(wstring& str) {
     if (isWrite) {
 
         int32_t n = 0;
@@ -165,7 +166,7 @@ BINLINE void BBuffer::serialize(std::wstring& str) {
 			int8_t* buf = pBytes->data;
 			int8_t* p = buf + pos;
 
-			for (std::wstring::iterator it = str.begin(); it != str.end(); it++) {
+            for (wstring::iterator it = str.begin(); it != str.end(); it++) {
 
 				wchar_t c = (*it);
 
@@ -234,7 +235,7 @@ BINLINE void BBuffer::serialize(std::wstring& str) {
 
 }
 
-BINLINE void BBuffer::serialize(std::string& str) {
+BINLINE void BBuffer::serialize(string& str) {
     if (isWrite) {
         int32_t n = (int32_t)str.size();
         serialize(n);
@@ -255,7 +256,7 @@ BINLINE void BBuffer::serialize(std::string& str) {
 
         int8_t* buf = pBytes->data;
         int8_t* p = buf + pos;
-        str = std::string((char*)p, (size_t)n);
+        str = string((char*)p, (size_t)n);
 
         char _0 = *(p + n);
         if (_0 != 0) throw new BException(EX_CORRUPT);

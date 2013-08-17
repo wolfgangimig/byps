@@ -5,6 +5,8 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 class BOutput : public BIO {
 public:
     BOutput(PTransport transport, int32_t nNegotiatedVersion, BByteOrder negotiatedByteOrder);
@@ -20,10 +22,10 @@ public:
 
 protected:
 
-    typedef std::unordered_map<const void*, BPOINTER> OBJMAP;
+    typedef unordered_map<const void*, BPOINTER> OBJMAP;
     OBJMAP objMap;
     BPOINTER nextPointer;
-    std::vector<PStreamRequest> streams;
+    vector<PStreamRequest> streams;
 
     virtual void internalStoreObj(POBJECT, bool bUnique, BSERIALIZER ser, BTYPEID typeId);
     virtual void internalStoreObjS(PSerializable, bool bUnique, BSERIALIZER ser, BTYPEID typeId);

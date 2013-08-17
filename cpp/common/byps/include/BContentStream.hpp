@@ -2,11 +2,12 @@
 #define BCONTENTSTREAM_HPP_
 
 #include "BContentStream.h"
-#include <fstream>
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE BContentStreamImpl::BContentStreamImpl(const std::wstring& contentType, int64_t contentLength, PStream stream) 
+using namespace ::std;
+
+BINLINE BContentStreamImpl::BContentStreamImpl(const wstring& contentType, int64_t contentLength, PStream stream) 
 	: contentType(contentType), contentLength(contentLength), stream(stream) {
 }
 
@@ -18,7 +19,7 @@ BINLINE BContentStreamImpl::BContentStreamImpl()
 	: contentLength(-1) {
 }
 
-BINLINE const std::wstring& BContentStreamImpl::getContentType() const {
+BINLINE const wstring& BContentStreamImpl::getContentType() const {
 	return contentType;
 }
 
@@ -34,28 +35,28 @@ BINLINE int32_t BContentStreamImpl::read(char* buf, int32_t offs, int32_t len) {
 }
 
 #ifdef BFSTREAM_WCHAR
-BINLINE BContentStreamFile::BContentStreamFile(const std::wstring& fname) {
-    std::ifstream* fstrm = new std::ifstream(fname.c_str(), std::ios_base::binary|std::ios_base::in);
+BINLINE BContentStreamFile::BContentStreamFile(const wstring& fname) {
+    ifstream* fstrm = new ifstream(fname.c_str(), ios_base::binary|ios_base::in);
     init(fstrm);
 }
 #endif
 
-BINLINE BContentStreamFile::BContentStreamFile(const std::string& fname) {
-    std::ifstream* fstrm = new std::ifstream(fname.c_str(), std::ios_base::binary|std::ios_base::in);
+BINLINE BContentStreamFile::BContentStreamFile(const string& fname) {
+    ifstream* fstrm = new ifstream(fname.c_str(), ios_base::binary|ios_base::in);
     init(fstrm);
 }
 
-BINLINE void BContentStreamFile::init(std::ifstream* fstrm) {
-    fstrm->seekg(0, std::ios_base::end);
-    std::streampos flen = fstrm->tellg();
-    fstrm->seekg(0, std::ios_base::beg);
+BINLINE void BContentStreamFile::init(ifstream* fstrm) {
+    fstrm->seekg(0, ios_base::end);
+    streampos flen = fstrm->tellg();
+    fstrm->seekg(0, ios_base::beg);
     contentLength = (int64_t)flen;
     contentType = L"application/octet-stream";
     stream = PStream(fstrm);
 }
 
 BINLINE BContentStreamFile::~BContentStreamFile() {
-	std::ifstream* fstrm = static_cast<std::ifstream*>(stream.get());
+	ifstream* fstrm = static_cast<ifstream*>(stream.get());
 	fstrm->close();
 }
 

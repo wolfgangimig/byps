@@ -5,13 +5,15 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 class BContentStream : public BSerializable {
 public:
 	virtual ~BContentStream() {}
 
 	virtual BTYPEID BSerializable_getTypeId() { return BTYPEID_STREAM; }
 
-	virtual const std::wstring& getContentType() const = 0;
+    virtual const wstring& getContentType() const = 0;
 	virtual int64_t getContentLength() const = 0;
 	virtual int32_t read(char* buf, int32_t offs, int32_t len) = 0;
 
@@ -20,15 +22,15 @@ public:
 
 class BContentStreamImpl : public BContentStream {
 public:
-	BContentStreamImpl(const std::wstring& contentType, int64_t contentLength, PStream stream);
+    BContentStreamImpl(const wstring& contentType, int64_t contentLength, PStream stream);
 	BContentStreamImpl(PStream stream);
 	virtual ~BContentStreamImpl() {}
-	virtual const std::wstring& getContentType() const ;
+    virtual const wstring& getContentType() const ;
 	virtual int64_t getContentLength() const ;
 	virtual int32_t read(char* buf, int32_t offs, int32_t len);
 protected:
 	BContentStreamImpl();
-	std::wstring contentType;
+    wstring contentType;
 	int64_t contentLength;
 	PStream stream;
 };
@@ -37,12 +39,12 @@ protected:
 class BContentStreamFile : public BContentStreamImpl {
 public:
 #ifdef BFSTREAM_WCHAR
-    BContentStreamFile(const std::wstring& fname);
+    BContentStreamFile(const wstring& fname);
 #endif
-    BContentStreamFile(const std::string& fname);
+    BContentStreamFile(const string& fname);
 	virtual ~BContentStreamFile();
 private:
-    void init(std::ifstream* fstrm);
+    void init(ifstream* fstrm);
 };
 
 }}}

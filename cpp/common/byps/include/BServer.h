@@ -5,6 +5,8 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 class BServer {
 public:
     const PTransport transport;
@@ -20,7 +22,7 @@ public:
 	PProtocol negotiate(const BTargetId& targetId, PBytes& buf, PAsyncResult& asyncResult);
 
 protected:
-    std::map<BTYPEID, PRemote> remotes;
+    unordered_map<BTYPEID, PRemote> remotes;
 };
 
 class BServerR {

@@ -9,12 +9,12 @@ namespace com { namespace wilutions { namespace byps {
 
 class BApiDescriptor {
 public:
-    const std::string name;
-    const std::string pack;
+    const string name;
+    const string pack;
     const int32_t version;
     const bool uniqueObjects;
     
-    BApiDescriptor(const std::string& name, const std::string& package,
+    BApiDescriptor(const string& name, const string& package,
 			int32_t version, bool uniqueObjects)
     :  name(name), pack(package), version(version), uniqueObjects(uniqueObjects) {
 		
@@ -25,8 +25,8 @@ public:
 		return this;
 	}
 
-	std::string getProtocolIds() {
-		return std::string("S");
+	string getProtocolIds() {
+		return string("S");
 	}
 
 	PRegistry getRegistry(BBinaryModel ) {

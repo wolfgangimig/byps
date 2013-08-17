@@ -8,7 +8,7 @@
 #include <string.h>
 
 // If Windows.h is included, min is defined as a macro. 
-// This causes a compiler error at std::min.
+// This causes a compiler error at min.
 #undef min
 
 
@@ -24,15 +24,15 @@ BINLINE BNegotiate::BNegotiate() {
 }
 
 BINLINE void BNegotiate::write(const PBytes& bytes) {
-	std::stringstream ss;
+	stringstream ss;
     ss	<< NEGOTIATE_MAGIC_DOUBLE_QUOTES << ",\""
 		<< protocols << "\","
         << version << ",\""
         << ((BByteOrder::getMyEndian() == BLITTLE_ENDIAN) ? "L" : "B")
 		<< "\", \"\"]";
 
-	std::string str = ss.str();
-	size_t len = std::min(str.size(), bytes->length);
+	string str = ss.str();
+	size_t len = min(str.size(), bytes->length);
 	memcpy(bytes->data, str.c_str(), len);
 	bytes->length = len;
 }
@@ -43,7 +43,7 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 
 	// Magic ["N"
 
-	size_t len = std::min((size_t)4, bytes->length);
+	size_t len = min((size_t)4, bytes->length);
     if (strncmp(p, NEGOTIATE_MAGIC_DOUBLE_QUOTES, len) != 0) throw BException(EX_CORRUPT);
 
 	idx += len;
@@ -102,7 +102,7 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 
 BINLINE bool BNegotiate::isNegotiateMessage(PBytes bytes) {
 	char* p = (char*)bytes->data;
-	size_t len = std::min((size_t)4, bytes->length);
+	size_t len = min((size_t)4, bytes->length);
     return strncmp(p, NEGOTIATE_MAGIC_DOUBLE_QUOTES, len) == 0 ;
 }
 

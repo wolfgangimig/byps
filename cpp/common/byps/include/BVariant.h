@@ -18,12 +18,12 @@ public:
     BVariant(int64_t);
     BVariant(float);
     BVariant(double);
-    BVariant(const std::wstring&);
+    BVariant(const wstring&);
     template <typename _Type> BVariant(byps_ptr<_Type>);
 	BVariant(PSerializable);
 
     BVariant(const BException&);
-	BVariant(const std::exception&);
+    BVariant(const exception&);
 
     void setType(BTYPEID);
     BTYPEID getType() const ;
@@ -32,7 +32,7 @@ public:
     BException getException() const ;
 
     template<typename _Type> void get(_Type& v) const;
-    void get(std::wstring& v) const;
+    void get(wstring& v) const;
     template<typename _Type> void get(byps_ptr<_Type>& v) const;
 	void get(PSerializable& v) const;
     void get(BException& v) const;
@@ -51,7 +51,7 @@ private:
         float floatVal;
         double doubleVal;
     } u;
-    std::wstring strVal;
+    wstring strVal;
     POBJECT objVal;
 	PSerializable sobjVal;
     BException exVal;
@@ -77,12 +77,12 @@ inline BVariant::BVariant(int32_t v) : type(BTYPEID_INT32) { u.intVal = v; }
 inline BVariant::BVariant(int64_t v) : type(BTYPEID_INT64) { u.longVal = v; }
 inline BVariant::BVariant(float v) : type(BTYPEID_FLOAT) { u.floatVal = v; }
 inline BVariant::BVariant(double v) : type(BTYPEID_DOUBLE) { u.doubleVal = v; }
-inline BVariant::BVariant(const std::wstring& v) : type(BTYPEID_STRING), strVal(v) {}
+inline BVariant::BVariant(const wstring& v) : type(BTYPEID_STRING), strVal(v) {}
 template<typename _Type> BVariant::BVariant(byps_ptr<_Type> v) : type(BTYPEID_OBJECT), objVal(byps_static_ptr_cast<void>(v)) {}
 inline BVariant::BVariant(PSerializable v) : type(BTYPEID_OBJECT), sobjVal(v) {}
 inline BVariant::BVariant(const BException& v) : type(BTYPEID_EXCEPTION), exVal(v) {}
 
-inline BVariant::BVariant(const std::exception& v) 
+inline BVariant::BVariant(const exception& v)
 	: type(BTYPEID_EXCEPTION)
 	, exVal( typeid(v) == typeid(BException) ? static_cast<const BException&>(v) : BException(v) )
 {
@@ -101,7 +101,7 @@ template<typename _Type> void BVariant::get(_Type& v) const {
 	v = *pv;
 }
 
-inline void BVariant::get(std::wstring& v) const { v = strVal; }
+inline void BVariant::get(wstring& v) const { v = strVal; }
 template<typename _Type> void BVariant::get(byps_ptr<_Type>& v) const { v = byps_static_ptr_cast<_Type>(objVal); }
 inline void BVariant::get(BException& v) const { v = exVal; }
 inline void BVariant::get(PSerializable& v) const { v = sobjVal; }

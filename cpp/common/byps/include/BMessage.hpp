@@ -6,7 +6,7 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE BMessage::BMessage(const BMessageHeader& header, PBytes buf, const std::vector<PStreamRequest>& streams)
+BINLINE BMessage::BMessage(const BMessageHeader& header, PBytes buf, const vector<PStreamRequest>& streams)
     : header(header), buf(buf), streams(streams) {
 }
 

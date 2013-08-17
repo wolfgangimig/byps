@@ -51,7 +51,7 @@ BINLINE void BServer::recv(const BTargetId& clientTargetId, PSerializable method
         }
 
         if (!remote) {
-            std::wstringstream ss;
+            wstringstream ss;
             ss << L"Service not implemented: remoteId=" << remoteId;
             throw BException(EX_SERVICE_NOT_IMPLEMENTED, ss.str());
         }

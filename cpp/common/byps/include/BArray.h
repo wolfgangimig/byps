@@ -7,6 +7,8 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace ::std;
+
 template<typename _Type> class BSerializerT;
 
 template<typename _Type> class BArray1 {
@@ -16,7 +18,7 @@ template<typename _Type> class BArray1 {
 public:
     BArray1(size_t length);
     BArray1();
-	BArray1(const std::vector<_Type>& vec);
+    BArray1(const vector<_Type>& vec);
 	BArray1(size_t length, _Type v0, ...);
 	template<typename _Iter> BArray1(_Iter begin, _Iter end);
 
@@ -48,7 +50,7 @@ typedef BArray1<int32_t> BArrayInt;
 typedef BArray1<int64_t> BArrayLong;
 typedef BArray1<float> BArrayFloat;
 typedef BArray1<double> BArrayDouble;
-typedef BArray1<std::wstring> BArrayString;
+typedef BArray1<wstring> BArrayString;
 
 typedef byps_ptr<BArray1<bool> > PArrayBool;
 typedef byps_ptr<BArray1<int16_t> > PArrayShort;
@@ -56,7 +58,7 @@ typedef byps_ptr<BArray1<int32_t> > PArrayInt;
 typedef byps_ptr<BArray1<int64_t> > PArrayLong;
 typedef byps_ptr<BArray1<float> > PArrayFloat;
 typedef byps_ptr<BArray1<double> > PArrayDouble;
-typedef byps_ptr<BArray1<std::wstring> > PArrayString;
+typedef byps_ptr<BArray1<wstring> > PArrayString;
 
 template<typename _Type> class BArray2 {
 public:
@@ -147,7 +149,7 @@ template<typename _Type> BArray1<_Type>::BArray1() {
 	init(0);
 }
 
-template<typename _Type> BArray1<_Type>::BArray1(const std::vector<_Type>& vec) {
+template<typename _Type> BArray1<_Type>::BArray1(const vector<_Type>& vec) {
     init(vec.size());
 	for (size_t i = 0; i < vec.size(); i++) {
 		data[i] = vec[i];
