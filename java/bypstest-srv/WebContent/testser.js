@@ -21,8 +21,8 @@ com.wilutions.byps.test.api.refs = com.wilutions.byps.test.api.refs || {};
 com.wilutions.byps.test.api.map = com.wilutions.byps.test.api.map || {};
 com.wilutions.byps.test.api.strm = com.wilutions.byps.test.api.strm || {};
 com.wilutions.byps.test.api.priv = com.wilutions.byps.test.api.priv || {};
-com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
+com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 
 /**
  * ----------------------------------------------
@@ -42,9 +42,8 @@ com.wilutions.byps.test.api.BApiDescriptor_Testser = {
 		return new com.wilutions.byps.BApiDescriptor(
 			"Testser",
 			"com.wilutions.byps.test.api",
-			com.wilutions.byps.BBinaryModel.MEDIUM,
 			791,
-			false,
+			false, // uniqueObjects
 			new com.wilutions.byps.test.api.BRegistry_Testser()
 		);
 	}
@@ -586,7 +585,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setBool = function(v) /* returns void , throws RemoteException*/  {
+	this.setBool = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -602,7 +601,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setByte = function(v) /* returns void , throws RemoteException*/  {
+	this.setByte = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -618,7 +617,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setChar = function(v) /* returns void , throws RemoteException*/  {
+	this.setChar = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -634,7 +633,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setShort = function(v) /* returns void , throws RemoteException*/  {
+	this.setShort = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -650,7 +649,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setInt = function(v) /* returns void , throws RemoteException*/  {
+	this.setInt = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -666,7 +665,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setLong = function(v) /* returns void , throws RemoteException*/  {
+	this.setLong = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -682,7 +681,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setFloat = function(v) /* returns void , throws RemoteException*/  {
+	this.setFloat = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -698,7 +697,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setDouble = function(v) /* returns void , throws RemoteException*/  {
+	this.setDouble = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -714,7 +713,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setString = function(v) /* returns void , throws RemoteException*/  {
+	this.setString = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -730,7 +729,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setPrimitiveTypes = function(v) /* returns void , throws RemoteException*/  {
+	this.setPrimitiveTypes = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -746,7 +745,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.setObject = function(v) /* returns void , throws RemoteException*/  {
+	this.setObject = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -762,7 +761,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getBool = function() /* returns boolean[] , throws RemoteException*/  {
+	this.getBool = function() /* returns boolean[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -778,7 +777,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getByte = function() /* returns byte[] , throws RemoteException*/  {
+	this.getByte = function() /* returns byte[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -794,7 +793,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getChar = function() /* returns char[] , throws RemoteException*/  {
+	this.getChar = function() /* returns char[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -810,7 +809,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getShort = function() /* returns short[] , throws RemoteException*/  {
+	this.getShort = function() /* returns short[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -826,7 +825,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getInt = function() /* returns int[] , throws RemoteException*/  {
+	this.getInt = function() /* returns int[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -842,7 +841,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getLong = function() /* returns long[] , throws RemoteException*/  {
+	this.getLong = function() /* returns long[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -858,7 +857,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getFloat = function() /* returns float[] , throws RemoteException*/  {
+	this.getFloat = function() /* returns float[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -874,7 +873,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getDouble = function() /* returns double[] , throws RemoteException*/  {
+	this.getDouble = function() /* returns double[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -890,7 +889,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getString = function() /* returns java.lang.String[] , throws RemoteException*/  {
+	this.getString = function() /* returns java.lang.String[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -906,7 +905,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[] , throws RemoteException*/  {
+	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -922,7 +921,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 	
 	/**
 	*/
-	this.getObject = function() /* returns java.lang.Object[] , throws RemoteException*/  {
+	this.getObject = function() /* returns java.lang.Object[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -957,7 +956,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	
 	/**
 	*/
-	this.sendArraysInt = function(arr2, arr3, arr4) /* returns int[] , throws RemoteException*/  {
+	this.sendArraysInt = function(arr2, arr3, arr4) /* returns int[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -973,7 +972,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	
 	/**
 	*/
-	this.sendArraysString = function(arr2, arr3, arr4) /* returns java.lang.String[] , throws RemoteException*/  {
+	this.sendArraysString = function(arr2, arr3, arr4) /* returns java.lang.String[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -989,7 +988,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	
 	/**
 	*/
-	this.sendArraysClass = function(arr2, arr3, arr4) /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[] , throws RemoteException*/  {
+	this.sendArraysClass = function(arr2, arr3, arr4) /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1005,7 +1004,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	
 	/**
 	*/
-	this.sendArraysObject = function(arr2, arr3, arr4) /* returns java.lang.Object[] , throws RemoteException*/  {
+	this.sendArraysObject = function(arr2, arr3, arr4) /* returns java.lang.Object[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1021,7 +1020,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 	
 	/**
 	*/
-	this.sendArraysInline = function(arr2, arr3, arr4) /* returns com.wilutions.byps.test.api.inl.Point2D[] , throws RemoteException*/  {
+	this.sendArraysInline = function(arr2, arr3, arr4) /* returns com.wilutions.byps.test.api.inl.Point2D[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1056,7 +1055,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setBool = function(v) /* returns void , throws RemoteException*/  {
+	this.setBool = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1072,7 +1071,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setByte = function(v) /* returns void , throws RemoteException*/  {
+	this.setByte = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1088,7 +1087,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setChar = function(v) /* returns void , throws RemoteException*/  {
+	this.setChar = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1104,7 +1103,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setShort = function(v) /* returns void , throws RemoteException*/  {
+	this.setShort = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1120,7 +1119,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setInt = function(v) /* returns void , throws RemoteException*/  {
+	this.setInt = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1136,7 +1135,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setLong = function(v) /* returns void , throws RemoteException*/  {
+	this.setLong = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1152,7 +1151,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setFloat = function(v) /* returns void , throws RemoteException*/  {
+	this.setFloat = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1168,7 +1167,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setDouble = function(v) /* returns void , throws RemoteException*/  {
+	this.setDouble = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1184,7 +1183,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setString = function(v) /* returns void , throws RemoteException*/  {
+	this.setString = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1200,7 +1199,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setPrimitiveTypes = function(v) /* returns void , throws RemoteException*/  {
+	this.setPrimitiveTypes = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1216,7 +1215,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.setObject = function(v) /* returns void , throws RemoteException*/  {
+	this.setObject = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1232,7 +1231,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getBool = function() /* returns boolean[][][][] , throws RemoteException*/  {
+	this.getBool = function() /* returns boolean[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1248,7 +1247,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getByte = function() /* returns byte[][][][] , throws RemoteException*/  {
+	this.getByte = function() /* returns byte[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1264,7 +1263,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getChar = function() /* returns char[][][][] , throws RemoteException*/  {
+	this.getChar = function() /* returns char[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1280,7 +1279,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getShort = function() /* returns short[][][][] , throws RemoteException*/  {
+	this.getShort = function() /* returns short[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1296,7 +1295,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getInt = function() /* returns int[][][][] , throws RemoteException*/  {
+	this.getInt = function() /* returns int[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1312,7 +1311,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getLong = function() /* returns long[][][][] , throws RemoteException*/  {
+	this.getLong = function() /* returns long[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1328,7 +1327,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getFloat = function() /* returns float[][][][] , throws RemoteException*/  {
+	this.getFloat = function() /* returns float[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1344,7 +1343,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getDouble = function() /* returns double[][][][] , throws RemoteException*/  {
+	this.getDouble = function() /* returns double[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1360,7 +1359,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getString = function() /* returns java.lang.String[][][][] , throws RemoteException*/  {
+	this.getString = function() /* returns java.lang.String[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1376,7 +1375,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] , throws RemoteException*/  {
+	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1392,7 +1391,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 	
 	/**
 	*/
-	this.getObject = function() /* returns java.lang.Object[][][][] , throws RemoteException*/  {
+	this.getObject = function() /* returns java.lang.Object[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1427,7 +1426,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants = function() {
 	
 	/**
 	*/
-	this.compare_HebrewC = function(ALEPH, BETH) /* returns void , throws RemoteException*/  {
+	this.compare_HebrewC = function(ALEPH, BETH) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1443,7 +1442,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants = function() {
 	
 	/**
 	*/
-	this.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll) /* returns boolean , throws RemoteException*/  {
+	this.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll) /* returns boolean , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1478,7 +1477,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums = function() {
 	
 	/**
 	*/
-	this.getPlanet = function() /* returns com.wilutions.byps.test.api.enu.EnumPlanets , throws RemoteException*/  {
+	this.getPlanet = function() /* returns com.wilutions.byps.test.api.enu.EnumPlanets , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1494,7 +1493,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums = function() {
 	
 	/**
 	*/
-	this.setPlanet = function(planet) /* returns void , throws RemoteException*/  {
+	this.setPlanet = function(planet) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1529,7 +1528,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.setActor = function(act) /* returns void , throws RemoteException*/  {
+	this.setActor = function(act) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1545,7 +1544,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.getActor = function() /* returns com.wilutions.byps.test.api.inl.Actor , throws RemoteException*/  {
+	this.getActor = function() /* returns com.wilutions.byps.test.api.inl.Actor , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1561,7 +1560,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.setPoint2DArray1dim = function(pointArray) /* returns void , throws RemoteException*/  {
+	this.setPoint2DArray1dim = function(pointArray) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1577,7 +1576,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.getPoint2DArray1dim = function() /* returns com.wilutions.byps.test.api.inl.Point2D[] , throws RemoteException*/  {
+	this.getPoint2DArray1dim = function() /* returns com.wilutions.byps.test.api.inl.Point2D[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1593,7 +1592,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.setPoint2DArray4dim = function(pointArray) /* returns void , throws RemoteException*/  {
+	this.setPoint2DArray4dim = function(pointArray) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1609,7 +1608,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.getPoint2DArray4dim = function() /* returns com.wilutions.byps.test.api.inl.Point2D[][][][] , throws RemoteException*/  {
+	this.getPoint2DArray4dim = function() /* returns com.wilutions.byps.test.api.inl.Point2D[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1625,7 +1624,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.setPoint2DList = function(pointList) /* returns void , throws RemoteException*/  {
+	this.setPoint2DList = function(pointList) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1641,7 +1640,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.getPoint2DList = function() /* returns java.util.List<com.wilutions.byps.test.api.inl.Point2D> , throws RemoteException*/  {
+	this.getPoint2DList = function() /* returns java.util.List<com.wilutions.byps.test.api.inl.Point2D> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1657,7 +1656,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.setPoint2DListList = function(pointListList) /* returns void , throws RemoteException*/  {
+	this.setPoint2DListList = function(pointListList) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1673,7 +1672,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.getPoint2DListList = function() /* returns java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> , throws RemoteException*/  {
+	this.getPoint2DListList = function() /* returns java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1689,7 +1688,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.setPoint2DMap = function(pointMap) /* returns void , throws RemoteException*/  {
+	this.setPoint2DMap = function(pointMap) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1705,7 +1704,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 	
 	/**
 	*/
-	this.getPoint2DMap = function() /* returns java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> , throws RemoteException*/  {
+	this.getPoint2DMap = function() /* returns java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1740,7 +1739,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getBoolean1 = function() /* returns java.util.List<java.lang.Boolean> , throws RemoteException*/  {
+	this.getBoolean1 = function() /* returns java.util.List<java.lang.Boolean> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1756,7 +1755,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setBoolean1 = function(boolean1) /* returns void , throws RemoteException*/  {
+	this.setBoolean1 = function(boolean1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1772,7 +1771,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getByte1 = function() /* returns java.util.List<java.lang.Byte> , throws RemoteException*/  {
+	this.getByte1 = function() /* returns java.util.List<java.lang.Byte> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1788,7 +1787,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setByte1 = function(byte1) /* returns void , throws RemoteException*/  {
+	this.setByte1 = function(byte1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1804,7 +1803,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getChar1 = function() /* returns java.util.List<java.lang.Character> , throws RemoteException*/  {
+	this.getChar1 = function() /* returns java.util.List<java.lang.Character> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1820,7 +1819,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setChar1 = function(char1) /* returns void , throws RemoteException*/  {
+	this.setChar1 = function(char1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1836,7 +1835,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getShort1 = function() /* returns java.util.List<java.lang.Short> , throws RemoteException*/  {
+	this.getShort1 = function() /* returns java.util.List<java.lang.Short> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1852,7 +1851,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setShort1 = function(short1) /* returns void , throws RemoteException*/  {
+	this.setShort1 = function(short1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1868,7 +1867,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getInt1 = function() /* returns java.util.List<java.lang.Integer> , throws RemoteException*/  {
+	this.getInt1 = function() /* returns java.util.List<java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1884,7 +1883,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setInt1 = function(int1) /* returns void , throws RemoteException*/  {
+	this.setInt1 = function(int1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1900,7 +1899,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getLong1 = function() /* returns java.util.List<java.lang.Long> , throws RemoteException*/  {
+	this.getLong1 = function() /* returns java.util.List<java.lang.Long> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1916,7 +1915,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setLong1 = function(long1) /* returns void , throws RemoteException*/  {
+	this.setLong1 = function(long1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1932,7 +1931,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getFloat1 = function() /* returns java.util.List<java.lang.Float> , throws RemoteException*/  {
+	this.getFloat1 = function() /* returns java.util.List<java.lang.Float> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1948,7 +1947,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setFloat1 = function(float1) /* returns void , throws RemoteException*/  {
+	this.setFloat1 = function(float1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1964,7 +1963,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getDouble1 = function() /* returns java.util.List<java.lang.Double> , throws RemoteException*/  {
+	this.getDouble1 = function() /* returns java.util.List<java.lang.Double> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1980,7 +1979,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setDouble1 = function(double1) /* returns void , throws RemoteException*/  {
+	this.setDouble1 = function(double1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -1996,7 +1995,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getString1 = function() /* returns java.util.List<java.lang.String> , throws RemoteException*/  {
+	this.getString1 = function() /* returns java.util.List<java.lang.String> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2012,7 +2011,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setString1 = function(string1) /* returns void , throws RemoteException*/  {
+	this.setString1 = function(string1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2028,7 +2027,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getPrimitiveTypes1 = function() /* returns java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws RemoteException*/  {
+	this.getPrimitiveTypes1 = function() /* returns java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2044,7 +2043,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws RemoteException*/  {
+	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2060,7 +2059,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getByte2 = function() /* returns java.util.List<byte[]> , throws RemoteException*/  {
+	this.getByte2 = function() /* returns java.util.List<byte[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2076,7 +2075,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setByte2 = function(byte2) /* returns void , throws RemoteException*/  {
+	this.setByte2 = function(byte2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2092,7 +2091,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getInt2 = function() /* returns java.util.List<int[]> , throws RemoteException*/  {
+	this.getInt2 = function() /* returns java.util.List<int[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2108,7 +2107,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setInt2 = function(int2) /* returns void , throws RemoteException*/  {
+	this.setInt2 = function(int2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2124,7 +2123,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getObj1 = function() /* returns java.util.List<java.lang.Object> , throws RemoteException*/  {
+	this.getObj1 = function() /* returns java.util.List<java.lang.Object> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2140,7 +2139,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setObj1 = function(obj1) /* returns void , throws RemoteException*/  {
+	this.setObj1 = function(obj1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2156,7 +2155,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getInt3 = function() /* returns java.util.List<java.util.List<java.lang.Integer>> , throws RemoteException*/  {
+	this.getInt3 = function() /* returns java.util.List<java.util.List<java.lang.Integer>> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2172,7 +2171,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setInt3 = function(int3) /* returns void , throws RemoteException*/  {
+	this.setInt3 = function(int3) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2188,7 +2187,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.getInt4 = function() /* returns java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> , throws RemoteException*/  {
+	this.getInt4 = function() /* returns java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2204,7 +2203,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 	
 	/**
 	*/
-	this.setInt4 = function(int4) /* returns void , throws RemoteException*/  {
+	this.setInt4 = function(int4) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2239,7 +2238,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getBoolean1 = function() /* returns java.util.Map<java.lang.String,java.lang.Boolean> , throws RemoteException*/  {
+	this.getBoolean1 = function() /* returns java.util.Map<java.lang.String,java.lang.Boolean> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2255,7 +2254,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setBoolean1 = function(boolean1) /* returns void , throws RemoteException*/  {
+	this.setBoolean1 = function(boolean1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2271,7 +2270,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getByte1 = function() /* returns java.util.HashMap<java.lang.Double,java.lang.Byte> , throws RemoteException*/  {
+	this.getByte1 = function() /* returns java.util.HashMap<java.lang.Double,java.lang.Byte> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2287,7 +2286,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setByte1 = function(byte1) /* returns void , throws RemoteException*/  {
+	this.setByte1 = function(byte1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2303,7 +2302,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getChar1 = function() /* returns java.util.TreeMap<java.lang.Float,java.lang.Character> , throws RemoteException*/  {
+	this.getChar1 = function() /* returns java.util.TreeMap<java.lang.Float,java.lang.Character> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2319,7 +2318,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setChar1 = function(char1) /* returns void , throws RemoteException*/  {
+	this.setChar1 = function(char1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2335,7 +2334,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getShort1 = function() /* returns java.util.Map<java.lang.Long,java.lang.Short> , throws RemoteException*/  {
+	this.getShort1 = function() /* returns java.util.Map<java.lang.Long,java.lang.Short> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2351,7 +2350,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setShort1 = function(short1) /* returns void , throws RemoteException*/  {
+	this.setShort1 = function(short1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2367,7 +2366,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getInt1 = function() /* returns java.util.Map<java.lang.Integer,java.lang.Integer> , throws RemoteException*/  {
+	this.getInt1 = function() /* returns java.util.Map<java.lang.Integer,java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2383,7 +2382,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setInt1 = function(int1) /* returns void , throws RemoteException*/  {
+	this.setInt1 = function(int1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2399,7 +2398,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getLong1 = function() /* returns java.util.Map<java.lang.Short,java.lang.Long> , throws RemoteException*/  {
+	this.getLong1 = function() /* returns java.util.Map<java.lang.Short,java.lang.Long> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2415,7 +2414,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setLong1 = function(long1) /* returns void , throws RemoteException*/  {
+	this.setLong1 = function(long1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2431,7 +2430,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getFloat1 = function() /* returns java.util.Map<java.lang.Character,java.lang.Float> , throws RemoteException*/  {
+	this.getFloat1 = function() /* returns java.util.Map<java.lang.Character,java.lang.Float> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2447,7 +2446,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setFloat1 = function(float1) /* returns void , throws RemoteException*/  {
+	this.setFloat1 = function(float1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2463,7 +2462,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getDouble1 = function() /* returns java.util.Map<java.lang.Byte,java.lang.Double> , throws RemoteException*/  {
+	this.getDouble1 = function() /* returns java.util.Map<java.lang.Byte,java.lang.Double> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2479,7 +2478,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setDouble1 = function(double1) /* returns void , throws RemoteException*/  {
+	this.setDouble1 = function(double1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2495,7 +2494,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getString1 = function() /* returns java.util.Map<java.lang.String,java.lang.String> , throws RemoteException*/  {
+	this.getString1 = function() /* returns java.util.Map<java.lang.String,java.lang.String> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2511,7 +2510,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setString1 = function(string1) /* returns void , throws RemoteException*/  {
+	this.setString1 = function(string1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2527,7 +2526,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getPrimitiveTypes1 = function() /* returns java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws RemoteException*/  {
+	this.getPrimitiveTypes1 = function() /* returns java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2543,7 +2542,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws RemoteException*/  {
+	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2559,7 +2558,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getByte2 = function() /* returns java.util.Map<java.lang.Integer,byte[]> , throws RemoteException*/  {
+	this.getByte2 = function() /* returns java.util.Map<java.lang.Integer,byte[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2575,7 +2574,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setByte2 = function(byte2) /* returns void , throws RemoteException*/  {
+	this.setByte2 = function(byte2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2591,7 +2590,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getInt2 = function() /* returns java.util.Map<java.lang.Integer,int[]> , throws RemoteException*/  {
+	this.getInt2 = function() /* returns java.util.Map<java.lang.Integer,int[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2607,7 +2606,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setInt2 = function(int2) /* returns void , throws RemoteException*/  {
+	this.setInt2 = function(int2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2623,7 +2622,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.getObj1 = function() /* returns java.util.Map<java.lang.String,java.lang.Object> , throws RemoteException*/  {
+	this.getObj1 = function() /* returns java.util.Map<java.lang.String,java.lang.Object> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2639,7 +2638,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 	
 	/**
 	*/
-	this.setObj1 = function(obj1) /* returns void , throws RemoteException*/  {
+	this.setObj1 = function(obj1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2674,7 +2673,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.voidFunctionVoid = function() /* returns void , throws RemoteException*/  {
+	this.voidFunctionVoid = function() /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2690,7 +2689,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setBool = function(v) /* returns void , throws RemoteException*/  {
+	this.setBool = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2706,7 +2705,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setByte = function(v) /* returns void , throws RemoteException*/  {
+	this.setByte = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2722,7 +2721,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setChar = function(v) /* returns void , throws RemoteException*/  {
+	this.setChar = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2738,7 +2737,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setShort = function(v) /* returns void , throws RemoteException*/  {
+	this.setShort = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2754,7 +2753,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setInt = function(v) /* returns void , throws RemoteException*/  {
+	this.setInt = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2770,7 +2769,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setLong = function(v) /* returns void , throws RemoteException*/  {
+	this.setLong = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2786,7 +2785,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setFloat = function(v) /* returns void , throws RemoteException*/  {
+	this.setFloat = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2802,7 +2801,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setDouble = function(v) /* returns void , throws RemoteException*/  {
+	this.setDouble = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2818,7 +2817,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setString = function(v) /* returns void , throws RemoteException*/  {
+	this.setString = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2834,7 +2833,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setPrimitiveTypes = function(v) /* returns void , throws RemoteException*/  {
+	this.setPrimitiveTypes = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2850,7 +2849,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.setObject = function(v) /* returns void , throws RemoteException*/  {
+	this.setObject = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2866,7 +2865,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getBool = function() /* returns boolean , throws RemoteException*/  {
+	this.getBool = function() /* returns boolean , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2882,7 +2881,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getByte = function() /* returns byte , throws RemoteException*/  {
+	this.getByte = function() /* returns byte , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2898,7 +2897,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getChar = function() /* returns char , throws RemoteException*/  {
+	this.getChar = function() /* returns char , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2914,7 +2913,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getShort = function() /* returns short , throws RemoteException*/  {
+	this.getShort = function() /* returns short , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2930,7 +2929,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getInt = function() /* returns int , throws RemoteException*/  {
+	this.getInt = function() /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2946,7 +2945,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getLong = function() /* returns long , throws RemoteException*/  {
+	this.getLong = function() /* returns long , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2962,7 +2961,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getFloat = function() /* returns float , throws RemoteException*/  {
+	this.getFloat = function() /* returns float , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2978,7 +2977,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getDouble = function() /* returns double , throws RemoteException*/  {
+	this.getDouble = function() /* returns double , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -2994,7 +2993,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getString = function() /* returns java.lang.String , throws RemoteException*/  {
+	this.getString = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3010,7 +3009,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes , throws RemoteException*/  {
+	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3026,7 +3025,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.getObject = function() /* returns java.lang.Object , throws RemoteException*/  {
+	this.getObject = function() /* returns java.lang.Object , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3042,7 +3041,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o) /* returns void , throws RemoteException*/  {
+	this.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3058,7 +3057,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 	
 	/**
 	*/
-	this.add = function(a, b) /* returns int , throws RemoteException*/  {
+	this.add = function(a, b) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3093,7 +3092,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences = function() {
 	
 	/**
 	*/
-	this.getNode = function() /* returns com.wilutions.byps.test.api.refs.Node , throws RemoteException*/  {
+	this.getNode = function() /* returns com.wilutions.byps.test.api.refs.Node , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3109,7 +3108,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences = function() {
 	
 	/**
 	*/
-	this.setNode = function(v) /* returns void , throws RemoteException*/  {
+	this.setNode = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3144,7 +3143,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl = function() {
 	
 	/**
 	*/
-	this.publishRemote = function(name, remote, fowardToOtherServers) /* returns void , throws RemoteException*/  {
+	this.publishRemote = function(name, remote, fowardToOtherServers) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3160,7 +3159,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl = function() {
 	
 	/**
 	*/
-	this.getPublishedRemote = function(name) /* returns com.wilutions.byps.BRemote , throws RemoteException*/  {
+	this.getPublishedRemote = function(name) /* returns com.wilutions.byps.BRemote , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3176,7 +3175,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl = function() {
 	
 	/**
 	*/
-	this.removePublishedRemote = function(name) /* returns void , throws RemoteException*/  {
+	this.removePublishedRemote = function(name) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3211,7 +3210,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getBoolean1 = function() /* returns java.util.Set<java.lang.Boolean> , throws RemoteException*/  {
+	this.getBoolean1 = function() /* returns java.util.Set<java.lang.Boolean> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3227,7 +3226,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setBoolean1 = function(boolean1) /* returns void , throws RemoteException*/  {
+	this.setBoolean1 = function(boolean1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3243,7 +3242,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getByte1 = function() /* returns java.util.HashSet<java.lang.Byte> , throws RemoteException*/  {
+	this.getByte1 = function() /* returns java.util.HashSet<java.lang.Byte> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3259,7 +3258,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setByte1 = function(byte1) /* returns void , throws RemoteException*/  {
+	this.setByte1 = function(byte1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3275,7 +3274,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getChar1 = function() /* returns java.util.TreeSet<java.lang.Character> , throws RemoteException*/  {
+	this.getChar1 = function() /* returns java.util.TreeSet<java.lang.Character> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3291,7 +3290,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setChar1 = function(char1) /* returns void , throws RemoteException*/  {
+	this.setChar1 = function(char1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3307,7 +3306,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getShort1 = function() /* returns java.util.Set<java.lang.Short> , throws RemoteException*/  {
+	this.getShort1 = function() /* returns java.util.Set<java.lang.Short> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3323,7 +3322,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setShort1 = function(short1) /* returns void , throws RemoteException*/  {
+	this.setShort1 = function(short1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3339,7 +3338,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getInt1 = function() /* returns java.util.Set<java.lang.Integer> , throws RemoteException*/  {
+	this.getInt1 = function() /* returns java.util.Set<java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3355,7 +3354,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setInt1 = function(int1) /* returns void , throws RemoteException*/  {
+	this.setInt1 = function(int1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3371,7 +3370,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getLong1 = function() /* returns java.util.Set<java.lang.Long> , throws RemoteException*/  {
+	this.getLong1 = function() /* returns java.util.Set<java.lang.Long> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3387,7 +3386,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setLong1 = function(long1) /* returns void , throws RemoteException*/  {
+	this.setLong1 = function(long1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3403,7 +3402,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getFloat1 = function() /* returns java.util.Set<java.lang.Float> , throws RemoteException*/  {
+	this.getFloat1 = function() /* returns java.util.Set<java.lang.Float> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3419,7 +3418,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setFloat1 = function(float1) /* returns void , throws RemoteException*/  {
+	this.setFloat1 = function(float1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3435,7 +3434,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getDouble1 = function() /* returns java.util.Set<java.lang.Double> , throws RemoteException*/  {
+	this.getDouble1 = function() /* returns java.util.Set<java.lang.Double> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3451,7 +3450,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setDouble1 = function(double1) /* returns void , throws RemoteException*/  {
+	this.setDouble1 = function(double1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3467,7 +3466,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getString1 = function() /* returns java.util.Set<java.lang.String> , throws RemoteException*/  {
+	this.getString1 = function() /* returns java.util.Set<java.lang.String> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3483,7 +3482,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setString1 = function(string1) /* returns void , throws RemoteException*/  {
+	this.setString1 = function(string1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3499,7 +3498,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getPrimitiveTypes1 = function() /* returns java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws RemoteException*/  {
+	this.getPrimitiveTypes1 = function() /* returns java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3515,7 +3514,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws RemoteException*/  {
+	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3531,7 +3530,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getByte2 = function() /* returns java.util.Set<byte[]> , throws RemoteException*/  {
+	this.getByte2 = function() /* returns java.util.Set<byte[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3547,7 +3546,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setByte2 = function(byte2) /* returns void , throws RemoteException*/  {
+	this.setByte2 = function(byte2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3563,7 +3562,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getInt2 = function() /* returns java.util.Set<int[]> , throws RemoteException*/  {
+	this.getInt2 = function() /* returns java.util.Set<int[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3579,7 +3578,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setInt2 = function(int2) /* returns void , throws RemoteException*/  {
+	this.setInt2 = function(int2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3595,7 +3594,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.getObj1 = function() /* returns java.util.Set<java.lang.Object> , throws RemoteException*/  {
+	this.getObj1 = function() /* returns java.util.Set<java.lang.Object> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3611,7 +3610,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 	
 	/**
 	*/
-	this.setObj1 = function(obj1) /* returns void , throws RemoteException*/  {
+	this.setObj1 = function(obj1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3646,7 +3645,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	
 	/**
 	*/
-	this.getImage = function() /* returns java.io.InputStream , throws RemoteException*/  {
+	this.getImage = function() /* returns java.io.InputStream , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3662,7 +3661,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	
 	/**
 	*/
-	this.setImage = function(istrm) /* returns void , throws RemoteException*/  {
+	this.setImage = function(istrm) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3678,7 +3677,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	
 	/**
 	*/
-	this.getImages = function() /* returns java.util.TreeMap<java.lang.Integer,java.io.InputStream> , throws RemoteException*/  {
+	this.getImages = function() /* returns java.util.TreeMap<java.lang.Integer,java.io.InputStream> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3694,7 +3693,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	
 	/**
 	*/
-	this.setImages = function(istrms, doNotReadStreamAtKey) /* returns void , throws RemoteException*/  {
+	this.setImages = function(istrms, doNotReadStreamAtKey) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3710,7 +3709,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	
 	/**
 	*/
-	this.throwLastException = function() /* returns void , throws RemoteException*/  {
+	this.throwLastException = function() /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3726,7 +3725,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 	
 	/**
 	*/
-	this.getTextStream = function() /* returns java.io.InputStream , throws RemoteException*/  {
+	this.getTextStream = function() /* returns java.io.InputStream , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3761,7 +3760,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	
 	/**
 	*/
-	this.incrementInt = function(a) /* returns int , throws RemoteException*/  {
+	this.incrementInt = function(a) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3777,7 +3776,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	
 	/**
 	*/
-	this.getStreams = function(ctrl) /* returns java.util.List<java.io.InputStream> , throws RemoteException*/  {
+	this.getStreams = function(ctrl) /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3793,7 +3792,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	
 	/**
 	*/
-	this.putStreams = function(strm, ctrl) /* returns void , throws RemoteException*/  {
+	this.putStreams = function(strm, ctrl) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3809,7 +3808,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	
 	/**
 	*/
-	this.sendChat = function(cs) /* returns com.wilutions.byps.test.api.srvr.ChatStructure , throws RemoteException*/  {
+	this.sendChat = function(cs) /* returns com.wilutions.byps.test.api.srvr.ChatStructure , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3844,7 +3843,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.callClientIncrementInt = function(v) /* returns int , throws RemoteException*/  {
+	this.callClientIncrementInt = function(v) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3860,7 +3859,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.setPartner = function(client) /* returns void , throws RemoteException*/  {
+	this.setPartner = function(client) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3876,7 +3875,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.getPartner = function() /* returns com.wilutions.byps.test.api.srvr.ClientIF , throws RemoteException*/  {
+	this.getPartner = function() /* returns com.wilutions.byps.test.api.srvr.ClientIF , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3892,7 +3891,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.getStreamsFromClient = function() /* returns java.util.List<java.io.InputStream> , throws RemoteException*/  {
+	this.getStreamsFromClient = function() /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3908,7 +3907,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.putStreamsOnClient = function(streams) /* returns void , throws RemoteException*/  {
+	this.putStreamsOnClient = function(streams) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3924,7 +3923,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.registerWithClientMap = function(id) /* returns void , throws RemoteException*/  {
+	this.registerWithClientMap = function(id) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3940,7 +3939,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.getClient = function(id) /* returns com.wilutions.byps.test.api.srvr.ClientIF , throws RemoteException*/  {
+	this.getClient = function(id) /* returns com.wilutions.byps.test.api.srvr.ClientIF , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3956,7 +3955,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.getClientIds = function() /* returns java.util.Set<java.lang.Integer> , throws RemoteException*/  {
+	this.getClientIds = function() /* returns java.util.Set<java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -3972,7 +3971,7 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 	
 	/**
 	*/
-	this.callClientParallel = function(v) /* returns int , throws RemoteException*/  {
+	this.callClientParallel = function(v) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -4007,7 +4006,7 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	
 	/**
 	*/
-	this.setEvolve = function(obj) /* returns void , throws RemoteException*/  {
+	this.setEvolve = function(obj) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -4023,7 +4022,7 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	
 	/**
 	*/
-	this.getEvolve = function() /* returns com.wilutions.byps.test.api.ver.Evolve , throws RemoteException*/  {
+	this.getEvolve = function() /* returns com.wilutions.byps.test.api.ver.Evolve , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -4039,7 +4038,7 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	
 	/**
 	*/
-	this.setClient = function(partner) /* returns void , throws RemoteException*/  {
+	this.setClient = function(partner) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -4055,7 +4054,7 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	
 	/**
 	*/
-	this.getClient = function() /* returns com.wilutions.byps.test.api.ver.EvolveIF , throws RemoteException*/  {
+	this.getClient = function() /* returns com.wilutions.byps.test.api.ver.EvolveIF , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**
@@ -4071,7 +4070,7 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 	
 	/**
 	*/
-	this.sendEvolveToClient = function() /* returns void , throws RemoteException*/  {
+	this.sendEvolveToClient = function() /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
 	/**

@@ -1,6 +1,6 @@
 ﻿#include "Testser-impl.h"
-using namespace std;
-using namespace com::wilutions::byps;
+using namespace ::std;
+using namespace ::com::wilutions::byps;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -13,7 +13,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getDouble
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getDouble1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getDouble1([__byps__asyncResult](byps_ptr< std::vector< double > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getDouble1([__byps__asyncResult](byps_ptr< ::std::vector< double > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -47,7 +47,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getFloat1
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getFloat1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getFloat1([__byps__asyncResult](byps_ptr< std::vector< float > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getFloat1([__byps__asyncResult](byps_ptr< ::std::vector< float > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -81,7 +81,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt1::
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getInt1([__byps__asyncResult](byps_ptr< std::vector< int32_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getInt1([__byps__asyncResult](byps_ptr< ::std::vector< int32_t > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -115,7 +115,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt2::
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt2::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getInt2([__byps__asyncResult](byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getInt2([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -149,7 +149,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt3::
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt3::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getInt3([__byps__asyncResult](byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getInt3([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -183,7 +183,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt4::
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getInt4::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getInt4([__byps__asyncResult](byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getInt4([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -217,7 +217,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getLong1:
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getLong1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getLong1([__byps__asyncResult](byps_ptr< std::vector< int64_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getLong1([__byps__asyncResult](byps_ptr< ::std::vector< int64_t > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -251,7 +251,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getObj1::
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getObj1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getObj1([__byps__asyncResult](byps_ptr< std::vector< PSerializable > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getObj1([__byps__asyncResult](byps_ptr< ::std::vector< PSerializable > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -285,7 +285,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getPrimit
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getPrimitiveTypes1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getPrimitiveTypes1([__byps__asyncResult](byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getPrimitiveTypes1([__byps__asyncResult](byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -319,7 +319,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getShort1
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getShort1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getShort1([__byps__asyncResult](byps_ptr< std::vector< int16_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getShort1([__byps__asyncResult](byps_ptr< ::std::vector< int16_t > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -353,7 +353,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getString
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_getString1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->async_getString1([__byps__asyncResult](byps_ptr< std::vector< std::wstring > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getString1([__byps__asyncResult](byps_ptr< ::std::vector< ::std::wstring > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -383,7 +383,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setBoolean1::BRequest_RemoteListTypes_setBoolean1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setBoolean1::BRequest_RemoteListTypes_setBoolean1(byps_ptr< std::vector< bool > > boolean1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setBoolean1::BRequest_RemoteListTypes_setBoolean1(byps_ptr< ::std::vector< bool > > boolean1)
 	: BMethodRequest(380156079) 
 	, boolean1(boolean1)
 	{}
@@ -422,7 +422,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setByte1::BRequest_RemoteListTypes_setByte1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setByte1::BRequest_RemoteListTypes_setByte1(byps_ptr< std::vector< int8_t > > byte1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setByte1::BRequest_RemoteListTypes_setByte1(byps_ptr< ::std::vector< int8_t > > byte1)
 	: BMethodRequest(380156079) 
 	, byte1(byte1)
 	{}
@@ -461,7 +461,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setByte2::BRequest_RemoteListTypes_setByte2() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setByte2::BRequest_RemoteListTypes_setByte2(byps_ptr< std::vector< PBytes > > byte2)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setByte2::BRequest_RemoteListTypes_setByte2(byps_ptr< ::std::vector< PBytes > > byte2)
 	: BMethodRequest(380156079) 
 	, byte2(byte2)
 	{}
@@ -500,7 +500,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setChar1::BRequest_RemoteListTypes_setChar1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setChar1::BRequest_RemoteListTypes_setChar1(byps_ptr< std::vector< wchar_t > > char1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setChar1::BRequest_RemoteListTypes_setChar1(byps_ptr< ::std::vector< wchar_t > > char1)
 	: BMethodRequest(380156079) 
 	, char1(char1)
 	{}
@@ -539,7 +539,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setDouble1::BRequest_RemoteListTypes_setDouble1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setDouble1::BRequest_RemoteListTypes_setDouble1(byps_ptr< std::vector< double > > double1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setDouble1::BRequest_RemoteListTypes_setDouble1(byps_ptr< ::std::vector< double > > double1)
 	: BMethodRequest(380156079) 
 	, double1(double1)
 	{}
@@ -578,7 +578,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setFloat1::BRequest_RemoteListTypes_setFloat1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setFloat1::BRequest_RemoteListTypes_setFloat1(byps_ptr< std::vector< float > > float1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setFloat1::BRequest_RemoteListTypes_setFloat1(byps_ptr< ::std::vector< float > > float1)
 	: BMethodRequest(380156079) 
 	, float1(float1)
 	{}
@@ -617,7 +617,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt1::BRequest_RemoteListTypes_setInt1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt1::BRequest_RemoteListTypes_setInt1(byps_ptr< std::vector< int32_t > > int1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt1::BRequest_RemoteListTypes_setInt1(byps_ptr< ::std::vector< int32_t > > int1)
 	: BMethodRequest(380156079) 
 	, int1(int1)
 	{}
@@ -656,7 +656,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt2::BRequest_RemoteListTypes_setInt2() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt2::BRequest_RemoteListTypes_setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt2::BRequest_RemoteListTypes_setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2)
 	: BMethodRequest(380156079) 
 	, int2(int2)
 	{}
@@ -695,7 +695,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt3::BRequest_RemoteListTypes_setInt3() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt3::BRequest_RemoteListTypes_setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt3::BRequest_RemoteListTypes_setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3)
 	: BMethodRequest(380156079) 
 	, int3(int3)
 	{}
@@ -734,7 +734,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt4::BRequest_RemoteListTypes_setInt4() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt4::BRequest_RemoteListTypes_setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setInt4::BRequest_RemoteListTypes_setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4)
 	: BMethodRequest(380156079) 
 	, int4(int4)
 	{}
@@ -773,7 +773,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setLong1::BRequest_RemoteListTypes_setLong1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setLong1::BRequest_RemoteListTypes_setLong1(byps_ptr< std::vector< int64_t > > long1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setLong1::BRequest_RemoteListTypes_setLong1(byps_ptr< ::std::vector< int64_t > > long1)
 	: BMethodRequest(380156079) 
 	, long1(long1)
 	{}
@@ -812,7 +812,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setObj1::BRequest_RemoteListTypes_setObj1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setObj1::BRequest_RemoteListTypes_setObj1(byps_ptr< std::vector< PSerializable > > obj1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setObj1::BRequest_RemoteListTypes_setObj1(byps_ptr< ::std::vector< PSerializable > > obj1)
 	: BMethodRequest(380156079) 
 	, obj1(obj1)
 	{}
@@ -851,7 +851,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setPrimitiveTypes1::BRequest_RemoteListTypes_setPrimitiveTypes1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setPrimitiveTypes1::BRequest_RemoteListTypes_setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setPrimitiveTypes1::BRequest_RemoteListTypes_setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)
 	: BMethodRequest(380156079) 
 	, primitiveTypes1(primitiveTypes1)
 	{}
@@ -890,7 +890,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setShort1::BRequest_RemoteListTypes_setShort1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setShort1::BRequest_RemoteListTypes_setShort1(byps_ptr< std::vector< int16_t > > short1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setShort1::BRequest_RemoteListTypes_setShort1(byps_ptr< ::std::vector< int16_t > > short1)
 	: BMethodRequest(380156079) 
 	, short1(short1)
 	{}
@@ -929,7 +929,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setString1::BRequest_RemoteListTypes_setString1() : BMethodRequest(380156079) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setString1::BRequest_RemoteListTypes_setString1(byps_ptr< std::vector< std::wstring > > string1)
+com::wilutions::byps::test::api::remote::BRequest_RemoteListTypes_setString1::BRequest_RemoteListTypes_setString1(byps_ptr< ::std::vector< ::std::wstring > > string1)
 	: BMethodRequest(380156079) 
 	, string1(string1)
 	{}
@@ -972,7 +972,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_getBoolean
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_getBoolean1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->async_getBoolean1([__byps__asyncResult](byps_ptr< std::map< std::wstring , bool > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getBoolean1([__byps__asyncResult](byps_ptr< ::std::map< ::std::wstring , bool > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}

@@ -1,6 +1,6 @@
 ﻿#include "Testser-impl.h"
-using namespace std;
-using namespace com::wilutions::byps;
+using namespace ::std;
+using namespace ::com::wilutions::byps;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
 

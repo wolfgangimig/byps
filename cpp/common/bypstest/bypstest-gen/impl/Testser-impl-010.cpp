@@ -1,6 +1,6 @@
 ﻿#include "Testser-impl.h"
-using namespace std;
-using namespace com::wilutions::byps;
+using namespace ::std;
+using namespace ::com::wilutions::byps;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -47,7 +47,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_getImages::
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_getImages::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteStreams __byps__remoteT = byps_ptr_cast<RemoteStreams>(__byps__remote);
-	__byps__remoteT->async_getImages([__byps__asyncResult](byps_ptr< std::map< int32_t , PContentStream > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getImages([__byps__asyncResult](byps_ptr< ::std::map< int32_t , PContentStream > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -151,7 +151,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_setImages::BRequest_RemoteStreams_setImages() : BMethodRequest(2028487863) {
 	doNotReadStreamAtKey = 0;
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_setImages::BRequest_RemoteStreams_setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey)
+com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_setImages::BRequest_RemoteStreams_setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey)
 	: BMethodRequest(2028487863) 
 	, istrms(istrms)
 	, doNotReadStreamAtKey(doNotReadStreamAtKey)
@@ -226,7 +226,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::set::SetTypes::SetTypes() {
 }
-com::wilutions::byps::test::api::set::SetTypes::SetTypes(byps_ptr< std::set< bool > > boolean1, byps_ptr< std::set< int8_t > > byte1, byps_ptr< std::set< wchar_t > > char1, byps_ptr< std::set< int16_t > > short1, byps_ptr< std::set< int32_t > > int1, byps_ptr< std::set< int64_t > > long1, byps_ptr< std::set< float > > float1, byps_ptr< std::set< double > > double1, byps_ptr< std::set< std::wstring > > string1, byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< std::set< PBytes > > byte2, byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< std::set< PSerializable > > obj1)
+com::wilutions::byps::test::api::set::SetTypes::SetTypes(byps_ptr< ::std::set< bool > > boolean1, byps_ptr< ::std::set< int8_t > > byte1, byps_ptr< ::std::set< wchar_t > > char1, byps_ptr< ::std::set< int16_t > > short1, byps_ptr< ::std::set< int32_t > > int1, byps_ptr< ::std::set< int64_t > > long1, byps_ptr< ::std::set< float > > float1, byps_ptr< ::std::set< double > > double1, byps_ptr< ::std::set< ::std::wstring > > string1, byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::set< PBytes > > byte2, byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::set< PSerializable > > obj1)
 	: boolean1(boolean1)
 	, byte1(byte1)
 	, char1(char1)
@@ -286,7 +286,7 @@ void com::wilutions::byps::test::api::srvr::BRequest_ClientIF_getStreams::serial
 }
 void com::wilutions::byps::test::api::srvr::BRequest_ClientIF_getStreams::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PClientIF __byps__remoteT = byps_ptr_cast<ClientIF>(__byps__remote);
-	__byps__remoteT->async_getStreams(ctrl, [__byps__asyncResult](byps_ptr< std::vector< PContentStream > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getStreams(ctrl, [__byps__asyncResult](byps_ptr< ::std::vector< PContentStream > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -357,7 +357,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 com::wilutions::byps::test::api::srvr::BRequest_ClientIF_putStreams::BRequest_ClientIF_putStreams() : BMethodRequest(1784257353) {
 	ctrl = 0;
 }
-com::wilutions::byps::test::api::srvr::BRequest_ClientIF_putStreams::BRequest_ClientIF_putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl)
+com::wilutions::byps::test::api::srvr::BRequest_ClientIF_putStreams::BRequest_ClientIF_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl)
 	: BMethodRequest(1784257353) 
 	, strm(strm)
 	, ctrl(ctrl)
@@ -561,7 +561,7 @@ void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClientIds::seri
 }
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClientIds::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PServerIF __byps__remoteT = byps_ptr_cast<ServerIF>(__byps__remote);
-	__byps__remoteT->async_getClientIds([__byps__asyncResult](byps_ptr< std::set< int32_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getClientIds([__byps__asyncResult](byps_ptr< ::std::set< int32_t > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -629,7 +629,7 @@ void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClie
 }
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PServerIF __byps__remoteT = byps_ptr_cast<ServerIF>(__byps__remote);
-	__byps__remoteT->async_getStreamsFromClient([__byps__asyncResult](byps_ptr< std::vector< PContentStream > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getStreamsFromClient([__byps__asyncResult](byps_ptr< ::std::vector< PContentStream > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -659,7 +659,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::srvr::BRequest_ServerIF_putStreamsOnClient::BRequest_ServerIF_putStreamsOnClient() : BMethodRequest(1313562065) {
 }
-com::wilutions::byps::test::api::srvr::BRequest_ServerIF_putStreamsOnClient::BRequest_ServerIF_putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams)
+com::wilutions::byps::test::api::srvr::BRequest_ServerIF_putStreamsOnClient::BRequest_ServerIF_putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams)
 	: BMethodRequest(1313562065) 
 	, streams(streams)
 	{}
@@ -779,7 +779,7 @@ com::wilutions::byps::test::api::srvr::ChatStructure::ChatStructure() {
 	sentAt = 0;
 	receivedAt = 0;
 }
-com::wilutions::byps::test::api::srvr::ChatStructure::ChatStructure(std::wstring msg, double sentAt, double receivedAt)
+com::wilutions::byps::test::api::srvr::ChatStructure::ChatStructure(::std::wstring msg, double sentAt, double receivedAt)
 	: msg(msg)
 	, sentAt(sentAt)
 	, receivedAt(receivedAt)
@@ -809,7 +809,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::strm::Stream1::Stream1() {
 }
-com::wilutions::byps::test::api::strm::Stream1::Stream1(PContentStream is1, std::wstring contentType, byps_ptr< BArray1< PContentStream > > arrStream, byps_ptr< std::vector< PContentStream > > listStream, byps_ptr< std::map< int32_t , PContentStream > > mapStream)
+com::wilutions::byps::test::api::strm::Stream1::Stream1(PContentStream is1, ::std::wstring contentType, byps_ptr< BArray1< PContentStream > > arrStream, byps_ptr< ::std::vector< PContentStream > > listStream, byps_ptr< ::std::map< int32_t , PContentStream > > mapStream)
 	: is1(is1)
 	, contentType(contentType)
 	, arrStream(arrStream)
@@ -1047,7 +1047,7 @@ com::wilutions::byps::test::api::ver::Evolve::Evolve() {
 	float3 = 0;
 	double3 = 0;
 }
-com::wilutions::byps::test::api::ver::Evolve::Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, byps_ptr< BArray1< bool > > bools1, PBytes bytes1, byps_ptr< BArray1< wchar_t > > chars1, byps_ptr< BArray1< int16_t > > shorts1, byps_ptr< BArray1< int32_t > > ints1, byps_ptr< BArray1< int64_t > > longs1, byps_ptr< BArray1< float > > floats1, byps_ptr< BArray1< double > > doubles1, std::wstring str1, PSerializable obj1, com::wilutions::byps::test::api::ver::PEvolve2 evo1, byps_ptr< std::vector< int32_t > > list1, byps_ptr< std::set< int32_t > > set1, byps_ptr< std::map< int32_t , int32_t > > map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, byps_ptr< BArray1< bool > > bools2, PBytes bytes2, byps_ptr< BArray1< wchar_t > > chars2, byps_ptr< BArray1< int16_t > > shorts2, byps_ptr< BArray1< int32_t > > ints2, byps_ptr< BArray1< int64_t > > longs2, byps_ptr< BArray1< float > > floats2, byps_ptr< BArray1< double > > doubles2, std::wstring str2, PSerializable obj2, com::wilutions::byps::test::api::ver::PEvolve2 evo2, byps_ptr< std::vector< int32_t > > list2, byps_ptr< std::set< int32_t > > set2, byps_ptr< std::map< int32_t , int32_t > > map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, byps_ptr< BArray1< bool > > bools3, PBytes bytes3, byps_ptr< BArray1< wchar_t > > chars3, byps_ptr< BArray1< int16_t > > shorts3, byps_ptr< BArray1< int32_t > > ints3, byps_ptr< BArray1< int64_t > > longs3, byps_ptr< BArray1< float > > floats3, byps_ptr< BArray1< double > > doubles3, std::wstring str3, PSerializable obj3, com::wilutions::byps::test::api::ver::PEvolve2 evo3, byps_ptr< std::vector< int32_t > > list3, byps_ptr< std::set< int32_t > > set3, byps_ptr< std::map< int32_t , int32_t > > map3)
+com::wilutions::byps::test::api::ver::Evolve::Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, byps_ptr< BArray1< bool > > bools1, PBytes bytes1, byps_ptr< BArray1< wchar_t > > chars1, byps_ptr< BArray1< int16_t > > shorts1, byps_ptr< BArray1< int32_t > > ints1, byps_ptr< BArray1< int64_t > > longs1, byps_ptr< BArray1< float > > floats1, byps_ptr< BArray1< double > > doubles1, ::std::wstring str1, PSerializable obj1, com::wilutions::byps::test::api::ver::PEvolve2 evo1, byps_ptr< ::std::vector< int32_t > > list1, byps_ptr< ::std::set< int32_t > > set1, byps_ptr< ::std::map< int32_t , int32_t > > map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, byps_ptr< BArray1< bool > > bools2, PBytes bytes2, byps_ptr< BArray1< wchar_t > > chars2, byps_ptr< BArray1< int16_t > > shorts2, byps_ptr< BArray1< int32_t > > ints2, byps_ptr< BArray1< int64_t > > longs2, byps_ptr< BArray1< float > > floats2, byps_ptr< BArray1< double > > doubles2, ::std::wstring str2, PSerializable obj2, com::wilutions::byps::test::api::ver::PEvolve2 evo2, byps_ptr< ::std::vector< int32_t > > list2, byps_ptr< ::std::set< int32_t > > set2, byps_ptr< ::std::map< int32_t , int32_t > > map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, byps_ptr< BArray1< bool > > bools3, PBytes bytes3, byps_ptr< BArray1< wchar_t > > chars3, byps_ptr< BArray1< int16_t > > shorts3, byps_ptr< BArray1< int32_t > > ints3, byps_ptr< BArray1< int64_t > > longs3, byps_ptr< BArray1< float > > floats3, byps_ptr< BArray1< double > > doubles3, ::std::wstring str3, PSerializable obj3, com::wilutions::byps::test::api::ver::PEvolve2 evo3, byps_ptr< ::std::vector< int32_t > > list3, byps_ptr< ::std::set< int32_t > > set3, byps_ptr< ::std::map< int32_t , int32_t > > map3)
 	: bool1(bool1)
 	, byte1(byte1)
 	, char1(char1)

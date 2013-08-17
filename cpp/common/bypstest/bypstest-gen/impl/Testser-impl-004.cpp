@@ -1,6 +1,6 @@
 ﻿#include "Testser-impl.h"
-using namespace std;
-using namespace com::wilutions::byps;
+using namespace ::std;
+using namespace ::com::wilutions::byps;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -126,7 +126,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setString::BRequest_RemoteArrayTypes1dim_setString() : BMethodRequest(1557084481) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setString::BRequest_RemoteArrayTypes1dim_setString(byps_ptr< BArray1< std::wstring > > v)
+com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setString::BRequest_RemoteArrayTypes1dim_setString(byps_ptr< BArray1< ::std::wstring > > v)
 	: BMethodRequest(1557084481) 
 	, v(v)
 	{}
@@ -337,7 +337,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes23_sendArraysString::BRequest_RemoteArrayTypes23_sendArraysString() : BMethodRequest(2081058997) {
 }
-com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes23_sendArraysString::BRequest_RemoteArrayTypes23_sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4)
+com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes23_sendArraysString::BRequest_RemoteArrayTypes23_sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4)
 	: BMethodRequest(2081058997) 
 	, arr2(arr2)
 	, arr3(arr3)
@@ -350,7 +350,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes23_sendAr
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes23_sendArraysString::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes23 __byps__remoteT = byps_ptr_cast<RemoteArrayTypes23>(__byps__remote);
-	__byps__remoteT->async_sendArraysString(arr2, arr3, arr4, [__byps__asyncResult](byps_ptr< BArray1< std::wstring > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_sendArraysString(arr2, arr3, arr4, [__byps__asyncResult](byps_ptr< BArray1< ::std::wstring > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -724,7 +724,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getS
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getString::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes4dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes4dim>(__byps__remote);
-	__byps__remoteT->async_getString([__byps__asyncResult](byps_ptr< BArray4< std::wstring > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getString([__byps__asyncResult](byps_ptr< BArray4< ::std::wstring > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}

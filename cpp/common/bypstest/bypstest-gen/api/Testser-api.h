@@ -399,7 +399,7 @@ typedef byps_ptr< Evolve2 > PEvolve2;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Matrix2D : public BSerializable {
 	public: float _11;
@@ -427,7 +427,7 @@ class Matrix2D : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Example for an inline class.
@@ -458,7 +458,7 @@ class Point2D : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace arr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class ArrayTypes1dim : public BSerializable {
 	public: byps_ptr< BArray1< bool > > boolean1;
@@ -469,11 +469,11 @@ class ArrayTypes1dim : public BSerializable {
 	public: byps_ptr< BArray1< int64_t > > long1;
 	public: byps_ptr< BArray1< float > > float1;
 	public: byps_ptr< BArray1< double > > double1;
-	public: byps_ptr< BArray1< std::wstring > > string1;
+	public: byps_ptr< BArray1< ::std::wstring > > string1;
 	public: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
 	public: ArrayTypes1dim();
-	public: ArrayTypes1dim(byps_ptr< BArray1< bool > > boolean1, PBytes byte1, byps_ptr< BArray1< wchar_t > > char1, byps_ptr< BArray1< int16_t > > short1, byps_ptr< BArray1< int32_t > > int1, byps_ptr< BArray1< int64_t > > long1, byps_ptr< BArray1< float > > float1, byps_ptr< BArray1< double > > double1, byps_ptr< BArray1< std::wstring > > string1, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
+	public: ArrayTypes1dim(byps_ptr< BArray1< bool > > boolean1, PBytes byte1, byps_ptr< BArray1< wchar_t > > char1, byps_ptr< BArray1< int16_t > > short1, byps_ptr< BArray1< int32_t > > int1, byps_ptr< BArray1< int64_t > > long1, byps_ptr< BArray1< float > > float1, byps_ptr< BArray1< double > > double1, byps_ptr< BArray1< ::std::wstring > > string1, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2001; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -487,7 +487,7 @@ class ArrayTypes1dim : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace arr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class ArrayTypes4dim : public BSerializable {
 	public: byps_ptr< BArray4< bool > > boolean4;
@@ -498,11 +498,11 @@ class ArrayTypes4dim : public BSerializable {
 	public: byps_ptr< BArray4< int64_t > > long4;
 	public: byps_ptr< BArray4< float > > float4;
 	public: byps_ptr< BArray4< double > > double4;
-	public: byps_ptr< BArray4< std::wstring > > string4;
+	public: byps_ptr< BArray4< ::std::wstring > > string4;
 	public: byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4;
 	
 	public: ArrayTypes4dim();
-	public: ArrayTypes4dim(byps_ptr< BArray4< bool > > boolean4, byps_ptr< BArray4< int8_t > > byte4, byps_ptr< BArray4< wchar_t > > char4, byps_ptr< BArray4< int16_t > > short4, byps_ptr< BArray4< int32_t > > int4, byps_ptr< BArray4< int64_t > > long4, byps_ptr< BArray4< float > > float4, byps_ptr< BArray4< double > > double4, byps_ptr< BArray4< std::wstring > > string4, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4);	
+	public: ArrayTypes4dim(byps_ptr< BArray4< bool > > boolean4, byps_ptr< BArray4< int8_t > > byte4, byps_ptr< BArray4< wchar_t > > char4, byps_ptr< BArray4< int16_t > > short4, byps_ptr< BArray4< int32_t > > int4, byps_ptr< BArray4< int64_t > > long4, byps_ptr< BArray4< float > > float4, byps_ptr< BArray4< double > > double4, byps_ptr< BArray4< ::std::wstring > > string4, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2004; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -516,14 +516,14 @@ class ArrayTypes4dim : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class AllTypesC : public BSerializable {
 	public: const static bool bool1s = true;
 	public: const static bool bool2s = false;
 	public: const static int8_t byte1s = (int8_t)1;
 	public: const static wchar_t char1s = L'\u00bf';
-	public: const static std::wstring stringNull;
+	public: const static ::std::wstring stringNull;
 	/// <summary>
 	/// This constant holds the currency symbol for Euro.
 	/// </summary>
@@ -536,7 +536,7 @@ class AllTypesC : public BSerializable {
 	public: const static int64_t long1s = 6148914691236517205LL;
 	public: const static float float1s;
 	public: const static double double1s;
-	public: const static std::wstring string1s;
+	public: const static ::std::wstring string1s;
 	/// <summary>
 	/// This defines a complex constant.
 	/// </summary>
@@ -547,8 +547,8 @@ class AllTypesC : public BSerializable {
 	public: const static PAllTypesZ ALL;
 	public: const static byps_ptr< BArray1< int32_t > > arrInt;
 	public: const static byps_ptr< BArray4< int32_t > > arrInt4;
-	public: const static byps_ptr< BArray1< std::wstring > > arrStrings;
-	public: const static byps_ptr< BArray4< std::wstring > > arrStrings4;
+	public: const static byps_ptr< BArray1< ::std::wstring > > arrStrings;
+	public: const static byps_ptr< BArray4< ::std::wstring > > arrStrings4;
 	public: const static byps_ptr< BArray2< PAllTypesZ > > arrALL;
 	
 	public: AllTypesC();
@@ -566,7 +566,7 @@ class AllTypesC : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class AllTypesZ : public BSerializable {
 	private: bool bool1;
@@ -577,15 +577,15 @@ class AllTypesZ : public BSerializable {
 	private: int64_t long1;
 	private: float float1;
 	private: double double1;
-	private: std::wstring string1;
+	private: ::std::wstring string1;
 	private: PHebrewZ hebrew1;
 	private: PBytes byte2;
 	private: byps_ptr< BArray1< int32_t > > int2;
-	private: byps_ptr< BArray1< std::wstring > > string2;
+	private: byps_ptr< BArray1< ::std::wstring > > string2;
 	private: byps_ptr< BArray1< PHebrewZ > > hebrew2;
 	
 	public: AllTypesZ();
-	public: AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, std::wstring string1, com::wilutions::byps::test::api::cons::PHebrewZ hebrew1, PBytes byte2, byps_ptr< BArray1< int32_t > > int2, byps_ptr< BArray1< std::wstring > > string2, byps_ptr< BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > > hebrew2);	
+	public: AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, ::std::wstring string1, com::wilutions::byps::test::api::cons::PHebrewZ hebrew1, PBytes byte2, byps_ptr< BArray1< int32_t > > int2, byps_ptr< BArray1< ::std::wstring > > string2, byps_ptr< BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > > hebrew2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 142458; }
 	
 	public:  bool getBool1() {
@@ -644,10 +644,10 @@ class AllTypesZ : public BSerializable {
 		double1 = v;
 	}
 	
-	public:  std::wstring getString1() {
+	public:  ::std::wstring getString1() {
 		return string1;
 	}
-	public: void setString1(std::wstring v) {
+	public: void setString1(::std::wstring v) {
 		string1 = v;
 	}
 	
@@ -672,10 +672,10 @@ class AllTypesZ : public BSerializable {
 		int2 = v;
 	}
 	
-	public:  byps_ptr< BArray1< std::wstring > > getString2() {
+	public:  byps_ptr< BArray1< ::std::wstring > > getString2() {
 		return string2;
 	}
-	public: void setString2(byps_ptr< BArray1< std::wstring > > v) {
+	public: void setString2(byps_ptr< BArray1< ::std::wstring > > v) {
 		string2 = v;
 	}
 	
@@ -697,11 +697,11 @@ class AllTypesZ : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class HebrewC : public BSerializable {
-	private: const static std::wstring aleph;
-	private: const static std::wstring beth;
+	private: const static ::std::wstring aleph;
+	private: const static ::std::wstring beth;
 	public: const static PHebrewZ ALEPH;
 	public: const static PHebrewZ BETH;
 	
@@ -709,10 +709,10 @@ class HebrewC : public BSerializable {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 691741677; }
 	
-	public: static std::wstring getAleph() {
+	public: static ::std::wstring getAleph() {
 		return aleph;
 	}
-	public: static std::wstring getBeth() {
+	public: static ::std::wstring getBeth() {
 		return beth;
 	}
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -726,19 +726,19 @@ class HebrewC : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class HebrewZ : public BSerializable {
-	private: std::wstring core;
+	private: ::std::wstring core;
 	
 	public: HebrewZ();
-	public: HebrewZ(std::wstring core);	
+	public: HebrewZ(::std::wstring core);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1518668429; }
 	
-	public:  std::wstring getCore() {
+	public:  ::std::wstring getCore() {
 		return core;
 	}
-	public: void setCore(std::wstring v) {
+	public: void setCore(::std::wstring v) {
 		core = v;
 	}
 	
@@ -777,17 +777,17 @@ void operator & (BIO& ar, EnumPlanets& e);
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace enu { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class UsePlanets : public BSerializable {
 	public: EnumPlanets planet;
 	private: EnumPlanets planet2;
 	public: byps_ptr< BArray1< EnumPlanets > > arrayOfPlanets;
-	public: byps_ptr< std::vector< EnumPlanets > > listOfPlanets;
-	public: byps_ptr< std::map< std::wstring , EnumPlanets > > mapOfPlanets;
+	public: byps_ptr< ::std::vector< EnumPlanets > > listOfPlanets;
+	public: byps_ptr< ::std::map< ::std::wstring , EnumPlanets > > mapOfPlanets;
 	
 	public: UsePlanets();
-	public: UsePlanets(com::wilutions::byps::test::api::enu::EnumPlanets planet, com::wilutions::byps::test::api::enu::EnumPlanets planet2, byps_ptr< BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > > arrayOfPlanets, byps_ptr< std::vector< com::wilutions::byps::test::api::enu::EnumPlanets > > listOfPlanets, byps_ptr< std::map< std::wstring , com::wilutions::byps::test::api::enu::EnumPlanets > > mapOfPlanets);	
+	public: UsePlanets(com::wilutions::byps::test::api::enu::EnumPlanets planet, com::wilutions::byps::test::api::enu::EnumPlanets planet2, byps_ptr< BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > > arrayOfPlanets, byps_ptr< ::std::vector< com::wilutions::byps::test::api::enu::EnumPlanets > > listOfPlanets, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::enu::EnumPlanets > > mapOfPlanets);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 10000; }
 	
 	public:  EnumPlanets getPlanet2() {
@@ -808,7 +808,7 @@ class UsePlanets : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Base class for ...
@@ -832,15 +832,15 @@ class Class1 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Class1Collections : public BSerializable {
-	public: byps_ptr< std::vector< PClass1 > > list1;
-	public: byps_ptr< std::map< std::wstring , PClass1 > > map1;
-	public: byps_ptr< std::set< PClass1 > > set1;
+	public: byps_ptr< ::std::vector< PClass1 > > list1;
+	public: byps_ptr< ::std::map< ::std::wstring , PClass1 > > map1;
+	public: byps_ptr< ::std::set< PClass1 > > set1;
 	
 	public: Class1Collections();
-	public: Class1Collections(byps_ptr< std::vector< com::wilutions::byps::test::api::inherit::PClass1 > > list1, byps_ptr< std::map< std::wstring , com::wilutions::byps::test::api::inherit::PClass1 > > map1, byps_ptr< std::set< com::wilutions::byps::test::api::inherit::PClass1 > > set1);	
+	public: Class1Collections(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inherit::PClass1 > > list1, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::inherit::PClass1 > > map1, byps_ptr< ::std::set< com::wilutions::byps::test::api::inherit::PClass1 > > set1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6004; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -854,7 +854,7 @@ class Class1Collections : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Class2 : public Class1 {
 	public: int32_t int2;
@@ -874,7 +874,7 @@ class Class2 : public Class1 {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Class3 : public Class2 {
 	public: int32_t int3;
@@ -894,7 +894,7 @@ class Class3 : public Class2 {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Actor : public BSerializable {
 	public: byps_ptr< BArray1< Point2D > > shape;
@@ -915,15 +915,15 @@ class Actor : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace list { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class ListListTypes : public BSerializable {
-	public: byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int2;
-	public: byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int3;
-	public: byps_ptr< std::vector< byps_ptr< std::vector< byps_ptr< BArray4< int32_t > > > > > > int24;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int2;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int3;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > > > int24;
 	
 	public: ListListTypes();
-	public: ListListTypes(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int2, byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int3, byps_ptr< std::vector< byps_ptr< std::vector< byps_ptr< BArray4< int32_t > > > > > > int24);	
+	public: ListListTypes(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int2, byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int3, byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > > > int24);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 3002; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -937,26 +937,26 @@ class ListListTypes : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace list { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class ListTypes : public BSerializable {
-	public: byps_ptr< std::vector< bool > > boolean1;
-	public: byps_ptr< std::vector< int8_t > > byte1;
-	public: byps_ptr< std::vector< wchar_t > > char1;
-	public: byps_ptr< std::vector< int16_t > > short1;
-	public: byps_ptr< std::vector< int32_t > > int1;
-	public: byps_ptr< std::vector< int64_t > > long1;
-	public: byps_ptr< std::vector< float > > float1;
-	public: byps_ptr< std::vector< double > > double1;
-	public: byps_ptr< std::vector< std::wstring > > string1;
-	public: byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
-	public: byps_ptr< std::vector< PBytes > > byte2;
-	public: byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2;
-	public: byps_ptr< std::vector< byps_ptr< BArray4< int32_t > > > > int4;
-	public: byps_ptr< std::vector< PSerializable > > obj1;
+	public: byps_ptr< ::std::vector< bool > > boolean1;
+	public: byps_ptr< ::std::vector< int8_t > > byte1;
+	public: byps_ptr< ::std::vector< wchar_t > > char1;
+	public: byps_ptr< ::std::vector< int16_t > > short1;
+	public: byps_ptr< ::std::vector< int32_t > > int1;
+	public: byps_ptr< ::std::vector< int64_t > > long1;
+	public: byps_ptr< ::std::vector< float > > float1;
+	public: byps_ptr< ::std::vector< double > > double1;
+	public: byps_ptr< ::std::vector< ::std::wstring > > string1;
+	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::vector< PBytes > > byte2;
+	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > int4;
+	public: byps_ptr< ::std::vector< PSerializable > > obj1;
 	
 	public: ListTypes();
-	public: ListTypes(byps_ptr< std::vector< bool > > boolean1, byps_ptr< std::vector< int8_t > > byte1, byps_ptr< std::vector< wchar_t > > char1, byps_ptr< std::vector< int16_t > > short1, byps_ptr< std::vector< int32_t > > int1, byps_ptr< std::vector< int64_t > > long1, byps_ptr< std::vector< float > > float1, byps_ptr< std::vector< double > > double1, byps_ptr< std::vector< std::wstring > > string1, byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< std::vector< PBytes > > byte2, byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< std::vector< byps_ptr< BArray4< int32_t > > > > int4, byps_ptr< std::vector< PSerializable > > obj1);	
+	public: ListTypes(byps_ptr< ::std::vector< bool > > boolean1, byps_ptr< ::std::vector< int8_t > > byte1, byps_ptr< ::std::vector< wchar_t > > char1, byps_ptr< ::std::vector< int16_t > > short1, byps_ptr< ::std::vector< int32_t > > int1, byps_ptr< ::std::vector< int64_t > > long1, byps_ptr< ::std::vector< float > > float1, byps_ptr< ::std::vector< double > > double1, byps_ptr< ::std::vector< ::std::wstring > > string1, byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::vector< PBytes > > byte2, byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > int4, byps_ptr< ::std::vector< PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 3001; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -970,25 +970,25 @@ class ListTypes : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace map { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class MapTypes : public BSerializable {
-	public: byps_ptr< std::map< std::wstring , bool > > boolean1;
-	public: byps_ptr< std::map< double , int8_t > > byte1;
-	public: byps_ptr< std::map< float , wchar_t > > char1;
-	public: byps_ptr< std::map< int64_t , int16_t > > short1;
-	public: byps_ptr< std::map< int32_t , int32_t > > int1;
-	public: byps_ptr< std::map< int16_t , int64_t > > long1;
-	public: byps_ptr< std::map< wchar_t , float > > float1;
-	public: byps_ptr< std::map< int8_t , double > > double1;
-	public: byps_ptr< std::map< std::wstring , std::wstring > > string1;
-	public: byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
-	public: byps_ptr< std::map< int32_t , PBytes > > byte2;
-	public: byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2;
-	public: byps_ptr< std::map< std::wstring , PSerializable > > obj1;
+	public: byps_ptr< ::std::map< ::std::wstring , bool > > boolean1;
+	public: byps_ptr< ::std::map< double , int8_t > > byte1;
+	public: byps_ptr< ::std::map< float , wchar_t > > char1;
+	public: byps_ptr< ::std::map< int64_t , int16_t > > short1;
+	public: byps_ptr< ::std::map< int32_t , int32_t > > int1;
+	public: byps_ptr< ::std::map< int16_t , int64_t > > long1;
+	public: byps_ptr< ::std::map< wchar_t , float > > float1;
+	public: byps_ptr< ::std::map< int8_t , double > > double1;
+	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1;
+	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::map< int32_t , PBytes > > byte2;
+	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1;
 	
 	public: MapTypes();
-	public: MapTypes(byps_ptr< std::map< std::wstring , bool > > boolean1, byps_ptr< std::map< double , int8_t > > byte1, byps_ptr< std::map< float , wchar_t > > char1, byps_ptr< std::map< int64_t , int16_t > > short1, byps_ptr< std::map< int32_t , int32_t > > int1, byps_ptr< std::map< int16_t , int64_t > > long1, byps_ptr< std::map< wchar_t , float > > float1, byps_ptr< std::map< int8_t , double > > double1, byps_ptr< std::map< std::wstring , std::wstring > > string1, byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< std::map< int32_t , PBytes > > byte2, byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< std::map< std::wstring , PSerializable > > obj1);	
+	public: MapTypes(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1, byps_ptr< ::std::map< double , int8_t > > byte1, byps_ptr< ::std::map< float , wchar_t > > char1, byps_ptr< ::std::map< int64_t , int16_t > > short1, byps_ptr< ::std::map< int32_t , int32_t > > int1, byps_ptr< ::std::map< int16_t , int64_t > > long1, byps_ptr< ::std::map< wchar_t , float > > float1, byps_ptr< ::std::map< int8_t , double > > double1, byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1, byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::map< int32_t , PBytes > > byte2, byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 4001; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1002,7 +1002,7 @@ class MapTypes : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace prim { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Example class with primitive types like boolean, int, String.
@@ -1031,7 +1031,7 @@ class PrimitiveTypes : public BSerializable {
 	public: int64_t longVal;
 	public: float floatVal;
 	public: double doubleVal;
-	public: std::wstring stringVal;
+	public: ::std::wstring stringVal;
 	/// <summary>
 	/// This element can refer a an arbitrary type that implements Serializable.
 	/// </summary>
@@ -1050,7 +1050,7 @@ class PrimitiveTypes : public BSerializable {
 	public: PSerializable temp; // transient
 	
 	public: PrimitiveTypes();
-	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, std::wstring stringVal, PSerializable objVal, PSerializable objVal2, bool value, PSerializable temp);	
+	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, ::std::wstring stringVal, PSerializable objVal, PSerializable objVal2, bool value, PSerializable temp);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1000; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1064,7 +1064,7 @@ class PrimitiveTypes : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace priv { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Example class with private and protected members
@@ -1078,22 +1078,22 @@ class PrivateMembers : public BSerializable {
 	private: int64_t longVal;
 	private: float floatVal;
 	private: double doubleVal;
-	private: std::wstring stringVal;
+	private: ::std::wstring stringVal;
 	private: com::wilutions::byps::test::api::prim::PPrimitiveTypes primitiveTypes;
 	private: byps_ptr< BArray1< bool > > arrBool;
 	private: byps_ptr< BArray1< int32_t > > arrInt;
-	private: byps_ptr< BArray1< std::wstring > > arrString;
+	private: byps_ptr< BArray1< ::std::wstring > > arrString;
 	private: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arrPrimitiveTypes;
-	private: byps_ptr< std::vector< bool > > listBool;
-	private: byps_ptr< std::vector< int32_t > > listInt;
-	private: byps_ptr< std::vector< std::wstring > > listString;
-	private: byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes;
-	private: byps_ptr< std::map< int32_t , byps_ptr< std::vector< std::wstring > > > > mapIntListString;
+	private: byps_ptr< ::std::vector< bool > > listBool;
+	private: byps_ptr< ::std::vector< int32_t > > listInt;
+	private: byps_ptr< ::std::vector< ::std::wstring > > listString;
+	private: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes;
+	private: byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > mapIntListString;
 	protected: int32_t protInt;
 	protected: int32_t pprotInt;
 	
 	public: PrivateMembers();
-	public: PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, std::wstring stringVal, com::wilutions::byps::test::api::prim::PPrimitiveTypes primitiveTypes, byps_ptr< BArray1< bool > > arrBool, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray1< std::wstring > > arrString, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arrPrimitiveTypes, byps_ptr< std::vector< bool > > listBool, byps_ptr< std::vector< int32_t > > listInt, byps_ptr< std::vector< std::wstring > > listString, byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes, byps_ptr< std::map< int32_t , byps_ptr< std::vector< std::wstring > > > > mapIntListString, int32_t protInt, int32_t pprotInt);	
+	public: PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, ::std::wstring stringVal, com::wilutions::byps::test::api::prim::PPrimitiveTypes primitiveTypes, byps_ptr< BArray1< bool > > arrBool, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray1< ::std::wstring > > arrString, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arrPrimitiveTypes, byps_ptr< ::std::vector< bool > > listBool, byps_ptr< ::std::vector< int32_t > > listInt, byps_ptr< ::std::vector< ::std::wstring > > listString, byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes, byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > mapIntListString, int32_t protInt, int32_t pprotInt);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 8001; }
 	
 	public:  bool getBoolVal() {
@@ -1152,10 +1152,10 @@ class PrivateMembers : public BSerializable {
 		doubleVal = v;
 	}
 	
-	public:  std::wstring getStringVal() {
+	public:  ::std::wstring getStringVal() {
 		return stringVal;
 	}
-	public: void setStringVal(std::wstring v) {
+	public: void setStringVal(::std::wstring v) {
 		stringVal = v;
 	}
 	
@@ -1180,10 +1180,10 @@ class PrivateMembers : public BSerializable {
 		arrInt = v;
 	}
 	
-	public:  byps_ptr< BArray1< std::wstring > > getArrString() {
+	public:  byps_ptr< BArray1< ::std::wstring > > getArrString() {
 		return arrString;
 	}
-	public: void setArrString(byps_ptr< BArray1< std::wstring > > v) {
+	public: void setArrString(byps_ptr< BArray1< ::std::wstring > > v) {
 		arrString = v;
 	}
 	
@@ -1194,38 +1194,38 @@ class PrivateMembers : public BSerializable {
 		arrPrimitiveTypes = v;
 	}
 	
-	public:  byps_ptr< std::vector< bool > > getListBool() {
+	public:  byps_ptr< ::std::vector< bool > > getListBool() {
 		return listBool;
 	}
-	public: void setListBool(byps_ptr< std::vector< bool > > v) {
+	public: void setListBool(byps_ptr< ::std::vector< bool > > v) {
 		listBool = v;
 	}
 	
-	public:  byps_ptr< std::vector< int32_t > > getListInt() {
+	public:  byps_ptr< ::std::vector< int32_t > > getListInt() {
 		return listInt;
 	}
-	public: void setListInt(byps_ptr< std::vector< int32_t > > v) {
+	public: void setListInt(byps_ptr< ::std::vector< int32_t > > v) {
 		listInt = v;
 	}
 	
-	public:  byps_ptr< std::vector< std::wstring > > getListString() {
+	public:  byps_ptr< ::std::vector< ::std::wstring > > getListString() {
 		return listString;
 	}
-	public: void setListString(byps_ptr< std::vector< std::wstring > > v) {
+	public: void setListString(byps_ptr< ::std::vector< ::std::wstring > > v) {
 		listString = v;
 	}
 	
-	public:  byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getListPrimitiveTypes() {
+	public:  byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getListPrimitiveTypes() {
 		return listPrimitiveTypes;
 	}
-	public: void setListPrimitiveTypes(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) {
+	public: void setListPrimitiveTypes(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) {
 		listPrimitiveTypes = v;
 	}
 	
-	public:  byps_ptr< std::map< int32_t , byps_ptr< std::vector< std::wstring > > > > getMapIntListString() {
+	public:  byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > getMapIntListString() {
 		return mapIntListString;
 	}
-	public: void setMapIntListString(byps_ptr< std::map< int32_t , byps_ptr< std::vector< std::wstring > > > > v) {
+	public: void setMapIntListString(byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > v) {
 		mapIntListString = v;
 	}
 	
@@ -1254,16 +1254,16 @@ class PrivateMembers : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace refs { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Node : public BSerializable {
 	public: PNode next;
 	public: PNode me;
-	public: byps_ptr< std::map< std::wstring , PNode > > mapOfNodes;
-	public: byps_ptr< std::vector< PNode > > listOfNodes;
+	public: byps_ptr< ::std::map< ::std::wstring , PNode > > mapOfNodes;
+	public: byps_ptr< ::std::vector< PNode > > listOfNodes;
 	
 	public: Node();
-	public: Node(com::wilutions::byps::test::api::refs::PNode next, com::wilutions::byps::test::api::refs::PNode me, byps_ptr< std::map< std::wstring , com::wilutions::byps::test::api::refs::PNode > > mapOfNodes, byps_ptr< std::vector< com::wilutions::byps::test::api::refs::PNode > > listOfNodes);	
+	public: Node(com::wilutions::byps::test::api::refs::PNode next, com::wilutions::byps::test::api::refs::PNode me, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::refs::PNode > > mapOfNodes, byps_ptr< ::std::vector< com::wilutions::byps::test::api::refs::PNode > > listOfNodes);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 9001; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1277,25 +1277,25 @@ class Node : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace set { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class SetTypes : public BSerializable {
-	public: byps_ptr< std::set< bool > > boolean1;
-	public: byps_ptr< std::set< int8_t > > byte1;
-	public: byps_ptr< std::set< wchar_t > > char1;
-	public: byps_ptr< std::set< int16_t > > short1;
-	public: byps_ptr< std::set< int32_t > > int1;
-	public: byps_ptr< std::set< int64_t > > long1;
-	public: byps_ptr< std::set< float > > float1;
-	public: byps_ptr< std::set< double > > double1;
-	public: byps_ptr< std::set< std::wstring > > string1;
-	public: byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
-	public: byps_ptr< std::set< PBytes > > byte2;
-	public: byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2;
-	public: byps_ptr< std::set< PSerializable > > obj1;
+	public: byps_ptr< ::std::set< bool > > boolean1;
+	public: byps_ptr< ::std::set< int8_t > > byte1;
+	public: byps_ptr< ::std::set< wchar_t > > char1;
+	public: byps_ptr< ::std::set< int16_t > > short1;
+	public: byps_ptr< ::std::set< int32_t > > int1;
+	public: byps_ptr< ::std::set< int64_t > > long1;
+	public: byps_ptr< ::std::set< float > > float1;
+	public: byps_ptr< ::std::set< double > > double1;
+	public: byps_ptr< ::std::set< ::std::wstring > > string1;
+	public: byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::set< PBytes > > byte2;
+	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::set< PSerializable > > obj1;
 	
 	public: SetTypes();
-	public: SetTypes(byps_ptr< std::set< bool > > boolean1, byps_ptr< std::set< int8_t > > byte1, byps_ptr< std::set< wchar_t > > char1, byps_ptr< std::set< int16_t > > short1, byps_ptr< std::set< int32_t > > int1, byps_ptr< std::set< int64_t > > long1, byps_ptr< std::set< float > > float1, byps_ptr< std::set< double > > double1, byps_ptr< std::set< std::wstring > > string1, byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< std::set< PBytes > > byte2, byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< std::set< PSerializable > > obj1);	
+	public: SetTypes(byps_ptr< ::std::set< bool > > boolean1, byps_ptr< ::std::set< int8_t > > byte1, byps_ptr< ::std::set< wchar_t > > char1, byps_ptr< ::std::set< int16_t > > short1, byps_ptr< ::std::set< int32_t > > int1, byps_ptr< ::std::set< int64_t > > long1, byps_ptr< ::std::set< float > > float1, byps_ptr< ::std::set< double > > double1, byps_ptr< ::std::set< ::std::wstring > > string1, byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::set< PBytes > > byte2, byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::set< PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 5001; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1309,15 +1309,15 @@ class SetTypes : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class ChatStructure : public BSerializable {
-	public: std::wstring msg;
+	public: ::std::wstring msg;
 	public: double sentAt;
 	public: double receivedAt;
 	
 	public: ChatStructure();
-	public: ChatStructure(std::wstring msg, double sentAt, double receivedAt);	
+	public: ChatStructure(::std::wstring msg, double sentAt, double receivedAt);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 7007; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1331,23 +1331,23 @@ class ChatStructure : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace strm { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Stream1 : public BSerializable {
 	public: PContentStream is1;
-	private: std::wstring contentType;
+	private: ::std::wstring contentType;
 	private: byps_ptr< BArray1< PContentStream > > arrStream;
-	private: byps_ptr< std::vector< PContentStream > > listStream;
-	public: byps_ptr< std::map< int32_t , PContentStream > > mapStream;
+	private: byps_ptr< ::std::vector< PContentStream > > listStream;
+	public: byps_ptr< ::std::map< int32_t , PContentStream > > mapStream;
 	
 	public: Stream1();
-	public: Stream1(PContentStream is1, std::wstring contentType, byps_ptr< BArray1< PContentStream > > arrStream, byps_ptr< std::vector< PContentStream > > listStream, byps_ptr< std::map< int32_t , PContentStream > > mapStream);	
+	public: Stream1(PContentStream is1, ::std::wstring contentType, byps_ptr< BArray1< PContentStream > > arrStream, byps_ptr< ::std::vector< PContentStream > > listStream, byps_ptr< ::std::map< int32_t , PContentStream > > mapStream);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1541129345; }
 	
-	public:  std::wstring getContentType() {
+	public:  ::std::wstring getContentType() {
 		return contentType;
 	}
-	public: void setContentType(std::wstring v) {
+	public: void setContentType(::std::wstring v) {
 		contentType = v;
 	}
 	
@@ -1358,10 +1358,10 @@ class Stream1 : public BSerializable {
 		arrStream = v;
 	}
 	
-	public:  byps_ptr< std::vector< PContentStream > > getListStream() {
+	public:  byps_ptr< ::std::vector< PContentStream > > getListStream() {
 		return listStream;
 	}
-	public: void setListStream(byps_ptr< std::vector< PContentStream > > v) {
+	public: void setListStream(byps_ptr< ::std::vector< PContentStream > > v) {
 		listStream = v;
 	}
 	
@@ -1376,7 +1376,7 @@ class Stream1 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Example class with elements that belong to different versions.
@@ -1398,12 +1398,12 @@ class Evolve : public BSerializable {
 	public: byps_ptr< BArray1< int64_t > > longs1;
 	public: byps_ptr< BArray1< float > > floats1;
 	public: byps_ptr< BArray1< double > > doubles1;
-	public: std::wstring str1;
+	public: ::std::wstring str1;
 	public: PSerializable obj1;
 	public: PEvolve2 evo1;
-	public: byps_ptr< std::vector< int32_t > > list1;
-	public: byps_ptr< std::set< int32_t > > set1;
-	public: byps_ptr< std::map< int32_t , int32_t > > map1;
+	public: byps_ptr< ::std::vector< int32_t > > list1;
+	public: byps_ptr< ::std::set< int32_t > > set1;
+	public: byps_ptr< ::std::map< int32_t , int32_t > > map1;
 	public: bool bool2;
 	public: int8_t byte2;
 	public: wchar_t char2;
@@ -1420,12 +1420,12 @@ class Evolve : public BSerializable {
 	public: byps_ptr< BArray1< int64_t > > longs2;
 	public: byps_ptr< BArray1< float > > floats2;
 	public: byps_ptr< BArray1< double > > doubles2;
-	public: std::wstring str2;
+	public: ::std::wstring str2;
 	public: PSerializable obj2;
 	public: PEvolve2 evo2;
-	public: byps_ptr< std::vector< int32_t > > list2;
-	public: byps_ptr< std::set< int32_t > > set2;
-	public: byps_ptr< std::map< int32_t , int32_t > > map2;
+	public: byps_ptr< ::std::vector< int32_t > > list2;
+	public: byps_ptr< ::std::set< int32_t > > set2;
+	public: byps_ptr< ::std::map< int32_t , int32_t > > map2;
 	public: bool bool3;
 	public: int8_t byte3;
 	public: wchar_t char3;
@@ -1442,15 +1442,15 @@ class Evolve : public BSerializable {
 	public: byps_ptr< BArray1< int64_t > > longs3;
 	public: byps_ptr< BArray1< float > > floats3;
 	public: byps_ptr< BArray1< double > > doubles3;
-	public: std::wstring str3;
+	public: ::std::wstring str3;
 	public: PSerializable obj3;
 	public: PEvolve2 evo3;
-	public: byps_ptr< std::vector< int32_t > > list3;
-	public: byps_ptr< std::set< int32_t > > set3;
-	public: byps_ptr< std::map< int32_t , int32_t > > map3;
+	public: byps_ptr< ::std::vector< int32_t > > list3;
+	public: byps_ptr< ::std::set< int32_t > > set3;
+	public: byps_ptr< ::std::map< int32_t , int32_t > > map3;
 	
 	public: Evolve();
-	public: Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, byps_ptr< BArray1< bool > > bools1, PBytes bytes1, byps_ptr< BArray1< wchar_t > > chars1, byps_ptr< BArray1< int16_t > > shorts1, byps_ptr< BArray1< int32_t > > ints1, byps_ptr< BArray1< int64_t > > longs1, byps_ptr< BArray1< float > > floats1, byps_ptr< BArray1< double > > doubles1, std::wstring str1, PSerializable obj1, com::wilutions::byps::test::api::ver::PEvolve2 evo1, byps_ptr< std::vector< int32_t > > list1, byps_ptr< std::set< int32_t > > set1, byps_ptr< std::map< int32_t , int32_t > > map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, byps_ptr< BArray1< bool > > bools2, PBytes bytes2, byps_ptr< BArray1< wchar_t > > chars2, byps_ptr< BArray1< int16_t > > shorts2, byps_ptr< BArray1< int32_t > > ints2, byps_ptr< BArray1< int64_t > > longs2, byps_ptr< BArray1< float > > floats2, byps_ptr< BArray1< double > > doubles2, std::wstring str2, PSerializable obj2, com::wilutions::byps::test::api::ver::PEvolve2 evo2, byps_ptr< std::vector< int32_t > > list2, byps_ptr< std::set< int32_t > > set2, byps_ptr< std::map< int32_t , int32_t > > map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, byps_ptr< BArray1< bool > > bools3, PBytes bytes3, byps_ptr< BArray1< wchar_t > > chars3, byps_ptr< BArray1< int16_t > > shorts3, byps_ptr< BArray1< int32_t > > ints3, byps_ptr< BArray1< int64_t > > longs3, byps_ptr< BArray1< float > > floats3, byps_ptr< BArray1< double > > doubles3, std::wstring str3, PSerializable obj3, com::wilutions::byps::test::api::ver::PEvolve2 evo3, byps_ptr< std::vector< int32_t > > list3, byps_ptr< std::set< int32_t > > set3, byps_ptr< std::map< int32_t , int32_t > > map3);	
+	public: Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, byps_ptr< BArray1< bool > > bools1, PBytes bytes1, byps_ptr< BArray1< wchar_t > > chars1, byps_ptr< BArray1< int16_t > > shorts1, byps_ptr< BArray1< int32_t > > ints1, byps_ptr< BArray1< int64_t > > longs1, byps_ptr< BArray1< float > > floats1, byps_ptr< BArray1< double > > doubles1, ::std::wstring str1, PSerializable obj1, com::wilutions::byps::test::api::ver::PEvolve2 evo1, byps_ptr< ::std::vector< int32_t > > list1, byps_ptr< ::std::set< int32_t > > set1, byps_ptr< ::std::map< int32_t , int32_t > > map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, byps_ptr< BArray1< bool > > bools2, PBytes bytes2, byps_ptr< BArray1< wchar_t > > chars2, byps_ptr< BArray1< int16_t > > shorts2, byps_ptr< BArray1< int32_t > > ints2, byps_ptr< BArray1< int64_t > > longs2, byps_ptr< BArray1< float > > floats2, byps_ptr< BArray1< double > > doubles2, ::std::wstring str2, PSerializable obj2, com::wilutions::byps::test::api::ver::PEvolve2 evo2, byps_ptr< ::std::vector< int32_t > > list2, byps_ptr< ::std::set< int32_t > > set2, byps_ptr< ::std::map< int32_t , int32_t > > map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, byps_ptr< BArray1< bool > > bools3, PBytes bytes3, byps_ptr< BArray1< wchar_t > > chars3, byps_ptr< BArray1< int16_t > > shorts3, byps_ptr< BArray1< int32_t > > ints3, byps_ptr< BArray1< int64_t > > longs3, byps_ptr< BArray1< float > > floats3, byps_ptr< BArray1< double > > doubles3, ::std::wstring str3, PSerializable obj3, com::wilutions::byps::test::api::ver::PEvolve2 evo3, byps_ptr< ::std::vector< int32_t > > list3, byps_ptr< ::std::set< int32_t > > set3, byps_ptr< ::std::map< int32_t , int32_t > > map3);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1391985860; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1464,7 +1464,7 @@ class Evolve : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class Evolve2 : public BSerializable {
 	protected: int32_t n1;
@@ -1650,7 +1650,7 @@ typedef byps_ptr< EvolveIF > PEvolveIF;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Interface with functions using 1-dimensional arrays.
@@ -1681,8 +1681,8 @@ class RemoteArrayTypes1dim : public virtual BRemote
 	public: virtual void setDouble(byps_ptr< BArray1< double > > v)  = 0;
 	public: virtual void async_setDouble(byps_ptr< BArray1< double > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setString(byps_ptr< BArray1< std::wstring > > v)  = 0;
-	public: virtual void async_setString(byps_ptr< BArray1< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setString(byps_ptr< BArray1< ::std::wstring > > v)  = 0;
+	public: virtual void async_setString(byps_ptr< BArray1< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v)  = 0;
 	public: virtual void async_setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -1714,8 +1714,8 @@ class RemoteArrayTypes1dim : public virtual BRemote
 	public: virtual byps_ptr< BArray1< double > > getDouble()  = 0;
 	public: virtual void async_getDouble(std::function< void (byps_ptr< BArray1< double > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray1< std::wstring > > getString()  = 0;
-	public: virtual void async_getString(std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray1< ::std::wstring > > getString()  = 0;
+	public: virtual void async_getString(std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes()  = 0;
 	public: virtual void async_getPrimitiveTypes(std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
@@ -1734,7 +1734,7 @@ class RemoteArrayTypes1dim : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteArrayTypes1dim;
 typedef byps_ptr<BSkeleton_RemoteArrayTypes1dim> PSkeleton_RemoteArrayTypes1dim;
@@ -1767,8 +1767,8 @@ class BSkeleton_RemoteArrayTypes1dim : public BSkeleton, public RemoteArrayTypes
 	public: virtual void setDouble(byps_ptr< BArray1< double > > v) ;
 	public: virtual void async_setDouble(byps_ptr< BArray1< double > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setString(byps_ptr< BArray1< std::wstring > > v) ;
-	public: virtual void async_setString(byps_ptr< BArray1< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString(byps_ptr< BArray1< ::std::wstring > > v) ;
+	public: virtual void async_setString(byps_ptr< BArray1< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) ;
 	public: virtual void async_setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult) ;
@@ -1800,8 +1800,8 @@ class BSkeleton_RemoteArrayTypes1dim : public BSkeleton, public RemoteArrayTypes
 	public: virtual byps_ptr< BArray1< double > > getDouble() ;
 	public: virtual void async_getDouble(std::function< void (byps_ptr< BArray1< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< std::wstring > > getString() ;
-	public: virtual void async_getString(std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< ::std::wstring > > getString() ;
+	public: virtual void async_getString(std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
 	public: virtual void async_getPrimitiveTypes(std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
@@ -1818,7 +1818,7 @@ class BSkeleton_RemoteArrayTypes1dim : public BSkeleton, public RemoteArrayTypes
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteArrayTypes1dim;
 typedef byps_ptr<BStub_RemoteArrayTypes1dim> PStub_RemoteArrayTypes1dim;
@@ -1853,8 +1853,8 @@ class BStub_RemoteArrayTypes1dim : public BStub, public RemoteArrayTypes1dim {
 	public: virtual void setDouble(byps_ptr< BArray1< double > > v) ;
 	public: virtual void async_setDouble(byps_ptr< BArray1< double > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setString(byps_ptr< BArray1< std::wstring > > v) ;
-	public: virtual void async_setString(byps_ptr< BArray1< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString(byps_ptr< BArray1< ::std::wstring > > v) ;
+	public: virtual void async_setString(byps_ptr< BArray1< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) ;
 	public: virtual void async_setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult) ;
@@ -1886,8 +1886,8 @@ class BStub_RemoteArrayTypes1dim : public BStub, public RemoteArrayTypes1dim {
 	public: virtual byps_ptr< BArray1< double > > getDouble() ;
 	public: virtual void async_getDouble(std::function< void (byps_ptr< BArray1< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< std::wstring > > getString() ;
-	public: virtual void async_getString(std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< ::std::wstring > > getString() ;
+	public: virtual void async_getString(std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
 	public: virtual void async_getPrimitiveTypes(std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
@@ -1905,15 +1905,15 @@ class BStub_RemoteArrayTypes1dim : public BStub, public RemoteArrayTypes1dim {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteArrayTypes23 : public virtual BRemote
 {
 	public: virtual byps_ptr< BArray1< int32_t > > sendArraysInt(byps_ptr< BArray2< int32_t > > arr2, byps_ptr< BArray3< int32_t > > arr3, byps_ptr< BArray4< int32_t > > arr4)  = 0;
 	public: virtual void async_sendArraysInt(byps_ptr< BArray2< int32_t > > arr2, byps_ptr< BArray3< int32_t > > arr3, byps_ptr< BArray4< int32_t > > arr4, std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray1< std::wstring > > sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4)  = 0;
-	public: virtual void async_sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4, std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray1< ::std::wstring > > sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4)  = 0;
+	public: virtual void async_sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4, std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4)  = 0;
 	public: virtual void async_sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4, std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
@@ -1935,7 +1935,7 @@ class RemoteArrayTypes23 : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteArrayTypes23;
 typedef byps_ptr<BSkeleton_RemoteArrayTypes23> PSkeleton_RemoteArrayTypes23;
@@ -1947,8 +1947,8 @@ class BSkeleton_RemoteArrayTypes23 : public BSkeleton, public RemoteArrayTypes23
 	public: virtual byps_ptr< BArray1< int32_t > > sendArraysInt(byps_ptr< BArray2< int32_t > > arr2, byps_ptr< BArray3< int32_t > > arr3, byps_ptr< BArray4< int32_t > > arr4) ;
 	public: virtual void async_sendArraysInt(byps_ptr< BArray2< int32_t > > arr2, byps_ptr< BArray3< int32_t > > arr3, byps_ptr< BArray4< int32_t > > arr4, std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< std::wstring > > sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4) ;
-	public: virtual void async_sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4, std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< ::std::wstring > > sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4) ;
+	public: virtual void async_sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4, std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4) ;
 	public: virtual void async_sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4, std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
@@ -1968,7 +1968,7 @@ class BSkeleton_RemoteArrayTypes23 : public BSkeleton, public RemoteArrayTypes23
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteArrayTypes23;
 typedef byps_ptr<BStub_RemoteArrayTypes23> PStub_RemoteArrayTypes23;
@@ -1982,8 +1982,8 @@ class BStub_RemoteArrayTypes23 : public BStub, public RemoteArrayTypes23 {
 	public: virtual byps_ptr< BArray1< int32_t > > sendArraysInt(byps_ptr< BArray2< int32_t > > arr2, byps_ptr< BArray3< int32_t > > arr3, byps_ptr< BArray4< int32_t > > arr4) ;
 	public: virtual void async_sendArraysInt(byps_ptr< BArray2< int32_t > > arr2, byps_ptr< BArray3< int32_t > > arr3, byps_ptr< BArray4< int32_t > > arr4, std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< std::wstring > > sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4) ;
-	public: virtual void async_sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4, std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< ::std::wstring > > sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4) ;
+	public: virtual void async_sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4, std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4) ;
 	public: virtual void async_sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4, std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
@@ -2004,7 +2004,7 @@ class BStub_RemoteArrayTypes23 : public BStub, public RemoteArrayTypes23 {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Interface with functions using 4-dimensional arrays.
@@ -2035,8 +2035,8 @@ class RemoteArrayTypes4dim : public virtual BRemote
 	public: virtual void setDouble(byps_ptr< BArray4< double > > v)  = 0;
 	public: virtual void async_setDouble(byps_ptr< BArray4< double > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setString(byps_ptr< BArray4< std::wstring > > v)  = 0;
-	public: virtual void async_setString(byps_ptr< BArray4< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setString(byps_ptr< BArray4< ::std::wstring > > v)  = 0;
+	public: virtual void async_setString(byps_ptr< BArray4< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void setPrimitiveTypes(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v)  = 0;
 	public: virtual void async_setPrimitiveTypes(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -2068,8 +2068,8 @@ class RemoteArrayTypes4dim : public virtual BRemote
 	public: virtual byps_ptr< BArray4< double > > getDouble()  = 0;
 	public: virtual void async_getDouble(std::function< void (byps_ptr< BArray4< double > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray4< std::wstring > > getString()  = 0;
-	public: virtual void async_getString(std::function< void (byps_ptr< BArray4< std::wstring > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray4< ::std::wstring > > getString()  = 0;
+	public: virtual void async_getString(std::function< void (byps_ptr< BArray4< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes()  = 0;
 	public: virtual void async_getPrimitiveTypes(std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
@@ -2088,7 +2088,7 @@ class RemoteArrayTypes4dim : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteArrayTypes4dim;
 typedef byps_ptr<BSkeleton_RemoteArrayTypes4dim> PSkeleton_RemoteArrayTypes4dim;
@@ -2121,8 +2121,8 @@ class BSkeleton_RemoteArrayTypes4dim : public BSkeleton, public RemoteArrayTypes
 	public: virtual void setDouble(byps_ptr< BArray4< double > > v) ;
 	public: virtual void async_setDouble(byps_ptr< BArray4< double > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setString(byps_ptr< BArray4< std::wstring > > v) ;
-	public: virtual void async_setString(byps_ptr< BArray4< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString(byps_ptr< BArray4< ::std::wstring > > v) ;
+	public: virtual void async_setString(byps_ptr< BArray4< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setPrimitiveTypes(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) ;
 	public: virtual void async_setPrimitiveTypes(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult) ;
@@ -2154,8 +2154,8 @@ class BSkeleton_RemoteArrayTypes4dim : public BSkeleton, public RemoteArrayTypes
 	public: virtual byps_ptr< BArray4< double > > getDouble() ;
 	public: virtual void async_getDouble(std::function< void (byps_ptr< BArray4< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray4< std::wstring > > getString() ;
-	public: virtual void async_getString(std::function< void (byps_ptr< BArray4< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray4< ::std::wstring > > getString() ;
+	public: virtual void async_getString(std::function< void (byps_ptr< BArray4< ::std::wstring > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
 	public: virtual void async_getPrimitiveTypes(std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
@@ -2172,7 +2172,7 @@ class BSkeleton_RemoteArrayTypes4dim : public BSkeleton, public RemoteArrayTypes
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteArrayTypes4dim;
 typedef byps_ptr<BStub_RemoteArrayTypes4dim> PStub_RemoteArrayTypes4dim;
@@ -2207,8 +2207,8 @@ class BStub_RemoteArrayTypes4dim : public BStub, public RemoteArrayTypes4dim {
 	public: virtual void setDouble(byps_ptr< BArray4< double > > v) ;
 	public: virtual void async_setDouble(byps_ptr< BArray4< double > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setString(byps_ptr< BArray4< std::wstring > > v) ;
-	public: virtual void async_setString(byps_ptr< BArray4< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString(byps_ptr< BArray4< ::std::wstring > > v) ;
+	public: virtual void async_setString(byps_ptr< BArray4< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setPrimitiveTypes(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) ;
 	public: virtual void async_setPrimitiveTypes(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult) ;
@@ -2240,8 +2240,8 @@ class BStub_RemoteArrayTypes4dim : public BStub, public RemoteArrayTypes4dim {
 	public: virtual byps_ptr< BArray4< double > > getDouble() ;
 	public: virtual void async_getDouble(std::function< void (byps_ptr< BArray4< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray4< std::wstring > > getString() ;
-	public: virtual void async_getString(std::function< void (byps_ptr< BArray4< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray4< ::std::wstring > > getString() ;
+	public: virtual void async_getString(std::function< void (byps_ptr< BArray4< ::std::wstring > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
 	public: virtual void async_getPrimitiveTypes(std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
@@ -2259,7 +2259,7 @@ class BStub_RemoteArrayTypes4dim : public BStub, public RemoteArrayTypes4dim {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 /// <summary>
 /// Interface functions to verify constant definitions.
@@ -2269,8 +2269,8 @@ class RemoteConstants : public virtual BRemote
 	public: virtual void compare_HebrewC(com::wilutions::byps::test::api::cons::PHebrewZ ALEPH, com::wilutions::byps::test::api::cons::PHebrewZ BETH)  = 0;
 	public: virtual void async_compare_HebrewC(com::wilutions::byps::test::api::cons::PHebrewZ ALEPH, com::wilutions::byps::test::api::cons::PHebrewZ BETH, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll)  = 0;
-	public: virtual void async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll)  = 0;
+	public: virtual void async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
@@ -2283,7 +2283,7 @@ class RemoteConstants : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteConstants;
 typedef byps_ptr<BSkeleton_RemoteConstants> PSkeleton_RemoteConstants;
@@ -2295,8 +2295,8 @@ class BSkeleton_RemoteConstants : public BSkeleton, public RemoteConstants {
 	public: virtual void compare_HebrewC(com::wilutions::byps::test::api::cons::PHebrewZ ALEPH, com::wilutions::byps::test::api::cons::PHebrewZ BETH) ;
 	public: virtual void async_compare_HebrewC(com::wilutions::byps::test::api::cons::PHebrewZ ALEPH, com::wilutions::byps::test::api::cons::PHebrewZ BETH, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll) ;
-	public: virtual void async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll) ;
+	public: virtual void async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -2307,7 +2307,7 @@ class BSkeleton_RemoteConstants : public BSkeleton, public RemoteConstants {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteConstants;
 typedef byps_ptr<BStub_RemoteConstants> PStub_RemoteConstants;
@@ -2321,8 +2321,8 @@ class BStub_RemoteConstants : public BStub, public RemoteConstants {
 	public: virtual void compare_HebrewC(com::wilutions::byps::test::api::cons::PHebrewZ ALEPH, com::wilutions::byps::test::api::cons::PHebrewZ BETH) ;
 	public: virtual void async_compare_HebrewC(com::wilutions::byps::test::api::cons::PHebrewZ ALEPH, com::wilutions::byps::test::api::cons::PHebrewZ BETH, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll) ;
-	public: virtual void async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll) ;
+	public: virtual void async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -2334,7 +2334,7 @@ class BStub_RemoteConstants : public BStub, public RemoteConstants {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteEnums : public virtual BRemote
 {
@@ -2355,7 +2355,7 @@ class RemoteEnums : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteEnums;
 typedef byps_ptr<BSkeleton_RemoteEnums> PSkeleton_RemoteEnums;
@@ -2379,7 +2379,7 @@ class BSkeleton_RemoteEnums : public BSkeleton, public RemoteEnums {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteEnums;
 typedef byps_ptr<BStub_RemoteEnums> PStub_RemoteEnums;
@@ -2406,7 +2406,7 @@ class BStub_RemoteEnums : public BStub, public RemoteEnums {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteInlineInstance : public virtual BRemote
 {
@@ -2428,23 +2428,23 @@ class RemoteInlineInstance : public virtual BRemote
 	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DArray4dim()  = 0;
 	public: virtual void async_getPoint2DArray4dim(std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList)  = 0;
-	public: virtual void async_setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList)  = 0;
+	public: virtual void async_setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList()  = 0;
-	public: virtual void async_getPoint2DList(std::function< void (byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList()  = 0;
+	public: virtual void async_getPoint2DList(std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList)  = 0;
-	public: virtual void async_setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList)  = 0;
+	public: virtual void async_setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList()  = 0;
-	public: virtual void async_getPoint2DListList(std::function< void (byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList()  = 0;
+	public: virtual void async_getPoint2DListList(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap)  = 0;
-	public: virtual void async_setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap)  = 0;
+	public: virtual void async_setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap()  = 0;
-	public: virtual void async_getPoint2DMap(std::function< void (byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap()  = 0;
+	public: virtual void async_getPoint2DMap(std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
 	
 };
@@ -2457,7 +2457,7 @@ class RemoteInlineInstance : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteInlineInstance;
 typedef byps_ptr<BSkeleton_RemoteInlineInstance> PSkeleton_RemoteInlineInstance;
@@ -2484,23 +2484,23 @@ class BSkeleton_RemoteInlineInstance : public BSkeleton, public RemoteInlineInst
 	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DArray4dim() ;
 	public: virtual void async_getPoint2DArray4dim(std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList) ;
-	public: virtual void async_setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList) ;
+	public: virtual void async_setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList() ;
-	public: virtual void async_getPoint2DList(std::function< void (byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList() ;
+	public: virtual void async_getPoint2DList(std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList) ;
-	public: virtual void async_setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList) ;
+	public: virtual void async_setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList() ;
-	public: virtual void async_getPoint2DListList(std::function< void (byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList() ;
+	public: virtual void async_getPoint2DListList(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap) ;
-	public: virtual void async_setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap) ;
+	public: virtual void async_setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap() ;
-	public: virtual void async_getPoint2DMap(std::function< void (byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap() ;
+	public: virtual void async_getPoint2DMap(std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
 	
 };
@@ -2511,7 +2511,7 @@ class BSkeleton_RemoteInlineInstance : public BSkeleton, public RemoteInlineInst
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteInlineInstance;
 typedef byps_ptr<BStub_RemoteInlineInstance> PStub_RemoteInlineInstance;
@@ -2540,23 +2540,23 @@ class BStub_RemoteInlineInstance : public BStub, public RemoteInlineInstance {
 	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DArray4dim() ;
 	public: virtual void async_getPoint2DArray4dim(std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList) ;
-	public: virtual void async_setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList) ;
+	public: virtual void async_setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList() ;
-	public: virtual void async_getPoint2DList(std::function< void (byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList() ;
+	public: virtual void async_getPoint2DList(std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList) ;
-	public: virtual void async_setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList) ;
+	public: virtual void async_setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList() ;
-	public: virtual void async_getPoint2DListList(std::function< void (byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList() ;
+	public: virtual void async_getPoint2DListList(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap) ;
-	public: virtual void async_setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap) ;
+	public: virtual void async_setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap() ;
-	public: virtual void async_getPoint2DMap(std::function< void (byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap() ;
+	public: virtual void async_getPoint2DMap(std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
 	
 };
@@ -2568,99 +2568,99 @@ class BStub_RemoteInlineInstance : public BStub, public RemoteInlineInstance {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteListTypes : public virtual BRemote
 {
-	public: virtual byps_ptr< std::vector< bool > > getBoolean1()  = 0;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::vector< bool > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< bool > > getBoolean1()  = 0;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::vector< bool > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setBoolean1(byps_ptr< std::vector< bool > > boolean1)  = 0;
-	public: virtual void async_setBoolean1(byps_ptr< std::vector< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setBoolean1(byps_ptr< ::std::vector< bool > > boolean1)  = 0;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::vector< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< int8_t > > getByte1()  = 0;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::vector< int8_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< int8_t > > getByte1()  = 0;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::vector< int8_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setByte1(byps_ptr< std::vector< int8_t > > byte1)  = 0;
-	public: virtual void async_setByte1(byps_ptr< std::vector< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setByte1(byps_ptr< ::std::vector< int8_t > > byte1)  = 0;
+	public: virtual void async_setByte1(byps_ptr< ::std::vector< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< wchar_t > > getChar1()  = 0;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::vector< wchar_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< wchar_t > > getChar1()  = 0;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::vector< wchar_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setChar1(byps_ptr< std::vector< wchar_t > > char1)  = 0;
-	public: virtual void async_setChar1(byps_ptr< std::vector< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setChar1(byps_ptr< ::std::vector< wchar_t > > char1)  = 0;
+	public: virtual void async_setChar1(byps_ptr< ::std::vector< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< int16_t > > getShort1()  = 0;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::vector< int16_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< int16_t > > getShort1()  = 0;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::vector< int16_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setShort1(byps_ptr< std::vector< int16_t > > short1)  = 0;
-	public: virtual void async_setShort1(byps_ptr< std::vector< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setShort1(byps_ptr< ::std::vector< int16_t > > short1)  = 0;
+	public: virtual void async_setShort1(byps_ptr< ::std::vector< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< int32_t > > getInt1()  = 0;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::vector< int32_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< int32_t > > getInt1()  = 0;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::vector< int32_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt1(byps_ptr< std::vector< int32_t > > int1)  = 0;
-	public: virtual void async_setInt1(byps_ptr< std::vector< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt1(byps_ptr< ::std::vector< int32_t > > int1)  = 0;
+	public: virtual void async_setInt1(byps_ptr< ::std::vector< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< int64_t > > getLong1()  = 0;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::vector< int64_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< int64_t > > getLong1()  = 0;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::vector< int64_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setLong1(byps_ptr< std::vector< int64_t > > long1)  = 0;
-	public: virtual void async_setLong1(byps_ptr< std::vector< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setLong1(byps_ptr< ::std::vector< int64_t > > long1)  = 0;
+	public: virtual void async_setLong1(byps_ptr< ::std::vector< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< float > > getFloat1()  = 0;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::vector< float > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< float > > getFloat1()  = 0;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::vector< float > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setFloat1(byps_ptr< std::vector< float > > float1)  = 0;
-	public: virtual void async_setFloat1(byps_ptr< std::vector< float > > float1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setFloat1(byps_ptr< ::std::vector< float > > float1)  = 0;
+	public: virtual void async_setFloat1(byps_ptr< ::std::vector< float > > float1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< double > > getDouble1()  = 0;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::vector< double > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< double > > getDouble1()  = 0;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::vector< double > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setDouble1(byps_ptr< std::vector< double > > double1)  = 0;
-	public: virtual void async_setDouble1(byps_ptr< std::vector< double > > double1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setDouble1(byps_ptr< ::std::vector< double > > double1)  = 0;
+	public: virtual void async_setDouble1(byps_ptr< ::std::vector< double > > double1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< std::wstring > > getString1()  = 0;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::vector< std::wstring > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< ::std::wstring > > getString1()  = 0;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::vector< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setString1(byps_ptr< std::vector< std::wstring > > string1)  = 0;
-	public: virtual void async_setString1(byps_ptr< std::vector< std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setString1(byps_ptr< ::std::vector< ::std::wstring > > string1)  = 0;
+	public: virtual void async_setString1(byps_ptr< ::std::vector< ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)  = 0;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)  = 0;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< PBytes > > getByte2()  = 0;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::vector< PBytes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< PBytes > > getByte2()  = 0;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::vector< PBytes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setByte2(byps_ptr< std::vector< PBytes > > byte2)  = 0;
-	public: virtual void async_setByte2(byps_ptr< std::vector< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setByte2(byps_ptr< ::std::vector< PBytes > > byte2)  = 0;
+	public: virtual void async_setByte2(byps_ptr< ::std::vector< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > getInt2()  = 0;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > getInt2()  = 0;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2)  = 0;
-	public: virtual void async_setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2)  = 0;
+	public: virtual void async_setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< PSerializable > > getObj1()  = 0;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::vector< PSerializable > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< PSerializable > > getObj1()  = 0;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::vector< PSerializable > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setObj1(byps_ptr< std::vector< PSerializable > > obj1)  = 0;
-	public: virtual void async_setObj1(byps_ptr< std::vector< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setObj1(byps_ptr< ::std::vector< PSerializable > > obj1)  = 0;
+	public: virtual void async_setObj1(byps_ptr< ::std::vector< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > getInt3()  = 0;
-	public: virtual void async_getInt3(std::function< void (byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > getInt3()  = 0;
+	public: virtual void async_getInt3(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3)  = 0;
-	public: virtual void async_setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3)  = 0;
+	public: virtual void async_setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > getInt4()  = 0;
-	public: virtual void async_getInt4(std::function< void (byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > getInt4()  = 0;
+	public: virtual void async_getInt4(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4)  = 0;
-	public: virtual void async_setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4)  = 0;
+	public: virtual void async_setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
@@ -2673,7 +2673,7 @@ class RemoteListTypes : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteListTypes;
 typedef byps_ptr<BSkeleton_RemoteListTypes> PSkeleton_RemoteListTypes;
@@ -2682,95 +2682,95 @@ class BSkeleton_RemoteListTypes : public BSkeleton, public RemoteListTypes {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 380156079; }
 	
-	public: virtual byps_ptr< std::vector< bool > > getBoolean1() ;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::vector< bool > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< bool > > getBoolean1() ;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::vector< bool > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setBoolean1(byps_ptr< std::vector< bool > > boolean1) ;
-	public: virtual void async_setBoolean1(byps_ptr< std::vector< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setBoolean1(byps_ptr< ::std::vector< bool > > boolean1) ;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::vector< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int8_t > > getByte1() ;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::vector< int8_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int8_t > > getByte1() ;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::vector< int8_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte1(byps_ptr< std::vector< int8_t > > byte1) ;
-	public: virtual void async_setByte1(byps_ptr< std::vector< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte1(byps_ptr< ::std::vector< int8_t > > byte1) ;
+	public: virtual void async_setByte1(byps_ptr< ::std::vector< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< wchar_t > > getChar1() ;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::vector< wchar_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< wchar_t > > getChar1() ;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::vector< wchar_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setChar1(byps_ptr< std::vector< wchar_t > > char1) ;
-	public: virtual void async_setChar1(byps_ptr< std::vector< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setChar1(byps_ptr< ::std::vector< wchar_t > > char1) ;
+	public: virtual void async_setChar1(byps_ptr< ::std::vector< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int16_t > > getShort1() ;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::vector< int16_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int16_t > > getShort1() ;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::vector< int16_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setShort1(byps_ptr< std::vector< int16_t > > short1) ;
-	public: virtual void async_setShort1(byps_ptr< std::vector< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setShort1(byps_ptr< ::std::vector< int16_t > > short1) ;
+	public: virtual void async_setShort1(byps_ptr< ::std::vector< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int32_t > > getInt1() ;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::vector< int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int32_t > > getInt1() ;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::vector< int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt1(byps_ptr< std::vector< int32_t > > int1) ;
-	public: virtual void async_setInt1(byps_ptr< std::vector< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt1(byps_ptr< ::std::vector< int32_t > > int1) ;
+	public: virtual void async_setInt1(byps_ptr< ::std::vector< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int64_t > > getLong1() ;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::vector< int64_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int64_t > > getLong1() ;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::vector< int64_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setLong1(byps_ptr< std::vector< int64_t > > long1) ;
-	public: virtual void async_setLong1(byps_ptr< std::vector< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setLong1(byps_ptr< ::std::vector< int64_t > > long1) ;
+	public: virtual void async_setLong1(byps_ptr< ::std::vector< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< float > > getFloat1() ;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::vector< float > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< float > > getFloat1() ;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::vector< float > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setFloat1(byps_ptr< std::vector< float > > float1) ;
-	public: virtual void async_setFloat1(byps_ptr< std::vector< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setFloat1(byps_ptr< ::std::vector< float > > float1) ;
+	public: virtual void async_setFloat1(byps_ptr< ::std::vector< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< double > > getDouble1() ;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::vector< double > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< double > > getDouble1() ;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::vector< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setDouble1(byps_ptr< std::vector< double > > double1) ;
-	public: virtual void async_setDouble1(byps_ptr< std::vector< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setDouble1(byps_ptr< ::std::vector< double > > double1) ;
+	public: virtual void async_setDouble1(byps_ptr< ::std::vector< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< std::wstring > > getString1() ;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::vector< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< ::std::wstring > > getString1() ;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::vector< ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setString1(byps_ptr< std::vector< std::wstring > > string1) ;
-	public: virtual void async_setString1(byps_ptr< std::vector< std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString1(byps_ptr< ::std::vector< ::std::wstring > > string1) ;
+	public: virtual void async_setString1(byps_ptr< ::std::vector< ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PBytes > > getByte2() ;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::vector< PBytes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PBytes > > getByte2() ;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::vector< PBytes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte2(byps_ptr< std::vector< PBytes > > byte2) ;
-	public: virtual void async_setByte2(byps_ptr< std::vector< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte2(byps_ptr< ::std::vector< PBytes > > byte2) ;
+	public: virtual void async_setByte2(byps_ptr< ::std::vector< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > getInt2() ;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > getInt2() ;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2) ;
-	public: virtual void async_setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2) ;
+	public: virtual void async_setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PSerializable > > getObj1() ;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::vector< PSerializable > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PSerializable > > getObj1() ;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::vector< PSerializable > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setObj1(byps_ptr< std::vector< PSerializable > > obj1) ;
-	public: virtual void async_setObj1(byps_ptr< std::vector< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setObj1(byps_ptr< ::std::vector< PSerializable > > obj1) ;
+	public: virtual void async_setObj1(byps_ptr< ::std::vector< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > getInt3() ;
-	public: virtual void async_getInt3(std::function< void (byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > getInt3() ;
+	public: virtual void async_getInt3(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3) ;
-	public: virtual void async_setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3) ;
+	public: virtual void async_setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > getInt4() ;
-	public: virtual void async_getInt4(std::function< void (byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > getInt4() ;
+	public: virtual void async_getInt4(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4) ;
-	public: virtual void async_setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4) ;
+	public: virtual void async_setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -2781,7 +2781,7 @@ class BSkeleton_RemoteListTypes : public BSkeleton, public RemoteListTypes {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteListTypes;
 typedef byps_ptr<BStub_RemoteListTypes> PStub_RemoteListTypes;
@@ -2792,95 +2792,95 @@ class BStub_RemoteListTypes : public BStub, public RemoteListTypes {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 380156079; }
 	
-	public: virtual byps_ptr< std::vector< bool > > getBoolean1() ;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::vector< bool > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< bool > > getBoolean1() ;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::vector< bool > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setBoolean1(byps_ptr< std::vector< bool > > boolean1) ;
-	public: virtual void async_setBoolean1(byps_ptr< std::vector< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setBoolean1(byps_ptr< ::std::vector< bool > > boolean1) ;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::vector< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int8_t > > getByte1() ;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::vector< int8_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int8_t > > getByte1() ;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::vector< int8_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte1(byps_ptr< std::vector< int8_t > > byte1) ;
-	public: virtual void async_setByte1(byps_ptr< std::vector< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte1(byps_ptr< ::std::vector< int8_t > > byte1) ;
+	public: virtual void async_setByte1(byps_ptr< ::std::vector< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< wchar_t > > getChar1() ;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::vector< wchar_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< wchar_t > > getChar1() ;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::vector< wchar_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setChar1(byps_ptr< std::vector< wchar_t > > char1) ;
-	public: virtual void async_setChar1(byps_ptr< std::vector< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setChar1(byps_ptr< ::std::vector< wchar_t > > char1) ;
+	public: virtual void async_setChar1(byps_ptr< ::std::vector< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int16_t > > getShort1() ;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::vector< int16_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int16_t > > getShort1() ;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::vector< int16_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setShort1(byps_ptr< std::vector< int16_t > > short1) ;
-	public: virtual void async_setShort1(byps_ptr< std::vector< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setShort1(byps_ptr< ::std::vector< int16_t > > short1) ;
+	public: virtual void async_setShort1(byps_ptr< ::std::vector< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int32_t > > getInt1() ;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::vector< int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int32_t > > getInt1() ;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::vector< int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt1(byps_ptr< std::vector< int32_t > > int1) ;
-	public: virtual void async_setInt1(byps_ptr< std::vector< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt1(byps_ptr< ::std::vector< int32_t > > int1) ;
+	public: virtual void async_setInt1(byps_ptr< ::std::vector< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< int64_t > > getLong1() ;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::vector< int64_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< int64_t > > getLong1() ;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::vector< int64_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setLong1(byps_ptr< std::vector< int64_t > > long1) ;
-	public: virtual void async_setLong1(byps_ptr< std::vector< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setLong1(byps_ptr< ::std::vector< int64_t > > long1) ;
+	public: virtual void async_setLong1(byps_ptr< ::std::vector< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< float > > getFloat1() ;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::vector< float > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< float > > getFloat1() ;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::vector< float > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setFloat1(byps_ptr< std::vector< float > > float1) ;
-	public: virtual void async_setFloat1(byps_ptr< std::vector< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setFloat1(byps_ptr< ::std::vector< float > > float1) ;
+	public: virtual void async_setFloat1(byps_ptr< ::std::vector< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< double > > getDouble1() ;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::vector< double > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< double > > getDouble1() ;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::vector< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setDouble1(byps_ptr< std::vector< double > > double1) ;
-	public: virtual void async_setDouble1(byps_ptr< std::vector< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setDouble1(byps_ptr< ::std::vector< double > > double1) ;
+	public: virtual void async_setDouble1(byps_ptr< ::std::vector< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< std::wstring > > getString1() ;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::vector< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< ::std::wstring > > getString1() ;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::vector< ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setString1(byps_ptr< std::vector< std::wstring > > string1) ;
-	public: virtual void async_setString1(byps_ptr< std::vector< std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString1(byps_ptr< ::std::vector< ::std::wstring > > string1) ;
+	public: virtual void async_setString1(byps_ptr< ::std::vector< ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PBytes > > getByte2() ;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::vector< PBytes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PBytes > > getByte2() ;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::vector< PBytes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte2(byps_ptr< std::vector< PBytes > > byte2) ;
-	public: virtual void async_setByte2(byps_ptr< std::vector< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte2(byps_ptr< ::std::vector< PBytes > > byte2) ;
+	public: virtual void async_setByte2(byps_ptr< ::std::vector< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > getInt2() ;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > getInt2() ;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2) ;
-	public: virtual void async_setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2) ;
+	public: virtual void async_setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PSerializable > > getObj1() ;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::vector< PSerializable > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PSerializable > > getObj1() ;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::vector< PSerializable > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setObj1(byps_ptr< std::vector< PSerializable > > obj1) ;
-	public: virtual void async_setObj1(byps_ptr< std::vector< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setObj1(byps_ptr< ::std::vector< PSerializable > > obj1) ;
+	public: virtual void async_setObj1(byps_ptr< ::std::vector< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > getInt3() ;
-	public: virtual void async_getInt3(std::function< void (byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > getInt3() ;
+	public: virtual void async_getInt3(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3) ;
-	public: virtual void async_setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3) ;
+	public: virtual void async_setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > getInt4() ;
-	public: virtual void async_getInt4(std::function< void (byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > getInt4() ;
+	public: virtual void async_getInt4(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4) ;
-	public: virtual void async_setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4) ;
+	public: virtual void async_setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -2892,87 +2892,87 @@ class BStub_RemoteListTypes : public BStub, public RemoteListTypes {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteMapTypes : public virtual BRemote
 {
-	public: virtual byps_ptr< std::map< std::wstring , bool > > getBoolean1()  = 0;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::map< std::wstring , bool > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , bool > > getBoolean1()  = 0;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::map< ::std::wstring , bool > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setBoolean1(byps_ptr< std::map< std::wstring , bool > > boolean1)  = 0;
-	public: virtual void async_setBoolean1(byps_ptr< std::map< std::wstring , bool > > boolean1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1)  = 0;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< double , int8_t > > getByte1()  = 0;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::map< double , int8_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< double , int8_t > > getByte1()  = 0;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::map< double , int8_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setByte1(byps_ptr< std::map< double , int8_t > > byte1)  = 0;
-	public: virtual void async_setByte1(byps_ptr< std::map< double , int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setByte1(byps_ptr< ::std::map< double , int8_t > > byte1)  = 0;
+	public: virtual void async_setByte1(byps_ptr< ::std::map< double , int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< float , wchar_t > > getChar1()  = 0;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::map< float , wchar_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< float , wchar_t > > getChar1()  = 0;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::map< float , wchar_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setChar1(byps_ptr< std::map< float , wchar_t > > char1)  = 0;
-	public: virtual void async_setChar1(byps_ptr< std::map< float , wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setChar1(byps_ptr< ::std::map< float , wchar_t > > char1)  = 0;
+	public: virtual void async_setChar1(byps_ptr< ::std::map< float , wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int64_t , int16_t > > getShort1()  = 0;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::map< int64_t , int16_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int64_t , int16_t > > getShort1()  = 0;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::map< int64_t , int16_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setShort1(byps_ptr< std::map< int64_t , int16_t > > short1)  = 0;
-	public: virtual void async_setShort1(byps_ptr< std::map< int64_t , int16_t > > short1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setShort1(byps_ptr< ::std::map< int64_t , int16_t > > short1)  = 0;
+	public: virtual void async_setShort1(byps_ptr< ::std::map< int64_t , int16_t > > short1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int32_t , int32_t > > getInt1()  = 0;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::map< int32_t , int32_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , int32_t > > getInt1()  = 0;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::map< int32_t , int32_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt1(byps_ptr< std::map< int32_t , int32_t > > int1)  = 0;
-	public: virtual void async_setInt1(byps_ptr< std::map< int32_t , int32_t > > int1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt1(byps_ptr< ::std::map< int32_t , int32_t > > int1)  = 0;
+	public: virtual void async_setInt1(byps_ptr< ::std::map< int32_t , int32_t > > int1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int16_t , int64_t > > getLong1()  = 0;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::map< int16_t , int64_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int16_t , int64_t > > getLong1()  = 0;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::map< int16_t , int64_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setLong1(byps_ptr< std::map< int16_t , int64_t > > long1)  = 0;
-	public: virtual void async_setLong1(byps_ptr< std::map< int16_t , int64_t > > long1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setLong1(byps_ptr< ::std::map< int16_t , int64_t > > long1)  = 0;
+	public: virtual void async_setLong1(byps_ptr< ::std::map< int16_t , int64_t > > long1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< wchar_t , float > > getFloat1()  = 0;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::map< wchar_t , float > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< wchar_t , float > > getFloat1()  = 0;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::map< wchar_t , float > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setFloat1(byps_ptr< std::map< wchar_t , float > > float1)  = 0;
-	public: virtual void async_setFloat1(byps_ptr< std::map< wchar_t , float > > float1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setFloat1(byps_ptr< ::std::map< wchar_t , float > > float1)  = 0;
+	public: virtual void async_setFloat1(byps_ptr< ::std::map< wchar_t , float > > float1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int8_t , double > > getDouble1()  = 0;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::map< int8_t , double > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int8_t , double > > getDouble1()  = 0;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::map< int8_t , double > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setDouble1(byps_ptr< std::map< int8_t , double > > double1)  = 0;
-	public: virtual void async_setDouble1(byps_ptr< std::map< int8_t , double > > double1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setDouble1(byps_ptr< ::std::map< int8_t , double > > double1)  = 0;
+	public: virtual void async_setDouble1(byps_ptr< ::std::map< int8_t , double > > double1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< std::wstring , std::wstring > > getString1()  = 0;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::map< std::wstring , std::wstring > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > getString1()  = 0;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setString1(byps_ptr< std::map< std::wstring , std::wstring > > string1)  = 0;
-	public: virtual void async_setString1(byps_ptr< std::map< std::wstring , std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setString1(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1)  = 0;
+	public: virtual void async_setString1(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)  = 0;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)  = 0;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int32_t , PBytes > > getByte2()  = 0;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::map< int32_t , PBytes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , PBytes > > getByte2()  = 0;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::map< int32_t , PBytes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setByte2(byps_ptr< std::map< int32_t , PBytes > > byte2)  = 0;
-	public: virtual void async_setByte2(byps_ptr< std::map< int32_t , PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setByte2(byps_ptr< ::std::map< int32_t , PBytes > > byte2)  = 0;
+	public: virtual void async_setByte2(byps_ptr< ::std::map< int32_t , PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > getInt2()  = 0;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > getInt2()  = 0;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt2(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2)  = 0;
-	public: virtual void async_setInt2(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt2(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2)  = 0;
+	public: virtual void async_setInt2(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< std::wstring , PSerializable > > getObj1()  = 0;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::map< std::wstring , PSerializable > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , PSerializable > > getObj1()  = 0;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::map< ::std::wstring , PSerializable > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setObj1(byps_ptr< std::map< std::wstring , PSerializable > > obj1)  = 0;
-	public: virtual void async_setObj1(byps_ptr< std::map< std::wstring , PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setObj1(byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1)  = 0;
+	public: virtual void async_setObj1(byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
@@ -2985,7 +2985,7 @@ class RemoteMapTypes : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteMapTypes;
 typedef byps_ptr<BSkeleton_RemoteMapTypes> PSkeleton_RemoteMapTypes;
@@ -2994,83 +2994,83 @@ class BSkeleton_RemoteMapTypes : public BSkeleton, public RemoteMapTypes {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 80483097; }
 	
-	public: virtual byps_ptr< std::map< std::wstring , bool > > getBoolean1() ;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::map< std::wstring , bool > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , bool > > getBoolean1() ;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::map< ::std::wstring , bool > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setBoolean1(byps_ptr< std::map< std::wstring , bool > > boolean1) ;
-	public: virtual void async_setBoolean1(byps_ptr< std::map< std::wstring , bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1) ;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< double , int8_t > > getByte1() ;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::map< double , int8_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< double , int8_t > > getByte1() ;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::map< double , int8_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte1(byps_ptr< std::map< double , int8_t > > byte1) ;
-	public: virtual void async_setByte1(byps_ptr< std::map< double , int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte1(byps_ptr< ::std::map< double , int8_t > > byte1) ;
+	public: virtual void async_setByte1(byps_ptr< ::std::map< double , int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< float , wchar_t > > getChar1() ;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::map< float , wchar_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< float , wchar_t > > getChar1() ;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::map< float , wchar_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setChar1(byps_ptr< std::map< float , wchar_t > > char1) ;
-	public: virtual void async_setChar1(byps_ptr< std::map< float , wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setChar1(byps_ptr< ::std::map< float , wchar_t > > char1) ;
+	public: virtual void async_setChar1(byps_ptr< ::std::map< float , wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int64_t , int16_t > > getShort1() ;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::map< int64_t , int16_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int64_t , int16_t > > getShort1() ;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::map< int64_t , int16_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setShort1(byps_ptr< std::map< int64_t , int16_t > > short1) ;
-	public: virtual void async_setShort1(byps_ptr< std::map< int64_t , int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setShort1(byps_ptr< ::std::map< int64_t , int16_t > > short1) ;
+	public: virtual void async_setShort1(byps_ptr< ::std::map< int64_t , int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , int32_t > > getInt1() ;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::map< int32_t , int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , int32_t > > getInt1() ;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::map< int32_t , int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt1(byps_ptr< std::map< int32_t , int32_t > > int1) ;
-	public: virtual void async_setInt1(byps_ptr< std::map< int32_t , int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt1(byps_ptr< ::std::map< int32_t , int32_t > > int1) ;
+	public: virtual void async_setInt1(byps_ptr< ::std::map< int32_t , int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int16_t , int64_t > > getLong1() ;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::map< int16_t , int64_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int16_t , int64_t > > getLong1() ;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::map< int16_t , int64_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setLong1(byps_ptr< std::map< int16_t , int64_t > > long1) ;
-	public: virtual void async_setLong1(byps_ptr< std::map< int16_t , int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setLong1(byps_ptr< ::std::map< int16_t , int64_t > > long1) ;
+	public: virtual void async_setLong1(byps_ptr< ::std::map< int16_t , int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< wchar_t , float > > getFloat1() ;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::map< wchar_t , float > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< wchar_t , float > > getFloat1() ;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::map< wchar_t , float > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setFloat1(byps_ptr< std::map< wchar_t , float > > float1) ;
-	public: virtual void async_setFloat1(byps_ptr< std::map< wchar_t , float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setFloat1(byps_ptr< ::std::map< wchar_t , float > > float1) ;
+	public: virtual void async_setFloat1(byps_ptr< ::std::map< wchar_t , float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int8_t , double > > getDouble1() ;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::map< int8_t , double > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int8_t , double > > getDouble1() ;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::map< int8_t , double > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setDouble1(byps_ptr< std::map< int8_t , double > > double1) ;
-	public: virtual void async_setDouble1(byps_ptr< std::map< int8_t , double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setDouble1(byps_ptr< ::std::map< int8_t , double > > double1) ;
+	public: virtual void async_setDouble1(byps_ptr< ::std::map< int8_t , double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< std::wstring , std::wstring > > getString1() ;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::map< std::wstring , std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > getString1() ;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setString1(byps_ptr< std::map< std::wstring , std::wstring > > string1) ;
-	public: virtual void async_setString1(byps_ptr< std::map< std::wstring , std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString1(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1) ;
+	public: virtual void async_setString1(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , PBytes > > getByte2() ;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::map< int32_t , PBytes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , PBytes > > getByte2() ;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::map< int32_t , PBytes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte2(byps_ptr< std::map< int32_t , PBytes > > byte2) ;
-	public: virtual void async_setByte2(byps_ptr< std::map< int32_t , PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte2(byps_ptr< ::std::map< int32_t , PBytes > > byte2) ;
+	public: virtual void async_setByte2(byps_ptr< ::std::map< int32_t , PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > getInt2() ;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > getInt2() ;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt2(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2) ;
-	public: virtual void async_setInt2(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt2(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2) ;
+	public: virtual void async_setInt2(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< std::wstring , PSerializable > > getObj1() ;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::map< std::wstring , PSerializable > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , PSerializable > > getObj1() ;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::map< ::std::wstring , PSerializable > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setObj1(byps_ptr< std::map< std::wstring , PSerializable > > obj1) ;
-	public: virtual void async_setObj1(byps_ptr< std::map< std::wstring , PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setObj1(byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1) ;
+	public: virtual void async_setObj1(byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -3081,7 +3081,7 @@ class BSkeleton_RemoteMapTypes : public BSkeleton, public RemoteMapTypes {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteMapTypes;
 typedef byps_ptr<BStub_RemoteMapTypes> PStub_RemoteMapTypes;
@@ -3092,83 +3092,83 @@ class BStub_RemoteMapTypes : public BStub, public RemoteMapTypes {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 80483097; }
 	
-	public: virtual byps_ptr< std::map< std::wstring , bool > > getBoolean1() ;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::map< std::wstring , bool > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , bool > > getBoolean1() ;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::map< ::std::wstring , bool > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setBoolean1(byps_ptr< std::map< std::wstring , bool > > boolean1) ;
-	public: virtual void async_setBoolean1(byps_ptr< std::map< std::wstring , bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1) ;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< double , int8_t > > getByte1() ;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::map< double , int8_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< double , int8_t > > getByte1() ;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::map< double , int8_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte1(byps_ptr< std::map< double , int8_t > > byte1) ;
-	public: virtual void async_setByte1(byps_ptr< std::map< double , int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte1(byps_ptr< ::std::map< double , int8_t > > byte1) ;
+	public: virtual void async_setByte1(byps_ptr< ::std::map< double , int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< float , wchar_t > > getChar1() ;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::map< float , wchar_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< float , wchar_t > > getChar1() ;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::map< float , wchar_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setChar1(byps_ptr< std::map< float , wchar_t > > char1) ;
-	public: virtual void async_setChar1(byps_ptr< std::map< float , wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setChar1(byps_ptr< ::std::map< float , wchar_t > > char1) ;
+	public: virtual void async_setChar1(byps_ptr< ::std::map< float , wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int64_t , int16_t > > getShort1() ;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::map< int64_t , int16_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int64_t , int16_t > > getShort1() ;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::map< int64_t , int16_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setShort1(byps_ptr< std::map< int64_t , int16_t > > short1) ;
-	public: virtual void async_setShort1(byps_ptr< std::map< int64_t , int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setShort1(byps_ptr< ::std::map< int64_t , int16_t > > short1) ;
+	public: virtual void async_setShort1(byps_ptr< ::std::map< int64_t , int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , int32_t > > getInt1() ;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::map< int32_t , int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , int32_t > > getInt1() ;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::map< int32_t , int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt1(byps_ptr< std::map< int32_t , int32_t > > int1) ;
-	public: virtual void async_setInt1(byps_ptr< std::map< int32_t , int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt1(byps_ptr< ::std::map< int32_t , int32_t > > int1) ;
+	public: virtual void async_setInt1(byps_ptr< ::std::map< int32_t , int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int16_t , int64_t > > getLong1() ;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::map< int16_t , int64_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int16_t , int64_t > > getLong1() ;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::map< int16_t , int64_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setLong1(byps_ptr< std::map< int16_t , int64_t > > long1) ;
-	public: virtual void async_setLong1(byps_ptr< std::map< int16_t , int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setLong1(byps_ptr< ::std::map< int16_t , int64_t > > long1) ;
+	public: virtual void async_setLong1(byps_ptr< ::std::map< int16_t , int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< wchar_t , float > > getFloat1() ;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::map< wchar_t , float > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< wchar_t , float > > getFloat1() ;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::map< wchar_t , float > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setFloat1(byps_ptr< std::map< wchar_t , float > > float1) ;
-	public: virtual void async_setFloat1(byps_ptr< std::map< wchar_t , float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setFloat1(byps_ptr< ::std::map< wchar_t , float > > float1) ;
+	public: virtual void async_setFloat1(byps_ptr< ::std::map< wchar_t , float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int8_t , double > > getDouble1() ;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::map< int8_t , double > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int8_t , double > > getDouble1() ;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::map< int8_t , double > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setDouble1(byps_ptr< std::map< int8_t , double > > double1) ;
-	public: virtual void async_setDouble1(byps_ptr< std::map< int8_t , double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setDouble1(byps_ptr< ::std::map< int8_t , double > > double1) ;
+	public: virtual void async_setDouble1(byps_ptr< ::std::map< int8_t , double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< std::wstring , std::wstring > > getString1() ;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::map< std::wstring , std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > getString1() ;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setString1(byps_ptr< std::map< std::wstring , std::wstring > > string1) ;
-	public: virtual void async_setString1(byps_ptr< std::map< std::wstring , std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString1(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1) ;
+	public: virtual void async_setString1(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , PBytes > > getByte2() ;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::map< int32_t , PBytes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , PBytes > > getByte2() ;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::map< int32_t , PBytes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte2(byps_ptr< std::map< int32_t , PBytes > > byte2) ;
-	public: virtual void async_setByte2(byps_ptr< std::map< int32_t , PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte2(byps_ptr< ::std::map< int32_t , PBytes > > byte2) ;
+	public: virtual void async_setByte2(byps_ptr< ::std::map< int32_t , PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > getInt2() ;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > getInt2() ;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt2(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2) ;
-	public: virtual void async_setInt2(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt2(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2) ;
+	public: virtual void async_setInt2(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< std::wstring , PSerializable > > getObj1() ;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::map< std::wstring , PSerializable > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< ::std::wstring , PSerializable > > getObj1() ;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::map< ::std::wstring , PSerializable > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setObj1(byps_ptr< std::map< std::wstring , PSerializable > > obj1) ;
-	public: virtual void async_setObj1(byps_ptr< std::map< std::wstring , PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setObj1(byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1) ;
+	public: virtual void async_setObj1(byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -3180,7 +3180,7 @@ class BStub_RemoteMapTypes : public BStub, public RemoteMapTypes {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemotePrimitiveTypes : public virtual BRemote
 {
@@ -3211,8 +3211,8 @@ class RemotePrimitiveTypes : public virtual BRemote
 	public: virtual void setDouble(double v)  = 0;
 	public: virtual void async_setDouble(double v, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setString(std::wstring v)  = 0;
-	public: virtual void async_setString(std::wstring v, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setString(::std::wstring v)  = 0;
+	public: virtual void async_setString(::std::wstring v, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void setPrimitiveTypes(com::wilutions::byps::test::api::prim::PPrimitiveTypes v)  = 0;
 	public: virtual void async_setPrimitiveTypes(com::wilutions::byps::test::api::prim::PPrimitiveTypes v, std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -3244,8 +3244,8 @@ class RemotePrimitiveTypes : public virtual BRemote
 	public: virtual double getDouble()  = 0;
 	public: virtual void async_getDouble(std::function< void (double, BException ex) > asyncResult)  = 0;
 	
-	public: virtual std::wstring getString()  = 0;
-	public: virtual void async_getString(std::function< void (std::wstring, BException ex) > asyncResult)  = 0;
+	public: virtual ::std::wstring getString()  = 0;
+	public: virtual void async_getString(std::function< void (::std::wstring, BException ex) > asyncResult)  = 0;
 	
 	public: virtual com::wilutions::byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes()  = 0;
 	public: virtual void async_getPrimitiveTypes(std::function< void (com::wilutions::byps::test::api::prim::PPrimitiveTypes, BException ex) > asyncResult)  = 0;
@@ -3253,8 +3253,8 @@ class RemotePrimitiveTypes : public virtual BRemote
 	public: virtual PSerializable getObject()  = 0;
 	public: virtual void async_getObject(std::function< void (PSerializable, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o)  = 0;
-	public: virtual void async_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, ::std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o)  = 0;
+	public: virtual void async_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, ::std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual int32_t add(int32_t a, int32_t b)  = 0;
 	public: virtual void async_add(int32_t a, int32_t b, std::function< void (int32_t, BException ex) > asyncResult)  = 0;
@@ -3270,7 +3270,7 @@ class RemotePrimitiveTypes : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemotePrimitiveTypes;
 typedef byps_ptr<BSkeleton_RemotePrimitiveTypes> PSkeleton_RemotePrimitiveTypes;
@@ -3306,8 +3306,8 @@ class BSkeleton_RemotePrimitiveTypes : public BSkeleton, public RemotePrimitiveT
 	public: virtual void setDouble(double v) ;
 	public: virtual void async_setDouble(double v, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setString(std::wstring v) ;
-	public: virtual void async_setString(std::wstring v, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString(::std::wstring v) ;
+	public: virtual void async_setString(::std::wstring v, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setPrimitiveTypes(com::wilutions::byps::test::api::prim::PPrimitiveTypes v) ;
 	public: virtual void async_setPrimitiveTypes(com::wilutions::byps::test::api::prim::PPrimitiveTypes v, std::function< void (bool, BException ex) > asyncResult) ;
@@ -3339,8 +3339,8 @@ class BSkeleton_RemotePrimitiveTypes : public BSkeleton, public RemotePrimitiveT
 	public: virtual double getDouble() ;
 	public: virtual void async_getDouble(std::function< void (double, BException ex) > asyncResult) ;
 	
-	public: virtual std::wstring getString() ;
-	public: virtual void async_getString(std::function< void (std::wstring, BException ex) > asyncResult) ;
+	public: virtual ::std::wstring getString() ;
+	public: virtual void async_getString(std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 	public: virtual com::wilutions::byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() ;
 	public: virtual void async_getPrimitiveTypes(std::function< void (com::wilutions::byps::test::api::prim::PPrimitiveTypes, BException ex) > asyncResult) ;
@@ -3348,8 +3348,8 @@ class BSkeleton_RemotePrimitiveTypes : public BSkeleton, public RemotePrimitiveT
 	public: virtual PSerializable getObject() ;
 	public: virtual void async_getObject(std::function< void (PSerializable, BException ex) > asyncResult) ;
 	
-	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o) ;
-	public: virtual void async_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, ::std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o) ;
+	public: virtual void async_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, ::std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual int32_t add(int32_t a, int32_t b) ;
 	public: virtual void async_add(int32_t a, int32_t b, std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -3363,7 +3363,7 @@ class BSkeleton_RemotePrimitiveTypes : public BSkeleton, public RemotePrimitiveT
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemotePrimitiveTypes;
 typedef byps_ptr<BStub_RemotePrimitiveTypes> PStub_RemotePrimitiveTypes;
@@ -3401,8 +3401,8 @@ class BStub_RemotePrimitiveTypes : public BStub, public RemotePrimitiveTypes {
 	public: virtual void setDouble(double v) ;
 	public: virtual void async_setDouble(double v, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setString(std::wstring v) ;
-	public: virtual void async_setString(std::wstring v, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString(::std::wstring v) ;
+	public: virtual void async_setString(::std::wstring v, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setPrimitiveTypes(com::wilutions::byps::test::api::prim::PPrimitiveTypes v) ;
 	public: virtual void async_setPrimitiveTypes(com::wilutions::byps::test::api::prim::PPrimitiveTypes v, std::function< void (bool, BException ex) > asyncResult) ;
@@ -3434,8 +3434,8 @@ class BStub_RemotePrimitiveTypes : public BStub, public RemotePrimitiveTypes {
 	public: virtual double getDouble() ;
 	public: virtual void async_getDouble(std::function< void (double, BException ex) > asyncResult) ;
 	
-	public: virtual std::wstring getString() ;
-	public: virtual void async_getString(std::function< void (std::wstring, BException ex) > asyncResult) ;
+	public: virtual ::std::wstring getString() ;
+	public: virtual void async_getString(std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 	public: virtual com::wilutions::byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() ;
 	public: virtual void async_getPrimitiveTypes(std::function< void (com::wilutions::byps::test::api::prim::PPrimitiveTypes, BException ex) > asyncResult) ;
@@ -3443,8 +3443,8 @@ class BStub_RemotePrimitiveTypes : public BStub, public RemotePrimitiveTypes {
 	public: virtual PSerializable getObject() ;
 	public: virtual void async_getObject(std::function< void (PSerializable, BException ex) > asyncResult) ;
 	
-	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o) ;
-	public: virtual void async_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, ::std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o) ;
+	public: virtual void async_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, ::std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual int32_t add(int32_t a, int32_t b) ;
 	public: virtual void async_add(int32_t a, int32_t b, std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -3459,7 +3459,7 @@ class BStub_RemotePrimitiveTypes : public BStub, public RemotePrimitiveTypes {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteReferences : public virtual BRemote
 {
@@ -3480,7 +3480,7 @@ class RemoteReferences : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteReferences;
 typedef byps_ptr<BSkeleton_RemoteReferences> PSkeleton_RemoteReferences;
@@ -3504,7 +3504,7 @@ class BSkeleton_RemoteReferences : public BSkeleton, public RemoteReferences {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteReferences;
 typedef byps_ptr<BStub_RemoteReferences> PStub_RemoteReferences;
@@ -3531,18 +3531,18 @@ class BStub_RemoteReferences : public BStub, public RemoteReferences {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteServerCtrl : public virtual BRemote
 {
-	public: virtual void publishRemote(std::wstring name, PRemote remote, bool fowardToOtherServers)  = 0;
-	public: virtual void async_publishRemote(std::wstring name, PRemote remote, bool fowardToOtherServers, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void publishRemote(::std::wstring name, PRemote remote, bool fowardToOtherServers)  = 0;
+	public: virtual void async_publishRemote(::std::wstring name, PRemote remote, bool fowardToOtherServers, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual PRemote getPublishedRemote(std::wstring name)  = 0;
-	public: virtual void async_getPublishedRemote(std::wstring name, std::function< void (PRemote, BException ex) > asyncResult)  = 0;
+	public: virtual PRemote getPublishedRemote(::std::wstring name)  = 0;
+	public: virtual void async_getPublishedRemote(::std::wstring name, std::function< void (PRemote, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void removePublishedRemote(std::wstring name)  = 0;
-	public: virtual void async_removePublishedRemote(std::wstring name, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void removePublishedRemote(::std::wstring name)  = 0;
+	public: virtual void async_removePublishedRemote(::std::wstring name, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
@@ -3555,7 +3555,7 @@ class RemoteServerCtrl : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteServerCtrl;
 typedef byps_ptr<BSkeleton_RemoteServerCtrl> PSkeleton_RemoteServerCtrl;
@@ -3564,14 +3564,14 @@ class BSkeleton_RemoteServerCtrl : public BSkeleton, public RemoteServerCtrl {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1124545992; }
 	
-	public: virtual void publishRemote(std::wstring name, PRemote remote, bool fowardToOtherServers) ;
-	public: virtual void async_publishRemote(std::wstring name, PRemote remote, bool fowardToOtherServers, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void publishRemote(::std::wstring name, PRemote remote, bool fowardToOtherServers) ;
+	public: virtual void async_publishRemote(::std::wstring name, PRemote remote, bool fowardToOtherServers, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual PRemote getPublishedRemote(std::wstring name) ;
-	public: virtual void async_getPublishedRemote(std::wstring name, std::function< void (PRemote, BException ex) > asyncResult) ;
+	public: virtual PRemote getPublishedRemote(::std::wstring name) ;
+	public: virtual void async_getPublishedRemote(::std::wstring name, std::function< void (PRemote, BException ex) > asyncResult) ;
 	
-	public: virtual void removePublishedRemote(std::wstring name) ;
-	public: virtual void async_removePublishedRemote(std::wstring name, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void removePublishedRemote(::std::wstring name) ;
+	public: virtual void async_removePublishedRemote(::std::wstring name, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -3582,7 +3582,7 @@ class BSkeleton_RemoteServerCtrl : public BSkeleton, public RemoteServerCtrl {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteServerCtrl;
 typedef byps_ptr<BStub_RemoteServerCtrl> PStub_RemoteServerCtrl;
@@ -3593,14 +3593,14 @@ class BStub_RemoteServerCtrl : public BStub, public RemoteServerCtrl {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1124545992; }
 	
-	public: virtual void publishRemote(std::wstring name, PRemote remote, bool fowardToOtherServers) ;
-	public: virtual void async_publishRemote(std::wstring name, PRemote remote, bool fowardToOtherServers, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void publishRemote(::std::wstring name, PRemote remote, bool fowardToOtherServers) ;
+	public: virtual void async_publishRemote(::std::wstring name, PRemote remote, bool fowardToOtherServers, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual PRemote getPublishedRemote(std::wstring name) ;
-	public: virtual void async_getPublishedRemote(std::wstring name, std::function< void (PRemote, BException ex) > asyncResult) ;
+	public: virtual PRemote getPublishedRemote(::std::wstring name) ;
+	public: virtual void async_getPublishedRemote(::std::wstring name, std::function< void (PRemote, BException ex) > asyncResult) ;
 	
-	public: virtual void removePublishedRemote(std::wstring name) ;
-	public: virtual void async_removePublishedRemote(std::wstring name, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void removePublishedRemote(::std::wstring name) ;
+	public: virtual void async_removePublishedRemote(::std::wstring name, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -3612,87 +3612,87 @@ class BStub_RemoteServerCtrl : public BStub, public RemoteServerCtrl {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteSetTypes : public virtual BRemote
 {
-	public: virtual byps_ptr< std::set< bool > > getBoolean1()  = 0;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::set< bool > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< bool > > getBoolean1()  = 0;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::set< bool > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setBoolean1(byps_ptr< std::set< bool > > boolean1)  = 0;
-	public: virtual void async_setBoolean1(byps_ptr< std::set< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setBoolean1(byps_ptr< ::std::set< bool > > boolean1)  = 0;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::set< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< int8_t > > getByte1()  = 0;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::set< int8_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< int8_t > > getByte1()  = 0;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::set< int8_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setByte1(byps_ptr< std::set< int8_t > > byte1)  = 0;
-	public: virtual void async_setByte1(byps_ptr< std::set< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setByte1(byps_ptr< ::std::set< int8_t > > byte1)  = 0;
+	public: virtual void async_setByte1(byps_ptr< ::std::set< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< wchar_t > > getChar1()  = 0;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::set< wchar_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< wchar_t > > getChar1()  = 0;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::set< wchar_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setChar1(byps_ptr< std::set< wchar_t > > char1)  = 0;
-	public: virtual void async_setChar1(byps_ptr< std::set< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setChar1(byps_ptr< ::std::set< wchar_t > > char1)  = 0;
+	public: virtual void async_setChar1(byps_ptr< ::std::set< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< int16_t > > getShort1()  = 0;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::set< int16_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< int16_t > > getShort1()  = 0;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::set< int16_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setShort1(byps_ptr< std::set< int16_t > > short1)  = 0;
-	public: virtual void async_setShort1(byps_ptr< std::set< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setShort1(byps_ptr< ::std::set< int16_t > > short1)  = 0;
+	public: virtual void async_setShort1(byps_ptr< ::std::set< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< int32_t > > getInt1()  = 0;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::set< int32_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< int32_t > > getInt1()  = 0;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt1(byps_ptr< std::set< int32_t > > int1)  = 0;
-	public: virtual void async_setInt1(byps_ptr< std::set< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt1(byps_ptr< ::std::set< int32_t > > int1)  = 0;
+	public: virtual void async_setInt1(byps_ptr< ::std::set< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< int64_t > > getLong1()  = 0;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::set< int64_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< int64_t > > getLong1()  = 0;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::set< int64_t > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setLong1(byps_ptr< std::set< int64_t > > long1)  = 0;
-	public: virtual void async_setLong1(byps_ptr< std::set< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setLong1(byps_ptr< ::std::set< int64_t > > long1)  = 0;
+	public: virtual void async_setLong1(byps_ptr< ::std::set< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< float > > getFloat1()  = 0;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::set< float > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< float > > getFloat1()  = 0;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::set< float > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setFloat1(byps_ptr< std::set< float > > float1)  = 0;
-	public: virtual void async_setFloat1(byps_ptr< std::set< float > > float1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setFloat1(byps_ptr< ::std::set< float > > float1)  = 0;
+	public: virtual void async_setFloat1(byps_ptr< ::std::set< float > > float1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< double > > getDouble1()  = 0;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::set< double > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< double > > getDouble1()  = 0;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::set< double > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setDouble1(byps_ptr< std::set< double > > double1)  = 0;
-	public: virtual void async_setDouble1(byps_ptr< std::set< double > > double1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setDouble1(byps_ptr< ::std::set< double > > double1)  = 0;
+	public: virtual void async_setDouble1(byps_ptr< ::std::set< double > > double1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< std::wstring > > getString1()  = 0;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::set< std::wstring > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< ::std::wstring > > getString1()  = 0;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::set< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setString1(byps_ptr< std::set< std::wstring > > string1)  = 0;
-	public: virtual void async_setString1(byps_ptr< std::set< std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setString1(byps_ptr< ::std::set< ::std::wstring > > string1)  = 0;
+	public: virtual void async_setString1(byps_ptr< ::std::set< ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)  = 0;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)  = 0;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< PBytes > > getByte2()  = 0;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::set< PBytes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< PBytes > > getByte2()  = 0;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::set< PBytes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setByte2(byps_ptr< std::set< PBytes > > byte2)  = 0;
-	public: virtual void async_setByte2(byps_ptr< std::set< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setByte2(byps_ptr< ::std::set< PBytes > > byte2)  = 0;
+	public: virtual void async_setByte2(byps_ptr< ::std::set< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > getInt2()  = 0;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > getInt2()  = 0;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setInt2(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2)  = 0;
-	public: virtual void async_setInt2(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setInt2(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2)  = 0;
+	public: virtual void async_setInt2(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< PSerializable > > getObj1()  = 0;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::set< PSerializable > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< PSerializable > > getObj1()  = 0;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::set< PSerializable > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setObj1(byps_ptr< std::set< PSerializable > > obj1)  = 0;
-	public: virtual void async_setObj1(byps_ptr< std::set< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setObj1(byps_ptr< ::std::set< PSerializable > > obj1)  = 0;
+	public: virtual void async_setObj1(byps_ptr< ::std::set< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
@@ -3705,7 +3705,7 @@ class RemoteSetTypes : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteSetTypes;
 typedef byps_ptr<BSkeleton_RemoteSetTypes> PSkeleton_RemoteSetTypes;
@@ -3714,83 +3714,83 @@ class BSkeleton_RemoteSetTypes : public BSkeleton, public RemoteSetTypes {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1156008353; }
 	
-	public: virtual byps_ptr< std::set< bool > > getBoolean1() ;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::set< bool > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< bool > > getBoolean1() ;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::set< bool > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setBoolean1(byps_ptr< std::set< bool > > boolean1) ;
-	public: virtual void async_setBoolean1(byps_ptr< std::set< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setBoolean1(byps_ptr< ::std::set< bool > > boolean1) ;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::set< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int8_t > > getByte1() ;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::set< int8_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int8_t > > getByte1() ;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::set< int8_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte1(byps_ptr< std::set< int8_t > > byte1) ;
-	public: virtual void async_setByte1(byps_ptr< std::set< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte1(byps_ptr< ::std::set< int8_t > > byte1) ;
+	public: virtual void async_setByte1(byps_ptr< ::std::set< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< wchar_t > > getChar1() ;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::set< wchar_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< wchar_t > > getChar1() ;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::set< wchar_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setChar1(byps_ptr< std::set< wchar_t > > char1) ;
-	public: virtual void async_setChar1(byps_ptr< std::set< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setChar1(byps_ptr< ::std::set< wchar_t > > char1) ;
+	public: virtual void async_setChar1(byps_ptr< ::std::set< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int16_t > > getShort1() ;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::set< int16_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int16_t > > getShort1() ;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::set< int16_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setShort1(byps_ptr< std::set< int16_t > > short1) ;
-	public: virtual void async_setShort1(byps_ptr< std::set< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setShort1(byps_ptr< ::std::set< int16_t > > short1) ;
+	public: virtual void async_setShort1(byps_ptr< ::std::set< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int32_t > > getInt1() ;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::set< int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int32_t > > getInt1() ;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt1(byps_ptr< std::set< int32_t > > int1) ;
-	public: virtual void async_setInt1(byps_ptr< std::set< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt1(byps_ptr< ::std::set< int32_t > > int1) ;
+	public: virtual void async_setInt1(byps_ptr< ::std::set< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int64_t > > getLong1() ;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::set< int64_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int64_t > > getLong1() ;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::set< int64_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setLong1(byps_ptr< std::set< int64_t > > long1) ;
-	public: virtual void async_setLong1(byps_ptr< std::set< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setLong1(byps_ptr< ::std::set< int64_t > > long1) ;
+	public: virtual void async_setLong1(byps_ptr< ::std::set< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< float > > getFloat1() ;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::set< float > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< float > > getFloat1() ;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::set< float > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setFloat1(byps_ptr< std::set< float > > float1) ;
-	public: virtual void async_setFloat1(byps_ptr< std::set< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setFloat1(byps_ptr< ::std::set< float > > float1) ;
+	public: virtual void async_setFloat1(byps_ptr< ::std::set< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< double > > getDouble1() ;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::set< double > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< double > > getDouble1() ;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::set< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setDouble1(byps_ptr< std::set< double > > double1) ;
-	public: virtual void async_setDouble1(byps_ptr< std::set< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setDouble1(byps_ptr< ::std::set< double > > double1) ;
+	public: virtual void async_setDouble1(byps_ptr< ::std::set< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< std::wstring > > getString1() ;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::set< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< ::std::wstring > > getString1() ;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::set< ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setString1(byps_ptr< std::set< std::wstring > > string1) ;
-	public: virtual void async_setString1(byps_ptr< std::set< std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString1(byps_ptr< ::std::set< ::std::wstring > > string1) ;
+	public: virtual void async_setString1(byps_ptr< ::std::set< ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< PBytes > > getByte2() ;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::set< PBytes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< PBytes > > getByte2() ;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::set< PBytes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte2(byps_ptr< std::set< PBytes > > byte2) ;
-	public: virtual void async_setByte2(byps_ptr< std::set< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte2(byps_ptr< ::std::set< PBytes > > byte2) ;
+	public: virtual void async_setByte2(byps_ptr< ::std::set< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > getInt2() ;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > getInt2() ;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt2(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2) ;
-	public: virtual void async_setInt2(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt2(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2) ;
+	public: virtual void async_setInt2(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< PSerializable > > getObj1() ;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::set< PSerializable > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< PSerializable > > getObj1() ;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::set< PSerializable > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setObj1(byps_ptr< std::set< PSerializable > > obj1) ;
-	public: virtual void async_setObj1(byps_ptr< std::set< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setObj1(byps_ptr< ::std::set< PSerializable > > obj1) ;
+	public: virtual void async_setObj1(byps_ptr< ::std::set< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -3801,7 +3801,7 @@ class BSkeleton_RemoteSetTypes : public BSkeleton, public RemoteSetTypes {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteSetTypes;
 typedef byps_ptr<BStub_RemoteSetTypes> PStub_RemoteSetTypes;
@@ -3812,83 +3812,83 @@ class BStub_RemoteSetTypes : public BStub, public RemoteSetTypes {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1156008353; }
 	
-	public: virtual byps_ptr< std::set< bool > > getBoolean1() ;
-	public: virtual void async_getBoolean1(std::function< void (byps_ptr< std::set< bool > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< bool > > getBoolean1() ;
+	public: virtual void async_getBoolean1(std::function< void (byps_ptr< ::std::set< bool > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setBoolean1(byps_ptr< std::set< bool > > boolean1) ;
-	public: virtual void async_setBoolean1(byps_ptr< std::set< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setBoolean1(byps_ptr< ::std::set< bool > > boolean1) ;
+	public: virtual void async_setBoolean1(byps_ptr< ::std::set< bool > > boolean1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int8_t > > getByte1() ;
-	public: virtual void async_getByte1(std::function< void (byps_ptr< std::set< int8_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int8_t > > getByte1() ;
+	public: virtual void async_getByte1(std::function< void (byps_ptr< ::std::set< int8_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte1(byps_ptr< std::set< int8_t > > byte1) ;
-	public: virtual void async_setByte1(byps_ptr< std::set< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte1(byps_ptr< ::std::set< int8_t > > byte1) ;
+	public: virtual void async_setByte1(byps_ptr< ::std::set< int8_t > > byte1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< wchar_t > > getChar1() ;
-	public: virtual void async_getChar1(std::function< void (byps_ptr< std::set< wchar_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< wchar_t > > getChar1() ;
+	public: virtual void async_getChar1(std::function< void (byps_ptr< ::std::set< wchar_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setChar1(byps_ptr< std::set< wchar_t > > char1) ;
-	public: virtual void async_setChar1(byps_ptr< std::set< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setChar1(byps_ptr< ::std::set< wchar_t > > char1) ;
+	public: virtual void async_setChar1(byps_ptr< ::std::set< wchar_t > > char1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int16_t > > getShort1() ;
-	public: virtual void async_getShort1(std::function< void (byps_ptr< std::set< int16_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int16_t > > getShort1() ;
+	public: virtual void async_getShort1(std::function< void (byps_ptr< ::std::set< int16_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setShort1(byps_ptr< std::set< int16_t > > short1) ;
-	public: virtual void async_setShort1(byps_ptr< std::set< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setShort1(byps_ptr< ::std::set< int16_t > > short1) ;
+	public: virtual void async_setShort1(byps_ptr< ::std::set< int16_t > > short1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int32_t > > getInt1() ;
-	public: virtual void async_getInt1(std::function< void (byps_ptr< std::set< int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int32_t > > getInt1() ;
+	public: virtual void async_getInt1(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt1(byps_ptr< std::set< int32_t > > int1) ;
-	public: virtual void async_setInt1(byps_ptr< std::set< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt1(byps_ptr< ::std::set< int32_t > > int1) ;
+	public: virtual void async_setInt1(byps_ptr< ::std::set< int32_t > > int1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int64_t > > getLong1() ;
-	public: virtual void async_getLong1(std::function< void (byps_ptr< std::set< int64_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int64_t > > getLong1() ;
+	public: virtual void async_getLong1(std::function< void (byps_ptr< ::std::set< int64_t > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setLong1(byps_ptr< std::set< int64_t > > long1) ;
-	public: virtual void async_setLong1(byps_ptr< std::set< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setLong1(byps_ptr< ::std::set< int64_t > > long1) ;
+	public: virtual void async_setLong1(byps_ptr< ::std::set< int64_t > > long1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< float > > getFloat1() ;
-	public: virtual void async_getFloat1(std::function< void (byps_ptr< std::set< float > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< float > > getFloat1() ;
+	public: virtual void async_getFloat1(std::function< void (byps_ptr< ::std::set< float > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setFloat1(byps_ptr< std::set< float > > float1) ;
-	public: virtual void async_setFloat1(byps_ptr< std::set< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setFloat1(byps_ptr< ::std::set< float > > float1) ;
+	public: virtual void async_setFloat1(byps_ptr< ::std::set< float > > float1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< double > > getDouble1() ;
-	public: virtual void async_getDouble1(std::function< void (byps_ptr< std::set< double > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< double > > getDouble1() ;
+	public: virtual void async_getDouble1(std::function< void (byps_ptr< ::std::set< double > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setDouble1(byps_ptr< std::set< double > > double1) ;
-	public: virtual void async_setDouble1(byps_ptr< std::set< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setDouble1(byps_ptr< ::std::set< double > > double1) ;
+	public: virtual void async_setDouble1(byps_ptr< ::std::set< double > > double1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< std::wstring > > getString1() ;
-	public: virtual void async_getString1(std::function< void (byps_ptr< std::set< std::wstring > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< ::std::wstring > > getString1() ;
+	public: virtual void async_getString1(std::function< void (byps_ptr< ::std::set< ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setString1(byps_ptr< std::set< std::wstring > > string1) ;
-	public: virtual void async_setString1(byps_ptr< std::set< std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setString1(byps_ptr< ::std::set< ::std::wstring > > string1) ;
+	public: virtual void async_setString1(byps_ptr< ::std::set< ::std::wstring > > string1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void async_getPrimitiveTypes1(std::function< void (byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
-	public: virtual void async_setPrimitiveTypes1(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1) ;
+	public: virtual void async_setPrimitiveTypes1(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< PBytes > > getByte2() ;
-	public: virtual void async_getByte2(std::function< void (byps_ptr< std::set< PBytes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< PBytes > > getByte2() ;
+	public: virtual void async_getByte2(std::function< void (byps_ptr< ::std::set< PBytes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setByte2(byps_ptr< std::set< PBytes > > byte2) ;
-	public: virtual void async_setByte2(byps_ptr< std::set< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setByte2(byps_ptr< ::std::set< PBytes > > byte2) ;
+	public: virtual void async_setByte2(byps_ptr< ::std::set< PBytes > > byte2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > getInt2() ;
-	public: virtual void async_getInt2(std::function< void (byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > getInt2() ;
+	public: virtual void async_getInt2(std::function< void (byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setInt2(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2) ;
-	public: virtual void async_setInt2(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setInt2(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2) ;
+	public: virtual void async_setInt2(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< PSerializable > > getObj1() ;
-	public: virtual void async_getObj1(std::function< void (byps_ptr< std::set< PSerializable > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< PSerializable > > getObj1() ;
+	public: virtual void async_getObj1(std::function< void (byps_ptr< ::std::set< PSerializable > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setObj1(byps_ptr< std::set< PSerializable > > obj1) ;
-	public: virtual void async_setObj1(byps_ptr< std::set< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setObj1(byps_ptr< ::std::set< PSerializable > > obj1) ;
+	public: virtual void async_setObj1(byps_ptr< ::std::set< PSerializable > > obj1, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
@@ -3900,7 +3900,7 @@ class BStub_RemoteSetTypes : public BStub, public RemoteSetTypes {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class RemoteStreams : public virtual BRemote
 {
@@ -3910,11 +3910,11 @@ class RemoteStreams : public virtual BRemote
 	public: virtual void setImage(PContentStream istrm)  = 0;
 	public: virtual void async_setImage(PContentStream istrm, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::map< int32_t , PContentStream > > getImages()  = 0;
-	public: virtual void async_getImages(std::function< void (byps_ptr< std::map< int32_t , PContentStream > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , PContentStream > > getImages()  = 0;
+	public: virtual void async_getImages(std::function< void (byps_ptr< ::std::map< int32_t , PContentStream > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey)  = 0;
-	public: virtual void async_setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey)  = 0;
+	public: virtual void async_setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void throwLastException()  = 0;
 	public: virtual void async_throwLastException(std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -3933,7 +3933,7 @@ class RemoteStreams : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_RemoteStreams;
 typedef byps_ptr<BSkeleton_RemoteStreams> PSkeleton_RemoteStreams;
@@ -3948,11 +3948,11 @@ class BSkeleton_RemoteStreams : public BSkeleton, public RemoteStreams {
 	public: virtual void setImage(PContentStream istrm) ;
 	public: virtual void async_setImage(PContentStream istrm, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , PContentStream > > getImages() ;
-	public: virtual void async_getImages(std::function< void (byps_ptr< std::map< int32_t , PContentStream > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , PContentStream > > getImages() ;
+	public: virtual void async_getImages(std::function< void (byps_ptr< ::std::map< int32_t , PContentStream > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey) ;
-	public: virtual void async_setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey) ;
+	public: virtual void async_setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void throwLastException() ;
 	public: virtual void async_throwLastException(std::function< void (bool, BException ex) > asyncResult) ;
@@ -3969,7 +3969,7 @@ class BSkeleton_RemoteStreams : public BSkeleton, public RemoteStreams {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_RemoteStreams;
 typedef byps_ptr<BStub_RemoteStreams> PStub_RemoteStreams;
@@ -3986,11 +3986,11 @@ class BStub_RemoteStreams : public BStub, public RemoteStreams {
 	public: virtual void setImage(PContentStream istrm) ;
 	public: virtual void async_setImage(PContentStream istrm, std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::map< int32_t , PContentStream > > getImages() ;
-	public: virtual void async_getImages(std::function< void (byps_ptr< std::map< int32_t , PContentStream > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , PContentStream > > getImages() ;
+	public: virtual void async_getImages(std::function< void (byps_ptr< ::std::map< int32_t , PContentStream > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey) ;
-	public: virtual void async_setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey) ;
+	public: virtual void async_setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void throwLastException() ;
 	public: virtual void async_throwLastException(std::function< void (bool, BException ex) > asyncResult) ;
@@ -4008,18 +4008,18 @@ class BStub_RemoteStreams : public BStub, public RemoteStreams {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class ClientIF : public virtual BRemote
 {
 	public: virtual int32_t incrementInt(int32_t a)  = 0;
 	public: virtual void async_incrementInt(int32_t a, std::function< void (int32_t, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< PContentStream > > getStreams(int32_t ctrl)  = 0;
-	public: virtual void async_getStreams(int32_t ctrl, std::function< void (byps_ptr< std::vector< PContentStream > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< PContentStream > > getStreams(int32_t ctrl)  = 0;
+	public: virtual void async_getStreams(int32_t ctrl, std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl)  = 0;
-	public: virtual void async_putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl)  = 0;
+	public: virtual void async_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual PChatStructure sendChat(PChatStructure cs)  = 0;
 	public: virtual void async_sendChat(PChatStructure cs, std::function< void (PChatStructure, BException ex) > asyncResult)  = 0;
@@ -4035,7 +4035,7 @@ class ClientIF : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_ClientIF;
 typedef byps_ptr<BSkeleton_ClientIF> PSkeleton_ClientIF;
@@ -4047,11 +4047,11 @@ class BSkeleton_ClientIF : public BSkeleton, public ClientIF {
 	public: virtual int32_t incrementInt(int32_t a) ;
 	public: virtual void async_incrementInt(int32_t a, std::function< void (int32_t, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PContentStream > > getStreams(int32_t ctrl) ;
-	public: virtual void async_getStreams(int32_t ctrl, std::function< void (byps_ptr< std::vector< PContentStream > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PContentStream > > getStreams(int32_t ctrl) ;
+	public: virtual void async_getStreams(int32_t ctrl, std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult) ;
 	
-	public: virtual void putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl) ;
-	public: virtual void async_putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl) ;
+	public: virtual void async_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual PChatStructure sendChat(PChatStructure cs) ;
 	public: virtual void async_sendChat(PChatStructure cs, std::function< void (PChatStructure, BException ex) > asyncResult) ;
@@ -4065,7 +4065,7 @@ class BSkeleton_ClientIF : public BSkeleton, public ClientIF {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_ClientIF;
 typedef byps_ptr<BStub_ClientIF> PStub_ClientIF;
@@ -4079,11 +4079,11 @@ class BStub_ClientIF : public BStub, public ClientIF {
 	public: virtual int32_t incrementInt(int32_t a) ;
 	public: virtual void async_incrementInt(int32_t a, std::function< void (int32_t, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PContentStream > > getStreams(int32_t ctrl) ;
-	public: virtual void async_getStreams(int32_t ctrl, std::function< void (byps_ptr< std::vector< PContentStream > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PContentStream > > getStreams(int32_t ctrl) ;
+	public: virtual void async_getStreams(int32_t ctrl, std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult) ;
 	
-	public: virtual void putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl) ;
-	public: virtual void async_putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl) ;
+	public: virtual void async_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual PChatStructure sendChat(PChatStructure cs) ;
 	public: virtual void async_sendChat(PChatStructure cs, std::function< void (PChatStructure, BException ex) > asyncResult) ;
@@ -4098,7 +4098,7 @@ class BStub_ClientIF : public BStub, public ClientIF {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class ServerIF : public virtual BRemote
 {
@@ -4111,11 +4111,11 @@ class ServerIF : public virtual BRemote
 	public: virtual PClientIF getPartner()  = 0;
 	public: virtual void async_getPartner(std::function< void (PClientIF, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::vector< PContentStream > > getStreamsFromClient()  = 0;
-	public: virtual void async_getStreamsFromClient(std::function< void (byps_ptr< std::vector< PContentStream > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< PContentStream > > getStreamsFromClient()  = 0;
+	public: virtual void async_getStreamsFromClient(std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams)  = 0;
-	public: virtual void async_putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams)  = 0;
+	public: virtual void async_putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void registerWithClientMap(int32_t id)  = 0;
 	public: virtual void async_registerWithClientMap(int32_t id, std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -4123,8 +4123,8 @@ class ServerIF : public virtual BRemote
 	public: virtual PClientIF getClient(int32_t id)  = 0;
 	public: virtual void async_getClient(int32_t id, std::function< void (PClientIF, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< std::set< int32_t > > getClientIds()  = 0;
-	public: virtual void async_getClientIds(std::function< void (byps_ptr< std::set< int32_t > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< int32_t > > getClientIds()  = 0;
+	public: virtual void async_getClientIds(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult)  = 0;
 	
 	public: virtual int32_t callClientParallel(int32_t v)  = 0;
 	public: virtual void async_callClientParallel(int32_t v, std::function< void (int32_t, BException ex) > asyncResult)  = 0;
@@ -4140,7 +4140,7 @@ class ServerIF : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_ServerIF;
 typedef byps_ptr<BSkeleton_ServerIF> PSkeleton_ServerIF;
@@ -4158,11 +4158,11 @@ class BSkeleton_ServerIF : public BSkeleton, public ServerIF {
 	public: virtual PClientIF getPartner() ;
 	public: virtual void async_getPartner(std::function< void (PClientIF, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PContentStream > > getStreamsFromClient() ;
-	public: virtual void async_getStreamsFromClient(std::function< void (byps_ptr< std::vector< PContentStream > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PContentStream > > getStreamsFromClient() ;
+	public: virtual void async_getStreamsFromClient(std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult) ;
 	
-	public: virtual void putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams) ;
-	public: virtual void async_putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams) ;
+	public: virtual void async_putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void registerWithClientMap(int32_t id) ;
 	public: virtual void async_registerWithClientMap(int32_t id, std::function< void (bool, BException ex) > asyncResult) ;
@@ -4170,8 +4170,8 @@ class BSkeleton_ServerIF : public BSkeleton, public ServerIF {
 	public: virtual PClientIF getClient(int32_t id) ;
 	public: virtual void async_getClient(int32_t id, std::function< void (PClientIF, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int32_t > > getClientIds() ;
-	public: virtual void async_getClientIds(std::function< void (byps_ptr< std::set< int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int32_t > > getClientIds() ;
+	public: virtual void async_getClientIds(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult) ;
 	
 	public: virtual int32_t callClientParallel(int32_t v) ;
 	public: virtual void async_callClientParallel(int32_t v, std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4185,7 +4185,7 @@ class BSkeleton_ServerIF : public BSkeleton, public ServerIF {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_ServerIF;
 typedef byps_ptr<BStub_ServerIF> PStub_ServerIF;
@@ -4205,11 +4205,11 @@ class BStub_ServerIF : public BStub, public ServerIF {
 	public: virtual PClientIF getPartner() ;
 	public: virtual void async_getPartner(std::function< void (PClientIF, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::vector< PContentStream > > getStreamsFromClient() ;
-	public: virtual void async_getStreamsFromClient(std::function< void (byps_ptr< std::vector< PContentStream > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< PContentStream > > getStreamsFromClient() ;
+	public: virtual void async_getStreamsFromClient(std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult) ;
 	
-	public: virtual void putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams) ;
-	public: virtual void async_putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams) ;
+	public: virtual void async_putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void registerWithClientMap(int32_t id) ;
 	public: virtual void async_registerWithClientMap(int32_t id, std::function< void (bool, BException ex) > asyncResult) ;
@@ -4217,8 +4217,8 @@ class BStub_ServerIF : public BStub, public ServerIF {
 	public: virtual PClientIF getClient(int32_t id) ;
 	public: virtual void async_getClient(int32_t id, std::function< void (PClientIF, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< std::set< int32_t > > getClientIds() ;
-	public: virtual void async_getClientIds(std::function< void (byps_ptr< std::set< int32_t > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< int32_t > > getClientIds() ;
+	public: virtual void async_getClientIds(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult) ;
 	
 	public: virtual int32_t callClientParallel(int32_t v) ;
 	public: virtual void async_callClientParallel(int32_t v, std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4233,7 +4233,7 @@ class BStub_ServerIF : public BStub, public ServerIF {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class EvolveIF : public virtual BRemote
 {
@@ -4263,7 +4263,7 @@ class EvolveIF : public virtual BRemote
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BSkeleton_EvolveIF;
 typedef byps_ptr<BSkeleton_EvolveIF> PSkeleton_EvolveIF;
@@ -4296,7 +4296,7 @@ class BSkeleton_EvolveIF : public BSkeleton, public EvolveIF {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BStub_EvolveIF;
 typedef byps_ptr<BStub_EvolveIF> PStub_EvolveIF;
@@ -4339,7 +4339,7 @@ public:
 }}}}}
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BApiDescriptor_Testser { 
 	public: const static int32_t VERSION = 791;
@@ -4350,7 +4350,7 @@ class BApiDescriptor_Testser {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BClient_Testser;
 typedef byps_ptr<BClient_Testser> PClient_Testser;
@@ -4422,7 +4422,7 @@ class BClient_Testser : public BClient {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BServer_Testser;
 typedef byps_ptr<BServer_Testser> PServer_Testser;

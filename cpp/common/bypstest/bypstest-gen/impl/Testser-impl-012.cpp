@@ -1,6 +1,6 @@
 ﻿#include "Testser-impl.h"
-using namespace std;
-using namespace com::wilutions::byps;
+using namespace ::std;
+using namespace ::com::wilutions::byps;
 
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
@@ -17,11 +17,11 @@ void BSkeleton_RemoteArrayTypes23::async_sendArraysInt(byps_ptr< BArray2< int32_
 		asyncResult(ret, ex);
 	}
 }
-byps_ptr< BArray1< std::wstring > > BSkeleton_RemoteArrayTypes23::sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4)  {
+byps_ptr< BArray1< ::std::wstring > > BSkeleton_RemoteArrayTypes23::sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteArrayTypes23::async_sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4, std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< std::wstring > > ret = byps_ptr< BArray1< std::wstring > >();
+void BSkeleton_RemoteArrayTypes23::async_sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4, std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  {
+	byps_ptr< BArray1< ::std::wstring > > ret = byps_ptr< BArray1< ::std::wstring > >();
 	try {
 		ret = sendArraysString(arr2, arr3, arr4);
 		asyncResult(ret, BException());
@@ -85,16 +85,16 @@ void BStub_RemoteArrayTypes23::async_sendArraysInt(byps_ptr< BArray2< int32_t > 
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int32_t > >, BResult_100361105 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-byps_ptr< BArray1< std::wstring > > BStub_RemoteArrayTypes23::sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4)  {
-	BSyncResultT<byps_ptr< BArray1< std::wstring > > > syncResult;	
-	async_sendArraysString(arr2, arr3, arr4, [&syncResult](byps_ptr< BArray1< std::wstring > > v, BException ex) {
+byps_ptr< BArray1< ::std::wstring > > BStub_RemoteArrayTypes23::sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4)  {
+	BSyncResultT<byps_ptr< BArray1< ::std::wstring > > > syncResult;	
+	async_sendArraysString(arr2, arr3, arr4, [&syncResult](byps_ptr< BArray1< ::std::wstring > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_RemoteArrayTypes23::async_sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4, std::function< void (byps_ptr< BArray1< std::wstring > >, BException ex) > asyncResult)  {
+void BStub_RemoteArrayTypes23::async_sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4, std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_RemoteArrayTypes23_sendArraysString(arr2, arr3, arr4));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< std::wstring > >, BResult_1888107655 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< ::std::wstring > >, BResult_1888107655 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayTypes23::sendArraysClass(byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2, byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4)  {
@@ -251,10 +251,10 @@ void BSkeleton_RemoteArrayTypes4dim::async_setDouble(byps_ptr< BArray4< double >
 		asyncResult(ret, ex);
 	}
 }
-void BSkeleton_RemoteArrayTypes4dim::setString(byps_ptr< BArray4< std::wstring > > v)  {
+void BSkeleton_RemoteArrayTypes4dim::setString(byps_ptr< BArray4< ::std::wstring > > v)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteArrayTypes4dim::async_setString(byps_ptr< BArray4< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  {
+void BSkeleton_RemoteArrayTypes4dim::async_setString(byps_ptr< BArray4< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  {
 	bool ret = false;
 	try {
 		setString(v);
@@ -383,11 +383,11 @@ void BSkeleton_RemoteArrayTypes4dim::async_getDouble(std::function< void (byps_p
 		asyncResult(ret, ex);
 	}
 }
-byps_ptr< BArray4< std::wstring > > BSkeleton_RemoteArrayTypes4dim::getString()  {
+byps_ptr< BArray4< ::std::wstring > > BSkeleton_RemoteArrayTypes4dim::getString()  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteArrayTypes4dim::async_getString(std::function< void (byps_ptr< BArray4< std::wstring > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray4< std::wstring > > ret = byps_ptr< BArray4< std::wstring > >();
+void BSkeleton_RemoteArrayTypes4dim::async_getString(std::function< void (byps_ptr< BArray4< ::std::wstring > >, BException ex) > asyncResult)  {
+	byps_ptr< BArray4< ::std::wstring > > ret = byps_ptr< BArray4< ::std::wstring > >();
 	try {
 		ret = getString();
 		asyncResult(ret, BException());
@@ -523,14 +523,14 @@ void BStub_RemoteArrayTypes4dim::async_setDouble(byps_ptr< BArray4< double > > v
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-void BStub_RemoteArrayTypes4dim::setString(byps_ptr< BArray4< std::wstring > > v)  {
+void BStub_RemoteArrayTypes4dim::setString(byps_ptr< BArray4< ::std::wstring > > v)  {
 	BSyncResultT<bool > syncResult;	
 	async_setString(v, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	syncResult.getResult();
 }
-void BStub_RemoteArrayTypes4dim::async_setString(byps_ptr< BArray4< std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  {
+void BStub_RemoteArrayTypes4dim::async_setString(byps_ptr< BArray4< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_RemoteArrayTypes4dim_setString(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
@@ -655,16 +655,16 @@ void BStub_RemoteArrayTypes4dim::async_getDouble(std::function< void (byps_ptr< 
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray4< double > >, BResult_2087445849 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-byps_ptr< BArray4< std::wstring > > BStub_RemoteArrayTypes4dim::getString()  {
-	BSyncResultT<byps_ptr< BArray4< std::wstring > > > syncResult;	
-	async_getString([&syncResult](byps_ptr< BArray4< std::wstring > > v, BException ex) {
+byps_ptr< BArray4< ::std::wstring > > BStub_RemoteArrayTypes4dim::getString()  {
+	BSyncResultT<byps_ptr< BArray4< ::std::wstring > > > syncResult;	
+	async_getString([&syncResult](byps_ptr< BArray4< ::std::wstring > > v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_RemoteArrayTypes4dim::async_getString(std::function< void (byps_ptr< BArray4< std::wstring > >, BException ex) > asyncResult)  {
+void BStub_RemoteArrayTypes4dim::async_getString(std::function< void (byps_ptr< BArray4< ::std::wstring > >, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_RemoteArrayTypes4dim_getString());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray4< std::wstring > >, BResult_588723219 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray4< ::std::wstring > >, BResult_588723219 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayTypes4dim::getPrimitiveTypes()  {
@@ -725,10 +725,10 @@ void BSkeleton_RemoteConstants::async_compare_HebrewC(com::wilutions::byps::test
 		asyncResult(ret, ex);
 	}
 }
-bool BSkeleton_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll)  {
+bool BSkeleton_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteConstants::async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult)  {
+void BSkeleton_RemoteConstants::async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult)  {
 	bool ret = bool();
 	try {
 		ret = compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll);
@@ -757,14 +757,14 @@ void BStub_RemoteConstants::async_compare_HebrewC(com::wilutions::byps::test::ap
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-bool BStub_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll)  {
+bool BStub_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll)  {
 	BSyncResultT<bool > syncResult;	
 	async_compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_RemoteConstants::async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult)  {
+void BStub_RemoteConstants::async_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll, std::function< void (bool, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_RemoteConstants_compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, BResult_1 >(asyncResult) );
 	transport->send(req, outerResult);
@@ -941,10 +941,10 @@ void BSkeleton_RemoteInlineInstance::async_getPoint2DArray4dim(std::function< vo
 		asyncResult(ret, ex);
 	}
 }
-void BSkeleton_RemoteInlineInstance::setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList)  {
+void BSkeleton_RemoteInlineInstance::setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteInlineInstance::async_setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult)  {
+void BSkeleton_RemoteInlineInstance::async_setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList, std::function< void (bool, BException ex) > asyncResult)  {
 	bool ret = false;
 	try {
 		setPoint2DList(pointList);
@@ -953,11 +953,11 @@ void BSkeleton_RemoteInlineInstance::async_setPoint2DList(byps_ptr< std::vector<
 		asyncResult(ret, ex);
 	}
 }
-byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > BSkeleton_RemoteInlineInstance::getPoint2DList()  {
+byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > BSkeleton_RemoteInlineInstance::getPoint2DList()  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteInlineInstance::async_getPoint2DList(std::function< void (byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  {
-	byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > ret = byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > >();
+void BSkeleton_RemoteInlineInstance::async_getPoint2DList(std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  {
+	byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > ret = byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >();
 	try {
 		ret = getPoint2DList();
 		asyncResult(ret, BException());
@@ -965,10 +965,10 @@ void BSkeleton_RemoteInlineInstance::async_getPoint2DList(std::function< void (b
 		asyncResult(ret, ex);
 	}
 }
-void BSkeleton_RemoteInlineInstance::setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList)  {
+void BSkeleton_RemoteInlineInstance::setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteInlineInstance::async_setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult)  {
+void BSkeleton_RemoteInlineInstance::async_setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList, std::function< void (bool, BException ex) > asyncResult)  {
 	bool ret = false;
 	try {
 		setPoint2DListList(pointListList);
@@ -977,11 +977,11 @@ void BSkeleton_RemoteInlineInstance::async_setPoint2DListList(byps_ptr< std::vec
 		asyncResult(ret, ex);
 	}
 }
-byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > BSkeleton_RemoteInlineInstance::getPoint2DListList()  {
+byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > BSkeleton_RemoteInlineInstance::getPoint2DListList()  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteInlineInstance::async_getPoint2DListList(std::function< void (byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult)  {
-	byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > ret = byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >();
+void BSkeleton_RemoteInlineInstance::async_getPoint2DListList(std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult)  {
+	byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > ret = byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >();
 	try {
 		ret = getPoint2DListList();
 		asyncResult(ret, BException());
@@ -989,10 +989,10 @@ void BSkeleton_RemoteInlineInstance::async_getPoint2DListList(std::function< voi
 		asyncResult(ret, ex);
 	}
 }
-void BSkeleton_RemoteInlineInstance::setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap)  {
+void BSkeleton_RemoteInlineInstance::setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteInlineInstance::async_setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult)  {
+void BSkeleton_RemoteInlineInstance::async_setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap, std::function< void (bool, BException ex) > asyncResult)  {
 	bool ret = false;
 	try {
 		setPoint2DMap(pointMap);
@@ -1001,11 +1001,11 @@ void BSkeleton_RemoteInlineInstance::async_setPoint2DMap(byps_ptr< std::map< int
 		asyncResult(ret, ex);
 	}
 }
-byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > BSkeleton_RemoteInlineInstance::getPoint2DMap()  {
+byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > BSkeleton_RemoteInlineInstance::getPoint2DMap()  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_RemoteInlineInstance::async_getPoint2DMap(std::function< void (byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  {
-	byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > ret = byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >();
+void BSkeleton_RemoteInlineInstance::async_getPoint2DMap(std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  {
+	byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > ret = byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >();
 	try {
 		ret = getPoint2DMap();
 		asyncResult(ret, BException());

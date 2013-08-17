@@ -1820,7 +1820,7 @@ class BRequest_EvolveIF_setEvolve;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1 : public BSerializable {
 	public: bool result;
@@ -1838,11 +1838,11 @@ class BResult_1 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_10 : public BSerializable {
-	public: std::wstring result;
-	public: BResult_10(std::wstring result = std::wstring()) : result(result) {}	
+	public: ::std::wstring result;
+	public: BResult_10(::std::wstring result = ::std::wstring()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 309901678; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1856,7 +1856,7 @@ class BResult_10 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1000 : public BSerializable {
 	public: com::wilutions::byps::test::api::prim::PPrimitiveTypes result;
@@ -1874,7 +1874,7 @@ class BResult_1000 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_100361105 : public BSerializable {
 	public: byps_ptr< BArray1< int32_t > > result;
@@ -1892,7 +1892,7 @@ class BResult_100361105 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1042475995 : public BSerializable {
 	public: com::wilutions::byps::test::api::enu::EnumPlanets result;
@@ -1910,11 +1910,11 @@ class BResult_1042475995 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1050216688 : public BSerializable {
-	public: byps_ptr< std::vector< int64_t > > result;
-	public: BResult_1050216688(byps_ptr< std::vector< int64_t > > result = byps_ptr< std::vector< int64_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< int64_t > > result;
+	public: BResult_1050216688(byps_ptr< ::std::vector< int64_t > > result = byps_ptr< ::std::vector< int64_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2133842068; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1928,11 +1928,11 @@ class BResult_1050216688 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1059148284 : public BSerializable {
-	public: byps_ptr< std::vector< int8_t > > result;
-	public: BResult_1059148284(byps_ptr< std::vector< int8_t > > result = byps_ptr< std::vector< int8_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< int8_t > > result;
+	public: BResult_1059148284(byps_ptr< ::std::vector< int8_t > > result = byps_ptr< ::std::vector< int8_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1532920911; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1946,7 +1946,7 @@ class BResult_1059148284 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1097129250 : public BSerializable {
 	public: byps_ptr< BArray1< int64_t > > result;
@@ -1964,11 +1964,11 @@ class BResult_1097129250 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1174971318 : public BSerializable {
-	public: byps_ptr< std::vector< PBytes > > result;
-	public: BResult_1174971318(byps_ptr< std::vector< PBytes > > result = byps_ptr< std::vector< PBytes > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< PBytes > > result;
+	public: BResult_1174971318(byps_ptr< ::std::vector< PBytes > > result = byps_ptr< ::std::vector< PBytes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 994835305; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -1982,11 +1982,11 @@ class BResult_1174971318 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_12 : public BSerializable {
-	public: byps_ptr< std::vector< PSerializable > > result;
-	public: BResult_12(byps_ptr< std::vector< PSerializable > > result = byps_ptr< std::vector< PSerializable > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< PSerializable > > result;
+	public: BResult_12(byps_ptr< ::std::vector< PSerializable > > result = byps_ptr< ::std::vector< PSerializable > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 309901676; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2000,7 +2000,7 @@ class BResult_12 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1201775504 : public BSerializable {
 	public: byps_ptr< BArray4< int8_t > > result;
@@ -2018,11 +2018,11 @@ class BResult_1201775504 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1218831438 : public BSerializable {
-	public: byps_ptr< std::vector< PContentStream > > result;
-	public: BResult_1218831438(byps_ptr< std::vector< PContentStream > > result = byps_ptr< std::vector< PContentStream > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< PContentStream > > result;
+	public: BResult_1218831438(byps_ptr< ::std::vector< PContentStream > > result = byps_ptr< ::std::vector< PContentStream > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1151524674; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2036,7 +2036,7 @@ class BResult_1218831438 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_124584219 : public BSerializable {
 	public: byps_ptr< BArray4< PSerializable > > result;
@@ -2054,11 +2054,11 @@ class BResult_124584219 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1279823631 : public BSerializable {
-	public: byps_ptr< std::map< std::wstring , bool > > result;
-	public: BResult_1279823631(byps_ptr< std::map< std::wstring , bool > > result = byps_ptr< std::map< std::wstring , bool > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< ::std::wstring , bool > > result;
+	public: BResult_1279823631(byps_ptr< ::std::map< ::std::wstring , bool > > result = byps_ptr< ::std::map< ::std::wstring , bool > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1602044401; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2072,11 +2072,11 @@ class BResult_1279823631 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1280571537 : public BSerializable {
-	public: byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	public: BResult_1280571537(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
+	public: BResult_1280571537(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 429041482; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2090,11 +2090,11 @@ class BResult_1280571537 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1320560671 : public BSerializable {
-	public: byps_ptr< std::set< double > > result;
-	public: BResult_1320560671(byps_ptr< std::set< double > > result = byps_ptr< std::set< double > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< double > > result;
+	public: BResult_1320560671(byps_ptr< ::std::set< double > > result = byps_ptr< ::std::set< double > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 190591700; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2108,11 +2108,11 @@ class BResult_1320560671 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1347703734 : public BSerializable {
-	public: byps_ptr< std::map< int32_t , int32_t > > result;
-	public: BResult_1347703734(byps_ptr< std::map< int32_t , int32_t > > result = byps_ptr< std::map< int32_t , int32_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int32_t , int32_t > > result;
+	public: BResult_1347703734(byps_ptr< ::std::map< int32_t , int32_t > > result = byps_ptr< ::std::map< int32_t , int32_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1350610934; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2126,7 +2126,7 @@ class BResult_1347703734 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1359468275 : public BSerializable {
 	public: byps_ptr< BArray1< double > > result;
@@ -2144,7 +2144,7 @@ class BResult_1359468275 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1361632968 : public BSerializable {
 	public: byps_ptr< BArray1< wchar_t > > result;
@@ -2162,11 +2162,11 @@ class BResult_1361632968 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1365696060 : public BSerializable {
-	public: byps_ptr< std::set< bool > > result;
-	public: BResult_1365696060(byps_ptr< std::set< bool > > result = byps_ptr< std::set< bool > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< bool > > result;
+	public: BResult_1365696060(byps_ptr< ::std::set< bool > > result = byps_ptr< ::std::set< bool > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1253977781; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2180,7 +2180,7 @@ class BResult_1365696060 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1374008726 : public BSerializable {
 	public: PBytes result;
@@ -2198,7 +2198,7 @@ class BResult_1374008726 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1391985860 : public BSerializable {
 	public: com::wilutions::byps::test::api::ver::PEvolve result;
@@ -2216,11 +2216,11 @@ class BResult_1391985860 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_14 : public BSerializable {
-	public: byps_ptr< std::set< PSerializable > > result;
-	public: BResult_14(byps_ptr< std::set< PSerializable > > result = byps_ptr< std::set< PSerializable > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< PSerializable > > result;
+	public: BResult_14(byps_ptr< ::std::set< PSerializable > > result = byps_ptr< ::std::set< PSerializable > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 309901674; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2234,11 +2234,11 @@ class BResult_14 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1406124761 : public BSerializable {
-	public: byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > result;
-	public: BResult_1406124761(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > result;
+	public: BResult_1406124761(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 104448059; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2252,11 +2252,11 @@ class BResult_1406124761 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1457164460 : public BSerializable {
-	public: byps_ptr< std::set< int64_t > > result;
-	public: BResult_1457164460(byps_ptr< std::set< int64_t > > result = byps_ptr< std::set< int64_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< int64_t > > result;
+	public: BResult_1457164460(byps_ptr< ::std::set< int64_t > > result = byps_ptr< ::std::set< int64_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1119760023; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2270,11 +2270,11 @@ class BResult_1457164460 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1463615848 : public BSerializable {
-	public: byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result;
-	public: BResult_1463615848(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result = byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result;
+	public: BResult_1463615848(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 548882635; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2288,11 +2288,11 @@ class BResult_1463615848 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1487265161 : public BSerializable {
-	public: byps_ptr< std::map< int8_t , double > > result;
-	public: BResult_1487265161(byps_ptr< std::map< int8_t , double > > result = byps_ptr< std::map< int8_t , double > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int8_t , double > > result;
+	public: BResult_1487265161(byps_ptr< ::std::map< int8_t , double > > result = byps_ptr< ::std::map< int8_t , double > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2081879792; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2306,11 +2306,11 @@ class BResult_1487265161 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1488550492 : public BSerializable {
-	public: byps_ptr< std::map< std::wstring , PSerializable > > result;
-	public: BResult_1488550492(byps_ptr< std::map< std::wstring , PSerializable > > result = byps_ptr< std::map< std::wstring , PSerializable > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > result;
+	public: BResult_1488550492(byps_ptr< ::std::map< ::std::wstring , PSerializable > > result = byps_ptr< ::std::map< ::std::wstring , PSerializable > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1240765869; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2324,11 +2324,11 @@ class BResult_1488550492 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1493282670 : public BSerializable {
-	public: byps_ptr< std::set< int32_t > > result;
-	public: BResult_1493282670(byps_ptr< std::set< int32_t > > result = byps_ptr< std::set< int32_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< int32_t > > result;
+	public: BResult_1493282670(byps_ptr< ::std::set< int32_t > > result = byps_ptr< ::std::set< int32_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 276437907; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2342,7 +2342,7 @@ class BResult_1493282670 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_15 : public BSerializable {
 	public: PContentStream result;
@@ -2360,7 +2360,7 @@ class BResult_15 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1503107601 : public BSerializable {
 	public: byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
@@ -2378,7 +2378,7 @@ class BResult_1503107601 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1516687588 : public BSerializable {
 	public: byps_ptr< BArray4< float > > result;
@@ -2396,11 +2396,11 @@ class BResult_1516687588 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1544333227 : public BSerializable {
-	public: byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	public: BResult_1544333227(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
+	public: BResult_1544333227(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 743592613; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2414,11 +2414,11 @@ class BResult_1544333227 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1555345627 : public BSerializable {
-	public: byps_ptr< std::vector< double > > result;
-	public: BResult_1555345627(byps_ptr< std::vector< double > > result = byps_ptr< std::vector< double > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< double > > result;
+	public: BResult_1555345627(byps_ptr< ::std::vector< double > > result = byps_ptr< ::std::vector< double > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1887708350; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2432,7 +2432,7 @@ class BResult_1555345627 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_16 : public BSerializable {
 	public: PRemote result;
@@ -2450,11 +2450,11 @@ class BResult_16 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1617670280 : public BSerializable {
-	public: byps_ptr< std::vector< bool > > result;
-	public: BResult_1617670280(byps_ptr< std::vector< bool > > result = byps_ptr< std::vector< bool > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< bool > > result;
+	public: BResult_1617670280(byps_ptr< ::std::vector< bool > > result = byps_ptr< ::std::vector< bool > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 732507399; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2468,11 +2468,11 @@ class BResult_1617670280 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1628501332 : public BSerializable {
-	public: byps_ptr< std::vector< float > > result;
-	public: BResult_1628501332(byps_ptr< std::vector< float > > result = byps_ptr< std::vector< float > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< float > > result;
+	public: BResult_1628501332(byps_ptr< ::std::vector< float > > result = byps_ptr< ::std::vector< float > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1862743418; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2486,11 +2486,11 @@ class BResult_1628501332 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1633500852 : public BSerializable {
-	public: byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > result;
-	public: BResult_1633500852(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > result = byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > result;
+	public: BResult_1633500852(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 831989576; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2504,11 +2504,11 @@ class BResult_1633500852 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1633750383 : public BSerializable {
-	public: byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result;
-	public: BResult_1633750383(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result = byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result;
+	public: BResult_1633750383(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 770118380; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2522,11 +2522,11 @@ class BResult_1633750383 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1661807911 : public BSerializable {
-	public: byps_ptr< std::vector< wchar_t > > result;
-	public: BResult_1661807911(byps_ptr< std::vector< wchar_t > > result = byps_ptr< std::vector< wchar_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< wchar_t > > result;
+	public: BResult_1661807911(byps_ptr< ::std::vector< wchar_t > > result = byps_ptr< ::std::vector< wchar_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1587436403; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2540,11 +2540,11 @@ class BResult_1661807911 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1710660846 : public BSerializable {
-	public: byps_ptr< std::map< std::wstring , std::wstring > > result;
-	public: BResult_1710660846(byps_ptr< std::map< std::wstring , std::wstring > > result = byps_ptr< std::map< std::wstring , std::wstring > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > result;
+	public: BResult_1710660846(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > result = byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 163470910; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2558,7 +2558,7 @@ class BResult_1710660846 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_171948703 : public BSerializable {
 	public: com::wilutions::byps::test::api::inl::PActor result;
@@ -2576,11 +2576,11 @@ class BResult_171948703 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_172221196 : public BSerializable {
-	public: byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > result;
-	public: BResult_172221196(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > result;
+	public: BResult_172221196(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1905478006; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2594,11 +2594,11 @@ class BResult_172221196 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1746702954 : public BSerializable {
-	public: byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > result;
-	public: BResult_1746702954(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > result = byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > result;
+	public: BResult_1746702954(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1823196186; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2612,11 +2612,11 @@ class BResult_1746702954 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1752158699 : public BSerializable {
-	public: byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > result;
-	public: BResult_1752158699(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > result;
+	public: BResult_1752158699(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 150989512; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2630,7 +2630,7 @@ class BResult_1752158699 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1784257353 : public BSerializable {
 	public: com::wilutions::byps::test::api::srvr::PClientIF result;
@@ -2648,11 +2648,11 @@ class BResult_1784257353 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1799280818 : public BSerializable {
-	public: byps_ptr< std::map< int32_t , PBytes > > result;
-	public: BResult_1799280818(byps_ptr< std::map< int32_t , PBytes > > result = byps_ptr< std::map< int32_t , PBytes > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int32_t , PBytes > > result;
+	public: BResult_1799280818(byps_ptr< ::std::map< int32_t , PBytes > > result = byps_ptr< ::std::map< int32_t , PBytes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 179038766; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2666,11 +2666,11 @@ class BResult_1799280818 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_181681714 : public BSerializable {
-	public: byps_ptr< std::vector< int32_t > > result;
-	public: BResult_181681714(byps_ptr< std::vector< int32_t > > result = byps_ptr< std::vector< int32_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< int32_t > > result;
+	public: BResult_181681714(byps_ptr< ::std::vector< int32_t > > result = byps_ptr< ::std::vector< int32_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1414119390; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2684,7 +2684,7 @@ class BResult_181681714 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_183594037 : public BSerializable {
 	public: byps_ptr< BArray1< PSerializable > > result;
@@ -2702,11 +2702,11 @@ class BResult_183594037 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1851881336 : public BSerializable {
-	public: byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > result;
-	public: BResult_1851881336(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > result;
+	public: BResult_1851881336(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1651982651; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2720,7 +2720,7 @@ class BResult_1851881336 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1859644668 : public BSerializable {
 	public: byps_ptr< BArray4< int16_t > > result;
@@ -2738,11 +2738,11 @@ class BResult_1859644668 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1888107655 : public BSerializable {
-	public: byps_ptr< BArray1< std::wstring > > result;
-	public: BResult_1888107655(byps_ptr< BArray1< std::wstring > > result = byps_ptr< BArray1< std::wstring > >()) : result(result) {}	
+	public: byps_ptr< BArray1< ::std::wstring > > result;
+	public: BResult_1888107655(byps_ptr< BArray1< ::std::wstring > > result = byps_ptr< BArray1< ::std::wstring > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 427000; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2756,11 +2756,11 @@ class BResult_1888107655 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1888799711 : public BSerializable {
-	public: byps_ptr< std::set< std::wstring > > result;
-	public: BResult_1888799711(byps_ptr< std::set< std::wstring > > result = byps_ptr< std::set< std::wstring > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< ::std::wstring > > result;
+	public: BResult_1888799711(byps_ptr< ::std::set< ::std::wstring > > result = byps_ptr< ::std::set< ::std::wstring > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 180574010; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2774,11 +2774,11 @@ class BResult_1888799711 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1898022288 : public BSerializable {
-	public: byps_ptr< std::set< float > > result;
-	public: BResult_1898022288(byps_ptr< std::set< float > > result = byps_ptr< std::set< float > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< float > > result;
+	public: BResult_1898022288(byps_ptr< ::std::set< float > > result = byps_ptr< ::std::set< float > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1716302523; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2792,7 +2792,7 @@ class BResult_1898022288 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_19 : public BSerializable {
 	public: bool result;
@@ -2810,11 +2810,11 @@ class BResult_19 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1972793385 : public BSerializable {
-	public: byps_ptr< std::map< double , int8_t > > result;
-	public: BResult_1972793385(byps_ptr< std::map< double , int8_t > > result = byps_ptr< std::map< double , int8_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< double , int8_t > > result;
+	public: BResult_1972793385(byps_ptr< ::std::map< double , int8_t > > result = byps_ptr< ::std::map< double , int8_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 104960651; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2828,11 +2828,11 @@ class BResult_1972793385 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1973996106 : public BSerializable {
-	public: byps_ptr< std::map< int16_t , int64_t > > result;
-	public: BResult_1973996106(byps_ptr< std::map< int16_t , int64_t > > result = byps_ptr< std::map< int16_t , int64_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int16_t , int64_t > > result;
+	public: BResult_1973996106(byps_ptr< ::std::map< int16_t , int64_t > > result = byps_ptr< ::std::map< int16_t , int64_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 839888536; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2846,11 +2846,11 @@ class BResult_1973996106 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_1997002548 : public BSerializable {
-	public: byps_ptr< std::vector< int16_t > > result;
-	public: BResult_1997002548(byps_ptr< std::vector< int16_t > > result = byps_ptr< std::vector< int16_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< int16_t > > result;
+	public: BResult_1997002548(byps_ptr< ::std::vector< int16_t > > result = byps_ptr< ::std::vector< int16_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 980499904; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2864,7 +2864,7 @@ class BResult_1997002548 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2 : public BSerializable {
 	public: int8_t result;
@@ -2882,11 +2882,11 @@ class BResult_2 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2028443792 : public BSerializable {
-	public: byps_ptr< std::set< int16_t > > result;
-	public: BResult_2028443792(byps_ptr< std::set< int16_t > > result = byps_ptr< std::set< int16_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< int16_t > > result;
+	public: BResult_2028443792(byps_ptr< ::std::set< int16_t > > result = byps_ptr< ::std::set< int16_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 398816652; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2900,7 +2900,7 @@ class BResult_2028443792 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2049740106 : public BSerializable {
 	public: byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > result;
@@ -2918,11 +2918,11 @@ class BResult_2049740106 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2052431866 : public BSerializable {
-	public: byps_ptr< std::set< PBytes > > result;
-	public: BResult_2052431866(byps_ptr< std::set< PBytes > > result = byps_ptr< std::set< PBytes > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< PBytes > > result;
+	public: BResult_2052431866(byps_ptr< ::std::set< PBytes > > result = byps_ptr< ::std::set< PBytes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 496389964; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -2936,7 +2936,7 @@ class BResult_2052431866 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2058423690 : public BSerializable {
 	public: byps_ptr< BArray1< bool > > result;
@@ -2954,7 +2954,7 @@ class BResult_2058423690 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2067161310 : public BSerializable {
 	public: byps_ptr< BArray1< int16_t > > result;
@@ -2972,7 +2972,7 @@ class BResult_2067161310 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2078696281 : public BSerializable {
 	public: com::wilutions::byps::test::api::ver::PEvolveIF result;
@@ -2990,7 +2990,7 @@ class BResult_2078696281 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2087445849 : public BSerializable {
 	public: byps_ptr< BArray4< double > > result;
@@ -3008,7 +3008,7 @@ class BResult_2087445849 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_21 : public BSerializable {
 	public: PSerializable result;
@@ -3026,11 +3026,11 @@ class BResult_21 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_2123584667 : public BSerializable {
-	public: byps_ptr< std::vector< std::wstring > > result;
-	public: BResult_2123584667(byps_ptr< std::vector< std::wstring > > result = byps_ptr< std::vector< std::wstring > >()) : result(result) {}	
+	public: byps_ptr< ::std::vector< ::std::wstring > > result;
+	public: BResult_2123584667(byps_ptr< ::std::vector< ::std::wstring > > result = byps_ptr< ::std::vector< ::std::wstring > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1978497049; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3044,7 +3044,7 @@ class BResult_2123584667 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_3 : public BSerializable {
 	public: int16_t result;
@@ -3062,11 +3062,11 @@ class BResult_3 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_31512998 : public BSerializable {
-	public: byps_ptr< std::set< int8_t > > result;
-	public: BResult_31512998(byps_ptr< std::set< int8_t > > result = byps_ptr< std::set< int8_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< int8_t > > result;
+	public: BResult_31512998(byps_ptr< ::std::set< int8_t > > result = byps_ptr< ::std::set< int8_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 307489197; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3080,7 +3080,7 @@ class BResult_31512998 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_39910537 : public BSerializable {
 	public: byps_ptr< BArray4< int32_t > > result;
@@ -3098,7 +3098,7 @@ class BResult_39910537 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_4 : public BSerializable {
 	public: wchar_t result;
@@ -3116,11 +3116,11 @@ class BResult_4 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_476459792 : public BSerializable {
-	public: byps_ptr< std::map< int32_t , PContentStream > > result;
-	public: BResult_476459792(byps_ptr< std::map< int32_t , PContentStream > > result = byps_ptr< std::map< int32_t , PContentStream > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int32_t , PContentStream > > result;
+	public: BResult_476459792(byps_ptr< ::std::map< int32_t , PContentStream > > result = byps_ptr< ::std::map< int32_t , PContentStream > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 93402296; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3134,7 +3134,7 @@ class BResult_476459792 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_487702928 : public BSerializable {
 	public: byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > result;
@@ -3152,7 +3152,7 @@ class BResult_487702928 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_5 : public BSerializable {
 	public: int32_t result;
@@ -3170,11 +3170,11 @@ class BResult_5 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_588723219 : public BSerializable {
-	public: byps_ptr< BArray4< std::wstring > > result;
-	public: BResult_588723219(byps_ptr< BArray4< std::wstring > > result = byps_ptr< BArray4< std::wstring > >()) : result(result) {}	
+	public: byps_ptr< BArray4< ::std::wstring > > result;
+	public: BResult_588723219(byps_ptr< BArray4< ::std::wstring > > result = byps_ptr< BArray4< ::std::wstring > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1886698628; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3188,7 +3188,7 @@ class BResult_588723219 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_6 : public BSerializable {
 	public: int64_t result;
@@ -3206,11 +3206,11 @@ class BResult_6 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_601099730 : public BSerializable {
-	public: byps_ptr< std::map< int64_t , int16_t > > result;
-	public: BResult_601099730(byps_ptr< std::map< int64_t , int16_t > > result = byps_ptr< std::map< int64_t , int16_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int64_t , int16_t > > result;
+	public: BResult_601099730(byps_ptr< ::std::map< int64_t , int16_t > > result = byps_ptr< ::std::map< int64_t , int16_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1205316392; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3224,7 +3224,7 @@ class BResult_601099730 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_7 : public BSerializable {
 	public: float result;
@@ -3242,7 +3242,7 @@ class BResult_7 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_7007 : public BSerializable {
 	public: com::wilutions::byps::test::api::srvr::PChatStructure result;
@@ -3260,11 +3260,11 @@ class BResult_7007 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_703065817 : public BSerializable {
-	public: byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	public: BResult_703065817(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
+	public: BResult_703065817(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1169980470; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3278,7 +3278,7 @@ class BResult_703065817 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_766441794 : public BSerializable {
 	public: byps_ptr< BArray1< float > > result;
@@ -3296,7 +3296,7 @@ class BResult_766441794 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_769021986 : public BSerializable {
 	public: byps_ptr< BArray4< wchar_t > > result;
@@ -3314,7 +3314,7 @@ class BResult_769021986 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_8 : public BSerializable {
 	public: double result;
@@ -3332,7 +3332,7 @@ class BResult_8 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_801243127 : public BSerializable {
 	public: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
@@ -3350,7 +3350,7 @@ class BResult_801243127 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_846419204 : public BSerializable {
 	public: byps_ptr< BArray4< int64_t > > result;
@@ -3368,11 +3368,11 @@ class BResult_846419204 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_8789515 : public BSerializable {
-	public: byps_ptr< std::map< float , wchar_t > > result;
-	public: BResult_8789515(byps_ptr< std::map< float , wchar_t > > result = byps_ptr< std::map< float , wchar_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< float , wchar_t > > result;
+	public: BResult_8789515(byps_ptr< ::std::map< float , wchar_t > > result = byps_ptr< ::std::map< float , wchar_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1554344518; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3386,7 +3386,7 @@ class BResult_8789515 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_9001 : public BSerializable {
 	public: com::wilutions::byps::test::api::refs::PNode result;
@@ -3404,11 +3404,11 @@ class BResult_9001 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_936607009 : public BSerializable {
-	public: byps_ptr< std::set< wchar_t > > result;
-	public: BResult_936607009(byps_ptr< std::set< wchar_t > > result = byps_ptr< std::set< wchar_t > >()) : result(result) {}	
+	public: byps_ptr< ::std::set< wchar_t > > result;
+	public: BResult_936607009(byps_ptr< ::std::set< wchar_t > > result = byps_ptr< ::std::set< wchar_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1317331941; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3422,11 +3422,11 @@ class BResult_936607009 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_94341197 : public BSerializable {
-	public: byps_ptr< std::map< wchar_t , float > > result;
-	public: BResult_94341197(byps_ptr< std::map< wchar_t , float > > result = byps_ptr< std::map< wchar_t , float > >()) : result(result) {}	
+	public: byps_ptr< ::std::map< wchar_t , float > > result;
+	public: BResult_94341197(byps_ptr< ::std::map< wchar_t , float > > result = byps_ptr< ::std::map< wchar_t , float > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 127543251; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3440,7 +3440,7 @@ class BResult_94341197 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BResult_945713488 : public BSerializable {
 	public: byps_ptr< BArray4< bool > > result;
@@ -3458,7 +3458,7 @@ class BResult_945713488 : public BSerializable {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getBool : public BMethodRequest {
 	
@@ -3478,7 +3478,7 @@ class BRequest_RemoteArrayTypes1dim_getBool : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getByte : public BMethodRequest {
 	
@@ -3498,7 +3498,7 @@ class BRequest_RemoteArrayTypes1dim_getByte : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getChar : public BMethodRequest {
 	
@@ -3518,7 +3518,7 @@ class BRequest_RemoteArrayTypes1dim_getChar : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getDouble : public BMethodRequest {
 	
@@ -3538,7 +3538,7 @@ class BRequest_RemoteArrayTypes1dim_getDouble : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getFloat : public BMethodRequest {
 	
@@ -3558,7 +3558,7 @@ class BRequest_RemoteArrayTypes1dim_getFloat : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getInt : public BMethodRequest {
 	
@@ -3578,7 +3578,7 @@ class BRequest_RemoteArrayTypes1dim_getInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getLong : public BMethodRequest {
 	
@@ -3598,7 +3598,7 @@ class BRequest_RemoteArrayTypes1dim_getLong : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getObject : public BMethodRequest {
 	
@@ -3618,7 +3618,7 @@ class BRequest_RemoteArrayTypes1dim_getObject : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes : public BMethodRequest {
 	
@@ -3638,7 +3638,7 @@ class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getShort : public BMethodRequest {
 	
@@ -3658,7 +3658,7 @@ class BRequest_RemoteArrayTypes1dim_getShort : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_getString : public BMethodRequest {
 	
@@ -3678,7 +3678,7 @@ class BRequest_RemoteArrayTypes1dim_getString : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setBool : public BMethodRequest {
 	public: byps_ptr< BArray1< bool > > v;
@@ -3699,7 +3699,7 @@ class BRequest_RemoteArrayTypes1dim_setBool : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setByte : public BMethodRequest {
 	public: PBytes v;
@@ -3720,7 +3720,7 @@ class BRequest_RemoteArrayTypes1dim_setByte : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setChar : public BMethodRequest {
 	public: byps_ptr< BArray1< wchar_t > > v;
@@ -3741,7 +3741,7 @@ class BRequest_RemoteArrayTypes1dim_setChar : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setDouble : public BMethodRequest {
 	public: byps_ptr< BArray1< double > > v;
@@ -3762,7 +3762,7 @@ class BRequest_RemoteArrayTypes1dim_setDouble : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setFloat : public BMethodRequest {
 	public: byps_ptr< BArray1< float > > v;
@@ -3783,7 +3783,7 @@ class BRequest_RemoteArrayTypes1dim_setFloat : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setInt : public BMethodRequest {
 	public: byps_ptr< BArray1< int32_t > > v;
@@ -3804,7 +3804,7 @@ class BRequest_RemoteArrayTypes1dim_setInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setLong : public BMethodRequest {
 	public: byps_ptr< BArray1< int64_t > > v;
@@ -3825,7 +3825,7 @@ class BRequest_RemoteArrayTypes1dim_setLong : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setObject : public BMethodRequest {
 	public: byps_ptr< BArray1< PSerializable > > v;
@@ -3846,7 +3846,7 @@ class BRequest_RemoteArrayTypes1dim_setObject : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes : public BMethodRequest {
 	public: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v;
@@ -3867,7 +3867,7 @@ class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setShort : public BMethodRequest {
 	public: byps_ptr< BArray1< int16_t > > v;
@@ -3888,13 +3888,13 @@ class BRequest_RemoteArrayTypes1dim_setShort : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes1dim_setString : public BMethodRequest {
-	public: byps_ptr< BArray1< std::wstring > > v;
+	public: byps_ptr< BArray1< ::std::wstring > > v;
 	
 	public: BRequest_RemoteArrayTypes1dim_setString();
-	public: BRequest_RemoteArrayTypes1dim_setString(byps_ptr< BArray1< std::wstring > > v);	
+	public: BRequest_RemoteArrayTypes1dim_setString(byps_ptr< BArray1< ::std::wstring > > v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1154444878; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -3909,7 +3909,7 @@ class BRequest_RemoteArrayTypes1dim_setString : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysClass : public BMethodRequest {
 	public: byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2;
@@ -3932,7 +3932,7 @@ class BRequest_RemoteArrayTypes23_sendArraysClass : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysInline : public BMethodRequest {
 	public: byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > > arr2;
@@ -3955,7 +3955,7 @@ class BRequest_RemoteArrayTypes23_sendArraysInline : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysInt : public BMethodRequest {
 	public: byps_ptr< BArray2< int32_t > > arr2;
@@ -3978,7 +3978,7 @@ class BRequest_RemoteArrayTypes23_sendArraysInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysObject : public BMethodRequest {
 	public: byps_ptr< BArray2< PSerializable > > arr2;
@@ -4001,15 +4001,15 @@ class BRequest_RemoteArrayTypes23_sendArraysObject : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysString : public BMethodRequest {
-	public: byps_ptr< BArray2< std::wstring > > arr2;
-	public: byps_ptr< BArray3< std::wstring > > arr3;
-	public: byps_ptr< BArray4< std::wstring > > arr4;
+	public: byps_ptr< BArray2< ::std::wstring > > arr2;
+	public: byps_ptr< BArray3< ::std::wstring > > arr3;
+	public: byps_ptr< BArray4< ::std::wstring > > arr4;
 	
 	public: BRequest_RemoteArrayTypes23_sendArraysString();
-	public: BRequest_RemoteArrayTypes23_sendArraysString(byps_ptr< BArray2< std::wstring > > arr2, byps_ptr< BArray3< std::wstring > > arr3, byps_ptr< BArray4< std::wstring > > arr4);	
+	public: BRequest_RemoteArrayTypes23_sendArraysString(byps_ptr< BArray2< ::std::wstring > > arr2, byps_ptr< BArray3< ::std::wstring > > arr3, byps_ptr< BArray4< ::std::wstring > > arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 607451410; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -4024,7 +4024,7 @@ class BRequest_RemoteArrayTypes23_sendArraysString : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getBool : public BMethodRequest {
 	
@@ -4044,7 +4044,7 @@ class BRequest_RemoteArrayTypes4dim_getBool : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getByte : public BMethodRequest {
 	
@@ -4064,7 +4064,7 @@ class BRequest_RemoteArrayTypes4dim_getByte : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getChar : public BMethodRequest {
 	
@@ -4084,7 +4084,7 @@ class BRequest_RemoteArrayTypes4dim_getChar : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getDouble : public BMethodRequest {
 	
@@ -4104,7 +4104,7 @@ class BRequest_RemoteArrayTypes4dim_getDouble : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getFloat : public BMethodRequest {
 	
@@ -4124,7 +4124,7 @@ class BRequest_RemoteArrayTypes4dim_getFloat : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getInt : public BMethodRequest {
 	
@@ -4144,7 +4144,7 @@ class BRequest_RemoteArrayTypes4dim_getInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getLong : public BMethodRequest {
 	
@@ -4164,7 +4164,7 @@ class BRequest_RemoteArrayTypes4dim_getLong : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getObject : public BMethodRequest {
 	
@@ -4184,7 +4184,7 @@ class BRequest_RemoteArrayTypes4dim_getObject : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes : public BMethodRequest {
 	
@@ -4204,7 +4204,7 @@ class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getShort : public BMethodRequest {
 	
@@ -4224,7 +4224,7 @@ class BRequest_RemoteArrayTypes4dim_getShort : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_getString : public BMethodRequest {
 	
@@ -4244,7 +4244,7 @@ class BRequest_RemoteArrayTypes4dim_getString : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setBool : public BMethodRequest {
 	public: byps_ptr< BArray4< bool > > v;
@@ -4265,7 +4265,7 @@ class BRequest_RemoteArrayTypes4dim_setBool : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setByte : public BMethodRequest {
 	public: byps_ptr< BArray4< int8_t > > v;
@@ -4286,7 +4286,7 @@ class BRequest_RemoteArrayTypes4dim_setByte : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setChar : public BMethodRequest {
 	public: byps_ptr< BArray4< wchar_t > > v;
@@ -4307,7 +4307,7 @@ class BRequest_RemoteArrayTypes4dim_setChar : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setDouble : public BMethodRequest {
 	public: byps_ptr< BArray4< double > > v;
@@ -4328,7 +4328,7 @@ class BRequest_RemoteArrayTypes4dim_setDouble : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setFloat : public BMethodRequest {
 	public: byps_ptr< BArray4< float > > v;
@@ -4349,7 +4349,7 @@ class BRequest_RemoteArrayTypes4dim_setFloat : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setInt : public BMethodRequest {
 	public: byps_ptr< BArray4< int32_t > > v;
@@ -4370,7 +4370,7 @@ class BRequest_RemoteArrayTypes4dim_setInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setLong : public BMethodRequest {
 	public: byps_ptr< BArray4< int64_t > > v;
@@ -4391,7 +4391,7 @@ class BRequest_RemoteArrayTypes4dim_setLong : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setObject : public BMethodRequest {
 	public: byps_ptr< BArray4< PSerializable > > v;
@@ -4412,7 +4412,7 @@ class BRequest_RemoteArrayTypes4dim_setObject : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes : public BMethodRequest {
 	public: byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v;
@@ -4433,7 +4433,7 @@ class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setShort : public BMethodRequest {
 	public: byps_ptr< BArray4< int16_t > > v;
@@ -4454,13 +4454,13 @@ class BRequest_RemoteArrayTypes4dim_setShort : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteArrayTypes4dim_setString : public BMethodRequest {
-	public: byps_ptr< BArray4< std::wstring > > v;
+	public: byps_ptr< BArray4< ::std::wstring > > v;
 	
 	public: BRequest_RemoteArrayTypes4dim_setString();
-	public: BRequest_RemoteArrayTypes4dim_setString(byps_ptr< BArray4< std::wstring > > v);	
+	public: BRequest_RemoteArrayTypes4dim_setString(byps_ptr< BArray4< ::std::wstring > > v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 362230997; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -4475,29 +4475,29 @@ class BRequest_RemoteArrayTypes4dim_setString : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteConstants_compare_AllTypesC : public BMethodRequest {
 	public: bool bool1s;
 	public: bool bool2s;
 	public: wchar_t char1s;
-	public: std::wstring stringNull;
+	public: ::std::wstring stringNull;
 	public: wchar_t char2s;
 	public: int16_t short1s;
 	public: int32_t int1s;
 	public: int64_t long1s;
 	public: float float1s;
 	public: double double1s;
-	public: std::wstring string1s;
+	public: ::std::wstring string1s;
 	public: com::wilutions::byps::test::api::cons::PAllTypesZ ALL;
 	public: byps_ptr< BArray1< int32_t > > arrInt;
 	public: byps_ptr< BArray4< int32_t > > arrInt4;
-	public: byps_ptr< BArray1< std::wstring > > arrStrings;
-	public: byps_ptr< BArray4< std::wstring > > arrStrings4;
+	public: byps_ptr< BArray1< ::std::wstring > > arrStrings;
+	public: byps_ptr< BArray4< ::std::wstring > > arrStrings4;
 	public: byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll;
 	
 	public: BRequest_RemoteConstants_compare_AllTypesC();
-	public: BRequest_RemoteConstants_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< std::wstring > > arrStrings, byps_ptr< BArray4< std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll);	
+	public: BRequest_RemoteConstants_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, ::std::wstring stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, ::std::wstring string1s, com::wilutions::byps::test::api::cons::PAllTypesZ ALL, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray4< int32_t > > arrInt4, byps_ptr< BArray1< ::std::wstring > > arrStrings, byps_ptr< BArray4< ::std::wstring > > arrStrings4, byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 862752254; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -4512,7 +4512,7 @@ class BRequest_RemoteConstants_compare_AllTypesC : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteConstants_compare_HebrewC : public BMethodRequest {
 	public: com::wilutions::byps::test::api::cons::PHebrewZ ALEPH;
@@ -4534,7 +4534,7 @@ class BRequest_RemoteConstants_compare_HebrewC : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteEnums_getPlanet : public BMethodRequest {
 	
@@ -4554,7 +4554,7 @@ class BRequest_RemoteEnums_getPlanet : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteEnums_setPlanet : public BMethodRequest {
 	public: com::wilutions::byps::test::api::enu::EnumPlanets planet;
@@ -4575,7 +4575,7 @@ class BRequest_RemoteEnums_setPlanet : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_getActor : public BMethodRequest {
 	
@@ -4595,7 +4595,7 @@ class BRequest_RemoteInlineInstance_getActor : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DArray1dim : public BMethodRequest {
 	
@@ -4615,7 +4615,7 @@ class BRequest_RemoteInlineInstance_getPoint2DArray1dim : public BMethodRequest 
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DArray4dim : public BMethodRequest {
 	
@@ -4635,7 +4635,7 @@ class BRequest_RemoteInlineInstance_getPoint2DArray4dim : public BMethodRequest 
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DList : public BMethodRequest {
 	
@@ -4655,7 +4655,7 @@ class BRequest_RemoteInlineInstance_getPoint2DList : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DListList : public BMethodRequest {
 	
@@ -4675,7 +4675,7 @@ class BRequest_RemoteInlineInstance_getPoint2DListList : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DMap : public BMethodRequest {
 	
@@ -4695,7 +4695,7 @@ class BRequest_RemoteInlineInstance_getPoint2DMap : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_setActor : public BMethodRequest {
 	public: com::wilutions::byps::test::api::inl::PActor act;
@@ -4716,7 +4716,7 @@ class BRequest_RemoteInlineInstance_setActor : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DArray1dim : public BMethodRequest {
 	public: byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > pointArray;
@@ -4737,7 +4737,7 @@ class BRequest_RemoteInlineInstance_setPoint2DArray1dim : public BMethodRequest 
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DArray4dim : public BMethodRequest {
 	public: byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > pointArray;
@@ -4758,13 +4758,13 @@ class BRequest_RemoteInlineInstance_setPoint2DArray4dim : public BMethodRequest 
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DList : public BMethodRequest {
-	public: byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList;
+	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList;
 	
 	public: BRequest_RemoteInlineInstance_setPoint2DList();
-	public: BRequest_RemoteInlineInstance_setPoint2DList(byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList);	
+	public: BRequest_RemoteInlineInstance_setPoint2DList(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 224357548; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -4779,13 +4779,13 @@ class BRequest_RemoteInlineInstance_setPoint2DList : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DListList : public BMethodRequest {
-	public: byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList;
 	
 	public: BRequest_RemoteInlineInstance_setPoint2DListList();
-	public: BRequest_RemoteInlineInstance_setPoint2DListList(byps_ptr< std::vector< byps_ptr< std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList);	
+	public: BRequest_RemoteInlineInstance_setPoint2DListList(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1097161578; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -4800,13 +4800,13 @@ class BRequest_RemoteInlineInstance_setPoint2DListList : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DMap : public BMethodRequest {
-	public: byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap;
+	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap;
 	
 	public: BRequest_RemoteInlineInstance_setPoint2DMap();
-	public: BRequest_RemoteInlineInstance_setPoint2DMap(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap);	
+	public: BRequest_RemoteInlineInstance_setPoint2DMap(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 546951282; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -4821,7 +4821,7 @@ class BRequest_RemoteInlineInstance_setPoint2DMap : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getBoolean1 : public BMethodRequest {
 	
@@ -4841,7 +4841,7 @@ class BRequest_RemoteListTypes_getBoolean1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getByte1 : public BMethodRequest {
 	
@@ -4861,7 +4861,7 @@ class BRequest_RemoteListTypes_getByte1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getByte2 : public BMethodRequest {
 	
@@ -4881,7 +4881,7 @@ class BRequest_RemoteListTypes_getByte2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getChar1 : public BMethodRequest {
 	
@@ -4901,7 +4901,7 @@ class BRequest_RemoteListTypes_getChar1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getDouble1 : public BMethodRequest {
 	
@@ -4921,7 +4921,7 @@ class BRequest_RemoteListTypes_getDouble1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getFloat1 : public BMethodRequest {
 	
@@ -4941,7 +4941,7 @@ class BRequest_RemoteListTypes_getFloat1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getInt1 : public BMethodRequest {
 	
@@ -4961,7 +4961,7 @@ class BRequest_RemoteListTypes_getInt1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getInt2 : public BMethodRequest {
 	
@@ -4981,7 +4981,7 @@ class BRequest_RemoteListTypes_getInt2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getInt3 : public BMethodRequest {
 	
@@ -5001,7 +5001,7 @@ class BRequest_RemoteListTypes_getInt3 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getInt4 : public BMethodRequest {
 	
@@ -5021,7 +5021,7 @@ class BRequest_RemoteListTypes_getInt4 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getLong1 : public BMethodRequest {
 	
@@ -5041,7 +5041,7 @@ class BRequest_RemoteListTypes_getLong1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getObj1 : public BMethodRequest {
 	
@@ -5061,7 +5061,7 @@ class BRequest_RemoteListTypes_getObj1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getPrimitiveTypes1 : public BMethodRequest {
 	
@@ -5081,7 +5081,7 @@ class BRequest_RemoteListTypes_getPrimitiveTypes1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getShort1 : public BMethodRequest {
 	
@@ -5101,7 +5101,7 @@ class BRequest_RemoteListTypes_getShort1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_getString1 : public BMethodRequest {
 	
@@ -5121,13 +5121,13 @@ class BRequest_RemoteListTypes_getString1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setBoolean1 : public BMethodRequest {
-	public: byps_ptr< std::vector< bool > > boolean1;
+	public: byps_ptr< ::std::vector< bool > > boolean1;
 	
 	public: BRequest_RemoteListTypes_setBoolean1();
-	public: BRequest_RemoteListTypes_setBoolean1(byps_ptr< std::vector< bool > > boolean1);	
+	public: BRequest_RemoteListTypes_setBoolean1(byps_ptr< ::std::vector< bool > > boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1882657404; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5142,13 +5142,13 @@ class BRequest_RemoteListTypes_setBoolean1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setByte1 : public BMethodRequest {
-	public: byps_ptr< std::vector< int8_t > > byte1;
+	public: byps_ptr< ::std::vector< int8_t > > byte1;
 	
 	public: BRequest_RemoteListTypes_setByte1();
-	public: BRequest_RemoteListTypes_setByte1(byps_ptr< std::vector< int8_t > > byte1);	
+	public: BRequest_RemoteListTypes_setByte1(byps_ptr< ::std::vector< int8_t > > byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 758429070; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5163,13 +5163,13 @@ class BRequest_RemoteListTypes_setByte1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setByte2 : public BMethodRequest {
-	public: byps_ptr< std::vector< PBytes > > byte2;
+	public: byps_ptr< ::std::vector< PBytes > > byte2;
 	
 	public: BRequest_RemoteListTypes_setByte2();
-	public: BRequest_RemoteListTypes_setByte2(byps_ptr< std::vector< PBytes > > byte2);	
+	public: BRequest_RemoteListTypes_setByte2(byps_ptr< ::std::vector< PBytes > > byte2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 758429071; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5184,13 +5184,13 @@ class BRequest_RemoteListTypes_setByte2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setChar1 : public BMethodRequest {
-	public: byps_ptr< std::vector< wchar_t > > char1;
+	public: byps_ptr< ::std::vector< wchar_t > > char1;
 	
 	public: BRequest_RemoteListTypes_setChar1();
-	public: BRequest_RemoteListTypes_setChar1(byps_ptr< std::vector< wchar_t > > char1);	
+	public: BRequest_RemoteListTypes_setChar1(byps_ptr< ::std::vector< wchar_t > > char1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 758828288; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5205,13 +5205,13 @@ class BRequest_RemoteListTypes_setChar1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setDouble1 : public BMethodRequest {
-	public: byps_ptr< std::vector< double > > double1;
+	public: byps_ptr< ::std::vector< double > > double1;
 	
 	public: BRequest_RemoteListTypes_setDouble1();
-	public: BRequest_RemoteListTypes_setDouble1(byps_ptr< std::vector< double > > double1);	
+	public: BRequest_RemoteListTypes_setDouble1(byps_ptr< ::std::vector< double > > double1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 195505829; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5226,13 +5226,13 @@ class BRequest_RemoteListTypes_setDouble1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setFloat1 : public BMethodRequest {
-	public: byps_ptr< std::vector< float > > float1;
+	public: byps_ptr< ::std::vector< float > > float1;
 	
 	public: BRequest_RemoteListTypes_setFloat1();
-	public: BRequest_RemoteListTypes_setFloat1(byps_ptr< std::vector< float > > float1);	
+	public: BRequest_RemoteListTypes_setFloat1(byps_ptr< ::std::vector< float > > float1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2138824848; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5247,13 +5247,13 @@ class BRequest_RemoteListTypes_setFloat1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setInt1 : public BMethodRequest {
-	public: byps_ptr< std::vector< int32_t > > int1;
+	public: byps_ptr< ::std::vector< int32_t > > int1;
 	
 	public: BRequest_RemoteListTypes_setInt1();
-	public: BRequest_RemoteListTypes_setInt1(byps_ptr< std::vector< int32_t > > int1);	
+	public: BRequest_RemoteListTypes_setInt1(byps_ptr< ::std::vector< int32_t > > int1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809955; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5268,13 +5268,13 @@ class BRequest_RemoteListTypes_setInt1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setInt2 : public BMethodRequest {
-	public: byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2;
 	
 	public: BRequest_RemoteListTypes_setInt2();
-	public: BRequest_RemoteListTypes_setInt2(byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2);	
+	public: BRequest_RemoteListTypes_setInt2(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809954; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5289,13 +5289,13 @@ class BRequest_RemoteListTypes_setInt2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setInt3 : public BMethodRequest {
-	public: byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3;
 	
 	public: BRequest_RemoteListTypes_setInt3();
-	public: BRequest_RemoteListTypes_setInt3(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int3);	
+	public: BRequest_RemoteListTypes_setInt3(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809953; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5310,13 +5310,13 @@ class BRequest_RemoteListTypes_setInt3 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setInt4 : public BMethodRequest {
-	public: byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4;
 	
 	public: BRequest_RemoteListTypes_setInt4();
-	public: BRequest_RemoteListTypes_setInt4(byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int4);	
+	public: BRequest_RemoteListTypes_setInt4(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809952; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5331,13 +5331,13 @@ class BRequest_RemoteListTypes_setInt4 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setLong1 : public BMethodRequest {
-	public: byps_ptr< std::vector< int64_t > > long1;
+	public: byps_ptr< ::std::vector< int64_t > > long1;
 	
 	public: BRequest_RemoteListTypes_setLong1();
-	public: BRequest_RemoteListTypes_setLong1(byps_ptr< std::vector< int64_t > > long1);	
+	public: BRequest_RemoteListTypes_setLong1(byps_ptr< ::std::vector< int64_t > > long1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 767360666; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5352,13 +5352,13 @@ class BRequest_RemoteListTypes_setLong1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setObj1 : public BMethodRequest {
-	public: byps_ptr< std::vector< PSerializable > > obj1;
+	public: byps_ptr< ::std::vector< PSerializable > > obj1;
 	
 	public: BRequest_RemoteListTypes_setObj1();
-	public: BRequest_RemoteListTypes_setObj1(byps_ptr< std::vector< PSerializable > > obj1);	
+	public: BRequest_RemoteListTypes_setObj1(byps_ptr< ::std::vector< PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1360643051; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5373,13 +5373,13 @@ class BRequest_RemoteListTypes_setObj1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
 	public: BRequest_RemoteListTypes_setPrimitiveTypes1();
-	public: BRequest_RemoteListTypes_setPrimitiveTypes1(byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
+	public: BRequest_RemoteListTypes_setPrimitiveTypes1(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1434361404; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5394,13 +5394,13 @@ class BRequest_RemoteListTypes_setPrimitiveTypes1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setShort1 : public BMethodRequest {
-	public: byps_ptr< std::vector< int16_t > > short1;
+	public: byps_ptr< ::std::vector< int16_t > > short1;
 	
 	public: BRequest_RemoteListTypes_setShort1();
-	public: BRequest_RemoteListTypes_setShort1(byps_ptr< std::vector< int16_t > > short1);	
+	public: BRequest_RemoteListTypes_setShort1(byps_ptr< ::std::vector< int16_t > > short1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1787641232; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5415,13 +5415,13 @@ class BRequest_RemoteListTypes_setShort1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteListTypes_setString1 : public BMethodRequest {
-	public: byps_ptr< std::vector< std::wstring > > string1;
+	public: byps_ptr< ::std::vector< ::std::wstring > > string1;
 	
 	public: BRequest_RemoteListTypes_setString1();
-	public: BRequest_RemoteListTypes_setString1(byps_ptr< std::vector< std::wstring > > string1);	
+	public: BRequest_RemoteListTypes_setString1(byps_ptr< ::std::vector< ::std::wstring > > string1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 763744869; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5436,7 +5436,7 @@ class BRequest_RemoteListTypes_setString1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getBoolean1 : public BMethodRequest {
 	
@@ -5456,7 +5456,7 @@ class BRequest_RemoteMapTypes_getBoolean1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getByte1 : public BMethodRequest {
 	
@@ -5476,7 +5476,7 @@ class BRequest_RemoteMapTypes_getByte1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getByte2 : public BMethodRequest {
 	
@@ -5496,7 +5496,7 @@ class BRequest_RemoteMapTypes_getByte2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getChar1 : public BMethodRequest {
 	
@@ -5516,7 +5516,7 @@ class BRequest_RemoteMapTypes_getChar1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getDouble1 : public BMethodRequest {
 	
@@ -5536,7 +5536,7 @@ class BRequest_RemoteMapTypes_getDouble1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getFloat1 : public BMethodRequest {
 	
@@ -5556,7 +5556,7 @@ class BRequest_RemoteMapTypes_getFloat1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getInt1 : public BMethodRequest {
 	
@@ -5576,7 +5576,7 @@ class BRequest_RemoteMapTypes_getInt1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getInt2 : public BMethodRequest {
 	
@@ -5596,7 +5596,7 @@ class BRequest_RemoteMapTypes_getInt2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getLong1 : public BMethodRequest {
 	
@@ -5616,7 +5616,7 @@ class BRequest_RemoteMapTypes_getLong1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getObj1 : public BMethodRequest {
 	
@@ -5636,7 +5636,7 @@ class BRequest_RemoteMapTypes_getObj1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getPrimitiveTypes1 : public BMethodRequest {
 	
@@ -5656,7 +5656,7 @@ class BRequest_RemoteMapTypes_getPrimitiveTypes1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getShort1 : public BMethodRequest {
 	
@@ -5676,7 +5676,7 @@ class BRequest_RemoteMapTypes_getShort1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_getString1 : public BMethodRequest {
 	
@@ -5696,13 +5696,13 @@ class BRequest_RemoteMapTypes_getString1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setBoolean1 : public BMethodRequest {
-	public: byps_ptr< std::map< std::wstring , bool > > boolean1;
+	public: byps_ptr< ::std::map< ::std::wstring , bool > > boolean1;
 	
 	public: BRequest_RemoteMapTypes_setBoolean1();
-	public: BRequest_RemoteMapTypes_setBoolean1(byps_ptr< std::map< std::wstring , bool > > boolean1);	
+	public: BRequest_RemoteMapTypes_setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 550206100; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5717,13 +5717,13 @@ class BRequest_RemoteMapTypes_setBoolean1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setByte1 : public BMethodRequest {
-	public: byps_ptr< std::map< double , int8_t > > byte1;
+	public: byps_ptr< ::std::map< double , int8_t > > byte1;
 	
 	public: BRequest_RemoteMapTypes_setByte1();
-	public: BRequest_RemoteMapTypes_setByte1(byps_ptr< std::map< double , int8_t > > byte1);	
+	public: BRequest_RemoteMapTypes_setByte1(byps_ptr< ::std::map< double , int8_t > > byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1909823834; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5738,13 +5738,13 @@ class BRequest_RemoteMapTypes_setByte1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setByte2 : public BMethodRequest {
-	public: byps_ptr< std::map< int32_t , PBytes > > byte2;
+	public: byps_ptr< ::std::map< int32_t , PBytes > > byte2;
 	
 	public: BRequest_RemoteMapTypes_setByte2();
-	public: BRequest_RemoteMapTypes_setByte2(byps_ptr< std::map< int32_t , PBytes > > byte2);	
+	public: BRequest_RemoteMapTypes_setByte2(byps_ptr< ::std::map< int32_t , PBytes > > byte2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1909823833; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5759,13 +5759,13 @@ class BRequest_RemoteMapTypes_setByte2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setChar1 : public BMethodRequest {
-	public: byps_ptr< std::map< float , wchar_t > > char1;
+	public: byps_ptr< ::std::map< float , wchar_t > > char1;
 	
 	public: BRequest_RemoteMapTypes_setChar1();
-	public: BRequest_RemoteMapTypes_setChar1(byps_ptr< std::map< float , wchar_t > > char1);	
+	public: BRequest_RemoteMapTypes_setChar1(byps_ptr< ::std::map< float , wchar_t > > char1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1909424616; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5780,13 +5780,13 @@ class BRequest_RemoteMapTypes_setChar1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setDouble1 : public BMethodRequest {
-	public: byps_ptr< std::map< int8_t , double > > double1;
+	public: byps_ptr< ::std::map< int8_t , double > > double1;
 	
 	public: BRequest_RemoteMapTypes_setDouble1();
-	public: BRequest_RemoteMapTypes_setDouble1(byps_ptr< std::map< int8_t , double > > double1);	
+	public: BRequest_RemoteMapTypes_setDouble1(byps_ptr< ::std::map< int8_t , double > > double1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 99940797; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5801,13 +5801,13 @@ class BRequest_RemoteMapTypes_setDouble1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setFloat1 : public BMethodRequest {
-	public: byps_ptr< std::map< wchar_t , float > > float1;
+	public: byps_ptr< ::std::map< wchar_t , float > > float1;
 	
 	public: BRequest_RemoteMapTypes_setFloat1();
-	public: BRequest_RemoteMapTypes_setFloat1(byps_ptr< std::map< wchar_t , float > > float1);	
+	public: BRequest_RemoteMapTypes_setFloat1(byps_ptr< ::std::map< wchar_t , float > > float1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1027363448; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5822,13 +5822,13 @@ class BRequest_RemoteMapTypes_setFloat1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setInt1 : public BMethodRequest {
-	public: byps_ptr< std::map< int32_t , int32_t > > int1;
+	public: byps_ptr< ::std::map< int32_t , int32_t > > int1;
 	
 	public: BRequest_RemoteMapTypes_setInt1();
-	public: BRequest_RemoteMapTypes_setInt1(byps_ptr< std::map< int32_t , int32_t > > int1);	
+	public: BRequest_RemoteMapTypes_setInt1(byps_ptr< ::std::map< int32_t , int32_t > > int1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1046969349; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5843,13 +5843,13 @@ class BRequest_RemoteMapTypes_setInt1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setInt2 : public BMethodRequest {
-	public: byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2;
 	
 	public: BRequest_RemoteMapTypes_setInt2();
-	public: BRequest_RemoteMapTypes_setInt2(byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2);	
+	public: BRequest_RemoteMapTypes_setInt2(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1046969350; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5864,13 +5864,13 @@ class BRequest_RemoteMapTypes_setInt2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setLong1 : public BMethodRequest {
-	public: byps_ptr< std::map< int16_t , int64_t > > long1;
+	public: byps_ptr< ::std::map< int16_t , int64_t > > long1;
 	
 	public: BRequest_RemoteMapTypes_setLong1();
-	public: BRequest_RemoteMapTypes_setLong1(byps_ptr< std::map< int16_t , int64_t > > long1);	
+	public: BRequest_RemoteMapTypes_setLong1(byps_ptr< ::std::map< int16_t , int64_t > > long1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1900892238; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5885,13 +5885,13 @@ class BRequest_RemoteMapTypes_setLong1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setObj1 : public BMethodRequest {
-	public: byps_ptr< std::map< std::wstring , PSerializable > > obj1;
+	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1;
 	
 	public: BRequest_RemoteMapTypes_setObj1();
-	public: BRequest_RemoteMapTypes_setObj1(byps_ptr< std::map< std::wstring , PSerializable > > obj1);	
+	public: BRequest_RemoteMapTypes_setObj1(byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1047136253; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5906,13 +5906,13 @@ class BRequest_RemoteMapTypes_setObj1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
 	public: BRequest_RemoteMapTypes_setPrimitiveTypes1();
-	public: BRequest_RemoteMapTypes_setPrimitiveTypes1(byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
+	public: BRequest_RemoteMapTypes_setPrimitiveTypes1(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 842962140; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5927,13 +5927,13 @@ class BRequest_RemoteMapTypes_setPrimitiveTypes1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setShort1 : public BMethodRequest {
-	public: byps_ptr< std::map< int64_t , int16_t > > short1;
+	public: byps_ptr< ::std::map< int64_t , int16_t > > short1;
 	
 	public: BRequest_RemoteMapTypes_setShort1();
-	public: BRequest_RemoteMapTypes_setShort1(byps_ptr< std::map< int64_t , int16_t > > short1);	
+	public: BRequest_RemoteMapTypes_setShort1(byps_ptr< ::std::map< int64_t , int16_t > > short1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1395864664; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5948,13 +5948,13 @@ class BRequest_RemoteMapTypes_setShort1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteMapTypes_setString1 : public BMethodRequest {
-	public: byps_ptr< std::map< std::wstring , std::wstring > > string1;
+	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1;
 	
 	public: BRequest_RemoteMapTypes_setString1();
-	public: BRequest_RemoteMapTypes_setString1(byps_ptr< std::map< std::wstring , std::wstring > > string1);	
+	public: BRequest_RemoteMapTypes_setString1(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 668179837; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -5969,7 +5969,7 @@ class BRequest_RemoteMapTypes_setString1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_add : public BMethodRequest {
 	public: int32_t a;
@@ -5991,7 +5991,7 @@ class BRequest_RemotePrimitiveTypes_add : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getBool : public BMethodRequest {
 	
@@ -6011,7 +6011,7 @@ class BRequest_RemotePrimitiveTypes_getBool : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getByte : public BMethodRequest {
 	
@@ -6031,7 +6031,7 @@ class BRequest_RemotePrimitiveTypes_getByte : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getChar : public BMethodRequest {
 	
@@ -6051,7 +6051,7 @@ class BRequest_RemotePrimitiveTypes_getChar : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getDouble : public BMethodRequest {
 	
@@ -6071,7 +6071,7 @@ class BRequest_RemotePrimitiveTypes_getDouble : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getFloat : public BMethodRequest {
 	
@@ -6091,7 +6091,7 @@ class BRequest_RemotePrimitiveTypes_getFloat : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getInt : public BMethodRequest {
 	
@@ -6111,7 +6111,7 @@ class BRequest_RemotePrimitiveTypes_getInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getLong : public BMethodRequest {
 	
@@ -6131,7 +6131,7 @@ class BRequest_RemotePrimitiveTypes_getLong : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getObject : public BMethodRequest {
 	
@@ -6151,7 +6151,7 @@ class BRequest_RemotePrimitiveTypes_getObject : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getPrimitiveTypes : public BMethodRequest {
 	
@@ -6171,7 +6171,7 @@ class BRequest_RemotePrimitiveTypes_getPrimitiveTypes : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getShort : public BMethodRequest {
 	
@@ -6191,7 +6191,7 @@ class BRequest_RemotePrimitiveTypes_getShort : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_getString : public BMethodRequest {
 	
@@ -6211,7 +6211,7 @@ class BRequest_RemotePrimitiveTypes_getString : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_sendAllTypes : public BMethodRequest {
 	public: bool b;
@@ -6221,12 +6221,12 @@ class BRequest_RemotePrimitiveTypes_sendAllTypes : public BMethodRequest {
 	public: int64_t l;
 	public: float f;
 	public: double d;
-	public: std::wstring str;
+	public: ::std::wstring str;
 	public: com::wilutions::byps::test::api::prim::PPrimitiveTypes pt;
 	public: PSerializable o;
 	
 	public: BRequest_RemotePrimitiveTypes_sendAllTypes();
-	public: BRequest_RemotePrimitiveTypes_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o);	
+	public: BRequest_RemotePrimitiveTypes_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, ::std::wstring str, com::wilutions::byps::test::api::prim::PPrimitiveTypes pt, PSerializable o);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1794219594; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6241,7 +6241,7 @@ class BRequest_RemotePrimitiveTypes_sendAllTypes : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setBool : public BMethodRequest {
 	public: bool v;
@@ -6262,7 +6262,7 @@ class BRequest_RemotePrimitiveTypes_setBool : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setByte : public BMethodRequest {
 	public: int8_t v;
@@ -6283,7 +6283,7 @@ class BRequest_RemotePrimitiveTypes_setByte : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setChar : public BMethodRequest {
 	public: wchar_t v;
@@ -6304,7 +6304,7 @@ class BRequest_RemotePrimitiveTypes_setChar : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setDouble : public BMethodRequest {
 	public: double v;
@@ -6325,7 +6325,7 @@ class BRequest_RemotePrimitiveTypes_setDouble : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setFloat : public BMethodRequest {
 	public: float v;
@@ -6346,7 +6346,7 @@ class BRequest_RemotePrimitiveTypes_setFloat : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setInt : public BMethodRequest {
 	public: int32_t v;
@@ -6367,7 +6367,7 @@ class BRequest_RemotePrimitiveTypes_setInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setLong : public BMethodRequest {
 	public: int64_t v;
@@ -6388,7 +6388,7 @@ class BRequest_RemotePrimitiveTypes_setLong : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setObject : public BMethodRequest {
 	public: PSerializable v;
@@ -6409,7 +6409,7 @@ class BRequest_RemotePrimitiveTypes_setObject : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setPrimitiveTypes : public BMethodRequest {
 	public: com::wilutions::byps::test::api::prim::PPrimitiveTypes v;
@@ -6430,7 +6430,7 @@ class BRequest_RemotePrimitiveTypes_setPrimitiveTypes : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setShort : public BMethodRequest {
 	public: int16_t v;
@@ -6451,13 +6451,13 @@ class BRequest_RemotePrimitiveTypes_setShort : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_setString : public BMethodRequest {
-	public: std::wstring v;
+	public: ::std::wstring v;
 	
 	public: BRequest_RemotePrimitiveTypes_setString();
-	public: BRequest_RemotePrimitiveTypes_setString(std::wstring v);	
+	public: BRequest_RemotePrimitiveTypes_setString(::std::wstring v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 319593463; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6472,7 +6472,7 @@ class BRequest_RemotePrimitiveTypes_setString : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemotePrimitiveTypes_voidFunctionVoid : public BMethodRequest {
 	
@@ -6492,7 +6492,7 @@ class BRequest_RemotePrimitiveTypes_voidFunctionVoid : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteReferences_getNode : public BMethodRequest {
 	
@@ -6512,7 +6512,7 @@ class BRequest_RemoteReferences_getNode : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteReferences_setNode : public BMethodRequest {
 	public: com::wilutions::byps::test::api::refs::PNode v;
@@ -6533,13 +6533,13 @@ class BRequest_RemoteReferences_setNode : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteServerCtrl_getPublishedRemote : public BMethodRequest {
-	public: std::wstring name;
+	public: ::std::wstring name;
 	
 	public: BRequest_RemoteServerCtrl_getPublishedRemote();
-	public: BRequest_RemoteServerCtrl_getPublishedRemote(std::wstring name);	
+	public: BRequest_RemoteServerCtrl_getPublishedRemote(::std::wstring name);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1216543212; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6554,15 +6554,15 @@ class BRequest_RemoteServerCtrl_getPublishedRemote : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteServerCtrl_publishRemote : public BMethodRequest {
-	public: std::wstring name;
+	public: ::std::wstring name;
 	public: PRemote remote;
 	public: bool fowardToOtherServers;
 	
 	public: BRequest_RemoteServerCtrl_publishRemote();
-	public: BRequest_RemoteServerCtrl_publishRemote(std::wstring name, PRemote remote, bool fowardToOtherServers);	
+	public: BRequest_RemoteServerCtrl_publishRemote(::std::wstring name, PRemote remote, bool fowardToOtherServers);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1776814809; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6577,13 +6577,13 @@ class BRequest_RemoteServerCtrl_publishRemote : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteServerCtrl_removePublishedRemote : public BMethodRequest {
-	public: std::wstring name;
+	public: ::std::wstring name;
 	
 	public: BRequest_RemoteServerCtrl_removePublishedRemote();
-	public: BRequest_RemoteServerCtrl_removePublishedRemote(std::wstring name);	
+	public: BRequest_RemoteServerCtrl_removePublishedRemote(::std::wstring name);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1302703010; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6598,7 +6598,7 @@ class BRequest_RemoteServerCtrl_removePublishedRemote : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getBoolean1 : public BMethodRequest {
 	
@@ -6618,7 +6618,7 @@ class BRequest_RemoteSetTypes_getBoolean1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getByte1 : public BMethodRequest {
 	
@@ -6638,7 +6638,7 @@ class BRequest_RemoteSetTypes_getByte1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getByte2 : public BMethodRequest {
 	
@@ -6658,7 +6658,7 @@ class BRequest_RemoteSetTypes_getByte2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getChar1 : public BMethodRequest {
 	
@@ -6678,7 +6678,7 @@ class BRequest_RemoteSetTypes_getChar1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getDouble1 : public BMethodRequest {
 	
@@ -6698,7 +6698,7 @@ class BRequest_RemoteSetTypes_getDouble1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getFloat1 : public BMethodRequest {
 	
@@ -6718,7 +6718,7 @@ class BRequest_RemoteSetTypes_getFloat1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getInt1 : public BMethodRequest {
 	
@@ -6738,7 +6738,7 @@ class BRequest_RemoteSetTypes_getInt1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getInt2 : public BMethodRequest {
 	
@@ -6758,7 +6758,7 @@ class BRequest_RemoteSetTypes_getInt2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getLong1 : public BMethodRequest {
 	
@@ -6778,7 +6778,7 @@ class BRequest_RemoteSetTypes_getLong1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getObj1 : public BMethodRequest {
 	
@@ -6798,7 +6798,7 @@ class BRequest_RemoteSetTypes_getObj1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getPrimitiveTypes1 : public BMethodRequest {
 	
@@ -6818,7 +6818,7 @@ class BRequest_RemoteSetTypes_getPrimitiveTypes1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getShort1 : public BMethodRequest {
 	
@@ -6838,7 +6838,7 @@ class BRequest_RemoteSetTypes_getShort1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_getString1 : public BMethodRequest {
 	
@@ -6858,13 +6858,13 @@ class BRequest_RemoteSetTypes_getString1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setBoolean1 : public BMethodRequest {
-	public: byps_ptr< std::set< bool > > boolean1;
+	public: byps_ptr< ::std::set< bool > > boolean1;
 	
 	public: BRequest_RemoteSetTypes_setBoolean1();
-	public: BRequest_RemoteSetTypes_setBoolean1(byps_ptr< std::set< bool > > boolean1);	
+	public: BRequest_RemoteSetTypes_setBoolean1(byps_ptr< ::std::set< bool > > boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1779393754; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6879,13 +6879,13 @@ class BRequest_RemoteSetTypes_setBoolean1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setByte1 : public BMethodRequest {
-	public: byps_ptr< std::set< int8_t > > byte1;
+	public: byps_ptr< ::std::set< int8_t > > byte1;
 	
 	public: BRequest_RemoteSetTypes_setByte1();
-	public: BRequest_RemoteSetTypes_setByte1(byps_ptr< std::set< int8_t > > byte1);	
+	public: BRequest_RemoteSetTypes_setByte1(byps_ptr< ::std::set< int8_t > > byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1608170284; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6900,13 +6900,13 @@ class BRequest_RemoteSetTypes_setByte1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setByte2 : public BMethodRequest {
-	public: byps_ptr< std::set< PBytes > > byte2;
+	public: byps_ptr< ::std::set< PBytes > > byte2;
 	
 	public: BRequest_RemoteSetTypes_setByte2();
-	public: BRequest_RemoteSetTypes_setByte2(byps_ptr< std::set< PBytes > > byte2);	
+	public: BRequest_RemoteSetTypes_setByte2(byps_ptr< ::std::set< PBytes > > byte2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1608170285; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6921,13 +6921,13 @@ class BRequest_RemoteSetTypes_setByte2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setChar1 : public BMethodRequest {
-	public: byps_ptr< std::set< wchar_t > > char1;
+	public: byps_ptr< ::std::set< wchar_t > > char1;
 	
 	public: BRequest_RemoteSetTypes_setChar1();
-	public: BRequest_RemoteSetTypes_setChar1(byps_ptr< std::set< wchar_t > > char1);	
+	public: BRequest_RemoteSetTypes_setChar1(byps_ptr< ::std::set< wchar_t > > char1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1608569502; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6942,13 +6942,13 @@ class BRequest_RemoteSetTypes_setChar1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setDouble1 : public BMethodRequest {
-	public: byps_ptr< std::set< double > > double1;
+	public: byps_ptr< ::std::set< double > > double1;
 	
 	public: BRequest_RemoteSetTypes_setDouble1();
-	public: BRequest_RemoteSetTypes_setDouble1(byps_ptr< std::set< double > > double1);	
+	public: BRequest_RemoteSetTypes_setDouble1(byps_ptr< ::std::set< double > > double1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 753026243; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6963,13 +6963,13 @@ class BRequest_RemoteSetTypes_setDouble1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setFloat1 : public BMethodRequest {
-	public: byps_ptr< std::set< float > > float1;
+	public: byps_ptr< ::std::set< float > > float1;
 	
 	public: BRequest_RemoteSetTypes_setFloat1();
-	public: BRequest_RemoteSetTypes_setFloat1(byps_ptr< std::set< float > > float1);	
+	public: BRequest_RemoteSetTypes_setFloat1(byps_ptr< ::std::set< float > > float1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1583968590; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -6984,13 +6984,13 @@ class BRequest_RemoteSetTypes_setFloat1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setInt1 : public BMethodRequest {
-	public: byps_ptr< std::set< int32_t > > int1;
+	public: byps_ptr< ::std::set< int32_t > > int1;
 	
 	public: BRequest_RemoteSetTypes_setInt1();
-	public: BRequest_RemoteSetTypes_setInt1(byps_ptr< std::set< int32_t > > int1);	
+	public: BRequest_RemoteSetTypes_setInt1(byps_ptr< ::std::set< int32_t > > int1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1991737023; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7005,13 +7005,13 @@ class BRequest_RemoteSetTypes_setInt1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setInt2 : public BMethodRequest {
-	public: byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2;
 	
 	public: BRequest_RemoteSetTypes_setInt2();
-	public: BRequest_RemoteSetTypes_setInt2(byps_ptr< std::set< byps_ptr< BArray1< int32_t > > > > int2);	
+	public: BRequest_RemoteSetTypes_setInt2(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1991737024; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7026,13 +7026,13 @@ class BRequest_RemoteSetTypes_setInt2 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setLong1 : public BMethodRequest {
-	public: byps_ptr< std::set< int64_t > > long1;
+	public: byps_ptr< ::std::set< int64_t > > long1;
 	
 	public: BRequest_RemoteSetTypes_setLong1();
-	public: BRequest_RemoteSetTypes_setLong1(byps_ptr< std::set< int64_t > > long1);	
+	public: BRequest_RemoteSetTypes_setLong1(byps_ptr< ::std::set< int64_t > > long1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1617101880; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7047,13 +7047,13 @@ class BRequest_RemoteSetTypes_setLong1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setObj1 : public BMethodRequest {
-	public: byps_ptr< std::set< PSerializable > > obj1;
+	public: byps_ptr< ::std::set< PSerializable > > obj1;
 	
 	public: BRequest_RemoteSetTypes_setObj1();
-	public: BRequest_RemoteSetTypes_setObj1(byps_ptr< std::set< PSerializable > > obj1);	
+	public: BRequest_RemoteSetTypes_setObj1(byps_ptr< ::std::set< PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1991903927; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7068,13 +7068,13 @@ class BRequest_RemoteSetTypes_setObj1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
 	public: BRequest_RemoteSetTypes_setPrimitiveTypes1();
-	public: BRequest_RemoteSetTypes_setPrimitiveTypes1(byps_ptr< std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
+	public: BRequest_RemoteSetTypes_setPrimitiveTypes1(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1572111902; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7089,13 +7089,13 @@ class BRequest_RemoteSetTypes_setPrimitiveTypes1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setShort1 : public BMethodRequest {
-	public: byps_ptr< std::set< int16_t > > short1;
+	public: byps_ptr< ::std::set< int16_t > > short1;
 	
 	public: BRequest_RemoteSetTypes_setShort1();
-	public: BRequest_RemoteSetTypes_setShort1(byps_ptr< std::set< int16_t > > short1);	
+	public: BRequest_RemoteSetTypes_setShort1(byps_ptr< ::std::set< int16_t > > short1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1215467374; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7110,13 +7110,13 @@ class BRequest_RemoteSetTypes_setShort1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteSetTypes_setString1 : public BMethodRequest {
-	public: byps_ptr< std::set< std::wstring > > string1;
+	public: byps_ptr< ::std::set< ::std::wstring > > string1;
 	
 	public: BRequest_RemoteSetTypes_setString1();
-	public: BRequest_RemoteSetTypes_setString1(byps_ptr< std::set< std::wstring > > string1);	
+	public: BRequest_RemoteSetTypes_setString1(byps_ptr< ::std::set< ::std::wstring > > string1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1321265283; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7131,7 +7131,7 @@ class BRequest_RemoteSetTypes_setString1 : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteStreams_getImage : public BMethodRequest {
 	
@@ -7151,7 +7151,7 @@ class BRequest_RemoteStreams_getImage : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteStreams_getImages : public BMethodRequest {
 	
@@ -7171,7 +7171,7 @@ class BRequest_RemoteStreams_getImages : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteStreams_getTextStream : public BMethodRequest {
 	
@@ -7191,7 +7191,7 @@ class BRequest_RemoteStreams_getTextStream : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteStreams_setImage : public BMethodRequest {
 	public: PContentStream istrm;
@@ -7212,14 +7212,14 @@ class BRequest_RemoteStreams_setImage : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteStreams_setImages : public BMethodRequest {
-	public: byps_ptr< std::map< int32_t , PContentStream > > istrms;
+	public: byps_ptr< ::std::map< int32_t , PContentStream > > istrms;
 	public: int32_t doNotReadStreamAtKey;
 	
 	public: BRequest_RemoteStreams_setImages();
-	public: BRequest_RemoteStreams_setImages(byps_ptr< std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey);	
+	public: BRequest_RemoteStreams_setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 944362859; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7234,7 +7234,7 @@ class BRequest_RemoteStreams_setImages : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_RemoteStreams_throwLastException : public BMethodRequest {
 	
@@ -7254,7 +7254,7 @@ class BRequest_RemoteStreams_throwLastException : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ClientIF_getStreams : public BMethodRequest {
 	public: int32_t ctrl;
@@ -7275,7 +7275,7 @@ class BRequest_ClientIF_getStreams : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ClientIF_incrementInt : public BMethodRequest {
 	public: int32_t a;
@@ -7296,14 +7296,14 @@ class BRequest_ClientIF_incrementInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ClientIF_putStreams : public BMethodRequest {
-	public: byps_ptr< std::vector< PContentStream > > strm;
+	public: byps_ptr< ::std::vector< PContentStream > > strm;
 	public: int32_t ctrl;
 	
 	public: BRequest_ClientIF_putStreams();
-	public: BRequest_ClientIF_putStreams(byps_ptr< std::vector< PContentStream > > strm, int32_t ctrl);	
+	public: BRequest_ClientIF_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 242798857; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7318,7 +7318,7 @@ class BRequest_ClientIF_putStreams : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ClientIF_sendChat : public BMethodRequest {
 	public: PChatStructure cs;
@@ -7339,7 +7339,7 @@ class BRequest_ClientIF_sendChat : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_callClientIncrementInt : public BMethodRequest {
 	public: int32_t v;
@@ -7360,7 +7360,7 @@ class BRequest_ServerIF_callClientIncrementInt : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_callClientParallel : public BMethodRequest {
 	public: int32_t v;
@@ -7381,7 +7381,7 @@ class BRequest_ServerIF_callClientParallel : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_getClient : public BMethodRequest {
 	public: int32_t id;
@@ -7402,7 +7402,7 @@ class BRequest_ServerIF_getClient : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_getClientIds : public BMethodRequest {
 	
@@ -7422,7 +7422,7 @@ class BRequest_ServerIF_getClientIds : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_getPartner : public BMethodRequest {
 	
@@ -7442,7 +7442,7 @@ class BRequest_ServerIF_getPartner : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_getStreamsFromClient : public BMethodRequest {
 	
@@ -7462,13 +7462,13 @@ class BRequest_ServerIF_getStreamsFromClient : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_putStreamsOnClient : public BMethodRequest {
-	public: byps_ptr< std::vector< PContentStream > > streams;
+	public: byps_ptr< ::std::vector< PContentStream > > streams;
 	
 	public: BRequest_ServerIF_putStreamsOnClient();
-	public: BRequest_ServerIF_putStreamsOnClient(byps_ptr< std::vector< PContentStream > > streams);	
+	public: BRequest_ServerIF_putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1367013829; }
 	
 	public: void serialize(BIO& ar, const unsigned int version);
@@ -7483,7 +7483,7 @@ class BRequest_ServerIF_putStreamsOnClient : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_registerWithClientMap : public BMethodRequest {
 	public: int32_t id;
@@ -7504,7 +7504,7 @@ class BRequest_ServerIF_registerWithClientMap : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_ServerIF_setPartner : public BMethodRequest {
 	public: PClientIF client;
@@ -7525,7 +7525,7 @@ class BRequest_ServerIF_setPartner : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_EvolveIF_getClient : public BMethodRequest {
 	
@@ -7545,7 +7545,7 @@ class BRequest_EvolveIF_getClient : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_EvolveIF_getEvolve : public BMethodRequest {
 	
@@ -7565,7 +7565,7 @@ class BRequest_EvolveIF_getEvolve : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_EvolveIF_sendEvolveToClient : public BMethodRequest {
 	
@@ -7585,7 +7585,7 @@ class BRequest_EvolveIF_sendEvolveToClient : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_EvolveIF_setClient : public BMethodRequest {
 	public: PEvolveIF partner;
@@ -7606,7 +7606,7 @@ class BRequest_EvolveIF_setClient : public BMethodRequest {
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace com::wilutions::byps;
+using namespace ::com::wilutions::byps;
 
 class BRequest_EvolveIF_setEvolve : public BMethodRequest {
 	public: PEvolve obj;

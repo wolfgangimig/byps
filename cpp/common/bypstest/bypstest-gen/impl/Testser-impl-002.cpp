@@ -1,6 +1,6 @@
 ﻿#include "Testser-impl.h"
-using namespace std;
-using namespace com::wilutions::byps;
+using namespace ::std;
+using namespace ::com::wilutions::byps;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
@@ -828,7 +828,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::arr::ArrayTypes1dim::ArrayTypes1dim() {
 }
-com::wilutions::byps::test::api::arr::ArrayTypes1dim::ArrayTypes1dim(byps_ptr< BArray1< bool > > boolean1, PBytes byte1, byps_ptr< BArray1< wchar_t > > char1, byps_ptr< BArray1< int16_t > > short1, byps_ptr< BArray1< int32_t > > int1, byps_ptr< BArray1< int64_t > > long1, byps_ptr< BArray1< float > > float1, byps_ptr< BArray1< double > > double1, byps_ptr< BArray1< std::wstring > > string1, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)
+com::wilutions::byps::test::api::arr::ArrayTypes1dim::ArrayTypes1dim(byps_ptr< BArray1< bool > > boolean1, PBytes byte1, byps_ptr< BArray1< wchar_t > > char1, byps_ptr< BArray1< int16_t > > short1, byps_ptr< BArray1< int32_t > > int1, byps_ptr< BArray1< int64_t > > long1, byps_ptr< BArray1< float > > float1, byps_ptr< BArray1< double > > double1, byps_ptr< BArray1< ::std::wstring > > string1, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1)
 	: boolean1(boolean1)
 	, byte1(byte1)
 	, char1(char1)
@@ -872,7 +872,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::arr::ArrayTypes4dim::ArrayTypes4dim() {
 }
-com::wilutions::byps::test::api::arr::ArrayTypes4dim::ArrayTypes4dim(byps_ptr< BArray4< bool > > boolean4, byps_ptr< BArray4< int8_t > > byte4, byps_ptr< BArray4< wchar_t > > char4, byps_ptr< BArray4< int16_t > > short4, byps_ptr< BArray4< int32_t > > int4, byps_ptr< BArray4< int64_t > > long4, byps_ptr< BArray4< float > > float4, byps_ptr< BArray4< double > > double4, byps_ptr< BArray4< std::wstring > > string4, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4)
+com::wilutions::byps::test::api::arr::ArrayTypes4dim::ArrayTypes4dim(byps_ptr< BArray4< bool > > boolean4, byps_ptr< BArray4< int8_t > > byte4, byps_ptr< BArray4< wchar_t > > char4, byps_ptr< BArray4< int16_t > > short4, byps_ptr< BArray4< int32_t > > int4, byps_ptr< BArray4< int64_t > > long4, byps_ptr< BArray4< float > > float4, byps_ptr< BArray4< double > > double4, byps_ptr< BArray4< ::std::wstring > > string4, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4)
 	: boolean4(boolean4)
 	, byte4(byte4)
 	, char4(char4)
@@ -914,13 +914,13 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 //-------------------------------------------------
 // Implementation of class AllTypesC
 
-const std::wstring AllTypesC::stringNull = std::wstring();
+const ::std::wstring AllTypesC::stringNull = std::wstring();
 
 const float AllTypesC::float1s = 6.8f;
 
 const double AllTypesC::double1s = 7.8;
 
-const std::wstring AllTypesC::string1s = std::wstring(L"Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'");
+const ::std::wstring AllTypesC::string1s = std::wstring(L"Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'");
 
 const PAllTypesZ AllTypesC::ALL = PAllTypesZ(new AllTypesZ(
 	true,
@@ -942,7 +942,7 @@ const PAllTypesZ AllTypesC::ALL = PAllTypesZ(new AllTypesZ(
 		->set(0, -4)
 		->set(1, -5)
 	),
-	byps_ptr< BArray1< std::wstring > >((new BArray1< std::wstring > (2))
+	byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
 		->set(0, std::wstring(L"a"))
 		->set(1, std::wstring(L"b"))
 	),
@@ -978,12 +978,12 @@ const byps_ptr< BArray4< int32_t > > AllTypesC::arrInt4 = byps_ptr< BArray4< int
 	->set(1,1,1,1, 215)
 );
 
-const byps_ptr< BArray1< std::wstring > > AllTypesC::arrStrings = byps_ptr< BArray1< std::wstring > >((new BArray1< std::wstring > (2))
+const byps_ptr< BArray1< ::std::wstring > > AllTypesC::arrStrings = byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
 	->set(0, std::wstring(L"s1"))
 	->set(1, std::wstring(L"s2"))
 );
 
-const byps_ptr< BArray4< std::wstring > > AllTypesC::arrStrings4 = byps_ptr< BArray4< std::wstring > >((new BArray4< std::wstring > (1,1,1,2))
+const byps_ptr< BArray4< ::std::wstring > > AllTypesC::arrStrings4 = byps_ptr< BArray4< ::std::wstring > >((new BArray4< ::std::wstring > (1,1,1,2))
 	->set(0,0,0,0, std::wstring(L"s1"))
 	->set(0,0,0,1, std::wstring(L"s2"))
 );
@@ -1002,7 +1002,7 @@ const byps_ptr< BArray2< PAllTypesZ > > AllTypesC::arrALL = byps_ptr< BArray2< P
 		PHebrewZ(),
 		PBytes(),
 		byps_ptr< BArray1< int32_t > >(),
-		byps_ptr< BArray1< std::wstring > >(),
+		byps_ptr< BArray1< ::std::wstring > >(),
 		byps_ptr< BArray1< PHebrewZ > >())))
 	->set(1,0, PAllTypesZ(new AllTypesZ(
 		true,
@@ -1024,7 +1024,7 @@ const byps_ptr< BArray2< PAllTypesZ > > AllTypesC::arrALL = byps_ptr< BArray2< P
 			->set(0, -4)
 			->set(1, -5)
 		),
-		byps_ptr< BArray1< std::wstring > >((new BArray1< std::wstring > (2))
+		byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
 			->set(0, std::wstring(L"a"))
 			->set(1, std::wstring(L"b"))
 		),
@@ -1068,7 +1068,7 @@ com::wilutions::byps::test::api::cons::AllTypesZ::AllTypesZ() {
 	float1 = 0;
 	double1 = 0;
 }
-com::wilutions::byps::test::api::cons::AllTypesZ::AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, std::wstring string1, com::wilutions::byps::test::api::cons::PHebrewZ hebrew1, PBytes byte2, byps_ptr< BArray1< int32_t > > int2, byps_ptr< BArray1< std::wstring > > string2, byps_ptr< BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > > hebrew2)
+com::wilutions::byps::test::api::cons::AllTypesZ::AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, ::std::wstring string1, com::wilutions::byps::test::api::cons::PHebrewZ hebrew1, PBytes byte2, byps_ptr< BArray1< int32_t > > int2, byps_ptr< BArray1< ::std::wstring > > string2, byps_ptr< BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > > hebrew2)
 	: bool1(bool1)
 	, byte1(byte1)
 	, char1(char1)
@@ -1129,9 +1129,9 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 //-------------------------------------------------
 // Implementation of class HebrewC
 
-const std::wstring HebrewC::aleph = std::wstring(L"\u05d0");
+const ::std::wstring HebrewC::aleph = std::wstring(L"\u05d0");
 
-const std::wstring HebrewC::beth = std::wstring(L"\u05d1");
+const ::std::wstring HebrewC::beth = std::wstring(L"\u05d1");
 
 const PHebrewZ HebrewC::ALEPH = PHebrewZ(new HebrewZ(
 	std::wstring(L"\u05d0")));
@@ -1163,7 +1163,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::cons::HebrewZ::HebrewZ() {
 }
-com::wilutions::byps::test::api::cons::HebrewZ::HebrewZ(std::wstring core)
+com::wilutions::byps::test::api::cons::HebrewZ::HebrewZ(::std::wstring core)
 	: core(core)
 	{}
 void com::wilutions::byps::test::api::cons::HebrewZ::serialize(BIO& ar, const unsigned int version) {
@@ -1224,7 +1224,7 @@ com::wilutions::byps::test::api::enu::UsePlanets::UsePlanets() {
 	planet = com::wilutions::byps::test::api::enu::EnumPlanets::Mercury;
 	planet2 = com::wilutions::byps::test::api::enu::EnumPlanets::Mercury;
 }
-com::wilutions::byps::test::api::enu::UsePlanets::UsePlanets(com::wilutions::byps::test::api::enu::EnumPlanets planet, com::wilutions::byps::test::api::enu::EnumPlanets planet2, byps_ptr< BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > > arrayOfPlanets, byps_ptr< std::vector< com::wilutions::byps::test::api::enu::EnumPlanets > > listOfPlanets, byps_ptr< std::map< std::wstring , com::wilutions::byps::test::api::enu::EnumPlanets > > mapOfPlanets)
+com::wilutions::byps::test::api::enu::UsePlanets::UsePlanets(com::wilutions::byps::test::api::enu::EnumPlanets planet, com::wilutions::byps::test::api::enu::EnumPlanets planet2, byps_ptr< BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > > arrayOfPlanets, byps_ptr< ::std::vector< com::wilutions::byps::test::api::enu::EnumPlanets > > listOfPlanets, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::enu::EnumPlanets > > mapOfPlanets)
 	: planet(planet)
 	, planet2(planet2)
 	, arrayOfPlanets(arrayOfPlanets)
@@ -1287,7 +1287,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::inherit::Class1Collections::Class1Collections() {
 }
-com::wilutions::byps::test::api::inherit::Class1Collections::Class1Collections(byps_ptr< std::vector< com::wilutions::byps::test::api::inherit::PClass1 > > list1, byps_ptr< std::map< std::wstring , com::wilutions::byps::test::api::inherit::PClass1 > > map1, byps_ptr< std::set< com::wilutions::byps::test::api::inherit::PClass1 > > set1)
+com::wilutions::byps::test::api::inherit::Class1Collections::Class1Collections(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inherit::PClass1 > > list1, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::inherit::PClass1 > > map1, byps_ptr< ::std::set< com::wilutions::byps::test::api::inherit::PClass1 > > set1)
 	: list1(list1)
 	, map1(map1)
 	, set1(set1)

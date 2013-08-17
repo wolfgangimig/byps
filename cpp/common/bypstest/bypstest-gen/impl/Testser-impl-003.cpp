@@ -1,6 +1,6 @@
 ﻿#include "Testser-impl.h"
-using namespace std;
-using namespace com::wilutions::byps;
+using namespace ::std;
+using namespace ::com::wilutions::byps;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
 
@@ -93,7 +93,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::list::ListListTypes::ListListTypes() {
 }
-com::wilutions::byps::test::api::list::ListListTypes::ListListTypes(byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > > int2, byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > int3, byps_ptr< std::vector< byps_ptr< std::vector< byps_ptr< BArray4< int32_t > > > > > > int24)
+com::wilutions::byps::test::api::list::ListListTypes::ListListTypes(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int2, byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int3, byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > > > int24)
 	: int2(int2)
 	, int3(int3)
 	, int24(int24)
@@ -123,7 +123,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::list::ListTypes::ListTypes() {
 }
-com::wilutions::byps::test::api::list::ListTypes::ListTypes(byps_ptr< std::vector< bool > > boolean1, byps_ptr< std::vector< int8_t > > byte1, byps_ptr< std::vector< wchar_t > > char1, byps_ptr< std::vector< int16_t > > short1, byps_ptr< std::vector< int32_t > > int1, byps_ptr< std::vector< int64_t > > long1, byps_ptr< std::vector< float > > float1, byps_ptr< std::vector< double > > double1, byps_ptr< std::vector< std::wstring > > string1, byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< std::vector< PBytes > > byte2, byps_ptr< std::vector< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< std::vector< byps_ptr< BArray4< int32_t > > > > int4, byps_ptr< std::vector< PSerializable > > obj1)
+com::wilutions::byps::test::api::list::ListTypes::ListTypes(byps_ptr< ::std::vector< bool > > boolean1, byps_ptr< ::std::vector< int8_t > > byte1, byps_ptr< ::std::vector< wchar_t > > char1, byps_ptr< ::std::vector< int16_t > > short1, byps_ptr< ::std::vector< int32_t > > int1, byps_ptr< ::std::vector< int64_t > > long1, byps_ptr< ::std::vector< float > > float1, byps_ptr< ::std::vector< double > > double1, byps_ptr< ::std::vector< ::std::wstring > > string1, byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::vector< PBytes > > byte2, byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > int4, byps_ptr< ::std::vector< PSerializable > > obj1)
 	: boolean1(boolean1)
 	, byte1(byte1)
 	, char1(char1)
@@ -175,7 +175,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::map::MapTypes::MapTypes() {
 }
-com::wilutions::byps::test::api::map::MapTypes::MapTypes(byps_ptr< std::map< std::wstring , bool > > boolean1, byps_ptr< std::map< double , int8_t > > byte1, byps_ptr< std::map< float , wchar_t > > char1, byps_ptr< std::map< int64_t , int16_t > > short1, byps_ptr< std::map< int32_t , int32_t > > int1, byps_ptr< std::map< int16_t , int64_t > > long1, byps_ptr< std::map< wchar_t , float > > float1, byps_ptr< std::map< int8_t , double > > double1, byps_ptr< std::map< std::wstring , std::wstring > > string1, byps_ptr< std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< std::map< int32_t , PBytes > > byte2, byps_ptr< std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< std::map< std::wstring , PSerializable > > obj1)
+com::wilutions::byps::test::api::map::MapTypes::MapTypes(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1, byps_ptr< ::std::map< double , int8_t > > byte1, byps_ptr< ::std::map< float , wchar_t > > char1, byps_ptr< ::std::map< int64_t , int16_t > > short1, byps_ptr< ::std::map< int32_t , int32_t > > int1, byps_ptr< ::std::map< int16_t , int64_t > > long1, byps_ptr< ::std::map< wchar_t , float > > float1, byps_ptr< ::std::map< int8_t , double > > double1, byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1, byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::map< int32_t , PBytes > > byte2, byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1)
 	: boolean1(boolean1)
 	, byte1(byte1)
 	, char1(char1)
@@ -234,7 +234,7 @@ com::wilutions::byps::test::api::prim::PrimitiveTypes::PrimitiveTypes() {
 	doubleVal = 0;
 	value = false;
 }
-com::wilutions::byps::test::api::prim::PrimitiveTypes::PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, std::wstring stringVal, PSerializable objVal, PSerializable objVal2, bool value, PSerializable temp)
+com::wilutions::byps::test::api::prim::PrimitiveTypes::PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, ::std::wstring stringVal, PSerializable objVal, PSerializable objVal2, bool value, PSerializable temp)
 	: boolVal(boolVal)
 	, byteVal(byteVal)
 	, charVal(charVal)
@@ -338,7 +338,7 @@ com::wilutions::byps::test::api::priv::PrivateMembers::PrivateMembers() {
 	protInt = 0;
 	pprotInt = 0;
 }
-com::wilutions::byps::test::api::priv::PrivateMembers::PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, std::wstring stringVal, com::wilutions::byps::test::api::prim::PPrimitiveTypes primitiveTypes, byps_ptr< BArray1< bool > > arrBool, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray1< std::wstring > > arrString, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arrPrimitiveTypes, byps_ptr< std::vector< bool > > listBool, byps_ptr< std::vector< int32_t > > listInt, byps_ptr< std::vector< std::wstring > > listString, byps_ptr< std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes, byps_ptr< std::map< int32_t , byps_ptr< std::vector< std::wstring > > > > mapIntListString, int32_t protInt, int32_t pprotInt)
+com::wilutions::byps::test::api::priv::PrivateMembers::PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, ::std::wstring stringVal, com::wilutions::byps::test::api::prim::PPrimitiveTypes primitiveTypes, byps_ptr< BArray1< bool > > arrBool, byps_ptr< BArray1< int32_t > > arrInt, byps_ptr< BArray1< ::std::wstring > > arrString, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arrPrimitiveTypes, byps_ptr< ::std::vector< bool > > listBool, byps_ptr< ::std::vector< int32_t > > listInt, byps_ptr< ::std::vector< ::std::wstring > > listString, byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes, byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > mapIntListString, int32_t protInt, int32_t pprotInt)
 	: boolVal(boolVal)
 	, byteVal(byteVal)
 	, charVal(charVal)
@@ -404,7 +404,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::refs::Node::Node() {
 }
-com::wilutions::byps::test::api::refs::Node::Node(com::wilutions::byps::test::api::refs::PNode next, com::wilutions::byps::test::api::refs::PNode me, byps_ptr< std::map< std::wstring , com::wilutions::byps::test::api::refs::PNode > > mapOfNodes, byps_ptr< std::vector< com::wilutions::byps::test::api::refs::PNode > > listOfNodes)
+com::wilutions::byps::test::api::refs::Node::Node(com::wilutions::byps::test::api::refs::PNode next, com::wilutions::byps::test::api::refs::PNode me, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::refs::PNode > > mapOfNodes, byps_ptr< ::std::vector< com::wilutions::byps::test::api::refs::PNode > > listOfNodes)
 	: next(next)
 	, me(me)
 	, mapOfNodes(mapOfNodes)
@@ -780,7 +780,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getS
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->async_getString([__byps__asyncResult](byps_ptr< BArray1< std::wstring > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->async_getString([__byps__asyncResult](byps_ptr< BArray1< ::std::wstring > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
