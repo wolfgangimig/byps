@@ -177,8 +177,8 @@ class PrintContext extends PrintContextBase {
 		prImplC.print("#include \"{0}\"",
 				getDirRelative(dirImplC.getAbsolutePath(), dirImplH.getAbsolutePath()) + apiName + "-impl.h");
 		prImplC.println(); 
-		prImplC.println("using namespace std;");
-		prImplC.println("using namespace com::wilutions::byps;");
+		prImplC.println("using namespace ::std;");
+		prImplC.println("using namespace ::com::wilutions::byps;");
 		prImplC.println();
 		prImplC.flush();
 	}

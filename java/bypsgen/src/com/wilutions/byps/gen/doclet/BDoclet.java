@@ -166,8 +166,8 @@ public class BDoclet extends Doclet {
 		
 		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",
 		
-		"-gencpp.dir-api", "..\\..\\cpp\\common\\bypstest-gen\\api",
-		"-gencpp.dir-impl", "..\\..\\cpp\\common\\bypstest-gen\\impl",
+		"-gencpp.dir-api", "d:\\git\\byps\\cpp\\common\\bypstest\\bypstest-gen\\api",
+		"-gencpp.dir-impl", "d:\\git\\byps\\cpp\\common\\bypstest\\bypstest-gen\\impl",
 		
 		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
 		"-gencpp.max-fsize", "50000",

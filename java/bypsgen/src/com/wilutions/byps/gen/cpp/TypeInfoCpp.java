@@ -128,7 +128,7 @@ class TypeInfoCpp {
 		
 		else if (tinfo.qname.equals("java.lang.String")) {
 			if (purpose == Purpose.PARAM) tbuf.append("const ");
-			tbuf.append("std::wstring");
+			tbuf.append("::std::wstring");
 			if (purpose == Purpose.PARAM) tbuf.append("&");
 		}
 		
@@ -138,25 +138,25 @@ class TypeInfoCpp {
 		
 		else if (tinfo.qname.equals("java.lang.Exception") || tinfo.qname.equals("java.lang.Throwable")) {
 			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("std::exception");
+			tbuf.append("::std::exception");
 			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
 		
 		else if (tinfo.isListType()) {
 			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("std::vector< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
+			tbuf.append("::std::vector< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
 			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
 		else if (tinfo.isMapType()) {
 			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("std::map< ")
+			tbuf.append("::std::map< ")
 				.append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" , ")
 				.append(makeCppName(tinfo.typeArgs.get(1), currentPackage, Purpose.TYPE)).append(" >");
 			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
 		else if (tinfo.isSetType()) {
 			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("std::set< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
+			tbuf.append("::std::set< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
 			if (purpose != Purpose.CLASS) tbuf.append(" >");
 		}
 		

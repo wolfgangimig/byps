@@ -55,7 +55,7 @@ class GenRemoteClass {
 		String className = cppInfo.getClassName(rinfo.pack);
 		
 		beginClass(prH, className);
-		prH.println("using namespace com::wilutions::byps;");
+		prH.println("using namespace ::com::wilutions::byps;");
 		prH.println();
 
 		pctxt.printComments(prH, rinfo.comments);

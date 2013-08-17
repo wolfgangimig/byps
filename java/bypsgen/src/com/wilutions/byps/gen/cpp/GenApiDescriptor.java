@@ -38,7 +38,7 @@ public class GenApiDescriptor {
 		prH.println(cppInfo.namespaceBegin);
 		prC.println(cppInfo.namespaceBegin);
 		
-		prH.println("using namespace com::wilutions::byps;");
+		prH.println("using namespace ::com::wilutions::byps;");
 		prH.println();
 		prC.println();
 		

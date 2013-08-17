@@ -258,7 +258,7 @@ class GenRemoteStub {
 		prC.println(cppInfo.namespaceBegin);
 		prH.println();
 		prC.println();
-		prH.println("using namespace com::wilutions::byps;");
+		prH.println("using namespace ::com::wilutions::byps;");
 		prH.println();
 		
 		prH.print("class ").print(className).println(";");

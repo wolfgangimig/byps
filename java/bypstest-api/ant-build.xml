@@ -16,7 +16,7 @@
 			<arg value="-gencs.dir-ser"/>     	<arg value="D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser"/>
 			
 			<arg value="-genjs.dest"/> 			<arg value="..\\bypstest-srv\\WebContent\\testser.js"/>
-			
+						
 		</java>
 	
 	</target>
