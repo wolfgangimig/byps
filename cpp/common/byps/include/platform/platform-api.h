@@ -11,6 +11,12 @@
 
 #endif
 
+#ifdef QT_VERSION
+
+#include "qt/QTThreadPool.h"
+
+#endif
+
 #include "any/any.h"
 
 

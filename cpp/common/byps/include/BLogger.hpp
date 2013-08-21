@@ -1,45 +1,52 @@
 #ifndef BLOGGER_HPP_
 #define BLOGGER_HPP_
 
-#include "BLogger.h"
 #include <thread>
 #include <iostream>
 #include <iomanip>
 #include <ctime>
+#include "BLogger.h"
 
 namespace com { namespace wilutions { namespace byps {
 
 BINLINE void BLogFile::println(BLogLevel msglevel, const wstring& msg) {
 	
 	if (level > msglevel) return;
-
 	
 	time_t t = time(nullptr);
     struct tm now;
     byps_localtime(&now, &t);
 
-    strm << setfill(L'0')
-         << setw(4) << 1900 + now.tm_year << L"-"
-         << setw(2) << now.tm_mon+1 << L"-"
-         << setw(2) << now.tm_mday << L" "
-         << setw(2) << now.tm_hour << L":"
-         << setw(2) << now.tm_min << L":"
-         << setw(2) << now.tm_sec << L" ";
+    {
+        byps_unique_lock lock(mutex);
 
-	strm << this_thread::get_id() << L" ";
 
-	switch (msglevel) {
-	case Nothing: break;
-	case Debug: strm << L"DEBUG"; break;
-	case Info: strm << L"INFO"; break;
-	case Warn: strm << L"WARN"; break;
-	case Error: strm << L"ERROR"; break;
-	}
-	strm << L" ";
+        strm << setfill(L'0')
+             << setw(4) << 1900 + now.tm_year << L"-"
+             << setw(2) << now.tm_mon+1 << L"-"
+             << setw(2) << now.tm_mday << L" "
+             << setw(2) << now.tm_hour << L":"
+             << setw(2) << now.tm_min << L":"
+             << setw(2) << now.tm_sec << L" ";
 
-	strm << msg;
+        strm << std::hex << this_thread::get_id() << L" ";
 
-	strm << endl;
+        switch (msglevel) {
+        case Nothing: break;
+        case Debug: strm << L"DEBUG"; break;
+        case Info: strm << L"INFO"; break;
+        case Warn: strm << L"WARN"; break;
+        case Error: strm << L"ERROR"; break;
+        }
+        strm << L" ";
+
+        strm << msg;
+
+        strm << endl;
+
+        strm.flush();
+
+    }
 }
 
 BINLINE BLogFile::BLogFile() : level(BLogLevel::Nothing) {

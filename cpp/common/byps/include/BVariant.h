@@ -39,6 +39,8 @@ public:
 
     void serialize(BIO&, const unsigned int);
 
+    std::wstring toString() const;
+
 private:
     BTYPEID type;
     union {

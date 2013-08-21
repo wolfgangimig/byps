@@ -3,7 +3,7 @@
 
 #ifdef QT_VERSION
 
-#include "QT/QTThreadPool.hpp"
+#include "qt/QTThreadPool.hpp"
 
 #endif
 

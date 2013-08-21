@@ -18,9 +18,9 @@ public:
 
 	virtual bool execute(PRunnable r) = 0;
 
-	virtual void done() = 0;
+    virtual void done() = 0;
 
-	static PThreadPool create(int maxThreads);
+    static PThreadPool create(void* app, int maxThreads);
 };
 
 

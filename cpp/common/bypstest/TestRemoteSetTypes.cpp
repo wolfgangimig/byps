@@ -1,6 +1,5 @@
 ﻿#include "AllTests.h"
 
-
 using namespace com::wilutions::byps;
 using namespace com::wilutions::test;
 
@@ -10,19 +9,19 @@ using namespace com::wilutions::byps::test::api::set;
 using namespace com::wilutions::byps::test::api::remote;
 
 
-template <typename _Type> byps_ptr<std::set< _Type > > toSet(_Type a, _Type b, _Type c, _Type d) {
-    byps_ptr<std::set<_Type> > set(new std::set< _Type >());
-    set->insert(typename std::set< _Type > ::value_type(a));
-    set->insert(typename std::set< _Type > ::value_type(b));
-    set->insert(typename std::set< _Type > ::value_type(c));
-    set->insert(typename std::set< _Type > ::value_type(d));
+template <typename _Type> byps_ptr< ::std::set< _Type > > toSet(_Type a, _Type b, _Type c, _Type d) {
+    byps_ptr< ::std::set<_Type> > set(new  ::std::set< _Type >());
+    set->insert(typename  ::std::set< _Type > ::value_type(a));
+    set->insert(typename  ::std::set< _Type > ::value_type(b));
+    set->insert(typename  ::std::set< _Type > ::value_type(c));
+    set->insert(typename  ::std::set< _Type > ::value_type(d));
     return set;
 }
 
 template<typename _Set> bool findObject(_Set set, int32_t intVal) {
 	for (auto it = set->begin(); it != set->end(); it++) {
 		PPrimitiveTypes p = byps_ptr_cast<PrimitiveTypes>(*it);
-		if (p->intVal == intVal) return true;
+        if (p->intVal == intVal) return true;
 	}
 	return false;
 }
@@ -81,7 +80,7 @@ public:
 		obj->byte1 = toSet(byte1, byte2, byte3, byte4);
 		obj->short1 = toSet(short1, short2, short3, short4);
 		obj->int1 = toSet(111,222,333,444);
-		obj->long1 = toSet(1111LL, 2222LL, 3333LL, 4444LL);
+        obj->long1 = toSet((int64_t)1111LL, (int64_t)2222LL, (int64_t)3333LL, (int64_t)4444LL);
 		obj->char1 = toSet(L'A', L'b', L'€', L'¶');
 		obj->double1 = toSet(1.1,1.2,1.3,1.4);
 		obj->float1 = toSet(11.1f, 22.2f, 33.3f, 44.4f);
@@ -119,7 +118,7 @@ public:
 
 		{
 			remote->setPrimitiveTypes1(obj->primitiveTypes1);
-			byps_ptr< std::set< PPrimitiveTypes > > arrR = remote->getPrimitiveTypes1();
+            byps_ptr<  ::std::set< PPrimitiveTypes > > arrR = remote->getPrimitiveTypes1();
 			
 			assertSetObj(L"primitiveTypes1", obj->primitiveTypes1, arrR);
 
@@ -130,7 +129,7 @@ public:
 
 		{
 			remote->setObj1(obj->obj1);
-			byps_ptr< std::set< PSerializable > > arrR = remote->getObj1();
+            byps_ptr<  ::std::set< PSerializable > > arrR = remote->getObj1();
 			
 			assertSetObj(L"primitiveTypes1", obj->obj1, arrR);
 

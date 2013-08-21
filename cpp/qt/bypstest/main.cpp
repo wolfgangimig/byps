@@ -7,10 +7,17 @@
 
 
 PHttpClient client;
-PHttpGet get;
+PHttpGet hget;
 PContentStream strm;
 
 void Task::run() {
+    try {
+        throw BException(123, L"hallo");
+    }
+    catch (const BException& ex) {
+        client.reset();
+    }
+
     AllTests_run(this->parent());
 
 //    client = HttpClient_create(NULL);
@@ -159,7 +166,7 @@ int main(int argc, char *argv[])
 
 
     strm.reset();
-    get.reset();
+    hget.reset();
     client.reset();
 
     return ret;

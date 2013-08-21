@@ -96,5 +96,6 @@ HEADERS += \
     ../../common/byps/include/platform/platform.hpp \
     ../../common/byps/include/platform/gcc/gcc_x86_x64.h \
     ../../common/byps/include/platform/any/any.h \
-    ../../common/byps/include/platform/QT/QTThreadPool.hpp \
-    ../../common/byps/include/BThreadPool.hpp
+    ../../common/byps/include/BThreadPool.hpp \
+    ../../common/byps/include/platform/qt/QTThreadPool.hpp \
+    ../../common/byps/include/platform/qt/QTThreadPool.h

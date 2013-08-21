@@ -46,7 +46,7 @@ public:
 		obj->byte1 = toVector(byte1, byte2, byte3, byte4);
 		obj->short1 = toVector(short1, short2, short3, short4);
 		obj->int1 = toVector(111,222,333,444);
-		obj->long1 = toVector(1111LL, 2222LL, 3333LL, 4444LL);
+        obj->long1 = toVector((int64_t)1111LL, (int64_t)2222LL, (int64_t)3333LL, (int64_t)4444LL);
 		obj->char1 = toVector(L'A', L'b', L'€', L'¶');
 		obj->double1 = toVector(1.1,1.2,1.3,1.4);
 		obj->float1 = toVector(11.1f, 22.2f, 33.3f, 44.4f);

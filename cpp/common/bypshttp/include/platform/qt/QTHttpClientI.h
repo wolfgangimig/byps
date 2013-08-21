@@ -29,12 +29,12 @@ typedef byps_ptr<QNetworkAccessManager> PNetworkAccessManager;
 class QTHttpRequestBridge : public QObject
 {
     Q_OBJECT
-    BLogger log;
+    static BLogger log;
 
 public:
     QTHttpRequestBridge(QNetworkReply* reply, int32_t timeout);
     virtual ~QTHttpRequestBridge() ;
-    void close();
+    void done();
 
 private slots:
     void httpFinished();
@@ -52,7 +52,7 @@ public:
 class QTHttpWorkerBridge : public QObject
 {
     Q_OBJECT
-    BLogger log;
+    static BLogger log;
     PNetworkAccessManager networkManager;
 
 public:
@@ -60,14 +60,14 @@ public:
 
 public slots:
     void createGetRequest(QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge**);
-    void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* bytesToPost, QTHttpRequestBridge**);
+    void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPost, QTHttpRequestBridge**);
     void createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamToPut, QTHttpRequestBridge**);
 };
 
 class QTHttpWorkerThread : public QThread
 {
     Q_OBJECT
-    BLogger log;
+    static BLogger log;
     QTHttpWorkerBridge* workerBridge;
     byps_mutex mutex;
     byps_condition_variable waitInit;
@@ -89,7 +89,7 @@ public:
 
 signals:
     void createGetRequest(QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge**);
-    void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* bytesToPost, QTHttpRequestBridge**);
+    void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPost, QTHttpRequestBridge**);
     void createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamToPut, QTHttpRequestBridge**);
 
 };

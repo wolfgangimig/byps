@@ -14,7 +14,10 @@ LOGGER_IMPL
 using namespace com::wilutions::byps;
 
 void AllTests_run(void *app) {
-    BLogger::init("d:\\temp\\log\\cppclient.log", BLogLevel::Debug, false);
+    BLogger::init("/home/wolfgang/log/cppclient.txt", BLogLevel::Debug, false);
+
+    BLogger log("AllTests");
+    log.debug() << L"AllTest_run(";
 
 	TestSuite suite;
 //	suite.add(TestRemoteServerR_create(app));
@@ -31,6 +34,7 @@ void AllTests_run(void *app) {
 
 	suite.run();
 
+    log.debug() << L")AllTest_run";
 	BLogger::done();
 
 }

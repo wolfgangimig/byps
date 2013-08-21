@@ -28,6 +28,7 @@
 #define byps_atomic ::std::atomic
 
 #include <ctime>
+#include <string.h>
 
 inline struct tm* byps_localtime(struct tm* buf, const ::std::time_t* t) {
     memcpy(buf, localtime(t), sizeof(struct tm));

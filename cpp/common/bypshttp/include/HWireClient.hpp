@@ -4,7 +4,6 @@
 #include "Byps.h"
 #include "HWireClient.h"
 #include "HWireClientI.h"
-#include <strsafe.h>
 #include <thread>
 
 namespace com { namespace wilutions { namespace byps { namespace http {
@@ -44,17 +43,23 @@ BINLINE void HWireClient_RequestsToCancel::remove(intptr_t id) {
     byps_unique_lock lock(mutex);
 	std::map<intptr_t, PHttpRequest>::iterator it = map.find(id);
 	if (it != map.end()) {
-		(*it).second->close();
 		map.erase(it);
 	}
 }
 
 BINLINE void HWireClient_RequestsToCancel::cancel() {
-    byps_unique_lock lock(mutex);
-    for (std::map<intptr_t, PHttpRequest>::iterator it = map.begin(); it != map.end(); it++) {
-		(*it).second->close();
-	}
-	isCanceled = true;
+    std::vector<PHttpRequest> requests;
+    {
+        byps_unique_lock lock(mutex);
+        isCanceled = true;
+        for (std::map<intptr_t, PHttpRequest>::iterator it = map.begin(); it != map.end(); it++) {
+            requests.push_back((*it).second);
+        }
+    }
+
+    for (std::vector<PHttpRequest>::iterator it = requests.begin(); it != requests.end(); it++) {
+        (*it)->close();
+    }
 }
 
 BINLINE HWireClient_RequestsToCancel::~HWireClient_RequestsToCancel() {
@@ -76,7 +81,7 @@ BINLINE HWireClient::HWireClient(void* app, const std::wstring& surl, int32_t , 
 	, isMyThreadPool(!tpool)
 {
 	if (isMyThreadPool) {
-		this->tpool = BThreadPool::create(10);
+        this->tpool = BThreadPool::create(app, 10);
 	}
 	
 	
@@ -97,6 +102,9 @@ BINLINE void HWireClient::init() {
 }
 
 BINLINE HWireClient::~HWireClient() {
+    if (isMyThreadPool && tpool) {
+        tpool->done();
+    }
 	tpool.reset();
 	requestsToCancel.reset();
 	httpClient.reset();
@@ -161,7 +169,7 @@ BINLINE void HWireClient::sendR(const PMessage& msg, PAsyncResult asyncResult) {
 
 class BMessageRequest_AsyncResult : public BAsyncResult {
 	PWireClient_RequestsToCancel requests;
-	PAsyncResult innerResult;
+    byps_atomic<PAsyncResult> innerResult;
 	int64_t messageId;
 
 public:
@@ -178,16 +186,22 @@ public:
 	virtual ~BMessageRequest_AsyncResult() {
 	}
 
+    void internalSetAsyncResult(const BVariant& var) {
+        PAsyncResult r = innerResult.exchange(NULL);
+        if (r) {
+            r->setAsyncResult(var);
+        }
+    }
+
 	virtual void setAsyncResult(const BVariant& var) {
-		
-		if (var.isException()) {
-			innerResult->setAsyncResult(var);
+        if (var.isException()) {
+            internalSetAsyncResult(var);
 		}
 		else {
 			PBytes respBytes;
 			var.get(respBytes);
 
-			if (respBytes) {
+            if (respBytes && respBytes->length) {
 				BMessageHeader header;
 				try {
 					if (BNegotiate::isNegotiateMessage(respBytes)) {
@@ -201,17 +215,16 @@ public:
 					std::vector<PStreamRequest> streams;
 					PMessage msg(new BMessage(header, respBytes, streams));
 
-					innerResult->setAsyncResult(BVariant(msg));
-					innerResult = NULL;
+                    internalSetAsyncResult(BVariant(msg));
 
 				} catch (const BException& ex) {
 				
-					innerResult->setAsyncResult(BVariant(ex));
+                    internalSetAsyncResult(BVariant(ex));
 				}
 			}
 			else {
 				BException ex = BException(EX_IOERROR, L"No bytes received.");
-				innerResult->setAsyncResult(BVariant(ex));
+                internalSetAsyncResult(BVariant(ex));
 			}
 		}
 

@@ -103,6 +103,7 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 BINLINE bool BNegotiate::isNegotiateMessage(PBytes bytes) {
 	char* p = (char*)bytes->data;
 	size_t len = min((size_t)4, bytes->length);
+    if (len < 4) return false;
     return strncmp(p, NEGOTIATE_MAGIC_DOUBLE_QUOTES, len) == 0 ;
 }
 

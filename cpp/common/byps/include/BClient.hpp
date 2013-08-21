@@ -10,7 +10,7 @@ BINLINE BClient::BClient(PTransport transport, PServerR serverR)
 }
 
 BINLINE BClient::~BClient() {
-	done();
+
 }
 
 BINLINE void BClient::done() {

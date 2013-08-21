@@ -26,8 +26,6 @@ HEADERS += \
     ../../common/bypshttp/include/HWireClientI.h \
     ../../common/bypshttp/include/HWireClient.hpp \
     ../../common/bypshttp/include/HWireClient.h \
-    ../../common/bypshttp/include/BypsHttp.hpp \
-    ../../common/bypshttp/include/BypsHttp.h \
     ../../common/bypshttp/include/HWireClientI.h \
     ../../common/bypshttp/include/HWireClient.hpp \
     ../../common/bypshttp/include/HWireClient.h \
@@ -41,4 +39,6 @@ HEADERS += \
     ../../common/bypshttp/include/Bypshttp.h \
     ../../common/bypshttp/include/platform/qt/QTHttpClient.hpp \
     ../../common/bypshttp/include/platform/qt/QTHttpClient.h \
-    ../../common/bypshttp/include/platform/qt/QTHttpClientI.h
+    ../../common/bypshttp/include/platform/qt/QTHttpClientI.h \
+    ../../common/byps/include/platform/qt/QTThreadPool.hpp \
+    ../../common/byps/include/platform/qt/QTThreadPool.h

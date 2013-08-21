@@ -27,6 +27,7 @@ public:
 
 private:
 	wfstream strm;
+    byps_mutex mutex;
 };
 
 class BLogStream {

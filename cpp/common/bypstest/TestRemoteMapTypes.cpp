@@ -48,13 +48,13 @@ public:
 		obj->double1 = toMap((int8_t)11, 11.12, (int8_t)22, 22.24, (int8_t)33, 33.36);
 		obj->float1 = toMap(L'A', 1.0f, L'¶', 2.0f, L'€', -1.2468e-3f);
 		obj->int1 = toMap(11,111,22,222,33,333);
-		obj->long1 = toMap((int16_t)99, 33LL, (int16_t)-99, -33LL, (int16_t)77, 777LL);
+        obj->long1 = toMap((int16_t)99, (int64_t)33LL, (int16_t)-99, -(int64_t)33LL, (int16_t)77, (int64_t)777LL);
 		obj->primitiveTypes1 = toMap(
 			1, TestUtils::createObjectPrimitiveTypes(), 
 			2, TestUtils::createObjectPrimitiveTypes(),
 			7, TestUtils::createObjectPrimitiveTypes()
 			);
-		obj->short1 = toMap(-55LL, (int16_t)1234, 0x5555555555555555LL, (int16_t)5555, 0LL, (int16_t)0);
+        obj->short1 = toMap((int64_t)-55LL, (int16_t)1234, (int64_t)0x5555555555555555LL, (int16_t)5555, (int64_t)0LL, (int16_t)0);
 		obj->string1 = toMap(wstring(L"A"), wstring(L"a"), wstring(L"B"), wstring(L"b"), wstring(L"€"), wstring(L"€€€"));
 		obj->obj1 = toMap(
 			std::wstring(L"11"), byps_ptr_cast<BSerializable>(TestUtils::createObjectPrimitiveTypes()), 

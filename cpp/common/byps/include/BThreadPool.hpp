@@ -104,10 +104,10 @@ public:
 		, isDone(false) {
 	}
 
-	virtual ~BThreadPoolImpl() {
+    virtual ~BThreadPoolImpl() {
     }
 
-	virtual void done() {
+    virtual void done() {
 
 		bool expectedDone = false;
 		if (isDone.compare_exchange_strong(expectedDone, true)) {
@@ -169,7 +169,7 @@ public:
 	static PThreadPool createInstance();
 };
 
-BINLINE PThreadPool BThreadPool::create(int maxThreads) {
+BINLINE PThreadPool BThreadPool::create(void* app, int maxThreads) {
 	PThreadPoolImpl tpool(new BThreadPoolImpl(maxThreads));
 	return tpool;
 }

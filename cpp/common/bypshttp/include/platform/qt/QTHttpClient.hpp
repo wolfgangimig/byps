@@ -16,16 +16,16 @@ using namespace com::wilutions::byps::http;
  * @brief The QIODevice_PBytes class
  */
 class QIODevice_PBytes : public QIODevice {
-    BLogger log;
+    static BLogger log;
     PBytes bytes;
     qint64 offs;
 public:
     QIODevice_PBytes(PBytes bytes)
-        : log("QIODevice_PBytes"), bytes(bytes), offs(0) {
+        : bytes(bytes), offs(0) {
     }
 
     QIODevice_PBytes()
-        : log("QIODevice_PBytes"), offs(0) {
+        : offs(0) {
 
     }
 
@@ -152,7 +152,7 @@ class QTHttpGet_ContentStream : public BContentStream {
     bool headersAvail;
     std::chrono::milliseconds timeout;
     BException ex;
-    BLogger log;
+    static BLogger log;
 public:
     QTHttpGet_ContentStream(int32_t timeoutSeconds)
         : readPos(0)
@@ -160,7 +160,6 @@ public:
         , contentLength(0)
         , headersAvail(false)
         , timeout(timeoutSeconds * 1000)
-        , log("QTHttpGet_ContentStream")
     {
         l_debug << L"ctor()";
     }
@@ -197,20 +196,12 @@ public:
         l_debug << L")writeClose";
     }
 
-    void writeCancel() {
-        l_debug << L"writeCancel(";
+    void writeError(BException ex) {
+        l_debug << L"writeError(";
         byps_unique_lock lock(this->mutex);
-        ex = BException(EX_CANCELLED);
+        this->ex = ex;
         waitRead.notify_one();
-        l_debug << L")writeCancel";
-    }
-
-    void writeTimeout() {
-        l_debug << L"writeTimeout(";
-        byps_unique_lock lock(this->mutex);
-        ex = BException(EX_TIMEOUT);
-        waitRead.notify_one();
-        l_debug << L")writeTimeout";
+        l_debug << L")writeError";
     }
 
     void applyHeaders(const std::wstring& contentType, int64_t contentLength) {
@@ -286,7 +277,7 @@ public:
 
 class QTHttpClient : public HHttpClient, public byps_enable_shared_from_this<QTHttpClient> {
     void* app;
-    BLogger log;
+    static BLogger log;
     QTHttpClientBridge clientBridge;
 
 public:
@@ -294,18 +285,19 @@ public:
 
     QTHttpClient(void* app)
         : app(app)
-        , log("QTHttpClient")
         , worker(new QTHttpWorkerThread())
     {
         l_debug << L"ctor(";
         worker->start();
 
+        QObject::connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+
         QObject::connect(&clientBridge, SIGNAL(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
                          worker->getWorkerBridge(), SLOT(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
                          Qt::BlockingQueuedConnection);
 
-        QObject::connect(&clientBridge, SIGNAL(createPostRequest(QNetworkRequest,int32_t,QIODevice*,QTHttpRequestBridge**)),
-                         worker->getWorkerBridge(), SLOT(createPostRequest(QNetworkRequest,int32_t,QIODevice*,QTHttpRequestBridge**)),
+        QObject::connect(&clientBridge, SIGNAL(createPostRequest(QNetworkRequest,int32_t,QByteArray*,QTHttpRequestBridge**)),
+                         worker->getWorkerBridge(), SLOT(createPostRequest(QNetworkRequest,int32_t,QByteArray*,QTHttpRequestBridge**)),
                          Qt::BlockingQueuedConnection);
 
         QObject::connect(&clientBridge, SIGNAL(createPutRequest(QNetworkRequest,int32_t,QIODevice*,QTHttpRequestBridge**)),
@@ -317,7 +309,7 @@ public:
 
     virtual ~QTHttpClient() {
         l_debug << L"dtor()";
-        worker->quit();
+        emit worker->quit();
     }
 
     virtual void init(const std::wstring& ) {
@@ -335,13 +327,22 @@ public:
 
     void createGetRequest(PQTHttpRequest req, QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge** ppbridge) {
         l_debug << L"createGetRequest(";
-        emit clientBridge.createGetRequest(networkRequest, timeout, ppbridge);
+        if (QThread::currentThread() == worker) {
+            // This function is called from the worker thread, if an error occurs in a message
+            // and the message is to be cancelled. Cancelling a message is performed with a
+            // special GET request in HWireClient::sendCancelMessage.
+            // see HWireClient_AsyncResultAfterAllRequests::setAsyncResult
+            worker->getWorkerBridge()->createGetRequest(networkRequest, timeout, ppbridge);
+        }
+        else {
+          emit clientBridge.createGetRequest(networkRequest, timeout, ppbridge);
+        }
         l_debug << L"bridge=" << (void*)*ppbridge;
         (*ppbridge)->pThis = req;
         l_debug << L")createGetRequest";
     }
 
-    void createPostRequest(PQTHttpRequest req, QNetworkRequest networkRequest, int32_t timeout, QIODevice* bytesToPost, QTHttpRequestBridge** ppbridge) {
+    void createPostRequest(PQTHttpRequest req, QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPost, QTHttpRequestBridge** ppbridge) {
         l_debug << L"createPostRequest(";
         emit clientBridge.createPostRequest(networkRequest, timeout, bytesToPost, ppbridge);
         l_debug << L"bridge=" << (void*)*ppbridge;
@@ -351,7 +352,7 @@ public:
 
     void createPutRequest(PQTHttpRequest req, QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamToPut, QTHttpRequestBridge** ppbridge) {
         l_debug << L"createPutRequest(";
-        emit clientBridge.createPostRequest(networkRequest, timeout, streamToPut, ppbridge);
+        emit clientBridge.createPutRequest(networkRequest, timeout, streamToPut, ppbridge);
         l_debug << L"bridge=" << (void*)*ppbridge;
         (*ppbridge)->pThis = req;
         l_debug << L")createPutRequest";
@@ -365,26 +366,27 @@ protected:
     PQTHttpClient httpClient;
     QNetworkRequest networkRequest;
     QTHttpRequestBridge* bridge;
-    bool cancelled;
     int32_t timeoutSeconds;
-    BLogger log;
+    bool requestAborted;
+    BVariant result;
+    static BLogger log;
 public:
     QTHttpRequest(PQTHttpClient httpClient, QNetworkRequest networkRequest)
         : httpClient(httpClient)
         , networkRequest(networkRequest)
         , bridge(0)
-        , cancelled(false)
         , timeoutSeconds(0)
-        , log("QTHttpRequest")
+        , requestAborted(false)
     {
         l_debug << L"ctor()";
     }
 
     ~QTHttpRequest() {
-        l_debug << L")dtor()";
+        l_debug << L"dtor(";
         if (bridge) {
             delete bridge;
         }
+        l_debug << L")dtor";
     }
 
     virtual void setTimeouts(int32_t connectTimeoutSeconds, int32_t sendrecvTimeoutSeconds) {
@@ -396,20 +398,31 @@ public:
         return timeoutSeconds;
     }
 
-    virtual void close() {
-        l_debug << L"close(";
-        if (!cancelled) {
-            cancelled = true;
-            if (bridge) {
-                l_debug << L"abort";
-                bridge->reply->abort();
-            }
-        }
+    virtual void done() {
+        l_debug << L"done(";
+        PQTHttpRequest keepthis = shared_from_this();
         if (bridge) {
-            bridge->close();
+            bridge->done();
         }
-        l_debug << L")close";
+        internalApplyResult();
+        keepthis.reset();
+        l_debug << L")done";
     }
+
+    void abort() {
+        l_debug << L"abort(";
+        if (bridge && !requestAborted) {
+            requestAborted = true;
+            l_debug << L"abort";
+            bridge->reply->abort();
+
+            // reply->abort() will fire httpFinished() which
+            // calls done and deletes this
+        }
+        l_debug << L")abort";
+    }
+
+    virtual void internalApplyResult() = 0;
 
     virtual void httpFinished() = 0;
 
@@ -417,9 +430,29 @@ public:
 
     virtual void httpTimeout() {
         l_debug << L"httpTimeout(";
-        close();
+        if (!result.isException()) {
+            result = BVariant(BException(EX_TIMEOUT, L"HTTP request timeout"));
+        }
         l_debug << L")httpTimeout";
     }
+
+    virtual void httpError(const BException& ex) {
+        l_debug << L"httpError(" << ex;
+        if (!result.isException()) {
+            result = BVariant(ex);
+        }
+        l_debug << L")httpError";
+        }
+
+    virtual void close() {
+        l_debug << L"close(";
+        if (!result.isException()) {
+            result = BVariant(BException(EX_CANCELLED, L"HTTP request cancelled"));
+        }
+        abort();
+        l_debug << L")close";
+    }
+
 
 };
 
@@ -427,13 +460,12 @@ class QTHttpGet : public HHttpGet, public virtual QTHttpRequest {
 
     byps_weak_ptr<QTHttpGet_ContentStream> stream_weak_ptr;
     bool headersApplied;
-    BLogger log;
+    static BLogger log;
 
 public:
     QTHttpGet(PQTHttpClient httpClient, QNetworkRequest networkRequest)
         : QTHttpRequest(httpClient, networkRequest)
         , headersApplied(false)
-        , log("QTHttpGet")
     {
         l_debug << L"ctor()";
     }
@@ -458,88 +490,69 @@ public:
     byps_ptr<QTHttpGet_ContentStream> getStreamOrAbort() {
         l_debug << L"getStreamOrAbort(";
         byps_ptr<QTHttpGet_ContentStream> stream = stream_weak_ptr.lock();
-        if (!stream) {
-            l_debug << L"abort";
-            QTHttpRequest::close();
+        if (!stream && !bridge->reply->isFinished()) {
+             abort();
         }
         l_debug << L")getStreamOrAbort=" << stream.get();
         return stream;
     }
 
-    virtual void httpFinished() {
-        l_debug << L"httpFinished(";
-        l_debug << L"cancelled=" << cancelled;
-        if (!cancelled) {
-            byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
-            if (stream) {
+    virtual void internalApplyResult() {
+        l_debug << L"internalApplyResult(";
+        byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
+        if (stream) {
+            if (result.isException()) {
+                l_debug << L"stream->writeError " << result.getException().toString();
+                stream->writeError(result.getException());
+            }
+            else {
+                l_debug << L"stream->writeClose";
                 stream->writeClose();
             }
-        }
-        l_debug << L")httpFinished";
+         }
+        l_debug << L")internalApplyResult";
     }
+
+    virtual void httpFinished() {
+        l_debug << L"httpFinished(";
+        if (!result.isException()) {
+            result = BVariant(true);
+        }
+        done();
+        l_debug << L")httpFinished";
+       }
 
     virtual void httpReadyRead() {
         l_debug << L"httpReadyRead(";
-        l_debug << L"cancelled=" << cancelled;
-        if (!cancelled) {
-            byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
-            if (stream) {
-                l_debug << L"headersApplied=" << headersApplied;
-                if (!headersApplied) {
-                    headersApplied = true;
+        byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
+        if (stream) {
+            l_debug << L"headersApplied=" << headersApplied;
+            if (!headersApplied) {
+                headersApplied = true;
 
-                    QByteArray headerValue = bridge->reply->rawHeader("Content-Type");
-                    std::wstring contentType = BToStdWString(headerValue.data());
+                QByteArray headerValue = bridge->reply->rawHeader("Content-Type");
+                std::wstring contentType = BToStdWString(headerValue.data());
 
-                    headerValue = bridge->reply->rawHeader("Content-Length");
-                    int64_t contentLength = headerValue.size() ? QString(headerValue).toLongLong() : -1;
+                headerValue = bridge->reply->rawHeader("Content-Length");
+                int64_t contentLength = headerValue.size() ? QString(headerValue).toLongLong() : -1;
 
-                    stream->applyHeaders(contentType, contentLength);
-                }
-                stream->putBytes(bridge->reply->readAll());
+                stream->applyHeaders(contentType, contentLength);
             }
+            stream->putBytes(bridge->reply->readAll());
         }
         l_debug << L")httpReadyRead";
-    }
-
-    virtual void httpTimeout() {
-        l_debug << L"httpTimeout(";
-        QTHttpRequest::httpTimeout();
-        l_debug << L"cancelled=" << cancelled;
-        if (cancelled) {
-            byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
-            if (stream) {
-                stream->writeTimeout();
-            }
-            cancelled = true;
-            l_debug << L"cancelled=" << cancelled;
-        }
-        l_debug << L")httpTimeout";
-    }
-
-    virtual void close() {
-        l_debug << L"close(";
-        QTHttpRequest::close();
-        l_debug << L"cancelled=" << cancelled;
-        if (cancelled) {
-            byps_ptr<QTHttpGet_ContentStream> stream = stream_weak_ptr.lock();
-            if (stream) {
-                stream->writeCancel();
-            }
-        }
-        l_debug << L")close";
     }
 
 };
 
 
 class QTHttpPost : public HHttpPost, public virtual QTHttpRequest {
-    QIODevice_PBytes* bytesToPost;
+    QByteArray* bytesToPost;
     PAsyncResult asyncBytesReceived;
     PBytes respBytes;
     size_t pos;
     friend class QTHttpPostWorker;
-    BLogger log;
+    static BLogger log;
 public:
 
     QTHttpPost(PQTHttpClient httpClient, QNetworkRequest networkRequest)
@@ -548,7 +561,6 @@ public:
         , asyncBytesReceived(NULL)
         , respBytes(BBytes::create(10 * 1000))
         , pos(0)
-        , log("QTHttpPost")
     {
         l_debug << L"ctor()";
     }
@@ -560,7 +572,7 @@ public:
 
     virtual void send(PBytes bytes, const std::wstring& contentType, PAsyncResult asyncBytesReceived) {
         l_debug << L"send(#bytes=" << bytes->length << L", contentType=" << contentType;
-        this->bytesToPost = new QIODevice_PBytes(bytes);
+        this->bytesToPost = new QByteArray((const char*)bytes->data, bytes->length);
         this->asyncBytesReceived = asyncBytesReceived;
 
         networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, QVariant(QString::fromStdWString(contentType)));
@@ -574,15 +586,36 @@ public:
         l_debug << L")send";
     }
 
+    virtual void internalApplyResult() {
+        l_debug << L"internalApplyResult(";
+        if (asyncBytesReceived) {
+            l_debug << L"result=" << result.toString();
+            asyncBytesReceived->setAsyncResult(result);
+            asyncBytesReceived = NULL;
+        }
+        l_debug << L")internalApplyResult";
+    }
+
     virtual void httpFinished() {
         l_debug << L"httpFinished(";
-        if (asyncBytesReceived) {
+
+        if (bridge) {
+            QVariant varContentLength = bridge->reply->header(QNetworkRequest::ContentLengthHeader);
+            qulonglong contentLength = varContentLength.toULongLong();
+            l_debug << L"contentLength=" << contentLength;
+            QVariant varContentType = bridge->reply->header(QNetworkRequest::ContentTypeHeader);
+            QString contentType = varContentType.toString();
+            l_debug << L"contentType=" << contentType.toStdWString();
+        }
+
+        if (respBytes) {
             l_debug << L"#bytes=" << pos;
             respBytes->length = pos;
-            asyncBytesReceived->setAsyncResult(BVariant(respBytes));
-            asyncBytesReceived = NULL;
-            respBytes.reset();
+            if (!result.isException()) {
+                result = BVariant(respBytes);
+            }
         }
+        done();
         l_debug << L")httpFinished";
     }
 
@@ -607,38 +640,18 @@ public:
         }
     }
 
-    virtual void httpTimeout() {
-        if (asyncBytesReceived) {
-            l_debug << L"setAsyncResult EX_TIMEOUT";
-            asyncBytesReceived->setAsyncResult(BVariant(EX_TIMEOUT));
-            asyncBytesReceived = NULL;
-        }
-    }
-
-    virtual void close() {
-        l_debug << L"close(";
-        QTHttpRequest::close();
-        if (asyncBytesReceived) {
-            l_debug << L"setAsyncResult EX_CANCELLED";
-            asyncBytesReceived->setAsyncResult(BVariant(EX_CANCELLED));
-            asyncBytesReceived = NULL;
-        }
-        l_debug << L")close";
-    }
-
 };
 
 class QTHttpPut : public HHttpPut, public virtual QTHttpRequest {
     QIODevice_PContentStream* streamToPut;
     PAsyncResult asyncBoolFinished;
     friend class QTHttpPutWorker;
-    BLogger log;
+    static BLogger log;
 public:
     QTHttpPut(PQTHttpClient httpClient, QNetworkRequest networkRequest)
         : QTHttpRequest(httpClient, networkRequest)
         , streamToPut(NULL)
         , asyncBoolFinished(NULL)
-        , log("QTHttpPut")
     {
         l_debug << L"ctor()";
     }
@@ -674,13 +687,20 @@ public:
         }
     }
 
-    virtual void httpFinished() {
-        l_debug << L"httpFinished(";
+    virtual void internalApplyResult() {
         if (asyncBoolFinished) {
-            l_debug << L"setAsyncResult true";
-            asyncBoolFinished->setAsyncResult(BVariant(true));
+            l_debug << L"result=" << result.toString();
+            asyncBoolFinished->setAsyncResult(result);
             asyncBoolFinished = NULL;
         }
+    }
+
+    virtual void httpFinished() {
+        l_debug << L"httpFinished(";
+        if (!result.isException()) {
+            result = BVariant(true);
+        }
+        done();
         l_debug << L")httpFinished";
     }
 
@@ -690,30 +710,10 @@ public:
         l_debug << L")httpReadyRead";
     }
 
-    virtual void httpTimeout() {
-        if (asyncBoolFinished) {
-            l_debug << L"setAsyncResult EX_TIMEOUT";
-            asyncBoolFinished->setAsyncResult(BVariant(EX_TIMEOUT));
-            asyncBoolFinished = NULL;
-        }
-    }
-
-    virtual void close() {
-        l_debug << L"close(";
-        QTHttpRequest::close();
-        if (asyncBoolFinished) {
-            l_debug << L"setAsyncResult EX_CANCELLED";
-            asyncBoolFinished->setAsyncResult(BVariant(EX_CANCELLED));
-            asyncBoolFinished = NULL;
-        }
-        l_debug << L")close";
-    }
-
 };
 
 BINLINE QTHttpRequestBridge::QTHttpRequestBridge(QNetworkReply* reply, int32_t timeout)
-    : log("QTHttpRequestBridge")
-    , reply(reply)
+    : reply(reply)
 {
     l_debug << L"ctor(";
 
@@ -745,39 +745,49 @@ BINLINE QTHttpRequestBridge::~QTHttpRequestBridge() {
 BINLINE void QTHttpRequestBridge::httpFinished() {
     l_debug << L"httpFinished(";
     timer.stop();
-    pThis->httpFinished();
+    if (pThis) {
+       pThis->httpFinished();
+    }
     l_debug << L")httpFinished";
 }
 
 BINLINE void QTHttpRequestBridge::httpReadyRead() {
     l_debug << L"httpReadyRead(";
-    int32_t timeout = pThis->getTimeoutSeconds();
-    if (timeout) {
-        l_debug << L"restart timer";
-        timer.stop();
-        timer.start();
+    if (pThis) {
+        int32_t timeout = pThis->getTimeoutSeconds();
+        if (timeout) {
+            l_debug << L"restart timer";
+            timer.stop();
+            timer.start();
+        }
+        pThis->httpReadyRead();
     }
-    pThis->httpReadyRead();
     l_debug << L")httpReadyRead";
 }
 
 BINLINE void QTHttpRequestBridge::httpTimeout() {
     l_debug << L"httpTimeout(";
     timer.stop();
-    pThis->httpTimeout();
+    if (pThis) {
+        pThis->httpTimeout();
+    }
     l_debug << L")httpTimeout";
 }
 
 BINLINE void QTHttpRequestBridge::httpError(QNetworkReply::NetworkError err) {
     l_debug << L"httpError(" << err;
     timer.stop();
+    QString str = reply->errorString();
+    std::wstring msg = str.toStdWString();
+    if (pThis) {
+        pThis->httpError(BException(EX_IOERROR, msg));
+    }
     l_debug << L")httpError";
 }
 
-BINLINE void QTHttpRequestBridge::close() {
-    l_debug << L"close(";
+BINLINE void QTHttpRequestBridge::done() {
+    l_debug << L"done()";
     pThis.reset();
-    l_debug << L")close";
 }
 
 BINLINE PHttpGet QTHttpClient::get(const std::wstring& url) {
@@ -802,8 +812,7 @@ BINLINE PHttpPut QTHttpClient::put(const std::wstring& url) {
 }
 
 BINLINE QTHttpWorkerThread::QTHttpWorkerThread()
-    : log("QTHttpWorkerThread")
-    , workerBridge(NULL)
+    : workerBridge(NULL)
 {
     l_debug << L"ctor()";
 }
@@ -841,8 +850,7 @@ BINLINE QTHttpWorkerBridge* QTHttpWorkerThread::getWorkerBridge() {
 }
 
 BINLINE QTHttpWorkerBridge::QTHttpWorkerBridge()
-    : log("QTHttpWorkerBridge")
-    , networkManager(new QNetworkAccessManager())
+    : networkManager(new QNetworkAccessManager())
 {
 
 }
@@ -855,10 +863,10 @@ BINLINE void QTHttpWorkerBridge::createGetRequest(QNetworkRequest networkRequest
     l_debug << L")createGetRequest";
 }
 
-BINLINE void QTHttpWorkerBridge::createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* bytesToPost, QTHttpRequestBridge ** ppbridge)
+BINLINE void QTHttpWorkerBridge::createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPost, QTHttpRequestBridge ** ppbridge)
 {
     l_debug << L"createPostRequest(";
-    QNetworkReply* reply = networkManager->post(networkRequest, bytesToPost);
+    QNetworkReply* reply = networkManager->post(networkRequest, *bytesToPost);
     *ppbridge = new QTHttpRequestBridge(reply, timeout);
     l_debug << L")createPostRequest";
 }
@@ -870,6 +878,18 @@ BINLINE void QTHttpWorkerBridge::createPutRequest(QNetworkRequest networkRequest
     *ppbridge = new QTHttpRequestBridge(reply, timeout);
     l_debug << L")createPutRequest";
 }
+
+
+BLogger QIODevice_PBytes::log("QIODevice_PBytes");
+BLogger QTHttpGet_ContentStream::log("QTHttpGet_ContentStream");
+BLogger QTHttpClient::log("QTHttpClient");
+BLogger QTHttpRequest::log("QTHttpRequest");
+BLogger QTHttpGet::log("QTHttpGet");
+BLogger QTHttpPost::log("QTHttpPost");
+BLogger QTHttpPut::log("QTHttpPut");
+BLogger QTHttpWorkerThread::log("QTHttpWorkerThread");
+BLogger QTHttpRequestBridge::log("QTHttpRequestBridge");
+BLogger QTHttpWorkerBridge::log("QTHttpWorkerBridge");
 
 }}}}}
 

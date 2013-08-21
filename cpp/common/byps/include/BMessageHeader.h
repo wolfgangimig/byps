@@ -10,8 +10,6 @@ const int32_t BMAGIC_BINARY_STREAM = 1113149523; // { 'B', 'Y', 'P', 'S' }
 
 // { 'B', 'Y', 'P', 'N' } ist belegt für BNegotiate
 
-const int32_t BHEADER_SIZE = 16;
-
 const int32_t BMAGIC_BINARY_STREAM_LE = 1397774658; // 0x53505942
 
 const int32_t BHEADER_FLAG_RESPONSE = 2;

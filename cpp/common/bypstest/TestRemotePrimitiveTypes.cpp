@@ -85,7 +85,7 @@ public:
 		TASSERT(L"char", L'Q', remote->getChar());
 		TASSERT(L"short", (int16_t)34, remote->getShort());
 		TASSERT(L"int", 56, remote->getInt());
-		TASSERT(L"long", 45LL, remote->getLong());
+        TASSERT(L"long", (int64_t)45LL, remote->getLong());
 		TASSERT(L"float", 7.4f, remote->getFloat());
 		TASSERT(L"double", 9.8, remote->getDouble());
 		TASSERT(L"String", std::wstring(L"23"), remote->getString());

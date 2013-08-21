@@ -13,7 +13,7 @@ TestCase::~TestCase() {
 
 void TestCase::add(const std::string& className, const std::string& fnctName, std::function<void (void)> fnct) {
 	TestFunction testFunction;
-	testFunction.name = className + "." + fnctName;
+    testFunction.name = className + std::string(".") + fnctName;
 	testFunction.lambda = fnct;
 	testFunctions.push_back(testFunction);
 }

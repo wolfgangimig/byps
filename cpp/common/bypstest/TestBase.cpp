@@ -7,14 +7,19 @@ BLogger TestBase::log("TestBase");
 
 TestBase::TestBase(void* app) 
 	: app(app) {
+    log.debug() << L"ctor()";
 }
 TestBase::~TestBase() {
+    log.debug() << L"dtor()";
 }
 
 void TestBase::beforeCase() {
+    log.debug() << L"beforeCase(";
 	client = TestUtilHttp::createClient(app);
+    log.debug() << L")beforeCase";
 }
 void TestBase::afterCase() {
+    log.debug() << L"afterCase(";
 	client->done();
 #ifdef _DEBUG
 	assert(client.use_count() == 1);
@@ -23,7 +28,7 @@ void TestBase::afterCase() {
 	long rc = transport.use_count();
 	assert(rc == 1);
 #endif
-	
+    log.debug() << L")afterCase";
 }
 
 void TestBase::onError(const std::exception& ex) {
