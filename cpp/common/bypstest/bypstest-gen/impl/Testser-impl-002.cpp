@@ -5,7 +5,96 @@ using namespace ::com::wilutions::byps;
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
+// Implementation of class BResult_183594037
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+void com::wilutions::byps::test::api::BResult_183594037::serialize(BIO& ar, const unsigned int version) {
+	ar & result;
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_333265053(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::BResult_183594037& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_183594037*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_183594037());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
+// Implementation of class BResult_1851881336
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+void com::wilutions::byps::test::api::BResult_1851881336::serialize(BIO& ar, const unsigned int version) {
+	ar & result;
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1651982651(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::BResult_1851881336& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_1851881336*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_1851881336());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
+// Implementation of class BResult_1859644668
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+void com::wilutions::byps::test::api::BResult_1859644668::serialize(BIO& ar, const unsigned int version) {
+	ar & result;
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_101217472(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::BResult_1859644668& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_1859644668*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_1859644668());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
+// Implementation of class BResult_1888107655
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+void com::wilutions::byps::test::api::BResult_1888107655::serialize(BIO& ar, const unsigned int version) {
+	ar & result;
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_427000(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::BResult_1888107655& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_1888107655*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_1888107655());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
 // Implementation of class BResult_1888799711
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_1888799711::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -27,6 +116,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_1898022288
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_1898022288::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -48,9 +138,9 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_19
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_19::serialize(BIO& ar, const unsigned int version) {
-	ar & result;
 }
 }}}}}
 
@@ -69,6 +159,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_1972793385
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_1972793385::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -90,6 +181,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_1973996106
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_1973996106::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -111,6 +203,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_1997002548
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_1997002548::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -132,6 +225,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -153,6 +247,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2028443792
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2028443792::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -174,6 +269,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2049740106
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2049740106::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -195,6 +291,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2052431866
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2052431866::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -216,6 +313,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2058423690
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2058423690::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -237,6 +335,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2067161310
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2067161310::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -258,6 +357,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2078696281
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2078696281::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -279,6 +379,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2087445849
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2087445849::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -300,6 +401,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_21
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_21::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -321,6 +423,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_2123584667
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_2123584667::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -342,6 +445,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_3
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_3::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -363,6 +467,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_31512998
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_31512998::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -384,6 +489,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_39910537
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_39910537::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -405,6 +511,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_4
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_4::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -426,6 +533,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_476459792
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_476459792::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -447,6 +555,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_487702928
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_487702928::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -468,6 +577,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_5
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_5::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -489,6 +599,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_588723219
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_588723219::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -510,6 +621,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_6
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_6::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -531,6 +643,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_601099730
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_601099730::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -552,6 +665,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_7
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_7::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -573,6 +687,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_7007
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_7007::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -594,6 +709,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_703065817
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_703065817::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -615,6 +731,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_766441794
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_766441794::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -636,6 +753,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_769021986
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_769021986::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -657,6 +775,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_8
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_8::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -678,6 +797,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_801243127
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_801243127::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -699,6 +819,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_846419204
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_846419204::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -720,6 +841,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_8789515
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_8789515::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -741,6 +863,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_9001
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_9001::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -762,6 +885,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_936607009
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_936607009::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -783,6 +907,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_94341197
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_94341197::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -804,6 +929,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class BResult_945713488
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 void com::wilutions::byps::test::api::BResult_945713488::serialize(BIO& ar, const unsigned int version) {
 	ar & result;
@@ -825,6 +951,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class ArrayTypes1dim
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 com::wilutions::byps::test::api::arr::ArrayTypes1dim::ArrayTypes1dim() {
 }
@@ -869,6 +996,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class ArrayTypes4dim
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 com::wilutions::byps::test::api::arr::ArrayTypes4dim::ArrayTypes4dim() {
 }
@@ -913,6 +1041,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class AllTypesC
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 const ::std::wstring AllTypesC::stringNull = std::wstring();
 
@@ -1057,6 +1186,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class AllTypesZ
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 com::wilutions::byps::test::api::cons::AllTypesZ::AllTypesZ() {
 	bool1 = false;
@@ -1128,6 +1258,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 //-------------------------------------------------
 // Implementation of class HebrewC
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 const ::std::wstring HebrewC::aleph = std::wstring(L"\u05d0");
 
@@ -1153,160 +1284,6 @@ void BSerializer_691741677(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::cons::HebrewC());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
-
-//-------------------------------------------------
-// Implementation of class HebrewZ
-
-com::wilutions::byps::test::api::cons::HebrewZ::HebrewZ() {
-}
-com::wilutions::byps::test::api::cons::HebrewZ::HebrewZ(::std::wstring core)
-	: core(core)
-	{}
-void com::wilutions::byps::test::api::cons::HebrewZ::serialize(BIO& ar, const unsigned int version) {
-	ar & core;
-}
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1518668429(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		com::wilutions::byps::test::api::cons::HebrewZ& r = * dynamic_cast< com::wilutions::byps::test::api::cons::HebrewZ*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::cons::HebrewZ());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_2092671091(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > & r = * reinterpret_cast< BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > *>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > ());
-	}
-}
-}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace enu { 
-
-void operator & (BIO& ar, EnumPlanets& e) {
-	int32_t v = static_cast<int32_t>(e);
-	ar & v;
-	if (ar.is_loading) e = static_cast<EnumPlanets>(v);
-}
-
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1092048313(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > & r = * reinterpret_cast< BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > *>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > ());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace enu { 
-
-//-------------------------------------------------
-// Implementation of class UsePlanets
-
-com::wilutions::byps::test::api::enu::UsePlanets::UsePlanets() {
-	planet = com::wilutions::byps::test::api::enu::EnumPlanets::Mercury;
-	planet2 = com::wilutions::byps::test::api::enu::EnumPlanets::Mercury;
-}
-com::wilutions::byps::test::api::enu::UsePlanets::UsePlanets(com::wilutions::byps::test::api::enu::EnumPlanets planet, com::wilutions::byps::test::api::enu::EnumPlanets planet2, byps_ptr< BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > > arrayOfPlanets, byps_ptr< ::std::vector< com::wilutions::byps::test::api::enu::EnumPlanets > > listOfPlanets, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::enu::EnumPlanets > > mapOfPlanets)
-	: planet(planet)
-	, planet2(planet2)
-	, arrayOfPlanets(arrayOfPlanets)
-	, listOfPlanets(listOfPlanets)
-	, mapOfPlanets(mapOfPlanets)
-	{}
-void com::wilutions::byps::test::api::enu::UsePlanets::serialize(BIO& ar, const unsigned int version) {
-	ar & planet;
-	ar & planet2;
-	ar & arrayOfPlanets;
-	ar & listOfPlanets;
-	ar & mapOfPlanets;
-}
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_10000(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		com::wilutions::byps::test::api::enu::UsePlanets& r = * dynamic_cast< com::wilutions::byps::test::api::enu::UsePlanets*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::enu::UsePlanets());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
-
-//-------------------------------------------------
-// Implementation of class Class1
-
-com::wilutions::byps::test::api::inherit::Class1::Class1() {
-	int1 = 0;
-}
-com::wilutions::byps::test::api::inherit::Class1::Class1(int32_t int1, com::wilutions::byps::test::api::inherit::PClass1 nextClass1)
-	: int1(int1)
-	, nextClass1(nextClass1)
-	{}
-void com::wilutions::byps::test::api::inherit::Class1::serialize(BIO& ar, const unsigned int version) {
-	ar & int1;
-	ar & nextClass1;
-}
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_6001(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		com::wilutions::byps::test::api::inherit::Class1& r = * dynamic_cast< com::wilutions::byps::test::api::inherit::Class1*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::Class1());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
-
-//-------------------------------------------------
-// Implementation of class Class1Collections
-
-com::wilutions::byps::test::api::inherit::Class1Collections::Class1Collections() {
-}
-com::wilutions::byps::test::api::inherit::Class1Collections::Class1Collections(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inherit::PClass1 > > list1, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::inherit::PClass1 > > map1, byps_ptr< ::std::set< com::wilutions::byps::test::api::inherit::PClass1 > > set1)
-	: list1(list1)
-	, map1(map1)
-	, set1(set1)
-	{}
-void com::wilutions::byps::test::api::inherit::Class1Collections::serialize(BIO& ar, const unsigned int version) {
-	ar & list1;
-	ar & map1;
-	ar & set1;
-}
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_6004(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		com::wilutions::byps::test::api::inherit::Class1Collections& r = * dynamic_cast< com::wilutions::byps::test::api::inherit::Class1Collections*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::Class1Collections());
 	}
 }
 }}}}}
