@@ -43,6 +43,7 @@ BINLINE void HWireClient_RequestsToCancel::remove(intptr_t id) {
     byps_unique_lock lock(mutex);
 	std::map<intptr_t, PHttpRequest>::iterator it = map.find(id);
 	if (it != map.end()) {
+		(*it).second->close();
 		map.erase(it);
 	}
 }
