@@ -58,7 +58,7 @@ public:
 		//InterlockedIncrement(&openRequests);
 	}
 
-	~WinHttpRequest() {
+	virtual ~WinHttpRequest() {
 		close();
 	}
 
@@ -342,7 +342,8 @@ public:
 		memset(buffer, 0, sizeof(buffer));
 	}
 
-	~WinHttpGet() {}
+	virtual ~WinHttpGet() {
+	}
 
 	virtual void finishOnError(const BException& ex) throw() {
 		this->ex = ex;
@@ -495,7 +496,8 @@ public:
 	{
 	}
 
-	~WinHttpPost() {}
+	virtual ~WinHttpPost() {
+	}
 
 	virtual void finishOnOK() throw() {
 		if (asyncResult) {
@@ -626,7 +628,8 @@ public:
 		memset(buffer, 0, sizeof(buffer));
 	}
 
-	~WinHttpPut() {}
+	virtual ~WinHttpPut() {
+	}
 
 	virtual void finishOnOK() throw() {
 		if (asyncResult) {
