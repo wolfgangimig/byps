@@ -162,35 +162,35 @@ public 	class HActiveMessage {
 	private synchronized void addIncomingStreamAsync(final Long streamId, HRequestContext rctxt) throws BException {
 		if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(streamId=" + streamId + ", rctxt=" + rctxt);
 		
-		final HActiveMessage msg = this;
-		final HttpServletRequest request = (HttpServletRequest)(rctxt.getRequest());
-		final String contentType = request.getContentType();
-		final String contentLengthStr = request.getHeader("Content-Length");
-		final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
-		final String totalLengthStr = request.getParameter("total");
-		final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
-		final String partIdStr = request.getParameter("partid");
-		final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
-	
-		HAsyncErrorListener alsn = new HAsyncErrorListener() {
-			@Override
-			public void onError(AsyncEvent arg0) throws IOException {
-				if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onError(" + arg0 + ")");
-				InputStream is = null;
-				synchronized(msg) {
-					is = incomingStreams.remove(streamId);
-				}
-				if (is != null) is.close();
-			}
-		};
-		rctxt.addListener(alsn);
-	
-		if (incomingStreams == null) {
-			incomingStreams = new HashMap<Long, BContentStream>();
-		}
-			
-		BContentStream istrm = null;
 		try {
+			final HActiveMessage msg = this;
+			final HttpServletRequest request = (HttpServletRequest)(rctxt.getRequest());
+			final String contentType = request.getContentType();
+			final String contentLengthStr = request.getHeader("Content-Length");
+			final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
+			final String totalLengthStr = request.getParameter("total");
+			final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
+			final String partIdStr = request.getParameter("partid");
+			final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
+		
+			HAsyncErrorListener alsn = new HAsyncErrorListener() {
+				@Override
+				public void onError(AsyncEvent arg0) throws IOException {
+					if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onError(" + arg0 + ")");
+					InputStream is = null;
+					synchronized(msg) {
+						is = incomingStreams.remove(streamId);
+					}
+					if (is != null) is.close();
+				}
+			};
+			rctxt.addListener(alsn);
+		
+			if (incomingStreams == null) {
+				incomingStreams = new HashMap<Long, BContentStream>();
+			}
+				
+			BContentStream istrm = null;
 			
 			// Is splitted stream?
 			if (partId != 0 || totalLength != -1L) {
@@ -247,8 +247,9 @@ public 	class HActiveMessage {
 	        notifyAll();
 			
 			
-		} catch (IOException e) {
-			throw new BException(BException.IOERROR, e.getMessage(), e);
+		}
+		catch (Throwable e) {
+			throw new BException(BException.IOERROR, "Failed to add incoming stream", e);
 		}
 
         if (log.isDebugEnabled()) log.debug(")addIncomingStreamAsync");
@@ -257,23 +258,24 @@ public 	class HActiveMessage {
 	private synchronized void addIncomingStreamSync(final Long streamId, final HRequestContext rctxt) throws BException {
 		if (log.isDebugEnabled()) log.debug("addIncomingStreamSync(" + streamId);
 	
-		final HActiveMessage msg = this;
-		final HttpServletRequest request = (HttpServletRequest)(rctxt.getRequest());
-		final String contentType = request.getContentType();
-		final String contentLengthStr = request.getHeader("Content-Length");
-		final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
-		final String totalLengthStr = request.getParameter("total");
-		final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
-		final String partIdStr = request.getParameter("partid");
-		final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
-		final String lastPartStr = request.getParameter("last");
-		final boolean lastPart = lastPartStr != null && lastPartStr.length() != 0 ? Boolean.parseBoolean(lastPartStr) : true;
-
-		if (log.isDebugEnabled()) {
-			log.debug("contentType=" + contentType + ", contentLength=" + contentLengthStr + ", partId=" + partId + ", totalLength=" + totalLength);
-		}
-		
 		try {			
+			final HActiveMessage msg = this;
+			final HttpServletRequest request = (HttpServletRequest)(rctxt.getRequest());
+			final String contentType = request.getContentType();
+			final String contentLengthStr = request.getHeader("Content-Length");
+			final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
+			final String totalLengthStr = request.getParameter("total");
+			final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
+			final String partIdStr = request.getParameter("partid");
+			final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
+			final String lastPartStr = request.getParameter("last");
+			final boolean lastPart = lastPartStr == null || lastPartStr.length() == 0 ||
+					Integer.parseInt(lastPartStr) == 1;
+	
+			if (log.isDebugEnabled()) {
+				log.debug("contentType=" + contentType + ", contentLength=" + contentLengthStr + ", partId=" + partId + ", totalLength=" + totalLength);
+			}
+		
 			HIncomingStreamSync istrm = incomingStreams != null ? (HIncomingStreamSync)incomingStreams.get(streamId) : null;
 			
 			if (istrm == null) {
@@ -316,9 +318,6 @@ public 	class HActiveMessage {
 	        // Notify threads waiting to read this stream
 	        notifyAll();
 	        
-		}
-		catch (BException e) {
-			throw e;
 		}
 		catch (Throwable e) {
 			throw new BException(BException.IOERROR, "Failed to add incoming stream", e);

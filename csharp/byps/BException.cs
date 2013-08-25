@@ -17,6 +17,8 @@ namespace com.wilutions.byps
         public const int TIMEOUT = 13;
         public const int REMOTE_ERROR = 10;
         public const int IOERROR = 14;
+        public const int TOO_MANY_REQUESTS = 15;
+        public const int NO_REVERSE_CONNECTIONS = 16;
         public const int UNSUPPORTED_METHOD = 17;
         public const int CANCELED = 100;
 

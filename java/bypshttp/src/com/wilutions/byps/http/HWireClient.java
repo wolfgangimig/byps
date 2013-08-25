@@ -46,7 +46,8 @@ public class HWireClient extends BWire {
 	protected final static long MESSAGEID_DISCONNECT = -2;
 
 	protected final String surl;
-	protected final static int CHUNK_SIZE = 8 * 1000;
+	protected final static int CHUNK_SIZE = 10 * 1000;
+	protected final static int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE; // should be a multiple of CHUNK_SIZE
 	protected final Log log = LogFactory.getLog(HWireClient.class);
 	protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
 	protected final Executor threadPool;
@@ -584,7 +585,6 @@ public class HWireClient extends BWire {
 		
 		final long messageId = request.streamRequest.messageId;
 		final long streamId = request.streamRequest.streamId; 
-		final int maxStreamPartLength = 10 * 1000 * 1000; // should be a multiple of CHUNK_SIZE
 		InputStream stream = request.streamRequest.strm;
 		
 		if (log.isDebugEnabled()) log.debug("internalPutStream(messageId=" + messageId + ", streamId=" + streamId + ", stream=" + stream);
@@ -643,8 +643,8 @@ public class HWireClient extends BWire {
 			// Compute number of stream parts
 			long nbOfParts = 1; 
 			if (totalLength > 0) {
-				nbOfParts = totalLength / maxStreamPartLength;
-				if ((totalLength % maxStreamPartLength) != 0) {
+				nbOfParts = totalLength / MAX_STREAM_PART_SIZE;
+				if ((totalLength % MAX_STREAM_PART_SIZE) != 0) {
 					nbOfParts++;
 				}
 				if (log.isDebugEnabled()) log.debug("send stream in #parts=" + nbOfParts);
@@ -662,6 +662,8 @@ public class HWireClient extends BWire {
 					break;
 				}
 				
+				// Read the first chunk to find out, 
+				// wether it is the last part to be sent.
 				byte[] buf = new byte[CHUNK_SIZE];
 				int len = stream.read(buf, 0, buf.length);
 				
@@ -677,7 +679,7 @@ public class HWireClient extends BWire {
 					.append("?messageid=").append(messageId)
 					.append("&streamid=").append(streamId)
 					.append("&partid=").append(partId)
-					.append("&last=").append(lastPart)
+					.append("&last=").append(lastPart ? 1 : 0)
 					.append("&total=").append(totalLength);
 					
 				final URL url = new URL(burl.toString());
@@ -706,7 +708,7 @@ public class HWireClient extends BWire {
 				while (len != -1) {
 					os.write(buf, 0, len);
 					sum += len;
-					if (sum >= maxStreamPartLength) break;
+					if (sum >= MAX_STREAM_PART_SIZE) break;
 					len = stream.read(buf, 0, buf.length);
 				}
 				
