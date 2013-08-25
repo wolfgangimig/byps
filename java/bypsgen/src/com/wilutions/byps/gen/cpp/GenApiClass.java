@@ -677,6 +677,7 @@ class GenApiClass {
 		prC.println();
 		pctxt.printLine(prC);
 		prC.println("// Implementation of class " + className);
+		prC.println("// Generated from " + this.getClass());
 		prC.println();
 		
 		//pr.println("@SuppressWarnings(\"serial\")");
@@ -976,6 +977,10 @@ class GenApiClass {
 //			   .print(memberName).print(" = byps_ptr_cast<").print(tinfoCpp.getQClassName()).print(">(p)").println(";");
 //			prC.endBlock();
 //			prC.println("}");
+		}
+		else if (tinfo.isVoidType()) {
+			// We are here for serializing the return value of a method.
+			// The return type is VOID. So there is nothing to serialize.
 		}
 		else { 
 			prC.print("ar & ").print(memberName).print(";")

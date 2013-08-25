@@ -498,7 +498,13 @@ public:
 
 	virtual void finishOnOK() throw() {
 		if (asyncResult) {
-			asyncResult->setAsyncResult(BVariant(respBytes));
+			if (respBytes) { // shoud not be null
+				respBytes->length = respIdx;
+				asyncResult->setAsyncResult(BVariant(respBytes));
+			}
+			else {
+				asyncResult->setAsyncResult(BVariant(BException(EX_IOERROR, L"No bytes received")));
+			}
 			asyncResult = NULL;
 		}
 	}

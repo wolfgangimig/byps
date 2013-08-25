@@ -21,13 +21,13 @@ void TestBase::beforeCase() {
 void TestBase::afterCase() {
     log.debug() << L"afterCase(";
 	client->done();
-#ifdef _DEBUG
-	assert(client.use_count() == 1);
-	PTransport transport = client->transport;
-	client.reset();
-	long rc = transport.use_count();
-	assert(rc == 1);
-#endif
+
+    assert(client.use_count() == 1);
+    PTransport transport = client->transport;
+    client.reset();
+    long rc = transport.use_count();
+    assert(rc == 1);
+
     log.debug() << L")afterCase";
 }
 

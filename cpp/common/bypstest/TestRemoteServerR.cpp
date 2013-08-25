@@ -277,13 +277,13 @@ public:
 	}
 
 	virtual void init() {
-		ADD_TEST(testServerProvidesStreamForClient);
+        ADD_TEST(testCallClientFromServer);
+        ADD_TEST(testServerProvidesStreamForClient);
 		ADD_TEST(testCallKilledClientFromClient);
 		ADD_TEST(testCallDeadClientFromClient);
 		ADD_TEST(testCallClientFromClientThrowEx);
 		ADD_TEST(testCallClientFromServerNoRemoteImpl);
 		ADD_TEST(testCallClientFromClient);
-		ADD_TEST(testCallClientFromServer);
 		ADD_TEST(testCallClient2FromServer1);
 		ADD_TEST(testCallClientFromServerParallel);
 	}

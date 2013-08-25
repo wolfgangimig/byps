@@ -345,6 +345,7 @@ BINLINE PContentStream HWireClient::getStream(int64_t messageId, int64_t streamI
 	ssurl << url << L"?messageid=" << messageId << L"&streamid=" << streamId;
 
 	PHttpGet streamRequest = httpClient->get(ssurl.str());
+    streamRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsClient);
 
 	MyContentStream* stream = new MyContentStream(requestsToCancel);
 	if (!requestsToCancel->add(stream->id, streamRequest)) {

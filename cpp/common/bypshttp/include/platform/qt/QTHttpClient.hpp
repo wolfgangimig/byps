@@ -4,139 +4,14 @@
 
 #include "QTHttpClient.h"
 #include "QTHttpClientI.h"
-
+#include <QStack>
 
 namespace com { namespace wilutions { namespace byps { namespace http { namespace qthttp {
 
 using namespace com::wilutions::byps;
 using namespace com::wilutions::byps::http;
 
-
-/**
- * @brief The QIODevice_PBytes class
- */
-class QIODevice_PBytes : public QIODevice {
-    static BLogger log;
-    PBytes bytes;
-    qint64 offs;
-public:
-    QIODevice_PBytes(PBytes bytes)
-        : bytes(bytes), offs(0) {
-    }
-
-    QIODevice_PBytes()
-        : offs(0) {
-
-    }
-
-    virtual bool isSequential() const{
-        l_debug << L"isSequential()=true";
-        return true;
-    }
-
-    virtual bool reset() {
-        offs = 0;
-        l_debug << L"reset()=true";
-        return true;
-    }
-
-    virtual qint64 pos() const {
-        l_debug << L"pos()=" << offs;
-        return offs;
-    }
-
-    virtual qint64 size() const {
-        l_debug << L"size()=" << bytes->length;
-        return (qint64)bytes->length;
-    }
-
-    virtual bool atEnd() const {
-        bool ret = offs == (qint64)bytes->length;
-        l_debug << L"atEnd()=" << ret;
-        return ret;
-    }
-
-    virtual qint64 bytesAvailable() const {
-        qint64 ret = bytes->length - offs;
-        l_debug << L"bytesAvailable()=" << ret;
-        return ret;
-    }
-
-    virtual qint64 readData(char *data, qint64 maxlen) {
-        l_debug << L"readData(maxlen=" << maxlen;
-        qint64 ret = -1LL;
-        qint64 length = (qint64)bytes->length;
-
-        if (offs < length) {
-            ret = std::min(maxlen, length-offs);
-            memcpy(data, bytes->data + offs, ret);
-            offs += ret;
-        }
-        else if (offs == length) {
-            offs++;
-            ret = 0;
-        }
-
-        l_debug << L")readData=" << ret;
-        return ret;
-    }
-
-    virtual qint64 writeData(const char *data, qint64 maxlen) {
-        l_debug << L"writeData(maxlen=" << maxlen;
-        qint64 ret = -1LL;
-        qint64 length = (qint64)bytes->length;
-
-        if (offs < length) {
-            ret = std::min(maxlen, length-offs);
-            memcpy(bytes->data + offs, data, ret);
-            offs += ret;
-        }
-        else if (offs == length) {
-            offs++;
-            ret = 0;
-        }
-
-        l_debug << L")writeData=" << ret;
-        return ret;
-    }
-};
-
-class QIODevice_PContentStream : public QIODevice {
-    PContentStream strm;
-
-public:
-    QIODevice_PContentStream(PContentStream strm)
-        : strm(strm) {
-    }
-
-    QIODevice_PContentStream()
-    {
-
-    }
-
-    virtual bool isSequential() const{
-        return true;
-    }
-
-    virtual bool reset() {
-        return false;
-    }
-
-    virtual qint64 size() const {
-        int64_t contentLength = strm->getContentLength();
-        return (qint64)(contentLength >= 0 ? contentLength : 1);
-    }
-
-    virtual qint64 readData(char *data, qint64 maxlen) {
-        int32_t len = (int32_t)std::min(maxlen, 0x7FFFFFFFLL);
-        qint64 cb = strm->read(data, 0, len);
-        return cb;
-    }
-
-    virtual qint64 writeData(const char *, qint64 ) {
-        return -1LL;
-    }
-};
+#define MAX_STREAM_PART_SIZE (1000 * 1000)
 
 class QTHttpGet_ContentStream : public BContentStream {
     byps_condition_variable waitRead;
@@ -161,7 +36,7 @@ public:
         , headersAvail(false)
         , timeout(timeoutSeconds * 1000)
     {
-        l_debug << L"ctor()";
+        l_debug << L"ctor(timeoutSeconds=" << timeoutSeconds << L")";
     }
 
     virtual ~QTHttpGet_ContentStream() {
@@ -293,15 +168,15 @@ public:
         QObject::connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
 
         QObject::connect(&clientBridge, SIGNAL(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
-                         worker->getWorkerBridge(), SLOT(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
+                         worker->workerBridge, SLOT(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
                          Qt::BlockingQueuedConnection);
 
         QObject::connect(&clientBridge, SIGNAL(createPostRequest(QNetworkRequest,int32_t,QByteArray*,QTHttpRequestBridge**)),
-                         worker->getWorkerBridge(), SLOT(createPostRequest(QNetworkRequest,int32_t,QByteArray*,QTHttpRequestBridge**)),
+                         worker->workerBridge, SLOT(createPostRequest(QNetworkRequest,int32_t,QByteArray*,QTHttpRequestBridge**)),
                          Qt::BlockingQueuedConnection);
 
-        QObject::connect(&clientBridge, SIGNAL(createPutRequest(QNetworkRequest,int32_t,QIODevice*,QTHttpRequestBridge**)),
-                         worker->getWorkerBridge(), SLOT(createPutRequest(QNetworkRequest,int32_t,QIODevice*,QTHttpRequestBridge**)),
+        QObject::connect(&clientBridge, SIGNAL(createPutRequest(QNetworkRequest,int32_t,QByteArray*,QTHttpRequestBridge**)),
+                         worker->workerBridge, SLOT(createPutRequest(QNetworkRequest,int32_t,QByteArray*,QTHttpRequestBridge**)),
                          Qt::BlockingQueuedConnection);
 
         l_debug << L")ctor";
@@ -332,7 +207,7 @@ public:
             // and the message is to be cancelled. Cancelling a message is performed with a
             // special GET request in HWireClient::sendCancelMessage.
             // see HWireClient_AsyncResultAfterAllRequests::setAsyncResult
-            worker->getWorkerBridge()->createGetRequest(networkRequest, timeout, ppbridge);
+            worker->workerBridge->createGetRequest(networkRequest, timeout, ppbridge);
         }
         else {
           emit clientBridge.createGetRequest(networkRequest, timeout, ppbridge);
@@ -350,9 +225,16 @@ public:
         l_debug << L")createPostRequest";
     }
 
-    void createPutRequest(PQTHttpRequest req, QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamToPut, QTHttpRequestBridge** ppbridge) {
+    void createPutRequest(PQTHttpRequest req, QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPut, QTHttpRequestBridge** ppbridge) {
         l_debug << L"createPutRequest(";
-        emit clientBridge.createPutRequest(networkRequest, timeout, streamToPut, ppbridge);
+        if (QThread::currentThread() == worker) {
+            // This function is called from the worker thread, if subsequent
+            // stream parts have to be sent.
+            worker->workerBridge->createPutRequest(networkRequest, timeout, bytesToPut, ppbridge);
+        }
+        else {
+            emit clientBridge.createPutRequest(networkRequest, timeout, bytesToPut, ppbridge);
+        }
         l_debug << L"bridge=" << (void*)*ppbridge;
         (*ppbridge)->pThis = req;
         l_debug << L")createPutRequest";
@@ -363,7 +245,7 @@ public:
 
 class QTHttpRequest : public virtual HHttpRequest, public byps_enable_shared_from_this<QTHttpRequest> {
 protected:
-    PQTHttpClient httpClient;
+    byps_weak_ptr<QTHttpClient> httpClient;
     QNetworkRequest networkRequest;
     QTHttpRequestBridge* bridge;
     int32_t timeoutSeconds;
@@ -422,6 +304,15 @@ public:
         l_debug << L")abort";
     }
 
+    PQTHttpClient getHttpClient() {
+        PQTHttpClient httpClient = this->httpClient.lock();
+        if (!httpClient) {
+            result = BVariant(BException(EX_CANCELLED, L"HttpClient object already deleted."));
+            internalApplyResult();
+        }
+        return httpClient;
+    }
+
     virtual void internalApplyResult() = 0;
 
     virtual void httpFinished() = 0;
@@ -442,7 +333,7 @@ public:
             result = BVariant(ex);
         }
         l_debug << L")httpError";
-        }
+    }
 
     virtual void close() {
         l_debug << L"close(";
@@ -479,9 +370,12 @@ public:
         byps_ptr<QTHttpGet_ContentStream> ret(new QTHttpGet_ContentStream(timeoutSeconds));
         this->stream_weak_ptr = ret;
 
-        l_debug << L"networkManager->get...";
-        httpClient->createGetRequest(shared_from_this(), networkRequest, getTimeoutSeconds(), &bridge);
-        l_debug << L"networkManager->get OK";
+        PQTHttpClient httpClient = getHttpClient();
+        if (httpClient) {
+            l_debug << L"networkManager->get...";
+            httpClient->createGetRequest(shared_from_this(), networkRequest, getTimeoutSeconds(), &bridge);
+            l_debug << L"networkManager->get OK";
+        }
 
         l_debug << L")send";
         return ret;
@@ -510,7 +404,7 @@ public:
                 stream->writeClose();
             }
          }
-        l_debug << L")internalApplyResult";
+         l_debug << L")internalApplyResult";
     }
 
     virtual void httpFinished() {
@@ -577,11 +471,13 @@ public:
 
         networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, QVariant(QString::fromStdWString(contentType)));
         networkRequest.setHeader(QNetworkRequest::ContentLengthHeader, QVariant((qulonglong)bytes->length));
-        networkRequest.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QVariant( int(QNetworkRequest::AlwaysNetwork)));
 
-        l_debug << L"networkManager->post...";
-        httpClient->createPostRequest(shared_from_this(), networkRequest, getTimeoutSeconds(), bytesToPost, &bridge);
-        l_debug << L"networkManager->post OK";
+        PQTHttpClient httpClient = getHttpClient();
+        if (httpClient) {
+            l_debug << L"networkManager->post...";
+            httpClient->createPostRequest(shared_from_this(), networkRequest, getTimeoutSeconds(), bytesToPost, &bridge);
+            l_debug << L"networkManager->post OK";
+        }
 
         l_debug << L")send";
     }
@@ -624,18 +520,20 @@ public:
         if (asyncBytesReceived) {
 
             QByteArray bytes = bridge->reply->readAll();
-            l_debug << L"#bytes=" << bytes.size();
+            size_t bsize = bytes.size();
+            l_debug << L"received #bytes=" << bsize;
 
-            if (pos + (size_t)bytes.size() > respBytes->length) {
-                size_t ncapacity = respBytes->length + std::min(respBytes->length, (size_t)1000000);
+            if (pos + bsize > respBytes->length) {
+                size_t grow = std::min(respBytes->length, (size_t)1000000);
+                size_t ncapacity = std::max(respBytes->length + grow, pos + bsize);
                 l_debug << L"grow buffer to new capacity=" << ncapacity;
                 respBytes = BBytes::create(respBytes, ncapacity);
             }
 
             l_debug << L"copy bytes";
-            memcpy(respBytes->data + pos, bytes.data(), (size_t)bytes.size());
+            memcpy(respBytes->data + pos, bytes.data(), bsize);
 
-            pos += bytes.size();
+            pos += bsize;
             l_debug << L"received so far: #bytes=" << pos;
         }
     }
@@ -643,8 +541,14 @@ public:
 };
 
 class QTHttpPut : public HHttpPut, public virtual QTHttpRequest {
-    QIODevice_PContentStream* streamToPut;
+    PContentStream streamToPut;
     PAsyncResult asyncBoolFinished;
+    int64_t partId;
+    int64_t nbOfParts;
+    int64_t totalLength;
+    bool isLastPart;
+    PBytes bytesToPut;
+    QString baseUrl;
     friend class QTHttpPutWorker;
     static BLogger log;
 public:
@@ -652,39 +556,103 @@ public:
         : QTHttpRequest(httpClient, networkRequest)
         , streamToPut(NULL)
         , asyncBoolFinished(NULL)
+        , partId(0)
+        , nbOfParts(0)
+        , totalLength(0)
+        , isLastPart(false)
     {
         l_debug << L"ctor()";
     }
 
     virtual ~QTHttpPut() {
         l_debug << L"dtor()";
-        if (streamToPut) delete streamToPut;
     }
 
     virtual void send(PContentStream strm, PAsyncResult asyncBoolFinished) {
         int64_t contentLength = strm->getContentLength();
         l_debug << L"send(contentLength=" << contentLength << L", contentType=" << strm->getContentType();
-        if (contentLength >= 0) {
 
-            this->asyncBoolFinished = asyncBoolFinished;
+        this->asyncBoolFinished = asyncBoolFinished;
+        this->streamToPut = strm;
+        this->totalLength = contentLength;
+        this->baseUrl = networkRequest.url().url();
 
-            streamToPut = new QIODevice_PContentStream(strm);
+        if (totalLength >= 0) {
+            nbOfParts = totalLength / MAX_STREAM_PART_SIZE;
+            if (totalLength % MAX_STREAM_PART_SIZE) {
+                nbOfParts++;
+            }
+        }
+        else {
+            nbOfParts = INT64_MAX;
+        }
 
-            networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, QVariant(QString::fromStdWString(strm->getContentType())));
+        sendNextPart(0);
+    }
+
+    void sendNextPart(int64_t nextPartId) {
+        l_debug << L"sendNextPart(nextPartId=" << nextPartId;
+
+        this->partId = nextPartId;
+
+        PQTHttpClient httpClient = getHttpClient();
+        if (httpClient) {
+
+            int32_t contentLength = 0;
+
+            // Read stream part into buffer
+            if (totalLength >= 0) {
+                if (bytesToPut == NULL) {
+                    size_t capacity = std::min((size_t)totalLength, (size_t)MAX_STREAM_PART_SIZE);
+                    l_debug << L"create buffer with capacity=" << capacity;
+                    bytesToPut = BBytes::create(capacity);
+                }
+                l_debug << L"read from stream...";
+                contentLength = streamToPut->read((char*)bytesToPut->data, 0, bytesToPut->length);
+                if (contentLength < 0) contentLength = 0; // true, if stream is empty
+                l_debug << L"read from stream OK, #bytes=" << contentLength;
+                isLastPart = partId >= nbOfParts-1; // nbOfParts might be 0
+                l_debug << L"isLastPart=" << isLastPart;
+            }
+            else {
+                if (bytesToPut == NULL) {
+                    l_debug << L"create buffer with capacity=" << MAX_STREAM_PART_SIZE;
+                    bytesToPut = BBytes::create(MAX_STREAM_PART_SIZE);
+                }
+                l_debug << L"read from stream...";
+                contentLength = streamToPut->read((char*)bytesToPut->data, 0, bytesToPut->length);
+                l_debug << L"read from stream OK, #bytes=" << contentLength;
+                if (contentLength < 0) contentLength = 0; // true, if stream is empty or stream size is a multiple of MAX_STREAM_PART_SIZE
+                isLastPart = contentLength < MAX_STREAM_PART_SIZE;
+                l_debug << L"isLastPart=" << isLastPart;
+            }
+
+            // Append partid, totallength to URL
+            QString partUrl = baseUrl;
+            partUrl.append("&partid=").append(QString::number(partId));
+            partUrl.append("&total=").append(QString::number(totalLength));
+            partUrl.append("&last=").append(QString::number(isLastPart));
+            l_debug << L"partUrl=" << partUrl.toStdWString();
+            networkRequest.setUrl(partUrl);
+
+            l_debug << L"header contentType=" << streamToPut->getContentType();
+            l_debug << L"header contentLength=" << contentLength;
+            networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, QVariant(QString::fromStdWString(streamToPut->getContentType())));
             networkRequest.setHeader(QNetworkRequest::ContentLengthHeader, QVariant((qulonglong)contentLength));
-            networkRequest.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QVariant( int(QNetworkRequest::AlwaysNetwork)));
 
             l_debug << L"networkManager->put...";
-            httpClient->createPutRequest(shared_from_this(), networkRequest, getTimeoutSeconds(), streamToPut, &bridge);
+            QByteArray qbytes = QByteArray::fromRawData((char*)bytesToPut->data, contentLength);
+            httpClient->createPutRequest(shared_from_this(), networkRequest, getTimeoutSeconds(), &qbytes, &bridge);
             l_debug << L"networkManager->put OK";
 
         }
         else {
-            l_debug << L"setAsyncResult EX_IOERROR";
-            asyncBoolFinished->setAsyncResult(BVariant(
-                BException(EX_IOERROR, L"QT does not support chunked encoding. BContentStream must provide a content length."))
-            );
+            // httpClient is already release. This should not happend during the HTTP request.
+            result = BVariant(BException(EX_CANCELLED, L"HTTP client has already been released."));
+            internalApplyResult();
         }
+
+        l_debug << L")sendNextPart";
     }
 
     virtual void internalApplyResult() {
@@ -697,10 +665,16 @@ public:
 
     virtual void httpFinished() {
         l_debug << L"httpFinished(";
-        if (!result.isException()) {
-            result = BVariant(true);
+        l_debug << L"isLastPart=" << isLastPart;
+        if (isLastPart) {
+            if (!result.isException()) {
+                result = BVariant(true);
+            }
+            done();
         }
-        done();
+        else {
+            sendNextPart(partId+1);
+        }
         l_debug << L")httpFinished";
     }
 
@@ -812,47 +786,28 @@ BINLINE PHttpPut QTHttpClient::put(const std::wstring& url) {
 }
 
 BINLINE QTHttpWorkerThread::QTHttpWorkerThread()
-    : workerBridge(NULL)
+    : workerBridge(new QTHttpWorkerBridge())
 {
     l_debug << L"ctor()";
+    workerBridge->moveToThread(this);
+    workerBridge->networkManager->moveToThread(this);
 }
 
 BINLINE QTHttpWorkerThread::~QTHttpWorkerThread()
 {
     l_debug << L"dtor()";
+    delete workerBridge;
 }
 
 BINLINE void QTHttpWorkerThread::run() {
     l_debug << L"run(";
-    {
-        byps_unique_lock lock(mutex);
-        workerBridge = new QTHttpWorkerBridge();
-        waitInit.notify_all();
-    }
     exec();
     l_debug << L")run";
-}
-
-BINLINE QTHttpWorkerBridge* QTHttpWorkerThread::getWorkerBridge() {
-    l_debug << L"getWorkerBridge(";
-    byps_unique_lock lock(mutex);
-    while (!workerBridge) {
-        l_debug << L"wait for init...";
-        std::chrono::milliseconds timeout(10 * 1000);
-        if (waitInit.wait_for(lock, timeout) == std::cv_status::timeout) {
-            l_debug << L"timeout while waiting for initialized worker thread";
-            return NULL;
-        }
-        l_debug << L"wait for init OK";
-    }
-    l_debug << L")getWorkerBridge";
-    return workerBridge;
 }
 
 BINLINE QTHttpWorkerBridge::QTHttpWorkerBridge()
     : networkManager(new QNetworkAccessManager())
 {
-
 }
 
 BINLINE void QTHttpWorkerBridge::createGetRequest(QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge ** ppbridge)
@@ -871,16 +826,15 @@ BINLINE void QTHttpWorkerBridge::createPostRequest(QNetworkRequest networkReques
     l_debug << L")createPostRequest";
 }
 
-BINLINE void QTHttpWorkerBridge::createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamToPut, QTHttpRequestBridge ** ppbridge)
+BINLINE void QTHttpWorkerBridge::createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPut, QTHttpRequestBridge ** ppbridge)
 {
     l_debug << L"createPutRequest(";
-    QNetworkReply* reply = networkManager->put(networkRequest, streamToPut);
+    QNetworkReply* reply = networkManager->put(networkRequest, *bytesToPut);
     *ppbridge = new QTHttpRequestBridge(reply, timeout);
     l_debug << L")createPutRequest";
 }
 
 
-BLogger QIODevice_PBytes::log("QIODevice_PBytes");
 BLogger QTHttpGet_ContentStream::log("QTHttpGet_ContentStream");
 BLogger QTHttpClient::log("QTHttpClient");
 BLogger QTHttpRequest::log("QTHttpRequest");

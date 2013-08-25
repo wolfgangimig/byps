@@ -451,6 +451,7 @@ public:
 		t4 = system_clock::now();
 
 		client->done();
+        client.reset();
 
 		l_info <<
 				L"gzip=" << flags << 
@@ -465,7 +466,7 @@ public:
 	virtual void init() {
 		ADD_TEST(testRemoteArrayTypes23);
 		ADD_TEST(testRemoteArrayTypes1dim);
-		ADD_TEST(testRemoteArrayTypes1dimPerformance);
+        ADD_TEST(testRemoteArrayTypes1dimPerformance);
 	}
 };
 
