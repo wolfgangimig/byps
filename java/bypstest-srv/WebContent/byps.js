@@ -288,10 +288,9 @@ com.wilutions.byps.BRegistry = function() {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BApiDescriptor = function(name, basePackage, bmodel, version, uniqueObjects, registry) {
+com.wilutions.byps.BApiDescriptor = function(name, basePackage, version, uniqueObjects, registry) {
 	this.name = name;
 	this.basePackage = basePackage;
-	this.bmodel = bmodel;
 	this.version = version;
 	this.uniqueObjects = uniqueObjects;
 	this.protocols = "J";
