@@ -833,6 +833,9 @@ public:
 		}
 
 	}
+
+	virtual void done() {
+	}
 	
 	HINTERNET openRequest(LPCWSTR method, const std::wstring& url) {
 

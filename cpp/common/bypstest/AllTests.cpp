@@ -20,7 +20,7 @@ void AllTests_run(void *app) {
     log.debug() << L"AllTest_run(";
 
 	TestSuite suite;
-//    suite.add(TestRemoteServerR_create(app));
+    suite.add(TestRemoteServerR_create(app));
     suite.add(TestRemoteStreams_create(app));
     suite.add(TestRemoteConstants_create(app));
     suite.add(TestRemoteEnums_create(app));
