@@ -28,10 +28,12 @@ public:
 	void testRemoteStreamsOneFileStream() {
 		l_info << L"testRemoteStreamsOneFileStream(";
 
+		std::string fileContent = "hello";
+
 		char fname[L_tmpnam] = {0};
 		tmpnam(fname);
 		FILE *file = fopen(fname, "w");
-		fputs("hello", file);
+		fputs(fileContent.c_str(), file);
 		fclose(file);
 		
         PContentStream strm(new BContentStreamFile(fname));
@@ -45,11 +47,19 @@ public:
 
 		l_info << L"remote->getImage ...";
 		PContentStream strmR = remote->getImage();
+        l_info << L"remote->getImage OK";
+
+		l_info << L"getContentLength ...";
+		int64_t contentLengthR = strmR->getContentLength();
+		l_info << L"getContentLength OK, #=" << contentLengthR;
+		TASSERT(L"wrong content length", fileContent.size(), (size_t)contentLengthR);
+
+		l_info << L"read ...";
 		char buf[1000] = {0};
 		int32_t len = strmR->read(buf, 0, sizeof(buf));
-        l_info << L"remote->getImage OK, len=" << len;
+		l_info << L"read OK, len=" << len;
 
-		TASSERT(L"wrong stream content", std::string("hello"), std::string(buf));
+		TASSERT(L"wrong stream content", fileContent, std::string(buf));
 
 		l_info << L")testRemoteStreamsOneFileStream";
 	}
@@ -275,9 +285,9 @@ public:
 
 	virtual void init() {
         ADD_TEST(testRemoteStreamsOneFileStream);
-        ADD_TEST(testRemoteStreamAsync);
-        ADD_TEST(testRemoteStreamsChunked);
         ADD_TEST(testRemoteStreamsContentLength);
+        ADD_TEST(testRemoteStreamsChunked);
+        ADD_TEST(testRemoteStreamAsync);
 
 #ifdef TEST_LARGE_STREAMS
 		ADD_TEST(testRemoteStream4GBChunked);

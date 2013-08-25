@@ -334,6 +334,9 @@ public:
 	}
 
     void ensureOpen() const {
+		
+		if (innerStream) return;
+
         PHttpClient httpClient = this->httpClient.lock();
         if (httpClient) {
             MyContentStream* pThis = const_cast<MyContentStream*>(this);
@@ -348,7 +351,7 @@ public:
                 throw BException(EX_CANCELLED, L"Already disconnected");
             }
 
-            pThis->innerStream  = streamRequest->send();
+            pThis->innerStream = streamRequest->send();
         }
         else {
             throw BException(EX_CANCELLED, L"HTTP client already released.");
