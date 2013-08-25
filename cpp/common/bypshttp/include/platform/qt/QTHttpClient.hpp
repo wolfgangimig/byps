@@ -167,8 +167,6 @@ public:
         l_debug << L"ctor(";
         worker->start();
 
-//        QObject::connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
-
         QObject::connect(&clientBridge, SIGNAL(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
                          worker->workerBridge, SLOT(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
                          Qt::BlockingQueuedConnection);
@@ -424,6 +422,7 @@ public:
 
     virtual void httpFinished() {
         l_debug << L"httpFinished(";
+        applyHeadersIfNot();
         if (!result.isException()) {
             result = BVariant(true);
         }
@@ -433,11 +432,22 @@ public:
 
     virtual void httpReadyRead() {
         l_debug << L"httpReadyRead(";
+        applyHeadersIfNot();
         byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
         if (stream) {
-            l_debug << L"headersApplied=" << headersApplied;
-            if (!headersApplied) {
-                headersApplied = true;
+            stream->putBytes(bridge->reply->readAll());
+        }
+        l_debug << L")httpReadyRead";
+    }
+
+    void applyHeadersIfNot() {
+        l_debug << L"applyHeadersIfNot(";
+        l_debug << L"headersApplied=" << headersApplied;
+        if (!headersApplied) {
+            headersApplied = true;
+
+            byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
+            if (stream) {
 
                 QByteArray headerValue = bridge->reply->rawHeader("Content-Type");
                 std::wstring contentType = BToStdWString(headerValue.data());
@@ -447,11 +457,9 @@ public:
 
                 stream->applyHeaders(contentType, contentLength);
             }
-            stream->putBytes(bridge->reply->readAll());
         }
-        l_debug << L")httpReadyRead";
+        l_debug << L")applyHeadersIfNot";
     }
-
 };
 
 
