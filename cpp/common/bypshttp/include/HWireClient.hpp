@@ -307,57 +307,78 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 }
 
 class MyContentStream : public BContentStream {
-	PWireClient_RequestsToCancel requests;
+    std::wstring url;
+    PWireClient_RequestsToCancel requestsToCancel;
 	PContentStream innerStream;
+    int64_t messageId;
+    int64_t streamId;
+    byps_weak_ptr<HHttpClient> httpClient;
+    int32_t timeoutSeconds;
 
 public:
 	const intptr_t id;
 
-	MyContentStream(PWireClient_RequestsToCancel requests) 
-		: requests(requests)
+    MyContentStream(const std::wstring& url,
+                    PWireClient_RequestsToCancel requestsToCancel,
+                    int64_t messageId, int64_t streamId,
+                    PHttpClient httpClient,
+                    int32_t timeoutSeconds)
+        : url(url)
+        , requestsToCancel(requestsToCancel)
+        , messageId(messageId)
+        , streamId(streamId)
+        , httpClient(httpClient)
+        , timeoutSeconds(timeoutSeconds)
 		, id(reinterpret_cast<intptr_t>(this))
 	{
 	}
 
-	void setInnerStream(PContentStream innerStream) {
-		this->innerStream = innerStream;
+    void ensureOpen() const {
+        PHttpClient httpClient = this->httpClient.lock();
+        if (httpClient) {
+            MyContentStream* pThis = const_cast<MyContentStream*>(this);
+
+            std::wstringstream ssurl;
+            ssurl << url << L"?messageid=" << messageId << L"&streamid=" << streamId;
+
+            PHttpGet streamRequest = httpClient->get(ssurl.str());
+            streamRequest->setTimeouts(timeoutSeconds, timeoutSeconds);
+
+            if (!requestsToCancel->add(id, streamRequest)) {
+                throw BException(EX_CANCELLED, L"Already disconnected");
+            }
+
+            pThis->innerStream  = streamRequest->send();
+        }
+        else {
+            throw BException(EX_CANCELLED, L"HTTP client already released.");
+        }
 	}
 
 	virtual ~MyContentStream() {
-		requests->remove(id);
+        requestsToCancel->remove(id);
 	}
 
 	virtual const std::wstring& getContentType() const {
+        ensureOpen();
 		return innerStream->getContentType();
 	}
 
 	virtual int64_t getContentLength() const {
+        ensureOpen();
 		return innerStream->getContentLength();
 	}
 
 	virtual int32_t read(char* buf, int32_t offs, int32_t len) {
+        ensureOpen();
 		return innerStream->read(buf, offs, len);
 	}
 	
 };
 
 BINLINE PContentStream HWireClient::getStream(int64_t messageId, int64_t streamId) {
-
-	std::wstringstream ssurl;
-	ssurl << url << L"?messageid=" << messageId << L"&streamid=" << streamId;
-
-	PHttpGet streamRequest = httpClient->get(ssurl.str());
-    streamRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsClient);
-
-	MyContentStream* stream = new MyContentStream(requestsToCancel);
-	if (!requestsToCancel->add(stream->id, streamRequest)) {
-		throw BException(EX_CANCELLED, L"Already disconnected");
-	}
-
-	stream->setInnerStream(streamRequest->send());
-
-	PContentStream ret(stream);
-	return ret;
+    MyContentStream* stream = new MyContentStream(url, requestsToCancel, messageId, streamId, httpClient, timeoutSecondsClient);
+    return PContentStream(stream);
 }
 
 BINLINE void HWireClient::done() {

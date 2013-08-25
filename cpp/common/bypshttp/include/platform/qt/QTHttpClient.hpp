@@ -84,12 +84,13 @@ public:
         byps_unique_lock lock(this->mutex);
         this->contentType = contentType;
         this->contentLength = contentLength;
+        this->headersAvail = true;
         waitHeaders.notify_one();
         l_debug << L")applyHeaders";
     }
 
-    virtual const std::wstring& getContentType() const {
-        l_debug << L"getContentType(";
+    void maybeWaitUntilHeadersAvail() const {
+        l_debug << L"maybeWaitUntilHeadersAvail(";
         QTHttpGet_ContentStream* pThis = const_cast<QTHttpGet_ContentStream*>(this);
         byps_unique_lock lock(pThis->mutex);
         while(!ex && !headersAvail) {
@@ -98,22 +99,23 @@ public:
                 pThis->ex = BException(EX_TIMEOUT);
             }
         }
-        if (ex) throw ex;
+        if (ex) {
+            l_debug << L"throw exception=" << ex.toString();
+            throw ex;
+        }
+        l_debug << L")maybeWaitUntilHeadersAvail=" << headersAvail;
+    }
+
+    virtual const std::wstring& getContentType() const {
+        l_debug << L"getContentType(";
+        maybeWaitUntilHeadersAvail();
         l_debug << L")getContentType=" << contentType;
         return contentType;
     }
 
     virtual int64_t getContentLength() const {
         l_debug << L"getContentLength(";
-        QTHttpGet_ContentStream* pThis = const_cast<QTHttpGet_ContentStream*>(this);
-        byps_unique_lock lock(pThis->mutex);
-        while(!ex && !headersAvail) {
-            if (pThis->waitHeaders.wait_for(lock, timeout) == std::cv_status::timeout) {
-                l_debug << L"timeout";
-                pThis->ex = BException(EX_TIMEOUT);
-            }
-        }
-        if (ex) throw ex;
+        maybeWaitUntilHeadersAvail();
         l_debug << L")getContentLength=" << contentLength;
         return contentLength;
     }
