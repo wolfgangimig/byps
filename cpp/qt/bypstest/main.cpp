@@ -12,23 +12,10 @@ PHttpGet hget;
 PContentStream strm;
 
 void Task::run() {
-    try {
-        throw BException(123, L"hallo");
-    }
-    catch (const BException& ex) {
-        client.reset();
-    }
 
     AllTests_run(this->parent());
 
-//    client = HttpClient_create(NULL);
-//    get = client->get(L"http://www.leo.org");
-//    strm = get->send();
-
-//    MyApp* app = (MyApp*)this->parent();
-//    app->downloadFile();
-
-//   emit finished();
+    emit finished();
 }
 
 static com::wilutions::byps::BLogger g_log("main");
