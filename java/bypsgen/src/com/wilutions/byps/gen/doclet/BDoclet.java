@@ -161,7 +161,7 @@ public class BDoclet extends Doclet {
 		"-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin",
 		"-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
 
-		"-gencs.dir-ser",     "..\\..\\csharp\\byps\\bypstest-ser\\src-ser",
+		"-gencs.dir-ser",     "d:\\git\\byps\\csharp\\bypstest-ser\\src-ser",
 		"-gencs.upfirst",     "true",
 		
 		"-genjs.dest", "..\\bypstest-srv\\WebContent\\testser.js",

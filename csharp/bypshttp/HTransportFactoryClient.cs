@@ -32,6 +32,7 @@ namespace com.wilutions.byps
 
         public BServerR createServerR(BServer server)
         {
+            if (nbOfServerRConns == 0) return null;
             return new HServerR(transport, server, nbOfServerRConns);
         }
 
