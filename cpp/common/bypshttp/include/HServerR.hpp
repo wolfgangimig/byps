@@ -18,10 +18,10 @@ class HServerR_SendLongPoll {
 	byps_condition_variable serverFinished;
 	bool isDone;
 	int32_t sleepMillisBeforeRetry;
-	byps_atomic<int32_t> nbOfActiveLongPolls;
 	
 
 public:
+    byps_atomic<int32_t> nbOfActiveLongPolls;
 
 	HServerR_SendLongPoll() : isDone(false), sleepMillisBeforeRetry(60 * 1000), nbOfActiveLongPolls(0) {}
 
@@ -37,7 +37,7 @@ public:
 		serverFinished.notify_all();
 	}
 
-	static void send(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server, PMessage methodResult);
+    static void send(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server, PMessage methodResult);
 };
 
 class HServerR_LongPoll {
@@ -53,7 +53,16 @@ class HServerR_LongPoll {
 	public:
 		NextAsyncResult(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server) 
 			: sendLongPoll(sendLongPoll), transport(transport), server(server) {
+            sendLongPoll->nbOfActiveLongPolls++;
 		}
+
+        virtual ~NextAsyncResult() {
+            sendLongPoll->nbOfActiveLongPolls--;
+            sendLongPoll.reset();
+            transport.reset();
+            server.reset();
+        }
+
 		virtual void setAsyncResult(const BVariant& varmsg) {
 			PMessage msg;
 			if (varmsg.isException()) {
@@ -80,6 +89,13 @@ class HServerR_LongPoll {
 		NextAsyncMethod(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server) 
 			: sendLongPoll(sendLongPoll), transport(transport), server(server) {
 		}
+
+        virtual ~NextAsyncMethod() {
+            sendLongPoll.reset();
+            transport.reset();
+            server.reset();
+        }
+
 		virtual void setAsyncResult(const BVariant& varmsg) {
 			bool failed = varmsg.isException();
 			if (failed) {
@@ -135,7 +151,6 @@ BINLINE HServerR::HServerR(PTransport transport, PServer server, int nbOfConns)
 }
 
 BINLINE HServerR::~HServerR() {
-
 }
 
 BINLINE void HServerR::start() {
@@ -151,8 +166,8 @@ BINLINE void HServerR::done() {
 
 BINLINE void HServerR_SendLongPoll::send(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server, PMessage methodResult) {
 	if (!sendLongPoll->isDone) {
-		PServerR_LongPoll longPoll(new HServerR_LongPoll(sendLongPoll, transport, server, methodResult));
-		longPoll->run();
+        HServerR_LongPoll longPoll(sendLongPoll, transport, server, methodResult);
+        longPoll.run();
 	}
 }
 

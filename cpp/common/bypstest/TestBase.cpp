@@ -1,5 +1,6 @@
 
 #include "TestBase.h"
+#include <thread>
 
 using namespace com::wilutions::byps;
 
@@ -16,17 +17,24 @@ TestBase::~TestBase() {
 void TestBase::beforeCase() {
     log.debug() << L"beforeCase(";
 	client = TestUtilHttp::createClient(app);
+    long rc = client->transport.use_count();
+    assert(rc >= 1);
     log.debug() << L")beforeCase";
 }
 void TestBase::afterCase() {
     log.debug() << L"afterCase(";
+
+    long rc = client->transport.use_count();
+    assert(rc >= 1);
+
 	client->done();
 
     assert(client.use_count() == 1);
     PTransport transport = client->transport;
     client.reset();
-    long rc = transport.use_count();
+    rc = transport.use_count();
     assert(rc == 1);
+    transport.reset();
 
     log.debug() << L")afterCase";
 }

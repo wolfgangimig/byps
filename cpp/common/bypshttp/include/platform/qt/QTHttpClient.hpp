@@ -165,7 +165,7 @@ public:
         l_debug << L"ctor(";
         worker->start();
 
-        QObject::connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+//        QObject::connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
 
         QObject::connect(&clientBridge, SIGNAL(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
                          worker->workerBridge, SLOT(createGetRequest(QNetworkRequest,int32_t,QTHttpRequestBridge**)),
@@ -184,10 +184,17 @@ public:
 
     virtual ~QTHttpClient() {
         l_debug << L"dtor()";
-        emit worker->quit();
     }
 
     virtual void init(const std::wstring& ) {
+    }
+
+    virtual void done() {
+        l_debug << L"done(";
+        emit worker->quit();
+        worker->wait();
+        delete worker;
+        l_debug << L")done";
     }
 
     virtual PHttpGet get(const std::wstring& url);
@@ -250,6 +257,7 @@ protected:
     QTHttpRequestBridge* bridge;
     int32_t timeoutSeconds;
     bool requestAborted;
+    bool requestFinished;
     BVariant result;
     static BLogger log;
 public:
@@ -259,6 +267,7 @@ public:
         , bridge(0)
         , timeoutSeconds(0)
         , requestAborted(false)
+        , requestFinished(false)
     {
         l_debug << L"ctor()";
     }
@@ -282,12 +291,15 @@ public:
 
     virtual void done() {
         l_debug << L"done(";
-        PQTHttpRequest keepthis = shared_from_this();
-        if (bridge) {
-            bridge->done();
+        if (!requestFinished) {
+            requestFinished = true;
+            PQTHttpRequest keepthis = shared_from_this();
+            if (bridge) {
+                bridge->done();
+            }
+            internalApplyResult();
+            keepthis.reset();
         }
-        internalApplyResult();
-        keepthis.reset();
         l_debug << L")done";
     }
 
@@ -295,11 +307,14 @@ public:
         l_debug << L"abort(";
         if (bridge && !requestAborted) {
             requestAborted = true;
-            l_debug << L"abort";
-            bridge->reply->abort();
 
-            // reply->abort() will fire httpFinished() which
-            // calls done and deletes this
+            bool alreadyFinished = bridge->reply->isFinished();
+            if (!alreadyFinished) {
+                l_debug << L"abort";
+                bridge->reply->abort();
+                // reply->abort() will fire httpFinished() which
+                // calls done and deletes this
+            }
         }
         l_debug << L")abort";
     }
@@ -321,15 +336,13 @@ public:
 
     virtual void httpTimeout() {
         l_debug << L"httpTimeout(";
-        if (!result.isException()) {
-            result = BVariant(BException(EX_TIMEOUT, L"HTTP request timeout"));
-        }
+        httpError(BException(EX_TIMEOUT, L"HTTP request timeout"));
         l_debug << L")httpTimeout";
     }
 
     virtual void httpError(const BException& ex) {
         l_debug << L"httpError(" << ex;
-        if (!result.isException()) {
+        if (!requestFinished) {
             result = BVariant(ex);
         }
         l_debug << L")httpError";
@@ -337,10 +350,10 @@ public:
 
     virtual void close() {
         l_debug << L"close(";
-        if (!result.isException()) {
-            result = BVariant(BException(EX_CANCELLED, L"HTTP request cancelled"));
+        if (!requestFinished) {
+            httpError(BException(EX_CANCELLED, L"HTTP request cancelled"));
+            abort();
         }
-        abort();
         l_debug << L")close";
     }
 

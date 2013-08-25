@@ -16,16 +16,16 @@ public:
 	TestRemoteEnums(void* app) : TestBase(app) {}
 
 	void testRemoteEnums() {
-		PRemoteEnums remote = client->remoteEnums;
-		remote->setPlanet(EnumPlanets::Earth);
+        PRemoteEnums remote = client->remoteEnums;
+        remote->setPlanet(EnumPlanets::Earth);
         EnumPlanets v = remote->getPlanet();
         TASSERT(L"enum", EnumPlanets::Earth, v);
- 	}
+    }
 
 
 	virtual void init() {
-		ADD_TEST(testRemoteEnums);
-	}
+        ADD_TEST(testRemoteEnums);
+    }
 };
 
 BLogger TestRemoteEnums::log("TestRemoteEnums");

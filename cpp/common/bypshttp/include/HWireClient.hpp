@@ -43,7 +43,7 @@ BINLINE void HWireClient_RequestsToCancel::remove(intptr_t id) {
     byps_unique_lock lock(mutex);
 	std::map<intptr_t, PHttpRequest>::iterator it = map.find(id);
 	if (it != map.end()) {
-		(*it).second->close();
+        (*it).second->close();
 		map.erase(it);
 	}
 }
@@ -80,6 +80,7 @@ BINLINE HWireClient::HWireClient(void* app, const std::wstring& surl, int32_t , 
 	, timeoutSecondsClient(timeoutSeconds)
 	, tpool(tpool)
 	, isMyThreadPool(!tpool)
+    , isDone(false)
 {
 	if (isMyThreadPool) {
         this->tpool = BThreadPool::create(app, 10);
@@ -381,6 +382,8 @@ BINLINE void HWireClient::done() {
 		}
 
 		tpool.reset();
+
+        httpClient->done();
 	}
 
 }

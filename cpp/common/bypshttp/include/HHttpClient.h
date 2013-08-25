@@ -54,6 +54,7 @@ public:
 	virtual ~HHttpClient() {}
 	
 	virtual void init(const std::wstring& url) = 0;
+    virtual void done() = 0;
 
 	virtual PHttpGet get(const std::wstring& url) = 0;
 	virtual PHttpPost post(const std::wstring& url) = 0;
