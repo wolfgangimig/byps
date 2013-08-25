@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include <Winhttp.h>
 #include "HException.hpp"
+#include <strsafe.h>
 
 #undef min
 
@@ -563,14 +564,17 @@ public:
 			}
 		}
 		else {
+			// A post message must fit into memory. 
+			// Since Java does not support byte arrays > 2GB, we also do not allow
+			// them for C++.
 			if (contentLength > 0x7FFFFFFF) {
 				finishOnError(BException(EX_INTERNAL, L"Message tool large."));
 				return;
 			}
 
 			// Kein Content-Length Header? dann mindestens 16 Bytes bereitstellen.
-			if (contentLength < BHEADER_SIZE) {
-				contentLength = BHEADER_SIZE;
+			if (contentLength < 16) {
+				contentLength = 16;
 			}
 
 			respBytes = BBytes::create(respBytes, (int32_t)contentLength + 4); 
