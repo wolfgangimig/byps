@@ -184,6 +184,7 @@ public:
 			partnerIF->incrementInt(7);
 		}
 		catch (BException e) {
+            l_info << L"OK, exception=" << e.toString();
 			TASSERT(L"exception", ClientIFImplThrowEx::code, e.getCode());
 		}
 
@@ -220,7 +221,8 @@ public:
 			partnerIF->incrementInt(7);
 			TASSERT(L"Exception expected", true, false);
 		}
-		catch (BException e) {
+        catch (const BException& e) {
+            l_info << L"OK, exception=" << e.toString();
 			TASSERT(L"Exception", EX_CLIENT_DIED, e.getCode());
 		}
 	}
@@ -246,13 +248,17 @@ public:
 		
 		// first client calls interface method of second client
 		try {
-			l_info << "invoke interface method of dead client";
-			partnerIF->incrementInt(7);
+            l_info << L"invoke interface method of dead client";
+            int32_t ret = partnerIF->incrementInt(7);
+            l_info << L"ret=" << ret;
 			TASSERT(L"Exception expected", true, false);
 		}
-		catch (BException e) {
+        catch (const BException& e) {
+            l_info << L"OK, exception=" << e.toString();
 			TASSERT(L"Exception", EX_CLIENT_DIED, e.getCode());
 		}
+
+        client2->done();
 	}
 
 	/**
@@ -277,16 +283,16 @@ public:
 	}
 
 	virtual void init() {
+        ADD_TEST(testCallClientFromServer);
+        ADD_TEST(testCallKilledClientFromClient);
+        ADD_TEST(testCallDeadClientFromClient);
+        ADD_TEST(testCallClientFromClientThrowEx);
+        ADD_TEST(testCallClientFromServerNoRemoteImpl);
+        ADD_TEST(testCallClientFromClient);
+        ADD_TEST(testCallClient2FromServer1);
+        ADD_TEST(testCallClientFromServerParallel);
         ADD_TEST(testServerProvidesStreamForClient);
-//        ADD_TEST(testCallClientFromServer);
-//		ADD_TEST(testCallKilledClientFromClient);
-//		ADD_TEST(testCallDeadClientFromClient);
-//		ADD_TEST(testCallClientFromClientThrowEx);
-//		ADD_TEST(testCallClientFromServerNoRemoteImpl);
-//		ADD_TEST(testCallClientFromClient);
-//		ADD_TEST(testCallClient2FromServer1);
-//		ADD_TEST(testCallClientFromServerParallel);
-	}
+    }
 
 };
 

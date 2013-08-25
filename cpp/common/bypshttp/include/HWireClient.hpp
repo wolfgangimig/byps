@@ -50,12 +50,14 @@ BINLINE void HWireClient_RequestsToCancel::remove(intptr_t id) {
 
 BINLINE void HWireClient_RequestsToCancel::cancel() {
     std::vector<PHttpRequest> requests;
+
     {
         byps_unique_lock lock(mutex);
         isCanceled = true;
         for (std::map<intptr_t, PHttpRequest>::iterator it = map.begin(); it != map.end(); it++) {
             requests.push_back((*it).second);
         }
+        map.clear();
     }
 
     for (std::vector<PHttpRequest>::iterator it = requests.begin(); it != requests.end(); it++) {
