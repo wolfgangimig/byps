@@ -38,7 +38,7 @@ public class BSerializer_6003 extends BSerializer_6002 {
 	@Override
 	public void write(final Object obj1, final BOutput bout1, final int version) throws BException {
 		final Class3 obj = (Class3)obj1;		
-		super.write(obj1, bout1, version);		
+		super.write(obj, bout1, version);		
 		final BOutputBin bout = (BOutputBin)bout1;
 		final BBufferBin bbuf = bout.bbuf;
 		bbuf.putInt(obj.int3);
@@ -50,7 +50,7 @@ public class BSerializer_6003 extends BSerializer_6002 {
 		final Class3 obj = (Class3)(obj1 != null ? obj1 : bin.onObjectCreated(new Class3()));
 		
 		// Read base class members
-		super.read(obj1, bin, version);
+		super.read(obj, bin, version);
 		
 		final BBufferBin bbuf = bin.bbuf;
 		

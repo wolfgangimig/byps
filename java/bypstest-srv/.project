@@ -8,6 +8,8 @@
 		<project>byps</project>
 		<project>bypstest-api</project>
 		<project>byps-override</project>
+		<project>bypstest-ser-json</project>
+		<project>bypstest-ser</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

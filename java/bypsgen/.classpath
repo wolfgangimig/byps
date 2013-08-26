@@ -6,6 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Logging"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/YUI Compressor"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/YUICompressor"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

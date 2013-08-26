@@ -44,7 +44,7 @@ namespace com.wilutions.byps.test.api.inherit
 			BInputBin bin = (BInputBin)bin1;
 			Class3 obj = (Class3)(obj1 != null ? obj1 : bin.onObjectCreated(new Class3()));
 			
-			base.read(obj1, bin1, version);			
+			base.read(obj, bin1, version);			
 			BBufferBin bbuf = bin.bbuf;
 			obj.Int3 = bbuf.getInt();
 			

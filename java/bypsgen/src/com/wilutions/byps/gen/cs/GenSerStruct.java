@@ -137,7 +137,7 @@ public class GenSerStruct {
 		pr.println();
 		
 		if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
-			pr.print("base.read(obj1, bin1, version);");
+			pr.print("base.read(obj, bin1, version);");
 			pr.println();
 		}
 		
