@@ -18,8 +18,4 @@ public class RemoteException extends IOException {
 		super(arg0);
 	}
 
-	public RemoteException(Throwable arg0) {
-		super(arg0);
-	}
-
 }

@@ -233,7 +233,7 @@ public class ClassDB {
 		if (knownType == null) {
 			ErrorInfo errInfo = new ErrorInfo();
 			errInfo.className = tinfo.toString();
-			errInfo.msg = "Unexpected type=" + tinfo +", did you miss to derive from the Serializable/BSerializable interface?";
+			errInfo.msg = "Unexpected type=" + tinfo +", did you miss to derive from the Serializable/BSerializable interface? Make sure, the source file resides in one of the analyzed directories.";
 			throw new GeneratorException(errInfo);
 		}
 		

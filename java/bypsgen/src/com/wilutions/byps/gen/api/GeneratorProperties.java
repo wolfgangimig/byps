@@ -87,6 +87,7 @@ public class GeneratorProperties extends Properties {
 		}
 		else {
 			ret = new File(s);
+			ret = ret.getAbsoluteFile();
 		}
 		return ret;
 	}

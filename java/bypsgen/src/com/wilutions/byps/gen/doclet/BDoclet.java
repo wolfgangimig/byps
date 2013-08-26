@@ -32,6 +32,7 @@ import com.wilutions.byps.gen.j.GeneratorJ;
 import com.wilutions.byps.gen.j.PropertiesJ;
 import com.wilutions.byps.gen.js.GeneratorJS;
 import com.wilutions.byps.gen.js.PropertiesJS;
+import com.wilutions.byps.gen.utils.AssignUniqueSerialVersionUID;
 
 
 /**
@@ -218,11 +219,13 @@ public class BDoclet extends Doclet {
 		
 //		"-verbose",
 		
+		"-ensureUIDs",
+		
 		"--packages",
 		"de.elo.ix.client",
 		
 		"--sourcepath", 
-		"d:\\java\\workspace\\Eloix-api\\src;d:\\java\\workspace\\Eloix-api\\src-gen",
+		"d:\\git\\ELOindexserver\\Eloix-api\\src;d:\\git\\ELOindexserver\\Eloix-api\\src-gen",
 		
 		"--classpath",
 		"d:\\java\\lib\\EloixClient\\EloixClient.jar;d:\\java\\lib\\EloixClient\\javautils.jar"
@@ -235,11 +238,13 @@ public class BDoclet extends Doclet {
 		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
-			args = bypstest_ser;
+			args = byps_ix_ser;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();
 		defaultProps.put(PropertiesCS.UPPER_CASE_FIRST_LETTER, "true");
+		
+		boolean ensureUIDs = false;
 		
 		try {
 			List<String> javadocParams = new ArrayList<String>();
@@ -251,6 +256,10 @@ public class BDoclet extends Doclet {
 				String arg = args[argIdx];
 				if (arg.startsWith("-verbose")) {
 					configureLog4j("INFO");
+					argIdx++;
+				}
+				else if (arg.startsWith("-ensureUIDs")) {
+					ensureUIDs = true;
 					argIdx++;
 				}
 				else if (arg.startsWith(PropertiesC.OPT_PREFIX)) {
@@ -360,6 +369,12 @@ public class BDoclet extends Doclet {
 					}
 				}
 				tempDir = dir.getAbsolutePath();
+			}
+			
+			if (ensureUIDs) {
+				log.info("Ensure having serialVersionUIDs ==============");
+				log.info("source dirs=" + Arrays.toString(sourceDirs));
+				new AssignUniqueSerialVersionUID(sourceDirs, true).processFiles(); 
 			}
 			
 			log.info("Compile source files ==============");

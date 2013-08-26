@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.gen.api.CommentInfo;
@@ -36,6 +39,8 @@ class PrintContext extends PrintContextBase {
 		dirSerBin.mkdirs();
 		dirSerJson.mkdirs();
 		dirSer.mkdirs();
+
+		logProperties();
 		
 		generateHashCodeAndEquals = props.getOptionalPropertyInt(PropertiesJ.HASHCODE_AND_EQUALS, 0) != 0;
 	}
@@ -462,11 +467,19 @@ class PrintContext extends PrintContextBase {
 		return getElementSelectorClassName(serInfo) + "." + getElementSelectorName(minfo);
 	}
 
+	private void logProperties() {
+		log.info("Output directories for generated Java files:");
+		log.info("API (optional): " + dirApi);
+		log.info("Common serialization classes: " + dirSer);
+		log.info("Classes for binary serialization: " + dirSerBin);
+		log.info("Classes for JSON serialization: " + dirSerJson);
+	}
 
 	public final File dirApi;
 	public final File dirSerBin;
 	public final File dirSerJson;
 	public final File dirSer;
 	private boolean generateHashCodeAndEquals;
+	private Log log = LogFactory.getLog(PrintContext.class);
 
 }

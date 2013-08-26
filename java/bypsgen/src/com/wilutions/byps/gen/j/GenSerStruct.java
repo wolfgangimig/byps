@@ -156,7 +156,7 @@ public class GenSerStruct {
 			
 		if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
 			pr.println("// Read base class members");
-			pr.println("super.read(obj1, bin, version);");
+			pr.println("super.read(obj, bin, version);");
 			pr.println();
 		}
 
@@ -237,7 +237,7 @@ public class GenSerStruct {
 		pr.println();
 			
 		if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
-			pr.print("super.write(obj1, bout1, version);");
+			pr.print("super.write(obj, bout1, version);");
 			pr.println();
 		}
 		

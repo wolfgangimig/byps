@@ -27,7 +27,7 @@ public class GeneratorJ implements Generator {
 		log.debug("build(");
 
 		pctxt = new PrintContext(classDB, props);
-		
+					
 		purgeOutputDirs();
 
 		GenApiDescriptor.generate(pctxt, classDB.getApiDescriptor());

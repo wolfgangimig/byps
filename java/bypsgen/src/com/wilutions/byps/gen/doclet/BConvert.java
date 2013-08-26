@@ -25,6 +25,7 @@ import com.sun.javadoc.WildcardType;
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
+import com.wilutions.byps.Remote;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.ErrorInfo;
@@ -782,19 +783,17 @@ public class BConvert {
 		ArrayList<TypeInfo> exceptions = new ArrayList<TypeInfo>();
 		
 		for (Type ex : method.thrownExceptionTypes()) {
-			if (ex.toString().equals(BException.class.getName())) {
+			if (ex.simpleTypeName().equals(BException.class.getSimpleName())) {
 				foundBException = true; 
 				continue;
 			}
-			if (ex.toString().equals(RemoteException.class.getName())) {
+			if (ex.simpleTypeName().equals(RemoteException.class.getSimpleName())) {
 				foundBException = true; 
 				continue;
 			}
-			if (ex.toString().equals(IOException.class.getName())) continue;
-	
 			
 			// Currently, I don't know how to deal with custom exception classes in C++
-			errInfo.msg = "Custom exception classes are unsupported.";
+			errInfo.msg = "Custom exception classes are unsupported. Methods must throw com.wilutions.byps.RemoteException.";
 			throw new GeneratorException(errInfo);
 
 //			if (!isSerializable(ex.asClassDoc())) {

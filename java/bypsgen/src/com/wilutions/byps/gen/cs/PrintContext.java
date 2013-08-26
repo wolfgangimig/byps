@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
@@ -38,6 +41,7 @@ public class PrintContext extends PrintContextBase {
 		dirSerBin.mkdirs();
 		dirSer.mkdirs();
 		
+		logProperties();
 	}
 
 	CodePrinter getPrinterForApiClass(TypeInfo tinfo, String namePrefix, boolean inSerDir) throws IOException {
@@ -606,5 +610,13 @@ public class PrintContext extends PrintContextBase {
 	
 	}
 
+	private void logProperties() {
+		log.info("Output directories for generated C# files:");
+		log.info("API classes: " + dirApi);
+		log.info("Common serialization classes: " + dirSer);
+		log.info("Classes for binary serialization: " + dirSerBin);
+	}
+
+	private Log log = LogFactory.getLog(PrintContext.class);
 
 }

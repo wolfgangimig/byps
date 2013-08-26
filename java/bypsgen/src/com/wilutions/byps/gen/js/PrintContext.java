@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.wilutions.byps.BException;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.GeneratorProperties;
@@ -28,6 +31,8 @@ class PrintContext extends PrintContextBase {
 		
 		File destDir = destFile.getParentFile();
 		destDir.mkdir();
+		
+		logProperties();
 	}
 	
 	CodePrinter getPrinter() throws IOException {
@@ -145,4 +150,10 @@ class PrintContext extends PrintContextBase {
 		
 		return mpr;
 	}
+	
+	private void logProperties() {
+		log.info("Output file for generated JavaScript code:" + destFile);
+	}
+	
+	private Log log = LogFactory.getLog(PrintContext.class);
 }

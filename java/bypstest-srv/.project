@@ -4,9 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>bypshttp</project>
-		<project>bypstest-ser</project>
 		<project>byps-api</project>
-		<project>bypstest-ser-json</project>
 		<project>byps</project>
 		<project>bypstest-api</project>
 		<project>byps-override</project>

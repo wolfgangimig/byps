@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
@@ -66,7 +69,8 @@ class PrintContext extends PrintContextBase {
 		
 		OutputStream osImplC = new SplitFileOutputStreamSource(null, apiName + "-impl-%03d.cpp", maxFileSize);
 		prImplC = new CodePrinter(osImplC, false);
-		
+	
+		logProperties();
 	}
 	
 	void close() throws IOException {
@@ -506,7 +510,17 @@ class PrintContext extends PrintContextBase {
 			}
 		}
 	
-	}	
+	}
+	
+	private void logProperties() {
+		log.info("Output directories for generated C++ files:");
+		log.info("API headers: " + dirApi);
+		log.info("Private headers: " + dirImplH);
+		log.info("Source: " + dirImplC);
+	}
+
+	private Log log = LogFactory.getLog(PrintContext.class);
+	
 	private File dirApi;
 	private File dirImplH;
 	private File dirImplC;

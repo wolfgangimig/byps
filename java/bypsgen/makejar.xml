@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project bypsgen with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="d:/java/lib/byps/bypsgen.jar">
+            <manifest>
+                <attribute name="Main-Class" value="com.wilutions.byps.gen.doclet.BDoclet"/>
+                <attribute name="Class-Path" value=". bypsgen_lib/tools.jar bypsgen_lib/log4j-1.2.15.jar bypsgen_lib/commons-logging-1.1.1.jar bypsgen_lib/jargs-1.0.jar bypsgen_lib/rhino-1.6R7.jar bypsgen_lib/yuicompressor-2.4.7.jar"/>
+            </manifest>
+            <fileset dir="D:/git/byps/java/bypsgen/bin"/>
+            <fileset dir="D:/git/byps/java/byps/bin"/>
+            <fileset dir="D:/git/byps/java/byps-api/bin"/>
+            <fileset dir="D:/git/byps/java/byps-override/bin"/>
+        </jar>
+        <delete dir="d:/java/lib/byps/bypsgen_lib"/>
+        <mkdir dir="d:/java/lib/byps/bypsgen_lib"/>
+        <copy file="D:/java/lib/apache-log4j-1.2.15/log4j-1.2.15.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
+        <copy file="D:/java/lib/commons-logging-1.1.1/commons-logging-1.1.1.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
+        <copy file="D:/java/lib/yuicompressor-2.4.7/lib/jargs-1.0.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
+        <copy file="D:/java/lib/yuicompressor-2.4.7/lib/rhino-1.6R7.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
+        <copy file="D:/java/lib/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
+		<copy file="${java.home}/../lib/tools.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
+    </target>
+</project>
