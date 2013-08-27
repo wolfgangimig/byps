@@ -209,7 +209,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BException.SERVICE_NOT_IMPLEMENTED, e.code);
+			TestUtils.assertEquals(log, "exception", BException.SERVICE_NOT_IMPLEMENTED, e.getCode());
 		}
 		
 		log.info(")testCallClientFromServerNoRemoteImpl");
@@ -426,7 +426,7 @@ public class TestRemoteServerR {
 			partnerIF.incrementInt(7);
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", exceptionCode, e.code);
+			TestUtils.assertEquals(log, "exception", exceptionCode, e.getCode());
 		}
 		
 		client2.done();
@@ -478,7 +478,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expcected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BException.CLIENT_DIED, e.code);
+			TestUtils.assertEquals(log, "exception", BException.CLIENT_DIED, e.getCode());
 		}
 		log.info(")testCallDeadClientFromClient");
 	}
@@ -528,7 +528,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expcected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BException.CLIENT_DIED, e.code);
+			TestUtils.assertEquals(log, "exception", BException.CLIENT_DIED, e.getCode());
 		}
 		log.info(")testCallKilledClientFromClient");
 	}

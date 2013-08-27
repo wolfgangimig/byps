@@ -79,7 +79,7 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 				Throwable tx = BSyncResult.this.ex;
 				if (tx != null && tx instanceof BException) {
 					BException ex = (BException)tx;
-					return ex.code == BException.CANCELLED;
+					return ex.getCode() == BException.CANCELLED;
 				}
 			}
 			return false;

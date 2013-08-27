@@ -3,6 +3,7 @@ package com.wilutions.byps;
 
 /**
  * Exceptions of this class are thrown during serialization and communication.
+ * The formatted message has the form [BYPS:code][message][details]
  */
 public class BException extends com.wilutions.byps.RemoteException {
 	
@@ -89,31 +90,13 @@ public class BException extends com.wilutions.byps.RemoteException {
 
 	
 	/**
-	 * Error code.
-	 */
-	public final int code;
-	
-	/**
-	 * Error message.
-	 */
-	public final String msg;
-	
-	/**
-	 * Second error message to supply more information.
-	 */
-	public final String details;
-	
-	/**
 	 * Constructor
 	 * @param code Error code
 	 * @param msg Error message
 	 * @param ex Inner exception. The details member is set at ex.toString()
 	 */
 	public BException(int code, String msg, Throwable ex) {
-		super("", ex);
-		this.code = code;
-		this.msg = msg != null ? msg : "";
-		this.details = ex != null ? ex.toString() : "";
+		super(formatMessage(code, msg, ""), ex);
 	}
 	
 	/**
@@ -123,9 +106,7 @@ public class BException extends com.wilutions.byps.RemoteException {
 	 * @param details More information about the error
 	 */
 	public BException(int code, String msg, String details) {
-		this.code = code;
-		this.msg = msg != null ? msg : "";
-		this.details = details != null ? details : "";
+		super(formatMessage(code, msg, ""));
 	}
 	
 	/**
@@ -138,19 +119,48 @@ public class BException extends com.wilutions.byps.RemoteException {
 	}
 	
 	/**
-	 * Return a String of the form [BYPS:code][message][details].
-	 * @return Message string
+	 * Constructor
+	 * @param str
+	 * @param ex
 	 */
-	@Override
-	public String getMessage() {
-		return "[BYPS:" + code + "]" +
-				"[" + msg + "]" +
-				"[" + details + "]";
+	public BException(String str, Throwable ex) {
+		super(str, ex);
 	}
 	
-	@Override
+	/**
+	 * Constructor
+	 * @param str
+	 */
+	public BException(String str) {
+		super(str);
+	}
+	
+	/**
+	 * Extract the error code.
+	 * This function is used to set the error element in the BMessageHeader.
+	 * @return
+	 */
+	public int getCode() {
+		int ret = 0;
+		String msg = toString();
+		if (msg.startsWith("[BYPS:")) {
+			int p = msg.indexOf(']', 6);
+			if (p >= 0) {
+				ret = Integer.parseInt(msg.substring(6, p));
+			}
+		}
+		return ret;
+	}
+	
 	public String toString() {
+		// I do not want the class name in the returned string.
 		return getMessage();
+	}
+	
+	private static String formatMessage(int code, String msg, String details) {
+		return "[BYPS:" + code + "]" +
+				"[" + (msg != null ? msg : "") + "]" +
+				"[" + (details != null ? details : "") + "]";		
 	}
 	
 }

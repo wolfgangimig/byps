@@ -336,7 +336,7 @@ public class TestRemoteStreams {
 			// The exception is an IOERROR, if the exception thrown in the stream is received first.
 			// This exception cancels the message and it might happen, that we receive the CANCELLED
 			// exception from first.
-			TestUtils.assertTrue(log, "Exception Code", e.code == BException.IOERROR || e.code == BException.CANCELLED);
+			TestUtils.assertTrue(log, "Exception Code", e.getCode() == BException.IOERROR || e.getCode() == BException.CANCELLED);
 		}
 		
 		// All streams must have been closed

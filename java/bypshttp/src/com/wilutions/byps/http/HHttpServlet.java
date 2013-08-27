@@ -513,7 +513,7 @@ public abstract class HHttpServlet extends HttpServlet {
 	        }
 	        catch (BException e) {
 	        	int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-	        	if (e.code == BException.CANCELLED) {
+	        	if (e.getCode() == BException.CANCELLED) {
 	        		status = HttpServletResponse.SC_NOT_ACCEPTABLE;
 	        	}
         		((HttpServletResponse)rctxt.getResponse()).setStatus(status);

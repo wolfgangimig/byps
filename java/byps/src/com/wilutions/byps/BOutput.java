@@ -55,7 +55,7 @@ public abstract class BOutput {
 	
 	public void setException(Throwable ex) throws BException {
 		if (ex instanceof BException) {
-			header.error = ((BException)ex).code;
+			header.error = ((BException)ex).getCode();
 		} 
 		else {
 			header.error = BException.REMOTE_ERROR;
