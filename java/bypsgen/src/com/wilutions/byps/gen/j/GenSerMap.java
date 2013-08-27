@@ -64,7 +64,7 @@ public class GenSerMap {
 	protected void printRead() throws IOException {
 		String listType = getMapTypeToCreate();
 
-	    pr.println("public Object read(final Object obj1, final BInput bin1, final int version) throws BException {");
+	    pr.println("public Object read(final Object obj1, final BInput bin1, final long version) throws BException {");
 		pr.beginBlock();
 	    pr.println("final BInputBin bin = (BInputBin)bin1;");
 	    pr.println("final BBufferBin bbuf = bin.bbuf;");
@@ -96,7 +96,7 @@ public class GenSerMap {
 	protected void printWrite() throws IOException {
 		String listType = serInfo.toString("java.util");
 
-	    pr.println("public void write(Object obj1, BOutput bout1, int version)  throws BException {");
+	    pr.println("public void write(Object obj1, BOutput bout1, final long version)  throws BException {");
 	    pr.beginBlock();
 	    
 	    pr.println("BOutputBin bout = (BOutputBin)bout1;");

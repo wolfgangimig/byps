@@ -47,6 +47,12 @@ public class CodePrinter {
 		return new CodePrinter(pr, "");
 	}
 	
+	public CodePrinter print(long n) {
+		pr.print(indent);
+		pr.print(n);
+		return new CodePrinter(pr, "");
+	}
+	
 	public CodePrinter print(String fmt, Object ... args) {
 		pr.print(indent);
 		String s = MessageFormat.format(fmt, args);

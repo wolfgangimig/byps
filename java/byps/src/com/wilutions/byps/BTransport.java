@@ -233,7 +233,7 @@ public class BTransport {
 		BProtocol protocol = null;
 		
 		if (nego.protocols.startsWith(BProtocolS.BINARY_MODEL.getProtocolId())) {
-			int negotiatedVersion = Math.min(apiDesc.version, nego.version);
+			long negotiatedVersion = Math.min(apiDesc.version, nego.version);
 			nego.protocols = BProtocolS.BINARY_MODEL.getProtocolId();
 			if (nego.byteOrder == null) nego.byteOrder = ByteOrder.BIG_ENDIAN; 
 			nego.version = negotiatedVersion;

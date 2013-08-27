@@ -30,7 +30,7 @@ public class BApiDescriptor {
 	/**
 	 * API interface version.
 	 */
-	public final int version;
+	public final long version;
 	
 	/**
 	 * Reserved.
@@ -44,7 +44,7 @@ public class BApiDescriptor {
 	
 	public BApiDescriptor( 
 			String name, String apiPack,
-			int version,
+			long version,
 			boolean uniqueObjects
 			) {
 		super();

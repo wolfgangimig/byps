@@ -20,7 +20,7 @@ public class BSerializer_20 extends BSerializer {
 	}
 
 	@Override
-	public void write(final Object obj, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj, final BOutput bout1, final long version) throws BException {
 		final BOutputBin bout = ((BOutputBin)bout1);
 		final BException e = (BException)obj;
 		bout.bbuf.putInt(e.code);
@@ -29,7 +29,7 @@ public class BSerializer_20 extends BSerializer {
 	}
 
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = ((BInputBin)bin1);
 		final int code = bin.bbuf.getInt();
 		String msg = bin.bbuf.getString();

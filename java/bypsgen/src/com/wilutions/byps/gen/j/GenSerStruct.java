@@ -139,7 +139,7 @@ public class GenSerStruct {
 		//log.debug(GeneratorJ.class.getName(), "printRead");
 
 		pr.println("@Override");
-		pr.println("public Object read(final Object obj1, final BInput bin1, final int version) throws BException {");
+		pr.println("public Object read(final Object obj1, final BInput bin1, final long version) throws BException {");
 		pr.beginBlock();
 		pr.println("final BInputBin bin = (BInputBin)bin1;");
 	
@@ -182,7 +182,7 @@ public class GenSerStruct {
 	}
 
 	protected void printPutGetMembers(List<MemberInfo> members, boolean putNotGet) throws IOException {
-		List<Integer> sinceStack = new ArrayList<Integer>();
+		List<Long> sinceStack = new ArrayList<Long>();
 		
 		for (MemberInfo minfo : members) {
 			if (minfo.isStatic) {
@@ -199,7 +199,7 @@ public class GenSerStruct {
 				if (minfo.since != 0) {
 					if (sinceStack.size() == 0 || sinceStack.get(sinceStack.size()-1) != minfo.since) {
 						sinceStack.add(minfo.since);
-						pr.print("if (version >= ").print(minfo.since).print(") {").println();
+						pr.print("if (version >= ").print(minfo.since).print("L) {").println();
 						pr.beginBlock();
 					}
 				}
@@ -223,7 +223,7 @@ public class GenSerStruct {
 		//log.debug(GeneratorJ.class.getName(), "printStore");
 
 		pr.println("@Override");
-		pr.println("public void write(final Object obj1, final BOutput bout1, final int version) throws BException {");
+		pr.println("public void write(final Object obj1, final BOutput bout1, final long version) throws BException {");
 		pr.beginBlock();
 				
 		// see comment in printRead()

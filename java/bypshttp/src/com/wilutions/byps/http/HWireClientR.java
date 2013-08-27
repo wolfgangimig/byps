@@ -15,6 +15,7 @@ import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BStreamRequest;
 import com.wilutions.byps.BSyncResult;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 
 public class HWireClientR extends BWire {
 	
@@ -51,7 +52,12 @@ public class HWireClientR extends BWire {
 		
 		// Notify the client that the long-poll has finished.
 		for (BAsyncResult<BMessage> asyncRequest : asyncRequests_access_sync) {
-			asyncRequest.setAsyncResult(null, bex);
+	    try {
+	      asyncRequest.setAsyncResult(null, bex);
+	    }
+	    catch (Throwable ignored) {
+	      // happens, if the HTTP session has already been invalidated 
+	    }
 		}
 		
 		if (log.isDebugEnabled()) log.debug(")cancelAllRequests");

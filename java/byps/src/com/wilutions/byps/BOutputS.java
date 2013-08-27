@@ -5,7 +5,7 @@ import java.nio.ByteOrder;
 
 public class BOutputS extends BOutputBin {
 	
-	public BOutputS(BTransport transport, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	public BOutputS(BTransport transport, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		super(transport, BMessageHeader.MAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder);
 	}
 	

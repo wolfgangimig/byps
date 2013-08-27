@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
+import com.wilutions.byps.BVersioning;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -133,10 +134,10 @@ public class GenApiDescriptor {
 		log.debug("printStaticMembers");
 		
 		pr.println("/**");
-		pr.println(" * API Version");
-		pr.println("*/");
+		pr.print(" * API serialisation version: ").print(BVersioning.longToString(apiDesc.version)).println();
+		pr.println(" */");
+		pr.print("VERSION : " + BVersioning.longToString(apiDesc.version)).println(",");
 		
-		pr.print("VERSION : " + apiDesc.version).println(",");
 		pr.println();
 
 		log.debug(")printStaticMembers");

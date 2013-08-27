@@ -201,7 +201,7 @@ public class BDoclet extends Doclet {
 	
 	private static String[] byps_ix_ser = new String[] {
 		
-		"-genj.dir-ser", "d:\\java\\workspace\\Eloix-api\\src-byps",
+		"-genj.dir-ser", "d:\\java\\workspace_git\\Eloix-byps\\src",
 //		"-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
 //		"-genj.dir-ser-json", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-json",
 //
@@ -238,7 +238,7 @@ public class BDoclet extends Doclet {
 		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
-			args = bypstest_ser;
+			args = byps_ix_ser;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();

@@ -33,7 +33,7 @@ public class BMessageHeader {
 	public int magic;
 	public int error;
 	public int flags;
-	public int version;
+	public long version;
 	public BTargetId targetId;
 	public long messageId;
 //	public long streamId; // if (flags & FLAG_STREAM)
@@ -49,7 +49,7 @@ public class BMessageHeader {
 	 */
 	public Object messageObject;
 
-	public BMessageHeader(int magic, final int version, ByteOrder byteOrder, long mid) {
+	public BMessageHeader(int magic, final long version, ByteOrder byteOrder, long mid) {
 		this.magic = magic;
 		this.version = version;
 		this.byteOrder = byteOrder;
@@ -127,7 +127,7 @@ public class BMessageHeader {
 		buf.putInt(MAGIC_BINARY_STREAM);
 		buf.putInt(error); 
 		buf.putInt(flags); 
-		buf.putInt(version);
+		buf.putLong(version);
 		targetId.write(buf);
 		buf.putLong(messageId);
 //		if ((flags & FLAG_STREAM) != 0) {
@@ -148,7 +148,7 @@ public class BMessageHeader {
 	private void readBinaryWithoutMagic(ByteBuffer buf) {
 		error = buf.getInt();
 		flags = buf.getInt();
-		version = buf.getInt();
+		version = buf.getLong();
 		targetId = BTargetId.read(buf);
 		messageId = buf.getLong();
 //		if (isStreamRequest()) {
@@ -205,10 +205,12 @@ public class BMessageHeader {
 		sbuf.append("[magic=").append(magic)
 			.append(", error=").append(error)
 			.append(", flags=").append(flags)
+			.append(", version=").append(version)
 			.append(", targetId=").append(targetId)
 			.append(", messageId=").append(messageId)
 			.append(", messageObject=").append(messageObject)
 			.append("]");
 		return sbuf.toString();
 	}
+	
 }

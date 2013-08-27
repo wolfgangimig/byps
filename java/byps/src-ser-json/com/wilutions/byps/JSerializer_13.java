@@ -34,7 +34,7 @@ public class JSerializer_13 extends BSerializer {
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"})
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputJson bin = ((BInputJson)bin1);
 		final BJsonObject js = bin.currentObject;
 
@@ -54,7 +54,7 @@ public class JSerializer_13 extends BSerializer {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public void write(final Object obj1, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 		final BOutputJson bout = ((BOutputJson)bout1);
 		final java.util.Map arr = (java.util.Map) obj1;
 		final BBufferJson bbuf = bout.bbuf;

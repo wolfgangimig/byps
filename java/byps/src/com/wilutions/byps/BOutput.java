@@ -15,7 +15,7 @@ public abstract class BOutput {
 	public final BTransport transport;
 	public final BRegistry registry;
 	
-	public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		super();
 		this.objMap = transport.apiDesc.uniqueObjects ? null : new BObjMap();
 		this.header = new BMessageHeader(streamHeaderMagic, negotiatedVersion, negotiatedByteOrder, transport.wire.makeMessageId());

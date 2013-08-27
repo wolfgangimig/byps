@@ -17,7 +17,7 @@ public class JSerializer_16 extends BSerializer {
 	}
 
 	@Override
-	public void write(final Object obj, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj, final BOutput bout1, final long version) throws BException {
 		final BOutputJson bout = ((BOutputJson)bout1);
 		final BBufferJson bbuf = bout.bbuf;
 		final BRemote remote = (BRemote)obj;
@@ -29,7 +29,7 @@ public class JSerializer_16 extends BSerializer {
 	}
 
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputJson bin = ((BInputJson)bin1);
 		BRemote remote = null;
 		final BTargetId targetId = BTargetId.parseString(bin.currentObject.getString("targetId"));

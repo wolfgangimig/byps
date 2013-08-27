@@ -5,11 +5,11 @@ import java.nio.ByteOrder;
 
 public abstract class BProtocol {
 	
-	protected final BApiDescriptor apiDesc;
+	public final BApiDescriptor apiDesc;
 	
-	protected final int negotiatedVersion;
+	public final long negotiatedVersion;
 	
-	protected final ByteOrder negotiatedByteOrder;
+	public final ByteOrder negotiatedByteOrder;
 	
 	/**
 	 * Client-site constructor.
@@ -18,7 +18,7 @@ public abstract class BProtocol {
 	 * @param negotiatedByteOrder
 	 * @param protocolName
 	 */
-	public BProtocol(BApiDescriptor apiDesc, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	public BProtocol(BApiDescriptor apiDesc, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		this.apiDesc = apiDesc;
 		this.negotiatedVersion = negotiatedVersion;
 		this.negotiatedByteOrder = negotiatedByteOrder;

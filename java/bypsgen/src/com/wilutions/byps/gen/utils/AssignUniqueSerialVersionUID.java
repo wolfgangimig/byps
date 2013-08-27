@@ -64,7 +64,8 @@ public class AssignUniqueSerialVersionUID {
 	
 	private void processFile(File file) throws IOException {
 	
-		if (!file.getName().toLowerCase().endsWith(".java")) return; 
+		if (!file.getName().endsWith(".java")) return; 
+		if (file.getName().equals("BApi.java")) return;
 		if (file.length() < 4) return;
 		
 		log.info("process file=" + file);
@@ -154,6 +155,14 @@ public class AssignUniqueSerialVersionUID {
 							}
 							i++;
 						}
+					}
+					else if (line.startsWith("interface") ||
+							line.startsWith("public interface ") ||
+							line.startsWith("protected interface ")) {
+
+						// Do not assign serialVersoinUID to interfaces
+						writeFile = false;
+						break;
 					}
 				}
 				

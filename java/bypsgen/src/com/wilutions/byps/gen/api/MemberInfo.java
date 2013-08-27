@@ -9,7 +9,7 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 	public final boolean isStatic;
 	public final boolean isFinal;
 	public final MemberAccess access;
-	public final int since;
+	public final long since;
 	
 	/**
 	 * Constant value.
@@ -19,7 +19,7 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 
 	public MemberInfo(String name, List<CommentInfo> comments, TypeInfo type, 
 			boolean isPublic, boolean isProtected, boolean isPackage, boolean isPrivate, 
-			boolean isFinal, boolean isStatic, boolean isTransient, int since, String value) {
+			boolean isFinal, boolean isStatic, boolean isTransient, long since, String value) {
 		super(name, comments);
 		this.type = type;
 		this.access = makeAccess(isPublic, isProtected, isPackage, isPrivate);

@@ -25,7 +25,7 @@ public class GenSerListJson extends GenSerList {
 		String listType = getListTypeNameForCreate(serInfo);
 
 		pr.println("@Override");
-	    pr.println("public Object read(final Object obj1, final BInput bin1, final int version) throws BException {");
+	    pr.println("public Object read(final Object obj1, final BInput bin1, final long version) throws BException {");
 		pr.beginBlock();
 	    pr.println("final BInputJson bin = (BInputJson)bin1;");
 	    pr.println("final BBufferJson bbuf = bin.bbuf;");
@@ -56,7 +56,7 @@ public class GenSerListJson extends GenSerList {
 		String listType = serInfo.toString();
 
 		pr.println("@Override");
-		pr.println("public void write(Object obj1, BOutput bout1, int version)  throws BException {");
+		pr.println("public void write(Object obj1, BOutput bout1, final long version)  throws BException {");
 	    pr.beginBlock();
 	    
 	    pr.println("BOutputJson bout = (BOutputJson)bout1;");
@@ -79,7 +79,7 @@ public class GenSerListJson extends GenSerList {
 	private void _printRead() throws IOException {
 
 		pr.println("@Override");
-	    pr.println("public Object read(final Object obj1, final BInput bin1, final int version) throws BException {");
+	    pr.println("public Object read(final Object obj1, final BInput bin1, final long version) throws BException {");
 		pr.beginBlock();
 	    pr.println("final BInputJson bin = (BInputJson)bin1;");
 	    pr.println("final BBufferJson bbuf = bin.bbuf;");
@@ -95,7 +95,7 @@ public class GenSerListJson extends GenSerList {
 		String listType = serInfo.toString();
 
 		pr.println("@Override");
-		pr.println("public void write(Object obj1, BOutput bout1, int version)  throws BException {");
+		pr.println("public void write(Object obj1, BOutput bout1, final long version)  throws BException {");
 	    pr.beginBlock();
 	    
 	    pr.println("final BOutputJson bout = (BOutputJson)bout1;");

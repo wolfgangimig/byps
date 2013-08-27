@@ -31,7 +31,7 @@ public class BSerializer_12 extends BSerializer {
 	}
 	
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		BInputBin bin = ((BInputBin)bin1);
 		
 		// lengths
@@ -53,7 +53,7 @@ public class BSerializer_12 extends BSerializer {
 	
 	@SuppressWarnings("rawtypes")
 	@Override
-	public void write(final Object obj1, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 		final BOutputBin bout = ((BOutputBin)bout1);
 		final Collection arr = (Collection) obj1;
 

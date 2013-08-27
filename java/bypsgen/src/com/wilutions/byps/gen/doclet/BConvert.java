@@ -1,6 +1,5 @@
 package com.wilutions.byps.gen.doclet;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import com.sun.javadoc.WildcardType;
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BRemote;
-import com.wilutions.byps.Remote;
+import com.wilutions.byps.BVersioning;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.ErrorInfo;
@@ -170,18 +169,18 @@ public class BConvert {
 				errInfo.msg = "Missing \"public final static String NAME = ...\"";
 				throw new GeneratorException(errInfo);				
 			}
-			Integer version = (Integer)constReader.getValue(tinfo, "VERSION");
+			String version = (String)constReader.getValue(tinfo, "VERSION");
 			if (version == null) {
 				ErrorInfo errInfo = new ErrorInfo();
 				errInfo.className = c.qualifiedName();
-				errInfo.msg = "Missing \"public final static int VERSION = ...\"";
+				errInfo.msg = "Missing \"public final static String VERSION = ...\"";
 				throw new GeneratorException(errInfo);				
 			}
 			log.debug("api-version=" + version);
 			Boolean uniqueObjects = (Boolean)constReader.getValue(tinfo,  "UNIQUE_OBJECTS");
 			if (uniqueObjects == null) uniqueObjects = Boolean.FALSE;
 
-			apiDesc = new BApiDescriptor(name, pack.toString(), version, uniqueObjects);
+			apiDesc = new BApiDescriptor(name, pack.toString(), BVersioning.stringToLong(version), uniqueObjects);
 			classDB.setApiDescriptor(apiDesc);
 
 		}
@@ -374,7 +373,7 @@ public class BConvert {
 		errInfo.fieldName = name;
 		TypeInfo type = makeElementTypeInfo(errInfo, field.type(), errorContext + "." + name);
 		
-		int since = getSince(errInfo, field.tags());
+		long since = getSince(errInfo, field.tags());
 		
 		// Constant or Enum?
 		String value = null;
@@ -577,14 +576,14 @@ public class BConvert {
 		}
 	}
 	
-	private int getSince(ErrorInfo errInfo, Tag[] tags) throws GeneratorException {
+	private long getSince(ErrorInfo errInfo, Tag[] tags) throws GeneratorException {
 		errInfo = errInfo.copy();
-		int n = 0;
+		long n = 0;
 		for (Tag t : tags) {
 			String tkind = t.kind();
 			String ttext = t.text();
 			if (tkind.equals("@since") && ttext != null & ttext.length() != 0) {
-				n = stringVersionToInt(errInfo, ttext);
+				n = BVersioning.stringToLong(ttext);
 				break;
 			}
 		}
@@ -594,45 +593,6 @@ public class BConvert {
 	private boolean isInline(ClassDoc clazz) {
 		Tag[] tags = clazz.tags("@inline");
 		return tags != null && tags.length != 0;
-	}
-	
-	/**
-	 * Converts the string representation of a version number into an Integer.
-	 * The string representation follows the format +9.+9.+9.++9. Whereby
-	 * 9 is a placeholder for a digit and + is either nothing or a digit.
-	 * Each section between the dots can have up to 2 digits, except
-	 * the last section which can have at most 3 digits.
-	 * Example: the version string "12.3.45.67" is converted into the Integer
-	 * 120345067. 
-	 * @param strVer Version number in String format.
-	 * @return Version number in Integer format.
-	 * @throws GeneratorException 
-	 */
-	protected int stringVersionToInt(ErrorInfo errInfo, String strVer) throws GeneratorException {
-		errInfo = errInfo.copy();
-		int n = 0;
-		String[] versionNumbers = strVer.split("\\.");
-		for (int i = 0; i < versionNumbers.length; i++) {
-			String s = versionNumbers[i];
-			int n1 = Integer.parseInt(s);
-			if (i == versionNumbers.length-1 ||
-				i == versionNumbers.length-2) {
-				if (n1 >= 1000) {
-					errInfo.msg = "Last version number part of \"" + strVer + "\" must be less than 1000";
-					throw new GeneratorException(errInfo);
-				}
-				n *= 1000;
-			}
-			else {
-				if (n1 >= 100) {
-					errInfo.msg = "Last version number part of \"" + strVer + "\" must be less than 100";
-					throw new GeneratorException(errInfo);
-				}
-				n *= 100;
-			}
-			n += n1;
-		}
-		return n;
 	}
 	
 	private CommentInfo makeCommentInfo(String kind, String text) {

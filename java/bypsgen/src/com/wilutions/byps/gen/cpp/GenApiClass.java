@@ -921,7 +921,7 @@ class GenApiClass {
 	
 
 	private void printSerializeMembers(List<MemberInfo> members) {
-		List<Integer> sinceStack = new ArrayList<Integer>();
+		List<Long> sinceStack = new ArrayList<Long>();
 
 		for (MemberInfo minfo : members) {
 			if (minfo.isFinal || minfo.isStatic) {  
@@ -943,7 +943,7 @@ class GenApiClass {
 		}
 	}
 
-	private void printSerializeMember(MemberInfo minfo, List<Integer> sinceStack) {
+	private void printSerializeMember(MemberInfo minfo, List<Long> sinceStack) {
 		if (minfo.since != 0) {
 			if (sinceStack.size() == 0 || sinceStack.get(sinceStack.size()-1) != minfo.since) {
 				sinceStack.add(minfo.since);

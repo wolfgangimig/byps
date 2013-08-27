@@ -35,12 +35,12 @@ public abstract class BSerializer {
 		return 0;
 	}
 	
-	public void write(final Object obj1, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 	}
 			
 	/**
 	 * Create and read an object.
 	 */
-	public abstract Object read(final Object obj1, final BInput bin1, final int version) throws BException;
+	public abstract Object read(final Object obj1, final BInput bin1, final long version) throws BException;
 	
 }

@@ -155,7 +155,7 @@ public class GenSerStruct {
 	}
 
 	protected void printPutGetMembers(List<MemberInfo> members, boolean putNotGet) throws IOException {
-		List<Integer> sinceStack = new ArrayList<Integer>();
+		List<Long> sinceStack = new ArrayList<Long>();
 		
 		for (MemberInfo minfo : members) {
 			if (minfo.isStatic) {

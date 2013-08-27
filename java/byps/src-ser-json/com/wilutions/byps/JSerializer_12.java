@@ -29,7 +29,7 @@ public class JSerializer_12 extends BSerializer {
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"})
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		BInputJson bin = ((BInputJson)bin1);
 				
 		// lengths
@@ -50,7 +50,7 @@ public class JSerializer_12 extends BSerializer {
 	
 	@SuppressWarnings("rawtypes")
 	@Override
-	public void write(final Object obj1, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 		final BOutputJson bout = ((BOutputJson)bout1);
 		final Collection arr = (Collection) obj1;
 		final BBufferJson bbuf = bout.bbuf;

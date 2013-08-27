@@ -12,7 +12,7 @@ public abstract class BOutputBin extends BOutput {
 		this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	}
 
-	public BOutputBin(BTransport transport, int streamHeaderMagic, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	public BOutputBin(BTransport transport, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		super(transport, transport.apiDesc.getRegistry(BProtocolS.BINARY_MODEL), streamHeaderMagic, negotiatedVersion, negotiatedByteOrder);
 		this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	}

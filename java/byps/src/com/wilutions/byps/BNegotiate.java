@@ -25,7 +25,7 @@ public class BNegotiate {
 	private final static int MAGIC_SINGLE_QUOTES = ((int)'[' << 24) | ((int)'\'' << 16) | ((int)'N' << 8) | ((int)'\'');
 	
 	public String protocols;
-	public int version;
+	public long version;
 	public ByteOrder byteOrder; 
 	public BTargetId targetId;
 	
@@ -98,7 +98,7 @@ public class BNegotiate {
 		
 		bbuf.putChar('N');
 		bbuf.putString(protocols);
-		bbuf.putInt(version);
+		bbuf.putString(BVersioning.longToString(version));
 
 		if (byteOrder == null) {
 			bbuf.putChar('_');
@@ -134,7 +134,7 @@ public class BNegotiate {
 		bbuf.nextExpectedJsonChar(',', true);
 		
 		// Version
-		version = bbuf.getInt();
+		version = BVersioning.stringToLong(bbuf.getString());
 		bbuf.nextExpectedJsonChar(',', true);
 		
 		// Byte Order

@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.wilutions.byps.BVersioning;
 import com.wilutions.byps.gen.api.CommentInfo;
 import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
@@ -22,7 +23,7 @@ public class XmlMemberInfo {
 	public boolean isStatic;
 	public boolean isFinal;
 	public MemberAccess access;
-	public int since;
+	public String since;
 	public String value;
 	
 	@XmlTransient
@@ -37,7 +38,7 @@ public class XmlMemberInfo {
 		x.isStatic = v.isStatic;
 		x.isFinal = v.isFinal;
 		x.access = v.access;
-		x.since = v.since;
+		x.since = BVersioning.longToString(v.since);
 		
 		if (v.value != null) {
 			// Since this stupid javax.xml.stuff is not able to write a "\0", encode all values with base64
@@ -67,7 +68,8 @@ public class XmlMemberInfo {
 				access == MemberAccess.PACKAGE,
 				access == MemberAccess.PRIVATE,
 				isFinal, isStatic, isTransient,
-				since, value);
+				BVersioning.stringToLong(since), 
+				value);
 		
 		log.debug(")toValue=" + v);
 		return v;
