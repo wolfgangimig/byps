@@ -10,14 +10,14 @@ namespace com.wilutions.byps
     {
 	    public readonly String name;
 	    public readonly String basePackage;
-	    public readonly int version;
+	    public readonly long version;
 	    public readonly bool uniqueObjects;
 
         protected Dictionary<BBinaryModel, BRegistry> registries = new Dictionary<BBinaryModel,BRegistry>();
 	
 	    public BApiDescriptor( 
 			    String name, String apiPack,
-			    int version,
+                long version,
 			    bool uniqueObjects
 			    ) {
 		    this.name = name;

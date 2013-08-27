@@ -87,7 +87,7 @@ public class GenSerArray {
 	protected void printCreate() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printCreateObject");
 
-		pr.println("public override Object read(Object obj1, BInput bin1, int version) {");
+		pr.println("public override Object read(Object obj1, BInput bin1, long version) {");
 		pr.beginBlock();
 		
 		pr.println("BInputBin bin = (BInputBin)bin1;");
@@ -131,7 +131,7 @@ public class GenSerArray {
 	protected void printWrite() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printStore");
 
-		pr.println("public override void write(Object obj1, BOutput bout1, int version) {");
+		pr.println("public override void write(Object obj1, BOutput bout1, long version) {");
 		pr.beginBlock();
 		
 		pr.println("BOutputBin bout = (BOutputBin)bout1;");

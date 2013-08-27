@@ -127,7 +127,7 @@ public class GenSerStruct {
 	protected void printRead() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printRead");
 
-		pr.println("public override Object read(Object obj1, BInput bin1, int version)");
+		pr.println("public override Object read(Object obj1, BInput bin1, long version)");
 		pr.println("{");
 		pr.beginBlock();
 		
@@ -172,7 +172,7 @@ public class GenSerStruct {
 				if (minfo.since != 0) {
 					if (sinceStack.size() == 0 || sinceStack.get(sinceStack.size()-1) != minfo.since) {
 						sinceStack.add(minfo.since);
-						pr.print("if (version >= ").print(minfo.since).print(") {").println();
+						pr.print("if (version >= ").print(minfo.since).print("L) {").println();
 						pr.beginBlock();
 					}
 				}
@@ -195,7 +195,7 @@ public class GenSerStruct {
 	protected void printWrite() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printStore");
 
-		pr.println("public override void write(Object obj1, BOutput bout1, int version)");
+		pr.println("public override void write(Object obj1, BOutput bout1, long version)");
 		pr.println("{");
 		pr.beginBlock();
 		

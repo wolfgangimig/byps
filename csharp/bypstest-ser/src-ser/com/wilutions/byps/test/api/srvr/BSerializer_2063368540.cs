@@ -29,7 +29,7 @@ namespace com.wilutions.byps.test.api.srvr
 			       /* padding up to multiple of alignment */ + 0;			
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			BRequest_ServerIF_getClientIds obj = (BRequest_ServerIF_getClientIds)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ServerIF_getClientIds()));

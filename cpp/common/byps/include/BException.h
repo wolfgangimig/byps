@@ -99,7 +99,7 @@ public:
 		return swhat.c_str();
 	}
 
-	void serialize(BIO& bio, unsigned int version);
+	void serialize(BIO& bio, const BVERSION version);
 
 protected:
     int32_t code;

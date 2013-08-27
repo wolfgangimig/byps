@@ -35,7 +35,7 @@ public class BSerializer_2033150218 extends BSerializer {
 	
 	
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final BRequest_RemoteArrayTypes4dim_getLong obj = (BRequest_RemoteArrayTypes4dim_getLong)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteArrayTypes4dim_getLong()));
 		

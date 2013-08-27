@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api
 		public BSerializer_172221196() 
 			: base(172221196) {}
 		
-		public override Object read(object obj1, BInput bin1, int version) {
+		public override Object read(object obj1, BInput bin1, long version) {
 			BInputBin bin = ((BInputBin)bin1);
 			BBufferBin bbuf = bin.bbuf;
 			int n = bbuf.getLength();
@@ -31,7 +31,7 @@ namespace com.wilutions.byps.test.api
 			return arr;
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)  {
+		public override void write(Object obj1, BOutput bout1, long version)  {
 			BOutputBin bout = ((BOutputBin)bout1);
 			BBufferBin bbuf = bout.bbuf;
 			IList<com.wilutions.byps.test.api.inl.Point2D> arr = (IList<com.wilutions.byps.test.api.inl.Point2D>)obj1;

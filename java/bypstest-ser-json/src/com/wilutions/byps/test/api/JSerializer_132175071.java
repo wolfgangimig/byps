@@ -18,7 +18,7 @@ public class JSerializer_132175071 extends JSerializer_13 {
 		super(132175071);	}
 	
 	
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputJson bin = (BInputJson)bin1;
 		final BJsonObject js = bin.currentObject;
 		final Set<String> keys = js.keys();

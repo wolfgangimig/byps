@@ -49,14 +49,14 @@ namespace com.wilutions.byps.test.api.cons
 			       /* padding up to multiple of alignment */ + 4;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			AllTypesC obj = (AllTypesC)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			AllTypesC obj = (AllTypesC)(obj1 != null ? obj1 : bin.onObjectCreated(new AllTypesC()));

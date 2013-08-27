@@ -37,7 +37,7 @@ public:
 	void get(PSerializable& v) const;
     void get(BException& v) const;
 
-    void serialize(BIO&, const unsigned int);
+    void serialize(BIO&, BVERSION);
 
     std::wstring toString() const;
 

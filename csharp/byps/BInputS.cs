@@ -13,7 +13,7 @@ namespace com.wilutions.byps
         }
 
 	    protected override Object loadObj(BSerializer ser) {
-		    int strmVersion = header.version;
+		    long strmVersion = header.version;
 		    if (strmVersion <= 0) throw new BException(BException.CORRUPT, "Invalid stream version " + strmVersion);
 		    return readObj(false, ser);
 	    }

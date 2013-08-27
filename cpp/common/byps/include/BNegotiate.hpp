@@ -27,7 +27,7 @@ BINLINE void BNegotiate::write(const PBytes& bytes) {
 	stringstream ss;
     ss	<< NEGOTIATE_MAGIC_DOUBLE_QUOTES << ",\""
 		<< protocols << "\","
-        << version << ",\""
+        << "\"" << BVersioning::longToString<char>(version) << "\",\""
         << ((BByteOrder::getMyEndian() == BLITTLE_ENDIAN) ? "L" : "B")
 		<< "\", \"\"]";
 
@@ -67,12 +67,17 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 
 	// Version
 
-	size_t idxVersionBegin = idx;
-	for (; idx < bytes->length && p[idx] != ','; idx++) {}
-	
-	p[idx] = 0;
-	version = atoi(p + idxVersionBegin);
-		
+	if (p[idx] != '\"') throw BException(EX_CORRUPT);
+	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+
+	std::stringstream ssversion;
+	for (; idx < bytes->length && p[idx] != '\"'; idx++) {
+        ssversion << p[idx];
+	}
+	version = BVersioning::stringToLong(ssversion.str());
+
+	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (p[idx] != ',') throw BException(EX_CORRUPT);
 	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
 
 	// Byteorder

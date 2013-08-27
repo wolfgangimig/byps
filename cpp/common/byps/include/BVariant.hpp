@@ -5,7 +5,7 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE void BVariant::serialize(BIO& ar, const unsigned int) {
+BINLINE void BVariant::serialize(BIO& ar, BVERSION) {
     switch(type) {
 	case BTYPEID_VOID: break;
     case BTYPEID_BOOL: ar & u.boolVal; break;

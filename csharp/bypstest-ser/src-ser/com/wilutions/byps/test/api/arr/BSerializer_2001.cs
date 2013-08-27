@@ -39,7 +39,7 @@ namespace com.wilutions.byps.test.api.arr
 			       /* padding up to multiple of alignment */ + 0;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			ArrayTypes1dim obj = (ArrayTypes1dim)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.arr
 			bout.writeObj(obj.String1, true, com.wilutions.byps.test.api.BSerializer_1888107655.instance);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			ArrayTypes1dim obj = (ArrayTypes1dim)(obj1 != null ? obj1 : bin.onObjectCreated(new ArrayTypes1dim()));

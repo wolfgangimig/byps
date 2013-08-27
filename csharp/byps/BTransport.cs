@@ -297,7 +297,7 @@ namespace com.wilutions.byps
 		    BProtocol protocol = null;
 		
 		    if (nego.protocols.IndexOf(BNegotiate.BINARY_STREAM) == 0) {
-			    int negotiatedVersion = Math.Min(apiDesc.version, nego.version);
+			    long negotiatedVersion = Math.Min(apiDesc.version, nego.version);
 			    nego.protocols = BNegotiate.BINARY_STREAM;
                 if (nego.byteOrder == ByteOrder.UNDEFINED) nego.byteOrder = ByteOrder.LITTLE_ENDIAN;
                 if (nego.byteOrder != ByteOrder.LITTLE_ENDIAN) throw new BException(BException.CORRUPT, "Protocol requires unsupported byte order BIG_ENDIAN");

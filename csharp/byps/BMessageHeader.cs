@@ -19,14 +19,14 @@ namespace com.wilutions.byps
 	    public int magic;
 	    public int error;
 	    public int flags;
-	    public int version;
+	    public long version;
 	    public BTargetId targetId;
 	    public long messageId;
 	    public long streamId; // if (flags & FLAG_STREAM)
 	
 	    public ByteOrder byteOrder;
 
-	    public BMessageHeader(int magic, int version, ByteOrder byteOrder, long mid) {
+	    public BMessageHeader(int magic, long version, ByteOrder byteOrder, long mid) {
 		    this.magic = magic;
 		    this.version = version;
 		    this.byteOrder = byteOrder;
@@ -80,7 +80,7 @@ namespace com.wilutions.byps
 			buf.putInt(MAGIC_BINARY_STREAM);
 			buf.putInt(error); 
 			buf.putInt(flags); 
-			buf.putInt(version);
+			buf.putLong(version);
 			targetId.write(buf);
 			buf.putLong(messageId);
 			if ((flags & FLAG_STREAM) != 0) {
@@ -91,7 +91,7 @@ namespace com.wilutions.byps
 	    private void readBinaryWithoutMagic(ByteBuffer buf) {
 		    error = buf.getInt();
 		    flags = buf.getInt();
-		    version = buf.getInt();
+		    version = buf.getLong();
 		    targetId = BTargetId.read(buf);
 		    messageId = buf.getLong();
 		    if ((flags & FLAG_STREAM) != 0) {

@@ -16,7 +16,7 @@ namespace com.wilutions.byps
             this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	    }
 
-	    public BOutputBin(BTransport transport, int streamHeaderMagic, int negotiatedVersion, ByteOrder negotiatedByteOrder) 
+	    public BOutputBin(BTransport transport, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) 
 		    : base (transport, transport.apiDesc.getRegistry(BBinaryModel.MEDIUM), streamHeaderMagic, negotiatedVersion, negotiatedByteOrder)
         {
             this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);

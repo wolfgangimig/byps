@@ -32,7 +32,7 @@ public:
     const _Type* ptr() const;
 	BArray1* set(int idx, _Type value);
 
-    void serialize(BIO& ar, const unsigned int );
+    void serialize(BIO& ar, const BVERSION );
 
 private:
     void init(size_t length);
@@ -73,7 +73,7 @@ public:
     _Type* ptr();
     const _Type* ptr() const;
 	BArray2* set(int i1, int i0, _Type value);
-    void serialize(BIO& ar, const unsigned int );
+    void serialize(BIO& ar, const BVERSION );
 
 private:
     void init(size_t length1, size_t length0);
@@ -97,7 +97,7 @@ public:
     _Type* ptr();
     const _Type* ptr() const;
 	BArray3* set(int i2, int i1, int i0, _Type value);
-    void serialize(BIO& ar, const unsigned int );
+    void serialize(BIO& ar, const BVERSION );
 
 private:
     void init(size_t length2, size_t length1, size_t length0);
@@ -123,7 +123,7 @@ public:
     _Type* ptr();
     const _Type* ptr() const;
 	BArray4* set(int i3, int i2, int i1, int i0, _Type value);
-    void serialize(BIO& ar, const unsigned int );
+    void serialize(BIO& ar, const BVERSION );
 
 private:
     void init(size_t length3, size_t length2, size_t length1, size_t length0);
@@ -417,7 +417,7 @@ template<typename _Type> BArray4<_Type> * BArray4<_Type>::set(int i3, int i2, in
 	return this;
 }
 
-template<typename _Type> void BArray1<_Type>::serialize(BIO& ar, const unsigned int ) {
+template<typename _Type> void BArray1<_Type>::serialize(BIO& ar, const BVERSION ) {
     int32_t n0 = ar.is_loading ? 0 : (int32_t)lengths[0];
     ar & n0;
     if (ar.is_loading) init((size_t)n0);
@@ -426,7 +426,7 @@ template<typename _Type> void BArray1<_Type>::serialize(BIO& ar, const unsigned 
     }
 }
 
-template<typename _Type> void BArray2<_Type>::serialize(BIO& ar, const unsigned int ) {
+template<typename _Type> void BArray2<_Type>::serialize(BIO& ar, const BVERSION ) {
     int32_t n1 = ar.is_loading ? 0 : (int32_t)lengths[1];
     int32_t n0 = ar.is_loading ? 0 : (int32_t)lengths[0];
     ar & n1;
@@ -439,7 +439,7 @@ template<typename _Type> void BArray2<_Type>::serialize(BIO& ar, const unsigned 
     }
 }
 
-template<typename _Type> void BArray3<_Type>::serialize(BIO& ar, const unsigned int ) {
+template<typename _Type> void BArray3<_Type>::serialize(BIO& ar, const BVERSION ) {
     int32_t n2 = ar.is_loading ? 0 : (int32_t)lengths[2];
     int32_t n1 = ar.is_loading ? 0 : (int32_t)lengths[1];
     int32_t n0 = ar.is_loading ? 0 : (int32_t)lengths[0];
@@ -456,7 +456,7 @@ template<typename _Type> void BArray3<_Type>::serialize(BIO& ar, const unsigned 
     }
 }
 
-template<typename _Type> void BArray4<_Type>::serialize(BIO& ar, const unsigned int ) {
+template<typename _Type> void BArray4<_Type>::serialize(BIO& ar, const BVERSION ) {
     int32_t n3 = ar.is_loading ? 0 : (int32_t)lengths[3];
     int32_t n2 = ar.is_loading ? 0 : (int32_t)lengths[2];
     int32_t n1 = ar.is_loading ? 0 : (int32_t)lengths[1];

@@ -5,7 +5,7 @@ package com.wilutions.byps.test.api;
  */
 public class BApi {
 	
-	public final static int VERSION = 791;
+	public final static String VERSION = "791";
 	public final static String NAME = "Testser";
 	
 //	public final static boolean UNIQUE_OBJECTS = false;

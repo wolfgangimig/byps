@@ -5,7 +5,7 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE BOutput::BOutput(PTransport transport, int32_t negotiatedVersion, BByteOrder negotiatedByteOrder)
+BINLINE BOutput::BOutput(PTransport transport, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
     : BIO(transport, BBinaryModel::MEDIUM(), negotiatedVersion, negotiatedByteOrder)
     , nextPointer(0)
 {

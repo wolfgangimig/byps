@@ -35,7 +35,7 @@ public class BSerializer_627010462 extends BSerializer {
 	
 	
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final BRequest_RemoteEnums_getPlanet obj = (BRequest_RemoteEnums_getPlanet)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteEnums_getPlanet()));
 		

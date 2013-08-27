@@ -31,9 +31,9 @@ com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 */
 com.wilutions.byps.test.api.BApiDescriptor_Testser = {
 	/**
-	 * API Version
-	*/
-	VERSION : 791,
+	 * API serialisation version: 0.0.0.791
+	 */
+	VERSION : "0.0.0.791",
 	
 	/**
 	 * Internal used API Desciptor.
@@ -42,7 +42,7 @@ com.wilutions.byps.test.api.BApiDescriptor_Testser = {
 		return new com.wilutions.byps.BApiDescriptor(
 			"Testser",
 			"com.wilutions.byps.test.api",
-			791,
+			"0.0.0.791",
 			false, // uniqueObjects
 			new com.wilutions.byps.test.api.BRegistry_Testser()
 		);

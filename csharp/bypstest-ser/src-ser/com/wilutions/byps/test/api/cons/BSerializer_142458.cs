@@ -46,7 +46,7 @@ namespace com.wilutions.byps.test.api.cons
 			       /* padding up to multiple of alignment */ + 0;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			AllTypesZ obj = (AllTypesZ)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -67,7 +67,7 @@ namespace com.wilutions.byps.test.api.cons
 			bout.writeObj(obj.String2, true, com.wilutions.byps.test.api.BSerializer_1888107655.instance);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			AllTypesZ obj = (AllTypesZ)(obj1 != null ? obj1 : bin.onObjectCreated(new AllTypesZ()));

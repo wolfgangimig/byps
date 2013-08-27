@@ -8,7 +8,7 @@ namespace com.wilutions.byps
     public class BOutputS : BOutputBin
     {
  
-        public BOutputS(BTransport transport, int negotiatedVersion, ByteOrder negotiatedByteOrder)
+        public BOutputS(BTransport transport, long negotiatedVersion, ByteOrder negotiatedByteOrder)
             : base(transport, BMessageHeader.MAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder)
         {
         }

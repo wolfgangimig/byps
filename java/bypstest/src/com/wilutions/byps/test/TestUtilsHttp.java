@@ -40,7 +40,7 @@ public class TestUtilsHttp {
 		return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
 	}
 	
-	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, int appVersion) throws RemoteException {
+	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, long appVersion) throws RemoteException {
 		
 		BRegistry registry = null;
 		

@@ -185,7 +185,9 @@ class GenRemoteStub {
 				rtype = tinfoCpp.toString(rinfo.pack);
 			}
 			
-			String resultClassName = MethodInfo.METHOD_RESULT_NAME_PREFIX + tinfoCpp.tinfo.typeId;
+			TypeInfoCpp resultClassCpp = new TypeInfoCpp(methodInfo.resultInfo);
+			String resultClassName = resultClassCpp.getClassName(rinfo.pack);
+			//MethodInfo.METHOD_RESULT_NAME_PREFIX + tinfoCpp.tinfo.typeId;
 			
 			outerAsyncClass = "BAsyncResultReceiveMethodL< " + rtype + ", " + resultClassName + " >";
 						

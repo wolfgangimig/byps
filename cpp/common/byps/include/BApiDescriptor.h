@@ -11,11 +11,11 @@ class BApiDescriptor {
 public:
     const string name;
     const string pack;
-    const int32_t version;
+    const BVERSION version;
     const bool uniqueObjects;
     
     BApiDescriptor(const string& name, const string& package,
-			int32_t version, bool uniqueObjects)
+			BVERSION version, bool uniqueObjects)
     :  name(name), pack(package), version(version), uniqueObjects(uniqueObjects) {
 		
 	}

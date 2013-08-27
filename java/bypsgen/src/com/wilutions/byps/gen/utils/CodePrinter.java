@@ -87,6 +87,24 @@ public class CodePrinter {
 		pr.flush();
 	}
 	
+	public void printWhereIAm(Class<?> clazz) {
+	    int lineNumber = 0;
+	    StackTraceElement[] stackTraceElement = Thread.currentThread()
+	            .getStackTrace();
+	    int currentIndex = -1;
+	    for (int i = 0; i < stackTraceElement.length; i++) {
+	        if (stackTraceElement[i].getMethodName().compareTo("printWhereIAm") == 0)
+	        {
+	            currentIndex = i + 1;
+	            break;
+	        }
+	    }
+	    lineNumber = stackTraceElement[currentIndex].getLineNumber();
+	    
+	    println("// generated at " + clazz.toString() + ":" + lineNumber);
+	}
+	
+	
 	private PrintWriter pr;
 	private String indent = "";
 	private String sepline = "--------------------------------------------------------";

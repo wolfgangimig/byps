@@ -18,7 +18,7 @@ public class BSerializer_1487265161 extends BSerializer_13 {
 		super(1487265161);	}
 	
 	
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final BBufferBin bbuf = bin.bbuf;
 		final HashMap<java.lang.Byte,java.lang.Double> map = new HashMap<java.lang.Byte,java.lang.Double>();
@@ -32,7 +32,7 @@ public class BSerializer_1487265161 extends BSerializer_13 {
 		return map;
 	}
 	
-	public void write(Object obj1, BOutput bout1, int version)  throws BException {
+	public void write(Object obj1, BOutput bout1, final long version)  throws BException {
 		BOutputBin bout = (BOutputBin)bout1;
 		BBufferBin bbuf = bout.bbuf;
 		Map<java.lang.Byte,java.lang.Double> map = (Map<java.lang.Byte,java.lang.Double>)obj1;

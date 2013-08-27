@@ -21,7 +21,7 @@ namespace com.wilutions.byps
         {
 	    }
 
-        public override Object read(Object obj1, BInput bin1, int version)
+        public override Object read(Object obj1, BInput bin1, long version)
         {
             BInputBin bin = ((BInputBin)bin1);
             BBufferBin bbuf = bin.bbuf;
@@ -35,7 +35,7 @@ namespace com.wilutions.byps
             return arr;
         }
 
-        public override void write(Object obj1, BOutput bout1, int version)
+        public override void write(Object obj1, BOutput bout1, long version)
         {
             BOutputBin bout = ((BOutputBin)bout1);
             BBufferBin bbuf = bout.bbuf;

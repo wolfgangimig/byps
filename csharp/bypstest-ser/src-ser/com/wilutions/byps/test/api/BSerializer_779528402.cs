@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api
 		public BSerializer_779528402()
 			: base(779528402) {}		
 		
-		public override Object read(object obj1, BInput bin1, int version) {
+		public override Object read(object obj1, BInput bin1, long version) {
 			BInputBin bin = ((BInputBin)bin1);
 			BBufferBin bbuf = bin.bbuf;
 			Dictionary<int,System.IO.Stream> map = new Dictionary<int,System.IO.Stream>();
@@ -32,7 +32,7 @@ namespace com.wilutions.byps.test.api
 			return map;
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)  {
+		public override void write(Object obj1, BOutput bout1, long version)  {
 			BOutputBin bout = ((BOutputBin)bout1);
 			BBufferBin bbuf = bout.bbuf;
 			Dictionary<int,System.IO.Stream> map = (Dictionary<int,System.IO.Stream>)obj1;

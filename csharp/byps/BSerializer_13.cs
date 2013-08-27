@@ -22,7 +22,7 @@ namespace com.wilutions.byps
         {
 	    }
 
-        public override object read(object obj1, BInput bin1, int version)
+        public override object read(object obj1, BInput bin1, long version)
         {
 		    BInputBin bin = ((BInputBin)bin1);
 		    int n0 = bin.bbuf.getLength();
@@ -39,7 +39,7 @@ namespace com.wilutions.byps
 		    return arr;
         }
 
-        public override void write(object obj1, BOutput bout1, int version)
+        public override void write(object obj1, BOutput bout1, long version)
         {
             BOutputBin bout = (BOutputBin)bout1;
             IDictionary<Object, Object> map = (IDictionary<Object, Object>)obj1;

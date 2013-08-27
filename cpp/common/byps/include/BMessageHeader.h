@@ -19,12 +19,12 @@ public:
     int32_t magic;
     int32_t error;
     int32_t flags;
-    int32_t version;
+    BVERSION version;
     BByteOrder byteOrder;
     int64_t messageId;
     BTargetId targetId;
 
-    BMessageHeader(int32_t nMagic, int32_t nNegotiatedVersion, BByteOrder negotiatedByteOrder, int64_t messageId);
+    BMessageHeader(int32_t nMagic, BVERSION nNegotiatedVersion, BByteOrder negotiatedByteOrder, int64_t messageId);
     BMessageHeader();
     BMessageHeader(const BMessageHeader& rhs);
     void write(BBuffer& bbuf);

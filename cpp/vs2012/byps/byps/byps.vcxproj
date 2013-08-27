@@ -213,6 +213,7 @@
     <ClInclude Include="..\..\..\common\byps\include\BUtils.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\BVariant.h" />
     <ClInclude Include="..\..\..\common\byps\include\BVariant.hpp" />
+    <ClInclude Include="..\..\..\common\byps\include\BVersioning.h" />
     <ClInclude Include="..\..\..\common\byps\include\BWire.h" />
     <ClInclude Include="..\..\..\common\byps\include\BWire.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\Byps-impl.h" />

@@ -7,7 +7,7 @@ namespace com.wilutions.byps
 {
     public class BProtocolS : BProtocol
     {
-	    public BProtocolS(BApiDescriptor apiDesc, int negotiatedVersion, ByteOrder negotiatedByteOrder) 
+	    public BProtocolS(BApiDescriptor apiDesc, long negotiatedVersion, ByteOrder negotiatedByteOrder) 
 		    : base(apiDesc, negotiatedVersion, negotiatedByteOrder)
         {
 	    }

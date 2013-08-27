@@ -31,6 +31,7 @@ using namespace ::std;
 typedef int32_t BTYPEID;
 typedef int32_t BPOINTER;
 typedef int32_t BLENGTH;
+typedef int64_t BVERSION;
 
 //template<typename _resultType> class BAsyncResult;
 class BAsyncResult;
@@ -164,6 +165,7 @@ typedef byps_ptr<BContentStream> PContentStream;
 #include "BTestAdapter.h"
 #include "BThreadPool.h"
 #include "BUtils.h"
+#include "BVersioning.h"
 
 
 #endif

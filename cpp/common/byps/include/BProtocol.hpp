@@ -7,7 +7,7 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE BProtocol::BProtocol(PApiDescriptor apiDesc, int32_t negotiatedVersion, BByteOrder negotiatedByteOrder)
+BINLINE BProtocol::BProtocol(PApiDescriptor apiDesc, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
 : apiDesc(apiDesc), m_nNegotiatedVersion(negotiatedVersion), m_negotiatedByteOrder(negotiatedByteOrder) {
 }
 

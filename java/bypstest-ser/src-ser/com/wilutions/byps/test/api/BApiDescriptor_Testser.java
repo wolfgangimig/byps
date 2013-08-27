@@ -9,7 +9,10 @@ import com.wilutions.byps.*;
 
 public class BApiDescriptor_Testser { 
 
-	public final static int VERSION = 791;
+	/**
+	 * API serialisation version: 0.0.0.791
+	 */
+	public final static long VERSION = 791L;
 	
 	public final static BApiDescriptor instance = new BApiDescriptor(
 		"Testser",

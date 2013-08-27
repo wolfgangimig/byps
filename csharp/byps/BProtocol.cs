@@ -8,13 +8,13 @@ namespace com.wilutions.byps
 {
     public abstract class BProtocol
     {
- 	    protected readonly BApiDescriptor apiDesc;
+        public readonly BApiDescriptor apiDesc;
+
+        public readonly long negotiatedVersion;
+
+        public readonly ByteOrder negotiatedByteOrder;
 	
-	    protected readonly int negotiatedVersion;
-	
-	    protected readonly ByteOrder negotiatedByteOrder;
-	
-	    public BProtocol(BApiDescriptor apiDesc, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	    public BProtocol(BApiDescriptor apiDesc, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		    this.apiDesc = apiDesc;
 		    this.negotiatedVersion = negotiatedVersion;
 		    this.negotiatedByteOrder = negotiatedByteOrder;

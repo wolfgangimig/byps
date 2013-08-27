@@ -19,7 +19,7 @@ public class JSerializer_31512998 extends BSerializer {
 	}
 	
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputJson bin = (BInputJson)bin1;
 		final BBufferJson bbuf = bin.bbuf;
 		final int n = bin.currentObject.size();
@@ -33,7 +33,7 @@ public class JSerializer_31512998 extends BSerializer {
 	}
 	
 	@Override
-	public void write(Object obj1, BOutput bout1, int version)  throws BException {
+	public void write(Object obj1, BOutput bout1, final long version)  throws BException {
 		BOutputJson bout = (BOutputJson)bout1;
 		BBufferJson bbuf = bout.bbuf;
 		java.util.HashSet<java.lang.Byte> arr = (java.util.HashSet<java.lang.Byte>)obj1;

@@ -13,14 +13,16 @@ namespace com.wilutions.byps
         {
 	    }
 
-	    public override void write(Object obj, BOutput bout1, int version) {
+        public override void write(Object obj, BOutput bout1, long version)
+        {
 		    BOutputBin bout = ((BOutputBin)bout1);
 		    BRemote remote = (BRemote)obj;
 		    BTargetId targetId = remote.BRemote_getTargetId();
 		    targetId.write(bout.bbuf.getBuffer());
 	    }
 
-	    public override Object read(Object obj, BInput bin1, int version) {
+        public override Object read(Object obj, BInput bin1, long version)
+        {
 		    BInputBin bin = ((BInputBin)bin1);
 		    BRemote remote = null;
 		    BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer());

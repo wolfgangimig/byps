@@ -37,7 +37,7 @@ public class BSerializer_1835035436 extends BSerializer {
 	
 	
 	@Override
-	public void write(final Object obj1, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 		final Point2D obj = (Point2D)(obj1 != null ? obj1 : read(null, null, 0));		
 		final BOutputBin bout = (BOutputBin)bout1;
 		final BBufferBin bbuf = bout.bbuf;
@@ -46,7 +46,7 @@ public class BSerializer_1835035436 extends BSerializer {
 	}
 	
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final Point2D obj = (Point2D)(obj1 != null ? obj1 : new Point2D());
 		

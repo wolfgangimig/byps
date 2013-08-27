@@ -62,6 +62,7 @@
     <Compile Include="BTestAdapter.cs" />
     <Compile Include="BValueClass.cs" />
     <Compile Include="BSerializer_22.cs" />
+    <Compile Include="BVersioning.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="BMessageHeader.cs" />
     <Compile Include="BMethodRequest.cs" />

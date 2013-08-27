@@ -19,7 +19,7 @@ namespace com.wilutions.byps
 	    private const int MAGIC_SINGLE_QUOTES = ((int)'[' << 24) | ((int)'\'' << 16) | ((int)'N' << 8) | ((int)'\'');
 	
 	    public String protocols = PROTOCOLS;
-	    public int version;
+	    public long version;
 	    public ByteOrder byteOrder; 
 	    public BTargetId targetId;
 
@@ -67,7 +67,7 @@ namespace com.wilutions.byps
             StringBuilder sbuf = new StringBuilder();
             sbuf.Append("[\"N\",")
                 .Append("\"S\",") // Binary Stream
-                .Append(version).Append(",")
+                .Append("\"").Append(BVersioning.longToString(version)).Append("\"").Append(",")
                 .Append("\"L\"").Append(",") // Little Endian
                 .Append("\"").Append((targetId != null ? targetId : new BTargetId()).ToString()).Append("\"")
                 .Append("]");
@@ -96,7 +96,9 @@ namespace com.wilutions.byps
                             {
                                 protocols = protocols.Substring(1, protocols.Length - 2);
 
-                                version = Convert.ToInt32(items[idx++]);
+                                String versionStr = items[idx++];
+                                versionStr = versionStr.Substring(1, versionStr.Length - 2);
+                                version = BVersioning.stringToLong(versionStr);
 
                                 String byteOrderStr = items[idx++];
                                 if (byteOrderStr.Equals("\"L\""))

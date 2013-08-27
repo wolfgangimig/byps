@@ -55,7 +55,7 @@ public class GenSerList {
 	    String csElmType = pctxt.toCSharp(elmType).toString();
 	    String csType = ((serInfo.isListType()) ? "List<" : "HashSet<") + csElmType + ">";
 
-	    pr.println("public override Object read(object obj1, BInput bin1, int version) {");
+	    pr.println("public override Object read(object obj1, BInput bin1, long version) {");
 		pr.beginBlock();
 	    pr.println("BInputBin bin = ((BInputBin)bin1);");
 	    pr.println("BBufferBin bbuf = bin.bbuf;");
@@ -85,7 +85,7 @@ public class GenSerList {
 	    String cstype = pctxt.toCSharp(serInfo).toString();
 	    String csElmType = pctxt.toCSharp(elmType).toString();
 
-	    pr.println("public override void write(Object obj1, BOutput bout1, int version)  {");
+	    pr.println("public override void write(Object obj1, BOutput bout1, long version)  {");
 	    pr.beginBlock();
 	    pr.println("BOutputBin bout = ((BOutputBin)bout1);");
 	    pr.println("BBufferBin bbuf = bout.bbuf;");

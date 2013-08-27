@@ -12,7 +12,7 @@ namespace com.wilutions.byps
 	    public readonly BTransport transport;
 	    public readonly BRegistry registry;
 	
-	    public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, int negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	    public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		    this.objMap = transport.apiDesc.uniqueObjects ? null : new BObjMap();
 		    this.header = new BMessageHeader(streamHeaderMagic, negotiatedVersion, negotiatedByteOrder, transport.wire.makeMessageId());
 		    this.header.targetId = transport.getTargetId();

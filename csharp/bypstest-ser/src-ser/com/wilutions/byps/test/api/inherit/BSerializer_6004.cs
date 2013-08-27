@@ -32,7 +32,7 @@ namespace com.wilutions.byps.test.api.inherit
 			       /* padding up to multiple of alignment */ + 4;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			Class1Collections obj = (Class1Collections)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -42,7 +42,7 @@ namespace com.wilutions.byps.test.api.inherit
 			bout.writeObj(obj.Set1, false, com.wilutions.byps.test.api.BSerializer_2114305573.instance);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			Class1Collections obj = (Class1Collections)(obj1 != null ? obj1 : bin.onObjectCreated(new Class1Collections()));

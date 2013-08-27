@@ -9,7 +9,7 @@ using namespace ::std;
 
 class BOutput : public BIO {
 public:
-    BOutput(PTransport transport, int32_t nNegotiatedVersion, BByteOrder negotiatedByteOrder);
+    BOutput(PTransport transport, BVERSION nNegotiatedVersion, BByteOrder negotiatedByteOrder);
     BOutput(PTransport transport, const BMessageHeader& responseHeader);
     virtual ~BOutput();
     void store(PSerializable ptr);

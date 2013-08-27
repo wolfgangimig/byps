@@ -5,7 +5,7 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, int32_t negotiatedVersion, BByteOrder negotiatedByteOrder)
+BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
     : transport(transport)
     , registry(transport->apiDesc->getRegistry(bmodel))
     , is_loading(false)

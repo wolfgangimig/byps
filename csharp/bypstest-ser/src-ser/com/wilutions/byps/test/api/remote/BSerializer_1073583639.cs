@@ -31,7 +31,7 @@ namespace com.wilutions.byps.test.api.remote
 			       /* padding up to multiple of alignment */ + 0;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			BRequest_RemotePrimitiveTypes_add obj = (BRequest_RemotePrimitiveTypes_add)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -40,7 +40,7 @@ namespace com.wilutions.byps.test.api.remote
 			bbuf.putInt(obj._b);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			BRequest_RemotePrimitiveTypes_add obj = (BRequest_RemotePrimitiveTypes_add)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemotePrimitiveTypes_add()));

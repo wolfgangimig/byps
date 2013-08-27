@@ -303,7 +303,7 @@ com.wilutions.byps.BNegotiate = function(apiDesc) {
 	this.JSON = "J";
 	
 	this.protocols = this.JSON;
-	this.version = 0;
+	this.version = apiDesc.version;
 	this.targetId = "";
 	
 	this.isNegotiateMessage = function(buf) {
@@ -311,7 +311,7 @@ com.wilutions.byps.BNegotiate = function(apiDesc) {
 	};
 	
 	this.toArray = function() {
-		return ["N","J",0,"_", this.targetId ];
+		return ["N","J",this.version,"_", this.targetId ];
 	};
 	
 	this.fromArray = function(arr) {

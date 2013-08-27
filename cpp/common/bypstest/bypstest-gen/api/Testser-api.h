@@ -416,7 +416,8 @@ class Matrix2D : public BSerializable {
 	public: Matrix2D(float _11, float _12, float _13, float _21, float _22, float _23, float _31, float _32, float _33);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 135329019; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -447,7 +448,8 @@ class Point2D : public BSerializable {
 	public: Point2D(int16_t x, int16_t y);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1835035436; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -476,7 +478,8 @@ class ArrayTypes1dim : public BSerializable {
 	public: ArrayTypes1dim(byps_ptr< BArray1< bool > > boolean1, PBytes byte1, byps_ptr< BArray1< wchar_t > > char1, byps_ptr< BArray1< int16_t > > short1, byps_ptr< BArray1< int32_t > > int1, byps_ptr< BArray1< int64_t > > long1, byps_ptr< BArray1< float > > float1, byps_ptr< BArray1< double > > double1, byps_ptr< BArray1< ::std::wstring > > string1, byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2001; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -505,7 +508,8 @@ class ArrayTypes4dim : public BSerializable {
 	public: ArrayTypes4dim(byps_ptr< BArray4< bool > > boolean4, byps_ptr< BArray4< int8_t > > byte4, byps_ptr< BArray4< wchar_t > > char4, byps_ptr< BArray4< int16_t > > short4, byps_ptr< BArray4< int32_t > > int4, byps_ptr< BArray4< int64_t > > long4, byps_ptr< BArray4< float > > float4, byps_ptr< BArray4< double > > double4, byps_ptr< BArray4< ::std::wstring > > string4, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2004; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -555,7 +559,8 @@ class AllTypesC : public BSerializable {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 930294276; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -686,7 +691,8 @@ class AllTypesZ : public BSerializable {
 		hebrew2 = v;
 	}
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -715,7 +721,8 @@ class HebrewC : public BSerializable {
 	public: static ::std::wstring getBeth() {
 		return beth;
 	}
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -742,7 +749,8 @@ class HebrewZ : public BSerializable {
 		core = v;
 	}
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -797,7 +805,8 @@ class UsePlanets : public BSerializable {
 		planet2 = v;
 	}
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -821,7 +830,8 @@ class Class1 : public BSerializable {
 	public: Class1(int32_t int1, com::wilutions::byps::test::api::inherit::PClass1 nextClass1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6001; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -843,7 +853,8 @@ class Class1Collections : public BSerializable {
 	public: Class1Collections(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inherit::PClass1 > > list1, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::inherit::PClass1 > > map1, byps_ptr< ::std::set< com::wilutions::byps::test::api::inherit::PClass1 > > set1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6004; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -863,7 +874,8 @@ class Class2 : public Class1 {
 	public: Class2(int32_t int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6002; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -883,7 +895,8 @@ class Class3 : public Class2 {
 	public: Class3(int32_t int3);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6003; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -904,7 +917,8 @@ class Actor : public BSerializable {
 	public: Actor(byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > shape, com::wilutions::byps::test::api::inl::Matrix2D position);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 171948703; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -926,7 +940,8 @@ class ListListTypes : public BSerializable {
 	public: ListListTypes(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int2, byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int3, byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > > > int24);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 3002; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -959,7 +974,8 @@ class ListTypes : public BSerializable {
 	public: ListTypes(byps_ptr< ::std::vector< bool > > boolean1, byps_ptr< ::std::vector< int8_t > > byte1, byps_ptr< ::std::vector< wchar_t > > char1, byps_ptr< ::std::vector< int16_t > > short1, byps_ptr< ::std::vector< int32_t > > int1, byps_ptr< ::std::vector< int64_t > > long1, byps_ptr< ::std::vector< float > > float1, byps_ptr< ::std::vector< double > > double1, byps_ptr< ::std::vector< ::std::wstring > > string1, byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::vector< PBytes > > byte2, byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > int4, byps_ptr< ::std::vector< PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 3001; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -991,7 +1007,8 @@ class MapTypes : public BSerializable {
 	public: MapTypes(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1, byps_ptr< ::std::map< double , int8_t > > byte1, byps_ptr< ::std::map< float , wchar_t > > char1, byps_ptr< ::std::map< int64_t , int16_t > > short1, byps_ptr< ::std::map< int32_t , int32_t > > int1, byps_ptr< ::std::map< int16_t , int64_t > > long1, byps_ptr< ::std::map< wchar_t , float > > float1, byps_ptr< ::std::map< int8_t , double > > double1, byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1, byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::map< int32_t , PBytes > > byte2, byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 4001; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1053,7 +1070,8 @@ class PrimitiveTypes : public BSerializable {
 	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, ::std::wstring stringVal, PSerializable objVal, PSerializable objVal2, bool value, PSerializable temp);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1000; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1243,7 +1261,8 @@ class PrivateMembers : public BSerializable {
 		pprotInt = v;
 	}
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1266,7 +1285,8 @@ class Node : public BSerializable {
 	public: Node(com::wilutions::byps::test::api::refs::PNode next, com::wilutions::byps::test::api::refs::PNode me, byps_ptr< ::std::map< ::std::wstring , com::wilutions::byps::test::api::refs::PNode > > mapOfNodes, byps_ptr< ::std::vector< com::wilutions::byps::test::api::refs::PNode > > listOfNodes);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 9001; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1298,7 +1318,8 @@ class SetTypes : public BSerializable {
 	public: SetTypes(byps_ptr< ::std::set< bool > > boolean1, byps_ptr< ::std::set< int8_t > > byte1, byps_ptr< ::std::set< wchar_t > > char1, byps_ptr< ::std::set< int16_t > > short1, byps_ptr< ::std::set< int32_t > > int1, byps_ptr< ::std::set< int64_t > > long1, byps_ptr< ::std::set< float > > float1, byps_ptr< ::std::set< double > > double1, byps_ptr< ::std::set< ::std::wstring > > string1, byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1, byps_ptr< ::std::set< PBytes > > byte2, byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2, byps_ptr< ::std::set< PSerializable > > obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 5001; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1320,7 +1341,8 @@ class ChatStructure : public BSerializable {
 	public: ChatStructure(::std::wstring msg, double sentAt, double receivedAt);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 7007; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1365,7 +1387,8 @@ class Stream1 : public BSerializable {
 		listStream = v;
 	}
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1453,7 +1476,8 @@ class Evolve : public BSerializable {
 	public: Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, byps_ptr< BArray1< bool > > bools1, PBytes bytes1, byps_ptr< BArray1< wchar_t > > chars1, byps_ptr< BArray1< int16_t > > shorts1, byps_ptr< BArray1< int32_t > > ints1, byps_ptr< BArray1< int64_t > > longs1, byps_ptr< BArray1< float > > floats1, byps_ptr< BArray1< double > > doubles1, ::std::wstring str1, PSerializable obj1, com::wilutions::byps::test::api::ver::PEvolve2 evo1, byps_ptr< ::std::vector< int32_t > > list1, byps_ptr< ::std::set< int32_t > > set1, byps_ptr< ::std::map< int32_t , int32_t > > map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, byps_ptr< BArray1< bool > > bools2, PBytes bytes2, byps_ptr< BArray1< wchar_t > > chars2, byps_ptr< BArray1< int16_t > > shorts2, byps_ptr< BArray1< int32_t > > ints2, byps_ptr< BArray1< int64_t > > longs2, byps_ptr< BArray1< float > > floats2, byps_ptr< BArray1< double > > doubles2, ::std::wstring str2, PSerializable obj2, com::wilutions::byps::test::api::ver::PEvolve2 evo2, byps_ptr< ::std::vector< int32_t > > list2, byps_ptr< ::std::set< int32_t > > set2, byps_ptr< ::std::map< int32_t , int32_t > > map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, byps_ptr< BArray1< bool > > bools3, PBytes bytes3, byps_ptr< BArray1< wchar_t > > chars3, byps_ptr< BArray1< int16_t > > shorts3, byps_ptr< BArray1< int32_t > > ints3, byps_ptr< BArray1< int64_t > > longs3, byps_ptr< BArray1< float > > floats3, byps_ptr< BArray1< double > > doubles3, ::std::wstring str3, PSerializable obj3, com::wilutions::byps::test::api::ver::PEvolve2 evo3, byps_ptr< ::std::vector< int32_t > > list3, byps_ptr< ::std::set< int32_t > > set3, byps_ptr< ::std::map< int32_t , int32_t > > map3);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1391985860; }
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -1480,7 +1504,8 @@ class Evolve2 : public BSerializable {
 		n1 = v;
 	}
 	
-	public: void serialize(BIO& ar, const unsigned int version);
+	// generated at class com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}}}
@@ -4342,7 +4367,10 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 using namespace ::com::wilutions::byps;
 
 class BApiDescriptor_Testser { 
-	public: const static int32_t VERSION = 791;
+	/**
+	 * API serialisation version: 0.0.0.791
+	 */
+	public: const static int64_t VERSION = 791LL;
 	public: static PApiDescriptor instance();
 };
 

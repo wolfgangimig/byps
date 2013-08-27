@@ -35,6 +35,6 @@ public interface BTestAdapter {
 	 * This is used to check that client and server classes can have different versions.
 	 * @param version
 	 */
-	void setServerAppVersion(int version);
+	void setServerAppVersion(long version);
 	
 }

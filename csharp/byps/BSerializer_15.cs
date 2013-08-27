@@ -17,14 +17,16 @@ namespace com.wilutions.byps
         {
         }
 
-	    public override void write(Object obj, BOutput bout1, int version) {
+        public override void write(Object obj, BOutput bout1, long version)
+        {
 		    BOutputBin bout = ((BOutputBin)bout1);
 		    Stream strm = (Stream)obj;
 		    BStreamRequest streamRequest = bout.createStreamRequest(strm);
 		    bout.bbuf.putLong(streamRequest.streamId);
 	    }
 
-	    public override Object read(Object obj, BInput bin1, int version) {
+        public override Object read(Object obj, BInput bin1, long version)
+        {
             BInputBin bin = ((BInputBin)bin1);
             long streamId = bin.bbuf.getLong();
             try

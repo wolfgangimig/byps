@@ -31,7 +31,7 @@ public class BSerializer_1264295566 extends BSerializer {
 	}
 	
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final BBufferBin bbuf = bin.bbuf;
 		
@@ -60,7 +60,7 @@ public class BSerializer_1264295566 extends BSerializer {
 	}
 	
 	@Override
-	public void write(Object obj1, BOutput bout1, final int version) throws BException {
+	public void write(Object obj1, BOutput bout1, final long version) throws BException {
 		final BOutputBin bout = (BOutputBin)bout1;
 		final BBufferBin bbuf = bout.bbuf;
 		

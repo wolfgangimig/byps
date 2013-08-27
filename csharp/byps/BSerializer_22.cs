@@ -19,14 +19,16 @@ namespace com.wilutions.byps
             : base(typeId)
         {
 	    }
-	
-	    public override void write(Object obj1, BOutput bout1, int version) {
+
+        public override void write(Object obj1, BOutput bout1, long version)
+        {
 		    BOutputBin bout = ((BOutputBin)bout1);
 		    BValueClass obj = (BValueClass)obj1;
             bout.bbuf.putLong(obj.ChangedMembers);
 	    }
 
-	    public override Object read(Object obj1, BInput bin1, int version) {
+        public override Object read(Object obj1, BInput bin1, long version)
+        {
 		    BInputBin bin = ((BInputBin)bin1);
 		    long v = bin.bbuf.getLong();
             BValueClass obj = (BValueClass)(obj1 != null ? obj1 : bin.onObjectCreated(new BValueClass()));

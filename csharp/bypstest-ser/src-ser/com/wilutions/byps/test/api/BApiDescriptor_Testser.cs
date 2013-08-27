@@ -7,7 +7,10 @@ namespace com.wilutions.byps.test.api
 	
 	public class BApiDescriptor_Testser { 
 	
-		public readonly static int VERSION = 791;
+		/**
+		 * API serialisation version: 0.0.0.791
+		 */
+		public readonly static long VERSION = 791L;
 		
 		public readonly static BApiDescriptor instance = new BApiDescriptor(
 			"Testser",

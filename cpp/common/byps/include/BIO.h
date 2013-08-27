@@ -48,7 +48,7 @@ public:
 	BMessageHeader header;
 
 protected:
-    BIO(PTransport transport, const BBinaryModel& bmodel, int32_t negotiatedVersion, BByteOrder negotiatedByteOrder);
+    BIO(PTransport transport, const BBinaryModel& bmodel, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder);
     BIO(PTransport transport, const BBinaryModel& bmodel, PBytes& pBytes, BMessageHeader header);
 
     virtual void internalLoadObj(POBJECT&) { }

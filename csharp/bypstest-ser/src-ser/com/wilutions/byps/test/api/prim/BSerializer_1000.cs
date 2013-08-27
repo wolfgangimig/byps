@@ -45,7 +45,7 @@ namespace com.wilutions.byps.test.api.prim
 			       /* padding up to multiple of alignment */ + 4;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			PrimitiveTypes obj = (PrimitiveTypes)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -64,7 +64,7 @@ namespace com.wilutions.byps.test.api.prim
 			bout.writeObj(obj.ObjVal2, false, null);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			PrimitiveTypes obj = (PrimitiveTypes)(obj1 != null ? obj1 : bin.onObjectCreated(new PrimitiveTypes()));

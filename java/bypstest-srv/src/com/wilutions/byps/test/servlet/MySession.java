@@ -26,7 +26,7 @@ public class MySession extends HSession {
 	 * This value is changed in TestRemoteNegotiateVersion via testAdapter
 	 * in order to simulate older and newer application versions.
 	 */
-	public static volatile int appVersion = BApiDescriptor_Testser.instance.version;
+	public static volatile long appVersion = BApiDescriptor_Testser.instance.version;
 
 	public MySession(HttpSession hsess, File tempDir, BServerRegistry serverRegistry) {
 		super(hsess, tempDir, serverRegistry);

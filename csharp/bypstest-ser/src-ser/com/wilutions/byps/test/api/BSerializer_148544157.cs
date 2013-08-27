@@ -30,7 +30,7 @@ namespace com.wilutions.byps.test.api
 			       /* padding up to multiple of alignment */ + 0;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			BResult_6 obj = (BResult_6)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api
 			bbuf.putLong(obj._result);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			BResult_6 obj = (BResult_6)(obj1 != null ? obj1 : bin.onObjectCreated(new BResult_6()));

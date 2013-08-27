@@ -104,7 +104,7 @@ namespace com.wilutions.byps.test.api.ver
 			       /* padding up to multiple of alignment */ + 0;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			Evolve obj = (Evolve)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -118,7 +118,7 @@ namespace com.wilutions.byps.test.api.ver
 			bbuf.putLong(obj.Long1);
 			bbuf.putShort(obj.Short1);
 			bbuf.putString(obj.Str1);
-			if (version >= 2) {
+			if (version >= 2L) {
 				bbuf.putBoolean(obj.Bool2);
 				bbuf.putByte(obj.Byte2);
 				bbuf.putChar(obj.Char2);
@@ -128,7 +128,7 @@ namespace com.wilutions.byps.test.api.ver
 				bbuf.putLong(obj.Long2);
 				bbuf.putShort(obj.Short2);
 				bbuf.putString(obj.Str2);
-				if (version >= 3) {
+				if (version >= 3L) {
 					bbuf.putBoolean(obj.Bool3);
 					bbuf.putByte(obj.Byte3);
 					bbuf.putChar(obj.Char3);
@@ -153,7 +153,7 @@ namespace com.wilutions.byps.test.api.ver
 			bout.writeObj(obj.Obj1, false, null);
 			bout.writeObj(obj.Set1, false, com.wilutions.byps.test.api.BSerializer_1493282670.instance);
 			bout.writeObj(obj.Shorts1, false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 2) {
+			if (version >= 2L) {
 				bout.writeObj(obj.Bools2, false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 				bout.writeObj(obj.Bytes2, false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 				bout.writeObj(obj.Chars2, false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);
@@ -167,7 +167,7 @@ namespace com.wilutions.byps.test.api.ver
 				bout.writeObj(obj.Obj2, false, null);
 				bout.writeObj(obj.Set2, false, com.wilutions.byps.test.api.BSerializer_1493282670.instance);
 				bout.writeObj(obj.Shorts2, false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-				if (version >= 3) {
+				if (version >= 3L) {
 					bout.writeObj(obj.Bools3, false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 					bout.writeObj(obj.Bytes3, false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 					bout.writeObj(obj.Chars3, false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);
@@ -185,7 +185,7 @@ namespace com.wilutions.byps.test.api.ver
 			}
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			Evolve obj = (Evolve)(obj1 != null ? obj1 : bin.onObjectCreated(new Evolve()));
@@ -200,7 +200,7 @@ namespace com.wilutions.byps.test.api.ver
 			obj.Long1 = bbuf.getLong();
 			obj.Short1 = bbuf.getShort();
 			obj.Str1 = bbuf.getString();
-			if (version >= 2) {
+			if (version >= 2L) {
 				obj.Bool2 = bbuf.getBoolean();
 				obj.Byte2 = bbuf.getByte();
 				obj.Char2 = bbuf.getChar();
@@ -210,7 +210,7 @@ namespace com.wilutions.byps.test.api.ver
 				obj.Long2 = bbuf.getLong();
 				obj.Short2 = bbuf.getShort();
 				obj.Str2 = bbuf.getString();
-				if (version >= 3) {
+				if (version >= 3L) {
 					obj.Bool3 = bbuf.getBoolean();
 					obj.Byte3 = bbuf.getByte();
 					obj.Char3 = bbuf.getChar();
@@ -235,7 +235,7 @@ namespace com.wilutions.byps.test.api.ver
 			obj.Obj1 = (Object)bin.readObj(false, null);
 			obj.Set1 = (ISet<int>)bin.readObj(false, null);
 			obj.Shorts1 = (short[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 2) {
+			if (version >= 2L) {
 				obj.Bools2 = (bool[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 				obj.Bytes2 = (byte[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 				obj.Chars2 = (char[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);
@@ -249,7 +249,7 @@ namespace com.wilutions.byps.test.api.ver
 				obj.Obj2 = (Object)bin.readObj(false, null);
 				obj.Set2 = (ISet<int>)bin.readObj(false, null);
 				obj.Shorts2 = (short[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-				if (version >= 3) {
+				if (version >= 3L) {
 					obj.Bools3 = (bool[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 					obj.Bytes3 = (byte[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 					obj.Chars3 = (char[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);

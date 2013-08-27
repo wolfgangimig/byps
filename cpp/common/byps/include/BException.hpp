@@ -5,7 +5,7 @@
 
 namespace com {namespace wilutions {namespace byps {
 
-BINLINE void BException::serialize(BIO& bio, unsigned int version) {
+BINLINE void BException::serialize(BIO& bio, const BVERSION version) {
 	bio & code;
 	bio & msg;
 	bio & details;

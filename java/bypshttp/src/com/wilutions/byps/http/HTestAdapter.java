@@ -42,7 +42,7 @@ public class HTestAdapter implements BTestAdapter {
 	}
 	
 	@Override
-	public void setServerAppVersion(int version) {
+	public void setServerAppVersion(long version) {
 		wire.testAdapter(HTestAdapter.SET_SERVER_APP_VERSION, 
 				new String[] { HTestAdapter.VERSION + "=" + version });
 	}

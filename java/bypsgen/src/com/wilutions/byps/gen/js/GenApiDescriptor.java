@@ -136,7 +136,7 @@ public class GenApiDescriptor {
 		pr.println("/**");
 		pr.print(" * API serialisation version: ").print(BVersioning.longToString(apiDesc.version)).println();
 		pr.println(" */");
-		pr.print("VERSION : " + BVersioning.longToString(apiDesc.version)).println(",");
+		pr.print("VERSION : \"" + BVersioning.longToString(apiDesc.version)).println("\",");
 		
 		pr.println();
 
@@ -156,7 +156,7 @@ public class GenApiDescriptor {
 		pr.beginBlock();
 		pr.println("\"" + apiDesc.name + "\",");
 		pr.println("\"" + apiDesc.basePackage + "\",");
-		pr.println(apiDesc.version + ",");
+		pr.print("\"" + BVersioning.longToString(apiDesc.version)).println("\",");
 		pr.println(apiDesc.uniqueObjects + ", // uniqueObjects");
 		pr.print("new ").print(pctxt.getRegistryClassName()).println("()");
 		pr.endBlock();

@@ -7,7 +7,7 @@ namespace com { namespace wilutions { namespace byps {
 
 class BProtocol {
 public:
-    BProtocol(PApiDescriptor apiDesc, int32_t negotiatedVersion, BByteOrder negotiatedByteOrder);
+    BProtocol(PApiDescriptor apiDesc, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder);
     virtual ~BProtocol() {}
 
     virtual POutput getOutput(PTransport transport, const BMessageHeader& responseHeader);
@@ -16,7 +16,7 @@ public:
 protected:
 	PApiDescriptor apiDesc;
 
-    int32_t m_nNegotiatedVersion;
+    BVERSION m_nNegotiatedVersion;
 
     BByteOrder m_negotiatedByteOrder;
 

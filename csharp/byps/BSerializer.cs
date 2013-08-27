@@ -25,11 +25,11 @@ namespace com.wilutions.byps
             return 0;
         }
 
-        public virtual void write(Object obj1, BOutput bout1, int version)
+        public virtual void write(Object obj1, BOutput bout1, long version)
         {
         }
 
-        public abstract Object read(Object obj1, BInput bin1, int version);
+        public abstract Object read(Object obj1, BInput bin1, long version);
 
         internal readonly int typeId;
         internal readonly bool inlineInstance;

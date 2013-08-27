@@ -30,7 +30,7 @@ namespace com.wilutions.byps.test.api.srvr
 			       /* padding up to multiple of alignment */ + 4;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			BRequest_ClientIF_sendChat obj = (BRequest_ClientIF_sendChat)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.srvr
 			bout.writeObj(obj._cs, false, null);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			BRequest_ClientIF_sendChat obj = (BRequest_ClientIF_sendChat)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ClientIF_sendChat()));

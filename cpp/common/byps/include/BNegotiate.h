@@ -20,7 +20,7 @@ typedef byps_ptr<BNegotiate> PNegotiate;
 class BNegotiate {
 public:
     string protocols;
-    int32_t version;
+    BVERSION version;
     BByteOrder byteOrder;
     BTargetId targetId;
 

@@ -110,7 +110,7 @@ public class BSerializer_1391985860 extends BSerializer {
 	
 	
 	@Override
-	public void write(final Object obj1, final BOutput bout1, final int version) throws BException {
+	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 		final Evolve obj = (Evolve)obj1;		
 		final BOutputBin bout = (BOutputBin)bout1;
 		final BBufferBin bbuf = bout.bbuf;
@@ -123,7 +123,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		bbuf.putLong(obj.long1);
 		bbuf.putShort(obj.short1);
 		bbuf.putString(obj.str1);
-		if (version >= 2) {
+		if (version >= 2L) {
 			bbuf.putBoolean(obj.bool2);
 			bbuf.putByte(obj.byte2);
 			bbuf.putChar(obj.char2);
@@ -133,7 +133,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			bbuf.putLong(obj.long2);
 			bbuf.putShort(obj.short2);
 			bbuf.putString(obj.str2);
-			if (version >= 3) {
+			if (version >= 3L) {
 				bbuf.putBoolean(obj.bool3);
 				bbuf.putByte(obj.byte3);
 				bbuf.putChar(obj.char3);
@@ -158,7 +158,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		bout.writeObj(obj.obj1, false, null);
 		bout.writeObj(obj.set1, false, com.wilutions.byps.test.api.BSerializer_1493282670.instance);
 		bout.writeObj(obj.shorts1, false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-		if (version >= 2) {
+		if (version >= 2L) {
 			bout.writeObj(obj.bools2, false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 			bout.writeObj(obj.bytes2, false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 			bout.writeObj(obj.chars2, false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);
@@ -172,7 +172,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			bout.writeObj(obj.obj2, false, null);
 			bout.writeObj(obj.set2, false, com.wilutions.byps.test.api.BSerializer_1493282670.instance);
 			bout.writeObj(obj.shorts2, false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 3) {
+			if (version >= 3L) {
 				bout.writeObj(obj.bools3, false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 				bout.writeObj(obj.bytes3, false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 				bout.writeObj(obj.chars3, false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);
@@ -191,7 +191,7 @@ public class BSerializer_1391985860 extends BSerializer {
 	}
 	
 	@Override
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final Evolve obj = (Evolve)(obj1 != null ? obj1 : bin.onObjectCreated(new Evolve()));
 		
@@ -206,7 +206,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		obj.long1 = bbuf.getLong();
 		obj.short1 = bbuf.getShort();
 		obj.str1 = bbuf.getString();
-		if (version >= 2) {
+		if (version >= 2L) {
 			obj.bool2 = bbuf.getBoolean();
 			obj.byte2 = bbuf.getByte();
 			obj.char2 = bbuf.getChar();
@@ -216,7 +216,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			obj.long2 = bbuf.getLong();
 			obj.short2 = bbuf.getShort();
 			obj.str2 = bbuf.getString();
-			if (version >= 3) {
+			if (version >= 3L) {
 				obj.bool3 = bbuf.getBoolean();
 				obj.byte3 = bbuf.getByte();
 				obj.char3 = bbuf.getChar();
@@ -241,7 +241,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		obj.obj1 = (java.lang.Object)bin.readObj(false, null);
 		obj.set1 = (java.util.Set<java.lang.Integer>)bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1493282670.instance);
 		obj.shorts1 = (short[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-		if (version >= 2) {
+		if (version >= 2L) {
 			obj.bools2 = (boolean[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 			obj.bytes2 = (byte[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 			obj.chars2 = (char[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);
@@ -255,7 +255,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			obj.obj2 = (java.lang.Object)bin.readObj(false, null);
 			obj.set2 = (java.util.Set<java.lang.Integer>)bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1493282670.instance);
 			obj.shorts2 = (short[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 3) {
+			if (version >= 3L) {
 				obj.bools3 = (boolean[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_2058423690.instance);
 				obj.bytes3 = (byte[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1374008726.instance);
 				obj.chars3 = (char[])bin.readObj(false, com.wilutions.byps.test.api.BSerializer_1361632968.instance);

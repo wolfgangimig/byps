@@ -19,8 +19,9 @@ namespace com.wilutions.byps
             : base(typeId)
         {
 	    }
-	
-	    public override void write(Object obj, BOutput bout1, int version) {
+
+        public override void write(Object obj, BOutput bout1, long version)
+        {
 		    BOutputBin bout = ((BOutputBin)bout1);
 		    BException e = (BException)obj;
 		    bout.bbuf.putInt(e.Code);
@@ -28,7 +29,8 @@ namespace com.wilutions.byps
 		    bout.bbuf.putString(e.Details);
 	    }
 
-	    public override Object read(Object obj, BInput bin1, int version) {
+        public override Object read(Object obj, BInput bin1, long version)
+        {
 		    BInputBin bin = ((BInputBin)bin1);
 		    int code = bin.bbuf.getInt();
 		    String msg = bin.bbuf.getString();

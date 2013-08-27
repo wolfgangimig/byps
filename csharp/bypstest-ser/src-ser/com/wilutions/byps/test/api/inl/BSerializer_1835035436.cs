@@ -31,7 +31,7 @@ namespace com.wilutions.byps.test.api.inl
 			       /* padding up to multiple of alignment */ + 4;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			Point2D obj = (Point2D)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -40,7 +40,7 @@ namespace com.wilutions.byps.test.api.inl
 			bbuf.putShort(obj.Y);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			Point2D obj = (Point2D)(obj1 != null ? obj1 : new Point2D());

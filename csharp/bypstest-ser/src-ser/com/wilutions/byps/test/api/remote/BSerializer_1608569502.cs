@@ -30,7 +30,7 @@ namespace com.wilutions.byps.test.api.remote
 			       /* padding up to multiple of alignment */ + 4;			
 		}
 		
-		public override void write(Object obj1, BOutput bout1, int version)
+		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			BRequest_RemoteSetTypes_setChar1 obj = (BRequest_RemoteSetTypes_setChar1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 			bout.writeObj(obj._char1, false, com.wilutions.byps.test.api.BSerializer_936607009.instance);
 		}
 		
-		public override Object read(Object obj1, BInput bin1, int version)
+		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			BRequest_RemoteSetTypes_setChar1 obj = (BRequest_RemoteSetTypes_setChar1)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteSetTypes_setChar1()));

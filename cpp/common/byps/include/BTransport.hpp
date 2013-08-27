@@ -182,7 +182,7 @@ BINLINE PProtocol BTransport::createNegotiatedProtocol(BNegotiate& nego) {
 	}
 
     if (nego.protocols.find(BBinaryModel::MEDIUM().getProtocolId()) != string::npos) {
-        int32_t negotiatedVersion = min(nego.version, apiDesc->version);
+        BVERSION negotiatedVersion = min(nego.version, apiDesc->version);
         protocol = PProtocol(new BProtocol(apiDesc, negotiatedVersion, nego.byteOrder));
         nego.protocols = BBinaryModel::MEDIUM().getProtocolId();
         nego.version = negotiatedVersion;

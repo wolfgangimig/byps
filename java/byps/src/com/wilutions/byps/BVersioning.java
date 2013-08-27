@@ -19,12 +19,14 @@ public class BVersioning {
 	 */
 	public static long stringToLong(String sver) {
 		long ver = 0;
-		if (sver != null) {
+		if (sver != null && sver.length() != 0) {
 			String[] arr = sver.split("\\.");
 			for (int i = 0; i < arr.length; i++) {
 				ver *= 10000;
 				if (i == arr.length-1) ver *= 100;
-				ver += Integer.parseInt(arr[i]);
+				if (arr[i].length() != 0) {
+					ver += Integer.parseInt(arr[i]);
+				}
 			}
 		}
 		return ver;

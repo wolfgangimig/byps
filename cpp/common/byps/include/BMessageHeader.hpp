@@ -5,7 +5,7 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE BMessageHeader::BMessageHeader(int32_t nMagic, int32_t nNegotiatedVersion, BByteOrder negotiatedByteOrder, int64_t messageId)
+BINLINE BMessageHeader::BMessageHeader(int32_t nMagic, BVERSION nNegotiatedVersion, BByteOrder negotiatedByteOrder, int64_t messageId)
     : magic(nMagic),
         error(0),
         flags(0),

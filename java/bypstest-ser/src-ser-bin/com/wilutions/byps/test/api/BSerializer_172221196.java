@@ -18,7 +18,7 @@ public class BSerializer_172221196 extends BSerializer {
 		super(172221196);
 	}
 	
-	public Object read(final Object obj1, final BInput bin1, final int version) throws BException {
+	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final BBufferBin bbuf = bin.bbuf;
 		final int n = bbuf.getLength();
@@ -31,7 +31,7 @@ public class BSerializer_172221196 extends BSerializer {
 		return arr;
 	}
 	
-	public void write(Object obj1, BOutput bout1, int version)  throws BException {
+	public void write(Object obj1, BOutput bout1, final long version)  throws BException {
 		BOutputBin bout = (BOutputBin)bout1;
 		BBufferBin bbuf = bout.bbuf;
 		java.util.List<com.wilutions.byps.test.api.inl.Point2D> arr = (java.util.List<com.wilutions.byps.test.api.inl.Point2D>)obj1;

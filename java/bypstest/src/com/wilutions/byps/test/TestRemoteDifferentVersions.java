@@ -75,7 +75,7 @@ public class TestRemoteDifferentVersions {
 	 * @throws BException
 	 * @throws InterruptedException
 	 */
-	private void setServerAppVersion(int version) throws RemoteException {
+	private void setServerAppVersion(long version) throws RemoteException {
 		BClient_Testser client = TestUtilsHttp.createClient();
 		client.transport.wire.getTestAdapter().setServerAppVersion(version);
 		client.done();
