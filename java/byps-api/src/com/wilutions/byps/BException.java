@@ -3,7 +3,8 @@ package com.wilutions.byps;
 
 /**
  * Exceptions of this class are thrown during serialization and communication.
- * The formatted message has the form [BYPS:code][message][details]
+ * The formatted message has the form [BYPS:code][message][details].
+ * The string BYPS can be replaced by setting the static member 
  */
 public class BException extends com.wilutions.byps.RemoteException {
 	
@@ -11,7 +12,7 @@ public class BException extends com.wilutions.byps.RemoteException {
 	// child class could not set the final fields of BException.
 	
 	private static final long serialVersionUID = 20L;
-
+	
 	/**
 	 * Internal error.
 	 * Error code for unexpected internal error states.
@@ -96,7 +97,7 @@ public class BException extends com.wilutions.byps.RemoteException {
 	 * @param ex Inner exception. The details member is set at ex.toString()
 	 */
 	public BException(int code, String msg, Throwable ex) {
-		super(formatMessage(code, msg, ""), ex);
+		super(formatter.formatMessage(code, msg, ""), ex);
 	}
 	
 	/**
@@ -106,7 +107,7 @@ public class BException extends com.wilutions.byps.RemoteException {
 	 * @param details More information about the error
 	 */
 	public BException(int code, String msg, String details) {
-		super(formatMessage(code, msg, ""));
+		super(formatter.formatMessage(code, msg, ""));
 	}
 	
 	/**
@@ -142,11 +143,15 @@ public class BException extends com.wilutions.byps.RemoteException {
 	 */
 	public int getCode() {
 		int ret = 0;
-		String msg = toString();
-		if (msg.startsWith("[BYPS:")) {
-			int p = msg.indexOf(']', 6);
-			if (p >= 0) {
-				ret = Integer.parseInt(msg.substring(6, p));
+		final String msg = toString();
+		final String prefix = formatter.getCodePrefix();
+		int p = msg.indexOf(prefix);
+		if (p >= 0) {
+		  p += prefix.length() + 1; // +1 wegen : nach prefix
+			int e = msg.indexOf(']', p);
+			if (e >= 0) {
+			  String scode = msg.substring(p, e);
+				ret = Integer.parseInt(scode);
 			}
 		}
 		return ret;
@@ -157,10 +162,18 @@ public class BException extends com.wilutions.byps.RemoteException {
 		return getMessage();
 	}
 	
-	private static String formatMessage(int code, String msg, String details) {
-		return "[BYPS:" + code + "]" +
-				"[" + (msg != null ? msg : "") + "]" +
-				"[" + (details != null ? details : "") + "]";		
+	public static class Formatter {
+	  
+	  public String getCodePrefix() {
+	    return "BYPS";
+	  }
+	  
+	  public String formatMessage(int code, String msg, String details) {
+	    return "[" + getCodePrefix() + ":" + code + "]" +
+	        "[" + (msg != null ? msg : "") + "]" +
+	        "[" + (details != null ? details : "") + "]";   
+	  }
 	}
 	
+	public static Formatter formatter = new Formatter();
 }

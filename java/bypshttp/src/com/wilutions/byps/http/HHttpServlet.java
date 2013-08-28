@@ -403,8 +403,14 @@ public abstract class HHttpServlet extends HttpServlet {
 			req.getSession().invalidate();
 		}
 		
-		final HttpSession hsess = req.getSession(true);
-    	if (log.isDebugEnabled()) log.debug("new http session=" + hsess.getId());
+		HttpSession hsess = req.getSession(false);
+		if (hsess != null) {
+      if (log.isDebugEnabled()) log.debug("use existing http session=" + hsess.getId());
+		}
+		else {
+		  hsess = req.getSession(true);
+      if (log.isDebugEnabled()) log.debug("new http session=" + hsess.getId());
+		}
 
 		final HSession sess = createSession(request, response, hsess, serverRegistry);
     	if (log.isDebugEnabled()) log.debug("new byps session=" + sess);

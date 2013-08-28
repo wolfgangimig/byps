@@ -64,10 +64,11 @@ public class HWireClient extends BWire {
 	 * @param url URL to server.
 	 * @param flags A combination of BWire.FLAG_* values.
 	 * @param timeoutSeconds Read timeout in seconds. A timeout of zero is interpreted as an infinite timeout. 
-	 * @param threadPool A thread pool. If null, a thread pool is internally created.
+	 * @param cookieManager Optional: A CookieManager. If null, a CookieManager is internally created.
+	 * @param threadPool Optional: A thread pool. If null, a thread pool is internally created.
 	 * @see BWire#FLAG_GZIP
 	 */
-	public HWireClient(String url, int flags, int timeoutSeconds, Executor threadPool) {
+	public HWireClient(String url, int flags, int timeoutSeconds, CookieManager cookieManager, Executor threadPool) {
 		super(flags);
 		
 		if (url == null || url.length() == 0) throw new IllegalStateException("Missing URL");
@@ -89,9 +90,12 @@ public class HWireClient extends BWire {
 		// Der CookieHander steckt in CookieHandler.getDefault(). Dort kann die JSESSIONID
 		// abgeholt werden - sofern ich sie brauche.
 		
-		CookieManager cookieManager = new CookieManager();
-		cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+		if (cookieManager == null) {
+		  cookieManager = new CookieManager();
+		  cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+		}
 		setSessionContext(cookieManager);
+		
 	}
 	
 	protected class AsyncResultAfterAllRequests implements BAsyncResult<BMessage> {
@@ -149,7 +153,7 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug("executeRequest(" + r);
 		
 		if (isDone) {
-			BException e = new BException(BException.CANCELLED, "Already disconnected.");
+			BException e = new BException(BException.CANCELLED, "HTTP Client already disconnected.");
 			throw e;
 		}
 		
