@@ -67,7 +67,7 @@ public abstract class BRegistry {
 			if (ser == null) {
 				ser = getBuiltInSerializer(typeId);
 				if (ser == null) {
-					throw new BException(BException.CORRUPT, "No serializer for typeId=" + typeId);
+					throw new BException(BExceptionO.CORRUPT, "No serializer for typeId=" + typeId);
 				}
 			}
 			mapTypeIdToSerializer.put(typeId_o, ser);
@@ -106,7 +106,7 @@ public abstract class BRegistry {
 		} 
 		catch (Exception e) {
 			if (throwEx) {
-				throw new BException(BException.CORRUPT, 
+				throw new BException(BExceptionO.CORRUPT, 
 						"No serializer for className=" + clazz.getName() + ". " +
 						"Only classes marked with BSerializable can be serialized as \"Object\" types. " + 
 						"This error occurs e. g. if a List<Object> contains String values. String is not a BSerializable.");

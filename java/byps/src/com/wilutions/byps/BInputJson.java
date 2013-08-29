@@ -24,23 +24,23 @@ public class BInputJson extends BInput {
 		}
 		
 		Object jsonMessageObj = header.messageObject;
-		if (jsonMessageObj == null) throw new BException(BException.CORRUPT, "Missing message data.");
-		if (!(jsonMessageObj instanceof BJsonObject)) throw new BException(BException.CORRUPT, "Message data must be a JSON object.");
+		if (jsonMessageObj == null) throw new BException(BExceptionO.CORRUPT, "Missing message data.");
+		if (!(jsonMessageObj instanceof BJsonObject)) throw new BException(BExceptionO.CORRUPT, "Message data must be a JSON object.");
 		BJsonObject jsonMessage = (BJsonObject)jsonMessageObj;
 		
 		Object headerObj = jsonMessage.get("header");
 		if (log.isDebugEnabled()) log.debug("headerObj=" + headerObj);
-		if (headerObj == null) throw new BException(BException.CORRUPT, "Missing message header.");
-		if (!(headerObj instanceof BJsonObject)) throw new BException(BException.CORRUPT, "Message header must be a JSON object.");
+		if (headerObj == null) throw new BException(BExceptionO.CORRUPT, "Missing message header.");
+		if (!(headerObj instanceof BJsonObject)) throw new BException(BExceptionO.CORRUPT, "Message header must be a JSON object.");
 		
 		Object objectTableObj = jsonMessage.get("objectTable");
 		if (log.isDebugEnabled()) log.debug("objectTableObj=" + objectTableObj);
 		if (objectTableObj != null) {
-			if (!(objectTableObj instanceof BJsonObject)) throw new BException(BException.CORRUPT, "Object table must be a JSON object.");
+			if (!(objectTableObj instanceof BJsonObject)) throw new BException(BExceptionO.CORRUPT, "Object table must be a JSON object.");
 			objectTable = (BJsonObject)objectTableObj;
 			
 			Object objNull = objectTable.get(0);
-			if (objNull != null) throw new BException(BException.CORRUPT, "First object table element must be null.");
+			if (objNull != null) throw new BException(BExceptionO.CORRUPT, "First object table element must be null.");
 			
 			root = deserializeObject(null, 1, null, 0);
 			if (log.isDebugEnabled()) log.debug("root=" + root);
@@ -112,13 +112,13 @@ public class BInputJson extends BInput {
 			msg += " but found \"" + jsonObj + "\". ";
 			msg += " If custom serializers are used, make sure that BSerializer.write() functions call BOutput.beginObject/endObject.";
 			
-			throw new BException(BException.CORRUPT, msg);
+			throw new BException(BExceptionO.CORRUPT, msg);
 		}
 		
 		int id = ((BJsonObject)jsonObj).getInt("*i");
 		if (id >= 0) {
 			String msg = "Excpecting reference with \"*i\" < 0 but found " + id;
-			throw new BException(BException.CORRUPT, msg);
+			throw new BException(BExceptionO.CORRUPT, msg);
 		}
 		return -id;
 	}
@@ -134,7 +134,7 @@ public class BInputJson extends BInput {
 			// specifying a BSerializer. 
 
 			int typeId = currentObject.getInt("_typeId");
-			if (typeId <= 0) throw new BException(BException.CORRUPT, "Invalid _typeId=" + typeId + " for objectTable[" + id + "]");
+			if (typeId <= 0) throw new BException(BExceptionO.CORRUPT, "Invalid _typeId=" + typeId + " for objectTable[" + id + "]");
 			
 			ser = registry.getSerializer(typeId);
 		}
@@ -169,7 +169,7 @@ public class BInputJson extends BInput {
 			msg += " but found \"" + jsonObj + "\". ";
 			msg += " If custom serializers are used, make sure that BSerializer.write() functions call BOutput.beginObject/endObject.";
 			
-			throw new BException(BException.CORRUPT, msg);
+			throw new BException(BExceptionO.CORRUPT, msg);
 		}
 		
 		return deserializeObject(ser, (BJsonObject)jsonObj, id);

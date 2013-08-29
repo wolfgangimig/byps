@@ -3,6 +3,7 @@ package com.wilutions.byps.http;
 import java.net.HttpURLConnection;
 
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 
 public class HException extends BException {
 
@@ -11,12 +12,12 @@ public class HException extends BException {
 	private int statusCode;
 
 //	public HException(int httpStatusCode) {
-//		super(BException.IOERROR, "HTTP " + httpStatusCode, "");
+//		super(BExceptionO.IOERROR, "HTTP " + httpStatusCode, "");
 //		statusCode = httpStatusCode;
 //	}
 //	
 	public HException(int httpStatusCode, Throwable e) {
-		super(BException.IOERROR, "HTTP " + httpStatusCode, e);
+		super(BExceptionO.IOERROR, "HTTP " + httpStatusCode, e);
 		statusCode = httpStatusCode;
 	}
 	

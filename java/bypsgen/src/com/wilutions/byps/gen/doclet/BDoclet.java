@@ -238,7 +238,7 @@ public class BDoclet extends Doclet {
 		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
-			args = bypstest_ser;
+			args = byps_ix_ser;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();

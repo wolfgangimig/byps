@@ -55,13 +55,13 @@ public abstract class BOutput {
 	
 	public void setException(Throwable ex) throws BException {
 		if (ex instanceof BException) {
-			header.error = ((BException)ex).getCode();
+			header.error = ((BException)ex).code;
 		} 
 		else {
-			header.error = BException.REMOTE_ERROR;
+			header.error = BExceptionO.REMOTE_ERROR;
 			BSerializer ser = registry.getSerializer(ex, false);
 			if (ser == null) {
-				ex = new BException(BException.REMOTE_ERROR, "", ex);
+				ex = new BException(BExceptionO.REMOTE_ERROR, "", ex);
 			}
 		}
 		store(ex);

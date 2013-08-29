@@ -42,7 +42,7 @@ class GenRemoteSkeleton {
 		pctxt.printDeclareMethod(mpr, rinfo, methodInfo).println(" {");
 		
 		pr.beginBlock();
-		pr.println("throw new BException(BException.UNSUPPORTED_METHOD, \"\");");
+		pr.println("throw new BException(BExceptionO.UNSUPPORTED_METHOD, \"\");");
 		pr.endBlock();
 		pr.println("}");
 		
@@ -116,7 +116,7 @@ class GenRemoteSkeleton {
 		mpr = pctxt.printDeclareMethodBeginAsync(mpr, rinfo, methodInfo);
 		mpr.println(" {");
 		pr.beginBlock();
-		pr.println("throw new BException(BException.INTERNAL, \"\");");
+		pr.println("throw new BException(BExceptionO.INTERNAL, \"\");");
 		pr.endBlock();
 		pr.println("}");
 	}
@@ -126,7 +126,7 @@ class GenRemoteSkeleton {
 		mpr = pctxt.printDeclareMethodEndAsync(mpr, rinfo, methodInfo);
 		mpr.println(" {");
 		pr.beginBlock();
-		pr.println("throw new BException(BException.INTERNAL, \"\");");
+		pr.println("throw new BException(BExceptionO.INTERNAL, \"\");");
 		pr.endBlock();
 		pr.println("}");
 		

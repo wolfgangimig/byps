@@ -18,6 +18,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.BStreamRequest;
 
 public 	class HActiveMessage {
@@ -249,7 +250,7 @@ public 	class HActiveMessage {
 			
 		}
 		catch (Throwable e) {
-			throw new BException(BException.IOERROR, "Failed to add incoming stream", e);
+			throw new BException(BExceptionO.IOERROR, "Failed to add incoming stream", e);
 		}
 
         if (log.isDebugEnabled()) log.debug(")addIncomingStreamAsync");
@@ -320,7 +321,7 @@ public 	class HActiveMessage {
 	        
 		}
 		catch (Throwable e) {
-			throw new BException(BException.IOERROR, "Failed to add incoming stream", e);
+			throw new BException(BExceptionO.IOERROR, "Failed to add incoming stream", e);
 		}
 		
 		if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync");
@@ -335,7 +336,7 @@ public 	class HActiveMessage {
 			
 			if (canceled) {
 				if (log.isDebugEnabled()) log.debug("Message has been canceled.");
-				throw new BException(BException.CANCELLED, "Message canceled");
+				throw new BException(BExceptionO.CANCELLED, "Message canceled");
 			}
 			
 			stream = incomingStreams != null ? incomingStreams.get(streamId) : null;
@@ -346,7 +347,7 @@ public 	class HActiveMessage {
 			long to = timeoutMillis - (t2 - t1);
 			if (to <= 0) {
 				if (log.isDebugEnabled()) log.debug("Timeout");
-				throw new BException(BException.TIMEOUT, "Timeout while waiting for streamId=" + streamId);
+				throw new BException(BExceptionO.TIMEOUT, "Timeout while waiting for streamId=" + streamId);
 			}
 			
 			// Wait not more than 10s to make sure,

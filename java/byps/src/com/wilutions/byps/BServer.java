@@ -80,7 +80,7 @@ public class BServer {
 			
 			// Does the client support the interface?
 			if (remote == null) {
-				throw new BException(BException.SERVICE_NOT_IMPLEMENTED, "Service not implemented: remoteId=" + remoteId);
+				throw new BException(BExceptionO.SERVICE_NOT_IMPLEMENTED, "Service not implemented: remoteId=" + remoteId);
 			}
 			
 			if (log.isDebugEnabled()) log.debug("execute ...");

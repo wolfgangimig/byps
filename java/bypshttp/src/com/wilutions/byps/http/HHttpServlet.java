@@ -32,6 +32,7 @@ import com.wilutions.byps.BClient;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BContentStreamWrapper;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BMessageHeader;
 import com.wilutions.byps.BNegotiate;
@@ -519,7 +520,7 @@ public abstract class HHttpServlet extends HttpServlet {
 	        }
 	        catch (BException e) {
 	        	int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-	        	if (e.getCode() == BException.CANCELLED) {
+	        	if (e.code == BExceptionO.CANCELLED) {
 	        		status = HttpServletResponse.SC_NOT_ACCEPTABLE;
 	        	}
         		((HttpServletResponse)rctxt.getResponse()).setStatus(status);

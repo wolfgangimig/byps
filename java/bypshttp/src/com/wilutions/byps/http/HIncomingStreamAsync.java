@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 
 public class HIncomingStreamAsync extends BContentStream  {
 
@@ -127,12 +128,12 @@ public class HIncomingStreamAsync extends BContentStream  {
 
 	@Override
 	public synchronized BContentStream cloneInputStream() throws BException {
-		if (readPos != 0) throw new BException(BException.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
+		if (readPos != 0) throw new BException(BExceptionO.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
 		HIncomingStreamSync istrm = new HIncomingStreamSync(contentType, contentLength, streamId, lifetimeMillis, tempDir);
 		try {
 			istrm.assignStream(strm());
 		} catch (IOException e) {
-			throw new BException(BException.IOERROR, "Failed to clone stream", e);
+			throw new BException(BExceptionO.IOERROR, "Failed to clone stream", e);
 		}
 		return istrm;
 	}

@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.gen.api.Generator;
 import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.api.RemoteInfo;
@@ -121,7 +122,7 @@ public class GeneratorJS implements Generator {
 		try {
 			com.yahoo.platform.yui.compressor.YUICompressor.main(args);
 		} catch (Exception e) {
-			throw new BException(BException.GENERATOR_EXCEPTION, e.toString());
+			throw new BException(BExceptionO.GENERATOR_EXCEPTION, e.toString());
 		}
 		
 		log.info("Created compressed JSON API file. Original file #bytes=" + fileApiJS.length() + ", compressed file #bytes=" + fileApiJSmin.length());

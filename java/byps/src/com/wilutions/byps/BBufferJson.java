@@ -696,7 +696,7 @@ public class BBufferJson extends BBuffer {
 		char c = nextJsonChar(eat);
 		if (c != expectedChar) {
 			int pos = eat ? buf.position() : (buf.position()-1);
-			BException e = new BException(BException.CORRUPT, "Expecting character " + expectedChar + " at position " + pos);
+			BException e = new BException(BExceptionO.CORRUPT, "Expecting character " + expectedChar + " at position " + pos);
 			log.error(e);
 			log.info(this.toDetailString());
 			throw e;
@@ -730,7 +730,7 @@ public class BBufferJson extends BBuffer {
 				while (c != '}') {
 									
 					if (c != '\"' && c != '\'' && c != ',') {
-						BException e = new BException(BException.CORRUPT,
+						BException e = new BException(BExceptionO.CORRUPT,
 								"Unexpected character " + c + "(" + Integer.toString((int)c & 0xFFFF) + ") at position " + buf.position() + ", expecting element name or array value.");
 						log.error(e);
 						String s = this.toDetailString();
@@ -740,7 +740,7 @@ public class BBufferJson extends BBuffer {
 					
 					String key = getString();
 					if (key == null) {
-						BException e = new BException(BException.CORRUPT, "Expecting element name at position " + buf.position());
+						BException e = new BException(BExceptionO.CORRUPT, "Expecting element name at position " + buf.position());
 						log.error(e);
 						log.info(this.toDetailString());
 						throw e;
@@ -794,7 +794,7 @@ public class BBufferJson extends BBuffer {
 			buf.position(buf.position() + 9);
 		}
 		else {
-			BException e = new BException(BException.CORRUPT, "Unexpected character " + c + " at position " + buf.position());
+			BException e = new BException(BExceptionO.CORRUPT, "Unexpected character " + c + " at position " + buf.position());
 			log.error(e);
 			log.info(this.toString());
 			throw e;

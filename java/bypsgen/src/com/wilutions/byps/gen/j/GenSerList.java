@@ -7,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -27,7 +28,7 @@ public class GenSerList {
 		this.pctxt = pctxt;
 		this.bmodel = bmodel;
 		
-		if (serInfo.typeArgs.size() != 1) throw new BException(BException.INTERNAL, "Expected 1 type argument for Set/List class: " + serInfo.toString());
+		if (serInfo.typeArgs.size() != 1) throw new BException(BExceptionO.INTERNAL, "Expected 1 type argument for Set/List class: " + serInfo.toString());
 		elmType = serInfo.typeArgs.get(0);
 		
 	}

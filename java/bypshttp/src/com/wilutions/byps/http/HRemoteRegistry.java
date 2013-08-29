@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BClient;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.BRemote;
 import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BSyncResult;
@@ -50,7 +51,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		if (serverId != config.getMyServerId()) {    			
 			client = getForwardClient(serverId);
 			if (client == null) {
-				throw new BException(BException.INTERNAL, "Cannot reach server for targetId=" + targetId +", missing url for serverId=" + serverId + ", in configuration."); 
+				throw new BException(BExceptionO.INTERNAL, "Cannot reach server for targetId=" + targetId +", missing url for serverId=" + serverId + ", in configuration."); 
 			}
 		}
 		if (log.isDebugEnabled()) log.debug(")getForwardClientIfForeignTargetId=" + client);
@@ -112,7 +113,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 			// Get client session
 			HSession sess = HSession.getSession(targetId);
 			if (sess == null) {
-				throw new BException(BException.CLIENT_DIED, "Client is not connected, targetId=" + targetId); 
+				throw new BException(BExceptionO.CLIENT_DIED, "Client is not connected, targetId=" + targetId); 
 			}
 			
 			remote = sess.getClientR().getStub(remoteId);

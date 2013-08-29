@@ -38,7 +38,7 @@ class GenRemoteSkeleton {
 		pctxt.printDeclareMethod(pr, rinfo, methodInfo).println(" {");
 		
 		pr.beginBlock();
-		pr.println("throw new BException(BException.UNSUPPORTED_METHOD, \"\");");	// Server does not call synchronous methods
+		pr.println("throw new BException(BExceptionO.UNSUPPORTED_METHOD, \"\");");	// Server does not call synchronous methods
 		pr.endBlock();
 		pr.println("}");
 		

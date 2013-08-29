@@ -42,20 +42,20 @@ public class BTransport {
 	}
 	
 	public synchronized BOutput getOutput() throws BException {
-		if (protocol == null) throw new BException(BException.INTERNAL, "No protocol negotiated.");
+		if (protocol == null) throw new BException(BExceptionO.INTERNAL, "No protocol negotiated.");
 		BOutput bout = protocol.getOutput(this, null);
 		return bout;
 	}
 
 	public synchronized BOutput getResponse(BMessageHeader requestHeader) throws BException {
-		if (protocol == null) throw new BException(BException.INTERNAL, "No protocol negotiated.");
+		if (protocol == null) throw new BException(BExceptionO.INTERNAL, "No protocol negotiated.");
 		BMessageHeader responseHeader = requestHeader.createResponse();
 		BOutput bout = protocol.getOutput(this, responseHeader);
 		return bout;
 	}
 
 	public synchronized BInput getInput(BMessageHeader header, ByteBuffer buf) throws BException {
-		if (protocol == null) throw new BException(BException.INTERNAL, "No protocol negotiated.");
+		if (protocol == null) throw new BException(BExceptionO.INTERNAL, "No protocol negotiated.");
 		
 		// header is null in the test cases that check the serialization.
 		if (header == null) {
@@ -244,7 +244,7 @@ public class BTransport {
 			protocol = new BProtocolJson(apiDesc);
 		}
 		else {
-			throw new BException(BException.CORRUPT, "Protocol negotiation failed.");
+			throw new BException(BExceptionO.CORRUPT, "Protocol negotiation failed.");
 		}
 
 		return protocol;

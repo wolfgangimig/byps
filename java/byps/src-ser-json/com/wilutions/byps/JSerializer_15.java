@@ -32,7 +32,7 @@ public class JSerializer_15 extends JSerializer_Object {
 			bin.onObjectCreated(strm);
 			return strm;
 		} catch (IOException e) {
-			throw new BException(BException.IOERROR, e.getMessage());
+			throw new BException(BExceptionO.IOERROR, e.getMessage());
 		}
 	}
 

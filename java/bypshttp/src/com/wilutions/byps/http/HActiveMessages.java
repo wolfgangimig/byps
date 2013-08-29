@@ -16,6 +16,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.BStreamRequest;
 
 public class HActiveMessages {
@@ -55,7 +56,7 @@ public class HActiveMessages {
 		synchronized(msg) {
 			if (msg.isCanceled()) {
 				if (log.isDebugEnabled()) log.debug("Message was canceled");
-				throw new BException(BException.CANCELLED, "Message was canceled");
+				throw new BException(BExceptionO.CANCELLED, "Message was canceled");
 			}
 		}
 		return msg;

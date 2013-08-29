@@ -16,7 +16,7 @@ public class BProtocolS extends BProtocol {
 	}
 
 	public BOutput getOutput(BTransport transport, BMessageHeader responseHeader) throws BException {
-		if (negotiatedByteOrder == null) throw new BException(BException.INTERNAL, "Protocol object can only be used for input.");
+		if (negotiatedByteOrder == null) throw new BException(BExceptionO.INTERNAL, "Protocol object can only be used for input.");
 		if (responseHeader != null) {
 			return new BOutputS(transport, responseHeader);
 		}

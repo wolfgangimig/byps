@@ -7,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -61,7 +62,7 @@ public class GenSerMapJson extends GenSerMap {
 			pr.println("keyName != null && keyName.length() != 0 ? BEnumHelper.fromOrdinal(" + keyType.toString() + ".values(), Integer.parseInt(keyName)) : " + keyType.toString() + ".values()[0];");
 		}
 		else {
-			throw new BException(BException.GENERATOR_EXCEPTION, "Unsupported type=" + keyType + " for map key");
+			throw new BException(BExceptionO.GENERATOR_EXCEPTION, "Unsupported type=" + keyType + " for map key");
 		}
 		
 		//log.debug(GeneratorJ.class.getName(), "printInternalReadKey");

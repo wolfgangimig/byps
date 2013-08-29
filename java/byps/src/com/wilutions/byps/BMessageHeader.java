@@ -173,14 +173,14 @@ public class BMessageHeader {
 		{
 			BBufferJson bbuf = new BBufferJson(buf);
 			messageObject = bbuf.parseJsonValue();
-			if (!(messageObject instanceof BJsonObject)) throw new BException(BException.CORRUPT, "Invalid protocol");
+			if (!(messageObject instanceof BJsonObject)) throw new BException(BExceptionO.CORRUPT, "Invalid protocol");
 			BJsonObject headerObject = ((BJsonObject)messageObject).getJsonObject("header");
-			if (headerObject == null) throw new BException(BException.CORRUPT, "Invalid protocol");
+			if (headerObject == null) throw new BException(BExceptionO.CORRUPT, "Invalid protocol");
 			fromJson(headerObject);
 			break;
 		}
 		default: 
-			throw new BException(BException.CORRUPT, "Invalid protocol.");
+			throw new BException(BExceptionO.CORRUPT, "Invalid protocol.");
 		}
 	}
 	
