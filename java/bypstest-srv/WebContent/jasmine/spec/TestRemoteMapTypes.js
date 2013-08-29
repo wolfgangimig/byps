@@ -23,7 +23,7 @@ describe("Tests for sending and receiving map types.", function() {
 		obj.double1 = new MyMap().add(3, -1.0e12);
 		obj.float1 = new MyMap().add('A', 1.3).add('¶', 2.3).add('€', -1.2468e-3);
 		obj.int1 = new MyMap().add(1,2).add(2, 3);
-		obj.long1 = new MyMap().add(-99, "-33").add(99, "33");
+		obj.long1 = new MyMap().add(-99, "-33.").add(99, "33.");
 		obj.primitiveTypes1 = new MyMap().add(1, TestUtils.createObjectPrimitiveTypes()).add(2, TestUtils.createObjectPrimitiveTypes());
 		obj.short1 = new MyMap().add(-55, 1234).add(0x55, 5555);
 		obj.string1 = new MyMap().add("A", "a").add("B","b");

@@ -13,7 +13,7 @@ describe("Tests for sending and receiving array types.", function() {
 		var char1 = ['a', 'b', 'c' ];
 		var short1 = [ 55,66,77];
 		var int1 = [12,34,56];
-		var long1 = ['999','88','7'];
+		var long1 = ['999.','88.','7.'];
 		var float1 = [1.2, 2.2, 3.2];
 		var double1 = [1e1, 1e2, 1e3];
 		var string1 = ["ττττ"];
@@ -60,7 +60,7 @@ describe("Tests for sending and receiving array types.", function() {
 		obj.double4 = [[[[1],[2]]]];
 		obj.float4 = [[[[3],[4]]]];
 		obj.int4 = [[[[5],[6]]]];
-		obj.long4 = [[[['7'],['8']]]];
+		obj.long4 = [[[['7.'],['8.']]]];
 		obj.primitiveTypes4 = [[[[ TestUtils.createObjectPrimitiveTypes() ]]]];
 		obj.short4 = [[[[4,2,3,4,5,6,7]]]];
 		obj.string4 = [[[["a", "b", "c"]]]];

@@ -96,6 +96,9 @@ public class PrintHelper {
 		collectAllMembers(sinfo.baseInfo, valueMembers, constMembers);
 				
 		for (MemberInfo minfo : sinfo.members) {
+
+		  if (isIgnoreMember(minfo)) continue;
+		  
 			if (minfo.value != null) {
 				constMembers.add(minfo);
 			}
@@ -104,4 +107,12 @@ public class PrintHelper {
 			}
 		}
 	}
+	
+  public static boolean isIgnoreMember(MemberInfo minfo) {
+    return minfo.isTransient ||
+        // IXADAPT
+        minfo.name.equals("changedMembers");
+  }
+  
+	
 }

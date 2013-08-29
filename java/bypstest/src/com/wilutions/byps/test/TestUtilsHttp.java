@@ -30,8 +30,8 @@ public class TestUtilsHttp {
 
 	private static Log log = LogFactory.getLog(TestUtilsHttp.class);
 	
-	public static String url = "http://192.168.0.178:6080/bypstest-srv/bypsservlet";
-	public static String url2 = "http://192.168.0.178:8080/bypstest-srv/bypsservlet";
+	public static String url = "http://localhost:8084/bypstest-srv/bypsservlet";
+	public static String url2 = "http://localhost:8084/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	
 	private static Executor tpool = Executors.newCachedThreadPool();
@@ -63,7 +63,7 @@ public class TestUtilsHttp {
 		
 		myDesc.addRegistry(registry);
 
-		BWire wire = new HWireClient(url, flags, 600, tpool);
+		BWire wire = new HWireClient(url, flags, 600, null, tpool);
 		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 1); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
@@ -77,7 +77,7 @@ public class TestUtilsHttp {
 	
 	public static BClient_Testser createClient2() throws RemoteException {
 		
-		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, tpool);
+		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, null, tpool);
 		
 		final BTransportFactory transportFactory = new HTransportFactoryClient(
 				BApiDescriptor_Testser.instance, wire, 3); 

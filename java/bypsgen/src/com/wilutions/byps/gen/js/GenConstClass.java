@@ -23,7 +23,7 @@ class GenConstClass {
 	
 	static Log log = LogFactory.getLog(GenConstClass.class);
 	
-	static void generate(PrintContext pctxt, SerialInfo serInfo) throws IOException {
+	static void generate(CustomControl fact, PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);
 		if (serInfo.isCollectionType()) {
 			// No API class for List<>...
@@ -43,13 +43,13 @@ class GenConstClass {
 		else  {
 			log.info("Generate API class for type " + serInfo.typeId + ": " + serInfo);
 			CodePrinter pr = pctxt.getPrinter();
-			new GenConstClass(pctxt, serInfo, pr).generate();
+			fact.createGenConstClass(pctxt, serInfo, pr).generate();
 			pr.close();
 		}
 		log.debug(")generate");
 	}
 	
-	private GenConstClass(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
+	protected GenConstClass(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
 		this.pctxt = pctxt;
 		this.serInfo = serInfo;
 		this.pr = pr;

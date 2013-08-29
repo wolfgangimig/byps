@@ -75,7 +75,7 @@ var TestUtils = {
 		p.boolVal = (createCount & 1) != 0;
 		p.byteVal = (createCount * 2) & 0x7F;
 		p.shortVal = (createCount * 31);
-		p.longVal = "" + (createCount * 129);
+		p.longVal = "" + (createCount * 129) + ".";
 		p.floatVal = createCount + 0.2;
 		p.doubleVal = createCount / 7.1;
 		p.stringVal = "" + p.intVal;

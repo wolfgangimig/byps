@@ -368,7 +368,6 @@ public class BConvert {
 		
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
 		addSummaryAndRemarksCommentInfo(field, cinfos);
-		addTagCommentInfos(field.tags(), cinfos);
 		
 		errInfo.fieldName = name;
 		TypeInfo type = makeElementTypeInfo(errInfo, field.type(), errorContext + "." + name);
@@ -488,7 +487,6 @@ public class BConvert {
 		
 		ArrayList<CommentInfo> commentInfos = new ArrayList<CommentInfo>();
 		addSummaryAndRemarksCommentInfo(cls, commentInfos);
-		addTagCommentInfos(cls.tags(), commentInfos);
 
 		ArrayList<MemberInfo> members = new ArrayList<MemberInfo>(cls.fields().length);
 		for (FieldDoc field : cls.fields()) {
@@ -566,16 +564,6 @@ public class BConvert {
 		}
 	}
 
-	private void addTagCommentInfos(Tag[] tags, ArrayList<CommentInfo> cinfos) {
-		for (Tag t : tags) {
-			String tkind = t.kind();
-			if (tkind.equals("@inline")) continue;
-			String ttext = t.text();
-			CommentInfo cinfo = makeCommentInfo(tkind, ttext);
-			cinfos.add(cinfo);	
-		}
-	}
-	
 	private long getSince(ErrorInfo errInfo, Tag[] tags) throws GeneratorException {
 		errInfo = errInfo.copy();
 		long n = 0;
@@ -731,7 +719,6 @@ public class BConvert {
 		errInfo = errInfo.copy();
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
 		addSummaryAndRemarksCommentInfo(method, cinfos);
-		addTagCommentInfos(method.tags(), cinfos);
 		
 		errInfo.methodName = method.name();
 		

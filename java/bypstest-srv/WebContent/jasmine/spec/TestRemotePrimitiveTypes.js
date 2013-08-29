@@ -34,9 +34,9 @@ describe("Tests for sending and receiving primitive types.", function() {
 		remote.setInt(5678);
 		TestUtils.assertEquals(log,  "int", 5678, remote.getInt());
 		remote.setLong("890");
-		TestUtils.assertEquals(log, "long", "890", remote.getLong());
+		TestUtils.assertEquals(log, "long", "890.", remote.getLong());
 		remote.setLong(890);
-		TestUtils.assertEquals(log, "long", "890", remote.getLong());
+		TestUtils.assertEquals(log, "long", "890.", remote.getLong());
 		remote.setFloat(1.2);
 		TestUtils.assertEquals(log,  "float", 1.2, remote.getFloat());
 		remote.setDouble(1.8);
@@ -67,7 +67,7 @@ describe("Tests for sending and receiving primitive types.", function() {
 		TestUtils.assertEquals(log, "char", 'Q', remote.getChar());
 		TestUtils.assertEquals(log, "short", 34, remote.getShort());
 		TestUtils.assertEquals(log,  "int", 56, remote.getInt());
-		TestUtils.assertEquals(log, "long", "45", remote.getLong());
+		TestUtils.assertEquals(log, "long", "45.", remote.getLong());
 		TestUtils.assertEquals(log,  "float", 7.4, remote.getFloat());
 		TestUtils.assertEquals(log,  "double", 9.8, remote.getDouble());
 		TestUtils.assertEquals(log,  "String", "23", remote.getString());

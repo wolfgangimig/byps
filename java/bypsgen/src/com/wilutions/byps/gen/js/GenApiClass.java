@@ -15,7 +15,7 @@ class GenApiClass {
 	
 	static Log log = LogFactory.getLog(GenApiClass.class);
 	
-	static void generate(PrintContext pctxt, SerialInfo serInfo) throws IOException {
+	static void generate(CustomControl fact, PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);
 		if (serInfo.isCollectionType()) {
 			// No API class for List<>...
@@ -35,13 +35,13 @@ class GenApiClass {
 		else  {
 			log.info("Generate API class for type " + serInfo.typeId + ": " + serInfo);
 			CodePrinter pr = pctxt.getPrinter();
-			new GenApiClass(pctxt, serInfo, pr).generate();
+			fact.createGenApiClass(pctxt, serInfo, pr).generate();
 			pr.close();
 		}
 		log.debug(")generate");
 	}
 	
-	private GenApiClass(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
+	protected GenApiClass(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
 		this.pctxt = pctxt;
 		this.serInfo = serInfo;
 		this.pr = pr;
@@ -56,8 +56,9 @@ class GenApiClass {
 
 		boolean first = true;
 		for (MemberInfo minfo : members) {
+      if (PrintHelper.isIgnoreMember(minfo)) continue;
 			if (!first) mpr.print(", "); else first = false; 
-			  mpr.print(minfo.name);
+		  mpr.print(minfo.name);
 		}
 		mpr.println(") {");
 
@@ -66,6 +67,7 @@ class GenApiClass {
 		pr.print(serInfo.isInline ? "// " : "").print("this._typeId = ").print(serInfo.typeId).println(";");
 		
 		for (MemberInfo minfo : members) {
+      if (PrintHelper.isIgnoreMember(minfo)) continue;
 			pr.print("this.").print(minfo.name).print(" = ")
 			  .print(minfo.name).print(" || ").print(getDefaultValueForType(minfo.type.typeId)).println(";");
 		}
@@ -92,7 +94,7 @@ class GenApiClass {
 		case BRegistry.TYPEID_FLOAT: 
 		case BRegistry.TYPEID_DOUBLE: return "0";
 		
-		case BRegistry.TYPEID_INT64: return "\'0\'";
+		case BRegistry.TYPEID_INT64: return "\'0.\'";
 		
 		case BRegistry.TYPEID_STRING: return "\"\"";
 		

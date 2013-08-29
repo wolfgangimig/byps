@@ -17,7 +17,7 @@ describe("Tests for sending and receiving list types.", function() {
 		obj.double1 = [0.0, 0.1, 0.2];
 		obj.float1 = [1, 2, 3, 4];
 		obj.int1 = [1, 2, 3, 4, 5];
-		obj.long1 = ["1", "2", "3", "4", "5", "6"];
+		obj.long1 = ["1.", "2.", "3.", "4.", "5.", "6."];
 		obj.primitiveTypes1 = [TestUtils.createObjectPrimitiveTypes()];
 		obj.short1 = [1];
 		obj.string1 = ["a", "b", "c"];

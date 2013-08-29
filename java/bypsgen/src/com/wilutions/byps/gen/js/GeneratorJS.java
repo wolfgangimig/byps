@@ -36,6 +36,10 @@ public class GeneratorJS implements Generator {
 		pr.close();
 		
 	}
+	
+	protected CustomControl createClassFactory(ClassDB classDB, GeneratorProperties props) {
+	  return new CustomControl();
+	}
 
 	@Override
 	public void build(ClassDB classDB, GeneratorProperties props) throws IOException {
@@ -43,6 +47,8 @@ public class GeneratorJS implements Generator {
 
 		pctxt = new PrintContext(classDB, props);
 		pctxt.destFile.delete();
+		
+		CustomControl fact = createClassFactory(classDB, props);
 
 		GenApiDescriptor.generate(pctxt, classDB.getApiDescriptor());
 
@@ -50,9 +56,9 @@ public class GeneratorJS implements Generator {
 		
 		GenClient.generate(pctxt, classDB.getApiDescriptor());
 
-		buildSerials(classDB);
+		buildSerials(fact, classDB);
 		
-		buildRemotes(classDB);
+		buildRemotes(fact, classDB);
 
 		printSeparator("Server class");
 		
@@ -67,27 +73,27 @@ public class GeneratorJS implements Generator {
 		log.debug(")build");
 	}
 	
-	private void buildSerials(ClassDB classDB) throws IOException {
+	private void buildSerials(CustomControl fact, ClassDB classDB) throws IOException {
 		
 		Collection<SerialInfo> serials = classDB.getSerials();
 
 		printSeparator("API value classes");
 		for (SerialInfo serInfo : serials) {
-			GenApiClass.generate(pctxt, serInfo);
+			GenApiClass.generate(fact, pctxt, serInfo);
 		}
 
 		printSeparator("API constant types");
 		for (SerialInfo serInfo : serials) {
-			GenConstClass.generate(pctxt, serInfo);
+			GenConstClass.generate(fact, pctxt, serInfo);
 		}
 
 		printSeparator("API constants");
 		for (SerialInfo serInfo : serials) {
-			GenConstObject.generate(pctxt, serInfo);
+			GenConstObject.generate(fact, pctxt, serInfo);
 		}
 	}
 
-	private void buildRemotes(ClassDB classDB) throws IOException {
+	private void buildRemotes(CustomControl fact, ClassDB classDB) throws IOException {
 		
 		printSeparator("Skeleton classes");
 		Collection<RemoteInfo> remotes = classDB.getRemotes();

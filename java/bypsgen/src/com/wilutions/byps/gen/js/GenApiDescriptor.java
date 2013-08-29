@@ -18,7 +18,7 @@ public class GenApiDescriptor {
 	static Log log = LogFactory.getLog(GenApiDescriptor.class);
 	
 	static void generate(PrintContext pctxt, BApiDescriptor apiDesc) throws IOException {
-		log.debug("generate");
+		log.debug("generate(");
 		CodePrinter pr = pctxt.getPrinter();
 		new GenApiDescriptor(pctxt, apiDesc, pr).generate();
 		pr.close();

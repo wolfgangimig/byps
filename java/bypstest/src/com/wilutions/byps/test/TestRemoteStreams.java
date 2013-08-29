@@ -19,6 +19,7 @@ import org.junit.Test;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BContentStreamWrapper;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.BWire;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.http.HConstants;
@@ -336,7 +337,7 @@ public class TestRemoteStreams {
 			// The exception is an IOERROR, if the exception thrown in the stream is received first.
 			// This exception cancels the message and it might happen, that we receive the CANCELLED
 			// exception from first.
-			TestUtils.assertTrue(log, "Exception Code", e.getCode() == BException.IOERROR || e.getCode() == BException.CANCELLED);
+			TestUtils.assertTrue(log, "Exception Code", e.code == BExceptionO.IOERROR || e.code == BExceptionO.CANCELLED);
 		}
 		
 		// All streams must have been closed

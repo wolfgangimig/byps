@@ -212,6 +212,8 @@ public class BDoclet extends Doclet {
 //		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl",
 //		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
 //		"-gencpp.max-fsize", "50000",
+
+    "-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\defaultroot\\ixbyps.js",
 		
 		"-allserials",
 		"-allremotes",
@@ -238,7 +240,7 @@ public class BDoclet extends Doclet {
 		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
-			args = byps_ix_ser;
+			args = bypstest_ser;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();

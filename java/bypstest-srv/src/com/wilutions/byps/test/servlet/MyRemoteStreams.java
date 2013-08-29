@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BContentStreamWrapper;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.BWire;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams;
@@ -48,7 +49,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 				// Clone the stream to be able to store it in a member variable
 				imageStream = ((BContentStream)istrm).cloneInputStream();
 			} catch (IOException e) {
-				throw new BException(BException.IOERROR, "", e);
+				throw new BException(BExceptionO.IOERROR, "", e);
 			}
 		}
 		if (log.isDebugEnabled()) log.debug(")setImage");
@@ -61,7 +62,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 		try {
 			istrm = imageStream.cloneInputStream();
 		} catch (IOException e) {
-			throw new BException(BException.IOERROR, "", e);
+			throw new BException(BExceptionO.IOERROR, "", e);
 		}
 		if (log.isDebugEnabled()) log.debug(")getImage=" + istrm);
 		return istrm;
@@ -107,7 +108,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 				throw e;
 			} catch (Throwable e) { // If the underlying message is canceled an this istrm is closed, a NPE can occur deep inside CoyoteInputStream.
 				if (log.isDebugEnabled()) log.debug("received exception=" + e);
-				lastException = new BException(BException.IOERROR, "", e);
+				lastException = new BException(BExceptionO.IOERROR, "", e);
 				throw lastException;
 			}
 		}

@@ -49,7 +49,7 @@ public class TestSerializeInlineInstances {
 			obj.shape[i].y = (short)(i*i);
 		}
 		
-		String jsonText = "{\"header\":{\"error\":0,\"flags\":0,\"targetId\":\"00000000000000010000000000000002\",\"messageId\":\"123\"},\"objectTable\":[null,{\"_typeId\":171948703,\"position\":{\"_11\":1.1,\"_12\":0.0,\"_13\":0.0,\"_21\":0.0,\"_22\":2.2,\"_23\":0.0,\"_31\":0.0,\"_32\":0.0,\"_33\":3.3},\"shape\":{\"*i\":-2}},[{\"x\":0,\"y\":0},{\"x\":1,\"y\":1},{\"x\":2,\"y\":4}]]}";
+		String jsonText = "{\"header\":{\"error\":0,\"flags\":0,\"targetId\":\"00000000000000010000000000000002\",\"messageId\":\"123.\"},\"objectTable\":[null,{\"_typeId\":171948703,\"position\":{\"_11\":1.1,\"_12\":0.0,\"_13\":0.0,\"_21\":0.0,\"_22\":2.2,\"_23\":0.0,\"_31\":0.0,\"_32\":0.0,\"_33\":3.3},\"shape\":{\"*i\":-2}},[{\"x\":0,\"y\":0},{\"x\":1,\"y\":1},{\"x\":2,\"y\":4}]]}";
 		internalTestSerializeInlineInstance(obj, jsonText);
 		
 		log.info(")testSerializeInlineInstance");

@@ -62,15 +62,15 @@ public class BBufferJson extends BBuffer {
 	}
 	
 	public void putBoolean(boolean v) {
-		putJsonValueAscii(null, v ? "true" : "false", false);
+		putJsonValueAscii(null, v ? "true" : "false", STRING_WITHOUT_QUOTE);
 	}
 	
 	public void putByte(byte v) {
-		putJsonValueAscii(null, Byte.toString(v), false);
+		putJsonValueAscii(null, Byte.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	
 	public void putByte(char v) {
-		putJsonValueAscii(null, Character.toString(v), false);
+		putJsonValueAscii(null, Character.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	
 	public void putChar(char v) {
@@ -78,49 +78,59 @@ public class BBufferJson extends BBuffer {
 	}
 	
 	public void putShort(short v) {
-		putJsonValueAscii(null, Short.toString(v), false);
+		putJsonValueAscii(null, Short.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	
 	public void putInt(int v) {
-		putJsonValueAscii(null, Integer.toString(v), false);
+		putJsonValueAscii(null, Integer.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	
+	/**
+	 * Long values are written as strings with a "." as suffix.
+	 * @param v
+	 */
 	public void putLong(long v) {
-		putJsonValueAscii(null, Long.toString(v), true);  // Long als String
+		putJsonValueAscii(null, Long.toString(v), STRING_WITH_QUOTE|STRING_LONG_VALUE);  // Long als String
 	}
 	
 	public void putFloat(float v) {
-		putJsonValueAscii(null, Float.toString(v), false);
+		putJsonValueAscii(null, Float.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	
 	public void putDouble(double v) {
-		putJsonValueAscii(null, Double.toString(v), false);
+		putJsonValueAscii(null, Double.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	
 	public void putBoolean(String name, boolean v) {
-		putJsonValueAscii(name, Boolean.toString(v), false);
+		putJsonValueAscii(name, Boolean.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	public void putByte(String name, byte v) {
-		putJsonValueAscii(name, Byte.toString(v), false);
+		putJsonValueAscii(name, Byte.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	public void putChar(String name, char v) {
 		putString(name, v != 0 ? Character.toString(v) : "");
 	}
 	public void putShort(String name, short v) {
-		putJsonValueAscii(name, Short.toString(v), false);
+		putJsonValueAscii(name, Short.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	public void putInt(String name, int v) {
-		putJsonValueAscii(name, Integer.toString(v), false);
+		putJsonValueAscii(name, Integer.toString(v), STRING_WITHOUT_QUOTE);
 	}
+	
+	/**
+	 * Long values are written as strings with a "." as suffix.
+	 * @param name
+	 * @param v
+	 */
 	public void putLong(String name, long v) {
-		putJsonValueAscii(name, Long.toString(v), true);
+		putJsonValueAscii(name, Long.toString(v), STRING_WITH_QUOTE|STRING_LONG_VALUE);
 	}
 	public void putFloat(String name, float v) {
-		putJsonValueAscii(name, Float.toString(v), false);
+		putJsonValueAscii(name, Float.toString(v), STRING_WITHOUT_QUOTE);
 	}
 
 	public void putDouble(String name, double v) {
-		putJsonValueAscii(name, Double.toString(v), false);
+		putJsonValueAscii(name, Double.toString(v), STRING_WITHOUT_QUOTE);
 	}
 	
 //	public void putBooleanIf(String name, boolean value) {
@@ -347,7 +357,7 @@ public class BBufferJson extends BBuffer {
 		addComma = true;
 	}
 	
-	public void putJsonValueAscii(String name, String value, boolean quote) {
+	public void putJsonValueAscii(String name, String value, int flags) {
 		ensureRemaining(internalUtf8Length(name) + internalUtf8Length(value) + 2);
 		
 		if (addComma) buf.put((byte)',');
@@ -355,7 +365,7 @@ public class BBufferJson extends BBuffer {
 			internalPutString(name, true);
 			buf.put((byte)':');
 		}
-		internalPutSimpleAsciiString(value, quote);
+		internalPutSimpleAsciiString(value, flags);
 		addComma = true;
 	}
 	
@@ -452,14 +462,22 @@ public class BBufferJson extends BBuffer {
 		buf.putInt(n);
 	}
 	
-	private final void internalPutSimpleAsciiString(String s, boolean quote) {
+  private final int STRING_WITHOUT_QUOTE = 0;
+	private final int STRING_WITH_QUOTE = 1;
+	private final int STRING_LONG_VALUE = 2;
+	
+	private final void internalPutSimpleAsciiString(String s, int flags) {
+	  boolean quote = (flags & STRING_WITH_QUOTE) != 0;
+	  boolean isLongValue = (flags & STRING_LONG_VALUE) != 0;
 		int n = s.length();
+		if (isLongValue) n++;
 		if (quote) n += 2;
 		ensureRemaining(n);
 		if (quote) buf.put((byte)'\"');
 		for (int i = 0; i < s.length(); i++) {
 			buf.put((byte)s.charAt(i));
 		}
+		if (isLongValue) buf.put((byte)'.');
 		if (quote) buf.put((byte)'\"');
 	}
 	
@@ -512,7 +530,7 @@ public class BBufferJson extends BBuffer {
 				v *= 10;
 				v += (int)(c - '0');
 			}
-			else if (c == '\'' || c == '\"') {
+			else if (c == '\'' || c == '\"' || c == '.') {
 			}
 			else if (c == '+') {
 			}
@@ -820,15 +838,29 @@ public class BBufferJson extends BBuffer {
 		return new BJsonObject(arr);
 	}
 	
+	/**
+	 * Long values are written as strings with a "." as suffix.
+	 * @param s
+	 * @return
+	 * @throws NumberFormatException
+	 */
 	public static long parseLong(String s) throws NumberFormatException{
-		try {
-			return s != null ? Long.valueOf(s) : 0;
-		}
-		catch (NumberFormatException e) {
-			if (!s.startsWith("0x")) throw e; 
-			s = s.substring(2);
-			return Long.valueOf(s, 16);
-		}
+	  long ret = 0;
+    if (s != null && s.length() != 0) {
+      String[] arr = s.split("\\.");
+      for (int i = 0; i < arr.length; i++) {
+        if (arr[i].length() == 0) continue;
+    		try {
+  	      ret |= Long.parseLong(arr[i]);
+    		}
+    		catch (NumberFormatException e) {
+    			if (!s.startsWith("0x")) throw e; 
+    			s = s.substring(2);
+    			ret |= Long.valueOf(s, 16);
+    		}
+      }
+    }
+    return ret;
 	}
 
 	private Log log = LogFactory.getLog(BBufferJson.class);

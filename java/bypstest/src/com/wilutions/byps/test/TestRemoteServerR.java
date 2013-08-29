@@ -19,6 +19,7 @@ import org.junit.Test;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionO;
 import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BProtocolS;
 import com.wilutions.byps.BWire;
@@ -172,7 +173,7 @@ public class TestRemoteServerR {
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e) {
-					throw new BException(BException.CANCELLED, e.toString(), e);
+					throw new BException(BExceptionO.CANCELLED, e.toString(), e);
 				}
 				log.info(")incrementInt");
 				return a+1;
@@ -209,7 +210,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BException.SERVICE_NOT_IMPLEMENTED, e.getCode());
+			TestUtils.assertEquals(log, "exception", BExceptionO.SERVICE_NOT_IMPLEMENTED, e.code);
 		}
 		
 		log.info(")testCallClientFromServerNoRemoteImpl");
@@ -426,7 +427,7 @@ public class TestRemoteServerR {
 			partnerIF.incrementInt(7);
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", exceptionCode, e.getCode());
+			TestUtils.assertEquals(log, "exception", exceptionCode, e.code);
 		}
 		
 		client2.done();
@@ -466,9 +467,9 @@ public class TestRemoteServerR {
 		log.info("stop second client");
 		client2.done();
 		
-		// The done() method throws BException.CANCELED messages inside the server.
+		// The done() method throws BExceptionO.CANCELED messages inside the server.
 		// If the next call came too early, it would be canceled by this exceptions
-		// and the test would fail because it expects an exception code BException.CLIENT_DIED.
+		// and the test would fail because it expects an exception code BExceptionO.CLIENT_DIED.
 		Thread.sleep(1000);
 		
 		// first client calls interface method of second client
@@ -478,7 +479,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expcected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BException.CLIENT_DIED, e.getCode());
+			TestUtils.assertEquals(log, "exception", BExceptionO.CLIENT_DIED, e.code);
 		}
 		log.info(")testCallDeadClientFromClient");
 	}
@@ -488,7 +489,7 @@ public class TestRemoteServerR {
 	 * The first client calls an interface method of the second client while the second client has been killed.
 	 * The second client did not send the cancel message to the server. 
 	 * When the server tries to write the response, a ClientAbortException is throw internally. 
-	 * It is caught and replaced by a BException with code BException.CLIENT_DIED.
+	 * It is caught and replaced by a BException with code BExceptionO.CLIENT_DIED.
 	 * 
 	 * A Tomcat bug causes this test to wait up to HConstants.REQUEST_TIMEOUT_MILLIS sometimes.
 	 * See HWriteResponseHelper.writeResponse for more information. 
@@ -528,7 +529,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expcected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BException.CLIENT_DIED, e.getCode());
+			TestUtils.assertEquals(log, "exception", BExceptionO.CLIENT_DIED, e.code);
 		}
 		log.info(")testCallKilledClientFromClient");
 	}
@@ -554,7 +555,7 @@ public class TestRemoteServerR {
 					}
 				}
 				catch (IOException e) {
-					throw new BException(BException.IOERROR, "", e);
+					throw new BException(BExceptionO.IOERROR, "", e);
 				}
 			}
 		});
@@ -586,7 +587,7 @@ public class TestRemoteServerR {
 				try {
 					return TestUtilsHttp.makeTestStreams();
 				} catch (IOException e) {
-					throw new BException(BException.IOERROR, "", e);
+					throw new BException(BExceptionO.IOERROR, "", e);
 				}
 			}
 		});
@@ -623,7 +624,7 @@ public class TestRemoteServerR {
 				try {
 					return TestUtilsHttp.makeTestStreams();
 				} catch (IOException e) {
-					throw new BException(BException.IOERROR, "", e);
+					throw new BException(BExceptionO.IOERROR, "", e);
 				}
 			}
 		};
@@ -679,7 +680,7 @@ public class TestRemoteServerR {
 					}
 				} catch (IOException e) {
 					log.error(e);
-					throw new BException(BException.IOERROR, "", e);
+					throw new BException(BExceptionO.IOERROR, "", e);
 				}
 				log.info(")putStreams");
 			}
@@ -730,7 +731,7 @@ public class TestRemoteServerR {
 					}
 				} catch (IOException e) {
 					log.error(e);
-					throw new BException(BException.IOERROR, "", e);
+					throw new BException(BExceptionO.IOERROR, "", e);
 				}
 				log.info(")putStreams");
 			}

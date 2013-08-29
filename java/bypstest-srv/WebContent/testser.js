@@ -21,8 +21,8 @@ com.wilutions.byps.test.api.refs = com.wilutions.byps.test.api.refs || {};
 com.wilutions.byps.test.api.map = com.wilutions.byps.test.api.map || {};
 com.wilutions.byps.test.api.strm = com.wilutions.byps.test.api.strm || {};
 com.wilutions.byps.test.api.priv = com.wilutions.byps.test.api.priv || {};
-com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
 com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
+com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
 
 /**
  * ----------------------------------------------
@@ -141,7 +141,7 @@ com.wilutions.byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short
 	this.char1 = char1 || '';
 	this.short1 = short1 || 0;
 	this.int1 = int1 || 0;
-	this.long1 = long1 || '0';
+	this.long1 = long1 || '0.';
 	this.float1 = float1 || 0;
 	this.double1 = double1 || 0;
 	this.string1 = string1 || "";
@@ -310,21 +310,20 @@ com.wilutions.byps.test.api.map.MapTypes = function(boolean1, byte1, char1, shor
 /**
  * Example class with primitive types like boolean, int, String.
 */
-com.wilutions.byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, objVal, objVal2, value, temp) {
+com.wilutions.byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, objVal, objVal2, value) {
 	this._typeId = 1000;
 	this.boolVal = boolVal || false;
 	this.byteVal = byteVal || 0;
 	this.charVal = charVal || '';
 	this.shortVal = shortVal || 0;
 	this.intVal = intVal || 0;
-	this.longVal = longVal || '0';
+	this.longVal = longVal || '0.';
 	this.floatVal = floatVal || 0;
 	this.doubleVal = doubleVal || 0;
 	this.stringVal = stringVal || "";
 	this.objVal = objVal || null;
 	this.objVal2 = objVal2 || null;
 	this.value = value || false;
-	this.temp = temp || null;
 };
 
 
@@ -338,7 +337,7 @@ com.wilutions.byps.test.api.priv.PrivateMembers = function(boolVal, byteVal, cha
 	this.charVal = charVal || '';
 	this.shortVal = shortVal || 0;
 	this.intVal = intVal || 0;
-	this.longVal = longVal || '0';
+	this.longVal = longVal || '0.';
 	this.floatVal = floatVal || 0;
 	this.doubleVal = doubleVal || 0;
 	this.stringVal = stringVal || "";
@@ -420,7 +419,7 @@ com.wilutions.byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, i
 	this.char1 = char1 || '';
 	this.short1 = short1 || 0;
 	this.int1 = int1 || 0;
-	this.long1 = long1 || '0';
+	this.long1 = long1 || '0.';
 	this.float1 = float1 || 0;
 	this.double1 = double1 || 0;
 	this.bools1 = bools1 || null;
@@ -442,7 +441,7 @@ com.wilutions.byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, i
 	this.char2 = char2 || '';
 	this.short2 = short2 || 0;
 	this.int2 = int2 || 0;
-	this.long2 = long2 || '0';
+	this.long2 = long2 || '0.';
 	this.float2 = float2 || 0;
 	this.double2 = double2 || 0;
 	this.bools2 = bools2 || null;
@@ -464,7 +463,7 @@ com.wilutions.byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, i
 	this.char3 = char3 || '';
 	this.short3 = short3 || 0;
 	this.int3 = int3 || 0;
-	this.long3 = long3 || '0';
+	this.long3 = long3 || '0.';
 	this.float3 = float3 || 0;
 	this.double3 = double3 || 0;
 	this.bools3 = bools3 || null;
