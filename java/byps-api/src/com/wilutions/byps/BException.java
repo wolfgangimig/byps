@@ -3,8 +3,6 @@ package com.wilutions.byps;
 
 /**
  * Exceptions of this class are thrown during serialization and communication.
- * The formatted message has the form [BYPS:code][message][details].
- * The string BYPS can be replaced by setting the static member 
  */
 public class BException extends com.wilutions.byps.RemoteException {
 	
@@ -12,7 +10,7 @@ public class BException extends com.wilutions.byps.RemoteException {
 	// child class could not set the final fields of BException.
 	
 	private static final long serialVersionUID = 20L;
-	
+
 	/**
 	 * Internal error.
 	 * Error code for unexpected internal error states.
@@ -91,13 +89,31 @@ public class BException extends com.wilutions.byps.RemoteException {
 
 	
 	/**
+	 * Error code.
+	 */
+	public final int code;
+	
+	/**
+	 * Error message.
+	 */
+	public final String msg;
+	
+	/**
+	 * Second error message to supply more information.
+	 */
+	public final String details;
+	
+	/**
 	 * Constructor
 	 * @param code Error code
 	 * @param msg Error message
 	 * @param ex Inner exception. The details member is set at ex.toString()
 	 */
 	public BException(int code, String msg, Throwable ex) {
-		super(formatter.formatMessage(code, msg, ""), ex);
+		super("", ex);
+		this.code = code;
+		this.msg = msg != null ? msg : "";
+		this.details = ex != null ? ex.toString() : "";
 	}
 	
 	/**
@@ -107,7 +123,9 @@ public class BException extends com.wilutions.byps.RemoteException {
 	 * @param details More information about the error
 	 */
 	public BException(int code, String msg, String details) {
-		super(formatter.formatMessage(code, msg, ""));
+		this.code = code;
+		this.msg = msg != null ? msg : "";
+		this.details = details != null ? details : "";
 	}
 	
 	/**
@@ -120,60 +138,19 @@ public class BException extends com.wilutions.byps.RemoteException {
 	}
 	
 	/**
-	 * Constructor
-	 * @param str
-	 * @param ex
+	 * Return a String of the form [BYPS:code][message][details].
+	 * @return Message string
 	 */
-	public BException(String str, Throwable ex) {
-		super(str, ex);
+	@Override
+	public String getMessage() {
+		return "[BYPS:" + code + "]" +
+				"[" + msg + "]" +
+				"[" + details + "]";
 	}
 	
-	/**
-	 * Constructor
-	 * @param str
-	 */
-	public BException(String str) {
-		super(str);
-	}
-	
-	/**
-	 * Extract the error code.
-	 * This function is used to set the error element in the BMessageHeader.
-	 * @return
-	 */
-	public int getCode() {
-		int ret = 0;
-		final String msg = toString();
-		final String prefix = formatter.getCodePrefix();
-		int p = msg.indexOf(prefix);
-		if (p >= 0) {
-		  p += prefix.length() + 1; // +1 wegen : nach prefix
-			int e = msg.indexOf(']', p);
-			if (e >= 0) {
-			  String scode = msg.substring(p, e);
-				ret = Integer.parseInt(scode);
-			}
-		}
-		return ret;
-	}
-	
+	@Override
 	public String toString() {
-		// I do not want the class name in the returned string.
 		return getMessage();
 	}
 	
-	public static class Formatter {
-	  
-	  public String getCodePrefix() {
-	    return "BYPS";
-	  }
-	  
-	  public String formatMessage(int code, String msg, String details) {
-	    return "[" + getCodePrefix() + ":" + code + "]" +
-	        "[" + (msg != null ? msg : "") + "]" +
-	        "[" + (details != null ? details : "") + "]";   
-	  }
-	}
-	
-	public static Formatter formatter = new Formatter();
 }

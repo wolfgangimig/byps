@@ -22,13 +22,17 @@ public class JSerializer_20 extends JSerializer_Object {
 	@Override
 	protected void internalWrite(final Object obj1, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		final BException e = (BException)obj1;
-		bbuf.putString("msg", e.getMessage());
+		bbuf.putInt("code", e.code);
+		bbuf.putString("msg", e.msg);
+		bbuf.putString("details", e.details);
 	}
 
 	@Override
 	public Object internalRead(final Object obj1, final BInputJson bin) throws BException {
+		final int code = bin.currentObject.getInt("code");
 		final String msg = bin.currentObject.getString("msg");
-		final BException e = new BException(msg);
+		final String details = bin.currentObject.getString("details");
+		final BException e = new BException(code, msg, details);
 		bin.onObjectCreated(e);
 		return e;
 	}
