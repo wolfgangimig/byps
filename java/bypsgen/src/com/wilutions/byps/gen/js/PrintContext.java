@@ -69,7 +69,7 @@ class PrintContext extends PrintContextBase {
 
 	public String getStubClassQName(RemoteInfo rinfo, String pack) {
 		String className = "";
-		if (!rinfo.pack.equals(pack)) className += rinfo.pack + ".";
+		className += rinfo.pack + ".";
 		className += PrintContext.STUB_PREFIX + rinfo.name;
 		return className;
 	}
