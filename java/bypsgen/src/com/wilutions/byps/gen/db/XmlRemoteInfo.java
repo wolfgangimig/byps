@@ -19,14 +19,20 @@ import com.wilutions.byps.gen.api.TypeInfo;
 
 public class XmlRemoteInfo implements XmlInfo {
 	
-    @XmlElement(name = "typeName") 
+  @XmlElement(name = "typeName") 
 	String typeName;
 	
-    @XmlElement(name = "typeId") 
+  @XmlElement(name = "typeId") 
 	public int typeId;
+    
+  @XmlElement(name = "authParamClassName") 
+  String authParamClassName; 
+
+  @XmlElement(name = "authInterface") 
+  String authInterface;
 	
 	@XmlElementWrapper(name = "methods") 
-    @XmlElement(name = "method") 
+  @XmlElement(name = "method") 
 	public List<XmlMethodInfo> methods;
 	
 	@XmlElementWrapper(name = "comments") 
@@ -38,6 +44,8 @@ public class XmlRemoteInfo implements XmlInfo {
 
 		x.typeName = v.toXmlTypeName();
 		x.typeId = v.typeId;
+		x.authParamClassName = v.authParamClassName;
+		x.authInterface = v.authBase;
 		
 		x.methods = new ArrayList<XmlMethodInfo>(v.methods.size());
 		for (MethodInfo m : v.methods) {
@@ -56,7 +64,7 @@ public class XmlRemoteInfo implements XmlInfo {
 		TypeInfo t = TypeInfo.fromXmlFullName(typeName);
 		log.debug("typeInfo=" + t);
 
-		RemoteInfo remoteInfo = classDB.createRemoteInfo(t.name, comments, t.qname, null);
+		RemoteInfo remoteInfo = classDB.createRemoteInfo(t.name, comments, t.qname, null, authParamClassName, authInterface);
 		xmlClassDB.pushUpdate(this);
 		
 		remoteInfo.typeId = this.typeId;

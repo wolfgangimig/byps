@@ -159,7 +159,11 @@ public class GenClient {
 		log.debug("printDefineStubs");
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			String varName = getRemoteVariableName(rinfo);
-			String remoteName = rinfo.getRemoteAsync().toString(pack);
+			
+			RemoteInfo rinfoInterface = rinfo.getRemoteAuth();
+			if (rinfoInterface == null) rinfoInterface = rinfo.getRemoteAsync();
+			String remoteName = rinfoInterface.toString(pack);
+			
 			pr.print("public final ").print(remoteName).print(" ").print(varName).println(";");
 		}
 		log.debug(")printDefineStubs");

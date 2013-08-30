@@ -87,13 +87,13 @@ public class CodePrinter {
 		pr.flush();
 	}
 	
-	public void printWhereIAm(Class<?> clazz) {
+	public void checkpoint() {
 	    int lineNumber = 0;
 	    StackTraceElement[] stackTraceElement = Thread.currentThread()
 	            .getStackTrace();
 	    int currentIndex = -1;
 	    for (int i = 0; i < stackTraceElement.length; i++) {
-	        if (stackTraceElement[i].getMethodName().compareTo("printWhereIAm") == 0)
+	        if (stackTraceElement[i].getMethodName().compareTo("checkpoint") == 0)
 	        {
 	            currentIndex = i + 1;
 	            break;
@@ -101,7 +101,9 @@ public class CodePrinter {
 	    }
 	    lineNumber = stackTraceElement[currentIndex].getLineNumber();
 	    
-	    println("// generated at " + clazz.toString() + ":" + lineNumber);
+	    String className = stackTraceElement[currentIndex].getClassName();
+	    
+	    println("// checkpoint " + className + ":" + lineNumber);
 	}
 	
 	

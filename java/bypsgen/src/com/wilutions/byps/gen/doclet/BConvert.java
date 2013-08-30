@@ -784,8 +784,17 @@ public class BConvert {
 			MethodInfo minfo = makeMethodInfo(errInfo, name, qname, method);
 			minfos.add(minfo);
 		}
+
+		String authParamClassName = null;
+		String authInterface = null;
+    for (Tag tag : cls.tags()) {
+      if (tag.kind().equals("@authparam")) authParamClassName= tag.text();
+      if (tag.kind().equals("@authinterface")) authInterface= tag.text();
+      
+      cinfos.add(makeCommentInfo(tag.kind(), tag.text()));
+    }
 		
-		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, qname, minfos);
+		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, qname, minfos, authParamClassName, authInterface);
 		
 		classDB.createStubForRemote(rinfo);
 

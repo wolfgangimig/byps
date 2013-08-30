@@ -140,9 +140,9 @@ public class ClassDB {
 		return serInfo;
 	}
 
-	public RemoteInfo createRemoteInfo(String name, List<CommentInfo> comments, String qname, List<MethodInfo> methods) throws GeneratorException {
+	public RemoteInfo createRemoteInfo(String name, List<CommentInfo> comments, String qname, List<MethodInfo> methods, String authParamClassName, String authInterface) throws GeneratorException {
 		
-		RemoteInfo rinfo = new RemoteInfo(name, comments, qname, methods);
+		RemoteInfo rinfo = new RemoteInfo(name, comments, qname, methods, authParamClassName, authInterface);
 
 		if (methods != null) {
 			for (MethodInfo method : methods) {

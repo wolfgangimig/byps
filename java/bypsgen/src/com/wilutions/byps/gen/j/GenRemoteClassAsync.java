@@ -15,13 +15,14 @@ class GenRemoteClassAsync extends GenRemoteClass {
 	
 	private final static String IMPL_SUFFIX = "";
 	
-	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
+	static void generate(PrintContext pctxt, RemoteInfo rinfoAsync) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
-		RemoteInfo rinfoAsync = rinfo.getRemoteAsync();
-		log.info("generate " + rinfoAsync.qname);
-		CodePrinter pr = pctxt.getPrinterForApiClass(rinfoAsync, IMPL_SUFFIX, true);
-		new GenRemoteClassAsync(pctxt, rinfoAsync, pr).generate();
-		pr.close();
+	  if (rinfoAsync != null) {
+  		log.info("generate " + rinfoAsync.qname);
+  		CodePrinter pr = pctxt.getPrinterForApiClass(rinfoAsync, IMPL_SUFFIX, true);
+  		new GenRemoteClassAsync(pctxt, rinfoAsync, pr).generate();
+  		pr.close();
+	  }
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
@@ -29,6 +30,17 @@ class GenRemoteClassAsync extends GenRemoteClass {
 		super(pctxt, rinfo, pr);
 	}
 	
+  private void printMethod(MethodInfo methodInfo) throws IOException {
+    //log.debug(GeneratorJ.class.getName(), "printMember");
+    
+    pctxt.printComments(pr, methodInfo.comments);
+    
+    CodePrinter mpr = pctxt.printDeclareMethod(pr, rinfo, methodInfo);
+    mpr.println(";");
+    
+    //log.debug(GeneratorJ.class.getName(), "printMember");
+  }
+  
 	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
@@ -49,14 +61,20 @@ class GenRemoteClassAsync extends GenRemoteClass {
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();
 
-		String superClass = interfaceName.substring(0, interfaceName.indexOf(RemoteInfo.ASYNC_SUFFIX));
-		pr.print("public interface ").print(interfaceName).print(" extends ").print(superClass).println(", BRemote {");
+		pr.checkpoint();
+		pr.print("public interface ").print(interfaceName);
+
+		String superClass = rinfo.getBaseClassQName();
+		pr.print(" extends ");
+		if (superClass != null) pr.print(superClass).print(", ");
+		pr.println("BRemote {");
 		pr.println();
 		
 		pr.beginBlock();
 		
 		for (MethodInfo minfo : rinfo.methods) {
-			printMethodAsync(minfo);
+      printMethod(minfo);
+      printMethodAsync(minfo);
 			pr.println();
 		}
 		

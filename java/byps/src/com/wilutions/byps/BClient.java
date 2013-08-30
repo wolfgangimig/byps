@@ -59,9 +59,11 @@ public abstract class BClient {
 	 * Start communication with provider.
 	 * This method has to be called before any API methods can be invoked. 
 	 * It returns immediately. The result is submitted to the supplied asyncResult object.
-	 * 
+	 * If an authentication object was supplied, the authenticate method is called after 
+	 * the protocol version has been negotiated.
 	 * @param asyncResult 
 	 * @throws RemoteException
+	 * @see {@link #setAuthentication(BAuthentication)}
 	 */
 	public void start(final BAsyncResult<BClient> asyncResult) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
@@ -90,6 +92,6 @@ public abstract class BClient {
 		if (log.isDebugEnabled()) log.debug(")negotiateTransportProtocol");
 	}
 	
-	private final Log log = LogFactory.getLog(BClient.class);
+  private final Log log = LogFactory.getLog(BClient.class);
 
 }

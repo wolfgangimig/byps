@@ -811,13 +811,13 @@ class GenApiClass {
 	
 	private void printSerialize() {		
 		
-		prH.printWhereIAm(getClass());
+		prH.checkpoint();
 		
 		prH.print("public: void ")
 		.print("serialize(BIO& ar, const BVERSION version")
 		.println(");");
 
-		prC.printWhereIAm(getClass());
+		prC.checkpoint();
 		prC.print("void ")
 			.print(cppInfo.getClassName(""))
 			.print("::serialize(BIO& ").print("ar")

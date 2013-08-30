@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
@@ -24,11 +25,14 @@ class GenRemoteStub {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
-	private GenRemoteStub(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
-		this.rinfo = rinfo;
+	private GenRemoteStub(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) throws GeneratorException {
+	  
+	  RemoteInfo rinfoImpl = rinfo.getRemoteAuth();
+	  if (rinfoImpl == null) rinfoImpl = rinfo.getRemoteAsync();
+	  
+		this.rinfo = rinfoImpl;
 		this.pr = pr;
 		this.className = pctxt.getStubClassQName(rinfo, rinfo.pack);
-		this.interfaceName = rinfo.name;
 		this.pctxt = pctxt;
 	}
 	
@@ -38,7 +42,8 @@ class GenRemoteStub {
 		pctxt.printDeclareMethod(pr, rinfo, methodInfo).println(" {");
 		
 		pr.beginBlock();
-		
+    pr.checkpoint();
+
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
 		String asyncResultType = "BSyncResult<" + rtype + ">";
 		pr.print("final ").print(asyncResultType).print(" asyncResult = new ").print(asyncResultType).print("();");
@@ -47,6 +52,10 @@ class GenRemoteStub {
 		CodePrinter mpr = pr.print("async_").print(methodInfo.name).print("(");
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+      // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+		  
 			if (first) first = false; else mpr.print(", ");
 			mpr.print(pinfo.name);
 		}
@@ -98,13 +107,23 @@ class GenRemoteStub {
 		CodePrinter mpr = pctxt.printDeclareMethodAsync(pr, rinfo, methodInfo);
 		mpr.println("{");
 		pr.beginBlock();
+		pr.checkpoint();
 		
 		String requestClass = methodInfo.requestInfo.toString(rinfo.pack);
 		pr.print(requestClass).print(" req = new ").print(requestClass).print("();");
 		pr.println();
 		
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-			pr.print("req.").print(pinfo.name).print(" = ").print(pinfo.name).print(";").println();
+		  
+		  mpr = pr.print("req.").print(pinfo.name).print(" = ");
+		  
+      // Supply authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) {
+        mpr.print("(").print(rinfo.authParamClassName).print(")").println("transport.authentication.getSessionObject();");
+      }
+      else {
+        mpr.print(pinfo.name).print(";").println();
+      }
 		}
 		
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
@@ -137,8 +156,9 @@ class GenRemoteStub {
 		pr.println("import com.wilutions.byps.*;");
 		pr.println();
 
+		pr.checkpoint();
 		pr.print("public class ").print(className)
-		.print(" extends BStub implements ").print(rinfo.getRemoteAsync().name)
+		.print(" extends BStub implements ").print(rinfo.name)
 		.print(", java.io.Serializable {");
 		pr.println();
 		
@@ -178,7 +198,6 @@ class GenRemoteStub {
 	private final RemoteInfo rinfo;
 	private final CodePrinter pr;
 	private final String className;
-	private final String interfaceName;
 	private final PrintContext pctxt;
 	
 }

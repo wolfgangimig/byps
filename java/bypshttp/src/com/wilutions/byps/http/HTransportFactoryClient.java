@@ -1,6 +1,7 @@
 package com.wilutions.byps.http;
 
 import com.wilutions.byps.BApiDescriptor;
+import com.wilutions.byps.BAuthentication;
 import com.wilutions.byps.BClient;
 import com.wilutions.byps.BServer;
 import com.wilutions.byps.BServerR;
@@ -13,8 +14,8 @@ public class HTransportFactoryClient implements BTransportFactory {
 	private final BTransport transport;
 	private final int nbOfServerRConns;
 	
-	public HTransportFactoryClient(BApiDescriptor apiDesc, BWire wire, int nbOfServerRConns) {
-		this.transport = new BTransport(apiDesc, wire, null);
+	public HTransportFactoryClient(BApiDescriptor apiDesc, BWire wire, BAuthentication authentication, int nbOfServerRConns) {
+		this.transport = new BTransport(apiDesc, wire, authentication, null);
 		this.nbOfServerRConns = nbOfServerRConns;
 	}
 

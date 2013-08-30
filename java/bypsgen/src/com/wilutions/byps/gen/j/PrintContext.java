@@ -352,6 +352,8 @@ class PrintContext extends PrintContextBase {
 	}
 
 	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo) {
+	  
+	  pr.checkpoint();
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
 		String rtype = returnInfo.type.toString(rinfo.pack);
@@ -361,6 +363,10 @@ class PrintContext extends PrintContextBase {
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+		  // Skip authentication parameter
+		  if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+		  
 			if (first) first = false; else mpr.print(", ");
 			mpr.print(pinfo.type.toString(rinfo.pack)).print(" ").print(pinfo.name);
 		}
@@ -390,11 +396,17 @@ class PrintContext extends PrintContextBase {
 	}
 	
 	public CodePrinter printDeclareMethodAsync(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo) throws IOException {
+	  
+	  pr.checkpoint();
 		
-		CodePrinter mpr = pr.print("public void ").print("async_").print(methodInfo.name).print("(");
+	  CodePrinter mpr = pr.print("public void ").print("async_").print(methodInfo.name).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+		  // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      
 			if (first) first = false; else mpr.print(", ");
 			mpr.print(pinfo.type.toString(rinfo.pack)).print(" ").print(pinfo.name);
 		}
@@ -404,17 +416,6 @@ class PrintContext extends PrintContextBase {
 		if (!first) mpr.print(", ");
 		mpr.print("final ").print(asyncResultType).print(" asyncResult) ");
 
-		// nur synchrone methode wirf exceptions
-		// die asynchrone Methode muss die Exception in das AsyncResult<>.setException schreiben
-//		StringBuilder throwsClause = new StringBuilder();
-//		for (int i = 1; i < methodInfo.resultInfo.members.size(); i++) {
-//			MemberInfo memberInfo = methodInfo.resultInfo.members.get(i);
-//			if (memberInfo.type.qname.equals(IOException.class.getName())) continue;
-//			if (throwsClause.length() != 0) throwsClause.append(", ");
-//			throwsClause.append(memberInfo.type.toString(rinfo.pack));
-//		}
-//		mpr.print(") ").print(throwsClause.toString()).print(" ");
-		
 		return mpr;
 	}
 

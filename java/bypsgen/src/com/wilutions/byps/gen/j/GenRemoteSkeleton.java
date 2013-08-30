@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
@@ -24,8 +25,8 @@ class GenRemoteSkeleton {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
-	private GenRemoteSkeleton(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
-		this.rinfo = rinfo;
+	private GenRemoteSkeleton(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) throws GeneratorException {
+		this.rinfo = rinfo.getRemoteAsync();
 		this.pr = pr;
 		this.className = pctxt.getSkeletonClassQName(rinfo, rinfo.pack);
 		this.interfaceName = rinfo.name;
@@ -128,7 +129,7 @@ class GenRemoteSkeleton {
 		pr.println("@SuppressWarnings(\"all\")");
 		pr.print("public class ").print(className)
 			.print(" extends BSkeleton")
-			.print(" implements ").print(rinfo.getRemoteAsync().name)
+			.print(" implements ").print(rinfo.name)
 			.print(" {"); // implementiert nicht Serializable, sonst will Eclipse auch eine serialVersionUID der Implementierungsklasse.
 		pr.println();
 

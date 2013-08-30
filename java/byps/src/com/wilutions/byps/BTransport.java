@@ -8,19 +8,22 @@ import org.apache.commons.logging.LogFactory;
 
 public class BTransport {
 	
-	public final BWire wire;
-	
 	public final BApiDescriptor apiDesc;
 	
+  public final BWire wire;
+  
+  public final BAuthentication authentication; 
+  
 	public final BServerRegistry serverRegistry;
 	
 	private BTargetId targetId;
 	
 	private BProtocol protocol;
 
-	public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
+	public BTransport(BApiDescriptor apiDesc, BWire wire, BAuthentication authentication, BServerRegistry serverRegistry) {
 		this.apiDesc = apiDesc;
 		this.wire = wire;
+		this.authentication = authentication;
 		this.targetId = new BTargetId();
 		this.serverRegistry = serverRegistry;
 	}
@@ -28,6 +31,7 @@ public class BTransport {
 	public BTransport(BTransport rhs, BTargetId targetId) {
 		this.apiDesc = rhs.apiDesc;
 		this.wire = rhs.wire;
+    this.authentication = rhs.authentication;
 		this.targetId = targetId;
 		this.protocol = rhs.getProtocol();
 		this.serverRegistry = rhs.serverRegistry;
@@ -66,30 +70,66 @@ public class BTransport {
 		return protocol.getInput(this, header, buf);
 	}
 
-	public <T> void send(Object obj, final BAsyncResult<T> asyncResult) {
-		if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
+  public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
+    sendMaybeRelogin(0, obj, asyncResult);
+  }
+	 
+	public <T> void sendMaybeRelogin(final int reloginCount, final Object obj, final BAsyncResult<T> asyncResult) {
+		if (log.isDebugEnabled()) log.debug("sendMaybeRelogin(obj=" + obj + ", asyncResult=" + asyncResult);
 		try {
 			
+      if (log.isDebugEnabled()) log.debug("store object");
 			final BOutput bout = getOutput();
-			
-			if (log.isDebugEnabled()) log.debug("store object");
 			bout.store(obj);
 			
 			final BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
 	
 				@SuppressWarnings("unchecked")
 				@Override
-				public void setAsyncResult(BMessage msg, Throwable e) {
-					if (log.isDebugEnabled()) log.debug("setAsyncResult(" + msg);
+				public void setAsyncResult(BMessage msgRecv, Throwable e) {
+					if (log.isDebugEnabled()) log.debug("setAsyncResult(" + msgRecv + ", ex=" + e);
 					try {
-						T ret = null;
-						if (e == null) {
-							final BInput bin = getInput(msg.header, msg.buf);
-							if (log.isDebugEnabled()) log.debug("load object");
-							ret = (T)bin.load();
-							if (log.isDebugEnabled()) log.debug("ret = " + ret);
+						
+						if (e != null) {
+						  
+						  // Session expired?
+						  boolean rlogin = authentication != null && authentication.isReloginException(reloginCount, e);
+		          if (log.isDebugEnabled()) log.debug("isReloginException=" + rlogin);
+						  if (rlogin) {
+						    
+						    // Authenticate and send the message again.
+						    
+						    final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
+						      public void setAsyncResult(Boolean succ, Throwable e2) {
+		                if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
+						        if (e2 != null) {
+						          asyncResult.setAsyncResult(null, e2);
+						        }
+						        else {
+						          // Send again
+						          BTransport.this.sendMaybeRelogin(reloginCount+1, obj, asyncResult);
+						        }
+						      };
+						    };
+						    
+						    // Negotiate, authenticate
+			          if (log.isDebugEnabled()) log.debug("re-login");
+						    negotiateProtocolClient(loginResult);
+						    
+						  }
+						  else {
+		            asyncResult.setAsyncResult(null, e);
+						  }
+						  
 						}
-						asyncResult.setAsyncResult(ret, e);
+						else {
+							final BInput bin = getInput(msgRecv.header, msgRecv.buf);
+							if (log.isDebugEnabled()) log.debug("load object");
+							T ret = (T)bin.load();
+							if (log.isDebugEnabled()) log.debug("ret = " + ret);
+	            asyncResult.setAsyncResult(ret, e);
+						}
+						
 					} catch (Throwable ex) {
 						if (log.isDebugEnabled()) log.debug("Received exception.", e);
 						asyncResult.setAsyncResult(null, ex);
@@ -100,12 +140,15 @@ public class BTransport {
 				
 			};
 			
-			final BMessage msg = bout.toMessage();
-			wire.send(msg, outerResult);
+      final BMessage msgSend = bout.toMessage();
+			wire.send(msgSend, outerResult);
 		}
 		catch (Throwable e) {
-			asyncResult.setAsyncResult(null, e);
+	    if (log.isDebugEnabled()) log.debug("Failed to serialize object", e);
+		  asyncResult.setAsyncResult(null, e);
 		}
+		
+		if (log.isDebugEnabled()) log.debug(")sendMaybeRelogin");
 	}
 
 	public void recv(BServer server, BMessage msg, final BAsyncResult<BMessage> asyncResult) throws Throwable {
@@ -212,8 +255,24 @@ public class BTransport {
 							protocol = createNegotiatedProtocol(nego);
 							targetId = nego.targetId;
 						}
+						
+            if (authentication != null) {
+  						final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
+  						  public void setAsyncResult(Boolean result, Throwable exception) {
+  	              asyncResult.setAsyncResult(true, exception);
+  						  };
+  						};
+  
+  						authentication.authenticate(loginResult);
+            }
+            else {
+              asyncResult.setAsyncResult(false, e);
+            }
+            
 					}
-					asyncResult.setAsyncResult(true, e);
+					else {
+					  asyncResult.setAsyncResult(false, e);
+					}
 				}
 				catch (Throwable ex) {
 					asyncResult.setAsyncResult(null, ex);
