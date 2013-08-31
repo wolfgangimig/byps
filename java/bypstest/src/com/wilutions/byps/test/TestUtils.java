@@ -81,7 +81,7 @@ public class TestUtils {
 			proto = new BProtocolS(apiDesc, version, ByteOrder.LITTLE_ENDIAN);
 		}
 		
-		BTransport transport = new BTransport(apiDesc, wire, null);
+		BTransport transport = new BTransport(apiDesc, wire, null, null);
 		transport.setProtocol(proto);
 	
 		return transport;

@@ -16,11 +16,13 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteReferences extends BSkeleton implements RemoteReferencesAsync {
 	
-	public final static long serialVersionUID = 2086824050L;
+	public final static long serialVersionUID = 0L;
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.refs.Node getNode() throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
 		try {
 			com.wilutions.byps.test.api.refs.Node ret = getNode();
@@ -30,9 +32,11 @@ public class BSkeleton_RemoteReferences extends BSkeleton implements RemoteRefer
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setNode(com.wilutions.byps.test.api.refs.Node v) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setNode(v);

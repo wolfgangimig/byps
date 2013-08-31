@@ -42,97 +42,97 @@ namespace com.wilutions.byps.test.api
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1557084481, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(2081058997, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1557173854, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(431648293, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(359349400, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1206670536, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(380156079, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(80483097, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1341983932, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(2086824050, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1124545992, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1156008353, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(2028487863, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1784257353, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1313562065, remoteSkeleton);
 			return this;
 		}
 		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF remoteSkeleton) {
-			if (serverR == null) throw new BException(BException.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(2078696281, remoteSkeleton);
 			return this;
 		}

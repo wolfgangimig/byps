@@ -64,7 +64,7 @@ public class TestUtilsHttp {
 		myDesc.addRegistry(registry);
 
 		BWire wire = new HWireClient(url, flags, 600, null, tpool);
-		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 1); 
+		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, null, 1); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 
@@ -80,7 +80,7 @@ public class TestUtilsHttp {
 		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, null, tpool);
 		
 		final BTransportFactory transportFactory = new HTransportFactoryClient(
-				BApiDescriptor_Testser.instance, wire, 3); 
+				BApiDescriptor_Testser.instance, wire, null, 3); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 

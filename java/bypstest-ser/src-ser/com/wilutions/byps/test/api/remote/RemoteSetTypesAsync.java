@@ -7,58 +7,189 @@
 
 import com.wilutions.byps.*;
 
+// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:64
 public interface RemoteSetTypesAsync extends RemoteSetTypes, BRemote {
 
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.Boolean> getBoolean1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getBoolean1(final BAsyncResult<java.util.Set<java.lang.Boolean>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setBoolean1(java.util.Set<java.lang.Boolean> boolean1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setBoolean1(java.util.Set<java.lang.Boolean> boolean1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.HashSet<java.lang.Byte> getByte1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getByte1(final BAsyncResult<java.util.HashSet<java.lang.Byte>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setByte1(java.util.HashSet<java.lang.Byte> byte1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setByte1(java.util.HashSet<java.lang.Byte> byte1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.TreeSet<java.lang.Character> getChar1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getChar1(final BAsyncResult<java.util.TreeSet<java.lang.Character>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setChar1(java.util.TreeSet<java.lang.Character> char1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setChar1(java.util.TreeSet<java.lang.Character> char1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.Short> getShort1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getShort1(final BAsyncResult<java.util.Set<java.lang.Short>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setShort1(java.util.Set<java.lang.Short> short1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setShort1(java.util.Set<java.lang.Short> short1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.Integer> getInt1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getInt1(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setInt1(java.util.Set<java.lang.Integer> int1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setInt1(java.util.Set<java.lang.Integer> int1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.Long> getLong1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getLong1(final BAsyncResult<java.util.Set<java.lang.Long>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setLong1(java.util.Set<java.lang.Long> long1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setLong1(java.util.Set<java.lang.Long> long1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.Float> getFloat1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getFloat1(final BAsyncResult<java.util.Set<java.lang.Float>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setFloat1(java.util.Set<java.lang.Float> float1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setFloat1(java.util.Set<java.lang.Float> float1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.Double> getDouble1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getDouble1(final BAsyncResult<java.util.Set<java.lang.Double>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setDouble1(java.util.Set<java.lang.Double> double1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setDouble1(java.util.Set<java.lang.Double> double1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.String> getString1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getString1(final BAsyncResult<java.util.Set<java.lang.String>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setString1(java.util.Set<java.lang.String> string1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setString1(java.util.Set<java.lang.String> string1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPrimitiveTypes1(final BAsyncResult<java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setPrimitiveTypes1(java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPrimitiveTypes1(java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<byte[]> getByte2() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getByte2(final BAsyncResult<java.util.Set<byte[]>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setByte2(java.util.Set<byte[]> byte2) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setByte2(java.util.Set<byte[]> byte2, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<int[]> getInt2() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getInt2(final BAsyncResult<java.util.Set<int[]>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setInt2(java.util.Set<int[]> int2) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setInt2(java.util.Set<int[]> int2, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.util.Set<java.lang.Object> getObj1() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getObj1(final BAsyncResult<java.util.Set<java.lang.Object>> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setObj1(java.util.Set<java.lang.Object> obj1) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setObj1(java.util.Set<java.lang.Object> obj1, final BAsyncResult<Object> asyncResult) ;
 	
 	

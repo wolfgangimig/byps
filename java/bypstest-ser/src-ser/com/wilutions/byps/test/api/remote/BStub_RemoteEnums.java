@@ -7,31 +7,40 @@
 
 import com.wilutions.byps.*;
 
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
 public class BStub_RemoteEnums extends BStub implements RemoteEnumsAsync, java.io.Serializable {
 	
-	public final static long serialVersionUID = 359349400L;
+	public final static long serialVersionUID = 0L;
 	
 	public BStub_RemoteEnums(final BTransport transport) {
 		super(transport);		
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult = new BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets>();		
 		async_getPlanet(asyncResult);
 		return asyncResult.getResult();		
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPlanet(final BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteEnums_getPlanet req = new BRequest_RemoteEnums_getPlanet();		
 		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.enu.EnumPlanets> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.enu.EnumPlanets>(asyncResult);
 		transport.send(req, outerResult);
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		async_setPlanet(planet, asyncResult);
 		asyncResult.getResult();		
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();		
 		req.planet = planet;
 		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);

@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.ver
 		public readonly static long serialVersionUID = 2078696281L;
 		
 		public virtual void SetEvolve(Evolve obj) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetEvolve(Evolve obj, BAsyncResult<Object> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.ver
 			}
 		}
 		public IAsyncResult BeginSetEvolve(Evolve obj, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetEvolve(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual Evolve GetEvolve() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetEvolve(BAsyncResult<Evolve> asyncResult) {
 			try {
@@ -47,14 +47,14 @@ namespace com.wilutions.byps.test.api.ver
 			}
 		}
 		public IAsyncResult BeginGetEvolve(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Evolve EndGetEvolve(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetClient(EvolveIF partner) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetClient(EvolveIF partner, BAsyncResult<Object> asyncResult) {
 			try {
@@ -65,14 +65,14 @@ namespace com.wilutions.byps.test.api.ver
 			}
 		}
 		public IAsyncResult BeginSetClient(EvolveIF partner, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetClient(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual EvolveIF GetClient() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetClient(BAsyncResult<EvolveIF> asyncResult) {
 			try {
@@ -83,14 +83,14 @@ namespace com.wilutions.byps.test.api.ver
 			}
 		}
 		public IAsyncResult BeginGetClient(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public EvolveIF EndGetClient(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SendEvolveToClient() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SendEvolveToClient(BAsyncResult<Object> asyncResult) {
 			try {
@@ -101,10 +101,10 @@ namespace com.wilutions.byps.test.api.ver
 			}
 		}
 		public IAsyncResult BeginSendEvolveToClient(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSendEvolveToClient(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		

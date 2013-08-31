@@ -16,11 +16,13 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServerCtrlAsync {
 	
-	public final static long serialVersionUID = 1124545992L;
+	public final static long serialVersionUID = 0L;
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) {
 		try {
 			publishRemote(name, remote, fowardToOtherServers);
@@ -30,9 +32,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) {
 		try {
 			BRemote ret = getPublishedRemote(name);
@@ -42,9 +46,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void removePublishedRemote(java.lang.String name) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) {
 		try {
 			removePublishedRemote(name);

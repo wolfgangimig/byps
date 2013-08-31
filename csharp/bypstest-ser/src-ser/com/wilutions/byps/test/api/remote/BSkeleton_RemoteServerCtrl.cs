@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.remote
 		public readonly static long serialVersionUID = 1124545992L;
 		
 		public virtual void PublishRemote(String name, BRemote remote, bool fowardToOtherServers) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_PublishRemote(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginPublishRemote(String name, BRemote remote, bool fowardToOtherServers, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndPublishRemote(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual BRemote GetPublishedRemote(String name) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetPublishedRemote(String name, BAsyncResult<BRemote> asyncResult) {
 			try {
@@ -47,14 +47,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetPublishedRemote(String name, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public BRemote EndGetPublishedRemote(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void RemovePublishedRemote(String name) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_RemovePublishedRemote(String name, BAsyncResult<Object> asyncResult) {
 			try {
@@ -65,10 +65,10 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginRemovePublishedRemote(String name, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndRemovePublishedRemote(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		

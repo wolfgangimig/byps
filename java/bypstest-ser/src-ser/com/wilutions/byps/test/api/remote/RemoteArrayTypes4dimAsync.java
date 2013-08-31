@@ -7,50 +7,161 @@
 
 import com.wilutions.byps.*;
 
+// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:64
 public interface RemoteArrayTypes4dimAsync extends RemoteArrayTypes4dim, BRemote {
 
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setBool(boolean[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setBool(boolean[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setByte(byte[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setByte(byte[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setChar(char[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setChar(char[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setShort(short[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setShort(short[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setInt(int[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setInt(int[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setLong(long[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setLong(long[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setFloat(float[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setFloat(float[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setDouble(double[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setDouble(double[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setString(java.lang.String[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setString(java.lang.String[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setObject(java.lang.Object[][][][] v) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setObject(java.lang.Object[][][][] v, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public boolean[][][][] getBool() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getBool(final BAsyncResult<boolean[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public byte[][][][] getByte() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getByte(final BAsyncResult<byte[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public char[][][][] getChar() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getChar(final BAsyncResult<char[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public short[][][][] getShort() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getShort(final BAsyncResult<short[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public int[][][][] getInt() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getInt(final BAsyncResult<int[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public long[][][][] getLong() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getLong(final BAsyncResult<long[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public float[][][][] getFloat() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getFloat(final BAsyncResult<float[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public double[][][][] getDouble() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getDouble(final BAsyncResult<double[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.lang.String[][][][] getString() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getString(final BAsyncResult<java.lang.String[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] getPrimitiveTypes() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPrimitiveTypes(final BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public java.lang.Object[][][][] getObject() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getObject(final BAsyncResult<java.lang.Object[][][][]> asyncResult) ;
 	
 	

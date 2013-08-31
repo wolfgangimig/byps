@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.remote
 		public readonly static long serialVersionUID = 80483097L;
 		
 		public virtual IDictionary<String,bool> GetBoolean1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetBoolean1(BAsyncResult<IDictionary<String,bool>> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetBoolean1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<String,bool> EndGetBoolean1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetBoolean1(IDictionary<String,bool> boolean1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetBoolean1(IDictionary<String,bool> boolean1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -47,14 +47,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetBoolean1(IDictionary<String,bool> boolean1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetBoolean1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual Dictionary<double,byte> GetByte1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetByte1(BAsyncResult<Dictionary<double,byte>> asyncResult) {
 			try {
@@ -65,14 +65,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetByte1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Dictionary<double,byte> EndGetByte1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetByte1(Dictionary<double,byte> byte1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetByte1(Dictionary<double,byte> byte1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -83,14 +83,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetByte1(Dictionary<double,byte> byte1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetByte1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual Dictionary<float,char> GetChar1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetChar1(BAsyncResult<Dictionary<float,char>> asyncResult) {
 			try {
@@ -101,14 +101,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetChar1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Dictionary<float,char> EndGetChar1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetChar1(Dictionary<float,char> char1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetChar1(Dictionary<float,char> char1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -119,14 +119,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetChar1(Dictionary<float,char> char1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetChar1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<long,short> GetShort1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetShort1(BAsyncResult<IDictionary<long,short>> asyncResult) {
 			try {
@@ -137,14 +137,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetShort1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<long,short> EndGetShort1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetShort1(IDictionary<long,short> short1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetShort1(IDictionary<long,short> short1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -155,14 +155,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetShort1(IDictionary<long,short> short1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetShort1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<int,int> GetInt1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetInt1(BAsyncResult<IDictionary<int,int>> asyncResult) {
 			try {
@@ -173,14 +173,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetInt1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<int,int> EndGetInt1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetInt1(IDictionary<int,int> int1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetInt1(IDictionary<int,int> int1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -191,14 +191,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetInt1(IDictionary<int,int> int1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetInt1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<short,long> GetLong1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetLong1(BAsyncResult<IDictionary<short,long>> asyncResult) {
 			try {
@@ -209,14 +209,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetLong1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<short,long> EndGetLong1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetLong1(IDictionary<short,long> long1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetLong1(IDictionary<short,long> long1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -227,14 +227,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetLong1(IDictionary<short,long> long1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetLong1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<char,float> GetFloat1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetFloat1(BAsyncResult<IDictionary<char,float>> asyncResult) {
 			try {
@@ -245,14 +245,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetFloat1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<char,float> EndGetFloat1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetFloat1(IDictionary<char,float> float1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetFloat1(IDictionary<char,float> float1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -263,14 +263,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetFloat1(IDictionary<char,float> float1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetFloat1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<byte,double> GetDouble1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetDouble1(BAsyncResult<IDictionary<byte,double>> asyncResult) {
 			try {
@@ -281,14 +281,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetDouble1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<byte,double> EndGetDouble1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetDouble1(IDictionary<byte,double> double1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetDouble1(IDictionary<byte,double> double1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -299,14 +299,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetDouble1(IDictionary<byte,double> double1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetDouble1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<String,String> GetString1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetString1(BAsyncResult<IDictionary<String,String>> asyncResult) {
 			try {
@@ -317,14 +317,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetString1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<String,String> EndGetString1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetString1(IDictionary<String,String> string1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetString1(IDictionary<String,String> string1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -335,14 +335,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetString1(IDictionary<String,String> string1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetString1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypes1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetPrimitiveTypes1(BAsyncResult<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult) {
 			try {
@@ -353,14 +353,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetPrimitiveTypes1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> EndGetPrimitiveTypes1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetPrimitiveTypes1(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetPrimitiveTypes1(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -371,14 +371,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetPrimitiveTypes1(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetPrimitiveTypes1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<int,byte[]> GetByte2() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetByte2(BAsyncResult<IDictionary<int,byte[]>> asyncResult) {
 			try {
@@ -389,14 +389,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetByte2(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<int,byte[]> EndGetByte2(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetByte2(IDictionary<int,byte[]> byte2) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetByte2(IDictionary<int,byte[]> byte2, BAsyncResult<Object> asyncResult) {
 			try {
@@ -407,14 +407,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetByte2(IDictionary<int,byte[]> byte2, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetByte2(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<int,int[]> GetInt2() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetInt2(BAsyncResult<IDictionary<int,int[]>> asyncResult) {
 			try {
@@ -425,14 +425,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetInt2(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<int,int[]> EndGetInt2(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetInt2(IDictionary<int,int[]> int2) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetInt2(IDictionary<int,int[]> int2, BAsyncResult<Object> asyncResult) {
 			try {
@@ -443,14 +443,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetInt2(IDictionary<int,int[]> int2, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetInt2(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual IDictionary<String,Object> GetObj1() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetObj1(BAsyncResult<IDictionary<String,Object>> asyncResult) {
 			try {
@@ -461,14 +461,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetObj1(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public IDictionary<String,Object> EndGetObj1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetObj1(IDictionary<String,Object> obj1) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetObj1(IDictionary<String,Object> obj1, BAsyncResult<Object> asyncResult) {
 			try {
@@ -479,10 +479,10 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetObj1(IDictionary<String,Object> obj1, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetObj1(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		

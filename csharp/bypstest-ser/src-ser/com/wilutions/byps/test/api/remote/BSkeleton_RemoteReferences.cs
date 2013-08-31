@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.remote
 		public readonly static long serialVersionUID = 2086824050L;
 		
 		public virtual com.wilutions.byps.test.api.refs.Node GetNode() {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetNode(BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetNode(AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public com.wilutions.byps.test.api.refs.Node EndGetNode(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		public virtual void SetNode(com.wilutions.byps.test.api.refs.Node v) {
-			throw new BException(BException.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetNode(com.wilutions.byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
 			try {
@@ -47,10 +47,10 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetNode(com.wilutions.byps.test.api.refs.Node v, AsyncCallback callback, object state) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		public Object EndSetNode(IAsyncResult asyncResult) {
-			throw new BException(BException.INTERNAL, "");
+			throw new BException(BExceptionO.INTERNAL, "");
 		}
 		
 		

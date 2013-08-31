@@ -21,8 +21,8 @@ com.wilutions.byps.test.api.refs = com.wilutions.byps.test.api.refs || {};
 com.wilutions.byps.test.api.map = com.wilutions.byps.test.api.map || {};
 com.wilutions.byps.test.api.strm = com.wilutions.byps.test.api.strm || {};
 com.wilutions.byps.test.api.priv = com.wilutions.byps.test.api.priv || {};
-com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
+com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 
 /**
  * ----------------------------------------------

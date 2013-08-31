@@ -7,20 +7,25 @@
 
 import com.wilutions.byps.*;
 
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
 public class BStub_RemoteArrayTypes23 extends BStub implements RemoteArrayTypes23Async, java.io.Serializable {
 	
-	public final static long serialVersionUID = 2081058997L;
+	public final static long serialVersionUID = 0L;
 	
 	public BStub_RemoteArrayTypes23(final BTransport transport) {
 		super(transport);		
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int[] sendArraysInt(int[][] arr2, int[][][] arr3, int[][][][] arr4) throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<int[]> asyncResult = new BSyncResult<int[]>();		
 		async_sendArraysInt(arr2, arr3, arr4, asyncResult);
 		return asyncResult.getResult();		
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_sendArraysInt(int[][] arr2, int[][][] arr3, int[][][][] arr4, final BAsyncResult<int[]> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes23_sendArraysInt req = new BRequest_RemoteArrayTypes23_sendArraysInt();		
 		req.arr2 = arr2;
 		req.arr3 = arr3;
@@ -29,12 +34,16 @@ public class BStub_RemoteArrayTypes23 extends BStub implements RemoteArrayTypes2
 		transport.send(req, outerResult);
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.lang.String[] sendArraysString(java.lang.String[][] arr2, java.lang.String[][][] arr3, java.lang.String[][][][] arr4) throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<java.lang.String[]> asyncResult = new BSyncResult<java.lang.String[]>();		
 		async_sendArraysString(arr2, arr3, arr4, asyncResult);
 		return asyncResult.getResult();		
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_sendArraysString(java.lang.String[][] arr2, java.lang.String[][][] arr3, java.lang.String[][][][] arr4, final BAsyncResult<java.lang.String[]> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes23_sendArraysString req = new BRequest_RemoteArrayTypes23_sendArraysString();		
 		req.arr2 = arr2;
 		req.arr3 = arr3;
@@ -43,12 +52,16 @@ public class BStub_RemoteArrayTypes23 extends BStub implements RemoteArrayTypes2
 		transport.send(req, outerResult);
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.prim.PrimitiveTypes[] sendArraysClass(com.wilutions.byps.test.api.prim.PrimitiveTypes[][] arr2, com.wilutions.byps.test.api.prim.PrimitiveTypes[][][] arr3, com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] arr4) throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> asyncResult = new BSyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]>();		
 		async_sendArraysClass(arr2, arr3, arr4, asyncResult);
 		return asyncResult.getResult();		
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_sendArraysClass(com.wilutions.byps.test.api.prim.PrimitiveTypes[][] arr2, com.wilutions.byps.test.api.prim.PrimitiveTypes[][][] arr3, com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] arr4, final BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes23_sendArraysClass req = new BRequest_RemoteArrayTypes23_sendArraysClass();		
 		req.arr2 = arr2;
 		req.arr3 = arr3;
@@ -57,12 +70,16 @@ public class BStub_RemoteArrayTypes23 extends BStub implements RemoteArrayTypes2
 		transport.send(req, outerResult);
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.lang.Object[] sendArraysObject(java.lang.Object[][] arr2, java.lang.Object[][][] arr3, java.lang.Object[][][][] arr4) throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<java.lang.Object[]> asyncResult = new BSyncResult<java.lang.Object[]>();		
 		async_sendArraysObject(arr2, arr3, arr4, asyncResult);
 		return asyncResult.getResult();		
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_sendArraysObject(java.lang.Object[][] arr2, java.lang.Object[][][] arr3, java.lang.Object[][][][] arr4, final BAsyncResult<java.lang.Object[]> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes23_sendArraysObject req = new BRequest_RemoteArrayTypes23_sendArraysObject();		
 		req.arr2 = arr2;
 		req.arr3 = arr3;
@@ -71,12 +88,16 @@ public class BStub_RemoteArrayTypes23 extends BStub implements RemoteArrayTypes2
 		transport.send(req, outerResult);
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.inl.Point2D[] sendArraysInline(com.wilutions.byps.test.api.inl.Point2D[][] arr2, com.wilutions.byps.test.api.inl.Point2D[][][] arr3, com.wilutions.byps.test.api.inl.Point2D[][][][] arr4) throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult = new BSyncResult<com.wilutions.byps.test.api.inl.Point2D[]>();		
 		async_sendArraysInline(arr2, arr3, arr4, asyncResult);
 		return asyncResult.getResult();		
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_sendArraysInline(com.wilutions.byps.test.api.inl.Point2D[][] arr2, com.wilutions.byps.test.api.inl.Point2D[][][] arr3, com.wilutions.byps.test.api.inl.Point2D[][][][] arr4, final BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes23_sendArraysInline req = new BRequest_RemoteArrayTypes23_sendArraysInline();		
 		req.arr2 = arr2;
 		req.arr3 = arr3;

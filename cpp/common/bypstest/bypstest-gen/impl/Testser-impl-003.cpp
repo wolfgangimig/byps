@@ -34,7 +34,7 @@ com::wilutions::byps::test::api::cons::AllTypesZ::AllTypesZ(bool bool1, int8_t b
 	, string2(string2)
 	, hebrew2(hebrew2)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::cons::AllTypesZ::serialize(BIO& ar, const BVERSION version) {
 	ar & bool1;
 	ar & byte1;
@@ -93,7 +93,7 @@ const PHebrewZ HebrewC::BETH = PHebrewZ(new HebrewZ(
 
 com::wilutions::byps::test::api::cons::HebrewC::HebrewC() {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::cons::HebrewC::serialize(BIO& ar, const BVERSION version) {
 }
 }}}}}}
@@ -120,7 +120,7 @@ com::wilutions::byps::test::api::cons::HebrewZ::HebrewZ() {
 com::wilutions::byps::test::api::cons::HebrewZ::HebrewZ(::std::wstring core)
 	: core(core)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::cons::HebrewZ::serialize(BIO& ar, const BVERSION version) {
 	ar & core;
 }
@@ -187,7 +187,7 @@ com::wilutions::byps::test::api::enu::UsePlanets::UsePlanets(com::wilutions::byp
 	, listOfPlanets(listOfPlanets)
 	, mapOfPlanets(mapOfPlanets)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::enu::UsePlanets::serialize(BIO& ar, const BVERSION version) {
 	ar & planet;
 	ar & planet2;
@@ -221,7 +221,7 @@ com::wilutions::byps::test::api::inherit::Class1::Class1(int32_t int1, com::wilu
 	: int1(int1)
 	, nextClass1(nextClass1)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::inherit::Class1::serialize(BIO& ar, const BVERSION version) {
 	ar & int1;
 	ar & nextClass1;
@@ -252,7 +252,7 @@ com::wilutions::byps::test::api::inherit::Class1Collections::Class1Collections(b
 	, map1(map1)
 	, set1(set1)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::inherit::Class1Collections::serialize(BIO& ar, const BVERSION version) {
 	ar & list1;
 	ar & map1;
@@ -283,7 +283,7 @@ com::wilutions::byps::test::api::inherit::Class2::Class2() {
 com::wilutions::byps::test::api::inherit::Class2::Class2(int32_t int2)
 	: int2(int2)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::inherit::Class2::serialize(BIO& ar, const BVERSION version) {
 	Class1::serialize(ar, version);
 	ar & int2;
@@ -313,7 +313,7 @@ com::wilutions::byps::test::api::inherit::Class3::Class3() {
 com::wilutions::byps::test::api::inherit::Class3::Class3(int32_t int3)
 	: int3(int3)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::inherit::Class3::serialize(BIO& ar, const BVERSION version) {
 	Class2::serialize(ar, version);
 	ar & int3;
@@ -343,7 +343,7 @@ com::wilutions::byps::test::api::inl::Actor::Actor(byps_ptr< BArray1< com::wilut
 	: shape(shape)
 	, position(position)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::inl::Actor::serialize(BIO& ar, const BVERSION version) {
 	ar & position;
 	ar & shape;
@@ -374,7 +374,7 @@ com::wilutions::byps::test::api::list::ListListTypes::ListListTypes(byps_ptr< ::
 	, int3(int3)
 	, int24(int24)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::list::ListListTypes::serialize(BIO& ar, const BVERSION version) {
 	ar & int2;
 	ar & int24;
@@ -417,7 +417,7 @@ com::wilutions::byps::test::api::list::ListTypes::ListTypes(byps_ptr< ::std::vec
 	, int4(int4)
 	, obj1(obj1)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::list::ListTypes::serialize(BIO& ar, const BVERSION version) {
 	ar & boolean1;
 	ar & byte1;
@@ -470,7 +470,7 @@ com::wilutions::byps::test::api::map::MapTypes::MapTypes(byps_ptr< ::std::map< :
 	, int2(int2)
 	, obj1(obj1)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::map::MapTypes::serialize(BIO& ar, const BVERSION version) {
 	ar & boolean1;
 	ar & byte1;
@@ -531,7 +531,7 @@ com::wilutions::byps::test::api::prim::PrimitiveTypes::PrimitiveTypes(bool boolV
 	, value(value)
 	, temp(temp)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::prim::PrimitiveTypes::serialize(BIO& ar, const BVERSION version) {
 	ar & boolVal;
 	ar & byteVal;
@@ -645,7 +645,7 @@ com::wilutions::byps::test::api::priv::PrivateMembers::PrivateMembers(bool boolV
 	, protInt(protInt)
 	, pprotInt(pprotInt)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::priv::PrivateMembers::serialize(BIO& ar, const BVERSION version) {
 	ar & boolVal;
 	ar & byteVal;
@@ -696,7 +696,7 @@ com::wilutions::byps::test::api::refs::Node::Node(com::wilutions::byps::test::ap
 	, mapOfNodes(mapOfNodes)
 	, listOfNodes(listOfNodes)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::refs::Node::serialize(BIO& ar, const BVERSION version) {
 	ar & listOfNodes;
 	ar & mapOfNodes;
@@ -724,7 +724,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool::BRequest_RemoteArrayTypes1dim_getBool() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -760,7 +760,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte::BRequest_RemoteArrayTypes1dim_getByte() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -796,7 +796,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar::BRequest_RemoteArrayTypes1dim_getChar() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -832,7 +832,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble::BRequest_RemoteArrayTypes1dim_getDouble() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -868,7 +868,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat::BRequest_RemoteArrayTypes1dim_getFloat() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -904,7 +904,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt::BRequest_RemoteArrayTypes1dim_getInt() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -940,7 +940,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong::BRequest_RemoteArrayTypes1dim_getLong() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -976,7 +976,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject::BRequest_RemoteArrayTypes1dim_getObject() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -1012,7 +1012,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -1048,7 +1048,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort::BRequest_RemoteArrayTypes1dim_getShort() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -1084,7 +1084,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString::BRequest_RemoteArrayTypes1dim_getString() : BMethodRequest(1557084481) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {

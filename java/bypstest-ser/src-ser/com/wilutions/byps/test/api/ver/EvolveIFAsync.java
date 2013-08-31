@@ -7,16 +7,42 @@
 
 import com.wilutions.byps.*;
 
+// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:64
 public interface EvolveIFAsync extends EvolveIF, BRemote {
 
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setEvolve(Evolve obj) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public Evolve getEvolve() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getEvolve(final BAsyncResult<Evolve> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void setClient(EvolveIF partner) throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public EvolveIF getClient() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getClient(final BAsyncResult<EvolveIF> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	public void sendEvolveToClient() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_sendEvolveToClient(final BAsyncResult<Object> asyncResult) ;
 	
 	

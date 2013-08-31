@@ -15,7 +15,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ClientIF_incrementInt::BRequest_
 	: BMethodRequest(1784257353) 
 	, a(a)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ClientIF_incrementInt::serialize(BIO& ar, const BVERSION version) {
 	ar & a;
 }
@@ -58,7 +58,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ClientIF_putStreams::BRequest_Cl
 	, strm(strm)
 	, ctrl(ctrl)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ClientIF_putStreams::serialize(BIO& ar, const BVERSION version) {
 	ar & ctrl;
 	ar & strm;
@@ -100,7 +100,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ClientIF_sendChat::BRequest_Clie
 	: BMethodRequest(1784257353) 
 	, cs(cs)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ClientIF_sendChat::serialize(BIO& ar, const BVERSION version) {
 	ar & cs;
 }
@@ -142,7 +142,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_callClientIncrementInt:
 	: BMethodRequest(1313562065) 
 	, v(v)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_callClientIncrementInt::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -184,7 +184,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_callClientParallel::BRe
 	: BMethodRequest(1313562065) 
 	, v(v)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_callClientParallel::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -226,7 +226,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClient::BRequest_Ser
 	: BMethodRequest(1313562065) 
 	, id(id)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClient::serialize(BIO& ar, const BVERSION version) {
 	ar & id;
 }
@@ -263,7 +263,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClientIds::BRequest_ServerIF_getClientIds() : BMethodRequest(1313562065) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClientIds::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClientIds::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -299,7 +299,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getPartner::BRequest_ServerIF_getPartner() : BMethodRequest(1313562065) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getPartner::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getPartner::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -335,7 +335,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::BRequest_ServerIF_getStreamsFromClient() : BMethodRequest(1313562065) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -375,7 +375,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_putStreamsOnClient::BRe
 	: BMethodRequest(1313562065) 
 	, streams(streams)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_putStreamsOnClient::serialize(BIO& ar, const BVERSION version) {
 	ar & streams;
 }
@@ -417,7 +417,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::
 	: BMethodRequest(1313562065) 
 	, id(id)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::serialize(BIO& ar, const BVERSION version) {
 	ar & id;
 }
@@ -458,7 +458,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::BRequest_Se
 	: BMethodRequest(1313562065) 
 	, client(client)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::serialize(BIO& ar, const BVERSION version) {
 	ar & client;
 }
@@ -502,7 +502,7 @@ com::wilutions::byps::test::api::srvr::ChatStructure::ChatStructure(::std::wstri
 	, sentAt(sentAt)
 	, receivedAt(receivedAt)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::srvr::ChatStructure::serialize(BIO& ar, const BVERSION version) {
 	ar & msg;
 	ar & receivedAt;
@@ -536,7 +536,7 @@ com::wilutions::byps::test::api::strm::Stream1::Stream1(PContentStream is1, ::st
 	, listStream(listStream)
 	, mapStream(mapStream)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::strm::Stream1::serialize(BIO& ar, const BVERSION version) {
 	ar & contentType;
 	ar & arrStream;
@@ -565,7 +565,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::BRequest_EvolveIF_getClient() : BMethodRequest(2078696281) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -601,7 +601,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::BRequest_EvolveIF_getEvolve() : BMethodRequest(2078696281) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -637,7 +637,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::BRequest_EvolveIF_sendEvolveToClient() : BMethodRequest(2078696281) {
 }
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -677,7 +677,7 @@ com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::BRequest_Evol
 	: BMethodRequest(2078696281) 
 	, partner(partner)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::serialize(BIO& ar, const BVERSION version) {
 	ar & partner;
 }
@@ -718,7 +718,7 @@ com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_Evol
 	: BMethodRequest(2078696281) 
 	, obj(obj)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::serialize(BIO& ar, const BVERSION version) {
 	ar & obj;
 }
@@ -847,7 +847,7 @@ com::wilutions::byps::test::api::ver::Evolve::Evolve(bool bool1, int8_t byte1, w
 	, set3(set3)
 	, map3(map3)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::ver::Evolve::serialize(BIO& ar, const BVERSION version) {
 	ar & bool1;
 	ar & byte1;
@@ -949,7 +949,7 @@ com::wilutions::byps::test::api::ver::Evolve2::Evolve2() {
 com::wilutions::byps::test::api::ver::Evolve2::Evolve2(int32_t n1)
 	: n1(n1)
 	{}
-// generated at class com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
 void com::wilutions::byps::test::api::ver::Evolve2::serialize(BIO& ar, const BVERSION version) {
 	ar & n1;
 }

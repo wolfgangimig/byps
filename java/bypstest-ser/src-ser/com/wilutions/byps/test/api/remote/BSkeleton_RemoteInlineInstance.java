@@ -16,11 +16,13 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteInlineInstanceAsync {
 	
-	public final static long serialVersionUID = 1206670536L;
+	public final static long serialVersionUID = 0L;
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setActor(com.wilutions.byps.test.api.inl.Actor act) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setActor(com.wilutions.byps.test.api.inl.Actor act, final BAsyncResult<Object> asyncResult) {
 		try {
 			setActor(act);
@@ -30,9 +32,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.inl.Actor getActor() throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getActor(final BAsyncResult<com.wilutions.byps.test.api.inl.Actor> asyncResult) {
 		try {
 			com.wilutions.byps.test.api.inl.Actor ret = getActor();
@@ -42,9 +46,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPoint2DArray1dim(pointArray);
@@ -54,9 +60,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.inl.Point2D[] getPoint2DArray1dim() throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPoint2DArray1dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
 		try {
 			com.wilutions.byps.test.api.inl.Point2D[] ret = getPoint2DArray1dim();
@@ -66,9 +74,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[][][][] pointArray) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[][][][] pointArray, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPoint2DArray4dim(pointArray);
@@ -78,9 +88,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.inl.Point2D[][][][] getPoint2DArray4dim() throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPoint2DArray4dim(final BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[][][][]> asyncResult) {
 		try {
 			com.wilutions.byps.test.api.inl.Point2D[][][][] ret = getPoint2DArray4dim();
@@ -90,9 +102,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPoint2DList(java.util.List<com.wilutions.byps.test.api.inl.Point2D> pointList) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPoint2DList(java.util.List<com.wilutions.byps.test.api.inl.Point2D> pointList, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPoint2DList(pointList);
@@ -102,9 +116,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.List<com.wilutions.byps.test.api.inl.Point2D> getPoint2DList() throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPoint2DList(final BAsyncResult<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
 		try {
 			java.util.List<com.wilutions.byps.test.api.inl.Point2D> ret = getPoint2DList();
@@ -114,9 +130,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPoint2DListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> pointListList) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPoint2DListList(java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> pointListList, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPoint2DListList(pointListList);
@@ -126,9 +144,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> getPoint2DListList() throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPoint2DListList(final BAsyncResult<java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>> asyncResult) {
 		try {
 			java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> ret = getPoint2DListList();
@@ -138,9 +158,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPoint2DMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap) throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_setPoint2DMap(java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPoint2DMap(pointMap);
@@ -150,9 +172,11 @@ public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteI
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> getPoint2DMap() throws RemoteException {
-		throw new BException(BException.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
 	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
 	public void async_getPoint2DMap(final BAsyncResult<java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
 		try {
 			java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> ret = getPoint2DMap();
