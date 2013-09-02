@@ -199,7 +199,7 @@ public class BDoclet extends Doclet {
 		//"-gen.changedmembers",
 	};
 	
-	private static String[] byps_ix_ser = new String[] {
+	private static String[] byps_ix_serAll = new String[] {
 		
 		"-genj.dir-ser", "d:\\java\\workspace_git\\Eloix-byps\\src",
 //		"-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
@@ -234,13 +234,45 @@ public class BDoclet extends Doclet {
 	};
 	
 
+  private static String[] byps_ix_ser_eventbus = new String[] {
+    
+    "-genj.dir-ser", "d:\\java\\workspace_git\\Eloix-byps\\src",
+    
+//    "-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
+//    "-genj.dir-ser-json", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-json",
+//
+//    "-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps_ix_ser\\src-ser",
+//    "-gencs.upfirst",     "false",
+//    
+//    "-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\api",
+//    "-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl",
+//    //"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
+//    "-gencpp.max-fsize", "50000",
+
+    "-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\json-api\\ixbyps.js",
+    
+//    "-verbose",
+    
+    "-ensureUIDs",
+    "-onlyBRemotes",
+    "-allserials",
+    
+    "--packages",
+    "de.elo.ix.client",
+    
+    "--sourcepath", 
+    "d:\\git\\ELOindexserver\\Eloix-api\\src-eventbus;d:\\git\\ELOindexserver\\Eloix-api\\src;d:\\git\\ELOindexserver\\Eloix-api\\src-gen",
+    
+    "--classpath",
+    "d:\\java\\lib\\EloixClient\\EloixClient.jar;d:\\java\\lib\\EloixClient\\javautils.jar"
+  };
 	
 	public static void main(String[] args) {
 
 		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
-			args = bypstest_ser;
+			args = byps_ix_ser_eventbus;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();
@@ -288,14 +320,22 @@ public class BDoclet extends Doclet {
 					defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");
 					argIdx++;
 				}
-				else if (arg.equals("-allserials")) {
-					convertOptions |= BConvert.OPT_ALL_SERIALS;
-					argIdx++;
-				}
-				else if (arg.equals("-allremotes")) {
-					convertOptions |= BConvert.OPT_ALL_REMOTES;
-					argIdx++;
-				}
+        else if (arg.equalsIgnoreCase("-allserials")) {
+          convertOptions |= BConvert.OPT_ALL_SERIALS;
+          argIdx++;
+        }
+        else if (arg.equalsIgnoreCase("-allremotes")) {
+          convertOptions |= BConvert.OPT_ALL_REMOTES;
+          argIdx++;
+        }
+        else if (arg.equalsIgnoreCase("-onlyBRemotes")) {
+          convertOptions |= BConvert.OPT_ONLY_BREMOTES;
+          argIdx++;
+        }
+        else if (arg.equalsIgnoreCase("-onlyBSerials")) {
+          convertOptions |= BConvert.OPT_ONLY_BSERIALS;
+          argIdx++;
+        }
 				else if (arg.startsWith("--")) {
 					boolean isSourcePath = arg.startsWith("--sourcepath");
 					boolean isClassPath = arg.startsWith("--classpath");

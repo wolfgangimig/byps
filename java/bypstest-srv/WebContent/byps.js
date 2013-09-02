@@ -410,7 +410,12 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 		
 		this.openRequestsToCancel[requestId] = xhr;
 		
-		xhr.open('POST', me.rurl, !!asyncResult);
+		var url = me.rurl;
+		url += (url.indexOf("?") < 0) ? "?" : "&";
+		url += "__ts=";
+		url += new Date().getTime();
+		
+		xhr.open('POST', url, !!asyncResult);
 		
 		if (timeoutMillis > 0) {
 			xhr.timeout = timeoutMillis;

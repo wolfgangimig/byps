@@ -2,7 +2,6 @@ package com.wilutions.byps.gen.doclet;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
-import java.rmi.Remote;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -43,6 +42,17 @@ public class BConvert {
 
 	public static final int OPT_ALL_SERIALS = 0x1;
 	public static final int OPT_ALL_REMOTES = 0x2;
+	
+	/**
+	 * Process only classes tagged with BSerializable 
+	 */
+  public static final int OPT_ONLY_BSERIALS = 0x4;
+  
+  /**
+   * Process only interfaces tagged with BRemote
+   */
+  public static final int OPT_ONLY_BREMOTES = 0x8;
+  
 	
 	public final static HashSet<String> FORBIDDEN_FIELD_NAMES = new HashSet<String>(
 			Arrays.asList("_typeId"));
@@ -112,7 +122,11 @@ public class BConvert {
 				continue;
 			}
 			
-			log.warn("Skip class " + c.qualifiedName() + ", neither Remote nor Serializable. Either implement com.wilutions.byps.BRemote or java.io.Serializable. Or tag with @BRemote or @BSerializable");
+			if ((options & (OPT_ONLY_BREMOTES|OPT_ONLY_BSERIALS)) == 0) {
+			  log.warn("Skip class " + c.qualifiedName() + 
+			      ", neither Remote nor Serializable. Either implement com.wilutions.byps.BRemote or java.io.Serializable. "
+			      + "Or tag with @BRemote or @BSerializable");
+			}
 		}
 		
 		log.info("Assign type IDs -------------------");
@@ -124,8 +138,12 @@ public class BConvert {
 	}
 
 	private boolean isRemote(ClassDoc c) {
+	  
+	  if ((options & OPT_ONLY_BREMOTES) != 0) {
+	    return c.tags("@BRemote").length != 0;
+	  }
 		
-		boolean doesImplementBRemote = doesImplement(c, com.wilutions.byps.Remote.class.getName(), "BRemote");
+		boolean doesImplementBRemote = doesImplement(c, com.wilutions.byps.Remote.class.getName());
 		log.debug("does implement BRemote: " + doesImplementBRemote);
 		if (doesImplementBRemote) return doesImplementBRemote;
 		
@@ -136,7 +154,11 @@ public class BConvert {
 	
 	private boolean isSerializable(ClassDoc c) {
 		
-		boolean doesImplementSerializable = doesImplement(c, Serializable.class.getName(), "Serializable");
+    if ((options & OPT_ONLY_BSERIALS) != 0) {
+      return c.tags("@BSerializable").length != 0;
+    }
+
+    boolean doesImplementSerializable = doesImplement(c, Serializable.class.getName());
 		log.debug("does implement Serializable: " + doesImplementSerializable);
 		if (doesImplementSerializable) return true;
 
@@ -259,21 +281,21 @@ public class BConvert {
 		log.debug(")makeSerialInfoForCollectionType");
 	}
 	
-	private boolean doesImplement(ClassDoc cls, String interfaceQname, String tagName) {
+	private boolean doesImplement(ClassDoc cls, String interfaceQname) {
 		log.debug("doesImplement(" + cls + ","+ interfaceQname);
 		boolean ret = cls.qualifiedTypeName().equals(interfaceQname);
 		if (!ret) {
 			ClassDoc[] interfaces = cls.interfaces();
 			if (interfaces != null) {
 				for (ClassDoc ifc : interfaces) {
-					ret = doesImplement(ifc, interfaceQname, tagName);
+					ret = doesImplement(ifc, interfaceQname);
 					if (ret) break;
 				}
 			}
 			if (!ret) {
 				ClassDoc superclass = cls.superclass();
 				if (superclass != null) {
-					ret = doesImplement(superclass, interfaceQname, tagName);
+					ret = doesImplement(superclass, interfaceQname);
 				}
 			}
 		}

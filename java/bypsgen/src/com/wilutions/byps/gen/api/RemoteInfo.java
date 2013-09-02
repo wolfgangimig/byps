@@ -59,6 +59,7 @@ public class RemoteInfo extends TypeInfo {
 	
   public RemoteInfo getRemoteAsync() throws GeneratorException {
     RemoteInfo rinfo = new RemoteInfo(name + ASYNC_SUFFIX, comments, qname + ASYNC_SUFFIX, methods, null, null);
+    rinfo.typeId = this.typeId;
     return rinfo;
   }
 
@@ -66,6 +67,7 @@ public class RemoteInfo extends TypeInfo {
     RemoteInfo rinfo = null;
     if (authParamClassName != null) {
       rinfo = new RemoteInfo(name + AUTH_SUFFIX, comments, qname + AUTH_SUFFIX, methods, authParamClassName, authBase);
+      rinfo.typeId = this.typeId;
     }
     return rinfo;
   }

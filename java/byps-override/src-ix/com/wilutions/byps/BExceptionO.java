@@ -78,27 +78,16 @@ public class BExceptionO {
    */
   public static final int UNSUPPORTED_METHOD = 17;
   
-  public final static String CODE_PREFIX = "ELOIX";
+  /**
+   * This code can be used, if authentication is required for the method.
+   */
+  public static final int AUTHENTICATION_REQUIRED = 18;
+  
+  public final static String CODE_PREFIX = "BYPS";
 
   public final static String formatMessage(int code, String msg, String details, Throwable cause) {
-    StringBuilder sbuf = new StringBuilder();
-    
-    String ticket = "";
-    if (msg != null) {
-      int p = msg.indexOf("[TICKET:");
-      if (p >= 0) {
-        int e = msg.indexOf("]", p + 8);
-        if (e >= 0) {
-          ticket = msg.substring(p, e+1);
-          msg = msg.substring(0, p) + msg.substring(e+1);
-        }
-      }
-    }
-    
-    sbuf.append(ticket);
-    sbuf.append("[").append(CODE_PREFIX).append(":").append(code).append("]");
-    if (msg != null) sbuf.append(msg);
-    if (details != null) sbuf.append(details);
-    return sbuf.toString();
+    return "[" + CODE_PREFIX +":" + code + "]" +
+        "[" + msg + "]" +
+        "[" + details + "]";
   }
 }

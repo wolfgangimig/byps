@@ -139,6 +139,7 @@ class GenRemoteStub {
 
 	private void printSerialVersionUID() {
 		//log.debug(GenApiClass.class.getName(), "printSerialVersionUID");
+	  pr.checkpoint();
 		pr.println("public final static long serialVersionUID = " + rinfo.typeId + "L;");
 		//log.debug(GenApiClass.class.getName(), "printSerialVersionUID");
 	}
