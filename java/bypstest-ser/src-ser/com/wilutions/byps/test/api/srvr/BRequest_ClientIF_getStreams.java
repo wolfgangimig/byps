@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ClientIF_getStreams implements BMethodRequest, Serializable {
+public final class BRequest_ClientIF_getStreams extends BMethodRequest implements Serializable {
 
 	public int ctrl;
 	

@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_setPoint2DListList implements BMethodRequest, Serializable {
+public final class BRequest_RemoteInlineInstance_setPoint2DListList extends BMethodRequest implements Serializable {
 
 	public java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> pointListList;
 	

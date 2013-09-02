@@ -92,6 +92,36 @@ public abstract class BClient {
 		if (log.isDebugEnabled()) log.debug(")negotiateTransportProtocol");
 	}
 	
+	/**
+	 * Assign authentication functionality.
+	 * This function should be called immediately after the BClient object was created 
+	 * and before the client is started by {@link BClient#start(BAsyncResult)}.
+	 * @param authentication
+	 */
+	public <T extends BClient> void setAuthentication(BAuthentication<T> authentication) {
+	  transport.authentication = new ClientAuthentication<T>(authentication);
+	}
+	
+	/**
+	 * Wrapper class to supply BClient object in authentication.
+	 */
+	private class ClientAuthentication<T extends BClient> implements BAuthentication<BClient> {
+	
+	  public BAuthentication<T> innerAuth;
+	  
+	  public ClientAuthentication(BAuthentication<T> innerAuth) {
+	    this.innerAuth = innerAuth;
+	  }
+
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void authenticate(BClient client, BAsyncResult<Object> asyncResult) {
+      innerAuth.authenticate((T)BClient.this, asyncResult);
+    }
+
+	}
+	
   private final Log log = LogFactory.getLog(BClient.class);
 
 }

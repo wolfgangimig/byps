@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes1dim_setInt implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes1dim_setInt extends BMethodRequest implements Serializable {
 
 	public int[] v;
 	

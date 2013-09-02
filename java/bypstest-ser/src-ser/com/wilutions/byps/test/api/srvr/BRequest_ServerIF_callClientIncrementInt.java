@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ServerIF_callClientIncrementInt implements BMethodRequest, Serializable {
+public final class BRequest_ServerIF_callClientIncrementInt extends BMethodRequest implements Serializable {
 
 	public int v;
 	

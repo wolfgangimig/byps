@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteStreams_throwLastException implements BMethodRequest, Serializable {
+public final class BRequest_RemoteStreams_throwLastException extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 2047657918L;

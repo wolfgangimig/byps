@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_EvolveIF_setEvolve implements BMethodRequest, Serializable {
+public final class BRequest_EvolveIF_setEvolve extends BMethodRequest implements Serializable {
 
 	public Evolve obj;
 	

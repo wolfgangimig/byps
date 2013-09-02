@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteSetTypes_setBoolean1 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteSetTypes_setBoolean1 extends BMethodRequest implements Serializable {
 
 	public java.util.Set<java.lang.Boolean> boolean1;
 	

@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes4dim_setFloat implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes4dim_setFloat extends BMethodRequest implements Serializable {
 
 	public float[][][][] v;
 	

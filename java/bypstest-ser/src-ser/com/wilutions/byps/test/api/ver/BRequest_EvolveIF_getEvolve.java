@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_EvolveIF_getEvolve implements BMethodRequest, Serializable {
+public final class BRequest_EvolveIF_getEvolve extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 32041374L;

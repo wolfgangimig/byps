@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteReferences_setNode implements BMethodRequest, Serializable {
+public final class BRequest_RemoteReferences_setNode extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.refs.Node v;
 	

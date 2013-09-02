@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_getPoint2DArray1dim implements BMethodRequest, Serializable {
+public final class BRequest_RemoteInlineInstance_getPoint2DArray1dim extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 1011970102L;

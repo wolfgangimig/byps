@@ -14,8 +14,8 @@ public class HTransportFactoryServer implements BTransportFactory {
 	public final BTransport transportClientR;
 	
 	public HTransportFactoryServer(BApiDescriptor apiDesc, HWireServer wireServer, HWireClientR wireClientR, BServerRegistry serverRegistry) {
-		transportServer = new BTransport(apiDesc, wireServer, null, serverRegistry);
-		transportClientR = new BTransport(apiDesc, wireClientR, null, null);
+		transportServer = new BTransport(apiDesc, wireServer, serverRegistry);
+		transportClientR = new BTransport(apiDesc, wireClientR, null);
 	}
 
 	@Override

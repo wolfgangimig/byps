@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteStreams_setImages implements BMethodRequest, Serializable {
+public final class BRequest_RemoteStreams_setImages extends BMethodRequest implements Serializable {
 
 	public java.util.Map<java.lang.Integer,java.io.InputStream> istrms;
 	public int doNotReadStreamAtKey;

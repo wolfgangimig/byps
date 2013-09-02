@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemotePrimitiveTypes_setFloat implements BMethodRequest, Serializable {
+public final class BRequest_RemotePrimitiveTypes_setFloat extends BMethodRequest implements Serializable {
 
 	public float v;
 	

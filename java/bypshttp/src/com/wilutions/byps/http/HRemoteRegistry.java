@@ -68,7 +68,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 			if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer...");
 			
 			BWire wire = new HWireClient(url, 0, 120, null, tpool);
-			BTransport transport = new BTransport(getApiDescriptor(), wire, null, null);
+			BTransport transport = new BTransport(getApiDescriptor(), wire, null);
 			client = createForwardClientToOtherServer(transport);
 			
 			BSyncResult<BClient> syncResult = new BSyncResult<BClient>();

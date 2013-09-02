@@ -1,11 +1,12 @@
 package com.wilutions.byps;
 
-import java.io.Serializable;
 
 
-public interface BMethodRequest extends Serializable {
+public abstract class BMethodRequest {
 	
-	public int getRemoteId();
+	public abstract int getRemoteId();
+	
+	public void setSession(Object sess) {}
 	
 	/**
 	 * 
@@ -13,5 +14,5 @@ public interface BMethodRequest extends Serializable {
 	 * @param asyncResult a BAsyncResult of BMethodResult
 	 * @throws Throwable
 	 */
-	public void execute(BRemote target, BAsyncResult<Object> asyncResult) throws Throwable;
+	public abstract void execute(BRemote target, BAsyncResult<Object> asyncResult) throws Throwable;
 }

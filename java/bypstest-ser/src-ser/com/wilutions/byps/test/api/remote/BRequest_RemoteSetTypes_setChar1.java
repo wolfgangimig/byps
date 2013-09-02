@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteSetTypes_setChar1 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteSetTypes_setChar1 extends BMethodRequest implements Serializable {
 
 	public java.util.TreeSet<java.lang.Character> char1;
 	

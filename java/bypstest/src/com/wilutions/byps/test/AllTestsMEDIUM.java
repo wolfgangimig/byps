@@ -31,6 +31,7 @@ import com.wilutions.byps.BProtocolS;
 	TestRemoteStreams.class,
 	TestRemoteServerR.class,
 	TestRemoteDifferentVersions.class,
+	TestRemoteWithAuthentication.class
 	})
 public class AllTestsMEDIUM {
 	

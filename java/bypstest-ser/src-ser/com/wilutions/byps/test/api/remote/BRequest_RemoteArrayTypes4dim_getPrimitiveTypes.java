@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 1650564320L;

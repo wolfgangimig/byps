@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ServerIF_putStreamsOnClient implements BMethodRequest, Serializable {
+public final class BRequest_ServerIF_putStreamsOnClient extends BMethodRequest implements Serializable {
 
 	public java.util.List<java.io.InputStream> streams;
 	

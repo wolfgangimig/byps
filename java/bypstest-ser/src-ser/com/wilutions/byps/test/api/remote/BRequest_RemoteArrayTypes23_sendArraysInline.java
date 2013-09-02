@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes23_sendArraysInline implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes23_sendArraysInline extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.inl.Point2D[][] arr2;
 	public com.wilutions.byps.test.api.inl.Point2D[][][] arr3;

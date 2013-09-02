@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes4dim_setShort implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes4dim_setShort extends BMethodRequest implements Serializable {
 
 	public short[][][][] v;
 	

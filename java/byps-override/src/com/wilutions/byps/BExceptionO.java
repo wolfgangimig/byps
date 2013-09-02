@@ -78,6 +78,11 @@ public class BExceptionO {
    */
   public static final int UNSUPPORTED_METHOD = 17;
   
+  /**
+   * This code can be used, if authentication is required for the method.
+   */
+  public static final int AUTHENTICATION_REQUIRED = 18;
+  
   public final static String CODE_PREFIX = "BYPS";
 
   public final static String formatMessage(int code, String msg, String details, Throwable cause) {

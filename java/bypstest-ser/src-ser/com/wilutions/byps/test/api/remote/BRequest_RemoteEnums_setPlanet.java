@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteEnums_setPlanet implements BMethodRequest, Serializable {
+public final class BRequest_RemoteEnums_setPlanet extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.enu.EnumPlanets planet;
 	

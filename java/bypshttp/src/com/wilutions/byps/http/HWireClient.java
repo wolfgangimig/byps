@@ -96,7 +96,6 @@ public class HWireClient extends BWire {
 		  cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 		}
 		setSessionContext(cookieManager);
-		
 	}
 	
 	protected class AsyncResultAfterAllRequests implements BAsyncResult<BMessage> {
@@ -435,8 +434,6 @@ public class HWireClient extends BWire {
 		}
 	}
 
-
-	
 	public void internalSend(RequestToCancel request) {
 		if (log.isDebugEnabled()) log.debug("internalSend(" + request);
 		HttpURLConnection conn = null;
@@ -463,7 +460,17 @@ public class HWireClient extends BWire {
 			returnException = null;
 		
 			try {
-				final URL url = new URL(surl);
+			  String destUrl = surl;
+			  
+			  if (isNegotiate) {
+			    int p = destUrl.lastIndexOf("/");
+			    if (p >= 0) {
+			      destUrl = destUrl.substring(0, p);
+			      destUrl += getServletPathForNegotiationAndAuthentication();
+			    }
+			  }
+			  
+				final URL url = new URL(destUrl);
 				if (log.isDebugEnabled()) log.debug("open connection, url=" + url);
 				
 				conn = (HttpURLConnection)url.openConnection();
@@ -1147,5 +1154,27 @@ public class HWireClient extends BWire {
 		return testAdapter;
 	}
 
+	/**
+	 * Gets the servlet path for negotiation and authentication.
+	 * A request for HTTP authentication should be sent to a different sub directory of the web application.
+	 * E.g. while http://server/app/byps is the URL for BYPS communication, authentication requests are sent to 
+	 * http://server/app/bypsauth/auth. The reason for this is that some browsers initiate the authentication
+	 * handshake in each request if the first one has had to be authenticated.
+	 * This function returns [servlet-name]auth/auth by default, whereby [servlet-name] is the part of the
+	 * URL between the last slash and the first question mark (if available). E.g. for URL http://server/app/byps
+	 * the [servlet-name] is byps and the function returns /bypsauth/byps.
+	 * @return servlet path, e.g. /bypsauth/auth
+	 */
+	public String getServletPathForNegotiationAndAuthentication() {
+	  String authUrl = surl;
+	  int p = authUrl.lastIndexOf('/');
+	  if (p >= 0) {
+	    int e = authUrl.indexOf('?', p);
+	    if (e < 0) e = authUrl.length();
+	    authUrl = authUrl.substring(p, e);
+	    authUrl += "auth/auth";
+	  }
+	  return authUrl;
+	}
 
 }

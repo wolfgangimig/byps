@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteConstants_compare_AllTypesC implements BMethodRequest, Serializable {
+public final class BRequest_RemoteConstants_compare_AllTypesC extends BMethodRequest implements Serializable {
 
 	public boolean bool1s;
 	public boolean bool2s;

@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteSetTypes_setInt2 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteSetTypes_setInt2 extends BMethodRequest implements Serializable {
 
 	public java.util.Set<int[]> int2;
 	

@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteSetTypes_setShort1 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteSetTypes_setShort1 extends BMethodRequest implements Serializable {
 
 	public java.util.Set<java.lang.Short> short1;
 	

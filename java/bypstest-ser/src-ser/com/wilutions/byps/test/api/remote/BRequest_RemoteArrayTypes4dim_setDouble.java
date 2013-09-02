@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes4dim_setDouble implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes4dim_setDouble extends BMethodRequest implements Serializable {
 
 	public double[][][][] v;
 	

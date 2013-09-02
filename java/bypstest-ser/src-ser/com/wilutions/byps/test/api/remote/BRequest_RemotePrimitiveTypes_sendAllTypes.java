@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemotePrimitiveTypes_sendAllTypes implements BMethodRequest, Serializable {
+public final class BRequest_RemotePrimitiveTypes_sendAllTypes extends BMethodRequest implements Serializable {
 
 	public boolean b;
 	public char c;

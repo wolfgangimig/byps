@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteEnums_getPlanet implements BMethodRequest, Serializable {
+public final class BRequest_RemoteEnums_getPlanet extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 627010462L;

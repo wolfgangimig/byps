@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setByte2 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteMapTypes_setByte2 extends BMethodRequest implements Serializable {
 
 	public java.util.Map<java.lang.Integer,byte[]> byte2;
 	

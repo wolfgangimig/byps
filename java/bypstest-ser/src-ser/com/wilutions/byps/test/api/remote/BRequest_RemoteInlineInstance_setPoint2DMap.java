@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_setPoint2DMap implements BMethodRequest, Serializable {
+public final class BRequest_RemoteInlineInstance_setPoint2DMap extends BMethodRequest implements Serializable {
 
 	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap;
 	

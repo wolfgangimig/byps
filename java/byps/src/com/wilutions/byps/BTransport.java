@@ -12,18 +12,19 @@ public class BTransport {
 	
   public final BWire wire;
   
-  public final BAuthentication authentication; 
-  
 	public final BServerRegistry serverRegistry;
 	
 	private BTargetId targetId;
 	
 	private BProtocol protocol;
 
-	public BTransport(BApiDescriptor apiDesc, BWire wire, BAuthentication authentication, BServerRegistry serverRegistry) {
+  protected BAuthentication<BClient> authentication;
+  
+  protected volatile Object session;
+  	
+	public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
 		this.apiDesc = apiDesc;
 		this.wire = wire;
-		this.authentication = authentication;
 		this.targetId = new BTargetId();
 		this.serverRegistry = serverRegistry;
 	}
@@ -71,16 +72,15 @@ public class BTransport {
 	}
 
   public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
-    sendMaybeRelogin(0, obj, asyncResult);
-  }
-	 
-	public <T> void sendMaybeRelogin(final int reloginCount, final Object obj, final BAsyncResult<T> asyncResult) {
-		if (log.isDebugEnabled()) log.debug("sendMaybeRelogin(obj=" + obj + ", asyncResult=" + asyncResult);
+		if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
 		try {
+		  
+		  final BMethodRequest methodRequest = (BMethodRequest)obj;
+		  methodRequest.setSession(session);
 			
       if (log.isDebugEnabled()) log.debug("store object");
 			final BOutput bout = getOutput();
-			bout.store(obj);
+			bout.store(methodRequest);
 			
 			final BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
 	
@@ -91,36 +91,7 @@ public class BTransport {
 					try {
 						
 						if (e != null) {
-						  
-						  // Session expired?
-						  boolean rlogin = authentication != null && authentication.isReloginException(reloginCount, e);
-		          if (log.isDebugEnabled()) log.debug("isReloginException=" + rlogin);
-						  if (rlogin) {
-						    
-						    // Authenticate and send the message again.
-						    
-						    final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
-						      public void setAsyncResult(Boolean succ, Throwable e2) {
-		                if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
-						        if (e2 != null) {
-						          asyncResult.setAsyncResult(null, e2);
-						        }
-						        else {
-						          // Send again
-						          BTransport.this.sendMaybeRelogin(reloginCount+1, obj, asyncResult);
-						        }
-						      };
-						    };
-						    
-						    // Negotiate, authenticate
-			          if (log.isDebugEnabled()) log.debug("re-login");
-						    negotiateProtocolClient(loginResult);
-						    
-						  }
-						  else {
-		            asyncResult.setAsyncResult(null, e);
-						  }
-						  
+		          asyncResult.setAsyncResult(null, e);
 						}
 						else {
 							final BInput bin = getInput(msgRecv.header, msgRecv.buf);
@@ -131,8 +102,42 @@ public class BTransport {
 						}
 						
 					} catch (Throwable ex) {
-						if (log.isDebugEnabled()) log.debug("Received exception.", e);
-						asyncResult.setAsyncResult(null, ex);
+						if (log.isDebugEnabled()) log.debug("Received exception.", ex);
+						
+            // Session expired?
+            boolean rlogin = isReloginException(ex);
+            if (log.isDebugEnabled()) log.debug("isReloginException=" + rlogin);
+            if (rlogin) {
+              
+              // Authenticate and send the message again.
+              
+              if (log.isDebugEnabled()) log.debug("re-login");
+              try {
+                final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
+                  public void setAsyncResult(Boolean succ, Throwable e2) {
+                    if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
+                    if (e2 != null) {
+                      asyncResult.setAsyncResult(null, e2);
+                    }
+                    else {
+                      // Send again
+                      BTransport.this.send(methodRequest, asyncResult);
+                    }
+                  };
+                };
+                
+                negotiateProtocolClient(loginResult);
+               
+              }
+              catch (Throwable ex2) {
+                asyncResult.setAsyncResult(null, ex2);
+              }
+              
+            }						
+            else {
+              asyncResult.setAsyncResult(null, ex);
+            }
+            
 					}
 					if (log.isDebugEnabled()) log.debug(")setAsyncResult");
 				}
@@ -148,7 +153,7 @@ public class BTransport {
 		  asyncResult.setAsyncResult(null, e);
 		}
 		
-		if (log.isDebugEnabled()) log.debug(")sendMaybeRelogin");
+		if (log.isDebugEnabled()) log.debug(")send");
 	}
 
 	public void recv(BServer server, BMessage msg, final BAsyncResult<BMessage> asyncResult) throws Throwable {
@@ -246,7 +251,7 @@ public class BTransport {
 
 		BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
 
-			@Override
+      @Override
 			public void setAsyncResult(BMessage msg, Throwable e) {
 				try {
 					if (e == null) {
@@ -257,25 +262,32 @@ public class BTransport {
 						}
 						
             if (authentication != null) {
-  						final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
-  						  public void setAsyncResult(Boolean result, Throwable exception) {
-  	              asyncResult.setAsyncResult(true, exception);
+              
+  						final BAsyncResult<Object> loginResult = new BAsyncResult<Object>() {
+  						  
+  						  public void setAsyncResult(Object session, Throwable exception) {
+  						    
+  						    // Store the session object.
+  						    // It is assigned to each BMethodRequest in send()
+  						    BTransport.this.session = session;
+  						    
+  	              asyncResult.setAsyncResult(Boolean.TRUE, exception);
   						  };
   						};
   
-  						authentication.authenticate(loginResult);
+  						authentication.authenticate(null, loginResult);
             }
             else {
-              asyncResult.setAsyncResult(false, e);
+              asyncResult.setAsyncResult(Boolean.TRUE, e);
             }
             
 					}
 					else {
-					  asyncResult.setAsyncResult(false, e);
+					  asyncResult.setAsyncResult(Boolean.FALSE, e);
 					}
 				}
 				catch (Throwable ex) {
-					asyncResult.setAsyncResult(null, ex);
+					asyncResult.setAsyncResult(Boolean.FALSE, ex);
 				}
 			}
 
@@ -349,6 +361,28 @@ public class BTransport {
 		return "[" + targetId + "]";
 	}
 	
+  public boolean isReloginException(Throwable ex) {
+    log.info("isReloginException(ex=" + ex);
+    
+    boolean ret = false;
+    
+    // Check exception
+    if (ex instanceof BException) {
+      BException bex = (BException)ex;
+      ret = (bex.code == BExceptionO.AUTHENTICATION_REQUIRED);
+      log.info("is relogin exception=" + ret);
+      if (!ret) {
+        // The negotiated Tomcat session lives for 10 seconds. 
+        // If we are slow in debugging and the session expires, 
+        // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
+        ret = (bex.code == BExceptionO.IOERROR) && bex.toString().indexOf("403") >= 0; 
+      }
+    }
+
+    log.info(")isReloginException=" + ret);
+    return ret;
+  }
+
 	private final Log log = LogFactory.getLog(BTransport.class);
-	
+
 }

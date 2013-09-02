@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setBoolean1 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteMapTypes_setBoolean1 extends BMethodRequest implements Serializable {
 
 	public java.util.Map<java.lang.String,java.lang.Boolean> boolean1;
 	

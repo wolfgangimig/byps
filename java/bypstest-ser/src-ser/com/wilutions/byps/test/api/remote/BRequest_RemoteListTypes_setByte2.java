@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteListTypes_setByte2 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteListTypes_setByte2 extends BMethodRequest implements Serializable {
 
 	public java.util.List<byte[]> byte2;
 	

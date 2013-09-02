@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes1dim_getShort implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes1dim_getShort extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 510386133L;

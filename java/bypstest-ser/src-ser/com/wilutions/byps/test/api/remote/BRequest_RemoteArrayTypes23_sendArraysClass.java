@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes23_sendArraysClass implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes23_sendArraysClass extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.prim.PrimitiveTypes[][] arr2;
 	public com.wilutions.byps.test.api.prim.PrimitiveTypes[][][] arr3;

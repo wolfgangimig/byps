@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setObj1 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteMapTypes_setObj1 extends BMethodRequest implements Serializable {
 
 	public java.util.Map<java.lang.String,java.lang.Object> obj1;
 	

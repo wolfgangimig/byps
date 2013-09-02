@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteConstants_compare_HebrewC implements BMethodRequest, Serializable {
+public final class BRequest_RemoteConstants_compare_HebrewC extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.cons.HebrewZ ALEPH;
 	public com.wilutions.byps.test.api.cons.HebrewZ BETH;

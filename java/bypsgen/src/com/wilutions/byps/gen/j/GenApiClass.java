@@ -17,6 +17,7 @@ import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
+import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -616,6 +617,28 @@ class GenApiClass {
 		pr.println("}");
 	}
 	
+	private void printSetSession() throws IOException {
+	  if (methodInfo == null) return;
+	
+	  RemoteInfo rinfo = methodInfo.remoteInfo;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+      // Supply authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) {
+        pr.checkpoint();
+        
+        pr.println("public void setSession(Object __byps__sess) {");
+        pr.beginBlock();
+        pr.print(pinfo.name).print(" = (").print(rinfo.authParamClassName).println(")__byps__sess;");
+        pr.endBlock();
+        pr.println("}");
+        pr.println();
+        
+      }
+    }
+	   
+	}
+	
 	private void generateClass() throws IOException {
 		log.debug("generate");
 
@@ -645,7 +668,7 @@ class GenApiClass {
 				mpr.print(" extends ").print(baseClass).print(" implements Serializable");
 			}
 			else if (serInfo.isRequestClass()) {
-				mpr.print(" implements BMethodRequest, Serializable");
+				mpr.print(" extends BMethodRequest implements Serializable");
 			}
 			else {
 				if (serInfo.baseInfo != null) {
@@ -686,6 +709,8 @@ class GenApiClass {
 			
 			printRemoteId();
 			pr.println();
+			
+			printSetSession();
 
 			printExecute();
 			pr.println();

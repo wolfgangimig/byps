@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ServerIF_getStreamsFromClient implements BMethodRequest, Serializable {
+public final class BRequest_ServerIF_getStreamsFromClient extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 1415283169L;

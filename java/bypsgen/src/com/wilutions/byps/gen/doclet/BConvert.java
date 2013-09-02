@@ -2,6 +2,7 @@ package com.wilutions.byps.gen.doclet;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.rmi.Remote;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -23,7 +24,6 @@ import com.sun.javadoc.Type;
 import com.sun.javadoc.WildcardType;
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BRemote;
 import com.wilutions.byps.BVersioning;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.gen.api.CommentInfo;
@@ -125,7 +125,7 @@ public class BConvert {
 
 	private boolean isRemote(ClassDoc c) {
 		
-		boolean doesImplementBRemote = doesImplement(c, BRemote.class.getName(), "BRemote");
+		boolean doesImplementBRemote = doesImplement(c, com.wilutions.byps.Remote.class.getName(), "BRemote");
 		log.debug("does implement BRemote: " + doesImplementBRemote);
 		if (doesImplementBRemote) return doesImplementBRemote;
 		

@@ -14,8 +14,8 @@ public class HTransportFactoryClient implements BTransportFactory {
 	private final BTransport transport;
 	private final int nbOfServerRConns;
 	
-	public HTransportFactoryClient(BApiDescriptor apiDesc, BWire wire, BAuthentication authentication, int nbOfServerRConns) {
-		this.transport = new BTransport(apiDesc, wire, authentication, null);
+	public HTransportFactoryClient(BApiDescriptor apiDesc, BWire wire, int nbOfServerRConns) {
+		this.transport = new BTransport(apiDesc, wire, null);
 		this.nbOfServerRConns = nbOfServerRConns;
 	}
 

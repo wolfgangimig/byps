@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteStreams_setImage implements BMethodRequest, Serializable {
+public final class BRequest_RemoteStreams_setImage extends BMethodRequest implements Serializable {
 
 	public java.io.InputStream istrm;
 	

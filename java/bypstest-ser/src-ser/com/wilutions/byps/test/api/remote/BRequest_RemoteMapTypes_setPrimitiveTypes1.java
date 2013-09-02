@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteMapTypes_setPrimitiveTypes1 implements BMethodRequest, Serializable {
+public final class BRequest_RemoteMapTypes_setPrimitiveTypes1 extends BMethodRequest implements Serializable {
 
 	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1;
 	

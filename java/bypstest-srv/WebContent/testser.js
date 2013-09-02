@@ -21,6 +21,7 @@ com.wilutions.byps.test.api.refs = com.wilutions.byps.test.api.refs || {};
 com.wilutions.byps.test.api.map = com.wilutions.byps.test.api.map || {};
 com.wilutions.byps.test.api.strm = com.wilutions.byps.test.api.strm || {};
 com.wilutions.byps.test.api.priv = com.wilutions.byps.test.api.priv || {};
+com.wilutions.byps.test.api.auth = com.wilutions.byps.test.api.auth || {};
 com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
 com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
 
@@ -85,6 +86,7 @@ com.wilutions.byps.test.api.BClient_Testser = function(transportFactory) {
 	this.remoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(this.transport);
 	this.remoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(this.transport);
 	this.remoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(this.transport);
+	this.remoteWithAuthentication = new com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication(this.transport);
 	this.clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(this.transport);
 	this.serverIF = new com.wilutions.byps.test.api.srvr.BStub_ServerIF(this.transport);
 	this.evolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(this.transport);
@@ -129,6 +131,16 @@ com.wilutions.byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4
 	this.double4 = double4 || null;
 	this.string4 = string4 || null;
 	this.primitiveTypes4 = primitiveTypes4 || null;
+};
+
+
+/**
+ * Example for a session class.
+ * @see com.wilutions.byps.test.api.remote.RemoteWithAuthentication
+*/
+com.wilutions.byps.test.api.auth.SessionInfo = function(sessionID) {
+	this._typeId = 65775978;
+	this.sessionID = sessionID || "";
 };
 
 
@@ -3742,6 +3754,149 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 };
 
 /**
+ * This class provides a skeleton implementation of the interface RemoteWithAuthentication.
+ * Use an object of this class as the prototype of your interface implementation.
+ * Either provide an asynchronous or a synchronous function in your implementation.
+ * The framework calls only the asynchronous function.
+ */
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function() {
+	
+	this._typeId = 1677934392;
+	
+	this.transport = null; // is set in BServer.addRemote
+	
+	this.toJSON = function (key) {
+		return { _typeId : 1677934392, targetId : this.transport.targetId };
+	};
+	
+	/**
+	 * Set authentication flag in MySession.
+	 * @param useAuth
+	 * @throws RemoteException
+	*/
+	this.setUseAuthentication = function(useAuth) /* returns void , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	 * Set authentication flag in MySession.
+	 * @param useAuth
+	 * @throws RemoteException
+	*/
+	this.async_setUseAuthentication = function(useAuth, __byps__asyncResult){
+		try {
+			this.setUseAuthentication(useAuth);
+			__byps__asyncResult(null, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	/**
+	 * Login.
+	 * Only user "Fritz" is allowed to login.
+	 * @param sess Session information, always null in this scenario.
+	 * @param userName
+	 * @param userPwd
+	 * @return 
+	 * @throws RemoteException
+	*/
+	this.login = function(sess, userName, userPwd) /* returns com.wilutions.byps.test.api.auth.SessionInfo , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	 * Login.
+	 * Only user "Fritz" is allowed to login.
+	 * @param sess Session information, always null in this scenario.
+	 * @param userName
+	 * @param userPwd
+	 * @return 
+	 * @throws RemoteException
+	*/
+	this.async_login = function(sess, userName, userPwd, __byps__asyncResult){
+		try {
+			var __byps__ret = this.login(sess, userName, userPwd);
+			__byps__asyncResult(__byps__ret, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	/**
+	 * Do something.
+	 * @param sess Session information. Must not be null, if user was logged in.
+	 * @param value
+	 * @return value+1
+	 * @throws RemoteException
+	*/
+	this.doit = function(sess, value) /* returns int , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	 * Do something.
+	 * @param sess Session information. Must not be null, if user was logged in.
+	 * @param value
+	 * @return value+1
+	 * @throws RemoteException
+	*/
+	this.async_doit = function(sess, value, __byps__asyncResult){
+		try {
+			var __byps__ret = this.doit(sess, value);
+			__byps__asyncResult(__byps__ret, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	/**
+	 * Logout
+	 * @param sess
+	 * @throws RemoteException
+	*/
+	this.expire = function(sess) /* returns void , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	 * Logout
+	 * @param sess
+	 * @throws RemoteException
+	*/
+	this.async_expire = function(sess, __byps__asyncResult){
+		try {
+			this.expire(sess);
+			__byps__asyncResult(null, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	/**
+	 * Set the number of login calls nessesary to login the user.
+	 * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+	 * @param count
+	 * @throws RemoteException
+	*/
+	this.setReloginCount = function(count) /* returns void , throws BException, InterruptedException*/  {
+		com.wilutions.byps.throwUNSUPPORTED("");
+	};
+	/**
+	 * Set the number of login calls nessesary to login the user.
+	 * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+	 * @param count
+	 * @throws RemoteException
+	*/
+	this.async_setReloginCount = function(count, __byps__asyncResult){
+		try {
+			this.setReloginCount(count);
+			__byps__asyncResult(null, null);
+		} catch (e) {
+			__byps__asyncResult(null, e);
+		};
+	};
+	
+	
+};
+
+/**
  * This class provides a skeleton implementation of the interface ClientIF.
  * Use an object of this class as the prototype of your interface implementation.
  * Either provide an asynchronous or a synchronous function in your implementation.
@@ -5691,6 +5846,81 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 };
 
 /**
+ * This interface is an example for using the authentication mechanism.
+ * @authparam com.wilutions.byps.test.api.auth.SessionInfo
+ * @authparam com.wilutions.byps.test.api.auth.SessionInfo
+*/
+com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
+	
+	this._typeId = 1677934392;
+	
+	this.transport = transport;
+	
+	/**
+	 * Set authentication flag in MySession.
+	 * @param useAuth
+	 * @throws RemoteException
+	*/
+	this.setUseAuthentication = function(useAuth, __byps__asyncResult) {
+		var req =  { _typeId : 1785294043, useAuth : useAuth };
+		var ret = transport.send(req, __byps__asyncResult);
+		return ret.result;
+	};
+	
+	/**
+	 * Login.
+	 * Only user "Fritz" is allowed to login.
+	 * @param sess Session information, always null in this scenario.
+	 * @param userName
+	 * @param userPwd
+	 * @return 
+	 * @throws RemoteException
+	*/
+	this.login = function(sess, userName, userPwd, __byps__asyncResult) {
+		var req =  { _typeId : 839695851, sess : sess, userName : userName, userPwd : userPwd };
+		var ret = transport.send(req, __byps__asyncResult);
+		return ret.result;
+	};
+	
+	/**
+	 * Do something.
+	 * @param sess Session information. Must not be null, if user was logged in.
+	 * @param value
+	 * @return value+1
+	 * @throws RemoteException
+	*/
+	this.doit = function(sess, value, __byps__asyncResult) {
+		var req =  { _typeId : 388793292, sess : sess, value : value };
+		var ret = transport.send(req, __byps__asyncResult);
+		return ret.result;
+	};
+	
+	/**
+	 * Logout
+	 * @param sess
+	 * @throws RemoteException
+	*/
+	this.expire = function(sess, __byps__asyncResult) {
+		var req =  { _typeId : 68943581, sess : sess };
+		var ret = transport.send(req, __byps__asyncResult);
+		return ret.result;
+	};
+	
+	/**
+	 * Set the number of login calls nessesary to login the user.
+	 * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+	 * @param count
+	 * @throws RemoteException
+	*/
+	this.setReloginCount = function(count, __byps__asyncResult) {
+		var req =  { _typeId : 20608797, count : count };
+		var ret = transport.send(req, __byps__asyncResult);
+		return ret.result;
+	};
+	
+};
+
+/**
 */
 com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
@@ -7551,6 +7781,53 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			],
 		
 		
+		// Remote Interface RemoteWithAuthentication			
+			// Method setUseAuthentication
+			1785294043 : [ // _typeId of request class
+				1677934392, // _typeId of remote interface
+				309901669, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setUseAuthentication(methodObj.useAuth, methodResult);
+				}
+			],
+			
+			// Method login
+			839695851 : [ // _typeId of request class
+				1677934392, // _typeId of remote interface
+				56089321, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_login(methodObj.sess, methodObj.userName, methodObj.userPwd, methodResult);
+				}
+			],
+			
+			// Method doit
+			388793292 : [ // _typeId of request class
+				1677934392, // _typeId of remote interface
+				148544158, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_doit(methodObj.sess, methodObj.value, methodResult);
+				}
+			],
+			
+			// Method expire
+			68943581 : [ // _typeId of request class
+				1677934392, // _typeId of remote interface
+				309901669, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_expire(methodObj.sess, methodResult);
+				}
+			],
+			
+			// Method setReloginCount
+			20608797 : [ // _typeId of request class
+				1677934392, // _typeId of remote interface
+				309901669, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setReloginCount(methodObj.count, methodResult);
+				}
+			],
+		
+		
 		// Remote Interface ClientIF			
 			// Method incrementInt
 			1461829915 : [ // _typeId of request class
@@ -8593,6 +8870,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.BResult_65775978
+		56089321 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":65775978 // com.wilutions.byps.test.api.auth.SessionInfo
+			},
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.BResult_7
 		148544156 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
@@ -8783,6 +9069,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				"string4":588723219, // String[][][][]
 				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
 			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.auth.SessionInfo
+		65775978 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"sessionID":10 // String
+			},
+			null,
 			false // inlineInstance
 		),
 		
@@ -10840,6 +11135,54 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_doit
+		388793292 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"sess":65775978, // com.wilutions.byps.test.api.auth.SessionInfo
+				"value":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_expire
+		68943581 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"sess":65775978 // com.wilutions.byps.test.api.auth.SessionInfo
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_login
+		839695851 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"sess":65775978, // com.wilutions.byps.test.api.auth.SessionInfo
+				"userName":10, // String
+				"userPwd":10 // String
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount
+		20608797 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"count":5 // int
+			},
+			null,
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
+		1785294043 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"useAuth":1 // boolean
+			},
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim
 		1557084481 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim),
 		
@@ -10878,6 +11221,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 		
 		// com.wilutions.byps.test.api.remote.BStub_RemoteStreams
 		2028487863 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteStreams),
+		
+		// com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication
+		1677934392 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication),
 		
 		// com.wilutions.byps.test.api.set.SetTypes
 		5001 : new com.wilutions.byps.BSerializer(

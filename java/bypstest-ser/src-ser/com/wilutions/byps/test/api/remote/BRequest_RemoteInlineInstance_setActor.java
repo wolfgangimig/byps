@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_setActor implements BMethodRequest, Serializable {
+public final class BRequest_RemoteInlineInstance_setActor extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.inl.Actor act;
 	

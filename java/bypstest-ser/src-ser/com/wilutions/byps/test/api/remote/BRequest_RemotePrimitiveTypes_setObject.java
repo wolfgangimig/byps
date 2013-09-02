@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemotePrimitiveTypes_setObject implements BMethodRequest, Serializable {
+public final class BRequest_RemotePrimitiveTypes_setObject extends BMethodRequest implements Serializable {
 
 	public java.lang.Object v;
 	

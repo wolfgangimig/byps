@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ServerIF_getPartner implements BMethodRequest, Serializable {
+public final class BRequest_ServerIF_getPartner extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 748402113L;

@@ -26,14 +26,18 @@ public class BServer {
 		this.remotes = rhs.remotes;
 	}
 	
-	public void setTargetId(BTargetId targetId) {
-		transport.setTargetId(targetId);
-		if (clientR != null) clientR.transport.setTargetId(targetId);
-		for (BSkeleton remote : remotes.values()) {
-			remote.BSkeleton_setTargetId(targetId);
-		}
-	}
-	
+  public void setTargetId(BTargetId targetId) {
+    transport.setTargetId(targetId);
+    if (clientR != null) clientR.transport.setTargetId(targetId);
+    for (BSkeleton remote : remotes.values()) {
+      remote.BSkeleton_setTargetId(targetId);
+    }
+  }
+  
+  public BTargetId getTargetId() {
+    return transport.getTargetId();
+  }
+  
 	public void addRemote(int remoteId, BSkeleton remoteImpl) {
 		if (remoteImpl != null) {
 			remotes.put(remoteId, remoteImpl);

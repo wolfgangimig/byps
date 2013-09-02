@@ -37,6 +37,7 @@ public class BClient_Testser extends BClient {
 		remoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 		remoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(transport);
 		remoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(transport);
+		remoteWithAuthentication = new com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication(transport);
 		clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(transport);
 		serverIF = new com.wilutions.byps.test.api.srvr.BStub_ServerIF(transport);
 		evolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(transport);
@@ -120,6 +121,12 @@ public class BClient_Testser extends BClient {
 		return this;
 	}
 	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(1677934392, remoteSkeleton);
+		return this;
+	}
+	
 	public BClient_Testser addRemote(com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 		serverR.server.addRemote(1784257353, remoteSkeleton);
@@ -153,6 +160,7 @@ public class BClient_Testser extends BClient {
 		remoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 		remoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(transport);
 		remoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(transport);
+		remoteWithAuthentication = new com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication(transport);
 		clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(transport);
 		serverIF = new com.wilutions.byps.test.api.srvr.BStub_ServerIF(transport);
 		evolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(transport);
@@ -173,6 +181,7 @@ public class BClient_Testser extends BClient {
 		if (remoteId == 1124545992) return remoteServerCtrl;
 		if (remoteId == 1156008353) return remoteSetTypes;
 		if (remoteId == 2028487863) return remoteStreams;
+		if (remoteId == 1677934392) return remoteWithAuthentication;
 		if (remoteId == 1784257353) return clientIF;
 		if (remoteId == 1313562065) return serverIF;
 		if (remoteId == 2078696281) return evolveIF;
@@ -192,6 +201,7 @@ public class BClient_Testser extends BClient {
 	public final com.wilutions.byps.test.api.remote.RemoteServerCtrlAsync remoteServerCtrl;
 	public final com.wilutions.byps.test.api.remote.RemoteSetTypesAsync remoteSetTypes;
 	public final com.wilutions.byps.test.api.remote.RemoteStreamsAsync remoteStreams;
+	public final com.wilutions.byps.test.api.remote.RemoteWithAuthenticationAuth remoteWithAuthentication;
 	public final com.wilutions.byps.test.api.srvr.ClientIFAsync clientIF;
 	public final com.wilutions.byps.test.api.srvr.ServerIFAsync serverIF;
 	public final com.wilutions.byps.test.api.ver.EvolveIFAsync evolveIF;

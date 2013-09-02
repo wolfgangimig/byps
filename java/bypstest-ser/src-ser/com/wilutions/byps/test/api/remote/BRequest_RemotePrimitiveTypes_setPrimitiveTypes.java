@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemotePrimitiveTypes_setPrimitiveTypes implements BMethodRequest, Serializable {
+public final class BRequest_RemotePrimitiveTypes_setPrimitiveTypes extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.prim.PrimitiveTypes v;
 	

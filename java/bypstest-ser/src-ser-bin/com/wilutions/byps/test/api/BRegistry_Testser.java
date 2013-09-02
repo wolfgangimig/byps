@@ -183,6 +183,8 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 148544157) return com.wilutions.byps.test.api.BSerializer_148544157.instance;
 		// com.wilutions.byps.test.api.BResult_601099730
 		if (typeId == 1205316392) return com.wilutions.byps.test.api.BSerializer_1205316392.instance;
+		// com.wilutions.byps.test.api.BResult_65775978
+		if (typeId == 56089321) return com.wilutions.byps.test.api.BSerializer_56089321.instance;
 		// com.wilutions.byps.test.api.BResult_7
 		if (typeId == 148544156) return com.wilutions.byps.test.api.BSerializer_148544156.instance;
 		// com.wilutions.byps.test.api.BResult_7007
@@ -213,6 +215,8 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 2001) return com.wilutions.byps.test.api.arr.BSerializer_2001.instance;
 		// com.wilutions.byps.test.api.arr.ArrayTypes4dim
 		if (typeId == 2004) return com.wilutions.byps.test.api.arr.BSerializer_2004.instance;
+		// com.wilutions.byps.test.api.auth.SessionInfo
+		if (typeId == 65775978) return com.wilutions.byps.test.api.auth.BSerializer_65775978.instance;
 		// com.wilutions.byps.test.api.cons.AllTypesC
 		if (typeId == 930294276) return com.wilutions.byps.test.api.cons.BSerializer_930294276.instance;
 		// com.wilutions.byps.test.api.cons.AllTypesZ
@@ -637,6 +641,16 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 944362859) return com.wilutions.byps.test.api.remote.BSerializer_944362859.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_throwLastException
 		if (typeId == 2047657918) return com.wilutions.byps.test.api.remote.BSerializer_2047657918.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_doit
+		if (typeId == 388793292) return com.wilutions.byps.test.api.remote.BSerializer_388793292.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_expire
+		if (typeId == 68943581) return com.wilutions.byps.test.api.remote.BSerializer_68943581.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_login
+		if (typeId == 839695851) return com.wilutions.byps.test.api.remote.BSerializer_839695851.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount
+		if (typeId == 20608797) return com.wilutions.byps.test.api.remote.BSerializer_20608797.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
+		if (typeId == 1785294043) return com.wilutions.byps.test.api.remote.BSerializer_1785294043.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim
 		if (typeId == 1557084481) return com.wilutions.byps.test.api.remote.BSerializer_1557084481.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23
@@ -663,6 +677,8 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 1156008353) return com.wilutions.byps.test.api.remote.BSerializer_1156008353.instance;
 		// com.wilutions.byps.test.api.remote.BStub_RemoteStreams
 		if (typeId == 2028487863) return com.wilutions.byps.test.api.remote.BSerializer_2028487863.instance;
+		// com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication
+		if (typeId == 1677934392) return com.wilutions.byps.test.api.remote.BSerializer_1677934392.instance;
 		// com.wilutions.byps.test.api.set.SetTypes
 		if (typeId == 5001) return com.wilutions.byps.test.api.set.BSerializer_5001.instance;
 		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_getStreams

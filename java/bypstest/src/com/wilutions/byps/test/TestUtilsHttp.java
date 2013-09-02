@@ -30,8 +30,8 @@ public class TestUtilsHttp {
 
 	private static Log log = LogFactory.getLog(TestUtilsHttp.class);
 	
-	public static String url = "http://localhost:8084/bypstest-srv/bypsservlet";
-	public static String url2 = "http://localhost:8084/bypstest-srv/bypsservlet";
+	public static String url = "http://localhost:8080/bypstest-srv/bypsservlet";
+	public static String url2 = "http://localhost:6080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	
 	private static Executor tpool = Executors.newCachedThreadPool();
@@ -64,7 +64,7 @@ public class TestUtilsHttp {
 		myDesc.addRegistry(registry);
 
 		BWire wire = new HWireClient(url, flags, 600, null, tpool);
-		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, null, 1); 
+		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 1); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 
@@ -80,7 +80,7 @@ public class TestUtilsHttp {
 		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, null, tpool);
 		
 		final BTransportFactory transportFactory = new HTransportFactoryClient(
-				BApiDescriptor_Testser.instance, wire, null, 3); 
+				BApiDescriptor_Testser.instance, wire, 3); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 

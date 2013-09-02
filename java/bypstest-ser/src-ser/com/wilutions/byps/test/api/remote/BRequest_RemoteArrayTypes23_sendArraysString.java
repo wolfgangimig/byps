@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes23_sendArraysString implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes23_sendArraysString extends BMethodRequest implements Serializable {
 
 	public java.lang.String[][] arr2;
 	public java.lang.String[][][] arr3;

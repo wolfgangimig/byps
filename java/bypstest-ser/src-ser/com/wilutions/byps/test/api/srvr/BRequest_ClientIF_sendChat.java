@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_ClientIF_sendChat implements BMethodRequest, Serializable {
+public final class BRequest_ClientIF_sendChat extends BMethodRequest implements Serializable {
 
 	public ChatStructure cs;
 	

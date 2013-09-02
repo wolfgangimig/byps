@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteServerCtrl_removePublishedRemote implements BMethodRequest, Serializable {
+public final class BRequest_RemoteServerCtrl_removePublishedRemote extends BMethodRequest implements Serializable {
 
 	public java.lang.String name;
 	

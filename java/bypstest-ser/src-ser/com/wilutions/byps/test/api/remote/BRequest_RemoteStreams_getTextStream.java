@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteStreams_getTextStream implements BMethodRequest, Serializable {
+public final class BRequest_RemoteStreams_getTextStream extends BMethodRequest implements Serializable {
 
 	
 	private final static long serialVersionUID = 1083407988L;

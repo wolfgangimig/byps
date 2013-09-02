@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteInlineInstance_setPoint2DArray1dim implements BMethodRequest, Serializable {
+public final class BRequest_RemoteInlineInstance_setPoint2DArray1dim extends BMethodRequest implements Serializable {
 
 	public com.wilutions.byps.test.api.inl.Point2D[] pointArray;
 	

@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemoteArrayTypes4dim_setBool implements BMethodRequest, Serializable {
+public final class BRequest_RemoteArrayTypes4dim_setBool extends BMethodRequest implements Serializable {
 
 	public boolean[][][][] v;
 	
