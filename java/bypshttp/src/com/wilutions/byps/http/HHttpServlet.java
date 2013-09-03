@@ -785,13 +785,13 @@ public abstract class HHttpServlet extends HttpServlet {
       }
     } catch (ServletException e) {
       if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
-      response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      throw e;
     } catch (IOException e) {
       if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
-      response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      throw e;
     } catch (Throwable e) {
       if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
-      response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      throw new ServletException(e);
     }
     if (log.isDebugEnabled()) log.debug(")service");
   }

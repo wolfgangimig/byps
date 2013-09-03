@@ -2,6 +2,7 @@ package com.wilutions.byps;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,10 +19,8 @@ public class BTransport {
 	
 	private BProtocol protocol;
 
-  protected BAuthentication<BClient> authentication;
+  protected BAuthentication authentication;
   
-  protected volatile Object session;
-  	
 	public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
 		this.apiDesc = apiDesc;
 		this.wire = wire;
@@ -76,7 +75,8 @@ public class BTransport {
 		try {
 		  
 		  final BMethodRequest methodRequest = (BMethodRequest)obj;
-		  methodRequest.setSession(session);
+		  final Object sess = authentication != null ? authentication.getSession() : null;
+		  methodRequest.setSession(sess);
 			
       if (log.isDebugEnabled()) log.debug("store object");
 			final BOutput bout = getOutput();
@@ -88,10 +88,19 @@ public class BTransport {
 				@Override
 				public void setAsyncResult(BMessage msgRecv, Throwable e) {
 					if (log.isDebugEnabled()) log.debug("setAsyncResult(" + msgRecv + ", ex=" + e);
+					
+					boolean relogin = false; 
+					
 					try {
 						
 						if (e != null) {
-		          asyncResult.setAsyncResult(null, e);
+						  
+						  // BYPS relogin error? (HTTP 403)
+						  relogin = authentication != null && isReloginException(e);
+						  if (!relogin) { 
+						    asyncResult.setAsyncResult(null, e);
+						  }
+						  
 						}
 						else {
 							final BInput bin = getInput(msgRecv.header, msgRecv.buf);
@@ -104,45 +113,47 @@ public class BTransport {
 					} catch (Throwable ex) {
 						if (log.isDebugEnabled()) log.debug("Received exception.", ex);
 						
-            // Session expired?
-            boolean rlogin = isReloginException(ex);
-            if (log.isDebugEnabled()) log.debug("isReloginException=" + rlogin);
-            if (rlogin) {
-              
-              // Authenticate and send the message again.
-              
-              if (log.isDebugEnabled()) log.debug("re-login");
-              try {
-                final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
-                  public void setAsyncResult(Boolean succ, Throwable e2) {
-                    if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
-                    if (e2 != null) {
-                      asyncResult.setAsyncResult(null, e2);
-                    }
-                    else {
-                      // Send again
-                      BTransport.this.send(methodRequest, asyncResult);
-                    }
-                  };
-                };
-                
-                negotiateProtocolClient(loginResult);
-               
-              }
-              catch (Throwable ex2) {
-                asyncResult.setAsyncResult(null, ex2);
-              }
-              
-            }						
-            else {
+            // App relogin error?
+            relogin = authentication != null && authentication.isReloginException(ex);
+            if (log.isDebugEnabled()) log.debug("isReloginException=" + relogin);
+            
+            if (!relogin) {
               asyncResult.setAsyncResult(null, ex);
             }
             
 					}
+					
+          if (relogin) {
+            
+            // Authenticate and send the message again.
+            
+            if (log.isDebugEnabled()) log.debug("re-login");
+            try {
+              
+              final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
+                public void setAsyncResult(Boolean succ, Throwable e2) {
+                  if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
+                  if (e2 != null) {
+                    asyncResult.setAsyncResult(null, e2);
+                  }
+                  else {
+                    // Send again
+                    BTransport.this.send(methodRequest, asyncResult);
+                  }
+                };
+              };
+              
+              negotiateProtocolClient(loginResult);
+             
+            }
+            catch (Throwable ex2) {
+              asyncResult.setAsyncResult(null, ex2);
+            }
+            
+          }						
+          
 					if (log.isDebugEnabled()) log.debug(")setAsyncResult");
 				}
-	
-				
 			};
 			
       final BMessage msgSend = bout.toMessage();
@@ -261,26 +272,7 @@ public class BTransport {
 							targetId = nego.targetId;
 						}
 						
-            if (authentication != null) {
-              
-  						final BAsyncResult<Object> loginResult = new BAsyncResult<Object>() {
-  						  
-  						  public void setAsyncResult(Object session, Throwable exception) {
-  						    
-  						    // Store the session object.
-  						    // It is assigned to each BMethodRequest in send()
-  						    BTransport.this.session = session;
-  						    
-  	              asyncResult.setAsyncResult(Boolean.TRUE, exception);
-  						  };
-  						};
-  
-  						authentication.authenticate(null, loginResult);
-            }
-            else {
-              asyncResult.setAsyncResult(Boolean.TRUE, e);
-            }
-            
+						authenticate(asyncResult);
 					}
 					else {
 					  asyncResult.setAsyncResult(Boolean.FALSE, e);
@@ -298,6 +290,56 @@ public class BTransport {
 		final BMessage msg = new BMessage(header, buf, null);
 		wire.send(msg, outerResult);
 		
+	}
+	
+	private AtomicBoolean doingAuth = new AtomicBoolean();
+	
+	private void authenticate(final BAsyncResult<Boolean> asyncResult) {
+	  
+	  if (log.isDebugEnabled()) log.debug("authenticate(");
+    
+	  // Authentication enabled?
+	  if (authentication != null) {
+      
+	    // First thread in this block is allowed to authenticate 
+      if (doingAuth.compareAndSet(false, true)) {
+        
+        BAsyncResult<Boolean> authResult = new BAsyncResult<Boolean>() {
+          public void setAsyncResult(Boolean ignored, Throwable ex) {
+            
+            asyncResult.setAsyncResult(ignored, ex);
+
+            // Notify other threads waiting in else block below
+            doingAuth.notifyAll();
+          }
+        };
+        
+        authentication.authenticate(null, authResult);
+        
+      }
+      else {
+
+        das muss in einem hintergrundprozess passieren... 
+        andernfalls blockiere ich den aktuellen Thread.
+        
+        // Other threads wait until authentication has finished by first thread. 
+        while (doingAuth.get()) {
+          try {
+            doingAuth.wait(10*1000);
+          } catch (InterruptedException e) {
+            asyncResult.setAsyncResult(Boolean.FALSE, e);
+          }
+        }
+
+        asyncResult.setAsyncResult(Boolean.TRUE, null);
+      }
+      
+    }
+    else {
+      asyncResult.setAsyncResult(Boolean.TRUE, null);
+    }
+	  
+    if (log.isDebugEnabled()) log.debug(")authenticate");
 	}
 	
 	private BProtocol createNegotiatedProtocol(BNegotiate nego) throws BException {
