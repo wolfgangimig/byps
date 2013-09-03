@@ -99,7 +99,35 @@ public abstract class BClient {
 	 * @param authentication
 	 */
 	public void setAuthentication(BAuthentication authentication) {
-	  transport.authentication = authentication;
+	  transport.authentication = new ClientAuthentication(authentication);
+	}
+	
+	/**
+	 * Wrapper class to supply BClient object in authentication.
+	 */
+	private class ClientAuthentication implements BAuthentication {
+	
+	  public BAuthentication innerAuth;
+	  
+	  public ClientAuthentication(BAuthentication innerAuth) {
+	    this.innerAuth = innerAuth;
+	  }
+
+    @Override
+    public void authenticate(BClient client, BAsyncResult<Boolean> asyncResult) {
+      innerAuth.authenticate(BClient.this, asyncResult);
+    }
+
+    @Override
+    public boolean isReloginException(Throwable ex) {
+      return innerAuth.isReloginException(ex);
+    }
+
+    @Override
+    public Object getSession() {
+      return innerAuth.getSession();
+    }
+
 	}
 	
   private final Log log = LogFactory.getLog(BClient.class);

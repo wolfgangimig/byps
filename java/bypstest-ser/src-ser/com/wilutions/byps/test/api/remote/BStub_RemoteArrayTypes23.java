@@ -7,10 +7,11 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:158
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
 public class BStub_RemoteArrayTypes23 extends BStub implements RemoteArrayTypes23Async, java.io.Serializable {
 	
-	public final static long serialVersionUID = 0L;
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	public final static long serialVersionUID = 2081058997L;
 	
 	public BStub_RemoteArrayTypes23(final BTransport transport) {
 		super(transport);		

@@ -7,10 +7,11 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:158
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
 public class BStub_ClientIF extends BStub implements ClientIFAsync, java.io.Serializable {
 	
-	public final static long serialVersionUID = 0L;
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	public final static long serialVersionUID = 1784257353L;
 	
 	public BStub_ClientIF(final BTransport transport) {
 		super(transport);		

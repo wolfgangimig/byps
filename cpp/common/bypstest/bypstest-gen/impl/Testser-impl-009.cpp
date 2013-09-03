@@ -5,6 +5,48 @@ using namespace ::com::wilutions::byps;
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_RemotePrimitiveTypes_setBool
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::BRequest_RemotePrimitiveTypes_setBool() : BMethodRequest(1341983932) {
+	v = false;
+}
+com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::BRequest_RemotePrimitiveTypes_setBool(bool v)
+	: BMethodRequest(1341983932) 
+	, v(v)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
+void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::serialize(BIO& ar, const BVERSION version) {
+	ar & v;
+}
+void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemotePrimitiveTypes __byps__remoteT = byps_ptr_cast<RemotePrimitiveTypes>(__byps__remote);
+	__byps__remoteT->async_setBool(v, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_143860510(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_RemotePrimitiveTypes_setByte
 // Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
@@ -945,42 +987,6 @@ void BSerializer_68372556(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteSetTypes_getInt2());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_RemoteSetTypes_getLong1
-// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
-
-com::wilutions::byps::test::api::remote::BRequest_RemoteSetTypes_getLong1::BRequest_RemoteSetTypes_getLong1() : BMethodRequest(1156008353) {
-}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
-void com::wilutions::byps::test::api::remote::BRequest_RemoteSetTypes_getLong1::serialize(BIO& ar, const BVERSION version) {
-}
-void com::wilutions::byps::test::api::remote::BRequest_RemoteSetTypes_getLong1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemoteSetTypes __byps__remoteT = byps_ptr_cast<RemoteSetTypes>(__byps__remote);
-	__byps__remoteT->async_getLong1([__byps__asyncResult](byps_ptr< ::std::set< int64_t > > __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_1457164460(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_2116752956(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemoteSetTypes_getLong1& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteSetTypes_getLong1*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteSetTypes_getLong1());
 	}
 }
 }}}}}

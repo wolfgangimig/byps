@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BAuthentication;
+import com.wilutions.byps.BClient;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.auth.SessionInfo;
@@ -126,11 +127,12 @@ public class TestRemoteWithAuthentication {
   }
   
 
-  private static class MyAuthentication implements BAuthentication<BClient_Testser> {
+  private static class MyAuthentication implements BAuthentication {
     
     private Log log = LogFactory.getLog(MyAuthentication.class);
     private String userName;
     private String pwd;
+    private SessionInfo sess;
     
     public MyAuthentication(String userName, String pwd) {
       this.userName = userName;
@@ -138,18 +140,30 @@ public class TestRemoteWithAuthentication {
     }
 
     @Override
-    public void authenticate(BClient_Testser client, final BAsyncResult<Object> asyncResult) {
+    public void authenticate(BClient client, final BAsyncResult<Boolean> asyncResult) {
       log.info("authenticate(");
       
       BAsyncResult<SessionInfo> outerResult = new BAsyncResult<SessionInfo>() {
         @Override
         public void setAsyncResult(SessionInfo sess, Throwable exception) {
           log.info("authenticate sess=" + sess + ", exception=" + exception);
-          asyncResult.setAsyncResult(sess, exception);
+          MyAuthentication.this.sess = sess;
+          asyncResult.setAsyncResult(Boolean.TRUE, exception);
         }
       };
-      client.remoteWithAuthentication.async_login(userName, pwd, outerResult);
+      
+      ((BClient_Testser)client).remoteWithAuthentication.async_login(userName, pwd, outerResult);
       log.info(")authenticate");
+    }
+
+    @Override
+    public boolean isReloginException(Throwable ex) {
+      return false;
+    }
+
+    @Override
+    public Object getSession() {
+      return sess;
     }
 
   }

@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteReferences extends BSkeleton implements RemoteReferencesAsync {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 2086824050L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.refs.Node getNode() throws RemoteException {

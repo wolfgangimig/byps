@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteEnums extends BSkeleton implements RemoteEnumsAsync {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 359349400L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {

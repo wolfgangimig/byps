@@ -5,6 +5,245 @@ using namespace ::com::wilutions::byps;
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
+int32_t BSkeleton_ClientIF::incrementInt(int32_t a)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ClientIF::async_incrementInt(int32_t a, std::function< void (int32_t, BException ex) > asyncResult)  {
+	int32_t ret = int32_t();
+	try {
+		ret = incrementInt(a);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+byps_ptr< ::std::vector< PContentStream > > BSkeleton_ClientIF::getStreams(int32_t ctrl)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ClientIF::async_getStreams(int32_t ctrl, std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
+	byps_ptr< ::std::vector< PContentStream > > ret = byps_ptr< ::std::vector< PContentStream > >();
+	try {
+		ret = getStreams(ctrl);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_ClientIF::putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ClientIF::async_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		putStreams(strm, ctrl);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+PChatStructure BSkeleton_ClientIF::sendChat(PChatStructure cs)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ClientIF::async_sendChat(PChatStructure cs, std::function< void (PChatStructure, BException ex) > asyncResult)  {
+	PChatStructure ret = PChatStructure();
+	try {
+		ret = sendChat(cs);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+}}}}}}
+
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+
+BStub_ClientIF::BStub_ClientIF(PTransport transport) 
+	: BStub(transport) {}
+
+int32_t BStub_ClientIF::incrementInt(int32_t a)  {
+	BSyncResultT< int32_t > syncResult;	
+	async_incrementInt(a, [&syncResult](int32_t v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_ClientIF::async_incrementInt(int32_t a, std::function< void (int32_t, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_ClientIF_incrementInt(a));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, com::wilutions::byps::test::api::BResult_5 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+byps_ptr< ::std::vector< PContentStream > > BStub_ClientIF::getStreams(int32_t ctrl)  {
+	BSyncResultT< byps_ptr< ::std::vector< PContentStream > > > syncResult;	
+	async_getStreams(ctrl, [&syncResult](byps_ptr< ::std::vector< PContentStream > > v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_ClientIF::async_getStreams(int32_t ctrl, std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_ClientIF_getStreams(ctrl));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::vector< PContentStream > >, com::wilutions::byps::test::api::BResult_1218831438 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_ClientIF::putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl)  {
+	BSyncResultT< bool > syncResult;	
+	async_putStreams(strm, ctrl, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_ClientIF::async_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_ClientIF_putStreams(strm, ctrl));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+PChatStructure BStub_ClientIF::sendChat(PChatStructure cs)  {
+	BSyncResultT< PChatStructure > syncResult;	
+	async_sendChat(cs, [&syncResult](PChatStructure v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_ClientIF::async_sendChat(PChatStructure cs, std::function< void (PChatStructure, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_ClientIF_sendChat(cs));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PChatStructure, com::wilutions::byps::test::api::BResult_7007 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+}}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1784257353(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new com::wilutions::byps::test::api::srvr::BStub_ClientIF(transport));
+	}
+	else {
+		com::wilutions::byps::test::api::srvr::ClientIF* r = dynamic_cast<com::wilutions::byps::test::api::srvr::ClientIF*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+
+int32_t BSkeleton_ServerIF::callClientIncrementInt(int32_t v)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_callClientIncrementInt(int32_t v, std::function< void (int32_t, BException ex) > asyncResult)  {
+	int32_t ret = int32_t();
+	try {
+		ret = callClientIncrementInt(v);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_ServerIF::setPartner(PClientIF client)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_setPartner(PClientIF client, std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		setPartner(client);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+PClientIF BSkeleton_ServerIF::getPartner()  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_getPartner(std::function< void (PClientIF, BException ex) > asyncResult)  {
+	PClientIF ret = PClientIF();
+	try {
+		ret = getPartner();
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+byps_ptr< ::std::vector< PContentStream > > BSkeleton_ServerIF::getStreamsFromClient()  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_getStreamsFromClient(std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
+	byps_ptr< ::std::vector< PContentStream > > ret = byps_ptr< ::std::vector< PContentStream > >();
+	try {
+		ret = getStreamsFromClient();
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_ServerIF::putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		putStreamsOnClient(streams);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_ServerIF::registerWithClientMap(int32_t id)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_registerWithClientMap(int32_t id, std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		registerWithClientMap(id);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+PClientIF BSkeleton_ServerIF::getClient(int32_t id)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_getClient(int32_t id, std::function< void (PClientIF, BException ex) > asyncResult)  {
+	PClientIF ret = PClientIF();
+	try {
+		ret = getClient(id);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+byps_ptr< ::std::set< int32_t > > BSkeleton_ServerIF::getClientIds()  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_getClientIds(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult)  {
+	byps_ptr< ::std::set< int32_t > > ret = byps_ptr< ::std::set< int32_t > >();
+	try {
+		ret = getClientIds();
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+int32_t BSkeleton_ServerIF::callClientParallel(int32_t v)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_ServerIF::async_callClientParallel(int32_t v, std::function< void (int32_t, BException ex) > asyncResult)  {
+	int32_t ret = int32_t();
+	try {
+		ret = callClientParallel(v);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+}}}}}}
+
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+
 BStub_ServerIF::BStub_ServerIF(PTransport transport) 
 	: BStub(transport) {}
 
@@ -41,7 +280,7 @@ PClientIF BStub_ServerIF::getPartner()  {
 }
 void BStub_ServerIF::async_getPartner(std::function< void (PClientIF, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_ServerIF_getPartner());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1784257353 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1473575576 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 byps_ptr< ::std::vector< PContentStream > > BStub_ServerIF::getStreamsFromClient()  {
@@ -89,7 +328,7 @@ PClientIF BStub_ServerIF::getClient(int32_t id)  {
 }
 void BStub_ServerIF::async_getClient(int32_t id, std::function< void (PClientIF, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_ServerIF_getClient(id));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1784257353 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1473575576 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 byps_ptr< ::std::set< int32_t > > BStub_ServerIF::getClientIds()  {
@@ -251,7 +490,7 @@ PEvolveIF BStub_EvolveIF::getClient()  {
 }
 void BStub_EvolveIF::async_getClient(std::function< void (PEvolveIF, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_EvolveIF_getClient());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, com::wilutions::byps::test::api::BResult_2078696281 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, com::wilutions::byps::test::api::BResult_1178379224 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 void BStub_EvolveIF::sendEvolveToClient()  {
@@ -305,6 +544,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1059148284), com::wilutions::byps::test::api::BSerializer_1532920911, 1532920911);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1097129250), com::wilutions::byps::test::api::BSerializer_1862597051, 1862597051);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1174971318), com::wilutions::byps::test::api::BSerializer_994835305, 994835305);
+	registerClass(typeid(com::wilutions::byps::test::api::BResult_1178379224), com::wilutions::byps::test::api::BSerializer_1911325389, 1911325389);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_12), com::wilutions::byps::test::api::BSerializer_309901676, 309901676);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1201775504), com::wilutions::byps::test::api::BSerializer_541741223, 541741223);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1218831438), com::wilutions::byps::test::api::BSerializer_1151524674, 1151524674);
@@ -322,6 +562,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1406124761), com::wilutions::byps::test::api::BSerializer_104448059, 104448059);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1457164460), com::wilutions::byps::test::api::BSerializer_1119760023, 1119760023);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1463615848), com::wilutions::byps::test::api::BSerializer_548882635, 548882635);
+	registerClass(typeid(com::wilutions::byps::test::api::BResult_1473575576), com::wilutions::byps::test::api::BSerializer_1170836883, 1170836883);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1487265161), com::wilutions::byps::test::api::BSerializer_2081879792, 2081879792);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1488550492), com::wilutions::byps::test::api::BSerializer_1240765869, 1240765869);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1493282670), com::wilutions::byps::test::api::BSerializer_276437907, 276437907);
@@ -341,7 +582,6 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_172221196), com::wilutions::byps::test::api::BSerializer_1905478006, 1905478006);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1746702954), com::wilutions::byps::test::api::BSerializer_1823196186, 1823196186);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1752158699), com::wilutions::byps::test::api::BSerializer_150989512, 150989512);
-	registerClass(typeid(com::wilutions::byps::test::api::BResult_1784257353), com::wilutions::byps::test::api::BSerializer_1708889390, 1708889390);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1799280818), com::wilutions::byps::test::api::BSerializer_179038766, 179038766);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_181681714), com::wilutions::byps::test::api::BSerializer_1414119390, 1414119390);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_183594037), com::wilutions::byps::test::api::BSerializer_333265053, 333265053);
@@ -360,7 +600,6 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2052431866), com::wilutions::byps::test::api::BSerializer_496389964, 496389964);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2058423690), com::wilutions::byps::test::api::BSerializer_532799052, 532799052);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2067161310), com::wilutions::byps::test::api::BSerializer_1305849624, 1305849624);
-	registerClass(typeid(com::wilutions::byps::test::api::BResult_2078696281), com::wilutions::byps::test::api::BSerializer_212739126, 212739126);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2087445849), com::wilutions::byps::test::api::BSerializer_580667480, 580667480);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_21), com::wilutions::byps::test::api::BSerializer_309901646, 309901646);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2123584667), com::wilutions::byps::test::api::BSerializer_1978497049, 1978497049);
@@ -374,6 +613,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_588723219), com::wilutions::byps::test::api::BSerializer_1886698628, 1886698628);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_6), com::wilutions::byps::test::api::BSerializer_148544157, 148544157);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_601099730), com::wilutions::byps::test::api::BSerializer_1205316392, 1205316392);
+	registerClass(typeid(com::wilutions::byps::test::api::BResult_65775978), com::wilutions::byps::test::api::BSerializer_56089321, 56089321);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_7), com::wilutions::byps::test::api::BSerializer_148544156, 148544156);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_7007), com::wilutions::byps::test::api::BSerializer_1462588845, 1462588845);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_703065817), com::wilutions::byps::test::api::BSerializer_1169980470, 1169980470);
@@ -389,6 +629,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_945713488), com::wilutions::byps::test::api::BSerializer_2092891102, 2092891102);
 	registerClass(typeid(com::wilutions::byps::test::api::arr::ArrayTypes1dim), com::wilutions::byps::test::api::BSerializer_2001, 2001);
 	registerClass(typeid(com::wilutions::byps::test::api::arr::ArrayTypes4dim), com::wilutions::byps::test::api::BSerializer_2004, 2004);
+	registerClass(typeid(com::wilutions::byps::test::api::auth::SessionInfo), com::wilutions::byps::test::api::BSerializer_65775978, 65775978);
 	registerClass(typeid(com::wilutions::byps::test::api::cons::AllTypesC), com::wilutions::byps::test::api::BSerializer_930294276, 930294276);
 	registerClass(typeid(com::wilutions::byps::test::api::cons::AllTypesZ), com::wilutions::byps::test::api::BSerializer_142458, 142458);
 	registerClass(typeid(BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > ), com::wilutions::byps::test::api::BSerializer_1981543076, 1981543076);
@@ -601,6 +842,11 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_setImage), com::wilutions::byps::test::api::BSerializer_1831578632, 1831578632);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_setImages), com::wilutions::byps::test::api::BSerializer_944362859, 944362859);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteStreams_throwLastException), com::wilutions::byps::test::api::BSerializer_2047657918, 2047657918);
+	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteWithAuthentication_doit), com::wilutions::byps::test::api::BSerializer_388793292, 388793292);
+	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteWithAuthentication_expire), com::wilutions::byps::test::api::BSerializer_68943581, 68943581);
+	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteWithAuthentication_login), com::wilutions::byps::test::api::BSerializer_839695851, 839695851);
+	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteWithAuthentication_setReloginCount), com::wilutions::byps::test::api::BSerializer_20608797, 20608797);
+	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteWithAuthentication_setUseAuthentication), com::wilutions::byps::test::api::BSerializer_1785294043, 1785294043);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes1dim), com::wilutions::byps::test::api::BSerializer_1557084481, 1557084481);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes23), com::wilutions::byps::test::api::BSerializer_2081058997, 2081058997);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes4dim), com::wilutions::byps::test::api::BSerializer_1557173854, 1557173854);
@@ -614,6 +860,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BStub_RemoteServerCtrl), com::wilutions::byps::test::api::BSerializer_1124545992, 1124545992);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BStub_RemoteSetTypes), com::wilutions::byps::test::api::BSerializer_1156008353, 1156008353);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BStub_RemoteStreams), com::wilutions::byps::test::api::BSerializer_2028487863, 2028487863);
+	registerClass(typeid(com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication), com::wilutions::byps::test::api::BSerializer_1677934392, 1677934392);
 	registerClass(typeid(com::wilutions::byps::test::api::set::SetTypes), com::wilutions::byps::test::api::BSerializer_5001, 5001);
 	registerClass(typeid(com::wilutions::byps::test::api::srvr::BRequest_ClientIF_getStreams), com::wilutions::byps::test::api::BSerializer_865920738, 865920738);
 	registerClass(typeid(com::wilutions::byps::test::api::srvr::BRequest_ClientIF_incrementInt), com::wilutions::byps::test::api::BSerializer_1461829915, 1461829915);

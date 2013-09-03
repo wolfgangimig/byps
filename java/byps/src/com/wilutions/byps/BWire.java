@@ -19,22 +19,6 @@ import org.apache.commons.logging.LogFactory;
 /**
  * An object of this class sends and receives bytes.
  * 
- * JSON Übertragung aus dem Browser kann die Streams nicht nutzen. Hier muss ein Multipart-Formdata an den Server gesendet werden können.
- * 
- * 1. Stream direkt nach BMethodRequest in derselben Anfrage senden
- *    + Einfach
- *    - Server muss alle Streams zwischenspeichern und kann dann erst mit der Methode beginnen.
- * 
- * 2. Stream in reverse-HTTP abfragen
- *    + Streams müssen nicht unbedingt vom Server zwischengepspeichert werden
- *    - Es werden immer 2 Kanäle benötigt
- *    - Ereignisausführung beeinträchtigt
- *    - Performance
- *    
- * 3. Streams in verschiedenen Anfragen parallel zu BMethodRequest senden
- *    + Streams müssen nicht zwischengespeichert werden
- *    - So viele offene Verbindungen wie Streams
- *    
  */
 public class BWire {
 	

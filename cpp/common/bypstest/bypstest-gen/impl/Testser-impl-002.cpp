@@ -5,23 +5,46 @@ using namespace ::com::wilutions::byps;
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
-// Implementation of class BResult_1784257353
+// Implementation of class BResult_1746702954
 // Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
 // checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
-void com::wilutions::byps::test::api::BResult_1784257353::serialize(BIO& ar, const BVERSION version) {
+void com::wilutions::byps::test::api::BResult_1746702954::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
 }}}}}
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1708889390(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+void BSerializer_1823196186(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::BResult_1784257353& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_1784257353*>(p);
+		com::wilutions::byps::test::api::BResult_1746702954& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_1746702954*>(p);
 		bio & r;
 	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_1784257353());
+		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_1746702954());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
+// Implementation of class BResult_1752158699
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
+void com::wilutions::byps::test::api::BResult_1752158699::serialize(BIO& ar, const BVERSION version) {
+	ar & result;
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_150989512(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::BResult_1752158699& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_1752158699*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_1752158699());
 	}
 }
 }}}}}
@@ -441,29 +464,6 @@ void BSerializer_1305849624(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
-// Implementation of class BResult_2078696281
-// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
-
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
-void com::wilutions::byps::test::api::BResult_2078696281::serialize(BIO& ar, const BVERSION version) {
-	ar & result;
-}
-}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_212739126(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		com::wilutions::byps::test::api::BResult_2078696281& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_2078696281*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_2078696281());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-//-------------------------------------------------
 // Implementation of class BResult_2087445849
 // Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
@@ -757,6 +757,29 @@ void BSerializer_1205316392(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_601099730());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
+// Implementation of class BResult_65775978
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
+void com::wilutions::byps::test::api::BResult_65775978::serialize(BIO& ar, const BVERSION version) {
+	ar & result;
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_56089321(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::BResult_65775978& r = * dynamic_cast< com::wilutions::byps::test::api::BResult_65775978*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::BResult_65775978());
 	}
 }
 }}}}}
@@ -1151,149 +1174,31 @@ void BSerializer_2004(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	}
 }
 }}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace auth { 
 
 //-------------------------------------------------
-// Implementation of class AllTypesC
+// Implementation of class SessionInfo
 // Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
-const ::std::wstring AllTypesC::stringNull = std::wstring();
-
-const float AllTypesC::float1s = 6.8f;
-
-const double AllTypesC::double1s = 7.8;
-
-const ::std::wstring AllTypesC::string1s = std::wstring(L"Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'");
-
-const PAllTypesZ AllTypesC::ALL = PAllTypesZ(new AllTypesZ(
-	true,
-	(int8_t)1,
-	L'A',
-	(int16_t)2,
-	3,
-	4LL,
-	5.0f,
-	6.0,
-	std::wstring(L"777"),
-	PHebrewZ(new HebrewZ(
-		std::wstring(L"\u05d0"))),
-	BBytes::create(3,
-		(int8_t)1,
-		(int8_t)2,
-		(int8_t)3),
-	byps_ptr< BArray1< int32_t > >((new BArray1< int32_t > (2))
-		->set(0, -4)
-		->set(1, -5)
-	),
-	byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
-		->set(0, std::wstring(L"a"))
-		->set(1, std::wstring(L"b"))
-	),
-	byps_ptr< BArray1< PHebrewZ > >((new BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > (2))
-		->set(0, PHebrewZ(new HebrewZ(
-			std::wstring(L"\u05d0"))))
-		->set(1, PHebrewZ(new HebrewZ(
-			std::wstring(L"\u05d1"))))
-	)));
-
-const byps_ptr< BArray1< int32_t > > AllTypesC::arrInt = byps_ptr< BArray1< int32_t > >((new BArray1< int32_t > (3))
-	->set(0, 1)
-	->set(1, 2)
-	->set(2, 3)
-);
-
-const byps_ptr< BArray4< int32_t > > AllTypesC::arrInt4 = byps_ptr< BArray4< int32_t > >((new BArray4< int32_t > (2,2,2,2))
-	->set(0,0,0,0, 1)
-	->set(0,0,0,1, 2)
-	->set(0,0,1,0, 4)
-	->set(0,0,1,1, 5)
-	->set(0,1,0,0, 11)
-	->set(0,1,0,1, 12)
-	->set(0,1,1,0, 14)
-	->set(0,1,1,1, 15)
-	->set(1,0,0,0, 21)
-	->set(1,0,0,1, 22)
-	->set(1,0,1,0, 24)
-	->set(1,0,1,1, 25)
-	->set(1,1,0,0, 211)
-	->set(1,1,0,1, 212)
-	->set(1,1,1,0, 214)
-	->set(1,1,1,1, 215)
-);
-
-const byps_ptr< BArray1< ::std::wstring > > AllTypesC::arrStrings = byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
-	->set(0, std::wstring(L"s1"))
-	->set(1, std::wstring(L"s2"))
-);
-
-const byps_ptr< BArray4< ::std::wstring > > AllTypesC::arrStrings4 = byps_ptr< BArray4< ::std::wstring > >((new BArray4< ::std::wstring > (1,1,1,2))
-	->set(0,0,0,0, std::wstring(L"s1"))
-	->set(0,0,0,1, std::wstring(L"s2"))
-);
-
-const byps_ptr< BArray2< PAllTypesZ > > AllTypesC::arrALL = byps_ptr< BArray2< PAllTypesZ > >((new BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > (2,1))
-	->set(0,0, PAllTypesZ(new AllTypesZ(
-		false,
-		(int8_t)0,
-		L'\0',
-		(int16_t)0,
-		0,
-		0LL,
-		0.0f,
-		0.0,
-		std::wstring(),
-		PHebrewZ(),
-		PBytes(),
-		byps_ptr< BArray1< int32_t > >(),
-		byps_ptr< BArray1< ::std::wstring > >(),
-		byps_ptr< BArray1< PHebrewZ > >())))
-	->set(1,0, PAllTypesZ(new AllTypesZ(
-		true,
-		(int8_t)1,
-		L'A',
-		(int16_t)2,
-		3,
-		4LL,
-		5.0f,
-		6.0,
-		std::wstring(L"777"),
-		PHebrewZ(new HebrewZ(
-			std::wstring(L"\u05d0"))),
-		BBytes::create(3,
-			(int8_t)1,
-			(int8_t)2,
-			(int8_t)3),
-		byps_ptr< BArray1< int32_t > >((new BArray1< int32_t > (2))
-			->set(0, -4)
-			->set(1, -5)
-		),
-		byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
-			->set(0, std::wstring(L"a"))
-			->set(1, std::wstring(L"b"))
-		),
-		byps_ptr< BArray1< PHebrewZ > >((new BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > (2))
-			->set(0, PHebrewZ(new HebrewZ(
-				std::wstring(L"\u05d0"))))
-			->set(1, PHebrewZ(new HebrewZ(
-				std::wstring(L"\u05d1"))))
-		))))
-);
-
-com::wilutions::byps::test::api::cons::AllTypesC::AllTypesC() {
+com::wilutions::byps::test::api::auth::SessionInfo::SessionInfo() {
 }
+com::wilutions::byps::test::api::auth::SessionInfo::SessionInfo(::std::wstring sessionID)
+	: sessionID(sessionID)
+	{}
 // checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
-void com::wilutions::byps::test::api::cons::AllTypesC::serialize(BIO& ar, const BVERSION version) {
+void com::wilutions::byps::test::api::auth::SessionInfo::serialize(BIO& ar, const BVERSION version) {
+	ar & sessionID;
 }
 }}}}}}
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_930294276(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+void BSerializer_65775978(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::cons::AllTypesC& r = * dynamic_cast< com::wilutions::byps::test::api::cons::AllTypesC*>(p);
+		com::wilutions::byps::test::api::auth::SessionInfo& r = * dynamic_cast< com::wilutions::byps::test::api::auth::SessionInfo*>(p);
 		bio & r;
 	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::cons::AllTypesC());
+		pObjS = PSerializable(new com::wilutions::byps::test::api::auth::SessionInfo());
 	}
 }
 }}}}}

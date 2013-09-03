@@ -7,10 +7,11 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:158
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
 public class BStub_RemoteInlineInstance extends BStub implements RemoteInlineInstanceAsync, java.io.Serializable {
 	
-	public final static long serialVersionUID = 0L;
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	public final static long serialVersionUID = 1206670536L;
 	
 	public BStub_RemoteInlineInstance(final BTransport transport) {
 		super(transport);		

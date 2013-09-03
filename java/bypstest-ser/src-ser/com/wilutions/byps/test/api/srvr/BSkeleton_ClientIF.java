@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 1784257353L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int incrementInt(int a) throws RemoteException {

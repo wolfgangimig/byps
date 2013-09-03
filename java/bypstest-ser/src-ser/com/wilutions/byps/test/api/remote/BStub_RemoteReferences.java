@@ -7,10 +7,11 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:158
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
 public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsync, java.io.Serializable {
 	
-	public final static long serialVersionUID = 0L;
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	public final static long serialVersionUID = 2086824050L;
 	
 	public BStub_RemoteReferences(final BTransport transport) {
 		super(transport);		

@@ -2,6 +2,255 @@
 using namespace ::std;
 using namespace ::com::wilutions::byps;
 
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class Evolve2
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::ver::Evolve2::Evolve2() {
+	n1 = 0;
+}
+com::wilutions::byps::test::api::ver::Evolve2::Evolve2(int32_t n1)
+	: n1(n1)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
+void com::wilutions::byps::test::api::ver::Evolve2::serialize(BIO& ar, const BVERSION version) {
+	ar & n1;
+}
+}}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_573592593(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::ver::Evolve2& r = * dynamic_cast< com::wilutions::byps::test::api::ver::Evolve2*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::Evolve2());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1359468275(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray1< double > & r = * reinterpret_cast< BArray1< double > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray1< double > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_2087445849(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray4< double > & r = * reinterpret_cast< BArray4< double > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray4< double > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_766441794(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray1< float > & r = * reinterpret_cast< BArray1< float > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray1< float > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1516687588(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray4< float > & r = * reinterpret_cast< BArray4< float > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray4< float > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_100361105(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray1< int32_t > & r = * reinterpret_cast< BArray1< int32_t > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray1< int32_t > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1957744307(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray2< int32_t > & r = * reinterpret_cast< BArray2< int32_t > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray2< int32_t > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_196606293(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray3< int32_t > & r = * reinterpret_cast< BArray3< int32_t > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray3< int32_t > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_39910537(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray4< int32_t > & r = * reinterpret_cast< BArray4< int32_t > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray4< int32_t > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1950626768(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray1< PContentStream > & r = * reinterpret_cast< BArray1< PContentStream > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray1< PContentStream > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_183594037(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray1< PSerializable > & r = * reinterpret_cast< BArray1< PSerializable > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray1< PSerializable > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_340213335(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray2< PSerializable > & r = * reinterpret_cast< BArray2< PSerializable > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray2< PSerializable > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_527503353(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray3< PSerializable > & r = * reinterpret_cast< BArray3< PSerializable > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray3< PSerializable > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_124584219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray4< PSerializable > & r = * reinterpret_cast< BArray4< PSerializable > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray4< PSerializable > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1888107655(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray1< ::std::wstring > & r = * reinterpret_cast< BArray1< ::std::wstring > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray1< ::std::wstring > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1995260457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray2< ::std::wstring > & r = * reinterpret_cast< BArray2< ::std::wstring > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray2< ::std::wstring > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1889888075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray3< ::std::wstring > & r = * reinterpret_cast< BArray3< ::std::wstring > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray3< ::std::wstring > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_588723219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		BArray4< ::std::wstring > & r = * reinterpret_cast< BArray4< ::std::wstring > *>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new BArray4< ::std::wstring > ());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1590740862(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::vector< com::wilutions::byps::test::api::enu::EnumPlanets >& r = * reinterpret_cast< ::std::vector< com::wilutions::byps::test::api::enu::EnumPlanets >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::vector< com::wilutions::byps::test::api::enu::EnumPlanets >());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1972793385(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::map< double , int8_t >& r = * reinterpret_cast< ::std::map< double , int8_t >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::map< double , int8_t >());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_31512998(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::set< int8_t >& r = * reinterpret_cast< ::std::set< int8_t >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::set< int8_t >());
+	}
+}
+}}}}}
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1174971318(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();

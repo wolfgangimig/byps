@@ -933,51 +933,63 @@ void BSerializer_2028487863(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 }
 }}}}}
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-int32_t BSkeleton_ClientIF::incrementInt(int32_t a)  {
+void BSkeleton_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_ClientIF::async_incrementInt(int32_t a, std::function< void (int32_t, BException ex) > asyncResult)  {
-	int32_t ret = int32_t();
-	try {
-		ret = incrementInt(a);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< ::std::vector< PContentStream > > BSkeleton_ClientIF::getStreams(int32_t ctrl)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ClientIF::async_getStreams(int32_t ctrl, std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
-	byps_ptr< ::std::vector< PContentStream > > ret = byps_ptr< ::std::vector< PContentStream > >();
-	try {
-		ret = getStreams(ctrl);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_ClientIF::putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ClientIF::async_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult)  {
+void BSkeleton_RemoteWithAuthentication::async_setUseAuthentication(bool useAuth, std::function< void (bool, BException ex) > asyncResult)  {
 	bool ret = false;
 	try {
-		putStreams(strm, ctrl);
+		setUseAuthentication(useAuth);
 		asyncResult(ret, BException());
 	} catch (const std::exception& ex) {
 		asyncResult(ret, ex);
 	}
 }
-PChatStructure BSkeleton_ClientIF::sendChat(PChatStructure cs)  {
+com::wilutions::byps::test::api::auth::PSessionInfo BSkeleton_RemoteWithAuthentication::login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_ClientIF::async_sendChat(PChatStructure cs, std::function< void (PChatStructure, BException ex) > asyncResult)  {
-	PChatStructure ret = PChatStructure();
+void BSkeleton_RemoteWithAuthentication::async_login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd, std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
+	com::wilutions::byps::test::api::auth::PSessionInfo ret = com::wilutions::byps::test::api::auth::PSessionInfo();
 	try {
-		ret = sendChat(cs);
+		ret = login(sess, userName, userPwd);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+int32_t BSkeleton_RemoteWithAuthentication::doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::async_doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value, std::function< void (int32_t, BException ex) > asyncResult)  {
+	int32_t ret = int32_t();
+	try {
+		ret = doit(sess, value);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_RemoteWithAuthentication::expire(com::wilutions::byps::test::api::auth::PSessionInfo sess)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::async_expire(com::wilutions::byps::test::api::auth::PSessionInfo sess, std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		expire(sess);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_RemoteWithAuthentication::setReloginCount(int32_t count)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::async_setReloginCount(int32_t count, std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		setReloginCount(count);
 		asyncResult(ret, BException());
 	} catch (const std::exception& ex) {
 		asyncResult(ret, ex);
@@ -986,188 +998,87 @@ void BSkeleton_ClientIF::async_sendChat(PChatStructure cs, std::function< void (
 }}}}}}
 
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
-BStub_ClientIF::BStub_ClientIF(PTransport transport) 
+BStub_RemoteWithAuthentication::BStub_RemoteWithAuthentication(PTransport transport) 
 	: BStub(transport) {}
 
-int32_t BStub_ClientIF::incrementInt(int32_t a)  {
-	BSyncResultT< int32_t > syncResult;	
-	async_incrementInt(a, [&syncResult](int32_t v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_ClientIF::async_incrementInt(int32_t a, std::function< void (int32_t, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_incrementInt(a));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, com::wilutions::byps::test::api::BResult_5 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< ::std::vector< PContentStream > > BStub_ClientIF::getStreams(int32_t ctrl)  {
-	BSyncResultT< byps_ptr< ::std::vector< PContentStream > > > syncResult;	
-	async_getStreams(ctrl, [&syncResult](byps_ptr< ::std::vector< PContentStream > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_ClientIF::async_getStreams(int32_t ctrl, std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_getStreams(ctrl));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::vector< PContentStream > >, com::wilutions::byps::test::api::BResult_1218831438 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_ClientIF::putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl)  {
+void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
 	BSyncResultT< bool > syncResult;	
-	async_putStreams(strm, ctrl, [&syncResult](bool v, BException ex) {
+	async_setUseAuthentication(useAuth, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	syncResult.getResult();
 }
-void BStub_ClientIF::async_putStreams(byps_ptr< ::std::vector< PContentStream > > strm, int32_t ctrl, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_putStreams(strm, ctrl));
+void BStub_RemoteWithAuthentication::async_setUseAuthentication(bool useAuth, std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_setUseAuthentication(useAuth));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-PChatStructure BStub_ClientIF::sendChat(PChatStructure cs)  {
-	BSyncResultT< PChatStructure > syncResult;	
-	async_sendChat(cs, [&syncResult](PChatStructure v, BException ex) {
+com::wilutions::byps::test::api::auth::PSessionInfo BStub_RemoteWithAuthentication::login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd)  {
+	BSyncResultT< com::wilutions::byps::test::api::auth::PSessionInfo > syncResult;	
+	async_login(sess, userName, userPwd, [&syncResult](com::wilutions::byps::test::api::auth::PSessionInfo v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_ClientIF::async_sendChat(PChatStructure cs, std::function< void (PChatStructure, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_sendChat(cs));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PChatStructure, com::wilutions::byps::test::api::BResult_7007 >(asyncResult) );
+void BStub_RemoteWithAuthentication::async_login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd, std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_login(sess, userName, userPwd));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< com::wilutions::byps::test::api::auth::PSessionInfo, com::wilutions::byps::test::api::BResult_65775978 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+int32_t BStub_RemoteWithAuthentication::doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value)  {
+	BSyncResultT< int32_t > syncResult;	
+	async_doit(sess, value, [&syncResult](int32_t v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::async_doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value, std::function< void (int32_t, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_doit(sess, value));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, com::wilutions::byps::test::api::BResult_5 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_RemoteWithAuthentication::expire(com::wilutions::byps::test::api::auth::PSessionInfo sess)  {
+	BSyncResultT< bool > syncResult;	
+	async_expire(sess, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::async_expire(com::wilutions::byps::test::api::auth::PSessionInfo sess, std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_expire(sess));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_RemoteWithAuthentication::setReloginCount(int32_t count)  {
+	BSyncResultT< bool > syncResult;	
+	async_setReloginCount(count, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::async_setReloginCount(int32_t count, std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_setReloginCount(count));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 }}}}}}
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1784257353(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1677934392(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
 		BTargetId targetId;
 		bio & targetId;
 		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new com::wilutions::byps::test::api::srvr::BStub_ClientIF(transport));
+		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::srvr::ClientIF* r = dynamic_cast<com::wilutions::byps::test::api::srvr::ClientIF*>(p);
+		com::wilutions::byps::test::api::remote::RemoteWithAuthentication* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteWithAuthentication*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
 }
 }}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
-
-int32_t BSkeleton_ServerIF::callClientIncrementInt(int32_t v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_callClientIncrementInt(int32_t v, std::function< void (int32_t, BException ex) > asyncResult)  {
-	int32_t ret = int32_t();
-	try {
-		ret = callClientIncrementInt(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_ServerIF::setPartner(PClientIF client)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_setPartner(PClientIF client, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setPartner(client);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-PClientIF BSkeleton_ServerIF::getPartner()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_getPartner(std::function< void (PClientIF, BException ex) > asyncResult)  {
-	PClientIF ret = PClientIF();
-	try {
-		ret = getPartner();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< ::std::vector< PContentStream > > BSkeleton_ServerIF::getStreamsFromClient()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_getStreamsFromClient(std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
-	byps_ptr< ::std::vector< PContentStream > > ret = byps_ptr< ::std::vector< PContentStream > >();
-	try {
-		ret = getStreamsFromClient();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_ServerIF::putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_putStreamsOnClient(byps_ptr< ::std::vector< PContentStream > > streams, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		putStreamsOnClient(streams);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_ServerIF::registerWithClientMap(int32_t id)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_registerWithClientMap(int32_t id, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		registerWithClientMap(id);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-PClientIF BSkeleton_ServerIF::getClient(int32_t id)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_getClient(int32_t id, std::function< void (PClientIF, BException ex) > asyncResult)  {
-	PClientIF ret = PClientIF();
-	try {
-		ret = getClient(id);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< ::std::set< int32_t > > BSkeleton_ServerIF::getClientIds()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_getClientIds(std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult)  {
-	byps_ptr< ::std::set< int32_t > > ret = byps_ptr< ::std::set< int32_t > >();
-	try {
-		ret = getClientIds();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-int32_t BSkeleton_ServerIF::callClientParallel(int32_t v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_ServerIF::async_callClientParallel(int32_t v, std::function< void (int32_t, BException ex) > asyncResult)  {
-	int32_t ret = int32_t();
-	try {
-		ret = callClientParallel(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-}}}}}}
-

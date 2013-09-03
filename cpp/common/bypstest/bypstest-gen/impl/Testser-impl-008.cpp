@@ -5,6 +5,88 @@ using namespace ::com::wilutions::byps;
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_RemoteMapTypes_setBoolean1
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1::BRequest_RemoteMapTypes_setBoolean1() : BMethodRequest(80483097) {
+}
+com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1::BRequest_RemoteMapTypes_setBoolean1(byps_ptr< ::std::map< ::std::wstring , bool > > boolean1)
+	: BMethodRequest(80483097) 
+	, boolean1(boolean1)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
+void com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1::serialize(BIO& ar, const BVERSION version) {
+	ar & boolean1;
+}
+void com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
+	__byps__remoteT->async_setBoolean1(boolean1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_550206100(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteMapTypes_setByte1
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setByte1::BRequest_RemoteMapTypes_setByte1() : BMethodRequest(80483097) {
+}
+com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setByte1::BRequest_RemoteMapTypes_setByte1(byps_ptr< ::std::map< double , int8_t > > byte1)
+	: BMethodRequest(80483097) 
+	, byte1(byte1)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
+void com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setByte1::serialize(BIO& ar, const BVERSION version) {
+	ar & byte1;
+}
+void com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setByte1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
+	__byps__remoteT->async_setByte1(byte1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1909823834(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setByte1& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setByte1*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemoteMapTypes_setByte1());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_RemoteMapTypes_setByte2
 // Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
@@ -957,48 +1039,6 @@ void BSerializer_1794219594(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		bio & r;
 	} else {
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_RemotePrimitiveTypes_setBool
-// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
-
-com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::BRequest_RemotePrimitiveTypes_setBool() : BMethodRequest(1341983932) {
-	v = false;
-}
-com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::BRequest_RemotePrimitiveTypes_setBool(bool v)
-	: BMethodRequest(1341983932) 
-	, v(v)
-	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
-void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::serialize(BIO& ar, const BVERSION version) {
-	ar & v;
-}
-void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemotePrimitiveTypes __byps__remoteT = byps_ptr_cast<RemotePrimitiveTypes>(__byps__remote);
-	__byps__remoteT->async_setBool(v, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_143860510(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool());
 	}
 }
 }}}}}

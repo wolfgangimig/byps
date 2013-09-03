@@ -45,6 +45,8 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 1862597051) return com.wilutions.byps.test.api.JSerializer_1862597051.instance;
 		// com.wilutions.byps.test.api.BResult_1174971318
 		if (typeId == 994835305) return com.wilutions.byps.test.api.JSerializer_994835305.instance;
+		// com.wilutions.byps.test.api.BResult_1178379224
+		if (typeId == 1911325389) return com.wilutions.byps.test.api.JSerializer_1911325389.instance;
 		// com.wilutions.byps.test.api.BResult_12
 		if (typeId == 309901676) return com.wilutions.byps.test.api.JSerializer_309901676.instance;
 		// com.wilutions.byps.test.api.BResult_1201775504
@@ -79,6 +81,8 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 1119760023) return com.wilutions.byps.test.api.JSerializer_1119760023.instance;
 		// com.wilutions.byps.test.api.BResult_1463615848
 		if (typeId == 548882635) return com.wilutions.byps.test.api.JSerializer_548882635.instance;
+		// com.wilutions.byps.test.api.BResult_1473575576
+		if (typeId == 1170836883) return com.wilutions.byps.test.api.JSerializer_1170836883.instance;
 		// com.wilutions.byps.test.api.BResult_1487265161
 		if (typeId == 2081879792) return com.wilutions.byps.test.api.JSerializer_2081879792.instance;
 		// com.wilutions.byps.test.api.BResult_1488550492
@@ -117,8 +121,6 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 1823196186) return com.wilutions.byps.test.api.JSerializer_1823196186.instance;
 		// com.wilutions.byps.test.api.BResult_1752158699
 		if (typeId == 150989512) return com.wilutions.byps.test.api.JSerializer_150989512.instance;
-		// com.wilutions.byps.test.api.BResult_1784257353
-		if (typeId == 1708889390) return com.wilutions.byps.test.api.JSerializer_1708889390.instance;
 		// com.wilutions.byps.test.api.BResult_1799280818
 		if (typeId == 179038766) return com.wilutions.byps.test.api.JSerializer_179038766.instance;
 		// com.wilutions.byps.test.api.BResult_181681714
@@ -155,8 +157,6 @@ public class JRegistry_Testser extends BRegistry {
 		if (typeId == 532799052) return com.wilutions.byps.test.api.JSerializer_532799052.instance;
 		// com.wilutions.byps.test.api.BResult_2067161310
 		if (typeId == 1305849624) return com.wilutions.byps.test.api.JSerializer_1305849624.instance;
-		// com.wilutions.byps.test.api.BResult_2078696281
-		if (typeId == 212739126) return com.wilutions.byps.test.api.JSerializer_212739126.instance;
 		// com.wilutions.byps.test.api.BResult_2087445849
 		if (typeId == 580667480) return com.wilutions.byps.test.api.JSerializer_580667480.instance;
 		// com.wilutions.byps.test.api.BResult_21

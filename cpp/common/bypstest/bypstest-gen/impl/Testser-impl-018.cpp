@@ -76,6 +76,10 @@ void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkelet
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(2028487863, remoteSkeleton);
 }
+void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
+	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
+	serverR->server->addRemote(1677934392, remoteSkeleton);
+}
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(1784257353, remoteSkeleton);
@@ -108,6 +112,7 @@ BClient_Testser::BClient_Testser(PTransportFactory transportFactory)
 	, remoteServerCtrl(new com::wilutions::byps::test::api::remote::BStub_RemoteServerCtrl(transport))
 	, remoteSetTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteSetTypes(transport))
 	, remoteStreams(new com::wilutions::byps::test::api::remote::BStub_RemoteStreams(transport))
+	, remoteWithAuthentication(new com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
 	, clientIF(new com::wilutions::byps::test::api::srvr::BStub_ClientIF(transport))
 	, serverIF(new com::wilutions::byps::test::api::srvr::BStub_ServerIF(transport))
 	, evolveIF(new com::wilutions::byps::test::api::ver::BStub_EvolveIF(transport))
@@ -128,6 +133,7 @@ BClient_Testser::BClient_Testser(PTransport transport)
 	, remoteServerCtrl(new com::wilutions::byps::test::api::remote::BStub_RemoteServerCtrl(transport))
 	, remoteSetTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteSetTypes(transport))
 	, remoteStreams(new com::wilutions::byps::test::api::remote::BStub_RemoteStreams(transport))
+	, remoteWithAuthentication(new com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
 	, clientIF(new com::wilutions::byps::test::api::srvr::BStub_ClientIF(transport))
 	, serverIF(new com::wilutions::byps::test::api::srvr::BStub_ServerIF(transport))
 	, evolveIF(new com::wilutions::byps::test::api::ver::BStub_EvolveIF(transport))
@@ -147,6 +153,7 @@ PRemote BClient_Testser::getStub(int remoteId) {
 	if (remoteId == 1124545992) return remoteServerCtrl;
 	if (remoteId == 1156008353) return remoteSetTypes;
 	if (remoteId == 2028487863) return remoteStreams;
+	if (remoteId == 1677934392) return remoteWithAuthentication;
 	if (remoteId == 1784257353) return clientIF;
 	if (remoteId == 1313562065) return serverIF;
 	if (remoteId == 2078696281) return evolveIF;
@@ -200,6 +207,9 @@ void BServer_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkelet
 }
 void BServer_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteStreams remoteSkeleton) {
 	BServer::addRemote(2028487863, remoteSkeleton);
+}
+void BServer_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
+	BServer::addRemote(1677934392, remoteSkeleton);
 }
 void BServer_Testser::addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
 	BServer::addRemote(1784257353, remoteSkeleton);

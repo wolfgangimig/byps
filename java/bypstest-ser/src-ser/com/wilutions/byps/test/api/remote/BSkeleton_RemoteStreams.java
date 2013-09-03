@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsAsync {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 2028487863L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.io.InputStream getImage() throws RemoteException {

@@ -24,6 +24,16 @@ typedef byps_ptr< ArrayTypes4dim > PArrayTypes4dim;
 }}}}}}
 
 //-------------------------------------------------
+// Forward Declaration of class SessionInfo
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace auth { 
+
+class SessionInfo; 
+typedef byps_ptr< SessionInfo > PSessionInfo; 
+
+}}}}}}
+
+//-------------------------------------------------
 // Forward Declaration of class AllTypesC
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
@@ -314,6 +324,16 @@ typedef byps_ptr< BStub_RemoteStreams > PStub_RemoteStreams;
 }}}}}}
 
 //-------------------------------------------------
+// Forward Declaration of class BStub_RemoteWithAuthentication
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+class BStub_RemoteWithAuthentication; 
+typedef byps_ptr< BStub_RemoteWithAuthentication > PStub_RemoteWithAuthentication; 
+
+}}}}}}
+
+//-------------------------------------------------
 // Forward Declaration of class SetTypes
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace set { 
@@ -507,6 +527,30 @@ class ArrayTypes4dim : public BSerializable {
 	public: ArrayTypes4dim();
 	public: ArrayTypes4dim(byps_ptr< BArray4< bool > > boolean4, byps_ptr< BArray4< int8_t > > byte4, byps_ptr< BArray4< wchar_t > > char4, byps_ptr< BArray4< int16_t > > short4, byps_ptr< BArray4< int32_t > > int4, byps_ptr< BArray4< int64_t > > long4, byps_ptr< BArray4< float > > float4, byps_ptr< BArray4< double > > double4, byps_ptr< BArray4< ::std::wstring > > string4, byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2004; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:814
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}}}
+
+//-------------------------------------------------
+// SessionInfo
+// typeId=65775978
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace auth { 
+
+using namespace ::com::wilutions::byps;
+
+/// <summary>
+/// Example for a session class.
+/// </summary>
+class SessionInfo : public BSerializable {
+	public: ::std::wstring sessionID;
+	
+	public: SessionInfo();
+	public: SessionInfo(::std::wstring sessionID);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 65775978; }
 	
 	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:814
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -1637,6 +1681,16 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 class RemoteStreams; 
 typedef byps_ptr< RemoteStreams > PRemoteStreams; 
+
+}}}}}}
+
+//-------------------------------------------------
+// Forward Declaration of class RemoteWithAuthentication
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+class RemoteWithAuthentication; 
+typedef byps_ptr< RemoteWithAuthentication > PRemoteWithAuthentication; 
 
 }}}}}}
 
@@ -4029,6 +4083,129 @@ class BStub_RemoteStreams : public BStub, public RemoteStreams {
 
 
 //-------------------------------------------------
+// RemoteWithAuthentication
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::com::wilutions::byps;
+
+/// <summary>
+/// This interface is an example for using the authentication mechanism.
+/// </summary>
+class RemoteWithAuthentication : public virtual BRemote
+{
+	/// <summary>
+	/// Set authentication flag in MySession.
+	/// </summary>
+	public: virtual void setUseAuthentication(bool useAuth)  = 0;
+	public: virtual void async_setUseAuthentication(bool useAuth, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Login.
+	/// </summary>
+	/// <remarks>
+	/// Only user "Fritz" is allowed to login.
+	/// </remarks>
+	public: virtual com::wilutions::byps::test::api::auth::PSessionInfo login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd)  = 0;
+	public: virtual void async_login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd, std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Do something.
+	/// </summary>
+	public: virtual int32_t doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value)  = 0;
+	public: virtual void async_doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value, std::function< void (int32_t, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Logout
+	/// </summary>
+	public: virtual void expire(com::wilutions::byps::test::api::auth::PSessionInfo sess)  = 0;
+	public: virtual void async_expire(com::wilutions::byps::test::api::auth::PSessionInfo sess, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Set the number of login calls nessesary to login the user.
+	/// </summary>
+	/// <remarks>
+	/// This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+	/// </remarks>
+	public: virtual void setReloginCount(int32_t count)  = 0;
+	public: virtual void async_setReloginCount(int32_t count, std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	
+};
+
+}}}}}}
+//-------------------------------------------------
+// Skeleton class BSkeleton_RemoteWithAuthentication
+// Your interface implementation class has to be derived from this skeleton.
+// Either provide an asynchronous or a synchronous function in your subclass.
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::com::wilutions::byps;
+
+class BSkeleton_RemoteWithAuthentication;
+typedef byps_ptr<BSkeleton_RemoteWithAuthentication> PSkeleton_RemoteWithAuthentication;
+
+class BSkeleton_RemoteWithAuthentication : public BSkeleton, public RemoteWithAuthentication {
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1677934392; }
+	
+	public: virtual void setUseAuthentication(bool useAuth) ;
+	public: virtual void async_setUseAuthentication(bool useAuth, std::function< void (bool, BException ex) > asyncResult) ;
+	
+	public: virtual com::wilutions::byps::test::api::auth::PSessionInfo login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd) ;
+	public: virtual void async_login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd, std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult) ;
+	
+	public: virtual int32_t doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value) ;
+	public: virtual void async_doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value, std::function< void (int32_t, BException ex) > asyncResult) ;
+	
+	public: virtual void expire(com::wilutions::byps::test::api::auth::PSessionInfo sess) ;
+	public: virtual void async_expire(com::wilutions::byps::test::api::auth::PSessionInfo sess, std::function< void (bool, BException ex) > asyncResult) ;
+	
+	public: virtual void setReloginCount(int32_t count) ;
+	public: virtual void async_setReloginCount(int32_t count, std::function< void (bool, BException ex) > asyncResult) ;
+	
+	
+};
+}}}}}}
+
+//-------------------------------------------------
+// Stub class BStub_RemoteWithAuthentication
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::com::wilutions::byps;
+
+class BStub_RemoteWithAuthentication;
+typedef byps_ptr<BStub_RemoteWithAuthentication> PStub_RemoteWithAuthentication;
+
+class BStub_RemoteWithAuthentication : public BStub, public RemoteWithAuthentication {
+	
+	public: BStub_RemoteWithAuthentication(PTransport transport);	
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1677934392; }
+	
+	public: virtual void setUseAuthentication(bool useAuth) ;
+	public: virtual void async_setUseAuthentication(bool useAuth, std::function< void (bool, BException ex) > asyncResult) ;
+	
+	public: virtual com::wilutions::byps::test::api::auth::PSessionInfo login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd) ;
+	public: virtual void async_login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd, std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult) ;
+	
+	public: virtual int32_t doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value) ;
+	public: virtual void async_doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value, std::function< void (int32_t, BException ex) > asyncResult) ;
+	
+	public: virtual void expire(com::wilutions::byps::test::api::auth::PSessionInfo sess) ;
+	public: virtual void async_expire(com::wilutions::byps::test::api::auth::PSessionInfo sess, std::function< void (bool, BException ex) > asyncResult) ;
+	
+	public: virtual void setReloginCount(int32_t count) ;
+	public: virtual void async_setReloginCount(int32_t count, std::function< void (bool, BException ex) > asyncResult) ;
+	
+	
+};
+}}}}}}
+
+
+//-------------------------------------------------
 // ClientIF
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
@@ -4415,6 +4592,8 @@ class BClient_Testser : public BClient {
 	
 	public: void addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteStreams remoteSkeleton);
 	
+	public: void addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
+	
 	public: void addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
 	
 	public: void addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ServerIF remoteSkeleton);
@@ -4440,6 +4619,7 @@ class BClient_Testser : public BClient {
 	public: const com::wilutions::byps::test::api::remote::PRemoteServerCtrl remoteServerCtrl;
 	public: const com::wilutions::byps::test::api::remote::PRemoteSetTypes remoteSetTypes;
 	public: const com::wilutions::byps::test::api::remote::PRemoteStreams remoteStreams;
+	public: const com::wilutions::byps::test::api::remote::PRemoteWithAuthentication remoteWithAuthentication;
 	public: const com::wilutions::byps::test::api::srvr::PClientIF clientIF;
 	public: const com::wilutions::byps::test::api::srvr::PServerIF serverIF;
 	public: const com::wilutions::byps::test::api::ver::PEvolveIF evolveIF;
@@ -4486,6 +4666,8 @@ class BServer_Testser : public BServer {
 	public: void addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteSetTypes remoteSkeleton);
 	
 	public: void addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteStreams remoteSkeleton);
+	
+	public: void addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
 	
 	public: void addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
 	

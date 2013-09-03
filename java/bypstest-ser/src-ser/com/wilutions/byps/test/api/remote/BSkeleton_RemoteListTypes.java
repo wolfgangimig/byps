@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteListTypes extends BSkeleton implements RemoteListTypesAsync {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 380156079L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.List<java.lang.Boolean> getBoolean1() throws RemoteException {

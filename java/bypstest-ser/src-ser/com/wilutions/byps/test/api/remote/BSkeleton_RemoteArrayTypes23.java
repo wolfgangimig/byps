@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteArrayTypes23 extends BSkeleton implements RemoteArrayTypes23Async {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 2081058997L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int[] sendArraysInt(int[][] arr2, int[][][] arr3, int[][][][] arr4) throws RemoteException {

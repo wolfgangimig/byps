@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteConstants extends BSkeleton implements RemoteConstantsAsync {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 431648293L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH) throws RemoteException {

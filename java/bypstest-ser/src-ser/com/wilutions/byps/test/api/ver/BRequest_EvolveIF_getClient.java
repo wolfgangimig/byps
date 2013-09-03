@@ -21,7 +21,7 @@ public final class BRequest_EvolveIF_getClient extends BMethodRequest implements
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
 			final EvolveIFAsync __byps__remoteT = (EvolveIFAsync)__byps__remote;			
-			BAsyncResultSendMethod<EvolveIF> __byps__outerResult = new BAsyncResultSendMethod<EvolveIF>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_2078696281());			
+			BAsyncResultSendMethod<EvolveIF> __byps__outerResult = new BAsyncResultSendMethod<EvolveIF>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1178379224());			
 			__byps__remoteT.async_getClient(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);

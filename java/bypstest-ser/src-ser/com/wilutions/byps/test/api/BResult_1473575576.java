@@ -11,9 +11,9 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BResult_1784257353 extends BMethodResult<com.wilutions.byps.test.api.srvr.ClientIF> implements Serializable {
+public final class BResult_1473575576 extends BMethodResult<com.wilutions.byps.test.api.srvr.ClientIF> implements Serializable {
 
 	
-	private final static long serialVersionUID = 1708889390L;
+	private final static long serialVersionUID = 1170836883L;
 	
 }

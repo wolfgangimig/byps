@@ -16,7 +16,7 @@ import com.wilutions.byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements RemoteWithAuthenticationAsync {
 	
-	public final static long serialVersionUID = 0L;
+	public final static long serialVersionUID = 1677934392L;
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setUseAuthentication(boolean useAuth) throws RemoteException {

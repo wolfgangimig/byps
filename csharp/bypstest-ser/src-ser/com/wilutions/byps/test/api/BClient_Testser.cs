@@ -36,6 +36,7 @@ namespace com.wilutions.byps.test.api
 			RemoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 			RemoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(transport);
 			RemoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(transport);
+			RemoteWithAuthentication = new com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication(transport);
 			ClientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(transport);
 			ServerIF = new com.wilutions.byps.test.api.srvr.BStub_ServerIF(transport);
 			EvolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(transport);
@@ -119,6 +120,12 @@ namespace com.wilutions.byps.test.api
 			return this;
 		}
 		
+		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) {
+			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			serverR.server.addRemote(1677934392, remoteSkeleton);
+			return this;
+		}
+		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) {
 			if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1784257353, remoteSkeleton);
@@ -153,6 +160,7 @@ namespace com.wilutions.byps.test.api
 			RemoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 			RemoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(transport);
 			RemoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(transport);
+			RemoteWithAuthentication = new com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication(transport);
 			ClientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(transport);
 			ServerIF = new com.wilutions.byps.test.api.srvr.BStub_ServerIF(transport);
 			EvolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(transport);
@@ -172,6 +180,7 @@ namespace com.wilutions.byps.test.api
 			if (remoteId == 1124545992) return RemoteServerCtrl;
 			if (remoteId == 1156008353) return RemoteSetTypes;
 			if (remoteId == 2028487863) return RemoteStreams;
+			if (remoteId == 1677934392) return RemoteWithAuthentication;
 			if (remoteId == 1784257353) return ClientIF;
 			if (remoteId == 1313562065) return ServerIF;
 			if (remoteId == 2078696281) return EvolveIF;
@@ -191,6 +200,7 @@ namespace com.wilutions.byps.test.api
 		public readonly com.wilutions.byps.test.api.remote.RemoteServerCtrl RemoteServerCtrl;
 		public readonly com.wilutions.byps.test.api.remote.RemoteSetTypes RemoteSetTypes;
 		public readonly com.wilutions.byps.test.api.remote.RemoteStreams RemoteStreams;
+		public readonly com.wilutions.byps.test.api.remote.RemoteWithAuthentication RemoteWithAuthentication;
 		public readonly com.wilutions.byps.test.api.srvr.ClientIF ClientIF;
 		public readonly com.wilutions.byps.test.api.srvr.ServerIF ServerIF;
 		public readonly com.wilutions.byps.test.api.ver.EvolveIF EvolveIF;
