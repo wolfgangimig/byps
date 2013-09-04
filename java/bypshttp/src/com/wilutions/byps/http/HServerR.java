@@ -25,7 +25,7 @@ public class HServerR extends BServerR {
 	}
 	
 	@Override
-	public synchronized void start() throws BException {
+	public void start() throws BException {
 		if (log.isDebugEnabled()) log.debug("start(");
 		for (int i = 0; i < nbOfConns; i++) {
 			sendLongPoll(null);
@@ -102,7 +102,7 @@ public class HServerR extends BServerR {
 	
 				@Override
 				public void setAsyncResult(BMessage msg, Throwable e) {
-					if (log.isDebugEnabled()) log.debug("asyncMethod.setAsyncResult(" + msg);
+					if (log.isDebugEnabled()) log.debug("asyncMethod.setAsyncResult(" + msg + ", e=" + e);
 					try {
 						if (e == null && !msg.isEmpty()) {
 							// Execute the method received from server.
@@ -111,16 +111,24 @@ public class HServerR extends BServerR {
 						else {
 							// Communication to server failed, e.g. server unavailable or timeout
 							try {
-								boolean isTimeout = HException.isTimeout(e);
-								if (!isTimeout) {
-									synchronized(refDone) {
-										if(!refDone[0]) {
-											refDone.wait(sleepMillisBeforeRetry);
-										}
-									}
-								}
-								
-								asyncResult.setAsyncResult(null, e);
+							  boolean isForbidden = HException.isForbidden(e);
+							  if (log.isDebugEnabled()) log.debug("isForbidden=" + isForbidden);
+							  if (isForbidden) {
+							    // Session was invalidated. 
+							    // Stop long-poll.
+							  }
+							  else {
+  								boolean isTimeout = HException.isTimeout(e);
+                  if (log.isDebugEnabled()) log.debug("isTimeout=" + isTimeout);
+  								if (isTimeout) {
+  									synchronized(refDone) {
+  										if(!refDone[0]) {
+  											refDone.wait(sleepMillisBeforeRetry);
+  										}
+  									}
+  								}
+                  asyncResult.setAsyncResult(null, null);
+							  }								
 							}
 							catch (InterruptedException ignored) {
 							}

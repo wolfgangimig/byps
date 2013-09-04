@@ -21,14 +21,27 @@ public class HException extends BException {
 		statusCode = httpStatusCode;
 	}
 	
-	public boolean isTimeout() {
-		return statusCode == HttpURLConnection.HTTP_CLIENT_TIMEOUT;
-	}
-	
+  public boolean isTimeout() {
+    return statusCode == HttpURLConnection.HTTP_CLIENT_TIMEOUT;
+  }
+  
+  public boolean isForbidden() {
+    return statusCode == HttpURLConnection.HTTP_FORBIDDEN;
+  }
+  
 	public static boolean isTimeout(Throwable e) {
-		if (e instanceof HException) {
-			return ((HException)e).isTimeout();
+    boolean ret = false;
+		if (e != null && e instanceof HException) {
+			ret = ((HException)e).isTimeout();
 		}
-		return false;
+		return ret;
 	}
+
+  public static boolean isForbidden(Throwable e) {
+    boolean ret = false;
+    if (e != null && e instanceof HException) {
+      ret = ((HException)e).isForbidden();
+    }
+    return ret;
+  }
 }

@@ -67,26 +67,22 @@ public abstract class BClient {
 	 */
 	public void start(final BAsyncResult<BClient> asyncResult) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
+
+    if (transport.authentication == null) {
+      transport.authentication = new ClientAuthentication(null);
+    }
 		
 		BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {
-
-			@Override
 			public void setAsyncResult(Boolean ignored, Throwable e) {
 				if (log.isDebugEnabled()) log.debug("setAsyncResult(");
-				try {
-					if (e == null && serverR != null) {
-						serverR.start();
-					}
-					asyncResult.setAsyncResult(BClient.this, e);
-				}
-				catch (BException ex) {
-					asyncResult.setAsyncResult(null, e);
-				}
+				asyncResult.setAsyncResult(BClient.this, e);
 				if (log.isDebugEnabled()) log.debug(")setAsyncResult");
 			}
-
 		};
-		
+
+		// Negotiate the protocol and authenticate.
+		// This function will call ClientAuthentication.authenticate()
+		// which starts the BServerR.
 		transport.negotiateProtocolClient(outerResult);
 				
 		if (log.isDebugEnabled()) log.debug(")negotiateTransportProtocol");
@@ -102,6 +98,10 @@ public abstract class BClient {
 	  transport.authentication = new ClientAuthentication(authentication);
 	}
 	
+  public BAuthentication getAuthentication() {
+    return transport.authentication;
+  }
+	
 	/**
 	 * Wrapper class to supply BClient object in authentication.
 	 */
@@ -114,18 +114,54 @@ public abstract class BClient {
 	  }
 
     @Override
-    public void authenticate(BClient client, BAsyncResult<Boolean> asyncResult) {
-      innerAuth.authenticate(BClient.this, asyncResult);
+    public void authenticate(BClient client, final BAsyncResult<Boolean> asyncResult) {
+      
+      // The purpose of this outerResult is to start the long-polls
+      // after re-login.
+      BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {
+        public void setAsyncResult(Boolean ignored, Throwable ex) {
+          
+          if (ex == null) {
+            if (serverR != null) {
+              try {
+                serverR.start();
+              } catch (BException ex2) {
+                ex = ex2;
+              }
+            }
+          }
+          
+          asyncResult.setAsyncResult(ignored, ex);
+        }
+      };
+      
+      if (innerAuth != null) {
+        innerAuth.authenticate(BClient.this, outerResult);
+      }
+      else {
+        outerResult.setAsyncResult(Boolean.TRUE, null);
+      }
     }
 
     @Override
-    public boolean isReloginException(Throwable ex) {
-      return innerAuth.isReloginException(ex);
+    public boolean isReloginException(BClient client, Throwable ex, int typeId) {
+      boolean ret = false;
+      if (innerAuth != null) {
+        ret = innerAuth.isReloginException(BClient.this, ex, typeId);
+      }
+      else {
+        ret = transport.isReloginException(ex);
+      }
+      return ret;
     }
 
     @Override
     public Object getSession() {
-      return innerAuth.getSession();
+      Object ret = null;
+      if (innerAuth != null) {
+        ret = innerAuth.getSession();
+      }
+      return ret;
     }
 
 	}

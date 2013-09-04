@@ -417,13 +417,17 @@ public 	class HActiveMessage {
 		}
 		else if (rctxtMessage != null) {
 			
-			if (log.isDebugEnabled()) log.debug("assume long-poll, complete response (return 408, timeout)");
+			if (log.isDebugEnabled()) log.debug("assume long-poll, complete response");
 			
 			// Assume Longpoll request because a worker thread would have called getAndRemoveRequestContext
 			// before it has called removeWorker.
 			
+			// This block is executed, if the session is invalidated.
+			// The response code is SC_FORBIDDEN in order to stop HServerR on the client side from
+			// sending a new long-poll.
+			
 			HttpServletResponse resp = (HttpServletResponse)rctxtMessage.getResponse();
-			resp.setStatus(HttpServletResponse.SC_REQUEST_TIMEOUT);
+			resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			rctxtMessage.complete();
 			rctxtMessage = null;
 		}

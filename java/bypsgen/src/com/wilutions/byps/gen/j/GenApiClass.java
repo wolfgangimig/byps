@@ -571,7 +571,7 @@ class GenApiClass {
 	
 	private void printSerialVersionUID() {
 		log.debug("printSerialVersionUID");
-		pr.println("private final static long serialVersionUID = " + serInfo.typeId + "L;");
+		pr.println("public final static long serialVersionUID = " + serInfo.typeId + "L;");
 		log.debug(")printSerialVersionUID");
 	}
 	

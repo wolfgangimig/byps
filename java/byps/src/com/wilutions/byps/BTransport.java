@@ -81,7 +81,7 @@ public class BTransport {
       if (log.isDebugEnabled()) log.debug("store object");
       final BOutput bout = getOutput();
       bout.store(methodRequest);
-
+      
       final BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
 
         @SuppressWarnings("unchecked")
@@ -96,7 +96,7 @@ public class BTransport {
             if (e != null) {
 
               // BYPS relogin error? (HTTP 403)
-              relogin = isReloginException(e);
+              relogin = internalIsReloginException(e, bout.registry.getSerializer(methodRequest, true).typeId);
               if (!relogin) {
                 asyncResult.setAsyncResult(null, e);
               }
@@ -113,8 +113,10 @@ public class BTransport {
           } catch (Throwable ex) {
             if (log.isDebugEnabled()) log.debug("Received exception.", ex);
 
-            // App relogin error?
-            relogin = isReloginException(ex);
+            // Application relogin error?
+            try {
+              relogin = internalIsReloginException(ex, bout.registry.getSerializer(methodRequest, true).typeId);
+            } catch (BException ignored) {}
             if (log.isDebugEnabled()) log.debug("isReloginException=" + relogin);
 
             if (!relogin) {
@@ -325,6 +327,10 @@ public class BTransport {
               lastAuthenticationTime = System.currentTimeMillis();
               lastAuthenticationException = ex;
             }
+            
+            // Now, the authentication is assumed to be valid for RETRY_AUTHENTICATION_AFTER_SECONDS.
+            // If there are threads currently waiting at (1), they will not trigger an authentication
+            // but will set the result immediately.
 
             for (int i = 0; i < copyResults.size(); i++) {
               copyResults.get(i).setAsyncResult(ignored, ex);
@@ -413,9 +419,22 @@ public class BTransport {
   public String toString() {
     return "[" + targetId + "]";
   }
+  
+  public boolean internalIsReloginException(Throwable ex, int typeId) {
+    if (log.isDebugEnabled()) log.debug("isReloginException(ex=" + ex);
+
+    boolean ret = false;
+    
+    if (authentication != null && ex != null) {
+      ret = authentication.isReloginException(null, ex, typeId);
+    }
+
+    if (log.isDebugEnabled()) log.debug(")internalIsReloginException=" + ret);
+    return ret;
+  }
 
   public boolean isReloginException(Throwable ex) {
-    log.info("isReloginException(ex=" + ex);
+    if (log.isDebugEnabled()) log.debug("isReloginException(ex=" + ex);
 
     boolean ret = false;
     
@@ -433,13 +452,9 @@ public class BTransport {
         }
       }
       
-      if (!ret) {
-        ret = authentication.isReloginException(ex);
-      }
-      
     }
 
-    log.info(")isReloginException=" + ret);
+    if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
     return ret;
   }
 
@@ -465,5 +480,5 @@ public class BTransport {
   protected final long RETRY_AUTHENTICATION_AFTER_SECONDS = 10; 
 
   private final Log log = LogFactory.getLog(BTransport.class);
-  
+
 }
