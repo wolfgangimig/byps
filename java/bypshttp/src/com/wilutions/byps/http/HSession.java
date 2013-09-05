@@ -32,8 +32,10 @@ public abstract class HSession {
    * @param hsess HTTP session object
    * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser()
    * @param tempDir Temporary directory for storing streams.
+   * @param stubRegistry Registry for BStub objects of all subscribers.
+   * @param listener Listener for events triggered during processing.
    */
-  public HSession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry stubRegistry) {
+  public HSession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry stubRegistry, HServerListener listener) {
     if (log.isDebugEnabled())
       log.debug("HSession(");
     this.httpSess = hsess;
@@ -48,7 +50,7 @@ public abstract class HSession {
       hsess.setMaxInactiveInterval(HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
     }
     
-    writeHelper = new HWriteResponseHelper();
+    writeHelper = new HWriteResponseHelper(listener);
 
     wireServer = new HWireServer(writeHelper, tempDir);
 

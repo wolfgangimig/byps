@@ -128,7 +128,7 @@ public class GeneratorJS implements Generator {
 		try {
 			com.yahoo.platform.yui.compressor.YUICompressor.main(args);
 		} catch (Exception e) {
-			throw new BException(BExceptionO.GENERATOR_EXCEPTION, e.toString());
+			throw new BException(BExceptionO.GENERATOR_EXCEPTION, "Cannot compress JS file", e);
 		}
 		
 		log.info("Created compressed JSON API file. Original file #bytes=" + fileApiJS.length() + ", compressed file #bytes=" + fileApiJSmin.length());

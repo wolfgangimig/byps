@@ -191,7 +191,7 @@ public abstract class HHttpServlet extends HttpServlet {
     }
 
     try {
-      NDC.push(hsess.getId());
+      // NDC.push(hsess.getId());
 
       if (streamIdStr != null && streamIdStr.length() != 0) {
         if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
@@ -230,8 +230,7 @@ public abstract class HHttpServlet extends HttpServlet {
       response.setStatus(status);
       response.getOutputStream().close();
     } finally {
-      NDC.pop();
-      NDC.remove();
+      // NDC.pop();
     }
 
     if (log.isDebugEnabled()) log.debug(")doGet");
@@ -282,7 +281,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
 
     try {
-      NDC.push(hsess.getId());
+      // NDC.push(hsess.getId());
 
       final HSession sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
       if (log.isDebugEnabled()) log.debug("byps session=" + sess);
@@ -318,7 +317,9 @@ public abstract class HHttpServlet extends HttpServlet {
             if (asyncResponse == null) return;
 
             try {
-              if (HConstants.PROCESS_MESSAGE_ASYNC) NDC.push(hsess.getId());
+              if (HConstants.PROCESS_MESSAGE_ASYNC) {
+                // NDC.push(hsess.getId());
+              }
 
               // ---------- execute Message ------------------
               final BServer server = sess.getServer();
@@ -352,10 +353,8 @@ public abstract class HHttpServlet extends HttpServlet {
               sess.wireServer.activeMessages.removeWorker(header.messageId);
 
               if (HConstants.PROCESS_MESSAGE_ASYNC) {
-                NDC.pop();
-                NDC.remove();
+                // NDC.pop();
               }
-
             }
 
           }
@@ -375,8 +374,7 @@ public abstract class HHttpServlet extends HttpServlet {
         rctxt.complete();
       }
     } finally {
-      NDC.pop();
-      NDC.remove();
+      // NDC.pop();
     }
 
     if (log.isDebugEnabled()) log.debug(")doMessage");
@@ -495,7 +493,7 @@ public abstract class HHttpServlet extends HttpServlet {
     }
 
     try {
-      NDC.push(hsess.getId());
+      // NDC.push(hsess.getId());
 
       if (log.isDebugEnabled()) log.debug("start async, timeout=" + HConstants.REQUEST_TIMEOUT_MILLIS);
 
@@ -512,8 +510,7 @@ public abstract class HHttpServlet extends HttpServlet {
         rctxt.complete();
       }
     } finally {
-      NDC.pop();
-      NDC.remove();
+      // NDC.pop();
     }
 
     if (log.isDebugEnabled()) log.debug(")doPutStream");
@@ -676,7 +673,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
 
     try {
-      NDC.push(hsess.getId());
+      // NDC.push(hsess.getId());
 
       final HSession sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
       if (log.isDebugEnabled()) log.debug("byps session=" + sess);
@@ -739,8 +736,7 @@ public abstract class HHttpServlet extends HttpServlet {
       response.getWriter().print(e.toString());
       response.getWriter().close();
     } finally {
-      NDC.pop();
-      NDC.remove();
+      // NDC.pop();
     }
 
     if (log.isDebugEnabled()) log.debug(")doHtmlUpload");
