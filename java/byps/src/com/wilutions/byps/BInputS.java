@@ -27,7 +27,7 @@ public class BInputS extends BInputBin {
 			
 			// Read type and size from stream
 			int typeId = bbuf.getTypeId();
-			if (typeId < 0) throw new BException(BExceptionO.CORRUPT, "Invalid type ID at stream position " + bbuf.position());
+			if (typeId < 0) throw new BException(BExceptionC.CORRUPT, "Invalid type ID at stream position " + bbuf.position());
 			
 			// If the serializer is not supplied, lookup
 			// the serializer from the registry
@@ -42,9 +42,9 @@ public class BInputS extends BInputBin {
 			
 		}
 		else if (id < 0) {
-			if (idMap == null) throw new BException(BExceptionO.INTERNAL, "Reference map must not be null.");
+			if (idMap == null) throw new BException(BExceptionC.INTERNAL, "Reference map must not be null.");
 			obj = idMap.get(-id);
-			if (obj == null) throw new BException(BExceptionO.INTERNAL, "Null values must not be mapped.");
+			if (obj == null) throw new BException(BExceptionC.INTERNAL, "Null values must not be mapped.");
 		}
 		else {
 			// NULL reference

@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BInput;
 import com.wilutions.byps.BOutput;
 import com.wilutions.byps.BTransport;
@@ -311,7 +311,7 @@ public class TestSerializerSet {
 			Assert.fail("Exception expected for List<Object> containing Strings");
 		}
 		catch (BException e) {
-			Assert.assertTrue(e.toString().startsWith("[BYPS:" + BExceptionO.CORRUPT));
+			Assert.assertTrue(e.toString().startsWith("[BYPS:" + BExceptionC.CORRUPT));
 		}
 		
 		SetTypes obj = new SetTypes();

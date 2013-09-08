@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_registerWithClientMap extends BMethodReques
 
 	public int id;
 	
-	private final static long serialVersionUID = 1921080901L;
+	public final static long serialVersionUID = 1921080901L;
 	
 	public int getRemoteId() { return 1313562065; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_ServerIF_registerWithClientMap extends BMethodReques
 		try {
 			final ServerIFAsync __byps__remoteT = (ServerIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_registerWithClientMap(id, __byps__outerResult);
+			__byps__remoteT.registerWithClientMap(id, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -21,80 +21,75 @@ public class BStub_RemoteWithAuthentication extends BStub implements RemoteWithA
 	public void setUseAuthentication(boolean useAuth) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setUseAuthentication(useAuth, asyncResult);
+		setUseAuthentication(useAuth, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) {
+	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteWithAuthentication_setUseAuthentication req = new BRequest_RemoteWithAuthentication_setUseAuthentication();		
 		req.useAuth = useAuth;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.auth.SessionInfo login(java.lang.String userName, java.lang.String userPwd) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult = new BSyncResult<com.wilutions.byps.test.api.auth.SessionInfo>();		
-		async_login(userName, userPwd, asyncResult);
+		login(userName, userPwd, asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_login(java.lang.String userName, java.lang.String userPwd, final BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
+	public void login(java.lang.String userName, java.lang.String userPwd, final BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteWithAuthentication_login req = new BRequest_RemoteWithAuthentication_login();		
 		req.userName = userName;
 		req.userPwd = userPwd;
-		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.auth.SessionInfo> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.auth.SessionInfo>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int doit(int value) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
-		async_doit(value, asyncResult);
+		doit(value, asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_doit(int value, final BAsyncResult<Integer> asyncResult) {
+	public void doit(int value, final BAsyncResult<Integer> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();		
 		req.value = value;
-		BAsyncResultReceiveMethod<Integer> outerResult = new BAsyncResultReceiveMethod<Integer>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void expire() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_expire(asyncResult);
+		expire(asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_expire(final BAsyncResult<Object> asyncResult) {
+	public void expire(final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteWithAuthentication_expire req = new BRequest_RemoteWithAuthentication_expire();		
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setReloginCount(int count) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setReloginCount(count, asyncResult);
+		setReloginCount(count, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setReloginCount(int count, final BAsyncResult<Object> asyncResult) {
+	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteWithAuthentication_setReloginCount req = new BRequest_RemoteWithAuthentication_setReloginCount();		
 		req.count = count;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	

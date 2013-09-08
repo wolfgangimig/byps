@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_1042475995 extends BMethodResult<com.wilutions.byps.test.api.enu.EnumPlanets> implements Serializable {
 
 	
-	private final static long serialVersionUID = 2038872493L;
+	public final static long serialVersionUID = 2038872493L;
 	
 }

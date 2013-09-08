@@ -14,15 +14,15 @@ import java.io.Serializable;
 public final class BRequest_EvolveIF_getClient extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 98720592L;
+	public final static long serialVersionUID = 98720592L;
 	
 	public int getRemoteId() { return 2078696281; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
 			final EvolveIFAsync __byps__remoteT = (EvolveIFAsync)__byps__remote;			
-			BAsyncResultSendMethod<EvolveIF> __byps__outerResult = new BAsyncResultSendMethod<EvolveIF>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1178379224());			
-			__byps__remoteT.async_getClient(__byps__outerResult);
+			BAsyncResultSendMethod<EvolveIF> __byps__outerResult = new BAsyncResultSendMethod<EvolveIF>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_2078696281());			
+			__byps__remoteT.getClient(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

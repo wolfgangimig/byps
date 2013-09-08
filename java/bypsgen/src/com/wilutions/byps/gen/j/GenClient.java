@@ -148,7 +148,7 @@ public class GenClient {
 		String typeName = pctxt.getSkeletonClassQName(rinfo, pack);
 		pr.print("public ").print(clientClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) throws BException {");
 		pr.beginBlock();
-		pr.println("if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, \"No reverse connections.\");");
+		pr.println("if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, \"No reverse connections.\");");
 		pr.println("serverR.server.addRemote(" + rinfo.typeId + ", remoteSkeleton);");
 		pr.println("return this;");
 		pr.endBlock();

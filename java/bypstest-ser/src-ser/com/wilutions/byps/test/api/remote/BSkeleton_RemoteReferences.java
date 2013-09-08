@@ -20,10 +20,10 @@ public class BSkeleton_RemoteReferences extends BSkeleton implements RemoteRefer
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.refs.Node getNode() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
+	public void getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
 		try {
 			com.wilutions.byps.test.api.refs.Node ret = getNode();
 			asyncResult.setAsyncResult(ret, null);
@@ -34,10 +34,10 @@ public class BSkeleton_RemoteReferences extends BSkeleton implements RemoteRefer
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setNode(com.wilutions.byps.test.api.refs.Node v) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
+	public void setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setNode(v);
 			asyncResult.setAsyncResult(null, null);

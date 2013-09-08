@@ -19,7 +19,7 @@ import org.junit.Test;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BProtocolS;
 import com.wilutions.byps.BWire;
@@ -173,7 +173,7 @@ public class TestRemoteServerR {
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e) {
-					throw new BException(BExceptionO.CANCELLED, e.toString(), e);
+					throw new BException(BExceptionC.CANCELLED, e.toString(), e);
 				}
 				log.info(")incrementInt");
 				return a+1;
@@ -210,7 +210,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BExceptionO.SERVICE_NOT_IMPLEMENTED, e.code);
+			TestUtils.assertEquals(log, "exception", BExceptionC.SERVICE_NOT_IMPLEMENTED, e.code);
 		}
 		
 		log.info(")testCallClientFromServerNoRemoteImpl");
@@ -479,7 +479,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expcected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BExceptionO.CLIENT_DIED, e.code);
+			TestUtils.assertEquals(log, "exception", BExceptionC.CLIENT_DIED, e.code);
 		}
 		log.info(")testCallDeadClientFromClient");
 	}
@@ -529,7 +529,7 @@ public class TestRemoteServerR {
 			Assert.fail("Exception expcected");
 		}
 		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", BExceptionO.CLIENT_DIED, e.code);
+			TestUtils.assertEquals(log, "exception", BExceptionC.CLIENT_DIED, e.code);
 		}
 		log.info(")testCallKilledClientFromClient");
 	}
@@ -555,7 +555,7 @@ public class TestRemoteServerR {
 					}
 				}
 				catch (IOException e) {
-					throw new BException(BExceptionO.IOERROR, "", e);
+					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 			}
 		});
@@ -587,7 +587,7 @@ public class TestRemoteServerR {
 				try {
 					return TestUtilsHttp.makeTestStreams();
 				} catch (IOException e) {
-					throw new BException(BExceptionO.IOERROR, "", e);
+					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 			}
 		});
@@ -624,7 +624,7 @@ public class TestRemoteServerR {
 				try {
 					return TestUtilsHttp.makeTestStreams();
 				} catch (IOException e) {
-					throw new BException(BExceptionO.IOERROR, "", e);
+					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 			}
 		};
@@ -680,7 +680,7 @@ public class TestRemoteServerR {
 					}
 				} catch (IOException e) {
 					log.error(e);
-					throw new BException(BExceptionO.IOERROR, "", e);
+					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 				log.info(")putStreams");
 			}
@@ -731,7 +731,7 @@ public class TestRemoteServerR {
 					}
 				} catch (IOException e) {
 					log.error(e);
-					throw new BException(BExceptionO.IOERROR, "", e);
+					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 				log.info(")putStreams");
 			}

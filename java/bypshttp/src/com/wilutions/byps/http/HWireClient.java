@@ -33,7 +33,7 @@ import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BBufferJson;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BMessageHeader;
 import com.wilutions.byps.BNegotiate;
@@ -153,7 +153,7 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug("executeRequest(" + r);
 		
 		if (isDone) {
-			BException e = new BException(BExceptionO.CANCELLED, "HTTP Client already disconnected.");
+			BException e = new BException(BExceptionC.CANCELLED, "HTTP Client already disconnected.");
 			throw e;
 		}
 		
@@ -174,7 +174,7 @@ public class HWireClient extends BWire {
 			}
 		}
 
-		BException e = new BException(BExceptionO.TOO_MANY_REQUESTS, "Failed to send method or stream because to many requests are currently active.");
+		BException e = new BException(BExceptionC.TOO_MANY_REQUESTS, "Failed to send method or stream because to many requests are currently active.");
 		throw e;
 	}
 	
@@ -348,7 +348,7 @@ public class HWireClient extends BWire {
 		}
 		
 		public void throwIfCancelled() throws BException {
-			if (_canceled) throw new BException(BExceptionO.CANCELLED, "Request cancelled");
+			if (_canceled) throw new BException(BExceptionC.CANCELLED, "Request cancelled");
 		}
 		
 		@Override
@@ -576,11 +576,11 @@ public class HWireClient extends BWire {
 			catch (Throwable e) {
 				if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
 				if (cancelAllRequests || request.isCanceled()) {
-					BException bex = new BException(BExceptionO.CANCELLED, "");
+					BException bex = new BException(BExceptionC.CANCELLED, "");
 					returnException = bex;
 				}
 				else {
-					BException bex = new BException(BExceptionO.IOERROR, e.getMessage(), e);
+					BException bex = new BException(BExceptionC.IOERROR, e.getMessage(), e);
 					returnException = bex;
 				}
 				break;
@@ -757,7 +757,7 @@ public class HWireClient extends BWire {
 					InputStream errStrm = conn.getErrorStream();
 					bufferFromStream(errStrm, false);
 					
-					throw new BException(BExceptionO.IOERROR, "HTTP " + statusCode, e);
+					throw new BException(BExceptionC.IOERROR, "HTTP " + statusCode, e);
 				}
 	
 				if (stats != null) {
@@ -777,11 +777,11 @@ public class HWireClient extends BWire {
 		catch (Throwable e) {
 			if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
 			if (cancelAllRequests || request.isCanceled()) {
-				BException bex = new BException(BExceptionO.CANCELLED, "");
+				BException bex = new BException(BExceptionC.CANCELLED, "");
 				returnException = bex;
 			}
 			else {
-				BException bex = new BException(BExceptionO.IOERROR, e.getMessage(), e);
+				BException bex = new BException(BExceptionC.IOERROR, e.getMessage(), e);
 				returnException = bex;
 			}
 		}
@@ -827,7 +827,7 @@ public class HWireClient extends BWire {
 				throw (IOException)e;
 			}
 			else {
-				throw new BException(BExceptionO.CANCELLED, "", e);
+				throw new BException(BExceptionC.CANCELLED, "", e);
 			}
 		}
 		
@@ -882,7 +882,7 @@ public class HWireClient extends BWire {
 					
 					int statusCode = conn.getResponseCode();
 					if (log.isDebugEnabled()) log.debug("received http status=" + statusCode); 
-					BException bex = new BException(BExceptionO.IOERROR, "HTTP " + statusCode);
+					BException bex = new BException(BExceptionC.IOERROR, "HTTP " + statusCode);
 					setAsyncResult(null, bex);
 					removeRequest(request, null, bex);
 				}

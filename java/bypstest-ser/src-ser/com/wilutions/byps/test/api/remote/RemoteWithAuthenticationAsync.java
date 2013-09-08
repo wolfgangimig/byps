@@ -18,7 +18,7 @@ public interface RemoteWithAuthenticationAsync extends RemoteWithAuthentication,
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setUseAuthentication(boolean useAuth) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) ;
+	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	 * Login.
@@ -32,7 +32,7 @@ public interface RemoteWithAuthenticationAsync extends RemoteWithAuthentication,
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.auth.SessionInfo login(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_login(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd, final BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) ;
+	public void login(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd, final BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) ;
 	
 	/**
 	 * Do something.
@@ -44,7 +44,7 @@ public interface RemoteWithAuthenticationAsync extends RemoteWithAuthentication,
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int value) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int value, final BAsyncResult<Integer> asyncResult) ;
+	public void doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int value, final BAsyncResult<Integer> asyncResult) ;
 	
 	/**
 	 * Logout
@@ -54,7 +54,7 @@ public interface RemoteWithAuthenticationAsync extends RemoteWithAuthentication,
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void expire(com.wilutions.byps.test.api.auth.SessionInfo sess) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_expire(com.wilutions.byps.test.api.auth.SessionInfo sess, final BAsyncResult<Object> asyncResult) ;
+	public void expire(com.wilutions.byps.test.api.auth.SessionInfo sess, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	 * Set the number of login calls nessesary to login the user.
@@ -65,7 +65,7 @@ public interface RemoteWithAuthenticationAsync extends RemoteWithAuthentication,
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setReloginCount(int count) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setReloginCount(int count, final BAsyncResult<Object> asyncResult) ;
+	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) ;
 	
 	
 }

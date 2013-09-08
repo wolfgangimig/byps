@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteArrayTypes1dim_getFloat extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 522273269L;
+	public final static long serialVersionUID = 522273269L;
 	
 	public int getRemoteId() { return 1557084481; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteArrayTypes1dim_getFloat extends BMethodRequest
 		try {
 			final RemoteArrayTypes1dimAsync __byps__remoteT = (RemoteArrayTypes1dimAsync)__byps__remote;			
 			BAsyncResultSendMethod<float[]> __byps__outerResult = new BAsyncResultSendMethod<float[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_766441794());			
-			__byps__remoteT.async_getFloat(__byps__outerResult);
+			__byps__remoteT.getFloat(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

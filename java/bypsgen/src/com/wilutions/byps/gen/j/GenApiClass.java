@@ -368,7 +368,7 @@ class GenApiClass {
 			.print("());");
 		pr.println();
 		
-		CodePrinter mpr = pr.print("__byps__remoteT.").print("async_").print(methodInfo.name).print("(");
+		CodePrinter mpr = pr.print("__byps__remoteT.").print(methodInfo.name).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {

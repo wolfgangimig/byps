@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_7007 extends BMethodResult<com.wilutions.byps.test.api.srvr.ChatStructure> implements Serializable {
 
 	
-	private final static long serialVersionUID = 1462588845L;
+	public final static long serialVersionUID = 1462588845L;
 	
 }

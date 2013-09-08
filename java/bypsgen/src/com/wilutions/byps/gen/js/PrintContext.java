@@ -116,6 +116,8 @@ class PrintContext extends PrintContextBase {
 
 	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo, boolean async, boolean skeleton) throws IOException {
 		
+	  pr.checkpoint();
+	  
 		printComments(pr, methodInfo.comments);
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
@@ -127,6 +129,12 @@ class PrintContext extends PrintContextBase {
 		
 		for (int i = 0; i < methodInfo.requestInfo.members.size(); i++) {
 			MemberInfo pinfo = methodInfo.requestInfo.members.get(i);
+			
+			if (!skeleton) {
+		     // Skip authentication parameter
+	      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+			}
+			
 			mpr.print(pinfo.name);
 			if (async || i != methodInfo.requestInfo.members.size()-1) mpr.print(", ");
 		}

@@ -501,7 +501,7 @@ void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getClient::execute
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
 		else {
-			PSerializable __byps__methodResult(new BResult_1473575576(__byps__result));
+			PSerializable __byps__methodResult(new BResult_1784257353(__byps__result));
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
 		}
 	});
@@ -573,7 +573,7 @@ void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_getPartner::execut
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
 		else {
-			PSerializable __byps__methodResult(new BResult_1473575576(__byps__result));
+			PSerializable __byps__methodResult(new BResult_1784257353(__byps__result));
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
 		}
 	});
@@ -839,7 +839,7 @@ void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::execute(
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
 		else {
-			PSerializable __byps__methodResult(new BResult_1178379224(__byps__result));
+			PSerializable __byps__methodResult(new BResult_2078696281(__byps__result));
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
 		}
 	});

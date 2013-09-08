@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BBuffer;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BMessageHeader;
 
 public class HWriteResponseHelper {
@@ -44,7 +44,7 @@ public class HWriteResponseHelper {
       int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
       if (e instanceof BException) {
         BException bex = (BException) e;
-        if (bex.code == BExceptionO.CANCELLED) {
+        if (bex.code == BExceptionC.CANCELLED) {
           status = HttpServletResponse.SC_NOT_ACCEPTABLE;
         }
       }

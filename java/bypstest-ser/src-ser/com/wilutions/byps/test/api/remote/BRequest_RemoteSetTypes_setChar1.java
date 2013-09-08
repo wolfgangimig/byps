@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setChar1 extends BMethodRequest imple
 
 	public java.util.TreeSet<java.lang.Character> char1;
 	
-	private final static long serialVersionUID = 1608569502L;
+	public final static long serialVersionUID = 1608569502L;
 	
 	public int getRemoteId() { return 1156008353; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteSetTypes_setChar1 extends BMethodRequest imple
 		try {
 			final RemoteSetTypesAsync __byps__remoteT = (RemoteSetTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setChar1(char1, __byps__outerResult);
+			__byps__remoteT.setChar1(char1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

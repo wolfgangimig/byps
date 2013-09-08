@@ -20,10 +20,10 @@ public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int incrementInt(int a) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_incrementInt(int a, final BAsyncResult<Integer> asyncResult) {
+	public void incrementInt(int a, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = incrementInt(a);
 			asyncResult.setAsyncResult(ret, null);
@@ -34,10 +34,10 @@ public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getStreams(int ctrl, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
+	public void getStreams(int ctrl, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
 		try {
 			java.util.List<java.io.InputStream> ret = getStreams(ctrl);
 			asyncResult.setAsyncResult(ret, null);
@@ -48,10 +48,10 @@ public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_putStreams(java.util.List<java.io.InputStream> strm, int ctrl, final BAsyncResult<Object> asyncResult) {
+	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl, final BAsyncResult<Object> asyncResult) {
 		try {
 			putStreams(strm, ctrl);
 			asyncResult.setAsyncResult(null, null);
@@ -62,10 +62,10 @@ public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public ChatStructure sendChat(ChatStructure cs) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_sendChat(ChatStructure cs, final BAsyncResult<ChatStructure> asyncResult) {
+	public void sendChat(ChatStructure cs, final BAsyncResult<ChatStructure> asyncResult) {
 		try {
 			ChatStructure ret = sendChat(cs);
 			asyncResult.setAsyncResult(ret, null);

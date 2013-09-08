@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setChar1 extends BMethodRequest imple
 
 	public java.util.TreeMap<java.lang.Float,java.lang.Character> char1;
 	
-	private final static long serialVersionUID = 1909424616L;
+	public final static long serialVersionUID = 1909424616L;
 	
 	public int getRemoteId() { return 80483097; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteMapTypes_setChar1 extends BMethodRequest imple
 		try {
 			final RemoteMapTypesAsync __byps__remoteT = (RemoteMapTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setChar1(char1, __byps__outerResult);
+			__byps__remoteT.setChar1(char1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

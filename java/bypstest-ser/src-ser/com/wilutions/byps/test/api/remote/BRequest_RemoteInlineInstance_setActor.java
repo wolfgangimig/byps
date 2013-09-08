@@ -15,7 +15,7 @@ public final class BRequest_RemoteInlineInstance_setActor extends BMethodRequest
 
 	public com.wilutions.byps.test.api.inl.Actor act;
 	
-	private final static long serialVersionUID = 299289599L;
+	public final static long serialVersionUID = 299289599L;
 	
 	public int getRemoteId() { return 1206670536; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteInlineInstance_setActor extends BMethodRequest
 		try {
 			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setActor(act, __byps__outerResult);
+			__byps__remoteT.setActor(act, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

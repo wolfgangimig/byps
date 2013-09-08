@@ -217,7 +217,7 @@ public class BJsonObject {
 		try {
 			bbuf = new BBufferJson(ByteBuffer.wrap(s.getBytes("UTF-8")));
 		} catch (UnsupportedEncodingException e) {
-			throw new BException(BExceptionO.INTERNAL, "", e);
+			throw new BException(BExceptionC.INTERNAL, "", e);
 		}
 		BJsonObject obj = (BJsonObject)bbuf.parseJsonValue();
 		return obj;

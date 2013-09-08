@@ -16,7 +16,7 @@ public final class BRequest_RemoteWithAuthentication_doit extends BMethodRequest
 	public com.wilutions.byps.test.api.auth.SessionInfo sess;
 	public int value;
 	
-	private final static long serialVersionUID = 388793292L;
+	public final static long serialVersionUID = 388793292L;
 	
 	public int getRemoteId() { return 1677934392; }
 	
@@ -29,7 +29,7 @@ public final class BRequest_RemoteWithAuthentication_doit extends BMethodRequest
 		try {
 			final RemoteWithAuthenticationAsync __byps__remoteT = (RemoteWithAuthenticationAsync)__byps__remote;			
 			BAsyncResultSendMethod<Integer> __byps__outerResult = new BAsyncResultSendMethod<Integer>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_5());			
-			__byps__remoteT.async_doit(sess, value, __byps__outerResult);
+			__byps__remoteT.doit(sess, value, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

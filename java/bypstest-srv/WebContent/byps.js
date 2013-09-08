@@ -17,6 +17,18 @@ com.wilutions.byps.BBinaryModel = function(v) {
 
 //------------------------------------------------------------------------------------------------
 
+com.wilutions.byps.BExceptionO = {
+	formatMessage : function(code, msg, details, cause) {
+		var s = "[BYPS:" + code + "]";
+		if (msg) s += "[" + msg + "]";
+		if (details) s += "[" + details + "]";
+		if (cause) s += "[" + cause + "]";
+		return s;
+	}
+};
+
+//------------------------------------------------------------------------------------------------
+
 com.wilutions.byps.BException = function(code, msg, details, cause) {
 	this._typeId = 20;
 	this.code = code;
@@ -26,9 +38,7 @@ com.wilutions.byps.BException = function(code, msg, details, cause) {
 };
 
 com.wilutions.byps.BException.prototype.toString = function() {
-	var s = "[BYPS:" + this.code + "]";
-	if (this.msg) s += "[" + this.msg + "]";
-	if (this.details) s += "[" + this.details + "]";
+	var s = com.wilutions.byps.BExceptionO.formatMessage(this.code, this.msg, this.details, this.cause);
 	return s;
 };
 
@@ -64,10 +74,13 @@ com.wilutions.byps.BExceptionC = {
 	INTERNAL : 3,
 	CORRUPT : 8,
 	IOERROR : 14,
+	REMOTE_ERROR : 10,
 	SERVICE_NOT_IMPLEMENTED : 11,
 	UNSUPPORTED_METHOD : 17,
-	REMOTE_ERROR : 10,
+	AUTHENTICATION_REQUIRED : 18
 };
+
+//------------------------------------------------------------------------------------------------
 
 com.wilutions.byps.BContentStream = function(streamId) {
 	this._typeId = 15;
@@ -396,15 +409,15 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 		
 	// Send function.
 	// The streams are already sent by a HTML file upload.
-	this.send = function(requestMessage, asyncResult) {
-		return this._internalSend(requestMessage, asyncResult, this.timeoutMillisClient);
+	this.send = function(requestMessage, asyncResult, processAsync) {
+		this._internalSend(requestMessage, asyncResult, this.timeoutMillisClient, processAsync);
 	};
 	
 	this.sendR = function(requestMessage, asyncResult) {
-		return this._internalSend(requestMessage, asyncResult, 60 * 60 * 1000);
+		this._internalSend(requestMessage, asyncResult, 60 * 60 * 1000, true);
 	};
 
-	this._internalSend = function(requestMessage, asyncResult, timeoutMillis) {
+	this._internalSend = function(requestMessage, asyncResult, timeoutMillis, processAsync) {
 		var requestId = Math.random();
 		var xhr = new XMLHttpRequest();
 		
@@ -415,13 +428,13 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 		url += "__ts=";
 		url += new Date().getTime();
 		
-		xhr.open('POST', url, !!asyncResult);
+		xhr.open('POST', url, processAsync);
 		
 		if (timeoutMillis > 0) {
 			xhr.timeout = timeoutMillis;
 		}
 		
-		if (asyncResult) {
+		if (processAsync) {
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState != 4) return;
 				
@@ -441,21 +454,22 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 		xhr.setRequestHeader("Content-type", "application/json");
 		xhr.send(requestMessage.jsonText);
 		
-		var ret = new com.wilutions.byps.BMessage();
-		
-		if (!asyncResult) {
+		if (!processAsync) {
 			
 			delete me.openRequestsToCancel[requestId];
 			
+			var result = new com.wilutions.byps.BMessage();
+			var exception = null;
+			
 			if (xhr.status == 200) {
-				ret.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
+				result.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
 			} else {
-				var ex = com.wilutions.byps.throwIOERROR("HTTP status " + xhr.status, xhr.responseText);
-				throw ex;
+				exception = com.wilutions.byps.throwIOERROR("HTTP status " + xhr.status, xhr.responseText);
 			}
+			
+			asyncResult(result, exception);
 		}
 		
-		return ret;
 	};
 	
 	this.makeMessageId = function() {
@@ -473,15 +487,28 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 	
 };
 
+
+//------------------------------------------------------------------------------------------------
+
+com.wilutions.byps.BAuthentication = function() {
+	this.authenticate = function(client, asyncResult) {};
+	this.isReloginException = function(client, ex, typeId) { return false; };
+	this.getSession = function() { return null; };
+};
+
 //------------------------------------------------------------------------------------------------
 
 com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 	
-	var me = this;
-	
 	this.apiDesc = apiDesc;
 	this.wire = wire;
 	this.targetId = targetId || "";
+	
+	this._authentication = null;
+	this._lastAuthenticationTime = 0;
+	this._lastAuthenticationException = null;
+	this._asyncResultsWaitingForAuthentication = [];
+	this._RETRY_AUTHENTICATION_AFTER_SECONDS = 10;
 	
 	this.getOutput = function() {
 		return new com.wilutions.byps.BInputOutput(this);
@@ -498,42 +525,92 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 	this.getInput = function(jsonText) {
 		return new com.wilutions.byps.BInputOutput(this, null, jsonText);
 	};
-
+	
+	this.sendMethod = function(methodMessage, __byps__asyncResult) {
+		if (__byps__asyncResult) {
+			this.send(methodMessage, function(resultMessage, ex) { 
+				__byps__asyncResult(resultMessage ? resultMessage.result : null, ex);
+			});
+		}
+		else {
+			return this.send(methodMessage).result;
+		}
+	};
+	
 	this.send = function(obj, asyncResult) {
+		var processAsync = !!asyncResult;
+		var methodResult = {};
+		var exception = null;
 		
-		var transport = this;
-		var bout = transport.getOutput();
-		var requestMessage = bout.store(obj);
-		
-		var outerResult = null;
-		if (asyncResult) {
-			
-			outerResult = function(responseMessage, exception) {
-				try {
-					if (exception) {
-						asyncResult(null, exception);
-					}
-					else {
-						var bin = transport.getInput(responseMessage.jsonText);
-						var ret = bin.load();
-						asyncResult(ret.result, null);
-					}
-				} catch (ex) {
-					asyncResult(null, ex);
-				};
+		if (!processAsync) {
+			asyncResult = function(result, ex) {
+				methodResult = result;
+				exception = ex;
 			};
 		}
 		
-		var responseMessage = wire.send(requestMessage, outerResult);
+		this._internalSend(obj, asyncResult, processAsync);
 		
-		var ret = {};
-		
-		if (!asyncResult) {
-			var bin = transport.getInput(responseMessage.jsonText);
-			ret = bin.load();
+		if (!processAsync) {
+			if (exception) throw exception;
 		}
 		
-		return ret;
+		return methodResult;
+	};
+
+	this._internalSend = function(obj, asyncResult, processAsync) {
+		
+		var me = this;
+		var transport = this;
+		
+		// If authentication is enabled, replace session object element name 
+		// found in obj.__byps__sess with the session object.
+		var sessElmName = obj.__byps__sess;
+		if (this._authentication && sessElmName) {
+			obj[sessElmName] = this._authentication.getSession();
+			delete obj.__byps__sess; 
+		}
+		
+		var bout = transport.getOutput();
+		var requestMessage = bout.store(obj);
+		
+		var outerResult = function(responseMessage, ex) {
+			
+			var methodResult = null;
+			
+			try {
+				if (!ex) {
+					var bin = transport.getInput(responseMessage.jsonText);
+					methodResult = bin.load();
+				}
+			} catch (ex2) {
+				ex = ex2;
+			};
+			
+			var relogin = me._internalIsReloginException(ex, 0);
+			if (relogin) {
+				
+				var authResult = function(result, ex) {
+					if (ex) {
+						asyncResult(result, ex);
+					}
+					else {
+						// Send request again
+						obj.__byps__sess = sessElmName;
+						me._internalSend(obj, asyncResult, processAsync);
+					}
+				};
+				
+				me.negotiateProtocolClient(authResult, processAsync);
+				
+			}
+			else {
+				asyncResult(methodResult, ex);
+			}
+		};
+		
+		wire.send(requestMessage, outerResult, processAsync);
+		
 	};
 	
 	this.recv = function(server, requestMessage, asyncResult) {
@@ -561,43 +638,113 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 		server.recv(clientTargetId, methodObj, methodResult);
 	};
 	
-	this.negotiateProtocolClient = function(asyncResult) { // BAsyncResult<Boolean>
+	this.negotiateProtocolClient = function(asyncResult, processAsync) { // BAsyncResult<Boolean>
+		
+		var me = this;
+		
 		var nego = new com.wilutions.byps.BNegotiate(apiDesc);
 		var jsonText = JSON.stringify(nego.toArray());
-		
-		var outerResult = null;
-		if (asyncResult) {
-			outerResult = function(responseMessage, exception) {
-				try {
-					if (exception) {
-						asyncResult(false, exception);
-					}
-					else {
-						var arr = JSON.parse(responseMessage.jsonText);
-						nego.fromArray(arr);
-						me.targetId = nego.targetId;
-						asyncResult(true, null);
-					}
-				} catch (ex) {
-					asyncResult(false, ex);
-				};
+		var requestMessage = new com.wilutions.byps.BMessage(jsonText);
+	
+		var outerResult = function(responseMessage, ex) {
+			
+			var exception = null;
+			
+			try {
+				if (ex) {
+					exception = ex;
+				}
+				else {
+					var arr = JSON.parse(responseMessage.jsonText);
+					nego.fromArray(arr);
+					me.targetId = nego.targetId;
+				}
+			} catch (ex2) {
+				exception = ex2;
 			};
+			
+			if (exception) {
+				asyncResult(null, exception);
+			}
+			else {
+				me._internalAuthenticate(asyncResult, processAsync);
+			}
 		};
 		
-		var requestMessage = new com.wilutions.byps.BMessage(jsonText);
-		
-		var responseMessage = wire.send(requestMessage, outerResult);
-		if (!asyncResult) {
-			var arr = JSON.parse(responseMessage.jsonText);
-			nego.fromArray(arr);
-			me.targetId = nego.targetId;
-		}
+		wire.send(requestMessage, outerResult, processAsync);
 		
 		return true;
 	};
 	
 	this.createServerR = function(server) {
 		return new com.wilutions.byps.BServerR(this, server);
+	};
+	
+	this._internalAuthenticate = function(asyncResult, processAsync) {
+		
+		if (this._authentication) {
+			
+		    var assumeAuthenticationIsValid = this._lastAuthenticationTime + this._RETRY_AUTHENTICATION_AFTER_SECONDS >= ((new Date()).getTime());
+		    
+		    if (assumeAuthenticationIsValid) {
+		    	asyncResult(true, this._lastAuthenticationException);
+		    }
+		    else {
+			    var first = this._asyncResultsWaitingForAuthentication.length == 0;
+				this._asyncResultsWaitingForAuthentication.push(asyncResult);
+				
+				if (first) {
+					
+					var me = this;
+					var authResult = function(result, ex) {
+						var arr = me._asyncResultsWaitingForAuthentication;
+						me._asyncResultsWaitingForAuthentication = [];
+						me._lastAuthenticationTime = (new Date()).getTime();
+						me._lastAuthenticationException = ex;
+						
+						for (var i = 0; i < arr.length; i++) {
+							arr[i](result, ex);
+						}
+					};
+					
+					var result = null;
+					var exception = null;
+					
+					try {
+						result = this._authentication.authenticate(null, processAsync ? authResult : null);
+					}
+					catch (ex) {
+						exception = ex;
+					}
+					
+					if (!processAsync) {
+						authResult(result, exception);
+					}
+				}
+		    }
+		}
+		else {
+			asyncResult(true, null);
+		}
+	};
+	
+	this._internalIsReloginException = function(ex, typeId) {
+		var ret = false;
+		if (this._authentication && ex) {
+			ret = this._authentication.isReloginException(null, ex, typeId);
+		}
+		return ret;
+	};
+	
+	this.isReloginException = function(ex, typeId) {
+		var ret = false;
+		if (ex && ex.code) {
+			ret = ex.code == com.wilutions.byps.BExceptionC.AUTHENTICATION_REQUIRED;
+			if (!ret) {
+				ret = ex.code == com.wilutions.byps.BExceptionC.IOERROR && (""+ex).indexOf("403") >= 0;
+			}
+		}
+		return ret;
 	};
 };
 
@@ -815,28 +962,40 @@ com.wilutions.byps.BClient = function() {
 	// this.transport;
 	// this._serverR;
 	
+	this._authentication = null;
+	
 	this.start = function(startServerR, asyncResult) { // BAsyncResult<BClient>
 		
+		var processAsync = !!asyncResult;
 		var me = this;
 		
-		var outerResult = null;
-		if (asyncResult) {
-			outerResult = function(ignored, exception) {
-				try {
-					if (!exception && startServerR && this._serverR) {
-						serverR.start();
-					}
-					asyncResult(me, exception);
-				} catch (ex) {
-					asyncResult(null, ex);
-				};
-			};
-		}
+	    if (this._authentication == null) {
+	    	this.setAuthentication(null);
+	    }
+	    
+	    var exception = null;
 		
-		this.transport.negotiateProtocolClient(outerResult);
+		var outerResult = function(ignored, ex) {
+			exception = ex;
+			try {
+				if (!ex && startServerR && this._serverR) {
+					serverR.start();
+				}
+			} catch (ex2) {
+				exception = ex2;
+			}
+			
+			if (asyncResult) {
+				asyncResult(me, exception);
+			}
+		};
 		
-		if (!asyncResult && startServerR && this._serverR) {
-			this._serverR.start();
+		this.transport.negotiateProtocolClient(outerResult, processAsync);
+		
+		if (!processAsync) {
+			if (exception) {
+				throw exception;
+			}
 		}
 	};
 	
@@ -850,6 +1009,79 @@ com.wilutions.byps.BClient = function() {
 			com.wilutions.byps.throwBException(com.wilutions.byps.BExceptionC.INTERNAL, "Missing interface type ID. The interface implementation must be inherited from a BSkeleton_ class."); 
 		}
 		this._serverR.server.addRemote(remoteId, remoteImpl);
+	};
+	
+	this.getAuthentication = function() {
+		return this.transport._authentication;
+	};
+	
+	this.setAuthentication = function(innerAuth) {
+		var me = this;
+		
+		this.transport._authentication = {
+		
+			authenticate : function(ignored, asyncResult) {
+				
+				var processAsync = !!asyncResult;
+				
+				var outerResult = function(result, ex) {
+					
+					if (!ex) { 
+						if (me._serverR) {
+							try {
+								me._serverR.start();
+							}
+							catch (ex2) {
+								ex = ex2;
+							}
+						}
+					}
+					
+					if (processAsync) {
+						asyncResult(result, ex);
+					}
+				};
+				
+				var result = true;
+				var exception = null;
+				
+				if (innerAuth) {
+					
+					try {
+						result = innerAuth.authenticate(me, processAsync ? outerResult : null);
+					}
+					catch (ex) {
+						exception = ex;
+					}
+					
+					if (!processAsync) {
+						outerResult(result, exception);
+					}
+				}
+				else {
+					outerResult(result, null);
+				}
+				
+				return result;
+			},
+			
+			isReloginException : function(ignored, ex, typeId) {
+			      var ret = false;
+			      if (innerAuth != null) {
+			        ret = innerAuth.isReloginException(me, ex, typeId);
+			      }
+			      else {
+			        ret = me.transport.isReloginException(ex);
+			      }
+			      return ret;
+			},
+			
+			getSession : function() {
+				return innerAuth ? innerAuth.getSession() : null;
+			}
+			
+		};
+		
 	};
 };
 

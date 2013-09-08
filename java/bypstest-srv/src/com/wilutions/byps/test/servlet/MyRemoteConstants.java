@@ -3,7 +3,7 @@ package com.wilutions.byps.test.servlet;
 import java.util.Arrays;
 
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.cons.AllTypesC;
 import com.wilutions.byps.test.api.cons.AllTypesZ;
@@ -14,61 +14,61 @@ import com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants;
 public class MyRemoteConstants extends BSkeleton_RemoteConstants {
 	
 	private <T> void compare(T lhs, T rhs) throws BException {
-		if (!lhs.equals(rhs)) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+		if (!lhs.equals(rhs)) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 	}
 	
 	private void compareArray(Object[] lhs, Object[] rhs) throws BException {
-		if (!Arrays.equals(lhs, rhs)) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+		if (!Arrays.equals(lhs, rhs)) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 	}
 
 	private void compareArray(int[] lhs, int[] rhs) throws BException {
-		if (!Arrays.equals(lhs, rhs)) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+		if (!Arrays.equals(lhs, rhs)) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 	}
 
 	private void compareArray4(int[][][][] lhs, int[][][][] rhs) throws BException {
-		if (lhs.length != rhs.length) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+		if (lhs.length != rhs.length) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 		for (int i3 = 0; i3 < lhs.length; i3++) {
 			int[][][] lhs2 = lhs[i3];
 			int[][][] rhs2 = rhs[i3];
-			if (lhs2.length != rhs2.length) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+			if (lhs2.length != rhs2.length) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 			for (int i2 = 0; i2 < lhs.length; i2++) {
 				int[][] lhs1 = lhs2[i2];
 				int[][] rhs1 = rhs2[i2];
-				if (lhs1.length != rhs1.length) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+				if (lhs1.length != rhs1.length) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 				for (int i1 = 0; i1 < lhs.length; i1++) {
 					int[] lhs0 = lhs1[i1];
 					int[] rhs0 = rhs1[i1];
-					if (!Arrays.equals(lhs0, rhs0)) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+					if (!Arrays.equals(lhs0, rhs0)) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 				}
 			}
 		}
 	}
 
 	private void compareArray4(String[][][][] lhs, String[][][][] rhs) throws BException {
-		if (lhs.length != rhs.length) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+		if (lhs.length != rhs.length) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 		for (int i3 = 0; i3 < lhs.length; i3++) {
 			String[][][] lhs2 = lhs[i3];
 			String[][][] rhs2 = rhs[i3];
-			if (lhs2.length != rhs2.length) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+			if (lhs2.length != rhs2.length) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 			for (int i2 = 0; i2 < lhs.length; i2++) {
 				String[][] lhs1 = lhs2[i2];
 				String[][] rhs1 = rhs2[i2];
-				if (lhs1.length != rhs1.length) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+				if (lhs1.length != rhs1.length) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 				for (int i1 = 0; i1 < lhs.length; i1++) {
 					String[] lhs0 = lhs1[i1];
 					String[] rhs0 = rhs1[i1];
-					if (!Arrays.equals(lhs0, rhs0)) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+					if (!Arrays.equals(lhs0, rhs0)) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 				}
 			}
 		}
 	}
 
 	private void compareArray2(Object[][] lhs, Object[][] rhs) throws BException {
-		if (lhs.length != rhs.length) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+		if (lhs.length != rhs.length) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 		for (int i1 = 0; i1 < lhs.length; i1++) {
 			Object[] lhs0 = lhs[i1];
 			Object[] rhs0 = rhs[i1];
-			if (!Arrays.equals(lhs0, rhs0)) throw new BException(BExceptionO.INTERNAL, "Wrong constant");
+			if (!Arrays.equals(lhs0, rhs0)) throw new BException(BExceptionC.INTERNAL, "Wrong constant");
 		}
 	}
 

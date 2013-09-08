@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_1972793385 extends BMethodResult<java.util.HashMap<java.lang.Double,java.lang.Byte>> implements Serializable {
 
 	
-	private final static long serialVersionUID = 104960651L;
+	public final static long serialVersionUID = 104960651L;
 	
 }

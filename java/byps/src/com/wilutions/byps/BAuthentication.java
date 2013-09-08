@@ -25,11 +25,20 @@ public interface BAuthentication {
    * @param ex
    *          Exception returned from the last request.
    * @param typeId
-   *          Type ID (serialVersionUID) of the last request.
+   *          Type ID (serialVersionUID) of the last request class. For each API function,
+   *          the generator has created a request class named BRequest_functionname.
+   *          The passed type ID is the serialVersionUID of this class.
    * @return true triggers authentication, false forwards the exception to the
    *         caller.
    */
   boolean isReloginException(BClient client, Throwable ex, int typeId);
 
+  /**
+   * Return the object representing the current session.
+   * If the API manages its own session, this object will be passed to every request class for remote interfaces 
+   * tagged with @authparam.
+   * @return Session object
+   * @see BMethodRequest#setSession(Object)
+   */
   Object getSession();
 }

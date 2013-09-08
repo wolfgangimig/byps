@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes4dim_setChar extends BMethodRequest 
 
 	public char[][][][] v;
 	
-	private final static long serialVersionUID = 201982736L;
+	public final static long serialVersionUID = 201982736L;
 	
 	public int getRemoteId() { return 1557173854; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteArrayTypes4dim_setChar extends BMethodRequest 
 		try {
 			final RemoteArrayTypes4dimAsync __byps__remoteT = (RemoteArrayTypes4dimAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setChar(v, __byps__outerResult);
+			__byps__remoteT.setChar(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

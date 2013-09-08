@@ -15,21 +15,21 @@ public interface RemoteServerCtrlAsync extends RemoteServerCtrl, BRemote {
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) ;
+	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) ;
+	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void removePublishedRemote(java.lang.String name) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) ;
+	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) ;
 	
 	
 }

@@ -15,7 +15,7 @@ public final class BRequest_RemoteStreams_setImage extends BMethodRequest implem
 
 	public java.io.InputStream istrm;
 	
-	private final static long serialVersionUID = 1831578632L;
+	public final static long serialVersionUID = 1831578632L;
 	
 	public int getRemoteId() { return 2028487863; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteStreams_setImage extends BMethodRequest implem
 		try {
 			final RemoteStreamsAsync __byps__remoteT = (RemoteStreamsAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setImage(istrm, __byps__outerResult);
+			__byps__remoteT.setImage(istrm, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

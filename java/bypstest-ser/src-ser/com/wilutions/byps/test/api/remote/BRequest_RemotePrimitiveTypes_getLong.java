@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemotePrimitiveTypes_getLong extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 2091295080L;
+	public final static long serialVersionUID = 2091295080L;
 	
 	public int getRemoteId() { return 1341983932; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemotePrimitiveTypes_getLong extends BMethodRequest 
 		try {
 			final RemotePrimitiveTypesAsync __byps__remoteT = (RemotePrimitiveTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Long> __byps__outerResult = new BAsyncResultSendMethod<Long>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_6());			
-			__byps__remoteT.async_getLong(__byps__outerResult);
+			__byps__remoteT.getLong(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteMapTypes_getInt2 extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1013140230L;
+	public final static long serialVersionUID = 1013140230L;
 	
 	public int getRemoteId() { return 80483097; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteMapTypes_getInt2 extends BMethodRequest implem
 		try {
 			final RemoteMapTypesAsync __byps__remoteT = (RemoteMapTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.util.Map<java.lang.Integer,int[]>> __byps__outerResult = new BAsyncResultSendMethod<java.util.Map<java.lang.Integer,int[]>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1633750383());			
-			__byps__remoteT.async_getInt2(__byps__outerResult);
+			__byps__remoteT.getInt2(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

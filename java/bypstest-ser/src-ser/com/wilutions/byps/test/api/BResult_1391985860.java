@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_1391985860 extends BMethodResult<com.wilutions.byps.test.api.ver.Evolve> implements Serializable {
 
 	
-	private final static long serialVersionUID = 509380329L;
+	public final static long serialVersionUID = 509380329L;
 	
 }

@@ -24,7 +24,7 @@ public final class BRequest_RemotePrimitiveTypes_sendAllTypes extends BMethodReq
 	public com.wilutions.byps.test.api.prim.PrimitiveTypes pt;
 	public java.lang.Object o;
 	
-	private final static long serialVersionUID = 1794219594L;
+	public final static long serialVersionUID = 1794219594L;
 	
 	public int getRemoteId() { return 1341983932; }
 	
@@ -32,7 +32,7 @@ public final class BRequest_RemotePrimitiveTypes_sendAllTypes extends BMethodReq
 		try {
 			final RemotePrimitiveTypesAsync __byps__remoteT = (RemotePrimitiveTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_sendAllTypes(b, c, s, i, l, f, d, str, pt, o, __byps__outerResult);
+			__byps__remoteT.sendAllTypes(b, c, s, i, l, f, d, str, pt, o, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

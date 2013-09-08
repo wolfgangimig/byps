@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setByte1 extends BMethodRequest impl
 
 	public java.util.List<java.lang.Byte> byte1;
 	
-	private final static long serialVersionUID = 758429070L;
+	public final static long serialVersionUID = 758429070L;
 	
 	public int getRemoteId() { return 380156079; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteListTypes_setByte1 extends BMethodRequest impl
 		try {
 			final RemoteListTypesAsync __byps__remoteT = (RemoteListTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setByte1(byte1, __byps__outerResult);
+			__byps__remoteT.setByte1(byte1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

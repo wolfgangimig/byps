@@ -71,7 +71,7 @@ public class TestRemoteWithAuthentication {
     
     client.setAuthentication(new MyAuthentication("Fritz", "abc"));
 
-    // This method call will fail internally the first time with a BExceptionO.AUTHENTICATION_REQUIRED.
+    // This method call will fail internally the first time with a BExceptionC.AUTHENTICATION_REQUIRED.
     // Then, BTranpsport invokes MyAuthentication.authenticate and retries the method call.
     int ret = remote.doit(1);
     TestUtils.assertEquals(log, "ret", 2, ret);
@@ -152,15 +152,15 @@ public class TestRemoteWithAuthentication {
         }
       };
       
-      ((BClient_Testser)client).remoteWithAuthentication.async_login(userName, pwd, outerResult);
+      ((BClient_Testser)client).remoteWithAuthentication.login(userName, pwd, outerResult);
       log.info(")authenticate");
     }
 
     @Override
-    public boolean isReloginException(Throwable ex) {
-      return false;
+    public boolean isReloginException(BClient client, Throwable ex, int typeId) {
+      return client.transport.isReloginException(ex, typeId);
     }
-
+    
     @Override
     public Object getSession() {
       return sess;

@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setString1 extends BMethodRequest imp
 
 	public java.util.Map<java.lang.String,java.lang.String> string1;
 	
-	private final static long serialVersionUID = 668179837L;
+	public final static long serialVersionUID = 668179837L;
 	
 	public int getRemoteId() { return 80483097; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteMapTypes_setString1 extends BMethodRequest imp
 		try {
 			final RemoteMapTypesAsync __byps__remoteT = (RemoteMapTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setString1(string1, __byps__outerResult);
+			__byps__remoteT.setString1(string1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

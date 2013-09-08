@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_801243127 extends BMethodResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> implements Serializable {
 
 	
-	private final static long serialVersionUID = 1937830923L;
+	public final static long serialVersionUID = 1937830923L;
 	
 }

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteInlineInstance_getPoint2DArray4dim extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1012059475L;
+	public final static long serialVersionUID = 1012059475L;
 	
 	public int getRemoteId() { return 1206670536; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteInlineInstance_getPoint2DArray4dim extends BMe
 		try {
 			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
 			BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[][][][]> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[][][][]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_487702928());			
-			__byps__remoteT.async_getPoint2DArray4dim(__byps__outerResult);
+			__byps__remoteT.getPoint2DArray4dim(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

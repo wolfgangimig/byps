@@ -37,19 +37,19 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 					this.wait(timeout);
 					long dt = System.currentTimeMillis() - t1;
 					if (dt >= timeout) {
-						ex = new BException(BExceptionO.TIMEOUT, "Timeout while waiting for result.");
+						ex = new BException(BExceptionC.TIMEOUT, "Timeout while waiting for result.");
 						break;
 					}
 				}
 				if (ex != null) {
 					if (ex instanceof BException) throw (BException)ex;
-					throw new BException(BExceptionO.REMOTE_ERROR, "", ex);
+					throw new BException(BExceptionC.REMOTE_ERROR, "", ex);
 				}
 				return result;
 			}
 		}
 		catch (InterruptedException e) {
-			throw new BException(BExceptionO.CANCELLED, e.toString(), e);
+			throw new BException(BExceptionC.CANCELLED, e.toString(), e);
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 		public boolean cancel(boolean mayInterruptIfRunning) {
 			if (mayInterruptIfRunning) {
 				BSyncResult.this.setAsyncResult(null,
-						new BException(BExceptionO.CANCELLED, "Operation canceled."));
+						new BException(BExceptionC.CANCELLED, "Operation canceled."));
 			}
 			return mayInterruptIfRunning;
 		}
@@ -79,7 +79,7 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 				Throwable tx = BSyncResult.this.ex;
 				if (tx != null && tx instanceof BException) {
 					BException ex = (BException)tx;
-					return ex.code == BExceptionO.CANCELLED;
+					return ex.code == BExceptionC.CANCELLED;
 				}
 			}
 			return false;

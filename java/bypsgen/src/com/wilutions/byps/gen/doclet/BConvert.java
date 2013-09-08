@@ -663,7 +663,7 @@ public class BConvert {
 			
 			pinfos.add(pinfo);
 		}
-
+		
 		String methodName = MethodInfo.METHOD_REQUEST_NAME_PREFIX + remoteName + "_" + method.name();
 		String remotePack = remoteQName.substring(0, remoteQName.lastIndexOf(".")+1);
 		String methodQName = remotePack + MethodInfo.METHOD_REQUEST_NAME_PREFIX + remoteName + "_" + method.name();
@@ -696,22 +696,22 @@ public class BConvert {
 		
 		errInfo.methodName = method.name();
 		
-		TypeInfo rinfo = makeElementTypeInfo(errInfo, rtype, remoteQName);
-		rinfo.typeId = classDB.getOrCreateTypeId(rinfo);
+		TypeInfo resultType = makeElementTypeInfo(errInfo, rtype, remoteQName);
+		resultType.typeId = classDB.getOrCreateTypeId(resultType);
 		
-		if (rinfo.isInline && !rinfo.isArrayType()) {
+		if (resultType.isInline && !resultType.isArrayType()) {
 			// Das geht nicht in C++
 			errInfo.msg = "Inline classes cannot be used as return values.";
 			throw new GeneratorException(errInfo);
 		}
 		
-		rinfos.add( new MemberInfo("result", null, rinfo, true, false, false, false, false, false, false, 0, null) );
+		rinfos.add( new MemberInfo("result", null, resultType, true, false, false, false, false, false, false, 0, null) );
 		
 		//String remotePack = remoteQName.substring(0, remoteQName.lastIndexOf(".")+1);
 		
 		String remotePack = classDB.getApiDescriptor().basePackage + ".";
 		
-		String methodName = MethodInfo.METHOD_RESULT_NAME_PREFIX + rinfo.typeId;
+		String methodName = MethodInfo.METHOD_RESULT_NAME_PREFIX + resultType.typeId;
 //		String methodName = MethodInfo.METHOD_RESULT_NAME_PREFIX + remoteName + "_" + method.name();
 
 		String methodQName = remotePack + methodName;
@@ -810,7 +810,7 @@ public class BConvert {
 		String authParamClassName = null;
 		String authInterface = null;
     for (Tag tag : cls.tags()) {
-      if (tag.kind().equals("@authparam")) authParamClassName= tag.text();
+      if (tag.kind().equals("@BAuthenticationParamType")) authParamClassName= tag.text();
       if (tag.kind().equals("@authinterface")) authInterface= tag.text();
       
       cinfos.add(makeCommentInfo(tag.kind(), tag.text()));

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteStreams_getImage extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1902276204L;
+	public final static long serialVersionUID = 1902276204L;
 	
 	public int getRemoteId() { return 2028487863; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteStreams_getImage extends BMethodRequest implem
 		try {
 			final RemoteStreamsAsync __byps__remoteT = (RemoteStreamsAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.io.InputStream> __byps__outerResult = new BAsyncResultSendMethod<java.io.InputStream>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_15());			
-			__byps__remoteT.async_getImage(__byps__outerResult);
+			__byps__remoteT.getImage(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

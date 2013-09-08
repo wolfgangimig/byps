@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes1dim_setFloat extends BMethodRequest
 
 	public float[] v;
 	
-	private final static long serialVersionUID = 1083385729L;
+	public final static long serialVersionUID = 1083385729L;
 	
 	public int getRemoteId() { return 1557084481; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteArrayTypes1dim_setFloat extends BMethodRequest
 		try {
 			final RemoteArrayTypes1dimAsync __byps__remoteT = (RemoteArrayTypes1dimAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setFloat(v, __byps__outerResult);
+			__byps__remoteT.setFloat(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

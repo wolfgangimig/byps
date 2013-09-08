@@ -15,7 +15,7 @@ public final class BRequest_ClientIF_sendChat extends BMethodRequest implements 
 
 	public ChatStructure cs;
 	
-	private final static long serialVersionUID = 1352392091L;
+	public final static long serialVersionUID = 1352392091L;
 	
 	public int getRemoteId() { return 1784257353; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_ClientIF_sendChat extends BMethodRequest implements 
 		try {
 			final ClientIFAsync __byps__remoteT = (ClientIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<ChatStructure> __byps__outerResult = new BAsyncResultSendMethod<ChatStructure>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_7007());			
-			__byps__remoteT.async_sendChat(cs, __byps__outerResult);
+			__byps__remoteT.sendChat(cs, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_putStreamsOnClient extends BMethodRequest i
 
 	public java.util.List<java.io.InputStream> streams;
 	
-	private final static long serialVersionUID = 1367013829L;
+	public final static long serialVersionUID = 1367013829L;
 	
 	public int getRemoteId() { return 1313562065; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_ServerIF_putStreamsOnClient extends BMethodRequest i
 		try {
 			final ServerIFAsync __byps__remoteT = (ServerIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_putStreamsOnClient(streams, __byps__outerResult);
+			__byps__remoteT.putStreamsOnClient(streams, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

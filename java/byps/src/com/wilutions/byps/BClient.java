@@ -69,7 +69,7 @@ public abstract class BClient {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
 
     if (transport.authentication == null) {
-      transport.authentication = new ClientAuthentication(null);
+      setAuthentication(null);
     }
 		
 		BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {
@@ -118,6 +118,7 @@ public abstract class BClient {
       
       // The purpose of this outerResult is to start the long-polls
       // after re-login.
+      
       BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {
         public void setAsyncResult(Boolean ignored, Throwable ex) {
           
@@ -150,7 +151,7 @@ public abstract class BClient {
         ret = innerAuth.isReloginException(BClient.this, ex, typeId);
       }
       else {
-        ret = transport.isReloginException(ex);
+        ret = transport.isReloginException(ex, typeId);
       }
       return ret;
     }

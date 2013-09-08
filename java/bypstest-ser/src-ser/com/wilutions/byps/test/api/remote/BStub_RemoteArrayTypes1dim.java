@@ -21,341 +21,319 @@ public class BStub_RemoteArrayTypes1dim extends BStub implements RemoteArrayType
 	public void setBool(boolean[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setBool(v, asyncResult);
+		setBool(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setBool(boolean[] v, final BAsyncResult<Object> asyncResult) {
+	public void setBool(boolean[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setBool req = new BRequest_RemoteArrayTypes1dim_setBool();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setByte(byte[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setByte(v, asyncResult);
+		setByte(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setByte(byte[] v, final BAsyncResult<Object> asyncResult) {
+	public void setByte(byte[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setByte req = new BRequest_RemoteArrayTypes1dim_setByte();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setChar(char[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setChar(v, asyncResult);
+		setChar(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setChar(char[] v, final BAsyncResult<Object> asyncResult) {
+	public void setChar(char[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setChar req = new BRequest_RemoteArrayTypes1dim_setChar();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setShort(short[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setShort(v, asyncResult);
+		setShort(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setShort(short[] v, final BAsyncResult<Object> asyncResult) {
+	public void setShort(short[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setShort req = new BRequest_RemoteArrayTypes1dim_setShort();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setInt(int[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setInt(v, asyncResult);
+		setInt(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setInt(int[] v, final BAsyncResult<Object> asyncResult) {
+	public void setInt(int[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setInt req = new BRequest_RemoteArrayTypes1dim_setInt();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setLong(long[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setLong(v, asyncResult);
+		setLong(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setLong(long[] v, final BAsyncResult<Object> asyncResult) {
+	public void setLong(long[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setLong req = new BRequest_RemoteArrayTypes1dim_setLong();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setFloat(float[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setFloat(v, asyncResult);
+		setFloat(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setFloat(float[] v, final BAsyncResult<Object> asyncResult) {
+	public void setFloat(float[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setFloat req = new BRequest_RemoteArrayTypes1dim_setFloat();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setDouble(double[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setDouble(v, asyncResult);
+		setDouble(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setDouble(double[] v, final BAsyncResult<Object> asyncResult) {
+	public void setDouble(double[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setDouble req = new BRequest_RemoteArrayTypes1dim_setDouble();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setString(java.lang.String[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setString(v, asyncResult);
+		setString(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setString(java.lang.String[] v, final BAsyncResult<Object> asyncResult) {
+	public void setString(java.lang.String[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setString req = new BRequest_RemoteArrayTypes1dim_setString();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setPrimitiveTypes(v, asyncResult);
+		setPrimitiveTypes(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes[] v, final BAsyncResult<Object> asyncResult) {
+	public void setPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setPrimitiveTypes req = new BRequest_RemoteArrayTypes1dim_setPrimitiveTypes();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setObject(java.lang.Object[] v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setObject(v, asyncResult);
+		setObject(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setObject(java.lang.Object[] v, final BAsyncResult<Object> asyncResult) {
+	public void setObject(java.lang.Object[] v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_setObject req = new BRequest_RemoteArrayTypes1dim_setObject();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public boolean[] getBool() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<boolean[]> asyncResult = new BSyncResult<boolean[]>();		
-		async_getBool(asyncResult);
+		getBool(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getBool(final BAsyncResult<boolean[]> asyncResult) {
+	public void getBool(final BAsyncResult<boolean[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getBool req = new BRequest_RemoteArrayTypes1dim_getBool();		
-		BAsyncResultReceiveMethod<boolean[]> outerResult = new BAsyncResultReceiveMethod<boolean[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public byte[] getByte() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<byte[]> asyncResult = new BSyncResult<byte[]>();		
-		async_getByte(asyncResult);
+		getByte(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getByte(final BAsyncResult<byte[]> asyncResult) {
+	public void getByte(final BAsyncResult<byte[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getByte req = new BRequest_RemoteArrayTypes1dim_getByte();		
-		BAsyncResultReceiveMethod<byte[]> outerResult = new BAsyncResultReceiveMethod<byte[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public char[] getChar() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<char[]> asyncResult = new BSyncResult<char[]>();		
-		async_getChar(asyncResult);
+		getChar(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getChar(final BAsyncResult<char[]> asyncResult) {
+	public void getChar(final BAsyncResult<char[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getChar req = new BRequest_RemoteArrayTypes1dim_getChar();		
-		BAsyncResultReceiveMethod<char[]> outerResult = new BAsyncResultReceiveMethod<char[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public short[] getShort() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<short[]> asyncResult = new BSyncResult<short[]>();		
-		async_getShort(asyncResult);
+		getShort(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getShort(final BAsyncResult<short[]> asyncResult) {
+	public void getShort(final BAsyncResult<short[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getShort req = new BRequest_RemoteArrayTypes1dim_getShort();		
-		BAsyncResultReceiveMethod<short[]> outerResult = new BAsyncResultReceiveMethod<short[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int[] getInt() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<int[]> asyncResult = new BSyncResult<int[]>();		
-		async_getInt(asyncResult);
+		getInt(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getInt(final BAsyncResult<int[]> asyncResult) {
+	public void getInt(final BAsyncResult<int[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getInt req = new BRequest_RemoteArrayTypes1dim_getInt();		
-		BAsyncResultReceiveMethod<int[]> outerResult = new BAsyncResultReceiveMethod<int[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public long[] getLong() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<long[]> asyncResult = new BSyncResult<long[]>();		
-		async_getLong(asyncResult);
+		getLong(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getLong(final BAsyncResult<long[]> asyncResult) {
+	public void getLong(final BAsyncResult<long[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getLong req = new BRequest_RemoteArrayTypes1dim_getLong();		
-		BAsyncResultReceiveMethod<long[]> outerResult = new BAsyncResultReceiveMethod<long[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public float[] getFloat() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<float[]> asyncResult = new BSyncResult<float[]>();		
-		async_getFloat(asyncResult);
+		getFloat(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getFloat(final BAsyncResult<float[]> asyncResult) {
+	public void getFloat(final BAsyncResult<float[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getFloat req = new BRequest_RemoteArrayTypes1dim_getFloat();		
-		BAsyncResultReceiveMethod<float[]> outerResult = new BAsyncResultReceiveMethod<float[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public double[] getDouble() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<double[]> asyncResult = new BSyncResult<double[]>();		
-		async_getDouble(asyncResult);
+		getDouble(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getDouble(final BAsyncResult<double[]> asyncResult) {
+	public void getDouble(final BAsyncResult<double[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getDouble req = new BRequest_RemoteArrayTypes1dim_getDouble();		
-		BAsyncResultReceiveMethod<double[]> outerResult = new BAsyncResultReceiveMethod<double[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.lang.String[] getString() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<java.lang.String[]> asyncResult = new BSyncResult<java.lang.String[]>();		
-		async_getString(asyncResult);
+		getString(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getString(final BAsyncResult<java.lang.String[]> asyncResult) {
+	public void getString(final BAsyncResult<java.lang.String[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getString req = new BRequest_RemoteArrayTypes1dim_getString();		
-		BAsyncResultReceiveMethod<java.lang.String[]> outerResult = new BAsyncResultReceiveMethod<java.lang.String[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.prim.PrimitiveTypes[] getPrimitiveTypes() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> asyncResult = new BSyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]>();		
-		async_getPrimitiveTypes(asyncResult);
+		getPrimitiveTypes(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getPrimitiveTypes(final BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
+	public void getPrimitiveTypes(final BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getPrimitiveTypes req = new BRequest_RemoteArrayTypes1dim_getPrimitiveTypes();		
-		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.prim.PrimitiveTypes[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.lang.Object[] getObject() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<java.lang.Object[]> asyncResult = new BSyncResult<java.lang.Object[]>();		
-		async_getObject(asyncResult);
+		getObject(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getObject(final BAsyncResult<java.lang.Object[]> asyncResult) {
+	public void getObject(final BAsyncResult<java.lang.Object[]> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteArrayTypes1dim_getObject req = new BRequest_RemoteArrayTypes1dim_getObject();		
-		BAsyncResultReceiveMethod<java.lang.Object[]> outerResult = new BAsyncResultReceiveMethod<java.lang.Object[]>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	

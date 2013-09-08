@@ -34,7 +34,7 @@ public class BSerializer_15 extends BSerializer {
 			bin.onObjectCreated(strm);
 			return strm;
 		} catch (IOException e) {
-			throw new BException(BExceptionO.IOERROR, e.getMessage());
+			throw new BException(BExceptionC.IOERROR, e.getMessage());
 		}
 	}
 

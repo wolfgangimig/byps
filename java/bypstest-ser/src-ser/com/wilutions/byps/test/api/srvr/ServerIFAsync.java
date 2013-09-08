@@ -15,63 +15,63 @@ public interface ServerIFAsync extends ServerIF, BRemote {
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int callClientIncrementInt(int v) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) ;
+	public void callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPartner(ClientIF client) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setPartner(ClientIF client, final BAsyncResult<Object> asyncResult) ;
+	public void setPartner(ClientIF client, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public ClientIF getPartner() throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getPartner(final BAsyncResult<ClientIF> asyncResult) ;
+	public void getPartner(final BAsyncResult<ClientIF> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.List<java.io.InputStream> getStreamsFromClient() throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getStreamsFromClient(final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) ;
+	public void getStreamsFromClient(final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_putStreamsOnClient(java.util.List<java.io.InputStream> streams, final BAsyncResult<Object> asyncResult) ;
+	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void registerWithClientMap(int id) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_registerWithClientMap(int id, final BAsyncResult<Object> asyncResult) ;
+	public void registerWithClientMap(int id, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public ClientIF getClient(int id) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getClient(int id, final BAsyncResult<ClientIF> asyncResult) ;
+	public void getClient(int id, final BAsyncResult<ClientIF> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) ;
+	public void getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int callClientParallel(int v) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_callClientParallel(int v, final BAsyncResult<Integer> asyncResult) ;
+	public void callClientParallel(int v, final BAsyncResult<Integer> asyncResult) ;
 	
 	
 }

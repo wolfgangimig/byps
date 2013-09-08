@@ -399,7 +399,7 @@ class PrintContext extends PrintContextBase {
 	  
 	  pr.checkpoint();
 		
-	  CodePrinter mpr = pr.print("public void ").print("async_").print(methodInfo.name).print("(");
+	  CodePrinter mpr = pr.print("public void ").print(methodInfo.name).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {

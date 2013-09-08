@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setString1 extends BMethodRequest imp
 
 	public java.util.Set<java.lang.String> string1;
 	
-	private final static long serialVersionUID = 1321265283L;
+	public final static long serialVersionUID = 1321265283L;
 	
 	public int getRemoteId() { return 1156008353; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteSetTypes_setString1 extends BMethodRequest imp
 		try {
 			final RemoteSetTypesAsync __byps__remoteT = (RemoteSetTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setString1(string1, __byps__outerResult);
+			__byps__remoteT.setString1(string1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteListTypes_getBoolean1 extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1794077576L;
+	public final static long serialVersionUID = 1794077576L;
 	
 	public int getRemoteId() { return 380156079; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteListTypes_getBoolean1 extends BMethodRequest i
 		try {
 			final RemoteListTypesAsync __byps__remoteT = (RemoteListTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.util.List<java.lang.Boolean>> __byps__outerResult = new BAsyncResultSendMethod<java.util.List<java.lang.Boolean>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1617670280());			
-			__byps__remoteT.async_getBoolean1(__byps__outerResult);
+			__byps__remoteT.getBoolean1(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

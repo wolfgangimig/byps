@@ -49,7 +49,7 @@ class GenRemoteStub {
 		pr.print("final ").print(asyncResultType).print(" asyncResult = new ").print(asyncResultType).print("();");
 		pr.println();
 
-		CodePrinter mpr = pr.print("async_").print(methodInfo.name).print("(");
+		CodePrinter mpr = pr.print(methodInfo.name).print("(");
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
@@ -125,11 +125,11 @@ class GenRemoteStub {
       }
 		}
 		
-		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
-		String outerAsyncClass = "BAsyncResultReceiveMethod<" + rtype + ">";
-		pr.print(outerAsyncClass).print(" outerResult = new ").print(outerAsyncClass).print("(asyncResult);").println();
-		
-		pr.println("transport.send(req, outerResult);");
+//		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
+//		String outerAsyncClass = "BAsyncResultReceiveMethod<" + rtype + ">";
+//		pr.print(outerAsyncClass).print(" outerResult = new ").print(outerAsyncClass).print("(asyncResult);").println();
+
+		pr.println("transport.sendMethod(req, asyncResult);");
 
 		pr.endBlock();
 		

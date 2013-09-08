@@ -7,7 +7,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
@@ -28,7 +28,7 @@ public class GenSerMap {
 		this.pctxt = pctxt;
 		this.bmodel = bmodel;
 		
-		if (serInfo.typeArgs.size() != 2) throw new BException(BExceptionO.INTERNAL, "Expected 2 type arguments for Map class: " + serInfo.toString());
+		if (serInfo.typeArgs.size() != 2) throw new BException(BExceptionC.INTERNAL, "Expected 2 type arguments for Map class: " + serInfo.toString());
 		keyType = serInfo.typeArgs.get(0);
 		valueType = serInfo.typeArgs.get(1);
 	}

@@ -25,9 +25,10 @@ public class MyRemoteServerCtrl extends BSkeleton_RemoteServerCtrl {
 	}
 
 	@Override
-	public void async_publishRemote(String name, BRemote remote, boolean forwardToOtherServers,
+	public void publishRemote(String name, BRemote remote, boolean forwardToOtherServers,
 			final BAsyncResult<Object> asyncResult) {
 		
+	 
 		try {
 			publishedRemotes.put(name, remote);
 			
@@ -47,7 +48,7 @@ public class MyRemoteServerCtrl extends BSkeleton_RemoteServerCtrl {
 				
 				for (BClient client : clients) {
 					BClient_Testser myclient = (BClient_Testser)client;
-					myclient.remoteServerCtrl.async_publishRemote(name, remote, false, outerResult);
+					myclient.remoteServerCtrl.publishRemote(name, remote, false, outerResult);
 				}
 			
 			}

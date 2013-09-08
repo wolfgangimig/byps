@@ -17,7 +17,7 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInt extends BMethodRequ
 	public int[][][] arr3;
 	public int[][][][] arr4;
 	
-	private final static long serialVersionUID = 1748523470L;
+	public final static long serialVersionUID = 1748523470L;
 	
 	public int getRemoteId() { return 2081058997; }
 	
@@ -25,7 +25,7 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInt extends BMethodRequ
 		try {
 			final RemoteArrayTypes23Async __byps__remoteT = (RemoteArrayTypes23Async)__byps__remote;			
 			BAsyncResultSendMethod<int[]> __byps__outerResult = new BAsyncResultSendMethod<int[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_100361105());			
-			__byps__remoteT.async_sendArraysInt(arr2, arr3, arr4, __byps__outerResult);
+			__byps__remoteT.sendArraysInt(arr2, arr3, arr4, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

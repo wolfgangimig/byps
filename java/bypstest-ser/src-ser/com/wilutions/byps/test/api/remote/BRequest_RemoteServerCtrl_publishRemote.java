@@ -17,7 +17,7 @@ public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodReques
 	public BRemote remote;
 	public boolean fowardToOtherServers;
 	
-	private final static long serialVersionUID = 1776814809L;
+	public final static long serialVersionUID = 1776814809L;
 	
 	public int getRemoteId() { return 1124545992; }
 	
@@ -25,7 +25,7 @@ public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodReques
 		try {
 			final RemoteServerCtrlAsync __byps__remoteT = (RemoteServerCtrlAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_publishRemote(name, remote, fowardToOtherServers, __byps__outerResult);
+			__byps__remoteT.publishRemote(name, remote, fowardToOtherServers, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

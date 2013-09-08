@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 825201405L;
+	public final static long serialVersionUID = 825201405L;
 	
 	public int getRemoteId() { return 1557084481; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes extends BMeth
 		try {
 			final RemoteArrayTypes1dimAsync __byps__remoteT = (RemoteArrayTypes1dimAsync)__byps__remote;			
 			BAsyncResultSendMethod<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.prim.PrimitiveTypes[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_801243127());			
-			__byps__remoteT.async_getPrimitiveTypes(__byps__outerResult);
+			__byps__remoteT.getPrimitiveTypes(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

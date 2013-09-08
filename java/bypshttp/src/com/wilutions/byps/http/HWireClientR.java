@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BStreamRequest;
 import com.wilutions.byps.BSyncResult;
@@ -37,7 +37,7 @@ public class HWireClientR extends BWire {
 
     canceled = true;
 
-    BException bex = new BException(BExceptionO.CANCELLED, "Longpoll canceled");
+    BException bex = new BException(BExceptionC.CANCELLED, "Longpoll canceled");
 
     // Notify the threads inside the server waiting for results that the
     // their calls are canceled.
@@ -156,7 +156,7 @@ public class HWireClientR extends BWire {
           if (log.isDebugEnabled()) log.debug("canceled=" + canceled);
           if (canceled) {
             asyncResults_access_sync.remove(messageId);
-            asyncResult.setAsyncResult(null, new BException(BExceptionO.CLIENT_DIED, "Client is dead."));
+            asyncResult.setAsyncResult(null, new BException(BExceptionC.CLIENT_DIED, "Client is dead."));
             break;
           }
 
@@ -171,7 +171,7 @@ public class HWireClientR extends BWire {
           if (now - startTime > HConstants.MAX_WAIT_FOR_LONGPOLL_MILLIS) {
             // The client is dead: no long-poll request after 30 seconds.
             asyncResults_access_sync.remove(messageId);
-            asyncResult.setAsyncResult(null, new BException(BExceptionO.CLIENT_DIED, "Timeout while waiting for peer request."));
+            asyncResult.setAsyncResult(null, new BException(BExceptionC.CLIENT_DIED, "Timeout while waiting for peer request."));
             break;
           }
 
@@ -261,7 +261,7 @@ public class HWireClientR extends BWire {
           }
 
           // Notify the caller of send() with an exception.
-          BException bex = new BException(BExceptionO.CLIENT_DIED, "", innerException);
+          BException bex = new BException(BExceptionC.CLIENT_DIED, "", innerException);
           asyncResult.setAsyncResult(null, bex);
 
         }

@@ -15,7 +15,7 @@ public final class BRequest_EvolveIF_setEvolve extends BMethodRequest implements
 
 	public Evolve obj;
 	
-	private final static long serialVersionUID = 246658450L;
+	public final static long serialVersionUID = 246658450L;
 	
 	public int getRemoteId() { return 2078696281; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_EvolveIF_setEvolve extends BMethodRequest implements
 		try {
 			final EvolveIFAsync __byps__remoteT = (EvolveIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setEvolve(obj, __byps__outerResult);
+			__byps__remoteT.setEvolve(obj, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

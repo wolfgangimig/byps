@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemotePrimitiveTypes_voidFunctionVoid extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1856936054L;
+	public final static long serialVersionUID = 1856936054L;
 	
 	public int getRemoteId() { return 1341983932; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemotePrimitiveTypes_voidFunctionVoid extends BMetho
 		try {
 			final RemotePrimitiveTypesAsync __byps__remoteT = (RemotePrimitiveTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_voidFunctionVoid(__byps__outerResult);
+			__byps__remoteT.voidFunctionVoid(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

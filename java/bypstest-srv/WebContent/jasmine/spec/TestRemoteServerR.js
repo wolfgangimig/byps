@@ -1,4 +1,4 @@
-describe("Tests for reverse server (client interface called from server).", function() {
+describe("TestRemoteServerR", function() {
    
 	/*
 	 * How can I test function calls between tow clients?
@@ -49,6 +49,14 @@ describe("Tests for reverse server (client interface called from server).", func
 		
 		// Do not provide an implementation for the requested interface 
 		// omit: client.addRemote(new BSkeleton_ClientIF() { ...
+		
+//		try {
+//			remote.callClientIncrementInt(5);
+//			TestUtils.fail(log, "Excpected exception.");
+//		}
+//		catch (ex) {
+//			TestUtils.assertEquals(log, "ex", com.wilutions.byps.BExceptionC.SERVICE_NOT_IMPLEMENTED, ex.code);
+//		}
 	
 		runs(function() {
 			asyncCallClientIncrementInt(5);

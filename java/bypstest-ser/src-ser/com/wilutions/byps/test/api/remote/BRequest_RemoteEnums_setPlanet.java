@@ -15,7 +15,7 @@ public final class BRequest_RemoteEnums_setPlanet extends BMethodRequest impleme
 
 	public com.wilutions.byps.test.api.enu.EnumPlanets planet;
 	
-	private final static long serialVersionUID = 412393386L;
+	public final static long serialVersionUID = 412393386L;
 	
 	public int getRemoteId() { return 359349400; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteEnums_setPlanet extends BMethodRequest impleme
 		try {
 			final RemoteEnumsAsync __byps__remoteT = (RemoteEnumsAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setPlanet(planet, __byps__outerResult);
+			__byps__remoteT.setPlanet(planet, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

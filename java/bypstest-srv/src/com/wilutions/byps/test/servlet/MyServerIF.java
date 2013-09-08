@@ -17,7 +17,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF;
 import com.wilutions.byps.test.api.srvr.BStub_ClientIF;
@@ -91,7 +91,7 @@ public class MyServerIF extends BSkeleton_ServerIF {
 				BContentStream rstrm = ((BContentStream)istrm).cloneInputStream();
 				retStreams.add(rstrm);
 			} catch (IOException e) {
-				throw new BException(BExceptionO.IOERROR, e.getMessage(), e);
+				throw new BException(BExceptionC.IOERROR, e.getMessage(), e);
 			}
 			
 		}
@@ -143,7 +143,7 @@ public class MyServerIF extends BSkeleton_ServerIF {
 		try {
 			tpool.awaitTermination(10, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			throw new BException(BExceptionO.CANCELLED, e.toString(), e);
+			throw new BException(BExceptionC.CANCELLED, e.toString(), e);
 		}
 		if (log.isDebugEnabled()) log.debug(")callClientParallel");
 		return ret.get();

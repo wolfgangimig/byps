@@ -15,7 +15,7 @@ public final class BRequest_RemoteReferences_setNode extends BMethodRequest impl
 
 	public com.wilutions.byps.test.api.refs.Node v;
 	
-	private final static long serialVersionUID = 1404172848L;
+	public final static long serialVersionUID = 1404172848L;
 	
 	public int getRemoteId() { return 2086824050; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteReferences_setNode extends BMethodRequest impl
 		try {
 			final RemoteReferencesAsync __byps__remoteT = (RemoteReferencesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setNode(v, __byps__outerResult);
+			__byps__remoteT.setNode(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

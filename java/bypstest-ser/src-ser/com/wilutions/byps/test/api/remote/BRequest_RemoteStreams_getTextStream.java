@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteStreams_getTextStream extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1083407988L;
+	public final static long serialVersionUID = 1083407988L;
 	
 	public int getRemoteId() { return 2028487863; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteStreams_getTextStream extends BMethodRequest i
 		try {
 			final RemoteStreamsAsync __byps__remoteT = (RemoteStreamsAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.io.InputStream> __byps__outerResult = new BAsyncResultSendMethod<java.io.InputStream>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_15());			
-			__byps__remoteT.async_getTextStream(__byps__outerResult);
+			__byps__remoteT.getTextStream(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

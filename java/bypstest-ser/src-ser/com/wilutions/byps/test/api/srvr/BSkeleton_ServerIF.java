@@ -20,10 +20,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int callClientIncrementInt(int v) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) {
+	public void callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = callClientIncrementInt(v);
 			asyncResult.setAsyncResult(ret, null);
@@ -34,10 +34,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setPartner(ClientIF client) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setPartner(ClientIF client, final BAsyncResult<Object> asyncResult) {
+	public void setPartner(ClientIF client, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPartner(client);
 			asyncResult.setAsyncResult(null, null);
@@ -48,10 +48,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public ClientIF getPartner() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getPartner(final BAsyncResult<ClientIF> asyncResult) {
+	public void getPartner(final BAsyncResult<ClientIF> asyncResult) {
 		try {
 			ClientIF ret = getPartner();
 			asyncResult.setAsyncResult(ret, null);
@@ -62,10 +62,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.List<java.io.InputStream> getStreamsFromClient() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getStreamsFromClient(final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
+	public void getStreamsFromClient(final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
 		try {
 			java.util.List<java.io.InputStream> ret = getStreamsFromClient();
 			asyncResult.setAsyncResult(ret, null);
@@ -76,10 +76,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_putStreamsOnClient(java.util.List<java.io.InputStream> streams, final BAsyncResult<Object> asyncResult) {
+	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams, final BAsyncResult<Object> asyncResult) {
 		try {
 			putStreamsOnClient(streams);
 			asyncResult.setAsyncResult(null, null);
@@ -90,10 +90,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void registerWithClientMap(int id) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_registerWithClientMap(int id, final BAsyncResult<Object> asyncResult) {
+	public void registerWithClientMap(int id, final BAsyncResult<Object> asyncResult) {
 		try {
 			registerWithClientMap(id);
 			asyncResult.setAsyncResult(null, null);
@@ -104,10 +104,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public ClientIF getClient(int id) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getClient(int id, final BAsyncResult<ClientIF> asyncResult) {
+	public void getClient(int id, final BAsyncResult<ClientIF> asyncResult) {
 		try {
 			ClientIF ret = getClient(id);
 			asyncResult.setAsyncResult(ret, null);
@@ -118,10 +118,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) {
+	public void getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Integer> ret = getClientIds();
 			asyncResult.setAsyncResult(ret, null);
@@ -132,10 +132,10 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public int callClientParallel(int v) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_callClientParallel(int v, final BAsyncResult<Integer> asyncResult) {
+	public void callClientParallel(int v, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = callClientParallel(v);
 			asyncResult.setAsyncResult(ret, null);

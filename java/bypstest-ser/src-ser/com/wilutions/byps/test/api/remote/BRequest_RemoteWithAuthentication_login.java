@@ -17,7 +17,7 @@ public final class BRequest_RemoteWithAuthentication_login extends BMethodReques
 	public java.lang.String userName;
 	public java.lang.String userPwd;
 	
-	private final static long serialVersionUID = 839695851L;
+	public final static long serialVersionUID = 839695851L;
 	
 	public int getRemoteId() { return 1677934392; }
 	
@@ -30,7 +30,7 @@ public final class BRequest_RemoteWithAuthentication_login extends BMethodReques
 		try {
 			final RemoteWithAuthenticationAsync __byps__remoteT = (RemoteWithAuthenticationAsync)__byps__remote;			
 			BAsyncResultSendMethod<com.wilutions.byps.test.api.auth.SessionInfo> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.auth.SessionInfo>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_65775978());			
-			__byps__remoteT.async_login(sess, userName, userPwd, __byps__outerResult);
+			__byps__remoteT.login(sess, userName, userPwd, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

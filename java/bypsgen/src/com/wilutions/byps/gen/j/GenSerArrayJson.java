@@ -7,7 +7,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BJsonObject;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
@@ -154,7 +154,7 @@ public class GenSerArrayJson extends GenSerArray {
 		String elmQName = serInfo.toStringNoDims("");
 		TypeInfo elmType = pctxt.classDB.getTypeInfo(elmQName);
 		if (elmType == null) {
-			throw new BException(BExceptionO.GENERATOR_EXCEPTION, "Unknown element type=" + elmQName + ", for " + serInfo);
+			throw new BException(BExceptionC.GENERATOR_EXCEPTION, "Unknown element type=" + elmQName + ", for " + serInfo);
 		}
 
 		String className = serInfo.toString(pack);

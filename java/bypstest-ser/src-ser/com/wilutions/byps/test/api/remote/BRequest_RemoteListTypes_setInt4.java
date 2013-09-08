@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setInt4 extends BMethodRequest imple
 
 	public java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> int4;
 	
-	private final static long serialVersionUID = 1360809952L;
+	public final static long serialVersionUID = 1360809952L;
 	
 	public int getRemoteId() { return 380156079; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteListTypes_setInt4 extends BMethodRequest imple
 		try {
 			final RemoteListTypesAsync __byps__remoteT = (RemoteListTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setInt4(int4, __byps__outerResult);
+			__byps__remoteT.setInt4(int4, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteArrayTypes4dim_getChar extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 2032874980L;
+	public final static long serialVersionUID = 2032874980L;
 	
 	public int getRemoteId() { return 1557173854; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteArrayTypes4dim_getChar extends BMethodRequest 
 		try {
 			final RemoteArrayTypes4dimAsync __byps__remoteT = (RemoteArrayTypes4dimAsync)__byps__remote;			
 			BAsyncResultSendMethod<char[][][][]> __byps__outerResult = new BAsyncResultSendMethod<char[][][][]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_769021986());			
-			__byps__remoteT.async_getChar(__byps__outerResult);
+			__byps__remoteT.getChar(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -20,10 +20,10 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.io.InputStream getImage() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getImage(final BAsyncResult<java.io.InputStream> asyncResult) {
+	public void getImage(final BAsyncResult<java.io.InputStream> asyncResult) {
 		try {
 			java.io.InputStream ret = getImage();
 			asyncResult.setAsyncResult(ret, null);
@@ -34,10 +34,10 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setImage(java.io.InputStream istrm) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setImage(java.io.InputStream istrm, final BAsyncResult<Object> asyncResult) {
+	public void setImage(java.io.InputStream istrm, final BAsyncResult<Object> asyncResult) {
 		try {
 			setImage(istrm);
 			asyncResult.setAsyncResult(null, null);
@@ -48,10 +48,10 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.TreeMap<java.lang.Integer,java.io.InputStream> getImages() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getImages(final BAsyncResult<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> asyncResult) {
+	public void getImages(final BAsyncResult<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> asyncResult) {
 		try {
 			java.util.TreeMap<java.lang.Integer,java.io.InputStream> ret = getImages();
 			asyncResult.setAsyncResult(ret, null);
@@ -62,10 +62,10 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey, final BAsyncResult<Object> asyncResult) {
+	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey, final BAsyncResult<Object> asyncResult) {
 		try {
 			setImages(istrms, doNotReadStreamAtKey);
 			asyncResult.setAsyncResult(null, null);
@@ -76,10 +76,10 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void throwLastException() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_throwLastException(final BAsyncResult<Object> asyncResult) {
+	public void throwLastException(final BAsyncResult<Object> asyncResult) {
 		try {
 			throwLastException();
 			asyncResult.setAsyncResult(null, null);
@@ -90,10 +90,10 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.io.InputStream getTextStream() throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getTextStream(final BAsyncResult<java.io.InputStream> asyncResult) {
+	public void getTextStream(final BAsyncResult<java.io.InputStream> asyncResult) {
 		try {
 			java.io.InputStream ret = getTextStream();
 			asyncResult.setAsyncResult(ret, null);

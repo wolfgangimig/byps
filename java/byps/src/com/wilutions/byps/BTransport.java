@@ -46,20 +46,20 @@ public class BTransport {
   }
 
   public synchronized BOutput getOutput() throws BException {
-    if (protocol == null) throw new BException(BExceptionO.INTERNAL, "No protocol negotiated.");
+    if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
     BOutput bout = protocol.getOutput(this, null);
     return bout;
   }
 
   public synchronized BOutput getResponse(BMessageHeader requestHeader) throws BException {
-    if (protocol == null) throw new BException(BExceptionO.INTERNAL, "No protocol negotiated.");
+    if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
     BMessageHeader responseHeader = requestHeader.createResponse();
     BOutput bout = protocol.getOutput(this, responseHeader);
     return bout;
   }
 
   public synchronized BInput getInput(BMessageHeader header, ByteBuffer buf) throws BException {
-    if (protocol == null) throw new BException(BExceptionO.INTERNAL, "No protocol negotiated.");
+    if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
 
     // header is null in the test cases that check the serialization.
     if (header == null) {
@@ -68,6 +68,11 @@ public class BTransport {
     }
 
     return protocol.getInput(this, header, buf);
+  }
+  
+  public <T> void sendMethod(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
+    BAsyncResultReceiveMethod<T> outerResult = new BAsyncResultReceiveMethod<T>(asyncResult);
+    send(methodRequest, outerResult);
   }
 
   public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
@@ -128,11 +133,15 @@ public class BTransport {
           if (relogin) {
 
             // Authenticate and send the message again.
-
+            
+            // The server is responsible for killing long-polls of invalid sessions.
+            // So we do not need to stop the serverR before re-login.
+            
             if (log.isDebugEnabled()) log.debug("re-login");
             try {
 
               final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
+                
                 public void setAsyncResult(Boolean succ, Throwable e2) {
                   if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
                   if (e2 != null) {
@@ -247,7 +256,7 @@ public class BTransport {
     client.transport.wire.send(forwardMessage, messageResult);
   }
 
-  public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
+  protected void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
 
     ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
     final BNegotiate nego = new BNegotiate(apiDesc);
@@ -376,13 +385,13 @@ public class BTransport {
       protocol = new BProtocolJson(apiDesc);
     }
     else {
-      throw new BException(BExceptionO.CORRUPT, "Protocol negotiation failed.");
+      throw new BException(BExceptionC.CORRUPT, "Protocol negotiation failed.");
     }
 
     return protocol;
   }
 
-  public BProtocol negotiateProtocolServer(BTargetId targetId, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
+  protected BProtocol negotiateProtocolServer(BTargetId targetId, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
     BProtocol ret = null;
     try {
       BNegotiate nego = new BNegotiate();
@@ -433,27 +442,32 @@ public class BTransport {
     return ret;
   }
 
-  public boolean isReloginException(Throwable ex) {
+  /**
+   * Returns true, if a re-login should be performed.
+   * This function can be called from an implementation of the BAuthentication interface.
+   * It returns true, if the given exception was caused by a HTTP 403 error or
+   * if it is a BException and contains the code BExceptionO.AUTHENTICATION_REQUIRED.
+   * @param ex Exception
+   * @param typeId Type ID (serialVersionUID) of the BMethodRequest class.
+   * @return true, if re-login should be performed.
+   */
+  public boolean isReloginException(Throwable ex, int typeId) {
     if (log.isDebugEnabled()) log.debug("isReloginException(ex=" + ex);
 
     boolean ret = false;
     
-    if (authentication != null && ex != null) {
-
-      // Check exception
-      if (ex instanceof BException) {
-        BException bex = (BException) ex;
-        ret = (bex.code == BExceptionO.AUTHENTICATION_REQUIRED);
-        if (!ret) {
-          // The negotiated Tomcat session lives for 10 seconds.
-          // If we are slow in debugging and the session expires,
-          // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
-          ret = (bex.code == BExceptionO.IOERROR) && bex.toString().indexOf("403") >= 0;
-        }
+    // Check exception
+    if (ex instanceof BException) {
+      BException bex = (BException) ex;
+      ret = (bex.code == BExceptionC.AUTHENTICATION_REQUIRED);
+      if (!ret) {
+        // The negotiated Tomcat session lives for 10 seconds.
+        // If we are slow in debugging and the session expires,
+        // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
+        ret = (bex.code == BExceptionC.IOERROR) && bex.toString().indexOf("403") >= 0;
       }
-      
     }
-
+      
     if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
     return ret;
   }

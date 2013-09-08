@@ -20,10 +20,10 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) {
+	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) {
 		try {
 			publishRemote(name, remote, fowardToOtherServers);
 			asyncResult.setAsyncResult(null, null);
@@ -34,10 +34,10 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) {
+	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) {
 		try {
 			BRemote ret = getPublishedRemote(name);
 			asyncResult.setAsyncResult(ret, null);
@@ -48,10 +48,10 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void removePublishedRemote(java.lang.String name) throws RemoteException {
-		throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) {
+	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) {
 		try {
 			removePublishedRemote(name);
 			asyncResult.setAsyncResult(null, null);

@@ -1,8 +1,11 @@
 package com.wilutions.byps.http;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
@@ -61,6 +64,24 @@ public abstract class HSession {
       log.debug(")HSession");
   }
 
+  /**
+   * Construtor
+   * @param hsess HTTP session object
+   * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser()
+   * @param tempDir Temporary directory for storing streams.
+   * @param stubRegistry Registry for BStub objects of all subscribers.
+   */
+  public HSession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry stubRegistry) {
+    this(hsess, remoteUser, tempDir, stubRegistry,
+        new HServerListener() {
+          public boolean onBeforeWriteHttpResponse(ByteBuffer obuf, Throwable e, HttpServletResponse resp, boolean isAsync) throws IOException {
+            return false;
+          }
+          public void onAfterWriteHttpResponse(int nbOfBytesWritten) {
+          }
+    });
+  }
+  
   public void done() {
     if (log.isDebugEnabled())
       log.debug("done(");

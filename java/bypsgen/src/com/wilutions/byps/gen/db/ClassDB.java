@@ -14,7 +14,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.BRemote;
 import com.wilutions.byps.gen.api.CommentInfo;
@@ -552,7 +552,7 @@ public class ClassDB {
 		if (!validateSerials()) ret = false;
 		
 		if (!ret) {
-			throw new BException(BExceptionO.GENERATOR_EXCEPTION, "Validate classDB failed. See error(s) printed before.");
+			throw new BException(BExceptionC.GENERATOR_EXCEPTION, "Validate classDB failed. See error(s) printed before.");
 		}
 	}
 	

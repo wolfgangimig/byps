@@ -58,10 +58,10 @@ public abstract class BOutput {
 			header.error = ((BException)ex).code;
 		} 
 		else {
-			header.error = BExceptionO.REMOTE_ERROR;
+			header.error = BExceptionC.REMOTE_ERROR;
 			BSerializer ser = registry.getSerializer(ex, false);
 			if (ser == null) {
-				ex = new BException(BExceptionO.REMOTE_ERROR, "", ex);
+				ex = new BException(BExceptionC.REMOTE_ERROR, "", ex);
 			}
 		}
 		store(ex);

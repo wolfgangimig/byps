@@ -59,6 +59,8 @@ public class GenSerStub {
 	void generate() throws IOException {
 		//log.debug(GenSerArray.class.getName(), "generate");
 		
+	  pr.checkpoint();
+	  
 		pr.print(serializerName).println(" = function() {");
 		
 		pr.beginBlock();

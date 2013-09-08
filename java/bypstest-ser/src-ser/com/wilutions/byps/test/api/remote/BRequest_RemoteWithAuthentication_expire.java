@@ -15,7 +15,7 @@ public final class BRequest_RemoteWithAuthentication_expire extends BMethodReque
 
 	public com.wilutions.byps.test.api.auth.SessionInfo sess;
 	
-	private final static long serialVersionUID = 68943581L;
+	public final static long serialVersionUID = 68943581L;
 	
 	public int getRemoteId() { return 1677934392; }
 	
@@ -28,7 +28,7 @@ public final class BRequest_RemoteWithAuthentication_expire extends BMethodReque
 		try {
 			final RemoteWithAuthenticationAsync __byps__remoteT = (RemoteWithAuthenticationAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_expire(sess, __byps__outerResult);
+			__byps__remoteT.expire(sess, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

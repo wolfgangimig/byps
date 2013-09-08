@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_1218831438 extends BMethodResult<java.util.List<java.io.InputStream>> implements Serializable {
 
 	
-	private final static long serialVersionUID = 1151524674L;
+	public final static long serialVersionUID = 1151524674L;
 	
 }

@@ -69,6 +69,10 @@ var TestUtils = {
 		}
 	},
 	
+	fail : function(log, msg) {
+		expect(msg).toBe(null);
+	},
+	
 	createObjectPrimitiveTypes : function() {
 		var p = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
 		p.intVal = ++createCount;

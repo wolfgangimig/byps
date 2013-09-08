@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_callClientParallel extends BMethodRequest i
 
 	public int v;
 	
-	private final static long serialVersionUID = 1340180893L;
+	public final static long serialVersionUID = 1340180893L;
 	
 	public int getRemoteId() { return 1313562065; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_ServerIF_callClientParallel extends BMethodRequest i
 		try {
 			final ServerIFAsync __byps__remoteT = (ServerIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<Integer> __byps__outerResult = new BAsyncResultSendMethod<Integer>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_5());			
-			__byps__remoteT.async_callClientParallel(v, __byps__outerResult);
+			__byps__remoteT.callClientParallel(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

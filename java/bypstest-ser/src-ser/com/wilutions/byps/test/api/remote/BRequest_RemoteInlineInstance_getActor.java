@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteInlineInstance_getActor extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 261822861L;
+	public final static long serialVersionUID = 261822861L;
 	
 	public int getRemoteId() { return 1206670536; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteInlineInstance_getActor extends BMethodRequest
 		try {
 			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
 			BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Actor> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Actor>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_171948703());			
-			__byps__remoteT.async_getActor(__byps__outerResult);
+			__byps__remoteT.getActor(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

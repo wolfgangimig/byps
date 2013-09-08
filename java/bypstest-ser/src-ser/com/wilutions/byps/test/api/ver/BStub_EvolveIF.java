@@ -21,77 +21,72 @@ public class BStub_EvolveIF extends BStub implements EvolveIFAsync, java.io.Seri
 	public void setEvolve(Evolve obj) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setEvolve(obj, asyncResult);
+		setEvolve(obj, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) {
+	public void setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();		
 		req.obj = obj;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public Evolve getEvolve() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Evolve> asyncResult = new BSyncResult<Evolve>();		
-		async_getEvolve(asyncResult);
+		getEvolve(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getEvolve(final BAsyncResult<Evolve> asyncResult) {
+	public void getEvolve(final BAsyncResult<Evolve> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_EvolveIF_getEvolve req = new BRequest_EvolveIF_getEvolve();		
-		BAsyncResultReceiveMethod<Evolve> outerResult = new BAsyncResultReceiveMethod<Evolve>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setClient(EvolveIF partner) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setClient(partner, asyncResult);
+		setClient(partner, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) {
+	public void setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();		
 		req.partner = partner;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public EvolveIF getClient() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<EvolveIF> asyncResult = new BSyncResult<EvolveIF>();		
-		async_getClient(asyncResult);
+		getClient(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getClient(final BAsyncResult<EvolveIF> asyncResult) {
+	public void getClient(final BAsyncResult<EvolveIF> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_EvolveIF_getClient req = new BRequest_EvolveIF_getClient();		
-		BAsyncResultReceiveMethod<EvolveIF> outerResult = new BAsyncResultReceiveMethod<EvolveIF>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void sendEvolveToClient() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_sendEvolveToClient(asyncResult);
+		sendEvolveToClient(asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_sendEvolveToClient(final BAsyncResult<Object> asyncResult) {
+	public void sendEvolveToClient(final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_EvolveIF_sendEvolveToClient req = new BRequest_EvolveIF_sendEvolveToClient();		
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	

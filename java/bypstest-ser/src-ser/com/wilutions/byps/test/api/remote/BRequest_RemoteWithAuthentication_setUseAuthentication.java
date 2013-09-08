@@ -15,7 +15,7 @@ public final class BRequest_RemoteWithAuthentication_setUseAuthentication extend
 
 	public boolean useAuth;
 	
-	private final static long serialVersionUID = 1785294043L;
+	public final static long serialVersionUID = 1785294043L;
 	
 	public int getRemoteId() { return 1677934392; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteWithAuthentication_setUseAuthentication extend
 		try {
 			final RemoteWithAuthenticationAsync __byps__remoteT = (RemoteWithAuthenticationAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setUseAuthentication(useAuth, __byps__outerResult);
+			__byps__remoteT.setUseAuthentication(useAuth, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

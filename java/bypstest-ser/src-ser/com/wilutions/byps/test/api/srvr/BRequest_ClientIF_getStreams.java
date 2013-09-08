@@ -15,7 +15,7 @@ public final class BRequest_ClientIF_getStreams extends BMethodRequest implement
 
 	public int ctrl;
 	
-	private final static long serialVersionUID = 865920738L;
+	public final static long serialVersionUID = 865920738L;
 	
 	public int getRemoteId() { return 1784257353; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_ClientIF_getStreams extends BMethodRequest implement
 		try {
 			final ClientIFAsync __byps__remoteT = (ClientIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.util.List<java.io.InputStream>> __byps__outerResult = new BAsyncResultSendMethod<java.util.List<java.io.InputStream>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1218831438());			
-			__byps__remoteT.async_getStreams(ctrl, __byps__outerResult);
+			__byps__remoteT.getStreams(ctrl, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -31,7 +31,7 @@ public final class BRequest_RemoteConstants_compare_AllTypesC extends BMethodReq
 	public java.lang.String[][][][] arrStrings4;
 	public com.wilutions.byps.test.api.cons.AllTypesZ[][] arrAll;
 	
-	private final static long serialVersionUID = 862752254L;
+	public final static long serialVersionUID = 862752254L;
 	
 	public int getRemoteId() { return 431648293; }
 	
@@ -39,7 +39,7 @@ public final class BRequest_RemoteConstants_compare_AllTypesC extends BMethodReq
 		try {
 			final RemoteConstantsAsync __byps__remoteT = (RemoteConstantsAsync)__byps__remote;			
 			BAsyncResultSendMethod<Boolean> __byps__outerResult = new BAsyncResultSendMethod<Boolean>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1());			
-			__byps__remoteT.async_compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__outerResult);
+			__byps__remoteT.compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

@@ -594,11 +594,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		return { _typeId : 1557084481, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBool = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setBool = function(v, __byps__asyncResult){
@@ -610,11 +612,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte = function(v, __byps__asyncResult){
@@ -626,11 +630,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setChar = function(v, __byps__asyncResult){
@@ -642,11 +648,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setShort = function(v, __byps__asyncResult){
@@ -658,11 +666,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt = function(v, __byps__asyncResult){
@@ -674,11 +684,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setLong = function(v, __byps__asyncResult){
@@ -690,11 +702,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setFloat = function(v, __byps__asyncResult){
@@ -706,11 +720,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setDouble = function(v, __byps__asyncResult){
@@ -722,11 +738,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setString = function(v, __byps__asyncResult){
@@ -738,11 +756,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPrimitiveTypes = function(v, __byps__asyncResult){
@@ -754,11 +774,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObject = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setObject = function(v, __byps__asyncResult){
@@ -770,11 +792,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBool = function() /* returns boolean[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getBool = function(__byps__asyncResult){
@@ -786,11 +810,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte = function() /* returns byte[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte = function(__byps__asyncResult){
@@ -802,11 +828,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar = function() /* returns char[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getChar = function(__byps__asyncResult){
@@ -818,11 +846,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort = function() /* returns short[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getShort = function(__byps__asyncResult){
@@ -834,11 +864,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt = function() /* returns int[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt = function(__byps__asyncResult){
@@ -850,11 +882,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong = function() /* returns long[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getLong = function(__byps__asyncResult){
@@ -866,11 +900,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat = function() /* returns float[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getFloat = function(__byps__asyncResult){
@@ -882,11 +918,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble = function() /* returns double[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getDouble = function(__byps__asyncResult){
@@ -898,11 +936,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString = function() /* returns java.lang.String[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getString = function(__byps__asyncResult){
@@ -914,11 +954,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPrimitiveTypes = function(__byps__asyncResult){
@@ -930,11 +972,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObject = function() /* returns java.lang.Object[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getObject = function(__byps__asyncResult){
@@ -965,11 +1009,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 		return { _typeId : 2081058997, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysInt = function(arr2, arr3, arr4) /* returns int[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult){
@@ -981,11 +1027,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysString = function(arr2, arr3, arr4) /* returns java.lang.String[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult){
@@ -997,11 +1045,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysClass = function(arr2, arr3, arr4) /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult){
@@ -1013,11 +1063,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysObject = function(arr2, arr3, arr4) /* returns java.lang.Object[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult){
@@ -1029,11 +1081,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes23 = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysInline = function(arr2, arr3, arr4) /* returns com.wilutions.byps.test.api.inl.Point2D[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult){
@@ -1064,11 +1118,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		return { _typeId : 1557173854, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBool = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setBool = function(v, __byps__asyncResult){
@@ -1080,11 +1136,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte = function(v, __byps__asyncResult){
@@ -1096,11 +1154,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setChar = function(v, __byps__asyncResult){
@@ -1112,11 +1172,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setShort = function(v, __byps__asyncResult){
@@ -1128,11 +1190,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt = function(v, __byps__asyncResult){
@@ -1144,11 +1208,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setLong = function(v, __byps__asyncResult){
@@ -1160,11 +1226,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setFloat = function(v, __byps__asyncResult){
@@ -1176,11 +1244,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setDouble = function(v, __byps__asyncResult){
@@ -1192,11 +1262,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setString = function(v, __byps__asyncResult){
@@ -1208,11 +1280,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPrimitiveTypes = function(v, __byps__asyncResult){
@@ -1224,11 +1298,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObject = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setObject = function(v, __byps__asyncResult){
@@ -1240,11 +1316,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBool = function() /* returns boolean[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getBool = function(__byps__asyncResult){
@@ -1256,11 +1334,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte = function() /* returns byte[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte = function(__byps__asyncResult){
@@ -1272,11 +1352,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar = function() /* returns char[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getChar = function(__byps__asyncResult){
@@ -1288,11 +1370,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort = function() /* returns short[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getShort = function(__byps__asyncResult){
@@ -1304,11 +1388,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt = function() /* returns int[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt = function(__byps__asyncResult){
@@ -1320,11 +1406,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong = function() /* returns long[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getLong = function(__byps__asyncResult){
@@ -1336,11 +1424,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat = function() /* returns float[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getFloat = function(__byps__asyncResult){
@@ -1352,11 +1442,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble = function() /* returns double[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getDouble = function(__byps__asyncResult){
@@ -1368,11 +1460,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString = function() /* returns java.lang.String[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getString = function(__byps__asyncResult){
@@ -1384,11 +1478,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPrimitiveTypes = function(__byps__asyncResult){
@@ -1400,11 +1496,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObject = function() /* returns java.lang.Object[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getObject = function(__byps__asyncResult){
@@ -1435,11 +1533,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants = function() {
 		return { _typeId : 431648293, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.compare_HebrewC = function(ALEPH, BETH) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult){
@@ -1451,11 +1551,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteConstants = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll) /* returns boolean , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult){
@@ -1486,11 +1588,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums = function() {
 		return { _typeId : 359349400, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPlanet = function() /* returns com.wilutions.byps.test.api.enu.EnumPlanets , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPlanet = function(__byps__asyncResult){
@@ -1502,11 +1606,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteEnums = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPlanet = function(planet) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPlanet = function(planet, __byps__asyncResult){
@@ -1537,11 +1643,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		return { _typeId : 1206670536, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setActor = function(act) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setActor = function(act, __byps__asyncResult){
@@ -1553,11 +1661,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getActor = function() /* returns com.wilutions.byps.test.api.inl.Actor , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getActor = function(__byps__asyncResult){
@@ -1569,11 +1679,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DArray1dim = function(pointArray) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPoint2DArray1dim = function(pointArray, __byps__asyncResult){
@@ -1585,11 +1697,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DArray1dim = function() /* returns com.wilutions.byps.test.api.inl.Point2D[] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPoint2DArray1dim = function(__byps__asyncResult){
@@ -1601,11 +1715,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DArray4dim = function(pointArray) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPoint2DArray4dim = function(pointArray, __byps__asyncResult){
@@ -1617,11 +1733,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DArray4dim = function() /* returns com.wilutions.byps.test.api.inl.Point2D[][][][] , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPoint2DArray4dim = function(__byps__asyncResult){
@@ -1633,11 +1751,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DList = function(pointList) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPoint2DList = function(pointList, __byps__asyncResult){
@@ -1649,11 +1769,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DList = function() /* returns java.util.List<com.wilutions.byps.test.api.inl.Point2D> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPoint2DList = function(__byps__asyncResult){
@@ -1665,11 +1787,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DListList = function(pointListList) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPoint2DListList = function(pointListList, __byps__asyncResult){
@@ -1681,11 +1805,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DListList = function() /* returns java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPoint2DListList = function(__byps__asyncResult){
@@ -1697,11 +1823,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DMap = function(pointMap) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPoint2DMap = function(pointMap, __byps__asyncResult){
@@ -1713,11 +1841,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteInlineInstance = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DMap = function() /* returns java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPoint2DMap = function(__byps__asyncResult){
@@ -1748,11 +1878,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		return { _typeId : 380156079, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBoolean1 = function() /* returns java.util.List<java.lang.Boolean> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getBoolean1 = function(__byps__asyncResult){
@@ -1764,11 +1896,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBoolean1 = function(boolean1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setBoolean1 = function(boolean1, __byps__asyncResult){
@@ -1780,11 +1914,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte1 = function() /* returns java.util.List<java.lang.Byte> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte1 = function(__byps__asyncResult){
@@ -1796,11 +1932,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte1 = function(byte1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte1 = function(byte1, __byps__asyncResult){
@@ -1812,11 +1950,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar1 = function() /* returns java.util.List<java.lang.Character> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getChar1 = function(__byps__asyncResult){
@@ -1828,11 +1968,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar1 = function(char1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setChar1 = function(char1, __byps__asyncResult){
@@ -1844,11 +1986,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort1 = function() /* returns java.util.List<java.lang.Short> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getShort1 = function(__byps__asyncResult){
@@ -1860,11 +2004,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort1 = function(short1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setShort1 = function(short1, __byps__asyncResult){
@@ -1876,11 +2022,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt1 = function() /* returns java.util.List<java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt1 = function(__byps__asyncResult){
@@ -1892,11 +2040,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt1 = function(int1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt1 = function(int1, __byps__asyncResult){
@@ -1908,11 +2058,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong1 = function() /* returns java.util.List<java.lang.Long> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getLong1 = function(__byps__asyncResult){
@@ -1924,11 +2076,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong1 = function(long1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setLong1 = function(long1, __byps__asyncResult){
@@ -1940,11 +2094,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat1 = function() /* returns java.util.List<java.lang.Float> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getFloat1 = function(__byps__asyncResult){
@@ -1956,11 +2112,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat1 = function(float1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setFloat1 = function(float1, __byps__asyncResult){
@@ -1972,11 +2130,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble1 = function() /* returns java.util.List<java.lang.Double> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getDouble1 = function(__byps__asyncResult){
@@ -1988,11 +2148,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble1 = function(double1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setDouble1 = function(double1, __byps__asyncResult){
@@ -2004,11 +2166,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString1 = function() /* returns java.util.List<java.lang.String> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getString1 = function(__byps__asyncResult){
@@ -2020,11 +2184,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString1 = function(string1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setString1 = function(string1, __byps__asyncResult){
@@ -2036,11 +2202,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes1 = function() /* returns java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPrimitiveTypes1 = function(__byps__asyncResult){
@@ -2052,11 +2220,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult){
@@ -2068,11 +2238,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte2 = function() /* returns java.util.List<byte[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte2 = function(__byps__asyncResult){
@@ -2084,11 +2256,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte2 = function(byte2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte2 = function(byte2, __byps__asyncResult){
@@ -2100,11 +2274,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt2 = function() /* returns java.util.List<int[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt2 = function(__byps__asyncResult){
@@ -2116,11 +2292,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt2 = function(int2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt2 = function(int2, __byps__asyncResult){
@@ -2132,11 +2310,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObj1 = function() /* returns java.util.List<java.lang.Object> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getObj1 = function(__byps__asyncResult){
@@ -2148,11 +2328,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObj1 = function(obj1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setObj1 = function(obj1, __byps__asyncResult){
@@ -2164,11 +2346,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt3 = function() /* returns java.util.List<java.util.List<java.lang.Integer>> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt3 = function(__byps__asyncResult){
@@ -2180,11 +2364,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt3 = function(int3) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt3 = function(int3, __byps__asyncResult){
@@ -2196,11 +2382,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt4 = function() /* returns java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt4 = function(__byps__asyncResult){
@@ -2212,11 +2400,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteListTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt4 = function(int4) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt4 = function(int4, __byps__asyncResult){
@@ -2247,11 +2437,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		return { _typeId : 80483097, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBoolean1 = function() /* returns java.util.Map<java.lang.String,java.lang.Boolean> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getBoolean1 = function(__byps__asyncResult){
@@ -2263,11 +2455,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBoolean1 = function(boolean1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setBoolean1 = function(boolean1, __byps__asyncResult){
@@ -2279,11 +2473,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte1 = function() /* returns java.util.HashMap<java.lang.Double,java.lang.Byte> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte1 = function(__byps__asyncResult){
@@ -2295,11 +2491,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte1 = function(byte1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte1 = function(byte1, __byps__asyncResult){
@@ -2311,11 +2509,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar1 = function() /* returns java.util.TreeMap<java.lang.Float,java.lang.Character> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getChar1 = function(__byps__asyncResult){
@@ -2327,11 +2527,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar1 = function(char1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setChar1 = function(char1, __byps__asyncResult){
@@ -2343,11 +2545,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort1 = function() /* returns java.util.Map<java.lang.Long,java.lang.Short> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getShort1 = function(__byps__asyncResult){
@@ -2359,11 +2563,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort1 = function(short1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setShort1 = function(short1, __byps__asyncResult){
@@ -2375,11 +2581,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt1 = function() /* returns java.util.Map<java.lang.Integer,java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt1 = function(__byps__asyncResult){
@@ -2391,11 +2599,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt1 = function(int1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt1 = function(int1, __byps__asyncResult){
@@ -2407,11 +2617,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong1 = function() /* returns java.util.Map<java.lang.Short,java.lang.Long> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getLong1 = function(__byps__asyncResult){
@@ -2423,11 +2635,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong1 = function(long1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setLong1 = function(long1, __byps__asyncResult){
@@ -2439,11 +2653,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat1 = function() /* returns java.util.Map<java.lang.Character,java.lang.Float> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getFloat1 = function(__byps__asyncResult){
@@ -2455,11 +2671,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat1 = function(float1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setFloat1 = function(float1, __byps__asyncResult){
@@ -2471,11 +2689,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble1 = function() /* returns java.util.Map<java.lang.Byte,java.lang.Double> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getDouble1 = function(__byps__asyncResult){
@@ -2487,11 +2707,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble1 = function(double1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setDouble1 = function(double1, __byps__asyncResult){
@@ -2503,11 +2725,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString1 = function() /* returns java.util.Map<java.lang.String,java.lang.String> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getString1 = function(__byps__asyncResult){
@@ -2519,11 +2743,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString1 = function(string1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setString1 = function(string1, __byps__asyncResult){
@@ -2535,11 +2761,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes1 = function() /* returns java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPrimitiveTypes1 = function(__byps__asyncResult){
@@ -2551,11 +2779,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult){
@@ -2567,11 +2797,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte2 = function() /* returns java.util.Map<java.lang.Integer,byte[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte2 = function(__byps__asyncResult){
@@ -2583,11 +2815,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte2 = function(byte2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte2 = function(byte2, __byps__asyncResult){
@@ -2599,11 +2833,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt2 = function() /* returns java.util.Map<java.lang.Integer,int[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt2 = function(__byps__asyncResult){
@@ -2615,11 +2851,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt2 = function(int2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt2 = function(int2, __byps__asyncResult){
@@ -2631,11 +2869,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObj1 = function() /* returns java.util.Map<java.lang.String,java.lang.Object> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getObj1 = function(__byps__asyncResult){
@@ -2647,11 +2887,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteMapTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObj1 = function(obj1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setObj1 = function(obj1, __byps__asyncResult){
@@ -2682,11 +2924,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		return { _typeId : 1341983932, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.voidFunctionVoid = function() /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_voidFunctionVoid = function(__byps__asyncResult){
@@ -2698,11 +2942,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBool = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setBool = function(v, __byps__asyncResult){
@@ -2714,11 +2960,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte = function(v, __byps__asyncResult){
@@ -2730,11 +2978,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setChar = function(v, __byps__asyncResult){
@@ -2746,11 +2996,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setShort = function(v, __byps__asyncResult){
@@ -2762,11 +3014,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt = function(v, __byps__asyncResult){
@@ -2778,11 +3032,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setLong = function(v, __byps__asyncResult){
@@ -2794,11 +3050,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setFloat = function(v, __byps__asyncResult){
@@ -2810,11 +3068,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setDouble = function(v, __byps__asyncResult){
@@ -2826,11 +3086,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setString = function(v, __byps__asyncResult){
@@ -2842,11 +3104,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPrimitiveTypes = function(v, __byps__asyncResult){
@@ -2858,11 +3122,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObject = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setObject = function(v, __byps__asyncResult){
@@ -2874,11 +3140,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBool = function() /* returns boolean , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getBool = function(__byps__asyncResult){
@@ -2890,11 +3158,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte = function() /* returns byte , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte = function(__byps__asyncResult){
@@ -2906,11 +3176,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar = function() /* returns char , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getChar = function(__byps__asyncResult){
@@ -2922,11 +3194,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort = function() /* returns short , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getShort = function(__byps__asyncResult){
@@ -2938,11 +3212,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt = function() /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt = function(__byps__asyncResult){
@@ -2954,11 +3230,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong = function() /* returns long , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getLong = function(__byps__asyncResult){
@@ -2970,11 +3248,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat = function() /* returns float , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getFloat = function(__byps__asyncResult){
@@ -2986,11 +3266,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble = function() /* returns double , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getDouble = function(__byps__asyncResult){
@@ -3002,11 +3284,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getString = function(__byps__asyncResult){
@@ -3018,11 +3302,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes = function() /* returns com.wilutions.byps.test.api.prim.PrimitiveTypes , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPrimitiveTypes = function(__byps__asyncResult){
@@ -3034,11 +3320,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObject = function() /* returns java.lang.Object , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getObject = function(__byps__asyncResult){
@@ -3050,11 +3338,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult){
@@ -3066,11 +3356,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.add = function(a, b) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_add = function(a, b, __byps__asyncResult){
@@ -3101,11 +3393,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences = function() {
 		return { _typeId : 2086824050, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getNode = function() /* returns com.wilutions.byps.test.api.refs.Node , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getNode = function(__byps__asyncResult){
@@ -3117,11 +3411,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteReferences = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setNode = function(v) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setNode = function(v, __byps__asyncResult){
@@ -3152,11 +3448,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl = function() {
 		return { _typeId : 1124545992, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.publishRemote = function(name, remote, fowardToOtherServers) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult){
@@ -3168,11 +3466,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPublishedRemote = function(name) /* returns com.wilutions.byps.BRemote , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPublishedRemote = function(name, __byps__asyncResult){
@@ -3184,11 +3484,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteServerCtrl = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.removePublishedRemote = function(name) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_removePublishedRemote = function(name, __byps__asyncResult){
@@ -3219,11 +3521,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		return { _typeId : 1156008353, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBoolean1 = function() /* returns java.util.Set<java.lang.Boolean> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getBoolean1 = function(__byps__asyncResult){
@@ -3235,11 +3539,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBoolean1 = function(boolean1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setBoolean1 = function(boolean1, __byps__asyncResult){
@@ -3251,11 +3557,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte1 = function() /* returns java.util.HashSet<java.lang.Byte> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte1 = function(__byps__asyncResult){
@@ -3267,11 +3575,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte1 = function(byte1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte1 = function(byte1, __byps__asyncResult){
@@ -3283,11 +3593,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar1 = function() /* returns java.util.TreeSet<java.lang.Character> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getChar1 = function(__byps__asyncResult){
@@ -3299,11 +3611,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar1 = function(char1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setChar1 = function(char1, __byps__asyncResult){
@@ -3315,11 +3629,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort1 = function() /* returns java.util.Set<java.lang.Short> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getShort1 = function(__byps__asyncResult){
@@ -3331,11 +3647,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort1 = function(short1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setShort1 = function(short1, __byps__asyncResult){
@@ -3347,11 +3665,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt1 = function() /* returns java.util.Set<java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt1 = function(__byps__asyncResult){
@@ -3363,11 +3683,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt1 = function(int1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt1 = function(int1, __byps__asyncResult){
@@ -3379,11 +3701,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong1 = function() /* returns java.util.Set<java.lang.Long> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getLong1 = function(__byps__asyncResult){
@@ -3395,11 +3719,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong1 = function(long1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setLong1 = function(long1, __byps__asyncResult){
@@ -3411,11 +3737,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat1 = function() /* returns java.util.Set<java.lang.Float> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getFloat1 = function(__byps__asyncResult){
@@ -3427,11 +3755,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat1 = function(float1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setFloat1 = function(float1, __byps__asyncResult){
@@ -3443,11 +3773,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble1 = function() /* returns java.util.Set<java.lang.Double> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getDouble1 = function(__byps__asyncResult){
@@ -3459,11 +3791,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble1 = function(double1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setDouble1 = function(double1, __byps__asyncResult){
@@ -3475,11 +3809,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString1 = function() /* returns java.util.Set<java.lang.String> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getString1 = function(__byps__asyncResult){
@@ -3491,11 +3827,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString1 = function(string1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setString1 = function(string1, __byps__asyncResult){
@@ -3507,11 +3845,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes1 = function() /* returns java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPrimitiveTypes1 = function(__byps__asyncResult){
@@ -3523,11 +3863,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes1 = function(primitiveTypes1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult){
@@ -3539,11 +3881,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte2 = function() /* returns java.util.Set<byte[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getByte2 = function(__byps__asyncResult){
@@ -3555,11 +3899,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte2 = function(byte2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setByte2 = function(byte2, __byps__asyncResult){
@@ -3571,11 +3917,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt2 = function() /* returns java.util.Set<int[]> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getInt2 = function(__byps__asyncResult){
@@ -3587,11 +3935,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt2 = function(int2) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setInt2 = function(int2, __byps__asyncResult){
@@ -3603,11 +3953,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObj1 = function() /* returns java.util.Set<java.lang.Object> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getObj1 = function(__byps__asyncResult){
@@ -3619,11 +3971,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteSetTypes = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObj1 = function(obj1) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setObj1 = function(obj1, __byps__asyncResult){
@@ -3654,11 +4008,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 		return { _typeId : 2028487863, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getImage = function() /* returns java.io.InputStream , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getImage = function(__byps__asyncResult){
@@ -3670,11 +4026,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setImage = function(istrm) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setImage = function(istrm, __byps__asyncResult){
@@ -3686,11 +4044,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getImages = function() /* returns java.util.TreeMap<java.lang.Integer,java.io.InputStream> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getImages = function(__byps__asyncResult){
@@ -3702,11 +4062,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setImages = function(istrms, doNotReadStreamAtKey) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult){
@@ -3718,11 +4080,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.throwLastException = function() /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_throwLastException = function(__byps__asyncResult){
@@ -3734,11 +4098,13 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteStreams = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getTextStream = function() /* returns java.io.InputStream , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getTextStream = function(__byps__asyncResult){
@@ -3769,6 +4135,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 		return { _typeId : 1677934392, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Set authentication flag in MySession.
 	 * @param useAuth
@@ -3777,6 +4144,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 	this.setUseAuthentication = function(useAuth) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Set authentication flag in MySession.
 	 * @param useAuth
@@ -3791,6 +4159,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Login.
 	 * Only user "Fritz" is allowed to login.
@@ -3803,6 +4172,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 	this.login = function(sess, userName, userPwd) /* returns com.wilutions.byps.test.api.auth.SessionInfo , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Login.
 	 * Only user "Fritz" is allowed to login.
@@ -3821,6 +4191,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Do something.
 	 * @param sess Session information. Must not be null, if user was logged in.
@@ -3831,6 +4202,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 	this.doit = function(sess, value) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Do something.
 	 * @param sess Session information. Must not be null, if user was logged in.
@@ -3847,6 +4219,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Logout
 	 * @param sess
@@ -3855,6 +4228,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 	this.expire = function(sess) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Logout
 	 * @param sess
@@ -3869,6 +4243,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Set the number of login calls nessesary to login the user.
 	 * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
@@ -3878,6 +4253,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function
 	this.setReloginCount = function(count) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Set the number of login calls nessesary to login the user.
 	 * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
@@ -3912,11 +4288,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 		return { _typeId : 1784257353, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.incrementInt = function(a) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_incrementInt = function(a, __byps__asyncResult){
@@ -3928,11 +4306,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getStreams = function(ctrl) /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getStreams = function(ctrl, __byps__asyncResult){
@@ -3944,11 +4324,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.putStreams = function(strm, ctrl) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_putStreams = function(strm, ctrl, __byps__asyncResult){
@@ -3960,11 +4342,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendChat = function(cs) /* returns com.wilutions.byps.test.api.srvr.ChatStructure , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendChat = function(cs, __byps__asyncResult){
@@ -3995,11 +4379,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		return { _typeId : 1313562065, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.callClientIncrementInt = function(v) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_callClientIncrementInt = function(v, __byps__asyncResult){
@@ -4011,11 +4397,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPartner = function(client) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setPartner = function(client, __byps__asyncResult){
@@ -4027,11 +4415,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPartner = function() /* returns com.wilutions.byps.test.api.srvr.ClientIF , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getPartner = function(__byps__asyncResult){
@@ -4043,11 +4433,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getStreamsFromClient = function() /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getStreamsFromClient = function(__byps__asyncResult){
@@ -4059,11 +4451,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.putStreamsOnClient = function(streams) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_putStreamsOnClient = function(streams, __byps__asyncResult){
@@ -4075,11 +4469,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.registerWithClientMap = function(id) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_registerWithClientMap = function(id, __byps__asyncResult){
@@ -4091,11 +4487,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getClient = function(id) /* returns com.wilutions.byps.test.api.srvr.ClientIF , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getClient = function(id, __byps__asyncResult){
@@ -4107,11 +4505,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getClientIds = function() /* returns java.util.Set<java.lang.Integer> , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getClientIds = function(__byps__asyncResult){
@@ -4123,11 +4523,13 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ServerIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.callClientParallel = function(v) /* returns int , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_callClientParallel = function(v, __byps__asyncResult){
@@ -4158,11 +4560,13 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 		return { _typeId : 2078696281, targetId : this.transport.targetId };
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setEvolve = function(obj) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setEvolve = function(obj, __byps__asyncResult){
@@ -4174,11 +4578,13 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getEvolve = function() /* returns com.wilutions.byps.test.api.ver.Evolve , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getEvolve = function(__byps__asyncResult){
@@ -4190,11 +4596,13 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setClient = function(partner) /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_setClient = function(partner, __byps__asyncResult){
@@ -4206,11 +4614,13 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getClient = function() /* returns com.wilutions.byps.test.api.ver.EvolveIF , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_getClient = function(__byps__asyncResult){
@@ -4222,11 +4632,13 @@ com.wilutions.byps.test.api.ver.BSkeleton_EvolveIF = function() {
 		};
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendEvolveToClient = function() /* returns void , throws BException, InterruptedException*/  {
 		com.wilutions.byps.throwUNSUPPORTED("");
 	};
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.async_sendEvolveToClient = function(__byps__asyncResult){
@@ -4257,180 +4669,224 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBool = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 589253529, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 589243771, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 589230893, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1071498593, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1265927470, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 588955655, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1083385729, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 720472590, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1154444878, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1765354225, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObject = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1023062396, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBool = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1645604187 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1645613945 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1645626823 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 510386133 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1609477282 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1645902061 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 522273269 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 935089666 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1369061954 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 825201405 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObject = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1237679472 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -4443,44 +4899,54 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1748523470, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 607451410, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1004457221, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 738833892, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 899462794, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -4494,180 +4960,224 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBool = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 202005372, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 201995614, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 201982736, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1951707614, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1933153045, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 201707498, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1963594750, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 796203285, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 362230997, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 710411500, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObject = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 493613479, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBool = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2032852344 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2032862102 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2032874980 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1390595154 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1589603233 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2033150218 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1402482290 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 581586209 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 147613921 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1650564320 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObject = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 278996403 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -4681,20 +5191,24 @@ com.wilutions.byps.test.api.remote.BStub_RemoteConstants = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1570751625, ALEPH : ALEPH, BETH : BETH };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 862752254, bool1s : bool1s, bool2s : bool2s, char1s : char1s, stringNull : stringNull, char2s : char2s, short1s : short1s, int1s : int1s, long1s : long1s, float1s : float1s, double1s : double1s, string1s : string1s, ALL : ALL, arrInt : arrInt, arrInt4 : arrInt4, arrStrings : arrStrings, arrStrings4 : arrStrings4, arrAll : arrAll };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -4707,20 +5221,24 @@ com.wilutions.byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPlanet = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 627010462 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPlanet = function(planet, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 412393386, planet : planet };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -4733,100 +5251,124 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setActor = function(act, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 299289599, act : act };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getActor = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 261822861 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DArray1dim = function(pointArray, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 531757758, pointArray : pointArray };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DArray1dim = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1011970102 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DArray4dim = function(pointArray, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 531668385, pointArray : pointArray };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DArray4dim = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1012059475 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DList = function(pointList, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 224357548, pointList : pointList };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DList = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1996093752 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DListList = function(pointListList, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1097161578, pointListList : pointListList };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DListList = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 177127926 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPoint2DMap = function(pointMap, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 546951282, pointMap : pointMap };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPoint2DMap = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1321082494 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -4839,244 +5381,304 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBoolean1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1794077576 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBoolean1 = function(boolean1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1882657404, boolean1 : boolean1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1319541530 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte1 = function(byte1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 758429070, byte1 : byte1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1319940748 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar1 = function(char1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 758828288, char1 : char1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1573024156 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort1 = function(short1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1787641232, short1 : short1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 874047761 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt1 = function(int1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1360809955, int1 : int1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1328473126 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong1 = function(long1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 767360666, long1 : long1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1941525372 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat1 = function(float1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2138824848, float1 : float1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1741299407 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble1 = function(double1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 195505829, double1 : double1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1173060367 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString1 = function(string1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 763744869, string1 : string1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1940572240 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1434361404, primitiveTypes1 : primitiveTypes1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte2 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1319541531 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte2 = function(byte2, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 758429071, byte2 : byte2 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt2 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 874047762 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt2 = function(int2, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1360809954, int2 : int2 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObj1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 874214665 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObj1 = function(obj1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1360643051, obj1 : obj1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt3 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 874047763 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt3 = function(int3, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1360809953, int3 : int3 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt4 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 874047764 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt4 = function(int4, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1360809952, int4 : int4 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5089,212 +5691,264 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBoolean1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 461626272 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBoolean1 = function(boolean1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 550206100, boolean1 : boolean1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1348711374 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte1 = function(byte1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1909823834, byte1 : byte1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1348312156 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar1 = function(char1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1909424616, char1 : char1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1610481740 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort1 = function(short1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1395864664, short1 : short1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1013140231 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt1 = function(int1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1046969349, int1 : int1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1339779778 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong1 = function(long1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1900892238, long1 : long1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1241980524 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat1 = function(float1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1027363448, float1 : float1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1836864439 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble1 = function(double1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 99940797, double1 : double1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1268625399 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString1 = function(string1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 668179837, string1 : string1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 77071512 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 842962140, primitiveTypes1 : primitiveTypes1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte2 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1348711373 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte2 = function(byte2, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1909823833, byte2 : byte2 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt2 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1013140230 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt2 = function(int2, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1046969350, int2 : int2 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObj1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1012973327 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObj1 = function(obj1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1047136253, obj1 : obj1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5307,204 +5961,254 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.voidFunctionVoid = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1856936054 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBool = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 143860510, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 143850752, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 143837874, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 149216892, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 974465289, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 143562636, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 161104028, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 753565751, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 319593463, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 941809610, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObject = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 450975945, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBool = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2090997206 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2091006964 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2091019842 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 411895568 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1318015101 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2091295080 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 400008432 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 538948675 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 104976387 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1881962430 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObject = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 236358869 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1794219594, b : b, c : c, s : s, i : i, l : l, f : f, d : d, str : str, pt : pt, o : o };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.add = function(a, b, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1073583639, a : a, b : b };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5517,20 +6221,24 @@ com.wilutions.byps.test.api.remote.BStub_RemoteReferences = function(transport) 
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getNode = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 655936732 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setNode = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1404172848, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5543,28 +6251,34 @@ com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl = function(transport) 
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1776814809, name : name, remote : remote, fowardToOtherServers : fowardToOtherServers };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPublishedRemote = function(name, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1216543212, name : name };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.removePublishedRemote = function(name, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1302703010, name : name };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5577,212 +6291,264 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getBoolean1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1690813926 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setBoolean1 = function(boolean1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1779393754, boolean1 : boolean1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2125684552 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte1 = function(byte1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1608170284, byte1 : byte1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getChar1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2125285334 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setChar1 = function(char1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1608569502, char1 : char1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getShort1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1000850298 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setShort1 = function(short1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1215467374, short1 : short1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 68372557 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt1 = function(int1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1991737023, int1 : int1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getLong1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2116752956 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setLong1 = function(long1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1617101880, long1 : long1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getFloat1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1369351514 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setFloat1 = function(float1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1583968590, float1 : float1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getDouble1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1183778993 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setDouble1 = function(double1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 753026243, double1 : double1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getString1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 615539953 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setString1 = function(string1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1321265283, string1 : string1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPrimitiveTypes1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1802821742 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1572111902, primitiveTypes1 : primitiveTypes1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getByte2 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2125684551 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setByte2 = function(byte2, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1608170285, byte2 : byte2 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getInt2 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 68372556 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setInt2 = function(int2, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1991737024, int2 : int2 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getObj1 = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 68205653 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setObj1 = function(obj1, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1991903927, obj1 : obj1 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5795,60 +6561,72 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getImage = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1902276204 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setImage = function(istrm, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1831578632, istrm : istrm };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getImages = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1158979935 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 944362859, istrms : istrms, doNotReadStreamAtKey : doNotReadStreamAtKey };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.throwLastException = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2047657918 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getTextStream = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1083407988 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
 
 /**
  * This interface is an example for using the authentication mechanism.
- * @authparam com.wilutions.byps.test.api.auth.SessionInfo
- * @authparam com.wilutions.byps.test.api.auth.SessionInfo
+ * @BAuthenticationParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BAuthenticationParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 	
@@ -5856,17 +6634,20 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(tra
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Set authentication flag in MySession.
 	 * @param useAuth
 	 * @throws RemoteException
 	*/
 	this.setUseAuthentication = function(useAuth, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1785294043, useAuth : useAuth };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Login.
 	 * Only user "Fritz" is allowed to login.
@@ -5876,12 +6657,14 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(tra
 	 * @return 
 	 * @throws RemoteException
 	*/
-	this.login = function(sess, userName, userPwd, __byps__asyncResult) {
-		var req =  { _typeId : 839695851, sess : sess, userName : userName, userPwd : userPwd };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+	this.login = function(userName, userPwd, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+		var req =  { _typeId : 839695851, __byps__sess : 'sess', userName : userName, userPwd : userPwd };
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Do something.
 	 * @param sess Session information. Must not be null, if user was logged in.
@@ -5889,23 +6672,27 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(tra
 	 * @return value+1
 	 * @throws RemoteException
 	*/
-	this.doit = function(sess, value, __byps__asyncResult) {
-		var req =  { _typeId : 388793292, sess : sess, value : value };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+	this.doit = function(value, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+		var req =  { _typeId : 388793292, __byps__sess : 'sess', value : value };
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Logout
 	 * @param sess
 	 * @throws RemoteException
 	*/
-	this.expire = function(sess, __byps__asyncResult) {
-		var req =  { _typeId : 68943581, sess : sess };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+	this.expire = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+		var req =  { _typeId : 68943581, __byps__sess : 'sess' };
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	 * Set the number of login calls nessesary to login the user.
 	 * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
@@ -5913,9 +6700,10 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(tra
 	 * @throws RemoteException
 	*/
 	this.setReloginCount = function(count, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 20608797, count : count };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5928,36 +6716,44 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.incrementInt = function(a, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1461829915, a : a };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getStreams = function(ctrl, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 865920738, ctrl : ctrl };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.putStreams = function(strm, ctrl, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 242798857, strm : strm, ctrl : ctrl };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendChat = function(cs, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1352392091, cs : cs };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -5970,76 +6766,94 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.callClientIncrementInt = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1252575894, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setPartner = function(client, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1188403123, client : client };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getPartner = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 748402113 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getStreamsFromClient = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1415283169 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.putStreamsOnClient = function(streams, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1367013829, streams : streams };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.registerWithClientMap = function(id, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1921080901, id : id };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getClient = function(id, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2107407220, id : id };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getClientIds = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 2063368540 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.callClientParallel = function(v, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1340180893, v : v };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -6052,44 +6866,54 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
 	this.transport = transport;
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setEvolve = function(obj, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 246658450, obj : obj };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getEvolve = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 32041374 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.setClient = function(partner, __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 313337668, partner : partner };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.getClient = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 98720592 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
+	// checkpoint com.wilutions.byps.gen.js.PrintContext:119
 	/**
 	*/
 	this.sendEvolveToClient = function(__byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
 		var req =  { _typeId : 1425170268 };
-		var ret = transport.send(req, __byps__asyncResult);
-		return ret.result;
+		var ret = transport.sendMethod(req, __byps__asyncResult);
+		return ret;
 	};
 	
 };
@@ -7888,7 +8712,7 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			// Method getPartner
 			748402113 : [ // _typeId of request class
 				1313562065, // _typeId of remote interface
-				1170836883, // _typeId of result class
+				1708889390, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPartner(methodResult);
 				}
@@ -7924,7 +8748,7 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			// Method getClient
 			2107407220 : [ // _typeId of request class
 				1313562065, // _typeId of remote interface
-				1170836883, // _typeId of result class
+				1708889390, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodObj.id, methodResult);
 				}
@@ -7980,7 +8804,7 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			// Method getClient
 			98720592 : [ // _typeId of request class
 				2078696281, // _typeId of remote interface
-				1911325389, // _typeId of result class
+				212739126, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodResult);
 				}
@@ -8134,15 +8958,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{// names of inline elements
 				"result":1174971318 // List<byte[]>
 			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1178379224
-		1911325389 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
-			},
-			null,
 			false // inlineInstance
 		),
 		
@@ -8328,15 +9143,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{// names of inline elements
 				"result":1463615848 // List<List<com.wilutions.byps.test.api.inl.Point2D>>
 			},
-			false // inlineInstance
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1473575576
-		1170836883 : new com.wilutions.byps.BSerializer(
-			{// names of persistent elements
-				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
-			},
-			null,
 			false // inlineInstance
 		),
 		
@@ -8543,6 +9349,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false // inlineInstance
 		),
 		
+		// com.wilutions.byps.test.api.BResult_1784257353
+		1708889390 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
+			},
+			null,
+			false // inlineInstance
+		),
+		
 		// com.wilutions.byps.test.api.BResult_1799280818
 		179038766 : new com.wilutions.byps.BSerializer(
 			{// names of persistent elements
@@ -8734,6 +9549,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{// names of inline elements
 				"result":2067161310 // short[]
 			},
+			false // inlineInstance
+		),
+		
+		// com.wilutions.byps.test.api.BResult_2078696281
+		212739126 : new com.wilutions.byps.BSerializer(
+			{// names of persistent elements
+				"result":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
+			},
+			null,
 			false // inlineInstance
 		),
 		

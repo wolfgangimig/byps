@@ -21,65 +21,61 @@ public class BStub_ClientIF extends BStub implements ClientIFAsync, java.io.Seri
 	public int incrementInt(int a) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
-		async_incrementInt(a, asyncResult);
+		incrementInt(a, asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_incrementInt(int a, final BAsyncResult<Integer> asyncResult) {
+	public void incrementInt(int a, final BAsyncResult<Integer> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_ClientIF_incrementInt req = new BRequest_ClientIF_incrementInt();		
 		req.a = a;
-		BAsyncResultReceiveMethod<Integer> outerResult = new BAsyncResultReceiveMethod<Integer>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<java.util.List<java.io.InputStream>> asyncResult = new BSyncResult<java.util.List<java.io.InputStream>>();		
-		async_getStreams(ctrl, asyncResult);
+		getStreams(ctrl, asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getStreams(int ctrl, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
+	public void getStreams(int ctrl, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_ClientIF_getStreams req = new BRequest_ClientIF_getStreams();		
 		req.ctrl = ctrl;
-		BAsyncResultReceiveMethod<java.util.List<java.io.InputStream>> outerResult = new BAsyncResultReceiveMethod<java.util.List<java.io.InputStream>>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_putStreams(strm, ctrl, asyncResult);
+		putStreams(strm, ctrl, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_putStreams(java.util.List<java.io.InputStream> strm, int ctrl, final BAsyncResult<Object> asyncResult) {
+	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_ClientIF_putStreams req = new BRequest_ClientIF_putStreams();		
 		req.strm = strm;
 		req.ctrl = ctrl;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public ChatStructure sendChat(ChatStructure cs) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<ChatStructure> asyncResult = new BSyncResult<ChatStructure>();		
-		async_sendChat(cs, asyncResult);
+		sendChat(cs, asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_sendChat(ChatStructure cs, final BAsyncResult<ChatStructure> asyncResult) {
+	public void sendChat(ChatStructure cs, final BAsyncResult<ChatStructure> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_ClientIF_sendChat req = new BRequest_ClientIF_sendChat();		
 		req.cs = cs;
-		BAsyncResultReceiveMethod<ChatStructure> outerResult = new BAsyncResultReceiveMethod<ChatStructure>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	

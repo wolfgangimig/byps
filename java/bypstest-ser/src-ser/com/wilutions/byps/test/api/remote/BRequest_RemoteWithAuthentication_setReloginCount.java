@@ -15,7 +15,7 @@ public final class BRequest_RemoteWithAuthentication_setReloginCount extends BMe
 
 	public int count;
 	
-	private final static long serialVersionUID = 20608797L;
+	public final static long serialVersionUID = 20608797L;
 	
 	public int getRemoteId() { return 1677934392; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteWithAuthentication_setReloginCount extends BMe
 		try {
 			final RemoteWithAuthenticationAsync __byps__remoteT = (RemoteWithAuthenticationAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setReloginCount(count, __byps__outerResult);
+			__byps__remoteT.setReloginCount(count, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

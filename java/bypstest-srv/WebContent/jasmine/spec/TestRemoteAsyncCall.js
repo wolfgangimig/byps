@@ -4,15 +4,16 @@ describe("Tests for receiving results and exceptions asynchonously.", function()
 	beforeEach(function() {
 	});
 	
-	var valueR = null;
+	var valueAsync = null;
+	var exceptionAsync = null;
+	
 	var asyncSetGetInt = function() {
 		
 		var asyncResult = function(result, ex) {
 			
 			var asyncResult2 = function(result, ex) {
-				if (result) {
-					valueR = result;
-				}
+				valueAsync = result;
+				exceptionAsync = ex;
 			};
 			
 			client.remotePrimitiveTypes.getInt(asyncResult2);
@@ -29,7 +30,8 @@ describe("Tests for receiving results and exceptions asynchonously.", function()
 		}, "exec asyncGetSetInt");
 		
 		waitsFor(function() {
-			return valueR == 1122;
+			if (exceptionAsync) throw exceptionAsync;
+			return valueAsync == 1122;
 		}, "Expected value must be 1122", 5000);
 			
 		log.info(")testRemotePrimitiveTypesAsync");

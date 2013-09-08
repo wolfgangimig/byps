@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteInlineInstance_getPoint2DList extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1996093752L;
+	public final static long serialVersionUID = 1996093752L;
 	
 	public int getRemoteId() { return 1206670536; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_RemoteInlineInstance_getPoint2DList extends BMethodR
 		try {
 			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.util.List<com.wilutions.byps.test.api.inl.Point2D>> __byps__outerResult = new BAsyncResultSendMethod<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_172221196());			
-			__byps__remoteT.async_getPoint2DList(__byps__outerResult);
+			__byps__remoteT.getPoint2DList(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

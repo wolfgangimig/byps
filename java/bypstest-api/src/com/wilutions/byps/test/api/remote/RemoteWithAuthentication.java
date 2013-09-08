@@ -6,7 +6,7 @@ import com.wilutions.byps.test.api.auth.SessionInfo;
 
 /**
  * This interface is an example for using the authentication mechanism.
- * @authparam com.wilutions.byps.test.api.auth.SessionInfo
+ * @BAuthenticationParamType com.wilutions.byps.test.api.auth.SessionInfo
  */
 public interface RemoteWithAuthentication extends BRemote {
 

@@ -15,7 +15,7 @@ public final class BRequest_RemoteInlineInstance_setPoint2DMap extends BMethodRe
 
 	public java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D> pointMap;
 	
-	private final static long serialVersionUID = 546951282L;
+	public final static long serialVersionUID = 546951282L;
 	
 	public int getRemoteId() { return 1206670536; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteInlineInstance_setPoint2DMap extends BMethodRe
 		try {
 			final RemoteInlineInstanceAsync __byps__remoteT = (RemoteInlineInstanceAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setPoint2DMap(pointMap, __byps__outerResult);
+			__byps__remoteT.setPoint2DMap(pointMap, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

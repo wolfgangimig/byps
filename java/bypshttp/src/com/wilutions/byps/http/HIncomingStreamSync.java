@@ -13,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 
 public class HIncomingStreamSync extends BContentStream {
 	
@@ -141,7 +141,7 @@ public class HIncomingStreamSync extends BContentStream {
 				lastPartId = partId;
 			}
 			else {
-				throw new BException(BExceptionO.IOERROR, "Unexpected stream part.");
+				throw new BException(BExceptionC.IOERROR, "Unexpected stream part.");
 			}
 			
 			byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
@@ -154,7 +154,7 @@ public class HIncomingStreamSync extends BContentStream {
 		}
 		catch (Throwable e) {
 			if (log.isDebugEnabled()) log.debug("exception: ", e);
-			BException bex = new BException(BExceptionO.IOERROR, "Failed to copy received bytes into buffer.", e);
+			BException bex = new BException(BExceptionC.IOERROR, "Failed to copy received bytes into buffer.", e);
 			this.ex = bex;
 			throw bex;
 		}
@@ -192,7 +192,7 @@ public class HIncomingStreamSync extends BContentStream {
 			try {
 				wait(10 * 1000);
 			} catch (InterruptedException e) {
-				throw new BException(BExceptionO.CANCELLED, "Cannot copy incoming stream", e);
+				throw new BException(BExceptionC.CANCELLED, "Cannot copy incoming stream", e);
 			}
 		}
 		
@@ -200,7 +200,7 @@ public class HIncomingStreamSync extends BContentStream {
 		try {
 			is = new HIncomingStreamSync(this);
 		} catch (FileNotFoundException e) {
-			throw new BException(BExceptionO.INTERNAL, "Cannot copy incoming stream", e);
+			throw new BException(BExceptionC.INTERNAL, "Cannot copy incoming stream", e);
 		}
 		if (log.isDebugEnabled()) log.debug(")cloneInputStream=" + is);
 		return is;

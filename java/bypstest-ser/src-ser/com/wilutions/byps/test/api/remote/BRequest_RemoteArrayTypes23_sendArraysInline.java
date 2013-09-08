@@ -17,7 +17,7 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInline extends BMethodR
 	public com.wilutions.byps.test.api.inl.Point2D[][][] arr3;
 	public com.wilutions.byps.test.api.inl.Point2D[][][][] arr4;
 	
-	private final static long serialVersionUID = 899462794L;
+	public final static long serialVersionUID = 899462794L;
 	
 	public int getRemoteId() { return 2081058997; }
 	
@@ -25,7 +25,7 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInline extends BMethodR
 		try {
 			final RemoteArrayTypes23Async __byps__remoteT = (RemoteArrayTypes23Async)__byps__remote;			
 			BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_2049740106());			
-			__byps__remoteT.async_sendArraysInline(arr2, arr3, arr4, __byps__outerResult);
+			__byps__remoteT.sendArraysInline(arr2, arr3, arr4, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

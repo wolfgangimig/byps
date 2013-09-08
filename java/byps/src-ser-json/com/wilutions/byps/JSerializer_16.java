@@ -42,7 +42,7 @@ public class JSerializer_16 extends BSerializer {
 				throw e;
 			}
 			catch (RemoteException e) {
-				throw new BException(BExceptionO.INTERNAL, e.toString(), e);
+				throw new BException(BExceptionC.INTERNAL, e.toString(), e);
 			}
 		}
 		else {

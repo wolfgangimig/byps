@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setBoolean1 extends BMethodRequest im
 
 	public java.util.Map<java.lang.String,java.lang.Boolean> boolean1;
 	
-	private final static long serialVersionUID = 550206100L;
+	public final static long serialVersionUID = 550206100L;
 	
 	public int getRemoteId() { return 80483097; }
 	
@@ -23,7 +23,7 @@ public final class BRequest_RemoteMapTypes_setBoolean1 extends BMethodRequest im
 		try {
 			final RemoteMapTypesAsync __byps__remoteT = (RemoteMapTypesAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_setBoolean1(boolean1, __byps__outerResult);
+			__byps__remoteT.setBoolean1(boolean1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

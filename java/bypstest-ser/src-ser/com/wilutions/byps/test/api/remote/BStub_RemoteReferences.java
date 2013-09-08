@@ -21,31 +21,29 @@ public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsy
 	public com.wilutions.byps.test.api.refs.Node getNode() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult = new BSyncResult<com.wilutions.byps.test.api.refs.Node>();		
-		async_getNode(asyncResult);
+		getNode(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
+	public void getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();		
-		BAsyncResultReceiveMethod<com.wilutions.byps.test.api.refs.Node> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.refs.Node>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setNode(com.wilutions.byps.test.api.refs.Node v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		async_setNode(v, asyncResult);
+		setNode(v, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
+	public void setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
 		BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();		
 		req.v = v;
-		BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-		transport.send(req, outerResult);
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	

@@ -1,7 +1,7 @@
 package com.wilutions.byps.test.servlet;
 
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionO;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.http.HSession;
 import com.wilutions.byps.test.api.auth.SessionInfo;
@@ -57,7 +57,7 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
     
     if (state == EState.INVALID) {
       // This exception is checked in the BAuthentication class and causes a re-login.
-      throw new BException(BExceptionO.AUTHENTICATION_REQUIRED, "Relogin requried");
+      throw new BException(BExceptionC.AUTHENTICATION_REQUIRED, "Relogin requried");
     }
     
     // If login was successful, this function must be called with a SessionInfo object.

@@ -15,14 +15,14 @@ public interface RemoteReferencesAsync extends RemoteReferences, BRemote {
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public com.wilutions.byps.test.api.refs.Node getNode() throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) ;
+	public void getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
 	public void setNode(com.wilutions.byps.test.api.refs.Node v) throws RemoteException;
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
-	public void async_setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) ;
+	public void setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) ;
 	
 	
 }

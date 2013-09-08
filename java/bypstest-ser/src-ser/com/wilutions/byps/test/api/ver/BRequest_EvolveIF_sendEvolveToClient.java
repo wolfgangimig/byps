@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_EvolveIF_sendEvolveToClient extends BMethodRequest implements Serializable {
 
 	
-	private final static long serialVersionUID = 1425170268L;
+	public final static long serialVersionUID = 1425170268L;
 	
 	public int getRemoteId() { return 2078696281; }
 	
@@ -22,7 +22,7 @@ public final class BRequest_EvolveIF_sendEvolveToClient extends BMethodRequest i
 		try {
 			final EvolveIFAsync __byps__remoteT = (EvolveIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());			
-			__byps__remoteT.async_sendEvolveToClient(__byps__outerResult);
+			__byps__remoteT.sendEvolveToClient(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 			throw e;

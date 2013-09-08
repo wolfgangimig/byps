@@ -36,18 +36,29 @@ class GenRemoteStub {
 		pctxt.printDeclareMethod(pr, rinfo, methodInfo, true, false).println(" {");
 		
 		pr.beginBlock();
+		pr.checkpoint();
 		
 		CodePrinter mpr = pr.print("var req = ").print(" { ");
 		mpr.print("_typeId : ").print(methodInfo.requestInfo.typeId);
 		
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+
 			mpr.print(", ");
-			mpr.print(pinfo.name).print(" : ").print(pinfo.name);
+			
+      // Skip authentication parameter name
+			// BTransport will replace it with the session object
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) {
+        mpr.print("__byps__sess : '").print(pinfo.name).print("'");
+      }
+      else {
+        mpr.print(pinfo.name).print(" : ").print(pinfo.name);
+      }
+      
 		}
 		mpr.println(" };");
 
-		pr.println("var ret = transport.send(req, __byps__asyncResult);");
-		pr.println("return ret.result;");
+		pr.println("var ret = transport.sendMethod(req, __byps__asyncResult);");
+		pr.println("return ret;");
 				
 		pr.endBlock();
 		pr.println("};");
