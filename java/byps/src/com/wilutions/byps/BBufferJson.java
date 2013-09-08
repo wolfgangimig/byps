@@ -840,6 +840,8 @@ public class BBufferJson extends BBuffer {
 	
 	/**
 	 * Long values are written as strings with a "." as suffix.
+	 * The segments are ORed together. 
+	 * E.g. longValue = "1.2.4.8." represents value 15.
 	 * @param s
 	 * @return
 	 * @throws NumberFormatException

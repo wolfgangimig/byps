@@ -23,11 +23,11 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.NDC;
 
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BBuffer;
+import com.wilutions.byps.BBufferJson;
 import com.wilutions.byps.BClient;
 import com.wilutions.byps.BContentStream;
 import com.wilutions.byps.BContentStreamWrapper;
@@ -121,8 +121,8 @@ public abstract class HHttpServlet extends HttpServlet {
 
     if (messageIdStr != null && messageIdStr.length() != 0 && streamIdStr != null && streamIdStr.length() != 0) {
 
-      final long messageId = Long.parseLong(messageIdStr);
-      final long streamId = Long.parseLong(streamIdStr);
+      final long messageId = BBufferJson.parseLong(messageIdStr);
+      final long streamId = BBufferJson.parseLong(streamIdStr);
 
       doPutStream(messageId, streamId, request, response);
     }
@@ -195,11 +195,11 @@ public abstract class HHttpServlet extends HttpServlet {
 
       if (streamIdStr != null && streamIdStr.length() != 0) {
         if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
-        sess.wireServer.sendOutgoingStream(Long.parseLong(messageIdStr), Long.parseLong(streamIdStr), response);
+        sess.wireServer.sendOutgoingStream(BBufferJson.parseLong(messageIdStr), BBufferJson.parseLong(streamIdStr), response);
       }
       else if (cancelStr != null && cancelStr.length() != 0) {
 
-        long messageId = Long.parseLong(messageIdStr);
+        long messageId = BBufferJson.parseLong(messageIdStr);
 
         if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
           if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
