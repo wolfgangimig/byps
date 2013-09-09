@@ -36,7 +36,9 @@ import com.wilutions.byps.gen.utils.AssignUniqueSerialVersionUID;
 
 
 /**
- *
+ * Meine Erweiterungen:
+ * @BSessionParamType Klassenname für Session-Parameter
+ * @BClientRemote Remote-Interface, dass auf der Clientseite implementiert wird
  */
 public class BDoclet extends Doclet {
 	
@@ -272,7 +274,7 @@ public class BDoclet extends Doclet {
 		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
-			args = bypstest_ser;
+			args = byps_ix_serAll;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();

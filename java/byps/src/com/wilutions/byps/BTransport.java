@@ -256,7 +256,7 @@ public class BTransport {
     client.transport.wire.send(forwardMessage, messageResult);
   }
 
-  protected void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
+  public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
 
     ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
     final BNegotiate nego = new BNegotiate(apiDesc);

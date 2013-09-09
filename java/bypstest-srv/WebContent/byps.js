@@ -397,10 +397,10 @@ com.wilutions.byps.BAsyncResult = function(result, exception) {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
+com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 	
 	var me = this;
-	this.rurl = rurl;
+	this.url = url;
 	this.flags = flags || 0;
 	
 	this.timeoutMillisClient = timeoutSeconds ? (timeoutSeconds * 1000) : (-1);
@@ -423,12 +423,12 @@ com.wilutions.byps.BWireClient = function(rurl, flags, timeoutSeconds) {
 		
 		this.openRequestsToCancel[requestId] = xhr;
 		
-		var url = me.rurl;
-		url += (url.indexOf("?") < 0) ? "?" : "&";
-		url += "__ts=";
-		url += new Date().getTime();
+		var rurl = me.url;
+		rurl += (url.indexOf("?") < 0) ? "?" : "&";
+		rurl += "__ts=";
+		rurl += new Date().getTime();
 		
-		xhr.open('POST', url, processAsync);
+		xhr.open('POST', rurl, processAsync);
 		
 		if (timeoutMillis > 0) {
 			xhr.timeout = timeoutMillis;
@@ -961,18 +961,16 @@ com.wilutions.byps.BClient = function() {
 	// Implemented by subclass:
 	// this.transport;
 	// this._serverR;
-	
-	this._authentication = null;
-	
+
 	this.start = function(startServerR, asyncResult) { // BAsyncResult<BClient>
 		
 		var processAsync = !!asyncResult;
 		var me = this;
+
+		if (!this.getAuthentication()) {
+			this.setAuthentication(null);
+		}
 		
-	    if (this._authentication == null) {
-	    	this.setAuthentication(null);
-	    }
-	    
 	    var exception = null;
 		
 		var outerResult = function(ignored, ex) {

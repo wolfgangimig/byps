@@ -103,7 +103,15 @@ public class GenRegistry {
 				
 				printMembers(serInfo, true);
 				
-				pr.print(serInfo.isInline + " // inlineInstance").println();
+				pr.println("// inlineInstance");
+				pr.println(serInfo.isInline + "");
+				
+//        pr.println("// prototype");
+//				String proto = "null";
+//				if (hasStaticMember(serInfo)) {
+//				  proto = pctxt.getConstObjectName(serInfo);
+//				}
+//				pr.println(proto);
 				
 				pr.endBlock();
 				pr.println("),");
@@ -115,23 +123,38 @@ public class GenRegistry {
 		pr.endBlock();
 		pr.println("};");
 	}
+	
+	protected boolean hasStaticMember(SerialInfo serInfo) {
+	   for (int i = 0; i < serInfo.members.size(); i++) {
+	      MemberInfo minfo = serInfo.members.get(i);
+	      if (minfo.isStatic) return true; 
+	   }
+	   return false;
+	}
 
 	protected void printMembers(SerialInfo serInfo, boolean onlyInline) {
 		boolean hasMember = false;
+		
+		pr.checkpoint();
+		
 		for (int i = 0; i < serInfo.members.size(); i++) {
 			MemberInfo minfo = serInfo.members.get(i);
+			
 			if (minfo.isTransient) continue;
-			if (minfo.isStatic) continue;
+      //if (minfo.isStatic) continue; 
+			
 			if (onlyInline && !minfo.type.isInline && !minfo.type.isArrayType() && !minfo.type.isCollectionType()) continue;
 
+      pr.println( onlyInline ? "// names of inline elements" : "// names of persistent elements" );
+			
 			if (!hasMember) {
-				pr.print("{").println( onlyInline ? "// names of inline elements" : "// names of persistent elements" );
+				pr.println("{");
 				pr.beginBlock();
 			}
 			
 			CodePrinter mpr = pr.print("\"").print(minfo.name).print("\":").print(minfo.type.typeId);
 			if (i != serInfo.members.size()-1) mpr = mpr.print(",");
-			mpr.print(" // ").print(minfo.type.toString(new String[] {"java.lang", "java.util", "com.wilutions.byps"}));
+			mpr.print(" // ").print(minfo.type.toString());
 			mpr.println();
 			
 			hasMember = true;

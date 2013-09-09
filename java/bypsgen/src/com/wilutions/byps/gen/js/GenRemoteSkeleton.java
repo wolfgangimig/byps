@@ -17,10 +17,12 @@ class GenRemoteSkeleton {
 	
 	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
-		log.info("generate " + rinfo.qname);
-		CodePrinter pr = pctxt.getPrinter();
-		new GenRemoteSkeleton(pctxt, rinfo, pr).generate();
-		pr.close();
+	  if (rinfo.isClientRemote) {
+  		log.info("generate " + rinfo.qname);
+  		CodePrinter pr = pctxt.getPrinter();
+  		new GenRemoteSkeleton(pctxt, rinfo, pr).generate();
+  		pr.close();
+	  }
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	

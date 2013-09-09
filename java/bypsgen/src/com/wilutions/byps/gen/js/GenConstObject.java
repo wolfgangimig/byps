@@ -1,12 +1,10 @@
 package com.wilutions.byps.gen.js;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
 
@@ -53,18 +51,13 @@ class GenConstObject {
 	private void generate() throws IOException {
 		log.debug("generate");
 
-		ArrayList<MemberInfo> valueMembers = new ArrayList<MemberInfo>();
-		ArrayList<MemberInfo> constMembers = new ArrayList<MemberInfo>();
-		PrintHelper.collectAllMembers(serInfo, valueMembers, constMembers);
-
-		if (constMembers.size() != 0) {
+		String objName = pctxt.getConstObjectName(serInfo);
+		
+		if (objName != null) {
 			
 			pctxt.printComments(pr, serInfo.comments);
 		
-			String classSuffix = valueMembers.size() != 0 ? "C" : "";
-			String className = serInfo.pack + "." + serInfo.name + classSuffix;
-			
-			pr.print(className).print(" = new ").print(className).print("_Type();");
+			pr.print(objName).print(" = new ").print(objName).print("_Type();");
 			pr.println();
 			pr.println();
 
@@ -72,7 +65,7 @@ class GenConstObject {
 		
 		log.debug(")generate");
 	}
-
+	
 	private final SerialInfo serInfo;
 	private final CodePrinter pr;
 	private final PrintContext pctxt;

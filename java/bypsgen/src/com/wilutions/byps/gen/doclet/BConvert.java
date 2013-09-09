@@ -809,14 +809,16 @@ public class BConvert {
 
 		String authParamClassName = null;
 		String authInterface = null;
+		boolean isClientRemote = false;
     for (Tag tag : cls.tags()) {
-      if (tag.kind().equals("@BAuthenticationParamType")) authParamClassName= tag.text();
-      if (tag.kind().equals("@authinterface")) authInterface= tag.text();
+      if (tag.kind().equals("@BSessionParamType")) authParamClassName= tag.text();
+      if (tag.kind().equals("@BAuthinterface")) authInterface= tag.text();
+      if (tag.kind().equals("@BClientRemote")) isClientRemote = true; 
       
       cinfos.add(makeCommentInfo(tag.kind(), tag.text()));
     }
 		
-		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, qname, minfos, authParamClassName, authInterface);
+		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, qname, minfos, authParamClassName, authInterface, isClientRemote);
 		
 		classDB.createStubForRemote(rinfo);
 

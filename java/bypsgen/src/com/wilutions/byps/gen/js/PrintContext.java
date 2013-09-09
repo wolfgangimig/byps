@@ -3,6 +3,7 @@ package com.wilutions.byps.gen.js;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -13,6 +14,7 @@ import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
+import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.db.ClassDB;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -159,9 +161,22 @@ class PrintContext extends PrintContextBase {
 		return mpr;
 	}
 	
+  protected String getConstObjectName(SerialInfo serInfo) {
+    String objName = null;
+    ArrayList<MemberInfo> valueMembers = new ArrayList<MemberInfo>();
+    ArrayList<MemberInfo> constMembers = new ArrayList<MemberInfo>();
+    PrintHelper.collectAllMembers(serInfo, valueMembers, constMembers);
+    if (constMembers.size() != 0) {
+      String classSuffix = valueMembers.size() != 0 ? "C" : "";
+      objName = serInfo.pack + "." + serInfo.name + classSuffix;
+    }
+    return objName;
+  }
+
 	private void logProperties() {
 		log.info("Output file for generated JavaScript code:" + destFile);
 	}
 	
 	private Log log = LogFactory.getLog(PrintContext.class);
+
 }

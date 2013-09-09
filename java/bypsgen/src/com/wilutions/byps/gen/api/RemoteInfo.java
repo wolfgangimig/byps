@@ -25,18 +25,25 @@ public class RemoteInfo extends TypeInfo {
 	 * If not set, this.qname is used.
 	 */
 	public final String authBase;
+	
+	/**
+	 * Remote interface will be implemented on the client side.
+	 * If false, a skeleton is not generated for JavaScript, C++ and C#.
+	 */
+	public final boolean isClientRemote;
 
 	public RemoteInfo(String name, List<CommentInfo> comments, String qname, List<MethodInfo> methods,
-	    String authParamClassName, String authBase) throws GeneratorException {
+	    String authParamClassName, String authBase, boolean isClientRemote) throws GeneratorException {
 		super(name, qname, "", null, false, false, false);
 		this.methods = methods;
 		this.comments = comments;
 		this.authParamClassName = authParamClassName;
 		this.authBase = authBase;
+		this.isClientRemote = isClientRemote;
 	}
 
 	public RemoteInfo() throws GeneratorException  {
-		this(null, null, null, null, null, null);
+		this(null, null, null, null, null, null, false);
 	}
 	
 	@XmlElementWrapper(name = "methods") // hä? dafür gibt's XmlMethodInfo
@@ -58,7 +65,7 @@ public class RemoteInfo extends TypeInfo {
 	}
 	
   public RemoteInfo getRemoteAsync() throws GeneratorException {
-    RemoteInfo rinfo = new RemoteInfo(name + ASYNC_SUFFIX, comments, qname + ASYNC_SUFFIX, methods, null, null);
+    RemoteInfo rinfo = new RemoteInfo(name + ASYNC_SUFFIX, comments, qname + ASYNC_SUFFIX, methods, null, null, isClientRemote);
     rinfo.typeId = this.typeId;
     return rinfo;
   }
@@ -66,7 +73,7 @@ public class RemoteInfo extends TypeInfo {
   public RemoteInfo getRemoteAuth() throws GeneratorException {
     RemoteInfo rinfo = null;
     if (authParamClassName != null) {
-      rinfo = new RemoteInfo(name + AUTH_SUFFIX, comments, qname + AUTH_SUFFIX, methods, authParamClassName, authBase);
+      rinfo = new RemoteInfo(name + AUTH_SUFFIX, comments, qname + AUTH_SUFFIX, methods, authParamClassName, authBase, isClientRemote);
       rinfo.typeId = this.typeId;
     }
     return rinfo;

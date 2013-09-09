@@ -83,12 +83,9 @@ public class GenSerStructJson extends GenSerStruct{
 	protected void printPutGetMembers(List<MemberInfo> members, boolean putNotGet) throws IOException {
 		
 		for (MemberInfo minfo : members) {
-			if (minfo.isStatic) {
-				// Konstante
-			}
-			else if (minfo.isTransient) {
-			}
-			else if (minfo.type.typeId == BRegistry.TYPEID_VOID) {
+			if (minfo.isTransient) continue;
+			
+			if (minfo.type.typeId == BRegistry.TYPEID_VOID) {
 				// Type void can be used by method return values 
 				printVoidMember(minfo);
 			}
@@ -96,7 +93,7 @@ public class GenSerStructJson extends GenSerStruct{
 				if (putNotGet) {
 					printPutMember(minfo);
 				}
-				else {
+				else if (!minfo.isStatic) {
 					printGetMember(minfo);
 				}
 			}

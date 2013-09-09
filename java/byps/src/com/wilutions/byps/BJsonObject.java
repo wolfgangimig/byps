@@ -175,13 +175,25 @@ public class BJsonObject {
 	}
 
 	public final String getString(String name) {
-		String v = (String)get(name);
-		return (v != null) ? v : "";
+		Object v = get(name);
+		return makeStringValue(v);
 	}
 	
 	public final String getString(int i) {
-		String v = (String)get(i);
-		return (v != null) ? v : "";
+	  Object v = get(i);
+	  return makeStringValue(v);
+	}
+	
+	private final String makeStringValue(Object v) {
+    if (v == null) return "";
+    if (v instanceof String) return (String)v;
+    if (v instanceof Double) {
+      Double d = (Double)v;
+      if (Math.floor(d) == d) {
+        v = d.longValue();
+      }
+    }
+    return v.toString();
 	}
 	
 	private final byte[] parseArrayByte(Object s) {
