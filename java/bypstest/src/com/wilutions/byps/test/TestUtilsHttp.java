@@ -11,7 +11,6 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
-import com.wilutions.byps.BClient;
 import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BRegistry;
 import com.wilutions.byps.BSyncResult;
@@ -68,7 +67,7 @@ public class TestUtilsHttp {
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 
-		BSyncResult<BClient> syncResult = new BSyncResult<BClient>();
+		BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
 		client.start(syncResult);
 		
 		syncResult.getResult();
@@ -84,7 +83,7 @@ public class TestUtilsHttp {
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 
-		BSyncResult<BClient> syncResult = new BSyncResult<BClient>();
+		BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
 		client.start(syncResult);
 		
 		syncResult.getResult();

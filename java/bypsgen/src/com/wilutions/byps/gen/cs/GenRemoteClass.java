@@ -17,10 +17,12 @@ class GenRemoteClass {
 	
 	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
-		log.info("generate " + rinfo.qname);
-		CodePrinter pr = pctxt.getPrinterForApiClass(rinfo, IMPL_SUFFIX, false);
-		new GenRemoteClass(pctxt, rinfo, pr).generate();
-		pr.close();
+	  if (rinfo != null) {
+  		log.info("generate " + rinfo.qname);
+  		CodePrinter pr = pctxt.getPrinterForApiClass(rinfo, IMPL_SUFFIX, false);
+  		new GenRemoteClass(pctxt, rinfo, pr).generate();
+  		pr.close();
+	  }
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	

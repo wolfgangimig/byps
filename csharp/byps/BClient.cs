@@ -14,6 +14,8 @@ namespace com.wilutions.byps
 	    public BClient(BTransport transport, BServerR serverR) {
 		    this.transport = transport;
 		    this.serverR = serverR;
+
+            setAuthentication(null);
 	    }
 	
 	    public abstract BRemote getStub(int remoteId);
@@ -28,7 +30,7 @@ namespace com.wilutions.byps
 	
         private class MyNegoAsyncResult : BAsyncResult<bool> 
         {
-            public MyNegoAsyncResult(BClient client, BAsyncResult<BClient> innerResult)
+            public MyNegoAsyncResult(BClient client, BAsyncResult<bool> innerResult)
             {
                 this.client = client;
                 this.innerResult = innerResult;
@@ -40,7 +42,7 @@ namespace com.wilutions.byps
                 {
                     if (ex != null)
                     {
-                        innerResult.setAsyncResult(null, ex);
+                        innerResult.setAsyncResult(false, ex);
                     }
                     else
                     {
@@ -48,25 +50,85 @@ namespace com.wilutions.byps
                         {
                             client.serverR.start();
                         }
-                        innerResult.setAsyncResult(client, null);
+                        innerResult.setAsyncResult(true, null);
                     }
                 }
                 catch (Exception e)
                 {
-                    innerResult.setAsyncResult(null, e);
+                    innerResult.setAsyncResult(false, e);
                 }
             }
 
-            private readonly BAsyncResult<BClient> innerResult;
+            private readonly BAsyncResult<bool> innerResult;
             private readonly BClient client;
         }
 
-	    public void start(BAsyncResult<BClient> asyncResult) {
+	    public void start(BAsyncResult<bool> asyncResult) {
 
-            BAsyncResult<Boolean> outerResult = new MyNegoAsyncResult(this, asyncResult);
+            BAsyncResult<bool> outerResult = new MyNegoAsyncResult(this, asyncResult);
 		
 		    transport.negotiateProtocolClient(outerResult);
 	    }
+
+
+        private class ClientAuthentication : BAuthentication
+        {
+            public BAuthentication innerAuth;
+
+            public ClientAuthentication(BAuthentication innerAuth)
+            {
+                this.innerAuth = innerAuth;
+            }
+            
+            public void authenticate(BClient client, BAsyncResult<bool> asyncResult) 
+            {
+                BAsyncResult<bool> outerResult = new MyNegoAsyncResult(client, asyncResult);
+      
+                if (innerAuth != null) 
+                {
+                    innerAuth.authenticate(client, outerResult);
+                }
+                else 
+                {
+                    outerResult.setAsyncResult(true, null);
+                }
+            }
+
+            public bool isReloginException(BClient client, Exception ex, int typeId) 
+            {
+              bool ret = false;
+              if (innerAuth != null)
+              {
+                  ret = innerAuth.isReloginException(client, ex, typeId);
+              }
+              else
+              {
+                  ret = client.transport.isReloginException(ex, typeId);
+              }
+              return ret;
+            }
+
+            public Object getSession()
+            {
+                Object ret = null;
+                if (innerAuth != null)
+                {
+                    ret = innerAuth.getSession();
+                }
+                return ret;
+            }
+
+        }
+
+        public void setAuthentication(BAuthentication auth)
+        {
+            transport.authentication = new ClientAuthentication(auth);
+        }
+
+        public BAuthentication getAuthentication()
+        {
+            return transport.authentication;
+        }
 
     }
 }

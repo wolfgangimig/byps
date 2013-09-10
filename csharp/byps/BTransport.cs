@@ -17,6 +17,8 @@ namespace com.wilutions.byps
         private BTargetId targetId;
 
         private BProtocol protocol;
+
+        internal BAuthentication authentication;
 	
         public BTransport(BApiDescriptor apiDesc, BWire wire, BRemoteRegistry remoteRegistry)
         {
@@ -32,6 +34,7 @@ namespace com.wilutions.byps
             this.wire = rhs.wire;
             this.targetId = targetId;
             this.protocol = rhs.getProtocol();
+            this.authentication = rhs.authentication;
             this.remoteRegistry = rhs.remoteRegistry;
         }
 
@@ -68,7 +71,7 @@ namespace com.wilutions.byps
         public BOutput getOutput()  {
             lock (this)
             {
-                if (protocol == null) throw new BException(BException.INTERNAL, "No protocol negotiated.");
+                if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
                 BOutput bout = protocol.getOutput(this);
                 return bout;
             }
@@ -77,7 +80,7 @@ namespace com.wilutions.byps
 	    public BOutput getResponse(BMessageHeader requestHeader) {
             lock (this)
             {
-                if (protocol == null) throw new BException(BException.INTERNAL, "No protocol negotiated.");
+                if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
                 BMessageHeader responseHeader = requestHeader.createResponse();
                 BOutput bout = protocol.getResponse(this, responseHeader);
                 return bout;
@@ -106,21 +109,55 @@ namespace com.wilutions.byps
             }
 	    }
 
-        private class MyAsyncResult<T> : BAsyncResult<BMessage>
+        private class MyAsyncResultSend<T> : BAsyncResult<bool>
         {
-            public MyAsyncResult(BTransport transport, BAsyncResult<T> innerResult)
+            public MyAsyncResultSend(BTransport transport, BMethodRequest methodRequest, BAsyncResult<T> innerResult)
             {
                 this.transport = transport;
+                this.methodRequest = methodRequest;
+                this.innerResult = innerResult;
+            }
+
+            public void setAsyncResult(bool succ, Exception e2) {
+                if (e2 != null) 
+                {
+                    innerResult.setAsyncResult(default(T), e2);
+                }
+                else 
+                {
+                    // Send again
+                    transport.send(methodRequest, innerResult);
+                }
+            }
+
+            private BTransport transport;
+            private BMethodRequest methodRequest;
+            private BAsyncResult<T> innerResult;
+        }
+
+        private class MyAsyncResultRelogin<T> : BAsyncResult<BMessage>
+        {
+            public MyAsyncResultRelogin(BTransport transport, BMethodRequest methodRequest, BAsyncResult<T> innerResult)
+            {
+                this.transport = transport;
+                this.methodRequest = methodRequest;
                 this.innerResult = innerResult;
             }
 
             public void setAsyncResult(BMessage msg, Exception ex)
             {
+                bool relogin = false;
+
                 try
                 {
                     if (ex != null)
                     {
-                        innerResult.setAsyncResult(default(T), ex);
+                        // BYPS relogin error? (HTTP 403)
+                        relogin = internalIsReloginException(ex);
+                        if (!relogin)
+                        {
+                            innerResult.setAsyncResult(default(T), ex);
+                        }
                     }
                     else
                     {
@@ -131,21 +168,55 @@ namespace com.wilutions.byps
                 }
                 catch (Exception e)
                 {
-                    innerResult.setAsyncResult(default(T), e);
+                    try
+                    {
+                        relogin = internalIsReloginException(e);
+                    }
+                    catch (Exception) { }
+
+                    if (!relogin)
+                    {
+                        innerResult.setAsyncResult(default(T), e);
+                    }
                 }
+
+                if (relogin)
+                {
+                    try
+                    {
+                        MyAsyncResultSend<T> loginResult = new MyAsyncResultSend<T>(transport, methodRequest, innerResult);
+                        transport.negotiateProtocolClient(loginResult);
+                    }
+                    catch (Exception e)
+                    {
+                        innerResult.setAsyncResult(default(T), e);
+                    }
+                }
+
+            }
+
+            private bool internalIsReloginException(Exception e)
+            {
+                int typeId = transport.apiDesc.getRegistry(BBinaryModel.MEDIUM).getSerializer(methodRequest, true).typeId;
+                return transport.internalIsReloginException(e, typeId);
             }
         
             private BTransport transport;
+            private BMethodRequest methodRequest;
             private BAsyncResult<T> innerResult;
         }
 
         public void send<T> (Object obj, BAsyncResult<T> asyncResult) {
 		    try {
 			    BOutput bout = getOutput();
-			
+			    
+                BMethodRequest methodRequest = (BMethodRequest) obj;
+                Object sess = authentication != null ? authentication.getSession() : null;
+                methodRequest.setSession(sess);
+
 			    bout.store(obj);
 
-                BAsyncResult<BMessage> outerResult = new MyAsyncResult<T>(this, asyncResult);
+                BAsyncResult<BMessage> outerResult = new MyAsyncResultRelogin<T>(this, methodRequest, asyncResult);
 
                 BMessage msg = bout.toMessage();
 			    wire.send(msg, outerResult);
@@ -207,7 +278,7 @@ namespace com.wilutions.byps
 		    }
 		
 		    if (ret == null) {
-                throw new BException(BException.CORRUPT, "Invalid protocol.");
+                throw new BException(BExceptionC.CORRUPT, "Invalid protocol.");
 		    }
 		
 		    return ret;
@@ -300,12 +371,12 @@ namespace com.wilutions.byps
 			    long negotiatedVersion = Math.Min(apiDesc.version, nego.version);
 			    nego.protocols = BNegotiate.BINARY_STREAM;
                 if (nego.byteOrder == ByteOrder.UNDEFINED) nego.byteOrder = ByteOrder.LITTLE_ENDIAN;
-                if (nego.byteOrder != ByteOrder.LITTLE_ENDIAN) throw new BException(BException.CORRUPT, "Protocol requires unsupported byte order BIG_ENDIAN");
+                if (nego.byteOrder != ByteOrder.LITTLE_ENDIAN) throw new BException(BExceptionC.CORRUPT, "Protocol requires unsupported byte order BIG_ENDIAN");
 			    nego.version = negotiatedVersion;
 			    protocol = new BProtocolS(apiDesc, negotiatedVersion, nego.byteOrder);
 		    }
 		    else {
-			    throw new BException(BException.CORRUPT, "Protocol negotiation failed.");
+			    throw new BException(BExceptionC.CORRUPT, "Protocol negotiation failed.");
 		    }
 
 		    return protocol;
@@ -314,6 +385,40 @@ namespace com.wilutions.byps
         public override String ToString()
         {
             return "[" + targetId + "]";
+        }
+
+
+        internal bool internalIsReloginException(Exception ex, int typeId)
+        {
+            bool ret = false;
+
+            if (authentication != null && ex != null)
+            {
+                ret = authentication.isReloginException(null, ex, typeId);
+            }
+
+            return ret;
+        }
+
+        public bool isReloginException(Exception ex, int typeId) 
+        {
+            bool ret = false;
+    
+            // Check exception
+            if (ex is BException) 
+            {
+                BException bex = (BException) ex;
+                ret = (bex.Code == BExceptionC.AUTHENTICATION_REQUIRED);
+                if (!ret)
+                {
+                    // The negotiated Tomcat session lives for 10 seconds.
+                    // If we are slow in debugging and the session expires,
+                    // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
+                    ret = (bex.Code == BExceptionC.IOERROR) && bex.ToString().IndexOf("403") >= 0;
+                }
+            }
+      
+            return ret;
         }
 
     }

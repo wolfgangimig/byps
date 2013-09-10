@@ -54,7 +54,8 @@ public class GeneratorCS implements Generator {
 	private void buildRemotes(ClassDB classDB) throws IOException {
 		Collection<RemoteInfo> remotes = classDB.getRemotes();
 		for (RemoteInfo rinfo : remotes) {
-			GenRemoteClass.generate(pctxt, rinfo);
+      GenRemoteClass.generate(pctxt, rinfo.getRemoteNoAuth());
+      GenRemoteClass.generate(pctxt, rinfo.getRemoteAuth());
 			GenRemoteStub.generate(pctxt, rinfo);
 			GenRemoteSkeleton.generate(pctxt, rinfo);
 		}		

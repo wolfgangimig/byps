@@ -44,11 +44,11 @@ namespace com.wilutions.byps
             }
             else
             {
-                header.error = BException.REMOTE_ERROR;
+                header.error = BExceptionC.REMOTE_ERROR;
                 BSerializer ser = registry.getSerializer(ex, false);
                 if (ser == null)
                 {
-                    ex = new BException(BException.REMOTE_ERROR, "", ex);
+                    ex = new BException(BExceptionC.REMOTE_ERROR, "", ex);
                 }
             }
             store(ex);

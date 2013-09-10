@@ -65,7 +65,7 @@ public abstract class BClient {
 	 * @throws RemoteException
 	 * @see {@link #setAuthentication(BAuthentication)}
 	 */
-	public void start(final BAsyncResult<BClient> asyncResult) throws RemoteException {
+	public void start(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
 
     if (transport.authentication == null) {
@@ -75,7 +75,7 @@ public abstract class BClient {
 		BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {
 			public void setAsyncResult(Boolean ignored, Throwable e) {
 				if (log.isDebugEnabled()) log.debug("setAsyncResult(");
-				asyncResult.setAsyncResult(BClient.this, e);
+				asyncResult.setAsyncResult(e == null, e);
 				if (log.isDebugEnabled()) log.debug(")setAsyncResult");
 			}
 		};

@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.remote
 		public readonly static long serialVersionUID = 431648293L;
 		
 		public virtual void Compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_Compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, BAsyncResult<Object> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginCompare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndCompare_HebrewC(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual bool Compare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_Compare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll, BAsyncResult<bool> asyncResult) {
 			try {
@@ -47,10 +47,10 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginCompare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public bool EndCompare_AllTypesC(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		

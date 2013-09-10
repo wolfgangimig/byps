@@ -16,6 +16,7 @@ import com.wilutions.byps.gen.api.ErrorInfo;
 import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
+import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.js.PrintHelper;
@@ -363,7 +364,7 @@ class GenApiClass {
 
 	private void printRemoteId() throws IOException {
 		log.debug("printRemoteId");
-		pr.print("public int getRemoteId() { return ").print(methodInfo.remoteInfo.typeId).println("; }");
+		pr.print("public override int getRemoteId() { return ").print(methodInfo.remoteInfo.typeId).println("; }");
 		log.debug(")printRemoteId");
 	}
 	
@@ -409,7 +410,7 @@ class GenApiClass {
 	private void printExecute() throws IOException {
 		log.debug("printExecute");
 
-		pr.print("public void ").print("execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) ").println("{");
+		pr.print("public override void ").print("execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) ").println("{");
 		pr.beginBlock();
 		
 		printExecuteAsync();
@@ -421,6 +422,29 @@ class GenApiClass {
 		log.debug(")printExecute");
 	}
 	
+  private void printSetSession() throws IOException {
+    if (methodInfo == null) return;
+  
+    RemoteInfo rinfo = methodInfo.remoteInfo;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+      // Supply authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) {
+        pr.checkpoint();
+        
+        pr.println("public override void setSession(Object __byps__sess) {");
+        pr.beginBlock();
+        pr.print("_").print(pinfo.name).print(" = (").print(rinfo.authParamClassName).println(")__byps__sess;");
+        pr.endBlock();
+        pr.println("}");
+        pr.println();
+        
+        break;
+      }
+    }
+     
+  }
+  	
 	private void printHashCode() throws IOException {
 		log.debug("printHashCode(");
 		pr.println("public override int GetHashCode() {");
@@ -727,6 +751,8 @@ class GenApiClass {
 
 			printRemoteId();
 			pr.println();
+			
+			printSetSession();
 
 			printExecute();
 			pr.println();

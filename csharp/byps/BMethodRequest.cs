@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace com.wilutions.byps
 {
-    public interface BMethodRequest
+    public abstract class BMethodRequest
     {
-        int getRemoteId();
+        public abstract int getRemoteId();
 	
-    	void execute(BRemote target, BAsyncResult<Object> asyncResult);
+    	public abstract void execute(BRemote target, BAsyncResult<Object> asyncResult);
 
+        public virtual void setSession(object sess)
+        {
+        }
     }
 }

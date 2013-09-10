@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.remote
 		public readonly static long serialVersionUID = 1677934392L;
 		
 		public virtual void SetUseAuthentication(bool useAuth) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetUseAuthentication(bool useAuth, BAsyncResult<Object> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetUseAuthentication(bool useAuth, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndSetUseAuthentication(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual com.wilutions.byps.test.api.auth.SessionInfo Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
 			try {
@@ -47,14 +47,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginLogin(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public com.wilutions.byps.test.api.auth.SessionInfo EndLogin(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual int Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, BAsyncResult<int> asyncResult) {
 			try {
@@ -65,14 +65,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginDoit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public int EndDoit(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual void Expire(com.wilutions.byps.test.api.auth.SessionInfo sess) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_Expire(com.wilutions.byps.test.api.auth.SessionInfo sess, BAsyncResult<Object> asyncResult) {
 			try {
@@ -83,14 +83,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginExpire(com.wilutions.byps.test.api.auth.SessionInfo sess, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndExpire(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual void SetReloginCount(int count) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetReloginCount(int count, BAsyncResult<Object> asyncResult) {
 			try {
@@ -101,10 +101,10 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetReloginCount(int count, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndSetReloginCount(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		

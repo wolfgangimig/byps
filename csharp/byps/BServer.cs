@@ -66,7 +66,7 @@ namespace com.wilutions.byps
                 }
                 else
                 {
-                    BException ex = new BException(BException.SERVICE_NOT_IMPLEMENTED,
+                    BException ex = new BException(BExceptionC.SERVICE_NOT_IMPLEMENTED,
                         "Service not implemented: remoteId=" + remoteId);
                     methodResult.setAsyncResult(null, ex);
 			    }

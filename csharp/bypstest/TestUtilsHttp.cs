@@ -30,7 +30,7 @@ namespace bypstest
 
                 client = BClient_Testser.createClient(transportFactory);
 
-                BSyncResult<BClient> syncResult = new BSyncResult<BClient>();
+                BSyncResult<bool> syncResult = new BSyncResult<bool>();
                 client.start(syncResult);
 
                 syncResult.GetResult();

@@ -128,7 +128,7 @@ namespace com.wilutions.byps
                 }
             }
 
-            throw new BException(BException.CORRUPT, "Invalid negotiate message.");
+            throw new BException(BExceptionC.CORRUPT, "Invalid negotiate message.");
         }
     }
 }

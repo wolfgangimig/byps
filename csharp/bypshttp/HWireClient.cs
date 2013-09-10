@@ -213,11 +213,11 @@ namespace com.wilutions.byps
                 BException bex = null;
                 if (_cancelAllRequests)
                 {
-                    bex = new BException(BException.CANCELED, "");
+                    bex = new BException(BExceptionC.CANCELED, "");
                 }
                 else
                 {
-                    bex = new BException(BException.IOERROR, e.Message, e);
+                    bex = new BException(BExceptionC.IOERROR, e.Message, e);
                 }
                 removeRequest(requestToCancel, null, bex);
             }
@@ -246,7 +246,7 @@ namespace com.wilutions.byps
                 if (log.isDebugEnabled()) log.debug("status=" + response.StatusCode);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    requestToCancel.setAsyncResult(null, new BException(BException.IOERROR, "HTTP Status " + response.StatusCode));
+                    requestToCancel.setAsyncResult(null, new BException(BExceptionC.IOERROR, "HTTP Status " + response.StatusCode));
                 }
                 else
                 {
@@ -267,11 +267,11 @@ namespace com.wilutions.byps
                 BException bex = null;
                 if (_cancelAllRequests)
                 {
-                    bex = new BException(BException.CANCELED, "");
+                    bex = new BException(BExceptionC.CANCELED, "");
                 }
                 else
                 {
-                    bex = new BException(BException.IOERROR, e.Message, e);
+                    bex = new BException(BExceptionC.IOERROR, e.Message, e);
                 }
                 returnException = bex;
             }
@@ -383,7 +383,7 @@ namespace com.wilutions.byps
                 }
                 catch (Exception ex)
                 {
-                    BException bex = new BException(BException.IOERROR, "", ex);
+                    BException bex = new BException(BExceptionC.IOERROR, "", ex);
                     setAsyncResult(null, bex);
 					wire.removeRequest(request, null, bex);
                 }
@@ -453,7 +453,7 @@ namespace com.wilutions.byps
 				    throw (IOException)e;
 			    }
 			    else {
-				    throw new BException(BException.CANCELED, "", e);
+				    throw new BException(BExceptionC.CANCELED, "", e);
 			    }
 		    }
         }
@@ -503,7 +503,7 @@ namespace com.wilutions.byps
 		    }
 		
 		    public void throwIfCancelled() {
-                if (_canceled) throw new BException(BException.CANCELED, "Request cancelled");
+                if (_canceled) throw new BException(BExceptionC.CANCELED, "Request cancelled");
 		    }
 
             public void run()

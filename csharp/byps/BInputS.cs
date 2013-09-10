@@ -14,7 +14,7 @@ namespace com.wilutions.byps
 
 	    protected override Object loadObj(BSerializer ser) {
 		    long strmVersion = header.version;
-		    if (strmVersion <= 0) throw new BException(BException.CORRUPT, "Invalid stream version " + strmVersion);
+		    if (strmVersion <= 0) throw new BException(BExceptionC.CORRUPT, "Invalid stream version " + strmVersion);
 		    return readObj(false, ser);
 	    }
 
@@ -34,7 +34,7 @@ namespace com.wilutions.byps
 			
 			    // Read type and size from stream
 			    int typeId = bbuf.getTypeId();
-			    if (typeId < 0) throw new BException(BException.CORRUPT, "Invalid type ID at stream position " + bbuf.position());
+			    if (typeId < 0) throw new BException(BExceptionC.CORRUPT, "Invalid type ID at stream position " + bbuf.position());
 			
 			    // If the serializer is not supplied, lookup
 			    // the serializer from the registry
@@ -48,8 +48,8 @@ namespace com.wilutions.byps
 			
 		    }
 		    else if (id < 0) {
-			    if (idMap == null) throw new BException(BException.INTERNAL, "Reference map must not be null.");
-			    if (!idMap.TryGetValue(-id, out obj)) throw new BException(BException.INTERNAL, "Null values must not be mapped.");
+			    if (idMap == null) throw new BException(BExceptionC.INTERNAL, "Reference map must not be null.");
+			    if (!idMap.TryGetValue(-id, out obj)) throw new BException(BExceptionC.INTERNAL, "Null values must not be mapped.");
 		    }
 		    else {
 			    // NULL reference

@@ -41,7 +41,7 @@ namespace com.wilutions.byps
                         ser = getBuiltInSerializer(typeId);
                         if (ser == null)
                         {
-                            throw new BException(BException.CORRUPT, "No serializer for typeId=" + typeId);
+                            throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
                         }
                     }
                     mapTypeIdToSerializer[typeId] = ser;
@@ -97,7 +97,7 @@ namespace com.wilutions.byps
                 }
                 catch (Exception)
                 {
-                    throw new BException(BException.CORRUPT,
+                    throw new BException(BExceptionC.CORRUPT,
                             "No serializer for className=" + type + ". " +
                             "Only classes marked with BSerializable can be serialized as \"Object\" types. " +
                             "This error occurs e. g. if a List<Object> contains String values. String is not a BSerializable.");

@@ -78,4 +78,12 @@ public class RemoteInfo extends TypeInfo {
     }
     return rinfo;
   }
+  
+  public RemoteInfo getRemoteNoAuth() throws GeneratorException {
+    RemoteInfo rinfo = new RemoteInfo(name, comments, qname, methods, null, null, isClientRemote);
+    rinfo.typeId = this.typeId;
+    return rinfo;
+  }
+
+
 }

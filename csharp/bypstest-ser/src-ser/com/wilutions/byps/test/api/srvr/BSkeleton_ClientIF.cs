@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public readonly static long serialVersionUID = 1784257353L;
 		
 		public virtual int IncrementInt(int a) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_IncrementInt(int a, BAsyncResult<int> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.srvr
 			}
 		}
 		public IAsyncResult BeginIncrementInt(int a, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public int EndIncrementInt(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual IList<System.IO.Stream> GetStreams(int ctrl) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetStreams(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
 			try {
@@ -47,14 +47,14 @@ namespace com.wilutions.byps.test.api.srvr
 			}
 		}
 		public IAsyncResult BeginGetStreams(int ctrl, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public IList<System.IO.Stream> EndGetStreams(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual void PutStreams(IList<System.IO.Stream> strm, int ctrl) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_PutStreams(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
 			try {
@@ -65,14 +65,14 @@ namespace com.wilutions.byps.test.api.srvr
 			}
 		}
 		public IAsyncResult BeginPutStreams(IList<System.IO.Stream> strm, int ctrl, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndPutStreams(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual ChatStructure SendChat(ChatStructure cs) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SendChat(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
 			try {
@@ -83,10 +83,10 @@ namespace com.wilutions.byps.test.api.srvr
 			}
 		}
 		public IAsyncResult BeginSendChat(ChatStructure cs, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public ChatStructure EndSendChat(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		

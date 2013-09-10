@@ -25,11 +25,13 @@ class GenRemoteStub {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
-	private GenRemoteStub(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
-		this.rinfo = rinfo;
+	private GenRemoteStub(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) throws GeneratorException {
+	  
+    RemoteInfo rinfoImpl = rinfo.getRemoteAuth();
+	  
+		this.rinfo = rinfoImpl != null ? rinfoImpl : rinfo;
 		this.pr = pr;
 		this.className = pctxt.getStubClassQName(rinfo, rinfo.pack);
-		this.interfaceName = rinfo.name + PrintContext.INTERFACE_SUFFIX;
 		this.pctxt = pctxt;
 	}
 	
@@ -50,6 +52,10 @@ class GenRemoteStub {
 		mpr = pr.print("async_").print(methodName).print("(");
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+      // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+		  
 			if (first) first = false; else mpr.print(", ");
 			String mname = pctxt.makeValidMemberName(pinfo.name);
 			mpr.print(mname);
@@ -109,6 +115,10 @@ class GenRemoteStub {
 		pr.println();
 		
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+      // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+		  
 			String mname = pctxt.makeValidMemberName(pinfo.name);
 			pr.print("req._").print(pinfo.name).print(" = ").print(mname).print(";").println();
 		}
@@ -140,7 +150,11 @@ class GenRemoteStub {
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-			if (first) first = false; else mpr.print(", ");
+      
+		  // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+
+      if (first) first = false; else mpr.print(", ");
 			String mname = pctxt.makeValidMemberName(pinfo.name);
 			mpr.print(mname);
 		}
@@ -189,7 +203,7 @@ class GenRemoteStub {
 		pr.println();
 		
 		pr.print("public class ").print(className)
-		.print(" : BStub, ").print(interfaceName).print(", BSerializable {");
+		.print(" : BStub, ").print(rinfo.name).print(", BSerializable {");
 		pr.println();
 		
 		pr.beginBlock();
@@ -233,7 +247,6 @@ class GenRemoteStub {
 	private final RemoteInfo rinfo;
 	private final CodePrinter pr;
 	private final String className;
-	private final String interfaceName;
 	private final PrintContext pctxt;
 	
 }

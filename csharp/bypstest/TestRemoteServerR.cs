@@ -73,7 +73,7 @@ namespace bypstest
 			    Assert.Fail("Exception expected");
 		    }
 		    catch (BException e) {
-			    TestUtils.assertEquals(log, "exception", BException.SERVICE_NOT_IMPLEMENTED, e.Code);
+			    TestUtils.assertEquals(log, "exception", BExceptionC.SERVICE_NOT_IMPLEMENTED, e.Code);
 		    }
 		
 		    log.info(")testCallClientFromServerNoRemoteImpl");
@@ -161,7 +161,7 @@ namespace bypstest
 				}
 				catch (IOException e)
                 {
-					throw new BException(BException.IOERROR, "", e);
+					throw new BException(BExceptionC.IOERROR, "", e);
 				}
             }
         }
@@ -191,7 +191,7 @@ namespace bypstest
 				try {
 					return TestUtilsHttp.makeTestStreams();
 				} catch (IOException e) {
-					throw new BException(BException.IOERROR, "", e);
+					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 			}
        }

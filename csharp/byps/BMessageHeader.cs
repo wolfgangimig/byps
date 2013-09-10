@@ -107,7 +107,7 @@ namespace com.wilutions.byps
 			    readBinaryWithoutMagic(buf);
 			    break;
 		    default: 
-			    throw new BException(BException.CORRUPT, "Invalid protocol.");
+			    throw new BException(BExceptionC.CORRUPT, "Invalid protocol.");
 		    }
 	    }
 	

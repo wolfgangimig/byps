@@ -27,11 +27,11 @@ class GenRemoteSkeleton {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
-	private GenRemoteSkeleton(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
-		this.rinfo = rinfo;
+	private GenRemoteSkeleton(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) throws GeneratorException {
+    RemoteInfo rinfoImpl = rinfo.getRemoteNoAuth();
+		this.rinfo = rinfoImpl;
 		this.pr = pr;
 		this.className = pctxt.getSkeletonClassQName(rinfo, rinfo.pack);
-		this.interfaceName = rinfo.name + PrintContext.INTERFACE_SUFFIX;
 		this.pctxt = pctxt;
 	}
 	
@@ -42,7 +42,7 @@ class GenRemoteSkeleton {
 		pctxt.printDeclareMethod(mpr, rinfo, methodInfo).println(" {");
 		
 		pr.beginBlock();
-		pr.println("throw new BException(BExceptionO.UNSUPPORTED_METHOD, \"\");");
+		pr.println("throw new BException(BExceptionC.UNSUPPORTED_METHOD, \"\");");
 		pr.endBlock();
 		pr.println("}");
 		
@@ -116,7 +116,7 @@ class GenRemoteSkeleton {
 		mpr = pctxt.printDeclareMethodBeginAsync(mpr, rinfo, methodInfo);
 		mpr.println(" {");
 		pr.beginBlock();
-		pr.println("throw new BException(BExceptionO.INTERNAL, \"\");");
+		pr.println("throw new BException(BExceptionC.INTERNAL, \"\");");
 		pr.endBlock();
 		pr.println("}");
 	}
@@ -126,7 +126,7 @@ class GenRemoteSkeleton {
 		mpr = pctxt.printDeclareMethodEndAsync(mpr, rinfo, methodInfo);
 		mpr.println(" {");
 		pr.beginBlock();
-		pr.println("throw new BException(BExceptionO.INTERNAL, \"\");");
+		pr.println("throw new BException(BExceptionC.INTERNAL, \"\");");
 		pr.endBlock();
 		pr.println("}");
 		
@@ -151,7 +151,7 @@ class GenRemoteSkeleton {
 		pr.println();
 		
 		pr.println("/// <summary>");
-		pr.println("/// This class provides a skeleton implementation of the interface " + interfaceName + ".");
+		pr.println("/// This class provides a skeleton implementation of the interface " + rinfo.name + ".");
 		pr.println("/// </summary>");
 		pr.println("/// <remark>");
 		pr.println("/// Your interface implementation class has to be derived from this skeleton.");
@@ -160,7 +160,7 @@ class GenRemoteSkeleton {
 		pr.println("/// </remark>");
 
 		pr.print("public class ").print(className)
-			.print(" : BSkeleton, ").print(interfaceName)
+			.print(" : BSkeleton, ").print(rinfo.name)
 			.print(" {"); // implementiert nicht Serializable, sonst will Eclipse auch eine serialVersionUID der Implementierungsklasse.
 		pr.println();
 
@@ -205,7 +205,6 @@ class GenRemoteSkeleton {
 	private final RemoteInfo rinfo;
 	private final CodePrinter pr;
 	private final String className;
-	private final String interfaceName;
 	private final PrintContext pctxt;
 	
 }

@@ -303,7 +303,7 @@ namespace bypstest
 			    log.info("setImages ex=" + e + ", OK");
 			    String expectedMessage = throwEx ? "Test Exception" : "Test Error";
                 String expectedDetails = throwEx ? "System.IO.IOException: Test Exception" : "System.InvalidOperationException: Test Error";
-                TestUtils.assertEquals(log, "Exception Code", BException.IOERROR, e.Code);
+                TestUtils.assertEquals(log, "Exception Code", BExceptionC.IOERROR, e.Code);
                 TestUtils.assertEquals(log, "Exception Message", expectedMessage, e.Message);
                 String readDetails = e.Details.Substring(0, expectedDetails.Length);
                 TestUtils.assertEquals(log, "Exception Details", expectedDetails, readDetails);

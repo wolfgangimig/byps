@@ -36,7 +36,7 @@ namespace com.wilutions.byps
             }
             catch (IOException e)
             {
-                throw new BException(BException.IOERROR, e.ToString());
+                throw new BException(BExceptionC.IOERROR, e.ToString());
             }
 	    }
 

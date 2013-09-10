@@ -32,6 +32,10 @@ public class JSerializer_691741677 extends JSerializer_Object {
 	@Override
 	public void internalWrite(final Object obj1, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		final HebrewC obj = (HebrewC)obj1;		
+		bbuf.putString("aleph", obj.aleph);
+		bbuf.putString("beth", obj.beth);
+		bout.writeObj("ALEPH",obj.ALEPH, false, null);
+		bout.writeObj("BETH",obj.BETH, false, null);
 	}
 	
 	@Override

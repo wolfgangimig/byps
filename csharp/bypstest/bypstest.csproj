@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestRemoteWithAuthentication.cs" />
     <Compile Include="TestRemoteConstants.cs" />
     <Compile Include="TestRemoteSetTypes.cs" />
     <Compile Include="MyMap.cs" />

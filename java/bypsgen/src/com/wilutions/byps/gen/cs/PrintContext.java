@@ -282,6 +282,10 @@ public class PrintContext extends PrintContextBase {
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+      // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      		  
 			if (first) first = false; else mpr.print(", ");
 			cstype = toCSharp(pinfo.type);
 			String mname = makeValidMemberName(pinfo.name);
@@ -298,7 +302,11 @@ public class PrintContext extends PrintContextBase {
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-			if (first) first = false; else mpr.print(", ");
+      
+		  // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+
+      if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);
 			String mname = makeValidMemberName(pinfo.name);
 			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
@@ -337,7 +345,11 @@ public class PrintContext extends PrintContextBase {
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-			if (first) first = false; else mpr.print(", ");
+
+      // Skip authentication parameter
+      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+
+      if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);
 			String mname = makeValidMemberName(pinfo.name);
 			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);

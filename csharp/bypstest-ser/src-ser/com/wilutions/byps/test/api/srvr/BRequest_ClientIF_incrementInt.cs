@@ -15,9 +15,9 @@ namespace com.wilutions.byps.test.api.srvr
 	
 		#region Execute
 		
-		public int getRemoteId() { return 1784257353; }
+		public override int getRemoteId() { return 1784257353; }
 		
-		public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
+		public override void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
 			try {
 				ClientIF __byps__remoteT = (ClientIF)__byps__remote;				
 				BAsyncResultSendMethod<int> __byps__outerResult = new BAsyncResultSendMethod<int>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_5());				

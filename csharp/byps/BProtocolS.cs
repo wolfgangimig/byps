@@ -19,13 +19,13 @@ namespace com.wilutions.byps
 
 	    public override BOutput getOutput(BTransport transport) 
         {
-            if (negotiatedByteOrder == ByteOrder.UNDEFINED) throw new BException(BException.INTERNAL, "Protocol object can only be used for input.");
+            if (negotiatedByteOrder == ByteOrder.UNDEFINED) throw new BException(BExceptionC.INTERNAL, "Protocol object can only be used for input.");
 		    return new BOutputS(transport, negotiatedVersion, negotiatedByteOrder);
 	    }
 
         public override BOutput getResponse(BTransport transport, BMessageHeader requestHeader)
         {
-            if (negotiatedByteOrder == ByteOrder.UNDEFINED) throw new BException(BException.INTERNAL, "Protocol object can only be used for input.");
+            if (negotiatedByteOrder == ByteOrder.UNDEFINED) throw new BException(BExceptionC.INTERNAL, "Protocol object can only be used for input.");
 		    return new BOutputS(transport, requestHeader);
 	    }
 

@@ -750,8 +750,8 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 using namespace ::com::wilutions::byps;
 
 class HebrewC : public BSerializable {
-	private: const static ::std::wstring aleph;
-	private: const static ::std::wstring beth;
+	protected: const static ::std::wstring aleph;
+	protected: const static ::std::wstring beth;
 	public: const static PHebrewZ ALEPH;
 	public: const static PHebrewZ BETH;
 	

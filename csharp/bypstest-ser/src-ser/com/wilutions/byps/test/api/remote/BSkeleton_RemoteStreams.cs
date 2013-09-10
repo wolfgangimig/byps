@@ -18,7 +18,7 @@ namespace com.wilutions.byps.test.api.remote
 		public readonly static long serialVersionUID = 2028487863L;
 		
 		public virtual System.IO.Stream GetImage() {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetImage(BAsyncResult<System.IO.Stream> asyncResult) {
 			try {
@@ -29,14 +29,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetImage(AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public System.IO.Stream EndGetImage(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual void SetImage(System.IO.Stream istrm) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
 			try {
@@ -47,14 +47,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetImage(System.IO.Stream istrm, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndSetImage(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual Dictionary<int,System.IO.Stream> GetImages() {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetImages(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
 			try {
@@ -65,14 +65,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetImages(AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Dictionary<int,System.IO.Stream> EndGetImages(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
 			try {
@@ -83,14 +83,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginSetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndSetImages(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual void ThrowLastException() {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_ThrowLastException(BAsyncResult<Object> asyncResult) {
 			try {
@@ -101,14 +101,14 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginThrowLastException(AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public Object EndThrowLastException(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		public virtual System.IO.Stream GetTextStream() {
-			throw new BException(BExceptionO.UNSUPPORTED_METHOD, "");
+			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
 		public virtual void async_GetTextStream(BAsyncResult<System.IO.Stream> asyncResult) {
 			try {
@@ -119,10 +119,10 @@ namespace com.wilutions.byps.test.api.remote
 			}
 		}
 		public IAsyncResult BeginGetTextStream(AsyncCallback callback, object state) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		public System.IO.Stream EndGetTextStream(IAsyncResult asyncResult) {
-			throw new BException(BExceptionO.INTERNAL, "");
+			throw new BException(BExceptionC.INTERNAL, "");
 		}
 		
 		

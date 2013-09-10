@@ -39,13 +39,13 @@ namespace com.wilutions.byps
 				    Monitor.Wait(this, timeoutMillis);
 				    long dt = (DateTime.Now.Ticks / 10000) - t1;
 				    if (dt >= timeoutMillis) {
-					    ex = new BException(BException.TIMEOUT, "Timeout while waiting for result.");
+					    ex = new BException(BExceptionC.TIMEOUT, "Timeout while waiting for result.");
 					    break;
 				    }
 			    }
 			    if (ex != null) {
 				    if (ex is BException) throw (BException)ex;
-				    throw new BException(BException.REMOTE_ERROR, "", ex);
+				    throw new BException(BExceptionC.REMOTE_ERROR, "", ex);
 			    }
 			    return result;
 		    }

@@ -429,7 +429,7 @@ public class BTransport {
     return "[" + targetId + "]";
   }
   
-  public boolean internalIsReloginException(Throwable ex, int typeId) {
+  protected boolean internalIsReloginException(Throwable ex, int typeId) {
     if (log.isDebugEnabled()) log.debug("isReloginException(ex=" + ex);
 
     boolean ret = false;

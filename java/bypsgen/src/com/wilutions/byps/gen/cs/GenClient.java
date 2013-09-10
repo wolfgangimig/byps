@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BApiDescriptor;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
 import com.wilutions.byps.gen.utils.Utils;
@@ -154,11 +155,16 @@ public class GenClient {
 		pr.println("}");
 	}
 	
-	private void printDefineStubs() {
+	private void printDefineStubs() throws GeneratorException {
 		log.debug("printDefineStubs");
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			String varName = getRemoteVariableName(rinfo);
-			pr.print("public readonly ").print(rinfo.toString(pack)).print(" ").print(varName).println(";");
+			
+      RemoteInfo rinfoInterface = rinfo.getRemoteAuth();
+      if (rinfoInterface == null) rinfoInterface = rinfo.getRemoteNoAuth();
+      String remoteName = rinfoInterface.toString(pack);
+			
+			pr.print("public readonly ").print(remoteName).print(" ").print(varName).println(";");
 		}
 		log.debug(")printDefineStubs");
 	}
@@ -167,7 +173,7 @@ public class GenClient {
 		String typeName = pctxt.getSkeletonClassQName(rinfo, pack);
 		pr.print("public ").print(clientClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) {");
 		pr.beginBlock();
-		pr.println("if (serverR == null) throw new BException(BExceptionO.NO_REVERSE_CONNECTIONS, \"No reverse connections.\");");
+		pr.println("if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, \"No reverse connections.\");");
 		pr.println("serverR.server.addRemote(" + rinfo.typeId + ", remoteSkeleton);");
 		pr.println("return this;");
 		pr.endBlock();

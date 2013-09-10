@@ -5,7 +5,7 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public class BStub_RemoteWithAuthentication : BStub, RemoteWithAuthentication, BSerializable {	
+	public class BStub_RemoteWithAuthentication : BStub, RemoteWithAuthenticationAuth, BSerializable {	
 		
 		public readonly static long serialVersionUID = 1677934392L;
 		
@@ -32,63 +32,60 @@ namespace com.wilutions.byps.test.api.remote
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
 		}
 		
-		public com.wilutions.byps.test.api.auth.SessionInfo Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd) {
+		public com.wilutions.byps.test.api.auth.SessionInfo Login(String userName, String userPwd) {
 			BSyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult = new BSyncResult<com.wilutions.byps.test.api.auth.SessionInfo>();			
-			async_Login(sess, userName, userPwd, asyncResult);
+			async_Login(userName, userPwd, asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
+		public void async_Login(String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
 			BRequest_RemoteWithAuthentication_login req = new BRequest_RemoteWithAuthentication_login();			
-			req._sess = sess;
 			req._userName = userName;
 			req._userPwd = userPwd;
 			BAsyncResultReceiveMethod<com.wilutions.byps.test.api.auth.SessionInfo> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.auth.SessionInfo>(asyncResult);
 			transport.send(req, outerResult);
 		}
-		public IAsyncResult BeginLogin(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, AsyncCallback callback, object state){
+		public IAsyncResult BeginLogin(String userName, String userPwd, AsyncCallback callback, object state){
 			BAsyncProgModel<com.wilutions.byps.test.api.auth.SessionInfo> _byps_ret = new BAsyncProgModel<com.wilutions.byps.test.api.auth.SessionInfo>(callback, state);
-			async_Login(sess, userName, userPwd, _byps_ret);
+			async_Login(userName, userPwd, _byps_ret);
 			return _byps_ret;
 		}
 		public 		com.wilutions.byps.test.api.auth.SessionInfo EndLogin(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.auth.SessionInfo>)asyncResult).Result;
 		}
 		
-		public int Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value) {
+		public int Doit(int @value) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
-			async_Doit(sess, @value, asyncResult);
+			async_Doit(@value, asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, BAsyncResult<int> asyncResult) {
+		public void async_Doit(int @value, BAsyncResult<int> asyncResult) {
 			BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();			
-			req._sess = sess;
 			req._value = @value;
 			BAsyncResultReceiveMethod<int> outerResult = new BAsyncResultReceiveMethod<int>(asyncResult);
 			transport.send(req, outerResult);
 		}
-		public IAsyncResult BeginDoit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, AsyncCallback callback, object state){
+		public IAsyncResult BeginDoit(int @value, AsyncCallback callback, object state){
 			BAsyncProgModel<int> _byps_ret = new BAsyncProgModel<int>(callback, state);
-			async_Doit(sess, @value, _byps_ret);
+			async_Doit(@value, _byps_ret);
 			return _byps_ret;
 		}
 		public 		int EndDoit(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<int>)asyncResult).Result;
 		}
 		
-		public void Expire(com.wilutions.byps.test.api.auth.SessionInfo sess) {
+		public void Expire() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_Expire(sess, asyncResult);
+			async_Expire(asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_Expire(com.wilutions.byps.test.api.auth.SessionInfo sess, BAsyncResult<Object> asyncResult) {
+		public void async_Expire(BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteWithAuthentication_expire req = new BRequest_RemoteWithAuthentication_expire();			
-			req._sess = sess;
 			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
 			transport.send(req, outerResult);
 		}
-		public IAsyncResult BeginExpire(com.wilutions.byps.test.api.auth.SessionInfo sess, AsyncCallback callback, object state){
+		public IAsyncResult BeginExpire(AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_Expire(sess, _byps_ret);
+			async_Expire(_byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndExpire(IAsyncResult asyncResult) {

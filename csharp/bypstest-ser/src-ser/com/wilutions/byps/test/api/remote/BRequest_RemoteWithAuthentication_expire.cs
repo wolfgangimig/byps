@@ -15,9 +15,14 @@ namespace com.wilutions.byps.test.api.remote
 	
 		#region Execute
 		
-		public int getRemoteId() { return 1677934392; }
+		public override int getRemoteId() { return 1677934392; }
 		
-		public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
+		// checkpoint com.wilutions.byps.gen.cs.GenApiClass:433
+		public override void setSession(Object __byps__sess) {
+			_sess = (com.wilutions.byps.test.api.auth.SessionInfo)__byps__sess;
+		}
+		
+		public override void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
 			try {
 				RemoteWithAuthentication __byps__remoteT = (RemoteWithAuthentication)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());				
