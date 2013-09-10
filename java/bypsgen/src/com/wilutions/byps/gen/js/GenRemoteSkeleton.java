@@ -121,12 +121,6 @@ class GenRemoteSkeleton {
 		printToJSON();
 		pr.println();
 		
-		for (MethodInfo minfo : rinfo.methods) {
-			printMethod(minfo);
-			printMethodAsync(minfo);
-			pr.println();
-		}
-		
 		pr.println();
 		
 		pr.endBlock();
@@ -134,6 +128,12 @@ class GenRemoteSkeleton {
 		pr.println("};");
 		pr.println();
 
+    for (MethodInfo minfo : rinfo.methods) {
+      printMethod(minfo);
+      printMethodAsync(minfo);
+      pr.println();
+    }
+		
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 

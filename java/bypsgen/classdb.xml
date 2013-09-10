@@ -30777,14 +30777,14 @@
                     </comments>
                     <comments>
                         <kind>@since</kind>
-                        <text>8.00.032.012</text>
+                        <text>8.00.036.000</text>
                     </comments>
                     <typeName>de.elo.ix.client.JobState[]</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PROTECTED</access>
-                    <since>8.0.32.12</since>
+                    <since>8.0.36.0</since>
                 </member>
             </members>
             <comments>
@@ -34413,14 +34413,14 @@
                     </comments>
                     <comments>
                         <kind>@since</kind>
-                        <text>8.00.032.012</text>
+                        <text>8.00.036.000</text>
                     </comments>
                     <typeName>boolean</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PROTECTED</access>
-                    <since>8.0.32.12</since>
+                    <since>8.0.36.0</since>
                 </member>
             </members>
             <comments>
@@ -55194,14 +55194,14 @@
                     </comments>
                     <comments>
                         <kind>@since</kind>
-                        <text>8.00.032.012</text>
+                        <text>8.00.036.000</text>
                     </comments>
                     <typeName>int</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>true</isStatic>
                     <isFinal>true</isFinal>
                     <access>PUBLIC</access>
-                    <since>8.0.32.12</since>
+                    <since>8.0.36.0</since>
                     <value>MTAwMQ==</value>
                 </member>
                 <member>
@@ -55212,14 +55212,14 @@
                     </comments>
                     <comments>
                         <kind>@since</kind>
-                        <text>8.00.032.012</text>
+                        <text>8.00.036.000</text>
                     </comments>
                     <typeName>int</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>true</isStatic>
                     <isFinal>true</isFinal>
                     <access>PUBLIC</access>
-                    <since>8.0.32.12</since>
+                    <since>8.0.36.0</since>
                     <value>MTAwNg==</value>
                 </member>
                 <member>
@@ -78272,7 +78272,7 @@
                         </comment>
                         <comment>
                             <kind>@since</kind>
-                            <text>8.00.032.012</text>
+                            <text>8.00.036.000</text>
                         </comment>
                     </comments>
                 </method>
@@ -78313,7 +78313,7 @@
                         </comment>
                         <comment>
                             <kind>@since</kind>
-                            <text>8.00.032.012</text>
+                            <text>8.00.036.000</text>
                         </comment>
                     </comments>
                 </method>

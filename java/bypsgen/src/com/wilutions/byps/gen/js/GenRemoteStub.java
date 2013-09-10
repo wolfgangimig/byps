@@ -57,7 +57,7 @@ class GenRemoteStub {
 		}
 		mpr.println(" };");
 
-		pr.println("var ret = transport.sendMethod(req, __byps__asyncResult);");
+		pr.println("var ret = this.transport.sendMethod(req, __byps__asyncResult);");
 		pr.println("return ret;");
 				
 		pr.endBlock();
@@ -81,16 +81,16 @@ class GenRemoteStub {
 		pr.println("this.transport = transport;");
 		pr.println();
 		
-		for (MethodInfo minfo : rinfo.methods) {
-			printMethod(minfo);
-			pr.println();
-		}
-		
 		pr.endBlock();
 		
 		pr.println("};");
 		pr.println();
 
+    for (MethodInfo minfo : rinfo.methods) {
+      printMethod(minfo);
+      pr.println();
+    }
+    
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 

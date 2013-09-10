@@ -216,6 +216,7 @@ public class BDoclet extends Doclet {
 //		"-gencpp.max-fsize", "50000",
 
     "-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\json-api\\ixbyps.js",
+    "-genjs.suppressConstClasses",
 		
 		"-allserials",
 		"-allremotes",
@@ -318,10 +319,10 @@ public class BDoclet extends Doclet {
 					if (propsJS == null) propsJS = new PropertiesJS(defaultProps);
 					argIdx = propsJS.addArgs(args, argIdx);
 				}
-				else if (arg.equals(GeneratorProperties.CHANGED_MEMBERS)) {
-					defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");
-					argIdx++;
-				}
+        else if (arg.equals(GeneratorProperties.CHANGED_MEMBERS)) {
+          defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");
+          argIdx++;
+        }
         else if (arg.equalsIgnoreCase("-allserials")) {
           convertOptions |= BConvert.OPT_ALL_SERIALS;
           argIdx++;

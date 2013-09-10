@@ -131,7 +131,7 @@ class GenConstClass {
 		}
 		else if (tinfo.qname.equals("long")) {
 			if (value instanceof Number) value = ((Number)value).longValue();
-			sbuf.append("\"").append(value).append("\"");
+			sbuf.append("\"").append(value).append(".\"");
 		}
 		else if (tinfo.qname.equals("double")) {
 			sbuf.append(value);

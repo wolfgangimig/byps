@@ -10,6 +10,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BException;
 import com.wilutions.byps.gen.api.CommentInfo;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
@@ -36,6 +37,11 @@ class PrintContext extends PrintContextBase {
 		
 		logProperties();
 	}
+
+  public boolean isSuppressConstantClassesAndObjects() throws GeneratorException {
+    boolean val = props.getOptionalPropertyBoolean(PropertiesJS.SUPPRESS_CONST_CLASSES, false);
+    return val;
+  }
 	
 	CodePrinter getPrinter() throws IOException {
 		FileOutputStream fos = new FileOutputStream(destFile, true);
@@ -122,8 +128,10 @@ class PrintContext extends PrintContextBase {
 	  
 		printComments(pr, methodInfo.comments);
 		
+		String className = skeleton ? getSkeletonClassQName(rinfo, "") : getStubClassQName(rinfo, "");
+				
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
-		CodePrinter mpr = pr.print("this.");
+		CodePrinter mpr = pr.print(className).print(".prototype.");
 		if (async && skeleton) {
 			mpr.print("async_");
 		}
