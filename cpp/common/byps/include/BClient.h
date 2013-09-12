@@ -19,9 +19,9 @@ public:
 	void start();
 
 #ifdef CPP11_LAMBDA
-    static void start(PClient client, function<void (PClient, BException)> asyncResult);
+    void start(function<void (bool, BException)> asyncResult);
 #else
-	static void start(PClient client, byps_ptr<BAsyncResultT<PClient> > asyncResult);
+	void start(byps_ptr<BAsyncResultT<bool> > asyncResult);
 #endif
 
     virtual void done();

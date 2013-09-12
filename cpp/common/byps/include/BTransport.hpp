@@ -6,11 +6,19 @@
 namespace com { namespace wilutions { namespace byps {
 
 BINLINE BTransport::BTransport(PApiDescriptor apiDesc, const PWire& wire, const PRemoteRegistry &remoteRegistry)
-    : wire(wire), remoteRegistry(remoteRegistry), apiDesc(apiDesc), protocol(PProtocol()) {
+    : wire(wire)
+	, remoteRegistry(remoteRegistry)
+	, apiDesc(apiDesc)
+	, protocol(PProtocol()) {
 }
 
 BINLINE BTransport::BTransport(const BTransport &rhs, const BTargetId &targetId)
-    : wire(rhs.wire), remoteRegistry(rhs.remoteRegistry), apiDesc(rhs.apiDesc), protocol(rhs.protocol), targetId(targetId){
+    : wire(rhs.wire)
+	, remoteRegistry(rhs.remoteRegistry)
+	, apiDesc(rhs.apiDesc)
+	, protocol(rhs.protocol)
+	, targetId(rhs.targetId)
+	, authentication(rhs.authentication) {
 }
 
 BINLINE BTransport::~BTransport() {
@@ -59,13 +67,20 @@ BINLINE PProtocol BTransport::getProtocol() {
     return protocol;
 }
 
-class BTransport_BAsyncOuterResult;
-typedef BTransport_BAsyncOuterResult* PTransport_BAsyncOuterResult;
+class BTransport_AsyncResultSend;
+typedef BTransport_AsyncResultSend* PTransport_BAsyncOuterResult;
 
-class BTransport_BAsyncOuterResult : public BAsyncResult {
-public:
+class BTransport_AsyncResultSend : public BAsyncResult {
 	PTransport transport;
-    PAsyncResult innerResult;
+	PMethodRequest methodRequest; 
+	PAsyncResult innerResult;
+public:
+	BTransport_AsyncResultSend(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
+		: transport(transport)
+		, methodRequest(methodRequest)
+		, innerResult(innerResult)
+	{
+	}
 
     virtual void setAsyncResult(const BVariant& result) {
 		try {
@@ -73,13 +88,7 @@ public:
                 innerResult->setAsyncResult(BVariant(result.getException()));
             }
             else {
-				POBJECT obj;
-				result.get(obj);
-                PMessage msg = byps_static_ptr_cast<BMessage>(obj);
-
-                PInput inp = transport->getInput(msg->header, msg->buf);
-                PSerializable sobj = inp->load();
-                innerResult->setAsyncResult(BVariant(sobj));
+				transport->send(methodRequest, innerResult);
             }
 		}
         catch (const exception& ex) {
@@ -128,6 +137,74 @@ public:
 	}
 
 };
+
+class BTransport_AsyncResultRelogin : public BAsyncResult {
+	PTransport transport;
+	PMethodRequest methodRequest; 
+	PAsyncResult innerResult;
+public:
+	BTransport_AsyncResultRelogin(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
+		: transport(transport)
+		, methodRequest(methodRequest)
+		, innerResult(innerResult)
+	{
+	}
+
+	virtual ~BTransport_AsyncResultRelogin() {}
+
+    virtual void setAsyncResult(const BVariant& result) { 
+		bool relogin = false;
+
+		try {
+            if (result.isException()) {
+				relogin = internalIsReloginException(result.getException());
+				if (!relogin) {
+					innerResult->setAsyncResult(BVariant(result.getException()));
+				}
+            }
+            else {
+				try {
+					POBJECT obj;
+					result.get(obj);
+					PMessage msg = byps_static_ptr_cast<BMessage>(obj);
+
+					PInput inp = transport->getInput(msg->header, msg->buf);
+					PSerializable sobj = inp->load();
+					innerResult->setAsyncResult(BVariant(sobj));
+				}
+				catch (const BException& e) {
+					relogin = internalIsReloginException(e);
+					if (!relogin) {
+						innerResult->setAsyncResult(BVariant(e));
+					}
+				}
+            }
+
+			if (relogin) {
+                try {
+                    BTransport_AsyncResultSend* loginResult = new BTransport_AsyncResultSend(transport, methodRequest, innerResult);
+                    transport->negotiateProtocolClient(loginResult);
+                }
+                catch (const BException& e) {
+                    innerResult->setAsyncResult(BVariant(e));
+                }
+			}
+		}
+        catch (const exception& ex) {
+            innerResult->setAsyncResult(BVariant(ex));
+		}
+
+		delete this;
+	}
+
+private:
+	bool internalIsReloginException(BException e) {
+		BTYPEID typeId = methodRequest->BSerializable_getTypeId();
+        return transport->internalIsReloginException(e, typeId);
+    }
+
+};
+
 
 BINLINE void BTransport::negotiateProtocolClient(PAsyncResult asyncResult) {
 	PTransport pthis = shared_from_this();
@@ -203,12 +280,17 @@ BINLINE void BTransport::send(const PSerializable& obj, PAsyncResult asyncResult
 	if (!pthis) throw BException(EX_CANCELLED);
 
 	try {
-        POutput outp = getOutput();
-		outp->store(obj);
+		PMethodRequest methodRequest = byps_ptr_cast<BMethodRequest>(obj);
+		if (!methodRequest) throw BException(EX_CORRUPT);
 
-        PTransport_BAsyncOuterResult outerResult(new BTransport_BAsyncOuterResult());
-		outerResult->transport = pthis;
-		outerResult->innerResult = asyncResult;
+		if (authentication) {
+			methodRequest->setSession(authentication->getSession());
+		}
+
+        POutput outp = getOutput();
+		outp->store(methodRequest);
+
+        PAsyncResult outerResult = new BTransport_AsyncResultRelogin(pthis, methodRequest, asyncResult);
 
         PMessage msg = outp->toMessage();
         
@@ -259,6 +341,35 @@ BINLINE void BTransport::recv(PServer server, PMessage message, PAsyncResult asy
 	BTargetId clientTargetId = bin->header.targetId;
 	server->recv(clientTargetId, methodObject, methodResult);
 
+}
+
+BINLINE bool BTransport::internalIsReloginException(BException ex, BTYPEID typeId) {
+	bool ret = false;
+
+	if (authentication && ex) {
+		ret = authentication->isReloginException(PClient(), ex, typeId);
+	}
+
+	return ret;
+}
+
+BINLINE bool BTransport::isReloginException(BException ex, int typeId) {
+    bool ret = false;
+    
+    // Check exception
+    if (ex) 
+    {
+        ret = (ex.getCode() == EX_AUTHENTICATION_REQUIRED);
+        if (!ret)
+        {
+            // The negotiated Tomcat session lives for 10 seconds.
+            // If we are slow in debugging and the session expires,
+            // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
+            ret = (ex.getCode() == EX_IOERROR) && ex.getMsg().find(L"403") != std::wstring::npos;
+        }
+    }
+      
+    return ret;
 }
 
 }}}

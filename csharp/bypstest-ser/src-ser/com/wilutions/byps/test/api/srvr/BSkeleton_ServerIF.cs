@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual int CallClientIncrementInt(int v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_CallClientIncrementInt(int v, BAsyncResult<int> asyncResult) {
+		public virtual void CallClientIncrementIntAsync(int v, BAsyncResult<int> asyncResult) {
 			try {
 				int ret = CallClientIncrementInt(v);
 				asyncResult.setAsyncResult(ret, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual void SetPartner(ClientIF client) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPartner(ClientIF client, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPartnerAsync(ClientIF client, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPartner(client);
 				asyncResult.setAsyncResult(null, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual ClientIF GetPartner() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPartner(BAsyncResult<ClientIF> asyncResult) {
+		public virtual void GetPartnerAsync(BAsyncResult<ClientIF> asyncResult) {
 			try {
 				ClientIF ret = GetPartner();
 				asyncResult.setAsyncResult(ret, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual IList<System.IO.Stream> GetStreamsFromClient() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetStreamsFromClient(BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+		public virtual void GetStreamsFromClientAsync(BAsyncResult<IList<System.IO.Stream>> asyncResult) {
 			try {
 				IList<System.IO.Stream> ret = GetStreamsFromClient();
 				asyncResult.setAsyncResult(ret, null);
@@ -92,7 +92,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual void PutStreamsOnClient(IList<System.IO.Stream> streams) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_PutStreamsOnClient(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) {
+		public virtual void PutStreamsOnClientAsync(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) {
 			try {
 				PutStreamsOnClient(streams);
 				asyncResult.setAsyncResult(null, null);
@@ -110,7 +110,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual void RegisterWithClientMap(int id) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_RegisterWithClientMap(int id, BAsyncResult<Object> asyncResult) {
+		public virtual void RegisterWithClientMapAsync(int id, BAsyncResult<Object> asyncResult) {
 			try {
 				RegisterWithClientMap(id);
 				asyncResult.setAsyncResult(null, null);
@@ -128,7 +128,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual ClientIF GetClient(int id) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetClient(int id, BAsyncResult<ClientIF> asyncResult) {
+		public virtual void GetClientAsync(int id, BAsyncResult<ClientIF> asyncResult) {
 			try {
 				ClientIF ret = GetClient(id);
 				asyncResult.setAsyncResult(ret, null);
@@ -146,7 +146,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual ISet<int> GetClientIds() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetClientIds(BAsyncResult<ISet<int>> asyncResult) {
+		public virtual void GetClientIdsAsync(BAsyncResult<ISet<int>> asyncResult) {
 			try {
 				ISet<int> ret = GetClientIds();
 				asyncResult.setAsyncResult(ret, null);
@@ -164,7 +164,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual int CallClientParallel(int v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_CallClientParallel(int v, BAsyncResult<int> asyncResult) {
+		public virtual void CallClientParallelAsync(int v, BAsyncResult<int> asyncResult) {
 			try {
 				int ret = CallClientParallel(v);
 				asyncResult.setAsyncResult(ret, null);

@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteInlineInstance __byps__remoteT = (RemoteInlineInstance)__byps__remote;				
 				BAsyncResultSendMethod<IList<IList<com.wilutions.byps.test.api.inl.Point2D>>> __byps__outerResult = new BAsyncResultSendMethod<IList<IList<com.wilutions.byps.test.api.inl.Point2D>>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1463615848());				
-				__byps__remoteT.async_GetPoint2DListList(__byps__outerResult);
+				__byps__remoteT.GetPoint2DListListAsync(__byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

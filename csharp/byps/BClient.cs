@@ -65,22 +65,27 @@ namespace com.wilutions.byps
 
 	    public void start(BAsyncResult<bool> asyncResult) {
 
-            BAsyncResult<bool> outerResult = new MyNegoAsyncResult(this, asyncResult);
-		
-		    transport.negotiateProtocolClient(outerResult);
+            if (transport.authentication == null)
+            {
+                setAuthentication(null);
+            }
+
+            transport.negotiateProtocolClient(asyncResult);
 	    }
 
 
         private class ClientAuthentication : BAuthentication
         {
-            public BAuthentication innerAuth;
+            private BClient client;
+            internal BAuthentication innerAuth;
 
-            public ClientAuthentication(BAuthentication innerAuth)
+            public ClientAuthentication(BClient client, BAuthentication innerAuth)
             {
+                this.client = client;
                 this.innerAuth = innerAuth;
             }
             
-            public void authenticate(BClient client, BAsyncResult<bool> asyncResult) 
+            public void authenticate(BClient ignored, BAsyncResult<bool> asyncResult) 
             {
                 BAsyncResult<bool> outerResult = new MyNegoAsyncResult(client, asyncResult);
       
@@ -94,7 +99,7 @@ namespace com.wilutions.byps
                 }
             }
 
-            public bool isReloginException(BClient client, Exception ex, int typeId) 
+            public bool isReloginException(BClient ignored, Exception ex, int typeId) 
             {
               bool ret = false;
               if (innerAuth != null)
@@ -122,7 +127,7 @@ namespace com.wilutions.byps
 
         public void setAuthentication(BAuthentication auth)
         {
-            transport.authentication = new ClientAuthentication(auth);
+            transport.authentication = new ClientAuthentication(this, auth);
         }
 
         public BAuthentication getAuthentication()

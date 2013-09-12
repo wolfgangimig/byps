@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteConstants __byps__remoteT = (RemoteConstants)__byps__remote;				
 				BAsyncResultSendMethod<bool> __byps__outerResult = new BAsyncResultSendMethod<bool>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1());				
-				__byps__remoteT.async_Compare_AllTypesC(_bool1s, _bool2s, _char1s, _stringNull, _char2s, _short1s, _int1s, _long1s, _float1s, _double1s, _string1s, _ALL, _arrInt, _arrInt4, _arrStrings, _arrStrings4, _arrAll, __byps__outerResult);
+				__byps__remoteT.Compare_AllTypesCAsync(_bool1s, _bool2s, _char1s, _stringNull, _char2s, _short1s, _int1s, _long1s, _float1s, _double1s, _string1s, _ALL, _arrInt, _arrInt4, _arrStrings, _arrStrings4, _arrAll, __byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(false, e);
 				throw e;

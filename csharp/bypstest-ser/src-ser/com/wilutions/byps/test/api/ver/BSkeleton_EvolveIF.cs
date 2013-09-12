@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.ver
 		public virtual void SetEvolve(Evolve obj) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetEvolve(Evolve obj, BAsyncResult<Object> asyncResult) {
+		public virtual void SetEvolveAsync(Evolve obj, BAsyncResult<Object> asyncResult) {
 			try {
 				SetEvolve(obj);
 				asyncResult.setAsyncResult(null, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.ver
 		public virtual Evolve GetEvolve() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetEvolve(BAsyncResult<Evolve> asyncResult) {
+		public virtual void GetEvolveAsync(BAsyncResult<Evolve> asyncResult) {
 			try {
 				Evolve ret = GetEvolve();
 				asyncResult.setAsyncResult(ret, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.ver
 		public virtual void SetClient(EvolveIF partner) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetClient(EvolveIF partner, BAsyncResult<Object> asyncResult) {
+		public virtual void SetClientAsync(EvolveIF partner, BAsyncResult<Object> asyncResult) {
 			try {
 				SetClient(partner);
 				asyncResult.setAsyncResult(null, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.ver
 		public virtual EvolveIF GetClient() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetClient(BAsyncResult<EvolveIF> asyncResult) {
+		public virtual void GetClientAsync(BAsyncResult<EvolveIF> asyncResult) {
 			try {
 				EvolveIF ret = GetClient();
 				asyncResult.setAsyncResult(ret, null);
@@ -92,7 +92,7 @@ namespace com.wilutions.byps.test.api.ver
 		public virtual void SendEvolveToClient() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendEvolveToClient(BAsyncResult<Object> asyncResult) {
+		public virtual void SendEvolveToClientAsync(BAsyncResult<Object> asyncResult) {
 			try {
 				SendEvolveToClient();
 				asyncResult.setAsyncResult(null, null);

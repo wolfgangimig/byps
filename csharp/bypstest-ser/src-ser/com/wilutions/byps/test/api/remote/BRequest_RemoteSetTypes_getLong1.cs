@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteSetTypes __byps__remoteT = (RemoteSetTypes)__byps__remote;				
 				BAsyncResultSendMethod<ISet<long>> __byps__outerResult = new BAsyncResultSendMethod<ISet<long>>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1457164460());				
-				__byps__remoteT.async_GetLong1(__byps__outerResult);
+				__byps__remoteT.GetLong1Async(__byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

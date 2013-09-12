@@ -14,10 +14,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void PublishRemote(String name, BRemote remote, bool fowardToOtherServers) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_PublishRemote(name, remote, fowardToOtherServers, asyncResult);
+			PublishRemoteAsync(name, remote, fowardToOtherServers, asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_PublishRemote(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
+		public void PublishRemoteAsync(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();			
 			req._name = name;
 			req._remote = remote;
@@ -27,7 +27,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginPublishRemote(String name, BRemote remote, bool fowardToOtherServers, AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_PublishRemote(name, remote, fowardToOtherServers, _byps_ret);
+			PublishRemoteAsync(name, remote, fowardToOtherServers, _byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndPublishRemote(IAsyncResult asyncResult) {
@@ -36,10 +36,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public BRemote GetPublishedRemote(String name) {
 			BSyncResult<BRemote> asyncResult = new BSyncResult<BRemote>();			
-			async_GetPublishedRemote(name, asyncResult);
+			GetPublishedRemoteAsync(name, asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_GetPublishedRemote(String name, BAsyncResult<BRemote> asyncResult) {
+		public void GetPublishedRemoteAsync(String name, BAsyncResult<BRemote> asyncResult) {
 			BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();			
 			req._name = name;
 			BAsyncResultReceiveMethod<BRemote> outerResult = new BAsyncResultReceiveMethod<BRemote>(asyncResult);
@@ -47,7 +47,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginGetPublishedRemote(String name, AsyncCallback callback, object state){
 			BAsyncProgModel<BRemote> _byps_ret = new BAsyncProgModel<BRemote>(callback, state);
-			async_GetPublishedRemote(name, _byps_ret);
+			GetPublishedRemoteAsync(name, _byps_ret);
 			return _byps_ret;
 		}
 		public 		BRemote EndGetPublishedRemote(IAsyncResult asyncResult) {
@@ -56,10 +56,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void RemovePublishedRemote(String name) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_RemovePublishedRemote(name, asyncResult);
+			RemovePublishedRemoteAsync(name, asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_RemovePublishedRemote(String name, BAsyncResult<Object> asyncResult) {
+		public void RemovePublishedRemoteAsync(String name, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();			
 			req._name = name;
 			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
@@ -67,7 +67,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginRemovePublishedRemote(String name, AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_RemovePublishedRemote(name, _byps_ret);
+			RemovePublishedRemoteAsync(name, _byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndRemovePublishedRemote(IAsyncResult asyncResult) {

@@ -103,11 +103,11 @@ namespace bypstest
             log.info("testRemotePrimitiveTypesAsync(");
 
             BSyncResult<Object> result = new BSyncResult<Object>();
-            remote.async_SetInt(1122, result);
+            remote.SetIntAsync(1122, result);
             result.GetResult();
 
             BSyncResult<int> result2 = new BSyncResult<int>();
-            remote.async_GetInt(result2);
+            remote.GetIntAsync(result2);
             int valueR = result2.GetResult();
             TestUtils.assertEquals(log, "async_getInt", 1122, valueR);
 

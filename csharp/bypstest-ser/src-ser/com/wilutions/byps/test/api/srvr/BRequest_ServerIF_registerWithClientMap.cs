@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.srvr
 			try {
 				ServerIF __byps__remoteT = (ServerIF)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());				
-				__byps__remoteT.async_RegisterWithClientMap(_id, __byps__outerResult);
+				__byps__remoteT.RegisterWithClientMapAsync(_id, __byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

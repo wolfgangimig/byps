@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetActor(com.wilutions.byps.test.api.inl.Actor act) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetActor(com.wilutions.byps.test.api.inl.Actor act, BAsyncResult<Object> asyncResult) {
+		public virtual void SetActorAsync(com.wilutions.byps.test.api.inl.Actor act, BAsyncResult<Object> asyncResult) {
 			try {
 				SetActor(act);
 				asyncResult.setAsyncResult(null, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.inl.Actor GetActor() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetActor(BAsyncResult<com.wilutions.byps.test.api.inl.Actor> asyncResult) {
+		public virtual void GetActorAsync(BAsyncResult<com.wilutions.byps.test.api.inl.Actor> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.inl.Actor ret = GetActor();
 				asyncResult.setAsyncResult(ret, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DArray1dimAsync(com.wilutions.byps.test.api.inl.Point2D[] pointArray, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPoint2DArray1dim(pointArray);
 				asyncResult.setAsyncResult(null, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.inl.Point2D[] GetPoint2DArray1dim() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPoint2DArray1dim(BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
+		public virtual void GetPoint2DArray1dimAsync(BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.inl.Point2D[] ret = GetPoint2DArray1dim();
 				asyncResult.setAsyncResult(ret, null);
@@ -92,7 +92,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[,,,] pointArray) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[,,,] pointArray, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DArray4dimAsync(com.wilutions.byps.test.api.inl.Point2D[,,,] pointArray, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPoint2DArray4dim(pointArray);
 				asyncResult.setAsyncResult(null, null);
@@ -110,7 +110,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.inl.Point2D[,,,] GetPoint2DArray4dim() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPoint2DArray4dim(BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[,,,]> asyncResult) {
+		public virtual void GetPoint2DArray4dimAsync(BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[,,,]> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.inl.Point2D[,,,] ret = GetPoint2DArray4dim();
 				asyncResult.setAsyncResult(ret, null);
@@ -128,7 +128,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetPoint2DList(IList<com.wilutions.byps.test.api.inl.Point2D> pointList) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPoint2DList(IList<com.wilutions.byps.test.api.inl.Point2D> pointList, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DListAsync(IList<com.wilutions.byps.test.api.inl.Point2D> pointList, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPoint2DList(pointList);
 				asyncResult.setAsyncResult(null, null);
@@ -146,7 +146,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual IList<com.wilutions.byps.test.api.inl.Point2D> GetPoint2DList() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPoint2DList(BAsyncResult<IList<com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
+		public virtual void GetPoint2DListAsync(BAsyncResult<IList<com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
 			try {
 				IList<com.wilutions.byps.test.api.inl.Point2D> ret = GetPoint2DList();
 				asyncResult.setAsyncResult(ret, null);
@@ -164,7 +164,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetPoint2DListList(IList<IList<com.wilutions.byps.test.api.inl.Point2D>> pointListList) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPoint2DListList(IList<IList<com.wilutions.byps.test.api.inl.Point2D>> pointListList, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DListListAsync(IList<IList<com.wilutions.byps.test.api.inl.Point2D>> pointListList, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPoint2DListList(pointListList);
 				asyncResult.setAsyncResult(null, null);
@@ -182,7 +182,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual IList<IList<com.wilutions.byps.test.api.inl.Point2D>> GetPoint2DListList() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPoint2DListList(BAsyncResult<IList<IList<com.wilutions.byps.test.api.inl.Point2D>>> asyncResult) {
+		public virtual void GetPoint2DListListAsync(BAsyncResult<IList<IList<com.wilutions.byps.test.api.inl.Point2D>>> asyncResult) {
 			try {
 				IList<IList<com.wilutions.byps.test.api.inl.Point2D>> ret = GetPoint2DListList();
 				asyncResult.setAsyncResult(ret, null);
@@ -200,7 +200,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetPoint2DMap(IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> pointMap) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPoint2DMap(IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> pointMap, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DMapAsync(IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> pointMap, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPoint2DMap(pointMap);
 				asyncResult.setAsyncResult(null, null);
@@ -218,7 +218,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> GetPoint2DMap() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPoint2DMap(BAsyncResult<IDictionary<int,com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
+		public virtual void GetPoint2DMapAsync(BAsyncResult<IDictionary<int,com.wilutions.byps.test.api.inl.Point2D>> asyncResult) {
 			try {
 				IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> ret = GetPoint2DMap();
 				asyncResult.setAsyncResult(ret, null);

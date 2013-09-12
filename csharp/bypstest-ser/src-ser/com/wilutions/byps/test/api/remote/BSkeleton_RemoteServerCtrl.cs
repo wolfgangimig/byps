@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void PublishRemote(String name, BRemote remote, bool fowardToOtherServers) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_PublishRemote(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
+		public virtual void PublishRemoteAsync(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
 			try {
 				PublishRemote(name, remote, fowardToOtherServers);
 				asyncResult.setAsyncResult(null, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual BRemote GetPublishedRemote(String name) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPublishedRemote(String name, BAsyncResult<BRemote> asyncResult) {
+		public virtual void GetPublishedRemoteAsync(String name, BAsyncResult<BRemote> asyncResult) {
 			try {
 				BRemote ret = GetPublishedRemote(name);
 				asyncResult.setAsyncResult(ret, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void RemovePublishedRemote(String name) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_RemovePublishedRemote(String name, BAsyncResult<Object> asyncResult) {
+		public virtual void RemovePublishedRemoteAsync(String name, BAsyncResult<Object> asyncResult) {
 			try {
 				RemovePublishedRemote(name);
 				asyncResult.setAsyncResult(null, null);

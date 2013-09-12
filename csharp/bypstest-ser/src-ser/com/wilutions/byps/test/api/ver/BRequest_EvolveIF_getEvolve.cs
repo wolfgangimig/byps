@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.ver
 			try {
 				EvolveIF __byps__remoteT = (EvolveIF)__byps__remote;				
 				BAsyncResultSendMethod<Evolve> __byps__outerResult = new BAsyncResultSendMethod<Evolve>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1391985860());				
-				__byps__remoteT.async_GetEvolve(__byps__outerResult);
+				__byps__remoteT.GetEvolveAsync(__byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

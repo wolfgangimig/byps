@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual int[] SendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4, BAsyncResult<int[]> asyncResult) {
+		public virtual void SendArraysIntAsync(int[,] arr2, int[,,] arr3, int[,,,] arr4, BAsyncResult<int[]> asyncResult) {
 			try {
 				int[] ret = SendArraysInt(arr2, arr3, arr4);
 				asyncResult.setAsyncResult(ret, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual String[] SendArraysString(String[,] arr2, String[,,] arr3, String[,,,] arr4) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendArraysString(String[,] arr2, String[,,] arr3, String[,,,] arr4, BAsyncResult<String[]> asyncResult) {
+		public virtual void SendArraysStringAsync(String[,] arr2, String[,,] arr3, String[,,,] arr4, BAsyncResult<String[]> asyncResult) {
 			try {
 				String[] ret = SendArraysString(arr2, arr3, arr4);
 				asyncResult.setAsyncResult(ret, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.prim.PrimitiveTypes[] SendArraysClass(com.wilutions.byps.test.api.prim.PrimitiveTypes[,] arr2, com.wilutions.byps.test.api.prim.PrimitiveTypes[,,] arr3, com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] arr4) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendArraysClass(com.wilutions.byps.test.api.prim.PrimitiveTypes[,] arr2, com.wilutions.byps.test.api.prim.PrimitiveTypes[,,] arr3, com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] arr4, BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
+		public virtual void SendArraysClassAsync(com.wilutions.byps.test.api.prim.PrimitiveTypes[,] arr2, com.wilutions.byps.test.api.prim.PrimitiveTypes[,,] arr3, com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] arr4, BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.prim.PrimitiveTypes[] ret = SendArraysClass(arr2, arr3, arr4);
 				asyncResult.setAsyncResult(ret, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual Object[] SendArraysObject(Object[,] arr2, Object[,,] arr3, Object[,,,] arr4) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendArraysObject(Object[,] arr2, Object[,,] arr3, Object[,,,] arr4, BAsyncResult<Object[]> asyncResult) {
+		public virtual void SendArraysObjectAsync(Object[,] arr2, Object[,,] arr3, Object[,,,] arr4, BAsyncResult<Object[]> asyncResult) {
 			try {
 				Object[] ret = SendArraysObject(arr2, arr3, arr4);
 				asyncResult.setAsyncResult(ret, null);
@@ -92,7 +92,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.inl.Point2D[] SendArraysInline(com.wilutions.byps.test.api.inl.Point2D[,] arr2, com.wilutions.byps.test.api.inl.Point2D[,,] arr3, com.wilutions.byps.test.api.inl.Point2D[,,,] arr4) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendArraysInline(com.wilutions.byps.test.api.inl.Point2D[,] arr2, com.wilutions.byps.test.api.inl.Point2D[,,] arr3, com.wilutions.byps.test.api.inl.Point2D[,,,] arr4, BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
+		public virtual void SendArraysInlineAsync(com.wilutions.byps.test.api.inl.Point2D[,] arr2, com.wilutions.byps.test.api.inl.Point2D[,,] arr3, com.wilutions.byps.test.api.inl.Point2D[,,,] arr4, BAsyncResult<com.wilutions.byps.test.api.inl.Point2D[]> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.inl.Point2D[] ret = SendArraysInline(arr2, arr3, arr4);
 				asyncResult.setAsyncResult(ret, null);

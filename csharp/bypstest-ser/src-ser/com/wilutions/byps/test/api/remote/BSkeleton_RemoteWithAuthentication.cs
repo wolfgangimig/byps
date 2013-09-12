@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetUseAuthentication(bool useAuth) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetUseAuthentication(bool useAuth, BAsyncResult<Object> asyncResult) {
+		public virtual void SetUseAuthenticationAsync(bool useAuth, BAsyncResult<Object> asyncResult) {
 			try {
 				SetUseAuthentication(useAuth);
 				asyncResult.setAsyncResult(null, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.auth.SessionInfo Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
+		public virtual void LoginAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.auth.SessionInfo ret = Login(sess, userName, userPwd);
 				asyncResult.setAsyncResult(ret, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual int Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, BAsyncResult<int> asyncResult) {
+		public virtual void DoitAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, BAsyncResult<int> asyncResult) {
 			try {
 				int ret = Doit(sess, @value);
 				asyncResult.setAsyncResult(ret, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void Expire(com.wilutions.byps.test.api.auth.SessionInfo sess) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_Expire(com.wilutions.byps.test.api.auth.SessionInfo sess, BAsyncResult<Object> asyncResult) {
+		public virtual void ExpireAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, BAsyncResult<Object> asyncResult) {
 			try {
 				Expire(sess);
 				asyncResult.setAsyncResult(null, null);
@@ -92,7 +92,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetReloginCount(int count) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetReloginCount(int count, BAsyncResult<Object> asyncResult) {
+		public virtual void SetReloginCountAsync(int count, BAsyncResult<Object> asyncResult) {
 			try {
 				SetReloginCount(count);
 				asyncResult.setAsyncResult(null, null);

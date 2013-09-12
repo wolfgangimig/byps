@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.refs.Node GetNode() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetNode(BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
+		public virtual void GetNodeAsync(BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.refs.Node ret = GetNode();
 				asyncResult.setAsyncResult(ret, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetNode(com.wilutions.byps.test.api.refs.Node v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetNode(com.wilutions.byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetNodeAsync(com.wilutions.byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetNode(v);
 				asyncResult.setAsyncResult(null, null);

@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteEnums __byps__remoteT = (RemoteEnums)__byps__remote;				
 				BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.enu.EnumPlanets>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1042475995());				
-				__byps__remoteT.async_GetPlanet(__byps__outerResult);
+				__byps__remoteT.GetPlanetAsync(__byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(0, e);
 				throw e;

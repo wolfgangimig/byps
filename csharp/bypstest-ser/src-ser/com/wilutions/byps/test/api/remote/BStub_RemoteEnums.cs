@@ -14,17 +14,17 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public com.wilutions.byps.test.api.enu.EnumPlanets GetPlanet() {
 			BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult = new BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets>();			
-			async_GetPlanet(asyncResult);
+			GetPlanetAsync(asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_GetPlanet(BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
+		public void GetPlanetAsync(BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
 			BRequest_RemoteEnums_getPlanet req = new BRequest_RemoteEnums_getPlanet();			
 			BAsyncResultReceiveMethod<com.wilutions.byps.test.api.enu.EnumPlanets> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.enu.EnumPlanets>(asyncResult);
 			transport.send(req, outerResult);
 		}
 		public IAsyncResult BeginGetPlanet(AsyncCallback callback, object state){
 			BAsyncProgModel<com.wilutions.byps.test.api.enu.EnumPlanets> _byps_ret = new BAsyncProgModel<com.wilutions.byps.test.api.enu.EnumPlanets>(callback, state);
-			async_GetPlanet(_byps_ret);
+			GetPlanetAsync(_byps_ret);
 			return _byps_ret;
 		}
 		public 		com.wilutions.byps.test.api.enu.EnumPlanets EndGetPlanet(IAsyncResult asyncResult) {
@@ -33,10 +33,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void SetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_SetPlanet(planet, asyncResult);
+			SetPlanetAsync(planet, asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_SetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, BAsyncResult<Object> asyncResult) {
+		public void SetPlanetAsync(com.wilutions.byps.test.api.enu.EnumPlanets planet, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();			
 			req._planet = planet;
 			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
@@ -44,7 +44,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginSetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_SetPlanet(planet, _byps_ret);
+			SetPlanetAsync(planet, _byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndSetPlanet(IAsyncResult asyncResult) {

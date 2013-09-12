@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void VoidFunctionVoid() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_VoidFunctionVoid(BAsyncResult<Object> asyncResult) {
+		public virtual void VoidFunctionVoidAsync(BAsyncResult<Object> asyncResult) {
 			try {
 				VoidFunctionVoid();
 				asyncResult.setAsyncResult(null, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetBool(bool v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetBool(bool v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetBoolAsync(bool v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetBool(v);
 				asyncResult.setAsyncResult(null, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetByte(byte v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetByte(byte v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetByteAsync(byte v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetByte(v);
 				asyncResult.setAsyncResult(null, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetChar(char v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetChar(char v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetCharAsync(char v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetChar(v);
 				asyncResult.setAsyncResult(null, null);
@@ -92,7 +92,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetShort(short v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetShort(short v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetShortAsync(short v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetShort(v);
 				asyncResult.setAsyncResult(null, null);
@@ -110,7 +110,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetInt(int v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetInt(int v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetIntAsync(int v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetInt(v);
 				asyncResult.setAsyncResult(null, null);
@@ -128,7 +128,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetLong(long v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetLong(long v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetLongAsync(long v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetLong(v);
 				asyncResult.setAsyncResult(null, null);
@@ -146,7 +146,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetFloat(float v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetFloat(float v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetFloatAsync(float v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetFloat(v);
 				asyncResult.setAsyncResult(null, null);
@@ -164,7 +164,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetDouble(double v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetDouble(double v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetDoubleAsync(double v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetDouble(v);
 				asyncResult.setAsyncResult(null, null);
@@ -182,7 +182,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetString(String v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetString(String v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetStringAsync(String v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetString(v);
 				asyncResult.setAsyncResult(null, null);
@@ -200,7 +200,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPrimitiveTypesAsync(com.wilutions.byps.test.api.prim.PrimitiveTypes v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPrimitiveTypes(v);
 				asyncResult.setAsyncResult(null, null);
@@ -218,7 +218,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetObject(Object v) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetObject(Object v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetObjectAsync(Object v, BAsyncResult<Object> asyncResult) {
 			try {
 				SetObject(v);
 				asyncResult.setAsyncResult(null, null);
@@ -236,7 +236,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual bool GetBool() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetBool(BAsyncResult<bool> asyncResult) {
+		public virtual void GetBoolAsync(BAsyncResult<bool> asyncResult) {
 			try {
 				bool ret = GetBool();
 				asyncResult.setAsyncResult(ret, null);
@@ -254,7 +254,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual byte GetByte() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetByte(BAsyncResult<byte> asyncResult) {
+		public virtual void GetByteAsync(BAsyncResult<byte> asyncResult) {
 			try {
 				byte ret = GetByte();
 				asyncResult.setAsyncResult(ret, null);
@@ -272,7 +272,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual char GetChar() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetChar(BAsyncResult<char> asyncResult) {
+		public virtual void GetCharAsync(BAsyncResult<char> asyncResult) {
 			try {
 				char ret = GetChar();
 				asyncResult.setAsyncResult(ret, null);
@@ -290,7 +290,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual short GetShort() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetShort(BAsyncResult<short> asyncResult) {
+		public virtual void GetShortAsync(BAsyncResult<short> asyncResult) {
 			try {
 				short ret = GetShort();
 				asyncResult.setAsyncResult(ret, null);
@@ -308,7 +308,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual int GetInt() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetInt(BAsyncResult<int> asyncResult) {
+		public virtual void GetIntAsync(BAsyncResult<int> asyncResult) {
 			try {
 				int ret = GetInt();
 				asyncResult.setAsyncResult(ret, null);
@@ -326,7 +326,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual long GetLong() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetLong(BAsyncResult<long> asyncResult) {
+		public virtual void GetLongAsync(BAsyncResult<long> asyncResult) {
 			try {
 				long ret = GetLong();
 				asyncResult.setAsyncResult(ret, null);
@@ -344,7 +344,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual float GetFloat() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetFloat(BAsyncResult<float> asyncResult) {
+		public virtual void GetFloatAsync(BAsyncResult<float> asyncResult) {
 			try {
 				float ret = GetFloat();
 				asyncResult.setAsyncResult(ret, null);
@@ -362,7 +362,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual double GetDouble() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetDouble(BAsyncResult<double> asyncResult) {
+		public virtual void GetDoubleAsync(BAsyncResult<double> asyncResult) {
 			try {
 				double ret = GetDouble();
 				asyncResult.setAsyncResult(ret, null);
@@ -380,7 +380,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual String GetString() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetString(BAsyncResult<String> asyncResult) {
+		public virtual void GetStringAsync(BAsyncResult<String> asyncResult) {
 			try {
 				String ret = GetString();
 				asyncResult.setAsyncResult(ret, null);
@@ -398,7 +398,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.prim.PrimitiveTypes GetPrimitiveTypes() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPrimitiveTypes(BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes> asyncResult) {
+		public virtual void GetPrimitiveTypesAsync(BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.prim.PrimitiveTypes ret = GetPrimitiveTypes();
 				asyncResult.setAsyncResult(ret, null);
@@ -416,7 +416,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual Object GetObject() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetObject(BAsyncResult<Object> asyncResult) {
+		public virtual void GetObjectAsync(BAsyncResult<Object> asyncResult) {
 			try {
 				Object ret = GetObject();
 				asyncResult.setAsyncResult(ret, null);
@@ -434,7 +434,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o, BAsyncResult<Object> asyncResult) {
+		public virtual void SendAllTypesAsync(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o, BAsyncResult<Object> asyncResult) {
 			try {
 				SendAllTypes(b, c, s, i, l, f, d, str, pt, o);
 				asyncResult.setAsyncResult(null, null);
@@ -452,7 +452,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual int Add(int a, int b) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_Add(int a, int b, BAsyncResult<int> asyncResult) {
+		public virtual void AddAsync(int a, int b, BAsyncResult<int> asyncResult) {
 			try {
 				int ret = Add(a, b);
 				asyncResult.setAsyncResult(ret, null);

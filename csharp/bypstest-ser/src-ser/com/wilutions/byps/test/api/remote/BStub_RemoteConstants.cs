@@ -14,10 +14,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void Compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_Compare_HebrewC(ALEPH, BETH, asyncResult);
+			Compare_HebrewCAsync(ALEPH, BETH, asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_Compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, BAsyncResult<Object> asyncResult) {
+		public void Compare_HebrewCAsync(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteConstants_compare_HebrewC req = new BRequest_RemoteConstants_compare_HebrewC();			
 			req._ALEPH = ALEPH;
 			req._BETH = BETH;
@@ -26,7 +26,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginCompare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_Compare_HebrewC(ALEPH, BETH, _byps_ret);
+			Compare_HebrewCAsync(ALEPH, BETH, _byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndCompare_HebrewC(IAsyncResult asyncResult) {
@@ -35,10 +35,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public bool Compare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll) {
 			BSyncResult<bool> asyncResult = new BSyncResult<bool>();			
-			async_Compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, asyncResult);
+			Compare_AllTypesCAsync(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_Compare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll, BAsyncResult<bool> asyncResult) {
+		public void Compare_AllTypesCAsync(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll, BAsyncResult<bool> asyncResult) {
 			BRequest_RemoteConstants_compare_AllTypesC req = new BRequest_RemoteConstants_compare_AllTypesC();			
 			req._bool1s = bool1s;
 			req._bool2s = bool2s;
@@ -62,7 +62,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginCompare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll, AsyncCallback callback, object state){
 			BAsyncProgModel<bool> _byps_ret = new BAsyncProgModel<bool>(callback, state);
-			async_Compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, _byps_ret);
+			Compare_AllTypesCAsync(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, _byps_ret);
 			return _byps_ret;
 		}
 		public 		bool EndCompare_AllTypesC(IAsyncResult asyncResult) {

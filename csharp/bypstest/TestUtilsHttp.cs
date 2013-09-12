@@ -12,7 +12,7 @@ namespace bypstest
 {
     public class TestUtilsHttp
     {
-        public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
+        public static String url = "http://localhost:8084/bypstest-srv/bypsservlet";
 
         public static BClient_Testser createClient()
         {

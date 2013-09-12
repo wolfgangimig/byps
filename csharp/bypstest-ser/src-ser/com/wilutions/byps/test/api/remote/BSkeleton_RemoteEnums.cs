@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual com.wilutions.byps.test.api.enu.EnumPlanets GetPlanet() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetPlanet(BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
+		public virtual void GetPlanetAsync(BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
 			try {
 				com.wilutions.byps.test.api.enu.EnumPlanets ret = GetPlanet();
 				asyncResult.setAsyncResult(ret, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPlanetAsync(com.wilutions.byps.test.api.enu.EnumPlanets planet, BAsyncResult<Object> asyncResult) {
 			try {
 				SetPlanet(planet);
 				asyncResult.setAsyncResult(null, null);

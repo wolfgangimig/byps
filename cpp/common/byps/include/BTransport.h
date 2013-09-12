@@ -30,16 +30,22 @@ public:
 	void negotiateProtocolClient(PAsyncResult asyncResult);
 	PProtocol negotiateProtocolServer(const BTargetId& targetId, PBytes& buf, PAsyncResult asyncResult);
 
+	bool isReloginException(BException ex, int typeId);
+
 protected:
     PProtocol createNegotiatedProtocol(BNegotiate& nego);
     PProtocol detectProtocolFromInputBuffer(const PBytes& buf);
+	bool internalIsReloginException(BException ex, BTYPEID typeId);
 
     PProtocol protocol;
     BTargetId targetId;
+	PAuthentication authentication;
 
     byps_mutex mtx;
 
 	friend class BTransport_NegotiateClient_BAsyncOuterResult;
+	friend class BTransport_AsyncResultRelogin;
+	friend class BClient;
 
 	// Declare BOutput, BInput as friend class to be able to access targetId
 	// without byps_unique_lock via getOutput() { getProtocol() { getOutput(transport, ...) { transport->targetId

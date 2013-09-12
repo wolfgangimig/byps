@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteArrayTypes1dim __byps__remoteT = (RemoteArrayTypes1dim)__byps__remote;				
 				BAsyncResultSendMethod<float[]> __byps__outerResult = new BAsyncResultSendMethod<float[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_766441794());				
-				__byps__remoteT.async_GetFloat(__byps__outerResult);
+				__byps__remoteT.GetFloatAsync(__byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

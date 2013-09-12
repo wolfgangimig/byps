@@ -155,6 +155,7 @@
     <ClInclude Include="..\..\..\common\byps\include\BArray.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\BAsyncResult.h" />
     <ClInclude Include="..\..\..\common\byps\include\BAsyncResult.hpp" />
+    <ClInclude Include="..\..\..\common\byps\include\BAuthentication.h" />
     <ClInclude Include="..\..\..\common\byps\include\BBinaryModel.h" />
     <ClInclude Include="..\..\..\common\byps\include\BBuffer.h" />
     <ClInclude Include="..\..\..\common\byps\include\BBuffer.hpp" />

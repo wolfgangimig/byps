@@ -26,7 +26,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteWithAuthentication __byps__remoteT = (RemoteWithAuthentication)__byps__remote;				
 				BAsyncResultSendMethod<int> __byps__outerResult = new BAsyncResultSendMethod<int>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_5());				
-				__byps__remoteT.async_Doit(_sess, _value, __byps__outerResult);
+				__byps__remoteT.DoitAsync(_sess, _value, __byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(0, e);
 				throw e;

@@ -49,6 +49,7 @@ class BTransport;
 template<typename _Type> class BSyncResultT;
 
 class BApiDescriptor;
+class BAuthentication;
 class BBinaryModel;
 class BBuffer;
 class BByteOrder;
@@ -88,6 +89,7 @@ typedef byps_ptr<BThreadPool> PThreadPool;
 typedef BAsyncResult* PAsyncResult;
 
 typedef byps_ptr<BApiDescriptor> PApiDescriptor;
+typedef byps_ptr<BAuthentication> PAuthentication;
 typedef byps_ptr<BBuffer> PBuffer;
 typedef byps_ptr<BBytes> PBytes;
 typedef byps_ptr<BOutput> POutput;
@@ -166,6 +168,6 @@ typedef byps_ptr<BContentStream> PContentStream;
 #include "BThreadPool.h"
 #include "BUtils.h"
 #include "BVersioning.h"
-
+#include "BAuthentication.h"
 
 #endif

@@ -341,7 +341,7 @@ public class PrintContext extends PrintContextBase {
 	public CodePrinter printDeclareMethodAsync(CodePrinter pr,
 			RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
 		String methodName = makePublicMemberName(methodInfo.name);
-		CodePrinter mpr = pr.print("void ").print("async_").print(methodName).print("(");
+		CodePrinter mpr = pr.print("void ").print(methodName).print("Async").print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {

@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteArrayTypes23 __byps__remoteT = (RemoteArrayTypes23)__byps__remote;				
 				BAsyncResultSendMethod<com.wilutions.byps.test.api.prim.PrimitiveTypes[]> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.prim.PrimitiveTypes[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_801243127());				
-				__byps__remoteT.async_SendArraysClass(_arr2, _arr3, _arr4, __byps__outerResult);
+				__byps__remoteT.SendArraysClassAsync(_arr2, _arr3, _arr4, __byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

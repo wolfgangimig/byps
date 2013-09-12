@@ -14,7 +14,7 @@ namespace com.wilutions.byps.test.api.remote
 		/// Set authentication flag in MySession.
 		/// </summary>
 		void SetUseAuthentication(bool useAuth);
-		void async_SetUseAuthentication(bool useAuth, BAsyncResult<Object> asyncResult) ;
+		void SetUseAuthenticationAsync(bool useAuth, BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginSetUseAuthentication(bool useAuth, AsyncCallback callback, object state);
 		Object EndSetUseAuthentication(IAsyncResult asyncResult);
 		
@@ -25,7 +25,7 @@ namespace com.wilutions.byps.test.api.remote
 		/// Only user "Fritz" is allowed to login.
 		/// </remarks>
 		com.wilutions.byps.test.api.auth.SessionInfo Login(String userName, String userPwd);
-		void async_Login(String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) ;
+		void LoginAsync(String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) ;
 		IAsyncResult BeginLogin(String userName, String userPwd, AsyncCallback callback, object state);
 		com.wilutions.byps.test.api.auth.SessionInfo EndLogin(IAsyncResult asyncResult);
 		
@@ -33,7 +33,7 @@ namespace com.wilutions.byps.test.api.remote
 		/// Do something.
 		/// </summary>
 		int Doit(int @value);
-		void async_Doit(int @value, BAsyncResult<int> asyncResult) ;
+		void DoitAsync(int @value, BAsyncResult<int> asyncResult) ;
 		IAsyncResult BeginDoit(int @value, AsyncCallback callback, object state);
 		int EndDoit(IAsyncResult asyncResult);
 		
@@ -41,7 +41,7 @@ namespace com.wilutions.byps.test.api.remote
 		/// Logout
 		/// </summary>
 		void Expire();
-		void async_Expire(BAsyncResult<Object> asyncResult) ;
+		void ExpireAsync(BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginExpire(AsyncCallback callback, object state);
 		Object EndExpire(IAsyncResult asyncResult);
 		
@@ -52,7 +52,7 @@ namespace com.wilutions.byps.test.api.remote
 		/// This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
 		/// </remarks>
 		void SetReloginCount(int count);
-		void async_SetReloginCount(int count, BAsyncResult<Object> asyncResult) ;
+		void SetReloginCountAsync(int count, BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginSetReloginCount(int count, AsyncCallback callback, object state);
 		Object EndSetReloginCount(IAsyncResult asyncResult);
 		

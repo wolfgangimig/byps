@@ -72,18 +72,10 @@ public abstract class BClient {
       setAuthentication(null);
     }
 		
-		BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {
-			public void setAsyncResult(Boolean ignored, Throwable e) {
-				if (log.isDebugEnabled()) log.debug("setAsyncResult(");
-				asyncResult.setAsyncResult(e == null, e);
-				if (log.isDebugEnabled()) log.debug(")setAsyncResult");
-			}
-		};
-
 		// Negotiate the protocol and authenticate.
 		// This function will call ClientAuthentication.authenticate()
 		// which starts the BServerR.
-		transport.negotiateProtocolClient(outerResult);
+		transport.negotiateProtocolClient(asyncResult);
 				
 		if (log.isDebugEnabled()) log.debug(")negotiateTransportProtocol");
 	}

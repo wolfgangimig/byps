@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteArrayTypes23 __byps__remoteT = (RemoteArrayTypes23)__byps__remote;				
 				BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_2049740106());				
-				__byps__remoteT.async_SendArraysInline(_arr2, _arr3, _arr4, __byps__outerResult);
+				__byps__remoteT.SendArraysInlineAsync(_arr2, _arr3, _arr4, __byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

@@ -14,17 +14,17 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public System.IO.Stream GetImage() {
 			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
-			async_GetImage(asyncResult);
+			GetImageAsync(asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_GetImage(BAsyncResult<System.IO.Stream> asyncResult) {
+		public void GetImageAsync(BAsyncResult<System.IO.Stream> asyncResult) {
 			BRequest_RemoteStreams_getImage req = new BRequest_RemoteStreams_getImage();			
 			BAsyncResultReceiveMethod<System.IO.Stream> outerResult = new BAsyncResultReceiveMethod<System.IO.Stream>(asyncResult);
 			transport.send(req, outerResult);
 		}
 		public IAsyncResult BeginGetImage(AsyncCallback callback, object state){
 			BAsyncProgModel<System.IO.Stream> _byps_ret = new BAsyncProgModel<System.IO.Stream>(callback, state);
-			async_GetImage(_byps_ret);
+			GetImageAsync(_byps_ret);
 			return _byps_ret;
 		}
 		public 		System.IO.Stream EndGetImage(IAsyncResult asyncResult) {
@@ -33,10 +33,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void SetImage(System.IO.Stream istrm) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_SetImage(istrm, asyncResult);
+			SetImageAsync(istrm, asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
+		public void SetImageAsync(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImage req = new BRequest_RemoteStreams_setImage();			
 			req._istrm = istrm;
 			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
@@ -44,7 +44,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginSetImage(System.IO.Stream istrm, AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_SetImage(istrm, _byps_ret);
+			SetImageAsync(istrm, _byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndSetImage(IAsyncResult asyncResult) {
@@ -53,17 +53,17 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public Dictionary<int,System.IO.Stream> GetImages() {
 			BSyncResult<Dictionary<int,System.IO.Stream>> asyncResult = new BSyncResult<Dictionary<int,System.IO.Stream>>();			
-			async_GetImages(asyncResult);
+			GetImagesAsync(asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_GetImages(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
+		public void GetImagesAsync(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
 			BRequest_RemoteStreams_getImages req = new BRequest_RemoteStreams_getImages();			
 			BAsyncResultReceiveMethod<Dictionary<int,System.IO.Stream>> outerResult = new BAsyncResultReceiveMethod<Dictionary<int,System.IO.Stream>>(asyncResult);
 			transport.send(req, outerResult);
 		}
 		public IAsyncResult BeginGetImages(AsyncCallback callback, object state){
 			BAsyncProgModel<Dictionary<int,System.IO.Stream>> _byps_ret = new BAsyncProgModel<Dictionary<int,System.IO.Stream>>(callback, state);
-			async_GetImages(_byps_ret);
+			GetImagesAsync(_byps_ret);
 			return _byps_ret;
 		}
 		public 		Dictionary<int,System.IO.Stream> EndGetImages(IAsyncResult asyncResult) {
@@ -72,10 +72,10 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_SetImages(istrms, doNotReadStreamAtKey, asyncResult);
+			SetImagesAsync(istrms, doNotReadStreamAtKey, asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
+		public void SetImagesAsync(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImages req = new BRequest_RemoteStreams_setImages();			
 			req._istrms = istrms;
 			req._doNotReadStreamAtKey = doNotReadStreamAtKey;
@@ -84,7 +84,7 @@ namespace com.wilutions.byps.test.api.remote
 		}
 		public IAsyncResult BeginSetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_SetImages(istrms, doNotReadStreamAtKey, _byps_ret);
+			SetImagesAsync(istrms, doNotReadStreamAtKey, _byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndSetImages(IAsyncResult asyncResult) {
@@ -93,17 +93,17 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void ThrowLastException() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			async_ThrowLastException(asyncResult);
+			ThrowLastExceptionAsync(asyncResult);
 			asyncResult.GetResult();			
 		}
-		public void async_ThrowLastException(BAsyncResult<Object> asyncResult) {
+		public void ThrowLastExceptionAsync(BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_throwLastException req = new BRequest_RemoteStreams_throwLastException();			
 			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
 			transport.send(req, outerResult);
 		}
 		public IAsyncResult BeginThrowLastException(AsyncCallback callback, object state){
 			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			async_ThrowLastException(_byps_ret);
+			ThrowLastExceptionAsync(_byps_ret);
 			return _byps_ret;
 		}
 		public 		Object EndThrowLastException(IAsyncResult asyncResult) {
@@ -112,17 +112,17 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public System.IO.Stream GetTextStream() {
 			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
-			async_GetTextStream(asyncResult);
+			GetTextStreamAsync(asyncResult);
 			return asyncResult.GetResult();			
 		}
-		public void async_GetTextStream(BAsyncResult<System.IO.Stream> asyncResult) {
+		public void GetTextStreamAsync(BAsyncResult<System.IO.Stream> asyncResult) {
 			BRequest_RemoteStreams_getTextStream req = new BRequest_RemoteStreams_getTextStream();			
 			BAsyncResultReceiveMethod<System.IO.Stream> outerResult = new BAsyncResultReceiveMethod<System.IO.Stream>(asyncResult);
 			transport.send(req, outerResult);
 		}
 		public IAsyncResult BeginGetTextStream(AsyncCallback callback, object state){
 			BAsyncProgModel<System.IO.Stream> _byps_ret = new BAsyncProgModel<System.IO.Stream>(callback, state);
-			async_GetTextStream(_byps_ret);
+			GetTextStreamAsync(_byps_ret);
 			return _byps_ret;
 		}
 		public 		System.IO.Stream EndGetTextStream(IAsyncResult asyncResult) {

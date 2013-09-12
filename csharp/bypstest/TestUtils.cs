@@ -108,6 +108,11 @@ namespace bypstest
             return p;
         }
 
+        public static void fail(Log log, String msg)
+        {
+            throw new AssertFailedException(msg);
+        }
+
         public static void assertEquals(Log log, String msg, Object a, Object b)
         {
             internalAssertEquals(log, msg, a, b, new HashSet<Object>());

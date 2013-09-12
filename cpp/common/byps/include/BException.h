@@ -31,6 +31,7 @@ const int32_t EX_IOERROR = 14;
 const int32_t EX_TOO_MANY_REQUESTS = 15;
 const int32_t EX_NO_REVERSE_CONNECTIONS = 16;
 const int32_t EX_UNSUPPORTED_METHOD = 17;
+const int32_t EX_AUTHENTICATION_REQUIRED = 18;
 const int32_t EX_CLIENT_DIED = 12;
 
 class BException : public exception {

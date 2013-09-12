@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual int IncrementInt(int a) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_IncrementInt(int a, BAsyncResult<int> asyncResult) {
+		public virtual void IncrementIntAsync(int a, BAsyncResult<int> asyncResult) {
 			try {
 				int ret = IncrementInt(a);
 				asyncResult.setAsyncResult(ret, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual IList<System.IO.Stream> GetStreams(int ctrl) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetStreams(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+		public virtual void GetStreamsAsync(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
 			try {
 				IList<System.IO.Stream> ret = GetStreams(ctrl);
 				asyncResult.setAsyncResult(ret, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual void PutStreams(IList<System.IO.Stream> strm, int ctrl) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_PutStreams(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
+		public virtual void PutStreamsAsync(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
 			try {
 				PutStreams(strm, ctrl);
 				asyncResult.setAsyncResult(null, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.srvr
 		public virtual ChatStructure SendChat(ChatStructure cs) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SendChat(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
+		public virtual void SendChatAsync(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
 			try {
 				ChatStructure ret = SendChat(cs);
 				asyncResult.setAsyncResult(ret, null);

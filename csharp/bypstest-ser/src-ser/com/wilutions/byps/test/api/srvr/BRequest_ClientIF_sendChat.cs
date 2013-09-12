@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.srvr
 			try {
 				ClientIF __byps__remoteT = (ClientIF)__byps__remote;				
 				BAsyncResultSendMethod<ChatStructure> __byps__outerResult = new BAsyncResultSendMethod<ChatStructure>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_7007());				
-				__byps__remoteT.async_SendChat(_cs, __byps__outerResult);
+				__byps__remoteT.SendChatAsync(_cs, __byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

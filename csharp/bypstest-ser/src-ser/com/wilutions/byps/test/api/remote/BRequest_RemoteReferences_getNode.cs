@@ -21,7 +21,7 @@ namespace com.wilutions.byps.test.api.remote
 			try {
 				RemoteReferences __byps__remoteT = (RemoteReferences)__byps__remote;				
 				BAsyncResultSendMethod<com.wilutions.byps.test.api.refs.Node> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.refs.Node>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_9001());				
-				__byps__remoteT.async_GetNode(__byps__outerResult);
+				__byps__remoteT.GetNodeAsync(__byps__outerResult);
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

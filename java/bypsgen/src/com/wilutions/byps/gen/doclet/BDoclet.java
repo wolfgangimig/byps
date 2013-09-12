@@ -204,16 +204,17 @@ public class BDoclet extends Doclet {
 	private static String[] byps_ix_serAll = new String[] {
 		
 		"-genj.dir-ser", "d:\\java\\workspace_git\\Eloix-byps\\src",
+		
 //		"-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
 //		"-genj.dir-ser-json", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-json",
 //
 //		"-gencs.dir-ser",     "D:\\dev\\BYPS2\\csharp\\byps\\byps_ix_ser\\src-ser",
 //		"-gencs.upfirst",     "false",
 //		
-//		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\api",
-//		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl",
-//		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
-//		"-gencpp.max-fsize", "50000",
+
+		"-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\api",
+		"-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl",
+		"-gencpp.max-fsize", "50000",
 
     "-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\json-api\\ixbyps.js",
     "-genjs.suppressConstClasses",
@@ -227,7 +228,7 @@ public class BDoclet extends Doclet {
 		"-ensureUIDs",
 		
 		"--packages",
-		"de.elo.ix.client",
+		"de.elo.ix.client;de.elo.ix.client.discuss",
 		
 		"--sourcepath", 
 		"d:\\git\\ELOindexserver\\Eloix-api\\src;d:\\git\\ELOindexserver\\Eloix-api\\src-gen",

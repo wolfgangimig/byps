@@ -309,7 +309,8 @@ namespace com.wilutions.byps
                             transport.protocol = transport.createNegotiatedProtocol(nego);
                             transport.targetId = nego.targetId;
                         }
-                        innerResult.setAsyncResult(true, ex);
+
+                        transport.internalAuthenticate(innerResult);
                     }
                 }
                 catch (Exception e)
@@ -420,6 +421,97 @@ namespace com.wilutions.byps
       
             return ret;
         }
+
+
+        private class InternalAuthenticate_BAsyncResult : BAsyncResult<bool>
+        {
+            public InternalAuthenticate_BAsyncResult(BTransport transport)
+            {
+                this.transport = transport;
+            }
+
+            public void setAsyncResult(bool succ, Exception ex) 
+            {
+                List<BAsyncResult<bool>> copyResults = null;
+                lock (transport.asyncResultsWaitingForAuthentication) {
+                    copyResults = new List<BAsyncResult<bool>>(transport.asyncResultsWaitingForAuthentication);
+                    transport.asyncResultsWaitingForAuthentication.Clear();
+                    transport.lastAuthenticationTime = DateTime.Now.Ticks / 10000;
+                    transport.lastAuthenticationException = ex;
+                }
+            
+                for (int i = 0; i < copyResults.Count; i++) {
+                    copyResults[i].setAsyncResult(succ, ex);
+                }
+            }
+
+            private BTransport transport;
+        }
+
+
+        internal void internalAuthenticate(BAsyncResult<bool> innerResult)
+        {
+            if (authentication != null)
+            {
+                bool first = false;
+                bool assumeAuthenticationIsValid = false;
+                lock (asyncResultsWaitingForAuthentication)
+                {
+                    assumeAuthenticationIsValid = lastAuthenticationTime + RETRY_AUTHENTICATION_AFTER_MILLIS >= DateTime.Now.Ticks / 10000;
+                    if (!assumeAuthenticationIsValid)
+                    {
+                        first = asyncResultsWaitingForAuthentication.Count == 0;
+                        asyncResultsWaitingForAuthentication.Add(innerResult);
+                    }
+                }
+
+                if (first)
+                {
+                    InternalAuthenticate_BAsyncResult authResult = new InternalAuthenticate_BAsyncResult(this);
+                    authentication.authenticate(null, authResult);
+                }
+                else if (assumeAuthenticationIsValid)
+                {
+
+                    // Assume that the session is still valid or that
+                    // the exception from the last authentication would
+                    // be received again at this time.
+                    innerResult.setAsyncResult(false, lastAuthenticationException);
+                }
+                else
+                {
+                    // innerResult has been added to asyncResultsWaitingForAuthentication 
+                    // and will be called in InternalAuthenticate_BAsyncResult
+                }
+
+            }
+            else
+            {
+                innerResult.setAsyncResult(false, null);
+            }
+        }
+
+    
+        /**
+        * List of BAsyncResult objects from requests waiting for authentication.
+        */
+        internal List<BAsyncResult<bool>> asyncResultsWaitingForAuthentication = new List<BAsyncResult<bool>>();
+  
+        /**
+        * Sytem millis when authentication was perfomed the last time.
+        */
+        internal long lastAuthenticationTime = 0;
+  
+        /**
+        * Exception received from the last authentication.
+        * Is null, if authentication was successful.
+        */
+        internal Exception lastAuthenticationException = null;
+  
+        /**
+        * Last authentication result is assumed to be valid for this time.
+        */
+        internal long RETRY_AUTHENTICATION_AFTER_MILLIS = 10 * 1000; 
 
     }
 }

@@ -20,7 +20,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual System.IO.Stream GetImage() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetImage(BAsyncResult<System.IO.Stream> asyncResult) {
+		public virtual void GetImageAsync(BAsyncResult<System.IO.Stream> asyncResult) {
 			try {
 				System.IO.Stream ret = GetImage();
 				asyncResult.setAsyncResult(ret, null);
@@ -38,7 +38,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetImage(System.IO.Stream istrm) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
+		public virtual void SetImageAsync(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
 			try {
 				SetImage(istrm);
 				asyncResult.setAsyncResult(null, null);
@@ -56,7 +56,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual Dictionary<int,System.IO.Stream> GetImages() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetImages(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
+		public virtual void GetImagesAsync(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
 			try {
 				Dictionary<int,System.IO.Stream> ret = GetImages();
 				asyncResult.setAsyncResult(ret, null);
@@ -74,7 +74,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
+		public virtual void SetImagesAsync(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
 			try {
 				SetImages(istrms, doNotReadStreamAtKey);
 				asyncResult.setAsyncResult(null, null);
@@ -92,7 +92,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual void ThrowLastException() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_ThrowLastException(BAsyncResult<Object> asyncResult) {
+		public virtual void ThrowLastExceptionAsync(BAsyncResult<Object> asyncResult) {
 			try {
 				ThrowLastException();
 				asyncResult.setAsyncResult(null, null);
@@ -110,7 +110,7 @@ namespace com.wilutions.byps.test.api.remote
 		public virtual System.IO.Stream GetTextStream() {
 			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 		}
-		public virtual void async_GetTextStream(BAsyncResult<System.IO.Stream> asyncResult) {
+		public virtual void GetTextStreamAsync(BAsyncResult<System.IO.Stream> asyncResult) {
 			try {
 				System.IO.Stream ret = GetTextStream();
 				asyncResult.setAsyncResult(ret, null);

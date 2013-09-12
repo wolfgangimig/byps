@@ -49,7 +49,7 @@ class GenRemoteStub {
 		pr.println();
 
 		String methodName = pctxt.makePublicMemberName(methodInfo.name);
-		mpr = pr.print("async_").print(methodName).print("(");
+		mpr = pr.print(methodName).print("Async").print("(");
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
@@ -146,7 +146,7 @@ class GenRemoteStub {
 		pr.print(asyncProgModel).print(" _byps_ret = new ").print(asyncProgModel).print("(callback, state);").println();
         
 		String methodName = pctxt.makePublicMemberName(methodInfo.name);
-		mpr = pr.print("async_").print(methodName).print("(");
+		mpr = pr.print(methodName).print("Async").print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {

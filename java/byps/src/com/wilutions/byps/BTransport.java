@@ -80,8 +80,9 @@ public class BTransport {
     try {
 
       final BMethodRequest methodRequest = (BMethodRequest) obj;
-      final Object sess = authentication != null ? authentication.getSession() : null;
-      methodRequest.setSession(sess);
+      if (authentication != null) {
+        methodRequest.setSession(authentication.getSession());
+      }
 
       if (log.isDebugEnabled()) log.debug("store object");
       final BOutput bout = getOutput();
@@ -311,7 +312,7 @@ public class BTransport {
       boolean first = false;
       boolean assumeAuthenticationIsValid = false;
       synchronized (asyncResultsWaitingForAuthentication) {
-        assumeAuthenticationIsValid = lastAuthenticationTime + RETRY_AUTHENTICATION_AFTER_SECONDS >= System.currentTimeMillis();
+        assumeAuthenticationIsValid = lastAuthenticationTime + RETRY_AUTHENTICATION_AFTER_MILLIS >= System.currentTimeMillis();
         if (!assumeAuthenticationIsValid) {
           first = asyncResultsWaitingForAuthentication.size() == 0;
           asyncResultsWaitingForAuthentication.add(asyncResult);
@@ -357,14 +358,18 @@ public class BTransport {
         // Assume that the session is still valid or that
         // the exception from the last authentication would
         // be received again at this time.
-        asyncResult.setAsyncResult(Boolean.TRUE, lastAuthenticationException);
+        asyncResult.setAsyncResult(Boolean.FALSE, lastAuthenticationException);
+      }
+      else {
+          // innerResult has been added to asyncResultsWaitingForAuthentication 
+          // and will be called in InternalAuthenticate_BAsyncResult
       }
 
     }
     
     // Authentication is not used. The session is valid per definition.
     else {
-      asyncResult.setAsyncResult(Boolean.TRUE, null);
+      asyncResult.setAsyncResult(Boolean.FALSE, null);
     }
 
     if (log.isDebugEnabled()) log.debug(")authenticate");
@@ -491,7 +496,7 @@ public class BTransport {
   /**
    * Last authentication result is assumed to be valid for this time.
    */
-  protected final long RETRY_AUTHENTICATION_AFTER_SECONDS = 10; 
+  protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 10 * 1000; 
 
   private final Log log = LogFactory.getLog(BTransport.class);
 
