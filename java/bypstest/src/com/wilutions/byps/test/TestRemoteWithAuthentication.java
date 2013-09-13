@@ -106,7 +106,7 @@ public class TestRemoteWithAuthentication {
    * @throws RemoteException
    */
   @Test
-  public void testAuthenticateRelogin() throws RemoteException {
+  public void testAuthenticateRelogin() throws RemoteException, InterruptedException {
     log.info("testAuthenticateRelogin(");
     
     client.setAuthentication(new MyAuthentication("Fritz", "abc"));
@@ -118,6 +118,9 @@ public class TestRemoteWithAuthentication {
     
     // Invalidate session
     remote.expire();
+    
+    // Wait 1s, BTransport assumes that a session is at least 1s valid.
+    Thread.sleep(1000);
     
     // Re-login
     ret = remote.doit(1);

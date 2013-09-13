@@ -36,6 +36,7 @@ protected:
     PProtocol createNegotiatedProtocol(BNegotiate& nego);
     PProtocol detectProtocolFromInputBuffer(const PBytes& buf);
 	bool internalIsReloginException(BException ex, BTYPEID typeId);
+	void internalAuthenticate(PAsyncResult asyncResult);
 
     PProtocol protocol;
     BTargetId targetId;
@@ -43,8 +44,14 @@ protected:
 
     byps_mutex mtx;
 
-	friend class BTransport_NegotiateClient_BAsyncOuterResult;
-	friend class BTransport_AsyncResultRelogin;
+	time_t lastAuthenticationTime;
+	std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
+	BException lastAuthenticationException;
+
+	friend class BTransport_MyNegoAsyncResult;
+	friend class BTransport_MyAsyncResultRelogin;
+	friend class BTransport_MyNegoAsyncResult;
+	friend class BTransport_InternalAuthenticate_BAsyncResult;
 	friend class BClient;
 
 	// Declare BOutput, BInput as friend class to be able to access targetId

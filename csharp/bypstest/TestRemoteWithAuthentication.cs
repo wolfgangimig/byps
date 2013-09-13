@@ -91,14 +91,20 @@ namespace bypstest
 
             client.setAuthentication(new MyAuthentication("Fritz", "abc"));
 
+            log.info("1 remote.Doit ... ");
             int ret = remote.Doit(1);
+            log.info("1 remote.Doit OK ");
             TestUtils.assertEquals(log, "ret", 2, ret);
 
             // Invalidate session
+            log.info("remote.Expire ... ");
             remote.Expire();
+            log.info("remote.Expire OK ");
 
             // Re-login
+            log.info("2 remote.Doit ... ");
             ret = remote.Doit(1);
+            log.info("2 remote.Doit OK ");
             TestUtils.assertEquals(log, "ret", 2, ret);   
 
             log.info(")testAuthenticateRelogin");

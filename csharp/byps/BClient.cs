@@ -87,30 +87,38 @@ namespace com.wilutions.byps
             
             public void authenticate(BClient ignored, BAsyncResult<bool> asyncResult) 
             {
+                if (log.isDebugEnabled()) log.debug("authenticate(");
                 BAsyncResult<bool> outerResult = new MyNegoAsyncResult(client, asyncResult);
       
                 if (innerAuth != null) 
                 {
+                    if (log.isDebugEnabled()) log.debug("innerAuth.authenticate");
                     innerAuth.authenticate(client, outerResult);
                 }
                 else 
                 {
+                    if (log.isDebugEnabled()) log.debug("return true");
                     outerResult.setAsyncResult(true, null);
                 }
+                if (log.isDebugEnabled()) log.debug(")authenticate");
             }
 
             public bool isReloginException(BClient ignored, Exception ex, int typeId) 
             {
-              bool ret = false;
-              if (innerAuth != null)
-              {
-                  ret = innerAuth.isReloginException(client, ex, typeId);
-              }
-              else
-              {
-                  ret = client.transport.isReloginException(ex, typeId);
-              }
-              return ret;
+                if (log.isDebugEnabled()) log.debug("isReloginException(ex=" + ex + ", typeId=" + typeId);
+                bool ret = false;
+                if (innerAuth != null)
+                {
+                    if (log.isDebugEnabled()) log.debug("innerAuth.isReloginException");
+                    ret = innerAuth.isReloginException(client, ex, typeId);
+                }
+                else
+                {
+                    if (log.isDebugEnabled()) log.debug("transport.isReloginException");
+                    ret = client.transport.isReloginException(ex, typeId);
+                }
+                if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
+                return ret;
             }
 
             public Object getSession()
@@ -119,14 +127,17 @@ namespace com.wilutions.byps
                 if (innerAuth != null)
                 {
                     ret = innerAuth.getSession();
+                    if (log.isDebugEnabled()) log.debug("innerAuth.getSession()=" + ret);
                 }
                 return ret;
             }
 
+            private Log log = LogFactory.getLog(typeof(ClientAuthentication));
         }
 
         public void setAuthentication(BAuthentication auth)
         {
+            if (log.isDebugEnabled()) log.debug("setAuthentication(" + auth + ")");
             transport.authentication = new ClientAuthentication(this, auth);
         }
 
@@ -135,5 +146,6 @@ namespace com.wilutions.byps
             return transport.authentication;
         }
 
+        private Log log = LogFactory.getLog(typeof(BClient));
     }
 }

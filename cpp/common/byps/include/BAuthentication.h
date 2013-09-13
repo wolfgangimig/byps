@@ -10,9 +10,9 @@ using namespace ::std;
 class BAuthentication 
 {
 public:
-	virtual ~BAuthentication() = 0;
+	virtual ~BAuthentication() {};
 	virtual void authenticate(PClient client, function<void (bool, BException)> asyncResult) = 0;
-	virtual bool isReloginException(PClient client, const std::exception& ex, BTYPEID typeId) = 0;
+	virtual bool isReloginException(PClient client, BException ex, BTYPEID typeId) = 0;
 	virtual PSerializable getSession() = 0;
 };
 

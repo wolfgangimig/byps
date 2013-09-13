@@ -58,44 +58,133 @@ BINLINE void BClient::start() {
 	syncResult.getResult();
 }
 
-class  BClient_Start_BAsyncOuterResult : public BAsyncResult {
+class  BClient_MyNegoAsyncResult : public BAsyncResult {
     PClient client;
     PAsyncResult innerResult;
 public:
-    BClient_Start_BAsyncOuterResult(PClient client, PAsyncResult asyncResult)
-        : client(client), innerResult(asyncResult) {
+
+    BClient_MyNegoAsyncResult(PClient client, PAsyncResult innerResult)
+        : client(client), innerResult(innerResult) {
     }
-	virtual ~BClient_Start_BAsyncOuterResult() {
+
+	virtual ~BClient_MyNegoAsyncResult() {
 		client.reset();
-		innerResult = NULL;
 	}
-    virtual void setAsyncResult(const BVariant& result) {
+
+	void internalSetAsyncResult(const BVariant& result) {
+		innerResult->setAsyncResult(result);
+	}
+
+	virtual void setAsyncResult(const BVariant& result) {
         try {
             if (result.isException()) {
-                innerResult->setAsyncResult(result);
+                internalSetAsyncResult(result);
             }
             else {
                 if (client->serverR) {
                     client->serverR->start();
                 }
-                innerResult->setAsyncResult(BVariant(client));
+                internalSetAsyncResult(result);
             }
         }
         catch (const exception& e) {
-            innerResult->setAsyncResult(BVariant(e));
+            internalSetAsyncResult(BVariant(e));
         }
 		delete this;
     }
 };
 
+
 BINLINE void BClient::internalStart(PAsyncResult asyncResult) {
+	
+	if (!transport->authentication) {
+		setAuthentication(PAuthentication());
+	}
 
-	PClient client = shared_from_this();
-    BClient_Start_BAsyncOuterResult* outerResult = new BClient_Start_BAsyncOuterResult(client, asyncResult);
-
+    BClient_MyNegoAsyncResult* outerResult = new BClient_MyNegoAsyncResult(shared_from_this(), asyncResult);
     transport->negotiateProtocolClient(outerResult);
-
 }
+
+class BClient_ClientAuthentication : public BAuthentication
+{
+	byps_weak_ptr<BClient> client;
+    PAuthentication innerAuth;
+
+public:
+	BClient_ClientAuthentication(PClient client, PAuthentication innerAuth)
+		: client(client)
+		, innerAuth(innerAuth)
+    {
+    }
+            
+	virtual void authenticate(PClient , function<void (bool, BException)> asyncResult) {
+		PClient client = this->client.lock();
+		if (client) {
+
+			if (innerAuth) {
+				innerAuth->authenticate(client, [client, asyncResult](bool, BException ex) {
+					if (!ex) {
+						try {
+							if (client->serverR) {
+								client->serverR->start();
+							}
+						}
+						catch (const BException& e) {
+							ex = e;
+						}
+					}
+					asyncResult(false, ex);
+				});
+			}
+			else {
+				asyncResult(false, BException());
+			}
+		}
+		else {
+			asyncResult(false, BException(EX_CANCELLED));
+		}
+    }
+
+    virtual bool isReloginException(PClient , BException ex, BTYPEID typeId) 
+    {
+        bool ret = false;
+
+		PClient client = this->client.lock();
+		if (client) {
+
+			if (innerAuth)
+			{
+				ret = innerAuth->isReloginException(client, ex, typeId);
+			}
+			else
+			{
+				ret = client->transport->isReloginException(ex, typeId);
+			}
+		}
+
+        return ret;
+    }
+
+    virtual PSerializable getSession()
+    {
+        PSerializable ret;
+        if (innerAuth)
+        {
+            ret = innerAuth->getSession();
+        }
+        return ret;
+    }
+
+};
+
+BINLINE void BClient::setAuthentication(PAuthentication innerAuth) {
+	transport->authentication = PAuthentication(new BClient_ClientAuthentication(shared_from_this(), innerAuth));
+}
+
+BINLINE PAuthentication BClient::getAuthentication() {
+	return transport->authentication;
+}
+
 
 }}}
 

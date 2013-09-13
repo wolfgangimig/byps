@@ -118,21 +118,26 @@ namespace com.wilutions.byps
                 this.innerResult = innerResult;
             }
 
-            public void setAsyncResult(bool succ, Exception e2) {
+            public void setAsyncResult(bool ignored, Exception e2) {
+                if (log.isDebugEnabled()) log.debug("setAsyncResult(" + e2);
                 if (e2 != null) 
                 {
+                    if (log.isDebugEnabled()) log.debug("return ex");
                     innerResult.setAsyncResult(default(T), e2);
                 }
                 else 
                 {
+                    if (log.isDebugEnabled()) log.debug("transport.send, methodRequest=" + methodRequest);
                     // Send again
                     transport.send(methodRequest, innerResult);
                 }
+                if (log.isDebugEnabled()) log.debug(")setAsyncResult");
             }
 
             private BTransport transport;
             private BMethodRequest methodRequest;
             private BAsyncResult<T> innerResult;
+            private Log log = LogFactory.getLog(typeof(MyAsyncResultSend<T>));
         }
 
         private class MyAsyncResultRelogin<T> : BAsyncResult<BMessage>
@@ -146,6 +151,7 @@ namespace com.wilutions.byps
 
             public void setAsyncResult(BMessage msg, Exception ex)
             {
+                if (log.isDebugEnabled()) log.debug("setAsyncResult(" + msg + ", ex=" + ex);
                 bool relogin = false;
 
                 try
@@ -156,70 +162,98 @@ namespace com.wilutions.byps
                         relogin = internalIsReloginException(ex);
                         if (!relogin)
                         {
+                            if (log.isDebugEnabled()) log.debug("return ex");
                             innerResult.setAsyncResult(default(T), ex);
                         }
                     }
                     else
                     {
+                        if (log.isDebugEnabled()) log.debug("obj <- message");
                         BInput bin = transport.getInput(msg.buf);
                         T obj = (T)bin.load();
+
+                        if (log.isDebugEnabled()) log.debug("return obj=" + obj);
                         innerResult.setAsyncResult(obj, null);
                     }
                 }
                 catch (Exception e)
                 {
+                    if (log.isDebugEnabled()) log.debug("exception=" + e);
                     try
                     {
                         relogin = internalIsReloginException(e);
                     }
-                    catch (Exception) { }
+                    catch (Exception ignored) {
+                        if (log.isDebugEnabled()) log.debug("ignored exception=", ignored);
+                    }
 
                     if (!relogin)
                     {
+                        if (log.isDebugEnabled()) log.debug("return ex");
                         innerResult.setAsyncResult(default(T), e);
                     }
                 }
 
+                if (log.isDebugEnabled()) log.debug("relogin=" + relogin);
                 if (relogin)
                 {
                     try
                     {
+                        if (log.isDebugEnabled()) log.debug("negotiate");
                         MyAsyncResultSend<T> loginResult = new MyAsyncResultSend<T>(transport, methodRequest, innerResult);
                         transport.negotiateProtocolClient(loginResult);
                     }
                     catch (Exception e)
                     {
+                        if (log.isDebugEnabled()) log.debug("transport.negotiate failed, return ex", e);
                         innerResult.setAsyncResult(default(T), e);
                     }
                 }
 
+                if (log.isDebugEnabled()) log.debug(")setAsyncResult");
             }
 
             private bool internalIsReloginException(Exception e)
             {
+                if (log.isDebugEnabled()) log.debug("internalIsReloginException(" + e);
+
                 int typeId = transport.apiDesc.getRegistry(BBinaryModel.MEDIUM).getSerializer(methodRequest, true).typeId;
-                return transport.internalIsReloginException(e, typeId);
+                if (log.isDebugEnabled()) log.debug("request typeId=" + typeId);
+
+                bool ret = transport.internalIsReloginException(e, typeId);
+                if (log.isDebugEnabled()) log.debug(")internalIsReloginException=" + ret);
+                return ret;
             }
         
             private BTransport transport;
             private BMethodRequest methodRequest;
             private BAsyncResult<T> innerResult;
+            private Log log = LogFactory.getLog(typeof(MyAsyncResultRelogin<T>));
         }
 
         public void send<T> (Object obj, BAsyncResult<T> asyncResult) {
+            if (log.isDebugEnabled()) log.debug("send(" + obj);
 		    try {
 			    BOutput bout = getOutput();
 			    
                 BMethodRequest methodRequest = (BMethodRequest) obj;
-                Object sess = authentication != null ? authentication.getSession() : null;
-                methodRequest.setSession(sess);
+                if (authentication != null)
+                {
+                    Object sess = authentication.getSession();
+                    if (sess != null)
+                    {
+                        if (log.isDebugEnabled()) log.debug("methodRequest.sess=" + sess);
+                        methodRequest.setSession(sess);
+                    }
+                }
 
-			    bout.store(obj);
-
-                BAsyncResult<BMessage> outerResult = new MyAsyncResultRelogin<T>(this, methodRequest, asyncResult);
-
+                if (log.isDebugEnabled()) log.debug("obj -> message");
+                bout.store(obj);
                 BMessage msg = bout.toMessage();
-			    wire.send(msg, outerResult);
+
+                if (log.isDebugEnabled()) log.debug("wire.send");
+                BAsyncResult<BMessage> outerResult = new MyAsyncResultRelogin<T>(this, methodRequest, asyncResult);
+                wire.send(msg, outerResult);
 		    }
 		    catch (Exception e) {
                 asyncResult.setAsyncResult(default(T), e);
@@ -256,15 +290,22 @@ namespace com.wilutions.byps
 		}
 
         public void recv(BServer server, BMessage msg, BAsyncResult<BMessage> asyncResult) {
-		
-		    BInput bin = getInput(msg.buf);
+            if (log.isDebugEnabled()) log.debug("recv(");
+
+            BInput bin = getInput(msg.buf);
 		    Object methodObj = bin.load();
+            if (log.isDebugEnabled()) log.debug("methodObj=" + methodObj);
+
             MethodResult methodResult = new MethodResult(this, asyncResult, bin);
 		
 		    BTargetId clientTargetId = bin.header.targetId;
-		    server.recv(clientTargetId, methodObj, methodResult);
-		
-	    }
+            if (log.isDebugEnabled()) log.debug("clientTargetId=" + clientTargetId);
+
+            if (log.isDebugEnabled()) log.debug("server.recv");
+            server.recv(clientTargetId, methodObj, methodResult);
+
+            if (log.isDebugEnabled()) log.debug(")recv");
+        }
 
  	    private BProtocol detectProtocolFromInputBuffer(ByteBuffer buf) {
 		    BProtocol ret = null;
@@ -294,6 +335,7 @@ namespace com.wilutions.byps
 
             public void setAsyncResult(BMessage msg, Exception ex)
             {
+                if (log.isDebugEnabled()) log.debug("setAsyncResult(msg=" + msg + ", ex=" + ex);
                 try
                 {
                     if (ex != null)
@@ -302,6 +344,7 @@ namespace com.wilutions.byps
                     }
                     else
                     {
+                        if (log.isDebugEnabled()) log.debug("read message");
                         BNegotiate nego = new BNegotiate();
                         nego.read(msg.buf);
                         lock (transport)
@@ -309,6 +352,7 @@ namespace com.wilutions.byps
                             transport.protocol = transport.createNegotiatedProtocol(nego);
                             transport.targetId = nego.targetId;
                         }
+                        if (log.isDebugEnabled()) log.debug("protocol=" + transport.protocol + ", targetId=" + transport.targetId);
 
                         transport.internalAuthenticate(innerResult);
                     }
@@ -317,14 +361,17 @@ namespace com.wilutions.byps
                 {
                     innerResult.setAsyncResult(false, e);
                 }
+                if (log.isDebugEnabled()) log.debug(")setAsyncResult");
             }
         
             private BTransport transport;
             private BAsyncResult<bool> innerResult;
+            private Log log = LogFactory.getLog(typeof(MyNegoAsyncResult));
         }
 
         public void negotiateProtocolClient(BAsyncResult<Boolean> asyncResult) {
-		
+            if (log.isDebugEnabled()) log.debug("negotiateProtocolClient(");
+
 		    ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
 		    BNegotiate nego = new BNegotiate(apiDesc);
 		    nego.write(buf);
@@ -332,20 +379,25 @@ namespace com.wilutions.byps
 
             BAsyncResult<BMessage> outerResult = new MyNegoAsyncResult(this, asyncResult);
 
+            if (log.isDebugEnabled()) log.debug("wire.send");
             BMessage msg = new BMessage(0L, buf, null);
 		    wire.send(msg, outerResult);
-	    }
+            if (log.isDebugEnabled()) log.debug(")negotiateProtocolClient");
+        }
 
         public BProtocol negotiateProtocolServer(BTargetId targetId, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult)  {
-		    BProtocol ret = null;
+            if (log.isDebugEnabled()) log.debug("negotiateProtocolServer(targetId=" + targetId);
+            BProtocol ret = null;
 		    try {
-			    BNegotiate nego = new BNegotiate();
+                if (log.isDebugEnabled()) log.debug("read nego msg");
+                BNegotiate nego = new BNegotiate();
 			    nego.read(buf);
 			
 			    lock(this) {
 				    this.protocol = ret = createNegotiatedProtocol(nego);
 				    this.targetId = targetId;
 			    }
+                if (log.isDebugEnabled()) log.debug("protocol=" + this.protocol + ", targetId=" + this.targetId);
 			
 			    ByteBuffer bout = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
 			    try {
@@ -361,7 +413,8 @@ namespace com.wilutions.byps
 		    catch (Exception e) {
                 asyncResult.setAsyncResult(null, e);
 		    }
-		    return ret;
+            if (log.isDebugEnabled()) log.debug(")negotiateProtocolServer=" + ret);
+            return ret;
 	    }
 
 
@@ -391,6 +444,7 @@ namespace com.wilutions.byps
 
         internal bool internalIsReloginException(Exception ex, int typeId)
         {
+            if (log.isDebugEnabled()) log.debug("internalIsReloginException(ex=" + ex + ", typeId=" + typeId);
             bool ret = false;
 
             if (authentication != null && ex != null)
@@ -398,11 +452,13 @@ namespace com.wilutions.byps
                 ret = authentication.isReloginException(null, ex, typeId);
             }
 
+            if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
             return ret;
         }
 
         public bool isReloginException(Exception ex, int typeId) 
         {
+            if (log.isDebugEnabled()) log.debug("isReloginException(ex=" + ex + ", typeId=" + typeId);
             bool ret = false;
     
             // Check exception
@@ -418,7 +474,8 @@ namespace com.wilutions.byps
                     ret = (bex.Code == BExceptionC.IOERROR) && bex.ToString().IndexOf("403") >= 0;
                 }
             }
-      
+
+            if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
             return ret;
         }
 
@@ -430,8 +487,10 @@ namespace com.wilutions.byps
                 this.transport = transport;
             }
 
-            public void setAsyncResult(bool succ, Exception ex) 
+            public void setAsyncResult(bool ignored, Exception ex) 
             {
+                if (log.isDebugEnabled()) log.debug("setAsyncResult(ex=" + ex);
+
                 List<BAsyncResult<bool>> copyResults = null;
                 lock (transport.asyncResultsWaitingForAuthentication) {
                     copyResults = new List<BAsyncResult<bool>>(transport.asyncResultsWaitingForAuthentication);
@@ -439,18 +498,26 @@ namespace com.wilutions.byps
                     transport.lastAuthenticationTime = DateTime.Now.Ticks / 10000;
                     transport.lastAuthenticationException = ex;
                 }
-            
-                for (int i = 0; i < copyResults.Count; i++) {
-                    copyResults[i].setAsyncResult(succ, ex);
+
+                if (log.isDebugEnabled()) log.debug("Call setAsyncResult for collected result objects, #=" + copyResults.Count);
+                for (int i = 0; i < copyResults.Count; i++)
+                {
+                    copyResults[i].setAsyncResult(true, ex);
                 }
+
+                if (log.isDebugEnabled()) log.debug(")setAsyncResult");
             }
 
             private BTransport transport;
+            private Log log = LogFactory.getLog(typeof(InternalAuthenticate_BAsyncResult));
         }
 
 
         internal void internalAuthenticate(BAsyncResult<bool> innerResult)
         {
+            if (log.isDebugEnabled()) log.debug("internalAuthenticate(");
+
+            if (log.isDebugEnabled()) log.debug("authentication=" + authentication);
             if (authentication != null)
             {
                 bool first = false;
@@ -464,6 +531,7 @@ namespace com.wilutions.byps
                         asyncResultsWaitingForAuthentication.Add(innerResult);
                     }
                 }
+                if (log.isDebugEnabled()) log.debug("first=" + first + ", assumeValid=" + assumeAuthenticationIsValid);
 
                 if (first)
                 {
@@ -489,6 +557,8 @@ namespace com.wilutions.byps
             {
                 innerResult.setAsyncResult(false, null);
             }
+
+            if (log.isDebugEnabled()) log.debug(")internalAuthenticate");
         }
 
     
@@ -511,7 +581,9 @@ namespace com.wilutions.byps
         /**
         * Last authentication result is assumed to be valid for this time.
         */
-        internal long RETRY_AUTHENTICATION_AFTER_MILLIS = 10 * 1000; 
+        internal long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
 
+
+        private Log log = LogFactory.getLog(typeof(BTransport));
     }
 }

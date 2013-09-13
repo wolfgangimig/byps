@@ -9,7 +9,8 @@ BINLINE BTransport::BTransport(PApiDescriptor apiDesc, const PWire& wire, const 
     : wire(wire)
 	, remoteRegistry(remoteRegistry)
 	, apiDesc(apiDesc)
-	, protocol(PProtocol()) {
+	, protocol(PProtocol())
+	, lastAuthenticationTime(0) {
 }
 
 BINLINE BTransport::BTransport(const BTransport &rhs, const BTargetId &targetId)
@@ -18,7 +19,8 @@ BINLINE BTransport::BTransport(const BTransport &rhs, const BTargetId &targetId)
 	, apiDesc(rhs.apiDesc)
 	, protocol(rhs.protocol)
 	, targetId(rhs.targetId)
-	, authentication(rhs.authentication) {
+	, authentication(rhs.authentication)
+	, lastAuthenticationTime(0) {
 }
 
 BINLINE BTransport::~BTransport() {
@@ -67,15 +69,15 @@ BINLINE PProtocol BTransport::getProtocol() {
     return protocol;
 }
 
-class BTransport_AsyncResultSend;
-typedef BTransport_AsyncResultSend* PTransport_BAsyncOuterResult;
+class BTransport_MyAsyncResultSend;
+typedef BTransport_MyAsyncResultSend* PTransport_BAsyncOuterResult;
 
-class BTransport_AsyncResultSend : public BAsyncResult {
+class BTransport_MyAsyncResultSend : public BAsyncResult {
 	PTransport transport;
 	PMethodRequest methodRequest; 
 	PAsyncResult innerResult;
 public:
-	BTransport_AsyncResultSend(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
+	BTransport_MyAsyncResultSend(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
 		: transport(transport)
 		, methodRequest(methodRequest)
 		, innerResult(innerResult)
@@ -99,15 +101,15 @@ public:
 
 };
 
-class BTransport_NegotiateClient_BAsyncOuterResult : public BAsyncResult {
+class BTransport_MyNegoAsyncResult : public BAsyncResult {
 public:
 	PTransport transport;
     PAsyncResult innerResult;
 
-    BTransport_NegotiateClient_BAsyncOuterResult(PTransport transport, const PAsyncResult& innerResult)
+    BTransport_MyNegoAsyncResult(PTransport transport, const PAsyncResult& innerResult)
 		: transport(transport), innerResult(innerResult) {
 	}
-	virtual ~BTransport_NegotiateClient_BAsyncOuterResult() {
+	virtual ~BTransport_MyNegoAsyncResult() {
 	}
 
     virtual void setAsyncResult(const BVariant& result) {
@@ -127,7 +129,8 @@ public:
                     transport->protocol = transport->createNegotiatedProtocol(nego);
                     transport->targetId = nego.targetId;
                 }
-                innerResult->setAsyncResult(BVariant(true));
+
+				transport->internalAuthenticate(innerResult);
             }
 		}
         catch (const exception& ex) {
@@ -138,19 +141,19 @@ public:
 
 };
 
-class BTransport_AsyncResultRelogin : public BAsyncResult {
+class BTransport_MyAsyncResultRelogin : public BAsyncResult {
 	PTransport transport;
 	PMethodRequest methodRequest; 
 	PAsyncResult innerResult;
 public:
-	BTransport_AsyncResultRelogin(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
+	BTransport_MyAsyncResultRelogin(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
 		: transport(transport)
 		, methodRequest(methodRequest)
 		, innerResult(innerResult)
 	{
 	}
 
-	virtual ~BTransport_AsyncResultRelogin() {}
+	virtual ~BTransport_MyAsyncResultRelogin() {}
 
     virtual void setAsyncResult(const BVariant& result) { 
 		bool relogin = false;
@@ -182,7 +185,7 @@ public:
 
 			if (relogin) {
                 try {
-                    BTransport_AsyncResultSend* loginResult = new BTransport_AsyncResultSend(transport, methodRequest, innerResult);
+                    BTransport_MyAsyncResultSend* loginResult = new BTransport_MyAsyncResultSend(transport, methodRequest, innerResult);
                     transport->negotiateProtocolClient(loginResult);
                 }
                 catch (const BException& e) {
@@ -215,7 +218,7 @@ BINLINE void BTransport::negotiateProtocolClient(PAsyncResult asyncResult) {
     nego.version = apiDesc->version;
     nego.write(bytes);
 
-    PAsyncResult outerResult = new BTransport_NegotiateClient_BAsyncOuterResult(pthis, asyncResult);
+    PAsyncResult outerResult = new BTransport_MyNegoAsyncResult(pthis, asyncResult);
 
     BMessageHeader header;
     header.messageId = wire->makeMessageId();
@@ -290,7 +293,7 @@ BINLINE void BTransport::send(const PSerializable& obj, PAsyncResult asyncResult
         POutput outp = getOutput();
 		outp->store(methodRequest);
 
-        PAsyncResult outerResult = new BTransport_AsyncResultRelogin(pthis, methodRequest, asyncResult);
+        PAsyncResult outerResult = new BTransport_MyAsyncResultRelogin(pthis, methodRequest, asyncResult);
 
         PMessage msg = outp->toMessage();
         
@@ -371,6 +374,84 @@ BINLINE bool BTransport::isReloginException(BException ex, int typeId) {
       
     return ret;
 }
+
+
+class BTransport_InternalAuthenticate_BAsyncResult : BAsyncResult
+{
+public:
+	BTransport_InternalAuthenticate_BAsyncResult(PTransport transport)
+		: transport(transport)
+    {
+    }
+
+    virtual void setAsyncResult(BVariant result) {
+
+		BException ex = result.getException();
+		std::vector<PAsyncResult> copyResults;
+
+		{
+			byps_unique_lock lock(transport->mtx);
+            copyResults = transport->asyncResultsWaitingForAuthentication;
+            transport->asyncResultsWaitingForAuthentication.clear();
+            transport->lastAuthenticationTime = time(NULL);
+			transport->lastAuthenticationException = ex;
+        }
+
+        for (size_t i = 0; i < copyResults.size(); i++)
+        {
+            copyResults[i]->setAsyncResult(result);
+        }
+
+		delete this;
+    }
+
+private:
+	PTransport transport;
+};
+
+
+const unsigned RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+
+BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
+
+	if (authentication) {
+		
+		bool first = false;
+		bool assumeAuthenticationIsValid = false;
+
+		{
+			byps_unique_lock lock(mtx);
+			assumeAuthenticationIsValid = lastAuthenticationTime + (RETRY_AUTHENTICATION_AFTER_MILLIS/1000) >= time(NULL);
+			if (!assumeAuthenticationIsValid)
+			{
+				first = asyncResultsWaitingForAuthentication.size() == 0;
+				asyncResultsWaitingForAuthentication.push_back(innerResult);
+			}
+		}
+
+		if (first) {
+			
+			BTransport_InternalAuthenticate_BAsyncResult* authResult = new BTransport_InternalAuthenticate_BAsyncResult(shared_from_this());
+
+			authentication->authenticate(PClient(), [authResult](bool , BException ex) {
+				authResult->setAsyncResult(ex ? BVariant(ex) : BVariant(false));
+			});
+
+		}
+		else if (assumeAuthenticationIsValid) {
+			innerResult->setAsyncResult(BVariant(lastAuthenticationException));
+		}
+		else {
+            // innerResult has been added to asyncResultsWaitingForAuthentication 
+            // and will be called in InternalAuthenticate_BAsyncResult
+		}
+
+	}
+	else {
+		innerResult->setAsyncResult(BVariant(true));
+	}
+}
+
 
 }}}
 

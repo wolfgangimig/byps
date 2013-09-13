@@ -26,12 +26,17 @@ public:
 
     virtual void done();
 
+	virtual void setAuthentication(PAuthentication auth);
+	virtual PAuthentication getAuthentication();
+
 protected:   
+
     virtual void internalStart(PAsyncResult asyncResult);
 
 	const PServerR serverR;
 
-    friend class BClient_Start_BAsyncOuterResult;
+    friend class BClient_MyNegoAsyncResult;
+	friend class BClient_ClientAuthentication;
 };
 
 

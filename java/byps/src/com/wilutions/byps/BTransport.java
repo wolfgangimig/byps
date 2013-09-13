@@ -496,7 +496,7 @@ public class BTransport {
   /**
    * Last authentication result is assumed to be valid for this time.
    */
-  protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 10 * 1000; 
+  protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000; 
 
   private final Log log = LogFactory.getLog(BTransport.class);
 
