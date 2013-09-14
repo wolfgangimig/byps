@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BApiDescriptor;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
 import com.wilutions.byps.gen.utils.Utils;
@@ -60,7 +61,6 @@ public class GenClient {
 		
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			printAddRemote(rinfo);
-			prH.println();
 		}
 		
 		printConstructorWithServerImpl();
@@ -168,10 +168,10 @@ public class GenClient {
 
 	}
 	
-	private void printDefineStubs() {
+	private void printDefineStubs() throws GeneratorException {
 		log.debug("printDefineStubs");
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
-			TypeInfoCpp rinfoCpp = new TypeInfoCpp(rinfo);
+			TypeInfoCpp rinfoCpp = new TypeInfoCpp(pctxt.getRemoteBaseForStub(rinfo));
 			String varName = Utils.firstCharToLower(rinfo.name);
 			String rinfoName = rinfoCpp.getQTypeName();
 			prH.print("public: const ").print(rinfoName).print(" ").print(varName).println(";");
@@ -180,16 +180,20 @@ public class GenClient {
 	}
 
 	private void printAddRemote(RemoteInfo rinfo) {
-		TypeInfoCpp skeletonInfoCpp = pctxt.getSkeletonTypeInfoCpp(rinfo);
-		String typeName = skeletonInfoCpp.getTypeName(pack);
-		prH.print("public: void ").print("addRemote(").print(typeName).println(" remoteSkeleton);");
-		
-		prC.print("void ").print(clientCppInfo.getClassName(pack)).print("::addRemote(").print(typeName).println(" remoteSkeleton) {");
-		prC.beginBlock();
-		prC.println("if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L\"No reverse connections.\");");
-		prC.println("serverR->server->addRemote(" + rinfo.typeId + ", remoteSkeleton);");
-		prC.endBlock();
-		prC.println("}");
+	  if (rinfo.isClientRemote) {
+  		TypeInfoCpp skeletonInfoCpp = pctxt.getSkeletonTypeInfoCpp(rinfo);
+  		String typeName = skeletonInfoCpp.getTypeName(pack);
+  		prH.print("public: void ").print("addRemote(").print(typeName).println(" remoteSkeleton);");
+  		prH.println();
+  		
+  		prC.print("void ").print(clientCppInfo.getClassName(pack)).print("::addRemote(").print(typeName).println(" remoteSkeleton) {");
+  		prC.beginBlock();
+  		prC.println("if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L\"No reverse connections.\");");
+  		prC.println("serverR->server->addRemote(" + rinfo.typeId + ", remoteSkeleton);");
+  		prC.endBlock();
+  		prC.println("}");
+  		prC.println();
+	  }
 	}
 
 

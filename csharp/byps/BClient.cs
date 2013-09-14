@@ -14,8 +14,6 @@ namespace com.wilutions.byps
 	    public BClient(BTransport transport, BServerR serverR) {
 		    this.transport = transport;
 		    this.serverR = serverR;
-
-            setAuthentication(null);
 	    }
 	
 	    public abstract BRemote getStub(int remoteId);
@@ -63,13 +61,9 @@ namespace com.wilutions.byps
             private readonly BClient client;
         }
 
-	    public void start(BAsyncResult<bool> asyncResult) {
-
-            if (transport.authentication == null)
-            {
-                setAuthentication(null);
-            }
-
+	    public void start(BAsyncResult<bool> asyncResult)
+        {
+            setAuthentication(null);
             transport.negotiateProtocolClient(asyncResult);
 	    }
 
@@ -138,7 +132,9 @@ namespace com.wilutions.byps
         public void setAuthentication(BAuthentication auth)
         {
             if (log.isDebugEnabled()) log.debug("setAuthentication(" + auth + ")");
-            transport.authentication = new ClientAuthentication(this, auth);
+            transport.setAuthentication(
+                new ClientAuthentication(this, auth),
+                auth == null); //onlyIfNull
         }
 
         public BAuthentication getAuthentication()

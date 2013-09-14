@@ -429,7 +429,7 @@ class GenApiClass {
     for (MemberInfo pinfo : methodInfo.requestInfo.members) {
       
       // Supply authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) {
+      if (pctxt.isSessionParam(rinfo, pinfo)) {
         pr.checkpoint();
         
         pr.println("public override void setSession(Object __byps__sess) {");

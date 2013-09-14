@@ -59,7 +59,6 @@ public class GenServer {
 		
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			printAddRemote(rinfo);
-			prH.println();
 		}
 		
 		printConstructorWithClientR();
@@ -149,15 +148,19 @@ public class GenServer {
 	}
 	
 	private void printAddRemote(RemoteInfo rinfo) {
-		TypeInfoCpp skeletonInfoCpp = pctxt.getSkeletonTypeInfoCpp(rinfo);
-		String typeName = skeletonInfoCpp.getTypeName(pack);
-		prH.print("public: void ").print("addRemote(").print(typeName).println(" remoteSkeleton);");
-		
-		prC.print("void ").print(clientCppInfo.getClassName(pack)).print("::addRemote(").print(typeName).println(" remoteSkeleton) {");
-		prC.beginBlock();
-		prC.println("BServer::addRemote(" + rinfo.typeId + ", remoteSkeleton);");
-		prC.endBlock();
-		prC.println("}");
+	  if (rinfo.isClientRemote) {
+  		TypeInfoCpp skeletonInfoCpp = pctxt.getSkeletonTypeInfoCpp(rinfo);
+  		String typeName = skeletonInfoCpp.getTypeName(pack);
+  		prH.print("public: void ").print("addRemote(").print(typeName).println(" remoteSkeleton);");
+  		prH.println();
+  		
+  		prC.print("void ").print(clientCppInfo.getClassName(pack)).print("::addRemote(").print(typeName).println(" remoteSkeleton) {");
+  		prC.beginBlock();
+  		prC.println("BServer::addRemote(" + rinfo.typeId + ", remoteSkeleton);");
+  		prC.endBlock();
+  		prC.println("}");
+  		prC.println();
+	  }
 	}
 
 

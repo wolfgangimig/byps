@@ -178,7 +178,9 @@ public:
 };
 
 BINLINE void BClient::setAuthentication(PAuthentication innerAuth) {
-	transport->authentication = PAuthentication(new BClient_ClientAuthentication(shared_from_this(), innerAuth));
+	transport->setAuthentication(
+		PAuthentication(new BClient_ClientAuthentication(shared_from_this(), innerAuth)),
+		innerAuth == NULL); // onlyIfNull
 }
 
 BINLINE PAuthentication BClient::getAuthentication() {

@@ -180,7 +180,6 @@
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-015.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-016.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-017.cpp" />
-    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-018.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestBase.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteArrays.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteArrays4Dim.cpp" />
@@ -193,6 +192,7 @@
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteServerR.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteSetTypes.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteStreams.cpp" />
+    <ClCompile Include="..\..\..\common\bypstest\TestRemoteWithAuthentication.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestUtilHttp.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestUtils.cpp" />
     <ClCompile Include="bypstest.cpp" />

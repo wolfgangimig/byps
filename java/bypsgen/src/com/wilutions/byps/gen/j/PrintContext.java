@@ -365,7 +365,7 @@ class PrintContext extends PrintContextBase {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
 		  // Skip authentication parameter
-		  if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+		  if (isSessionParam(rinfo, pinfo)) continue;
 		  
 			if (first) first = false; else mpr.print(", ");
 			mpr.print(pinfo.type.toString(rinfo.pack)).print(" ").print(pinfo.name);
@@ -405,7 +405,7 @@ class PrintContext extends PrintContextBase {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
       
 		  // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (isSessionParam(rinfo, pinfo)) continue;
       
 			if (first) first = false; else mpr.print(", ");
 			mpr.print(pinfo.type.toString(rinfo.pack)).print(" ").print(pinfo.name);

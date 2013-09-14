@@ -59,7 +59,6 @@ public class GenServer {
 		
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			printAddRemote(rinfo);
-			pr.println();
 		}
 		
 		pr.endBlock();
@@ -136,13 +135,16 @@ public class GenServer {
 	}
 
 	protected void printAddRemote(RemoteInfo rinfo) {
-		String typeName = pctxt.getSkeletonClassQName(rinfo, pack);
-		pr.print("public ").print(serverClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) {");
-		pr.beginBlock();
-		pr.println("addRemote(" + rinfo.typeId + ", remoteSkeleton);");
-		pr.println("return this;");
-		pr.endBlock();
-		pr.println("}");
+	  if (rinfo.isClientRemote) {
+  		String typeName = pctxt.getSkeletonClassQName(rinfo, pack);
+  		pr.print("public ").print(serverClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) {");
+  		pr.beginBlock();
+  		pr.println("addRemote(" + rinfo.typeId + ", remoteSkeleton);");
+  		pr.println("return this;");
+  		pr.endBlock();
+  		pr.println("}");
+  		pr.println();
+	  }
 	}
 
 	private CodePrinter pr;

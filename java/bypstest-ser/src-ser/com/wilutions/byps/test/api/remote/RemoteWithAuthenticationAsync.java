@@ -26,7 +26,7 @@ public interface RemoteWithAuthenticationAsync extends RemoteWithAuthentication,
 	 * @param sess Session information, always null in this scenario.
 	 * @param userName
 	 * @param userPwd
-	 * @return 
+	 * @return Session object
 	 * @throws RemoteException
 	*/
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:356

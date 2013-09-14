@@ -578,6 +578,250 @@ com.wilutions.byps.test.api.cons.HebrewC = new com.wilutions.byps.test.api.cons.
  * ----------------------------------------------
 */
 
+/**
+ * This class provides a skeleton implementation of the interface RemoteWithAuthentication.
+ * Use an object of this class as the prototype of your interface implementation.
+ * Either provide an asynchronous or a synchronous function in your implementation.
+ * The framework calls only the asynchronous function.
+ */
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function() {
+	
+	this._typeId = 1677934392;
+	
+	this.transport = null; // is set in BServer.addRemote
+	
+	this.toJSON = function (key) {
+		return { _typeId : 1677934392, targetId : this.transport.targetId };
+	};
+	
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Set authentication flag in MySession.
+ * @param useAuth
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.setUseAuthentication = function(useAuth) /* returns void , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Set authentication flag in MySession.
+ * @param useAuth
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_setUseAuthentication = function(useAuth, __byps__asyncResult){
+	try {
+		this.setUseAuthentication(useAuth);
+		__byps__asyncResult(null, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Login.
+ * Only user "Fritz" is allowed to login.
+ * @param sess Session information, always null in this scenario.
+ * @param userName
+ * @param userPwd
+ * @return Session object
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.login = function(sess, userName, userPwd) /* returns com.wilutions.byps.test.api.auth.SessionInfo , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Login.
+ * Only user "Fritz" is allowed to login.
+ * @param sess Session information, always null in this scenario.
+ * @param userName
+ * @param userPwd
+ * @return Session object
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_login = function(sess, userName, userPwd, __byps__asyncResult){
+	try {
+		var __byps__ret = this.login(sess, userName, userPwd);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Do something.
+ * @param sess Session information. Must not be null, if user was logged in.
+ * @param value
+ * @return value+1
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.doit = function(sess, value) /* returns int , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Do something.
+ * @param sess Session information. Must not be null, if user was logged in.
+ * @param value
+ * @return value+1
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_doit = function(sess, value, __byps__asyncResult){
+	try {
+		var __byps__ret = this.doit(sess, value);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Logout
+ * @param sess
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.expire = function(sess) /* returns void , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Logout
+ * @param sess
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_expire = function(sess, __byps__asyncResult){
+	try {
+		this.expire(sess);
+		__byps__asyncResult(null, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Set the number of login calls nessesary to login the user.
+ * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+ * @param count
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.setReloginCount = function(count) /* returns void , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+ * Set the number of login calls nessesary to login the user.
+ * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+ * @param count
+ * @throws RemoteException
+*/
+com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_setReloginCount = function(count, __byps__asyncResult){
+	try {
+		this.setReloginCount(count);
+		__byps__asyncResult(null, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+/**
+ * This class provides a skeleton implementation of the interface ClientIF.
+ * Use an object of this class as the prototype of your interface implementation.
+ * Either provide an asynchronous or a synchronous function in your implementation.
+ * The framework calls only the asynchronous function.
+ */
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
+	
+	this._typeId = 1784257353;
+	
+	this.transport = null; // is set in BServer.addRemote
+	
+	this.toJSON = function (key) {
+		return { _typeId : 1784257353, targetId : this.transport.targetId };
+	};
+	
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.incrementInt = function(a) /* returns int , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_incrementInt = function(a, __byps__asyncResult){
+	try {
+		var __byps__ret = this.incrementInt(a);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.getStreams = function(ctrl) /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_getStreams = function(ctrl, __byps__asyncResult){
+	try {
+		var __byps__ret = this.getStreams(ctrl);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.putStreams = function(strm, ctrl) /* returns void , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_putStreams = function(strm, ctrl, __byps__asyncResult){
+	try {
+		this.putStreams(strm, ctrl);
+		__byps__asyncResult(null, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.sendChat = function(cs) /* returns com.wilutions.byps.test.api.srvr.ChatStructure , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:127
+/**
+*/
+com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __byps__asyncResult){
+	try {
+		var __byps__ret = this.sendChat(cs);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
 
 /**
  * ----------------------------------------------
@@ -2551,7 +2795,9 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream =
 /**
  * This interface is an example for using the authentication mechanism.
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BClientRemote 
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BClientRemote 
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 	
@@ -2581,7 +2827,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setU
  * @param sess Session information, always null in this scenario.
  * @param userName
  * @param userPwd
- * @return 
+ * @return Session object
  * @throws RemoteException
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.login = function(userName, userPwd, __byps__asyncResult) {
@@ -2634,6 +2880,8 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setR
 };
 
 /**
+ * @BClientRemote 
+ * @BClientRemote 
 */
 com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	

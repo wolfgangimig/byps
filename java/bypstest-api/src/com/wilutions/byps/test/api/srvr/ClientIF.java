@@ -6,6 +6,11 @@ import java.util.List;
 import com.wilutions.byps.BRemote;
 import com.wilutions.byps.RemoteException;
 
+/**
+ * 
+ * @BClientRemote
+ *
+ */
 public interface ClientIF extends BRemote {
 	
 	public int incrementInt(int a) throws RemoteException;

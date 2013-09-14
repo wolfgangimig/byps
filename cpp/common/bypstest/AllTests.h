@@ -21,5 +21,6 @@ TestCase* TestRemoteSetTypes_create(void* app);
 TestCase* TestRemoteInlineInstance_create(void* app);
 TestCase* TestRemoteEnums_create(void* app);
 TestCase* TestRemoteConstants_create(void* app);
+TestCase* TestRemoteWithAuthentication_create(void* app);
 
 //#define TEST_LARGE_STREAMS

@@ -230,18 +230,34 @@ public:
 
 	void testCallKilledClientFromClient() {
 		
-		PSkeleton_ClientIF partner(new ClientIFImpl());
+
+		l_info << "client.targetId=" << client->transport->getTargetId().toString();
 		
 		l_info << "create second client";
 		PClient_Testser client2 = TestUtilHttp::createClient(app);
+		BTargetId targetId2 = client2->transport->getTargetId();
+		l_info << "client2.targetId=" << targetId2.toString();
+
+		// Add interface impl to client2
+		PSkeleton_ClientIF partner(new ClientIFImpl());
 		client2->addRemote(partner);
-		
+		BTargetId targetIdPartner = partner->BRemote_getTargetId();
+		l_info << "partner.targetId=" << targetIdPartner.toString();
+
+		// client2 and partner must have the same targetId
+		TASSERT(L"TargetId", targetId2, targetIdPartner);
+
 		l_info << "submit interface of second client";
 		client->serverIF->setPartner(partner);
 				
 		l_info << "receive interface of second client";
 		PClientIF partnerIF = client->serverIF->getPartner();
-		
+		BTargetId targetIdPartnerIF = partnerIF->BRemote_getTargetId();
+		l_info << "partnerIF.targetId=" << targetIdPartnerIF.toString();
+
+		// partner and partnerIF must have the same targetId
+		TASSERT(L"targetIdPartner == targetIdPartnerIF", targetIdPartner, targetIdPartnerIF);
+
 		// stop second client
 		l_info << "stop second client";
 		client2->transport->wire->getTestAdapter()->killClientConnections();

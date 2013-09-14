@@ -142,7 +142,7 @@ class PrintContext extends PrintContextBase {
 			
 			if (!skeleton) {
 		     // Skip authentication parameter
-	      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+	      if (isSessionParam(rinfo, pinfo)) continue;
 			}
 			
 			mpr.print(pinfo.name);

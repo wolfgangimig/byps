@@ -5,12 +5,14 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+using namespace std::chrono;
+
 BINLINE BTransport::BTransport(PApiDescriptor apiDesc, const PWire& wire, const PRemoteRegistry &remoteRegistry)
     : wire(wire)
 	, remoteRegistry(remoteRegistry)
 	, apiDesc(apiDesc)
 	, protocol(PProtocol())
-	, lastAuthenticationTime(0) {
+{
 }
 
 BINLINE BTransport::BTransport(const BTransport &rhs, const BTargetId &targetId)
@@ -18,9 +20,9 @@ BINLINE BTransport::BTransport(const BTransport &rhs, const BTargetId &targetId)
 	, remoteRegistry(rhs.remoteRegistry)
 	, apiDesc(rhs.apiDesc)
 	, protocol(rhs.protocol)
-	, targetId(rhs.targetId)
+	, targetId(targetId)
 	, authentication(rhs.authentication)
-	, lastAuthenticationTime(0) {
+{
 }
 
 BINLINE BTransport::~BTransport() {
@@ -393,7 +395,7 @@ public:
 			byps_unique_lock lock(transport->mtx);
             copyResults = transport->asyncResultsWaitingForAuthentication;
             transport->asyncResultsWaitingForAuthentication.clear();
-            transport->lastAuthenticationTime = time(NULL);
+            transport->lastAuthenticationTime = system_clock::now();
 			transport->lastAuthenticationException = ex;
         }
 
@@ -421,7 +423,11 @@ BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
 
 		{
 			byps_unique_lock lock(mtx);
-			assumeAuthenticationIsValid = lastAuthenticationTime + (RETRY_AUTHENTICATION_AFTER_MILLIS/1000) >= time(NULL);
+
+			system_clock::time_point now = system_clock::now();
+			milliseconds diff = duration_cast<milliseconds>(now - lastAuthenticationTime);
+			assumeAuthenticationIsValid = RETRY_AUTHENTICATION_AFTER_MILLIS >= diff.count();
+
 			if (!assumeAuthenticationIsValid)
 			{
 				first = asyncResultsWaitingForAuthentication.size() == 0;
@@ -450,6 +456,15 @@ BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
 	else {
 		innerResult->setAsyncResult(BVariant(true));
 	}
+}
+
+void BTransport::setAuthentication(PAuthentication auth, bool onlyIfNull) {
+	byps_unique_lock lock(mtx);
+	if (onlyIfNull && authentication) return;
+	authentication = auth;
+	lastAuthenticationException = BException();
+	lastAuthenticationTime = system_clock::time_point();
+	asyncResultsWaitingForAuthentication.clear();
 }
 
 

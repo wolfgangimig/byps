@@ -561,7 +561,18 @@ namespace com.wilutions.byps
             if (log.isDebugEnabled()) log.debug(")internalAuthenticate");
         }
 
-    
+        internal void setAuthentication(BAuthentication auth, bool onlyIfNull) 
+        {
+            lock (asyncResultsWaitingForAuthentication)
+            {
+                if (onlyIfNull && authentication != null) return;
+                authentication = auth;
+                asyncResultsWaitingForAuthentication.Clear();
+                lastAuthenticationException = null;
+                lastAuthenticationTime = 0;
+            }
+        }
+
         /**
         * List of BAsyncResult objects from requests waiting for authentication.
         */

@@ -16,6 +16,7 @@ import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
+import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -509,15 +510,15 @@ class GenApiClass {
 
 	protected void printInitConstructor() {
 		
-		boolean allMembersStatic = true;
+		boolean noMembersToInit = true;
 		for (MemberInfo minfo : serInfo.members) {
-			if (!minfo.isStatic) {
-				allMembersStatic = false;
-				break;
-			}
+			if (minfo.isStatic) continue;
+			if (serInfo.isRequestClass() && pctxt.isSessionParam(methodInfo.remoteInfo, minfo)) continue;
+			noMembersToInit = false;
+			break;
 		}
 		
-		if (allMembersStatic) return;
+		if (noMembersToInit) return;
 		
 		String qname = cppInfo.getQClassName();
 
@@ -552,6 +553,9 @@ class GenApiClass {
 		
 		boolean first = true;
 		for (MemberInfo minfo : serInfo.members) {
+		  
+		  if (serInfo.isRequestClass() && pctxt.isSessionParam(methodInfo.remoteInfo, minfo)) continue;
+		  
 			if (first) first = false; else constr.append(", ");
 			TypeInfoCpp tinfoCpp = new TypeInfoCpp(minfo.type);
 			constr.append(tinfoCpp.getQTypeName()).append(" ").append(minfo.name);
@@ -741,6 +745,7 @@ class GenApiClass {
 		
 		if (serInfo.isRequestClass()) {
 			printExecute();
+			printSetSession();
 		}
 		
 		prH.endBlock();
@@ -767,7 +772,7 @@ class GenApiClass {
 		   .print(" __byps__remoteT = byps_ptr_cast<").print(remoteName).print(">(__byps__remote)")
 		   .println(";");
 		
-		CodePrinter mpr = prC.print("__byps__remoteT->async_").print(methodInfo.name).print("(");
+		CodePrinter mpr = prC.print("__byps__remoteT->").print(methodInfo.name).print("(");
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
@@ -809,6 +814,40 @@ class GenApiClass {
 		prC.println("}");
 	}
 	
+  private void printSetSession() throws IOException {
+    if (methodInfo == null) return;
+  
+    RemoteInfo rinfo = methodInfo.remoteInfo;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+      // Supply authentication parameter
+      if (pctxt.isSessionParam(rinfo, pinfo)) {
+        
+        prH.checkpoint();
+        prC.checkpoint();
+        
+        prH.println("public: virtual void setSession(PSerializable __byps__sess);");
+        
+        prC.print("void ")
+           .print(cppInfo.getClassName(""))
+           .print("::setSession(PSerializable __byps__sess) {");
+        prC.println();
+        prC.beginBlock();
+        
+        SerialInfo sessClass = pctxt.classDB.getSerInfo(rinfo.authParamClassName);
+        TypeInfoCpp cppSessClass = new TypeInfoCpp(sessClass);
+        
+        prC.print(pinfo.name).print(" = byps_ptr_cast<").print(cppSessClass.getQClassName()).println(">(__byps__sess);");
+        prC.endBlock();
+        prC.println("}");
+        prC.println();
+        
+        break;
+      }
+    }
+     
+  }
+	
 	private void printSerialize() {		
 		
 		prH.checkpoint();
@@ -842,7 +881,8 @@ class GenApiClass {
 	}
 	
 	private void printSerializerByteArray() {		
-		
+		prC.checkpoint();
+	  
 		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);
 		prC.println(regCppInfo.namespaceBegin);
 		
@@ -873,6 +913,8 @@ class GenApiClass {
 	
 	
 	private void printSerializer() {		
+	  prC.checkpoint();
+	  
 		String className = cppInfo.getClassName("");
 		
 		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);

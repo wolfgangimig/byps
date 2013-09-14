@@ -47,7 +47,7 @@ class GenRemoteStub {
 			
       // Skip authentication parameter name
 			// BTransport will replace it with the session object
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) {
+      if (pctxt.isSessionParam(rinfo, pinfo)) {
         mpr.print("__byps__sess : '").print(pinfo.name).print("'");
       }
       else {

@@ -68,9 +68,8 @@ public abstract class BClient {
 	public void start(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
 
-    if (transport.authentication == null) {
-      setAuthentication(null);
-    }
+    setAuthentication(null);
+    
 		
 		// Negotiate the protocol and authenticate.
 		// This function will call ClientAuthentication.authenticate()
@@ -87,7 +86,9 @@ public abstract class BClient {
 	 * @param authentication
 	 */
 	public void setAuthentication(BAuthentication authentication) {
-	  transport.authentication = new ClientAuthentication(authentication);
+	  transport.setAuthentication(
+	      new ClientAuthentication(authentication), 
+	      authentication == null); // onylIfNull
 	}
 	
   public BAuthentication getAuthentication() {

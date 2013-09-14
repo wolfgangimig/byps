@@ -476,6 +476,16 @@ public class BTransport {
     if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
     return ret;
   }
+  
+  protected void setAuthentication(BAuthentication auth, boolean onlyIfNull) {
+    synchronized (asyncResultsWaitingForAuthentication) {
+      if (onlyIfNull && authentication != null) return;
+      authentication = auth;
+      asyncResultsWaitingForAuthentication.clear();
+      lastAuthenticationException = null;
+      lastAuthenticationTime = 0;
+    }
+  }
 
   /**
    * List of BAsyncResult objects from requests waiting for authentication.

@@ -175,7 +175,7 @@ public class BDoclet extends Doclet {
 		//"-genc.pack.alias", "com.wilutions.byps.sample1=IX",
 		"-gencpp.max-fsize", "50000",
 
-		"-verbose",
+//		"-verbose",
 		
 //		"--packages",
 //		"com.wilutions.byps.test.api",

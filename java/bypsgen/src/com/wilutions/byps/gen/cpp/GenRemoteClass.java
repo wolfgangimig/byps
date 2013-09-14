@@ -17,8 +17,10 @@ class GenRemoteClass {
 	
 	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
-		log.info("generate " + rinfo.qname);
-		new GenRemoteClass(pctxt, rinfo).generate();
+	  if (rinfo != null) {
+  		log.info("generate " + rinfo.qname);
+  		new GenRemoteClass(pctxt, rinfo).generate();
+	  }
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
@@ -36,7 +38,7 @@ class GenRemoteClass {
 		
 		pctxt.printComments(prH, methodInfo.comments);
 		
-		pctxt.printDeclareMethod(prH, rinfo, methodInfo, EMethodDecl.Header).println(" = 0;");
+		pctxt.printDeclareMethod(prH, null, rinfo, methodInfo).println(" = 0;");
 		
 		//log.debug(GeneratorJ.class.getName(), "printMember");
 	}
@@ -44,7 +46,7 @@ class GenRemoteClass {
 	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
-		pctxt.printDeclareMethodAsync(prH, rinfo, methodInfo, EMethodDecl.Header).println(" = 0;");
+		pctxt.printDeclareMethodAsync(prH, null, rinfo, methodInfo).println(" = 0;");
 		
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 	}

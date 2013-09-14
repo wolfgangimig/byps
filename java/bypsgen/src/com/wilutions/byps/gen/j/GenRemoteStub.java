@@ -54,7 +54,7 @@ class GenRemoteStub {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
       // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (pctxt.isSessionParam(rinfo, pinfo)) continue;
 		  
 			if (first) first = false; else mpr.print(", ");
 			mpr.print(pinfo.name);
@@ -116,7 +116,7 @@ class GenRemoteStub {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
       // Supply authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) {
+      if (pctxt.isSessionParam(rinfo, pinfo)) {
         // Session is set in BTransport by a call to BMethodRequest.setSession()
       }
       else {

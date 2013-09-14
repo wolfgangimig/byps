@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
@@ -18,26 +19,28 @@ class GenRemoteSkeleton {
 	
 	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
-		log.info("generate " + rinfo.qname);
-		new GenRemoteSkeleton(pctxt, rinfo).generate();
+	  if (rinfo.isClientRemote) {
+  		log.info("generate " + rinfo.qname);
+  		new GenRemoteSkeleton(pctxt, rinfo).generate();
+	  }
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
-	private GenRemoteSkeleton(PrintContext pctxt, RemoteInfo rinfo) {
+	private GenRemoteSkeleton(PrintContext pctxt, RemoteInfo rinfo) throws GeneratorException {
 		this.pctxt = pctxt;
-		this.cppInfo = new TypeInfoCpp(rinfo);
+		this.cppInfo = pctxt.getSkeletonTypeInfoCpp(rinfo);
 		this.baseCppInfo = cppInfo.getBaseInfo();
 		this.prH = pctxt.getPrApiAllH();
 		this.prC = pctxt.getPrImplC();
-		this.rinfo = rinfo;
+		this.rinfo = pctxt.getRemoteBaseForSkeleton(rinfo);
 	}
 	
 	private void printMethod(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethod");
 		
-		pctxt.printDeclareMethod(prH, rinfo, methodInfo, EMethodDecl.Header).println(";");
+		pctxt.printDeclareMethod(prH, null, rinfo, methodInfo).println(";");
 		
-		pctxt.printDeclareMethod(prC, rinfo, methodInfo, EMethodDecl.SkeletonImpl).println(" {");
+		pctxt.printDeclareMethod(prC, cppInfo.getClassName(rinfo.pack), rinfo, methodInfo).println(" {");
 		
 		prC.beginBlock();
 		prC.println("throw BException(EX_UNSUPPORTED_METHOD, L\"\");");
@@ -50,9 +53,9 @@ class GenRemoteSkeleton {
 	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
-		pctxt.printDeclareMethodAsync(prH, rinfo, methodInfo, EMethodDecl.Header).println(";");
+		pctxt.printDeclareMethodAsync(prH, null, rinfo, methodInfo).println(";");
 		
-		pctxt.printDeclareMethodAsync(prC, rinfo, methodInfo, EMethodDecl.SkeletonImpl).println(" {");
+		pctxt.printDeclareMethodAsync(prC, cppInfo.getClassName(rinfo.pack), rinfo, methodInfo).println(" {");
 		prC.beginBlock();
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
@@ -116,8 +119,7 @@ class GenRemoteSkeleton {
 	private void generate() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 
-		TypeInfoCpp skeletonCppType = pctxt.getSkeletonTypeInfoCpp(rinfo);
-		String className = skeletonCppType.getClassName(rinfo.pack);
+		String className = cppInfo.getClassName(rinfo.pack);
 		
 		pctxt.printLine(prH);
 		prH.print("// Skeleton class ").println(className);
@@ -133,7 +135,7 @@ class GenRemoteSkeleton {
 		prH.println();
 		
 		prH.print("class ").print(className).println(";");
-		prH.print("typedef byps_ptr<").print(className).print("> ").print(skeletonCppType.getTypeName(rinfo.pack)).println(";");
+		prH.print("typedef byps_ptr<").print(className).print("> ").print(cppInfo.getTypeName(rinfo.pack)).println(";");
 		prH.println();
 		
 		prH.print("class ").print(className)

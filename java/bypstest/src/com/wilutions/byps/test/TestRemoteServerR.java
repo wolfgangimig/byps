@@ -518,6 +518,10 @@ public class TestRemoteServerR {
 		log.info("receive interface of second client");
 		ClientIF partnerIF = client.serverIF.getPartner();
 		
+		TestUtils.assertEquals(log, "targetId", 
+		    client2.transport.getTargetId(), 
+		    partnerIF.BRemote_getTargetId());
+		
 		// stop second client
 		log.info("kill second client");
 		client2.transport.wire.getTestAdapter().killClientConnections();

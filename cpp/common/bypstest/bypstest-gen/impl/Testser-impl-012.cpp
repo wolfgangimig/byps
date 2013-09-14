@@ -2,6 +2,549 @@
 using namespace ::std;
 using namespace ::com::wilutions::byps;
 
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_ServerIF_registerWithClientMap
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::BRequest_ServerIF_registerWithClientMap() : BMethodRequest(1313562065) {
+	id = 0;
+}
+com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::BRequest_ServerIF_registerWithClientMap(int32_t id)
+	: BMethodRequest(1313562065) 
+	, id(id)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::serialize(BIO& ar, const BVERSION version) {
+	ar & id;
+}
+void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PServerIF __byps__remoteT = byps_ptr_cast<ServerIF>(__byps__remote);
+	__byps__remoteT->registerWithClientMap(id, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1921080901(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap& r = * dynamic_cast< com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_ServerIF_setPartner
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::BRequest_ServerIF_setPartner() : BMethodRequest(1313562065) {
+}
+com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::BRequest_ServerIF_setPartner(com::wilutions::byps::test::api::srvr::PClientIF client)
+	: BMethodRequest(1313562065) 
+	, client(client)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::serialize(BIO& ar, const BVERSION version) {
+	ar & client;
+}
+void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PServerIF __byps__remoteT = byps_ptr_cast<ServerIF>(__byps__remote);
+	__byps__remoteT->setPartner(client, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1188403123(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner& r = * dynamic_cast< com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+
+//-------------------------------------------------
+// Implementation of class ChatStructure
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::srvr::ChatStructure::ChatStructure() {
+	sentAt = 0;
+	receivedAt = 0;
+}
+com::wilutions::byps::test::api::srvr::ChatStructure::ChatStructure(::std::wstring msg, double sentAt, double receivedAt)
+	: msg(msg)
+	, sentAt(sentAt)
+	, receivedAt(receivedAt)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::srvr::ChatStructure::serialize(BIO& ar, const BVERSION version) {
+	ar & msg;
+	ar & receivedAt;
+	ar & sentAt;
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_7007(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::srvr::ChatStructure& r = * dynamic_cast< com::wilutions::byps::test::api::srvr::ChatStructure*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::srvr::ChatStructure());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace strm { 
+
+//-------------------------------------------------
+// Implementation of class Stream1
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::strm::Stream1::Stream1() {
+}
+com::wilutions::byps::test::api::strm::Stream1::Stream1(PContentStream is1, ::std::wstring contentType, byps_ptr< BArray1< PContentStream > > arrStream, byps_ptr< ::std::vector< PContentStream > > listStream, byps_ptr< ::std::map< int32_t , PContentStream > > mapStream)
+	: is1(is1)
+	, contentType(contentType)
+	, arrStream(arrStream)
+	, listStream(listStream)
+	, mapStream(mapStream)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::strm::Stream1::serialize(BIO& ar, const BVERSION version) {
+	ar & contentType;
+	ar & arrStream;
+	ar & is1;
+	ar & listStream;
+	ar & mapStream;
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1541129345(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::strm::Stream1& r = * dynamic_cast< com::wilutions::byps::test::api::strm::Stream1*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::strm::Stream1());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_EvolveIF_getClient
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::BRequest_EvolveIF_getClient() : BMethodRequest(2078696281) {
+}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::serialize(BIO& ar, const BVERSION version) {
+}
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
+	__byps__remoteT->getClient([__byps__asyncResult](PEvolveIF __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_2078696281(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_98720592(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient& r = * dynamic_cast< com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_EvolveIF_getEvolve
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::BRequest_EvolveIF_getEvolve() : BMethodRequest(2078696281) {
+}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::serialize(BIO& ar, const BVERSION version) {
+}
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
+	__byps__remoteT->getEvolve([__byps__asyncResult](PEvolve __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_1391985860(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_32041374(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve& r = * dynamic_cast< com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_EvolveIF_sendEvolveToClient
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::BRequest_EvolveIF_sendEvolveToClient() : BMethodRequest(2078696281) {
+}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::serialize(BIO& ar, const BVERSION version) {
+}
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
+	__byps__remoteT->sendEvolveToClient([__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1425170268(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient& r = * dynamic_cast< com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_EvolveIF_setClient
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::BRequest_EvolveIF_setClient() : BMethodRequest(2078696281) {
+}
+com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::BRequest_EvolveIF_setClient(com::wilutions::byps::test::api::ver::PEvolveIF partner)
+	: BMethodRequest(2078696281) 
+	, partner(partner)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::serialize(BIO& ar, const BVERSION version) {
+	ar & partner;
+}
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
+	__byps__remoteT->setClient(partner, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_313337668(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient& r = * dynamic_cast< com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_EvolveIF_setEvolve
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve() : BMethodRequest(2078696281) {
+}
+com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve(com::wilutions::byps::test::api::ver::PEvolve obj)
+	: BMethodRequest(2078696281) 
+	, obj(obj)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::serialize(BIO& ar, const BVERSION version) {
+	ar & obj;
+}
+void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
+	__byps__remoteT->setEvolve(obj, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_246658450(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve& r = * dynamic_cast< com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve());
+	}
+}
+}}}}}
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class Evolve
+// Generated from class com.wilutions.byps.gen.cpp.GenApiClass
+
+com::wilutions::byps::test::api::ver::Evolve::Evolve() {
+	bool1 = false;
+	byte1 = 0;
+	char1 = '\0';
+	short1 = 0;
+	int1 = 0;
+	long1 = 0;
+	float1 = 0;
+	double1 = 0;
+	bool2 = false;
+	byte2 = 0;
+	char2 = '\0';
+	short2 = 0;
+	int2 = 0;
+	long2 = 0;
+	float2 = 0;
+	double2 = 0;
+	bool3 = false;
+	byte3 = 0;
+	char3 = '\0';
+	short3 = 0;
+	int3 = 0;
+	long3 = 0;
+	float3 = 0;
+	double3 = 0;
+}
+com::wilutions::byps::test::api::ver::Evolve::Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, byps_ptr< BArray1< bool > > bools1, PBytes bytes1, byps_ptr< BArray1< wchar_t > > chars1, byps_ptr< BArray1< int16_t > > shorts1, byps_ptr< BArray1< int32_t > > ints1, byps_ptr< BArray1< int64_t > > longs1, byps_ptr< BArray1< float > > floats1, byps_ptr< BArray1< double > > doubles1, ::std::wstring str1, PSerializable obj1, com::wilutions::byps::test::api::ver::PEvolve2 evo1, byps_ptr< ::std::vector< int32_t > > list1, byps_ptr< ::std::set< int32_t > > set1, byps_ptr< ::std::map< int32_t , int32_t > > map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, byps_ptr< BArray1< bool > > bools2, PBytes bytes2, byps_ptr< BArray1< wchar_t > > chars2, byps_ptr< BArray1< int16_t > > shorts2, byps_ptr< BArray1< int32_t > > ints2, byps_ptr< BArray1< int64_t > > longs2, byps_ptr< BArray1< float > > floats2, byps_ptr< BArray1< double > > doubles2, ::std::wstring str2, PSerializable obj2, com::wilutions::byps::test::api::ver::PEvolve2 evo2, byps_ptr< ::std::vector< int32_t > > list2, byps_ptr< ::std::set< int32_t > > set2, byps_ptr< ::std::map< int32_t , int32_t > > map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, byps_ptr< BArray1< bool > > bools3, PBytes bytes3, byps_ptr< BArray1< wchar_t > > chars3, byps_ptr< BArray1< int16_t > > shorts3, byps_ptr< BArray1< int32_t > > ints3, byps_ptr< BArray1< int64_t > > longs3, byps_ptr< BArray1< float > > floats3, byps_ptr< BArray1< double > > doubles3, ::std::wstring str3, PSerializable obj3, com::wilutions::byps::test::api::ver::PEvolve2 evo3, byps_ptr< ::std::vector< int32_t > > list3, byps_ptr< ::std::set< int32_t > > set3, byps_ptr< ::std::map< int32_t , int32_t > > map3)
+	: bool1(bool1)
+	, byte1(byte1)
+	, char1(char1)
+	, short1(short1)
+	, int1(int1)
+	, long1(long1)
+	, float1(float1)
+	, double1(double1)
+	, bools1(bools1)
+	, bytes1(bytes1)
+	, chars1(chars1)
+	, shorts1(shorts1)
+	, ints1(ints1)
+	, longs1(longs1)
+	, floats1(floats1)
+	, doubles1(doubles1)
+	, str1(str1)
+	, obj1(obj1)
+	, evo1(evo1)
+	, list1(list1)
+	, set1(set1)
+	, map1(map1)
+	, bool2(bool2)
+	, byte2(byte2)
+	, char2(char2)
+	, short2(short2)
+	, int2(int2)
+	, long2(long2)
+	, float2(float2)
+	, double2(double2)
+	, bools2(bools2)
+	, bytes2(bytes2)
+	, chars2(chars2)
+	, shorts2(shorts2)
+	, ints2(ints2)
+	, longs2(longs2)
+	, floats2(floats2)
+	, doubles2(doubles2)
+	, str2(str2)
+	, obj2(obj2)
+	, evo2(evo2)
+	, list2(list2)
+	, set2(set2)
+	, map2(map2)
+	, bool3(bool3)
+	, byte3(byte3)
+	, char3(char3)
+	, short3(short3)
+	, int3(int3)
+	, long3(long3)
+	, float3(float3)
+	, double3(double3)
+	, bools3(bools3)
+	, bytes3(bytes3)
+	, chars3(chars3)
+	, shorts3(shorts3)
+	, ints3(ints3)
+	, longs3(longs3)
+	, floats3(floats3)
+	, doubles3(doubles3)
+	, str3(str3)
+	, obj3(obj3)
+	, evo3(evo3)
+	, list3(list3)
+	, set3(set3)
+	, map3(map3)
+	{}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+void com::wilutions::byps::test::api::ver::Evolve::serialize(BIO& ar, const BVERSION version) {
+	ar & bool1;
+	ar & byte1;
+	ar & char1;
+	ar & double1;
+	ar & float1;
+	ar & int1;
+	ar & long1;
+	ar & short1;
+	ar & str1;
+	if (version >= 2) {
+		ar & bool2;
+		ar & byte2;
+		ar & char2;
+		ar & double2;
+		ar & float2;
+		ar & int2;
+		ar & long2;
+		ar & short2;
+		ar & str2;
+		if (version >= 3) {
+			ar & bool3;
+			ar & byte3;
+			ar & char3;
+			ar & double3;
+			ar & float3;
+			ar & int3;
+			ar & long3;
+			ar & short3;
+			ar & str3;
+		}
+	}
+	ar & bools1;
+	ar & bytes1;
+	ar & chars1;
+	ar & doubles1;
+	ar & evo1;
+	ar & floats1;
+	ar & ints1;
+	ar & list1;
+	ar & longs1;
+	ar & map1;
+	ar & obj1;
+	ar & set1;
+	ar & shorts1;
+	if (version >= 2) {
+		ar & bools2;
+		ar & bytes2;
+		ar & chars2;
+		ar & doubles2;
+		ar & evo2;
+		ar & floats2;
+		ar & ints2;
+		ar & list2;
+		ar & longs2;
+		ar & map2;
+		ar & obj2;
+		ar & set2;
+		ar & shorts2;
+		if (version >= 3) {
+			ar & bools3;
+			ar & bytes3;
+			ar & chars3;
+			ar & doubles3;
+			ar & evo3;
+			ar & floats3;
+			ar & ints3;
+			ar & list3;
+			ar & longs3;
+			ar & map3;
+			ar & obj3;
+			ar & set3;
+			ar & shorts3;
+		}
+	}
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1391985860(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		com::wilutions::byps::test::api::ver::Evolve& r = * dynamic_cast< com::wilutions::byps::test::api::ver::Evolve*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::Evolve());
+	}
+}
+}}}}}
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
 
 //-------------------------------------------------
@@ -14,12 +557,13 @@ com::wilutions::byps::test::api::ver::Evolve2::Evolve2() {
 com::wilutions::byps::test::api::ver::Evolve2::Evolve2(int32_t n1)
 	: n1(n1)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:820
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
 void com::wilutions::byps::test::api::ver::Evolve2::serialize(BIO& ar, const BVERSION version) {
 	ar & n1;
 }
 }}}}}}
 
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_573592593(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -31,6 +575,7 @@ void BSerializer_573592593(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1359468275(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -42,6 +587,7 @@ void BSerializer_1359468275(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2087445849(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -53,6 +599,7 @@ void BSerializer_2087445849(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_766441794(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -64,6 +611,7 @@ void BSerializer_766441794(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1516687588(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -75,6 +623,7 @@ void BSerializer_1516687588(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_100361105(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -86,6 +635,7 @@ void BSerializer_100361105(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1957744307(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -97,6 +647,7 @@ void BSerializer_1957744307(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_196606293(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -108,6 +659,7 @@ void BSerializer_196606293(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_39910537(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -119,6 +671,7 @@ void BSerializer_39910537(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1950626768(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -130,6 +683,7 @@ void BSerializer_1950626768(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_183594037(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -141,6 +695,7 @@ void BSerializer_183594037(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_340213335(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -152,6 +707,7 @@ void BSerializer_340213335(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_527503353(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -163,6 +719,7 @@ void BSerializer_527503353(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_124584219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -174,6 +731,7 @@ void BSerializer_124584219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1888107655(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -185,6 +743,7 @@ void BSerializer_1888107655(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1995260457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -196,6 +755,7 @@ void BSerializer_1995260457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1889888075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -207,6 +767,7 @@ void BSerializer_1889888075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_588723219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -218,6 +779,7 @@ void BSerializer_588723219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1590740862(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -229,6 +791,7 @@ void BSerializer_1590740862(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1972793385(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -240,6 +803,7 @@ void BSerializer_1972793385(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_31512998(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -251,6 +815,7 @@ void BSerializer_31512998(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1174971318(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -262,6 +827,7 @@ void BSerializer_1174971318(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_317887457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -273,6 +839,7 @@ void BSerializer_317887457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_172221196(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -284,6 +851,7 @@ void BSerializer_172221196(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1544333227(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -295,6 +863,7 @@ void BSerializer_1544333227(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_202657921(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -306,6 +875,7 @@ void BSerializer_202657921(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1752158699(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -317,6 +887,7 @@ void BSerializer_1752158699(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1088217157(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -328,6 +899,7 @@ void BSerializer_1088217157(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1218831438(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -339,6 +911,7 @@ void BSerializer_1218831438(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1617670280(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -350,6 +923,7 @@ void BSerializer_1617670280(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1059148284(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -361,6 +935,7 @@ void BSerializer_1059148284(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1661807911(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -372,6 +947,7 @@ void BSerializer_1661807911(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1555345627(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -383,6 +959,7 @@ void BSerializer_1555345627(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1628501332(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -394,6 +971,7 @@ void BSerializer_1628501332(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_181681714(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -405,6 +983,7 @@ void BSerializer_181681714(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1050216688(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -416,6 +995,7 @@ void BSerializer_1050216688(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1997002548(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -427,6 +1007,7 @@ void BSerializer_1997002548(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2123584667(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -438,6 +1019,7 @@ void BSerializer_2123584667(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1463615848(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -449,6 +1031,7 @@ void BSerializer_1463615848(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1865834185(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -460,6 +1043,7 @@ void BSerializer_1865834185(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1746702954(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -471,6 +1055,7 @@ void BSerializer_1746702954(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1633500852(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -482,6 +1067,7 @@ void BSerializer_1633500852(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_724129228(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -493,6 +1079,7 @@ void BSerializer_724129228(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1487265161(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -504,6 +1091,7 @@ void BSerializer_1487265161(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_94341197(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -515,6 +1103,7 @@ void BSerializer_94341197(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1799280818(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -526,6 +1115,7 @@ void BSerializer_1799280818(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1851881336(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -537,6 +1127,7 @@ void BSerializer_1851881336(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_703065817(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -548,6 +1139,7 @@ void BSerializer_703065817(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -559,6 +1151,7 @@ void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_779528402(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -570,6 +1163,7 @@ void BSerializer_779528402(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1347703734(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -581,6 +1175,7 @@ void BSerializer_1347703734(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_132175071(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -592,6 +1187,7 @@ void BSerializer_132175071(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_49984088(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -603,6 +1199,7 @@ void BSerializer_49984088(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_601099730(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -614,6 +1211,7 @@ void BSerializer_601099730(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1973996106(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -625,6 +1223,7 @@ void BSerializer_1973996106(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_252873856(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -633,828 +1232,6 @@ void BSerializer_252873856(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		bio & r;
 	} else {
 		pObj = POBJECT(new ::std::map< ::std::wstring , com::wilutions::byps::test::api::enu::EnumPlanets >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_981592984(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::map< ::std::wstring , com::wilutions::byps::test::api::inherit::PClass1 >& r = * reinterpret_cast< ::std::map< ::std::wstring , com::wilutions::byps::test::api::inherit::PClass1 >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::map< ::std::wstring , com::wilutions::byps::test::api::inherit::PClass1 >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1768677016(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::map< ::std::wstring , com::wilutions::byps::test::api::refs::PNode >& r = * reinterpret_cast< ::std::map< ::std::wstring , com::wilutions::byps::test::api::refs::PNode >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::map< ::std::wstring , com::wilutions::byps::test::api::refs::PNode >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1279823631(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::map< ::std::wstring , bool >& r = * reinterpret_cast< ::std::map< ::std::wstring , bool >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::map< ::std::wstring , bool >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1488550492(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::map< ::std::wstring , PSerializable >& r = * reinterpret_cast< ::std::map< ::std::wstring , PSerializable >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::map< ::std::wstring , PSerializable >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1710660846(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::map< ::std::wstring , ::std::wstring >& r = * reinterpret_cast< ::std::map< ::std::wstring , ::std::wstring >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::map< ::std::wstring , ::std::wstring >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_2052431866(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< PBytes >& r = * reinterpret_cast< ::std::set< PBytes >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< PBytes >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_2114305573(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< com::wilutions::byps::test::api::inherit::PClass1 >& r = * reinterpret_cast< ::std::set< com::wilutions::byps::test::api::inherit::PClass1 >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< com::wilutions::byps::test::api::inherit::PClass1 >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1280571537(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes >& r = * reinterpret_cast< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1406124761(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< byps_ptr< BArray1< int32_t > > >& r = * reinterpret_cast< ::std::set< byps_ptr< BArray1< int32_t > > >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< byps_ptr< BArray1< int32_t > > >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1365696060(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< bool >& r = * reinterpret_cast< ::std::set< bool >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< bool >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1320560671(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< double >& r = * reinterpret_cast< ::std::set< double >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< double >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1898022288(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< float >& r = * reinterpret_cast< ::std::set< float >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< float >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1493282670(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< int32_t >& r = * reinterpret_cast< ::std::set< int32_t >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< int32_t >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1457164460(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< int64_t >& r = * reinterpret_cast< ::std::set< int64_t >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< int64_t >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_2028443792(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< int16_t >& r = * reinterpret_cast< ::std::set< int16_t >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< int16_t >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1888799711(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< ::std::wstring >& r = * reinterpret_cast< ::std::set< ::std::wstring >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< ::std::wstring >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_8789515(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::map< float , wchar_t >& r = * reinterpret_cast< ::std::map< float , wchar_t >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::map< float , wchar_t >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_476459792(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::map< int32_t , PContentStream >& r = * reinterpret_cast< ::std::map< int32_t , PContentStream >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::map< int32_t , PContentStream >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_936607009(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< wchar_t >& r = * reinterpret_cast< ::std::set< wchar_t >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< wchar_t >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_855786668(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		::std::set< int32_t >& r = * reinterpret_cast< ::std::set< int32_t >*>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new ::std::set< int32_t >());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1097129250(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		BArray1< int64_t > & r = * reinterpret_cast< BArray1< int64_t > *>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new BArray1< int64_t > ());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_846419204(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		BArray4< int64_t > & r = * reinterpret_cast< BArray4< int64_t > *>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new BArray4< int64_t > ());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_2067161310(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		BArray1< int16_t > & r = * reinterpret_cast< BArray1< int16_t > *>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new BArray1< int16_t > ());
-	}
-}
-}}}}}
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1859644668(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
-	void* p = pObj.get();
-	if (p) { 
-		BArray4< int16_t > & r = * reinterpret_cast< BArray4< int16_t > *>(p);
-		bio & r;
-	} else {
-		pObj = POBJECT(new BArray4< int16_t > ());
-	}
-}
-}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
-
-void BSkeleton_RemoteArrayTypes1dim::setBool(byps_ptr< BArray1< bool > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setBool(byps_ptr< BArray1< bool > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setBool(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setByte(PBytes v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setByte(PBytes v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setByte(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setChar(byps_ptr< BArray1< wchar_t > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setChar(byps_ptr< BArray1< wchar_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setChar(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setShort(byps_ptr< BArray1< int16_t > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setShort(byps_ptr< BArray1< int16_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setShort(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setInt(byps_ptr< BArray1< int32_t > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setInt(byps_ptr< BArray1< int32_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setInt(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setLong(byps_ptr< BArray1< int64_t > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setLong(byps_ptr< BArray1< int64_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setLong(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setFloat(byps_ptr< BArray1< float > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setFloat(byps_ptr< BArray1< float > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setFloat(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setDouble(byps_ptr< BArray1< double > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setDouble(byps_ptr< BArray1< double > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setDouble(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setString(byps_ptr< BArray1< ::std::wstring > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setString(byps_ptr< BArray1< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setString(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setPrimitiveTypes(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-void BSkeleton_RemoteArrayTypes1dim::setObject(byps_ptr< BArray1< PSerializable > > v)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_setObject(byps_ptr< BArray1< PSerializable > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setObject(v);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< bool > > BSkeleton_RemoteArrayTypes1dim::getBool()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getBool(std::function< void (byps_ptr< BArray1< bool > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< bool > > ret = byps_ptr< BArray1< bool > >();
-	try {
-		ret = getBool();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-PBytes BSkeleton_RemoteArrayTypes1dim::getByte()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getByte(std::function< void (PBytes, BException ex) > asyncResult)  {
-	PBytes ret = PBytes();
-	try {
-		ret = getByte();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< wchar_t > > BSkeleton_RemoteArrayTypes1dim::getChar()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getChar(std::function< void (byps_ptr< BArray1< wchar_t > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< wchar_t > > ret = byps_ptr< BArray1< wchar_t > >();
-	try {
-		ret = getChar();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< int16_t > > BSkeleton_RemoteArrayTypes1dim::getShort()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getShort(std::function< void (byps_ptr< BArray1< int16_t > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< int16_t > > ret = byps_ptr< BArray1< int16_t > >();
-	try {
-		ret = getShort();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< int32_t > > BSkeleton_RemoteArrayTypes1dim::getInt()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getInt(std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< int32_t > > ret = byps_ptr< BArray1< int32_t > >();
-	try {
-		ret = getInt();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< int64_t > > BSkeleton_RemoteArrayTypes1dim::getLong()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getLong(std::function< void (byps_ptr< BArray1< int64_t > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< int64_t > > ret = byps_ptr< BArray1< int64_t > >();
-	try {
-		ret = getLong();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< float > > BSkeleton_RemoteArrayTypes1dim::getFloat()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getFloat(std::function< void (byps_ptr< BArray1< float > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< float > > ret = byps_ptr< BArray1< float > >();
-	try {
-		ret = getFloat();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< double > > BSkeleton_RemoteArrayTypes1dim::getDouble()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getDouble(std::function< void (byps_ptr< BArray1< double > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< double > > ret = byps_ptr< BArray1< double > >();
-	try {
-		ret = getDouble();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< ::std::wstring > > BSkeleton_RemoteArrayTypes1dim::getString()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getString(std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< ::std::wstring > > ret = byps_ptr< BArray1< ::std::wstring > >();
-	try {
-		ret = getString();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > BSkeleton_RemoteArrayTypes1dim::getPrimitiveTypes()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getPrimitiveTypes(std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > ret = byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >();
-	try {
-		ret = getPrimitiveTypes();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-byps_ptr< BArray1< PSerializable > > BSkeleton_RemoteArrayTypes1dim::getObject()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
-}
-void BSkeleton_RemoteArrayTypes1dim::async_getObject(std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult)  {
-	byps_ptr< BArray1< PSerializable > > ret = byps_ptr< BArray1< PSerializable > >();
-	try {
-		ret = getObject();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
-}
-}}}}}}
-
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
-
-BStub_RemoteArrayTypes1dim::BStub_RemoteArrayTypes1dim(PTransport transport) 
-	: BStub(transport) {}
-
-void BStub_RemoteArrayTypes1dim::setBool(byps_ptr< BArray1< bool > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setBool(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setBool(byps_ptr< BArray1< bool > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setBool(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setByte(PBytes v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setByte(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setByte(PBytes v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setByte(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setChar(byps_ptr< BArray1< wchar_t > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setChar(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setChar(byps_ptr< BArray1< wchar_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setChar(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setShort(byps_ptr< BArray1< int16_t > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setShort(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setShort(byps_ptr< BArray1< int16_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setShort(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setInt(byps_ptr< BArray1< int32_t > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setInt(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setInt(byps_ptr< BArray1< int32_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setInt(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setLong(byps_ptr< BArray1< int64_t > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setLong(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setLong(byps_ptr< BArray1< int64_t > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setLong(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setFloat(byps_ptr< BArray1< float > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setFloat(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setFloat(byps_ptr< BArray1< float > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setFloat(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setDouble(byps_ptr< BArray1< double > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setDouble(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setDouble(byps_ptr< BArray1< double > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setDouble(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setString(byps_ptr< BArray1< ::std::wstring > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setString(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setString(byps_ptr< BArray1< ::std::wstring > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setString(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setPrimitiveTypes(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-void BStub_RemoteArrayTypes1dim::setObject(byps_ptr< BArray1< PSerializable > > v)  {
-	BSyncResultT< bool > syncResult;	
-	async_setObject(v, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_setObject(byps_ptr< BArray1< PSerializable > > v, std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setObject(v));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< bool > > BStub_RemoteArrayTypes1dim::getBool()  {
-	BSyncResultT< byps_ptr< BArray1< bool > > > syncResult;	
-	async_getBool([&syncResult](byps_ptr< BArray1< bool > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getBool(std::function< void (byps_ptr< BArray1< bool > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getBool());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< bool > >, com::wilutions::byps::test::api::BResult_2058423690 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-PBytes BStub_RemoteArrayTypes1dim::getByte()  {
-	BSyncResultT< PBytes > syncResult;	
-	async_getByte([&syncResult](PBytes v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getByte(std::function< void (PBytes, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getByte());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PBytes, com::wilutions::byps::test::api::BResult_1374008726 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< wchar_t > > BStub_RemoteArrayTypes1dim::getChar()  {
-	BSyncResultT< byps_ptr< BArray1< wchar_t > > > syncResult;	
-	async_getChar([&syncResult](byps_ptr< BArray1< wchar_t > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getChar(std::function< void (byps_ptr< BArray1< wchar_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getChar());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< wchar_t > >, com::wilutions::byps::test::api::BResult_1361632968 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< int16_t > > BStub_RemoteArrayTypes1dim::getShort()  {
-	BSyncResultT< byps_ptr< BArray1< int16_t > > > syncResult;	
-	async_getShort([&syncResult](byps_ptr< BArray1< int16_t > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getShort(std::function< void (byps_ptr< BArray1< int16_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getShort());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int16_t > >, com::wilutions::byps::test::api::BResult_2067161310 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< int32_t > > BStub_RemoteArrayTypes1dim::getInt()  {
-	BSyncResultT< byps_ptr< BArray1< int32_t > > > syncResult;	
-	async_getInt([&syncResult](byps_ptr< BArray1< int32_t > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getInt(std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getInt());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int32_t > >, com::wilutions::byps::test::api::BResult_100361105 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< int64_t > > BStub_RemoteArrayTypes1dim::getLong()  {
-	BSyncResultT< byps_ptr< BArray1< int64_t > > > syncResult;	
-	async_getLong([&syncResult](byps_ptr< BArray1< int64_t > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getLong(std::function< void (byps_ptr< BArray1< int64_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getLong());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int64_t > >, com::wilutions::byps::test::api::BResult_1097129250 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< float > > BStub_RemoteArrayTypes1dim::getFloat()  {
-	BSyncResultT< byps_ptr< BArray1< float > > > syncResult;	
-	async_getFloat([&syncResult](byps_ptr< BArray1< float > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getFloat(std::function< void (byps_ptr< BArray1< float > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getFloat());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< float > >, com::wilutions::byps::test::api::BResult_766441794 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< double > > BStub_RemoteArrayTypes1dim::getDouble()  {
-	BSyncResultT< byps_ptr< BArray1< double > > > syncResult;	
-	async_getDouble([&syncResult](byps_ptr< BArray1< double > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getDouble(std::function< void (byps_ptr< BArray1< double > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getDouble());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< double > >, com::wilutions::byps::test::api::BResult_1359468275 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< ::std::wstring > > BStub_RemoteArrayTypes1dim::getString()  {
-	BSyncResultT< byps_ptr< BArray1< ::std::wstring > > > syncResult;	
-	async_getString([&syncResult](byps_ptr< BArray1< ::std::wstring > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getString(std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getString());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< ::std::wstring > >, com::wilutions::byps::test::api::BResult_1888107655 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayTypes1dim::getPrimitiveTypes()  {
-	BSyncResultT< byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > > syncResult;	
-	async_getPrimitiveTypes([&syncResult](byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getPrimitiveTypes(std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getPrimitiveTypes());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, com::wilutions::byps::test::api::BResult_801243127 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-byps_ptr< BArray1< PSerializable > > BStub_RemoteArrayTypes1dim::getObject()  {
-	BSyncResultT< byps_ptr< BArray1< PSerializable > > > syncResult;	
-	async_getObject([&syncResult](byps_ptr< BArray1< PSerializable > > v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes1dim::async_getObject(std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getObject());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< PSerializable > >, com::wilutions::byps::test::api::BResult_183594037 >(asyncResult) );
-	transport->send(req, outerResult);
-}
-}}}}}}
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1557084481(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport));
-	}
-	else {
-		com::wilutions::byps::test::api::remote::RemoteArrayTypes1dim* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteArrayTypes1dim*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
 	}
 }
 }}}}}

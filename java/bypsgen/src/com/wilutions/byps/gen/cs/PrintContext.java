@@ -284,7 +284,7 @@ public class PrintContext extends PrintContextBase {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
       // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (isSessionParam(rinfo, pinfo)) continue;
       		  
 			if (first) first = false; else mpr.print(", ");
 			cstype = toCSharp(pinfo.type);
@@ -304,7 +304,7 @@ public class PrintContext extends PrintContextBase {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
       
 		  // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (isSessionParam(rinfo, pinfo)) continue;
 
       if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);
@@ -347,7 +347,7 @@ public class PrintContext extends PrintContextBase {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 
       // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (isSessionParam(rinfo, pinfo)) continue;
 
       if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);

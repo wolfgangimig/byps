@@ -207,16 +207,16 @@ public:
 
 		// send stream
 		PRemoteStreams remote = client->remoteStreams;
-		l_info << L"remote->async_setImage...";
-		remote->async_setImage(strm, [this, remote, nbOfBytes, &testResult](bool, BException ex) {
+		l_info << L"remote->setImage...";
+		remote->setImage(strm, [this, remote, nbOfBytes, &testResult](bool, BException ex) {
 	
-			l_info << L"remote->async_setImage OK";
+			l_info << L"remote->setImage OK";
 
 			// read stream and compare bytes
-			l_info << L"remote->async_getImage...";
-			remote->async_getImage([this, nbOfBytes, &testResult](PContentStream strmR, BException ex) {
+			l_info << L"remote->getImage...";
+			remote->getImage([this, nbOfBytes, &testResult](PContentStream strmR, BException ex) {
 
-				l_info << L"remote->async_getImage OK";
+				l_info << L"remote->getImage OK";
 
 				if (ex) {
 					l_info << L"exception=" << ex.toString();

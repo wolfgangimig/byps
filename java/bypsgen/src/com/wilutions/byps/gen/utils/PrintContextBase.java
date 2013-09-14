@@ -4,8 +4,11 @@ import java.io.IOException;
 
 import com.wilutions.byps.BApiDescriptor;
 import com.wilutions.byps.BBinaryModel;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.GeneratorProperties;
 import com.wilutions.byps.gen.api.MemberInfo;
+import com.wilutions.byps.gen.api.ParamInfo;
+import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.db.BRegistryForClassDB;
@@ -112,6 +115,23 @@ public class PrintContextBase {
 		}
 		return sbuf.toString();
 	}	
+	
+	public boolean isSessionParam(RemoteInfo rinfo, MemberInfo pinfo ) {
+    return (rinfo != null && rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName));
+	}
+	
+  public RemoteInfo getRemoteBaseForStub(RemoteInfo rinfo) throws GeneratorException {
+    RemoteInfo baseRemote = rinfo.getRemoteAuth();
+    if (baseRemote == null) baseRemote = rinfo;
+    return baseRemote;
+  }
+
+  public RemoteInfo getRemoteBaseForSkeleton(RemoteInfo rinfo) throws GeneratorException {
+    RemoteInfo baseRemote = rinfo.getRemoteNoAuth();
+    return baseRemote;
+  }
+
+	
 	protected String apiName;
 	public final String apiPack;
 	public final BBinaryModel bmodel = BBinaryModel.MEDIUM;

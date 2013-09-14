@@ -26,6 +26,7 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
   @Override
   public void setUseAuthentication(boolean useAuth) throws RemoteException {
     MySession.useAuthentication = useAuth;
+    state = EState.INVALID;
   }
 
   @Override

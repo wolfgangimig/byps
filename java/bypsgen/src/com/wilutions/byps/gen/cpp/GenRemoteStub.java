@@ -7,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BRegistry;
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
@@ -24,21 +25,21 @@ class GenRemoteStub {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
-	private GenRemoteStub(PrintContext pctxt, RemoteInfo rinfo) {
+	private GenRemoteStub(PrintContext pctxt, RemoteInfo rinfo) throws GeneratorException {
 		this.pctxt = pctxt;
-		this.cppInfo = new TypeInfoCpp(rinfo);
+		this.cppInfo = pctxt.getStubTypeInfoCpp(rinfo);
 		this.baseCppInfo = cppInfo.getBaseInfo();
 		this.prH = pctxt.getPrApiAllH();
 		this.prC = pctxt.getPrImplC();
-		this.rinfo = rinfo;
+		this.rinfo = pctxt.getRemoteBaseForStub(rinfo);
 	}
 	
 	private void printMethod(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethod");
 		
-		pctxt.printDeclareMethod(prH, rinfo, methodInfo, EMethodDecl.Header).println(";");
+		pctxt.printDeclareMethod(prH, null, rinfo, methodInfo).println(";");
 		
-		pctxt.printDeclareMethod(prC, rinfo, methodInfo, EMethodDecl.StubImpl).println(" {");
+		pctxt.printDeclareMethod(prC, cppInfo.getClassName(rinfo.pack), rinfo, methodInfo).println(" {");
 		
 		prC.beginBlock();
 		
@@ -55,9 +56,13 @@ class GenRemoteStub {
 		prC.println();
 
 		String methodName = pctxt.makePublicMemberName(methodInfo.name);
-		CodePrinter mpr = prC.print("async_").print(methodName).print("(");
+		CodePrinter mpr = prC.print(methodName).print("(");
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+      // Skip authentication parameter
+      if (pctxt.isSessionParam(rinfo, pinfo)) continue;
+		  
 			if (first) first = false; else mpr.print(", ");
 			mpr.print(pinfo.name);
 		}
@@ -153,9 +158,9 @@ class GenRemoteStub {
 	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
-		pctxt.printDeclareMethodAsync(prH, rinfo, methodInfo, EMethodDecl.Header).println(";");
+		pctxt.printDeclareMethodAsync(prH, null, rinfo, methodInfo).println(";");
 	
-		pctxt.printDeclareMethodAsync(prC, rinfo, methodInfo, EMethodDecl.StubImpl).println(" {");
+		pctxt.printDeclareMethodAsync(prC, cppInfo.getClassName(rinfo.pack), rinfo, methodInfo).println(" {");
 		prC.beginBlock();
 		
 		TypeInfoCpp requestCppInfo = new TypeInfoCpp(methodInfo.requestInfo);
@@ -166,6 +171,10 @@ class GenRemoteStub {
 		if (methodInfo.requestInfo.members.size() != 0) {
 			boolean first = true;
 			for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+			  
+	      // Skip authentication parameter
+	      if (pctxt.isSessionParam(rinfo, pinfo)) continue;
+			  
 				if (first) first = false; else mpr = mpr.print(", ");
 				mpr = mpr.print(pinfo.name);
 			}
@@ -211,7 +220,9 @@ class GenRemoteStub {
 	}
 
 	private void printSerializer() {		
-		String className = pctxt.getStubTypeInfoCpp(rinfo).getQClassName();
+	  prC.checkpoint();
+	  
+		String className = cppInfo.getQClassName();
 		String remoteClassName = new TypeInfoCpp(rinfo).getQClassName();
 		
 		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);
@@ -249,8 +260,7 @@ class GenRemoteStub {
 	private void generate() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 
-		TypeInfoCpp stubCppType = pctxt.getStubTypeInfoCpp(rinfo);
-		String className = stubCppType.getClassName(rinfo.pack);
+		String className = cppInfo.getClassName(rinfo.pack);
 		
 		pctxt.printLine(prH);
 		prH.print("// Stub class ").println(className);
@@ -264,7 +274,7 @@ class GenRemoteStub {
 		prH.println();
 		
 		prH.print("class ").print(className).println(";");
-		prH.print("typedef byps_ptr<").print(className).print("> ").print(stubCppType.getTypeName(rinfo.pack)).println(";");
+		prH.print("typedef byps_ptr<").print(className).print("> ").print(cppInfo.getTypeName(rinfo.pack)).println(";");
 		prH.println();
 		
 		prH.print("class ").print(className)
@@ -302,8 +312,7 @@ class GenRemoteStub {
 	}
 
 	private void printConstructor() {
-		TypeInfoCpp stubCppType = pctxt.getStubTypeInfoCpp(rinfo);
-		String className = stubCppType.getClassName(rinfo.pack);
+		String className = cppInfo.getClassName(rinfo.pack);
 		
 		prH.print("public: ").print(className).print("(PTransport transport);");
 		prH.println();

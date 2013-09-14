@@ -7,6 +7,7 @@ using com.wilutions.byps.test.api.prim;
 using com.wilutions.byps.test.api.arr;
 using com.wilutions.byps.test.api.inl;
 using com.wilutions.byps.test.api.auth;
+using System.Threading;
 
 namespace bypstest
 {
@@ -21,6 +22,10 @@ namespace bypstest
         [TestInitialize]
         public void setUp()
         {
+            BClient_Testser client1 = TestUtilsHttp.createClient();
+            client1.RemoteWithAuthentication.SetUseAuthentication(true);
+            client1.done();
+
             client = TestUtilsHttp.createClient();
             remote = client.RemoteWithAuthentication;
         }
@@ -100,6 +105,9 @@ namespace bypstest
             log.info("remote.Expire ... ");
             remote.Expire();
             log.info("remote.Expire OK ");
+
+            // Wait 1s, BTransport assumes that a session is at least 1s valid.
+            Thread.Sleep(1000);
 
             // Re-login
             log.info("2 remote.Doit ... ");

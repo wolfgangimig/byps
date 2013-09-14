@@ -44,9 +44,10 @@ protected:
 
     byps_mutex mtx;
 
-	time_t lastAuthenticationTime;
+	std::chrono::system_clock::time_point lastAuthenticationTime;
 	std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
 	BException lastAuthenticationException;
+	void setAuthentication(PAuthentication auth, bool onlyIfNull);
 
 	friend class BTransport_MyNegoAsyncResult;
 	friend class BTransport_MyAsyncResultRelogin;

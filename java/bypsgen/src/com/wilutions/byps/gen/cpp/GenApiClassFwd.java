@@ -14,6 +14,7 @@ class GenApiClassFwd {
 	static Log log = LogFactory.getLog(GenApiClassFwd.class);
 	
 	static void generate(PrintContext pctxt, TypeInfo tinfo) throws IOException {
+		if (tinfo == null) return;
 		
 		log.info("Generate type " + tinfo.typeId + ": " + tinfo);
 		CodePrinter prH = null;

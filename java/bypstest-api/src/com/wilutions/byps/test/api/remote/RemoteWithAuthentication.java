@@ -7,6 +7,7 @@ import com.wilutions.byps.test.api.auth.SessionInfo;
 /**
  * This interface is an example for using the authentication mechanism.
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BClientRemote
  */
 public interface RemoteWithAuthentication extends BRemote {
 
@@ -23,7 +24,7 @@ public interface RemoteWithAuthentication extends BRemote {
    * @param sess Session information, always null in this scenario.
    * @param userName 
    * @param userPwd
-   * @return
+   * @return Session object
    * @throws RemoteException
    */
   public SessionInfo login(SessionInfo sess, String userName, String userPwd) throws RemoteException;

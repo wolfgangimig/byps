@@ -58,7 +58,6 @@ public class GenClient {
 		
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			printAddRemote(rinfo);
-			pr.println();
 		}
 		
 		printConstructorWithoutServerR();
@@ -170,14 +169,17 @@ public class GenClient {
 	}
 
 	private void printAddRemote(RemoteInfo rinfo) {
-		String typeName = pctxt.getSkeletonClassQName(rinfo, pack);
-		pr.print("public ").print(clientClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) {");
-		pr.beginBlock();
-		pr.println("if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, \"No reverse connections.\");");
-		pr.println("serverR.server.addRemote(" + rinfo.typeId + ", remoteSkeleton);");
-		pr.println("return this;");
-		pr.endBlock();
-		pr.println("}");
+	  if (rinfo.isClientRemote) {
+  		String typeName = pctxt.getSkeletonClassQName(rinfo, pack);
+  		pr.print("public ").print(clientClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) {");
+  		pr.beginBlock();
+  		pr.println("if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, \"No reverse connections.\");");
+  		pr.println("serverR.server.addRemote(" + rinfo.typeId + ", remoteSkeleton);");
+  		pr.println("return this;");
+  		pr.endBlock();
+  		pr.println("}");
+      pr.println();
+	  }
 	}
 
 

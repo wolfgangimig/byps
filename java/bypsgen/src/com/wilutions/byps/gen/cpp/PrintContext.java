@@ -310,16 +310,6 @@ class PrintContext extends PrintContextBase {
 		}
 	}
 
-	public CodePrinter printDefineMethod(CodePrinter pr, RemoteInfo rinfo,
-			MethodInfo methodInfo) {
-		return pr;
-	}
-
-	public CodePrinter printDefineMethodAsync(CodePrinter pr,
-			RemoteInfo rinfo, MethodInfo methodInfo) {
-		return pr;
-	}
-
 	public String makePublicMemberName(String name) throws GeneratorException {
 		if (((PropertiesCpp)props).isUppercaseFirstLetter()) {
 			name = Utils.firstCharToUpper(name);
@@ -331,28 +321,25 @@ class PrintContext extends PrintContextBase {
 		Header, StubImpl, SkeletonImpl
 	}
 
-	public CodePrinter printDeclareMethodAsync(CodePrinter pr,
-			RemoteInfo rinfo, MethodInfo methodInfo, EMethodDecl methodDecl) throws GeneratorException {
-		String methodName = "async_" + makePublicMemberName(methodInfo.name);
+	public CodePrinter printDeclareMethodAsync(CodePrinter pr, String stubSkelClassName,
+			RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
+		String methodName = makePublicMemberName(methodInfo.name);
 		
-		String classNameMethodName = methodName;
-		String accessDecl = "public: virtual ";
-		switch (methodDecl) {
-		case SkeletonImpl: 
-			classNameMethodName = getSkeletonTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
-			accessDecl = "";
-			break;
-		case StubImpl: 
-			classNameMethodName = getStubTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
-			accessDecl = "";
-			break;
-		default: break;
-		}
+    String classNameMethodName = methodName;
+    String accessDecl = "public: virtual ";
+    if (stubSkelClassName != null) {
+      classNameMethodName = stubSkelClassName + "::" + methodName;
+      accessDecl = "";
+    }
 
 		CodePrinter mpr = pr.print(accessDecl).print("void ").print(classNameMethodName).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+      // Skip authentication parameter
+      if (isSessionParam(rinfo, pinfo)) continue;
+		  
 			if (first) first = false; else mpr.print(", ");
 			TypeInfoCpp tinfoCpp = new TypeInfoCpp(pinfo.type);
 			mpr.print(tinfoCpp.toString(rinfo.pack)).print(" ").print(pinfo.name);
@@ -365,7 +352,7 @@ class PrintContext extends PrintContextBase {
 		if (!first) mpr.print(", ");
 		
 		if (lambdaSupported) {
-			mpr.print("std::function< void (").print(rtype).print(", BException ex) > asyncResult) ");
+			mpr.print("::std::function< void (").print(rtype).print(", BException ex) > asyncResult) ");
 		}
 		else {
 			mpr.print("byps_ptr<BAsyncResultT<").print(rtype).print(" > > asyncResult) ");
@@ -374,8 +361,8 @@ class PrintContext extends PrintContextBase {
 		return mpr;
 	}
 
-	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo,
-			MethodInfo methodInfo, EMethodDecl methodDecl) throws GeneratorException {
+	public CodePrinter printDeclareMethod(CodePrinter pr, String stubSkelClassName, RemoteInfo rinfo,
+			MethodInfo methodInfo) throws GeneratorException {
 		String methodName = makePublicMemberName(methodInfo.name);
 
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
@@ -384,22 +371,19 @@ class PrintContext extends PrintContextBase {
 		
 		String classNameMethodName = methodName;
 		String accessDecl = "public: virtual ";
-		switch (methodDecl) {
-		case SkeletonImpl: 
-			classNameMethodName = getSkeletonTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
-			accessDecl = "";
-			break;
-		case StubImpl: 
-			classNameMethodName = getStubTypeInfoCpp(rinfo).getClassName(rinfo.pack) + "::" + methodName;
-			accessDecl = "";
-			break;
-		default: break;
-		}
-
+    if (stubSkelClassName != null) {
+      classNameMethodName = stubSkelClassName + "::" + methodName;
+      accessDecl = "";
+    }
+    
 		CodePrinter mpr = pr.print(accessDecl).print(rtype).print(" ").print(classNameMethodName).print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+		  
+      // Skip authentication parameter
+      if (isSessionParam(rinfo, pinfo)) continue;
+		  
 			if (first) first = false; else mpr.print(", ");
 			tinfoCpp = new TypeInfoCpp(pinfo.type);
 			mpr.print(tinfoCpp.toString(rinfo.pack)).print(" ").print(pinfo.name);

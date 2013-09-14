@@ -54,7 +54,7 @@ class GenRemoteStub {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
       // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (pctxt.isSessionParam(rinfo, pinfo)) continue;
 		  
 			if (first) first = false; else mpr.print(", ");
 			String mname = pctxt.makeValidMemberName(pinfo.name);
@@ -117,7 +117,7 @@ class GenRemoteStub {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 		  
       // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (pctxt.isSessionParam(rinfo, pinfo)) continue;
 		  
 			String mname = pctxt.makeValidMemberName(pinfo.name);
 			pr.print("req._").print(pinfo.name).print(" = ").print(mname).print(";").println();
@@ -152,7 +152,7 @@ class GenRemoteStub {
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
       
 		  // Skip authentication parameter
-      if (rinfo.authParamClassName != null && pinfo.type.qname.equals(rinfo.authParamClassName)) continue;
+      if (pctxt.isSessionParam(rinfo, pinfo)) continue;
 
       if (first) first = false; else mpr.print(", ");
 			String mname = pctxt.makeValidMemberName(pinfo.name);
