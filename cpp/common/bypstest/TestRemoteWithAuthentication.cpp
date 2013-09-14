@@ -78,6 +78,19 @@ public:
 		TestBase::afterCase();
 	}
 
+	virtual void afterFunction(const TestFunction& f) {
+        if (client)
+        {
+            try
+            {
+				client->remoteWithAuthentication->expire();
+            }
+            catch (const BException&) { }
+        }
+
+		TestBase::afterFunction(f);
+	}
+
 	void testNoAuthObjectSupplied() {
 		l_info << L"testNoAuthObjectSupplied(";
     
