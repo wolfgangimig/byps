@@ -98,4 +98,5 @@ HEADERS += \
     ../../common/byps/include/platform/any/any.h \
     ../../common/byps/include/BThreadPool.hpp \
     ../../common/byps/include/platform/qt/QTThreadPool.hpp \
-    ../../common/byps/include/platform/qt/QTThreadPool.h
+    ../../common/byps/include/platform/qt/QTThreadPool.h \
+    ../../common/byps/include/BVersioning.h

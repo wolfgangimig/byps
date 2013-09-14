@@ -162,4 +162,5 @@ HEADERS += \
     ../../common/testfw/include/TestCase.h \
     ../../common/testfw/include/TestAssert.h \
     ../../common/testfw/include/AssertException.hpp \
-    ../../common/testfw/include/AssertException.h
+    ../../common/testfw/include/AssertException.h \
+    ../../common/byps/include/BVersioning.h

@@ -51,7 +51,6 @@ protected:
 
 	friend class BTransport_MyNegoAsyncResult;
 	friend class BTransport_MyAsyncResultRelogin;
-	friend class BTransport_MyNegoAsyncResult;
 	friend class BTransport_InternalAuthenticate_BAsyncResult;
 	friend class BClient;
 

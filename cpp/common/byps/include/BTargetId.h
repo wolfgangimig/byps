@@ -33,7 +33,7 @@ public:
 	}
 
 	template <typename _CHAR> 
-	friend static std::basic_ostream<_CHAR>& operator << (std::basic_ostream<_CHAR>& os, const BTargetId& targetId) {
+    friend std::basic_ostream<_CHAR>& operator << (std::basic_ostream<_CHAR>& os, const BTargetId& targetId) {
 		os << (_CHAR)'[' << (_CHAR)'0' << (_CHAR)'x' << std::hex << std::setw(8) << targetId.v1 << targetId.v2 << (_CHAR)']';
 		return os << std::dec << std::setw(0);
 	}
