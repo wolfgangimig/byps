@@ -539,6 +539,7 @@ class GenApiClass {
 		
 		for (MemberInfo minfo : serInfo.members) {
 			if (minfo.isStatic) continue;
+			if (serInfo.isRequestClass() && pctxt.isSessionParam(methodInfo.remoteInfo, minfo)) continue;
 			prC.print( first ? ": " : ", " ).print(minfo.name).print("(").print(minfo.name).println(")");
 			first = false;
 		}

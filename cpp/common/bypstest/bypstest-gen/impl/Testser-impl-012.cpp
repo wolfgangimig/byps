@@ -15,7 +15,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::
 	: BMethodRequest(1313562065) 
 	, id(id)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::serialize(BIO& ar, const BVERSION version) {
 	ar & id;
 }
@@ -33,7 +33,7 @@ void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_registerWithClient
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1921080901(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -57,7 +57,7 @@ com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::BRequest_Se
 	: BMethodRequest(1313562065) 
 	, client(client)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::serialize(BIO& ar, const BVERSION version) {
 	ar & client;
 }
@@ -75,7 +75,7 @@ void com::wilutions::byps::test::api::srvr::BRequest_ServerIF_setPartner::execut
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1188403123(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -102,7 +102,7 @@ com::wilutions::byps::test::api::srvr::ChatStructure::ChatStructure(::std::wstri
 	, sentAt(sentAt)
 	, receivedAt(receivedAt)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::srvr::ChatStructure::serialize(BIO& ar, const BVERSION version) {
 	ar & msg;
 	ar & receivedAt;
@@ -110,7 +110,7 @@ void com::wilutions::byps::test::api::srvr::ChatStructure::serialize(BIO& ar, co
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_7007(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -137,7 +137,7 @@ com::wilutions::byps::test::api::strm::Stream1::Stream1(PContentStream is1, ::st
 	, listStream(listStream)
 	, mapStream(mapStream)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::strm::Stream1::serialize(BIO& ar, const BVERSION version) {
 	ar & contentType;
 	ar & arrStream;
@@ -147,7 +147,7 @@ void com::wilutions::byps::test::api::strm::Stream1::serialize(BIO& ar, const BV
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1541129345(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -167,7 +167,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::BRequest_EvolveIF_getClient() : BMethodRequest(2078696281) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -184,7 +184,7 @@ void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::execute(
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_98720592(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -204,7 +204,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::BRequest_EvolveIF_getEvolve() : BMethodRequest(2078696281) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -221,7 +221,7 @@ void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getEvolve::execute(
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_32041374(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -241,7 +241,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::BRequest_EvolveIF_sendEvolveToClient() : BMethodRequest(2078696281) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -258,7 +258,7 @@ void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient:
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1425170268(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -282,7 +282,7 @@ com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::BRequest_Evol
 	: BMethodRequest(2078696281) 
 	, partner(partner)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::serialize(BIO& ar, const BVERSION version) {
 	ar & partner;
 }
@@ -300,7 +300,7 @@ void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setClient::execute(
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_313337668(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -324,7 +324,7 @@ com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_Evol
 	: BMethodRequest(2078696281) 
 	, obj(obj)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::serialize(BIO& ar, const BVERSION version) {
 	ar & obj;
 }
@@ -342,7 +342,7 @@ void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_setEvolve::execute(
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_246658450(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -454,7 +454,7 @@ com::wilutions::byps::test::api::ver::Evolve::Evolve(bool bool1, int8_t byte1, w
 	, set3(set3)
 	, map3(map3)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::ver::Evolve::serialize(BIO& ar, const BVERSION version) {
 	ar & bool1;
 	ar & byte1;
@@ -533,7 +533,7 @@ void com::wilutions::byps::test::api::ver::Evolve::serialize(BIO& ar, const BVER
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1391985860(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -557,13 +557,13 @@ com::wilutions::byps::test::api::ver::Evolve2::Evolve2() {
 com::wilutions::byps::test::api::ver::Evolve2::Evolve2(int32_t n1)
 	: n1(n1)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::ver::Evolve2::serialize(BIO& ar, const BVERSION version) {
 	ar & n1;
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_573592593(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -575,7 +575,7 @@ void BSerializer_573592593(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1359468275(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -587,7 +587,7 @@ void BSerializer_1359468275(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2087445849(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -599,7 +599,7 @@ void BSerializer_2087445849(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_766441794(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -611,7 +611,7 @@ void BSerializer_766441794(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1516687588(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -623,7 +623,7 @@ void BSerializer_1516687588(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_100361105(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -635,7 +635,7 @@ void BSerializer_100361105(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1957744307(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -647,7 +647,7 @@ void BSerializer_1957744307(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_196606293(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -659,7 +659,7 @@ void BSerializer_196606293(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_39910537(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -671,7 +671,7 @@ void BSerializer_39910537(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1950626768(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -683,7 +683,7 @@ void BSerializer_1950626768(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_183594037(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -695,7 +695,7 @@ void BSerializer_183594037(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_340213335(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -707,7 +707,7 @@ void BSerializer_340213335(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_527503353(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -719,7 +719,7 @@ void BSerializer_527503353(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_124584219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -731,7 +731,7 @@ void BSerializer_124584219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1888107655(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -743,7 +743,7 @@ void BSerializer_1888107655(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1995260457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -755,7 +755,7 @@ void BSerializer_1995260457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1889888075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -767,7 +767,7 @@ void BSerializer_1889888075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_588723219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -779,7 +779,7 @@ void BSerializer_588723219(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1590740862(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -791,7 +791,7 @@ void BSerializer_1590740862(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1972793385(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -803,7 +803,7 @@ void BSerializer_1972793385(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_31512998(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -815,7 +815,7 @@ void BSerializer_31512998(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1174971318(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -827,7 +827,7 @@ void BSerializer_1174971318(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_317887457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -839,7 +839,7 @@ void BSerializer_317887457(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_172221196(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -851,7 +851,7 @@ void BSerializer_172221196(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1544333227(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -863,7 +863,7 @@ void BSerializer_1544333227(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_202657921(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -875,7 +875,7 @@ void BSerializer_202657921(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1752158699(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -887,7 +887,7 @@ void BSerializer_1752158699(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1088217157(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -899,7 +899,7 @@ void BSerializer_1088217157(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1218831438(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -911,7 +911,7 @@ void BSerializer_1218831438(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1617670280(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -923,7 +923,7 @@ void BSerializer_1617670280(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1059148284(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -935,7 +935,7 @@ void BSerializer_1059148284(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1661807911(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -947,7 +947,7 @@ void BSerializer_1661807911(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1555345627(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -959,7 +959,7 @@ void BSerializer_1555345627(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1628501332(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -971,7 +971,7 @@ void BSerializer_1628501332(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_181681714(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -983,7 +983,7 @@ void BSerializer_181681714(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1050216688(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -995,7 +995,7 @@ void BSerializer_1050216688(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1997002548(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1007,7 +1007,7 @@ void BSerializer_1997002548(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2123584667(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1019,7 +1019,7 @@ void BSerializer_2123584667(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1463615848(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1031,7 +1031,7 @@ void BSerializer_1463615848(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1865834185(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1043,7 +1043,7 @@ void BSerializer_1865834185(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1746702954(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1055,7 +1055,7 @@ void BSerializer_1746702954(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1633500852(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1067,7 +1067,7 @@ void BSerializer_1633500852(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_724129228(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1079,7 +1079,7 @@ void BSerializer_724129228(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1487265161(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1091,7 +1091,7 @@ void BSerializer_1487265161(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_94341197(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1103,7 +1103,7 @@ void BSerializer_94341197(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1799280818(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1115,7 +1115,7 @@ void BSerializer_1799280818(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1851881336(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1127,7 +1127,7 @@ void BSerializer_1851881336(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_703065817(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1139,7 +1139,7 @@ void BSerializer_703065817(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1151,7 +1151,7 @@ void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_779528402(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1163,7 +1163,7 @@ void BSerializer_779528402(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1347703734(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1175,7 +1175,7 @@ void BSerializer_1347703734(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_132175071(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1187,7 +1187,7 @@ void BSerializer_132175071(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_49984088(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1199,7 +1199,7 @@ void BSerializer_49984088(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_601099730(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1211,7 +1211,7 @@ void BSerializer_601099730(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1973996106(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -1223,7 +1223,7 @@ void BSerializer_1973996106(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}}}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_252873856(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();

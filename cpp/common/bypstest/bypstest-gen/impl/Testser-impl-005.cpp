@@ -10,7 +10,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getByte::BRequest_RemoteArrayTypes4dim_getByte() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getByte::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getByte::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -27,7 +27,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getB
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2032862102(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -47,7 +47,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getChar::BRequest_RemoteArrayTypes4dim_getChar() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getChar::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getChar::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -64,7 +64,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getC
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2032874980(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -84,7 +84,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getDouble::BRequest_RemoteArrayTypes4dim_getDouble() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getDouble::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getDouble::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -101,7 +101,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getD
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_581586209(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -121,7 +121,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getFloat::BRequest_RemoteArrayTypes4dim_getFloat() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getFloat::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getFloat::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -138,7 +138,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getF
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1402482290(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -158,7 +158,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getInt::BRequest_RemoteArrayTypes4dim_getInt() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getInt::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getInt::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -175,7 +175,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getI
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1589603233(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -195,7 +195,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getLong::BRequest_RemoteArrayTypes4dim_getLong() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getLong::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getLong::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -212,7 +212,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getL
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2033150218(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -232,7 +232,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getObject::BRequest_RemoteArrayTypes4dim_getObject() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getObject::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getObject::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -249,7 +249,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getO
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_278996403(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -269,7 +269,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getPrimitiveTypes::BRequest_RemoteArrayTypes4dim_getPrimitiveTypes() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getPrimitiveTypes::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getPrimitiveTypes::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -286,7 +286,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getP
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1650564320(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -306,7 +306,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getShort::BRequest_RemoteArrayTypes4dim_getShort() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getShort::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getShort::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -323,7 +323,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getS
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1390595154(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -343,7 +343,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getString::BRequest_RemoteArrayTypes4dim_getString() : BMethodRequest(1557173854) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getString::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getString::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -360,7 +360,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_getS
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_147613921(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -384,7 +384,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setBool::
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setBool::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -402,7 +402,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setB
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_202005372(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -426,7 +426,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setByte::
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setByte::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -444,7 +444,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setB
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_201995614(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -468,7 +468,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setChar::
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setChar::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -486,7 +486,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setC
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_201982736(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -510,7 +510,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setDouble
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setDouble::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -528,7 +528,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setD
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_796203285(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -552,7 +552,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setFloat:
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setFloat::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -570,7 +570,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setF
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1963594750(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -594,7 +594,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setInt::B
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setInt::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -612,7 +612,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setI
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1933153045(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -636,7 +636,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setLong::
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setLong::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -654,7 +654,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setL
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_201707498(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -678,7 +678,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setObject
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setObject::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -696,7 +696,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setO
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_493613479(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -720,7 +720,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setPrimit
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setPrimitiveTypes::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -738,7 +738,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setP
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_710411500(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -762,7 +762,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setShort:
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setShort::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -780,7 +780,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setS
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1951707614(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -804,7 +804,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setString
 	: BMethodRequest(1557173854) 
 	, v(v)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setString::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -822,7 +822,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteArrayTypes4dim_setS
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_362230997(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -871,7 +871,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteConstants_compare_AllTyp
 	, arrStrings4(arrStrings4)
 	, arrAll(arrAll)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteConstants_compare_AllTypesC::serialize(BIO& ar, const BVERSION version) {
 	ar & bool1s;
 	ar & bool2s;
@@ -905,7 +905,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteConstants_compare_A
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_862752254(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -930,7 +930,7 @@ com::wilutions::byps::test::api::remote::BRequest_RemoteConstants_compare_Hebrew
 	, ALEPH(ALEPH)
 	, BETH(BETH)
 	{}
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteConstants_compare_HebrewC::serialize(BIO& ar, const BVERSION version) {
 	ar & ALEPH;
 	ar & BETH;
@@ -949,7 +949,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteConstants_compare_H
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1570751625(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -969,7 +969,7 @@ namespace com { namespace wilutions { namespace byps { namespace test { namespac
 
 com::wilutions::byps::test::api::remote::BRequest_RemoteEnums_getPlanet::BRequest_RemoteEnums_getPlanet() : BMethodRequest(359349400) {
 }
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:859
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
 void com::wilutions::byps::test::api::remote::BRequest_RemoteEnums_getPlanet::serialize(BIO& ar, const BVERSION version) {
 }
 void com::wilutions::byps::test::api::remote::BRequest_RemoteEnums_getPlanet::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -986,7 +986,7 @@ void com::wilutions::byps::test::api::remote::BRequest_RemoteEnums_getPlanet::ex
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:916
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_627010462(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
