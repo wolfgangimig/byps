@@ -55,7 +55,8 @@ SOURCES += main.cpp \
     ../../common/bypstest/bypstest-gen/impl/Testser-impl-003.cpp \
     ../../common/bypstest/bypstest-gen/impl/Testser-impl-002.cpp \
     ../../common/bypstest/bypstest-gen/impl/Testser-impl-001.cpp \
-    ../../common/bypstest/AllTests.cpp
+    ../../common/bypstest/AllTests.cpp \
+    ../../common/bypstest/TestRemoteWithAuthentication.cpp
 
 HEADERS += \
     ../../common/bypstest/TestUtils.h \

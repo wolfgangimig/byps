@@ -112,7 +112,7 @@ public:
 		PRemoteWithAuthenticationAuth remote = client->remoteWithAuthentication;
 
 		try {
-			int ret = remote->doit(1);
+            remote->doit(1);
 			TFAIL(L"Exception expected");
 		}
 		catch (const BException& ex) {
