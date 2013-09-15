@@ -21,7 +21,7 @@ namespace com.wilutions.byps
 
         public void putChar(char c)
         {
-            buf.wr.Write(c);
+            putShort((short)c);
         }
 
         public void putShort(short v)
@@ -29,14 +29,76 @@ namespace com.wilutions.byps
             buf.wr.Write(v);
         }
 
+        private void putIntCompressed(int v)
+        {
+            if (v == 0)
+            {
+                buf.wr.Write((byte)0);
+            }
+            else
+            {
+                bool neg = v < 0;
+                if (neg) v = -v;
+
+                int i = 0;
+                for (; i < 4 && v != 0; i++)
+                {
+                    helpBufferInt[i + 1] = (byte)(v & 0xFF);
+                    v >>= 8;
+                }
+
+                helpBufferInt[0] = (byte)(neg ? -i : i);
+                buf.wr.Write(helpBufferInt, 0, i + 1);
+            }
+
+        }
+
         public void putInt(int v)
         {
-            buf.wr.Write(v);
+            if (compressInteger)
+            {
+                putIntCompressed(v);
+            }
+            else
+            {
+                buf.wr.Write(v);
+            }
+        }
+
+        private void putLongCompressed(long v)
+        {
+            if (v == 0)
+            {
+                buf.wr.Write((byte)0);
+            }
+            else
+            {
+                bool neg = v < 0;
+                if (neg) v = -v;
+
+                int i = 0;
+                for (; i < 8 && v != 0; i++)
+                {
+                    helpBufferInt[i + 1] = (byte)(v & 0xFF);
+                    v >>= 8;
+                }
+
+                helpBufferInt[0] = (byte)(neg ? -i : i);
+                buf.wr.Write(helpBufferInt, 0, i + 1);
+            }
+
         }
 
         public void putLong(long v)
         {
-            buf.wr.Write(v);
+            if (compressInteger)
+            {
+                putLongCompressed(v);
+            }
+            else
+            {
+                buf.wr.Write(v);
+            }
         }
 
         public void putFloat(float v)
@@ -62,13 +124,14 @@ namespace com.wilutions.byps
                 int len = Encoding.UTF8.GetBytes(v, 0, v.Length, strhlp, 0);
                 putInt(len);
                 buf.wr.Write(strhlp, 0, len);
-            }
+                putByte(0);
+           }
             else
             {
-                putInt(0);
+                 putInt(0);
+                 putByte(0);
             }
-            putByte(0);
-        }
+         }
 
         public void putArrayByte(byte[] arr)
         {
@@ -87,7 +150,7 @@ namespace com.wilutions.byps
 
         public char getChar()
         {
-            return buf.rd.ReadChar();
+            return (char)getShort();
         }
 
         public short getShort()
@@ -95,14 +158,70 @@ namespace com.wilutions.byps
             return buf.rd.ReadInt16();
         }
 
+        private int getIntCompressed()
+        {
+            int i = buf.rd.ReadByte();
+            if (i == 0) return 0;
+
+            int v = 0;
+            bool neg = i < 0;
+            if (neg) i = -i;
+
+            buf.rd.Read(helpBufferInt, 0, i);
+
+            while (i-- > 0)
+            {
+                v <<= 8;
+                v |= ((int)(helpBufferInt[i])) & 0xFF;
+            }
+
+            return neg ? -v : v;
+        }
+
+
         public int getInt()
         {
-            return buf.rd.ReadInt32();
+            if (compressInteger)
+            {
+                return getIntCompressed();
+            }
+            else
+            {
+                return buf.rd.ReadInt32();
+            }
+        }
+
+        public long getLongCompressed()
+        {
+            int i = buf.rd.ReadByte();
+            if (i == 0) return 0;
+
+            long v = 0;
+            bool neg = i < 0;
+            if (neg) i = -i;
+
+            buf.rd.Read(helpBufferInt, 0, i);
+
+            while (i-- > 0)
+            {
+                v <<= 8;
+                uint k = (uint)helpBufferInt[i];
+                v |= k & 0xFF;
+            }
+
+            return neg ? -v : v;
         }
 
         public long getLong()
         {
-            return buf.rd.ReadInt64();
+            if (compressInteger)
+            {
+                return getLongCompressed();
+            }
+            else
+            {
+                return buf.rd.ReadInt64();
+            }
         }
 
         public float getFloat()
@@ -118,7 +237,7 @@ namespace com.wilutions.byps
         public String getString()
         {
             String s = "";
-            int len = buf.rd.ReadInt32();
+            int len = getInt();
             if (len != 0)
             {
                 if (strhlp == null || strhlp.Length < len)
@@ -128,7 +247,7 @@ namespace com.wilutions.byps
                 buf.rd.Read(strhlp, 0, len);
                 s = Encoding.UTF8.GetString(strhlp, 0, len);
             }
-            buf.rd.ReadByte();
+            getByte();
             return s;
         }
 
@@ -188,10 +307,23 @@ namespace com.wilutions.byps
             this.buf = buf != null ? buf : ByteBuffer.allocate(10 * 1000);
         }
 
+        public bool setCompressInteger(bool v)
+        {
+            bool ret = compressInteger;
+            compressInteger = v;
+            return ret;
+        }
+
+        public bool isCompressInteger()
+        {
+            return compressInteger;
+        }
+
         protected readonly BBinaryModel bmodel;
         protected ByteBuffer buf;
         protected byte[] strhlp;
-
+        protected byte[] helpBufferInt = new byte[9];
+        protected bool compressInteger = true;
 
 
  
