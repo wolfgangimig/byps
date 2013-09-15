@@ -110,8 +110,8 @@ private:
 				bool neg = v < 0;
 				if (neg) v = -v;
 
-				int i = 0;
-				for (; i < sizeof(v) && v != 0; i++) {
+                int i = 0;
+                for (; i < (int) sizeof(v) && v != 0; i++) {
 					p[i+1] = (int8_t) (v & 0xFF);
 					v >>= 8;
 				}
