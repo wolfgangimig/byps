@@ -1,8 +1,5 @@
 package com.wilutions.byps;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
@@ -225,6 +222,8 @@ public abstract class BBuffer {
 		this.buf = buf != null ? buf : ByteBuffer.allocate(10 * 1000);
 	}
 
+	// This functions are used in TestSerializePrimitiveTypes.
+	// They allow to use the same test function for JSON and binary serialization.
 	public abstract BBuffer flip();
 	public abstract char getChar();
 	public abstract void putChar(char v);

@@ -15,7 +15,7 @@ PPrimitiveTypes internalCreateObjectPrimitiveTypes() {
     static int createCount = 1;
 
     PPrimitiveTypes p(new PrimitiveTypes());
-    p->intVal = ++createCount;
+    p->intVal = ++createCount * ((createCount & 1) != 0 ? -1 : 1);
     p->boolVal = (createCount & 1) != 0;
     p->byteVal = (int8_t)(createCount & 0xF);
     p->shortVal = (int16_t)(createCount + 100);
@@ -24,7 +24,7 @@ PPrimitiveTypes internalCreateObjectPrimitiveTypes() {
     p->doubleVal = (double)createCount * 10000;
 
 	std::wstringstream ss;
-	ss << p->intVal;
+	ss << p->intVal << p->intVal << p->intVal << p->intVal << p->intVal << p->intVal;
     p->stringVal = ss.str();
 
     return p;

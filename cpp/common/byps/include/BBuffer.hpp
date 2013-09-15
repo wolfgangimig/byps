@@ -7,18 +7,21 @@ namespace com {
 namespace wilutions {
 namespace byps {
 
+#define BCOMPRESS_INTEGER true
+#define BBUFFER_GROW (10*1000)
+
 using namespace ::std;
 
 BINLINE BBuffer::BBuffer(const BBinaryModel& bmodel, BByteOrder byteOrder) :
     bmodel(bmodel),
     isWrite(true), byteOrder(byteOrder),
-    pos(0), limit(0), capacity(0), grow(10000) {
+    pos(0), limit(0), capacity(0), grow(BBUFFER_GROW), compressInteger(BCOMPRESS_INTEGER) {
 }
 
 BINLINE BBuffer::BBuffer(const BBinaryModel& bmodel, PBytes& pBytes, BByteOrder byteOrder) :
     bmodel(bmodel),
     isWrite(false), byteOrder(byteOrder),
-    pBytes(pBytes), pos(0), limit((int32_t)pBytes->length), capacity((int32_t)pBytes->length), grow(0) {
+    pBytes(pBytes), pos(0), limit((int32_t)pBytes->length), capacity((int32_t)pBytes->length), grow(0), compressInteger(BCOMPRESS_INTEGER) {
 }
 
 BINLINE const PBytes& BBuffer::getBytes() const {
@@ -38,6 +41,17 @@ BINLINE BByteOrder BBuffer::getByteOrder() const {
 BINLINE void BBuffer::setByteOrder(BByteOrder byteOrder) {
     this->byteOrder = byteOrder;
 }
+
+bool BBuffer::isCompressInteger() const {
+	return this->compressInteger;
+}
+
+bool BBuffer::setCompressInteger(bool v) {
+	bool ret = this->compressInteger;
+	this->compressInteger = v;
+	return ret;
+}
+
 
 BINLINE void BBuffer::serialize(PBytes& v) {
 	BLENGTH n = (BLENGTH)(isWrite ? v->length : 0);
@@ -78,11 +92,21 @@ BINLINE void BBuffer::serialize(int16_t& v) {
 }
 
 BINLINE void BBuffer::serialize(int32_t& v) {
-	serializeIntegerUnaligned(v);
+	if (compressInteger) {
+		serializeIntegerCompressed(v);
+	}
+	else {
+		serializeIntegerUnaligned(v);
+	}
 }
 
 BINLINE void BBuffer::serialize(int64_t& v) {
-	serializeIntegerUnaligned(v);
+	if (compressInteger) {
+		serializeIntegerCompressed(v);
+	}
+	else {
+		serializeIntegerUnaligned(v);
+	}
 }
 
 BINLINE void BBuffer::serialize(bool& b) {
@@ -112,11 +136,11 @@ BINLINE void BBuffer::serialize(wchar_t& c) {
 BINLINE void BBuffer::serialize (float& v) {
     if (isWrite) {
 		int32_t IEEE = floatToIEEE(v);
-        serialize(IEEE);
+        serializeIntegerUnaligned(IEEE);
 	}
 	else {
 		int32_t IEEE = 0;
-        serialize(IEEE);
+        serializeIntegerUnaligned(IEEE);
 		v = floatFromIEEE(IEEE);
 	}
 }
@@ -124,11 +148,11 @@ BINLINE void BBuffer::serialize (float& v) {
 BINLINE void BBuffer::serialize (double& v) {
     if (isWrite) {
 		int64_t IEEE = doubleToIEEE(v);
-        serialize(IEEE);
+        serializeIntegerUnaligned(IEEE);
 	}
 	else {
 		int64_t IEEE = 0;
-        serialize(IEEE);
+        serializeIntegerUnaligned(IEEE);
 		v = doubleFromIEEE(IEEE);
 	}
 }
@@ -151,18 +175,47 @@ BINLINE void BBuffer::serializeLength(BLENGTH& p) {
 	if (!isWrite) p = v;
 }
 
+BINLINE int32_t BBuffer::getStringLengthUtf8(const ::std::wstring& str) {
+
+	int32_t p = 0;
+
+    for (wstring::const_iterator it = str.begin(); it != str.end(); it++) {
+
+		wchar_t c = (*it);
+
+		if (c <= 0x7F) {
+			p++;
+		}
+		else if (c >= 0x80 && c <= 0x07FF) {
+			p += 2;
+		}
+		else { // if (c >= 0x800 && c <= 0xFFFF) {
+			p += 3;
+		}
+	}
+
+	return p;
+}
+
 BINLINE void BBuffer::serialize(wstring& str) {
     if (isWrite) {
 
         int32_t n = 0;
+
+		if (compressInteger) {
+			n = getStringLengthUtf8(str);
+		}
+		else {
+			n = (int32_t)(3 * str.size());
+		}
+		
+		ensureRemaining(4 + n + 1);
+
         serialize(n);
 		int32_t lengthPos = pos - 4;
 
 		if (str.size() != 0) {
 			
-			int32_t blen = (int32_t) (3 * (str.size()) + 1);
-			ensureRemaining(blen);
-
 			int8_t* buf = pBytes->data;
 			int8_t* p = buf + pos;
 
@@ -185,12 +238,15 @@ BINLINE void BBuffer::serialize(wstring& str) {
 			}
 
 			// correct length
-			n = (int32_t)(p - buf) - pos;
-			pos = lengthPos;
-			serialize(n);
+			if (!compressInteger) {
+				n = (int32_t)(p - buf) - pos;
+				pos = lengthPos;
+				serialize(n);
+			}
 
 	       *p++ = 0;
 			pos = (int32_t)(p - buf);
+			assert(pos <= capacity);
 		}
 		else {
 			pBytes->data[pos++] = 0;
@@ -279,12 +335,12 @@ BINLINE void BBuffer::growForRemaining(int32_t size) {
         growNow = ((growNow / grow) + 1) * grow;
         int32_t newCap = capacity + growNow;
         pBytes = BBytes::create(pBytes, newCap);
-		if (!pBytes) throw BException(EX_INTERNAL, L"Out of memory");
+		if (!pBytes) throw BException(EX_INTERNAL, L"Out of memory.");
         capacity = newCap;
         limit = capacity;
 	}
 	else {
-		throw BException(EX_CORRUPT);
+		throw BException(EX_CORRUPT, L"Cannot enlarge read buffer.");
 	}
 }
 

@@ -113,11 +113,12 @@ public:
 
 
 	virtual void init() {
+		ADD_TEST(testRemotePrimitiveTypes);
 		ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
 		ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);
 		ADD_TEST(testRemotePrimitiveTypesSendAll);
 		ADD_TEST(testPrimitiveTypesReferenceToSelf);
-		ADD_TEST(testRemotePrimitiveTypes);
+		
 	}
 };
 

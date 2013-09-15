@@ -184,41 +184,6 @@ public class BInputJson extends BInput {
 		return obj;
 	}
 	
-	@Override
-	public boolean getBoolean(String name) {
-		return currentObject.getBoolean(name);
-	}
-
-	@Override
-	public short getShort(String name) {
-		return currentObject.getShort(name);
-	}
-
-	@Override
-	public int getInt(String name) {
-		return currentObject.getInt(name);
-	}
-
-	@Override
-	public long getLong(String name) {
-		return currentObject.getLong(name);
-	}
-
-	@Override
-	public float getFloat(String name) {
-		return currentObject.getFloat(name);
-	}
-
-	@Override
-	public double getDouble(String name) {
-		return currentObject.getDouble(name);
-	}
-
-	@Override
-	public String getString(String name) {
-		return currentObject.getString(name);
-	}
-	
 	protected BJsonObject objectTable;
 	public BJsonObject currentObject;
 	public final BBufferJson bbuf;

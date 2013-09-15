@@ -25,38 +25,4 @@ public abstract class BInputBin extends BInput {
 	
 	public abstract Object readObj(boolean isUnique, BSerializer ser) throws BException;
 
-	@Override
-	public boolean getBoolean(String name) {
-		return bbuf.getBoolean();
-	}
-
-	@Override
-	public short getShort(String name) {
-		return bbuf.getShort();
-	}
-
-	@Override
-	public int getInt(String name) {
-		return bbuf.getInt();
-	}
-
-	@Override
-	public long getLong(String name) {
-		return bbuf.getLong();
-	}
-
-	@Override
-	public float getFloat(String name) {
-		return bbuf.getFloat();
-	}
-
-	@Override
-	public double getDouble(String name) {
-		return bbuf.getDouble();
-	}
-
-	@Override
-	public String getString(String name) {
-		return bbuf.getString();
-	}
 }

@@ -331,7 +331,7 @@ public class TestSerializePrimitiveTypes {
 		}
 		log.info(")testPrimitiveTypesLong");
 	}
-
+	
 	private void internalTestLong(long v) throws BException {
 		BOutput bout = transport.getOutput();
 		
