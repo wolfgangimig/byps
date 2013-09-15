@@ -6,21 +6,32 @@
 
 namespace com { namespace wilutions { namespace byps {
 
+const int64_t DEBUG_END_MARKER = 0x0102030405060708LL;
+
+BINLINE BBytes* BBytes::myalloc(size_t length) {
+	size_t n =  length + sizeof(size_t) + sizeof(int64_t);
+	int8_t* mem = new int8_t[n];
+	int64_t endm = DEBUG_END_MARKER;
+	memcpy(mem + n - sizeof(DEBUG_END_MARKER), &endm, sizeof(int64_t));
+	BBytes* p = (BBytes*)(mem);
+	p->length = length;
+	return p;
+}
+
+void BBytes::check() {
+	int8_t* mem = (int8_t*)this;
+	int8_t* pcheck = mem + sizeof(size_t) + this->length;
+	int64_t endm = DEBUG_END_MARKER;
+	int cmp = memcmp(pcheck, &endm, sizeof(int64_t));
+	assert(cmp == 0);
+}
+
 BINLINE PBytes BBytes::create(size_t length) {
-	size_t n =  length + sizeof(BBytes);
-	BBytes* p = (BBytes*)(new int8_t[n]);
-	if (p) {
-		p->length = length;
-	}
-	return PBytes(p);
+	return PBytes(myalloc(length));
 }
 
 BINLINE PBytes BBytes::create(size_t length, int v0, ...) {
-	size_t n =  length + sizeof(BBytes);
-	BBytes* p = (BBytes*)(new int8_t[n]);
-	if (p) {
-		p->length = length;
-	}
+	BBytes* p = myalloc(length);
 	va_list args;
 	va_start(args, v0);
 	p->data[0] = v0;
@@ -48,6 +59,7 @@ PBytes BBytes::create(const void* p, size_t length) {
 	}
 	return q;
 }
+
 
 }}}
 

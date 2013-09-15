@@ -34,6 +34,7 @@ BINLINE BMessageHeader::BMessageHeader(const BMessageHeader& rhs)
 }
 
 BINLINE void BMessageHeader::write(BBuffer& bbuf) {
+	bool cmpr = bbuf.setCompressInteger(false);
     bbuf.setByteOrder(byteOrder);
     bbuf.serialize(magic);
     bbuf.serialize(error);
@@ -41,10 +42,13 @@ BINLINE void BMessageHeader::write(BBuffer& bbuf) {
     bbuf.serialize(version);
 	targetId.serialize(bbuf);
     bbuf.serialize(messageId);
+	bbuf.setCompressInteger(cmpr);
 }
 
 BINLINE void BMessageHeader::read(BBuffer& bbuf) {
     bbuf.setByteOrder(BBIG_ENDIAN);
+	bool cmpr = bbuf.setCompressInteger(false);
+
     bbuf.serialize(magic);
 
     switch(magic) {
@@ -63,6 +67,8 @@ BINLINE void BMessageHeader::read(BBuffer& bbuf) {
 	bbuf.serialize(version);
  	targetId.serialize(bbuf);
     bbuf.serialize(messageId);
+
+	bbuf.setCompressInteger(cmpr);
 }
 
 }}}

@@ -35,8 +35,10 @@ BINLINE BTargetId BTargetId::parseString(const char* sz, size_t len) {
 }
 
 void BTargetId::serialize(BBuffer& bbuf) {
+	bool cmpr = bbuf.setCompressInteger(false);
 	bbuf.serialize(v1);
 	bbuf.serialize(v2);
+	bbuf.setCompressInteger(cmpr);
 }
 
 

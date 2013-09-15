@@ -18,6 +18,11 @@ public:
 	
     static PBytes create(size_t length, int v0, ...);
 
+	void check();
+
+private:
+	static BBytes* myalloc(size_t length);
+
 };
 
 }}}

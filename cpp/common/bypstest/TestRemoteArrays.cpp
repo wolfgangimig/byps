@@ -211,6 +211,7 @@ public:
 	void testRemoteArrayTypes23() {
 		PRemoteArrayTypes23 remote = client->remoteArrayTypes23;
 
+		if (true)
 		{
 			byps_ptr<BArray1<int32_t> > arr1(new BArray1<int32_t>(3));
 			byps_ptr<BArray2<int32_t> > arr2(new BArray2<int32_t>(7,6));
@@ -238,6 +239,7 @@ public:
 			assertArray(arr1, arrR);
 		}
 
+		if (true)
 		{
 			byps_ptr<BArray1<std::wstring> > arr1(new BArray1<std::wstring>(3));
 			byps_ptr<BArray2<std::wstring> > arr2(new BArray2<std::wstring>(7,6));
@@ -265,6 +267,7 @@ public:
 			assertArray(arr1, arrR);
 		}
 
+		if (true)
 		{
 			byps_ptr<BArray1<PPrimitiveTypes> > arr1(new BArray1<PPrimitiveTypes>(3));
 			byps_ptr<BArray2<PPrimitiveTypes> > arr2(new BArray2<PPrimitiveTypes>(7,6));
@@ -292,6 +295,7 @@ public:
 			assertArrayObject(arr1, arrR);
 		}
 
+		if (true)
 		{
 			byps_ptr<BArray1<PSerializable> > arr1(new BArray1<PSerializable>(3));
 			byps_ptr<BArray2<PSerializable> > arr2(new BArray2<PSerializable>(7,6));
@@ -319,6 +323,7 @@ public:
 			assertArrayObject(arr1, arrR);
 		}
 
+		if (true)
 		{
 			byps_ptr<BArray1<Point2D> > arr1(new BArray1<Point2D>(3));
 			byps_ptr<BArray2<Point2D> > arr2(new BArray2<Point2D>(7,6));

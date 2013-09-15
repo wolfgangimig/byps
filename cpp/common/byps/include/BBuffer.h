@@ -31,6 +31,9 @@ public:
 
     void setByteOrder(BByteOrder byteOrder);
 
+	bool isCompressInteger() const;
+	bool setCompressInteger(bool v);
+
 	void serialize(PBytes& v);
 
 	void serialize(int8_t& v);
@@ -59,6 +62,10 @@ public:
 private:
 
 	void ensureRemaining(int32_t size) {
+		if (isWrite && pBytes) {
+			pBytes->check();
+		}
+
 		if (pos + size > capacity) {
 			growForRemaining(size);
 		}
@@ -86,12 +93,74 @@ private:
 		}
 	}
 
+	template<typename _int3264> void serializeIntegerCompressed(_int3264& v1) {
+
+		register _int3264 v = v1;
+
+		if (isWrite) {
+
+			if (v == 0) {
+				ensureRemaining(1);
+				pBytes->data[pos++] = 0;
+			}
+			else {
+				ensureRemaining(sizeof(v) + 1);
+				int8_t *p = pBytes->data + pos;
+
+				bool neg = v < 0;
+				if (neg) v = -v;
+
+                int i = 0;
+                for (; i < (int) sizeof(v) && v != 0; i++) {
+					p[i+1] = (int8_t) (v & 0xFF);
+					v >>= 8;
+				}
+
+				p[0] = (int8_t) (neg ? -i : i);
+				pos += i+1;
+			}
+		}
+
+		else {
+				
+			int8_t *p = pBytes->data + pos;
+				
+			v = 0;
+			int i = *p;
+
+			if (i == 0) {
+				ensureRemaining(1);
+				pos++;
+			}
+			else {
+				bool neg = i < 0;
+				if (neg) i = -i;
+
+				ensureRemaining(i+1);
+				pos += i+1;
+				p++;
+
+				while (i-- > 0) {
+					v <<= 8;
+					v |= ((int)(p[i])) & 0xFF;
+				}
+    
+				if (neg) v = -v;
+
+				v1 = v;
+			}
+		}
+	}
+
+	int32_t getStringLengthUtf8(const ::std::wstring& str);
+
     BBinaryModel bmodel;
     bool isWrite;
     BByteOrder byteOrder;
     PBytes pBytes;
     int32_t pos, limit, capacity;
     int32_t grow;
+	bool compressInteger;
 };
 
 } /* namespace byps */

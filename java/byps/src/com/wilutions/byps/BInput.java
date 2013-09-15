@@ -30,16 +30,4 @@ public abstract class BInput {
 	}
 
 	
-	// Diese Funktione helfen die Erstellung von Serialisierern 
-	// für externe Klassen zu vereinfachen.
-	// Es soll möglich sein, für alle BBinaryModel denselben
-	// Serialisierer zu verwenden.
-	
-	public abstract boolean getBoolean(String name);
-	public abstract short getShort(String name);
-	public abstract int getInt(String name);
-	public abstract long getLong(String name);
-	public abstract float getFloat(String name);
-	public abstract double getDouble(String name);
-	public abstract String getString(String name);
 }
