@@ -45,6 +45,10 @@ describe("Tests with authentication.", function() {
 	beforeEach(function() {
 		remote = client.remoteWithAuthentication;
 	});
+	
+	afterEach(function() {
+		remote.expire();
+	});
 
 	/**
 	 * Synchronous re-login test without BAuthentication object.
@@ -54,8 +58,6 @@ describe("Tests with authentication.", function() {
 
 		var sess = remote.login("Fritz", "abc");
 		log.info("sess=" + sess);
-
-		remote.expire();
 
 		log.info(")testNoAuthObjectSupplied");
 	});
@@ -102,8 +104,6 @@ describe("Tests with authentication.", function() {
 		// method call.
 		var ret = remote.doit(1);
 		TestUtils.assertEquals(log, "ret", 2, ret);
-
-		remote.expire();
 
 		log.info(")testAuthenticate");
 	});
@@ -157,53 +157,27 @@ describe("Tests with authentication.", function() {
 
 		// Invalidate session
 		remote.expire();
+		
+		// Wait 1s
+		var startTime = (new Date()).getTime();
+		waitsFor(function() {
 
-		// Re-login
-		ret = remote.doit(1);
-		TestUtils.assertEquals(log, "ret", 2, ret);
+			var endTime = (new Date()).getTime();
+			if (endTime - startTime >= 1000) {
+				
+				// Re-login
+				ret = remote.doit(1);
+				TestUtils.assertEquals(log, "ret", 2, ret);
+				
+				return true;
+			}
+			else {
+				return false;
+			}
+		}, "wait 1s failed", 3000);
+
 
 		log.info(")testAuthenticateRelogin");
-	});
-
-	it("testAuthenticateReloginAsync", function() {
-		log.info("testAuthenticateReloginAsync(");
-
-		client.setAuthentication(new MyAuthentication("Fritz", "abc"));
-
-		var retAsync = null;
-		var exceptionAsync = null;
-		
-		runs(function() {
-			remote.doit(1, function(result, ex) {
-				if (ex) {
-					exceptionAsync = ex;
-				}
-				else {
-					remote.expire(function(result, ex) {
-						if (ex) {
-							exceptionAsync = ex;
-						}
-						else {
-							remote.doit(1, function(result, ex) {
-								if (ex) {
-									exceptionAsync = ex;
-								}
-								else {
-									retAsync = result;
-								}
-							});
-						}
-					});
-				}
-			});
-		});
-		
-		waitsFor(function() {
-			if (exceptionAsync)	throw exceptionAsync;
-			return retAsync == 2;
-		}, "Expected value must be 2", 5000);
-
-		log.info(")testAuthenticateReloginAsync");
 	});
 
 });

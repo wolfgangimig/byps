@@ -445,7 +445,7 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 					responseMessage.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
 					asyncResult(responseMessage, null);
 				} else {
-					var ex = com.wilutions.byps.throwIOERROR("HTTP status " + this.status, xhr.responseText);
+					var ex = new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.IOERROR, "HTTP status " + xhr.status, xhr.responseText);
 					asyncResult(null, ex);
 				}; 
 			};
@@ -464,7 +464,7 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 			if (xhr.status == 200) {
 				result.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
 			} else {
-				exception = com.wilutions.byps.throwIOERROR("HTTP status " + xhr.status, xhr.responseText);
+				exception = new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.IOERROR, "HTTP status " + xhr.status, xhr.responseText);
 			}
 			
 			asyncResult(result, exception);
@@ -508,7 +508,7 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 	this._lastAuthenticationTime = 0;
 	this._lastAuthenticationException = null;
 	this._asyncResultsWaitingForAuthentication = [];
-	this._RETRY_AUTHENTICATION_AFTER_SECONDS = 10;
+	this._RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
 	
 	this.getOutput = function() {
 		return new com.wilutions.byps.BInputOutput(this);
@@ -680,11 +680,19 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 		return new com.wilutions.byps.BServerR(this, server);
 	};
 	
+	this.setAuthentication = function(auth, onlyIfNull) {
+		if (onlyIfNull && this._authentication) return;
+		this._authentication = auth;
+		this._asyncResultsWaitingForAuthentication = [];
+		this._lastAuthenticationTime = 0;
+		this._lastAuthenticationException = null;
+	};
+	
 	this._internalAuthenticate = function(asyncResult, processAsync) {
 		
 		if (this._authentication) {
 			
-		    var assumeAuthenticationIsValid = this._lastAuthenticationTime + this._RETRY_AUTHENTICATION_AFTER_SECONDS >= ((new Date()).getTime());
+		    var assumeAuthenticationIsValid = this._lastAuthenticationTime + this._RETRY_AUTHENTICATION_AFTER_MILLIS >= ((new Date()).getTime());
 		    
 		    if (assumeAuthenticationIsValid) {
 		    	asyncResult(true, this._lastAuthenticationException);
@@ -967,9 +975,7 @@ com.wilutions.byps.BClient = function() {
 		var processAsync = !!asyncResult;
 		var me = this;
 
-		if (!this.getAuthentication()) {
-			this.setAuthentication(null);
-		}
+		this.setAuthentication(null);
 		
 	    var exception = null;
 		
@@ -1016,7 +1022,7 @@ com.wilutions.byps.BClient = function() {
 	this.setAuthentication = function(innerAuth) {
 		var me = this;
 		
-		this.transport._authentication = {
+		var authentication = {
 		
 			authenticate : function(ignored, asyncResult) {
 				
@@ -1080,6 +1086,7 @@ com.wilutions.byps.BClient = function() {
 			
 		};
 		
+		this.transport.setAuthentication(authentication, innerAuth == null);
 	};
 };
 
