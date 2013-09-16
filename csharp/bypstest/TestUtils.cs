@@ -92,13 +92,13 @@ namespace bypstest
         private static PrimitiveTypes internalCreateObjectPrimitiveTypes(bool inclObjVal)
         {
             PrimitiveTypes p = new PrimitiveTypes();
-            p.IntVal = ++createCount;
             p.BoolVal = (createCount & 1) != 0;
+            p.IntVal = ++createCount * (p.BoolVal ? -1 : 1);
             p.ByteVal = (byte)createCount;
-            p.ShortVal = (short)(createCount * 31);
-            p.LongVal = createCount * 129;
-            p.FloatVal = ((float)createCount) / 0.3f;
-            p.DoubleVal = (double)createCount / 7;
+            p.ShortVal = (short)((createCount * 31) * (p.BoolVal ? -1 : 1));
+            p.LongVal = createCount * 129 * (p.BoolVal ? -1 : 1);
+            p.FloatVal = ((float)createCount) * 3 * (p.BoolVal ? -1 : 1);
+            p.DoubleVal = (double)createCount * 7 * (p.BoolVal ? -1 : 1);
             p.StringVal = Convert.ToString(p.IntVal);
             if (inclObjVal)
             {

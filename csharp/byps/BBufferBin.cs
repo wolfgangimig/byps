@@ -160,7 +160,7 @@ namespace com.wilutions.byps
 
         private int getIntCompressed()
         {
-            int i = buf.rd.ReadByte();
+            int i = (sbyte)buf.rd.ReadByte();
             if (i == 0) return 0;
 
             int v = 0;
@@ -193,7 +193,7 @@ namespace com.wilutions.byps
 
         public long getLongCompressed()
         {
-            int i = buf.rd.ReadByte();
+            int i = (sbyte)buf.rd.ReadByte();
             if (i == 0) return 0;
 
             long v = 0;
