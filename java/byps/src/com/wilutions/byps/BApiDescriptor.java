@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 /**
  * This class describes a generated API.
- * The member values are taken from the BApi class in the 
- * interface definition folder (ILF). BApi describes the IDF and 
- * defines among others the name of the API.
+ * The member values are taken from the BApi class that has to be defined
+ * in one of the packages of the API.
+ * The BApi class defines the interface name and the interface version.
  * The generator creates a class named BApiDescriptor_name which 
  * holds a singleton object of type BApiDescriptor.   
  */
