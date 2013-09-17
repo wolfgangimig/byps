@@ -26,11 +26,13 @@ public class PrintContextBase {
 	}
 	
 	public String getSerializerClassName(TypeInfo tinfo, BBinaryModel pformat) {
+	  if (tinfo == null) return "";
 		String s = pformat == BBinaryModel.JSON ? "JSerializer_" : "BSerializer_"; 
 		return s + tinfo.typeId;
 	}
 	
 	public String getSerializerPackage(TypeInfo tinfo) {
+	  if (tinfo == null) return "";
 		String s = "";
 		if (tinfo.typeId < registry.getMinTypeIdUser()) {
 			s = "com.wilutions.byps";
@@ -42,6 +44,11 @@ public class PrintContextBase {
 			s = tinfo.pack;
 		}
 		return s;
+	}
+	
+	public String getSerializerQName(TypeInfo tinfo, BBinaryModel pformat) {
+	  if (tinfo == null) return "";
+	  return getSerializerPackage(tinfo) + "." + getSerializerClassName(tinfo, pformat);
 	}
 	
 	public String getMethodSerializerClassName(TypeInfo remoteInfo, String methodName, BBinaryModel pformat) {

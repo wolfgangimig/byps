@@ -25,7 +25,7 @@ public class GenSerStruct {
 		this.serInfo = serInfo;
 		this.pr = pr;
 		serializerName = pctxt.getSerializerClassName(serInfo, BBinaryModel.MEDIUM);
-		baseSerializerName = serInfo.baseInfo != null ? pctxt.getSerializerClassName(serInfo.baseInfo, BBinaryModel.MEDIUM) : "";
+		baseSerializerName = pctxt.getSerializerQName(serInfo.baseInfo, BBinaryModel.MEDIUM);
 		pack = pctxt.getSerializerPackage(serInfo);
 		this.pctxt = pctxt;
 		this.registry = pctxt.classDB.getRegistry();
@@ -270,6 +270,8 @@ public class GenSerStruct {
 		pr.println("// isInline=" + serInfo.isInline);
 		pr.println("// #members=" + serInfo.members.size());
 		pr.println();
+		
+		pr.checkpoint();
 		
 		pr.println("@SuppressWarnings(\"all\")");
 		{ 

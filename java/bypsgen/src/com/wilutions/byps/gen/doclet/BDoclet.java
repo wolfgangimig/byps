@@ -228,7 +228,7 @@ public class BDoclet extends Doclet {
 		"-ensureUIDs",
 		
 		"--packages",
-		"de.elo.ix.client;de.elo.ix.client.discuss",
+		"de.elo.ix.client;de.elo.ix.client.discuss;de.elo.ix.client.msg",
 		
 		"--sourcepath", 
 		"d:\\git\\ELOindexserver\\Eloix-api\\src;d:\\git\\ELOindexserver\\Eloix-api\\src-gen",
@@ -276,7 +276,7 @@ public class BDoclet extends Doclet {
 		configureLog4j("WARN");
 		
 		if (args == null || args.length == 0) {
-			args = bypstest_ser;
+			args = byps_ix_serAll;
 		}
 		
 		GeneratorProperties defaultProps = new GeneratorProperties();

@@ -25,7 +25,7 @@ public class GenSerStruct {
 		this.serInfo = serInfo;
 		this.pr = pr;
 		serializerName = pctxt.getSerializerClassName(serInfo, BBinaryModel.MEDIUM);
-		baseSerializerName = serInfo.baseInfo != null ? pctxt.getSerializerClassName(serInfo.baseInfo, BBinaryModel.MEDIUM) : "";
+    baseSerializerName = pctxt.getSerializerQName(serInfo.baseInfo, BBinaryModel.MEDIUM);
 		pack = pctxt.getSerializerPackage(serInfo);
 		this.pctxt = pctxt;
 		this.registry = pctxt.classDB.getRegistry();

@@ -19,7 +19,7 @@ public class GenSerStructJson extends GenSerStruct{
 	GenSerStructJson(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
 		super(pctxt, serInfo, pr, BBinaryModel.JSON);
 		serializerName = pctxt.getSerializerClassName(serInfo, BBinaryModel.JSON);
-		baseSerializerName = serInfo.baseInfo != null ? pctxt.getSerializerClassName(serInfo.baseInfo, BBinaryModel.JSON) : "";
+		baseSerializerName = pctxt.getSerializerQName(serInfo.baseInfo, BBinaryModel.JSON);
 	}
 	
 	protected void printPutMember(MemberInfo minfo) throws IOException {
