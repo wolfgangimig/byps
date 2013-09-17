@@ -177,7 +177,7 @@ void com::wilutions::byps::test::api::ver::BRequest_EvolveIF_getClient::execute(
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
 		else {
-			PSerializable __byps__methodResult(new BResult_2078696281(__byps__result));
+			PSerializable __byps__methodResult(new BResult_1178379224(__byps__result));
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
 		}
 	});

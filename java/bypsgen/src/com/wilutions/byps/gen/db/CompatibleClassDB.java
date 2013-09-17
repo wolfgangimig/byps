@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.wilutions.byps.gen.api.GeneratorException;
+import com.wilutions.byps.gen.api.MemberAccess;
 import com.wilutions.byps.gen.api.MemberInfo;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.SerialInfo;
@@ -67,21 +68,37 @@ public class CompatibleClassDB {
 		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatibleSerInfos");
 	}
 	
+	/**
+	 * Check whether the given SerialInfo objects are compatible.
+	 * @param sinfoP SerialInfo object from previous API version.
+	 * @param sinfo SerialInfo object from current API version
+	 * @param viols List of violations.
+	 * @return true, if the objects are compatible
+	 * @throws GeneratorException
+	 */
 	private boolean ensureCompatibleSerInfo(SerialInfo sinfoP, SerialInfo sinfo, CompatibilityViolations viols) throws GeneratorException {
-		////log.debug(CompatibleClassDB.class.getName(), "ensureCompatibleSerInfo");
 		boolean ret = true;
 		
+		// Base class changed?
 		if (!sinfoP.baseFullName.equals(sinfo.baseFullName)) {
 			viols.add(sinfoP.qname + ": modified base class, previsious=" + sinfoP.baseFullName + ", current=" + sinfo.baseFullName);
 		}
-
-		//log.debug("#members=" + sinfoP.members.size());
+		
+		// The old members must still be defined in the new class
 		for (int i = 0; i < sinfoP.members.size(); i++) {
 			MemberInfo minfoP = sinfoP.members.get(i);
-			//log.debug("minfoP.name=" + minfoP.name);
 			
-			if (i < sinfo.members.size()) {
-				MemberInfo minfo = sinfo.members.get(i);
+			// Find member in new class
+			MemberInfo minfo = null;
+			for (MemberInfo m : sinfo.members) {
+			  if (m.name.equals(minfoP.name)) {
+			    minfo = m; 
+			    break;
+			  }
+			}
+
+			if (minfo != null) {
+			  // Compare type, transient state etc.
 				if (!ensureCompatibleMemberInfo(sinfo.qname, minfoP, minfo, viols)) break;
 			}
 			else {
@@ -90,7 +107,6 @@ public class CompatibleClassDB {
 			}
 		}
 				
-		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatibleSerInfo", ret);
 		return ret;
 	}
 	
@@ -112,15 +128,21 @@ public class CompatibleClassDB {
 			viols.add(serialQName + ": expected member " + minfoP.name + " but found " + minfo.name);
 			ret = false;
 		}
-		else if (minfoP.isTransient != minfo.isTransient) {
-			addMessageWrongMemberProps(serialQName, minfoP.name, "transient", "non-transient", minfoP.isTransient, minfo.isTransient, viols);
+    else if (minfoP.isTransient != minfo.isTransient) {
+      addMessageWrongMemberProps(serialQName, minfoP.name, "transient", "non-transient", minfoP.isTransient, minfo.isTransient, viols);
+    }
+    else if (minfoP.isStatic != minfo.isStatic) {
+      addMessageWrongMemberProps(serialQName, minfoP.name, "static", "non-static", minfoP.isStatic, minfo.isStatic, viols);
+    }
+    else if (minfoP.isFinal != minfo.isFinal) {
+      addMessageWrongMemberProps(serialQName, minfoP.name, "final", "non-final", minfoP.isFinal, minfo.isFinal, viols);
+    }
+		else if ((minfoP.access == MemberAccess.PUBLIC) != (minfo.access == MemberAccess.PUBLIC)) {
+			addMessageWrongMemberProps(serialQName, minfoP.name, "public", "non-public", 
+					minfoP.access == MemberAccess.PUBLIC, 
+					minfo.access == MemberAccess.PUBLIC, 
+					viols);
 		}
-//		else if ((minfoP.access == MemberAccess.PRIVATE) != (minfo.access == MemberAccess.PRIVATE)) {
-//			addMessageWrongMemberProps(serialQName, minfoP.name, "private", "non-private", 
-//					minfoP.access == MemberAccess.PRIVATE, 
-//					minfo.access == MemberAccess.PRIVATE, 
-//					viols);
-//		}
 		else if (!minfoP.type.toString().equals(minfo.type.toString())) {
 			addMessageWrongMemberProps(serialQName, minfoP.name, 
 					minfoP.type.toString(), 
@@ -132,31 +154,20 @@ public class CompatibleClassDB {
 	}
 
 	private void ensureCompatibleMethodInfos(CompatibilityViolations viols) throws GeneratorException {
-		////log.debug(CompatibleClassDB.class.getName(), "ensureCompatibleMethodInfos");
-		Collection<MethodInfo> minfos = classDB.getMethods();
-		//log.debug("#methods=" + minfos.size());
-		for (MethodInfo minfo : minfos) {
-			String qname = minfo.getQName();
-			MethodInfo minfoP = prevClassDB.getMethodInfo(qname);
-			//log.debug("minfo.qname=" + qname + ", minfoP=" + minfoP);
-			if (minfoP != null) {
-				int n1 = viols.size();
+		Collection<MethodInfo> minfosP = prevClassDB.getMethods();
+		for (MethodInfo minfoP : minfosP) {
+			String qname = minfoP.getQName();
+			MethodInfo minfo = classDB.getMethodInfo(qname);
+			if (minfo != null) {
 				if (!ensureCompatibleMethodInfo(minfoP, minfo, viols)) {
 					break;
 				}
-				int n2 = viols.size();
-				if (n1 == n2) {
-					//log.info(qname + " is compatible");
-				}
-				else {
-					//log.info(qname + " is incompatible, see errors below");
-				}
 			}
 			else {
-				//log.info(qname + " is new");
+        viols.add(minfoP + ": missing");
+        break;
 			}
 		}
-		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatibleMethodInfos");
 	}
 
 	private void addMessageWrongMethodParams(String methodQName, String paramKind, String paramName, String propStr, String npropStr, boolean expected, boolean found, CompatibilityViolations viols) {
@@ -171,16 +182,13 @@ public class CompatibleClassDB {
 	}
 	
 	private boolean ensureCompatibleMethodInfo(MethodInfo minfoP, MethodInfo minfo, CompatibilityViolations viols) throws GeneratorException {
-		////log.debug(CompatibleClassDB.class.getName(), "ensureCompatibleMethodInfo", minfo);
 		boolean ret = true;
 		String qname = minfo.getQName();
-		
-		//log.debug("#params=" + minfoP.requestInfo.members.size());
 		
 		for (int i = 0; i < Math.max(minfo.requestInfo.members.size(), minfoP.requestInfo.members.size()); i++) {
 			if (i >= minfoP.requestInfo.members.size()) {
 				MemberInfo pinfo = minfo.requestInfo.members.get(i);
-				viols.add(qname + ": disturbing parameter " + pinfo.name);
+				viols.add(qname + ": obsolete parameter " + pinfo.name);
 				break;
 			}
 			else if (i >= minfo.requestInfo.members.size()) {
@@ -194,9 +202,6 @@ public class CompatibleClassDB {
 				if (!ensureCompatibleParmInfo(qname, pinfoP, pinfo, viols)) break;
 			}
 			
-			MemberInfo pinfoP = minfoP.requestInfo.members.get(i);
-			//log.debug("pinfoP.name=" + pinfoP.name);
-
 		}
 
 		if (!minfoP.resultInfo.toString().equals(minfo.resultInfo.toString())) {
@@ -206,21 +211,13 @@ public class CompatibleClassDB {
 					true, false, viols);
 		}
 		
-		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatibleMethodInfo", ret);
 		return ret;
 	}
 
 	private boolean ensureCompatibleParmInfo(String methodQName, MemberInfo pinfoP, MemberInfo pinfo, CompatibilityViolations viols) throws GeneratorException {
 		boolean ret = true;
-		boolean dummy = false;
 		
-		if (dummy) {
-		}
-//		else if (!pinfoP.name.equals(pinfo.name)) {
-//			viols.add(methodQName + ": expected parameter " + pinfoP.name + " but found " + pinfo.name);
-//			ret = false;
-//		}
-		else if (!pinfoP.type.toString().equals(pinfo.type.toString())) {
+		if (!pinfoP.type.toString().equals(pinfo.type.toString())) {
 			addMessageWrongMethodParams(methodQName, "parameter", pinfo.name, 
 					pinfoP.type.toString(), 
 					pinfo.type.toString(), 

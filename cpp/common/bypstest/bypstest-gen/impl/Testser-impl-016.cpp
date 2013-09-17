@@ -168,7 +168,7 @@ PClientIF BStub_ServerIF::getPartner()  {
 }
 void BStub_ServerIF::getPartner(::std::function< void (PClientIF, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_ServerIF_getPartner());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1784257353 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1473575576 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 byps_ptr< ::std::vector< PContentStream > > BStub_ServerIF::getStreamsFromClient()  {
@@ -216,7 +216,7 @@ PClientIF BStub_ServerIF::getClient(int32_t id)  {
 }
 void BStub_ServerIF::getClient(int32_t id, ::std::function< void (PClientIF, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_ServerIF_getClient(id));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1784257353 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, com::wilutions::byps::test::api::BResult_1473575576 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 byps_ptr< ::std::set< int32_t > > BStub_ServerIF::getClientIds()  {
@@ -314,7 +314,7 @@ PEvolveIF BStub_EvolveIF::getClient()  {
 }
 void BStub_EvolveIF::getClient(::std::function< void (PEvolveIF, BException ex) > asyncResult)  {
 	PSerializable req(new BRequest_EvolveIF_getClient());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, com::wilutions::byps::test::api::BResult_2078696281 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, com::wilutions::byps::test::api::BResult_1178379224 >(asyncResult) );
 	transport->send(req, outerResult);
 }
 void BStub_EvolveIF::sendEvolveToClient()  {
@@ -369,6 +369,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1059148284), com::wilutions::byps::test::api::BSerializer_1532920911, 1532920911);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1097129250), com::wilutions::byps::test::api::BSerializer_1862597051, 1862597051);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1174971318), com::wilutions::byps::test::api::BSerializer_994835305, 994835305);
+	registerClass(typeid(com::wilutions::byps::test::api::BResult_1178379224), com::wilutions::byps::test::api::BSerializer_1911325389, 1911325389);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_12), com::wilutions::byps::test::api::BSerializer_309901676, 309901676);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1201775504), com::wilutions::byps::test::api::BSerializer_541741223, 541741223);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1218831438), com::wilutions::byps::test::api::BSerializer_1151524674, 1151524674);
@@ -386,6 +387,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1406124761), com::wilutions::byps::test::api::BSerializer_104448059, 104448059);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1457164460), com::wilutions::byps::test::api::BSerializer_1119760023, 1119760023);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1463615848), com::wilutions::byps::test::api::BSerializer_548882635, 548882635);
+	registerClass(typeid(com::wilutions::byps::test::api::BResult_1473575576), com::wilutions::byps::test::api::BSerializer_1170836883, 1170836883);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1487265161), com::wilutions::byps::test::api::BSerializer_2081879792, 2081879792);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1488550492), com::wilutions::byps::test::api::BSerializer_1240765869, 1240765869);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1493282670), com::wilutions::byps::test::api::BSerializer_276437907, 276437907);
@@ -405,7 +407,6 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_172221196), com::wilutions::byps::test::api::BSerializer_1905478006, 1905478006);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1746702954), com::wilutions::byps::test::api::BSerializer_1823196186, 1823196186);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1752158699), com::wilutions::byps::test::api::BSerializer_150989512, 150989512);
-	registerClass(typeid(com::wilutions::byps::test::api::BResult_1784257353), com::wilutions::byps::test::api::BSerializer_1708889390, 1708889390);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_1799280818), com::wilutions::byps::test::api::BSerializer_179038766, 179038766);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_181681714), com::wilutions::byps::test::api::BSerializer_1414119390, 1414119390);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_183594037), com::wilutions::byps::test::api::BSerializer_333265053, 333265053);
@@ -424,7 +425,6 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2052431866), com::wilutions::byps::test::api::BSerializer_496389964, 496389964);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2058423690), com::wilutions::byps::test::api::BSerializer_532799052, 532799052);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2067161310), com::wilutions::byps::test::api::BSerializer_1305849624, 1305849624);
-	registerClass(typeid(com::wilutions::byps::test::api::BResult_2078696281), com::wilutions::byps::test::api::BSerializer_212739126, 212739126);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2087445849), com::wilutions::byps::test::api::BSerializer_580667480, 580667480);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_21), com::wilutions::byps::test::api::BSerializer_309901646, 309901646);
 	registerClass(typeid(com::wilutions::byps::test::api::BResult_2123584667), com::wilutions::byps::test::api::BSerializer_1978497049, 1978497049);

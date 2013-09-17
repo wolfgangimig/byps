@@ -4885,7 +4885,7 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			// Method getPartner
 			748402113 : [ // _typeId of request class
 				1313562065, // _typeId of remote interface
-				1708889390, // _typeId of result class
+				1170836883, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPartner(methodResult);
 				}
@@ -4921,7 +4921,7 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			// Method getClient
 			2107407220 : [ // _typeId of request class
 				1313562065, // _typeId of remote interface
-				1708889390, // _typeId of result class
+				1170836883, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodObj.id, methodResult);
 				}
@@ -4977,7 +4977,7 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 			// Method getClient
 			98720592 : [ // _typeId of request class
 				2078696281, // _typeId of remote interface
-				212739126, // _typeId of result class
+				1911325389, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodResult);
 				}
@@ -5171,6 +5171,19 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{
 				"result":1174971318 // java.util.List<byte[]>
 			},
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.BResult_1178379224
+		1911325389 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
+			},
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
 			// inlineInstance
 			false
 		),
@@ -5440,6 +5453,19 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{
 				"result":1463615848 // java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>
 			},
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.BResult_1473575576
+		1170836883 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
+			},
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
 			// inlineInstance
 			false
 		),
@@ -5739,19 +5765,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1784257353
-		1708889390 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
 		// com.wilutions.byps.test.api.BResult_1799280818
 		179038766 : new com.wilutions.byps.BSerializer(
 			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
@@ -6030,19 +6043,6 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{
 				"result":2067161310 // short[]
 			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_2078696281
-		212739126 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
 			// inlineInstance
 			false
 		),

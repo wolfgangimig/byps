@@ -14,6 +14,7 @@ import com.wilutions.byps.*;
 // isInline=false
 // #members=3
 
+// checkpoint com.wilutions.byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
 public class JSerializer_738833892 extends JSerializer_Object {
 	

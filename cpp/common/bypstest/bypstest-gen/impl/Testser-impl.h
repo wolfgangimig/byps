@@ -2031,6 +2031,25 @@ class BResult_1174971318 : public BSerializable {
 }}}}}
 
 //-------------------------------------------------
+// BResult_1178379224
+// typeId=1911325389
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+using namespace ::com::wilutions::byps;
+
+class BResult_1178379224 : public BSerializable {
+	public: com::wilutions::byps::test::api::ver::PEvolveIF result;
+	public: BResult_1178379224(com::wilutions::byps::test::api::ver::PEvolveIF result = com::wilutions::byps::test::api::ver::PEvolveIF()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1911325389; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}}
+
+//-------------------------------------------------
 // BResult_12
 // typeId=309901676
 
@@ -2346,6 +2365,25 @@ class BResult_1463615848 : public BSerializable {
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result;
 	public: BResult_1463615848(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 548882635; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}}
+
+//-------------------------------------------------
+// BResult_1473575576
+// typeId=1170836883
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+
+using namespace ::com::wilutions::byps;
+
+class BResult_1473575576 : public BSerializable {
+	public: com::wilutions::byps::test::api::srvr::PClientIF result;
+	public: BResult_1473575576(com::wilutions::byps::test::api::srvr::PClientIF result = com::wilutions::byps::test::api::srvr::PClientIF()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1170836883; }
 	
 	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -2715,25 +2753,6 @@ class BResult_1752158699 : public BSerializable {
 }}}}}
 
 //-------------------------------------------------
-// BResult_1784257353
-// typeId=1708889390
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1784257353 : public BSerializable {
-	public: com::wilutions::byps::test::api::srvr::PClientIF result;
-	public: BResult_1784257353(com::wilutions::byps::test::api::srvr::PClientIF result = com::wilutions::byps::test::api::srvr::PClientIF()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1708889390; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
-
-//-------------------------------------------------
 // BResult_1799280818
 // typeId=179038766
 
@@ -3068,25 +3087,6 @@ class BResult_2067161310 : public BSerializable {
 	public: byps_ptr< BArray1< int16_t > > result;
 	public: BResult_2067161310(byps_ptr< BArray1< int16_t > > result = byps_ptr< BArray1< int16_t > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1305849624; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
-
-//-------------------------------------------------
-// BResult_2078696281
-// typeId=212739126
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_2078696281 : public BSerializable {
-	public: com::wilutions::byps::test::api::ver::PEvolveIF result;
-	public: BResult_2078696281(com::wilutions::byps::test::api::ver::PEvolveIF result = com::wilutions::byps::test::api::ver::PEvolveIF()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 212739126; }
 	
 	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -8128,6 +8128,8 @@ void BSerializer_1532920911(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1862597051(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_1174971318
 void BSerializer_994835305(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.BResult_1178379224
+void BSerializer_1911325389(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_12
 void BSerializer_309901676(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_1201775504
@@ -8162,6 +8164,8 @@ void BSerializer_104448059(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_1119760023(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_1463615848
 void BSerializer_548882635(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.BResult_1473575576
+void BSerializer_1170836883(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_1487265161
 void BSerializer_2081879792(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_1488550492
@@ -8200,8 +8204,6 @@ void BSerializer_1905478006(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1823196186(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_1752158699
 void BSerializer_150989512(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1784257353
-void BSerializer_1708889390(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_1799280818
 void BSerializer_179038766(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_181681714
@@ -8238,8 +8240,6 @@ void BSerializer_496389964(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_532799052(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_2067161310
 void BSerializer_1305849624(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2078696281
-void BSerializer_212739126(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_2087445849
 void BSerializer_580667480(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.BResult_21

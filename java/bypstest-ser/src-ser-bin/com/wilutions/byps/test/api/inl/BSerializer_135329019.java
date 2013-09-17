@@ -14,6 +14,7 @@ import com.wilutions.byps.*;
 // isInline=true
 // #members=9
 
+// checkpoint com.wilutions.byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
 public class BSerializer_135329019 extends BSerializer {
 	

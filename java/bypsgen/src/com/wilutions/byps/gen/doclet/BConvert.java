@@ -36,37 +36,77 @@ import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.db.ClassDB;
 import com.wilutions.byps.gen.db.ConstFieldReader;
 
+/**
+ * This class converts from javadoc objects to internal objects.
+ * The internal representation of serializable classes are stored in a SerialInfo object.
+ * The internal representation of interfaces are stored in a RemoteInfo object.
+ */
 public class BConvert {
+  
+  /**
+   * Full qualified class name of the session parameter type.
+   * A remote interface can tagged with this tag in order to omit sending a session
+   * parameter in each function. The BStub class for this remote interface defines
+   * the methods without the session parameter. This parameter is internally supplied
+   * over a BAuthentication implementation in the BClient object. 
+   * 
+   */
+  private static final String TAG_SESSION_PARAM_TYPE = "@BSessionParamType";
 	
-	public ClassDB classDB;
-
+  /**
+   * reserved
+   */
+  private static final String TAG_REMOTE_AUTH_BASE = "@BAuthinterface";
+  
+  /**
+   * Remote interface for the client side.
+   * This tag means that the interface can be implemented on the client side. 
+   * If the tag is not set, e.g. JavaScript serialization code will not 
+   * contain a BSkeleton class for this interface. 
+   */
+  private static final String TAG_CLIENT_REMOTE = "@BClientRemote";
+  
+	/**
+	 * Option: all classes should be serialized.
+	 */
 	public static final int OPT_ALL_SERIALS = 0x1;
+	
+	/**
+	 * Option: functions of all interfaces should be RPC calls.
+	 */
 	public static final int OPT_ALL_REMOTES = 0x2;
 	
 	/**
-	 * Process only classes tagged with BSerializable 
+	 * Process only classes tagged with @BSerializable 
 	 */
   public static final int OPT_ONLY_BSERIALS = 0x4;
   
   /**
-   * Process only interfaces tagged with BRemote
+   * Process only interfaces tagged with @BRemote
    */
   public static final int OPT_ONLY_BREMOTES = 0x8;
   
-	
+	/**
+	 * API Classes must not define members with this names.
+	 */
 	public final static HashSet<String> FORBIDDEN_FIELD_NAMES = new HashSet<String>(
 			Arrays.asList("_typeId"));
-	
-	public BConvert(int options) {
-		this.options = options;
-	}
-	
+
+	/**
+	 * Evaluate the javadoc objects and create an internal representation of the API.
+	 * @param prevClassDB Previous representation used to find type IDs from existing classes.
+	 * @param rdoc javadoc objects.
+	 * @param constReader Constant values are read over this interface.
+	 * @param opts OPT_* constants.
+	 * @return API representation object.
+	 * @throws GeneratorException
+	 */
 	public static ClassDB makeClassDB(ClassDB prevClassDB, RootDoc rdoc, ConstFieldReader constReader, int opts) throws GeneratorException {
 		BConvert conv = new BConvert(opts);
 		return conv.internalMakeClassDB(prevClassDB, rdoc, constReader);
 	}
 	
-	public ClassDB internalMakeClassDB(ClassDB prevClassDB, RootDoc rdoc, ConstFieldReader constReader) throws GeneratorException {
+	private ClassDB internalMakeClassDB(ClassDB prevClassDB, RootDoc rdoc, ConstFieldReader constReader) throws GeneratorException {
 		log.debug("makeClassDB(prevClassDB=" + prevClassDB + ", rdoc=" + rdoc + ", + constReader=" + constReader);
 
 		classDB = ClassDB.createNewVersion(prevClassDB, constReader);
@@ -74,6 +114,10 @@ public class BConvert {
 		ClassDoc[] classes = rdoc.classes();
 		log.debug("#classes=" + classes.length);
 
+		// ------------------------------------------------------------
+		// Try to find the API descirptor: the BApi class.
+		// Every API definition needs exactly one BApi class.
+		
 		log.info("API Descriptor -------------------");
 		
 		log.debug("search for API descriptor");
@@ -93,6 +137,9 @@ public class BConvert {
 			throw new GeneratorException(errInfo);
 		}
 
+		// --------------------------------------------------------------
+		// Loop over the array of classes and interfaces provided by javadoc
+		
 		log.info("Process classes -------------------");
 		
 		log.debug("for all classes...");
@@ -106,6 +153,7 @@ public class BConvert {
 			
 			log.info("Process class=" + c);
 			
+			// Is the javadoc object an interface for which RPC calles should be generated?
 			if (isRemote(c)) {
 				if (isSerializable(c)) {
 					ErrorInfo errInfo = new ErrorInfo();
@@ -117,17 +165,26 @@ public class BConvert {
 				continue;
 			}
 
+			// Is the javadoc object a class that should be serialized?
 			if (isSerializable(c)) {
 				makeSerialInfo(c);
 				continue;
 			}
 			
+			// Print a WARN for classes or interfaces that are not taken into account
+			// for further processing.
 			if ((options & (OPT_ONLY_BREMOTES|OPT_ONLY_BSERIALS)) == 0) {
 			  log.warn("Skip class " + c.qualifiedName() + 
 			      ", neither Remote nor Serializable. Either implement com.wilutions.byps.BRemote or java.io.Serializable. "
 			      + "Or tag with @BRemote or @BSerializable");
 			}
 		}
+		
+		// ------------------------------------------------------
+		// Make sure that all classes and interfaces have 
+		// internally have type IDs.
+		// For Serializable classes the type IDs are generated 
+		// from the serialVersionUID values.
 		
 		log.info("Assign type IDs -------------------");
 		
@@ -137,64 +194,96 @@ public class BConvert {
 		return classDB;
 	}
 
+	/**
+	 * Is this an interface and should it be handled?
+	 * @param c
+	 * @return
+	 */
 	private boolean isRemote(ClassDoc c) {
 	  
+	  if (!c.isInterface()) return false;
+	  
+	  // Only interfaces tagged with @BRemote?
 	  if ((options & OPT_ONLY_BREMOTES) != 0) {
 	    return c.tags("@BRemote").length != 0;
 	  }
 		
+	  // Inherits from com.wilutions.byps.Remote?
 		boolean doesImplementBRemote = doesImplement(c, com.wilutions.byps.Remote.class.getName());
 		log.debug("does implement BRemote: " + doesImplementBRemote);
 		if (doesImplementBRemote) return doesImplementBRemote;
 		
-		if ((options & OPT_ALL_REMOTES) != 0 && c.isInterface()) return true;
+		// Does not inherit from Remote, use it either?
+		if ((options & OPT_ALL_REMOTES) != 0) return true;
 		
+		// This class will be ignored.
 		return false;
 	}
 	
+	
+	/**
+	 * Is this a class and should it be handled?
+	 * @param c
+	 * @return
+	 */
 	private boolean isSerializable(ClassDoc c) {
+	  
+	  if (c.isInterface()) return false;
 		
+	  // Only classes tagged with @BSerializable
     if ((options & OPT_ONLY_BSERIALS) != 0) {
       return c.tags("@BSerializable").length != 0;
     }
 
+    // Inherits from java.io.Serializable?
     boolean doesImplementSerializable = doesImplement(c, Serializable.class.getName());
 		log.debug("does implement Serializable: " + doesImplementSerializable);
 		if (doesImplementSerializable) return true;
 
-		if ((options & OPT_ALL_SERIALS) != 0 && !c.isInterface()) return true;
+    // Does not inherit from Serializable, use it either?
+		if ((options & OPT_ALL_SERIALS) != 0) return true;
 		
+		// Class will be ignored.
 		return false;
 	}
 	
-	private BApiDescriptor makeApiDescriptor(ClassDoc c, ConstFieldReader constReader) throws GeneratorException {
-		log.debug("makeApiDescriptor(" + c.qualifiedName());
+	/**
+	 * Create an BApiDescriptor object.
+	 * This object defines general information about the API.
+	 * The base information comes from the BApi class found in the source tree.
+	 * @param classDocBApi javadoc object of the BApi class
+	 * @param constReader Interface to read constant values.
+	 * @return Object
+	 * @throws GeneratorException
+	 */
+	private BApiDescriptor makeApiDescriptor(ClassDoc classDocBApi, ConstFieldReader constReader) throws GeneratorException {
+		log.debug("makeApiDescriptor(" + classDocBApi.qualifiedName());
 		
 		BApiDescriptor apiDesc = classDB.getApiDescriptor();
 		if (apiDesc != null) {
 			ErrorInfo errInfo = new ErrorInfo();
-			errInfo.className = c.qualifiedName();
+			errInfo.className = classDocBApi.qualifiedName();
 			errInfo.msg = "Duplicate API descriptor: first definition was " + apiDesc.basePackage;
 			throw new GeneratorException(errInfo);
 		}
 		
 		try {
-			PackageDoc pack = c.containingPackage();
+			PackageDoc pack = classDocBApi.containingPackage();
 			log.debug("api-package=" + pack);
 			
-			TypeInfo tinfo = new TypeInfo(c.simpleTypeName(), c.qualifiedTypeName(), "", null, false, false, false);
+			TypeInfo tinfo = new TypeInfo(classDocBApi.simpleTypeName(), classDocBApi.qualifiedTypeName(), "", null, false, false, false);
 			String name = (String)constReader.getValue(tinfo,  "NAME");
 			log.debug("api-name=" + name);
 			if (name == null) {
 				ErrorInfo errInfo = new ErrorInfo();
-				errInfo.className = c.qualifiedName();
+				errInfo.className = classDocBApi.qualifiedName();
 				errInfo.msg = "Missing \"public final static String NAME = ...\"";
 				throw new GeneratorException(errInfo);				
 			}
 			String version = (String)constReader.getValue(tinfo, "VERSION");
 			if (version == null) {
 				ErrorInfo errInfo = new ErrorInfo();
-				errInfo.className = c.qualifiedName();
+				errInfo.className = classDocBApi.qualifiedName();
 				errInfo.msg = "Missing \"public final static String VERSION = ...\"";
 				throw new GeneratorException(errInfo);				
 			}
@@ -213,6 +302,12 @@ public class BConvert {
 		return apiDesc;
 	}
 
+	/**
+	 * Create SerialInfo for collection.
+	 * The collection might be a java.util.List, ArrayList, LinkedList, Map, HashMap, TreeMap, Set, HashSet, TreeSet.
+	 * The collection class definition must have generic arguments. 
+	 * java.lang.Object is a valid argument type.
+	 */
 	private void makeSerialInfoForCollectionType(ErrorInfo errInfo, TypeInfo tinfo) throws GeneratorException {
 		log.debug("makeSerialInfoForCollectionType(" + tinfo);
 		errInfo = errInfo.copy();
@@ -221,7 +316,7 @@ public class BConvert {
 		log.debug("isCollectionType=" + tinfo.isCollectionType());
 		if (tinfo.isCollectionType()) {
 			
-			checkSupportedCollectionType(errInfo, tinfo);
+			checkSupportedCollection(errInfo, tinfo);
 
 			// List, ArrayList, LinkedList ohne Argumenttype?
 			if (tinfo.typeArgs.size() == 0) {
@@ -281,6 +376,12 @@ public class BConvert {
 		log.debug(")makeSerialInfoForCollectionType");
 	}
 	
+	/**
+	 * Does the class implement the given interface? 
+	 * @param cls
+	 * @param interfaceQname
+	 * @return true, if interface is implemented by the class.
+	 */
 	private boolean doesImplement(ClassDoc cls, String interfaceQname) {
 		log.debug("doesImplement(" + cls + ","+ interfaceQname);
 		boolean ret = cls.qualifiedTypeName().equals(interfaceQname);
@@ -304,6 +405,14 @@ public class BConvert {
 		return ret;
 	}
 	
+	/**
+	 * Convert generic type args from javadoc to my TypeInfo objects.
+	 * @param errInfo
+	 * @param ptype
+	 * @param errorContext
+	 * @return List of TypeInfo objects
+	 * @throws GeneratorException
+	 */
 	private List<TypeInfo> getParameterizedTypeArgs(ErrorInfo errInfo, ParameterizedType ptype, String errorContext) throws GeneratorException {
 		errInfo = errInfo.copy();
 		List<TypeInfo> argInfos = null;
@@ -318,6 +427,14 @@ public class BConvert {
 		return argInfos;
 	}
 	
+	/**
+	 * Convert a javadoc Type object into an object of my TypeInfo class.
+	 * @param errInfo
+	 * @param type
+	 * @param errorContext
+	 * @return TypeInfo object
+	 * @throws GeneratorException
+	 */
 	private TypeInfo makeElementTypeInfo(ErrorInfo errInfo, Type type, String errorContext) throws GeneratorException {
 		errInfo = errInfo.copy();
 		
@@ -378,6 +495,16 @@ public class BConvert {
 		return tinfo;
 	}
 	
+	/**
+	 * Convert a javadoc object of a class field into an object of my MemberInfo class.
+	 * If the field is a constant, its value is read and serialized into JSON format. 
+	 * The JSON object is attached to the returned MemberInfo.
+	 * @param errInfo
+	 * @param field
+	 * @param errorContext
+	 * @return MemberInfo object
+	 * @throws GeneratorException
+	 */
 	private MemberInfo makeMemberInfo(ErrorInfo errInfo, FieldDoc field, String errorContext) throws GeneratorException {
 		errInfo = errInfo.copy();
 		
@@ -424,6 +551,13 @@ public class BConvert {
 		return minfo;
 	}
 	
+	/**
+	 * Serialize the fields of the given java object into JSON format.
+	 * The object values are read by reflection.
+	 * @param errInfo
+	 * @param value JSON representation.
+	 * @return
+	 */
 	private String serializeFieldsToJson(ErrorInfo errInfo, Object value) {
 		errInfo = errInfo.copy();
 		StringBuilder sbuf = new StringBuilder();
@@ -456,6 +590,13 @@ public class BConvert {
 		return sbuf.toString();
 	}
 	
+	/**
+	 * Serialize an object into JSON format.
+	 * @param errInfo
+	 * @param value
+	 * @return JSON representation of the object.
+	 * @throws GeneratorException
+	 */
 	private String serializeObjectToJson(ErrorInfo errInfo, Object value) throws GeneratorException {
 		errInfo = errInfo.copy();
 		
@@ -490,6 +631,14 @@ public class BConvert {
 		return sbuf.toString();
 	}
 
+	/**
+	 * Convert a javadoc method parameter object into an object of my MemberInfo class.
+	 * @param errInfo
+	 * @param param
+	 * @param errorContext
+	 * @return MemberInfo object
+	 * @throws GeneratorException
+	 */
 	private MemberInfo makeMethodParamInfo(ErrorInfo errInfo, Parameter param, String errorContext) throws GeneratorException {
 		errInfo = errInfo.copy();
 		String name = param.name();
@@ -499,6 +648,12 @@ public class BConvert {
 		return pinfo;
 	}
 	
+	/**
+	 * Convert a javadoc class into an object of my SerialInfo class.
+	 * @param cls
+	 * @return SerialInfo object.
+	 * @throws GeneratorException
+	 */
 	private SerialInfo makeSerialInfo(ClassDoc cls) throws GeneratorException {
 		log.debug("makeSerialInfo(" + cls);
 		String name = cls.simpleTypeName();
@@ -567,6 +722,13 @@ public class BConvert {
 		return sinfo;
 	}
 	
+	/**
+	 * Check that object types of primitives are not used as types.
+	 * E.g. java.lang.Integer cannot be used for a field in a class.
+	 * @param errInfo
+	 * @param type
+	 * @throws GeneratorException
+	 */
 	private void checkSupportedFieldType(ErrorInfo errInfo, Type type) throws GeneratorException {
 		errInfo = errInfo.copy();
 		
@@ -586,13 +748,24 @@ public class BConvert {
 		}
 	}
 
+	/**
+	 * Find the @since tag. 
+	 * @param errInfo
+	 * @param tags
+	 * @return Vesion number 
+	 * @throws GeneratorException
+	 */
 	private long getSince(ErrorInfo errInfo, Tag[] tags) throws GeneratorException {
 		errInfo = errInfo.copy();
 		long n = 0;
 		for (Tag t : tags) {
 			String tkind = t.kind();
 			String ttext = t.text();
-			if (tkind.equals("@since") && ttext != null & ttext.length() != 0) {
+			if (tkind.equals("@since")) {
+			  if (ttext == null || ttext.length() == 0) {
+			    errInfo.msg = "@since tag must specify a version number.";
+			    throw new GeneratorException(errInfo);
+			  }
 				n = BVersioning.stringToLong(ttext);
 				break;
 			}
@@ -600,16 +773,34 @@ public class BConvert {
 		return n;
 	}
 	
+	/**
+	 * Is the tag @inline set?
+	 * @param clazz
+	 * @return true, if this is an inline class.
+	 */
 	private boolean isInline(ClassDoc clazz) {
 		Tag[] tags = clazz.tags("@inline");
 		return tags != null && tags.length != 0;
 	}
 	
+	/**
+	 * Create a comment info object.
+	 * @param kind
+	 * @param text
+	 * @return Object
+	 */
 	private CommentInfo makeCommentInfo(String kind, String text) {
 		CommentInfo cinfo = new CommentInfo(kind, text);
 		return cinfo;
 	}
 	
+	/**
+	 * Concatenate tags to single string.
+	 * Javadoc comments with inline links are divided into separate tag objects.
+	 * This function concats the tags to a single string.
+	 * @param tags
+	 * @return String
+	 */
 	private String concatTags(Tag[] tags) {
 		String stext = "";
 		if (tags != null && tags.length != 0) {
@@ -625,6 +816,11 @@ public class BConvert {
 		return stext;
 	}
 	
+	/**
+	 * Convert the javadoc comments into an array of my CommentInfo objects.
+	 * @param doc
+	 * @param cinfos
+	 */
 	private void addSummaryAndRemarksCommentInfo(Doc doc, ArrayList<CommentInfo> cinfos) {
 		String summaryText = concatTags(doc.firstSentenceTags());
 		String totalText = concatTags(doc.inlineTags());
@@ -643,6 +839,18 @@ public class BConvert {
 		}
 	}
 	
+	/**
+	 * Create a method request class for a method.
+	 * This function creates a Serializable class used in an RPC call in order 
+	 * to send the parameters over the wire.
+	 * 
+	 * @param errInfo
+	 * @param remoteName
+	 * @param remoteQName
+	 * @param method
+	 * @return Object
+	 * @throws GeneratorException
+	 */
 	private SerialInfo makeMethodRequest(ErrorInfo errInfo, String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
 		errInfo = errInfo.copy();
 		ArrayList<MemberInfo> pinfos = new ArrayList<MemberInfo>(method.parameters().length);
@@ -685,6 +893,18 @@ public class BConvert {
 		return requestInfo;
 	}
 
+	/**
+	 * Create a method result class for a method.
+   * This function creates a Serializable class used in an RPC call in order 
+   * to transfer the return value over the wire.
+	 * 
+	 * @param errInfo
+	 * @param remoteName
+	 * @param remoteQName
+	 * @param method
+	 * @return
+	 * @throws GeneratorException
+	 */
 	private SerialInfo makeMethodResult(ErrorInfo errInfo, String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
 		errInfo = errInfo.copy();
 		ArrayList<MemberInfo> rinfos = new ArrayList<MemberInfo>(2);
@@ -737,6 +957,16 @@ public class BConvert {
 		return resultInfo;
 	}	
 
+	/**
+	 * Convert a javadoc method object into my MethodInfo object.
+	 * This function also creates Serializable classes to transmit the parameters and return value.
+	 * @param errInfo
+	 * @param remoteName
+	 * @param remoteQName
+	 * @param method
+	 * @return Object
+	 * @throws GeneratorException
+	 */
 	private MethodInfo makeMethodInfo(ErrorInfo errInfo, String remoteName, String remoteQName, MethodDoc method) throws GeneratorException {
 		errInfo = errInfo.copy();
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
@@ -786,6 +1016,12 @@ public class BConvert {
 		return minfo;
 	}
 	
+	/**
+	 * Create a RemoteInfo object from a javadoc object.
+	 * @param cls
+	 * @return Object
+	 * @throws GeneratorException
+	 */
 	private RemoteInfo makeRemoteInfo(ClassDoc cls) throws GeneratorException {
 		String name = cls.simpleTypeName();
 		String qname = cls.qualifiedTypeName();
@@ -811,9 +1047,9 @@ public class BConvert {
 		String authInterface = null;
 		boolean isClientRemote = false;
     for (Tag tag : cls.tags()) {
-      if (tag.kind().equals("@BSessionParamType")) authParamClassName= tag.text();
-      if (tag.kind().equals("@BAuthinterface")) authInterface= tag.text();
-      if (tag.kind().equals("@BClientRemote")) isClientRemote = true; 
+      if (tag.kind().equals(TAG_SESSION_PARAM_TYPE)) authParamClassName= tag.text();
+      if (tag.kind().equals(TAG_REMOTE_AUTH_BASE)) authInterface= tag.text();
+      if (tag.kind().equals(TAG_CLIENT_REMOTE)) isClientRemote = true; 
       
       cinfos.add(makeCommentInfo(tag.kind(), tag.text()));
     }
@@ -825,7 +1061,13 @@ public class BConvert {
 		return rinfo;
 	}
 	
-	private void checkSupportedCollectionType(ErrorInfo errInfo, TypeInfo tinfo) throws GeneratorException {
+	/**
+	 * Is the given type a supported collection type?
+	 * @param errInfo
+	 * @param tinfo
+	 * @throws GeneratorException
+	 */
+	private void checkSupportedCollection(ErrorInfo errInfo, TypeInfo tinfo) throws GeneratorException {
 		errInfo = errInfo.copy();
 		int p = tinfo.qname.indexOf('<');
 		String qname = p >= 0 ? tinfo.qname.substring(0, p) : tinfo.qname;
@@ -844,8 +1086,26 @@ public class BConvert {
 			// LinkedList wird nicht unterstützt, weil wir in JSON-Serializierung über den Index auf die Elemente zugreifen
 			"java.util.Map", "java.util.HashMap", "java.util.TreeMap",
 			"java.util.Set", "java.util.HashSet", "java.util.TreeSet"));
-
-	private static Log log = LogFactory.getLog(BConvert.class);
 	
+	 /**
+   * Constructor
+   * @param options Combination of OPT_* constants.
+   */
+  private BConvert(int options) {
+    this.options = options;
+  }
+  
+  /**
+   * Internal representation of the entire API.
+   */
+  private ClassDB classDB;
+
+  /**
+   * Converter options.
+   * Combination of OPT_* constants.
+   */
 	private final int options;
+	
+  private static Log log = LogFactory.getLog(BConvert.class);
+  
 }

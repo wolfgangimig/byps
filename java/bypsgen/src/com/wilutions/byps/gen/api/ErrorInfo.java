@@ -26,6 +26,12 @@ public class ErrorInfo {
 		StringBuilder sbuf = new StringBuilder();
 		sbuf.append("[class=");
 		sbuf.append(className);
+		
+//		int p = className.lastIndexOf('.');
+//		if (p >= 0) {
+//		  sbuf.append("(").append(className.substring(p+1)).append(".java)");
+//		}
+		
 		if (methodName != null) {
 			sbuf.append(", method=").append(methodName);
 			if (paramName != null) {

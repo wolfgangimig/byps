@@ -11,7 +11,7 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.inherit
 {
 	
-	public class BSerializer_6002 : BSerializer_6001 {
+	public class BSerializer_6002 : com.wilutions.byps.test.api.inherit.BSerializer_6001 {
 		
 		public readonly static new BSerializer instance = new BSerializer_6002();
 		

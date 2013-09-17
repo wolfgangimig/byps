@@ -21,7 +21,7 @@ public final class BRequest_ServerIF_getPartner extends BMethodRequest implement
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
 			final ServerIFAsync __byps__remoteT = (ServerIFAsync)__byps__remote;			
-			BAsyncResultSendMethod<ClientIF> __byps__outerResult = new BAsyncResultSendMethod<ClientIF>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1784257353());			
+			BAsyncResultSendMethod<ClientIF> __byps__outerResult = new BAsyncResultSendMethod<ClientIF>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_1473575576());			
 			__byps__remoteT.getPartner(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
