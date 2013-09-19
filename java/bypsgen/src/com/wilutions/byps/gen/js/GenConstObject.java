@@ -14,7 +14,11 @@ class GenConstObject {
 	
 	static void generate(CustomControl fact, PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);
-		if (serInfo.isCollectionType()) {
+		
+    if (pctxt.isSuppressConstantClassesAndObjects()) {
+      //  
+    }
+    else if (serInfo.isCollectionType()) {
 			// No API class for List<>...
 		}
 		else if (serInfo.isArrayType()) {

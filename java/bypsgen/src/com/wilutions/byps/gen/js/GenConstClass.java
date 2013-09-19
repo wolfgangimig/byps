@@ -25,7 +25,11 @@ class GenConstClass {
 	
 	static void generate(CustomControl fact, PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);
-		if (serInfo.isCollectionType()) {
+    
+		if (!serInfo.isEnum && pctxt.isSuppressConstantClassesAndObjects()) {
+      //  
+    }
+    else if (serInfo.isCollectionType()) {
 			// No API class for List<>...
 		}
 		else if (serInfo.isArrayType()) {

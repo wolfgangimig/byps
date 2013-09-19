@@ -38,6 +38,12 @@ class PrintContext extends PrintContextBase {
 		logProperties();
 	}
 
+	/**
+	 * Do not generate classes with constants. 
+	 * The API provides functions to obtain constants as normal class members.
+	 * @return
+	 * @throws GeneratorException
+	 */
   public boolean isSuppressConstantClassesAndObjects() throws GeneratorException {
     boolean val = props.getOptionalPropertyBoolean(PropertiesJS.SUPPRESS_CONST_CLASSES, false);
     return val;

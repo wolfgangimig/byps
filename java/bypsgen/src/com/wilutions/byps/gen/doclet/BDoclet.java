@@ -265,7 +265,7 @@ public class BDoclet extends Doclet {
 
     // DEBUG
     if (args == null || args.length == 0) {
-      args = bypstest_ser;
+      args = byps_ix_serAll;
     }
 
     // -------------------------------------------------------------

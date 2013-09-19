@@ -82,19 +82,16 @@ public class GeneratorJS implements Generator {
 			GenApiClass.generate(fact, pctxt, serInfo);
 		}
 		
-		if (!pctxt.isSuppressConstantClassesAndObjects()) {
-
-  		printSeparator("API constant types");
-  		for (SerialInfo serInfo : serials) {
-  			GenConstClass.generate(fact, pctxt, serInfo);
-  		}
-  
-  		printSeparator("API constants");
-  		for (SerialInfo serInfo : serials) {
-  			GenConstObject.generate(fact, pctxt, serInfo);
-  		}
-  		
+		printSeparator("API constant types");
+		for (SerialInfo serInfo : serials) {
+			GenConstClass.generate(fact, pctxt, serInfo);
 		}
+
+		printSeparator("API constants");
+		for (SerialInfo serInfo : serials) {
+			GenConstObject.generate(fact, pctxt, serInfo);
+		}
+  		
 	}
 
 	private void buildRemotes(CustomControl fact, ClassDB classDB) throws IOException {
