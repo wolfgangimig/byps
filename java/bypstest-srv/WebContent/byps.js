@@ -973,34 +973,15 @@ com.wilutions.byps.BClient = function() {
 	this.start = function(startServerR, asyncResult) { // BAsyncResult<BClient>
 		
 		var processAsync = !!asyncResult;
-		var me = this;
+		if (!processAsync) {
+			asyncResult = function(result, ex) {
+				if (ex) throw ex;
+			};
+		}
 
 		this.setAuthentication(null);
 		
-	    var exception = null;
-		
-		var outerResult = function(ignored, ex) {
-			exception = ex;
-			try {
-				if (!ex && startServerR && this._serverR) {
-					serverR.start();
-				}
-			} catch (ex2) {
-				exception = ex2;
-			}
-			
-			if (asyncResult) {
-				asyncResult(me, exception);
-			}
-		};
-		
-		this.transport.negotiateProtocolClient(outerResult, processAsync);
-		
-		if (!processAsync) {
-			if (exception) {
-				throw exception;
-			}
-		}
+		this.transport.negotiateProtocolClient(asyncResult, processAsync);
 	};
 	
 	this.stop = function() {
