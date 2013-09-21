@@ -20,7 +20,6 @@ BINLINE void BLogFile::println(BLogLevel msglevel, const wstring& msg) {
     {
         byps_unique_lock lock(mutex);
 
-
         strm << setfill(L'0')
              << setw(4) << 1900 + now.tm_year << L"-"
              << setw(2) << now.tm_mon+1 << L"-"
@@ -29,7 +28,7 @@ BINLINE void BLogFile::println(BLogLevel msglevel, const wstring& msg) {
              << setw(2) << now.tm_min << L":"
              << setw(2) << now.tm_sec << L" ";
 
-        strm << std::hex << this_thread::get_id() << L" ";
+        strm << std::hex << this_thread::get_id() << L" " << std::dec;
 
         switch (msglevel) {
         case Nothing: break;

@@ -51,7 +51,7 @@ public:
 
 		PPrimitiveTypes obj1(new PrimitiveTypes());
 
-        int64_t arr[] = { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFLL, -1, LONG_LONG_MIN};
+        int64_t arr[] = { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFLL, -1, INT64_MIN};
         for (unsigned i = 0; i < sizeof(arr)/sizeof(int64_t); i++) {
 			obj1->longVal = arr[i];
 		
