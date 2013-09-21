@@ -34,8 +34,8 @@ public:
 
 		PPrimitiveTypes obj1(new PrimitiveTypes());
 
-		int arr[] = { 0, 1, 0xFF, 0x100, 0x10000, 0x1000000, 0x7FFFFFFF, -1, 0x80000000}; 
-		for (int i = 0; i < sizeof(arr)/sizeof(int); i++) {
+        int arr[] = { 0, 1, 0xFF, 0x100, 0x10000, 0x1000000, 0x7FFFFFFF, -1, INT_MIN};
+        for (unsigned i = 0; i < sizeof(arr)/sizeof(int); i++) {
 			obj1->intVal = arr[i];
 		
 			remote->setPrimitiveTypes(obj1);
@@ -51,8 +51,8 @@ public:
 
 		PPrimitiveTypes obj1(new PrimitiveTypes());
 
-		int64_t arr[] = { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFLL, -1, 0x8000000000000000LL}; 
-		for (int i = 0; i < sizeof(arr)/sizeof(int64_t); i++) {
+        int64_t arr[] = { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFLL, -1, LONG_LONG_MIN};
+        for (unsigned i = 0; i < sizeof(arr)/sizeof(int64_t); i++) {
 			obj1->longVal = arr[i];
 		
 			remote->setPrimitiveTypes(obj1);

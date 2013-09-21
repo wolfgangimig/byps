@@ -34,7 +34,9 @@ void AllTests_run(void *app) {
     suite.add(TestRemoteArrays4Dim_create(app));
     suite.add(TestRemoteListTypes_create(app));
 
-	suite.run();
+    for (int i = 0; i< 100; i++) {
+        suite.run();
+    }
 
 	l_info << "test suite finished";
 

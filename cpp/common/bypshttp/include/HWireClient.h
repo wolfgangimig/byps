@@ -3,6 +3,7 @@
 
 #include "Byps.h"
 #include "Bypshttp.h"
+#include "BLogger.h"
 #include <random>
 
 namespace com { namespace wilutions { namespace byps { namespace http {
@@ -19,6 +20,7 @@ class HWireClient : public BWire, public std::enable_shared_from_this<HWireClien
 	std::mt19937_64 rand;
 	PHttpClient httpClient;
 	void* app;
+    static BLogger log;
 
 public:
 	const std::wstring url;

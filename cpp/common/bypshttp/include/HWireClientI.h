@@ -31,6 +31,7 @@ private:
 	bool isCanceled;
     byps_mutex mutex;
     std::map<intptr_t, PHttpRequest> map;
+    static BLogger log;
 };
 
 class HWireClient_AsyncResultAfterAllRequests : public BAsyncResult {
@@ -47,11 +48,13 @@ private:
     size_t nbOfRequests;
     byps_mutex mutex;
     BVariant result;
+    static BLogger log;
 };
 
 class HWireClient_ExecResult : public BRunnable {
 	PAsyncResult asyncResult;
 	BVariant var;
+    static BLogger log;
 public:
 	HWireClient_ExecResult(PAsyncResult asyncResult, BVariant var);
 	virtual void run();
@@ -59,6 +62,7 @@ public:
 
 class HWireClient_TestAdapter : public BTestAdapter {
 	byps_ptr<HWireClient> wire;
+    static BLogger log;
 public:
 
 	HWireClient_TestAdapter(byps_ptr<HWireClient> wire) : wire(wire) {
