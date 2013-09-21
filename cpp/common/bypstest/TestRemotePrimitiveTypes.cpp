@@ -29,6 +29,48 @@ public:
 		TestUtils::releasePrimitiveTypes(objR);
 	}
 
+	void testSerializeInt() {	
+        PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+
+		PPrimitiveTypes obj1(new PrimitiveTypes());
+
+		int arr[] = { 0, 1, 0xFF, 0x100, 0x10000, 0x1000000, 0x7FFFFFFF, -1, 0x80000000}; 
+		for (int i = 0; i < sizeof(arr)/sizeof(int); i++) {
+			obj1->intVal = arr[i];
+		
+			remote->setPrimitiveTypes(obj1);
+			PPrimitiveTypes objR = remote->getPrimitiveTypes();
+		
+			TestUtils::tassert(__FILE__, __LINE__, L"PrimitiveTypes", obj1, objR);
+			TASSERT( L"Wrong int", obj1->intVal, objR->intVal);
+		}
+	}
+
+	void testSerializeLong() {	
+        PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+
+		PPrimitiveTypes obj1(new PrimitiveTypes());
+
+		int64_t arr[] = { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFLL, -1, 0x8000000000000000LL}; 
+		for (int i = 0; i < sizeof(arr)/sizeof(int64_t); i++) {
+			obj1->longVal = arr[i];
+		
+			remote->setPrimitiveTypes(obj1);
+			PPrimitiveTypes objR = remote->getPrimitiveTypes();
+		
+			TestUtils::tassert(__FILE__, __LINE__, L"PrimitiveTypes", obj1, objR);
+			TASSERT( L"Wrong long", obj1->longVal, objR->longVal);
+		}
+
+        for (int i = 0; i < 64; i += 8) {
+            int64_t value = 1 << i;
+            remote->setLong(value);
+            int64_t valueR = remote->getLong();
+            TASSERT( L"Wrong long", value, valueR);
+        }
+
+	}
+
 
 	void testRemotePrimitiveTypes() {
 
@@ -113,6 +155,8 @@ public:
 
 
 	virtual void init() {
+		ADD_TEST(testSerializeInt);
+		ADD_TEST(testSerializeLong);
 		ADD_TEST(testRemotePrimitiveTypes);
 		ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
 		ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);

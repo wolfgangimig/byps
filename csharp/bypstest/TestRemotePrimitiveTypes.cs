@@ -114,5 +114,43 @@ namespace bypstest
             log.info(")testRemotePrimitiveTypesAsync");
         }
 
+        [TestMethod]
+        public void testPrimitiveTypesInt()
+        {
+            log.info("testPrimitiveTypesInt(");
+
+            int[] arr = new int[] { 0, 1, 0xFF, 0x100, 0x10000, 0x1000000, 0x7FFFFFFF, -1, -2147483648 };
+            for (int i = 1; i < arr.Length; i++)
+            {
+                remote.SetInt(arr[i]);
+                int valueR = remote.GetInt();
+                TestUtils.assertEquals(log, "Wrong int", arr[i], valueR);
+            }
+            log.info(")testPrimitiveTypesInt");
+        }
+
+        [TestMethod]
+        public void testPrimitiveTypesLong()
+        {
+            log.info("testPrimitiveTypesLong(");
+
+            long[] arr = new long[] { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFL, -1, -9223372036854775808L };
+            for (int i = 0; i < arr.Length; i++)
+            {
+                remote.SetLong(arr[i]);
+                long valueR = remote.GetLong();
+                TestUtils.assertEquals(log, "Wrong long", arr[i], valueR);
+            }
+
+            for (int i = 0; i < 64; i += 8)
+            {
+                long value = 1 << i;
+                remote.SetLong(value);
+                long valueR = remote.GetLong();
+                TestUtils.assertEquals(log, "Wrong long", value, valueR);
+            }
+            log.info(")testPrimitiveTypesLong");
+        }
     }
+
 }

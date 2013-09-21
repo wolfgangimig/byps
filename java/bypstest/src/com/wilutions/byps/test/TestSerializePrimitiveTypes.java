@@ -300,9 +300,9 @@ public class TestSerializePrimitiveTypes {
 	@Test
 	public void testPrimitiveTypesInt() throws BException {	
 		log.info("testPrimitiveTypesInt(");
-		for (int i = 1; i < 0x01000100; i *= 2) {
-			internalTestInt(i);
-			internalTestInt(-i);
+		int[] arr = new int[] { 0, 1, 0xFF, 0x100, 0x10000, 0x1000000, 0x7FFFFFFF, -1, 0x80000000}; 
+		for (int i = 0; i < arr.length; i++) {
+			internalTestInt(arr[i]);
 		}
 		log.info(")testPrimitiveTypesInt");
 	}
@@ -325,10 +325,16 @@ public class TestSerializePrimitiveTypes {
 	@Test
 	public void testPrimitiveTypesLong() throws BException {	
 		log.info("testPrimitiveTypesLong(");
-		for (long i = 1; i < 0x0100010001000100L; i *= 2) {
-			internalTestLong(i);
-			internalTestLong(-i);
+    long[] arr = new long[] { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFL, -1, 0x8000000000000000L}; 
+    for (int i = 0; i < arr.length; i++) {
+			internalTestLong(arr[i]);
 		}
+    
+    for (int i = 0; i < 64; i+=8) {
+      long value = 1 << i;
+      internalTestLong(value);
+    }
+    
 		log.info(")testPrimitiveTypesLong");
 	}
 	
