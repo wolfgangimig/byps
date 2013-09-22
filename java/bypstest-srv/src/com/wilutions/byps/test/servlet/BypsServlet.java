@@ -104,7 +104,8 @@ public class BypsServlet extends HHttpServlet {
       if (logLevel.equalsIgnoreCase("INFO")) rootLogger.setLevel(Level.INFO);
       if (logLevel.equalsIgnoreCase("WARN")) rootLogger.setLevel(Level.WARN);
       if (logLevel.equalsIgnoreCase("ERROR")) rootLogger.setLevel(Level.ERROR);
-
+      
+      if (log.isDebugEnabled()) log.debug("Logger opened.");
     }
   }
 

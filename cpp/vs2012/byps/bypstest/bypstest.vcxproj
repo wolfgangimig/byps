@@ -104,6 +104,8 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\git\byps\cpp\common\byps\include;D:\git\byps\cpp\common\bypshttp\include;D:\git\byps\cpp\common\testfw\include;D:\git\byps\cpp\common\bypstest\bypstest-gen\api;D:\git\byps\cpp\common\bypstest\bypstest-gen\impl;D:\git\byps\cpp\common\bypstest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +143,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\git\byps\cpp\common\byps\include;D:\git\byps\cpp\common\bypshttp\include;D:\git\byps\cpp\common\testfw\include;D:\git\byps\cpp\common\bypstest\bypstest-gen\api;D:\git\byps\cpp\common\bypstest\bypstest-gen\impl;D:\git\byps\cpp\common\bypstest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

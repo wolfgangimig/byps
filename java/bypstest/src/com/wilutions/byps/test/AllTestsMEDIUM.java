@@ -39,4 +39,5 @@ public class AllTestsMEDIUM {
 	public static void setProtocol() {
 		TestUtils.protocol = BProtocolS.BINARY_MODEL;
 	}
+	
 }

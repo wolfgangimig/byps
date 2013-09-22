@@ -17,34 +17,33 @@ BINLINE void BLogFile::println(BLogLevel msglevel, const wstring& msg) {
     struct tm now;
     byps_localtime(&now, &t);
 
+	std::wstringstream wss;
+
+    wss << setfill(L'0')
+            << setw(4) << 1900 + now.tm_year << L"-"
+            << setw(2) << now.tm_mon+1 << L"-"
+            << setw(2) << now.tm_mday << L" "
+            << setw(2) << now.tm_hour << L":"
+            << setw(2) << now.tm_min << L":"
+            << setw(2) << now.tm_sec << L" ";
+
+    wss << std::hex << this_thread::get_id() << L" " << std::dec;
+
+    switch (msglevel) {
+    case Nothing: break;
+    case Debug: wss << L"DEBUG"; break;
+    case Info: wss << L"INFO"; break;
+    case Warn: wss << L"WARN"; break;
+    case Error: wss << L"ERROR"; break;
+    }
+    wss << L" ";
+
+    wss << msg;
+
     {
         byps_unique_lock lock(mutex);
-
-        strm << setfill(L'0')
-             << setw(4) << 1900 + now.tm_year << L"-"
-             << setw(2) << now.tm_mon+1 << L"-"
-             << setw(2) << now.tm_mday << L" "
-             << setw(2) << now.tm_hour << L":"
-             << setw(2) << now.tm_min << L":"
-             << setw(2) << now.tm_sec << L" ";
-
-        strm << std::hex << this_thread::get_id() << L" " << std::dec;
-
-        switch (msglevel) {
-        case Nothing: break;
-        case Debug: strm << L"DEBUG"; break;
-        case Info: strm << L"INFO"; break;
-        case Warn: strm << L"WARN"; break;
-        case Error: strm << L"ERROR"; break;
-        }
-        strm << L" ";
-
-        strm << msg;
-
-        strm << endl;
-
-        strm.flush();
-
+		strm << wss.str() << endl;
+        //strm.flush();
     }
 }
 

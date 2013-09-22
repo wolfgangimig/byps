@@ -43,9 +43,11 @@ public:
 			nver /= ndigits;
 		}
 		std::basic_stringstream<_C> wss;
-		for (int i = arr.size()-1; i >= 0; i--) {
-			wss << arr[(unsigned)i];
-			if (i != 0) wss << ((_C)('.'));
+		if (arr.size()) {
+			for (int i = (int)arr.size()-1; i >= 0; i--) {
+				wss << arr[(unsigned)i];
+				if (i != 0) wss << ((_C)('.'));
+			}
 		}
 		return wss.str();
 	}
