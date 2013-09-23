@@ -68073,7 +68073,7 @@
                 </member>
                 <member>
                     <name>docVersion</name>
-                    <typeName>de.elo.ix.client.DocVersion</typeName>
+                    <typeName>de.elo.ix.client.discuss.DocVersionIS</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -68187,7 +68187,7 @@
                 </member>
                 <member>
                     <name>attachments</name>
-                    <typeName>java.util.ArrayList{de.elo.ix.client.DocVersion}</typeName>
+                    <typeName>java.util.ArrayList{de.elo.ix.client.discuss.DocVersionIS}</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -68428,6 +68428,26 @@
             <members/>
             <comments/>
             <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>false</isFinal>
+        </serial>
+        <serial>
+            <typeName>de.elo.ix.client.discuss.DocVersionIS</typeName>
+            <typeId>1670271516</typeId>
+            <members>
+                <member>
+                    <name>stream</name>
+                    <typeName>java.io.InputStream</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PROTECTED</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName>de.elo.ix.client.DocVersion</baseFullName>
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
@@ -68970,8 +68990,8 @@
             <isFinal>false</isFinal>
         </serial>
         <serial>
-            <typeName>java.util.ArrayList{de.elo.ix.client.DocVersion}</typeName>
-            <typeId>1394670060</typeId>
+            <typeName>java.util.ArrayList{de.elo.ix.client.discuss.Comment}</typeName>
+            <typeId>11852447</typeId>
             <members/>
             <comments/>
             <baseFullName></baseFullName>
@@ -68980,8 +69000,8 @@
             <isFinal>false</isFinal>
         </serial>
         <serial>
-            <typeName>java.util.ArrayList{de.elo.ix.client.discuss.Comment}</typeName>
-            <typeId>11852447</typeId>
+            <typeName>java.util.ArrayList{de.elo.ix.client.discuss.DocVersionIS}</typeName>
+            <typeId>1155463924</typeId>
             <members/>
             <comments/>
             <baseFullName></baseFullName>

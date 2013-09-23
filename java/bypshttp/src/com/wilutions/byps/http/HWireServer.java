@@ -214,7 +214,7 @@ public class HWireServer extends BWire {
     	if (log.isDebugEnabled()) log.debug("sendOutgoingStream(streamId=" + streamId + ", response=" + response);
     	
     	BContentStream is = null;
-		OutputStream os = null;
+    	OutputStream os = null;
     	try {
     		is = activeMessages.getOutgoingStream(messageId, streamId);
     		response.setStatus(HttpServletResponse.SC_OK);
@@ -225,12 +225,20 @@ public class HWireServer extends BWire {
     		response.setHeader("Content-Length", Long.toString(contentLength));
     		
     		os = response.getOutputStream();
-        	byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
-        	int len = 0;
-        	while ((len = is.read(buf)) != -1) {
-        		os.write(buf, 0, len);
-        	}
+        byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
+        int len = 0;
+        while ((len = is.read(buf)) != -1) {
+        	os.write(buf, 0, len);
+        }
     	}
+      catch (IOException e) {
+        response.setHeader("Content-Length", "0");
+        throw e;
+      }
+      catch (Throwable e) {
+        response.setHeader("Content-Length", "0");
+        throw new IOException("Cannot read stream", e);
+      }
     	finally {
     		if (log.isDebugEnabled()) log.debug("close response of outgoing stream, streamId=" + streamId);
     		if (is != null) try { is.close(); } catch (IOException ignored) {}
