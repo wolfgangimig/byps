@@ -20,17 +20,6 @@ public class BSerializer_10000 extends BSerializer {
 	
 	public final static BSerializer instance = new BSerializer_10000();
 	
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		return 0
-		       /* size of base class */ + 0
-		       /* pos=0: planet */ + 4		
-		       /* pos=4: planet2 */ + 4		
-		       /* pos=8: arrayOfPlanets */ + 4		
-		       /* pos=12: listOfPlanets */ + 4		
-		       /* pos=16: mapOfPlanets */ + 4		
-		       /* padding up to multiple of alignment */ + 4;		
-	}
-	
 	public BSerializer_10000() {
 		super(10000);
 	}

@@ -50,51 +50,51 @@ public class GenSerArray {
 		//log.debug(GeneratorJ.class.getName(), "printConstructors");
 	}
 	
-	protected void printSize() throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printSize");
-		
-		int ndims = serInfo.dims.length() / 2;
-		
-		pr.println("@Override");
-		pr.print("public int size(Object obj, BBinaryModel bmodel) throws BException { ").println();
-		pr.beginBlock();
-		
-		if (elmType.isPointerType()) {
-			pr.println("final int elementSize = bmodel.pointerSize;");
-		}
-		else {
-			int elmSize = elmType.getMemberSize(pctxt.bmodel);
-			pr.println("final int elementSize = " + elmSize + ";");
-		}
-		
-		String arrType = serInfo.toString(pack); 
-		pr.print("final ").print(arrType).print(" arr = (").print(arrType).print(")obj;").println();
-		String loopVar = "arr";
-		for (int i = 0; i < ndims; i++) {
-			if (i == 0) {
-				pr.print("int n = ").print(loopVar).print(".length;").println();
-			}
-			else {
-				pr.print("n *= ").print(loopVar).print(".length;").println();
-			}
-			if (i != ndims-1) {
-				pr.println("if (n != 0) {");
-				pr.beginBlock();
-				loopVar += "[0]";
-			}
-		}
-		for (int i = 0; i < ndims-1; i++) {
-			pr.endBlock();
-			pr.println("}");
-		}
-
-		pr.println("return bmodel.computeArrayWireSize(elementSize, n);");
-		
-		pr.endBlock();
-		pr.println("}");
-		
-		//log.debug(GeneratorJ.class.getName(), "printSize");
-	}
+//	private void printSize() throws IOException {
+//		//log.debug(GeneratorJ.class.getName(), "printSize");
+//		
+//		int ndims = serInfo.dims.length() / 2;
+//		
+//		pr.println("@Override");
+//		pr.print("public int size(Object obj, BBinaryModel bmodel) throws BException { ").println();
+//		pr.beginBlock();
+//		
+//		if (elmType.isPointerType()) {
+//			pr.println("final int elementSize = bmodel.pointerSize;");
+//		}
+//		else {
+//			int elmSize = elmType.getMemberSize(pctxt.bmodel);
+//			pr.println("final int elementSize = " + elmSize + ";");
+//		}
+//		
+//		String arrType = serInfo.toString(pack); 
+//		pr.print("final ").print(arrType).print(" arr = (").print(arrType).print(")obj;").println();
+//		String loopVar = "arr";
+//		for (int i = 0; i < ndims; i++) {
+//			if (i == 0) {
+//				pr.print("int n = ").print(loopVar).print(".length;").println();
+//			}
+//			else {
+//				pr.print("n *= ").print(loopVar).print(".length;").println();
+//			}
+//			if (i != ndims-1) {
+//				pr.println("if (n != 0) {");
+//				pr.beginBlock();
+//				loopVar += "[0]";
+//			}
+//		}
+//		for (int i = 0; i < ndims-1; i++) {
+//			pr.endBlock();
+//			pr.println("}");
+//		}
+//
+//		pr.println("return bmodel.computeArrayWireSize(elementSize, n);");
+//		
+//		pr.endBlock();
+//		pr.println("}");
+//		
+//		//log.debug(GeneratorJ.class.getName(), "printSize");
+//	}
 	
 	protected void printRead() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printCreateObject");
@@ -290,9 +290,6 @@ public class GenSerArray {
 		pr.println();
 		
 		printConstructors();
-		pr.println();
-		
-		printSize();
 		pr.println();
 		
 		printRead();

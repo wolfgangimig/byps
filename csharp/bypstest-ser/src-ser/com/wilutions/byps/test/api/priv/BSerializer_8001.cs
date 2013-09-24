@@ -22,37 +22,6 @@ namespace com.wilutions.byps.test.api.priv
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: boolVal */ + 4			
-			       /* pos=4: byteVal */ + 1			
-			       /* padding */ + 1			
-			       /* pos=6: charVal */ + 2			
-			       /* pos=8: shortVal */ + 2			
-			       /* padding */ + 2			
-			       /* pos=12: intVal */ + 4			
-			       /* pos=16: longVal */ + 8			
-			       /* pos=24: floatVal */ + 4			
-			       /* padding */ + 4			
-			       /* pos=32: doubleVal */ + 8			
-			       /* pos=40: stringVal */ + 4			
-			       /* pos=44: primitiveTypes */ + 4			
-			       /* pos=48: arrBool */ + 4			
-			       /* pos=52: arrInt */ + 4			
-			       /* pos=56: arrString */ + 4			
-			       /* pos=60: arrPrimitiveTypes */ + 4			
-			       /* pos=64: listBool */ + 4			
-			       /* pos=68: listInt */ + 4			
-			       /* pos=72: listString */ + 4			
-			       /* pos=76: listPrimitiveTypes */ + 4			
-			       /* pos=80: mapIntListString */ + 4			
-			       /* pos=84: protInt */ + 4			
-			       /* pos=88: pprotInt */ + 4			
-			       /* padding up to multiple of alignment */ + 4;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			PrivateMembers obj = (PrivateMembers)obj1;			

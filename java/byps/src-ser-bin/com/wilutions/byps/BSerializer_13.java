@@ -32,19 +32,6 @@ public class BSerializer_13 extends BSerializer {
 		return new java.util.HashMap(capacity);
 	}
 
-	@Override
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		final int k = bmodel.pointerSize;
-		final int p1 = 0;
-		final int v = bmodel.pointerSize;
-		final int p2 = 0;
-		final int e = k + p1 + v + p2;
-		@SuppressWarnings("rawtypes")
-		final java.util.Map arr = (java.util.Map) obj;
-		int n = arr.size();
-		return bmodel.computeArrayWireSize(e, n);
-	}
-
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = ((BInputBin)bin1);

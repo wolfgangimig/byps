@@ -22,15 +22,6 @@ namespace com.wilutions.byps.test.api.remote
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: ALEPH */ + 4			
-			       /* pos=4: BETH */ + 4			
-			       /* padding up to multiple of alignment */ + 0;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			BRequest_RemoteConstants_compare_HebrewC obj = (BRequest_RemoteConstants_compare_HebrewC)obj1;			

@@ -24,9 +24,10 @@ import com.wilutions.byps.BClient;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BTransport;
+import com.wilutions.byps.http.HConfigImpl;
+import com.wilutions.byps.http.HConfig;
 import com.wilutions.byps.http.HFileUploadItem;
 import com.wilutions.byps.http.HHttpServlet;
-import com.wilutions.byps.http.HServerListener;
 import com.wilutions.byps.http.HSession;
 import com.wilutions.byps.http.HTestAdapter;
 import com.wilutions.byps.test.api.BApiDescriptor_Testser;
@@ -212,6 +213,12 @@ public class BypsServlet extends HHttpServlet {
     return BClient_Testser.createClientR(transport);
   }
   
+  @Override
+  protected HConfig getConfig() {
+    return config;
+  }
+  
   private final Log log = LogFactory.getLog(BypsServlet.class);
+  private final HConfigImpl config = new HConfigImpl();
 
 }

@@ -23,7 +23,7 @@ public abstract class HSession {
   public final static int DEFAULT_INACTIVE_SECONDS = -1;
   
   protected final HttpSession httpSess;
-  protected final BServerRegistry stubRegistry;
+  protected final BServerRegistry serverRegistry;
   protected final HWriteResponseHelper writeHelper;
   protected final HWireServer wireServer;
   protected final HWireClientR wireClientR;
@@ -35,14 +35,14 @@ public abstract class HSession {
    * @param hsess HTTP session object
    * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser()
    * @param tempDir Temporary directory for storing streams.
-   * @param stubRegistry Registry for BStub objects of all subscribers.
+   * @param serverRegistry Registry for BStub objects of all subscribers.
    * @param listener Listener for events triggered during processing.
    */
-  public HSession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry stubRegistry, HServerListener listener) {
+  public HSession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry serverRegistry, HServerListener listener) {
     if (log.isDebugEnabled())
       log.debug("HSession(");
     this.httpSess = hsess;
-    this.stubRegistry = stubRegistry;
+    this.serverRegistry = serverRegistry;
     
     this.remoteUser = remoteUser;
     this.defaultInactiveSeconds = hsess.getMaxInactiveInterval();
@@ -98,7 +98,7 @@ public abstract class HSession {
   
   protected BTransportFactory getTransportFactory(BApiDescriptor apiDesc) {
     BTransportFactory transportFactory = new HTransportFactoryServer(
-        apiDesc, wireServer, wireClientR, stubRegistry);
+        apiDesc, wireServer, wireClientR, serverRegistry);
     return transportFactory;
   }
 

@@ -18,16 +18,6 @@ namespace com.wilutions.byps.test.api
 		public BSerializer_124584219() : 
 			base(124584219) {}
 		
-		public override int size(Object obj, BBinaryModel bmodel) { 
-			int elementSize = bmodel.pointerSize;
-			Object[,,,] arr = (Object[,,,])obj;
-			int n = arr.GetLength(0);
-			n *= arr.GetLength(1);
-			n *= arr.GetLength(2);
-			n *= arr.GetLength(3);
-			return bmodel.computeArrayWireSize(elementSize, n);
-		}
-		
 		public override Object read(Object obj1, BInput bin1, long version) {
 			BInputBin bin = (BInputBin)bin1;
 			BBufferBin bbuf = bin.bbuf;

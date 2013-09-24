@@ -12,11 +12,6 @@ public class JSerializer_16 extends BSerializer {
 	}
 
 	@Override
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		return 0;
-	}
-
-	@Override
 	public void write(final Object obj, final BOutput bout1, final long version) throws BException {
 		final BOutputJson bout = ((BOutputJson)bout1);
 		final BBufferJson bbuf = bout.bbuf;

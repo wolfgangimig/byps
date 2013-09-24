@@ -132,6 +132,6 @@ public class GenSerStructJson extends GenSerStruct{
 		//log.debug(GeneratorJ.class.getName(), "printStore");
 	}
 	
-	protected void printSize() throws IOException {
-	}
+//	protected void printSize() throws IOException {
+//	}
 }

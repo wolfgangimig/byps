@@ -24,17 +24,6 @@ public abstract class BSerializer {
 		this.inlineInstance = false;
 	}
 	
-	/**
-	 * Größe des Objekts.
-	 * Wenn das Objekt keine Pointer enhält, kann 0 zurückgegeben werden. (String)
-	 * @param bout
-	 * @return
-	 * @throws BException
-	 */
-	public int size(final Object obj1, final BBinaryModel bmodel) throws BException {
-		return 0;
-	}
-	
 	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 	}
 			

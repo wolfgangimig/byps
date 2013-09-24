@@ -22,18 +22,6 @@ namespace com.wilutions.byps.test.api.enu
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: planet */ + 4			
-			       /* pos=4: planet2 */ + 4			
-			       /* pos=8: arrayOfPlanets */ + 4			
-			       /* pos=12: listOfPlanets */ + 4			
-			       /* pos=16: mapOfPlanets */ + 4			
-			       /* padding up to multiple of alignment */ + 4;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			UsePlanets obj = (UsePlanets)obj1;			

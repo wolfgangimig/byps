@@ -22,23 +22,6 @@ namespace com.wilutions.byps.test.api.arr
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: boolean4 */ + 4			
-			       /* pos=4: byte4 */ + 4			
-			       /* pos=8: char4 */ + 4			
-			       /* pos=12: short4 */ + 4			
-			       /* pos=16: int4 */ + 4			
-			       /* pos=20: long4 */ + 4			
-			       /* pos=24: float4 */ + 4			
-			       /* pos=28: double4 */ + 4			
-			       /* pos=32: string4 */ + 4			
-			       /* pos=36: primitiveTypes4 */ + 4			
-			       /* padding up to multiple of alignment */ + 0;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			ArrayTypes4dim obj = (ArrayTypes4dim)obj1;			

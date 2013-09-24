@@ -15,11 +15,6 @@ public class JSerializer_22 extends JSerializer_Object {
 	}
 
 	@Override
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		return 0;
-	}
-
-	@Override
 	protected void internalWrite(final Object obj1, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		final BValueClass obj = (BValueClass)obj1;
 		bbuf.putLong("changedMembers", obj.changedMembers);

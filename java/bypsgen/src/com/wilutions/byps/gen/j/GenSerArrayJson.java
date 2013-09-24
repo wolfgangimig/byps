@@ -21,9 +21,9 @@ public class GenSerArrayJson extends GenSerArray {
 
 	static Log log = LogFactory.getLog(GenSerArrayJson.class);
 	
-	protected void printSize() throws IOException {
-	}
-	
+//	protected void printSize() throws IOException {
+//	}
+//	
 	protected void printRead() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printCreateObject");
 

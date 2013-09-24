@@ -22,16 +22,6 @@ namespace com.wilutions.byps.test.api.remote
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: arr2 */ + 4			
-			       /* pos=4: arr3 */ + 4			
-			       /* pos=8: arr4 */ + 4			
-			       /* padding up to multiple of alignment */ + 4;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			BRequest_RemoteArrayTypes23_sendArraysInline obj = (BRequest_RemoteArrayTypes23_sendArraysInline)obj1;			

@@ -10,14 +10,20 @@ public class BAsyncResultReceiveMethod<T> implements BAsyncResult<BMethodResult<
 	
 	private final BAsyncResult<T> innerResult;
 	
+	/**
+	 * Constructor
+	 * @param innerResult BAsyncResult object or null, if the caller is not interested in the result.
+	 */
 	public BAsyncResultReceiveMethod(BAsyncResult<T> innerResult) {
 		this.innerResult = innerResult;
 	}
 	
 	@Override
 	public void setAsyncResult(BMethodResult<T> methodResult, Throwable e)  {
-		T result = methodResult != null ? methodResult.result : null;
-		innerResult.setAsyncResult(result, e);
+    if (innerResult != null) {
+  		T result = methodResult != null ? methodResult.result : null;
+  		innerResult.setAsyncResult(result, e);
+    }
 	}
 	
 }

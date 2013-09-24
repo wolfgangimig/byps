@@ -22,14 +22,6 @@ namespace com.wilutions.byps.test.api.inherit
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=16: int2 */ + 4			
-			       /* padding up to multiple of alignment */ + 4;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			base.write(obj1, bout1, version);			

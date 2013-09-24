@@ -22,17 +22,6 @@ namespace com.wilutions.byps.test.api.cons
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: aleph */ + 4			
-			       /* pos=4: beth */ + 4			
-			       /* pos=8: ALEPH */ + 4			
-			       /* pos=12: BETH */ + 4			
-			       /* padding up to multiple of alignment */ + 0;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			HebrewC obj = (HebrewC)obj1;			

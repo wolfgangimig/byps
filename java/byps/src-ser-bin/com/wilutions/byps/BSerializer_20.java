@@ -15,11 +15,6 @@ public class BSerializer_20 extends BSerializer {
 	}
 	
 	@Override
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		return 0;
-	}
-
-	@Override
 	public void write(final Object obj, final BOutput bout1, final long version) throws BException {
 		final BOutputBin bout = ((BOutputBin)bout1);
 		final BException e = (BException)obj;

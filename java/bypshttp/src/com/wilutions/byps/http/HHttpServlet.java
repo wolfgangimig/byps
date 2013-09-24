@@ -53,30 +53,16 @@ public abstract class HHttpServlet extends HttpServlet {
    */
   public HHttpServlet() {
     if (log.isDebugEnabled()) log.debug("BHttpServlet()");
-
-    serverRegistry = new HRemoteRegistry(config) {
-
-      @Override
-      protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {
-        return HHttpServlet.this.createForwardClientToOtherServer(transport);
-      }
-
-      @Override
-      protected BApiDescriptor getApiDescriptor() {
-        return HHttpServlet.this.getApiDescriptor();
-      }
-
-    };
-
-    cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
   }
 
   protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response,
-      HttpSession hsess, BServerRegistry stubRegistry);
+      HttpSession hsess, BServerRegistry serverRegistry);
 
   protected abstract BClient createForwardClientToOtherServer(BTransport transport) throws BException;
 
   protected abstract BApiDescriptor getApiDescriptor();
+  
+  protected abstract HConfig getConfig();
 
   protected HTargetIdFactory getTargetIdFactory() {
     return targetIdFact_use_getTargetIdFactory;
@@ -87,14 +73,58 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("init(");
     super.init();
 
-    // Configuration entries from web.xml
+    // Initialize in Background.
+    // Tomcat should not hang during startup if initialization takes some time
+    // or if it connects other servlets running on the same tomcat. 
     ServletConfig servletConfig = getServletConfig();
-    config.init(servletConfig);
-
-    int serverId = config.getMyServerId();
-    targetIdFact_use_getTargetIdFactory = new HTargetIdFactory(serverId);
-
+    (new InitThread(servletConfig)).start();
+    
     if (log.isDebugEnabled()) log.debug(")init");
+  }
+  
+  
+  /**
+   * Initialization thread
+   */
+  private class InitThread extends Thread {
+    ServletConfig servletConfig;
+        
+    InitThread(ServletConfig servletConfig) {
+      super("eloix-binit");
+      this.servletConfig = servletConfig;
+    }
+    
+    public void run() {
+      
+      // Configuration entries from web.xml
+      try {
+        HConfig config = getConfig();
+        config.init(servletConfig);
+
+        int serverId = config.getMyServerId();
+        targetIdFact_use_getTargetIdFactory = new HTargetIdFactory(serverId);
+  
+        serverRegistry = new HRemoteRegistry(config) {
+  
+          @Override
+          protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {
+            return HHttpServlet.this.createForwardClientToOtherServer(transport);
+          }
+  
+          @Override
+          protected BApiDescriptor getApiDescriptor() {
+            return HHttpServlet.this.getApiDescriptor();
+          }
+  
+        };
+  
+        cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
+
+      } catch (ServletException e) {
+        log.error("Initialization failed.", e);
+      }
+      
+    }
   }
 
   @Override
@@ -527,7 +557,7 @@ public abstract class HHttpServlet extends HttpServlet {
    */
   protected void doTestAdapter(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    if (!config.isTestAdapterEnabled()) {
+    if (!getConfig().isTestAdapterEnabled()) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
@@ -763,6 +793,10 @@ public abstract class HHttpServlet extends HttpServlet {
   protected long getHtmlUploadMaxSize() {
     return -1L;
   }
+  
+  protected BServerRegistry getServerRegistry() {
+    return serverRegistry;
+  }
 
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -792,9 +826,8 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug(")service");
   }
 
-  private final Log log = LogFactory.getLog(HHttpServlet.class);
-  private final BServerRegistry serverRegistry;
+  private Log log = LogFactory.getLog(HHttpServlet.class);
+  private BServerRegistry serverRegistry;
   private HTargetIdFactory targetIdFact_use_getTargetIdFactory;
-  protected final HConfig config = new HConfig();
 
 }

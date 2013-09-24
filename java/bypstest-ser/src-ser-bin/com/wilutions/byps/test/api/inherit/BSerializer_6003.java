@@ -20,13 +20,6 @@ public class BSerializer_6003 extends com.wilutions.byps.test.api.inherit.BSeria
 	
 	public final static BSerializer instance = new BSerializer_6003();
 	
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		return 0
-		       /* size of base class */ + 0
-		       /* pos=24: int3 */ + 4		
-		       /* padding up to multiple of alignment */ + 4;		
-	}
-	
 	public BSerializer_6003() {
 		super(6003);
 	}

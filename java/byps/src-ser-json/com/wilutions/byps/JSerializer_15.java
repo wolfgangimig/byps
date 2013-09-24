@@ -13,11 +13,6 @@ public class JSerializer_15 extends JSerializer_Object {
 	}
 
 	@Override
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		return 0;
-	}
-
-	@Override
 	public void internalWrite(final Object obj, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		InputStream is = (InputStream)obj;
 		BStreamRequest streamRequest = bout.createStreamRequest(is);

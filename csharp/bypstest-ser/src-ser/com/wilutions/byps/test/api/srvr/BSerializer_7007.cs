@@ -22,17 +22,6 @@ namespace com.wilutions.byps.test.api.srvr
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: msg */ + 4			
-			       /* padding */ + 4			
-			       /* pos=8: sentAt */ + 8			
-			       /* pos=16: receivedAt */ + 8			
-			       /* padding up to multiple of alignment */ + 0;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			ChatStructure obj = (ChatStructure)obj1;			

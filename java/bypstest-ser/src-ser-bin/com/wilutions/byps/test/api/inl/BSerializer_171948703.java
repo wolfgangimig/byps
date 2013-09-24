@@ -20,14 +20,6 @@ public class BSerializer_171948703 extends BSerializer {
 	
 	public final static BSerializer instance = new BSerializer_171948703();
 	
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		return 0
-		       /* size of base class */ + 0
-		       /* pos=0: shape */ + 4		
-		       /* pos=4: position */ + 4		
-		       /* padding up to multiple of alignment */ + 0;		
-	}
-	
 	public BSerializer_171948703() {
 		super(171948703);
 	}

@@ -22,25 +22,6 @@ namespace com.wilutions.byps.test.api.remote
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: b */ + 4			
-			       /* pos=4: c */ + 2			
-			       /* pos=6: s */ + 2			
-			       /* pos=8: i */ + 4			
-			       /* padding */ + 4			
-			       /* pos=16: l */ + 8			
-			       /* pos=24: f */ + 4			
-			       /* padding */ + 4			
-			       /* pos=32: d */ + 8			
-			       /* pos=40: str */ + 4			
-			       /* pos=44: pt */ + 4			
-			       /* pos=48: o */ + 4			
-			       /* padding up to multiple of alignment */ + 4;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			BRequest_RemotePrimitiveTypes_sendAllTypes obj = (BRequest_RemotePrimitiveTypes_sendAllTypes)obj1;			

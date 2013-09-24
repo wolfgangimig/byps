@@ -77,19 +77,19 @@ public class GenSerStruct {
 		//log.debug(GeneratorJ.class.getName(), "printSingletonInstance");
 	}
 
-	protected void printSize() throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printSize");
-		
-		pr.println("public override int size(Object obj, BBinaryModel bmodel)");
-		pr.println("{");
-		pr.beginBlock();		
-		pctxt.printComputeSize(pr, serInfo, pctxt.bmodel);
-		pr.endBlock();
-		
-		pr.println("}");
-			
-		//log.debug(GeneratorJ.class.getName(), "printSize");
-	}
+//	protected void printSize() throws IOException {
+//		//log.debug(GeneratorJ.class.getName(), "printSize");
+//		
+//		pr.println("public override int size(Object obj, BBinaryModel bmodel)");
+//		pr.println("{");
+//		pr.beginBlock();		
+//		pctxt.printComputeSize(pr, serInfo, pctxt.bmodel);
+//		pr.endBlock();
+//		
+//		pr.println("}");
+//			
+//		//log.debug(GeneratorJ.class.getName(), "printSize");
+//	}
 	
 	protected void printVoidMember(MemberInfo minfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printVoidMember", minfo);
@@ -255,9 +255,6 @@ public class GenSerStruct {
 		pr.println();
 		
 		printConstructors();
-		pr.println();
-		
-		printSize();
 		pr.println();
 		
 		if (members.size() != 0) {

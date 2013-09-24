@@ -1,6 +1,7 @@
 package com.wilutions.byps.http;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -34,7 +35,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 	@Override
 	public ArrayList<BClient> getForwardClientsToOtherServers() throws RemoteException {
 		ArrayList<BClient> clients = new ArrayList<BClient>();
-		ArrayList<Integer> serverIds = config.getServerIds();
+		Collection<Integer> serverIds = config.getServerIds();
 		for (Integer serverId : serverIds) {
 			if (serverId == config.getMyServerId()) continue;
 			BClient client = getForwardClient(serverId);

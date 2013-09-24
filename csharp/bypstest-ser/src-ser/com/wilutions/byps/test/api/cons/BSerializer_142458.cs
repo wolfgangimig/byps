@@ -22,30 +22,6 @@ namespace com.wilutions.byps.test.api.cons
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: bool1 */ + 4			
-			       /* pos=4: byte1 */ + 1			
-			       /* padding */ + 1			
-			       /* pos=6: char1 */ + 2			
-			       /* pos=8: short1 */ + 2			
-			       /* padding */ + 2			
-			       /* pos=12: int1 */ + 4			
-			       /* pos=16: long1 */ + 8			
-			       /* pos=24: float1 */ + 4			
-			       /* padding */ + 4			
-			       /* pos=32: double1 */ + 8			
-			       /* pos=40: string1 */ + 4			
-			       /* pos=44: hebrew1 */ + 4			
-			       /* pos=48: byte2 */ + 4			
-			       /* pos=52: int2 */ + 4			
-			       /* pos=56: string2 */ + 4			
-			       /* pos=60: hebrew2 */ + 4			
-			       /* padding up to multiple of alignment */ + 0;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			AllTypesZ obj = (AllTypesZ)obj1;			

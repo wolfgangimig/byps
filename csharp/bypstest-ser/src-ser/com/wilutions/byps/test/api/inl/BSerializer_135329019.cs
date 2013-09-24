@@ -22,22 +22,6 @@ namespace com.wilutions.byps.test.api.inl
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* pos=0: _11 */ + 4			
-			       /* pos=4: _12 */ + 4			
-			       /* pos=8: _13 */ + 4			
-			       /* pos=12: _21 */ + 4			
-			       /* pos=16: _22 */ + 4			
-			       /* pos=20: _23 */ + 4			
-			       /* pos=24: _31 */ + 4			
-			       /* pos=28: _32 */ + 4			
-			       /* pos=32: _33 */ + 4			
-			       /* padding up to multiple of alignment */ + 4;			
-		}
-		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
 			Matrix2D obj = (Matrix2D)obj1;			

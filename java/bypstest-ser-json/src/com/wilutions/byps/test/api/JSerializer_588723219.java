@@ -16,7 +16,6 @@ public class JSerializer_588723219 extends JSerializer_Array {
 		super(588723219);
 	}
 	
-	
 	@Override
 	public Object internalRead(final BInputJson bin) throws BException {
 		final BJsonObject js3 = bin.currentObject;

@@ -20,7 +20,6 @@ public class JSerializer_6002 extends com.wilutions.byps.test.api.inherit.JSeria
 	
 	public final static BSerializer instance = new JSerializer_6002();
 	
-	
 	public JSerializer_6002() {
 		super(6002);
 	}

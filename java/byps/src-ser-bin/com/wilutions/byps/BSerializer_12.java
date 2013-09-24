@@ -16,16 +16,6 @@ public class BSerializer_12 extends BSerializer {
 	}
 
 	
-	@Override
-	public int size(final Object obj, final BBinaryModel bmodel) throws BException {
-		final int e = bmodel.pointerSize;
-		@SuppressWarnings("rawtypes")
-		final java.util.List arr = (java.util.List) obj;
-		int n = arr.size();
-		return bmodel.computeArrayWireSize(e, n);
-	}
-
-
 	protected Collection<Object> internalCreate(final BInput bin1) throws BException {
 		return new ArrayList<Object>();
 	}

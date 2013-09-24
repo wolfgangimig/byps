@@ -17,14 +17,6 @@ public class BSerializer_801243127 extends BSerializer {
 	}
 	
 	@Override
-	public int size(Object obj, BBinaryModel bmodel) throws BException { 
-		final int elementSize = bmodel.pointerSize;
-		final com.wilutions.byps.test.api.prim.PrimitiveTypes[] arr = (com.wilutions.byps.test.api.prim.PrimitiveTypes[])obj;
-		int n = arr.length;
-		return bmodel.computeArrayWireSize(elementSize, n);
-	}
-	
-	@Override
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final BBufferBin bbuf = bin.bbuf;

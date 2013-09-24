@@ -22,13 +22,6 @@ namespace com.wilutions.byps.test.api.srvr
 			: base(typeId) {}
 		
 		
-		public override int size(Object obj, BBinaryModel bmodel)
-		{
-			return 0
-			       /* size of base class */ + 0
-			       /* padding up to multiple of alignment */ + 0;			
-		}
-		
 		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;

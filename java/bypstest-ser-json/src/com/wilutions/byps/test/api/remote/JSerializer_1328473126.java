@@ -20,7 +20,6 @@ public class JSerializer_1328473126 extends JSerializer_Object {
 	
 	public final static BSerializer instance = new JSerializer_1328473126();
 	
-	
 	public JSerializer_1328473126() {
 		super(1328473126);
 	}
