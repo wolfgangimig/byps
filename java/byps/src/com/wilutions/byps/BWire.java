@@ -38,16 +38,18 @@ public class BWire {
 	 * @return null oder ein CancelSend-Objekt, dass die Send-Operation abbrechen kann.
 	 */
 	public void send(BMessage msg, BAsyncResult<BMessage> asyncResult) {
-		ByteBuffer obuf = ByteBuffer.allocate(msg.buf.remaining());
-		obuf.put(msg.buf);
-		obuf.flip();
-		
-		putStreams(msg.streams, asyncResult);
-		
-		BMessageHeader oheader = new BMessageHeader(msg.header);
-		oheader.flags |= BMessageHeader.FLAG_RESPONSE;
-		BMessage omsg = new BMessage(oheader, obuf, null);
-		asyncResult.setAsyncResult(omsg, null);
+//		ByteBuffer obuf = ByteBuffer.allocate(msg.buf.remaining());
+//		obuf.put(msg.buf);
+//		obuf.flip();
+//		
+//		putStreams(msg.streams, asyncResult);
+//		
+//		BMessageHeader oheader = new BMessageHeader(msg.header);
+//		oheader.flags |= BMessageHeader.FLAG_RESPONSE;
+//		BMessage omsg = new BMessage(oheader, obuf, null);
+//		asyncResult.setAsyncResult(omsg, null);
+	  
+	  asyncResult.setAsyncResult(null, new BException(BExceptionC.INTERNAL, "No wire attached to transport."));
 	}
 	
 	/**
@@ -74,6 +76,7 @@ public class BWire {
 	 * @return
 	 */
 	public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
+    asyncResult.setAsyncResult(null, new BException(BExceptionC.INTERNAL, "No wire attached to transport."));
 	}
 	
 	/**
@@ -85,7 +88,7 @@ public class BWire {
 	 * @throws IOException
 	 */
 	public BContentStream getStream(long messageId, long strmId) throws IOException {
-		return null;
+    throw new BException(BExceptionC.INTERNAL, "No wire attached to transport.");
 	}
 	
 	public void done() {

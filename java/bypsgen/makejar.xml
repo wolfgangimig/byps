@@ -18,7 +18,6 @@
         <copy file="D:/java/lib/apache-log4j-1.2.15/log4j-1.2.15.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
         <copy file="D:/java/lib/commons-logging-1.1.1/commons-logging-1.1.1.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
         <copy file="D:/java/lib/yuicompressor-2.4.7/lib/jargs-1.0.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
-        <copy file="D:/java/lib/yuicompressor-2.4.7/lib/rhino-1.6R7.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
         <copy file="D:/java/lib/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
 		<copy file="${java.home}/../lib/tools.jar" todir="d:/java/lib/byps/bypsgen_lib"/>
     </target>

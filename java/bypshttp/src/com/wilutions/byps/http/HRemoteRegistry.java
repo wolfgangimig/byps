@@ -68,13 +68,20 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 			}
 			if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer...");
 			
-			BWire wire = new HWireClient(url, 0, 120, null, tpool);
-			BTransport transport = new BTransport(getApiDescriptor(), wire, null);
-			client = createForwardClientToOtherServer(transport);
-			
-			BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
-			client.start(syncResult);
-			syncResult.getResult();
+			try {
+  			BWire wire = new HWireClient(url, 0, 120, null, tpool);
+  			BTransport transport = new BTransport(getApiDescriptor(), wire, null);
+  			client = createForwardClientToOtherServer(transport);
+
+  			BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
+        client.start(syncResult);
+        syncResult.getResult();
+			}
+			catch (RemoteException e) {
+			  BWire wire = new BWire(BWire.FLAG_DEFAULT);
+        BTransport transport = new BTransport(getApiDescriptor(), wire, null);
+        client = createForwardClientToOtherServer(transport);
+			}
 			
 			if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer OK, client=" + client);
 			clientMap.put(serverId, client);
