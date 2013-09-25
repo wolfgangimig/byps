@@ -24,8 +24,8 @@ import com.wilutions.byps.BClient;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BServerRegistry;
 import com.wilutions.byps.BTransport;
-import com.wilutions.byps.http.HConfigImpl;
 import com.wilutions.byps.http.HConfig;
+import com.wilutions.byps.http.HConfigImpl;
 import com.wilutions.byps.http.HFileUploadItem;
 import com.wilutions.byps.http.HHttpServlet;
 import com.wilutions.byps.http.HSession;
@@ -216,6 +216,10 @@ public class BypsServlet extends HHttpServlet {
   @Override
   protected HConfig getConfig() {
     return config;
+  }
+  
+  @Override
+  protected void initializationFinished() {
   }
   
   private final Log log = LogFactory.getLog(BypsServlet.class);

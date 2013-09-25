@@ -63,6 +63,11 @@ public abstract class HHttpServlet extends HttpServlet {
   protected abstract BApiDescriptor getApiDescriptor();
   
   protected abstract HConfig getConfig();
+  
+  /**
+   * This function is called after initialization has finished.
+   */
+  protected abstract void initializationFinished();
 
   protected HTargetIdFactory getTargetIdFactory() {
     return targetIdFact_use_getTargetIdFactory;
@@ -120,6 +125,8 @@ public abstract class HHttpServlet extends HttpServlet {
   
         cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
 
+        initializationFinished();
+        
       } catch (ServletException e) {
         log.error("Initialization failed.", e);
       }
@@ -827,7 +834,7 @@ public abstract class HHttpServlet extends HttpServlet {
   }
 
   private Log log = LogFactory.getLog(HHttpServlet.class);
-  private BServerRegistry serverRegistry;
-  private HTargetIdFactory targetIdFact_use_getTargetIdFactory;
+  private volatile BServerRegistry serverRegistry;
+  private volatile HTargetIdFactory targetIdFact_use_getTargetIdFactory;
 
 }
