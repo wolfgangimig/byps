@@ -420,6 +420,15 @@ public abstract class HHttpServlet extends HttpServlet {
   protected void doNegotiate(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf)
       throws ServletException {
     if (log.isDebugEnabled()) log.debug("doNegotiate(");
+    
+    HTargetIdFactory targetIdFactory = getTargetIdFactory();
+
+    // Initialized?
+    if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
+    if (targetIdFactory == null) {
+      response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+      return ;
+    }
 
     final HRequestContext rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
 
@@ -439,7 +448,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
     if (sess == null) return;
 
-    sess.setTargetId(getTargetIdFactory().createTargetId());
+    sess.setTargetId(targetIdFactory.createTargetId());
 
     HSessionListener.attachBSession(hsess, sess);
 
@@ -452,7 +461,7 @@ public abstract class HHttpServlet extends HttpServlet {
         try {
           if (e != null) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().print(e.toString());
+            e.printStackTrace(resp.getWriter());
           }
           else {
             resp.setContentType("application/json");
@@ -464,7 +473,7 @@ public abstract class HHttpServlet extends HttpServlet {
           if (log.isInfoEnabled()) log.info("Failed to write negotiate result", e);
           try {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().print(e.toString());
+            e.printStackTrace(resp.getWriter());
           } catch (IOException ignored) {
           }
         } finally {

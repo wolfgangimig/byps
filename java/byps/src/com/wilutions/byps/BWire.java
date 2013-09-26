@@ -343,9 +343,14 @@ public class BWire {
 	public BTestAdapter getTestAdapter() {
 		return null;
 	}
-
+	
+	public long getInvalidUntilMillis() {
+	  return 0;
+	}
+	
 	protected SecureRandom rand;
 	protected Object sess;
 	protected int flags;
 	private final Log log = LogFactory.getLog(BWire.class);
+
 }

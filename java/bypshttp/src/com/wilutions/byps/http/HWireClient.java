@@ -56,6 +56,7 @@ public class HWireClient extends BWire {
 	protected final HTestAdapter testAdapter;
 	protected volatile boolean cancelAllRequests;
 	protected volatile boolean isDone;
+	
 	protected Statistics stats = null;
 	
 	protected long timeoutMillisClient;
@@ -436,6 +437,7 @@ public class HWireClient extends BWire {
 
 	public void internalSend(RequestToCancel request) {
 		if (log.isDebugEnabled()) log.debug("internalSend(" + request);
+		
 		HttpURLConnection conn = null;
 		ByteBuffer buf = request.buf;
 		
@@ -453,141 +455,128 @@ public class HWireClient extends BWire {
 		final boolean isNegotiate = BNegotiate.isNegotiateMessage(buf);
 		final boolean isJson = isNegotiate || BMessageHeader.detectProtocol(buf) == BMessageHeader.MAGIC_JSON;
 		if (log.isDebugEnabled()) log.debug("isJson=" + isJson);
-		
-		int retry = 3;
-		while(--retry >= 0) {
+
+		try {
+		  String destUrl = surl;
+		  
+		  if (isNegotiate) {
+		    int p = destUrl.lastIndexOf("/");
+		    if (p >= 0) {
+		      destUrl = destUrl.substring(0, p);
+		      destUrl += getServletPathForNegotiationAndAuthentication();
+		    }
+		  }
+		  
+			final URL url = new URL(destUrl);
+			if (log.isDebugEnabled()) log.debug("open connection, url=" + url);
 			
-			returnException = null;
-		
-			try {
-			  String destUrl = surl;
-			  
-			  if (isNegotiate) {
-			    int p = destUrl.lastIndexOf("/");
-			    if (p >= 0) {
-			      destUrl = destUrl.substring(0, p);
-			      destUrl += getServletPathForNegotiationAndAuthentication();
-			    }
-			  }
-			  
-				final URL url = new URL(destUrl);
-				if (log.isDebugEnabled()) log.debug("open connection, url=" + url);
+			conn = (HttpURLConnection)url.openConnection();
+			request.setConnection(conn);
+			
+			conn.setConnectTimeout((int)timeoutMillisClient);
+			conn.setReadTimeout((int)request.timeoutMillisRequest); // is 0 for a long-poll request
+
+			conn.setDoInput(true);
+			conn.setDoOutput(true);
+			conn.setRequestMethod("POST");
+			
+			conn.setRequestProperty("Accept", "application/json, application/byps, text/plain, text/html");
+			if ((flags & BWire.FLAG_GZIP) != 0) conn.setRequestProperty("Accept-Encoding", "gzip"); 
+			conn.setRequestProperty("Content-Type", isJson ? "application/json" : "application/byps");
+			
+			applySession(conn);
+
+			if (log.isDebugEnabled()) log.debug("write to output stream");
+			OutputStreamByteCount osbc = new OutputStreamByteCount(conn.getOutputStream());
+			bufferToStream(buf, osbc);
+			if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
+
+			if (stats != null) {
+				final long endSendMillis = System.currentTimeMillis();
+				synchronized(this) {
+					stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
+				}
+			}
+			
+			final long beginRecvMillis = System.currentTimeMillis();
+			
+			request.throwIfCancelled();
+			
+			InputStream is = null; 
+			int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
+			
+			try {		
+				statusCode = conn.getResponseCode();
 				
-				conn = (HttpURLConnection)url.openConnection();
-				request.setConnection(conn);
+				if (statusCode != HttpURLConnection.HTTP_OK ){
+					throw new IOException("HTTP status " + statusCode);
+				}
 				
-				conn.setConnectTimeout((int)timeoutMillisClient);
-				conn.setReadTimeout((int)request.timeoutMillisRequest); // is 0 for a long-poll request
-	
-				conn.setDoInput(true);
-				conn.setDoOutput(true);
-				conn.setRequestMethod("POST");
+				InputStreamByteCount isbc = null;
+				is = isbc = new InputStreamByteCount(conn.getInputStream());
+
+				saveSession(conn);
+
+				String enc = conn.getHeaderField("Content-Encoding");
+				boolean gzip = enc != null && enc.equals("gzip");
+
+				if (log.isDebugEnabled()) log.debug("read stream");
+				ByteBuffer obuf = bufferFromStream(is, gzip);
+				if (log.isDebugEnabled()) {
+					log.debug("received #bytes=" + obuf.remaining());
+					obuf.mark();
+					BBufferJson bbuf = new BBufferJson(obuf);
+					log.debug(bbuf.toDetailString());
+					obuf.reset();
+				}
 				
-				conn.setRequestProperty("Accept", "application/json, application/byps, text/plain, text/html");
-				if ((flags & BWire.FLAG_GZIP) != 0) conn.setRequestProperty("Accept-Encoding", "gzip"); 
-				conn.setRequestProperty("Content-Type", isJson ? "application/json" : "application/byps");
-				
-				applySession(conn);
-	
-				if (log.isDebugEnabled()) log.debug("write to output stream");
-				OutputStreamByteCount osbc = new OutputStreamByteCount(conn.getOutputStream());
-				bufferToStream(buf, osbc);
-				if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
-	
 				if (stats != null) {
-					final long endSendMillis = System.currentTimeMillis();
+					final long endRecvMillis = System.currentTimeMillis();
 					synchronized(this) {
-						stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
+						stats.addRecvData(isbc.sum, endRecvMillis-beginRecvMillis);
 					}
 				}
-				
-				final long beginRecvMillis = System.currentTimeMillis();
-				
-				request.throwIfCancelled();
-				
-				InputStream is = null; 
-				int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
-				
-				try {		
-					statusCode = conn.getResponseCode();
-					if (statusCode != HttpURLConnection.HTTP_OK ){
-						throw new IOException("HTTP status " + statusCode);
-					}
-					
-					InputStreamByteCount isbc = null;
-					is = isbc = new InputStreamByteCount(conn.getInputStream());
-	
-					saveSession(conn);
-	
-					String enc = conn.getHeaderField("Content-Encoding");
-					boolean gzip = enc != null && enc.equals("gzip");
-	
-					if (log.isDebugEnabled()) log.debug("read stream");
-					ByteBuffer obuf = bufferFromStream(is, gzip);
-					if (log.isDebugEnabled()) {
-						log.debug("received #bytes=" + obuf.remaining());
-						obuf.mark();
-						BBufferJson bbuf = new BBufferJson(obuf);
-						log.debug(bbuf.toDetailString());
-						obuf.reset();
-					}
-					
-					if (stats != null) {
-						final long endRecvMillis = System.currentTimeMillis();
-						synchronized(this) {
-							stats.addRecvData(isbc.sum, endRecvMillis-beginRecvMillis);
-						}
-					}
-								
-					returnBuffer = obuf;
-				}
-				catch (IOException e) {
-					if (log.isDebugEnabled()) log.debug("received exception: " + e);
-					
-					is = conn.getErrorStream();
-					if (is != null) {
-						bufferFromStream(is, false);
-					}
-					
-					throw new HException(statusCode, e);
-				}
-				finally {
-					if (is != null) {
-						try { is.close(); } catch (IOException ignored) {}
-					}
-				}
-				
-				break; // break retry loop
-			
+							
+				returnBuffer = obuf;
 			}
-			catch (BException e) {
-				// thrown in RequestToCancel.setConnection
-				if (log.isDebugEnabled()) log.debug("received BException: " + e);
-				returnException = e;
-				break;
+			catch (IOException e) {
+				if (log.isDebugEnabled()) log.debug("received exception: " + e);
+
+				is = conn.getErrorStream();
+				if (is != null) {
+					bufferFromStream(is, false);
+				}
+				
+				throw new HException(statusCode, e);
 			}
-			catch (SocketException e) {
-				if (log.isDebugEnabled()) log.debug("received exception=" + e + ", retry=" + retry);
-				if (retry == 0) {
-					returnException = e;
-					break;
+			finally {
+				if (is != null) {
+					try { is.close(); } catch (IOException ignored) {}
 				}
 			}
-			catch (Throwable e) {
-				if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
-				if (cancelAllRequests || request.isCanceled()) {
-					BException bex = new BException(BExceptionC.CANCELLED, "");
-					returnException = bex;
-				}
-				else {
-					BException bex = new BException(BExceptionC.IOERROR, e.getMessage(), e);
-					returnException = bex;
-				}
-				break;
-			}
-			
-		} // for (retry...
 		
+		}
+		catch (BException e) {
+			// thrown in RequestToCancel.setConnection
+			if (log.isDebugEnabled()) log.debug("received BException: " + e);
+			returnException = e;
+		}
+		catch (SocketException e) {
+			if (log.isDebugEnabled()) log.debug("received exception=" + e);
+      returnException = e;
+		}
+		catch (Throwable e) {
+			if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
+			if (cancelAllRequests || request.isCanceled()) {
+				BException bex = new BException(BExceptionC.CANCELLED, "");
+				returnException = bex;
+			}
+			else {
+				BException bex = new BException(BExceptionC.IOERROR, e.getMessage(), e);
+				returnException = bex;
+			}
+		}
+			
 		removeRequest(request, returnBuffer, returnException);
 		
 		if (log.isDebugEnabled()) log.debug(")internalSend");
