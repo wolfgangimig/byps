@@ -39,6 +39,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		for (Integer serverId : serverIds) {
 			if (serverId == config.getMyServerId()) continue;
 			BClient client = getForwardClient(serverId);
+			if (client == null) continue; // Failed to connect.
 			clients.add(client);
 		}
 		return clients;
@@ -61,24 +62,63 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 
 	protected BClient getForwardClient(int serverId) throws RemoteException {
 		BClient client = clientMap.get(serverId);
-		if (client == null) {
-			String url = config.getServerUrl(serverId);
-			if (url == null || url.length() == 0) {
-				return null; 
-			}
-			if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer...");
-			
+		
+		if (client != null) {
+		  
+      // Is valid? (see catch block below) 
+
+		  long invalidUntil = client.transport.wire.getInvalidUntilMillis();
+		  if (invalidUntil == 0) { 
+		    return client;
+		  }
+		  else if (invalidUntil > System.currentTimeMillis()) { 
+		    return null;
+		  }
+		  else {
+		    // retry to connect connect
+		  }
+		  
+		}
+
+		String url = config.getServerUrl(serverId);
+		if (url == null || url.length() == 0) {
+			return null; 
+		}
+		if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer...");
+		
+		try {
+		  
+		  // Create BClient object for other server
 			BWire wire = new HWireClient(url, 0, 120, null, tpool);
 			BTransport transport = new BTransport(getApiDescriptor(), wire, null);
 			client = createForwardClientToOtherServer(transport);
-			
+
+			// Connect to server
 			BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
 			client.start(syncResult);
-			syncResult.getResult();
+      syncResult.getResult();
 			
+      // OK
 			if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer OK, client=" + client);
-			clientMap.put(serverId, client);
 		}
+		catch (RemoteException e) {
+		  if (log.isDebugEnabled()) log.debug("Failed to connect to other server.", e);
+
+		  // Create a dummy BWire object that is invalid for the next 60 seconds.
+		  final long invalidUntil = System.currentTimeMillis() + HConstants.CONNECTION_RETRY_PAUSE;
+		  BWire wire = new BWire(BWire.FLAG_DEFAULT) {
+		    @Override
+		    public long getInvalidUntilMillis() {
+		      return invalidUntil;
+		    }
+		  };
+		  
+      BTransport transport = new BTransport(getApiDescriptor(), wire, null);
+      client = createForwardClientToOtherServer(transport);
+		}
+
+    clientMap.put(serverId, client);
+		
 		return client;
 	}
 

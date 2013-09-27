@@ -55,7 +55,7 @@ public class GenSerStructJson extends GenSerStruct{
 
 		if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
 			pr.println("// Read base class members");
-			pr.println("super.internalRead(obj1, bin);");
+			pr.println("super.internalRead(obj, bin);");
 			pr.println();
 		}
 		

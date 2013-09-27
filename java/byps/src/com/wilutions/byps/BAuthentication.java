@@ -35,8 +35,8 @@ public interface BAuthentication {
 
   /**
    * Return the object representing the current session.
-   * If the API manages its own session, this object will be passed to every request class for remote interfaces 
-   * tagged with @authparam.
+   * This object will be passed to every request class (e.g. BRequest_functionname) 
+   * for remote interfaces tagged with @BSessionParamType.
    * @return Session object
    * @see BMethodRequest#setSession(Object)
    */

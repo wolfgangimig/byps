@@ -63,6 +63,11 @@ public abstract class HHttpServlet extends HttpServlet {
   protected abstract BApiDescriptor getApiDescriptor();
   
   protected abstract HConfig getConfig();
+  
+  /**
+   * This function is called after initialization has finished.
+   */
+  protected abstract void initializationFinished();
 
   protected HTargetIdFactory getTargetIdFactory() {
     return targetIdFact_use_getTargetIdFactory;
@@ -120,6 +125,8 @@ public abstract class HHttpServlet extends HttpServlet {
   
         cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
 
+        initializationFinished();
+        
       } catch (ServletException e) {
         log.error("Initialization failed.", e);
       }
@@ -130,7 +137,9 @@ public abstract class HHttpServlet extends HttpServlet {
   @Override
   public void destroy() {
     if (log.isDebugEnabled()) log.debug("done(");
-    cleanupThread.done();
+    if (cleanupThread != null) {
+      cleanupThread.done();
+    }
     if (log.isDebugEnabled()) log.debug(")done");
   }
 
@@ -413,6 +422,15 @@ public abstract class HHttpServlet extends HttpServlet {
   protected void doNegotiate(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf)
       throws ServletException {
     if (log.isDebugEnabled()) log.debug("doNegotiate(");
+    
+    HTargetIdFactory targetIdFactory = getTargetIdFactory();
+
+    // Initialized?
+    if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
+    if (targetIdFactory == null) {
+      response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+      return ;
+    }
 
     final HRequestContext rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
 
@@ -432,7 +450,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
     if (sess == null) return;
 
-    sess.setTargetId(getTargetIdFactory().createTargetId());
+    sess.setTargetId(targetIdFactory.createTargetId());
 
     HSessionListener.attachBSession(hsess, sess);
 
@@ -445,7 +463,7 @@ public abstract class HHttpServlet extends HttpServlet {
         try {
           if (e != null) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().print(e.toString());
+            e.printStackTrace(resp.getWriter());
           }
           else {
             resp.setContentType("application/json");
@@ -457,7 +475,7 @@ public abstract class HHttpServlet extends HttpServlet {
           if (log.isInfoEnabled()) log.info("Failed to write negotiate result", e);
           try {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().print(e.toString());
+            e.printStackTrace(resp.getWriter());
           } catch (IOException ignored) {
           }
         } finally {
@@ -827,7 +845,7 @@ public abstract class HHttpServlet extends HttpServlet {
   }
 
   private Log log = LogFactory.getLog(HHttpServlet.class);
-  private BServerRegistry serverRegistry;
-  private HTargetIdFactory targetIdFact_use_getTargetIdFactory;
+  private volatile BServerRegistry serverRegistry;
+  private volatile HTargetIdFactory targetIdFact_use_getTargetIdFactory;
 
 }

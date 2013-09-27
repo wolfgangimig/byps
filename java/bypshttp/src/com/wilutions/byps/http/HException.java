@@ -17,7 +17,7 @@ public class HException extends BException {
 //	}
 //	
 	public HException(int httpStatusCode, Throwable e) {
-		super(BExceptionC.IOERROR, "HTTP " + httpStatusCode, e);
+		super(httpStatusCode, "", "", e);
 		statusCode = httpStatusCode;
 	}
 	

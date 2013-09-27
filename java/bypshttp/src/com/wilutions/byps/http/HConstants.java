@@ -1,3 +1,4 @@
+
 package com.wilutions.byps.http;
 
 public class HConstants {
@@ -41,7 +42,7 @@ public class HConstants {
    * HWireClient.internalPutStream. I received this error in test case
    * TestRemoteStreams.testRemoteStreamsCloseStreamAfterSend.
    */
-  public final static boolean PROCESS_PUT_STREAM_ASYNC = true;
+  public final static boolean PROCESS_PUT_STREAM_ASYNC = false;
 
   /**
    * Process reverse HTTP calls asynchronously.
@@ -74,4 +75,12 @@ public class HConstants {
    */
   public final static int MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED = 1000;
 
+  /**
+   * Retry pause time when connection to server fails.
+   * This value is used when connecting from one server to other servers. 
+   * If the BClient.start fails for another server, the next retry 
+   * to connect will not occur before this pause time has passed.
+   */
+  public final static long CONNECTION_RETRY_PAUSE = 60 * 1000L;
+  
 }
