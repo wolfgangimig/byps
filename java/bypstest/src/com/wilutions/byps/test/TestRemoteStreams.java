@@ -121,7 +121,7 @@ public class TestRemoteStreams {
 		log.info("testRemoteStreamsManyStreams(");
 		int nbOfStreams = 10;
 		
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			internalTestRemoteStreamsManyStreams(nbOfStreams);
 		}
 		
@@ -152,6 +152,7 @@ public class TestRemoteStreams {
 			InputStream istrm = new ByteArrayInputStream(streamBytes.get(i));
 			InputStream istrmR = istrmsR.get(i);
 			TestUtils.assertEquals(log, "stream", istrm, istrmR);
+			istrmR.close();
 		}
 	}
 	
