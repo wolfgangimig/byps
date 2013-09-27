@@ -83,4 +83,14 @@ public class BExceptionC {
    */
   public static final int AUTHENTICATION_REQUIRED = 18;
   
+  /**
+   * Error codes between HTTP_CODE_MIN and HTTP_CODE_MAX are HTTP error codes.
+   */
+  public static final int HTTP_CODE_MIN = 200;
+  
+  /**
+   * Error codes between HTTP_CODE_MIN and HTTP_CODE_MAX are HTTP error codes.  
+   */
+  public static final int HTTP_CODE_MAX = 600;
+  
 }

@@ -137,7 +137,9 @@ public abstract class HHttpServlet extends HttpServlet {
   @Override
   public void destroy() {
     if (log.isDebugEnabled()) log.debug("done(");
-    cleanupThread.done();
+    if (cleanupThread != null) {
+      cleanupThread.done();
+    }
     if (log.isDebugEnabled()) log.debug(")done");
   }
 
