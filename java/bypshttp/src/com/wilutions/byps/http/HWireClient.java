@@ -16,8 +16,10 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -50,7 +52,8 @@ public class HWireClient extends BWire {
 	protected final static int CHUNK_SIZE = 10 * 1000;
 	protected final static int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE; // should be a multiple of CHUNK_SIZE
 	protected final Log log = LogFactory.getLog(HWireClient.class);
-	protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
+//	protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
+	protected final Map<RequestToCancel, Boolean> openRequestsToCancel = Collections.synchronizedMap(new HashMap<RequestToCancel, Boolean>());
 	protected final Executor threadPool;
 	protected final boolean isMyThreadPool;
 	protected final HTestAdapter testAdapter;
@@ -404,11 +407,14 @@ public class HWireClient extends BWire {
 			if (log.isDebugEnabled()) log.debug("done(" + this);
 			HttpURLConnection c = conn.getAndSet(null);
 			if (c != null) {
+			  if(log.isDebugEnabled()) log.debug("disconnect");
 				c.disconnect();
 				c = null;
 			}
 			if (log.isDebugEnabled()) log.debug(")done");
 		}
+		
+		
 
 		@Override
 		public int compareTo(RequestToCancel o) {
@@ -432,6 +438,34 @@ public class HWireClient extends BWire {
 			sbuf.append("]");
 			return sbuf.toString();
 		}
+
+    @Override
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + getOuterType().hashCode();
+      result = prime * result + (int) (cancelMessageId ^ (cancelMessageId >>> 32));
+      result = prime * result + (int) (messageId ^ (messageId >>> 32));
+      result = prime * result + (int) (streamId ^ (streamId >>> 32));
+      return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj) return true;
+      if (obj == null) return false;
+      if (getClass() != obj.getClass()) return false;
+      RequestToCancel other = (RequestToCancel) obj;
+      if (!getOuterType().equals(other.getOuterType())) return false;
+      if (cancelMessageId != other.cancelMessageId) return false;
+      if (messageId != other.messageId) return false;
+      if (streamId != other.streamId) return false;
+      return true;
+    }
+
+    private HWireClient getOuterType() {
+      return HWireClient.this;
+    }
 	}
 
 	public void internalSend(RequestToCancel request) {
@@ -980,6 +1014,7 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug("removeRequest(" + robj);
 		if (robj == null) return;
 		openRequestsToCancel.remove(robj);
+
 		robj.done();
 		robj.setAsyncResult(buf, ex);
 		if (log.isDebugEnabled()) log.debug(")removeRequest");

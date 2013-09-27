@@ -10,6 +10,7 @@ import javax.naming.NameClassPair;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
 
 public class HConfigImpl implements HConfig {
 
@@ -69,7 +70,7 @@ public class HConfigImpl implements HConfig {
   /* (non-Javadoc)
    * @see com.wilutions.byps.http.HConfigIF#init(javax.servlet.ServletConfig)
    */
-  public void init(ServletConfig config) {
+  public void init(ServletConfig config) throws ServletException {
 
     // Read configuration options from web.xml
     {

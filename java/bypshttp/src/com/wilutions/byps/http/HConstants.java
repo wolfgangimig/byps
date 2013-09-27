@@ -41,7 +41,7 @@ public class HConstants {
    * HWireClient.internalPutStream. I received this error in test case
    * TestRemoteStreams.testRemoteStreamsCloseStreamAfterSend.
    */
-  public final static boolean PROCESS_PUT_STREAM_ASYNC = false;
+  public final static boolean PROCESS_PUT_STREAM_ASYNC = true;
 
   /**
    * Process reverse HTTP calls asynchronously.
