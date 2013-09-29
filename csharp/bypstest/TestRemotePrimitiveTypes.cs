@@ -6,6 +6,7 @@ using com.wilutions.byps.test.api.remote;
 using com.wilutions.byps.test.api.prim;
 using com.wilutions.byps.test.api.srvr;
 using System.IO;
+using System.Threading;
 
 namespace bypstest
 {
@@ -112,6 +113,22 @@ namespace bypstest
             TestUtils.assertEquals(log, "async_getInt", 1122, valueR);
 
             log.info(")testRemotePrimitiveTypesAsync");
+        }
+
+        /**
+         * Tests asynchronous invocation with null as asyncResult parameter.
+         * A null can be passed, if the result is not of interest.
+         * @throws InterruptedException
+         */
+        [TestMethod]
+        public void testRemotePrimitiveTypesAsyncNull()
+        {
+            log.info("testRemotePrimitiveTypesAsyncNull(");
+
+            remote.SetIntAsync(1122, null);
+            Thread.Sleep(1000);
+
+            log.info(")testRemotePrimitiveTypesAsyncNull");
         }
 
         [TestMethod]

@@ -1,5 +1,8 @@
 package com.wilutions.byps.test.servlet;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.RemoteException;
@@ -18,6 +21,7 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
   enum EState { INVALID, AUTHENTICATED };
   private EState state = EState.INVALID;
   private MySession mySession;
+  private Log log = LogFactory.getLog(MyRemoteWithAuthentication.class);
 
   public MyRemoteWithAuthentication(MySession mySession) {
     this.mySession = mySession;
@@ -25,14 +29,16 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
   
   @Override
   public void setUseAuthentication(boolean useAuth) throws RemoteException {
+    log.info("setUseAuthentication(" + useAuth);
     MySession.useAuthentication = useAuth;
     state = EState.INVALID;
+    log.info(")setUseAuthentication");
   }
 
   @Override
   public SessionInfo login(SessionInfo sess, String userName, String userPwd)
       throws RemoteException {
-    
+    log.info("login(" + userName);
     if (userName.equals("Fritz")) {
       
       // Extend the session lifetime. 
@@ -50,13 +56,16 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
       // It results in an error in the caller.
       throw new RemoteException("Login failed");
     }
+    log.info(")login=" + sess);
     return sess;
   }
 
   @Override
   public int doit(SessionInfo sess, int value) throws RemoteException {
+    log.info("doit(sess=" + sess + ", value=" + value);
     
     if (state == EState.INVALID) {
+      log.info("throw Relogin required");
       // This exception is checked in the BAuthentication class and causes a re-login.
       throw new BException(BExceptionC.AUTHENTICATION_REQUIRED, "Relogin requried");
     }
@@ -64,15 +73,20 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
     // If login was successful, this function must be called with a SessionInfo object.
     // It has to be supplied by BTransport.send.
     if (sess == null) {
+      log.info("throw sess=null");
       throw new RemoteException("Parameter sess must not be null.");
     }
     
-    return value + 1;
+    int ret = value+1;
+    log.info(")doit=" + ret);
+    return ret;
   }
 
   @Override
   public void expire(SessionInfo sess) throws RemoteException {
+    log.info("expire(" + sess);
     state = EState.INVALID;
+    log.info(")exprie");
   }
   
 }

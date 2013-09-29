@@ -153,6 +153,27 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 		log.info(")testArrayTypes1dimString");
 	});
 
+	it("testArrayTypes1dimSpecialStrings", function() {
+		log.info("testArrayTypes1dimSpecialStrings(");
+		
+		internalTestArrayTypes1dimString(["'"]);
+		internalTestArrayTypes1dimString(["''"]);
+		
+		internalTestArrayTypes1dimString(["\""]);		
+		internalTestArrayTypes1dimString(["\"\""]);
+		
+		var killstr = "<script>function() { alert(\"killed\"); }();</script>";
+		internalTestArrayTypes1dimString([killstr]);		
+		internalTestArrayTypes1dimString(["'" + killstr + "'"]);		
+		
+		internalTestArrayTypes1dimString(["<"]);		
+		internalTestArrayTypes1dimString(["/>" + killstr + "<"]);			
+		
+		internalTestArrayTypes1dimString(["}," + killstr + ", {"]);			
+		
+		log.info(")testArrayTypes1dimSpecialStrings");
+	});
+
 	internalTestArrayTypes1dimString = function(arr) {
 		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
 		obj.string1 = arr;

@@ -20,20 +20,14 @@ BINLINE PTestAdapter HWireClient::getTestAdapter() {
 	return PTestAdapter(new HWireClient_TestAdapter(shared_from_this()));
 }
 
-BINLINE HWireClient_RequestsToCancel::HWireClient_RequestsToCancel() 
-	: isCanceled(false) {
+BINLINE HWireClient_RequestsToCancel::HWireClient_RequestsToCancel() {
 }
 
 
-BINLINE bool HWireClient_RequestsToCancel::add(intptr_t id, PHttpRequest r) {
+BINLINE void HWireClient_RequestsToCancel::add(intptr_t id, PHttpRequest r) {
     byps_unique_lock lock(mutex);
-    l_debug << L"add(" << id;
-	bool succ = !isCanceled;
-	if (succ) {
-		map[id] = r;
-	}
-    l_debug << L")add=" << succ;
-	return succ;
+    l_debug << L"add(" << id << L")";
+	map[id] = r;
 }
 
 BINLINE void HWireClient_RequestsToCancel::addCancelMessage(intptr_t id, PHttpRequest r) {
@@ -52,13 +46,12 @@ BINLINE void HWireClient_RequestsToCancel::remove(intptr_t id) {
     l_debug << L")remove";
 }
 
-BINLINE void HWireClient_RequestsToCancel::cancel() {
-    l_debug << L"cancel(";
+BINLINE void HWireClient_RequestsToCancel::cancelAllRequests() {
+    l_debug << L"cancelAllRequests(";
     std::vector<PHttpRequest> requests;
 
     {
         byps_unique_lock lock(mutex);
-        isCanceled = true;
         for (std::map<intptr_t, PHttpRequest>::iterator it = map.begin(); it != map.end(); it++) {
             requests.push_back((*it).second);
         }
@@ -69,7 +62,7 @@ BINLINE void HWireClient_RequestsToCancel::cancel() {
         (*it)->close();
     }
 
-    l_debug << L")cancel";
+    l_debug << L")cancelAllRequests";
 }
 
 BINLINE HWireClient_RequestsToCancel::~HWireClient_RequestsToCancel() {
@@ -101,6 +94,14 @@ BINLINE HWireClient::HWireClient(void* app, const std::wstring& surl, int32_t , 
         l_debug << L"create thread pool";
         this->tpool = BThreadPool::create(app, 10);
 	}
+
+	// seed for random number generator
+	int byteCount = 1000; // + (std::time(NULL) % 100);
+	// char p[200]; filled with -52 from VS debugging runtime
+	char* p = (char*)&byteCount;
+	std::seed_seq seed1 (p, p+byteCount);
+	rand.seed(seed1);
+
     l_debug << L")ctor";
 }
 
@@ -149,43 +150,46 @@ BINLINE HWireClient_AsyncResultAfterAllRequests::HWireClient_AsyncResultAfterAll
 
 BINLINE void HWireClient_AsyncResultAfterAllRequests::setAsyncResult(const BVariant& obj) {
     l_debug << L"setAsyncResult(";
-	bool deleteThis = false;
 	bool cancelMessage = false;
+	bool isLastResult = false;
+
+	BVariant innerObj;
 
 	{
 		byps_unique_lock lock(mutex);
 
-		if (obj.getType() == BTYPEID_BOOL) {
-			// stream sent successfully
-            l_debug << L"stream sent successfully";
-		}
-		else if (!result.isException()) {
-             l_debug << L"set obj=" << obj.toString();
-			 result = obj;
-			 cancelMessage = obj.isException();
-             l_debug << L"cancelMessage=" << cancelMessage;
-		}
-
-        nbOfRequests--;
+        isLastResult = --nbOfRequests == 0;
         l_debug << L"nbOfRequests=" << nbOfRequests;
 
-        if (nbOfRequests == 0) {
-            l_debug << L"execute result in tpool";
-			PRunnable r(new HWireClient_ExecResult(innerResult, result));
-			tpool->execute(r);
-			deleteThis = true;
+		if (obj.isException()) {
+			cancelMessage = !result.isException();
+			if (cancelMessage) result = obj;
+		}
+		else if (obj.getType() != BTYPEID_BOOL) {
+			result = obj;
 		}
 
-		if (cancelMessage) {
-			byps_ptr<HWireClient> wire = this->wire.lock();
-			if (wire) {
-                l_debug << L"sendCancelMessage messageId=" << messageId;
-				wire->sendCancelMessage(messageId);
-			}
+		if (isLastResult) {
+			innerObj = obj;
+		}
+
+	}
+
+    if (isLastResult) {
+        l_debug << L"execute result in tpool";
+		PRunnable r(new HWireClient_ExecResult(innerResult, innerObj));
+		tpool->execute(r);
+	}
+
+	if (cancelMessage && !isLastResult) {
+		byps_ptr<HWireClient> wire = this->wire.lock();
+		if (wire) {
+            l_debug << L"sendCancelMessage messageId=" << messageId;
+			wire->sendCancelMessage(messageId);
 		}
 	}
 
-	if (deleteThis) {
+	if (isLastResult) {
         l_debug << L"delete this";
 		delete this;
 	}
@@ -196,11 +200,13 @@ BINLINE void HWireClient_AsyncResultAfterAllRequests::setAsyncResult(const BVari
 BINLINE void HWireClient::send(const PMessage& msg, PAsyncResult asyncResult) {
     l_debug << L"send()";
 	internalSend(msg, asyncResult, timeoutSecondsClient);
+	//internalSendStreamsThenMessage(msg, asyncResult, timeoutSecondsClient);
 }
 
 BINLINE void HWireClient::sendR(const PMessage& msg, PAsyncResult asyncResult) {
     l_debug << L"sendR()";
-	internalSend(msg, asyncResult, 600); //timeout kontrollieren, behandelt ServerR das richtig?
+	internalSend(msg, asyncResult, 0); //timeout kontrollieren, behandelt ServerR das richtig?
+	//internalSendStreamsThenMessage(msg, asyncResult, 0);
 }
 
 class BMessageRequest_AsyncResult : public BAsyncResult {
@@ -317,7 +323,6 @@ public:
 	}
 };
 
-
 BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSecondsRequest) {
     l_debug << L"internalSend(";
 
@@ -328,24 +333,123 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 	size_t nbOfRequests = 1 + msg->streams.size();
     l_debug << L"nbOfRequests=" << nbOfRequests;
 
-    l_debug << L"create outerResult";
-	PAsyncResult outerResult(new HWireClient_AsyncResultAfterAllRequests(shared_from_this(), tpool, msg->header.messageId, asyncResult, nbOfRequests));
+	if (nbOfRequests > 1) {
+		l_debug << L"create outerResult";
+		PAsyncResult outerResult(new HWireClient_AsyncResultAfterAllRequests(shared_from_this(), tpool, msg->header.messageId, asyncResult, nbOfRequests));
 
-	// Create request for message
-    l_debug << L"create post request";
-    PHttpPost messageRequest = httpClient->post(url);
-	messageRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
+		// Create request for message
+		l_debug << L"create post request";
+		PHttpPost messageRequest = httpClient->post(url);
+		messageRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
 
-    l_debug << L"create message result";
-	BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, outerResult, msg->header.messageId);
+		l_debug << L"create message result";
+		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, outerResult, msg->header.messageId);
 
-    bool succ = requestsToCancel->add(messageResult->id, messageRequest);
-    l_debug << L"requests added";
-    if (succ) {
-
-        l_debug << L"send message buf";
+		l_debug << L"send message buf";
 		std::wstring contentType = msg->header.magic == BMAGIC_BINARY_STREAM ? L"application/byps" : L"application/json";
 		messageRequest->send(msg->buf, contentType, messageResult);
+
+		// Create requests for each stream.
+		for (unsigned i = 0; i < msg->streams.size(); i++) {
+			PStreamRequest stream = msg->streams[i];
+
+			if (!stream) continue;
+			if (!stream->streamId) continue;
+
+			std::wstringstream ssurl;
+			ssurl << url << L"?messageid=" << stream->messageId << L"&streamid=" << stream->streamId;
+
+			l_debug << L"put stream url=" << url;
+			PHttpPut streamRequest = httpClient->put(ssurl.str());
+			streamRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
+
+			l_debug << L"create stream result";
+			BPutRequest_AsyncResult* streamResult = new BPutRequest_AsyncResult(requestsToCancel, outerResult);
+
+			l_debug << L"add put request";
+			requestsToCancel->add(streamResult->id, streamRequest);
+
+			streamRequest->send(stream->strm, streamResult);
+		}
+	}
+	else {
+		internalSendMessageWithoutStreams(msg, asyncResult, timeoutSecondsRequest);
+	}
+
+	l_debug << L")internalSend";
+}
+
+class HWireClient_SendMessageAfterStreams : public BAsyncResult {
+	byps_ptr<HWireClient> wire;
+	PMessage msg;
+	int32_t timeoutSecondsRequest;
+	PAsyncResult innerResult;
+    static BLogger log;
+
+public:
+	const intptr_t id;
+
+	HWireClient_SendMessageAfterStreams(byps_ptr<HWireClient> wire, PMessage msg, int32_t timeoutSecondsRequest, PAsyncResult innerResult) 
+		: wire(wire)
+		, msg(msg)
+		, timeoutSecondsRequest(timeoutSecondsRequest)
+		, innerResult(innerResult)
+		, id(reinterpret_cast<intptr_t>(this))
+	{
+        l_debug << L"ctor(id=" << id << L")";
+	}
+
+	virtual void setAsyncResult(const BVariant& var) {
+        l_debug << L"setAsyncResult(" << var.toString();
+		
+		if (var.isException()) {
+			innerResult->setAsyncResult(var);
+		}
+		else {
+
+			// Create request for message
+			l_debug << L"create post request";
+			PHttpPost messageRequest = wire->httpClient->post(wire->url);
+			messageRequest->setTimeouts(wire->timeoutSecondsClient, timeoutSecondsRequest);
+
+			l_debug << L"create message result";
+			BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(
+				wire->requestsToCancel, innerResult, msg->header.messageId);
+
+			wire->requestsToCancel->add(messageResult->id, messageRequest);
+			l_debug << L"send message buf";
+			std::wstring contentType = msg->header.magic == BMAGIC_BINARY_STREAM ? L"application/byps" : L"application/json";
+			messageRequest->send(msg->buf, contentType, messageResult);
+		}
+
+        l_debug << L"delete this";
+		delete this;
+        l_debug << L")setAsyncResult";
+	}
+};
+
+BINLINE void HWireClient::internalSendStreamsThenMessage(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSecondsRequest) {
+    l_debug << L"internalSendStreamsThenMessage(";
+
+	// Convert the BMessage into single RequestToCancel objects.
+	// One RequestToCancel is created for msg.buf.
+	// For each stream in msg.streams further RequestToCancel objects are created.
+		
+	size_t nbOfStreams = msg->streams.size();
+    l_debug << L"nbOfStreams=" << nbOfStreams;
+
+	if (nbOfStreams) {
+
+		// Send the streams first and then send the message.
+		// If the message is sent before the streams, 
+		// a timeout happens for the message if it takes 
+		// more than timeoutMillisRequest to send the streams.
+			
+		// Create an BAsyncResult that sends the message on setAsyncResult
+		PAsyncResult asyncSendMessage = new HWireClient_SendMessageAfterStreams(shared_from_this(), msg, timeoutSecondsRequest, asyncResult);
+
+		// Create BAsyncResult that calls asyncSendMessage if all streams have been sent.
+		PAsyncResult outerResult(new HWireClient_AsyncResultAfterAllRequests(shared_from_this(), tpool, msg->header.messageId, asyncSendMessage, nbOfStreams));
 
 		// Create requests for each stream.
 		for (unsigned i = 0; i < msg->streams.size(); i++) {
@@ -365,23 +469,31 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 			BPutRequest_AsyncResult* streamResult = new BPutRequest_AsyncResult(requestsToCancel, outerResult);
 
             l_debug << L"add put request";
-            succ = requestsToCancel->add(streamResult->id, streamRequest);
+            requestsToCancel->add(streamResult->id, streamRequest);
+			streamRequest->send(stream->strm, streamResult);
 
-            if (succ) {
-                l_debug << L"put stream";
-				streamRequest->send(stream->strm, streamResult);
-			}
 		}
 	}
-	
-	// Cannot add messageRequest, the connection was closed.
 	else {
-        l_debug << L"Already disconnected";
-		messageRequest.reset();
-		asyncResult->setAsyncResult(BVariant(BException(EX_CANCELLED, L"Already disconnected")));
+		internalSendMessageWithoutStreams(msg, asyncResult, timeoutSecondsRequest);
 	}
 
-    l_debug << L")internalSend";
+    l_debug << L")internalSendStreamsThenMessage";
+}
+
+BINLINE void HWireClient::internalSendMessageWithoutStreams(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSecondsRequest) {
+	// Create request for message
+	l_debug << L"create post request";
+	PHttpPost messageRequest = httpClient->post(url);
+	messageRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
+
+	l_debug << L"create message result";
+	BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, asyncResult, msg->header.messageId);
+
+	requestsToCancel->add(messageResult->id, messageRequest);
+	l_debug << L"send message buf";
+	std::wstring contentType = msg->header.magic == BMAGIC_BINARY_STREAM ? L"application/byps" : L"application/json";
+	messageRequest->send(msg->buf, contentType, messageResult);
 }
 
 class MyContentStream : public BContentStream {
@@ -429,11 +541,7 @@ public:
             PHttpGet streamRequest = httpClient->get(ssurl.str());
             streamRequest->setTimeouts(timeoutSeconds, timeoutSeconds);
 
-            bool succ = requestsToCancel->add(id, streamRequest);
-            l_debug << L"add to requests =" << succ;
-            if (!succ) {
-                throw BException(EX_CANCELLED, L"Already disconnected");
-            }
+            requestsToCancel->add(id, streamRequest);
 
             l_debug << L"send stream request";
             pThis->innerStream = streamRequest->send();
@@ -492,15 +600,7 @@ BINLINE void HWireClient::done() {
 
         l_debug << L"cancel requests";
 
-		BSyncResultT<bool > syncResult;
-		internalCancelAllRequests(MESSAGEID_DISCONNECT, &syncResult);
-
-		try {
-			syncResult.getResult();
-		}
-		catch (...) { 
-			// maybe connect to server failed
-		}
+		internalCancelAllRequests(MESSAGEID_DISCONNECT);
 
 		if (isMyThreadPool && tpool) {
             l_debug << L"tpool->done";
@@ -518,9 +618,7 @@ BINLINE void HWireClient::done() {
 
 BINLINE void HWireClient::cancelAllRequests() {
     l_debug << L"cancelAllRequests(";
-	BSyncResultT<bool > syncResult;
-	internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS, &syncResult);
-	syncResult.getResult();
+	internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS);
     l_debug << L")cancelAllRequests";
 }
 
@@ -537,19 +635,14 @@ BINLINE void HWireClient::sendCancelMessage(int64_t cancelMessageId) {
     l_debug << L")sendCancelMessage";
 }
 
-BINLINE void HWireClient::internalCancelAllRequests(int64_t cancelMessageId, PAsyncResult asyncResult) {
+BINLINE void HWireClient::internalCancelAllRequests(int64_t cancelMessageId) {
     l_debug << L"internalCancelAllRequests(cancelMessageId=" << cancelMessageId;
 
 	if (cancelMessageId) {
 		sendCancelMessage(cancelMessageId);
 	}
 
-	requestsToCancel->cancel();
-
-	if (asyncResult) {
-        l_debug << L"setAsyncResult";
-        asyncResult->setAsyncResult(BVariant(true));
-	}
+	requestsToCancel->cancelAllRequests();
 
 	// Wait a moment until all requests have been finished.
 	// I could manage this with a lot of condition variables,
@@ -576,7 +669,7 @@ void HWireClient_ExecResult::run() {
 
 void HWireClient_TestAdapter::killClientConnections() {
     l_debug << L"killClientConnections(";
-	wire->internalCancelAllRequests(0, PAsyncResult());
+	wire->internalCancelAllRequests(0);
     l_debug << L")killClientConnections";
 }
 
@@ -589,6 +682,7 @@ BLogger MyContentStream::log("MyContentStream");
 BLogger HWireClient_TestAdapter::log("HWireClient_TestAdapter");
 BLogger HWireClient_ExecResult::log("HWireClient_ExecResult");
 BLogger BPutRequest_AsyncResult::log("BPutRequest_AsyncResult");
+BLogger HWireClient_SendMessageAfterStreams::log("HWireClient_SendMessageAfterStreams");
 }}}}
 
 #endif

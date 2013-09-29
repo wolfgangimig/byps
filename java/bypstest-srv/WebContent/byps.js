@@ -77,7 +77,8 @@ com.wilutions.byps.BExceptionC = {
 	REMOTE_ERROR : 10,
 	SERVICE_NOT_IMPLEMENTED : 11,
 	UNSUPPORTED_METHOD : 17,
-	AUTHENTICATION_REQUIRED : 18
+	AUTHENTICATION_REQUIRED : 18,
+	CANCELLED : 19
 };
 
 //------------------------------------------------------------------------------------------------

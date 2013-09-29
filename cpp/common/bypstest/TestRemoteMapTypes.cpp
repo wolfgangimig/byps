@@ -62,27 +62,44 @@ public:
 			std::wstring(L"71"), byps_ptr_cast<BSerializable>(TestUtils::createObjectPrimitiveTypes())
 			);
 
-		
+		l_info << L"boolean";
 		remote->setBoolean1(obj->boolean1);
 		assertMap(obj->boolean1, remote->getBoolean1());
+
+		l_info << L"byte";
 		remote->setByte1(obj->byte1);
 		assertMap(obj->byte1, remote->getByte1());
+
+		l_info << L"char1";
 		remote->setChar1(obj->char1);
 		assertMap(obj->char1, remote->getChar1());
+
+		l_info << L"double1";
 		remote->setDouble1(obj->double1);
 		assertMap(obj->double1, remote->getDouble1());
+
+		l_info << L"float1";
 		remote->setFloat1(obj->float1);
 		assertMap(obj->float1, remote->getFloat1());
+
+		l_info << L"int1";
 		remote->setInt1(obj->int1);
 		assertMap(obj->int1, remote->getInt1());
+
+		l_info << L"long1";
 		remote->setLong1(obj->long1);
 		assertMap(obj->long1, remote->getLong1());
+
+		l_info << L"short1";
 		remote->setShort1(obj->short1);
 		assertMap(obj->short1, remote->getShort1());
+
+		l_info << L"string1";
 		remote->setString1(obj->string1);
 		assertMap(obj->string1, remote->getString1());
 
 		{
+			l_info << L"primitiveTypes1";
 			remote->setPrimitiveTypes1(obj->primitiveTypes1);
 			auto arr = obj->primitiveTypes1;
 			auto arrR = remote->getPrimitiveTypes1();
@@ -100,6 +117,7 @@ public:
 		}
 
 		{
+			l_info << L"obj1";
 			remote->setObj1(obj->obj1);
 			auto arr = obj->obj1;
 			auto arrR = remote->getObj1();

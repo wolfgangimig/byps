@@ -16,10 +16,8 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -52,12 +50,11 @@ public class HWireClient extends BWire {
 	protected final static int CHUNK_SIZE = 10 * 1000;
 	protected final static int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE; // should be a multiple of CHUNK_SIZE
 	protected final Log log = LogFactory.getLog(HWireClient.class);
-//	protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
-	protected final Map<RequestToCancel, Boolean> openRequestsToCancel = Collections.synchronizedMap(new HashMap<RequestToCancel, Boolean>());
+	protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
+//	protected final Map<RequestToCancel, Boolean> openRequestsToCancel = Collections.synchronizedMap(new HashMap<RequestToCancel, Boolean>());
 	protected final Executor threadPool;
 	protected final boolean isMyThreadPool;
 	protected final HTestAdapter testAdapter;
-	protected volatile boolean cancelAllRequests;
 	protected volatile boolean isDone;
 	
 	protected Statistics stats = null;
@@ -104,37 +101,58 @@ public class HWireClient extends BWire {
 	
 	protected class AsyncResultAfterAllRequests implements BAsyncResult<BMessage> {
 		final BAsyncResult<BMessage> innerResult;
-		final AtomicInteger nbOfOutstandingResults;
 		final long messageId;
-		volatile BMessage result;
-		final AtomicReference<Throwable> ex = new AtomicReference<Throwable>();
+    int nbOfOutstandingResults;
+		BMessage result;
+		Throwable ex;
 		
 		public AsyncResultAfterAllRequests(long messageId, BAsyncResult<BMessage> asyncResult, final int nbOfRequests) {
 			this.innerResult = asyncResult;
-			this.nbOfOutstandingResults = new AtomicInteger(nbOfRequests);
 			this.messageId = messageId;
+			this.nbOfOutstandingResults = nbOfRequests;
 		}
 
 		@Override
-		public void setAsyncResult(BMessage msg, Throwable e) {
-			if (log.isDebugEnabled()) log.debug("setAsyncResult(msg=" + msg+ ", ex=" + e);
+		public void setAsyncResult(BMessage msg, Throwable ex) {
+			if (log.isDebugEnabled()) log.debug("setAsyncResult(msg=" + msg+ ", ex=" + ex);
+			
 			boolean cancelMessage = false;
+			boolean isLastResult = false;
+			BMessage innerMsg = null;
+			Throwable innerEx = null;
 			
-			if (e != null) {
-				cancelMessage = ex.compareAndSet(null, e);
-			}
-			if (msg != null && msg.buf != null) {
-				if (log.isDebugEnabled()) log.debug("set result");
-				this.result = msg;
+			synchronized(this) {
+			  
+			  isLastResult = --nbOfOutstandingResults == 0;
+			  if (log.isDebugEnabled()) log.debug("isLastResult=" + isLastResult);
+			  
+			  if (ex != null) {
+			    cancelMessage = this.ex == null;
+			    if (cancelMessage) this.ex = ex;
+			    if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
+			  }
+			  
+	      if (msg != null && msg.buf != null && msg.buf.remaining() != 0) {
+	        if (log.isDebugEnabled()) log.debug("set result=" + msg);
+	        this.result = msg;
+	      }
+	      else {
+	        // Stream result OK
+	      }
+	
+        if (isLastResult) {
+            innerMsg = this.result;
+            innerEx = this.ex;
+        }
+	      
 			}
 			
-			if (nbOfOutstandingResults.decrementAndGet() == 0) {
-				if (log.isDebugEnabled()) log.debug("innerResult.setAsyncResult(result=" + result + ", ex=" + ex);
-				innerResult.setAsyncResult(result, ex.get());
+			if (isLastResult) {
+				if (log.isDebugEnabled()) log.debug("innerResult.setAsyncResult(result=" + innerMsg + ", ex=" + innerEx);
+				innerResult.setAsyncResult(innerMsg, innerEx);
 			}
 			
-			if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
-			if (cancelMessage) {
+			if (cancelMessage && !isLastResult) {
 				sendCancelMessage(messageId);
 			}
 			
@@ -145,12 +163,14 @@ public class HWireClient extends BWire {
 	
 	@Override
 	public synchronized void send(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
-		internalSendMessageAndStreams(msg, asyncResult, this.timeoutMillisClient);
+		//internalSendMessageAndStreams(msg, asyncResult, this.timeoutMillisClient);
+	  internalSendStreamsThenMessage(msg, asyncResult, this.timeoutMillisClient);
 	}
 	
 	@Override
 	public void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult) {
-		internalSendMessageAndStreams(msg, asyncResult, 0);
+		//internalSendMessageAndStreams(msg, asyncResult, 0);
+		internalSendStreamsThenMessage(msg, asyncResult, 0);
 	}
 
 	protected void executeRequest(RequestToCancel r) throws BException {
@@ -195,7 +215,8 @@ public class HWireClient extends BWire {
 		}
 	}
 	
-	protected synchronized void internalSendMessageAndStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult, long timeout) {
+  @SuppressWarnings("unused")
+	private synchronized void internalSendMessageAndStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult, long timeout) {
 		if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
 
 		try {
@@ -226,7 +247,6 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug(")send");
 	}
 	
-	@SuppressWarnings("unused")
 	private synchronized void internalSendStreamsThenMessage(final BMessage msg, final BAsyncResult<BMessage> asyncResult, final long timeout) {
 		if (log.isDebugEnabled()) log.debug("internalSendStreamsThenMessage(" + msg + ", asyncResult=" + asyncResult);
 
@@ -601,7 +621,7 @@ public class HWireClient extends BWire {
 		}
 		catch (Throwable e) {
 			if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
-			if (cancelAllRequests || request.isCanceled()) {
+			if (request.isCanceled()) {
 				BException bex = new BException(BExceptionC.CANCELLED, "");
 				returnException = bex;
 			}
@@ -799,7 +819,7 @@ public class HWireClient extends BWire {
 		}
 		catch (Throwable e) {
 			if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
-			if (cancelAllRequests || request.isCanceled()) {
+			if (request.isCanceled()) {
 				BException bex = new BException(BExceptionC.CANCELLED, "");
 				returnException = bex;
 			}
@@ -956,9 +976,9 @@ public class HWireClient extends BWire {
 	
 	protected void internalCancelAllRequests(long cancelMessageId) {
 		if (log.isDebugEnabled()) log.debug("internalCancelAllRequests(");
-		cancelAllRequests = true;
-		
+				
 		ArrayList<RequestToCancel> arr = new ArrayList<RequestToCancel>(openRequestsToCancel.keySet());
+		openRequestsToCancel.clear();
 		
 		if (log.isDebugEnabled()) log.debug("cancel requests on client, #requests=" + arr.size());
 		for (RequestToCancel robj : arr) {

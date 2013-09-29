@@ -25,8 +25,9 @@ public:
 
 	HServerR_SendLongPoll() : isDone(false), sleepMillisBeforeRetry(60 * 1000), nbOfActiveLongPolls(0) {}
 
-	bool checkDoneMaybeWait() {
+	bool waitUntilDoneOrTimeout() {
 		byps_unique_lock lock(mutex);
+		if (isDone) return true;
 		std::chrono::milliseconds timeout(sleepMillisBeforeRetry);
 		return serverFinished.wait_for(lock, timeout, [this]() { return isDone; });
 	}
@@ -100,8 +101,9 @@ class HServerR_LongPoll {
 			bool failed = varmsg.isException();
 			if (failed) {
 				BException ex = varmsg.getException();
-				if (ex.getCode() != EX_CANCELLED) {
-					if (ex.getCode() == EX_TIMEOUT || !sendLongPoll->checkDoneMaybeWait()) {
+				if (ex.getCode() != EX_CANCELLED && 
+					ex.getCode() != EX_IOERROR) { // EX_IOERROR with HTTP 403 if HWireClient::cancelAllRequests() was called
+					if (ex.getCode() == EX_TIMEOUT || !sendLongPoll->waitUntilDoneOrTimeout()) {
 						HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
 					}
 				}

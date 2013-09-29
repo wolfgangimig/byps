@@ -15,12 +15,13 @@ using namespace com::wilutions::byps;
 
 void AllTests_run(void *app) {
     //BLogger::init("/home/wolfgang/log/cppclient.txt", BLogLevel::Debug, false);
-    BLogger::init("d:\\temp\\log\\cppclient.txt", BLogLevel::Debug, false);
+    BLogger::init("d:\\temp\\log\\cppclient.txt", BLogLevel::Error, false);
 
     BLogger log("AllTests");
     log.debug() << L"AllTest_run(";
 
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 1000; i++) {
+		cout << "loop " << (i+1) << endl;
 		TestSuite suite;
 		suite.add(TestRemoteWithAuthentication_create(app));
 		suite.add(TestRemotePrimitiveTypes_create(app));
@@ -44,6 +45,6 @@ void AllTests_run(void *app) {
     log.debug() << L")AllTest_run";
 	BLogger::done();
 
-	//char ret;
-	//std::cin >> ret;
+	char ret;
+	std::cin >> ret;
 }

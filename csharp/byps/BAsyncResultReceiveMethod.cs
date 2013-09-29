@@ -15,8 +15,11 @@ namespace com.wilutions.byps
 	    }
 	
 	    public void setAsyncResult(BMethodResult<T> methodResult, Exception e)  {
-            T result = methodResult != null ? methodResult._result : default(T);
-            innerResult.setAsyncResult(result, e);
+            if (innerResult != null)
+            {
+                T result = methodResult != null ? methodResult._result : default(T);
+                innerResult.setAsyncResult(result, e);
+            }
 	    }
     }
 }

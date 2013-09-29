@@ -36,14 +36,16 @@ public:
 		fputs(fileContent.c_str(), file);
 		fclose(file);
 		
-        PContentStream strm(new BContentStreamFile(fname));
-
-		std::remove(fname);
+		PContentStream strm(new BContentStreamFile(fname));
 
 		PRemoteStreams remote = client->remoteStreams;
 		l_info << L"remote->setImage ...";
 		remote->setImage(strm);
 		l_info << L"remote->setImage OK";
+
+		strm.reset();
+		std::remove(fname);
+
 
 		l_info << L"remote->getImage ...";
 		PContentStream strmR = remote->getImage();

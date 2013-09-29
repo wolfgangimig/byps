@@ -5,6 +5,7 @@
 using namespace com::wilutions::byps;
 
 BLogger TestBase::log("TestBase");
+com::wilutions::byps::test::api::PClient_Testser TestBase::client;
 
 TestBase::TestBase(void* app) 
 	: app(app) {
@@ -16,9 +17,11 @@ TestBase::~TestBase() {
 
 void TestBase::beforeCase() {
     log.debug() << L"beforeCase(";
-	client = TestUtilHttp::createClient(app);
-    long rc = client->transport.use_count();
-    assert(rc >= 1);
+	if (!client) {
+		client = TestUtilHttp::createClient(app);
+	}
+	long rc = client->transport.use_count();
+	assert(rc >= 1);
     log.debug() << L")beforeCase";
 }
 void TestBase::afterCase() {
@@ -27,14 +30,14 @@ void TestBase::afterCase() {
     long rc = client->transport.use_count();
     assert(rc >= 1);
 
-	client->done();
+	//client->done();
 
-    assert(client.use_count() == 1);
-    PTransport transport = client->transport;
-    client.reset();
-    rc = transport.use_count();
-    assert(rc == 1);
-    transport.reset();
+ //   assert(client.use_count() == 1);
+ //   PTransport transport = client->transport;
+ //   client.reset();
+ //   rc = transport.use_count();
+ //   assert(rc == 1);
+ //   transport.reset();
 
     log.debug() << L")afterCase";
 }

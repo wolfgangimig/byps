@@ -53,7 +53,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		if (serverId != config.getMyServerId()) {    			
 			client = getForwardClient(serverId);
 			if (client == null) {
-				throw new BException(BExceptionC.INTERNAL, "Cannot reach server for targetId=" + targetId +", missing url for serverId=" + serverId + ", in configuration."); 
+				throw new BException(BExceptionC.INTERNAL, "Cannot reach server for targetId=" + targetId +", missing URL or wrong URL for serverId=" + serverId + ", in configuration."); 
 			}
 		}
 		if (log.isDebugEnabled()) log.debug(")getForwardClientIfForeignTargetId=" + client);

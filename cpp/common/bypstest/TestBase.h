@@ -24,7 +24,7 @@ public:
 	virtual void onSuccess(const TestFunction& tfunc);
 	
 protected:
-	com::wilutions::byps::test::api::PClient_Testser client;
+	static com::wilutions::byps::test::api::PClient_Testser client;
 };
 
 #endif

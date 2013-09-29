@@ -187,6 +187,10 @@ public:
 
 			if (relogin) {
                 try {
+					// Cancel long-polls.
+					// They will be restarted over negotiateProtocolClient and BClient::authentication.
+					transport->wire->cancelAllRequests();
+
                     BTransport_MyAsyncResultSend* loginResult = new BTransport_MyAsyncResultSend(transport, methodRequest, innerResult);
                     transport->negotiateProtocolClient(loginResult);
                 }

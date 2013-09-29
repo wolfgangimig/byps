@@ -71,11 +71,11 @@ public class TestRemoteArrays {
 		
 			internalTestPerformance(BProtocolJson.BINARY_MODEL, flags, loopCount, 10);
 			internalTestPerformance(BProtocolJson.BINARY_MODEL, flags, loopCount, 100);
-			//internalTestPerformance(BProtocolJson.BINARY_MODEL, flags, loopCount, 1000);
+			internalTestPerformance(BProtocolJson.BINARY_MODEL, flags, loopCount, 1000);
 			
 			internalTestPerformance(BProtocolS.BINARY_MODEL, flags, loopCount, 10);
 			internalTestPerformance(BProtocolS.BINARY_MODEL, flags, loopCount, 100);
-			//internalTestPerformance(BProtocolS.BINARY_MODEL, flags, loopCount, 1000);
+			internalTestPerformance(BProtocolS.BINARY_MODEL, flags, loopCount, 1000);
 			//internalTestPerformance(BBinaryModel.MEDIUM, 0, loopCount, 10000);
 		
 		}

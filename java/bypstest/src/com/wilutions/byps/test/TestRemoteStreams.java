@@ -231,7 +231,7 @@ public class TestRemoteStreams {
 	@Test
 	public void testRemoteStreamsCloseStreamAfterSend() throws RemoteException {
 		log.info("testRemoteStreamsCloseStreamAfterSend(");
-		int count = 1000;
+		int count = 10;
 		
 		for (int i = 0; i < count; i++) {
 			internalTestRemoteStreamsClosed();

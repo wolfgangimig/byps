@@ -28,6 +28,7 @@ typedef byps_ptr<WinHttpPost> PWinHttpPost;
 class WinHttpPut;
 typedef byps_ptr<WinHttpPut> PWinHttpPut;
 
+	static byps_atomic<int> s_handleCount;
 
 class WinHttpRequest : public virtual HHttpRequest, public byps_enable_shared_from_this<WinHttpRequest> {
 protected:
@@ -45,12 +46,15 @@ protected:
 
 	PWinHttpRequest holdReferenceForWinHTTP;
 
+	static BLogger log;
+
 	//static LONG openRequests;
 
 public:
 
 	WinHttpRequest(HINTERNET hRequest, const std::wstring& url) 
 		: hRequest(hRequest)
+		, handleClosed(false)
 		, contentLength(0)
 		, statusCode(0)
 		, url(url)
@@ -59,14 +63,25 @@ public:
 	}
 
 	virtual ~WinHttpRequest() {
-		close();
 	}
 
+	// close might delete this
 	virtual void close() {
 		bool expectedClosed = false;
 		if (handleClosed.compare_exchange_strong(expectedClosed, true)) {
+
+			// WinHttpCloseHandle will call onHandleClosing where this might be deleted
+			PWinHttpRequest holdMe = shared_from_this();
+			
 			WinHttpCloseHandle(hRequest);
+
+			s_handleCount--;
+			l_debug << L"close " << typeid(*this).name() << L", handleCount=" << s_handleCount;
 			//assert(InterlockedDecrement(&openRequests) >= 0);
+
+			// Keep value of hRequest for onHandleClosing
+			//hRequest = NULL;
+
 		}
 	}
 
@@ -75,6 +90,7 @@ public:
 			asyncResult->setAsyncResult(BVariant(ex));
 			asyncResult = NULL;
 		}
+		close();
 	}
 
 	virtual void finishOnOK() = 0;
@@ -347,9 +363,11 @@ public:
 
 	virtual void finishOnError(const BException& ex) throw() {
 		this->ex = ex;
+		close();
 	}
 
 	virtual void finishOnOK() throw() {
+		close();
 	}
 
 	virtual void onSendComplete() throw() {
@@ -510,6 +528,7 @@ public:
 			}
 			asyncResult = NULL;
 		}
+		close();
 	}
 
 	virtual void send(PBytes bytes, const std::wstring& contentType, PAsyncResult asyncBytesReceived) {
@@ -629,6 +648,7 @@ public:
 	}
 
 	virtual ~WinHttpPut() {
+		stream.reset();
 	}
 
 	virtual void finishOnOK() throw() {
@@ -636,6 +656,7 @@ public:
 			asyncResult->setAsyncResult(BVariant(true));
 			asyncResult = NULL;
 		}
+		close();
 	}
 
 	virtual void send(PContentStream stream, PAsyncResult asyncBoolFinished) {
@@ -768,6 +789,7 @@ class WinHttpClient : public HHttpClient {
 
 	HINTERNET hSession;
 	HINTERNET hConnection;
+	static BLogger log;
 
 public:
 	WinHttpClient() 
@@ -780,10 +802,14 @@ public:
 		if (hConnection) {
 			WinHttpCloseHandle(hConnection);
 			hConnection = NULL;
+			s_handleCount--;
+			l_debug << L"close conn, handleCount=" << s_handleCount;
 		}
 		if (hSession) {
 			WinHttpCloseHandle(hSession);
-			hConnection = NULL;
+			hSession = NULL;
+			s_handleCount--;
+			l_debug << L"close sess, handleCount=" << s_handleCount;
 		}
 	}
 
@@ -802,6 +828,9 @@ public:
 			DWORD err = GetLastError();
 			throw HException(L"WinHttpOpen", err);
 		}
+
+		s_handleCount++;
+		l_debug << L"open sess, handleCount=" << s_handleCount;
 
 		WCHAR szHost[256]={0};
 		URL_COMPONENTS UrlComps = {0};
@@ -831,6 +860,9 @@ public:
 			DWORD err = GetLastError();
 			throw HException(L"WinHttpConnect", err);
 		}
+
+		s_handleCount++;
+		l_debug << L"open conn, handleCount=" << s_handleCount;
 
 	}
 
@@ -871,6 +903,9 @@ public:
 			DWORD err = ::GetLastError();
 			throw HException(L"WinHttpOpenRequest", err);
 		}
+
+		s_handleCount++;
+		l_debug << L"open " << method <<  L", handleCount=" << s_handleCount;
 
 		WINHTTP_STATUS_CALLBACK retcb = WinHttpSetStatusCallback(
 			hRequest,
@@ -942,6 +977,9 @@ public:
 		}
 	}
 };
+
+BLogger WinHttpRequest::log("WinHttpRequest");
+BLogger WinHttpClient::log("WinHttpClient");
 
 }}}}}
 

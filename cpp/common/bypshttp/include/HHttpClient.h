@@ -21,7 +21,7 @@ typedef byps_ptr<HHttpPut> PHttpPut;
 
 class HHttpRequest {
 public:
-	~HHttpRequest() {}
+	virtual ~HHttpRequest() {}
 
 	virtual void setTimeouts(int32_t connectTimeoutSeconds, int32_t sendrecvTimeoutSeconds) = 0;
 	virtual void close() = 0;
@@ -30,21 +30,21 @@ public:
 
 class HHttpGet : public virtual HHttpRequest {
 public:
-	~HHttpGet() {}
+	virtual ~HHttpGet() {}
 
 	virtual PContentStream send() = 0;
 };
 
 class HHttpPost : public virtual  HHttpRequest {
 public:
-	~HHttpPost() {}
+	virtual ~HHttpPost() {}
 
 	virtual void send(PBytes bytes, const std::wstring& contentType, PAsyncResult asyncBytesReceived) = 0;
 };
 
 class HHttpPut : public virtual HHttpRequest {
 public:
-	~HHttpPut() {}
+	virtual ~HHttpPut() {}
 
 	virtual void send(PContentStream strm, PAsyncResult asyncBoolFinished) = 0;
 };

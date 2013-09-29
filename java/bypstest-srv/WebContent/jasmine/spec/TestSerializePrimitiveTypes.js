@@ -32,7 +32,6 @@ describe("Tests for serializing primitive types.", function() {
 		log.info(")testPrimitiveTypes");
     });
     
-    
 	var internalTestPrimitiveTypes = function(obj) {
 		log.info("internalTestPrimitiveTypes(");
 		

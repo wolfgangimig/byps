@@ -41,13 +41,13 @@ public class BExceptionC {
    * Generator error.
    * This code is used by the generator.
    */
-  public final static int GENERATOR_EXCEPTION = 1000;
+  public final static int GENERATOR_EXCEPTION = 1;
 
   /**
    * Operation cancelled.
    * This code is used, if an operation was cancelled or interrupted.
    */
-  public static final int CANCELLED = 100;
+  public static final int CANCELLED = 19;
 
   /**
    * Timeout.
@@ -83,14 +83,5 @@ public class BExceptionC {
    */
   public static final int AUTHENTICATION_REQUIRED = 18;
   
-  /**
-   * Error codes between HTTP_CODE_MIN and HTTP_CODE_MAX are HTTP error codes.
-   */
-  public static final int HTTP_CODE_MIN = 200;
-  
-  /**
-   * Error codes between HTTP_CODE_MIN and HTTP_CODE_MAX are HTTP error codes.  
-   */
-  public static final int HTTP_CODE_MAX = 600;
   
 }

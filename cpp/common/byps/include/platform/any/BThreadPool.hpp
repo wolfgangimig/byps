@@ -21,10 +21,11 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 	int maxThreads;
 	int fullLimit;
 	byps_atomic<bool> isDone;
+	byps_atomic<int> nbOfBusyThreads;
 
 	typedef byps_ptr<std::thread> PThread;
 	std::map<std::thread::id, PThread> allThreads;
-	std::map<std::thread::id, bool> runningThreads;
+	std::map<std::thread::id, bool> threadIdToRunning;
 
 	PRunnable nextRunnableUnsync(byps_unique_lock& lock) {
 
@@ -58,24 +59,26 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 				}
 			}
 
+			tpool->nbOfBusyThreads++;
 			try {
 				r->run();
 			}
 			catch (...) {
 			}
+			tpool->nbOfBusyThreads--;
 
 		}
 
 		{
 			byps_unique_lock lock(tpool->mutex);
-			tpool->runningThreads[tid] = false;
+			tpool->threadIdToRunning[tid] = false;
 		}
 	}
 
 	void removeStoppedThreadsUnsync(std::vector<PThread>& stoppedThreads) {
 		std::vector<std::thread::id> killIds;
-		killIds.reserve(runningThreads.size());
-		for (std::map<std::thread::id, bool>::iterator it = runningThreads.begin(); it != runningThreads.end(); it++) {
+		killIds.reserve(threadIdToRunning.size());
+		for (std::map<std::thread::id, bool>::iterator it = threadIdToRunning.begin(); it != threadIdToRunning.end(); it++) {
 			if ((*it).second) continue;
 			killIds.push_back((*it).first);
 		}
@@ -83,11 +86,11 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 			PThread t = allThreads[killIds[i]];
 			stoppedThreads.push_back(t);
 			allThreads.erase(killIds[i]);
-			runningThreads.erase(killIds[i]);
+			threadIdToRunning.erase(killIds[i]);
 		}
 	}
 
-	void killStoppedThreads(std::vector<PThread>& stoppedThreads) {
+	void joinThreads(std::vector<PThread>& stoppedThreads) {
 		for (unsigned i = 0; i < stoppedThreads.size(); i++) {
 			PThread t = stoppedThreads[i];
 			if (t && t->joinable()) {
@@ -119,12 +122,12 @@ public:
 			{
 				byps_unique_lock lock(mutex);
 
-				for (std::map<std::thread::id, bool>::iterator it = runningThreads.begin(); it != runningThreads.end(); it++) {
+				for (std::map<std::thread::id, bool>::iterator it = threadIdToRunning.begin(); it != threadIdToRunning.end(); it++) {
 					(*it).second = false;
 				}
 				removeStoppedThreadsUnsync(stoppedThreads);
 			}
-			killStoppedThreads(stoppedThreads);
+			joinThreads(stoppedThreads);
 		}
 	}
 
@@ -142,24 +145,28 @@ public:
 			PThreadPoolImpl pThis = shared_from_this();
 			if (pThis && !isDone) {
 
+				// Remove stopped threads from threadIdToRunning
 				removeStoppedThreadsUnsync(stoppedThreads);
 
-				// Start new thread, if all threads busy
-				if (queue.size() >= runningThreads.size()) {
-					if (runningThreads.size() < (size_t)maxThreads) {
+				// add job into queue
+				this->queue.push_back(r);
+
+				// Maybe start new thread
+				int nbOfFreeThreads = (int)threadIdToRunning.size() - nbOfBusyThreads;
+				if (queue.size() > nbOfFreeThreads) {
+					if (threadIdToRunning.size() < (size_t)maxThreads) {
 						PThread t(new std::thread(threadFunction, pThis));
-						runningThreads[t->get_id()] = true;
+						threadIdToRunning[t->get_id()] = true;
 						allThreads[t->get_id()] = t;
 					}
 				}
 
-				this->queue.push_back(r);
 			}
 
 			this->queueItemAdded.notify_all();
 		}
 		
-		killStoppedThreads(stoppedThreads);
+		joinThreads(stoppedThreads);
 
 		return !isDone;
 	}

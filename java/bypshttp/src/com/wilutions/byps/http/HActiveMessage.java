@@ -56,22 +56,22 @@ public class HActiveMessage {
   }
 
   private synchronized boolean isFinished() {
-    if (log.isDebugEnabled()) log.debug("isFinished(" + messageId);
-    if (log.isDebugEnabled()) {
-      log.debug("longPoll=" + isLongPoll());
-      log.debug("rctxtMessage=" + rctxtMessage);
-      log.debug("workerThread=" + workerThread);
-      log.debug("incomingStreams=" + incomingStreams);
-      log.debug("outgoingStreams=" + outgoingStreams);
-    }
+//    if (log.isDebugEnabled()) log.debug("isFinished(" + messageId);
+//    if (log.isDebugEnabled()) {
+//      log.debug("longPoll=" + isLongPoll());
+//      log.debug("rctxtMessage=" + rctxtMessage);
+//      log.debug("workerThread=" + workerThread);
+//      log.debug("incomingStreams=" + incomingStreams);
+//      log.debug("outgoingStreams=" + outgoingStreams);
+//    }
     boolean finished = rctxtMessage == null && workerThread == null && (incomingStreams == null || incomingStreams.size() == 0) && (outgoingStreams == null || outgoingStreams.size() == 0);
 
-    if (log.isDebugEnabled()) log.debug(")isFinished=" + finished);
+//    if (log.isDebugEnabled()) log.debug(")isFinished=" + finished);
     return finished;
   }
 
   private synchronized void checkFinished() {
-    if (log.isDebugEnabled()) log.debug("checkFinished(");
+    //if (log.isDebugEnabled()) log.debug("checkFinished(");
 
     cleanupIncomingStreams(canceled);
     cleanupOutgoingStreams(canceled);
@@ -90,11 +90,11 @@ public class HActiveMessage {
       // is re-initialized when it goes to finished state.
       bestBefore = 0;
     }
-    if (log.isDebugEnabled()) log.debug(")checkFinished");
+    //if (log.isDebugEnabled()) log.debug(")checkFinished");
   }
 
   public synchronized void cleanupIncomingStreams(boolean all) {
-    if (log.isDebugEnabled()) log.debug("cleanupIncomingStreams(" + messageId + ", all=" + all);
+    //if (log.isDebugEnabled()) log.debug("cleanupIncomingStreams(" + messageId + ", all=" + all);
     if (incomingStreams != null) {
       ArrayList<BContentStream> allStreams = new ArrayList<BContentStream>(incomingStreams.values());
       for (BContentStream istrm : allStreams) {
@@ -106,11 +106,11 @@ public class HActiveMessage {
         }
       }
     }
-    if (log.isDebugEnabled()) log.debug(")cleanupIncomingStreams");
+    //if (log.isDebugEnabled()) log.debug(")cleanupIncomingStreams");
   }
 
   private synchronized void cleanupOutgoingStreams(boolean all) {
-    if (log.isDebugEnabled()) log.debug("cleanupOutgoingStreams(" + messageId + ", all=" + all);
+    //if (log.isDebugEnabled()) log.debug("cleanupOutgoingStreams(" + messageId + ", all=" + all);
     if (outgoingStreams != null) {
       ArrayList<BContentStream> allStreams = new ArrayList<BContentStream>(outgoingStreams.values());
       for (BContentStream istrm : allStreams) {
@@ -122,7 +122,7 @@ public class HActiveMessage {
         }
       }
     }
-    if (log.isDebugEnabled()) log.debug(")cleanupOutgoingStreams");
+    //if (log.isDebugEnabled()) log.debug(")cleanupOutgoingStreams");
   }
 
   public synchronized void addOutgoingStreams(List<BStreamRequest> streamRequests) throws BException {
@@ -419,7 +419,7 @@ public class HActiveMessage {
     }
     else if (rctxtMessage != null) {
 
-      if (log.isDebugEnabled()) log.debug("assume long-poll, complete response");
+      if (log.isDebugEnabled()) log.debug("assume long-poll, complete response with HTTP 403");
 
       // Assume Longpoll request because a worker thread would have called
       // getAndRemoveRequestContext
@@ -445,19 +445,19 @@ public class HActiveMessage {
   }
 
   public synchronized boolean cleanup(boolean all) {
-    if (log.isDebugEnabled()) log.debug("cleanup(messageId=" + messageId + ", all=" + all);
+    //if (log.isDebugEnabled()) log.debug("cleanup(messageId=" + messageId + ", all=" + all);
     if (all) {
       cancelMessage();
     }
     else {
-      if (log.isDebugEnabled()) log.debug("cleanup expired members");
+      //if (log.isDebugEnabled()) log.debug("cleanup expired members");
       cleanupIncomingStreams(false);
       cleanupOutgoingStreams(false);
       checkFinished();
     }
 
     boolean exp = isExpired();
-    if (log.isDebugEnabled()) log.debug(")cleanup=" + exp);
+    //if (log.isDebugEnabled()) log.debug(")cleanup=" + exp);
     return exp;
   }
 

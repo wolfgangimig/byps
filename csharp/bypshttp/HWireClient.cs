@@ -27,8 +27,9 @@ namespace com.wilutions.byps
 		    BAsyncResult<BMessage> innerResult;
             int nbOfOutstandingResults;
             int nbOfResults;
-            volatile BMessage result;
+            BMessage result;
 		    Exception ex;
+            private Log log = LogFactory.getLog(typeof(AsyncResultAfterAllRequests));
 
             public AsyncResultAfterAllRequests(HWireClient wire, long messageId, BAsyncResult<BMessage> asyncResult, int nbOfRequests)
             {
@@ -39,23 +40,55 @@ namespace com.wilutions.byps
 		    }
 
 		    public void setAsyncResult(BMessage msg, Exception ex) {
+                if (log.isDebugEnabled()) log.debug("setAsyncResult(msg=" + msg + ", ex=" + ex);
+                
                 bool cancelMessage = false;
-			    if (ex != null) {
-                    cancelMessage = Interlocked.Exchange(ref this.ex, ex) == null;
-			    }
-                if (msg != null && msg.buf != null && msg.buf.remaining() != 0)
+
+                bool isLastResult = false;
+                BMessage innerMsg = null;
+                Exception innerEx = null;
+
+                lock (this)
                 {
-                    this.result = msg;
+                    isLastResult = --nbOfOutstandingResults == 0;
+                    if (log.isDebugEnabled()) log.debug("isLastResult=" + isLastResult);
+
+                    if (ex != null)
+                    {
+                        cancelMessage = this.ex == null;
+                        if (cancelMessage) this.ex = ex;
+                        if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
+                    }
+
+                    if (msg != null && msg.buf != null && msg.buf.remaining() != 0)
+                    {
+                        if (log.isDebugEnabled()) log.debug("set result=" + msg);
+                        this.result = msg;
+                    }
+                    else
+                    {
+                        // Stream result OK
+                    }
+
+                    if (isLastResult)
+                    {
+                        innerMsg = this.result;
+                        innerEx = this.ex;
+                    }
                 }
-			
-			    if (Interlocked.Decrement(ref nbOfOutstandingResults) == 0) {
-                    innerResult.setAsyncResult(this.result, this.ex);
+
+                if (isLastResult)
+                {
+                    if (log.isDebugEnabled()) log.debug("innerResult.set(" + innerMsg + ", ex=" + innerEx + ")");
+                    innerResult.setAsyncResult(innerMsg, innerEx);
 			    }
 
-                if (cancelMessage)
+                if (cancelMessage && !isLastResult)
                 {
                     wire.sendCancelMessage(messageId);
                 }
+
+                if (log.isDebugEnabled()) log.debug(")setAsyncResult");
 		    }
 
 	    }
@@ -524,10 +557,11 @@ namespace com.wilutions.byps
 
             public void setAsyncResult(ByteBuffer buf, Exception ex)
             {
-                if (log.isDebugEnabled()) log.debug("setAsyncResult" + this + "(");
+                if (log.isDebugEnabled()) log.debug("setAsyncResult" + this + "(buf="  + buf + ", ex=" + ex);
                 if (Interlocked.Increment(ref isOpen) == 1)
                 {
                     BMessage msg = buf != null ? new BMessage(messageId, buf, null) : null;
+                    if (log.isDebugEnabled()) log.debug("asyncResult.set");
                     asyncResult.setAsyncResult(msg, ex);
                 }
                 if (log.isDebugEnabled()) log.debug(")setAsyncResult");

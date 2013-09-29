@@ -6,11 +6,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.BClient_Testser;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
-import com.wilutions.byps.test.api.remote.RemotePrimitiveTypes;
+import com.wilutions.byps.test.api.remote.RemotePrimitiveTypesAsync;
 
 /**
  * Tests for interface functions with primitive types.
@@ -21,7 +22,7 @@ import com.wilutions.byps.test.api.remote.RemotePrimitiveTypes;
 public class TestRemotePrimitiveTypes {
 	
 	BClient_Testser client;
-	RemotePrimitiveTypes remote;
+	RemotePrimitiveTypesAsync remote;
 	private Log log = LogFactory.getLog(TestRemotePrimitiveTypes.class);
 
 	@Before
@@ -166,5 +167,52 @@ public class TestRemotePrimitiveTypes {
 		log.info(")testPrimitiveTypesReferenceToSelf");
 	}
 
-
+	/**
+	 * Tests asynchronous invocation.
+	 * @throws InterruptedException
+	 */
+  @Test
+  public void testRemoteAsync() throws InterruptedException {
+    log.info("testRemoteAsync(");
+    
+    final boolean ret[] = new boolean[1];
+    final Throwable ex[] = new Throwable[1];
+    
+    remote.setBool(true, new BAsyncResult<Object>() {
+      public void setAsyncResult(Object ignored, Throwable exception) {
+        
+        remote.getBool(new BAsyncResult<Boolean>() {
+          public void setAsyncResult(Boolean result, Throwable exception) {
+            
+            ret[0] = result;
+            ex[0] = exception;
+          }
+        });
+      }
+    });
+    
+    Thread.sleep(1000);
+    if (ex[0] != null) {
+      TestUtils.fail(log, ex[0].toString());
+    }
+    TestUtils.assertEquals(log, "wrong bool", true, ret[0]);
+    
+    log.info(")testRemoteAsync");
+  }
+  
+  /**
+   * Tests asynchronous invocation with null as asyncResult parameter.
+   * A null can be passed, if the result is not of interest.
+   * @throws InterruptedException
+   */
+  @Test
+  public void testRemoteAsyncNull() throws InterruptedException {
+    log.info("testRemoteAsyncNull(");
+    
+    remote.setBool(true, null);
+    Thread.sleep(1000);
+    
+    log.info(")testRemoteAsyncNull");
+  }
+  
 }

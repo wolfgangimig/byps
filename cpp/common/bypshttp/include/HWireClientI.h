@@ -20,15 +20,13 @@ public:
 	HWireClient_RequestsToCancel();
 
 	virtual ~HWireClient_RequestsToCancel();
-    bool add(intptr_t id, PHttpRequest r);
+    void add(intptr_t id, PHttpRequest r);
     void addCancelMessage(intptr_t id, PHttpRequest r);
     void remove(intptr_t id);
-	void cancel();
-
+	void cancelAllRequests();
 
 private:
 
-	bool isCanceled;
     byps_mutex mutex;
     std::map<intptr_t, PHttpRequest> map;
     static BLogger log;

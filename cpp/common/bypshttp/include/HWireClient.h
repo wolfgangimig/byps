@@ -58,13 +58,16 @@ protected:
 	bool isMyThreadPool;
 	byps_atomic<bool> isDone;
 
-	void internalCancelAllRequests(int64_t cancelMessageId, PAsyncResult asyncResult);
+	void internalCancelAllRequests(int64_t cancelMessageId);
 
 	void internalSend(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSeconds);
+	void internalSendStreamsThenMessage(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSeconds);
+	void internalSendMessageWithoutStreams(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSeconds);
 	void sendCancelMessage(int64_t messageId);
 
 	friend class HWireClient_TestAdapter;
 	friend class HWireClient_AsyncResultAfterAllRequests;
+	friend class HWireClient_SendMessageAfterStreams;
 };
 
 }}}}

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.AsyncEvent;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
@@ -77,8 +78,8 @@ public class HActiveMessages {
 			@Override
 			public void onTimeout(AsyncEvent arg0) throws IOException {
 				if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onTimeout(" + arg0 + ")");
-				HRequestContext rctxt = getAndRemoveRequestContext(messageId);
-				HttpServletResponse resp = (HttpServletResponse)rctxt.getResponse();
+				//HRequestContext rctxt = getAndRemoveRequestContext(messageId); is null
+				HttpServletResponse resp = (HttpServletResponse)arg0.getSuppliedResponse();
 				resp.setStatus(HttpServletResponse.SC_REQUEST_TIMEOUT);
 				resp.getOutputStream().close();
 			}

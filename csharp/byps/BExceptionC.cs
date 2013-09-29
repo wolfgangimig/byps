@@ -17,7 +17,7 @@ namespace com.wilutions.byps
         public const int TOO_MANY_REQUESTS = 15;
         public const int NO_REVERSE_CONNECTIONS = 16;
         public const int UNSUPPORTED_METHOD = 17;
-        public const int CANCELED = 100;
+        public const int CANCELED = 19;
         public const int AUTHENTICATION_REQUIRED = 18;
     }
 }

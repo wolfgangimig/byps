@@ -21,7 +21,6 @@ import com.wilutions.byps.BProtocolJson;
 	TestSerializeEnum.class,
 	TestSerializePrivateMembers.class,
 	TestSerializeInlineInstances.class,
-	TestSerializeStream.class,
 	TestSerializeDifferentVersions.class,
 	TestRemotePrimitiveTypes.class,
 	TestRemoteArrays.class,
