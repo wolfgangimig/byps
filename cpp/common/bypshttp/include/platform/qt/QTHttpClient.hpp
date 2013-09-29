@@ -226,7 +226,14 @@ public:
 
     void createPostRequest(PQTHttpRequest req, QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPost, QTHttpRequestBridge** ppbridge) {
         l_debug << L"createPostRequest(";
-        emit clientBridge.createPostRequest(networkRequest, timeout, bytesToPost, ppbridge);
+        if (QThread::currentThread() == worker) {
+            // This function is called from the worker thread, if the serverR is
+            // started in BClient::authenticate
+            worker->workerBridge->createPostRequest(networkRequest, timeout, bytesToPost, ppbridge);
+        }
+        else {
+            emit clientBridge.createPostRequest(networkRequest, timeout, bytesToPost, ppbridge);
+        }
         l_debug << L"bridge=" << (void*)*ppbridge;
         (*ppbridge)->pThis = req;
         l_debug << L")createPostRequest";
