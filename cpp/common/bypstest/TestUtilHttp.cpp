@@ -14,7 +14,7 @@ using namespace com::wilutions::byps::test::api;
 PClient_Testser TestUtilHttp::createClient(void* app) {
 	PApiDescriptor apiDesc = BApiDescriptor_Testser::instance();
 
-	PWire wire(HWireClient::create(app, url, 0, 600, PThreadPool()));
+    PWire wire(HWireClient::create(app, url, 0, 60, PThreadPool()));
 
     PTransportFactory transportFactory(new HTransportFactoryClient(apiDesc, wire, 1));
 
