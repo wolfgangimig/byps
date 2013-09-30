@@ -91,7 +91,7 @@ public class HWireClientR extends BWire {
 
     final BAsyncResult<BMessage> nextRequest = processAsync ? asyncRequest : new BSyncResult<BMessage>();
     boolean waitForSend = true;
-    
+
     synchronized (this) {
 
       // Liegt das Resultat der vorigen Anfrage vor?
@@ -103,20 +103,19 @@ public class HWireClientR extends BWire {
       if (asyncResult != null) {
 
         // Gib iBuf an den Thread weiter, der auf das Resultat wartet.
-        synchronized (asyncResult) {
-          if (log.isDebugEnabled()) log.debug("pass message buffer to asyncResult, notify thread waiting in send()");
-          asyncResult.setAsyncResult(ibuf, null);
-          asyncResult.notifyAll();
-        }
-      } else {
+        if (log.isDebugEnabled()) log.debug("pass message buffer to asyncResult, notify thread waiting in send()");
+        asyncResult.setAsyncResult(ibuf, null);
+
+      }
+      else {
         // asyncResult == null für ersten Longpoll-Aufruf des Clients
       }
 
-      // Wenn während send() ausgeführt wird kein Longpoll aktiv ist, dann 
-      // speichert es die Nachricht in pendingMessages_access_sync.   
+      // Wenn während send() ausgeführt wird kein Longpoll aktiv ist, dann
+      // speichert es die Nachricht in pendingMessages_access_sync.
       if (pendingMessages_access_sync.size() != 0) {
-        
-        // Sende die wartende Nachricht 
+
+        // Sende die wartende Nachricht
         BMessage msg = pendingMessages_access_sync.remove(0);
         internalSend(msg.header.messageId, msg, nextRequest);
         waitForSend = false;
@@ -171,7 +170,7 @@ public class HWireClientR extends BWire {
           // Ergebnisobjekt für nächsten Longpoll merken
           if (log.isDebugEnabled()) log.debug("map messageId=" + messageId + " to nextResult=" + nextResult);
           asyncResults_access_sync.put(messageId, nextResult);
-        
+
           if (asyncRequests_access_sync.size() != 0) {
             asyncRequest = asyncRequests_access_sync.remove(0);
             if (log.isDebugEnabled()) log.debug("send asyncRequest=" + asyncRequest);
