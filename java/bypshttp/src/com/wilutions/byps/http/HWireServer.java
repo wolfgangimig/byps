@@ -222,7 +222,9 @@ public class HWireServer extends BWire {
     		final String contentType = is.getContentType();
     		final long contentLength = is.getContentLength();
     		response.setContentType(contentType);
-    		response.setHeader("Content-Length", Long.toString(contentLength));
+    		if (contentLength >= 0) {
+    		  response.setHeader("Content-Length", Long.toString(contentLength));
+    		}
     		
     		os = response.getOutputStream();
         byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];

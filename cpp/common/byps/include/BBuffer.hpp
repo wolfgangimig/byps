@@ -18,7 +18,7 @@ BINLINE BBuffer::BBuffer(const BBinaryModel& bmodel, BByteOrder byteOrder) :
     pos(0), limit(0), capacity(0), grow(BBUFFER_GROW), compressInteger(BCOMPRESS_INTEGER) {
 }
 
-BINLINE BBuffer::BBuffer(const BBinaryModel& bmodel, PBytes& pBytes, BByteOrder byteOrder) :
+BINLINE BBuffer::BBuffer(const BBinaryModel& bmodel, const PBytes& pBytes, BByteOrder byteOrder) :
     bmodel(bmodel),
     isWrite(false), byteOrder(byteOrder),
     pBytes(pBytes), pos(0), limit((int32_t)pBytes->length), capacity((int32_t)pBytes->length), grow(0), compressInteger(BCOMPRESS_INTEGER) {

@@ -21,7 +21,7 @@ class BBuffer {
 public:
 
     BBuffer(const BBinaryModel& bmodel, BByteOrder byteOrder);
-    BBuffer(const BBinaryModel& bmodel, PBytes& pBytes, BByteOrder byteOrder);
+    BBuffer(const BBinaryModel& bmodel, const PBytes& pBytes, BByteOrder byteOrder);
 
     const PBytes& getBytes() const;
 
@@ -95,7 +95,7 @@ private:
 
 	template<typename _int3264> void serializeIntegerCompressed(_int3264& v1) {
 
-		register _int3264 v = v1;
+		register int64_t v = v1;
 
 		if (isWrite) {
 
@@ -104,20 +104,25 @@ private:
 				pBytes->data[pos++] = 0;
 			}
 			else {
-				ensureRemaining(sizeof(v) + 1);
+				ensureRemaining(sizeof(v) + 2);
 				int8_t *p = pBytes->data + pos;
 
-				bool neg = v < 0;
-				if (neg) v = -v;
+                bool neg = v < 0;
+                if (neg) v = -(v + 1);
+                v <<= 1;
+                if (neg) v |= 1;
 
                 int i = 0;
-                for (; i < (int) sizeof(v) && v != 0; i++) {
-					p[i+1] = (int8_t) (v & 0xFF);
-					v >>= 8;
-				}
+                for (; i < 10 && v != 0; i++)
+                {
+                    bool moreBytes = (v & ~0x7F) != 0;
+                    int h = ((int)v) & 0x7F;
+                    if (moreBytes) h |= 0x80;
+                    p[i] = (int8_t)h;
+                    v = (int64_t)((uint64_t)v >> 7);
+                }
 
-				p[0] = (int8_t) (neg ? -i : i);
-				pos += i+1;
+                pos += i;
 			}
 		}
 
@@ -126,28 +131,33 @@ private:
 			int8_t *p = pBytes->data + pos;
 				
 			v = 0;
-			int i = *p;
 
-			if (i == 0) {
+			if (*p == 0) {
 				ensureRemaining(1);
 				pos++;
 			}
 			else {
-				bool neg = i < 0;
-				if (neg) i = -i;
-
-				ensureRemaining(i+1);
-				pos += i+1;
-				p++;
-
-				while (i-- > 0) {
-					v <<= 8;
-					v |= ((int)(p[i])) & 0xFF;
+				int i = 0;
+				int shift = 0;
+				bool moreBytes = true;
+				for (; i < 10 && moreBytes; i++) {
+					int h = p[i];
+					moreBytes = (h & 0x80) != 0;
+					v |= ((int64_t)(h & 0x7F)) << shift;
+					shift += 7;
 				}
-    
-				if (neg) v = -v;
 
-				v1 = v;
+				if (moreBytes) {
+					throw BException(EX_CORRUPT, L"Read integer failed.");
+				}
+
+				bool neg = (v & 0x01) != 0;
+				v = (int64_t)((uint64_t)v >> 1);   
+				if (neg) v = -(v+1);
+
+				v1 = (_int3264)v;
+
+				pos += i;
 			}
 		}
 	}

@@ -231,8 +231,12 @@ public abstract class BBuffer {
 	public abstract void putString(String v);
 	public abstract double getDouble();
 	public abstract void putDouble(double v);
-	public abstract float getFloat();
-	public abstract void putFloat(float v);
+  public abstract float getFloat();
+  public abstract void putFloat(float v);
+  public abstract int getInt();
+  public abstract void putInt(int v);
+  public abstract long getLong();
+  public abstract void putLong(long v);
 
 	protected final BBinaryModel bmodel;
 	protected ByteBuffer buf;

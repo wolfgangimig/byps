@@ -15,7 +15,9 @@ public class BBufferJson extends BBuffer {
 	
 	public BBufferJson(ByteBuffer buf) {
 		super(BBinaryModel.MEDIUM, buf);
-		buf.order(ByteOrder.BIG_ENDIAN);
+		if (buf != null) {
+		  buf.order(ByteOrder.BIG_ENDIAN);
+		}
 	}
 	
 	public ByteBuffer getBuffer() {
