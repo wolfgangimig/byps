@@ -73,6 +73,11 @@ com.wilutions.byps.test.api.BClient_Testser = function(transportFactory) {
 		new com.wilutions.byps.test.api.BServer_Testser(transportFactory.createServerTransport())
 	);
 	
+	this.bioFruitService = new com.wilutions.byps.test.api.inherit.BStub_BioFruitService(this.transport);
+	this.bioLemonService = new com.wilutions.byps.test.api.inherit.BStub_BioLemonService(this.transport);
+	this.fruitService = new com.wilutions.byps.test.api.inherit.BStub_FruitService(this.transport);
+	this.lemonService = new com.wilutions.byps.test.api.inherit.BStub_LemonService(this.transport);
+	this.plantService = new com.wilutions.byps.test.api.inherit.BStub_PlantService(this.transport);
 	this.remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(this.transport);
 	this.remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(this.transport);
 	this.remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(this.transport);
@@ -579,6 +584,188 @@ com.wilutions.byps.test.api.cons.HebrewC = new com.wilutions.byps.test.api.cons.
 */
 
 /**
+ * This class provides a skeleton implementation of the interface BioFruitService.
+ * Use an object of this class as the prototype of your interface implementation.
+ * Either provide an asynchronous or a synchronous function in your implementation.
+ * The framework calls only the asynchronous function.
+ */
+com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService = function() {
+	
+	this._typeId = 1881829396;
+	
+	this.transport = null; // is set in BServer.addRemote
+	
+	this.toJSON = function (key) {
+		return { _typeId : 1881829396, targetId : this.transport.targetId };
+	};
+	
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.grow = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_grow = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.grow();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.certify = function(param) /* returns boolean , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_certify = function(param, __byps__asyncResult){
+	try {
+		var __byps__ret = this.certify(param);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.squeeze = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_squeeze = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.squeeze();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+/**
+ * This class provides a skeleton implementation of the interface BioLemonService.
+ * Use an object of this class as the prototype of your interface implementation.
+ * Either provide an asynchronous or a synchronous function in your implementation.
+ * The framework calls only the asynchronous function.
+ */
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService = function() {
+	
+	this._typeId = 1992245333;
+	
+	this.transport = null; // is set in BServer.addRemote
+	
+	this.toJSON = function (key) {
+		return { _typeId : 1992245333, targetId : this.transport.targetId };
+	};
+	
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.grow = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_grow = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.grow();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.pick = function(sess, fromTree) /* returns java.lang.String , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_pick = function(sess, fromTree, __byps__asyncResult){
+	try {
+		var __byps__ret = this.pick(sess, fromTree);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.useParing = function() /* returns int , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_useParing = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.useParing();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.certify = function(param) /* returns boolean , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_certify = function(param, __byps__asyncResult){
+	try {
+		var __byps__ret = this.certify(param);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.squeeze = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	com.wilutions.byps.throwUNSUPPORTED("");
+};
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_squeeze = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.squeeze();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+/**
  * This class provides a skeleton implementation of the interface RemoteWithAuthentication.
  * Use an object of this class as the prototype of your interface implementation.
  * Either provide an asynchronous or a synchronous function in your implementation.
@@ -830,6 +1017,210 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = f
 */
 
 /**
+ * @BClientRemote 
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BClientRemote 
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioFruitService = function(transport) {
+	
+	this._typeId = 1881829396;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioFruitService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1534230652 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioFruitService.prototype.certify = function(param, __byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 724361898, param : param };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 656804784 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+ * @BClientRemote 
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BClientRemote 
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioLemonService = function(transport) {
+	
+	this._typeId = 1992245333;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1534230652 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(fromTree, __byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1860602130, __byps__sess : 'sess', fromTree : fromTree };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.useParing = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1762089337 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.certify = function(param, __byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 724361898, param : param };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 656804784 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+*/
+com.wilutions.byps.test.api.inherit.BStub_FruitService = function(transport) {
+	
+	this._typeId = 506940662;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1534230652 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 656804784 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+*/
+com.wilutions.byps.test.api.inherit.BStub_LemonService = function(transport) {
+	
+	this._typeId = 617356599;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1534230652 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_LemonService.prototype.pick = function(fromTree, __byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1860602130, __byps__sess : 'sess', fromTree : fromTree };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_LemonService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 656804784 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+*/
+com.wilutions.byps.test.api.inherit.BStub_PlantService = function(transport) {
+	
+	this._typeId = 1117460801;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.inherit.BStub_PlantService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1534230652 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
  * Interface with functions using 1-dimensional arrays.
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transport) {
@@ -844,7 +1235,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transpo
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setBool = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 589253529, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -854,7 +1245,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setBool 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setByte = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 589243771, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -864,7 +1255,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setByte 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setChar = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 589230893, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -874,7 +1265,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setChar 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setShort = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1071498593, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -884,7 +1275,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setShort
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1265927470, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -894,7 +1285,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setInt =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setLong = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 588955655, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -904,7 +1295,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setLong 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setFloat = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1083385729, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -914,7 +1305,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setFloat
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDouble = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 720472590, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -924,7 +1315,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDoubl
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setString = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1154444878, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -934,7 +1325,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setStrin
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1765354225, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -944,7 +1335,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setPrimi
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setObject = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1023062396, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -954,7 +1345,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setObjec
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getBool = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1645604187 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -964,7 +1355,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getBool 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getByte = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1645613945 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -974,7 +1365,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getByte 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getChar = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1645626823 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -984,7 +1375,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getChar 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getShort = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 510386133 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -994,7 +1385,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getShort
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getInt = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1609477282 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1004,7 +1395,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getInt =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getLong = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1645902061 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1014,7 +1405,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getLong 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getFloat = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 522273269 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1024,7 +1415,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getFloat
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDouble = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 935089666 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1034,7 +1425,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDoubl
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getString = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1369061954 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1044,7 +1435,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getStrin
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 825201405 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1054,7 +1445,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getPrimi
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getObject = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1237679472 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1074,7 +1465,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1748523470, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1084,7 +1475,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArrays
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 607451410, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1094,7 +1485,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArrays
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1004457221, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1104,7 +1495,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArrays
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 738833892, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1114,7 +1505,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArrays
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 899462794, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1135,7 +1526,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transpo
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setBool = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 202005372, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1145,7 +1536,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setBool 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setByte = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 201995614, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1155,7 +1546,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setByte 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setChar = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 201982736, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1165,7 +1556,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setChar 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setShort = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1951707614, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1175,7 +1566,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setShort
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1933153045, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1185,7 +1576,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setInt =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setLong = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 201707498, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1195,7 +1586,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setLong 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setFloat = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1963594750, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1205,7 +1596,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setFloat
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDouble = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 796203285, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1215,7 +1606,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDoubl
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setString = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 362230997, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1225,7 +1616,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setStrin
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 710411500, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1235,7 +1626,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setPrimi
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setObject = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 493613479, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1245,7 +1636,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setObjec
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getBool = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2032852344 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1255,7 +1646,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getBool 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getByte = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2032862102 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1265,7 +1656,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getByte 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getChar = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2032874980 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1275,7 +1666,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getChar 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getShort = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1390595154 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1285,7 +1676,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getShort
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getInt = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1589603233 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1295,7 +1686,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getInt =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getLong = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2033150218 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1305,7 +1696,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getLong 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getFloat = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1402482290 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1315,7 +1706,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getFloat
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDouble = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 581586209 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1325,7 +1716,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDoubl
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getString = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 147613921 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1335,7 +1726,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getStrin
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1650564320 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1345,7 +1736,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getPrimi
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getObject = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 278996403 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1366,7 +1757,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteConstants = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteConstants.prototype.compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1570751625, ALEPH : ALEPH, BETH : BETH };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1376,7 +1767,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteConstants.prototype.compare_Hebre
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteConstants.prototype.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 862752254, bool1s : bool1s, bool2s : bool2s, char1s : char1s, stringNull : stringNull, char2s : char2s, short1s : short1s, int1s : int1s, long1s : long1s, float1s : float1s, double1s : double1s, string1s : string1s, ALL : ALL, arrInt : arrInt, arrInt4 : arrInt4, arrStrings : arrStrings, arrStrings4 : arrStrings4, arrAll : arrAll };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1396,7 +1787,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteEnums.prototype.getPlanet = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 627010462 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1406,7 +1797,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteEnums.prototype.getPlanet = funct
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteEnums.prototype.setPlanet = function(planet, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 412393386, planet : planet };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1426,7 +1817,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transpo
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setActor = function(act, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 299289599, act : act };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1436,7 +1827,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setActor
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getActor = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 261822861 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1446,7 +1837,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getActor
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray1dim = function(pointArray, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 531757758, pointArray : pointArray };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1456,7 +1847,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray1dim = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1011970102 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1466,7 +1857,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray4dim = function(pointArray, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 531668385, pointArray : pointArray };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1476,7 +1867,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray4dim = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1012059475 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1486,7 +1877,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DList = function(pointList, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 224357548, pointList : pointList };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1496,7 +1887,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DList = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1996093752 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1506,7 +1897,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DListList = function(pointListList, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1097161578, pointListList : pointListList };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1516,7 +1907,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DListList = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 177127926 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1526,7 +1917,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DMap = function(pointMap, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 546951282, pointMap : pointMap };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1536,7 +1927,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DMap = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1321082494 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1556,7 +1947,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1794077576 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1566,7 +1957,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getBoolean1 =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1882657404, boolean1 : boolean1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1576,7 +1967,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setBoolean1 =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1319541530 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1586,7 +1977,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 758429070, byte1 : byte1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1596,7 +1987,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getChar1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1319940748 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1606,7 +1997,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getChar1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 758828288, char1 : char1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1616,7 +2007,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setChar1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getShort1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1573024156 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1626,7 +2017,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getShort1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1787641232, short1 : short1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1636,7 +2027,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setShort1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 874047761 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1646,7 +2037,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1360809955, int1 : int1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1656,7 +2047,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getLong1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1328473126 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1666,7 +2057,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getLong1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 767360666, long1 : long1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1676,7 +2067,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setLong1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getFloat1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1941525372 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1686,7 +2077,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getFloat1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2138824848, float1 : float1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1696,7 +2087,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setFloat1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getDouble1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1741299407 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1706,7 +2097,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getDouble1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 195505829, double1 : double1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1716,7 +2107,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setDouble1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getString1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1173060367 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1726,7 +2117,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getString1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 763744869, string1 : string1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1736,7 +2127,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setString1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1940572240 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1746,7 +2137,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getPrimitiveT
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1434361404, primitiveTypes1 : primitiveTypes1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1756,7 +2147,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setPrimitiveT
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1319541531 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1766,7 +2157,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte2 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 758429071, byte2 : byte2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1776,7 +2167,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte2 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 874047762 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1786,7 +2177,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt2 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1360809954, int2 : int2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1796,7 +2187,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt2 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getObj1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 874214665 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1806,7 +2197,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getObj1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1360643051, obj1 : obj1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1816,7 +2207,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setObj1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt3 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 874047763 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1826,7 +2217,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt3 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt3 = function(int3, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1360809953, int3 : int3 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1836,7 +2227,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt3 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt4 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 874047764 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1846,7 +2237,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt4 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt4 = function(int4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1360809952, int4 : int4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1866,7 +2257,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 461626272 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1876,7 +2267,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getBoolean1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 550206100, boolean1 : boolean1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1886,7 +2277,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setBoolean1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1348711374 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1896,7 +2287,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1909823834, byte1 : byte1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1906,7 +2297,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getChar1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1348312156 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1916,7 +2307,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getChar1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1909424616, char1 : char1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1926,7 +2317,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setChar1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getShort1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1610481740 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1936,7 +2327,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getShort1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1395864664, short1 : short1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1946,7 +2337,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setShort1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1013140231 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1956,7 +2347,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt1 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1046969349, int1 : int1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1966,7 +2357,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt1 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getLong1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1339779778 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1976,7 +2367,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getLong1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1900892238, long1 : long1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1986,7 +2377,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setLong1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getFloat1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1241980524 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -1996,7 +2387,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getFloat1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1027363448, float1 : float1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2006,7 +2397,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setFloat1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDouble1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1836864439 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2016,7 +2407,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDouble1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 99940797, double1 : double1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2026,7 +2417,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDouble1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getString1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1268625399 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2036,7 +2427,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getString1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 668179837, string1 : string1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2046,7 +2437,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setString1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 77071512 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2056,7 +2447,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getPrimitiveTy
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 842962140, primitiveTypes1 : primitiveTypes1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2066,7 +2457,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setPrimitiveTy
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1348711373 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2076,7 +2467,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte2 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1909823833, byte2 : byte2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2086,7 +2477,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte2 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1013140230 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2096,7 +2487,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt2 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1046969350, int2 : int2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2106,7 +2497,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt2 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getObj1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1012973327 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2116,7 +2507,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getObj1 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1047136253, obj1 : obj1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2136,7 +2527,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transpo
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.voidFunctionVoid = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1856936054 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2146,7 +2537,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.voidFunc
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setBool = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 143860510, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2156,7 +2547,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setBool 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setByte = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 143850752, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2166,7 +2557,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setByte 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setChar = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 143837874, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2176,7 +2567,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setChar 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setShort = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 149216892, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2186,7 +2577,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setShort
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 974465289, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2196,7 +2587,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setInt =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setLong = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 143562636, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2206,7 +2597,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setLong 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setFloat = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 161104028, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2216,7 +2607,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setFloat
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDouble = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 753565751, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2226,7 +2617,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDoubl
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setString = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 319593463, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2236,7 +2627,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setStrin
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 941809610, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2246,7 +2637,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setPrimi
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setObject = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 450975945, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2256,7 +2647,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setObjec
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getBool = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2090997206 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2266,7 +2657,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getBool 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getByte = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2091006964 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2276,7 +2667,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getByte 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getChar = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2091019842 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2286,7 +2677,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getChar 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getShort = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 411895568 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2296,7 +2687,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getShort
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getInt = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1318015101 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2306,7 +2697,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getInt =
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getLong = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2091295080 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2316,7 +2707,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getLong 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getFloat = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 400008432 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2326,7 +2717,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getFloat
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDouble = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 538948675 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2336,7 +2727,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDoubl
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getString = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 104976387 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2346,7 +2737,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getStrin
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1881962430 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2356,7 +2747,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getPrimi
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getObject = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 236358869 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2366,7 +2757,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getObjec
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1794219594, b : b, c : c, s : s, i : i, l : l, f : f, d : d, str : str, pt : pt, o : o };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2376,7 +2767,7 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllT
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.add = function(a, b, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1073583639, a : a, b : b };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2396,7 +2787,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteReferences = function(transport) 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteReferences.prototype.getNode = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 655936732 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2406,7 +2797,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteReferences.prototype.getNode = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteReferences.prototype.setNode = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1404172848, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2426,7 +2817,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl = function(transport) 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1776814809, name : name, remote : remote, fowardToOtherServers : fowardToOtherServers };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2436,7 +2827,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.publishRemot
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.getPublishedRemote = function(name, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1216543212, name : name };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2446,7 +2837,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.getPublished
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.removePublishedRemote = function(name, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1302703010, name : name };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2466,7 +2857,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1690813926 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2476,7 +2867,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getBoolean1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1779393754, boolean1 : boolean1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2486,7 +2877,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setBoolean1 = 
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2125684552 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2496,7 +2887,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1608170284, byte1 : byte1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2506,7 +2897,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getChar1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2125285334 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2516,7 +2907,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getChar1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1608569502, char1 : char1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2526,7 +2917,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setChar1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getShort1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1000850298 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2536,7 +2927,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getShort1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1215467374, short1 : short1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2546,7 +2937,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setShort1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 68372557 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2556,7 +2947,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt1 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1991737023, int1 : int1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2566,7 +2957,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt1 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getLong1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2116752956 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2576,7 +2967,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getLong1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1617101880, long1 : long1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2586,7 +2977,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setLong1 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getFloat1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1369351514 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2596,7 +2987,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getFloat1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1583968590, float1 : float1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2606,7 +2997,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setFloat1 = fu
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDouble1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1183778993 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2616,7 +3007,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDouble1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 753026243, double1 : double1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2626,7 +3017,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDouble1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getString1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 615539953 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2636,7 +3027,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getString1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1321265283, string1 : string1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2646,7 +3037,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setString1 = f
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1802821742 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2656,7 +3047,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getPrimitiveTy
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1572111902, primitiveTypes1 : primitiveTypes1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2666,7 +3057,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setPrimitiveTy
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2125684551 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2676,7 +3067,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte2 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1608170285, byte2 : byte2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2686,7 +3077,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte2 = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 68372556 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2696,7 +3087,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt2 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1991737024, int2 : int2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2706,7 +3097,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt2 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getObj1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 68205653 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2716,7 +3107,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getObj1 = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1991903927, obj1 : obj1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2736,7 +3127,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getImage = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1902276204 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2746,7 +3137,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getImage = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.setImage = function(istrm, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1831578632, istrm : istrm };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2756,7 +3147,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.setImage = func
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getImages = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1158979935 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2766,7 +3157,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getImages = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 944362859, istrms : istrms, doNotReadStreamAtKey : doNotReadStreamAtKey };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2776,7 +3167,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.setImages = fun
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.throwLastException = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2047657918 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2786,7 +3177,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.throwLastExcept
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1083407988 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2814,7 +3205,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(tra
  * @throws RemoteException
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setUseAuthentication = function(useAuth, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1785294043, useAuth : useAuth };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2831,7 +3222,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setU
  * @throws RemoteException
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.login = function(userName, userPwd, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 839695851, __byps__sess : 'sess', userName : userName, userPwd : userPwd };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2846,7 +3237,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.logi
  * @throws RemoteException
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.doit = function(value, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 388793292, __byps__sess : 'sess', value : value };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2859,7 +3250,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.doit
  * @throws RemoteException
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.expire = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 68943581, __byps__sess : 'sess' };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2873,7 +3264,7 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.expi
  * @throws RemoteException
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setReloginCount = function(count, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 20608797, count : count };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2895,7 +3286,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.incrementInt = function(a, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1461829915, a : a };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2905,7 +3296,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.incrementInt = functio
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.getStreams = function(ctrl, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 865920738, ctrl : ctrl };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2915,7 +3306,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.getStreams = function(
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.putStreams = function(strm, ctrl, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 242798857, strm : strm, ctrl : ctrl };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2925,7 +3316,7 @@ com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.putStreams = function(
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.sendChat = function(cs, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1352392091, cs : cs };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2945,7 +3336,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.callClientIncrementInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1252575894, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2955,7 +3346,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.callClientIncrementInt
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.setPartner = function(client, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1188403123, client : client };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2965,7 +3356,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.setPartner = function(
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getPartner = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 748402113 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2975,7 +3366,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getPartner = function(
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1415283169 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2985,7 +3376,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient =
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.putStreamsOnClient = function(streams, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1367013829, streams : streams };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -2995,7 +3386,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.putStreamsOnClient = f
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.registerWithClientMap = function(id, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1921080901, id : id };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3005,7 +3396,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.registerWithClientMap 
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getClient = function(id, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2107407220, id : id };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3015,7 +3406,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getClient = function(i
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getClientIds = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2063368540 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3025,7 +3416,7 @@ com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getClientIds = functio
 /**
 */
 com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.callClientParallel = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1340180893, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3045,7 +3436,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
 /**
 */
 com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.setEvolve = function(obj, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 246658450, obj : obj };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3055,7 +3446,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.setEvolve = function(ob
 /**
 */
 com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.getEvolve = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 32041374 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3065,7 +3456,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.getEvolve = function(__
 /**
 */
 com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.setClient = function(partner, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 313337668, partner : partner };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3075,7 +3466,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.setClient = function(pa
 /**
 */
 com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.getClient = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 98720592 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3085,7 +3476,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.getClient = function(__
 /**
 */
 com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.sendEvolveToClient = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:39
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1425170268 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
@@ -3104,6 +3495,61 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 	this._remotes = {};
 	
 	this._methodMap = {
+		
+		// Remote Interface BioFruitService			
+			// Method certify
+			724361898 : [ // _typeId of request class
+				1881829396, // _typeId of remote interface
+				148544162, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_certify(methodObj.param, methodResult);
+				}
+			],
+		
+		
+		// Remote Interface BioLemonService			
+			// Method useParing
+			1762089337 : [ // _typeId of request class
+				1992245333, // _typeId of remote interface
+				148544158, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_useParing(methodResult);
+				}
+			],
+		
+		
+		// Remote Interface FruitService			
+			// Method squeeze
+			656804784 : [ // _typeId of request class
+				506940662, // _typeId of remote interface
+				309901678, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_squeeze(methodResult);
+				}
+			],
+		
+		
+		// Remote Interface LemonService			
+			// Method pick
+			1860602130 : [ // _typeId of request class
+				617356599, // _typeId of remote interface
+				309901678, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_pick(methodObj.sess, methodObj.fromTree, methodResult);
+				}
+			],
+		
+		
+		// Remote Interface PlantService			
+			// Method grow
+			1534230652 : [ // _typeId of request class
+				1117460801, // _typeId of remote interface
+				309901678, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_grow(methodResult);
+				}
+			],
+		
 		
 		// Remote Interface RemoteArrayTypes1dim			
 			// Method setBool
@@ -6749,6 +7195,79 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			// inlineInstance
 			false
 		),
+		
+		// com.wilutions.byps.test.api.inherit.BRequest_BioFruitService_certify
+		724361898 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"param":10 // java.lang.String
+			},
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.inherit.BRequest_BioLemonService_useParing
+		1762089337 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.inherit.BRequest_FruitService_squeeze
+		656804784 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.inherit.BRequest_LemonService_pick
+		1860602130 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"sess":65775978, // com.wilutions.byps.test.api.auth.SessionInfo
+				// names of persistent elements
+				"fromTree":10 // java.lang.String
+			},
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.inherit.BRequest_PlantService_grow
+		1534230652 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.inherit.BStub_BioFruitService
+		1881829396 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_BioFruitService),
+		
+		// com.wilutions.byps.test.api.inherit.BStub_BioLemonService
+		1992245333 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_BioLemonService),
+		
+		// com.wilutions.byps.test.api.inherit.BStub_FruitService
+		506940662 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_FruitService),
+		
+		// com.wilutions.byps.test.api.inherit.BStub_LemonService
+		617356599 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_LemonService),
+		
+		// com.wilutions.byps.test.api.inherit.BStub_PlantService
+		1117460801 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_PlantService),
 		
 		// com.wilutions.byps.test.api.inherit.Class1
 		6001 : new com.wilutions.byps.BSerializer(

@@ -33,6 +33,31 @@ public class BServer_Testser extends BServer {
 		);
 	}
 	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) {
+		addRemote(1881829396, remoteSkeleton);
+		return this;
+	}
+	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) {
+		addRemote(1992245333, remoteSkeleton);
+		return this;
+	}
+	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_FruitService remoteSkeleton) {
+		addRemote(506940662, remoteSkeleton);
+		return this;
+	}
+	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_LemonService remoteSkeleton) {
+		addRemote(617356599, remoteSkeleton);
+		return this;
+	}
+	
+	public BServer_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_PlantService remoteSkeleton) {
+		addRemote(1117460801, remoteSkeleton);
+		return this;
+	}
+	
 	public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim remoteSkeleton) {
 		addRemote(1557084481, remoteSkeleton);
 		return this;

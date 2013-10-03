@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemoteInlineInstance : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteInlineInstance : BRemote {
+	
 		void SetActor(com.wilutions.byps.test.api.inl.Actor act);
 		void SetActorAsync(com.wilutions.byps.test.api.inl.Actor act, BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginSetActor(com.wilutions.byps.test.api.inl.Actor act, AsyncCallback callback, object state);

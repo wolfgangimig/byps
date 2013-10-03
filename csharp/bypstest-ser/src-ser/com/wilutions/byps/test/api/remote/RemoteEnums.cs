@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemoteEnums : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteEnums : BRemote {
+	
 		com.wilutions.byps.test.api.enu.EnumPlanets GetPlanet();
 		void GetPlanetAsync(BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) ;
 		IAsyncResult BeginGetPlanet(AsyncCallback callback, object state);

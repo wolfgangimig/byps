@@ -7,40 +7,40 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:164
 public class BStub_RemoteEnums extends BStub implements RemoteEnumsAsync, java.io.Serializable {
 	
-	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:145
 	public final static long serialVersionUID = 359349400L;
 	
 	public BStub_RemoteEnums(final BTransport transport) {
 		super(transport);		
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public com.wilutions.byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult = new BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets>();		
 		getPlanet(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getPlanet(final BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteEnums_getPlanet req = new BRequest_RemoteEnums_getPlanet();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setPlanet(planet, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();		
 		req.planet = planet;
 		transport.sendMethod(req, asyncResult);

@@ -7,40 +7,40 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:164
 public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsync, java.io.Serializable {
 	
-	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:145
 	public final static long serialVersionUID = 2086824050L;
 	
 	public BStub_RemoteReferences(final BTransport transport) {
 		super(transport);		
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public com.wilutions.byps.test.api.refs.Node getNode() throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult = new BSyncResult<com.wilutions.byps.test.api.refs.Node>();		
 		getNode(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setNode(com.wilutions.byps.test.api.refs.Node v) throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setNode(v, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();		
 		req.v = v;
 		transport.sendMethod(req, asyncResult);

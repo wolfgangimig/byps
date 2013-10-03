@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemotePrimitiveTypes : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemotePrimitiveTypes : BRemote {
+	
 		void VoidFunctionVoid();
 		void VoidFunctionVoidAsync(BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginVoidFunctionVoid(AsyncCallback callback, object state);

@@ -629,6 +629,18 @@ public class PrintContext extends PrintContextBase {
 		log.info("Classes for binary serialization: " + dirSerBin);
 	}
 
+  public RemoteInfo getBaseRemoteForStub(RemoteInfo rinfo) {
+    RemoteInfo baseRemote = rinfo.getRemoteAuth();
+    if (baseRemote == null) baseRemote = rinfo;
+    return baseRemote;
+  }
+
+  public RemoteInfo getBaseRemoteForSkeleton(RemoteInfo rinfo) {
+    RemoteInfo baseRemote = rinfo.getRemoteNoAuth();
+    return baseRemote;
+  }
+
+
 	private Log log = LogFactory.getLog(PrintContext.class);
 
 }

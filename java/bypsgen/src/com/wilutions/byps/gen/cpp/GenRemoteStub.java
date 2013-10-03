@@ -1,6 +1,7 @@
 package com.wilutions.byps.gen.cpp;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,7 +32,8 @@ class GenRemoteStub {
 		this.baseCppInfo = cppInfo.getBaseInfo();
 		this.prH = pctxt.getPrApiAllH();
 		this.prC = pctxt.getPrImplC();
-		this.rinfo = pctxt.getRemoteBaseForStub(rinfo);
+		
+    this.rinfo = pctxt.getBaseRemoteForStub(rinfo);
 	}
 	
 	private void printMethod(MethodInfo methodInfo) throws IOException {
@@ -278,7 +280,7 @@ class GenRemoteStub {
 		prH.println();
 		
 		prH.print("class ").print(className)
-			.print(" : public BStub, public ").print(rinfo.name)
+			.print(" : public BStub, public virtual ").print(rinfo.name)
 			.print(" {");
 		prH.println();
 		
@@ -289,11 +291,11 @@ class GenRemoteStub {
 		
 		pctxt.print_BSerializable_getTypeId(rinfo, prH);
 		
-		for (MethodInfo minfo : rinfo.methods) {
-			printMethod(minfo);
-			printMethodAsync(minfo);
-			prH.println();
-		}
+    HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
+    pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
+    for (RemoteInfo r : remotes.values()) {
+      printMethods(r);
+    }
 		
 		prH.println();
 		
@@ -310,6 +312,15 @@ class GenRemoteStub {
 		
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
+
+  private void printMethods(RemoteInfo rinfoImpl) throws IOException {
+    
+    for (MethodInfo minfo : rinfoImpl.methods) {
+      printMethod(minfo);
+      printMethodAsync(minfo);
+      prH.println();
+    }
+  }
 
 	private void printConstructor() {
 		String className = cppInfo.getClassName(rinfo.pack);

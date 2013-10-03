@@ -3,6 +3,255 @@ using namespace ::std;
 using namespace ::com::wilutions::byps;
 
 
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+BStub_RemoteStreams::BStub_RemoteStreams(PTransport transport) 
+	: BStub(transport) {}
+
+PContentStream BStub_RemoteStreams::getImage()  {
+	BSyncResultT< PContentStream > syncResult;	
+	getImage([&syncResult](PContentStream v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteStreams::getImage(::std::function< void (PContentStream, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteStreams_getImage());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PContentStream, com::wilutions::byps::test::api::BResult_15 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_RemoteStreams::setImage(PContentStream istrm)  {
+	BSyncResultT< bool > syncResult;	
+	setImage(istrm, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteStreams::setImage(PContentStream istrm, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteStreams_setImage(istrm));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+byps_ptr< ::std::map< int32_t , PContentStream > > BStub_RemoteStreams::getImages()  {
+	BSyncResultT< byps_ptr< ::std::map< int32_t , PContentStream > > > syncResult;	
+	getImages([&syncResult](byps_ptr< ::std::map< int32_t , PContentStream > > v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteStreams::getImages(::std::function< void (byps_ptr< ::std::map< int32_t , PContentStream > >, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteStreams_getImages());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::map< int32_t , PContentStream > >, com::wilutions::byps::test::api::BResult_476459792 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_RemoteStreams::setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey)  {
+	BSyncResultT< bool > syncResult;	
+	setImages(istrms, doNotReadStreamAtKey, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteStreams::setImages(byps_ptr< ::std::map< int32_t , PContentStream > > istrms, int32_t doNotReadStreamAtKey, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteStreams_setImages(istrms, doNotReadStreamAtKey));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_RemoteStreams::throwLastException()  {
+	BSyncResultT< bool > syncResult;	
+	throwLastException([&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteStreams::throwLastException(::std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteStreams_throwLastException());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+PContentStream BStub_RemoteStreams::getTextStream()  {
+	BSyncResultT< PContentStream > syncResult;	
+	getTextStream([&syncResult](PContentStream v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteStreams::getTextStream(::std::function< void (PContentStream, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteStreams_getTextStream());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PContentStream, com::wilutions::byps::test::api::BResult_15 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:225
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_2028487863(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteStreams(transport));
+	}
+	else {
+		com::wilutions::byps::test::api::remote::RemoteStreams* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteStreams*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}}}
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+void BSkeleton_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		setUseAuthentication(useAuth);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+com::wilutions::byps::test::api::auth::PSessionInfo BSkeleton_RemoteWithAuthentication::login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::login(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::wstring userName, ::std::wstring userPwd, ::std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
+	com::wilutions::byps::test::api::auth::PSessionInfo ret = com::wilutions::byps::test::api::auth::PSessionInfo();
+	try {
+		ret = login(sess, userName, userPwd);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+int32_t BSkeleton_RemoteWithAuthentication::doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::doit(com::wilutions::byps::test::api::auth::PSessionInfo sess, int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  {
+	int32_t ret = int32_t();
+	try {
+		ret = doit(sess, value);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_RemoteWithAuthentication::expire(com::wilutions::byps::test::api::auth::PSessionInfo sess)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::expire(com::wilutions::byps::test::api::auth::PSessionInfo sess, ::std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		expire(sess);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+void BSkeleton_RemoteWithAuthentication::setReloginCount(int32_t count)  {
+	throw BException(EX_UNSUPPORTED_METHOD, L"");
+}
+void BSkeleton_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult)  {
+	bool ret = false;
+	try {
+		setReloginCount(count);
+		asyncResult(ret, BException());
+	} catch (const std::exception& ex) {
+		asyncResult(ret, ex);
+	}
+}
+}}}}}}
+
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+BStub_RemoteWithAuthentication::BStub_RemoteWithAuthentication(PTransport transport) 
+	: BStub(transport) {}
+
+void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
+	BSyncResultT< bool > syncResult;	
+	setUseAuthentication(useAuth, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_setUseAuthentication(useAuth));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+com::wilutions::byps::test::api::auth::PSessionInfo BStub_RemoteWithAuthentication::login(::std::wstring userName, ::std::wstring userPwd)  {
+	BSyncResultT< com::wilutions::byps::test::api::auth::PSessionInfo > syncResult;	
+	login(userName, userPwd, [&syncResult](com::wilutions::byps::test::api::auth::PSessionInfo v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::login(::std::wstring userName, ::std::wstring userPwd, ::std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_login(userName, userPwd));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< com::wilutions::byps::test::api::auth::PSessionInfo, com::wilutions::byps::test::api::BResult_65775978 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+int32_t BStub_RemoteWithAuthentication::doit(int32_t value)  {
+	BSyncResultT< int32_t > syncResult;	
+	doit(value, [&syncResult](int32_t v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::doit(int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_doit(value));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, com::wilutions::byps::test::api::BResult_5 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_RemoteWithAuthentication::expire()  {
+	BSyncResultT< bool > syncResult;	
+	expire([&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::expire(::std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_expire());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+void BStub_RemoteWithAuthentication::setReloginCount(int32_t count)  {
+	BSyncResultT< bool > syncResult;	
+	setReloginCount(count, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemoteWithAuthentication_setReloginCount(count));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
+}}}}}}
+
+// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:225
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1677934392(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication(transport));
+	}
+	else {
+		com::wilutions::byps::test::api::remote::RemoteWithAuthenticationAuth* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteWithAuthenticationAuth*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}}}
+
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
 
 int32_t BSkeleton_ClientIF::incrementInt(int32_t a)  {
@@ -111,7 +360,7 @@ void BStub_ClientIF::sendChat(PChatStructure cs, ::std::function< void (PChatStr
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:223
+// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:225
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1784257353(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
@@ -245,7 +494,7 @@ void BStub_ServerIF::callClientParallel(int32_t v, ::std::function< void (int32_
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:223
+// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:225
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1313562065(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
@@ -331,7 +580,7 @@ void BStub_EvolveIF::sendEvolveToClient(::std::function< void (bool, BException 
 }
 }}}}}}
 
-// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:223
+// checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:225
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_2078696281(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
@@ -463,6 +712,16 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(BArray1< com::wilutions::byps::test::api::cons::PHebrewZ > ), com::wilutions::byps::test::api::BSerializer_2092671091, 2092671091);
 	registerClass(typeid(BArray1< com::wilutions::byps::test::api::enu::EnumPlanets > ), com::wilutions::byps::test::api::BSerializer_1092048313, 1092048313);
 	registerClass(typeid(com::wilutions::byps::test::api::enu::UsePlanets), com::wilutions::byps::test::api::BSerializer_10000, 10000);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BRequest_BioFruitService_certify), com::wilutions::byps::test::api::BSerializer_724361898, 724361898);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BRequest_BioLemonService_useParing), com::wilutions::byps::test::api::BSerializer_1762089337, 1762089337);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BRequest_FruitService_squeeze), com::wilutions::byps::test::api::BSerializer_656804784, 656804784);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BRequest_LemonService_pick), com::wilutions::byps::test::api::BSerializer_1860602130, 1860602130);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BRequest_PlantService_grow), com::wilutions::byps::test::api::BSerializer_1534230652, 1534230652);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BStub_BioFruitService), com::wilutions::byps::test::api::BSerializer_1881829396, 1881829396);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BStub_BioLemonService), com::wilutions::byps::test::api::BSerializer_1992245333, 1992245333);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BStub_FruitService), com::wilutions::byps::test::api::BSerializer_506940662, 506940662);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BStub_LemonService), com::wilutions::byps::test::api::BSerializer_617356599, 617356599);
+	registerClass(typeid(com::wilutions::byps::test::api::inherit::BStub_PlantService), com::wilutions::byps::test::api::BSerializer_1117460801, 1117460801);
 	registerClass(typeid(com::wilutions::byps::test::api::inherit::Class1), com::wilutions::byps::test::api::BSerializer_6001, 6001);
 	registerClass(typeid(com::wilutions::byps::test::api::inherit::Class1Collections), com::wilutions::byps::test::api::BSerializer_6004, 6004);
 	registerClass(typeid(com::wilutions::byps::test::api::inherit::Class2), com::wilutions::byps::test::api::BSerializer_6002, 6002);

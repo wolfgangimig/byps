@@ -29,9 +29,6 @@ public class BServer {
   public void setTargetId(BTargetId targetId) {
     transport.setTargetId(targetId);
     if (clientR != null) clientR.transport.setTargetId(targetId);
-    for (BSkeleton remote : remotes.values()) {
-      remote.BSkeleton_setTargetId(targetId);
-    }
   }
   
   public BTargetId getTargetId() {
@@ -41,7 +38,6 @@ public class BServer {
 	public void addRemote(int remoteId, BSkeleton remoteImpl) {
 		if (remoteImpl != null) {
 			remotes.put(remoteId, remoteImpl);
-			remoteImpl.BSkeleton_setTargetId(transport.getTargetId());
 		}
 	}
 	

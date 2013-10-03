@@ -1,6 +1,7 @@
 package com.wilutions.byps.gen.js;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -86,13 +87,25 @@ class GenRemoteStub {
 		pr.println("};");
 		pr.println();
 
-    for (MethodInfo minfo : rinfo.methods) {
+    HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
+    pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
+    for (RemoteInfo r : remotes.values()) {
+      printMethods(r);
+    }
+		
+		//log.debug(GeneratorJ.class.getName(), "generate");
+	}
+
+  private void printMethods(RemoteInfo rinfo) throws IOException {
+    
+    RemoteInfo rinfoImpl = rinfo.getRemoteInfoAuthOrAsync();
+    
+    for (MethodInfo minfo : rinfoImpl.methods) {
       printMethod(minfo);
       pr.println();
     }
     
-		//log.debug(GeneratorJ.class.getName(), "generate");
-	}
+  }
 
 	private void printSerialVersionUID() {
 		//log.debug(GenApiClass.class.getName(), "printSerialVersionUID");

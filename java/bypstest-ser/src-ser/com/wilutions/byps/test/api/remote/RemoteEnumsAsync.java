@@ -7,21 +7,21 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:64
-public interface RemoteEnumsAsync extends RemoteEnums, BRemote {
-
+// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:68
+public interface RemoteEnumsAsync extends BRemote, 
+	RemoteEnums {
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public com.wilutions.byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getPlanet(final BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) ;
 	
 	

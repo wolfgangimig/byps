@@ -7,84 +7,84 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:164
 public class BStub_EvolveIF extends BStub implements EvolveIFAsync, java.io.Serializable {
 	
-	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:145
 	public final static long serialVersionUID = 2078696281L;
 	
 	public BStub_EvolveIF(final BTransport transport) {
 		super(transport);		
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setEvolve(Evolve obj) throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setEvolve(obj, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();		
 		req.obj = obj;
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public Evolve getEvolve() throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Evolve> asyncResult = new BSyncResult<Evolve>();		
 		getEvolve(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getEvolve(final BAsyncResult<Evolve> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_EvolveIF_getEvolve req = new BRequest_EvolveIF_getEvolve();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setClient(EvolveIF partner) throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setClient(partner, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();		
 		req.partner = partner;
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public EvolveIF getClient() throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<EvolveIF> asyncResult = new BSyncResult<EvolveIF>();		
 		getClient(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getClient(final BAsyncResult<EvolveIF> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_EvolveIF_getClient req = new BRequest_EvolveIF_getClient();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void sendEvolveToClient() throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		sendEvolveToClient(asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void sendEvolveToClient(final BAsyncResult<Object> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_EvolveIF_sendEvolveToClient req = new BRequest_EvolveIF_sendEvolveToClient();		
 		transport.sendMethod(req, asyncResult);
 	}

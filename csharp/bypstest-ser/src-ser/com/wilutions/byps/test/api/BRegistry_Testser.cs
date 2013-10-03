@@ -229,6 +229,26 @@ namespace com.wilutions.byps.test.api
 			if (typeId == 1092048313) return com.wilutions.byps.test.api.BSerializer_1092048313.instance;
 			// com.wilutions.byps.test.api.enu.UsePlanets
 			if (typeId == 10000) return com.wilutions.byps.test.api.enu.BSerializer_10000.instance;
+			// com.wilutions.byps.test.api.inherit.BRequest_BioFruitService_certify
+			if (typeId == 724361898) return com.wilutions.byps.test.api.inherit.BSerializer_724361898.instance;
+			// com.wilutions.byps.test.api.inherit.BRequest_BioLemonService_useParing
+			if (typeId == 1762089337) return com.wilutions.byps.test.api.inherit.BSerializer_1762089337.instance;
+			// com.wilutions.byps.test.api.inherit.BRequest_FruitService_squeeze
+			if (typeId == 656804784) return com.wilutions.byps.test.api.inherit.BSerializer_656804784.instance;
+			// com.wilutions.byps.test.api.inherit.BRequest_LemonService_pick
+			if (typeId == 1860602130) return com.wilutions.byps.test.api.inherit.BSerializer_1860602130.instance;
+			// com.wilutions.byps.test.api.inherit.BRequest_PlantService_grow
+			if (typeId == 1534230652) return com.wilutions.byps.test.api.inherit.BSerializer_1534230652.instance;
+			// com.wilutions.byps.test.api.inherit.BStub_BioFruitService
+			if (typeId == 1881829396) return com.wilutions.byps.test.api.inherit.BSerializer_1881829396.instance;
+			// com.wilutions.byps.test.api.inherit.BStub_BioLemonService
+			if (typeId == 1992245333) return com.wilutions.byps.test.api.inherit.BSerializer_1992245333.instance;
+			// com.wilutions.byps.test.api.inherit.BStub_FruitService
+			if (typeId == 506940662) return com.wilutions.byps.test.api.inherit.BSerializer_506940662.instance;
+			// com.wilutions.byps.test.api.inherit.BStub_LemonService
+			if (typeId == 617356599) return com.wilutions.byps.test.api.inherit.BSerializer_617356599.instance;
+			// com.wilutions.byps.test.api.inherit.BStub_PlantService
+			if (typeId == 1117460801) return com.wilutions.byps.test.api.inherit.BSerializer_1117460801.instance;
 			// com.wilutions.byps.test.api.inherit.Class1
 			if (typeId == 6001) return com.wilutions.byps.test.api.inherit.BSerializer_6001.instance;
 			// com.wilutions.byps.test.api.inherit.Class1Collections

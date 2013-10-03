@@ -18,11 +18,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 	
 	public final static long serialVersionUID = 1124545992L;
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) {
 		try {
 			publishRemote(name, remote, fowardToOtherServers);
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) {
 		try {
 			BRemote ret = getPublishedRemote(name);
@@ -46,11 +46,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void removePublishedRemote(java.lang.String name) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) {
 		try {
 			removePublishedRemote(name);

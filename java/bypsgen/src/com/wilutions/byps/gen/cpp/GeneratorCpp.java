@@ -32,17 +32,40 @@ public class GeneratorCpp implements Generator {
   }
 
   private void printRemotes(Collection<RemoteInfo> remotes) throws IOException {
-    for (RemoteInfo rinfo : remotes) {
+    
+    ArrayList<RemoteInfo> sarr = sortRemotesByInheritance(remotes);
+    
+    for (RemoteInfo rinfo : sarr) {
       GenApiClassFwd.generate(pctxt, rinfo);
       GenApiClassFwd.generate(pctxt, rinfo.getRemoteAuth());
     }
 
-    for (RemoteInfo rinfo : remotes) {
+    for (RemoteInfo rinfo : sarr) {
       GenRemoteClass.generate(pctxt, rinfo.getRemoteNoAuth());
-      GenRemoteClass.generate(pctxt, rinfo.getRemoteAuth());
+      GenRemoteClassAuth.generate(pctxt, rinfo.getRemoteAuth());
       GenRemoteSkeleton.generate(pctxt, rinfo);
       GenRemoteStub.generate(pctxt, rinfo);
     }
+  }
+  
+  private ArrayList<RemoteInfo> sortRemotesByInheritance(Collection<RemoteInfo> arr) {
+    ArrayList<RemoteInfo> sarr = new ArrayList<RemoteInfo>();
+    for (RemoteInfo r : arr) {
+      int inserIdx = sarr.size();
+      for (int i = 0; i < sarr.size(); i++) {
+        RemoteInfo rs = sarr.get(i);
+        if (rs.baseQNames.contains(r.qname)) {
+          inserIdx = i;
+          break;
+        }
+      }
+      sarr.add(inserIdx, r);
+    }
+    return sarr;
+  }
+
+  private ArrayList<SerialInfo> sortSerialsByInheritance(Collection<SerialInfo> arr) {
+    return new ArrayList<SerialInfo>(arr);
   }
 
   private boolean isUsedBy_TypeInfo(TypeInfo tinfo, TypeInfo tinfo2) {
@@ -75,11 +98,13 @@ public class GeneratorCpp implements Generator {
 
   protected void printSerials(Collection<SerialInfo> serials) throws IOException {
 
+    ArrayList<SerialInfo> sarr = sortSerialsByInheritance(serials);
+    
     // Klassen so sortieren, dass die Inline-Klassen zuerst kommen.
     // Dabei muss eine Inline-Klasse, die in einer anderen verwendet wird,
     // vor der anderen einsortiert werden.
-    ArrayList<SerialInfo> arr = new ArrayList<SerialInfo>(serials.size());
-    for (SerialInfo sinfo : serials) {
+    ArrayList<SerialInfo> arr = new ArrayList<SerialInfo>(sarr.size());
+    for (SerialInfo sinfo : sarr) {
       int idx = findInsertPosForSerialInfo(sinfo, arr);
       arr.add(idx, sinfo);
     }

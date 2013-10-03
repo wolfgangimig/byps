@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemoteArrayTypes23 : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteArrayTypes23 : BRemote {
+	
 		int[] SendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4);
 		void SendArraysIntAsync(int[,] arr2, int[,,] arr3, int[,,,] arr4, BAsyncResult<int[]> asyncResult) ;
 		IAsyncResult BeginSendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4, AsyncCallback callback, object state);

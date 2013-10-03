@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemoteStreams : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteStreams : BRemote {
+	
 		System.IO.Stream GetImage();
 		void GetImageAsync(BAsyncResult<System.IO.Stream> asyncResult) ;
 		IAsyncResult BeginGetImage(AsyncCallback callback, object state);

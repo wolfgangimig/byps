@@ -18,11 +18,11 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	
 	public final static long serialVersionUID = 2028487863L;
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public java.io.InputStream getImage() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getImage(final BAsyncResult<java.io.InputStream> asyncResult) {
 		try {
 			java.io.InputStream ret = getImage();
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setImage(java.io.InputStream istrm) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setImage(java.io.InputStream istrm, final BAsyncResult<Object> asyncResult) {
 		try {
 			setImage(istrm);
@@ -46,11 +46,11 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public java.util.TreeMap<java.lang.Integer,java.io.InputStream> getImages() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getImages(final BAsyncResult<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> asyncResult) {
 		try {
 			java.util.TreeMap<java.lang.Integer,java.io.InputStream> ret = getImages();
@@ -60,11 +60,11 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey, final BAsyncResult<Object> asyncResult) {
 		try {
 			setImages(istrms, doNotReadStreamAtKey);
@@ -74,11 +74,11 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void throwLastException() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void throwLastException(final BAsyncResult<Object> asyncResult) {
 		try {
 			throwLastException();
@@ -88,11 +88,11 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public java.io.InputStream getTextStream() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getTextStream(final BAsyncResult<java.io.InputStream> asyncResult) {
 		try {
 			java.io.InputStream ret = getTextStream();

@@ -15,7 +15,10 @@ public class BSerializer_16 extends BSerializer {
 	public void write(final Object obj, final BOutput bout1, final long version) throws BException {
 		final BOutputBin bout = ((BOutputBin)bout1);
 		final BRemote remote = (BRemote)obj;
-		final BTargetId targetId = remote.BRemote_getTargetId();
+		BTargetId targetId = remote.BRemote_getTargetId();
+		if (targetId == null) {
+		  targetId = bout1.transport.getTargetId();
+		}
 		targetId.write(bout.bbuf.getBuffer());
 	}
 

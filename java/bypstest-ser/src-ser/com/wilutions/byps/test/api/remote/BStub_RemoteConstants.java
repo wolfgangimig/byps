@@ -7,42 +7,42 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:159
+// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:164
 public class BStub_RemoteConstants extends BStub implements RemoteConstantsAsync, java.io.Serializable {
 	
-	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:142
+	// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:145
 	public final static long serialVersionUID = 431648293L;
 	
 	public BStub_RemoteConstants(final BTransport transport) {
 		super(transport);		
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH) throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		compare_HebrewC(ALEPH, BETH, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, final BAsyncResult<Object> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteConstants_compare_HebrewC req = new BRequest_RemoteConstants_compare_HebrewC();		
 		req.ALEPH = ALEPH;
 		req.BETH = BETH;
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public boolean compare_AllTypesC(boolean bool1s, boolean bool2s, char char1s, java.lang.String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, java.lang.String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[][][][] arrInt4, java.lang.String[] arrStrings, java.lang.String[][][][] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[][] arrAll) throws RemoteException {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:45
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();		
 		compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void compare_AllTypesC(boolean bool1s, boolean bool2s, char char1s, java.lang.String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, java.lang.String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[][][][] arrInt4, java.lang.String[] arrStrings, java.lang.String[][][][] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[][] arrAll, final BAsyncResult<Boolean> asyncResult) {
-		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:110
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteConstants_compare_AllTypesC req = new BRequest_RemoteConstants_compare_AllTypesC();		
 		req.bool1s = bool1s;
 		req.bool2s = bool2s;

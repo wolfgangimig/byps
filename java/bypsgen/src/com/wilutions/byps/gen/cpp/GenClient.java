@@ -171,7 +171,12 @@ public class GenClient {
 	private void printDefineStubs() throws GeneratorException {
 		log.debug("printDefineStubs");
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
-			TypeInfoCpp rinfoCpp = new TypeInfoCpp(pctxt.getRemoteBaseForStub(rinfo));
+		  
+	    RemoteInfo remoteBase = rinfo.getRemoteAuth();
+	    if (remoteBase == null) remoteBase = rinfo;
+
+			TypeInfoCpp rinfoCpp = new TypeInfoCpp(remoteBase);
+			
 			String varName = Utils.firstCharToLower(rinfo.name);
 			String rinfoName = rinfoCpp.getQTypeName();
 			prH.print("public: const ").print(rinfoName).print(" ").print(varName).println(";");

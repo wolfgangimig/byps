@@ -5,9 +5,9 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
-import com.wilutions.byps.gen.cpp.PrintContext.EMethodDecl;
 import com.wilutions.byps.gen.utils.CodePrinter;
 
 class GenRemoteClass {
@@ -24,12 +24,10 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
-	private GenRemoteClass(PrintContext pctxt, RemoteInfo rinfo) {
+	protected GenRemoteClass(PrintContext pctxt, RemoteInfo rinfo) {
 		this.pctxt = pctxt;
 		this.cppInfo = new TypeInfoCpp(rinfo);
-		this.baseCppInfo = cppInfo.getBaseInfo();
 		this.prH = pctxt.getPrApiAllH();
-		this.prC = pctxt.getPrImplC();
 		this.rinfo = rinfo;
 	}
 	
@@ -51,7 +49,7 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 	}
 
-	private void generate() throws IOException {
+	protected void generate() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 
 		String className = cppInfo.getClassName(rinfo.pack);
@@ -64,10 +62,26 @@ class GenRemoteClass {
 		
 		//beginClass(prC, className);
 
-		prH.print("class ").print(rinfo.name).println(" : public virtual BRemote");
-		prH.println("{");
+		CodePrinter mpr = prH.print("class ").print(rinfo.name).print(" : public virtual BRemote");
 		
 		prH.beginBlock();
+    for (String baseName : rinfo.baseQNames) {
+      
+      RemoteInfo rinfoBase = pctxt.classDB.getRemoteInfo(baseName);
+      RemoteInfo rinfoImpl = getBaseRemoteInfo(rinfoBase);
+      TypeInfoCpp rinfoImplCpp = new TypeInfoCpp(rinfoImpl);
+    
+      mpr.print(", ").println();
+      mpr = prH.print("public virtual ").print(rinfoImplCpp.getClassName(rinfo.pack));
+    }
+      
+    prH.endBlock();
+		
+		prH.println(" {");
+		
+		prH.beginBlock();
+		
+		prH.println();
 		
 		for (MethodInfo minfo : rinfo.methods) {
 			printMethod(minfo);
@@ -90,6 +104,14 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
+  protected String getBaseRemote() {
+    return null;
+  }
+  
+  protected RemoteInfo getBaseRemoteInfo(RemoteInfo rinfoBase) throws GeneratorException {
+    return rinfoBase;
+  }
+
 	private void beginClass(CodePrinter pr, String className) throws IOException {
 		pr.println();
 		pctxt.printLine(pr);
@@ -106,10 +128,8 @@ class GenRemoteClass {
 	}
 	
 
-	private final RemoteInfo rinfo;
+	protected final RemoteInfo rinfo;
 	private final TypeInfoCpp cppInfo;
-	private final TypeInfoCpp baseCppInfo;
 	private final CodePrinter prH;
-	private final CodePrinter prC;
 	private final PrintContext pctxt;
 }

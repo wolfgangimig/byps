@@ -8,8 +8,9 @@ namespace com.wilutions.byps.test.api.remote
 	/// <summary>
 	/// Interface with functions using 4-dimensional arrays.
 	/// </summary>
-	public interface RemoteArrayTypes4dim : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteArrayTypes4dim : BRemote {
+	
 		void SetBool(bool[,,,] v);
 		void SetBoolAsync(bool[,,,] v, BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginSetBool(bool[,,,] v, AsyncCallback callback, object state);

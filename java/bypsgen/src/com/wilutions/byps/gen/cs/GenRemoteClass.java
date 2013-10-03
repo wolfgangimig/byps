@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.wilutions.byps.gen.api.GeneratorException;
 import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
@@ -20,13 +21,13 @@ class GenRemoteClass {
 	  if (rinfo != null) {
   		log.info("generate " + rinfo.qname);
   		CodePrinter pr = pctxt.getPrinterForApiClass(rinfo, IMPL_SUFFIX, false);
-  		new GenRemoteClass(pctxt, rinfo, pr).generate();
+  		new GenRemoteClass(pctxt, rinfo,  pr).generate();
   		pr.close();
 	  }
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 	
-	private GenRemoteClass(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
+	protected GenRemoteClass(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) {
 		this.rinfo = rinfo;
 		this.pr = pr;
 		this.interfaceName = IMPL_SUFFIX + rinfo.name;
@@ -63,7 +64,7 @@ class GenRemoteClass {
 		mpr.println(";");
 	}
 	
-	private void generate() throws IOException {
+	protected void generate() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 
 		pr.println("using System;");
@@ -77,8 +78,23 @@ class GenRemoteClass {
 		
 		pctxt.printComments(pr, rinfo.comments);
 		
-		pr.print("public interface ").print(interfaceName).println(" : BRemote");
-		pr.println("{");
+    pr.checkpoint();
+    CodePrinter mpr = pr.print("public interface ").print(interfaceName).print(" : BRemote");
+    
+    pr.beginBlock();
+    for (String baseName : rinfo.baseQNames) {
+      
+      RemoteInfo rinfoBase = pctxt.classDB.getRemoteInfo(baseName);
+      RemoteInfo rinfoImpl = getBaseRemoteInfo(rinfoBase);
+    
+      mpr.print(", ").println();
+      mpr = pr.print(rinfoImpl.toString(rinfo.pack));
+    }
+      
+    pr.endBlock();
+    
+    mpr.println(" {");
+    pr.println();
 		
 		pr.beginBlock();
 		
@@ -102,8 +118,16 @@ class GenRemoteClass {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
+  protected String getBaseRemote() {
+    return null;
+  }
+  
+  protected RemoteInfo getBaseRemoteInfo(RemoteInfo rinfoBase) throws GeneratorException {
+    return rinfoBase;
+  }
+  
 	private final String interfaceName;
-	private final RemoteInfo rinfo;
+  protected final RemoteInfo rinfo;
 	private final CodePrinter pr;
 	private final PrintContext pctxt;
 }

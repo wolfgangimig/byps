@@ -23,6 +23,11 @@ namespace com.wilutions.byps.test.api
 				)
 			)
 		{
+			BioFruitService = new com.wilutions.byps.test.api.inherit.BStub_BioFruitService(transport);
+			BioLemonService = new com.wilutions.byps.test.api.inherit.BStub_BioLemonService(transport);
+			FruitService = new com.wilutions.byps.test.api.inherit.BStub_FruitService(transport);
+			LemonService = new com.wilutions.byps.test.api.inherit.BStub_LemonService(transport);
+			PlantService = new com.wilutions.byps.test.api.inherit.BStub_PlantService(transport);
 			RemoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 			RemoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 			RemoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
@@ -42,6 +47,18 @@ namespace com.wilutions.byps.test.api
 			EvolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(transport);
 		}
 		
+		public BClient_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) {
+			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			serverR.server.addRemote(1881829396, remoteSkeleton);
+			return this;
+		}
+		
+		public BClient_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) {
+			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+			serverR.server.addRemote(1992245333, remoteSkeleton);
+			return this;
+		}
+		
 		public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) {
 			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(1677934392, remoteSkeleton);
@@ -57,6 +74,11 @@ namespace com.wilutions.byps.test.api
 		protected BClient_Testser(BTransport transport) 
 			: base(transport, null)
 		{
+			BioFruitService = new com.wilutions.byps.test.api.inherit.BStub_BioFruitService(transport);
+			BioLemonService = new com.wilutions.byps.test.api.inherit.BStub_BioLemonService(transport);
+			FruitService = new com.wilutions.byps.test.api.inherit.BStub_FruitService(transport);
+			LemonService = new com.wilutions.byps.test.api.inherit.BStub_LemonService(transport);
+			PlantService = new com.wilutions.byps.test.api.inherit.BStub_PlantService(transport);
 			RemoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 			RemoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 			RemoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
@@ -77,6 +99,11 @@ namespace com.wilutions.byps.test.api
 		}
 		
 		public override BRemote getStub(int remoteId) {
+			if (remoteId == 1881829396) return BioFruitService;
+			if (remoteId == 1992245333) return BioLemonService;
+			if (remoteId == 506940662) return FruitService;
+			if (remoteId == 617356599) return LemonService;
+			if (remoteId == 1117460801) return PlantService;
 			if (remoteId == 1557084481) return RemoteArrayTypes1dim;
 			if (remoteId == 2081058997) return RemoteArrayTypes23;
 			if (remoteId == 1557173854) return RemoteArrayTypes4dim;
@@ -97,6 +124,11 @@ namespace com.wilutions.byps.test.api
 			return null;
 		}
 		
+		public readonly com.wilutions.byps.test.api.inherit.BioFruitServiceAuth BioFruitService;
+		public readonly com.wilutions.byps.test.api.inherit.BioLemonServiceAuth BioLemonService;
+		public readonly com.wilutions.byps.test.api.inherit.FruitServiceAuth FruitService;
+		public readonly com.wilutions.byps.test.api.inherit.LemonServiceAuth LemonService;
+		public readonly com.wilutions.byps.test.api.inherit.PlantServiceAuth PlantService;
 		public readonly com.wilutions.byps.test.api.remote.RemoteArrayTypes1dim RemoteArrayTypes1dim;
 		public readonly com.wilutions.byps.test.api.remote.RemoteArrayTypes23 RemoteArrayTypes23;
 		public readonly com.wilutions.byps.test.api.remote.RemoteArrayTypes4dim RemoteArrayTypes4dim;
