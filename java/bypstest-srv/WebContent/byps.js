@@ -441,7 +441,7 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 				
 				delete me.openRequestsToCancel[requestId];
 				
-				if (xhr.status = 200) {
+				if (xhr.status == 200) {
 					var responseMessage = new com.wilutions.byps.BMessage();
 					responseMessage.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
 					asyncResult(responseMessage, null);
