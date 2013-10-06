@@ -55,15 +55,14 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("BHttpServlet()");
   }
 
-  protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response,
-      HttpSession hsess, BServerRegistry serverRegistry);
+  protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BServerRegistry serverRegistry);
 
   protected abstract BClient createForwardClientToOtherServer(BTransport transport) throws BException;
 
   protected abstract BApiDescriptor getApiDescriptor();
-  
+
   protected abstract HConfig getConfig();
-  
+
   /**
    * This function is called after initialization has finished.
    */
@@ -80,27 +79,26 @@ public abstract class HHttpServlet extends HttpServlet {
 
     // Initialize in Background.
     // Tomcat should not hang during startup if initialization takes some time
-    // or if it connects other servlets running on the same tomcat. 
+    // or if it connects other servlets running on the same tomcat.
     ServletConfig servletConfig = getServletConfig();
     (new InitThread(servletConfig)).start();
-    
+
     if (log.isDebugEnabled()) log.debug(")init");
   }
-  
-  
+
   /**
    * Initialization thread
    */
   private class InitThread extends Thread {
     ServletConfig servletConfig;
-        
+
     InitThread(ServletConfig servletConfig) {
       super("eloix-binit");
       this.servletConfig = servletConfig;
     }
-    
+
     public void run() {
-      
+
       // Configuration entries from web.xml
       try {
         HConfig config = getConfig();
@@ -108,29 +106,29 @@ public abstract class HHttpServlet extends HttpServlet {
 
         int serverId = config.getMyServerId();
         targetIdFact_use_getTargetIdFactory = new HTargetIdFactory(serverId);
-  
+
         serverRegistry = new HRemoteRegistry(config) {
-  
+
           @Override
           protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {
             return HHttpServlet.this.createForwardClientToOtherServer(transport);
           }
-  
+
           @Override
           protected BApiDescriptor getApiDescriptor() {
             return HHttpServlet.this.getApiDescriptor();
           }
-  
+
         };
-  
+
         cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
 
         initializationFinished();
-        
+
       } catch (ServletException e) {
         log.error("Initialization failed.", e);
       }
-      
+
     }
   }
 
@@ -215,15 +213,7 @@ public abstract class HHttpServlet extends HttpServlet {
     final String cancelStr = request.getParameter("cancel");
     if (log.isDebugEnabled()) log.debug("cancel=" + cancelStr);
 
-    final HttpSession hsess = getSessionFromRequest(request, false);
-    if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
-    if (hsess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-      return;
-    }
-
-    final HSession sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
+    final HSession sess = getSessionFromRequest(request, response, false);
     if (sess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
@@ -275,8 +265,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug(")doGet");
   }
 
-  protected void doPostMessage(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-      IOException {
+  protected void doPostMessage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doPostMessage(");
 
     if (log.isDebugEnabled()) log.debug("read message");
@@ -306,28 +295,20 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug(")doPostMessage");
   }
 
-  protected void doMessage(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf)
-      throws IOException {
+  protected void doMessage(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf) throws IOException {
     if (log.isDebugEnabled()) log.debug("doMessage(");
 
     HRequestContext rctxt = null;
 
-    final HttpSession hsess = getSessionFromRequest(request, false);
-    if (hsess == null) {
+    final HSession sess = getSessionFromRequest(request, response, false);
+    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
+    if (sess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
-    if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
 
     try {
       // NDC.push(hsess.getId());
-
-      final HSession sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-      if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-      if (sess == null) {
-        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-        return;
-      }
 
       if (log.isDebugEnabled()) log.debug("read header");
       final BMessageHeader header = new BMessageHeader();
@@ -349,8 +330,7 @@ public abstract class HHttpServlet extends HttpServlet {
         final Runnable run = new Runnable() {
           public void run() {
 
-            final BAsyncResult<BMessage> asyncResponse = sess.wireServer.addMessage(header, rctxt2,
-                Thread.currentThread());
+            final BAsyncResult<BMessage> asyncResponse = sess.wireServer.addMessage(header, rctxt2, Thread.currentThread());
 
             // Message already canceled?
             if (asyncResponse == null) return;
@@ -419,40 +399,19 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug(")doMessage");
   }
 
-  protected void doNegotiate(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf)
-      throws ServletException {
+  protected void doNegotiate(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf) throws ServletException {
     if (log.isDebugEnabled()) log.debug("doNegotiate(");
-    
-    HTargetIdFactory targetIdFactory = getTargetIdFactory();
-
-    // Initialized?
-    if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
-    if (targetIdFactory == null) {
-      response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
-      return ;
-    }
-
-    final HRequestContext rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
 
     // Erstelle neue JSESSIONID für Lastverteilung
 
-    final HttpServletRequest req = (HttpServletRequest) rctxt.getRequest();
-    HttpSession hsess = getSessionFromRequest(req, false);
-    if (hsess != null) {
-      if (log.isDebugEnabled()) log.debug("use existing http session=" + hsess.getId());
-    }
-    else {
-      hsess = getSessionFromRequest(req, true);
-      if (log.isDebugEnabled()) log.debug("new http session=" + hsess.getId());
+    final HSession sess = getSessionFromRequest(request, response, true);
+    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
+    if (sess == null) {
+      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      return;
     }
 
-    final HSession sess = createSession(request, response, hsess, serverRegistry);
-    if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
-    if (sess == null) return;
-
-    sess.setTargetId(targetIdFactory.createTargetId());
-
-    HSessionListener.attachBSession(hsess, sess);
+    final HRequestContext rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
 
     final BAsyncResult<ByteBuffer> asyncResponse = new BAsyncResult<ByteBuffer>() {
 
@@ -516,24 +475,15 @@ public abstract class HHttpServlet extends HttpServlet {
   }
 
   private HRequestContext createRequestContext(HttpServletRequest request, HttpServletResponse response, boolean async) {
-    final HRequestContext rctxt = async ? new HAsyncContext(request.startAsync(request, response)) : new HSyncContext(
-        request, response);
+    final HRequestContext rctxt = async ? new HAsyncContext(request.startAsync(request, response)) : new HSyncContext(request, response);
     rctxt.setTimeout(HConstants.REQUEST_TIMEOUT_MILLIS);
     return rctxt;
   }
 
-  private void doPutStream(final long messageId, final long streamId, HttpServletRequest request,
-      HttpServletResponse response) throws IOException {
+  private void doPutStream(final long messageId, final long streamId, HttpServletRequest request, HttpServletResponse response) throws IOException {
     if (log.isDebugEnabled()) log.debug("doPutStream(");
 
-    final HttpSession hsess = getSessionFromRequest(request, false);
-    if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
-    if (hsess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-      return;
-    }
-
-    final HSession sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
+    final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
     if (sess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -580,14 +530,7 @@ public abstract class HHttpServlet extends HttpServlet {
       return;
     }
 
-    final HttpSession hsess = getSessionFromRequest(request, false);
-    if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
-    if (hsess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-      return;
-    }
-
-    final HSession sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
+    final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
     if (sess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -605,8 +548,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (testAdapter.equals(HTestAdapter.ACTIVE_MESSAGES)) {
 
       String inclLongPollsStr = request.getParameter(HTestAdapter.INCL_LONG_POLLS);
-      boolean inclLongPolls = (inclLongPollsStr != null && inclLongPollsStr.length() != 0) ? Boolean
-          .parseBoolean(inclLongPollsStr) : true;
+      boolean inclLongPolls = (inclLongPollsStr != null && inclLongPollsStr.length() != 0) ? Boolean.parseBoolean(inclLongPollsStr) : true;
 
       List<Long> messageIds = sess.wireServer.activeMessages.getActiveMessageIds(inclLongPolls);
       if (log.isDebugEnabled()) log.debug("active messageIds=" + messageIds);
@@ -682,15 +624,13 @@ public abstract class HHttpServlet extends HttpServlet {
     public synchronized BContentStream cloneInputStream() throws IOException {
       HIncomingStreamSync incomingStream = null;
       if (this.fileItem.isInMemory()) {
-        incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), streamId,
-            lifetimeMillis, tempDir);
+        incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), streamId, lifetimeMillis, tempDir);
         incomingStream.assignBytes(fileItem.get());
       }
       else {
         HTempFile tempFile = null;
         try {
-          incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), streamId,
-              lifetimeMillis, tempDir);
+          incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), streamId, lifetimeMillis, tempDir);
           tempFile = HTempFile.createTemp(tempDir, streamId);
           tempFile.getFile().delete(); // FileItem.write will move the file.
           fileItem.write(tempFile.getFile());
@@ -713,22 +653,15 @@ public abstract class HHttpServlet extends HttpServlet {
     Log log = LogFactory.getLog(HFileUploadItem.class);
     if (log.isDebugEnabled()) log.debug("doHtmlUpload(");
 
-    final HttpSession hsess = getSessionFromRequest(request, false);
-    if (hsess == null) {
+    final HSession sess = getSessionFromRequest(request, response, false);
+    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
+    if (sess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
-    if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
 
     try {
       // NDC.push(hsess.getId());
-
-      final HSession sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-      if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-      if (sess == null) {
-        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-        return;
-      }
 
       boolean isMultipart = ServletFileUpload.isMultipartContent(request);
       if (!isMultipart) {
@@ -736,8 +669,7 @@ public abstract class HHttpServlet extends HttpServlet {
       }
 
       // Create a factory for disk-based file items
-      DiskFileItemFactory factory = new DiskFileItemFactory(HConstants.INCOMING_STREAM_BUFFER,
-          sess.wireServer.getTempDir());
+      DiskFileItemFactory factory = new DiskFileItemFactory(HConstants.INCOMING_STREAM_BUFFER, sess.wireServer.getTempDir());
 
       // Create a new file upload handler
       ServletFileUpload upload = new ServletFileUpload(factory);
@@ -764,19 +696,17 @@ public abstract class HHttpServlet extends HttpServlet {
         if (!formField && fileName.length() == 0) continue;
         Long streamId = formField ? 0L : sess.wireServer.makeMessageId();
 
-        HFileUploadItem uploadItem = new HFileUploadItem(formField, fieldName, fileName, item.getContentType(),
-            item.getSize(), Long.toString(streamId));
+        HFileUploadItem uploadItem = new HFileUploadItem(formField, fieldName, fileName, item.getContentType(), item.getSize(), Long.toString(streamId));
         uploadItems.add(uploadItem);
         if (log.isDebugEnabled()) log.debug("uploadItem=" + uploadItem);
 
         if (item.isFormField()) continue;
 
-        sess.wireServer.activeMessages.addIncomingStream(streamId.longValue(), new FileUploadItemIncomingStream(item,
-            streamId, sess.wireServer.getTempDir()));
+        sess.wireServer.activeMessages.addIncomingStream(streamId.longValue(), new FileUploadItemIncomingStream(item, streamId, sess.wireServer.getTempDir()));
 
       }
 
-      makeHtmlUploadResult(hsess, request, response, uploadItems);
+      makeHtmlUploadResult(request, response, uploadItems);
 
     } catch (Throwable e) {
       if (log.isInfoEnabled()) log.info("Failed to process message.", e);
@@ -790,8 +720,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug(")doHtmlUpload");
   }
 
-  protected void makeHtmlUploadResult(HttpSession hsess, HttpServletRequest request, HttpServletResponse response,
-      Collection<HFileUploadItem> items) throws IOException {
+  protected void makeHtmlUploadResult(HttpServletRequest request, HttpServletResponse response, Collection<HFileUploadItem> items) throws IOException {
     response.setContentType("text/html");
     PrintWriter wr = response.getWriter();
     wr.print("<html><body>[");
@@ -811,13 +740,56 @@ public abstract class HHttpServlet extends HttpServlet {
   protected long getHtmlUploadMaxSize() {
     return -1L;
   }
-  
+
   protected BServerRegistry getServerRegistry() {
     return serverRegistry;
   }
-  
-  protected HttpSession getSessionFromRequest(HttpServletRequest request, boolean createNewIfNotEx) {
-    return request.getSession(createNewIfNotEx);
+
+  protected HSession getSessionFromRequest(HttpServletRequest request, HttpServletResponse response, boolean createNewIfNotEx) {
+    HSession sess = null;
+    int httpStatus = HttpServletResponse.SC_FORBIDDEN;
+
+    HttpSession hsess = request.getSession(false);
+    if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
+    if (hsess == null) {
+      if (createNewIfNotEx) {
+        hsess = request.getSession(true);
+        if (log.isDebugEnabled()) log.debug("new http session=" + hsess.getId());
+      }
+    }
+
+    if (hsess != null) {
+      sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
+      if (log.isDebugEnabled()) log.debug("byps session=" + sess);
+      if (sess == null) {
+
+        if (createNewIfNotEx) {
+
+          HTargetIdFactory targetIdFactory = getTargetIdFactory();
+
+          // Initialized?
+          if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
+          if (targetIdFactory != null) {
+            sess = createSession(request, response, hsess, serverRegistry);
+            if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
+
+            sess.setTargetId(targetIdFactory.createTargetId());
+
+            HSessionListener.attachBSession(hsess, sess);
+          }
+          else {
+            if (log.isInfoEnabled()) log.info("Service unavailable or still initializing.");
+            httpStatus = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
+          }
+        }
+      }
+    }
+
+    if (sess == null) {
+      response.setStatus(httpStatus);
+    }
+
+    return sess;
   }
 
   @Override
@@ -828,9 +800,14 @@ public abstract class HHttpServlet extends HttpServlet {
       log.debug("params= " + request.getParameterMap());
     }
     try {
-
-      super.service(request, response);
-
+      
+      if (request.getMethod().equals("BYPS")) {
+        this.doPost(request, response);
+      }
+      else {
+        super.service(request, response);
+      }
+      
       int status = response.getStatus();
       if (status != HttpServletResponse.SC_OK) {
         if (log.isDebugEnabled()) log.debug("Request failed with HTTP status " + status);

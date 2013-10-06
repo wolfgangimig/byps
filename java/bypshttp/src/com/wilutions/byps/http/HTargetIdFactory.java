@@ -3,8 +3,6 @@ package com.wilutions.byps.http;
 import java.security.SecureRandom;
 import java.util.Random;
 
-import javax.servlet.ServletException;
-
 import com.wilutions.byps.BTargetId;
 
 public class HTargetIdFactory {
@@ -13,7 +11,7 @@ public class HTargetIdFactory {
 		this.serverId = serverId;
 	}
 
-	BTargetId createTargetId() throws ServletException {
+	BTargetId createTargetId() {
 		
 		long v1 = ((long)serverId << 32) | (getRandomLong() & 0xFFFFFFFFL);
 		long v2 = getRandomLong();
@@ -35,14 +33,14 @@ public class HTargetIdFactory {
 		return s1 == s2;
 	}
 	
-	protected long getRandomLong() throws ServletException {
+	protected long getRandomLong() {
 	   	// https://www.cigital.com/justice-league-blog/2009/08/14/proper-use-of-javas-securerandom/
 		if (randBestBefore < System.currentTimeMillis()) {
 			try {
 				rand = new SecureRandom();
 				rand.nextBytes(new byte[1]);
 			} catch (Throwable e) {
-				throw new ServletException(e);
+				throw new IllegalStateException(e);
 			}
 			randBestBefore = System.currentTimeMillis() + 601L * 1000L;
 		}

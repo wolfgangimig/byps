@@ -38,6 +38,7 @@ public class BServer {
 	public void addRemote(int remoteId, BSkeleton remoteImpl) {
 		if (remoteImpl != null) {
 			remotes.put(remoteId, remoteImpl);
+			remoteImpl.BSkeleton_setTargetId(transport.getTargetId());
 		}
 	}
 	
