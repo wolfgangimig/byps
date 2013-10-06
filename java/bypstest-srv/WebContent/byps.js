@@ -429,7 +429,7 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 		rurl += "__ts=";
 		rurl += new Date().getTime();
 		
-		xhr.open('POST', rurl, processAsync);
+		xhr.open('BYPS', rurl, processAsync);
 		
 		if (timeoutMillis > 0) {
 			xhr.timeout = timeoutMillis;
@@ -712,7 +712,8 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 						me._lastAuthenticationException = ex;
 						
 						for (var i = 0; i < arr.length; i++) {
-							arr[i](result, ex);
+							var result_i = arr[i];
+							result_i(result, ex);
 						}
 					};
 					
