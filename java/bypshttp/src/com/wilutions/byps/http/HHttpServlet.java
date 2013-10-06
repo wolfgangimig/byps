@@ -215,7 +215,7 @@ public abstract class HHttpServlet extends HttpServlet {
     final String cancelStr = request.getParameter("cancel");
     if (log.isDebugEnabled()) log.debug("cancel=" + cancelStr);
 
-    final HttpSession hsess = request.getSession(false);
+    final HttpSession hsess = getSessionFromRequest(request, false);
     if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
     if (hsess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -312,7 +312,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     HRequestContext rctxt = null;
 
-    final HttpSession hsess = request.getSession(false);
+    final HttpSession hsess = getSessionFromRequest(request, false);
     if (hsess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
@@ -437,12 +437,12 @@ public abstract class HHttpServlet extends HttpServlet {
     // Erstelle neue JSESSIONID für Lastverteilung
 
     final HttpServletRequest req = (HttpServletRequest) rctxt.getRequest();
-    HttpSession hsess = req.getSession(false);
+    HttpSession hsess = getSessionFromRequest(req, false);
     if (hsess != null) {
       if (log.isDebugEnabled()) log.debug("use existing http session=" + hsess.getId());
     }
     else {
-      hsess = req.getSession(true);
+      hsess = getSessionFromRequest(req, true);
       if (log.isDebugEnabled()) log.debug("new http session=" + hsess.getId());
     }
 
@@ -526,7 +526,7 @@ public abstract class HHttpServlet extends HttpServlet {
       HttpServletResponse response) throws IOException {
     if (log.isDebugEnabled()) log.debug("doPutStream(");
 
-    final HttpSession hsess = request.getSession(false);
+    final HttpSession hsess = getSessionFromRequest(request, false);
     if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
     if (hsess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -580,7 +580,7 @@ public abstract class HHttpServlet extends HttpServlet {
       return;
     }
 
-    final HttpSession hsess = request.getSession(false);
+    final HttpSession hsess = getSessionFromRequest(request, false);
     if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
     if (hsess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -713,7 +713,7 @@ public abstract class HHttpServlet extends HttpServlet {
     Log log = LogFactory.getLog(HFileUploadItem.class);
     if (log.isDebugEnabled()) log.debug("doHtmlUpload(");
 
-    final HttpSession hsess = request.getSession(false);
+    final HttpSession hsess = getSessionFromRequest(request, false);
     if (hsess == null) {
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
@@ -814,6 +814,10 @@ public abstract class HHttpServlet extends HttpServlet {
   
   protected BServerRegistry getServerRegistry() {
     return serverRegistry;
+  }
+  
+  protected HttpSession getSessionFromRequest(HttpServletRequest request, boolean createNewIfNotEx) {
+    return request.getSession(createNewIfNotEx);
   }
 
   @Override
