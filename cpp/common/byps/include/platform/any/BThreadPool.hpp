@@ -152,7 +152,7 @@ public:
 				this->queue.push_back(r);
 
 				// Maybe start new thread
-				int nbOfFreeThreads = (int)threadIdToRunning.size() - nbOfBusyThreads;
+				size_t nbOfFreeThreads = threadIdToRunning.size() - (size_t)nbOfBusyThreads;
 				if (queue.size() > nbOfFreeThreads) {
 					if (threadIdToRunning.size() < (size_t)maxThreads) {
 						PThread t(new std::thread(threadFunction, pThis));

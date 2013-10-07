@@ -33,7 +33,7 @@ public:
 			obj.get(val);
 			setAsyncResult(val, BException());
 		}
-		delete this;
+		// not delete this, it is called in setAsyncResult(_Type val, BException ex)
 	}
 
     virtual void setAsyncResult(_Type result, BException ex) = 0; 
