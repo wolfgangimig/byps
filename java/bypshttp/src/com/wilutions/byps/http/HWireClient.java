@@ -23,7 +23,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.logging.Log;
@@ -840,7 +839,29 @@ public class HWireClient extends BWire {
 
 		if (log.isDebugEnabled()) log.debug(")internalPutStream");
 	}
-		
+	
+	/**
+	 * Create a HTTP GET connection.
+	 * @param url URL
+	 * @return Connection object
+	 * @throws IOException
+	 */
+	public HttpURLConnection createConnection(URL url) throws IOException {
+
+	  HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+
+    conn.setConnectTimeout((int)timeoutMillisClient);
+    conn.setReadTimeout((int)timeoutMillisClient);
+
+    conn.setDoInput(true);
+    conn.setDoOutput(false);
+    conn.setRequestMethod("GET");
+
+    applySession(conn);
+
+    return conn;
+	}
+	
 	protected class MyInputStream extends InputStreamWrapper implements BAsyncResult<BMessage> {
 
 		// Implementierung ist so kompliziert, damit die HTTP-Verbindung abgebrochen werden kann. 
