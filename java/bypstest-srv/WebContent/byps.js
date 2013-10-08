@@ -245,7 +245,12 @@ com.wilutions.byps.BSerializer_15 = function() {
 	};
 	
 	this.read = function(obj, bin) {
-		obj.url = bin.transport.wire.rurl + "?messageid=" + bin.header.messageId + "&streamid=" + obj.streamId;
+
+		var url = bin.transport.wire.url;
+		url += (url.indexOf('?') != url.length-1) ? '?' : '&';
+		obj.url = url + "messageid=" + bin.header.messageId + "&streamid=" + obj.streamId;
+		return obj;
+		
 		return obj;
 	};
 	
