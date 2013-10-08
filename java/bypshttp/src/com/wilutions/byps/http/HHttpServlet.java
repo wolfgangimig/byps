@@ -252,12 +252,15 @@ public abstract class HHttpServlet extends HttpServlet {
       }
     } catch (Throwable e) {
       log.error("GET failed, messageId=" + messageIdStr + ", streamId=" + streamIdStr + ", cancel=" + cancelStr, e);
+      
       int status = HttpServletResponse.SC_BAD_REQUEST;
       if (e instanceof FileNotFoundException) {
         status = HttpServletResponse.SC_NOT_FOUND;
       }
-      response.setStatus(status);
-      response.getOutputStream().close();
+      response.sendError(status, e.toString());
+//      response.setHeader("Content-Length", "0");
+//      response.getOutputStream().close();
+      
     } finally {
       // NDC.pop();
     }

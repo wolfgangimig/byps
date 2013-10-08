@@ -20,10 +20,13 @@ public class HOutgoingStream extends BContentStreamWrapper {
 		this.streamId = streamId;
 	}
 	
-	protected InputStream ensureStream() throws IOException {
+	public InputStream ensureStream() throws IOException {
 		if (closed.get()) {
 			if (log.isDebugEnabled()) log.debug("Outgoing stream already closed, streamId=" + streamId);
 			throw new IOException("Stream is closed");
+		}
+		if (innerStream instanceof BContentStreamWrapper) {
+		  ((BContentStreamWrapper)innerStream).ensureStream();
 		}
 		return innerStream;
 	}

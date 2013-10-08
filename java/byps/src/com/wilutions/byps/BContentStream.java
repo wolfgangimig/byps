@@ -65,7 +65,7 @@ public abstract class BContentStream extends InputStream {
 	 * This value is used as HTTP Header Content-Type.
 	 * @return Content type.
 	 */
-	public String getContentType() {
+	public String getContentType() throws IOException {
 		return contentType; // e.g. "text/plain; charset=utf-8"
 	}
 	
@@ -75,7 +75,7 @@ public abstract class BContentStream extends InputStream {
 	 * This function returns -1L, if the content length is unknown.
 	 * @return Content length.
 	 */
-	public long getContentLength() {
+	public long getContentLength() throws IOException {
 		return contentLength; 
 	}
 	

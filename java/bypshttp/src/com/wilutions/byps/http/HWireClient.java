@@ -643,29 +643,28 @@ public class HWireClient extends BWire {
 		
 		if (log.isDebugEnabled()) log.debug("internalPutStream(messageId=" + messageId + ", streamId=" + streamId + ", stream=" + stream);
 		ByteBuffer obuf = null;
-		
-		String contentType = null;
-		long totalLength = -1L;
-		if (stream instanceof BContentStream) {
-			BContentStream cstream = (BContentStream)stream;
-			contentType = cstream.getContentType();
-			totalLength = cstream.getContentLength();
-		}
-		else if (stream instanceof ByteArrayInputStream) {
-			contentType = BContentStream.DEFAULT_CONTENT_TYPE;
-			totalLength = ((ByteArrayInputStream)stream).available();
-		}
-
-		if (contentType == null || contentType.length() == 0) {
-			contentType = BContentStream.DEFAULT_CONTENT_TYPE;
-		}
-		if (log.isDebugEnabled()) log.debug("Content-Type=" + contentType);
-		
-		Throwable returnException = null;
-		
-		final long beginSendMillis = System.currentTimeMillis();
-		
+    Throwable returnException = null;
+    
 		try {
+	    String contentType = null;
+	    long totalLength = -1L;
+	    if (stream instanceof BContentStream) {
+	      BContentStream cstream = (BContentStream)stream;
+	      contentType = cstream.getContentType();
+	      totalLength = cstream.getContentLength();
+	    }
+	    else if (stream instanceof ByteArrayInputStream) {
+	      contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+	      totalLength = ((ByteArrayInputStream)stream).available();
+	    }
+
+	    if (contentType == null || contentType.length() == 0) {
+	      contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+	    }
+	    if (log.isDebugEnabled()) log.debug("Content-Type=" + contentType);
+	    
+	    final long beginSendMillis = System.currentTimeMillis();
+	    
 				// Cannot use neither setFixedLengthStreamingMode nor setChunkedStreamMode
 				// due to a concurrency bug in JVM, Bug ID 9005601
 				// Concurrent requests with setFixedLengthStreamingMode or setChunkedStreamMode
@@ -896,7 +895,7 @@ public class HWireClient extends BWire {
 		}
 		
 		@Override
-		protected InputStream ensureStream() throws IOException {
+		public InputStream ensureStream() throws IOException {
 			throwExceptionIf();
 			return super.ensureStream();
 		}
@@ -926,7 +925,13 @@ public class HWireClient extends BWire {
 
 				if (log.isDebugEnabled()) log.debug("wait for response");
 
+				int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
 				try {
+          statusCode = conn.getResponseCode();
+          if (statusCode != HttpURLConnection.HTTP_OK) {
+            throw new IOException("HTTP " + statusCode);
+          }
+				  
 					is = conn.getInputStream();
 					contentType = conn.getContentType();
 					
@@ -944,7 +949,6 @@ public class HWireClient extends BWire {
 					is = conn.getErrorStream();
 					bufferFromStream(is, false);
 					
-					int statusCode = conn.getResponseCode();
 					if (log.isDebugEnabled()) log.debug("received http status=" + statusCode); 
 					BException bex = new BException(BExceptionC.IOERROR, "HTTP " + statusCode);
 					setAsyncResult(null, bex);
@@ -967,23 +971,15 @@ public class HWireClient extends BWire {
 		}
 		
 		@Override
-		public long getContentLength() {
-			try {
-				ensureStream();
-				return contentLength;
-			} catch (IOException e) {
-				throw new IllegalStateException(e);
-			}
+		public long getContentLength() throws IOException {
+			ensureStream();
+			return contentLength;
 		}
 		
 		@Override
-		public String getContentType() {
-			try {
-				ensureStream();
-				return contentType;
-			} catch (IOException e) {
-				throw new IllegalStateException(e);
-			}
+		public String getContentType() throws IOException {
+			ensureStream();
+			return contentType;
 		}
 	}
 

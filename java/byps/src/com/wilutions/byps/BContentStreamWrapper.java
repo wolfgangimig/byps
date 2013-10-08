@@ -46,8 +46,10 @@ public class BContentStreamWrapper extends BContentStream {
 	private static String makeValidContentType(InputStream innerStream, String contentType) {
 		if (contentType != null && contentType.length() != 0) return contentType;
 		if (innerStream instanceof BContentStream) {
-			contentType = ((BContentStream)innerStream).getContentType();
-			if (contentType != null && contentType.length() != 0) return contentType;
+			try {
+        contentType = ((BContentStream)innerStream).getContentType();
+        if (contentType != null && contentType.length() != 0) return contentType;
+      } catch (IOException e) { }
 		}
 		return DEFAULT_CONTENT_TYPE;
 	}
@@ -55,8 +57,10 @@ public class BContentStreamWrapper extends BContentStream {
 	private static long makeValidContentLength(InputStream innerStream, long contentLength) {
 		if (contentLength > -1L) return contentLength;
 		if (innerStream instanceof BContentStream) {
-			contentLength = ((BContentStream)innerStream).getContentLength();
-			return contentLength;
+			try {
+        contentLength = ((BContentStream)innerStream).getContentLength();
+        return contentLength;
+      } catch (IOException e) { }
 		}
 		return -1L;
 	}
@@ -65,7 +69,7 @@ public class BContentStreamWrapper extends BContentStream {
 		return this.innerStream;
 	}
 	
-	protected InputStream ensureStream() throws IOException {
+	public InputStream ensureStream() throws IOException {
 		if (innerStream != null) return innerStream;
 		
 		synchronized(this) {
@@ -77,6 +81,18 @@ public class BContentStreamWrapper extends BContentStream {
 		return innerStream;
 	}
 	
+  @Override
+  public String getContentType() throws IOException {
+    ensureStream();   
+    return super.getContentType();
+  }
+  
+  @Override
+  public long getContentLength() throws IOException {
+    ensureStream();   
+    return super.getContentLength();
+  }
+  
 	@Override
 	public int read() throws IOException {
 		return ensureStream().read();
