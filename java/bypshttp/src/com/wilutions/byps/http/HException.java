@@ -3,7 +3,6 @@ package com.wilutions.byps.http;
 import java.net.HttpURLConnection;
 
 import com.wilutions.byps.BException;
-import com.wilutions.byps.BExceptionC;
 
 public class HException extends BException {
 

@@ -15,7 +15,7 @@ public class BContentStreamWrapper extends BContentStream {
 	 * Wrapped stream.
 	 */
 	protected volatile InputStream innerStream;
-
+	
 	/**
 	 * Default constructor.
 	 */
@@ -44,20 +44,14 @@ public class BContentStreamWrapper extends BContentStream {
 	}
 	
 	private static String makeValidContentType(InputStream innerStream, String contentType) {
+	  if (innerStream != null && innerStream instanceof BContentStream) return DEFAULT_CONTENT_TYPE;
 		if (contentType != null && contentType.length() != 0) return contentType;
-		if (innerStream instanceof BContentStream) {
-			contentType = ((BContentStream)innerStream).getContentType();
-			if (contentType != null && contentType.length() != 0) return contentType;
-		}
 		return DEFAULT_CONTENT_TYPE;
 	}
 	
 	private static long makeValidContentLength(InputStream innerStream, long contentLength) {
+    if (innerStream != null && innerStream instanceof BContentStream) return -1L;
 		if (contentLength > -1L) return contentLength;
-		if (innerStream instanceof BContentStream) {
-			contentLength = ((BContentStream)innerStream).getContentLength();
-			return contentLength;
-		}
 		return -1L;
 	}
 	
@@ -65,7 +59,7 @@ public class BContentStreamWrapper extends BContentStream {
 		return this.innerStream;
 	}
 	
-	protected InputStream ensureStream() throws IOException {
+	public InputStream ensureStream() throws IOException {
 		if (innerStream != null) return innerStream;
 		
 		synchronized(this) {
@@ -77,6 +71,28 @@ public class BContentStreamWrapper extends BContentStream {
 		return innerStream;
 	}
 	
+  @Override
+  public String getContentType() throws IOException {
+    ensureStream();   
+    if (innerStream instanceof BContentStream) {
+      return ((BContentStream)innerStream).getContentType();
+    }
+    else {
+      return super.getContentType();
+    }
+  }
+  
+  @Override
+  public long getContentLength() throws IOException {
+    ensureStream();   
+    if (innerStream instanceof BContentStream) {
+      return ((BContentStream)innerStream).getContentLength();
+    }
+    else {
+      return super.getContentLength();
+    }
+  }
+  
 	@Override
 	public int read() throws IOException {
 		return ensureStream().read();
