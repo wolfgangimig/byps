@@ -118,7 +118,7 @@ public abstract class BContentStream extends InputStream {
 	
 	private volatile long bestBefore;
 	protected final long lifetimeMillis;
-	protected final String contentType;
-	protected final long contentLength;
+	protected volatile String contentType;
+	protected volatile long contentLength;
 
 }

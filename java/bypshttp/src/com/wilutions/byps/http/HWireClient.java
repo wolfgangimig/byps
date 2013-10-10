@@ -870,8 +870,6 @@ public class HWireClient extends BWire {
 		volatile RequestToCancel request;
 		volatile HttpURLConnection conn;
 		volatile Throwable ex;
-		volatile String contentType;
-		volatile long contentLength;
 		protected final Log log = LogFactory.getLog(MyInputStream.class);
 		
 		public MyInputStream(long messageId, long streamId) {
