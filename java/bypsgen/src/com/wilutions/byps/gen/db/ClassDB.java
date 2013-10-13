@@ -569,6 +569,17 @@ public class ClassDB {
     if (!sinfo.isPrimitiveType()) {
       if (!Keywords.checkIdentifier(log, errorContext, sinfo.name)) ret = false;
     }
+    
+    if (sinfo.methodInfo != null) {
+      
+      String errorContextMethod = sinfo.methodInfo.getQName();
+      if (!Keywords.checkIdentifier(log, errorContextMethod, sinfo.methodInfo.name)) ret = false;
+      
+      for (MemberInfo pinfo : sinfo.methodInfo.requestInfo.members) {
+        String errorContextParam = errorContextMethod + " parameter " + pinfo.name;
+        if (!Keywords.checkIdentifier(log, errorContextParam, pinfo.name)) ret = false;
+      }
+    }
 
     // Check Members
     for (MemberInfo minfo : sinfo.members) {

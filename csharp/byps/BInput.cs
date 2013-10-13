@@ -10,9 +10,10 @@ namespace com.wilutions.byps
  	    public readonly BMessageHeader header;
 	    public readonly BTransport transport;
 	    public readonly BRegistry registry;
-	
-	    public BInput(BTransport transport, BRegistry registry) {
-		    this.header = new BMessageHeader();
+
+        public BInput(BTransport transport, BMessageHeader responseHeader, BRegistry registry)
+        {
+            this.header = responseHeader;
 		    this.transport = transport;
 		    this.registry = registry;
             this.idMap = transport.apiDesc.uniqueObjects ? null : new Dictionary<int, Object>();

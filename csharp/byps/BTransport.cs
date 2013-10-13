@@ -87,26 +87,16 @@ namespace com.wilutions.byps
             }
 	    }
 
-	    public BInput getInput(ByteBuffer buf) {
-		    // Hier ermittle ich das Protokoll nochmal aus dem Input-Buffer.
-		    // Dann brauche ich im Server das BTransport Objekt nicht zu der Verbindung zu speichern.
-		    // Es genügt dann, das BTransport Objekt nur für die Anfrage zu verwenden.
-		    // Der Server legt also für jede Anfrage ein neues BTransport Objekt an. 
-		    // Hier ist this.protocol == null.
-		
-		    // Für den Client bringt das keinen Gewinn. Der muss ja mit BOutput 
-		    // beginnen und dann antwortet der Server eh mit demselben Protokoll.
-		    // Falls wir im Client sind, dann ist this.protocol != null.
-
-            lock (this)
+        public BInput getInput(BMessageHeader header, ByteBuffer buf)
+        {
+            // header is null in the test cases that check the serialization.
+            if (header == null)
             {
-                if (protocol == null)
-                {
-                    protocol = detectProtocolFromInputBuffer(buf);
-                }
-
-                return protocol.getInput(buf, this);
+                header = new BMessageHeader();
+                header.read(buf);
             }
+
+            return protocol.getInput(this, header, buf);
 	    }
 
         private class MyAsyncResultSend<T> : BAsyncResult<bool>
@@ -169,7 +159,7 @@ namespace com.wilutions.byps
                     else
                     {
                         if (log.isDebugEnabled()) log.debug("obj <- message");
-                        BInput bin = transport.getInput(msg.buf);
+                        BInput bin = transport.getInput(msg.header, msg.buf);
                         T obj = (T)bin.load();
 
                         if (log.isDebugEnabled()) log.debug("return obj=" + obj);
@@ -292,7 +282,7 @@ namespace com.wilutions.byps
         public void recv(BServer server, BMessage msg, BAsyncResult<BMessage> asyncResult) {
             if (log.isDebugEnabled()) log.debug("recv(");
 
-            BInput bin = getInput(msg.buf);
+            BInput bin = getInput(msg.header, msg.buf);
 		    Object methodObj = bin.load();
             if (log.isDebugEnabled()) log.debug("methodObj=" + methodObj);
 
@@ -380,7 +370,9 @@ namespace com.wilutions.byps
             BAsyncResult<BMessage> outerResult = new MyNegoAsyncResult(this, asyncResult);
 
             if (log.isDebugEnabled()) log.debug("wire.send");
-            BMessage msg = new BMessage(0L, buf, null);
+            BMessageHeader header = new BMessageHeader();
+            header.messageId = wire.makeMessageId();
+            BMessage msg = new BMessage(header, buf, null);
 		    wire.send(msg, outerResult);
             if (log.isDebugEnabled()) log.debug(")negotiateProtocolClient");
         }

@@ -35,7 +35,6 @@ import com.wilutions.byps.BException;
 import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BMessage;
 import com.wilutions.byps.BMessageHeader;
-import com.wilutions.byps.BNegotiate;
 import com.wilutions.byps.BProtocol;
 import com.wilutions.byps.BServer;
 import com.wilutions.byps.BServerRegistry;
@@ -196,11 +195,22 @@ public abstract class HHttpServlet extends HttpServlet {
       if (log.isDebugEnabled()) log.debug(")doGet");
       return;
     }
+    
+    final String negoStr = request.getParameter("negotiate");
+    if (log.isDebugEnabled()) log.debug("negotiate=" + negoStr);
+    if (negoStr != null && negoStr.length() != 0) {
+      ByteBuffer ibuf = ByteBuffer.allocate(negoStr.length() * 3);
+      ibuf.put(negoStr.getBytes("UTF-8"));
+      ibuf.flip();
+      doNegotiate(request, response, ibuf);
+      return;
+    }
 
     final String messageIdStr = request.getParameter("messageid");
     if (log.isDebugEnabled()) log.debug("messageId=" + messageIdStr);
     if (messageIdStr == null || messageIdStr.length() == 0) {
-      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+      //response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+      response.getWriter().println("HHttpServlet running.");
       return;
     }
 
@@ -283,17 +293,7 @@ public abstract class HHttpServlet extends HttpServlet {
       log.debug(BBuffer.toDetailString(ibuf));
     }
 
-    boolean isNego = BNegotiate.isNegotiateMessage(ibuf);
-    if (log.isDebugEnabled()) log.debug("isNeotiateMessage=" + isNego);
-
-    if (log.isDebugEnabled()) log.debug("startAsync, timeout=" + HConstants.REQUEST_TIMEOUT_MILLIS);
-
-    if (isNego) {
-      doNegotiate(request, response, ibuf);
-    }
-    else {
-      doMessage(request, response, ibuf);
-    }
+    doMessage(request, response, ibuf);
 
     if (log.isDebugEnabled()) log.debug(")doPostMessage");
   }
@@ -804,17 +804,13 @@ public abstract class HHttpServlet extends HttpServlet {
     }
     try {
       
-      if (request.getMethod().equals("BYPS")) {
-        this.doPost(request, response);
-      }
-      else {
-        super.service(request, response);
-      }
+      super.service(request, response);
       
       int status = response.getStatus();
       if (status != HttpServletResponse.SC_OK) {
         if (log.isDebugEnabled()) log.debug("Request failed with HTTP status " + status);
       }
+      
     } catch (ServletException e) {
       if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
       throw e;

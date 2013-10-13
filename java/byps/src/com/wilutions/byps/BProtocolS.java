@@ -26,7 +26,7 @@ public class BProtocolS extends BProtocol {
 	}
 	
 	public BInput getInput(BTransport transport, BMessageHeader header, ByteBuffer buf) throws BException {
-		return new BInputS(header, buf, transport);
+		return new BInputS(transport, header, buf);
 	}
 
 

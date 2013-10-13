@@ -59,11 +59,19 @@ protected:
 	byps_atomic<bool> isDone;
 
 	void internalCancelAllRequests(int64_t cancelMessageId);
-
+	
 	void internalSend(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSeconds);
 	void internalSendStreamsThenMessage(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSeconds);
 	void internalSendMessageWithoutStreams(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSeconds);
 	void sendCancelMessage(int64_t messageId);
+
+	virtual std::wstring getServletPathForNegotiationAndAuthentication();
+	virtual std::wstring getServletPathForReverseRequest();
+
+	std::wstring makeUrl(const std::wstring& servletPath, const std::vector<std::wstring>& params);
+	std::wstring escapeUrl(const std::wstring& url);
+
+	enum ERequestDirection { FORWARD, REVERSE };
 
 	friend class HWireClient_TestAdapter;
 	friend class HWireClient_AsyncResultAfterAllRequests;

@@ -999,7 +999,7 @@ public class BConvert {
 		}
 		
 		if (!foundBException) {
-			errInfo.msg = "Method must throw BException";
+			errInfo.msg = "Method must throw RemoteException or BException";
 			throw new GeneratorException(errInfo);
 		}
 		

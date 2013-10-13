@@ -205,7 +205,7 @@ public class BypsServlet extends HHttpServlet {
 
   @Override
   protected BApiDescriptor getApiDescriptor() {
-    return BApiDescriptor_Testser.instance;
+    return BApiDescriptor_Testser.instance();
   }
 
   @Override

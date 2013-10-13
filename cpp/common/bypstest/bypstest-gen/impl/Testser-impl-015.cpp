@@ -334,7 +334,7 @@ void BSerializer_80483097(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteMapTypes(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemoteMapTypes* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteMapTypes*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -660,7 +660,7 @@ void BSerializer_1341983932(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemotePrimitiveTypes(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemotePrimitiveTypes* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemotePrimitiveTypes*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -710,7 +710,7 @@ void BSerializer_2086824050(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteReferences(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemoteReferences* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteReferences*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -772,7 +772,7 @@ void BSerializer_1124545992(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteServerCtrl(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemoteServerCtrl* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteServerCtrl*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -1110,7 +1110,7 @@ void BSerializer_1156008353(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteSetTypes(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemoteSetTypes* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteSetTypes*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}

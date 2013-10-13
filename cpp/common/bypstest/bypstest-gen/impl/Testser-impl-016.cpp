@@ -94,7 +94,7 @@ void BSerializer_2028487863(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteStreams(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemoteStreams* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteStreams*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -245,7 +245,7 @@ void BSerializer_1677934392(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemoteWithAuthenticationAuth* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteWithAuthenticationAuth*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -372,7 +372,7 @@ void BSerializer_1784257353(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::srvr::BStub_ClientIF(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::srvr::ClientIF* r = dynamic_cast<com::wilutions::byps::test::api::srvr::ClientIF*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -506,7 +506,7 @@ void BSerializer_1313562065(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::srvr::BStub_ServerIF(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::srvr::ServerIF* r = dynamic_cast<com::wilutions::byps::test::api::srvr::ServerIF*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -592,7 +592,7 @@ void BSerializer_2078696281(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::ver::BStub_EvolveIF(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::ver::EvolveIF* r = dynamic_cast<com::wilutions::byps::test::api::ver::EvolveIF*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}

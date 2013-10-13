@@ -164,7 +164,7 @@ public class HWireClientR extends BWire {
 
         if (log.isDebugEnabled()) log.debug("canceled=" + canceled);
         if (canceled) {
-          asyncResult.setAsyncResult(null, new BException(BExceptionC.CLIENT_DIED, "Client is dead."));
+          asyncResult.setAsyncResult(null, new BException(BExceptionC.CLIENT_DIED, "Client is disconnected."));
         }
         else {
           // Ergebnisobjekt für nächsten Longpoll merken

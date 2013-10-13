@@ -29,9 +29,9 @@ namespace com.wilutions.byps
 		    return new BOutputS(transport, requestHeader);
 	    }
 
-        public override BInput getInput(ByteBuffer buf, BTransport transport)
+        public override BInput getInput(BTransport transport, BMessageHeader responseHeader, ByteBuffer buf)
         {
-		    return new BInputS(buf, transport);
+		    return new BInputS(transport, responseHeader, buf);
 	    }
 
     }

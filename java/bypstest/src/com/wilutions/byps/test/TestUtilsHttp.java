@@ -54,10 +54,10 @@ public class TestUtilsHttp {
 		
 		// Define an API descriptor with an application version from static member appVersion.
 		BApiDescriptor myDesc = new BApiDescriptor(
-				BApiDescriptor_Testser.instance.name,
-				BApiDescriptor_Testser.instance.basePackage,
+				BApiDescriptor_Testser.instance().name,
+				BApiDescriptor_Testser.instance().basePackage,
 				appVersion,
-				BApiDescriptor_Testser.instance.uniqueObjects
+				BApiDescriptor_Testser.instance().uniqueObjects
 				);
 		
 		myDesc.addRegistry(registry);
@@ -79,7 +79,7 @@ public class TestUtilsHttp {
 		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, null, tpool);
 		
 		final BTransportFactory transportFactory = new HTransportFactoryClient(
-				BApiDescriptor_Testser.instance, wire, 3); 
+				BApiDescriptor_Testser.instance(), wire, 3); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 

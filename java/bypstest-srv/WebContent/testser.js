@@ -39,7 +39,7 @@ com.wilutions.byps.test.api.BApiDescriptor_Testser = {
 	/**
 	 * Internal used API Desciptor.
 	*/
-	getInternalInstance : function() {
+	instance : function() {
 		return new com.wilutions.byps.BApiDescriptor(
 			"Testser",
 			"com.wilutions.byps.test.api",
@@ -57,12 +57,8 @@ com.wilutions.byps.test.api.BApiDescriptor_Testser = {
  * ----------------------------------------------
 */
 
-com.wilutions.byps.test.api.createClient_Testser = function(url, startServerR, asyncResult) {
-	var wire = new com.wilutions.byps.BWireClient(url);
-	var transportFactory = new com.wilutions.byps.BTransportFactory(com.wilutions.byps.test.api.BApiDescriptor_Testser.getInternalInstance(), wire);
-	var client = new com.wilutions.byps.test.api.BClient_Testser(transportFactory);
-	client.start(startServerR, asyncResult);
-	return client;
+com.wilutions.byps.test.api.createClient_Testser = function(transportFactory) {
+	return new com.wilutions.byps.test.api.BClient_Testser(transportFactory);
 };
 
 com.wilutions.byps.test.api.BClient_Testser = function(transportFactory) { 

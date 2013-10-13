@@ -7,8 +7,8 @@ namespace com.wilutions.byps
 {
     public class BInputS : BInputBin
     {
-        public BInputS(ByteBuffer buf, BTransport transport)
-            : base(buf, transport, transport.apiDesc.getRegistry(BBinaryModel.MEDIUM))
+        public BInputS(BTransport transport, BMessageHeader responseHeader, ByteBuffer buf)
+            : base(transport, responseHeader, buf, transport.apiDesc.getRegistry(BBinaryModel.MEDIUM))
         {
         }
 

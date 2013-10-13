@@ -76,14 +76,18 @@ public class GenApiDescriptor {
 	private void printInstance() {
 		log.debug("printInstance");
 		
-		pr.print("public final static BApiDescriptor instance = new BApiDescriptor(").println();
+		pr.println("public final static BApiDescriptor instance() {");
 		pr.beginBlock();
-		pr.println("\"" + apiDesc.name + "\",");
+		pr.println("return new BApiDescriptor(");
+    pr.beginBlock();
+    pr.println("\"" + apiDesc.name + "\",");
 		pr.println("\"" + apiDesc.basePackage + "\",");
 		pr.println("VERSION,");
 		pr.println(apiDesc.uniqueObjects + ") // uniqueObjects");
 		pr.print(".addRegistry(new ").print(pctxt.getRegistryClassName(BBinaryModel.MEDIUM)).println("());");
-		pr.endBlock();
+    pr.endBlock();    
+    pr.endBlock();
+    pr.println("}");
 		pr.println();
 
 		log.debug(")printInstance");

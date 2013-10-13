@@ -538,7 +538,7 @@ void BSerializer_1117460801(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::BStub_PlantService(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::inherit::PlantServiceAuth* r = dynamic_cast<com::wilutions::byps::test::api::inherit::PlantServiceAuth*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -588,7 +588,7 @@ void BSerializer_506940662(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::BStub_FruitService(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::inherit::FruitServiceAuth* r = dynamic_cast<com::wilutions::byps::test::api::inherit::FruitServiceAuth*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -691,7 +691,7 @@ void BSerializer_1881829396(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::BStub_BioFruitService(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::inherit::BioFruitServiceAuth* r = dynamic_cast<com::wilutions::byps::test::api::inherit::BioFruitServiceAuth*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -753,7 +753,7 @@ void BSerializer_617356599(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::BStub_LemonService(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::inherit::LemonServiceAuth* r = dynamic_cast<com::wilutions::byps::test::api::inherit::LemonServiceAuth*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -904,7 +904,7 @@ void BSerializer_1992245333(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::inherit::BStub_BioLemonService(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::inherit::BioLemonServiceAuth* r = dynamic_cast<com::wilutions::byps::test::api::inherit::BioLemonServiceAuth*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}
@@ -1194,7 +1194,7 @@ void BSerializer_1557084481(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport));
 	}
 	else {
-		com::wilutions::byps::test::api::remote::RemoteArrayTypes1dim* r = dynamic_cast<com::wilutions::byps::test::api::remote::RemoteArrayTypes1dim*>(p);
+		BRemote* r = dynamic_cast<BRemote*>(p);
 		BTargetId targetId = r->BRemote_getTargetId();
 		bio & targetId;
 	}

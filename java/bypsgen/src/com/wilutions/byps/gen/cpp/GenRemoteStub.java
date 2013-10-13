@@ -247,7 +247,7 @@ class GenRemoteStub {
 		prC.println("}");
 		prC.println("else {");
 		prC.beginBlock();
-		prC.print(remoteClassName).print("* r = ").print("dynamic_cast<").print(remoteClassName).print("*>(p);").println();
+		prC.print("BRemote* r = ").print("dynamic_cast<BRemote*>(p);").println();
 		prC.println("BTargetId targetId = r->BRemote_getTargetId();");
 		prC.println("bio & targetId;");
 		prC.endBlock();

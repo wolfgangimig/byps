@@ -14,12 +14,14 @@ public class BApiDescriptor_Testser {
 	 */
 	public final static long VERSION = 791L;
 	
-	public final static BApiDescriptor instance = new BApiDescriptor(
-		"Testser",
-		"com.wilutions.byps.test.api",
-		VERSION,
-		false) // uniqueObjects
-		.addRegistry(new BRegistry_Testser());
+	public final static BApiDescriptor instance() {
+		return new BApiDescriptor(
+			"Testser",
+			"com.wilutions.byps.test.api",
+			VERSION,
+			false) // uniqueObjects
+			.addRegistry(new BRegistry_Testser());
+	}
 	
 	
 }

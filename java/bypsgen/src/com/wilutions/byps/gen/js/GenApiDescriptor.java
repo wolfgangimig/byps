@@ -150,7 +150,7 @@ public class GenApiDescriptor {
 		pr.println(" * Internal used API Desciptor.");
 		pr.println("*/");
 		
-		pr.print("getInternalInstance : function() {").println();
+		pr.print("instance : function() {").println();
 		pr.beginBlock();
 		pr.println("return new com.wilutions.byps.BApiDescriptor(");
 		pr.beginBlock();
