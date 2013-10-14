@@ -23,18 +23,18 @@ void AllTests_run(void *app) {
 	for (int i = 0; i < 1000; i++) {
 		cout << "loop " << (i+1) << endl;
 		TestSuite suite;
-		suite.add(TestRemoteWithAuthentication_create(app));
-		suite.add(TestRemotePrimitiveTypes_create(app));
-		suite.add(TestRemoteServerR_create(app));
-		suite.add(TestRemoteStreams_create(app));
-		suite.add(TestRemoteConstants_create(app));
-		suite.add(TestRemoteEnums_create(app));
-		suite.add(TestRemoteInlineInstance_create(app));
-		suite.add(TestRemoteArrays_create(app));
-		suite.add(TestRemoteSetTypes_create(app));
-		suite.add(TestRemoteMapTypes_create(app));
-		suite.add(TestRemoteArrays4Dim_create(app));
-		suite.add(TestRemoteListTypes_create(app));
+//        suite.add(TestRemoteServerR_create(app));
+//        suite.add(TestRemoteWithAuthentication_create(app));
+//		suite.add(TestRemotePrimitiveTypes_create(app));
+        suite.add(TestRemoteStreams_create(app));
+//		suite.add(TestRemoteConstants_create(app));
+//		suite.add(TestRemoteEnums_create(app));
+//		suite.add(TestRemoteInlineInstance_create(app));
+//		suite.add(TestRemoteArrays_create(app));
+//		suite.add(TestRemoteSetTypes_create(app));
+//		suite.add(TestRemoteMapTypes_create(app));
+//		suite.add(TestRemoteArrays4Dim_create(app));
+//		suite.add(TestRemoteListTypes_create(app));
 
 		suite.run();
 	}

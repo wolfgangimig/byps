@@ -59,7 +59,8 @@ BINLINE void HWireClient_RequestsToCancel::cancelAllRequests() {
     }
 
     for (std::vector<PHttpRequest>::iterator it = requests.begin(); it != requests.end(); it++) {
-        (*it)->close();
+        PHttpRequest req = (*it);
+        req->close();
     }
 
     l_debug << L")cancelAllRequests";

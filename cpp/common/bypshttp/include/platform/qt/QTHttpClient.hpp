@@ -349,8 +349,9 @@ public:
 
     virtual void httpError(const BException& ex) {
         l_debug << L"httpError(" << ex;
-        if (!requestFinished) {
+        if (!requestFinished && !requestAborted) {
             result = BVariant(ex);
+            abort();
         }
         l_debug << L")httpError";
     }
@@ -359,7 +360,6 @@ public:
         l_debug << L"close(";
         if (!requestFinished) {
             httpError(BException(EX_CANCELLED, L"HTTP request cancelled"));
-            abort();
         }
         l_debug << L")close";
     }
