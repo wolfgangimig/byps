@@ -7,7 +7,7 @@ import java.nio.ByteOrder;
 public abstract class BBufferBin extends BBuffer {
 
   public final static int DISABLE_VERSION_CHECK = 0x7FFFFFFF;
-  private byte[] helpBufferInt = new byte[9];
+  private byte[] helpBufferInt = new byte[10];
   private byte[] helpBufferStr = new byte[0];
   protected boolean compressInteger = true;
 
@@ -34,33 +34,11 @@ public abstract class BBufferBin extends BBuffer {
     ensureRemaining(2);
     buf.putShort(v);
   }
-
-  private void putIntCompressed(int v) {
-    ensureRemaining(5);
-
-    if (v == 0) {
-      buf.put((byte) 0);
-    }
-    else {
-      boolean neg = v < 0;
-      if (neg) v = -v;
-
-      int i = 0;
-      for (; i < 4 && v != 0; i++) {
-        helpBufferInt[i + 1] = (byte) (v & 0xFF);
-        v >>= 8;
-      }
-
-      helpBufferInt[0] = (byte) (neg ? -i : i);
-      buf.put(helpBufferInt, 0, i + 1);
-    }
-
-  }
-
+  
   public void putInt(int v) {
 
     if (compressInteger) {
-      putIntCompressed(v);
+      putLongCompressed(v);
     }
     else {
       ensureRemaining(4);
@@ -68,27 +46,54 @@ public abstract class BBufferBin extends BBuffer {
     }
   }
 
+  // https://developers.google.com/protocol-buffers/docs/encoding#varints
   private void putLongCompressed(long v) {
-    ensureRemaining(9);
+    ensureRemaining(10);
 
     if (v == 0) {
       buf.put((byte) 0);
     }
     else {
       boolean neg = v < 0;
-      if (neg) v = -v;
+      if (neg) v = -(v+1);
+      v <<= 1;
+      if (neg) v |= 1;
 
       int i = 0;
-      for (; i < 8 && v != 0; i++) {
-        helpBufferInt[i + 1] = (byte) (v & 0xFF);
-        v >>= 8;
+      for (; i < 10 && v != 0; i++) {
+        boolean moreBytes = (v & ~0x7F) != 0;
+        int h = ((int)v) & 0x7F;
+        if (moreBytes) h |= 0x80; 
+        helpBufferInt[i] = (byte)h;
+        v >>>= 7;
       }
 
-      helpBufferInt[0] = (byte) (neg ? -i : i);
-      buf.put(helpBufferInt, 0, i + 1);
+      buf.put(helpBufferInt, 0, i);
     }
 
   }
+
+  private long getLongCompressed() {
+    
+    long v = 0;
+    
+    int shift = 0;
+    boolean moreBytes = true;
+    while (moreBytes) {
+      int h = buf.get();
+      moreBytes = (h & 0x80) != 0;
+      v |= ((long)(h & 0x7F)) << shift;
+      shift += 7;
+    }
+
+    boolean neg = (v & 0x01) != 0;
+    v >>>= 1;
+      
+    if (neg) v = -(v+1);
+    
+    return v;
+  }
+
 
   public void putLong(long v) {
     if (compressInteger) {
@@ -185,49 +190,13 @@ public abstract class BBufferBin extends BBuffer {
     return buf.getShort();
   }
 
-  private int getIntCompressed() {
-    int i = buf.get();
-    if (i == 0) return 0;
-
-    int v = 0;
-    boolean neg = i < 0;
-    if (neg) i = -i;
-
-    buf.get(helpBufferInt, 0, i);
-
-    while (i-- > 0) {
-      v <<= 8;
-      v |= ((int) (helpBufferInt[i])) & 0xFF;
-    }
-
-    return neg ? -v : v;
-  }
-
-  public int getInt() {
+   public int getInt() {
     if (compressInteger) {
-      return getIntCompressed();
+      return (int)getLongCompressed();
     }
     else {
       return buf.getInt();
     }
-  }
-
-  public long getLongCompressed() {
-    int i = buf.get();
-    if (i == 0) return 0;
-
-    long v = 0;
-    boolean neg = i < 0;
-    if (neg) i = -i;
-
-    buf.get(helpBufferInt, 0, i);
-
-    while (i-- > 0) {
-      v <<= 8;
-      v |= ((int) (helpBufferInt[i])) & 0xFF;
-    }
-
-    return neg ? -v : v;
   }
 
   public long getLong() {
@@ -493,34 +462,6 @@ public abstract class BBufferBin extends BBuffer {
     super(bmodel, buf);
   }
 
-  public static void main(String[] args) {
-    int n = 10 * 1000 * 1000;
-
-    BBufferBin bbuf = new BBufferBin.Medium(BBinaryModel.MEDIUM, null);
-    sendrecv(bbuf, n);
-
-    bbuf = new BBufferBin.Medium(BBinaryModel.MEDIUM, null);
-    bbuf.compressInteger = false;
-    sendrecv(bbuf, n);
-
-  }
-
-  protected static void sendrecv(BBufferBin bbuf, int n) {
-    long t1 = System.currentTimeMillis();
-    for (int i = 0; i < n; i++) {
-      long v = 1 << (i % 64);
-      bbuf.putLong(-v);
-    }
-
-    bbuf.buf.flip();
-
-    for (int i = 0; i < n; i++) {
-      bbuf.getLong();
-    }
-    long t2 = System.currentTimeMillis();
-    System.out.println("dt=" + (t2 - t1) + ", #bytes=" + bbuf.buf.position());
-  }
-
   public boolean isCompressInteger() {
     return compressInteger;
   }
@@ -530,7 +471,7 @@ public abstract class BBufferBin extends BBuffer {
     this.compressInteger = compressInteger;
     return ret;
   }
-
+  
 }
 
 // 2,5 times slower for strings with 30 characters.

@@ -1,6 +1,7 @@
 package com.wilutions.byps.gen.cs;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -27,9 +28,7 @@ class GenRemoteStub {
 	
 	private GenRemoteStub(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) throws GeneratorException {
 	  
-    RemoteInfo rinfoImpl = rinfo.getRemoteAuth();
-	  
-		this.rinfo = rinfoImpl != null ? rinfoImpl : rinfo;
+		this.rinfo = pctxt.getBaseRemoteForStub(rinfo);
 		this.pr = pr;
 		this.className = pctxt.getStubClassQName(rinfo, rinfo.pack);
 		this.pctxt = pctxt;
@@ -223,14 +222,12 @@ class GenRemoteStub {
 		pr.endBlock();
 		pr.println();
 
-		for (MethodInfo minfo : rinfo.methods) {
-			printMethod(minfo);
-			printMethodAsync(minfo);
-			printMethodBeginAsync(minfo);
-			printMethodEndAsync(minfo);
-			pr.println();
-		}
-		
+    HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
+    pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
+    for (RemoteInfo r : remotes.values()) {
+      printMethods(r);
+    }
+    
 		pr.println();
 		
 		pr.endBlock();
@@ -244,6 +241,17 @@ class GenRemoteStub {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
+  private void printMethods(RemoteInfo rinfoImpl) throws IOException {
+    
+    for (MethodInfo minfo : rinfoImpl.methods) {
+      printMethod(minfo);
+      printMethodAsync(minfo);
+      printMethodBeginAsync(minfo);
+      printMethodEndAsync(minfo);
+      pr.println();
+    }
+  }
+  
 	private final RemoteInfo rinfo;
 	private final CodePrinter pr;
 	private final String className;

@@ -29,35 +29,11 @@ namespace com.wilutions.byps
             buf.wr.Write(v);
         }
 
-        private void putIntCompressed(int v)
-        {
-            if (v == 0)
-            {
-                buf.wr.Write((byte)0);
-            }
-            else
-            {
-                bool neg = v < 0;
-                if (neg) v = -v;
-
-                int i = 0;
-                for (; i < 4 && v != 0; i++)
-                {
-                    helpBufferInt[i + 1] = (byte)(v & 0xFF);
-                    v >>= 8;
-                }
-
-                helpBufferInt[0] = (byte)(neg ? -i : i);
-                buf.wr.Write(helpBufferInt, 0, i + 1);
-            }
-
-        }
-
-        public void putInt(int v)
+         public void putInt(int v)
         {
             if (compressInteger)
             {
-                putIntCompressed(v);
+                putLongCompressed(v);
             }
             else
             {
@@ -74,19 +50,51 @@ namespace com.wilutions.byps
             else
             {
                 bool neg = v < 0;
-                if (neg) v = -v;
+                if (neg) v = -(v + 1);
+                v <<= 1;
+                if (neg) v |= 1;
 
                 int i = 0;
-                for (; i < 8 && v != 0; i++)
+                for (; i < 10 && v != 0; i++)
                 {
-                    helpBufferInt[i + 1] = (byte)(v & 0xFF);
-                    v >>= 8;
+                    bool moreBytes = (v & ~0x7F) != 0;
+                    int h = ((int)v) & 0x7F;
+                    if (moreBytes) h |= 0x80;
+                    helpBufferInt[i] = (byte)h;
+                    v = (long)((ulong)v >> 7);
                 }
 
-                helpBufferInt[0] = (byte)(neg ? -i : i);
-                buf.wr.Write(helpBufferInt, 0, i + 1);
+                buf.wr.Write(helpBufferInt, 0, i);
             }
 
+        }
+
+        private long getLongCompressed()
+        {
+            long v = 0;
+
+            int i = 0;
+            int shift = 0;
+            bool moreBytes = true;
+            for (; i < 10 && moreBytes; i++)
+            {
+                int h = buf.rd.ReadByte();
+                moreBytes = (h & 0x80) != 0;
+                v |= ((long)(h & 0x7F)) << shift;
+                shift += 7;
+            }
+
+            if (moreBytes)
+            {
+                throw new BException(BExceptionC.CORRUPT, "Read integer failed.");
+            }
+
+            bool neg = (v & 0x01) != 0;
+            v = (long)((ulong)v >> 1);
+      
+            if (neg) v = -(v+1);
+    
+            return v;
         }
 
         public void putLong(long v)
@@ -158,32 +166,11 @@ namespace com.wilutions.byps
             return buf.rd.ReadInt16();
         }
 
-        private int getIntCompressed()
-        {
-            int i = (sbyte)buf.rd.ReadByte();
-            if (i == 0) return 0;
-
-            int v = 0;
-            bool neg = i < 0;
-            if (neg) i = -i;
-
-            buf.rd.Read(helpBufferInt, 0, i);
-
-            while (i-- > 0)
-            {
-                v <<= 8;
-                v |= ((int)(helpBufferInt[i])) & 0xFF;
-            }
-
-            return neg ? -v : v;
-        }
-
-
         public int getInt()
         {
             if (compressInteger)
             {
-                return getIntCompressed();
+                return (int)getLongCompressed();
             }
             else
             {
@@ -191,27 +178,7 @@ namespace com.wilutions.byps
             }
         }
 
-        public long getLongCompressed()
-        {
-            int i = (sbyte)buf.rd.ReadByte();
-            if (i == 0) return 0;
-
-            long v = 0;
-            bool neg = i < 0;
-            if (neg) i = -i;
-
-            buf.rd.Read(helpBufferInt, 0, i);
-
-            while (i-- > 0)
-            {
-                v <<= 8;
-                uint k = (uint)helpBufferInt[i];
-                v |= k & 0xFF;
-            }
-
-            return neg ? -v : v;
-        }
-
+ 
         public long getLong()
         {
             if (compressInteger)
@@ -322,7 +289,7 @@ namespace com.wilutions.byps
         protected readonly BBinaryModel bmodel;
         protected ByteBuffer buf;
         protected byte[] strhlp;
-        protected byte[] helpBufferInt = new byte[9];
+        protected byte[] helpBufferInt = new byte[10];
         protected bool compressInteger = true;
 
 

@@ -7,28 +7,28 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:64
-public interface RemoteServerCtrlAsync extends RemoteServerCtrl, BRemote {
-
+// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:68
+public interface RemoteServerCtrlAsync extends BRemote, 
+	RemoteServerCtrl {
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void removePublishedRemote(java.lang.String name) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) ;
 	
 	

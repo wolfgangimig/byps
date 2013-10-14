@@ -62,10 +62,9 @@ public abstract class BClient {
 	 * If an authentication object was supplied, the authenticate method is called after 
 	 * the protocol version has been negotiated.
 	 * @param asyncResult 
-	 * @throws RemoteException
 	 * @see {@link #setAuthentication(BAuthentication)}
 	 */
-	public void start(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
+	public void start(final BAsyncResult<Boolean> asyncResult) {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
 
     setAuthentication(null);

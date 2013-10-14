@@ -54,11 +54,6 @@ public class BConvert {
   private static final String TAG_SESSION_PARAM_TYPE = "@BSessionParamType";
 	
   /**
-   * reserved
-   */
-  private static final String TAG_REMOTE_AUTH_BASE = "@BAuthinterface";
-  
-  /**
    * Remote interface for the client side.
    * This tag means that the interface can be implemented on the client side. 
    * If the tag is not set, e.g. JavaScript serialization code will not 
@@ -1004,7 +999,7 @@ public class BConvert {
 		}
 		
 		if (!foundBException) {
-			errInfo.msg = "Method must throw BException";
+			errInfo.msg = "Method must throw RemoteException or BException";
 			throw new GeneratorException(errInfo);
 		}
 		
@@ -1018,8 +1013,8 @@ public class BConvert {
 	
 	/**
 	 * Create a RemoteInfo object from a javadoc object.
-	 * @param cls
-	 * @return Object
+	 * @param cls An interface that extends Remote.
+	 * @return RemoteInfo object
 	 * @throws GeneratorException
 	 */
 	private RemoteInfo makeRemoteInfo(ClassDoc cls) throws GeneratorException {
@@ -1028,9 +1023,11 @@ public class BConvert {
 		ErrorInfo errInfo = new ErrorInfo();
 		errInfo.className = qname;
 
-		ClassDoc baseClass = cls.superclass();
-		if (baseClass != null) {
-			errInfo.msg = "Inheritance of Remote interfaces is not supported.";
+		ArrayList<String> baseQNames = new ArrayList<String>();
+		ClassDoc[] baseIfcs = cls.interfaces();
+		for (ClassDoc r : baseIfcs) {
+		  if (r.name().equals("Remote") || r.name().equals("BRemote")) continue;
+		  baseQNames.add(r.qualifiedName());
 		}
 
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
@@ -1044,17 +1041,15 @@ public class BConvert {
 		}
 
 		String authParamClassName = null;
-		String authInterface = null;
 		boolean isClientRemote = false;
     for (Tag tag : cls.tags()) {
       if (tag.kind().equals(TAG_SESSION_PARAM_TYPE)) authParamClassName= tag.text();
-      if (tag.kind().equals(TAG_REMOTE_AUTH_BASE)) authInterface= tag.text();
       if (tag.kind().equals(TAG_CLIENT_REMOTE)) isClientRemote = true; 
       
       cinfos.add(makeCommentInfo(tag.kind(), tag.text()));
     }
 		
-		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, qname, minfos, authParamClassName, authInterface, isClientRemote);
+		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, qname, baseQNames, minfos, authParamClassName, isClientRemote);
 		
 		classDB.createStubForRemote(rinfo);
 

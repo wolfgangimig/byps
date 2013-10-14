@@ -123,11 +123,11 @@ public class BypsServlet extends HHttpServlet {
   }
 
   @Override
-  protected void makeHtmlUploadResult(HttpSession hsess, HttpServletRequest request, HttpServletResponse response,
+  protected void makeHtmlUploadResult(HttpServletRequest request, HttpServletResponse response,
       Collection<HFileUploadItem> items) throws IOException {
     String uploadHandler = request.getParameter("uploadHandler");
     if (uploadHandler.equals("htmlform")) {
-      super.makeHtmlUploadResult(hsess, request, response, items);
+      super.makeHtmlUploadResult(request, response, items);
     }
     else if (uploadHandler.equals("blueimp")) {
 
@@ -205,7 +205,7 @@ public class BypsServlet extends HHttpServlet {
 
   @Override
   protected BApiDescriptor getApiDescriptor() {
-    return BApiDescriptor_Testser.instance;
+    return BApiDescriptor_Testser.instance();
   }
 
   @Override

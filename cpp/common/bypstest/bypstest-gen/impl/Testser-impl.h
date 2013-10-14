@@ -6,6 +6,51 @@
 
 
 //-------------------------------------------------
+// Forward Declaration of class BRequest_BioFruitService_certify
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+class BRequest_BioFruitService_certify; 
+
+}}}}}}
+
+//-------------------------------------------------
+// Forward Declaration of class BRequest_BioLemonService_useParing
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+class BRequest_BioLemonService_useParing; 
+
+}}}}}}
+
+//-------------------------------------------------
+// Forward Declaration of class BRequest_FruitService_squeeze
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+class BRequest_FruitService_squeeze; 
+
+}}}}}}
+
+//-------------------------------------------------
+// Forward Declaration of class BRequest_LemonService_pick
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+class BRequest_LemonService_pick; 
+
+}}}}}}
+
+//-------------------------------------------------
+// Forward Declaration of class BRequest_PlantService_grow
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+class BRequest_PlantService_grow; 
+
+}}}}}}
+
+//-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getBool
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
@@ -3606,6 +3651,116 @@ class BResult_945713488 : public BSerializable {
 };
 
 }}}}}
+
+//-------------------------------------------------
+// BRequest_BioFruitService_certify
+// typeId=724361898
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+using namespace ::com::wilutions::byps;
+
+class BRequest_BioFruitService_certify : public BMethodRequest {
+	public: ::std::wstring param;
+	
+	public: BRequest_BioFruitService_certify();
+	public: BRequest_BioFruitService_certify(::std::wstring param);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 724361898; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}}}
+
+//-------------------------------------------------
+// BRequest_BioLemonService_useParing
+// typeId=1762089337
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+using namespace ::com::wilutions::byps;
+
+class BRequest_BioLemonService_useParing : public BMethodRequest {
+	
+	public: BRequest_BioLemonService_useParing();
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1762089337; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}}}
+
+//-------------------------------------------------
+// BRequest_FruitService_squeeze
+// typeId=656804784
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+using namespace ::com::wilutions::byps;
+
+class BRequest_FruitService_squeeze : public BMethodRequest {
+	
+	public: BRequest_FruitService_squeeze();
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 656804784; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}}}
+
+//-------------------------------------------------
+// BRequest_LemonService_pick
+// typeId=1860602130
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+using namespace ::com::wilutions::byps;
+
+class BRequest_LemonService_pick : public BMethodRequest {
+	public: com::wilutions::byps::test::api::auth::PSessionInfo sess;
+	public: ::std::wstring fromTree;
+	
+	public: BRequest_LemonService_pick();
+	public: BRequest_LemonService_pick(::std::wstring fromTree);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1860602130; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:827
+	public: virtual void setSession(PSerializable __byps__sess);
+};
+
+}}}}}}
+
+//-------------------------------------------------
+// BRequest_PlantService_grow
+// typeId=1534230652
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+
+using namespace ::com::wilutions::byps;
+
+class BRequest_PlantService_grow : public BMethodRequest {
+	
+	public: BRequest_PlantService_grow();
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1534230652; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getBool
@@ -8316,6 +8471,26 @@ void BSerializer_2092671091(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1092048313(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.enu.UsePlanets
 void BSerializer_10000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BRequest_BioFruitService_certify
+void BSerializer_724361898(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BRequest_BioLemonService_useParing
+void BSerializer_1762089337(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BRequest_FruitService_squeeze
+void BSerializer_656804784(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BRequest_LemonService_pick
+void BSerializer_1860602130(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BRequest_PlantService_grow
+void BSerializer_1534230652(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BStub_BioFruitService
+void BSerializer_1881829396(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BStub_BioLemonService
+void BSerializer_1992245333(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BStub_FruitService
+void BSerializer_506940662(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BStub_LemonService
+void BSerializer_617356599(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.inherit.BStub_PlantService
+void BSerializer_1117460801(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.inherit.Class1
 void BSerializer_6001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.inherit.Class1Collections

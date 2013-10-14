@@ -29,9 +29,6 @@ public class BServer {
   public void setTargetId(BTargetId targetId) {
     transport.setTargetId(targetId);
     if (clientR != null) clientR.transport.setTargetId(targetId);
-    for (BSkeleton remote : remotes.values()) {
-      remote.BSkeleton_setTargetId(targetId);
-    }
   }
   
   public BTargetId getTargetId() {

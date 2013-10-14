@@ -15,11 +15,14 @@ typedef byps_ptr<QTHttpRequest> PQTHttpRequest;
 class QTHttpGet;
 typedef byps_ptr<QTHttpGet> PQTHttpGet;
 
+class QTHttpGetStream;
+typedef byps_ptr<QTHttpGetStream> PQTHttpGetStream;
+
 class QTHttpPost;
 typedef byps_ptr<QTHttpPost> PQTHttpPost;
 
-class QTHttpPut;
-typedef byps_ptr<QTHttpPut> PQTHttpPut;
+class QTHttpPutStream;
+typedef byps_ptr<QTHttpPutStream> PQTHttpPutStream;
 
 class QTHttpClient;
 typedef byps_ptr<QTHttpClient> PQTHttpClient;

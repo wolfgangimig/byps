@@ -41,7 +41,7 @@ public class JSerializer_6002 extends com.wilutions.byps.test.api.inherit.JSeria
 		final Class2 obj = (Class2)(obj1 != null ? obj1 : bin.onObjectCreated(new Class2()));
 		
 		// Read base class members
-		super.internalRead(obj1, bin);
+		super.internalRead(obj, bin);
 		
 		final BJsonObject js = bin.currentObject;
 		obj.int2 = js.getInt("int2");

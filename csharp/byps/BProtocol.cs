@@ -30,6 +30,6 @@ namespace com.wilutions.byps
 
 	    public abstract BOutput getResponse(BTransport transport, BMessageHeader requestHeader) ;
 
-	    public abstract BInput getInput(ByteBuffer buf, BTransport transport) ;
+        public abstract BInput getInput(BTransport transport, BMessageHeader responseHeader, ByteBuffer buf);
     }
 }

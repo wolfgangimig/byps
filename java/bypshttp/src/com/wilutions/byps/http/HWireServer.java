@@ -84,23 +84,15 @@ public class HWireServer extends BWire {
     	}
     	
 	   	@Override
-	   	public long getContentLength() {
-			try {
+	   	public long getContentLength() throws IOException {
 				BContentStream src = (BContentStream)ensureStream();
 				return src.getContentLength();
-			} catch (IOException e) {
-				throw new IllegalStateException(e);
-			}
 	   	}
 	   	
 	   	@Override
-	   	public String getContentType() {
-			try {
+	   	public String getContentType() throws IOException {
 				BContentStream src = (BContentStream)ensureStream();
 				return src.getContentType();
-			} catch (IOException e) {
-				throw new IllegalStateException(e);
-			}
 	   	}
     }
     
@@ -217,12 +209,13 @@ public class HWireServer extends BWire {
     	OutputStream os = null;
     	try {
     		is = activeMessages.getOutgoingStream(messageId, streamId);
-    		response.setStatus(HttpServletResponse.SC_OK);
     		
     		final String contentType = is.getContentType();
     		final long contentLength = is.getContentLength();
     		response.setContentType(contentType);
-    		response.setHeader("Content-Length", Long.toString(contentLength));
+    		if (contentLength >= 0) {
+    		  response.setHeader("Content-Length", Long.toString(contentLength));
+    		}
     		
     		os = response.getOutputStream();
         byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
@@ -232,12 +225,10 @@ public class HWireServer extends BWire {
         }
     	}
       catch (IOException e) {
-        response.setHeader("Content-Length", "0");
         throw e;
       }
       catch (Throwable e) {
-        response.setHeader("Content-Length", "0");
-        throw new IOException("Cannot read stream", e);
+        throw new IOException("Read stream failed.", e);
       }
     	finally {
     		if (log.isDebugEnabled()) log.debug("close response of outgoing stream, streamId=" + streamId);

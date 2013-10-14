@@ -1,6 +1,7 @@
 package com.wilutions.byps.gen.cpp;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +33,7 @@ class GenRemoteSkeleton {
 		this.baseCppInfo = cppInfo.getBaseInfo();
 		this.prH = pctxt.getPrApiAllH();
 		this.prC = pctxt.getPrImplC();
-		this.rinfo = pctxt.getRemoteBaseForSkeleton(rinfo);
+		this.rinfo = pctxt.getBaseRemoteForSkeleton(rinfo);
 	}
 	
 	private void printMethod(MethodInfo methodInfo) throws IOException {
@@ -139,7 +140,7 @@ class GenRemoteSkeleton {
 		prH.println();
 		
 		prH.print("class ").print(className)
-			.print(" : public BSkeleton, public ").print(rinfo.name)
+			.print(" : public BSkeleton, public virtual ").print(rinfo.name)
 			.print(" {");
 		prH.println();
 
@@ -148,12 +149,12 @@ class GenRemoteSkeleton {
 		
 		pctxt.print_BSerializable_getTypeId(rinfo, prH);
 
-		for (MethodInfo minfo : rinfo.methods) {
-			printMethod(minfo);
-			printMethodAsync(minfo);
-			prH.println();
-		}
-		
+    HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
+    pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
+    for (RemoteInfo r : remotes.values()) {
+      printMethods(r);
+    }
+
 		prH.println();
 		
 		prH.endBlock();
@@ -168,6 +169,14 @@ class GenRemoteSkeleton {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
+  private void printMethods(RemoteInfo rinfoImpl) throws IOException {
+    
+    for (MethodInfo minfo : rinfoImpl.methods) {
+      printMethod(minfo);
+      printMethodAsync(minfo);
+      prH.println();
+    }
+  } 	
 //	private void printConstructor() {
 //		pr.print("public ").print(className).print("(BTransport transport) {").println();
 //		pr.beginBlock();

@@ -13,7 +13,7 @@ using namespace com::wilutions::byps::http;
 
 #define MAX_STREAM_PART_SIZE (1000 * 1000)
 
-class QTHttpGet_ContentStream : public BContentStream {
+class QTHttpGetStream_ContentStream : public BContentStream {
     byps_condition_variable waitRead;
     byps_condition_variable waitWrite;
     byps_condition_variable waitHeaders;
@@ -29,7 +29,7 @@ class QTHttpGet_ContentStream : public BContentStream {
     BException ex;
     static BLogger log;
 public:
-    QTHttpGet_ContentStream(int32_t timeoutSeconds)
+    QTHttpGetStream_ContentStream(int32_t timeoutSeconds)
         : readPos(0)
         , readLimit(0)
         , contentLength(0)
@@ -39,7 +39,7 @@ public:
         l_debug << L"ctor(timeoutSeconds=" << timeoutSeconds << L")";
     }
 
-    virtual ~QTHttpGet_ContentStream() {
+    virtual ~QTHttpGetStream_ContentStream() {
         l_debug << L"dtor()";
     }
 
@@ -91,7 +91,7 @@ public:
 
     void maybeWaitUntilHeadersAvail() const {
         l_debug << L"maybeWaitUntilHeadersAvail(";
-        QTHttpGet_ContentStream* pThis = const_cast<QTHttpGet_ContentStream*>(this);
+        QTHttpGetStream_ContentStream* pThis = const_cast<QTHttpGetStream_ContentStream*>(this);
         byps_unique_lock lock(pThis->mutex);
         while(!ex && !headersAvail) {
             if (pThis->waitHeaders.wait_for(lock, timeout) == std::cv_status::timeout) {
@@ -156,6 +156,7 @@ class QTHttpClient : public HHttpClient, public byps_enable_shared_from_this<QTH
     void* app;
     static BLogger log;
     QTHttpClientBridge clientBridge;
+    PHttpCredentials credentials;
 
 public:
     QTHttpWorkerThread* worker;
@@ -186,7 +187,8 @@ public:
         l_debug << L"dtor()";
     }
 
-    virtual void init(const std::wstring& ) {
+    virtual void init(const std::wstring& , PHttpCredentials creds) {
+        credentials = creds;
     }
 
     virtual void done() {
@@ -197,11 +199,13 @@ public:
         l_debug << L")done";
     }
 
+    virtual PHttpGetStream getStream(const std::wstring& url);
+
     virtual PHttpGet get(const std::wstring& url);
 
     virtual PHttpPost post(const std::wstring& url);
 
-    virtual PHttpPut put(const std::wstring& url);
+    virtual PHttpPutStream putStream(const std::wstring& url);
 
     static QNetworkRequest urlToNetworkRequest(const std::wstring& surl) {
         return QNetworkRequest(QUrl(QString::fromStdWString(surl)));
@@ -265,8 +269,15 @@ protected:
     int32_t timeoutSeconds;
     bool requestAborted;
     bool requestFinished;
+
+    PBytes respBytes;
+    size_t respPos;
+
+    PAsyncResult asyncBytesReceived;
+
     BVariant result;
     static BLogger log;
+
 public:
     QTHttpRequest(PQTHttpClient httpClient, QNetworkRequest networkRequest)
         : httpClient(httpClient)
@@ -275,6 +286,8 @@ public:
         , timeoutSeconds(0)
         , requestAborted(false)
         , requestFinished(false)
+        , respPos(0)
+        , asyncBytesReceived(NULL)
     {
         l_debug << L"ctor()";
     }
@@ -335,11 +348,63 @@ public:
         return httpClient;
     }
 
-    virtual void internalApplyResult() = 0;
+    virtual void internalApplyResult() {
+        l_debug << L"internalApplyResult(";
+        if (asyncBytesReceived) {
+            l_debug << L"result=" << result.toString();
+            asyncBytesReceived->setAsyncResult(result);
+            asyncBytesReceived = NULL;
+        }
+        l_debug << L")internalApplyResult";
+    }
 
-    virtual void httpFinished() = 0;
+    virtual void httpFinished() {
+        l_debug << L"httpFinished(";
 
-    virtual void httpReadyRead() = 0;
+        if (bridge) {
+            QVariant varContentLength = bridge->reply->header(QNetworkRequest::ContentLengthHeader);
+            qulonglong contentLength = varContentLength.toULongLong();
+            l_debug << L"contentLength=" << contentLength;
+            QVariant varContentType = bridge->reply->header(QNetworkRequest::ContentTypeHeader);
+            QString contentType = varContentType.toString();
+            l_debug << L"contentType=" << contentType.toStdWString();
+        }
+
+        if (respBytes) {
+            l_debug << L"#bytes=" << respPos;
+            respBytes->length = respPos;
+            if (!result.isException()) {
+                result = BVariant(respBytes);
+            }
+        }
+        done();
+        l_debug << L")httpFinished";
+    }
+
+    virtual void httpReadyRead() {
+        l_debug << L"httpReadReady(";
+
+        QByteArray bytes = bridge->reply->readAll();
+        size_t bsize = bytes.size();
+        l_debug << L"received #bytes=" << bsize;
+
+        if (!respBytes) {
+            respBytes = BBytes::create(bsize);
+        }
+        else if (respPos + bsize > respBytes->length) {
+            size_t grow = std::min(respBytes->length, (size_t)1000000);
+            size_t ncapacity = std::max(respBytes->length + grow, respPos + bsize);
+            l_debug << L"grow buffer to new capacity=" << ncapacity;
+            respBytes = BBytes::create(respBytes, ncapacity);
+        }
+
+        l_debug << L"copy bytes";
+        memcpy(respBytes->data + respPos, bytes.data(), bsize);
+
+        respPos += bsize;
+        l_debug << L"received so far: #bytes=" << respPos;
+
+    }
 
     virtual void httpTimeout() {
         l_debug << L"httpTimeout(";
@@ -367,27 +432,27 @@ public:
 
 };
 
-class QTHttpGet : public HHttpGet, public virtual QTHttpRequest {
+class QTHttpGetStream : public HHttpGetStream, public virtual QTHttpRequest {
 
-    byps_weak_ptr<QTHttpGet_ContentStream> stream_weak_ptr;
+    byps_weak_ptr<QTHttpGetStream_ContentStream> stream_weak_ptr;
     bool headersApplied;
     static BLogger log;
 
 public:
-    QTHttpGet(PQTHttpClient httpClient, QNetworkRequest networkRequest)
+    QTHttpGetStream(PQTHttpClient httpClient, QNetworkRequest networkRequest)
         : QTHttpRequest(httpClient, networkRequest)
         , headersApplied(false)
     {
         l_debug << L"ctor()";
     }
 
-    virtual ~QTHttpGet() {
+    virtual ~QTHttpGetStream() {
         l_debug << L"dtor()";
     }
 
     virtual PContentStream send() {
         l_debug << L"send(";
-        byps_ptr<QTHttpGet_ContentStream> ret(new QTHttpGet_ContentStream(timeoutSeconds));
+        byps_ptr<QTHttpGetStream_ContentStream> ret(new QTHttpGetStream_ContentStream(timeoutSeconds));
         this->stream_weak_ptr = ret;
 
         PQTHttpClient httpClient = getHttpClient();
@@ -401,9 +466,9 @@ public:
         return ret;
     }
 
-    byps_ptr<QTHttpGet_ContentStream> getStreamOrAbort() {
+    byps_ptr<QTHttpGetStream_ContentStream> getStreamOrAbort() {
         l_debug << L"getStreamOrAbort(";
-        byps_ptr<QTHttpGet_ContentStream> stream = stream_weak_ptr.lock();
+        byps_ptr<QTHttpGetStream_ContentStream> stream = stream_weak_ptr.lock();
         if (!stream && !bridge->reply->isFinished()) {
              abort();
         }
@@ -413,7 +478,7 @@ public:
 
     virtual void internalApplyResult() {
         l_debug << L"internalApplyResult(";
-        byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
+        byps_ptr<QTHttpGetStream_ContentStream> stream = getStreamOrAbort();
         if (stream) {
             if (result.isException()) {
                 l_debug << L"stream->writeError " << result.getException().toString();
@@ -440,7 +505,7 @@ public:
     virtual void httpReadyRead() {
         l_debug << L"httpReadyRead(";
         applyHeadersIfNot();
-        byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
+        byps_ptr<QTHttpGetStream_ContentStream> stream = getStreamOrAbort();
         if (stream) {
             stream->putBytes(bridge->reply->readAll());
         }
@@ -453,7 +518,7 @@ public:
         if (!headersApplied) {
             headersApplied = true;
 
-            byps_ptr<QTHttpGet_ContentStream> stream = getStreamOrAbort();
+            byps_ptr<QTHttpGetStream_ContentStream> stream = getStreamOrAbort();
             if (stream) {
 
                 QByteArray headerValue = bridge->reply->rawHeader("Content-Type");
@@ -469,12 +534,40 @@ public:
     }
 };
 
+class QTHttpGet : public HHttpGet, public virtual QTHttpRequest {
+    friend class QTHttpPostWorker;
+    static BLogger log;
+public:
+
+    QTHttpGet(PQTHttpClient httpClient, QNetworkRequest networkRequest)
+        : QTHttpRequest(httpClient, networkRequest)
+    {
+        l_debug << L"ctor()";
+    }
+
+    virtual ~QTHttpGet() {
+        l_debug << L"dtor()";
+    }
+
+    virtual void send(PAsyncResult asyncBytesReceived) {
+        l_debug << L"send(";
+         this->asyncBytesReceived = asyncBytesReceived;
+
+        PQTHttpClient httpClient = getHttpClient();
+        if (httpClient) {
+            l_debug << L"networkManager->post...";
+            httpClient->createGetRequest(shared_from_this(), networkRequest, getTimeoutSeconds(), &bridge);
+            l_debug << L"networkManager->post OK";
+        }
+
+        l_debug << L")send";
+    }
+
+};
+
 
 class QTHttpPost : public HHttpPost, public virtual QTHttpRequest {
     QByteArray* bytesToPost;
-    PAsyncResult asyncBytesReceived;
-    PBytes respBytes;
-    size_t pos;
     friend class QTHttpPostWorker;
     static BLogger log;
 public:
@@ -482,9 +575,6 @@ public:
     QTHttpPost(PQTHttpClient httpClient, QNetworkRequest networkRequest)
         : QTHttpRequest(httpClient, networkRequest)
         , bytesToPost(NULL)
-        , asyncBytesReceived(NULL)
-        , respBytes(BBytes::create(10 * 1000))
-        , pos(0)
     {
         l_debug << L"ctor()";
     }
@@ -512,65 +602,9 @@ public:
         l_debug << L")send";
     }
 
-    virtual void internalApplyResult() {
-        l_debug << L"internalApplyResult(";
-        if (asyncBytesReceived) {
-            l_debug << L"result=" << result.toString();
-            asyncBytesReceived->setAsyncResult(result);
-            asyncBytesReceived = NULL;
-        }
-        l_debug << L")internalApplyResult";
-    }
-
-    virtual void httpFinished() {
-        l_debug << L"httpFinished(";
-
-        if (bridge) {
-            QVariant varContentLength = bridge->reply->header(QNetworkRequest::ContentLengthHeader);
-            qulonglong contentLength = varContentLength.toULongLong();
-            l_debug << L"contentLength=" << contentLength;
-            QVariant varContentType = bridge->reply->header(QNetworkRequest::ContentTypeHeader);
-            QString contentType = varContentType.toString();
-            l_debug << L"contentType=" << contentType.toStdWString();
-        }
-
-        if (respBytes) {
-            l_debug << L"#bytes=" << pos;
-            respBytes->length = pos;
-            if (!result.isException()) {
-                result = BVariant(respBytes);
-            }
-        }
-        done();
-        l_debug << L")httpFinished";
-    }
-
-    virtual void httpReadyRead() {
-        l_debug << L"httpReadReady(";
-        if (asyncBytesReceived) {
-
-            QByteArray bytes = bridge->reply->readAll();
-            size_t bsize = bytes.size();
-            l_debug << L"received #bytes=" << bsize;
-
-            if (pos + bsize > respBytes->length) {
-                size_t grow = std::min(respBytes->length, (size_t)1000000);
-                size_t ncapacity = std::max(respBytes->length + grow, pos + bsize);
-                l_debug << L"grow buffer to new capacity=" << ncapacity;
-                respBytes = BBytes::create(respBytes, ncapacity);
-            }
-
-            l_debug << L"copy bytes";
-            memcpy(respBytes->data + pos, bytes.data(), bsize);
-
-            pos += bsize;
-            l_debug << L"received so far: #bytes=" << pos;
-        }
-    }
-
 };
 
-class QTHttpPut : public HHttpPut, public virtual QTHttpRequest {
+class QTHttpPutStream : public HHttpPutStream, public virtual QTHttpRequest {
     PContentStream streamToPut;
     PAsyncResult asyncBoolFinished;
     int64_t partId;
@@ -579,10 +613,10 @@ class QTHttpPut : public HHttpPut, public virtual QTHttpRequest {
     bool isLastPart;
     PBytes bytesToPut;
     QString baseUrl;
-    friend class QTHttpPutWorker;
+    friend class QTHttpPutStreamWorker;
     static BLogger log;
 public:
-    QTHttpPut(PQTHttpClient httpClient, QNetworkRequest networkRequest)
+    QTHttpPutStream(PQTHttpClient httpClient, QNetworkRequest networkRequest)
         : QTHttpRequest(httpClient, networkRequest)
         , streamToPut(NULL)
         , asyncBoolFinished(NULL)
@@ -594,7 +628,7 @@ public:
         l_debug << L"ctor()";
     }
 
-    virtual ~QTHttpPut() {
+    virtual ~QTHttpPutStream() {
         l_debug << L"dtor()";
     }
 
@@ -794,6 +828,13 @@ BINLINE void QTHttpRequestBridge::done() {
     pThis.reset();
 }
 
+BINLINE PHttpGetStream QTHttpClient::getStream(const std::wstring& url) {
+    l_debug << L"getStream(" << url;
+    QTHttpGetStream* req = new QTHttpGetStream(shared_from_this(), urlToNetworkRequest(url));
+    l_debug << L")getStream";
+    return PHttpGetStream(req);
+}
+
 BINLINE PHttpGet QTHttpClient::get(const std::wstring& url) {
     l_debug << L"get(" << url;
     QTHttpGet* req = new QTHttpGet(shared_from_this(), urlToNetworkRequest(url));
@@ -808,11 +849,11 @@ BINLINE PHttpPost QTHttpClient::post(const std::wstring& url) {
     return PHttpPost(req);
 }
 
-BINLINE PHttpPut QTHttpClient::put(const std::wstring& url) {
-    l_debug << L"put(" << url;
-    QTHttpPut* req = new QTHttpPut(shared_from_this(), urlToNetworkRequest(url));
-    l_debug << L")put";
-    return PHttpPut(req);
+BINLINE PHttpPutStream QTHttpClient::putStream(const std::wstring& url) {
+    l_debug << L"putStream(" << url;
+    QTHttpPutStream* req = new QTHttpPutStream(shared_from_this(), urlToNetworkRequest(url));
+    l_debug << L")putStream";
+    return PHttpPutStream(req);
 }
 
 BINLINE QTHttpWorkerThread::QTHttpWorkerThread()
@@ -865,12 +906,13 @@ BINLINE void QTHttpWorkerBridge::createPutRequest(QNetworkRequest networkRequest
 }
 
 
-BLogger QTHttpGet_ContentStream::log("QTHttpGet_ContentStream");
+BLogger QTHttpGetStream_ContentStream::log("QTHttpGetStream_ContentStream");
 BLogger QTHttpClient::log("QTHttpClient");
 BLogger QTHttpRequest::log("QTHttpRequest");
-BLogger QTHttpGet::log("QTHttpGet");
+BLogger QTHttpGetStream::log("QTHttpGetStream");
 BLogger QTHttpPost::log("QTHttpPost");
-BLogger QTHttpPut::log("QTHttpPut");
+BLogger QTHttpGet::log("QTHttpGet");
+BLogger QTHttpPutStream::log("QTHttpPutStream");
 BLogger QTHttpWorkerThread::log("QTHttpWorkerThread");
 BLogger QTHttpRequestBridge::log("QTHttpRequestBridge");
 BLogger QTHttpWorkerBridge::log("QTHttpWorkerBridge");

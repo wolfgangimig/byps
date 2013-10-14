@@ -32,6 +32,16 @@ namespace com.wilutions.byps.test.api
 		{
 		}
 		
+		public BServer_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) {
+			addRemote(1881829396, remoteSkeleton);
+			return this;
+		}
+		
+		public BServer_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) {
+			addRemote(1992245333, remoteSkeleton);
+			return this;
+		}
+		
 		public BServer_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) {
 			addRemote(1677934392, remoteSkeleton);
 			return this;

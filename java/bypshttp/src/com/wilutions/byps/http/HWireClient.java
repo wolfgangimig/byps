@@ -13,6 +13,7 @@ import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +24,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.logging.Log;
@@ -60,6 +60,8 @@ public class HWireClient extends BWire {
 	protected Statistics stats = null;
 	
 	protected long timeoutMillisClient;
+
+  private enum ERequestDirection { FORWARD, REVERSE };
 
 	/**
 	 * Initializes a new client-side HTTP communication.
@@ -164,13 +166,13 @@ public class HWireClient extends BWire {
 	@Override
 	public synchronized void send(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
 		//internalSendMessageAndStreams(msg, asyncResult, this.timeoutMillisClient);
-	  internalSendStreamsThenMessage(msg, asyncResult, this.timeoutMillisClient);
+	  internalSendStreamsThenMessage(msg, asyncResult);
 	}
 	
 	@Override
 	public void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult) {
 		//internalSendMessageAndStreams(msg, asyncResult, 0);
-		internalSendStreamsThenMessage(msg, asyncResult, 0);
+		internalSendStreamsThenMessage(msg, asyncResult);
 	}
 
 	protected void executeRequest(RequestToCancel r) throws BException {
@@ -231,7 +233,7 @@ public class HWireClient extends BWire {
 			}
 		
 			// Create RequestToCancel for message
-			RequestToCancel req = createRequestForMessage(msg.header.messageId, timeout, msg.buf, outerResult);
+			RequestToCancel req = createRequestForMessage(msg, outerResult);
 			executeRequest(req);
 			
 			// Create RequestToCancel objects for each stream.
@@ -247,7 +249,7 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug(")send");
 	}
 	
-	private synchronized void internalSendStreamsThenMessage(final BMessage msg, final BAsyncResult<BMessage> asyncResult, final long timeout) {
+	private synchronized void internalSendStreamsThenMessage(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
 		if (log.isDebugEnabled()) log.debug("internalSendStreamsThenMessage(" + msg + ", asyncResult=" + asyncResult);
 
 		// Convert the BMessage into RequestToCancel objects.
@@ -275,7 +277,7 @@ public class HWireClient extends BWire {
 					else {
 						// Send the message 
 						try {
-							RequestToCancel messageRequest = createRequestForMessage(msg.header.messageId, timeout, msg.buf, asyncResult);
+							RequestToCancel messageRequest = createRequestForMessage(msg, asyncResult);
 							requests.add(messageRequest);
 							executeRequest(messageRequest);
 						} catch (BException e) {
@@ -295,7 +297,7 @@ public class HWireClient extends BWire {
 		}
 		else {
 			// Create RequestToCancel for msg.buf
-			RequestToCancel req = createRequestForMessage(msg.header.messageId, timeout, msg.buf, asyncResult);
+			RequestToCancel req = createRequestForMessage(msg, asyncResult);
 			requests.add(req);
 		}
 		
@@ -313,26 +315,35 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug(")internalSendStreamsThenMessage");
 	}
 
-	protected RequestToCancel createRequestForMessage(long messageId, long timeout, ByteBuffer buf, BAsyncResult<BMessage> asyncResult) {
-		RequestToCancel r =  new RequestToCancel(messageId, buf, null, 0L, 0L, timeout, asyncResult);
+	protected RequestToCancel createRequestForMessage(BMessage msg, BAsyncResult<BMessage> asyncResult) {
+	  ERequestDirection requestDirection = ERequestDirection.FORWARD;
+	  long timeout = this.timeoutMillisClient;
+	  
+	  // Reverse HTTP request (long-poll)?
+	  if ((msg.header.flags & BMessageHeader.FLAG_RESPONSE) != 0) {
+	    requestDirection = ERequestDirection.REVERSE;
+	    timeout = 0; // timeout controlled by server, 10min by default.
+	  }
+	  
+		RequestToCancel r =  new RequestToCancel(requestDirection, msg.header.messageId, msg.buf, null, 0L, 0L, timeout, asyncResult);
 		addRequest(r);
 		return r;
 	}
 	
 	protected RequestToCancel createRequestForPutStream(long messageId, BStreamRequest streamRequest, BAsyncResult<BMessage> asyncResult) {
-		RequestToCancel r = new RequestToCancel(messageId, null, streamRequest, streamRequest.streamId, 0L, this.timeoutMillisClient, asyncResult);
+		RequestToCancel r = new RequestToCancel(ERequestDirection.FORWARD, messageId, null, streamRequest, streamRequest.streamId, 0L, this.timeoutMillisClient, asyncResult);
 		addRequest(r);
 		return r;
 	}
 	
 	protected RequestToCancel createRequestForGetStream(long messageId, long streamId, BAsyncResult<BMessage> asyncResult) {
-		RequestToCancel r = new RequestToCancel(messageId, null, null, streamId, 0L, this.timeoutMillisClient, asyncResult);
+		RequestToCancel r = new RequestToCancel(ERequestDirection.FORWARD, messageId, null, null, streamId, 0L, this.timeoutMillisClient, asyncResult);
 		addRequest(r);
 		return r;
 	}
 	
 	protected RequestToCancel createRequestForCancelMessage(long messageId) {
-		RequestToCancel r = new RequestToCancel(0L, null, null, 0L, messageId, this.timeoutMillisClient, new BAsyncResult<BMessage>() {
+		RequestToCancel r = new RequestToCancel(ERequestDirection.FORWARD, 0L, null, null, 0L, messageId, this.timeoutMillisClient, new BAsyncResult<BMessage>() {
 			public void setAsyncResult(BMessage msg, Throwable e) {}
 		});
 		addRequest(r);
@@ -341,6 +352,7 @@ public class HWireClient extends BWire {
 
 	protected class RequestToCancel implements Runnable, BAsyncResult<ByteBuffer>, Comparable<RequestToCancel> {
 		
+	  final ERequestDirection requestDirection;
 		final long messageId;
 		final long streamId;
 		final ByteBuffer buf;
@@ -349,12 +361,13 @@ public class HWireClient extends BWire {
 		final BAsyncResult<BMessage> asyncResult;
 		final AtomicBoolean isOpen = new AtomicBoolean(true);
 		final long timeoutMillisRequest;
-
+		
 		volatile boolean _canceled;
 		AtomicReference<HttpURLConnection> conn = new AtomicReference<HttpURLConnection>();
 		
-		protected RequestToCancel(long messageId, ByteBuffer buf, BStreamRequest streamRequest,
+		protected RequestToCancel(ERequestDirection requestDirection, long messageId, ByteBuffer buf, BStreamRequest streamRequest,
 				long streamId, long cancelMessageId, long timeout, BAsyncResult<BMessage> asyncResult) {
+		  this.requestDirection = requestDirection;
 			this.messageId = messageId;
 			this.streamId = streamId;
 			this.buf = buf;
@@ -493,32 +506,41 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug("internalSend(" + request);
 		
 		HttpURLConnection conn = null;
-		ByteBuffer buf = request.buf;
+		ByteBuffer requestDataBuffer = request.buf;
 		
 		ByteBuffer returnBuffer = null;
 		Throwable returnException = null;
 
 		if (log.isDebugEnabled()) {
-			buf.mark();
-			BBufferJson bbuf = new BBufferJson(buf);
+			requestDataBuffer.mark();
+			BBufferJson bbuf = new BBufferJson(requestDataBuffer);
 			log.debug(bbuf.toDetailString());
-			buf.reset();
+			requestDataBuffer.reset();
 		}
 
 		final long beginSendMillis = System.currentTimeMillis();
-		final boolean isNegotiate = BNegotiate.isNegotiateMessage(buf);
-		final boolean isJson = isNegotiate || BMessageHeader.detectProtocol(buf) == BMessageHeader.MAGIC_JSON;
+		final boolean isNegotiate = BNegotiate.isNegotiateMessage(requestDataBuffer);
+		final boolean isJson = isNegotiate || BMessageHeader.detectProtocol(requestDataBuffer) == BMessageHeader.MAGIC_JSON;
 		if (log.isDebugEnabled()) log.debug("isJson=" + isJson);
 
 		try {
 		  String destUrl = surl;
 		  
+		  // Negotiate? 
 		  if (isNegotiate) {
-		    int p = destUrl.lastIndexOf("/");
-		    if (p >= 0) {
-		      destUrl = destUrl.substring(0, p);
-		      destUrl += getServletPathForNegotiationAndAuthentication();
-		    }
+		    
+		    // Send a GET request and pass the negotate string as parameter 
+		    
+	      String negoStr = new String(requestDataBuffer.array(), requestDataBuffer.position(), requestDataBuffer.limit(), "UTF-8");
+	      negoStr = URLEncoder.encode(negoStr, "UTF-8");
+	      
+	      destUrl = makeUrl(getServletPathForNegotiationAndAuthentication(), 
+	          new String[] { "negotiate", negoStr });
+		  }
+		  
+		  // Reverse request (long-poll) ?
+		  else if (request.requestDirection == ERequestDirection.REVERSE) {
+		    destUrl = makeUrl(getServletPathForReverseRequest(), null);
 		  }
 		  
 			final URL url = new URL(destUrl);
@@ -531,8 +553,8 @@ public class HWireClient extends BWire {
 			conn.setReadTimeout((int)request.timeoutMillisRequest); // is 0 for a long-poll request
 
 			conn.setDoInput(true);
-			conn.setDoOutput(true);
-			conn.setRequestMethod("POST");
+			conn.setDoOutput(!isNegotiate);
+			conn.setRequestMethod(isNegotiate ? "GET" : "POST");
 			
 			conn.setRequestProperty("Accept", "application/json, application/byps, text/plain, text/html");
 			if ((flags & BWire.FLAG_GZIP) != 0) conn.setRequestProperty("Accept-Encoding", "gzip"); 
@@ -540,18 +562,20 @@ public class HWireClient extends BWire {
 			
 			applySession(conn);
 
-			if (log.isDebugEnabled()) log.debug("write to output stream");
-			OutputStreamByteCount osbc = new OutputStreamByteCount(conn.getOutputStream());
-			bufferToStream(buf, osbc);
-			if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
-
-			if (stats != null) {
-				final long endSendMillis = System.currentTimeMillis();
-				synchronized(this) {
-					stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
-				}
-			}
+			if (!isNegotiate) {
+  			if (log.isDebugEnabled()) log.debug("write to output stream");
+  			OutputStreamByteCount osbc = new OutputStreamByteCount(conn.getOutputStream());
+  			bufferToStream(requestDataBuffer, osbc);
+  			if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
 			
+  			if (stats != null) {
+  				final long endSendMillis = System.currentTimeMillis();
+  				synchronized(this) {
+  					stats.addSendData(osbc.sum, endSendMillis-beginSendMillis);
+  				}
+  			}
+	    }
+
 			final long beginRecvMillis = System.currentTimeMillis();
 			
 			request.throwIfCancelled();
@@ -644,29 +668,28 @@ public class HWireClient extends BWire {
 		
 		if (log.isDebugEnabled()) log.debug("internalPutStream(messageId=" + messageId + ", streamId=" + streamId + ", stream=" + stream);
 		ByteBuffer obuf = null;
-		
-		String contentType = null;
-		long totalLength = -1L;
-		if (stream instanceof BContentStream) {
-			BContentStream cstream = (BContentStream)stream;
-			contentType = cstream.getContentType();
-			totalLength = cstream.getContentLength();
-		}
-		else if (stream instanceof ByteArrayInputStream) {
-			contentType = BContentStream.DEFAULT_CONTENT_TYPE;
-			totalLength = ((ByteArrayInputStream)stream).available();
-		}
-
-		if (contentType == null || contentType.length() == 0) {
-			contentType = BContentStream.DEFAULT_CONTENT_TYPE;
-		}
-		if (log.isDebugEnabled()) log.debug("Content-Type=" + contentType);
-		
-		Throwable returnException = null;
-		
-		final long beginSendMillis = System.currentTimeMillis();
-		
+    Throwable returnException = null;
+    
 		try {
+	    String contentType = null;
+	    long totalLength = -1L;
+	    if (stream instanceof BContentStream) {
+	      BContentStream cstream = (BContentStream)stream;
+	      contentType = cstream.getContentType();
+	      totalLength = cstream.getContentLength();
+	    }
+	    else if (stream instanceof ByteArrayInputStream) {
+	      contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+	      totalLength = ((ByteArrayInputStream)stream).available();
+	    }
+
+	    if (contentType == null || contentType.length() == 0) {
+	      contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+	    }
+	    if (log.isDebugEnabled()) log.debug("Content-Type=" + contentType);
+	    
+	    final long beginSendMillis = System.currentTimeMillis();
+	    
 				// Cannot use neither setFixedLengthStreamingMode nor setChunkedStreamMode
 				// due to a concurrency bug in JVM, Bug ID 9005601
 				// Concurrent requests with setFixedLengthStreamingMode or setChunkedStreamMode
@@ -840,7 +863,29 @@ public class HWireClient extends BWire {
 
 		if (log.isDebugEnabled()) log.debug(")internalPutStream");
 	}
-		
+	
+	/**
+	 * Create a HTTP GET connection.
+	 * @param url URL
+	 * @return Connection object
+	 * @throws IOException
+	 */
+	public HttpURLConnection createConnection(URL url) throws IOException {
+
+	  HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+
+    conn.setConnectTimeout((int)timeoutMillisClient);
+    conn.setReadTimeout((int)timeoutMillisClient);
+
+    conn.setDoInput(true);
+    conn.setDoOutput(false);
+    conn.setRequestMethod("GET");
+
+    applySession(conn);
+
+    return conn;
+	}
+	
 	protected class MyInputStream extends InputStreamWrapper implements BAsyncResult<BMessage> {
 
 		// Implementierung ist so kompliziert, damit die HTTP-Verbindung abgebrochen werden kann. 
@@ -850,8 +895,6 @@ public class HWireClient extends BWire {
 		volatile RequestToCancel request;
 		volatile HttpURLConnection conn;
 		volatile Throwable ex;
-		volatile String contentType;
-		volatile long contentLength;
 		protected final Log log = LogFactory.getLog(MyInputStream.class);
 		
 		public MyInputStream(long messageId, long streamId) {
@@ -875,7 +918,7 @@ public class HWireClient extends BWire {
 		}
 		
 		@Override
-		protected InputStream ensureStream() throws IOException {
+		public InputStream ensureStream() throws IOException {
 			throwExceptionIf();
 			return super.ensureStream();
 		}
@@ -905,7 +948,13 @@ public class HWireClient extends BWire {
 
 				if (log.isDebugEnabled()) log.debug("wait for response");
 
+				int statusCode = HttpURLConnection.HTTP_BAD_REQUEST;
 				try {
+          statusCode = conn.getResponseCode();
+          if (statusCode != HttpURLConnection.HTTP_OK) {
+            throw new IOException("HTTP " + statusCode);
+          }
+				  
 					is = conn.getInputStream();
 					contentType = conn.getContentType();
 					
@@ -923,7 +972,6 @@ public class HWireClient extends BWire {
 					is = conn.getErrorStream();
 					bufferFromStream(is, false);
 					
-					int statusCode = conn.getResponseCode();
 					if (log.isDebugEnabled()) log.debug("received http status=" + statusCode); 
 					BException bex = new BException(BExceptionC.IOERROR, "HTTP " + statusCode);
 					setAsyncResult(null, bex);
@@ -946,23 +994,15 @@ public class HWireClient extends BWire {
 		}
 		
 		@Override
-		public long getContentLength() {
-			try {
-				ensureStream();
-				return contentLength;
-			} catch (IOException e) {
-				throw new IllegalStateException(e);
-			}
+		public long getContentLength() throws IOException {
+			ensureStream();
+			return contentLength;
 		}
 		
 		@Override
-		public String getContentType() {
-			try {
-				ensureStream();
-				return contentType;
-			} catch (IOException e) {
-				throw new IllegalStateException(e);
-			}
+		public String getContentType() throws IOException {
+			ensureStream();
+			return contentType;
 		}
 	}
 
@@ -1204,21 +1244,47 @@ public class HWireClient extends BWire {
 	 * E.g. while http://server/app/byps is the URL for BYPS communication, authentication requests are sent to 
 	 * http://server/app/bypsauth/auth. The reason for this is that some browsers initiate the authentication
 	 * handshake in each request if the first one has had to be authenticated.
-	 * This function returns [servlet-name]auth/auth by default, whereby [servlet-name] is the part of the
-	 * URL between the last slash and the first question mark (if available). E.g. for URL http://server/app/byps
-	 * the [servlet-name] is byps and the function returns /bypsauth/byps.
-	 * @return servlet path, e.g. /bypsauth/auth
+	 * @return servlet path of the URL that was passed in the constructor, e.g. /byps
 	 */
 	public String getServletPathForNegotiationAndAuthentication() {
 	  String authUrl = surl;
 	  int p = authUrl.lastIndexOf('/');
 	  if (p >= 0) {
-	    int e = authUrl.indexOf('?', p);
-	    if (e < 0) e = authUrl.length();
-	    authUrl = authUrl.substring(p, e);
-	    authUrl += "auth/auth";
+	    authUrl = authUrl.substring(p);
 	  }
 	  return authUrl;
 	}
 
+  /**
+   * Gets the servlet path for reverse HTTP requests.
+   * Reverse requests can be sent to a different sub directory of the web application. 
+   * This is useful if a load balancer or proxy redirects the requests, because it allows to 
+   * specify a special timeout for long polls.
+   * @return servlet path of the URL that was passed in the constructor, e.g. /byps
+   */
+	public String getServletPathForReverseRequest() {
+    String longUrl = surl;
+    int p = longUrl.lastIndexOf('/');
+    if (p >= 0) {
+      longUrl = longUrl.substring(p);
+    }
+    return longUrl;
+	}
+	
+	private String makeUrl(String servletPath, String[] params) {
+    StringBuilder sbuf = new StringBuilder();
+    int p = surl.lastIndexOf("/");
+    if (p < 0) p = surl.length();
+    sbuf.append(surl.substring(0, p));
+    sbuf.append(servletPath);
+    if (params != null) {
+      for (int i = 0; i < params.length; i+=2) {
+        sbuf.append(i == 0 ? "?" : "&");
+        sbuf.append(params[i]);
+        sbuf.append("=");
+        sbuf.append(params[i+1]);
+      }
+    }
+    return sbuf.toString();
+	}
 }

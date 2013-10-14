@@ -18,6 +18,10 @@ public class HSessionListener implements HttpSessionListener {
 
   private final Log log = LogFactory.getLog(HSessionListener.class);
   private final static ConcurrentHashMap<BTargetId, HSession> sessions = new ConcurrentHashMap<BTargetId, HSession>();
+  
+  public HSessionListener() {
+    sessions.clear(); // just to be able to set a breakpoint
+  }
 
   @Override
   public void sessionCreated(HttpSessionEvent arg0) {

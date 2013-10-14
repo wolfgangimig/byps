@@ -1,6 +1,7 @@
 package com.wilutions.byps.gen.cs;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,7 +31,7 @@ class GenRemoteSkeleton {
 	}
 	
 	private GenRemoteSkeleton(PrintContext pctxt, RemoteInfo rinfo, CodePrinter pr) throws GeneratorException {
-    RemoteInfo rinfoImpl = rinfo.getRemoteNoAuth();
+    RemoteInfo rinfoImpl = pctxt.getBaseRemoteForSkeleton(rinfo);
 		this.rinfo = rinfoImpl;
 		this.pr = pr;
 		this.className = pctxt.getSkeletonClassQName(rinfo, rinfo.pack);
@@ -175,13 +176,12 @@ class GenRemoteSkeleton {
 //		printConstructor();
 //		pr.println();
 		
-		for (MethodInfo minfo : rinfo.methods) {
-			printMethod(minfo);
-			printMethodAsync(minfo);
-			printMethodBeginAsync(minfo);
-			printMethodEndAsync(minfo);
-			pr.println();
-		}
+    HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
+    pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
+    for (RemoteInfo r : remotes.values()) {
+      printMethods(r);
+    }
+    
 		
 		pr.println();
 		
@@ -196,6 +196,18 @@ class GenRemoteSkeleton {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 	}
 
+  private void printMethods(RemoteInfo rinfoImpl) throws IOException {
+    
+    for (MethodInfo minfo : rinfoImpl.methods) {
+      printMethod(minfo);
+      printMethodAsync(minfo);
+      printMethodBeginAsync(minfo);
+      printMethodEndAsync(minfo);
+      pr.println();
+    }
+    
+
+  }	
 //	private void printConstructor() {
 //		pr.print("public ").print(className).print("(BTransport transport) {").println();
 //		pr.beginBlock();

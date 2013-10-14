@@ -14,10 +14,14 @@ class HHttpRequest;
 typedef byps_ptr<HHttpRequest> PHttpRequest;
 class HHttpGet;
 typedef byps_ptr<HHttpGet> PHttpGet;
+class HHttpGetStream;
+typedef byps_ptr<HHttpGetStream> PHttpGetStream;
 class HHttpPost;
 typedef byps_ptr<HHttpPost> PHttpPost;
-class HHttpPut;
-typedef byps_ptr<HHttpPut> PHttpPut;
+class HHttpPutStream;
+typedef byps_ptr<HHttpPutStream> PHttpPutStream;
+class HHttpCredentials;
+typedef byps_ptr<HHttpCredentials> PHttpCredentials;
 
 class HHttpRequest {
 public:
@@ -28,11 +32,18 @@ public:
 
 };
 
+class HHttpGetStream : public virtual HHttpRequest {
+public:
+	virtual ~HHttpGetStream() {}
+
+	virtual PContentStream send() = 0;
+};
+
 class HHttpGet : public virtual HHttpRequest {
 public:
 	virtual ~HHttpGet() {}
 
-	virtual PContentStream send() = 0;
+	virtual void send(PAsyncResult asyncBytesReceived) = 0; // Negotiate
 };
 
 class HHttpPost : public virtual  HHttpRequest {
@@ -42,23 +53,32 @@ public:
 	virtual void send(PBytes bytes, const std::wstring& contentType, PAsyncResult asyncBytesReceived) = 0;
 };
 
-class HHttpPut : public virtual HHttpRequest {
+class HHttpPutStream : public virtual HHttpRequest {
 public:
-	virtual ~HHttpPut() {}
+	virtual ~HHttpPutStream() {}
 
 	virtual void send(PContentStream strm, PAsyncResult asyncBoolFinished) = 0;
+};
+
+class HHttpCredentials {
+public:
+	std::wstring name;
+	std::wstring pwd;
+	std::wstring nameProxy;
+	std::wstring pwdProxy;
 };
 
 class HHttpClient {
 public:
 	virtual ~HHttpClient() {}
 	
-	virtual void init(const std::wstring& url) = 0;
+	virtual void init(const std::wstring& url, PHttpCredentials creds = PHttpCredentials()) = 0;
     virtual void done() = 0;
 
 	virtual PHttpGet get(const std::wstring& url) = 0;
+	virtual PHttpGetStream getStream(const std::wstring& url) = 0;
 	virtual PHttpPost post(const std::wstring& url) = 0;
-	virtual PHttpPut put(const std::wstring& url) = 0;
+	virtual PHttpPutStream putStream(const std::wstring& url) = 0;
 
 };
 

@@ -69,7 +69,7 @@ namespace com.wilutions.byps
         }
 
        	public BMessage toMessage() {
-		    BMessage msg = new BMessage(header.messageId, toByteBuffer(), getStreamRequests());
+		    BMessage msg = new BMessage(header, toByteBuffer(), getStreamRequests());
 		    return msg;
 	    }
 	

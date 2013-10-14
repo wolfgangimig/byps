@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.srvr
 {
 	
-	public interface ServerIF : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface ServerIF : BRemote {
+	
 		int CallClientIncrementInt(int v);
 		void CallClientIncrementIntAsync(int v, BAsyncResult<int> asyncResult) ;
 		IAsyncResult BeginCallClientIncrementInt(int v, AsyncCallback callback, object state);

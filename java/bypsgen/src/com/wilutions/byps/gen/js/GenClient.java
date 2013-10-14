@@ -31,15 +31,9 @@ public class GenClient {
 	private void generate() throws IOException {
 		log.debug("generate");
 		
-		pr.print(pack).print(".createClient_").print(pctxt.classDB.getApiDescriptor().name).println(" = function(url, startServerR, asyncResult) {");
+		pr.print(pack).print(".createClient_").print(pctxt.classDB.getApiDescriptor().name).println(" = function(transportFactory) {");
 		pr.beginBlock();
-		pr.println("var wire = new com.wilutions.byps.BWireClient(url);");
-		pr.print("var transportFactory = new com.wilutions.byps.BTransportFactory(")
-		  .print(pctxt.getApiDescriptorClassName()).print(".getInternalInstance(), wire);")
-		  .println();
-		pr.print("var client = new ").print(clientClassName).println("(transportFactory);");
-		pr.println("client.start(startServerR, asyncResult);");
-		pr.println("return client;");
+		pr.print("return new ").print(clientClassName).println("(transportFactory);");
 		pr.endBlock();
 		pr.println("};");
 		pr.println();

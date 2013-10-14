@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemoteListTypes : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteListTypes : BRemote {
+	
 		IList<bool> GetBoolean1();
 		void GetBoolean1Async(BAsyncResult<IList<bool>> asyncResult) ;
 		IAsyncResult BeginGetBoolean1(AsyncCallback callback, object state);

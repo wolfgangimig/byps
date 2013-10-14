@@ -55,7 +55,7 @@ public class GeneratorCS implements Generator {
 		Collection<RemoteInfo> remotes = classDB.getRemotes();
 		for (RemoteInfo rinfo : remotes) {
       GenRemoteClass.generate(pctxt, rinfo.getRemoteNoAuth());
-      GenRemoteClass.generate(pctxt, rinfo.getRemoteAuth());
+      GenRemoteClassAuth.generate(pctxt, rinfo.getRemoteAuth());
 			GenRemoteStub.generate(pctxt, rinfo);
 			GenRemoteSkeleton.generate(pctxt, rinfo);
 		}		

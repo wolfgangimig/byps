@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemoteServerCtrl : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteServerCtrl : BRemote {
+	
 		void PublishRemote(String name, BRemote remote, bool fowardToOtherServers);
 		void PublishRemoteAsync(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginPublishRemote(String name, BRemote remote, bool fowardToOtherServers, AsyncCallback callback, object state);

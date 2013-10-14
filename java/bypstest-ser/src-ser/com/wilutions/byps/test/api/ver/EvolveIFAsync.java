@@ -7,42 +7,42 @@
 
 import com.wilutions.byps.*;
 
-// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:64
-public interface EvolveIFAsync extends EvolveIF, BRemote {
-
+// checkpoint com.wilutions.byps.gen.j.GenRemoteClassAsync:68
+public interface EvolveIFAsync extends BRemote, 
+	EvolveIF {
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setEvolve(Evolve obj) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public Evolve getEvolve() throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getEvolve(final BAsyncResult<Evolve> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void setClient(EvolveIF partner) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public EvolveIF getClient() throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void getClient(final BAsyncResult<EvolveIF> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:356
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
 	public void sendEvolveToClient() throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:400
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
 	public void sendEvolveToClient(final BAsyncResult<Object> asyncResult) ;
 	
 	

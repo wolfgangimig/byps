@@ -24,6 +24,16 @@ PClient_Testser BClient_Testser::createClient(PTransportFactory transportFactory
 PClient_Testser BClient_Testser::createClientR(PTransport transport) {
 	return PClient_Testser(new BClient_Testser(transport));
 }
+void BClient_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
+	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
+	serverR->server->addRemote(1881829396, remoteSkeleton);
+}
+
+void BClient_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
+	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
+	serverR->server->addRemote(1992245333, remoteSkeleton);
+}
+
 void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(1677934392, remoteSkeleton);
@@ -41,6 +51,11 @@ BClient_Testser::BClient_Testser(PTransportFactory transportFactory)
 			BServer_Testser::createServerR(transportFactory->createServerTransport())
 		)
 	)
+	, bioFruitService(new com::wilutions::byps::test::api::inherit::BStub_BioFruitService(transport))
+	, bioLemonService(new com::wilutions::byps::test::api::inherit::BStub_BioLemonService(transport))
+	, fruitService(new com::wilutions::byps::test::api::inherit::BStub_FruitService(transport))
+	, lemonService(new com::wilutions::byps::test::api::inherit::BStub_LemonService(transport))
+	, plantService(new com::wilutions::byps::test::api::inherit::BStub_PlantService(transport))
 	, remoteArrayTypes1dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
 	, remoteArrayTypes23(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
 	, remoteArrayTypes4dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
@@ -62,6 +77,11 @@ BClient_Testser::BClient_Testser(PTransportFactory transportFactory)
 }
 BClient_Testser::BClient_Testser(PTransport transport) 
 	: BClient(transport, NULL)
+	, bioFruitService(new com::wilutions::byps::test::api::inherit::BStub_BioFruitService(transport))
+	, bioLemonService(new com::wilutions::byps::test::api::inherit::BStub_BioLemonService(transport))
+	, fruitService(new com::wilutions::byps::test::api::inherit::BStub_FruitService(transport))
+	, lemonService(new com::wilutions::byps::test::api::inherit::BStub_LemonService(transport))
+	, plantService(new com::wilutions::byps::test::api::inherit::BStub_PlantService(transport))
 	, remoteArrayTypes1dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
 	, remoteArrayTypes23(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
 	, remoteArrayTypes4dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
@@ -82,6 +102,11 @@ BClient_Testser::BClient_Testser(PTransport transport)
 	{
 }
 PRemote BClient_Testser::getStub(int remoteId) {
+	if (remoteId == 1881829396) return bioFruitService;
+	if (remoteId == 1992245333) return bioLemonService;
+	if (remoteId == 506940662) return fruitService;
+	if (remoteId == 617356599) return lemonService;
+	if (remoteId == 1117460801) return plantService;
 	if (remoteId == 1557084481) return remoteArrayTypes1dim;
 	if (remoteId == 2081058997) return remoteArrayTypes23;
 	if (remoteId == 1557173854) return remoteArrayTypes4dim;
@@ -111,6 +136,14 @@ PServer_Testser BServer_Testser::createServer(PTransportFactory transportFactory
 PServer_Testser BServer_Testser::createServerR(PTransport transport) {
 	return PServer_Testser(new BServer_Testser(transport));
 }
+void BServer_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
+	BServer::addRemote(1881829396, remoteSkeleton);
+}
+
+void BServer_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
+	BServer::addRemote(1992245333, remoteSkeleton);
+}
+
 void BServer_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
 	BServer::addRemote(1677934392, remoteSkeleton);
 }

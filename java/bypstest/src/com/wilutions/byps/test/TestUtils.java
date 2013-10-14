@@ -62,9 +62,9 @@ public class TestUtils {
 		BWire wire = new MyWire(flags);
 		
 		BApiDescriptor apiDesc = new BApiDescriptor("TestSerialize",
-				BApiDescriptor_Testser.instance.basePackage, 
+				BApiDescriptor_Testser.instance().basePackage, 
 				version, 
-				BApiDescriptor_Testser.instance.uniqueObjects);
+				BApiDescriptor_Testser.instance().uniqueObjects);
 		
 		if (protocol == BProtocolJson.BINARY_MODEL) { 
 			apiDesc.addRegistry(new JRegistry_Testser());

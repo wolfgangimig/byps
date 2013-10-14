@@ -257,42 +257,47 @@ public class BTransport {
     client.transport.wire.send(forwardMessage, messageResult);
   }
 
-  public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) throws RemoteException {
+  public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) {
 
-    ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
-    final BNegotiate nego = new BNegotiate(apiDesc);
-    nego.write(buf);
-    buf.flip();
-
-    BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
-
-      @Override
-      public void setAsyncResult(BMessage msg, Throwable e) {
-        try {
-          if (e == null) {
-            nego.read(msg.buf);
-            synchronized (BTransport.this) {
-              protocol = createNegotiatedProtocol(nego);
-              targetId = nego.targetId;
+    try {
+      ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
+      final BNegotiate nego = new BNegotiate(apiDesc);
+      nego.write(buf);
+      buf.flip();
+  
+      BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
+  
+        @Override
+        public void setAsyncResult(BMessage msg, Throwable e) {
+          try {
+            if (e == null) {
+              nego.read(msg.buf);
+              synchronized (BTransport.this) {
+                protocol = createNegotiatedProtocol(nego);
+                targetId = nego.targetId;
+              }
+  
+              internalAuthenticate(asyncResult);
             }
-
-            internalAuthenticate(asyncResult);
+            else {
+              asyncResult.setAsyncResult(Boolean.FALSE, e);
+            }
+          } catch (Throwable ex) {
+            asyncResult.setAsyncResult(Boolean.FALSE, ex);
           }
-          else {
-            asyncResult.setAsyncResult(Boolean.FALSE, e);
-          }
-        } catch (Throwable ex) {
-          asyncResult.setAsyncResult(Boolean.FALSE, ex);
         }
-      }
-
-    };
-
-    BMessageHeader header = new BMessageHeader();
-    header.messageId = wire.makeMessageId();
-    final BMessage msg = new BMessage(header, buf, null);
-    wire.send(msg, outerResult);
-
+  
+      };
+  
+      BMessageHeader header = new BMessageHeader();
+      header.messageId = wire.makeMessageId();
+      final BMessage msg = new BMessage(header, buf, null);
+      wire.send(msg, outerResult);
+      
+    }
+    catch (Throwable e) {
+      asyncResult.setAsyncResult(Boolean.FALSE, e);
+    }
   }
 
   protected void internalAuthenticate(final BAsyncResult<Boolean> asyncResult) {

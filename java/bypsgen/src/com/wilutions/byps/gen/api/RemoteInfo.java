@@ -1,9 +1,8 @@
 package com.wilutions.byps.gen.api;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 
 public class RemoteInfo extends TypeInfo {
 	
@@ -21,68 +20,84 @@ public class RemoteInfo extends TypeInfo {
 	public final String authParamClassName;
 	
 	/**
-	 * Base class for the asynchronous interface.
-	 * If not set, this.qname is used.
-	 */
-	public final String authBase;
-	
-	/**
 	 * Remote interface will be implemented on the client side.
 	 * If false, a skeleton is not generated for JavaScript, C++ and C#.
 	 */
 	public final boolean isClientRemote;
+	
+	/**
+	 * This remote extends the interfaces baseQNames.
+	 */
+	public final List<String> baseQNames = new ArrayList<String>();
 
-	public RemoteInfo(String name, List<CommentInfo> comments, String qname, List<MethodInfo> methods,
-	    String authParamClassName, String authBase, boolean isClientRemote) throws GeneratorException {
+	public RemoteInfo(
+	    String name, 
+	    List<CommentInfo> comments, 
+	    String qname, 
+	    List<String> baseQNames,
+	    List<MethodInfo> methods,
+	    String authParamClassName, 
+	    boolean isClientRemote) {
 		super(name, qname, "", null, false, false, false);
 		this.methods = methods;
 		this.comments = comments;
 		this.authParamClassName = authParamClassName;
-		this.authBase = authBase;
 		this.isClientRemote = isClientRemote;
+		if (baseQNames != null) this.baseQNames.addAll(baseQNames);
 	}
 
-	public RemoteInfo() throws GeneratorException  {
+	public RemoteInfo() {
 		this(null, null, null, null, null, null, false);
 	}
 	
-	@XmlElementWrapper(name = "methods") // hä? dafür gibt's XmlMethodInfo
-    @XmlElement(name = "method") 
 	public List<MethodInfo> methods;
 	
-	@XmlElementWrapper(name = "comments") 
-    @XmlElement(name = "comment") 
 	public final List<CommentInfo> comments;
 	
-	public String getBaseClassQName() {
-    if (name.endsWith(ASYNC_SUFFIX)) {
-      return name.substring(0, name.length() - ASYNC_SUFFIX.length());
-    }
-    else if (name.endsWith(AUTH_SUFFIX)) {
-      return authBase;
-    }
-	  return null;
-	}
-	
-  public RemoteInfo getRemoteAsync() throws GeneratorException {
-    RemoteInfo rinfo = new RemoteInfo(name + ASYNC_SUFFIX, comments, qname + ASYNC_SUFFIX, methods, null, null, isClientRemote);
+  public RemoteInfo getRemoteAsync() {
+    RemoteInfo rinfo = new RemoteInfo(
+        name + ASYNC_SUFFIX, 
+        comments, 
+        qname + ASYNC_SUFFIX, 
+        baseQNames,
+        methods, 
+        null, 
+        isClientRemote);
     rinfo.typeId = this.typeId;
     return rinfo;
   }
 
-  public RemoteInfo getRemoteAuth() throws GeneratorException {
+  public RemoteInfo getRemoteAuth() {
     RemoteInfo rinfo = null;
     if (authParamClassName != null) {
-      rinfo = new RemoteInfo(name + AUTH_SUFFIX, comments, qname + AUTH_SUFFIX, methods, authParamClassName, authBase, isClientRemote);
-      rinfo.typeId = this.typeId;
+      rinfo = makeRemoteAuth();
     }
     return rinfo;
   }
   
-  public RemoteInfo getRemoteNoAuth() throws GeneratorException {
-    RemoteInfo rinfo = new RemoteInfo(name, comments, qname, methods, null, null, isClientRemote);
+  public RemoteInfo makeRemoteAuth() {
+    RemoteInfo rinfo = new RemoteInfo(
+        name + AUTH_SUFFIX, 
+        comments, 
+        qname + AUTH_SUFFIX, 
+        baseQNames,
+        methods, 
+        authParamClassName, 
+        isClientRemote);
     rinfo.typeId = this.typeId;
     return rinfo;
+  }
+  
+  public RemoteInfo getRemoteNoAuth() {
+    RemoteInfo rinfo = new RemoteInfo(name, comments, qname, baseQNames, methods, null, isClientRemote);
+    rinfo.typeId = this.typeId;
+    return rinfo;
+  }
+
+  public RemoteInfo getRemoteInfoAuthOrAsync() {
+    RemoteInfo rinfoImpl = getRemoteAuth();
+    if (rinfoImpl == null) rinfoImpl = getRemoteAsync();
+    return rinfoImpl;
   }
 
 

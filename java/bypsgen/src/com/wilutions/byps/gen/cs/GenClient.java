@@ -160,7 +160,7 @@ public class GenClient {
 			String varName = getRemoteVariableName(rinfo);
 			
       RemoteInfo rinfoInterface = rinfo.getRemoteAuth();
-      if (rinfoInterface == null) rinfoInterface = rinfo.getRemoteNoAuth();
+      if (rinfoInterface == null) rinfoInterface = rinfo;
       String remoteName = rinfoInterface.toString(pack);
 			
 			pr.print("public readonly ").print(remoteName).print(" ").print(varName).println(";");

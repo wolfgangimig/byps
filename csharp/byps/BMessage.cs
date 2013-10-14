@@ -7,12 +7,13 @@ namespace com.wilutions.byps
 {
     public class BMessage
     {
-        public readonly long messageId;
+        public readonly BMessageHeader header;
         public readonly ByteBuffer buf;
         public readonly List<BStreamRequest> streams;
 
-        public BMessage(long messageId, ByteBuffer buf, List<BStreamRequest> streams) {
-		    this.messageId = messageId;
+        public BMessage(BMessageHeader header, ByteBuffer buf, List<BStreamRequest> streams)
+        {
+            this.header = header;
 		    this.buf = buf;
 		    this.streams = streams;
 	    }

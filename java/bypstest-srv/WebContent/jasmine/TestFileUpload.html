@@ -9,8 +9,10 @@
   <script type="text/javascript" src="../testser.js"></script>
 
   <script type="text/javascript">
-	  var url = "/bypstest-srv/bypsservlet";
-	  var client = com.wilutions.byps.test.api.createClient_Testser(url, true);
+	var url = "/bypstest-srv/bypsservlet";
+	var wire = new com.wilutions.byps.BWireClient(url, 0, 60);
+	var transportFactory = new com.wilutions.byps.BTransportFactory(com.wilutions.byps.test.api.BApiDescriptor_Testser.instance(), wire);
+	var client = com.wilutions.jsfs.createClient_Testser(transportFactory);
   </script>
 
 </head>

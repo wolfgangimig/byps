@@ -16,8 +16,12 @@ public class JSerializer_16 extends BSerializer {
 		final BOutputJson bout = ((BOutputJson)bout1);
 		final BBufferJson bbuf = bout.bbuf;
 		final BRemote remote = (BRemote)obj;
-		final BTargetId targetId = remote.BRemote_getTargetId();
-		bbuf.beginObject();
+		BTargetId targetId = remote.BRemote_getTargetId();
+    if (targetId == null) {
+      targetId = bout1.transport.getTargetId();
+    }
+
+    bbuf.beginObject();
 		bbuf.putInt("_typeId", typeId);
 		bbuf.putString("targetId", targetId.toString());
 		bbuf.endObject();

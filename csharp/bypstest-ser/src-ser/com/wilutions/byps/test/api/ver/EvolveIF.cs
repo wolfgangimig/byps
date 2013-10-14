@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.ver
 {
 	
-	public interface EvolveIF : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface EvolveIF : BRemote {
+	
 		void SetEvolve(Evolve obj);
 		void SetEvolveAsync(Evolve obj, BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginSetEvolve(Evolve obj, AsyncCallback callback, object state);

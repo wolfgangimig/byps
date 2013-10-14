@@ -29,7 +29,7 @@ public class MySession extends HSession {
 	 * This value is changed in TestRemoteNegotiateVersion via testAdapter
 	 * in order to simulate older and newer application versions.
 	 */
-	public static volatile long appVersion = BApiDescriptor_Testser.instance.version;
+	public static volatile long appVersion = BApiDescriptor_Testser.instance().version;
 	
 	/**
 	 * All tests run without authentication except TestRemoteWithAuthentication.
@@ -50,10 +50,10 @@ public class MySession extends HSession {
 		// This block is only useful for the test suite. A real implementation would use
 		// BApiDescriptor_Testser.instance and add the JRegistry_Testser.
 		BApiDescriptor myDesc = new BApiDescriptor(
-				BApiDescriptor_Testser.instance.name,
-				BApiDescriptor_Testser.instance.basePackage,
+				BApiDescriptor_Testser.instance().name,
+				BApiDescriptor_Testser.instance().basePackage,
 				appVersion,
-				BApiDescriptor_Testser.instance.uniqueObjects
+				BApiDescriptor_Testser.instance().uniqueObjects
 				);
 		
 		myDesc.addRegistry(new JRegistry_Testser());

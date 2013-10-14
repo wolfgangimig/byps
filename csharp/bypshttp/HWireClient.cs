@@ -95,15 +95,15 @@ namespace com.wilutions.byps
 
         public override void send(BMessage msg, BAsyncResult<BMessage> asyncResult)
         {
-            internalSend(msg, asyncResult, timeoutMillisClient);
+            internalSend(msg, asyncResult);
         }
 
         public override void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult)
         {
-            internalSend(msg, asyncResult, int.MaxValue);
+            internalSend(msg, asyncResult);
         }
 
-        protected void internalSend(BMessage msg, BAsyncResult<BMessage> asyncResult, int timeoutMillis)
+        protected void internalSend(BMessage msg, BAsyncResult<BMessage> asyncResult)
         {
 		    if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
 
@@ -119,17 +119,17 @@ namespace com.wilutions.byps
 		    BAsyncResult<BMessage> outerResult = asyncResult;
 		    if (nbOfRequests > 1) {
 			    if (log.isDebugEnabled()) log.debug("wrap asyncResult");
-			    outerResult = new AsyncResultAfterAllRequests(this, msg.messageId, asyncResult, nbOfRequests);
+			    outerResult = new AsyncResultAfterAllRequests(this, msg.header.messageId, asyncResult, nbOfRequests);
 		    }
 	
 		    // Create RequestToCancel for msg.buf
-		    RequestToCancel req = createRequestForMessage(msg.messageId, timeoutMillis, msg.buf, outerResult);
+		    RequestToCancel req = createRequestForMessage(msg, outerResult);
 		    requests.Add(req);
 		
 		    // Create RequestToCancel objects for each stream.
 		    if (msg.streams != null) {
 			    foreach (BStreamRequest stream in msg.streams) {
-				    req = createRequestForPutStream(msg.messageId, stream, outerResult);
+				    req = createRequestForPutStream(msg.header.messageId, stream, outerResult);
 				    requests.Add(req);
 			    }
 		    }
@@ -138,7 +138,7 @@ namespace com.wilutions.byps
 		    if (log.isDebugEnabled()) log.debug("put requests into thread pool");
 		    foreach (RequestToCancel r in requests) {
 			    if (!executeRequest(r)) {
-				    cancelMessage(msg.messageId);
+				    cancelMessage(msg.header.messageId);
 				    break;
 			    }
 		    }
@@ -150,22 +150,52 @@ namespace com.wilutions.byps
 		    throw new InvalidOperationException("putStreams is only for the server side");
 	    }
 	
-	    protected RequestToCancel createRequestForMessage(long messageId, int timeoutMillis, ByteBuffer buf, BAsyncResult<BMessage> asyncResult) {
-		    RequestToCancel r =  new RequestToCancel(this, messageId, buf, null, 0L, 0L,
-                timeoutMillisClient, timeoutMillis, asyncResult);
-		    addRequest(r);
-		    return r;
-	    }
-	
-	    protected RequestToCancel createRequestForPutStream(long messageId, BStreamRequest streamRequest, BAsyncResult<BMessage> asyncResult) {
-            RequestToCancel r = new RequestToCancel(this, messageId, null, streamRequest, streamRequest.streamId, 0L, 
-                timeoutMillisClient, timeoutMillisClient, asyncResult);
+	    public RequestToCancel createRequestForMessage(BMessage msg, BAsyncResult<BMessage> asyncResult) {
+            ERequestDirection requestDirection = ERequestDirection.FORWARD;
+            int timeout = this.timeoutMillisClient;
+
+            // Reverse HTTP request (long-poll)?
+            bool isReverse = (msg.header.flags & BMessageHeader.FLAG_RESPONSE) != 0;
+            if (isReverse)
+            {
+                requestDirection = ERequestDirection.REVERSE;
+                timeout = System.Threading.Timeout.Infinite; // timeout controlled by server, 10min by default.
+            }
+
+            RequestToCancel r = new RequestToCancel(this, 
+                requestDirection, 
+                msg.header.messageId,
+                msg.buf, 
+                null,
+                0L, 
+                0L,
+                timeoutMillisClient, 
+                timeout, 
+                asyncResult);
+
 		    addRequest(r);
 		    return r;
 	    }
 
-        protected RequestToCancel createRequestForGetStream(long messageId, long streamId, BAsyncResult<BMessage> asyncResult) {
-            RequestToCancel r = new RequestToCancel(this, messageId, null, null, streamId, 0L, 
+        public RequestToCancel createRequestForPutStream(long messageId, BStreamRequest streamRequest, BAsyncResult<BMessage> asyncResult)
+        {
+            RequestToCancel r = new RequestToCancel(this, 
+                ERequestDirection.FORWARD, 
+                messageId, 
+                null, 
+                streamRequest, 
+                streamRequest.streamId, 
+                0L, 
+                timeoutMillisClient, 
+                timeoutMillisClient, 
+                asyncResult);
+		    addRequest(r);
+		    return r;
+	    }
+
+        public RequestToCancel createRequestForGetStream(long messageId, long streamId, BAsyncResult<BMessage> asyncResult)
+        {
+            RequestToCancel r = new RequestToCancel(this, ERequestDirection.FORWARD, messageId, null, null, streamId, 0L, 
                 timeoutMillisClient, timeoutMillisClient, asyncResult);
 		    addRequest(r);
 		    return r;
@@ -174,15 +204,16 @@ namespace com.wilutions.byps
         protected class CancelResult : BAsyncResult<BMessage> {
 			public void setAsyncResult(BMessage msg, Exception e) {}
         }
-	
-	    protected RequestToCancel createRequestForCancelMessage(long messageId) {
-            RequestToCancel r = new RequestToCancel(this, 0L, null, null, 0L, messageId, 
+
+        public RequestToCancel createRequestForCancelMessage(long messageId)
+        {
+            RequestToCancel r = new RequestToCancel(this, ERequestDirection.FORWARD, 0L, null, null, 0L, messageId, 
                 timeoutMillisClient, timeoutMillisClient, new CancelResult());
 		    addRequest(r);
 		    return r;
 	    }
 
-        protected bool executeRequest(RequestToCancel r)
+        public bool executeRequest(RequestToCancel r)
         {
             if (log.isDebugEnabled()) log.debug("executeRequest(" + r);
             r.run();
@@ -190,25 +221,60 @@ namespace com.wilutions.byps
             return true;
         }
 
-        protected void internalSend(RequestToCancel request)
+        public void internalSend(RequestToCancel request)
         {
             if (log.isDebugEnabled()) log.debug("internalSend(" + request);
-            ByteBuffer buf = request.buf;
+            ByteBuffer requestDataBuffer = request.buf;
 
-            bool isNegotiate = BNegotiate.isNegotiateMessage(buf);
-            bool isJson = isNegotiate || BMessageHeader.detectProtocol(buf) == BMessageHeader.MAGIC_JSON;
+            bool isNegotiate = BNegotiate.isNegotiateMessage(requestDataBuffer);
+            bool isJson = isNegotiate || BMessageHeader.detectProtocol(requestDataBuffer) == BMessageHeader.MAGIC_JSON;
 
-            HttpWebRequest conn = (HttpWebRequest)HttpWebRequest.Create(url);
+            String destUrl = url;
+
+            // Negotiate? 
+            if (isNegotiate)
+            {
+                // Send a GET request and pass the negotate string as parameter 
+
+                String negoStr = Encoding.UTF8.GetString(requestDataBuffer.array(), requestDataBuffer.position(), requestDataBuffer.remaining());
+                negoStr = System.Uri.EscapeDataString(negoStr);
+
+                destUrl = makeUrl(getServletPathForNegotiationAndAuthentication(),
+                    new String[] { "negotiate", negoStr });
+            }
+
+            // Reverse request (long-poll) ?
+            else if (request.requestDirection == ERequestDirection.REVERSE)
+            {
+                destUrl = makeUrl(getServletPathForReverseRequest(), null);
+            }
+
+            HttpWebRequest conn = (HttpWebRequest)HttpWebRequest.Create(destUrl);
             request.setConnection(conn);
-            conn.ContentType = isJson ? "application/json" : "application/octet-stream";
-            conn.Method = "POST";
+            conn.Method = isNegotiate ? "GET" : "POST";
+
+            // Content-Type for POST request
+            if (!isNegotiate)
+            {
+                conn.ContentType = isJson ? "application/json" : "application/byps";
+            }
  
             conn.Accept = "application/json, application/byps, text/plain, text/html";
             if ((this.flags & BWireFlags.GZIP) != 0) conn.Headers.Add("Accept-Encoding", "gzip");
 
             applySession(conn);
 
-            conn.BeginGetRequestStream(new AsyncCallback(this.getRequestStreamCallback), request);
+            IAsyncResult asyncResult = null;
+            if (isNegotiate)
+            {
+               asyncResult = conn.BeginGetResponse(new AsyncCallback(this.getResponseCallback), request);
+            }
+            else
+            {
+                asyncResult = conn.BeginGetRequestStream(new AsyncCallback(this.getRequestStreamCallback), request);
+            }
+
+            request.startTimeoutWatcher(conn, asyncResult, request.timeoutMillisRequest);
 
             if (log.isDebugEnabled()) log.debug(")internalSend");
         }
@@ -318,7 +384,7 @@ namespace com.wilutions.byps
             if (log.isDebugEnabled()) log.debug(")getResponseCallback");
         }
 
-        protected void internalPutStream(RequestToCancel request)
+        void internalPutStream(RequestToCancel request)
         {
             long messageId = request.messageId;
             long streamId = request.streamId;
@@ -349,7 +415,7 @@ namespace com.wilutions.byps
             if (log.isDebugEnabled()) log.debug(")internalPutStream");
         }
 
-        protected void internalSendCancelMessage(RequestToCancel request)
+        void internalSendCancelMessage(RequestToCancel request)
         {
             if (log.isDebugEnabled()) log.debug("internalSendCancelMessage(" + request);
             try
@@ -491,7 +557,7 @@ namespace com.wilutions.byps
 		    }
         }
 
-        protected class RequestToCancel : BAsyncResult<ByteBuffer>
+        public class RequestToCancel : BAsyncResult<ByteBuffer>
         {
             private Log log = LogFactory.getLog(typeof(RequestToCancel));
             public readonly long messageId;
@@ -510,11 +576,21 @@ namespace com.wilutions.byps
             protected readonly long id;
             private static long requestCounter;
 
-            public RequestToCancel(HWireClient wire, long messageId, ByteBuffer buf, BStreamRequest streamRequest,
-                long streamId, long cancelMessageId, int timeoutMillisClient, int timeoutMillisRequest,
+            public readonly ERequestDirection requestDirection;
+
+            public RequestToCancel(HWireClient wire, 
+                ERequestDirection requestDirection, 
+                long messageId, 
+                ByteBuffer buf, 
+                BStreamRequest streamRequest,
+                long streamId, 
+                long cancelMessageId, 
+                int timeoutMillisClient, 
+                int timeoutMillisRequest,
                 BAsyncResult<BMessage> asyncResult) 
             {
                 this.wire = wire;
+                this.requestDirection = requestDirection;
                 this.messageId = messageId;
                 this.streamId = streamId;
                 this.buf = buf;
@@ -555,14 +631,63 @@ namespace com.wilutions.byps
                 }
             }
 
+            public void startTimeoutWatcher(HttpWebRequest conn, IAsyncResult result, int timeout)
+            {
+                ThreadPool.RegisterWaitForSingleObject(
+                    result.AsyncWaitHandle,
+                    new WaitOrTimerCallback(TimeoutCallback),
+                    conn, 
+                    timeout,
+                    true);
+            }
+
+            private static void TimeoutCallback(object state, bool timedOut)
+            {
+                if (timedOut)
+                {
+                    HttpWebRequest conn = state as HttpWebRequest;
+                    if (conn != null)
+                    {
+                        conn.Abort();
+                    }
+                }
+            }
+
             public void setAsyncResult(ByteBuffer buf, Exception ex)
             {
                 if (log.isDebugEnabled()) log.debug("setAsyncResult" + this + "(buf="  + buf + ", ex=" + ex);
                 if (Interlocked.Increment(ref isOpen) == 1)
                 {
-                    BMessage msg = buf != null ? new BMessage(messageId, buf, null) : null;
-                    if (log.isDebugEnabled()) log.debug("asyncResult.set");
-                    asyncResult.setAsyncResult(msg, ex);
+                    try
+                    {
+                        if (ex == null && buf.remaining() != 0)
+                        {
+
+                            BMessageHeader header = new BMessageHeader();
+
+                            bool nego = BNegotiate.isNegotiateMessage(buf);
+                            if (nego)
+                            {
+                                header.messageId = messageId;
+                            }
+                            else
+                            {
+                                header.read(buf);
+                            }
+
+                            BMessage msg = buf != null ? new BMessage(header, buf, null) : null;
+                            if (log.isDebugEnabled()) log.debug("asyncResult.set");
+                            asyncResult.setAsyncResult(msg, ex);
+                        }
+                        else
+                        {
+                            asyncResult.setAsyncResult(null, ex);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        asyncResult.setAsyncResult(null, e);
+                    }
                 }
                 if (log.isDebugEnabled()) log.debug(")setAsyncResult");
             }
@@ -610,18 +735,19 @@ namespace com.wilutions.byps
 
         }
 
-        protected void addRequest(RequestToCancel robj) 
+        void addRequest(RequestToCancel robj) 
         {
             if (log.isDebugEnabled()) log.debug("addRequest(robj=" + robj);
             openRequestsToCancel[robj.getId()] = robj;
             if (log.isDebugEnabled()) log.debug(")addRequest=" + robj);
 	    }
 
-        protected void removeRequest(RequestToCancel robj, ByteBuffer buf, Exception ex) 
+        void removeRequest(RequestToCancel robj, ByteBuffer buf, Exception ex) 
         {
             if (log.isDebugEnabled()) log.debug("removeRequest(" + robj);
             if (robj == null) return;
-            openRequestsToCancel.TryRemove(robj.getId(), out robj);
+            RequestToCancel rtmp = null;
+            openRequestsToCancel.TryRemove(robj.getId(), out rtmp);
             robj.done();
             robj.setAsyncResult(buf, ex);
             if (log.isDebugEnabled()) log.debug(")removeRequest");
@@ -729,16 +855,59 @@ namespace com.wilutions.byps
 		    return ret;
 	    }
 
+        public virtual String getServletPathForNegotiationAndAuthentication()
+        {
+            String authUrl = url;
+            int p = authUrl.LastIndexOf('/');
+            if (p >= 0)
+            {
+                authUrl = authUrl.Substring(p);
+            }
+            return authUrl;
+        }
+
+        public virtual String getServletPathForReverseRequest()
+        {
+            String authUrl = url;
+            int p = authUrl.LastIndexOf('/');
+            if (p >= 0)
+            {
+                authUrl = authUrl.Substring(p);
+            }
+            return authUrl;
+        }
+
+        private String makeUrl(String servletPath, String[] params1) 
+        {
+            StringBuilder sbuf = new StringBuilder();
+            int p = url.LastIndexOf("/");
+            if (p < 0) p = url.Length;
+            sbuf.Append(url.Substring(0, p));
+            sbuf.Append(servletPath);
+            if (params1 != null) 
+            {
+                for (int i = 0; i < params1.Length; i += 2)
+                {
+                    sbuf.Append(i == 0 ? "?" : "&");
+                    sbuf.Append(params1[i]);
+                    sbuf.Append("=");
+                    sbuf.Append(params1[i + 1]);
+                }
+            }
+            return sbuf.ToString();
+	    }
+
         protected readonly static long MESSAGEID_CANCEL_ALL_REQUESTS = -1;
         protected readonly static long MESSAGEID_DISCONNECT = -2;
         protected String url;
 	    protected readonly static int CHUNK_SIZE = 10 * 1000;
 	    protected bool compressStream = false;
 	    protected volatile bool _cancelAllRequests;
-        protected readonly ConcurrentDictionary<long, RequestToCancel> openRequestsToCancel = new ConcurrentDictionary<long, RequestToCancel>();
+        readonly ConcurrentDictionary<long, RequestToCancel> openRequestsToCancel = new ConcurrentDictionary<long, RequestToCancel>();
         protected CookieContainer cookieJar = new CookieContainer();
         protected readonly BTestAdapter _testAdapter;
         protected int timeoutMillisClient;
         private Log log = LogFactory.getLog(typeof(HWireClient));
+        public enum ERequestDirection { FORWARD, REVERSE };
     }
 }

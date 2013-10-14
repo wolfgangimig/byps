@@ -7,6 +7,7 @@ using com.wilutions.byps.test.api.prim;
 using com.wilutions.byps.test.api.srvr;
 using System.IO;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace bypstest
 {
@@ -147,27 +148,53 @@ namespace bypstest
         }
 
         [TestMethod]
-        public void testPrimitiveTypesLong()
+        public void testSerializeLong() 
         {
-            log.info("testPrimitiveTypesLong(");
-
-            long[] arr = new long[] { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFL, -1, -9223372036854775808L };
-            for (int i = 0; i < arr.Length; i++)
+            log.info("testSerializeLong(");
+            List<long> ints = new List<long>();
+    
+            ints.Add((long) 0);
+            ints.Add((long) 1);
+            ints.Add((long) 2);
+ 
+            ulong a = 0;
+            for (int i = 0; i < 63-7; i+=7) 
             {
-                remote.SetLong(arr[i]);
-                long valueR = remote.GetLong();
-                TestUtils.assertEquals(log, "Wrong long", arr[i], valueR);
+                ints.Add((long)(((ulong)0x7E << i) | a));
+                ints.Add((long)(((ulong)0x7F << i) | a));
+                ints.Add((long)(((ulong)0x80 << i) | a));
+                ints.Add((long)(((ulong)0x81 << i) | a));
+              a <<= 7;
+              a |= 0x5D;
             }
 
-            for (int i = 0; i < 64; i += 8)
-            {
-                long value = 1 << i;
-                remote.SetLong(value);
-                long valueR = remote.GetLong();
-                TestUtils.assertEquals(log, "Wrong long", value, valueR);
+            for (int i = 0; i < ints.Count; i++) {
+              internalTestLong(ints[i]);
+              internalTestLong(-ints[i]);
             }
-            log.info(")testPrimitiveTypesLong");
+    
+            internalTestLong(long.MaxValue);
+            internalTestLong(long.MinValue);
+
+            log.info(")testSerializeLong");
         }
+  
+        private void internalTestLong(long v) 
+        {
+            // Serialize/deserialize here
+            BBufferBin bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
+            bbuf.putLong(v);
+            byte[] data = bbuf.getBuffer().array();
+            BBufferBin bbuf2 = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, ByteBuffer.wrap(data, 0, bbuf.position()));
+            long r = bbuf2.getLong();
+            TestUtils.assertEquals(log, "longVal", v, r);
+
+            // Send to server, receive from server
+            remote.SetLong(v);
+            r = remote.GetLong();
+            TestUtils.assertEquals(log, "Wrong long", v, r);
+        }
+
     }
 
 }

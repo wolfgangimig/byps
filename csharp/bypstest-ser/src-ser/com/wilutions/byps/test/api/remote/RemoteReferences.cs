@@ -5,8 +5,9 @@ using com.wilutions.byps;
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	public interface RemoteReferences : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteReferences : BRemote {
+	
 		com.wilutions.byps.test.api.refs.Node GetNode();
 		void GetNodeAsync(BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) ;
 		IAsyncResult BeginGetNode(AsyncCallback callback, object state);

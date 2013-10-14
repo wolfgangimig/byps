@@ -22,11 +22,14 @@ typedef byps_ptr<WinHttpRequest> PWinHttpRequest;
 class WinHttpGet;
 typedef byps_ptr<WinHttpGet> PWinHttpGet;
 
+class WinHttpGetStream;
+typedef byps_ptr<WinHttpGetStream> PWinHttpGetStream;
+
 class WinHttpPost;
 typedef byps_ptr<WinHttpPost> PWinHttpPost;
 
-class WinHttpPut;
-typedef byps_ptr<WinHttpPut> PWinHttpPut;
+class WinHttpPutStream;
+typedef byps_ptr<WinHttpPutStream> PWinHttpPutStream;
 
 	static byps_atomic<int> s_handleCount;
 
@@ -40,6 +43,13 @@ protected:
 	DWORD statusCode;
 	PAsyncResult asyncResult;
 	std::wstring url; 
+		
+	PBytes sendBytes;
+	size_t sendIdx;
+
+	PBytes respBytes;
+	size_t respIdx;
+
 
 	byps_mutex mutex;
 	byps_condition_variable waitForHeadersAvailable;
@@ -58,6 +68,8 @@ public:
 		, contentLength(0)
 		, statusCode(0)
 		, url(url)
+		, sendIdx(0)
+		, respIdx(0)
 	{
 		//InterlockedIncrement(&openRequests);
 	}
@@ -93,11 +105,19 @@ public:
 		close();
 	}
 
-	virtual void finishOnOK() = 0;
-
-	virtual void readData() = 0;
-
-	virtual void writeDataOrReceiveResponse() = 0;
+	virtual void finishOnOK() throw() {
+		if (asyncResult) {
+			if (respBytes) { // shoud not be null
+				respBytes->length = respIdx;
+				asyncResult->setAsyncResult(BVariant(respBytes));
+			}
+			else {
+				asyncResult->setAsyncResult(BVariant(BException(EX_IOERROR, L"No bytes received")));
+			}
+			asyncResult = NULL;
+		}
+		close();
+	}
 
 	virtual void setTimeouts(int32_t connectTimeoutSeconds, int32_t sendrecvTimeoutSeconds) {
 		WinHttpSetTimeouts(hRequest, 
@@ -249,13 +269,6 @@ public:
 	virtual void onDataAvailable(DWORD length) throw() {
 	}
 
-	virtual void onReadComplete(BYTE* data, DWORD length) throw() {
-	}
-
-	virtual void onWriteComplete(DWORD length) throw() {
-		writeDataOrReceiveResponse();
-	}
-
 	virtual void onRequestError(WINHTTP_ASYNC_RESULT* asyncInfo) throw() {
 		LPCWSTR fnctName = L"";
 
@@ -321,215 +334,6 @@ public:
 
 		waitForHeadersAvailable.notify_all();
 	}
-};
-
-class GetRequestContentStream : public BContentStream {
-	PWinHttpGet request;
-public:
-	GetRequestContentStream(PWinHttpGet request) : request(request) {
-	};
-	virtual ~GetRequestContentStream();
-	virtual const std::wstring& getContentType() const;
-	virtual int64_t getContentLength() const;
-	virtual int32_t read(char* buf, int32_t offs, int32_t len);
-};
-
-
-class WinHttpGet : public HHttpGet, public virtual WinHttpRequest {
-
-	int32_t bufferPos, bufferLimit;
-	char buffer[8 * 1024]; // Buffer size should be 8k or larger: see MSDN documentation of WinHttpReadData
-	BException ex;
-	bool sendComplete;
-
-	byps_condition_variable waitForReadComplete;
-	byps_condition_variable waitForWriteComplete;
-	byps_condition_variable waitForSendComplete;
-
-	friend class GetRequestContentStream;
-
-public:
-	WinHttpGet(HINTERNET hRequest, const std::wstring& url) 
-		: WinHttpRequest(hRequest, url)
-		, bufferPos(sizeof(buffer))
-		, bufferLimit(sizeof(buffer))
-		, sendComplete(false) {
-
-		memset(buffer, 0, sizeof(buffer));
-	}
-
-	virtual ~WinHttpGet() {
-	}
-
-	virtual void finishOnError(const BException& ex) throw() {
-		this->ex = ex;
-		close();
-	}
-
-	virtual void finishOnOK() throw() {
-		close();
-	}
-
-	virtual void onSendComplete() throw() {
-		{
-			byps_unique_lock lock(this->mutex);
-			sendComplete = true;
-			waitForSendComplete.notify_one();
-		}
-
-		writeDataOrReceiveResponse();
-	}
-
-	virtual void writeDataOrReceiveResponse() throw() {
-		if (!hRequest) return; 
-		BOOL succ = WinHttpReceiveResponse(hRequest, NULL);
-		if (!succ) {
-			DWORD err = GetLastError();
-			finishOnError(HException(L"WinHttpReceiveResponse", err));
-		}
-	}
-
-	virtual void onReadComplete(BYTE* , DWORD length) throw() {
-		byps_unique_lock lock(this->mutex);
-
-		if (length) {
-			bufferPos = 0;
-			bufferLimit = length;
-			waitForReadComplete.notify_one();
-
-			this->waitForWriteComplete.wait(lock, [this](){ return bufferPos == bufferLimit; });
-			readData();
-		}
-		else {
-			bufferPos = 0;
-			bufferLimit = -1;
-			waitForReadComplete.notify_one();
-
-			finishOnOK();
-
-		}
-	}
-
-	virtual void readData() throw() {
-		if (!hRequest) return; 
-
-		BOOL succ = WinHttpReadData(hRequest, 
-									buffer, 
-									sizeof(buffer), 
-									NULL);
-		if (!succ) {
-			DWORD err = GetLastError();
-			finishOnError(HException(L"WinHttpReadData", err));
-		}
-	}
-
-	virtual PContentStream send() {
-		sendRequest();
-
-		{
-			byps_unique_lock lock(this->mutex);
-			this->waitForSendComplete.wait(lock, [this](){ return sendComplete; });
-		}
-
-		byps_ptr<WinHttpRequest> pRequest = shared_from_this();
-		PContentStream stream = PContentStream(new GetRequestContentStream(byps_ptr_cast<WinHttpGet>(pRequest)));
-		return stream;
-	}
-};
-
-BINLINE GetRequestContentStream::~GetRequestContentStream() {
-	request->close();
-}
-
-BINLINE const std::wstring& GetRequestContentStream::getContentType() const { 
-	byps_unique_lock lock(request->mutex);
-	if (request->ex) throw request->ex;
-	request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
-	return request->contentType; 
-}
-
-BINLINE int64_t GetRequestContentStream::getContentLength() const {
-	byps_unique_lock lock(request->mutex);
-	if (request->ex) throw request->ex;
-	request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
-	return request->contentLength; 
-}
-
-BINLINE int32_t GetRequestContentStream::read(char* buffer, int32_t offs, int32_t len) {
-	byps_unique_lock lock(request->mutex);
-	if (request->ex) throw request->ex;
-
-	int32_t ret = -1;
-
-	std::chrono::milliseconds timeout(100 * 1000);
-
-	if (request->waitForReadComplete.wait_for(lock, timeout, [this](){ 
-			return request->ex || request->bufferLimit < 0 || request->bufferPos < request->bufferLimit; 
-		}) 
-			== std::cv_status::timeout) {
-
-		request->ex = BException(EX_TIMEOUT, L"Read timeout");
-		throw request->ex;
-	}
-
-	if (request->ex) {
-		throw request->ex;
-	}
-	else if (request->bufferLimit < 0) {
-		// End of stream
-	}
-	else {
-
-		if (request->bufferPos > request->bufferLimit) {
-			BException ex(EX_INTERNAL, L"Illegal state in WinHttpClient::ContentStream::readData");
-			throw request->ex;
-		}
-
-		ret = std::min(request->bufferLimit - request->bufferPos, len);
-		memcpy(buffer + offs, request->buffer + request->bufferPos, ret);
-		
-		request->bufferPos += ret;
-
-		if (request->bufferPos == request->bufferLimit) {
-			request->waitForWriteComplete.notify_one();
-		}
-	}
-
-	return ret;
-}
-
-
-class WinHttpPost : public HHttpPost, public virtual  WinHttpRequest {
-	PBytes sendBytes;
-	size_t sendIdx;
-
-	PBytes respBytes;
-	size_t respIdx;
-
-public:
-	WinHttpPost(HINTERNET hRequest, const std::wstring& url) 
-		: WinHttpRequest(hRequest, url)
-		, sendIdx(0)
-		, respIdx(0) 
-	{
-	}
-
-	virtual ~WinHttpPost() {
-	}
-
-	virtual void finishOnOK() throw() {
-		if (asyncResult) {
-			if (respBytes) { // shoud not be null
-				respBytes->length = respIdx;
-				asyncResult->setAsyncResult(BVariant(respBytes));
-			}
-			else {
-				asyncResult->setAsyncResult(BVariant(BException(EX_IOERROR, L"No bytes received")));
-			}
-			asyncResult = NULL;
-		}
-		close();
-	}
 
 	virtual void send(PBytes bytes, const std::wstring& contentType, PAsyncResult asyncBytesReceived) {
 		this->asyncResult = asyncBytesReceived;
@@ -542,7 +346,7 @@ public:
 	virtual void writeDataOrReceiveResponse() throw() {
 		if (!hRequest) return; 
 
-		if (sendIdx >= sendBytes->length) {
+		if (!sendBytes || sendIdx >= sendBytes->length) {
 			BOOL succ = WinHttpReceiveResponse(hRequest, NULL);
 			if (!succ) {
 				DWORD err = GetLastError();
@@ -628,10 +432,227 @@ public:
 		sendIdx += length;
 		writeDataOrReceiveResponse();
 	}
+};
+
+class GetRequestContentStream : public BContentStream {
+	PWinHttpGetStream request;
+public:
+	GetRequestContentStream(PWinHttpGetStream request) : request(request) {
+	};
+	virtual ~GetRequestContentStream();
+	virtual const std::wstring& getContentType() const;
+	virtual int64_t getContentLength() const;
+	virtual int32_t read(char* buf, int32_t offs, int32_t len);
+};
+
+
+class WinHttpGetStream : public HHttpGetStream, public virtual WinHttpRequest {
+
+	int32_t bufferPos, bufferLimit;
+	char buffer[8 * 1024]; // Buffer size should be 8k or larger: see MSDN documentation of WinHttpReadData
+	BException ex;
+	bool sendComplete;
+
+	byps_condition_variable waitForReadComplete;
+	byps_condition_variable waitForWriteComplete;
+	byps_condition_variable waitForSendComplete;
+
+	friend class GetRequestContentStream;
+
+public:
+	WinHttpGetStream(HINTERNET hRequest, const std::wstring& url) 
+		: WinHttpRequest(hRequest, url)
+		, bufferPos(sizeof(buffer))
+		, bufferLimit(sizeof(buffer))
+		, sendComplete(false) {
+
+		memset(buffer, 0, sizeof(buffer));
+	}
+
+	virtual ~WinHttpGetStream() {
+	}
+
+	virtual void finishOnError(const BException& ex) throw() {
+		this->ex = ex;
+		close();
+	}
+
+	virtual void finishOnOK() throw() {
+		close();
+	}
+
+	virtual void onSendComplete() throw() {
+		{
+			byps_unique_lock lock(this->mutex);
+			sendComplete = true;
+			waitForSendComplete.notify_one();
+		}
+
+		writeDataOrReceiveResponse();
+	}
+
+	virtual void writeDataOrReceiveResponse() throw() {
+		if (!hRequest) return; 
+		BOOL succ = WinHttpReceiveResponse(hRequest, NULL);
+		if (!succ) {
+			DWORD err = GetLastError();
+			finishOnError(HException(L"WinHttpReceiveResponse", err));
+		}
+	}
+
+	virtual void onReadComplete(BYTE* , DWORD length) throw() {
+		byps_unique_lock lock(this->mutex);
+
+		if (length) {
+			bufferPos = 0;
+			bufferLimit = length;
+			waitForReadComplete.notify_one();
+
+			this->waitForWriteComplete.wait(lock, [this](){ return bufferPos == bufferLimit; });
+			readData();
+		}
+		else {
+			bufferPos = 0;
+			bufferLimit = -1;
+			waitForReadComplete.notify_one();
+
+			finishOnOK();
+
+		}
+	}
+
+	virtual void readData() throw() {
+		if (!hRequest) return; 
+
+		BOOL succ = WinHttpReadData(hRequest, 
+									buffer, 
+									sizeof(buffer), 
+									NULL);
+		if (!succ) {
+			DWORD err = GetLastError();
+			finishOnError(HException(L"WinHttpReadData", err));
+		}
+	}
+
+	virtual PContentStream send() {
+		sendRequest();
+
+		{
+			byps_unique_lock lock(this->mutex);
+			this->waitForSendComplete.wait(lock, [this](){ return sendComplete; });
+		}
+
+		byps_ptr<WinHttpRequest> pRequest = shared_from_this();
+		PContentStream stream = PContentStream(new GetRequestContentStream(byps_ptr_cast<WinHttpGetStream>(pRequest)));
+		return stream;
+	}
+
+	virtual void send(PAsyncResult asyncBytesReceived) {
+		this->asyncResult = asyncBytesReceived;
+		sendRequest();
+	}
+};
+
+BINLINE GetRequestContentStream::~GetRequestContentStream() {
+	request->close();
+}
+
+BINLINE const std::wstring& GetRequestContentStream::getContentType() const { 
+	byps_unique_lock lock(request->mutex);
+	if (request->ex) throw request->ex;
+	request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
+	return request->contentType; 
+}
+
+BINLINE int64_t GetRequestContentStream::getContentLength() const {
+	byps_unique_lock lock(request->mutex);
+	if (request->ex) throw request->ex;
+	request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
+	return request->contentLength; 
+}
+
+BINLINE int32_t GetRequestContentStream::read(char* buffer, int32_t offs, int32_t len) {
+	byps_unique_lock lock(request->mutex);
+	if (request->ex) throw request->ex;
+
+	int32_t ret = -1;
+
+	std::chrono::milliseconds timeout(100 * 1000);
+
+	if (request->waitForReadComplete.wait_for(lock, timeout, [this](){ 
+			return request->ex || request->bufferLimit < 0 || request->bufferPos < request->bufferLimit; 
+		}) 
+			== std::cv_status::timeout) {
+
+		request->ex = BException(EX_TIMEOUT, L"Read timeout");
+		throw request->ex;
+	}
+
+	if (request->ex) {
+		throw request->ex;
+	}
+	else if (request->bufferLimit < 0) {
+		// End of stream
+	}
+	else {
+
+		if (request->bufferPos > request->bufferLimit) {
+			BException ex(EX_INTERNAL, L"Illegal state in WinHttpClient::ContentStream::readData");
+			throw request->ex;
+		}
+
+		ret = std::min(request->bufferLimit - request->bufferPos, len);
+		memcpy(buffer + offs, request->buffer + request->bufferPos, ret);
+		
+		request->bufferPos += ret;
+
+		if (request->bufferPos == request->bufferLimit) {
+			request->waitForWriteComplete.notify_one();
+		}
+	}
+
+	return ret;
+}
+
+
+class WinHttpPost : public HHttpPost, public virtual  WinHttpRequest {
+public:
+	WinHttpPost(HINTERNET hRequest, const std::wstring& url) 
+		: WinHttpRequest(hRequest, url)
+	{
+	}
+
+	virtual ~WinHttpPost() {
+	}
+
+	virtual void send(PBytes bytes, const std::wstring& contentType, PAsyncResult asyncBytesReceived) {
+		this->asyncResult = asyncBytesReceived;
+		this->sendBytes = bytes;
+		this->contentLength = bytes->length;
+		this->contentType = contentType;
+		sendRequest();
+	}
 
 };
 
-class WinHttpPut : public HHttpPut, public virtual WinHttpRequest {
+class WinHttpGet : public HHttpGet, public virtual  WinHttpRequest {
+public:
+	WinHttpGet(HINTERNET hRequest, const std::wstring& url) 
+		: WinHttpRequest(hRequest, url)
+	{
+	}
+
+	virtual ~WinHttpGet() {
+	}
+
+	virtual void send(PAsyncResult asyncBytesReceived) {
+		this->asyncResult = asyncBytesReceived;
+		sendRequest();
+	}
+
+};
+
+class WinHttpPutStream : public HHttpPutStream, public virtual WinHttpRequest {
 	PContentStream stream;
 	enum EChunkState { NotChunked, Chunked, FinishChunks } m_eChunkState;
 	
@@ -639,7 +660,7 @@ class WinHttpPut : public HHttpPut, public virtual WinHttpRequest {
 	char buffer[0xFFF0]; // writeDataOrReceiveResponse assumes that buffer size is smaller or equal to 0xFFFF
 
 public:
-	WinHttpPut(HINTERNET hRequest, const std::wstring& url) 
+	WinHttpPutStream(HINTERNET hRequest, const std::wstring& url) 
 		: WinHttpRequest(hRequest, url)
 		, bufferPos(0), bufferLimit(0)
 		, m_eChunkState(EChunkState::NotChunked) 
@@ -647,7 +668,7 @@ public:
 		memset(buffer, 0, sizeof(buffer));
 	}
 
-	virtual ~WinHttpPut() {
+	virtual ~WinHttpPutStream() {
 		stream.reset();
 	}
 
@@ -789,8 +810,9 @@ class WinHttpClient : public HHttpClient {
 
 	HINTERNET hSession;
 	HINTERNET hConnection;
+	PHttpCredentials credentials;
 	static BLogger log;
-
+	
 public:
 	WinHttpClient() 
 		: hSession(NULL)
@@ -813,7 +835,9 @@ public:
 		}
 	}
 
-	virtual void init(const std::wstring& url) {
+	virtual void init(const std::wstring& url, PHttpCredentials creds) {
+
+		this->credentials = creds;
 
 		// WinHttpOpen just seem to leak handles.
 		// http://stackoverflow.com/questions/12652868/winhttpopen-leaking-memory
@@ -907,6 +931,17 @@ public:
 		s_handleCount++;
 		l_debug << L"open " << method <<  L", handleCount=" << s_handleCount;
 
+		if (credentials) {
+			if (credentials->nameProxy.size()) {
+				WinHttpSetCredentials(hRequest, WINHTTP_AUTH_TARGET_PROXY, WINHTTP_AUTH_SCHEME_BASIC, 
+							credentials->nameProxy.c_str(), credentials->pwdProxy.c_str(), NULL);
+			}
+			if (credentials->name.size()) {
+				WinHttpSetCredentials(hRequest, WINHTTP_AUTH_TARGET_SERVER, WINHTTP_AUTH_SCHEME_BASIC, 
+							credentials->name.c_str(), credentials->pwd.c_str(), NULL);
+			}
+		}
+
 		WINHTTP_STATUS_CALLBACK retcb = WinHttpSetStatusCallback(
 			hRequest,
 			winhttp_status_callback,
@@ -918,6 +953,12 @@ public:
 		}
 
 		return hRequest;
+	}
+
+	virtual PHttpGetStream getStream(const std::wstring& url) {
+		HINTERNET hRequest = openRequest(L"GET", url);
+		PWinHttpGetStream req(new WinHttpGetStream(hRequest, url));
+		return req;
 	}
 
 	virtual PHttpGet get(const std::wstring& url) {
@@ -932,9 +973,9 @@ public:
 		return req;
 	}
 
-	virtual PHttpPut put(const std::wstring& url) {
+	virtual PHttpPutStream putStream(const std::wstring& url) {
 		HINTERNET hRequest = openRequest(L"PUT", url);
-		PWinHttpPut req(new WinHttpPut(hRequest, url));
+		PWinHttpPutStream req(new WinHttpPutStream(hRequest, url));
 		return req;
 	}
 

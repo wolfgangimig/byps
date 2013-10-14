@@ -3,6 +3,7 @@ package com.wilutions.byps.gen.j;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -475,12 +476,27 @@ class PrintContext extends PrintContextBase {
 		log.info("Classes for binary serialization: " + dirSerBin);
 		log.info("Classes for JSON serialization: " + dirSerJson);
 	}
+	
+  public RemoteInfo getBaseRemoteForStub(RemoteInfo rinfo) {
+    RemoteInfo baseRemote = rinfo.getRemoteAuth();
+    if (baseRemote == null) baseRemote = rinfo.getRemoteAsync();
+    return baseRemote;
+  }
 
+  public RemoteInfo getBaseRemoteForSkeleton(RemoteInfo rinfo) {
+    RemoteInfo baseRemote = rinfo.getRemoteAsync();
+    return baseRemote;
+  }
+
+
+  
+  
 	public final File dirApi;
 	public final File dirSerBin;
 	public final File dirSerJson;
 	public final File dirSer;
 	private boolean generateHashCodeAndEquals;
 	private Log log = LogFactory.getLog(PrintContext.class);
+
 
 }

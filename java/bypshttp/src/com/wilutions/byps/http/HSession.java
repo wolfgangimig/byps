@@ -32,7 +32,7 @@ public abstract class HSession {
 
   /**
    * Construtor
-   * @param hsess HTTP session object
+   * @param hsess HTTP session object, can be null.
    * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser()
    * @param tempDir Temporary directory for storing streams.
    * @param serverRegistry Registry for BStub objects of all subscribers.
@@ -59,9 +59,11 @@ public abstract class HSession {
 
     wireClientR = new HWireClientR(wireServer);
 
-    hsess.setAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME, this);
-    if (log.isDebugEnabled())
-      log.debug(")HSession");
+    if (hsess != null) {
+      hsess.setAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME, this);
+    }
+    
+    if (log.isDebugEnabled()) log.debug(")HSession");
   }
 
   /**
@@ -83,17 +85,17 @@ public abstract class HSession {
   }
   
   public void done() {
-    if (log.isDebugEnabled())
-      log.debug("done(");
+    if (log.isDebugEnabled()) log.debug("done(");
 
-    httpSess.removeAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-    httpSess.invalidate();
+    if (httpSess != null) {
+      httpSess.removeAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
+      httpSess.invalidate();
+    }
 
     wireServer.done();
     wireClientR.done();
 
-    if (log.isDebugEnabled())
-      log.debug(")done");
+    if (log.isDebugEnabled()) log.debug(")done");
   }
   
   protected BTransportFactory getTransportFactory(BApiDescriptor apiDesc) {
@@ -128,8 +130,10 @@ public abstract class HSession {
    * @param inactiveSeconds Number of inactive seconds until the session is invalidated by the server.
    */
   public void setSessionAuthenticated(int inactiveSeconds) {
-    if (inactiveSeconds == DEFAULT_INACTIVE_SECONDS) inactiveSeconds = defaultInactiveSeconds;
-    httpSess.setMaxInactiveInterval(inactiveSeconds);
+    if (httpSess != null) {
+      if (inactiveSeconds == DEFAULT_INACTIVE_SECONDS) inactiveSeconds = defaultInactiveSeconds;
+      httpSess.setMaxInactiveInterval(inactiveSeconds);
+    }
   }
   
   public BClient getClientR() {

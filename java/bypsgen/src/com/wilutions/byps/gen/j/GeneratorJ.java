@@ -59,12 +59,10 @@ public class GeneratorJ implements Generator {
 		for (RemoteInfo rinfo : remotes) {
 			GenRemoteClass.generate(pctxt, rinfo);
 
-      RemoteInfo rinfoAsync = rinfo.getRemoteAsync();
-      GenRemoteClassAsync.generate(pctxt, rinfoAsync);
+      GenRemoteClassAsync.generate(pctxt, rinfo, rinfo.getRemoteAsync());
 
-      RemoteInfo rinfoAsyncAuth = rinfo.getRemoteAuth();
-      GenRemoteClassAsync.generate(pctxt, rinfoAsyncAuth);
-			
+      GenRemoteClassAuth.generate(pctxt, rinfo, rinfo.getRemoteAuth());
+      
 			GenRemoteStub.generate(pctxt, rinfo);
 			GenRemoteSkeleton.generate(pctxt, rinfo);
 		}		

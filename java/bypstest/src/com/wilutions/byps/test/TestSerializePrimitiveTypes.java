@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import com.wilutions.byps.BBinaryModel;
 import com.wilutions.byps.BBuffer;
+import com.wilutions.byps.BBufferBin;
 import com.wilutions.byps.BBufferJson;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BInput;
@@ -22,6 +23,7 @@ import com.wilutions.byps.BOutput;
 import com.wilutions.byps.BProtocolJson;
 import com.wilutions.byps.BTransport;
 import com.wilutions.byps.BWire;
+import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.list.ListTypes;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 
@@ -297,61 +299,78 @@ public class TestSerializePrimitiveTypes {
 		TestUtils.assertEquals(log, "shortVal", obj.shortVal, objR.shortVal);
 	}
 
-	@Test
-	public void testPrimitiveTypesInt() throws BException {	
-		log.info("testPrimitiveTypesInt(");
-		int[] arr = new int[] { 0, 1, 0xFF, 0x100, 0x10000, 0x1000000, 0x7FFFFFFF, -1, 0x80000000}; 
-		for (int i = 0; i < arr.length; i++) {
-			internalTestInt(arr[i]);
-		}
-		log.info(")testPrimitiveTypesInt");
-	}
-
-	private void internalTestInt(int v) throws BException {
-		BOutput bout = transport.getOutput();
-		
-		PrimitiveTypes obj = new PrimitiveTypes();
-		obj.intVal = v;
-		bout.store(obj);
-		
-		ByteBuffer buf = bout.toByteBuffer();
-		TestUtils.printBuffer(log, buf);
-		BInput bin = transport.getInput(null, buf);
-		
-		PrimitiveTypes objR = (PrimitiveTypes)bin.load();
-		TestUtils.assertEquals(log, "intVal", obj.intVal, objR.intVal);
-	}
-
-	@Test
-	public void testPrimitiveTypesLong() throws BException {	
-		log.info("testPrimitiveTypesLong(");
-    long[] arr = new long[] { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFL, -1, 0x8000000000000000L}; 
-    for (int i = 0; i < arr.length; i++) {
-			internalTestLong(arr[i]);
-		}
+	
+  @Test
+  public void testPrimitiveTypesInt() throws RemoteException {
     
-    for (int i = 0; i < 64; i+=8) {
-      long value = 1 << i;
-      internalTestLong(value);
+    ArrayList<Integer> ints = new ArrayList<Integer>();
+    
+    ints.add(0);
+    ints.add(1);
+    ints.add(2);
+ 
+    int a = 0;
+    for (int i = 0; i < 31-7; i+=7) {
+      ints.add((0x7E << i) | a);
+      ints.add((0x7F << i) | a);
+      ints.add((0x80 << i) | a);
+      ints.add((0x81 << i) | a);
+      a <<= 7;
+      a |= 0x5D;
+    }
+
+    for (int i = 0; i < ints.size(); i++) {
+      internalTestInt(ints.get(i));
+      internalTestInt(-ints.get(i));
     }
     
-		log.info(")testPrimitiveTypesLong");
-	}
-	
-	private void internalTestLong(long v) throws BException {
-		BOutput bout = transport.getOutput();
-		
-		PrimitiveTypes obj = new PrimitiveTypes();
-		obj.longVal = v;
-		bout.store(obj);
-		
-		ByteBuffer buf = bout.toByteBuffer();
-		TestUtils.printBuffer(log, buf);
-		BInput bin = transport.getInput(null, buf);
-		
-		PrimitiveTypes objR = (PrimitiveTypes)bin.load();
-		TestUtils.assertEquals(log, "longVal", obj.longVal, objR.longVal);
-	}
+    internalTestInt(Integer.MAX_VALUE);
+    internalTestInt(Integer.MIN_VALUE);
+  }
+  
+  private void internalTestInt(int v) throws BException {
+    BBuffer bbuf = BBufferBin.create(TestUtils.protocol, null);
+    bbuf.putInt(v);
+    bbuf.flip();
+    int r = bbuf.getInt();
+    TestUtils.assertEquals(log, "intVal", v, r);
+  }
+
+  @Test
+  public void testPrimitiveTypesLong() throws RemoteException {
+    
+    ArrayList<Long> ints = new ArrayList<Long>();
+    
+    ints.add((long) 0);
+    ints.add((long) 1);
+    ints.add((long) 2);
+ 
+    int a = 0;
+    for (int i = 0; i < 63-7; i+=7) {
+      ints.add((long) ((0x7E << i) | a));
+      ints.add((long) ((0x7F << i) | a));
+      ints.add((long) ((0x80 << i) | a));
+      ints.add((long) ((0x81 << i) | a));
+      a <<= 7;
+      a |= 0x5D;
+    }
+
+    for (int i = 0; i < ints.size(); i++) {
+      internalTestLong(ints.get(i));
+      internalTestLong(-ints.get(i));
+    }
+    
+    internalTestLong(Long.MAX_VALUE);
+    internalTestLong(Long.MIN_VALUE);
+  }
+  
+  private void internalTestLong(long v) throws BException {
+    BBuffer bbuf = BBufferBin.create(TestUtils.protocol, null);
+    bbuf.putLong(v);
+    bbuf.flip();
+    long r = bbuf.getLong();
+    TestUtils.assertEquals(log, "longVal", v, r);
+  }
 
 	@Test
 	public void testPrimitiveTypesFloat() throws BException {	

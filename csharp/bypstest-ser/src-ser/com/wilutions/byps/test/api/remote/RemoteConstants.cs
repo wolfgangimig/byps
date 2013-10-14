@@ -8,8 +8,9 @@ namespace com.wilutions.byps.test.api.remote
 	/// <summary>
 	/// Interface functions to verify constant definitions.
 	/// </summary>
-	public interface RemoteConstants : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteConstants : BRemote {
+	
 		void Compare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH);
 		void Compare_HebrewCAsync(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, BAsyncResult<Object> asyncResult) ;
 		IAsyncResult BeginCompare_HebrewC(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH, AsyncCallback callback, object state);

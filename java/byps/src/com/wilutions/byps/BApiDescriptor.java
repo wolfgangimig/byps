@@ -76,7 +76,10 @@ public class BApiDescriptor {
 	
 	public String getProtocolIds() {
 		StringBuilder sbuf = new StringBuilder();
-		for (BBinaryModel p : registries.keySet()) sbuf.append(p.getProtocolId());
+		// First: optimized binary protocol
+    if (registries.containsKey(BBinaryModel.MEDIUM)) sbuf.append(BBinaryModel.MEDIUM.getProtocolId());
+    // Last: fallback to JSON
+    if (registries.containsKey(BBinaryModel.JSON)) sbuf.append(BBinaryModel.JSON.getProtocolId());
 		return sbuf.toString();
 	}
 	

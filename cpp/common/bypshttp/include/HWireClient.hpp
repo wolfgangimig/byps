@@ -338,18 +338,18 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 		l_debug << L"create outerResult";
 		PAsyncResult outerResult(new HWireClient_AsyncResultAfterAllRequests(shared_from_this(), tpool, msg->header.messageId, asyncResult, nbOfRequests));
 
+		l_debug << L"create message result";
+		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, outerResult, msg->header.messageId);
+
 		// Create request for message
 		l_debug << L"create post request";
 		PHttpPost messageRequest = httpClient->post(url);
 		messageRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
 
-		l_debug << L"create message result";
-		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, outerResult, msg->header.messageId);
-
 		l_debug << L"send message buf";
 		std::wstring contentType = msg->header.magic == BMAGIC_BINARY_STREAM ? L"application/byps" : L"application/json";
 		messageRequest->send(msg->buf, contentType, messageResult);
-
+		
 		// Create requests for each stream.
 		for (unsigned i = 0; i < msg->streams.size(); i++) {
 			PStreamRequest stream = msg->streams[i];
@@ -361,7 +361,7 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 			ssurl << url << L"?messageid=" << stream->messageId << L"&streamid=" << stream->streamId;
 
 			l_debug << L"put stream url=" << url;
-			PHttpPut streamRequest = httpClient->put(ssurl.str());
+			PHttpPutStream streamRequest = httpClient->putStream(ssurl.str());
 			streamRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
 
 			l_debug << L"create stream result";
@@ -463,7 +463,7 @@ BINLINE void HWireClient::internalSendStreamsThenMessage(const PMessage& msg, PA
 			ssurl << url << L"?messageid=" << stream->messageId << L"&streamid=" << stream->streamId;
 
             l_debug << L"put stream url=" << url;
-			PHttpPut streamRequest = httpClient->put(ssurl.str());
+			PHttpPutStream streamRequest = httpClient->putStream(ssurl.str());
 			streamRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
 
             l_debug << L"create stream result";
@@ -483,18 +483,63 @@ BINLINE void HWireClient::internalSendStreamsThenMessage(const PMessage& msg, PA
 }
 
 BINLINE void HWireClient::internalSendMessageWithoutStreams(const PMessage& msg, PAsyncResult asyncResult, int32_t timeoutSecondsRequest) {
-	// Create request for message
-	l_debug << L"create post request";
-	PHttpPost messageRequest = httpClient->post(url);
-	messageRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
+	
+	bool isNegotiate = BNegotiate::isNegotiateMessage(msg->buf);
+	bool isReverse = (msg->header.flags & BHEADER_FLAG_RESPONSE) != 0;
+	if (isNegotiate) {
+		l_debug << L"create negotiate request";
 
-	l_debug << L"create message result";
-	BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, asyncResult, msg->header.messageId);
+		std::string negoStr((char*)msg->buf->data, msg->buf->length);
+		std::wstring negoWStr = BToStdWString(negoStr);
+		negoWStr = escapeUrl(negoWStr);
 
-	requestsToCancel->add(messageResult->id, messageRequest);
-	l_debug << L"send message buf";
-	std::wstring contentType = msg->header.magic == BMAGIC_BINARY_STREAM ? L"application/byps" : L"application/json";
-	messageRequest->send(msg->buf, contentType, messageResult);
+		std::wstring servletPath = getServletPathForNegotiationAndAuthentication();
+		std::vector<std::wstring> params;
+		params.push_back(L"negotiate");
+		params.push_back(negoWStr);
+		std::wstring destUrl = makeUrl(servletPath, params);
+		l_debug << L"url=" << destUrl;
+
+		PHttpGet messageRequest = httpClient->get(destUrl);
+		messageRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
+
+		l_debug << L"create message result";
+		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, asyncResult, msg->header.messageId);
+
+		requestsToCancel->add(messageResult->id, messageRequest);
+
+		l_debug << L"send message buf";
+		messageRequest->send(messageResult);
+	}
+	else {
+		// Create request for message
+		l_debug << L"create post request";
+
+		std::wstring destUrl = url;
+		if (isReverse) {
+			destUrl = makeUrl(getServletPathForNegotiationAndAuthentication(), std::vector<std::wstring>());
+		}
+
+		PHttpPost messageRequest = httpClient->post(destUrl);
+		messageRequest->setTimeouts(timeoutSecondsClient, isReverse ? 0 : timeoutSecondsRequest);
+
+		l_debug << L"create message result";
+		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, asyncResult, msg->header.messageId);
+
+		requestsToCancel->add(messageResult->id, messageRequest);
+		l_debug << L"send message buf";
+		std::wstring contentType = msg->header.magic == BMAGIC_BINARY_STREAM ? L"application/byps" : L"application/json";
+		messageRequest->send(msg->buf, contentType, messageResult);
+	}
+}
+
+BINLINE std::wstring HWireClient::escapeUrl(const std::wstring& url) {
+	std::wstringstream wss;
+	wss << std::hex << std::setfill(L'0');
+	for (unsigned i = 0; i < url.size(); i++) {
+		wss << L"%" << setw(2) << (int)(url[i]);
+	}
+	return wss.str();
 }
 
 class MyContentStream : public BContentStream {
@@ -539,7 +584,7 @@ public:
             ssurl << url << L"?messageid=" << messageId << L"&streamid=" << streamId;
             l_debug << L"get url=" << ssurl.str();
 
-            PHttpGet streamRequest = httpClient->get(ssurl.str());
+            PHttpGetStream streamRequest = httpClient->getStream(ssurl.str());
             streamRequest->setTimeouts(timeoutSeconds, timeoutSeconds);
 
             requestsToCancel->add(id, streamRequest);
@@ -628,7 +673,7 @@ BINLINE void HWireClient::sendCancelMessage(int64_t cancelMessageId) {
 	std::wstringstream ss;
 	ss << url << L"?cancel=1&messageid=" << cancelMessageId;
 	
-	PHttpGet cancelRequest = httpClient->get(ss.str());
+	PHttpGetStream cancelRequest = httpClient->getStream(ss.str());
 	cancelRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsClient);
 	PContentStream strm = cancelRequest->send();
 	strm.reset();
@@ -654,6 +699,39 @@ BINLINE void HWireClient::internalCancelAllRequests(int64_t cancelMessageId) {
     std::this_thread::sleep_for( ms );
 
     l_debug << L")internalCancelAllRequests";
+}
+
+// /bypsservletauth/auth
+BINLINE std::wstring HWireClient::getServletPathForNegotiationAndAuthentication() {
+	std::wstring ret;
+	size_t p = url.find_last_of(L'/');
+	if (p != std::wstring::npos) {
+		ret = url.substr(p);
+	}
+	return ret;
+}
+
+// /bypsservletauth/auth
+BINLINE std::wstring HWireClient::getServletPathForReverseRequest() {
+	std::wstring ret;
+	size_t p = url.find_last_of(L'/');
+	if (p != std::wstring::npos) {
+		ret = url.substr(p);
+	}
+	return ret;
+}
+
+BINLINE std::wstring HWireClient::makeUrl(const std::wstring& servletPath, const std::vector<std::wstring>& params) {
+	std::wstringstream wss;
+	size_t p = url.find_last_of(L"/");
+    if (p == std::wstring::npos) p = url.size();
+	wss << url.substr(0, p);
+	wss << servletPath;
+    for (size_t i = 0; i < params.size(); i+=2) {
+		wss << (i == 0 ? L"?" : L"&");
+		wss << params[i] << L"=" << params[i+1];
+    }
+	return wss.str();
 }
 
 HWireClient_ExecResult::HWireClient_ExecResult(PAsyncResult asyncResult, BVariant var) 

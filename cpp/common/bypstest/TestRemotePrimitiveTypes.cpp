@@ -30,47 +30,96 @@ public:
 	}
 
 	void testSerializeInt() {	
-        PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
 
-		PPrimitiveTypes obj1(new PrimitiveTypes());
-
-        int arr[] = { 0, 1, 0xFF, 0x100, 0x10000, 0x1000000, 0x7FFFFFFF, -1, INT_MIN};
-        for (unsigned i = 0; i < sizeof(arr)/sizeof(int); i++) {
-			obj1->intVal = arr[i];
-		
-			remote->setPrimitiveTypes(obj1);
-			PPrimitiveTypes objR = remote->getPrimitiveTypes();
-		
-			TestUtils::tassert(__FILE__, __LINE__, L"PrimitiveTypes", obj1, objR);
-			TASSERT( L"Wrong int", obj1->intVal, objR->intVal);
-		}
-	}
-
-	void testSerializeLong() {	
-        PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
-
-		PPrimitiveTypes obj1(new PrimitiveTypes());
-
-        int64_t arr[] = { 0, 1, 0xFF, 0x7FFFFFFFFFFFFFFFLL, -1, INT64_MIN};
-        for (unsigned i = 0; i < sizeof(arr)/sizeof(int64_t); i++) {
-			obj1->longVal = arr[i];
-		
-			remote->setPrimitiveTypes(obj1);
-			PPrimitiveTypes objR = remote->getPrimitiveTypes();
-		
-			TestUtils::tassert(__FILE__, __LINE__, L"PrimitiveTypes", obj1, objR);
-			TASSERT( L"Wrong long", obj1->longVal, objR->longVal);
-		}
-
-        for (int i = 0; i < 64; i += 8) {
-            int64_t value = 1 << i;
-            remote->setLong(value);
-            int64_t valueR = remote->getLong();
-            TASSERT( L"Wrong long", value, valueR);
+        std::vector<int32_t> ints = std::vector<int32_t>();
+    
+        ints.push_back((int32_t) 0);
+        ints.push_back((int32_t) 1);
+        ints.push_back((int32_t) 2);
+ 
+        int32_t a = 0;
+        for (int i = 0; i < 31-7; i+=7) 
+        {
+            ints.push_back( (((int32_t)0x7E << i) | a));
+            ints.push_back( (((int32_t)0x7F << i) | a));
+            ints.push_back( (((int32_t)0x80 << i) | a));
+            ints.push_back( (((int32_t)0x81 << i) | a));
+            a <<= 7;
+            a |= 0x5D;
         }
 
-	}
+        for (unsigned i = 0; i < ints.size(); i++) {
+            internalTestInt(ints[i]);
+            internalTestInt(-ints[i]);
+        }
+    
+        internalTestInt(INT32_MAX);
+        internalTestInt(INT32_MIN);
 
+ 	}
+
+    void internalTestInt(int32_t v) {
+		BBuffer buf(BBinaryModel::MEDIUM(), BBIG_ENDIAN);
+		buf.serialize(v);
+
+		BBuffer bufR(BBinaryModel::MEDIUM(), buf.getBytes(), BBIG_ENDIAN);
+		int32_t vR = 0;
+		bufR.serialize(vR);
+
+		TASSERT( L"Wrong int", v, vR);
+
+        // Send to server, receive from server
+		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		remote->setInt(v);
+		vR = remote->getInt();
+		TASSERT( L"Wrong int", v, vR);
+    }
+
+	void testSerializeLong() {	
+
+        std::vector<int64_t> ints = std::vector<int64_t>();
+    
+        ints.push_back((int64_t) 0);
+        ints.push_back((int64_t) 1);
+        ints.push_back((int64_t) 2);
+ 
+        int64_t a = 0;
+        for (int i = 0; i < 63-7; i+=7) 
+        {
+            ints.push_back( (((int64_t)0x7E << i) | a));
+            ints.push_back( (((int64_t)0x7F << i) | a));
+            ints.push_back( (((int64_t)0x80 << i) | a));
+            ints.push_back( (((int64_t)0x81 << i) | a));
+            a <<= 7;
+            a |= 0x5D;
+        }
+
+        for (unsigned i = 0; i < ints.size(); i++) {
+            internalTestLong(ints[i]);
+            internalTestLong(-ints[i]);
+        }
+    
+        internalTestLong(INT64_MAX);
+        internalTestLong(INT64_MIN);
+
+ 	}
+
+    void internalTestLong(int64_t v) {
+		BBuffer buf(BBinaryModel::MEDIUM(), BBIG_ENDIAN);
+		buf.serialize(v);
+
+		BBuffer bufR(BBinaryModel::MEDIUM(), buf.getBytes(), BBIG_ENDIAN);
+		int64_t vR = 0;
+		bufR.serialize(vR);
+
+		TASSERT( L"Wrong long", v, vR);
+
+        // Send to server, receive from server
+		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		remote->setLong(v);
+		vR = remote->getLong();
+		TASSERT( L"Wrong long", v, vR);
+    }
 
 	void testRemotePrimitiveTypes() {
 

@@ -8,8 +8,9 @@ namespace com.wilutions.byps.test.api.remote
 	/// <summary>
 	/// This interface is an example for using the authentication mechanism.
 	/// </summary>
-	public interface RemoteWithAuthenticationAuth : BRemote
-	{
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	public interface RemoteWithAuthenticationAuth : BRemote {
+	
 		/// <summary>
 		/// Set authentication flag in MySession.
 		/// </summary>

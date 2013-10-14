@@ -45,7 +45,9 @@ namespace com.wilutions.byps
 
             putStreams(msg.streams, asyncResult);
 
-            BMessage omsg = new BMessage(msg.messageId, obuf, null);
+            BMessageHeader header = new BMessageHeader();
+            header.read(obuf);
+            BMessage omsg = new BMessage(header, obuf, null);
             asyncResult.setAsyncResult(omsg, null);
         }
 

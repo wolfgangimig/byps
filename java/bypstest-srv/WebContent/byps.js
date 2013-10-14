@@ -245,7 +245,12 @@ com.wilutions.byps.BSerializer_15 = function() {
 	};
 	
 	this.read = function(obj, bin) {
-		obj.url = bin.transport.wire.rurl + "?messageid=" + bin.header.messageId + "&streamid=" + obj.streamId;
+
+		var url = bin.transport.wire.url;
+		url += (url.indexOf('?') != url.length-1) ? '?' : '&';
+		obj.url = url + "messageid=" + bin.header.messageId + "&streamid=" + obj.streamId;
+		return obj;
+		
 		return obj;
 	};
 	
@@ -320,10 +325,6 @@ com.wilutions.byps.BNegotiate = function(apiDesc) {
 	this.version = apiDesc.version;
 	this.targetId = "";
 	
-	this.isNegotiateMessage = function(buf) {
-		return buf.indexOf("[\"N\"") == 0;
-	};
-	
 	this.toArray = function() {
 		return ["N","J",this.version,"_", this.targetId ];
 	};
@@ -333,6 +334,11 @@ com.wilutions.byps.BNegotiate = function(apiDesc) {
 		this.targetId = arr[4];
 	};
 };
+
+com.wilutions.byps.BNegotiate_isNegotiateMessage = function(buf) {
+	return buf.indexOf("[\"N\"") == 0;
+};
+
 
 //------------------------------------------------------------------------------------------------
 
@@ -424,12 +430,32 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 		
 		this.openRequestsToCancel[requestId] = xhr;
 		
-		var rurl = me.url;
-		rurl += (url.indexOf("?") < 0) ? "?" : "&";
-		rurl += "__ts=";
-		rurl += new Date().getTime();
+		var destUrl = me.url;
 		
-		xhr.open('POST', rurl, processAsync);
+		var isNegotiate = com.wilutions.byps.BNegotiate_isNegotiateMessage(requestMessage.jsonText);
+		var isReverse = requestMessage.header && (requestMessage.header.flags & com.wilutions.byps.BMessageHeaderC.FLAG_RESPONSE) != 0;
+
+		if (isNegotiate) {
+
+			var negoStr = requestMessage.jsonText;
+			negoStr = encodeURIComponent(negoStr);
+
+			var servletPath = me.getServletPathForNegotiationAndAuthentication();
+			
+			destUrl = me.makeUrl(servletPath, ["negotiate", negoStr]);
+		}
+		else if (isReverse) {
+			
+			var servletPath = me.getServletPathForReverseRequest();
+			
+			destUrl = me.makeUrl(servletPath);
+		}
+		
+		destUrl += (destUrl.indexOf("?") < 0) ? "?" : "&";
+		destUrl += "__ts=";
+		destUrl += new Date().getTime();
+
+		xhr.open(isNegotiate ? 'GET' : 'POST', destUrl, processAsync);
 		
 		if (timeoutMillis > 0) {
 			xhr.timeout = timeoutMillis;
@@ -441,7 +467,7 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 				
 				delete me.openRequestsToCancel[requestId];
 				
-				if (xhr.status = 200) {
+				if (xhr.status == 200) {
 					var responseMessage = new com.wilutions.byps.BMessage();
 					responseMessage.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
 					asyncResult(responseMessage, null);
@@ -453,7 +479,13 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 		}
 		
 		xhr.setRequestHeader("Content-type", "application/json");
-		xhr.send(requestMessage.jsonText);
+		
+		if (isNegotiate) {
+			xhr.send();
+		}
+		else {
+			xhr.send(requestMessage.jsonText);
+		}
 		
 		if (!processAsync) {
 			
@@ -486,13 +518,44 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 		this.openRequestsToCancel = {};
 	};
 	
+	this.getServletPathForNegotiationAndAuthentication = function() {
+		var ret = this.url;
+		var p = ret.lastIndexOf('/');
+		if (p >= 0) {
+			ret = ret.substring(p);
+		}
+		return ret;
+	};
+	
+	this.getServletPathForReverseRequest = function() {
+		var ret = this.url;
+		var p = ret.lastIndexOf('/');
+		if (p >= 0) {
+			ret = ret.substring(p);
+		}
+		return ret;
+	};
+
+	this.makeUrl = function(servletPath, params) {
+		var ret = this.url;
+		var p = ret.lastIndexOf('/');
+		if (p >= 0) ret = ret.substring(0, p);
+		ret += servletPath;
+		if (params) {
+			for (var i = 0; i < params.length; i += 2) {
+				ret += (i == 0) ? "?" : "&";
+				ret += params[i] + "=" + params[i+1];
+			}
+		}
+		return ret;
+	};
 };
 
 
 //------------------------------------------------------------------------------------------------
 
 com.wilutions.byps.BAuthentication = function() {
-	this.authenticate = function(client, asyncResult) {};
+	this.authenticate = function(client, asyncResult) {;};
 	this.isReloginException = function(client, ex, typeId) { return false; };
 	this.getSession = function() { return null; };
 };
@@ -712,7 +775,8 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 						me._lastAuthenticationException = ex;
 						
 						for (var i = 0; i < arr.length; i++) {
-							arr[i](result, ex);
+							var result_i = arr[i];
+							result_i(result, ex);
 						}
 					};
 					

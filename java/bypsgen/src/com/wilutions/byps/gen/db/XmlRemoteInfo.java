@@ -28,9 +28,6 @@ public class XmlRemoteInfo implements XmlInfo {
   @XmlElement(name = "authParamClassName") 
   String authParamClassName; 
 
-  @XmlElement(name = "authInterface") 
-  String authInterface;
-  
   @XmlElement(name = "isClientRemote")
   boolean isClientRemote;
 	
@@ -42,14 +39,16 @@ public class XmlRemoteInfo implements XmlInfo {
     @XmlElement(name = "comment") 
 	public List<CommentInfo> comments;
 
+  public List<String> baseQNames;
+	
 	public static XmlRemoteInfo fromValue(ClassDB classDB, RemoteInfo v) {
 		XmlRemoteInfo x = new XmlRemoteInfo();
 
 		x.typeName = v.toXmlTypeName();
 		x.typeId = v.typeId;
 		x.authParamClassName = v.authParamClassName;
-		x.authInterface = v.authBase;
 		x.isClientRemote = v.isClientRemote;
+		x.baseQNames = v.baseQNames;
 		
 		x.methods = new ArrayList<XmlMethodInfo>(v.methods.size());
 		for (MethodInfo m : v.methods) {
@@ -68,7 +67,7 @@ public class XmlRemoteInfo implements XmlInfo {
 		TypeInfo t = TypeInfo.fromXmlFullName(typeName);
 		log.debug("typeInfo=" + t);
 
-		RemoteInfo remoteInfo = classDB.createRemoteInfo(t.name, comments, t.qname, null, authParamClassName, authInterface, isClientRemote);
+		RemoteInfo remoteInfo = classDB.createRemoteInfo(t.name, comments, t.qname, baseQNames, null, authParamClassName, isClientRemote);
 		xmlClassDB.pushUpdate(this);
 		
 		remoteInfo.typeId = this.typeId;

@@ -1,7 +1,6 @@
 package com.wilutions.byps.http;
 
 import com.wilutions.byps.BApiDescriptor;
-import com.wilutions.byps.BAuthentication;
 import com.wilutions.byps.BClient;
 import com.wilutions.byps.BServer;
 import com.wilutions.byps.BServerR;

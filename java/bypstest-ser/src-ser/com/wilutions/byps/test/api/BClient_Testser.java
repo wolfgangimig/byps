@@ -24,6 +24,11 @@ public class BClient_Testser extends BClient {
 				BServer_Testser.createServerR(transportFactory.createServerTransport())
 			)
 		);
+		bioFruitService = new com.wilutions.byps.test.api.inherit.BStub_BioFruitService(transport);
+		bioLemonService = new com.wilutions.byps.test.api.inherit.BStub_BioLemonService(transport);
+		fruitService = new com.wilutions.byps.test.api.inherit.BStub_FruitService(transport);
+		lemonService = new com.wilutions.byps.test.api.inherit.BStub_LemonService(transport);
+		plantService = new com.wilutions.byps.test.api.inherit.BStub_PlantService(transport);
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 		remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
@@ -41,6 +46,36 @@ public class BClient_Testser extends BClient {
 		clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(transport);
 		serverIF = new com.wilutions.byps.test.api.srvr.BStub_ServerIF(transport);
 		evolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(transport);
+	}
+	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(1881829396, remoteSkeleton);
+		return this;
+	}
+	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(1992245333, remoteSkeleton);
+		return this;
+	}
+	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_FruitService remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(506940662, remoteSkeleton);
+		return this;
+	}
+	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_LemonService remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(617356599, remoteSkeleton);
+		return this;
+	}
+	
+	public BClient_Testser addRemote(com.wilutions.byps.test.api.inherit.BSkeleton_PlantService remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(1117460801, remoteSkeleton);
+		return this;
 	}
 	
 	public BClient_Testser addRemote(com.wilutions.byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim remoteSkeleton) throws BException {
@@ -147,6 +182,11 @@ public class BClient_Testser extends BClient {
 	
 	protected BClient_Testser(BTransport transport) {
 		super(transport, null);
+		bioFruitService = new com.wilutions.byps.test.api.inherit.BStub_BioFruitService(transport);
+		bioLemonService = new com.wilutions.byps.test.api.inherit.BStub_BioLemonService(transport);
+		fruitService = new com.wilutions.byps.test.api.inherit.BStub_FruitService(transport);
+		lemonService = new com.wilutions.byps.test.api.inherit.BStub_LemonService(transport);
+		plantService = new com.wilutions.byps.test.api.inherit.BStub_PlantService(transport);
 		remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(transport);
 		remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(transport);
 		remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(transport);
@@ -168,6 +208,11 @@ public class BClient_Testser extends BClient {
 	
 	@Override
 	public BRemote getStub(int remoteId) {
+		if (remoteId == 1881829396) return bioFruitService;
+		if (remoteId == 1992245333) return bioLemonService;
+		if (remoteId == 506940662) return fruitService;
+		if (remoteId == 617356599) return lemonService;
+		if (remoteId == 1117460801) return plantService;
 		if (remoteId == 1557084481) return remoteArrayTypes1dim;
 		if (remoteId == 2081058997) return remoteArrayTypes23;
 		if (remoteId == 1557173854) return remoteArrayTypes4dim;
@@ -188,6 +233,11 @@ public class BClient_Testser extends BClient {
 		return null;
 	}
 	
+	public final com.wilutions.byps.test.api.inherit.BioFruitServiceAuth bioFruitService;
+	public final com.wilutions.byps.test.api.inherit.BioLemonServiceAuth bioLemonService;
+	public final com.wilutions.byps.test.api.inherit.FruitServiceAuth fruitService;
+	public final com.wilutions.byps.test.api.inherit.LemonServiceAuth lemonService;
+	public final com.wilutions.byps.test.api.inherit.PlantServiceAuth plantService;
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes1dimAsync remoteArrayTypes1dim;
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes23Async remoteArrayTypes23;
 	public final com.wilutions.byps.test.api.remote.RemoteArrayTypes4dimAsync remoteArrayTypes4dim;
