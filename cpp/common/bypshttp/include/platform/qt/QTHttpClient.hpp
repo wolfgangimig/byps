@@ -777,7 +777,9 @@ BINLINE QTHttpRequestBridge::QTHttpRequestBridge(QNetworkReply* reply, int32_t t
 }
 
 BINLINE QTHttpRequestBridge::~QTHttpRequestBridge() {
-    l_debug << L"dtor()";
+    l_debug << L"dtor(";
+    reply->deleteLater();
+    l_debug << L")dtor";
 }
 
 BINLINE void QTHttpRequestBridge::httpFinished() {

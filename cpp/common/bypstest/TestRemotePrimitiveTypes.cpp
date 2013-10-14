@@ -29,7 +29,15 @@ public:
 		TestUtils::releasePrimitiveTypes(objR);
 	}
 
-	void testSerializeInt() {	
+    void testSerializeInt() {
+        internalTestSerializeInt(false);
+    }
+
+    void testSerializeIntSendToServer() {
+        internalTestSerializeInt(true);
+    }
+
+    void internalTestSerializeInt(bool sendToServer) {
 
         std::vector<int32_t> ints = std::vector<int32_t>();
     
@@ -49,30 +57,35 @@ public:
         }
 
         for (unsigned i = 0; i < ints.size(); i++) {
-            internalTestInt(ints[i]);
-            internalTestInt(-ints[i]);
+            internalTestInt(ints[i], sendToServer);
+            internalTestInt(-ints[i], sendToServer);
         }
     
-        internalTestInt(INT32_MAX);
-        internalTestInt(INT32_MIN);
+        internalTestInt(INT32_MAX, sendToServer);
+        internalTestInt(INT32_MIN, sendToServer);
 
  	}
 
-    void internalTestInt(int32_t v) {
-		BBuffer buf(BBinaryModel::MEDIUM(), BBIG_ENDIAN);
-		buf.serialize(v);
-
-		BBuffer bufR(BBinaryModel::MEDIUM(), buf.getBytes(), BBIG_ENDIAN);
-		int32_t vR = 0;
-		bufR.serialize(vR);
-
-		TASSERT( L"Wrong int", v, vR);
+    void internalTestInt(int32_t v, bool sendToServer) {
 
         // Send to server, receive from server
-		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
-		remote->setInt(v);
-		vR = remote->getInt();
-		TASSERT( L"Wrong int", v, vR);
+        if (sendToServer) {
+            PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+            remote->setInt(v);
+            int32_t vR = remote->getInt();
+            TASSERT( L"Wrong int", v, vR);
+        }
+        else {
+
+            BBuffer buf(BBinaryModel::MEDIUM(), BBIG_ENDIAN);
+            buf.serialize(v);
+
+            BBuffer bufR(BBinaryModel::MEDIUM(), buf.getBytes(), BBIG_ENDIAN);
+            int32_t vR = 0;
+            bufR.serialize(vR);
+
+            TASSERT( L"Wrong int", v, vR);
+        }
     }
 
 	void testSerializeLong() {	
@@ -204,13 +217,14 @@ public:
 
 
 	virtual void init() {
-		ADD_TEST(testSerializeInt);
-		ADD_TEST(testSerializeLong);
-		ADD_TEST(testRemotePrimitiveTypes);
-		ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
-		ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);
-		ADD_TEST(testRemotePrimitiveTypesSendAll);
-		ADD_TEST(testPrimitiveTypesReferenceToSelf);
+        ADD_TEST(testSerializeInt);
+        ADD_TEST(testSerializeIntSendToServer);
+        ADD_TEST(testSerializeLong);
+        ADD_TEST(testRemotePrimitiveTypes);
+        ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
+        ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);
+        ADD_TEST(testRemotePrimitiveTypesSendAll);
+        ADD_TEST(testPrimitiveTypesReferenceToSelf);
 		
 	}
 };
