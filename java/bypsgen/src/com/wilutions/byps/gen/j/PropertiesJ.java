@@ -47,6 +47,14 @@ public class PropertiesJ extends GeneratorProperties {
 	 */
 	public final static String HASHCODE_AND_EQUALS = "-genj.hasheq";
 	
+  /**
+   * Generate Java files with UTF-8 encoding.
+   * Optional.
+   * If not set, Java files are encoded with the default character set. 
+   */
+  public final static String GENERATE_UTF8_SOURCE = "-genj.utf8";
+  
+	
 	/**
 	 * Constructor
 	 * @param defaultProps General properties used by all code generators.

@@ -44,6 +44,8 @@ class PrintContext extends PrintContextBase {
 		logProperties();
 		
 		generateHashCodeAndEquals = props.getOptionalPropertyInt(PropertiesJ.HASHCODE_AND_EQUALS, 0) != 0;
+		
+		generateUtf8Source = props.getOptionalPropertyBoolean(PropertiesJ.GENERATE_UTF8_SOURCE, false);
 	}
 	
 	public boolean isGenerateHashCodeAndEquals() {
@@ -59,7 +61,7 @@ class PrintContext extends PrintContextBase {
 		File file = new File(inSerDir ? dirSer : dirApi, packDirs);
 		file.mkdirs();
 		file = new File(file, namePrefix + tinfo.name + ".java");
-		return new CodePrinter(new FileOutputStream(file));
+		return new CodePrinter(new FileOutputStream(file), generateUtf8Source);
 	}
 	
 	CodePrinter getPrinterForSerClass(SerialInfo serInfo, BBinaryModel pformat) throws IOException {
@@ -69,7 +71,7 @@ class PrintContext extends PrintContextBase {
 		File file = new File(pformat == BBinaryModel.JSON ? dirSerJson : dirSerBin, packDirs);
 		file.mkdirs();
 		file = new File(file, serClassName + ".java");
-		return new CodePrinter(new FileOutputStream(file));
+		return new CodePrinter(new FileOutputStream(file), generateUtf8Source);
 	}
 	
 	public String getRegistryClassName(BBinaryModel pformat) {
@@ -107,7 +109,7 @@ class PrintContext extends PrintContextBase {
 		File file = new File(pformat == BBinaryModel.JSON ? dirSerJson : dirSerBin, packDirs);
 		file.mkdirs();
 		file = new File(file, tdescClassName + ".java");
-		return new CodePrinter(new FileOutputStream(file));
+		return new CodePrinter(new FileOutputStream(file), generateUtf8Source);
 	}
 
 	CodePrinter getPrinterForApiDescriptor() throws IOException {
@@ -116,7 +118,7 @@ class PrintContext extends PrintContextBase {
 		File file = new File(dirSer, packDirs);
 		file.mkdirs();
 		file = new File(file, tdescClassName + ".java");
-		return new CodePrinter(new FileOutputStream(file));
+		return new CodePrinter(new FileOutputStream(file), generateUtf8Source);
 	}
 
 	CodePrinter getPrinterForClient() throws IOException {
@@ -125,7 +127,7 @@ class PrintContext extends PrintContextBase {
 		File file = new File(dirSer, packDirs);
 		file.mkdirs();
 		file = new File(file, className + ".java");
-		return new CodePrinter(new FileOutputStream(file));
+		return new CodePrinter(new FileOutputStream(file), generateUtf8Source);
 	}
 
 	CodePrinter getPrinterForServer() throws IOException {
@@ -134,7 +136,7 @@ class PrintContext extends PrintContextBase {
 		File file = new File(dirSer, packDirs);
 		file.mkdirs();
 		file = new File(file, className + ".java");
-		return new CodePrinter(new FileOutputStream(file));
+		return new CodePrinter(new FileOutputStream(file), generateUtf8Source);
 	}
 
 	String getSerializerInstance(TypeInfo tinfo, BBinaryModel pformat) {
@@ -496,6 +498,7 @@ class PrintContext extends PrintContextBase {
 	public final File dirSerJson;
 	public final File dirSer;
 	private boolean generateHashCodeAndEquals;
+	private final boolean generateUtf8Source;
 	private Log log = LogFactory.getLog(PrintContext.class);
 
 
