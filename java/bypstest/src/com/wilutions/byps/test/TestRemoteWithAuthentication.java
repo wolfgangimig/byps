@@ -165,8 +165,8 @@ public class TestRemoteWithAuthentication {
     }
     
     @Override
-    public Object getSession() {
-      return sess;
+    public void getSession(BClient client, int typeId, BAsyncResult<Object> asyncResult) {
+      asyncResult.setAsyncResult(sess, null);
     }
 
   }

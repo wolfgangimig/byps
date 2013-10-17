@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -27,8 +28,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPlanetAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		com.wilutions.byps.test.api.enu.EnumPlanets EndGetPlanet(IAsyncResult asyncResult) {
+		public com.wilutions.byps.test.api.enu.EnumPlanets EndGetPlanet(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.enu.EnumPlanets>)asyncResult).Result;
+		}
+		public async Task<com.wilutions.byps.test.api.enu.EnumPlanets> GetPlanetTask() {
+			return await Task<com.wilutions.byps.test.api.enu.EnumPlanets>.Factory.FromAsync(BeginGetPlanet, EndGetPlanet, null);
 		}
 		
 		public void SetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) {
@@ -47,8 +51,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetPlanetAsync(planet, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPlanet(IAsyncResult asyncResult) {
+		public Object EndSetPlanet(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPlanetTask(com.wilutions.byps.test.api.enu.EnumPlanets planet) {
+			await Task.Factory.FromAsync(BeginSetPlanet, EndSetPlanet, planet, null);
 		}
 		
 		

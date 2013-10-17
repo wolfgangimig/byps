@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.inherit;
+package com.wilutions.byps.test.api.inherit;
 
 /*
  * 

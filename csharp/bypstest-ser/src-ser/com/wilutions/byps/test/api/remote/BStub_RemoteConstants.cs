@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -29,8 +30,11 @@ namespace com.wilutions.byps.test.api.remote
 			Compare_HebrewCAsync(ALEPH, BETH, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndCompare_HebrewC(IAsyncResult asyncResult) {
+		public Object EndCompare_HebrewC(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task Compare_HebrewCTask(com.wilutions.byps.test.api.cons.HebrewZ ALEPH, com.wilutions.byps.test.api.cons.HebrewZ BETH) {
+			await Task.Factory.FromAsync(BeginCompare_HebrewC, EndCompare_HebrewC, ALEPH, BETH, null);
 		}
 		
 		public bool Compare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll) {
@@ -65,8 +69,11 @@ namespace com.wilutions.byps.test.api.remote
 			Compare_AllTypesCAsync(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, _byps_ret);
 			return _byps_ret;
 		}
-		public 		bool EndCompare_AllTypesC(IAsyncResult asyncResult) {
+		public bool EndCompare_AllTypesC(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<bool>)asyncResult).Result;
+		}
+		public async Task<bool> Compare_AllTypesCTask(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, com.wilutions.byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, com.wilutions.byps.test.api.cons.AllTypesZ[,] arrAll) {
+			return await Task<bool>.Factory.FromAsync(BeginCompare_AllTypesC, EndCompare_AllTypesC, bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, null);
 		}
 		
 		

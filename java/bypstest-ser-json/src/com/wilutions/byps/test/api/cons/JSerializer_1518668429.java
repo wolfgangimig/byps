@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.cons;
+package com.wilutions.byps.test.api.cons;
 
 /*
  * Serializer for com.wilutions.byps.test.api.cons.HebrewZ

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -30,8 +31,11 @@ namespace com.wilutions.byps.test.api.remote
 			PublishRemoteAsync(name, remote, fowardToOtherServers, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndPublishRemote(IAsyncResult asyncResult) {
+		public Object EndPublishRemote(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task PublishRemoteTask(String name, BRemote remote, bool fowardToOtherServers) {
+			await Task.Factory.FromAsync(BeginPublishRemote, EndPublishRemote, name, remote, fowardToOtherServers, null);
 		}
 		
 		public BRemote GetPublishedRemote(String name) {
@@ -50,8 +54,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPublishedRemoteAsync(name, _byps_ret);
 			return _byps_ret;
 		}
-		public 		BRemote EndGetPublishedRemote(IAsyncResult asyncResult) {
+		public BRemote EndGetPublishedRemote(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<BRemote>)asyncResult).Result;
+		}
+		public async Task<BRemote> GetPublishedRemoteTask(String name) {
+			return await Task<BRemote>.Factory.FromAsync(BeginGetPublishedRemote, EndGetPublishedRemote, name, null);
 		}
 		
 		public void RemovePublishedRemote(String name) {
@@ -70,8 +77,11 @@ namespace com.wilutions.byps.test.api.remote
 			RemovePublishedRemoteAsync(name, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndRemovePublishedRemote(IAsyncResult asyncResult) {
+		public Object EndRemovePublishedRemote(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task RemovePublishedRemoteTask(String name) {
+			await Task.Factory.FromAsync(BeginRemovePublishedRemote, EndRemovePublishedRemote, name, null);
 		}
 		
 		

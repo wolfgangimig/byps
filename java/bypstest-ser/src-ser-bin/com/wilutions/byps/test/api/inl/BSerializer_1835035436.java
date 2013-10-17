@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.inl;
+package com.wilutions.byps.test.api.inl;
 
 /*
  * Serializer for com.wilutions.byps.test.api.inl.Point2D

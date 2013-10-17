@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.inherit;
+package com.wilutions.byps.test.api.inherit;
 
 /*
  * 
@@ -13,9 +13,9 @@ public interface LemonServiceAsync extends BRemote,
 	com.wilutions.byps.test.api.inherit.FruitServiceAsync {
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.lang.String pick(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void pick(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String fromTree, final BAsyncResult<String> asyncResult) ;
 	
 	

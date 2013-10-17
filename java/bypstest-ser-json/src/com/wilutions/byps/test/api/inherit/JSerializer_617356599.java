@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.inherit;
+package com.wilutions.byps.test.api.inherit;
 
 /*
  * Serializer for com.wilutions.byps.test.api.inherit.BStub_LemonService

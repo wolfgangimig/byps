@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.srvr
@@ -28,8 +29,11 @@ namespace com.wilutions.byps.test.api.srvr
 			IncrementIntAsync(a, _byps_ret);
 			return _byps_ret;
 		}
-		public 		int EndIncrementInt(IAsyncResult asyncResult) {
+		public int EndIncrementInt(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<int>)asyncResult).Result;
+		}
+		public async Task<int> IncrementIntTask(int a) {
+			return await Task<int>.Factory.FromAsync(BeginIncrementInt, EndIncrementInt, a, null);
 		}
 		
 		public IList<System.IO.Stream> GetStreams(int ctrl) {
@@ -48,8 +52,11 @@ namespace com.wilutions.byps.test.api.srvr
 			GetStreamsAsync(ctrl, _byps_ret);
 			return _byps_ret;
 		}
-		public 		IList<System.IO.Stream> EndGetStreams(IAsyncResult asyncResult) {
+		public IList<System.IO.Stream> EndGetStreams(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<IList<System.IO.Stream>>)asyncResult).Result;
+		}
+		public async Task<IList<System.IO.Stream>> GetStreamsTask(int ctrl) {
+			return await Task<IList<System.IO.Stream>>.Factory.FromAsync(BeginGetStreams, EndGetStreams, ctrl, null);
 		}
 		
 		public void PutStreams(IList<System.IO.Stream> strm, int ctrl) {
@@ -69,8 +76,11 @@ namespace com.wilutions.byps.test.api.srvr
 			PutStreamsAsync(strm, ctrl, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndPutStreams(IAsyncResult asyncResult) {
+		public Object EndPutStreams(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task PutStreamsTask(IList<System.IO.Stream> strm, int ctrl) {
+			await Task.Factory.FromAsync(BeginPutStreams, EndPutStreams, strm, ctrl, null);
 		}
 		
 		public ChatStructure SendChat(ChatStructure cs) {
@@ -89,8 +99,11 @@ namespace com.wilutions.byps.test.api.srvr
 			SendChatAsync(cs, _byps_ret);
 			return _byps_ret;
 		}
-		public 		ChatStructure EndSendChat(IAsyncResult asyncResult) {
+		public ChatStructure EndSendChat(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<ChatStructure>)asyncResult).Result;
+		}
+		public async Task<ChatStructure> SendChatTask(ChatStructure cs) {
+			return await Task<ChatStructure>.Factory.FromAsync(BeginSendChat, EndSendChat, cs, null);
 		}
 		
 		

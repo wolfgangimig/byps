@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -28,8 +29,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetBoolAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetBool(IAsyncResult asyncResult) {
+		public Object EndSetBool(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetBoolTask(bool[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetBool, EndSetBool, v, null);
 		}
 		
 		public void SetByte(byte[,,,] v) {
@@ -48,8 +52,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetByteAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetByte(IAsyncResult asyncResult) {
+		public Object EndSetByte(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetByteTask(byte[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetByte, EndSetByte, v, null);
 		}
 		
 		public void SetChar(char[,,,] v) {
@@ -68,8 +75,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetCharAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetChar(IAsyncResult asyncResult) {
+		public Object EndSetChar(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetCharTask(char[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetChar, EndSetChar, v, null);
 		}
 		
 		public void SetShort(short[,,,] v) {
@@ -88,8 +98,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetShortAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetShort(IAsyncResult asyncResult) {
+		public Object EndSetShort(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetShortTask(short[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetShort, EndSetShort, v, null);
 		}
 		
 		public void SetInt(int[,,,] v) {
@@ -108,8 +121,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetIntAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetInt(IAsyncResult asyncResult) {
+		public Object EndSetInt(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetIntTask(int[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetInt, EndSetInt, v, null);
 		}
 		
 		public void SetLong(long[,,,] v) {
@@ -128,8 +144,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetLongAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetLong(IAsyncResult asyncResult) {
+		public Object EndSetLong(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetLongTask(long[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetLong, EndSetLong, v, null);
 		}
 		
 		public void SetFloat(float[,,,] v) {
@@ -148,8 +167,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetFloatAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetFloat(IAsyncResult asyncResult) {
+		public Object EndSetFloat(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetFloatTask(float[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetFloat, EndSetFloat, v, null);
 		}
 		
 		public void SetDouble(double[,,,] v) {
@@ -168,8 +190,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetDoubleAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetDouble(IAsyncResult asyncResult) {
+		public Object EndSetDouble(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetDoubleTask(double[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetDouble, EndSetDouble, v, null);
 		}
 		
 		public void SetString(String[,,,] v) {
@@ -188,8 +213,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetStringAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetString(IAsyncResult asyncResult) {
+		public Object EndSetString(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetStringTask(String[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetString, EndSetString, v, null);
 		}
 		
 		public void SetPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] v) {
@@ -208,8 +236,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetPrimitiveTypesAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPrimitiveTypes(IAsyncResult asyncResult) {
+		public Object EndSetPrimitiveTypes(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPrimitiveTypesTask(com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetPrimitiveTypes, EndSetPrimitiveTypes, v, null);
 		}
 		
 		public void SetObject(Object[,,,] v) {
@@ -228,8 +259,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetObjectAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetObject(IAsyncResult asyncResult) {
+		public Object EndSetObject(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetObjectTask(Object[,,,] v) {
+			await Task.Factory.FromAsync(BeginSetObject, EndSetObject, v, null);
 		}
 		
 		public bool[,,,] GetBool() {
@@ -247,8 +281,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetBoolAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		bool[,,,] EndGetBool(IAsyncResult asyncResult) {
+		public bool[,,,] EndGetBool(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<bool[,,,]>)asyncResult).Result;
+		}
+		public async Task<bool[,,,]> GetBoolTask() {
+			return await Task<bool[,,,]>.Factory.FromAsync(BeginGetBool, EndGetBool, null);
 		}
 		
 		public byte[,,,] GetByte() {
@@ -266,8 +303,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetByteAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		byte[,,,] EndGetByte(IAsyncResult asyncResult) {
+		public byte[,,,] EndGetByte(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<byte[,,,]>)asyncResult).Result;
+		}
+		public async Task<byte[,,,]> GetByteTask() {
+			return await Task<byte[,,,]>.Factory.FromAsync(BeginGetByte, EndGetByte, null);
 		}
 		
 		public char[,,,] GetChar() {
@@ -285,8 +325,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetCharAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		char[,,,] EndGetChar(IAsyncResult asyncResult) {
+		public char[,,,] EndGetChar(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<char[,,,]>)asyncResult).Result;
+		}
+		public async Task<char[,,,]> GetCharTask() {
+			return await Task<char[,,,]>.Factory.FromAsync(BeginGetChar, EndGetChar, null);
 		}
 		
 		public short[,,,] GetShort() {
@@ -304,8 +347,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetShortAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		short[,,,] EndGetShort(IAsyncResult asyncResult) {
+		public short[,,,] EndGetShort(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<short[,,,]>)asyncResult).Result;
+		}
+		public async Task<short[,,,]> GetShortTask() {
+			return await Task<short[,,,]>.Factory.FromAsync(BeginGetShort, EndGetShort, null);
 		}
 		
 		public int[,,,] GetInt() {
@@ -323,8 +369,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetIntAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		int[,,,] EndGetInt(IAsyncResult asyncResult) {
+		public int[,,,] EndGetInt(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<int[,,,]>)asyncResult).Result;
+		}
+		public async Task<int[,,,]> GetIntTask() {
+			return await Task<int[,,,]>.Factory.FromAsync(BeginGetInt, EndGetInt, null);
 		}
 		
 		public long[,,,] GetLong() {
@@ -342,8 +391,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetLongAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		long[,,,] EndGetLong(IAsyncResult asyncResult) {
+		public long[,,,] EndGetLong(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<long[,,,]>)asyncResult).Result;
+		}
+		public async Task<long[,,,]> GetLongTask() {
+			return await Task<long[,,,]>.Factory.FromAsync(BeginGetLong, EndGetLong, null);
 		}
 		
 		public float[,,,] GetFloat() {
@@ -361,8 +413,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetFloatAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		float[,,,] EndGetFloat(IAsyncResult asyncResult) {
+		public float[,,,] EndGetFloat(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<float[,,,]>)asyncResult).Result;
+		}
+		public async Task<float[,,,]> GetFloatTask() {
+			return await Task<float[,,,]>.Factory.FromAsync(BeginGetFloat, EndGetFloat, null);
 		}
 		
 		public double[,,,] GetDouble() {
@@ -380,8 +435,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetDoubleAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		double[,,,] EndGetDouble(IAsyncResult asyncResult) {
+		public double[,,,] EndGetDouble(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<double[,,,]>)asyncResult).Result;
+		}
+		public async Task<double[,,,]> GetDoubleTask() {
+			return await Task<double[,,,]>.Factory.FromAsync(BeginGetDouble, EndGetDouble, null);
 		}
 		
 		public String[,,,] GetString() {
@@ -399,8 +457,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetStringAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		String[,,,] EndGetString(IAsyncResult asyncResult) {
+		public String[,,,] EndGetString(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<String[,,,]>)asyncResult).Result;
+		}
+		public async Task<String[,,,]> GetStringTask() {
+			return await Task<String[,,,]>.Factory.FromAsync(BeginGetString, EndGetString, null);
 		}
 		
 		public com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] GetPrimitiveTypes() {
@@ -418,8 +479,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPrimitiveTypesAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] EndGetPrimitiveTypes(IAsyncResult asyncResult) {
+		public com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,] EndGetPrimitiveTypes(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,]>)asyncResult).Result;
+		}
+		public async Task<com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,]> GetPrimitiveTypesTask() {
+			return await Task<com.wilutions.byps.test.api.prim.PrimitiveTypes[,,,]>.Factory.FromAsync(BeginGetPrimitiveTypes, EndGetPrimitiveTypes, null);
 		}
 		
 		public Object[,,,] GetObject() {
@@ -437,8 +501,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetObjectAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		Object[,,,] EndGetObject(IAsyncResult asyncResult) {
+		public Object[,,,] EndGetObject(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object[,,,]>)asyncResult).Result;
+		}
+		public async Task<Object[,,,]> GetObjectTask() {
+			return await Task<Object[,,,]>.Factory.FromAsync(BeginGetObject, EndGetObject, null);
 		}
 		
 		

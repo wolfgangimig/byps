@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * 
@@ -18,11 +18,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 	
 	public final static long serialVersionUID = 1341983932L;
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void voidFunctionVoid() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void voidFunctionVoid(final BAsyncResult<Object> asyncResult) {
 		try {
 			voidFunctionVoid();
@@ -32,11 +32,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setBool(boolean v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setBool(boolean v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setBool(v);
@@ -46,11 +46,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setByte(byte v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setByte(byte v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setByte(v);
@@ -60,11 +60,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setChar(char v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setChar(char v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setChar(v);
@@ -74,11 +74,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setShort(short v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setShort(short v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setShort(v);
@@ -88,11 +88,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setInt(int v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setInt(int v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setInt(v);
@@ -102,11 +102,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setLong(long v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setLong(long v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setLong(v);
@@ -116,11 +116,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setFloat(float v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setFloat(float v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setFloat(v);
@@ -130,11 +130,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setDouble(double v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setDouble(double v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setDouble(v);
@@ -144,11 +144,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setString(java.lang.String v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setString(java.lang.String v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setString(v);
@@ -158,11 +158,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPrimitiveTypes(v);
@@ -172,11 +172,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setObject(java.lang.Object v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setObject(java.lang.Object v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setObject(v);
@@ -186,11 +186,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public boolean getBool() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getBool(final BAsyncResult<Boolean> asyncResult) {
 		try {
 			boolean ret = getBool();
@@ -200,11 +200,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public byte getByte() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getByte(final BAsyncResult<Byte> asyncResult) {
 		try {
 			byte ret = getByte();
@@ -214,11 +214,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public char getChar() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getChar(final BAsyncResult<Character> asyncResult) {
 		try {
 			char ret = getChar();
@@ -228,11 +228,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public short getShort() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getShort(final BAsyncResult<Short> asyncResult) {
 		try {
 			short ret = getShort();
@@ -242,11 +242,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public int getInt() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getInt(final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = getInt();
@@ -256,11 +256,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public long getLong() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getLong(final BAsyncResult<Long> asyncResult) {
 		try {
 			long ret = getLong();
@@ -270,11 +270,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public float getFloat() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getFloat(final BAsyncResult<Float> asyncResult) {
 		try {
 			float ret = getFloat();
@@ -284,11 +284,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public double getDouble() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getDouble(final BAsyncResult<Double> asyncResult) {
 		try {
 			double ret = getDouble();
@@ -298,11 +298,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.lang.String getString() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getString(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = getString();
@@ -312,11 +312,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public com.wilutions.byps.test.api.prim.PrimitiveTypes getPrimitiveTypes() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getPrimitiveTypes(final BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes> asyncResult) {
 		try {
 			com.wilutions.byps.test.api.prim.PrimitiveTypes ret = getPrimitiveTypes();
@@ -326,11 +326,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.lang.Object getObject() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getObject(final BAsyncResult<java.lang.Object> asyncResult) {
 		try {
 			java.lang.Object ret = getObject();
@@ -340,11 +340,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void sendAllTypes(boolean b, char c, short s, int i, long l, float f, double d, java.lang.String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, java.lang.Object o) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void sendAllTypes(boolean b, char c, short s, int i, long l, float f, double d, java.lang.String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, java.lang.Object o, final BAsyncResult<Object> asyncResult) {
 		try {
 			sendAllTypes(b, c, s, i, l, f, d, str, pt, o);
@@ -354,11 +354,11 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public int add(int a, int b) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void add(int a, int b, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = add(a, b);

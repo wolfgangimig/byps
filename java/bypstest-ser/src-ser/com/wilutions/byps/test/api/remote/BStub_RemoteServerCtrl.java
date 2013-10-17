@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * 
@@ -17,14 +17,14 @@ public class BStub_RemoteServerCtrl extends BStub implements RemoteServerCtrlAsy
 		super(transport);		
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		publishRemote(name, remote, fowardToOtherServers, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();		
@@ -34,14 +34,14 @@ public class BStub_RemoteServerCtrl extends BStub implements RemoteServerCtrlAsy
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<BRemote> asyncResult = new BSyncResult<BRemote>();		
 		getPublishedRemote(name, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();		
@@ -49,14 +49,14 @@ public class BStub_RemoteServerCtrl extends BStub implements RemoteServerCtrlAsy
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void removePublishedRemote(java.lang.String name) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		removePublishedRemote(name, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();		

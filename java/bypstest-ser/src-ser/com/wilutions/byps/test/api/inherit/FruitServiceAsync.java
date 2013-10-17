@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.inherit;
+package com.wilutions.byps.test.api.inherit;
 
 /*
  * 
@@ -13,9 +13,9 @@ public interface FruitServiceAsync extends BRemote,
 	com.wilutions.byps.test.api.inherit.PlantServiceAsync {
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.lang.String squeeze() throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void squeeze(final BAsyncResult<String> asyncResult) ;
 	
 	

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.srvr
@@ -28,8 +29,11 @@ namespace com.wilutions.byps.test.api.srvr
 			CallClientIncrementIntAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		int EndCallClientIncrementInt(IAsyncResult asyncResult) {
+		public int EndCallClientIncrementInt(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<int>)asyncResult).Result;
+		}
+		public async Task<int> CallClientIncrementIntTask(int v) {
+			return await Task<int>.Factory.FromAsync(BeginCallClientIncrementInt, EndCallClientIncrementInt, v, null);
 		}
 		
 		public void SetPartner(ClientIF client) {
@@ -48,8 +52,11 @@ namespace com.wilutions.byps.test.api.srvr
 			SetPartnerAsync(client, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPartner(IAsyncResult asyncResult) {
+		public Object EndSetPartner(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPartnerTask(ClientIF client) {
+			await Task.Factory.FromAsync(BeginSetPartner, EndSetPartner, client, null);
 		}
 		
 		public ClientIF GetPartner() {
@@ -67,8 +74,11 @@ namespace com.wilutions.byps.test.api.srvr
 			GetPartnerAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		ClientIF EndGetPartner(IAsyncResult asyncResult) {
+		public ClientIF EndGetPartner(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<ClientIF>)asyncResult).Result;
+		}
+		public async Task<ClientIF> GetPartnerTask() {
+			return await Task<ClientIF>.Factory.FromAsync(BeginGetPartner, EndGetPartner, null);
 		}
 		
 		public IList<System.IO.Stream> GetStreamsFromClient() {
@@ -86,8 +96,11 @@ namespace com.wilutions.byps.test.api.srvr
 			GetStreamsFromClientAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		IList<System.IO.Stream> EndGetStreamsFromClient(IAsyncResult asyncResult) {
+		public IList<System.IO.Stream> EndGetStreamsFromClient(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<IList<System.IO.Stream>>)asyncResult).Result;
+		}
+		public async Task<IList<System.IO.Stream>> GetStreamsFromClientTask() {
+			return await Task<IList<System.IO.Stream>>.Factory.FromAsync(BeginGetStreamsFromClient, EndGetStreamsFromClient, null);
 		}
 		
 		public void PutStreamsOnClient(IList<System.IO.Stream> streams) {
@@ -106,8 +119,11 @@ namespace com.wilutions.byps.test.api.srvr
 			PutStreamsOnClientAsync(streams, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndPutStreamsOnClient(IAsyncResult asyncResult) {
+		public Object EndPutStreamsOnClient(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task PutStreamsOnClientTask(IList<System.IO.Stream> streams) {
+			await Task.Factory.FromAsync(BeginPutStreamsOnClient, EndPutStreamsOnClient, streams, null);
 		}
 		
 		public void RegisterWithClientMap(int id) {
@@ -126,8 +142,11 @@ namespace com.wilutions.byps.test.api.srvr
 			RegisterWithClientMapAsync(id, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndRegisterWithClientMap(IAsyncResult asyncResult) {
+		public Object EndRegisterWithClientMap(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task RegisterWithClientMapTask(int id) {
+			await Task.Factory.FromAsync(BeginRegisterWithClientMap, EndRegisterWithClientMap, id, null);
 		}
 		
 		public ClientIF GetClient(int id) {
@@ -146,8 +165,11 @@ namespace com.wilutions.byps.test.api.srvr
 			GetClientAsync(id, _byps_ret);
 			return _byps_ret;
 		}
-		public 		ClientIF EndGetClient(IAsyncResult asyncResult) {
+		public ClientIF EndGetClient(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<ClientIF>)asyncResult).Result;
+		}
+		public async Task<ClientIF> GetClientTask(int id) {
+			return await Task<ClientIF>.Factory.FromAsync(BeginGetClient, EndGetClient, id, null);
 		}
 		
 		public ISet<int> GetClientIds() {
@@ -165,8 +187,11 @@ namespace com.wilutions.byps.test.api.srvr
 			GetClientIdsAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		ISet<int> EndGetClientIds(IAsyncResult asyncResult) {
+		public ISet<int> EndGetClientIds(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<ISet<int>>)asyncResult).Result;
+		}
+		public async Task<ISet<int>> GetClientIdsTask() {
+			return await Task<ISet<int>>.Factory.FromAsync(BeginGetClientIds, EndGetClientIds, null);
 		}
 		
 		public int CallClientParallel(int v) {
@@ -185,8 +210,11 @@ namespace com.wilutions.byps.test.api.srvr
 			CallClientParallelAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		int EndCallClientParallel(IAsyncResult asyncResult) {
+		public int EndCallClientParallel(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<int>)asyncResult).Result;
+		}
+		public async Task<int> CallClientParallelTask(int v) {
+			return await Task<int>.Factory.FromAsync(BeginCallClientParallel, EndCallClientParallel, v, null);
 		}
 		
 		

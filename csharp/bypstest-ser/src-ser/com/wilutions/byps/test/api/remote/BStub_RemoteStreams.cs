@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -27,8 +28,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetImageAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		System.IO.Stream EndGetImage(IAsyncResult asyncResult) {
+		public System.IO.Stream EndGetImage(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<System.IO.Stream>)asyncResult).Result;
+		}
+		public async Task<System.IO.Stream> GetImageTask() {
+			return await Task<System.IO.Stream>.Factory.FromAsync(BeginGetImage, EndGetImage, null);
 		}
 		
 		public void SetImage(System.IO.Stream istrm) {
@@ -47,8 +51,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetImageAsync(istrm, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetImage(IAsyncResult asyncResult) {
+		public Object EndSetImage(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetImageTask(System.IO.Stream istrm) {
+			await Task.Factory.FromAsync(BeginSetImage, EndSetImage, istrm, null);
 		}
 		
 		public Dictionary<int,System.IO.Stream> GetImages() {
@@ -66,8 +73,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetImagesAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		Dictionary<int,System.IO.Stream> EndGetImages(IAsyncResult asyncResult) {
+		public Dictionary<int,System.IO.Stream> EndGetImages(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Dictionary<int,System.IO.Stream>>)asyncResult).Result;
+		}
+		public async Task<Dictionary<int,System.IO.Stream>> GetImagesTask() {
+			return await Task<Dictionary<int,System.IO.Stream>>.Factory.FromAsync(BeginGetImages, EndGetImages, null);
 		}
 		
 		public void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
@@ -87,8 +97,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetImagesAsync(istrms, doNotReadStreamAtKey, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetImages(IAsyncResult asyncResult) {
+		public Object EndSetImages(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetImagesTask(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
+			await Task.Factory.FromAsync(BeginSetImages, EndSetImages, istrms, doNotReadStreamAtKey, null);
 		}
 		
 		public void ThrowLastException() {
@@ -106,8 +119,11 @@ namespace com.wilutions.byps.test.api.remote
 			ThrowLastExceptionAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndThrowLastException(IAsyncResult asyncResult) {
+		public Object EndThrowLastException(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task ThrowLastExceptionTask() {
+			await Task.Factory.FromAsync(BeginThrowLastException, EndThrowLastException, null);
 		}
 		
 		public System.IO.Stream GetTextStream() {
@@ -125,8 +141,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetTextStreamAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		System.IO.Stream EndGetTextStream(IAsyncResult asyncResult) {
+		public System.IO.Stream EndGetTextStream(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<System.IO.Stream>)asyncResult).Result;
+		}
+		public async Task<System.IO.Stream> GetTextStreamTask() {
+			return await Task<System.IO.Stream>.Factory.FromAsync(BeginGetTextStream, EndGetTextStream, null);
 		}
 		
 		

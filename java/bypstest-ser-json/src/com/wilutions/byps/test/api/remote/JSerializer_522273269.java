@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat

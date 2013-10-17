@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * 
@@ -17,28 +17,28 @@ public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsy
 		super(transport);		
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public com.wilutions.byps.test.api.refs.Node getNode() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult = new BSyncResult<com.wilutions.byps.test.api.refs.Node>();		
 		getNode(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getNode(final BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setNode(com.wilutions.byps.test.api.refs.Node v) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setNode(v, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setNode(com.wilutions.byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();		

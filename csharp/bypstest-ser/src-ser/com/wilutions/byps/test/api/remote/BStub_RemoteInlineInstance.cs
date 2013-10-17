@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -28,8 +29,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetActorAsync(act, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetActor(IAsyncResult asyncResult) {
+		public Object EndSetActor(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetActorTask(com.wilutions.byps.test.api.inl.Actor act) {
+			await Task.Factory.FromAsync(BeginSetActor, EndSetActor, act, null);
 		}
 		
 		public com.wilutions.byps.test.api.inl.Actor GetActor() {
@@ -47,8 +51,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetActorAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		com.wilutions.byps.test.api.inl.Actor EndGetActor(IAsyncResult asyncResult) {
+		public com.wilutions.byps.test.api.inl.Actor EndGetActor(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.inl.Actor>)asyncResult).Result;
+		}
+		public async Task<com.wilutions.byps.test.api.inl.Actor> GetActorTask() {
+			return await Task<com.wilutions.byps.test.api.inl.Actor>.Factory.FromAsync(BeginGetActor, EndGetActor, null);
 		}
 		
 		public void SetPoint2DArray1dim(com.wilutions.byps.test.api.inl.Point2D[] pointArray) {
@@ -67,8 +74,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetPoint2DArray1dimAsync(pointArray, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPoint2DArray1dim(IAsyncResult asyncResult) {
+		public Object EndSetPoint2DArray1dim(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPoint2DArray1dimTask(com.wilutions.byps.test.api.inl.Point2D[] pointArray) {
+			await Task.Factory.FromAsync(BeginSetPoint2DArray1dim, EndSetPoint2DArray1dim, pointArray, null);
 		}
 		
 		public com.wilutions.byps.test.api.inl.Point2D[] GetPoint2DArray1dim() {
@@ -86,8 +96,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPoint2DArray1dimAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		com.wilutions.byps.test.api.inl.Point2D[] EndGetPoint2DArray1dim(IAsyncResult asyncResult) {
+		public com.wilutions.byps.test.api.inl.Point2D[] EndGetPoint2DArray1dim(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.inl.Point2D[]>)asyncResult).Result;
+		}
+		public async Task<com.wilutions.byps.test.api.inl.Point2D[]> GetPoint2DArray1dimTask() {
+			return await Task<com.wilutions.byps.test.api.inl.Point2D[]>.Factory.FromAsync(BeginGetPoint2DArray1dim, EndGetPoint2DArray1dim, null);
 		}
 		
 		public void SetPoint2DArray4dim(com.wilutions.byps.test.api.inl.Point2D[,,,] pointArray) {
@@ -106,8 +119,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetPoint2DArray4dimAsync(pointArray, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPoint2DArray4dim(IAsyncResult asyncResult) {
+		public Object EndSetPoint2DArray4dim(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPoint2DArray4dimTask(com.wilutions.byps.test.api.inl.Point2D[,,,] pointArray) {
+			await Task.Factory.FromAsync(BeginSetPoint2DArray4dim, EndSetPoint2DArray4dim, pointArray, null);
 		}
 		
 		public com.wilutions.byps.test.api.inl.Point2D[,,,] GetPoint2DArray4dim() {
@@ -125,8 +141,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPoint2DArray4dimAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		com.wilutions.byps.test.api.inl.Point2D[,,,] EndGetPoint2DArray4dim(IAsyncResult asyncResult) {
+		public com.wilutions.byps.test.api.inl.Point2D[,,,] EndGetPoint2DArray4dim(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.inl.Point2D[,,,]>)asyncResult).Result;
+		}
+		public async Task<com.wilutions.byps.test.api.inl.Point2D[,,,]> GetPoint2DArray4dimTask() {
+			return await Task<com.wilutions.byps.test.api.inl.Point2D[,,,]>.Factory.FromAsync(BeginGetPoint2DArray4dim, EndGetPoint2DArray4dim, null);
 		}
 		
 		public void SetPoint2DList(IList<com.wilutions.byps.test.api.inl.Point2D> pointList) {
@@ -145,8 +164,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetPoint2DListAsync(pointList, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPoint2DList(IAsyncResult asyncResult) {
+		public Object EndSetPoint2DList(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPoint2DListTask(IList<com.wilutions.byps.test.api.inl.Point2D> pointList) {
+			await Task.Factory.FromAsync(BeginSetPoint2DList, EndSetPoint2DList, pointList, null);
 		}
 		
 		public IList<com.wilutions.byps.test.api.inl.Point2D> GetPoint2DList() {
@@ -164,8 +186,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPoint2DListAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		IList<com.wilutions.byps.test.api.inl.Point2D> EndGetPoint2DList(IAsyncResult asyncResult) {
+		public IList<com.wilutions.byps.test.api.inl.Point2D> EndGetPoint2DList(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<IList<com.wilutions.byps.test.api.inl.Point2D>>)asyncResult).Result;
+		}
+		public async Task<IList<com.wilutions.byps.test.api.inl.Point2D>> GetPoint2DListTask() {
+			return await Task<IList<com.wilutions.byps.test.api.inl.Point2D>>.Factory.FromAsync(BeginGetPoint2DList, EndGetPoint2DList, null);
 		}
 		
 		public void SetPoint2DListList(IList<IList<com.wilutions.byps.test.api.inl.Point2D>> pointListList) {
@@ -184,8 +209,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetPoint2DListListAsync(pointListList, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPoint2DListList(IAsyncResult asyncResult) {
+		public Object EndSetPoint2DListList(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPoint2DListListTask(IList<IList<com.wilutions.byps.test.api.inl.Point2D>> pointListList) {
+			await Task.Factory.FromAsync(BeginSetPoint2DListList, EndSetPoint2DListList, pointListList, null);
 		}
 		
 		public IList<IList<com.wilutions.byps.test.api.inl.Point2D>> GetPoint2DListList() {
@@ -203,8 +231,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPoint2DListListAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		IList<IList<com.wilutions.byps.test.api.inl.Point2D>> EndGetPoint2DListList(IAsyncResult asyncResult) {
+		public IList<IList<com.wilutions.byps.test.api.inl.Point2D>> EndGetPoint2DListList(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<IList<IList<com.wilutions.byps.test.api.inl.Point2D>>>)asyncResult).Result;
+		}
+		public async Task<IList<IList<com.wilutions.byps.test.api.inl.Point2D>>> GetPoint2DListListTask() {
+			return await Task<IList<IList<com.wilutions.byps.test.api.inl.Point2D>>>.Factory.FromAsync(BeginGetPoint2DListList, EndGetPoint2DListList, null);
 		}
 		
 		public void SetPoint2DMap(IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> pointMap) {
@@ -223,8 +254,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetPoint2DMapAsync(pointMap, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetPoint2DMap(IAsyncResult asyncResult) {
+		public Object EndSetPoint2DMap(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetPoint2DMapTask(IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> pointMap) {
+			await Task.Factory.FromAsync(BeginSetPoint2DMap, EndSetPoint2DMap, pointMap, null);
 		}
 		
 		public IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> GetPoint2DMap() {
@@ -242,8 +276,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetPoint2DMapAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> EndGetPoint2DMap(IAsyncResult asyncResult) {
+		public IDictionary<int,com.wilutions.byps.test.api.inl.Point2D> EndGetPoint2DMap(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<IDictionary<int,com.wilutions.byps.test.api.inl.Point2D>>)asyncResult).Result;
+		}
+		public async Task<IDictionary<int,com.wilutions.byps.test.api.inl.Point2D>> GetPoint2DMapTask() {
+			return await Task<IDictionary<int,com.wilutions.byps.test.api.inl.Point2D>>.Factory.FromAsync(BeginGetPoint2DMap, EndGetPoint2DMap, null);
 		}
 		
 		

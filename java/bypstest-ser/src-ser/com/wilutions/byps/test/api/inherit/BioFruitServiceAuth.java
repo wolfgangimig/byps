@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.inherit;
+package com.wilutions.byps.test.api.inherit;
 
 /*
  * 
@@ -12,9 +12,9 @@ public interface BioFruitServiceAuth extends BRemote,
 	com.wilutions.byps.test.api.inherit.FruitServiceAuth {
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public boolean certify(java.lang.String param) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void certify(java.lang.String param, final BAsyncResult<Boolean> asyncResult) ;
 	
 	

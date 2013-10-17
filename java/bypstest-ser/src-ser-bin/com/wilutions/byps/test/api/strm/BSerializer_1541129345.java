@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.strm;
+package com.wilutions.byps.test.api.strm;
 
 /*
  * Serializer for com.wilutions.byps.test.api.strm.Stream1

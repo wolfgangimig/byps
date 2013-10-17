@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.ver
@@ -28,8 +29,11 @@ namespace com.wilutions.byps.test.api.ver
 			SetEvolveAsync(obj, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetEvolve(IAsyncResult asyncResult) {
+		public Object EndSetEvolve(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetEvolveTask(Evolve obj) {
+			await Task.Factory.FromAsync(BeginSetEvolve, EndSetEvolve, obj, null);
 		}
 		
 		public Evolve GetEvolve() {
@@ -47,8 +51,11 @@ namespace com.wilutions.byps.test.api.ver
 			GetEvolveAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		Evolve EndGetEvolve(IAsyncResult asyncResult) {
+		public Evolve EndGetEvolve(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Evolve>)asyncResult).Result;
+		}
+		public async Task<Evolve> GetEvolveTask() {
+			return await Task<Evolve>.Factory.FromAsync(BeginGetEvolve, EndGetEvolve, null);
 		}
 		
 		public void SetClient(EvolveIF partner) {
@@ -67,8 +74,11 @@ namespace com.wilutions.byps.test.api.ver
 			SetClientAsync(partner, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetClient(IAsyncResult asyncResult) {
+		public Object EndSetClient(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetClientTask(EvolveIF partner) {
+			await Task.Factory.FromAsync(BeginSetClient, EndSetClient, partner, null);
 		}
 		
 		public EvolveIF GetClient() {
@@ -86,8 +96,11 @@ namespace com.wilutions.byps.test.api.ver
 			GetClientAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		EvolveIF EndGetClient(IAsyncResult asyncResult) {
+		public EvolveIF EndGetClient(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<EvolveIF>)asyncResult).Result;
+		}
+		public async Task<EvolveIF> GetClientTask() {
+			return await Task<EvolveIF>.Factory.FromAsync(BeginGetClient, EndGetClient, null);
 		}
 		
 		public void SendEvolveToClient() {
@@ -105,8 +118,11 @@ namespace com.wilutions.byps.test.api.ver
 			SendEvolveToClientAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSendEvolveToClient(IAsyncResult asyncResult) {
+		public Object EndSendEvolveToClient(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SendEvolveToClientTask() {
+			await Task.Factory.FromAsync(BeginSendEvolveToClient, EndSendEvolveToClient, null);
 		}
 		
 		

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -27,8 +28,11 @@ namespace com.wilutions.byps.test.api.remote
 			GetNodeAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		com.wilutions.byps.test.api.refs.Node EndGetNode(IAsyncResult asyncResult) {
+		public com.wilutions.byps.test.api.refs.Node EndGetNode(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.refs.Node>)asyncResult).Result;
+		}
+		public async Task<com.wilutions.byps.test.api.refs.Node> GetNodeTask() {
+			return await Task<com.wilutions.byps.test.api.refs.Node>.Factory.FromAsync(BeginGetNode, EndGetNode, null);
 		}
 		
 		public void SetNode(com.wilutions.byps.test.api.refs.Node v) {
@@ -47,8 +51,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetNodeAsync(v, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetNode(IAsyncResult asyncResult) {
+		public Object EndSetNode(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetNodeTask(com.wilutions.byps.test.api.refs.Node v) {
+			await Task.Factory.FromAsync(BeginSetNode, EndSetNode, v, null);
 		}
 		
 		

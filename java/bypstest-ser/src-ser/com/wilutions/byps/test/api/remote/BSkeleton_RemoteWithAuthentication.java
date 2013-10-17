@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * 
@@ -18,11 +18,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 	
 	public final static long serialVersionUID = 1677934392L;
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setUseAuthentication(boolean useAuth) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) {
 		try {
 			setUseAuthentication(useAuth);
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public com.wilutions.byps.test.api.auth.SessionInfo login(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void login(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd, final BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
 		try {
 			com.wilutions.byps.test.api.auth.SessionInfo ret = login(sess, userName, userPwd);
@@ -46,11 +46,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public int doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int value) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int value, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = doit(sess, value);
@@ -60,11 +60,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void expire(com.wilutions.byps.test.api.auth.SessionInfo sess) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void expire(com.wilutions.byps.test.api.auth.SessionInfo sess, final BAsyncResult<Object> asyncResult) {
 		try {
 			expire(sess);
@@ -74,11 +74,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setReloginCount(int count) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) {
 		try {
 			setReloginCount(count);

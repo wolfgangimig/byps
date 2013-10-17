@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.inherit;
+package com.wilutions.byps.test.api.inherit;
 
 /*
  * 
@@ -18,11 +18,11 @@ public class BSkeleton_LemonService extends BSkeleton implements LemonServiceAsy
 	
 	public final static long serialVersionUID = 617356599L;
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.lang.String grow() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void grow(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = grow();
@@ -32,11 +32,11 @@ public class BSkeleton_LemonService extends BSkeleton implements LemonServiceAsy
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.lang.String pick(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void pick(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String fromTree, final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = pick(sess, fromTree);
@@ -46,11 +46,11 @@ public class BSkeleton_LemonService extends BSkeleton implements LemonServiceAsy
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.lang.String squeeze() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void squeeze(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = squeeze();

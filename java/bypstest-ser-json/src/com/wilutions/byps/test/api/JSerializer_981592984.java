@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api;
+package com.wilutions.byps.test.api;
 
 /*
  * Serializer for java.util.Map<java.lang.String,com.wilutions.byps.test.api.inherit.Class1>

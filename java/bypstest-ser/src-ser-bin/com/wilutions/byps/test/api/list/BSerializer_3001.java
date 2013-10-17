@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.list;
+package com.wilutions.byps.test.api.list;
 
 /*
  * Serializer for com.wilutions.byps.test.api.list.ListTypes

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.inherit
@@ -27,8 +28,11 @@ namespace com.wilutions.byps.test.api.inherit
 			GrowAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		String EndGrow(IAsyncResult asyncResult) {
+		public String EndGrow(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<String>)asyncResult).Result;
+		}
+		public async Task<String> GrowTask() {
+			return await Task<String>.Factory.FromAsync(BeginGrow, EndGrow, null);
 		}
 		
 		public String Pick(String fromTree) {
@@ -47,8 +51,11 @@ namespace com.wilutions.byps.test.api.inherit
 			PickAsync(fromTree, _byps_ret);
 			return _byps_ret;
 		}
-		public 		String EndPick(IAsyncResult asyncResult) {
+		public String EndPick(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<String>)asyncResult).Result;
+		}
+		public async Task<String> PickTask(String fromTree) {
+			return await Task<String>.Factory.FromAsync(BeginPick, EndPick, fromTree, null);
 		}
 		
 		public String Squeeze() {
@@ -66,8 +73,11 @@ namespace com.wilutions.byps.test.api.inherit
 			SqueezeAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		String EndSqueeze(IAsyncResult asyncResult) {
+		public String EndSqueeze(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<String>)asyncResult).Result;
+		}
+		public async Task<String> SqueezeTask() {
+			return await Task<String>.Factory.FromAsync(BeginSqueeze, EndSqueeze, null);
 		}
 		
 		

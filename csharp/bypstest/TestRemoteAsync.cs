@@ -68,14 +68,24 @@ namespace bypstest
             refValueR[0] = await taskGetInt;
             log.info("valueR=" + refValueR[0]);
 
+            int abc = await Task<int>.Factory.FromAsync(remote.BeginGetInt, remote.EndGetInt, null);
+            int abc2 = await ExampleMethod();
+
             waitHandle.Set();
             
             log.info(")internalTestAsyncTaskBased");
         }
 
+        public async Task<int> ExampleMethod()
+        {
+           int abc = await Task<int>.Factory.FromAsync(remote.BeginGetInt, remote.EndGetInt, null);
+            return abc;
+        }
+
         [TestMethod]
         public void TestAsyncProgrammingModel()
         {
+
             log.info("TestAsyncProgrammingModel(");
             internalTestAsyncPrimitiveTypesAPR();
             log.info(")TestAsyncProgrammingModel");
@@ -119,7 +129,6 @@ namespace bypstest
             TestUtils.assertEquals(log, "get/setInt", value, valueR);
 
         }
-
 
      }
 

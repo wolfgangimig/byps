@@ -12,6 +12,7 @@ import com.wilutions.byps.gen.api.MethodInfo;
 import com.wilutions.byps.gen.api.RemoteInfo;
 import com.wilutions.byps.gen.api.TypeInfo;
 import com.wilutions.byps.gen.utils.CodePrinter;
+import com.wilutions.byps.gen.utils.Utils;
 
 class GenRemoteStub {
 	
@@ -165,21 +166,57 @@ class GenRemoteStub {
 		pr.println("}");
 	}
 	
-	private void printMethodEndAsync(MethodInfo methodInfo) throws GeneratorException {
-		
-		CodePrinter mpr = pr.print("public ");
-		mpr = pctxt.printDeclareMethodEndAsync(pr, rinfo, methodInfo);
-		mpr.println(" {");
-		
-		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
-		String asyncProgModel = "BAsyncProgModel<" + rtype + ">";
-		
-		pr.beginBlock();
-		pr.print("return ((").print(asyncProgModel).print(")asyncResult).Result;").println();
-		pr.endBlock();
-		pr.println("}");
-		
-	}
+  private void printMethodEndAsync(MethodInfo methodInfo) throws GeneratorException {
+    
+    CodePrinter mpr = pr.print("public ");
+    mpr = pctxt.printDeclareMethodEndAsync(mpr, rinfo, methodInfo);
+    mpr.println(" {");
+    
+    String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
+    String asyncProgModel = "BAsyncProgModel<" + rtype + ">";
+    
+    pr.beginBlock();
+    pr.print("return ((").print(asyncProgModel).print(")asyncResult).Result;").println();
+    pr.endBlock();
+    pr.println("}");
+    
+  }
+
+  private void printMethodTask(MethodInfo methodInfo) throws GeneratorException {
+    
+    CodePrinter mpr = pr.print("public ");
+    mpr = pctxt.printDeclareMethodTask(mpr, rinfo, methodInfo);
+    mpr.println(" {");
+    pr.beginBlock();
+    
+    String methodName = Utils.firstCharToUpper(methodInfo.name);
+    String taskType = pctxt.getReturnTask(rinfo, methodInfo);
+    
+    mpr = pr;
+    
+    MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+    if (!returnInfo.type.isVoidType()) {
+      mpr = mpr.print("return ");
+    }
+    
+    mpr = mpr.print("await ").print(taskType).print(".Factory.FromAsync(");
+    mpr = mpr.print("Begin").print(methodName).print(", End").print(methodName);
+    
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+      // Skip authentication parameter
+      if (pctxt.isSessionParam(rinfo, pinfo)) continue;
+      
+      String mname = pctxt.makeValidMemberName(pinfo.name);
+      mpr = mpr.print(", ").print(mname);
+    }
+
+    mpr.println(", null);");
+    
+    pr.endBlock();
+    pr.println("}");
+    
+  }
 
 
 	private void printSerialVersionUID() {
@@ -188,12 +225,16 @@ class GenRemoteStub {
 		//log.debug(GenApiClass.class.getName(), "printSerialVersionUID");
 	}
 	
-
 	private void generate() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 
 		pr.println("using System;");
 		pr.println("using System.Collections.Generic;");
+		
+		if (pctxt.isAwaitSupported()) {
+		  pr.println("using System.Threading.Tasks;");
+		}
+		
 		pr.println("using com.wilutions.byps;");
 		pr.println();
 		pr.println("namespace " + rinfo.pack);
@@ -248,6 +289,10 @@ class GenRemoteStub {
       printMethodAsync(minfo);
       printMethodBeginAsync(minfo);
       printMethodEndAsync(minfo);
+      
+      if (pctxt.isAwaitSupported()) {
+        printMethodTask(minfo);
+      }
       pr.println();
     }
   }

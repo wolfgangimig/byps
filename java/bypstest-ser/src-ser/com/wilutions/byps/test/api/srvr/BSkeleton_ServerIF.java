@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.srvr;
+package com.wilutions.byps.test.api.srvr;
 
 /*
  * 
@@ -18,11 +18,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 	
 	public final static long serialVersionUID = 1313562065L;
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public int callClientIncrementInt(int v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = callClientIncrementInt(v);
@@ -32,11 +32,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setPartner(ClientIF client) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setPartner(ClientIF client, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPartner(client);
@@ -46,11 +46,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public ClientIF getPartner() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getPartner(final BAsyncResult<ClientIF> asyncResult) {
 		try {
 			ClientIF ret = getPartner();
@@ -60,11 +60,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.util.List<java.io.InputStream> getStreamsFromClient() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getStreamsFromClient(final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
 		try {
 			java.util.List<java.io.InputStream> ret = getStreamsFromClient();
@@ -74,11 +74,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams, final BAsyncResult<Object> asyncResult) {
 		try {
 			putStreamsOnClient(streams);
@@ -88,11 +88,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void registerWithClientMap(int id) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void registerWithClientMap(int id, final BAsyncResult<Object> asyncResult) {
 		try {
 			registerWithClientMap(id);
@@ -102,11 +102,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public ClientIF getClient(int id) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getClient(int id, final BAsyncResult<ClientIF> asyncResult) {
 		try {
 			ClientIF ret = getClient(id);
@@ -116,11 +116,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Integer> ret = getClientIds();
@@ -130,11 +130,11 @@ public class BSkeleton_ServerIF extends BSkeleton implements ServerIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public int callClientParallel(int v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void callClientParallel(int v, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = callClientParallel(v);

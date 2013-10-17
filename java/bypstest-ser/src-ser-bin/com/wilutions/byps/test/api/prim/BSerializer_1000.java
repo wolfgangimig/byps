@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.prim;
+package com.wilutions.byps.test.api.prim;
 
 /*
  * Serializer for com.wilutions.byps.test.api.prim.PrimitiveTypes

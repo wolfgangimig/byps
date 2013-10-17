@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.auth;
+package com.wilutions.byps.test.api.auth;
 
 /*
  * Serializer for com.wilutions.byps.test.api.auth.SessionInfo

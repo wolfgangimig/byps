@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -28,8 +29,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetUseAuthenticationAsync(useAuth, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetUseAuthentication(IAsyncResult asyncResult) {
+		public Object EndSetUseAuthentication(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetUseAuthenticationTask(bool useAuth) {
+			await Task.Factory.FromAsync(BeginSetUseAuthentication, EndSetUseAuthentication, useAuth, null);
 		}
 		
 		public com.wilutions.byps.test.api.auth.SessionInfo Login(String userName, String userPwd) {
@@ -49,8 +53,11 @@ namespace com.wilutions.byps.test.api.remote
 			LoginAsync(userName, userPwd, _byps_ret);
 			return _byps_ret;
 		}
-		public 		com.wilutions.byps.test.api.auth.SessionInfo EndLogin(IAsyncResult asyncResult) {
+		public com.wilutions.byps.test.api.auth.SessionInfo EndLogin(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<com.wilutions.byps.test.api.auth.SessionInfo>)asyncResult).Result;
+		}
+		public async Task<com.wilutions.byps.test.api.auth.SessionInfo> LoginTask(String userName, String userPwd) {
+			return await Task<com.wilutions.byps.test.api.auth.SessionInfo>.Factory.FromAsync(BeginLogin, EndLogin, userName, userPwd, null);
 		}
 		
 		public int Doit(int @value) {
@@ -69,8 +76,11 @@ namespace com.wilutions.byps.test.api.remote
 			DoitAsync(@value, _byps_ret);
 			return _byps_ret;
 		}
-		public 		int EndDoit(IAsyncResult asyncResult) {
+		public int EndDoit(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<int>)asyncResult).Result;
+		}
+		public async Task<int> DoitTask(int @value) {
+			return await Task<int>.Factory.FromAsync(BeginDoit, EndDoit, @value, null);
 		}
 		
 		public void Expire() {
@@ -88,8 +98,11 @@ namespace com.wilutions.byps.test.api.remote
 			ExpireAsync(_byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndExpire(IAsyncResult asyncResult) {
+		public Object EndExpire(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task ExpireTask() {
+			await Task.Factory.FromAsync(BeginExpire, EndExpire, null);
 		}
 		
 		public void SetReloginCount(int count) {
@@ -108,8 +121,11 @@ namespace com.wilutions.byps.test.api.remote
 			SetReloginCountAsync(count, _byps_ret);
 			return _byps_ret;
 		}
-		public 		Object EndSetReloginCount(IAsyncResult asyncResult) {
+		public Object EndSetReloginCount(IAsyncResult asyncResult) {
 			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		}
+		public async Task SetReloginCountTask(int count) {
+			await Task.Factory.FromAsync(BeginSetReloginCount, EndSetReloginCount, count, null);
 		}
 		
 		
