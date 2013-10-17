@@ -29,5 +29,8 @@ public class BProtocolS extends BProtocol {
 		return new BInputS(transport, header, buf);
 	}
 
+  public BRegistry getRegistry() {
+    return apiDesc.getRegistry(BINARY_MODEL);
+  }
 
 }

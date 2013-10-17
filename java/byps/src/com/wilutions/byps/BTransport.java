@@ -79,11 +79,14 @@ public class BTransport {
     if (authentication != null) {
 
       try {
-        final int typeId = this.apiDesc.getRegistry(BBinaryModel.MEDIUM).getSerializer(methodRequest, true).typeId;
+        final int typeId = protocol.getRegistry().getSerializer(methodRequest, true).typeId;
 
         BAsyncResult<Object> sessionResult = new BAsyncResult<Object>() {
+          
           public void setAsyncResult(Object session, Throwable ex) {
+            
             if (ex != null) {
+              
               boolean relogin = internalIsReloginException(ex, typeId);
               if (relogin) {
                 reloginAndRetrySend(methodRequest, asyncResult);
@@ -93,6 +96,7 @@ public class BTransport {
               }
             }
             else {
+              
               methodRequest.setSession(session);
               BTransport.this.send(methodRequest, asyncResult);
             }
@@ -133,7 +137,7 @@ public class BTransport {
             if (e != null) {
 
               // BYPS relogin error? (HTTP 403)
-              relogin = internalIsReloginException(e, bout.registry.getSerializer(obj, true).typeId);
+              relogin = internalIsReloginException(e, protocol.getRegistry().getSerializer(obj, true).typeId);
               if (!relogin) {
                 asyncResult.setAsyncResult(null, e);
               }
@@ -169,7 +173,7 @@ public class BTransport {
             // The server is responsible for killing long-polls of invalid sessions.
             // So we do not need to stop the serverR before re-login.
             
-            reloginAndRetrySend(obj, asyncResult);
+            reloginAndRetrySend((BMethodRequest)obj, asyncResult);
 
           }
 
@@ -189,7 +193,7 @@ public class BTransport {
     if (log.isDebugEnabled()) log.debug(")send");
   }
 
-  private <T> void reloginAndRetrySend(final Object obj, final BAsyncResult<T> asyncResult) {
+  private <T> void reloginAndRetrySend(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("re-login");
     try {
 
@@ -202,7 +206,7 @@ public class BTransport {
           }
           else {
             // Send again
-            BTransport.this.send(obj, asyncResult);
+            BTransport.this.assignSessionThenSendMethod(methodRequest, asyncResult);
           }
         };
       };
