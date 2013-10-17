@@ -72,21 +72,52 @@ public class BTransport {
   
   public <T> void sendMethod(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
     BAsyncResultReceiveMethod<T> outerResult = new BAsyncResultReceiveMethod<T>(asyncResult);
-    send(methodRequest, outerResult);
+    assignSessionThenSendMethod(methodRequest, outerResult);
+  }
+  
+  protected <T> void assignSessionThenSendMethod(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
+    if (authentication != null) {
+
+      try {
+        final int typeId = this.apiDesc.getRegistry(BBinaryModel.MEDIUM).getSerializer(methodRequest, true).typeId;
+
+        BAsyncResult<Object> sessionResult = new BAsyncResult<Object>() {
+          public void setAsyncResult(Object session, Throwable ex) {
+            if (ex != null) {
+              boolean relogin = internalIsReloginException(ex, typeId);
+              if (relogin) {
+                reloginAndRetrySend(methodRequest, asyncResult);
+              }
+              else {
+                asyncResult.setAsyncResult(null, ex);
+              }
+            }
+            else {
+              methodRequest.setSession(session);
+              BTransport.this.send(methodRequest, asyncResult);
+            }
+          }
+        };
+        
+        authentication.getSession(null, typeId, sessionResult);
+      }
+      catch (BException e) {
+        asyncResult.setAsyncResult(null, e);
+      }
+      
+    }
+    else {
+      BTransport.this.send(methodRequest, asyncResult);
+    }
   }
 
   public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
     try {
-
-      final BMethodRequest methodRequest = (BMethodRequest) obj;
-      if (authentication != null) {
-        methodRequest.setSession(authentication.getSession());
-      }
-
-      if (log.isDebugEnabled()) log.debug("store object");
       final BOutput bout = getOutput();
-      bout.store(methodRequest);
+      
+      if (log.isDebugEnabled()) log.debug("store object");
+      bout.store(obj);
       
       final BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
 
@@ -102,7 +133,7 @@ public class BTransport {
             if (e != null) {
 
               // BYPS relogin error? (HTTP 403)
-              relogin = internalIsReloginException(e, bout.registry.getSerializer(methodRequest, true).typeId);
+              relogin = internalIsReloginException(e, bout.registry.getSerializer(obj, true).typeId);
               if (!relogin) {
                 asyncResult.setAsyncResult(null, e);
               }
@@ -121,7 +152,7 @@ public class BTransport {
 
             // Application relogin error?
             try {
-              relogin = internalIsReloginException(ex, bout.registry.getSerializer(methodRequest, true).typeId);
+              relogin = internalIsReloginException(ex, bout.registry.getSerializer(obj, true).typeId);
             } catch (BException ignored) {}
             if (log.isDebugEnabled()) log.debug("isReloginException=" + relogin);
 
@@ -138,37 +169,18 @@ public class BTransport {
             // The server is responsible for killing long-polls of invalid sessions.
             // So we do not need to stop the serverR before re-login.
             
-            if (log.isDebugEnabled()) log.debug("re-login");
-            try {
-
-              final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
-                
-                public void setAsyncResult(Boolean succ, Throwable e2) {
-                  if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
-                  if (e2 != null) {
-                    asyncResult.setAsyncResult(null, e2);
-                  }
-                  else {
-                    // Send again
-                    BTransport.this.send(methodRequest, asyncResult);
-                  }
-                };
-              };
-
-              negotiateProtocolClient(loginResult);
-
-            } catch (Throwable ex2) {
-              asyncResult.setAsyncResult(null, ex2);
-            }
+            reloginAndRetrySend(obj, asyncResult);
 
           }
 
           if (log.isDebugEnabled()) log.debug(")setAsyncResult");
         }
+
       };
 
       final BMessage msgSend = bout.toMessage();
       wire.send(msgSend, outerResult);
+      
     } catch (Throwable e) {
       if (log.isDebugEnabled()) log.debug("Failed to serialize object", e);
       asyncResult.setAsyncResult(null, e);
@@ -177,6 +189,31 @@ public class BTransport {
     if (log.isDebugEnabled()) log.debug(")send");
   }
 
+  private <T> void reloginAndRetrySend(final Object obj, final BAsyncResult<T> asyncResult) {
+    if (log.isDebugEnabled()) log.debug("re-login");
+    try {
+
+      final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
+        
+        public void setAsyncResult(Boolean succ, Throwable e2) {
+          if (log.isDebugEnabled()) log.debug("auth.login asyncResult=" + succ + ", ex=" + e2);
+          if (e2 != null) {
+            asyncResult.setAsyncResult(null, e2);
+          }
+          else {
+            // Send again
+            BTransport.this.send(obj, asyncResult);
+          }
+        };
+      };
+
+      negotiateProtocolClient(loginResult);
+
+    } catch (Throwable ex2) {
+      asyncResult.setAsyncResult(null, ex2);
+    }
+  }
+  
   public void recv(BServer server, BMessage msg, final BAsyncResult<BMessage> asyncResult) throws Throwable {
     if (log.isDebugEnabled()) log.debug("recv(");
 
