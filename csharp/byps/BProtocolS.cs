@@ -34,5 +34,9 @@ namespace com.wilutions.byps
 		    return new BInputS(transport, responseHeader, buf);
 	    }
 
+        public override BRegistry getRegistry()
+        {
+            return apiDesc.getRegistry(BBinaryModel.MEDIUM);
+        }
     }
 }

@@ -390,5 +390,19 @@ public class BStub_RemotePrimitiveTypes extends BStub implements RemotePrimitive
 		transport.sendMethod(req, asyncResult);
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
+	public void throwException() throws RemoteException {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
+		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
+		throwException(asyncResult);
+		asyncResult.getResult();		
+	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
+	public void throwException(final BAsyncResult<Object> asyncResult) {
+		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
+		BRequest_RemotePrimitiveTypes_throwException req = new BRequest_RemotePrimitiveTypes_throwException();		
+		transport.sendMethod(req, asyncResult);
+	}
+	
 	
 }

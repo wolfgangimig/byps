@@ -99,9 +99,9 @@ namespace com.wilutions.byps
             return protocol.getInput(this, header, buf);
 	    }
 
-        private class MyAsyncResultSend<T> : BAsyncResult<bool>
+        private class MyAsyncResultSend<T> : BAsyncResultIF<bool>
         {
-            public MyAsyncResultSend(BTransport transport, BMethodRequest methodRequest, BAsyncResult<T> innerResult)
+            public MyAsyncResultSend(BTransport transport, BMethodRequest methodRequest, BAsyncResultIF<T> innerResult)
             {
                 this.transport = transport;
                 this.methodRequest = methodRequest;
@@ -126,13 +126,13 @@ namespace com.wilutions.byps
 
             private BTransport transport;
             private BMethodRequest methodRequest;
-            private BAsyncResult<T> innerResult;
+            private BAsyncResultIF<T> innerResult;
             private Log log = LogFactory.getLog(typeof(MyAsyncResultSend<T>));
         }
 
-        private class MyAsyncResultRelogin<T> : BAsyncResult<BMessage>
+        private class MyAsyncResultRelogin<T> : BAsyncResultIF<BMessage>
         {
-            public MyAsyncResultRelogin(BTransport transport, BMethodRequest methodRequest, BAsyncResult<T> innerResult)
+            public MyAsyncResultRelogin(BTransport transport, BMethodRequest methodRequest, BAsyncResultIF<T> innerResult)
             {
                 this.transport = transport;
                 this.methodRequest = methodRequest;
@@ -149,7 +149,7 @@ namespace com.wilutions.byps
                     if (ex != null)
                     {
                         // BYPS relogin error? (HTTP 403)
-                        relogin = internalIsReloginException(ex);
+                        relogin = transport.internalIsReloginException(ex, transport.getObjectTypeId(methodRequest));
                         if (!relogin)
                         {
                             if (log.isDebugEnabled()) log.debug("return ex");
@@ -171,7 +171,7 @@ namespace com.wilutions.byps
                     if (log.isDebugEnabled()) log.debug("exception=" + e);
                     try
                     {
-                        relogin = internalIsReloginException(e);
+                        relogin = transport.internalIsReloginException(e, transport.getObjectTypeId(methodRequest));
                     }
                     catch (Exception ignored) {
                         if (log.isDebugEnabled()) log.debug("ignored exception=", ignored);
@@ -187,62 +187,115 @@ namespace com.wilutions.byps
                 if (log.isDebugEnabled()) log.debug("relogin=" + relogin);
                 if (relogin)
                 {
-                    try
-                    {
-                        if (log.isDebugEnabled()) log.debug("negotiate");
-                        MyAsyncResultSend<T> loginResult = new MyAsyncResultSend<T>(transport, methodRequest, innerResult);
-                        transport.negotiateProtocolClient(loginResult);
-                    }
-                    catch (Exception e)
-                    {
-                        if (log.isDebugEnabled()) log.debug("transport.negotiate failed, return ex", e);
-                        innerResult.setAsyncResult(default(T), e);
-                    }
+                    transport.reloginAndRetrySend(methodRequest, innerResult);
                 }
 
                 if (log.isDebugEnabled()) log.debug(")setAsyncResult");
             }
 
-            private bool internalIsReloginException(Exception e)
-            {
-                if (log.isDebugEnabled()) log.debug("internalIsReloginException(" + e);
-
-                int typeId = transport.apiDesc.getRegistry(BBinaryModel.MEDIUM).getSerializer(methodRequest, true).typeId;
-                if (log.isDebugEnabled()) log.debug("request typeId=" + typeId);
-
-                bool ret = transport.internalIsReloginException(e, typeId);
-                if (log.isDebugEnabled()) log.debug(")internalIsReloginException=" + ret);
-                return ret;
-            }
-        
             private BTransport transport;
             private BMethodRequest methodRequest;
-            private BAsyncResult<T> innerResult;
+            private BAsyncResultIF<T> innerResult;
             private Log log = LogFactory.getLog(typeof(MyAsyncResultRelogin<T>));
         }
 
-        public void send<T> (Object obj, BAsyncResult<T> asyncResult) {
+        private int getObjectTypeId(Object obj)
+        {
+            return protocol.getRegistry().getSerializer(obj, true).typeId;
+        }
+
+        public IAsyncResult BeginSend<T>(BMethodRequest methodRequest, AsyncCallback callback, object state)
+        {
+            BAsyncProgModel<T> asyncResult = new BAsyncProgModel<T>(callback, state);
+            BAsyncResultReceiveMethod<T> outerResult = new BAsyncResultReceiveMethod<T>(asyncResult);
+            assignSessionThenSendMethod(methodRequest, outerResult);
+            return asyncResult;
+        }
+
+        public T EndSend<T>(IAsyncResult asyncResult)
+        {
+            BAsyncProgModel<T> amp = (BAsyncProgModel<T>)asyncResult;
+            T ret = amp.Result;
+            return ret;
+        }
+
+        public void sendMethod<T>(BMethodRequest methodRequest, BAsyncResult<T> asyncResult)
+        {
+            BAsyncResultReceiveMethod<T> outerResult = new BAsyncResultReceiveMethod<T>(asyncResult);
+            assignSessionThenSendMethod(methodRequest, outerResult);
+        }
+
+        private void assignSessionThenSendMethod<T>(BMethodRequest methodRequest, BAsyncResultIF<T> asyncResult)
+        {
+            if (authentication != null)
+            {
+                int typeId = getObjectTypeId(methodRequest);
+                BAsyncResult<Object> sessionResult = (session, ex) =>
+                {
+                    if (ex != null)
+                    {
+                        bool relogin = isReloginException(ex, typeId);
+                        if (relogin)
+                        {
+                            reloginAndRetrySend(methodRequest, asyncResult);
+                        }
+                        else
+                        {
+                            asyncResult.setAsyncResult(default(T), ex);
+                        }
+                    }
+                    else
+                    {
+                        methodRequest.setSession(session);
+                        send(methodRequest, asyncResult);
+                    }
+                };
+
+                authentication.getSession(null, typeId, sessionResult);
+            }
+            else
+            {
+                send(methodRequest, asyncResult);
+            }
+        }
+
+        private void reloginAndRetrySend<T>(BMethodRequest methodRequest, BAsyncResultIF<T> asyncResult)
+        {
+            try
+            {
+                BAsyncResult<bool> loginResult = (ignored, ex) =>
+                {
+                    if (ex != null)
+                    {
+                        asyncResult.setAsyncResult(default(T), ex);
+                    }
+                    else
+                    {
+                        assignSessionThenSendMethod(methodRequest, asyncResult);
+                    }
+                };
+
+                negotiateProtocolClient(BAsyncResultHelper.FromDelegate(loginResult));
+
+            }
+            catch (Exception ex)
+            {
+                asyncResult.setAsyncResult(default(T), ex);
+            }
+        }
+
+        public void send<T>(Object obj, BAsyncResultIF<T> asyncResult)
+        {
             if (log.isDebugEnabled()) log.debug("send(" + obj);
 		    try {
 			    BOutput bout = getOutput();
 			    
-                BMethodRequest methodRequest = (BMethodRequest) obj;
-                if (authentication != null)
-                {
-                    Object sess = authentication.getSession();
-                    if (sess != null)
-                    {
-                        if (log.isDebugEnabled()) log.debug("methodRequest.sess=" + sess);
-                        methodRequest.setSession(sess);
-                    }
-                }
-
                 if (log.isDebugEnabled()) log.debug("obj -> message");
                 bout.store(obj);
                 BMessage msg = bout.toMessage();
 
                 if (log.isDebugEnabled()) log.debug("wire.send");
-                BAsyncResult<BMessage> outerResult = new MyAsyncResultRelogin<T>(this, methodRequest, asyncResult);
+                BAsyncResultIF<BMessage> outerResult = new MyAsyncResultRelogin<T>(this, (BMethodRequest)obj, asyncResult);
                 wire.send(msg, outerResult);
 		    }
 		    catch (Exception e) {
@@ -251,13 +304,13 @@ namespace com.wilutions.byps
 	    }
 
 
-		private class MethodResult : BAsyncResult<Object>
+		private class MethodResult : BAsyncResultIF<Object>
         {
             private BTransport transport;
-            private BAsyncResult<BMessage> asyncResult;
+            private BAsyncResultIF<BMessage> asyncResult;
             private BInput bin;
 
-            public MethodResult(BTransport transport, BAsyncResult<BMessage> asyncResult, BInput bin)
+            public MethodResult(BTransport transport, BAsyncResultIF<BMessage> asyncResult, BInput bin)
             {
                 this.transport = transport;
                 this.asyncResult = asyncResult;
@@ -279,7 +332,8 @@ namespace com.wilutions.byps
 
 		}
 
-        public void recv(BServer server, BMessage msg, BAsyncResult<BMessage> asyncResult) {
+        public void recv(BServer server, BMessage msg, BAsyncResultIF<BMessage> asyncResult)
+        {
             if (log.isDebugEnabled()) log.debug("recv(");
 
             BInput bin = getInput(msg.header, msg.buf);
@@ -315,9 +369,9 @@ namespace com.wilutions.byps
 		    return ret;
 	    }
 
-        private class MyNegoAsyncResult : BAsyncResult<BMessage>
+        private class MyNegoAsyncResult : BAsyncResultIF<BMessage>
         {
-            public MyNegoAsyncResult(BTransport transport, BAsyncResult<bool> innerResult)
+            public MyNegoAsyncResult(BTransport transport, BAsyncResultIF<bool> innerResult)
             {
                 this.transport = transport;
                 this.innerResult = innerResult;
@@ -355,11 +409,12 @@ namespace com.wilutions.byps
             }
         
             private BTransport transport;
-            private BAsyncResult<bool> innerResult;
+            private BAsyncResultIF<bool> innerResult;
             private Log log = LogFactory.getLog(typeof(MyNegoAsyncResult));
         }
 
-        public void negotiateProtocolClient(BAsyncResult<Boolean> asyncResult) {
+        public void negotiateProtocolClient(BAsyncResultIF<Boolean> asyncResult)
+        {
             if (log.isDebugEnabled()) log.debug("negotiateProtocolClient(");
 
 		    ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
@@ -367,7 +422,7 @@ namespace com.wilutions.byps
 		    nego.write(buf);
 		    buf.flip();
 
-            BAsyncResult<BMessage> outerResult = new MyNegoAsyncResult(this, asyncResult);
+            BAsyncResultIF<BMessage> outerResult = new MyNegoAsyncResult(this, asyncResult);
 
             if (log.isDebugEnabled()) log.debug("wire.send");
             BMessageHeader header = new BMessageHeader();
@@ -377,7 +432,7 @@ namespace com.wilutions.byps
             if (log.isDebugEnabled()) log.debug(")negotiateProtocolClient");
         }
 
-        public BProtocol negotiateProtocolServer(BTargetId targetId, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult)  {
+        public BProtocol negotiateProtocolServer(BTargetId targetId, ByteBuffer buf, BAsyncResultIF<ByteBuffer> asyncResult)  {
             if (log.isDebugEnabled()) log.debug("negotiateProtocolServer(targetId=" + targetId);
             BProtocol ret = null;
 		    try {
@@ -433,10 +488,9 @@ namespace com.wilutions.byps
             return "[" + targetId + "]";
         }
 
-
-        internal bool internalIsReloginException(Exception ex, int typeId)
+        private bool internalIsReloginException(Exception ex, int typeId)
         {
-            if (log.isDebugEnabled()) log.debug("internalIsReloginException(ex=" + ex + ", typeId=" + typeId);
+            if (log.isDebugEnabled()) log.debug("internalIsReloginException(" + ex);
             bool ret = false;
 
             if (authentication != null && ex != null)
@@ -444,10 +498,10 @@ namespace com.wilutions.byps
                 ret = authentication.isReloginException(null, ex, typeId);
             }
 
-            if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
+            if (log.isDebugEnabled()) log.debug(")internalIsReloginException=" + ret);
             return ret;
         }
-
+ 
         public bool isReloginException(Exception ex, int typeId) 
         {
             if (log.isDebugEnabled()) log.debug("isReloginException(ex=" + ex + ", typeId=" + typeId);
@@ -472,7 +526,7 @@ namespace com.wilutions.byps
         }
 
 
-        private class InternalAuthenticate_BAsyncResult : BAsyncResult<bool>
+        private class InternalAuthenticate_BAsyncResult : BAsyncResultIF<bool>
         {
             public InternalAuthenticate_BAsyncResult(BTransport transport)
             {
@@ -483,9 +537,9 @@ namespace com.wilutions.byps
             {
                 if (log.isDebugEnabled()) log.debug("setAsyncResult(ex=" + ex);
 
-                List<BAsyncResult<bool>> copyResults = null;
+                List<BAsyncResultIF<bool>> copyResults = null;
                 lock (transport.asyncResultsWaitingForAuthentication) {
-                    copyResults = new List<BAsyncResult<bool>>(transport.asyncResultsWaitingForAuthentication);
+                    copyResults = new List<BAsyncResultIF<bool>>(transport.asyncResultsWaitingForAuthentication);
                     transport.asyncResultsWaitingForAuthentication.Clear();
                     transport.lastAuthenticationTime = DateTime.Now.Ticks / 10000;
                     transport.lastAuthenticationException = ex;
@@ -505,7 +559,7 @@ namespace com.wilutions.byps
         }
 
 
-        internal void internalAuthenticate(BAsyncResult<bool> innerResult)
+        internal void internalAuthenticate(BAsyncResultIF<bool> innerResult)
         {
             if (log.isDebugEnabled()) log.debug("internalAuthenticate(");
 
@@ -528,7 +582,7 @@ namespace com.wilutions.byps
                 if (first)
                 {
                     InternalAuthenticate_BAsyncResult authResult = new InternalAuthenticate_BAsyncResult(this);
-                    authentication.authenticate(null, authResult);
+                    authentication.authenticate(null, BAsyncResultHelper.ToDelegate(authResult));
                 }
                 else if (assumeAuthenticationIsValid)
                 {
@@ -568,7 +622,7 @@ namespace com.wilutions.byps
         /**
         * List of BAsyncResult objects from requests waiting for authentication.
         */
-        internal List<BAsyncResult<bool>> asyncResultsWaitingForAuthentication = new List<BAsyncResult<bool>>();
+        internal List<BAsyncResultIF<bool>> asyncResultsWaitingForAuthentication = new List<BAsyncResultIF<bool>>();
   
         /**
         * Sytem millis when authentication was perfomed the last time.

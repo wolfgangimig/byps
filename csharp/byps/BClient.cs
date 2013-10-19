@@ -26,7 +26,7 @@ namespace com.wilutions.byps
             transport.wire.done();
 	    }
 	
-        private class MyNegoAsyncResult : BAsyncResult<bool> 
+        private class MyNegoAsyncResult : BAsyncResultIF<bool> 
         {
             public MyNegoAsyncResult(BClient client, BAsyncResult<bool> innerResult)
             {
@@ -40,7 +40,7 @@ namespace com.wilutions.byps
                 {
                     if (ex != null)
                     {
-                        innerResult.setAsyncResult(false, ex);
+                        innerResult(false, ex);
                     }
                     else
                     {
@@ -48,12 +48,12 @@ namespace com.wilutions.byps
                         {
                             client.serverR.start();
                         }
-                        innerResult.setAsyncResult(true, null);
+                        innerResult(true, null);
                     }
                 }
                 catch (Exception e)
                 {
-                    innerResult.setAsyncResult(false, e);
+                    innerResult(false, e);
                 }
             }
 
@@ -64,7 +64,7 @@ namespace com.wilutions.byps
 	    public void start(BAsyncResult<bool> asyncResult)
         {
             setAuthentication(null);
-            transport.negotiateProtocolClient(asyncResult);
+            transport.negotiateProtocolClient(BAsyncResultHelper.FromDelegate<bool>(asyncResult));
 	    }
 
 
@@ -78,16 +78,16 @@ namespace com.wilutions.byps
                 this.client = client;
                 this.innerAuth = innerAuth;
             }
-            
+
             public void authenticate(BClient ignored, BAsyncResult<bool> asyncResult) 
             {
                 if (log.isDebugEnabled()) log.debug("authenticate(");
-                BAsyncResult<bool> outerResult = new MyNegoAsyncResult(client, asyncResult);
+                BAsyncResultIF<bool> outerResult = new MyNegoAsyncResult(client, asyncResult);
       
                 if (innerAuth != null) 
                 {
                     if (log.isDebugEnabled()) log.debug("innerAuth.authenticate");
-                    innerAuth.authenticate(client, outerResult);
+                    innerAuth.authenticate(client, BAsyncResultHelper.ToDelegate(outerResult));
                 }
                 else 
                 {
@@ -115,15 +115,17 @@ namespace com.wilutions.byps
                 return ret;
             }
 
-            public Object getSession()
+            public void getSession(BClient ignored, int typeId, BAsyncResult<Object> asyncResult)
             {
-                Object ret = null;
                 if (innerAuth != null)
                 {
-                    ret = innerAuth.getSession();
-                    if (log.isDebugEnabled()) log.debug("innerAuth.getSession()=" + ret);
+                    innerAuth.getSession(client, typeId, asyncResult);
+                    if (log.isDebugEnabled()) log.debug("innerAuth.getSession()");
                 }
-                return ret;
+                else
+                {
+                    asyncResult(null, null);
+                }
             }
 
             private Log log = LogFactory.getLog(typeof(ClientAuthentication));

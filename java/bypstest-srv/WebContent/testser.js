@@ -2769,6 +2769,16 @@ com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.add = fu
 	return ret;
 };
 
+// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+/**
+*/
+com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.throwException = function(__byps__asyncResult) {
+	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1845930195 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
 /**
 */
 com.wilutions.byps.test.api.remote.BStub_RemoteReferences = function(transport) {
@@ -4875,6 +4885,15 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 				148544158, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_add(methodObj.a, methodObj.b, methodResult);
+				}
+			],
+			
+			// Method throwException
+			1845930195 : [ // _typeId of request class
+				1341983932, // _typeId of remote interface
+				309901669, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_throwException(methodResult);
 				}
 			],
 		
@@ -9689,6 +9708,16 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			{
 				"v":10 // java.lang.String
 			},
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
+		1845930195 : new com.wilutions.byps.BSerializer(
+			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			null,
 			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance

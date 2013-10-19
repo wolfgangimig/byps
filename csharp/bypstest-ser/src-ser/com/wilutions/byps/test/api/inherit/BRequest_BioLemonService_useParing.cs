@@ -17,11 +17,12 @@ namespace com.wilutions.byps.test.api.inherit
 		
 		public override int getRemoteId() { return 1992245333; }
 		
-		public override void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
+		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
+			// checkpoint com.wilutions.byps.gen.cs.GenApiClass:372
 			try {
 				BioLemonService __byps__remoteT = (BioLemonService)__byps__remote;				
 				BAsyncResultSendMethod<int> __byps__outerResult = new BAsyncResultSendMethod<int>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_5());				
-				__byps__remoteT.UseParingAsync(__byps__outerResult);
+				__byps__remoteT.UseParing(BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(0, e);
 				throw e;

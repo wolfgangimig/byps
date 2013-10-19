@@ -296,6 +296,36 @@ public class PrintContext extends PrintContextBase {
     return mpr;
   }
   
+  public CodePrinter printDeclareMethodAsync(CodePrinter pr, RemoteInfo rinfo,
+      MethodInfo methodInfo) throws GeneratorException {
+    String methodName = makePublicMemberName(methodInfo.name);
+    
+    MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+    String rtype = "Task";
+    if (!returnInfo.type.isVoidType()) {
+      TypeInfo cstype = toCSharp(returnInfo.type);
+      rtype = "Task<" + cstype.toString(rinfo.pack) + ">";
+    }
+    
+    CodePrinter mpr = pr.print(rtype).print(" ")
+      .print(methodName).print("Async(");
+    
+    boolean first = true;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+      // Skip authentication parameter
+      if (isSessionParam(rinfo, pinfo)) continue;
+            
+      if (first) first = false; else mpr.print(", ");
+      TypeInfo cstype = toCSharp(pinfo.type);
+      String mname = makeValidMemberName(pinfo.name);
+      mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
+    }
+    
+    mpr.print(")");
+    return mpr;
+  }
+  
   public CodePrinter printDeclareMethodTask(CodePrinter pr, RemoteInfo rinfo,
       MethodInfo methodInfo) throws GeneratorException {
     String methodName = makePublicMemberName(methodInfo.name);
@@ -380,10 +410,10 @@ public class PrintContext extends PrintContextBase {
 		return mname;
 	}
 
-	public CodePrinter printDeclareMethodAsync(CodePrinter pr,
+	public CodePrinter printDeclareMethodDelegate(CodePrinter pr,
 			RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
 		String methodName = makePublicMemberName(methodInfo.name);
-		CodePrinter mpr = pr.print("void ").print(methodName).print("Async").print("(");
+		CodePrinter mpr = pr.print("void ").print(methodName).print("").print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {

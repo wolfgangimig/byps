@@ -1,37 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.ver
 {
 	
-	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:93
 	public interface EvolveIF : BRemote {
 	
 		void SetEvolve(Evolve obj);
-		void SetEvolveAsync(Evolve obj, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetEvolve(Evolve obj, AsyncCallback callback, object state);
-		Object EndSetEvolve(IAsyncResult asyncResult);
+		void SetEvolve(Evolve obj, BAsyncResult<Object> asyncResult) ;
+		Task SetEvolveAsync(Evolve obj);
 		
 		Evolve GetEvolve();
-		void GetEvolveAsync(BAsyncResult<Evolve> asyncResult) ;
-		IAsyncResult BeginGetEvolve(AsyncCallback callback, object state);
-		Evolve EndGetEvolve(IAsyncResult asyncResult);
+		void GetEvolve(BAsyncResult<Evolve> asyncResult) ;
+		Task<Evolve> GetEvolveAsync();
 		
 		void SetClient(EvolveIF partner);
-		void SetClientAsync(EvolveIF partner, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetClient(EvolveIF partner, AsyncCallback callback, object state);
-		Object EndSetClient(IAsyncResult asyncResult);
+		void SetClient(EvolveIF partner, BAsyncResult<Object> asyncResult) ;
+		Task SetClientAsync(EvolveIF partner);
 		
 		EvolveIF GetClient();
-		void GetClientAsync(BAsyncResult<EvolveIF> asyncResult) ;
-		IAsyncResult BeginGetClient(AsyncCallback callback, object state);
-		EvolveIF EndGetClient(IAsyncResult asyncResult);
+		void GetClient(BAsyncResult<EvolveIF> asyncResult) ;
+		Task<EvolveIF> GetClientAsync();
 		
 		void SendEvolveToClient();
-		void SendEvolveToClientAsync(BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSendEvolveToClient(AsyncCallback callback, object state);
-		Object EndSendEvolveToClient(IAsyncResult asyncResult);
+		void SendEvolveToClient(BAsyncResult<Object> asyncResult) ;
+		Task SendEvolveToClientAsync();
 		
 		
 	}

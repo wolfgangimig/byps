@@ -15,47 +15,36 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public com.wilutions.byps.test.api.refs.Node GetNode() {
 			BSyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult = new BSyncResult<com.wilutions.byps.test.api.refs.Node>();			
-			GetNodeAsync(asyncResult);
+			GetNode(BAsyncResultHelper.ToDelegate<com.wilutions.byps.test.api.refs.Node>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetNodeAsync(BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
+		public void GetNode(BAsyncResult<com.wilutions.byps.test.api.refs.Node> asyncResult) {
 			BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();			
-			BAsyncResultReceiveMethod<com.wilutions.byps.test.api.refs.Node> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.refs.Node>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetNode(AsyncCallback callback, object state){
-			BAsyncProgModel<com.wilutions.byps.test.api.refs.Node> _byps_ret = new BAsyncProgModel<com.wilutions.byps.test.api.refs.Node>(callback, state);
-			GetNodeAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public com.wilutions.byps.test.api.refs.Node EndGetNode(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<com.wilutions.byps.test.api.refs.Node>)asyncResult).Result;
-		}
-		public async Task<com.wilutions.byps.test.api.refs.Node> GetNodeTask() {
-			return await Task<com.wilutions.byps.test.api.refs.Node>.Factory.FromAsync(BeginGetNode, EndGetNode, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<com.wilutions.byps.test.api.refs.Node> GetNodeAsync(){
+			BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();			
+			Task<com.wilutions.byps.test.api.refs.Node> task = Task<com.wilutions.byps.test.api.refs.Node>.Factory.FromAsync(transport.BeginSend<com.wilutions.byps.test.api.refs.Node>, transport.EndSend<com.wilutions.byps.test.api.refs.Node>, req, null);
+			return await task;
 		}
 		
 		public void SetNode(com.wilutions.byps.test.api.refs.Node v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetNodeAsync(v, asyncResult);
+			SetNode(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetNodeAsync(com.wilutions.byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
+		public void SetNode(com.wilutions.byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();			
 			req._v = v;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetNode(com.wilutions.byps.test.api.refs.Node v, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetNodeAsync(v, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetNode(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetNodeTask(com.wilutions.byps.test.api.refs.Node v) {
-			await Task.Factory.FromAsync(BeginSetNode, EndSetNode, v, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetNodeAsync(com.wilutions.byps.test.api.refs.Node v){
+			BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();			
+			req._v = v;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		

@@ -31,13 +31,15 @@ namespace com.wilutions.byps
 			    remoteImpl.BSkeleton_setTargetId(transport.getTargetId());
 		    }
 	    }
-	
-	    public virtual BProtocol negotiate(BTargetId targetId, ByteBuffer bin, BAsyncResult<ByteBuffer> asyncResult) {
+
+        public virtual BProtocol negotiate(BTargetId targetId, ByteBuffer bin, BAsyncResultIF<ByteBuffer> asyncResult)
+        {
 		    BProtocol protocol = transport.negotiateProtocolServer(targetId, bin, asyncResult);
 		    return protocol;
 	    }
-	
-	    public virtual void recv(BTargetId clientTargetId, Object methodObj, BAsyncResult<Object> methodResult) {
+
+        public virtual void recv(BTargetId clientTargetId, Object methodObj, BAsyncResultIF<Object> methodResult)
+        {
 		
 		    try {
                 BMethodRequest method = (BMethodRequest)methodObj;

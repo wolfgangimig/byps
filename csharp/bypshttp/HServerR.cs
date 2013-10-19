@@ -46,7 +46,7 @@ namespace com.wilutions.byps
             if (log.isDebugEnabled()) log.debug(")done");
         }
 
-        protected class MyAsyncResult : BAsyncResult<BMessage>
+        protected class MyAsyncResult : BAsyncResultIF<BMessage>
         {
             private HServerR pthis;
 
@@ -75,7 +75,7 @@ namespace com.wilutions.byps
 				
 		}
 
-        protected class MyAsyncMethod : BAsyncResult<BMessage>
+        protected class MyAsyncMethod : BAsyncResultIF<BMessage>
         {
             protected HServerR pthis;
             protected MyAsyncResult asyncResult;
@@ -137,7 +137,7 @@ namespace com.wilutions.byps
 
                 MyAsyncResult asyncResult = new MyAsyncResult(pthis);
 
-                BAsyncResult<BMessage> nextAsyncMethod = new MyAsyncMethod(pthis, asyncResult);
+                BAsyncResultIF<BMessage> nextAsyncMethod = new MyAsyncMethod(pthis, asyncResult);
 	
 			    // Sende den longPoll-Request
 			    // Im Body befindet sich die Antwort auf die vorige vom Server gestellte Anfrage.

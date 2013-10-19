@@ -34,21 +34,28 @@ class GenRemoteClass {
 		this.pctxt = pctxt;
 	}
 	
-	private void printMethod(MethodInfo methodInfo) throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printMember");
-		
-		pctxt.printComments(pr, methodInfo.comments);
-		
-		CodePrinter mpr = pctxt.printDeclareMethod(pr, rinfo, methodInfo);
-		mpr.println(";");
-		
-		//log.debug(GeneratorJ.class.getName(), "printMember");
-	}
-	
-	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
+  private void printMethod(MethodInfo methodInfo) throws IOException {
+    //log.debug(GeneratorJ.class.getName(), "printMember");
+    
+    pctxt.printComments(pr, methodInfo.comments);
+    
+    CodePrinter mpr = pctxt.printDeclareMethod(pr, rinfo, methodInfo);
+    mpr.println(";");
+    
+    //log.debug(GeneratorJ.class.getName(), "printMember");
+  }
+  
+  private void printMethodAsync(MethodInfo methodInfo) throws IOException {
+    pctxt.printComments(pr, methodInfo.comments);
+    
+    CodePrinter mpr = pctxt.printDeclareMethodAsync(pr, rinfo, methodInfo);
+    mpr.println(";");
+  }
+  
+	private void printMethodDelegate(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
-		CodePrinter mpr = pctxt.printDeclareMethodAsync(pr, rinfo, methodInfo);
+		CodePrinter mpr = pctxt.printDeclareMethodDelegate(pr, rinfo, methodInfo);
 		mpr.println(";");
 		
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
@@ -69,6 +76,11 @@ class GenRemoteClass {
 
 		pr.println("using System;");
 		pr.println("using System.Collections.Generic;");
+		
+    if (pctxt.isAwaitSupported()) {
+      pr.println("using System.Threading.Tasks;");
+    }
+    
 		pr.println("using com.wilutions.byps;");
 		pr.println();
 		pr.println("namespace " + rinfo.pack);
@@ -100,9 +112,12 @@ class GenRemoteClass {
 		
 		for (MethodInfo minfo : rinfo.methods) {
 			printMethod(minfo);
-			printMethodAsync(minfo);
-			printMethodBeginAsync(minfo);
-			printMethodEndAsync(minfo);
+			printMethodDelegate(minfo);
+			if (pctxt.isAwaitSupported()) {
+			  printMethodAsync(minfo);
+			}
+//			printMethodBeginAsync(minfo);
+//			printMethodEndAsync(minfo);
 			pr.println();
 		}
 		

@@ -585,6 +585,8 @@ public class BRegistry_Testser extends BRegistry {
 		if (typeId == 149216892) return com.wilutions.byps.test.api.remote.BSerializer_149216892.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
 		if (typeId == 319593463) return com.wilutions.byps.test.api.remote.BSerializer_319593463.instance;
+		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
+		if (typeId == 1845930195) return com.wilutions.byps.test.api.remote.BSerializer_1845930195.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
 		if (typeId == 1856936054) return com.wilutions.byps.test.api.remote.BSerializer_1856936054.instance;
 		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_getNode

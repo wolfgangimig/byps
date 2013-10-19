@@ -888,6 +888,7 @@ com::wilutions::byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes), com::wilutions::byps::test::api::BSerializer_941809610, 941809610);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort), com::wilutions::byps::test::api::BSerializer_149216892, 149216892);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString), com::wilutions::byps::test::api::BSerializer_319593463, 319593463);
+	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException), com::wilutions::byps::test::api::BSerializer_1845930195, 1845930195);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid), com::wilutions::byps::test::api::BSerializer_1856936054, 1856936054);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_getNode), com::wilutions::byps::test::api::BSerializer_655936732, 655936732);
 	registerClass(typeid(com::wilutions::byps::test::api::remote::BRequest_RemoteReferences_setNode), com::wilutions::byps::test::api::BSerializer_1404172848, 1404172848);

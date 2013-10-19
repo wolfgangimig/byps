@@ -1,57 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.srvr
 {
 	
-	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:93
 	public interface ServerIF : BRemote {
 	
 		int CallClientIncrementInt(int v);
-		void CallClientIncrementIntAsync(int v, BAsyncResult<int> asyncResult) ;
-		IAsyncResult BeginCallClientIncrementInt(int v, AsyncCallback callback, object state);
-		int EndCallClientIncrementInt(IAsyncResult asyncResult);
+		void CallClientIncrementInt(int v, BAsyncResult<int> asyncResult) ;
+		Task<int> CallClientIncrementIntAsync(int v);
 		
 		void SetPartner(ClientIF client);
-		void SetPartnerAsync(ClientIF client, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetPartner(ClientIF client, AsyncCallback callback, object state);
-		Object EndSetPartner(IAsyncResult asyncResult);
+		void SetPartner(ClientIF client, BAsyncResult<Object> asyncResult) ;
+		Task SetPartnerAsync(ClientIF client);
 		
 		ClientIF GetPartner();
-		void GetPartnerAsync(BAsyncResult<ClientIF> asyncResult) ;
-		IAsyncResult BeginGetPartner(AsyncCallback callback, object state);
-		ClientIF EndGetPartner(IAsyncResult asyncResult);
+		void GetPartner(BAsyncResult<ClientIF> asyncResult) ;
+		Task<ClientIF> GetPartnerAsync();
 		
 		IList<System.IO.Stream> GetStreamsFromClient();
-		void GetStreamsFromClientAsync(BAsyncResult<IList<System.IO.Stream>> asyncResult) ;
-		IAsyncResult BeginGetStreamsFromClient(AsyncCallback callback, object state);
-		IList<System.IO.Stream> EndGetStreamsFromClient(IAsyncResult asyncResult);
+		void GetStreamsFromClient(BAsyncResult<IList<System.IO.Stream>> asyncResult) ;
+		Task<IList<System.IO.Stream>> GetStreamsFromClientAsync();
 		
 		void PutStreamsOnClient(IList<System.IO.Stream> streams);
-		void PutStreamsOnClientAsync(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginPutStreamsOnClient(IList<System.IO.Stream> streams, AsyncCallback callback, object state);
-		Object EndPutStreamsOnClient(IAsyncResult asyncResult);
+		void PutStreamsOnClient(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) ;
+		Task PutStreamsOnClientAsync(IList<System.IO.Stream> streams);
 		
 		void RegisterWithClientMap(int id);
-		void RegisterWithClientMapAsync(int id, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginRegisterWithClientMap(int id, AsyncCallback callback, object state);
-		Object EndRegisterWithClientMap(IAsyncResult asyncResult);
+		void RegisterWithClientMap(int id, BAsyncResult<Object> asyncResult) ;
+		Task RegisterWithClientMapAsync(int id);
 		
 		ClientIF GetClient(int id);
-		void GetClientAsync(int id, BAsyncResult<ClientIF> asyncResult) ;
-		IAsyncResult BeginGetClient(int id, AsyncCallback callback, object state);
-		ClientIF EndGetClient(IAsyncResult asyncResult);
+		void GetClient(int id, BAsyncResult<ClientIF> asyncResult) ;
+		Task<ClientIF> GetClientAsync(int id);
 		
 		ISet<int> GetClientIds();
-		void GetClientIdsAsync(BAsyncResult<ISet<int>> asyncResult) ;
-		IAsyncResult BeginGetClientIds(AsyncCallback callback, object state);
-		ISet<int> EndGetClientIds(IAsyncResult asyncResult);
+		void GetClientIds(BAsyncResult<ISet<int>> asyncResult) ;
+		Task<ISet<int>> GetClientIdsAsync();
 		
 		int CallClientParallel(int v);
-		void CallClientParallelAsync(int v, BAsyncResult<int> asyncResult) ;
-		IAsyncResult BeginCallClientParallel(int v, AsyncCallback callback, object state);
-		int EndCallClientParallel(IAsyncResult asyncResult);
+		void CallClientParallel(int v, BAsyncResult<int> asyncResult) ;
+		Task<int> CallClientParallelAsync(int v);
 		
 		
 	}

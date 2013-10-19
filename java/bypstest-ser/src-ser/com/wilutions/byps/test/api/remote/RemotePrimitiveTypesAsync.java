@@ -185,5 +185,12 @@ public interface RemotePrimitiveTypesAsync extends BRemote,
 	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void add(int a, int b, final BAsyncResult<Integer> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
+	public void throwException() throws RemoteException;
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
+	public void throwException(final BAsyncResult<Object> asyncResult) ;
+	
 	
 }

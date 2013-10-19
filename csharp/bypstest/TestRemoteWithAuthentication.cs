@@ -121,7 +121,7 @@ namespace bypstest
 
 
 
-        private class MySessionResult : BAsyncResult<SessionInfo>
+        private class MySessionResult : BAsyncResultIF<SessionInfo>
         {
             private MyAuthentication auth;
             private BAsyncResult<bool> innerResult;
@@ -135,7 +135,7 @@ namespace bypstest
             public void setAsyncResult(SessionInfo sess, Exception ex)
             {
                 auth.sess = sess;
-                innerResult.setAsyncResult(ex == null, ex);
+                innerResult(ex == null, ex);
             }
 
         }
@@ -157,9 +157,13 @@ namespace bypstest
             {
                 log.info("authenticate(");
 
-                MySessionResult sessResult = new MySessionResult(this, asyncResult);
+                BAsyncResult<SessionInfo> sessResult = (sess, ex) =>
+                    {
+                        this.sess = sess;
+                        asyncResult(true, ex);
+                    };
 
-                ((BClient_Testser)client).RemoteWithAuthentication.LoginAsync(userName, pwd, sessResult);
+                ((BClient_Testser)client).RemoteWithAuthentication.Login(userName, pwd, sessResult);
 
                 log.info(")authenticate");
             }
@@ -169,9 +173,9 @@ namespace bypstest
                 return client.transport.isReloginException(ex, typeId);
             }
 
-            public Object getSession()
+            public void getSession(BClient client, int typeId, BAsyncResult<Object> asyncResult)
             {
-                return sess;
+                asyncResult(sess, null);
             }
 
         }

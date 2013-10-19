@@ -218,37 +218,38 @@ public class BTransport {
     }
   }
   
-  public void recv(BServer server, BMessage msg, final BAsyncResult<BMessage> asyncResult) throws Throwable {
+  public void recv(BServer server, BMessage msg, final BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("recv(");
 
-    final BInput bin = getInput(msg.header, msg.buf);
-    final BTargetId clientTargetId = bin.header.targetId;
-
-    final BAsyncResult<Object> methodResult = new BAsyncResult<Object>() {
-
-      @Override
-      public void setAsyncResult(Object obj, Throwable e) {
-        if (log.isDebugEnabled()) log.debug("setAsyncResultOrException(");
-        try {
-          BOutput bout = getResponse(bin.header);
-          if (e != null) {
-            if (log.isDebugEnabled()) log.debug("exception:", e);
-            bout.setException(e);
-          }
-          else {
-            bout.store(obj);
-          }
-          final BMessage msg = bout.toMessage();
-          asyncResult.setAsyncResult(msg, null);
-        } catch (BException ex) {
-          asyncResult.setAsyncResult(null, ex);
-        }
-        if (log.isDebugEnabled()) log.debug(")setAsyncResultOrException");
-      }
-
-    };
-
     try {
+      
+      final BInput bin = getInput(msg.header, msg.buf);
+      final BTargetId clientTargetId = bin.header.targetId;
+  
+      final BAsyncResult<Object> methodResult = new BAsyncResult<Object>() {
+  
+        @Override
+        public void setAsyncResult(Object obj, Throwable e) {
+          if (log.isDebugEnabled()) log.debug("setAsyncResultOrException(");
+          try {
+            BOutput bout = getResponse(bin.header);
+            if (e != null) {
+              if (log.isDebugEnabled()) log.debug("exception:", e);
+              bout.setException(e);
+            }
+            else {
+              bout.store(obj);
+            }
+            final BMessage msg = bout.toMessage();
+            asyncResult.setAsyncResult(msg, null);
+          } catch (BException ex) {
+            asyncResult.setAsyncResult(null, ex);
+          }
+          if (log.isDebugEnabled()) log.debug(")setAsyncResultOrException");
+        }
+  
+      };
+
       // Does the clientTargetId belong to another server?
       // If so, get the BClient object to forward the message.
       final BClient client = (serverRegistry != null) ? serverRegistry.getForwardClientIfForeignTargetId(clientTargetId) : null;
@@ -266,7 +267,7 @@ public class BTransport {
         server.recv(clientTargetId, methodObj, methodResult);
       }
     } catch (Exception e) {
-      methodResult.setAsyncResult(null, e);
+      asyncResult.setAsyncResult(null, e);
     }
 
     if (log.isDebugEnabled()) log.debug(")recv");

@@ -45,74 +45,118 @@ class GenRemoteSkeleton {
 		pctxt.printDeclareMethod(mpr, rinfo, methodInfo).println(" {");
 		
 		pr.beginBlock();
-		pr.println("throw new BException(BExceptionC.UNSUPPORTED_METHOD, \"\");");
+		if (pctxt.isAwaitSupported()) {
+	    pr.println("throw new NotImplementedException();");
+		}
+		else {
+	    pr.println("throw new BException(BExceptionC.UNSUPPORTED_METHOD, \"\");");
+		}
 		pr.endBlock();
 		pr.println("}");
 		
 		//log.debug(GeneratorJ.class.getName(), "printMethod");
 	}
 	
-	private void printMethodAsync(MethodInfo methodInfo) throws IOException {
+  private void printMethodAsync(MethodInfo methodInfo) throws IOException {
+    pctxt.printComments(pr, methodInfo.comments);
+    
+    CodePrinter mpr = pr.print("public virtual ");
+    mpr = pctxt.printDeclareMethodAsync(mpr, rinfo, methodInfo);
+    mpr.println("{");
+    pr.beginBlock();
+    
+    String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
+
+    pr.print("return BTaskConstants<").print(rtype).println(">.NotImplemented;");
+    pr.endBlock();
+    pr.println("}");
+    
+  }
+  
+	private void printMethodDelegate(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 		
 		CodePrinter mpr = pr.print("public virtual ");
-		mpr = pctxt.printDeclareMethodAsync(mpr, rinfo, methodInfo);
+		if (pctxt.isAwaitSupported()) {
+		  mpr.print("async ");
+		}
+		
+		mpr = pctxt.printDeclareMethodDelegate(mpr, rinfo, methodInfo);
 		mpr.println("{");
 		pr.beginBlock();
-		
+
+    String methodName = pctxt.makePublicMemberName(methodInfo.name);
+
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
 		boolean isReturnVoid = returnInfo.type.typeId == BRegistry.TYPEID_VOID;
 		
+		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
+    pr.print(rtype).print(" ret = default(").print(rtype).println(");");
+    
+    pr.println("Exception ex = null;");
+    
+    if (pctxt.isAwaitSupported()) {
+      pr.println("bool callAsync = false;");
+    }
+    
 		pr.println("try {");
 		pr.beginBlock();
 		
-		if (isReturnVoid) {
-			mpr = pr;
-		}
-		else {
-			TypeInfo cstype = pctxt.toCSharp(returnInfo.type);
-			String rtype = cstype.toString(rinfo.pack);
-			mpr = pr.print(rtype).print(" ret = ");
-		}
 		
-		String methodName = pctxt.makePublicMemberName(methodInfo.name);
+    mpr = pr;
+		if (!isReturnVoid) mpr = mpr.print("ret = ");
 		mpr = mpr.print(methodName + "(");
 		
-		boolean first = true;
-		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-			if (first) first = false; else mpr.print(", ");
-			String mname = pctxt.makeValidMemberName(pinfo.name);
-			mpr.print(mname);
-		}
+		mpr = printPassParameters(methodInfo, mpr);
 		mpr.println(");");
 		
-		if (isReturnVoid) {
-			pr.println("asyncResult.setAsyncResult(null, null);");
-		} 
-		else {
-			pr.println("asyncResult.setAsyncResult(ret, null);");
+		pr.endBlock();
+    pr.println("}");
+		
+		if (pctxt.isAwaitSupported()) {
+		  pr.println("catch (NotImplementedException) { callAsync = true; }");
+		}
+
+		pr.println("catch (Exception e) { ex = e; }");
+		
+		if (pctxt.isAwaitSupported()) {
+		  pr.println("if (callAsync) try {");
+		  
+		  pr.beginBlock();
+		  
+	    mpr = pr;
+	    if (!isReturnVoid) mpr = mpr.print("ret = ");
+	    mpr = mpr.print("await ").print(methodName).print("Async(");
+	    
+	    mpr = printPassParameters(methodInfo, mpr);
+	    mpr.println(");");
+	    
+	    pr.endBlock();
+	    
+	    pr.println("}");
+	    pr.println("catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, \"\"); }");
+
+	    pr.println("catch (Exception e) { ex = e; }");
+	    
 		}
 		
-		pr.endBlock();
-//		pr.println("} catch (RemoteException e) {");
-//		pr.beginBlock();
-//		pr.println("asyncResult.setException(e);");
-//		pr.endBlock();
-		pr.println("} catch (Exception e) {");
-		pr.beginBlock();
-		String nullValue = PrintHelper.getDefaultValueForType(returnInfo.type);
-		pr.println("asyncResult.setAsyncResult(" + nullValue + ", e);");
-		pr.endBlock();
-//		pr.println("} finally {");
-//		pr.beginBlock();
-//		pr.endBlock();
-		pr.println("}");
-		
+    pr.println("asyncResult(ret, ex);");
+
 		pr.endBlock();
 		
 		pr.println("}");
 		//log.debug(GeneratorJ.class.getName(), "printMethodAsync");
 	}
+
+  protected CodePrinter printPassParameters(MethodInfo methodInfo, CodePrinter mpr) {
+    boolean first = true;
+		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+			if (first) first = false; else mpr.print(", ");
+			String mname = pctxt.makeValidMemberName(pinfo.name);
+			mpr = mpr.print(mname);
+		}
+		return mpr;
+  }
 	
 	private void printMethodBeginAsync(MethodInfo methodInfo) throws GeneratorException {
 		CodePrinter mpr = pr.print("public ");
@@ -146,6 +190,11 @@ class GenRemoteSkeleton {
 
 		pr.println("using System;");
 		pr.println("using System.Collections.Generic;");
+		
+    if (pctxt.isAwaitSupported()) {
+      pr.println("using System.Threading.Tasks;");
+    }
+
 		pr.println("using com.wilutions.byps;");
 		pr.println();
 		pr.println("namespace " + rinfo.pack);
@@ -200,9 +249,12 @@ class GenRemoteSkeleton {
     
     for (MethodInfo minfo : rinfoImpl.methods) {
       printMethod(minfo);
-      printMethodAsync(minfo);
-      printMethodBeginAsync(minfo);
-      printMethodEndAsync(minfo);
+      printMethodDelegate(minfo);
+      if (pctxt.isAwaitSupported()) {
+        printMethodAsync(minfo);
+      }
+//      printMethodBeginAsync(minfo);
+//      printMethodEndAsync(minfo);
       pr.println();
     }
     

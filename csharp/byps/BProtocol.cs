@@ -31,5 +31,7 @@ namespace com.wilutions.byps
 	    public abstract BOutput getResponse(BTransport transport, BMessageHeader requestHeader) ;
 
         public abstract BInput getInput(BTransport transport, BMessageHeader responseHeader, ByteBuffer buf);
+
+        public abstract BRegistry getRegistry();
     }
 }

@@ -27,17 +27,17 @@ namespace com.wilutions.byps
         {
         }
 
-        public virtual void send(BMessage msg, BAsyncResult<BMessage> asyncResult)
+        public virtual void send(BMessage msg, BAsyncResultIF<BMessage> asyncResult)
         {
             internalSend(msg, asyncResult);
         }
 
-        public virtual void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult)
+        public virtual void sendR(BMessage msg, BAsyncResultIF<BMessage> asyncResult)
         {
             internalSend(msg, asyncResult);
         }
 
-        private void internalSend(BMessage msg, BAsyncResult<BMessage> asyncResult)
+        private void internalSend(BMessage msg, BAsyncResultIF<BMessage> asyncResult)
         {
 		    ByteBuffer obuf = ByteBuffer.allocate(msg.buf.remaining());
 		    obuf.put(msg.buf);
@@ -58,7 +58,7 @@ namespace com.wilutions.byps
             return mid;
         }
 
-        public virtual void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult)
+        public virtual void putStreams(List<BStreamRequest> streamRequests, BAsyncResultIF<BMessage> asyncResult)
         {
         }
 

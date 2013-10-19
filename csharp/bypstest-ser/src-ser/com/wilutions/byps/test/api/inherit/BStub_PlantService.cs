@@ -15,24 +15,18 @@ namespace com.wilutions.byps.test.api.inherit
 		
 		public String Grow() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
-			GrowAsync(asyncResult);
+			Grow(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GrowAsync(BAsyncResult<String> asyncResult) {
+		public void Grow(BAsyncResult<String> asyncResult) {
 			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
-			BAsyncResultReceiveMethod<String> outerResult = new BAsyncResultReceiveMethod<String>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGrow(AsyncCallback callback, object state){
-			BAsyncProgModel<String> _byps_ret = new BAsyncProgModel<String>(callback, state);
-			GrowAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public String EndGrow(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<String>)asyncResult).Result;
-		}
-		public async Task<String> GrowTask() {
-			return await Task<String>.Factory.FromAsync(BeginGrow, EndGrow, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<String> GrowAsync(){
+			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
+			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
+			return await task;
 		}
 		
 		

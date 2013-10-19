@@ -6411,6 +6411,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException</typeName>
+            <typeId>1845930195</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid</typeName>
             <typeId>1856936054</typeId>
             <members/>
@@ -10663,6 +10673,14 @@
                     <remoteName>com.wilutions.byps.test.api.remote.RemotePrimitiveTypes</remoteName>
                     <requestTypeName>com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_add</requestTypeName>
                     <resultTypeName>com.wilutions.byps.test.api.BResult_5</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>throwException</name>
+                    <remoteName>com.wilutions.byps.test.api.remote.RemotePrimitiveTypes</remoteName>
+                    <requestTypeName>com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException</requestTypeName>
+                    <resultTypeName>com.wilutions.byps.test.api.BResult_19</resultTypeName>
                     <exceptionTypeNames/>
                     <comments/>
                 </method>

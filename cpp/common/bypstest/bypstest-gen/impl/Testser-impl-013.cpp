@@ -4,6 +4,66 @@ using namespace ::com::wilutions::byps;
 
 // checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1628501332(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::vector< float >& r = * reinterpret_cast< ::std::vector< float >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::vector< float >());
+	}
+}
+}}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_181681714(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::vector< int32_t >& r = * reinterpret_cast< ::std::vector< int32_t >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::vector< int32_t >());
+	}
+}
+}}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1050216688(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::vector< int64_t >& r = * reinterpret_cast< ::std::vector< int64_t >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::vector< int64_t >());
+	}
+}
+}}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_1997002548(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::vector< int16_t >& r = * reinterpret_cast< ::std::vector< int16_t >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::vector< int16_t >());
+	}
+}
+}}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+void BSerializer_2123584667(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		::std::vector< ::std::wstring >& r = * reinterpret_cast< ::std::vector< ::std::wstring >*>(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new ::std::vector< ::std::wstring >());
+	}
+}
+}}}}}
+// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
 void BSerializer_1463615848(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 

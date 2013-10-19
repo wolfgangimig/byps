@@ -369,6 +369,8 @@ class GenApiClass {
 	}
 	
 	private void printExecuteAsync() throws GeneratorException {
+	  pr.checkpoint();
+	  
 		pr.println("try {");
 		pr.beginBlock();
 		
@@ -385,7 +387,7 @@ class GenApiClass {
 			.print("());");
 		pr.println();
 		
-		CodePrinter mpr = pr.print("__byps__remoteT.").print(methodName).print("Async").print("(");
+		CodePrinter mpr = pr.print("__byps__remoteT.").print(methodName).print("").print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
@@ -393,7 +395,7 @@ class GenApiClass {
 			mpr.print("_").print(pinfo.name);
 		}
 		if (!first) mpr.print(", ");
-		mpr.print("__byps__outerResult");
+		mpr.print("BAsyncResultHelper.ToDelegate(__byps__outerResult)");
 		mpr.println(");");
 		
 		pr.endBlock();
@@ -410,7 +412,7 @@ class GenApiClass {
 	private void printExecute() throws IOException {
 		log.debug("printExecute");
 
-		pr.print("public override void ").print("execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) ").println("{");
+		pr.print("public override void ").print("execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) ").println("{");
 		pr.beginBlock();
 		
 		printExecuteAsync();

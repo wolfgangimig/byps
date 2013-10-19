@@ -49,7 +49,7 @@ namespace bypstest
             {
             }
 
-            public override void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult)
+            public override void putStreams(List<BStreamRequest> streamRequests, BAsyncResultIF<BMessage> asyncResult)
             {
  			    if (streamRequests == null) return;
 			

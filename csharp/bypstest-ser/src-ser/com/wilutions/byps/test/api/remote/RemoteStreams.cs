@@ -1,42 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:93
 	public interface RemoteStreams : BRemote {
 	
 		System.IO.Stream GetImage();
-		void GetImageAsync(BAsyncResult<System.IO.Stream> asyncResult) ;
-		IAsyncResult BeginGetImage(AsyncCallback callback, object state);
-		System.IO.Stream EndGetImage(IAsyncResult asyncResult);
+		void GetImage(BAsyncResult<System.IO.Stream> asyncResult) ;
+		Task<System.IO.Stream> GetImageAsync();
 		
 		void SetImage(System.IO.Stream istrm);
-		void SetImageAsync(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetImage(System.IO.Stream istrm, AsyncCallback callback, object state);
-		Object EndSetImage(IAsyncResult asyncResult);
+		void SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) ;
+		Task SetImageAsync(System.IO.Stream istrm);
 		
 		Dictionary<int,System.IO.Stream> GetImages();
-		void GetImagesAsync(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) ;
-		IAsyncResult BeginGetImages(AsyncCallback callback, object state);
-		Dictionary<int,System.IO.Stream> EndGetImages(IAsyncResult asyncResult);
+		void GetImages(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) ;
+		Task<Dictionary<int,System.IO.Stream>> GetImagesAsync();
 		
 		void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey);
-		void SetImagesAsync(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, AsyncCallback callback, object state);
-		Object EndSetImages(IAsyncResult asyncResult);
+		void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) ;
+		Task SetImagesAsync(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey);
 		
 		void ThrowLastException();
-		void ThrowLastExceptionAsync(BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginThrowLastException(AsyncCallback callback, object state);
-		Object EndThrowLastException(IAsyncResult asyncResult);
+		void ThrowLastException(BAsyncResult<Object> asyncResult) ;
+		Task ThrowLastExceptionAsync();
 		
 		System.IO.Stream GetTextStream();
-		void GetTextStreamAsync(BAsyncResult<System.IO.Stream> asyncResult) ;
-		IAsyncResult BeginGetTextStream(AsyncCallback callback, object state);
-		System.IO.Stream EndGetTextStream(IAsyncResult asyncResult);
+		void GetTextStream(BAsyncResult<System.IO.Stream> asyncResult) ;
+		Task<System.IO.Stream> GetTextStreamAsync();
 		
 		
 	}

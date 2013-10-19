@@ -9,8 +9,8 @@ namespace com.wilutions.byps
     public abstract class BMethodRequest
     {
         public abstract int getRemoteId();
-	
-    	public abstract void execute(BRemote target, BAsyncResult<Object> asyncResult);
+
+        public abstract void execute(BRemote target, BAsyncResultIF<Object> asyncResult);
 
         public virtual void setSession(object sess)
         {

@@ -15,587 +15,444 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public IDictionary<String,bool> GetBoolean1() {
 			BSyncResult<IDictionary<String,bool>> asyncResult = new BSyncResult<IDictionary<String,bool>>();			
-			GetBoolean1Async(asyncResult);
+			GetBoolean1(BAsyncResultHelper.ToDelegate<IDictionary<String,bool>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetBoolean1Async(BAsyncResult<IDictionary<String,bool>> asyncResult) {
+		public void GetBoolean1(BAsyncResult<IDictionary<String,bool>> asyncResult) {
 			BRequest_RemoteMapTypes_getBoolean1 req = new BRequest_RemoteMapTypes_getBoolean1();			
-			BAsyncResultReceiveMethod<IDictionary<String,bool>> outerResult = new BAsyncResultReceiveMethod<IDictionary<String,bool>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetBoolean1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<String,bool>> _byps_ret = new BAsyncProgModel<IDictionary<String,bool>>(callback, state);
-			GetBoolean1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<String,bool> EndGetBoolean1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<String,bool>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<String,bool>> GetBoolean1Task() {
-			return await Task<IDictionary<String,bool>>.Factory.FromAsync(BeginGetBoolean1, EndGetBoolean1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<String,bool>> GetBoolean1Async(){
+			BRequest_RemoteMapTypes_getBoolean1 req = new BRequest_RemoteMapTypes_getBoolean1();			
+			Task<IDictionary<String,bool>> task = Task<IDictionary<String,bool>>.Factory.FromAsync(transport.BeginSend<IDictionary<String,bool>>, transport.EndSend<IDictionary<String,bool>>, req, null);
+			return await task;
 		}
 		
 		public void SetBoolean1(IDictionary<String,bool> boolean1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetBoolean1Async(boolean1, asyncResult);
+			SetBoolean1(boolean1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetBoolean1Async(IDictionary<String,bool> boolean1, BAsyncResult<Object> asyncResult) {
+		public void SetBoolean1(IDictionary<String,bool> boolean1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setBoolean1 req = new BRequest_RemoteMapTypes_setBoolean1();			
 			req._boolean1 = boolean1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetBoolean1(IDictionary<String,bool> boolean1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetBoolean1Async(boolean1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetBoolean1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetBoolean1Task(IDictionary<String,bool> boolean1) {
-			await Task.Factory.FromAsync(BeginSetBoolean1, EndSetBoolean1, boolean1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetBoolean1Async(IDictionary<String,bool> boolean1){
+			BRequest_RemoteMapTypes_setBoolean1 req = new BRequest_RemoteMapTypes_setBoolean1();			
+			req._boolean1 = boolean1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public Dictionary<double,byte> GetByte1() {
 			BSyncResult<Dictionary<double,byte>> asyncResult = new BSyncResult<Dictionary<double,byte>>();			
-			GetByte1Async(asyncResult);
+			GetByte1(BAsyncResultHelper.ToDelegate<Dictionary<double,byte>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte1Async(BAsyncResult<Dictionary<double,byte>> asyncResult) {
+		public void GetByte1(BAsyncResult<Dictionary<double,byte>> asyncResult) {
 			BRequest_RemoteMapTypes_getByte1 req = new BRequest_RemoteMapTypes_getByte1();			
-			BAsyncResultReceiveMethod<Dictionary<double,byte>> outerResult = new BAsyncResultReceiveMethod<Dictionary<double,byte>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetByte1(AsyncCallback callback, object state){
-			BAsyncProgModel<Dictionary<double,byte>> _byps_ret = new BAsyncProgModel<Dictionary<double,byte>>(callback, state);
-			GetByte1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public Dictionary<double,byte> EndGetByte1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Dictionary<double,byte>>)asyncResult).Result;
-		}
-		public async Task<Dictionary<double,byte>> GetByte1Task() {
-			return await Task<Dictionary<double,byte>>.Factory.FromAsync(BeginGetByte1, EndGetByte1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<Dictionary<double,byte>> GetByte1Async(){
+			BRequest_RemoteMapTypes_getByte1 req = new BRequest_RemoteMapTypes_getByte1();			
+			Task<Dictionary<double,byte>> task = Task<Dictionary<double,byte>>.Factory.FromAsync(transport.BeginSend<Dictionary<double,byte>>, transport.EndSend<Dictionary<double,byte>>, req, null);
+			return await task;
 		}
 		
 		public void SetByte1(Dictionary<double,byte> byte1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetByte1Async(byte1, asyncResult);
+			SetByte1(byte1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte1Async(Dictionary<double,byte> byte1, BAsyncResult<Object> asyncResult) {
+		public void SetByte1(Dictionary<double,byte> byte1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setByte1 req = new BRequest_RemoteMapTypes_setByte1();			
 			req._byte1 = byte1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetByte1(Dictionary<double,byte> byte1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetByte1Async(byte1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetByte1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetByte1Task(Dictionary<double,byte> byte1) {
-			await Task.Factory.FromAsync(BeginSetByte1, EndSetByte1, byte1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetByte1Async(Dictionary<double,byte> byte1){
+			BRequest_RemoteMapTypes_setByte1 req = new BRequest_RemoteMapTypes_setByte1();			
+			req._byte1 = byte1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public Dictionary<float,char> GetChar1() {
 			BSyncResult<Dictionary<float,char>> asyncResult = new BSyncResult<Dictionary<float,char>>();			
-			GetChar1Async(asyncResult);
+			GetChar1(BAsyncResultHelper.ToDelegate<Dictionary<float,char>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetChar1Async(BAsyncResult<Dictionary<float,char>> asyncResult) {
+		public void GetChar1(BAsyncResult<Dictionary<float,char>> asyncResult) {
 			BRequest_RemoteMapTypes_getChar1 req = new BRequest_RemoteMapTypes_getChar1();			
-			BAsyncResultReceiveMethod<Dictionary<float,char>> outerResult = new BAsyncResultReceiveMethod<Dictionary<float,char>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetChar1(AsyncCallback callback, object state){
-			BAsyncProgModel<Dictionary<float,char>> _byps_ret = new BAsyncProgModel<Dictionary<float,char>>(callback, state);
-			GetChar1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public Dictionary<float,char> EndGetChar1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Dictionary<float,char>>)asyncResult).Result;
-		}
-		public async Task<Dictionary<float,char>> GetChar1Task() {
-			return await Task<Dictionary<float,char>>.Factory.FromAsync(BeginGetChar1, EndGetChar1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<Dictionary<float,char>> GetChar1Async(){
+			BRequest_RemoteMapTypes_getChar1 req = new BRequest_RemoteMapTypes_getChar1();			
+			Task<Dictionary<float,char>> task = Task<Dictionary<float,char>>.Factory.FromAsync(transport.BeginSend<Dictionary<float,char>>, transport.EndSend<Dictionary<float,char>>, req, null);
+			return await task;
 		}
 		
 		public void SetChar1(Dictionary<float,char> char1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetChar1Async(char1, asyncResult);
+			SetChar1(char1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetChar1Async(Dictionary<float,char> char1, BAsyncResult<Object> asyncResult) {
+		public void SetChar1(Dictionary<float,char> char1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setChar1 req = new BRequest_RemoteMapTypes_setChar1();			
 			req._char1 = char1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetChar1(Dictionary<float,char> char1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetChar1Async(char1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetChar1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetChar1Task(Dictionary<float,char> char1) {
-			await Task.Factory.FromAsync(BeginSetChar1, EndSetChar1, char1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetChar1Async(Dictionary<float,char> char1){
+			BRequest_RemoteMapTypes_setChar1 req = new BRequest_RemoteMapTypes_setChar1();			
+			req._char1 = char1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<long,short> GetShort1() {
 			BSyncResult<IDictionary<long,short>> asyncResult = new BSyncResult<IDictionary<long,short>>();			
-			GetShort1Async(asyncResult);
+			GetShort1(BAsyncResultHelper.ToDelegate<IDictionary<long,short>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetShort1Async(BAsyncResult<IDictionary<long,short>> asyncResult) {
+		public void GetShort1(BAsyncResult<IDictionary<long,short>> asyncResult) {
 			BRequest_RemoteMapTypes_getShort1 req = new BRequest_RemoteMapTypes_getShort1();			
-			BAsyncResultReceiveMethod<IDictionary<long,short>> outerResult = new BAsyncResultReceiveMethod<IDictionary<long,short>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetShort1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<long,short>> _byps_ret = new BAsyncProgModel<IDictionary<long,short>>(callback, state);
-			GetShort1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<long,short> EndGetShort1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<long,short>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<long,short>> GetShort1Task() {
-			return await Task<IDictionary<long,short>>.Factory.FromAsync(BeginGetShort1, EndGetShort1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<long,short>> GetShort1Async(){
+			BRequest_RemoteMapTypes_getShort1 req = new BRequest_RemoteMapTypes_getShort1();			
+			Task<IDictionary<long,short>> task = Task<IDictionary<long,short>>.Factory.FromAsync(transport.BeginSend<IDictionary<long,short>>, transport.EndSend<IDictionary<long,short>>, req, null);
+			return await task;
 		}
 		
 		public void SetShort1(IDictionary<long,short> short1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetShort1Async(short1, asyncResult);
+			SetShort1(short1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetShort1Async(IDictionary<long,short> short1, BAsyncResult<Object> asyncResult) {
+		public void SetShort1(IDictionary<long,short> short1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setShort1 req = new BRequest_RemoteMapTypes_setShort1();			
 			req._short1 = short1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetShort1(IDictionary<long,short> short1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetShort1Async(short1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetShort1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetShort1Task(IDictionary<long,short> short1) {
-			await Task.Factory.FromAsync(BeginSetShort1, EndSetShort1, short1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetShort1Async(IDictionary<long,short> short1){
+			BRequest_RemoteMapTypes_setShort1 req = new BRequest_RemoteMapTypes_setShort1();			
+			req._short1 = short1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<int,int> GetInt1() {
 			BSyncResult<IDictionary<int,int>> asyncResult = new BSyncResult<IDictionary<int,int>>();			
-			GetInt1Async(asyncResult);
+			GetInt1(BAsyncResultHelper.ToDelegate<IDictionary<int,int>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt1Async(BAsyncResult<IDictionary<int,int>> asyncResult) {
+		public void GetInt1(BAsyncResult<IDictionary<int,int>> asyncResult) {
 			BRequest_RemoteMapTypes_getInt1 req = new BRequest_RemoteMapTypes_getInt1();			
-			BAsyncResultReceiveMethod<IDictionary<int,int>> outerResult = new BAsyncResultReceiveMethod<IDictionary<int,int>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetInt1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<int,int>> _byps_ret = new BAsyncProgModel<IDictionary<int,int>>(callback, state);
-			GetInt1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<int,int> EndGetInt1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<int,int>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<int,int>> GetInt1Task() {
-			return await Task<IDictionary<int,int>>.Factory.FromAsync(BeginGetInt1, EndGetInt1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<int,int>> GetInt1Async(){
+			BRequest_RemoteMapTypes_getInt1 req = new BRequest_RemoteMapTypes_getInt1();			
+			Task<IDictionary<int,int>> task = Task<IDictionary<int,int>>.Factory.FromAsync(transport.BeginSend<IDictionary<int,int>>, transport.EndSend<IDictionary<int,int>>, req, null);
+			return await task;
 		}
 		
 		public void SetInt1(IDictionary<int,int> int1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetInt1Async(int1, asyncResult);
+			SetInt1(int1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt1Async(IDictionary<int,int> int1, BAsyncResult<Object> asyncResult) {
+		public void SetInt1(IDictionary<int,int> int1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setInt1 req = new BRequest_RemoteMapTypes_setInt1();			
 			req._int1 = int1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetInt1(IDictionary<int,int> int1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetInt1Async(int1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetInt1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetInt1Task(IDictionary<int,int> int1) {
-			await Task.Factory.FromAsync(BeginSetInt1, EndSetInt1, int1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetInt1Async(IDictionary<int,int> int1){
+			BRequest_RemoteMapTypes_setInt1 req = new BRequest_RemoteMapTypes_setInt1();			
+			req._int1 = int1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<short,long> GetLong1() {
 			BSyncResult<IDictionary<short,long>> asyncResult = new BSyncResult<IDictionary<short,long>>();			
-			GetLong1Async(asyncResult);
+			GetLong1(BAsyncResultHelper.ToDelegate<IDictionary<short,long>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetLong1Async(BAsyncResult<IDictionary<short,long>> asyncResult) {
+		public void GetLong1(BAsyncResult<IDictionary<short,long>> asyncResult) {
 			BRequest_RemoteMapTypes_getLong1 req = new BRequest_RemoteMapTypes_getLong1();			
-			BAsyncResultReceiveMethod<IDictionary<short,long>> outerResult = new BAsyncResultReceiveMethod<IDictionary<short,long>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetLong1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<short,long>> _byps_ret = new BAsyncProgModel<IDictionary<short,long>>(callback, state);
-			GetLong1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<short,long> EndGetLong1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<short,long>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<short,long>> GetLong1Task() {
-			return await Task<IDictionary<short,long>>.Factory.FromAsync(BeginGetLong1, EndGetLong1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<short,long>> GetLong1Async(){
+			BRequest_RemoteMapTypes_getLong1 req = new BRequest_RemoteMapTypes_getLong1();			
+			Task<IDictionary<short,long>> task = Task<IDictionary<short,long>>.Factory.FromAsync(transport.BeginSend<IDictionary<short,long>>, transport.EndSend<IDictionary<short,long>>, req, null);
+			return await task;
 		}
 		
 		public void SetLong1(IDictionary<short,long> long1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetLong1Async(long1, asyncResult);
+			SetLong1(long1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetLong1Async(IDictionary<short,long> long1, BAsyncResult<Object> asyncResult) {
+		public void SetLong1(IDictionary<short,long> long1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setLong1 req = new BRequest_RemoteMapTypes_setLong1();			
 			req._long1 = long1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetLong1(IDictionary<short,long> long1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetLong1Async(long1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetLong1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetLong1Task(IDictionary<short,long> long1) {
-			await Task.Factory.FromAsync(BeginSetLong1, EndSetLong1, long1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetLong1Async(IDictionary<short,long> long1){
+			BRequest_RemoteMapTypes_setLong1 req = new BRequest_RemoteMapTypes_setLong1();			
+			req._long1 = long1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<char,float> GetFloat1() {
 			BSyncResult<IDictionary<char,float>> asyncResult = new BSyncResult<IDictionary<char,float>>();			
-			GetFloat1Async(asyncResult);
+			GetFloat1(BAsyncResultHelper.ToDelegate<IDictionary<char,float>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetFloat1Async(BAsyncResult<IDictionary<char,float>> asyncResult) {
+		public void GetFloat1(BAsyncResult<IDictionary<char,float>> asyncResult) {
 			BRequest_RemoteMapTypes_getFloat1 req = new BRequest_RemoteMapTypes_getFloat1();			
-			BAsyncResultReceiveMethod<IDictionary<char,float>> outerResult = new BAsyncResultReceiveMethod<IDictionary<char,float>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetFloat1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<char,float>> _byps_ret = new BAsyncProgModel<IDictionary<char,float>>(callback, state);
-			GetFloat1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<char,float> EndGetFloat1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<char,float>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<char,float>> GetFloat1Task() {
-			return await Task<IDictionary<char,float>>.Factory.FromAsync(BeginGetFloat1, EndGetFloat1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<char,float>> GetFloat1Async(){
+			BRequest_RemoteMapTypes_getFloat1 req = new BRequest_RemoteMapTypes_getFloat1();			
+			Task<IDictionary<char,float>> task = Task<IDictionary<char,float>>.Factory.FromAsync(transport.BeginSend<IDictionary<char,float>>, transport.EndSend<IDictionary<char,float>>, req, null);
+			return await task;
 		}
 		
 		public void SetFloat1(IDictionary<char,float> float1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetFloat1Async(float1, asyncResult);
+			SetFloat1(float1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetFloat1Async(IDictionary<char,float> float1, BAsyncResult<Object> asyncResult) {
+		public void SetFloat1(IDictionary<char,float> float1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setFloat1 req = new BRequest_RemoteMapTypes_setFloat1();			
 			req._float1 = float1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetFloat1(IDictionary<char,float> float1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetFloat1Async(float1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetFloat1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetFloat1Task(IDictionary<char,float> float1) {
-			await Task.Factory.FromAsync(BeginSetFloat1, EndSetFloat1, float1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetFloat1Async(IDictionary<char,float> float1){
+			BRequest_RemoteMapTypes_setFloat1 req = new BRequest_RemoteMapTypes_setFloat1();			
+			req._float1 = float1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<byte,double> GetDouble1() {
 			BSyncResult<IDictionary<byte,double>> asyncResult = new BSyncResult<IDictionary<byte,double>>();			
-			GetDouble1Async(asyncResult);
+			GetDouble1(BAsyncResultHelper.ToDelegate<IDictionary<byte,double>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDouble1Async(BAsyncResult<IDictionary<byte,double>> asyncResult) {
+		public void GetDouble1(BAsyncResult<IDictionary<byte,double>> asyncResult) {
 			BRequest_RemoteMapTypes_getDouble1 req = new BRequest_RemoteMapTypes_getDouble1();			
-			BAsyncResultReceiveMethod<IDictionary<byte,double>> outerResult = new BAsyncResultReceiveMethod<IDictionary<byte,double>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetDouble1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<byte,double>> _byps_ret = new BAsyncProgModel<IDictionary<byte,double>>(callback, state);
-			GetDouble1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<byte,double> EndGetDouble1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<byte,double>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<byte,double>> GetDouble1Task() {
-			return await Task<IDictionary<byte,double>>.Factory.FromAsync(BeginGetDouble1, EndGetDouble1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<byte,double>> GetDouble1Async(){
+			BRequest_RemoteMapTypes_getDouble1 req = new BRequest_RemoteMapTypes_getDouble1();			
+			Task<IDictionary<byte,double>> task = Task<IDictionary<byte,double>>.Factory.FromAsync(transport.BeginSend<IDictionary<byte,double>>, transport.EndSend<IDictionary<byte,double>>, req, null);
+			return await task;
 		}
 		
 		public void SetDouble1(IDictionary<byte,double> double1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetDouble1Async(double1, asyncResult);
+			SetDouble1(double1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDouble1Async(IDictionary<byte,double> double1, BAsyncResult<Object> asyncResult) {
+		public void SetDouble1(IDictionary<byte,double> double1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setDouble1 req = new BRequest_RemoteMapTypes_setDouble1();			
 			req._double1 = double1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetDouble1(IDictionary<byte,double> double1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetDouble1Async(double1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetDouble1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetDouble1Task(IDictionary<byte,double> double1) {
-			await Task.Factory.FromAsync(BeginSetDouble1, EndSetDouble1, double1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetDouble1Async(IDictionary<byte,double> double1){
+			BRequest_RemoteMapTypes_setDouble1 req = new BRequest_RemoteMapTypes_setDouble1();			
+			req._double1 = double1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<String,String> GetString1() {
 			BSyncResult<IDictionary<String,String>> asyncResult = new BSyncResult<IDictionary<String,String>>();			
-			GetString1Async(asyncResult);
+			GetString1(BAsyncResultHelper.ToDelegate<IDictionary<String,String>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetString1Async(BAsyncResult<IDictionary<String,String>> asyncResult) {
+		public void GetString1(BAsyncResult<IDictionary<String,String>> asyncResult) {
 			BRequest_RemoteMapTypes_getString1 req = new BRequest_RemoteMapTypes_getString1();			
-			BAsyncResultReceiveMethod<IDictionary<String,String>> outerResult = new BAsyncResultReceiveMethod<IDictionary<String,String>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetString1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<String,String>> _byps_ret = new BAsyncProgModel<IDictionary<String,String>>(callback, state);
-			GetString1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<String,String> EndGetString1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<String,String>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<String,String>> GetString1Task() {
-			return await Task<IDictionary<String,String>>.Factory.FromAsync(BeginGetString1, EndGetString1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<String,String>> GetString1Async(){
+			BRequest_RemoteMapTypes_getString1 req = new BRequest_RemoteMapTypes_getString1();			
+			Task<IDictionary<String,String>> task = Task<IDictionary<String,String>>.Factory.FromAsync(transport.BeginSend<IDictionary<String,String>>, transport.EndSend<IDictionary<String,String>>, req, null);
+			return await task;
 		}
 		
 		public void SetString1(IDictionary<String,String> string1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetString1Async(string1, asyncResult);
+			SetString1(string1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetString1Async(IDictionary<String,String> string1, BAsyncResult<Object> asyncResult) {
+		public void SetString1(IDictionary<String,String> string1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setString1 req = new BRequest_RemoteMapTypes_setString1();			
 			req._string1 = string1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetString1(IDictionary<String,String> string1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetString1Async(string1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetString1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetString1Task(IDictionary<String,String> string1) {
-			await Task.Factory.FromAsync(BeginSetString1, EndSetString1, string1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetString1Async(IDictionary<String,String> string1){
+			BRequest_RemoteMapTypes_setString1 req = new BRequest_RemoteMapTypes_setString1();			
+			req._string1 = string1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypes1() {
 			BSyncResult<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult = new BSyncResult<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>();			
-			GetPrimitiveTypes1Async(asyncResult);
+			GetPrimitiveTypes1(BAsyncResultHelper.ToDelegate<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPrimitiveTypes1Async(BAsyncResult<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult) {
+		public void GetPrimitiveTypes1(BAsyncResult<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult) {
 			BRequest_RemoteMapTypes_getPrimitiveTypes1 req = new BRequest_RemoteMapTypes_getPrimitiveTypes1();			
-			BAsyncResultReceiveMethod<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> outerResult = new BAsyncResultReceiveMethod<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetPrimitiveTypes1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> _byps_ret = new BAsyncProgModel<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>(callback, state);
-			GetPrimitiveTypes1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> EndGetPrimitiveTypes1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> GetPrimitiveTypes1Task() {
-			return await Task<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>.Factory.FromAsync(BeginGetPrimitiveTypes1, EndGetPrimitiveTypes1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> GetPrimitiveTypes1Async(){
+			BRequest_RemoteMapTypes_getPrimitiveTypes1 req = new BRequest_RemoteMapTypes_getPrimitiveTypes1();			
+			Task<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>> task = Task<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>.Factory.FromAsync(transport.BeginSend<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>, transport.EndSend<IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes>>, req, null);
+			return await task;
 		}
 		
 		public void SetPrimitiveTypes1(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetPrimitiveTypes1Async(primitiveTypes1, asyncResult);
+			SetPrimitiveTypes1(primitiveTypes1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPrimitiveTypes1Async(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
+		public void SetPrimitiveTypes1(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setPrimitiveTypes1 req = new BRequest_RemoteMapTypes_setPrimitiveTypes1();			
 			req._primitiveTypes1 = primitiveTypes1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetPrimitiveTypes1(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetPrimitiveTypes1Async(primitiveTypes1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetPrimitiveTypes1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetPrimitiveTypes1Task(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
-			await Task.Factory.FromAsync(BeginSetPrimitiveTypes1, EndSetPrimitiveTypes1, primitiveTypes1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetPrimitiveTypes1Async(IDictionary<int,com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1){
+			BRequest_RemoteMapTypes_setPrimitiveTypes1 req = new BRequest_RemoteMapTypes_setPrimitiveTypes1();			
+			req._primitiveTypes1 = primitiveTypes1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<int,byte[]> GetByte2() {
 			BSyncResult<IDictionary<int,byte[]>> asyncResult = new BSyncResult<IDictionary<int,byte[]>>();			
-			GetByte2Async(asyncResult);
+			GetByte2(BAsyncResultHelper.ToDelegate<IDictionary<int,byte[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte2Async(BAsyncResult<IDictionary<int,byte[]>> asyncResult) {
+		public void GetByte2(BAsyncResult<IDictionary<int,byte[]>> asyncResult) {
 			BRequest_RemoteMapTypes_getByte2 req = new BRequest_RemoteMapTypes_getByte2();			
-			BAsyncResultReceiveMethod<IDictionary<int,byte[]>> outerResult = new BAsyncResultReceiveMethod<IDictionary<int,byte[]>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetByte2(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<int,byte[]>> _byps_ret = new BAsyncProgModel<IDictionary<int,byte[]>>(callback, state);
-			GetByte2Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<int,byte[]> EndGetByte2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<int,byte[]>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<int,byte[]>> GetByte2Task() {
-			return await Task<IDictionary<int,byte[]>>.Factory.FromAsync(BeginGetByte2, EndGetByte2, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<int,byte[]>> GetByte2Async(){
+			BRequest_RemoteMapTypes_getByte2 req = new BRequest_RemoteMapTypes_getByte2();			
+			Task<IDictionary<int,byte[]>> task = Task<IDictionary<int,byte[]>>.Factory.FromAsync(transport.BeginSend<IDictionary<int,byte[]>>, transport.EndSend<IDictionary<int,byte[]>>, req, null);
+			return await task;
 		}
 		
 		public void SetByte2(IDictionary<int,byte[]> byte2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetByte2Async(byte2, asyncResult);
+			SetByte2(byte2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte2Async(IDictionary<int,byte[]> byte2, BAsyncResult<Object> asyncResult) {
+		public void SetByte2(IDictionary<int,byte[]> byte2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setByte2 req = new BRequest_RemoteMapTypes_setByte2();			
 			req._byte2 = byte2;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetByte2(IDictionary<int,byte[]> byte2, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetByte2Async(byte2, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetByte2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetByte2Task(IDictionary<int,byte[]> byte2) {
-			await Task.Factory.FromAsync(BeginSetByte2, EndSetByte2, byte2, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetByte2Async(IDictionary<int,byte[]> byte2){
+			BRequest_RemoteMapTypes_setByte2 req = new BRequest_RemoteMapTypes_setByte2();			
+			req._byte2 = byte2;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<int,int[]> GetInt2() {
 			BSyncResult<IDictionary<int,int[]>> asyncResult = new BSyncResult<IDictionary<int,int[]>>();			
-			GetInt2Async(asyncResult);
+			GetInt2(BAsyncResultHelper.ToDelegate<IDictionary<int,int[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt2Async(BAsyncResult<IDictionary<int,int[]>> asyncResult) {
+		public void GetInt2(BAsyncResult<IDictionary<int,int[]>> asyncResult) {
 			BRequest_RemoteMapTypes_getInt2 req = new BRequest_RemoteMapTypes_getInt2();			
-			BAsyncResultReceiveMethod<IDictionary<int,int[]>> outerResult = new BAsyncResultReceiveMethod<IDictionary<int,int[]>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetInt2(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<int,int[]>> _byps_ret = new BAsyncProgModel<IDictionary<int,int[]>>(callback, state);
-			GetInt2Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<int,int[]> EndGetInt2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<int,int[]>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<int,int[]>> GetInt2Task() {
-			return await Task<IDictionary<int,int[]>>.Factory.FromAsync(BeginGetInt2, EndGetInt2, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<int,int[]>> GetInt2Async(){
+			BRequest_RemoteMapTypes_getInt2 req = new BRequest_RemoteMapTypes_getInt2();			
+			Task<IDictionary<int,int[]>> task = Task<IDictionary<int,int[]>>.Factory.FromAsync(transport.BeginSend<IDictionary<int,int[]>>, transport.EndSend<IDictionary<int,int[]>>, req, null);
+			return await task;
 		}
 		
 		public void SetInt2(IDictionary<int,int[]> int2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetInt2Async(int2, asyncResult);
+			SetInt2(int2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt2Async(IDictionary<int,int[]> int2, BAsyncResult<Object> asyncResult) {
+		public void SetInt2(IDictionary<int,int[]> int2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setInt2 req = new BRequest_RemoteMapTypes_setInt2();			
 			req._int2 = int2;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetInt2(IDictionary<int,int[]> int2, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetInt2Async(int2, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetInt2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetInt2Task(IDictionary<int,int[]> int2) {
-			await Task.Factory.FromAsync(BeginSetInt2, EndSetInt2, int2, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetInt2Async(IDictionary<int,int[]> int2){
+			BRequest_RemoteMapTypes_setInt2 req = new BRequest_RemoteMapTypes_setInt2();			
+			req._int2 = int2;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IDictionary<String,Object> GetObj1() {
 			BSyncResult<IDictionary<String,Object>> asyncResult = new BSyncResult<IDictionary<String,Object>>();			
-			GetObj1Async(asyncResult);
+			GetObj1(BAsyncResultHelper.ToDelegate<IDictionary<String,Object>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetObj1Async(BAsyncResult<IDictionary<String,Object>> asyncResult) {
+		public void GetObj1(BAsyncResult<IDictionary<String,Object>> asyncResult) {
 			BRequest_RemoteMapTypes_getObj1 req = new BRequest_RemoteMapTypes_getObj1();			
-			BAsyncResultReceiveMethod<IDictionary<String,Object>> outerResult = new BAsyncResultReceiveMethod<IDictionary<String,Object>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetObj1(AsyncCallback callback, object state){
-			BAsyncProgModel<IDictionary<String,Object>> _byps_ret = new BAsyncProgModel<IDictionary<String,Object>>(callback, state);
-			GetObj1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public IDictionary<String,Object> EndGetObj1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IDictionary<String,Object>>)asyncResult).Result;
-		}
-		public async Task<IDictionary<String,Object>> GetObj1Task() {
-			return await Task<IDictionary<String,Object>>.Factory.FromAsync(BeginGetObj1, EndGetObj1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IDictionary<String,Object>> GetObj1Async(){
+			BRequest_RemoteMapTypes_getObj1 req = new BRequest_RemoteMapTypes_getObj1();			
+			Task<IDictionary<String,Object>> task = Task<IDictionary<String,Object>>.Factory.FromAsync(transport.BeginSend<IDictionary<String,Object>>, transport.EndSend<IDictionary<String,Object>>, req, null);
+			return await task;
 		}
 		
 		public void SetObj1(IDictionary<String,Object> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetObj1Async(obj1, asyncResult);
+			SetObj1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetObj1Async(IDictionary<String,Object> obj1, BAsyncResult<Object> asyncResult) {
+		public void SetObj1(IDictionary<String,Object> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setObj1 req = new BRequest_RemoteMapTypes_setObj1();			
 			req._obj1 = obj1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetObj1(IDictionary<String,Object> obj1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetObj1Async(obj1, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetObj1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetObj1Task(IDictionary<String,Object> obj1) {
-			await Task.Factory.FromAsync(BeginSetObj1, EndSetObj1, obj1, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetObj1Async(IDictionary<String,Object> obj1){
+			BRequest_RemoteMapTypes_setObj1 req = new BRequest_RemoteMapTypes_setObj1();			
+			req._obj1 = obj1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		

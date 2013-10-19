@@ -5,8 +5,44 @@ using System.Text;
 
 namespace com.wilutions.byps
 {
-    public interface BAsyncResult<T>
+    public delegate void BAsyncResult<T>(T obj, Exception e);
+
+    public interface BAsyncResultIF<T>
     {
         void setAsyncResult(T obj, Exception e);
     }
+
+    public class BAsyncResultCallDelegate<T> : BAsyncResultIF<T>
+    {
+        private BAsyncResult<T> fnct;
+
+        public BAsyncResultCallDelegate(BAsyncResult<T> fnct)
+        {
+            this.fnct = fnct;
+        }
+
+        public void setAsyncResult(T obj, Exception e)
+        {
+            this.fnct(obj, e);
+        }
+    }
+    public class BAsyncResultHelper
+    {
+        public static BAsyncResult<T> ToDelegate<T>(BAsyncResultIF<T> asyncResult)
+        {
+            return (T obj, Exception e) =>
+            {
+                asyncResult.setAsyncResult(obj, e);
+            };
+        }
+
+        public static BAsyncResultIF<T> FromDelegate<T>(BAsyncResult<T> asyncResult)
+        {
+            return new BAsyncResultCallDelegate<T>(asyncResult);
+        }
+    }
+
+
+
+    
 }

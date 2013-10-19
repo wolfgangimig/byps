@@ -38,4 +38,6 @@ public interface RemotePrimitiveTypes extends BRemote {
 	public void sendAllTypes(boolean b, char c, short s, int i, long l, float f, double d, String str, PrimitiveTypes pt, Object o) throws RemoteException;
 	
 	public int add(int a, int b) throws RemoteException;
+	
+	 public void throwException() throws RemoteException;
 }

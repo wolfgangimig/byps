@@ -368,5 +368,19 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		}
 	}
 	
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
+	public void throwException() throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
+	public void throwException(final BAsyncResult<Object> asyncResult) {
+		try {
+			throwException();
+			asyncResult.setAsyncResult(null, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
 	
 }

@@ -15,206 +15,158 @@ namespace com.wilutions.byps.test.api.srvr
 		
 		public int CallClientIncrementInt(int v) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
-			CallClientIncrementIntAsync(v, asyncResult);
+			CallClientIncrementInt(v, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void CallClientIncrementIntAsync(int v, BAsyncResult<int> asyncResult) {
+		public void CallClientIncrementInt(int v, BAsyncResult<int> asyncResult) {
 			BRequest_ServerIF_callClientIncrementInt req = new BRequest_ServerIF_callClientIncrementInt();			
 			req._v = v;
-			BAsyncResultReceiveMethod<int> outerResult = new BAsyncResultReceiveMethod<int>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginCallClientIncrementInt(int v, AsyncCallback callback, object state){
-			BAsyncProgModel<int> _byps_ret = new BAsyncProgModel<int>(callback, state);
-			CallClientIncrementIntAsync(v, _byps_ret);
-			return _byps_ret;
-		}
-		public int EndCallClientIncrementInt(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<int>)asyncResult).Result;
-		}
-		public async Task<int> CallClientIncrementIntTask(int v) {
-			return await Task<int>.Factory.FromAsync(BeginCallClientIncrementInt, EndCallClientIncrementInt, v, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<int> CallClientIncrementIntAsync(int v){
+			BRequest_ServerIF_callClientIncrementInt req = new BRequest_ServerIF_callClientIncrementInt();			
+			req._v = v;
+			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
+			return await task;
 		}
 		
 		public void SetPartner(ClientIF client) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetPartnerAsync(client, asyncResult);
+			SetPartner(client, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPartnerAsync(ClientIF client, BAsyncResult<Object> asyncResult) {
+		public void SetPartner(ClientIF client, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_setPartner req = new BRequest_ServerIF_setPartner();			
 			req._client = client;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetPartner(ClientIF client, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetPartnerAsync(client, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetPartner(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetPartnerTask(ClientIF client) {
-			await Task.Factory.FromAsync(BeginSetPartner, EndSetPartner, client, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetPartnerAsync(ClientIF client){
+			BRequest_ServerIF_setPartner req = new BRequest_ServerIF_setPartner();			
+			req._client = client;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public ClientIF GetPartner() {
 			BSyncResult<ClientIF> asyncResult = new BSyncResult<ClientIF>();			
-			GetPartnerAsync(asyncResult);
+			GetPartner(BAsyncResultHelper.ToDelegate<ClientIF>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPartnerAsync(BAsyncResult<ClientIF> asyncResult) {
+		public void GetPartner(BAsyncResult<ClientIF> asyncResult) {
 			BRequest_ServerIF_getPartner req = new BRequest_ServerIF_getPartner();			
-			BAsyncResultReceiveMethod<ClientIF> outerResult = new BAsyncResultReceiveMethod<ClientIF>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetPartner(AsyncCallback callback, object state){
-			BAsyncProgModel<ClientIF> _byps_ret = new BAsyncProgModel<ClientIF>(callback, state);
-			GetPartnerAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public ClientIF EndGetPartner(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<ClientIF>)asyncResult).Result;
-		}
-		public async Task<ClientIF> GetPartnerTask() {
-			return await Task<ClientIF>.Factory.FromAsync(BeginGetPartner, EndGetPartner, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<ClientIF> GetPartnerAsync(){
+			BRequest_ServerIF_getPartner req = new BRequest_ServerIF_getPartner();			
+			Task<ClientIF> task = Task<ClientIF>.Factory.FromAsync(transport.BeginSend<ClientIF>, transport.EndSend<ClientIF>, req, null);
+			return await task;
 		}
 		
 		public IList<System.IO.Stream> GetStreamsFromClient() {
 			BSyncResult<IList<System.IO.Stream>> asyncResult = new BSyncResult<IList<System.IO.Stream>>();			
-			GetStreamsFromClientAsync(asyncResult);
+			GetStreamsFromClient(BAsyncResultHelper.ToDelegate<IList<System.IO.Stream>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetStreamsFromClientAsync(BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+		public void GetStreamsFromClient(BAsyncResult<IList<System.IO.Stream>> asyncResult) {
 			BRequest_ServerIF_getStreamsFromClient req = new BRequest_ServerIF_getStreamsFromClient();			
-			BAsyncResultReceiveMethod<IList<System.IO.Stream>> outerResult = new BAsyncResultReceiveMethod<IList<System.IO.Stream>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetStreamsFromClient(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<System.IO.Stream>> _byps_ret = new BAsyncProgModel<IList<System.IO.Stream>>(callback, state);
-			GetStreamsFromClientAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public IList<System.IO.Stream> EndGetStreamsFromClient(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<System.IO.Stream>>)asyncResult).Result;
-		}
-		public async Task<IList<System.IO.Stream>> GetStreamsFromClientTask() {
-			return await Task<IList<System.IO.Stream>>.Factory.FromAsync(BeginGetStreamsFromClient, EndGetStreamsFromClient, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<System.IO.Stream>> GetStreamsFromClientAsync(){
+			BRequest_ServerIF_getStreamsFromClient req = new BRequest_ServerIF_getStreamsFromClient();			
+			Task<IList<System.IO.Stream>> task = Task<IList<System.IO.Stream>>.Factory.FromAsync(transport.BeginSend<IList<System.IO.Stream>>, transport.EndSend<IList<System.IO.Stream>>, req, null);
+			return await task;
 		}
 		
 		public void PutStreamsOnClient(IList<System.IO.Stream> streams) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			PutStreamsOnClientAsync(streams, asyncResult);
+			PutStreamsOnClient(streams, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void PutStreamsOnClientAsync(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) {
+		public void PutStreamsOnClient(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_putStreamsOnClient req = new BRequest_ServerIF_putStreamsOnClient();			
 			req._streams = streams;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginPutStreamsOnClient(IList<System.IO.Stream> streams, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			PutStreamsOnClientAsync(streams, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndPutStreamsOnClient(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task PutStreamsOnClientTask(IList<System.IO.Stream> streams) {
-			await Task.Factory.FromAsync(BeginPutStreamsOnClient, EndPutStreamsOnClient, streams, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task PutStreamsOnClientAsync(IList<System.IO.Stream> streams){
+			BRequest_ServerIF_putStreamsOnClient req = new BRequest_ServerIF_putStreamsOnClient();			
+			req._streams = streams;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public void RegisterWithClientMap(int id) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			RegisterWithClientMapAsync(id, asyncResult);
+			RegisterWithClientMap(id, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void RegisterWithClientMapAsync(int id, BAsyncResult<Object> asyncResult) {
+		public void RegisterWithClientMap(int id, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_registerWithClientMap req = new BRequest_ServerIF_registerWithClientMap();			
 			req._id = id;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginRegisterWithClientMap(int id, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			RegisterWithClientMapAsync(id, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndRegisterWithClientMap(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task RegisterWithClientMapTask(int id) {
-			await Task.Factory.FromAsync(BeginRegisterWithClientMap, EndRegisterWithClientMap, id, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task RegisterWithClientMapAsync(int id){
+			BRequest_ServerIF_registerWithClientMap req = new BRequest_ServerIF_registerWithClientMap();			
+			req._id = id;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public ClientIF GetClient(int id) {
 			BSyncResult<ClientIF> asyncResult = new BSyncResult<ClientIF>();			
-			GetClientAsync(id, asyncResult);
+			GetClient(id, BAsyncResultHelper.ToDelegate<ClientIF>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetClientAsync(int id, BAsyncResult<ClientIF> asyncResult) {
+		public void GetClient(int id, BAsyncResult<ClientIF> asyncResult) {
 			BRequest_ServerIF_getClient req = new BRequest_ServerIF_getClient();			
 			req._id = id;
-			BAsyncResultReceiveMethod<ClientIF> outerResult = new BAsyncResultReceiveMethod<ClientIF>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetClient(int id, AsyncCallback callback, object state){
-			BAsyncProgModel<ClientIF> _byps_ret = new BAsyncProgModel<ClientIF>(callback, state);
-			GetClientAsync(id, _byps_ret);
-			return _byps_ret;
-		}
-		public ClientIF EndGetClient(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<ClientIF>)asyncResult).Result;
-		}
-		public async Task<ClientIF> GetClientTask(int id) {
-			return await Task<ClientIF>.Factory.FromAsync(BeginGetClient, EndGetClient, id, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<ClientIF> GetClientAsync(int id){
+			BRequest_ServerIF_getClient req = new BRequest_ServerIF_getClient();			
+			req._id = id;
+			Task<ClientIF> task = Task<ClientIF>.Factory.FromAsync(transport.BeginSend<ClientIF>, transport.EndSend<ClientIF>, req, null);
+			return await task;
 		}
 		
 		public ISet<int> GetClientIds() {
 			BSyncResult<ISet<int>> asyncResult = new BSyncResult<ISet<int>>();			
-			GetClientIdsAsync(asyncResult);
+			GetClientIds(BAsyncResultHelper.ToDelegate<ISet<int>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetClientIdsAsync(BAsyncResult<ISet<int>> asyncResult) {
+		public void GetClientIds(BAsyncResult<ISet<int>> asyncResult) {
 			BRequest_ServerIF_getClientIds req = new BRequest_ServerIF_getClientIds();			
-			BAsyncResultReceiveMethod<ISet<int>> outerResult = new BAsyncResultReceiveMethod<ISet<int>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetClientIds(AsyncCallback callback, object state){
-			BAsyncProgModel<ISet<int>> _byps_ret = new BAsyncProgModel<ISet<int>>(callback, state);
-			GetClientIdsAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public ISet<int> EndGetClientIds(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<ISet<int>>)asyncResult).Result;
-		}
-		public async Task<ISet<int>> GetClientIdsTask() {
-			return await Task<ISet<int>>.Factory.FromAsync(BeginGetClientIds, EndGetClientIds, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<ISet<int>> GetClientIdsAsync(){
+			BRequest_ServerIF_getClientIds req = new BRequest_ServerIF_getClientIds();			
+			Task<ISet<int>> task = Task<ISet<int>>.Factory.FromAsync(transport.BeginSend<ISet<int>>, transport.EndSend<ISet<int>>, req, null);
+			return await task;
 		}
 		
 		public int CallClientParallel(int v) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
-			CallClientParallelAsync(v, asyncResult);
+			CallClientParallel(v, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void CallClientParallelAsync(int v, BAsyncResult<int> asyncResult) {
+		public void CallClientParallel(int v, BAsyncResult<int> asyncResult) {
 			BRequest_ServerIF_callClientParallel req = new BRequest_ServerIF_callClientParallel();			
 			req._v = v;
-			BAsyncResultReceiveMethod<int> outerResult = new BAsyncResultReceiveMethod<int>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginCallClientParallel(int v, AsyncCallback callback, object state){
-			BAsyncProgModel<int> _byps_ret = new BAsyncProgModel<int>(callback, state);
-			CallClientParallelAsync(v, _byps_ret);
-			return _byps_ret;
-		}
-		public int EndCallClientParallel(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<int>)asyncResult).Result;
-		}
-		public async Task<int> CallClientParallelTask(int v) {
-			return await Task<int>.Factory.FromAsync(BeginCallClientParallel, EndCallClientParallel, v, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<int> CallClientParallelAsync(int v){
+			BRequest_ServerIF_callClientParallel req = new BRequest_ServerIF_callClientParallel();			
+			req._v = v;
+			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
+			return await task;
 		}
 		
 		

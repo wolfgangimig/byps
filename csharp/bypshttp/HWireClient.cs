@@ -20,18 +20,18 @@ namespace com.wilutions.byps
             this._testAdapter = new HTestAdapter(this);
         }
 
-	    private class AsyncResultAfterAllRequests : BAsyncResult<BMessage> 
+        private class AsyncResultAfterAllRequests : BAsyncResultIF<BMessage> 
         {
             readonly HWireClient wire;
             readonly long messageId;
-		    BAsyncResult<BMessage> innerResult;
+            BAsyncResultIF<BMessage> innerResult;
             int nbOfOutstandingResults;
             int nbOfResults;
             BMessage result;
 		    Exception ex;
             private Log log = LogFactory.getLog(typeof(AsyncResultAfterAllRequests));
 
-            public AsyncResultAfterAllRequests(HWireClient wire, long messageId, BAsyncResult<BMessage> asyncResult, int nbOfRequests)
+            public AsyncResultAfterAllRequests(HWireClient wire, long messageId, BAsyncResultIF<BMessage> asyncResult, int nbOfRequests)
             {
                 this.wire = wire;
                 this.messageId = messageId;
@@ -93,17 +93,17 @@ namespace com.wilutions.byps
 
 	    }
 
-        public override void send(BMessage msg, BAsyncResult<BMessage> asyncResult)
+        public override void send(BMessage msg, BAsyncResultIF<BMessage> asyncResult)
         {
             internalSend(msg, asyncResult);
         }
 
-        public override void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult)
+        public override void sendR(BMessage msg, BAsyncResultIF<BMessage> asyncResult)
         {
             internalSend(msg, asyncResult);
         }
 
-        protected void internalSend(BMessage msg, BAsyncResult<BMessage> asyncResult)
+        protected void internalSend(BMessage msg, BAsyncResultIF<BMessage> asyncResult)
         {
 		    if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
 
@@ -116,7 +116,7 @@ namespace com.wilutions.byps
 		
 		    // If the BMessage contains streams, the given asyncResult is wrapped into an
 		    // outerResult in order to pass only the first exception to the caller. 
-		    BAsyncResult<BMessage> outerResult = asyncResult;
+            BAsyncResultIF<BMessage> outerResult = asyncResult;
 		    if (nbOfRequests > 1) {
 			    if (log.isDebugEnabled()) log.debug("wrap asyncResult");
 			    outerResult = new AsyncResultAfterAllRequests(this, msg.header.messageId, asyncResult, nbOfRequests);
@@ -146,11 +146,13 @@ namespace com.wilutions.byps
 		    if (log.isDebugEnabled()) log.debug(")send");
 	    }
 
-	    public override void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult1) {
+        public override void putStreams(List<BStreamRequest> streamRequests, BAsyncResultIF<BMessage> asyncResult1)
+        {
 		    throw new InvalidOperationException("putStreams is only for the server side");
 	    }
-	
-	    public RequestToCancel createRequestForMessage(BMessage msg, BAsyncResult<BMessage> asyncResult) {
+
+        public RequestToCancel createRequestForMessage(BMessage msg, BAsyncResultIF<BMessage> asyncResult)
+        {
             ERequestDirection requestDirection = ERequestDirection.FORWARD;
             int timeout = this.timeoutMillisClient;
 
@@ -177,7 +179,7 @@ namespace com.wilutions.byps
 		    return r;
 	    }
 
-        public RequestToCancel createRequestForPutStream(long messageId, BStreamRequest streamRequest, BAsyncResult<BMessage> asyncResult)
+        public RequestToCancel createRequestForPutStream(long messageId, BStreamRequest streamRequest, BAsyncResultIF<BMessage> asyncResult)
         {
             RequestToCancel r = new RequestToCancel(this, 
                 ERequestDirection.FORWARD, 
@@ -193,7 +195,7 @@ namespace com.wilutions.byps
 		    return r;
 	    }
 
-        public RequestToCancel createRequestForGetStream(long messageId, long streamId, BAsyncResult<BMessage> asyncResult)
+        public RequestToCancel createRequestForGetStream(long messageId, long streamId, BAsyncResultIF<BMessage> asyncResult)
         {
             RequestToCancel r = new RequestToCancel(this, ERequestDirection.FORWARD, messageId, null, null, streamId, 0L, 
                 timeoutMillisClient, timeoutMillisClient, asyncResult);
@@ -201,7 +203,8 @@ namespace com.wilutions.byps
 		    return r;
 	    }
 
-        protected class CancelResult : BAsyncResult<BMessage> {
+        protected class CancelResult : BAsyncResultIF<BMessage>
+        {
 			public void setAsyncResult(BMessage msg, Exception e) {}
         }
 
@@ -448,7 +451,7 @@ namespace com.wilutions.byps
             cookieJar = conn.CookieContainer;
         }
 
-        protected class MyInputStream : InputStreamWrapper, BAsyncResult<BMessage>
+        protected class MyInputStream : InputStreamWrapper, BAsyncResultIF<BMessage>
         {
             Exception ex;
             RequestToCancel request;
@@ -557,7 +560,7 @@ namespace com.wilutions.byps
 		    }
         }
 
-        public class RequestToCancel : BAsyncResult<ByteBuffer>
+        public class RequestToCancel : BAsyncResultIF<ByteBuffer>
         {
             private Log log = LogFactory.getLog(typeof(RequestToCancel));
             public readonly long messageId;
@@ -565,7 +568,7 @@ namespace com.wilutions.byps
             public readonly ByteBuffer buf;
             public readonly BStreamRequest streamRequest;
             public readonly long cancelMessageId;
-            public readonly BAsyncResult<BMessage> asyncResult;
+            public readonly BAsyncResultIF<BMessage> asyncResult;
             public readonly HWireClient wire;
             public readonly int timeoutMillisClient;
             public readonly int timeoutMillisRequest;
@@ -587,7 +590,7 @@ namespace com.wilutions.byps
                 long cancelMessageId, 
                 int timeoutMillisClient, 
                 int timeoutMillisRequest,
-                BAsyncResult<BMessage> asyncResult) 
+                BAsyncResultIF<BMessage> asyncResult) 
             {
                 this.wire = wire;
                 this.requestDirection = requestDirection;

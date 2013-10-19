@@ -15,114 +15,86 @@ namespace com.wilutions.byps.test.api.ver
 		
 		public void SetEvolve(Evolve obj) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetEvolveAsync(obj, asyncResult);
+			SetEvolve(obj, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetEvolveAsync(Evolve obj, BAsyncResult<Object> asyncResult) {
+		public void SetEvolve(Evolve obj, BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();			
 			req._obj = obj;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetEvolve(Evolve obj, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetEvolveAsync(obj, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetEvolve(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetEvolveTask(Evolve obj) {
-			await Task.Factory.FromAsync(BeginSetEvolve, EndSetEvolve, obj, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetEvolveAsync(Evolve obj){
+			BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();			
+			req._obj = obj;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public Evolve GetEvolve() {
 			BSyncResult<Evolve> asyncResult = new BSyncResult<Evolve>();			
-			GetEvolveAsync(asyncResult);
+			GetEvolve(BAsyncResultHelper.ToDelegate<Evolve>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetEvolveAsync(BAsyncResult<Evolve> asyncResult) {
+		public void GetEvolve(BAsyncResult<Evolve> asyncResult) {
 			BRequest_EvolveIF_getEvolve req = new BRequest_EvolveIF_getEvolve();			
-			BAsyncResultReceiveMethod<Evolve> outerResult = new BAsyncResultReceiveMethod<Evolve>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetEvolve(AsyncCallback callback, object state){
-			BAsyncProgModel<Evolve> _byps_ret = new BAsyncProgModel<Evolve>(callback, state);
-			GetEvolveAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public Evolve EndGetEvolve(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Evolve>)asyncResult).Result;
-		}
-		public async Task<Evolve> GetEvolveTask() {
-			return await Task<Evolve>.Factory.FromAsync(BeginGetEvolve, EndGetEvolve, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<Evolve> GetEvolveAsync(){
+			BRequest_EvolveIF_getEvolve req = new BRequest_EvolveIF_getEvolve();			
+			Task<Evolve> task = Task<Evolve>.Factory.FromAsync(transport.BeginSend<Evolve>, transport.EndSend<Evolve>, req, null);
+			return await task;
 		}
 		
 		public void SetClient(EvolveIF partner) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetClientAsync(partner, asyncResult);
+			SetClient(partner, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetClientAsync(EvolveIF partner, BAsyncResult<Object> asyncResult) {
+		public void SetClient(EvolveIF partner, BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();			
 			req._partner = partner;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetClient(EvolveIF partner, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetClientAsync(partner, _byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSetClient(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SetClientTask(EvolveIF partner) {
-			await Task.Factory.FromAsync(BeginSetClient, EndSetClient, partner, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetClientAsync(EvolveIF partner){
+			BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();			
+			req._partner = partner;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public EvolveIF GetClient() {
 			BSyncResult<EvolveIF> asyncResult = new BSyncResult<EvolveIF>();			
-			GetClientAsync(asyncResult);
+			GetClient(BAsyncResultHelper.ToDelegate<EvolveIF>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetClientAsync(BAsyncResult<EvolveIF> asyncResult) {
+		public void GetClient(BAsyncResult<EvolveIF> asyncResult) {
 			BRequest_EvolveIF_getClient req = new BRequest_EvolveIF_getClient();			
-			BAsyncResultReceiveMethod<EvolveIF> outerResult = new BAsyncResultReceiveMethod<EvolveIF>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetClient(AsyncCallback callback, object state){
-			BAsyncProgModel<EvolveIF> _byps_ret = new BAsyncProgModel<EvolveIF>(callback, state);
-			GetClientAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public EvolveIF EndGetClient(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<EvolveIF>)asyncResult).Result;
-		}
-		public async Task<EvolveIF> GetClientTask() {
-			return await Task<EvolveIF>.Factory.FromAsync(BeginGetClient, EndGetClient, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<EvolveIF> GetClientAsync(){
+			BRequest_EvolveIF_getClient req = new BRequest_EvolveIF_getClient();			
+			Task<EvolveIF> task = Task<EvolveIF>.Factory.FromAsync(transport.BeginSend<EvolveIF>, transport.EndSend<EvolveIF>, req, null);
+			return await task;
 		}
 		
 		public void SendEvolveToClient() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SendEvolveToClientAsync(asyncResult);
+			SendEvolveToClient(BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SendEvolveToClientAsync(BAsyncResult<Object> asyncResult) {
+		public void SendEvolveToClient(BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_sendEvolveToClient req = new BRequest_EvolveIF_sendEvolveToClient();			
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSendEvolveToClient(AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SendEvolveToClientAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public Object EndSendEvolveToClient(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
-		}
-		public async Task SendEvolveToClientTask() {
-			await Task.Factory.FromAsync(BeginSendEvolveToClient, EndSendEvolveToClient, null);
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SendEvolveToClientAsync(){
+			BRequest_EvolveIF_sendEvolveToClient req = new BRequest_EvolveIF_sendEvolveToClient();			
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		

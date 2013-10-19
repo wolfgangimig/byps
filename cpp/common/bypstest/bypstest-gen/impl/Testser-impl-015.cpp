@@ -646,6 +646,18 @@ void BStub_RemotePrimitiveTypes::add(int32_t a, int32_t b, ::std::function< void
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, com::wilutions::byps::test::api::BResult_5 >(asyncResult) );
 	transport->send(req, outerResult);
 }
+void BStub_RemotePrimitiveTypes::throwException()  {
+	BSyncResultT< bool > syncResult;	
+	throwException([&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemotePrimitiveTypes::throwException(::std::function< void (bool, BException ex) > asyncResult)  {
+	PSerializable req(new BRequest_RemotePrimitiveTypes_throwException());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, com::wilutions::byps::test::api::BResult_19 >(asyncResult) );
+	transport->send(req, outerResult);
+}
 }}}}}}
 
 // checkpoint com.wilutions.byps.gen.cpp.GenRemoteStub:225
