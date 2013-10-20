@@ -116,9 +116,40 @@ public abstract class BContentStream extends InputStream {
 		return lifetimeMillis;
 	}
 	
+	/**
+	 * Get the callback interface for asynchronous processing.
+	 * This function is for internal use only.
+	 * @return Callback interface
+	 */
+	public BContentStreamAsyncCallback getAsyncCallback() {
+	  return callback;
+	}
+	
+	/**
+	 * Assign a callback interface to the given stream.
+	 * Only streams returned from API calls can be used as a parameter.
+	 * @param is InputStream object returned from an API call. 
+	 * @param cb Callback interface
+	 * @throws IOException
+	 */
+	public static void assignAsyncCallback(InputStream is, BContentStreamAsyncCallback cb) throws IOException {
+	  if (is instanceof BContentStream) {
+  	  BContentStream me = ((BContentStream)is);
+  	  me.setAsyncCallback(cb);
+	  }
+	  else {
+	    throw new BException(BExceptionC.INTERNAL, "The given stream is not an instance of BContentStream.");
+	  }
+	}
+	
+	protected void setAsyncCallback(BContentStreamAsyncCallback cb) throws IOException {
+	  this.callback = cb;
+	}
+	
 	private volatile long bestBefore;
 	protected final long lifetimeMillis;
 	protected volatile String contentType;
 	protected volatile long contentLength;
 
+	protected volatile BContentStreamAsyncCallback callback;
 }

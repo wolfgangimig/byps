@@ -17,4 +17,10 @@ public interface HConfig {
 
   String getServerUrl(Integer serverId);
 
+  public String getValue(String key, String defaultValue);
+
+  public int getValue(String key, int defaultValue);
+
+  public boolean getValue(String key, boolean defaultValue);
+  
 }

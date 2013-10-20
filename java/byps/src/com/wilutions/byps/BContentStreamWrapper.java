@@ -55,6 +55,11 @@ public class BContentStreamWrapper extends BContentStream {
 		return -1L;
 	}
 	
+  protected void setAsyncCallback(BContentStreamAsyncCallback cb) throws IOException {
+    super.setAsyncCallback(cb);
+    ensureStream();
+  }
+  	
 	protected InputStream openStream() throws IOException {
 		return this.innerStream;
 	}

@@ -72,45 +72,6 @@ public class BypsServlet extends HHttpServlet {
   }
 
   @Override
-  public void init() throws ServletException {
-    super.init();
-
-    String logLevel = config.getValue("bypshttp.log.level", "WARN");
-    String logFile = config.getValue("bypshttp.log.file", null);
-
-    if (logFile != null) {
-      logFile = logFile.replace('/', File.separatorChar);
-      // Properties props = new Properties();
-      // props.put("log4j.rootLogger=", logLevel + ", FI");
-      // props.put("log4j.appender.FI.File", logFile);
-      // props.put("log4j.appender.FI",
-      // "org.apache.log4j.DailyRollingFileAppender");
-      // props.put("log4j.appender.FI.DatePattern", "'.'yyyy-MM-dd");
-      // props.put("log4j.appender.FI.layout",
-      // "org.apache.log4j.PatternLayout");
-      // props.put("log4j.appender.FI.layout.ConversionPattern",
-      // "%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
-      // props.put("log4j.appender.FI.append", "false");
-      // PropertyConfigurator.configure(props);
-
-      Logger rootLogger = Logger.getRootLogger();
-      Appender ap = rootLogger.getAppender("FI");
-      if (ap != null) {
-        FileAppender fap = (FileAppender) ap;
-        fap.setFile(logFile);
-        fap.activateOptions();
-      }
-
-      if (logLevel.equalsIgnoreCase("DEBUG")) rootLogger.setLevel(Level.DEBUG);
-      if (logLevel.equalsIgnoreCase("INFO")) rootLogger.setLevel(Level.INFO);
-      if (logLevel.equalsIgnoreCase("WARN")) rootLogger.setLevel(Level.WARN);
-      if (logLevel.equalsIgnoreCase("ERROR")) rootLogger.setLevel(Level.ERROR);
-      
-      if (log.isDebugEnabled()) log.debug("Logger opened.");
-    }
-  }
-
-  @Override
   protected HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess,
       BServerRegistry stubRegistry) {
     if (log.isDebugEnabled()) log.debug("createSession(");

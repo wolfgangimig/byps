@@ -32,6 +32,7 @@ import org.apache.commons.logging.LogFactory;
 import com.wilutions.byps.BAsyncResult;
 import com.wilutions.byps.BBufferJson;
 import com.wilutions.byps.BContentStream;
+import com.wilutions.byps.BContentStreamAsyncCallback;
 import com.wilutions.byps.BException;
 import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.BMessage;
@@ -922,10 +923,67 @@ public class HWireClient extends BWire {
 			throwExceptionIf();
 			return super.ensureStream();
 		}
+		
+    @Override
+    protected InputStream openStream() throws IOException {
+      if (log.isDebugEnabled()) log.debug("openStream(");
+      InputStream is = null;
+      
+      final BContentStreamAsyncCallback streamCallback = getAsyncCallback();
+      if (streamCallback != null) {
+            
+        HWireClient.this.threadPool.execute(new Runnable() {
+          
+          @Override
+          public void run() {
+            InputStream is = null;
+            try {
+              is = internalOpenStream();
+              
+              streamCallback.onReceivedContentType(contentType);
+              streamCallback.onReceivedContentLength(contentLength);
+              
+              byte[] buf = new byte[10*1000];
+              int len = 0;
+              boolean succ = true;
+              while ((len = is.read(buf)) != -1) {
+                if (succ) {
+                  succ = streamCallback.onReceivedData(buf, len);
+                }
+              }
+              
+            } catch (Throwable e) {
+              streamCallback.onReceivedException(e);
+            }
+            finally {
+              if (is != null) {
+                try { is.close(); } catch (IOException ignored) {}
+              }
+              streamCallback.onFinished();
+            }
+          }            
+          
+        });
+       
+        // Return empty stream to prevent NPE
+        is = new InputStream() {
+          public int read() throws IOException {
+            return -1;
+          }
+        };
+        
+      }
+      else {
+        
+        is = internalOpenStream();
+      }
+      
+      if (log.isDebugEnabled()) log.debug(")openStream=" + is);
+      return is;
+    }		
 
-		@Override
-		protected InputStream openStream() throws IOException {
-			if (log.isDebugEnabled()) log.debug("openStream(");
+		protected InputStream internalOpenStream() throws IOException {
+			if (log.isDebugEnabled()) log.debug("internalOpenStream(");
 			InputStream is = null;
 			
 			try {
@@ -956,8 +1014,9 @@ public class HWireClient extends BWire {
           }
 				  
 					is = conn.getInputStream();
-					contentType = conn.getContentType();
-					
+	
+					contentType = conn.getContentType();				
+
 					contentLength = -1L;
 					try {
 						String s = conn.getHeaderField("Content-Length");
@@ -966,11 +1025,12 @@ public class HWireClient extends BWire {
 						}
 					}
 					catch (NumberFormatException ex) {}
+                    
 				}
 				catch (IOException e) {
 					if (log.isWarnEnabled()) log.warn("Failed to open stream.", e);
 					is = conn.getErrorStream();
-					bufferFromStream(is, false);
+					bufferFromStream(is, false); // calls is.close()
 					
 					if (log.isDebugEnabled()) log.debug("received http status=" + statusCode); 
 					BException bex = new BException(BExceptionC.IOERROR, "HTTP " + statusCode);
@@ -983,10 +1043,10 @@ public class HWireClient extends BWire {
 			
 			throwExceptionIf();
 
-			if (log.isDebugEnabled()) log.debug(")openStream=" + is);
+			if (log.isDebugEnabled()) log.debug(")internalOpenStream=" + is);
 			return is;
 		}
-		
+				
 		@Override
 		public void close() throws IOException {
 			super.close();
