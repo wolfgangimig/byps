@@ -101,7 +101,7 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 	size_t idxTargetIdBegin = idx;
 	for (; idx < bytes->length && p[idx] != '\"'; idx++) {}
 
-	targetId = BTargetId::parseString(p + idxTargetIdBegin, idx - idxTargetIdBegin);
+	targetId = BTargetId::parseString(std::string(p + idxTargetIdBegin, idx - idxTargetIdBegin));
 
 }
 

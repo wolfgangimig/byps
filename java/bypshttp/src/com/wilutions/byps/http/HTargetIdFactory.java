@@ -13,26 +13,16 @@ public class HTargetIdFactory {
 
 	BTargetId createTargetId() {
 		
-		long v1 = ((long)serverId << 32) | (getRandomLong() & 0xFFFFFFFFL);
+		long v1 = getRandomLong();
 		long v2 = getRandomLong();
 		
-		return new BTargetId(v1, v2);
+		return new BTargetId(serverId, v1, v2);
 	}
 
-	public static int getServerIdFromTargetId(BTargetId targetId) {
-		return (int)(targetId.v1 >> 32);
-	}
-	
 	public int getServerId() {
 		return serverId;
 	}
-	
-	public boolean isSameServer(BTargetId t1, BTargetId t2) {
-		int s1 = getServerIdFromTargetId(t1);
-		int s2 = getServerIdFromTargetId(t2);
-		return s1 == s2;
-	}
-	
+		
 	protected long getRandomLong() {
 	   	// https://www.cigital.com/justice-league-blog/2009/08/14/proper-use-of-javas-securerandom/
 		if (randBestBefore < System.currentTimeMillis()) {
