@@ -171,11 +171,17 @@ public:
 				try {
 					POBJECT obj;
 					result.get(obj);
-					PMessage msg = byps_static_ptr_cast<BMessage>(obj);
+                    if (obj) {
+                        PMessage msg = byps_static_ptr_cast<BMessage>(obj);
 
-					PInput inp = transport->getInput(msg->header, msg->buf);
-					PSerializable sobj = inp->load();
-					innerResult->setAsyncResult(BVariant(sobj));
+                        PInput inp = transport->getInput(msg->header, msg->buf);
+                        PSerializable sobj = inp->load();
+                        innerResult->setAsyncResult(BVariant(sobj));
+                    }
+                    else {
+                        BException ex(EX_CORRUPT, L"Missing message object in result.");
+                        innerResult->setAsyncResult(BVariant(ex));
+                    }
 				}
 				catch (const BException& e) {
 					relogin = internalIsReloginException(e);

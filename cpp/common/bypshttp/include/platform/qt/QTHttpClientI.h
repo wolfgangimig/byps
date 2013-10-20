@@ -35,7 +35,7 @@ class QTHttpRequestBridge : public QObject
     static BLogger log;
 
 public:
-    QTHttpRequestBridge(QNetworkReply* reply, int32_t timeout);
+    QTHttpRequestBridge(QNetworkReply* reply, int32_t timeoutSeconds);
     virtual ~QTHttpRequestBridge() ;
     void done();
 
@@ -66,6 +66,7 @@ public slots:
     void createGetRequest(QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge**);
     void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPost, QTHttpRequestBridge**);
     void createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* streamToPut, QTHttpRequestBridge**);
+    void createPutStreamRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamIO, QTHttpRequestBridge**);
 };
 
 class QTHttpWorkerThread : public QThread
@@ -93,8 +94,33 @@ signals:
     void createGetRequest(QNetworkRequest networkRequest, int32_t timeout, QTHttpRequestBridge**);
     void createPostRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPost, QTHttpRequestBridge**);
     void createPutRequest(QNetworkRequest networkRequest, int32_t timeout, QByteArray* bytesToPut, QTHttpRequestBridge**);
+    void createPutStreamRequest(QNetworkRequest networkRequest, int32_t timeout, QIODevice* streamIO, QTHttpRequestBridge**);
 
 };
+
+class QTPutStreamIODevice : public QIODevice
+{
+    PContentStream strm;
+    Q_OBJECT
+
+public:
+    QTPutStreamIODevice(PContentStream strm, QObject* parent = 0);
+    virtual ~QTPutStreamIODevice();
+
+    bool open(OpenMode mode);
+    void close();
+    bool isSequential() const;
+    virtual qint64 size() const;
+    virtual qint64 bytesAvailable() const;
+
+protected:
+    virtual qint64 readData(char* data, qint64 maxSize);
+    virtual qint64 writeData(const char* , qint64 );
+
+private:
+    Q_DISABLE_COPY(QTPutStreamIODevice)
+};
+
 
 }}}}}
 
