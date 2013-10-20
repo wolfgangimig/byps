@@ -49,7 +49,7 @@ public class BServer {
 		return protocol;
 	}
 	
-	public void recv(BTargetId clientTargetId, Object methodObj, final BAsyncResult<Object> methodResult) throws Throwable {
+	public void recv(BTargetId clientTargetId, Object methodObj, final BAsyncResult<Object> methodResult) {
 		if (log.isDebugEnabled()) log.debug("recv(");
 				
 		try {

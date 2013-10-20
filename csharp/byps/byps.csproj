@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>byps</RootNamespace>
     <AssemblyName>byps</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -61,6 +61,7 @@
     <Compile Include="BInputBin.cs" />
     <Compile Include="BInputS.cs" />
     <Compile Include="BMessage.cs" />
+    <Compile Include="BTaskConstants.cs" />
     <Compile Include="BTestAdapter.cs" />
     <Compile Include="BValueClass.cs" />
     <Compile Include="BSerializer_22.cs" />

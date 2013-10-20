@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace com.wilutions.byps
 {
-    public class BAsyncProgModel<T> : IAsyncResult, BAsyncResult<T>
+    public class BAsyncProgModel<T> : IAsyncResult, BAsyncResultIF<T>
     {
         private readonly object _state;
         private readonly AsyncCallback _callback;

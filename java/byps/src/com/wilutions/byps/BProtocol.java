@@ -38,7 +38,8 @@ public abstract class BProtocol {
 	
 	public abstract BOutput getOutput(BTransport transport, BMessageHeader responseHeader) throws BException;
 
-
 	public abstract BInput getInput(BTransport transport, BMessageHeader header, ByteBuffer buf) throws BException;
+	
+	public abstract BRegistry getRegistry();
 
 }

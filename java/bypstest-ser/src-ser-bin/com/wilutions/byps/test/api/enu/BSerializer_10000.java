@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.enu;
+package com.wilutions.byps.test.api.enu;
 
 /*
  * Serializer for com.wilutions.byps.test.api.enu.UsePlanets

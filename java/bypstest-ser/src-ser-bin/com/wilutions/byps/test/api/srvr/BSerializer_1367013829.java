@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.srvr;
+package com.wilutions.byps.test.api.srvr;
 
 /*
  * Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient

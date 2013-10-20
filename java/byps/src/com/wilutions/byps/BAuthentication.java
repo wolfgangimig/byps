@@ -37,8 +37,15 @@ public interface BAuthentication {
    * Return the object representing the current session.
    * This object will be passed to every request class (e.g. BRequest_functionname) 
    * for remote interfaces tagged with @BSessionParamType.
-   * @return Session object
+   * If the function throws an exception, the isReloginException and maybe the authentication 
+   * functions are called before the current method request is sent.
+   * @param client
+   *          BClient object
+   * @param typeId
+   *          Type ID (serialVersionUID) of the last request class, see {@link #isReloginException(BClient, Throwable, int)}.
+   * @param asyncResult
+   *          This object receives the session object or an exception.
    * @see BMethodRequest#setSession(Object)
    */
-  Object getSession();
+  public void getSession(BClient client, int typeId, BAsyncResult<Object> asyncResult);
 }

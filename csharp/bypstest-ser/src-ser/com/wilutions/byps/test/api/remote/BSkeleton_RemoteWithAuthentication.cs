@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -18,93 +19,139 @@ namespace com.wilutions.byps.test.api.remote
 		public readonly static long serialVersionUID = 1677934392L;
 		
 		public virtual void SetUseAuthentication(bool useAuth) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void SetUseAuthenticationAsync(bool useAuth, BAsyncResult<Object> asyncResult) {
+		public virtual async void SetUseAuthentication(bool useAuth, BAsyncResult<Object> asyncResult) {
+			Object ret = default(Object);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
 				SetUseAuthentication(useAuth);
-				asyncResult.setAsyncResult(null, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(null, e);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				await SetUseAuthenticationAsync(useAuth);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginSetUseAuthentication(bool useAuth, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public Object EndSetUseAuthentication(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		/// <summary>
+		/// Set authentication flag in MySession.
+		/// </summary>
+		public virtual Task SetUseAuthenticationAsync(bool useAuth){
+			return BTaskConstants<Object>.NotImplemented;
 		}
 		
 		public virtual com.wilutions.byps.test.api.auth.SessionInfo Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void LoginAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
+		public virtual async void Login(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
+			com.wilutions.byps.test.api.auth.SessionInfo ret = default(com.wilutions.byps.test.api.auth.SessionInfo);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
-				com.wilutions.byps.test.api.auth.SessionInfo ret = Login(sess, userName, userPwd);
-				asyncResult.setAsyncResult(ret, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(null, e);
+				ret = Login(sess, userName, userPwd);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				ret = await LoginAsync(sess, userName, userPwd);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginLogin(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public com.wilutions.byps.test.api.auth.SessionInfo EndLogin(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		/// <summary>
+		/// Login.
+		/// </summary>
+		/// <remarks>
+		/// Only user "Fritz" is allowed to login.
+		/// </remarks>
+		public virtual Task<com.wilutions.byps.test.api.auth.SessionInfo> LoginAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, String userName, String userPwd){
+			return BTaskConstants<com.wilutions.byps.test.api.auth.SessionInfo>.NotImplemented;
 		}
 		
 		public virtual int Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void DoitAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, BAsyncResult<int> asyncResult) {
+		public virtual async void Doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, BAsyncResult<int> asyncResult) {
+			int ret = default(int);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
-				int ret = Doit(sess, @value);
-				asyncResult.setAsyncResult(ret, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(0, e);
+				ret = Doit(sess, @value);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				ret = await DoitAsync(sess, @value);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginDoit(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public int EndDoit(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		/// <summary>
+		/// Do something.
+		/// </summary>
+		public virtual Task<int> DoitAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, int @value){
+			return BTaskConstants<int>.NotImplemented;
 		}
 		
 		public virtual void Expire(com.wilutions.byps.test.api.auth.SessionInfo sess) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void ExpireAsync(com.wilutions.byps.test.api.auth.SessionInfo sess, BAsyncResult<Object> asyncResult) {
+		public virtual async void Expire(com.wilutions.byps.test.api.auth.SessionInfo sess, BAsyncResult<Object> asyncResult) {
+			Object ret = default(Object);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
 				Expire(sess);
-				asyncResult.setAsyncResult(null, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(null, e);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				await ExpireAsync(sess);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginExpire(com.wilutions.byps.test.api.auth.SessionInfo sess, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public Object EndExpire(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		/// <summary>
+		/// Logout
+		/// </summary>
+		public virtual Task ExpireAsync(com.wilutions.byps.test.api.auth.SessionInfo sess){
+			return BTaskConstants<Object>.NotImplemented;
 		}
 		
 		public virtual void SetReloginCount(int count) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void SetReloginCountAsync(int count, BAsyncResult<Object> asyncResult) {
+		public virtual async void SetReloginCount(int count, BAsyncResult<Object> asyncResult) {
+			Object ret = default(Object);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
 				SetReloginCount(count);
-				asyncResult.setAsyncResult(null, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(null, e);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				await SetReloginCountAsync(count);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginSetReloginCount(int count, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public Object EndSetReloginCount(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		/// <summary>
+		/// Set the number of login calls nessesary to login the user.
+		/// </summary>
+		/// <remarks>
+		/// This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+		/// </remarks>
+		public virtual Task SetReloginCountAsync(int count){
+			return BTaskConstants<Object>.NotImplemented;
 		}
 		
 		

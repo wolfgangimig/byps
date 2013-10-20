@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.srvr
@@ -18,75 +19,95 @@ namespace com.wilutions.byps.test.api.srvr
 		public readonly static long serialVersionUID = 1784257353L;
 		
 		public virtual int IncrementInt(int a) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void IncrementIntAsync(int a, BAsyncResult<int> asyncResult) {
+		public virtual async void IncrementInt(int a, BAsyncResult<int> asyncResult) {
+			int ret = default(int);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
-				int ret = IncrementInt(a);
-				asyncResult.setAsyncResult(ret, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(0, e);
+				ret = IncrementInt(a);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				ret = await IncrementIntAsync(a);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginIncrementInt(int a, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public int EndIncrementInt(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		public virtual Task<int> IncrementIntAsync(int a){
+			return BTaskConstants<int>.NotImplemented;
 		}
 		
 		public virtual IList<System.IO.Stream> GetStreams(int ctrl) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void GetStreamsAsync(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+		public virtual async void GetStreams(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+			IList<System.IO.Stream> ret = default(IList<System.IO.Stream>);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
-				IList<System.IO.Stream> ret = GetStreams(ctrl);
-				asyncResult.setAsyncResult(ret, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(null, e);
+				ret = GetStreams(ctrl);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				ret = await GetStreamsAsync(ctrl);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginGetStreams(int ctrl, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public IList<System.IO.Stream> EndGetStreams(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		public virtual Task<IList<System.IO.Stream>> GetStreamsAsync(int ctrl){
+			return BTaskConstants<IList<System.IO.Stream>>.NotImplemented;
 		}
 		
 		public virtual void PutStreams(IList<System.IO.Stream> strm, int ctrl) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void PutStreamsAsync(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
+		public virtual async void PutStreams(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
+			Object ret = default(Object);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
 				PutStreams(strm, ctrl);
-				asyncResult.setAsyncResult(null, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(null, e);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				await PutStreamsAsync(strm, ctrl);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginPutStreams(IList<System.IO.Stream> strm, int ctrl, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public Object EndPutStreams(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		public virtual Task PutStreamsAsync(IList<System.IO.Stream> strm, int ctrl){
+			return BTaskConstants<Object>.NotImplemented;
 		}
 		
 		public virtual ChatStructure SendChat(ChatStructure cs) {
-			throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+			throw new NotImplementedException();
 		}
-		public virtual void SendChatAsync(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
+		public virtual async void SendChat(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
+			ChatStructure ret = default(ChatStructure);
+			Exception ex = null;
+			bool callAsync = false;
 			try {
-				ChatStructure ret = SendChat(cs);
-				asyncResult.setAsyncResult(ret, null);
-			} catch (Exception e) {
-				asyncResult.setAsyncResult(null, e);
+				ret = SendChat(cs);
 			}
+			catch (NotImplementedException) { callAsync = true; }
+			catch (Exception e) { ex = e; }
+			if (callAsync) try {
+				ret = await SendChatAsync(cs);
+			}
+			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { ex = e; }
+			asyncResult(ret, ex);
 		}
-		public IAsyncResult BeginSendChat(ChatStructure cs, AsyncCallback callback, object state) {
-			throw new BException(BExceptionC.INTERNAL, "");
-		}
-		public ChatStructure EndSendChat(IAsyncResult asyncResult) {
-			throw new BException(BExceptionC.INTERNAL, "");
+		public virtual Task<ChatStructure> SendChatAsync(ChatStructure cs){
+			return BTaskConstants<ChatStructure>.NotImplemented;
 		}
 		
 		

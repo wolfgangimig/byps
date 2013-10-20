@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api;
+package com.wilutions.byps.test.api;
 
 /*
  * Serializer for com.wilutions.byps.test.api.BResult_181681714

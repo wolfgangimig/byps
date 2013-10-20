@@ -28,6 +28,34 @@ namespace bypstest
         }
 
         [TestMethod]
+        public void TestAsyncThrowException()
+        {
+            log.info("TestAsyncThrowException(");
+            EventWaitHandle waitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
+            internalTestThrowException(waitHandle);
+            waitHandle.WaitOne();
+            log.info(")TestAsyncThrowException");
+        }
+
+        public async void internalTestThrowException(EventWaitHandle waitHandle)
+        {
+
+            try
+            {
+                await remote.ThrowExceptionAsync();
+                TestUtils.fail(log, "Exception expected");
+            }
+            catch (Exception ex)
+            {
+                TestUtils.assertEquals(log, "Exception message wrong", true, ex.ToString().IndexOf("throwException") >= 0);
+            }
+            finally
+            {
+                waitHandle.Set();
+            }
+        }
+ 
+         [TestMethod]
         public void TestAsyncTaskBased()
         {
             log.info("TestAsyncTaskBased(");
@@ -56,71 +84,21 @@ namespace bypstest
         {
             log.info("internalTestAsyncTaskBased(");
 
-            log.info("start taskSetInt");
-            Task<Object> taskSetInt = Task<Object>.Factory.FromAsync(remote.BeginSetInt, remote.EndSetInt, value, null);
             log.info("await taskSetInt");
-            await taskSetInt;
+            await remote.SetIntAsync(value);
             log.info("await taskSetInt OK");
 
-            log.info("start taskGetInt");
-            Task<int> taskGetInt = Task<int>.Factory.FromAsync(remote.BeginGetInt, remote.EndGetInt, null);
             log.info("await taskGetInt");
-            refValueR[0] = await taskGetInt;
+            refValueR[0] = await remote.GetIntAsync();
             log.info("valueR=" + refValueR[0]);
+
+            TestUtils.assertEquals(log, "get/setInt", value, refValueR[0]);
 
             waitHandle.Set();
             
             log.info(")internalTestAsyncTaskBased");
         }
 
-        [TestMethod]
-        public void TestAsyncProgrammingModel()
-        {
-            log.info("TestAsyncProgrammingModel(");
-            internalTestAsyncPrimitiveTypesAPR();
-            log.info(")TestAsyncProgrammingModel");
-        }
-
-        public void internalTestAsyncPrimitiveTypesAPR()
-        {
-            log.info("internalTestAsyncPrimitiveTypesAPR(");
-            int value = 556;
-            EventWaitHandle waitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
-            int valueR = 0;
-
-            remote.BeginSetInt(
-                value,
-                delegate(IAsyncResult asyncResult)
-                {
-                    log.info("delegate BeginSetInt(state=" + asyncResult.AsyncState);
-
-                    remote.BeginGetInt(
-                        delegate(IAsyncResult getIntResult)
-                        {
-                            log.info("delegate BeginGetInt(state=" + getIntResult.AsyncState);
-
-                            valueR = remote.EndGetInt(getIntResult);
-                            log.info("valueR=" + valueR);
-
-                            waitHandle.Set();
-
-                            log.info(")delegate BeginGetInt");
-                        },
-                        "getintstate"
-                        );
-
-                    log.info(")delegate BeginSetInt");
-                }, 
-                "setintstate"
-            );
-
-            waitHandle.WaitOne();
-
-            TestUtils.assertEquals(log, "get/setInt", value, valueR);
-
-        }
-
-
-     }
+      }
 
 }

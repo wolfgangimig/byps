@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.ver;
+package com.wilutions.byps.test.api.ver;
 
 /*
  * 
@@ -18,11 +18,11 @@ public class BSkeleton_EvolveIF extends BSkeleton implements EvolveIFAsync {
 	
 	public final static long serialVersionUID = 2078696281L;
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setEvolve(Evolve obj) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) {
 		try {
 			setEvolve(obj);
@@ -32,11 +32,11 @@ public class BSkeleton_EvolveIF extends BSkeleton implements EvolveIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public Evolve getEvolve() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getEvolve(final BAsyncResult<Evolve> asyncResult) {
 		try {
 			Evolve ret = getEvolve();
@@ -46,11 +46,11 @@ public class BSkeleton_EvolveIF extends BSkeleton implements EvolveIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setClient(EvolveIF partner) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) {
 		try {
 			setClient(partner);
@@ -60,11 +60,11 @@ public class BSkeleton_EvolveIF extends BSkeleton implements EvolveIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public EvolveIF getClient() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getClient(final BAsyncResult<EvolveIF> asyncResult) {
 		try {
 			EvolveIF ret = getClient();
@@ -74,11 +74,11 @@ public class BSkeleton_EvolveIF extends BSkeleton implements EvolveIFAsync {
 		}
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void sendEvolveToClient() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void sendEvolveToClient(final BAsyncResult<Object> asyncResult) {
 		try {
 			sendEvolveToClient();

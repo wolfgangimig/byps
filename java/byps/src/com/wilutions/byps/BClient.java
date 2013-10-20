@@ -106,7 +106,7 @@ public abstract class BClient {
 	  }
 
     @Override
-    public void authenticate(BClient client, final BAsyncResult<Boolean> asyncResult) {
+    public void authenticate(BClient ignored, final BAsyncResult<Boolean> asyncResult) {
       
       // The purpose of this outerResult is to start the long-polls
       // after re-login.
@@ -137,7 +137,7 @@ public abstract class BClient {
     }
 
     @Override
-    public boolean isReloginException(BClient client, Throwable ex, int typeId) {
+    public boolean isReloginException(BClient ignored, Throwable ex, int typeId) {
       boolean ret = false;
       if (innerAuth != null) {
         ret = innerAuth.isReloginException(BClient.this, ex, typeId);
@@ -149,12 +149,13 @@ public abstract class BClient {
     }
 
     @Override
-    public Object getSession() {
-      Object ret = null;
+    public void getSession(BClient client, int typeId, BAsyncResult<Object> asyncResult) {
       if (innerAuth != null) {
-        ret = innerAuth.getSession();
+        innerAuth.getSession(BClient.this, typeId, asyncResult);
       }
-      return ret;
+      else {
+        asyncResult.setAsyncResult(null, null);
+      }
     }
 
 	}

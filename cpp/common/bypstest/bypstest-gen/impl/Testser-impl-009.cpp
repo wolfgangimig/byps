@@ -995,17 +995,17 @@ void BSerializer_319593463(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
-// Implementation of class BRequest_RemotePrimitiveTypes_voidFunctionVoid
+// Implementation of class BRequest_RemotePrimitiveTypes_throwException
 // Generated from class com.wilutions.byps.gen.cpp.GenApiClass
 
-com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid::BRequest_RemotePrimitiveTypes_voidFunctionVoid() : BMethodRequest(1341983932) {
+com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException::BRequest_RemotePrimitiveTypes_throwException() : BMethodRequest(1341983932) {
 }
 // checkpoint com.wilutions.byps.gen.cpp.GenApiClass:860
-void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid::serialize(BIO& ar, const BVERSION version) {
+void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException::serialize(BIO& ar, const BVERSION version) {
 }
-void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemotePrimitiveTypes __byps__remoteT = byps_ptr_cast<RemotePrimitiveTypes>(__byps__remote);
-	__byps__remoteT->voidFunctionVoid([__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+	__byps__remoteT->throwException([__byps__asyncResult](bool __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1019,13 +1019,13 @@ void com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_void
 
 // checkpoint com.wilutions.byps.gen.cpp.GenApiClass:917
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-void BSerializer_1856936054(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+void BSerializer_1845930195(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
-		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid*>(p);
+		com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException& r = * dynamic_cast< com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException*>(p);
 		bio & r;
 	} else {
-		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid());
+		pObjS = PSerializable(new com::wilutions::byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException());
 	}
 }
 }}}}}

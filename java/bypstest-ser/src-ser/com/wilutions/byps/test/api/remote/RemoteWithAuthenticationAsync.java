@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * 
@@ -15,9 +15,9 @@ public interface RemoteWithAuthenticationAsync extends BRemote,
 	 * @param useAuth
 	 * @throws RemoteException
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setUseAuthentication(boolean useAuth) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
@@ -29,9 +29,9 @@ public interface RemoteWithAuthenticationAsync extends BRemote,
 	 * @return Session object
 	 * @throws RemoteException
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public com.wilutions.byps.test.api.auth.SessionInfo login(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void login(com.wilutions.byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd, final BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) ;
 	
 	/**
@@ -41,9 +41,9 @@ public interface RemoteWithAuthenticationAsync extends BRemote,
 	 * @return value+1
 	 * @throws RemoteException
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public int doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int value) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void doit(com.wilutions.byps.test.api.auth.SessionInfo sess, int value, final BAsyncResult<Integer> asyncResult) ;
 	
 	/**
@@ -51,9 +51,9 @@ public interface RemoteWithAuthenticationAsync extends BRemote,
 	 * @param sess
 	 * @throws RemoteException
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void expire(com.wilutions.byps.test.api.auth.SessionInfo sess) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void expire(com.wilutions.byps.test.api.auth.SessionInfo sess, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
@@ -62,9 +62,9 @@ public interface RemoteWithAuthenticationAsync extends BRemote,
 	 * @param count
 	 * @throws RemoteException
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setReloginCount(int count) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) ;
 	
 	

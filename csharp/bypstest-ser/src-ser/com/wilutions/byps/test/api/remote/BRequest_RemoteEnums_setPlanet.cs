@@ -17,11 +17,12 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public override int getRemoteId() { return 359349400; }
 		
-		public override void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
+		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
+			// checkpoint com.wilutions.byps.gen.cs.GenApiClass:372
 			try {
 				RemoteEnums __byps__remoteT = (RemoteEnums)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_19());				
-				__byps__remoteT.SetPlanetAsync(_planet, __byps__outerResult);
+				__byps__remoteT.SetPlanet(_planet, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

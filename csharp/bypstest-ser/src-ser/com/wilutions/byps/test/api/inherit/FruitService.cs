@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.inherit
 {
 	
-	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:93
 	public interface FruitService : BRemote, 
 		PlantService {
 	
 		String Squeeze();
-		void SqueezeAsync(BAsyncResult<String> asyncResult) ;
-		IAsyncResult BeginSqueeze(AsyncCallback callback, object state);
-		String EndSqueeze(IAsyncResult asyncResult);
+		void Squeeze(BAsyncResult<String> asyncResult) ;
+		Task<String> SqueezeAsync();
 		
 		
 	}

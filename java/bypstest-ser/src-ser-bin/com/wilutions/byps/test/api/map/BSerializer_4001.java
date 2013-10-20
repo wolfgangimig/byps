@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.map;
+package com.wilutions.byps.test.api.map;
 
 /*
  * Serializer for com.wilutions.byps.test.api.map.MapTypes

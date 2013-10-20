@@ -12,6 +12,6 @@ namespace com.wilutions.byps
 
         bool isReloginException(BClient client, Exception ex, int typeId);
 
-        Object getSession();
+        void getSession(BClient client, int typeId, BAsyncResult<Object> asyncResult);
     }
 }

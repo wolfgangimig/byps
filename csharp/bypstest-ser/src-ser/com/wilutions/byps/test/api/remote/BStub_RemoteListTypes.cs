@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -14,587 +15,512 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public IList<bool> GetBoolean1() {
 			BSyncResult<IList<bool>> asyncResult = new BSyncResult<IList<bool>>();			
-			GetBoolean1Async(asyncResult);
+			GetBoolean1(BAsyncResultHelper.ToDelegate<IList<bool>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetBoolean1Async(BAsyncResult<IList<bool>> asyncResult) {
+		public void GetBoolean1(BAsyncResult<IList<bool>> asyncResult) {
 			BRequest_RemoteListTypes_getBoolean1 req = new BRequest_RemoteListTypes_getBoolean1();			
-			BAsyncResultReceiveMethod<IList<bool>> outerResult = new BAsyncResultReceiveMethod<IList<bool>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetBoolean1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<bool>> _byps_ret = new BAsyncProgModel<IList<bool>>(callback, state);
-			GetBoolean1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<bool> EndGetBoolean1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<bool>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<bool>> GetBoolean1Async(){
+			BRequest_RemoteListTypes_getBoolean1 req = new BRequest_RemoteListTypes_getBoolean1();			
+			Task<IList<bool>> task = Task<IList<bool>>.Factory.FromAsync(transport.BeginSend<IList<bool>>, transport.EndSend<IList<bool>>, req, null);
+			return await task;
 		}
 		
 		public void SetBoolean1(IList<bool> boolean1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetBoolean1Async(boolean1, asyncResult);
+			SetBoolean1(boolean1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetBoolean1Async(IList<bool> boolean1, BAsyncResult<Object> asyncResult) {
+		public void SetBoolean1(IList<bool> boolean1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setBoolean1 req = new BRequest_RemoteListTypes_setBoolean1();			
 			req._boolean1 = boolean1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetBoolean1(IList<bool> boolean1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetBoolean1Async(boolean1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetBoolean1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetBoolean1Async(IList<bool> boolean1){
+			BRequest_RemoteListTypes_setBoolean1 req = new BRequest_RemoteListTypes_setBoolean1();			
+			req._boolean1 = boolean1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<byte> GetByte1() {
 			BSyncResult<IList<byte>> asyncResult = new BSyncResult<IList<byte>>();			
-			GetByte1Async(asyncResult);
+			GetByte1(BAsyncResultHelper.ToDelegate<IList<byte>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte1Async(BAsyncResult<IList<byte>> asyncResult) {
+		public void GetByte1(BAsyncResult<IList<byte>> asyncResult) {
 			BRequest_RemoteListTypes_getByte1 req = new BRequest_RemoteListTypes_getByte1();			
-			BAsyncResultReceiveMethod<IList<byte>> outerResult = new BAsyncResultReceiveMethod<IList<byte>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetByte1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<byte>> _byps_ret = new BAsyncProgModel<IList<byte>>(callback, state);
-			GetByte1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<byte> EndGetByte1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<byte>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<byte>> GetByte1Async(){
+			BRequest_RemoteListTypes_getByte1 req = new BRequest_RemoteListTypes_getByte1();			
+			Task<IList<byte>> task = Task<IList<byte>>.Factory.FromAsync(transport.BeginSend<IList<byte>>, transport.EndSend<IList<byte>>, req, null);
+			return await task;
 		}
 		
 		public void SetByte1(IList<byte> byte1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetByte1Async(byte1, asyncResult);
+			SetByte1(byte1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte1Async(IList<byte> byte1, BAsyncResult<Object> asyncResult) {
+		public void SetByte1(IList<byte> byte1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setByte1 req = new BRequest_RemoteListTypes_setByte1();			
 			req._byte1 = byte1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetByte1(IList<byte> byte1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetByte1Async(byte1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetByte1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetByte1Async(IList<byte> byte1){
+			BRequest_RemoteListTypes_setByte1 req = new BRequest_RemoteListTypes_setByte1();			
+			req._byte1 = byte1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<char> GetChar1() {
 			BSyncResult<IList<char>> asyncResult = new BSyncResult<IList<char>>();			
-			GetChar1Async(asyncResult);
+			GetChar1(BAsyncResultHelper.ToDelegate<IList<char>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetChar1Async(BAsyncResult<IList<char>> asyncResult) {
+		public void GetChar1(BAsyncResult<IList<char>> asyncResult) {
 			BRequest_RemoteListTypes_getChar1 req = new BRequest_RemoteListTypes_getChar1();			
-			BAsyncResultReceiveMethod<IList<char>> outerResult = new BAsyncResultReceiveMethod<IList<char>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetChar1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<char>> _byps_ret = new BAsyncProgModel<IList<char>>(callback, state);
-			GetChar1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<char> EndGetChar1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<char>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<char>> GetChar1Async(){
+			BRequest_RemoteListTypes_getChar1 req = new BRequest_RemoteListTypes_getChar1();			
+			Task<IList<char>> task = Task<IList<char>>.Factory.FromAsync(transport.BeginSend<IList<char>>, transport.EndSend<IList<char>>, req, null);
+			return await task;
 		}
 		
 		public void SetChar1(IList<char> char1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetChar1Async(char1, asyncResult);
+			SetChar1(char1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetChar1Async(IList<char> char1, BAsyncResult<Object> asyncResult) {
+		public void SetChar1(IList<char> char1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setChar1 req = new BRequest_RemoteListTypes_setChar1();			
 			req._char1 = char1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetChar1(IList<char> char1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetChar1Async(char1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetChar1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetChar1Async(IList<char> char1){
+			BRequest_RemoteListTypes_setChar1 req = new BRequest_RemoteListTypes_setChar1();			
+			req._char1 = char1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<short> GetShort1() {
 			BSyncResult<IList<short>> asyncResult = new BSyncResult<IList<short>>();			
-			GetShort1Async(asyncResult);
+			GetShort1(BAsyncResultHelper.ToDelegate<IList<short>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetShort1Async(BAsyncResult<IList<short>> asyncResult) {
+		public void GetShort1(BAsyncResult<IList<short>> asyncResult) {
 			BRequest_RemoteListTypes_getShort1 req = new BRequest_RemoteListTypes_getShort1();			
-			BAsyncResultReceiveMethod<IList<short>> outerResult = new BAsyncResultReceiveMethod<IList<short>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetShort1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<short>> _byps_ret = new BAsyncProgModel<IList<short>>(callback, state);
-			GetShort1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<short> EndGetShort1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<short>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<short>> GetShort1Async(){
+			BRequest_RemoteListTypes_getShort1 req = new BRequest_RemoteListTypes_getShort1();			
+			Task<IList<short>> task = Task<IList<short>>.Factory.FromAsync(transport.BeginSend<IList<short>>, transport.EndSend<IList<short>>, req, null);
+			return await task;
 		}
 		
 		public void SetShort1(IList<short> short1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetShort1Async(short1, asyncResult);
+			SetShort1(short1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetShort1Async(IList<short> short1, BAsyncResult<Object> asyncResult) {
+		public void SetShort1(IList<short> short1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setShort1 req = new BRequest_RemoteListTypes_setShort1();			
 			req._short1 = short1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetShort1(IList<short> short1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetShort1Async(short1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetShort1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetShort1Async(IList<short> short1){
+			BRequest_RemoteListTypes_setShort1 req = new BRequest_RemoteListTypes_setShort1();			
+			req._short1 = short1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<int> GetInt1() {
 			BSyncResult<IList<int>> asyncResult = new BSyncResult<IList<int>>();			
-			GetInt1Async(asyncResult);
+			GetInt1(BAsyncResultHelper.ToDelegate<IList<int>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt1Async(BAsyncResult<IList<int>> asyncResult) {
+		public void GetInt1(BAsyncResult<IList<int>> asyncResult) {
 			BRequest_RemoteListTypes_getInt1 req = new BRequest_RemoteListTypes_getInt1();			
-			BAsyncResultReceiveMethod<IList<int>> outerResult = new BAsyncResultReceiveMethod<IList<int>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetInt1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<int>> _byps_ret = new BAsyncProgModel<IList<int>>(callback, state);
-			GetInt1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<int> EndGetInt1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<int>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<int>> GetInt1Async(){
+			BRequest_RemoteListTypes_getInt1 req = new BRequest_RemoteListTypes_getInt1();			
+			Task<IList<int>> task = Task<IList<int>>.Factory.FromAsync(transport.BeginSend<IList<int>>, transport.EndSend<IList<int>>, req, null);
+			return await task;
 		}
 		
 		public void SetInt1(IList<int> int1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetInt1Async(int1, asyncResult);
+			SetInt1(int1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt1Async(IList<int> int1, BAsyncResult<Object> asyncResult) {
+		public void SetInt1(IList<int> int1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setInt1 req = new BRequest_RemoteListTypes_setInt1();			
 			req._int1 = int1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetInt1(IList<int> int1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetInt1Async(int1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetInt1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetInt1Async(IList<int> int1){
+			BRequest_RemoteListTypes_setInt1 req = new BRequest_RemoteListTypes_setInt1();			
+			req._int1 = int1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<long> GetLong1() {
 			BSyncResult<IList<long>> asyncResult = new BSyncResult<IList<long>>();			
-			GetLong1Async(asyncResult);
+			GetLong1(BAsyncResultHelper.ToDelegate<IList<long>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetLong1Async(BAsyncResult<IList<long>> asyncResult) {
+		public void GetLong1(BAsyncResult<IList<long>> asyncResult) {
 			BRequest_RemoteListTypes_getLong1 req = new BRequest_RemoteListTypes_getLong1();			
-			BAsyncResultReceiveMethod<IList<long>> outerResult = new BAsyncResultReceiveMethod<IList<long>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetLong1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<long>> _byps_ret = new BAsyncProgModel<IList<long>>(callback, state);
-			GetLong1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<long> EndGetLong1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<long>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<long>> GetLong1Async(){
+			BRequest_RemoteListTypes_getLong1 req = new BRequest_RemoteListTypes_getLong1();			
+			Task<IList<long>> task = Task<IList<long>>.Factory.FromAsync(transport.BeginSend<IList<long>>, transport.EndSend<IList<long>>, req, null);
+			return await task;
 		}
 		
 		public void SetLong1(IList<long> long1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetLong1Async(long1, asyncResult);
+			SetLong1(long1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetLong1Async(IList<long> long1, BAsyncResult<Object> asyncResult) {
+		public void SetLong1(IList<long> long1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setLong1 req = new BRequest_RemoteListTypes_setLong1();			
 			req._long1 = long1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetLong1(IList<long> long1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetLong1Async(long1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetLong1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetLong1Async(IList<long> long1){
+			BRequest_RemoteListTypes_setLong1 req = new BRequest_RemoteListTypes_setLong1();			
+			req._long1 = long1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<float> GetFloat1() {
 			BSyncResult<IList<float>> asyncResult = new BSyncResult<IList<float>>();			
-			GetFloat1Async(asyncResult);
+			GetFloat1(BAsyncResultHelper.ToDelegate<IList<float>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetFloat1Async(BAsyncResult<IList<float>> asyncResult) {
+		public void GetFloat1(BAsyncResult<IList<float>> asyncResult) {
 			BRequest_RemoteListTypes_getFloat1 req = new BRequest_RemoteListTypes_getFloat1();			
-			BAsyncResultReceiveMethod<IList<float>> outerResult = new BAsyncResultReceiveMethod<IList<float>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetFloat1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<float>> _byps_ret = new BAsyncProgModel<IList<float>>(callback, state);
-			GetFloat1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<float> EndGetFloat1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<float>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<float>> GetFloat1Async(){
+			BRequest_RemoteListTypes_getFloat1 req = new BRequest_RemoteListTypes_getFloat1();			
+			Task<IList<float>> task = Task<IList<float>>.Factory.FromAsync(transport.BeginSend<IList<float>>, transport.EndSend<IList<float>>, req, null);
+			return await task;
 		}
 		
 		public void SetFloat1(IList<float> float1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetFloat1Async(float1, asyncResult);
+			SetFloat1(float1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetFloat1Async(IList<float> float1, BAsyncResult<Object> asyncResult) {
+		public void SetFloat1(IList<float> float1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setFloat1 req = new BRequest_RemoteListTypes_setFloat1();			
 			req._float1 = float1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetFloat1(IList<float> float1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetFloat1Async(float1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetFloat1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetFloat1Async(IList<float> float1){
+			BRequest_RemoteListTypes_setFloat1 req = new BRequest_RemoteListTypes_setFloat1();			
+			req._float1 = float1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<double> GetDouble1() {
 			BSyncResult<IList<double>> asyncResult = new BSyncResult<IList<double>>();			
-			GetDouble1Async(asyncResult);
+			GetDouble1(BAsyncResultHelper.ToDelegate<IList<double>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDouble1Async(BAsyncResult<IList<double>> asyncResult) {
+		public void GetDouble1(BAsyncResult<IList<double>> asyncResult) {
 			BRequest_RemoteListTypes_getDouble1 req = new BRequest_RemoteListTypes_getDouble1();			
-			BAsyncResultReceiveMethod<IList<double>> outerResult = new BAsyncResultReceiveMethod<IList<double>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetDouble1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<double>> _byps_ret = new BAsyncProgModel<IList<double>>(callback, state);
-			GetDouble1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<double> EndGetDouble1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<double>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<double>> GetDouble1Async(){
+			BRequest_RemoteListTypes_getDouble1 req = new BRequest_RemoteListTypes_getDouble1();			
+			Task<IList<double>> task = Task<IList<double>>.Factory.FromAsync(transport.BeginSend<IList<double>>, transport.EndSend<IList<double>>, req, null);
+			return await task;
 		}
 		
 		public void SetDouble1(IList<double> double1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetDouble1Async(double1, asyncResult);
+			SetDouble1(double1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDouble1Async(IList<double> double1, BAsyncResult<Object> asyncResult) {
+		public void SetDouble1(IList<double> double1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setDouble1 req = new BRequest_RemoteListTypes_setDouble1();			
 			req._double1 = double1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetDouble1(IList<double> double1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetDouble1Async(double1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetDouble1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetDouble1Async(IList<double> double1){
+			BRequest_RemoteListTypes_setDouble1 req = new BRequest_RemoteListTypes_setDouble1();			
+			req._double1 = double1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<String> GetString1() {
 			BSyncResult<IList<String>> asyncResult = new BSyncResult<IList<String>>();			
-			GetString1Async(asyncResult);
+			GetString1(BAsyncResultHelper.ToDelegate<IList<String>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetString1Async(BAsyncResult<IList<String>> asyncResult) {
+		public void GetString1(BAsyncResult<IList<String>> asyncResult) {
 			BRequest_RemoteListTypes_getString1 req = new BRequest_RemoteListTypes_getString1();			
-			BAsyncResultReceiveMethod<IList<String>> outerResult = new BAsyncResultReceiveMethod<IList<String>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetString1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<String>> _byps_ret = new BAsyncProgModel<IList<String>>(callback, state);
-			GetString1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<String> EndGetString1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<String>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<String>> GetString1Async(){
+			BRequest_RemoteListTypes_getString1 req = new BRequest_RemoteListTypes_getString1();			
+			Task<IList<String>> task = Task<IList<String>>.Factory.FromAsync(transport.BeginSend<IList<String>>, transport.EndSend<IList<String>>, req, null);
+			return await task;
 		}
 		
 		public void SetString1(IList<String> string1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetString1Async(string1, asyncResult);
+			SetString1(string1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetString1Async(IList<String> string1, BAsyncResult<Object> asyncResult) {
+		public void SetString1(IList<String> string1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setString1 req = new BRequest_RemoteListTypes_setString1();			
 			req._string1 = string1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetString1(IList<String> string1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetString1Async(string1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetString1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetString1Async(IList<String> string1){
+			BRequest_RemoteListTypes_setString1 req = new BRequest_RemoteListTypes_setString1();			
+			req._string1 = string1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<com.wilutions.byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypes1() {
 			BSyncResult<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult = new BSyncResult<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>();			
-			GetPrimitiveTypes1Async(asyncResult);
+			GetPrimitiveTypes1(BAsyncResultHelper.ToDelegate<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPrimitiveTypes1Async(BAsyncResult<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult) {
+		public void GetPrimitiveTypes1(BAsyncResult<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>> asyncResult) {
 			BRequest_RemoteListTypes_getPrimitiveTypes1 req = new BRequest_RemoteListTypes_getPrimitiveTypes1();			
-			BAsyncResultReceiveMethod<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>> outerResult = new BAsyncResultReceiveMethod<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetPrimitiveTypes1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>> _byps_ret = new BAsyncProgModel<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>(callback, state);
-			GetPrimitiveTypes1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<com.wilutions.byps.test.api.prim.PrimitiveTypes> EndGetPrimitiveTypes1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>> GetPrimitiveTypes1Async(){
+			BRequest_RemoteListTypes_getPrimitiveTypes1 req = new BRequest_RemoteListTypes_getPrimitiveTypes1();			
+			Task<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>> task = Task<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>.Factory.FromAsync(transport.BeginSend<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>, transport.EndSend<IList<com.wilutions.byps.test.api.prim.PrimitiveTypes>>, req, null);
+			return await task;
 		}
 		
 		public void SetPrimitiveTypes1(IList<com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetPrimitiveTypes1Async(primitiveTypes1, asyncResult);
+			SetPrimitiveTypes1(primitiveTypes1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPrimitiveTypes1Async(IList<com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
+		public void SetPrimitiveTypes1(IList<com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setPrimitiveTypes1 req = new BRequest_RemoteListTypes_setPrimitiveTypes1();			
 			req._primitiveTypes1 = primitiveTypes1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetPrimitiveTypes1(IList<com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetPrimitiveTypes1Async(primitiveTypes1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetPrimitiveTypes1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetPrimitiveTypes1Async(IList<com.wilutions.byps.test.api.prim.PrimitiveTypes> primitiveTypes1){
+			BRequest_RemoteListTypes_setPrimitiveTypes1 req = new BRequest_RemoteListTypes_setPrimitiveTypes1();			
+			req._primitiveTypes1 = primitiveTypes1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<byte[]> GetByte2() {
 			BSyncResult<IList<byte[]>> asyncResult = new BSyncResult<IList<byte[]>>();			
-			GetByte2Async(asyncResult);
+			GetByte2(BAsyncResultHelper.ToDelegate<IList<byte[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte2Async(BAsyncResult<IList<byte[]>> asyncResult) {
+		public void GetByte2(BAsyncResult<IList<byte[]>> asyncResult) {
 			BRequest_RemoteListTypes_getByte2 req = new BRequest_RemoteListTypes_getByte2();			
-			BAsyncResultReceiveMethod<IList<byte[]>> outerResult = new BAsyncResultReceiveMethod<IList<byte[]>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetByte2(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<byte[]>> _byps_ret = new BAsyncProgModel<IList<byte[]>>(callback, state);
-			GetByte2Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<byte[]> EndGetByte2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<byte[]>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<byte[]>> GetByte2Async(){
+			BRequest_RemoteListTypes_getByte2 req = new BRequest_RemoteListTypes_getByte2();			
+			Task<IList<byte[]>> task = Task<IList<byte[]>>.Factory.FromAsync(transport.BeginSend<IList<byte[]>>, transport.EndSend<IList<byte[]>>, req, null);
+			return await task;
 		}
 		
 		public void SetByte2(IList<byte[]> byte2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetByte2Async(byte2, asyncResult);
+			SetByte2(byte2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte2Async(IList<byte[]> byte2, BAsyncResult<Object> asyncResult) {
+		public void SetByte2(IList<byte[]> byte2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setByte2 req = new BRequest_RemoteListTypes_setByte2();			
 			req._byte2 = byte2;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetByte2(IList<byte[]> byte2, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetByte2Async(byte2, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetByte2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetByte2Async(IList<byte[]> byte2){
+			BRequest_RemoteListTypes_setByte2 req = new BRequest_RemoteListTypes_setByte2();			
+			req._byte2 = byte2;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<int[]> GetInt2() {
 			BSyncResult<IList<int[]>> asyncResult = new BSyncResult<IList<int[]>>();			
-			GetInt2Async(asyncResult);
+			GetInt2(BAsyncResultHelper.ToDelegate<IList<int[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt2Async(BAsyncResult<IList<int[]>> asyncResult) {
+		public void GetInt2(BAsyncResult<IList<int[]>> asyncResult) {
 			BRequest_RemoteListTypes_getInt2 req = new BRequest_RemoteListTypes_getInt2();			
-			BAsyncResultReceiveMethod<IList<int[]>> outerResult = new BAsyncResultReceiveMethod<IList<int[]>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetInt2(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<int[]>> _byps_ret = new BAsyncProgModel<IList<int[]>>(callback, state);
-			GetInt2Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<int[]> EndGetInt2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<int[]>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<int[]>> GetInt2Async(){
+			BRequest_RemoteListTypes_getInt2 req = new BRequest_RemoteListTypes_getInt2();			
+			Task<IList<int[]>> task = Task<IList<int[]>>.Factory.FromAsync(transport.BeginSend<IList<int[]>>, transport.EndSend<IList<int[]>>, req, null);
+			return await task;
 		}
 		
 		public void SetInt2(IList<int[]> int2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetInt2Async(int2, asyncResult);
+			SetInt2(int2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt2Async(IList<int[]> int2, BAsyncResult<Object> asyncResult) {
+		public void SetInt2(IList<int[]> int2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setInt2 req = new BRequest_RemoteListTypes_setInt2();			
 			req._int2 = int2;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetInt2(IList<int[]> int2, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetInt2Async(int2, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetInt2(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetInt2Async(IList<int[]> int2){
+			BRequest_RemoteListTypes_setInt2 req = new BRequest_RemoteListTypes_setInt2();			
+			req._int2 = int2;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<Object> GetObj1() {
 			BSyncResult<IList<Object>> asyncResult = new BSyncResult<IList<Object>>();			
-			GetObj1Async(asyncResult);
+			GetObj1(BAsyncResultHelper.ToDelegate<IList<Object>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetObj1Async(BAsyncResult<IList<Object>> asyncResult) {
+		public void GetObj1(BAsyncResult<IList<Object>> asyncResult) {
 			BRequest_RemoteListTypes_getObj1 req = new BRequest_RemoteListTypes_getObj1();			
-			BAsyncResultReceiveMethod<IList<Object>> outerResult = new BAsyncResultReceiveMethod<IList<Object>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetObj1(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<Object>> _byps_ret = new BAsyncProgModel<IList<Object>>(callback, state);
-			GetObj1Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<Object> EndGetObj1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<Object>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<Object>> GetObj1Async(){
+			BRequest_RemoteListTypes_getObj1 req = new BRequest_RemoteListTypes_getObj1();			
+			Task<IList<Object>> task = Task<IList<Object>>.Factory.FromAsync(transport.BeginSend<IList<Object>>, transport.EndSend<IList<Object>>, req, null);
+			return await task;
 		}
 		
 		public void SetObj1(IList<Object> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetObj1Async(obj1, asyncResult);
+			SetObj1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetObj1Async(IList<Object> obj1, BAsyncResult<Object> asyncResult) {
+		public void SetObj1(IList<Object> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setObj1 req = new BRequest_RemoteListTypes_setObj1();			
 			req._obj1 = obj1;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetObj1(IList<Object> obj1, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetObj1Async(obj1, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetObj1(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetObj1Async(IList<Object> obj1){
+			BRequest_RemoteListTypes_setObj1 req = new BRequest_RemoteListTypes_setObj1();			
+			req._obj1 = obj1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<IList<int>> GetInt3() {
 			BSyncResult<IList<IList<int>>> asyncResult = new BSyncResult<IList<IList<int>>>();			
-			GetInt3Async(asyncResult);
+			GetInt3(BAsyncResultHelper.ToDelegate<IList<IList<int>>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt3Async(BAsyncResult<IList<IList<int>>> asyncResult) {
+		public void GetInt3(BAsyncResult<IList<IList<int>>> asyncResult) {
 			BRequest_RemoteListTypes_getInt3 req = new BRequest_RemoteListTypes_getInt3();			
-			BAsyncResultReceiveMethod<IList<IList<int>>> outerResult = new BAsyncResultReceiveMethod<IList<IList<int>>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetInt3(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<IList<int>>> _byps_ret = new BAsyncProgModel<IList<IList<int>>>(callback, state);
-			GetInt3Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<IList<int>> EndGetInt3(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<IList<int>>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<IList<int>>> GetInt3Async(){
+			BRequest_RemoteListTypes_getInt3 req = new BRequest_RemoteListTypes_getInt3();			
+			Task<IList<IList<int>>> task = Task<IList<IList<int>>>.Factory.FromAsync(transport.BeginSend<IList<IList<int>>>, transport.EndSend<IList<IList<int>>>, req, null);
+			return await task;
 		}
 		
 		public void SetInt3(IList<IList<int>> int3) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetInt3Async(int3, asyncResult);
+			SetInt3(int3, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt3Async(IList<IList<int>> int3, BAsyncResult<Object> asyncResult) {
+		public void SetInt3(IList<IList<int>> int3, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setInt3 req = new BRequest_RemoteListTypes_setInt3();			
 			req._int3 = int3;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetInt3(IList<IList<int>> int3, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetInt3Async(int3, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetInt3(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetInt3Async(IList<IList<int>> int3){
+			BRequest_RemoteListTypes_setInt3 req = new BRequest_RemoteListTypes_setInt3();			
+			req._int3 = int3;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public IList<IDictionary<int,IList<HashSet<int>>>> GetInt4() {
 			BSyncResult<IList<IDictionary<int,IList<HashSet<int>>>>> asyncResult = new BSyncResult<IList<IDictionary<int,IList<HashSet<int>>>>>();			
-			GetInt4Async(asyncResult);
+			GetInt4(BAsyncResultHelper.ToDelegate<IList<IDictionary<int,IList<HashSet<int>>>>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt4Async(BAsyncResult<IList<IDictionary<int,IList<HashSet<int>>>>> asyncResult) {
+		public void GetInt4(BAsyncResult<IList<IDictionary<int,IList<HashSet<int>>>>> asyncResult) {
 			BRequest_RemoteListTypes_getInt4 req = new BRequest_RemoteListTypes_getInt4();			
-			BAsyncResultReceiveMethod<IList<IDictionary<int,IList<HashSet<int>>>>> outerResult = new BAsyncResultReceiveMethod<IList<IDictionary<int,IList<HashSet<int>>>>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetInt4(AsyncCallback callback, object state){
-			BAsyncProgModel<IList<IDictionary<int,IList<HashSet<int>>>>> _byps_ret = new BAsyncProgModel<IList<IDictionary<int,IList<HashSet<int>>>>>(callback, state);
-			GetInt4Async(_byps_ret);
-			return _byps_ret;
-		}
-		public 		IList<IDictionary<int,IList<HashSet<int>>>> EndGetInt4(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<IList<IDictionary<int,IList<HashSet<int>>>>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<IDictionary<int,IList<HashSet<int>>>>> GetInt4Async(){
+			BRequest_RemoteListTypes_getInt4 req = new BRequest_RemoteListTypes_getInt4();			
+			Task<IList<IDictionary<int,IList<HashSet<int>>>>> task = Task<IList<IDictionary<int,IList<HashSet<int>>>>>.Factory.FromAsync(transport.BeginSend<IList<IDictionary<int,IList<HashSet<int>>>>>, transport.EndSend<IList<IDictionary<int,IList<HashSet<int>>>>>, req, null);
+			return await task;
 		}
 		
 		public void SetInt4(IList<IDictionary<int,IList<HashSet<int>>>> int4) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetInt4Async(int4, asyncResult);
+			SetInt4(int4, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt4Async(IList<IDictionary<int,IList<HashSet<int>>>> int4, BAsyncResult<Object> asyncResult) {
+		public void SetInt4(IList<IDictionary<int,IList<HashSet<int>>>> int4, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setInt4 req = new BRequest_RemoteListTypes_setInt4();			
 			req._int4 = int4;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetInt4(IList<IDictionary<int,IList<HashSet<int>>>> int4, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetInt4Async(int4, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetInt4(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetInt4Async(IList<IDictionary<int,IList<HashSet<int>>>> int4){
+			BRequest_RemoteListTypes_setInt4 req = new BRequest_RemoteListTypes_setInt4();			
+			req._int4 = int4;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		

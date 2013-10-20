@@ -6,20 +6,32 @@ using System.Threading.Tasks;
 
 namespace com.wilutions.byps
 {
-    public class BAsyncResultReceiveMethod<T> : BAsyncResult<BMethodResult<T>>
+    public class BAsyncResultReceiveMethod<T> : BAsyncResultIF<BMethodResult<T>>
     {
-        private readonly BAsyncResult<T> innerResult;
-	
-	    public BAsyncResultReceiveMethod(BAsyncResult<T> outerResult) {
-		    this.innerResult = outerResult;
-	    }
-	
-	    public void setAsyncResult(BMethodResult<T> methodResult, Exception e)  {
+        private readonly BAsyncResultIF<T> innerResult;
+        private readonly BAsyncResult<T> fnct;
+
+        public BAsyncResultReceiveMethod(BAsyncResultIF<T> outerResult)
+        {
+            this.innerResult = outerResult;
+        }
+
+        public BAsyncResultReceiveMethod(BAsyncResult<T> fnct)
+        {
+            this.fnct = fnct;
+        }
+
+        public void setAsyncResult(BMethodResult<T> methodResult, Exception e)
+        {
+            T result = methodResult != null ? methodResult._result : default(T);
             if (innerResult != null)
             {
-                T result = methodResult != null ? methodResult._result : default(T);
                 innerResult.setAsyncResult(result, e);
             }
-	    }
+            else
+            {
+                fnct(result, e);
+            }
+        }
     }
 }

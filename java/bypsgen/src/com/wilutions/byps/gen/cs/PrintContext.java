@@ -270,32 +270,98 @@ public class PrintContext extends PrintContextBase {
 		return false;
 	}
 
-	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo,
-			MethodInfo methodInfo) throws GeneratorException {
-		String methodName = makePublicMemberName(methodInfo.name);
-		
-		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
-		TypeInfo cstype = toCSharp(returnInfo.type);
-		String rtype = cstype.toString(rinfo.pack);
-		CodePrinter mpr = pr.print(rtype).print(" ")
-		  .print(methodName).print("(");
-		
-		boolean first = true;
-		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
-		  
+  public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo,
+      MethodInfo methodInfo) throws GeneratorException {
+    String methodName = makePublicMemberName(methodInfo.name);
+    
+    MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+    TypeInfo cstype = toCSharp(returnInfo.type);
+    String rtype = cstype.toString(rinfo.pack);
+    CodePrinter mpr = pr.print(rtype).print(" ")
+      .print(methodName).print("(");
+    
+    boolean first = true;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
       // Skip authentication parameter
       if (isSessionParam(rinfo, pinfo)) continue;
-      		  
-			if (first) first = false; else mpr.print(", ");
-			cstype = toCSharp(pinfo.type);
-			String mname = makeValidMemberName(pinfo.name);
-			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
-		}
-		
-		mpr.print(")");
-		return mpr;
-	}
-	
+            
+      if (first) first = false; else mpr.print(", ");
+      cstype = toCSharp(pinfo.type);
+      String mname = makeValidMemberName(pinfo.name);
+      mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
+    }
+    
+    mpr.print(")");
+    return mpr;
+  }
+  
+  public CodePrinter printDeclareMethodAsync(CodePrinter pr, RemoteInfo rinfo,
+      MethodInfo methodInfo) throws GeneratorException {
+    String methodName = makePublicMemberName(methodInfo.name);
+    
+    MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+    String rtype = "Task";
+    if (!returnInfo.type.isVoidType()) {
+      TypeInfo cstype = toCSharp(returnInfo.type);
+      rtype = "Task<" + cstype.toString(rinfo.pack) + ">";
+    }
+    
+    CodePrinter mpr = pr.print(rtype).print(" ")
+      .print(methodName).print("Async(");
+    
+    boolean first = true;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+      // Skip authentication parameter
+      if (isSessionParam(rinfo, pinfo)) continue;
+            
+      if (first) first = false; else mpr.print(", ");
+      TypeInfo cstype = toCSharp(pinfo.type);
+      String mname = makeValidMemberName(pinfo.name);
+      mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
+    }
+    
+    mpr.print(")");
+    return mpr;
+  }
+  
+  public CodePrinter printDeclareMethodTask(CodePrinter pr, RemoteInfo rinfo,
+      MethodInfo methodInfo) throws GeneratorException {
+    String methodName = makePublicMemberName(methodInfo.name);
+    
+    String taskType = getReturnTask(rinfo, methodInfo);
+    
+    CodePrinter mpr = pr.print("async ").print(taskType).print(" ")
+      .print(methodName).print("Task(");
+    
+    boolean first = true;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      
+      // Skip authentication parameter
+      if (isSessionParam(rinfo, pinfo)) continue;
+            
+      if (first) first = false; else mpr.print(", ");
+      TypeInfo cstype = toCSharp(pinfo.type);
+      String mname = makeValidMemberName(pinfo.name);
+      mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
+    }
+    
+    mpr.print(")");
+    return mpr;
+  }
+
+  public String getReturnTask(RemoteInfo rinfo, MethodInfo methodInfo) {
+    String taskType = "Task";
+    MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
+    if (!returnInfo.type.isVoidType()) {
+      TypeInfo cstype = toCSharp(returnInfo.type);
+      String rtype = cstype.toString(rinfo.pack);
+      taskType = "Task<" + rtype + ">";
+    }
+    return taskType;
+  }
+  
 	public CodePrinter printDeclareMethodBeginAsync(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
 		String methodName = Utils.firstCharToUpper(methodInfo.name);
 		CodePrinter mpr = pr.print("IAsyncResult Begin").print(methodName).print("(");
@@ -332,16 +398,22 @@ public class PrintContext extends PrintContextBase {
 		return name;
 	}
 	
+  public boolean isAwaitSupported() throws GeneratorException {
+    return (((PropertiesCS)props).dotnetVersion() >= 4.5f);
+  }
+
+
+	
 	public String makeValidMemberName(String mname) {
 		if (mname.equals("value")) return mname = "@value";
 		if (mname.equals("params")) return mname = "@params";
 		return mname;
 	}
 
-	public CodePrinter printDeclareMethodAsync(CodePrinter pr,
+	public CodePrinter printDeclareMethodDelegate(CodePrinter pr,
 			RemoteInfo rinfo, MethodInfo methodInfo) throws GeneratorException {
 		String methodName = makePublicMemberName(methodInfo.name);
-		CodePrinter mpr = pr.print("void ").print(methodName).print("Async").print("(");
+		CodePrinter mpr = pr.print("void ").print(methodName).print("").print("(");
 		
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {

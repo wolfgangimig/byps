@@ -17,11 +17,12 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public override int getRemoteId() { return 1206670536; }
 		
-		public override void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
+		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
+			// checkpoint com.wilutions.byps.gen.cs.GenApiClass:372
 			try {
 				RemoteInlineInstance __byps__remoteT = (RemoteInlineInstance)__byps__remote;				
 				BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]> __byps__outerResult = new BAsyncResultSendMethod<com.wilutions.byps.test.api.inl.Point2D[]>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_2049740106());				
-				__byps__remoteT.GetPoint2DArray1dimAsync(__byps__outerResult);
+				__byps__remoteT.GetPoint2DArray1dim(BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;

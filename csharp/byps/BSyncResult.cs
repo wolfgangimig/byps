@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.wilutions.byps
 {
-    public class BSyncResult<T> : BAsyncResult<T>
+    public class BSyncResult<T> : BAsyncResultIF<T>
     {
 	    protected T result;
 	    protected Exception ex;

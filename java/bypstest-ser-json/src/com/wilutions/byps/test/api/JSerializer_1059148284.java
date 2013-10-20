@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api;
+package com.wilutions.byps.test.api;
 
 /*
  * Serializer for java.util.List<java.lang.Byte>

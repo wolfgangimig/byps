@@ -23,4 +23,7 @@ public class BProtocolJson extends BProtocol {
 		return new BInputJson(header, buf, transport);
 	}
 
+	public BRegistry getRegistry() {
+	  return apiDesc.getRegistry(BINARY_MODEL);
+	}
 }

@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.refs;
+package com.wilutions.byps.test.api.refs;
 
 /*
  * Serializer for com.wilutions.byps.test.api.refs.Node

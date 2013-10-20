@@ -1,137 +1,117 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
 {
 	
-	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:93
 	public interface RemotePrimitiveTypes : BRemote {
 	
 		void VoidFunctionVoid();
-		void VoidFunctionVoidAsync(BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginVoidFunctionVoid(AsyncCallback callback, object state);
-		Object EndVoidFunctionVoid(IAsyncResult asyncResult);
+		void VoidFunctionVoid(BAsyncResult<Object> asyncResult) ;
+		Task VoidFunctionVoidAsync();
 		
 		void SetBool(bool v);
-		void SetBoolAsync(bool v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetBool(bool v, AsyncCallback callback, object state);
-		Object EndSetBool(IAsyncResult asyncResult);
+		void SetBool(bool v, BAsyncResult<Object> asyncResult) ;
+		Task SetBoolAsync(bool v);
 		
 		void SetByte(byte v);
-		void SetByteAsync(byte v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetByte(byte v, AsyncCallback callback, object state);
-		Object EndSetByte(IAsyncResult asyncResult);
+		void SetByte(byte v, BAsyncResult<Object> asyncResult) ;
+		Task SetByteAsync(byte v);
 		
 		void SetChar(char v);
-		void SetCharAsync(char v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetChar(char v, AsyncCallback callback, object state);
-		Object EndSetChar(IAsyncResult asyncResult);
+		void SetChar(char v, BAsyncResult<Object> asyncResult) ;
+		Task SetCharAsync(char v);
 		
 		void SetShort(short v);
-		void SetShortAsync(short v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetShort(short v, AsyncCallback callback, object state);
-		Object EndSetShort(IAsyncResult asyncResult);
+		void SetShort(short v, BAsyncResult<Object> asyncResult) ;
+		Task SetShortAsync(short v);
 		
 		void SetInt(int v);
-		void SetIntAsync(int v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetInt(int v, AsyncCallback callback, object state);
-		Object EndSetInt(IAsyncResult asyncResult);
+		void SetInt(int v, BAsyncResult<Object> asyncResult) ;
+		Task SetIntAsync(int v);
 		
 		void SetLong(long v);
-		void SetLongAsync(long v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetLong(long v, AsyncCallback callback, object state);
-		Object EndSetLong(IAsyncResult asyncResult);
+		void SetLong(long v, BAsyncResult<Object> asyncResult) ;
+		Task SetLongAsync(long v);
 		
 		void SetFloat(float v);
-		void SetFloatAsync(float v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetFloat(float v, AsyncCallback callback, object state);
-		Object EndSetFloat(IAsyncResult asyncResult);
+		void SetFloat(float v, BAsyncResult<Object> asyncResult) ;
+		Task SetFloatAsync(float v);
 		
 		void SetDouble(double v);
-		void SetDoubleAsync(double v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetDouble(double v, AsyncCallback callback, object state);
-		Object EndSetDouble(IAsyncResult asyncResult);
+		void SetDouble(double v, BAsyncResult<Object> asyncResult) ;
+		Task SetDoubleAsync(double v);
 		
 		void SetString(String v);
-		void SetStringAsync(String v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetString(String v, AsyncCallback callback, object state);
-		Object EndSetString(IAsyncResult asyncResult);
+		void SetString(String v, BAsyncResult<Object> asyncResult) ;
+		Task SetStringAsync(String v);
 		
 		void SetPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes v);
-		void SetPrimitiveTypesAsync(com.wilutions.byps.test.api.prim.PrimitiveTypes v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes v, AsyncCallback callback, object state);
-		Object EndSetPrimitiveTypes(IAsyncResult asyncResult);
+		void SetPrimitiveTypes(com.wilutions.byps.test.api.prim.PrimitiveTypes v, BAsyncResult<Object> asyncResult) ;
+		Task SetPrimitiveTypesAsync(com.wilutions.byps.test.api.prim.PrimitiveTypes v);
 		
 		void SetObject(Object v);
-		void SetObjectAsync(Object v, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSetObject(Object v, AsyncCallback callback, object state);
-		Object EndSetObject(IAsyncResult asyncResult);
+		void SetObject(Object v, BAsyncResult<Object> asyncResult) ;
+		Task SetObjectAsync(Object v);
 		
 		bool GetBool();
-		void GetBoolAsync(BAsyncResult<bool> asyncResult) ;
-		IAsyncResult BeginGetBool(AsyncCallback callback, object state);
-		bool EndGetBool(IAsyncResult asyncResult);
+		void GetBool(BAsyncResult<bool> asyncResult) ;
+		Task<bool> GetBoolAsync();
 		
 		byte GetByte();
-		void GetByteAsync(BAsyncResult<byte> asyncResult) ;
-		IAsyncResult BeginGetByte(AsyncCallback callback, object state);
-		byte EndGetByte(IAsyncResult asyncResult);
+		void GetByte(BAsyncResult<byte> asyncResult) ;
+		Task<byte> GetByteAsync();
 		
 		char GetChar();
-		void GetCharAsync(BAsyncResult<char> asyncResult) ;
-		IAsyncResult BeginGetChar(AsyncCallback callback, object state);
-		char EndGetChar(IAsyncResult asyncResult);
+		void GetChar(BAsyncResult<char> asyncResult) ;
+		Task<char> GetCharAsync();
 		
 		short GetShort();
-		void GetShortAsync(BAsyncResult<short> asyncResult) ;
-		IAsyncResult BeginGetShort(AsyncCallback callback, object state);
-		short EndGetShort(IAsyncResult asyncResult);
+		void GetShort(BAsyncResult<short> asyncResult) ;
+		Task<short> GetShortAsync();
 		
 		int GetInt();
-		void GetIntAsync(BAsyncResult<int> asyncResult) ;
-		IAsyncResult BeginGetInt(AsyncCallback callback, object state);
-		int EndGetInt(IAsyncResult asyncResult);
+		void GetInt(BAsyncResult<int> asyncResult) ;
+		Task<int> GetIntAsync();
 		
 		long GetLong();
-		void GetLongAsync(BAsyncResult<long> asyncResult) ;
-		IAsyncResult BeginGetLong(AsyncCallback callback, object state);
-		long EndGetLong(IAsyncResult asyncResult);
+		void GetLong(BAsyncResult<long> asyncResult) ;
+		Task<long> GetLongAsync();
 		
 		float GetFloat();
-		void GetFloatAsync(BAsyncResult<float> asyncResult) ;
-		IAsyncResult BeginGetFloat(AsyncCallback callback, object state);
-		float EndGetFloat(IAsyncResult asyncResult);
+		void GetFloat(BAsyncResult<float> asyncResult) ;
+		Task<float> GetFloatAsync();
 		
 		double GetDouble();
-		void GetDoubleAsync(BAsyncResult<double> asyncResult) ;
-		IAsyncResult BeginGetDouble(AsyncCallback callback, object state);
-		double EndGetDouble(IAsyncResult asyncResult);
+		void GetDouble(BAsyncResult<double> asyncResult) ;
+		Task<double> GetDoubleAsync();
 		
 		String GetString();
-		void GetStringAsync(BAsyncResult<String> asyncResult) ;
-		IAsyncResult BeginGetString(AsyncCallback callback, object state);
-		String EndGetString(IAsyncResult asyncResult);
+		void GetString(BAsyncResult<String> asyncResult) ;
+		Task<String> GetStringAsync();
 		
 		com.wilutions.byps.test.api.prim.PrimitiveTypes GetPrimitiveTypes();
-		void GetPrimitiveTypesAsync(BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes> asyncResult) ;
-		IAsyncResult BeginGetPrimitiveTypes(AsyncCallback callback, object state);
-		com.wilutions.byps.test.api.prim.PrimitiveTypes EndGetPrimitiveTypes(IAsyncResult asyncResult);
+		void GetPrimitiveTypes(BAsyncResult<com.wilutions.byps.test.api.prim.PrimitiveTypes> asyncResult) ;
+		Task<com.wilutions.byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypesAsync();
 		
 		Object GetObject();
-		void GetObjectAsync(BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginGetObject(AsyncCallback callback, object state);
-		Object EndGetObject(IAsyncResult asyncResult);
+		void GetObject(BAsyncResult<Object> asyncResult) ;
+		Task<Object> GetObjectAsync();
 		
 		void SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o);
-		void SendAllTypesAsync(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o, BAsyncResult<Object> asyncResult) ;
-		IAsyncResult BeginSendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o, AsyncCallback callback, object state);
-		Object EndSendAllTypes(IAsyncResult asyncResult);
+		void SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o, BAsyncResult<Object> asyncResult) ;
+		Task SendAllTypesAsync(bool b, char c, short s, int i, long l, float f, double d, String str, com.wilutions.byps.test.api.prim.PrimitiveTypes pt, Object o);
 		
 		int Add(int a, int b);
-		void AddAsync(int a, int b, BAsyncResult<int> asyncResult) ;
-		IAsyncResult BeginAdd(int a, int b, AsyncCallback callback, object state);
-		int EndAdd(IAsyncResult asyncResult);
+		void Add(int a, int b, BAsyncResult<int> asyncResult) ;
+		Task<int> AddAsync(int a, int b);
+		
+		void ThrowException();
+		void ThrowException(BAsyncResult<Object> asyncResult) ;
+		Task ThrowExceptionAsync();
 		
 		
 	}

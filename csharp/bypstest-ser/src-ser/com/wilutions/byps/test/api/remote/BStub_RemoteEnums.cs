@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -14,41 +15,36 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public com.wilutions.byps.test.api.enu.EnumPlanets GetPlanet() {
 			BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult = new BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets>();			
-			GetPlanetAsync(asyncResult);
+			GetPlanet(BAsyncResultHelper.ToDelegate<com.wilutions.byps.test.api.enu.EnumPlanets>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPlanetAsync(BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
+		public void GetPlanet(BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
 			BRequest_RemoteEnums_getPlanet req = new BRequest_RemoteEnums_getPlanet();			
-			BAsyncResultReceiveMethod<com.wilutions.byps.test.api.enu.EnumPlanets> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.enu.EnumPlanets>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetPlanet(AsyncCallback callback, object state){
-			BAsyncProgModel<com.wilutions.byps.test.api.enu.EnumPlanets> _byps_ret = new BAsyncProgModel<com.wilutions.byps.test.api.enu.EnumPlanets>(callback, state);
-			GetPlanetAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		com.wilutions.byps.test.api.enu.EnumPlanets EndGetPlanet(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<com.wilutions.byps.test.api.enu.EnumPlanets>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<com.wilutions.byps.test.api.enu.EnumPlanets> GetPlanetAsync(){
+			BRequest_RemoteEnums_getPlanet req = new BRequest_RemoteEnums_getPlanet();			
+			Task<com.wilutions.byps.test.api.enu.EnumPlanets> task = Task<com.wilutions.byps.test.api.enu.EnumPlanets>.Factory.FromAsync(transport.BeginSend<com.wilutions.byps.test.api.enu.EnumPlanets>, transport.EndSend<com.wilutions.byps.test.api.enu.EnumPlanets>, req, null);
+			return await task;
 		}
 		
 		public void SetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetPlanetAsync(planet, asyncResult);
+			SetPlanet(planet, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPlanetAsync(com.wilutions.byps.test.api.enu.EnumPlanets planet, BAsyncResult<Object> asyncResult) {
+		public void SetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();			
 			req._planet = planet;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetPlanetAsync(planet, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetPlanet(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetPlanetAsync(com.wilutions.byps.test.api.enu.EnumPlanets planet){
+			BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();			
+			req._planet = planet;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		

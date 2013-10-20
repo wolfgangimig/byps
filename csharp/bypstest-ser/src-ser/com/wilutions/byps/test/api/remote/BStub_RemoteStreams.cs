@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -14,119 +15,104 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public System.IO.Stream GetImage() {
 			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
-			GetImageAsync(asyncResult);
+			GetImage(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetImageAsync(BAsyncResult<System.IO.Stream> asyncResult) {
+		public void GetImage(BAsyncResult<System.IO.Stream> asyncResult) {
 			BRequest_RemoteStreams_getImage req = new BRequest_RemoteStreams_getImage();			
-			BAsyncResultReceiveMethod<System.IO.Stream> outerResult = new BAsyncResultReceiveMethod<System.IO.Stream>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetImage(AsyncCallback callback, object state){
-			BAsyncProgModel<System.IO.Stream> _byps_ret = new BAsyncProgModel<System.IO.Stream>(callback, state);
-			GetImageAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		System.IO.Stream EndGetImage(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<System.IO.Stream>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<System.IO.Stream> GetImageAsync(){
+			BRequest_RemoteStreams_getImage req = new BRequest_RemoteStreams_getImage();			
+			Task<System.IO.Stream> task = Task<System.IO.Stream>.Factory.FromAsync(transport.BeginSend<System.IO.Stream>, transport.EndSend<System.IO.Stream>, req, null);
+			return await task;
 		}
 		
 		public void SetImage(System.IO.Stream istrm) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetImageAsync(istrm, asyncResult);
+			SetImage(istrm, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetImageAsync(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
+		public void SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImage req = new BRequest_RemoteStreams_setImage();			
 			req._istrm = istrm;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetImage(System.IO.Stream istrm, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetImageAsync(istrm, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetImage(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetImageAsync(System.IO.Stream istrm){
+			BRequest_RemoteStreams_setImage req = new BRequest_RemoteStreams_setImage();			
+			req._istrm = istrm;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public Dictionary<int,System.IO.Stream> GetImages() {
 			BSyncResult<Dictionary<int,System.IO.Stream>> asyncResult = new BSyncResult<Dictionary<int,System.IO.Stream>>();			
-			GetImagesAsync(asyncResult);
+			GetImages(BAsyncResultHelper.ToDelegate<Dictionary<int,System.IO.Stream>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetImagesAsync(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
+		public void GetImages(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
 			BRequest_RemoteStreams_getImages req = new BRequest_RemoteStreams_getImages();			
-			BAsyncResultReceiveMethod<Dictionary<int,System.IO.Stream>> outerResult = new BAsyncResultReceiveMethod<Dictionary<int,System.IO.Stream>>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetImages(AsyncCallback callback, object state){
-			BAsyncProgModel<Dictionary<int,System.IO.Stream>> _byps_ret = new BAsyncProgModel<Dictionary<int,System.IO.Stream>>(callback, state);
-			GetImagesAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		Dictionary<int,System.IO.Stream> EndGetImages(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Dictionary<int,System.IO.Stream>>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<Dictionary<int,System.IO.Stream>> GetImagesAsync(){
+			BRequest_RemoteStreams_getImages req = new BRequest_RemoteStreams_getImages();			
+			Task<Dictionary<int,System.IO.Stream>> task = Task<Dictionary<int,System.IO.Stream>>.Factory.FromAsync(transport.BeginSend<Dictionary<int,System.IO.Stream>>, transport.EndSend<Dictionary<int,System.IO.Stream>>, req, null);
+			return await task;
 		}
 		
 		public void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetImagesAsync(istrms, doNotReadStreamAtKey, asyncResult);
+			SetImages(istrms, doNotReadStreamAtKey, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetImagesAsync(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
+		public void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImages req = new BRequest_RemoteStreams_setImages();			
 			req._istrms = istrms;
 			req._doNotReadStreamAtKey = doNotReadStreamAtKey;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetImagesAsync(istrms, doNotReadStreamAtKey, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetImages(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetImagesAsync(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey){
+			BRequest_RemoteStreams_setImages req = new BRequest_RemoteStreams_setImages();			
+			req._istrms = istrms;
+			req._doNotReadStreamAtKey = doNotReadStreamAtKey;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public void ThrowLastException() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			ThrowLastExceptionAsync(asyncResult);
+			ThrowLastException(BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void ThrowLastExceptionAsync(BAsyncResult<Object> asyncResult) {
+		public void ThrowLastException(BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_throwLastException req = new BRequest_RemoteStreams_throwLastException();			
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginThrowLastException(AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			ThrowLastExceptionAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndThrowLastException(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task ThrowLastExceptionAsync(){
+			BRequest_RemoteStreams_throwLastException req = new BRequest_RemoteStreams_throwLastException();			
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public System.IO.Stream GetTextStream() {
 			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
-			GetTextStreamAsync(asyncResult);
+			GetTextStream(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetTextStreamAsync(BAsyncResult<System.IO.Stream> asyncResult) {
+		public void GetTextStream(BAsyncResult<System.IO.Stream> asyncResult) {
 			BRequest_RemoteStreams_getTextStream req = new BRequest_RemoteStreams_getTextStream();			
-			BAsyncResultReceiveMethod<System.IO.Stream> outerResult = new BAsyncResultReceiveMethod<System.IO.Stream>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetTextStream(AsyncCallback callback, object state){
-			BAsyncProgModel<System.IO.Stream> _byps_ret = new BAsyncProgModel<System.IO.Stream>(callback, state);
-			GetTextStreamAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		System.IO.Stream EndGetTextStream(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<System.IO.Stream>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<System.IO.Stream> GetTextStreamAsync(){
+			BRequest_RemoteStreams_getTextStream req = new BRequest_RemoteStreams_getTextStream();			
+			Task<System.IO.Stream> task = Task<System.IO.Stream>.Factory.FromAsync(transport.BeginSend<System.IO.Stream>, transport.EndSend<System.IO.Stream>, req, null);
+			return await task;
 		}
 		
 		

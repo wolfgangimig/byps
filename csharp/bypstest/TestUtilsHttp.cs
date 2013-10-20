@@ -31,7 +31,7 @@ namespace bypstest
                 client = BClient_Testser.createClient(transportFactory);
 
                 BSyncResult<bool> syncResult = new BSyncResult<bool>();
-                client.start(syncResult);
+                client.start(BAsyncResultHelper.ToDelegate(syncResult));
 
                 syncResult.GetResult();
             }

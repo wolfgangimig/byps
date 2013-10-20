@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.set;
+package com.wilutions.byps.test.api.set;
 
 /*
  * Serializer for com.wilutions.byps.test.api.set.SetTypes

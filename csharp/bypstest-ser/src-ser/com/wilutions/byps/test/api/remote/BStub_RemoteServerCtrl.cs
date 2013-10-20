@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -14,64 +15,60 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void PublishRemote(String name, BRemote remote, bool fowardToOtherServers) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			PublishRemoteAsync(name, remote, fowardToOtherServers, asyncResult);
+			PublishRemote(name, remote, fowardToOtherServers, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void PublishRemoteAsync(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
+		public void PublishRemote(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();			
 			req._name = name;
 			req._remote = remote;
 			req._fowardToOtherServers = fowardToOtherServers;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginPublishRemote(String name, BRemote remote, bool fowardToOtherServers, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			PublishRemoteAsync(name, remote, fowardToOtherServers, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndPublishRemote(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task PublishRemoteAsync(String name, BRemote remote, bool fowardToOtherServers){
+			BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();			
+			req._name = name;
+			req._remote = remote;
+			req._fowardToOtherServers = fowardToOtherServers;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public BRemote GetPublishedRemote(String name) {
 			BSyncResult<BRemote> asyncResult = new BSyncResult<BRemote>();			
-			GetPublishedRemoteAsync(name, asyncResult);
+			GetPublishedRemote(name, BAsyncResultHelper.ToDelegate<BRemote>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPublishedRemoteAsync(String name, BAsyncResult<BRemote> asyncResult) {
+		public void GetPublishedRemote(String name, BAsyncResult<BRemote> asyncResult) {
 			BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();			
 			req._name = name;
-			BAsyncResultReceiveMethod<BRemote> outerResult = new BAsyncResultReceiveMethod<BRemote>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGetPublishedRemote(String name, AsyncCallback callback, object state){
-			BAsyncProgModel<BRemote> _byps_ret = new BAsyncProgModel<BRemote>(callback, state);
-			GetPublishedRemoteAsync(name, _byps_ret);
-			return _byps_ret;
-		}
-		public 		BRemote EndGetPublishedRemote(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<BRemote>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<BRemote> GetPublishedRemoteAsync(String name){
+			BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();			
+			req._name = name;
+			Task<BRemote> task = Task<BRemote>.Factory.FromAsync(transport.BeginSend<BRemote>, transport.EndSend<BRemote>, req, null);
+			return await task;
 		}
 		
 		public void RemovePublishedRemote(String name) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			RemovePublishedRemoteAsync(name, asyncResult);
+			RemovePublishedRemote(name, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void RemovePublishedRemoteAsync(String name, BAsyncResult<Object> asyncResult) {
+		public void RemovePublishedRemote(String name, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();			
 			req._name = name;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginRemovePublishedRemote(String name, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			RemovePublishedRemoteAsync(name, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndRemovePublishedRemote(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task RemovePublishedRemoteAsync(String name){
+			BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();			
+			req._name = name;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		

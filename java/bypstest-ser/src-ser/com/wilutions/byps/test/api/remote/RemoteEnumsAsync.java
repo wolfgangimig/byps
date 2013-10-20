@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * 
@@ -12,16 +12,16 @@ public interface RemoteEnumsAsync extends BRemote,
 	RemoteEnums {
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public com.wilutions.byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getPlanet(final BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) throws RemoteException;
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) ;
 	
 	

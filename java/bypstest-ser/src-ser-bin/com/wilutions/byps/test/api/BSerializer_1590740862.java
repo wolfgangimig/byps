@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api;
+package com.wilutions.byps.test.api;
 
 /*
  * Serializer for java.util.ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.inherit
 {
 	
-	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:81
+	// checkpoint com.wilutions.byps.gen.cs.GenRemoteClass:93
 	public interface PlantServiceAuth : BRemote {
 	
 		String Grow();
-		void GrowAsync(BAsyncResult<String> asyncResult) ;
-		IAsyncResult BeginGrow(AsyncCallback callback, object state);
-		String EndGrow(IAsyncResult asyncResult);
+		void Grow(BAsyncResult<String> asyncResult) ;
+		Task<String> GrowAsync();
 		
 		
 	}

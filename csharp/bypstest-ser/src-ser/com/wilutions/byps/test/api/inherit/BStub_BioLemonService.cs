@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.inherit
@@ -14,99 +15,86 @@ namespace com.wilutions.byps.test.api.inherit
 		
 		public String Grow() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
-			GrowAsync(asyncResult);
+			Grow(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GrowAsync(BAsyncResult<String> asyncResult) {
+		public void Grow(BAsyncResult<String> asyncResult) {
 			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
-			BAsyncResultReceiveMethod<String> outerResult = new BAsyncResultReceiveMethod<String>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginGrow(AsyncCallback callback, object state){
-			BAsyncProgModel<String> _byps_ret = new BAsyncProgModel<String>(callback, state);
-			GrowAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		String EndGrow(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<String>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<String> GrowAsync(){
+			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
+			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
+			return await task;
 		}
 		
 		public String Pick(String fromTree) {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
-			PickAsync(fromTree, asyncResult);
+			Pick(fromTree, BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void PickAsync(String fromTree, BAsyncResult<String> asyncResult) {
+		public void Pick(String fromTree, BAsyncResult<String> asyncResult) {
 			BRequest_LemonService_pick req = new BRequest_LemonService_pick();			
 			req._fromTree = fromTree;
-			BAsyncResultReceiveMethod<String> outerResult = new BAsyncResultReceiveMethod<String>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginPick(String fromTree, AsyncCallback callback, object state){
-			BAsyncProgModel<String> _byps_ret = new BAsyncProgModel<String>(callback, state);
-			PickAsync(fromTree, _byps_ret);
-			return _byps_ret;
-		}
-		public 		String EndPick(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<String>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<String> PickAsync(String fromTree){
+			BRequest_LemonService_pick req = new BRequest_LemonService_pick();			
+			req._fromTree = fromTree;
+			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
+			return await task;
 		}
 		
 		public int UseParing() {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
-			UseParingAsync(asyncResult);
+			UseParing(BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void UseParingAsync(BAsyncResult<int> asyncResult) {
+		public void UseParing(BAsyncResult<int> asyncResult) {
 			BRequest_BioLemonService_useParing req = new BRequest_BioLemonService_useParing();			
-			BAsyncResultReceiveMethod<int> outerResult = new BAsyncResultReceiveMethod<int>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginUseParing(AsyncCallback callback, object state){
-			BAsyncProgModel<int> _byps_ret = new BAsyncProgModel<int>(callback, state);
-			UseParingAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		int EndUseParing(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<int>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<int> UseParingAsync(){
+			BRequest_BioLemonService_useParing req = new BRequest_BioLemonService_useParing();			
+			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
+			return await task;
 		}
 		
 		public bool Certify(String param) {
 			BSyncResult<bool> asyncResult = new BSyncResult<bool>();			
-			CertifyAsync(param, asyncResult);
+			Certify(param, BAsyncResultHelper.ToDelegate<bool>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void CertifyAsync(String param, BAsyncResult<bool> asyncResult) {
+		public void Certify(String param, BAsyncResult<bool> asyncResult) {
 			BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();			
 			req._param = param;
-			BAsyncResultReceiveMethod<bool> outerResult = new BAsyncResultReceiveMethod<bool>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginCertify(String param, AsyncCallback callback, object state){
-			BAsyncProgModel<bool> _byps_ret = new BAsyncProgModel<bool>(callback, state);
-			CertifyAsync(param, _byps_ret);
-			return _byps_ret;
-		}
-		public 		bool EndCertify(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<bool>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<bool> CertifyAsync(String param){
+			BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();			
+			req._param = param;
+			Task<bool> task = Task<bool>.Factory.FromAsync(transport.BeginSend<bool>, transport.EndSend<bool>, req, null);
+			return await task;
 		}
 		
 		public String Squeeze() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
-			SqueezeAsync(asyncResult);
+			Squeeze(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void SqueezeAsync(BAsyncResult<String> asyncResult) {
+		public void Squeeze(BAsyncResult<String> asyncResult) {
 			BRequest_FruitService_squeeze req = new BRequest_FruitService_squeeze();			
-			BAsyncResultReceiveMethod<String> outerResult = new BAsyncResultReceiveMethod<String>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSqueeze(AsyncCallback callback, object state){
-			BAsyncProgModel<String> _byps_ret = new BAsyncProgModel<String>(callback, state);
-			SqueezeAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		String EndSqueeze(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<String>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<String> SqueezeAsync(){
+			BRequest_FruitService_squeeze req = new BRequest_FruitService_squeeze();			
+			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
+			return await task;
 		}
 		
 		

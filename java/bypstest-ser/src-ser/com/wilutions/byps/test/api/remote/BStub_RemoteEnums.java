@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.remote;
+package com.wilutions.byps.test.api.remote;
 
 /*
  * 
@@ -17,28 +17,28 @@ public class BStub_RemoteEnums extends BStub implements RemoteEnumsAsync, java.i
 		super(transport);		
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public com.wilutions.byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult = new BSyncResult<com.wilutions.byps.test.api.enu.EnumPlanets>();		
 		getPlanet(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void getPlanet(final BAsyncResult<com.wilutions.byps.test.api.enu.EnumPlanets> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteEnums_getPlanet req = new BRequest_RemoteEnums_getPlanet();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:357
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:359
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet) throws RemoteException {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setPlanet(planet, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint com.wilutions.byps.gen.j.PrintContext:401
+	// checkpoint com.wilutions.byps.gen.j.PrintContext:403
 	public void setPlanet(com.wilutions.byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) {
 		// checkpoint com.wilutions.byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();		

@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.ver;
+package com.wilutions.byps.test.api.ver;
 
 /*
  * Serializer for com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setEvolve

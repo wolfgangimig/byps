@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api;
+package com.wilutions.byps.test.api;
 
 /*
  * Serializer for java.lang.Object[][][]

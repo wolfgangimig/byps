@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.wilutions.byps;
 
 namespace com.wilutions.byps.test.api.remote
@@ -14,102 +15,92 @@ namespace com.wilutions.byps.test.api.remote
 		
 		public void SetUseAuthentication(bool useAuth) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetUseAuthenticationAsync(useAuth, asyncResult);
+			SetUseAuthentication(useAuth, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetUseAuthenticationAsync(bool useAuth, BAsyncResult<Object> asyncResult) {
+		public void SetUseAuthentication(bool useAuth, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteWithAuthentication_setUseAuthentication req = new BRequest_RemoteWithAuthentication_setUseAuthentication();			
 			req._useAuth = useAuth;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetUseAuthentication(bool useAuth, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetUseAuthenticationAsync(useAuth, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetUseAuthentication(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetUseAuthenticationAsync(bool useAuth){
+			BRequest_RemoteWithAuthentication_setUseAuthentication req = new BRequest_RemoteWithAuthentication_setUseAuthentication();			
+			req._useAuth = useAuth;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public com.wilutions.byps.test.api.auth.SessionInfo Login(String userName, String userPwd) {
 			BSyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult = new BSyncResult<com.wilutions.byps.test.api.auth.SessionInfo>();			
-			LoginAsync(userName, userPwd, asyncResult);
+			Login(userName, userPwd, BAsyncResultHelper.ToDelegate<com.wilutions.byps.test.api.auth.SessionInfo>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void LoginAsync(String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
+		public void Login(String userName, String userPwd, BAsyncResult<com.wilutions.byps.test.api.auth.SessionInfo> asyncResult) {
 			BRequest_RemoteWithAuthentication_login req = new BRequest_RemoteWithAuthentication_login();			
 			req._userName = userName;
 			req._userPwd = userPwd;
-			BAsyncResultReceiveMethod<com.wilutions.byps.test.api.auth.SessionInfo> outerResult = new BAsyncResultReceiveMethod<com.wilutions.byps.test.api.auth.SessionInfo>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginLogin(String userName, String userPwd, AsyncCallback callback, object state){
-			BAsyncProgModel<com.wilutions.byps.test.api.auth.SessionInfo> _byps_ret = new BAsyncProgModel<com.wilutions.byps.test.api.auth.SessionInfo>(callback, state);
-			LoginAsync(userName, userPwd, _byps_ret);
-			return _byps_ret;
-		}
-		public 		com.wilutions.byps.test.api.auth.SessionInfo EndLogin(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<com.wilutions.byps.test.api.auth.SessionInfo>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<com.wilutions.byps.test.api.auth.SessionInfo> LoginAsync(String userName, String userPwd){
+			BRequest_RemoteWithAuthentication_login req = new BRequest_RemoteWithAuthentication_login();			
+			req._userName = userName;
+			req._userPwd = userPwd;
+			Task<com.wilutions.byps.test.api.auth.SessionInfo> task = Task<com.wilutions.byps.test.api.auth.SessionInfo>.Factory.FromAsync(transport.BeginSend<com.wilutions.byps.test.api.auth.SessionInfo>, transport.EndSend<com.wilutions.byps.test.api.auth.SessionInfo>, req, null);
+			return await task;
 		}
 		
 		public int Doit(int @value) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
-			DoitAsync(@value, asyncResult);
+			Doit(@value, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void DoitAsync(int @value, BAsyncResult<int> asyncResult) {
+		public void Doit(int @value, BAsyncResult<int> asyncResult) {
 			BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();			
 			req._value = @value;
-			BAsyncResultReceiveMethod<int> outerResult = new BAsyncResultReceiveMethod<int>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginDoit(int @value, AsyncCallback callback, object state){
-			BAsyncProgModel<int> _byps_ret = new BAsyncProgModel<int>(callback, state);
-			DoitAsync(@value, _byps_ret);
-			return _byps_ret;
-		}
-		public 		int EndDoit(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<int>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task<int> DoitAsync(int @value){
+			BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();			
+			req._value = @value;
+			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
+			return await task;
 		}
 		
 		public void Expire() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			ExpireAsync(asyncResult);
+			Expire(BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void ExpireAsync(BAsyncResult<Object> asyncResult) {
+		public void Expire(BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteWithAuthentication_expire req = new BRequest_RemoteWithAuthentication_expire();			
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginExpire(AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			ExpireAsync(_byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndExpire(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task ExpireAsync(){
+			BRequest_RemoteWithAuthentication_expire req = new BRequest_RemoteWithAuthentication_expire();			
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		public void SetReloginCount(int count) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
-			SetReloginCountAsync(count, asyncResult);
+			SetReloginCount(count, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetReloginCountAsync(int count, BAsyncResult<Object> asyncResult) {
+		public void SetReloginCount(int count, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteWithAuthentication_setReloginCount req = new BRequest_RemoteWithAuthentication_setReloginCount();			
 			req._count = count;
-			BAsyncResultReceiveMethod<Object> outerResult = new BAsyncResultReceiveMethod<Object>(asyncResult);
-			transport.send(req, outerResult);
+			transport.sendMethod(req, asyncResult);
 		}
-		public IAsyncResult BeginSetReloginCount(int count, AsyncCallback callback, object state){
-			BAsyncProgModel<Object> _byps_ret = new BAsyncProgModel<Object>(callback, state);
-			SetReloginCountAsync(count, _byps_ret);
-			return _byps_ret;
-		}
-		public 		Object EndSetReloginCount(IAsyncResult asyncResult) {
-			return ((BAsyncProgModel<Object>)asyncResult).Result;
+		// checkpoint com.wilutions.byps.gen.cs.GenRemoteStub:133
+		public async Task SetReloginCountAsync(int count){
+			BRequest_RemoteWithAuthentication_setReloginCount req = new BRequest_RemoteWithAuthentication_setReloginCount();			
+			req._count = count;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
 		}
 		
 		

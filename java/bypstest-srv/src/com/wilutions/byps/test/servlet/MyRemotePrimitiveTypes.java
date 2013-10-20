@@ -1,5 +1,7 @@
 package com.wilutions.byps.test.servlet;
 
+import com.wilutions.byps.BException;
+import com.wilutions.byps.BExceptionC;
 import com.wilutions.byps.RemoteException;
 import com.wilutions.byps.test.api.prim.PrimitiveTypes;
 import com.wilutions.byps.test.api.remote.BSkeleton_RemotePrimitiveTypes;
@@ -142,5 +144,9 @@ public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
 		this.primitiveTypesVal = pt;
 	}
 	
+	public void throwException() throws RemoteException 
+	{
+	  throw new BException(BExceptionC.INTERNAL, "throwException() was called");
+	}
 	
 }

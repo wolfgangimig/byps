@@ -37,14 +37,16 @@ namespace com.wilutions.byps
                 this.outerServer = outerServer;
 			    this.innerServer = innerServer;
 		    }
-		
-		    public override BProtocol negotiate(BTargetId targetId, ByteBuffer bin, BAsyncResult<ByteBuffer> asyncResult) {
+
+            public override BProtocol negotiate(BTargetId targetId, ByteBuffer bin, BAsyncResultIF<ByteBuffer> asyncResult)
+            {
 			    // negotiate muss bereits vom zugehörigen BClient ausgeführt worden sein.
 			    // Die ausgehandelten Eigenschaften werden von BClient übernommen - sie sind in BTransport enthalten.
 			    return transport.getProtocol();
 		    }
-		
-		    public override void recv(BTargetId clientTargetId, Object methodObj, BAsyncResult<Object> methodResult) {
+
+            public override void recv(BTargetId clientTargetId, Object methodObj, BAsyncResultIF<Object> methodResult)
+            {
 			    innerServer.recv(clientTargetId, methodObj, methodResult);
 		    }
 		

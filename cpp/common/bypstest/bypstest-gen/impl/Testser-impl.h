@@ -1356,6 +1356,15 @@ class BRequest_RemotePrimitiveTypes_setString;
 }}}}}}
 
 //-------------------------------------------------
+// Forward Declaration of class BRequest_RemotePrimitiveTypes_throwException
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+class BRequest_RemotePrimitiveTypes_throwException; 
+
+}}}}}}
+
+//-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_voidFunctionVoid
 
 namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
@@ -6922,6 +6931,27 @@ class BRequest_RemotePrimitiveTypes_setString : public BMethodRequest {
 }}}}}}
 
 //-------------------------------------------------
+// BRequest_RemotePrimitiveTypes_throwException
+// typeId=1845930195
+
+namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::com::wilutions::byps;
+
+class BRequest_RemotePrimitiveTypes_throwException : public BMethodRequest {
+	
+	public: BRequest_RemotePrimitiveTypes_throwException();
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1845930195; }
+	
+	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:854
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}}}
+
+//-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_voidFunctionVoid
 // typeId=1856936054
 
@@ -8823,6 +8853,8 @@ void BSerializer_941809610(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_149216892(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
 void BSerializer_319593463(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
+void BSerializer_1845930195(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
 void BSerializer_1856936054(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_getNode

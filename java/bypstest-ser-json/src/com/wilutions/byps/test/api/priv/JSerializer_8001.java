@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.priv;
+package com.wilutions.byps.test.api.priv;
 
 /*
  * Serializer for com.wilutions.byps.test.api.priv.PrivateMembers

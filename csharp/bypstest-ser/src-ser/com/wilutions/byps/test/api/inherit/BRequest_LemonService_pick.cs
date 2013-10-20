@@ -17,16 +17,17 @@ namespace com.wilutions.byps.test.api.inherit
 		
 		public override int getRemoteId() { return 617356599; }
 		
-		// checkpoint com.wilutions.byps.gen.cs.GenApiClass:433
+		// checkpoint com.wilutions.byps.gen.cs.GenApiClass:435
 		public override void setSession(Object __byps__sess) {
 			_sess = (com.wilutions.byps.test.api.auth.SessionInfo)__byps__sess;
 		}
 		
-		public override void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) {
+		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
+			// checkpoint com.wilutions.byps.gen.cs.GenApiClass:372
 			try {
 				LemonService __byps__remoteT = (LemonService)__byps__remote;				
 				BAsyncResultSendMethod<String> __byps__outerResult = new BAsyncResultSendMethod<String>(__byps__asyncResult, new com.wilutions.byps.test.api.BResult_10());				
-				__byps__remoteT.PickAsync(_sess, _fromTree, __byps__outerResult);
+				__byps__remoteT.Pick(_sess, _fromTree, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult("", e);
 				throw e;

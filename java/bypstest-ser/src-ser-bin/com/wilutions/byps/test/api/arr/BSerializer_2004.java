@@ -1,4 +1,4 @@
-﻿package com.wilutions.byps.test.api.arr;
+package com.wilutions.byps.test.api.arr;
 
 /*
  * Serializer for com.wilutions.byps.test.api.arr.ArrayTypes4dim

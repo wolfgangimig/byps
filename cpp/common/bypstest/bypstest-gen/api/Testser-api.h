@@ -3361,6 +3361,9 @@ class RemotePrimitiveTypes : public virtual BRemote {
 	public: virtual int32_t add(int32_t a, int32_t b)  = 0;
 	public: virtual void add(int32_t a, int32_t b, ::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
 	
+	public: virtual void throwException()  = 0;
+	public: virtual void throwException(::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
 	
 };
 
@@ -3455,6 +3458,9 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	
 	public: virtual int32_t add(int32_t a, int32_t b) ;
 	public: virtual void add(int32_t a, int32_t b, ::std::function< void (int32_t, BException ex) > asyncResult) ;
+	
+	public: virtual void throwException() ;
+	public: virtual void throwException(::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
