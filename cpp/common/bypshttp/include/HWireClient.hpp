@@ -40,7 +40,8 @@ BINLINE void HWireClient_RequestsToCancel::remove(intptr_t id) {
     l_debug << L"remove(" << id;
 	std::map<intptr_t, PHttpRequest>::iterator it = map.find(id);
 	if (it != map.end()) {
-        (*it).second->close();
+        PHttpRequest r = (*it).second;
+        r->close();
 		map.erase(it);
 	}
     l_debug << L")remove";

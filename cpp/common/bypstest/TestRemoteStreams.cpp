@@ -76,7 +76,11 @@ public:
 		std::wstring contentType;
 		volatile int64_t pos;
 	public:
-		MyContentStreamBytes(int64_t nbOfBytes, bool chunked) : nbOfBytes(nbOfBytes), chunked(chunked), contentType(L"application/octet-stream"), pos(0) {}
+        MyContentStreamBytes(int64_t nbOfBytes, bool chunked)
+            : nbOfBytes(nbOfBytes)
+            , chunked(chunked)
+            , contentType(L"application/octet-byps-1")
+            , pos(0) {}
 		virtual const std::wstring& getContentType() const { return contentType; }
 		virtual int64_t getContentLength() const { return chunked ? -1 : nbOfBytes; }
 		virtual int32_t read(char* buf, int32_t offs, int32_t len) {
@@ -106,35 +110,42 @@ public:
 		PRemoteStreams remote = client->remoteStreams;
 		l_info << L"remote->setImage...";
 		remote->setImage(strm);
-		strm.reset();
 		l_info << L"remote->setImage OK";
 
-		// read stream and compare bytes
-		l_info << L"remote->getImage...";
-		PContentStream strmR = remote->getImage();
-		l_info << L"remote->getImage OK";
+        bool checkContent = true;
+        if (checkContent) {
 
-		l_info << L"read bytes...";
-		char buf[10000] = {0};
-		int64_t pos = 0;
-		int32_t len  = 0;
-		while ((len = strmR->read(buf, 0, sizeof(buf))) > 0) {
-			for (int32_t i = 0; i < len; i++) {
-				unsigned b1 = (unsigned)(pos & 0xFF);
-				unsigned b2 = (unsigned)(buf[i] & 0xFF);
-				if (b1 != b2) {
-					std::wstringstream msg;
-					msg << L"Wrong byte at pos=" << pos;
-					TASSERT(msg.str(), b1, b2);
-				}
-				pos++;
-			}
-		}
-		l_info << L"read bytes OK";
+            // read stream and compare bytes
+            l_info << L"remote->getImage...";
+            PContentStream strmR = remote->getImage();
+            l_info << L"remote->getImage OK";
 
-		TASSERT(L"#bytes", nbOfBytes, pos);
-		
-		strmR.reset();
+            l_info << L"read bytes...";
+            char buf[10000] = {0};
+            int64_t pos = 0;
+            int32_t len  = 0;
+            while ((len = strmR->read(buf, 0, sizeof(buf))) > 0) {
+                for (int32_t i = 0; i < len; i++) {
+                    unsigned b1 = (unsigned)(pos & 0xFF);
+                    unsigned b2 = (unsigned)(buf[i] & 0xFF);
+                    if (b1 != b2) {
+                        std::wstringstream msg;
+                        msg << L"Wrong byte at pos=" << pos;
+                        TASSERT(msg.str(), b1, b2);
+                    }
+                    pos++;
+                }
+            }
+            l_info << L"read bytes OK";
+
+            TASSERT(L"#bytes", nbOfBytes, pos);
+
+            TASSERT(L"contentLength", nbOfBytes, strmR->getContentLength());
+            TASSERT(L"contentType", strm->getContentType(), strmR->getContentType());
+
+            strmR.reset();
+
+        }
 
 		l_info << L")internalTestStreams";
 	}
@@ -167,12 +178,12 @@ public:
 	 */
 	void testRemoteStreamsContentLength() {
 		l_info << L"testRemoteStreamsContentLength(";
-		internalTestStreams(INCOMING_STREAM_BUFFER - 1, false);
-		internalTestStreams(INCOMING_STREAM_BUFFER, false);
-		internalTestStreams(INCOMING_STREAM_BUFFER + 1, false);
-		internalTestStreams(2 * INCOMING_STREAM_BUFFER, false);
-		internalTestStreams(0, false);
-		internalTestStreams(1, false);
+        internalTestStreams(INCOMING_STREAM_BUFFER - 1, false);
+        internalTestStreams(INCOMING_STREAM_BUFFER, false);
+        internalTestStreams(INCOMING_STREAM_BUFFER + 1, false);
+        internalTestStreams(2*INCOMING_STREAM_BUFFER, false);
+        internalTestStreams(0, false);
+        internalTestStreams(1, false);
 		l_info << L")testRemoteStreamsContentLength";
 	}
 
@@ -260,10 +271,11 @@ public:
 				l_info << L"finished checking result";
 
 				// Notify waiting thread at (1)
-				byps_unique_lock lock(testResult.mutex);
-				testResult.done = true;
-				testResult.finished.notify_all();
-
+                {
+                    byps_unique_lock lock(testResult.mutex);
+                    testResult.done = true;
+                    testResult.finished.notify_all();
+                }
 			});
 
 		});
@@ -285,10 +297,10 @@ public:
 		l_info << L")testRemoteStreamsAsync";
 	}
 
-	virtual void init() {
-        ADD_TEST(testRemoteStreamsOneFileStream);
-        ADD_TEST(testRemoteStreamsContentLength);
-        ADD_TEST(testRemoteStreamsChunked);
+    virtual void init() {
+//        ADD_TEST(testRemoteStreamsOneFileStream);
+//        ADD_TEST(testRemoteStreamsContentLength);
+//        ADD_TEST(testRemoteStreamsChunked);
         ADD_TEST(testRemoteStreamAsync);
 
 #ifdef TEST_LARGE_STREAMS
