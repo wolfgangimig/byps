@@ -6,36 +6,44 @@
 
 namespace com { namespace wilutions { namespace byps {
 
-BINLINE BTargetId::BTargetId() : v1(0), v2(0) {
+BINLINE BTargetId::BTargetId() : serverId(0), v1(0), v2(0) {
 }
 
-BINLINE BTargetId::BTargetId(int64_t v1, int64_t v2) : v1(v1), v2(v2) {
+BINLINE BTargetId::BTargetId(int32_t serverId, int64_t v1, int64_t v2) 
+	: serverId(serverId), v1(v1), v2(v2) {
 }
 
 BINLINE bool BTargetId::isZero() {
-    return v1 == 0 && v2 == 0;
+    return serverId == 0 && v1 == 0 && v2 == 0;
 }
 
 BINLINE bool BTargetId::operator==(const BTargetId& rhs) const {
-    return v1 == rhs.v1 && v2 == rhs.v2;
+    return serverId == rhs.serverId && v1 == rhs.v1 && v2 == rhs.v2;
 }
 
-BINLINE BTargetId BTargetId::parseString(const char* sz, size_t len) {
-	if (!sz || len < 32) return BTargetId();
+BINLINE std::wstring BTargetId::toString() const {
+	std::wstringstream ss;
+	ss << (*this);
+	return ss.str();
+}
+
+BINLINE BTargetId BTargetId::parseString(const string& s) {
+	int32_t serverId = 0;
+	int64_t v1 = 0, v2 = 0;
 
 	stringstream ss;
-	ss << string(sz, 16);
-	ss << " ";
-	ss << string(sz+16, len-16);
+	for (string::const_iterator it = s.begin(); it != s.end(); it++) {
+		ss << ((*it == '.') ? ' ' : *it);
+	}
 
-	uint64_t v0 = 0, v1 = 0;
-	ss >> hex >> v0 >> hex >> v1;
+	ss >> serverId >> v1 >> v2;
 
-	return BTargetId((int64_t)v0, (int64_t)v1);
+	return BTargetId(serverId, v1, v2);
 }
 
-void BTargetId::serialize(BBuffer& bbuf) {
+BINLINE void BTargetId::serialize(BBuffer& bbuf) {
 	bool cmpr = bbuf.setCompressInteger(false);
+	bbuf.serialize(serverId);
 	bbuf.serialize(v1);
 	bbuf.serialize(v2);
 	bbuf.setCompressInteger(cmpr);

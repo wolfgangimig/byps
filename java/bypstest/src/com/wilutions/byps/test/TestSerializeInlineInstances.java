@@ -73,7 +73,7 @@ public class TestSerializeInlineInstances {
 	private void internalTestSerializeInlineInstance(Actor obj, String jsonText) throws BException {
 		BOutput bout = transport.getOutput();
 		bout.header.messageId = 123;
-		bout.header.targetId = new BTargetId(1,2);
+		bout.header.targetId = new BTargetId(1,1,2);
 		
 		bout.store(obj);
 		
