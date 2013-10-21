@@ -443,7 +443,7 @@ public class HWireClient extends BWire {
 			HttpURLConnection c = conn.getAndSet(null);
 			if (c != null) {
 			  if(log.isDebugEnabled()) log.debug("disconnect");
-				c.disconnect();
+				try { c.disconnect(); } catch (Throwable npe) {}
 				c = null;
 			}
 			if (log.isDebugEnabled()) log.debug(")done");
@@ -1199,7 +1199,7 @@ public class HWireClient extends BWire {
 			finally {
 				if (conn != null) {
 					if (log.isDebugEnabled()) log.debug("disconnect");
-					conn.disconnect();
+					try { conn.disconnect(); } catch (Throwable npe) {}
 				}
 			}
 		}
@@ -1259,7 +1259,7 @@ public class HWireClient extends BWire {
 		finally {
 			if (conn != null) {
 				if (log.isDebugEnabled()) log.debug("disconnect");
-				conn.disconnect();
+				try { conn.disconnect(); } catch (Throwable npe) {}
 			}
 		}
 		if (log.isDebugEnabled()) log.debug(")testAdapter=" + ret);
