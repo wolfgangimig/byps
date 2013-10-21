@@ -557,7 +557,7 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 com.wilutions.byps.BAuthentication = function() {
 	this.authenticate = function(client, asyncResult) {;};
 	this.isReloginException = function(client, ex, typeId) { return false; };
-	this.getSession = function() { return null; };
+	this.getSession = function(client, typeId, asyncResult) { };
 };
 
 //------------------------------------------------------------------------------------------------
@@ -590,14 +590,74 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 		return new com.wilutions.byps.BInputOutput(this, null, jsonText);
 	};
 	
-	this.sendMethod = function(methodMessage, __byps__asyncResult) {
-		if (__byps__asyncResult) {
-			this.send(methodMessage, function(resultMessage, ex) { 
-				__byps__asyncResult(resultMessage ? resultMessage.result : null, ex);
+	this.sendMethod = function(methodRequest, asyncResult) {
+		var ret = null;
+		if (asyncResult) {
+			
+			this._assignSessionThenSendMethod(methodRequest, function(methodResult, ex) {
+				var ret = methodResult ? methodResult.result : null; 
+				asyncResult(ret, ex);
 			});
+			
 		}
 		else {
-			return this.send(methodMessage).result;
+			var methodResult = this._assignSessionThenSendMethod(methodRequest, asyncResult);
+			ret = methodResult ? methodResult.result : null; 
+		}
+		return ret;
+	};
+	
+	this._assignSessionThenSendMethod = function(methodRequest, asyncResult) {
+		var methodResult = null;
+		
+		if (this._authentication) {
+			
+			if (asyncResult) {
+				
+				var transport = this;
+				
+				this._authentication.getSession(null, methodRequest._typeId, function(session, ex) {
+					
+					if (ex) {
+						
+						var relogin = transport._internalIsReloginException(ex, typeId);
+						if (relogin) {
+						 	transport._reloginAndRetrySend(methodRequest, asyncResult);
+						}
+						else {
+							asyncResult.setAsyncResult(null, ex);
+						}
+						
+						asyncResult(null, ex);
+					}
+					else {
+						
+						transport._assignSessionInMethodRequest(methodRequest, session);
+						transport.send(methodRequest, asyncResult);
+					}
+				});
+				
+			}
+			else {
+				var session = this._authentication.getSession(null, methodRequest._typeId);
+				this._assignSessionInMethodRequest(methodRequest, session);
+				methodResult = this.send(methodRequest);
+			}
+		}
+		else {
+			methodResult = this.send(methodMessage, asyncResult);
+		}
+		
+		return methodResult;
+	};
+	
+	this._assignSessionInMethodRequest = function(methodRequest, session) {
+		// Replace session object element name 
+		// found in omethodRequestbj.__byps__sess with the session object.
+		var sessElmName = methodRequest.__byps__sess;
+		if (sessElmName) {
+			methodRequest[sessElmName] = session;
+			// delete methodRequest.__byps__sess; need this member in case of re-login 
 		}
 	};
 	
@@ -627,14 +687,6 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 		var me = this;
 		var transport = this;
 		
-		// If authentication is enabled, replace session object element name 
-		// found in obj.__byps__sess with the session object.
-		var sessElmName = obj.__byps__sess;
-		if (this._authentication && sessElmName) {
-			obj[sessElmName] = this._authentication.getSession();
-			delete obj.__byps__sess; 
-		}
-		
 		var bout = transport.getOutput();
 		var requestMessage = bout.store(obj);
 		
@@ -654,21 +706,10 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 			var relogin = me._internalIsReloginException(ex, 0);
 			if (relogin) {
 				
-				var authResult = function(result, ex) {
-					if (ex) {
-						asyncResult(result, ex);
-					}
-					else {
-						// Send request again
-						obj.__byps__sess = sessElmName;
-						me._internalSend(obj, asyncResult, processAsync);
-					}
-				};
-				
-				me.negotiateProtocolClient(authResult, processAsync);
-				
+				me._reloginAndRetrySend(obj, asyncResult, processAsync); 
 			}
 			else {
+
 				asyncResult(methodResult, ex);
 			}
 		};
@@ -807,6 +848,32 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 			ret = this._authentication.isReloginException(null, ex, typeId);
 		}
 		return ret;
+	};
+	
+	this._reloginAndRetrySend = function(methodRequest, asyncResult, processAsync) {
+		
+		var transport = this;
+		
+		var authResult = function(result, ex) {
+			if (ex) {
+				asyncResult(result, ex);
+			}
+			else {
+				// Send request again
+				var messageResult = null;
+				try {
+					messageResult = transport._assignSessionThenSendMethod(methodRequest, processAsync ? asyncResult : null);
+				}
+				catch (ex2) {
+					ex = ex2;
+				}
+				if (!processAsync) {
+					asyncResult(messageResult, ex);
+				}
+			}
+		};
+		
+		this.negotiateProtocolClient(authResult, processAsync);
 	};
 	
 	this.isReloginException = function(ex, typeId) {
@@ -1049,7 +1116,7 @@ com.wilutions.byps.BClient = function() {
 		this.transport.negotiateProtocolClient(asyncResult, processAsync);
 	};
 	
-	this.stop = function() {
+	this.done = function() {
 		this.transport.wire.cancelAllRequests();
 	};
 	
@@ -1090,6 +1157,9 @@ com.wilutions.byps.BClient = function() {
 					if (processAsync) {
 						asyncResult(result, ex);
 					}
+					else if (ex) {
+						throw ex;
+					}
 				};
 				
 				var result = true;
@@ -1126,8 +1196,8 @@ com.wilutions.byps.BClient = function() {
 			      return ret;
 			},
 			
-			getSession : function() {
-				return innerAuth ? innerAuth.getSession() : null;
+			getSession : function(ignored, typeId, asyncResult) {
+				return innerAuth ? innerAuth.getSession(this, typeId, asyncResult) : null;
 			}
 			
 		};
@@ -1240,6 +1310,9 @@ com.wilutions.byps.BServerR = function(transport, server) {
 				bout.setException(exception);
 				message = bout.toMessage();
 			}
+			else if (!message) {
+				message = me._makeInitMessage();
+			}
 			me._run(message);
 		};
 		
@@ -1248,11 +1321,23 @@ com.wilutions.byps.BServerR = function(transport, server) {
 				if (!exception && message.jsonText) {
 					me.transport.recv(me.server, message, asyncResult);
 				} else {
-					window.setTimeout(function() {
-							var methodResult = me._makeInitMessage();
-							me._run(methodResult);
-						}, 
-						60 * 1000);
+					
+					var isForbidden = exception.toString().indexOf("403") >= 0;
+					if (isForbidden) {
+						// Session was invalidated
+					}
+					else {
+						var isTimeout = exception.toString().indexOf("408") >= 0;
+						if (isTimeout) {
+							// Retry after one minute
+							window.setTimeout(function() {
+									var methodResult = me._makeInitMessage();
+									me._run(methodResult);
+								}, 
+								60 * 1000);
+						}
+						asyncResult(null, null);
+					}
 				}
 			} catch (ex) {
 				asyncResult(null, ex);
