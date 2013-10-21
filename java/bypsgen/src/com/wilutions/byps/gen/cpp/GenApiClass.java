@@ -469,19 +469,25 @@ class GenApiClass {
 		String qname = cppInfo.getQClassName();
 		
 		if (serInfo.isResultClass() ) {
+		  prH.checkpoint();
 			String rtypeName = pctxt.getReturnTypeName(serInfo.methodInfo);
 			prH.print("public: ").print(serInfo.name).print("(")
 			   .print(rtypeName).print(" result = ").print(rtypeName).print("())")
 			   .print(" : result(result) {}");
 		}
 		else {
-		
+		  
 			if (serInfo.isStubType()) {
+			  prH.checkpoint();
+			  prC.checkpoint();
 				prH.print("public: ").print(serInfo.name).println("(PTransport transport);");
 				prC.print(qname).print("::").print(serInfo.name).println("(PTransport transport) : BStub(transport) {");
 			}
 			else {
-				prH.print("public: ").print(serInfo.name).println("();");
+        prH.checkpoint();
+        prC.checkpoint();
+
+        prH.print("public: ").print(serInfo.name).println("();");
 				
 				CodePrinter mpr = prC.print(qname).print("::").print(serInfo.name).print("() ");
 				
@@ -524,6 +530,9 @@ class GenApiClass {
 
 		String constrDecl = makeInitConstructorDecl();
 		
+    prH.checkpoint();
+    prC.checkpoint();
+
 		prH.print("public: ").print(constrDecl).print(";");
 		prC.print(qname).print("::").print(constrDecl);
 	
@@ -540,7 +549,10 @@ class GenApiClass {
 		for (MemberInfo minfo : serInfo.members) {
 			if (minfo.isStatic) continue;
 			if (serInfo.isRequestClass() && pctxt.isSessionParam(methodInfo.remoteInfo, minfo)) continue;
-			prC.print( first ? ": " : ", " ).print(minfo.name).print("(").print(minfo.name).println(")");
+			
+			CodePrinter mpr = prC.print( first ? ": " : ", " );
+			mpr.print(minfo.name).print("(").print(minfo.name).println(")");
+			
 			first = false;
 		}
 		prC.println("{}");
@@ -553,13 +565,13 @@ class GenApiClass {
 		constr.append(serInfo.name).append("(");
 		
 		boolean first = true;
-		for (MemberInfo minfo : serInfo.members) {
+		for (MemberInfo pinfo : serInfo.members) {
 		  
-		  if (serInfo.isRequestClass() && pctxt.isSessionParam(methodInfo.remoteInfo, minfo)) continue;
+		  if (serInfo.isRequestClass() && pctxt.isSessionParam(methodInfo.remoteInfo, pinfo)) continue;
 		  
 			if (first) first = false; else constr.append(", ");
-			TypeInfoCpp tinfoCpp = new TypeInfoCpp(minfo.type);
-			constr.append(tinfoCpp.getQTypeName()).append(" ").append(minfo.name);
+			
+			constr.append( pctxt.printMethodParam(pinfo, serInfo.pack) );
 		}
 		
 		constr.append(")");

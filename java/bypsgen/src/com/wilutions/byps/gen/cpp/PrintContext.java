@@ -341,8 +341,7 @@ class PrintContext extends PrintContextBase {
       if (isSessionParam(rinfo, pinfo)) continue;
 		  
 			if (first) first = false; else mpr.print(", ");
-			TypeInfoCpp tinfoCpp = new TypeInfoCpp(pinfo.type);
-			mpr.print(tinfoCpp.toString(rinfo.pack)).print(" ").print(pinfo.name);
+			mpr = mpr.print( printMethodParam(pinfo,rinfo.pack) );
 		}
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
@@ -385,13 +384,28 @@ class PrintContext extends PrintContextBase {
       if (isSessionParam(rinfo, pinfo)) continue;
 		  
 			if (first) first = false; else mpr.print(", ");
-			tinfoCpp = new TypeInfoCpp(pinfo.type);
-			mpr.print(tinfoCpp.toString(rinfo.pack)).print(" ").print(pinfo.name);
+			mpr = mpr.print( printMethodParam(pinfo,rinfo.pack) );
 		}
 		
 		mpr.print(") ");
 
 		return mpr;
+	}
+	
+	public String printMethodParam(MemberInfo pinfo, String pack) {
+	  StringBuilder sbuf = new StringBuilder();
+    TypeInfoCpp tinfoCppParam = new TypeInfoCpp(pinfo.type);
+    String stype = tinfoCppParam.toString(pack);
+    
+    if (pinfo.type.isPointerType() || pinfo.type.isStringType()) {
+      sbuf.append("const ").append(stype).append("& ");
+    }
+    else {
+      sbuf.append(stype).append(" ");
+    }
+    sbuf.append(pinfo.name);
+    
+    return sbuf.toString();
 	}
 
 	String getSerializerInstance(TypeInfo tinfo, BBinaryModel pformat) {
