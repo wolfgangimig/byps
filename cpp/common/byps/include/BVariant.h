@@ -41,6 +41,8 @@ public:
 
     std::wstring toString() const;
 
+	void clear();
+
 private:
     BTYPEID type;
     union {
@@ -61,7 +63,7 @@ private:
 
 
 
-inline BVariant::BVariant() : type(BTYPEID_INT64) { u.longVal = 0; }
+inline BVariant::BVariant() : type(BTYPEID_INT64) { clear(); u.longVal = 0; }
 
 inline BVariant::BVariant(const BVariant& rhs)
     : type(rhs.type)
@@ -71,23 +73,24 @@ inline BVariant::BVariant(const BVariant& rhs)
 	u.longVal = rhs.u.longVal;
 }
 
-inline BVariant::BVariant(bool v) : type(BTYPEID_BOOL) { u.boolVal = v; }
-inline BVariant::BVariant(wchar_t v) : type(BTYPEID_WCHAR) { u.charVal = v; }
-inline BVariant::BVariant(int8_t v) : type(BTYPEID_INT8) { u.byteVal = v; }
-inline BVariant::BVariant(int16_t v) : type(BTYPEID_INT16) { u.shortVal = v; }
-inline BVariant::BVariant(int32_t v) : type(BTYPEID_INT32) { u.intVal = v; }
-inline BVariant::BVariant(int64_t v) : type(BTYPEID_INT64) { u.longVal = v; }
-inline BVariant::BVariant(float v) : type(BTYPEID_FLOAT) { u.floatVal = v; }
-inline BVariant::BVariant(double v) : type(BTYPEID_DOUBLE) { u.doubleVal = v; }
-inline BVariant::BVariant(const wstring& v) : type(BTYPEID_STRING), strVal(v) {}
-template<typename _Type> BVariant::BVariant(byps_ptr<_Type> v) : type(BTYPEID_OBJECT), objVal(byps_static_ptr_cast<void>(v)) {}
-inline BVariant::BVariant(PSerializable v) : type(BTYPEID_OBJECT), sobjVal(v) {}
-inline BVariant::BVariant(const BException& v) : type(BTYPEID_EXCEPTION), exVal(v) {}
+inline BVariant::BVariant(bool v) : type(BTYPEID_BOOL) { clear(); u.boolVal = v; }
+inline BVariant::BVariant(wchar_t v) : type(BTYPEID_WCHAR) { clear(); u.charVal = v; }
+inline BVariant::BVariant(int8_t v) : type(BTYPEID_INT8) { clear(); u.byteVal = v; }
+inline BVariant::BVariant(int16_t v) : type(BTYPEID_INT16) { clear(); u.shortVal = v; }
+inline BVariant::BVariant(int32_t v) : type(BTYPEID_INT32) { clear(); u.intVal = v; }
+inline BVariant::BVariant(int64_t v) : type(BTYPEID_INT64) { clear(); u.longVal = v; }
+inline BVariant::BVariant(float v) : type(BTYPEID_FLOAT) { clear(); u.floatVal = v; }
+inline BVariant::BVariant(double v) : type(BTYPEID_DOUBLE) { clear(); u.doubleVal = v; }
+inline BVariant::BVariant(const wstring& v) : type(BTYPEID_STRING), strVal(v) {clear(); }
+template<typename _Type> BVariant::BVariant(byps_ptr<_Type> v) : type(BTYPEID_OBJECT), objVal(byps_static_ptr_cast<void>(v)) {clear(); }
+inline BVariant::BVariant(PSerializable v) : type(BTYPEID_OBJECT), sobjVal(v) {clear(); }
+inline BVariant::BVariant(const BException& v) : type(BTYPEID_EXCEPTION), exVal(v) {clear(); }
 
 inline BVariant::BVariant(const exception& v)
 	: type(BTYPEID_EXCEPTION)
 	, exVal( typeid(v) == typeid(BException) ? static_cast<const BException&>(v) : BException(v) )
 {
+	clear(); 
 }
 
 inline void BVariant::setType(BTYPEID v) { this->type = v; }

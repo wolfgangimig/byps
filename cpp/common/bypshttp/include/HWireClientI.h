@@ -44,6 +44,7 @@ private:
 	int64_t messageId;
     PAsyncResult innerResult;
     size_t nbOfRequests;
+	size_t countRequests;
     byps_mutex mutex;
     BVariant result;
     static BLogger log;

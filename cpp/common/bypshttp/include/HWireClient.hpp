@@ -146,7 +146,8 @@ BINLINE HWireClient_AsyncResultAfterAllRequests::HWireClient_AsyncResultAfterAll
 	, tpool(tpool)
 	, messageId(messageId)
 	, innerResult(innerResult)
-	, nbOfRequests(nbOfRequests) {
+	, nbOfRequests(nbOfRequests)
+	, countRequests(0) {
     l_debug << L"ctor(), messageId=" << messageId << L", nbOfRequests=" << nbOfRequests;
 }
 
@@ -155,13 +156,11 @@ BINLINE void HWireClient_AsyncResultAfterAllRequests::setAsyncResult(const BVari
 	bool cancelMessage = false;
 	bool isLastResult = false;
 
-	BVariant innerObj;
-
 	{
 		byps_unique_lock lock(mutex);
 
-        isLastResult = --nbOfRequests == 0;
-        l_debug << L"nbOfRequests=" << nbOfRequests;
+        isLastResult = ++countRequests == nbOfRequests;
+        l_debug << L"countRequests=" << countRequests;
 
 		if (obj.isException()) {
 			cancelMessage = !result.isException();
@@ -171,15 +170,11 @@ BINLINE void HWireClient_AsyncResultAfterAllRequests::setAsyncResult(const BVari
 			result = obj;
 		}
 
-		if (isLastResult) {
-			innerObj = obj;
-		}
-
 	}
 
     if (isLastResult) {
         l_debug << L"execute result in tpool";
-		PRunnable r(new HWireClient_ExecResult(innerResult, innerObj));
+		PRunnable r(new HWireClient_ExecResult(innerResult, result));
 		tpool->execute(r);
 	}
 

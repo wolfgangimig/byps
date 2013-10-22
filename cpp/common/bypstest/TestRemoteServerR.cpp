@@ -32,7 +32,7 @@ public:
 class ClientIFImplPutStreams : public BSkeleton_ClientIF {
 	static BLogger log;
 public:
-	virtual void putStreams(byps_ptr< std::vector< PContentStream > > vecR, int32_t ctrl) {
+	virtual void putStreams(const byps_ptr< std::vector< PContentStream > >& vecR, int32_t ctrl) {
 		l_info << L"putStreams(";
 		try {
 			byps_ptr< std::vector< PContentStream > > vec = TestUtilHttp::makeTestStreams();
@@ -299,7 +299,7 @@ public:
 	}
 
 	virtual void init() {
-         ADD_TEST(testCallClientFromServer);
+        ADD_TEST(testCallClientFromServer);
         ADD_TEST(testCallDeadClientFromClient);
         ADD_TEST(testCallClientFromClientThrowEx);
         ADD_TEST(testCallClientFromServerNoRemoteImpl);

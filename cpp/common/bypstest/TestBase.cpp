@@ -30,7 +30,8 @@ void TestBase::afterCase() {
     long rc = client->transport.use_count();
     assert(rc >= 1);
 
-	//client->done();
+	client->done();
+	client.reset();
 
  //   assert(client.use_count() == 1);
  //   PTransport transport = client->transport;
