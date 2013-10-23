@@ -3,9 +3,9 @@
 
 #include "HServerR.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 class HServerR_LongPoll;
 typedef byps_ptr<HServerR_LongPoll> PServerR_LongPoll;
@@ -174,5 +174,5 @@ BINLINE void HServerR_SendLongPoll::send(PServerR_SendLongPoll sendLongPoll, PTr
 }
 
 
-}}}}
+}}
 #endif

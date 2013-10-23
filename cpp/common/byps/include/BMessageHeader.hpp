@@ -3,7 +3,7 @@
 
 #include "BMessageHeader.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BMessageHeader::BMessageHeader(int32_t nMagic, BVERSION nNegotiatedVersion, BByteOrder negotiatedByteOrder, int64_t messageId)
     : magic(nMagic),
@@ -71,6 +71,6 @@ BINLINE void BMessageHeader::read(BBuffer& bbuf) {
 	bbuf.setCompressInteger(cmpr);
 }
 
-}}}
+}
 
 #endif

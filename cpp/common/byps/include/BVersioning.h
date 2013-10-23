@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BVersioning {
 public:
@@ -55,6 +55,6 @@ public:
 
 };
 
-}}}
+}
 
 #endif

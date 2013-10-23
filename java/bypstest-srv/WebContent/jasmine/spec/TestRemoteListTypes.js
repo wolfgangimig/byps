@@ -10,7 +10,7 @@ describe("Tests for sending and receiving list types.", function() {
     	
 		log.info("testRemoteListTypes(");
 		
-		var obj = new com.wilutions.byps.test.api.list.ListTypes();
+		var obj = new byps.test.api.list.ListTypes();
 		obj.boolean1 = [true, false];
 		obj.byte1 = [1,2,3];
 		obj.char1 = ['a', 'b'];
@@ -52,7 +52,7 @@ describe("Tests for sending and receiving list types.", function() {
 	it("testRemoteListListInteger", function() {
 		log.info("testRemoteListListInteger(");
 		
-		var obj = new com.wilutions.byps.test.api.list.ListListTypes();
+		var obj = new byps.test.api.list.ListListTypes();
 		var list = [];
 		for (var i = 0; i < 3; i++) {
 			var itemList = [];
@@ -73,7 +73,7 @@ describe("Tests for sending and receiving list types.", function() {
 	it("testRemoteListMapSetListInteger", function() {
 		log.info("testRemoteListMapSetListInteger(");
 		
-		var obj = new com.wilutions.byps.test.api.list.ListListTypes();
+		var obj = new byps.test.api.list.ListListTypes();
 		var list = []; //new ArrayList<Map<Integer,List<Set<Integer>>>>();
 		
 		for (var i = 0; i < 2; i++) {

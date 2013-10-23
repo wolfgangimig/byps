@@ -16,7 +16,7 @@
 <script type="text/javascript">
 
 
-com.wilutions.byps.test.api.ClientIFImpl = function() {
+byps.test.api.ClientIFImpl = function() {
 
 	this.incrementInt = function(a) {
 		alert("incrementInt");
@@ -24,11 +24,11 @@ com.wilutions.byps.test.api.ClientIFImpl = function() {
 	}
 	
 };
-com.wilutions.byps.test.api.ClientIFImpl.prototype = new com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF();
+byps.test.api.ClientIFImpl.prototype = new byps.test.api.srvr.BSkeleton_ClientIF();
 
 var url = "/bypstest-srv/bypsservlet";
-var client = com.wilutions.byps.test.api.createClient_Testser(url, true);
-client.addRemote(new com.wilutions.byps.test.api.ClientIFImpl()); 
+var client = byps.test.api.createClient_Testser(url, true);
+client.addRemote(new byps.test.api.ClientIFImpl()); 
 
 function test() {
 	
@@ -51,7 +51,7 @@ function test() {
 function test2() {
 	
 	
-	var obj = new com.wilutions.byps.test.api.enu.UsePlanets();
+	var obj = new byps.test.api.enu.UsePlanets();
 	var jstext = JSON.stringify(obj);
 	
 	try {
@@ -81,10 +81,10 @@ function test2() {
 };
 
 function test1() {
-	var targetId = new com.wilutions.byps.BTargetId();
-	var code = com.wilutions.byps.BException.CORRUPT;
+	var targetId = new byps.BTargetId();
+	var code = byps.BException.CORRUPT;
 	
-	var hdr = new com.wilutions.byps.BNegotiate();
+	var hdr = new byps.BNegotiate();
 	var str = JSON.stringify(["N","S",0,"_",""]);
 	var str2 = hdr.toJSON();
 	alert(str + " -- " + str2);
@@ -92,7 +92,7 @@ function test1() {
 	var arr = JSON.parse(str);
 	var v = arr[4];
 	
-	var hdr2 = new com.wilutions.byps.BNegotiate();
+	var hdr2 = new byps.BNegotiate();
 	hdr2.parse(str);
 	alert(hdr2);
 };

@@ -10,7 +10,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 
@@ -41,6 +41,6 @@ template<typename _Type> POBJECT BSerializerT<_Type>::serialize(BIO &bio, void *
     return POBJECT();
 }
 
-}}}
+}
 
 #endif /* BSERIALIZER_H_ */

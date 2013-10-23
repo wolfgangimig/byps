@@ -14,7 +14,7 @@ describe("Tests for sending and receiving set types.", function() {
     	
 		log.info("testRemoteSetTypes(");
 		
-		var obj = new com.wilutions.byps.test.api.set.SetTypes();
+		var obj = new byps.test.api.set.SetTypes();
 		obj.boolean1 = [true, false];
 		obj.byte1 = [1,2,3];
 		obj.char1 = ['a', 'b'];

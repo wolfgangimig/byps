@@ -1,8 +1,8 @@
 ﻿#include "Testser-impl.h"
 using namespace ::std;
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
 PApiDescriptor BApiDescriptor_Testser::instance() {
 	return PApiDescriptor((new BApiDescriptor(
@@ -14,9 +14,9 @@ PApiDescriptor BApiDescriptor_Testser::instance() {
 	);
 };
 
-}}}}}
+}}}
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
 PClient_Testser BClient_Testser::createClient(PTransportFactory transportFactory) {
 	return PClient_Testser(new BClient_Testser(transportFactory));
@@ -24,22 +24,22 @@ PClient_Testser BClient_Testser::createClient(PTransportFactory transportFactory
 PClient_Testser BClient_Testser::createClientR(PTransport transport) {
 	return PClient_Testser(new BClient_Testser(transport));
 }
-void BClient_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
+void BClient_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(1881829396, remoteSkeleton);
 }
 
-void BClient_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
+void BClient_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(1992245333, remoteSkeleton);
 }
 
-void BClient_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
+void BClient_Testser::addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(1677934392, remoteSkeleton);
 }
 
-void BClient_Testser::addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
+void BClient_Testser::addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(1784257353, remoteSkeleton);
 }
@@ -51,54 +51,54 @@ BClient_Testser::BClient_Testser(PTransportFactory transportFactory)
 			BServer_Testser::createServerR(transportFactory->createServerTransport())
 		)
 	)
-	, bioFruitService(new com::wilutions::byps::test::api::inherit::BStub_BioFruitService(transport))
-	, bioLemonService(new com::wilutions::byps::test::api::inherit::BStub_BioLemonService(transport))
-	, fruitService(new com::wilutions::byps::test::api::inherit::BStub_FruitService(transport))
-	, lemonService(new com::wilutions::byps::test::api::inherit::BStub_LemonService(transport))
-	, plantService(new com::wilutions::byps::test::api::inherit::BStub_PlantService(transport))
-	, remoteArrayTypes1dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
-	, remoteArrayTypes23(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
-	, remoteArrayTypes4dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
-	, remoteConstants(new com::wilutions::byps::test::api::remote::BStub_RemoteConstants(transport))
-	, remoteEnums(new com::wilutions::byps::test::api::remote::BStub_RemoteEnums(transport))
-	, remoteInlineInstance(new com::wilutions::byps::test::api::remote::BStub_RemoteInlineInstance(transport))
-	, remoteListTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteListTypes(transport))
-	, remoteMapTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteMapTypes(transport))
-	, remotePrimitiveTypes(new com::wilutions::byps::test::api::remote::BStub_RemotePrimitiveTypes(transport))
-	, remoteReferences(new com::wilutions::byps::test::api::remote::BStub_RemoteReferences(transport))
-	, remoteServerCtrl(new com::wilutions::byps::test::api::remote::BStub_RemoteServerCtrl(transport))
-	, remoteSetTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteSetTypes(transport))
-	, remoteStreams(new com::wilutions::byps::test::api::remote::BStub_RemoteStreams(transport))
-	, remoteWithAuthentication(new com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
-	, clientIF(new com::wilutions::byps::test::api::srvr::BStub_ClientIF(transport))
-	, serverIF(new com::wilutions::byps::test::api::srvr::BStub_ServerIF(transport))
-	, evolveIF(new com::wilutions::byps::test::api::ver::BStub_EvolveIF(transport))
+	, bioFruitService(new byps::test::api::inherit::BStub_BioFruitService(transport))
+	, bioLemonService(new byps::test::api::inherit::BStub_BioLemonService(transport))
+	, fruitService(new byps::test::api::inherit::BStub_FruitService(transport))
+	, lemonService(new byps::test::api::inherit::BStub_LemonService(transport))
+	, plantService(new byps::test::api::inherit::BStub_PlantService(transport))
+	, remoteArrayTypes1dim(new byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
+	, remoteArrayTypes23(new byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
+	, remoteArrayTypes4dim(new byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
+	, remoteConstants(new byps::test::api::remote::BStub_RemoteConstants(transport))
+	, remoteEnums(new byps::test::api::remote::BStub_RemoteEnums(transport))
+	, remoteInlineInstance(new byps::test::api::remote::BStub_RemoteInlineInstance(transport))
+	, remoteListTypes(new byps::test::api::remote::BStub_RemoteListTypes(transport))
+	, remoteMapTypes(new byps::test::api::remote::BStub_RemoteMapTypes(transport))
+	, remotePrimitiveTypes(new byps::test::api::remote::BStub_RemotePrimitiveTypes(transport))
+	, remoteReferences(new byps::test::api::remote::BStub_RemoteReferences(transport))
+	, remoteServerCtrl(new byps::test::api::remote::BStub_RemoteServerCtrl(transport))
+	, remoteSetTypes(new byps::test::api::remote::BStub_RemoteSetTypes(transport))
+	, remoteStreams(new byps::test::api::remote::BStub_RemoteStreams(transport))
+	, remoteWithAuthentication(new byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
+	, clientIF(new byps::test::api::srvr::BStub_ClientIF(transport))
+	, serverIF(new byps::test::api::srvr::BStub_ServerIF(transport))
+	, evolveIF(new byps::test::api::ver::BStub_EvolveIF(transport))
 	{
 }
 BClient_Testser::BClient_Testser(PTransport transport) 
 	: BClient(transport, NULL)
-	, bioFruitService(new com::wilutions::byps::test::api::inherit::BStub_BioFruitService(transport))
-	, bioLemonService(new com::wilutions::byps::test::api::inherit::BStub_BioLemonService(transport))
-	, fruitService(new com::wilutions::byps::test::api::inherit::BStub_FruitService(transport))
-	, lemonService(new com::wilutions::byps::test::api::inherit::BStub_LemonService(transport))
-	, plantService(new com::wilutions::byps::test::api::inherit::BStub_PlantService(transport))
-	, remoteArrayTypes1dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
-	, remoteArrayTypes23(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
-	, remoteArrayTypes4dim(new com::wilutions::byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
-	, remoteConstants(new com::wilutions::byps::test::api::remote::BStub_RemoteConstants(transport))
-	, remoteEnums(new com::wilutions::byps::test::api::remote::BStub_RemoteEnums(transport))
-	, remoteInlineInstance(new com::wilutions::byps::test::api::remote::BStub_RemoteInlineInstance(transport))
-	, remoteListTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteListTypes(transport))
-	, remoteMapTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteMapTypes(transport))
-	, remotePrimitiveTypes(new com::wilutions::byps::test::api::remote::BStub_RemotePrimitiveTypes(transport))
-	, remoteReferences(new com::wilutions::byps::test::api::remote::BStub_RemoteReferences(transport))
-	, remoteServerCtrl(new com::wilutions::byps::test::api::remote::BStub_RemoteServerCtrl(transport))
-	, remoteSetTypes(new com::wilutions::byps::test::api::remote::BStub_RemoteSetTypes(transport))
-	, remoteStreams(new com::wilutions::byps::test::api::remote::BStub_RemoteStreams(transport))
-	, remoteWithAuthentication(new com::wilutions::byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
-	, clientIF(new com::wilutions::byps::test::api::srvr::BStub_ClientIF(transport))
-	, serverIF(new com::wilutions::byps::test::api::srvr::BStub_ServerIF(transport))
-	, evolveIF(new com::wilutions::byps::test::api::ver::BStub_EvolveIF(transport))
+	, bioFruitService(new byps::test::api::inherit::BStub_BioFruitService(transport))
+	, bioLemonService(new byps::test::api::inherit::BStub_BioLemonService(transport))
+	, fruitService(new byps::test::api::inherit::BStub_FruitService(transport))
+	, lemonService(new byps::test::api::inherit::BStub_LemonService(transport))
+	, plantService(new byps::test::api::inherit::BStub_PlantService(transport))
+	, remoteArrayTypes1dim(new byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
+	, remoteArrayTypes23(new byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
+	, remoteArrayTypes4dim(new byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
+	, remoteConstants(new byps::test::api::remote::BStub_RemoteConstants(transport))
+	, remoteEnums(new byps::test::api::remote::BStub_RemoteEnums(transport))
+	, remoteInlineInstance(new byps::test::api::remote::BStub_RemoteInlineInstance(transport))
+	, remoteListTypes(new byps::test::api::remote::BStub_RemoteListTypes(transport))
+	, remoteMapTypes(new byps::test::api::remote::BStub_RemoteMapTypes(transport))
+	, remotePrimitiveTypes(new byps::test::api::remote::BStub_RemotePrimitiveTypes(transport))
+	, remoteReferences(new byps::test::api::remote::BStub_RemoteReferences(transport))
+	, remoteServerCtrl(new byps::test::api::remote::BStub_RemoteServerCtrl(transport))
+	, remoteSetTypes(new byps::test::api::remote::BStub_RemoteSetTypes(transport))
+	, remoteStreams(new byps::test::api::remote::BStub_RemoteStreams(transport))
+	, remoteWithAuthentication(new byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
+	, clientIF(new byps::test::api::srvr::BStub_ClientIF(transport))
+	, serverIF(new byps::test::api::srvr::BStub_ServerIF(transport))
+	, evolveIF(new byps::test::api::ver::BStub_EvolveIF(transport))
 	{
 }
 PRemote BClient_Testser::getStub(int remoteId) {
@@ -126,9 +126,9 @@ PRemote BClient_Testser::getStub(int remoteId) {
 	if (remoteId == 2078696281) return evolveIF;
 	return PRemote();
 }
-}}}}}
+}}}
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
 PServer_Testser BServer_Testser::createServer(PTransportFactory transportFactory) {
 	return PServer_Testser(new BServer_Testser(transportFactory));
@@ -136,19 +136,19 @@ PServer_Testser BServer_Testser::createServer(PTransportFactory transportFactory
 PServer_Testser BServer_Testser::createServerR(PTransport transport) {
 	return PServer_Testser(new BServer_Testser(transport));
 }
-void BServer_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
+void BServer_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
 	BServer::addRemote(1881829396, remoteSkeleton);
 }
 
-void BServer_Testser::addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
+void BServer_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
 	BServer::addRemote(1992245333, remoteSkeleton);
 }
 
-void BServer_Testser::addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
+void BServer_Testser::addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
 	BServer::addRemote(1677934392, remoteSkeleton);
 }
 
-void BServer_Testser::addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
+void BServer_Testser::addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
 	BServer::addRemote(1784257353, remoteSkeleton);
 }
 
@@ -165,5 +165,5 @@ BServer_Testser::BServer_Testser(PTransport transport)
 	: BServer(transport, NULL)
 	{
 }
-}}}}}
+}}}
 

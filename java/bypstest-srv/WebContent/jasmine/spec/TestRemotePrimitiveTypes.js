@@ -8,7 +8,7 @@ describe("Tests for sending and receiving primitive types.", function() {
 
     it("testOmitTransientMembers", function() {
     	
-    	var obj = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+    	var obj = new byps.test.api.prim.PrimitiveTypes();
     	obj.temp = "transient member";
     	
     	remote.setObject(obj);
@@ -80,10 +80,10 @@ describe("Tests for sending and receiving primitive types.", function() {
     it("testPrimitiveTypesReferenceToOtherObject" , function() {
 		log.info("testPrimitiveTypesReferenceToOtherObject(");
 
-		var obj1 = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		var obj1 = new byps.test.api.prim.PrimitiveTypes();
 		obj1.intVal = 123;
 		obj1.doubleVal = 0.0;
-		obj1.objVal = obj1.objVal2 = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		obj1.objVal = obj1.objVal2 = new byps.test.api.prim.PrimitiveTypes();
 		obj1.objVal.intVal = 456;
 		
 		remote.setPrimitiveTypes(obj1);
@@ -98,7 +98,7 @@ describe("Tests for sending and receiving primitive types.", function() {
     it("testPrimitiveTypesReferenceToSelf" , function() {
 		log.info("testPrimitiveTypesReferenceToSelf(");
 
-		var obj1 = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		var obj1 = new byps.test.api.prim.PrimitiveTypes();
 		obj1.intVal = 123;
 		obj1.objVal = obj1.objVal2 = obj1;
 		

@@ -4,9 +4,9 @@
 #include "Bypshttp.h"
 #include "HException.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http { namespace winhttp {
+namespace byps { namespace http { namespace winhttp {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 BINLINE LPCWSTR HException::getWinHttpErrorMessage(DWORD err) {
   switch (err) {
@@ -140,6 +140,6 @@ BINLINE HException::HException(DWORD httpStatus)
 	msg = ss.str();
 }
 
-}}}}}
+}}}
 
 #endif

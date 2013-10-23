@@ -7,9 +7,9 @@
 static std::wstring url = L"http://192.168.0.178:6080/bypstest-srv/bypsservlet";
 //static std::wstring url = L"http://localhost:8084/bypstest-srv/bypsservlet";
 
-using namespace com::wilutions::byps;
-using namespace com::wilutions::byps::http;
-using namespace com::wilutions::byps::test::api;
+using namespace byps;
+using namespace byps::http;
+using namespace byps::test::api;
 
 PClient_Testser TestUtilHttp::createClient(void* app) {
 	PApiDescriptor apiDesc = BApiDescriptor_Testser::instance();

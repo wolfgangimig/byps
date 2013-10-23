@@ -3,7 +3,7 @@
 
 #include "BTransport.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace std::chrono;
 
@@ -478,7 +478,7 @@ void BTransport::setAuthentication(PAuthentication auth, bool onlyIfNull) {
 }
 
 
-}}}
+}
 
 
 

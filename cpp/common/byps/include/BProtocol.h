@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BProtocol {
 public:
@@ -22,6 +22,6 @@ protected:
 
 };
 
-}}}
+}
 
 #endif

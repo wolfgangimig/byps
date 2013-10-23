@@ -18,7 +18,7 @@ describe("Tests for sending and receiving array types.", function() {
 		var double1 = [1e1, 1e2, 1e3];
 		var string1 = ["ττττ"];
 		var primitiveTypes1 = [ TestUtils.createObjectPrimitiveTypes() ];
-		var object1 = [ new com.wilutions.byps.test.api.arr.ArrayTypes1dim() ];
+		var object1 = [ new byps.test.api.arr.ArrayTypes1dim() ];
 
 		remote.setBool(boolean1);
 		TestUtils.assertEquals(log, "bool", boolean1, remote.getBool());
@@ -53,7 +53,7 @@ describe("Tests for sending and receiving array types.", function() {
 
 		var remote = client.remoteArrayTypes4dim;
 
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.boolean4 = [[[[true]]]];
 		obj.byte4 = [[[[1,2],[3,4]]]];
 		obj.char4 = [[[['u'],['l'],['l'],['a']]]];
@@ -64,7 +64,7 @@ describe("Tests for sending and receiving array types.", function() {
 		obj.primitiveTypes4 = [[[[ TestUtils.createObjectPrimitiveTypes() ]]]];
 		obj.short4 = [[[[4,2,3,4,5,6,7]]]];
 		obj.string4 = [[[["a", "b", "c"]]]];
-		var object4 = [ [ [ [ new com.wilutions.byps.test.api.arr.ArrayTypes4dim() ] ] ] ];
+		var object4 = [ [ [ [ new byps.test.api.arr.ArrayTypes4dim() ] ] ] ];
 
 		remote.setBool(obj.boolean4);
 		TestUtils.assertEquals(log, "bool", obj.boolean4, remote.getBool());

@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 class BWire {
@@ -26,6 +26,6 @@ public:
 };
 
 
-}}}
+}
 
 #endif

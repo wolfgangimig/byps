@@ -24,7 +24,7 @@
 #include "platform/platform-api.h"
 
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace ::std;
 
@@ -127,7 +127,7 @@ typedef void (*BSERIALIZER)(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 
 typedef byps_ptr<BContentStream> PContentStream;
 
-}}}
+}
 
 #include "BException.h"
 #include "BSerializable.h"

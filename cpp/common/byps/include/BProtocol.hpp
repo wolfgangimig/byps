@@ -5,7 +5,7 @@
 #include "BOutput.h"
 #include "BInput.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BProtocol::BProtocol(PApiDescriptor apiDesc, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
 : apiDesc(apiDesc), m_nNegotiatedVersion(negotiatedVersion), m_negotiatedByteOrder(negotiatedByteOrder) {
@@ -24,6 +24,6 @@ BINLINE PInput BProtocol::getInput(PTransport transport, const BMessageHeader &h
 }
 
 
-}}}
+}
 
 #endif

@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.wilutions.byps
+namespace byps
 {
     public abstract class BRegistry
     {

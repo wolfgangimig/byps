@@ -5,11 +5,11 @@
 #include "Byps.h"
 #include "Bypshttp.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http { 
+namespace byps { namespace http { 
 
 PHttpClient HttpClient_create(void* app);
 
-}}}}
+}}
 
 
 

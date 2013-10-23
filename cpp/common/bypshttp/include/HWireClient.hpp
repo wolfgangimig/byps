@@ -6,9 +6,9 @@
 #include "HWireClientI.h"
 #include <thread>
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 
 BINLINE int64_t HWireClient::makeMessageId() {
@@ -763,7 +763,7 @@ BLogger HWireClient_TestAdapter::log("HWireClient_TestAdapter");
 BLogger HWireClient_ExecResult::log("HWireClient_ExecResult");
 BLogger BPutRequest_AsyncResult::log("BPutRequest_AsyncResult");
 BLogger HWireClient_SendMessageAfterStreams::log("HWireClient_SendMessageAfterStreams");
-}}}}
+}}
 
 #endif
 

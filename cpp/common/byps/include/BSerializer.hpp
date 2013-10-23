@@ -3,7 +3,7 @@
 
 #include "BSerializer.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 BINLINE BSerializer::BSerializer(BTYPEID typeId)
@@ -11,6 +11,6 @@ BINLINE BSerializer::BSerializer(BTYPEID typeId)
 }
 
 
-}}}
+}
 
 #endif // BSERIALIZER_HPP

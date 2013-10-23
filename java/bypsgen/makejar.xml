@@ -5,7 +5,7 @@
     <target name="create_run_jar">
         <jar destfile="d:/java/lib/byps/bypsgen.jar">
             <manifest>
-                <attribute name="Main-Class" value="com.wilutions.byps.gen.doclet.BDoclet"/>
+                <attribute name="Main-Class" value="byps.gen.doclet.BDoclet"/>
                 <attribute name="Class-Path" value=". bypsgen_lib/tools.jar bypsgen_lib/log4j-1.2.15.jar bypsgen_lib/commons-logging-1.1.1.jar bypsgen_lib/jargs-1.0.jar bypsgen_lib/rhino-1.6R7.jar bypsgen_lib/yuicompressor-2.4.7.jar"/>
             </manifest>
             <fileset dir="D:/git/byps/java/bypsgen/bin"/>

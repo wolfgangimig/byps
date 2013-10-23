@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.wilutions.byps
+namespace byps
 {
     public class BMethodResult<T> 
     {

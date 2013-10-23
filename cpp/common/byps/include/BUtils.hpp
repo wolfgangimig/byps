@@ -3,7 +3,7 @@
 
 #include "BUtils.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE wstring BToStdWString(const string& str) {
 	return BToStdWString(str.c_str(), str.length());
@@ -19,7 +19,7 @@ BINLINE wstring BToStdWString(const char* str, size_t len) {
 	return ss.str();
 }
 
-}}}
+}
 
 
 #endif /* BUTILS_H_ */

@@ -3,13 +3,13 @@
 
 #include "HHttpClient.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
-using namespace com::wilutions::byps;
-
-
+using namespace byps;
 
 
-}}}}
+
+
+}}
 
 #endif

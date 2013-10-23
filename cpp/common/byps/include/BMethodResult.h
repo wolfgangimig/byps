@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 template<typename _Type> class BMethodResult : public BSerializable {
 public:
@@ -38,6 +38,6 @@ public:
 }
 */
 
-}}}
+}
 
 #endif

@@ -10,8 +10,8 @@
 
   <script type="text/javascript">
 	var url = "/bypstest-srv/bypsservlet";
-	var wire = new com.wilutions.byps.BWireClient(url, 0, 60);
-	var transportFactory = new com.wilutions.byps.BTransportFactory(com.wilutions.byps.test.api.BApiDescriptor_Testser.instance(), wire);
+	var wire = new byps.BWireClient(url, 0, 60);
+	var transportFactory = new byps.BTransportFactory(byps.test.api.BApiDescriptor_Testser.instance(), wire);
 	var client = com.wilutions.jsfs.createClient_Testser(transportFactory);
   </script>
 
@@ -60,7 +60,7 @@ This test uploads a file to the server. After the upload is completed the file i
 			
 							var streamIds = JSON.parse(ret);
 			
-							var stream = new com.wilutions.byps.BContentStream(streamIds[0]);
+							var stream = new byps.BContentStream(streamIds[0]);
 							client.remoteStreams.setImage(stream);
 			
 			 				var inputStream = client.remoteStreams.getImage();

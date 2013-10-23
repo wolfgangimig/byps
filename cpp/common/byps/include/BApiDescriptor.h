@@ -5,7 +5,7 @@
 #include "BRegistry.h"
 #include "BBinaryModel.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BApiDescriptor {
 public:
@@ -38,6 +38,6 @@ protected:
 
 };
 
-}}}
+}
 
 #endif /* BAPIDESCRIPTOR_H_ */

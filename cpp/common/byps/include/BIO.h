@@ -5,7 +5,7 @@
 #include "Byps.h"
 #include "BMessageHeader.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BIO {
 public:
@@ -185,6 +185,6 @@ template<typename _Type> void BIO::operator&(byps_ptr<_Type>& ptr) {
 }
 
 
-}}}
+}
 
 #endif // BIO_H

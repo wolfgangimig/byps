@@ -14,7 +14,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 
 		var bout = transport.getOutput();
 		
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		var msg = bout.store(obj);
 		
 		var bin = transport.getInput(msg.jsonText);
@@ -33,7 +33,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	it("testArrayTypes4dimEmpty", function() {
 		log.info("testArrayTypes4dimEmpty(");
 		
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.boolean4 = [[[[]]]];
 		obj.byte4 = [[[[]]]];
 		obj.char4 = [[[[]]]];
@@ -65,7 +65,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	it("testArrayTypes4dimNotNull", function() {
 		log.info("testArrayTypes4dimNotNull(");
 		
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.boolean4 = [[[[true]]]];
 		obj.byte4 = [[[[1,2,3]]]];
 		obj.char4 = [[[['a','b','c']]]];
@@ -116,7 +116,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	});
 
 	internalTestArrayTypes4dimBoolean = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.boolean4 = arr;
 		internalTestSerializeArrayTypes4dim(obj);
 	};
@@ -153,7 +153,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	});
 
 	internalTestArrayTypes4dimChar = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.char4 = arr;
 		internalTestSerializeArrayTypes4dim(obj);
 	};
@@ -190,7 +190,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	});
 
 	internalTestArrayTypes4dimInt = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.int4 = arr;
 		internalTestSerializeArrayTypes4dim(obj);
 	};
@@ -227,7 +227,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	});
 
 	internalTestArrayTypes4dimLong = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.long4 = arr;
 		internalTestSerializeArrayTypes4dim(obj);
 	};
@@ -264,7 +264,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	});
 
 	internalTestArrayTypes4dimString = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.string4 = arr;
 		internalTestSerializeArrayTypes4dim(obj);
 	};
@@ -301,7 +301,7 @@ describe("Tests for serializing 4-dim array types.", function() {
 	});
 
 	internalTestArrayTypes4dimPrimitiveTypes = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes4dim();
+		var obj = new byps.test.api.arr.ArrayTypes4dim();
 		obj.primitiveTypes4 = arr;
 		internalTestSerializeArrayTypes4dim(obj);
 	};

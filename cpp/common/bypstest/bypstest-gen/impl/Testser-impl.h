@@ -8,5017 +8,5015 @@
 //-------------------------------------------------
 // Forward Declaration of class BRequest_BioFruitService_certify
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BRequest_BioFruitService_certify; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_BioLemonService_useParing
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BRequest_BioLemonService_useParing; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_FruitService_squeeze
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BRequest_FruitService_squeeze; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_LemonService_pick
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BRequest_LemonService_pick; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_PlantService_grow
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BRequest_PlantService_grow; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getBool
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getBool; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getByte
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getByte; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getChar
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getChar; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getDouble
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getDouble; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getFloat
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getFloat; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getLong
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getLong; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getObject
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getObject; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getShort
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getShort; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getString
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_getString; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setBool
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setBool; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setByte
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setByte; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setChar
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setChar; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setDouble
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setDouble; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setFloat
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setFloat; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setLong
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setLong; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setObject
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setObject; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setShort
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setShort; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setString
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes1dim_setString; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysClass
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes23_sendArraysClass; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysInline
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes23_sendArraysInline; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes23_sendArraysInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysObject
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes23_sendArraysObject; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysString
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes23_sendArraysString; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getBool
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getBool; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getByte
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getByte; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getChar
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getChar; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getDouble
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getDouble; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getFloat
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getFloat; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getLong
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getLong; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getObject
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getObject; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getShort
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getShort; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getString
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_getString; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setBool
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setBool; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setByte
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setByte; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setChar
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setChar; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setDouble
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setDouble; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setFloat
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setFloat; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setLong
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setLong; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setObject
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setObject; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setShort
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setShort; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setString
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteArrayTypes4dim_setString; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteConstants_compare_AllTypesC
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteConstants_compare_AllTypesC; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteConstants_compare_HebrewC
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteConstants_compare_HebrewC; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteEnums_getPlanet
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteEnums_getPlanet; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteEnums_setPlanet
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteEnums_setPlanet; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getActor
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_getActor; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DArray1dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_getPoint2DArray1dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DArray4dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_getPoint2DArray4dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DList
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_getPoint2DList; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DListList
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_getPoint2DListList; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DMap
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_getPoint2DMap; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setActor
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_setActor; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DArray1dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_setPoint2DArray1dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DArray4dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_setPoint2DArray4dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DList
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_setPoint2DList; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DListList
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_setPoint2DListList; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DMap
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteInlineInstance_setPoint2DMap; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getBoolean1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getBoolean1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getByte1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getByte1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getByte2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getByte2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getChar1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getChar1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getDouble1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getDouble1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getFloat1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getFloat1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getInt1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getInt2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt3
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getInt3; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt4
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getInt4; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getLong1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getLong1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getObj1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getObj1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getPrimitiveTypes1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getPrimitiveTypes1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getShort1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getShort1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getString1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_getString1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setBoolean1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setBoolean1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setByte1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setByte1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setByte2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setByte2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setChar1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setChar1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setDouble1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setDouble1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setFloat1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setFloat1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setInt1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setInt2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt3
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setInt3; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt4
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setInt4; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setLong1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setLong1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setObj1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setObj1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setPrimitiveTypes1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setPrimitiveTypes1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setShort1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setShort1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setString1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteListTypes_setString1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getBoolean1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getBoolean1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getByte1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getByte1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getByte2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getByte2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getChar1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getChar1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getDouble1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getDouble1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getFloat1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getFloat1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getInt1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getInt1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getInt2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getInt2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getLong1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getLong1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getObj1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getObj1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getPrimitiveTypes1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getPrimitiveTypes1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getShort1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getShort1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getString1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_getString1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setBoolean1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setBoolean1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setByte1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setByte1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setByte2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setByte2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setChar1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setChar1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setDouble1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setDouble1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setFloat1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setFloat1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setInt1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setInt1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setInt2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setInt2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setLong1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setLong1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setObj1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setObj1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setPrimitiveTypes1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setPrimitiveTypes1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setShort1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setShort1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setString1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteMapTypes_setString1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_add
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_add; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getBool
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getBool; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getByte
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getByte; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getChar
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getChar; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getDouble
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getDouble; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getFloat
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getFloat; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getLong
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getLong; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getObject
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getObject; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getPrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getPrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getShort
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getShort; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getString
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_getString; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_sendAllTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_sendAllTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setBool
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setBool; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setByte
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setByte; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setChar
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setChar; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setDouble
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setDouble; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setFloat
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setFloat; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setLong
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setLong; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setObject
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setObject; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setPrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setPrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setShort
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setShort; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setString
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_setString; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_throwException
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_throwException; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_voidFunctionVoid
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemotePrimitiveTypes_voidFunctionVoid; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteReferences_getNode
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteReferences_getNode; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteReferences_setNode
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteReferences_setNode; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteServerCtrl_getPublishedRemote
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteServerCtrl_getPublishedRemote; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteServerCtrl_publishRemote
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteServerCtrl_publishRemote; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteServerCtrl_removePublishedRemote
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteServerCtrl_removePublishedRemote; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getBoolean1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getBoolean1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getByte1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getByte1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getByte2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getByte2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getChar1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getChar1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getDouble1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getDouble1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getFloat1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getFloat1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getInt1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getInt1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getInt2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getInt2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getLong1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getLong1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getObj1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getObj1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getPrimitiveTypes1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getPrimitiveTypes1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getShort1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getShort1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getString1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_getString1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setBoolean1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setBoolean1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setByte1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setByte1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setByte2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setByte2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setChar1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setChar1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setDouble1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setDouble1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setFloat1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setFloat1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setInt1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setInt1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setInt2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setInt2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setLong1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setLong1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setObj1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setObj1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setPrimitiveTypes1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setPrimitiveTypes1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setShort1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setShort1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setString1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteSetTypes_setString1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_getImage
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteStreams_getImage; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_getImages
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteStreams_getImages; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_getTextStream
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteStreams_getTextStream; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_setImage
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteStreams_setImage; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_setImages
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteStreams_setImages; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_throwLastException
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteStreams_throwLastException; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_doit
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteWithAuthentication_doit; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_expire
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteWithAuthentication_expire; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_login
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteWithAuthentication_login; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_setReloginCount
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteWithAuthentication_setReloginCount; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_setUseAuthentication
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BRequest_RemoteWithAuthentication_setUseAuthentication; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_getStreams
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ClientIF_getStreams; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_incrementInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ClientIF_incrementInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_putStreams
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ClientIF_putStreams; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_sendChat
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ClientIF_sendChat; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_callClientIncrementInt
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_callClientIncrementInt; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_callClientParallel
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_callClientParallel; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getClient
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_getClient; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getClientIds
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_getClientIds; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getPartner
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_getPartner; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getStreamsFromClient
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_getStreamsFromClient; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_putStreamsOnClient
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_putStreamsOnClient; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_registerWithClientMap
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_registerWithClientMap; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_setPartner
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BRequest_ServerIF_setPartner; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_getClient
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class BRequest_EvolveIF_getClient; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_getEvolve
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class BRequest_EvolveIF_getEvolve; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_sendEvolveToClient
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class BRequest_EvolveIF_sendEvolveToClient; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_setClient
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class BRequest_EvolveIF_setClient; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_setEvolve
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class BRequest_EvolveIF_setEvolve; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BResult_1
-// typeId=148544162
+// typeId=432867947
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1 : public BSerializable {
 	public: bool result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1(bool result = bool()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544162; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867947; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_10
-// typeId=309901678
+// typeId=534004421
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_10 : public BSerializable {
 	public: ::std::wstring result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_10(::std::wstring result = ::std::wstring()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 309901678; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 534004421; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1000
-// typeId=1462767598
+// typeId=2077138821
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1000 : public BSerializable {
-	public: com::wilutions::byps::test::api::prim::PPrimitiveTypes result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1000(com::wilutions::byps::test::api::prim::PPrimitiveTypes result = com::wilutions::byps::test::api::prim::PPrimitiveTypes()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1462767598; }
+	public: byps::test::api::prim::PPrimitiveTypes result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_1000(byps::test::api::prim::PPrimitiveTypes result = byps::test::api::prim::PPrimitiveTypes()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2077138821; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_100361105
-// typeId=848023142
+// typeId=498939805
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_100361105 : public BSerializable {
 	public: byps_ptr< BArray1< int32_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_100361105(byps_ptr< BArray1< int32_t > > result = byps_ptr< BArray1< int32_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 848023142; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 498939805; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_1042475995
-// typeId=2038872493
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1042475995 : public BSerializable {
-	public: com::wilutions::byps::test::api::enu::EnumPlanets result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1042475995(com::wilutions::byps::test::api::enu::EnumPlanets result = com::wilutions::byps::test::api::enu::EnumPlanets()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2038872493; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1050216688
-// typeId=2133842068
+// typeId=70523627
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1050216688 : public BSerializable {
 	public: byps_ptr< ::std::vector< int64_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1050216688(byps_ptr< ::std::vector< int64_t > > result = byps_ptr< ::std::vector< int64_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2133842068; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 70523627; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1059148284
-// typeId=1532920911
+// typeId=698727944
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1059148284 : public BSerializable {
 	public: byps_ptr< ::std::vector< int8_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1059148284(byps_ptr< ::std::vector< int8_t > > result = byps_ptr< ::std::vector< int8_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1532920911; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 698727944; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1097129250
-// typeId=1862597051
+// typeId=200721390
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1097129250 : public BSerializable {
 	public: byps_ptr< BArray1< int64_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1097129250(byps_ptr< BArray1< int64_t > > result = byps_ptr< BArray1< int64_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1862597051; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 200721390; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1174971318
-// typeId=994835305
+// typeId=1068483136
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1174971318 : public BSerializable {
 	public: byps_ptr< ::std::vector< PBytes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1174971318(byps_ptr< ::std::vector< PBytes > > result = byps_ptr< ::std::vector< PBytes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 994835305; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1068483136; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_1178379224
-// typeId=1911325389
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1178379224 : public BSerializable {
-	public: com::wilutions::byps::test::api::ver::PEvolveIF result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1178379224(com::wilutions::byps::test::api::ver::PEvolveIF result = com::wilutions::byps::test::api::ver::PEvolveIF()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1911325389; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_12
-// typeId=309901676
+// typeId=534004419
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_12 : public BSerializable {
 	public: byps_ptr< ::std::vector< PSerializable > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_12(byps_ptr< ::std::vector< PSerializable > > result = byps_ptr< ::std::vector< PSerializable > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 309901676; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 534004419; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1201775504
-// typeId=541741223
+// typeId=1521577218
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1201775504 : public BSerializable {
 	public: byps_ptr< BArray4< int8_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1201775504(byps_ptr< BArray4< int8_t > > result = byps_ptr< BArray4< int8_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 541741223; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1521577218; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1218831438
-// typeId=1151524674
+// typeId=911793767
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1218831438 : public BSerializable {
 	public: byps_ptr< ::std::vector< PContentStream > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1218831438(byps_ptr< ::std::vector< PContentStream > > result = byps_ptr< ::std::vector< PContentStream > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1151524674; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 911793767; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_124584219
-// typeId=647080343
+// typeId=996163680
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_124584219 : public BSerializable {
 	public: byps_ptr< BArray4< PSerializable > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_124584219(byps_ptr< BArray4< PSerializable > > result = byps_ptr< BArray4< PSerializable > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 647080343; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 996163680; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1279823631
-// typeId=1602044401
+// typeId=629604454
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1279823631 : public BSerializable {
 	public: byps_ptr< ::std::map< ::std::wstring , bool > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1279823631(byps_ptr< ::std::map< ::std::wstring , bool > > result = byps_ptr< ::std::map< ::std::wstring , bool > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1602044401; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 629604454; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_1280571537
-// typeId=429041482
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1280571537 : public BSerializable {
-	public: byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1280571537(byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 429041482; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1320560671
-// typeId=190591700
+// typeId=2041057155
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1320560671 : public BSerializable {
 	public: byps_ptr< ::std::set< double > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1320560671(byps_ptr< ::std::set< double > > result = byps_ptr< ::std::set< double > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 190591700; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2041057155; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1347703734
-// typeId=1350610934
+// typeId=881037921
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1347703734 : public BSerializable {
 	public: byps_ptr< ::std::map< int32_t , int32_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1347703734(byps_ptr< ::std::map< int32_t , int32_t > > result = byps_ptr< ::std::map< int32_t , int32_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1350610934; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 881037921; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_1358523233
+// typeId=1693860029
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_1358523233 : public BSerializable {
+	public: byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_1358523233(byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > result = byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1693860029; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_1359468275
-// typeId=493259283
+// typeId=1738389572
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1359468275 : public BSerializable {
 	public: byps_ptr< BArray1< double > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1359468275(byps_ptr< BArray1< double > > result = byps_ptr< BArray1< double > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 493259283; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1738389572; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1361632968
-// typeId=514676842
+// typeId=1548641599
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1361632968 : public BSerializable {
 	public: byps_ptr< BArray1< wchar_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1361632968(byps_ptr< BArray1< wchar_t > > result = byps_ptr< BArray1< wchar_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 514676842; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1548641599; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1365696060
-// typeId=1253977781
+// typeId=809340660
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1365696060 : public BSerializable {
 	public: byps_ptr< ::std::set< bool > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1365696060(byps_ptr< ::std::set< bool > > result = byps_ptr< ::std::set< bool > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1253977781; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 809340660; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1374008726
-// typeId=578691531
+// typeId=1484626910
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1374008726 : public BSerializable {
 	public: PBytes result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1374008726(PBytes result = PBytes()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 578691531; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1484626910; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_1375035164
+// typeId=1920161159
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_1375035164 : public BSerializable {
+	public: byps::test::api::enu::EnumPlanets result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_1375035164(byps::test::api::enu::EnumPlanets result = byps::test::api::enu::EnumPlanets()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1920161159; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_1391985860
-// typeId=509380329
+// typeId=1722268526
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1391985860 : public BSerializable {
-	public: com::wilutions::byps::test::api::ver::PEvolve result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1391985860(com::wilutions::byps::test::api::ver::PEvolve result = com::wilutions::byps::test::api::ver::PEvolve()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 509380329; }
+	public: byps::test::api::ver::PEvolve result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_1391985860(byps::test::api::ver::PEvolve result = byps::test::api::ver::PEvolve()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1722268526; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_14
-// typeId=309901674
+// typeId=534004417
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_14 : public BSerializable {
 	public: byps_ptr< ::std::set< PSerializable > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_14(byps_ptr< ::std::set< PSerializable > > result = byps_ptr< ::std::set< PSerializable > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 309901674; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 534004417; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1406124761
-// typeId=104448059
+// typeId=2127200796
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1406124761 : public BSerializable {
 	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1406124761(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 104448059; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2127200796; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1457164460
-// typeId=1119760023
+// typeId=1111888832
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1457164460 : public BSerializable {
 	public: byps_ptr< ::std::set< int64_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1457164460(byps_ptr< ::std::set< int64_t > > result = byps_ptr< ::std::set< int64_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1119760023; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1111888832; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_1463615848
-// typeId=548882635
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1463615848 : public BSerializable {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1463615848(byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 548882635; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
-
-//-------------------------------------------------
-// BResult_1473575576
-// typeId=1170836883
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1473575576 : public BSerializable {
-	public: com::wilutions::byps::test::api::srvr::PClientIF result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1473575576(com::wilutions::byps::test::api::srvr::PClientIF result = com::wilutions::byps::test::api::srvr::PClientIF()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1170836883; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1487265161
-// typeId=2081879792
+// typeId=149769063
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1487265161 : public BSerializable {
 	public: byps_ptr< ::std::map< int8_t , double > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1487265161(byps_ptr< ::std::map< int8_t , double > > result = byps_ptr< ::std::map< int8_t , double > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2081879792; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 149769063; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1488550492
-// typeId=1240765869
+// typeId=822552572
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1488550492 : public BSerializable {
 	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1488550492(byps_ptr< ::std::map< ::std::wstring , PSerializable > > result = byps_ptr< ::std::map< ::std::wstring , PSerializable > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1240765869; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 822552572; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1493282670
-// typeId=276437907
+// typeId=1955210948
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1493282670 : public BSerializable {
 	public: byps_ptr< ::std::set< int32_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1493282670(byps_ptr< ::std::set< int32_t > > result = byps_ptr< ::std::set< int32_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 276437907; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1955210948; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_15
-// typeId=309901673
+// typeId=534004416
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_15 : public BSerializable {
 	public: PContentStream result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_15(PContentStream result = PContentStream()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 309901673; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 534004416; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_1503107601
-// typeId=72308967
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1503107601 : public BSerializable {
-	public: byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1503107601(byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 72308967; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1516687588
-// typeId=188578332
+// typeId=2043070523
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1516687588 : public BSerializable {
 	public: byps_ptr< BArray4< float > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1516687588(byps_ptr< BArray4< float > > result = byps_ptr< BArray4< float > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 188578332; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2043070523; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_1544333227
-// typeId=743592613
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_1544333227 : public BSerializable {
-	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1544333227(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 743592613; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1555345627
-// typeId=1887708350
+// typeId=343940505
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1555345627 : public BSerializable {
 	public: byps_ptr< ::std::vector< double > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1555345627(byps_ptr< ::std::vector< double > > result = byps_ptr< ::std::vector< double > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1887708350; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 343940505; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_1596367810
+// typeId=1073221568
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_1596367810 : public BSerializable {
+	public: byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_1596367810(byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1073221568; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_16
-// typeId=309901672
+// typeId=534004415
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_16 : public BSerializable {
 	public: PRemote result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_16(PRemote result = PRemote()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 309901672; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 534004415; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1617670280
-// typeId=732507399
+// typeId=1330811042
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1617670280 : public BSerializable {
 	public: byps_ptr< ::std::vector< bool > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1617670280(byps_ptr< ::std::vector< bool > > result = byps_ptr< ::std::vector< bool > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 732507399; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1330811042; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1628501332
-// typeId=1862743418
+// typeId=368905437
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1628501332 : public BSerializable {
 	public: byps_ptr< ::std::vector< float > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1628501332(byps_ptr< ::std::vector< float > > result = byps_ptr< ::std::vector< float > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1862743418; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 368905437; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1633500852
-// typeId=831989576
+// typeId=1231328865
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1633500852 : public BSerializable {
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1633500852(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 831989576; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1231328865; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1633750383
-// typeId=770118380
+// typeId=1293200061
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1633750383 : public BSerializable {
 	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1633750383(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 770118380; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1293200061; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1661807911
-// typeId=1587436403
+// typeId=475882038
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1661807911 : public BSerializable {
 	public: byps_ptr< ::std::vector< wchar_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1661807911(byps_ptr< ::std::vector< wchar_t > > result = byps_ptr< ::std::vector< wchar_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1587436403; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 475882038; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1710660846
-// typeId=163470910
+// typeId=1899847531
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1710660846 : public BSerializable {
 	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1710660846(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > result = byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 163470910; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1899847531; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_171948703
-// typeId=1220439445
+// typeId=871356108
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_171948703 : public BSerializable {
-	public: com::wilutions::byps::test::api::inl::PActor result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_171948703(com::wilutions::byps::test::api::inl::PActor result = com::wilutions::byps::test::api::inl::PActor()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1220439445; }
+	public: byps::test::api::inl::PActor result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_171948703(byps::test::api::inl::PActor result = byps::test::api::inl::PActor()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 871356108; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_172221196
-// typeId=1905478006
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_172221196 : public BSerializable {
-	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_172221196(byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1905478006; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1746702954
-// typeId=1823196186
+// typeId=408452669
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1746702954 : public BSerializable {
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1746702954(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1823196186; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 408452669; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1752158699
-// typeId=150989512
+// typeId=1912328929
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1752158699 : public BSerializable {
 	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1752158699(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 150989512; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1912328929; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1799280818
-// typeId=179038766
+// typeId=2052610089
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1799280818 : public BSerializable {
 	public: byps_ptr< ::std::map< int32_t , PBytes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1799280818(byps_ptr< ::std::map< int32_t , PBytes > > result = byps_ptr< ::std::map< int32_t , PBytes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 179038766; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2052610089; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_181681714
-// typeId=1414119390
+// typeId=1763202727
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_181681714 : public BSerializable {
 	public: byps_ptr< ::std::vector< int32_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_181681714(byps_ptr< ::std::vector< int32_t > > result = byps_ptr< ::std::vector< int32_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1414119390; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1763202727; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_1823330785
+// typeId=114088296
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_1823330785 : public BSerializable {
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_1823330785(byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 114088296; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
+
+//-------------------------------------------------
+// BResult_1831201218
+// typeId=50516327
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_1831201218 : public BSerializable {
+	public: byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_1831201218(byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 50516327; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_183594037
-// typeId=333265053
+// typeId=15818284
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_183594037 : public BSerializable {
 	public: byps_ptr< BArray1< PSerializable > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_183594037(byps_ptr< BArray1< PSerializable > > result = byps_ptr< BArray1< PSerializable > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 333265053; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 15818284; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
-// BResult_1851881336
-// typeId=1651982651
+// BResult_184101377
+// typeId=748770738
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
-class BResult_1851881336 : public BSerializable {
-	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_1851881336(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1651982651; }
+class BResult_184101377 : public BSerializable {
+	public: byps_ptr< BArray1< byps::test::api::inl::Point2D > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_184101377(byps_ptr< BArray1< byps::test::api::inl::Point2D > > result = byps_ptr< BArray1< byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 748770738; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1859644668
-// typeId=101217472
+// typeId=2130431383
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1859644668 : public BSerializable {
 	public: byps_ptr< BArray4< int16_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1859644668(byps_ptr< BArray4< int16_t > > result = byps_ptr< BArray4< int16_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 101217472; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2130431383; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1888107655
-// typeId=427000
+// typeId=2063745441
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1888107655 : public BSerializable {
 	public: byps_ptr< BArray1< ::std::wstring > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1888107655(byps_ptr< BArray1< ::std::wstring > > result = byps_ptr< BArray1< ::std::wstring > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 427000; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2063745441; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1888799711
-// typeId=180574010
+// typeId=2051074845
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1888799711 : public BSerializable {
 	public: byps_ptr< ::std::set< ::std::wstring > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1888799711(byps_ptr< ::std::set< ::std::wstring > > result = byps_ptr< ::std::set< ::std::wstring > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 180574010; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2051074845; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1898022288
-// typeId=1716302523
+// typeId=515346332
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1898022288 : public BSerializable {
 	public: byps_ptr< ::std::set< float > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1898022288(byps_ptr< ::std::set< float > > result = byps_ptr< ::std::set< float > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1716302523; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 515346332; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_19
-// typeId=309901669
+// typeId=534004412
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_19 : public BSerializable {
 	public: bool result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_19(bool result = bool()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 309901669; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 534004412; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1972793385
-// typeId=104960651
+// typeId=1958357790
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1972793385 : public BSerializable {
 	public: byps_ptr< ::std::map< double , int8_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1972793385(byps_ptr< ::std::map< double , int8_t > > result = byps_ptr< ::std::map< double , int8_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 104960651; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1958357790; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1973996106
-// typeId=839888536
+// typeId=1391760319
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1973996106 : public BSerializable {
 	public: byps_ptr< ::std::map< int16_t , int64_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1973996106(byps_ptr< ::std::map< int16_t , int64_t > > result = byps_ptr< ::std::map< int16_t , int64_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 839888536; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1391760319; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_1997002548
-// typeId=980499904
+// typeId=1082818537
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_1997002548 : public BSerializable {
 	public: byps_ptr< ::std::vector< int16_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_1997002548(byps_ptr< ::std::vector< int16_t > > result = byps_ptr< ::std::vector< int16_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 980499904; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1082818537; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_2
-// typeId=148544161
+// typeId=432867946
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_2 : public BSerializable {
 	public: int8_t result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_2(int8_t result = int8_t()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544161; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867946; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_2028443792
-// typeId=398816652
+// typeId=1664501789
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_2028443792 : public BSerializable {
 	public: byps_ptr< ::std::set< int16_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_2028443792(byps_ptr< ::std::set< int16_t > > result = byps_ptr< ::std::set< int16_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 398816652; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1664501789; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_2049740106
-// typeId=234867558
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_2049740106 : public BSerializable {
-	public: byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_2049740106(byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 234867558; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_2052431866
-// typeId=496389964
+// typeId=1566928477
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_2052431866 : public BSerializable {
 	public: byps_ptr< ::std::set< PBytes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_2052431866(byps_ptr< ::std::set< PBytes > > result = byps_ptr< ::std::set< PBytes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 496389964; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1566928477; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_2053507648
+// typeId=1814499786
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_2053507648 : public BSerializable {
+	public: byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_2053507648(byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1814499786; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_2058423690
-// typeId=532799052
+// typeId=1698849803
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_2058423690 : public BSerializable {
 	public: byps_ptr< BArray1< bool > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_2058423690(byps_ptr< BArray1< bool > > result = byps_ptr< BArray1< bool > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 532799052; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1698849803; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_2064980445
+// typeId=937508540
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_2064980445 : public BSerializable {
+	public: byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_2064980445(byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > result = byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 937508540; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_2067161310
-// typeId=1305849624
+// typeId=925799231
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_2067161310 : public BSerializable {
 	public: byps_ptr< BArray1< int16_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_2067161310(byps_ptr< BArray1< int16_t > > result = byps_ptr< BArray1< int16_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1305849624; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 925799231; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_2087445849
-// typeId=580667480
+// typeId=1650981375
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_2087445849 : public BSerializable {
 	public: byps_ptr< BArray4< double > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_2087445849(byps_ptr< BArray4< double > > result = byps_ptr< BArray4< double > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 580667480; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1650981375; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_21
-// typeId=309901646
+// typeId=534004389
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_21 : public BSerializable {
 	public: PSerializable result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_21(PSerializable result = PSerializable()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 309901646; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 534004389; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_2123584667
-// typeId=1978497049
+// typeId=253151806
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_2123584667 : public BSerializable {
 	public: byps_ptr< ::std::vector< ::std::wstring > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_2123584667(byps_ptr< ::std::vector< ::std::wstring > > result = byps_ptr< ::std::vector< ::std::wstring > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1978497049; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 253151806; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_3
-// typeId=148544160
+// typeId=432867945
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_3 : public BSerializable {
 	public: int16_t result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_3(int16_t result = int16_t()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544160; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867945; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_31512998
-// typeId=307489197
+// typeId=1620912700
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_31512998 : public BSerializable {
 	public: byps_ptr< ::std::set< int8_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_31512998(byps_ptr< ::std::set< int8_t > > result = byps_ptr< ::std::set< int8_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 307489197; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1620912700; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_39910537
-// typeId=1682941350
+// typeId=245460547
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_39910537 : public BSerializable {
 	public: byps_ptr< BArray4< int32_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_39910537(byps_ptr< BArray4< int32_t > > result = byps_ptr< BArray4< int32_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1682941350; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 245460547; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_4
-// typeId=148544159
+// typeId=432867944
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_4 : public BSerializable {
 	public: wchar_t result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_4(wchar_t result = wchar_t()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544159; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867944; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_476459792
-// typeId=93402296
+// typeId=255681041
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_476459792 : public BSerializable {
 	public: byps_ptr< ::std::map< int32_t , PContentStream > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_476459792(byps_ptr< ::std::map< int32_t , PContentStream > > result = byps_ptr< ::std::map< int32_t , PContentStream > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 93402296; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 255681041; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_487702928
-// typeId=1490187962
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_487702928 : public BSerializable {
-	public: byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_487702928(byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > result = byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1490187962; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_5
-// typeId=148544158
+// typeId=432867943
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_5 : public BSerializable {
 	public: int32_t result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_5(int32_t result = int32_t()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544158; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867943; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_564008001
+// typeId=1405156912
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_564008001 : public BSerializable {
+	public: byps::test::api::ver::PEvolveIF result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_564008001(byps::test::api::ver::PEvolveIF result = byps::test::api::ver::PEvolveIF()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1405156912; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_588723219
-// typeId=1886698628
+// typeId=1537615291
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_588723219 : public BSerializable {
 	public: byps_ptr< BArray4< ::std::wstring > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_588723219(byps_ptr< BArray4< ::std::wstring > > result = byps_ptr< BArray4< ::std::wstring > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1886698628; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1537615291; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_6
-// typeId=148544157
+// typeId=432867942
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_6 : public BSerializable {
 	public: int64_t result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_6(int64_t result = int64_t()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544157; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867942; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_601099730
-// typeId=1205316392
+// typeId=856233055
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_601099730 : public BSerializable {
 	public: byps_ptr< ::std::map< int64_t , int16_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_601099730(byps_ptr< ::std::map< int64_t , int16_t > > result = byps_ptr< ::std::map< int64_t , int16_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1205316392; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 856233055; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_65775978
-// typeId=56089321
+// typeId=1872312576
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_65775978 : public BSerializable {
-	public: com::wilutions::byps::test::api::auth::PSessionInfo result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_65775978(com::wilutions::byps::test::api::auth::PSessionInfo result = com::wilutions::byps::test::api::auth::PSessionInfo()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 56089321; }
+	public: byps::test::api::auth::PSessionInfo result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_65775978(byps::test::api::auth::PSessionInfo result = byps::test::api::auth::PSessionInfo()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1872312576; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_673917574
+// typeId=2098743607
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_673917574 : public BSerializable {
+	public: byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_673917574(byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2098743607; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BResult_7
-// typeId=148544156
+// typeId=432867941
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_7 : public BSerializable {
 	public: float result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_7(float result = float()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544156; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867941; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_7007
-// typeId=1462588845
+// typeId=2076960068
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_7007 : public BSerializable {
-	public: com::wilutions::byps::test::api::srvr::PChatStructure result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_7007(com::wilutions::byps::test::api::srvr::PChatStructure result = com::wilutions::byps::test::api::srvr::PChatStructure()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1462588845; }
+	public: byps::test::api::srvr::PChatStructure result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_7007(byps::test::api::srvr::PChatStructure result = byps::test::api::srvr::PChatStructure()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2076960068; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
-// BResult_703065817
-// typeId=1169980470
+// BResult_758319514
+// typeId=1168951451
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
-class BResult_703065817 : public BSerializable {
-	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_703065817(byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1169980470; }
+class BResult_758319514 : public BSerializable {
+	public: byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_758319514(byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1168951451; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_766441794
-// typeId=1517001317
+// typeId=1167917980
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_766441794 : public BSerializable {
 	public: byps_ptr< BArray1< float > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_766441794(byps_ptr< BArray1< float > > result = byps_ptr< BArray1< float > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1517001317; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1167917980; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_769021986
-// typeId=231816689
+// typeId=580900026
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_769021986 : public BSerializable {
 	public: byps_ptr< BArray4< wchar_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_769021986(byps_ptr< BArray4< wchar_t > > result = byps_ptr< BArray4< wchar_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 231816689; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 580900026; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_8
-// typeId=148544155
+// typeId=432867940
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_8 : public BSerializable {
 	public: double result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_8(double result = double()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 148544155; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 432867940; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
-
-//-------------------------------------------------
-// BResult_801243127
-// typeId=1937830923
-
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-
-using namespace ::com::wilutions::byps;
-
-class BResult_801243127 : public BSerializable {
-	public: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_801243127(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1937830923; }
-	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_846419204
-// typeId=516356161
+// typeId=167272824
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_846419204 : public BSerializable {
 	public: byps_ptr< BArray4< int64_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_846419204(byps_ptr< BArray4< int64_t > > result = byps_ptr< BArray4< int64_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 516356161; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 167272824; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_8789515
-// typeId=1554344518
+// typeId=323111619
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_8789515 : public BSerializable {
 	public: byps_ptr< ::std::map< float , wchar_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_8789515(byps_ptr< ::std::map< float , wchar_t > > result = byps_ptr< ::std::map< float , wchar_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1554344518; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 323111619; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_9001
-// typeId=1462529269
+// typeId=2076900492
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_9001 : public BSerializable {
-	public: com::wilutions::byps::test::api::refs::PNode result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
-	public: BResult_9001(com::wilutions::byps::test::api::refs::PNode result = com::wilutions::byps::test::api::refs::PNode()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1462529269; }
+	public: byps::test::api::refs::PNode result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_9001(byps::test::api::refs::PNode result = byps::test::api::refs::PNode()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2076900492; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_936607009
-// typeId=1317331941
+// typeId=968248604
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_936607009 : public BSerializable {
 	public: byps_ptr< ::std::set< wchar_t > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_936607009(byps_ptr< ::std::set< wchar_t > > result = byps_ptr< ::std::set< wchar_t > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1317331941; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 968248604; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_94341197
-// typeId=127543251
+// typeId=1800858646
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_94341197 : public BSerializable {
 	public: byps_ptr< ::std::map< wchar_t , float > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_94341197(byps_ptr< ::std::map< wchar_t , float > > result = byps_ptr< ::std::map< wchar_t , float > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 127543251; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1800858646; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
 
 //-------------------------------------------------
 // BResult_945713488
-// typeId=2092891102
+// typeId=1852992857
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BResult_945713488 : public BSerializable {
 	public: byps_ptr< BArray4< bool > > result;
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:472
+	// checkpoint byps.gen.cpp.GenApiClass:472
 	public: BResult_945713488(byps_ptr< BArray4< bool > > result = byps_ptr< BArray4< bool > >()) : result(result) {}	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2092891102; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1852992857; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}
+}
+
+//-------------------------------------------------
+// BResult_949340697
+// typeId=996206823
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_949340697 : public BSerializable {
+	public: byps_ptr< BArray4< byps::test::api::inl::Point2D > > result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_949340697(byps_ptr< BArray4< byps::test::api::inl::Point2D > > result = byps_ptr< BArray4< byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 996206823; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
+
+//-------------------------------------------------
+// BResult_955752991
+// typeId=695494982
+
+namespace byps { namespace test { namespace api { 
+
+using namespace ::byps;
+
+class BResult_955752991 : public BSerializable {
+	public: byps::test::api::srvr::PClientIF result;
+	// checkpoint byps.gen.cpp.GenApiClass:472
+	public: BResult_955752991(byps::test::api::srvr::PClientIF result = byps::test::api::srvr::PClientIF()) : result(result) {}	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 695494982; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:866
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}
 
 //-------------------------------------------------
 // BRequest_BioFruitService_certify
-// typeId=724361898
+// typeId=1435417025
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_BioFruitService_certify : public BMethodRequest {
 	public: ::std::wstring param;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_BioFruitService_certify();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_BioFruitService_certify(const ::std::wstring& param);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 724361898; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1435417025; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_BioLemonService_useParing
-// typeId=1762089337
+// typeId=2108700976
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_BioLemonService_useParing : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_BioLemonService_useParing();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1762089337; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2108700976; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_FruitService_squeeze
-// typeId=656804784
+// typeId=1290167289
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_FruitService_squeeze : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_FruitService_squeeze();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 656804784; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1290167289; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_LemonService_pick
-// typeId=1860602130
+// typeId=1022088379
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_LemonService_pick : public BMethodRequest {
-	public: com::wilutions::byps::test::api::auth::PSessionInfo sess;
+	public: byps::test::api::auth::PSessionInfo sess;
 	public: ::std::wstring fromTree;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_LemonService_pick();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_LemonService_pick(const ::std::wstring& fromTree);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1860602130; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_LemonService_pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1022088379; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:839
-	public: virtual void setSession(PSerializable __byps__sess);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_PlantService_grow
-// typeId=1534230652
+// typeId=695716901
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_PlantService_grow : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_PlantService_grow();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1534230652; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 695716901; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getBool
-// typeId=1645604187
+// typeId=2033416644
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getBool : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getBool();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1645604187; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2033416644; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getByte
-// typeId=1645613945
+// typeId=2033426402
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getByte : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getByte();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1645613945; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2033426402; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getChar
-// typeId=1645626823
+// typeId=2033439280
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getChar : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getChar();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1645626823; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2033439280; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getDouble
-// typeId=935089666
+// typeId=39293909
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getDouble : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getDouble();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 935089666; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 39293909; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getFloat
-// typeId=522273269
+// typeId=1384988990
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getFloat : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getFloat();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 522273269; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1384988990; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getInt
-// typeId=1609477282
+// typeId=1874061867
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getInt : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getInt();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1609477282; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1874061867; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getLong
-// typeId=1645902061
+// typeId=2033714518
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getLong : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getLong();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1645902061; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2033714518; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getObject
-// typeId=1237679472
+// typeId=263295897
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getObject : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getObject();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1237679472; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 263295897; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
-// typeId=825201405
+// typeId=1992537556
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getPrimitiveTypes();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 825201405; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1992537556; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getShort
-// typeId=510386133
+// typeId=1373101854
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getShort : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getShort();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 510386133; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1373101854; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getString
-// typeId=1369061954
+// typeId=394678379
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_getString : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_getString();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1369061954; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 394678379; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setBool
-// typeId=589253529
+// typeId=201441072
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setBool : public BMethodRequest {
 	public: byps_ptr< BArray1< bool > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setBool();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setBool(const byps_ptr< BArray1< bool > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 589253529; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 201441072; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setByte
-// typeId=589243771
+// typeId=201431314
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setByte : public BMethodRequest {
 	public: PBytes v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setByte();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setByte(const PBytes& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 589243771; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 201431314; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setChar
-// typeId=589230893
+// typeId=201418436
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setChar : public BMethodRequest {
 	public: byps_ptr< BArray1< wchar_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setChar();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setChar(const byps_ptr< BArray1< wchar_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 589230893; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 201418436; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setDouble
-// typeId=720472590
+// typeId=253910985
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setDouble : public BMethodRequest {
 	public: byps_ptr< BArray1< double > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setDouble();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setDouble(const byps_ptr< BArray1< double > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 720472590; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 253910985; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setFloat
-// typeId=1083385729
+// typeId=1946101450
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setFloat : public BMethodRequest {
 	public: byps_ptr< BArray1< float > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setFloat();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setFloat(const byps_ptr< BArray1< float > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1083385729; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1946101450; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setInt
-// typeId=1265927470
+// typeId=1530512055
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setInt : public BMethodRequest {
 	public: byps_ptr< BArray1< int32_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setInt();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setInt(const byps_ptr< BArray1< int32_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1265927470; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1530512055; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setLong
-// typeId=588955655
+// typeId=201143198
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setLong : public BMethodRequest {
 	public: byps_ptr< BArray1< int64_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setLong();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setLong(const byps_ptr< BArray1< int64_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 588955655; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 201143198; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setObject
-// typeId=1023062396
+// typeId=48678821
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setObject : public BMethodRequest {
 	public: byps_ptr< BArray1< PSerializable > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setObject();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setObject(const byps_ptr< BArray1< PSerializable > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1023062396; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 48678821; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
-// typeId=1765354225
+// typeId=1362276920
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes : public BMethodRequest {
-	public: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v;
+	public: byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setPrimitiveTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(const byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1765354225; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1362276920; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setShort
-// typeId=1071498593
+// typeId=1934214314
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setShort : public BMethodRequest {
 	public: byps_ptr< BArray1< int16_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setShort();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setShort(const byps_ptr< BArray1< int16_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1071498593; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1934214314; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setString
-// typeId=1154444878
+// typeId=180061303
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setString : public BMethodRequest {
 	public: byps_ptr< BArray1< ::std::wstring > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes1dim_setString();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes1dim_setString(const byps_ptr< BArray1< ::std::wstring > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1154444878; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 180061303; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysClass
-// typeId=1004457221
+// typeId=330036060
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysClass : public BMethodRequest {
-	public: byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr2;
-	public: byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr3;
-	public: byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arr4;
+	public: byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > > arr2;
+	public: byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > > arr3;
+	public: byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > arr4;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes23_sendArraysClass();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteArrayTypes23_sendArraysClass(const byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr4);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1004457221; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteArrayTypes23_sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 330036060; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysInline
-// typeId=899462794
+// typeId=1467243283
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysInline : public BMethodRequest {
-	public: byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > > arr2;
-	public: byps_ptr< BArray3< com::wilutions::byps::test::api::inl::Point2D > > arr3;
-	public: byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > arr4;
+	public: byps_ptr< BArray2< byps::test::api::inl::Point2D > > arr2;
+	public: byps_ptr< BArray3< byps::test::api::inl::Point2D > > arr3;
+	public: byps_ptr< BArray4< byps::test::api::inl::Point2D > > arr4;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes23_sendArraysInline();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteArrayTypes23_sendArraysInline(const byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& arr4);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 899462794; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteArrayTypes23_sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1467243283; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysInt
-// typeId=1748523470
+// typeId=1828268517
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysInt : public BMethodRequest {
 	public: byps_ptr< BArray2< int32_t > > arr2;
 	public: byps_ptr< BArray3< int32_t > > arr3;
 	public: byps_ptr< BArray4< int32_t > > arr4;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes23_sendArraysInt();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes23_sendArraysInt(const byps_ptr< BArray2< int32_t > >& arr2, const byps_ptr< BArray3< int32_t > >& arr3, const byps_ptr< BArray4< int32_t > >& arr4);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1748523470; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1828268517; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysObject
-// typeId=738833892
+// typeId=1306614381
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysObject : public BMethodRequest {
 	public: byps_ptr< BArray2< PSerializable > > arr2;
 	public: byps_ptr< BArray3< PSerializable > > arr3;
 	public: byps_ptr< BArray4< PSerializable > > arr4;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes23_sendArraysObject();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes23_sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 738833892; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1306614381; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysString
-// typeId=607451410
+// typeId=1175231899
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysString : public BMethodRequest {
 	public: byps_ptr< BArray2< ::std::wstring > > arr2;
 	public: byps_ptr< BArray3< ::std::wstring > > arr3;
 	public: byps_ptr< BArray4< ::std::wstring > > arr4;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes23_sendArraysString();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes23_sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 607451410; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1175231899; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getBool
-// typeId=2032852344
+// typeId=1874302495
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getBool : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getBool();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2032852344; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1874302495; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getByte
-// typeId=2032862102
+// typeId=1874292737
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getByte : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getByte();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2032862102; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1874292737; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getChar
-// typeId=2032874980
+// typeId=1874279859
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getChar : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getChar();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2032874980; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1874279859; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getDouble
-// typeId=581586209
+// typeId=1555969784
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getDouble : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getDouble();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 581586209; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1555969784; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getFloat
-// typeId=1402482290
+// typeId=2029769285
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getFloat : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getFloat();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1402482290; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2029769285; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getInt
-// typeId=1589603233
+// typeId=1325018648
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getInt : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getInt();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1589603233; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1325018648; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getLong
-// typeId=2033150218
+// typeId=1874004621
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getLong : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getLong();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2033150218; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1874004621; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getObject
-// typeId=278996403
+// typeId=1253379978
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getObject : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getObject();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 278996403; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1253379978; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
-// typeId=1650564320
+// typeId=483228169
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getPrimitiveTypes();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1650564320; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 483228169; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getShort
-// typeId=1390595154
+// typeId=2041656421
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getShort : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getShort();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1390595154; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2041656421; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getString
-// typeId=147613921
+// typeId=1121997496
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_getString : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_getString();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 147613921; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1121997496; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setBool
-// typeId=202005372
+// typeId=185807085
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setBool : public BMethodRequest {
 	public: byps_ptr< BArray4< bool > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setBool();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setBool(const byps_ptr< BArray4< bool > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 202005372; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 185807085; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setByte
-// typeId=201995614
+// typeId=185816843
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setByte : public BMethodRequest {
 	public: byps_ptr< BArray4< int8_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setByte();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setByte(const byps_ptr< BArray4< int8_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 201995614; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 185816843; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setChar
-// typeId=201982736
+// typeId=185829721
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setChar : public BMethodRequest {
 	public: byps_ptr< BArray4< wchar_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setChar();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setChar(const byps_ptr< BArray4< wchar_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 201982736; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 185829721; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setDouble
-// typeId=796203285
+// typeId=1770586860
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setDouble : public BMethodRequest {
 	public: byps_ptr< BArray4< double > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setDouble();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setDouble(const byps_ptr< BArray4< double > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 796203285; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1770586860; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setFloat
-// typeId=1963594750
+// typeId=1468656825
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setFloat : public BMethodRequest {
 	public: byps_ptr< BArray4< float > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setFloat();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setFloat(const byps_ptr< BArray4< float > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1963594750; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1468656825; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setInt
-// typeId=1933153045
+// typeId=1668568460
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setInt : public BMethodRequest {
 	public: byps_ptr< BArray4< int32_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setInt();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setInt(const byps_ptr< BArray4< int32_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1933153045; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1668568460; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setLong
-// typeId=201707498
+// typeId=186104959
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setLong : public BMethodRequest {
 	public: byps_ptr< BArray4< int64_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setLong();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setLong(const byps_ptr< BArray4< int64_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 201707498; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 186104959; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setObject
-// typeId=493613479
+// typeId=1467997054
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setObject : public BMethodRequest {
 	public: byps_ptr< BArray4< PSerializable > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setObject();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setObject(const byps_ptr< BArray4< PSerializable > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 493613479; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1467997054; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
-// typeId=710411500
+// typeId=456924651
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes : public BMethodRequest {
-	public: byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v;
+	public: byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setPrimitiveTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteArrayTypes4dim_setPrimitiveTypes(const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 710411500; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteArrayTypes4dim_setPrimitiveTypes(const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& v);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 456924651; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setShort
-// typeId=1951707614
+// typeId=1480543961
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setShort : public BMethodRequest {
 	public: byps_ptr< BArray4< int16_t > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setShort();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setShort(const byps_ptr< BArray4< int16_t > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1951707614; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1480543961; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setString
-// typeId=362230997
+// typeId=1336614572
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setString : public BMethodRequest {
 	public: byps_ptr< BArray4< ::std::wstring > > v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteArrayTypes4dim_setString();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteArrayTypes4dim_setString(const byps_ptr< BArray4< ::std::wstring > >& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 362230997; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1336614572; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteConstants_compare_AllTypesC
-// typeId=862752254
+// typeId=1609344203
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteConstants_compare_AllTypesC : public BMethodRequest {
 	public: bool bool1s;
@@ -5032,1935 +5030,1935 @@ class BRequest_RemoteConstants_compare_AllTypesC : public BMethodRequest {
 	public: float float1s;
 	public: double double1s;
 	public: ::std::wstring string1s;
-	public: com::wilutions::byps::test::api::cons::PAllTypesZ ALL;
+	public: byps::test::api::cons::PAllTypesZ ALL;
 	public: byps_ptr< BArray1< int32_t > > arrInt;
 	public: byps_ptr< BArray4< int32_t > > arrInt4;
 	public: byps_ptr< BArray1< ::std::wstring > > arrStrings;
 	public: byps_ptr< BArray4< ::std::wstring > > arrStrings4;
-	public: byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > > arrAll;
+	public: byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > > arrAll;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteConstants_compare_AllTypesC();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteConstants_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const com::wilutions::byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > >& arrAll);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 862752254; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteConstants_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > >& arrAll);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1609344203; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteConstants_compare_HebrewC
-// typeId=1570751625
+// typeId=1711871378
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteConstants_compare_HebrewC : public BMethodRequest {
-	public: com::wilutions::byps::test::api::cons::PHebrewZ ALEPH;
-	public: com::wilutions::byps::test::api::cons::PHebrewZ BETH;
+	public: byps::test::api::cons::PHebrewZ ALEPH;
+	public: byps::test::api::cons::PHebrewZ BETH;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteConstants_compare_HebrewC();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteConstants_compare_HebrewC(const com::wilutions::byps::test::api::cons::PHebrewZ& ALEPH, const com::wilutions::byps::test::api::cons::PHebrewZ& BETH);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1570751625; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteConstants_compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1711871378; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteEnums_getPlanet
-// typeId=627010462
+// typeId=6352043
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteEnums_getPlanet : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteEnums_getPlanet();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 627010462; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 6352043; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteEnums_setPlanet
-// typeId=412393386
+// typeId=220969119
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteEnums_setPlanet : public BMethodRequest {
-	public: com::wilutions::byps::test::api::enu::EnumPlanets planet;
+	public: byps::test::api::enu::EnumPlanets planet;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteEnums_setPlanet();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteEnums_setPlanet(com::wilutions::byps::test::api::enu::EnumPlanets planet);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 412393386; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteEnums_setPlanet(byps::test::api::enu::EnumPlanets planet);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 220969119; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getActor
-// typeId=261822861
+// typeId=600892860
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_getActor : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_getActor();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 261822861; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 600892860; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DArray1dim
-// typeId=1011970102
+// typeId=188393247
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DArray1dim : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_getPoint2DArray1dim();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1011970102; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 188393247; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DArray4dim
-// typeId=1012059475
+// typeId=188482620
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DArray4dim : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_getPoint2DArray4dim();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1012059475; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 188482620; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DList
-// typeId=1996093752
+// typeId=1428313263
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DList : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_getPoint2DList();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1996093752; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1428313263; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DListList
-// typeId=177127926
+// typeId=1650554387
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DListList : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_getPoint2DListList();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 177127926; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1650554387; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DMap
-// typeId=1321082494
+// typeId=646661333
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_getPoint2DMap : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_getPoint2DMap();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1321082494; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 646661333; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setActor
-// typeId=299289599
+// typeId=1162005320
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setActor : public BMethodRequest {
-	public: com::wilutions::byps::test::api::inl::PActor act;
+	public: byps::test::api::inl::PActor act;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_setActor();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteInlineInstance_setActor(const com::wilutions::byps::test::api::inl::PActor& act);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 299289599; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteInlineInstance_setActor(const byps::test::api::inl::PActor& act);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1162005320; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DArray1dim
-// typeId=531757758
+// typeId=1355334613
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DArray1dim : public BMethodRequest {
-	public: byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > pointArray;
+	public: byps_ptr< BArray1< byps::test::api::inl::Point2D > > pointArray;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_setPoint2DArray1dim();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteInlineInstance_setPoint2DArray1dim(const byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >& pointArray);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 531757758; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteInlineInstance_setPoint2DArray1dim(const byps_ptr< BArray1< byps::test::api::inl::Point2D > >& pointArray);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1355334613; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DArray4dim
-// typeId=531668385
+// typeId=1355245240
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DArray4dim : public BMethodRequest {
-	public: byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > pointArray;
+	public: byps_ptr< BArray4< byps::test::api::inl::Point2D > > pointArray;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_setPoint2DArray4dim();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteInlineInstance_setPoint2DArray4dim(const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& pointArray);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 531668385; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteInlineInstance_setPoint2DArray4dim(const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& pointArray);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1355245240; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DList
-// typeId=224357548
+// typeId=343422941
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DList : public BMethodRequest {
-	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > pointList;
+	public: byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > pointList;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_setPoint2DList();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteInlineInstance_setPoint2DList(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >& pointList);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 224357548; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteInlineInstance_setPoint2DList(const byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >& pointList);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 343422941; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DListList
-// typeId=1097161578
+// typeId=730520735
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DListList : public BMethodRequest {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > pointListList;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > pointListList;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_setPoint2DListList();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteInlineInstance_setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >& pointListList);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1097161578; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteInlineInstance_setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >& pointListList);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 730520735; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DMap
-// typeId=546951282
+// typeId=127469879
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DMap : public BMethodRequest {
-	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > pointMap;
+	public: byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > pointMap;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteInlineInstance_setPoint2DMap();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteInlineInstance_setPoint2DMap(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >& pointMap);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 546951282; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteInlineInstance_setPoint2DMap(const byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >& pointMap);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 127469879; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getBoolean1
-// typeId=1794077576
+// typeId=2058662161
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getBoolean1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getBoolean1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1794077576; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2058662161; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getByte1
-// typeId=1319541530
+// typeId=608486403
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getByte1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getByte1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1319541530; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 608486403; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getByte2
-// typeId=1319541531
+// typeId=608486404
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getByte2 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getByte2();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1319541531; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 608486404; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getChar1
-// typeId=1319940748
+// typeId=608885621
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getChar1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getChar1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1319940748; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 608885621; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getDouble1
-// typeId=1741299407
+// typeId=2129490906
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getDouble1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getDouble1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1741299407; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2129490906; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getFloat1
-// typeId=1941525372
+// typeId=1785569467
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getFloat1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getFloat1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1941525372; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1785569467; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt1
-// typeId=874047761
+// typeId=2098036488
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getInt1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getInt1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 874047761; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2098036488; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt2
-// typeId=874047762
+// typeId=2098036489
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getInt2 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getInt2();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 874047762; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2098036489; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt3
-// typeId=874047763
+// typeId=2098036490
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getInt3 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getInt3();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 874047763; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2098036490; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt4
-// typeId=874047764
+// typeId=2098036491
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getInt4 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getInt4();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 874047764; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2098036491; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getLong1
-// typeId=1328473126
+// typeId=617417999
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getLong1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getLong1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1328473126; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 617417999; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getObj1
-// typeId=874214665
+// typeId=2098203392
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getObj1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getObj1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 874214665; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2098203392; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getPrimitiveTypes1
-// typeId=1940572240
+// typeId=1679973895
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getPrimitiveTypes1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getPrimitiveTypes1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1940572240; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1679973895; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getShort1
-// typeId=1573024156
+// typeId=2140896613
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getShort1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getShort1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1573024156; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2140896613; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getString1
-// typeId=1173060367
+// typeId=1597237350
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_getString1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_getString1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1173060367; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1597237350; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setBoolean1
-// typeId=1882657404
+// typeId=2147241989
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setBoolean1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< bool > > boolean1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setBoolean1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setBoolean1(const byps_ptr< ::std::vector< bool > >& boolean1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1882657404; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2147241989; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setByte1
-// typeId=758429070
+// typeId=47373943
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setByte1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< int8_t > > byte1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setByte1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setByte1(const byps_ptr< ::std::vector< int8_t > >& byte1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 758429070; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 47373943; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setByte2
-// typeId=758429071
+// typeId=47373944
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setByte2 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< PBytes > > byte2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setByte2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setByte2(const byps_ptr< ::std::vector< PBytes > >& byte2);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 758429071; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 47373944; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setChar1
-// typeId=758828288
+// typeId=47773161
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setChar1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< wchar_t > > char1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setChar1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setChar1(const byps_ptr< ::std::vector< wchar_t > >& char1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 758828288; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 47773161; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setDouble1
-// typeId=195505829
+// typeId=228671154
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setDouble1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< double > > double1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setDouble1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setDouble1(const byps_ptr< ::std::vector< double > >& double1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 195505829; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 228671154; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setFloat1
-// typeId=2138824848
+// typeId=1570952391
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setFloat1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< float > > float1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setFloat1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setFloat1(const byps_ptr< ::std::vector< float > >& float1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2138824848; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1570952391; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt1
-// typeId=1360809955
+// typeId=136821228
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< int32_t > > int1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setInt1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setInt1(const byps_ptr< ::std::vector< int32_t > >& int1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809955; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 136821228; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt2
-// typeId=1360809954
+// typeId=136821227
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt2 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setInt2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setInt2(const byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >& int2);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809954; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 136821227; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt3
-// typeId=1360809953
+// typeId=136821226
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt3 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setInt3();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setInt3(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >& int3);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809953; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 136821226; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt4
-// typeId=1360809952
+// typeId=136821225
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt4 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setInt4();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >& int4);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1360809952; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 136821225; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setLong1
-// typeId=767360666
+// typeId=56305539
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setLong1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< int64_t > > long1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setLong1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setLong1(const byps_ptr< ::std::vector< int64_t > >& long1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 767360666; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 56305539; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setObj1
-// typeId=1360643051
+// typeId=136654324
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setObj1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< PSerializable > > obj1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setObj1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setObj1(const byps_ptr< ::std::vector< PSerializable > >& obj1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1360643051; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 136654324; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setPrimitiveTypes1
-// typeId=1434361404
+// typeId=759940243
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setPrimitiveTypes1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteListTypes_setPrimitiveTypes1(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1434361404; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteListTypes_setPrimitiveTypes1(const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 759940243; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setShort1
-// typeId=1787641232
+// typeId=1939453607
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setShort1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< int16_t > > short1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setShort1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setShort1(const byps_ptr< ::std::vector< int16_t > >& short1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1787641232; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1939453607; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setString1
-// typeId=763744869
+// typeId=339567886
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteListTypes_setString1 : public BMethodRequest {
 	public: byps_ptr< ::std::vector< ::std::wstring > > string1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteListTypes_setString1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteListTypes_setString1(const byps_ptr< ::std::vector< ::std::wstring > >& string1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 763744869; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 339567886; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getBoolean1
-// typeId=461626272
+// typeId=885803255
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getBoolean1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getBoolean1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 461626272; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 885803255; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getByte1
-// typeId=1348711374
+// typeId=124722647
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getByte1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getByte1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1348711374; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 124722647; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getByte2
-// typeId=1348711373
+// typeId=124722646
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getByte2 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getByte2();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1348711373; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 124722646; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getChar1
-// typeId=1348312156
+// typeId=124323429
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getChar1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getChar1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1348312156; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 124323429; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getDouble1
-// typeId=1836864439
+// typeId=1890230400
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getDouble1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getDouble1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1836864439; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1890230400; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getFloat1
-// typeId=1241980524
+// typeId=530925397
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getFloat1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getFloat1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1241980524; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 530925397; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getInt1
-// typeId=1013140231
+// typeId=827458594
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getInt1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getInt1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1013140231; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 827458594; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getInt2
-// typeId=1013140230
+// typeId=827458595
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getInt2 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getInt2();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1013140230; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 827458595; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getLong1
-// typeId=1339779778
+// typeId=115791051
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getLong1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getLong1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1339779778; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 115791051; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getObj1
-// typeId=1012973327
+// typeId=827625498
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getObj1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getObj1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1012973327; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 827625498; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getPrimitiveTypes1
-// typeId=77071512
+// typeId=1745799327
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getPrimitiveTypes1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getPrimitiveTypes1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 77071512; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1745799327; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getShort1
-// typeId=1610481740
+// typeId=899426613
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getShort1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getShort1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1610481740; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 899426613; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getString1
-// typeId=1268625399
+// typeId=1836497856
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_getString1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_getString1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1268625399; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1836497856; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setBoolean1
-// typeId=550206100
+// typeId=974383083
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setBoolean1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< ::std::wstring , bool > > boolean1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setBoolean1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setBoolean1(const byps_ptr< ::std::map< ::std::wstring , bool > >& boolean1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 550206100; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 974383083; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setByte1
-// typeId=1909823834
+// typeId=685835107
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setByte1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< double , int8_t > > byte1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setByte1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setByte1(const byps_ptr< ::std::map< double , int8_t > >& byte1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1909823834; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 685835107; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setByte2
-// typeId=1909823833
+// typeId=685835106
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setByte2 : public BMethodRequest {
 	public: byps_ptr< ::std::map< int32_t , PBytes > > byte2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setByte2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setByte2(const byps_ptr< ::std::map< int32_t , PBytes > >& byte2);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1909823833; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 685835106; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setChar1
-// typeId=1909424616
+// typeId=685435889
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setChar1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< float , wchar_t > > char1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setChar1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setChar1(const byps_ptr< ::std::map< float , wchar_t > >& char1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1909424616; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 685435889; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setDouble1
-// typeId=99940797
+// typeId=467931660
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setDouble1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< int8_t , double > > double1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setDouble1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setDouble1(const byps_ptr< ::std::map< int8_t , double > >& double1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 99940797; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 467931660; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setFloat1
-// typeId=1027363448
+// typeId=316308321
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setFloat1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< wchar_t , float > > float1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setFloat1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setFloat1(const byps_ptr< ::std::map< wchar_t , float > >& float1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1027363448; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 316308321; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setInt1
-// typeId=1046969349
+// typeId=1407399122
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setInt1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< int32_t , int32_t > > int1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setInt1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setInt1(const byps_ptr< ::std::map< int32_t , int32_t > >& int1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1046969349; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1407399122; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setInt2
-// typeId=1046969350
+// typeId=1407399121
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setInt2 : public BMethodRequest {
 	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setInt2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setInt2(const byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >& int2);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1046969350; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1407399121; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setLong1
-// typeId=1900892238
+// typeId=676903511
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setLong1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< int16_t , int64_t > > long1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setLong1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setLong1(const byps_ptr< ::std::map< int16_t , int64_t > >& long1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1900892238; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 676903511; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setObj1
-// typeId=1047136253
+// typeId=1407232218
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setObj1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setObj1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setObj1(const byps_ptr< ::std::map< ::std::wstring , PSerializable > >& obj1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1047136253; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1407232218; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setPrimitiveTypes1
-// typeId=842962140
+// typeId=1629134317
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setPrimitiveTypes1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteMapTypes_setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 842962140; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteMapTypes_setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1629134317; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setShort1
-// typeId=1395864664
+// typeId=684809537
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setShort1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< int64_t , int16_t > > short1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setShort1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setShort1(const byps_ptr< ::std::map< int64_t , int16_t > >& short1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1395864664; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 684809537; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setString1
-// typeId=668179837
+// typeId=100307380
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setString1 : public BMethodRequest {
 	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteMapTypes_setString1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteMapTypes_setString1(const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 668179837; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 100307380; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_add
-// typeId=1073583639
+// typeId=362528512
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_add : public BMethodRequest {
 	public: int32_t a;
 	public: int32_t b;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_add();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_add(int32_t a, int32_t b);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1073583639; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 362528512; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getBool
-// typeId=2090997206
+// typeId=1816157633
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getBool : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getBool();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2090997206; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1816157633; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getByte
-// typeId=2091006964
+// typeId=1816147875
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getByte : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getByte();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2091006964; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1816147875; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getChar
-// typeId=2091019842
+// typeId=1816134997
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getChar : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getChar();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2091019842; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1816134997; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getDouble
-// typeId=538948675
+// typeId=1513332250
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getDouble : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getDouble();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 538948675; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1513332250; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getFloat
-// typeId=400008432
+// typeId=462707289
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getFloat : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getFloat();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 400008432; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 462707289; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getInt
-// typeId=1318015101
+// typeId=1582599686
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getInt : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getInt();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1318015101; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1582599686; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getLong
-// typeId=2091295080
+// typeId=1815859759
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getLong : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getLong();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2091295080; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1815859759; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getObject
-// typeId=236358869
+// typeId=1210742444
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getObject : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getObject();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 236358869; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1210742444; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getPrimitiveTypes
-// typeId=1881962430
+// typeId=714626279
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getPrimitiveTypes : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getPrimitiveTypes();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1881962430; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 714626279; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getShort
-// typeId=411895568
+// typeId=450820153
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getShort : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getShort();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 411895568; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 450820153; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getString
-// typeId=104976387
+// typeId=1079359962
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_getString : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_getString();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 104976387; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1079359962; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_sendAllTypes
-// typeId=1794219594
+// typeId=677876863
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_sendAllTypes : public BMethodRequest {
 	public: bool b;
@@ -6971,1740 +6969,2466 @@ class BRequest_RemotePrimitiveTypes_sendAllTypes : public BMethodRequest {
 	public: float f;
 	public: double d;
 	public: ::std::wstring str;
-	public: com::wilutions::byps::test::api::prim::PPrimitiveTypes pt;
+	public: byps::test::api::prim::PPrimitiveTypes pt;
 	public: PSerializable o;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_sendAllTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemotePrimitiveTypes_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const com::wilutions::byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1794219594; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemotePrimitiveTypes_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 677876863; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setBool
-// typeId=143860510
+// typeId=243951947
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setBool : public BMethodRequest {
 	public: bool v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setBool();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setBool(bool v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 143860510; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 243951947; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setByte
-// typeId=143850752
+// typeId=243961705
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setByte : public BMethodRequest {
 	public: int8_t v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setByte();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setByte(int8_t v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 143850752; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 243961705; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setChar
-// typeId=143837874
+// typeId=243974583
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setChar : public BMethodRequest {
 	public: wchar_t v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setChar();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setChar(wchar_t v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 143837874; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 243974583; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setDouble
-// typeId=753565751
+// typeId=1727949326
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setDouble : public BMethodRequest {
 	public: double v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setDouble();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setDouble(double v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 753565751; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1727949326; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setFloat
-// typeId=161104028
+// typeId=1023819749
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setFloat : public BMethodRequest {
 	public: float v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setFloat();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setFloat(float v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 161104028; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1023819749; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setInt
-// typeId=974465289
+// typeId=1239049874
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setInt : public BMethodRequest {
 	public: int32_t v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setInt();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setInt(int32_t v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 974465289; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1239049874; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setLong
-// typeId=143562636
+// typeId=244249821
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setLong : public BMethodRequest {
 	public: int64_t v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setLong();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setLong(int64_t v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 143562636; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 244249821; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setObject
-// typeId=450975945
+// typeId=1425359520
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setObject : public BMethodRequest {
 	public: PSerializable v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setObject();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setObject(const PSerializable& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 450975945; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1425359520; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setPrimitiveTypes
-// typeId=941809610
+// typeId=225526541
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setPrimitiveTypes : public BMethodRequest {
-	public: com::wilutions::byps::test::api::prim::PPrimitiveTypes v;
+	public: byps::test::api::prim::PPrimitiveTypes v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setPrimitiveTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemotePrimitiveTypes_setPrimitiveTypes(const com::wilutions::byps::test::api::prim::PPrimitiveTypes& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 941809610; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemotePrimitiveTypes_setPrimitiveTypes(const byps::test::api::prim::PPrimitiveTypes& v);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 225526541; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setShort
-// typeId=149216892
+// typeId=1011932613
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setShort : public BMethodRequest {
 	public: int16_t v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setShort();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setShort(int16_t v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 149216892; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1011932613; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setString
-// typeId=319593463
+// typeId=1293977038
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_setString : public BMethodRequest {
 	public: ::std::wstring v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_setString();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemotePrimitiveTypes_setString(const ::std::wstring& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 319593463; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1293977038; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_throwException
-// typeId=1845930195
+// typeId=1278149706
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_throwException : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_throwException();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1845930195; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1278149706; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_voidFunctionVoid
-// typeId=1856936054
+// typeId=2033139391
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_voidFunctionVoid : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemotePrimitiveTypes_voidFunctionVoid();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1856936054; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2033139391; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteReferences_getNode
-// typeId=655936732
+// typeId=1366991859
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteReferences_getNode : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteReferences_getNode();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 655936732; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1366991859; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteReferences_setNode
-// typeId=1404172848
+// typeId=693117721
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteReferences_setNode : public BMethodRequest {
-	public: com::wilutions::byps::test::api::refs::PNode v;
+	public: byps::test::api::refs::PNode v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteReferences_setNode();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteReferences_setNode(const com::wilutions::byps::test::api::refs::PNode& v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1404172848; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteReferences_setNode(const byps::test::api::refs::PNode& v);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 693117721; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteServerCtrl_getPublishedRemote
-// typeId=1216543212
+// typeId=648762723
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteServerCtrl_getPublishedRemote : public BMethodRequest {
 	public: ::std::wstring name;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteServerCtrl_getPublishedRemote();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteServerCtrl_getPublishedRemote(const ::std::wstring& name);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1216543212; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 648762723; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteServerCtrl_publishRemote
-// typeId=1776814809
+// typeId=1543768912
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteServerCtrl_publishRemote : public BMethodRequest {
 	public: ::std::wstring name;
 	public: PRemote remote;
 	public: bool fowardToOtherServers;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteServerCtrl_publishRemote();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteServerCtrl_publishRemote(const ::std::wstring& name, const PRemote& remote, bool fowardToOtherServers);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1776814809; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1543768912; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteServerCtrl_removePublishedRemote
-// typeId=1302703010
+// typeId=135366859
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteServerCtrl_removePublishedRemote : public BMethodRequest {
 	public: ::std::wstring name;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteServerCtrl_removePublishedRemote();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteServerCtrl_removePublishedRemote(const ::std::wstring& name);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1302703010; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 135366859; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getBoolean1
-// typeId=1690813926
+// typeId=2114990909
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getBoolean1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getBoolean1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1690813926; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2114990909; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getByte1
-// typeId=2125684552
+// typeId=901695825
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getByte1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getByte1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2125684552; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 901695825; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getByte2
-// typeId=2125684551
+// typeId=901695824
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getByte2 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getByte2();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2125684551; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 901695824; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getChar1
-// typeId=2125285334
+// typeId=901296607
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getChar1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getChar1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2125285334; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 901296607; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getDouble1
-// typeId=1183778993
+// typeId=1751651450
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getDouble1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getDouble1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1183778993; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1751651450; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getFloat1
-// typeId=1369351514
+// typeId=2080406641
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getFloat1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getFloat1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1369351514; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2080406641; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getInt1
-// typeId=68372557
+// typeId=1772226268
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getInt1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getInt1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 68372557; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1772226268; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getInt2
-// typeId=68372556
+// typeId=1772226269
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getInt2 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getInt2();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 68372556; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1772226269; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getLong1
-// typeId=2116752956
+// typeId=892764229
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getLong1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getLong1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2116752956; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 892764229; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getObj1
-// typeId=68205653
+// typeId=1772393172
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getObj1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getObj1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 68205653; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1772393172; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getPrimitiveTypes1
-// typeId=1802821742
+// typeId=669274715
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getPrimitiveTypes1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getPrimitiveTypes1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1802821742; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 669274715; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getShort1
-// typeId=1000850298
+// typeId=1711905425
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getShort1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getShort1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1000850298; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1711905425; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getString1
-// typeId=615539953
+// typeId=1183412410
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_getString1 : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_getString1();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 615539953; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1183412410; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setBoolean1
-// typeId=1779393754
+// typeId=2091396559
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setBoolean1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< bool > > boolean1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setBoolean1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setBoolean1(const byps_ptr< ::std::set< bool > >& boolean1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1779393754; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2091396559; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setByte1
-// typeId=1608170284
+// typeId=1462808285
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setByte1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< int8_t > > byte1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setByte1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setByte1(const byps_ptr< ::std::set< int8_t > >& byte1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1608170284; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1462808285; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setByte2
-// typeId=1608170285
+// typeId=1462808284
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setByte2 : public BMethodRequest {
 	public: byps_ptr< ::std::set< PBytes > > byte2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setByte2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setByte2(const byps_ptr< ::std::set< PBytes > >& byte2);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1608170285; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1462808284; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setChar1
-// typeId=1608569502
+// typeId=1462409067
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setChar1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< wchar_t > > char1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setChar1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setChar1(const byps_ptr< ::std::set< wchar_t > >& char1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1608569502; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1462409067; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setDouble1
-// typeId=753026243
+// typeId=185153786
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setDouble1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< double > > double1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setDouble1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setDouble1(const byps_ptr< ::std::set< double > >& double1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 753026243; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 185153786; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setFloat1
-// typeId=1583968590
+// typeId=1999943579
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setFloat1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< float > > float1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setFloat1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setFloat1(const byps_ptr< ::std::set< float > >& float1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1583968590; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1999943579; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setInt1
-// typeId=1991737023
+// typeId=462631448
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setInt1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< int32_t > > int1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setInt1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setInt1(const byps_ptr< ::std::set< int32_t > >& int1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1991737023; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 462631448; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setInt2
-// typeId=1991737024
+// typeId=462631447
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setInt2 : public BMethodRequest {
 	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setInt2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setInt2(const byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >& int2);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1991737024; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 462631447; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setLong1
-// typeId=1617101880
+// typeId=1453876689
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setLong1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< int64_t > > long1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setLong1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setLong1(const byps_ptr< ::std::set< int64_t > >& long1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1617101880; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1453876689; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setObj1
-// typeId=1991903927
+// typeId=462464544
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setObj1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< PSerializable > > obj1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setObj1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setObj1(const byps_ptr< ::std::set< PSerializable > >& obj1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1991903927; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 462464544; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setPrimitiveTypes1
-// typeId=1572111902
+// typeId=250758937
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setPrimitiveTypes1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: BRequest_RemoteSetTypes_setPrimitiveTypes1(const byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1572111902; }
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: BRequest_RemoteSetTypes_setPrimitiveTypes1(const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 250758937; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setShort1
-// typeId=1215467374
+// typeId=1926522501
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setShort1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< int16_t > > short1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setShort1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setShort1(const byps_ptr< ::std::set< int16_t > >& short1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1215467374; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1926522501; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setString1
-// typeId=1321265283
+// typeId=753392826
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setString1 : public BMethodRequest {
 	public: byps_ptr< ::std::set< ::std::wstring > > string1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteSetTypes_setString1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteSetTypes_setString1(const byps_ptr< ::std::set< ::std::wstring > >& string1);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1321265283; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 753392826; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_getImage
-// typeId=1902276204
+// typeId=61677379
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteStreams_getImage : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteStreams_getImage();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1902276204; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 61677379; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_getImages
-// typeId=1158979935
+// typeId=1911998634
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteStreams_getImages : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteStreams_getImages();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1158979935; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1911998634; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_getTextStream
-// typeId=1083407988
+// typeId=818823403
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteStreams_getTextStream : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteStreams_getTextStream();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1083407988; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 818823403; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_setImage
-// typeId=1831578632
+// typeId=622789839
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteStreams_setImage : public BMethodRequest {
 	public: PContentStream istrm;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteStreams_setImage();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteStreams_setImage(const PContentStream& istrm);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1831578632; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 622789839; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_setImages
-// typeId=944362859
+// typeId=2126615710
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteStreams_setImages : public BMethodRequest {
 	public: byps_ptr< ::std::map< int32_t , PContentStream > > istrms;
 	public: int32_t doNotReadStreamAtKey;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteStreams_setImages();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteStreams_setImages(const byps_ptr< ::std::map< int32_t , PContentStream > >& istrms, int32_t doNotReadStreamAtKey);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 944362859; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2126615710; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_throwLastException
-// typeId=2047657918
+// typeId=2127402965
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteStreams_throwLastException : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteStreams_throwLastException();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2047657918; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2127402965; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_doit
-// typeId=388793292
+// typeId=1251509013
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteWithAuthentication_doit : public BMethodRequest {
-	public: com::wilutions::byps::test::api::auth::PSessionInfo sess;
+	public: byps::test::api::auth::PSessionInfo sess;
 	public: int32_t value;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteWithAuthentication_doit();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteWithAuthentication_doit(int32_t value);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 388793292; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1251509013; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:839
+	// checkpoint byps.gen.cpp.GenApiClass:839
 	public: virtual void setSession(PSerializable __byps__sess);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_expire
-// typeId=68943581
+// typeId=72176172
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteWithAuthentication_expire : public BMethodRequest {
-	public: com::wilutions::byps::test::api::auth::PSessionInfo sess;
+	public: byps::test::api::auth::PSessionInfo sess;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteWithAuthentication_expire();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 68943581; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 72176172; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:839
+	// checkpoint byps.gen.cpp.GenApiClass:839
 	public: virtual void setSession(PSerializable __byps__sess);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_login
-// typeId=839695851
+// typeId=134687724
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteWithAuthentication_login : public BMethodRequest {
-	public: com::wilutions::byps::test::api::auth::PSessionInfo sess;
+	public: byps::test::api::auth::PSessionInfo sess;
 	public: ::std::wstring userName;
 	public: ::std::wstring userPwd;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteWithAuthentication_login();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteWithAuthentication_login(const ::std::wstring& userName, const ::std::wstring& userPwd);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 839695851; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 134687724; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:839
+	// checkpoint byps.gen.cpp.GenApiClass:839
 	public: virtual void setSession(PSerializable __byps__sess);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_setReloginCount
-// typeId=20608797
+// typeId=802968058
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteWithAuthentication_setReloginCount : public BMethodRequest {
 	public: int32_t count;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteWithAuthentication_setReloginCount();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteWithAuthentication_setReloginCount(int32_t count);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 20608797; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 802968058; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_setUseAuthentication
-// typeId=1785294043
+// typeId=946544530
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_RemoteWithAuthentication_setUseAuthentication : public BMethodRequest {
 	public: bool useAuth;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_RemoteWithAuthentication_setUseAuthentication();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_RemoteWithAuthentication_setUseAuthentication(bool useAuth);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1785294043; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 946544530; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_getStreams
-// typeId=865920738
+// typeId=1654980071
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ClientIF_getStreams : public BMethodRequest {
 	public: int32_t ctrl;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ClientIF_getStreams();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ClientIF_getStreams(int32_t ctrl);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 865920738; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1654980071; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_incrementInt
-// typeId=1461829915
+// typeId=1685952420
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ClientIF_incrementInt : public BMethodRequest {
 	public: int32_t a;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ClientIF_incrementInt();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ClientIF_incrementInt(int32_t a);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1461829915; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1685952420; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_putStreams
-// typeId=242798857
+// typeId=2016865344
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ClientIF_putStreams : public BMethodRequest {
 	public: byps_ptr< ::std::vector< PContentStream > > strm;
 	public: int32_t ctrl;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ClientIF_putStreams();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ClientIF_putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 242798857; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2016865344; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_sendChat
-// typeId=1352392091
+// typeId=41050276
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ClientIF_sendChat : public BMethodRequest {
 	public: PChatStructure cs;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ClientIF_sendChat();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ClientIF_sendChat(const PChatStructure& cs);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1352392091; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 41050276; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_callClientIncrementInt
-// typeId=1252575894
+// typeId=389860173
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_callClientIncrementInt : public BMethodRequest {
 	public: int32_t v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_callClientIncrementInt();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ServerIF_callClientIncrementInt(int32_t v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1252575894; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 389860173; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_callClientParallel
-// typeId=1340180893
+// typeId=772308436
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_callClientParallel : public BMethodRequest {
 	public: int32_t v;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_callClientParallel();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ServerIF_callClientParallel(int32_t v);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1340180893; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 772308436; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getClient
-// typeId=2107407220
+// typeId=190669475
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_getClient : public BMethodRequest {
 	public: int32_t id;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_getClient();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ServerIF_getClient(int32_t id);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2107407220; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 190669475; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getClientIds
-// typeId=2063368540
+// typeId=2007476251
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_getClientIds : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_getClientIds();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2063368540; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2007476251; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getPartner
-// typeId=748402113
+// typeId=1025664374
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_getPartner : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_getPartner();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 748402113; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1025664374; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getStreamsFromClient
-// typeId=1415283169
+// typeId=1679867754
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_getStreamsFromClient : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_getStreamsFromClient();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1415283169; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1679867754; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_putStreamsOnClient
-// typeId=1367013829
+// typeId=1934886286
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_putStreamsOnClient : public BMethodRequest {
 	public: byps_ptr< ::std::vector< PContentStream > > streams;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_putStreamsOnClient();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ServerIF_putStreamsOnClient(const byps_ptr< ::std::vector< PContentStream > >& streams);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1367013829; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1934886286; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_registerWithClientMap
-// typeId=1921080901
+// typeId=1533268444
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_registerWithClientMap : public BMethodRequest {
 	public: int32_t id;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_registerWithClientMap();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ServerIF_registerWithClientMap(int32_t id);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1921080901; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1533268444; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_setPartner
-// typeId=1188403123
+// typeId=1332497686
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_ServerIF_setPartner : public BMethodRequest {
 	public: PClientIF client;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_ServerIF_setPartner();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_ServerIF_setPartner(const PClientIF& client);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1188403123; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1332497686; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_getClient
-// typeId=98720592
+// typeId=1212621223
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_EvolveIF_getClient : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_EvolveIF_getClient();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 98720592; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1212621223; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_getEvolve
-// typeId=32041374
+// typeId=1279300441
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_EvolveIF_getEvolve : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_EvolveIF_getEvolve();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 32041374; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1279300441; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_sendEvolveToClient
-// typeId=1425170268
+// typeId=714115141
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_EvolveIF_sendEvolveToClient : public BMethodRequest {
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_EvolveIF_sendEvolveToClient();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1425170268; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 714115141; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_setClient
-// typeId=313337668
+// typeId=998004147
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_EvolveIF_setClient : public BMethodRequest {
 	public: PEvolveIF partner;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_EvolveIF_setClient();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_EvolveIF_setClient(const PEvolveIF& partner);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 313337668; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 998004147; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_setEvolve
-// typeId=246658450
+// typeId=1064683365
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BRequest_EvolveIF_setEvolve : public BMethodRequest {
 	public: PEvolve obj;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: BRequest_EvolveIF_setEvolve();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: BRequest_EvolveIF_setEvolve(const PEvolve& obj);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 246658450; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1064683365; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}}}}}
+}}
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
 // Serializer for boolean[]
 void BSerializer_2058423690(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for boolean[][][][]
 void BSerializer_945713488(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1
+void BSerializer_432867947(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_10
+void BSerializer_534004421(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1000
+void BSerializer_2077138821(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_100361105
+void BSerializer_498939805(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1050216688
+void BSerializer_70523627(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1059148284
+void BSerializer_698727944(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1097129250
+void BSerializer_200721390(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1174971318
+void BSerializer_1068483136(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_12
+void BSerializer_534004419(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1201775504
+void BSerializer_1521577218(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1218831438
+void BSerializer_911793767(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_124584219
+void BSerializer_996163680(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1279823631
+void BSerializer_629604454(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1320560671
+void BSerializer_2041057155(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1347703734
+void BSerializer_881037921(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1358523233
+void BSerializer_1693860029(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1359468275
+void BSerializer_1738389572(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1361632968
+void BSerializer_1548641599(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1365696060
+void BSerializer_809340660(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1374008726
+void BSerializer_1484626910(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1375035164
+void BSerializer_1920161159(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1391985860
+void BSerializer_1722268526(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_14
+void BSerializer_534004417(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1406124761
+void BSerializer_2127200796(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1457164460
+void BSerializer_1111888832(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1487265161
+void BSerializer_149769063(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1488550492
+void BSerializer_822552572(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1493282670
+void BSerializer_1955210948(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_15
+void BSerializer_534004416(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1516687588
+void BSerializer_2043070523(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1555345627
+void BSerializer_343940505(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1596367810
+void BSerializer_1073221568(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_16
+void BSerializer_534004415(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1617670280
+void BSerializer_1330811042(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1628501332
+void BSerializer_368905437(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1633500852
+void BSerializer_1231328865(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1633750383
+void BSerializer_1293200061(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1661807911
+void BSerializer_475882038(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1710660846
+void BSerializer_1899847531(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_171948703
+void BSerializer_871356108(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1746702954
+void BSerializer_408452669(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1752158699
+void BSerializer_1912328929(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1799280818
+void BSerializer_2052610089(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_181681714
+void BSerializer_1763202727(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1823330785
+void BSerializer_114088296(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1831201218
+void BSerializer_50516327(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_183594037
+void BSerializer_15818284(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_184101377
+void BSerializer_748770738(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1859644668
+void BSerializer_2130431383(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1888107655
+void BSerializer_2063745441(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1888799711
+void BSerializer_2051074845(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1898022288
+void BSerializer_515346332(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_19
+void BSerializer_534004412(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1972793385
+void BSerializer_1958357790(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1973996106
+void BSerializer_1391760319(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_1997002548
+void BSerializer_1082818537(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2
+void BSerializer_432867946(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2028443792
+void BSerializer_1664501789(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2052431866
+void BSerializer_1566928477(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2053507648
+void BSerializer_1814499786(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2058423690
+void BSerializer_1698849803(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2064980445
+void BSerializer_937508540(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2067161310
+void BSerializer_925799231(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2087445849
+void BSerializer_1650981375(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_21
+void BSerializer_534004389(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_2123584667
+void BSerializer_253151806(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_3
+void BSerializer_432867945(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_31512998
+void BSerializer_1620912700(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_39910537
+void BSerializer_245460547(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_4
+void BSerializer_432867944(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_476459792
+void BSerializer_255681041(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_5
+void BSerializer_432867943(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_564008001
+void BSerializer_1405156912(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_588723219
+void BSerializer_1537615291(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_6
+void BSerializer_432867942(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_601099730
+void BSerializer_856233055(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_65775978
+void BSerializer_1872312576(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_673917574
+void BSerializer_2098743607(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_7
+void BSerializer_432867941(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_7007
+void BSerializer_2076960068(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_758319514
+void BSerializer_1168951451(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_766441794
+void BSerializer_1167917980(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_769021986
+void BSerializer_580900026(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_8
+void BSerializer_432867940(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_846419204
+void BSerializer_167272824(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_8789515
+void BSerializer_323111619(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_9001
+void BSerializer_2076900492(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_936607009
+void BSerializer_968248604(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_94341197
+void BSerializer_1800858646(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_945713488
+void BSerializer_1852992857(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_949340697
+void BSerializer_996206823(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.BResult_955752991
+void BSerializer_695494982(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.arr.ArrayTypes1dim
+void BSerializer_2001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.arr.ArrayTypes4dim
+void BSerializer_2004(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.auth.SessionInfo
+void BSerializer_65775978(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.AllTypesC
+void BSerializer_930294276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.AllTypesZ
+void BSerializer_142458(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.AllTypesZ[][]
+void BSerializer_81775365(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.HebrewC
+void BSerializer_691741677(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.HebrewZ
+void BSerializer_1518668429(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.HebrewZ[]
+void BSerializer_92445340(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.enu.EnumPlanets[]
+void BSerializer_1441131650(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.enu.UsePlanets
+void BSerializer_10000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BRequest_BioFruitService_certify
+void BSerializer_1435417025(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BRequest_BioLemonService_useParing
+void BSerializer_2108700976(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BRequest_FruitService_squeeze
+void BSerializer_1290167289(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BRequest_LemonService_pick
+void BSerializer_1022088379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BRequest_PlantService_grow
+void BSerializer_695716901(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BStub_BioFruitService
+void BSerializer_363642571(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BStub_BioLemonService
+void BSerializer_474058508(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BStub_FruitService
+void BSerializer_715959905(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BStub_LemonService
+void BSerializer_605543968(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.BStub_PlantService
+void BSerializer_1954605928(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.Class1
+void BSerializer_6001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.Class1Collections
+void BSerializer_6004(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.Class2
+void BSerializer_6002(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inherit.Class3
+void BSerializer_6003(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inl.Actor
+void BSerializer_171948703(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inl.Matrix2D
+void BSerializer_135329019(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inl.Point2D
+void BSerializer_1835035436(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inl.Point2D[]
+void BSerializer_184101377(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inl.Point2D[][]
+void BSerializer_827767075(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inl.Point2D[][][]
+void BSerializer_915212229(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.inl.Point2D[][][][]
+void BSerializer_949340697(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.list.ListListTypes
+void BSerializer_3002(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.list.ListTypes
+void BSerializer_3001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.map.MapTypes
+void BSerializer_4001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.prim.PrimitiveTypes
+void BSerializer_1000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.prim.PrimitiveTypes[]
+void BSerializer_2053507648(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.prim.PrimitiveTypes[][]
+void BSerializer_2030857950(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.prim.PrimitiveTypes[][][]
+void BSerializer_1739334652(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.prim.PrimitiveTypes[][][][]
+void BSerializer_758319514(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.priv.PrivateMembers
+void BSerializer_8001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.refs.Node
+void BSerializer_9001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool
+void BSerializer_2033416644(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte
+void BSerializer_2033426402(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar
+void BSerializer_2033439280(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
+void BSerializer_39293909(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat
+void BSerializer_1384988990(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt
+void BSerializer_1874061867(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
+void BSerializer_2033714518(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject
+void BSerializer_263295897(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
+void BSerializer_1992537556(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort
+void BSerializer_1373101854(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString
+void BSerializer_394678379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool
+void BSerializer_201441072(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
+void BSerializer_201431314(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar
+void BSerializer_201418436(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
+void BSerializer_253910985(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat
+void BSerializer_1946101450(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt
+void BSerializer_1530512055(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong
+void BSerializer_201143198(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject
+void BSerializer_48678821(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
+void BSerializer_1362276920(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
+void BSerializer_1934214314(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString
+void BSerializer_180061303(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysClass
+void BSerializer_330036060(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInline
+void BSerializer_1467243283(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInt
+void BSerializer_1828268517(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysObject
+void BSerializer_1306614381(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysString
+void BSerializer_1175231899(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool
+void BSerializer_1874302495(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte
+void BSerializer_1874292737(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
+void BSerializer_1874279859(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
+void BSerializer_1555969784(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat
+void BSerializer_2029769285(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt
+void BSerializer_1325018648(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong
+void BSerializer_1874004621(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject
+void BSerializer_1253379978(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
+void BSerializer_483228169(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort
+void BSerializer_2041656421(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString
+void BSerializer_1121997496(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool
+void BSerializer_185807085(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte
+void BSerializer_185816843(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar
+void BSerializer_185829721(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble
+void BSerializer_1770586860(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat
+void BSerializer_1468656825(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt
+void BSerializer_1668568460(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong
+void BSerializer_186104959(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject
+void BSerializer_1467997054(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
+void BSerializer_456924651(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setShort
+void BSerializer_1480543961(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
+void BSerializer_1336614572(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC
+void BSerializer_1609344203(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC
+void BSerializer_1711871378(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteEnums_getPlanet
+void BSerializer_6352043(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteEnums_setPlanet
+void BSerializer_220969119(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_getActor
+void BSerializer_600892860(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray1dim
+void BSerializer_188393247(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray4dim
+void BSerializer_188482620(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DList
+void BSerializer_1428313263(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DListList
+void BSerializer_1650554387(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DMap
+void BSerializer_646661333(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_setActor
+void BSerializer_1162005320(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray1dim
+void BSerializer_1355334613(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray4dim
+void BSerializer_1355245240(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DList
+void BSerializer_343422941(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DListList
+void BSerializer_730520735(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DMap
+void BSerializer_127469879(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1
+void BSerializer_2058662161(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getByte1
+void BSerializer_608486403(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getByte2
+void BSerializer_608486404(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getChar1
+void BSerializer_608885621(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
+void BSerializer_2129490906(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getFloat1
+void BSerializer_1785569467(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getInt1
+void BSerializer_2098036488(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getInt2
+void BSerializer_2098036489(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getInt3
+void BSerializer_2098036490(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getInt4
+void BSerializer_2098036491(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getLong1
+void BSerializer_617417999(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getObj1
+void BSerializer_2098203392(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1
+void BSerializer_1679973895(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getShort1
+void BSerializer_2140896613(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_getString1
+void BSerializer_1597237350(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1
+void BSerializer_2147241989(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setByte1
+void BSerializer_47373943(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setByte2
+void BSerializer_47373944(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setChar1
+void BSerializer_47773161(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
+void BSerializer_228671154(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setFloat1
+void BSerializer_1570952391(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setInt1
+void BSerializer_136821228(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setInt2
+void BSerializer_136821227(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setInt3
+void BSerializer_136821226(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setInt4
+void BSerializer_136821225(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setLong1
+void BSerializer_56305539(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setObj1
+void BSerializer_136654324(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1
+void BSerializer_759940243(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setShort1
+void BSerializer_1939453607(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteListTypes_setString1
+void BSerializer_339567886(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1
+void BSerializer_885803255(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getByte1
+void BSerializer_124722647(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getByte2
+void BSerializer_124722646(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getChar1
+void BSerializer_124323429(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
+void BSerializer_1890230400(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1
+void BSerializer_530925397(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getInt1
+void BSerializer_827458594(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getInt2
+void BSerializer_827458595(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getLong1
+void BSerializer_115791051(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getObj1
+void BSerializer_827625498(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1
+void BSerializer_1745799327(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
+void BSerializer_899426613(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_getString1
+void BSerializer_1836497856(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1
+void BSerializer_974383083(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setByte1
+void BSerializer_685835107(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setByte2
+void BSerializer_685835106(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setChar1
+void BSerializer_685435889(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1
+void BSerializer_467931660(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1
+void BSerializer_316308321(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setInt1
+void BSerializer_1407399122(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setInt2
+void BSerializer_1407399121(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setLong1
+void BSerializer_676903511(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setObj1
+void BSerializer_1407232218(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1
+void BSerializer_1629134317(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setShort1
+void BSerializer_684809537(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteMapTypes_setString1
+void BSerializer_100307380(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_add
+void BSerializer_362528512(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool
+void BSerializer_1816157633(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
+void BSerializer_1816147875(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar
+void BSerializer_1816134997(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
+void BSerializer_1513332250(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat
+void BSerializer_462707289(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt
+void BSerializer_1582599686(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong
+void BSerializer_1815859759(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject
+void BSerializer_1210742444(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes
+void BSerializer_714626279(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort
+void BSerializer_450820153(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
+void BSerializer_1079359962(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
+void BSerializer_677876863(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool
+void BSerializer_243951947(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte
+void BSerializer_243961705(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar
+void BSerializer_243974583(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble
+void BSerializer_1727949326(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
+void BSerializer_1023819749(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt
+void BSerializer_1239049874(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong
+void BSerializer_244249821(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject
+void BSerializer_1425359520(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes
+void BSerializer_225526541(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort
+void BSerializer_1011932613(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
+void BSerializer_1293977038(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
+void BSerializer_1278149706(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
+void BSerializer_2033139391(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteReferences_getNode
+void BSerializer_1366991859(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteReferences_setNode
+void BSerializer_693117721(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote
+void BSerializer_648762723(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote
+void BSerializer_1543768912(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote
+void BSerializer_135366859(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
+void BSerializer_2114990909(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
+void BSerializer_901695825(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getByte2
+void BSerializer_901695824(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getChar1
+void BSerializer_901296607(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
+void BSerializer_1751651450(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1
+void BSerializer_2080406641(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getInt1
+void BSerializer_1772226268(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getInt2
+void BSerializer_1772226269(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getLong1
+void BSerializer_892764229(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getObj1
+void BSerializer_1772393172(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1
+void BSerializer_669274715(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getShort1
+void BSerializer_1711905425(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_getString1
+void BSerializer_1183412410(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1
+void BSerializer_2091396559(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setByte1
+void BSerializer_1462808285(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setByte2
+void BSerializer_1462808284(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setChar1
+void BSerializer_1462409067(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1
+void BSerializer_185153786(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1
+void BSerializer_1999943579(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setInt1
+void BSerializer_462631448(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setInt2
+void BSerializer_462631447(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setLong1
+void BSerializer_1453876689(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setObj1
+void BSerializer_462464544(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1
+void BSerializer_250758937(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setShort1
+void BSerializer_1926522501(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteSetTypes_setString1
+void BSerializer_753392826(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_getImage
+void BSerializer_61677379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_getImages
+void BSerializer_1911998634(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_getTextStream
+void BSerializer_818823403(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImage
+void BSerializer_622789839(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImages
+void BSerializer_2126615710(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_throwLastException
+void BSerializer_2127402965(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteWithAuthentication_doit
+void BSerializer_1251509013(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteWithAuthentication_expire
+void BSerializer_72176172(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteWithAuthentication_login
+void BSerializer_134687724(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount
+void BSerializer_802968058(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
+void BSerializer_946544530(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteArrayTypes1dim
+void BSerializer_963816328(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteArrayTypes23
+void BSerializer_769717182(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteArrayTypes4dim
+void BSerializer_963726955(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteConstants
+void BSerializer_2045242510(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteEnums
+void BSerializer_485761455(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteInlineInstance
+void BSerializer_567395951(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteListTypes
+void BSerializer_1233438138(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteMapTypes
+void BSerializer_664304990(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemotePrimitiveTypes
+void BSerializer_1178916877(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteReferences
+void BSerializer_568637225(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteServerCtrl
+void BSerializer_1652234479(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteSetTypes
+void BSerializer_1900796440(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteStreams
+void BSerializer_1043578866(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteWithAuthentication
+void BSerializer_1983670399(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.set.SetTypes
+void BSerializer_5001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ClientIF_getStreams
+void BSerializer_1654980071(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ClientIF_incrementInt
+void BSerializer_1685952420(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ClientIF_putStreams
+void BSerializer_2016865344(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ClientIF_sendChat
+void BSerializer_41050276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt
+void BSerializer_389860173(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_callClientParallel
+void BSerializer_772308436(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_getClient
+void BSerializer_190669475(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_getClientIds
+void BSerializer_2007476251(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_getPartner
+void BSerializer_1025664374(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
+void BSerializer_1679867754(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient
+void BSerializer_1934886286(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap
+void BSerializer_1533268444(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BRequest_ServerIF_setPartner
+void BSerializer_1332497686(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BStub_ClientIF
+void BSerializer_2049072174(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.BStub_ServerIF
+void BSerializer_1775199834(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.srvr.ChatStructure
+void BSerializer_7007(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.strm.Stream1
+void BSerializer_1541129345(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.BRequest_EvolveIF_getClient
+void BSerializer_1212621223(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.BRequest_EvolveIF_getEvolve
+void BSerializer_1279300441(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient
+void BSerializer_714115141(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.BRequest_EvolveIF_setClient
+void BSerializer_998004147(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.BRequest_EvolveIF_setEvolve
+void BSerializer_1064683365(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.BStub_EvolveIF
+void BSerializer_15377840(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.Evolve
+void BSerializer_1391985860(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.ver.Evolve2
+void BSerializer_573592593(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byte[]
 void BSerializer_1374008726(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byte[][][][]
@@ -8713,732 +9437,6 @@ void BSerializer_1201775504(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1361632968(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for char[][][][]
 void BSerializer_769021986(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1
-void BSerializer_148544162(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_10
-void BSerializer_309901678(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1000
-void BSerializer_1462767598(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_100361105
-void BSerializer_848023142(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1042475995
-void BSerializer_2038872493(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1050216688
-void BSerializer_2133842068(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1059148284
-void BSerializer_1532920911(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1097129250
-void BSerializer_1862597051(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1174971318
-void BSerializer_994835305(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1178379224
-void BSerializer_1911325389(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_12
-void BSerializer_309901676(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1201775504
-void BSerializer_541741223(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1218831438
-void BSerializer_1151524674(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_124584219
-void BSerializer_647080343(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1279823631
-void BSerializer_1602044401(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1280571537
-void BSerializer_429041482(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1320560671
-void BSerializer_190591700(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1347703734
-void BSerializer_1350610934(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1359468275
-void BSerializer_493259283(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1361632968
-void BSerializer_514676842(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1365696060
-void BSerializer_1253977781(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1374008726
-void BSerializer_578691531(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1391985860
-void BSerializer_509380329(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_14
-void BSerializer_309901674(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1406124761
-void BSerializer_104448059(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1457164460
-void BSerializer_1119760023(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1463615848
-void BSerializer_548882635(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1473575576
-void BSerializer_1170836883(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1487265161
-void BSerializer_2081879792(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1488550492
-void BSerializer_1240765869(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1493282670
-void BSerializer_276437907(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_15
-void BSerializer_309901673(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1503107601
-void BSerializer_72308967(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1516687588
-void BSerializer_188578332(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1544333227
-void BSerializer_743592613(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1555345627
-void BSerializer_1887708350(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_16
-void BSerializer_309901672(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1617670280
-void BSerializer_732507399(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1628501332
-void BSerializer_1862743418(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1633500852
-void BSerializer_831989576(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1633750383
-void BSerializer_770118380(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1661807911
-void BSerializer_1587436403(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1710660846
-void BSerializer_163470910(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_171948703
-void BSerializer_1220439445(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_172221196
-void BSerializer_1905478006(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1746702954
-void BSerializer_1823196186(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1752158699
-void BSerializer_150989512(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1799280818
-void BSerializer_179038766(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_181681714
-void BSerializer_1414119390(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_183594037
-void BSerializer_333265053(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1851881336
-void BSerializer_1651982651(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1859644668
-void BSerializer_101217472(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1888107655
-void BSerializer_427000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1888799711
-void BSerializer_180574010(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1898022288
-void BSerializer_1716302523(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_19
-void BSerializer_309901669(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1972793385
-void BSerializer_104960651(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1973996106
-void BSerializer_839888536(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_1997002548
-void BSerializer_980499904(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2
-void BSerializer_148544161(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2028443792
-void BSerializer_398816652(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2049740106
-void BSerializer_234867558(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2052431866
-void BSerializer_496389964(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2058423690
-void BSerializer_532799052(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2067161310
-void BSerializer_1305849624(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2087445849
-void BSerializer_580667480(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_21
-void BSerializer_309901646(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_2123584667
-void BSerializer_1978497049(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_3
-void BSerializer_148544160(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_31512998
-void BSerializer_307489197(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_39910537
-void BSerializer_1682941350(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_4
-void BSerializer_148544159(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_476459792
-void BSerializer_93402296(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_487702928
-void BSerializer_1490187962(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_5
-void BSerializer_148544158(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_588723219
-void BSerializer_1886698628(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_6
-void BSerializer_148544157(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_601099730
-void BSerializer_1205316392(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_65775978
-void BSerializer_56089321(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_7
-void BSerializer_148544156(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_7007
-void BSerializer_1462588845(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_703065817
-void BSerializer_1169980470(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_766441794
-void BSerializer_1517001317(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_769021986
-void BSerializer_231816689(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_8
-void BSerializer_148544155(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_801243127
-void BSerializer_1937830923(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_846419204
-void BSerializer_516356161(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_8789515
-void BSerializer_1554344518(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_9001
-void BSerializer_1462529269(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_936607009
-void BSerializer_1317331941(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_94341197
-void BSerializer_127543251(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.BResult_945713488
-void BSerializer_2092891102(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.arr.ArrayTypes1dim
-void BSerializer_2001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.arr.ArrayTypes4dim
-void BSerializer_2004(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.auth.SessionInfo
-void BSerializer_65775978(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.cons.AllTypesC
-void BSerializer_930294276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.cons.AllTypesZ
-void BSerializer_142458(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.cons.AllTypesZ[][]
-void BSerializer_1981543076(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.cons.HebrewC
-void BSerializer_691741677(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.cons.HebrewZ
-void BSerializer_1518668429(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.cons.HebrewZ[]
-void BSerializer_2092671091(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.enu.EnumPlanets[]
-void BSerializer_1092048313(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.enu.UsePlanets
-void BSerializer_10000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BRequest_BioFruitService_certify
-void BSerializer_724361898(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BRequest_BioLemonService_useParing
-void BSerializer_1762089337(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BRequest_FruitService_squeeze
-void BSerializer_656804784(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BRequest_LemonService_pick
-void BSerializer_1860602130(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BRequest_PlantService_grow
-void BSerializer_1534230652(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BStub_BioFruitService
-void BSerializer_1881829396(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BStub_BioLemonService
-void BSerializer_1992245333(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BStub_FruitService
-void BSerializer_506940662(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BStub_LemonService
-void BSerializer_617356599(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.BStub_PlantService
-void BSerializer_1117460801(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.Class1
-void BSerializer_6001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.Class1Collections
-void BSerializer_6004(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.Class2
-void BSerializer_6002(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inherit.Class3
-void BSerializer_6003(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inl.Actor
-void BSerializer_171948703(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inl.Matrix2D
-void BSerializer_135329019(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inl.Point2D
-void BSerializer_1835035436(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inl.Point2D[]
-void BSerializer_2049740106(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inl.Point2D[][]
-void BSerializer_1589744084(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inl.Point2D[][][]
-void BSerializer_1264295566(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.inl.Point2D[][][][]
-void BSerializer_487702928(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.list.ListListTypes
-void BSerializer_3002(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.list.ListTypes
-void BSerializer_3001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.map.MapTypes
-void BSerializer_4001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.prim.PrimitiveTypes
-void BSerializer_1000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-void BSerializer_801243127(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.prim.PrimitiveTypes[][]
-void BSerializer_1195496149(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.prim.PrimitiveTypes[][][]
-void BSerializer_2115528243(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-void BSerializer_1503107601(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.priv.PrivateMembers
-void BSerializer_8001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.refs.Node
-void BSerializer_9001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool
-void BSerializer_1645604187(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte
-void BSerializer_1645613945(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar
-void BSerializer_1645626823(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
-void BSerializer_935089666(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat
-void BSerializer_522273269(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt
-void BSerializer_1609477282(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
-void BSerializer_1645902061(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject
-void BSerializer_1237679472(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
-void BSerializer_825201405(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort
-void BSerializer_510386133(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString
-void BSerializer_1369061954(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool
-void BSerializer_589253529(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
-void BSerializer_589243771(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar
-void BSerializer_589230893(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
-void BSerializer_720472590(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat
-void BSerializer_1083385729(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt
-void BSerializer_1265927470(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong
-void BSerializer_588955655(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject
-void BSerializer_1023062396(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
-void BSerializer_1765354225(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
-void BSerializer_1071498593(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString
-void BSerializer_1154444878(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysClass
-void BSerializer_1004457221(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInline
-void BSerializer_899462794(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInt
-void BSerializer_1748523470(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysObject
-void BSerializer_738833892(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysString
-void BSerializer_607451410(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool
-void BSerializer_2032852344(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte
-void BSerializer_2032862102(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
-void BSerializer_2032874980(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
-void BSerializer_581586209(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat
-void BSerializer_1402482290(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt
-void BSerializer_1589603233(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong
-void BSerializer_2033150218(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject
-void BSerializer_278996403(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
-void BSerializer_1650564320(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort
-void BSerializer_1390595154(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString
-void BSerializer_147613921(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool
-void BSerializer_202005372(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte
-void BSerializer_201995614(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar
-void BSerializer_201982736(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble
-void BSerializer_796203285(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat
-void BSerializer_1963594750(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt
-void BSerializer_1933153045(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong
-void BSerializer_201707498(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject
-void BSerializer_493613479(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
-void BSerializer_710411500(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setShort
-void BSerializer_1951707614(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
-void BSerializer_362230997(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC
-void BSerializer_862752254(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC
-void BSerializer_1570751625(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_getPlanet
-void BSerializer_627010462(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_setPlanet
-void BSerializer_412393386(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActor
-void BSerializer_261822861(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray1dim
-void BSerializer_1011970102(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray4dim
-void BSerializer_1012059475(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DList
-void BSerializer_1996093752(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DListList
-void BSerializer_177127926(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DMap
-void BSerializer_1321082494(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActor
-void BSerializer_299289599(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray1dim
-void BSerializer_531757758(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray4dim
-void BSerializer_531668385(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DList
-void BSerializer_224357548(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DListList
-void BSerializer_1097161578(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DMap
-void BSerializer_546951282(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1
-void BSerializer_1794077576(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte1
-void BSerializer_1319541530(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte2
-void BSerializer_1319541531(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getChar1
-void BSerializer_1319940748(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
-void BSerializer_1741299407(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getFloat1
-void BSerializer_1941525372(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt1
-void BSerializer_874047761(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt2
-void BSerializer_874047762(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt3
-void BSerializer_874047763(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt4
-void BSerializer_874047764(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getLong1
-void BSerializer_1328473126(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getObj1
-void BSerializer_874214665(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1
-void BSerializer_1940572240(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getShort1
-void BSerializer_1573024156(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getString1
-void BSerializer_1173060367(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1
-void BSerializer_1882657404(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte1
-void BSerializer_758429070(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte2
-void BSerializer_758429071(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setChar1
-void BSerializer_758828288(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
-void BSerializer_195505829(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setFloat1
-void BSerializer_2138824848(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt1
-void BSerializer_1360809955(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt2
-void BSerializer_1360809954(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt3
-void BSerializer_1360809953(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt4
-void BSerializer_1360809952(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setLong1
-void BSerializer_767360666(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setObj1
-void BSerializer_1360643051(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1
-void BSerializer_1434361404(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setShort1
-void BSerializer_1787641232(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setString1
-void BSerializer_763744869(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1
-void BSerializer_461626272(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte1
-void BSerializer_1348711374(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte2
-void BSerializer_1348711373(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getChar1
-void BSerializer_1348312156(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
-void BSerializer_1836864439(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1
-void BSerializer_1241980524(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getInt1
-void BSerializer_1013140231(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getInt2
-void BSerializer_1013140230(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getLong1
-void BSerializer_1339779778(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getObj1
-void BSerializer_1012973327(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1
-void BSerializer_77071512(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
-void BSerializer_1610481740(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getString1
-void BSerializer_1268625399(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1
-void BSerializer_550206100(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte1
-void BSerializer_1909823834(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte2
-void BSerializer_1909823833(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setChar1
-void BSerializer_1909424616(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1
-void BSerializer_99940797(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1
-void BSerializer_1027363448(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt1
-void BSerializer_1046969349(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt2
-void BSerializer_1046969350(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setLong1
-void BSerializer_1900892238(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setObj1
-void BSerializer_1047136253(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1
-void BSerializer_842962140(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setShort1
-void BSerializer_1395864664(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setString1
-void BSerializer_668179837(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_add
-void BSerializer_1073583639(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool
-void BSerializer_2090997206(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
-void BSerializer_2091006964(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar
-void BSerializer_2091019842(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
-void BSerializer_538948675(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat
-void BSerializer_400008432(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt
-void BSerializer_1318015101(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong
-void BSerializer_2091295080(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject
-void BSerializer_236358869(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes
-void BSerializer_1881962430(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort
-void BSerializer_411895568(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
-void BSerializer_104976387(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
-void BSerializer_1794219594(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool
-void BSerializer_143860510(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte
-void BSerializer_143850752(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar
-void BSerializer_143837874(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble
-void BSerializer_753565751(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
-void BSerializer_161104028(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt
-void BSerializer_974465289(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong
-void BSerializer_143562636(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject
-void BSerializer_450975945(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes
-void BSerializer_941809610(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort
-void BSerializer_149216892(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
-void BSerializer_319593463(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
-void BSerializer_1845930195(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
-void BSerializer_1856936054(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_getNode
-void BSerializer_655936732(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_setNode
-void BSerializer_1404172848(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote
-void BSerializer_1216543212(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote
-void BSerializer_1776814809(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote
-void BSerializer_1302703010(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
-void BSerializer_1690813926(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
-void BSerializer_2125684552(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte2
-void BSerializer_2125684551(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getChar1
-void BSerializer_2125285334(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
-void BSerializer_1183778993(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1
-void BSerializer_1369351514(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt1
-void BSerializer_68372557(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt2
-void BSerializer_68372556(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getLong1
-void BSerializer_2116752956(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getObj1
-void BSerializer_68205653(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1
-void BSerializer_1802821742(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getShort1
-void BSerializer_1000850298(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getString1
-void BSerializer_615539953(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1
-void BSerializer_1779393754(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte1
-void BSerializer_1608170284(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte2
-void BSerializer_1608170285(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setChar1
-void BSerializer_1608569502(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1
-void BSerializer_753026243(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1
-void BSerializer_1583968590(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt1
-void BSerializer_1991737023(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt2
-void BSerializer_1991737024(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setLong1
-void BSerializer_1617101880(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setObj1
-void BSerializer_1991903927(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1
-void BSerializer_1572111902(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setShort1
-void BSerializer_1215467374(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setString1
-void BSerializer_1321265283(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImage
-void BSerializer_1902276204(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImages
-void BSerializer_1158979935(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getTextStream
-void BSerializer_1083407988(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImage
-void BSerializer_1831578632(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImages
-void BSerializer_944362859(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_throwLastException
-void BSerializer_2047657918(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_doit
-void BSerializer_388793292(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_expire
-void BSerializer_68943581(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_login
-void BSerializer_839695851(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount
-void BSerializer_20608797(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
-void BSerializer_1785294043(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim
-void BSerializer_1557084481(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23
-void BSerializer_2081058997(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim
-void BSerializer_1557173854(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteConstants
-void BSerializer_431648293(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteEnums
-void BSerializer_359349400(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance
-void BSerializer_1206670536(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteListTypes
-void BSerializer_380156079(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes
-void BSerializer_80483097(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes
-void BSerializer_1341983932(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteReferences
-void BSerializer_2086824050(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl
-void BSerializer_1124545992(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes
-void BSerializer_1156008353(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteStreams
-void BSerializer_2028487863(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication
-void BSerializer_1677934392(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.set.SetTypes
-void BSerializer_5001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ClientIF_getStreams
-void BSerializer_865920738(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ClientIF_incrementInt
-void BSerializer_1461829915(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ClientIF_putStreams
-void BSerializer_242798857(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ClientIF_sendChat
-void BSerializer_1352392091(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt
-void BSerializer_1252575894(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientParallel
-void BSerializer_1340180893(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClient
-void BSerializer_2107407220(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds
-void BSerializer_2063368540(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getPartner
-void BSerializer_748402113(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
-void BSerializer_1415283169(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient
-void BSerializer_1367013829(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap
-void BSerializer_1921080901(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BRequest_ServerIF_setPartner
-void BSerializer_1188403123(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BStub_ClientIF
-void BSerializer_1784257353(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.BStub_ServerIF
-void BSerializer_1313562065(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.srvr.ChatStructure
-void BSerializer_7007(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.strm.Stream1
-void BSerializer_1541129345(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getClient
-void BSerializer_98720592(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getEvolve
-void BSerializer_32041374(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient
-void BSerializer_1425170268(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setClient
-void BSerializer_313337668(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setEvolve
-void BSerializer_246658450(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.BStub_EvolveIF
-void BSerializer_2078696281(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.Evolve
-void BSerializer_1391985860(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for com.wilutions.byps.test.api.ver.Evolve2
-void BSerializer_573592593(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for double[]
 void BSerializer_1359468275(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for double[][][][]
@@ -9473,22 +9471,22 @@ void BSerializer_1995260457(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1889888075(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.lang.String[][][][]
 void BSerializer_588723219(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
-void BSerializer_1590740862(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.ArrayList<byps.test.api.enu.EnumPlanets>
+void BSerializer_819140569(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.HashMap<java.lang.Double,java.lang.Byte>
 void BSerializer_1972793385(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.HashSet<java.lang.Byte>
 void BSerializer_31512998(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.List<byps.test.api.inherit.Class1>
+void BSerializer_510524840(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.List<byps.test.api.inl.Point2D>
+void BSerializer_2064980445(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.List<byps.test.api.prim.PrimitiveTypes>
+void BSerializer_1596367810(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.List<byps.test.api.refs.Node>
+void BSerializer_1442786648(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.List<byte[]>
 void BSerializer_1174971318(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.List<com.wilutions.byps.test.api.inherit.Class1>
-void BSerializer_317887457(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.List<com.wilutions.byps.test.api.inl.Point2D>
-void BSerializer_172221196(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-void BSerializer_1544333227(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.List<com.wilutions.byps.test.api.refs.Node>
-void BSerializer_202657921(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.List<int[]>
 void BSerializer_1752158699(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.List<int[][][][]>
@@ -9513,8 +9511,8 @@ void BSerializer_1050216688(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1997002548(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.List<java.lang.String>
 void BSerializer_2123584667(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>
-void BSerializer_1463615848(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.List<java.util.List<byps.test.api.inl.Point2D>>
+void BSerializer_1823330785(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.List<java.util.List<int[][][][]>>
 void BSerializer_1865834185(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.List<java.util.List<java.lang.Integer>>
@@ -9527,12 +9525,12 @@ void BSerializer_724129228(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_1487265161(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.Character,java.lang.Float>
 void BSerializer_94341197(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
+void BSerializer_1358523233(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
+void BSerializer_1831201218(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.Integer,byte[]>
 void BSerializer_1799280818(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>
-void BSerializer_1851881336(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-void BSerializer_703065817(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.Integer,int[]>
 void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.Integer,java.io.InputStream>
@@ -9547,24 +9545,24 @@ void BSerializer_49984088(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* p
 void BSerializer_601099730(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.Short,java.lang.Long>
 void BSerializer_1973996106(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.Map<java.lang.String,com.wilutions.byps.test.api.enu.EnumPlanets>
-void BSerializer_252873856(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.Map<java.lang.String,com.wilutions.byps.test.api.inherit.Class1>
-void BSerializer_981592984(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.Map<java.lang.String,com.wilutions.byps.test.api.refs.Node>
-void BSerializer_1768677016(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
+void BSerializer_493795497(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.Map<java.lang.String,byps.test.api.inherit.Class1>
+void BSerializer_2058676657(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.Map<java.lang.String,byps.test.api.refs.Node>
+void BSerializer_2011881553(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.String,java.lang.Boolean>
 void BSerializer_1279823631(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.String,java.lang.Object>
 void BSerializer_1488550492(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Map<java.lang.String,java.lang.String>
 void BSerializer_1710660846(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.Set<byps.test.api.inherit.Class1>
+void BSerializer_484881308(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for java.util.Set<byps.test.api.prim.PrimitiveTypes>
+void BSerializer_673917574(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Set<byte[]>
 void BSerializer_2052431866(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.Set<com.wilutions.byps.test.api.inherit.Class1>
-void BSerializer_2114305573(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-// Serializer for java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-void BSerializer_1280571537(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Set<int[]>
 void BSerializer_1406124761(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for java.util.Set<java.lang.Boolean>
@@ -9598,7 +9596,7 @@ void BSerializer_2067161310(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 // Serializer for short[][][][]
 void BSerializer_1859644668(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 
-}}}}}
+}
 
 
 #endif

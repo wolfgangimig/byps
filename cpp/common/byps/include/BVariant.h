@@ -4,7 +4,7 @@
 #include "Byps.h"
 #include "BRegistry.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BVariant {
 public:
@@ -109,6 +109,6 @@ inline void BVariant::get(BException& v) const { v = exVal; }
 inline void BVariant::get(PSerializable& v) const { v = sobjVal; }
 
 
-}}}
+}
 
 #endif // BVARIANT_H

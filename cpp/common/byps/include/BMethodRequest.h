@@ -5,7 +5,7 @@
 #include "BSerializable.h"
 #include "BRemote.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BMethodRequest : public BSerializable {
 public:
@@ -20,6 +20,6 @@ public:
 //    BMethodRequestT() : BMethodRequest(_remoteId) {}
 //};
 
-}}}
+}
 
 #endif

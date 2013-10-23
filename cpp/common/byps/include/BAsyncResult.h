@@ -4,7 +4,7 @@
 #include "Byps.h"
 #include "BVariant.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 typedef function<void (const BVariant&)> BAsyncResultL;
 
@@ -119,6 +119,6 @@ template<typename _ReturnType, typename _ResultClass> void BAsyncResultReceiveMe
 }
 
 
-}}}
+}
 
 #endif

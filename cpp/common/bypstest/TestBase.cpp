@@ -2,10 +2,10 @@
 #include "TestBase.h"
 #include <thread>
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 BLogger TestBase::log("TestBase");
-com::wilutions::byps::test::api::PClient_Testser TestBase::client;
+byps::test::api::PClient_Testser TestBase::client;
 
 TestBase::TestBase(void* app) 
 	: app(app) {

@@ -2,7 +2,7 @@
 #define BSTREAMREQUEST_HPP
 
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BStreamRequest::BStreamRequest()
     : streamId(0), messageId(0) {
@@ -14,7 +14,7 @@ BINLINE BStreamRequest::BStreamRequest(const BStreamRequest& rhs)
     , strm(rhs.strm) {
 }
 
-}}}
+}
 
 
 #endif // BSTREAMREQUEST_HPP

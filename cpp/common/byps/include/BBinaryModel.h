@@ -9,7 +9,7 @@
 #include "Byps.h"
 
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BBinaryModel {
 public:
@@ -49,7 +49,7 @@ private:
 	int32_t m_nPacking;
 };
 
-}}}
+}
 
 
 #endif /* BBINARYMODEL_H_ */

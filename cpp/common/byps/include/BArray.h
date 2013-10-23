@@ -5,7 +5,7 @@
 #include "BIO.h"
 #include <cstdarg>
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace ::std;
 
@@ -477,6 +477,6 @@ template<typename _Type> void BArray4<_Type>::serialize(BIO& ar, const BVERSION 
     }
 }
 
-}}}
+}
 
 #endif // BARRAY_H

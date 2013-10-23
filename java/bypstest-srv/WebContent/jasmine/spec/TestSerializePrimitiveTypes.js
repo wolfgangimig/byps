@@ -11,7 +11,7 @@ describe("Tests for serializing primitive types.", function() {
 		
 		var bout = transport.getOutput();
 		
-		var obj = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		var obj = new byps.test.api.prim.PrimitiveTypes();
 		obj.boolVal = true;
 		obj.byteVal = 12;
 		obj.charVal = 'D';
@@ -51,7 +51,7 @@ describe("Tests for serializing primitive types.", function() {
     	
 		log.info("testPrimitiveTypesReferenceToSelf(");
 
-		var obj1 = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		var obj1 = new byps.test.api.prim.PrimitiveTypes();
 		obj1.intVal = 123;
 		obj1.objVal = obj1.objVal2 = obj1;
 		
@@ -68,9 +68,9 @@ describe("Tests for serializing primitive types.", function() {
     	
 		log.info("testPrimitiveTypesReferenceToOtherObject(");
 
-		var obj1 = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		var obj1 = new byps.test.api.prim.PrimitiveTypes();
 		obj1.intVal = 123;
-		obj1.objVal = obj1.objVal2 = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		obj1.objVal = obj1.objVal2 = new byps.test.api.prim.PrimitiveTypes();
 		obj1.objVal.intVal = 456;
 		
 		var objR = internalTestPrimitiveTypes(obj1);
@@ -101,7 +101,7 @@ describe("Tests for serializing primitive types.", function() {
 	
 	internalTestSerializeDouble = function(v) {
 		log.info("internalTestSerializeDouble(" + v);
-		var obj1 = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		var obj1 = new byps.test.api.prim.PrimitiveTypes();
 		obj1.doubleVal = v;
 		internalTestPrimitiveTypes(obj1);
 		log.info(")internalTestSerializeDouble");

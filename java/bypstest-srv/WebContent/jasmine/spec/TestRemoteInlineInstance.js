@@ -7,11 +7,11 @@ describe("Tests for sending and receiving inline types.", function() {
 	});
 
 	createActor = function() {
-		var obj = new com.wilutions.byps.test.api.inl.Actor();
-		obj.position = new com.wilutions.byps.test.api.inl.Matrix2D();
+		var obj = new byps.test.api.inl.Actor();
+		obj.position = new byps.test.api.inl.Matrix2D();
 		obj.shape = [];
 		for (var i = 0; i < obj.shape.length; i++) {
-			obj.shape[i] = new com.wilutions.byps.test.api.inl.Point2D();
+			obj.shape[i] = new byps.test.api.inl.Point2D();
 			obj.shape[i].x = (short)(i + 1);
 			obj.shape[i].y = (short)(obj.shape[i].x * obj.shape[i].x);
 		}
@@ -20,7 +20,7 @@ describe("Tests for sending and receiving inline types.", function() {
 	
 	var x = 0;
 	createPoint2D = function() {
-		var obj = new com.wilutions.byps.test.api.inl.Point2D(x++,x*x);
+		var obj = new byps.test.api.inl.Point2D(x++,x*x);
 		return obj;
 	};
 

@@ -4,7 +4,7 @@
 
 #include <fstream>
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 enum BLogLevel {
 	Nothing, Debug, Info, Warn, Error
@@ -69,15 +69,15 @@ public:
 };
 
 #define LOGGER_IMPL \
-	namespace com { namespace wilutions { namespace byps {\
+	namespace byps {\
 		BLogFile BLogger::logFile;\
-	}}}
+	}
 
 basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& , const char* msg);
 basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& , const string& msg);
 basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& ss, const exception& ex);
 
-}}}
+}
 
 #ifndef l_debug
 #define l_debug if (log.isDebugEnabled()) log.debug(__LINE__)

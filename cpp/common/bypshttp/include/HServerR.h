@@ -3,9 +3,9 @@
 
 #include "Bypshttp.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 class HServerR_SendLongPoll;
 typedef byps_ptr<HServerR_SendLongPoll> PServerR_SendLongPoll;
@@ -22,5 +22,5 @@ protected:
 	PServerR_SendLongPoll sendLongPoll;
 };
 
-}}}}
+}}
 #endif

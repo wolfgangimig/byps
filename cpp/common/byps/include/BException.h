@@ -9,8 +9,6 @@
 #include "Byps.h"
 #include <exception>
 
-namespace com {
-namespace wilutions {
 namespace byps {
 
 const int32_t EX_NO_SERIALIZER = 1;
@@ -113,6 +111,4 @@ protected:
 };
 
 } /* namespace byps */
-} /* namespace wilutions */
-} /* namespace com */
 #endif /* BEXCEPTION_H_ */

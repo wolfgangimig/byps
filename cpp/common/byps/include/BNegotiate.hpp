@@ -12,7 +12,7 @@
 #undef min
 
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BNegotiate::BNegotiate(PApiDescriptor apiDesc) {
     version = 0;
@@ -112,6 +112,6 @@ BINLINE bool BNegotiate::isNegotiateMessage(PBytes bytes) {
     return strncmp(p, NEGOTIATE_MAGIC_DOUBLE_QUOTES, len) == 0 ;
 }
 
-}}}
+}
 
 #endif

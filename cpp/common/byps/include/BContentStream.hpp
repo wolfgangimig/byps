@@ -3,7 +3,7 @@
 
 #include "BContentStream.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace ::std;
 
@@ -78,6 +78,6 @@ BINLINE void BContentStream::serialize(BIO& bio, POBJECT& pObj, PSerializable& p
 
 }
 
-}}}
+}
 
 #endif

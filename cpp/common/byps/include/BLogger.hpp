@@ -7,7 +7,7 @@
 #include <ctime>
 #include "BLogger.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE void BLogFile::println(BLogLevel msglevel, const wstring& msg) {
 	
@@ -166,6 +166,6 @@ BINLINE basic_ostream<wchar_t>& operator << (basic_ostream<wchar_t>& ss, const e
 	return ss << msg;
 }
 
-}}}
+}
 
 #endif

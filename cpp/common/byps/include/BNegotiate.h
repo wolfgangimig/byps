@@ -4,7 +4,7 @@
 #include "Byps.h"
 
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace ::std;
 
@@ -31,6 +31,6 @@ public:
     static bool isNegotiateMessage(PBytes bytes);
 };
 
-}}}
+}
 
 #endif

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using com.wilutions.byps;
-using com.wilutions.byps.test.api;
+using byps;
+using byps.test.api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 

@@ -4,7 +4,7 @@
 #include "Byps.h"
 #include "BAsyncResult.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BBytes {
 public:
@@ -25,6 +25,6 @@ private:
 
 };
 
-}}}
+}
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BRemote : public virtual BSerializable
 {
@@ -20,7 +20,7 @@ public:
     virtual PRemote getRemote(const BTargetId& targetId, BTYPEID remoteId) = 0;
 };
 
-}}}
+}
 
 
 #endif

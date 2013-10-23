@@ -3,34 +3,32 @@
  * Declare packages.
  * ----------------------------------------------
 */
-var com = com || {};
-com.wilutions = com.wilutions || {};
-com.wilutions.byps = com.wilutions.byps || {};
-com.wilutions.byps.test = com.wilutions.byps.test || {};
-com.wilutions.byps.test.api = com.wilutions.byps.test.api || {};
-com.wilutions.byps.test.api.arr = com.wilutions.byps.test.api.arr || {};
-com.wilutions.byps.test.api.set = com.wilutions.byps.test.api.set || {};
-com.wilutions.byps.test.api.enu = com.wilutions.byps.test.api.enu || {};
-com.wilutions.byps.test.api.list = com.wilutions.byps.test.api.list || {};
-com.wilutions.byps.test.api.ver = com.wilutions.byps.test.api.ver || {};
-com.wilutions.byps.test.api.inherit = com.wilutions.byps.test.api.inherit || {};
-com.wilutions.byps.test.api.remote = com.wilutions.byps.test.api.remote || {};
-com.wilutions.byps.test.api.inl = com.wilutions.byps.test.api.inl || {};
-com.wilutions.byps.test.api.prim = com.wilutions.byps.test.api.prim || {};
-com.wilutions.byps.test.api.refs = com.wilutions.byps.test.api.refs || {};
-com.wilutions.byps.test.api.map = com.wilutions.byps.test.api.map || {};
-com.wilutions.byps.test.api.strm = com.wilutions.byps.test.api.strm || {};
-com.wilutions.byps.test.api.priv = com.wilutions.byps.test.api.priv || {};
-com.wilutions.byps.test.api.auth = com.wilutions.byps.test.api.auth || {};
-com.wilutions.byps.test.api.srvr = com.wilutions.byps.test.api.srvr || {};
-com.wilutions.byps.test.api.cons = com.wilutions.byps.test.api.cons || {};
+var byps = byps || {};
+byps.test = byps.test || {};
+byps.test.api = byps.test.api || {};
+byps.test.api.arr = byps.test.api.arr || {};
+byps.test.api.set = byps.test.api.set || {};
+byps.test.api.enu = byps.test.api.enu || {};
+byps.test.api.list = byps.test.api.list || {};
+byps.test.api.ver = byps.test.api.ver || {};
+byps.test.api.inherit = byps.test.api.inherit || {};
+byps.test.api.remote = byps.test.api.remote || {};
+byps.test.api.inl = byps.test.api.inl || {};
+byps.test.api.prim = byps.test.api.prim || {};
+byps.test.api.refs = byps.test.api.refs || {};
+byps.test.api.map = byps.test.api.map || {};
+byps.test.api.strm = byps.test.api.strm || {};
+byps.test.api.priv = byps.test.api.priv || {};
+byps.test.api.auth = byps.test.api.auth || {};
+byps.test.api.srvr = byps.test.api.srvr || {};
+byps.test.api.cons = byps.test.api.cons || {};
 
 /**
  * ----------------------------------------------
  * API Descriptor
  * ----------------------------------------------
 */
-com.wilutions.byps.test.api.BApiDescriptor_Testser = {
+byps.test.api.BApiDescriptor_Testser = {
 	/**
 	 * API serialisation version: 0.0.0.791
 	 */
@@ -40,12 +38,12 @@ com.wilutions.byps.test.api.BApiDescriptor_Testser = {
 	 * Internal used API Desciptor.
 	*/
 	instance : function() {
-		return new com.wilutions.byps.BApiDescriptor(
+		return new byps.BApiDescriptor(
 			"Testser",
-			"com.wilutions.byps.test.api",
+			"byps.test.api",
 			"0.0.0.791",
 			false, // uniqueObjects
-			new com.wilutions.byps.test.api.BRegistry_Testser()
+			new byps.test.api.BRegistry_Testser()
 		);
 	}
 };
@@ -57,42 +55,42 @@ com.wilutions.byps.test.api.BApiDescriptor_Testser = {
  * ----------------------------------------------
 */
 
-com.wilutions.byps.test.api.createClient_Testser = function(transportFactory) {
-	return new com.wilutions.byps.test.api.BClient_Testser(transportFactory);
+byps.test.api.createClient_Testser = function(transportFactory) {
+	return new byps.test.api.BClient_Testser(transportFactory);
 };
 
-com.wilutions.byps.test.api.BClient_Testser = function(transportFactory) { 
+byps.test.api.BClient_Testser = function(transportFactory) { 
 
 	this.transport = transportFactory.createClientTransport();
 	
 	this._serverR = transportFactory.createServerR(
-		new com.wilutions.byps.test.api.BServer_Testser(transportFactory.createServerTransport())
+		new byps.test.api.BServer_Testser(transportFactory.createServerTransport())
 	);
 	
-	this.bioFruitService = new com.wilutions.byps.test.api.inherit.BStub_BioFruitService(this.transport);
-	this.bioLemonService = new com.wilutions.byps.test.api.inherit.BStub_BioLemonService(this.transport);
-	this.fruitService = new com.wilutions.byps.test.api.inherit.BStub_FruitService(this.transport);
-	this.lemonService = new com.wilutions.byps.test.api.inherit.BStub_LemonService(this.transport);
-	this.plantService = new com.wilutions.byps.test.api.inherit.BStub_PlantService(this.transport);
-	this.remoteArrayTypes1dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim(this.transport);
-	this.remoteArrayTypes23 = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23(this.transport);
-	this.remoteArrayTypes4dim = new com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim(this.transport);
-	this.remoteConstants = new com.wilutions.byps.test.api.remote.BStub_RemoteConstants(this.transport);
-	this.remoteEnums = new com.wilutions.byps.test.api.remote.BStub_RemoteEnums(this.transport);
-	this.remoteInlineInstance = new com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance(this.transport);
-	this.remoteListTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteListTypes(this.transport);
-	this.remoteMapTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes(this.transport);
-	this.remotePrimitiveTypes = new com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes(this.transport);
-	this.remoteReferences = new com.wilutions.byps.test.api.remote.BStub_RemoteReferences(this.transport);
-	this.remoteServerCtrl = new com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl(this.transport);
-	this.remoteSetTypes = new com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes(this.transport);
-	this.remoteStreams = new com.wilutions.byps.test.api.remote.BStub_RemoteStreams(this.transport);
-	this.remoteWithAuthentication = new com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication(this.transport);
-	this.clientIF = new com.wilutions.byps.test.api.srvr.BStub_ClientIF(this.transport);
-	this.serverIF = new com.wilutions.byps.test.api.srvr.BStub_ServerIF(this.transport);
-	this.evolveIF = new com.wilutions.byps.test.api.ver.BStub_EvolveIF(this.transport);
+	this.bioFruitService = new byps.test.api.inherit.BStub_BioFruitService(this.transport);
+	this.bioLemonService = new byps.test.api.inherit.BStub_BioLemonService(this.transport);
+	this.fruitService = new byps.test.api.inherit.BStub_FruitService(this.transport);
+	this.lemonService = new byps.test.api.inherit.BStub_LemonService(this.transport);
+	this.plantService = new byps.test.api.inherit.BStub_PlantService(this.transport);
+	this.remoteArrayTypes1dim = new byps.test.api.remote.BStub_RemoteArrayTypes1dim(this.transport);
+	this.remoteArrayTypes23 = new byps.test.api.remote.BStub_RemoteArrayTypes23(this.transport);
+	this.remoteArrayTypes4dim = new byps.test.api.remote.BStub_RemoteArrayTypes4dim(this.transport);
+	this.remoteConstants = new byps.test.api.remote.BStub_RemoteConstants(this.transport);
+	this.remoteEnums = new byps.test.api.remote.BStub_RemoteEnums(this.transport);
+	this.remoteInlineInstance = new byps.test.api.remote.BStub_RemoteInlineInstance(this.transport);
+	this.remoteListTypes = new byps.test.api.remote.BStub_RemoteListTypes(this.transport);
+	this.remoteMapTypes = new byps.test.api.remote.BStub_RemoteMapTypes(this.transport);
+	this.remotePrimitiveTypes = new byps.test.api.remote.BStub_RemotePrimitiveTypes(this.transport);
+	this.remoteReferences = new byps.test.api.remote.BStub_RemoteReferences(this.transport);
+	this.remoteServerCtrl = new byps.test.api.remote.BStub_RemoteServerCtrl(this.transport);
+	this.remoteSetTypes = new byps.test.api.remote.BStub_RemoteSetTypes(this.transport);
+	this.remoteStreams = new byps.test.api.remote.BStub_RemoteStreams(this.transport);
+	this.remoteWithAuthentication = new byps.test.api.remote.BStub_RemoteWithAuthentication(this.transport);
+	this.clientIF = new byps.test.api.srvr.BStub_ClientIF(this.transport);
+	this.serverIF = new byps.test.api.srvr.BStub_ServerIF(this.transport);
+	this.evolveIF = new byps.test.api.ver.BStub_EvolveIF(this.transport);
 };
-com.wilutions.byps.test.api.BClient_Testser.prototype = new com.wilutions.byps.BClient();
+byps.test.api.BClient_Testser.prototype = new byps.BClient();
 
 
 /**
@@ -103,7 +101,7 @@ com.wilutions.byps.test.api.BClient_Testser.prototype = new com.wilutions.byps.B
 
 /**
 */
-com.wilutions.byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1) {
+byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1) {
 	this._typeId = 2001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -120,7 +118,7 @@ com.wilutions.byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1
 
 /**
 */
-com.wilutions.byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4, short4, int4, long4, float4, double4, string4, primitiveTypes4) {
+byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4, short4, int4, long4, float4, double4, string4, primitiveTypes4) {
 	this._typeId = 2004;
 	this.boolean4 = boolean4 || null;
 	this.byte4 = byte4 || null;
@@ -137,9 +135,9 @@ com.wilutions.byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4
 
 /**
  * Example for a session class.
- * @see com.wilutions.byps.test.api.remote.RemoteWithAuthentication
+ * @see byps.test.api.remote.RemoteWithAuthentication
 */
-com.wilutions.byps.test.api.auth.SessionInfo = function(sessionID) {
+byps.test.api.auth.SessionInfo = function(sessionID) {
 	this._typeId = 65775978;
 	this.sessionID = sessionID || "";
 };
@@ -147,7 +145,7 @@ com.wilutions.byps.test.api.auth.SessionInfo = function(sessionID) {
 
 /**
 */
-com.wilutions.byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short1, int1, long1, float1, double1, string1, hebrew1, byte2, int2, string2, hebrew2) {
+byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short1, int1, long1, float1, double1, string1, hebrew1, byte2, int2, string2, hebrew2) {
 	this._typeId = 142458;
 	this.bool1 = bool1 || false;
 	this.byte1 = byte1 || 0;
@@ -168,7 +166,7 @@ com.wilutions.byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short
 
 /**
 */
-com.wilutions.byps.test.api.cons.HebrewZ = function(core) {
+byps.test.api.cons.HebrewZ = function(core) {
 	this._typeId = 1518668429;
 	this.core = core || "";
 };
@@ -176,7 +174,7 @@ com.wilutions.byps.test.api.cons.HebrewZ = function(core) {
 
 /**
 */
-com.wilutions.byps.test.api.enu.UsePlanets = function(planet, planet2, arrayOfPlanets, listOfPlanets, mapOfPlanets) {
+byps.test.api.enu.UsePlanets = function(planet, planet2, arrayOfPlanets, listOfPlanets, mapOfPlanets) {
 	this._typeId = 10000;
 	this.planet = planet || null;
 	this.planet2 = planet2 || null;
@@ -189,7 +187,7 @@ com.wilutions.byps.test.api.enu.UsePlanets = function(planet, planet2, arrayOfPl
 /**
  * Base class for ...
 */
-com.wilutions.byps.test.api.inherit.Class1 = function(int1, nextClass1) {
+byps.test.api.inherit.Class1 = function(int1, nextClass1) {
 	this._typeId = 6001;
 	this.int1 = int1 || 0;
 	this.nextClass1 = nextClass1 || null;
@@ -198,7 +196,7 @@ com.wilutions.byps.test.api.inherit.Class1 = function(int1, nextClass1) {
 
 /**
 */
-com.wilutions.byps.test.api.inherit.Class1Collections = function(list1, map1, set1) {
+byps.test.api.inherit.Class1Collections = function(list1, map1, set1) {
 	this._typeId = 6004;
 	this.list1 = list1 || null;
 	this.map1 = map1 || null;
@@ -208,7 +206,7 @@ com.wilutions.byps.test.api.inherit.Class1Collections = function(list1, map1, se
 
 /**
 */
-com.wilutions.byps.test.api.inherit.Class2 = function(int1, nextClass1, int2) {
+byps.test.api.inherit.Class2 = function(int1, nextClass1, int2) {
 	this._typeId = 6002;
 	this.int1 = int1 || 0;
 	this.nextClass1 = nextClass1 || null;
@@ -218,7 +216,7 @@ com.wilutions.byps.test.api.inherit.Class2 = function(int1, nextClass1, int2) {
 
 /**
 */
-com.wilutions.byps.test.api.inherit.Class3 = function(int1, nextClass1, int2, int3) {
+byps.test.api.inherit.Class3 = function(int1, nextClass1, int2, int3) {
 	this._typeId = 6003;
 	this.int1 = int1 || 0;
 	this.nextClass1 = nextClass1 || null;
@@ -229,7 +227,7 @@ com.wilutions.byps.test.api.inherit.Class3 = function(int1, nextClass1, int2, in
 
 /**
 */
-com.wilutions.byps.test.api.inl.Actor = function(shape, position) {
+byps.test.api.inl.Actor = function(shape, position) {
 	this._typeId = 171948703;
 	this.shape = shape || null;
 	this.position = position || null;
@@ -239,7 +237,7 @@ com.wilutions.byps.test.api.inl.Actor = function(shape, position) {
 /**
  * @inline 
 */
-com.wilutions.byps.test.api.inl.Matrix2D = function(_11, _12, _13, _21, _22, _23, _31, _32, _33) {
+byps.test.api.inl.Matrix2D = function(_11, _12, _13, _21, _22, _23, _31, _32, _33) {
 	// this._typeId = 135329019;
 	this._11 = _11 || 0;
 	this._12 = _12 || 0;
@@ -262,7 +260,7 @@ com.wilutions.byps.test.api.inl.Matrix2D = function(_11, _12, _13, _21, _22, _23
  * large arrays of small objects being serialized.
  * @inline 
 */
-com.wilutions.byps.test.api.inl.Point2D = function(x, y) {
+byps.test.api.inl.Point2D = function(x, y) {
 	// this._typeId = 1835035436;
 	this.x = x || 0;
 	this.y = y || 0;
@@ -271,7 +269,7 @@ com.wilutions.byps.test.api.inl.Point2D = function(x, y) {
 
 /**
 */
-com.wilutions.byps.test.api.list.ListListTypes = function(int2, int3, int24) {
+byps.test.api.list.ListListTypes = function(int2, int3, int24) {
 	this._typeId = 3002;
 	this.int2 = int2 || null;
 	this.int3 = int3 || null;
@@ -281,7 +279,7 @@ com.wilutions.byps.test.api.list.ListListTypes = function(int2, int3, int24) {
 
 /**
 */
-com.wilutions.byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, int4, obj1) {
+byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, int4, obj1) {
 	this._typeId = 3001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -302,7 +300,7 @@ com.wilutions.byps.test.api.list.ListTypes = function(boolean1, byte1, char1, sh
 
 /**
 */
-com.wilutions.byps.test.api.map.MapTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
+byps.test.api.map.MapTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
 	this._typeId = 4001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -323,7 +321,7 @@ com.wilutions.byps.test.api.map.MapTypes = function(boolean1, byte1, char1, shor
 /**
  * Example class with primitive types like boolean, int, String.
 */
-com.wilutions.byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, objVal, objVal2, value) {
+byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, objVal, objVal2, value) {
 	this._typeId = 1000;
 	this.boolVal = boolVal || false;
 	this.byteVal = byteVal || 0;
@@ -343,7 +341,7 @@ com.wilutions.byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, cha
 /**
  * Example class with private and protected members
 */
-com.wilutions.byps.test.api.priv.PrivateMembers = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, primitiveTypes, arrBool, arrInt, arrString, arrPrimitiveTypes, listBool, listInt, listString, listPrimitiveTypes, mapIntListString, protInt, pprotInt) {
+byps.test.api.priv.PrivateMembers = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, primitiveTypes, arrBool, arrInt, arrString, arrPrimitiveTypes, listBool, listInt, listString, listPrimitiveTypes, mapIntListString, protInt, pprotInt) {
 	this._typeId = 8001;
 	this.boolVal = boolVal || false;
 	this.byteVal = byteVal || 0;
@@ -371,7 +369,7 @@ com.wilutions.byps.test.api.priv.PrivateMembers = function(boolVal, byteVal, cha
 
 /**
 */
-com.wilutions.byps.test.api.refs.Node = function(next, me, mapOfNodes, listOfNodes) {
+byps.test.api.refs.Node = function(next, me, mapOfNodes, listOfNodes) {
 	this._typeId = 9001;
 	this.next = next || null;
 	this.me = me || null;
@@ -382,7 +380,7 @@ com.wilutions.byps.test.api.refs.Node = function(next, me, mapOfNodes, listOfNod
 
 /**
 */
-com.wilutions.byps.test.api.set.SetTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
+byps.test.api.set.SetTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
 	this._typeId = 5001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -402,7 +400,7 @@ com.wilutions.byps.test.api.set.SetTypes = function(boolean1, byte1, char1, shor
 
 /**
 */
-com.wilutions.byps.test.api.srvr.ChatStructure = function(msg, sentAt, receivedAt) {
+byps.test.api.srvr.ChatStructure = function(msg, sentAt, receivedAt) {
 	this._typeId = 7007;
 	this.msg = msg || "";
 	this.sentAt = sentAt || 0;
@@ -412,7 +410,7 @@ com.wilutions.byps.test.api.srvr.ChatStructure = function(msg, sentAt, receivedA
 
 /**
 */
-com.wilutions.byps.test.api.strm.Stream1 = function(is1, contentType, arrStream, listStream, mapStream) {
+byps.test.api.strm.Stream1 = function(is1, contentType, arrStream, listStream, mapStream) {
 	this._typeId = 1541129345;
 	this.is1 = is1 || null;
 	this.contentType = contentType || "";
@@ -425,7 +423,7 @@ com.wilutions.byps.test.api.strm.Stream1 = function(is1, contentType, arrStream,
 /**
  * Example class with elements that belong to different versions.
 */
-com.wilutions.byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, int1, long1, float1, double1, bools1, bytes1, chars1, shorts1, ints1, longs1, floats1, doubles1, str1, obj1, evo1, list1, set1, map1, bool2, byte2, char2, short2, int2, long2, float2, double2, bools2, bytes2, chars2, shorts2, ints2, longs2, floats2, doubles2, str2, obj2, evo2, list2, set2, map2, bool3, byte3, char3, short3, int3, long3, float3, double3, bools3, bytes3, chars3, shorts3, ints3, longs3, floats3, doubles3, str3, obj3, evo3, list3, set3, map3) {
+byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, int1, long1, float1, double1, bools1, bytes1, chars1, shorts1, ints1, longs1, floats1, doubles1, str1, obj1, evo1, list1, set1, map1, bool2, byte2, char2, short2, int2, long2, float2, double2, bools2, bytes2, chars2, shorts2, ints2, longs2, floats2, doubles2, str2, obj2, evo2, list2, set2, map2, bool3, byte3, char3, short3, int3, long3, float3, double3, bools3, bytes3, chars3, shorts3, ints3, longs3, floats3, doubles3, str3, obj3, evo3, list3, set3, map3) {
 	this._typeId = 1391985860;
 	this.bool1 = bool1 || false;
 	this.byte1 = byte1 || 0;
@@ -498,7 +496,7 @@ com.wilutions.byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, i
 
 /**
 */
-com.wilutions.byps.test.api.ver.Evolve2 = function(n1) {
+byps.test.api.ver.Evolve2 = function(n1) {
 	this._typeId = 573592593;
 	this.n1 = n1 || 0;
 };
@@ -511,7 +509,7 @@ com.wilutions.byps.test.api.ver.Evolve2 = function(n1) {
  * ----------------------------------------------
 */
 
-com.wilutions.byps.test.api.cons.AllTypesC_Type = function() {
+byps.test.api.cons.AllTypesC_Type = function() {
 	this.bool1s = true;
 	this.bool2s = false;
 	this.byte1s = 1;
@@ -533,22 +531,22 @@ com.wilutions.byps.test.api.cons.AllTypesC_Type = function() {
 	 * It is an instance of the class AllTypesZ.
 	 * The field value cannot be changed, but it's contents could.
 	*/
-	this.ALL = new com.wilutions.byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4.", 5.0, 6.0, "777", new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"),new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1")]);
+	this.ALL = new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4.", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")]);
 	this.arrInt = [1,2,3];
 	this.arrInt4 = [[[[1,2],[4,5]],[[11,12],[14,15]]],[[[21,22],[24,25]],[[211,212],[214,215]]]];
 	this.arrStrings = ["s1","s2"];
 	this.arrStrings4 = [[[["s1","s2"]]]];
-	this.arrALL = [[new com.wilutions.byps.test.api.cons.AllTypesZ(false, 0, '\u0000', 0, 0, "0.", 0.0, 0.0, "", null, null, null, null, null)],[new com.wilutions.byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4.", 5.0, 6.0, "777", new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0"),new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1")])]];
+	this.arrALL = [[new byps.test.api.cons.AllTypesZ(false, 0, '\u0000', 0, 0, "0.", 0.0, 0.0, "", null, null, null, null, null)],[new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4.", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")])]];
 };
 
-com.wilutions.byps.test.api.cons.HebrewC_Type = function() {
+byps.test.api.cons.HebrewC_Type = function() {
 	this.aleph = "\u05d0";
 	this.beth = "\u05d1";
-	this.ALEPH = new com.wilutions.byps.test.api.cons.HebrewZ("\u05d0");
-	this.BETH = new com.wilutions.byps.test.api.cons.HebrewZ("\u05d1");
+	this.ALEPH = new byps.test.api.cons.HebrewZ("\u05d0");
+	this.BETH = new byps.test.api.cons.HebrewZ("\u05d1");
 };
 
-com.wilutions.byps.test.api.enu.EnumPlanets = {
+byps.test.api.enu.EnumPlanets = {
 	/**
 	 * ... is the closest planet to the Sun ...
 	*/
@@ -566,11 +564,11 @@ com.wilutions.byps.test.api.enu.EnumPlanets = {
 
 /**
 */
-com.wilutions.byps.test.api.cons.AllTypesC = new com.wilutions.byps.test.api.cons.AllTypesC_Type();
+byps.test.api.cons.AllTypesC = new byps.test.api.cons.AllTypesC_Type();
 
 /**
 */
-com.wilutions.byps.test.api.cons.HebrewC = new com.wilutions.byps.test.api.cons.HebrewC_Type();
+byps.test.api.cons.HebrewC = new byps.test.api.cons.HebrewC_Type();
 
 
 /**
@@ -585,47 +583,29 @@ com.wilutions.byps.test.api.cons.HebrewC = new com.wilutions.byps.test.api.cons.
  * Either provide an asynchronous or a synchronous function in your implementation.
  * The framework calls only the asynchronous function.
  */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService = function() {
+byps.test.api.inherit.BSkeleton_BioFruitService = function() {
 	
-	this._typeId = 1881829396;
+	this._typeId = 363642571;
 	
 	this.transport = null; // is set in BServer.addRemote
 	
 	this.toJSON = function (key) {
-		return { _typeId : 1881829396, targetId : this.transport.targetId };
+		return { _typeId : 363642571, targetId : this.transport.targetId };
 	};
 	
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.grow = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.inherit.BSkeleton_BioFruitService.prototype.certify = function(param) /* returns boolean , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_grow = function(__byps__asyncResult){
-	try {
-		var __byps__ret = this.grow();
-		__byps__asyncResult(__byps__ret, null);
-	} catch (e) {
-		__byps__asyncResult(null, e);
-	};
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.certify = function(param) /* returns boolean , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
-};
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_certify = function(param, __byps__asyncResult){
+byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_certify = function(param, __byps__asyncResult){
 	try {
 		var __byps__ret = this.certify(param);
 		__byps__asyncResult(__byps__ret, null);
@@ -634,16 +614,34 @@ com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_ce
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.squeeze = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.inherit.BSkeleton_BioFruitService.prototype.grow = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_squeeze = function(__byps__asyncResult){
+byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_grow = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.grow();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioFruitService.prototype.squeeze = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
+};
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_squeeze = function(__byps__asyncResult){
 	try {
 		var __byps__ret = this.squeeze();
 		__byps__asyncResult(__byps__ret, null);
@@ -658,83 +656,29 @@ com.wilutions.byps.test.api.inherit.BSkeleton_BioFruitService.prototype.async_sq
  * Either provide an asynchronous or a synchronous function in your implementation.
  * The framework calls only the asynchronous function.
  */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService = function() {
+byps.test.api.inherit.BSkeleton_BioLemonService = function() {
 	
-	this._typeId = 1992245333;
+	this._typeId = 474058508;
 	
 	this.transport = null; // is set in BServer.addRemote
 	
 	this.toJSON = function (key) {
-		return { _typeId : 1992245333, targetId : this.transport.targetId };
+		return { _typeId : 474058508, targetId : this.transport.targetId };
 	};
 	
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.grow = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.certify = function(param) /* returns boolean , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_grow = function(__byps__asyncResult){
-	try {
-		var __byps__ret = this.grow();
-		__byps__asyncResult(__byps__ret, null);
-	} catch (e) {
-		__byps__asyncResult(null, e);
-	};
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.pick = function(sess, fromTree) /* returns java.lang.String , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
-};
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_pick = function(sess, fromTree, __byps__asyncResult){
-	try {
-		var __byps__ret = this.pick(sess, fromTree);
-		__byps__asyncResult(__byps__ret, null);
-	} catch (e) {
-		__byps__asyncResult(null, e);
-	};
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.useParing = function() /* returns int , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
-};
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_useParing = function(__byps__asyncResult){
-	try {
-		var __byps__ret = this.useParing();
-		__byps__asyncResult(__byps__ret, null);
-	} catch (e) {
-		__byps__asyncResult(null, e);
-	};
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.certify = function(param) /* returns boolean , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
-};
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_certify = function(param, __byps__asyncResult){
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_certify = function(param, __byps__asyncResult){
 	try {
 		var __byps__ret = this.certify(param);
 		__byps__asyncResult(__byps__ret, null);
@@ -743,18 +687,72 @@ com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_ce
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.squeeze = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.grow = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_squeeze = function(__byps__asyncResult){
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_grow = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.grow();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.squeeze = function() /* returns java.lang.String , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
+};
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_squeeze = function(__byps__asyncResult){
 	try {
 		var __byps__ret = this.squeeze();
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.pick = function(sess, fromTree) /* returns java.lang.String , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
+};
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_pick = function(sess, fromTree, __byps__asyncResult){
+	try {
+		var __byps__ret = this.pick(sess, fromTree);
+		__byps__asyncResult(__byps__ret, null);
+	} catch (e) {
+		__byps__asyncResult(null, e);
+	};
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.useParing = function() /* returns int , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
+};
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_useParing = function(__byps__asyncResult){
+	try {
+		var __byps__ret = this.useParing();
 		__byps__asyncResult(__byps__ret, null);
 	} catch (e) {
 		__byps__asyncResult(null, e);
@@ -767,35 +765,35 @@ com.wilutions.byps.test.api.inherit.BSkeleton_BioLemonService.prototype.async_sq
  * Either provide an asynchronous or a synchronous function in your implementation.
  * The framework calls only the asynchronous function.
  */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function() {
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication = function() {
 	
-	this._typeId = 1677934392;
+	this._typeId = 1983670399;
 	
 	this.transport = null; // is set in BServer.addRemote
 	
 	this.toJSON = function (key) {
-		return { _typeId : 1677934392, targetId : this.transport.targetId };
+		return { _typeId : 1983670399, targetId : this.transport.targetId };
 	};
 	
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Set authentication flag in MySession.
  * @param useAuth
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.setUseAuthentication = function(useAuth) /* returns void , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.setUseAuthentication = function(useAuth) /* returns void , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Set authentication flag in MySession.
  * @param useAuth
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_setUseAuthentication = function(useAuth, __byps__asyncResult){
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_setUseAuthentication = function(useAuth, __byps__asyncResult){
 	try {
 		this.setUseAuthentication(useAuth);
 		__byps__asyncResult(null, null);
@@ -804,7 +802,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Login.
  * Only user "Fritz" is allowed to login.
@@ -814,10 +812,10 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
  * @return Session object
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.login = function(sess, userName, userPwd) /* returns com.wilutions.byps.test.api.auth.SessionInfo , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.login = function(sess, userName, userPwd) /* returns byps.test.api.auth.SessionInfo , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Login.
  * Only user "Fritz" is allowed to login.
@@ -827,7 +825,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
  * @return Session object
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_login = function(sess, userName, userPwd, __byps__asyncResult){
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_login = function(sess, userName, userPwd, __byps__asyncResult){
 	try {
 		var __byps__ret = this.login(sess, userName, userPwd);
 		__byps__asyncResult(__byps__ret, null);
@@ -836,7 +834,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Do something.
  * @param sess Session information. Must not be null, if user was logged in.
@@ -844,10 +842,10 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
  * @return value+1
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.doit = function(sess, value) /* returns int , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.doit = function(sess, value) /* returns int , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Do something.
  * @param sess Session information. Must not be null, if user was logged in.
@@ -855,7 +853,7 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
  * @return value+1
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_doit = function(sess, value, __byps__asyncResult){
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_doit = function(sess, value, __byps__asyncResult){
 	try {
 		var __byps__ret = this.doit(sess, value);
 		__byps__asyncResult(__byps__ret, null);
@@ -864,22 +862,22 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Logout
  * @param sess
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.expire = function(sess) /* returns void , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.expire = function(sess) /* returns void , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Logout
  * @param sess
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_expire = function(sess, __byps__asyncResult){
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_expire = function(sess, __byps__asyncResult){
 	try {
 		this.expire(sess);
 		__byps__asyncResult(null, null);
@@ -888,24 +886,24 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Set the number of login calls nessesary to login the user.
  * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
  * @param count
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.setReloginCount = function(count) /* returns void , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.setReloginCount = function(count) /* returns void , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Set the number of login calls nessesary to login the user.
  * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
  * @param count
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_setReloginCount = function(count, __byps__asyncResult){
+byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.async_setReloginCount = function(count, __byps__asyncResult){
 	try {
 		this.setReloginCount(count);
 		__byps__asyncResult(null, null);
@@ -920,29 +918,29 @@ com.wilutions.byps.test.api.remote.BSkeleton_RemoteWithAuthentication.prototype.
  * Either provide an asynchronous or a synchronous function in your implementation.
  * The framework calls only the asynchronous function.
  */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF = function() {
+byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	
-	this._typeId = 1784257353;
+	this._typeId = 2049072174;
 	
 	this.transport = null; // is set in BServer.addRemote
 	
 	this.toJSON = function (key) {
-		return { _typeId : 1784257353, targetId : this.transport.targetId };
+		return { _typeId : 2049072174, targetId : this.transport.targetId };
 	};
 	
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.incrementInt = function(a) /* returns int , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.incrementInt = function(a) /* returns int , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_incrementInt = function(a, __byps__asyncResult){
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_incrementInt = function(a, __byps__asyncResult){
 	try {
 		var __byps__ret = this.incrementInt(a);
 		__byps__asyncResult(__byps__ret, null);
@@ -951,16 +949,16 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_incrementInt
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.getStreams = function(ctrl) /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.getStreams = function(ctrl) /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_getStreams = function(ctrl, __byps__asyncResult){
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_getStreams = function(ctrl, __byps__asyncResult){
 	try {
 		var __byps__ret = this.getStreams(ctrl);
 		__byps__asyncResult(__byps__ret, null);
@@ -969,16 +967,16 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_getStreams =
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.putStreams = function(strm, ctrl) /* returns void , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.putStreams = function(strm, ctrl) /* returns void , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_putStreams = function(strm, ctrl, __byps__asyncResult){
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_putStreams = function(strm, ctrl, __byps__asyncResult){
 	try {
 		this.putStreams(strm, ctrl);
 		__byps__asyncResult(null, null);
@@ -987,16 +985,16 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_putStreams =
 	};
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.sendChat = function(cs) /* returns com.wilutions.byps.test.api.srvr.ChatStructure , throws BException, InterruptedException*/  {
-	com.wilutions.byps.throwUNSUPPORTED("");
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.sendChat = function(cs) /* returns byps.test.api.srvr.ChatStructure , throws BException, InterruptedException*/  {
+	byps.throwUNSUPPORTED("");
 };
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __byps__asyncResult){
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __byps__asyncResult){
 	try {
 		var __byps__ret = this.sendChat(cs);
 		__byps__asyncResult(__byps__ret, null);
@@ -1014,204 +1012,204 @@ com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = f
 
 /**
  * @BClientRemote 
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
  * @BClientRemote 
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
 */
-com.wilutions.byps.test.api.inherit.BStub_BioFruitService = function(transport) {
+byps.test.api.inherit.BStub_BioFruitService = function(transport) {
 	
-	this._typeId = 1881829396;
+	this._typeId = 363642571;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_BioFruitService.prototype.grow = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1534230652 };
+byps.test.api.inherit.BStub_BioFruitService.prototype.certify = function(param, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1435417025, param : param };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_BioFruitService.prototype.certify = function(param, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 724361898, param : param };
+byps.test.api.inherit.BStub_BioFruitService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 695716901 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 656804784 };
+byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1290167289 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
  * @BClientRemote 
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
  * @BClientRemote 
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
 */
-com.wilutions.byps.test.api.inherit.BStub_BioLemonService = function(transport) {
+byps.test.api.inherit.BStub_BioLemonService = function(transport) {
 	
-	this._typeId = 1992245333;
-	
-	this.transport = transport;
-	
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.grow = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1534230652 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(fromTree, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1860602130, __byps__sess : 'sess', fromTree : fromTree };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.useParing = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1762089337 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.certify = function(param, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 724361898, param : param };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 656804784 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-/**
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
-*/
-com.wilutions.byps.test.api.inherit.BStub_FruitService = function(transport) {
-	
-	this._typeId = 506940662;
+	this._typeId = 474058508;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1534230652 };
+byps.test.api.inherit.BStub_BioLemonService.prototype.certify = function(param, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1435417025, param : param };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 656804784 };
+byps.test.api.inherit.BStub_BioLemonService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 695716901 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1290167289 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(sess, fromTree, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1022088379, sess : sess, fromTree : fromTree };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BStub_BioLemonService.prototype.useParing = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2108700976 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
 */
-com.wilutions.byps.test.api.inherit.BStub_LemonService = function(transport) {
+byps.test.api.inherit.BStub_FruitService = function(transport) {
 	
-	this._typeId = 617356599;
+	this._typeId = 715959905;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1534230652 };
+byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 695716901 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_LemonService.prototype.pick = function(fromTree, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1860602130, __byps__sess : 'sess', fromTree : fromTree };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.inherit.BStub_LemonService.prototype.squeeze = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 656804784 };
+byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1290167289 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
 */
-com.wilutions.byps.test.api.inherit.BStub_PlantService = function(transport) {
+byps.test.api.inherit.BStub_LemonService = function(transport) {
 	
-	this._typeId = 1117460801;
+	this._typeId = 605543968;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.inherit.BStub_PlantService.prototype.grow = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1534230652 };
+byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 695716901 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BStub_LemonService.prototype.squeeze = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1290167289 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BStub_LemonService.prototype.pick = function(sess, fromTree, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1022088379, sess : sess, fromTree : fromTree };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+ * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
+*/
+byps.test.api.inherit.BStub_PlantService = function(transport) {
+	
+	this._typeId = 1954605928;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.inherit.BStub_PlantService.prototype.grow = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 695716901 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -1219,290 +1217,290 @@ com.wilutions.byps.test.api.inherit.BStub_PlantService.prototype.grow = function
 /**
  * Interface with functions using 1-dimensional arrays.
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transport) {
+byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transport) {
 	
-	this._typeId = 1557084481;
-	
-	this.transport = transport;
-	
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setBool = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 589253529, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setByte = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 589243771, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setChar = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 589230893, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setShort = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1071498593, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1265927470, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setLong = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 588955655, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setFloat = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1083385729, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDouble = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 720472590, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setString = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1154444878, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1765354225, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setObject = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1023062396, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getBool = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1645604187 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getByte = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1645613945 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getChar = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1645626823 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getShort = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 510386133 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getInt = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1609477282 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getLong = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1645902061 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getFloat = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 522273269 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDouble = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 935089666 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getString = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1369061954 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 825201405 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getObject = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1237679472 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport) {
-	
-	this._typeId = 2081058997;
+	this._typeId = 963816328;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1748523470, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setBool = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 201441072, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 607451410, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setByte = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 201431314, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1004457221, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setChar = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 201418436, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 738833892, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setShort = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1934214314, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 899462794, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setInt = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1530512055, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setLong = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 201143198, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setFloat = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1946101450, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDouble = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 253910985, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setString = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 180061303, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1362276920, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setObject = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 48678821, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getBool = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2033416644 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getByte = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2033426402 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getChar = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2033439280 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getShort = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1373101854 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getInt = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1874061867 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getLong = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2033714518 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getFloat = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1384988990 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDouble = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 39293909 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getString = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 394678379 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1992537556 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getObject = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 263295897 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport) {
+	
+	this._typeId = 769717182;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1828268517, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1175231899, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 330036060, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1306614381, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1467243283, arr2 : arr2, arr3 : arr3, arr4 : arr4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -1510,230 +1508,230 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArrays
 /**
  * Interface with functions using 4-dimensional arrays.
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transport) {
+byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transport) {
 	
-	this._typeId = 1557173854;
+	this._typeId = 963726955;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setBool = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 202005372, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setBool = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 185807085, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setByte = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 201995614, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setByte = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 185816843, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setChar = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 201982736, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setChar = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 185829721, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setShort = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1951707614, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setShort = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1480543961, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1933153045, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setInt = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1668568460, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setLong = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 201707498, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setLong = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 186104959, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setFloat = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1963594750, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setFloat = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1468656825, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDouble = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 796203285, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDouble = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1770586860, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setString = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 362230997, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setString = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1336614572, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 710411500, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 456924651, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setObject = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 493613479, v : v };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setObject = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1467997054, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getBool = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2032852344 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getBool = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1874302495 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getByte = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2032862102 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getByte = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1874292737 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getChar = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2032874980 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getChar = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1874279859 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getShort = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1390595154 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getShort = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2041656421 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getInt = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1589603233 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getInt = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1325018648 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getLong = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2033150218 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getLong = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1874004621 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getFloat = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1402482290 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getFloat = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2029769285 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDouble = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 581586209 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDouble = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1555969784 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getString = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 147613921 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getString = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1121997496 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1650564320 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 483228169 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getObject = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 278996403 };
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getObject = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1253379978 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -1741,1483 +1739,1483 @@ com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getObjec
 /**
  * Interface functions to verify constant definitions.
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteConstants = function(transport) {
+byps.test.api.remote.BStub_RemoteConstants = function(transport) {
 	
-	this._typeId = 431648293;
-	
-	this.transport = transport;
-	
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteConstants.prototype.compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1570751625, ALEPH : ALEPH, BETH : BETH };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteConstants.prototype.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 862752254, bool1s : bool1s, bool2s : bool2s, char1s : char1s, stringNull : stringNull, char2s : char2s, short1s : short1s, int1s : int1s, long1s : long1s, float1s : float1s, double1s : double1s, string1s : string1s, ALL : ALL, arrInt : arrInt, arrInt4 : arrInt4, arrStrings : arrStrings, arrStrings4 : arrStrings4, arrAll : arrAll };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteEnums = function(transport) {
-	
-	this._typeId = 359349400;
+	this._typeId = 2045242510;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteEnums.prototype.getPlanet = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 627010462 };
+byps.test.api.remote.BStub_RemoteConstants.prototype.compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1711871378, ALEPH : ALEPH, BETH : BETH };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteEnums.prototype.setPlanet = function(planet, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 412393386, planet : planet };
+byps.test.api.remote.BStub_RemoteConstants.prototype.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1609344203, bool1s : bool1s, bool2s : bool2s, char1s : char1s, stringNull : stringNull, char2s : char2s, short1s : short1s, int1s : int1s, long1s : long1s, float1s : float1s, double1s : double1s, string1s : string1s, ALL : ALL, arrInt : arrInt, arrInt4 : arrInt4, arrStrings : arrStrings, arrStrings4 : arrStrings4, arrAll : arrAll };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance = function(transport) {
+byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 	
-	this._typeId = 1206670536;
-	
-	this.transport = transport;
-	
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setActor = function(act, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 299289599, act : act };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getActor = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 261822861 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray1dim = function(pointArray, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 531757758, pointArray : pointArray };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray1dim = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1011970102 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray4dim = function(pointArray, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 531668385, pointArray : pointArray };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray4dim = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1012059475 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DList = function(pointList, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 224357548, pointList : pointList };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DList = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1996093752 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DListList = function(pointListList, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1097161578, pointListList : pointListList };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DListList = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 177127926 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DMap = function(pointMap, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 546951282, pointMap : pointMap };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DMap = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1321082494 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
-	
-	this._typeId = 380156079;
+	this._typeId = 485761455;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1794077576 };
+byps.test.api.remote.BStub_RemoteEnums.prototype.getPlanet = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 6352043 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1882657404, boolean1 : boolean1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1319541530 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 758429070, byte1 : byte1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getChar1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1319940748 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 758828288, char1 : char1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getShort1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1573024156 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1787641232, short1 : short1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 874047761 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1360809955, int1 : int1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getLong1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1328473126 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 767360666, long1 : long1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getFloat1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1941525372 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2138824848, float1 : float1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getDouble1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1741299407 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 195505829, double1 : double1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getString1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1173060367 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 763744869, string1 : string1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1940572240 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1434361404, primitiveTypes1 : primitiveTypes1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1319541531 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 758429071, byte2 : byte2 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 874047762 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1360809954, int2 : int2 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getObj1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 874214665 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1360643051, obj1 : obj1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt3 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 874047763 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt3 = function(int3, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1360809953, int3 : int3 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt4 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 874047764 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt4 = function(int4, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1360809952, int4 : int4 };
+byps.test.api.remote.BStub_RemoteEnums.prototype.setPlanet = function(planet, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 220969119, planet : planet };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
+byps.test.api.remote.BStub_RemoteInlineInstance = function(transport) {
 	
-	this._typeId = 80483097;
+	this._typeId = 567395951;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 461626272 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setActor = function(act, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1162005320, act : act };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 550206100, boolean1 : boolean1 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getActor = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 600892860 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1348711374 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray1dim = function(pointArray, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1355334613, pointArray : pointArray };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1909823834, byte1 : byte1 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray1dim = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 188393247 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getChar1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1348312156 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray4dim = function(pointArray, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1355245240, pointArray : pointArray };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1909424616, char1 : char1 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray4dim = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 188482620 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getShort1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1610481740 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DList = function(pointList, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 343422941, pointList : pointList };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1395864664, short1 : short1 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DList = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1428313263 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1013140231 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DListList = function(pointListList, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 730520735, pointListList : pointListList };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1046969349, int1 : int1 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DListList = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1650554387 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getLong1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1339779778 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DMap = function(pointMap, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 127469879, pointMap : pointMap };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1900892238, long1 : long1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getFloat1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1241980524 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1027363448, float1 : float1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDouble1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1836864439 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 99940797, double1 : double1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getString1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1268625399 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 668179837, string1 : string1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 77071512 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 842962140, primitiveTypes1 : primitiveTypes1 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1348711373 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1909823833, byte2 : byte2 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1013140230 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1046969350, int2 : int2 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.getObj1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1012973327 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1047136253, obj1 : obj1 };
+byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DMap = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 646661333 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transport) {
+byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
-	this._typeId = 1341983932;
+	this._typeId = 1233438138;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.voidFunctionVoid = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1856936054 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2058662161 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setBool = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 143860510, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2147241989, boolean1 : boolean1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setByte = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 143850752, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 608486403 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setChar = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 143837874, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 47373943, byte1 : byte1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setShort = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 149216892, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getChar1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 608885621 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 974465289, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 47773161, char1 : char1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setLong = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 143562636, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getShort1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2140896613 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setFloat = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 161104028, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1939453607, short1 : short1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDouble = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 753565751, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2098036488 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setString = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 319593463, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 136821228, int1 : int1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 941809610, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getLong1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 617417999 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setObject = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 450975945, v : v };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 56305539, long1 : long1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getBool = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2090997206 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getFloat1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1785569467 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getByte = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2091006964 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1570952391, float1 : float1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getChar = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2091019842 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getDouble1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2129490906 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getShort = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 411895568 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 228671154, double1 : double1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getInt = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1318015101 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getString1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1597237350 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getLong = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2091295080 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 339567886, string1 : string1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getFloat = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 400008432 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1679973895 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDouble = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 538948675 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 759940243, primitiveTypes1 : primitiveTypes1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getString = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 104976387 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte2 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 608486404 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1881962430 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 47373944, byte2 : byte2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getObject = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 236358869 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt2 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2098036489 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1794219594, b : b, c : c, s : s, i : i, l : l, f : f, d : d, str : str, pt : pt, o : o };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 136821227, int2 : int2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.add = function(a, b, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1073583639, a : a, b : b };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getObj1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2098203392 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.throwException = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1845930195 };
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 136654324, obj1 : obj1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt3 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2098036490 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt3 = function(int3, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 136821226, int3 : int3 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt4 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2098036491 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt4 = function(int4, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 136821225, int4 : int4 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteReferences = function(transport) {
+byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
-	this._typeId = 2086824050;
-	
-	this.transport = transport;
-	
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteReferences.prototype.getNode = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 655936732 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteReferences.prototype.setNode = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1404172848, v : v };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl = function(transport) {
-	
-	this._typeId = 1124545992;
-	
-	this.transport = transport;
-	
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1776814809, name : name, remote : remote, fowardToOtherServers : fowardToOtherServers };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.getPublishedRemote = function(name, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1216543212, name : name };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl.prototype.removePublishedRemote = function(name, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1302703010, name : name };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-/**
-*/
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
-	
-	this._typeId = 1156008353;
+	this._typeId = 664304990;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1690813926 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 885803255 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1779393754, boolean1 : boolean1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 974383083, boolean1 : boolean1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2125684552 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 124722647 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1608170284, byte1 : byte1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 685835107, byte1 : byte1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getChar1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2125285334 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getChar1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 124323429 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1608569502, char1 : char1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 685435889, char1 : char1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getShort1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1000850298 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getShort1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 899426613 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1215467374, short1 : short1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 684809537, short1 : short1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 68372557 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 827458594 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1991737023, int1 : int1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1407399122, int1 : int1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getLong1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2116752956 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getLong1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 115791051 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1617101880, long1 : long1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 676903511, long1 : long1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getFloat1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1369351514 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getFloat1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 530925397 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1583968590, float1 : float1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 316308321, float1 : float1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDouble1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1183778993 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDouble1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1890230400 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 753026243, double1 : double1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 467931660, double1 : double1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getString1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 615539953 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getString1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1836497856 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1321265283, string1 : string1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 100307380, string1 : string1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1802821742 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1745799327 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1572111902, primitiveTypes1 : primitiveTypes1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1629134317, primitiveTypes1 : primitiveTypes1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2125684551 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte2 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 124722646 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1608170285, byte2 : byte2 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 685835106, byte2 : byte2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt2 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 68372556 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt2 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 827458595 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1991737024, int2 : int2 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1407399121, int2 : int2 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.getObj1 = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 68205653 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getObj1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 827625498 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1991903927, obj1 : obj1 };
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1407232218, obj1 : obj1 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteStreams = function(transport) {
+byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transport) {
 	
-	this._typeId = 2028487863;
+	this._typeId = 1178916877;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getImage = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1902276204 };
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.voidFunctionVoid = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2033139391 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.setImage = function(istrm, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1831578632, istrm : istrm };
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setBool = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 243951947, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getImages = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1158979935 };
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setByte = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 243961705, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 944362859, istrms : istrms, doNotReadStreamAtKey : doNotReadStreamAtKey };
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setChar = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 243974583, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.throwLastException = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2047657918 };
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setShort = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1011932613, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1083407988 };
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setInt = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1239049874, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setLong = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 244249821, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setFloat = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1023819749, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDouble = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1727949326, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setString = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1293977038, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 225526541, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setObject = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1425359520, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getBool = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1816157633 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getByte = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1816147875 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getChar = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1816134997 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getShort = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 450820153 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getInt = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1582599686 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getLong = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1815859759 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getFloat = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 462707289 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDouble = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1513332250 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getString = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1079359962 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 714626279 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getObject = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1210742444 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 677876863, b : b, c : c, s : s, i : i, l : l, f : f, d : d, str : str, pt : pt, o : o };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.add = function(a, b, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 362528512, a : a, b : b };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.throwException = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1278149706 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+*/
+byps.test.api.remote.BStub_RemoteReferences = function(transport) {
+	
+	this._typeId = 568637225;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteReferences.prototype.getNode = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1366991859 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteReferences.prototype.setNode = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 693117721, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+*/
+byps.test.api.remote.BStub_RemoteServerCtrl = function(transport) {
+	
+	this._typeId = 1652234479;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteServerCtrl.prototype.publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1543768912, name : name, remote : remote, fowardToOtherServers : fowardToOtherServers };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteServerCtrl.prototype.getPublishedRemote = function(name, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 648762723, name : name };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteServerCtrl.prototype.removePublishedRemote = function(name, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 135366859, name : name };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
+	
+	this._typeId = 1900796440;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2114990909 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2091396559, boolean1 : boolean1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 901695825 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1462808285, byte1 : byte1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getChar1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 901296607 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1462409067, char1 : char1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getShort1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1711905425 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1926522501, short1 : short1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1772226268 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 462631448, int1 : int1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getLong1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 892764229 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1453876689, long1 : long1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getFloat1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2080406641 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1999943579, float1 : float1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDouble1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1751651450 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 185153786, double1 : double1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getString1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1183412410 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 753392826, string1 : string1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 669274715 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 250758937, primitiveTypes1 : primitiveTypes1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte2 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 901695824 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1462808284, byte2 : byte2 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt2 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1772226269 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 462631447, int2 : int2 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getObj1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1772393172 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 462464544, obj1 : obj1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+*/
+byps.test.api.remote.BStub_RemoteStreams = function(transport) {
+	
+	this._typeId = 1043578866;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.getImage = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 61677379 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.setImage = function(istrm, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 622789839, istrm : istrm };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.getImages = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1911998634 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2126615710, istrms : istrms, doNotReadStreamAtKey : doNotReadStreamAtKey };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.throwLastException = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2127402965 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 818823403 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
  * This interface is an example for using the authentication mechanism.
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
  * @BClientRemote 
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType byps.test.api.auth.SessionInfo
  * @BClientRemote 
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
+byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 	
-	this._typeId = 1677934392;
+	this._typeId = 1983670399;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Set authentication flag in MySession.
  * @param useAuth
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setUseAuthentication = function(useAuth, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1785294043, useAuth : useAuth };
+byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setUseAuthentication = function(useAuth, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 946544530, useAuth : useAuth };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Login.
  * Only user "Fritz" is allowed to login.
@@ -3227,14 +3225,14 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setU
  * @return Session object
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.login = function(userName, userPwd, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 839695851, __byps__sess : 'sess', userName : userName, userPwd : userPwd };
+byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.login = function(userName, userPwd, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 134687724, __byps__sess : 'sess', userName : userName, userPwd : userPwd };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Do something.
  * @param sess Session information. Must not be null, if user was logged in.
@@ -3242,36 +3240,36 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.logi
  * @return value+1
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.doit = function(value, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 388793292, __byps__sess : 'sess', value : value };
+byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.doit = function(value, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1251509013, __byps__sess : 'sess', value : value };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Logout
  * @param sess
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.expire = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 68943581, __byps__sess : 'sess' };
+byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.expire = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 72176172, __byps__sess : 'sess' };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
  * Set the number of login calls nessesary to login the user.
  * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
  * @param count
  * @throws RemoteException
 */
-com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setReloginCount = function(count, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 20608797, count : count };
+byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setReloginCount = function(count, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 802968058, count : count };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -3280,210 +3278,210 @@ com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setR
  * @BClientRemote 
  * @BClientRemote 
 */
-com.wilutions.byps.test.api.srvr.BStub_ClientIF = function(transport) {
+byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
-	this._typeId = 1784257353;
-	
-	this.transport = transport;
-	
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.incrementInt = function(a, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1461829915, a : a };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.getStreams = function(ctrl, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 865920738, ctrl : ctrl };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.putStreams = function(strm, ctrl, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 242798857, strm : strm, ctrl : ctrl };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ClientIF.prototype.sendChat = function(cs, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1352392091, cs : cs };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ServerIF = function(transport) {
-	
-	this._typeId = 1313562065;
+	this._typeId = 2049072174;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.callClientIncrementInt = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1252575894, v : v };
+byps.test.api.srvr.BStub_ClientIF.prototype.incrementInt = function(a, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1685952420, a : a };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.setPartner = function(client, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1188403123, client : client };
+byps.test.api.srvr.BStub_ClientIF.prototype.getStreams = function(ctrl, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1654980071, ctrl : ctrl };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getPartner = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 748402113 };
+byps.test.api.srvr.BStub_ClientIF.prototype.putStreams = function(strm, ctrl, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2016865344, strm : strm, ctrl : ctrl };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1415283169 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.putStreamsOnClient = function(streams, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1367013829, streams : streams };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.registerWithClientMap = function(id, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1921080901, id : id };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getClient = function(id, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2107407220, id : id };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.getClientIds = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 2063368540 };
-	var ret = this.transport.sendMethod(req, __byps__asyncResult);
-	return ret;
-};
-
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
-/**
-*/
-com.wilutions.byps.test.api.srvr.BStub_ServerIF.prototype.callClientParallel = function(v, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1340180893, v : v };
+byps.test.api.srvr.BStub_ClientIF.prototype.sendChat = function(cs, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 41050276, cs : cs };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
 /**
 */
-com.wilutions.byps.test.api.ver.BStub_EvolveIF = function(transport) {
+byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
-	this._typeId = 2078696281;
+	this._typeId = 1775199834;
 	
 	this.transport = transport;
 	
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.setEvolve = function(obj, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 246658450, obj : obj };
+byps.test.api.srvr.BStub_ServerIF.prototype.callClientIncrementInt = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 389860173, v : v };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.getEvolve = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 32041374 };
+byps.test.api.srvr.BStub_ServerIF.prototype.setPartner = function(client, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1332497686, client : client };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.setClient = function(partner, __byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 313337668, partner : partner };
+byps.test.api.srvr.BStub_ServerIF.prototype.getPartner = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1025664374 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.getClient = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 98720592 };
+byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1679867754 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
 
-// checkpoint com.wilutions.byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:133
 /**
 */
-com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.sendEvolveToClient = function(__byps__asyncResult) {
-	// checkpoint com.wilutions.byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1425170268 };
+byps.test.api.srvr.BStub_ServerIF.prototype.putStreamsOnClient = function(streams, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1934886286, streams : streams };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.srvr.BStub_ServerIF.prototype.registerWithClientMap = function(id, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1533268444, id : id };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.srvr.BStub_ServerIF.prototype.getClient = function(id, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 190669475, id : id };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.srvr.BStub_ServerIF.prototype.getClientIds = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2007476251 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.srvr.BStub_ServerIF.prototype.callClientParallel = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 772308436, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
+*/
+byps.test.api.ver.BStub_EvolveIF = function(transport) {
+	
+	this._typeId = 15377840;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.ver.BStub_EvolveIF.prototype.setEvolve = function(obj, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1064683365, obj : obj };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.ver.BStub_EvolveIF.prototype.getEvolve = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1279300441 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.ver.BStub_EvolveIF.prototype.setClient = function(partner, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 998004147, partner : partner };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.ver.BStub_EvolveIF.prototype.getClient = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1212621223 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.ver.BStub_EvolveIF.prototype.sendEvolveToClient = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 714115141 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -3495,7 +3493,7 @@ com.wilutions.byps.test.api.ver.BStub_EvolveIF.prototype.sendEvolveToClient = fu
  * ----------------------------------------------
 */
 
-com.wilutions.byps.test.api.BServer_Testser = function(transport) { 
+byps.test.api.BServer_Testser = function(transport) { 
 
 	this.transport = transport;
 	this._remotes = {};
@@ -3504,9 +3502,9 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface BioFruitService			
 			// Method certify
-			724361898 : [ // _typeId of request class
-				1881829396, // _typeId of remote interface
-				148544162, // _typeId of result class
+			1435417025 : [ // _typeId of request class
+				363642571, // _typeId of remote interface
+				432867947, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_certify(methodObj.param, methodResult);
 				}
@@ -3515,9 +3513,9 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface BioLemonService			
 			// Method useParing
-			1762089337 : [ // _typeId of request class
-				1992245333, // _typeId of remote interface
-				148544158, // _typeId of result class
+			2108700976 : [ // _typeId of request class
+				474058508, // _typeId of remote interface
+				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_useParing(methodResult);
 				}
@@ -3526,9 +3524,9 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface FruitService			
 			// Method squeeze
-			656804784 : [ // _typeId of request class
-				506940662, // _typeId of remote interface
-				309901678, // _typeId of result class
+			1290167289 : [ // _typeId of request class
+				715959905, // _typeId of remote interface
+				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_squeeze(methodResult);
 				}
@@ -3537,9 +3535,9 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface LemonService			
 			// Method pick
-			1860602130 : [ // _typeId of request class
-				617356599, // _typeId of remote interface
-				309901678, // _typeId of result class
+			1022088379 : [ // _typeId of request class
+				605543968, // _typeId of remote interface
+				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_pick(methodObj.sess, methodObj.fromTree, methodResult);
 				}
@@ -3548,9 +3546,9 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface PlantService			
 			// Method grow
-			1534230652 : [ // _typeId of request class
-				1117460801, // _typeId of remote interface
-				309901678, // _typeId of result class
+			695716901 : [ // _typeId of request class
+				1954605928, // _typeId of remote interface
+				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_grow(methodResult);
 				}
@@ -3559,198 +3557,198 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteArrayTypes1dim			
 			// Method setBool
-			589253529 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			201441072 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBool(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setByte
-			589243771 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			201431314 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setChar
-			589230893 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			201418436 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setShort
-			1071498593 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1934214314 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setInt
-			1265927470 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1530512055 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setLong
-			588955655 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			201143198 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setFloat
-			1083385729 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1946101450 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setDouble
-			720472590 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			253910985 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setString
-			1154444878 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			180061303 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setPrimitiveTypes
-			1765354225 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1362276920 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setObject
-			1023062396 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				309901669, // _typeId of result class
+			48678821 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObject(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method getBool
-			1645604187 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				532799052, // _typeId of result class
+			2033416644 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				1698849803, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBool(methodResult);
 				}
 			],
 			
 			// Method getByte
-			1645613945 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				578691531, // _typeId of result class
+			2033426402 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				1484626910, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte(methodResult);
 				}
 			],
 			
 			// Method getChar
-			1645626823 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				514676842, // _typeId of result class
+			2033439280 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				1548641599, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar(methodResult);
 				}
 			],
 			
 			// Method getShort
-			510386133 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				1305849624, // _typeId of result class
+			1373101854 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				925799231, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort(methodResult);
 				}
 			],
 			
 			// Method getInt
-			1609477282 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				848023142, // _typeId of result class
+			1874061867 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				498939805, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt(methodResult);
 				}
 			],
 			
 			// Method getLong
-			1645902061 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				1862597051, // _typeId of result class
+			2033714518 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				200721390, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong(methodResult);
 				}
 			],
 			
 			// Method getFloat
-			522273269 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				1517001317, // _typeId of result class
+			1384988990 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				1167917980, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat(methodResult);
 				}
 			],
 			
 			// Method getDouble
-			935089666 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				493259283, // _typeId of result class
+			39293909 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				1738389572, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble(methodResult);
 				}
 			],
 			
 			// Method getString
-			1369061954 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				427000, // _typeId of result class
+			394678379 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				2063745441, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString(methodResult);
 				}
 			],
 			
 			// Method getPrimitiveTypes
-			825201405 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				1937830923, // _typeId of result class
+			1992537556 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				1814499786, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes(methodResult);
 				}
 			],
 			
 			// Method getObject
-			1237679472 : [ // _typeId of request class
-				1557084481, // _typeId of remote interface
-				333265053, // _typeId of result class
+			263295897 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				15818284, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
 				}
@@ -3759,45 +3757,45 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteArrayTypes23			
 			// Method sendArraysInt
-			1748523470 : [ // _typeId of request class
-				2081058997, // _typeId of remote interface
-				848023142, // _typeId of result class
+			1828268517 : [ // _typeId of request class
+				769717182, // _typeId of remote interface
+				498939805, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysInt(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
 				}
 			],
 			
 			// Method sendArraysString
-			607451410 : [ // _typeId of request class
-				2081058997, // _typeId of remote interface
-				427000, // _typeId of result class
+			1175231899 : [ // _typeId of request class
+				769717182, // _typeId of remote interface
+				2063745441, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysString(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
 				}
 			],
 			
 			// Method sendArraysClass
-			1004457221 : [ // _typeId of request class
-				2081058997, // _typeId of remote interface
-				1937830923, // _typeId of result class
+			330036060 : [ // _typeId of request class
+				769717182, // _typeId of remote interface
+				1814499786, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysClass(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
 				}
 			],
 			
 			// Method sendArraysObject
-			738833892 : [ // _typeId of request class
-				2081058997, // _typeId of remote interface
-				333265053, // _typeId of result class
+			1306614381 : [ // _typeId of request class
+				769717182, // _typeId of remote interface
+				15818284, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysObject(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
 				}
 			],
 			
 			// Method sendArraysInline
-			899462794 : [ // _typeId of request class
-				2081058997, // _typeId of remote interface
-				234867558, // _typeId of result class
+			1467243283 : [ // _typeId of request class
+				769717182, // _typeId of remote interface
+				748770738, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysInline(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
 				}
@@ -3806,198 +3804,198 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteArrayTypes4dim			
 			// Method setBool
-			202005372 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			185807085 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBool(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setByte
-			201995614 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			185816843 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setChar
-			201982736 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			185829721 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setShort
-			1951707614 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1480543961 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setInt
-			1933153045 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1668568460 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setLong
-			201707498 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			186104959 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setFloat
-			1963594750 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1468656825 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setDouble
-			796203285 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1770586860 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setString
-			362230997 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1336614572 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setPrimitiveTypes
-			710411500 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			456924651 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setObject
-			493613479 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1467997054 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObject(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method getBool
-			2032852344 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				2092891102, // _typeId of result class
+			1874302495 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				1852992857, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBool(methodResult);
 				}
 			],
 			
 			// Method getByte
-			2032862102 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				541741223, // _typeId of result class
+			1874292737 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				1521577218, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte(methodResult);
 				}
 			],
 			
 			// Method getChar
-			2032874980 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				231816689, // _typeId of result class
+			1874279859 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				580900026, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar(methodResult);
 				}
 			],
 			
 			// Method getShort
-			1390595154 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				101217472, // _typeId of result class
+			2041656421 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				2130431383, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort(methodResult);
 				}
 			],
 			
 			// Method getInt
-			1589603233 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				1682941350, // _typeId of result class
+			1325018648 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				245460547, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt(methodResult);
 				}
 			],
 			
 			// Method getLong
-			2033150218 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				516356161, // _typeId of result class
+			1874004621 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				167272824, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong(methodResult);
 				}
 			],
 			
 			// Method getFloat
-			1402482290 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				188578332, // _typeId of result class
+			2029769285 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				2043070523, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat(methodResult);
 				}
 			],
 			
 			// Method getDouble
-			581586209 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				580667480, // _typeId of result class
+			1555969784 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				1650981375, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble(methodResult);
 				}
 			],
 			
 			// Method getString
-			147613921 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				1886698628, // _typeId of result class
+			1121997496 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				1537615291, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString(methodResult);
 				}
 			],
 			
 			// Method getPrimitiveTypes
-			1650564320 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				72308967, // _typeId of result class
+			483228169 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				1168951451, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes(methodResult);
 				}
 			],
 			
 			// Method getObject
-			278996403 : [ // _typeId of request class
-				1557173854, // _typeId of remote interface
-				647080343, // _typeId of result class
+			1253379978 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				996163680, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
 				}
@@ -4006,18 +4004,18 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteConstants			
 			// Method compare_HebrewC
-			1570751625 : [ // _typeId of request class
-				431648293, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1711871378 : [ // _typeId of request class
+				2045242510, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_compare_HebrewC(methodObj.ALEPH, methodObj.BETH, methodResult);
 				}
 			],
 			
 			// Method compare_AllTypesC
-			862752254 : [ // _typeId of request class
-				431648293, // _typeId of remote interface
-				148544162, // _typeId of result class
+			1609344203 : [ // _typeId of request class
+				2045242510, // _typeId of remote interface
+				432867947, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_compare_AllTypesC(methodObj.bool1s, methodObj.bool2s, methodObj.char1s, methodObj.stringNull, methodObj.char2s, methodObj.short1s, methodObj.int1s, methodObj.long1s, methodObj.float1s, methodObj.double1s, methodObj.string1s, methodObj.ALL, methodObj.arrInt, methodObj.arrInt4, methodObj.arrStrings, methodObj.arrStrings4, methodObj.arrAll, methodResult);
 				}
@@ -4026,18 +4024,18 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteEnums			
 			// Method getPlanet
-			627010462 : [ // _typeId of request class
-				359349400, // _typeId of remote interface
-				2038872493, // _typeId of result class
+			6352043 : [ // _typeId of request class
+				485761455, // _typeId of remote interface
+				1920161159, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPlanet(methodResult);
 				}
 			],
 			
 			// Method setPlanet
-			412393386 : [ // _typeId of request class
-				359349400, // _typeId of remote interface
-				309901669, // _typeId of result class
+			220969119 : [ // _typeId of request class
+				485761455, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPlanet(methodObj.planet, methodResult);
 				}
@@ -4046,108 +4044,108 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteInlineInstance			
 			// Method setActor
-			299289599 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1162005320 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setActor(methodObj.act, methodResult);
 				}
 			],
 			
 			// Method getActor
-			261822861 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				1220439445, // _typeId of result class
+			600892860 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				871356108, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getActor(methodResult);
 				}
 			],
 			
 			// Method setPoint2DArray1dim
-			531757758 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1355334613 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DArray1dim(methodObj.pointArray, methodResult);
 				}
 			],
 			
 			// Method getPoint2DArray1dim
-			1011970102 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				234867558, // _typeId of result class
+			188393247 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				748770738, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DArray1dim(methodResult);
 				}
 			],
 			
 			// Method setPoint2DArray4dim
-			531668385 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1355245240 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DArray4dim(methodObj.pointArray, methodResult);
 				}
 			],
 			
 			// Method getPoint2DArray4dim
-			1012059475 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				1490187962, // _typeId of result class
+			188482620 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				996206823, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DArray4dim(methodResult);
 				}
 			],
 			
 			// Method setPoint2DList
-			224357548 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				309901669, // _typeId of result class
+			343422941 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DList(methodObj.pointList, methodResult);
 				}
 			],
 			
 			// Method getPoint2DList
-			1996093752 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				1905478006, // _typeId of result class
+			1428313263 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				937508540, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DList(methodResult);
 				}
 			],
 			
 			// Method setPoint2DListList
-			1097161578 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				309901669, // _typeId of result class
+			730520735 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DListList(methodObj.pointListList, methodResult);
 				}
 			],
 			
 			// Method getPoint2DListList
-			177127926 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				548882635, // _typeId of result class
+			1650554387 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				114088296, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DListList(methodResult);
 				}
 			],
 			
 			// Method setPoint2DMap
-			546951282 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				309901669, // _typeId of result class
+			127469879 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DMap(methodObj.pointMap, methodResult);
 				}
 			],
 			
 			// Method getPoint2DMap
-			1321082494 : [ // _typeId of request class
-				1206670536, // _typeId of remote interface
-				1651982651, // _typeId of result class
+			646661333 : [ // _typeId of request class
+				567395951, // _typeId of remote interface
+				1693860029, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DMap(methodResult);
 				}
@@ -4156,270 +4154,270 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteListTypes			
 			// Method getBoolean1
-			1794077576 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				732507399, // _typeId of result class
+			2058662161 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1330811042, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBoolean1(methodResult);
 				}
 			],
 			
 			// Method setBoolean1
-			1882657404 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			2147241989 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBoolean1(methodObj.boolean1, methodResult);
 				}
 			],
 			
 			// Method getByte1
-			1319541530 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				1532920911, // _typeId of result class
+			608486403 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				698727944, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte1(methodResult);
 				}
 			],
 			
 			// Method setByte1
-			758429070 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			47373943 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte1(methodObj.byte1, methodResult);
 				}
 			],
 			
 			// Method getChar1
-			1319940748 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				1587436403, // _typeId of result class
+			608885621 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				475882038, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar1(methodResult);
 				}
 			],
 			
 			// Method setChar1
-			758828288 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			47773161 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar1(methodObj.char1, methodResult);
 				}
 			],
 			
 			// Method getShort1
-			1573024156 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				980499904, // _typeId of result class
+			2140896613 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1082818537, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort1(methodResult);
 				}
 			],
 			
 			// Method setShort1
-			1787641232 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1939453607 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort1(methodObj.short1, methodResult);
 				}
 			],
 			
 			// Method getInt1
-			874047761 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				1414119390, // _typeId of result class
+			2098036488 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1763202727, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt1(methodResult);
 				}
 			],
 			
 			// Method setInt1
-			1360809955 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			136821228 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt1(methodObj.int1, methodResult);
 				}
 			],
 			
 			// Method getLong1
-			1328473126 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				2133842068, // _typeId of result class
+			617417999 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				70523627, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong1(methodResult);
 				}
 			],
 			
 			// Method setLong1
-			767360666 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			56305539 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong1(methodObj.long1, methodResult);
 				}
 			],
 			
 			// Method getFloat1
-			1941525372 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				1862743418, // _typeId of result class
+			1785569467 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				368905437, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat1(methodResult);
 				}
 			],
 			
 			// Method setFloat1
-			2138824848 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1570952391 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat1(methodObj.float1, methodResult);
 				}
 			],
 			
 			// Method getDouble1
-			1741299407 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				1887708350, // _typeId of result class
+			2129490906 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				343940505, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble1(methodResult);
 				}
 			],
 			
 			// Method setDouble1
-			195505829 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			228671154 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble1(methodObj.double1, methodResult);
 				}
 			],
 			
 			// Method getString1
-			1173060367 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				1978497049, // _typeId of result class
+			1597237350 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				253151806, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString1(methodResult);
 				}
 			],
 			
 			// Method setString1
-			763744869 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			339567886 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString1(methodObj.string1, methodResult);
 				}
 			],
 			
 			// Method getPrimitiveTypes1
-			1940572240 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				743592613, // _typeId of result class
+			1679973895 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1073221568, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes1(methodResult);
 				}
 			],
 			
 			// Method setPrimitiveTypes1
-			1434361404 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			759940243 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes1(methodObj.primitiveTypes1, methodResult);
 				}
 			],
 			
 			// Method getByte2
-			1319541531 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				994835305, // _typeId of result class
+			608486404 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1068483136, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte2(methodResult);
 				}
 			],
 			
 			// Method setByte2
-			758429071 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			47373944 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte2(methodObj.byte2, methodResult);
 				}
 			],
 			
 			// Method getInt2
-			874047762 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				150989512, // _typeId of result class
+			2098036489 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1912328929, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt2(methodResult);
 				}
 			],
 			
 			// Method setInt2
-			1360809954 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			136821227 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt2(methodObj.int2, methodResult);
 				}
 			],
 			
 			// Method getObj1
-			874214665 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901676, // _typeId of result class
+			2098203392 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004419, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObj1(methodResult);
 				}
 			],
 			
 			// Method setObj1
-			1360643051 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			136654324 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
 				}
 			],
 			
 			// Method getInt3
-			874047763 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				1823196186, // _typeId of result class
+			2098036490 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				408452669, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt3(methodResult);
 				}
 			],
 			
 			// Method setInt3
-			1360809953 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			136821226 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt3(methodObj.int3, methodResult);
 				}
 			],
 			
 			// Method getInt4
-			874047764 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				831989576, // _typeId of result class
+			2098036491 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1231328865, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt4(methodResult);
 				}
 			],
 			
 			// Method setInt4
-			1360809952 : [ // _typeId of request class
-				380156079, // _typeId of remote interface
-				309901669, // _typeId of result class
+			136821225 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt4(methodObj.int4, methodResult);
 				}
@@ -4428,234 +4426,234 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteMapTypes			
 			// Method getBoolean1
-			461626272 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				1602044401, // _typeId of result class
+			885803255 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				629604454, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBoolean1(methodResult);
 				}
 			],
 			
 			// Method setBoolean1
-			550206100 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			974383083 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBoolean1(methodObj.boolean1, methodResult);
 				}
 			],
 			
 			// Method getByte1
-			1348711374 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				104960651, // _typeId of result class
+			124722647 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				1958357790, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte1(methodResult);
 				}
 			],
 			
 			// Method setByte1
-			1909823834 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			685835107 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte1(methodObj.byte1, methodResult);
 				}
 			],
 			
 			// Method getChar1
-			1348312156 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				1554344518, // _typeId of result class
+			124323429 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				323111619, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar1(methodResult);
 				}
 			],
 			
 			// Method setChar1
-			1909424616 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			685435889 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar1(methodObj.char1, methodResult);
 				}
 			],
 			
 			// Method getShort1
-			1610481740 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				1205316392, // _typeId of result class
+			899426613 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				856233055, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort1(methodResult);
 				}
 			],
 			
 			// Method setShort1
-			1395864664 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			684809537 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort1(methodObj.short1, methodResult);
 				}
 			],
 			
 			// Method getInt1
-			1013140231 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				1350610934, // _typeId of result class
+			827458594 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				881037921, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt1(methodResult);
 				}
 			],
 			
 			// Method setInt1
-			1046969349 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1407399122 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt1(methodObj.int1, methodResult);
 				}
 			],
 			
 			// Method getLong1
-			1339779778 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				839888536, // _typeId of result class
+			115791051 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				1391760319, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong1(methodResult);
 				}
 			],
 			
 			// Method setLong1
-			1900892238 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			676903511 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong1(methodObj.long1, methodResult);
 				}
 			],
 			
 			// Method getFloat1
-			1241980524 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				127543251, // _typeId of result class
+			530925397 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				1800858646, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat1(methodResult);
 				}
 			],
 			
 			// Method setFloat1
-			1027363448 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			316308321 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat1(methodObj.float1, methodResult);
 				}
 			],
 			
 			// Method getDouble1
-			1836864439 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				2081879792, // _typeId of result class
+			1890230400 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				149769063, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble1(methodResult);
 				}
 			],
 			
 			// Method setDouble1
-			99940797 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			467931660 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble1(methodObj.double1, methodResult);
 				}
 			],
 			
 			// Method getString1
-			1268625399 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				163470910, // _typeId of result class
+			1836497856 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				1899847531, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString1(methodResult);
 				}
 			],
 			
 			// Method setString1
-			668179837 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			100307380 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString1(methodObj.string1, methodResult);
 				}
 			],
 			
 			// Method getPrimitiveTypes1
-			77071512 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				1169980470, // _typeId of result class
+			1745799327 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				50516327, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes1(methodResult);
 				}
 			],
 			
 			// Method setPrimitiveTypes1
-			842962140 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1629134317 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes1(methodObj.primitiveTypes1, methodResult);
 				}
 			],
 			
 			// Method getByte2
-			1348711373 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				179038766, // _typeId of result class
+			124722646 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				2052610089, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte2(methodResult);
 				}
 			],
 			
 			// Method setByte2
-			1909823833 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			685835106 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte2(methodObj.byte2, methodResult);
 				}
 			],
 			
 			// Method getInt2
-			1013140230 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				770118380, // _typeId of result class
+			827458595 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				1293200061, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt2(methodResult);
 				}
 			],
 			
 			// Method setInt2
-			1046969350 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1407399121 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt2(methodObj.int2, methodResult);
 				}
 			],
 			
 			// Method getObj1
-			1012973327 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				1240765869, // _typeId of result class
+			827625498 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				822552572, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObj1(methodResult);
 				}
 			],
 			
 			// Method setObj1
-			1047136253 : [ // _typeId of request class
-				80483097, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1407232218 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
 				}
@@ -4664,234 +4662,234 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemotePrimitiveTypes			
 			// Method voidFunctionVoid
-			1856936054 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			2033139391 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_voidFunctionVoid(methodResult);
 				}
 			],
 			
 			// Method setBool
-			143860510 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			243951947 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBool(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setByte
-			143850752 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			243961705 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setChar
-			143837874 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			243974583 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setShort
-			149216892 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1011932613 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setInt
-			974465289 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1239049874 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setLong
-			143562636 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			244249821 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setFloat
-			161104028 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1023819749 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setDouble
-			753565751 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1727949326 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setString
-			319593463 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1293977038 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setPrimitiveTypes
-			941809610 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			225526541 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setObject
-			450975945 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1425359520 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObject(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method getBool
-			2090997206 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544162, // _typeId of result class
+			1816157633 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867947, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBool(methodResult);
 				}
 			],
 			
 			// Method getByte
-			2091006964 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544161, // _typeId of result class
+			1816147875 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867946, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte(methodResult);
 				}
 			],
 			
 			// Method getChar
-			2091019842 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544159, // _typeId of result class
+			1816134997 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867944, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar(methodResult);
 				}
 			],
 			
 			// Method getShort
-			411895568 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544160, // _typeId of result class
+			450820153 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867945, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort(methodResult);
 				}
 			],
 			
 			// Method getInt
-			1318015101 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544158, // _typeId of result class
+			1582599686 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt(methodResult);
 				}
 			],
 			
 			// Method getLong
-			2091295080 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544157, // _typeId of result class
+			1815859759 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867942, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong(methodResult);
 				}
 			],
 			
 			// Method getFloat
-			400008432 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544156, // _typeId of result class
+			462707289 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867941, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat(methodResult);
 				}
 			],
 			
 			// Method getDouble
-			538948675 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544155, // _typeId of result class
+			1513332250 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867940, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble(methodResult);
 				}
 			],
 			
 			// Method getString
-			104976387 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901678, // _typeId of result class
+			1079359962 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString(methodResult);
 				}
 			],
 			
 			// Method getPrimitiveTypes
-			1881962430 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				1462767598, // _typeId of result class
+			714626279 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				2077138821, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes(methodResult);
 				}
 			],
 			
 			// Method getObject
-			236358869 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901646, // _typeId of result class
+			1210742444 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004389, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
 				}
 			],
 			
 			// Method sendAllTypes
-			1794219594 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			677876863 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendAllTypes(methodObj.b, methodObj.c, methodObj.s, methodObj.i, methodObj.l, methodObj.f, methodObj.d, methodObj.str, methodObj.pt, methodObj.o, methodResult);
 				}
 			],
 			
 			// Method add
-			1073583639 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				148544158, // _typeId of result class
+			362528512 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_add(methodObj.a, methodObj.b, methodResult);
 				}
 			],
 			
 			// Method throwException
-			1845930195 : [ // _typeId of request class
-				1341983932, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1278149706 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_throwException(methodResult);
 				}
@@ -4900,18 +4898,18 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteReferences			
 			// Method getNode
-			655936732 : [ // _typeId of request class
-				2086824050, // _typeId of remote interface
-				1462529269, // _typeId of result class
+			1366991859 : [ // _typeId of request class
+				568637225, // _typeId of remote interface
+				2076900492, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getNode(methodResult);
 				}
 			],
 			
 			// Method setNode
-			1404172848 : [ // _typeId of request class
-				2086824050, // _typeId of remote interface
-				309901669, // _typeId of result class
+			693117721 : [ // _typeId of request class
+				568637225, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setNode(methodObj.v, methodResult);
 				}
@@ -4920,27 +4918,27 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteServerCtrl			
 			// Method publishRemote
-			1776814809 : [ // _typeId of request class
-				1124545992, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1543768912 : [ // _typeId of request class
+				1652234479, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_publishRemote(methodObj.name, methodObj.remote, methodObj.fowardToOtherServers, methodResult);
 				}
 			],
 			
 			// Method getPublishedRemote
-			1216543212 : [ // _typeId of request class
-				1124545992, // _typeId of remote interface
-				309901672, // _typeId of result class
+			648762723 : [ // _typeId of request class
+				1652234479, // _typeId of remote interface
+				534004415, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPublishedRemote(methodObj.name, methodResult);
 				}
 			],
 			
 			// Method removePublishedRemote
-			1302703010 : [ // _typeId of request class
-				1124545992, // _typeId of remote interface
-				309901669, // _typeId of result class
+			135366859 : [ // _typeId of request class
+				1652234479, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_removePublishedRemote(methodObj.name, methodResult);
 				}
@@ -4949,234 +4947,234 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteSetTypes			
 			// Method getBoolean1
-			1690813926 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				1253977781, // _typeId of result class
+			2114990909 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				809340660, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBoolean1(methodResult);
 				}
 			],
 			
 			// Method setBoolean1
-			1779393754 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			2091396559 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBoolean1(methodObj.boolean1, methodResult);
 				}
 			],
 			
 			// Method getByte1
-			2125684552 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				307489197, // _typeId of result class
+			901695825 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				1620912700, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte1(methodResult);
 				}
 			],
 			
 			// Method setByte1
-			1608170284 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1462808285 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte1(methodObj.byte1, methodResult);
 				}
 			],
 			
 			// Method getChar1
-			2125285334 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				1317331941, // _typeId of result class
+			901296607 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				968248604, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar1(methodResult);
 				}
 			],
 			
 			// Method setChar1
-			1608569502 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1462409067 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar1(methodObj.char1, methodResult);
 				}
 			],
 			
 			// Method getShort1
-			1000850298 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				398816652, // _typeId of result class
+			1711905425 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				1664501789, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort1(methodResult);
 				}
 			],
 			
 			// Method setShort1
-			1215467374 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1926522501 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort1(methodObj.short1, methodResult);
 				}
 			],
 			
 			// Method getInt1
-			68372557 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				276437907, // _typeId of result class
+			1772226268 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				1955210948, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt1(methodResult);
 				}
 			],
 			
 			// Method setInt1
-			1991737023 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			462631448 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt1(methodObj.int1, methodResult);
 				}
 			],
 			
 			// Method getLong1
-			2116752956 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				1119760023, // _typeId of result class
+			892764229 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				1111888832, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong1(methodResult);
 				}
 			],
 			
 			// Method setLong1
-			1617101880 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1453876689 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong1(methodObj.long1, methodResult);
 				}
 			],
 			
 			// Method getFloat1
-			1369351514 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				1716302523, // _typeId of result class
+			2080406641 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				515346332, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat1(methodResult);
 				}
 			],
 			
 			// Method setFloat1
-			1583968590 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1999943579 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat1(methodObj.float1, methodResult);
 				}
 			],
 			
 			// Method getDouble1
-			1183778993 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				190591700, // _typeId of result class
+			1751651450 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				2041057155, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble1(methodResult);
 				}
 			],
 			
 			// Method setDouble1
-			753026243 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			185153786 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble1(methodObj.double1, methodResult);
 				}
 			],
 			
 			// Method getString1
-			615539953 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				180574010, // _typeId of result class
+			1183412410 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				2051074845, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString1(methodResult);
 				}
 			],
 			
 			// Method setString1
-			1321265283 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			753392826 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString1(methodObj.string1, methodResult);
 				}
 			],
 			
 			// Method getPrimitiveTypes1
-			1802821742 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				429041482, // _typeId of result class
+			669274715 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				2098743607, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes1(methodResult);
 				}
 			],
 			
 			// Method setPrimitiveTypes1
-			1572111902 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			250758937 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes1(methodObj.primitiveTypes1, methodResult);
 				}
 			],
 			
 			// Method getByte2
-			2125684551 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				496389964, // _typeId of result class
+			901695824 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				1566928477, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte2(methodResult);
 				}
 			],
 			
 			// Method setByte2
-			1608170285 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1462808284 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte2(methodObj.byte2, methodResult);
 				}
 			],
 			
 			// Method getInt2
-			68372556 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				104448059, // _typeId of result class
+			1772226269 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				2127200796, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt2(methodResult);
 				}
 			],
 			
 			// Method setInt2
-			1991737024 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			462631447 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt2(methodObj.int2, methodResult);
 				}
 			],
 			
 			// Method getObj1
-			68205653 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901674, // _typeId of result class
+			1772393172 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004417, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObj1(methodResult);
 				}
 			],
 			
 			// Method setObj1
-			1991903927 : [ // _typeId of request class
-				1156008353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			462464544 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
 				}
@@ -5185,54 +5183,54 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteStreams			
 			// Method getImage
-			1902276204 : [ // _typeId of request class
-				2028487863, // _typeId of remote interface
-				309901673, // _typeId of result class
+			61677379 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004416, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getImage(methodResult);
 				}
 			],
 			
 			// Method setImage
-			1831578632 : [ // _typeId of request class
-				2028487863, // _typeId of remote interface
-				309901669, // _typeId of result class
+			622789839 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setImage(methodObj.istrm, methodResult);
 				}
 			],
 			
 			// Method getImages
-			1158979935 : [ // _typeId of request class
-				2028487863, // _typeId of remote interface
-				93402296, // _typeId of result class
+			1911998634 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				255681041, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getImages(methodResult);
 				}
 			],
 			
 			// Method setImages
-			944362859 : [ // _typeId of request class
-				2028487863, // _typeId of remote interface
-				309901669, // _typeId of result class
+			2126615710 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setImages(methodObj.istrms, methodObj.doNotReadStreamAtKey, methodResult);
 				}
 			],
 			
 			// Method throwLastException
-			2047657918 : [ // _typeId of request class
-				2028487863, // _typeId of remote interface
-				309901669, // _typeId of result class
+			2127402965 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_throwLastException(methodResult);
 				}
 			],
 			
 			// Method getTextStream
-			1083407988 : [ // _typeId of request class
-				2028487863, // _typeId of remote interface
-				309901673, // _typeId of result class
+			818823403 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004416, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getTextStream(methodResult);
 				}
@@ -5241,45 +5239,45 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface RemoteWithAuthentication			
 			// Method setUseAuthentication
-			1785294043 : [ // _typeId of request class
-				1677934392, // _typeId of remote interface
-				309901669, // _typeId of result class
+			946544530 : [ // _typeId of request class
+				1983670399, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setUseAuthentication(methodObj.useAuth, methodResult);
 				}
 			],
 			
 			// Method login
-			839695851 : [ // _typeId of request class
-				1677934392, // _typeId of remote interface
-				56089321, // _typeId of result class
+			134687724 : [ // _typeId of request class
+				1983670399, // _typeId of remote interface
+				1872312576, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_login(methodObj.sess, methodObj.userName, methodObj.userPwd, methodResult);
 				}
 			],
 			
 			// Method doit
-			388793292 : [ // _typeId of request class
-				1677934392, // _typeId of remote interface
-				148544158, // _typeId of result class
+			1251509013 : [ // _typeId of request class
+				1983670399, // _typeId of remote interface
+				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_doit(methodObj.sess, methodObj.value, methodResult);
 				}
 			],
 			
 			// Method expire
-			68943581 : [ // _typeId of request class
-				1677934392, // _typeId of remote interface
-				309901669, // _typeId of result class
+			72176172 : [ // _typeId of request class
+				1983670399, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_expire(methodObj.sess, methodResult);
 				}
 			],
 			
 			// Method setReloginCount
-			20608797 : [ // _typeId of request class
-				1677934392, // _typeId of remote interface
-				309901669, // _typeId of result class
+			802968058 : [ // _typeId of request class
+				1983670399, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setReloginCount(methodObj.count, methodResult);
 				}
@@ -5288,36 +5286,36 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface ClientIF			
 			// Method incrementInt
-			1461829915 : [ // _typeId of request class
-				1784257353, // _typeId of remote interface
-				148544158, // _typeId of result class
+			1685952420 : [ // _typeId of request class
+				2049072174, // _typeId of remote interface
+				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_incrementInt(methodObj.a, methodResult);
 				}
 			],
 			
 			// Method getStreams
-			865920738 : [ // _typeId of request class
-				1784257353, // _typeId of remote interface
-				1151524674, // _typeId of result class
+			1654980071 : [ // _typeId of request class
+				2049072174, // _typeId of remote interface
+				911793767, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getStreams(methodObj.ctrl, methodResult);
 				}
 			],
 			
 			// Method putStreams
-			242798857 : [ // _typeId of request class
-				1784257353, // _typeId of remote interface
-				309901669, // _typeId of result class
+			2016865344 : [ // _typeId of request class
+				2049072174, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_putStreams(methodObj.strm, methodObj.ctrl, methodResult);
 				}
 			],
 			
 			// Method sendChat
-			1352392091 : [ // _typeId of request class
-				1784257353, // _typeId of remote interface
-				1462588845, // _typeId of result class
+			41050276 : [ // _typeId of request class
+				2049072174, // _typeId of remote interface
+				2076960068, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendChat(methodObj.cs, methodResult);
 				}
@@ -5326,81 +5324,81 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface ServerIF			
 			// Method callClientIncrementInt
-			1252575894 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				148544158, // _typeId of result class
+			389860173 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_callClientIncrementInt(methodObj.v, methodResult);
 				}
 			],
 			
 			// Method setPartner
-			1188403123 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1332497686 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPartner(methodObj.client, methodResult);
 				}
 			],
 			
 			// Method getPartner
-			748402113 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				1170836883, // _typeId of result class
+			1025664374 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				695494982, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPartner(methodResult);
 				}
 			],
 			
 			// Method getStreamsFromClient
-			1415283169 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				1151524674, // _typeId of result class
+			1679867754 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				911793767, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getStreamsFromClient(methodResult);
 				}
 			],
 			
 			// Method putStreamsOnClient
-			1367013829 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1934886286 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_putStreamsOnClient(methodObj.streams, methodResult);
 				}
 			],
 			
 			// Method registerWithClientMap
-			1921080901 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1533268444 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_registerWithClientMap(methodObj.id, methodResult);
 				}
 			],
 			
 			// Method getClient
-			2107407220 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				1170836883, // _typeId of result class
+			190669475 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				695494982, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodObj.id, methodResult);
 				}
 			],
 			
 			// Method getClientIds
-			2063368540 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				276437907, // _typeId of result class
+			2007476251 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				1955210948, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClientIds(methodResult);
 				}
 			],
 			
 			// Method callClientParallel
-			1340180893 : [ // _typeId of request class
-				1313562065, // _typeId of remote interface
-				148544158, // _typeId of result class
+			772308436 : [ // _typeId of request class
+				1775199834, // _typeId of remote interface
+				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_callClientParallel(methodObj.v, methodResult);
 				}
@@ -5409,45 +5407,45 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 		// Remote Interface EvolveIF			
 			// Method setEvolve
-			246658450 : [ // _typeId of request class
-				2078696281, // _typeId of remote interface
-				309901669, // _typeId of result class
+			1064683365 : [ // _typeId of request class
+				15377840, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setEvolve(methodObj.obj, methodResult);
 				}
 			],
 			
 			// Method getEvolve
-			32041374 : [ // _typeId of request class
-				2078696281, // _typeId of remote interface
-				509380329, // _typeId of result class
+			1279300441 : [ // _typeId of request class
+				15377840, // _typeId of remote interface
+				1722268526, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getEvolve(methodResult);
 				}
 			],
 			
 			// Method setClient
-			313337668 : [ // _typeId of request class
-				2078696281, // _typeId of remote interface
-				309901669, // _typeId of result class
+			998004147 : [ // _typeId of request class
+				15377840, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setClient(methodObj.partner, methodResult);
 				}
 			],
 			
 			// Method getClient
-			98720592 : [ // _typeId of request class
-				2078696281, // _typeId of remote interface
-				1911325389, // _typeId of result class
+			1212621223 : [ // _typeId of request class
+				15377840, // _typeId of remote interface
+				1405156912, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodResult);
 				}
 			],
 			
 			// Method sendEvolveToClient
-			1425170268 : [ // _typeId of request class
-				2078696281, // _typeId of remote interface
-				309901669, // _typeId of result class
+			714115141 : [ // _typeId of request class
+				15377840, // _typeId of remote interface
+				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendEvolveToClient(methodResult);
 				}
@@ -5455,7 +5453,7 @@ com.wilutions.byps.test.api.BServer_Testser = function(transport) {
 		
 	};
 };
-com.wilutions.byps.test.api.BServer_Testser.prototype = new com.wilutions.byps.BServer();
+byps.test.api.BServer_Testser.prototype = new byps.BServer();
 
 
 /**
@@ -5464,93 +5462,69 @@ com.wilutions.byps.test.api.BServer_Testser.prototype = new com.wilutions.byps.B
  * ----------------------------------------------
 */
 
-com.wilutions.byps.test.api.BRegistry_Testser = function() { 
+byps.test.api.BRegistry_Testser = function() { 
 	
 	this._serializerMap = {
 		
 		// boolean[]
-		2058423690 : new com.wilutions.byps.BSerializerArray(
+		2058423690 : new byps.BSerializerArray(
 			1, // Element type: boolean
 			1
 		),
 		
 		// boolean[][][][]
-		945713488 : new com.wilutions.byps.BSerializerArray(
+		945713488 : new byps.BSerializerArray(
 			1, // Element type: boolean
 			4
 		),
 		
-		// byte[]
-		1374008726 : new com.wilutions.byps.BSerializerArray(
-			2, // Element type: byte
-			1
-		),
-		
-		// byte[][][][]
-		1201775504 : new com.wilutions.byps.BSerializerArray(
-			2, // Element type: byte
-			4
-		),
-		
-		// char[]
-		1361632968 : new com.wilutions.byps.BSerializerArray(
-			4, // Element type: char
-			1
-		),
-		
-		// char[][][][]
-		769021986 : new com.wilutions.byps.BSerializerArray(
-			4, // Element type: char
-			4
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1
-		148544162 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1
+		432867947 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1 // boolean
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_10
-		309901678 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_10
+		534004421 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1000
-		1462767598 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1000
+		2077138821 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":1000 // com.wilutions.byps.test.api.prim.PrimitiveTypes
+				"result":1000 // byps.test.api.prim.PrimitiveTypes
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_100361105
-		848023142 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_100361105
+		498939805 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":100361105 // int[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":100361105 // int[]
@@ -5559,27 +5533,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1042475995
-		2038872493 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1042475995 // com.wilutions.byps.test.api.enu.EnumPlanets
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1050216688
-		2133842068 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1050216688
+		70523627 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1050216688 // java.util.List<java.lang.Long>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1050216688 // java.util.List<java.lang.Long>
@@ -5588,14 +5549,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1059148284
-		1532920911 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1059148284
+		698727944 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1059148284 // java.util.List<java.lang.Byte>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1059148284 // java.util.List<java.lang.Byte>
@@ -5604,14 +5565,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1097129250
-		1862597051 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1097129250
+		200721390 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1097129250 // long[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1097129250 // long[]
@@ -5620,14 +5581,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1174971318
-		994835305 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1174971318
+		1068483136 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1174971318 // java.util.List<byte[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1174971318 // java.util.List<byte[]>
@@ -5636,27 +5597,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1178379224
-		1911325389 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_12
-		309901676 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_12
+		534004419 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":12 // java.util.List<java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":12 // java.util.List<java.lang.Object>
@@ -5665,14 +5613,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1201775504
-		541741223 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1201775504
+		1521577218 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1201775504 // byte[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1201775504 // byte[][][][]
@@ -5681,14 +5629,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1218831438
-		1151524674 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1218831438
+		911793767 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1218831438 // java.util.List<java.io.InputStream>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1218831438 // java.util.List<java.io.InputStream>
@@ -5697,14 +5645,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_124584219
-		647080343 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_124584219
+		996163680 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":124584219 // java.lang.Object[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":124584219 // java.lang.Object[][][][]
@@ -5713,14 +5661,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1279823631
-		1602044401 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1279823631
+		629604454 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
@@ -5729,30 +5677,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1280571537
-		429041482 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1280571537 // java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":1280571537 // java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1320560671
-		190591700 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1320560671
+		2041057155 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1320560671 // java.util.Set<java.lang.Double>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1320560671 // java.util.Set<java.lang.Double>
@@ -5761,14 +5693,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1347703734
-		1350610934 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1347703734
+		881037921 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
@@ -5777,14 +5709,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1359468275
-		493259283 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1358523233
+		1693860029 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_1359468275
+		1738389572 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1359468275 // double[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1359468275 // double[]
@@ -5793,14 +5741,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1361632968
-		514676842 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1361632968
+		1548641599 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1361632968 // char[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1361632968 // char[]
@@ -5809,14 +5757,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1365696060
-		1253977781 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1365696060
+		809340660 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1365696060 // java.util.Set<java.lang.Boolean>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1365696060 // java.util.Set<java.lang.Boolean>
@@ -5825,14 +5773,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1374008726
-		578691531 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1374008726
+		1484626910 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1374008726 // byte[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1374008726 // byte[]
@@ -5841,104 +5789,88 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1391985860
-		509380329 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1375035164
+		1920161159 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":1391985860 // com.wilutions.byps.test.api.ver.Evolve
+				"result":1375035164 // byps.test.api.enu.EnumPlanets
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_14
-		309901674 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1391985860
+		1722268526 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":14 // java.util.Set<java.lang.Object>
+				"result":1391985860 // byps.test.api.ver.Evolve
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":14 // java.util.Set<java.lang.Object>
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1406124761
-		104448059 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1406124761 // java.util.Set<int[]>
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":1406124761 // java.util.Set<int[]>
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1457164460
-		1119760023 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1457164460 // java.util.Set<java.lang.Long>
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":1457164460 // java.util.Set<java.lang.Long>
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1463615848
-		548882635 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1463615848 // java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":1463615848 // java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1473575576
-		1170836883 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1487265161
-		2081879792 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_14
+		534004417 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":14 // java.util.Set<java.lang.Object>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":14 // java.util.Set<java.lang.Object>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_1406124761
+		2127200796 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1406124761 // java.util.Set<int[]>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1406124761 // java.util.Set<int[]>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_1457164460
+		1111888832 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1457164460 // java.util.Set<java.lang.Long>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1457164460 // java.util.Set<java.lang.Long>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_1487265161
+		149769063 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
@@ -5947,14 +5879,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1488550492
-		1240765869 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1488550492
+		822552572 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
@@ -5963,14 +5895,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1493282670
-		276437907 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1493282670
+		1955210948 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1493282670 // java.util.Set<java.lang.Integer>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1493282670 // java.util.Set<java.lang.Integer>
@@ -5979,43 +5911,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_15
-		309901673 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_15
+		534004416 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":15 // java.io.InputStream
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1503107601
-		72308967 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1516687588
-		188578332 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1516687588
+		2043070523 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1516687588 // float[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1516687588 // float[][][][]
@@ -6024,30 +5940,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1544333227
-		743592613 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":1544333227 // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":1544333227 // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1555345627
-		1887708350 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1555345627
+		343940505 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1555345627 // java.util.List<java.lang.Double>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1555345627 // java.util.List<java.lang.Double>
@@ -6056,27 +5956,43 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_16
-		309901672 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1596367810
+		1073221568 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":16 // com.wilutions.byps.BRemote
+				"result":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_16
+		534004415 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":16 // byps.BRemote
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1617670280
-		732507399 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1617670280
+		1330811042 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1617670280 // java.util.List<java.lang.Boolean>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1617670280 // java.util.List<java.lang.Boolean>
@@ -6085,14 +6001,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1628501332
-		1862743418 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1628501332
+		368905437 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1628501332 // java.util.List<java.lang.Float>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1628501332 // java.util.List<java.lang.Float>
@@ -6101,14 +6017,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1633500852
-		831989576 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1633500852
+		1231328865 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
@@ -6117,14 +6033,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1633750383
-		770118380 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1633750383
+		1293200061 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1633750383 // java.util.Map<java.lang.Integer,int[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1633750383 // java.util.Map<java.lang.Integer,int[]>
@@ -6133,14 +6049,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1661807911
-		1587436403 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1661807911
+		475882038 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1661807911 // java.util.List<java.lang.Character>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1661807911 // java.util.List<java.lang.Character>
@@ -6149,14 +6065,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1710660846
-		163470910 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1710660846
+		1899847531 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1710660846 // java.util.Map<java.lang.String,java.lang.String>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1710660846 // java.util.Map<java.lang.String,java.lang.String>
@@ -6165,43 +6081,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_171948703
-		1220439445 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_171948703
+		871356108 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":171948703 // com.wilutions.byps.test.api.inl.Actor
+				"result":171948703 // byps.test.api.inl.Actor
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_172221196
-		1905478006 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":172221196 // java.util.List<com.wilutions.byps.test.api.inl.Point2D>
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":172221196 // java.util.List<com.wilutions.byps.test.api.inl.Point2D>
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_1746702954
-		1823196186 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1746702954
+		408452669 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
@@ -6210,14 +6110,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1752158699
-		150989512 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1752158699
+		1912328929 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1752158699 // java.util.List<int[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1752158699 // java.util.List<int[]>
@@ -6226,14 +6126,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1799280818
-		179038766 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1799280818
+		2052610089 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1799280818 // java.util.Map<java.lang.Integer,byte[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1799280818 // java.util.Map<java.lang.Integer,byte[]>
@@ -6242,14 +6142,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_181681714
-		1414119390 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_181681714
+		1763202727 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":181681714 // java.util.List<java.lang.Integer>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":181681714 // java.util.List<java.lang.Integer>
@@ -6258,14 +6158,46 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_183594037
-		333265053 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1823330785
+		114088296 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_1831201218
+		50516327 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_183594037
+		15818284 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":183594037 // java.lang.Object[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":183594037 // java.lang.Object[]
@@ -6274,30 +6206,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1851881336
-		1651982651 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_184101377
+		748770738 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":1851881336 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>
+				"result":184101377 // byps.test.api.inl.Point2D[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"result":1851881336 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>
+				"result":184101377 // byps.test.api.inl.Point2D[]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1859644668
-		101217472 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1859644668
+		2130431383 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1859644668 // short[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1859644668 // short[][][][]
@@ -6306,14 +6238,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1888107655
-		427000 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1888107655
+		2063745441 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1888107655 // java.lang.String[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1888107655 // java.lang.String[]
@@ -6322,14 +6254,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1888799711
-		180574010 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1888799711
+		2051074845 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1888799711 // java.util.Set<java.lang.String>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1888799711 // java.util.Set<java.lang.String>
@@ -6338,14 +6270,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1898022288
-		1716302523 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1898022288
+		515346332 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1898022288 // java.util.Set<java.lang.Float>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1898022288 // java.util.Set<java.lang.Float>
@@ -6354,27 +6286,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_19
-		309901669 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_19
+		534004412 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":19 // void
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1972793385
-		104960651 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1972793385
+		1958357790 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
@@ -6383,14 +6315,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1973996106
-		839888536 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1973996106
+		1391760319 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
@@ -6399,14 +6331,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_1997002548
-		980499904 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_1997002548
+		1082818537 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":1997002548 // java.util.List<java.lang.Short>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":1997002548 // java.util.List<java.lang.Short>
@@ -6415,27 +6347,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_2
-		148544161 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_2
+		432867946 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":2 // byte
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_2028443792
-		398816652 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_2028443792
+		1664501789 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":2028443792 // java.util.Set<java.lang.Short>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":2028443792 // java.util.Set<java.lang.Short>
@@ -6444,30 +6376,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_2049740106
-		234867558 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":2049740106 // com.wilutions.byps.test.api.inl.Point2D[]
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":2049740106 // com.wilutions.byps.test.api.inl.Point2D[]
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_2052431866
-		496389964 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_2052431866
+		1566928477 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":2052431866 // java.util.Set<byte[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":2052431866 // java.util.Set<byte[]>
@@ -6476,14 +6392,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_2058423690
-		532799052 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_2053507648
+		1814499786 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":2053507648 // byps.test.api.prim.PrimitiveTypes[]
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":2053507648 // byps.test.api.prim.PrimitiveTypes[]
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_2058423690
+		1698849803 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":2058423690 // boolean[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":2058423690 // boolean[]
@@ -6492,14 +6424,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_2067161310
-		1305849624 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_2064980445
+		937508540 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":2064980445 // java.util.List<byps.test.api.inl.Point2D>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":2064980445 // java.util.List<byps.test.api.inl.Point2D>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_2067161310
+		925799231 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":2067161310 // short[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":2067161310 // short[]
@@ -6508,14 +6456,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_2087445849
-		580667480 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_2087445849
+		1650981375 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":2087445849 // double[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":2087445849 // double[][][][]
@@ -6524,27 +6472,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_21
-		309901646 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_21
+		534004389 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":21 // java.lang.Object
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_2123584667
-		1978497049 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_2123584667
+		253151806 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":2123584667 // java.util.List<java.lang.String>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":2123584667 // java.util.List<java.lang.String>
@@ -6553,27 +6501,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_3
-		148544160 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_3
+		432867945 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":3 // short
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_31512998
-		307489197 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_31512998
+		1620912700 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":31512998 // java.util.HashSet<java.lang.Byte>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":31512998 // java.util.HashSet<java.lang.Byte>
@@ -6582,14 +6530,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_39910537
-		1682941350 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_39910537
+		245460547 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":39910537 // int[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":39910537 // int[][][][]
@@ -6598,27 +6546,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_4
-		148544159 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_4
+		432867944 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":4 // char
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_476459792
-		93402296 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_476459792
+		255681041 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":476459792 // java.util.TreeMap<java.lang.Integer,java.io.InputStream>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":476459792 // java.util.TreeMap<java.lang.Integer,java.io.InputStream>
@@ -6627,43 +6575,40 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_487702928
-		1490187962 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":487702928 // com.wilutions.byps.test.api.inl.Point2D[][][][]
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":487702928 // com.wilutions.byps.test.api.inl.Point2D[][][][]
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_5
-		148544158 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_5
+		432867943 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_588723219
-		1886698628 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_564008001
+		1405156912 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":15377840 // byps.test.api.ver.EvolveIF
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_588723219
+		1537615291 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":588723219 // java.lang.String[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":588723219 // java.lang.String[][][][]
@@ -6672,27 +6617,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_6
-		148544157 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_6
+		432867942 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":6 // long
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_601099730
-		1205316392 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_601099730
+		856233055 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
@@ -6701,69 +6646,85 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_65775978
-		56089321 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_65775978
+		1872312576 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":65775978 // com.wilutions.byps.test.api.auth.SessionInfo
+				"result":65775978 // byps.test.api.auth.SessionInfo
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_7
-		148544156 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_673917574
+		2098743607 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_7
+		432867941 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":7 // float
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_7007
-		1462588845 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_7007
+		2076960068 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":7007 // com.wilutions.byps.test.api.srvr.ChatStructure
+				"result":7007 // byps.test.api.srvr.ChatStructure
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_703065817
-		1169980470 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_758319514
+		1168951451 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":703065817 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"result":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"result":703065817 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"result":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_766441794
-		1517001317 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_766441794
+		1167917980 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":766441794 // float[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":766441794 // float[]
@@ -6772,14 +6733,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_769021986
-		231816689 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_769021986
+		580900026 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":769021986 // char[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":769021986 // char[][][][]
@@ -6788,43 +6749,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_8
-		148544155 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_8
+		432867940 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":8 // double
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_801243127
-		1937830923 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"result":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of inline elements
-			{
-				"result":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-			},
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.BResult_846419204
-		516356161 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_846419204
+		167272824 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":846419204 // long[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":846419204 // long[][][][]
@@ -6833,14 +6778,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_8789515
-		1554344518 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_8789515
+		323111619 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
@@ -6849,27 +6794,27 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_9001
-		1462529269 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_9001
+		2076900492 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":9001 // com.wilutions.byps.test.api.refs.Node
+				"result":9001 // byps.test.api.refs.Node
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_936607009
-		1317331941 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_936607009
+		968248604 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":936607009 // java.util.TreeSet<java.lang.Character>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":936607009 // java.util.TreeSet<java.lang.Character>
@@ -6878,14 +6823,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_94341197
-		127543251 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_94341197
+		1800858646 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
@@ -6894,14 +6839,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.BResult_945713488
-		2092891102 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_945713488
+		1852992857 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"result":945713488 // boolean[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"result":945713488 // boolean[][][][]
@@ -6910,9 +6855,38 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.arr.ArrayTypes1dim
-		2001 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.BResult_949340697
+		996206823 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":949340697 // byps.test.api.inl.Point2D[][][][]
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":949340697 // byps.test.api.inl.Point2D[][][][]
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_955752991
+		695494982 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":2049072174 // byps.test.api.srvr.ClientIF
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.arr.ArrayTypes1dim
+		2001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean1":2058423690, // boolean[]
@@ -6933,9 +6907,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1":1888107655, // java.lang.String[]
 				// names of persistent elements
-				"primitiveTypes1":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"primitiveTypes1":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean1":2058423690, // boolean[]
@@ -6956,15 +6930,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"string1":1888107655, // java.lang.String[]
 				// names of inline elements
-				"primitiveTypes1":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"primitiveTypes1":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.arr.ArrayTypes4dim
-		2004 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.arr.ArrayTypes4dim
+		2004 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean4":945713488, // boolean[][][][]
@@ -6985,9 +6959,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string4":588723219, // java.lang.String[][][][]
 				// names of persistent elements
-				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+				"primitiveTypes4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean4":945713488, // boolean[][][][]
@@ -7008,28 +6982,28 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"string4":588723219, // java.lang.String[][][][]
 				// names of inline elements
-				"primitiveTypes4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+				"primitiveTypes4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.auth.SessionInfo
-		65775978 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.auth.SessionInfo
+		65775978 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"sessionID":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.cons.AllTypesC
-		930294276 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.cons.AllTypesC
+		930294276 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"bool1s":1, // boolean
@@ -7056,7 +7030,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1s":10, // java.lang.String
 				// names of persistent elements
-				"ALL":142458, // com.wilutions.byps.test.api.cons.AllTypesZ
+				"ALL":142458, // byps.test.api.cons.AllTypesZ
 				// names of persistent elements
 				"arrInt":100361105, // int[]
 				// names of persistent elements
@@ -7066,9 +7040,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
 				// names of persistent elements
-				"arrALL":1981543076 // com.wilutions.byps.test.api.cons.AllTypesZ[][]
+				"arrALL":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"arrInt":100361105, // int[]
@@ -7079,15 +7053,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
 				// names of inline elements
-				"arrALL":1981543076 // com.wilutions.byps.test.api.cons.AllTypesZ[][]
+				"arrALL":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.cons.AllTypesZ
-		142458 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.cons.AllTypesZ
+		142458 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"bool1":1, // boolean
@@ -7108,7 +7082,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1":10, // java.lang.String
 				// names of persistent elements
-				"hebrew1":1518668429, // com.wilutions.byps.test.api.cons.HebrewZ
+				"hebrew1":1518668429, // byps.test.api.cons.HebrewZ
 				// names of persistent elements
 				"byte2":1374008726, // byte[]
 				// names of persistent elements
@@ -7116,9 +7090,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string2":1888107655, // java.lang.String[]
 				// names of persistent elements
-				"hebrew2":2092671091 // com.wilutions.byps.test.api.cons.HebrewZ[]
+				"hebrew2":92445340 // byps.test.api.cons.HebrewZ[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"byte2":1374008726, // byte[]
@@ -7127,251 +7101,251 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"string2":1888107655, // java.lang.String[]
 				// names of inline elements
-				"hebrew2":2092671091 // com.wilutions.byps.test.api.cons.HebrewZ[]
+				"hebrew2":92445340 // byps.test.api.cons.HebrewZ[]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.cons.AllTypesZ[][]
-		1981543076 : new com.wilutions.byps.BSerializerArray(
-			142458, // Element type: com.wilutions.byps.test.api.cons.AllTypesZ
+		// byps.test.api.cons.AllTypesZ[][]
+		81775365 : new byps.BSerializerArray(
+			142458, // Element type: byps.test.api.cons.AllTypesZ
 			2
 		),
 		
-		// com.wilutions.byps.test.api.cons.HebrewC
-		691741677 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.cons.HebrewC
+		691741677 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"aleph":10, // java.lang.String
 				// names of persistent elements
 				"beth":10, // java.lang.String
 				// names of persistent elements
-				"ALEPH":1518668429, // com.wilutions.byps.test.api.cons.HebrewZ
+				"ALEPH":1518668429, // byps.test.api.cons.HebrewZ
 				// names of persistent elements
-				"BETH":1518668429 // com.wilutions.byps.test.api.cons.HebrewZ
+				"BETH":1518668429 // byps.test.api.cons.HebrewZ
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.cons.HebrewZ
-		1518668429 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.cons.HebrewZ
+		1518668429 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"core":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.cons.HebrewZ[]
-		2092671091 : new com.wilutions.byps.BSerializerArray(
-			1518668429, // Element type: com.wilutions.byps.test.api.cons.HebrewZ
+		// byps.test.api.cons.HebrewZ[]
+		92445340 : new byps.BSerializerArray(
+			1518668429, // Element type: byps.test.api.cons.HebrewZ
 			1
 		),
 		
-		// com.wilutions.byps.test.api.enu.EnumPlanets[]
-		1092048313 : new com.wilutions.byps.BSerializerArray(
-			1042475995, // Element type: com.wilutions.byps.test.api.enu.EnumPlanets
+		// byps.test.api.enu.EnumPlanets[]
+		1441131650 : new byps.BSerializerArray(
+			1375035164, // Element type: byps.test.api.enu.EnumPlanets
 			1
 		),
 		
-		// com.wilutions.byps.test.api.enu.UsePlanets
-		10000 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.enu.UsePlanets
+		10000 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"planet":1042475995, // com.wilutions.byps.test.api.enu.EnumPlanets
+				"planet":1375035164, // byps.test.api.enu.EnumPlanets
 				// names of persistent elements
-				"planet2":1042475995, // com.wilutions.byps.test.api.enu.EnumPlanets
+				"planet2":1375035164, // byps.test.api.enu.EnumPlanets
 				// names of persistent elements
-				"arrayOfPlanets":1092048313, // com.wilutions.byps.test.api.enu.EnumPlanets[]
+				"arrayOfPlanets":1441131650, // byps.test.api.enu.EnumPlanets[]
 				// names of persistent elements
-				"listOfPlanets":1590740862, // java.util.ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
+				"listOfPlanets":819140569, // java.util.ArrayList<byps.test.api.enu.EnumPlanets>
 				// names of persistent elements
-				"mapOfPlanets":252873856 // java.util.Map<java.lang.String,com.wilutions.byps.test.api.enu.EnumPlanets>
+				"mapOfPlanets":493795497 // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"arrayOfPlanets":1092048313, // com.wilutions.byps.test.api.enu.EnumPlanets[]
+				"arrayOfPlanets":1441131650, // byps.test.api.enu.EnumPlanets[]
 				// names of inline elements
-				"listOfPlanets":1590740862, // java.util.ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
+				"listOfPlanets":819140569, // java.util.ArrayList<byps.test.api.enu.EnumPlanets>
 				// names of inline elements
-				"mapOfPlanets":252873856 // java.util.Map<java.lang.String,com.wilutions.byps.test.api.enu.EnumPlanets>
+				"mapOfPlanets":493795497 // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.BRequest_BioFruitService_certify
-		724361898 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.BRequest_BioFruitService_certify
+		1435417025 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"param":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.BRequest_BioLemonService_useParing
-		1762089337 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.BRequest_BioLemonService_useParing
+		2108700976 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.inherit.BRequest_FruitService_squeeze
-		656804784 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.BRequest_LemonService_pick
-		1860602130 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.BRequest_FruitService_squeeze
+		1290167289 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.inherit.BRequest_LemonService_pick
+		1022088379 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"sess":65775978, // com.wilutions.byps.test.api.auth.SessionInfo
+				"sess":65775978, // byps.test.api.auth.SessionInfo
 				// names of persistent elements
 				"fromTree":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.BRequest_PlantService_grow
-		1534230652 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.BRequest_PlantService_grow
+		695716901 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.BStub_BioFruitService
-		1881829396 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_BioFruitService),
+		// byps.test.api.inherit.BStub_BioFruitService
+		363642571 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioFruitService),
 		
-		// com.wilutions.byps.test.api.inherit.BStub_BioLemonService
-		1992245333 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_BioLemonService),
+		// byps.test.api.inherit.BStub_BioLemonService
+		474058508 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioLemonService),
 		
-		// com.wilutions.byps.test.api.inherit.BStub_FruitService
-		506940662 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_FruitService),
+		// byps.test.api.inherit.BStub_FruitService
+		715959905 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_FruitService),
 		
-		// com.wilutions.byps.test.api.inherit.BStub_LemonService
-		617356599 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_LemonService),
+		// byps.test.api.inherit.BStub_LemonService
+		605543968 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_LemonService),
 		
-		// com.wilutions.byps.test.api.inherit.BStub_PlantService
-		1117460801 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.inherit.BStub_PlantService),
+		// byps.test.api.inherit.BStub_PlantService
+		1954605928 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_PlantService),
 		
-		// com.wilutions.byps.test.api.inherit.Class1
-		6001 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.Class1
+		6001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int1":5, // int
 				// names of persistent elements
-				"nextClass1":6001 // com.wilutions.byps.test.api.inherit.Class1
+				"nextClass1":6001 // byps.test.api.inherit.Class1
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.Class1Collections
-		6004 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.Class1Collections
+		6004 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"list1":317887457, // java.util.List<com.wilutions.byps.test.api.inherit.Class1>
+				"list1":510524840, // java.util.List<byps.test.api.inherit.Class1>
 				// names of persistent elements
-				"map1":981592984, // java.util.Map<java.lang.String,com.wilutions.byps.test.api.inherit.Class1>
+				"map1":2058676657, // java.util.Map<java.lang.String,byps.test.api.inherit.Class1>
 				// names of persistent elements
-				"set1":2114305573 // java.util.Set<com.wilutions.byps.test.api.inherit.Class1>
+				"set1":484881308 // java.util.Set<byps.test.api.inherit.Class1>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"list1":317887457, // java.util.List<com.wilutions.byps.test.api.inherit.Class1>
+				"list1":510524840, // java.util.List<byps.test.api.inherit.Class1>
 				// names of inline elements
-				"map1":981592984, // java.util.Map<java.lang.String,com.wilutions.byps.test.api.inherit.Class1>
+				"map1":2058676657, // java.util.Map<java.lang.String,byps.test.api.inherit.Class1>
 				// names of inline elements
-				"set1":2114305573 // java.util.Set<com.wilutions.byps.test.api.inherit.Class1>
+				"set1":484881308 // java.util.Set<byps.test.api.inherit.Class1>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.Class2
-		6002 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.Class2
+		6002 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int2":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inherit.Class3
-		6003 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inherit.Class3
+		6003 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int3":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inl.Actor
-		171948703 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inl.Actor
+		171948703 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"shape":2049740106, // com.wilutions.byps.test.api.inl.Point2D[]
+				"shape":184101377, // byps.test.api.inl.Point2D[]
 				// names of persistent elements
-				"position":135329019 // com.wilutions.byps.test.api.inl.Matrix2D
+				"position":135329019 // byps.test.api.inl.Matrix2D
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"shape":2049740106, // com.wilutions.byps.test.api.inl.Point2D[]
+				"shape":184101377, // byps.test.api.inl.Point2D[]
 				// names of inline elements
-				"position":135329019 // com.wilutions.byps.test.api.inl.Matrix2D
+				"position":135329019 // byps.test.api.inl.Matrix2D
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.inl.Matrix2D
-		135329019 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inl.Matrix2D
+		135329019 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"_11":7, // float
@@ -7392,54 +7366,54 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"_33":7 // float
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			true
 		),
 		
-		// com.wilutions.byps.test.api.inl.Point2D
-		1835035436 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.inl.Point2D
+		1835035436 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"x":3, // short
 				// names of persistent elements
 				"y":3 // short
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			true
 		),
 		
-		// com.wilutions.byps.test.api.inl.Point2D[]
-		2049740106 : new com.wilutions.byps.BSerializerArray(
-			1835035436, // Element type: com.wilutions.byps.test.api.inl.Point2D
+		// byps.test.api.inl.Point2D[]
+		184101377 : new byps.BSerializerArray(
+			1835035436, // Element type: byps.test.api.inl.Point2D
 			1
 		),
 		
-		// com.wilutions.byps.test.api.inl.Point2D[][]
-		1589744084 : new com.wilutions.byps.BSerializerArray(
-			1835035436, // Element type: com.wilutions.byps.test.api.inl.Point2D
+		// byps.test.api.inl.Point2D[][]
+		827767075 : new byps.BSerializerArray(
+			1835035436, // Element type: byps.test.api.inl.Point2D
 			2
 		),
 		
-		// com.wilutions.byps.test.api.inl.Point2D[][][]
-		1264295566 : new com.wilutions.byps.BSerializerArray(
-			1835035436, // Element type: com.wilutions.byps.test.api.inl.Point2D
+		// byps.test.api.inl.Point2D[][][]
+		915212229 : new byps.BSerializerArray(
+			1835035436, // Element type: byps.test.api.inl.Point2D
 			3
 		),
 		
-		// com.wilutions.byps.test.api.inl.Point2D[][][][]
-		487702928 : new com.wilutions.byps.BSerializerArray(
-			1835035436, // Element type: com.wilutions.byps.test.api.inl.Point2D
+		// byps.test.api.inl.Point2D[][][][]
+		949340697 : new byps.BSerializerArray(
+			1835035436, // Element type: byps.test.api.inl.Point2D
 			4
 		),
 		
-		// com.wilutions.byps.test.api.list.ListListTypes
-		3002 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.list.ListListTypes
+		3002 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int2":1746702954, // java.util.List<java.util.List<java.lang.Integer>>
@@ -7448,7 +7422,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"int24":1865834185 // java.util.List<java.util.List<int[][][][]>>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int2":1746702954, // java.util.List<java.util.List<java.lang.Integer>>
@@ -7461,9 +7435,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.list.ListTypes
-		3001 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.list.ListTypes
+		3001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean1":1617670280, // java.util.List<java.lang.Boolean>
@@ -7484,7 +7458,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1":2123584667, // java.util.List<java.lang.String>
 				// names of persistent elements
-				"primitiveTypes1":1544333227, // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
 				// names of persistent elements
 				"byte2":1174971318, // java.util.List<byte[]>
 				// names of persistent elements
@@ -7494,7 +7468,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"obj1":12 // java.util.List<java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean1":1617670280, // java.util.List<java.lang.Boolean>
@@ -7515,7 +7489,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"string1":2123584667, // java.util.List<java.lang.String>
 				// names of inline elements
-				"primitiveTypes1":1544333227, // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
 				// names of inline elements
 				"byte2":1174971318, // java.util.List<byte[]>
 				// names of inline elements
@@ -7529,9 +7503,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.map.MapTypes
-		4001 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.map.MapTypes
+		4001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean1":1279823631, // java.util.Map<java.lang.String,java.lang.Boolean>
@@ -7552,7 +7526,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1":1710660846, // java.util.Map<java.lang.String,java.lang.String>
 				// names of persistent elements
-				"primitiveTypes1":703065817, // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1831201218, // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
 				// names of persistent elements
 				"byte2":1799280818, // java.util.Map<java.lang.Integer,byte[]>
 				// names of persistent elements
@@ -7560,7 +7534,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"obj1":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean1":1279823631, // java.util.Map<java.lang.String,java.lang.Boolean>
@@ -7581,7 +7555,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"string1":1710660846, // java.util.Map<java.lang.String,java.lang.String>
 				// names of inline elements
-				"primitiveTypes1":703065817, // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1831201218, // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
 				// names of inline elements
 				"byte2":1799280818, // java.util.Map<java.lang.Integer,byte[]>
 				// names of inline elements
@@ -7593,9 +7567,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes
-		1000 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.prim.PrimitiveTypes
+		1000 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolVal":1, // boolean
@@ -7622,39 +7596,39 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"value":1, // boolean
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes[]
-		801243127 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
+		// byps.test.api.prim.PrimitiveTypes[]
+		2053507648 : new byps.BSerializerArray(
+			1000, // Element type: byps.test.api.prim.PrimitiveTypes
 			1
 		),
 		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes[][]
-		1195496149 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
+		// byps.test.api.prim.PrimitiveTypes[][]
+		2030857950 : new byps.BSerializerArray(
+			1000, // Element type: byps.test.api.prim.PrimitiveTypes
 			2
 		),
 		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes[][][]
-		2115528243 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
+		// byps.test.api.prim.PrimitiveTypes[][][]
+		1739334652 : new byps.BSerializerArray(
+			1000, // Element type: byps.test.api.prim.PrimitiveTypes
 			3
 		),
 		
-		// com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
-		1503107601 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
+		// byps.test.api.prim.PrimitiveTypes[][][][]
+		758319514 : new byps.BSerializerArray(
+			1000, // Element type: byps.test.api.prim.PrimitiveTypes
 			4
 		),
 		
-		// com.wilutions.byps.test.api.priv.PrivateMembers
-		8001 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.priv.PrivateMembers
+		8001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolVal":1, // boolean
@@ -7675,7 +7649,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"stringVal":10, // java.lang.String
 				// names of persistent elements
-				"primitiveTypes":1000, // com.wilutions.byps.test.api.prim.PrimitiveTypes
+				"primitiveTypes":1000, // byps.test.api.prim.PrimitiveTypes
 				// names of persistent elements
 				"arrBool":2058423690, // boolean[]
 				// names of persistent elements
@@ -7683,7 +7657,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"arrString":1888107655, // java.lang.String[]
 				// names of persistent elements
-				"arrPrimitiveTypes":801243127, // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"arrPrimitiveTypes":2053507648, // byps.test.api.prim.PrimitiveTypes[]
 				// names of persistent elements
 				"listBool":1617670280, // java.util.List<java.lang.Boolean>
 				// names of persistent elements
@@ -7691,7 +7665,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"listString":2123584667, // java.util.List<java.lang.String>
 				// names of persistent elements
-				"listPrimitiveTypes":1544333227, // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"listPrimitiveTypes":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
 				// names of persistent elements
 				"mapIntListString":132175071, // java.util.Map<java.lang.Integer,java.util.List<java.lang.String>>
 				// names of persistent elements
@@ -7699,7 +7673,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"pprotInt":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"arrBool":2058423690, // boolean[]
@@ -7708,7 +7682,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"arrString":1888107655, // java.lang.String[]
 				// names of inline elements
-				"arrPrimitiveTypes":801243127, // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"arrPrimitiveTypes":2053507648, // byps.test.api.prim.PrimitiveTypes[]
 				// names of inline elements
 				"listBool":1617670280, // java.util.List<java.lang.Boolean>
 				// names of inline elements
@@ -7716,7 +7690,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"listString":2123584667, // java.util.List<java.lang.String>
 				// names of inline elements
-				"listPrimitiveTypes":1544333227, // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"listPrimitiveTypes":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
 				// names of inline elements
 				"mapIntListString":132175071, // java.util.Map<java.lang.Integer,java.util.List<java.lang.String>>
 			},
@@ -7724,148 +7698,148 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.refs.Node
-		9001 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.refs.Node
+		9001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"next":9001, // com.wilutions.byps.test.api.refs.Node
+				"next":9001, // byps.test.api.refs.Node
 				// names of persistent elements
-				"me":9001, // com.wilutions.byps.test.api.refs.Node
+				"me":9001, // byps.test.api.refs.Node
 				// names of persistent elements
-				"mapOfNodes":1768677016, // java.util.Map<java.lang.String,com.wilutions.byps.test.api.refs.Node>
+				"mapOfNodes":2011881553, // java.util.Map<java.lang.String,byps.test.api.refs.Node>
 				// names of persistent elements
-				"listOfNodes":202657921 // java.util.List<com.wilutions.byps.test.api.refs.Node>
+				"listOfNodes":1442786648 // java.util.List<byps.test.api.refs.Node>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"mapOfNodes":1768677016, // java.util.Map<java.lang.String,com.wilutions.byps.test.api.refs.Node>
+				"mapOfNodes":2011881553, // java.util.Map<java.lang.String,byps.test.api.refs.Node>
 				// names of inline elements
-				"listOfNodes":202657921 // java.util.List<com.wilutions.byps.test.api.refs.Node>
+				"listOfNodes":1442786648 // java.util.List<byps.test.api.refs.Node>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool
-		1645604187 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool
+		2033416644 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte
-		1645613945 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar
-		1645626823 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte
+		2033426402 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
-		935089666 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat
-		522273269 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar
+		2033439280 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt
-		1609477282 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
-		1645902061 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
+		39293909 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject
-		1237679472 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
-		825201405 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat
+		1384988990 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort
-		510386133 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString
-		1369061954 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt
+		1874061867 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool
-		589253529 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
+		2033714518 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject
+		263295897 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
+		1992537556 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort
+		1373101854 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString
+		394678379 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool
+		201441072 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":2058423690 // boolean[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":2058423690 // boolean[]
@@ -7874,14 +7848,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
-		589243771 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
+		201431314 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1374008726 // byte[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1374008726 // byte[]
@@ -7890,14 +7864,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar
-		589230893 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar
+		201418436 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1361632968 // char[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1361632968 // char[]
@@ -7906,14 +7880,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
-		720472590 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
+		253910985 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1359468275 // double[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1359468275 // double[]
@@ -7922,14 +7896,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat
-		1083385729 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat
+		1946101450 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":766441794 // float[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":766441794 // float[]
@@ -7938,14 +7912,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt
-		1265927470 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt
+		1530512055 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":100361105 // int[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":100361105 // int[]
@@ -7954,14 +7928,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong
-		588955655 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong
+		201143198 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1097129250 // long[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1097129250 // long[]
@@ -7970,14 +7944,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject
-		1023062396 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject
+		48678821 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":183594037 // java.lang.Object[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":183594037 // java.lang.Object[]
@@ -7986,30 +7960,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
-		1765354225 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
+		1362276920 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"v":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"v":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"v":801243127 // com.wilutions.byps.test.api.prim.PrimitiveTypes[]
+				"v":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
-		1071498593 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
+		1934214314 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":2067161310 // short[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":2067161310 // short[]
@@ -8018,14 +7992,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString
-		1154444878 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString
+		180061303 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1888107655 // java.lang.String[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1888107655 // java.lang.String[]
@@ -8034,57 +8008,57 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysClass
-		1004457221 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysClass
+		330036060 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"arr2":1195496149, // com.wilutions.byps.test.api.prim.PrimitiveTypes[][]
+				"arr2":2030857950, // byps.test.api.prim.PrimitiveTypes[][]
 				// names of persistent elements
-				"arr3":2115528243, // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][]
+				"arr3":1739334652, // byps.test.api.prim.PrimitiveTypes[][][]
 				// names of persistent elements
-				"arr4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+				"arr4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"arr2":1195496149, // com.wilutions.byps.test.api.prim.PrimitiveTypes[][]
+				"arr2":2030857950, // byps.test.api.prim.PrimitiveTypes[][]
 				// names of inline elements
-				"arr3":2115528243, // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][]
+				"arr3":1739334652, // byps.test.api.prim.PrimitiveTypes[][][]
 				// names of inline elements
-				"arr4":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+				"arr4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInline
-		899462794 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInline
+		1467243283 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"arr2":1589744084, // com.wilutions.byps.test.api.inl.Point2D[][]
+				"arr2":827767075, // byps.test.api.inl.Point2D[][]
 				// names of persistent elements
-				"arr3":1264295566, // com.wilutions.byps.test.api.inl.Point2D[][][]
+				"arr3":915212229, // byps.test.api.inl.Point2D[][][]
 				// names of persistent elements
-				"arr4":487702928 // com.wilutions.byps.test.api.inl.Point2D[][][][]
+				"arr4":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"arr2":1589744084, // com.wilutions.byps.test.api.inl.Point2D[][]
+				"arr2":827767075, // byps.test.api.inl.Point2D[][]
 				// names of inline elements
-				"arr3":1264295566, // com.wilutions.byps.test.api.inl.Point2D[][][]
+				"arr3":915212229, // byps.test.api.inl.Point2D[][][]
 				// names of inline elements
-				"arr4":487702928 // com.wilutions.byps.test.api.inl.Point2D[][][][]
+				"arr4":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInt
-		1748523470 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInt
+		1828268517 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"arr2":1957744307, // int[][]
@@ -8093,7 +8067,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"arr4":39910537 // int[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"arr2":1957744307, // int[][]
@@ -8106,9 +8080,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysObject
-		738833892 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysObject
+		1306614381 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"arr2":340213335, // java.lang.Object[][]
@@ -8117,7 +8091,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"arr4":124584219 // java.lang.Object[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"arr2":340213335, // java.lang.Object[][]
@@ -8130,9 +8104,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysString
-		607451410 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysString
+		1175231899 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"arr2":1995260457, // java.lang.String[][]
@@ -8141,7 +8115,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"arr4":588723219 // java.lang.String[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"arr2":1995260457, // java.lang.String[][]
@@ -8154,124 +8128,124 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool
-		2032852344 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool
+		1874302495 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte
-		2032862102 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
-		2032874980 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte
+		1874292737 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
-		581586209 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat
-		1402482290 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
+		1874279859 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt
-		1589603233 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong
-		2033150218 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
+		1555969784 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject
-		278996403 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
-		1650564320 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat
+		2029769285 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort
-		1390595154 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString
-		147613921 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt
+		1325018648 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool
-		202005372 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong
+		1874004621 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject
+		1253379978 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
+		483228169 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort
+		2041656421 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString
+		1121997496 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool
+		185807085 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":945713488 // boolean[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":945713488 // boolean[][][][]
@@ -8280,14 +8254,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte
-		201995614 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte
+		185816843 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1201775504 // byte[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1201775504 // byte[][][][]
@@ -8296,14 +8270,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar
-		201982736 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar
+		185829721 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":769021986 // char[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":769021986 // char[][][][]
@@ -8312,14 +8286,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble
-		796203285 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble
+		1770586860 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":2087445849 // double[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":2087445849 // double[][][][]
@@ -8328,14 +8302,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat
-		1963594750 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat
+		1468656825 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1516687588 // float[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1516687588 // float[][][][]
@@ -8344,14 +8318,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt
-		1933153045 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt
+		1668568460 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":39910537 // int[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":39910537 // int[][][][]
@@ -8360,14 +8334,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong
-		201707498 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong
+		186104959 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":846419204 // long[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":846419204 // long[][][][]
@@ -8376,14 +8350,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject
-		493613479 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject
+		1467997054 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":124584219 // java.lang.Object[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":124584219 // java.lang.Object[][][][]
@@ -8392,30 +8366,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
-		710411500 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
+		456924651 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"v":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+				"v":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"v":1503107601 // com.wilutions.byps.test.api.prim.PrimitiveTypes[][][][]
+				"v":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setShort
-		1951707614 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setShort
+		1480543961 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1859644668 // short[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":1859644668 // short[][][][]
@@ -8424,14 +8398,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
-		362230997 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
+		1336614572 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":588723219 // java.lang.String[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"v":588723219 // java.lang.String[][][][]
@@ -8440,9 +8414,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC
-		862752254 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC
+		1609344203 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"bool1s":1, // boolean
@@ -8467,7 +8441,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1s":10, // java.lang.String
 				// names of persistent elements
-				"ALL":142458, // com.wilutions.byps.test.api.cons.AllTypesZ
+				"ALL":142458, // byps.test.api.cons.AllTypesZ
 				// names of persistent elements
 				"arrInt":100361105, // int[]
 				// names of persistent elements
@@ -8477,9 +8451,9 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
 				// names of persistent elements
-				"arrAll":1981543076 // com.wilutions.byps.test.api.cons.AllTypesZ[][]
+				"arrAll":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"arrInt":100361105, // int[]
@@ -8490,361 +8464,361 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
 				// names of inline elements
-				"arrAll":1981543076 // com.wilutions.byps.test.api.cons.AllTypesZ[][]
+				"arrAll":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC
-		1570751625 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC
+		1711871378 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"ALEPH":1518668429, // com.wilutions.byps.test.api.cons.HebrewZ
+				"ALEPH":1518668429, // byps.test.api.cons.HebrewZ
 				// names of persistent elements
-				"BETH":1518668429 // com.wilutions.byps.test.api.cons.HebrewZ
+				"BETH":1518668429 // byps.test.api.cons.HebrewZ
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_getPlanet
-		627010462 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteEnums_getPlanet
+		6352043 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteEnums_setPlanet
-		412393386 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteEnums_setPlanet
+		220969119 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"planet":1042475995 // com.wilutions.byps.test.api.enu.EnumPlanets
+				"planet":1375035164 // byps.test.api.enu.EnumPlanets
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getActor
-		261822861 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_getActor
+		600892860 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray1dim
-		1011970102 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray4dim
-		1012059475 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray1dim
+		188393247 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DList
-		1996093752 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DListList
-		177127926 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray4dim
+		188482620 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DMap
-		1321082494 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setActor
-		299289599 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DList
+		1428313263 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DListList
+		1650554387 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DMap
+		646661333 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_setActor
+		1162005320 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"act":171948703 // com.wilutions.byps.test.api.inl.Actor
+				"act":171948703 // byps.test.api.inl.Actor
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray1dim
-		531757758 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray1dim
+		1355334613 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"pointArray":2049740106 // com.wilutions.byps.test.api.inl.Point2D[]
+				"pointArray":184101377 // byps.test.api.inl.Point2D[]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"pointArray":2049740106 // com.wilutions.byps.test.api.inl.Point2D[]
+				"pointArray":184101377 // byps.test.api.inl.Point2D[]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray4dim
-		531668385 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray4dim
+		1355245240 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"pointArray":487702928 // com.wilutions.byps.test.api.inl.Point2D[][][][]
+				"pointArray":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"pointArray":487702928 // com.wilutions.byps.test.api.inl.Point2D[][][][]
+				"pointArray":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DList
-		224357548 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DList
+		343422941 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"pointList":172221196 // java.util.List<com.wilutions.byps.test.api.inl.Point2D>
+				"pointList":2064980445 // java.util.List<byps.test.api.inl.Point2D>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"pointList":172221196 // java.util.List<com.wilutions.byps.test.api.inl.Point2D>
+				"pointList":2064980445 // java.util.List<byps.test.api.inl.Point2D>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DListList
-		1097161578 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DListList
+		730520735 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"pointListList":1463615848 // java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>
+				"pointListList":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"pointListList":1463615848 // java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>
+				"pointListList":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DMap
-		546951282 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DMap
+		127469879 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"pointMap":1851881336 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>
+				"pointMap":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"pointMap":1851881336 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.inl.Point2D>
+				"pointMap":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1
-		1794077576 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1
+		2058662161 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte1
-		1319541530 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getByte2
-		1319541531 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getByte1
+		608486403 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getChar1
-		1319940748 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
-		1741299407 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getByte2
+		608486404 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getFloat1
-		1941525372 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt1
-		874047761 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getChar1
+		608885621 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt2
-		874047762 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt3
-		874047763 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
+		2129490906 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getInt4
-		874047764 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getLong1
-		1328473126 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getFloat1
+		1785569467 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getObj1
-		874214665 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1
-		1940572240 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getInt1
+		2098036488 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getShort1
-		1573024156 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_getString1
-		1173060367 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getInt2
+		2098036489 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1
-		1882657404 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_getInt3
+		2098036490 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_getInt4
+		2098036491 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_getLong1
+		617417999 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_getObj1
+		2098203392 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1
+		1679973895 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_getShort1
+		2140896613 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_getString1
+		1597237350 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1
+		2147241989 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean1":1617670280 // java.util.List<java.lang.Boolean>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean1":1617670280 // java.util.List<java.lang.Boolean>
@@ -8853,14 +8827,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte1
-		758429070 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setByte1
+		47373943 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"byte1":1059148284 // java.util.List<java.lang.Byte>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"byte1":1059148284 // java.util.List<java.lang.Byte>
@@ -8869,14 +8843,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setByte2
-		758429071 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setByte2
+		47373944 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"byte2":1174971318 // java.util.List<byte[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"byte2":1174971318 // java.util.List<byte[]>
@@ -8885,14 +8859,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setChar1
-		758828288 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setChar1
+		47773161 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"char1":1661807911 // java.util.List<java.lang.Character>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"char1":1661807911 // java.util.List<java.lang.Character>
@@ -8901,14 +8875,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
-		195505829 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
+		228671154 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"double1":1555345627 // java.util.List<java.lang.Double>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"double1":1555345627 // java.util.List<java.lang.Double>
@@ -8917,14 +8891,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setFloat1
-		2138824848 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setFloat1
+		1570952391 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"float1":1628501332 // java.util.List<java.lang.Float>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"float1":1628501332 // java.util.List<java.lang.Float>
@@ -8933,14 +8907,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt1
-		1360809955 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setInt1
+		136821228 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int1":181681714 // java.util.List<java.lang.Integer>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int1":181681714 // java.util.List<java.lang.Integer>
@@ -8949,14 +8923,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt2
-		1360809954 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setInt2
+		136821227 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int2":1752158699 // java.util.List<int[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int2":1752158699 // java.util.List<int[]>
@@ -8965,14 +8939,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt3
-		1360809953 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setInt3
+		136821226 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int3":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int3":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
@@ -8981,14 +8955,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setInt4
-		1360809952 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setInt4
+		136821225 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int4":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int4":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
@@ -8997,14 +8971,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setLong1
-		767360666 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setLong1
+		56305539 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"long1":1050216688 // java.util.List<java.lang.Long>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"long1":1050216688 // java.util.List<java.lang.Long>
@@ -9013,14 +8987,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setObj1
-		1360643051 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setObj1
+		136654324 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"obj1":12 // java.util.List<java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"obj1":12 // java.util.List<java.lang.Object>
@@ -9029,30 +9003,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1
-		1434361404 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1
+		759940243 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"primitiveTypes1":1544333227 // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"primitiveTypes1":1544333227 // java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setShort1
-		1787641232 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setShort1
+		1939453607 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"short1":1997002548 // java.util.List<java.lang.Short>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"short1":1997002548 // java.util.List<java.lang.Short>
@@ -9061,14 +9035,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteListTypes_setString1
-		763744869 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteListTypes_setString1
+		339567886 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"string1":2123584667 // java.util.List<java.lang.String>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"string1":2123584667 // java.util.List<java.lang.String>
@@ -9077,144 +9051,144 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1
-		461626272 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1
+		885803255 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte1
-		1348711374 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getByte2
-		1348711373 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getByte1
+		124722647 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getChar1
-		1348312156 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
-		1836864439 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getByte2
+		124722646 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1
-		1241980524 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getInt1
-		1013140231 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getChar1
+		124323429 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getInt2
-		1013140230 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getLong1
-		1339779778 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
+		1890230400 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getObj1
-		1012973327 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1
-		77071512 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1
+		530925397 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
-		1610481740 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_getString1
-		1268625399 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getInt1
+		827458594 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1
-		550206100 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getInt2
+		827458595 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getLong1
+		115791051 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getObj1
+		827625498 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1
+		1745799327 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
+		899426613 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getString1
+		1836497856 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1
+		974383083 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean1":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean1":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
@@ -9223,14 +9197,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte1
-		1909823834 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setByte1
+		685835107 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"byte1":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"byte1":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
@@ -9239,14 +9213,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setByte2
-		1909823833 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setByte2
+		685835106 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"byte2":1799280818 // java.util.Map<java.lang.Integer,byte[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"byte2":1799280818 // java.util.Map<java.lang.Integer,byte[]>
@@ -9255,14 +9229,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setChar1
-		1909424616 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setChar1
+		685435889 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"char1":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"char1":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
@@ -9271,14 +9245,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1
-		99940797 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1
+		467931660 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"double1":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"double1":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
@@ -9287,14 +9261,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1
-		1027363448 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1
+		316308321 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"float1":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"float1":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
@@ -9303,14 +9277,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt1
-		1046969349 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setInt1
+		1407399122 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int1":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int1":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
@@ -9319,14 +9293,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setInt2
-		1046969350 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setInt2
+		1407399121 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int2":1633750383 // java.util.Map<java.lang.Integer,int[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int2":1633750383 // java.util.Map<java.lang.Integer,int[]>
@@ -9335,14 +9309,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setLong1
-		1900892238 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setLong1
+		676903511 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"long1":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"long1":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
@@ -9351,14 +9325,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setObj1
-		1047136253 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setObj1
+		1407232218 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"obj1":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"obj1":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
@@ -9367,30 +9341,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1
-		842962140 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1
+		1629134317 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"primitiveTypes1":703065817 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"primitiveTypes1":703065817 // java.util.Map<java.lang.Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setShort1
-		1395864664 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setShort1
+		684809537 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"short1":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"short1":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
@@ -9399,14 +9373,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteMapTypes_setString1
-		668179837 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setString1
+		100307380 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"string1":1710660846 // java.util.Map<java.lang.String,java.lang.String>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"string1":1710660846 // java.util.Map<java.lang.String,java.lang.String>
@@ -9415,134 +9389,134 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_add
-		1073583639 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_add
+		362528512 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"a":5, // int
 				// names of persistent elements
 				"b":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool
-		2090997206 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool
+		1816157633 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
-		2091006964 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar
-		2091019842 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
+		1816147875 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
-		538948675 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat
-		400008432 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar
+		1816134997 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt
-		1318015101 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong
-		2091295080 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
+		1513332250 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject
-		236358869 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes
-		1881962430 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat
+		462707289 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort
-		411895568 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
-		104976387 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt
+		1582599686 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
-		1794219594 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong
+		1815859759 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject
+		1210742444 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes
+		714626279 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort
+		450820153 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
+		1079359962 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
+		677876863 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"b":1, // boolean
@@ -9561,383 +9535,383 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"str":10, // java.lang.String
 				// names of persistent elements
-				"pt":1000, // com.wilutions.byps.test.api.prim.PrimitiveTypes
+				"pt":1000, // byps.test.api.prim.PrimitiveTypes
 				// names of persistent elements
 				"o":21 // java.lang.Object
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool
-		143860510 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool
+		243951947 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":1 // boolean
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte
-		143850752 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte
+		243961705 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":2 // byte
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar
-		143837874 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar
+		243974583 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":4 // char
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble
-		753565751 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble
+		1727949326 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":8 // double
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
-		161104028 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
+		1023819749 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":7 // float
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt
-		974465289 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt
+		1239049874 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong
-		143562636 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong
+		244249821 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":6 // long
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject
-		450975945 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject
+		1425359520 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":21 // java.lang.Object
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes
-		941809610 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes
+		225526541 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"v":1000 // com.wilutions.byps.test.api.prim.PrimitiveTypes
+				"v":1000 // byps.test.api.prim.PrimitiveTypes
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort
-		149216892 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort
+		1011932613 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":3 // short
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
-		319593463 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
+		1293977038 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
-		1845930195 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
+		1278149706 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
-		1856936054 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_getNode
-		655936732 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
+		2033139391 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteReferences_setNode
-		1404172848 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteReferences_getNode
+		1366991859 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteReferences_setNode
+		693117721 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"v":9001 // com.wilutions.byps.test.api.refs.Node
+				"v":9001 // byps.test.api.refs.Node
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote
-		1216543212 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote
+		648762723 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"name":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote
-		1776814809 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote
+		1543768912 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"name":10, // java.lang.String
 				// names of persistent elements
-				"remote":16, // com.wilutions.byps.BRemote
+				"remote":16, // byps.BRemote
 				// names of persistent elements
 				"fowardToOtherServers":1 // boolean
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote
-		1302703010 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote
+		135366859 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"name":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
-		1690813926 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
+		2114990909 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
-		2125684552 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getByte2
-		2125684551 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
+		901695825 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getChar1
-		2125285334 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
-		1183778993 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getByte2
+		901695824 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1
-		1369351514 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt1
-		68372557 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getChar1
+		901296607 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getInt2
-		68372556 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getLong1
-		2116752956 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
+		1751651450 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getObj1
-		68205653 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1
-		1802821742 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1
+		2080406641 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getShort1
-		1000850298 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_getString1
-		615539953 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getInt1
+		1772226268 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1
-		1779393754 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getInt2
+		1772226269 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getLong1
+		892764229 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getObj1
+		1772393172 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1
+		669274715 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getShort1
+		1711905425 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getString1
+		1183412410 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1
+		2091396559 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean1":1365696060 // java.util.Set<java.lang.Boolean>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean1":1365696060 // java.util.Set<java.lang.Boolean>
@@ -9946,14 +9920,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte1
-		1608170284 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setByte1
+		1462808285 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"byte1":31512998 // java.util.HashSet<java.lang.Byte>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"byte1":31512998 // java.util.HashSet<java.lang.Byte>
@@ -9962,14 +9936,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setByte2
-		1608170285 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setByte2
+		1462808284 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"byte2":2052431866 // java.util.Set<byte[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"byte2":2052431866 // java.util.Set<byte[]>
@@ -9978,14 +9952,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setChar1
-		1608569502 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setChar1
+		1462409067 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"char1":936607009 // java.util.TreeSet<java.lang.Character>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"char1":936607009 // java.util.TreeSet<java.lang.Character>
@@ -9994,14 +9968,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1
-		753026243 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1
+		185153786 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"double1":1320560671 // java.util.Set<java.lang.Double>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"double1":1320560671 // java.util.Set<java.lang.Double>
@@ -10010,14 +9984,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1
-		1583968590 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1
+		1999943579 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"float1":1898022288 // java.util.Set<java.lang.Float>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"float1":1898022288 // java.util.Set<java.lang.Float>
@@ -10026,14 +10000,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt1
-		1991737023 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setInt1
+		462631448 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int1":1493282670 // java.util.Set<java.lang.Integer>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int1":1493282670 // java.util.Set<java.lang.Integer>
@@ -10042,14 +10016,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setInt2
-		1991737024 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setInt2
+		462631447 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"int2":1406124761 // java.util.Set<int[]>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"int2":1406124761 // java.util.Set<int[]>
@@ -10058,14 +10032,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setLong1
-		1617101880 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setLong1
+		1453876689 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"long1":1457164460 // java.util.Set<java.lang.Long>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"long1":1457164460 // java.util.Set<java.lang.Long>
@@ -10074,14 +10048,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setObj1
-		1991903927 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setObj1
+		462464544 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"obj1":14 // java.util.Set<java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"obj1":14 // java.util.Set<java.lang.Object>
@@ -10090,30 +10064,30 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1
-		1572111902 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1
+		250758937 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"primitiveTypes1":1280571537 // java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
-				"primitiveTypes1":1280571537 // java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
 			},
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setShort1
-		1215467374 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setShort1
+		1926522501 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"short1":2028443792 // java.util.Set<java.lang.Short>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"short1":2028443792 // java.util.Set<java.lang.Short>
@@ -10122,14 +10096,14 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteSetTypes_setString1
-		1321265283 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setString1
+		753392826 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"string1":1888799711 // java.util.Set<java.lang.String>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"string1":1888799711 // java.util.Set<java.lang.String>
@@ -10138,59 +10112,59 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImage
-		1902276204 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteStreams_getImage
+		61677379 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getImages
-		1158979935 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_getTextStream
-		1083407988 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteStreams_getImages
+		1911998634 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImage
-		1831578632 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteStreams_getTextStream
+		818823403 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteStreams_setImage
+		622789839 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"istrm":15 // java.io.InputStream
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_setImages
-		944362859 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteStreams_setImages
+		2126615710 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"istrms":779528402, // java.util.Map<java.lang.Integer,java.io.InputStream>
 				// names of persistent elements
 				"doNotReadStreamAtKey":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"istrms":779528402, // java.util.Map<java.lang.Integer,java.io.InputStream>
@@ -10199,132 +10173,132 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteStreams_throwLastException
-		2047657918 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteStreams_throwLastException
+		2127402965 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_doit
-		388793292 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteWithAuthentication_doit
+		1251509013 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"sess":65775978, // com.wilutions.byps.test.api.auth.SessionInfo
+				"sess":65775978, // byps.test.api.auth.SessionInfo
 				// names of persistent elements
 				"value":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_expire
-		68943581 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteWithAuthentication_expire
+		72176172 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"sess":65775978 // com.wilutions.byps.test.api.auth.SessionInfo
+				"sess":65775978 // byps.test.api.auth.SessionInfo
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_login
-		839695851 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteWithAuthentication_login
+		134687724 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"sess":65775978, // com.wilutions.byps.test.api.auth.SessionInfo
+				"sess":65775978, // byps.test.api.auth.SessionInfo
 				// names of persistent elements
 				"userName":10, // java.lang.String
 				// names of persistent elements
 				"userPwd":10 // java.lang.String
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount
-		20608797 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount
+		802968058 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"count":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
-		1785294043 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
+		946544530 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"useAuth":1 // boolean
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim
-		1557084481 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes1dim),
+		// byps.test.api.remote.BStub_RemoteArrayTypes1dim
+		963816328 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes1dim),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23
-		2081058997 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes23),
+		// byps.test.api.remote.BStub_RemoteArrayTypes23
+		769717182 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes23),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim
-		1557173854 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteArrayTypes4dim),
+		// byps.test.api.remote.BStub_RemoteArrayTypes4dim
+		963726955 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes4dim),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteConstants
-		431648293 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteConstants),
+		// byps.test.api.remote.BStub_RemoteConstants
+		2045242510 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteConstants),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteEnums
-		359349400 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteEnums),
+		// byps.test.api.remote.BStub_RemoteEnums
+		485761455 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteEnums),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance
-		1206670536 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteInlineInstance),
+		// byps.test.api.remote.BStub_RemoteInlineInstance
+		567395951 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteInlineInstance),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteListTypes
-		380156079 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteListTypes),
+		// byps.test.api.remote.BStub_RemoteListTypes
+		1233438138 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteListTypes),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes
-		80483097 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteMapTypes),
+		// byps.test.api.remote.BStub_RemoteMapTypes
+		664304990 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteMapTypes),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes
-		1341983932 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemotePrimitiveTypes),
+		// byps.test.api.remote.BStub_RemotePrimitiveTypes
+		1178916877 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemotePrimitiveTypes),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteReferences
-		2086824050 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteReferences),
+		// byps.test.api.remote.BStub_RemoteReferences
+		568637225 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteReferences),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl
-		1124545992 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteServerCtrl),
+		// byps.test.api.remote.BStub_RemoteServerCtrl
+		1652234479 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteServerCtrl),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes
-		1156008353 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteSetTypes),
+		// byps.test.api.remote.BStub_RemoteSetTypes
+		1900796440 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteSetTypes),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteStreams
-		2028487863 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteStreams),
+		// byps.test.api.remote.BStub_RemoteStreams
+		1043578866 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteStreams),
 		
-		// com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication
-		1677934392 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.remote.BStub_RemoteWithAuthentication),
+		// byps.test.api.remote.BStub_RemoteWithAuthentication
+		1983670399 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteWithAuthentication),
 		
-		// com.wilutions.byps.test.api.set.SetTypes
-		5001 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.set.SetTypes
+		5001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"boolean1":1365696060, // java.util.Set<java.lang.Boolean>
@@ -10345,7 +10319,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1":1888799711, // java.util.Set<java.lang.String>
 				// names of persistent elements
-				"primitiveTypes1":1280571537, // java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":673917574, // java.util.Set<byps.test.api.prim.PrimitiveTypes>
 				// names of persistent elements
 				"byte2":2052431866, // java.util.Set<byte[]>
 				// names of persistent elements
@@ -10353,7 +10327,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"obj1":14 // java.util.Set<java.lang.Object>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"boolean1":1365696060, // java.util.Set<java.lang.Boolean>
@@ -10374,7 +10348,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"string1":1888799711, // java.util.Set<java.lang.String>
 				// names of inline elements
-				"primitiveTypes1":1280571537, // java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
+				"primitiveTypes1":673917574, // java.util.Set<byps.test.api.prim.PrimitiveTypes>
 				// names of inline elements
 				"byte2":2052431866, // java.util.Set<byte[]>
 				// names of inline elements
@@ -10386,42 +10360,42 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_getStreams
-		865920738 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ClientIF_getStreams
+		1654980071 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"ctrl":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_incrementInt
-		1461829915 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ClientIF_incrementInt
+		1685952420 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"a":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_putStreams
-		242798857 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ClientIF_putStreams
+		2016865344 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"strm":1218831438, // java.util.List<java.io.InputStream>
 				// names of persistent elements
 				"ctrl":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"strm":1218831438, // java.util.List<java.io.InputStream>
@@ -10430,96 +10404,96 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ClientIF_sendChat
-		1352392091 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ClientIF_sendChat
+		41050276 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"cs":7007 // com.wilutions.byps.test.api.srvr.ChatStructure
+				"cs":7007 // byps.test.api.srvr.ChatStructure
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt
-		1252575894 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			// names of persistent elements
-			{
-				"v":5 // int
-			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_callClientParallel
-		1340180893 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt
+		389860173 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"v":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClient
-		2107407220 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ServerIF_callClientParallel
+		772308436 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"v":5 // int
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.srvr.BRequest_ServerIF_getClient
+		190669475 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"id":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getClientIds
-		2063368540 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ServerIF_getClientIds
+		2007476251 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getPartner
-		748402113 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
-		1415283169 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ServerIF_getPartner
+		1025664374 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient
-		1367013829 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
+		1679867754 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient
+		1934886286 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"streams":1218831438 // java.util.List<java.io.InputStream>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"streams":1218831438 // java.util.List<java.io.InputStream>
@@ -10528,41 +10502,41 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap
-		1921080901 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap
+		1533268444 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"id":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BRequest_ServerIF_setPartner
-		1188403123 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.BRequest_ServerIF_setPartner
+		1332497686 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"client":1784257353 // com.wilutions.byps.test.api.srvr.ClientIF
+				"client":2049072174 // byps.test.api.srvr.ClientIF
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.srvr.BStub_ClientIF
-		1784257353 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.srvr.BStub_ClientIF),
+		// byps.test.api.srvr.BStub_ClientIF
+		2049072174 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ClientIF),
 		
-		// com.wilutions.byps.test.api.srvr.BStub_ServerIF
-		1313562065 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.srvr.BStub_ServerIF),
+		// byps.test.api.srvr.BStub_ServerIF
+		1775199834 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ServerIF),
 		
-		// com.wilutions.byps.test.api.srvr.ChatStructure
-		7007 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.srvr.ChatStructure
+		7007 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"msg":10, // java.lang.String
@@ -10571,15 +10545,15 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"receivedAt":8 // double
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.strm.Stream1
-		1541129345 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.strm.Stream1
+		1541129345 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"is1":15, // java.io.InputStream
@@ -10592,7 +10566,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"mapStream":779528402 // java.util.Map<java.lang.Integer,java.io.InputStream>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"arrStream":1950626768, // java.io.InputStream[]
@@ -10605,68 +10579,68 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getClient
-		98720592 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.ver.BRequest_EvolveIF_getClient
+		1212621223 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// inlineInstance
-			false
-		),
-		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_getEvolve
-		32041374 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
-			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient
-		1425170268 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.ver.BRequest_EvolveIF_getEvolve
+		1279300441 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setClient
-		313337668 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient
+		714115141 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.ver.BRequest_EvolveIF_setClient
+		998004147 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"partner":2078696281 // com.wilutions.byps.test.api.ver.EvolveIF
+				"partner":15377840 // byps.test.api.ver.EvolveIF
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.ver.BRequest_EvolveIF_setEvolve
-		246658450 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.ver.BRequest_EvolveIF_setEvolve
+		1064683365 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"obj":1391985860 // com.wilutions.byps.test.api.ver.Evolve
+				"obj":1391985860 // byps.test.api.ver.Evolve
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
-		// com.wilutions.byps.test.api.ver.BStub_EvolveIF
-		2078696281 : new com.wilutions.byps.BSerializerRemote(com.wilutions.byps.test.api.ver.BStub_EvolveIF),
+		// byps.test.api.ver.BStub_EvolveIF
+		15377840 : new byps.BSerializerRemote(byps.test.api.ver.BStub_EvolveIF),
 		
-		// com.wilutions.byps.test.api.ver.Evolve
-		1391985860 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.ver.Evolve
+		1391985860 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"bool1":1, // boolean
@@ -10705,7 +10679,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"obj1":21, // java.lang.Object
 				// names of persistent elements
-				"evo1":573592593, // com.wilutions.byps.test.api.ver.Evolve2
+				"evo1":573592593, // byps.test.api.ver.Evolve2
 				// names of persistent elements
 				"list1":181681714, // java.util.List<java.lang.Integer>
 				// names of persistent elements
@@ -10749,7 +10723,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"obj2":21, // java.lang.Object
 				// names of persistent elements
-				"evo2":573592593, // com.wilutions.byps.test.api.ver.Evolve2
+				"evo2":573592593, // byps.test.api.ver.Evolve2
 				// names of persistent elements
 				"list2":181681714, // java.util.List<java.lang.Integer>
 				// names of persistent elements
@@ -10793,7 +10767,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"obj3":21, // java.lang.Object
 				// names of persistent elements
-				"evo3":573592593, // com.wilutions.byps.test.api.ver.Evolve2
+				"evo3":573592593, // byps.test.api.ver.Evolve2
 				// names of persistent elements
 				"list3":181681714, // java.util.List<java.lang.Integer>
 				// names of persistent elements
@@ -10801,7 +10775,7 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"map3":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
 			{
 				"bools1":2058423690, // boolean[]
@@ -10874,471 +10848,495 @@ com.wilutions.byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
-		// com.wilutions.byps.test.api.ver.Evolve2
-		573592593 : new com.wilutions.byps.BSerializer(
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+		// byps.test.api.ver.Evolve2
+		573592593 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
 				"n1":5 // int
 			},
-			// checkpoint com.wilutions.byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance
 			false
 		),
 		
+		// byte[]
+		1374008726 : new byps.BSerializerArray(
+			2, // Element type: byte
+			1
+		),
+		
+		// byte[][][][]
+		1201775504 : new byps.BSerializerArray(
+			2, // Element type: byte
+			4
+		),
+		
+		// char[]
+		1361632968 : new byps.BSerializerArray(
+			4, // Element type: char
+			1
+		),
+		
+		// char[][][][]
+		769021986 : new byps.BSerializerArray(
+			4, // Element type: char
+			4
+		),
+		
 		// double[]
-		1359468275 : new com.wilutions.byps.BSerializerArray(
+		1359468275 : new byps.BSerializerArray(
 			8, // Element type: double
 			1
 		),
 		
 		// double[][][][]
-		2087445849 : new com.wilutions.byps.BSerializerArray(
+		2087445849 : new byps.BSerializerArray(
 			8, // Element type: double
 			4
 		),
 		
 		// float[]
-		766441794 : new com.wilutions.byps.BSerializerArray(
+		766441794 : new byps.BSerializerArray(
 			7, // Element type: float
 			1
 		),
 		
 		// float[][][][]
-		1516687588 : new com.wilutions.byps.BSerializerArray(
+		1516687588 : new byps.BSerializerArray(
 			7, // Element type: float
 			4
 		),
 		
 		// int[]
-		100361105 : new com.wilutions.byps.BSerializerArray(
+		100361105 : new byps.BSerializerArray(
 			5, // Element type: int
 			1
 		),
 		
 		// int[][]
-		1957744307 : new com.wilutions.byps.BSerializerArray(
+		1957744307 : new byps.BSerializerArray(
 			5, // Element type: int
 			2
 		),
 		
 		// int[][][]
-		196606293 : new com.wilutions.byps.BSerializerArray(
+		196606293 : new byps.BSerializerArray(
 			5, // Element type: int
 			3
 		),
 		
 		// int[][][][]
-		39910537 : new com.wilutions.byps.BSerializerArray(
+		39910537 : new byps.BSerializerArray(
 			5, // Element type: int
 			4
 		),
 		
 		// java.io.InputStream[]
-		1950626768 : new com.wilutions.byps.BSerializerArray(
+		1950626768 : new byps.BSerializerArray(
 			15, // Element type: java.io.InputStream
 			1
 		),
 		
 		// Object[]
-		183594037 : new com.wilutions.byps.BSerializerArray(
+		183594037 : new byps.BSerializerArray(
 			21, // Element type: Object
 			1
 		),
 		
 		// Object[][]
-		340213335 : new com.wilutions.byps.BSerializerArray(
+		340213335 : new byps.BSerializerArray(
 			21, // Element type: Object
 			2
 		),
 		
 		// Object[][][]
-		527503353 : new com.wilutions.byps.BSerializerArray(
+		527503353 : new byps.BSerializerArray(
 			21, // Element type: Object
 			3
 		),
 		
 		// Object[][][][]
-		124584219 : new com.wilutions.byps.BSerializerArray(
+		124584219 : new byps.BSerializerArray(
 			21, // Element type: Object
 			4
 		),
 		
 		// String[]
-		1888107655 : new com.wilutions.byps.BSerializerArray(
+		1888107655 : new byps.BSerializerArray(
 			10, // Element type: String
 			1
 		),
 		
 		// String[][]
-		1995260457 : new com.wilutions.byps.BSerializerArray(
+		1995260457 : new byps.BSerializerArray(
 			10, // Element type: String
 			2
 		),
 		
 		// String[][][]
-		1889888075 : new com.wilutions.byps.BSerializerArray(
+		1889888075 : new byps.BSerializerArray(
 			10, // Element type: String
 			3
 		),
 		
 		// String[][][][]
-		588723219 : new com.wilutions.byps.BSerializerArray(
+		588723219 : new byps.BSerializerArray(
 			10, // Element type: String
 			4
 		),
 		
-		// java.util.ArrayList<com.wilutions.byps.test.api.enu.EnumPlanets>
-		1590740862 : new com.wilutions.byps.BSerializerArray(
-			1042475995, // Element type: com.wilutions.byps.test.api.enu.EnumPlanets
+		// java.util.ArrayList<byps.test.api.enu.EnumPlanets>
+		819140569 : new byps.BSerializerArray(
+			1375035164, // Element type: byps.test.api.enu.EnumPlanets
 			1
 		),
 		
 		// java.util.HashMap<Double,Byte>
-		1972793385 : new com.wilutions.byps.BSerializerMap(
+		1972793385 : new byps.BSerializerMap(
 			2 // Element type: Byte
 		),
 		
 		// java.util.HashSet<Byte>
-		31512998 : new com.wilutions.byps.BSerializerArray(
+		31512998 : new byps.BSerializerArray(
 			2, // Element type: Byte
 			1
 		),
 		
+		// java.util.List<byps.test.api.inherit.Class1>
+		510524840 : new byps.BSerializerArray(
+			6001, // Element type: byps.test.api.inherit.Class1
+			1
+		),
+		
+		// java.util.List<byps.test.api.inl.Point2D>
+		2064980445 : new byps.BSerializerArray(
+			1835035436, // Element type: byps.test.api.inl.Point2D
+			1
+		),
+		
+		// java.util.List<byps.test.api.prim.PrimitiveTypes>
+		1596367810 : new byps.BSerializerArray(
+			1000, // Element type: byps.test.api.prim.PrimitiveTypes
+			1
+		),
+		
+		// java.util.List<byps.test.api.refs.Node>
+		1442786648 : new byps.BSerializerArray(
+			9001, // Element type: byps.test.api.refs.Node
+			1
+		),
+		
 		// java.util.List<byte[]>
-		1174971318 : new com.wilutions.byps.BSerializerArray(
+		1174971318 : new byps.BSerializerArray(
 			1374008726, // Element type: byte[]
 			1
 		),
 		
-		// java.util.List<com.wilutions.byps.test.api.inherit.Class1>
-		317887457 : new com.wilutions.byps.BSerializerArray(
-			6001, // Element type: com.wilutions.byps.test.api.inherit.Class1
-			1
-		),
-		
-		// java.util.List<com.wilutions.byps.test.api.inl.Point2D>
-		172221196 : new com.wilutions.byps.BSerializerArray(
-			1835035436, // Element type: com.wilutions.byps.test.api.inl.Point2D
-			1
-		),
-		
-		// java.util.List<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-		1544333227 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
-			1
-		),
-		
-		// java.util.List<com.wilutions.byps.test.api.refs.Node>
-		202657921 : new com.wilutions.byps.BSerializerArray(
-			9001, // Element type: com.wilutions.byps.test.api.refs.Node
-			1
-		),
-		
 		// java.util.List<int[]>
-		1752158699 : new com.wilutions.byps.BSerializerArray(
+		1752158699 : new byps.BSerializerArray(
 			100361105, // Element type: int[]
 			1
 		),
 		
 		// java.util.List<int[][][][]>
-		1088217157 : new com.wilutions.byps.BSerializerArray(
+		1088217157 : new byps.BSerializerArray(
 			39910537, // Element type: int[][][][]
 			1
 		),
 		
 		// java.util.List<java.io.InputStream>
-		1218831438 : new com.wilutions.byps.BSerializerArray(
+		1218831438 : new byps.BSerializerArray(
 			15, // Element type: java.io.InputStream
 			1
 		),
 		
 		// java.util.List<Boolean>
-		1617670280 : new com.wilutions.byps.BSerializerArray(
+		1617670280 : new byps.BSerializerArray(
 			1, // Element type: Boolean
 			1
 		),
 		
 		// java.util.List<Byte>
-		1059148284 : new com.wilutions.byps.BSerializerArray(
+		1059148284 : new byps.BSerializerArray(
 			2, // Element type: Byte
 			1
 		),
 		
 		// java.util.List<Character>
-		1661807911 : new com.wilutions.byps.BSerializerArray(
+		1661807911 : new byps.BSerializerArray(
 			4, // Element type: Character
 			1
 		),
 		
 		// java.util.List<Double>
-		1555345627 : new com.wilutions.byps.BSerializerArray(
+		1555345627 : new byps.BSerializerArray(
 			8, // Element type: Double
 			1
 		),
 		
 		// java.util.List<Float>
-		1628501332 : new com.wilutions.byps.BSerializerArray(
+		1628501332 : new byps.BSerializerArray(
 			7, // Element type: Float
 			1
 		),
 		
 		// java.util.List<Integer>
-		181681714 : new com.wilutions.byps.BSerializerArray(
+		181681714 : new byps.BSerializerArray(
 			5, // Element type: Integer
 			1
 		),
 		
 		// java.util.List<Long>
-		1050216688 : new com.wilutions.byps.BSerializerArray(
+		1050216688 : new byps.BSerializerArray(
 			6, // Element type: Long
 			1
 		),
 		
 		// java.util.List<Short>
-		1997002548 : new com.wilutions.byps.BSerializerArray(
+		1997002548 : new byps.BSerializerArray(
 			3, // Element type: Short
 			1
 		),
 		
 		// java.util.List<String>
-		2123584667 : new com.wilutions.byps.BSerializerArray(
+		2123584667 : new byps.BSerializerArray(
 			10, // Element type: String
 			1
 		),
 		
-		// java.util.List<java.util.List<com.wilutions.byps.test.api.inl.Point2D>>
-		1463615848 : new com.wilutions.byps.BSerializerArray(
-			172221196, // Element type: java.util.List<com.wilutions.byps.test.api.inl.Point2D>
+		// java.util.List<java.util.List<byps.test.api.inl.Point2D>>
+		1823330785 : new byps.BSerializerArray(
+			2064980445, // Element type: java.util.List<byps.test.api.inl.Point2D>
 			1
 		),
 		
 		// java.util.List<java.util.List<int[][][][]>>
-		1865834185 : new com.wilutions.byps.BSerializerArray(
+		1865834185 : new byps.BSerializerArray(
 			1088217157, // Element type: java.util.List<int[][][][]>
 			1
 		),
 		
 		// java.util.List<java.util.List<Integer>>
-		1746702954 : new com.wilutions.byps.BSerializerArray(
+		1746702954 : new byps.BSerializerArray(
 			181681714, // Element type: java.util.List<Integer>
 			1
 		),
 		
 		// java.util.List<java.util.Map<Integer,java.util.List<java.util.TreeSet<Integer>>>>
-		1633500852 : new com.wilutions.byps.BSerializerArray(
+		1633500852 : new byps.BSerializerArray(
 			49984088, // Element type: java.util.Map<Integer,java.util.List<java.util.TreeSet<Integer>>>
 			1
 		),
 		
 		// java.util.List<java.util.TreeSet<Integer>>
-		724129228 : new com.wilutions.byps.BSerializerArray(
+		724129228 : new byps.BSerializerArray(
 			855786668, // Element type: java.util.TreeSet<Integer>
 			1
 		),
 		
 		// java.util.Map<Byte,Double>
-		1487265161 : new com.wilutions.byps.BSerializerMap(
+		1487265161 : new byps.BSerializerMap(
 			8 // Element type: Double
 		),
 		
 		// java.util.Map<Character,Float>
-		94341197 : new com.wilutions.byps.BSerializerMap(
+		94341197 : new byps.BSerializerMap(
 			7 // Element type: Float
 		),
 		
+		// java.util.Map<Integer,byps.test.api.inl.Point2D>
+		1358523233 : new byps.BSerializerMap(
+			1835035436 // Element type: byps.test.api.inl.Point2D
+		),
+		
+		// java.util.Map<Integer,byps.test.api.prim.PrimitiveTypes>
+		1831201218 : new byps.BSerializerMap(
+			1000 // Element type: byps.test.api.prim.PrimitiveTypes
+		),
+		
 		// java.util.Map<Integer,byte[]>
-		1799280818 : new com.wilutions.byps.BSerializerMap(
+		1799280818 : new byps.BSerializerMap(
 			1374008726 // Element type: byte[]
 		),
 		
-		// java.util.Map<Integer,com.wilutions.byps.test.api.inl.Point2D>
-		1851881336 : new com.wilutions.byps.BSerializerMap(
-			1835035436 // Element type: com.wilutions.byps.test.api.inl.Point2D
-		),
-		
-		// java.util.Map<Integer,com.wilutions.byps.test.api.prim.PrimitiveTypes>
-		703065817 : new com.wilutions.byps.BSerializerMap(
-			1000 // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
-		),
-		
 		// java.util.Map<Integer,int[]>
-		1633750383 : new com.wilutions.byps.BSerializerMap(
+		1633750383 : new byps.BSerializerMap(
 			100361105 // Element type: int[]
 		),
 		
 		// java.util.Map<Integer,java.io.InputStream>
-		779528402 : new com.wilutions.byps.BSerializerMap(
+		779528402 : new byps.BSerializerMap(
 			15 // Element type: java.io.InputStream
 		),
 		
 		// java.util.Map<Integer,Integer>
-		1347703734 : new com.wilutions.byps.BSerializerMap(
+		1347703734 : new byps.BSerializerMap(
 			5 // Element type: Integer
 		),
 		
 		// java.util.Map<Integer,java.util.List<String>>
-		132175071 : new com.wilutions.byps.BSerializerMap(
+		132175071 : new byps.BSerializerMap(
 			2123584667 // Element type: java.util.List<String>
 		),
 		
 		// java.util.Map<Integer,java.util.List<java.util.TreeSet<Integer>>>
-		49984088 : new com.wilutions.byps.BSerializerMap(
+		49984088 : new byps.BSerializerMap(
 			724129228 // Element type: java.util.List<java.util.TreeSet<Integer>>
 		),
 		
 		// java.util.Map<Long,Short>
-		601099730 : new com.wilutions.byps.BSerializerMap(
+		601099730 : new byps.BSerializerMap(
 			3 // Element type: Short
 		),
 		
 		// java.util.Map<Short,Long>
-		1973996106 : new com.wilutions.byps.BSerializerMap(
+		1973996106 : new byps.BSerializerMap(
 			6 // Element type: Long
 		),
 		
-		// java.util.Map<String,com.wilutions.byps.test.api.enu.EnumPlanets>
-		252873856 : new com.wilutions.byps.BSerializerMap(
-			1042475995 // Element type: com.wilutions.byps.test.api.enu.EnumPlanets
+		// java.util.Map<String,byps.test.api.enu.EnumPlanets>
+		493795497 : new byps.BSerializerMap(
+			1375035164 // Element type: byps.test.api.enu.EnumPlanets
 		),
 		
-		// java.util.Map<String,com.wilutions.byps.test.api.inherit.Class1>
-		981592984 : new com.wilutions.byps.BSerializerMap(
-			6001 // Element type: com.wilutions.byps.test.api.inherit.Class1
+		// java.util.Map<String,byps.test.api.inherit.Class1>
+		2058676657 : new byps.BSerializerMap(
+			6001 // Element type: byps.test.api.inherit.Class1
 		),
 		
-		// java.util.Map<String,com.wilutions.byps.test.api.refs.Node>
-		1768677016 : new com.wilutions.byps.BSerializerMap(
-			9001 // Element type: com.wilutions.byps.test.api.refs.Node
+		// java.util.Map<String,byps.test.api.refs.Node>
+		2011881553 : new byps.BSerializerMap(
+			9001 // Element type: byps.test.api.refs.Node
 		),
 		
 		// java.util.Map<String,Boolean>
-		1279823631 : new com.wilutions.byps.BSerializerMap(
+		1279823631 : new byps.BSerializerMap(
 			1 // Element type: Boolean
 		),
 		
 		// java.util.Map<String,Object>
-		1488550492 : new com.wilutions.byps.BSerializerMap(
+		1488550492 : new byps.BSerializerMap(
 			21 // Element type: Object
 		),
 		
 		// java.util.Map<String,String>
-		1710660846 : new com.wilutions.byps.BSerializerMap(
+		1710660846 : new byps.BSerializerMap(
 			10 // Element type: String
 		),
 		
+		// java.util.Set<byps.test.api.inherit.Class1>
+		484881308 : new byps.BSerializerArray(
+			6001, // Element type: byps.test.api.inherit.Class1
+			1
+		),
+		
+		// java.util.Set<byps.test.api.prim.PrimitiveTypes>
+		673917574 : new byps.BSerializerArray(
+			1000, // Element type: byps.test.api.prim.PrimitiveTypes
+			1
+		),
+		
 		// java.util.Set<byte[]>
-		2052431866 : new com.wilutions.byps.BSerializerArray(
+		2052431866 : new byps.BSerializerArray(
 			1374008726, // Element type: byte[]
 			1
 		),
 		
-		// java.util.Set<com.wilutions.byps.test.api.inherit.Class1>
-		2114305573 : new com.wilutions.byps.BSerializerArray(
-			6001, // Element type: com.wilutions.byps.test.api.inherit.Class1
-			1
-		),
-		
-		// java.util.Set<com.wilutions.byps.test.api.prim.PrimitiveTypes>
-		1280571537 : new com.wilutions.byps.BSerializerArray(
-			1000, // Element type: com.wilutions.byps.test.api.prim.PrimitiveTypes
-			1
-		),
-		
 		// java.util.Set<int[]>
-		1406124761 : new com.wilutions.byps.BSerializerArray(
+		1406124761 : new byps.BSerializerArray(
 			100361105, // Element type: int[]
 			1
 		),
 		
 		// java.util.Set<Boolean>
-		1365696060 : new com.wilutions.byps.BSerializerArray(
+		1365696060 : new byps.BSerializerArray(
 			1, // Element type: Boolean
 			1
 		),
 		
 		// java.util.Set<Double>
-		1320560671 : new com.wilutions.byps.BSerializerArray(
+		1320560671 : new byps.BSerializerArray(
 			8, // Element type: Double
 			1
 		),
 		
 		// java.util.Set<Float>
-		1898022288 : new com.wilutions.byps.BSerializerArray(
+		1898022288 : new byps.BSerializerArray(
 			7, // Element type: Float
 			1
 		),
 		
 		// java.util.Set<Integer>
-		1493282670 : new com.wilutions.byps.BSerializerArray(
+		1493282670 : new byps.BSerializerArray(
 			5, // Element type: Integer
 			1
 		),
 		
 		// java.util.Set<Long>
-		1457164460 : new com.wilutions.byps.BSerializerArray(
+		1457164460 : new byps.BSerializerArray(
 			6, // Element type: Long
 			1
 		),
 		
 		// java.util.Set<Short>
-		2028443792 : new com.wilutions.byps.BSerializerArray(
+		2028443792 : new byps.BSerializerArray(
 			3, // Element type: Short
 			1
 		),
 		
 		// java.util.Set<String>
-		1888799711 : new com.wilutions.byps.BSerializerArray(
+		1888799711 : new byps.BSerializerArray(
 			10, // Element type: String
 			1
 		),
 		
 		// java.util.TreeMap<Float,Character>
-		8789515 : new com.wilutions.byps.BSerializerMap(
+		8789515 : new byps.BSerializerMap(
 			4 // Element type: Character
 		),
 		
 		// java.util.TreeMap<Integer,java.io.InputStream>
-		476459792 : new com.wilutions.byps.BSerializerMap(
+		476459792 : new byps.BSerializerMap(
 			15 // Element type: java.io.InputStream
 		),
 		
 		// java.util.TreeSet<Character>
-		936607009 : new com.wilutions.byps.BSerializerArray(
+		936607009 : new byps.BSerializerArray(
 			4, // Element type: Character
 			1
 		),
 		
 		// java.util.TreeSet<Integer>
-		855786668 : new com.wilutions.byps.BSerializerArray(
+		855786668 : new byps.BSerializerArray(
 			5, // Element type: Integer
 			1
 		),
 		
 		// long[]
-		1097129250 : new com.wilutions.byps.BSerializerArray(
+		1097129250 : new byps.BSerializerArray(
 			6, // Element type: long
 			1
 		),
 		
 		// long[][][][]
-		846419204 : new com.wilutions.byps.BSerializerArray(
+		846419204 : new byps.BSerializerArray(
 			6, // Element type: long
 			4
 		),
 		
 		// short[]
-		2067161310 : new com.wilutions.byps.BSerializerArray(
+		2067161310 : new byps.BSerializerArray(
 			3, // Element type: short
 			1
 		),
 		
 		// short[][][][]
-		1859644668 : new com.wilutions.byps.BSerializerArray(
+		1859644668 : new byps.BSerializerArray(
 			3, // Element type: short
 			4
 		),
 	};
 };
-com.wilutions.byps.test.api.BRegistry_Testser.prototype = new com.wilutions.byps.BRegistry();
+byps.test.api.BRegistry_Testser.prototype = new byps.BRegistry();

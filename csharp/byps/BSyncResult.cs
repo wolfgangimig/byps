@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace com.wilutions.byps
+namespace byps
 {
     public class BSyncResult<T> : BAsyncResultIF<T>
     {

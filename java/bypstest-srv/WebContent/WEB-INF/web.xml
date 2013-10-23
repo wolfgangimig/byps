@@ -5,7 +5,7 @@
 <!--  
 	<servlet>
 		<servlet-name>BypsServlet</servlet-name>
-		<servlet-class>com.wilutions.byps.test.servlet.BypsServlet</servlet-class>
+		<servlet-class>byps.test.servlet.BypsServlet</servlet-class>
 		<init-param>
 			<param-name>testAdapterEnabled</param-name>
 			<param-value>true</param-value>

@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using com.wilutions.byps;
-using com.wilutions.byps.test.api;
-using com.wilutions.byps.test.api.remote;
+using byps;
+using byps.test.api;
+using byps.test.api.remote;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;

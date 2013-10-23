@@ -1,7 +1,7 @@
 #ifndef BTESTADAPTER_H_
 #define BTESTADAPTER_H_
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BTestAdapter {
 public:
@@ -10,6 +10,6 @@ public:
 	virtual void killClientConnections() = 0;
 };
 
-}}}
+}
 
 #endif
