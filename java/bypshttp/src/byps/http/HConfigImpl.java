@@ -25,28 +25,28 @@ public class HConfigImpl implements HConfig {
   }
 
   /* (non-Javadoc)
-   * @see com.wilutions.byps.http.HConfigIF#getMyServerId()
+   * @see byps.http.HConfigIF#getMyServerId()
    */
   public int getMyServerId() {
     return myServerId;
   }
 
   /* (non-Javadoc)
-   * @see com.wilutions.byps.http.HConfigIF#isTestAdapterEnabled()
+   * @see byps.http.HConfigIF#isTestAdapterEnabled()
    */
   public boolean isTestAdapterEnabled() {
     return testAdapterEnabled;
   }
 
   /* (non-Javadoc)
-   * @see com.wilutions.byps.http.HConfigIF#getServerUrl(java.lang.Integer)
+   * @see byps.http.HConfigIF#getServerUrl(java.lang.Integer)
    */
   public String getServerUrl(Integer serverId) {
     return serverUrls.get(serverId);
   }
 
   /* (non-Javadoc)
-   * @see com.wilutions.byps.http.HConfigIF#getServerIds()
+   * @see byps.http.HConfigIF#getServerIds()
    */
   public ArrayList<Integer> getServerIds() {
     return serverIds;
@@ -68,7 +68,7 @@ public class HConfigImpl implements HConfig {
   }
 
   /* (non-Javadoc)
-   * @see com.wilutions.byps.http.HConfigIF#init(javax.servlet.ServletConfig)
+   * @see byps.http.HConfigIF#init(javax.servlet.ServletConfig)
    */
   public void init(ServletConfig config) throws ServletException {
 

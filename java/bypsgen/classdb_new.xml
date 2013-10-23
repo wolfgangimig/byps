@@ -9276,7 +9276,7 @@
         <remote>
             <typeName>byps.test.api.inherit.BioFruitService</typeName>
             <typeId>363642571</typeId>
-            <authParamClassName>com.wilutions.byps.test.api.auth.SessionInfo</authParamClassName>
+            <authParamClassName>byps.test.api.auth.SessionInfo</authParamClassName>
             <isClientRemote>true</isClientRemote>
             <methods>
                 <method>
@@ -9295,7 +9295,7 @@
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
                 <comment>
                     <kind>@BClientRemote</kind>
@@ -9303,7 +9303,7 @@
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.FruitService</baseQNames>
@@ -9311,7 +9311,7 @@
         <remote>
             <typeName>byps.test.api.inherit.BioLemonService</typeName>
             <typeId>474058508</typeId>
-            <authParamClassName>com.wilutions.byps.test.api.auth.SessionInfo</authParamClassName>
+            <authParamClassName>byps.test.api.auth.SessionInfo</authParamClassName>
             <isClientRemote>true</isClientRemote>
             <methods>
                 <method>
@@ -9330,7 +9330,7 @@
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
                 <comment>
                     <kind>@BClientRemote</kind>
@@ -9338,7 +9338,7 @@
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.BioFruitService</baseQNames>
@@ -9347,7 +9347,7 @@
         <remote>
             <typeName>byps.test.api.inherit.FruitService</typeName>
             <typeId>715959905</typeId>
-            <authParamClassName>com.wilutions.byps.test.api.auth.SessionInfo</authParamClassName>
+            <authParamClassName>byps.test.api.auth.SessionInfo</authParamClassName>
             <isClientRemote>false</isClientRemote>
             <methods>
                 <method>
@@ -9362,11 +9362,11 @@
             <comments>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.PlantService</baseQNames>
@@ -9374,7 +9374,7 @@
         <remote>
             <typeName>byps.test.api.inherit.LemonService</typeName>
             <typeId>605543968</typeId>
-            <authParamClassName>com.wilutions.byps.test.api.auth.SessionInfo</authParamClassName>
+            <authParamClassName>byps.test.api.auth.SessionInfo</authParamClassName>
             <isClientRemote>false</isClientRemote>
             <methods>
                 <method>
@@ -9389,11 +9389,11 @@
             <comments>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.FruitService</baseQNames>
@@ -9401,7 +9401,7 @@
         <remote>
             <typeName>byps.test.api.inherit.PlantService</typeName>
             <typeId>1954605928</typeId>
-            <authParamClassName>com.wilutions.byps.test.api.auth.SessionInfo</authParamClassName>
+            <authParamClassName>byps.test.api.auth.SessionInfo</authParamClassName>
             <isClientRemote>false</isClientRemote>
             <methods>
                 <method>
@@ -9416,11 +9416,11 @@
             <comments>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
-                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                    <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
             </comments>
         </remote>

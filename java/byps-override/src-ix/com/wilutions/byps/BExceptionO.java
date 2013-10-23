@@ -1,4 +1,4 @@
-package com.wilutions.byps;
+package byps;
 
 public class BExceptionO {
 
