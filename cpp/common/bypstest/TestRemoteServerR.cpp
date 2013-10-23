@@ -2,11 +2,11 @@
 #include <chrono>
 #include <thread>
 
-using namespace com::wilutions::byps;
+using namespace byps;
 using namespace com::wilutions::test;
 
-using namespace com::wilutions::byps::test::api;
-using namespace com::wilutions::byps::test::api::srvr;
+using namespace byps::test::api;
+using namespace byps::test::api::srvr;
 
 class ClientIFImpl : public BSkeleton_ClientIF {
 	static BLogger log;

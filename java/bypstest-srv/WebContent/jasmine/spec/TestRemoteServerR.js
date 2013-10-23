@@ -22,7 +22,7 @@ describe("TestRemoteServerR", function() {
 		};
 		
 	};
-	ClientIFImpl.prototype = new com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF();
+	ClientIFImpl.prototype = new byps.test.api.srvr.BSkeleton_ClientIF();
 	
 	var incrResult = 0;
 	var incrException = null;
@@ -55,7 +55,7 @@ describe("TestRemoteServerR", function() {
 //			TestUtils.fail(log, "Excpected exception.");
 //		}
 //		catch (ex) {
-//			TestUtils.assertEquals(log, "ex", com.wilutions.byps.BExceptionC.SERVICE_NOT_IMPLEMENTED, ex.code);
+//			TestUtils.assertEquals(log, "ex", byps.BExceptionC.SERVICE_NOT_IMPLEMENTED, ex.code);
 //		}
 	
 		runs(function() {
@@ -64,7 +64,7 @@ describe("TestRemoteServerR", function() {
 		
 		waitsFor(function() {
 			return incrException && 
-			incrException.code == com.wilutions.byps.BExceptionC.SERVICE_NOT_IMPLEMENTED; 
+			incrException.code == byps.BExceptionC.SERVICE_NOT_IMPLEMENTED; 
 		}, "expected exception=" + incrException, 5000);
 
 		log.info(")testCallClientFromServerNoRemoteImpl");

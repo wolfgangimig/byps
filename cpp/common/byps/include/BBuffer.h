@@ -10,8 +10,6 @@
 #include <string>
 #include <vector>
 
-namespace com {
-namespace wilutions {
 namespace byps {
 
 // wird als Version von BInputC und BOutputC verwendet
@@ -174,6 +172,4 @@ private:
 };
 
 } /* namespace byps */
-} /* namespace wilutions */
-} /* namespace com */
 #endif /* BMEM_H_ */

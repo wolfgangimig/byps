@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BStreamRequest {
 public:
@@ -16,6 +16,6 @@ public:
 
 
 
-}}}
+}
 
 #endif // BSTREAMREQUEST_H

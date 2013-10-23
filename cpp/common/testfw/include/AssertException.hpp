@@ -31,6 +31,6 @@ TINLINE std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& s
 	return strm;
 }
 
-}}}
+}
 
 #endif

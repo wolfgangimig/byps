@@ -4,7 +4,7 @@
 #include "BBytes.h"
 #include <cstdarg>
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 const int64_t DEBUG_END_MARKER = 0x0102030405060708LL;
 
@@ -61,6 +61,6 @@ PBytes BBytes::create(const void* p, size_t length) {
 }
 
 
-}}}
+}
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "BClient.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BClient::BClient(PTransport transport, PServerR serverR)
     : transport(transport), serverR(serverR) {
@@ -188,6 +188,6 @@ BINLINE PAuthentication BClient::getAuthentication() {
 }
 
 
-}}}
+}
 
 #endif // BCLIENT_HPP

@@ -74,7 +74,7 @@ var TestUtils = {
 	},
 	
 	createObjectPrimitiveTypes : function() {
-		var p = new com.wilutions.byps.test.api.prim.PrimitiveTypes();
+		var p = new byps.test.api.prim.PrimitiveTypes();
 		p.intVal = ++createCount;
 		p.boolVal = (createCount & 1) != 0;
 		p.byteVal = (createCount * 2) & 0x7F;

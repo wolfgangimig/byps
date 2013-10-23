@@ -3,12 +3,12 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
 class HHttpClient;
 typedef byps_ptr<HHttpClient> PHttpClient;
 
-}}}}
+}}
 
 
 // VS2012 memory leak in std::thread

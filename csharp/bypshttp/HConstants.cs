@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace com.wilutions.byps
+namespace byps
 {
     public class HConstants
     {

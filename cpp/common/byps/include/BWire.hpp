@@ -4,7 +4,7 @@
 #include "BWire.h"
 #include <stdlib.h>
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 BINLINE BWire::~BWire() {
@@ -36,5 +36,5 @@ BINLINE PTestAdapter BWire::getTestAdapter() {
 	return PTestAdapter();
 }
 
-}}}
+}
 #endif

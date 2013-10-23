@@ -11,7 +11,7 @@
 
 LOGGER_IMPL
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 void AllTests_run(void *app) {
     BLogger::init("/home/wolfgang/log/cppclient.txt", BLogLevel::Debug, false);

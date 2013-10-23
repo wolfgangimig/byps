@@ -53,11 +53,11 @@ var client = null;
 	function startTestSuite() {
 
 		var url = "/bypstest-srv/bypsservlet";
-		var wire = new com.wilutions.byps.BWireClient(url);
-		var transportFactory = new com.wilutions.byps.BTransportFactory(
-				com.wilutions.byps.test.api.BApiDescriptor_Testser.instance(),
+		var wire = new byps.BWireClient(url);
+		var transportFactory = new byps.BTransportFactory(
+				byps.test.api.BApiDescriptor_Testser.instance(),
 				wire);
-		client = new com.wilutions.byps.test.api.BClient_Testser(
+		client = new byps.test.api.BClient_Testser(
 				transportFactory);
 		client.start(true);
 

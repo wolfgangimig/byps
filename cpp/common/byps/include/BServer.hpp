@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 BINLINE BServer::BServer(PTransport transport, PClient clientR)
@@ -82,6 +82,6 @@ BINLINE void BServerR::start() {
 BINLINE void BServerR::done() {
 }
 
-}}}
+}
 
 #endif // BSERVER_HPP

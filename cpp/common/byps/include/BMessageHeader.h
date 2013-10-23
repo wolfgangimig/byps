@@ -4,7 +4,7 @@
 #include "Byps.h"
 #include "BBuffer.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 const int32_t BMAGIC_BINARY_STREAM = 1113149523; // { 'B', 'Y', 'P', 'S' }
 
@@ -31,6 +31,6 @@ public:
     void read(BBuffer& bbuf);
 };
 
-}}}
+}
 
 #endif

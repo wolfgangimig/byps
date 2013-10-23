@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using com.wilutions.byps;
-using com.wilutions.byps.test.api;
-using com.wilutions.byps.test.api.remote;
-using com.wilutions.byps.test.api.list;
-using com.wilutions.byps.test.api.prim;
+using byps;
+using byps.test.api;
+using byps.test.api.remote;
+using byps.test.api.list;
+using byps.test.api.prim;
 using System.Collections.Generic;
 
 namespace bypstest

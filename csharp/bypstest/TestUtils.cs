@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using com.wilutions.byps;
-using com.wilutions.byps.test.api;
-using com.wilutions.byps.test.api.prim;
+using byps;
+using byps.test.api;
+using byps.test.api.prim;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
-using com.wilutions.byps.test.api.inl;
+using byps.test.api.inl;
 
 namespace bypstest
 {

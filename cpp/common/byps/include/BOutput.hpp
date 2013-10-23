@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BOutput::BOutput(PTransport transport, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
     : BIO(transport, BBinaryModel::MEDIUM(), negotiatedVersion, negotiatedByteOrder)
@@ -120,6 +120,6 @@ BINLINE void BOutput::setException(const BException& bex) {
 	*this & ex2;
 }
 
-}}}
+}
 
 #endif // BOUTPUT_HPP

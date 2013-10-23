@@ -16,7 +16,7 @@ describe("Tests for sending and receiving map types.", function() {
 	it("testRemoteMapTypes", function() {
 		log.info("testRemoteMapTypes(");
 		
-		var obj = new com.wilutions.byps.test.api.map.MapTypes();
+		var obj = new byps.test.api.map.MapTypes();
 		obj.boolean1 = new MyMap().add("bool1", true).add("bool2", false);
 		obj.byte1 = new MyMap().add(1.1, -1).add(2.1, -2);
 		obj.char1 = new MyMap().add(-1.1, 'a').add(1.1e-1, 'b');

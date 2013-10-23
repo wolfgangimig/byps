@@ -3,7 +3,7 @@
 
 #include "BVariant.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE void BVariant::clear() {
 	u.longVal = 0;
@@ -82,6 +82,6 @@ BINLINE std::wstring BVariant::toString() const {
     return wss.str();
 }
 
-}}}
+}
 
 #endif // BINLINE BVariant::BVariant_HPP

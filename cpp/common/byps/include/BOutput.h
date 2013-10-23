@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace ::std;
 
@@ -32,6 +32,6 @@ protected:
 };
 
 
-}}}
+}
 
 #endif /* BOUTPUT_H_ */

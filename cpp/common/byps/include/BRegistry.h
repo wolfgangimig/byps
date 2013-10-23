@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 const BTYPEID BTYPEID_BOOL = 1;
 const BTYPEID BTYPEID_INT8 = 2;
@@ -38,6 +38,6 @@ public:
     BSERIALIZER getSerializer(BTYPEID typeId);
 };
 
-}}}
+}
 
 #endif /* BREGISTRY_H_ */

@@ -3,7 +3,7 @@
 
 #include "BSkeleton.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BSkeleton::~BSkeleton() {
 }
@@ -16,5 +16,5 @@ BINLINE void BSkeleton::BSkeleton_setTargetId(BTargetId targetId) {
     this->targetId = targetId;
 }
 
-}}}
+}
 #endif // BSKELETON_HPP

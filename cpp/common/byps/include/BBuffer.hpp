@@ -3,8 +3,6 @@
 
 #include "BBuffer.h"
 
-namespace com {
-namespace wilutions {
 namespace byps {
 
 #define BCOMPRESS_INTEGER true
@@ -346,6 +344,4 @@ BINLINE void BBuffer::growForRemaining(int32_t size) {
 
 
 } /* namespace byps */
-} /* namespace wilutions */
-} /* namespace com */
 #endif 

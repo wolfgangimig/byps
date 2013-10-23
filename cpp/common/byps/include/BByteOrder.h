@@ -4,8 +4,6 @@
 #include "BException.h"
 #include "platform/platform-impl.h"
 
-namespace com {
-namespace wilutions {
 namespace byps {
 
 enum BEndian {
@@ -76,8 +74,6 @@ private:
     BEndian myEndian;
 };
 
-}
-}
 }
 
 #endif /* BBYTEORDER_H_ */

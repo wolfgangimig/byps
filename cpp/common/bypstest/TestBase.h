@@ -9,7 +9,7 @@
 #include "AssertException.h"
 
 class TestBase : public com::wilutions::test::TestCase {
-	static com::wilutions::byps::BLogger log;
+	static byps::BLogger log;
 protected:
 	void* app;
 public:
@@ -24,7 +24,7 @@ public:
 	virtual void onSuccess(const TestFunction& tfunc);
 	
 protected:
-	static com::wilutions::byps::test::api::PClient_Testser client;
+	static byps::test::api::PClient_Testser client;
 };
 
 #endif

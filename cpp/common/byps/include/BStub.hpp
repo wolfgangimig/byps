@@ -3,7 +3,7 @@
 
 #include "BStub.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BStub::BStub(PTransport transport)
     : transport(transport) {
@@ -17,6 +17,6 @@ BINLINE BTargetId BStub::BRemote_getTargetId() {
 }
 
 
-}}}
+}
 
 #endif // BSTUB_HPP

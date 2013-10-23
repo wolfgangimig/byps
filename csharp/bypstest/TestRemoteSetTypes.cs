@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using com.wilutions.byps;
-using com.wilutions.byps.test.api;
-using com.wilutions.byps.test.api.remote;
-using com.wilutions.byps.test.api.prim;
-using com.wilutions.byps.test.api.arr;
-using com.wilutions.byps.test.api.map;
-using com.wilutions.byps.test.api.set;
+using byps;
+using byps.test.api;
+using byps.test.api.remote;
+using byps.test.api.prim;
+using byps.test.api.arr;
+using byps.test.api.map;
+using byps.test.api.set;
 using System.Collections.Generic;
 
 namespace bypstest

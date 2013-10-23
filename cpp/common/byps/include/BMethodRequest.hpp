@@ -3,8 +3,8 @@
 
 #include "BMethodRequest.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
-}}}
+}
 
 #endif

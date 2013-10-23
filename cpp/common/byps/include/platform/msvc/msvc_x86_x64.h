@@ -41,12 +41,12 @@
 
 #include <ctime>
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 inline struct tm* byps_localtime(struct tm* buf, const std::time_t* t) {
     localtime_s(buf, t);
     return buf;
 }
-}}}
+}
 
 #endif // BSTD_SYMBOLS
 
@@ -60,7 +60,7 @@ inline struct tm* byps_localtime(struct tm* buf, const std::time_t* t) {
 #include <stdint.h>
 #include <stdlib.h> 
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 inline int16_t BSWAP2(register int16_t v) {
 	return _byteswap_ushort((uint16_t)v);
@@ -107,7 +107,7 @@ inline int64_t BSWAP8(register int64_t v) {
 //
 //#else
 
-}}}
+}
 
 #endif  /* BSWAP_FUNCTIONS */
 
@@ -121,7 +121,7 @@ inline int64_t BSWAP8(register int64_t v) {
 #ifndef BSERIALIZE_UNALIGNED_FUNCTIONS
 #define BSERIALIZE_UNALIGNED_FUNCTIONS
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 template<typename _int163264> void writeUnalignedInt163264(void* p, _int163264& v) {
 	*((_int163264*)p) = v;
@@ -131,7 +131,7 @@ template<typename _int163264> void readUnalignedInt163264(void* p, _int163264& v
 }
 
 
-}}}
+}
 
 
 #endif  // BSERIALIZE_UNALIGNED_FUNCTIONS

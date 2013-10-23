@@ -3,7 +3,7 @@
 
 #include "BException.h"
 
-namespace com {namespace wilutions {namespace byps {
+namespace byps {
 
 BINLINE void BException::serialize(BIO& bio, const BVERSION version) {
 	bio & code;
@@ -11,6 +11,6 @@ BINLINE void BException::serialize(BIO& bio, const BVERSION version) {
 	bio & details;
 }
 
-}}}
+}
 
 #endif

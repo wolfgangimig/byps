@@ -11,10 +11,10 @@
 
 #pragma comment( lib, "winhttp.lib" )
 
-namespace com { namespace wilutions { namespace byps { namespace http { namespace winhttp {
+namespace byps { namespace http { namespace winhttp {
 
-using namespace com::wilutions::byps;
-using namespace com::wilutions::byps::http;
+using namespace byps;
+using namespace byps::http;
 
 class WinHttpRequest;
 typedef byps_ptr<WinHttpRequest> PWinHttpRequest;
@@ -1022,15 +1022,15 @@ public:
 BLogger WinHttpRequest::log("WinHttpRequest");
 BLogger WinHttpClient::log("WinHttpClient");
 
-}}}}}
+}}}
 
-namespace com { namespace wilutions { namespace byps { namespace http { 
+namespace byps { namespace http { 
 
 BINLINE PHttpClient HttpClient_create(void* app) {
-	return PHttpClient(new com::wilutions::byps::http::winhttp::WinHttpClient());
+	return PHttpClient(new byps::http::winhttp::WinHttpClient());
 }
 
-}}}}
+}}
 
 
 

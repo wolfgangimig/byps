@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 class BStub : public virtual BRemote {
@@ -42,6 +42,6 @@ template <typename _Type> POBJECT BSERIALIZER_BStub(BIO& bio, _Type* pStub, BTYP
 }
 
 
-}}}
+}
 
 #endif // BSTUB_H

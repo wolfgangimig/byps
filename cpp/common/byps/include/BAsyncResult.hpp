@@ -3,7 +3,7 @@
 
 #include "BAsyncResult.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 //BINLINE BAsyncResultReceiveMethod::BAsyncResultReceiveMethod(PAsyncResult innerResult)
 //        : innerResult(innerResult) {
@@ -22,6 +22,6 @@ namespace com { namespace wilutions { namespace byps {
 //    }
 //}
 
-}}}
+}
 
 #endif // BASYNCRESULT_HPP

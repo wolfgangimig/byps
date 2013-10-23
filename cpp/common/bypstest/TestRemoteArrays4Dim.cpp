@@ -1,12 +1,12 @@
 ﻿#include "AllTests.h"
 
 
-using namespace com::wilutions::byps;
+using namespace byps;
 using namespace com::wilutions::test;
 
-using namespace com::wilutions::byps::test::api;
-using namespace com::wilutions::byps::test::api::prim;
-using namespace com::wilutions::byps::test::api::remote;
+using namespace byps::test::api;
+using namespace byps::test::api::prim;
+using namespace byps::test::api::remote;
 
 
 
@@ -45,7 +45,7 @@ public:
 		for (size_t i1 = 0; i1 < arr->length1(); i1++) {
 		for (size_t i0 = 0; i0 < arr->length0(); i0++) {
 			arr->at(i3, i2, i1, i0) = TestUtils::createObjectPrimitiveTypes();
-		}}}}
+		}}
 
 		remote->setPrimitiveTypes(arr);
 		byps_ptr<BArray4<PPrimitiveTypes> > arrR = remote->getPrimitiveTypes();
@@ -62,7 +62,7 @@ public:
 				arr->at(i3, i2, i1, i0), 
 				arrR->at(i3, i2, i1, i0)
 			);
-		}}}}
+		}}
 
 
 		for (size_t i3 = 0; i3 < arr->length3(); i3++) {
@@ -71,7 +71,7 @@ public:
 		for (size_t i0 = 0; i0 < arr->length0(); i0++) {
 			TestUtils::releasePrimitiveTypes( arr->at(i3, i2, i1, i0) );
 			TestUtils::releasePrimitiveTypes( arrR->at(i3, i2, i1, i0) );
-		}}}}
+		}}
 
 	}
 
@@ -87,7 +87,7 @@ public:
 			std::wstringstream wss; 
 			wss << i3 << i2 << i1 << i0;
 			arr->at(i3, i2, i1, i0) = wss.str();
-		}}}}
+		}}
 
 		remote->setString(arr);
 		byps_ptr<BArray4<std::wstring> > arrR = remote->getString();

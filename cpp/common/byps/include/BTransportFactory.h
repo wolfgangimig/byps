@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BTransportFactory {
 public:
@@ -13,6 +13,6 @@ public:
     virtual PServerR createServerR(PServer) = 0;
 };
 
-}}}
+}
 
 #endif // BTRANSPORTFACTORY_H

@@ -8,14 +8,14 @@
 
 class TestUtilHttp {
 public:
-	static com::wilutions::byps::test::api::PClient_Testser createClient(void* app);
+	static byps::test::api::PClient_Testser createClient(void* app);
 
-	static byps_ptr<std::vector<com::wilutions::byps::PContentStream> > makeTestStreams();
+	static byps_ptr<std::vector<byps::PContentStream> > makeTestStreams();
 
 	
 	static void tassert(const char* file, int line, const std::wstring& msg, 
-			  com::wilutions::byps::PContentStream strm,
-			  com::wilutions::byps::PContentStream strmR);
+			  byps::PContentStream strm,
+			  byps::PContentStream strmR);
 
 };
 

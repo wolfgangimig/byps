@@ -10,7 +10,7 @@
 
   <script type="text/javascript">
 	  var url = "/bypstest-srv/bypsservlet";
-	  var client = com.wilutions.byps.test.api.createClient_Testser(url, true);
+	  var client = byps.test.api.createClient_Testser(url, true);
   </script>
 
 </head>
@@ -36,7 +36,7 @@
 						
 						var streamId = file.streamId;
 						
-						var stream = new com.wilutions.byps.BContentStream(streamId);
+						var stream = new byps.BContentStream(streamId);
 						client.remoteStreams.setImage(stream);
 						
 						var inputStream = client.remoteStreams.getImage();

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace com.wilutions.byps
+namespace byps
 {
     public abstract class BOutput
     {

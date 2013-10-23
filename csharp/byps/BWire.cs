@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.wilutions.byps
+namespace byps
 {
     [Flags]
     public enum BWireFlags

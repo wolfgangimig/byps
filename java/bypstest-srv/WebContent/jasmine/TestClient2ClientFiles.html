@@ -10,20 +10,20 @@
 
 <script type="text/javascript">
 	var url = "/bypstest-srv/bypsservlet";
-	var wire = new com.wilutions.byps.BWireClient(url, 0, 60);
-	var transportFactory = new com.wilutions.byps.BTransportFactory(com.wilutions.byps.test.api.BApiDescriptor_Testser.instance(), wire);
+	var wire = new byps.BWireClient(url, 0, 60);
+	var transportFactory = new byps.BTransportFactory(byps.test.api.BApiDescriptor_Testser.instance(), wire);
 	var client = com.wilutions.jsfs.createClient_Testser(transportFactory);
 
 	// Define an implementation for the ClientIF interface function sendChat
-	com.wilutions.byps.test.api.ClientIFImpl = function() {
+	byps.test.api.ClientIFImpl = function() {
 		
 		this.putStreams = function(streams, ctrl) {
 			var streamFrame = document.getElementById("streamFrame");
 			streamFrame.src = streams[0].url;
 		}
 	};
-	com.wilutions.byps.test.api.ClientIFImpl.prototype = new com.wilutions.byps.test.api.srvr.BSkeleton_ClientIF();
-	client.addRemote(new com.wilutions.byps.test.api.ClientIFImpl()); 
+	byps.test.api.ClientIFImpl.prototype = new byps.test.api.srvr.BSkeleton_ClientIF();
+	client.addRemote(new byps.test.api.ClientIFImpl()); 
 	
 	// Create a random ID for this client connection
 	// and register this ID with a global HashMap in the server.
@@ -85,7 +85,7 @@
 			if (ret) {
 
 				var streamIds = JSON.parse(ret);
-				var stream = new com.wilutions.byps.BContentStream(streamIds[0]);
+				var stream = new byps.BContentStream(streamIds[0]);
 				
 				var sendToClientId = getSelectedClientId();
 				if (!sendToClientId) throw "No client selected"; 

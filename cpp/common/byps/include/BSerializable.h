@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BSerializable {
 public:
@@ -12,6 +12,6 @@ public:
 };
 
 
-}}}
+}
 
 #endif /* BSERIALIZABLE_H_ */

@@ -3,8 +3,8 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
-}}}
+}
 
 #endif /* BSERIALIZABLE_H_ */

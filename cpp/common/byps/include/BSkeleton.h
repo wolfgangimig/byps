@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 class BSkeleton : public virtual BRemote {
@@ -17,6 +17,6 @@ private:
     BTargetId targetId;
 };
 
-}}}
+}
 
 #endif // BSKELETON_H

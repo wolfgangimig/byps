@@ -3,9 +3,9 @@
 
 #include "Bypshttp.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 class HTransportFactoryClient : public BTransportFactory {
 public:
@@ -21,6 +21,6 @@ private:
 	const int nbOfServerRConns;
 };
 
-}}}}
+}}
 
 #endif

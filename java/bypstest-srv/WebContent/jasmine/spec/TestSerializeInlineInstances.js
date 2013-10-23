@@ -9,8 +9,8 @@ describe("Tests for serializing inline objects.", function() {
 	it("testSerializeInlineInstance", function() {
 		log.info("testSerializeInlineInstance(");
 		
-		var obj = new com.wilutions.byps.test.api.inl.Actor();
-		obj.position = new com.wilutions.byps.test.api.inl.Matrix2D();
+		var obj = new byps.test.api.inl.Actor();
+		obj.position = new byps.test.api.inl.Matrix2D();
 		obj.position._11 = 1.1;
 		obj.position._22 = 2.2;
 		obj.position._33 = 3.3;

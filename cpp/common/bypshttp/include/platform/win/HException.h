@@ -3,9 +3,9 @@
 
 #include "Bypshttp.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http { namespace winhttp {
+namespace byps { namespace http { namespace winhttp {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 class HException : public BException {
 public:
@@ -15,6 +15,6 @@ private:
 	LPCWSTR getWinHttpErrorMessage(DWORD err);
 };
 
-}}}}}
+}}}
 
 #endif

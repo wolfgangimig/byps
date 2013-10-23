@@ -6,470 +6,470 @@
 //-------------------------------------------------
 // Forward Declaration of class ArrayTypes1dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace arr { 
+namespace byps { namespace test { namespace api { namespace arr { 
 
 class ArrayTypes1dim; 
 typedef byps_ptr< ArrayTypes1dim > PArrayTypes1dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class ArrayTypes4dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace arr { 
+namespace byps { namespace test { namespace api { namespace arr { 
 
 class ArrayTypes4dim; 
 typedef byps_ptr< ArrayTypes4dim > PArrayTypes4dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class SessionInfo
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace auth { 
+namespace byps { namespace test { namespace api { namespace auth { 
 
 class SessionInfo; 
 typedef byps_ptr< SessionInfo > PSessionInfo; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class AllTypesC
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
 class AllTypesC; 
 typedef byps_ptr< AllTypesC > PAllTypesC; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class AllTypesZ
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
 class AllTypesZ; 
 typedef byps_ptr< AllTypesZ > PAllTypesZ; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class HebrewC
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
 class HebrewC; 
 typedef byps_ptr< HebrewC > PHebrewC; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class HebrewZ
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
 class HebrewZ; 
 typedef byps_ptr< HebrewZ > PHebrewZ; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class UsePlanets
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace enu { 
+namespace byps { namespace test { namespace api { namespace enu { 
 
 class UsePlanets; 
 typedef byps_ptr< UsePlanets > PUsePlanets; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_BioFruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BStub_BioFruitService; 
 typedef byps_ptr< BStub_BioFruitService > PStub_BioFruitService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_BioLemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BStub_BioLemonService; 
 typedef byps_ptr< BStub_BioLemonService > PStub_BioLemonService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_FruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BStub_FruitService; 
 typedef byps_ptr< BStub_FruitService > PStub_FruitService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_LemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BStub_LemonService; 
 typedef byps_ptr< BStub_LemonService > PStub_LemonService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_PlantService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BStub_PlantService; 
 typedef byps_ptr< BStub_PlantService > PStub_PlantService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class Class1; 
 typedef byps_ptr< Class1 > PClass1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class1Collections
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class Class1Collections; 
 typedef byps_ptr< Class1Collections > PClass1Collections; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class Class2; 
 typedef byps_ptr< Class2 > PClass2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class3
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class Class3; 
 typedef byps_ptr< Class3 > PClass3; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Actor
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
+namespace byps { namespace test { namespace api { namespace inl { 
 
 class Actor; 
 typedef byps_ptr< Actor > PActor; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class ListListTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace list { 
+namespace byps { namespace test { namespace api { namespace list { 
 
 class ListListTypes; 
 typedef byps_ptr< ListListTypes > PListListTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class ListTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace list { 
+namespace byps { namespace test { namespace api { namespace list { 
 
 class ListTypes; 
 typedef byps_ptr< ListTypes > PListTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class MapTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace map { 
+namespace byps { namespace test { namespace api { namespace map { 
 
 class MapTypes; 
 typedef byps_ptr< MapTypes > PMapTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class PrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace prim { 
+namespace byps { namespace test { namespace api { namespace prim { 
 
 class PrimitiveTypes; 
 typedef byps_ptr< PrimitiveTypes > PPrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class PrivateMembers
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace priv { 
+namespace byps { namespace test { namespace api { namespace priv { 
 
 class PrivateMembers; 
 typedef byps_ptr< PrivateMembers > PPrivateMembers; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Node
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace refs { 
+namespace byps { namespace test { namespace api { namespace refs { 
 
 class Node; 
 typedef byps_ptr< Node > PNode; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteArrayTypes1dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteArrayTypes1dim; 
 typedef byps_ptr< BStub_RemoteArrayTypes1dim > PStub_RemoteArrayTypes1dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteArrayTypes23
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteArrayTypes23; 
 typedef byps_ptr< BStub_RemoteArrayTypes23 > PStub_RemoteArrayTypes23; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteArrayTypes4dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteArrayTypes4dim; 
 typedef byps_ptr< BStub_RemoteArrayTypes4dim > PStub_RemoteArrayTypes4dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteConstants
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteConstants; 
 typedef byps_ptr< BStub_RemoteConstants > PStub_RemoteConstants; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteEnums
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteEnums; 
 typedef byps_ptr< BStub_RemoteEnums > PStub_RemoteEnums; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteInlineInstance
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteInlineInstance; 
 typedef byps_ptr< BStub_RemoteInlineInstance > PStub_RemoteInlineInstance; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteListTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteListTypes; 
 typedef byps_ptr< BStub_RemoteListTypes > PStub_RemoteListTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteMapTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteMapTypes; 
 typedef byps_ptr< BStub_RemoteMapTypes > PStub_RemoteMapTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemotePrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemotePrimitiveTypes; 
 typedef byps_ptr< BStub_RemotePrimitiveTypes > PStub_RemotePrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteReferences
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteReferences; 
 typedef byps_ptr< BStub_RemoteReferences > PStub_RemoteReferences; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteServerCtrl
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteServerCtrl; 
 typedef byps_ptr< BStub_RemoteServerCtrl > PStub_RemoteServerCtrl; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteSetTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteSetTypes; 
 typedef byps_ptr< BStub_RemoteSetTypes > PStub_RemoteSetTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteStreams
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteStreams; 
 typedef byps_ptr< BStub_RemoteStreams > PStub_RemoteStreams; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteWithAuthentication
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class BStub_RemoteWithAuthentication; 
 typedef byps_ptr< BStub_RemoteWithAuthentication > PStub_RemoteWithAuthentication; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class SetTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace set { 
+namespace byps { namespace test { namespace api { namespace set { 
 
 class SetTypes; 
 typedef byps_ptr< SetTypes > PSetTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_ClientIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BStub_ClientIF; 
 typedef byps_ptr< BStub_ClientIF > PStub_ClientIF; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_ServerIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class BStub_ServerIF; 
 typedef byps_ptr< BStub_ServerIF > PStub_ServerIF; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class ChatStructure
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class ChatStructure; 
 typedef byps_ptr< ChatStructure > PChatStructure; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Stream1
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace strm { 
+namespace byps { namespace test { namespace api { namespace strm { 
 
 class Stream1; 
 typedef byps_ptr< Stream1 > PStream1; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_EvolveIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class BStub_EvolveIF; 
 typedef byps_ptr< BStub_EvolveIF > PStub_EvolveIF; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Evolve
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class Evolve; 
 typedef byps_ptr< Evolve > PEvolve; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class Evolve2
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class Evolve2; 
 typedef byps_ptr< Evolve2 > PEvolve2; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Matrix2D
 // typeId=135329019
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
+namespace byps { namespace test { namespace api { namespace inl { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Matrix2D : public BSerializable {
 	public: float _11;
@@ -482,25 +482,25 @@ class Matrix2D : public BSerializable {
 	public: float _32;
 	public: float _33;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Matrix2D();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Matrix2D(float _11, float _12, float _13, float _21, float _22, float _23, float _31, float _32, float _33);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 135329019; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Point2D
 // typeId=1835035436
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
+namespace byps { namespace test { namespace api { namespace inl { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Example for an inline class.
@@ -516,25 +516,25 @@ class Point2D : public BSerializable {
 	public: int16_t x;
 	public: int16_t y;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Point2D();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Point2D(int16_t x, int16_t y);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1835035436; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // ArrayTypes1dim
 // typeId=2001
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace arr { 
+namespace byps { namespace test { namespace api { namespace arr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class ArrayTypes1dim : public BSerializable {
 	public: byps_ptr< BArray1< bool > > boolean1;
@@ -546,27 +546,27 @@ class ArrayTypes1dim : public BSerializable {
 	public: byps_ptr< BArray1< float > > float1;
 	public: byps_ptr< BArray1< double > > double1;
 	public: byps_ptr< BArray1< ::std::wstring > > string1;
-	public: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: ArrayTypes1dim();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: ArrayTypes1dim(const byps_ptr< BArray1< bool > >& boolean1, const PBytes& byte1, const byps_ptr< BArray1< wchar_t > >& char1, const byps_ptr< BArray1< int16_t > >& short1, const byps_ptr< BArray1< int32_t > >& int1, const byps_ptr< BArray1< int64_t > >& long1, const byps_ptr< BArray1< float > >& float1, const byps_ptr< BArray1< double > >& double1, const byps_ptr< BArray1< ::std::wstring > >& string1, const byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: ArrayTypes1dim(const byps_ptr< BArray1< bool > >& boolean1, const PBytes& byte1, const byps_ptr< BArray1< wchar_t > >& char1, const byps_ptr< BArray1< int16_t > >& short1, const byps_ptr< BArray1< int32_t > >& int1, const byps_ptr< BArray1< int64_t > >& long1, const byps_ptr< BArray1< float > >& float1, const byps_ptr< BArray1< double > >& double1, const byps_ptr< BArray1< ::std::wstring > >& string1, const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2001; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // ArrayTypes4dim
 // typeId=2004
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace arr { 
+namespace byps { namespace test { namespace api { namespace arr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class ArrayTypes4dim : public BSerializable {
 	public: byps_ptr< BArray4< bool > > boolean4;
@@ -578,27 +578,27 @@ class ArrayTypes4dim : public BSerializable {
 	public: byps_ptr< BArray4< float > > float4;
 	public: byps_ptr< BArray4< double > > double4;
 	public: byps_ptr< BArray4< ::std::wstring > > string4;
-	public: byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4;
+	public: byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > primitiveTypes4;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: ArrayTypes4dim();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: ArrayTypes4dim(const byps_ptr< BArray4< bool > >& boolean4, const byps_ptr< BArray4< int8_t > >& byte4, const byps_ptr< BArray4< wchar_t > >& char4, const byps_ptr< BArray4< int16_t > >& short4, const byps_ptr< BArray4< int32_t > >& int4, const byps_ptr< BArray4< int64_t > >& long4, const byps_ptr< BArray4< float > >& float4, const byps_ptr< BArray4< double > >& double4, const byps_ptr< BArray4< ::std::wstring > >& string4, const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes4);	
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: ArrayTypes4dim(const byps_ptr< BArray4< bool > >& boolean4, const byps_ptr< BArray4< int8_t > >& byte4, const byps_ptr< BArray4< wchar_t > >& char4, const byps_ptr< BArray4< int16_t > >& short4, const byps_ptr< BArray4< int32_t > >& int4, const byps_ptr< BArray4< int64_t > >& long4, const byps_ptr< BArray4< float > >& float4, const byps_ptr< BArray4< double > >& double4, const byps_ptr< BArray4< ::std::wstring > >& string4, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2004; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // SessionInfo
 // typeId=65775978
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace auth { 
+namespace byps { namespace test { namespace api { namespace auth { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Example for a session class.
@@ -606,25 +606,25 @@ using namespace ::com::wilutions::byps;
 class SessionInfo : public BSerializable {
 	public: ::std::wstring sessionID;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: SessionInfo();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: SessionInfo(const ::std::wstring& sessionID);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 65775978; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // AllTypesC
 // typeId=930294276
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class AllTypesC : public BSerializable {
 	public: const static bool bool1s = true;
@@ -659,24 +659,24 @@ class AllTypesC : public BSerializable {
 	public: const static byps_ptr< BArray4< ::std::wstring > > arrStrings4;
 	public: const static byps_ptr< BArray2< PAllTypesZ > > arrALL;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: AllTypesC();
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 930294276; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // AllTypesZ
 // typeId=142458
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class AllTypesZ : public BSerializable {
 	private: bool bool1;
@@ -694,9 +694,9 @@ class AllTypesZ : public BSerializable {
 	private: byps_ptr< BArray1< ::std::wstring > > string2;
 	private: byps_ptr< BArray1< PHebrewZ > > hebrew2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: AllTypesZ();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const ::std::wstring& string1, const PHebrewZ& hebrew1, const PBytes& byte2, const byps_ptr< BArray1< int32_t > >& int2, const byps_ptr< BArray1< ::std::wstring > >& string2, const byps_ptr< BArray1< PHebrewZ > >& hebrew2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 142458; }
 	
@@ -798,19 +798,19 @@ class AllTypesZ : public BSerializable {
 		hebrew2 = v;
 	}
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // HebrewC
 // typeId=691741677
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class HebrewC : public BSerializable {
 	protected: const static ::std::wstring aleph;
@@ -818,7 +818,7 @@ class HebrewC : public BSerializable {
 	public: const static PHebrewZ ALEPH;
 	public: const static PHebrewZ BETH;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: HebrewC();
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 691741677; }
@@ -829,26 +829,26 @@ class HebrewC : public BSerializable {
 	public: static ::std::wstring getBeth() {
 		return beth;
 	}
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // HebrewZ
 // typeId=1518668429
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace cons { 
+namespace byps { namespace test { namespace api { namespace cons { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class HebrewZ : public BSerializable {
 	private: ::std::wstring core;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: HebrewZ();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: HebrewZ(const ::std::wstring& core);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1518668429; }
 	
@@ -859,17 +859,17 @@ class HebrewZ : public BSerializable {
 		core = v;
 	}
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // EnumPlanets
-// typeId=1042475995
+// typeId=1375035164
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace enu { 
+namespace byps { namespace test { namespace api { namespace enu { 
 
 
 /// <summary>
@@ -887,15 +887,15 @@ enum EnumPlanets : int32_t  {
 
 void operator & (BIO& ar, EnumPlanets& e);
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // UsePlanets
 // typeId=10000
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace enu { 
+namespace byps { namespace test { namespace api { namespace enu { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class UsePlanets : public BSerializable {
 	public: EnumPlanets planet;
@@ -904,9 +904,9 @@ class UsePlanets : public BSerializable {
 	public: byps_ptr< ::std::vector< EnumPlanets > > listOfPlanets;
 	public: byps_ptr< ::std::map< ::std::wstring , EnumPlanets > > mapOfPlanets;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: UsePlanets();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: UsePlanets(EnumPlanets planet, EnumPlanets planet2, const byps_ptr< BArray1< EnumPlanets > >& arrayOfPlanets, const byps_ptr< ::std::vector< EnumPlanets > >& listOfPlanets, const byps_ptr< ::std::map< ::std::wstring , EnumPlanets > >& mapOfPlanets);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 10000; }
 	
@@ -917,19 +917,19 @@ class UsePlanets : public BSerializable {
 		planet2 = v;
 	}
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Class1
 // typeId=6001
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Base class for ...
@@ -938,145 +938,145 @@ class Class1 : public BSerializable {
 	public: int32_t int1;
 	public: PClass1 nextClass1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Class1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Class1(int32_t int1, const PClass1& nextClass1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6001; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Class1Collections
 // typeId=6004
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Class1Collections : public BSerializable {
 	public: byps_ptr< ::std::vector< PClass1 > > list1;
 	public: byps_ptr< ::std::map< ::std::wstring , PClass1 > > map1;
 	public: byps_ptr< ::std::set< PClass1 > > set1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Class1Collections();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Class1Collections(const byps_ptr< ::std::vector< PClass1 > >& list1, const byps_ptr< ::std::map< ::std::wstring , PClass1 > >& map1, const byps_ptr< ::std::set< PClass1 > >& set1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6004; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Class2
 // typeId=6002
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Class2 : public Class1 {
 	public: int32_t int2;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Class2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Class2(int32_t int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6002; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Class3
 // typeId=6003
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Class3 : public Class2 {
 	public: int32_t int3;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Class3();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Class3(int32_t int3);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 6003; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Actor
 // typeId=171948703
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inl { 
+namespace byps { namespace test { namespace api { namespace inl { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Actor : public BSerializable {
 	public: byps_ptr< BArray1< Point2D > > shape;
 	public: Matrix2D position;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Actor();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Actor(const byps_ptr< BArray1< Point2D > >& shape, const Matrix2D& position);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 171948703; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // ListListTypes
 // typeId=3002
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace list { 
+namespace byps { namespace test { namespace api { namespace list { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class ListListTypes : public BSerializable {
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int2;
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int3;
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > > > int24;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: ListListTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: ListListTypes(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >& int2, const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >& int3, const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > > >& int24);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 3002; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // ListTypes
 // typeId=3001
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace list { 
+namespace byps { namespace test { namespace api { namespace list { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class ListTypes : public BSerializable {
 	public: byps_ptr< ::std::vector< bool > > boolean1;
@@ -1088,31 +1088,31 @@ class ListTypes : public BSerializable {
 	public: byps_ptr< ::std::vector< float > > float1;
 	public: byps_ptr< ::std::vector< double > > double1;
 	public: byps_ptr< ::std::vector< ::std::wstring > > string1;
-	public: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	public: byps_ptr< ::std::vector< PBytes > > byte2;
 	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2;
 	public: byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > int4;
 	public: byps_ptr< ::std::vector< PSerializable > > obj1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: ListTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: ListTypes(const byps_ptr< ::std::vector< bool > >& boolean1, const byps_ptr< ::std::vector< int8_t > >& byte1, const byps_ptr< ::std::vector< wchar_t > >& char1, const byps_ptr< ::std::vector< int16_t > >& short1, const byps_ptr< ::std::vector< int32_t > >& int1, const byps_ptr< ::std::vector< int64_t > >& long1, const byps_ptr< ::std::vector< float > >& float1, const byps_ptr< ::std::vector< double > >& double1, const byps_ptr< ::std::vector< ::std::wstring > >& string1, const byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::vector< PBytes > >& byte2, const byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > >& int4, const byps_ptr< ::std::vector< PSerializable > >& obj1);	
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: ListTypes(const byps_ptr< ::std::vector< bool > >& boolean1, const byps_ptr< ::std::vector< int8_t > >& byte1, const byps_ptr< ::std::vector< wchar_t > >& char1, const byps_ptr< ::std::vector< int16_t > >& short1, const byps_ptr< ::std::vector< int32_t > >& int1, const byps_ptr< ::std::vector< int64_t > >& long1, const byps_ptr< ::std::vector< float > >& float1, const byps_ptr< ::std::vector< double > >& double1, const byps_ptr< ::std::vector< ::std::wstring > >& string1, const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::vector< PBytes > >& byte2, const byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > >& int4, const byps_ptr< ::std::vector< PSerializable > >& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 3001; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // MapTypes
 // typeId=4001
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace map { 
+namespace byps { namespace test { namespace api { namespace map { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class MapTypes : public BSerializable {
 	public: byps_ptr< ::std::map< ::std::wstring , bool > > boolean1;
@@ -1124,30 +1124,30 @@ class MapTypes : public BSerializable {
 	public: byps_ptr< ::std::map< wchar_t , float > > float1;
 	public: byps_ptr< ::std::map< int8_t , double > > double1;
 	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1;
-	public: byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	public: byps_ptr< ::std::map< int32_t , PBytes > > byte2;
 	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2;
 	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: MapTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: MapTypes(const byps_ptr< ::std::map< ::std::wstring , bool > >& boolean1, const byps_ptr< ::std::map< double , int8_t > >& byte1, const byps_ptr< ::std::map< float , wchar_t > >& char1, const byps_ptr< ::std::map< int64_t , int16_t > >& short1, const byps_ptr< ::std::map< int32_t , int32_t > >& int1, const byps_ptr< ::std::map< int16_t , int64_t > >& long1, const byps_ptr< ::std::map< wchar_t , float > >& float1, const byps_ptr< ::std::map< int8_t , double > >& double1, const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1, const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::map< int32_t , PBytes > >& byte2, const byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::map< ::std::wstring , PSerializable > >& obj1);	
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: MapTypes(const byps_ptr< ::std::map< ::std::wstring , bool > >& boolean1, const byps_ptr< ::std::map< double , int8_t > >& byte1, const byps_ptr< ::std::map< float , wchar_t > >& char1, const byps_ptr< ::std::map< int64_t , int16_t > >& short1, const byps_ptr< ::std::map< int32_t , int32_t > >& int1, const byps_ptr< ::std::map< int16_t , int64_t > >& long1, const byps_ptr< ::std::map< wchar_t , float > >& float1, const byps_ptr< ::std::map< int8_t , double > >& double1, const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1, const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::map< int32_t , PBytes > >& byte2, const byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::map< ::std::wstring , PSerializable > >& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 4001; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // PrimitiveTypes
 // typeId=1000
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace prim { 
+namespace byps { namespace test { namespace api { namespace prim { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Example class with primitive types like boolean, int, String.
@@ -1194,25 +1194,25 @@ class PrimitiveTypes : public BSerializable {
 	public: bool value;
 	public: PSerializable temp; // transient
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: PrimitiveTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1000; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // PrivateMembers
 // typeId=8001
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace priv { 
+namespace byps { namespace test { namespace api { namespace priv { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Example class with private and protected members
@@ -1227,23 +1227,23 @@ class PrivateMembers : public BSerializable {
 	private: float floatVal;
 	private: double doubleVal;
 	private: ::std::wstring stringVal;
-	private: com::wilutions::byps::test::api::prim::PPrimitiveTypes primitiveTypes;
+	private: byps::test::api::prim::PPrimitiveTypes primitiveTypes;
 	private: byps_ptr< BArray1< bool > > arrBool;
 	private: byps_ptr< BArray1< int32_t > > arrInt;
 	private: byps_ptr< BArray1< ::std::wstring > > arrString;
-	private: byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > arrPrimitiveTypes;
+	private: byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > arrPrimitiveTypes;
 	private: byps_ptr< ::std::vector< bool > > listBool;
 	private: byps_ptr< ::std::vector< int32_t > > listInt;
 	private: byps_ptr< ::std::vector< ::std::wstring > > listString;
-	private: byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes;
+	private: byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > listPrimitiveTypes;
 	private: byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > mapIntListString;
 	protected: int32_t protInt;
 	protected: int32_t pprotInt;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: PrivateMembers();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const com::wilutions::byps::test::api::prim::PPrimitiveTypes& primitiveTypes, const byps_ptr< BArray1< bool > >& arrBool, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray1< ::std::wstring > >& arrString, const byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arrPrimitiveTypes, const byps_ptr< ::std::vector< bool > >& listBool, const byps_ptr< ::std::vector< int32_t > >& listInt, const byps_ptr< ::std::vector< ::std::wstring > >& listString, const byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& listPrimitiveTypes, const byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > >& mapIntListString, int32_t protInt, int32_t pprotInt);	
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const byps::test::api::prim::PPrimitiveTypes& primitiveTypes, const byps_ptr< BArray1< bool > >& arrBool, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray1< ::std::wstring > >& arrString, const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& arrPrimitiveTypes, const byps_ptr< ::std::vector< bool > >& listBool, const byps_ptr< ::std::vector< int32_t > >& listInt, const byps_ptr< ::std::vector< ::std::wstring > >& listString, const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& listPrimitiveTypes, const byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > >& mapIntListString, int32_t protInt, int32_t pprotInt);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 8001; }
 	
 	public:  bool getBoolVal() {
@@ -1309,10 +1309,10 @@ class PrivateMembers : public BSerializable {
 		stringVal = v;
 	}
 	
-	public:  com::wilutions::byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() {
+	public:  byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() {
 		return primitiveTypes;
 	}
-	public: void setPrimitiveTypes(com::wilutions::byps::test::api::prim::PPrimitiveTypes v) {
+	public: void setPrimitiveTypes(byps::test::api::prim::PPrimitiveTypes v) {
 		primitiveTypes = v;
 	}
 	
@@ -1337,10 +1337,10 @@ class PrivateMembers : public BSerializable {
 		arrString = v;
 	}
 	
-	public:  byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getArrPrimitiveTypes() {
+	public:  byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > getArrPrimitiveTypes() {
 		return arrPrimitiveTypes;
 	}
-	public: void setArrPrimitiveTypes(byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) {
+	public: void setArrPrimitiveTypes(byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > v) {
 		arrPrimitiveTypes = v;
 	}
 	
@@ -1365,10 +1365,10 @@ class PrivateMembers : public BSerializable {
 		listString = v;
 	}
 	
-	public:  byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getListPrimitiveTypes() {
+	public:  byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > getListPrimitiveTypes() {
 		return listPrimitiveTypes;
 	}
-	public: void setListPrimitiveTypes(byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > v) {
+	public: void setListPrimitiveTypes(byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > v) {
 		listPrimitiveTypes = v;
 	}
 	
@@ -1393,19 +1393,19 @@ class PrivateMembers : public BSerializable {
 		pprotInt = v;
 	}
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Node
 // typeId=9001
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace refs { 
+namespace byps { namespace test { namespace api { namespace refs { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Node : public BSerializable {
 	public: PNode next;
@@ -1413,25 +1413,25 @@ class Node : public BSerializable {
 	public: byps_ptr< ::std::map< ::std::wstring , PNode > > mapOfNodes;
 	public: byps_ptr< ::std::vector< PNode > > listOfNodes;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Node();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Node(const PNode& next, const PNode& me, const byps_ptr< ::std::map< ::std::wstring , PNode > >& mapOfNodes, const byps_ptr< ::std::vector< PNode > >& listOfNodes);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 9001; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // SetTypes
 // typeId=5001
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace set { 
+namespace byps { namespace test { namespace api { namespace set { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class SetTypes : public BSerializable {
 	public: byps_ptr< ::std::set< bool > > boolean1;
@@ -1443,55 +1443,55 @@ class SetTypes : public BSerializable {
 	public: byps_ptr< ::std::set< float > > float1;
 	public: byps_ptr< ::std::set< double > > double1;
 	public: byps_ptr< ::std::set< ::std::wstring > > string1;
-	public: byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
 	public: byps_ptr< ::std::set< PBytes > > byte2;
 	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2;
 	public: byps_ptr< ::std::set< PSerializable > > obj1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: SetTypes();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
-	public: SetTypes(const byps_ptr< ::std::set< bool > >& boolean1, const byps_ptr< ::std::set< int8_t > >& byte1, const byps_ptr< ::std::set< wchar_t > >& char1, const byps_ptr< ::std::set< int16_t > >& short1, const byps_ptr< ::std::set< int32_t > >& int1, const byps_ptr< ::std::set< int64_t > >& long1, const byps_ptr< ::std::set< float > >& float1, const byps_ptr< ::std::set< double > >& double1, const byps_ptr< ::std::set< ::std::wstring > >& string1, const byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::set< PBytes > >& byte2, const byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::set< PSerializable > >& obj1);	
+	// checkpoint byps.gen.cpp.GenApiClass:533
+	public: SetTypes(const byps_ptr< ::std::set< bool > >& boolean1, const byps_ptr< ::std::set< int8_t > >& byte1, const byps_ptr< ::std::set< wchar_t > >& char1, const byps_ptr< ::std::set< int16_t > >& short1, const byps_ptr< ::std::set< int32_t > >& int1, const byps_ptr< ::std::set< int64_t > >& long1, const byps_ptr< ::std::set< float > >& float1, const byps_ptr< ::std::set< double > >& double1, const byps_ptr< ::std::set< ::std::wstring > >& string1, const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::set< PBytes > >& byte2, const byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::set< PSerializable > >& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 5001; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // ChatStructure
 // typeId=7007
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class ChatStructure : public BSerializable {
 	public: ::std::wstring msg;
 	public: double sentAt;
 	public: double receivedAt;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: ChatStructure();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: ChatStructure(const ::std::wstring& msg, double sentAt, double receivedAt);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 7007; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Stream1
 // typeId=1541129345
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace strm { 
+namespace byps { namespace test { namespace api { namespace strm { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Stream1 : public BSerializable {
 	public: PContentStream is1;
@@ -1500,9 +1500,9 @@ class Stream1 : public BSerializable {
 	private: byps_ptr< ::std::vector< PContentStream > > listStream;
 	public: byps_ptr< ::std::map< int32_t , PContentStream > > mapStream;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Stream1();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Stream1(const PContentStream& is1, const ::std::wstring& contentType, const byps_ptr< BArray1< PContentStream > >& arrStream, const byps_ptr< ::std::vector< PContentStream > >& listStream, const byps_ptr< ::std::map< int32_t , PContentStream > >& mapStream);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1541129345; }
 	
@@ -1527,19 +1527,19 @@ class Stream1 : public BSerializable {
 		listStream = v;
 	}
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Evolve
 // typeId=1391985860
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Example class with elements that belong to different versions.
@@ -1612,32 +1612,32 @@ class Evolve : public BSerializable {
 	public: byps_ptr< ::std::set< int32_t > > set3;
 	public: byps_ptr< ::std::map< int32_t , int32_t > > map3;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Evolve();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const byps_ptr< BArray1< bool > >& bools1, const PBytes& bytes1, const byps_ptr< BArray1< wchar_t > >& chars1, const byps_ptr< BArray1< int16_t > >& shorts1, const byps_ptr< BArray1< int32_t > >& ints1, const byps_ptr< BArray1< int64_t > >& longs1, const byps_ptr< BArray1< float > >& floats1, const byps_ptr< BArray1< double > >& doubles1, const ::std::wstring& str1, const PSerializable& obj1, const PEvolve2& evo1, const byps_ptr< ::std::vector< int32_t > >& list1, const byps_ptr< ::std::set< int32_t > >& set1, const byps_ptr< ::std::map< int32_t , int32_t > >& map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, const byps_ptr< BArray1< bool > >& bools2, const PBytes& bytes2, const byps_ptr< BArray1< wchar_t > >& chars2, const byps_ptr< BArray1< int16_t > >& shorts2, const byps_ptr< BArray1< int32_t > >& ints2, const byps_ptr< BArray1< int64_t > >& longs2, const byps_ptr< BArray1< float > >& floats2, const byps_ptr< BArray1< double > >& doubles2, const ::std::wstring& str2, const PSerializable& obj2, const PEvolve2& evo2, const byps_ptr< ::std::vector< int32_t > >& list2, const byps_ptr< ::std::set< int32_t > >& set2, const byps_ptr< ::std::map< int32_t , int32_t > >& map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, const byps_ptr< BArray1< bool > >& bools3, const PBytes& bytes3, const byps_ptr< BArray1< wchar_t > >& chars3, const byps_ptr< BArray1< int16_t > >& shorts3, const byps_ptr< BArray1< int32_t > >& ints3, const byps_ptr< BArray1< int64_t > >& longs3, const byps_ptr< BArray1< float > >& floats3, const byps_ptr< BArray1< double > >& doubles3, const ::std::wstring& str3, const PSerializable& obj3, const PEvolve2& evo3, const byps_ptr< ::std::vector< int32_t > >& list3, const byps_ptr< ::std::set< int32_t > >& set3, const byps_ptr< ::std::map< int32_t , int32_t > >& map3);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1391985860; }
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Evolve2
 // typeId=573592593
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class Evolve2 : public BSerializable {
 	protected: int32_t n1;
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:487
+	// checkpoint byps.gen.cpp.GenApiClass:487
 	public: Evolve2();
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:533
+	// checkpoint byps.gen.cpp.GenApiClass:533
 	public: Evolve2(int32_t n1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 573592593; }
 	
@@ -1648,298 +1648,298 @@ class Evolve2 : public BSerializable {
 		n1 = v;
 	}
 	
-	// checkpoint com.wilutions.byps.gen.cpp.GenApiClass:866
+	// checkpoint byps.gen.cpp.GenApiClass:866
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class PlantService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class PlantService; 
 typedef byps_ptr< PlantService > PPlantService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class PlantServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class PlantServiceAuth; 
 typedef byps_ptr< PlantServiceAuth > PPlantServiceAuth; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class FruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class FruitService; 
 typedef byps_ptr< FruitService > PFruitService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class FruitServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class FruitServiceAuth; 
 typedef byps_ptr< FruitServiceAuth > PFruitServiceAuth; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioFruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BioFruitService; 
 typedef byps_ptr< BioFruitService > PBioFruitService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioFruitServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BioFruitServiceAuth; 
 typedef byps_ptr< BioFruitServiceAuth > PBioFruitServiceAuth; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class LemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class LemonService; 
 typedef byps_ptr< LemonService > PLemonService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class LemonServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class LemonServiceAuth; 
 typedef byps_ptr< LemonServiceAuth > PLemonServiceAuth; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioLemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BioLemonService; 
 typedef byps_ptr< BioLemonService > PBioLemonService; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioLemonServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
 class BioLemonServiceAuth; 
 typedef byps_ptr< BioLemonServiceAuth > PBioLemonServiceAuth; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteArrayTypes1dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteArrayTypes1dim; 
 typedef byps_ptr< RemoteArrayTypes1dim > PRemoteArrayTypes1dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteArrayTypes23
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteArrayTypes23; 
 typedef byps_ptr< RemoteArrayTypes23 > PRemoteArrayTypes23; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteArrayTypes4dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteArrayTypes4dim; 
 typedef byps_ptr< RemoteArrayTypes4dim > PRemoteArrayTypes4dim; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteConstants
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteConstants; 
 typedef byps_ptr< RemoteConstants > PRemoteConstants; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteEnums
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteEnums; 
 typedef byps_ptr< RemoteEnums > PRemoteEnums; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteInlineInstance
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteInlineInstance; 
 typedef byps_ptr< RemoteInlineInstance > PRemoteInlineInstance; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteListTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteListTypes; 
 typedef byps_ptr< RemoteListTypes > PRemoteListTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteMapTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteMapTypes; 
 typedef byps_ptr< RemoteMapTypes > PRemoteMapTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemotePrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemotePrimitiveTypes; 
 typedef byps_ptr< RemotePrimitiveTypes > PRemotePrimitiveTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteReferences
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteReferences; 
 typedef byps_ptr< RemoteReferences > PRemoteReferences; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteServerCtrl
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteServerCtrl; 
 typedef byps_ptr< RemoteServerCtrl > PRemoteServerCtrl; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteSetTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteSetTypes; 
 typedef byps_ptr< RemoteSetTypes > PRemoteSetTypes; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteStreams
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteStreams; 
 typedef byps_ptr< RemoteStreams > PRemoteStreams; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteWithAuthentication
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteWithAuthentication; 
 typedef byps_ptr< RemoteWithAuthentication > PRemoteWithAuthentication; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteWithAuthenticationAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
 class RemoteWithAuthenticationAuth; 
 typedef byps_ptr< RemoteWithAuthenticationAuth > PRemoteWithAuthenticationAuth; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class ClientIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class ClientIF; 
 typedef byps_ptr< ClientIF > PClientIF; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class ServerIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
 class ServerIF; 
 typedef byps_ptr< ServerIF > PServerIF; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Forward Declaration of class EvolveIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
 class EvolveIF; 
 typedef byps_ptr< EvolveIF > PEvolveIF; 
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // PlantService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class PlantService : public virtual BRemote {
 	
@@ -1949,14 +1949,14 @@ class PlantService : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // PlantServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class PlantServiceAuth : public virtual BRemote {
 	
@@ -1966,13 +1966,13 @@ class PlantServiceAuth : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_PlantService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_PlantService;
 typedef byps_ptr<BStub_PlantService> PStub_PlantService;
@@ -1981,22 +1981,22 @@ class BStub_PlantService : public BStub, public virtual PlantServiceAuth {
 	
 	public: BStub_PlantService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1117460801; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1954605928; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // FruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class FruitService : public virtual BRemote, 
 	public virtual PlantService {
@@ -2007,14 +2007,14 @@ class FruitService : public virtual BRemote,
 	
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // FruitServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class FruitServiceAuth : public virtual BRemote, 
 	public virtual PlantServiceAuth {
@@ -2025,13 +2025,13 @@ class FruitServiceAuth : public virtual BRemote,
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_FruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_FruitService;
 typedef byps_ptr<BStub_FruitService> PStub_FruitService;
@@ -2040,7 +2040,7 @@ class BStub_FruitService : public BStub, public virtual FruitServiceAuth {
 	
 	public: BStub_FruitService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 506940662; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 715959905; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
@@ -2050,15 +2050,15 @@ class BStub_FruitService : public BStub, public virtual FruitServiceAuth {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // BioFruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BioFruitService : public virtual BRemote, 
 	public virtual FruitService {
@@ -2069,14 +2069,14 @@ class BioFruitService : public virtual BRemote,
 	
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BioFruitServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BioFruitServiceAuth : public virtual BRemote, 
 	public virtual FruitServiceAuth {
@@ -2087,42 +2087,42 @@ class BioFruitServiceAuth : public virtual BRemote,
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_BioFruitService
 // Your interface implementation class has to be derived from this skeleton.
 // Either provide an asynchronous or a synchronous function in your subclass.
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BSkeleton_BioFruitService;
 typedef byps_ptr<BSkeleton_BioFruitService> PSkeleton_BioFruitService;
 
 class BSkeleton_BioFruitService : public BSkeleton, public virtual BioFruitService {
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1881829396; }
-	
-	public: virtual ::std::wstring grow() ;
-	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	public: virtual BTYPEID BSerializable_getTypeId() { return 363642571; }
 	
 	public: virtual bool certify(const ::std::wstring& param) ;
 	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
+	
+	public: virtual ::std::wstring grow() ;
+	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 	public: virtual ::std::wstring squeeze() ;
 	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Stub class BStub_BioFruitService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_BioFruitService;
 typedef byps_ptr<BStub_BioFruitService> PStub_BioFruitService;
@@ -2131,7 +2131,7 @@ class BStub_BioFruitService : public BStub, public virtual BioFruitServiceAuth {
 	
 	public: BStub_BioFruitService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1881829396; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 363642571; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
@@ -2144,50 +2144,50 @@ class BStub_BioFruitService : public BStub, public virtual BioFruitServiceAuth {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // LemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class LemonService : public virtual BRemote, 
 	public virtual FruitService {
 	
-	public: virtual ::std::wstring pick(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  = 0;
-	public: virtual void pick(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  = 0;
+	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  = 0;
+	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  = 0;
 	
 	
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // LemonServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class LemonServiceAuth : public virtual BRemote, 
 	public virtual FruitServiceAuth {
 	
-	public: virtual ::std::wstring pick(const ::std::wstring& fromTree)  = 0;
-	public: virtual void pick(const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  = 0;
+	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  = 0;
+	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  = 0;
 	
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_LemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_LemonService;
 typedef byps_ptr<BStub_LemonService> PStub_LemonService;
@@ -2196,28 +2196,28 @@ class BStub_LemonService : public BStub, public virtual LemonServiceAuth {
 	
 	public: BStub_LemonService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 617356599; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 605543968; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
-	public: virtual ::std::wstring pick(const ::std::wstring& fromTree) ;
-	public: virtual void pick(const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
+	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 	public: virtual ::std::wstring squeeze() ;
 	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // BioLemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BioLemonService : public virtual BRemote, 
 	public virtual BioFruitService, 
@@ -2229,14 +2229,14 @@ class BioLemonService : public virtual BRemote,
 	
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // BioLemonServiceAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BioLemonServiceAuth : public virtual BRemote, 
 	public virtual BioFruitServiceAuth, 
@@ -2248,48 +2248,48 @@ class BioLemonServiceAuth : public virtual BRemote,
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_BioLemonService
 // Your interface implementation class has to be derived from this skeleton.
 // Either provide an asynchronous or a synchronous function in your subclass.
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BSkeleton_BioLemonService;
 typedef byps_ptr<BSkeleton_BioLemonService> PSkeleton_BioLemonService;
 
 class BSkeleton_BioLemonService : public BSkeleton, public virtual BioLemonService {
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1992245333; }
-	
-	public: virtual ::std::wstring grow() ;
-	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual ::std::wstring pick(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
-	public: virtual void pick(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual int32_t useParing() ;
-	public: virtual void useParing(::std::function< void (int32_t, BException ex) > asyncResult) ;
+	public: virtual BTYPEID BSerializable_getTypeId() { return 474058508; }
 	
 	public: virtual bool certify(const ::std::wstring& param) ;
 	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
+	public: virtual ::std::wstring grow() ;
+	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	
 	public: virtual ::std::wstring squeeze() ;
 	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
+	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
+	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	
+	public: virtual int32_t useParing() ;
+	public: virtual void useParing(::std::function< void (int32_t, BException ex) > asyncResult) ;
+	
 	
 };
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Stub class BStub_BioLemonService
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace inherit { 
+namespace byps { namespace test { namespace api { namespace inherit { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_BioLemonService;
 typedef byps_ptr<BStub_BioLemonService> PStub_BioLemonService;
@@ -2298,34 +2298,34 @@ class BStub_BioLemonService : public BStub, public virtual BioLemonServiceAuth {
 	
 	public: BStub_BioLemonService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1992245333; }
-	
-	public: virtual ::std::wstring grow() ;
-	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual ::std::wstring pick(const ::std::wstring& fromTree) ;
-	public: virtual void pick(const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual int32_t useParing() ;
-	public: virtual void useParing(::std::function< void (int32_t, BException ex) > asyncResult) ;
+	public: virtual BTYPEID BSerializable_getTypeId() { return 474058508; }
 	
 	public: virtual bool certify(const ::std::wstring& param) ;
 	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
+	public: virtual ::std::wstring grow() ;
+	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	
 	public: virtual ::std::wstring squeeze() ;
 	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
+	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
+	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	
+	public: virtual int32_t useParing() ;
+	public: virtual void useParing(::std::function< void (int32_t, BException ex) > asyncResult) ;
+	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteArrayTypes1dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Interface with functions using 1-dimensional arrays.
@@ -2359,8 +2359,8 @@ class RemoteArrayTypes1dim : public virtual BRemote {
 	public: virtual void setString(const byps_ptr< BArray1< ::std::wstring > >& v)  = 0;
 	public: virtual void setString(const byps_ptr< BArray1< ::std::wstring > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v)  = 0;
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v)  = 0;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void setObject(const byps_ptr< BArray1< PSerializable > >& v)  = 0;
 	public: virtual void setObject(const byps_ptr< BArray1< PSerializable > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -2392,8 +2392,8 @@ class RemoteArrayTypes1dim : public virtual BRemote {
 	public: virtual byps_ptr< BArray1< ::std::wstring > > getString()  = 0;
 	public: virtual void getString(::std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes()  = 0;
-	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes()  = 0;
+	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< BArray1< PSerializable > > getObject()  = 0;
 	public: virtual void getObject(::std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult)  = 0;
@@ -2401,13 +2401,13 @@ class RemoteArrayTypes1dim : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteArrayTypes1dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteArrayTypes1dim;
 typedef byps_ptr<BStub_RemoteArrayTypes1dim> PStub_RemoteArrayTypes1dim;
@@ -2416,7 +2416,7 @@ class BStub_RemoteArrayTypes1dim : public BStub, public virtual RemoteArrayTypes
 	
 	public: BStub_RemoteArrayTypes1dim(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1557084481; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 963816328; }
 	
 	public: virtual void setBool(const byps_ptr< BArray1< bool > >& v) ;
 	public: virtual void setBool(const byps_ptr< BArray1< bool > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2445,8 +2445,8 @@ class BStub_RemoteArrayTypes1dim : public BStub, public virtual RemoteArrayTypes
 	public: virtual void setString(const byps_ptr< BArray1< ::std::wstring > >& v) ;
 	public: virtual void setString(const byps_ptr< BArray1< ::std::wstring > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v) ;
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v) ;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setObject(const byps_ptr< BArray1< PSerializable > >& v) ;
 	public: virtual void setObject(const byps_ptr< BArray1< PSerializable > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2478,23 +2478,23 @@ class BStub_RemoteArrayTypes1dim : public BStub, public virtual RemoteArrayTypes
 	public: virtual byps_ptr< BArray1< ::std::wstring > > getString() ;
 	public: virtual void getString(::std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
-	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
+	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray1< PSerializable > > getObject() ;
 	public: virtual void getObject(::std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteArrayTypes23
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteArrayTypes23 : public virtual BRemote {
 	
@@ -2504,25 +2504,25 @@ class RemoteArrayTypes23 : public virtual BRemote {
 	public: virtual byps_ptr< BArray1< ::std::wstring > > sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4)  = 0;
 	public: virtual void sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4, ::std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > sendArraysClass(const byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr4)  = 0;
-	public: virtual void sendArraysClass(const byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr4, ::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4)  = 0;
+	public: virtual void sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4, ::std::function< void (byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< BArray1< PSerializable > > sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4)  = 0;
 	public: virtual void sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4, ::std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > sendArraysInline(const byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& arr4)  = 0;
-	public: virtual void sendArraysInline(const byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& arr4, ::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray1< byps::test::api::inl::Point2D > > sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4)  = 0;
+	public: virtual void sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4, ::std::function< void (byps_ptr< BArray1< byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteArrayTypes23
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteArrayTypes23;
 typedef byps_ptr<BStub_RemoteArrayTypes23> PStub_RemoteArrayTypes23;
@@ -2531,7 +2531,7 @@ class BStub_RemoteArrayTypes23 : public BStub, public virtual RemoteArrayTypes23
 	
 	public: BStub_RemoteArrayTypes23(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2081058997; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 769717182; }
 	
 	public: virtual byps_ptr< BArray1< int32_t > > sendArraysInt(const byps_ptr< BArray2< int32_t > >& arr2, const byps_ptr< BArray3< int32_t > >& arr3, const byps_ptr< BArray4< int32_t > >& arr4) ;
 	public: virtual void sendArraysInt(const byps_ptr< BArray2< int32_t > >& arr2, const byps_ptr< BArray3< int32_t > >& arr3, const byps_ptr< BArray4< int32_t > >& arr4, ::std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult) ;
@@ -2539,26 +2539,26 @@ class BStub_RemoteArrayTypes23 : public BStub, public virtual RemoteArrayTypes23
 	public: virtual byps_ptr< BArray1< ::std::wstring > > sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4) ;
 	public: virtual void sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4, ::std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > sendArraysClass(const byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr4) ;
-	public: virtual void sendArraysClass(const byps_ptr< BArray2< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& arr4, ::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4) ;
+	public: virtual void sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4, ::std::function< void (byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray1< PSerializable > > sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4) ;
 	public: virtual void sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4, ::std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > sendArraysInline(const byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& arr4) ;
-	public: virtual void sendArraysInline(const byps_ptr< BArray2< com::wilutions::byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< com::wilutions::byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& arr4, ::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< byps::test::api::inl::Point2D > > sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4) ;
+	public: virtual void sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4, ::std::function< void (byps_ptr< BArray1< byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteArrayTypes4dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Interface with functions using 4-dimensional arrays.
@@ -2592,8 +2592,8 @@ class RemoteArrayTypes4dim : public virtual BRemote {
 	public: virtual void setString(const byps_ptr< BArray4< ::std::wstring > >& v)  = 0;
 	public: virtual void setString(const byps_ptr< BArray4< ::std::wstring > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v)  = 0;
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& v)  = 0;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void setObject(const byps_ptr< BArray4< PSerializable > >& v)  = 0;
 	public: virtual void setObject(const byps_ptr< BArray4< PSerializable > >& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -2625,8 +2625,8 @@ class RemoteArrayTypes4dim : public virtual BRemote {
 	public: virtual byps_ptr< BArray4< ::std::wstring > > getString()  = 0;
 	public: virtual void getString(::std::function< void (byps_ptr< BArray4< ::std::wstring > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes()  = 0;
-	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes()  = 0;
+	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< BArray4< PSerializable > > getObject()  = 0;
 	public: virtual void getObject(::std::function< void (byps_ptr< BArray4< PSerializable > >, BException ex) > asyncResult)  = 0;
@@ -2634,13 +2634,13 @@ class RemoteArrayTypes4dim : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteArrayTypes4dim
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteArrayTypes4dim;
 typedef byps_ptr<BStub_RemoteArrayTypes4dim> PStub_RemoteArrayTypes4dim;
@@ -2649,7 +2649,7 @@ class BStub_RemoteArrayTypes4dim : public BStub, public virtual RemoteArrayTypes
 	
 	public: BStub_RemoteArrayTypes4dim(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1557173854; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 963726955; }
 	
 	public: virtual void setBool(const byps_ptr< BArray4< bool > >& v) ;
 	public: virtual void setBool(const byps_ptr< BArray4< bool > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2678,8 +2678,8 @@ class BStub_RemoteArrayTypes4dim : public BStub, public virtual RemoteArrayTypes
 	public: virtual void setString(const byps_ptr< BArray4< ::std::wstring > >& v) ;
 	public: virtual void setString(const byps_ptr< BArray4< ::std::wstring > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v) ;
-	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& v) ;
+	public: virtual void setPrimitiveTypes(const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setObject(const byps_ptr< BArray4< PSerializable > >& v) ;
 	public: virtual void setObject(const byps_ptr< BArray4< PSerializable > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2711,45 +2711,45 @@ class BStub_RemoteArrayTypes4dim : public BStub, public virtual RemoteArrayTypes
 	public: virtual byps_ptr< BArray4< ::std::wstring > > getString() ;
 	public: virtual void getString(::std::function< void (byps_ptr< BArray4< ::std::wstring > >, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
-	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes() ;
+	public: virtual void getPrimitiveTypes(::std::function< void (byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< BArray4< PSerializable > > getObject() ;
 	public: virtual void getObject(::std::function< void (byps_ptr< BArray4< PSerializable > >, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteConstants
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// Interface functions to verify constant definitions.
 /// </summary>
 class RemoteConstants : public virtual BRemote {
 	
-	public: virtual void compare_HebrewC(const com::wilutions::byps::test::api::cons::PHebrewZ& ALEPH, const com::wilutions::byps::test::api::cons::PHebrewZ& BETH)  = 0;
-	public: virtual void compare_HebrewC(const com::wilutions::byps::test::api::cons::PHebrewZ& ALEPH, const com::wilutions::byps::test::api::cons::PHebrewZ& BETH, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH)  = 0;
+	public: virtual void compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const com::wilutions::byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > >& arrAll)  = 0;
-	public: virtual void compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const com::wilutions::byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > >& arrAll, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > >& arrAll)  = 0;
+	public: virtual void compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > >& arrAll, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteConstants
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteConstants;
 typedef byps_ptr<BStub_RemoteConstants> PStub_RemoteConstants;
@@ -2758,44 +2758,44 @@ class BStub_RemoteConstants : public BStub, public virtual RemoteConstants {
 	
 	public: BStub_RemoteConstants(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 431648293; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2045242510; }
 	
-	public: virtual void compare_HebrewC(const com::wilutions::byps::test::api::cons::PHebrewZ& ALEPH, const com::wilutions::byps::test::api::cons::PHebrewZ& BETH) ;
-	public: virtual void compare_HebrewC(const com::wilutions::byps::test::api::cons::PHebrewZ& ALEPH, const com::wilutions::byps::test::api::cons::PHebrewZ& BETH, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH) ;
+	public: virtual void compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const com::wilutions::byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > >& arrAll) ;
-	public: virtual void compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const com::wilutions::byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< com::wilutions::byps::test::api::cons::PAllTypesZ > >& arrAll, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual bool compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > >& arrAll) ;
+	public: virtual void compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > >& arrAll, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteEnums
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteEnums : public virtual BRemote {
 	
-	public: virtual com::wilutions::byps::test::api::enu::EnumPlanets getPlanet()  = 0;
-	public: virtual void getPlanet(::std::function< void (com::wilutions::byps::test::api::enu::EnumPlanets, BException ex) > asyncResult)  = 0;
+	public: virtual byps::test::api::enu::EnumPlanets getPlanet()  = 0;
+	public: virtual void getPlanet(::std::function< void (byps::test::api::enu::EnumPlanets, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPlanet(com::wilutions::byps::test::api::enu::EnumPlanets planet)  = 0;
-	public: virtual void setPlanet(com::wilutions::byps::test::api::enu::EnumPlanets planet, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPlanet(byps::test::api::enu::EnumPlanets planet)  = 0;
+	public: virtual void setPlanet(byps::test::api::enu::EnumPlanets planet, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteEnums
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteEnums;
 typedef byps_ptr<BStub_RemoteEnums> PStub_RemoteEnums;
@@ -2804,74 +2804,74 @@ class BStub_RemoteEnums : public BStub, public virtual RemoteEnums {
 	
 	public: BStub_RemoteEnums(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 359349400; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 485761455; }
 	
-	public: virtual com::wilutions::byps::test::api::enu::EnumPlanets getPlanet() ;
-	public: virtual void getPlanet(::std::function< void (com::wilutions::byps::test::api::enu::EnumPlanets, BException ex) > asyncResult) ;
+	public: virtual byps::test::api::enu::EnumPlanets getPlanet() ;
+	public: virtual void getPlanet(::std::function< void (byps::test::api::enu::EnumPlanets, BException ex) > asyncResult) ;
 	
-	public: virtual void setPlanet(com::wilutions::byps::test::api::enu::EnumPlanets planet) ;
-	public: virtual void setPlanet(com::wilutions::byps::test::api::enu::EnumPlanets planet, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPlanet(byps::test::api::enu::EnumPlanets planet) ;
+	public: virtual void setPlanet(byps::test::api::enu::EnumPlanets planet, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteInlineInstance
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteInlineInstance : public virtual BRemote {
 	
-	public: virtual void setActor(const com::wilutions::byps::test::api::inl::PActor& act)  = 0;
-	public: virtual void setActor(const com::wilutions::byps::test::api::inl::PActor& act, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setActor(const byps::test::api::inl::PActor& act)  = 0;
+	public: virtual void setActor(const byps::test::api::inl::PActor& act, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual com::wilutions::byps::test::api::inl::PActor getActor()  = 0;
-	public: virtual void getActor(::std::function< void (com::wilutions::byps::test::api::inl::PActor, BException ex) > asyncResult)  = 0;
+	public: virtual byps::test::api::inl::PActor getActor()  = 0;
+	public: virtual void getActor(::std::function< void (byps::test::api::inl::PActor, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >& pointArray)  = 0;
-	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< byps::test::api::inl::Point2D > >& pointArray)  = 0;
+	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DArray1dim()  = 0;
-	public: virtual void getPoint2DArray1dim(::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray1< byps::test::api::inl::Point2D > > getPoint2DArray1dim()  = 0;
+	public: virtual void getPoint2DArray1dim(::std::function< void (byps_ptr< BArray1< byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& pointArray)  = 0;
-	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& pointArray)  = 0;
+	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DArray4dim()  = 0;
-	public: virtual void getPoint2DArray4dim(::std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< BArray4< byps::test::api::inl::Point2D > > getPoint2DArray4dim()  = 0;
+	public: virtual void getPoint2DArray4dim(::std::function< void (byps_ptr< BArray4< byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >& pointList)  = 0;
-	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >& pointList, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >& pointList)  = 0;
+	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >& pointList, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList()  = 0;
-	public: virtual void getPoint2DList(::std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > getPoint2DList()  = 0;
+	public: virtual void getPoint2DList(::std::function< void (byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >& pointListList)  = 0;
-	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >& pointListList, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >& pointListList)  = 0;
+	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >& pointListList, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList()  = 0;
-	public: virtual void getPoint2DListList(::std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > getPoint2DListList()  = 0;
+	public: virtual void getPoint2DListList(::std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >& pointMap)  = 0;
-	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >& pointMap, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >& pointMap)  = 0;
+	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >& pointMap, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap()  = 0;
-	public: virtual void getPoint2DMap(::std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > getPoint2DMap()  = 0;
+	public: virtual void getPoint2DMap(::std::function< void (byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  = 0;
 	
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteInlineInstance
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteInlineInstance;
 typedef byps_ptr<BStub_RemoteInlineInstance> PStub_RemoteInlineInstance;
@@ -2880,55 +2880,55 @@ class BStub_RemoteInlineInstance : public BStub, public virtual RemoteInlineInst
 	
 	public: BStub_RemoteInlineInstance(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1206670536; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 567395951; }
 	
-	public: virtual void setActor(const com::wilutions::byps::test::api::inl::PActor& act) ;
-	public: virtual void setActor(const com::wilutions::byps::test::api::inl::PActor& act, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setActor(const byps::test::api::inl::PActor& act) ;
+	public: virtual void setActor(const byps::test::api::inl::PActor& act, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual com::wilutions::byps::test::api::inl::PActor getActor() ;
-	public: virtual void getActor(::std::function< void (com::wilutions::byps::test::api::inl::PActor, BException ex) > asyncResult) ;
+	public: virtual byps::test::api::inl::PActor getActor() ;
+	public: virtual void getActor(::std::function< void (byps::test::api::inl::PActor, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >& pointArray) ;
-	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< byps::test::api::inl::Point2D > >& pointArray) ;
+	public: virtual void setPoint2DArray1dim(const byps_ptr< BArray1< byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DArray1dim() ;
-	public: virtual void getPoint2DArray1dim(::std::function< void (byps_ptr< BArray1< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray1< byps::test::api::inl::Point2D > > getPoint2DArray1dim() ;
+	public: virtual void getPoint2DArray1dim(::std::function< void (byps_ptr< BArray1< byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& pointArray) ;
-	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& pointArray) ;
+	public: virtual void setPoint2DArray4dim(const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& pointArray, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DArray4dim() ;
-	public: virtual void getPoint2DArray4dim(::std::function< void (byps_ptr< BArray4< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< BArray4< byps::test::api::inl::Point2D > > getPoint2DArray4dim() ;
+	public: virtual void getPoint2DArray4dim(::std::function< void (byps_ptr< BArray4< byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >& pointList) ;
-	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >& pointList, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >& pointList) ;
+	public: virtual void setPoint2DList(const byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >& pointList, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > getPoint2DList() ;
-	public: virtual void getPoint2DList(::std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > getPoint2DList() ;
+	public: virtual void getPoint2DList(::std::function< void (byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >& pointListList) ;
-	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >& pointListList, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >& pointListList) ;
+	public: virtual void setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >& pointListList, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > > getPoint2DListList() ;
-	public: virtual void getPoint2DListList(::std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< com::wilutions::byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > getPoint2DListList() ;
+	public: virtual void getPoint2DListList(::std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >& pointMap) ;
-	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >& pointMap, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >& pointMap) ;
+	public: virtual void setPoint2DMap(const byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >& pointMap, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > > getPoint2DMap() ;
-	public: virtual void getPoint2DMap(::std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > getPoint2DMap() ;
+	public: virtual void getPoint2DMap(::std::function< void (byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteListTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteListTypes : public virtual BRemote {
 	
@@ -2986,11 +2986,11 @@ class RemoteListTypes : public virtual BRemote {
 	public: virtual void setString1(const byps_ptr< ::std::vector< ::std::wstring > >& string1)  = 0;
 	public: virtual void setString1(const byps_ptr< ::std::vector< ::std::wstring > >& string1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
-	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
+	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)  = 0;
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)  = 0;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< ::std::vector< PBytes > > getByte2()  = 0;
 	public: virtual void getByte2(::std::function< void (byps_ptr< ::std::vector< PBytes > >, BException ex) > asyncResult)  = 0;
@@ -3025,13 +3025,13 @@ class RemoteListTypes : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteListTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteListTypes;
 typedef byps_ptr<BStub_RemoteListTypes> PStub_RemoteListTypes;
@@ -3040,7 +3040,7 @@ class BStub_RemoteListTypes : public BStub, public virtual RemoteListTypes {
 	
 	public: BStub_RemoteListTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 380156079; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1233438138; }
 	
 	public: virtual byps_ptr< ::std::vector< bool > > getBoolean1() ;
 	public: virtual void getBoolean1(::std::function< void (byps_ptr< ::std::vector< bool > >, BException ex) > asyncResult) ;
@@ -3096,11 +3096,11 @@ class BStub_RemoteListTypes : public BStub, public virtual RemoteListTypes {
 	public: virtual void setString1(const byps_ptr< ::std::vector< ::std::wstring > >& string1) ;
 	public: virtual void setString1(const byps_ptr< ::std::vector< ::std::wstring > >& string1, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1) ;
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1) ;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< ::std::vector< PBytes > > getByte2() ;
 	public: virtual void getByte2(::std::function< void (byps_ptr< ::std::vector< PBytes > >, BException ex) > asyncResult) ;
@@ -3134,15 +3134,15 @@ class BStub_RemoteListTypes : public BStub, public virtual RemoteListTypes {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteMapTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteMapTypes : public virtual BRemote {
 	
@@ -3200,11 +3200,11 @@ class RemoteMapTypes : public virtual BRemote {
 	public: virtual void setString1(const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1)  = 0;
 	public: virtual void setString1(const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
-	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
+	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)  = 0;
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)  = 0;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< ::std::map< int32_t , PBytes > > getByte2()  = 0;
 	public: virtual void getByte2(::std::function< void (byps_ptr< ::std::map< int32_t , PBytes > >, BException ex) > asyncResult)  = 0;
@@ -3227,13 +3227,13 @@ class RemoteMapTypes : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteMapTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteMapTypes;
 typedef byps_ptr<BStub_RemoteMapTypes> PStub_RemoteMapTypes;
@@ -3242,7 +3242,7 @@ class BStub_RemoteMapTypes : public BStub, public virtual RemoteMapTypes {
 	
 	public: BStub_RemoteMapTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 80483097; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 664304990; }
 	
 	public: virtual byps_ptr< ::std::map< ::std::wstring , bool > > getBoolean1() ;
 	public: virtual void getBoolean1(::std::function< void (byps_ptr< ::std::map< ::std::wstring , bool > >, BException ex) > asyncResult) ;
@@ -3298,11 +3298,11 @@ class BStub_RemoteMapTypes : public BStub, public virtual RemoteMapTypes {
 	public: virtual void setString1(const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1) ;
 	public: virtual void setString1(const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1) ;
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1) ;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< ::std::map< int32_t , PBytes > > getByte2() ;
 	public: virtual void getByte2(::std::function< void (byps_ptr< ::std::map< int32_t , PBytes > >, BException ex) > asyncResult) ;
@@ -3324,15 +3324,15 @@ class BStub_RemoteMapTypes : public BStub, public virtual RemoteMapTypes {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemotePrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemotePrimitiveTypes : public virtual BRemote {
 	
@@ -3366,8 +3366,8 @@ class RemotePrimitiveTypes : public virtual BRemote {
 	public: virtual void setString(const ::std::wstring& v)  = 0;
 	public: virtual void setString(const ::std::wstring& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes(const com::wilutions::byps::test::api::prim::PPrimitiveTypes& v)  = 0;
-	public: virtual void setPrimitiveTypes(const com::wilutions::byps::test::api::prim::PPrimitiveTypes& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes(const byps::test::api::prim::PPrimitiveTypes& v)  = 0;
+	public: virtual void setPrimitiveTypes(const byps::test::api::prim::PPrimitiveTypes& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void setObject(const PSerializable& v)  = 0;
 	public: virtual void setObject(const PSerializable& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -3399,14 +3399,14 @@ class RemotePrimitiveTypes : public virtual BRemote {
 	public: virtual ::std::wstring getString()  = 0;
 	public: virtual void getString(::std::function< void (::std::wstring, BException ex) > asyncResult)  = 0;
 	
-	public: virtual com::wilutions::byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes()  = 0;
-	public: virtual void getPrimitiveTypes(::std::function< void (com::wilutions::byps::test::api::prim::PPrimitiveTypes, BException ex) > asyncResult)  = 0;
+	public: virtual byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes()  = 0;
+	public: virtual void getPrimitiveTypes(::std::function< void (byps::test::api::prim::PPrimitiveTypes, BException ex) > asyncResult)  = 0;
 	
 	public: virtual PSerializable getObject()  = 0;
 	public: virtual void getObject(::std::function< void (PSerializable, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const com::wilutions::byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o)  = 0;
-	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const com::wilutions::byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o)  = 0;
+	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual int32_t add(int32_t a, int32_t b)  = 0;
 	public: virtual void add(int32_t a, int32_t b, ::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
@@ -3417,13 +3417,13 @@ class RemotePrimitiveTypes : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemotePrimitiveTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemotePrimitiveTypes;
 typedef byps_ptr<BStub_RemotePrimitiveTypes> PStub_RemotePrimitiveTypes;
@@ -3432,7 +3432,7 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	
 	public: BStub_RemotePrimitiveTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1341983932; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1178916877; }
 	
 	public: virtual void voidFunctionVoid() ;
 	public: virtual void voidFunctionVoid(::std::function< void (bool, BException ex) > asyncResult) ;
@@ -3464,8 +3464,8 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	public: virtual void setString(const ::std::wstring& v) ;
 	public: virtual void setString(const ::std::wstring& v, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes(const com::wilutions::byps::test::api::prim::PPrimitiveTypes& v) ;
-	public: virtual void setPrimitiveTypes(const com::wilutions::byps::test::api::prim::PPrimitiveTypes& v, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes(const byps::test::api::prim::PPrimitiveTypes& v) ;
+	public: virtual void setPrimitiveTypes(const byps::test::api::prim::PPrimitiveTypes& v, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setObject(const PSerializable& v) ;
 	public: virtual void setObject(const PSerializable& v, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -3497,14 +3497,14 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	public: virtual ::std::wstring getString() ;
 	public: virtual void getString(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
-	public: virtual com::wilutions::byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() ;
-	public: virtual void getPrimitiveTypes(::std::function< void (com::wilutions::byps::test::api::prim::PPrimitiveTypes, BException ex) > asyncResult) ;
+	public: virtual byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() ;
+	public: virtual void getPrimitiveTypes(::std::function< void (byps::test::api::prim::PPrimitiveTypes, BException ex) > asyncResult) ;
 	
 	public: virtual PSerializable getObject() ;
 	public: virtual void getObject(::std::function< void (PSerializable, BException ex) > asyncResult) ;
 	
-	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const com::wilutions::byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o) ;
-	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const com::wilutions::byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o) ;
+	public: virtual void sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual int32_t add(int32_t a, int32_t b) ;
 	public: virtual void add(int32_t a, int32_t b, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -3514,34 +3514,34 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteReferences
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteReferences : public virtual BRemote {
 	
-	public: virtual com::wilutions::byps::test::api::refs::PNode getNode()  = 0;
-	public: virtual void getNode(::std::function< void (com::wilutions::byps::test::api::refs::PNode, BException ex) > asyncResult)  = 0;
+	public: virtual byps::test::api::refs::PNode getNode()  = 0;
+	public: virtual void getNode(::std::function< void (byps::test::api::refs::PNode, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setNode(const com::wilutions::byps::test::api::refs::PNode& v)  = 0;
-	public: virtual void setNode(const com::wilutions::byps::test::api::refs::PNode& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setNode(const byps::test::api::refs::PNode& v)  = 0;
+	public: virtual void setNode(const byps::test::api::refs::PNode& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteReferences
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteReferences;
 typedef byps_ptr<BStub_RemoteReferences> PStub_RemoteReferences;
@@ -3550,25 +3550,25 @@ class BStub_RemoteReferences : public BStub, public virtual RemoteReferences {
 	
 	public: BStub_RemoteReferences(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2086824050; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 568637225; }
 	
-	public: virtual com::wilutions::byps::test::api::refs::PNode getNode() ;
-	public: virtual void getNode(::std::function< void (com::wilutions::byps::test::api::refs::PNode, BException ex) > asyncResult) ;
+	public: virtual byps::test::api::refs::PNode getNode() ;
+	public: virtual void getNode(::std::function< void (byps::test::api::refs::PNode, BException ex) > asyncResult) ;
 	
-	public: virtual void setNode(const com::wilutions::byps::test::api::refs::PNode& v) ;
-	public: virtual void setNode(const com::wilutions::byps::test::api::refs::PNode& v, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setNode(const byps::test::api::refs::PNode& v) ;
+	public: virtual void setNode(const byps::test::api::refs::PNode& v, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteServerCtrl
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteServerCtrl : public virtual BRemote {
 	
@@ -3584,13 +3584,13 @@ class RemoteServerCtrl : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteServerCtrl
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteServerCtrl;
 typedef byps_ptr<BStub_RemoteServerCtrl> PStub_RemoteServerCtrl;
@@ -3599,7 +3599,7 @@ class BStub_RemoteServerCtrl : public BStub, public virtual RemoteServerCtrl {
 	
 	public: BStub_RemoteServerCtrl(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1124545992; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1652234479; }
 	
 	public: virtual void publishRemote(const ::std::wstring& name, const PRemote& remote, bool fowardToOtherServers) ;
 	public: virtual void publishRemote(const ::std::wstring& name, const PRemote& remote, bool fowardToOtherServers, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -3612,15 +3612,15 @@ class BStub_RemoteServerCtrl : public BStub, public virtual RemoteServerCtrl {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteSetTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteSetTypes : public virtual BRemote {
 	
@@ -3678,11 +3678,11 @@ class RemoteSetTypes : public virtual BRemote {
 	public: virtual void setString1(const byps_ptr< ::std::set< ::std::wstring > >& string1)  = 0;
 	public: virtual void setString1(const byps_ptr< ::std::set< ::std::wstring > >& string1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
-	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
+	public: virtual byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1()  = 0;
+	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)  = 0;
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)  = 0;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	public: virtual byps_ptr< ::std::set< PBytes > > getByte2()  = 0;
 	public: virtual void getByte2(::std::function< void (byps_ptr< ::std::set< PBytes > >, BException ex) > asyncResult)  = 0;
@@ -3705,13 +3705,13 @@ class RemoteSetTypes : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteSetTypes
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteSetTypes;
 typedef byps_ptr<BStub_RemoteSetTypes> PStub_RemoteSetTypes;
@@ -3720,7 +3720,7 @@ class BStub_RemoteSetTypes : public BStub, public virtual RemoteSetTypes {
 	
 	public: BStub_RemoteSetTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1156008353; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1900796440; }
 	
 	public: virtual byps_ptr< ::std::set< bool > > getBoolean1() ;
 	public: virtual void getBoolean1(::std::function< void (byps_ptr< ::std::set< bool > >, BException ex) > asyncResult) ;
@@ -3776,11 +3776,11 @@ class BStub_RemoteSetTypes : public BStub, public virtual RemoteSetTypes {
 	public: virtual void setString1(const byps_ptr< ::std::set< ::std::wstring > >& string1) ;
 	public: virtual void setString1(const byps_ptr< ::std::set< ::std::wstring > >& string1, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
-	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
+	public: virtual byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > > getPrimitiveTypes1() ;
+	public: virtual void getPrimitiveTypes1(::std::function< void (byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult) ;
 	
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1) ;
-	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< com::wilutions::byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1) ;
+	public: virtual void setPrimitiveTypes1(const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual byps_ptr< ::std::set< PBytes > > getByte2() ;
 	public: virtual void getByte2(::std::function< void (byps_ptr< ::std::set< PBytes > >, BException ex) > asyncResult) ;
@@ -3802,15 +3802,15 @@ class BStub_RemoteSetTypes : public BStub, public virtual RemoteSetTypes {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteStreams
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class RemoteStreams : public virtual BRemote {
 	
@@ -3835,13 +3835,13 @@ class RemoteStreams : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_RemoteStreams
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteStreams;
 typedef byps_ptr<BStub_RemoteStreams> PStub_RemoteStreams;
@@ -3850,7 +3850,7 @@ class BStub_RemoteStreams : public BStub, public virtual RemoteStreams {
 	
 	public: BStub_RemoteStreams(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2028487863; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1043578866; }
 	
 	public: virtual PContentStream getImage() ;
 	public: virtual void getImage(::std::function< void (PContentStream, BException ex) > asyncResult) ;
@@ -3872,15 +3872,15 @@ class BStub_RemoteStreams : public BStub, public virtual RemoteStreams {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // RemoteWithAuthentication
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// This interface is an example for using the authentication mechanism.
@@ -3899,20 +3899,20 @@ class RemoteWithAuthentication : public virtual BRemote {
 	/// <remarks>
 	/// Only user "Fritz" is allowed to login.
 	/// </remarks>
-	public: virtual com::wilutions::byps::test::api::auth::PSessionInfo login(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd)  = 0;
-	public: virtual void login(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  = 0;
+	public: virtual byps::test::api::auth::PSessionInfo login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd)  = 0;
+	public: virtual void login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  = 0;
 	
 	/// <summary>
 	/// Do something.
 	/// </summary>
-	public: virtual int32_t doit(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, int32_t value)  = 0;
-	public: virtual void doit(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
+	public: virtual int32_t doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value)  = 0;
+	public: virtual void doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
 	
 	/// <summary>
 	/// Logout
 	/// </summary>
-	public: virtual void expire(const com::wilutions::byps::test::api::auth::PSessionInfo& sess)  = 0;
-	public: virtual void expire(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void expire(const byps::test::api::auth::PSessionInfo& sess)  = 0;
+	public: virtual void expire(const byps::test::api::auth::PSessionInfo& sess, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	/// <summary>
 	/// Set the number of login calls nessesary to login the user.
@@ -3926,14 +3926,14 @@ class RemoteWithAuthentication : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 
 //-------------------------------------------------
 // RemoteWithAuthenticationAuth
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 /// <summary>
 /// This interface is an example for using the authentication mechanism.
@@ -3952,8 +3952,8 @@ class RemoteWithAuthenticationAuth : public virtual BRemote {
 	/// <remarks>
 	/// Only user "Fritz" is allowed to login.
 	/// </remarks>
-	public: virtual com::wilutions::byps::test::api::auth::PSessionInfo login(const ::std::wstring& userName, const ::std::wstring& userPwd)  = 0;
-	public: virtual void login(const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  = 0;
+	public: virtual byps::test::api::auth::PSessionInfo login(const ::std::wstring& userName, const ::std::wstring& userPwd)  = 0;
+	public: virtual void login(const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  = 0;
 	
 	/// <summary>
 	/// Do something.
@@ -3979,48 +3979,48 @@ class RemoteWithAuthenticationAuth : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_RemoteWithAuthentication
 // Your interface implementation class has to be derived from this skeleton.
 // Either provide an asynchronous or a synchronous function in your subclass.
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BSkeleton_RemoteWithAuthentication;
 typedef byps_ptr<BSkeleton_RemoteWithAuthentication> PSkeleton_RemoteWithAuthentication;
 
 class BSkeleton_RemoteWithAuthentication : public BSkeleton, public virtual RemoteWithAuthentication {
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1677934392; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1983670399; }
 	
 	public: virtual void setUseAuthentication(bool useAuth) ;
 	public: virtual void setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual com::wilutions::byps::test::api::auth::PSessionInfo login(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd) ;
-	public: virtual void login(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult) ;
+	public: virtual byps::test::api::auth::PSessionInfo login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd) ;
+	public: virtual void login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult) ;
 	
-	public: virtual int32_t doit(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, int32_t value) ;
-	public: virtual void doit(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult) ;
+	public: virtual int32_t doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value) ;
+	public: virtual void doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult) ;
 	
-	public: virtual void expire(const com::wilutions::byps::test::api::auth::PSessionInfo& sess) ;
-	public: virtual void expire(const com::wilutions::byps::test::api::auth::PSessionInfo& sess, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void expire(const byps::test::api::auth::PSessionInfo& sess) ;
+	public: virtual void expire(const byps::test::api::auth::PSessionInfo& sess, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	public: virtual void setReloginCount(int32_t count) ;
 	public: virtual void setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 	
 };
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Stub class BStub_RemoteWithAuthentication
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace remote { 
+namespace byps { namespace test { namespace api { namespace remote { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_RemoteWithAuthentication;
 typedef byps_ptr<BStub_RemoteWithAuthentication> PStub_RemoteWithAuthentication;
@@ -4029,13 +4029,13 @@ class BStub_RemoteWithAuthentication : public BStub, public virtual RemoteWithAu
 	
 	public: BStub_RemoteWithAuthentication(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1677934392; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1983670399; }
 	
 	public: virtual void setUseAuthentication(bool useAuth) ;
 	public: virtual void setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
-	public: virtual com::wilutions::byps::test::api::auth::PSessionInfo login(const ::std::wstring& userName, const ::std::wstring& userPwd) ;
-	public: virtual void login(const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (com::wilutions::byps::test::api::auth::PSessionInfo, BException ex) > asyncResult) ;
+	public: virtual byps::test::api::auth::PSessionInfo login(const ::std::wstring& userName, const ::std::wstring& userPwd) ;
+	public: virtual void login(const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult) ;
 	
 	public: virtual int32_t doit(int32_t value) ;
 	public: virtual void doit(int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4048,15 +4048,15 @@ class BStub_RemoteWithAuthentication : public BStub, public virtual RemoteWithAu
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // ClientIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class ClientIF : public virtual BRemote {
 	
@@ -4075,22 +4075,22 @@ class ClientIF : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_ClientIF
 // Your interface implementation class has to be derived from this skeleton.
 // Either provide an asynchronous or a synchronous function in your subclass.
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BSkeleton_ClientIF;
 typedef byps_ptr<BSkeleton_ClientIF> PSkeleton_ClientIF;
 
 class BSkeleton_ClientIF : public BSkeleton, public virtual ClientIF {
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1784257353; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2049072174; }
 	
 	public: virtual int32_t incrementInt(int32_t a) ;
 	public: virtual void incrementInt(int32_t a, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4106,14 +4106,14 @@ class BSkeleton_ClientIF : public BSkeleton, public virtual ClientIF {
 	
 	
 };
-}}}}}}
+}}
 
 //-------------------------------------------------
 // Stub class BStub_ClientIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_ClientIF;
 typedef byps_ptr<BStub_ClientIF> PStub_ClientIF;
@@ -4122,7 +4122,7 @@ class BStub_ClientIF : public BStub, public virtual ClientIF {
 	
 	public: BStub_ClientIF(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1784257353; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2049072174; }
 	
 	public: virtual int32_t incrementInt(int32_t a) ;
 	public: virtual void incrementInt(int32_t a, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4138,15 +4138,15 @@ class BStub_ClientIF : public BStub, public virtual ClientIF {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // ServerIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class ServerIF : public virtual BRemote {
 	
@@ -4180,13 +4180,13 @@ class ServerIF : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_ServerIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace srvr { 
+namespace byps { namespace test { namespace api { namespace srvr { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_ServerIF;
 typedef byps_ptr<BStub_ServerIF> PStub_ServerIF;
@@ -4195,7 +4195,7 @@ class BStub_ServerIF : public BStub, public virtual ServerIF {
 	
 	public: BStub_ServerIF(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1313562065; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1775199834; }
 	
 	public: virtual int32_t callClientIncrementInt(int32_t v) ;
 	public: virtual void callClientIncrementInt(int32_t v, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4226,15 +4226,15 @@ class BStub_ServerIF : public BStub, public virtual ServerIF {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
 // EvolveIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class EvolveIF : public virtual BRemote {
 	
@@ -4256,13 +4256,13 @@ class EvolveIF : public virtual BRemote {
 	
 };
 
-}}}}}}
+}}
 //-------------------------------------------------
 // Stub class BStub_EvolveIF
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { namespace ver { 
+namespace byps { namespace test { namespace api { namespace ver { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BStub_EvolveIF;
 typedef byps_ptr<BStub_EvolveIF> PStub_EvolveIF;
@@ -4271,7 +4271,7 @@ class BStub_EvolveIF : public BStub, public virtual EvolveIF {
 	
 	public: BStub_EvolveIF(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2078696281; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 15377840; }
 	
 	public: virtual void setEvolve(const PEvolve& obj) ;
 	public: virtual void setEvolve(const PEvolve& obj, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -4290,11 +4290,11 @@ class BStub_EvolveIF : public BStub, public virtual EvolveIF {
 	
 	
 };
-}}}}}}
+}}
 
 
 //-------------------------------------------------
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
 class BRegistry_Testser : public BRegistry { 
 public:
@@ -4302,10 +4302,10 @@ public:
 	virtual ~BRegistry_Testser() {}
 };
 
-}}}}}
+}
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
-using namespace ::com::wilutions::byps;
+namespace byps { namespace test { namespace api { 
+using namespace ::byps;
 
 class BApiDescriptor_Testser { 
 	/**
@@ -4315,11 +4315,11 @@ class BApiDescriptor_Testser {
 	public: static PApiDescriptor instance();
 };
 
-}}}}}
+}
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BClient_Testser;
 typedef byps_ptr<BClient_Testser> PClient_Testser;
@@ -4330,13 +4330,13 @@ class BClient_Testser : public BClient {
 	
 	public: static PClient_Testser createClientR(PTransport transport);
 	
-	public: void addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton);
+	public: void addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton);
 	
-	public: void addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton);
+	public: void addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton);
 	
-	public: void addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
+	public: void addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
 	
-	public: void addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
+	public: void addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
 	
 	protected: BClient_Testser(PTransportFactory transportFactory); 
 	
@@ -4344,36 +4344,36 @@ class BClient_Testser : public BClient {
 	
 	public: virtual PRemote getStub(int remoteId);
 	
-	public: const com::wilutions::byps::test::api::inherit::PBioFruitServiceAuth bioFruitService;
-	public: const com::wilutions::byps::test::api::inherit::PBioLemonServiceAuth bioLemonService;
-	public: const com::wilutions::byps::test::api::inherit::PFruitServiceAuth fruitService;
-	public: const com::wilutions::byps::test::api::inherit::PLemonServiceAuth lemonService;
-	public: const com::wilutions::byps::test::api::inherit::PPlantServiceAuth plantService;
-	public: const com::wilutions::byps::test::api::remote::PRemoteArrayTypes1dim remoteArrayTypes1dim;
-	public: const com::wilutions::byps::test::api::remote::PRemoteArrayTypes23 remoteArrayTypes23;
-	public: const com::wilutions::byps::test::api::remote::PRemoteArrayTypes4dim remoteArrayTypes4dim;
-	public: const com::wilutions::byps::test::api::remote::PRemoteConstants remoteConstants;
-	public: const com::wilutions::byps::test::api::remote::PRemoteEnums remoteEnums;
-	public: const com::wilutions::byps::test::api::remote::PRemoteInlineInstance remoteInlineInstance;
-	public: const com::wilutions::byps::test::api::remote::PRemoteListTypes remoteListTypes;
-	public: const com::wilutions::byps::test::api::remote::PRemoteMapTypes remoteMapTypes;
-	public: const com::wilutions::byps::test::api::remote::PRemotePrimitiveTypes remotePrimitiveTypes;
-	public: const com::wilutions::byps::test::api::remote::PRemoteReferences remoteReferences;
-	public: const com::wilutions::byps::test::api::remote::PRemoteServerCtrl remoteServerCtrl;
-	public: const com::wilutions::byps::test::api::remote::PRemoteSetTypes remoteSetTypes;
-	public: const com::wilutions::byps::test::api::remote::PRemoteStreams remoteStreams;
-	public: const com::wilutions::byps::test::api::remote::PRemoteWithAuthenticationAuth remoteWithAuthentication;
-	public: const com::wilutions::byps::test::api::srvr::PClientIF clientIF;
-	public: const com::wilutions::byps::test::api::srvr::PServerIF serverIF;
-	public: const com::wilutions::byps::test::api::ver::PEvolveIF evolveIF;
+	public: const byps::test::api::inherit::PBioFruitServiceAuth bioFruitService;
+	public: const byps::test::api::inherit::PBioLemonServiceAuth bioLemonService;
+	public: const byps::test::api::inherit::PFruitServiceAuth fruitService;
+	public: const byps::test::api::inherit::PLemonServiceAuth lemonService;
+	public: const byps::test::api::inherit::PPlantServiceAuth plantService;
+	public: const byps::test::api::remote::PRemoteArrayTypes1dim remoteArrayTypes1dim;
+	public: const byps::test::api::remote::PRemoteArrayTypes23 remoteArrayTypes23;
+	public: const byps::test::api::remote::PRemoteArrayTypes4dim remoteArrayTypes4dim;
+	public: const byps::test::api::remote::PRemoteConstants remoteConstants;
+	public: const byps::test::api::remote::PRemoteEnums remoteEnums;
+	public: const byps::test::api::remote::PRemoteInlineInstance remoteInlineInstance;
+	public: const byps::test::api::remote::PRemoteListTypes remoteListTypes;
+	public: const byps::test::api::remote::PRemoteMapTypes remoteMapTypes;
+	public: const byps::test::api::remote::PRemotePrimitiveTypes remotePrimitiveTypes;
+	public: const byps::test::api::remote::PRemoteReferences remoteReferences;
+	public: const byps::test::api::remote::PRemoteServerCtrl remoteServerCtrl;
+	public: const byps::test::api::remote::PRemoteSetTypes remoteSetTypes;
+	public: const byps::test::api::remote::PRemoteStreams remoteStreams;
+	public: const byps::test::api::remote::PRemoteWithAuthenticationAuth remoteWithAuthentication;
+	public: const byps::test::api::srvr::PClientIF clientIF;
+	public: const byps::test::api::srvr::PServerIF serverIF;
+	public: const byps::test::api::ver::PEvolveIF evolveIF;
 	
 };
 
-}}}}}
+}
 
-namespace com { namespace wilutions { namespace byps { namespace test { namespace api { 
+namespace byps { namespace test { namespace api { 
 
-using namespace ::com::wilutions::byps;
+using namespace ::byps;
 
 class BServer_Testser;
 typedef byps_ptr<BServer_Testser> PServer_Testser;
@@ -4384,13 +4384,13 @@ class BServer_Testser : public BServer {
 	
 	public: static PServer_Testser createServerR(PTransport transport);
 	
-	public: void addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton);
+	public: void addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton);
 	
-	public: void addRemote(com::wilutions::byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton);
+	public: void addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton);
 	
-	public: void addRemote(com::wilutions::byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
+	public: void addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
 	
-	public: void addRemote(com::wilutions::byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
+	public: void addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
 	
 	protected: BServer_Testser(PTransportFactory transportFactory); 
 	
@@ -4398,7 +4398,7 @@ class BServer_Testser : public BServer {
 	
 };
 
-}}}}}
+}
 
 
 #endif

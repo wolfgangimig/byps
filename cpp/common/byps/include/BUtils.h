@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace ::std;
 
@@ -25,7 +25,7 @@ inline BTYPEID BHash(const char* s, int bias) {
 wstring BToStdWString(const string& str);
 wstring BToStdWString(const char* str, size_t len = string::npos);
 
-}}}
+}
 
 
 #endif /* BUTILS_H_ */

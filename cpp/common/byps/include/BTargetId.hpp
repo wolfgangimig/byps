@@ -4,7 +4,7 @@
 #include "BTargetId.h"
 #include "BBuffer.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BTargetId::BTargetId() : serverId(0), v1(0), v2(0) {
 }
@@ -51,6 +51,6 @@ BINLINE void BTargetId::serialize(BBuffer& bbuf) {
 
 
 
-}}}
+}
 
 #endif // BTARGETID_HPP

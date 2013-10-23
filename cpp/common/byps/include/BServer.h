@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 using namespace ::std;
 
@@ -37,7 +37,7 @@ public:
     virtual void done();
 };
 
-}}}
+}
 
 
 #endif // BSERVER_H

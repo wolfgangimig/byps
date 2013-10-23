@@ -3,7 +3,7 @@
 
 #include "BIO.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
     : transport(transport)
@@ -108,7 +108,7 @@ BINLINE void BIO::serializeObj(POBJECT& pObj, const type_info* tinfo) {
     }
 }
 
-}}}
+}
 
 
 #endif // BIO_HPP

@@ -14,7 +14,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 
 		var bout = transport.getOutput();
 		
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		var msg = bout.store(obj);
 		
 		var bin = transport.getInput(msg.jsonText);
@@ -33,7 +33,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	it("testArrayTypes1dimEmpty", function() {
 		log.info("testArrayTypes1dimEmpty(");
 		
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.boolean1 = [];
 		obj.byte1 = [];
 		obj.char1 = [];
@@ -65,7 +65,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	it("testArrayTypes1dimNotNull", function() {
 		log.info("testArrayTypes1dimNotNull(");
 		
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.boolean1 = [true];
 		obj.byte1 = Base64.encode("abc");
 		obj.char1 = ['a','b','c'];
@@ -92,7 +92,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	});
 
 	internalTestArrayTypes1dimBoolean = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.boolean1 = arr;
 		internalTestSerializeArrayTypes(obj);
 	};
@@ -108,7 +108,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	});
 
 	internalTestArrayTypes1dimChar = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.char1 = arr;
 		internalTestSerializeArrayTypes(obj);
 	};
@@ -123,7 +123,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	});
 
 	internalTestArrayTypes1dimInt = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.int1 = arr;
 		internalTestSerializeArrayTypes(obj);
 	};
@@ -138,7 +138,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	});
 
 	internalTestArrayTypes1dimLong = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.long1 = arr;
 		internalTestSerializeArrayTypes(obj);
 	};
@@ -175,7 +175,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	});
 
 	internalTestArrayTypes1dimString = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.string1 = arr;
 		internalTestSerializeArrayTypes(obj);
 	};
@@ -190,7 +190,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 	});
 
 	internalTestArrayTypes1dimPimitiveTypes = function(arr) {
-		var obj = new com.wilutions.byps.test.api.arr.ArrayTypes1dim();
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
 		obj.primitiveTypes1 = arr;
 		internalTestSerializeArrayTypes(obj);
 	};

@@ -1,4 +1,4 @@
-package com.wilutions.byps;
+package byps;
 
 
 public class RemoteException extends de.elo.utils.net.RemoteException {

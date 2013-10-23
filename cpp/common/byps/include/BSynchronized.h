@@ -3,8 +3,8 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
-}}}
+}
 
 #endif // BSYNCHRONIZED_H

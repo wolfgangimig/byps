@@ -6,9 +6,9 @@
 #include "BLogger.h"
 #include <random>
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 class HWireClient_RequestsToCancel;
 typedef byps_ptr<HWireClient_RequestsToCancel> PWireClient_RequestsToCancel;
@@ -78,6 +78,6 @@ protected:
 	friend class HWireClient_SendMessageAfterStreams;
 };
 
-}}}}
+}}
 
 #endif

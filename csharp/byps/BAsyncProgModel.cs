@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace com.wilutions.byps
+namespace byps
 {
     public class BAsyncProgModel<T> : IAsyncResult, BAsyncResultIF<T>
     {

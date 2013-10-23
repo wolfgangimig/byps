@@ -13,7 +13,7 @@ class AssertException;
 class TestCase;
 class TestSuite;
 
-}}}
+}
 
 #include <assert.h>
 #include "AssertException.h"

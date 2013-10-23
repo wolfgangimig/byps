@@ -10,7 +10,7 @@
 
 #include "BRegistry.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 BINLINE void BSerializer_12(BIO& bio, POBJECT& pObj, PSerializable& , void* ){
@@ -73,6 +73,6 @@ BINLINE BSERIALIZER BRegistry::getSerializer(BTYPEID typeId) {
     return ser;
 }
 
-}}}
+}
 
 #endif /* BREGISTRY_H_ */

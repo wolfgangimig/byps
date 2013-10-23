@@ -1,12 +1,12 @@
 ﻿#include "AllTests.h"
 
-using namespace com::wilutions::byps;
+using namespace byps;
 using namespace com::wilutions::test;
 
-using namespace com::wilutions::byps::test::api;
-using namespace com::wilutions::byps::test::api::prim;
-using namespace com::wilutions::byps::test::api::set;
-using namespace com::wilutions::byps::test::api::remote;
+using namespace byps::test::api;
+using namespace byps::test::api::prim;
+using namespace byps::test::api::set;
+using namespace byps::test::api::remote;
 
 
 template <typename _Type> byps_ptr< ::std::set< _Type > > toSet(_Type a, _Type b, _Type c, _Type d) {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using com.wilutions.byps;
-using com.wilutions.byps.test.api.remote;
+using byps;
+using byps.test.api.remote;
 using System.Threading.Tasks;
 using System.Threading;
 
@@ -11,7 +11,7 @@ namespace bypstest
     public class TestRemoteAsync
     {
         Log log = LogFactory.getLog(typeof(TestRemoteAsync));
-        com.wilutions.byps.test.api.BClient_Testser client;
+        byps.test.api.BClient_Testser client;
         RemotePrimitiveTypes remote;
 
         [TestInitialize]

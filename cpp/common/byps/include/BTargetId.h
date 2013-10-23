@@ -4,7 +4,7 @@
 #include "Byps.h"
 #include <iomanip>
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BBuffer;
 
@@ -38,7 +38,7 @@ public:
 
 
 
-}}}
+}
 
 
 #endif

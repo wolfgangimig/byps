@@ -6,10 +6,10 @@
 #include <Windows.h>
 #include <Winhttp.h>
 
-namespace com { namespace wilutions { namespace byps { namespace http { namespace winhttp {
+namespace byps { namespace http { namespace winhttp {
 
 
-}}}}}
+}}}
 
 
 #endif

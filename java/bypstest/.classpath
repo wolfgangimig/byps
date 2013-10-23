@@ -5,11 +5,12 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-ser"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Logging"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-ser-json"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
+	<classpathentry kind="lib" path="D:/git/byps/java/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/git/byps/java/lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

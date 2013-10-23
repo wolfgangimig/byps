@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 
 BINLINE BInput::BInput(PTransport transport, const BMessageHeader &header, PBytes& pBytes)
@@ -111,6 +111,6 @@ BINLINE void BInput::internalLoadObjS(PSerializable& pObjS) {
 
 }
 
-}}}
+}
 
 #endif // BINPUT_HPP

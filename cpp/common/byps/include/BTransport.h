@@ -3,7 +3,7 @@
 
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 class BTransport : public byps_enable_shared_from_this<BTransport> {
 public:
@@ -60,7 +60,7 @@ protected:
 	friend class BInput;
 };
 
-}}}
+}
 
 
 

@@ -1,10 +1,8 @@
-var com = com || {};
-com.wilutions = com.wilutions || {};
-com.wilutions.byps = com.wilutions.byps || {};
+var byps = byps || {};
 
 // ------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BBinaryModel = function(v) {
+byps.BBinaryModel = function(v) {
 	this.MEDIUM = "MEDIUM";
 	this.JSON = "JSON";
 	
@@ -17,7 +15,7 @@ com.wilutions.byps.BBinaryModel = function(v) {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BExceptionO = {
+byps.BExceptionO = {
 	formatMessage : function(code, msg, details, cause) {
 		var s = "[BYPS:" + code + "]";
 		if (msg) s += "[" + msg + "]";
@@ -29,7 +27,7 @@ com.wilutions.byps.BExceptionO = {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BException = function(code, msg, details, cause) {
+byps.BException = function(code, msg, details, cause) {
 	this._typeId = 20;
 	this.code = code;
 	this.msg = msg;
@@ -37,40 +35,40 @@ com.wilutions.byps.BException = function(code, msg, details, cause) {
 	this.cause = cause;
 };
 
-com.wilutions.byps.BException.prototype.toString = function() {
-	var s = com.wilutions.byps.BExceptionO.formatMessage(this.code, this.msg, this.details, this.cause);
+byps.BException.prototype.toString = function() {
+	var s = byps.BExceptionO.formatMessage(this.code, this.msg, this.details, this.cause);
 	return s;
 };
 
-com.wilutions.byps.throwExceptionFromStream = function(data) {
+byps.throwExceptionFromStream = function(data) {
 	var ex = data;
 	if (data._typeId == 20) {
-		ex = new com.wilutions.byps.BException(data.code, data.msg, data.details, data.cause);
+		ex = new byps.BException(data.code, data.msg, data.details, data.cause);
 	}
 	throw ex;
 };
 
-com.wilutions.byps.throwBException = function(code, msg, details, cause) {
-	throw new com.wilutions.byps.BException(code, msg, details, cause);
+byps.throwBException = function(code, msg, details, cause) {
+	throw new byps.BException(code, msg, details, cause);
 };
 
-com.wilutions.byps.throwCORRUPT = function(msg, details) {
-	throw new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.CORRUPT, msg, details);
+byps.throwCORRUPT = function(msg, details) {
+	throw new byps.BException(byps.BExceptionC.CORRUPT, msg, details);
 };
 
-com.wilutions.byps.throwIOERROR = function(msg, details) {
-	throw new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.IOERROR, msg, details);
+byps.throwIOERROR = function(msg, details) {
+	throw new byps.BException(byps.BExceptionC.IOERROR, msg, details);
 };
 
-com.wilutions.byps.throwUNSUPPORTED = function(msg, details) { 
-	throw new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.UNSUPPORTED_METHOD, msg, details);
+byps.throwUNSUPPORTED = function(msg, details) { 
+	throw new byps.BException(byps.BExceptionC.UNSUPPORTED_METHOD, msg, details);
 };
 
-com.wilutions.byps.throwINTERNAL = function(msg, details) { 
-	throw new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.INTERNAL, msg, details);
+byps.throwINTERNAL = function(msg, details) { 
+	throw new byps.BException(byps.BExceptionC.INTERNAL, msg, details);
 };
 
-com.wilutions.byps.BExceptionC = {
+byps.BExceptionC = {
 	INTERNAL : 3,
 	CORRUPT : 8,
 	IOERROR : 14,
@@ -83,14 +81,14 @@ com.wilutions.byps.BExceptionC = {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BContentStream = function(streamId) {
+byps.BContentStream = function(streamId) {
 	this._typeId = 15;
 	this.streamId = streamId;
 };
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BSerializer = function(persistentNames, inlineNames, inlineInstance) {
+byps.BSerializer = function(persistentNames, inlineNames, inlineInstance) {
 	
 	this.inlineInstance = inlineInstance;
 	
@@ -149,7 +147,7 @@ com.wilutions.byps.BSerializer = function(persistentNames, inlineNames, inlineIn
 //------------------------------------------------------------------------------------------------
 //Serializer for arrays
 
-com.wilutions.byps.BSerializerArray = function(elementTypeId, nbOfDimensions) {
+byps.BSerializerArray = function(elementTypeId, nbOfDimensions) {
 
 	var elementSerializer = undefined;
 
@@ -202,7 +200,7 @@ com.wilutions.byps.BSerializerArray = function(elementTypeId, nbOfDimensions) {
 //------------------------------------------------------------------------------------------------
 //Serializer for Map
 
-com.wilutions.byps.BSerializerMap = function(valueTypeId) {
+byps.BSerializerMap = function(valueTypeId) {
 
 	var valueSerializer = undefined;
 
@@ -239,7 +237,7 @@ com.wilutions.byps.BSerializerMap = function(valueTypeId) {
 //------------------------------------------------------------------------------------------------
 //Serializer for streams
 
-com.wilutions.byps.BSerializer_15 = function() {
+byps.BSerializer_15 = function() {
 	
 	this.write = function(obj, bout) {
 	};
@@ -255,11 +253,11 @@ com.wilutions.byps.BSerializer_15 = function() {
 	};
 	
 };
-com.wilutions.byps.BSerializer_15.prototype = new com.wilutions.byps.BSerializer();
+byps.BSerializer_15.prototype = new byps.BSerializer();
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BSerializerRemote = function(clazz) {
+byps.BSerializerRemote = function(clazz) {
 	
 	// When sending a remote, internal members are omitted.
 	// The remote has a toJSON method that creates an 
@@ -270,7 +268,7 @@ com.wilutions.byps.BSerializerRemote = function(clazz) {
 	
 	this.read = function(obj, bin) {
 		if (obj.constructor !== Object) return obj;
-		var transport = new com.wilutions.byps.BTransport(bin.transport.apiDesc, bin.transport.wire, obj.targetId);
+		var transport = new byps.BTransport(bin.transport.apiDesc, bin.transport.wire, obj.targetId);
 		obj = new clazz(transport);
 		return obj;
 	};
@@ -279,7 +277,7 @@ com.wilutions.byps.BSerializerRemote = function(clazz) {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BRegistry = function() {
+byps.BRegistry = function() {
 	
 	// sublcass has to implement:
 	// this._serializerMap
@@ -301,13 +299,13 @@ com.wilutions.byps.BRegistry = function() {
 		return ser;
 	};
 	
-	this._defaultSerializer = new com.wilutions.byps.BSerializer();
-	this._streamSerializer = new com.wilutions.byps.BSerializer_15();
+	this._defaultSerializer = new byps.BSerializer();
+	this._streamSerializer = new byps.BSerializer_15();
 };
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BApiDescriptor = function(name, basePackage, version, uniqueObjects, registry) {
+byps.BApiDescriptor = function(name, basePackage, version, uniqueObjects, registry) {
 	this.name = name;
 	this.basePackage = basePackage;
 	this.version = version;
@@ -318,7 +316,7 @@ com.wilutions.byps.BApiDescriptor = function(name, basePackage, version, uniqueO
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BNegotiate = function(apiDesc) {
+byps.BNegotiate = function(apiDesc) {
 	this.JSON = "J";
 	
 	this.protocols = this.JSON;
@@ -330,19 +328,19 @@ com.wilutions.byps.BNegotiate = function(apiDesc) {
 	};
 	
 	this.fromArray = function(arr) {
-    	if (!arr || arr.length < 5 || arr[0] != "N") throw new com.wilutions.byps.BException(com.wilutions.byps.BException_CORRUPT, "Invalid negotiate message.");
+    	if (!arr || arr.length < 5 || arr[0] != "N") throw new byps.BException(byps.BException_CORRUPT, "Invalid negotiate message.");
 		this.targetId = arr[4];
 	};
 };
 
-com.wilutions.byps.BNegotiate_isNegotiateMessage = function(buf) {
+byps.BNegotiate_isNegotiateMessage = function(buf) {
 	return buf.indexOf("[\"N\"") == 0;
 };
 
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BStreamRequest = function() {
+byps.BStreamRequest = function() {
 	this.streamId = "";
 	this.messageId = "";
 	
@@ -361,14 +359,14 @@ com.wilutions.byps.BStreamRequest = function() {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BMessage = function(jsonText, streams) {
+byps.BMessage = function(jsonText, streams) {
 	this.jsonText = jsonText; // Message object to be send: { header: [ ... message header ... ], objectTable: [ ] }
 	this.streams = streams || []; // Array of BStreamRequest
 };
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BMessageHeader = function(messageId_or_rhs) {
+byps.BMessageHeader = function(messageId_or_rhs) {
     
     this.error = 0;
     this.flags = 0;
@@ -392,19 +390,19 @@ com.wilutions.byps.BMessageHeader = function(messageId_or_rhs) {
 
  };
  
- com.wilutions.byps.BMessageHeaderC = {
+ byps.BMessageHeaderC = {
 		 FLAG_RESPONSE : 2
  };
 
 
 //------------------------------------------------------------------------------------------------
 // This is how an asyncResult function has to be defined.
-com.wilutions.byps.BAsyncResult = function(result, exception) {
+byps.BAsyncResult = function(result, exception) {
 };
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
+byps.BWireClient = function(url, flags, timeoutSeconds) {
 	
 	var me = this;
 	this.url = url;
@@ -432,8 +430,8 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 		
 		var destUrl = me.url;
 		
-		var isNegotiate = com.wilutions.byps.BNegotiate_isNegotiateMessage(requestMessage.jsonText);
-		var isReverse = requestMessage.header && (requestMessage.header.flags & com.wilutions.byps.BMessageHeaderC.FLAG_RESPONSE) != 0;
+		var isNegotiate = byps.BNegotiate_isNegotiateMessage(requestMessage.jsonText);
+		var isReverse = requestMessage.header && (requestMessage.header.flags & byps.BMessageHeaderC.FLAG_RESPONSE) != 0;
 
 		if (isNegotiate) {
 
@@ -468,11 +466,11 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 				delete me.openRequestsToCancel[requestId];
 				
 				if (xhr.status == 200) {
-					var responseMessage = new com.wilutions.byps.BMessage();
+					var responseMessage = new byps.BMessage();
 					responseMessage.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
 					asyncResult(responseMessage, null);
 				} else {
-					var ex = new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.IOERROR, "HTTP status " + xhr.status, xhr.responseText);
+					var ex = new byps.BException(byps.BExceptionC.IOERROR, "HTTP status " + xhr.status, xhr.responseText);
 					asyncResult(null, ex);
 				}; 
 			};
@@ -491,13 +489,13 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 			
 			delete me.openRequestsToCancel[requestId];
 			
-			var result = new com.wilutions.byps.BMessage();
+			var result = new byps.BMessage();
 			var exception = null;
 			
 			if (xhr.status == 200) {
 				result.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
 			} else {
-				exception = new com.wilutions.byps.BException(com.wilutions.byps.BExceptionC.IOERROR, "HTTP status " + xhr.status, xhr.responseText);
+				exception = new byps.BException(byps.BExceptionC.IOERROR, "HTTP status " + xhr.status, xhr.responseText);
 			}
 			
 			asyncResult(result, exception);
@@ -554,7 +552,7 @@ com.wilutions.byps.BWireClient = function(url, flags, timeoutSeconds) {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BAuthentication = function() {
+byps.BAuthentication = function() {
 	this.authenticate = function(client, asyncResult) {;};
 	this.isReloginException = function(client, ex, typeId) { return false; };
 	this.getSession = function(client, typeId, asyncResult) { };
@@ -562,7 +560,7 @@ com.wilutions.byps.BAuthentication = function() {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
+byps.BTransport = function(apiDesc, wire, targetId) {
 	
 	this.apiDesc = apiDesc;
 	this.wire = wire;
@@ -575,19 +573,19 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 	this._RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
 	
 	this.getOutput = function() {
-		return new com.wilutions.byps.BInputOutput(this);
+		return new byps.BInputOutput(this);
 	};
 	
 	this.getResponse = function(requestHeader) {
-		var responseHeader = new com.wilutions.byps.BMessageHeader(requestHeader);
-		responseHeader.flags |= com.wilutions.byps.BMessageHeaderC.FLAG_RESPONSE;
+		var responseHeader = new byps.BMessageHeader(requestHeader);
+		responseHeader.flags |= byps.BMessageHeaderC.FLAG_RESPONSE;
 
-		var bout = new com.wilutions.byps.BInputOutput(this, responseHeader);
+		var bout = new byps.BInputOutput(this, responseHeader);
 		return bout;
 	};
 	
 	this.getInput = function(jsonText) {
-		return new com.wilutions.byps.BInputOutput(this, null, jsonText);
+		return new byps.BInputOutput(this, null, jsonText);
 	};
 	
 	this.sendMethod = function(methodRequest, asyncResult) {
@@ -601,7 +599,7 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 			
 		}
 		else {
-			var methodResult = this._assignSessionThenSendMethod(methodRequest, asyncResult);
+			var methodResult = this._assignSessionThenSendMethod(methodRequest);
 			ret = methodResult ? methodResult.result : null; 
 		}
 		return ret;
@@ -747,9 +745,9 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 		
 		var me = this;
 		
-		var nego = new com.wilutions.byps.BNegotiate(apiDesc);
+		var nego = new byps.BNegotiate(apiDesc);
 		var jsonText = JSON.stringify(nego.toArray());
-		var requestMessage = new com.wilutions.byps.BMessage(jsonText);
+		var requestMessage = new byps.BMessage(jsonText);
 	
 		var outerResult = function(responseMessage, ex) {
 			
@@ -782,7 +780,7 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 	};
 	
 	this.createServerR = function(server) {
-		return new com.wilutions.byps.BServerR(this, server);
+		return new byps.BServerR(this, server);
 	};
 	
 	this.setAuthentication = function(auth, onlyIfNull) {
@@ -879,9 +877,9 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 	this.isReloginException = function(ex, typeId) {
 		var ret = false;
 		if (ex && ex.code) {
-			ret = ex.code == com.wilutions.byps.BExceptionC.AUTHENTICATION_REQUIRED;
+			ret = ex.code == byps.BExceptionC.AUTHENTICATION_REQUIRED;
 			if (!ret) {
-				ret = ex.code == com.wilutions.byps.BExceptionC.IOERROR && (""+ex).indexOf("403") >= 0;
+				ret = ex.code == byps.BExceptionC.IOERROR && (""+ex).indexOf("403") >= 0;
 			}
 		}
 		return ret;
@@ -890,11 +888,11 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
+byps.BInputOutput = function(transport, header, jsonText) {
 	
 	this.transport = transport;
 	this.registry = transport.apiDesc.registry;
-	this.header = header || new com.wilutions.byps.BMessageHeader(transport.wire.makeMessageId());
+	this.header = header || new byps.BMessageHeader(transport.wire.makeMessageId());
 	this.header.targetId = transport.targetId;
 	
 	this.store = function(root) {
@@ -903,7 +901,7 @@ com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
 	};
 	
 	this.setException = function(ex) {
-		this.header.error = ex.code || com.wilutions.byps.BExceptionC.REMOTE_ERROR;
+		this.header.error = ex.code || byps.BExceptionC.REMOTE_ERROR;
 		this.store(ex);
 	};
 	
@@ -914,7 +912,7 @@ com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
 		this._internalLoad();
 		this._root = this._objectTable[1];
 		if (this.header.error) {
-			com.wilutions.byps.throwExceptionFromStream(this._root);
+			byps.throwExceptionFromStream(this._root);
 		}
 		return this._root;
 	};
@@ -929,7 +927,7 @@ com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
 		msgObj.objectTable = this._objectTable;
 
 		var jsonText = JSON.stringify(msgObj);
-		var msg = new com.wilutions.byps.BMessage(jsonText, null);
+		var msg = new byps.BMessage(jsonText, null);
 		
 		// BSerializer.write removes transient objects.
 		// Restore them ...
@@ -981,7 +979,7 @@ com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
 				// For all other classes, the serializer is determined by the object's type ID. 
 				if (!ser) {
 					ser = this.registry.getSerializer(elm._typeId);
-					if (!ser) com.wilutions.byps.throwCORRUPT("No serializer for typeId=" + elm._typeId);
+					if (!ser) byps.throwCORRUPT("No serializer for typeId=" + elm._typeId);
 				}
 				
 				var write = ser.write || this.registry._defaultSerializer.write;
@@ -1019,7 +1017,7 @@ com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
 			var id = elm["*i"];
 			if (!id || id >= 0) {
 				var msg = "Excpecting reference with \"*i\" < 0 but found " + id;
-				com.wilutions.byps.throwCORRUPT(msg);
+				byps.throwCORRUPT(msg);
 			}
 			
 			id = -id;
@@ -1036,7 +1034,7 @@ com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
 				
 				if (!ser) {
 					ser = this.registry.getSerializer(elm._typeId);
-					if (!ser) com.wilutions.byps.throwCORRUPT("No serializer for typeId=" + elm._typeId);
+					if (!ser) byps.throwCORRUPT("No serializer for typeId=" + elm._typeId);
 				}
 				
 				var read = ser.read || this.registry._defaultSerializer.read;
@@ -1096,7 +1094,7 @@ com.wilutions.byps.BInputOutput = function(transport, header, jsonText) {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BClient = function() {
+byps.BClient = function() {
 	
 	// Implemented by subclass:
 	// this.transport;
@@ -1123,7 +1121,7 @@ com.wilutions.byps.BClient = function() {
 	this.addRemote = function(remoteImpl) {
 		var remoteId = remoteImpl._typeId;
 		if (!remoteId) {
-			com.wilutions.byps.throwBException(com.wilutions.byps.BExceptionC.INTERNAL, "Missing interface type ID. The interface implementation must be inherited from a BSkeleton_ class."); 
+			byps.throwBException(byps.BExceptionC.INTERNAL, "Missing interface type ID. The interface implementation must be inherited from a BSkeleton_ class."); 
 		}
 		this._serverR.server.addRemote(remoteId, remoteImpl);
 	};
@@ -1197,7 +1195,14 @@ com.wilutions.byps.BClient = function() {
 			},
 			
 			getSession : function(ignored, typeId, asyncResult) {
-				return innerAuth ? innerAuth.getSession(this, typeId, asyncResult) : null;
+				var ret = null;
+				if (innerAuth) {
+					ret = innerAuth.getSession(this, typeId, asyncResult);
+				} 
+				else if (asyncResult) {
+					asyncResult(null, null);
+				}
+				return ret;
 			}
 			
 		};
@@ -1206,18 +1211,18 @@ com.wilutions.byps.BClient = function() {
 	};
 };
 
-com.wilutions.byps.BClient_subclass = function(transport, serverR) {
+byps.BClient_subclass = function(transport, serverR) {
 	this.transport = transport;
 	this._serverR = serverR;
 };
 
-com.wilutions.byps.BClient_subclass.prototype = new com.wilutions.byps.BClient();
+byps.BClient_subclass.prototype = new byps.BClient();
 
 // ------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BTransportFactory = function(apiDesc, wire) {
+byps.BTransportFactory = function(apiDesc, wire) {
 	
-	this._transport = new com.wilutions.byps.BTransport(apiDesc, wire, null);
+	this._transport = new byps.BTransport(apiDesc, wire, null);
 	
 	this.createClientTransport = function() {
 		return this._transport;
@@ -1229,14 +1234,14 @@ com.wilutions.byps.BTransportFactory = function(apiDesc, wire) {
 		return null;
 	};
 	this.createServerR = function(server) {
-		return new com.wilutions.byps.BServerR(this._transport, server);
+		return new byps.BServerR(this._transport, server);
 	};
 	
 };
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BServer = function() {
+byps.BServer = function() {
 
 	// Subclass must implement:
 //	this.transport = transport;
@@ -1254,13 +1259,13 @@ com.wilutions.byps.BServer = function() {
 			var requestTypeId = methodObj._typeId;
 			var methodItem = this._methodMap[requestTypeId];
 			if (!methodItem) {
-				com.wilutions.byps.throwUNSUPPORTED("Method not implemented: typeId=" + requestTypeId);
+				byps.throwUNSUPPORTED("Method not implemented: typeId=" + requestTypeId);
 			}
 				
 			var remoteId = methodItem[0];
 			var remote = this._remotes[remoteId];
 			if (!remote) {
-				com.wilutions.byps.throwBException(com.wilutions.byps.BExceptionC.SERVICE_NOT_IMPLEMENTED, 
+				byps.throwBException(byps.BExceptionC.SERVICE_NOT_IMPLEMENTED, 
 						"Service not implemented: remoteId=" + remoteId);
 			}
 			
@@ -1289,7 +1294,7 @@ com.wilutions.byps.BServer = function() {
 
 //------------------------------------------------------------------------------------------------
 
-com.wilutions.byps.BServerR = function(transport, server) {
+byps.BServerR = function(transport, server) {
 	
 	var me = this;
 	this.transport = transport;
@@ -1306,7 +1311,7 @@ com.wilutions.byps.BServerR = function(transport, server) {
 		var asyncResult = function(message, exception) {
 			if (exception) {
 				var bout = me.transport.getOutput();
-				bout.header.flags = com.wilutions.byps.BMessageHeader.FLAG_RESPONSE;
+				bout.header.flags = byps.BMessageHeader.FLAG_RESPONSE;
 				bout.setException(exception);
 				message = bout.toMessage();
 			}
@@ -1349,7 +1354,7 @@ com.wilutions.byps.BServerR = function(transport, server) {
 	
 	this._makeInitMessage = function() {
 		var outp = this.transport.getOutput();
-		outp.header.flags |= com.wilutions.byps.BMessageHeaderC.FLAG_RESPONSE;
+		outp.header.flags |= byps.BMessageHeaderC.FLAG_RESPONSE;
 		outp.store(null); 
 		return outp.toMessage();
 	};

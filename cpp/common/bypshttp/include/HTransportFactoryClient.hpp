@@ -3,9 +3,9 @@
 
 #include "HTransportFactoryClient.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 BINLINE HTransportFactoryClient::HTransportFactoryClient(PApiDescriptor apiDesc, PWire wire, int nbOfServerRConns) 
 	: transport(new BTransport(apiDesc, wire, PRemoteRegistry()))
@@ -32,6 +32,6 @@ BINLINE PServerR HTransportFactoryClient::createServerR(PServer server) {
 
 
 
-}}}}
+}}
 
 #endif
