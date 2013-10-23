@@ -36,7 +36,10 @@ describe("Tests with authentication.", function() {
 			return client.transport.isReloginException(ex, typeId);
 		};
 
-		this.getSession = function() {
+		this.getSession = function(client, typeId, asyncResult) {
+			if (asyncResult) {
+				asyncResult(this.sess, null);
+			}
 			return this.sess;
 		};
 

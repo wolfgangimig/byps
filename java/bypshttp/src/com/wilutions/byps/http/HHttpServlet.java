@@ -806,30 +806,35 @@ public abstract class HHttpServlet extends HttpServlet {
     }
 
     if (hsess != null) {
-      sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-      if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-      if (sess == null) {
-
-        if (createNewIfNotEx) {
-
-          HTargetIdFactory targetIdFactory = getTargetIdFactory();
-
-          // Initialized?
-          if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
-          if (targetIdFactory != null) {
-            sess = createSession(request, response, hsess, serverRegistry);
-            if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
-
-            sess.setTargetId(targetIdFactory.createTargetId());
-
-            HSessionListener.attachBSession(hsess, sess);
-          }
-          else {
-            if (log.isInfoEnabled()) log.info("Service unavailable or still initializing.");
-            httpStatus = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
+    	try {
+        sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
+        if (log.isDebugEnabled()) log.debug("byps session=" + sess);
+        if (sess == null) {
+  
+          if (createNewIfNotEx) {
+  
+            HTargetIdFactory targetIdFactory = getTargetIdFactory();
+  
+            // Initialized?
+            if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
+            if (targetIdFactory != null) {
+              sess = createSession(request, response, hsess, serverRegistry);
+              if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
+  
+              sess.setTargetId(targetIdFactory.createTargetId());
+  
+              HSessionListener.attachBSession(hsess, sess);
+            }
+            else {
+              if (log.isInfoEnabled()) log.info("Service unavailable or still initializing.");
+              httpStatus = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
+            }
           }
         }
-      }
+    	}
+    	catch (Exception e) {
+    	  log.info("Cannot get/create session", e);
+    	}
     }
 
     if (sess == null) {

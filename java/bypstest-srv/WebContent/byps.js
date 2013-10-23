@@ -601,7 +601,7 @@ com.wilutions.byps.BTransport = function(apiDesc, wire, targetId) {
 			
 		}
 		else {
-			var methodResult = this._assignSessionThenSendMethod(methodRequest, asyncResult);
+			var methodResult = this._assignSessionThenSendMethod(methodRequest);
 			ret = methodResult ? methodResult.result : null; 
 		}
 		return ret;
@@ -1197,7 +1197,14 @@ com.wilutions.byps.BClient = function() {
 			},
 			
 			getSession : function(ignored, typeId, asyncResult) {
-				return innerAuth ? innerAuth.getSession(this, typeId, asyncResult) : null;
+				var ret = null;
+				if (innerAuth) {
+					ret = innerAuth.getSession(this, typeId, asyncResult);
+				} 
+				else if (asyncResult) {
+					asyncResult(null, null);
+				}
+				return ret;
 			}
 			
 		};
