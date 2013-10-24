@@ -68,12 +68,17 @@ byps.throwINTERNAL = function(msg, details) {
 	throw new byps.BException(byps.BExceptionC.INTERNAL, msg, details);
 };
 
+byps.throwTIMEOUT = function(msg, details) {
+	throw new byps.BException(byps.BExceptionC.TIMEOUT, msg, details);
+};
+
 byps.BExceptionC = {
 	INTERNAL : 3,
 	CORRUPT : 8,
 	IOERROR : 14,
 	REMOTE_ERROR : 10,
 	SERVICE_NOT_IMPLEMENTED : 11,
+	TIMEOUT : 13,
 	UNSUPPORTED_METHOD : 17,
 	AUTHENTICATION_REQUIRED : 18,
 	CANCELLED : 19
@@ -455,16 +460,17 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 
 		xhr.open(isNegotiate ? 'GET' : 'POST', destUrl, processAsync);
 		
-		if (timeoutMillis > 0) {
+		// XHR supports timeout only for async requests
+		if (processAsync && timeoutMillis > 0) {
 			xhr.timeout = timeoutMillis;
 		}
 		
 		if (processAsync) {
+			
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState != 4) return;
-				
-				delete me.openRequestsToCancel[requestId];
-				
+				if (!asyncResult) return;
+								
 				if (xhr.status == 200) {
 					var responseMessage = new byps.BMessage();
 					responseMessage.jsonText = xhr.responseText; // msg.jsonText = { header: [ ... message header ... ], objectTable: [ ] }
@@ -473,6 +479,19 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 					var ex = new byps.BException(byps.BExceptionC.IOERROR, "HTTP status " + xhr.status, xhr.responseText);
 					asyncResult(null, ex);
 				}; 
+				
+				delete me.openRequestsToCancel[requestId];
+				asyncResult = null;
+			};
+			
+			xhr.ontimeout = function() {
+				if (!asyncResult) return;
+				
+				var ex = new byps.BException(byps.BExceptionC.TIMEOUT, "Timeout");
+				asyncResult(null, ex);
+
+				delete me.openRequestsToCancel[requestId];
+				asyncResult = null;
 			};
 		}
 		
@@ -643,7 +662,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 			}
 		}
 		else {
-			methodResult = this.send(methodMessage, asyncResult);
+			methodResult = this.send(methodRequest, asyncResult);
 		}
 		
 		return methodResult;
