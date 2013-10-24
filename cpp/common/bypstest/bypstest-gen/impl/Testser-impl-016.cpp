@@ -14,7 +14,7 @@ PApiDescriptor BApiDescriptor_Testser::instance() {
 	);
 };
 
-}
+}}}
 
 namespace byps { namespace test { namespace api { 
 
@@ -126,7 +126,7 @@ PRemote BClient_Testser::getStub(int remoteId) {
 	if (remoteId == 15377840) return evolveIF;
 	return PRemote();
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { 
 
@@ -165,5 +165,5 @@ BServer_Testser::BServer_Testser(PTransport transport)
 	: BServer(transport, NULL)
 	{
 }
-}
+}}}
 

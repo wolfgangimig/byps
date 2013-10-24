@@ -1012,9 +1012,9 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __
 
 /**
  * @BClientRemote 
- * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
  * @BClientRemote 
- * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_BioFruitService = function(transport) {
 	
@@ -1056,9 +1056,9 @@ byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps_
 
 /**
  * @BClientRemote 
- * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
  * @BClientRemote 
- * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_BioLemonService = function(transport) {
 	
@@ -1119,8 +1119,8 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.useParing = function(__byp
 };
 
 /**
- * @BSessionParamType byps.test.api.auth.SessionInfo
- * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_FruitService = function(transport) {
 	
@@ -1151,8 +1151,8 @@ byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__as
 };
 
 /**
- * @BSessionParamType byps.test.api.auth.SessionInfo
- * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_LemonService = function(transport) {
 	
@@ -1193,8 +1193,8 @@ byps.test.api.inherit.BStub_LemonService.prototype.pick = function(sess, fromTre
 };
 
 /**
- * @BSessionParamType byps.test.api.auth.SessionInfo
- * @BSessionParamType byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
+ * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_PlantService = function(transport) {
 	

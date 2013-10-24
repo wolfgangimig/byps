@@ -32,7 +32,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_setPrimitiveTypes1::execut
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -45,7 +45,7 @@ void BSerializer_1629134317(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteMapTypes_setPrimitiveTypes1());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -76,7 +76,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_setShort1::execute(PRemote
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -89,7 +89,7 @@ void BSerializer_684809537(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteMapTypes_setShort1());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -120,7 +120,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_setString1::execute(PRemot
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -133,7 +133,7 @@ void BSerializer_100307380(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteMapTypes_setString1());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -168,7 +168,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_add::execute(PRemote
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -181,7 +181,7 @@ void BSerializer_362528512(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_add());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -206,7 +206,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getBool::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -219,7 +219,7 @@ void BSerializer_1816157633(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getBool());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -244,7 +244,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getByte::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -257,7 +257,7 @@ void BSerializer_1816147875(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getByte());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -282,7 +282,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getChar::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -295,7 +295,7 @@ void BSerializer_1816134997(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getChar());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -320,7 +320,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getDouble::execute(P
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -333,7 +333,7 @@ void BSerializer_1513332250(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getDouble());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -358,7 +358,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getFloat::execute(PR
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -371,7 +371,7 @@ void BSerializer_462707289(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getFloat());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -396,7 +396,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getInt::execute(PRem
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -409,7 +409,7 @@ void BSerializer_1582599686(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getInt());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -434,7 +434,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getLong::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -447,7 +447,7 @@ void BSerializer_1815859759(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getLong());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -472,7 +472,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getObject::execute(P
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -485,7 +485,7 @@ void BSerializer_1210742444(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getObject());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -510,7 +510,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getPrimitiveTypes::e
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -523,7 +523,7 @@ void BSerializer_714626279(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getPrimitiveTypes());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -548,7 +548,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getShort::execute(PR
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -561,7 +561,7 @@ void BSerializer_450820153(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getShort());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -586,7 +586,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_getString::execute(P
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -599,7 +599,7 @@ void BSerializer_1079359962(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_getString());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -655,7 +655,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes::execut
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -668,7 +668,7 @@ void BSerializer_677876863(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_sendAllTypes());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -700,7 +700,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -713,7 +713,7 @@ void BSerializer_243951947(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setBool());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -745,7 +745,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setByte::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -758,7 +758,7 @@ void BSerializer_243961705(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setByte());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -790,7 +790,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setChar::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -803,7 +803,7 @@ void BSerializer_243974583(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setChar());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -835,7 +835,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setDouble::execute(P
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -848,7 +848,7 @@ void BSerializer_1727949326(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setDouble());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -880,7 +880,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setFloat::execute(PR
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -893,7 +893,7 @@ void BSerializer_1023819749(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setFloat());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -925,7 +925,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setInt::execute(PRem
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -938,7 +938,7 @@ void BSerializer_1239049874(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setInt());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -970,7 +970,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setLong::execute(PRe
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -983,7 +983,7 @@ void BSerializer_244249821(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setLong());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -1014,7 +1014,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setObject::execute(P
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1027,7 +1027,7 @@ void BSerializer_1425359520(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setObject());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -1058,7 +1058,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes::e
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1071,7 +1071,7 @@ void BSerializer_225526541(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setPrimitiveTypes());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
@@ -1103,7 +1103,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort::execute(PR
 		}
 	});
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1116,4 +1116,4 @@ void BSerializer_1011932613(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemotePrimitiveTypes_setShort());
 	}
 }
-}
+}}}

@@ -320,7 +320,7 @@ void BStub_RemoteMapTypes::setObj1(const byps_ptr< ::std::map< ::std::wstring , 
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -339,7 +339,7 @@ void BSerializer_664304990(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -658,7 +658,7 @@ void BStub_RemotePrimitiveTypes::throwException(::std::function< void (bool, BEx
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -677,7 +677,7 @@ void BSerializer_1178916877(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -708,7 +708,7 @@ void BStub_RemoteReferences::setNode(const byps::test::api::refs::PNode& v, ::st
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -727,7 +727,7 @@ void BSerializer_568637225(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -770,7 +770,7 @@ void BStub_RemoteServerCtrl::removePublishedRemote(const ::std::wstring& name, :
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -789,7 +789,7 @@ void BSerializer_1652234479(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -1108,7 +1108,7 @@ void BStub_RemoteSetTypes::setObj1(const byps_ptr< ::std::set< PSerializable > >
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -1127,4 +1127,4 @@ void BSerializer_1900796440(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}

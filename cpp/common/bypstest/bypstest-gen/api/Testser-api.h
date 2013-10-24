@@ -11,7 +11,7 @@ namespace byps { namespace test { namespace api { namespace arr {
 class ArrayTypes1dim; 
 typedef byps_ptr< ArrayTypes1dim > PArrayTypes1dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class ArrayTypes4dim
@@ -21,7 +21,7 @@ namespace byps { namespace test { namespace api { namespace arr {
 class ArrayTypes4dim; 
 typedef byps_ptr< ArrayTypes4dim > PArrayTypes4dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class SessionInfo
@@ -31,7 +31,7 @@ namespace byps { namespace test { namespace api { namespace auth {
 class SessionInfo; 
 typedef byps_ptr< SessionInfo > PSessionInfo; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class AllTypesC
@@ -41,7 +41,7 @@ namespace byps { namespace test { namespace api { namespace cons {
 class AllTypesC; 
 typedef byps_ptr< AllTypesC > PAllTypesC; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class AllTypesZ
@@ -51,7 +51,7 @@ namespace byps { namespace test { namespace api { namespace cons {
 class AllTypesZ; 
 typedef byps_ptr< AllTypesZ > PAllTypesZ; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class HebrewC
@@ -61,7 +61,7 @@ namespace byps { namespace test { namespace api { namespace cons {
 class HebrewC; 
 typedef byps_ptr< HebrewC > PHebrewC; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class HebrewZ
@@ -71,7 +71,7 @@ namespace byps { namespace test { namespace api { namespace cons {
 class HebrewZ; 
 typedef byps_ptr< HebrewZ > PHebrewZ; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class UsePlanets
@@ -81,7 +81,7 @@ namespace byps { namespace test { namespace api { namespace enu {
 class UsePlanets; 
 typedef byps_ptr< UsePlanets > PUsePlanets; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_BioFruitService
@@ -91,7 +91,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BStub_BioFruitService; 
 typedef byps_ptr< BStub_BioFruitService > PStub_BioFruitService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_BioLemonService
@@ -101,7 +101,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BStub_BioLemonService; 
 typedef byps_ptr< BStub_BioLemonService > PStub_BioLemonService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_FruitService
@@ -111,7 +111,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BStub_FruitService; 
 typedef byps_ptr< BStub_FruitService > PStub_FruitService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_LemonService
@@ -121,7 +121,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BStub_LemonService; 
 typedef byps_ptr< BStub_LemonService > PStub_LemonService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_PlantService
@@ -131,7 +131,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BStub_PlantService; 
 typedef byps_ptr< BStub_PlantService > PStub_PlantService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class1
@@ -141,7 +141,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class Class1; 
 typedef byps_ptr< Class1 > PClass1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class1Collections
@@ -151,7 +151,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class Class1Collections; 
 typedef byps_ptr< Class1Collections > PClass1Collections; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class2
@@ -161,7 +161,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class Class2; 
 typedef byps_ptr< Class2 > PClass2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Class3
@@ -171,7 +171,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class Class3; 
 typedef byps_ptr< Class3 > PClass3; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Actor
@@ -181,7 +181,7 @@ namespace byps { namespace test { namespace api { namespace inl {
 class Actor; 
 typedef byps_ptr< Actor > PActor; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class ListListTypes
@@ -191,7 +191,7 @@ namespace byps { namespace test { namespace api { namespace list {
 class ListListTypes; 
 typedef byps_ptr< ListListTypes > PListListTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class ListTypes
@@ -201,7 +201,7 @@ namespace byps { namespace test { namespace api { namespace list {
 class ListTypes; 
 typedef byps_ptr< ListTypes > PListTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class MapTypes
@@ -211,7 +211,7 @@ namespace byps { namespace test { namespace api { namespace map {
 class MapTypes; 
 typedef byps_ptr< MapTypes > PMapTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class PrimitiveTypes
@@ -221,7 +221,7 @@ namespace byps { namespace test { namespace api { namespace prim {
 class PrimitiveTypes; 
 typedef byps_ptr< PrimitiveTypes > PPrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class PrivateMembers
@@ -231,7 +231,7 @@ namespace byps { namespace test { namespace api { namespace priv {
 class PrivateMembers; 
 typedef byps_ptr< PrivateMembers > PPrivateMembers; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Node
@@ -241,7 +241,7 @@ namespace byps { namespace test { namespace api { namespace refs {
 class Node; 
 typedef byps_ptr< Node > PNode; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteArrayTypes1dim
@@ -251,7 +251,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteArrayTypes1dim; 
 typedef byps_ptr< BStub_RemoteArrayTypes1dim > PStub_RemoteArrayTypes1dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteArrayTypes23
@@ -261,7 +261,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteArrayTypes23; 
 typedef byps_ptr< BStub_RemoteArrayTypes23 > PStub_RemoteArrayTypes23; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteArrayTypes4dim
@@ -271,7 +271,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteArrayTypes4dim; 
 typedef byps_ptr< BStub_RemoteArrayTypes4dim > PStub_RemoteArrayTypes4dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteConstants
@@ -281,7 +281,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteConstants; 
 typedef byps_ptr< BStub_RemoteConstants > PStub_RemoteConstants; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteEnums
@@ -291,7 +291,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteEnums; 
 typedef byps_ptr< BStub_RemoteEnums > PStub_RemoteEnums; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteInlineInstance
@@ -301,7 +301,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteInlineInstance; 
 typedef byps_ptr< BStub_RemoteInlineInstance > PStub_RemoteInlineInstance; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteListTypes
@@ -311,7 +311,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteListTypes; 
 typedef byps_ptr< BStub_RemoteListTypes > PStub_RemoteListTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteMapTypes
@@ -321,7 +321,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteMapTypes; 
 typedef byps_ptr< BStub_RemoteMapTypes > PStub_RemoteMapTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemotePrimitiveTypes
@@ -331,7 +331,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemotePrimitiveTypes; 
 typedef byps_ptr< BStub_RemotePrimitiveTypes > PStub_RemotePrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteReferences
@@ -341,7 +341,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteReferences; 
 typedef byps_ptr< BStub_RemoteReferences > PStub_RemoteReferences; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteServerCtrl
@@ -351,7 +351,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteServerCtrl; 
 typedef byps_ptr< BStub_RemoteServerCtrl > PStub_RemoteServerCtrl; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteSetTypes
@@ -361,7 +361,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteSetTypes; 
 typedef byps_ptr< BStub_RemoteSetTypes > PStub_RemoteSetTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteStreams
@@ -371,7 +371,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteStreams; 
 typedef byps_ptr< BStub_RemoteStreams > PStub_RemoteStreams; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_RemoteWithAuthentication
@@ -381,7 +381,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class BStub_RemoteWithAuthentication; 
 typedef byps_ptr< BStub_RemoteWithAuthentication > PStub_RemoteWithAuthentication; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class SetTypes
@@ -391,7 +391,7 @@ namespace byps { namespace test { namespace api { namespace set {
 class SetTypes; 
 typedef byps_ptr< SetTypes > PSetTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_ClientIF
@@ -401,7 +401,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 class BStub_ClientIF; 
 typedef byps_ptr< BStub_ClientIF > PStub_ClientIF; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_ServerIF
@@ -411,7 +411,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 class BStub_ServerIF; 
 typedef byps_ptr< BStub_ServerIF > PStub_ServerIF; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class ChatStructure
@@ -421,7 +421,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 class ChatStructure; 
 typedef byps_ptr< ChatStructure > PChatStructure; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Stream1
@@ -431,7 +431,7 @@ namespace byps { namespace test { namespace api { namespace strm {
 class Stream1; 
 typedef byps_ptr< Stream1 > PStream1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BStub_EvolveIF
@@ -441,7 +441,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 class BStub_EvolveIF; 
 typedef byps_ptr< BStub_EvolveIF > PStub_EvolveIF; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Evolve
@@ -451,7 +451,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 class Evolve; 
 typedef byps_ptr< Evolve > PEvolve; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class Evolve2
@@ -461,7 +461,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 class Evolve2; 
 typedef byps_ptr< Evolve2 > PEvolve2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Matrix2D
@@ -492,7 +492,7 @@ class Matrix2D : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Point2D
@@ -526,7 +526,7 @@ class Point2D : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // ArrayTypes1dim
@@ -558,7 +558,7 @@ class ArrayTypes1dim : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // ArrayTypes4dim
@@ -590,7 +590,7 @@ class ArrayTypes4dim : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // SessionInfo
@@ -616,7 +616,7 @@ class SessionInfo : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // AllTypesC
@@ -668,7 +668,7 @@ class AllTypesC : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // AllTypesZ
@@ -802,7 +802,7 @@ class AllTypesZ : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // HebrewC
@@ -833,7 +833,7 @@ class HebrewC : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // HebrewZ
@@ -863,7 +863,7 @@ class HebrewZ : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // EnumPlanets
@@ -887,7 +887,7 @@ enum EnumPlanets : int32_t  {
 
 void operator & (BIO& ar, EnumPlanets& e);
 
-}}
+}}}}
 
 //-------------------------------------------------
 // UsePlanets
@@ -921,7 +921,7 @@ class UsePlanets : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Class1
@@ -948,7 +948,7 @@ class Class1 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Class1Collections
@@ -973,7 +973,7 @@ class Class1Collections : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Class2
@@ -996,7 +996,7 @@ class Class2 : public Class1 {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Class3
@@ -1019,7 +1019,7 @@ class Class3 : public Class2 {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Actor
@@ -1043,7 +1043,7 @@ class Actor : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // ListListTypes
@@ -1068,7 +1068,7 @@ class ListListTypes : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // ListTypes
@@ -1104,7 +1104,7 @@ class ListTypes : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // MapTypes
@@ -1139,7 +1139,7 @@ class MapTypes : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // PrimitiveTypes
@@ -1204,7 +1204,7 @@ class PrimitiveTypes : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // PrivateMembers
@@ -1397,7 +1397,7 @@ class PrivateMembers : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Node
@@ -1423,7 +1423,7 @@ class Node : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // SetTypes
@@ -1458,7 +1458,7 @@ class SetTypes : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // ChatStructure
@@ -1483,7 +1483,7 @@ class ChatStructure : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Stream1
@@ -1531,7 +1531,7 @@ class Stream1 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Evolve
@@ -1622,7 +1622,7 @@ class Evolve : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Evolve2
@@ -1652,7 +1652,7 @@ class Evolve2 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class PlantService
@@ -1662,7 +1662,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class PlantService; 
 typedef byps_ptr< PlantService > PPlantService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class PlantServiceAuth
@@ -1672,7 +1672,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class PlantServiceAuth; 
 typedef byps_ptr< PlantServiceAuth > PPlantServiceAuth; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class FruitService
@@ -1682,7 +1682,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class FruitService; 
 typedef byps_ptr< FruitService > PFruitService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class FruitServiceAuth
@@ -1692,7 +1692,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class FruitServiceAuth; 
 typedef byps_ptr< FruitServiceAuth > PFruitServiceAuth; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioFruitService
@@ -1702,7 +1702,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BioFruitService; 
 typedef byps_ptr< BioFruitService > PBioFruitService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioFruitServiceAuth
@@ -1712,7 +1712,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BioFruitServiceAuth; 
 typedef byps_ptr< BioFruitServiceAuth > PBioFruitServiceAuth; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class LemonService
@@ -1722,7 +1722,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class LemonService; 
 typedef byps_ptr< LemonService > PLemonService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class LemonServiceAuth
@@ -1732,7 +1732,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class LemonServiceAuth; 
 typedef byps_ptr< LemonServiceAuth > PLemonServiceAuth; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioLemonService
@@ -1742,7 +1742,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BioLemonService; 
 typedef byps_ptr< BioLemonService > PBioLemonService; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BioLemonServiceAuth
@@ -1752,7 +1752,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 class BioLemonServiceAuth; 
 typedef byps_ptr< BioLemonServiceAuth > PBioLemonServiceAuth; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteArrayTypes1dim
@@ -1762,7 +1762,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteArrayTypes1dim; 
 typedef byps_ptr< RemoteArrayTypes1dim > PRemoteArrayTypes1dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteArrayTypes23
@@ -1772,7 +1772,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteArrayTypes23; 
 typedef byps_ptr< RemoteArrayTypes23 > PRemoteArrayTypes23; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteArrayTypes4dim
@@ -1782,7 +1782,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteArrayTypes4dim; 
 typedef byps_ptr< RemoteArrayTypes4dim > PRemoteArrayTypes4dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteConstants
@@ -1792,7 +1792,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteConstants; 
 typedef byps_ptr< RemoteConstants > PRemoteConstants; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteEnums
@@ -1802,7 +1802,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteEnums; 
 typedef byps_ptr< RemoteEnums > PRemoteEnums; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteInlineInstance
@@ -1812,7 +1812,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteInlineInstance; 
 typedef byps_ptr< RemoteInlineInstance > PRemoteInlineInstance; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteListTypes
@@ -1822,7 +1822,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteListTypes; 
 typedef byps_ptr< RemoteListTypes > PRemoteListTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteMapTypes
@@ -1832,7 +1832,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteMapTypes; 
 typedef byps_ptr< RemoteMapTypes > PRemoteMapTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemotePrimitiveTypes
@@ -1842,7 +1842,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemotePrimitiveTypes; 
 typedef byps_ptr< RemotePrimitiveTypes > PRemotePrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteReferences
@@ -1852,7 +1852,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteReferences; 
 typedef byps_ptr< RemoteReferences > PRemoteReferences; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteServerCtrl
@@ -1862,7 +1862,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteServerCtrl; 
 typedef byps_ptr< RemoteServerCtrl > PRemoteServerCtrl; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteSetTypes
@@ -1872,7 +1872,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteSetTypes; 
 typedef byps_ptr< RemoteSetTypes > PRemoteSetTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteStreams
@@ -1882,7 +1882,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteStreams; 
 typedef byps_ptr< RemoteStreams > PRemoteStreams; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteWithAuthentication
@@ -1892,7 +1892,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteWithAuthentication; 
 typedef byps_ptr< RemoteWithAuthentication > PRemoteWithAuthentication; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class RemoteWithAuthenticationAuth
@@ -1902,7 +1902,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 class RemoteWithAuthenticationAuth; 
 typedef byps_ptr< RemoteWithAuthenticationAuth > PRemoteWithAuthenticationAuth; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class ClientIF
@@ -1912,7 +1912,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 class ClientIF; 
 typedef byps_ptr< ClientIF > PClientIF; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class ServerIF
@@ -1922,7 +1922,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 class ServerIF; 
 typedef byps_ptr< ServerIF > PServerIF; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class EvolveIF
@@ -1932,7 +1932,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 class EvolveIF; 
 typedef byps_ptr< EvolveIF > PEvolveIF; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // PlantService
@@ -1949,7 +1949,7 @@ class PlantService : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // PlantServiceAuth
@@ -1966,7 +1966,7 @@ class PlantServiceAuth : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_PlantService
 
@@ -1988,7 +1988,7 @@ class BStub_PlantService : public BStub, public virtual PlantServiceAuth {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2007,7 +2007,7 @@ class FruitService : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // FruitServiceAuth
@@ -2025,7 +2025,7 @@ class FruitServiceAuth : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_FruitService
 
@@ -2050,7 +2050,7 @@ class BStub_FruitService : public BStub, public virtual FruitServiceAuth {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2069,7 +2069,7 @@ class BioFruitService : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BioFruitServiceAuth
@@ -2087,7 +2087,7 @@ class BioFruitServiceAuth : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_BioFruitService
 // Your interface implementation class has to be derived from this skeleton.
@@ -2115,7 +2115,7 @@ class BSkeleton_BioFruitService : public BSkeleton, public virtual BioFruitServi
 	
 	
 };
-}}
+}}}}
 
 //-------------------------------------------------
 // Stub class BStub_BioFruitService
@@ -2144,7 +2144,7 @@ class BStub_BioFruitService : public BStub, public virtual BioFruitServiceAuth {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2163,7 +2163,7 @@ class LemonService : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // LemonServiceAuth
@@ -2181,7 +2181,7 @@ class LemonServiceAuth : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_LemonService
 
@@ -2209,7 +2209,7 @@ class BStub_LemonService : public BStub, public virtual LemonServiceAuth {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2229,7 +2229,7 @@ class BioLemonService : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BioLemonServiceAuth
@@ -2248,7 +2248,7 @@ class BioLemonServiceAuth : public virtual BRemote,
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_BioLemonService
 // Your interface implementation class has to be derived from this skeleton.
@@ -2282,7 +2282,7 @@ class BSkeleton_BioLemonService : public BSkeleton, public virtual BioLemonServi
 	
 	
 };
-}}
+}}}}
 
 //-------------------------------------------------
 // Stub class BStub_BioLemonService
@@ -2317,7 +2317,7 @@ class BStub_BioLemonService : public BStub, public virtual BioLemonServiceAuth {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2401,7 +2401,7 @@ class RemoteArrayTypes1dim : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteArrayTypes1dim
 
@@ -2486,7 +2486,7 @@ class BStub_RemoteArrayTypes1dim : public BStub, public virtual RemoteArrayTypes
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2516,7 +2516,7 @@ class RemoteArrayTypes23 : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteArrayTypes23
 
@@ -2550,7 +2550,7 @@ class BStub_RemoteArrayTypes23 : public BStub, public virtual RemoteArrayTypes23
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2634,7 +2634,7 @@ class RemoteArrayTypes4dim : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteArrayTypes4dim
 
@@ -2719,7 +2719,7 @@ class BStub_RemoteArrayTypes4dim : public BStub, public virtual RemoteArrayTypes
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2743,7 +2743,7 @@ class RemoteConstants : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteConstants
 
@@ -2768,7 +2768,7 @@ class BStub_RemoteConstants : public BStub, public virtual RemoteConstants {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2789,7 +2789,7 @@ class RemoteEnums : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteEnums
 
@@ -2814,7 +2814,7 @@ class BStub_RemoteEnums : public BStub, public virtual RemoteEnums {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -2865,7 +2865,7 @@ class RemoteInlineInstance : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteInlineInstance
 
@@ -2920,7 +2920,7 @@ class BStub_RemoteInlineInstance : public BStub, public virtual RemoteInlineInst
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3025,7 +3025,7 @@ class RemoteListTypes : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteListTypes
 
@@ -3134,7 +3134,7 @@ class BStub_RemoteListTypes : public BStub, public virtual RemoteListTypes {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3227,7 +3227,7 @@ class RemoteMapTypes : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteMapTypes
 
@@ -3324,7 +3324,7 @@ class BStub_RemoteMapTypes : public BStub, public virtual RemoteMapTypes {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3417,7 +3417,7 @@ class RemotePrimitiveTypes : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemotePrimitiveTypes
 
@@ -3514,7 +3514,7 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3535,7 +3535,7 @@ class RemoteReferences : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteReferences
 
@@ -3560,7 +3560,7 @@ class BStub_RemoteReferences : public BStub, public virtual RemoteReferences {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3584,7 +3584,7 @@ class RemoteServerCtrl : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteServerCtrl
 
@@ -3612,7 +3612,7 @@ class BStub_RemoteServerCtrl : public BStub, public virtual RemoteServerCtrl {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3705,7 +3705,7 @@ class RemoteSetTypes : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteSetTypes
 
@@ -3802,7 +3802,7 @@ class BStub_RemoteSetTypes : public BStub, public virtual RemoteSetTypes {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3835,7 +3835,7 @@ class RemoteStreams : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_RemoteStreams
 
@@ -3872,7 +3872,7 @@ class BStub_RemoteStreams : public BStub, public virtual RemoteStreams {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -3926,7 +3926,7 @@ class RemoteWithAuthentication : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // RemoteWithAuthenticationAuth
@@ -3979,7 +3979,7 @@ class RemoteWithAuthenticationAuth : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_RemoteWithAuthentication
 // Your interface implementation class has to be derived from this skeleton.
@@ -4013,7 +4013,7 @@ class BSkeleton_RemoteWithAuthentication : public BSkeleton, public virtual Remo
 	
 	
 };
-}}
+}}}}
 
 //-------------------------------------------------
 // Stub class BStub_RemoteWithAuthentication
@@ -4048,7 +4048,7 @@ class BStub_RemoteWithAuthentication : public BStub, public virtual RemoteWithAu
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -4075,7 +4075,7 @@ class ClientIF : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Skeleton class BSkeleton_ClientIF
 // Your interface implementation class has to be derived from this skeleton.
@@ -4106,7 +4106,7 @@ class BSkeleton_ClientIF : public BSkeleton, public virtual ClientIF {
 	
 	
 };
-}}
+}}}}
 
 //-------------------------------------------------
 // Stub class BStub_ClientIF
@@ -4138,7 +4138,7 @@ class BStub_ClientIF : public BStub, public virtual ClientIF {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -4180,7 +4180,7 @@ class ServerIF : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_ServerIF
 
@@ -4226,7 +4226,7 @@ class BStub_ServerIF : public BStub, public virtual ServerIF {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -4256,7 +4256,7 @@ class EvolveIF : public virtual BRemote {
 	
 };
 
-}}
+}}}}
 //-------------------------------------------------
 // Stub class BStub_EvolveIF
 
@@ -4290,7 +4290,7 @@ class BStub_EvolveIF : public BStub, public virtual EvolveIF {
 	
 	
 };
-}}
+}}}}
 
 
 //-------------------------------------------------
@@ -4302,7 +4302,7 @@ public:
 	virtual ~BRegistry_Testser() {}
 };
 
-}
+}}}
 
 namespace byps { namespace test { namespace api { 
 using namespace ::byps;
@@ -4315,7 +4315,7 @@ class BApiDescriptor_Testser {
 	public: static PApiDescriptor instance();
 };
 
-}
+}}}
 
 namespace byps { namespace test { namespace api { 
 
@@ -4369,7 +4369,7 @@ class BClient_Testser : public BClient {
 	
 };
 
-}
+}}}
 
 namespace byps { namespace test { namespace api { 
 
@@ -4398,7 +4398,7 @@ class BServer_Testser : public BServer {
 	
 };
 
-}
+}}}
 
 
 #endif

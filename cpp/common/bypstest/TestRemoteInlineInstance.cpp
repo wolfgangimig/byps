@@ -99,7 +99,7 @@ public:
 		for (size_t i1 = 0; i1 < arr->length1(); i1++) {
 		for (size_t i0 = 0; i0 < arr->length0(); i0++) {
 			arr->at(i3, i2, i1, i0) = TestUtils::createPoint2D();
-		}}
+		}}}}
 
 		remote->setPoint2DArray4dim(arr);
 

@@ -80,7 +80,7 @@ void BStub_RemoteStreams::getTextStream(::std::function< void (PContentStream, B
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PContentStream, byps::test::api::BResult_15 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -99,7 +99,7 @@ void BSerializer_1043578866(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace remote { 
 
@@ -163,7 +163,7 @@ void BSkeleton_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::f
 		asyncResult(ret, ex);
 	}
 }
-}}
+}}}}
 
 
 namespace byps { namespace test { namespace api { namespace remote { 
@@ -231,7 +231,7 @@ void BStub_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::funct
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -250,7 +250,7 @@ void BSerializer_1983670399(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace srvr { 
 
@@ -302,7 +302,7 @@ void BSkeleton_ClientIF::sendChat(const PChatStructure& cs, ::std::function< voi
 		asyncResult(ret, ex);
 	}
 }
-}}
+}}}}
 
 
 namespace byps { namespace test { namespace api { namespace srvr { 
@@ -358,7 +358,7 @@ void BStub_ClientIF::sendChat(const PChatStructure& cs, ::std::function< void (P
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PChatStructure, byps::test::api::BResult_7007 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -377,7 +377,7 @@ void BSerializer_2049072174(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace srvr { 
 
@@ -492,7 +492,7 @@ void BStub_ServerIF::callClientParallel(int32_t v, ::std::function< void (int32_
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -511,7 +511,7 @@ void BSerializer_1775199834(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 
 namespace byps { namespace test { namespace api { namespace ver { 
 
@@ -578,7 +578,7 @@ void BStub_EvolveIF::sendEvolveToClient(::std::function< void (bool, BException 
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->send(req, outerResult);
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
@@ -597,7 +597,7 @@ void BSerializer_15377840(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 		bio & targetId;
 	}
 }
-}
+}}}
 //-------------------------------------------------
 // Registry 
 

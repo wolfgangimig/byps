@@ -91,6 +91,6 @@ void TestCase::onSuccess(const TestCase::TestFunction& tfunc) {
 	std::cout << "OK" << std::endl;
 }
 
-}
+}}}
 
 #endif

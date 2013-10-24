@@ -237,9 +237,6 @@
     <ClInclude Include="..\..\..\common\byps\include\Byps-impl.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\byps\include\platform\any.h">
-      <Filter>include\platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\platform\platform-api.h">
       <Filter>include\platform</Filter>
     </ClInclude>
@@ -263,6 +260,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\BAuthentication.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\platform\any\any.h">
+      <Filter>include\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\platform\any\BThreadPool.hpp">
+      <Filter>include\platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

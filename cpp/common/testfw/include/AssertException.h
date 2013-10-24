@@ -28,6 +28,6 @@ private:
 
 std::basic_ostream<wchar_t>& operator << (std::basic_ostream<wchar_t>& strm, const AssertException& ex);
 
-}
+}}}
 
 #endif

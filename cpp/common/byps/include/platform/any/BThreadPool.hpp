@@ -8,7 +8,7 @@
 
 #include <thread>
 
-namespace com { namespace wilutions { namespace byps { 
+namespace byps { 
 
 class BThreadPoolImpl;
 typedef byps_ptr<BThreadPoolImpl> PThreadPoolImpl;
@@ -183,7 +183,7 @@ BINLINE PThreadPool BThreadPool::create(void* app, int maxThreads) {
 
 
 
-}}}
+}
 
 #endif // BTHREADPOOL
 

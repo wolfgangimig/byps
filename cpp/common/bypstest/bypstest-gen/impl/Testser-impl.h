@@ -12,7 +12,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 
 class BRequest_BioFruitService_certify; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_BioLemonService_useParing
@@ -21,7 +21,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 
 class BRequest_BioLemonService_useParing; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_FruitService_squeeze
@@ -30,7 +30,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 
 class BRequest_FruitService_squeeze; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_LemonService_pick
@@ -39,7 +39,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 
 class BRequest_LemonService_pick; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_PlantService_grow
@@ -48,7 +48,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 
 class BRequest_PlantService_grow; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getBool
@@ -57,7 +57,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getBool; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getByte
@@ -66,7 +66,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getByte; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getChar
@@ -75,7 +75,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getChar; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getDouble
@@ -84,7 +84,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getDouble; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getFloat
@@ -93,7 +93,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getFloat; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getInt
@@ -102,7 +102,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getLong
@@ -111,7 +111,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getLong; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getObject
@@ -120,7 +120,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getObject; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
@@ -129,7 +129,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getShort
@@ -138,7 +138,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getShort; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_getString
@@ -147,7 +147,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_getString; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setBool
@@ -156,7 +156,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setBool; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setByte
@@ -165,7 +165,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setByte; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setChar
@@ -174,7 +174,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setChar; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setDouble
@@ -183,7 +183,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setDouble; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setFloat
@@ -192,7 +192,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setFloat; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setInt
@@ -201,7 +201,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setLong
@@ -210,7 +210,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setLong; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setObject
@@ -219,7 +219,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setObject; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
@@ -228,7 +228,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setShort
@@ -237,7 +237,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setShort; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes1dim_setString
@@ -246,7 +246,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes1dim_setString; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysClass
@@ -255,7 +255,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes23_sendArraysClass; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysInline
@@ -264,7 +264,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes23_sendArraysInline; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysInt
@@ -273,7 +273,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes23_sendArraysInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysObject
@@ -282,7 +282,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes23_sendArraysObject; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysString
@@ -291,7 +291,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes23_sendArraysString; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getBool
@@ -300,7 +300,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getBool; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getByte
@@ -309,7 +309,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getByte; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getChar
@@ -318,7 +318,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getChar; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getDouble
@@ -327,7 +327,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getDouble; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getFloat
@@ -336,7 +336,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getFloat; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getInt
@@ -345,7 +345,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getLong
@@ -354,7 +354,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getLong; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getObject
@@ -363,7 +363,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getObject; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
@@ -372,7 +372,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getShort
@@ -381,7 +381,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getShort; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_getString
@@ -390,7 +390,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_getString; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setBool
@@ -399,7 +399,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setBool; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setByte
@@ -408,7 +408,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setByte; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setChar
@@ -417,7 +417,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setChar; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setDouble
@@ -426,7 +426,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setDouble; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setFloat
@@ -435,7 +435,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setFloat; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setInt
@@ -444,7 +444,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setLong
@@ -453,7 +453,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setLong; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setObject
@@ -462,7 +462,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setObject; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
@@ -471,7 +471,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setShort
@@ -480,7 +480,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setShort; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteArrayTypes4dim_setString
@@ -489,7 +489,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteArrayTypes4dim_setString; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteConstants_compare_AllTypesC
@@ -498,7 +498,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteConstants_compare_AllTypesC; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteConstants_compare_HebrewC
@@ -507,7 +507,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteConstants_compare_HebrewC; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteEnums_getPlanet
@@ -516,7 +516,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteEnums_getPlanet; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteEnums_setPlanet
@@ -525,7 +525,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteEnums_setPlanet; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getActor
@@ -534,7 +534,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_getActor; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DArray1dim
@@ -543,7 +543,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_getPoint2DArray1dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DArray4dim
@@ -552,7 +552,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_getPoint2DArray4dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DList
@@ -561,7 +561,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_getPoint2DList; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DListList
@@ -570,7 +570,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_getPoint2DListList; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DMap
@@ -579,7 +579,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_getPoint2DMap; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setActor
@@ -588,7 +588,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_setActor; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DArray1dim
@@ -597,7 +597,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_setPoint2DArray1dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DArray4dim
@@ -606,7 +606,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_setPoint2DArray4dim; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DList
@@ -615,7 +615,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_setPoint2DList; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DListList
@@ -624,7 +624,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_setPoint2DListList; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DMap
@@ -633,7 +633,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteInlineInstance_setPoint2DMap; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getBoolean1
@@ -642,7 +642,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getBoolean1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getByte1
@@ -651,7 +651,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getByte1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getByte2
@@ -660,7 +660,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getByte2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getChar1
@@ -669,7 +669,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getChar1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getDouble1
@@ -678,7 +678,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getDouble1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getFloat1
@@ -687,7 +687,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getFloat1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt1
@@ -696,7 +696,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getInt1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt2
@@ -705,7 +705,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getInt2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt3
@@ -714,7 +714,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getInt3; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getInt4
@@ -723,7 +723,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getInt4; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getLong1
@@ -732,7 +732,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getLong1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getObj1
@@ -741,7 +741,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getObj1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getPrimitiveTypes1
@@ -750,7 +750,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getPrimitiveTypes1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getShort1
@@ -759,7 +759,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getShort1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_getString1
@@ -768,7 +768,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_getString1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setBoolean1
@@ -777,7 +777,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setBoolean1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setByte1
@@ -786,7 +786,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setByte1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setByte2
@@ -795,7 +795,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setByte2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setChar1
@@ -804,7 +804,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setChar1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setDouble1
@@ -813,7 +813,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setDouble1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setFloat1
@@ -822,7 +822,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setFloat1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt1
@@ -831,7 +831,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setInt1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt2
@@ -840,7 +840,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setInt2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt3
@@ -849,7 +849,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setInt3; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setInt4
@@ -858,7 +858,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setInt4; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setLong1
@@ -867,7 +867,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setLong1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setObj1
@@ -876,7 +876,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setObj1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setPrimitiveTypes1
@@ -885,7 +885,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setPrimitiveTypes1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setShort1
@@ -894,7 +894,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setShort1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteListTypes_setString1
@@ -903,7 +903,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteListTypes_setString1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getBoolean1
@@ -912,7 +912,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getBoolean1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getByte1
@@ -921,7 +921,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getByte1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getByte2
@@ -930,7 +930,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getByte2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getChar1
@@ -939,7 +939,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getChar1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getDouble1
@@ -948,7 +948,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getDouble1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getFloat1
@@ -957,7 +957,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getFloat1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getInt1
@@ -966,7 +966,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getInt1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getInt2
@@ -975,7 +975,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getInt2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getLong1
@@ -984,7 +984,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getLong1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getObj1
@@ -993,7 +993,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getObj1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getPrimitiveTypes1
@@ -1002,7 +1002,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getPrimitiveTypes1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getShort1
@@ -1011,7 +1011,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getShort1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_getString1
@@ -1020,7 +1020,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_getString1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setBoolean1
@@ -1029,7 +1029,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setBoolean1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setByte1
@@ -1038,7 +1038,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setByte1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setByte2
@@ -1047,7 +1047,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setByte2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setChar1
@@ -1056,7 +1056,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setChar1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setDouble1
@@ -1065,7 +1065,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setDouble1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setFloat1
@@ -1074,7 +1074,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setFloat1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setInt1
@@ -1083,7 +1083,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setInt1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setInt2
@@ -1092,7 +1092,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setInt2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setLong1
@@ -1101,7 +1101,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setLong1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setObj1
@@ -1110,7 +1110,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setObj1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setPrimitiveTypes1
@@ -1119,7 +1119,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setPrimitiveTypes1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setShort1
@@ -1128,7 +1128,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setShort1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteMapTypes_setString1
@@ -1137,7 +1137,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteMapTypes_setString1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_add
@@ -1146,7 +1146,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_add; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getBool
@@ -1155,7 +1155,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getBool; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getByte
@@ -1164,7 +1164,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getByte; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getChar
@@ -1173,7 +1173,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getChar; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getDouble
@@ -1182,7 +1182,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getDouble; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getFloat
@@ -1191,7 +1191,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getFloat; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getInt
@@ -1200,7 +1200,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getLong
@@ -1209,7 +1209,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getLong; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getObject
@@ -1218,7 +1218,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getObject; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getPrimitiveTypes
@@ -1227,7 +1227,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getPrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getShort
@@ -1236,7 +1236,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getShort; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_getString
@@ -1245,7 +1245,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_getString; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_sendAllTypes
@@ -1254,7 +1254,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_sendAllTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setBool
@@ -1263,7 +1263,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setBool; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setByte
@@ -1272,7 +1272,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setByte; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setChar
@@ -1281,7 +1281,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setChar; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setDouble
@@ -1290,7 +1290,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setDouble; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setFloat
@@ -1299,7 +1299,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setFloat; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setInt
@@ -1308,7 +1308,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setLong
@@ -1317,7 +1317,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setLong; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setObject
@@ -1326,7 +1326,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setObject; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setPrimitiveTypes
@@ -1335,7 +1335,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setPrimitiveTypes; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setShort
@@ -1344,7 +1344,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setShort; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_setString
@@ -1353,7 +1353,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_setString; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_throwException
@@ -1362,7 +1362,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_throwException; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemotePrimitiveTypes_voidFunctionVoid
@@ -1371,7 +1371,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemotePrimitiveTypes_voidFunctionVoid; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteReferences_getNode
@@ -1380,7 +1380,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteReferences_getNode; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteReferences_setNode
@@ -1389,7 +1389,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteReferences_setNode; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteServerCtrl_getPublishedRemote
@@ -1398,7 +1398,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteServerCtrl_getPublishedRemote; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteServerCtrl_publishRemote
@@ -1407,7 +1407,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteServerCtrl_publishRemote; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteServerCtrl_removePublishedRemote
@@ -1416,7 +1416,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteServerCtrl_removePublishedRemote; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getBoolean1
@@ -1425,7 +1425,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getBoolean1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getByte1
@@ -1434,7 +1434,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getByte1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getByte2
@@ -1443,7 +1443,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getByte2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getChar1
@@ -1452,7 +1452,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getChar1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getDouble1
@@ -1461,7 +1461,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getDouble1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getFloat1
@@ -1470,7 +1470,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getFloat1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getInt1
@@ -1479,7 +1479,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getInt1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getInt2
@@ -1488,7 +1488,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getInt2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getLong1
@@ -1497,7 +1497,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getLong1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getObj1
@@ -1506,7 +1506,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getObj1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getPrimitiveTypes1
@@ -1515,7 +1515,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getPrimitiveTypes1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getShort1
@@ -1524,7 +1524,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getShort1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_getString1
@@ -1533,7 +1533,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_getString1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setBoolean1
@@ -1542,7 +1542,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setBoolean1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setByte1
@@ -1551,7 +1551,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setByte1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setByte2
@@ -1560,7 +1560,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setByte2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setChar1
@@ -1569,7 +1569,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setChar1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setDouble1
@@ -1578,7 +1578,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setDouble1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setFloat1
@@ -1587,7 +1587,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setFloat1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setInt1
@@ -1596,7 +1596,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setInt1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setInt2
@@ -1605,7 +1605,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setInt2; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setLong1
@@ -1614,7 +1614,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setLong1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setObj1
@@ -1623,7 +1623,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setObj1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setPrimitiveTypes1
@@ -1632,7 +1632,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setPrimitiveTypes1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setShort1
@@ -1641,7 +1641,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setShort1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteSetTypes_setString1
@@ -1650,7 +1650,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteSetTypes_setString1; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_getImage
@@ -1659,7 +1659,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteStreams_getImage; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_getImages
@@ -1668,7 +1668,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteStreams_getImages; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_getTextStream
@@ -1677,7 +1677,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteStreams_getTextStream; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_setImage
@@ -1686,7 +1686,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteStreams_setImage; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_setImages
@@ -1695,7 +1695,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteStreams_setImages; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteStreams_throwLastException
@@ -1704,7 +1704,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteStreams_throwLastException; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_doit
@@ -1713,7 +1713,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteWithAuthentication_doit; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_expire
@@ -1722,7 +1722,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteWithAuthentication_expire; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_login
@@ -1731,7 +1731,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteWithAuthentication_login; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_setReloginCount
@@ -1740,7 +1740,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteWithAuthentication_setReloginCount; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_RemoteWithAuthentication_setUseAuthentication
@@ -1749,7 +1749,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 
 class BRequest_RemoteWithAuthentication_setUseAuthentication; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_getStreams
@@ -1758,7 +1758,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ClientIF_getStreams; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_incrementInt
@@ -1767,7 +1767,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ClientIF_incrementInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_putStreams
@@ -1776,7 +1776,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ClientIF_putStreams; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ClientIF_sendChat
@@ -1785,7 +1785,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ClientIF_sendChat; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_callClientIncrementInt
@@ -1794,7 +1794,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_callClientIncrementInt; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_callClientParallel
@@ -1803,7 +1803,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_callClientParallel; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getClient
@@ -1812,7 +1812,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_getClient; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getClientIds
@@ -1821,7 +1821,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_getClientIds; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getPartner
@@ -1830,7 +1830,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_getPartner; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_getStreamsFromClient
@@ -1839,7 +1839,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_getStreamsFromClient; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_putStreamsOnClient
@@ -1848,7 +1848,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_putStreamsOnClient; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_registerWithClientMap
@@ -1857,7 +1857,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_registerWithClientMap; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_ServerIF_setPartner
@@ -1866,7 +1866,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 class BRequest_ServerIF_setPartner; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_getClient
@@ -1875,7 +1875,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 
 class BRequest_EvolveIF_getClient; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_getEvolve
@@ -1884,7 +1884,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 
 class BRequest_EvolveIF_getEvolve; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_sendEvolveToClient
@@ -1893,7 +1893,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 
 class BRequest_EvolveIF_sendEvolveToClient; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_setClient
@@ -1902,7 +1902,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 
 class BRequest_EvolveIF_setClient; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // Forward Declaration of class BRequest_EvolveIF_setEvolve
@@ -1911,7 +1911,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 
 class BRequest_EvolveIF_setEvolve; 
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BResult_1
@@ -1931,7 +1931,7 @@ class BResult_1 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_10
@@ -1951,7 +1951,7 @@ class BResult_10 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1000
@@ -1971,7 +1971,7 @@ class BResult_1000 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_100361105
@@ -1991,7 +1991,7 @@ class BResult_100361105 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1050216688
@@ -2011,7 +2011,7 @@ class BResult_1050216688 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1059148284
@@ -2031,7 +2031,7 @@ class BResult_1059148284 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1097129250
@@ -2051,7 +2051,7 @@ class BResult_1097129250 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1174971318
@@ -2071,7 +2071,7 @@ class BResult_1174971318 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_12
@@ -2091,7 +2091,7 @@ class BResult_12 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1201775504
@@ -2111,7 +2111,7 @@ class BResult_1201775504 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1218831438
@@ -2131,7 +2131,7 @@ class BResult_1218831438 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_124584219
@@ -2151,7 +2151,7 @@ class BResult_124584219 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1279823631
@@ -2171,7 +2171,7 @@ class BResult_1279823631 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1320560671
@@ -2191,7 +2191,7 @@ class BResult_1320560671 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1347703734
@@ -2211,7 +2211,7 @@ class BResult_1347703734 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1358523233
@@ -2231,7 +2231,7 @@ class BResult_1358523233 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1359468275
@@ -2251,7 +2251,7 @@ class BResult_1359468275 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1361632968
@@ -2271,7 +2271,7 @@ class BResult_1361632968 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1365696060
@@ -2291,7 +2291,7 @@ class BResult_1365696060 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1374008726
@@ -2311,7 +2311,7 @@ class BResult_1374008726 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1375035164
@@ -2331,7 +2331,7 @@ class BResult_1375035164 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1391985860
@@ -2351,7 +2351,7 @@ class BResult_1391985860 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_14
@@ -2371,7 +2371,7 @@ class BResult_14 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1406124761
@@ -2391,7 +2391,7 @@ class BResult_1406124761 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1457164460
@@ -2411,7 +2411,7 @@ class BResult_1457164460 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1487265161
@@ -2431,7 +2431,7 @@ class BResult_1487265161 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1488550492
@@ -2451,7 +2451,7 @@ class BResult_1488550492 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1493282670
@@ -2471,7 +2471,7 @@ class BResult_1493282670 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_15
@@ -2491,7 +2491,7 @@ class BResult_15 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1516687588
@@ -2511,7 +2511,7 @@ class BResult_1516687588 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1555345627
@@ -2531,7 +2531,7 @@ class BResult_1555345627 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1596367810
@@ -2551,7 +2551,7 @@ class BResult_1596367810 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_16
@@ -2571,7 +2571,7 @@ class BResult_16 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1617670280
@@ -2591,7 +2591,7 @@ class BResult_1617670280 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1628501332
@@ -2611,7 +2611,7 @@ class BResult_1628501332 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1633500852
@@ -2631,7 +2631,7 @@ class BResult_1633500852 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1633750383
@@ -2651,7 +2651,7 @@ class BResult_1633750383 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1661807911
@@ -2671,7 +2671,7 @@ class BResult_1661807911 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1710660846
@@ -2691,7 +2691,7 @@ class BResult_1710660846 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_171948703
@@ -2711,7 +2711,7 @@ class BResult_171948703 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1746702954
@@ -2731,7 +2731,7 @@ class BResult_1746702954 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1752158699
@@ -2751,7 +2751,7 @@ class BResult_1752158699 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1799280818
@@ -2771,7 +2771,7 @@ class BResult_1799280818 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_181681714
@@ -2791,7 +2791,7 @@ class BResult_181681714 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1823330785
@@ -2811,7 +2811,7 @@ class BResult_1823330785 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1831201218
@@ -2831,7 +2831,7 @@ class BResult_1831201218 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_183594037
@@ -2851,7 +2851,7 @@ class BResult_183594037 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_184101377
@@ -2871,7 +2871,7 @@ class BResult_184101377 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1859644668
@@ -2891,7 +2891,7 @@ class BResult_1859644668 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1888107655
@@ -2911,7 +2911,7 @@ class BResult_1888107655 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1888799711
@@ -2931,7 +2931,7 @@ class BResult_1888799711 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1898022288
@@ -2951,7 +2951,7 @@ class BResult_1898022288 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_19
@@ -2971,7 +2971,7 @@ class BResult_19 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1972793385
@@ -2991,7 +2991,7 @@ class BResult_1972793385 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1973996106
@@ -3011,7 +3011,7 @@ class BResult_1973996106 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_1997002548
@@ -3031,7 +3031,7 @@ class BResult_1997002548 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2
@@ -3051,7 +3051,7 @@ class BResult_2 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2028443792
@@ -3071,7 +3071,7 @@ class BResult_2028443792 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2052431866
@@ -3091,7 +3091,7 @@ class BResult_2052431866 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2053507648
@@ -3111,7 +3111,7 @@ class BResult_2053507648 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2058423690
@@ -3131,7 +3131,7 @@ class BResult_2058423690 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2064980445
@@ -3151,7 +3151,7 @@ class BResult_2064980445 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2067161310
@@ -3171,7 +3171,7 @@ class BResult_2067161310 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2087445849
@@ -3191,7 +3191,7 @@ class BResult_2087445849 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_21
@@ -3211,7 +3211,7 @@ class BResult_21 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_2123584667
@@ -3231,7 +3231,7 @@ class BResult_2123584667 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_3
@@ -3251,7 +3251,7 @@ class BResult_3 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_31512998
@@ -3271,7 +3271,7 @@ class BResult_31512998 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_39910537
@@ -3291,7 +3291,7 @@ class BResult_39910537 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_4
@@ -3311,7 +3311,7 @@ class BResult_4 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_476459792
@@ -3331,7 +3331,7 @@ class BResult_476459792 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_5
@@ -3351,7 +3351,7 @@ class BResult_5 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_564008001
@@ -3371,7 +3371,7 @@ class BResult_564008001 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_588723219
@@ -3391,7 +3391,7 @@ class BResult_588723219 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_6
@@ -3411,7 +3411,7 @@ class BResult_6 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_601099730
@@ -3431,7 +3431,7 @@ class BResult_601099730 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_65775978
@@ -3451,7 +3451,7 @@ class BResult_65775978 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_673917574
@@ -3471,7 +3471,7 @@ class BResult_673917574 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_7
@@ -3491,7 +3491,7 @@ class BResult_7 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_7007
@@ -3511,7 +3511,7 @@ class BResult_7007 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_758319514
@@ -3531,7 +3531,7 @@ class BResult_758319514 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_766441794
@@ -3551,7 +3551,7 @@ class BResult_766441794 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_769021986
@@ -3571,7 +3571,7 @@ class BResult_769021986 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_8
@@ -3591,7 +3591,7 @@ class BResult_8 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_846419204
@@ -3611,7 +3611,7 @@ class BResult_846419204 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_8789515
@@ -3631,7 +3631,7 @@ class BResult_8789515 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_9001
@@ -3651,7 +3651,7 @@ class BResult_9001 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_936607009
@@ -3671,7 +3671,7 @@ class BResult_936607009 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_94341197
@@ -3691,7 +3691,7 @@ class BResult_94341197 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_945713488
@@ -3711,7 +3711,7 @@ class BResult_945713488 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_949340697
@@ -3731,7 +3731,7 @@ class BResult_949340697 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BResult_955752991
@@ -3751,7 +3751,7 @@ class BResult_955752991 : public BSerializable {
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
-}
+}}}
 
 //-------------------------------------------------
 // BRequest_BioFruitService_certify
@@ -3775,7 +3775,7 @@ class BRequest_BioFruitService_certify : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_BioLemonService_useParing
@@ -3797,7 +3797,7 @@ class BRequest_BioLemonService_useParing : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_FruitService_squeeze
@@ -3819,7 +3819,7 @@ class BRequest_FruitService_squeeze : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_LemonService_pick
@@ -3844,7 +3844,7 @@ class BRequest_LemonService_pick : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_PlantService_grow
@@ -3866,7 +3866,7 @@ class BRequest_PlantService_grow : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getBool
@@ -3888,7 +3888,7 @@ class BRequest_RemoteArrayTypes1dim_getBool : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getByte
@@ -3910,7 +3910,7 @@ class BRequest_RemoteArrayTypes1dim_getByte : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getChar
@@ -3932,7 +3932,7 @@ class BRequest_RemoteArrayTypes1dim_getChar : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getDouble
@@ -3954,7 +3954,7 @@ class BRequest_RemoteArrayTypes1dim_getDouble : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getFloat
@@ -3976,7 +3976,7 @@ class BRequest_RemoteArrayTypes1dim_getFloat : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getInt
@@ -3998,7 +3998,7 @@ class BRequest_RemoteArrayTypes1dim_getInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getLong
@@ -4020,7 +4020,7 @@ class BRequest_RemoteArrayTypes1dim_getLong : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getObject
@@ -4042,7 +4042,7 @@ class BRequest_RemoteArrayTypes1dim_getObject : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
@@ -4064,7 +4064,7 @@ class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getShort
@@ -4086,7 +4086,7 @@ class BRequest_RemoteArrayTypes1dim_getShort : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_getString
@@ -4108,7 +4108,7 @@ class BRequest_RemoteArrayTypes1dim_getString : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setBool
@@ -4132,7 +4132,7 @@ class BRequest_RemoteArrayTypes1dim_setBool : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setByte
@@ -4156,7 +4156,7 @@ class BRequest_RemoteArrayTypes1dim_setByte : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setChar
@@ -4180,7 +4180,7 @@ class BRequest_RemoteArrayTypes1dim_setChar : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setDouble
@@ -4204,7 +4204,7 @@ class BRequest_RemoteArrayTypes1dim_setDouble : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setFloat
@@ -4228,7 +4228,7 @@ class BRequest_RemoteArrayTypes1dim_setFloat : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setInt
@@ -4252,7 +4252,7 @@ class BRequest_RemoteArrayTypes1dim_setInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setLong
@@ -4276,7 +4276,7 @@ class BRequest_RemoteArrayTypes1dim_setLong : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setObject
@@ -4300,7 +4300,7 @@ class BRequest_RemoteArrayTypes1dim_setObject : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
@@ -4324,7 +4324,7 @@ class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setShort
@@ -4348,7 +4348,7 @@ class BRequest_RemoteArrayTypes1dim_setShort : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes1dim_setString
@@ -4372,7 +4372,7 @@ class BRequest_RemoteArrayTypes1dim_setString : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysClass
@@ -4398,7 +4398,7 @@ class BRequest_RemoteArrayTypes23_sendArraysClass : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysInline
@@ -4424,7 +4424,7 @@ class BRequest_RemoteArrayTypes23_sendArraysInline : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysInt
@@ -4450,7 +4450,7 @@ class BRequest_RemoteArrayTypes23_sendArraysInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysObject
@@ -4476,7 +4476,7 @@ class BRequest_RemoteArrayTypes23_sendArraysObject : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes23_sendArraysString
@@ -4502,7 +4502,7 @@ class BRequest_RemoteArrayTypes23_sendArraysString : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getBool
@@ -4524,7 +4524,7 @@ class BRequest_RemoteArrayTypes4dim_getBool : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getByte
@@ -4546,7 +4546,7 @@ class BRequest_RemoteArrayTypes4dim_getByte : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getChar
@@ -4568,7 +4568,7 @@ class BRequest_RemoteArrayTypes4dim_getChar : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getDouble
@@ -4590,7 +4590,7 @@ class BRequest_RemoteArrayTypes4dim_getDouble : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getFloat
@@ -4612,7 +4612,7 @@ class BRequest_RemoteArrayTypes4dim_getFloat : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getInt
@@ -4634,7 +4634,7 @@ class BRequest_RemoteArrayTypes4dim_getInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getLong
@@ -4656,7 +4656,7 @@ class BRequest_RemoteArrayTypes4dim_getLong : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getObject
@@ -4678,7 +4678,7 @@ class BRequest_RemoteArrayTypes4dim_getObject : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
@@ -4700,7 +4700,7 @@ class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getShort
@@ -4722,7 +4722,7 @@ class BRequest_RemoteArrayTypes4dim_getShort : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_getString
@@ -4744,7 +4744,7 @@ class BRequest_RemoteArrayTypes4dim_getString : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setBool
@@ -4768,7 +4768,7 @@ class BRequest_RemoteArrayTypes4dim_setBool : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setByte
@@ -4792,7 +4792,7 @@ class BRequest_RemoteArrayTypes4dim_setByte : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setChar
@@ -4816,7 +4816,7 @@ class BRequest_RemoteArrayTypes4dim_setChar : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setDouble
@@ -4840,7 +4840,7 @@ class BRequest_RemoteArrayTypes4dim_setDouble : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setFloat
@@ -4864,7 +4864,7 @@ class BRequest_RemoteArrayTypes4dim_setFloat : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setInt
@@ -4888,7 +4888,7 @@ class BRequest_RemoteArrayTypes4dim_setInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setLong
@@ -4912,7 +4912,7 @@ class BRequest_RemoteArrayTypes4dim_setLong : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setObject
@@ -4936,7 +4936,7 @@ class BRequest_RemoteArrayTypes4dim_setObject : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
@@ -4960,7 +4960,7 @@ class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setShort
@@ -4984,7 +4984,7 @@ class BRequest_RemoteArrayTypes4dim_setShort : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteArrayTypes4dim_setString
@@ -5008,7 +5008,7 @@ class BRequest_RemoteArrayTypes4dim_setString : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteConstants_compare_AllTypesC
@@ -5048,7 +5048,7 @@ class BRequest_RemoteConstants_compare_AllTypesC : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteConstants_compare_HebrewC
@@ -5073,7 +5073,7 @@ class BRequest_RemoteConstants_compare_HebrewC : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteEnums_getPlanet
@@ -5095,7 +5095,7 @@ class BRequest_RemoteEnums_getPlanet : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteEnums_setPlanet
@@ -5119,7 +5119,7 @@ class BRequest_RemoteEnums_setPlanet : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getActor
@@ -5141,7 +5141,7 @@ class BRequest_RemoteInlineInstance_getActor : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DArray1dim
@@ -5163,7 +5163,7 @@ class BRequest_RemoteInlineInstance_getPoint2DArray1dim : public BMethodRequest 
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DArray4dim
@@ -5185,7 +5185,7 @@ class BRequest_RemoteInlineInstance_getPoint2DArray4dim : public BMethodRequest 
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DList
@@ -5207,7 +5207,7 @@ class BRequest_RemoteInlineInstance_getPoint2DList : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DListList
@@ -5229,7 +5229,7 @@ class BRequest_RemoteInlineInstance_getPoint2DListList : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_getPoint2DMap
@@ -5251,7 +5251,7 @@ class BRequest_RemoteInlineInstance_getPoint2DMap : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setActor
@@ -5275,7 +5275,7 @@ class BRequest_RemoteInlineInstance_setActor : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DArray1dim
@@ -5299,7 +5299,7 @@ class BRequest_RemoteInlineInstance_setPoint2DArray1dim : public BMethodRequest 
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DArray4dim
@@ -5323,7 +5323,7 @@ class BRequest_RemoteInlineInstance_setPoint2DArray4dim : public BMethodRequest 
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DList
@@ -5347,7 +5347,7 @@ class BRequest_RemoteInlineInstance_setPoint2DList : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DListList
@@ -5371,7 +5371,7 @@ class BRequest_RemoteInlineInstance_setPoint2DListList : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteInlineInstance_setPoint2DMap
@@ -5395,7 +5395,7 @@ class BRequest_RemoteInlineInstance_setPoint2DMap : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getBoolean1
@@ -5417,7 +5417,7 @@ class BRequest_RemoteListTypes_getBoolean1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getByte1
@@ -5439,7 +5439,7 @@ class BRequest_RemoteListTypes_getByte1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getByte2
@@ -5461,7 +5461,7 @@ class BRequest_RemoteListTypes_getByte2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getChar1
@@ -5483,7 +5483,7 @@ class BRequest_RemoteListTypes_getChar1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getDouble1
@@ -5505,7 +5505,7 @@ class BRequest_RemoteListTypes_getDouble1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getFloat1
@@ -5527,7 +5527,7 @@ class BRequest_RemoteListTypes_getFloat1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt1
@@ -5549,7 +5549,7 @@ class BRequest_RemoteListTypes_getInt1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt2
@@ -5571,7 +5571,7 @@ class BRequest_RemoteListTypes_getInt2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt3
@@ -5593,7 +5593,7 @@ class BRequest_RemoteListTypes_getInt3 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getInt4
@@ -5615,7 +5615,7 @@ class BRequest_RemoteListTypes_getInt4 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getLong1
@@ -5637,7 +5637,7 @@ class BRequest_RemoteListTypes_getLong1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getObj1
@@ -5659,7 +5659,7 @@ class BRequest_RemoteListTypes_getObj1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getPrimitiveTypes1
@@ -5681,7 +5681,7 @@ class BRequest_RemoteListTypes_getPrimitiveTypes1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getShort1
@@ -5703,7 +5703,7 @@ class BRequest_RemoteListTypes_getShort1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_getString1
@@ -5725,7 +5725,7 @@ class BRequest_RemoteListTypes_getString1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setBoolean1
@@ -5749,7 +5749,7 @@ class BRequest_RemoteListTypes_setBoolean1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setByte1
@@ -5773,7 +5773,7 @@ class BRequest_RemoteListTypes_setByte1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setByte2
@@ -5797,7 +5797,7 @@ class BRequest_RemoteListTypes_setByte2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setChar1
@@ -5821,7 +5821,7 @@ class BRequest_RemoteListTypes_setChar1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setDouble1
@@ -5845,7 +5845,7 @@ class BRequest_RemoteListTypes_setDouble1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setFloat1
@@ -5869,7 +5869,7 @@ class BRequest_RemoteListTypes_setFloat1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt1
@@ -5893,7 +5893,7 @@ class BRequest_RemoteListTypes_setInt1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt2
@@ -5917,7 +5917,7 @@ class BRequest_RemoteListTypes_setInt2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt3
@@ -5941,7 +5941,7 @@ class BRequest_RemoteListTypes_setInt3 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setInt4
@@ -5965,7 +5965,7 @@ class BRequest_RemoteListTypes_setInt4 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setLong1
@@ -5989,7 +5989,7 @@ class BRequest_RemoteListTypes_setLong1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setObj1
@@ -6013,7 +6013,7 @@ class BRequest_RemoteListTypes_setObj1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setPrimitiveTypes1
@@ -6037,7 +6037,7 @@ class BRequest_RemoteListTypes_setPrimitiveTypes1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setShort1
@@ -6061,7 +6061,7 @@ class BRequest_RemoteListTypes_setShort1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteListTypes_setString1
@@ -6085,7 +6085,7 @@ class BRequest_RemoteListTypes_setString1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getBoolean1
@@ -6107,7 +6107,7 @@ class BRequest_RemoteMapTypes_getBoolean1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getByte1
@@ -6129,7 +6129,7 @@ class BRequest_RemoteMapTypes_getByte1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getByte2
@@ -6151,7 +6151,7 @@ class BRequest_RemoteMapTypes_getByte2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getChar1
@@ -6173,7 +6173,7 @@ class BRequest_RemoteMapTypes_getChar1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getDouble1
@@ -6195,7 +6195,7 @@ class BRequest_RemoteMapTypes_getDouble1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getFloat1
@@ -6217,7 +6217,7 @@ class BRequest_RemoteMapTypes_getFloat1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getInt1
@@ -6239,7 +6239,7 @@ class BRequest_RemoteMapTypes_getInt1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getInt2
@@ -6261,7 +6261,7 @@ class BRequest_RemoteMapTypes_getInt2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getLong1
@@ -6283,7 +6283,7 @@ class BRequest_RemoteMapTypes_getLong1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getObj1
@@ -6305,7 +6305,7 @@ class BRequest_RemoteMapTypes_getObj1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getPrimitiveTypes1
@@ -6327,7 +6327,7 @@ class BRequest_RemoteMapTypes_getPrimitiveTypes1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getShort1
@@ -6349,7 +6349,7 @@ class BRequest_RemoteMapTypes_getShort1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_getString1
@@ -6371,7 +6371,7 @@ class BRequest_RemoteMapTypes_getString1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setBoolean1
@@ -6395,7 +6395,7 @@ class BRequest_RemoteMapTypes_setBoolean1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setByte1
@@ -6419,7 +6419,7 @@ class BRequest_RemoteMapTypes_setByte1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setByte2
@@ -6443,7 +6443,7 @@ class BRequest_RemoteMapTypes_setByte2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setChar1
@@ -6467,7 +6467,7 @@ class BRequest_RemoteMapTypes_setChar1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setDouble1
@@ -6491,7 +6491,7 @@ class BRequest_RemoteMapTypes_setDouble1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setFloat1
@@ -6515,7 +6515,7 @@ class BRequest_RemoteMapTypes_setFloat1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setInt1
@@ -6539,7 +6539,7 @@ class BRequest_RemoteMapTypes_setInt1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setInt2
@@ -6563,7 +6563,7 @@ class BRequest_RemoteMapTypes_setInt2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setLong1
@@ -6587,7 +6587,7 @@ class BRequest_RemoteMapTypes_setLong1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setObj1
@@ -6611,7 +6611,7 @@ class BRequest_RemoteMapTypes_setObj1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setPrimitiveTypes1
@@ -6635,7 +6635,7 @@ class BRequest_RemoteMapTypes_setPrimitiveTypes1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setShort1
@@ -6659,7 +6659,7 @@ class BRequest_RemoteMapTypes_setShort1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteMapTypes_setString1
@@ -6683,7 +6683,7 @@ class BRequest_RemoteMapTypes_setString1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_add
@@ -6708,7 +6708,7 @@ class BRequest_RemotePrimitiveTypes_add : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getBool
@@ -6730,7 +6730,7 @@ class BRequest_RemotePrimitiveTypes_getBool : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getByte
@@ -6752,7 +6752,7 @@ class BRequest_RemotePrimitiveTypes_getByte : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getChar
@@ -6774,7 +6774,7 @@ class BRequest_RemotePrimitiveTypes_getChar : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getDouble
@@ -6796,7 +6796,7 @@ class BRequest_RemotePrimitiveTypes_getDouble : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getFloat
@@ -6818,7 +6818,7 @@ class BRequest_RemotePrimitiveTypes_getFloat : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getInt
@@ -6840,7 +6840,7 @@ class BRequest_RemotePrimitiveTypes_getInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getLong
@@ -6862,7 +6862,7 @@ class BRequest_RemotePrimitiveTypes_getLong : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getObject
@@ -6884,7 +6884,7 @@ class BRequest_RemotePrimitiveTypes_getObject : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getPrimitiveTypes
@@ -6906,7 +6906,7 @@ class BRequest_RemotePrimitiveTypes_getPrimitiveTypes : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getShort
@@ -6928,7 +6928,7 @@ class BRequest_RemotePrimitiveTypes_getShort : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_getString
@@ -6950,7 +6950,7 @@ class BRequest_RemotePrimitiveTypes_getString : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_sendAllTypes
@@ -6983,7 +6983,7 @@ class BRequest_RemotePrimitiveTypes_sendAllTypes : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setBool
@@ -7007,7 +7007,7 @@ class BRequest_RemotePrimitiveTypes_setBool : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setByte
@@ -7031,7 +7031,7 @@ class BRequest_RemotePrimitiveTypes_setByte : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setChar
@@ -7055,7 +7055,7 @@ class BRequest_RemotePrimitiveTypes_setChar : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setDouble
@@ -7079,7 +7079,7 @@ class BRequest_RemotePrimitiveTypes_setDouble : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setFloat
@@ -7103,7 +7103,7 @@ class BRequest_RemotePrimitiveTypes_setFloat : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setInt
@@ -7127,7 +7127,7 @@ class BRequest_RemotePrimitiveTypes_setInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setLong
@@ -7151,7 +7151,7 @@ class BRequest_RemotePrimitiveTypes_setLong : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setObject
@@ -7175,7 +7175,7 @@ class BRequest_RemotePrimitiveTypes_setObject : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setPrimitiveTypes
@@ -7199,7 +7199,7 @@ class BRequest_RemotePrimitiveTypes_setPrimitiveTypes : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setShort
@@ -7223,7 +7223,7 @@ class BRequest_RemotePrimitiveTypes_setShort : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_setString
@@ -7247,7 +7247,7 @@ class BRequest_RemotePrimitiveTypes_setString : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_throwException
@@ -7269,7 +7269,7 @@ class BRequest_RemotePrimitiveTypes_throwException : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_voidFunctionVoid
@@ -7291,7 +7291,7 @@ class BRequest_RemotePrimitiveTypes_voidFunctionVoid : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteReferences_getNode
@@ -7313,7 +7313,7 @@ class BRequest_RemoteReferences_getNode : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteReferences_setNode
@@ -7337,7 +7337,7 @@ class BRequest_RemoteReferences_setNode : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteServerCtrl_getPublishedRemote
@@ -7361,7 +7361,7 @@ class BRequest_RemoteServerCtrl_getPublishedRemote : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteServerCtrl_publishRemote
@@ -7387,7 +7387,7 @@ class BRequest_RemoteServerCtrl_publishRemote : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteServerCtrl_removePublishedRemote
@@ -7411,7 +7411,7 @@ class BRequest_RemoteServerCtrl_removePublishedRemote : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getBoolean1
@@ -7433,7 +7433,7 @@ class BRequest_RemoteSetTypes_getBoolean1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getByte1
@@ -7455,7 +7455,7 @@ class BRequest_RemoteSetTypes_getByte1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getByte2
@@ -7477,7 +7477,7 @@ class BRequest_RemoteSetTypes_getByte2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getChar1
@@ -7499,7 +7499,7 @@ class BRequest_RemoteSetTypes_getChar1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getDouble1
@@ -7521,7 +7521,7 @@ class BRequest_RemoteSetTypes_getDouble1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getFloat1
@@ -7543,7 +7543,7 @@ class BRequest_RemoteSetTypes_getFloat1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getInt1
@@ -7565,7 +7565,7 @@ class BRequest_RemoteSetTypes_getInt1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getInt2
@@ -7587,7 +7587,7 @@ class BRequest_RemoteSetTypes_getInt2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getLong1
@@ -7609,7 +7609,7 @@ class BRequest_RemoteSetTypes_getLong1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getObj1
@@ -7631,7 +7631,7 @@ class BRequest_RemoteSetTypes_getObj1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getPrimitiveTypes1
@@ -7653,7 +7653,7 @@ class BRequest_RemoteSetTypes_getPrimitiveTypes1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getShort1
@@ -7675,7 +7675,7 @@ class BRequest_RemoteSetTypes_getShort1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_getString1
@@ -7697,7 +7697,7 @@ class BRequest_RemoteSetTypes_getString1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setBoolean1
@@ -7721,7 +7721,7 @@ class BRequest_RemoteSetTypes_setBoolean1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setByte1
@@ -7745,7 +7745,7 @@ class BRequest_RemoteSetTypes_setByte1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setByte2
@@ -7769,7 +7769,7 @@ class BRequest_RemoteSetTypes_setByte2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setChar1
@@ -7793,7 +7793,7 @@ class BRequest_RemoteSetTypes_setChar1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setDouble1
@@ -7817,7 +7817,7 @@ class BRequest_RemoteSetTypes_setDouble1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setFloat1
@@ -7841,7 +7841,7 @@ class BRequest_RemoteSetTypes_setFloat1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setInt1
@@ -7865,7 +7865,7 @@ class BRequest_RemoteSetTypes_setInt1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setInt2
@@ -7889,7 +7889,7 @@ class BRequest_RemoteSetTypes_setInt2 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setLong1
@@ -7913,7 +7913,7 @@ class BRequest_RemoteSetTypes_setLong1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setObj1
@@ -7937,7 +7937,7 @@ class BRequest_RemoteSetTypes_setObj1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setPrimitiveTypes1
@@ -7961,7 +7961,7 @@ class BRequest_RemoteSetTypes_setPrimitiveTypes1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setShort1
@@ -7985,7 +7985,7 @@ class BRequest_RemoteSetTypes_setShort1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteSetTypes_setString1
@@ -8009,7 +8009,7 @@ class BRequest_RemoteSetTypes_setString1 : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_getImage
@@ -8031,7 +8031,7 @@ class BRequest_RemoteStreams_getImage : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_getImages
@@ -8053,7 +8053,7 @@ class BRequest_RemoteStreams_getImages : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_getTextStream
@@ -8075,7 +8075,7 @@ class BRequest_RemoteStreams_getTextStream : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_setImage
@@ -8099,7 +8099,7 @@ class BRequest_RemoteStreams_setImage : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_setImages
@@ -8124,7 +8124,7 @@ class BRequest_RemoteStreams_setImages : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteStreams_throwLastException
@@ -8146,7 +8146,7 @@ class BRequest_RemoteStreams_throwLastException : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_doit
@@ -8173,7 +8173,7 @@ class BRequest_RemoteWithAuthentication_doit : public BMethodRequest {
 	public: virtual void setSession(PSerializable __byps__sess);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_expire
@@ -8198,7 +8198,7 @@ class BRequest_RemoteWithAuthentication_expire : public BMethodRequest {
 	public: virtual void setSession(PSerializable __byps__sess);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_login
@@ -8226,7 +8226,7 @@ class BRequest_RemoteWithAuthentication_login : public BMethodRequest {
 	public: virtual void setSession(PSerializable __byps__sess);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_setReloginCount
@@ -8250,7 +8250,7 @@ class BRequest_RemoteWithAuthentication_setReloginCount : public BMethodRequest 
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_RemoteWithAuthentication_setUseAuthentication
@@ -8274,7 +8274,7 @@ class BRequest_RemoteWithAuthentication_setUseAuthentication : public BMethodReq
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_getStreams
@@ -8298,7 +8298,7 @@ class BRequest_ClientIF_getStreams : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_incrementInt
@@ -8322,7 +8322,7 @@ class BRequest_ClientIF_incrementInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_putStreams
@@ -8347,7 +8347,7 @@ class BRequest_ClientIF_putStreams : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ClientIF_sendChat
@@ -8371,7 +8371,7 @@ class BRequest_ClientIF_sendChat : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_callClientIncrementInt
@@ -8395,7 +8395,7 @@ class BRequest_ServerIF_callClientIncrementInt : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_callClientParallel
@@ -8419,7 +8419,7 @@ class BRequest_ServerIF_callClientParallel : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getClient
@@ -8443,7 +8443,7 @@ class BRequest_ServerIF_getClient : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getClientIds
@@ -8465,7 +8465,7 @@ class BRequest_ServerIF_getClientIds : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getPartner
@@ -8487,7 +8487,7 @@ class BRequest_ServerIF_getPartner : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_getStreamsFromClient
@@ -8509,7 +8509,7 @@ class BRequest_ServerIF_getStreamsFromClient : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_putStreamsOnClient
@@ -8533,7 +8533,7 @@ class BRequest_ServerIF_putStreamsOnClient : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_registerWithClientMap
@@ -8557,7 +8557,7 @@ class BRequest_ServerIF_registerWithClientMap : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_ServerIF_setPartner
@@ -8581,7 +8581,7 @@ class BRequest_ServerIF_setPartner : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_getClient
@@ -8603,7 +8603,7 @@ class BRequest_EvolveIF_getClient : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_getEvolve
@@ -8625,7 +8625,7 @@ class BRequest_EvolveIF_getEvolve : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_sendEvolveToClient
@@ -8647,7 +8647,7 @@ class BRequest_EvolveIF_sendEvolveToClient : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_setClient
@@ -8671,7 +8671,7 @@ class BRequest_EvolveIF_setClient : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 //-------------------------------------------------
 // BRequest_EvolveIF_setEvolve
@@ -8695,7 +8695,7 @@ class BRequest_EvolveIF_setEvolve : public BMethodRequest {
 	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
 };
 
-}}
+}}}}
 
 namespace byps { namespace test { namespace api { 
 
@@ -9596,7 +9596,7 @@ void BSerializer_2067161310(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 // Serializer for short[][][][]
 void BSerializer_1859644668(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 
-}
+}}}
 
 
 #endif

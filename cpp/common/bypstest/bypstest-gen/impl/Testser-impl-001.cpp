@@ -44,7 +44,7 @@ void byps::test::api::inl::Matrix2D::serialize(BIO& ar, const BVERSION version) 
 	ar & _32;
 	ar & _33;
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -57,7 +57,7 @@ void BSerializer_135329019(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new byps::test::api::inl::Matrix2D());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { namespace inl { 
 
 //-------------------------------------------------
@@ -79,7 +79,7 @@ void byps::test::api::inl::Point2D::serialize(BIO& ar, const BVERSION version) {
 	ar & x;
 	ar & y;
 }
-}}
+}}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -92,7 +92,7 @@ void BSerializer_1835035436(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new byps::test::api::inl::Point2D());
 	}
 }
-}
+}}}
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
 void BSerializer_184101377(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
@@ -104,7 +104,7 @@ void BSerializer_184101377(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new BArray1< byps::test::api::inl::Point2D > ());
 	}
 }
-}
+}}}
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
 void BSerializer_827767075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
@@ -116,7 +116,7 @@ void BSerializer_827767075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new BArray2< byps::test::api::inl::Point2D > ());
 	}
 }
-}
+}}}
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
 void BSerializer_915212229(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
@@ -128,7 +128,7 @@ void BSerializer_915212229(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new BArray3< byps::test::api::inl::Point2D > ());
 	}
 }
-}
+}}}
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
 void BSerializer_949340697(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
@@ -140,7 +140,7 @@ void BSerializer_949340697(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new BArray4< byps::test::api::inl::Point2D > ());
 	}
 }
-}
+}}}
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
 void BSerializer_2058423690(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
@@ -152,7 +152,7 @@ void BSerializer_2058423690(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new BArray1< bool > ());
 	}
 }
-}
+}}}
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
 void BSerializer_945713488(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
@@ -164,7 +164,7 @@ void BSerializer_945713488(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 		pObj = POBJECT(new BArray4< bool > ());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -175,7 +175,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -188,7 +188,7 @@ void BSerializer_432867947(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -199,7 +199,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_10::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -212,7 +212,7 @@ void BSerializer_534004421(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_10());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -223,7 +223,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1000::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -236,7 +236,7 @@ void BSerializer_2077138821(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1000());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -247,7 +247,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_100361105::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -260,7 +260,7 @@ void BSerializer_498939805(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_100361105());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -271,7 +271,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1050216688::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -284,7 +284,7 @@ void BSerializer_70523627(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase
 		pObjS = PSerializable(new byps::test::api::BResult_1050216688());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -295,7 +295,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1059148284::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -308,7 +308,7 @@ void BSerializer_698727944(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1059148284());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -319,7 +319,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1097129250::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -332,7 +332,7 @@ void BSerializer_200721390(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1097129250());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -343,7 +343,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1174971318::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -356,7 +356,7 @@ void BSerializer_1068483136(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1174971318());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -367,7 +367,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_12::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -380,7 +380,7 @@ void BSerializer_534004419(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_12());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -391,7 +391,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1201775504::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -404,7 +404,7 @@ void BSerializer_1521577218(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1201775504());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -415,7 +415,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1218831438::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -428,7 +428,7 @@ void BSerializer_911793767(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1218831438());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -439,7 +439,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_124584219::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -452,7 +452,7 @@ void BSerializer_996163680(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_124584219());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -463,7 +463,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1279823631::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -476,7 +476,7 @@ void BSerializer_629604454(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1279823631());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -487,7 +487,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1320560671::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -500,7 +500,7 @@ void BSerializer_2041057155(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1320560671());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -511,7 +511,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1347703734::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -524,7 +524,7 @@ void BSerializer_881037921(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1347703734());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -535,7 +535,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1358523233::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -548,7 +548,7 @@ void BSerializer_1693860029(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1358523233());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -559,7 +559,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1359468275::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -572,7 +572,7 @@ void BSerializer_1738389572(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1359468275());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -583,7 +583,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1361632968::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -596,7 +596,7 @@ void BSerializer_1548641599(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1361632968());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -607,7 +607,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1365696060::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -620,7 +620,7 @@ void BSerializer_809340660(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1365696060());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -631,7 +631,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1374008726::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -644,7 +644,7 @@ void BSerializer_1484626910(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1374008726());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -655,7 +655,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1375035164::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -668,7 +668,7 @@ void BSerializer_1920161159(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1375035164());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -679,7 +679,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1391985860::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -692,7 +692,7 @@ void BSerializer_1722268526(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1391985860());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -703,7 +703,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_14::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -716,7 +716,7 @@ void BSerializer_534004417(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_14());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -727,7 +727,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1406124761::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -740,7 +740,7 @@ void BSerializer_2127200796(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1406124761());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -751,7 +751,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1457164460::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -764,7 +764,7 @@ void BSerializer_1111888832(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1457164460());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -775,7 +775,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1487265161::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -788,7 +788,7 @@ void BSerializer_149769063(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1487265161());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -799,7 +799,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1488550492::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -812,7 +812,7 @@ void BSerializer_822552572(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1488550492());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -823,7 +823,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1493282670::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -836,7 +836,7 @@ void BSerializer_1955210948(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1493282670());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -847,7 +847,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_15::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -860,7 +860,7 @@ void BSerializer_534004416(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_15());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -871,7 +871,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1516687588::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -884,7 +884,7 @@ void BSerializer_2043070523(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1516687588());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -895,7 +895,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1555345627::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -908,7 +908,7 @@ void BSerializer_343940505(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1555345627());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -919,7 +919,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1596367810::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -932,7 +932,7 @@ void BSerializer_1073221568(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1596367810());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -943,7 +943,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_16::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -956,7 +956,7 @@ void BSerializer_534004415(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_16());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -967,7 +967,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1617670280::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -980,7 +980,7 @@ void BSerializer_1330811042(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1617670280());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -991,7 +991,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1628501332::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1004,7 +1004,7 @@ void BSerializer_368905437(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1628501332());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1015,7 +1015,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1633500852::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1028,7 +1028,7 @@ void BSerializer_1231328865(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1633500852());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1039,7 +1039,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1633750383::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1052,7 +1052,7 @@ void BSerializer_1293200061(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1633750383());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1063,7 +1063,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1661807911::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1076,7 +1076,7 @@ void BSerializer_475882038(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1661807911());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1087,7 +1087,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1710660846::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1100,7 +1100,7 @@ void BSerializer_1899847531(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1710660846());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1111,7 +1111,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_171948703::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1124,7 +1124,7 @@ void BSerializer_871356108(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_171948703());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1135,7 +1135,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1746702954::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1148,7 +1148,7 @@ void BSerializer_408452669(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1746702954());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1159,7 +1159,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1752158699::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1172,7 +1172,7 @@ void BSerializer_1912328929(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1752158699());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1183,7 +1183,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1799280818::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1196,7 +1196,7 @@ void BSerializer_2052610089(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1799280818());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1207,7 +1207,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_181681714::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1220,7 +1220,7 @@ void BSerializer_1763202727(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_181681714());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1231,7 +1231,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1823330785::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1244,7 +1244,7 @@ void BSerializer_114088296(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1823330785());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1255,7 +1255,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1831201218::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1268,7 +1268,7 @@ void BSerializer_50516327(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase
 		pObjS = PSerializable(new byps::test::api::BResult_1831201218());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1279,7 +1279,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_183594037::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1292,7 +1292,7 @@ void BSerializer_15818284(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase
 		pObjS = PSerializable(new byps::test::api::BResult_183594037());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1303,7 +1303,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_184101377::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1316,7 +1316,7 @@ void BSerializer_748770738(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_184101377());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1327,7 +1327,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1859644668::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1340,7 +1340,7 @@ void BSerializer_2130431383(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1859644668());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1351,7 +1351,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1888107655::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1364,7 +1364,7 @@ void BSerializer_2063745441(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1888107655());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1375,7 +1375,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1888799711::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1388,7 +1388,7 @@ void BSerializer_2051074845(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1888799711());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1399,7 +1399,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1898022288::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1412,7 +1412,7 @@ void BSerializer_515346332(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_1898022288());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1422,7 +1422,7 @@ namespace byps { namespace test { namespace api {
 // checkpoint byps.gen.cpp.GenApiClass:872
 void byps::test::api::BResult_19::serialize(BIO& ar, const BVERSION version) {
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1435,7 +1435,7 @@ void BSerializer_534004412(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		pObjS = PSerializable(new byps::test::api::BResult_19());
 	}
 }
-}
+}}}
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
@@ -1446,7 +1446,7 @@ namespace byps { namespace test { namespace api {
 void byps::test::api::BResult_1972793385::serialize(BIO& ar, const BVERSION version) {
 	ar & result;
 }
-}
+}}}
 
 // checkpoint byps.gen.cpp.GenApiClass:929
 namespace byps { namespace test { namespace api { 
@@ -1459,4 +1459,4 @@ void BSerializer_1958357790(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		pObjS = PSerializable(new byps::test::api::BResult_1972793385());
 	}
 }
-}
+}}}

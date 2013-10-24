@@ -23,6 +23,6 @@ void TestSuite::run() {
 	}
 }
 
-}
+}}}
 
 #endif

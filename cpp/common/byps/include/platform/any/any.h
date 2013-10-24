@@ -72,7 +72,7 @@ inline int64_t BSWAP8(register int64_t v) {
 #ifndef BFLOAT_IEEE_FUNCTIONS
 #define BFLOAT_IEEE_FUNCTIONS
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 union float_int32_t {
 	float f;
@@ -108,7 +108,7 @@ inline double doubleFromIEEE(int64_t v) {
 	return fi.f;
 }
 
-}}}
+}
 
 #endif /* BFLOAT_IEEE_FUNCTIONS */
 

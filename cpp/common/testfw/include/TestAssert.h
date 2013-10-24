@@ -93,6 +93,6 @@ template <typename _Type> void tassert(const char* file, int line, const std::ws
 	tassert(file, line, msg, *expectedValue, *readValue);
 }
 
-}
+}}}
 
 #endif
