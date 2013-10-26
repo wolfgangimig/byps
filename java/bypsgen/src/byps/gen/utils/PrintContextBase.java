@@ -2,6 +2,9 @@ package byps.gen.utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import byps.BApiDescriptor;
@@ -151,6 +154,37 @@ public class PrintContextBase {
     
     return ret;
   }
+  
+  public ArrayList<SerialInfo> getSerializersForRegistrySortedByTypeId(Iterable<SerialInfo> serInfos) {
+    
+    Comparator<SerialInfo> cmp = new Comparator<SerialInfo>() {
+
+      @Override
+      public int compare(SerialInfo o1, SerialInfo o2) {
+        return o1.typeId - o2.typeId;
+      }
+      
+    };
+    
+    ArrayList<SerialInfo> serializers = new ArrayList<SerialInfo>();
+     for (SerialInfo serInfo : serInfos) {
+        if (serInfo.isBuiltInType()) continue;
+        if (!serInfo.isPointerType()) continue;
+        int idx = Collections.binarySearch(serializers, serInfo, cmp);
+        if (idx < 0) {
+          idx = -(idx + 1);
+          serializers.add(idx, serInfo);
+        }
+        else {
+          // This error should have already been caught during the javadoc process. 
+          throw new IllegalStateException("Serializers have same typeId, " + serInfo + ", " + serializers.get(idx));
+        }
+     }
+   
+     return serializers;
+  }
+  
+
 
   protected String apiName;
   public final String apiPack;

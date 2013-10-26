@@ -31,7 +31,7 @@ namespace byps
 
         public abstract Object read(Object obj1, BInput bin1, long version);
 
-        internal readonly int typeId;
-        internal readonly bool inlineInstance;
+        public readonly int typeId;
+        public readonly bool inlineInstance;
     }
 }

@@ -1,6 +1,7 @@
 package byps.gen.cs;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -72,27 +73,28 @@ public class GenRegistry {
 
 		log.debug("printConstructors");
 	}
-
+	
 	private void printGetSerializerByTypeId()
 			throws BException {
-		pr.println("public override BSerializer getApiSerializer(int typeId) {");
+	  
+	  ArrayList<SerialInfo> regInfos = pctxt.getSerializersForRegistrySortedByTypeId(serInfos);
+	  
+	  pr.println("private static BRegisteredSerializer[] serializers = new BRegisteredSerializer[] {");
+    pr.beginBlock();
+    for (SerialInfo serInfo : regInfos) {
+      String serializerName = pctxt.getSerializerPackage(serInfo) + "." + pctxt.getSerializerClassName(serInfo, pformat);
+      pr.print("new BRegisteredSerializer(").print(serInfo.typeId)
+        .print(", \"").print(serializerName).print("\"")
+        .print(", ").print(serializerName).print(".instance")
+        .print("),").println();
+    }
+    pr.endBlock();
+    pr.println("};");
+	  
+		pr.println("protected override BRegisteredSerializer[] getSortedSerializers() {");
 		
 		pr.beginBlock();
-		for (SerialInfo serInfo : serInfos) {
-			
-			if (serInfo.isBuiltInType()) continue;
-			if (!serInfo.isPointerType()) continue;
-			
-			String serializerName = pctxt.getSerializerPackage(serInfo) + "." + pctxt.getSerializerClassName(serInfo, pformat);
-			
-			pr.print("// ").print(serInfo.toString()).println();
-			pr.print("if (typeId == " + serInfo.typeId +") return ")
-				.print(serializerName).print(".instance;")
-				.println();
-		}
-		
-		pr.println("return null;");
-		
+		pr.println("return serializers;");
 		pr.endBlock();
 		pr.println("}");
 	}

@@ -26,28 +26,50 @@ namespace byps
             this.bmodel = bmodel;
         }
 
-        public abstract BSerializer getApiSerializer(int typeId);
+        protected class BRegisteredSerializer
+        {
+            public int typeId;
+            public String name;
+            public BSerializer instance;
+            public BRegisteredSerializer(int typeId, String name, BSerializer instance)
+            {
+                this.typeId = typeId;
+                this.name = name;
+                this.instance = instance;
+            }
+        }
+
+        protected abstract BRegisteredSerializer[] getSortedSerializers();
 
         public BSerializer getSerializer(int typeId)
         {
-            BSerializer ser = null;
-            if (!mapTypeIdToSerializer.TryGetValue(typeId, out ser))
+            BRegisteredSerializer[] ssers = getSortedSerializers();
+            int left = 0, right = ssers.Length;
+            while (left <= right)
             {
-                if (ser == null)
+                int idx = (right + left) / 2;
+
+                BRegisteredSerializer rser = ssers[idx];
+                if (rser.typeId == typeId)
                 {
-                    ser = getApiSerializer(typeId);
-                    if (ser == null)
-                    {
-                        ser = getBuiltInSerializer(typeId);
-                        if (ser == null)
-                        {
-                            throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
-                        }
-                    }
-                    mapTypeIdToSerializer[typeId] = ser;
+                    // rser.name must be the qualified assembly name. 
+                    // I don't know the assembly name that contains the serializers 
+                    //if (rser.instance == null)
+                    //{
+                    //    Type type = Type.GetType(rser.name, true);
+                    //    rser.instance = (BSerializer)Activator.CreateInstance(type);
+                    //}
+                    return rser.instance;
                 }
+
+                if (rser.typeId < typeId) left = idx + 1;
+                if (rser.typeId > typeId) right = idx - 1;
             }
-            return ser;
+
+            BSerializer ser = getBuiltInSerializer(typeId);
+            if (ser != null) return ser;
+
+            throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
         }
 
         private BSerializer getBuiltInSerializer(int typeId)
@@ -64,49 +86,45 @@ namespace byps
         {
             BSerializer ret = null;
             Type type = obj.GetType();
-            if (!mapClassToSerializer.TryGetValue(type, out ret))
+            try
             {
-                try
+                int typeId = 0;
+                long longTypeId = 0;
+
+                while (type != typeof(Object))
                 {
-                    int typeId = 0;
-                    long longTypeId = 0;
-
-                    while (type != typeof(Object))
+                    if (type == typeof(Stream))
                     {
-                        if (type == typeof(Stream))
-                        {
-                            typeId = BRegistry.TYPEID_STREAM;
-                            break;
-                        }
-
-                        FieldInfo field = type.GetField("serialVersionUID",
-                            System.Reflection.BindingFlags.NonPublic |
-                            System.Reflection.BindingFlags.Public |
-                            System.Reflection.BindingFlags.Static);
-                        if (field != null)
-                        {
-                            longTypeId = (long)field.GetValue(null);
-                            typeId = (int)longTypeId;
-                            break;
-                        }
-
-                        type = type.BaseType;
+                        typeId = BRegistry.TYPEID_STREAM;
+                        break;
                     }
 
-                    ret = getSerializer(typeId);
+                    FieldInfo field = type.GetField("serialVersionUID",
+                        System.Reflection.BindingFlags.NonPublic |
+                        System.Reflection.BindingFlags.Public |
+                        System.Reflection.BindingFlags.Static);
+                    if (field != null)
+                    {
+                        longTypeId = (long)field.GetValue(null);
+                        typeId = (int)longTypeId;
+                        break;
+                    }
+
+                    type = type.BaseType;
                 }
-                catch (Exception)
-                {
-                    throw new BException(BExceptionC.CORRUPT,
-                            "No serializer for className=" + type + ". " +
-                            "Only classes marked with BSerializable can be serialized as \"Object\" types. " +
-                            "This error occurs e. g. if a List<Object> contains String values. String is not a BSerializable.");
-                }
+
+                ret = getSerializer(typeId);
             }
+            catch (Exception x)
+            {
+                throw new BException(BExceptionC.CORRUPT,
+                        "No serializer for className=" + type + ". " +
+                        "Only classes marked with BSerializable can be serialized as \"Object\" types. " +
+                        "This error occurs e. g. if a List<Object> contains String values. String is not a BSerializable. " + x);
+            }
+
             return ret;
         }
 
-        private ConcurrentDictionary<int, BSerializer> mapTypeIdToSerializer = new ConcurrentDictionary<int, BSerializer>();
-        private ConcurrentDictionary<Type, BSerializer> mapClassToSerializer = new ConcurrentDictionary<Type, BSerializer>();
     }
 }
