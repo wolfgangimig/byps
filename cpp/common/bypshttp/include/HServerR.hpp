@@ -25,11 +25,11 @@ public:
 
 	HServerR_SendLongPoll() : isDone(false), sleepMillisBeforeRetry(60 * 1000), nbOfActiveLongPolls(0) {}
 
-	bool waitUntilDoneOrTimeout() {
+	bool waitBeforeRetry() {
 		byps_unique_lock lock(mutex);
 		if (isDone) return true;
 		std::chrono::milliseconds timeout(sleepMillisBeforeRetry);
-		return serverFinished.wait_for(lock, timeout, [this]() { return isDone; });
+		return !serverFinished.wait_for(lock, timeout, [this]() { return isDone; });
 	}
 
 	void done() {
@@ -101,11 +101,15 @@ class HServerR_LongPoll {
 			bool failed = varmsg.isException();
 			if (failed) {
 				BException ex = varmsg.getException();
-				if (ex.getCode() != EX_CANCELLED && 
-					ex.getCode() != EX_IOERROR) { // EX_IOERROR with HTTP 403 if HWireClient::cancelAllRequests() was called
-					if (ex.getCode() == EX_TIMEOUT || !sendLongPoll->waitUntilDoneOrTimeout()) {
-						HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
-					}
+				bool isSessionDead = ex.toString().find(L"410") != wstring::npos;
+				bool isForbidden = ex.toString().find(L"403") != wstring::npos;
+
+				if (isSessionDead) {
+				}
+				else if (isForbidden) {
+				}
+				else if (sendLongPoll->waitBeforeRetry()) {
+					HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
 				}
 			}
 			else {

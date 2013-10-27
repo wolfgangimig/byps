@@ -28,19 +28,12 @@ public class HException extends BException {
     return statusCode == HttpURLConnection.HTTP_FORBIDDEN;
   }
   
-	public static boolean isTimeout(Throwable e) {
-    boolean ret = false;
-		if (e != null && e instanceof HException) {
-			ret = ((HException)e).isTimeout();
-		}
-		return ret;
-	}
-
-  public static boolean isForbidden(Throwable e) {
-    boolean ret = false;
-    if (e != null && e instanceof HException) {
-      ret = ((HException)e).isForbidden();
-    }
-    return ret;
+  public boolean isConnectFailed() {
+    return statusCode == 0;
   }
+  
+  public boolean isSessionDead() {
+    return statusCode == HttpURLConnection.HTTP_GONE;
+  }
+  
 }

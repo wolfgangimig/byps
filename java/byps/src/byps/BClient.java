@@ -3,10 +3,6 @@ package byps;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import byps.BAsyncResult;
-import byps.BException;
-import byps.BRemote;
-
 /**
  * This is the base class for the client side of a subscriber.
  * The generator creates a derived class of BClient named BClient_{your-API-name}.
@@ -94,8 +90,18 @@ public abstract class BClient {
 	      authentication == null); // onylIfNull
 	}
 	
+	/**
+	 * Get authentication object.
+	 * Returns the authentication object previously set by {@link #setAuthentication(BAuthentication)}.
+	 * @return Authentication object or null.
+	 */
   public BAuthentication getAuthentication() {
-    return transport.authentication;
+    BAuthentication auth = transport.authentication;
+    if (auth != null) {
+      ClientAuthentication clientAuth = (ClientAuthentication)auth;
+      auth = clientAuth.innerAuth;
+    }
+    return auth;
   }
 	
 	/**
@@ -103,7 +109,7 @@ public abstract class BClient {
 	 */
 	private class ClientAuthentication implements BAuthentication {
 	
-	  public BAuthentication innerAuth;
+	  public final BAuthentication innerAuth;
 	  
 	  public ClientAuthentication(BAuthentication innerAuth) {
 	    this.innerAuth = innerAuth;

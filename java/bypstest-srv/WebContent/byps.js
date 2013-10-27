@@ -1146,13 +1146,19 @@ byps.BClient = function() {
 	};
 	
 	this.getAuthentication = function() {
-		return this.transport._authentication;
+		var auth = this.transport._authentication;
+		if (auth) {
+			auth = auth._innerAuth;
+		}
+		return auth;
 	};
 	
 	this.setAuthentication = function(innerAuth) {
 		var me = this;
 		
 		var authentication = {
+				
+			_innerAuth : innerAuth,
 		
 			authenticate : function(ignored, asyncResult) {
 				
@@ -1340,31 +1346,32 @@ byps.BServerR = function(transport, server) {
 			me._run(message);
 		};
 		
-		var nextAsyncMethod = function(message, exception) {
+		var nextAsyncMethod = function(message, ex) {
 			try {
-				if (!exception && message.jsonText) {
+				if (!ex && message.jsonText) {
 					me.transport.recv(me.server, message, asyncResult);
 				} else {
 					
-					var isForbidden = exception.toString().indexOf("403") >= 0;
-					if (isForbidden) {
-						// Session was invalidated
+                    var isSessionDead = ex != null && ex.toString().indexOf("410") >= 0;
+                    var isForbidden = ex != null && ex.toString().indexOf("403") >= 0;
+
+                    if (isSessionDead) {
+                    	// Session was invalidated
+                    	// Stop long-poll
+                    }
+                    else if (isForbidden) {
+						// Re-login required
 					}
 					else {
-						var isTimeout = exception.toString().indexOf("408") >= 0;
-						if (isTimeout) {
-							// Retry after one minute
-							window.setTimeout(function() {
-									var methodResult = me._makeInitMessage();
-									me._run(methodResult);
-								}, 
-								60 * 1000);
-						}
-						asyncResult(null, null);
+						// Retry after 30s
+						window.setTimeout(function() {
+								asyncResult(null, null);
+							}, 
+							30 * 1000);
 					}
 				}
-			} catch (ex) {
-				asyncResult(null, ex);
+			} catch (ex2) {
+				asyncResult(null, ex2);
 			};
 		};
 		

@@ -141,7 +141,13 @@ namespace byps
 
         public BAuthentication getAuthentication()
         {
-            return transport.authentication;
+            BAuthentication auth = transport.authentication;
+            if (auth != null)
+            {
+                ClientAuthentication clientAuth = (ClientAuthentication)auth;
+                auth = clientAuth.innerAuth;
+            }
+            return auth;
         }
 
         private Log log = LogFactory.getLog(typeof(BClient));

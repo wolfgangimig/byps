@@ -12,7 +12,7 @@ namespace byps
             : base(transport, server)
         {
             this.nbOfConns = nbOfConns;
-            this.sleepMillisBeforeRetry = 60 * 1000;
+            this.sleepMillisBeforeRetry = 30 * 1000;
             //workerThread = new Thread(new ParameterizedThreadStart(workerFnct));
         }
 
@@ -91,11 +91,23 @@ namespace byps
 				try {
                     if (ex != null || obj.isEmpty())
                     {
-                        bool isTimeout = ex != null && ex.ToString().IndexOf("408") >= 0;
-                        if (isTimeout || pthis.checkDoneMaybeWait())
+                        bool isSessionDead = ex != null && ex.ToString().IndexOf("410") >= 0;
+                        bool isForbidden = ex != null && ex.ToString().IndexOf("403") >= 0;
+
+                        if (isSessionDead)
+                        {
+                            // Session was invalidated
+                            // Stop long-poll
+                        }
+                        else if (isForbidden)
+                        {
+                            // Re-login is required
+                        }
+                        else if (pthis.waitBeforeRetry())
                         {
                             pthis.sendLongPoll(null);
                         }
+
                     }
                     else if (obj.buf != null && obj.buf.remaining() != 0)
                     {
@@ -215,7 +227,7 @@ namespace byps
         //    if (log.isDebugEnabled()) log.debug(")workerFnct");
         //}
 
-        protected bool checkDoneMaybeWait()
+        protected bool waitBeforeRetry()
         {
  	        lock(mutex)
             {
@@ -223,7 +235,7 @@ namespace byps
                 {
                     Monitor.Wait(mutex, sleepMillisBeforeRetry);
                 }
-                return isDone;
+                return !isDone;
             }
         }
     

@@ -116,6 +116,10 @@ public:
 		, innerAuth(innerAuth)
     {
     }
+
+	PAuthentication getInnerAuthentication() {
+		return innerAuth;
+	}
             
 	virtual void authenticate(PClient , function<void (bool, BException)> asyncResult) {
 		PClient client = this->client.lock();
@@ -184,7 +188,14 @@ BINLINE void BClient::setAuthentication(PAuthentication innerAuth) {
 }
 
 BINLINE PAuthentication BClient::getAuthentication() {
-	return transport->authentication;
+	PAuthentication auth = transport->authentication;
+	if (auth) {
+		BClient_ClientAuthentication* clientAuth = dynamic_cast<BClient_ClientAuthentication*>(auth.get());
+		if (clientAuth) {
+			auth = clientAuth->getInnerAuthentication();
+		}
+	}
+	return auth;
 }
 
 

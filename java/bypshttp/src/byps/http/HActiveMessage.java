@@ -426,12 +426,12 @@ public class HActiveMessage {
       // before it has called removeWorker.
 
       // This block is executed, if the session is invalidated.
-      // The response code is SC_FORBIDDEN in order to stop HServerR on the
+      // The response code is SC_GONE in order to stop HServerR on the
       // client side from
       // sending a new long-poll.
 
       HttpServletResponse resp = (HttpServletResponse) rctxtMessage.getResponse();
-      resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      resp.setStatus(HttpServletResponse.SC_GONE);
       rctxtMessage.complete();
       rctxtMessage = null;
     }
