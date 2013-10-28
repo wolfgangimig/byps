@@ -67,7 +67,7 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
     if (state == EState.INVALID) {
       log.info("throw Relogin required");
       // This exception is checked in the BAuthentication class and causes a re-login.
-      throw new BException(BExceptionC.AUTHENTICATION_REQUIRED, "Relogin requried");
+      throw new BException(BExceptionC.UNAUTHORIZED, "Relogin requried");
     }
     
     // If login was successful, this function must be called with a SessionInfo object.

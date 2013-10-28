@@ -582,7 +582,7 @@ public class HWireClient extends BWire {
 			request.throwIfCancelled();
 			
 			InputStream is = null; 
-			int statusCode = 0;
+			int statusCode = HttpURLConnection.HTTP_GONE; // <=> BExceptionC.CONNECTION_TO_SERVER_FAILED
 			
 			try {		
 				statusCode = conn.getResponseCode();
@@ -626,7 +626,7 @@ public class HWireClient extends BWire {
 					bufferFromStream(is, false);
 				}
 				
-				throw new HException(statusCode, e);
+				throw new BException(statusCode, "Send message failed", e);
 			}
 			finally {
 				if (is != null) {
@@ -808,7 +808,7 @@ public class HWireClient extends BWire {
 				request.throwIfCancelled();
 	
 				InputStreamByteCount isbc = null;
-				int statusCode = 0;
+	      int statusCode = HttpURLConnection.HTTP_GONE; // <=> BExceptionC.CONNECTION_TO_SERVER_FAILED
 				try {
 					statusCode = conn.getResponseCode();
 					if (statusCode != HttpURLConnection.HTTP_OK) {
@@ -1006,7 +1006,7 @@ public class HWireClient extends BWire {
 
 				if (log.isDebugEnabled()) log.debug("wait for response");
 
-				int statusCode = 0;
+        int statusCode = HttpURLConnection.HTTP_GONE; // <=> BExceptionC.CONNECTION_TO_SERVER_FAILED
 				try {
           statusCode = conn.getResponseCode();
           if (statusCode != HttpURLConnection.HTTP_OK) {

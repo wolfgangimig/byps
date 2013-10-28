@@ -22,15 +22,15 @@ const int32_t EX_CORRUPT = 8;
 const int32_t EX_EXECUTION = 9;
 const int32_t EX_REMOTE = 10;
 const int32_t EX_SERVICE_NOT_IMPLEMENTED = 11; // Server bietet diesen Service (Remote) nicht an.
-const int32_t EX_GENERATOR_EXCEPTION = 1000;
 const int32_t EX_CANCELLED = 100;
-const int32_t EX_TIMEOUT = 13;
 const int32_t EX_IOERROR = 14;
 const int32_t EX_TOO_MANY_REQUESTS = 15;
 const int32_t EX_NO_REVERSE_CONNECTIONS = 16;
 const int32_t EX_UNSUPPORTED_METHOD = 17;
-const int32_t EX_AUTHENTICATION_REQUIRED = 18;
 const int32_t EX_CLIENT_DIED = 12;
+const int32_t EX_UNAUTHORIZED = 401;
+const int32_t EX_TIMEOUT = 408;
+const int32_t EX_CONNECTION_TO_SERVER_FAILED = 410;
 
 class BException : public exception {
 public:

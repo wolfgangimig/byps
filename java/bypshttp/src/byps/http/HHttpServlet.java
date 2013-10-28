@@ -269,7 +269,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     final HSession sess = getSessionFromRequest(request, response, false);
     if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
@@ -350,7 +350,7 @@ public abstract class HHttpServlet extends HttpServlet {
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
     if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
@@ -454,7 +454,7 @@ public abstract class HHttpServlet extends HttpServlet {
     final HSession sess = getSessionFromRequest(request, response, true);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
     if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
@@ -546,7 +546,7 @@ public abstract class HHttpServlet extends HttpServlet {
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
     if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
@@ -586,20 +586,20 @@ public abstract class HHttpServlet extends HttpServlet {
   protected void doTestAdapter(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     if (!getConfig().isTestAdapterEnabled()) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
     if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
     final String testAdapter = request.getParameter(HTestAdapter.KEY_PARAM);
     if (testAdapter == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
     if (log.isDebugEnabled()) log.debug("check testAdapter=" + testAdapter);
@@ -716,7 +716,7 @@ public abstract class HHttpServlet extends HttpServlet {
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
     if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
@@ -807,7 +807,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
   protected HSession getSessionFromRequest(HttpServletRequest request, HttpServletResponse response, boolean createNewIfNotEx) {
     HSession sess = null;
-    int httpStatus = HttpServletResponse.SC_FORBIDDEN;
+    int httpStatus = HttpServletResponse.SC_UNAUTHORIZED;
 
     HttpSession hsess = request.getSession(false);
     if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));

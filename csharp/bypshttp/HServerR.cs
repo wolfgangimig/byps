@@ -96,21 +96,17 @@ namespace byps
                     }
                     else
                     {
-                        String errmsg = ex.ToString();
-                        bool isSessionDead = errmsg.IndexOf("410") >= 0;
-                        bool isForbidden = errmsg.IndexOf("403") >= 0;
-                        bool isTimeout = errmsg.IndexOf("408") >= 0;
-
-                        if (isSessionDead)
+                        BException bex = (BException)ex;
+                        if (bex.Code == BExceptionC.CONNECTION_TO_SERVER_FAILED)
                         {
                             // Session was invalidated
                             // Stop long-poll
                         }
-                        else if (isForbidden)
+                        else if (bex.Code == BExceptionC.UNAUTHORIZED)
                         {
                             // Re-login is required
                         }
-                        else if (isTimeout)
+                        else if (bex.Code == BExceptionC.TIMEOUT)
                         {
                             // HWireClientR has released the expried long-poll.
                             // Ignore the error and send a new long-poll.

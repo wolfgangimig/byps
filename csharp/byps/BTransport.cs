@@ -511,14 +511,7 @@ namespace byps
             if (ex is BException) 
             {
                 BException bex = (BException) ex;
-                ret = (bex.Code == BExceptionC.AUTHENTICATION_REQUIRED);
-                if (!ret)
-                {
-                    // The negotiated Tomcat session lives for 10 seconds.
-                    // If we are slow in debugging and the session expires,
-                    // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
-                    ret = (bex.Code == BExceptionC.IOERROR) && bex.ToString().IndexOf("403") >= 0;
-                }
+                ret = (bex.Code == BExceptionC.UNAUTHORIZED);
             }
 
             if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);

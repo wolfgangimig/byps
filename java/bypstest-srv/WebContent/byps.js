@@ -78,10 +78,12 @@ byps.BExceptionC = {
 	IOERROR : 14,
 	REMOTE_ERROR : 10,
 	SERVICE_NOT_IMPLEMENTED : 11,
-	TIMEOUT : 13,
 	UNSUPPORTED_METHOD : 17,
 	AUTHENTICATION_REQUIRED : 18,
-	CANCELLED : 19
+	CANCELLED : 19,
+	TIMEOUT : 408,
+	UNAUTHORIZED : 401,
+	CONNECTION_TO_SERVER_FAILED : 410,
 };
 
 //------------------------------------------------------------------------------------------------
@@ -1356,19 +1358,14 @@ byps.BServerR = function(transport, server) {
 					
 				} else {
 					
-					var errmsg = ex.toString();
-                    var isSessionDead = errmsg.indexOf("410") >= 0;
-                    var isForbidden = errmsg.toString().indexOf("403") >= 0;
-                    var isTimeout = errmsg.toString().indexOf("408") >= 0;
-
-                    if (isSessionDead) {
+                    if (ex.code == byps.BExceptionC.CONNECTION_TO_SERVER_FAILED) { 
                     	// Session was invalidated
                     	// Stop long-poll
                     }
-                    else if (isForbidden) {
+                    else if (ex.code == byps.BExceptionC.UNAUTHORIZED) {
 						// Re-login required
 					}
-                    else if (isTimeout) {
+                    else if (ex.code == byps.BExceptionC.CONNECTION_TO_SERVER_FAILED) {
                         // HWireClientR has released the expried long-poll.
                         // Ignore the error and send a new long-poll.
                     	asyncResult(null, null);

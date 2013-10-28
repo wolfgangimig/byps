@@ -1,5 +1,7 @@
 package byps;
 
+import java.net.HttpURLConnection;
+
 public class BExceptionC {
 
   /**
@@ -50,12 +52,6 @@ public class BExceptionC {
   public static final int CANCELLED = 19;
 
   /**
-   * Timeout.
-   * This code is used, if an operation exceeds its time limit.
-   */
-  public static final int TIMEOUT = 13;
-  
-  /**
    * Communication error.
    * This code is used, if a stream operation fails.
    */
@@ -80,8 +76,22 @@ public class BExceptionC {
   
   /**
    * This code can be used, if authentication is required for the method.
+   * Same as HttpURLConnection.HTTP_UNAUTHORIZED.
    */
-  public static final int AUTHENTICATION_REQUIRED = 18;
+  public static final int UNAUTHORIZED = 401;
   
+  /**
+   * Timeout.
+   * This code is used, if an operation exceeds its time limit.
+   * HWireClientR sends this code for expired long-polls.
+   * Same value as HttpURLConnection.HTTP_CLIENT_TIMEOUT.
+   */
+  public static final int TIMEOUT = 408;
+  
+  /**
+   * Client has already closed the connection.
+   * Same value as HttpURLConnection.HTTP_GONE.
+   */
+  public static final int CONNECTION_TO_SERVER_FAILED = 410;
   
 }

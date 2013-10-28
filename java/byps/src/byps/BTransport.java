@@ -515,13 +515,7 @@ public class BTransport {
     // Check exception
     if (ex instanceof BException) {
       BException bex = (BException) ex;
-      ret = (bex.code == BExceptionC.AUTHENTICATION_REQUIRED);
-      if (!ret) {
-        // The negotiated Tomcat session lives for 10 seconds.
-        // If we are slow in debugging and the session expires,
-        // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
-        ret = (bex.code == BExceptionC.IOERROR) && bex.toString().indexOf("403") >= 0;
-      }
+      ret = (bex.code == BExceptionC.UNAUTHORIZED);
     }
       
     if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);

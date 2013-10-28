@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 
 import byps.BAsyncResult;
 import byps.BException;
+import byps.BExceptionC;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BOutput;
@@ -111,18 +112,17 @@ public class HServerR extends BServerR {
               transport.recv(server, msg, asyncResult);
             }
             else {
-              
-              HException ex = (HException) e;
-              if (ex.isSessionDead()) {
+              BException ex = (BException) e;
+              if (ex.code == BExceptionC.CONNECTION_TO_SERVER_FAILED) {
                 // Session was invalidated.
                 // Stop long-poll
                 if (log.isDebugEnabled()) log.debug("Session is dead.");
               }
-              else if (ex.isForbidden()) {
+              else if (ex.code == BExceptionC.UNAUTHORIZED) {
                 // Relogin is required
                 if (log.isDebugEnabled()) log.debug("Forbidden. Re-login required.");
               }
-              else if (ex.isTimeout()) {
+              else if (ex.code == BExceptionC.TIMEOUT) {
                 // HWireClientR has released the expried long-poll.
                 // Ignore the error and send a new long-poll.
                 asyncResult.setAsyncResult(null, null);

@@ -374,14 +374,7 @@ BINLINE bool BTransport::isReloginException(BException ex, int typeId) {
     // Check exception
     if (ex) 
     {
-        ret = (ex.getCode() == EX_AUTHENTICATION_REQUIRED);
-        if (!ret)
-        {
-            // The negotiated Tomcat session lives for 10 seconds.
-            // If we are slow in debugging and the session expires,
-            // we receive a BExceptionO.IOERRROR with the message "HTTP 403"
-            ret = (ex.getCode() == EX_IOERROR) && ex.getMsg().find(L"403") != std::wstring::npos;
-        }
+        ret = ex.getCode() == EX_UNAUTHORIZED;
     }
       
     return ret;
