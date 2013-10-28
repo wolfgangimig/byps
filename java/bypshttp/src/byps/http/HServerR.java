@@ -128,10 +128,8 @@ public class HServerR extends BServerR {
                 break;
                 
               default:
-                // retry after pause
-                if (waitBeforeRetry()) { // e.g. Socket error
-                  asyncResult.setAsyncResult(null, null);
-                }
+                onLostConnection(ex);
+                break;
               }
             }
             
@@ -143,18 +141,33 @@ public class HServerR extends BServerR {
           if (log.isDebugEnabled()) log.debug(")asyncMethod.setAsyncResult");
         }
 
-        private boolean waitBeforeRetry() {
+        private void onLostConnection(BException ex) {
+          boolean callLostConnectionHandler = false;
+          
           synchronized (refDone) {
             // Server still running?
             if (!refDone[0]) {
               try {
-                // Wait some seconds before next retry
-                refDone.wait(sleepMillisBeforeRetry);
+                if (lostConnectionHandler != null) {
+                  callLostConnectionHandler = true;
+                }
+                else {
+                  // Wait some seconds before next retry
+                  refDone.wait(sleepMillisBeforeRetry);
+                }
+                
               } catch (InterruptedException e1) {
               }
             }
-            return !refDone[0];
           }
+          
+          if (callLostConnectionHandler) {
+            lostConnectionHandler.setAsyncResult(null, ex);
+          }
+          else {
+            asyncResult.setAsyncResult(null, null);
+          }
+          
         }
         
       };

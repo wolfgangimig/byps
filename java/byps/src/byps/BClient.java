@@ -22,7 +22,7 @@ public abstract class BClient {
 	 * Server side of the subscriber.
 	 */
 	protected final BServerR serverR;
-	
+		
 	/**
 	 * Constructor used by generated derived classes.
 	 * @param transport
@@ -41,6 +41,16 @@ public abstract class BClient {
 	 * @return Interface object.
 	 */
 	public abstract BRemote getStub(int remoteId);
+	
+	/**
+	 * Handler that is called when a reverse connection is interrupted.
+	 * @param lostConnectionHandler
+	 */
+	public void setLostReverseConnectionHandler(BAsyncResult<Object> lostConnectionHandler) {
+	  if (serverR != null)  {
+	    serverR.setLostConnectionHandler(lostConnectionHandler);
+	  }
+	}
 	
 	/**
 	 * This method closes all connections to the provider.
