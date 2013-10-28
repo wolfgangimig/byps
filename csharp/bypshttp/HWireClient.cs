@@ -315,7 +315,7 @@ namespace byps
                 BException bex = null;
                 if (_cancelAllRequests)
                 {
-                    bex = new BException(BExceptionC.CANCELED, "");
+                    bex = new BException(BExceptionC.CANCELLED, "");
                 }
                 else
                 {
@@ -369,7 +369,7 @@ namespace byps
                 BException bex = null;
                 if (_cancelAllRequests)
                 {
-                    bex = new BException(BExceptionC.CANCELED, "");
+                    bex = new BException(BExceptionC.CANCELLED, "");
                 }
                 else
                 {
@@ -555,7 +555,7 @@ namespace byps
 				    throw (IOException)e;
 			    }
 			    else {
-				    throw new BException(BExceptionC.CANCELED, "", e);
+                    throw new BException(BExceptionC.CANCELLED, "", e);
 			    }
 		    }
         }
@@ -615,7 +615,7 @@ namespace byps
 		    }
 		
 		    public void throwIfCancelled() {
-                if (_canceled) throw new BException(BExceptionC.CANCELED, "Request cancelled");
+                if (_canceled) throw new BException(BExceptionC.CANCELLED, "Request cancelled");
 		    }
 
             public void run()

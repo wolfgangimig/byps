@@ -56,7 +56,7 @@ var client = null;
 		var wire = new byps.BWireClient(url);
 		var transportFactory = new byps.BTransportFactory(
 				byps.test.api.BApiDescriptor_Testser.instance(),
-				wire);
+				wire, 1);
 		client = new byps.test.api.BClient_Testser(
 				transportFactory);
 		client.start(true);

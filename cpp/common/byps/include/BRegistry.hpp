@@ -59,7 +59,7 @@ BINLINE BSERIALIZER BRegistry::getSerializer(const type_info& tinfo, BTYPEID &ty
     }
     if (!ser) {
         wstringstream ss; ss << L"Missing serializer for " << BToStdWString(tinfo.name());
-        throw BException(EX_NO_SERIALIZER, ss.str());
+        throw BException(EX_CORRUPT, ss.str());
     }
     return ser;
 }
@@ -68,7 +68,7 @@ BINLINE BSERIALIZER BRegistry::getSerializer(BTYPEID typeId) {
     BSERIALIZER ser = mapSerializer[typeId];
     if (!ser) {
         wstringstream ss; ss << L"Missing serializer for typeId=" << typeId;
-        throw BException(EX_NO_SERIALIZER, ss.str());
+        throw BException(EX_CORRUPT, ss.str());
     }
     return ser;
 }

@@ -113,24 +113,26 @@ public class HServerR extends BServerR {
             }
             else {
               BException ex = (BException) e;
-              if (ex.code == BExceptionC.CONNECTION_TO_SERVER_FAILED) {
-                // Session was invalidated.
-                // Stop long-poll
-                if (log.isDebugEnabled()) log.debug("Session is dead.");
-              }
-              else if (ex.code == BExceptionC.UNAUTHORIZED) {
-                // Relogin is required
-                if (log.isDebugEnabled()) log.debug("Forbidden. Re-login required.");
-              }
-              else if (ex.code == BExceptionC.TIMEOUT) {
+              switch (ex.code) {
+
+              case BExceptionC.SESSION_CLOSED: // Session was invalidated.
+              case BExceptionC.UNAUTHORIZED: // Re-login required
+              case BExceptionC.CANCELLED:
+                // no retry
+                break;
+                
+              case BExceptionC.TIMEOUT:
                 // HWireClientR has released the expried long-poll.
                 // Ignore the error and send a new long-poll.
                 asyncResult.setAsyncResult(null, null);
+                break;
+                
+              default:
+                // retry after pause
+                if (waitBeforeRetry()) { // e.g. Socket error
+                  asyncResult.setAsyncResult(null, null);
+                }
               }
-              else if (waitBeforeRetry()) { // Connection refused or connection timeout
-                asyncResult.setAsyncResult(null, null);
-              }
-
             }
             
           } catch (Throwable ex) {

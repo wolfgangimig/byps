@@ -86,40 +86,44 @@ namespace byps
                 this.asyncResult = asyncResult;
             }
 
-            public void setAsyncResult(BMessage obj, Exception ex)
+            public void setAsyncResult(BMessage obj, Exception e)
             {
 				try {
-                    if (ex == null)
+                    if (e == null)
                     {
                         // Methode ausführen
                         pthis.transport.recv(pthis.server, obj, asyncResult);
                     }
                     else
                     {
-                        BException bex = (BException)ex;
-                        if (bex.Code == BExceptionC.CONNECTION_TO_SERVER_FAILED)
+                        BException ex = (BException)e;
+                        switch (ex.Code)
                         {
-                            // Session was invalidated
-                            // Stop long-poll
-                        }
-                        else if (bex.Code == BExceptionC.UNAUTHORIZED)
-                        {
-                            // Re-login is required
-                        }
-                        else if (bex.Code == BExceptionC.TIMEOUT)
-                        {
-                            // HWireClientR has released the expried long-poll.
-                            // Ignore the error and send a new long-poll.
-                            pthis.sendLongPoll(null);
-                        }
-                        else if (pthis.waitBeforeRetry())
-                        {
-                            pthis.sendLongPoll(null);
+
+                            case BExceptionC.SESSION_CLOSED: // Session was invalidated.
+                            case BExceptionC.UNAUTHORIZED: // Re-login required
+                            case BExceptionC.CANCELLED:
+                                // no retry
+                                break;
+
+                            case BExceptionC.TIMEOUT:
+                                // HWireClientR has released the expried long-poll.
+                                // Ignore the error and send a new long-poll.
+                                pthis.sendLongPoll(null);
+                                break;
+
+                            default:
+                                // retry after pause
+                                if (pthis.waitBeforeRetry())
+                                { // e.g. Socket error
+                                    pthis.sendLongPoll(null);
+                                }
+                                break;
                         }
 
                     }
-				} catch (Exception e) {
-                    asyncResult.setAsyncResult(null, e);
+				} catch (Exception e2) {
+                    asyncResult.setAsyncResult(null, e2);
 				}
 			}
 				

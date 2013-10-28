@@ -5,7 +5,7 @@
 #undef min
 
 static std::wstring url = L"http://192.168.0.178:6080/bypstest-srv/bypsservlet";
-//static std::wstring url = L"http://localhost:8084/bypstest-srv/bypsservlet";
+//static std::wstring url = L"http://localhost:5080/bypstest-srv/bypsservlet";
 
 using namespace byps;
 using namespace byps::http;

@@ -11,8 +11,9 @@
 <script type="text/javascript">
 	var url = "/bypstest-srv/bypsservlet";
 	var wire = new byps.BWireClient(url, 0, 60);
-	var transportFactory = new byps.BTransportFactory(byps.test.api.BApiDescriptor_Testser.instance(), wire);
-	var client = com.wilutions.jsfs.createClient_Testser(transportFactory);
+	var transportFactory = new byps.BTransportFactory(byps.test.api.BApiDescriptor_Testser.instance(), wire, 1);
+	var client = byps.test.api.createClient_Testser(transportFactory);
+	client.start();
 
 	// Define an implementation for the ClientIF interface function sendChat
 	byps.test.api.ClientIFImpl = function() {

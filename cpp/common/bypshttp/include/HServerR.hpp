@@ -100,18 +100,29 @@ class HServerR_LongPoll {
 		virtual void setAsyncResult(const BVariant& varmsg) {
 			bool failed = varmsg.isException();
 			if (failed) {
-				BException ex = varmsg.getException();
 
-				if (ex.getCode() == EX_CONNECTION_TO_SERVER_FAILED) {
-				}
-				else if (ex.getCode() == EX_UNAUTHORIZED) {
-				}
-				else if (ex.getCode() == EX_TIMEOUT) {
+				BException ex = varmsg.getException();
+				switch (ex.getCode()) {
+
+				case EX_SESSION_CLOSED: // Session was invalidated.
+				case EX_UNAUTHORIZED: // Re-login required
+				case EX_CANCELLED:
+					// no retry
+					break;
+                
+				case EX_TIMEOUT:
+					// HWireClientR has released the expried long-poll.
+					// Ignore the error and send a new long-poll.
 					HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
+					break;
+                
+				default:
+					// retry after pause
+					if (sendLongPoll->waitBeforeRetry()) { // e.g. Socket error
+						HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
+					}
 				}
-				else if (sendLongPoll->waitBeforeRetry()) {
-					HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
-				}
+
 			}
 			else {
 				POBJECT obj;

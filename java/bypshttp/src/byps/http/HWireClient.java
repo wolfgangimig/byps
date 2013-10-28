@@ -510,7 +510,7 @@ public class HWireClient extends BWire {
 		ByteBuffer requestDataBuffer = request.buf;
 		
 		ByteBuffer returnBuffer = null;
-		Throwable returnException = null;
+		BException returnException = null;
 
 		if (log.isDebugEnabled()) {
 			requestDataBuffer.mark();
@@ -582,7 +582,7 @@ public class HWireClient extends BWire {
 			request.throwIfCancelled();
 			
 			InputStream is = null; 
-			int statusCode = HttpURLConnection.HTTP_GONE; // <=> BExceptionC.CONNECTION_TO_SERVER_FAILED
+			int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
 			
 			try {		
 				statusCode = conn.getResponseCode();
@@ -618,13 +618,15 @@ public class HWireClient extends BWire {
 							
 				returnBuffer = obuf;
 			}
+	    catch (SocketException e) {
+	      if (log.isDebugEnabled()) log.debug("received exception=" + e);
+	      returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
+	    }
 			catch (IOException e) {
 				if (log.isDebugEnabled()) log.debug("received exception: " + e);
 
 				is = conn.getErrorStream();
-				if (is != null) {
-					bufferFromStream(is, false);
-				}
+				bufferFromStream(is, false);
 				
 				throw new BException(statusCode, "Send message failed", e);
 			}
@@ -636,13 +638,9 @@ public class HWireClient extends BWire {
 		
 		}
 		catch (BException e) {
-			// thrown in RequestToCancel.setConnection
+			// BExceptionC.CANCELLED could have been thrown in RequestToCancel.setConnection
 			if (log.isDebugEnabled()) log.debug("received BException: " + e);
 			returnException = e;
-		}
-		catch (SocketException e) {
-			if (log.isDebugEnabled()) log.debug("received exception=" + e);
-      returnException = e;
 		}
 		catch (Throwable e) {
 			if (log.isDebugEnabled()) log.debug("received Throwable: " + e);
@@ -651,7 +649,7 @@ public class HWireClient extends BWire {
 				returnException = bex;
 			}
 			else {
-				BException bex = new BException(BExceptionC.IOERROR, e.getMessage(), e);
+				BException bex = new BException(BExceptionC.IOERROR, "IO error", e);
 				returnException = bex;
 			}
 		}
@@ -669,7 +667,7 @@ public class HWireClient extends BWire {
 		
 		if (log.isDebugEnabled()) log.debug("internalPutStream(messageId=" + messageId + ", streamId=" + streamId + ", stream=" + stream);
 		ByteBuffer obuf = null;
-    Throwable returnException = null;
+    BException returnException = null;
     
 		try {
 	    String contentType = null;
@@ -808,7 +806,7 @@ public class HWireClient extends BWire {
 				request.throwIfCancelled();
 	
 				InputStreamByteCount isbc = null;
-	      int statusCode = HttpURLConnection.HTTP_GONE; // <=> BExceptionC.CONNECTION_TO_SERVER_FAILED
+	      int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
 				try {
 					statusCode = conn.getResponseCode();
 					if (statusCode != HttpURLConnection.HTTP_OK) {
@@ -819,12 +817,16 @@ public class HWireClient extends BWire {
 					obuf = bufferFromStream(isResp, false); // closes isResp
 					if (log.isDebugEnabled()) log.debug("received #bytes=" + obuf.remaining());
 				}
+	      catch (SocketException e) {
+	        if (log.isDebugEnabled()) log.debug("received exception=" + e);
+	        returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
+	      }
 				catch (IOException e) {
 					if (log.isDebugEnabled()) log.debug("Failed to read response", e);
 					InputStream errStrm = conn.getErrorStream();
 					bufferFromStream(errStrm, false);
 					
-					throw new BException(BExceptionC.IOERROR, "HTTP " + statusCode, e);
+					throw new BException(statusCode, "Put stream failed", e);
 				}
 	
 				if (stats != null) {
@@ -1006,7 +1008,7 @@ public class HWireClient extends BWire {
 
 				if (log.isDebugEnabled()) log.debug("wait for response");
 
-        int statusCode = HttpURLConnection.HTTP_GONE; // <=> BExceptionC.CONNECTION_TO_SERVER_FAILED
+        int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
 				try {
           statusCode = conn.getResponseCode();
           if (statusCode != HttpURLConnection.HTTP_OK) {
@@ -1119,7 +1121,7 @@ public class HWireClient extends BWire {
 		if (log.isDebugEnabled()) log.debug(")addRequest=" + robj);
 	}
 	
-	protected void removeRequest(RequestToCancel robj, ByteBuffer buf, Throwable ex) {
+	protected void removeRequest(RequestToCancel robj, ByteBuffer buf, BException ex) {
 		if (log.isDebugEnabled()) log.debug("removeRequest(" + robj);
 		if (robj == null) return;
 		openRequestsToCancel.remove(robj);

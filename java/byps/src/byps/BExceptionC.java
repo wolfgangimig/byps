@@ -1,9 +1,25 @@
 package byps;
 
-import java.net.HttpURLConnection;
-
+/**
+ * BException error codes.
+ * This error codes can be set in a BException.  
+ * Furthermore, a BException can uses a HTTP status code as error code. 
+ */
 public class BExceptionC {
 
+  /**
+   * Generator error.
+   * This code is used by the generator.
+   */
+  public final static int GENERATOR_EXCEPTION = 1;
+
+  /**
+   * Connection failed.
+   * A connection could not be established or a 
+   * communication error occured (SocketException).
+   */
+  public final static int CONNECTION_TO_SERVER_FAILED = 2;
+  
   /**
    * Internal error.
    * Error code for unexpected internal error states.
@@ -40,18 +56,6 @@ public class BExceptionC {
   public final static int CLIENT_DIED = 12;
   
   /**
-   * Generator error.
-   * This code is used by the generator.
-   */
-  public final static int GENERATOR_EXCEPTION = 1;
-
-  /**
-   * Operation cancelled.
-   * This code is used, if an operation was cancelled or interrupted.
-   */
-  public static final int CANCELLED = 19;
-
-  /**
    * Communication error.
    * This code is used, if a stream operation fails.
    */
@@ -75,6 +79,12 @@ public class BExceptionC {
   public static final int UNSUPPORTED_METHOD = 17;
   
   /**
+   * Operation cancelled.
+   * This code is used, if an operation was cancelled or interrupted.
+   */
+  public static final int CANCELLED = 19;
+
+  /**
    * This code can be used, if authentication is required for the method.
    * Same as HttpURLConnection.HTTP_UNAUTHORIZED.
    */
@@ -89,9 +99,9 @@ public class BExceptionC {
   public static final int TIMEOUT = 408;
   
   /**
-   * Client has already closed the connection.
+   * Client has already invalidated the session.
    * Same value as HttpURLConnection.HTTP_GONE.
    */
-  public static final int CONNECTION_TO_SERVER_FAILED = 410;
+  public static final int SESSION_CLOSED = 410;
   
 }
