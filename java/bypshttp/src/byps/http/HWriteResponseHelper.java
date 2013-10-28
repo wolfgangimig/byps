@@ -47,6 +47,9 @@ public class HWriteResponseHelper {
         if (bex.code == BExceptionC.CANCELLED) {
           status = HttpServletResponse.SC_NOT_ACCEPTABLE;
         }
+        else if (bex.code == BExceptionC.TIMEOUT) {
+          status = HttpServletResponse.SC_REQUEST_TIMEOUT;
+        }
       }
 
       log.info("send status=" + status, e);

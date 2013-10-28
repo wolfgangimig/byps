@@ -523,7 +523,20 @@ public abstract class HHttpServlet extends HttpServlet {
 
   private HRequestContext createRequestContext(HttpServletRequest request, HttpServletResponse response, boolean async) {
     final HRequestContext rctxt = async ? new HAsyncContext(request.startAsync(request, response)) : new HSyncContext(request, response);
+    
+    // Asynchronous requests are only used for reverse HTTP calls.
+    // They are under control of the HWireClientR object of the session.
+    // This object stores the request context in a map for the next reverse request.
+    // If no reverse request is made for a certain time (timeout time), 
+    // the HWireClientR object has to release the context. 
+    // Killing the context by a timeout would not remove it from 
+    // the HWireClientR object.
+    // Thus, set the request timeout for Tomcat to a large value. 
+    // The request timeout for long-polls is HConstants.TIMEOUT_LONGPOLL_MILLIS which should be 
+    // less than HConstants.REQUEST_TIMEOUT_MILLIS.
+    
     rctxt.setTimeout(HConstants.REQUEST_TIMEOUT_MILLIS);
+    
     return rctxt;
   }
 

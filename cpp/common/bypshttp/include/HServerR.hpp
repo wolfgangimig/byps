@@ -101,12 +101,17 @@ class HServerR_LongPoll {
 			bool failed = varmsg.isException();
 			if (failed) {
 				BException ex = varmsg.getException();
-				bool isSessionDead = ex.toString().find(L"410") != wstring::npos;
-				bool isForbidden = ex.toString().find(L"403") != wstring::npos;
+				wstring errmsg = ex.toString();
+				bool isSessionDead = errmsg.find(L"410") != wstring::npos;
+				bool isForbidden = errmsg.find(L"403") != wstring::npos;
+				bool isTimeout = errmsg.find(L"408") != wstring::npos;
 
 				if (isSessionDead) {
 				}
 				else if (isForbidden) {
+				}
+				else if (isTimeout) {
+					HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
 				}
 				else if (sendLongPoll->waitBeforeRetry()) {
 					HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());

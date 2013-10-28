@@ -89,10 +89,17 @@ namespace byps
             public void setAsyncResult(BMessage obj, Exception ex)
             {
 				try {
-                    if (ex != null || obj.isEmpty())
+                    if (ex == null)
                     {
-                        bool isSessionDead = ex != null && ex.ToString().IndexOf("410") >= 0;
-                        bool isForbidden = ex != null && ex.ToString().IndexOf("403") >= 0;
+                        // Methode ausführen
+                        pthis.transport.recv(pthis.server, obj, asyncResult);
+                    }
+                    else
+                    {
+                        String errmsg = ex.ToString();
+                        bool isSessionDead = errmsg.IndexOf("410") >= 0;
+                        bool isForbidden = errmsg.IndexOf("403") >= 0;
+                        bool isTimeout = errmsg.IndexOf("408") >= 0;
 
                         if (isSessionDead)
                         {
@@ -103,17 +110,18 @@ namespace byps
                         {
                             // Re-login is required
                         }
+                        else if (isTimeout)
+                        {
+                            // HWireClientR has released the expried long-poll.
+                            // Ignore the error and send a new long-poll.
+                            pthis.sendLongPoll(null);
+                        }
                         else if (pthis.waitBeforeRetry())
                         {
                             pthis.sendLongPoll(null);
                         }
 
                     }
-                    else if (obj.buf != null && obj.buf.remaining() != 0)
-                    {
-						// Methode ausführen
-                        pthis.transport.recv(pthis.server, obj, asyncResult);
-					}
 				} catch (Exception e) {
                     asyncResult.setAsyncResult(null, e);
 				}

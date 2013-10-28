@@ -1,6 +1,7 @@
 
 package byps.http;
 
+
 public class HConstants {
 
   /**
@@ -25,6 +26,17 @@ public class HConstants {
    * milliseconds until a timeout exception is thrown.
    */
   public final static long MAX_WAIT_FOR_LONGPOLL_MILLIS = 30 * 1000L;
+
+  /**
+   * A long-poll request is returned at latest after this time. 
+   * If no reverse request is made from the server to the client,   
+   * the HWireClientR object inside the server releases the long-poll after this 
+   * time and sends status code 408 to the client. 
+   * The client application (HServerR object) has to ignore this response
+   * and has to send a new long-poll.
+   * This value should be less than {@link #REQUEST_TIMEOUT_MILLIS}.
+   */
+  public final static long TIMEOUT_LONGPOLL_MILLIS = 300 * 1000L;
 
   /**
    * Keep message in memory after it was finished. After a message is canceled,

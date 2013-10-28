@@ -1324,7 +1324,7 @@ byps.BServerR = function(transport, server) {
 	var me = this;
 	this.transport = transport;
 	this.server = server;
-	
+	this._isDone = false;
 	
 	this.start = function() {
 		var methodResult = this._makeInitMessage();
@@ -1332,6 +1332,8 @@ byps.BServerR = function(transport, server) {
 	};
 	
 	this._run = function(methodResult) {
+		
+		if (this._isDone) return;
 		
 		var asyncResult = function(message, exception) {
 			if (exception) {
@@ -1348,12 +1350,16 @@ byps.BServerR = function(transport, server) {
 		
 		var nextAsyncMethod = function(message, ex) {
 			try {
-				if (!ex && message.jsonText) {
+				if (!ex) {
+					
 					me.transport.recv(me.server, message, asyncResult);
+					
 				} else {
 					
-                    var isSessionDead = ex != null && ex.toString().indexOf("410") >= 0;
-                    var isForbidden = ex != null && ex.toString().indexOf("403") >= 0;
+					var errmsg = ex.toString();
+                    var isSessionDead = errmsg.indexOf("410") >= 0;
+                    var isForbidden = errmsg.toString().indexOf("403") >= 0;
+                    var isTimeout = errmsg.toString().indexOf("408") >= 0;
 
                     if (isSessionDead) {
                     	// Session was invalidated
@@ -1362,7 +1368,12 @@ byps.BServerR = function(transport, server) {
                     else if (isForbidden) {
 						// Re-login required
 					}
-					else {
+                    else if (isTimeout) {
+                        // HWireClientR has released the expried long-poll.
+                        // Ignore the error and send a new long-poll.
+                    	asyncResult(null, null);
+                    }
+					else if (!me._isDone) {
 						// Retry after 30s
 						window.setTimeout(function() {
 								asyncResult(null, null);
@@ -1370,6 +1381,7 @@ byps.BServerR = function(transport, server) {
 							30 * 1000);
 					}
 				}
+				
 			} catch (ex2) {
 				asyncResult(null, ex2);
 			};
@@ -1385,7 +1397,5 @@ byps.BServerR = function(transport, server) {
 		return outp.toMessage();
 	};
 	
-	
-	this._isDone = false;
 };
 

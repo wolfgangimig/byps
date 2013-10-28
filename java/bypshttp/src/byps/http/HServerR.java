@@ -105,29 +105,34 @@ public class HServerR extends BServerR {
         public void setAsyncResult(BMessage msg, Throwable e) {
           if (log.isDebugEnabled()) log.debug("asyncMethod.setAsyncResult(" + msg + ", e=" + e);
           try {
-            if (e == null && !msg.isEmpty()) {
+            
+            if (e == null) {
               // Execute the method received from server.
               transport.recv(server, msg, asyncResult);
             }
             else {
-
-              if (e instanceof HException) {
-                HException ex = (HException) e;
-                if (ex.isSessionDead()) {
-                  // Session was invalidated.
-                  // Stop long-poll
-                  if (log.isDebugEnabled()) log.debug("Session is dead.");
-                }
-                else if (ex.isForbidden()) {
-                  // Relogin is required
-                  if (log.isDebugEnabled()) log.debug("Forbidden. Re-login required.");
-                }
-                else if (waitBeforeRetry()) {
-                  asyncResult.setAsyncResult(null, null);
-                }
+              
+              HException ex = (HException) e;
+              if (ex.isSessionDead()) {
+                // Session was invalidated.
+                // Stop long-poll
+                if (log.isDebugEnabled()) log.debug("Session is dead.");
+              }
+              else if (ex.isForbidden()) {
+                // Relogin is required
+                if (log.isDebugEnabled()) log.debug("Forbidden. Re-login required.");
+              }
+              else if (ex.isTimeout()) {
+                // HWireClientR has released the expried long-poll.
+                // Ignore the error and send a new long-poll.
+                asyncResult.setAsyncResult(null, null);
+              }
+              else if (waitBeforeRetry()) { // Connection refused or connection timeout
+                asyncResult.setAsyncResult(null, null);
               }
 
             }
+            
           } catch (Throwable ex) {
             // transport.recv failed
             if (log.isDebugEnabled()) log.debug("recv failed.", e);
@@ -149,7 +154,7 @@ public class HServerR extends BServerR {
             return !refDone[0];
           }
         }
-
+        
       };
 
       // Sende den longPoll-Request

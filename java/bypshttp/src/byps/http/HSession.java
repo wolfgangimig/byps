@@ -22,11 +22,11 @@ public abstract class HSession {
 
   public final static int DEFAULT_INACTIVE_SECONDS = -1;
   
-  protected final HttpSession httpSess;
+  protected HttpSession httpSess;
   protected final BServerRegistry serverRegistry;
   protected final HWriteResponseHelper writeHelper;
-  protected final HWireServer wireServer;
-  protected final HWireClientR wireClientR;
+  protected HWireServer wireServer;
+  protected HWireClientR wireClientR;
   protected final int defaultInactiveSeconds;
   protected final String remoteUser;
 
@@ -87,14 +87,24 @@ public abstract class HSession {
   public void done() {
     if (log.isDebugEnabled()) log.debug("done(");
 
-    if (httpSess != null) {
-      httpSess.removeAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-      httpSess.invalidate();
+    HttpSession hsess = httpSess;
+    if (hsess != null) {
+      
+      // HttpSession.invalidate() will call via HSessionListener done() again.
+      // To avoid recursion, set the httpSess reference as null.
+      httpSess = null;
+      hsess.invalidate();
     }
 
-    wireServer.done();
-    wireClientR.done();
-
+    if (wireServer != null) {
+      wireServer.done();
+      wireServer = null;
+    }
+    
+    if (wireClientR != null) {
+      wireClientR.done();
+      wireClientR = null;
+    }
     if (log.isDebugEnabled()) log.debug(")done");
   }
   
@@ -106,6 +116,7 @@ public abstract class HSession {
 
   public void removeExpiredResources() {
     wireServer.cleanup();
+    wireClientR.cleanup();
   }
 
   public void setTargetId(BTargetId v) {
