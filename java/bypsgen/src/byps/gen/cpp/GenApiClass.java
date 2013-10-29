@@ -592,6 +592,9 @@ class GenApiClass {
 		beginClass(prH, className, serInfo.typeId);
 		prH.println();
 
+    prH.println("using namespace ::byps;");
+    prH.println();
+
 		pctxt.printComments(prH, serInfo.comments);
 		
 		CodePrinter mpr = prH.print("enum ").print(className);

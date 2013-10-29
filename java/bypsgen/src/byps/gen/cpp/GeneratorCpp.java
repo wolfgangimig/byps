@@ -65,7 +65,19 @@ public class GeneratorCpp implements Generator {
   }
 
   private ArrayList<SerialInfo> sortSerialsByInheritance(Collection<SerialInfo> arr) {
-    return new ArrayList<SerialInfo>(arr);
+    ArrayList<SerialInfo> sarr = new ArrayList<SerialInfo>();
+    for (SerialInfo s : arr) {
+      int inserIdx = sarr.size();
+      for (int i = 0; i < sarr.size(); i++) {
+        SerialInfo ss = sarr.get(i);
+        if (ss.baseFullName.equals(s.qname)) {
+          inserIdx = i;
+          break;
+        }
+      }
+      sarr.add(inserIdx, s);
+    }
+    return sarr;
   }
 
   private boolean isUsedBy_TypeInfo(TypeInfo tinfo, TypeInfo tinfo2) {
