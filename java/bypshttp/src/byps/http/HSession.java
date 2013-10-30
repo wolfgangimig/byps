@@ -96,15 +96,9 @@ public abstract class HSession {
       hsess.invalidate();
     }
 
-    if (wireServer != null) {
-      wireServer.done();
-      wireServer = null;
-    }
-    
-    if (wireClientR != null) {
-      wireClientR.done();
-      wireClientR = null;
-    }
+    wireServer.done();
+    wireClientR.done();
+
     if (log.isDebugEnabled()) log.debug(")done");
   }
   
