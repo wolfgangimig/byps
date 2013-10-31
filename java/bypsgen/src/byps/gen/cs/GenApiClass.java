@@ -86,14 +86,21 @@ class GenApiClass {
 				access = "public ";
 			}
 			
-			String f = minfo.isFinal ? "readonly " : "";
-			String s = minfo.isStatic ? "static " : "";
-			String n = "";
-			
-			if (serInfo.baseInfo != null && serInfo.baseInfo.findMember(minfo.name, null) != null) {
-				n = "new ";
+			String finalKeyword = ""; 
+			if (minfo.isFinal) {
+			  if (minfo.type.isPointerType()) {
+			    finalKeyword = "readonly static ";
+			  }
+			  else {
+			    finalKeyword = "const ";
+			  }
 			}
-			
+
+			String newKeyword = "";
+      if (serInfo.baseInfo != null && serInfo.baseInfo.findMember(minfo.name, null) != null) {
+        newKeyword = "new ";
+      }
+      
 			String memberName = "";
 			if (minfo.isStatic) {
 				memberName = pctxt.makePublicMemberName(minfo.name);
@@ -103,8 +110,7 @@ class GenApiClass {
 			}
 			
 			String typeName = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
-			CodePrinter mpr = pr.print(access).print(f).print(s).print(n)
-			  .print(typeName).print(" ").print(memberName);
+			CodePrinter mpr = pr.print(access).print(newKeyword).print(finalKeyword).print(typeName).print(" ").print(memberName);
 			
 			String value = minfo.value;
 			if (value != null) {
@@ -282,7 +288,7 @@ class GenApiClass {
 				pr.beginBlock();
 				pr.print("this._").print(minfo.name).println(" = value;");
 				
-				pctxt.printSetChangedMember(pr, serInfo, minfo);
+				pctxt.printSetChangedMembers(pr, serInfo, minfo);
 				
 				if (serInfo.isResultClass()) {
 					pr.println("if (resp != null) resp.ready(this);");
@@ -707,9 +713,6 @@ class GenApiClass {
 			if (serInfo.baseInfo != null) {
 				TypeInfo csinfo = pctxt.toCSharp(serInfo.baseInfo);
 				mpr.print(" : ").print(csinfo.toString(serInfo.pack)).print(", BSerializable");
-			}
-			else if (pctxt.isGenerateChangedMembers()) {
-				mpr.print(" : BValueClass");
 			}
 			else {
 				mpr.print(" : BSerializable");

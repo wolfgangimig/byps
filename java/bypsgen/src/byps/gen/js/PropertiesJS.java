@@ -8,7 +8,7 @@ public class PropertiesJS extends GeneratorProperties {
 	
 	public final static String OPT_PREFIX = "-genjs.";
 	public final static String DEST_FILE = "-genjs.dest";
-  public static final String SUPPRESS_CONST_CLASSES = "-genjs.suppressConstClasses";
+  public static final String SUPPRESS_CONST_CLASSES = "-genjs.suppress-const-classes";
 
 	public PropertiesJS(GeneratorProperties defaultProps) {
 		super(defaultProps);

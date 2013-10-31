@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -19,6 +20,7 @@ import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.db.ClassDB;
+import byps.gen.db.Keywords;
 import byps.gen.utils.CodePrinter;
 import byps.gen.utils.PrintContextBase;
 import byps.gen.utils.PrintHelper;
@@ -30,16 +32,28 @@ public class PrintContext extends PrintContextBase {
 	public final static String SKELETON_PREFIX = "BSkeleton_";
 	public final static String INTERFACE_SUFFIX = "";
 
-	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
+	PrintContext(ClassDB classDB, GeneratorProperties props) throws GeneratorException {
 		super(classDB, props);
 		
 		dirSer = props.getMandatoryPropertyFile(PropertiesCS.DEST_DIR_SER);
 		dirApi = props.getOptionalPropertyFile(PropertiesCS.DEST_DIR_API, dirSer);
 		dirSerBin = props.getOptionalPropertyFile(PropertiesCS.DEST_DIR_SER_BIN, dirSer);
-	
+		
 		dirApi.mkdirs();
 		dirSerBin.mkdirs();
 		dirSer.mkdirs();
+		
+//		String packAlias = props.getOptionalPropertyString(PropertiesCS.RENAME_PACKAGES, "");
+//		if (packAlias.length() != 0) {
+//		  String[] aliasDefs = packAlias.split(";");
+//		  for (int i = 0; i < aliasDefs.length; i++) {
+//		    String[] alias = aliasDefs[i].trim().split("=");
+//		    if (alias.length != 2) {
+//		      throw new GeneratorException("Option " + PropertiesCS.RENAME_PACKAGES + " must be a semicolon separated list of new=old pairs. Error at " + Arrays.toString(alias));
+//		    }
+//		    packageAliasses.put(alias[1].trim(), alias[0].trim());		    
+//		  }
+//		}
 		
 		logProperties();
 	}
@@ -98,9 +112,9 @@ public class PrintContext extends PrintContextBase {
 		return makePublicMemberName(name) + " = " + value;
 	}
 	
-	private static class TypeInfoCS extends TypeInfo {
+	public static class TypeInfoCS extends TypeInfo {
 		
-		public TypeInfoCS(String name, String qname, String dims, List<TypeInfo> typeArgs, boolean isEnum, boolean isFinal, boolean inlineInstance)  {
+		private TypeInfoCS(String name, String qname, String dims, List<TypeInfo> typeArgs, boolean isEnum, boolean isFinal, boolean inlineInstance)  {
 			super(name, qname, dims, typeArgs, isEnum, isFinal, inlineInstance);
 		}
 
@@ -119,7 +133,7 @@ public class PrintContext extends PrintContextBase {
 
 	}
 
-	TypeInfo toCSharp(TypeInfo tinfo) {
+	TypeInfoCS toCSharp(TypeInfo tinfo) {
 		String name = tinfo.name;
 		String qname = tinfo.qname;
 		
@@ -148,7 +162,7 @@ public class PrintContext extends PrintContextBase {
 		
 		ArrayList<TypeInfo> args = toCSharp(tinfo.typeArgs);
 		
-		TypeInfo ninfo = new TypeInfoCS(name, qname, tinfo.dims, args, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
+		TypeInfoCS ninfo = new TypeInfoCS(name, qname, tinfo.dims, args, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
 		ninfo.typeId  = tinfo.typeId;
 		
 		return ninfo;
@@ -161,69 +175,6 @@ public class PrintContext extends PrintContextBase {
 		}
 		return args;
 	}
-//		
-//	public MemberInfo toCSharp(MemberInfo minfo) {
-//		MemberInfo ninfo = new MemberInfo(minfo.name, minfo.comments, toCSharp(minfo.type), 
-//				minfo.access == MemberAccess.PUBLIC, 
-//				minfo.access == MemberAccess.PROTECTED, 
-//				minfo.access == MemberAccess.PACKAGE, 
-//				minfo.access == MemberAccess.PRIVATE,
-//				minfo.isFinal, minfo.isStatic, minfo.isTransient, 
-//				minfo.since, minfo.value);
-//		return ninfo;
-//	}
-//	
-//	private HashMap<String, SerialInfo> convertedSerials = new HashMap<String, SerialInfo>();
-//	
-//	public SerialInfo toCSharp(SerialInfo sinfo) throws GeneratorException {
-//		if (sinfo == null) return null;
-//		SerialInfo ninfo = convertedSerials.get(sinfo.qname);
-//		if (ninfo != null ) return ninfo;
-//		
-//		if (sinfo.name.equals("AllTypesC")) {
-//			sinfo.typeId = 0;
-//		}
-//		
-//		ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
-//		for (MemberInfo m : sinfo.members) members.add(toCSharp(m)); 
-//		
-//		TypeInfo tinfo = toCSharp((TypeInfo)sinfo);
-//		ninfo = new SerialInfo(tinfo.name, sinfo.comments, tinfo.qname, sinfo.baseFullName, sinfo.dims,
-//				tinfo.typeArgs, members, tinfo.isEnum, tinfo.inlineInstance);
-//		
-//		convertedSerials.put(sinfo.qname, sinfo);
-//		ninfo.methodInfo = toCSharp(sinfo.methodInfo);
-//		ninfo.baseInfo = toCSharp(sinfo.baseInfo);
-//		ninfo.typeId = sinfo.typeId;
-//		return ninfo;
-//	}
-//	
-//	public RemoteInfo toCSharp(RemoteInfo rinfo) throws GeneratorException {
-//		TypeInfo tinfo = toCSharp((TypeInfo)rinfo);
-//		
-//		ArrayList<MethodInfo> methods = new ArrayList<MethodInfo>();
-//		for (MethodInfo method : methods) {
-//			methods.add(toCSharp(method));
-//		}
-//
-//		RemoteInfo ninfo = new RemoteInfo(tinfo.name, rinfo.comments, tinfo.qname, methods);
-//		ninfo.typeId = rinfo.typeId;
-//		
-//		return ninfo;
-//	}
-//	
-//	public MethodInfo toCSharp(MethodInfo minfo) throws GeneratorException {
-//		if (minfo == null) return null;
-//		MethodInfo ninfo = new MethodInfo(minfo.name, minfo.comments, 
-//				toCSharp(minfo.requestInfo), toCSharp(minfo.resultInfo),
-//				toCSharp(minfo.exceptions));
-//		ninfo.remoteInfo = toCSharp(minfo.remoteInfo);
-//		return ninfo;
-//	}
-
-	public final File dirApi;
-	public final File dirSerBin;
-	public final File dirSer;
 
 	public String getReturnTypeAsObjType(MethodInfo methodInfo, String currentPackage) throws GeneratorException {
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
@@ -405,8 +356,7 @@ public class PrintContext extends PrintContextBase {
 
 	
 	public String makeValidMemberName(String mname) {
-		if (mname.equals("value")) return mname = "@value";
-		if (mname.equals("params")) return mname = "@params";
+	  if (Keywords.csharpKeywords.contains(mname)) return "@" + mname;
 		return mname;
 	}
 
@@ -678,8 +628,40 @@ public class PrintContext extends PrintContextBase {
 		className += PrintContext.SKELETON_PREFIX + rinfo.name;
 		return className;
 	}
+	
+//  public String renamePackage(String classPackage) {
+//    
+//    String bestOldPackage = "";
+//    for (String oldPackage : packageAliasses.keySet()) {
+//      int nbOfEqualChars = 0;
+//      for (; nbOfEqualChars < Math.min(oldPackage.length(), classPackage.length()); nbOfEqualChars++) {}
+//      if (nbOfEqualChars > bestOldPackage.length()) {
+//        bestOldPackage = oldPackage;
+//      }
+//    }
+//
+//    if (bestOldPackage.length() != 0) {
+//      classPackage = packageAliasses.get(bestOldPackage);
+//    }
+//
+//    return classPackage;
+//  }
+//
+//  public String renameClassPackage(String className) {
+//    
+//    int p = className.lastIndexOf('.');
+//    if (p >= 0) {
+//      String oldPackage = className.substring(0, p);
+//      String newPackage = renamePackage(oldPackage);
+//      if (!oldPackage.equals(newPackage)) {
+//        className = newPackage + className.substring(p);
+//      }
+//    }
+//
+//    return className;
+//  }
 
-	public void printSetChangedMember(CodePrinter pr, SerialInfo serInfo, MemberInfo minfo) {
+	public void printSetChangedMembers(CodePrinter pr, SerialInfo serInfo, MemberInfo minfo) {
 		if (isGenerateChangedMembers()) {
 			SerialInfo serInfoC = classDB.getSerInfo(serInfo.qname + "C");
 			if (serInfoC != null) {
@@ -687,7 +669,7 @@ public class PrintContext extends PrintContextBase {
 				MemberInfo minfoC = serInfoC.findMember(elementSelectorName, "long");
 				if (minfoC != null) {
 					String elms = getElementSelectorClassName(serInfo) + "." + minfoC.name;
-					pr.print("setChangedMember(").print(elms).print(");").println();
+					pr.print("ExtensionMethods.setChangedMembers(this, ").print(elms).print(");").println();
 				}
 			}
 		}
@@ -712,6 +694,11 @@ public class PrintContext extends PrintContextBase {
     return baseRemote;
   }
 
+
+  public final File dirApi;
+  public final File dirSerBin;
+  public final File dirSer;
+  private final HashMap<String,String> packageAliasses = new HashMap<String,String>();
 
 	private Log log = LogFactory.getLog(PrintContext.class);
 

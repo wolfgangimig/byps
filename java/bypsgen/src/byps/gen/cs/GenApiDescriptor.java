@@ -70,7 +70,7 @@ public class GenApiDescriptor {
 		pr.println("/**");
 		pr.print(" * API serialisation version: ").print(BVersioning.longToString(apiDesc.version)).println();
 		pr.println(" */");
-		pr.print("public readonly static long VERSION = " + apiDesc.version + "L;").println();
+		pr.print("public const long VERSION = " + apiDesc.version + "L;").println();
 
 		log.debug(")printStaticMembers");
 	}
