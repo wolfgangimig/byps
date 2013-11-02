@@ -12,6 +12,7 @@ public:
 
     virtual POutput getOutput(PTransport transport, const BMessageHeader& responseHeader);
     virtual PInput getInput(PTransport transport, const BMessageHeader& header, PBytes& pBytes);
+	virtual PRegistry getRegistry();
 
 protected:
 	PApiDescriptor apiDesc;

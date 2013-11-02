@@ -23,6 +23,9 @@ BINLINE PInput BProtocol::getInput(PTransport transport, const BMessageHeader &h
     return PInput(new BInput(transport, header, pBytes));
 }
 
+BINLINE PRegistry BProtocol::getRegistry() {
+	return apiDesc->getRegistry(BBinaryModel::MEDIUM());
+}
 
 }
 

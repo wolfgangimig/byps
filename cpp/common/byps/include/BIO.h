@@ -8,6 +8,9 @@
 namespace byps {
 
 class BIO {
+//#ifdef _DEBUG
+//	char watchForMemLeak[1000*1000];
+//#endif
 public:
     const PTransport transport;
     const PRegistry registry;

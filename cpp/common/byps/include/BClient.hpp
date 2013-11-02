@@ -96,13 +96,8 @@ public:
 
 
 BINLINE void BClient::internalStart(PAsyncResult asyncResult) {
-	
-	if (!transport->authentication) {
-		setAuthentication(PAuthentication());
-	}
-
-    BClient_MyNegoAsyncResult* outerResult = new BClient_MyNegoAsyncResult(shared_from_this(), asyncResult);
-    transport->negotiateProtocolClient(outerResult);
+	setAuthentication(PAuthentication());
+    transport->negotiateProtocolClient(asyncResult);
 }
 
 class BClient_ClientAuthentication : public BAuthentication
@@ -121,31 +116,20 @@ public:
 		return innerAuth;
 	}
             
-	virtual void authenticate(PClient , function<void (bool, BException)> asyncResult) {
+	virtual void authenticate(PClient , PAsyncResult asyncResult) {
 		PClient client = this->client.lock();
 		if (client) {
 
+			PAsyncResult startClientResult(new BClient_MyNegoAsyncResult(client, asyncResult));
 			if (innerAuth) {
-				innerAuth->authenticate(client, [client, asyncResult](bool, BException ex) {
-					if (!ex) {
-						try {
-							if (client->serverR) {
-								client->serverR->start();
-							}
-						}
-						catch (const BException& e) {
-							ex = e;
-						}
-					}
-					asyncResult(false, ex);
-				});
+				innerAuth->authenticate(client, startClientResult);
 			}
 			else {
-				asyncResult(false, BException());
+				startClientResult->setAsyncResult(BVariant());
 			}
 		}
 		else {
-			asyncResult(false, BException(EX_CANCELLED));
+			asyncResult->setAsyncResult(BVariant(BException(EX_CANCELLED)));
 		}
     }
 
@@ -169,15 +153,23 @@ public:
         return ret;
     }
 
-    virtual PSerializable getSession()
+    virtual void getSession(PClient client, BTYPEID typeId, PAsyncResult asyncResult)
     {
-        PSerializable ret;
-        if (innerAuth)
-        {
-            ret = innerAuth->getSession();
+        if (innerAuth) {
+            innerAuth->getSession(this->client.lock(), typeId, asyncResult);
         }
-        return ret;
+		else {
+			asyncResult->setAsyncResult(BVariant());
+		}
     }
+
+#ifdef CPP11_LAMBDA
+	virtual void authenticate(PClient client, function<void (bool, BException)> asyncResult) {
+	}
+
+	virtual void getSession(PClient client, BTYPEID typeId, function<void (PSerializable, BException)> asyncResult) {
+	}
+#endif
 
 };
 

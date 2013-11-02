@@ -71,17 +71,17 @@ BINLINE PProtocol BTransport::getProtocol() {
     return protocol;
 }
 
-class BTransport_MyAsyncResultSend;
-typedef BTransport_MyAsyncResultSend* PTransport_BAsyncOuterResult;
+class BTransport_ReloginAndRetrySend;
+typedef BTransport_ReloginAndRetrySend* PTransport_BAsyncOuterResult;
 
-class BTransport_MyAsyncResultSend : public BAsyncResult {
+class BTransport_ReloginAndRetrySend : public BAsyncResult {
 	PTransport transport;
-	PMethodRequest methodRequest; 
+	PSerializable requestObject; 
 	PAsyncResult innerResult;
 public:
-	BTransport_MyAsyncResultSend(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
+	BTransport_ReloginAndRetrySend(PTransport transport, PSerializable requestObject, PAsyncResult innerResult) 
 		: transport(transport)
-		, methodRequest(methodRequest)
+		, requestObject(requestObject)
 		, innerResult(innerResult)
 	{
 	}
@@ -92,7 +92,7 @@ public:
                 innerResult->setAsyncResult(BVariant(result.getException()));
             }
             else {
-				transport->send(methodRequest, innerResult);
+				transport->assignSessionThenSendMethod(requestObject, innerResult);
             }
 		}
         catch (const exception& ex) {
@@ -143,19 +143,19 @@ public:
 
 };
 
-class BTransport_MyAsyncResultRelogin : public BAsyncResult {
+class BTransport_DeserlializeMethodResultMaybeRelogin : public BAsyncResult {
 	PTransport transport;
-	PMethodRequest methodRequest; 
+	PSerializable requestObject; 
 	PAsyncResult innerResult;
 public:
-	BTransport_MyAsyncResultRelogin(PTransport transport, PMethodRequest methodRequest, PAsyncResult innerResult) 
+	BTransport_DeserlializeMethodResultMaybeRelogin(PTransport transport, PSerializable requestObject, PAsyncResult innerResult) 
 		: transport(transport)
-		, methodRequest(methodRequest)
+		, requestObject(requestObject)
 		, innerResult(innerResult)
 	{
 	}
 
-	virtual ~BTransport_MyAsyncResultRelogin() {}
+	virtual ~BTransport_DeserlializeMethodResultMaybeRelogin() {}
 
     virtual void setAsyncResult(const BVariant& result) { 
 		bool relogin = false;
@@ -192,18 +192,8 @@ public:
             }
 
 			if (relogin) {
-                try {
-					// Cancel long-polls.
-					// They will be restarted over negotiateProtocolClient and BClient::authentication.
-					transport->wire->cancelAllRequests();
-
-                    BTransport_MyAsyncResultSend* loginResult = new BTransport_MyAsyncResultSend(transport, methodRequest, innerResult);
-                    transport->negotiateProtocolClient(loginResult);
-                }
-                catch (const BException& e) {
-                    innerResult->setAsyncResult(BVariant(e));
-                }
-			}
+				transport->loginAndRetrySend(requestObject, innerResult);
+ 			}
 		}
         catch (const exception& ex) {
             innerResult->setAsyncResult(BVariant(ex));
@@ -214,11 +204,21 @@ public:
 
 private:
 	bool internalIsReloginException(BException e) {
-		BTYPEID typeId = methodRequest->BSerializable_getTypeId();
+		BTYPEID typeId = requestObject->BSerializable_getTypeId();
         return transport->internalIsReloginException(e, typeId);
     }
 
 };
+
+BINLINE void BTransport::loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult) {
+	// Cancel long-polls.
+	// They will be restarted over negotiateProtocolClient and BClient::authentication.
+	wire->cancelAllRequests();
+
+	PAsyncResult loginResult(new BTransport_ReloginAndRetrySend(shared_from_this(), requestObject, asyncResult));
+
+    negotiateProtocolClient(loginResult);
+}
 
 
 BINLINE void BTransport::negotiateProtocolClient(PAsyncResult asyncResult) {
@@ -289,23 +289,20 @@ BINLINE PProtocol BTransport::detectProtocolFromInputBuffer(const PBytes&) {
     return PProtocol();
 }
 
+BINLINE void BTransport::sendMethod(const PMethodRequest& methodRequest, PAsyncResult asyncResult) {
+	assignSessionThenSendMethod(methodRequest, asyncResult);
+}
+
 BINLINE void BTransport::send(const PSerializable& obj, PAsyncResult asyncResult) {
 
 	PTransport pthis = shared_from_this();
 	if (!pthis) throw BException(EX_CANCELLED);
 
 	try {
-		PMethodRequest methodRequest = byps_ptr_cast<BMethodRequest>(obj);
-		if (!methodRequest) throw BException(EX_CORRUPT);
-
-		if (authentication) {
-			methodRequest->setSession(authentication->getSession());
-		}
-
         POutput outp = getOutput();
-		outp->store(methodRequest);
+		outp->store(obj);
 
-        PAsyncResult outerResult = new BTransport_MyAsyncResultRelogin(pthis, methodRequest, asyncResult);
+        PAsyncResult outerResult = new BTransport_DeserlializeMethodResultMaybeRelogin(pthis, obj, asyncResult);
 
         PMessage msg = outp->toMessage();
         
@@ -315,6 +312,54 @@ BINLINE void BTransport::send(const PSerializable& obj, PAsyncResult asyncResult
     catch (const exception& ex) {
         asyncResult->setAsyncResult(BVariant(ex));
 	}
+}
+
+class BTransport_AssingSessionThenSendMethod : public BAsyncResult {
+	PTransport pTransport;
+	PSerializable requestObject;
+	PAsyncResult asyncResult;
+public:
+	BTransport_AssingSessionThenSendMethod(PTransport pTransport, PSerializable requestObject, PAsyncResult asyncResult) 
+		: pTransport(pTransport), requestObject(requestObject), asyncResult(asyncResult) {
+	}
+	virtual void setAsyncResult(const BVariant& result) {
+		if (result.isException()) {
+			asyncResult->setAsyncResult(result);
+		}
+		else {
+			PMethodRequest methodRequest = byps_ptr_cast<BMethodRequest>(requestObject);
+			if (methodRequest) {
+				PSerializable session;
+				result.get(session);
+				methodRequest->setSession(session);
+			}
+			pTransport->send(methodRequest, asyncResult);
+		}
+		delete this;
+	}
+};
+
+BINLINE void BTransport::assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult) {
+	if (this->authentication) {
+		try {
+			BTYPEID typeId = getObjectTypeId(requestObject);
+			PAsyncResult sessionResult(new BTransport_AssingSessionThenSendMethod(shared_from_this(), requestObject, asyncResult));
+			this->authentication->getSession(PClient(), typeId, sessionResult);
+		}
+		catch (const BException& ex) {
+			asyncResult->setAsyncResult(BVariant(ex));
+		}
+	}
+	else {
+		this->send(requestObject, asyncResult);
+	}
+}
+
+BINLINE BTYPEID BTransport::getObjectTypeId(PSerializable ser)
+{
+	BTYPEID typeId = 0;
+	protocol->getRegistry()->getSerializer(typeid(*ser.get()), typeId);
+	return typeId;
 }
 
 class BTransport_MethodResult : public BAsyncResult {
@@ -381,7 +426,7 @@ BINLINE bool BTransport::isReloginException(BException ex, int typeId) {
 }
 
 
-class BTransport_InternalAuthenticate_BAsyncResult : BAsyncResult
+class BTransport_InternalAuthenticate_BAsyncResult : public BAsyncResult
 {
 public:
 	BTransport_InternalAuthenticate_BAsyncResult(PTransport transport)
@@ -389,7 +434,7 @@ public:
     {
     }
 
-    virtual void setAsyncResult(BVariant result) {
+    virtual void setAsyncResult(const BVariant& result) {
 
 		BException ex = result.getException();
 		std::vector<PAsyncResult> copyResults;
@@ -440,11 +485,8 @@ BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
 
 		if (first) {
 			
-			BTransport_InternalAuthenticate_BAsyncResult* authResult = new BTransport_InternalAuthenticate_BAsyncResult(shared_from_this());
-
-			authentication->authenticate(PClient(), [authResult](bool , BException ex) {
-				authResult->setAsyncResult(ex ? BVariant(ex) : BVariant(false));
-			});
+			PAsyncResult authResult(new BTransport_InternalAuthenticate_BAsyncResult(shared_from_this()));
+			authentication->authenticate(PClient(), authResult);
 
 		}
 		else if (assumeAuthenticationIsValid) {

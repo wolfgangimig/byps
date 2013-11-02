@@ -18,7 +18,7 @@ namespace byps.test.api.remote
 		public override int getRemoteId() { return 567395951; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:372
+			// checkpoint byps.gen.cs.GenApiClass:378
 			try {
 				RemoteInlineInstance __byps__remoteT = (RemoteInlineInstance)__byps__remote;				
 				BAsyncResultSendMethod<IDictionary<int,byps.test.api.inl.Point2D>> __byps__outerResult = new BAsyncResultSendMethod<IDictionary<int,byps.test.api.inl.Point2D>>(__byps__asyncResult, new byps.test.api.BResult_1358523233());				

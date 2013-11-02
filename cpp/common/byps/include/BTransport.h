@@ -24,6 +24,7 @@ public:
 
     PProtocol getProtocol();
 
+    void sendMethod(const PMethodRequest& methodRequest, PAsyncResult asyncResult);
     void send(const PSerializable& obj, PAsyncResult asyncResult);
 	void recv(PServer server, PMessage message, PAsyncResult asyncResult);
 
@@ -48,10 +49,14 @@ protected:
 	std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
 	BException lastAuthenticationException;
 	void setAuthentication(PAuthentication auth, bool onlyIfNull);
+	void assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult);
+	void loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult);
+	BTYPEID getObjectTypeId(PSerializable ser);
 
-	friend class BTransport_MyNegoAsyncResult;
-	friend class BTransport_MyAsyncResultRelogin;
+	friend class BTransport_DeserlializeMethodResultMaybeRelogin;
 	friend class BTransport_InternalAuthenticate_BAsyncResult;
+	friend class BTransport_MyNegoAsyncResult;
+	friend class BTransport_ReloginAndRetrySend;
 	friend class BClient;
 
 	// Declare BOutput, BInput as friend class to be able to access targetId

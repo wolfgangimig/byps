@@ -34,6 +34,9 @@ typedef byps_ptr<WinHttpPutStream> PWinHttpPutStream;
 	static byps_atomic<int> s_handleCount;
 
 class WinHttpRequest : public virtual HHttpRequest, public byps_enable_shared_from_this<WinHttpRequest> {
+//#ifdef _DEBUG
+//	char watchForMemLeak[1000*1000];
+//#endif
 protected:
 	HINTERNET hRequest;
 	byps_atomic<bool> handleClosed;

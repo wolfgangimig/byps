@@ -41,12 +41,12 @@ namespace byps.test.api.remote
 		/// <summary>
 		/// Do something.
 		/// </summary>
-		int Doit(int @value);
-		void Doit(int @value, BAsyncResult<int> asyncResult) ;
+		int Doit(int value);
+		void Doit(int value, BAsyncResult<int> asyncResult) ;
 		/// <summary>
 		/// Do something.
 		/// </summary>
-		Task<int> DoitAsync(int @value);
+		Task<int> DoitAsync(int value);
 		
 		/// <summary>
 		/// Logout

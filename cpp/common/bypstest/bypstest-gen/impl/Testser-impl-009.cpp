@@ -16,7 +16,7 @@ byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString::BRequest_Remot
 	: BMethodRequest(1178916877) 
 	, v(v)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -34,7 +34,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_setString::execute(P
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1293977038(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -55,7 +55,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException::BRequest_RemotePrimitiveTypes_throwException() : BMethodRequest(1178916877) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -72,7 +72,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_throwException::exec
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1278149706(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -93,7 +93,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid::BRequest_RemotePrimitiveTypes_voidFunctionVoid() : BMethodRequest(1178916877) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -110,7 +110,7 @@ void byps::test::api::remote::BRequest_RemotePrimitiveTypes_voidFunctionVoid::ex
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2033139391(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -131,7 +131,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteReferences_getNode::BRequest_RemoteReferences_getNode() : BMethodRequest(568637225) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteReferences_getNode::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteReferences_getNode::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -148,7 +148,7 @@ void byps::test::api::remote::BRequest_RemoteReferences_getNode::execute(PRemote
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1366991859(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -174,7 +174,7 @@ byps::test::api::remote::BRequest_RemoteReferences_setNode::BRequest_RemoteRefer
 	: BMethodRequest(568637225) 
 	, v(v)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteReferences_setNode::serialize(BIO& ar, const BVERSION version) {
 	ar & v;
 }
@@ -192,7 +192,7 @@ void byps::test::api::remote::BRequest_RemoteReferences_setNode::execute(PRemote
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_693117721(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -218,7 +218,7 @@ byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote::BRequest_
 	: BMethodRequest(1652234479) 
 	, name(name)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote::serialize(BIO& ar, const BVERSION version) {
 	ar & name;
 }
@@ -236,7 +236,7 @@ void byps::test::api::remote::BRequest_RemoteServerCtrl_getPublishedRemote::exec
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_648762723(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -265,7 +265,7 @@ byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote::BRequest_Remot
 	, remote(remote)
 	, fowardToOtherServers(fowardToOtherServers)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote::serialize(BIO& ar, const BVERSION version) {
 	ar & fowardToOtherServers;
 	ar & name;
@@ -285,7 +285,7 @@ void byps::test::api::remote::BRequest_RemoteServerCtrl_publishRemote::execute(P
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1543768912(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -311,7 +311,7 @@ byps::test::api::remote::BRequest_RemoteServerCtrl_removePublishedRemote::BReque
 	: BMethodRequest(1652234479) 
 	, name(name)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteServerCtrl_removePublishedRemote::serialize(BIO& ar, const BVERSION version) {
 	ar & name;
 }
@@ -329,7 +329,7 @@ void byps::test::api::remote::BRequest_RemoteServerCtrl_removePublishedRemote::e
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_135366859(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -350,7 +350,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getBoolean1::BRequest_RemoteSetTypes_getBoolean1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getBoolean1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getBoolean1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -367,7 +367,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getBoolean1::execute(PRemo
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2114990909(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -388,7 +388,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getByte1::BRequest_RemoteSetTypes_getByte1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getByte1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getByte1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -405,7 +405,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getByte1::execute(PRemote 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_901695825(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -426,7 +426,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getByte2::BRequest_RemoteSetTypes_getByte2() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getByte2::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getByte2::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -443,7 +443,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getByte2::execute(PRemote 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_901695824(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -464,7 +464,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getChar1::BRequest_RemoteSetTypes_getChar1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getChar1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getChar1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -481,7 +481,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getChar1::execute(PRemote 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_901296607(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -502,7 +502,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getDouble1::BRequest_RemoteSetTypes_getDouble1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getDouble1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getDouble1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -519,7 +519,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getDouble1::execute(PRemot
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1751651450(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -540,7 +540,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getFloat1::BRequest_RemoteSetTypes_getFloat1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getFloat1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getFloat1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -557,7 +557,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getFloat1::execute(PRemote
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2080406641(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -578,7 +578,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getInt1::BRequest_RemoteSetTypes_getInt1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getInt1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getInt1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -595,7 +595,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getInt1::execute(PRemote _
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1772226268(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -616,7 +616,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getInt2::BRequest_RemoteSetTypes_getInt2() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getInt2::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getInt2::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -633,7 +633,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getInt2::execute(PRemote _
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1772226269(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -654,7 +654,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getLong1::BRequest_RemoteSetTypes_getLong1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getLong1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getLong1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -671,7 +671,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getLong1::execute(PRemote 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_892764229(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -692,7 +692,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getObj1::BRequest_RemoteSetTypes_getObj1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getObj1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getObj1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -709,7 +709,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getObj1::execute(PRemote _
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1772393172(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -730,7 +730,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getPrimitiveTypes1::BRequest_RemoteSetTypes_getPrimitiveTypes1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getPrimitiveTypes1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getPrimitiveTypes1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -747,7 +747,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getPrimitiveTypes1::execut
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_669274715(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -768,7 +768,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getShort1::BRequest_RemoteSetTypes_getShort1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getShort1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getShort1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -785,7 +785,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getShort1::execute(PRemote
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1711905425(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -806,7 +806,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // checkpoint byps.gen.cpp.GenApiClass:488
 byps::test::api::remote::BRequest_RemoteSetTypes_getString1::BRequest_RemoteSetTypes_getString1() : BMethodRequest(1900796440) {
 }
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_getString1::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::remote::BRequest_RemoteSetTypes_getString1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -823,7 +823,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_getString1::execute(PRemot
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1183412410(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -849,7 +849,7 @@ byps::test::api::remote::BRequest_RemoteSetTypes_setBoolean1::BRequest_RemoteSet
 	: BMethodRequest(1900796440) 
 	, boolean1(boolean1)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_setBoolean1::serialize(BIO& ar, const BVERSION version) {
 	ar & boolean1;
 }
@@ -867,7 +867,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_setBoolean1::execute(PRemo
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2091396559(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -893,7 +893,7 @@ byps::test::api::remote::BRequest_RemoteSetTypes_setByte1::BRequest_RemoteSetTyp
 	: BMethodRequest(1900796440) 
 	, byte1(byte1)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_setByte1::serialize(BIO& ar, const BVERSION version) {
 	ar & byte1;
 }
@@ -911,7 +911,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_setByte1::execute(PRemote 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1462808285(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -937,7 +937,7 @@ byps::test::api::remote::BRequest_RemoteSetTypes_setByte2::BRequest_RemoteSetTyp
 	: BMethodRequest(1900796440) 
 	, byte2(byte2)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_setByte2::serialize(BIO& ar, const BVERSION version) {
 	ar & byte2;
 }
@@ -955,7 +955,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_setByte2::execute(PRemote 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1462808284(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -981,7 +981,7 @@ byps::test::api::remote::BRequest_RemoteSetTypes_setChar1::BRequest_RemoteSetTyp
 	: BMethodRequest(1900796440) 
 	, char1(char1)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_setChar1::serialize(BIO& ar, const BVERSION version) {
 	ar & char1;
 }
@@ -999,7 +999,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_setChar1::execute(PRemote 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1462409067(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -1025,7 +1025,7 @@ byps::test::api::remote::BRequest_RemoteSetTypes_setDouble1::BRequest_RemoteSetT
 	: BMethodRequest(1900796440) 
 	, double1(double1)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_setDouble1::serialize(BIO& ar, const BVERSION version) {
 	ar & double1;
 }
@@ -1043,7 +1043,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_setDouble1::execute(PRemot
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_185153786(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
@@ -1069,7 +1069,7 @@ byps::test::api::remote::BRequest_RemoteSetTypes_setFloat1::BRequest_RemoteSetTy
 	: BMethodRequest(1900796440) 
 	, float1(float1)
 	{}
-// checkpoint byps.gen.cpp.GenApiClass:872
+// checkpoint byps.gen.cpp.GenApiClass:875
 void byps::test::api::remote::BRequest_RemoteSetTypes_setFloat1::serialize(BIO& ar, const BVERSION version) {
 	ar & float1;
 }
@@ -1087,7 +1087,7 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_setFloat1::execute(PRemote
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1999943579(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();

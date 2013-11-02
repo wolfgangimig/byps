@@ -51,20 +51,20 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public int Doit(int @value) {
+		public int Doit(int value) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
-			Doit(@value, BAsyncResultHelper.ToDelegate<int>(asyncResult));
+			Doit(value, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Doit(int @value, BAsyncResult<int> asyncResult) {
+		public void Doit(int value, BAsyncResult<int> asyncResult) {
 			BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();			
-			req._value = @value;
+			req._value = value;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<int> DoitAsync(int @value){
+		public async Task<int> DoitAsync(int value){
 			BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();			
-			req._value = @value;
+			req._value = value;
 			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
 			return await task;
 		}

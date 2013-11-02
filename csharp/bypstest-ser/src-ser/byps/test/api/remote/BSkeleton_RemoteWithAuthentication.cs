@@ -73,20 +73,20 @@ namespace byps.test.api.remote
 			return BTaskConstants<byps.test.api.auth.SessionInfo>.NotImplemented;
 		}
 		
-		public virtual int Doit(byps.test.api.auth.SessionInfo sess, int @value) {
+		public virtual int Doit(byps.test.api.auth.SessionInfo sess, int value) {
 			throw new NotImplementedException();
 		}
-		public virtual async void Doit(byps.test.api.auth.SessionInfo sess, int @value, BAsyncResult<int> asyncResult) {
+		public virtual async void Doit(byps.test.api.auth.SessionInfo sess, int value, BAsyncResult<int> asyncResult) {
 			int ret = default(int);
 			Exception ex = null;
 			bool callAsync = false;
 			try {
-				ret = Doit(sess, @value);
+				ret = Doit(sess, value);
 			}
 			catch (NotImplementedException) { callAsync = true; }
 			catch (Exception e) { ex = e; }
 			if (callAsync) try {
-				ret = await DoitAsync(sess, @value);
+				ret = await DoitAsync(sess, value);
 			}
 			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
 			catch (Exception e) { ex = e; }
@@ -95,7 +95,7 @@ namespace byps.test.api.remote
 		/// <summary>
 		/// Do something.
 		/// </summary>
-		public virtual Task<int> DoitAsync(byps.test.api.auth.SessionInfo sess, int @value){
+		public virtual Task<int> DoitAsync(byps.test.api.auth.SessionInfo sess, int value){
 			return BTaskConstants<int>.NotImplemented;
 		}
 		

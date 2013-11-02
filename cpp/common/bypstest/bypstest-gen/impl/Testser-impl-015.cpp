@@ -16,9 +16,9 @@ PContentStream BStub_RemoteStreams::getImage()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteStreams::getImage(::std::function< void (PContentStream, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteStreams_getImage());
+	PMethodRequest req(new BRequest_RemoteStreams_getImage());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PContentStream, byps::test::api::BResult_15 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteStreams::setImage(const PContentStream& istrm)  {
 	BSyncResultT< bool > syncResult;	
@@ -28,9 +28,9 @@ void BStub_RemoteStreams::setImage(const PContentStream& istrm)  {
 	syncResult.getResult();
 }
 void BStub_RemoteStreams::setImage(const PContentStream& istrm, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteStreams_setImage(istrm));
+	PMethodRequest req(new BRequest_RemoteStreams_setImage(istrm));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< ::std::map< int32_t , PContentStream > > BStub_RemoteStreams::getImages()  {
 	BSyncResultT< byps_ptr< ::std::map< int32_t , PContentStream > > > syncResult;	
@@ -40,9 +40,9 @@ byps_ptr< ::std::map< int32_t , PContentStream > > BStub_RemoteStreams::getImage
 	return syncResult.getResult();
 }
 void BStub_RemoteStreams::getImages(::std::function< void (byps_ptr< ::std::map< int32_t , PContentStream > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteStreams_getImages());
+	PMethodRequest req(new BRequest_RemoteStreams_getImages());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::map< int32_t , PContentStream > >, byps::test::api::BResult_476459792 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteStreams::setImages(const byps_ptr< ::std::map< int32_t , PContentStream > >& istrms, int32_t doNotReadStreamAtKey)  {
 	BSyncResultT< bool > syncResult;	
@@ -52,9 +52,9 @@ void BStub_RemoteStreams::setImages(const byps_ptr< ::std::map< int32_t , PConte
 	syncResult.getResult();
 }
 void BStub_RemoteStreams::setImages(const byps_ptr< ::std::map< int32_t , PContentStream > >& istrms, int32_t doNotReadStreamAtKey, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteStreams_setImages(istrms, doNotReadStreamAtKey));
+	PMethodRequest req(new BRequest_RemoteStreams_setImages(istrms, doNotReadStreamAtKey));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteStreams::throwLastException()  {
 	BSyncResultT< bool > syncResult;	
@@ -64,9 +64,9 @@ void BStub_RemoteStreams::throwLastException()  {
 	syncResult.getResult();
 }
 void BStub_RemoteStreams::throwLastException(::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteStreams_throwLastException());
+	PMethodRequest req(new BRequest_RemoteStreams_throwLastException());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 PContentStream BStub_RemoteStreams::getTextStream()  {
 	BSyncResultT< PContentStream > syncResult;	
@@ -76,9 +76,9 @@ PContentStream BStub_RemoteStreams::getTextStream()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteStreams::getTextStream(::std::function< void (PContentStream, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteStreams_getTextStream());
+	PMethodRequest req(new BRequest_RemoteStreams_getTextStream());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PContentStream, byps::test::api::BResult_15 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -179,9 +179,9 @@ void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
 	syncResult.getResult();
 }
 void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteWithAuthentication_setUseAuthentication(useAuth));
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_setUseAuthentication(useAuth));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps::test::api::auth::PSessionInfo BStub_RemoteWithAuthentication::login(const ::std::wstring& userName, const ::std::wstring& userPwd)  {
 	BSyncResultT< byps::test::api::auth::PSessionInfo > syncResult;	
@@ -191,9 +191,9 @@ byps::test::api::auth::PSessionInfo BStub_RemoteWithAuthentication::login(const 
 	return syncResult.getResult();
 }
 void BStub_RemoteWithAuthentication::login(const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteWithAuthentication_login(userName, userPwd));
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_login(userName, userPwd));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::auth::PSessionInfo, byps::test::api::BResult_65775978 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 int32_t BStub_RemoteWithAuthentication::doit(int32_t value)  {
 	BSyncResultT< int32_t > syncResult;	
@@ -203,9 +203,9 @@ int32_t BStub_RemoteWithAuthentication::doit(int32_t value)  {
 	return syncResult.getResult();
 }
 void BStub_RemoteWithAuthentication::doit(int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteWithAuthentication_doit(value));
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_doit(value));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteWithAuthentication::expire()  {
 	BSyncResultT< bool > syncResult;	
@@ -215,9 +215,9 @@ void BStub_RemoteWithAuthentication::expire()  {
 	syncResult.getResult();
 }
 void BStub_RemoteWithAuthentication::expire(::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteWithAuthentication_expire());
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_expire());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteWithAuthentication::setReloginCount(int32_t count)  {
 	BSyncResultT< bool > syncResult;	
@@ -227,9 +227,9 @@ void BStub_RemoteWithAuthentication::setReloginCount(int32_t count)  {
 	syncResult.getResult();
 }
 void BStub_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteWithAuthentication_setReloginCount(count));
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_setReloginCount(count));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -318,9 +318,9 @@ int32_t BStub_ClientIF::incrementInt(int32_t a)  {
 	return syncResult.getResult();
 }
 void BStub_ClientIF::incrementInt(int32_t a, ::std::function< void (int32_t, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_incrementInt(a));
+	PMethodRequest req(new BRequest_ClientIF_incrementInt(a));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< ::std::vector< PContentStream > > BStub_ClientIF::getStreams(int32_t ctrl)  {
 	BSyncResultT< byps_ptr< ::std::vector< PContentStream > > > syncResult;	
@@ -330,9 +330,9 @@ byps_ptr< ::std::vector< PContentStream > > BStub_ClientIF::getStreams(int32_t c
 	return syncResult.getResult();
 }
 void BStub_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_getStreams(ctrl));
+	PMethodRequest req(new BRequest_ClientIF_getStreams(ctrl));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::vector< PContentStream > >, byps::test::api::BResult_1218831438 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_ClientIF::putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl)  {
 	BSyncResultT< bool > syncResult;	
@@ -342,9 +342,9 @@ void BStub_ClientIF::putStreams(const byps_ptr< ::std::vector< PContentStream > 
 	syncResult.getResult();
 }
 void BStub_ClientIF::putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_putStreams(strm, ctrl));
+	PMethodRequest req(new BRequest_ClientIF_putStreams(strm, ctrl));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 PChatStructure BStub_ClientIF::sendChat(const PChatStructure& cs)  {
 	BSyncResultT< PChatStructure > syncResult;	
@@ -354,9 +354,9 @@ PChatStructure BStub_ClientIF::sendChat(const PChatStructure& cs)  {
 	return syncResult.getResult();
 }
 void BStub_ClientIF::sendChat(const PChatStructure& cs, ::std::function< void (PChatStructure, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ClientIF_sendChat(cs));
+	PMethodRequest req(new BRequest_ClientIF_sendChat(cs));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PChatStructure, byps::test::api::BResult_7007 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -392,9 +392,9 @@ int32_t BStub_ServerIF::callClientIncrementInt(int32_t v)  {
 	return syncResult.getResult();
 }
 void BStub_ServerIF::callClientIncrementInt(int32_t v, ::std::function< void (int32_t, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_callClientIncrementInt(v));
+	PMethodRequest req(new BRequest_ServerIF_callClientIncrementInt(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_ServerIF::setPartner(const PClientIF& client)  {
 	BSyncResultT< bool > syncResult;	
@@ -404,9 +404,9 @@ void BStub_ServerIF::setPartner(const PClientIF& client)  {
 	syncResult.getResult();
 }
 void BStub_ServerIF::setPartner(const PClientIF& client, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_setPartner(client));
+	PMethodRequest req(new BRequest_ServerIF_setPartner(client));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 PClientIF BStub_ServerIF::getPartner()  {
 	BSyncResultT< PClientIF > syncResult;	
@@ -416,9 +416,9 @@ PClientIF BStub_ServerIF::getPartner()  {
 	return syncResult.getResult();
 }
 void BStub_ServerIF::getPartner(::std::function< void (PClientIF, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_getPartner());
+	PMethodRequest req(new BRequest_ServerIF_getPartner());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, byps::test::api::BResult_955752991 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< ::std::vector< PContentStream > > BStub_ServerIF::getStreamsFromClient()  {
 	BSyncResultT< byps_ptr< ::std::vector< PContentStream > > > syncResult;	
@@ -428,9 +428,9 @@ byps_ptr< ::std::vector< PContentStream > > BStub_ServerIF::getStreamsFromClient
 	return syncResult.getResult();
 }
 void BStub_ServerIF::getStreamsFromClient(::std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_getStreamsFromClient());
+	PMethodRequest req(new BRequest_ServerIF_getStreamsFromClient());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::vector< PContentStream > >, byps::test::api::BResult_1218831438 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_ServerIF::putStreamsOnClient(const byps_ptr< ::std::vector< PContentStream > >& streams)  {
 	BSyncResultT< bool > syncResult;	
@@ -440,9 +440,9 @@ void BStub_ServerIF::putStreamsOnClient(const byps_ptr< ::std::vector< PContentS
 	syncResult.getResult();
 }
 void BStub_ServerIF::putStreamsOnClient(const byps_ptr< ::std::vector< PContentStream > >& streams, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_putStreamsOnClient(streams));
+	PMethodRequest req(new BRequest_ServerIF_putStreamsOnClient(streams));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_ServerIF::registerWithClientMap(int32_t id)  {
 	BSyncResultT< bool > syncResult;	
@@ -452,9 +452,9 @@ void BStub_ServerIF::registerWithClientMap(int32_t id)  {
 	syncResult.getResult();
 }
 void BStub_ServerIF::registerWithClientMap(int32_t id, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_registerWithClientMap(id));
+	PMethodRequest req(new BRequest_ServerIF_registerWithClientMap(id));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 PClientIF BStub_ServerIF::getClient(int32_t id)  {
 	BSyncResultT< PClientIF > syncResult;	
@@ -464,9 +464,9 @@ PClientIF BStub_ServerIF::getClient(int32_t id)  {
 	return syncResult.getResult();
 }
 void BStub_ServerIF::getClient(int32_t id, ::std::function< void (PClientIF, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_getClient(id));
+	PMethodRequest req(new BRequest_ServerIF_getClient(id));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, byps::test::api::BResult_955752991 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< ::std::set< int32_t > > BStub_ServerIF::getClientIds()  {
 	BSyncResultT< byps_ptr< ::std::set< int32_t > > > syncResult;	
@@ -476,9 +476,9 @@ byps_ptr< ::std::set< int32_t > > BStub_ServerIF::getClientIds()  {
 	return syncResult.getResult();
 }
 void BStub_ServerIF::getClientIds(::std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_getClientIds());
+	PMethodRequest req(new BRequest_ServerIF_getClientIds());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::set< int32_t > >, byps::test::api::BResult_1493282670 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 int32_t BStub_ServerIF::callClientParallel(int32_t v)  {
 	BSyncResultT< int32_t > syncResult;	
@@ -488,9 +488,9 @@ int32_t BStub_ServerIF::callClientParallel(int32_t v)  {
 	return syncResult.getResult();
 }
 void BStub_ServerIF::callClientParallel(int32_t v, ::std::function< void (int32_t, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_ServerIF_callClientParallel(v));
+	PMethodRequest req(new BRequest_ServerIF_callClientParallel(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -526,9 +526,9 @@ void BStub_EvolveIF::setEvolve(const PEvolve& obj)  {
 	syncResult.getResult();
 }
 void BStub_EvolveIF::setEvolve(const PEvolve& obj, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_EvolveIF_setEvolve(obj));
+	PMethodRequest req(new BRequest_EvolveIF_setEvolve(obj));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 PEvolve BStub_EvolveIF::getEvolve()  {
 	BSyncResultT< PEvolve > syncResult;	
@@ -538,9 +538,9 @@ PEvolve BStub_EvolveIF::getEvolve()  {
 	return syncResult.getResult();
 }
 void BStub_EvolveIF::getEvolve(::std::function< void (PEvolve, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_EvolveIF_getEvolve());
+	PMethodRequest req(new BRequest_EvolveIF_getEvolve());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolve, byps::test::api::BResult_1391985860 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_EvolveIF::setClient(const PEvolveIF& partner)  {
 	BSyncResultT< bool > syncResult;	
@@ -550,9 +550,9 @@ void BStub_EvolveIF::setClient(const PEvolveIF& partner)  {
 	syncResult.getResult();
 }
 void BStub_EvolveIF::setClient(const PEvolveIF& partner, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_EvolveIF_setClient(partner));
+	PMethodRequest req(new BRequest_EvolveIF_setClient(partner));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 PEvolveIF BStub_EvolveIF::getClient()  {
 	BSyncResultT< PEvolveIF > syncResult;	
@@ -562,9 +562,9 @@ PEvolveIF BStub_EvolveIF::getClient()  {
 	return syncResult.getResult();
 }
 void BStub_EvolveIF::getClient(::std::function< void (PEvolveIF, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_EvolveIF_getClient());
+	PMethodRequest req(new BRequest_EvolveIF_getClient());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, byps::test::api::BResult_564008001 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_EvolveIF::sendEvolveToClient()  {
 	BSyncResultT< bool > syncResult;	
@@ -574,9 +574,9 @@ void BStub_EvolveIF::sendEvolveToClient()  {
 	syncResult.getResult();
 }
 void BStub_EvolveIF::sendEvolveToClient(::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_EvolveIF_sendEvolveToClient());
+	PMethodRequest req(new BRequest_EvolveIF_sendEvolveToClient());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 

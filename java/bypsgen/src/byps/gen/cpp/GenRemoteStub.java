@@ -168,7 +168,7 @@ class GenRemoteStub {
 		TypeInfoCpp requestCppInfo = new TypeInfoCpp(methodInfo.requestInfo);
 		String requestClass = requestCppInfo.getClassName(rinfo.pack);
 		
-		CodePrinter mpr = prC.print("PSerializable req(new ").print(requestClass).print("(");
+		CodePrinter mpr = prC.print("PMethodRequest req(new ").print(requestClass).print("(");
 		
 		if (methodInfo.requestInfo.members.size() != 0) {
 			boolean first = true;
@@ -205,14 +205,14 @@ class GenRemoteStub {
 			prC.print("PAsyncResult outerResult( new ")
 			   .print(outerAsyncClass).print("(asyncResult) );").println();
 			
-			prC.println("transport->send(req, outerResult);");
+			prC.println("transport->sendMethod(req, outerResult);");
 		}
 		else {
 			String outerAsyncClass = "BAsyncResultReceiveMethod";
 			prC.print("PAsyncResult outerResult( new ")
 			   .print(outerAsyncClass).print("(asyncResult) );").println();
 			
-			prC.println("transport->send(req, outerResult);");
+			prC.println("transport->sendMethod(req, outerResult);");
 		}
 		
 		prC.endBlock();

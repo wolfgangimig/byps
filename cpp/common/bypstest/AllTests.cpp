@@ -14,8 +14,8 @@ LOGGER_IMPL
 using namespace byps;
 
 void AllTests_run(void *app) {
-    BLogger::init("/home/wolfgang/log/cppclient.txt", BLogLevel::Debug, false);
-    //BLogger::init("d:\\temp\\log\\cppclient.txt", BLogLevel::Error, false);
+//    BLogger::init("/home/wolfgang/log/cppclient.txt", BLogLevel::Debug, false);
+    BLogger::init("d:\\temp\\log\\cppclient.txt", BLogLevel::Error, false);
 
     BLogger log("AllTests");
     log.debug() << L"AllTest_run(";

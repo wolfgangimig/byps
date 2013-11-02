@@ -2,7 +2,7 @@
 using namespace ::std;
 using namespace ::byps;
 
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -14,7 +14,7 @@ void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_779528402(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -26,7 +26,7 @@ void BSerializer_779528402(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1347703734(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -38,7 +38,7 @@ void BSerializer_1347703734(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_132175071(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -50,7 +50,7 @@ void BSerializer_132175071(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_49984088(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -62,7 +62,7 @@ void BSerializer_49984088(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_601099730(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -74,7 +74,7 @@ void BSerializer_601099730(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1973996106(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -86,7 +86,7 @@ void BSerializer_1973996106(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_493795497(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -98,7 +98,7 @@ void BSerializer_493795497(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2058676657(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -110,7 +110,7 @@ void BSerializer_2058676657(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2011881553(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -122,7 +122,7 @@ void BSerializer_2011881553(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1279823631(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -134,7 +134,7 @@ void BSerializer_1279823631(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1488550492(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -146,7 +146,7 @@ void BSerializer_1488550492(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1710660846(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -158,7 +158,7 @@ void BSerializer_1710660846(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_484881308(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -170,7 +170,7 @@ void BSerializer_484881308(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_673917574(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -182,7 +182,7 @@ void BSerializer_673917574(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2052431866(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -194,7 +194,7 @@ void BSerializer_2052431866(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1406124761(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -206,7 +206,7 @@ void BSerializer_1406124761(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1365696060(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -218,7 +218,7 @@ void BSerializer_1365696060(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1320560671(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -230,7 +230,7 @@ void BSerializer_1320560671(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1898022288(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -242,7 +242,7 @@ void BSerializer_1898022288(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1493282670(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -254,7 +254,7 @@ void BSerializer_1493282670(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1457164460(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -266,7 +266,7 @@ void BSerializer_1457164460(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2028443792(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -278,7 +278,7 @@ void BSerializer_2028443792(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1888799711(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -290,7 +290,7 @@ void BSerializer_1888799711(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_8789515(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -302,7 +302,7 @@ void BSerializer_8789515(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_476459792(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -314,7 +314,7 @@ void BSerializer_476459792(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_936607009(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -326,7 +326,7 @@ void BSerializer_936607009(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_855786668(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -338,7 +338,7 @@ void BSerializer_855786668(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1097129250(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -350,7 +350,7 @@ void BSerializer_1097129250(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_846419204(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -362,7 +362,7 @@ void BSerializer_846419204(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_2067161310(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -374,7 +374,7 @@ void BSerializer_2067161310(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	}
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:929
+// checkpoint byps.gen.cpp.GenApiClass:932
 namespace byps { namespace test { namespace api { 
 void BSerializer_1859644668(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
@@ -400,9 +400,9 @@ BStub_PlantService::BStub_PlantService(PTransport transport)
 	return syncResult.getResult();
 }
 void BStub_PlantService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_PlantService_grow());
+	PMethodRequest req(new BRequest_PlantService_grow());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -438,9 +438,9 @@ BStub_FruitService::BStub_FruitService(PTransport transport)
 	return syncResult.getResult();
 }
 void BStub_FruitService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_PlantService_grow());
+	PMethodRequest req(new BRequest_PlantService_grow());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 ::std::wstring BStub_FruitService::squeeze()  {
 	BSyncResultT< ::std::wstring > syncResult;	
@@ -450,9 +450,9 @@ void BStub_FruitService::grow(::std::function< void (::std::wstring, BException 
 	return syncResult.getResult();
 }
 void BStub_FruitService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_FruitService_squeeze());
+	PMethodRequest req(new BRequest_FruitService_squeeze());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -529,9 +529,9 @@ BStub_BioFruitService::BStub_BioFruitService(PTransport transport)
 	return syncResult.getResult();
 }
 void BStub_BioFruitService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_PlantService_grow());
+	PMethodRequest req(new BRequest_PlantService_grow());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 bool BStub_BioFruitService::certify(const ::std::wstring& param)  {
 	BSyncResultT< bool > syncResult;	
@@ -541,9 +541,9 @@ bool BStub_BioFruitService::certify(const ::std::wstring& param)  {
 	return syncResult.getResult();
 }
 void BStub_BioFruitService::certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_BioFruitService_certify(param));
+	PMethodRequest req(new BRequest_BioFruitService_certify(param));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_1 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 ::std::wstring BStub_BioFruitService::squeeze()  {
 	BSyncResultT< ::std::wstring > syncResult;	
@@ -553,9 +553,9 @@ void BStub_BioFruitService::certify(const ::std::wstring& param, ::std::function
 	return syncResult.getResult();
 }
 void BStub_BioFruitService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_FruitService_squeeze());
+	PMethodRequest req(new BRequest_FruitService_squeeze());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -591,9 +591,9 @@ BStub_LemonService::BStub_LemonService(PTransport transport)
 	return syncResult.getResult();
 }
 void BStub_LemonService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_PlantService_grow());
+	PMethodRequest req(new BRequest_PlantService_grow());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 ::std::wstring BStub_LemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  {
 	BSyncResultT< ::std::wstring > syncResult;	
@@ -603,9 +603,9 @@ void BStub_LemonService::grow(::std::function< void (::std::wstring, BException 
 	return syncResult.getResult();
 }
 void BStub_LemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_LemonService_pick(sess, fromTree));
+	PMethodRequest req(new BRequest_LemonService_pick(sess, fromTree));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 ::std::wstring BStub_LemonService::squeeze()  {
 	BSyncResultT< ::std::wstring > syncResult;	
@@ -615,9 +615,9 @@ void BStub_LemonService::pick(const byps::test::api::auth::PSessionInfo& sess, c
 	return syncResult.getResult();
 }
 void BStub_LemonService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_FruitService_squeeze());
+	PMethodRequest req(new BRequest_FruitService_squeeze());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -718,9 +718,9 @@ bool BStub_BioLemonService::certify(const ::std::wstring& param)  {
 	return syncResult.getResult();
 }
 void BStub_BioLemonService::certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_BioFruitService_certify(param));
+	PMethodRequest req(new BRequest_BioFruitService_certify(param));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_1 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 ::std::wstring BStub_BioLemonService::grow()  {
 	BSyncResultT< ::std::wstring > syncResult;	
@@ -730,9 +730,9 @@ void BStub_BioLemonService::certify(const ::std::wstring& param, ::std::function
 	return syncResult.getResult();
 }
 void BStub_BioLemonService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_PlantService_grow());
+	PMethodRequest req(new BRequest_PlantService_grow());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 ::std::wstring BStub_BioLemonService::squeeze()  {
 	BSyncResultT< ::std::wstring > syncResult;	
@@ -742,9 +742,9 @@ void BStub_BioLemonService::grow(::std::function< void (::std::wstring, BExcepti
 	return syncResult.getResult();
 }
 void BStub_BioLemonService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_FruitService_squeeze());
+	PMethodRequest req(new BRequest_FruitService_squeeze());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 ::std::wstring BStub_BioLemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  {
 	BSyncResultT< ::std::wstring > syncResult;	
@@ -754,9 +754,9 @@ void BStub_BioLemonService::squeeze(::std::function< void (::std::wstring, BExce
 	return syncResult.getResult();
 }
 void BStub_BioLemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_LemonService_pick(sess, fromTree));
+	PMethodRequest req(new BRequest_LemonService_pick(sess, fromTree));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 int32_t BStub_BioLemonService::useParing()  {
 	BSyncResultT< int32_t > syncResult;	
@@ -766,9 +766,9 @@ int32_t BStub_BioLemonService::useParing()  {
 	return syncResult.getResult();
 }
 void BStub_BioLemonService::useParing(::std::function< void (int32_t, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_BioLemonService_useParing());
+	PMethodRequest req(new BRequest_BioLemonService_useParing());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -804,9 +804,9 @@ void BStub_RemoteArrayTypes1dim::setBool(const byps_ptr< BArray1< bool > >& v)  
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setBool(const byps_ptr< BArray1< bool > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setBool(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setBool(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setByte(const PBytes& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -816,9 +816,9 @@ void BStub_RemoteArrayTypes1dim::setByte(const PBytes& v)  {
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setByte(const PBytes& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setByte(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setByte(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setChar(const byps_ptr< BArray1< wchar_t > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -828,9 +828,9 @@ void BStub_RemoteArrayTypes1dim::setChar(const byps_ptr< BArray1< wchar_t > >& v
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setChar(const byps_ptr< BArray1< wchar_t > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setChar(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setChar(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setShort(const byps_ptr< BArray1< int16_t > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -840,9 +840,9 @@ void BStub_RemoteArrayTypes1dim::setShort(const byps_ptr< BArray1< int16_t > >& 
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setShort(const byps_ptr< BArray1< int16_t > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setShort(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setShort(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setInt(const byps_ptr< BArray1< int32_t > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -852,9 +852,9 @@ void BStub_RemoteArrayTypes1dim::setInt(const byps_ptr< BArray1< int32_t > >& v)
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setInt(const byps_ptr< BArray1< int32_t > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setInt(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setInt(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setLong(const byps_ptr< BArray1< int64_t > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -864,9 +864,9 @@ void BStub_RemoteArrayTypes1dim::setLong(const byps_ptr< BArray1< int64_t > >& v
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setLong(const byps_ptr< BArray1< int64_t > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setLong(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setLong(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setFloat(const byps_ptr< BArray1< float > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -876,9 +876,9 @@ void BStub_RemoteArrayTypes1dim::setFloat(const byps_ptr< BArray1< float > >& v)
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setFloat(const byps_ptr< BArray1< float > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setFloat(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setFloat(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setDouble(const byps_ptr< BArray1< double > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -888,9 +888,9 @@ void BStub_RemoteArrayTypes1dim::setDouble(const byps_ptr< BArray1< double > >& 
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setDouble(const byps_ptr< BArray1< double > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setDouble(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setDouble(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setString(const byps_ptr< BArray1< ::std::wstring > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -900,9 +900,9 @@ void BStub_RemoteArrayTypes1dim::setString(const byps_ptr< BArray1< ::std::wstri
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setString(const byps_ptr< BArray1< ::std::wstring > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setString(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setString(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -912,9 +912,9 @@ void BStub_RemoteArrayTypes1dim::setPrimitiveTypes(const byps_ptr< BArray1< byps
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 void BStub_RemoteArrayTypes1dim::setObject(const byps_ptr< BArray1< PSerializable > >& v)  {
 	BSyncResultT< bool > syncResult;	
@@ -924,9 +924,9 @@ void BStub_RemoteArrayTypes1dim::setObject(const byps_ptr< BArray1< PSerializabl
 	syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::setObject(const byps_ptr< BArray1< PSerializable > >& v, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_setObject(v));
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_setObject(v));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< bool > > BStub_RemoteArrayTypes1dim::getBool()  {
 	BSyncResultT< byps_ptr< BArray1< bool > > > syncResult;	
@@ -936,9 +936,9 @@ byps_ptr< BArray1< bool > > BStub_RemoteArrayTypes1dim::getBool()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getBool(::std::function< void (byps_ptr< BArray1< bool > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getBool());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getBool());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< bool > >, byps::test::api::BResult_2058423690 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 PBytes BStub_RemoteArrayTypes1dim::getByte()  {
 	BSyncResultT< PBytes > syncResult;	
@@ -948,9 +948,9 @@ PBytes BStub_RemoteArrayTypes1dim::getByte()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getByte(::std::function< void (PBytes, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getByte());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getByte());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PBytes, byps::test::api::BResult_1374008726 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< wchar_t > > BStub_RemoteArrayTypes1dim::getChar()  {
 	BSyncResultT< byps_ptr< BArray1< wchar_t > > > syncResult;	
@@ -960,9 +960,9 @@ byps_ptr< BArray1< wchar_t > > BStub_RemoteArrayTypes1dim::getChar()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getChar(::std::function< void (byps_ptr< BArray1< wchar_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getChar());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getChar());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< wchar_t > >, byps::test::api::BResult_1361632968 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< int16_t > > BStub_RemoteArrayTypes1dim::getShort()  {
 	BSyncResultT< byps_ptr< BArray1< int16_t > > > syncResult;	
@@ -972,9 +972,9 @@ byps_ptr< BArray1< int16_t > > BStub_RemoteArrayTypes1dim::getShort()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getShort(::std::function< void (byps_ptr< BArray1< int16_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getShort());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getShort());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int16_t > >, byps::test::api::BResult_2067161310 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< int32_t > > BStub_RemoteArrayTypes1dim::getInt()  {
 	BSyncResultT< byps_ptr< BArray1< int32_t > > > syncResult;	
@@ -984,9 +984,9 @@ byps_ptr< BArray1< int32_t > > BStub_RemoteArrayTypes1dim::getInt()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getInt(::std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getInt());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getInt());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int32_t > >, byps::test::api::BResult_100361105 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< int64_t > > BStub_RemoteArrayTypes1dim::getLong()  {
 	BSyncResultT< byps_ptr< BArray1< int64_t > > > syncResult;	
@@ -996,9 +996,9 @@ byps_ptr< BArray1< int64_t > > BStub_RemoteArrayTypes1dim::getLong()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getLong(::std::function< void (byps_ptr< BArray1< int64_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getLong());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getLong());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int64_t > >, byps::test::api::BResult_1097129250 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< float > > BStub_RemoteArrayTypes1dim::getFloat()  {
 	BSyncResultT< byps_ptr< BArray1< float > > > syncResult;	
@@ -1008,9 +1008,9 @@ byps_ptr< BArray1< float > > BStub_RemoteArrayTypes1dim::getFloat()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getFloat(::std::function< void (byps_ptr< BArray1< float > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getFloat());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getFloat());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< float > >, byps::test::api::BResult_766441794 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< double > > BStub_RemoteArrayTypes1dim::getDouble()  {
 	BSyncResultT< byps_ptr< BArray1< double > > > syncResult;	
@@ -1020,9 +1020,9 @@ byps_ptr< BArray1< double > > BStub_RemoteArrayTypes1dim::getDouble()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getDouble(::std::function< void (byps_ptr< BArray1< double > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getDouble());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getDouble());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< double > >, byps::test::api::BResult_1359468275 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< ::std::wstring > > BStub_RemoteArrayTypes1dim::getString()  {
 	BSyncResultT< byps_ptr< BArray1< ::std::wstring > > > syncResult;	
@@ -1032,9 +1032,9 @@ byps_ptr< BArray1< ::std::wstring > > BStub_RemoteArrayTypes1dim::getString()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getString(::std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getString());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getString());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< ::std::wstring > >, byps::test::api::BResult_1888107655 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayTypes1dim::getPrimitiveTypes()  {
 	BSyncResultT< byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > > syncResult;	
@@ -1044,9 +1044,9 @@ byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayT
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getPrimitiveTypes(::std::function< void (byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getPrimitiveTypes());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getPrimitiveTypes());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, byps::test::api::BResult_2053507648 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< PSerializable > > BStub_RemoteArrayTypes1dim::getObject()  {
 	BSyncResultT< byps_ptr< BArray1< PSerializable > > > syncResult;	
@@ -1056,9 +1056,9 @@ byps_ptr< BArray1< PSerializable > > BStub_RemoteArrayTypes1dim::getObject()  {
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes1dim::getObject(::std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes1dim_getObject());
+	PMethodRequest req(new BRequest_RemoteArrayTypes1dim_getObject());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< PSerializable > >, byps::test::api::BResult_183594037 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
@@ -1094,9 +1094,9 @@ byps_ptr< BArray1< int32_t > > BStub_RemoteArrayTypes23::sendArraysInt(const byp
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes23::sendArraysInt(const byps_ptr< BArray2< int32_t > >& arr2, const byps_ptr< BArray3< int32_t > >& arr3, const byps_ptr< BArray4< int32_t > >& arr4, ::std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes23_sendArraysInt(arr2, arr3, arr4));
+	PMethodRequest req(new BRequest_RemoteArrayTypes23_sendArraysInt(arr2, arr3, arr4));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< int32_t > >, byps::test::api::BResult_100361105 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< ::std::wstring > > BStub_RemoteArrayTypes23::sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4)  {
 	BSyncResultT< byps_ptr< BArray1< ::std::wstring > > > syncResult;	
@@ -1106,9 +1106,9 @@ byps_ptr< BArray1< ::std::wstring > > BStub_RemoteArrayTypes23::sendArraysString
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes23::sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4, ::std::function< void (byps_ptr< BArray1< ::std::wstring > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes23_sendArraysString(arr2, arr3, arr4));
+	PMethodRequest req(new BRequest_RemoteArrayTypes23_sendArraysString(arr2, arr3, arr4));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< ::std::wstring > >, byps::test::api::BResult_1888107655 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayTypes23::sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4)  {
 	BSyncResultT< byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > > syncResult;	
@@ -1118,9 +1118,9 @@ byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > BStub_RemoteArrayT
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes23::sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4, ::std::function< void (byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes23_sendArraysClass(arr2, arr3, arr4));
+	PMethodRequest req(new BRequest_RemoteArrayTypes23_sendArraysClass(arr2, arr3, arr4));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >, byps::test::api::BResult_2053507648 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< PSerializable > > BStub_RemoteArrayTypes23::sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4)  {
 	BSyncResultT< byps_ptr< BArray1< PSerializable > > > syncResult;	
@@ -1130,9 +1130,9 @@ byps_ptr< BArray1< PSerializable > > BStub_RemoteArrayTypes23::sendArraysObject(
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes23::sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4, ::std::function< void (byps_ptr< BArray1< PSerializable > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes23_sendArraysObject(arr2, arr3, arr4));
+	PMethodRequest req(new BRequest_RemoteArrayTypes23_sendArraysObject(arr2, arr3, arr4));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< PSerializable > >, byps::test::api::BResult_183594037 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 byps_ptr< BArray1< byps::test::api::inl::Point2D > > BStub_RemoteArrayTypes23::sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4)  {
 	BSyncResultT< byps_ptr< BArray1< byps::test::api::inl::Point2D > > > syncResult;	
@@ -1142,9 +1142,9 @@ byps_ptr< BArray1< byps::test::api::inl::Point2D > > BStub_RemoteArrayTypes23::s
 	return syncResult.getResult();
 }
 void BStub_RemoteArrayTypes23::sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4, ::std::function< void (byps_ptr< BArray1< byps::test::api::inl::Point2D > >, BException ex) > asyncResult)  {
-	PSerializable req(new BRequest_RemoteArrayTypes23_sendArraysInline(arr2, arr3, arr4));
+	PMethodRequest req(new BRequest_RemoteArrayTypes23_sendArraysInline(arr2, arr3, arr4));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< BArray1< byps::test::api::inl::Point2D > >, byps::test::api::BResult_184101377 >(asyncResult) );
-	transport->send(req, outerResult);
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 

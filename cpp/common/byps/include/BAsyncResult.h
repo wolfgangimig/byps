@@ -11,6 +11,9 @@ typedef function<void (const BVariant&)> BAsyncResultL;
 // ---------------------------------------------------------
 
 class BAsyncResult {
+//#ifdef _DEBUG
+//	char watchForMemLeak[1000*1000];
+//#endif
 public:
     virtual ~BAsyncResult() {}
     virtual void setAsyncResult(const BVariant& ) { delete this; }
@@ -33,7 +36,7 @@ public:
 			obj.get(val);
 			setAsyncResult(val, BException());
 		}
-		// not delete this, it is called in setAsyncResult(_Type val, BException ex)
+		// do not delete this, it is called in setAsyncResult(_Type val, BException ex)
 	}
 
     virtual void setAsyncResult(_Type result, BException ex) = 0; 
@@ -56,6 +59,7 @@ public:
 			var.get(val);
 		}
 		setAsyncResult(val, ex);
+		// NOT delete this, BSyncResult is usually allocated on stack
 	}
 
     virtual void setAsyncResult(_Type result, BException ex) {

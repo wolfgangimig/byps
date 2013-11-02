@@ -27,9 +27,9 @@ namespace byps.test.api.cons
 		
 		#region Fields
 		
-		public readonly static String Aleph = "\u05d0";
+		public const String Aleph = "\u05d0";
 
-		public readonly static String Beth = "\u05d1";
+		public const String Beth = "\u05d1";
 
 		public readonly static HebrewZ ALEPH = new HebrewZ("\u05d0");
 

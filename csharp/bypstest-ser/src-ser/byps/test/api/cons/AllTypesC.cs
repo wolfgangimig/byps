@@ -27,15 +27,15 @@ namespace byps.test.api.cons
 		
 		#region Fields
 		
-		public readonly static bool Bool1s = true;
+		public const bool Bool1s = true;
 
-		public readonly static bool Bool2s = false;
+		public const bool Bool2s = false;
 
-		public readonly static byte Byte1s = (byte)1;
+		public const byte Byte1s = (byte)1;
 
-		public readonly static char Char1s = '\u00bf';
+		public const char Char1s = '\u00bf';
 
-		public readonly static String StringNull = "";
+		public const String StringNull = "";
 
 		/// <summary>
 		/// This constant holds the currency symbol for Euro.
@@ -43,19 +43,19 @@ namespace byps.test.api.cons
 		/// <remarks>
 		/// It is defined "final static" and thus cannot be changed.
 		/// </remarks>
-		public readonly static char Char2s = '\u20ac';
+		public const char Char2s = '\u20ac';
 
-		public readonly static short Short1s = (short)3;
+		public const short Short1s = (short)3;
 
-		public readonly static int Int1s = 4;
+		public const int Int1s = 4;
 
-		public readonly static long Long1s = 6148914691236517205L;
+		public const long Long1s = 6148914691236517205L;
 
-		public readonly static float Float1s = 6.8f;
+		public const float Float1s = 6.8f;
 
-		public readonly static double Double1s = 7.8;
+		public const double Double1s = 7.8;
 
-		public readonly static String String1s = "Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'";
+		public const String String1s = "Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'";
 
 		/// <summary>
 		/// This defines a complex constant.
