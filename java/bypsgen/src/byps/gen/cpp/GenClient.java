@@ -69,6 +69,9 @@ public class GenClient {
 		printConstructorWithoutServerR();
 		prH.println();
 		
+		generateDestructor();
+		prH.println();
+		
 		printGetStub();
 		prH.println();
 		
@@ -166,6 +169,11 @@ public class GenClient {
 		prC.endBlock();
 		prC.println("}");
 
+	}
+	
+	private void generateDestructor() throws GeneratorException {
+	   String className = clientCppInfo.getClassName(pack);
+	   prH.print("public: virtual ~").print(className).println("() {}");
 	}
 	
 	private void printDefineStubs() throws GeneratorException {

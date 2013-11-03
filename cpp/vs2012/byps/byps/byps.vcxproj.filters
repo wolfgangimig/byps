@@ -267,6 +267,12 @@
     <ClInclude Include="..\..\..\common\byps\include\platform\any\BThreadPool.hpp">
       <Filter>include\platform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\BLostConnectionHandler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\BLostConnectionHandler.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

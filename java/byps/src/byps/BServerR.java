@@ -6,7 +6,7 @@ public class BServerR {
 	
 	public final BTransport transport;
 	public final BServer server;
-  protected BAsyncResult<Object> lostConnectionHandler;
+  protected BLostConnectionHandler lostConnectionHandler;
 
 	public BServerR(BTransport transport, BServer server) {
 		this.transport = transport;
@@ -19,7 +19,7 @@ public class BServerR {
 	public void done() {
 	}
 
-  public void setLostConnectionHandler(BAsyncResult<Object> lostConnectionHandler) {
+  public void setLostConnectionHandler(BLostConnectionHandler lostConnectionHandler) {
     this.lostConnectionHandler = lostConnectionHandler;
   }
   

@@ -16,7 +16,7 @@ public:
 	virtual ~HServerR();
 	virtual void start();
 	virtual void done();
-
+	virtual void setLostConnectionHandler(PLostConnectionHandler lostConnectionHandler);
 protected:
 	int nbOfConns;
 	PServerR_SendLongPoll sendLongPoll;

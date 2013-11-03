@@ -46,7 +46,7 @@ public abstract class BClient {
 	 * Handler that is called when a reverse connection is interrupted.
 	 * @param lostConnectionHandler
 	 */
-	public void setLostReverseConnectionHandler(BAsyncResult<Object> lostConnectionHandler) {
+	public void setLostReverseConnectionHandler(BLostConnectionHandler lostConnectionHandler) {
 	  if (serverR != null)  {
 	    serverR.setLostConnectionHandler(lostConnectionHandler);
 	  }

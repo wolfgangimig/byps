@@ -162,7 +162,7 @@ public class HServerR extends BServerR {
           }
           
           if (callLostConnectionHandler) {
-            lostConnectionHandler.setAsyncResult(null, ex);
+            lostConnectionHandler.onLostConnection(ex);
           }
           else {
             asyncResult.setAsyncResult(null, null);

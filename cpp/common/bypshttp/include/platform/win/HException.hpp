@@ -108,8 +108,11 @@ BINLINE LPCWSTR HException::getWinHttpErrorMessage(DWORD err) {
   return L"";
 }
 
-BINLINE HException::HException(LPCWSTR fnctName, DWORD err) 
-	: BException(EX_CONNECTION_TO_SERVER_FAILED) {
+BINLINE HException::HException(LPCWSTR fnctName, DWORD err) : BException() {
+
+	int32_t code;
+	std::wstring msg;
+	std::wstring details;
 
 	switch(err) {
 	case ERROR_WINHTTP_TIMEOUT : code = EX_TIMEOUT; break;
@@ -130,14 +133,20 @@ BINLINE HException::HException(LPCWSTR fnctName, DWORD err)
 		ss << fnctName << L" failed, windows error code=" << err;
 		details = ss.str();
 	}
+
+	init(code, msg, details, "");
 }
 
-BINLINE HException::HException(DWORD httpStatus) 
-	: BException(httpStatus) {
+BINLINE HException::HException(DWORD httpStatus) : BException() {
+
+	int32_t code = httpStatus;
+	std::wstring msg;
 
 	std::wstringstream ss;
 	ss << L"HTTP " << httpStatus;
 	msg = ss.str();
+
+	init(code, msg, L"", "");
 }
 
 }}}

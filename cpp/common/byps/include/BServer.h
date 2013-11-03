@@ -35,6 +35,8 @@ public:
 
     virtual void start();
     virtual void done();
+
+	virtual void setLostConnectionHandler(PLostConnectionHandler lostConnectionHandler) = 0;
 };
 
 }

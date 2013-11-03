@@ -670,7 +670,11 @@ BINLINE void HWireClient::sendCancelMessage(int64_t cancelMessageId) {
 	ss << url << L"?cancel=1&messageid=" << cancelMessageId;
 	
 	PHttpGetStream cancelRequest = httpClient->getStream(ss.str());
-	cancelRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsClient);
+
+	// Use short timeout value.
+	// The server is unavailable if BClient::done() is called in a BLostConnectionHandler.
+	cancelRequest->setTimeouts(5, 5);
+
 	PContentStream strm = cancelRequest->send();
 	strm.reset();
 

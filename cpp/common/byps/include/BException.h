@@ -129,84 +129,49 @@ const int32_t EX_TIMEOUT = 408;
 */
 const int32_t EX_SESSION_CLOSED = 410;
   
-
-
 class BException : public exception {
 public:
-    BException(int32_t code, const wstring& msg) throw() : code(code), msg(msg) {
-	}
+    BException(int32_t code, const wstring& msg) throw();
 
-    BException(int32_t code, const wstring& msg, const wstring& details) throw() : code(code), msg(msg), details(details) {
-	}
+    BException(int32_t code, const wstring& msg, const wstring& details) throw();
 
-    BException(int32_t code) throw() : code(code) {
-	}
+    BException(int32_t code) throw();
 
-    BException(const BException& rhs) throw() : code(rhs.code), msg(rhs.msg), details(rhs.details) {
-	}
+    BException(const BException& rhs) throw();
 
-	BException(const exception& ex) throw() : code(EX_INTERNAL), swhat(ex.what()) {
-		const BException* bex = dynamic_cast<const BException*>(&ex);
-		if (bex) {
-			code = bex->code;
-			msg = bex->msg;
-			details = bex->details;
-		}
-	}
+	BException(const exception& ex) throw();
 
-    BException() : code(0) {
-    }
+    BException();
 
-	virtual ~BException() throw() {}
+	virtual ~BException() throw();
 
-    operator bool() const {
-		return code != 0;
-	}
+    operator bool() const;
 
-    bool operator !() const {
-        return code == 0;
-    }
+    bool operator !() const;
 
-    int32_t getCode() const {
-        return code;
-	}
+    int32_t getCode() const;
 
-    const wstring& getMsg() const {
-        return msg;
-	}
+    wstring getMsg() const;
 
-    const wstring& getDetails() const {
-        return details;
-    }
+    wstring getDetails() const;
 
-	const wstring toString() const {
-		wstringstream ss;
-		ss << L"[BYPS:" << code << L"][" << msg << L"][" << details << L"]";
-		return ss.str();
-	}
+	wstring toString() const;
 
-	virtual const char* what() const throw() {
-		if (swhat.size() == 0) {
-			wstring str = toString();
-			stringstream ss;
-			for (unsigned i = 0; i < str.size(); i++) {
-				ss << (char)(str[i]);
-			}
-			const_cast<BException*>(this)->swhat = ss.str();
-		}
-		return swhat.c_str();
-	}
+	virtual const char* what() const throw();
 
 	void serialize(BIO& bio, const BVERSION version);
 
 protected:
-    int32_t code;
-    wstring msg;
-    wstring details;
-	string swhat;
+	struct BExceptionData {
+		int32_t code;
+		wstring msg;
+		wstring details;
+		string swhat;
+	};
 
-    
+	byps_ptr<BExceptionData> data;
 
+	void init(int32_t code, const wstring& msg, const wstring& details, const string& swhat);
 };
 
 } /* namespace byps */

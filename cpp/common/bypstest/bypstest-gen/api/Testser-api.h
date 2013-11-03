@@ -4344,6 +4344,8 @@ class BClient_Testser : public BClient {
 	
 	protected: BClient_Testser(PTransport transport); 
 	
+	public: virtual ~BClient_Testser() {}
+	
 	public: virtual PRemote getStub(int remoteId);
 	
 	public: const byps::test::api::inherit::PBioFruitServiceAuth bioFruitService;

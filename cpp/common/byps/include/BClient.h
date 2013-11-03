@@ -29,6 +29,12 @@ public:
 	virtual void setAuthentication(PAuthentication auth);
 	virtual PAuthentication getAuthentication();
 
+#ifdef CPP11_LAMBDA
+	virtual void setLostReverseConnectionHandler(function<void (BException ex)> lostConnectionHandler);
+#endif
+	virtual void setLostReverseConnectionHandler(PLostConnectionHandler lostConnectionHandler);
+
+
 protected:   
 
     virtual void internalStart(PAsyncResult asyncResult);

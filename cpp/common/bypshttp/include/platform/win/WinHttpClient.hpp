@@ -70,6 +70,7 @@ public:
 		, handleClosed(false)
 		, contentLength(0)
 		, statusCode(0)
+		, asyncResult(NULL)
 		, url(url)
 		, sendIdx(0)
 		, respIdx(0)
@@ -484,6 +485,11 @@ public:
 		close();
 	}
 
+	virtual void close() {
+		WinHttpRequest::close();
+		waitForSendComplete.notify_one();
+	}
+
 	virtual void onSendComplete() throw() {
 		{
 			byps_unique_lock lock(this->mutex);
@@ -542,7 +548,7 @@ public:
 
 		{
 			byps_unique_lock lock(this->mutex);
-			this->waitForSendComplete.wait(lock, [this](){ return sendComplete; });
+			this->waitForSendComplete.wait(lock, [this](){ return sendComplete || handleClosed; });
 		}
 
 		byps_ptr<WinHttpRequest> pRequest = shared_from_this();

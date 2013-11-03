@@ -23,6 +23,8 @@ BINLINE void BClient::done() {
 	// In HWireClient it will call internalCancelAllRequests which cancels 
 	// all messages - inclusive long polls from serverR - for this session.
 	transport->wire->done();
+
+	transport->setAuthentication(PAuthentication(), false);
 }
 
 #ifdef CPP11_LAMBDA
@@ -190,6 +192,16 @@ BINLINE PAuthentication BClient::getAuthentication() {
 	return auth;
 }
 
+BINLINE void BClient::setLostReverseConnectionHandler(function<void (BException ex)> lostConnectionHandler) {
+	PLostConnectionHandler handler(new BLostConnectionHandlerL(lostConnectionHandler));
+	setLostReverseConnectionHandler(handler);
+}
+
+BINLINE void BClient::setLostReverseConnectionHandler(PLostConnectionHandler lostConnectionHandler) {
+	if (serverR) {
+		serverR->setLostConnectionHandler(lostConnectionHandler);
+	}
+}
 
 }
 

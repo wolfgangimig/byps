@@ -32,6 +32,7 @@
 #include "BVariant.hpp"
 #include "BWire.hpp"
 #include "BUtils.hpp"
+#include "BLostConnectionHandler.hpp"
 
 #include "platform/platform.hpp"
 

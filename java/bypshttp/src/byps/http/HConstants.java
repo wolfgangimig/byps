@@ -36,7 +36,7 @@ public class HConstants {
    * and has to send a new long-poll.
    * This value should be less than {@link #REQUEST_TIMEOUT_MILLIS}.
    */
-  public final static long TIMEOUT_LONGPOLL_MILLIS = 30 * 1000L;
+  public final static long TIMEOUT_LONGPOLL_MILLIS = 5 * 60 * 1000L;
 
   /**
    * Keep message in memory after it was finished. After a message is canceled,

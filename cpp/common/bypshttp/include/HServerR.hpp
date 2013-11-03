@@ -12,18 +12,25 @@ typedef byps_ptr<HServerR_LongPoll> PServerR_LongPoll;
 class HServerR_SendLongPoll;
 typedef byps_ptr<HServerR_SendLongPoll> PServerR_SendLongPoll;
 
-class HServerR_SendLongPoll {
+class HServerR_SendLongPoll : public byps_enable_shared_from_this<HServerR_SendLongPoll> {
 
 	byps_mutex mutex;
 	byps_condition_variable serverFinished;
 	bool isDone;
 	int32_t sleepMillisBeforeRetry;
-	
+
+	PLostConnectionHandler lostConnectionHandler;
+	friend class HServerR;
 
 public:
     byps_atomic<int32_t> nbOfActiveLongPolls;
 
-	HServerR_SendLongPoll() : isDone(false), sleepMillisBeforeRetry(60 * 1000), nbOfActiveLongPolls(0) {}
+	HServerR_SendLongPoll() 
+		: isDone(false)
+		, sleepMillisBeforeRetry(60 * 1000)
+		, nbOfActiveLongPolls(0)
+		, lostConnectionHandler(NULL) {
+	}
 
 	bool waitBeforeRetry() {
 		byps_unique_lock lock(mutex);
@@ -38,7 +45,9 @@ public:
 		serverFinished.notify_all();
 	}
 
-    static void send(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server, PMessage methodResult);
+    void send(PTransport transport, PServer server, PMessage methodResult);
+
+	void onLostConnection(const BException& ex, PTransport transport, PServer server);
 };
 
 class HServerR_LongPoll {
@@ -48,9 +57,9 @@ class HServerR_LongPoll {
 	PMessage methodResult;
 
 	class NextAsyncResult : public BAsyncResult {
-		PServerR_SendLongPoll sendLongPoll;
-		PTransport transport;
-		PServer server;
+		byps_weak_ptr<HServerR_SendLongPoll> sendLongPoll;
+		byps_weak_ptr<BTransport> transport;
+		byps_weak_ptr<BServer> server;
 	public:
 		NextAsyncResult(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server) 
 			: sendLongPoll(sendLongPoll), transport(transport), server(server) {
@@ -58,34 +67,41 @@ class HServerR_LongPoll {
 		}
 
         virtual ~NextAsyncResult() {
-            sendLongPoll->nbOfActiveLongPolls--;
-            sendLongPoll.reset();
-            transport.reset();
-            server.reset();
+			PServerR_SendLongPoll sendLongPoll = this->sendLongPoll.lock();
+			if (sendLongPoll) {
+	            sendLongPoll->nbOfActiveLongPolls--;
+			}
         }
 
 		virtual void setAsyncResult(const BVariant& varmsg) {
-			PMessage msg;
-			if (varmsg.isException()) {
-				POutput outp = transport->getOutput();
-				outp->header.flags = BHEADER_FLAG_RESPONSE;
-				outp->setException(varmsg.getException());
-				msg = outp->toMessage();
+			PServerR_SendLongPoll sendLongPoll = this->sendLongPoll.lock();
+			PTransport transport = this->transport.lock();
+			PServer server = this->server.lock();
+			if (sendLongPoll && transport && server) {
+
+				PMessage msg;
+				if (varmsg.isException()) {
+					POutput outp = transport->getOutput();
+					outp->header.flags = BHEADER_FLAG_RESPONSE;
+					outp->setException(varmsg.getException());
+					msg = outp->toMessage();
+				}
+				else {
+					POBJECT obj;
+					varmsg.get(obj);
+					msg = byps_static_ptr_cast<BMessage>(obj);
+				}
+				sendLongPoll->send(transport, server, msg);
 			}
-			else {
-				POBJECT obj;
-				varmsg.get(obj);
-				msg = byps_static_ptr_cast<BMessage>(obj);
-			}
-			HServerR_SendLongPoll::send(sendLongPoll, transport, server, msg);
+
 			delete this;
 		}
 	};
 
 	class NextAsyncMethod : public BAsyncResult {
-		PServerR_SendLongPoll sendLongPoll;
-		PTransport transport;
-		PServer server;
+		byps_weak_ptr<HServerR_SendLongPoll> sendLongPoll;
+		byps_weak_ptr<BTransport> transport;
+		byps_weak_ptr<BServer> server;
 	public:
 		NextAsyncMethod(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server) 
 			: sendLongPoll(sendLongPoll), transport(transport), server(server) {
@@ -98,38 +114,42 @@ class HServerR_LongPoll {
         }
 
 		virtual void setAsyncResult(const BVariant& varmsg) {
-			bool failed = varmsg.isException();
-			if (failed) {
+			PServerR_SendLongPoll sendLongPoll = this->sendLongPoll.lock();
+			PTransport transport = this->transport.lock();
+			PServer server = this->server.lock();
+			if (sendLongPoll && transport && server) {
 
-				BException ex = varmsg.getException();
-				switch (ex.getCode()) {
+				bool failed = varmsg.isException();
+				if (failed) {
 
-				case EX_SESSION_CLOSED: // Session was invalidated.
-				case EX_UNAUTHORIZED: // Re-login required
-				case EX_CANCELLED:
-					// no retry
-					break;
+					BException ex = varmsg.getException();
+					switch (ex.getCode()) {
+
+					case EX_SESSION_CLOSED: // Session was invalidated.
+					case EX_UNAUTHORIZED: // Re-login required
+					case EX_CANCELLED:
+						// no retry
+						break;
                 
-				case EX_TIMEOUT:
-					// HWireClientR has released the expried long-poll.
-					// Ignore the error and send a new long-poll.
-					HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
-					break;
+					case EX_TIMEOUT:
+						// HWireClientR has released the expried long-poll.
+						// Ignore the error and send a new long-poll.
+						sendLongPoll->send(transport, server, PMessage());
+						break;
                 
-				default:
-					// retry after pause
-					if (sendLongPoll->waitBeforeRetry()) { // e.g. Socket error
-						HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
+					default:
+						sendLongPoll->onLostConnection(ex, transport, server);
+						break;
 					}
-				}
 
-			}
-			else {
-				POBJECT obj;
-				varmsg.get(obj);
-				PMessage msg = byps_static_ptr_cast<BMessage>(obj);
-				NextAsyncResult* asyncResult = new NextAsyncResult(sendLongPoll, transport, server);
-				transport->recv(server, msg, asyncResult);
+				}
+				else {
+					POBJECT obj;
+					varmsg.get(obj);
+					PMessage msg = byps_static_ptr_cast<BMessage>(obj);
+					NextAsyncResult* asyncResult = new NextAsyncResult(sendLongPoll, transport, server);
+					transport->recv(server, msg, asyncResult);
+				}
 			}
 
 			delete this;
@@ -173,7 +193,7 @@ BINLINE HServerR::~HServerR() {
 
 BINLINE void HServerR::start() {
 	for (int i = 0; i < nbOfConns; i++) {
-		HServerR_SendLongPoll::send(sendLongPoll, transport, server, PMessage());
+		sendLongPoll->send(transport, server, PMessage());
 	}
 
 }
@@ -182,13 +202,28 @@ BINLINE void HServerR::done() {
 	sendLongPoll->done();
 }
 
-BINLINE void HServerR_SendLongPoll::send(PServerR_SendLongPoll sendLongPoll, PTransport transport, PServer server, PMessage methodResult) {
-	if (!sendLongPoll->isDone) {
-        HServerR_LongPoll longPoll(sendLongPoll, transport, server, methodResult);
+BINLINE void HServerR::setLostConnectionHandler(PLostConnectionHandler lostConnectionHandler) {
+	sendLongPoll->lostConnectionHandler = lostConnectionHandler;
+}
+
+BINLINE void HServerR_SendLongPoll::send(PTransport transport, PServer server, PMessage methodResult) {
+	if (!isDone) {
+        HServerR_LongPoll longPoll(shared_from_this(), transport, server, methodResult);
         longPoll.run();
 	}
 }
 
+
+BINLINE void HServerR_SendLongPoll::onLostConnection(const BException& ex, PTransport transport, PServer server) {
+	if (isDone) return;
+
+	if (lostConnectionHandler) {
+		lostConnectionHandler->onLostConnection(ex);
+	}
+	else if (waitBeforeRetry()) { // e.g. Socket error
+		send(transport, server, PMessage());
+	}
+}
 
 }}
 #endif

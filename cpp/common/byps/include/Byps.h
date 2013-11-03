@@ -71,6 +71,7 @@ class BSerializer;
 template<typename _T> class BSerializerT;
 class BServer;
 class BServerR;
+class BLostConnectionHandler;
 class BSkeleton;
 class BStreamRequest;
 class BStub;
@@ -79,7 +80,6 @@ class BTransportFactory;
 class BTestAdapter;
 class BVariant;
 class BWire;
-
 class BRunnable;
 class BThreadPool;
 
@@ -121,6 +121,7 @@ typedef byps_ptr<BRemote> PRemote;
 typedef byps_ptr<BClient> PClient;
 typedef byps_ptr<BServer> PServer;
 typedef byps_ptr<BServerR> PServerR;
+typedef byps_ptr<BLostConnectionHandler> PLostConnectionHandler;
 
 typedef byps_ptr<void> POBJECT;
 typedef void (*BSERIALIZER)(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
@@ -169,5 +170,6 @@ typedef byps_ptr<BContentStream> PContentStream;
 #include "BUtils.h"
 #include "BVersioning.h"
 #include "BAuthentication.h"
+#include "BLostConnectionHandler.h"
 
 #endif
