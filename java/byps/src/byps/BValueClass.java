@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 public class BValueClass implements Serializable {
 	
-	protected long changedMembers;
+  protected long changedMembers;
+	
+	protected transient Object dbHelper;
 	
 	public long getChangedMembers() {
 		return changedMembers;
@@ -22,5 +24,15 @@ public class BValueClass implements Serializable {
 		changedMembers |= v;
 	}
 	
-	private static final long serialVersionUID = 1L;
+  public Object getDBHelper() {
+    return dbHelper;
+  }
+
+  public void setDBHelper(Object dbHelper) {
+    this.dbHelper = dbHelper;
+  }
+
+  private static final long serialVersionUID = 22;
+
+	
 }

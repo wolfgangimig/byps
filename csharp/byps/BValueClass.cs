@@ -9,10 +9,18 @@ namespace byps
     {
         protected long _changedMembers;
 
+        protected Object _dbHelper;
+
         public long ChangedMembers
         {
             get { return _changedMembers; }
             set { _changedMembers = value; }
+        }
+
+        public virtual Object DBHelper
+        {
+            get { return _dbHelper; }
+            set { _dbHelper = value; }
         }
 
         public bool isChangedMember(long mb)

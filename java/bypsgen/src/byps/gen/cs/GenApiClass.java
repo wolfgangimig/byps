@@ -714,8 +714,11 @@ class GenApiClass {
 				TypeInfo csinfo = pctxt.toCSharp(serInfo.baseInfo);
 				mpr.print(" : ").print(csinfo.toString(serInfo.pack)).print(", BSerializable");
 			}
+			else if (serInfo.name.equals("ValueClass")) {
+			  mpr.print(" : BValueClass");
+			}
 			else {
-				mpr.print(" : BSerializable");
+	       mpr.print(" : BSerializable");
 			}
 		}
 		

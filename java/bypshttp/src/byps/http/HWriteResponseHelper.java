@@ -52,7 +52,6 @@ public class HWriteResponseHelper {
         }
       }
 
-      log.info("send status=" + status, e);
       resp.setStatus(status);
 
       PrintWriter wr = resp.getWriter();
