@@ -1,6 +1,7 @@
 package byps.test.api.map;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -24,4 +25,5 @@ public class MapTypes implements Serializable {
 	public Map<Integer, byte[]> byte2;
 	public Map<Integer, int[]> int2;
 	public Map<String, Object> obj1;
+	public Map<String, Date> date1;
 }

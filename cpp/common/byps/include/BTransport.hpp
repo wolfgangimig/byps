@@ -413,7 +413,7 @@ BINLINE bool BTransport::internalIsReloginException(BException ex, BTYPEID typeI
 	return ret;
 }
 
-BINLINE bool BTransport::isReloginException(BException ex, int typeId) {
+BINLINE bool BTransport::isReloginException(BException ex, int ) {
     bool ret = false;
     
     // Check exception

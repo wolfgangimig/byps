@@ -27,6 +27,7 @@ namespace byps.test.api.cons
 			HebrewZ obj = (HebrewZ)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:490
 			bbuf.putString(obj.Core);
 		}
 		
@@ -36,6 +37,7 @@ namespace byps.test.api.cons
 			HebrewZ obj = (HebrewZ)(obj1 != null ? obj1 : bin.onObjectCreated(new HebrewZ()));
 			
 			BBufferBin bbuf = bin.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:445
 			obj.Core = bbuf.getString();
 			
 			return obj;

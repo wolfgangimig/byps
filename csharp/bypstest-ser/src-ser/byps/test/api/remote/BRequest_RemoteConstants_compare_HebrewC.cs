@@ -18,11 +18,11 @@ namespace byps.test.api.remote
 		public override int getRemoteId() { return 2045242510; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				RemoteConstants __byps__remoteT = (RemoteConstants)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new byps.test.api.BResult_19());				
-				__byps__remoteT.Compare_HebrewC(_ALEPH, _BETH, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.Compare_HebrewC(ALEPHValue, BETHValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;
@@ -33,9 +33,9 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal byps.test.api.cons.HebrewZ _ALEPH;
+		internal byps.test.api.cons.HebrewZ ALEPHValue;
 
-		internal byps.test.api.cons.HebrewZ _BETH;
+		internal byps.test.api.cons.HebrewZ BETHValue;
 
 		#endregion
 		

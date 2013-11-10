@@ -36,13 +36,13 @@ namespace byps.test.api.remote
 		}
 		public void SetBool(bool v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setBool req = new BRequest_RemotePrimitiveTypes_setBool();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetBoolAsync(bool v){
 			BRequest_RemotePrimitiveTypes_setBool req = new BRequest_RemotePrimitiveTypes_setBool();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -54,13 +54,13 @@ namespace byps.test.api.remote
 		}
 		public void SetByte(byte v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setByte req = new BRequest_RemotePrimitiveTypes_setByte();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetByteAsync(byte v){
 			BRequest_RemotePrimitiveTypes_setByte req = new BRequest_RemotePrimitiveTypes_setByte();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -72,13 +72,13 @@ namespace byps.test.api.remote
 		}
 		public void SetChar(char v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setChar req = new BRequest_RemotePrimitiveTypes_setChar();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetCharAsync(char v){
 			BRequest_RemotePrimitiveTypes_setChar req = new BRequest_RemotePrimitiveTypes_setChar();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -90,13 +90,13 @@ namespace byps.test.api.remote
 		}
 		public void SetShort(short v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setShort req = new BRequest_RemotePrimitiveTypes_setShort();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetShortAsync(short v){
 			BRequest_RemotePrimitiveTypes_setShort req = new BRequest_RemotePrimitiveTypes_setShort();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -108,13 +108,13 @@ namespace byps.test.api.remote
 		}
 		public void SetInt(int v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setInt req = new BRequest_RemotePrimitiveTypes_setInt();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetIntAsync(int v){
 			BRequest_RemotePrimitiveTypes_setInt req = new BRequest_RemotePrimitiveTypes_setInt();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -126,13 +126,13 @@ namespace byps.test.api.remote
 		}
 		public void SetLong(long v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setLong req = new BRequest_RemotePrimitiveTypes_setLong();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetLongAsync(long v){
 			BRequest_RemotePrimitiveTypes_setLong req = new BRequest_RemotePrimitiveTypes_setLong();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -144,13 +144,13 @@ namespace byps.test.api.remote
 		}
 		public void SetFloat(float v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setFloat req = new BRequest_RemotePrimitiveTypes_setFloat();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetFloatAsync(float v){
 			BRequest_RemotePrimitiveTypes_setFloat req = new BRequest_RemotePrimitiveTypes_setFloat();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -162,13 +162,13 @@ namespace byps.test.api.remote
 		}
 		public void SetDouble(double v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setDouble req = new BRequest_RemotePrimitiveTypes_setDouble();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetDoubleAsync(double v){
 			BRequest_RemotePrimitiveTypes_setDouble req = new BRequest_RemotePrimitiveTypes_setDouble();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -180,13 +180,13 @@ namespace byps.test.api.remote
 		}
 		public void SetString(String v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setString req = new BRequest_RemotePrimitiveTypes_setString();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetStringAsync(String v){
 			BRequest_RemotePrimitiveTypes_setString req = new BRequest_RemotePrimitiveTypes_setString();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -198,13 +198,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPrimitiveTypes(byps.test.api.prim.PrimitiveTypes v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setPrimitiveTypes req = new BRequest_RemotePrimitiveTypes_setPrimitiveTypes();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPrimitiveTypesAsync(byps.test.api.prim.PrimitiveTypes v){
 			BRequest_RemotePrimitiveTypes_setPrimitiveTypes req = new BRequest_RemotePrimitiveTypes_setPrimitiveTypes();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -216,13 +216,31 @@ namespace byps.test.api.remote
 		}
 		public void SetObject(Object v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setObject req = new BRequest_RemotePrimitiveTypes_setObject();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetObjectAsync(Object v){
 			BRequest_RemotePrimitiveTypes_setObject req = new BRequest_RemotePrimitiveTypes_setObject();			
-			req._v = v;
+			req.vValue = v;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
+		}
+		
+		public void SetDate(java.util.Date v) {
+			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
+			SetDate(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
+			asyncResult.GetResult();			
+		}
+		public void SetDate(java.util.Date v, BAsyncResult<Object> asyncResult) {
+			BRequest_RemotePrimitiveTypes_setDate req = new BRequest_RemotePrimitiveTypes_setDate();			
+			req.vValue = v;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task SetDateAsync(java.util.Date v){
+			BRequest_RemotePrimitiveTypes_setDate req = new BRequest_RemotePrimitiveTypes_setDate();			
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -403,6 +421,22 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
+		public java.util.Date GetDate() {
+			BSyncResult<java.util.Date> asyncResult = new BSyncResult<java.util.Date>();			
+			GetDate(BAsyncResultHelper.ToDelegate<java.util.Date>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public void GetDate(BAsyncResult<java.util.Date> asyncResult) {
+			BRequest_RemotePrimitiveTypes_getDate req = new BRequest_RemotePrimitiveTypes_getDate();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<java.util.Date> GetDateAsync(){
+			BRequest_RemotePrimitiveTypes_getDate req = new BRequest_RemotePrimitiveTypes_getDate();			
+			Task<java.util.Date> task = Task<java.util.Date>.Factory.FromAsync(transport.BeginSend<java.util.Date>, transport.EndSend<java.util.Date>, req, null);
+			return await task;
+		}
+		
 		public void SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, byps.test.api.prim.PrimitiveTypes pt, Object o) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SendAllTypes(b, c, s, i, l, f, d, str, pt, o, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
@@ -410,31 +444,31 @@ namespace byps.test.api.remote
 		}
 		public void SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, byps.test.api.prim.PrimitiveTypes pt, Object o, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_sendAllTypes req = new BRequest_RemotePrimitiveTypes_sendAllTypes();			
-			req._b = b;
-			req._c = c;
-			req._s = s;
-			req._i = i;
-			req._l = l;
-			req._f = f;
-			req._d = d;
-			req._str = str;
-			req._pt = pt;
-			req._o = o;
+			req.bValue = b;
+			req.cValue = c;
+			req.sValue = s;
+			req.iValue = i;
+			req.lValue = l;
+			req.fValue = f;
+			req.dValue = d;
+			req.strValue = str;
+			req.ptValue = pt;
+			req.oValue = o;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SendAllTypesAsync(bool b, char c, short s, int i, long l, float f, double d, String str, byps.test.api.prim.PrimitiveTypes pt, Object o){
 			BRequest_RemotePrimitiveTypes_sendAllTypes req = new BRequest_RemotePrimitiveTypes_sendAllTypes();			
-			req._b = b;
-			req._c = c;
-			req._s = s;
-			req._i = i;
-			req._l = l;
-			req._f = f;
-			req._d = d;
-			req._str = str;
-			req._pt = pt;
-			req._o = o;
+			req.bValue = b;
+			req.cValue = c;
+			req.sValue = s;
+			req.iValue = i;
+			req.lValue = l;
+			req.fValue = f;
+			req.dValue = d;
+			req.strValue = str;
+			req.ptValue = pt;
+			req.oValue = o;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -446,16 +480,64 @@ namespace byps.test.api.remote
 		}
 		public void Add(int a, int b, BAsyncResult<int> asyncResult) {
 			BRequest_RemotePrimitiveTypes_add req = new BRequest_RemotePrimitiveTypes_add();			
-			req._a = a;
-			req._b = b;
+			req.aValue = a;
+			req.bValue = b;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<int> AddAsync(int a, int b){
 			BRequest_RemotePrimitiveTypes_add req = new BRequest_RemotePrimitiveTypes_add();			
-			req._a = a;
-			req._b = b;
+			req.aValue = a;
+			req.bValue = b;
 			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
+			return await task;
+		}
+		
+		public java.util.Date MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) {
+			BSyncResult<java.util.Date> asyncResult = new BSyncResult<java.util.Date>();			
+			MakeDate(year, month, day, hour, minute, second, millisecond, BAsyncResultHelper.ToDelegate<java.util.Date>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public void MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond, BAsyncResult<java.util.Date> asyncResult) {
+			BRequest_RemotePrimitiveTypes_makeDate req = new BRequest_RemotePrimitiveTypes_makeDate();			
+			req.yearValue = year;
+			req.monthValue = month;
+			req.dayValue = day;
+			req.hourValue = hour;
+			req.minuteValue = minute;
+			req.secondValue = second;
+			req.millisecondValue = millisecond;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<java.util.Date> MakeDateAsync(int year, int month, int day, int hour, int minute, int second, int millisecond){
+			BRequest_RemotePrimitiveTypes_makeDate req = new BRequest_RemotePrimitiveTypes_makeDate();			
+			req.yearValue = year;
+			req.monthValue = month;
+			req.dayValue = day;
+			req.hourValue = hour;
+			req.minuteValue = minute;
+			req.secondValue = second;
+			req.millisecondValue = millisecond;
+			Task<java.util.Date> task = Task<java.util.Date>.Factory.FromAsync(transport.BeginSend<java.util.Date>, transport.EndSend<java.util.Date>, req, null);
+			return await task;
+		}
+		
+		public int[] ParseDate(java.util.Date date) {
+			BSyncResult<int[]> asyncResult = new BSyncResult<int[]>();			
+			ParseDate(date, BAsyncResultHelper.ToDelegate<int[]>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public void ParseDate(java.util.Date date, BAsyncResult<int[]> asyncResult) {
+			BRequest_RemotePrimitiveTypes_parseDate req = new BRequest_RemotePrimitiveTypes_parseDate();			
+			req.dateValue = date;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<int[]> ParseDateAsync(java.util.Date date){
+			BRequest_RemotePrimitiveTypes_parseDate req = new BRequest_RemotePrimitiveTypes_parseDate();			
+			req.dateValue = date;
+			Task<int[]> task = Task<int[]>.Factory.FromAsync(transport.BeginSend<int[]>, transport.EndSend<int[]>, req, null);
 			return await task;
 		}
 		

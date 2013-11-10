@@ -18,20 +18,21 @@ namespace byps.test.api.set
 		public SetTypes() {
 		}		
 		
-		internal SetTypes(ISet<bool> @boolean1, HashSet<byte> @byte1, HashSet<char> @char1, ISet<short> @short1, ISet<int> @int1, ISet<long> @long1, ISet<float> @float1, ISet<double> @double1, ISet<String> @string1, ISet<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, ISet<byte[]> @byte2, ISet<int[]> @int2, ISet<Object> @obj1) {
-			this._boolean1 = @boolean1;
-			this._byte1 = @byte1;
-			this._char1 = @char1;
-			this._short1 = @short1;
-			this._int1 = @int1;
-			this._long1 = @long1;
-			this._float1 = @float1;
-			this._double1 = @double1;
-			this._string1 = @string1;
-			this._primitiveTypes1 = @primitiveTypes1;
-			this._byte2 = @byte2;
-			this._int2 = @int2;
-			this._obj1 = @obj1;
+		internal SetTypes(ISet<bool> @boolean1, HashSet<byte> @byte1, HashSet<char> @char1, ISet<short> @short1, ISet<int> @int1, ISet<long> @long1, ISet<float> @float1, ISet<double> @double1, ISet<String> @string1, ISet<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, ISet<byte[]> @byte2, ISet<int[]> @int2, ISet<Object> @obj1, ISet<java.util.Date> @date1) {
+			this.boolean1Value = @boolean1;
+			this.byte1Value = @byte1;
+			this.char1Value = @char1;
+			this.short1Value = @short1;
+			this.int1Value = @int1;
+			this.long1Value = @long1;
+			this.float1Value = @float1;
+			this.double1Value = @double1;
+			this.string1Value = @string1;
+			this.primitiveTypes1Value = @primitiveTypes1;
+			this.byte2Value = @byte2;
+			this.int2Value = @int2;
+			this.obj1Value = @obj1;
+			this.date1Value = @date1;
 		}		
 		
 		#endregion
@@ -42,11 +43,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _boolean1;
+				return boolean1Value;
 			}
 			set
 			{
-				this._boolean1 = value;
+				this.boolean1Value = value;
 			}
 		}
 		
@@ -55,11 +56,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _byte1;
+				return byte1Value;
 			}
 			set
 			{
-				this._byte1 = value;
+				this.byte1Value = value;
 			}
 		}
 		
@@ -68,11 +69,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _char1;
+				return char1Value;
 			}
 			set
 			{
-				this._char1 = value;
+				this.char1Value = value;
 			}
 		}
 		
@@ -81,11 +82,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _short1;
+				return short1Value;
 			}
 			set
 			{
-				this._short1 = value;
+				this.short1Value = value;
 			}
 		}
 		
@@ -94,11 +95,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _int1;
+				return int1Value;
 			}
 			set
 			{
-				this._int1 = value;
+				this.int1Value = value;
 			}
 		}
 		
@@ -107,11 +108,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _long1;
+				return long1Value;
 			}
 			set
 			{
-				this._long1 = value;
+				this.long1Value = value;
 			}
 		}
 		
@@ -120,11 +121,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _float1;
+				return float1Value;
 			}
 			set
 			{
-				this._float1 = value;
+				this.float1Value = value;
 			}
 		}
 		
@@ -133,11 +134,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _double1;
+				return double1Value;
 			}
 			set
 			{
-				this._double1 = value;
+				this.double1Value = value;
 			}
 		}
 		
@@ -146,11 +147,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _string1;
+				return string1Value;
 			}
 			set
 			{
-				this._string1 = value;
+				this.string1Value = value;
 			}
 		}
 		
@@ -159,11 +160,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _primitiveTypes1;
+				return primitiveTypes1Value;
 			}
 			set
 			{
-				this._primitiveTypes1 = value;
+				this.primitiveTypes1Value = value;
 			}
 		}
 		
@@ -172,11 +173,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _byte2;
+				return byte2Value;
 			}
 			set
 			{
-				this._byte2 = value;
+				this.byte2Value = value;
 			}
 		}
 		
@@ -185,11 +186,11 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _int2;
+				return int2Value;
 			}
 			set
 			{
-				this._int2 = value;
+				this.int2Value = value;
 			}
 		}
 		
@@ -198,11 +199,24 @@ namespace byps.test.api.set
 		{
 			get
 			{
-				return _obj1;
+				return obj1Value;
 			}
 			set
 			{
-				this._obj1 = value;
+				this.obj1Value = value;
+			}
+		}
+		
+		
+		public ISet<java.util.Date> Date1
+		{
+			get
+			{
+				return date1Value;
+			}
+			set
+			{
+				this.date1Value = value;
 			}
 		}
 		
@@ -211,31 +225,33 @@ namespace byps.test.api.set
 		
 		#region Fields
 		
-		protected ISet<bool> _boolean1;
+		protected ISet<bool> boolean1Value;
 
-		protected HashSet<byte> _byte1;
+		protected HashSet<byte> byte1Value;
 
-		protected HashSet<char> _char1;
+		protected HashSet<char> char1Value;
 
-		protected ISet<short> _short1;
+		protected ISet<short> short1Value;
 
-		protected ISet<int> _int1;
+		protected ISet<int> int1Value;
 
-		protected ISet<long> _long1;
+		protected ISet<long> long1Value;
 
-		protected ISet<float> _float1;
+		protected ISet<float> float1Value;
 
-		protected ISet<double> _double1;
+		protected ISet<double> double1Value;
 
-		protected ISet<String> _string1;
+		protected ISet<String> string1Value;
 
-		protected ISet<byps.test.api.prim.PrimitiveTypes> _primitiveTypes1;
+		protected ISet<byps.test.api.prim.PrimitiveTypes> primitiveTypes1Value;
 
-		protected ISet<byte[]> _byte2;
+		protected ISet<byte[]> byte2Value;
 
-		protected ISet<int[]> _int2;
+		protected ISet<int[]> int2Value;
 
-		protected ISet<Object> _obj1;
+		protected ISet<Object> obj1Value;
+
+		protected ISet<java.util.Date> date1Value;
 
 		#endregion
 		

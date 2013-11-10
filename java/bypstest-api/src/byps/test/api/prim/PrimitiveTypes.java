@@ -1,6 +1,7 @@
 package byps.test.api.prim;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Example class with primitive types like boolean, int, String.
@@ -29,6 +30,7 @@ public class PrimitiveTypes implements Serializable {
 	public float floatVal;
 	public double doubleVal;
 	public String stringVal;
+	public Date dateVal;
 	
 	/**
 	 * This element can refer a an arbitrary type that implements Serializable.

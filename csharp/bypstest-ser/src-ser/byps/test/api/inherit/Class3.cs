@@ -19,7 +19,7 @@ namespace byps.test.api.inherit
 		}		
 		
 		internal Class3(int @int3) {
-			this._int3 = @int3;
+			this.int3Value = @int3;
 		}		
 		
 		#endregion
@@ -30,11 +30,11 @@ namespace byps.test.api.inherit
 		{
 			get
 			{
-				return _int3;
+				return int3Value;
 			}
 			set
 			{
-				this._int3 = value;
+				this.int3Value = value;
 			}
 		}
 		
@@ -43,7 +43,7 @@ namespace byps.test.api.inherit
 		
 		#region Fields
 		
-		protected int _int3;
+		protected int int3Value;
 
 		#endregion
 		

@@ -24,6 +24,7 @@ public class PrintHelper {
 		else if (typeId == BRegistry.TYPEID_DOUBLE ) fnct = "getDouble";
 		else if (typeId == BRegistry.TYPEID_BOOL   ) fnct = "getBoolean";
 		else if (typeId == BRegistry.TYPEID_STRING   ) fnct = "getString";
+		else if (typeId == BRegistry.TYPEID_DATE   ) fnct = "getDate";
 			else {
 			String msg = "Unknown typeId=" + typeId;
 			log.error(msg);
@@ -45,6 +46,7 @@ public class PrintHelper {
 		else if (typeId == BRegistry.TYPEID_DOUBLE ) fnct = "putDouble";
 		else if (typeId == BRegistry.TYPEID_BOOL   ) fnct = "putBoolean";
 		else if (typeId == BRegistry.TYPEID_STRING   ) fnct = "putString";
+		else if (typeId == BRegistry.TYPEID_DATE   ) fnct = "putDate";
 		else {
 			String msg = "Unknown tpyeId=" + typeId;
 			log.error(msg);

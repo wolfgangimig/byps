@@ -38,6 +38,7 @@ public class BSerializer_1457164460 extends BSerializer {
 		int n = arr.size();
 		bbuf.putLength(n);
 		for (java.lang.Long obj : arr) {
+			// checkpoint byps.gen.j.PrintContext:332
 			bbuf.putLong(obj != null ? (Long)obj : 0L);
 		}
 	}

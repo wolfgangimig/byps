@@ -27,6 +27,7 @@ namespace byps.test.api.auth
 			SessionInfo obj = (SessionInfo)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:490
 			bbuf.putString(obj.SessionID);
 		}
 		
@@ -36,6 +37,7 @@ namespace byps.test.api.auth
 			SessionInfo obj = (SessionInfo)(obj1 != null ? obj1 : bin.onObjectCreated(new SessionInfo()));
 			
 			BBufferBin bbuf = bin.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:445
 			obj.SessionID = bbuf.getString();
 			
 			return obj;

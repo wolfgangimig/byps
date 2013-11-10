@@ -18,11 +18,11 @@ namespace byps.test.api.remote
 		public override int getRemoteId() { return 1178916877; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				RemotePrimitiveTypes __byps__remoteT = (RemotePrimitiveTypes)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new byps.test.api.BResult_19());				
-				__byps__remoteT.SendAllTypes(_b, _c, _s, _i, _l, _f, _d, _str, _pt, _o, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.SendAllTypes(bValue, cValue, sValue, iValue, lValue, fValue, dValue, strValue, ptValue, oValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;
@@ -33,25 +33,25 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal bool _b;
+		internal bool bValue;
 
-		internal char _c;
+		internal char cValue;
 
-		internal short _s;
+		internal short sValue;
 
-		internal int _i;
+		internal int iValue;
 
-		internal long _l;
+		internal long lValue;
 
-		internal float _f;
+		internal float fValue;
 
-		internal double _d;
+		internal double dValue;
 
-		internal String _str;
+		internal String strValue;
 
-		internal byps.test.api.prim.PrimitiveTypes _pt;
+		internal byps.test.api.prim.PrimitiveTypes ptValue;
 
-		internal Object _o;
+		internal Object oValue;
 
 		#endregion
 		

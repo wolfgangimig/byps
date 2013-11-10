@@ -36,13 +36,13 @@ namespace byps.test.api.remote
 		}
 		public void SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImage req = new BRequest_RemoteStreams_setImage();			
-			req._istrm = istrm;
+			req.istrmValue = istrm;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetImageAsync(System.IO.Stream istrm){
 			BRequest_RemoteStreams_setImage req = new BRequest_RemoteStreams_setImage();			
-			req._istrm = istrm;
+			req.istrmValue = istrm;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -70,15 +70,15 @@ namespace byps.test.api.remote
 		}
 		public void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImages req = new BRequest_RemoteStreams_setImages();			
-			req._istrms = istrms;
-			req._doNotReadStreamAtKey = doNotReadStreamAtKey;
+			req.istrmsValue = istrms;
+			req.doNotReadStreamAtKeyValue = doNotReadStreamAtKey;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetImagesAsync(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey){
 			BRequest_RemoteStreams_setImages req = new BRequest_RemoteStreams_setImages();			
-			req._istrms = istrms;
-			req._doNotReadStreamAtKey = doNotReadStreamAtKey;
+			req.istrmsValue = istrms;
+			req.doNotReadStreamAtKeyValue = doNotReadStreamAtKey;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}

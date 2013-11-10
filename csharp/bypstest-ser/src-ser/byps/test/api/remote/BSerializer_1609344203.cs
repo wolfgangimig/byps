@@ -27,23 +27,40 @@ namespace byps.test.api.remote
 			BRequest_RemoteConstants_compare_AllTypesC obj = (BRequest_RemoteConstants_compare_AllTypesC)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putBoolean(obj._bool1s);
-			bbuf.putBoolean(obj._bool2s);
-			bbuf.putChar(obj._char1s);
-			bbuf.putChar(obj._char2s);
-			bbuf.putDouble(obj._double1s);
-			bbuf.putFloat(obj._float1s);
-			bbuf.putInt(obj._int1s);
-			bbuf.putLong(obj._long1s);
-			bbuf.putShort(obj._short1s);
-			bbuf.putString(obj._string1s);
-			bbuf.putString(obj._stringNull);
-			bout.writeObj(obj._ALL, false, null);
-			bout.writeObj(obj._arrAll, false, byps.test.api.BSerializer_81775365.instance);
-			bout.writeObj(obj._arrInt, false, byps.test.api.BSerializer_100361105.instance);
-			bout.writeObj(obj._arrInt4, false, byps.test.api.BSerializer_39910537.instance);
-			bout.writeObj(obj._arrStrings, true, byps.test.api.BSerializer_1888107655.instance);
-			bout.writeObj(obj._arrStrings4, true, byps.test.api.BSerializer_588723219.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putBoolean(obj.bool1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putBoolean(obj.bool2sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putChar(obj.char1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putChar(obj.char2sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putDouble(obj.double1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putFloat(obj.float1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putInt(obj.int1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putLong(obj.long1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putShort(obj.short1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putString(obj.string1sValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putString(obj.stringNullValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.ALLValue, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arrAllValue, false, byps.test.api.BSerializer_81775365.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arrIntValue, false, byps.test.api.BSerializer_100361105.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arrInt4Value, false, byps.test.api.BSerializer_39910537.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arrStringsValue, true, byps.test.api.BSerializer_1888107655.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arrStrings4Value, true, byps.test.api.BSerializer_588723219.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -52,23 +69,40 @@ namespace byps.test.api.remote
 			BRequest_RemoteConstants_compare_AllTypesC obj = (BRequest_RemoteConstants_compare_AllTypesC)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteConstants_compare_AllTypesC()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._bool1s = bbuf.getBoolean();
-			obj._bool2s = bbuf.getBoolean();
-			obj._char1s = bbuf.getChar();
-			obj._char2s = bbuf.getChar();
-			obj._double1s = bbuf.getDouble();
-			obj._float1s = bbuf.getFloat();
-			obj._int1s = bbuf.getInt();
-			obj._long1s = bbuf.getLong();
-			obj._short1s = bbuf.getShort();
-			obj._string1s = bbuf.getString();
-			obj._stringNull = bbuf.getString();
-			obj._ALL = (byps.test.api.cons.AllTypesZ)bin.readObj(false, null);
-			obj._arrAll = (byps.test.api.cons.AllTypesZ[,])bin.readObj(false, byps.test.api.BSerializer_81775365.instance);
-			obj._arrInt = (int[])bin.readObj(false, byps.test.api.BSerializer_100361105.instance);
-			obj._arrInt4 = (int[,,,])bin.readObj(false, byps.test.api.BSerializer_39910537.instance);
-			obj._arrStrings = (String[])bin.readObj(false, byps.test.api.BSerializer_1888107655.instance);
-			obj._arrStrings4 = (String[,,,])bin.readObj(false, byps.test.api.BSerializer_588723219.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.bool1sValue = bbuf.getBoolean();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.bool2sValue = bbuf.getBoolean();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.char1sValue = bbuf.getChar();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.char2sValue = bbuf.getChar();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.double1sValue = bbuf.getDouble();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.float1sValue = bbuf.getFloat();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.int1sValue = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.long1sValue = bbuf.getLong();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.short1sValue = bbuf.getShort();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.string1sValue = bbuf.getString();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.stringNullValue = bbuf.getString();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.ALLValue = (byps.test.api.cons.AllTypesZ)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arrAllValue = (byps.test.api.cons.AllTypesZ[,])bin.readObj(false, byps.test.api.BSerializer_81775365.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arrIntValue = (int[])bin.readObj(false, byps.test.api.BSerializer_100361105.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arrInt4Value = (int[,,,])bin.readObj(false, byps.test.api.BSerializer_39910537.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arrStringsValue = (String[])bin.readObj(false, byps.test.api.BSerializer_1888107655.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arrStrings4Value = (String[,,,])bin.readObj(false, byps.test.api.BSerializer_588723219.instance);
 			
 			return obj;
 		}

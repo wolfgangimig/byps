@@ -27,7 +27,8 @@ namespace byps.test.api
 			BResult_5 obj = (BResult_5)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putInt(obj._result);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putInt(obj.resultValue);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api
 			BResult_5 obj = (BResult_5)(obj1 != null ? obj1 : bin.onObjectCreated(new BResult_5()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._result = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.resultValue = bbuf.getInt();
 			
 			return obj;
 		}

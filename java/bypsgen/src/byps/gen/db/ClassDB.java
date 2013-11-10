@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
@@ -110,6 +111,7 @@ public class ClassDB {
     else if (fullName.equals(Double.class.getName())) typeId = BRegistry.TYPEID_DOUBLE;
     else if (fullName.equals(InputStream.class.getName())) typeId = BRegistry.TYPEID_STREAM;
     else if (fullName.equals(BRemote.class.getName())) typeId = BRegistry.TYPEID_STUB;
+    else if (fullName.equals(Date.class.getName())) typeId = BRegistry.TYPEID_DATE;
 
     TypeInfo tinfo = null;
     if (typeId >= 0) {

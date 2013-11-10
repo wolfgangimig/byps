@@ -22,6 +22,7 @@ describe("Tests for sending and receiving list types.", function() {
 		obj.short1 = [1];
 		obj.string1 = ["a", "b", "c"];
 		obj.obj1 = [TestUtils.createObjectPrimitiveTypes()];
+		obj.date1 = [new Date(), null, new Date()];
 		
 		remote.setBoolean1(obj.boolean1);
 		TestUtils.assertEquals(log, "boolean1", obj.boolean1, remote.getBoolean1());
@@ -45,6 +46,8 @@ describe("Tests for sending and receiving list types.", function() {
 		TestUtils.assertEquals(log, "string1", obj.string1, remote.getString1());
 		remote.setObj1(obj.obj1);
 		TestUtils.assertEquals(log, "obj1", obj.obj1, remote.getObj1());
+		remote.setDate1(obj.date1);
+		TestUtils.assertEquals(log, "date1", obj.date1, remote.getDate1());
 		
 		log.info(")testRemoteListTypes");
     });

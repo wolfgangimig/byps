@@ -20,13 +20,13 @@ namespace byps.test.api.remote
 		}
 		public void SetActor(byps.test.api.inl.Actor act, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setActor req = new BRequest_RemoteInlineInstance_setActor();			
-			req._act = act;
+			req.actValue = act;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetActorAsync(byps.test.api.inl.Actor act){
 			BRequest_RemoteInlineInstance_setActor req = new BRequest_RemoteInlineInstance_setActor();			
-			req._act = act;
+			req.actValue = act;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -54,13 +54,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DArray1dim req = new BRequest_RemoteInlineInstance_setPoint2DArray1dim();			
-			req._pointArray = pointArray;
+			req.pointArrayValue = pointArray;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPoint2DArray1dimAsync(byps.test.api.inl.Point2D[] pointArray){
 			BRequest_RemoteInlineInstance_setPoint2DArray1dim req = new BRequest_RemoteInlineInstance_setPoint2DArray1dim();			
-			req._pointArray = pointArray;
+			req.pointArrayValue = pointArray;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -88,13 +88,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPoint2DArray4dim(byps.test.api.inl.Point2D[,,,] pointArray, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DArray4dim req = new BRequest_RemoteInlineInstance_setPoint2DArray4dim();			
-			req._pointArray = pointArray;
+			req.pointArrayValue = pointArray;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPoint2DArray4dimAsync(byps.test.api.inl.Point2D[,,,] pointArray){
 			BRequest_RemoteInlineInstance_setPoint2DArray4dim req = new BRequest_RemoteInlineInstance_setPoint2DArray4dim();			
-			req._pointArray = pointArray;
+			req.pointArrayValue = pointArray;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -122,13 +122,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPoint2DList(IList<byps.test.api.inl.Point2D> pointList, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DList req = new BRequest_RemoteInlineInstance_setPoint2DList();			
-			req._pointList = pointList;
+			req.pointListValue = pointList;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPoint2DListAsync(IList<byps.test.api.inl.Point2D> pointList){
 			BRequest_RemoteInlineInstance_setPoint2DList req = new BRequest_RemoteInlineInstance_setPoint2DList();			
-			req._pointList = pointList;
+			req.pointListValue = pointList;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -156,13 +156,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPoint2DListList(IList<IList<byps.test.api.inl.Point2D>> pointListList, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DListList req = new BRequest_RemoteInlineInstance_setPoint2DListList();			
-			req._pointListList = pointListList;
+			req.pointListListValue = pointListList;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPoint2DListListAsync(IList<IList<byps.test.api.inl.Point2D>> pointListList){
 			BRequest_RemoteInlineInstance_setPoint2DListList req = new BRequest_RemoteInlineInstance_setPoint2DListList();			
-			req._pointListList = pointListList;
+			req.pointListListValue = pointListList;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -190,13 +190,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPoint2DMap(IDictionary<int,byps.test.api.inl.Point2D> pointMap, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DMap req = new BRequest_RemoteInlineInstance_setPoint2DMap();			
-			req._pointMap = pointMap;
+			req.pointMapValue = pointMap;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPoint2DMapAsync(IDictionary<int,byps.test.api.inl.Point2D> pointMap){
 			BRequest_RemoteInlineInstance_setPoint2DMap req = new BRequest_RemoteInlineInstance_setPoint2DMap();			
-			req._pointMap = pointMap;
+			req.pointMapValue = pointMap;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}

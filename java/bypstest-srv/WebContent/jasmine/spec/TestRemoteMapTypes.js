@@ -27,6 +27,7 @@ describe("Tests for sending and receiving map types.", function() {
 		obj.primitiveTypes1 = new MyMap().add(1, TestUtils.createObjectPrimitiveTypes()).add(2, TestUtils.createObjectPrimitiveTypes());
 		obj.short1 = new MyMap().add(-55, 1234).add(0x55, 5555);
 		obj.string1 = new MyMap().add("A", "a").add("B","b");
+		obj.date1 = new MyMap().add("1", new Date()).add("nullvalue", null);
 
 		remote.setBoolean1(obj.boolean1);
 		TestUtils.assertEquals(log, "boolean1", obj.boolean1, remote.getBoolean1());
@@ -48,6 +49,10 @@ describe("Tests for sending and receiving map types.", function() {
 		TestUtils.assertEquals(log, "short1", obj.short1, remote.getShort1());
 		remote.setString1(obj.string1);
 		TestUtils.assertEquals(log, "string1", obj.string1, remote.getString1());
+		
+		remote.setDate1(obj.date1);
+		var rdate1 = remote.getDate1();
+		TestUtils.assertEquals(log, "date1", obj.date1, rdate1);
 		
 		log.info(")testRemoteMapTypes");
 	});

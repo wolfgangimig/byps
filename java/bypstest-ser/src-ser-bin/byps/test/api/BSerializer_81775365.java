@@ -59,6 +59,7 @@ public class BSerializer_81775365 extends BSerializer {
 		for (int i1 = 0; i1 < n1; i1++) {
 			final byps.test.api.cons.AllTypesZ[] a0 = a1[i1];
 			for (int i0 = 0; i0 < n0; i0++) {
+				// checkpoint byps.gen.j.PrintContext:313
 				bout.writeObj(a0[i0], false, null);
 			}
 		}

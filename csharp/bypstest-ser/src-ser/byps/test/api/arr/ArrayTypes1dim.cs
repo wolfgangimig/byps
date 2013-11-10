@@ -18,17 +18,18 @@ namespace byps.test.api.arr
 		public ArrayTypes1dim() {
 		}		
 		
-		internal ArrayTypes1dim(bool[] @boolean1, byte[] @byte1, char[] @char1, short[] @short1, int[] @int1, long[] @long1, float[] @float1, double[] @double1, String[] @string1, byps.test.api.prim.PrimitiveTypes[] @primitiveTypes1) {
-			this._boolean1 = @boolean1;
-			this._byte1 = @byte1;
-			this._char1 = @char1;
-			this._short1 = @short1;
-			this._int1 = @int1;
-			this._long1 = @long1;
-			this._float1 = @float1;
-			this._double1 = @double1;
-			this._string1 = @string1;
-			this._primitiveTypes1 = @primitiveTypes1;
+		internal ArrayTypes1dim(bool[] @boolean1, byte[] @byte1, char[] @char1, short[] @short1, int[] @int1, long[] @long1, float[] @float1, double[] @double1, String[] @string1, java.util.Date[] @date1, byps.test.api.prim.PrimitiveTypes[] @primitiveTypes1) {
+			this.boolean1Value = @boolean1;
+			this.byte1Value = @byte1;
+			this.char1Value = @char1;
+			this.short1Value = @short1;
+			this.int1Value = @int1;
+			this.long1Value = @long1;
+			this.float1Value = @float1;
+			this.double1Value = @double1;
+			this.string1Value = @string1;
+			this.date1Value = @date1;
+			this.primitiveTypes1Value = @primitiveTypes1;
 		}		
 		
 		#endregion
@@ -39,11 +40,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _boolean1;
+				return boolean1Value;
 			}
 			set
 			{
-				this._boolean1 = value;
+				this.boolean1Value = value;
 			}
 		}
 		
@@ -52,11 +53,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _byte1;
+				return byte1Value;
 			}
 			set
 			{
-				this._byte1 = value;
+				this.byte1Value = value;
 			}
 		}
 		
@@ -65,11 +66,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _char1;
+				return char1Value;
 			}
 			set
 			{
-				this._char1 = value;
+				this.char1Value = value;
 			}
 		}
 		
@@ -78,11 +79,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _short1;
+				return short1Value;
 			}
 			set
 			{
-				this._short1 = value;
+				this.short1Value = value;
 			}
 		}
 		
@@ -91,11 +92,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _int1;
+				return int1Value;
 			}
 			set
 			{
-				this._int1 = value;
+				this.int1Value = value;
 			}
 		}
 		
@@ -104,11 +105,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _long1;
+				return long1Value;
 			}
 			set
 			{
-				this._long1 = value;
+				this.long1Value = value;
 			}
 		}
 		
@@ -117,11 +118,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _float1;
+				return float1Value;
 			}
 			set
 			{
-				this._float1 = value;
+				this.float1Value = value;
 			}
 		}
 		
@@ -130,11 +131,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _double1;
+				return double1Value;
 			}
 			set
 			{
-				this._double1 = value;
+				this.double1Value = value;
 			}
 		}
 		
@@ -143,11 +144,24 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _string1;
+				return string1Value;
 			}
 			set
 			{
-				this._string1 = value;
+				this.string1Value = value;
+			}
+		}
+		
+		
+		public java.util.Date[] Date1
+		{
+			get
+			{
+				return date1Value;
+			}
+			set
+			{
+				this.date1Value = value;
 			}
 		}
 		
@@ -156,11 +170,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _primitiveTypes1;
+				return primitiveTypes1Value;
 			}
 			set
 			{
-				this._primitiveTypes1 = value;
+				this.primitiveTypes1Value = value;
 			}
 		}
 		
@@ -169,25 +183,27 @@ namespace byps.test.api.arr
 		
 		#region Fields
 		
-		protected bool[] _boolean1;
+		protected bool[] boolean1Value;
 
-		protected byte[] _byte1;
+		protected byte[] byte1Value;
 
-		protected char[] _char1;
+		protected char[] char1Value;
 
-		protected short[] _short1;
+		protected short[] short1Value;
 
-		protected int[] _int1;
+		protected int[] int1Value;
 
-		protected long[] _long1;
+		protected long[] long1Value;
 
-		protected float[] _float1;
+		protected float[] float1Value;
 
-		protected double[] _double1;
+		protected double[] double1Value;
 
-		protected String[] _string1;
+		protected String[] string1Value;
 
-		protected byps.test.api.prim.PrimitiveTypes[] _primitiveTypes1;
+		protected java.util.Date[] date1Value;
+
+		protected byps.test.api.prim.PrimitiveTypes[] primitiveTypes1Value;
 
 		#endregion
 		

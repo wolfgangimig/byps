@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=10
+// #members=11
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -37,6 +37,7 @@ public class BSerializer_2001 extends BSerializer {
 		bout.writeObj(obj.boolean1, false, byps.test.api.BSerializer_2058423690.instance);
 		bout.writeObj(obj.byte1, false, byps.test.api.BSerializer_1374008726.instance);
 		bout.writeObj(obj.char1, false, byps.test.api.BSerializer_1361632968.instance);
+		bout.writeObj(obj.date1, false, byps.test.api.BSerializer_1406664368.instance);
 		bout.writeObj(obj.double1, false, byps.test.api.BSerializer_1359468275.instance);
 		bout.writeObj(obj.float1, false, byps.test.api.BSerializer_766441794.instance);
 		bout.writeObj(obj.int1, false, byps.test.api.BSerializer_100361105.instance);
@@ -56,6 +57,7 @@ public class BSerializer_2001 extends BSerializer {
 		obj.boolean1 = (boolean[])bin.readObj(false, byps.test.api.BSerializer_2058423690.instance);
 		obj.byte1 = (byte[])bin.readObj(false, byps.test.api.BSerializer_1374008726.instance);
 		obj.char1 = (char[])bin.readObj(false, byps.test.api.BSerializer_1361632968.instance);
+		obj.date1 = (java.util.Date[])bin.readObj(false, byps.test.api.BSerializer_1406664368.instance);
 		obj.double1 = (double[])bin.readObj(false, byps.test.api.BSerializer_1359468275.instance);
 		obj.float1 = (float[])bin.readObj(false, byps.test.api.BSerializer_766441794.instance);
 		obj.int1 = (int[])bin.readObj(false, byps.test.api.BSerializer_100361105.instance);

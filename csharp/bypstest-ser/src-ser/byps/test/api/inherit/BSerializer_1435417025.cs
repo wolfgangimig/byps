@@ -27,7 +27,8 @@ namespace byps.test.api.inherit
 			BRequest_BioFruitService_certify obj = (BRequest_BioFruitService_certify)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putString(obj._param);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putString(obj.paramValue);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.inherit
 			BRequest_BioFruitService_certify obj = (BRequest_BioFruitService_certify)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_BioFruitService_certify()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._param = bbuf.getString();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.paramValue = bbuf.getString();
 			
 			return obj;
 		}

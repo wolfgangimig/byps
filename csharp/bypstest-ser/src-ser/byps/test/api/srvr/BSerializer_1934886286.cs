@@ -27,7 +27,8 @@ namespace byps.test.api.srvr
 			BRequest_ServerIF_putStreamsOnClient obj = (BRequest_ServerIF_putStreamsOnClient)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._streams, false, byps.test.api.BSerializer_1218831438.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.streamsValue, false, byps.test.api.BSerializer_1218831438.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.srvr
 			BRequest_ServerIF_putStreamsOnClient obj = (BRequest_ServerIF_putStreamsOnClient)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ServerIF_putStreamsOnClient()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._streams = (IList<System.IO.Stream>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.streamsValue = (IList<System.IO.Stream>)bin.readObj(false, null);
 			
 			return obj;
 		}

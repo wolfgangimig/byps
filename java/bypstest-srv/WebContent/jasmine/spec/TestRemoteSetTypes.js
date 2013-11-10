@@ -26,6 +26,7 @@ describe("Tests for sending and receiving set types.", function() {
 		obj.short1 = [1];
 		obj.string1 = ["a", "b", "c"];
 		obj.obj1 = [TestUtils.createObjectPrimitiveTypes()];
+		obj.date1 = [new Date(1600, 01, 01, 12, 13, 14), new Date(), new Date(3000, 01, 01, 10, 11, 12)];
 		
 		remote.setBoolean1(obj.boolean1);
 		TestUtils.assertEquals(log, "boolean1", sortSet(obj.boolean1), sortSet(remote.getBoolean1()));
@@ -49,6 +50,8 @@ describe("Tests for sending and receiving set types.", function() {
 		TestUtils.assertEquals(log, "string1", sortSet(obj.string1), sortSet(remote.getString1()));
 		remote.setObj1(obj.obj1);
 		TestUtils.assertEquals(log, "obj1", sortSet(obj.obj1), sortSet(remote.getObj1()));
+		remote.setDate1(obj.date1);
+		TestUtils.assertEquals(log, "date1", sortSet(obj.date1), sortSet(remote.getDate1()));
 		
 		log.info(")testRemoteSetTypes");
     });

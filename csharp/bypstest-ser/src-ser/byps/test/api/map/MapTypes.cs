@@ -18,20 +18,21 @@ namespace byps.test.api.map
 		public MapTypes() {
 		}		
 		
-		internal MapTypes(IDictionary<String,bool> @boolean1, Dictionary<double,byte> @byte1, Dictionary<float,char> @char1, IDictionary<long,short> @short1, IDictionary<int,int> @int1, IDictionary<short,long> @long1, IDictionary<char,float> @float1, IDictionary<byte,double> @double1, IDictionary<String,String> @string1, IDictionary<int,byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IDictionary<int,byte[]> @byte2, IDictionary<int,int[]> @int2, IDictionary<String,Object> @obj1) {
-			this._boolean1 = @boolean1;
-			this._byte1 = @byte1;
-			this._char1 = @char1;
-			this._short1 = @short1;
-			this._int1 = @int1;
-			this._long1 = @long1;
-			this._float1 = @float1;
-			this._double1 = @double1;
-			this._string1 = @string1;
-			this._primitiveTypes1 = @primitiveTypes1;
-			this._byte2 = @byte2;
-			this._int2 = @int2;
-			this._obj1 = @obj1;
+		internal MapTypes(IDictionary<String,bool> @boolean1, Dictionary<double,byte> @byte1, Dictionary<float,char> @char1, IDictionary<long,short> @short1, IDictionary<int,int> @int1, IDictionary<short,long> @long1, IDictionary<char,float> @float1, IDictionary<byte,double> @double1, IDictionary<String,String> @string1, IDictionary<int,byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IDictionary<int,byte[]> @byte2, IDictionary<int,int[]> @int2, IDictionary<String,Object> @obj1, IDictionary<String,java.util.Date> @date1) {
+			this.boolean1Value = @boolean1;
+			this.byte1Value = @byte1;
+			this.char1Value = @char1;
+			this.short1Value = @short1;
+			this.int1Value = @int1;
+			this.long1Value = @long1;
+			this.float1Value = @float1;
+			this.double1Value = @double1;
+			this.string1Value = @string1;
+			this.primitiveTypes1Value = @primitiveTypes1;
+			this.byte2Value = @byte2;
+			this.int2Value = @int2;
+			this.obj1Value = @obj1;
+			this.date1Value = @date1;
 		}		
 		
 		#endregion
@@ -42,11 +43,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _boolean1;
+				return boolean1Value;
 			}
 			set
 			{
-				this._boolean1 = value;
+				this.boolean1Value = value;
 			}
 		}
 		
@@ -55,11 +56,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _byte1;
+				return byte1Value;
 			}
 			set
 			{
-				this._byte1 = value;
+				this.byte1Value = value;
 			}
 		}
 		
@@ -68,11 +69,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _char1;
+				return char1Value;
 			}
 			set
 			{
-				this._char1 = value;
+				this.char1Value = value;
 			}
 		}
 		
@@ -81,11 +82,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _short1;
+				return short1Value;
 			}
 			set
 			{
-				this._short1 = value;
+				this.short1Value = value;
 			}
 		}
 		
@@ -94,11 +95,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _int1;
+				return int1Value;
 			}
 			set
 			{
-				this._int1 = value;
+				this.int1Value = value;
 			}
 		}
 		
@@ -107,11 +108,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _long1;
+				return long1Value;
 			}
 			set
 			{
-				this._long1 = value;
+				this.long1Value = value;
 			}
 		}
 		
@@ -120,11 +121,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _float1;
+				return float1Value;
 			}
 			set
 			{
-				this._float1 = value;
+				this.float1Value = value;
 			}
 		}
 		
@@ -133,11 +134,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _double1;
+				return double1Value;
 			}
 			set
 			{
-				this._double1 = value;
+				this.double1Value = value;
 			}
 		}
 		
@@ -146,11 +147,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _string1;
+				return string1Value;
 			}
 			set
 			{
-				this._string1 = value;
+				this.string1Value = value;
 			}
 		}
 		
@@ -159,11 +160,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _primitiveTypes1;
+				return primitiveTypes1Value;
 			}
 			set
 			{
-				this._primitiveTypes1 = value;
+				this.primitiveTypes1Value = value;
 			}
 		}
 		
@@ -172,11 +173,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _byte2;
+				return byte2Value;
 			}
 			set
 			{
-				this._byte2 = value;
+				this.byte2Value = value;
 			}
 		}
 		
@@ -185,11 +186,11 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _int2;
+				return int2Value;
 			}
 			set
 			{
-				this._int2 = value;
+				this.int2Value = value;
 			}
 		}
 		
@@ -198,11 +199,24 @@ namespace byps.test.api.map
 		{
 			get
 			{
-				return _obj1;
+				return obj1Value;
 			}
 			set
 			{
-				this._obj1 = value;
+				this.obj1Value = value;
+			}
+		}
+		
+		
+		public IDictionary<String,java.util.Date> Date1
+		{
+			get
+			{
+				return date1Value;
+			}
+			set
+			{
+				this.date1Value = value;
 			}
 		}
 		
@@ -211,31 +225,33 @@ namespace byps.test.api.map
 		
 		#region Fields
 		
-		protected IDictionary<String,bool> _boolean1;
+		protected IDictionary<String,bool> boolean1Value;
 
-		protected Dictionary<double,byte> _byte1;
+		protected Dictionary<double,byte> byte1Value;
 
-		protected Dictionary<float,char> _char1;
+		protected Dictionary<float,char> char1Value;
 
-		protected IDictionary<long,short> _short1;
+		protected IDictionary<long,short> short1Value;
 
-		protected IDictionary<int,int> _int1;
+		protected IDictionary<int,int> int1Value;
 
-		protected IDictionary<short,long> _long1;
+		protected IDictionary<short,long> long1Value;
 
-		protected IDictionary<char,float> _float1;
+		protected IDictionary<char,float> float1Value;
 
-		protected IDictionary<byte,double> _double1;
+		protected IDictionary<byte,double> double1Value;
 
-		protected IDictionary<String,String> _string1;
+		protected IDictionary<String,String> string1Value;
 
-		protected IDictionary<int,byps.test.api.prim.PrimitiveTypes> _primitiveTypes1;
+		protected IDictionary<int,byps.test.api.prim.PrimitiveTypes> primitiveTypes1Value;
 
-		protected IDictionary<int,byte[]> _byte2;
+		protected IDictionary<int,byte[]> byte2Value;
 
-		protected IDictionary<int,int[]> _int2;
+		protected IDictionary<int,int[]> int2Value;
 
-		protected IDictionary<String,Object> _obj1;
+		protected IDictionary<String,Object> obj1Value;
+
+		protected IDictionary<String,java.util.Date> date1Value;
 
 		#endregion
 		

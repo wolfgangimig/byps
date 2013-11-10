@@ -166,10 +166,10 @@ public:
     }
 
 #ifdef CPP11_LAMBDA
-	virtual void authenticate(PClient client, function<void (bool, BException)> asyncResult) {
+	virtual void authenticate(PClient , function<void (bool, BException)> ) {
 	}
 
-	virtual void getSession(PClient client, BTYPEID typeId, function<void (PSerializable, BException)> asyncResult) {
+	virtual void getSession(PClient , BTYPEID , function<void (PSerializable, BException)> ) {
 	}
 #endif
 

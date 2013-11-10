@@ -27,8 +27,10 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_doit obj = (BRequest_RemoteWithAuthentication_doit)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putInt(obj._value);
-			bout.writeObj(obj._sess, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putInt(obj.valueValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.sessValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -37,8 +39,10 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_doit obj = (BRequest_RemoteWithAuthentication_doit)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteWithAuthentication_doit()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._value = bbuf.getInt();
-			obj._sess = (byps.test.api.auth.SessionInfo)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.valueValue = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.sessValue = (byps.test.api.auth.SessionInfo)bin.readObj(false, null);
 			
 			return obj;
 		}

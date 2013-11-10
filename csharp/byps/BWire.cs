@@ -69,7 +69,7 @@ namespace byps
 
         public void bufferToStream(ByteBuffer buf, Stream os) 
         {
-            if ((flags & BWireFlags.GZIP) != 0)
+            if ((flagsVal & BWireFlags.GZIP) != 0)
             {
                 os = new GZipStream(os, CompressionMode.Compress);
             }
@@ -127,13 +127,13 @@ namespace byps
 
         public BWireFlags Flags
         {
-            get { return flags; }
+            get { return flagsVal; }
         }
 
         protected void internalInit(BWireFlags  flags)
         {
             rand = new BSecureRandom();
-            this.flags = flags;
+            this.flagsVal = flags;
         }
 
         public virtual BTestAdapter getTestAdapter()
@@ -143,6 +143,6 @@ namespace byps
 
         protected BSecureRandom rand;
         protected Object sess;
-        protected BWireFlags flags;
+        protected BWireFlags flagsVal;
     }
 }

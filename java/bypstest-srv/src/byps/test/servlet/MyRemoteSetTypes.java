@@ -1,5 +1,6 @@
 package byps.test.servlet;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -24,6 +25,7 @@ public class MyRemoteSetTypes extends BSkeleton_RemoteSetTypes{
 	private Set< byte[]> byte2;
 	private Set< int[]> int2;
 	private Set obj1;
+	private Set<Date> date1;
 	
 	
 	@Override public  Set<Boolean> getBoolean1() throws RemoteException  {
@@ -104,6 +106,14 @@ public class MyRemoteSetTypes extends BSkeleton_RemoteSetTypes{
 	@Override public  void setObj1(Set obj1) throws RemoteException  {
 		this.obj1 = obj1;
 	}
+  @Override
+  public void setDate1(Set<Date> obj1) throws RemoteException {
+    this.date1 = obj1;
+  }
+  @Override
+  public Set<Date> getDate1() throws RemoteException {
+    return date1;
+  }
 
 	
 }

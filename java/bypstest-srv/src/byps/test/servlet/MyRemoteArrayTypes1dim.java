@@ -1,5 +1,7 @@
 package byps.test.servlet;
 
+import java.util.Date;
+
 import byps.RemoteException;
 import byps.test.api.prim.PrimitiveTypes;
 import byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim;
@@ -17,6 +19,7 @@ public class MyRemoteArrayTypes1dim extends BSkeleton_RemoteArrayTypes1dim {
 	public String[] string1;
 	public PrimitiveTypes[] primitiveTypes1;
 	public Object[] object1;
+	public Date[] date1;
 
 	@Override
 	public void setBool(boolean[] v) throws RemoteException {
@@ -127,5 +130,13 @@ public class MyRemoteArrayTypes1dim extends BSkeleton_RemoteArrayTypes1dim {
 	public Object[] getObject() throws RemoteException {
 		return object1;
 	}
+
+  public Date[] getDate() {
+    return date1;
+  }
+
+  public void setDate(Date[] date1) {
+    this.date1 = date1;
+  }
 
 }

@@ -20,13 +20,13 @@ namespace byps.test.api.ver
 		}
 		public void SetEvolve(Evolve obj, BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();			
-			req._obj = obj;
+			req.objValue = obj;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetEvolveAsync(Evolve obj){
 			BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();			
-			req._obj = obj;
+			req.objValue = obj;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -54,13 +54,13 @@ namespace byps.test.api.ver
 		}
 		public void SetClient(EvolveIF partner, BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();			
-			req._partner = partner;
+			req.partnerValue = partner;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetClientAsync(EvolveIF partner){
 			BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();			
-			req._partner = partner;
+			req.partnerValue = partner;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}

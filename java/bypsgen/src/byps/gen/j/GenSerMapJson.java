@@ -77,6 +77,7 @@ public class GenSerMapJson extends GenSerMap {
 
 		//log.debug(GeneratorJ.class.getName(), "printInternalWriteKeyValue");
 		
+	  pr.checkpoint();
 		pr.println("@Override");
 		pr.println("protected void internalWriteKeyValue(final BOutputJson bout, final BBufferJson bbuf, final Object key, final Object value) throws BException {");
 		pr.beginBlock();

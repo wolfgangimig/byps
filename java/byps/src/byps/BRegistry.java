@@ -23,6 +23,7 @@ public abstract class BRegistry {
   public final static int TYPEID_SET = 14;
   public final static int TYPEID_STREAM = 15;
   public final static int TYPEID_STUB = 16;
+  public final static int TYPEID_DATE = 17;
   public final static int TYPEID_EXCEPTION = 20;
   public final static int TYPEID_OBJECT = 21;
   public final static int TYPEID_VALUECLASS = 22;
@@ -173,23 +174,19 @@ public abstract class BRegistry {
   private BSerializer getBuiltInSerializer(int typeId) throws BException {
     if (bmodel == BBinaryModel.JSON) {
       if (typeId == TYPEID_LIST) return JSerializer_12.instance;
-      if (typeId == TYPEID_MAP) return new JSerializer_13();
-      if (typeId == TYPEID_SET) return new JSerializer_14();
-      if (typeId == TYPEID_EXCEPTION) return new JSerializer_20();
-      if (typeId == TYPEID_STREAM) return new JSerializer_15();
+      if (typeId == TYPEID_MAP) return JSerializer_13.instance;
+      if (typeId == TYPEID_SET) return JSerializer_14.instance;
+      if (typeId == TYPEID_EXCEPTION) return JSerializer_20.instance;
+      if (typeId == TYPEID_STREAM) return JSerializer_15.instance;
     }
     else {
       if (typeId == TYPEID_LIST) return BSerializer_12.instance;
-      if (typeId == TYPEID_MAP) return new BSerializer_13();
-      if (typeId == TYPEID_SET) return new BSerializer_14();
-      if (typeId == TYPEID_EXCEPTION) return new BSerializer_20();
-      if (typeId == TYPEID_STREAM) return new BSerializer_15();
+      if (typeId == TYPEID_MAP) return BSerializer_13.instance;
+      if (typeId == TYPEID_SET) return BSerializer_14.instance;
+      if (typeId == TYPEID_EXCEPTION) return BSerializer_20.instance;
+      if (typeId == TYPEID_STREAM) return BSerializer_15.instance;
     }
     return null;
-  }
-
-  public boolean isStringTypeId(long typeId) {
-    return typeId == TYPEID_STRING;
   }
 
   public boolean isPointerTypeId(long typeId) {

@@ -19,11 +19,11 @@ namespace byps.test.api.enu
 		}		
 		
 		internal UsePlanets(EnumPlanets @planet, EnumPlanets @planet2, EnumPlanets[] @arrayOfPlanets, List<EnumPlanets> @listOfPlanets, IDictionary<String,EnumPlanets> @mapOfPlanets) {
-			this._planet = @planet;
-			this._planet2 = @planet2;
-			this._arrayOfPlanets = @arrayOfPlanets;
-			this._listOfPlanets = @listOfPlanets;
-			this._mapOfPlanets = @mapOfPlanets;
+			this.planetValue = @planet;
+			this.planet2Value = @planet2;
+			this.arrayOfPlanetsValue = @arrayOfPlanets;
+			this.listOfPlanetsValue = @listOfPlanets;
+			this.mapOfPlanetsValue = @mapOfPlanets;
 		}		
 		
 		#endregion
@@ -34,11 +34,11 @@ namespace byps.test.api.enu
 		{
 			get
 			{
-				return _planet;
+				return planetValue;
 			}
 			set
 			{
-				this._planet = value;
+				this.planetValue = value;
 			}
 		}
 		
@@ -47,11 +47,11 @@ namespace byps.test.api.enu
 		{
 			get
 			{
-				return _planet2;
+				return planet2Value;
 			}
 			set
 			{
-				this._planet2 = value;
+				this.planet2Value = value;
 			}
 		}
 		
@@ -60,11 +60,11 @@ namespace byps.test.api.enu
 		{
 			get
 			{
-				return _arrayOfPlanets;
+				return arrayOfPlanetsValue;
 			}
 			set
 			{
-				this._arrayOfPlanets = value;
+				this.arrayOfPlanetsValue = value;
 			}
 		}
 		
@@ -73,11 +73,11 @@ namespace byps.test.api.enu
 		{
 			get
 			{
-				return _listOfPlanets;
+				return listOfPlanetsValue;
 			}
 			set
 			{
-				this._listOfPlanets = value;
+				this.listOfPlanetsValue = value;
 			}
 		}
 		
@@ -86,11 +86,11 @@ namespace byps.test.api.enu
 		{
 			get
 			{
-				return _mapOfPlanets;
+				return mapOfPlanetsValue;
 			}
 			set
 			{
-				this._mapOfPlanets = value;
+				this.mapOfPlanetsValue = value;
 			}
 		}
 		
@@ -99,15 +99,15 @@ namespace byps.test.api.enu
 		
 		#region Fields
 		
-		protected EnumPlanets _planet;
+		protected EnumPlanets planetValue;
 
-		protected EnumPlanets _planet2;
+		protected EnumPlanets planet2Value;
 
-		protected EnumPlanets[] _arrayOfPlanets;
+		protected EnumPlanets[] arrayOfPlanetsValue;
 
-		protected List<EnumPlanets> _listOfPlanets;
+		protected List<EnumPlanets> listOfPlanetsValue;
 
-		protected IDictionary<String,EnumPlanets> _mapOfPlanets;
+		protected IDictionary<String,EnumPlanets> mapOfPlanetsValue;
 
 		#endregion
 		

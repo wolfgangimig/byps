@@ -19,8 +19,8 @@ namespace byps.test.api.inl
 		}		
 		
 		internal Actor(Point2D[] @shape, Matrix2D @position) {
-			this._shape = @shape;
-			this._position = @position;
+			this.shapeValue = @shape;
+			this.positionValue = @position;
 		}		
 		
 		#endregion
@@ -31,11 +31,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return _shape;
+				return shapeValue;
 			}
 			set
 			{
-				this._shape = value;
+				this.shapeValue = value;
 			}
 		}
 		
@@ -44,11 +44,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return _position;
+				return positionValue;
 			}
 			set
 			{
-				this._position = value;
+				this.positionValue = value;
 			}
 		}
 		
@@ -57,9 +57,9 @@ namespace byps.test.api.inl
 		
 		#region Fields
 		
-		protected Point2D[] _shape;
+		protected Point2D[] shapeValue;
 
-		protected Matrix2D _position;
+		protected Matrix2D positionValue;
 
 		#endregion
 		

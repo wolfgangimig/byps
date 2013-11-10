@@ -20,15 +20,15 @@ namespace byps.test.api.remote
 		}
 		public void Compare_HebrewC(byps.test.api.cons.HebrewZ ALEPH, byps.test.api.cons.HebrewZ BETH, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteConstants_compare_HebrewC req = new BRequest_RemoteConstants_compare_HebrewC();			
-			req._ALEPH = ALEPH;
-			req._BETH = BETH;
+			req.ALEPHValue = ALEPH;
+			req.BETHValue = BETH;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task Compare_HebrewCAsync(byps.test.api.cons.HebrewZ ALEPH, byps.test.api.cons.HebrewZ BETH){
 			BRequest_RemoteConstants_compare_HebrewC req = new BRequest_RemoteConstants_compare_HebrewC();			
-			req._ALEPH = ALEPH;
-			req._BETH = BETH;
+			req.ALEPHValue = ALEPH;
+			req.BETHValue = BETH;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -40,45 +40,45 @@ namespace byps.test.api.remote
 		}
 		public void Compare_AllTypesC(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, byps.test.api.cons.AllTypesZ[,] arrAll, BAsyncResult<bool> asyncResult) {
 			BRequest_RemoteConstants_compare_AllTypesC req = new BRequest_RemoteConstants_compare_AllTypesC();			
-			req._bool1s = bool1s;
-			req._bool2s = bool2s;
-			req._char1s = char1s;
-			req._stringNull = stringNull;
-			req._char2s = char2s;
-			req._short1s = short1s;
-			req._int1s = int1s;
-			req._long1s = long1s;
-			req._float1s = float1s;
-			req._double1s = double1s;
-			req._string1s = string1s;
-			req._ALL = ALL;
-			req._arrInt = arrInt;
-			req._arrInt4 = arrInt4;
-			req._arrStrings = arrStrings;
-			req._arrStrings4 = arrStrings4;
-			req._arrAll = arrAll;
+			req.bool1sValue = bool1s;
+			req.bool2sValue = bool2s;
+			req.char1sValue = char1s;
+			req.stringNullValue = stringNull;
+			req.char2sValue = char2s;
+			req.short1sValue = short1s;
+			req.int1sValue = int1s;
+			req.long1sValue = long1s;
+			req.float1sValue = float1s;
+			req.double1sValue = double1s;
+			req.string1sValue = string1s;
+			req.ALLValue = ALL;
+			req.arrIntValue = arrInt;
+			req.arrInt4Value = arrInt4;
+			req.arrStringsValue = arrStrings;
+			req.arrStrings4Value = arrStrings4;
+			req.arrAllValue = arrAll;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<bool> Compare_AllTypesCAsync(bool bool1s, bool bool2s, char char1s, String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, String string1s, byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[,,,] arrInt4, String[] arrStrings, String[,,,] arrStrings4, byps.test.api.cons.AllTypesZ[,] arrAll){
 			BRequest_RemoteConstants_compare_AllTypesC req = new BRequest_RemoteConstants_compare_AllTypesC();			
-			req._bool1s = bool1s;
-			req._bool2s = bool2s;
-			req._char1s = char1s;
-			req._stringNull = stringNull;
-			req._char2s = char2s;
-			req._short1s = short1s;
-			req._int1s = int1s;
-			req._long1s = long1s;
-			req._float1s = float1s;
-			req._double1s = double1s;
-			req._string1s = string1s;
-			req._ALL = ALL;
-			req._arrInt = arrInt;
-			req._arrInt4 = arrInt4;
-			req._arrStrings = arrStrings;
-			req._arrStrings4 = arrStrings4;
-			req._arrAll = arrAll;
+			req.bool1sValue = bool1s;
+			req.bool2sValue = bool2s;
+			req.char1sValue = char1s;
+			req.stringNullValue = stringNull;
+			req.char2sValue = char2s;
+			req.short1sValue = short1s;
+			req.int1sValue = int1s;
+			req.long1sValue = long1s;
+			req.float1sValue = float1s;
+			req.double1sValue = double1s;
+			req.string1sValue = string1s;
+			req.ALLValue = ALL;
+			req.arrIntValue = arrInt;
+			req.arrInt4Value = arrInt4;
+			req.arrStringsValue = arrStrings;
+			req.arrStrings4Value = arrStrings4;
+			req.arrAllValue = arrAll;
 			Task<bool> task = Task<bool>.Factory.FromAsync(transport.BeginSend<bool>, transport.EndSend<bool>, req, null);
 			return await task;
 		}

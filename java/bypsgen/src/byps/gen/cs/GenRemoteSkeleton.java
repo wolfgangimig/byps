@@ -152,7 +152,7 @@ class GenRemoteSkeleton {
     boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
-			String mname = pctxt.makeValidMemberName(pinfo.name);
+			String mname = pctxt.makeValidParamName(pinfo.name);
 			mpr = mpr.print(mname);
 		}
 		return mpr;

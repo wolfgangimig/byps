@@ -12,7 +12,6 @@ import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.utils.CodePrinter;
-import byps.gen.utils.Utils;
 
 class GenRemoteStub {
 	
@@ -57,7 +56,7 @@ class GenRemoteStub {
       if (pctxt.isSessionParam(rinfo, pinfo)) continue;
 		  
 			if (first) first = false; else mpr.print(", ");
-			String mname = pctxt.makeValidMemberName(pinfo.name);
+			String mname = pctxt.makeValidParamName(pinfo.name);
 			mpr.print(mname);
 		}
 		if (!first) mpr.print(", ");
@@ -118,8 +117,9 @@ class GenRemoteStub {
       // Skip authentication parameter
       if (pctxt.isSessionParam(rinfo, pinfo)) continue;
       
-      String mname = pctxt.makeValidMemberName(pinfo.name);
-      pr.print("req._").print(pinfo.name).print(" = ").print(mname).print(";").println();
+      String mname = pctxt.makeValidParamName(pinfo.name);
+      String memberName = pctxt.makeDataMemberName(pinfo.name);
+      pr.print("req.").print(memberName).print(" = ").print(mname).print(";").println();
     }
         
     pr.println("transport.sendMethod(req, asyncResult);");
@@ -145,8 +145,9 @@ class GenRemoteStub {
       // Skip authentication parameter
       if (pctxt.isSessionParam(rinfo, pinfo)) continue;
       
-      String mname = pctxt.makeValidMemberName(pinfo.name);
-      pr.print("req._").print(pinfo.name).print(" = ").print(mname).print(";").println();
+      String mname = pctxt.makeValidParamName(pinfo.name);
+      String memberName = pctxt.makeDataMemberName(pinfo.name);
+      pr.print("req.").print(memberName).print(" = ").print(mname).print(";").println();
     }
         
     String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
@@ -187,7 +188,7 @@ class GenRemoteStub {
       if (pctxt.isSessionParam(rinfo, pinfo)) continue;
 
       if (first) first = false; else mpr.print(", ");
-			String mname = pctxt.makeValidMemberName(pinfo.name);
+			String mname = pctxt.makeValidParamName(pinfo.name);
 			mpr.print(mname);
 		}
 		if (!first) mpr = mpr.print(", ");

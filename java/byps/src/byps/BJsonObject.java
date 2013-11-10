@@ -3,10 +3,9 @@ package byps;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
-
-import byps.BException;
 
 public class BJsonObject {
 	
@@ -196,6 +195,14 @@ public class BJsonObject {
       }
     }
     return v.toString();
+	}
+	
+	public final Date getDate(String name) {
+	  return BBufferJson.toDate(get(name));
+	}
+	
+	public final Date getDate(int i) {
+	  return BBufferJson.toDate(get(i));
 	}
 	
 	private final byte[] parseArrayByte(Object s) {

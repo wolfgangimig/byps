@@ -18,11 +18,11 @@ public class BSkeleton_LemonService extends BSkeleton implements LemonServiceAsy
 	
 	public final static long serialVersionUID = 605543968L;
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree, final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = pick(sess, fromTree);
@@ -32,11 +32,11 @@ public class BSkeleton_LemonService extends BSkeleton implements LemonServiceAsy
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String grow() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void grow(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = grow();
@@ -46,11 +46,11 @@ public class BSkeleton_LemonService extends BSkeleton implements LemonServiceAsy
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String squeeze() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void squeeze(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = squeeze();

@@ -40,8 +40,9 @@ public:
 	void serialize(int64_t& v);
 	void serialize(bool& b);
 	void serialize(wchar_t& c);
-    void serialize (float& v);
-    void serialize (double& v);
+    void serialize(float& v);
+    void serialize(double& v);
+	void serialize(BDateTime& v);
 
     void serializePointer(BPOINTER& p);
 

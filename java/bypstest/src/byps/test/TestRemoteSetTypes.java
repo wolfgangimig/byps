@@ -1,6 +1,7 @@
 package byps.test;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.TreeSet;
 
@@ -57,6 +58,7 @@ public class TestRemoteSetTypes {
 		obj.short1 = new HashSet<Short>(Arrays.asList((short)1));
 		obj.string1 = new HashSet<String>(Arrays.asList("a", "b", "c"));
 		obj.obj1 = new HashSet<Object>(Arrays.asList(new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() }));
+		obj.date1 = new HashSet<Date>(Arrays.asList(new Date(0)));
 
 		remote.setBoolean1(obj.boolean1);
 		TestUtils.assertEquals(log, "boolean1", obj.boolean1, remote.getBoolean1());
@@ -80,6 +82,8 @@ public class TestRemoteSetTypes {
 		TestUtils.assertEquals(log, "string1", obj.string1, remote.getString1());
 		remote.setObj1(obj.obj1);
 		TestUtils.assertEquals(log, "obj1", obj.obj1, remote.getObj1());
+		remote.setDate1(obj.date1);
+		TestUtils.assertEquals(log,  "date1", obj.date1, remote.getDate1());
 		
 		log.info(")testRemoteSetTypes");
 	}

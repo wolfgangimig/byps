@@ -1,6 +1,7 @@
 package byps.test;
 
 import java.nio.ByteBuffer;
+import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -361,7 +362,32 @@ public class TestSerializeArrays1dim {
 		TestUtils.assertEquals(log, "", obj, objR);
 	}
 	
-	
+	 @Test
+	  public void testArrayTypes1dimDate() throws BException {
+	    log.info("testArrayTypes1dimDate(");
+	    internalTestArrayTypes1dimDate(new Date[] {
+	        new Date(System.currentTimeMillis()),
+	        null,
+	        new Date(System.currentTimeMillis() + 1)
+	    });
+	    log.info(")testArrayTypes1dimDate");
+	  }
+
+	  protected void internalTestArrayTypes1dimDate(Date[] arr) throws BException {
+	    BOutput bout = transport.getOutput();
+	    
+	    ArrayTypes1dim obj = new ArrayTypes1dim();
+	    obj.date1 = arr;
+	    bout.store(obj);
+	    
+	    ByteBuffer buf = bout.toByteBuffer();
+	    TestUtils.printBuffer(log, buf);
+	    
+	    BInput bin = transport.getInput(null, buf);
+	    ArrayTypes1dim objR = (ArrayTypes1dim)bin.load();
+	    TestUtils.assertEquals(log, "", obj, objR);
+	  }
+
 	@Test
 	public void testArrayTypes1dimPimitiveTypes() throws BException {
 		log.info("testArrayTypes1dimPimitiveTypes(");

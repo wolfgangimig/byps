@@ -18,11 +18,11 @@ namespace byps.test.api.ver
 		public override int getRemoteId() { return 15377840; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				EvolveIF __byps__remoteT = (EvolveIF)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new byps.test.api.BResult_19());				
-				__byps__remoteT.SetEvolve(_obj, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.SetEvolve(objValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;
@@ -33,7 +33,7 @@ namespace byps.test.api.ver
 		
 		#region Fields
 		
-		internal Evolve _obj;
+		internal Evolve objValue;
 
 		#endregion
 		

@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteReferences_setNode obj = (BRequest_RemoteReferences_setNode)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._v, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.vValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteReferences_setNode obj = (BRequest_RemoteReferences_setNode)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteReferences_setNode()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._v = (byps.test.api.refs.Node)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.vValue = (byps.test.api.refs.Node)bin.readObj(false, null);
 			
 			return obj;
 		}

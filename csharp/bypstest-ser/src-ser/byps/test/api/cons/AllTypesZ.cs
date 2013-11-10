@@ -19,20 +19,20 @@ namespace byps.test.api.cons
 		}		
 		
 		internal AllTypesZ(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, String @string1, HebrewZ @hebrew1, byte[] @byte2, int[] @int2, String[] @string2, HebrewZ[] @hebrew2) {
-			this._bool1 = @bool1;
-			this._byte1 = @byte1;
-			this._char1 = @char1;
-			this._short1 = @short1;
-			this._int1 = @int1;
-			this._long1 = @long1;
-			this._float1 = @float1;
-			this._double1 = @double1;
-			this._string1 = @string1;
-			this._hebrew1 = @hebrew1;
-			this._byte2 = @byte2;
-			this._int2 = @int2;
-			this._string2 = @string2;
-			this._hebrew2 = @hebrew2;
+			this.bool1Value = @bool1;
+			this.byte1Value = @byte1;
+			this.char1Value = @char1;
+			this.short1Value = @short1;
+			this.int1Value = @int1;
+			this.long1Value = @long1;
+			this.float1Value = @float1;
+			this.double1Value = @double1;
+			this.string1Value = @string1;
+			this.hebrew1Value = @hebrew1;
+			this.byte2Value = @byte2;
+			this.int2Value = @int2;
+			this.string2Value = @string2;
+			this.hebrew2Value = @hebrew2;
 		}		
 		
 		#endregion
@@ -43,11 +43,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _bool1;
+				return bool1Value;
 			}
 			set
 			{
-				this._bool1 = value;
+				this.bool1Value = value;
 			}
 		}
 		
@@ -56,11 +56,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _byte1;
+				return byte1Value;
 			}
 			set
 			{
-				this._byte1 = value;
+				this.byte1Value = value;
 			}
 		}
 		
@@ -69,11 +69,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _char1;
+				return char1Value;
 			}
 			set
 			{
-				this._char1 = value;
+				this.char1Value = value;
 			}
 		}
 		
@@ -82,11 +82,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _short1;
+				return short1Value;
 			}
 			set
 			{
-				this._short1 = value;
+				this.short1Value = value;
 			}
 		}
 		
@@ -95,11 +95,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _int1;
+				return int1Value;
 			}
 			set
 			{
-				this._int1 = value;
+				this.int1Value = value;
 			}
 		}
 		
@@ -108,11 +108,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _long1;
+				return long1Value;
 			}
 			set
 			{
-				this._long1 = value;
+				this.long1Value = value;
 			}
 		}
 		
@@ -121,11 +121,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _float1;
+				return float1Value;
 			}
 			set
 			{
-				this._float1 = value;
+				this.float1Value = value;
 			}
 		}
 		
@@ -134,11 +134,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _double1;
+				return double1Value;
 			}
 			set
 			{
-				this._double1 = value;
+				this.double1Value = value;
 			}
 		}
 		
@@ -147,11 +147,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _string1;
+				return string1Value;
 			}
 			set
 			{
-				this._string1 = value;
+				this.string1Value = value;
 			}
 		}
 		
@@ -160,11 +160,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _hebrew1;
+				return hebrew1Value;
 			}
 			set
 			{
-				this._hebrew1 = value;
+				this.hebrew1Value = value;
 			}
 		}
 		
@@ -173,11 +173,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _byte2;
+				return byte2Value;
 			}
 			set
 			{
-				this._byte2 = value;
+				this.byte2Value = value;
 			}
 		}
 		
@@ -186,11 +186,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _int2;
+				return int2Value;
 			}
 			set
 			{
-				this._int2 = value;
+				this.int2Value = value;
 			}
 		}
 		
@@ -199,11 +199,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _string2;
+				return string2Value;
 			}
 			set
 			{
-				this._string2 = value;
+				this.string2Value = value;
 			}
 		}
 		
@@ -212,11 +212,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _hebrew2;
+				return hebrew2Value;
 			}
 			set
 			{
-				this._hebrew2 = value;
+				this.hebrew2Value = value;
 			}
 		}
 		
@@ -225,33 +225,33 @@ namespace byps.test.api.cons
 		
 		#region Fields
 		
-		protected bool _bool1;
+		protected bool bool1Value;
 
-		protected byte _byte1;
+		protected byte byte1Value;
 
-		protected char _char1;
+		protected char char1Value;
 
-		protected short _short1;
+		protected short short1Value;
 
-		protected int _int1;
+		protected int int1Value;
 
-		protected long _long1;
+		protected long long1Value;
 
-		protected float _float1;
+		protected float float1Value;
 
-		protected double _double1;
+		protected double double1Value;
 
-		protected String _string1;
+		protected String string1Value;
 
-		protected HebrewZ _hebrew1;
+		protected HebrewZ hebrew1Value;
 
-		protected byte[] _byte2;
+		protected byte[] byte2Value;
 
-		protected int[] _int2;
+		protected int[] int2Value;
 
-		protected String[] _string2;
+		protected String[] string2Value;
 
-		protected HebrewZ[] _hebrew2;
+		protected HebrewZ[] hebrew2Value;
 
 		#endregion
 		

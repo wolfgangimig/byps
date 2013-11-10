@@ -20,13 +20,13 @@ namespace byps.test.api.remote
 		}
 		public void SetBool(bool[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setBool req = new BRequest_RemoteArrayTypes4dim_setBool();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetBoolAsync(bool[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setBool req = new BRequest_RemoteArrayTypes4dim_setBool();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -38,13 +38,13 @@ namespace byps.test.api.remote
 		}
 		public void SetByte(byte[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setByte req = new BRequest_RemoteArrayTypes4dim_setByte();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetByteAsync(byte[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setByte req = new BRequest_RemoteArrayTypes4dim_setByte();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -56,13 +56,13 @@ namespace byps.test.api.remote
 		}
 		public void SetChar(char[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setChar req = new BRequest_RemoteArrayTypes4dim_setChar();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetCharAsync(char[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setChar req = new BRequest_RemoteArrayTypes4dim_setChar();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -74,13 +74,13 @@ namespace byps.test.api.remote
 		}
 		public void SetShort(short[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setShort req = new BRequest_RemoteArrayTypes4dim_setShort();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetShortAsync(short[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setShort req = new BRequest_RemoteArrayTypes4dim_setShort();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -92,13 +92,13 @@ namespace byps.test.api.remote
 		}
 		public void SetInt(int[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setInt req = new BRequest_RemoteArrayTypes4dim_setInt();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetIntAsync(int[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setInt req = new BRequest_RemoteArrayTypes4dim_setInt();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -110,13 +110,13 @@ namespace byps.test.api.remote
 		}
 		public void SetLong(long[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setLong req = new BRequest_RemoteArrayTypes4dim_setLong();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetLongAsync(long[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setLong req = new BRequest_RemoteArrayTypes4dim_setLong();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -128,13 +128,13 @@ namespace byps.test.api.remote
 		}
 		public void SetFloat(float[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setFloat req = new BRequest_RemoteArrayTypes4dim_setFloat();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetFloatAsync(float[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setFloat req = new BRequest_RemoteArrayTypes4dim_setFloat();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -146,13 +146,13 @@ namespace byps.test.api.remote
 		}
 		public void SetDouble(double[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setDouble req = new BRequest_RemoteArrayTypes4dim_setDouble();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetDoubleAsync(double[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setDouble req = new BRequest_RemoteArrayTypes4dim_setDouble();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -164,13 +164,13 @@ namespace byps.test.api.remote
 		}
 		public void SetString(String[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setString req = new BRequest_RemoteArrayTypes4dim_setString();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetStringAsync(String[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setString req = new BRequest_RemoteArrayTypes4dim_setString();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -182,13 +182,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setPrimitiveTypes req = new BRequest_RemoteArrayTypes4dim_setPrimitiveTypes();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPrimitiveTypesAsync(byps.test.api.prim.PrimitiveTypes[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setPrimitiveTypes req = new BRequest_RemoteArrayTypes4dim_setPrimitiveTypes();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -200,13 +200,31 @@ namespace byps.test.api.remote
 		}
 		public void SetObject(Object[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setObject req = new BRequest_RemoteArrayTypes4dim_setObject();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetObjectAsync(Object[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setObject req = new BRequest_RemoteArrayTypes4dim_setObject();			
-			req._v = v;
+			req.vValue = v;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
+		}
+		
+		public void SetDate(java.util.Date[,,,] v) {
+			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
+			SetDate(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
+			asyncResult.GetResult();			
+		}
+		public void SetDate(java.util.Date[,,,] v, BAsyncResult<Object> asyncResult) {
+			BRequest_RemoteArrayTypes4dim_setDate req = new BRequest_RemoteArrayTypes4dim_setDate();			
+			req.vValue = v;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task SetDateAsync(java.util.Date[,,,] v){
+			BRequest_RemoteArrayTypes4dim_setDate req = new BRequest_RemoteArrayTypes4dim_setDate();			
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -384,6 +402,22 @@ namespace byps.test.api.remote
 		public async Task<Object[,,,]> GetObjectAsync(){
 			BRequest_RemoteArrayTypes4dim_getObject req = new BRequest_RemoteArrayTypes4dim_getObject();			
 			Task<Object[,,,]> task = Task<Object[,,,]>.Factory.FromAsync(transport.BeginSend<Object[,,,]>, transport.EndSend<Object[,,,]>, req, null);
+			return await task;
+		}
+		
+		public java.util.Date[,,,] GetDate() {
+			BSyncResult<java.util.Date[,,,]> asyncResult = new BSyncResult<java.util.Date[,,,]>();			
+			GetDate(BAsyncResultHelper.ToDelegate<java.util.Date[,,,]>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public void GetDate(BAsyncResult<java.util.Date[,,,]> asyncResult) {
+			BRequest_RemoteArrayTypes4dim_getDate req = new BRequest_RemoteArrayTypes4dim_getDate();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<java.util.Date[,,,]> GetDateAsync(){
+			BRequest_RemoteArrayTypes4dim_getDate req = new BRequest_RemoteArrayTypes4dim_getDate();			
+			Task<java.util.Date[,,,]> task = Task<java.util.Date[,,,]>.Factory.FromAsync(transport.BeginSend<java.util.Date[,,,]>, transport.EndSend<java.util.Date[,,,]>, req, null);
 			return await task;
 		}
 		

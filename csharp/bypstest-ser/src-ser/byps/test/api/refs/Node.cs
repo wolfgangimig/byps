@@ -19,10 +19,10 @@ namespace byps.test.api.refs
 		}		
 		
 		internal Node(Node @next, Node @me, IDictionary<String,Node> @mapOfNodes, IList<Node> @listOfNodes) {
-			this._next = @next;
-			this._me = @me;
-			this._mapOfNodes = @mapOfNodes;
-			this._listOfNodes = @listOfNodes;
+			this.nextValue = @next;
+			this.meValue = @me;
+			this.mapOfNodesValue = @mapOfNodes;
+			this.listOfNodesValue = @listOfNodes;
 		}		
 		
 		#endregion
@@ -33,11 +33,11 @@ namespace byps.test.api.refs
 		{
 			get
 			{
-				return _next;
+				return nextValue;
 			}
 			set
 			{
-				this._next = value;
+				this.nextValue = value;
 			}
 		}
 		
@@ -46,11 +46,11 @@ namespace byps.test.api.refs
 		{
 			get
 			{
-				return _me;
+				return meValue;
 			}
 			set
 			{
-				this._me = value;
+				this.meValue = value;
 			}
 		}
 		
@@ -59,11 +59,11 @@ namespace byps.test.api.refs
 		{
 			get
 			{
-				return _mapOfNodes;
+				return mapOfNodesValue;
 			}
 			set
 			{
-				this._mapOfNodes = value;
+				this.mapOfNodesValue = value;
 			}
 		}
 		
@@ -72,11 +72,11 @@ namespace byps.test.api.refs
 		{
 			get
 			{
-				return _listOfNodes;
+				return listOfNodesValue;
 			}
 			set
 			{
-				this._listOfNodes = value;
+				this.listOfNodesValue = value;
 			}
 		}
 		
@@ -85,13 +85,13 @@ namespace byps.test.api.refs
 		
 		#region Fields
 		
-		protected Node _next;
+		protected Node nextValue;
 
-		protected Node _me;
+		protected Node meValue;
 
-		protected IDictionary<String,Node> _mapOfNodes;
+		protected IDictionary<String,Node> mapOfNodesValue;
 
-		protected IList<Node> _listOfNodes;
+		protected IList<Node> listOfNodesValue;
 
 		#endregion
 		

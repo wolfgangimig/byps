@@ -92,7 +92,7 @@ BINLINE void BException::init(int32_t code, const wstring& msg, const wstring& d
 	data = byps_ptr<BExceptionData>(p);
 }
 
-BINLINE void BException::serialize(BIO& bio, const BVERSION version) {
+BINLINE void BException::serialize(BIO& bio, const BVERSION ) {
 
 	int32_t code = data ? data->code : 0;
 	std::wstring msg = data ? data->msg : L"";

@@ -176,7 +176,7 @@ public:
 	static PThreadPool createInstance();
 };
 
-BINLINE PThreadPool BThreadPool::create(void* app, int maxThreads) {
+BINLINE PThreadPool BThreadPool::create(void* , int maxThreads) {
 	PThreadPoolImpl tpool(new BThreadPoolImpl(maxThreads));
 	return tpool;
 }

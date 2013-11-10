@@ -32,9 +32,11 @@ public class JSerializer_49984088 extends JSerializer_13 {
 		return map;
 	}
 	
+	// checkpoint byps.gen.j.GenSerMapJson:80
 	@Override
 	protected void internalWriteKeyValue(final BOutputJson bout, final BBufferJson bbuf, final Object key, final Object value) throws BException {
 		final String keyName = key != null ? key.toString() : "";
+		// checkpoint byps.gen.j.PrintContext:313
 		bout.writeObj(keyName, value, false, byps.test.api.JSerializer_724129228.instance);
 	}
 	

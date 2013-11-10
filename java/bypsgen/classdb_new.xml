@@ -168,6 +168,26 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.BResult_1097919350</typeName>
+            <typeId>428832038</typeId>
+            <members>
+                <member>
+                    <name>result</name>
+                    <typeName>java.util.Set{java.util.Date}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.BResult_1174971318</typeName>
             <typeId>1068483136</typeId>
             <members>
@@ -408,6 +428,26 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.BResult_1366799209</typeName>
+            <typeId>1725564610</typeId>
+            <members>
+                <member>
+                    <name>result</name>
+                    <typeName>java.util.Map{java.lang.String,java.util.Date}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.BResult_1374008726</typeName>
             <typeId>1484626910</typeId>
             <members>
@@ -508,6 +548,26 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.BResult_1406664368</typeName>
+            <typeId>1980364794</typeId>
+            <members>
+                <member>
+                    <name>result</name>
+                    <typeName>java.util.Date[]</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.BResult_1457164460</typeName>
             <typeId>1111888832</typeId>
             <members>
@@ -594,6 +654,26 @@
                 <member>
                     <name>result</name>
                     <typeName>java.io.InputStream</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.BResult_1504867122</typeName>
+            <typeId>1210513700</typeId>
+            <members>
+                <member>
+                    <name>result</name>
+                    <typeName>java.util.List{java.util.Date}</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -774,6 +854,26 @@
                 <member>
                     <name>result</name>
                     <typeName>java.util.List{java.lang.Character}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.BResult_17</typeName>
+            <typeId>534004414</typeId>
+            <members>
+                <member>
+                    <name>result</name>
+                    <typeName>java.util.Date</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -1468,6 +1568,26 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.BResult_51898890</typeName>
+            <typeId>905019472</typeId>
+            <members>
+                <member>
+                    <name>result</name>
+                    <typeName>java.util.Date[][][][]</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.BResult_564008001</typeName>
             <typeId>1405156912</typeId>
             <members>
@@ -1946,6 +2066,15 @@
                 <member>
                     <name>string1</name>
                     <typeName>java.lang.String[]</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>date1</name>
+                    <typeName>java.util.Date[]</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -3177,6 +3306,15 @@
                     <since>0.0.0.0</since>
                 </member>
                 <member>
+                    <name>date1</name>
+                    <typeName>java.util.List{java.util.Date}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
                     <name>primitiveTypes1</name>
                     <typeName>java.util.List{byps.test.api.prim.PrimitiveTypes}</typeName>
                     <isTransient>false</isTransient>
@@ -3349,6 +3487,15 @@
                     <access>PUBLIC</access>
                     <since>0.0.0.0</since>
                 </member>
+                <member>
+                    <name>date1</name>
+                    <typeName>java.util.Map{java.lang.String,java.util.Date}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
             </members>
             <comments/>
             <baseFullName></baseFullName>
@@ -3455,6 +3602,15 @@
                 <member>
                     <name>stringVal</name>
                     <typeName>java.lang.String</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>dateVal</name>
+                    <typeName>java.util.Date</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -3848,6 +4004,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDate</typeName>
+            <typeId>2033462920</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble</typeName>
             <typeId>39293909</typeId>
             <members/>
@@ -3974,6 +4140,26 @@
                 <member>
                     <name>v</name>
                     <typeName>char[]</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDate</typeName>
+            <typeId>201394796</typeId>
+            <members>
+                <member>
+                    <name>v</name>
+                    <typeName>java.util.Date[]</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -4368,6 +4554,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDate</typeName>
+            <typeId>1874256219</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble</typeName>
             <typeId>1555969784</typeId>
             <members/>
@@ -4494,6 +4690,26 @@
                 <member>
                     <name>v</name>
                     <typeName>char[][][][]</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDate</typeName>
+            <typeId>185853361</typeId>
+            <members>
+                <member>
+                    <name>v</name>
+                    <typeName>java.util.Date[][][][]</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -5111,6 +5327,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getDate1</typeName>
+            <typeId>609618461</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getDouble1</typeName>
             <typeId>2129490906</typeId>
             <members/>
@@ -5287,6 +5513,26 @@
                 <member>
                     <name>char1</name>
                     <typeName>java.util.List{java.lang.Character}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setDate1</typeName>
+            <typeId>48506001</typeId>
+            <members>
+                <member>
+                    <name>obj1</name>
+                    <typeName>java.util.List{java.util.Date}</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -5561,6 +5807,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getDate1</typeName>
+            <typeId>123590589</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1</typeName>
             <typeId>1890230400</typeId>
             <members/>
@@ -5717,6 +5973,26 @@
                 <member>
                     <name>char1</name>
                     <typeName>java.util.TreeMap{java.lang.Float,java.lang.Character}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setDate1</typeName>
+            <typeId>684703049</typeId>
+            <members>
+                <member>
+                    <name>obj1</name>
+                    <typeName>java.util.Map{java.lang.String,java.util.Date}</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -5970,6 +6246,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDate</typeName>
+            <typeId>1816111357</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble</typeName>
             <typeId>1513332250</typeId>
             <members/>
@@ -6043,6 +6329,100 @@
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString</typeName>
             <typeId>1079359962</typeId>
             <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_makeDate</typeName>
+            <typeId>1918934973</typeId>
+            <members>
+                <member>
+                    <name>year</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>month</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>day</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>hour</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>minute</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>second</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>millisecond</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_parseDate</typeName>
+            <typeId>578007072</typeId>
+            <members>
+                <member>
+                    <name>date</name>
+                    <typeName>java.util.Date</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
             <comments/>
             <baseFullName></baseFullName>
             <isInline>false</isInline>
@@ -6197,6 +6577,26 @@
                 <member>
                     <name>v</name>
                     <typeName>char</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDate</typeName>
+            <typeId>243998223</typeId>
+            <members>
+                <member>
+                    <name>v</name>
+                    <typeName>java.util.Date</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -6539,6 +6939,16 @@
             <isFinal>true</isFinal>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getDate1</typeName>
+            <typeId>900563767</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1</typeName>
             <typeId>1751651450</typeId>
             <members/>
@@ -6695,6 +7105,26 @@
                 <member>
                     <name>char1</name>
                     <typeName>java.util.TreeSet{java.lang.Character}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setDate1</typeName>
+            <typeId>1461676227</typeId>
+            <members>
+                <member>
+                    <name>obj1</name>
+                    <typeName>java.util.Set{java.util.Date}</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -7219,6 +7649,15 @@
                 <member>
                     <name>obj1</name>
                     <typeName>java.util.Set{java.lang.Object}</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+                <member>
+                    <name>date1</name>
+                    <typeName>java.util.Set{java.util.Date}</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -8662,6 +9101,26 @@
             <isFinal>false</isFinal>
         </serial>
         <serial>
+            <typeName>java.util.Date[]</typeName>
+            <typeId>1406664368</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>false</isFinal>
+        </serial>
+        <serial>
+            <typeName>java.util.Date[][][][]</typeName>
+            <typeId>51898890</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>false</isFinal>
+        </serial>
+        <serial>
             <typeName>java.util.HashMap{java.lang.Double,java.lang.Byte}</typeName>
             <typeId>1972793385</typeId>
             <members/>
@@ -8844,6 +9303,16 @@
         <serial>
             <typeName>java.util.List{java.lang.String}</typeName>
             <typeId>2123584667</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>false</isFinal>
+        </serial>
+        <serial>
+            <typeName>java.util.List{java.util.Date}</typeName>
+            <typeId>1504867122</typeId>
             <members/>
             <comments/>
             <baseFullName></baseFullName>
@@ -9082,6 +9551,16 @@
             <isFinal>false</isFinal>
         </serial>
         <serial>
+            <typeName>java.util.Map{java.lang.String,java.util.Date}</typeName>
+            <typeId>1366799209</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>false</isFinal>
+        </serial>
+        <serial>
             <typeName>java.util.Set{byps.test.api.inherit.Class1}</typeName>
             <typeId>484881308</typeId>
             <members/>
@@ -9184,6 +9663,16 @@
         <serial>
             <typeName>java.util.Set{java.lang.String}</typeName>
             <typeId>1888799711</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>false</isFinal>
+        </serial>
+        <serial>
+            <typeName>java.util.Set{java.util.Date}</typeName>
+            <typeId>1097919350</typeId>
             <members/>
             <comments/>
             <baseFullName></baseFullName>
@@ -9518,6 +10007,14 @@
                     <comments/>
                 </method>
                 <method>
+                    <name>setDate</name>
+                    <remoteName>byps.test.api.remote.RemoteArrayTypes1dim</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
                     <name>getBool</name>
                     <remoteName>byps.test.api.remote.RemoteArrayTypes1dim</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool</requestTypeName>
@@ -9602,6 +10099,14 @@
                     <remoteName>byps.test.api.remote.RemoteArrayTypes1dim</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject</requestTypeName>
                     <resultTypeName>byps.test.api.BResult_183594037</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>getDate</name>
+                    <remoteName>byps.test.api.remote.RemoteArrayTypes1dim</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_1406664368</resultTypeName>
                     <exceptionTypeNames/>
                     <comments/>
                 </method>
@@ -9755,6 +10260,14 @@
                     <comments/>
                 </method>
                 <method>
+                    <name>setDate</name>
+                    <remoteName>byps.test.api.remote.RemoteArrayTypes4dim</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
                     <name>getBool</name>
                     <remoteName>byps.test.api.remote.RemoteArrayTypes4dim</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool</requestTypeName>
@@ -9839,6 +10352,14 @@
                     <remoteName>byps.test.api.remote.RemoteArrayTypes4dim</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject</requestTypeName>
                     <resultTypeName>byps.test.api.BResult_124584219</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>getDate</name>
+                    <remoteName>byps.test.api.remote.RemoteArrayTypes4dim</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_51898890</resultTypeName>
                     <exceptionTypeNames/>
                     <comments/>
                 </method>
@@ -10221,6 +10742,22 @@
                     <comments/>
                 </method>
                 <method>
+                    <name>setDate1</name>
+                    <remoteName>byps.test.api.remote.RemoteListTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteListTypes_setDate1</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>getDate1</name>
+                    <remoteName>byps.test.api.remote.RemoteListTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteListTypes_getDate1</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_1504867122</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
                     <name>getInt3</name>
                     <remoteName>byps.test.api.remote.RemoteListTypes</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemoteListTypes_getInt3</requestTypeName>
@@ -10468,6 +11005,22 @@
                     <exceptionTypeNames/>
                     <comments/>
                 </method>
+                <method>
+                    <name>getDate1</name>
+                    <remoteName>byps.test.api.remote.RemoteMapTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteMapTypes_getDate1</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_1366799209</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>setDate1</name>
+                    <remoteName>byps.test.api.remote.RemoteMapTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteMapTypes_setDate1</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
             </methods>
             <comments/>
         </remote>
@@ -10573,6 +11126,14 @@
                     <comments/>
                 </method>
                 <method>
+                    <name>setDate</name>
+                    <remoteName>byps.test.api.remote.RemotePrimitiveTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
                     <name>getBool</name>
                     <remoteName>byps.test.api.remote.RemotePrimitiveTypes</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool</requestTypeName>
@@ -10661,6 +11222,14 @@
                     <comments/>
                 </method>
                 <method>
+                    <name>getDate</name>
+                    <remoteName>byps.test.api.remote.RemotePrimitiveTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_17</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
                     <name>sendAllTypes</name>
                     <remoteName>byps.test.api.remote.RemotePrimitiveTypes</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes</requestTypeName>
@@ -10673,6 +11242,22 @@
                     <remoteName>byps.test.api.remote.RemotePrimitiveTypes</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_add</requestTypeName>
                     <resultTypeName>byps.test.api.BResult_5</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>makeDate</name>
+                    <remoteName>byps.test.api.remote.RemotePrimitiveTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_makeDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_17</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>parseDate</name>
+                    <remoteName>byps.test.api.remote.RemotePrimitiveTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_parseDate</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_100361105</resultTypeName>
                     <exceptionTypeNames/>
                     <comments/>
                 </method>
@@ -10953,6 +11538,22 @@
                     <remoteName>byps.test.api.remote.RemoteSetTypes</remoteName>
                     <requestTypeName>byps.test.api.remote.BRequest_RemoteSetTypes_setObj1</requestTypeName>
                     <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>setDate1</name>
+                    <remoteName>byps.test.api.remote.RemoteSetTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteSetTypes_setDate1</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments/>
+                </method>
+                <method>
+                    <name>getDate1</name>
+                    <remoteName>byps.test.api.remote.RemoteSetTypes</remoteName>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteSetTypes_getDate1</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_1097919350</resultTypeName>
                     <exceptionTypeNames/>
                     <comments/>
                 </method>

@@ -101,14 +101,18 @@ public class PrintContext extends PrintContextBase {
 		file = new File(file, tdescClassName + ".cs");
 		return new CodePrinter(new FileOutputStream(file));
 	}
+	
+	String makeDataMemberName(String name) {
+	  return name + "Value";
+	}
 
 	String getterForMember(String name, boolean isPrivate, TypeInfo tinfo, boolean useGetter) throws GeneratorException {
-		if (!useGetter) return "_" + name;
+		if (!useGetter) return makeDataMemberName(name);
 		return makePublicMemberName(name);
 	}
 		
 	private String setterForMember(String name, boolean isPrivate, String value, boolean useSetter) throws GeneratorException {
-		if (!useSetter) return "_" + name + " = " + value;
+		if (!useSetter) return makeDataMemberName(name) + " = " + value;
 		return makePublicMemberName(name) + " = " + value;
 	}
 	
@@ -239,7 +243,7 @@ public class PrintContext extends PrintContextBase {
             
       if (first) first = false; else mpr.print(", ");
       cstype = toCSharp(pinfo.type);
-      String mname = makeValidMemberName(pinfo.name);
+      String mname = makeValidParamName(pinfo.name);
       mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
     }
     
@@ -269,7 +273,7 @@ public class PrintContext extends PrintContextBase {
             
       if (first) first = false; else mpr.print(", ");
       TypeInfo cstype = toCSharp(pinfo.type);
-      String mname = makeValidMemberName(pinfo.name);
+      String mname = makeValidParamName(pinfo.name);
       mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
     }
     
@@ -294,7 +298,7 @@ public class PrintContext extends PrintContextBase {
             
       if (first) first = false; else mpr.print(", ");
       TypeInfo cstype = toCSharp(pinfo.type);
-      String mname = makeValidMemberName(pinfo.name);
+      String mname = makeValidParamName(pinfo.name);
       mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
     }
     
@@ -325,7 +329,7 @@ public class PrintContext extends PrintContextBase {
 
       if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);
-			String mname = makeValidMemberName(pinfo.name);
+			String mname = makeValidParamName(pinfo.name);
 			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
 		}
 		
@@ -355,7 +359,7 @@ public class PrintContext extends PrintContextBase {
 
 
 	
-	public String makeValidMemberName(String mname) {
+	public String makeValidParamName(String mname) {
 	  if (Keywords.csharpKeywords.contains(mname)) return "@" + mname;
 		return mname;
 	}
@@ -373,7 +377,7 @@ public class PrintContext extends PrintContextBase {
 
       if (first) first = false; else mpr.print(", ");
 			TypeInfo cstype = toCSharp(pinfo.type);
-			String mname = makeValidMemberName(pinfo.name);
+			String mname = makeValidParamName(pinfo.name);
 			mpr.print(cstype.toString(rinfo.pack)).print(" ").print(mname);
 		}
 		
@@ -438,7 +442,8 @@ public class PrintContext extends PrintContextBase {
 
 	protected void printStreamGetMember(CodePrinter pr, BBinaryModel pformat, String objName, String memberKey, String memberName, boolean isPrivate, TypeInfo tinfo, boolean useSetter) throws IOException {
 		// pr.println("// printStreamGetMember(" + pformat + ", objName=" + objName + ", memberKey=" + memberKey + ", memberName=" + memberName + ", isPrivate=" + isPrivate + ", tinfo=" + tinfo);
-		
+    pr.checkpoint();
+	
 		if (pformat == BBinaryModel.JSON && tinfo.isByteArray1dim()) {
 			// byte[] is serialized as Base64 encoded String
 			pr.print(objName).print(setterForMember(memberName, isPrivate, "js.getArrayByte(\"" + memberKey + "\")", useSetter))
@@ -482,6 +487,7 @@ public class PrintContext extends PrintContextBase {
 	
 	protected void printStreamPutMember(CodePrinter pr, BBinaryModel pformat, String objName, String memberKey, String memberName, boolean isPrivate, TypeInfo tinfo, boolean useGetter) throws IOException {
 		// pr.println("// printStreamPutMember(" + pformat + ", objName=" + objName + ", memberKey=" + memberKey + ", memberName=" + memberName + ", isPrivate=" + isPrivate + ", tinfo=" + tinfo);
+    pr.checkpoint();
 		
 		String memberGetter = objName + getterForMember(memberName, isPrivate, tinfo, useGetter);
 		

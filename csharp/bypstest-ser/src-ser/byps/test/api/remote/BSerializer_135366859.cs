@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteServerCtrl_removePublishedRemote obj = (BRequest_RemoteServerCtrl_removePublishedRemote)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putString(obj._name);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putString(obj.nameValue);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteServerCtrl_removePublishedRemote obj = (BRequest_RemoteServerCtrl_removePublishedRemote)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteServerCtrl_removePublishedRemote()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._name = bbuf.getString();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.nameValue = bbuf.getString();
 			
 			return obj;
 		}

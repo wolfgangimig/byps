@@ -22,27 +22,27 @@ namespace byps.test.api.priv
 		}		
 		
 		internal PrivateMembers(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, byps.test.api.prim.PrimitiveTypes @primitiveTypes, bool[] @arrBool, int[] @arrInt, String[] @arrString, byps.test.api.prim.PrimitiveTypes[] @arrPrimitiveTypes, IList<bool> @listBool, IList<int> @listInt, IList<String> @listString, IList<byps.test.api.prim.PrimitiveTypes> @listPrimitiveTypes, IDictionary<int,IList<String>> @mapIntListString, int @protInt, int @pprotInt) {
-			this._boolVal = @boolVal;
-			this._byteVal = @byteVal;
-			this._charVal = @charVal;
-			this._shortVal = @shortVal;
-			this._intVal = @intVal;
-			this._longVal = @longVal;
-			this._floatVal = @floatVal;
-			this._doubleVal = @doubleVal;
-			this._stringVal = @stringVal;
-			this._primitiveTypes = @primitiveTypes;
-			this._arrBool = @arrBool;
-			this._arrInt = @arrInt;
-			this._arrString = @arrString;
-			this._arrPrimitiveTypes = @arrPrimitiveTypes;
-			this._listBool = @listBool;
-			this._listInt = @listInt;
-			this._listString = @listString;
-			this._listPrimitiveTypes = @listPrimitiveTypes;
-			this._mapIntListString = @mapIntListString;
-			this._protInt = @protInt;
-			this._pprotInt = @pprotInt;
+			this.boolValValue = @boolVal;
+			this.byteValValue = @byteVal;
+			this.charValValue = @charVal;
+			this.shortValValue = @shortVal;
+			this.intValValue = @intVal;
+			this.longValValue = @longVal;
+			this.floatValValue = @floatVal;
+			this.doubleValValue = @doubleVal;
+			this.stringValValue = @stringVal;
+			this.primitiveTypesValue = @primitiveTypes;
+			this.arrBoolValue = @arrBool;
+			this.arrIntValue = @arrInt;
+			this.arrStringValue = @arrString;
+			this.arrPrimitiveTypesValue = @arrPrimitiveTypes;
+			this.listBoolValue = @listBool;
+			this.listIntValue = @listInt;
+			this.listStringValue = @listString;
+			this.listPrimitiveTypesValue = @listPrimitiveTypes;
+			this.mapIntListStringValue = @mapIntListString;
+			this.protIntValue = @protInt;
+			this.pprotIntValue = @pprotInt;
 		}		
 		
 		#endregion
@@ -53,11 +53,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _boolVal;
+				return boolValValue;
 			}
 			set
 			{
-				this._boolVal = value;
+				this.boolValValue = value;
 			}
 		}
 		
@@ -66,11 +66,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _byteVal;
+				return byteValValue;
 			}
 			set
 			{
-				this._byteVal = value;
+				this.byteValValue = value;
 			}
 		}
 		
@@ -79,11 +79,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _charVal;
+				return charValValue;
 			}
 			set
 			{
-				this._charVal = value;
+				this.charValValue = value;
 			}
 		}
 		
@@ -92,11 +92,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _shortVal;
+				return shortValValue;
 			}
 			set
 			{
-				this._shortVal = value;
+				this.shortValValue = value;
 			}
 		}
 		
@@ -105,11 +105,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _intVal;
+				return intValValue;
 			}
 			set
 			{
-				this._intVal = value;
+				this.intValValue = value;
 			}
 		}
 		
@@ -118,11 +118,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _longVal;
+				return longValValue;
 			}
 			set
 			{
-				this._longVal = value;
+				this.longValValue = value;
 			}
 		}
 		
@@ -131,11 +131,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _floatVal;
+				return floatValValue;
 			}
 			set
 			{
-				this._floatVal = value;
+				this.floatValValue = value;
 			}
 		}
 		
@@ -144,11 +144,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _doubleVal;
+				return doubleValValue;
 			}
 			set
 			{
-				this._doubleVal = value;
+				this.doubleValValue = value;
 			}
 		}
 		
@@ -157,11 +157,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _stringVal;
+				return stringValValue;
 			}
 			set
 			{
-				this._stringVal = value;
+				this.stringValValue = value;
 			}
 		}
 		
@@ -170,11 +170,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _primitiveTypes;
+				return primitiveTypesValue;
 			}
 			set
 			{
-				this._primitiveTypes = value;
+				this.primitiveTypesValue = value;
 			}
 		}
 		
@@ -183,11 +183,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _arrBool;
+				return arrBoolValue;
 			}
 			set
 			{
-				this._arrBool = value;
+				this.arrBoolValue = value;
 			}
 		}
 		
@@ -196,11 +196,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _arrInt;
+				return arrIntValue;
 			}
 			set
 			{
-				this._arrInt = value;
+				this.arrIntValue = value;
 			}
 		}
 		
@@ -209,11 +209,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _arrString;
+				return arrStringValue;
 			}
 			set
 			{
-				this._arrString = value;
+				this.arrStringValue = value;
 			}
 		}
 		
@@ -222,11 +222,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _arrPrimitiveTypes;
+				return arrPrimitiveTypesValue;
 			}
 			set
 			{
-				this._arrPrimitiveTypes = value;
+				this.arrPrimitiveTypesValue = value;
 			}
 		}
 		
@@ -235,11 +235,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _listBool;
+				return listBoolValue;
 			}
 			set
 			{
-				this._listBool = value;
+				this.listBoolValue = value;
 			}
 		}
 		
@@ -248,11 +248,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _listInt;
+				return listIntValue;
 			}
 			set
 			{
-				this._listInt = value;
+				this.listIntValue = value;
 			}
 		}
 		
@@ -261,11 +261,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _listString;
+				return listStringValue;
 			}
 			set
 			{
-				this._listString = value;
+				this.listStringValue = value;
 			}
 		}
 		
@@ -274,11 +274,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _listPrimitiveTypes;
+				return listPrimitiveTypesValue;
 			}
 			set
 			{
-				this._listPrimitiveTypes = value;
+				this.listPrimitiveTypesValue = value;
 			}
 		}
 		
@@ -287,11 +287,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _mapIntListString;
+				return mapIntListStringValue;
 			}
 			set
 			{
-				this._mapIntListString = value;
+				this.mapIntListStringValue = value;
 			}
 		}
 		
@@ -300,11 +300,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _protInt;
+				return protIntValue;
 			}
 			set
 			{
-				this._protInt = value;
+				this.protIntValue = value;
 			}
 		}
 		
@@ -313,11 +313,11 @@ namespace byps.test.api.priv
 		{
 			get
 			{
-				return _pprotInt;
+				return pprotIntValue;
 			}
 			set
 			{
-				this._pprotInt = value;
+				this.pprotIntValue = value;
 			}
 		}
 		
@@ -326,47 +326,47 @@ namespace byps.test.api.priv
 		
 		#region Fields
 		
-		protected bool _boolVal;
+		protected bool boolValValue;
 
-		protected byte _byteVal;
+		protected byte byteValValue;
 
-		protected char _charVal;
+		protected char charValValue;
 
-		protected short _shortVal;
+		protected short shortValValue;
 
-		protected int _intVal;
+		protected int intValValue;
 
-		protected long _longVal;
+		protected long longValValue;
 
-		protected float _floatVal;
+		protected float floatValValue;
 
-		protected double _doubleVal;
+		protected double doubleValValue;
 
-		protected String _stringVal;
+		protected String stringValValue;
 
-		protected byps.test.api.prim.PrimitiveTypes _primitiveTypes;
+		protected byps.test.api.prim.PrimitiveTypes primitiveTypesValue;
 
-		protected bool[] _arrBool;
+		protected bool[] arrBoolValue;
 
-		protected int[] _arrInt;
+		protected int[] arrIntValue;
 
-		protected String[] _arrString;
+		protected String[] arrStringValue;
 
-		protected byps.test.api.prim.PrimitiveTypes[] _arrPrimitiveTypes;
+		protected byps.test.api.prim.PrimitiveTypes[] arrPrimitiveTypesValue;
 
-		protected IList<bool> _listBool;
+		protected IList<bool> listBoolValue;
 
-		protected IList<int> _listInt;
+		protected IList<int> listIntValue;
 
-		protected IList<String> _listString;
+		protected IList<String> listStringValue;
 
-		protected IList<byps.test.api.prim.PrimitiveTypes> _listPrimitiveTypes;
+		protected IList<byps.test.api.prim.PrimitiveTypes> listPrimitiveTypesValue;
 
-		protected IDictionary<int,IList<String>> _mapIntListString;
+		protected IDictionary<int,IList<String>> mapIntListStringValue;
 
-		protected int _protInt;
+		protected int protIntValue;
 
-		protected int _pprotInt;
+		protected int pprotIntValue;
 
 		#endregion
 		

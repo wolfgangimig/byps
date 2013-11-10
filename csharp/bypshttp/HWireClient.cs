@@ -17,7 +17,7 @@ namespace byps
         {
             this.url = url;
             this.timeoutMillisClient = timeoutSeconds * 1000;
-            this._testAdapter = new HTestAdapter(this);
+            this.testAdapterVal = new HTestAdapter(this);
         }
 
         private class AsyncResultAfterAllRequests : BAsyncResultIF<BMessage> 
@@ -263,7 +263,7 @@ namespace byps
             }
  
             conn.Accept = "application/json, application/byps, text/plain, text/html";
-            if ((this.flags & BWireFlags.GZIP) != 0) conn.Headers.Add("Accept-Encoding", "gzip");
+            if ((this.flagsVal & BWireFlags.GZIP) != 0) conn.Headers.Add("Accept-Encoding", "gzip");
 
             applySession(conn);
 
@@ -294,7 +294,7 @@ namespace byps
             if (log.isDebugEnabled()) log.debug("getRequestStreamCallback(" + requestToCancel);
             try
             {
-                HttpWebRequest conn = requestToCancel.conn;
+                HttpWebRequest conn = requestToCancel.getConnection();
                 Stream postStream = conn.EndGetRequestStream(asynchronousResult);
                 if (requestToCancel.buf != null)
                 {
@@ -340,10 +340,10 @@ namespace byps
             HttpWebResponse response = null;
             ByteBuffer returnBuffer = null;
             Exception returnException = null;
+            HttpWebRequest conn = requestToCancel.getConnection();
 
             try
             {
-                HttpWebRequest conn = requestToCancel.conn;
                 response = (HttpWebResponse)conn.EndGetResponse(asynchronousResult);
                 if (log.isDebugEnabled()) log.debug("status=" + response.StatusCode);
                 if (response.StatusCode != HttpStatusCode.OK)
@@ -352,7 +352,7 @@ namespace byps
                 }
                 else
                 {
-                    saveSession(requestToCancel.conn);
+                    saveSession(conn);
 
                     if (log.isDebugEnabled()) log.debug("bufferFromStream");
 
@@ -572,11 +572,11 @@ namespace byps
             public readonly HWireClient wire;
             public readonly int timeoutMillisClient;
             public readonly int timeoutMillisRequest;
-		    protected volatile bool _canceled;
-            protected int isOpen;
+		    private volatile bool _canceled;
+            private int isOpen;
 
-            public volatile HttpWebRequest conn;
-            protected readonly long id;
+            private HttpWebRequest conn;
+            private readonly long id;
             private static long requestCounter;
 
             public readonly ERequestDirection requestDirection;
@@ -607,12 +607,23 @@ namespace byps
 		
 		    public void setConnection(HttpWebRequest conn) {
 			    if (log.isDebugEnabled()) log.debug("setConnection" + this + "(conn=" + conn);
-                throwIfCancelled();
-                this.conn = conn;
-                conn.Timeout = timeoutMillisClient;
-                conn.ReadWriteTimeout = timeoutMillisRequest;
+                lock (this)
+                {
+                    throwIfCancelled();
+                    this.conn = conn;
+                    conn.Timeout = timeoutMillisClient;
+                    conn.ReadWriteTimeout = timeoutMillisRequest;
+                }
 			    if (log.isDebugEnabled()) log.debug(")setConnection");
 		    }
+
+            public HttpWebRequest getConnection()
+            {
+                lock (this)
+                {
+                    return this.conn;
+                }
+            }
 		
 		    public void throwIfCancelled() {
                 if (_canceled) throw new BException(BExceptionC.CANCELLED, "Request cancelled");
@@ -811,7 +822,7 @@ namespace byps
 
         public override BTestAdapter getTestAdapter()
         {
-            return _testAdapter;
+            return testAdapterVal;
         }
 
        	internal String testAdapter(String fnct, String[] args) {
@@ -905,10 +916,10 @@ namespace byps
         protected String url;
 	    protected readonly static int CHUNK_SIZE = 10 * 1000;
 	    protected bool compressStream = false;
-	    protected volatile bool _cancelAllRequests;
+	    private volatile bool _cancelAllRequests;
         readonly ConcurrentDictionary<long, RequestToCancel> openRequestsToCancel = new ConcurrentDictionary<long, RequestToCancel>();
         protected CookieContainer cookieJar = new CookieContainer();
-        protected readonly BTestAdapter _testAdapter;
+        protected readonly BTestAdapter testAdapterVal;
         protected int timeoutMillisClient;
         private Log log = LogFactory.getLog(typeof(HWireClient));
         public enum ERequestDirection { FORWARD, REVERSE };

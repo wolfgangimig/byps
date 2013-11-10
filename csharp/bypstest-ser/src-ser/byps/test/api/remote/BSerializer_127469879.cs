@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteInlineInstance_setPoint2DMap obj = (BRequest_RemoteInlineInstance_setPoint2DMap)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._pointMap, false, byps.test.api.BSerializer_1358523233.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.pointMapValue, false, byps.test.api.BSerializer_1358523233.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteInlineInstance_setPoint2DMap obj = (BRequest_RemoteInlineInstance_setPoint2DMap)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteInlineInstance_setPoint2DMap()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._pointMap = (IDictionary<int,byps.test.api.inl.Point2D>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.pointMapValue = (IDictionary<int,byps.test.api.inl.Point2D>)bin.readObj(false, null);
 			
 			return obj;
 		}

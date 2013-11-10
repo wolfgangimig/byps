@@ -56,6 +56,10 @@ namespace byps.test.api.remote
 		void SetObject(Object[,,,] v, BAsyncResult<Object> asyncResult) ;
 		Task SetObjectAsync(Object[,,,] v);
 		
+		void SetDate(java.util.Date[,,,] v);
+		void SetDate(java.util.Date[,,,] v, BAsyncResult<Object> asyncResult) ;
+		Task SetDateAsync(java.util.Date[,,,] v);
+		
 		bool[,,,] GetBool();
 		void GetBool(BAsyncResult<bool[,,,]> asyncResult) ;
 		Task<bool[,,,]> GetBoolAsync();
@@ -99,6 +103,10 @@ namespace byps.test.api.remote
 		Object[,,,] GetObject();
 		void GetObject(BAsyncResult<Object[,,,]> asyncResult) ;
 		Task<Object[,,,]> GetObjectAsync();
+		
+		java.util.Date[,,,] GetDate();
+		void GetDate(BAsyncResult<java.util.Date[,,,]> asyncResult) ;
+		Task<java.util.Date[,,,]> GetDateAsync();
 		
 		
 	}

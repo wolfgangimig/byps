@@ -6,6 +6,9 @@
 
 #ifdef _MSC_VER
 
+#pragma warning (disable : 4512) // Assignment operators cannot be generated due to const members in some classes.
+
+
 #ifndef BSTD_SYMBOLS
 #define BSTD_SYMBOLS
 
@@ -42,10 +45,17 @@
 #include <ctime>
 
 namespace byps {
-inline struct tm* byps_localtime(struct tm* buf, const std::time_t* t) {
-    localtime_s(buf, t);
-    return buf;
+
+
+inline bool byps_localtime(struct tm* buf, const std::time_t* t) {
+    return localtime_s(buf, t) == 0;
 }
+
+inline bool byps_gmtime(struct tm* buf, const std::time_t* t) {
+	return gmtime_s(buf, t) == 0;
+}
+
+
 }
 
 #endif // BSTD_SYMBOLS

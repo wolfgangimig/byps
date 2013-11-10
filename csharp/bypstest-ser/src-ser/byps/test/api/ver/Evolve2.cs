@@ -19,7 +19,7 @@ namespace byps.test.api.ver
 		}		
 		
 		internal Evolve2(int @n1) {
-			this._n1 = @n1;
+			this.n1Value = @n1;
 		}		
 		
 		#endregion
@@ -30,11 +30,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _n1;
+				return n1Value;
 			}
 			set
 			{
-				this._n1 = value;
+				this.n1Value = value;
 			}
 		}
 		
@@ -43,7 +43,7 @@ namespace byps.test.api.ver
 		
 		#region Fields
 		
-		protected int _n1;
+		protected int n1Value;
 
 		#endregion
 		

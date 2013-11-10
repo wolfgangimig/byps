@@ -27,7 +27,9 @@ namespace byps.test.api.inherit
 			Class1 obj = (Class1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:490
 			bbuf.putInt(obj.Int1);
+			// checkpoint byps.gen.cs.PrintContext:490
 			bout.writeObj(obj.NextClass1, false, null);
 		}
 		
@@ -37,7 +39,9 @@ namespace byps.test.api.inherit
 			Class1 obj = (Class1)(obj1 != null ? obj1 : bin.onObjectCreated(new Class1()));
 			
 			BBufferBin bbuf = bin.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:445
 			obj.Int1 = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
 			obj.NextClass1 = (byps.test.api.inherit.Class1)bin.readObj(false, null);
 			
 			return obj;

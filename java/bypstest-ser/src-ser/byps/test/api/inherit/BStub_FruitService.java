@@ -17,28 +17,28 @@ public class BStub_FruitService extends BStub implements FruitServiceAuth, java.
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String grow() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<String> asyncResult = new BSyncResult<String>();		
 		grow(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void grow(final BAsyncResult<String> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_PlantService_grow req = new BRequest_PlantService_grow();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String squeeze() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<String> asyncResult = new BSyncResult<String>();		
 		squeeze(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void squeeze(final BAsyncResult<String> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_FruitService_squeeze req = new BRequest_FruitService_squeeze();		

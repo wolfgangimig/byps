@@ -1,6 +1,7 @@
 package byps.test.api.arr;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import byps.test.api.prim.PrimitiveTypes;
 
@@ -17,6 +18,7 @@ public class ArrayTypes1dim implements Serializable {
 	public float[] float1;
 	public double[] double1;
 	public String[] string1;
+	public Date[] date1;
 	public PrimitiveTypes[] primitiveTypes1;
 	
 	

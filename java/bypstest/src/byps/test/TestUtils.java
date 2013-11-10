@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -392,6 +393,7 @@ public class TestUtils {
 							clazz == Long.class ||
 							clazz == Float.class ||
 							clazz == Double.class ||
+							clazz == Date.class ||
 							clazz == String.class) {
 							Assert.assertEquals(msg, a, b);
 						}

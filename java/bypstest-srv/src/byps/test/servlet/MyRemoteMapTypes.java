@@ -1,5 +1,6 @@
 package byps.test.servlet;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -23,7 +24,8 @@ public class MyRemoteMapTypes extends BSkeleton_RemoteMapTypes {
 	public Map<Integer, byte[]> byte2;
 	public Map<Integer, int[]> int2;
 	public Map<String, Object> obj1;
-
+	public Map<String, Date> date1;
+	
 	@Override
 	public Map<String, Boolean> getBoolean1() throws RemoteException {
 		return boolean1;
@@ -158,4 +160,13 @@ public class MyRemoteMapTypes extends BSkeleton_RemoteMapTypes {
 		this.obj1 = obj1;
 	}
 
+	@Override
+	public void setDate1(Map<String, Date> obj1) throws RemoteException {
+	  this.date1 = obj1;
+	}
+	
+	@Override
+	public Map<String, Date> getDate1() throws RemoteException {
+	  return date1;
+	}
 }

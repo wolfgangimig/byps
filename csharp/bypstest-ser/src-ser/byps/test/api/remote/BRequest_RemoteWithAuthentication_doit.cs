@@ -17,17 +17,17 @@ namespace byps.test.api.remote
 		
 		public override int getRemoteId() { return 1983670399; }
 		
-		// checkpoint byps.gen.cs.GenApiClass:441
+		// checkpoint byps.gen.cs.GenApiClass:444
 		public override void setSession(Object __byps__sess) {
-			_sess = (byps.test.api.auth.SessionInfo)__byps__sess;
+			sessValue = (byps.test.api.auth.SessionInfo)__byps__sess;
 		}
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				RemoteWithAuthentication __byps__remoteT = (RemoteWithAuthentication)__byps__remote;				
 				BAsyncResultSendMethod<int> __byps__outerResult = new BAsyncResultSendMethod<int>(__byps__asyncResult, new byps.test.api.BResult_5());				
-				__byps__remoteT.Doit(_sess, _value, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.Doit(sessValue, valueValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(0, e);
 				throw e;
@@ -38,9 +38,9 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal byps.test.api.auth.SessionInfo _sess;
+		internal byps.test.api.auth.SessionInfo sessValue;
 
-		internal int _value;
+		internal int valueValue;
 
 		#endregion
 		

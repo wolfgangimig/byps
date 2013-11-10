@@ -27,9 +27,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes23_sendArraysInline obj = (BRequest_RemoteArrayTypes23_sendArraysInline)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._arr2, false, byps.test.api.BSerializer_827767075.instance);
-			bout.writeObj(obj._arr3, false, byps.test.api.BSerializer_915212229.instance);
-			bout.writeObj(obj._arr4, false, byps.test.api.BSerializer_949340697.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arr2Value, false, byps.test.api.BSerializer_827767075.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arr3Value, false, byps.test.api.BSerializer_915212229.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arr4Value, false, byps.test.api.BSerializer_949340697.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -38,9 +41,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes23_sendArraysInline obj = (BRequest_RemoteArrayTypes23_sendArraysInline)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteArrayTypes23_sendArraysInline()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._arr2 = (byps.test.api.inl.Point2D[,])bin.readObj(false, byps.test.api.BSerializer_827767075.instance);
-			obj._arr3 = (byps.test.api.inl.Point2D[,,])bin.readObj(false, byps.test.api.BSerializer_915212229.instance);
-			obj._arr4 = (byps.test.api.inl.Point2D[,,,])bin.readObj(false, byps.test.api.BSerializer_949340697.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arr2Value = (byps.test.api.inl.Point2D[,])bin.readObj(false, byps.test.api.BSerializer_827767075.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arr3Value = (byps.test.api.inl.Point2D[,,])bin.readObj(false, byps.test.api.BSerializer_915212229.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arr4Value = (byps.test.api.inl.Point2D[,,,])bin.readObj(false, byps.test.api.BSerializer_949340697.instance);
 			
 			return obj;
 		}

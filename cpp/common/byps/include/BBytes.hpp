@@ -34,7 +34,7 @@ BINLINE PBytes BBytes::create(size_t length, int v0, ...) {
 	BBytes* p = myalloc(length);
 	va_list args;
 	va_start(args, v0);
-	p->data[0] = v0;
+	p->data[0] = (int8_t)(v0 & 0xFF);
 	for (size_t i = 1; i < length; i++) {
         p->data[i] = (int8_t)(va_arg(args, int) & 0xFF);
 	}

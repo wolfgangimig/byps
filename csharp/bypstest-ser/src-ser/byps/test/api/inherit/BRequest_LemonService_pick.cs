@@ -18,11 +18,11 @@ namespace byps.test.api.inherit
 		public override int getRemoteId() { return 605543968; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				LemonService __byps__remoteT = (LemonService)__byps__remote;				
 				BAsyncResultSendMethod<String> __byps__outerResult = new BAsyncResultSendMethod<String>(__byps__asyncResult, new byps.test.api.BResult_10());				
-				__byps__remoteT.Pick(_sess, _fromTree, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.Pick(sessValue, fromTreeValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult("", e);
 				throw e;
@@ -33,9 +33,9 @@ namespace byps.test.api.inherit
 		
 		#region Fields
 		
-		internal byps.test.api.auth.SessionInfo _sess;
+		internal byps.test.api.auth.SessionInfo sessValue;
 
-		internal String _fromTree;
+		internal String fromTreeValue;
 
 		#endregion
 		

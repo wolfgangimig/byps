@@ -17,28 +17,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Boolean> getBoolean1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.Boolean>> asyncResult = new BSyncResult<java.util.Set<java.lang.Boolean>>();		
 		getBoolean1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getBoolean1(final BAsyncResult<java.util.Set<java.lang.Boolean>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getBoolean1 req = new BRequest_RemoteSetTypes_getBoolean1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setBoolean1(java.util.Set<java.lang.Boolean> boolean1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setBoolean1(boolean1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setBoolean1(java.util.Set<java.lang.Boolean> boolean1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setBoolean1 req = new BRequest_RemoteSetTypes_setBoolean1();		
@@ -46,28 +46,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.HashSet<java.lang.Byte> getByte1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.HashSet<java.lang.Byte>> asyncResult = new BSyncResult<java.util.HashSet<java.lang.Byte>>();		
 		getByte1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getByte1(final BAsyncResult<java.util.HashSet<java.lang.Byte>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getByte1 req = new BRequest_RemoteSetTypes_getByte1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setByte1(java.util.HashSet<java.lang.Byte> byte1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setByte1(byte1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setByte1(java.util.HashSet<java.lang.Byte> byte1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setByte1 req = new BRequest_RemoteSetTypes_setByte1();		
@@ -75,28 +75,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.TreeSet<java.lang.Character> getChar1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.TreeSet<java.lang.Character>> asyncResult = new BSyncResult<java.util.TreeSet<java.lang.Character>>();		
 		getChar1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getChar1(final BAsyncResult<java.util.TreeSet<java.lang.Character>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getChar1 req = new BRequest_RemoteSetTypes_getChar1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setChar1(java.util.TreeSet<java.lang.Character> char1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setChar1(char1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setChar1(java.util.TreeSet<java.lang.Character> char1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setChar1 req = new BRequest_RemoteSetTypes_setChar1();		
@@ -104,28 +104,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Short> getShort1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.Short>> asyncResult = new BSyncResult<java.util.Set<java.lang.Short>>();		
 		getShort1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getShort1(final BAsyncResult<java.util.Set<java.lang.Short>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getShort1 req = new BRequest_RemoteSetTypes_getShort1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setShort1(java.util.Set<java.lang.Short> short1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setShort1(short1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setShort1(java.util.Set<java.lang.Short> short1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setShort1 req = new BRequest_RemoteSetTypes_setShort1();		
@@ -133,28 +133,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Integer> getInt1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.Integer>> asyncResult = new BSyncResult<java.util.Set<java.lang.Integer>>();		
 		getInt1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getInt1(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getInt1 req = new BRequest_RemoteSetTypes_getInt1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setInt1(java.util.Set<java.lang.Integer> int1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setInt1(int1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setInt1(java.util.Set<java.lang.Integer> int1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setInt1 req = new BRequest_RemoteSetTypes_setInt1();		
@@ -162,28 +162,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Long> getLong1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.Long>> asyncResult = new BSyncResult<java.util.Set<java.lang.Long>>();		
 		getLong1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getLong1(final BAsyncResult<java.util.Set<java.lang.Long>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getLong1 req = new BRequest_RemoteSetTypes_getLong1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setLong1(java.util.Set<java.lang.Long> long1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setLong1(long1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setLong1(java.util.Set<java.lang.Long> long1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setLong1 req = new BRequest_RemoteSetTypes_setLong1();		
@@ -191,28 +191,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Float> getFloat1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.Float>> asyncResult = new BSyncResult<java.util.Set<java.lang.Float>>();		
 		getFloat1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getFloat1(final BAsyncResult<java.util.Set<java.lang.Float>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getFloat1 req = new BRequest_RemoteSetTypes_getFloat1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setFloat1(java.util.Set<java.lang.Float> float1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setFloat1(float1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setFloat1(java.util.Set<java.lang.Float> float1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setFloat1 req = new BRequest_RemoteSetTypes_setFloat1();		
@@ -220,28 +220,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Double> getDouble1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.Double>> asyncResult = new BSyncResult<java.util.Set<java.lang.Double>>();		
 		getDouble1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getDouble1(final BAsyncResult<java.util.Set<java.lang.Double>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getDouble1 req = new BRequest_RemoteSetTypes_getDouble1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setDouble1(java.util.Set<java.lang.Double> double1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setDouble1(double1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setDouble1(java.util.Set<java.lang.Double> double1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setDouble1 req = new BRequest_RemoteSetTypes_setDouble1();		
@@ -249,28 +249,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.String> getString1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.String>> asyncResult = new BSyncResult<java.util.Set<java.lang.String>>();		
 		getString1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getString1(final BAsyncResult<java.util.Set<java.lang.String>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getString1 req = new BRequest_RemoteSetTypes_getString1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setString1(java.util.Set<java.lang.String> string1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setString1(string1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setString1(java.util.Set<java.lang.String> string1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setString1 req = new BRequest_RemoteSetTypes_setString1();		
@@ -278,28 +278,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<byps.test.api.prim.PrimitiveTypes>> asyncResult = new BSyncResult<java.util.Set<byps.test.api.prim.PrimitiveTypes>>();		
 		getPrimitiveTypes1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getPrimitiveTypes1(final BAsyncResult<java.util.Set<byps.test.api.prim.PrimitiveTypes>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getPrimitiveTypes1 req = new BRequest_RemoteSetTypes_getPrimitiveTypes1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setPrimitiveTypes1(java.util.Set<byps.test.api.prim.PrimitiveTypes> primitiveTypes1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setPrimitiveTypes1(primitiveTypes1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setPrimitiveTypes1(java.util.Set<byps.test.api.prim.PrimitiveTypes> primitiveTypes1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setPrimitiveTypes1 req = new BRequest_RemoteSetTypes_setPrimitiveTypes1();		
@@ -307,28 +307,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<byte[]> getByte2() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<byte[]>> asyncResult = new BSyncResult<java.util.Set<byte[]>>();		
 		getByte2(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getByte2(final BAsyncResult<java.util.Set<byte[]>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getByte2 req = new BRequest_RemoteSetTypes_getByte2();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setByte2(java.util.Set<byte[]> byte2) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setByte2(byte2, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setByte2(java.util.Set<byte[]> byte2, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setByte2 req = new BRequest_RemoteSetTypes_setByte2();		
@@ -336,28 +336,28 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<int[]> getInt2() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<int[]>> asyncResult = new BSyncResult<java.util.Set<int[]>>();		
 		getInt2(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getInt2(final BAsyncResult<java.util.Set<int[]>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getInt2 req = new BRequest_RemoteSetTypes_getInt2();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setInt2(java.util.Set<int[]> int2) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setInt2(int2, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setInt2(java.util.Set<int[]> int2, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setInt2 req = new BRequest_RemoteSetTypes_setInt2();		
@@ -365,32 +365,61 @@ public class BStub_RemoteSetTypes extends BStub implements RemoteSetTypesAsync, 
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Object> getObj1() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.Set<java.lang.Object>> asyncResult = new BSyncResult<java.util.Set<java.lang.Object>>();		
 		getObj1(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getObj1(final BAsyncResult<java.util.Set<java.lang.Object>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_getObj1 req = new BRequest_RemoteSetTypes_getObj1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setObj1(java.util.Set<java.lang.Object> obj1) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setObj1(obj1, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setObj1(java.util.Set<java.lang.Object> obj1, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteSetTypes_setObj1 req = new BRequest_RemoteSetTypes_setObj1();		
 		req.obj1 = obj1;
+		transport.sendMethod(req, asyncResult);
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public void setDate1(java.util.Set<java.util.Date> obj1) throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
+		setDate1(obj1, asyncResult);
+		asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void setDate1(java.util.Set<java.util.Date> obj1, final BAsyncResult<Object> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteSetTypes_setDate1 req = new BRequest_RemoteSetTypes_setDate1();		
+		req.obj1 = obj1;
+		transport.sendMethod(req, asyncResult);
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.util.Set<java.util.Date> getDate1() throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<java.util.Set<java.util.Date>> asyncResult = new BSyncResult<java.util.Set<java.util.Date>>();		
+		getDate1(asyncResult);
+		return asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getDate1(final BAsyncResult<java.util.Set<java.util.Date>> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteSetTypes_getDate1 req = new BRequest_RemoteSetTypes_getDate1();		
 		transport.sendMethod(req, asyncResult);
 	}
 	

@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_setInt obj = (BRequest_RemotePrimitiveTypes_setInt)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putInt(obj._v);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putInt(obj.vValue);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_setInt obj = (BRequest_RemotePrimitiveTypes_setInt)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemotePrimitiveTypes_setInt()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._v = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.vValue = bbuf.getInt();
 			
 			return obj;
 		}

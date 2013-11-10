@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=13
+// #members=14
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -35,6 +35,7 @@ public class JSerializer_1000 extends JSerializer_Object {
 		bbuf.putBoolean("boolVal", obj.boolVal);
 		bbuf.putByte("byteVal", obj.byteVal);
 		bbuf.putChar("charVal", obj.charVal);
+		bbuf.putDate("dateVal", obj.dateVal);
 		bbuf.putDouble("doubleVal", obj.doubleVal);
 		bbuf.putFloat("floatVal", obj.floatVal);
 		bbuf.putInt("intVal", obj.intVal);
@@ -54,6 +55,7 @@ public class JSerializer_1000 extends JSerializer_Object {
 		obj.boolVal = js.getBoolean("boolVal");
 		obj.byteVal = js.getByte("byteVal");
 		obj.charVal = js.getChar("charVal");
+		obj.dateVal = js.getDate("dateVal");
 		obj.doubleVal = js.getDouble("doubleVal");
 		obj.floatVal = js.getFloat("floatVal");
 		obj.intVal = js.getInt("intVal");

@@ -84,6 +84,7 @@ var TestUtils = {
 		p.doubleVal = createCount / 7.1;
 		p.stringVal = "" + p.intVal;
 		p.charVal = 'abcdefghijklmnopqrstuvwxyz'.charAt(createCount%26);
+		p.dateVal = new Date();
 		return p;
 	}
 };

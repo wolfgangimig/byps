@@ -166,6 +166,8 @@
     <ClInclude Include="..\..\..\common\byps\include\BClient.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\BContentStream.h" />
     <ClInclude Include="..\..\..\common\byps\include\BContentStream.hpp" />
+    <ClInclude Include="..\..\..\common\byps\include\BDateTime.h" />
+    <ClInclude Include="..\..\..\common\byps\include\BDateTime.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\BException.h" />
     <ClInclude Include="..\..\..\common\byps\include\BException.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\BInput.h" />

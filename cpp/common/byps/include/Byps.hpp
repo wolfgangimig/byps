@@ -33,6 +33,7 @@
 #include "BWire.hpp"
 #include "BUtils.hpp"
 #include "BLostConnectionHandler.hpp"
+#include "BDateTime.hpp"
 
 #include "platform/platform.hpp"
 

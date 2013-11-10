@@ -10,15 +10,15 @@ namespace byps
     {
 	    public const String BINARY_STREAM  = "S";
 	
-	    public const String PROTOCOLS = BINARY_STREAM;
+	    public const String SUPPORTED_PROTOCOLS = BINARY_STREAM;
 	
 	    private const int NEGOTIATE_MIN_SIZE = 13;  // ["N","J","1"]
 	    public const int NEGOTIATE_MAX_SIZE = 1000;
 	
 	    private const int MAGIC_DOUBLE_QUOTES = ((int)'[' << 24) | ((int)'\"' << 16) | ((int)'N' << 8) | ((int)'\"');
 	    private const int MAGIC_SINGLE_QUOTES = ((int)'[' << 24) | ((int)'\'' << 16) | ((int)'N' << 8) | ((int)'\'');
-	
-	    public String protocols = PROTOCOLS;
+
+        public String protocols = SUPPORTED_PROTOCOLS;
 	    public long version;
 	    public ByteOrder byteOrder; 
 	    public BTargetId targetId;
@@ -29,7 +29,7 @@ namespace byps
 
         public BNegotiate(BApiDescriptor apiDesc)
         {
-            this.protocols = PROTOCOLS;
+            this.protocols = SUPPORTED_PROTOCOLS;
             this.version = apiDesc.version;
         }
 

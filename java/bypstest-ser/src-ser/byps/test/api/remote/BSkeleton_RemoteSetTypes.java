@@ -18,11 +18,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 	
 	public final static long serialVersionUID = 1900796440L;
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Boolean> getBoolean1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getBoolean1(final BAsyncResult<java.util.Set<java.lang.Boolean>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Boolean> ret = getBoolean1();
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setBoolean1(java.util.Set<java.lang.Boolean> boolean1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setBoolean1(java.util.Set<java.lang.Boolean> boolean1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setBoolean1(boolean1);
@@ -46,11 +46,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.HashSet<java.lang.Byte> getByte1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getByte1(final BAsyncResult<java.util.HashSet<java.lang.Byte>> asyncResult) {
 		try {
 			java.util.HashSet<java.lang.Byte> ret = getByte1();
@@ -60,11 +60,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setByte1(java.util.HashSet<java.lang.Byte> byte1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setByte1(java.util.HashSet<java.lang.Byte> byte1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setByte1(byte1);
@@ -74,11 +74,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.TreeSet<java.lang.Character> getChar1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getChar1(final BAsyncResult<java.util.TreeSet<java.lang.Character>> asyncResult) {
 		try {
 			java.util.TreeSet<java.lang.Character> ret = getChar1();
@@ -88,11 +88,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setChar1(java.util.TreeSet<java.lang.Character> char1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setChar1(java.util.TreeSet<java.lang.Character> char1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setChar1(char1);
@@ -102,11 +102,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Short> getShort1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getShort1(final BAsyncResult<java.util.Set<java.lang.Short>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Short> ret = getShort1();
@@ -116,11 +116,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setShort1(java.util.Set<java.lang.Short> short1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setShort1(java.util.Set<java.lang.Short> short1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setShort1(short1);
@@ -130,11 +130,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Integer> getInt1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getInt1(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Integer> ret = getInt1();
@@ -144,11 +144,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setInt1(java.util.Set<java.lang.Integer> int1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setInt1(java.util.Set<java.lang.Integer> int1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setInt1(int1);
@@ -158,11 +158,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Long> getLong1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getLong1(final BAsyncResult<java.util.Set<java.lang.Long>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Long> ret = getLong1();
@@ -172,11 +172,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setLong1(java.util.Set<java.lang.Long> long1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setLong1(java.util.Set<java.lang.Long> long1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setLong1(long1);
@@ -186,11 +186,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Float> getFloat1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getFloat1(final BAsyncResult<java.util.Set<java.lang.Float>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Float> ret = getFloat1();
@@ -200,11 +200,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setFloat1(java.util.Set<java.lang.Float> float1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setFloat1(java.util.Set<java.lang.Float> float1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setFloat1(float1);
@@ -214,11 +214,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Double> getDouble1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getDouble1(final BAsyncResult<java.util.Set<java.lang.Double>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Double> ret = getDouble1();
@@ -228,11 +228,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setDouble1(java.util.Set<java.lang.Double> double1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setDouble1(java.util.Set<java.lang.Double> double1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setDouble1(double1);
@@ -242,11 +242,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.String> getString1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getString1(final BAsyncResult<java.util.Set<java.lang.String>> asyncResult) {
 		try {
 			java.util.Set<java.lang.String> ret = getString1();
@@ -256,11 +256,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setString1(java.util.Set<java.lang.String> string1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setString1(java.util.Set<java.lang.String> string1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setString1(string1);
@@ -270,11 +270,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getPrimitiveTypes1(final BAsyncResult<java.util.Set<byps.test.api.prim.PrimitiveTypes>> asyncResult) {
 		try {
 			java.util.Set<byps.test.api.prim.PrimitiveTypes> ret = getPrimitiveTypes1();
@@ -284,11 +284,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setPrimitiveTypes1(java.util.Set<byps.test.api.prim.PrimitiveTypes> primitiveTypes1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setPrimitiveTypes1(java.util.Set<byps.test.api.prim.PrimitiveTypes> primitiveTypes1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPrimitiveTypes1(primitiveTypes1);
@@ -298,11 +298,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<byte[]> getByte2() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getByte2(final BAsyncResult<java.util.Set<byte[]>> asyncResult) {
 		try {
 			java.util.Set<byte[]> ret = getByte2();
@@ -312,11 +312,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setByte2(java.util.Set<byte[]> byte2) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setByte2(java.util.Set<byte[]> byte2, final BAsyncResult<Object> asyncResult) {
 		try {
 			setByte2(byte2);
@@ -326,11 +326,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<int[]> getInt2() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getInt2(final BAsyncResult<java.util.Set<int[]>> asyncResult) {
 		try {
 			java.util.Set<int[]> ret = getInt2();
@@ -340,11 +340,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setInt2(java.util.Set<int[]> int2) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setInt2(java.util.Set<int[]> int2, final BAsyncResult<Object> asyncResult) {
 		try {
 			setInt2(int2);
@@ -354,11 +354,11 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Object> getObj1() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getObj1(final BAsyncResult<java.util.Set<java.lang.Object>> asyncResult) {
 		try {
 			java.util.Set<java.lang.Object> ret = getObj1();
@@ -368,15 +368,43 @@ public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetType
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setObj1(java.util.Set<java.lang.Object> obj1) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setObj1(java.util.Set<java.lang.Object> obj1, final BAsyncResult<Object> asyncResult) {
 		try {
 			setObj1(obj1);
 			asyncResult.setAsyncResult(null, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public void setDate1(java.util.Set<java.util.Date> obj1) throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void setDate1(java.util.Set<java.util.Date> obj1, final BAsyncResult<Object> asyncResult) {
+		try {
+			setDate1(obj1);
+			asyncResult.setAsyncResult(null, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.util.Set<java.util.Date> getDate1() throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getDate1(final BAsyncResult<java.util.Set<java.util.Date>> asyncResult) {
+		try {
+			java.util.Set<java.util.Date> ret = getDate1();
+			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
 		}

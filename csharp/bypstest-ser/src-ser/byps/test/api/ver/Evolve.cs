@@ -22,72 +22,72 @@ namespace byps.test.api.ver
 		}		
 		
 		internal Evolve(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, bool[] @bools1, byte[] @bytes1, char[] @chars1, short[] @shorts1, int[] @ints1, long[] @longs1, float[] @floats1, double[] @doubles1, String @str1, Object @obj1, Evolve2 @evo1, IList<int> @list1, ISet<int> @set1, IDictionary<int,int> @map1, bool @bool2, byte @byte2, char @char2, short @short2, int @int2, long @long2, float @float2, double @double2, bool[] @bools2, byte[] @bytes2, char[] @chars2, short[] @shorts2, int[] @ints2, long[] @longs2, float[] @floats2, double[] @doubles2, String @str2, Object @obj2, Evolve2 @evo2, IList<int> @list2, ISet<int> @set2, IDictionary<int,int> @map2, bool @bool3, byte @byte3, char @char3, short @short3, int @int3, long @long3, float @float3, double @double3, bool[] @bools3, byte[] @bytes3, char[] @chars3, short[] @shorts3, int[] @ints3, long[] @longs3, float[] @floats3, double[] @doubles3, String @str3, Object @obj3, Evolve2 @evo3, IList<int> @list3, ISet<int> @set3, IDictionary<int,int> @map3) {
-			this._bool1 = @bool1;
-			this._byte1 = @byte1;
-			this._char1 = @char1;
-			this._short1 = @short1;
-			this._int1 = @int1;
-			this._long1 = @long1;
-			this._float1 = @float1;
-			this._double1 = @double1;
-			this._bools1 = @bools1;
-			this._bytes1 = @bytes1;
-			this._chars1 = @chars1;
-			this._shorts1 = @shorts1;
-			this._ints1 = @ints1;
-			this._longs1 = @longs1;
-			this._floats1 = @floats1;
-			this._doubles1 = @doubles1;
-			this._str1 = @str1;
-			this._obj1 = @obj1;
-			this._evo1 = @evo1;
-			this._list1 = @list1;
-			this._set1 = @set1;
-			this._map1 = @map1;
-			this._bool2 = @bool2;
-			this._byte2 = @byte2;
-			this._char2 = @char2;
-			this._short2 = @short2;
-			this._int2 = @int2;
-			this._long2 = @long2;
-			this._float2 = @float2;
-			this._double2 = @double2;
-			this._bools2 = @bools2;
-			this._bytes2 = @bytes2;
-			this._chars2 = @chars2;
-			this._shorts2 = @shorts2;
-			this._ints2 = @ints2;
-			this._longs2 = @longs2;
-			this._floats2 = @floats2;
-			this._doubles2 = @doubles2;
-			this._str2 = @str2;
-			this._obj2 = @obj2;
-			this._evo2 = @evo2;
-			this._list2 = @list2;
-			this._set2 = @set2;
-			this._map2 = @map2;
-			this._bool3 = @bool3;
-			this._byte3 = @byte3;
-			this._char3 = @char3;
-			this._short3 = @short3;
-			this._int3 = @int3;
-			this._long3 = @long3;
-			this._float3 = @float3;
-			this._double3 = @double3;
-			this._bools3 = @bools3;
-			this._bytes3 = @bytes3;
-			this._chars3 = @chars3;
-			this._shorts3 = @shorts3;
-			this._ints3 = @ints3;
-			this._longs3 = @longs3;
-			this._floats3 = @floats3;
-			this._doubles3 = @doubles3;
-			this._str3 = @str3;
-			this._obj3 = @obj3;
-			this._evo3 = @evo3;
-			this._list3 = @list3;
-			this._set3 = @set3;
-			this._map3 = @map3;
+			this.bool1Value = @bool1;
+			this.byte1Value = @byte1;
+			this.char1Value = @char1;
+			this.short1Value = @short1;
+			this.int1Value = @int1;
+			this.long1Value = @long1;
+			this.float1Value = @float1;
+			this.double1Value = @double1;
+			this.bools1Value = @bools1;
+			this.bytes1Value = @bytes1;
+			this.chars1Value = @chars1;
+			this.shorts1Value = @shorts1;
+			this.ints1Value = @ints1;
+			this.longs1Value = @longs1;
+			this.floats1Value = @floats1;
+			this.doubles1Value = @doubles1;
+			this.str1Value = @str1;
+			this.obj1Value = @obj1;
+			this.evo1Value = @evo1;
+			this.list1Value = @list1;
+			this.set1Value = @set1;
+			this.map1Value = @map1;
+			this.bool2Value = @bool2;
+			this.byte2Value = @byte2;
+			this.char2Value = @char2;
+			this.short2Value = @short2;
+			this.int2Value = @int2;
+			this.long2Value = @long2;
+			this.float2Value = @float2;
+			this.double2Value = @double2;
+			this.bools2Value = @bools2;
+			this.bytes2Value = @bytes2;
+			this.chars2Value = @chars2;
+			this.shorts2Value = @shorts2;
+			this.ints2Value = @ints2;
+			this.longs2Value = @longs2;
+			this.floats2Value = @floats2;
+			this.doubles2Value = @doubles2;
+			this.str2Value = @str2;
+			this.obj2Value = @obj2;
+			this.evo2Value = @evo2;
+			this.list2Value = @list2;
+			this.set2Value = @set2;
+			this.map2Value = @map2;
+			this.bool3Value = @bool3;
+			this.byte3Value = @byte3;
+			this.char3Value = @char3;
+			this.short3Value = @short3;
+			this.int3Value = @int3;
+			this.long3Value = @long3;
+			this.float3Value = @float3;
+			this.double3Value = @double3;
+			this.bools3Value = @bools3;
+			this.bytes3Value = @bytes3;
+			this.chars3Value = @chars3;
+			this.shorts3Value = @shorts3;
+			this.ints3Value = @ints3;
+			this.longs3Value = @longs3;
+			this.floats3Value = @floats3;
+			this.doubles3Value = @doubles3;
+			this.str3Value = @str3;
+			this.obj3Value = @obj3;
+			this.evo3Value = @evo3;
+			this.list3Value = @list3;
+			this.set3Value = @set3;
+			this.map3Value = @map3;
 		}		
 		
 		#endregion
@@ -98,11 +98,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bool1;
+				return bool1Value;
 			}
 			set
 			{
-				this._bool1 = value;
+				this.bool1Value = value;
 			}
 		}
 		
@@ -111,11 +111,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _byte1;
+				return byte1Value;
 			}
 			set
 			{
-				this._byte1 = value;
+				this.byte1Value = value;
 			}
 		}
 		
@@ -124,11 +124,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _char1;
+				return char1Value;
 			}
 			set
 			{
-				this._char1 = value;
+				this.char1Value = value;
 			}
 		}
 		
@@ -137,11 +137,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _short1;
+				return short1Value;
 			}
 			set
 			{
-				this._short1 = value;
+				this.short1Value = value;
 			}
 		}
 		
@@ -150,11 +150,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _int1;
+				return int1Value;
 			}
 			set
 			{
-				this._int1 = value;
+				this.int1Value = value;
 			}
 		}
 		
@@ -163,11 +163,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _long1;
+				return long1Value;
 			}
 			set
 			{
-				this._long1 = value;
+				this.long1Value = value;
 			}
 		}
 		
@@ -176,11 +176,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _float1;
+				return float1Value;
 			}
 			set
 			{
-				this._float1 = value;
+				this.float1Value = value;
 			}
 		}
 		
@@ -189,11 +189,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _double1;
+				return double1Value;
 			}
 			set
 			{
-				this._double1 = value;
+				this.double1Value = value;
 			}
 		}
 		
@@ -202,11 +202,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bools1;
+				return bools1Value;
 			}
 			set
 			{
-				this._bools1 = value;
+				this.bools1Value = value;
 			}
 		}
 		
@@ -215,11 +215,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bytes1;
+				return bytes1Value;
 			}
 			set
 			{
-				this._bytes1 = value;
+				this.bytes1Value = value;
 			}
 		}
 		
@@ -228,11 +228,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _chars1;
+				return chars1Value;
 			}
 			set
 			{
-				this._chars1 = value;
+				this.chars1Value = value;
 			}
 		}
 		
@@ -241,11 +241,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _shorts1;
+				return shorts1Value;
 			}
 			set
 			{
-				this._shorts1 = value;
+				this.shorts1Value = value;
 			}
 		}
 		
@@ -254,11 +254,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _ints1;
+				return ints1Value;
 			}
 			set
 			{
-				this._ints1 = value;
+				this.ints1Value = value;
 			}
 		}
 		
@@ -267,11 +267,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _longs1;
+				return longs1Value;
 			}
 			set
 			{
-				this._longs1 = value;
+				this.longs1Value = value;
 			}
 		}
 		
@@ -280,11 +280,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _floats1;
+				return floats1Value;
 			}
 			set
 			{
-				this._floats1 = value;
+				this.floats1Value = value;
 			}
 		}
 		
@@ -293,11 +293,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _doubles1;
+				return doubles1Value;
 			}
 			set
 			{
-				this._doubles1 = value;
+				this.doubles1Value = value;
 			}
 		}
 		
@@ -306,11 +306,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _str1;
+				return str1Value;
 			}
 			set
 			{
-				this._str1 = value;
+				this.str1Value = value;
 			}
 		}
 		
@@ -319,11 +319,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _obj1;
+				return obj1Value;
 			}
 			set
 			{
-				this._obj1 = value;
+				this.obj1Value = value;
 			}
 		}
 		
@@ -332,11 +332,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _evo1;
+				return evo1Value;
 			}
 			set
 			{
-				this._evo1 = value;
+				this.evo1Value = value;
 			}
 		}
 		
@@ -345,11 +345,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _list1;
+				return list1Value;
 			}
 			set
 			{
-				this._list1 = value;
+				this.list1Value = value;
 			}
 		}
 		
@@ -358,11 +358,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _set1;
+				return set1Value;
 			}
 			set
 			{
-				this._set1 = value;
+				this.set1Value = value;
 			}
 		}
 		
@@ -371,11 +371,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _map1;
+				return map1Value;
 			}
 			set
 			{
-				this._map1 = value;
+				this.map1Value = value;
 			}
 		}
 		
@@ -384,11 +384,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bool2;
+				return bool2Value;
 			}
 			set
 			{
-				this._bool2 = value;
+				this.bool2Value = value;
 			}
 		}
 		
@@ -397,11 +397,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _byte2;
+				return byte2Value;
 			}
 			set
 			{
-				this._byte2 = value;
+				this.byte2Value = value;
 			}
 		}
 		
@@ -410,11 +410,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _char2;
+				return char2Value;
 			}
 			set
 			{
-				this._char2 = value;
+				this.char2Value = value;
 			}
 		}
 		
@@ -423,11 +423,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _short2;
+				return short2Value;
 			}
 			set
 			{
-				this._short2 = value;
+				this.short2Value = value;
 			}
 		}
 		
@@ -436,11 +436,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _int2;
+				return int2Value;
 			}
 			set
 			{
-				this._int2 = value;
+				this.int2Value = value;
 			}
 		}
 		
@@ -449,11 +449,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _long2;
+				return long2Value;
 			}
 			set
 			{
-				this._long2 = value;
+				this.long2Value = value;
 			}
 		}
 		
@@ -462,11 +462,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _float2;
+				return float2Value;
 			}
 			set
 			{
-				this._float2 = value;
+				this.float2Value = value;
 			}
 		}
 		
@@ -475,11 +475,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _double2;
+				return double2Value;
 			}
 			set
 			{
-				this._double2 = value;
+				this.double2Value = value;
 			}
 		}
 		
@@ -488,11 +488,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bools2;
+				return bools2Value;
 			}
 			set
 			{
-				this._bools2 = value;
+				this.bools2Value = value;
 			}
 		}
 		
@@ -501,11 +501,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bytes2;
+				return bytes2Value;
 			}
 			set
 			{
-				this._bytes2 = value;
+				this.bytes2Value = value;
 			}
 		}
 		
@@ -514,11 +514,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _chars2;
+				return chars2Value;
 			}
 			set
 			{
-				this._chars2 = value;
+				this.chars2Value = value;
 			}
 		}
 		
@@ -527,11 +527,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _shorts2;
+				return shorts2Value;
 			}
 			set
 			{
-				this._shorts2 = value;
+				this.shorts2Value = value;
 			}
 		}
 		
@@ -540,11 +540,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _ints2;
+				return ints2Value;
 			}
 			set
 			{
-				this._ints2 = value;
+				this.ints2Value = value;
 			}
 		}
 		
@@ -553,11 +553,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _longs2;
+				return longs2Value;
 			}
 			set
 			{
-				this._longs2 = value;
+				this.longs2Value = value;
 			}
 		}
 		
@@ -566,11 +566,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _floats2;
+				return floats2Value;
 			}
 			set
 			{
-				this._floats2 = value;
+				this.floats2Value = value;
 			}
 		}
 		
@@ -579,11 +579,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _doubles2;
+				return doubles2Value;
 			}
 			set
 			{
-				this._doubles2 = value;
+				this.doubles2Value = value;
 			}
 		}
 		
@@ -592,11 +592,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _str2;
+				return str2Value;
 			}
 			set
 			{
-				this._str2 = value;
+				this.str2Value = value;
 			}
 		}
 		
@@ -605,11 +605,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _obj2;
+				return obj2Value;
 			}
 			set
 			{
-				this._obj2 = value;
+				this.obj2Value = value;
 			}
 		}
 		
@@ -618,11 +618,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _evo2;
+				return evo2Value;
 			}
 			set
 			{
-				this._evo2 = value;
+				this.evo2Value = value;
 			}
 		}
 		
@@ -631,11 +631,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _list2;
+				return list2Value;
 			}
 			set
 			{
-				this._list2 = value;
+				this.list2Value = value;
 			}
 		}
 		
@@ -644,11 +644,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _set2;
+				return set2Value;
 			}
 			set
 			{
-				this._set2 = value;
+				this.set2Value = value;
 			}
 		}
 		
@@ -657,11 +657,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _map2;
+				return map2Value;
 			}
 			set
 			{
-				this._map2 = value;
+				this.map2Value = value;
 			}
 		}
 		
@@ -670,11 +670,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bool3;
+				return bool3Value;
 			}
 			set
 			{
-				this._bool3 = value;
+				this.bool3Value = value;
 			}
 		}
 		
@@ -683,11 +683,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _byte3;
+				return byte3Value;
 			}
 			set
 			{
-				this._byte3 = value;
+				this.byte3Value = value;
 			}
 		}
 		
@@ -696,11 +696,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _char3;
+				return char3Value;
 			}
 			set
 			{
-				this._char3 = value;
+				this.char3Value = value;
 			}
 		}
 		
@@ -709,11 +709,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _short3;
+				return short3Value;
 			}
 			set
 			{
-				this._short3 = value;
+				this.short3Value = value;
 			}
 		}
 		
@@ -722,11 +722,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _int3;
+				return int3Value;
 			}
 			set
 			{
-				this._int3 = value;
+				this.int3Value = value;
 			}
 		}
 		
@@ -735,11 +735,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _long3;
+				return long3Value;
 			}
 			set
 			{
-				this._long3 = value;
+				this.long3Value = value;
 			}
 		}
 		
@@ -748,11 +748,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _float3;
+				return float3Value;
 			}
 			set
 			{
-				this._float3 = value;
+				this.float3Value = value;
 			}
 		}
 		
@@ -761,11 +761,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _double3;
+				return double3Value;
 			}
 			set
 			{
-				this._double3 = value;
+				this.double3Value = value;
 			}
 		}
 		
@@ -774,11 +774,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bools3;
+				return bools3Value;
 			}
 			set
 			{
-				this._bools3 = value;
+				this.bools3Value = value;
 			}
 		}
 		
@@ -787,11 +787,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _bytes3;
+				return bytes3Value;
 			}
 			set
 			{
-				this._bytes3 = value;
+				this.bytes3Value = value;
 			}
 		}
 		
@@ -800,11 +800,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _chars3;
+				return chars3Value;
 			}
 			set
 			{
-				this._chars3 = value;
+				this.chars3Value = value;
 			}
 		}
 		
@@ -813,11 +813,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _shorts3;
+				return shorts3Value;
 			}
 			set
 			{
-				this._shorts3 = value;
+				this.shorts3Value = value;
 			}
 		}
 		
@@ -826,11 +826,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _ints3;
+				return ints3Value;
 			}
 			set
 			{
-				this._ints3 = value;
+				this.ints3Value = value;
 			}
 		}
 		
@@ -839,11 +839,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _longs3;
+				return longs3Value;
 			}
 			set
 			{
-				this._longs3 = value;
+				this.longs3Value = value;
 			}
 		}
 		
@@ -852,11 +852,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _floats3;
+				return floats3Value;
 			}
 			set
 			{
-				this._floats3 = value;
+				this.floats3Value = value;
 			}
 		}
 		
@@ -865,11 +865,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _doubles3;
+				return doubles3Value;
 			}
 			set
 			{
-				this._doubles3 = value;
+				this.doubles3Value = value;
 			}
 		}
 		
@@ -878,11 +878,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _str3;
+				return str3Value;
 			}
 			set
 			{
-				this._str3 = value;
+				this.str3Value = value;
 			}
 		}
 		
@@ -891,11 +891,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _obj3;
+				return obj3Value;
 			}
 			set
 			{
-				this._obj3 = value;
+				this.obj3Value = value;
 			}
 		}
 		
@@ -904,11 +904,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _evo3;
+				return evo3Value;
 			}
 			set
 			{
-				this._evo3 = value;
+				this.evo3Value = value;
 			}
 		}
 		
@@ -917,11 +917,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _list3;
+				return list3Value;
 			}
 			set
 			{
-				this._list3 = value;
+				this.list3Value = value;
 			}
 		}
 		
@@ -930,11 +930,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _set3;
+				return set3Value;
 			}
 			set
 			{
-				this._set3 = value;
+				this.set3Value = value;
 			}
 		}
 		
@@ -943,11 +943,11 @@ namespace byps.test.api.ver
 		{
 			get
 			{
-				return _map3;
+				return map3Value;
 			}
 			set
 			{
-				this._map3 = value;
+				this.map3Value = value;
 			}
 		}
 		
@@ -956,137 +956,137 @@ namespace byps.test.api.ver
 		
 		#region Fields
 		
-		protected bool _bool1;
+		protected bool bool1Value;
 
-		protected byte _byte1;
+		protected byte byte1Value;
 
-		protected char _char1;
+		protected char char1Value;
 
-		protected short _short1;
+		protected short short1Value;
 
-		protected int _int1;
+		protected int int1Value;
 
-		protected long _long1;
+		protected long long1Value;
 
-		protected float _float1;
+		protected float float1Value;
 
-		protected double _double1;
+		protected double double1Value;
 
-		protected bool[] _bools1;
+		protected bool[] bools1Value;
 
-		protected byte[] _bytes1;
+		protected byte[] bytes1Value;
 
-		protected char[] _chars1;
+		protected char[] chars1Value;
 
-		protected short[] _shorts1;
+		protected short[] shorts1Value;
 
-		protected int[] _ints1;
+		protected int[] ints1Value;
 
-		protected long[] _longs1;
+		protected long[] longs1Value;
 
-		protected float[] _floats1;
+		protected float[] floats1Value;
 
-		protected double[] _doubles1;
+		protected double[] doubles1Value;
 
-		protected String _str1;
+		protected String str1Value;
 
-		protected Object _obj1;
+		protected Object obj1Value;
 
-		protected Evolve2 _evo1;
+		protected Evolve2 evo1Value;
 
-		protected IList<int> _list1;
+		protected IList<int> list1Value;
 
-		protected ISet<int> _set1;
+		protected ISet<int> set1Value;
 
-		protected IDictionary<int,int> _map1;
+		protected IDictionary<int,int> map1Value;
 
-		protected bool _bool2;
+		protected bool bool2Value;
 
-		protected byte _byte2;
+		protected byte byte2Value;
 
-		protected char _char2;
+		protected char char2Value;
 
-		protected short _short2;
+		protected short short2Value;
 
-		protected int _int2;
+		protected int int2Value;
 
-		protected long _long2;
+		protected long long2Value;
 
-		protected float _float2;
+		protected float float2Value;
 
-		protected double _double2;
+		protected double double2Value;
 
-		protected bool[] _bools2;
+		protected bool[] bools2Value;
 
-		protected byte[] _bytes2;
+		protected byte[] bytes2Value;
 
-		protected char[] _chars2;
+		protected char[] chars2Value;
 
-		protected short[] _shorts2;
+		protected short[] shorts2Value;
 
-		protected int[] _ints2;
+		protected int[] ints2Value;
 
-		protected long[] _longs2;
+		protected long[] longs2Value;
 
-		protected float[] _floats2;
+		protected float[] floats2Value;
 
-		protected double[] _doubles2;
+		protected double[] doubles2Value;
 
-		protected String _str2;
+		protected String str2Value;
 
-		protected Object _obj2;
+		protected Object obj2Value;
 
-		protected Evolve2 _evo2;
+		protected Evolve2 evo2Value;
 
-		protected IList<int> _list2;
+		protected IList<int> list2Value;
 
-		protected ISet<int> _set2;
+		protected ISet<int> set2Value;
 
-		protected IDictionary<int,int> _map2;
+		protected IDictionary<int,int> map2Value;
 
-		protected bool _bool3;
+		protected bool bool3Value;
 
-		protected byte _byte3;
+		protected byte byte3Value;
 
-		protected char _char3;
+		protected char char3Value;
 
-		protected short _short3;
+		protected short short3Value;
 
-		protected int _int3;
+		protected int int3Value;
 
-		protected long _long3;
+		protected long long3Value;
 
-		protected float _float3;
+		protected float float3Value;
 
-		protected double _double3;
+		protected double double3Value;
 
-		protected bool[] _bools3;
+		protected bool[] bools3Value;
 
-		protected byte[] _bytes3;
+		protected byte[] bytes3Value;
 
-		protected char[] _chars3;
+		protected char[] chars3Value;
 
-		protected short[] _shorts3;
+		protected short[] shorts3Value;
 
-		protected int[] _ints3;
+		protected int[] ints3Value;
 
-		protected long[] _longs3;
+		protected long[] longs3Value;
 
-		protected float[] _floats3;
+		protected float[] floats3Value;
 
-		protected double[] _doubles3;
+		protected double[] doubles3Value;
 
-		protected String _str3;
+		protected String str3Value;
 
-		protected Object _obj3;
+		protected Object obj3Value;
 
-		protected Evolve2 _evo3;
+		protected Evolve2 evo3Value;
 
-		protected IList<int> _list3;
+		protected IList<int> list3Value;
 
-		protected ISet<int> _set3;
+		protected ISet<int> set3Value;
 
-		protected IDictionary<int,int> _map3;
+		protected IDictionary<int,int> map3Value;
 
 		#endregion
 		

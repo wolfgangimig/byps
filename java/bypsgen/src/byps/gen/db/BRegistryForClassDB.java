@@ -3,13 +3,13 @@ package byps.gen.db;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Random;
 
 import byps.BBinaryModel;
 import byps.BException;
 import byps.BRegistry;
 import byps.BRemote;
-import byps.BSerializer;
 import byps.gen.api.GeneratorException;
 import byps.gen.api.TypeInfo;
 
@@ -59,6 +59,7 @@ public class BRegistryForClassDB extends BRegistry {
 			else if (qname.equals(IOException.class.getName())) typeId = TYPEID_EXCEPTION;
 			else if (qname.equals(InputStream.class.getName())) typeId = TYPEID_STREAM;
 			else if (qname.equals(BRemote.class.getName())) typeId = TYPEID_STUB;
+			else if (qname.equals(Date.class.getName())) typeId = TYPEID_DATE;
 			
 			else if (typeInfo.isListType()) {
 				if (typeInfo.typeArgs.get(0).isAnyType()) {

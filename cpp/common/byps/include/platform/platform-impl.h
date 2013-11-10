@@ -10,6 +10,8 @@
 // Decorated name length exceeded, name was truncated.
 #pragma warning( disable : 4503 ) 
 
+// Unused parameter
+#pragma warning( disable : 4100 )
 
 #elif __GNUC__
 

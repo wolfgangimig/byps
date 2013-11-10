@@ -18,11 +18,11 @@ namespace byps.test.api.inherit
 		public override int getRemoteId() { return 363642571; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				BioFruitService __byps__remoteT = (BioFruitService)__byps__remote;				
 				BAsyncResultSendMethod<bool> __byps__outerResult = new BAsyncResultSendMethod<bool>(__byps__asyncResult, new byps.test.api.BResult_1());				
-				__byps__remoteT.Certify(_param, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.Certify(paramValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(false, e);
 				throw e;
@@ -33,7 +33,7 @@ namespace byps.test.api.inherit
 		
 		#region Fields
 		
-		internal String _param;
+		internal String paramValue;
 
 		#endregion
 		

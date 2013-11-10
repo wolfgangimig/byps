@@ -20,13 +20,13 @@ namespace byps.test.api.inherit
 		}
 		public void Certify(String param, BAsyncResult<bool> asyncResult) {
 			BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();			
-			req._param = param;
+			req.paramValue = param;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<bool> CertifyAsync(String param){
 			BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();			
-			req._param = param;
+			req.paramValue = param;
 			Task<bool> task = Task<bool>.Factory.FromAsync(transport.BeginSend<bool>, transport.EndSend<bool>, req, null);
 			return await task;
 		}
@@ -70,15 +70,15 @@ namespace byps.test.api.inherit
 		}
 		public void Pick(byps.test.api.auth.SessionInfo sess, String fromTree, BAsyncResult<String> asyncResult) {
 			BRequest_LemonService_pick req = new BRequest_LemonService_pick();			
-			req._sess = sess;
-			req._fromTree = fromTree;
+			req.sessValue = sess;
+			req.fromTreeValue = fromTree;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<String> PickAsync(byps.test.api.auth.SessionInfo sess, String fromTree){
 			BRequest_LemonService_pick req = new BRequest_LemonService_pick();			
-			req._sess = sess;
-			req._fromTree = fromTree;
+			req.sessValue = sess;
+			req.fromTreeValue = fromTree;
 			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
 			return await task;
 		}

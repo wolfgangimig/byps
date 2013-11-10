@@ -36,13 +36,13 @@ namespace byps.test.api.inherit
 		}
 		public void Certify(String param, BAsyncResult<bool> asyncResult) {
 			BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();			
-			req._param = param;
+			req.paramValue = param;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<bool> CertifyAsync(String param){
 			BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();			
-			req._param = param;
+			req.paramValue = param;
 			Task<bool> task = Task<bool>.Factory.FromAsync(transport.BeginSend<bool>, transport.EndSend<bool>, req, null);
 			return await task;
 		}

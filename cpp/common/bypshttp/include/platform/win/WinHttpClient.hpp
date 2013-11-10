@@ -270,7 +270,7 @@ public:
 		}
 	}
 
-	virtual void onDataAvailable(DWORD length) throw() {
+	virtual void onDataAvailable(DWORD ) throw() {
 	}
 
 	virtual void onRequestError(WINHTTP_ASYNC_RESULT* asyncInfo) throw() {
@@ -868,11 +868,11 @@ public:
 		WCHAR szHost[256]={0};
 		URL_COMPONENTS UrlComps = {0};
 		UrlComps.dwStructSize = sizeof(UrlComps);
-		UrlComps.dwSchemeLength    = -1;
+		UrlComps.dwSchemeLength    = (DWORD)-1;
 		UrlComps.lpszHostName = szHost;
 		UrlComps.dwHostNameLength  = ARRAYSIZE(szHost)-1;
-		UrlComps.dwUrlPathLength   = -1;
-		UrlComps.dwExtraInfoLength = -1;
+		UrlComps.dwUrlPathLength   = (DWORD)-1;
+		UrlComps.dwExtraInfoLength = (DWORD)-1;
 
 		BOOL succ = WinHttpCrackUrl(
 								url.c_str(), 
@@ -907,11 +907,11 @@ public:
 		WCHAR szHost[256]={0};
 		URL_COMPONENTS UrlComps = {0};
 		UrlComps.dwStructSize = sizeof(UrlComps);
-		UrlComps.dwSchemeLength    = -1;
+		UrlComps.dwSchemeLength    = (DWORD)-1;
 		UrlComps.lpszHostName = szHost;
 		UrlComps.dwHostNameLength  = ARRAYSIZE(szHost)-1;
-		UrlComps.dwUrlPathLength   = -1;
-		UrlComps.dwExtraInfoLength = -1;
+		UrlComps.dwUrlPathLength   = (DWORD)-1;
+		UrlComps.dwExtraInfoLength = (DWORD)-1;
 
 		BOOL succ = WinHttpCrackUrl(
 								url.c_str(), 
@@ -989,7 +989,7 @@ public:
 	}
 
 	BINLINE static void CALLBACK winhttp_status_callback(
-			IN HINTERNET hInternet,
+			IN HINTERNET ,
 			IN DWORD_PTR dwContext,
 			IN DWORD dwInternetStatus,
 			IN LPVOID lpvStatusInformation OPTIONAL,
@@ -1035,7 +1035,7 @@ BLogger WinHttpClient::log("WinHttpClient");
 
 namespace byps { namespace http { 
 
-BINLINE PHttpClient HttpClient_create(void* app) {
+BINLINE PHttpClient HttpClient_create(void* ) {
 	return PHttpClient(new byps::http::winhttp::WinHttpClient());
 }
 

@@ -18,11 +18,11 @@ namespace byps.test.api.remote
 		public override int getRemoteId() { return 769717182; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				RemoteArrayTypes23 __byps__remoteT = (RemoteArrayTypes23)__byps__remote;				
 				BAsyncResultSendMethod<byps.test.api.inl.Point2D[]> __byps__outerResult = new BAsyncResultSendMethod<byps.test.api.inl.Point2D[]>(__byps__asyncResult, new byps.test.api.BResult_184101377());				
-				__byps__remoteT.SendArraysInline(_arr2, _arr3, _arr4, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.SendArraysInline(arr2Value, arr3Value, arr4Value, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 				throw e;
@@ -33,11 +33,11 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal byps.test.api.inl.Point2D[,] _arr2;
+		internal byps.test.api.inl.Point2D[,] arr2Value;
 
-		internal byps.test.api.inl.Point2D[,,] _arr3;
+		internal byps.test.api.inl.Point2D[,,] arr3Value;
 
-		internal byps.test.api.inl.Point2D[,,,] _arr4;
+		internal byps.test.api.inl.Point2D[,,,] arr4Value;
 
 		#endregion
 		

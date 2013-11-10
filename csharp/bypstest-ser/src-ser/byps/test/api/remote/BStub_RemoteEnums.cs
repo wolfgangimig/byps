@@ -36,13 +36,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPlanet(byps.test.api.enu.EnumPlanets planet, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();			
-			req._planet = planet;
+			req.planetValue = planet;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPlanetAsync(byps.test.api.enu.EnumPlanets planet){
 			BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();			
-			req._planet = planet;
+			req.planetValue = planet;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}

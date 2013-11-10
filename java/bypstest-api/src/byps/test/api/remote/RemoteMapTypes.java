@@ -1,5 +1,6 @@
 package byps.test.api.remote;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -36,6 +37,7 @@ public interface RemoteMapTypes extends BRemote {
 	public void setInt2(Map<Integer, int[]> int2) throws RemoteException;
 	public Map<String, Object> getObj1() throws RemoteException;
 	public void setObj1(Map<String, Object> obj1) throws RemoteException;
-	
+	public Map<String, Date> getDate1() throws RemoteException;
+	public void setDate1(Map<String, Date> obj1) throws RemoteException;
 	
 }

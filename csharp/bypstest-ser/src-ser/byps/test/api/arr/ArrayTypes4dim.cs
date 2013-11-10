@@ -19,16 +19,16 @@ namespace byps.test.api.arr
 		}		
 		
 		internal ArrayTypes4dim(bool[,,,] @boolean4, byte[,,,] @byte4, char[,,,] @char4, short[,,,] @short4, int[,,,] @int4, long[,,,] @long4, float[,,,] @float4, double[,,,] @double4, String[,,,] @string4, byps.test.api.prim.PrimitiveTypes[,,,] @primitiveTypes4) {
-			this._boolean4 = @boolean4;
-			this._byte4 = @byte4;
-			this._char4 = @char4;
-			this._short4 = @short4;
-			this._int4 = @int4;
-			this._long4 = @long4;
-			this._float4 = @float4;
-			this._double4 = @double4;
-			this._string4 = @string4;
-			this._primitiveTypes4 = @primitiveTypes4;
+			this.boolean4Value = @boolean4;
+			this.byte4Value = @byte4;
+			this.char4Value = @char4;
+			this.short4Value = @short4;
+			this.int4Value = @int4;
+			this.long4Value = @long4;
+			this.float4Value = @float4;
+			this.double4Value = @double4;
+			this.string4Value = @string4;
+			this.primitiveTypes4Value = @primitiveTypes4;
 		}		
 		
 		#endregion
@@ -39,11 +39,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _boolean4;
+				return boolean4Value;
 			}
 			set
 			{
-				this._boolean4 = value;
+				this.boolean4Value = value;
 			}
 		}
 		
@@ -52,11 +52,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _byte4;
+				return byte4Value;
 			}
 			set
 			{
-				this._byte4 = value;
+				this.byte4Value = value;
 			}
 		}
 		
@@ -65,11 +65,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _char4;
+				return char4Value;
 			}
 			set
 			{
-				this._char4 = value;
+				this.char4Value = value;
 			}
 		}
 		
@@ -78,11 +78,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _short4;
+				return short4Value;
 			}
 			set
 			{
-				this._short4 = value;
+				this.short4Value = value;
 			}
 		}
 		
@@ -91,11 +91,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _int4;
+				return int4Value;
 			}
 			set
 			{
-				this._int4 = value;
+				this.int4Value = value;
 			}
 		}
 		
@@ -104,11 +104,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _long4;
+				return long4Value;
 			}
 			set
 			{
-				this._long4 = value;
+				this.long4Value = value;
 			}
 		}
 		
@@ -117,11 +117,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _float4;
+				return float4Value;
 			}
 			set
 			{
-				this._float4 = value;
+				this.float4Value = value;
 			}
 		}
 		
@@ -130,11 +130,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _double4;
+				return double4Value;
 			}
 			set
 			{
-				this._double4 = value;
+				this.double4Value = value;
 			}
 		}
 		
@@ -143,11 +143,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _string4;
+				return string4Value;
 			}
 			set
 			{
-				this._string4 = value;
+				this.string4Value = value;
 			}
 		}
 		
@@ -156,11 +156,11 @@ namespace byps.test.api.arr
 		{
 			get
 			{
-				return _primitiveTypes4;
+				return primitiveTypes4Value;
 			}
 			set
 			{
-				this._primitiveTypes4 = value;
+				this.primitiveTypes4Value = value;
 			}
 		}
 		
@@ -169,25 +169,25 @@ namespace byps.test.api.arr
 		
 		#region Fields
 		
-		protected bool[,,,] _boolean4;
+		protected bool[,,,] boolean4Value;
 
-		protected byte[,,,] _byte4;
+		protected byte[,,,] byte4Value;
 
-		protected char[,,,] _char4;
+		protected char[,,,] char4Value;
 
-		protected short[,,,] _short4;
+		protected short[,,,] short4Value;
 
-		protected int[,,,] _int4;
+		protected int[,,,] int4Value;
 
-		protected long[,,,] _long4;
+		protected long[,,,] long4Value;
 
-		protected float[,,,] _float4;
+		protected float[,,,] float4Value;
 
-		protected double[,,,] _double4;
+		protected double[,,,] double4Value;
 
-		protected String[,,,] _string4;
+		protected String[,,,] string4Value;
 
-		protected byps.test.api.prim.PrimitiveTypes[,,,] _primitiveTypes4;
+		protected byps.test.api.prim.PrimitiveTypes[,,,] primitiveTypes4Value;
 
 		#endregion
 		

@@ -2,6 +2,7 @@ package byps;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
+import java.util.Date;
 
 /**
  * This is the base class for writing protocol messages in binary or JSON format. 
@@ -237,6 +238,8 @@ public abstract class BBuffer {
   public abstract void putInt(int v);
   public abstract long getLong();
   public abstract void putLong(long v);
+  public abstract void putDate(Date v);
+  public abstract Date getDate();
 
 	protected final BBinaryModel bmodel;
 	protected ByteBuffer buf;

@@ -44,6 +44,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 		obj.primitiveTypes1 = [];
 		obj.short1 = [];
 		obj.string1 = [];
+		obj.date1 = [];
 
 		internalTestSerializeArrayTypes(obj);
 		
@@ -76,6 +77,7 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 		obj.primitiveTypes1 = [ TestUtils.createObjectPrimitiveTypes(), TestUtils.createObjectPrimitiveTypes() ];
 		obj.short1 = [1,2,3,4,5,6,7];
 		obj.string1 = ["a", "b", "c"];
+		obj.date1 = [new Date(), 0, new Date()];
 
 		internalTestSerializeArrayTypes(obj);
 		
@@ -194,5 +196,20 @@ describe("Tests for serializing 1-dimensional array types.", function() {
 		obj.primitiveTypes1 = arr;
 		internalTestSerializeArrayTypes(obj);
 	};
+
+	it("testArrayTypes1dimDate", function() {
+		log.info("testArrayTypes1dimDate(");
+		internalTestArrayTypes1dimDate([new Date(), new Date("1600-01-01 13:14:15.678")]);
+		internalTestArrayTypes1dimDate([]);
+		internalTestArrayTypes1dimDate([null]);
+		log.info(")testArrayTypes1dimDate");
+	});
+
+	internalTestArrayTypes1dimDate = function(arr) {
+		var obj = new byps.test.api.arr.ArrayTypes1dim();
+		obj.date1 = arr;
+		internalTestSerializeArrayTypes(obj);
+	};
+
 
 });

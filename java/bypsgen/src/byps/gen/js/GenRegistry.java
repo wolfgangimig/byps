@@ -143,7 +143,11 @@ public class GenRegistry {
 			if (minfo.isTransient) continue;
       //if (minfo.isStatic) continue; 
 			
-			if (onlyInline && !minfo.type.isInline && !minfo.type.isArrayType() && !minfo.type.isCollectionType()) continue;
+			if (onlyInline && 
+			    !minfo.type.isInline && 
+			    !minfo.type.isArrayType() && 
+			    !minfo.type.isCollectionType() &&
+			    !minfo.type.isDateType()) continue;
 
       pr.println( onlyInline ? "// names of inline elements" : "// names of persistent elements" );
 			

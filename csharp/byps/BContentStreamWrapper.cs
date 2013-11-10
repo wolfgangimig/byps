@@ -9,7 +9,7 @@ namespace byps
     public class BContentStreamWrapper : BContentStream
     {
 
-	    protected volatile Stream innerStream;
+	    protected Stream innerStream;
 
         public BContentStreamWrapper() 
             : this(null)

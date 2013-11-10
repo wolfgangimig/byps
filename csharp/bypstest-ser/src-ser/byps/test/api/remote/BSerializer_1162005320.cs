@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteInlineInstance_setActor obj = (BRequest_RemoteInlineInstance_setActor)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._act, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.actValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteInlineInstance_setActor obj = (BRequest_RemoteInlineInstance_setActor)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteInlineInstance_setActor()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._act = (byps.test.api.inl.Actor)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.actValue = (byps.test.api.inl.Actor)bin.readObj(false, null);
 			
 			return obj;
 		}

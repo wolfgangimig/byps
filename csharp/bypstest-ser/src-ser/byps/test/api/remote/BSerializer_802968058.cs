@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_setReloginCount obj = (BRequest_RemoteWithAuthentication_setReloginCount)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putInt(obj._count);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putInt(obj.countValue);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_setReloginCount obj = (BRequest_RemoteWithAuthentication_setReloginCount)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteWithAuthentication_setReloginCount()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._count = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.countValue = bbuf.getInt();
 			
 			return obj;
 		}

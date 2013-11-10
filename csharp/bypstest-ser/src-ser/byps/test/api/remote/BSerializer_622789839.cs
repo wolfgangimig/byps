@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteStreams_setImage obj = (BRequest_RemoteStreams_setImage)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._istrm, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.istrmValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteStreams_setImage obj = (BRequest_RemoteStreams_setImage)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteStreams_setImage()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._istrm = (System.IO.Stream)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.istrmValue = (System.IO.Stream)bin.readObj(false, null);
 			
 			return obj;
 		}

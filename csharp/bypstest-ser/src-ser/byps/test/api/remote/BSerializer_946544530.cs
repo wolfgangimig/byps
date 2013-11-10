@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_setUseAuthentication obj = (BRequest_RemoteWithAuthentication_setUseAuthentication)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putBoolean(obj._useAuth);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putBoolean(obj.useAuthValue);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_setUseAuthentication obj = (BRequest_RemoteWithAuthentication_setUseAuthentication)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteWithAuthentication_setUseAuthentication()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._useAuth = bbuf.getBoolean();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.useAuthValue = bbuf.getBoolean();
 			
 			return obj;
 		}

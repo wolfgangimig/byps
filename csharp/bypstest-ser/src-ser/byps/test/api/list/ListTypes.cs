@@ -18,21 +18,22 @@ namespace byps.test.api.list
 		public ListTypes() {
 		}		
 		
-		internal ListTypes(IList<bool> @boolean1, IList<byte> @byte1, IList<char> @char1, IList<short> @short1, IList<int> @int1, IList<long> @long1, IList<float> @float1, IList<double> @double1, IList<String> @string1, IList<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IList<byte[]> @byte2, IList<int[]> @int2, IList<int[,,,]> @int4, IList<Object> @obj1) {
-			this._boolean1 = @boolean1;
-			this._byte1 = @byte1;
-			this._char1 = @char1;
-			this._short1 = @short1;
-			this._int1 = @int1;
-			this._long1 = @long1;
-			this._float1 = @float1;
-			this._double1 = @double1;
-			this._string1 = @string1;
-			this._primitiveTypes1 = @primitiveTypes1;
-			this._byte2 = @byte2;
-			this._int2 = @int2;
-			this._int4 = @int4;
-			this._obj1 = @obj1;
+		internal ListTypes(IList<bool> @boolean1, IList<byte> @byte1, IList<char> @char1, IList<short> @short1, IList<int> @int1, IList<long> @long1, IList<float> @float1, IList<double> @double1, IList<String> @string1, IList<java.util.Date> @date1, IList<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IList<byte[]> @byte2, IList<int[]> @int2, IList<int[,,,]> @int4, IList<Object> @obj1) {
+			this.boolean1Value = @boolean1;
+			this.byte1Value = @byte1;
+			this.char1Value = @char1;
+			this.short1Value = @short1;
+			this.int1Value = @int1;
+			this.long1Value = @long1;
+			this.float1Value = @float1;
+			this.double1Value = @double1;
+			this.string1Value = @string1;
+			this.date1Value = @date1;
+			this.primitiveTypes1Value = @primitiveTypes1;
+			this.byte2Value = @byte2;
+			this.int2Value = @int2;
+			this.int4Value = @int4;
+			this.obj1Value = @obj1;
 		}		
 		
 		#endregion
@@ -43,11 +44,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _boolean1;
+				return boolean1Value;
 			}
 			set
 			{
-				this._boolean1 = value;
+				this.boolean1Value = value;
 			}
 		}
 		
@@ -56,11 +57,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _byte1;
+				return byte1Value;
 			}
 			set
 			{
-				this._byte1 = value;
+				this.byte1Value = value;
 			}
 		}
 		
@@ -69,11 +70,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _char1;
+				return char1Value;
 			}
 			set
 			{
-				this._char1 = value;
+				this.char1Value = value;
 			}
 		}
 		
@@ -82,11 +83,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _short1;
+				return short1Value;
 			}
 			set
 			{
-				this._short1 = value;
+				this.short1Value = value;
 			}
 		}
 		
@@ -95,11 +96,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _int1;
+				return int1Value;
 			}
 			set
 			{
-				this._int1 = value;
+				this.int1Value = value;
 			}
 		}
 		
@@ -108,11 +109,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _long1;
+				return long1Value;
 			}
 			set
 			{
-				this._long1 = value;
+				this.long1Value = value;
 			}
 		}
 		
@@ -121,11 +122,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _float1;
+				return float1Value;
 			}
 			set
 			{
-				this._float1 = value;
+				this.float1Value = value;
 			}
 		}
 		
@@ -134,11 +135,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _double1;
+				return double1Value;
 			}
 			set
 			{
-				this._double1 = value;
+				this.double1Value = value;
 			}
 		}
 		
@@ -147,11 +148,24 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _string1;
+				return string1Value;
 			}
 			set
 			{
-				this._string1 = value;
+				this.string1Value = value;
+			}
+		}
+		
+		
+		public IList<java.util.Date> Date1
+		{
+			get
+			{
+				return date1Value;
+			}
+			set
+			{
+				this.date1Value = value;
 			}
 		}
 		
@@ -160,11 +174,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _primitiveTypes1;
+				return primitiveTypes1Value;
 			}
 			set
 			{
-				this._primitiveTypes1 = value;
+				this.primitiveTypes1Value = value;
 			}
 		}
 		
@@ -173,11 +187,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _byte2;
+				return byte2Value;
 			}
 			set
 			{
-				this._byte2 = value;
+				this.byte2Value = value;
 			}
 		}
 		
@@ -186,11 +200,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _int2;
+				return int2Value;
 			}
 			set
 			{
-				this._int2 = value;
+				this.int2Value = value;
 			}
 		}
 		
@@ -199,11 +213,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _int4;
+				return int4Value;
 			}
 			set
 			{
-				this._int4 = value;
+				this.int4Value = value;
 			}
 		}
 		
@@ -212,11 +226,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _obj1;
+				return obj1Value;
 			}
 			set
 			{
-				this._obj1 = value;
+				this.obj1Value = value;
 			}
 		}
 		
@@ -225,33 +239,35 @@ namespace byps.test.api.list
 		
 		#region Fields
 		
-		protected IList<bool> _boolean1;
+		protected IList<bool> boolean1Value;
 
-		protected IList<byte> _byte1;
+		protected IList<byte> byte1Value;
 
-		protected IList<char> _char1;
+		protected IList<char> char1Value;
 
-		protected IList<short> _short1;
+		protected IList<short> short1Value;
 
-		protected IList<int> _int1;
+		protected IList<int> int1Value;
 
-		protected IList<long> _long1;
+		protected IList<long> long1Value;
 
-		protected IList<float> _float1;
+		protected IList<float> float1Value;
 
-		protected IList<double> _double1;
+		protected IList<double> double1Value;
 
-		protected IList<String> _string1;
+		protected IList<String> string1Value;
 
-		protected IList<byps.test.api.prim.PrimitiveTypes> _primitiveTypes1;
+		protected IList<java.util.Date> date1Value;
 
-		protected IList<byte[]> _byte2;
+		protected IList<byps.test.api.prim.PrimitiveTypes> primitiveTypes1Value;
 
-		protected IList<int[]> _int2;
+		protected IList<byte[]> byte2Value;
 
-		protected IList<int[,,,]> _int4;
+		protected IList<int[]> int2Value;
 
-		protected IList<Object> _obj1;
+		protected IList<int[,,,]> int4Value;
+
+		protected IList<Object> obj1Value;
 
 		#endregion
 		

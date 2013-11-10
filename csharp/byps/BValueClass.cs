@@ -7,30 +7,30 @@ namespace byps
 {
     public class BValueClass : BSerializable
     {
-        protected long _changedMembers;
+        protected long changedMembersVal;
 
-        protected Object _dbHelper;
+        protected Object dbHelperVal;
 
         public long ChangedMembers
         {
-            get { return _changedMembers; }
-            set { _changedMembers = value; }
+            get { return changedMembersVal; }
+            set { changedMembersVal = value; }
         }
 
         public virtual Object DBHelper
         {
-            get { return _dbHelper; }
-            set { _dbHelper = value; }
+            get { return dbHelperVal; }
+            set { dbHelperVal = value; }
         }
 
         public bool isChangedMember(long mb)
         {
-            return (_changedMembers & mb) != 0;
+            return (changedMembersVal & mb) != 0;
         }
 
         public void setChangedMember(long mb)
         {
-            _changedMembers |= mb;
+            changedMembersVal |= mb;
         }
 
     }

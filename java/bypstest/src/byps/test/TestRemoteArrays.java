@@ -1,5 +1,7 @@
 package byps.test;
 
+import java.util.Date;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.After;
@@ -139,6 +141,7 @@ public class TestRemoteArrays {
 		String[] string1 = new String[] {"ττ\0ττ"};
 		PrimitiveTypes[] primitiveTypes1 = new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() };
 		Object[] object1 = new ArrayTypes1dim[] { new ArrayTypes1dim() };
+		Date[] date1 = new Date[] { new Date(System.currentTimeMillis()), null, new Date(System.currentTimeMillis() + 1)};
 
 		remote.setBool(boolean1);
 		TestUtils.assertEquals(log, "bool", boolean1, remote.getBool());
@@ -158,7 +161,8 @@ public class TestRemoteArrays {
 		TestUtils.assertEquals(log,  "double", double1, remote.getDouble());
 		remote.setString(string1);
 		TestUtils.assertEquals(log,  "String", string1, remote.getString());
-		
+		remote.setDate(date1);
+		TestUtils.assertEquals(log,  "date", date1, remote.getDate());
 		remote.setObject(object1);
 		TestUtils.assertEquals(log,  "Object", object1, remote.getObject());
 		
@@ -187,6 +191,7 @@ public class TestRemoteArrays {
 		obj.short4 = new short[][][][] {{{{4,2,3,4,5,6,7}}}};
 		obj.string4 = new String[][][][] {{{{"a", "b", "c"}}}};
 		Object[][][][] object4 = new ArrayTypes4dim[][][][] { { { { new ArrayTypes4dim() } } } };
+		Date[][][][] date4 = new Date[][][][] {{{{ new Date(0) }}}};
 
 		remote.setBool(obj.boolean4);
 		TestUtils.assertEquals(log, "bool", obj.boolean4, remote.getBool());
@@ -206,6 +211,8 @@ public class TestRemoteArrays {
 		TestUtils.assertEquals(log,  "double", obj.double4, remote.getDouble());
 		remote.setString(obj.string4);
 		TestUtils.assertEquals(log,  "String", obj.string4, remote.getString());
+		remote.setDate(date4);
+		TestUtils.assertEquals(log,  "date", date4, remote.getDate());
 		
 		remote.setPrimitiveTypes(obj.primitiveTypes4);
 		TestUtils.assertEquals(log,  "PrimitiveTypes", obj.primitiveTypes4, remote.getPrimitiveTypes());

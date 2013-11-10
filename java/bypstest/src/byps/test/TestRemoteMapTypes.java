@@ -1,5 +1,6 @@
 package byps.test;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import org.apache.commons.logging.Log;
@@ -53,6 +54,7 @@ public class TestRemoteMapTypes {
 		obj.primitiveTypes1 = new MyMap<Integer, PrimitiveTypes>().add(1, TestUtils.createObjectPrimitiveTypes()).add(2, TestUtils.createObjectPrimitiveTypes());
 		obj.short1 = new MyMap<Long, Short>().add(-55L, (short)1234).add(0x5555555555555555L, (short)5555);
 		obj.string1 = new MyMap<String, String>().add("A", "a").add("B","b");
+		obj.date1 = new MyMap<String, Date>().add("1",  new Date(1)).add("2", new Date(2)).add("null", null);
 
 		remote.setBoolean1(obj.boolean1);
 		TestUtils.assertEquals(log, "boolean1", obj.boolean1, remote.getBoolean1());
@@ -74,6 +76,8 @@ public class TestRemoteMapTypes {
 		TestUtils.assertEquals(log, "short1", obj.short1, remote.getShort1());
 		remote.setString1(obj.string1);
 		TestUtils.assertEquals(log, "string1", obj.string1, remote.getString1());
+		remote.setDate1(obj.date1);
+		TestUtils.assertEquals(log,  "date1",  obj.date1, remote.getDate1());
 		
 		log.info(")testRemoteMapTypes");
 	}

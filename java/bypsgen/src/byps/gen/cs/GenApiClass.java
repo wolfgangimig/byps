@@ -101,12 +101,12 @@ class GenApiClass {
         newKeyword = "new ";
       }
       
-			String memberName = "";
+      String memberName = "";
 			if (minfo.isStatic) {
 				memberName = pctxt.makePublicMemberName(minfo.name);
 			}
 			else {
-				memberName = "_" + minfo.name;
+				memberName = pctxt.makeDataMemberName(minfo.name);
 			}
 			
 			String typeName = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
@@ -262,6 +262,7 @@ class GenApiClass {
 		pctxt.printComments(pr, minfo.comments);
 			
 		String memberType = pctxt.toCSharp(minfo.type).toString(serInfo.pack);
+		String memberName = pctxt.makeDataMemberName(minfo.name);
 		
 		if (!memberType.equals("void")) {
 			CodePrinter mpr = pr.print("public ");
@@ -274,11 +275,11 @@ class GenApiClass {
 			pr.println("{");
 			pr.beginBlock();
 			if (memberType.equals("java.lang.String")) {
-				pr.print("if (_").print(minfo.name).print(" == null) ")
+				pr.print("if (").print(memberName).print(" == null) ")
 					.print("_").print(minfo.name).print(" = \"\";")
 					.println();
 			}
-			pr.print("return _").print(minfo.name).println(";");
+			pr.print("return ").print(memberName).println(";");
 			pr.endBlock();
 			pr.println("}"); // end get
 			
@@ -286,7 +287,7 @@ class GenApiClass {
 				pr.println("set");
 				pr.println("{");
 				pr.beginBlock();
-				pr.print("this._").print(minfo.name).println(" = value;");
+				pr.print("this.").print(memberName).println(" = value;");
 				
 				pctxt.printSetChangedMembers(pr, serInfo, minfo);
 				
@@ -352,7 +353,8 @@ class GenApiClass {
 				for (MemberInfo minfo : constrMembers) {
 					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
 					if (minfo.isStatic) continue;
-					pr.print("this._").print(minfo.name).print(" = @").print(minfo.name).println(";");
+					String memberName = pctxt.makeDataMemberName(minfo.name);
+					pr.print("this.").print(memberName).print(" = @").print(minfo.name).println(";");
 				}
 				pr.endBlock();
 				
@@ -398,7 +400,8 @@ class GenApiClass {
 		boolean first = true;
 		for (MemberInfo pinfo : methodInfo.requestInfo.members) {
 			if (first) first = false; else mpr.print(", ");
-			mpr.print("_").print(pinfo.name);
+      String memberName = pctxt.makeDataMemberName(pinfo.name);
+			mpr.print(memberName);
 		}
 		if (!first) mpr.print(", ");
 		mpr.print("BAsyncResultHelper.ToDelegate(__byps__outerResult)");
@@ -442,7 +445,8 @@ class GenApiClass {
         
         pr.println("public override void setSession(Object __byps__sess) {");
         pr.beginBlock();
-        pr.print("_").print(pinfo.name).print(" = (").print(rinfo.authParamClassName).println(")__byps__sess;");
+        String memberName = pctxt.makeDataMemberName(pinfo.name);
+        pr.print(memberName).print(" = (").print(rinfo.authParamClassName).println(")__byps__sess;");
         pr.endBlock();
         pr.println("}");
         pr.println();

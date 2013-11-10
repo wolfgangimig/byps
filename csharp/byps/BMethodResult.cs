@@ -9,6 +9,6 @@ namespace byps
 {
     public class BMethodResult<T> 
     {
-        public T _result;
+        public T resultValue;
     }
 }

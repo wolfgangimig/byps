@@ -18,11 +18,11 @@ public class BSkeleton_RemoteReferences extends BSkeleton implements RemoteRefer
 	
 	public final static long serialVersionUID = 568637225L;
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public byps.test.api.refs.Node getNode() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getNode(final BAsyncResult<byps.test.api.refs.Node> asyncResult) {
 		try {
 			byps.test.api.refs.Node ret = getNode();
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteReferences extends BSkeleton implements RemoteRefer
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setNode(byps.test.api.refs.Node v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setNode(byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setNode(v);

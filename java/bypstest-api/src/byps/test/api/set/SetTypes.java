@@ -1,6 +1,7 @@
 package byps.test.api.set;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -24,5 +25,6 @@ public class SetTypes implements Serializable {
 	public Set< byte[]> byte2;
 	public Set< int[]> int2;
 	public Set<Object> obj1;
+	public Set<Date> date1;
 
 }

@@ -57,6 +57,10 @@ namespace byps.test.api.remote
 		void SetObject(Object v, BAsyncResult<Object> asyncResult) ;
 		Task SetObjectAsync(Object v);
 		
+		void SetDate(java.util.Date v);
+		void SetDate(java.util.Date v, BAsyncResult<Object> asyncResult) ;
+		Task SetDateAsync(java.util.Date v);
+		
 		bool GetBool();
 		void GetBool(BAsyncResult<bool> asyncResult) ;
 		Task<bool> GetBoolAsync();
@@ -101,6 +105,10 @@ namespace byps.test.api.remote
 		void GetObject(BAsyncResult<Object> asyncResult) ;
 		Task<Object> GetObjectAsync();
 		
+		java.util.Date GetDate();
+		void GetDate(BAsyncResult<java.util.Date> asyncResult) ;
+		Task<java.util.Date> GetDateAsync();
+		
 		void SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, byps.test.api.prim.PrimitiveTypes pt, Object o);
 		void SendAllTypes(bool b, char c, short s, int i, long l, float f, double d, String str, byps.test.api.prim.PrimitiveTypes pt, Object o, BAsyncResult<Object> asyncResult) ;
 		Task SendAllTypesAsync(bool b, char c, short s, int i, long l, float f, double d, String str, byps.test.api.prim.PrimitiveTypes pt, Object o);
@@ -108,6 +116,14 @@ namespace byps.test.api.remote
 		int Add(int a, int b);
 		void Add(int a, int b, BAsyncResult<int> asyncResult) ;
 		Task<int> AddAsync(int a, int b);
+		
+		java.util.Date MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond);
+		void MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond, BAsyncResult<java.util.Date> asyncResult) ;
+		Task<java.util.Date> MakeDateAsync(int year, int month, int day, int hour, int minute, int second, int millisecond);
+		
+		int[] ParseDate(java.util.Date date);
+		void ParseDate(java.util.Date date, BAsyncResult<int[]> asyncResult) ;
+		Task<int[]> ParseDateAsync(java.util.Date date);
 		
 		void ThrowException();
 		void ThrowException(BAsyncResult<Object> asyncResult) ;

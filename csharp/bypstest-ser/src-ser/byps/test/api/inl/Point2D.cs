@@ -29,8 +29,8 @@ namespace byps.test.api.inl
 		}		
 		
 		internal Point2D(short @x, short @y) {
-			this._x = @x;
-			this._y = @y;
+			this.xValue = @x;
+			this.yValue = @y;
 		}		
 		
 		#endregion
@@ -41,11 +41,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return _x;
+				return xValue;
 			}
 			set
 			{
-				this._x = value;
+				this.xValue = value;
 			}
 		}
 		
@@ -54,11 +54,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return _y;
+				return yValue;
 			}
 			set
 			{
-				this._y = value;
+				this.yValue = value;
 			}
 		}
 		
@@ -67,9 +67,9 @@ namespace byps.test.api.inl
 		
 		#region Fields
 		
-		private short _x;
+		private short xValue;
 
-		private short _y;
+		private short yValue;
 
 		#endregion
 		

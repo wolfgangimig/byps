@@ -59,7 +59,7 @@ var client = null;
 				wire, 1);
 		client = new byps.test.api.BClient_Testser(
 				transportFactory);
-		client.start(true);
+		client.start();
 
 		var jasmineEnv = jasmine.getEnv();
 		jasmineEnv.updateInterval = 1000;
@@ -95,8 +95,8 @@ var client = null;
 <body>
 	<table>
 		<tr>
-			<td><input type="button" value="Test Suite"
-				onclick="startTestSuite()" /></td>
+			<td><input type="button" value="Start Test Suite"
+				onclick="startTestSuite()" />(Reload page before start)</td>
 		</tr>
 		<tr>
 			<td>

@@ -27,7 +27,9 @@ namespace byps.test.api.inl
 			Point2D obj = (Point2D)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:490
 			bbuf.putShort(obj.X);
+			// checkpoint byps.gen.cs.PrintContext:490
 			bbuf.putShort(obj.Y);
 		}
 		
@@ -37,7 +39,9 @@ namespace byps.test.api.inl
 			Point2D obj = (Point2D)(obj1 != null ? obj1 : new Point2D());
 			
 			BBufferBin bbuf = bin.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:445
 			obj.X = bbuf.getShort();
+			// checkpoint byps.gen.cs.PrintContext:445
 			obj.Y = bbuf.getShort();
 			
 			return obj;

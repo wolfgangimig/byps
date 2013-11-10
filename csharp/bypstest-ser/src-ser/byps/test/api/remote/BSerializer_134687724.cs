@@ -27,9 +27,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_login obj = (BRequest_RemoteWithAuthentication_login)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putString(obj._userName);
-			bbuf.putString(obj._userPwd);
-			bout.writeObj(obj._sess, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putString(obj.userNameValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putString(obj.userPwdValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.sessValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -38,9 +41,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteWithAuthentication_login obj = (BRequest_RemoteWithAuthentication_login)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteWithAuthentication_login()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._userName = bbuf.getString();
-			obj._userPwd = bbuf.getString();
-			obj._sess = (byps.test.api.auth.SessionInfo)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.userNameValue = bbuf.getString();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.userPwdValue = bbuf.getString();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.sessValue = (byps.test.api.auth.SessionInfo)bin.readObj(false, null);
 			
 			return obj;
 		}

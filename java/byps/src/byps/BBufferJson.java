@@ -4,14 +4,16 @@ package byps;
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.StringTokenizer;
+import java.util.TimeZone;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import byps.BException;
 
 public class BBufferJson extends BBuffer {
 	
@@ -650,7 +652,46 @@ public class BBufferJson extends BBuffer {
 		
 		return sbuf.toString();
 	}
-
+	
+	private void internalPutDate(String name, Date date) {
+	  if (date != null) {
+	    putJsonValueAscii(name, dateFormat.format(date), STRING_WITH_QUOTE);
+	  }
+	  else {
+	    putJsonValueAscii(name, "null", STRING_WITHOUT_QUOTE);
+	  }
+	}
+	
+	public void putDate(Date date) {
+	  internalPutDate(null, date);
+	}
+	
+	public void putDate(String name, Date date) {
+	  internalPutDate(name, date);
+	}
+	
+	public static Date toDate(Object value) {
+    Date date = null;
+    if (value != null) {
+      try {
+        String svalue = (String)value;
+        
+        // 2013-11-09T20:35:16.596Z
+        if (svalue.length() != 0) {
+          date = dateFormat.parse(svalue);
+        }
+        
+      } catch (ParseException e) {
+        date = null;
+      }
+    }
+    return date;	  
+	}
+	
+	public Date getDate() {
+	  return toDate(getString());
+	}
+	
 	public void putTypeId(int v) {
 		putInt("_typeId", v);
 	}
@@ -869,6 +910,19 @@ public class BBufferJson extends BBuffer {
     return ret;
 	}
 
+  private static SimpleDateFormat dateFormat;
+  static {
+    try {
+      // JSON Date format e.g.: 2013-11-09T20:35:16.596Z
+      dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"); 
+      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+    }
+    catch (Throwable e) {
+      System.err.println(e);
+    }
+  }
+
+	
 	private Log log = LogFactory.getLog(BBufferJson.class);
 }
 

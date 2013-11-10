@@ -11,6 +11,7 @@
 
 
 #include <stdint.h>
+#include <ctime>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -82,6 +83,7 @@ class BVariant;
 class BWire;
 class BRunnable;
 class BThreadPool;
+class BDateTime;
 
 typedef byps_ptr<BRunnable> PRunnable;
 typedef byps_ptr<BThreadPool> PThreadPool;
@@ -171,5 +173,6 @@ typedef byps_ptr<BContentStream> PContentStream;
 #include "BVersioning.h"
 #include "BAuthentication.h"
 #include "BLostConnectionHandler.h"
+#include "BDateTime.h"
 
 #endif

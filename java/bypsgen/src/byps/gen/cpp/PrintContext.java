@@ -397,7 +397,7 @@ class PrintContext extends PrintContextBase {
     TypeInfoCpp tinfoCppParam = new TypeInfoCpp(pinfo.type);
     String stype = tinfoCppParam.toString(pack);
     
-    if (pinfo.type.isPointerType() || pinfo.type.isStringType()) {
+    if (pinfo.type.isPointerType() || pinfo.type.isStringType() || pinfo.type.isDateType()) {
       sbuf.append("const ").append(stype).append("& ");
     }
     else {

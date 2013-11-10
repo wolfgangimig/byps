@@ -27,7 +27,8 @@ namespace byps.test.api
 			BResult_673917574 obj = (BResult_673917574)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._result, false, byps.test.api.BSerializer_673917574.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.resultValue, false, byps.test.api.BSerializer_673917574.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api
 			BResult_673917574 obj = (BResult_673917574)(obj1 != null ? obj1 : bin.onObjectCreated(new BResult_673917574()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._result = (ISet<byps.test.api.prim.PrimitiveTypes>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.resultValue = (ISet<byps.test.api.prim.PrimitiveTypes>)bin.readObj(false, null);
 			
 			return obj;
 		}

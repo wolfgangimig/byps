@@ -19,9 +19,9 @@ namespace byps.test.api.srvr
 		}		
 		
 		internal ChatStructure(String @msg, double @sentAt, double @receivedAt) {
-			this._msg = @msg;
-			this._sentAt = @sentAt;
-			this._receivedAt = @receivedAt;
+			this.msgValue = @msg;
+			this.sentAtValue = @sentAt;
+			this.receivedAtValue = @receivedAt;
 		}		
 		
 		#endregion
@@ -32,11 +32,11 @@ namespace byps.test.api.srvr
 		{
 			get
 			{
-				return _msg;
+				return msgValue;
 			}
 			set
 			{
-				this._msg = value;
+				this.msgValue = value;
 			}
 		}
 		
@@ -45,11 +45,11 @@ namespace byps.test.api.srvr
 		{
 			get
 			{
-				return _sentAt;
+				return sentAtValue;
 			}
 			set
 			{
-				this._sentAt = value;
+				this.sentAtValue = value;
 			}
 		}
 		
@@ -58,11 +58,11 @@ namespace byps.test.api.srvr
 		{
 			get
 			{
-				return _receivedAt;
+				return receivedAtValue;
 			}
 			set
 			{
-				this._receivedAt = value;
+				this.receivedAtValue = value;
 			}
 		}
 		
@@ -71,11 +71,11 @@ namespace byps.test.api.srvr
 		
 		#region Fields
 		
-		protected String _msg;
+		protected String msgValue;
 
-		protected double _sentAt;
+		protected double sentAtValue;
 
-		protected double _receivedAt;
+		protected double receivedAtValue;
 
 		#endregion
 		

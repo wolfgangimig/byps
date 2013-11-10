@@ -29,6 +29,7 @@ public:
     void operator&(double& v);
     void operator&(BVariant& v);
     void operator&(BTargetId& v);
+	void operator&(BDateTime& v);
 
     template<typename _Type> void operator&(_Type& obj);
     template<typename _Type> void operator&(basic_string<_Type>& obj);

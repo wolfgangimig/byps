@@ -23,7 +23,7 @@ namespace byps
 
         public void setAsyncResult(BMethodResult<T> methodResult, Exception e)
         {
-            T result = methodResult != null ? methodResult._result : default(T);
+            T result = methodResult != null ? methodResult.resultValue : default(T);
             if (innerResult != null)
             {
                 innerResult.setAsyncResult(result, e);

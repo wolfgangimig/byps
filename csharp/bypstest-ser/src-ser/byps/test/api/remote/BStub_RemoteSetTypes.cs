@@ -36,13 +36,13 @@ namespace byps.test.api.remote
 		}
 		public void SetBoolean1(ISet<bool> boolean1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setBoolean1 req = new BRequest_RemoteSetTypes_setBoolean1();			
-			req._boolean1 = boolean1;
+			req.boolean1Value = boolean1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetBoolean1Async(ISet<bool> boolean1){
 			BRequest_RemoteSetTypes_setBoolean1 req = new BRequest_RemoteSetTypes_setBoolean1();			
-			req._boolean1 = boolean1;
+			req.boolean1Value = boolean1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -70,13 +70,13 @@ namespace byps.test.api.remote
 		}
 		public void SetByte1(HashSet<byte> byte1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setByte1 req = new BRequest_RemoteSetTypes_setByte1();			
-			req._byte1 = byte1;
+			req.byte1Value = byte1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetByte1Async(HashSet<byte> byte1){
 			BRequest_RemoteSetTypes_setByte1 req = new BRequest_RemoteSetTypes_setByte1();			
-			req._byte1 = byte1;
+			req.byte1Value = byte1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -104,13 +104,13 @@ namespace byps.test.api.remote
 		}
 		public void SetChar1(HashSet<char> char1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setChar1 req = new BRequest_RemoteSetTypes_setChar1();			
-			req._char1 = char1;
+			req.char1Value = char1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetChar1Async(HashSet<char> char1){
 			BRequest_RemoteSetTypes_setChar1 req = new BRequest_RemoteSetTypes_setChar1();			
-			req._char1 = char1;
+			req.char1Value = char1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -138,13 +138,13 @@ namespace byps.test.api.remote
 		}
 		public void SetShort1(ISet<short> short1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setShort1 req = new BRequest_RemoteSetTypes_setShort1();			
-			req._short1 = short1;
+			req.short1Value = short1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetShort1Async(ISet<short> short1){
 			BRequest_RemoteSetTypes_setShort1 req = new BRequest_RemoteSetTypes_setShort1();			
-			req._short1 = short1;
+			req.short1Value = short1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -172,13 +172,13 @@ namespace byps.test.api.remote
 		}
 		public void SetInt1(ISet<int> int1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setInt1 req = new BRequest_RemoteSetTypes_setInt1();			
-			req._int1 = int1;
+			req.int1Value = int1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetInt1Async(ISet<int> int1){
 			BRequest_RemoteSetTypes_setInt1 req = new BRequest_RemoteSetTypes_setInt1();			
-			req._int1 = int1;
+			req.int1Value = int1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -206,13 +206,13 @@ namespace byps.test.api.remote
 		}
 		public void SetLong1(ISet<long> long1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setLong1 req = new BRequest_RemoteSetTypes_setLong1();			
-			req._long1 = long1;
+			req.long1Value = long1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetLong1Async(ISet<long> long1){
 			BRequest_RemoteSetTypes_setLong1 req = new BRequest_RemoteSetTypes_setLong1();			
-			req._long1 = long1;
+			req.long1Value = long1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -240,13 +240,13 @@ namespace byps.test.api.remote
 		}
 		public void SetFloat1(ISet<float> float1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setFloat1 req = new BRequest_RemoteSetTypes_setFloat1();			
-			req._float1 = float1;
+			req.float1Value = float1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetFloat1Async(ISet<float> float1){
 			BRequest_RemoteSetTypes_setFloat1 req = new BRequest_RemoteSetTypes_setFloat1();			
-			req._float1 = float1;
+			req.float1Value = float1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -274,13 +274,13 @@ namespace byps.test.api.remote
 		}
 		public void SetDouble1(ISet<double> double1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setDouble1 req = new BRequest_RemoteSetTypes_setDouble1();			
-			req._double1 = double1;
+			req.double1Value = double1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetDouble1Async(ISet<double> double1){
 			BRequest_RemoteSetTypes_setDouble1 req = new BRequest_RemoteSetTypes_setDouble1();			
-			req._double1 = double1;
+			req.double1Value = double1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -308,13 +308,13 @@ namespace byps.test.api.remote
 		}
 		public void SetString1(ISet<String> string1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setString1 req = new BRequest_RemoteSetTypes_setString1();			
-			req._string1 = string1;
+			req.string1Value = string1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetString1Async(ISet<String> string1){
 			BRequest_RemoteSetTypes_setString1 req = new BRequest_RemoteSetTypes_setString1();			
-			req._string1 = string1;
+			req.string1Value = string1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -342,13 +342,13 @@ namespace byps.test.api.remote
 		}
 		public void SetPrimitiveTypes1(ISet<byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setPrimitiveTypes1 req = new BRequest_RemoteSetTypes_setPrimitiveTypes1();			
-			req._primitiveTypes1 = primitiveTypes1;
+			req.primitiveTypes1Value = primitiveTypes1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPrimitiveTypes1Async(ISet<byps.test.api.prim.PrimitiveTypes> primitiveTypes1){
 			BRequest_RemoteSetTypes_setPrimitiveTypes1 req = new BRequest_RemoteSetTypes_setPrimitiveTypes1();			
-			req._primitiveTypes1 = primitiveTypes1;
+			req.primitiveTypes1Value = primitiveTypes1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -376,13 +376,13 @@ namespace byps.test.api.remote
 		}
 		public void SetByte2(ISet<byte[]> byte2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setByte2 req = new BRequest_RemoteSetTypes_setByte2();			
-			req._byte2 = byte2;
+			req.byte2Value = byte2;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetByte2Async(ISet<byte[]> byte2){
 			BRequest_RemoteSetTypes_setByte2 req = new BRequest_RemoteSetTypes_setByte2();			
-			req._byte2 = byte2;
+			req.byte2Value = byte2;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -410,13 +410,13 @@ namespace byps.test.api.remote
 		}
 		public void SetInt2(ISet<int[]> int2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setInt2 req = new BRequest_RemoteSetTypes_setInt2();			
-			req._int2 = int2;
+			req.int2Value = int2;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetInt2Async(ISet<int[]> int2){
 			BRequest_RemoteSetTypes_setInt2 req = new BRequest_RemoteSetTypes_setInt2();			
-			req._int2 = int2;
+			req.int2Value = int2;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -444,15 +444,49 @@ namespace byps.test.api.remote
 		}
 		public void SetObj1(ISet<Object> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setObj1 req = new BRequest_RemoteSetTypes_setObj1();			
-			req._obj1 = obj1;
+			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetObj1Async(ISet<Object> obj1){
 			BRequest_RemoteSetTypes_setObj1 req = new BRequest_RemoteSetTypes_setObj1();			
-			req._obj1 = obj1;
+			req.obj1Value = obj1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
+		}
+		
+		public void SetDate1(ISet<java.util.Date> obj1) {
+			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
+			SetDate1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
+			asyncResult.GetResult();			
+		}
+		public void SetDate1(ISet<java.util.Date> obj1, BAsyncResult<Object> asyncResult) {
+			BRequest_RemoteSetTypes_setDate1 req = new BRequest_RemoteSetTypes_setDate1();			
+			req.obj1Value = obj1;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task SetDate1Async(ISet<java.util.Date> obj1){
+			BRequest_RemoteSetTypes_setDate1 req = new BRequest_RemoteSetTypes_setDate1();			
+			req.obj1Value = obj1;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
+		}
+		
+		public ISet<java.util.Date> GetDate1() {
+			BSyncResult<ISet<java.util.Date>> asyncResult = new BSyncResult<ISet<java.util.Date>>();			
+			GetDate1(BAsyncResultHelper.ToDelegate<ISet<java.util.Date>>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public void GetDate1(BAsyncResult<ISet<java.util.Date>> asyncResult) {
+			BRequest_RemoteSetTypes_getDate1 req = new BRequest_RemoteSetTypes_getDate1();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<ISet<java.util.Date>> GetDate1Async(){
+			BRequest_RemoteSetTypes_getDate1 req = new BRequest_RemoteSetTypes_getDate1();			
+			Task<ISet<java.util.Date>> task = Task<ISet<java.util.Date>>.Factory.FromAsync(transport.BeginSend<ISet<java.util.Date>>, transport.EndSend<ISet<java.util.Date>>, req, null);
+			return await task;
 		}
 		
 		

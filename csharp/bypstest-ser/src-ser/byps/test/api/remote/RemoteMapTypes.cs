@@ -113,6 +113,14 @@ namespace byps.test.api.remote
 		void SetObj1(IDictionary<String,Object> obj1, BAsyncResult<Object> asyncResult) ;
 		Task SetObj1Async(IDictionary<String,Object> obj1);
 		
+		IDictionary<String,java.util.Date> GetDate1();
+		void GetDate1(BAsyncResult<IDictionary<String,java.util.Date>> asyncResult) ;
+		Task<IDictionary<String,java.util.Date>> GetDate1Async();
+		
+		void SetDate1(IDictionary<String,java.util.Date> obj1);
+		void SetDate1(IDictionary<String,java.util.Date> obj1, BAsyncResult<Object> asyncResult) ;
+		Task SetDate1Async(IDictionary<String,java.util.Date> obj1);
+		
 		
 	}
 }  // end namespace

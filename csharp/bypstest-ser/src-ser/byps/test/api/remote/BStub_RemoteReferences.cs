@@ -36,13 +36,13 @@ namespace byps.test.api.remote
 		}
 		public void SetNode(byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetNodeAsync(byps.test.api.refs.Node v){
 			BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();			
-			req._v = v;
+			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}

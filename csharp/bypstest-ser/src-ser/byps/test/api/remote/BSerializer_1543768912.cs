@@ -27,9 +27,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteServerCtrl_publishRemote obj = (BRequest_RemoteServerCtrl_publishRemote)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putBoolean(obj._fowardToOtherServers);
-			bbuf.putString(obj._name);
-			bout.writeObj(obj._remote, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putBoolean(obj.fowardToOtherServersValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putString(obj.nameValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.remoteValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -38,9 +41,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteServerCtrl_publishRemote obj = (BRequest_RemoteServerCtrl_publishRemote)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteServerCtrl_publishRemote()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._fowardToOtherServers = bbuf.getBoolean();
-			obj._name = bbuf.getString();
-			obj._remote = (BRemote)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.fowardToOtherServersValue = bbuf.getBoolean();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.nameValue = bbuf.getString();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.remoteValue = (BRemote)bin.readObj(false, null);
 			
 			return obj;
 		}

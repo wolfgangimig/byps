@@ -1,5 +1,10 @@
 package byps.test.servlet;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 import byps.BException;
 import byps.BExceptionC;
 import byps.RemoteException;
@@ -19,6 +24,7 @@ public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
 	public String stringVal;
 	public Object objectVal;
 	public PrimitiveTypes primitiveTypesVal;
+	public Date dateVal;
 
 	public void setBool(boolean v) throws RemoteException {
 		this.boolVal = v;
@@ -148,5 +154,43 @@ public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
 	{
 	  throw new BException(BExceptionC.INTERNAL, "throwException() was called");
 	}
+
+  @Override
+  public void setDate(Date v) throws RemoteException {
+    dateVal = v;
+  }
+
+  @Override
+  public Date getDate() throws RemoteException {
+    return dateVal;
+  }
+
+	@Override
+	public Date makeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) throws RemoteException {
+    GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+    calendar.set(Calendar.YEAR, year);
+    calendar.set(Calendar.MONTH, month-1);
+    calendar.set(Calendar.DAY_OF_MONTH, day);
+    calendar.set(Calendar.HOUR_OF_DAY, hour);
+    calendar.set(Calendar.MINUTE, minute);
+    calendar.set(Calendar.SECOND, second);
+    calendar.set(Calendar.MILLISECOND, millisecond);
+    return calendar.getTime();
+	}
 	
+	@Override
+	public int[] parseDate(Date date) throws RemoteException {
+    GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+    calendar.setTime(date);
+      
+    final int year = calendar.get(Calendar.YEAR);
+    final int month = calendar.get(Calendar.MONTH) + 1;
+    final int day = calendar.get(Calendar.DAY_OF_MONTH);
+    final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+    final int minute = calendar.get(Calendar.MINUTE);
+    final int second = calendar.get(Calendar.SECOND);
+    final int millis = calendar.get(Calendar.MILLISECOND);
+
+    return new int[] { year, month, day, hour, minute, second, millis };
+	}
 }

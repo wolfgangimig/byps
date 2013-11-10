@@ -19,9 +19,9 @@ namespace byps.test.api.inherit
 		}		
 		
 		internal Class1Collections(IList<Class1> @list1, IDictionary<String,Class1> @map1, ISet<Class1> @set1) {
-			this._list1 = @list1;
-			this._map1 = @map1;
-			this._set1 = @set1;
+			this.list1Value = @list1;
+			this.map1Value = @map1;
+			this.set1Value = @set1;
 		}		
 		
 		#endregion
@@ -32,11 +32,11 @@ namespace byps.test.api.inherit
 		{
 			get
 			{
-				return _list1;
+				return list1Value;
 			}
 			set
 			{
-				this._list1 = value;
+				this.list1Value = value;
 			}
 		}
 		
@@ -45,11 +45,11 @@ namespace byps.test.api.inherit
 		{
 			get
 			{
-				return _map1;
+				return map1Value;
 			}
 			set
 			{
-				this._map1 = value;
+				this.map1Value = value;
 			}
 		}
 		
@@ -58,11 +58,11 @@ namespace byps.test.api.inherit
 		{
 			get
 			{
-				return _set1;
+				return set1Value;
 			}
 			set
 			{
-				this._set1 = value;
+				this.set1Value = value;
 			}
 		}
 		
@@ -71,11 +71,11 @@ namespace byps.test.api.inherit
 		
 		#region Fields
 		
-		protected IList<Class1> _list1;
+		protected IList<Class1> list1Value;
 
-		protected IDictionary<String,Class1> _map1;
+		protected IDictionary<String,Class1> map1Value;
 
-		protected ISet<Class1> _set1;
+		protected ISet<Class1> set1Value;
 
 		#endregion
 		

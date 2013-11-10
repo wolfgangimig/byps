@@ -21,20 +21,21 @@ namespace byps.test.api.prim
 		public PrimitiveTypes() {
 		}		
 		
-		internal PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, Object @objVal, Object @objVal2, bool @value, Object @temp) {
-			this._boolVal = @boolVal;
-			this._byteVal = @byteVal;
-			this._charVal = @charVal;
-			this._shortVal = @shortVal;
-			this._intVal = @intVal;
-			this._longVal = @longVal;
-			this._floatVal = @floatVal;
-			this._doubleVal = @doubleVal;
-			this._stringVal = @stringVal;
-			this._objVal = @objVal;
-			this._objVal2 = @objVal2;
-			this._value = @value;
-			this._temp = @temp;
+		internal PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, java.util.Date @dateVal, Object @objVal, Object @objVal2, bool @value, Object @temp) {
+			this.boolValValue = @boolVal;
+			this.byteValValue = @byteVal;
+			this.charValValue = @charVal;
+			this.shortValValue = @shortVal;
+			this.intValValue = @intVal;
+			this.longValValue = @longVal;
+			this.floatValValue = @floatVal;
+			this.doubleValValue = @doubleVal;
+			this.stringValValue = @stringVal;
+			this.dateValValue = @dateVal;
+			this.objValValue = @objVal;
+			this.objVal2Value = @objVal2;
+			this.valueValue = @value;
+			this.tempValue = @temp;
 		}		
 		
 		#endregion
@@ -51,11 +52,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _boolVal;
+				return boolValValue;
 			}
 			set
 			{
-				this._boolVal = value;
+				this.boolValValue = value;
 			}
 		}
 		
@@ -67,11 +68,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _byteVal;
+				return byteValValue;
 			}
 			set
 			{
-				this._byteVal = value;
+				this.byteValValue = value;
 			}
 		}
 		
@@ -86,11 +87,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _charVal;
+				return charValValue;
 			}
 			set
 			{
-				this._charVal = value;
+				this.charValValue = value;
 			}
 		}
 		
@@ -99,11 +100,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _shortVal;
+				return shortValValue;
 			}
 			set
 			{
-				this._shortVal = value;
+				this.shortValValue = value;
 			}
 		}
 		
@@ -112,11 +113,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _intVal;
+				return intValValue;
 			}
 			set
 			{
-				this._intVal = value;
+				this.intValValue = value;
 			}
 		}
 		
@@ -125,11 +126,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _longVal;
+				return longValValue;
 			}
 			set
 			{
-				this._longVal = value;
+				this.longValValue = value;
 			}
 		}
 		
@@ -138,11 +139,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _floatVal;
+				return floatValValue;
 			}
 			set
 			{
-				this._floatVal = value;
+				this.floatValValue = value;
 			}
 		}
 		
@@ -151,11 +152,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _doubleVal;
+				return doubleValValue;
 			}
 			set
 			{
-				this._doubleVal = value;
+				this.doubleValValue = value;
 			}
 		}
 		
@@ -164,11 +165,24 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _stringVal;
+				return stringValValue;
 			}
 			set
 			{
-				this._stringVal = value;
+				this.stringValValue = value;
+			}
+		}
+		
+		
+		public java.util.Date DateVal
+		{
+			get
+			{
+				return dateValValue;
+			}
+			set
+			{
+				this.dateValValue = value;
 			}
 		}
 		
@@ -183,11 +197,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _objVal;
+				return objValValue;
 			}
 			set
 			{
-				this._objVal = value;
+				this.objValValue = value;
 			}
 		}
 		
@@ -196,11 +210,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _objVal2;
+				return objVal2Value;
 			}
 			set
 			{
-				this._objVal2 = value;
+				this.objVal2Value = value;
 			}
 		}
 		
@@ -215,11 +229,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _value;
+				return valueValue;
 			}
 			set
 			{
-				this._value = value;
+				this.valueValue = value;
 			}
 		}
 		
@@ -228,11 +242,11 @@ namespace byps.test.api.prim
 		{
 			get
 			{
-				return _temp;
+				return tempValue;
 			}
 			set
 			{
-				this._temp = value;
+				this.tempValue = value;
 			}
 		}
 		
@@ -241,31 +255,33 @@ namespace byps.test.api.prim
 		
 		#region Fields
 		
-		protected bool _boolVal;
+		protected bool boolValValue;
 
-		protected byte _byteVal;
+		protected byte byteValValue;
 
-		protected char _charVal;
+		protected char charValValue;
 
-		protected short _shortVal;
+		protected short shortValValue;
 
-		protected int _intVal;
+		protected int intValValue;
 
-		protected long _longVal;
+		protected long longValValue;
 
-		protected float _floatVal;
+		protected float floatValValue;
 
-		protected double _doubleVal;
+		protected double doubleValValue;
 
-		protected String _stringVal;
+		protected String stringValValue;
 
-		protected Object _objVal;
+		protected java.util.Date dateValValue;
 
-		protected Object _objVal2;
+		protected Object objValValue;
 
-		protected bool _value;
+		protected Object objVal2Value;
 
-		protected Object _temp; // transient
+		protected bool valueValue;
+
+		protected Object tempValue; // transient
 
 		#endregion
 		

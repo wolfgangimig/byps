@@ -18,11 +18,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 	
 	public final static long serialVersionUID = 963816328L;
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setBool(boolean[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setBool(boolean[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setBool(v);
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setByte(byte[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setByte(byte[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setByte(v);
@@ -46,11 +46,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setChar(char[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setChar(char[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setChar(v);
@@ -60,11 +60,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setShort(short[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setShort(short[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setShort(v);
@@ -74,11 +74,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setInt(int[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setInt(int[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setInt(v);
@@ -88,11 +88,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setLong(long[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setLong(long[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setLong(v);
@@ -102,11 +102,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setFloat(float[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setFloat(float[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setFloat(v);
@@ -116,11 +116,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setDouble(double[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setDouble(double[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setDouble(v);
@@ -130,11 +130,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setString(java.lang.String[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setString(java.lang.String[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setString(v);
@@ -144,11 +144,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPrimitiveTypes(v);
@@ -158,11 +158,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public void setObject(java.lang.Object[] v) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void setObject(java.lang.Object[] v, final BAsyncResult<Object> asyncResult) {
 		try {
 			setObject(v);
@@ -172,11 +172,25 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
+	public void setDate(java.util.Date[] v) throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void setDate(java.util.Date[] v, final BAsyncResult<Object> asyncResult) {
+		try {
+			setDate(v);
+			asyncResult.setAsyncResult(null, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
 	public boolean[] getBool() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getBool(final BAsyncResult<boolean[]> asyncResult) {
 		try {
 			boolean[] ret = getBool();
@@ -186,11 +200,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public byte[] getByte() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getByte(final BAsyncResult<byte[]> asyncResult) {
 		try {
 			byte[] ret = getByte();
@@ -200,11 +214,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public char[] getChar() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getChar(final BAsyncResult<char[]> asyncResult) {
 		try {
 			char[] ret = getChar();
@@ -214,11 +228,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public short[] getShort() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getShort(final BAsyncResult<short[]> asyncResult) {
 		try {
 			short[] ret = getShort();
@@ -228,11 +242,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public int[] getInt() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getInt(final BAsyncResult<int[]> asyncResult) {
 		try {
 			int[] ret = getInt();
@@ -242,11 +256,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public long[] getLong() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getLong(final BAsyncResult<long[]> asyncResult) {
 		try {
 			long[] ret = getLong();
@@ -256,11 +270,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public float[] getFloat() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getFloat(final BAsyncResult<float[]> asyncResult) {
 		try {
 			float[] ret = getFloat();
@@ -270,11 +284,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public double[] getDouble() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getDouble(final BAsyncResult<double[]> asyncResult) {
 		try {
 			double[] ret = getDouble();
@@ -284,11 +298,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String[] getString() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getString(final BAsyncResult<java.lang.String[]> asyncResult) {
 		try {
 			java.lang.String[] ret = getString();
@@ -298,11 +312,11 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public byps.test.api.prim.PrimitiveTypes[] getPrimitiveTypes() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getPrimitiveTypes(final BAsyncResult<byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
 		try {
 			byps.test.api.prim.PrimitiveTypes[] ret = getPrimitiveTypes();
@@ -312,14 +326,28 @@ public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteA
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.Object[] getObject() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void getObject(final BAsyncResult<java.lang.Object[]> asyncResult) {
 		try {
 			java.lang.Object[] ret = getObject();
+			asyncResult.setAsyncResult(ret, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.util.Date[] getDate() throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getDate(final BAsyncResult<java.util.Date[]> asyncResult) {
+		try {
+			java.util.Date[] ret = getDate();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

@@ -19,9 +19,9 @@ namespace byps.test.api.list
 		}		
 		
 		internal ListListTypes(IList<IList<int>> @int2, IList<IDictionary<int,IList<HashSet<int>>>> @int3, IList<IList<int[,,,]>> @int24) {
-			this._int2 = @int2;
-			this._int3 = @int3;
-			this._int24 = @int24;
+			this.int2Value = @int2;
+			this.int3Value = @int3;
+			this.int24Value = @int24;
 		}		
 		
 		#endregion
@@ -32,11 +32,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _int2;
+				return int2Value;
 			}
 			set
 			{
-				this._int2 = value;
+				this.int2Value = value;
 			}
 		}
 		
@@ -45,11 +45,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _int3;
+				return int3Value;
 			}
 			set
 			{
-				this._int3 = value;
+				this.int3Value = value;
 			}
 		}
 		
@@ -58,11 +58,11 @@ namespace byps.test.api.list
 		{
 			get
 			{
-				return _int24;
+				return int24Value;
 			}
 			set
 			{
-				this._int24 = value;
+				this.int24Value = value;
 			}
 		}
 		
@@ -71,11 +71,11 @@ namespace byps.test.api.list
 		
 		#region Fields
 		
-		protected IList<IList<int>> _int2;
+		protected IList<IList<int>> int2Value;
 
-		protected IList<IDictionary<int,IList<HashSet<int>>>> _int3;
+		protected IList<IDictionary<int,IList<HashSet<int>>>> int3Value;
 
-		protected IList<IList<int[,,,]>> _int24;
+		protected IList<IList<int[,,,]>> int24Value;
 
 		#endregion
 		

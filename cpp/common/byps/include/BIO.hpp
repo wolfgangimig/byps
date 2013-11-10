@@ -63,6 +63,10 @@ BINLINE void BIO::operator&(BTargetId& obj) {
     obj.serialize(bbuf);
 }
 
+BINLINE void BIO::operator&(BDateTime& obj) {
+    bbuf.serialize(obj);
+}
+
 BINLINE void BIO::operator&(PBytes& ptr) {
 	POBJECT pObj = ptr;
 	serializeObj(pObj, ptr && !is_loading ? &typeid(*ptr.get()) : NULL);

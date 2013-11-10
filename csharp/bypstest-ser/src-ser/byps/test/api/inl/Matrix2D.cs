@@ -19,15 +19,15 @@ namespace byps.test.api.inl
 		}		
 		
 		internal Matrix2D(float @_11, float @_12, float @_13, float @_21, float @_22, float @_23, float @_31, float @_32, float @_33) {
-			this.__11 = @_11;
-			this.__12 = @_12;
-			this.__13 = @_13;
-			this.__21 = @_21;
-			this.__22 = @_22;
-			this.__23 = @_23;
-			this.__31 = @_31;
-			this.__32 = @_32;
-			this.__33 = @_33;
+			this._11Value = @_11;
+			this._12Value = @_12;
+			this._13Value = @_13;
+			this._21Value = @_21;
+			this._22Value = @_22;
+			this._23Value = @_23;
+			this._31Value = @_31;
+			this._32Value = @_32;
+			this._33Value = @_33;
 		}		
 		
 		#endregion
@@ -38,11 +38,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __11;
+				return _11Value;
 			}
 			set
 			{
-				this.__11 = value;
+				this._11Value = value;
 			}
 		}
 		
@@ -51,11 +51,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __12;
+				return _12Value;
 			}
 			set
 			{
-				this.__12 = value;
+				this._12Value = value;
 			}
 		}
 		
@@ -64,11 +64,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __13;
+				return _13Value;
 			}
 			set
 			{
-				this.__13 = value;
+				this._13Value = value;
 			}
 		}
 		
@@ -77,11 +77,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __21;
+				return _21Value;
 			}
 			set
 			{
-				this.__21 = value;
+				this._21Value = value;
 			}
 		}
 		
@@ -90,11 +90,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __22;
+				return _22Value;
 			}
 			set
 			{
-				this.__22 = value;
+				this._22Value = value;
 			}
 		}
 		
@@ -103,11 +103,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __23;
+				return _23Value;
 			}
 			set
 			{
-				this.__23 = value;
+				this._23Value = value;
 			}
 		}
 		
@@ -116,11 +116,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __31;
+				return _31Value;
 			}
 			set
 			{
-				this.__31 = value;
+				this._31Value = value;
 			}
 		}
 		
@@ -129,11 +129,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __32;
+				return _32Value;
 			}
 			set
 			{
-				this.__32 = value;
+				this._32Value = value;
 			}
 		}
 		
@@ -142,11 +142,11 @@ namespace byps.test.api.inl
 		{
 			get
 			{
-				return __33;
+				return _33Value;
 			}
 			set
 			{
-				this.__33 = value;
+				this._33Value = value;
 			}
 		}
 		
@@ -155,23 +155,23 @@ namespace byps.test.api.inl
 		
 		#region Fields
 		
-		private float __11;
+		private float _11Value;
 
-		private float __12;
+		private float _12Value;
 
-		private float __13;
+		private float _13Value;
 
-		private float __21;
+		private float _21Value;
 
-		private float __22;
+		private float _22Value;
 
-		private float __23;
+		private float _23Value;
 
-		private float __31;
+		private float _31Value;
 
-		private float __32;
+		private float _32Value;
 
-		private float __33;
+		private float _33Value;
 
 		#endregion
 		

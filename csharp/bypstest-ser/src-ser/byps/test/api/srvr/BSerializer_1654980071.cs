@@ -27,7 +27,8 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_getStreams obj = (BRequest_ClientIF_getStreams)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putInt(obj._ctrl);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putInt(obj.ctrlValue);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_getStreams obj = (BRequest_ClientIF_getStreams)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ClientIF_getStreams()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._ctrl = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.ctrlValue = bbuf.getInt();
 			
 			return obj;
 		}

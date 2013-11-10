@@ -19,7 +19,7 @@ namespace byps
 
 	    public void setAsyncResult(T obj, Exception e) 
         {
-		    methodResult._result = obj;
+		    methodResult.resultValue = obj;
 		    innerResult.setAsyncResult(methodResult, e);
 	    }
     }

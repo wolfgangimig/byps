@@ -27,8 +27,10 @@ namespace byps.test.api.remote
 			BRequest_RemoteStreams_setImages obj = (BRequest_RemoteStreams_setImages)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bbuf.putInt(obj._doNotReadStreamAtKey);
-			bout.writeObj(obj._istrms, false, byps.test.api.BSerializer_779528402.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bbuf.putInt(obj.doNotReadStreamAtKeyValue);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.istrmsValue, false, byps.test.api.BSerializer_779528402.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -37,8 +39,10 @@ namespace byps.test.api.remote
 			BRequest_RemoteStreams_setImages obj = (BRequest_RemoteStreams_setImages)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteStreams_setImages()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._doNotReadStreamAtKey = bbuf.getInt();
-			obj._istrms = (IDictionary<int,System.IO.Stream>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.doNotReadStreamAtKeyValue = bbuf.getInt();
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.istrmsValue = (IDictionary<int,System.IO.Stream>)bin.readObj(false, null);
 			
 			return obj;
 		}

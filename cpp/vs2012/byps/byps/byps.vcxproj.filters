@@ -22,6 +22,9 @@
     <Filter Include="include\platform\msvc">
       <UniqueIdentifier>{b13e1b8a-06ae-414a-916e-ca9afbfa9e6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\platform\any">
+      <UniqueIdentifier>{72c472af-1d5c-4b6a-b481-95b9916674f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -261,9 +264,6 @@
     <ClInclude Include="..\..\..\common\byps\include\BAuthentication.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\byps\include\platform\any\any.h">
-      <Filter>include\platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\platform\any\BThreadPool.hpp">
       <Filter>include\platform</Filter>
     </ClInclude>
@@ -272,6 +272,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\BLostConnectionHandler.hpp">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\BDateTime.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\BDateTime.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\platform\any\any.h">
+      <Filter>include\platform\any</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

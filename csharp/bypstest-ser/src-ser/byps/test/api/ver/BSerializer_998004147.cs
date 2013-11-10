@@ -27,7 +27,8 @@ namespace byps.test.api.ver
 			BRequest_EvolveIF_setClient obj = (BRequest_EvolveIF_setClient)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._partner, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.partnerValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.ver
 			BRequest_EvolveIF_setClient obj = (BRequest_EvolveIF_setClient)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_EvolveIF_setClient()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._partner = (byps.test.api.ver.EvolveIF)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.partnerValue = (byps.test.api.ver.EvolveIF)bin.readObj(false, null);
 			
 			return obj;
 		}

@@ -20,13 +20,13 @@ namespace byps.test.api.srvr
 		}
 		public void CallClientIncrementInt(int v, BAsyncResult<int> asyncResult) {
 			BRequest_ServerIF_callClientIncrementInt req = new BRequest_ServerIF_callClientIncrementInt();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<int> CallClientIncrementIntAsync(int v){
 			BRequest_ServerIF_callClientIncrementInt req = new BRequest_ServerIF_callClientIncrementInt();			
-			req._v = v;
+			req.vValue = v;
 			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
 			return await task;
 		}
@@ -38,13 +38,13 @@ namespace byps.test.api.srvr
 		}
 		public void SetPartner(ClientIF client, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_setPartner req = new BRequest_ServerIF_setPartner();			
-			req._client = client;
+			req.clientValue = client;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task SetPartnerAsync(ClientIF client){
 			BRequest_ServerIF_setPartner req = new BRequest_ServerIF_setPartner();			
-			req._client = client;
+			req.clientValue = client;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -88,13 +88,13 @@ namespace byps.test.api.srvr
 		}
 		public void PutStreamsOnClient(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_putStreamsOnClient req = new BRequest_ServerIF_putStreamsOnClient();			
-			req._streams = streams;
+			req.streamsValue = streams;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task PutStreamsOnClientAsync(IList<System.IO.Stream> streams){
 			BRequest_ServerIF_putStreamsOnClient req = new BRequest_ServerIF_putStreamsOnClient();			
-			req._streams = streams;
+			req.streamsValue = streams;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -106,13 +106,13 @@ namespace byps.test.api.srvr
 		}
 		public void RegisterWithClientMap(int id, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_registerWithClientMap req = new BRequest_ServerIF_registerWithClientMap();			
-			req._id = id;
+			req.idValue = id;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task RegisterWithClientMapAsync(int id){
 			BRequest_ServerIF_registerWithClientMap req = new BRequest_ServerIF_registerWithClientMap();			
-			req._id = id;
+			req.idValue = id;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -124,13 +124,13 @@ namespace byps.test.api.srvr
 		}
 		public void GetClient(int id, BAsyncResult<ClientIF> asyncResult) {
 			BRequest_ServerIF_getClient req = new BRequest_ServerIF_getClient();			
-			req._id = id;
+			req.idValue = id;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<ClientIF> GetClientAsync(int id){
 			BRequest_ServerIF_getClient req = new BRequest_ServerIF_getClient();			
-			req._id = id;
+			req.idValue = id;
 			Task<ClientIF> task = Task<ClientIF>.Factory.FromAsync(transport.BeginSend<ClientIF>, transport.EndSend<ClientIF>, req, null);
 			return await task;
 		}
@@ -158,13 +158,13 @@ namespace byps.test.api.srvr
 		}
 		public void CallClientParallel(int v, BAsyncResult<int> asyncResult) {
 			BRequest_ServerIF_callClientParallel req = new BRequest_ServerIF_callClientParallel();			
-			req._v = v;
+			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<int> CallClientParallelAsync(int v){
 			BRequest_ServerIF_callClientParallel req = new BRequest_ServerIF_callClientParallel();			
-			req._v = v;
+			req.vValue = v;
 			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
 			return await task;
 		}

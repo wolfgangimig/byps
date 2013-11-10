@@ -1,5 +1,7 @@
 package byps.test;
 
+import java.util.Date;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.After;
@@ -68,6 +70,10 @@ public class TestRemotePrimitiveTypes {
 		TestUtils.assertEquals(log,  "double", 1.8, remote.getDouble());
 		remote.setString("ABC");
 		TestUtils.assertEquals(log,  "String", "ABC", remote.getString());
+    remote.setDate(new Date(0));
+    TestUtils.assertEquals(log,  "date", new Date(0), remote.getDate());
+    remote.setDate(null);
+    TestUtils.assertEquals(log,  "null-date", null, remote.getDate());
 		
 		PrimitiveTypes pt = TestUtils.createObjectPrimitiveTypes();
 		remote.setPrimitiveTypes(pt);

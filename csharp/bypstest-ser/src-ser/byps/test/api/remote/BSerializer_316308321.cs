@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteMapTypes_setFloat1 obj = (BRequest_RemoteMapTypes_setFloat1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._float1, false, byps.test.api.BSerializer_94341197.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.float1Value, false, byps.test.api.BSerializer_94341197.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteMapTypes_setFloat1 obj = (BRequest_RemoteMapTypes_setFloat1)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteMapTypes_setFloat1()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._float1 = (IDictionary<char,float>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.float1Value = (IDictionary<char,float>)bin.readObj(false, null);
 			
 			return obj;
 		}

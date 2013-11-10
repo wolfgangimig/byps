@@ -1,5 +1,7 @@
 package byps.test.api.remote;
 
+import java.util.Date;
+
 import byps.BRemote;
 import byps.RemoteException;
 import byps.test.api.prim.PrimitiveTypes;
@@ -21,6 +23,7 @@ public interface RemoteArrayTypes4dim extends BRemote {
 	public void setString(String[][][][] v) throws RemoteException;
 	public void setPrimitiveTypes(PrimitiveTypes[][][][] v) throws RemoteException;
 	public void setObject(Object[][][][] v) throws RemoteException;
+	public void setDate(Date[][][][] v) throws RemoteException;
 
 	public boolean[][][][] getBool() throws RemoteException;
 	public byte[][][][] getByte() throws RemoteException;
@@ -33,5 +36,6 @@ public interface RemoteArrayTypes4dim extends BRemote {
 	public String[][][][] getString() throws RemoteException;
 	public PrimitiveTypes[][][][] getPrimitiveTypes() throws RemoteException;
 	public Object[][][][] getObject() throws RemoteException;
+	public Date[][][][] getDate() throws RemoteException;
 
 }

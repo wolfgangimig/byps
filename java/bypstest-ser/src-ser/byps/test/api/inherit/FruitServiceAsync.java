@@ -13,9 +13,9 @@ public interface FruitServiceAsync extends BRemote,
 	byps.test.api.inherit.PlantServiceAsync {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:359
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String squeeze() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:403
+	// checkpoint byps.gen.j.PrintContext:409
 	public void squeeze(final BAsyncResult<String> asyncResult) ;
 	
 	

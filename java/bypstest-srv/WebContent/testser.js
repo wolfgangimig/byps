@@ -101,7 +101,7 @@ byps.test.api.BClient_Testser.prototype = new byps.BClient();
 
 /**
 */
-byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1) {
+byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, date1, primitiveTypes1) {
 	this._typeId = 2001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -112,6 +112,7 @@ byps.test.api.arr.ArrayTypes1dim = function(boolean1, byte1, char1, short1, int1
 	this.float1 = float1 || null;
 	this.double1 = double1 || null;
 	this.string1 = string1 || null;
+	this.date1 = date1 || null;
 	this.primitiveTypes1 = primitiveTypes1 || null;
 };
 
@@ -279,7 +280,7 @@ byps.test.api.list.ListListTypes = function(int2, int3, int24) {
 
 /**
 */
-byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, int4, obj1) {
+byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, date1, primitiveTypes1, byte2, int2, int4, obj1) {
 	this._typeId = 3001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -290,6 +291,7 @@ byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, lo
 	this.float1 = float1 || null;
 	this.double1 = double1 || null;
 	this.string1 = string1 || null;
+	this.date1 = date1 || null;
 	this.primitiveTypes1 = primitiveTypes1 || null;
 	this.byte2 = byte2 || null;
 	this.int2 = int2 || null;
@@ -300,7 +302,7 @@ byps.test.api.list.ListTypes = function(boolean1, byte1, char1, short1, int1, lo
 
 /**
 */
-byps.test.api.map.MapTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
+byps.test.api.map.MapTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1, date1) {
 	this._typeId = 4001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -315,13 +317,14 @@ byps.test.api.map.MapTypes = function(boolean1, byte1, char1, short1, int1, long
 	this.byte2 = byte2 || null;
 	this.int2 = int2 || null;
 	this.obj1 = obj1 || null;
+	this.date1 = date1 || null;
 };
 
 
 /**
  * Example class with primitive types like boolean, int, String.
 */
-byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, objVal, objVal2, value) {
+byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal, intVal, longVal, floatVal, doubleVal, stringVal, dateVal, objVal, objVal2, value) {
 	this._typeId = 1000;
 	this.boolVal = boolVal || false;
 	this.byteVal = byteVal || 0;
@@ -332,6 +335,7 @@ byps.test.api.prim.PrimitiveTypes = function(boolVal, byteVal, charVal, shortVal
 	this.floatVal = floatVal || 0;
 	this.doubleVal = doubleVal || 0;
 	this.stringVal = stringVal || "";
+	this.dateVal = dateVal || null;
 	this.objVal = objVal || null;
 	this.objVal2 = objVal2 || null;
 	this.value = value || false;
@@ -380,7 +384,7 @@ byps.test.api.refs.Node = function(next, me, mapOfNodes, listOfNodes) {
 
 /**
 */
-byps.test.api.set.SetTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1) {
+byps.test.api.set.SetTypes = function(boolean1, byte1, char1, short1, int1, long1, float1, double1, string1, primitiveTypes1, byte2, int2, obj1, date1) {
 	this._typeId = 5001;
 	this.boolean1 = boolean1 || null;
 	this.byte1 = byte1 || null;
@@ -395,6 +399,7 @@ byps.test.api.set.SetTypes = function(boolean1, byte1, char1, short1, int1, long
 	this.byte2 = byte2 || null;
 	this.int2 = int2 || null;
 	this.obj1 = obj1 || null;
+	this.date1 = date1 || null;
 };
 
 
@@ -1338,6 +1343,16 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setObject = function(v
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDate = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 201394796, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getBool = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2033416644 };
@@ -1441,6 +1456,16 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getPrimitiveTypes = fu
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getObject = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 263295897 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDate = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 2033462920 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -1629,6 +1654,16 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setObject = function(v
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDate = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 185853361, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getBool = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1874302495 };
@@ -1732,6 +1767,16 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getPrimitiveTypes = fu
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getObject = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1253379978 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDate = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1874256219 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -2200,6 +2245,26 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setObj1 = function(obj1, __
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
+byps.test.api.remote.BStub_RemoteListTypes.prototype.setDate1 = function(obj1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 48506001, obj1 : obj1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteListTypes.prototype.getDate1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 609618461 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt3 = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 2098036490 };
@@ -2507,6 +2572,26 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setObj1 = function(obj1, __b
 	return ret;
 };
 
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDate1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 123590589 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDate1 = function(obj1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 684703049, obj1 : obj1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transport) {
@@ -2640,6 +2725,16 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setObject = function(v
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDate = function(v, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 243998223, v : v };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getBool = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 1816157633 };
@@ -2750,6 +2845,16 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getObject = function(_
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDate = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1816111357 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 677876863, b : b, c : c, s : s, i : i, l : l, f : f, d : d, str : str, pt : pt, o : o };
@@ -2763,6 +2868,26 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllTypes = functio
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.add = function(a, b, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 362528512, a : a, b : b };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.makeDate = function(year, month, day, hour, minute, second, millisecond, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1918934973, year : year, month : month, day : day, hour : hour, minute : minute, second : second, millisecond : millisecond };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.parseDate = function(date, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 578007072, date : date };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -3113,6 +3238,26 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getObj1 = function(__byps__a
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
 	var req =  { _typeId : 462464544, obj1 : obj1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDate1 = function(obj1, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1461676227, obj1 : obj1 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDate1 = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 900563767 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -3655,6 +3800,15 @@ byps.test.api.BServer_Testser = function(transport) {
 				}
 			],
 			
+			// Method setDate
+			201394796 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setDate(methodObj.v, methodResult);
+				}
+			],
+			
 			// Method getBool
 			2033416644 : [ // _typeId of request class
 				963816328, // _typeId of remote interface
@@ -3751,6 +3905,15 @@ byps.test.api.BServer_Testser = function(transport) {
 				15818284, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
+				}
+			],
+			
+			// Method getDate
+			2033462920 : [ // _typeId of request class
+				963816328, // _typeId of remote interface
+				1980364794, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getDate(methodResult);
 				}
 			],
 		
@@ -3902,6 +4065,15 @@ byps.test.api.BServer_Testser = function(transport) {
 				}
 			],
 			
+			// Method setDate
+			185853361 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setDate(methodObj.v, methodResult);
+				}
+			],
+			
 			// Method getBool
 			1874302495 : [ // _typeId of request class
 				963726955, // _typeId of remote interface
@@ -3998,6 +4170,15 @@ byps.test.api.BServer_Testser = function(transport) {
 				996163680, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
+				}
+			],
+			
+			// Method getDate
+			1874256219 : [ // _typeId of request class
+				963726955, // _typeId of remote interface
+				905019472, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getDate(methodResult);
 				}
 			],
 		
@@ -4387,6 +4568,24 @@ byps.test.api.BServer_Testser = function(transport) {
 				}
 			],
 			
+			// Method setDate1
+			48506001 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setDate1(methodObj.obj1, methodResult);
+				}
+			],
+			
+			// Method getDate1
+			609618461 : [ // _typeId of request class
+				1233438138, // _typeId of remote interface
+				1210513700, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getDate1(methodResult);
+				}
+			],
+			
 			// Method getInt3
 			2098036490 : [ // _typeId of request class
 				1233438138, // _typeId of remote interface
@@ -4658,6 +4857,24 @@ byps.test.api.BServer_Testser = function(transport) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
 				}
 			],
+			
+			// Method getDate1
+			123590589 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				1725564610, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getDate1(methodResult);
+				}
+			],
+			
+			// Method setDate1
+			684703049 : [ // _typeId of request class
+				664304990, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setDate1(methodObj.obj1, methodResult);
+				}
+			],
 		
 		
 		// Remote Interface RemotePrimitiveTypes			
@@ -4769,6 +4986,15 @@ byps.test.api.BServer_Testser = function(transport) {
 				}
 			],
 			
+			// Method setDate
+			243998223 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setDate(methodObj.v, methodResult);
+				}
+			],
+			
 			// Method getBool
 			1816157633 : [ // _typeId of request class
 				1178916877, // _typeId of remote interface
@@ -4868,6 +5094,15 @@ byps.test.api.BServer_Testser = function(transport) {
 				}
 			],
 			
+			// Method getDate
+			1816111357 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004414, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getDate(methodResult);
+				}
+			],
+			
 			// Method sendAllTypes
 			677876863 : [ // _typeId of request class
 				1178916877, // _typeId of remote interface
@@ -4883,6 +5118,24 @@ byps.test.api.BServer_Testser = function(transport) {
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_add(methodObj.a, methodObj.b, methodResult);
+				}
+			],
+			
+			// Method makeDate
+			1918934973 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				534004414, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_makeDate(methodObj.year, methodObj.month, methodObj.day, methodObj.hour, methodObj.minute, methodObj.second, methodObj.millisecond, methodResult);
+				}
+			],
+			
+			// Method parseDate
+			578007072 : [ // _typeId of request class
+				1178916877, // _typeId of remote interface
+				498939805, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_parseDate(methodObj.date, methodResult);
 				}
 			],
 			
@@ -5177,6 +5430,24 @@ byps.test.api.BServer_Testser = function(transport) {
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
+				}
+			],
+			
+			// Method setDate1
+			1461676227 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setDate1(methodObj.obj1, methodResult);
+				}
+			],
+			
+			// Method getDate1
+			900563767 : [ // _typeId of request class
+				1900796440, // _typeId of remote interface
+				428832038, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getDate1(methodResult);
 				}
 			],
 		
@@ -5581,6 +5852,22 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.BResult_1097919350
+		428832038 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1097919350 // java.util.Set<java.util.Date>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1097919350 // java.util.Set<java.util.Date>
+			},
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.BResult_1174971318
 		1068483136 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -5773,6 +6060,22 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.BResult_1366799209
+		1725564610 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1366799209 // java.util.Map<java.lang.String,java.util.Date>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1366799209 // java.util.Map<java.lang.String,java.util.Date>
+			},
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.BResult_1374008726
 		1484626910 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -5842,6 +6145,22 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of inline elements
 			{
 				"result":1406124761 // java.util.Set<int[]>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_1406664368
+		1980364794 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1406664368 // java.util.Date[]
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1406664368 // java.util.Date[]
 			},
 			// inlineInstance
 			false
@@ -5920,6 +6239,22 @@ byps.test.api.BRegistry_Testser = function() {
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_1504867122
+		1210513700 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":1504867122 // java.util.List<java.util.Date>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":1504867122 // java.util.List<java.util.Date>
+			},
 			// inlineInstance
 			false
 		),
@@ -6060,6 +6395,22 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of inline elements
 			{
 				"result":1661807911 // java.util.List<java.lang.Character>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.BResult_17
+		534004414 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":17 // java.util.Date
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":17 // java.util.Date
 			},
 			// inlineInstance
 			false
@@ -6588,6 +6939,22 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.BResult_51898890
+		905019472 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":51898890 // java.util.Date[][][][]
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"result":51898890 // java.util.Date[][][][]
+			},
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.BResult_564008001
 		1405156912 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -6907,6 +7274,8 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1":1888107655, // java.lang.String[]
 				// names of persistent elements
+				"date1":1406664368, // java.util.Date[]
+				// names of persistent elements
 				"primitiveTypes1":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -6929,6 +7298,8 @@ byps.test.api.BRegistry_Testser = function() {
 				"double1":1359468275, // double[]
 				// names of inline elements
 				"string1":1888107655, // java.lang.String[]
+				// names of inline elements
+				"date1":1406664368, // java.util.Date[]
 				// names of inline elements
 				"primitiveTypes1":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
@@ -7458,6 +7829,8 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"string1":2123584667, // java.util.List<java.lang.String>
 				// names of persistent elements
+				"date1":1504867122, // java.util.List<java.util.Date>
+				// names of persistent elements
 				"primitiveTypes1":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
 				// names of persistent elements
 				"byte2":1174971318, // java.util.List<byte[]>
@@ -7488,6 +7861,8 @@ byps.test.api.BRegistry_Testser = function() {
 				"double1":1555345627, // java.util.List<java.lang.Double>
 				// names of inline elements
 				"string1":2123584667, // java.util.List<java.lang.String>
+				// names of inline elements
+				"date1":1504867122, // java.util.List<java.util.Date>
 				// names of inline elements
 				"primitiveTypes1":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
 				// names of inline elements
@@ -7532,7 +7907,9 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"int2":1633750383, // java.util.Map<java.lang.Integer,int[]>
 				// names of persistent elements
-				"obj1":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
+				"obj1":1488550492, // java.util.Map<java.lang.String,java.lang.Object>
+				// names of persistent elements
+				"date1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
@@ -7561,7 +7938,9 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"int2":1633750383, // java.util.Map<java.lang.Integer,int[]>
 				// names of inline elements
-				"obj1":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
+				"obj1":1488550492, // java.util.Map<java.lang.String,java.lang.Object>
+				// names of inline elements
+				"date1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
 			},
 			// inlineInstance
 			false
@@ -7590,6 +7969,8 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"stringVal":10, // java.lang.String
 				// names of persistent elements
+				"dateVal":17, // java.util.Date
+				// names of persistent elements
 				"objVal":21, // java.lang.Object
 				// names of persistent elements
 				"objVal2":21, // java.lang.Object
@@ -7597,7 +7978,10 @@ byps.test.api.BRegistry_Testser = function() {
 				"value":1, // boolean
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
-			null,
+			// names of inline elements
+			{
+				"dateVal":17, // java.util.Date
+			},
 			// inlineInstance
 			false
 		),
@@ -7752,6 +8136,16 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDate
+		2033462920 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
 		39293909 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -7875,6 +8269,22 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of inline elements
 			{
 				"v":1361632968 // char[]
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDate
+		201394796 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"v":1406664368 // java.util.Date[]
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"v":1406664368 // java.util.Date[]
 			},
 			// inlineInstance
 			false
@@ -8158,6 +8568,16 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDate
+		1874256219 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
 		1555969784 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -8281,6 +8701,22 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of inline elements
 			{
 				"v":769021986 // char[][][][]
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDate
+		185853361 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"v":51898890 // java.util.Date[][][][]
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"v":51898890 // java.util.Date[][][][]
 			},
 			// inlineInstance
 			false
@@ -8701,6 +9137,16 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteListTypes_getDate1
+		609618461 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
 		2129490906 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -8870,6 +9316,22 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of inline elements
 			{
 				"char1":1661807911 // java.util.List<java.lang.Character>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteListTypes_setDate1
+		48506001 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"obj1":1504867122 // java.util.List<java.util.Date>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"obj1":1504867122 // java.util.List<java.util.Date>
 			},
 			// inlineInstance
 			false
@@ -9091,6 +9553,16 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_getDate1
+		123590589 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
 		1890230400 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -9240,6 +9712,22 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of inline elements
 			{
 				"char1":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteMapTypes_setDate1
+		684703049 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"obj1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"obj1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
 			},
 			// inlineInstance
 			false
@@ -9434,6 +9922,16 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDate
+		1816111357 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
 		1513332250 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -9514,6 +10012,47 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_makeDate
+		1918934973 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"year":5, // int
+				// names of persistent elements
+				"month":5, // int
+				// names of persistent elements
+				"day":5, // int
+				// names of persistent elements
+				"hour":5, // int
+				// names of persistent elements
+				"minute":5, // int
+				// names of persistent elements
+				"second":5, // int
+				// names of persistent elements
+				"millisecond":5 // int
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_parseDate
+		578007072 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"date":17 // java.util.Date
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"date":17 // java.util.Date
+			},
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
 		677876863 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -9580,6 +10119,22 @@ byps.test.api.BRegistry_Testser = function() {
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDate
+		243998223 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"v":17 // java.util.Date
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"v":17 // java.util.Date
+			},
 			// inlineInstance
 			false
 		),
@@ -9814,6 +10369,16 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_getDate1
+		900563767 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
 		1751651450 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -9963,6 +10528,22 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of inline elements
 			{
 				"char1":936607009 // java.util.TreeSet<java.lang.Character>
+			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteSetTypes_setDate1
+		1461676227 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"obj1":1097919350 // java.util.Set<java.util.Date>
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of inline elements
+			{
+				"obj1":1097919350 // java.util.Set<java.util.Date>
 			},
 			// inlineInstance
 			false
@@ -10325,7 +10906,9 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"int2":1406124761, // java.util.Set<int[]>
 				// names of persistent elements
-				"obj1":14 // java.util.Set<java.lang.Object>
+				"obj1":14, // java.util.Set<java.lang.Object>
+				// names of persistent elements
+				"date1":1097919350 // java.util.Set<java.util.Date>
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
@@ -10354,7 +10937,9 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"int2":1406124761, // java.util.Set<int[]>
 				// names of inline elements
-				"obj1":14 // java.util.Set<java.lang.Object>
+				"obj1":14, // java.util.Set<java.lang.Object>
+				// names of inline elements
+				"date1":1097919350 // java.util.Set<java.util.Date>
 			},
 			// inlineInstance
 			false
@@ -10993,6 +11578,18 @@ byps.test.api.BRegistry_Testser = function() {
 			1
 		),
 		
+		// java.util.Date[]
+		1406664368 : new byps.BSerializerArray(
+			17, // Element type: java.util.Date
+			1
+		),
+		
+		// java.util.Date[][][][]
+		51898890 : new byps.BSerializerArray(
+			17, // Element type: java.util.Date
+			4
+		),
+		
 		// java.util.HashMap<Double,Byte>
 		1972793385 : new byps.BSerializerMap(
 			2 // Element type: Byte
@@ -11103,6 +11700,12 @@ byps.test.api.BRegistry_Testser = function() {
 		// java.util.List<String>
 		2123584667 : new byps.BSerializerArray(
 			10, // Element type: String
+			1
+		),
+		
+		// java.util.List<java.util.Date>
+		1504867122 : new byps.BSerializerArray(
+			17, // Element type: java.util.Date
 			1
 		),
 		
@@ -11226,6 +11829,11 @@ byps.test.api.BRegistry_Testser = function() {
 			10 // Element type: String
 		),
 		
+		// java.util.Map<String,java.util.Date>
+		1366799209 : new byps.BSerializerMap(
+			17 // Element type: java.util.Date
+		),
+		
 		// java.util.Set<byps.test.api.inherit.Class1>
 		484881308 : new byps.BSerializerArray(
 			6001, // Element type: byps.test.api.inherit.Class1
@@ -11289,6 +11897,12 @@ byps.test.api.BRegistry_Testser = function() {
 		// java.util.Set<String>
 		1888799711 : new byps.BSerializerArray(
 			10, // Element type: String
+			1
+		),
+		
+		// java.util.Set<java.util.Date>
+		1097919350 : new byps.BSerializerArray(
+			17, // Element type: java.util.Date
 			1
 		),
 		

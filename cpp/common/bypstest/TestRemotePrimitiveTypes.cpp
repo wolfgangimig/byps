@@ -157,6 +157,8 @@ public:
 		TASSERT(L"double", 1.8, remote->getDouble());
 		remote->setString(L"ABC€€€DEF€€€GHI€€€JKL€€€MNO€€€PQR€€€STU€€€VWX€€€YZ1€€€");
 		TASSERT(L"string", std::wstring(L"ABC€€€DEF€€€GHI€€€JKL€€€MNO€€€PQR€€€STU€€€VWX€€€YZ1€€€"), remote->getString());
+		remote->setDate(BDateTime::fromString(L"2013-11-12T13:14:15.16Z"));
+		TASSERT(L"date", BDateTime::fromString(L"2013-11-12T13:14:15.16Z"), remote->getDate());
 
 		PPrimitiveTypes pt = TestUtils::createObjectPrimitiveTypes();
 		remote->setPrimitiveTypes(pt);
@@ -164,6 +166,90 @@ public:
 		TestUtils::tassert(__FILE__, __LINE__, L"PrimitiveTypes", pt, ptR);
 		TestUtils::releasePrimitiveTypes(pt);
 		TestUtils::releasePrimitiveTypes(ptR);
+
+
+	}
+
+	void testPrimitiveTypesDateTime() {
+
+		// Winter time in Germany: 2013-03-31 00:00:00
+		struct tm winterTm = {0};
+		winterTm.tm_year = 2013 - 1900;
+		winterTm.tm_mon = 3 - 1;
+		winterTm.tm_mday = 31;
+		winterTm.tm_hour = 0;
+		winterTm.tm_min = 0;
+		winterTm.tm_sec = 0;
+
+		time_t t1 = mktime(&winterTm); // == 1364684400
+		gmtime_s(&winterTm, &t1); 
+		localtime_s(&winterTm, &t1);
+
+		// Summer time in Germany: 2013-03-31 04:00:00
+		struct tm summerTm = {0};
+		summerTm.tm_year = 2013 - 1900;
+		summerTm.tm_mon = 3 - 1;
+		summerTm.tm_mday = 31;
+		summerTm.tm_hour = 4;
+		summerTm.tm_min = 0;
+		summerTm.tm_sec = 0;
+
+		time_t t2 = mktime(&summerTm); // == 1364698800
+		if (summerTm.tm_isdst) t2 -= 3600;
+		gmtime_s(&summerTm, &t2); 
+
+		// Time difference must be 3 hours, 4 hours are found:
+		int64_t diffHours = (t2 - t1) / 3600;
+
+		//// Verfiy: toString -> fromString returns equal BDateTime object
+		//time_t t1;
+		//time(&t1);
+		//BDateTime dt1 = BDateTime(t1);
+		//wstring str1r = dt1.toString();
+		//BDateTime dt2 = BDateTime::fromString(str1r);
+		//TASSERT(L"toString->fromString", dt1, dt2);
+
+		//BDateTime summerTime(2013, 8, 9, 10, 11, 12);
+		//wstring strSummerTime = summerTime.toString();
+
+
+		//PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		//BDateTime dt = remote->makeDate(1600, 11, 12, 13, 14, 15, 16);
+		//TASSERT(L"makeDate", BDateTime(1600, 11, 12, 13, 14, 15, 16), dt);
+
+
+	}
+
+		void testPrimitiveTypesDateTime2() {
+
+		// Summer time in Germany: 2013-10-27 01:00:00
+		struct tm summerTm = {0};
+		summerTm.tm_year = 2013 - 1900;
+		summerTm.tm_mon = 3 - 1;
+		summerTm.tm_mday = 31;
+		summerTm.tm_hour = 1;
+		summerTm.tm_min = 0;
+		summerTm.tm_sec = 0;
+
+		time_t t2 = mktime(&summerTm); // == 1364698800
+		if (summerTm.tm_isdst) t2 -= 3600;
+		gmtime_s(&summerTm, &t2); 
+
+		// Winter time in Germany: 2013-10-27 05:00:00
+		struct tm winterTm = {0};
+		winterTm.tm_year = 2013 - 1900;
+		winterTm.tm_mon = 10 - 1;
+		winterTm.tm_mday = 27;
+		winterTm.tm_hour = 5;
+		winterTm.tm_min = 0;
+		winterTm.tm_sec = 0;
+
+		time_t t1 = mktime(&winterTm); // == 1364684400
+		gmtime_s(&winterTm, &t1); 
+		localtime_s(&winterTm, &t1);
+
+		// Time difference must be 3 hours, 4 hours are found:
+		int64_t diffHours = (t2 - t1) / 3600;
 
 
 	}
@@ -217,14 +303,15 @@ public:
 
 
 	virtual void init() {
-        ADD_TEST(testSerializeInt);
-        ADD_TEST(testSerializeIntSendToServer);
-        ADD_TEST(testSerializeLong);
-        ADD_TEST(testRemotePrimitiveTypes);
-        ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
-        ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);
-        ADD_TEST(testRemotePrimitiveTypesSendAll);
-        ADD_TEST(testPrimitiveTypesReferenceToSelf);
+		ADD_TEST(testPrimitiveTypesDateTime);
+        //ADD_TEST(testRemotePrimitiveTypes);
+		//ADD_TEST(testSerializeInt);
+  //      ADD_TEST(testSerializeIntSendToServer);
+  //      ADD_TEST(testSerializeLong);
+  //      ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
+  //      ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);
+  //      ADD_TEST(testRemotePrimitiveTypesSendAll);
+  //      ADD_TEST(testPrimitiveTypesReferenceToSelf);
 		
 	}
 };

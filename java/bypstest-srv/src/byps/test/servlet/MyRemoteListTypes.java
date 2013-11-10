@@ -1,5 +1,9 @@
 package byps.test.servlet;
 
+import java.util.Date;
+import java.util.List;
+
+import byps.RemoteException;
 import byps.test.api.remote.BSkeleton_RemoteListTypes;
 
 public class MyRemoteListTypes extends BSkeleton_RemoteListTypes {
@@ -17,6 +21,7 @@ public class MyRemoteListTypes extends BSkeleton_RemoteListTypes {
 	private java.util.List<byps.test.api.prim.PrimitiveTypes> primitiveTypes1;
 	private java.util.List<java.lang.Short> short1;
 	private java.util.List<java.lang.String> string1;
+	private java.util.List<Date> date1;
 
 	private java.util.List<java.util.List<java.lang.Integer>> int3;
 	private java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> int4;
@@ -112,6 +117,13 @@ public class MyRemoteListTypes extends BSkeleton_RemoteListTypes {
 	@Override public void setInt4(java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> int4) {
 		this.int4 = int4;
 	}
-
+  @Override
+  public void setDate1(List<Date> obj1) throws RemoteException {
+    this.date1 = obj1;
+  }
+  @Override
+  public List<Date> getDate1() throws RemoteException {
+    return date1;
+  }
 
 }

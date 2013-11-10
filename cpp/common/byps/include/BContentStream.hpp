@@ -30,7 +30,7 @@ BINLINE int64_t BContentStreamImpl::getContentLength() const {
 BINLINE int32_t BContentStreamImpl::read(char* buf, int32_t offs, int32_t len) {
 	if (len < 0) return -1;
 	if (stream->eof()) return -1;
-	stream->read(buf, (size_t)len);
+	stream->read(buf + offs, (size_t)len);
 	return (int32_t)stream->gcount();
 }
 
@@ -60,7 +60,7 @@ BINLINE BContentStreamFile::~BContentStreamFile() {
 	fstrm->close();
 }
 
-BINLINE void BContentStream::serialize(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+BINLINE void BContentStream::serialize(BIO& bio, POBJECT& , PSerializable& pObjS, void* ) {
 
 	if (bio.is_loading) {
 		if (!pObjS) {

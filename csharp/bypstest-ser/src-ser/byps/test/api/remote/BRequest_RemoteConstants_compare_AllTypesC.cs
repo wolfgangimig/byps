@@ -18,11 +18,11 @@ namespace byps.test.api.remote
 		public override int getRemoteId() { return 2045242510; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:378
+			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				RemoteConstants __byps__remoteT = (RemoteConstants)__byps__remote;				
 				BAsyncResultSendMethod<bool> __byps__outerResult = new BAsyncResultSendMethod<bool>(__byps__asyncResult, new byps.test.api.BResult_1());				
-				__byps__remoteT.Compare_AllTypesC(_bool1s, _bool2s, _char1s, _stringNull, _char2s, _short1s, _int1s, _long1s, _float1s, _double1s, _string1s, _ALL, _arrInt, _arrInt4, _arrStrings, _arrStrings4, _arrAll, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.Compare_AllTypesC(bool1sValue, bool2sValue, char1sValue, stringNullValue, char2sValue, short1sValue, int1sValue, long1sValue, float1sValue, double1sValue, string1sValue, ALLValue, arrIntValue, arrInt4Value, arrStringsValue, arrStrings4Value, arrAllValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(false, e);
 				throw e;
@@ -33,39 +33,39 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal bool _bool1s;
+		internal bool bool1sValue;
 
-		internal bool _bool2s;
+		internal bool bool2sValue;
 
-		internal char _char1s;
+		internal char char1sValue;
 
-		internal String _stringNull;
+		internal String stringNullValue;
 
-		internal char _char2s;
+		internal char char2sValue;
 
-		internal short _short1s;
+		internal short short1sValue;
 
-		internal int _int1s;
+		internal int int1sValue;
 
-		internal long _long1s;
+		internal long long1sValue;
 
-		internal float _float1s;
+		internal float float1sValue;
 
-		internal double _double1s;
+		internal double double1sValue;
 
-		internal String _string1s;
+		internal String string1sValue;
 
-		internal byps.test.api.cons.AllTypesZ _ALL;
+		internal byps.test.api.cons.AllTypesZ ALLValue;
 
-		internal int[] _arrInt;
+		internal int[] arrIntValue;
 
-		internal int[,,,] _arrInt4;
+		internal int[,,,] arrInt4Value;
 
-		internal String[] _arrStrings;
+		internal String[] arrStringsValue;
 
-		internal String[,,,] _arrStrings4;
+		internal String[,,,] arrStrings4Value;
 
-		internal byps.test.api.cons.AllTypesZ[,] _arrAll;
+		internal byps.test.api.cons.AllTypesZ[,] arrAllValue;
 
 		#endregion
 		

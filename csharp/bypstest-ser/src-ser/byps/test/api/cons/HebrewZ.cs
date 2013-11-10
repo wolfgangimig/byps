@@ -19,7 +19,7 @@ namespace byps.test.api.cons
 		}		
 		
 		internal HebrewZ(String @core) {
-			this._core = @core;
+			this.coreValue = @core;
 		}		
 		
 		#endregion
@@ -30,11 +30,11 @@ namespace byps.test.api.cons
 		{
 			get
 			{
-				return _core;
+				return coreValue;
 			}
 			set
 			{
-				this._core = value;
+				this.coreValue = value;
 			}
 		}
 		
@@ -43,7 +43,7 @@ namespace byps.test.api.cons
 		
 		#region Fields
 		
-		protected String _core;
+		protected String coreValue;
 
 		#endregion
 		

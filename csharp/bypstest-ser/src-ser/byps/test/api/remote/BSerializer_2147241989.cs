@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteListTypes_setBoolean1 obj = (BRequest_RemoteListTypes_setBoolean1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._boolean1, false, byps.test.api.BSerializer_1617670280.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.boolean1Value, false, byps.test.api.BSerializer_1617670280.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteListTypes_setBoolean1 obj = (BRequest_RemoteListTypes_setBoolean1)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteListTypes_setBoolean1()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._boolean1 = (IList<bool>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.boolean1Value = (IList<bool>)bin.readObj(false, null);
 			
 			return obj;
 		}

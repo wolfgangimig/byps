@@ -3,6 +3,7 @@ package byps.test;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -323,7 +324,20 @@ public class TestSerializerList {
 		internalTestList(obj);
 	}
 	
-	
+	 @Test
+	  public void testListDate() throws BException {
+	    log.info("testListDate(");
+	    internalTestListDate(new Date[] {new Date(0), new Date(1234), new Date(-1234)});
+	    log.info(")testListFloat");
+	  }
+
+	  protected void internalTestListDate(Date[] arr) throws BException {
+	    ListTypes obj = new ListTypes();
+	    obj.date1 = new ArrayList<Date>(Arrays.asList(arr));
+	    internalTestList(obj);
+	  }
+
+
 	@Test
 	public void testListPimitiveTypes() throws BException {
 		log.info("testListPimitiveTypes(");

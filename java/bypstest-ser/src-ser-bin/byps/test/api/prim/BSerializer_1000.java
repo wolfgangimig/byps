@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=13
+// #members=14
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -37,6 +37,7 @@ public class BSerializer_1000 extends BSerializer {
 		bbuf.putBoolean(obj.boolVal);
 		bbuf.putByte(obj.byteVal);
 		bbuf.putChar(obj.charVal);
+		bbuf.putDate(obj.dateVal);
 		bbuf.putDouble(obj.doubleVal);
 		bbuf.putFloat(obj.floatVal);
 		bbuf.putInt(obj.intVal);
@@ -58,6 +59,7 @@ public class BSerializer_1000 extends BSerializer {
 		obj.boolVal = bbuf.getBoolean();
 		obj.byteVal = bbuf.getByte();
 		obj.charVal = bbuf.getChar();
+		obj.dateVal = bbuf.getDate();
 		obj.doubleVal = bbuf.getDouble();
 		obj.floatVal = bbuf.getFloat();
 		obj.intVal = bbuf.getInt();

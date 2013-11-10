@@ -1,6 +1,7 @@
 package byps.test.api.list;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import byps.test.api.prim.PrimitiveTypes;
@@ -18,6 +19,7 @@ public class ListTypes implements Serializable {
 	public List< Float> float1;
 	public List< Double> double1;
 	public List< String> string1;
+	public List< Date> date1;
 	public List< PrimitiveTypes> primitiveTypes1;
 	public List< byte[]> byte2;
 	public List< int[]> int2;

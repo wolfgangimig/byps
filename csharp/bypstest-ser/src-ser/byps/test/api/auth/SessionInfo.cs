@@ -22,7 +22,7 @@ namespace byps.test.api.auth
 		}		
 		
 		internal SessionInfo(String @sessionID) {
-			this._sessionID = @sessionID;
+			this.sessionIDValue = @sessionID;
 		}		
 		
 		#endregion
@@ -33,11 +33,11 @@ namespace byps.test.api.auth
 		{
 			get
 			{
-				return _sessionID;
+				return sessionIDValue;
 			}
 			set
 			{
-				this._sessionID = value;
+				this.sessionIDValue = value;
 			}
 		}
 		
@@ -46,7 +46,7 @@ namespace byps.test.api.auth
 		
 		#region Fields
 		
-		protected String _sessionID;
+		protected String sessionIDValue;
 
 		#endregion
 		

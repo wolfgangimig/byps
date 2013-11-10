@@ -1,6 +1,8 @@
 package byps.test.api.remote;
 
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -36,5 +38,7 @@ public interface RemoteSetTypes extends BRemote {
 	public void setInt2(Set<int[]> int2) throws RemoteException;
 	public Set<Object> getObj1() throws RemoteException;
 	public void setObj1(Set<Object> obj1) throws RemoteException;
-	
+	 public void setDate1(Set<Date> obj1) throws RemoteException;
+	  public Set<Date> getDate1() throws RemoteException;
+
 }

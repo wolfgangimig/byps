@@ -247,6 +247,7 @@ public class TypeInfo {
 				||  qname.equals("java.lang.Double")
 				||  qname.equals("void")
 				||  qname.equals("java.lang.String")
+				||  qname.equals("java.util.Date")
 				;
 	}
 	
@@ -303,6 +304,10 @@ public class TypeInfo {
 		if (isPrimitiveType()) return false;
 		if (isArrayType()) return false;
 		return true;
+	}
+	
+	public boolean isDateType() {
+	  return qname.equals("java.util.Date");
 	}
 
 	public int getMemberSize(BBinaryModel bmodel) {

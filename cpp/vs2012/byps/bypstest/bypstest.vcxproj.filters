@@ -158,5 +158,8 @@
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteWithAuthentication.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-017.cpp">
+      <Filter>bypstest-gen\impl</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

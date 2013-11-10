@@ -3,7 +3,6 @@ package byps.gen.j;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -305,11 +304,13 @@ class PrintContext extends PrintContextBase {
 	public void printStreamPutItem(CodePrinter pr, BBinaryModel pformat, String varName, TypeInfo tinfo, String jsKeyName) {
 		CodePrinter mpr = null;
 		if (pformat == BBinaryModel.JSON && tinfo.isByteArray1dim()) {
+      pr.checkpoint();
 			mpr = pr.print("bbuf.putArrayByte(");
 			if (jsKeyName != null) mpr = mpr.print(jsKeyName).print(", ");
 			mpr = mpr.print("(byte[])").print(varName).print(");");
 		}
 		else if (tinfo.isPointerType()) {
+      pr.checkpoint();
 			String serName = getSerializerInstance(tinfo, pformat);
 			mpr = pr.print("bout.writeObj(");
 			if (pformat == BBinaryModel.JSON) {
@@ -328,6 +329,7 @@ class PrintContext extends PrintContextBase {
 		
 		// Item für List<Integer> ?
 		else if (tinfo.toString().startsWith("java.lang.")) {
+      pr.checkpoint();
 			String fnct = PrintHelper.streamPutMember(tinfo);
 			String defaultValue = PrintHelper.getDefaultValueForType(tinfo);
 			String arg = varName + " != null ? (" + tinfo.name + ")" + varName + " : " + defaultValue;
@@ -336,12 +338,16 @@ class PrintContext extends PrintContextBase {
 			mpr = mpr.print(arg).print(");");
 		}
 		
-		// Item für int[]
+		// Item für int[], enum, Date
 		else {
+      pr.checkpoint();
 			String fnct = PrintHelper.streamPutMember(tinfo);
 			String arg = varName;
 			if (tinfo.isEnum) {
 				arg = varName + " != null ? ((" + tinfo.qname + ")" + varName + ").ordinal() : 0";
+			}
+			else if (tinfo.isDateType()) {
+			  arg = "(" + tinfo.qname + ")" + varName;
 			}
 			mpr = pr.print("bbuf." + fnct + "(");
 			if (jsKeyName != null) mpr = mpr.print(jsKeyName).print(", ");
@@ -391,7 +397,7 @@ class PrintContext extends PrintContextBase {
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
 		String rtype = returnInfo.type.toString(currentPackage);
 		
-		if (returnInfo.type.isPrimitiveType() && !returnInfo.type.isArrayType()) {
+		if (returnInfo.type.isPrimitiveType() && !returnInfo.type.isArrayType() && !returnInfo.type.isDateType()) {
 			rtype =  registry.getObjTypeOfPrimitive(returnInfo.type.name);
 		}
 					

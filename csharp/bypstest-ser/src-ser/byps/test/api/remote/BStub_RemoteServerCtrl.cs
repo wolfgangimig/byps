@@ -20,17 +20,17 @@ namespace byps.test.api.remote
 		}
 		public void PublishRemote(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();			
-			req._name = name;
-			req._remote = remote;
-			req._fowardToOtherServers = fowardToOtherServers;
+			req.nameValue = name;
+			req.remoteValue = remote;
+			req.fowardToOtherServersValue = fowardToOtherServers;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task PublishRemoteAsync(String name, BRemote remote, bool fowardToOtherServers){
 			BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();			
-			req._name = name;
-			req._remote = remote;
-			req._fowardToOtherServers = fowardToOtherServers;
+			req.nameValue = name;
+			req.remoteValue = remote;
+			req.fowardToOtherServersValue = fowardToOtherServers;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
@@ -42,13 +42,13 @@ namespace byps.test.api.remote
 		}
 		public void GetPublishedRemote(String name, BAsyncResult<BRemote> asyncResult) {
 			BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();			
-			req._name = name;
+			req.nameValue = name;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<BRemote> GetPublishedRemoteAsync(String name){
 			BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();			
-			req._name = name;
+			req.nameValue = name;
 			Task<BRemote> task = Task<BRemote>.Factory.FromAsync(transport.BeginSend<BRemote>, transport.EndSend<BRemote>, req, null);
 			return await task;
 		}
@@ -60,13 +60,13 @@ namespace byps.test.api.remote
 		}
 		public void RemovePublishedRemote(String name, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();			
-			req._name = name;
+			req.nameValue = name;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task RemovePublishedRemoteAsync(String name){
 			BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();			
-			req._name = name;
+			req.nameValue = name;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}

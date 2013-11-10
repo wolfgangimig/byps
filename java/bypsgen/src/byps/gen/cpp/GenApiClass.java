@@ -445,6 +445,7 @@ class GenApiClass {
 	String getDefaultValue(TypeInfo tinfo) {
 		if (tinfo.isPointerType()) return null;
 		else if (tinfo.isStringType()) return null;
+		else if (tinfo.isDateType()) return "BDateTime()";
 		else if (tinfo.isEnum) {
 			SerialInfo enumInfo = pctxt.classDB.getSerInfo(tinfo.toString());
 			if (enumInfo != null && enumInfo.members.size() != 0) {
@@ -502,6 +503,7 @@ class GenApiClass {
 			prC.beginBlock();
 			for (MemberInfo minfo : serInfo.members) {
 				if (minfo.isStatic) continue; 
+				if (minfo.type.isDateType()) continue; // Initialized by default constructor
 				String defaultValue = getDefaultValue(minfo.type);
 				if (defaultValue == null) continue;
 				prC.print(minfo.name).print(" = ").print(defaultValue).println(";");

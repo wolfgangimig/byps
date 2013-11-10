@@ -27,7 +27,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteSetTypes_setInt1 obj = (BRequest_RemoteSetTypes_setInt1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._int1, false, byps.test.api.BSerializer_1493282670.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.int1Value, false, byps.test.api.BSerializer_1493282670.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -36,7 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteSetTypes_setInt1 obj = (BRequest_RemoteSetTypes_setInt1)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteSetTypes_setInt1()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._int1 = (ISet<int>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.int1Value = (ISet<int>)bin.readObj(false, null);
 			
 			return obj;
 		}

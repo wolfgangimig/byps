@@ -317,26 +317,47 @@ byps.BSerializerMap = function(valueTypeId) {
 
 };
 
-// ------------------------------------------------------------------------------------------------
-// Serializer for streams
+//------------------------------------------------------------------------------------------------
+//Serializer for streams
 
 byps.BSerializer_15 = function() {
 
 	this.write = function(obj, bout) {
 	};
-
+	
 	this.read = function(obj, bin) {
-
+	
 		var url = bin.transport.wire.url;
 		url += (url.indexOf('?') != url.length - 1) ? '?' : '&';
 		obj.url = url + "messageid=" + bin.header.messageId + "&streamid=" + obj.streamId;
 		return obj;
-
+	
 		return obj;
 	};
 
 };
 byps.BSerializer_15.prototype = new byps.BSerializer();
+
+//------------------------------------------------------------------------------------------------
+//Serializer for Date
+
+byps.BSerializer_17 = function() {
+	
+	this.inlineInstance = true;
+	
+	this.write = function(obj, bout) {
+	};
+	
+	this.read = function(obj, bin) {
+		
+		// When restoring after write, obj is already a date object.
+		// When reading data from the server, obj is an ISO representaion.
+		var date = (obj.getUTCMonth) ? obj : new Date(obj);  
+		return date;
+	};
+
+};
+byps.BSerializer_17.prototype = new byps.BSerializer();
 
 // ------------------------------------------------------------------------------------------------
 
@@ -368,22 +389,33 @@ byps.BRegistry = function() {
 	this.getSerializer = function(typeId) {
 
 		var ser = null;
-		if (typeId == 15) {
-			ser = this._streamSerializer;
-		}
-		else if (typeId == 20) {
-			ser = this._defaultSerializer;
-		}
-		else if (typeId >= 64) {
-			ser = this._serializerMap[typeId];
+		switch(typeId) {
+		
+		// bool, byte, short, int, ... String
+		case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 10:
+			break;
+		case 15: 
+			ser = this._streamSerializer; 
+			break;
+		case 17: 
+			ser = this._dateSerializer; 
+			break;
+		default: 
+			if (typeId >= 64) { 
+					ser = this._serializerMap[typeId];
+			}
+			else {
+					ser = this._defaultSerializer;
+			}
+			break;	
 		}
 
-		ser = ser || this._defaultSerializer;
 		return ser;
 	};
 
 	this._defaultSerializer = new byps.BSerializer();
 	this._streamSerializer = new byps.BSerializer_15();
+	this._dateSerializer = new byps.BSerializer_17();
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -1077,13 +1109,12 @@ byps.BInputOutput = function(transport, header, jsonText) {
 
 	this.writeElement = function(obj, ename, ser) {
 		var elm = obj[ename];
-		if (elm && typeof elm === 'object') {
-
-			// Inline instance: write object instead of reference to object.
-			if (ser && ser.inlineInstance) {
-				ser.write(elm, this);
-				return;
-			}
+		
+		// Inline instance: write object instead of reference to object.
+		if (ser && ser.inlineInstance) {
+			ser.write(elm, this);
+		}
+		else if (elm && typeof elm === 'object') {
 
 			var id = elm["*i"];
 			if (!id) {
@@ -1127,7 +1158,6 @@ byps.BInputOutput = function(transport, header, jsonText) {
 				// Element is already a reference.
 			}
 		}
-		;
 	};
 
 	this._internalStore = function() {
@@ -1138,13 +1168,27 @@ byps.BInputOutput = function(transport, header, jsonText) {
 
 	this.readElement = function(obj, ename, ser) {
 		var elm = obj[ename];
-		if (elm && typeof elm === 'object') {
-
-			// Inline instance: read object instead of reference to object.
-			if (ser && ser.inlineInstance) {
-				ser.read(elm, this);
-				return;
+		if (!elm) return;
+		if (typeof elm == 'function') return;
+		
+		// If elm is an Object or if a serializer was 
+		// explicitly passed, route the object through
+		// its serializer.
+		// For Date objects, typeof(elm) is not 'object'
+		// but a ser is BSerializer_17
+		
+		// Inline instance: read object instead of reference to object.
+		if (ser && ser.inlineInstance) {
+			var nelm = ser.read(elm, this);
+			
+			// Date objects: elm is a String an the serializer converts
+			// it into a Date object. Replace the String in the 
+			// parent object by the new Date object.
+			if (nelm != elm) {
+				obj[ename] = nelm;
 			}
+		}
+		else if (typeof elm === 'object') {
 
 			// Ein Objekt-Element muss eine Referenz sein.
 			// Andernfalls würden wir einen Serialisierer das zweite mal

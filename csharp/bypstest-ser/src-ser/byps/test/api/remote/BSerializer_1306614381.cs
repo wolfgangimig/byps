@@ -27,9 +27,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes23_sendArraysObject obj = (BRequest_RemoteArrayTypes23_sendArraysObject)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._arr2, false, byps.test.api.BSerializer_340213335.instance);
-			bout.writeObj(obj._arr3, false, byps.test.api.BSerializer_527503353.instance);
-			bout.writeObj(obj._arr4, false, byps.test.api.BSerializer_124584219.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arr2Value, false, byps.test.api.BSerializer_340213335.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arr3Value, false, byps.test.api.BSerializer_527503353.instance);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.arr4Value, false, byps.test.api.BSerializer_124584219.instance);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -38,9 +41,12 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes23_sendArraysObject obj = (BRequest_RemoteArrayTypes23_sendArraysObject)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteArrayTypes23_sendArraysObject()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._arr2 = (Object[,])bin.readObj(false, byps.test.api.BSerializer_340213335.instance);
-			obj._arr3 = (Object[,,])bin.readObj(false, byps.test.api.BSerializer_527503353.instance);
-			obj._arr4 = (Object[,,,])bin.readObj(false, byps.test.api.BSerializer_124584219.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arr2Value = (Object[,])bin.readObj(false, byps.test.api.BSerializer_340213335.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arr3Value = (Object[,,])bin.readObj(false, byps.test.api.BSerializer_527503353.instance);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.arr4Value = (Object[,,,])bin.readObj(false, byps.test.api.BSerializer_124584219.instance);
 			
 			return obj;
 		}

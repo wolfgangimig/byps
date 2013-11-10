@@ -19,11 +19,11 @@ namespace byps.test.api.strm
 		}		
 		
 		internal Stream1(System.IO.Stream @is1, String @contentType, System.IO.Stream[] @arrStream, IList<System.IO.Stream> @listStream, IDictionary<int,System.IO.Stream> @mapStream) {
-			this._is1 = @is1;
-			this._contentType = @contentType;
-			this._arrStream = @arrStream;
-			this._listStream = @listStream;
-			this._mapStream = @mapStream;
+			this.is1Value = @is1;
+			this.contentTypeValue = @contentType;
+			this.arrStreamValue = @arrStream;
+			this.listStreamValue = @listStream;
+			this.mapStreamValue = @mapStream;
 		}		
 		
 		#endregion
@@ -34,11 +34,11 @@ namespace byps.test.api.strm
 		{
 			get
 			{
-				return _is1;
+				return is1Value;
 			}
 			set
 			{
-				this._is1 = value;
+				this.is1Value = value;
 			}
 		}
 		
@@ -47,11 +47,11 @@ namespace byps.test.api.strm
 		{
 			get
 			{
-				return _contentType;
+				return contentTypeValue;
 			}
 			set
 			{
-				this._contentType = value;
+				this.contentTypeValue = value;
 			}
 		}
 		
@@ -60,11 +60,11 @@ namespace byps.test.api.strm
 		{
 			get
 			{
-				return _arrStream;
+				return arrStreamValue;
 			}
 			set
 			{
-				this._arrStream = value;
+				this.arrStreamValue = value;
 			}
 		}
 		
@@ -73,11 +73,11 @@ namespace byps.test.api.strm
 		{
 			get
 			{
-				return _listStream;
+				return listStreamValue;
 			}
 			set
 			{
-				this._listStream = value;
+				this.listStreamValue = value;
 			}
 		}
 		
@@ -86,11 +86,11 @@ namespace byps.test.api.strm
 		{
 			get
 			{
-				return _mapStream;
+				return mapStreamValue;
 			}
 			set
 			{
-				this._mapStream = value;
+				this.mapStreamValue = value;
 			}
 		}
 		
@@ -99,15 +99,15 @@ namespace byps.test.api.strm
 		
 		#region Fields
 		
-		protected System.IO.Stream _is1;
+		protected System.IO.Stream is1Value;
 
-		protected String _contentType;
+		protected String contentTypeValue;
 
-		protected System.IO.Stream[] _arrStream;
+		protected System.IO.Stream[] arrStreamValue;
 
-		protected IList<System.IO.Stream> _listStream;
+		protected IList<System.IO.Stream> listStreamValue;
 
-		protected IDictionary<int,System.IO.Stream> _mapStream;
+		protected IDictionary<int,System.IO.Stream> mapStreamValue;
 
 		#endregion
 		

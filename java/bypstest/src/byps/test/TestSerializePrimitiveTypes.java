@@ -5,7 +5,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 import junit.framework.Assert;
 
@@ -452,6 +456,41 @@ public class TestSerializePrimitiveTypes {
 		log.info(")testPrimitiveTypesReferenceToSelf");
 	}
 
+  @Test
+  public void testPrimitiveTypesDate() throws BException, ParseException {
+    log.info("testPrimitiveTypesDate(");
+    
+    internalTestDate("1970-01-01 00:00:00,000");
+    internalTestDate("1970-01-01 00:00:00,999");
+    internalTestDate("1970-01-01 00:00:59,999");
+    internalTestDate("1970-01-01 11:59:59,999");
+    internalTestDate("1970-01-01 12:00:00,000");
+    internalTestDate("1970-01-01 23:59:59,999");
+    internalTestDate("1970-01-31 00:00:00,000");
+    internalTestDate("1970-12-31 00:00:00,000");
+    internalTestDate("1900-01-01 00:00:00,000");
+    internalTestDate("3000-01-01 00:00:00,000");
+    internalTestDate("1582-01-01 00:00:00,000"); // Gregorian calendar starts at 1582
+    internalTestDate(null);
+
+    log.info(")testPrimitiveTypesDate");
+  }
+
+  protected void internalTestDate(String sdate) throws BException, ParseException {
+    
+    PrimitiveTypes obj1 = new PrimitiveTypes();
+    
+    if (sdate != null) {
+      SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS"); 
+      fmt.setTimeZone(TimeZone.getTimeZone("UTC"));
+      obj1.dateVal = fmt.parse(sdate);
+    }
+    
+    PrimitiveTypes objR = internalTestPrimitiveTypes(obj1);
+    TestUtils.assertEquals(log, "dateVal", obj1.dateVal, objR.dateVal);
+  }
+
+	
 	@Test
 	public void testSerializeDouble() throws BException {
 		log.info("testSerializeDouble(");
@@ -628,5 +667,6 @@ public class TestSerializePrimitiveTypes {
 				", #kb-total=" + String.format("%4.2f", (double)bytesCount/1000));
 				
 	}
+
 
 }

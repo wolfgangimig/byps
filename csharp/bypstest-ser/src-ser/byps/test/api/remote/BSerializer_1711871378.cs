@@ -27,8 +27,10 @@ namespace byps.test.api.remote
 			BRequest_RemoteConstants_compare_HebrewC obj = (BRequest_RemoteConstants_compare_HebrewC)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			bout.writeObj(obj._ALEPH, false, null);
-			bout.writeObj(obj._BETH, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.ALEPHValue, false, null);
+			// checkpoint byps.gen.cs.PrintContext:490
+			bout.writeObj(obj.BETHValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -37,8 +39,10 @@ namespace byps.test.api.remote
 			BRequest_RemoteConstants_compare_HebrewC obj = (BRequest_RemoteConstants_compare_HebrewC)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteConstants_compare_HebrewC()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			obj._ALEPH = (byps.test.api.cons.HebrewZ)bin.readObj(false, null);
-			obj._BETH = (byps.test.api.cons.HebrewZ)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.ALEPHValue = (byps.test.api.cons.HebrewZ)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:445
+			obj.BETHValue = (byps.test.api.cons.HebrewZ)bin.readObj(false, null);
 			
 			return obj;
 		}

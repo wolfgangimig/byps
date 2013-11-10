@@ -108,6 +108,7 @@ class TypeInfoCpp {
 		else if (tinfo.qname.equals("double")) tbuf.append("double");
 		else if (tinfo.qname.equals("java.lang.Double")) tbuf.append("double");
 		else if (tinfo.qname.equals("void")) tbuf.append("void");
+		else if (tinfo.qname.equals("java.util.Date")) tbuf.append("BDateTime");
 
 		else if (tinfo.qname.equals(BRemote.class.getName())) {
 			if (purpose == Purpose.CLASS) {
