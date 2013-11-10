@@ -455,34 +455,34 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<String,java.util.Date> GetDate1() {
-			BSyncResult<IDictionary<String,java.util.Date>> asyncResult = new BSyncResult<IDictionary<String,java.util.Date>>();			
-			GetDate1(BAsyncResultHelper.ToDelegate<IDictionary<String,java.util.Date>>(asyncResult));
+		public IDictionary<String,DateTime> GetDate1() {
+			BSyncResult<IDictionary<String,DateTime>> asyncResult = new BSyncResult<IDictionary<String,DateTime>>();			
+			GetDate1(BAsyncResultHelper.ToDelegate<IDictionary<String,DateTime>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate1(BAsyncResult<IDictionary<String,java.util.Date>> asyncResult) {
+		public void GetDate1(BAsyncResult<IDictionary<String,DateTime>> asyncResult) {
 			BRequest_RemoteMapTypes_getDate1 req = new BRequest_RemoteMapTypes_getDate1();			
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<IDictionary<String,java.util.Date>> GetDate1Async(){
+		public async Task<IDictionary<String,DateTime>> GetDate1Async(){
 			BRequest_RemoteMapTypes_getDate1 req = new BRequest_RemoteMapTypes_getDate1();			
-			Task<IDictionary<String,java.util.Date>> task = Task<IDictionary<String,java.util.Date>>.Factory.FromAsync(transport.BeginSend<IDictionary<String,java.util.Date>>, transport.EndSend<IDictionary<String,java.util.Date>>, req, null);
+			Task<IDictionary<String,DateTime>> task = Task<IDictionary<String,DateTime>>.Factory.FromAsync(transport.BeginSend<IDictionary<String,DateTime>>, transport.EndSend<IDictionary<String,DateTime>>, req, null);
 			return await task;
 		}
 		
-		public void SetDate1(IDictionary<String,java.util.Date> obj1) {
+		public void SetDate1(IDictionary<String,DateTime> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate1(IDictionary<String,java.util.Date> obj1, BAsyncResult<Object> asyncResult) {
+		public void SetDate1(IDictionary<String,DateTime> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setDate1 req = new BRequest_RemoteMapTypes_setDate1();			
 			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task SetDate1Async(IDictionary<String,java.util.Date> obj1){
+		public async Task SetDate1Async(IDictionary<String,DateTime> obj1){
 			BRequest_RemoteMapTypes_setDate1 req = new BRequest_RemoteMapTypes_setDate1();			
 			req.obj1Value = obj1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);

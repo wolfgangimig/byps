@@ -18,7 +18,7 @@ namespace byps.test.api.list
 		public ListTypes() {
 		}		
 		
-		internal ListTypes(IList<bool> @boolean1, IList<byte> @byte1, IList<char> @char1, IList<short> @short1, IList<int> @int1, IList<long> @long1, IList<float> @float1, IList<double> @double1, IList<String> @string1, IList<java.util.Date> @date1, IList<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IList<byte[]> @byte2, IList<int[]> @int2, IList<int[,,,]> @int4, IList<Object> @obj1) {
+		internal ListTypes(IList<bool> @boolean1, IList<byte> @byte1, IList<char> @char1, IList<short> @short1, IList<int> @int1, IList<long> @long1, IList<float> @float1, IList<double> @double1, IList<String> @string1, IList<DateTime> @date1, IList<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IList<byte[]> @byte2, IList<int[]> @int2, IList<int[,,,]> @int4, IList<Object> @obj1) {
 			this.boolean1Value = @boolean1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -157,7 +157,7 @@ namespace byps.test.api.list
 		}
 		
 		
-		public IList<java.util.Date> Date1
+		public IList<DateTime> Date1
 		{
 			get
 			{
@@ -257,7 +257,7 @@ namespace byps.test.api.list
 
 		protected IList<String> string1Value;
 
-		protected IList<java.util.Date> date1Value;
+		protected IList<DateTime> date1Value;
 
 		protected IList<byps.test.api.prim.PrimitiveTypes> primitiveTypes1Value;
 

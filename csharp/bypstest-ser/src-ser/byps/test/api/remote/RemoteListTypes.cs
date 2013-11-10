@@ -113,13 +113,13 @@ namespace byps.test.api.remote
 		void SetObj1(IList<Object> obj1, BAsyncResult<Object> asyncResult) ;
 		Task SetObj1Async(IList<Object> obj1);
 		
-		void SetDate1(IList<java.util.Date> obj1);
-		void SetDate1(IList<java.util.Date> obj1, BAsyncResult<Object> asyncResult) ;
-		Task SetDate1Async(IList<java.util.Date> obj1);
+		void SetDate1(IList<DateTime> obj1);
+		void SetDate1(IList<DateTime> obj1, BAsyncResult<Object> asyncResult) ;
+		Task SetDate1Async(IList<DateTime> obj1);
 		
-		IList<java.util.Date> GetDate1();
-		void GetDate1(BAsyncResult<IList<java.util.Date>> asyncResult) ;
-		Task<IList<java.util.Date>> GetDate1Async();
+		IList<DateTime> GetDate1();
+		void GetDate1(BAsyncResult<IList<DateTime>> asyncResult) ;
+		Task<IList<DateTime>> GetDate1Async();
 		
 		IList<IList<int>> GetInt3();
 		void GetInt3(BAsyncResult<IList<IList<int>>> asyncResult) ;

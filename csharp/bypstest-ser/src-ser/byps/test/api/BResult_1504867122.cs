@@ -10,7 +10,7 @@ using byps;
 namespace byps.test.api
 {
 	
-	public sealed class BResult_1504867122 : BMethodResult<IList<java.util.Date>>, BSerializable
+	public sealed class BResult_1504867122 : BMethodResult<IList<DateTime>>, BSerializable
 	{
 	
 		

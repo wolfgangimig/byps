@@ -21,7 +21,7 @@ namespace byps.test.api.remote
 			// checkpoint byps.gen.cs.GenApiClass:380
 			try {
 				RemoteSetTypes __byps__remoteT = (RemoteSetTypes)__byps__remote;				
-				BAsyncResultSendMethod<ISet<java.util.Date>> __byps__outerResult = new BAsyncResultSendMethod<ISet<java.util.Date>>(__byps__asyncResult, new byps.test.api.BResult_1097919350());				
+				BAsyncResultSendMethod<ISet<DateTime>> __byps__outerResult = new BAsyncResultSendMethod<ISet<DateTime>>(__byps__asyncResult, new byps.test.api.BResult_1097919350());				
 				__byps__remoteT.GetDate1(BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);

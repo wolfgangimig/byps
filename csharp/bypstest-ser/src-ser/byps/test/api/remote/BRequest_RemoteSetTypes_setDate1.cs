@@ -33,7 +33,7 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal ISet<java.util.Date> obj1Value;
+		internal ISet<DateTime> obj1Value;
 
 		#endregion
 		

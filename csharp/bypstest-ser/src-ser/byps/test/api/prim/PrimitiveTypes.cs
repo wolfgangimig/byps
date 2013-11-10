@@ -21,7 +21,7 @@ namespace byps.test.api.prim
 		public PrimitiveTypes() {
 		}		
 		
-		internal PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, java.util.Date @dateVal, Object @objVal, Object @objVal2, bool @value, Object @temp) {
+		internal PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, DateTime @dateVal, Object @objVal, Object @objVal2, bool @value, Object @temp) {
 			this.boolValValue = @boolVal;
 			this.byteValValue = @byteVal;
 			this.charValValue = @charVal;
@@ -174,7 +174,7 @@ namespace byps.test.api.prim
 		}
 		
 		
-		public java.util.Date DateVal
+		public DateTime DateVal
 		{
 			get
 			{
@@ -273,7 +273,7 @@ namespace byps.test.api.prim
 
 		protected String stringValValue;
 
-		protected java.util.Date dateValValue;
+		protected DateTime dateValValue;
 
 		protected Object objValValue;
 

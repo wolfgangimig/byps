@@ -27,19 +27,19 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_makeDate obj = (BRequest_RemotePrimitiveTypes_makeDate)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.dayValue);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.hourValue);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.millisecondValue);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.minuteValue);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.monthValue);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.secondValue);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.yearValue);
 		}
 		
@@ -49,19 +49,19 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_makeDate obj = (BRequest_RemotePrimitiveTypes_makeDate)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemotePrimitiveTypes_makeDate()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.dayValue = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.hourValue = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.millisecondValue = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.minuteValue = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.monthValue = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.secondValue = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.yearValue = bbuf.getInt();
 			
 			return obj;

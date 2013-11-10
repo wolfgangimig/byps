@@ -18,7 +18,7 @@ namespace byps.test.api.map
 		public MapTypes() {
 		}		
 		
-		internal MapTypes(IDictionary<String,bool> @boolean1, Dictionary<double,byte> @byte1, Dictionary<float,char> @char1, IDictionary<long,short> @short1, IDictionary<int,int> @int1, IDictionary<short,long> @long1, IDictionary<char,float> @float1, IDictionary<byte,double> @double1, IDictionary<String,String> @string1, IDictionary<int,byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IDictionary<int,byte[]> @byte2, IDictionary<int,int[]> @int2, IDictionary<String,Object> @obj1, IDictionary<String,java.util.Date> @date1) {
+		internal MapTypes(IDictionary<String,bool> @boolean1, Dictionary<double,byte> @byte1, Dictionary<float,char> @char1, IDictionary<long,short> @short1, IDictionary<int,int> @int1, IDictionary<short,long> @long1, IDictionary<char,float> @float1, IDictionary<byte,double> @double1, IDictionary<String,String> @string1, IDictionary<int,byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IDictionary<int,byte[]> @byte2, IDictionary<int,int[]> @int2, IDictionary<String,Object> @obj1, IDictionary<String,DateTime> @date1) {
 			this.boolean1Value = @boolean1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -208,7 +208,7 @@ namespace byps.test.api.map
 		}
 		
 		
-		public IDictionary<String,java.util.Date> Date1
+		public IDictionary<String,DateTime> Date1
 		{
 			get
 			{
@@ -251,7 +251,7 @@ namespace byps.test.api.map
 
 		protected IDictionary<String,Object> obj1Value;
 
-		protected IDictionary<String,java.util.Date> date1Value;
+		protected IDictionary<String,DateTime> date1Value;
 
 		#endregion
 		

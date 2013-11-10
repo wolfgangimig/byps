@@ -227,18 +227,18 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetDate(java.util.Date v) {
+		public void SetDate(DateTime v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate(java.util.Date v, BAsyncResult<Object> asyncResult) {
+		public void SetDate(DateTime v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemotePrimitiveTypes_setDate req = new BRequest_RemotePrimitiveTypes_setDate();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task SetDateAsync(java.util.Date v){
+		public async Task SetDateAsync(DateTime v){
 			BRequest_RemotePrimitiveTypes_setDate req = new BRequest_RemotePrimitiveTypes_setDate();			
 			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
@@ -421,19 +421,19 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public java.util.Date GetDate() {
-			BSyncResult<java.util.Date> asyncResult = new BSyncResult<java.util.Date>();			
-			GetDate(BAsyncResultHelper.ToDelegate<java.util.Date>(asyncResult));
+		public DateTime GetDate() {
+			BSyncResult<DateTime> asyncResult = new BSyncResult<DateTime>();			
+			GetDate(BAsyncResultHelper.ToDelegate<DateTime>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate(BAsyncResult<java.util.Date> asyncResult) {
+		public void GetDate(BAsyncResult<DateTime> asyncResult) {
 			BRequest_RemotePrimitiveTypes_getDate req = new BRequest_RemotePrimitiveTypes_getDate();			
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<java.util.Date> GetDateAsync(){
+		public async Task<DateTime> GetDateAsync(){
 			BRequest_RemotePrimitiveTypes_getDate req = new BRequest_RemotePrimitiveTypes_getDate();			
-			Task<java.util.Date> task = Task<java.util.Date>.Factory.FromAsync(transport.BeginSend<java.util.Date>, transport.EndSend<java.util.Date>, req, null);
+			Task<DateTime> task = Task<DateTime>.Factory.FromAsync(transport.BeginSend<DateTime>, transport.EndSend<DateTime>, req, null);
 			return await task;
 		}
 		
@@ -493,12 +493,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public java.util.Date MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) {
-			BSyncResult<java.util.Date> asyncResult = new BSyncResult<java.util.Date>();			
-			MakeDate(year, month, day, hour, minute, second, millisecond, BAsyncResultHelper.ToDelegate<java.util.Date>(asyncResult));
+		public DateTime MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) {
+			BSyncResult<DateTime> asyncResult = new BSyncResult<DateTime>();			
+			MakeDate(year, month, day, hour, minute, second, millisecond, BAsyncResultHelper.ToDelegate<DateTime>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond, BAsyncResult<java.util.Date> asyncResult) {
+		public void MakeDate(int year, int month, int day, int hour, int minute, int second, int millisecond, BAsyncResult<DateTime> asyncResult) {
 			BRequest_RemotePrimitiveTypes_makeDate req = new BRequest_RemotePrimitiveTypes_makeDate();			
 			req.yearValue = year;
 			req.monthValue = month;
@@ -510,7 +510,7 @@ namespace byps.test.api.remote
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<java.util.Date> MakeDateAsync(int year, int month, int day, int hour, int minute, int second, int millisecond){
+		public async Task<DateTime> MakeDateAsync(int year, int month, int day, int hour, int minute, int second, int millisecond){
 			BRequest_RemotePrimitiveTypes_makeDate req = new BRequest_RemotePrimitiveTypes_makeDate();			
 			req.yearValue = year;
 			req.monthValue = month;
@@ -519,22 +519,22 @@ namespace byps.test.api.remote
 			req.minuteValue = minute;
 			req.secondValue = second;
 			req.millisecondValue = millisecond;
-			Task<java.util.Date> task = Task<java.util.Date>.Factory.FromAsync(transport.BeginSend<java.util.Date>, transport.EndSend<java.util.Date>, req, null);
+			Task<DateTime> task = Task<DateTime>.Factory.FromAsync(transport.BeginSend<DateTime>, transport.EndSend<DateTime>, req, null);
 			return await task;
 		}
 		
-		public int[] ParseDate(java.util.Date date) {
+		public int[] ParseDate(DateTime date) {
 			BSyncResult<int[]> asyncResult = new BSyncResult<int[]>();			
 			ParseDate(date, BAsyncResultHelper.ToDelegate<int[]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void ParseDate(java.util.Date date, BAsyncResult<int[]> asyncResult) {
+		public void ParseDate(DateTime date, BAsyncResult<int[]> asyncResult) {
 			BRequest_RemotePrimitiveTypes_parseDate req = new BRequest_RemotePrimitiveTypes_parseDate();			
 			req.dateValue = date;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<int[]> ParseDateAsync(java.util.Date date){
+		public async Task<int[]> ParseDateAsync(DateTime date){
 			BRequest_RemotePrimitiveTypes_parseDate req = new BRequest_RemotePrimitiveTypes_parseDate();			
 			req.dateValue = date;
 			Task<int[]> task = Task<int[]>.Factory.FromAsync(transport.BeginSend<int[]>, transport.EndSend<int[]>, req, null);

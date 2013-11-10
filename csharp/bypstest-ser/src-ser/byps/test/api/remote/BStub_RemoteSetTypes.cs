@@ -455,37 +455,37 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetDate1(ISet<java.util.Date> obj1) {
+		public void SetDate1(ISet<DateTime> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate1(ISet<java.util.Date> obj1, BAsyncResult<Object> asyncResult) {
+		public void SetDate1(ISet<DateTime> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setDate1 req = new BRequest_RemoteSetTypes_setDate1();			
 			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task SetDate1Async(ISet<java.util.Date> obj1){
+		public async Task SetDate1Async(ISet<DateTime> obj1){
 			BRequest_RemoteSetTypes_setDate1 req = new BRequest_RemoteSetTypes_setDate1();			
 			req.obj1Value = obj1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
 		
-		public ISet<java.util.Date> GetDate1() {
-			BSyncResult<ISet<java.util.Date>> asyncResult = new BSyncResult<ISet<java.util.Date>>();			
-			GetDate1(BAsyncResultHelper.ToDelegate<ISet<java.util.Date>>(asyncResult));
+		public ISet<DateTime> GetDate1() {
+			BSyncResult<ISet<DateTime>> asyncResult = new BSyncResult<ISet<DateTime>>();			
+			GetDate1(BAsyncResultHelper.ToDelegate<ISet<DateTime>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate1(BAsyncResult<ISet<java.util.Date>> asyncResult) {
+		public void GetDate1(BAsyncResult<ISet<DateTime>> asyncResult) {
 			BRequest_RemoteSetTypes_getDate1 req = new BRequest_RemoteSetTypes_getDate1();			
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<ISet<java.util.Date>> GetDate1Async(){
+		public async Task<ISet<DateTime>> GetDate1Async(){
 			BRequest_RemoteSetTypes_getDate1 req = new BRequest_RemoteSetTypes_getDate1();			
-			Task<ISet<java.util.Date>> task = Task<ISet<java.util.Date>>.Factory.FromAsync(transport.BeginSend<ISet<java.util.Date>>, transport.EndSend<ISet<java.util.Date>>, req, null);
+			Task<ISet<DateTime>> task = Task<ISet<DateTime>>.Factory.FromAsync(transport.BeginSend<ISet<DateTime>>, transport.EndSend<ISet<DateTime>>, req, null);
 			return await task;
 		}
 		

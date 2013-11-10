@@ -22,10 +22,10 @@ namespace byps.test.api
 			BInputBin bin = ((BInputBin)bin1);
 			BBufferBin bbuf = bin.bbuf;
 			int n = bbuf.getLength();
-			List<java.util.Date> arr = new List<java.util.Date>(n);
+			List<DateTime> arr = new List<DateTime>(n);
 			bin.onObjectCreated(arr);
 			for (int i = 0; i < n; i++) {
-				java.util.Date obj = bbuf.getDate();
+				DateTime obj = bbuf.getDate();
 				arr.Add(obj);
 			}
 			return arr;
@@ -34,10 +34,10 @@ namespace byps.test.api
 		public override void write(Object obj1, BOutput bout1, long version)  {
 			BOutputBin bout = ((BOutputBin)bout1);
 			BBufferBin bbuf = bout.bbuf;
-			IList<java.util.Date> arr = (IList<java.util.Date>)obj1;
+			IList<DateTime> arr = (IList<DateTime>)obj1;
 			int n = arr.Count;
 			bout.bbuf.putLength(n);
-			foreach (java.util.Date obj in arr) {
+			foreach (DateTime obj in arr) {
 				bbuf.putDate(obj);
 			}
 		}

@@ -455,37 +455,37 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetDate1(IList<java.util.Date> obj1) {
+		public void SetDate1(IList<DateTime> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate1(IList<java.util.Date> obj1, BAsyncResult<Object> asyncResult) {
+		public void SetDate1(IList<DateTime> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteListTypes_setDate1 req = new BRequest_RemoteListTypes_setDate1();			
 			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task SetDate1Async(IList<java.util.Date> obj1){
+		public async Task SetDate1Async(IList<DateTime> obj1){
 			BRequest_RemoteListTypes_setDate1 req = new BRequest_RemoteListTypes_setDate1();			
 			req.obj1Value = obj1;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
 		}
 		
-		public IList<java.util.Date> GetDate1() {
-			BSyncResult<IList<java.util.Date>> asyncResult = new BSyncResult<IList<java.util.Date>>();			
-			GetDate1(BAsyncResultHelper.ToDelegate<IList<java.util.Date>>(asyncResult));
+		public IList<DateTime> GetDate1() {
+			BSyncResult<IList<DateTime>> asyncResult = new BSyncResult<IList<DateTime>>();			
+			GetDate1(BAsyncResultHelper.ToDelegate<IList<DateTime>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate1(BAsyncResult<IList<java.util.Date>> asyncResult) {
+		public void GetDate1(BAsyncResult<IList<DateTime>> asyncResult) {
 			BRequest_RemoteListTypes_getDate1 req = new BRequest_RemoteListTypes_getDate1();			
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<IList<java.util.Date>> GetDate1Async(){
+		public async Task<IList<DateTime>> GetDate1Async(){
 			BRequest_RemoteListTypes_getDate1 req = new BRequest_RemoteListTypes_getDate1();			
-			Task<IList<java.util.Date>> task = Task<IList<java.util.Date>>.Factory.FromAsync(transport.BeginSend<IList<java.util.Date>>, transport.EndSend<IList<java.util.Date>>, req, null);
+			Task<IList<DateTime>> task = Task<IList<DateTime>>.Factory.FromAsync(transport.BeginSend<IList<DateTime>>, transport.EndSend<IList<DateTime>>, req, null);
 			return await task;
 		}
 		

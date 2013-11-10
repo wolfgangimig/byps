@@ -151,6 +151,8 @@ public class PrintContext extends PrintContextBase {
 		else if (qname.equals("java.lang.Float")) name = qname = "float";
 		else if (qname.equals("java.lang.Double")) name = qname = "double";
 		else if (qname.equals("java.lang.String")) name = qname = "String";
+		else if (qname.equals("java.util.Date")) name = qname = "DateTime";
+		else if (qname.equals("java.lang.String")) name = qname = "String";
 		else if (qname.equals("java.lang.Object")) name = qname = "Object";
 		else if (qname.equals("java.lang.Exception")) name = qname = "Exception";
 		else if (qname.equals("java.lang.Throwable")) name = qname = "Exception";

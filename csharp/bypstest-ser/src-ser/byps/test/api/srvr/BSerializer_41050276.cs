@@ -27,7 +27,7 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_sendChat obj = (BRequest_ClientIF_sendChat)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.csValue, false, null);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_sendChat obj = (BRequest_ClientIF_sendChat)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ClientIF_sendChat()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.csValue = (byps.test.api.srvr.ChatStructure)bin.readObj(false, null);
 			
 			return obj;

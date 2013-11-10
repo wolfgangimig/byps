@@ -27,7 +27,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteMapTypes_setObj1 obj = (BRequest_RemoteMapTypes_setObj1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.obj1Value, false, byps.test.api.BSerializer_1488550492.instance);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteMapTypes_setObj1 obj = (BRequest_RemoteMapTypes_setObj1)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteMapTypes_setObj1()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.obj1Value = (IDictionary<String,Object>)bin.readObj(false, null);
 			
 			return obj;

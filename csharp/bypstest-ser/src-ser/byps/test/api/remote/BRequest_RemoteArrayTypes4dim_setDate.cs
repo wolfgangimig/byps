@@ -33,7 +33,7 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal java.util.Date[,,,] vValue;
+		internal DateTime[,,,] vValue;
 
 		#endregion
 		

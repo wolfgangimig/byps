@@ -18,7 +18,7 @@ namespace byps.test.api.arr
 		public ArrayTypes1dim() {
 		}		
 		
-		internal ArrayTypes1dim(bool[] @boolean1, byte[] @byte1, char[] @char1, short[] @short1, int[] @int1, long[] @long1, float[] @float1, double[] @double1, String[] @string1, java.util.Date[] @date1, byps.test.api.prim.PrimitiveTypes[] @primitiveTypes1) {
+		internal ArrayTypes1dim(bool[] @boolean1, byte[] @byte1, char[] @char1, short[] @short1, int[] @int1, long[] @long1, float[] @float1, double[] @double1, String[] @string1, DateTime[] @date1, byps.test.api.prim.PrimitiveTypes[] @primitiveTypes1) {
 			this.boolean1Value = @boolean1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -153,7 +153,7 @@ namespace byps.test.api.arr
 		}
 		
 		
-		public java.util.Date[] Date1
+		public DateTime[] Date1
 		{
 			get
 			{
@@ -201,7 +201,7 @@ namespace byps.test.api.arr
 
 		protected String[] string1Value;
 
-		protected java.util.Date[] date1Value;
+		protected DateTime[] date1Value;
 
 		protected byps.test.api.prim.PrimitiveTypes[] primitiveTypes1Value;
 

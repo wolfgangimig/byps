@@ -27,7 +27,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteSetTypes_setDate1 obj = (BRequest_RemoteSetTypes_setDate1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.obj1Value, false, byps.test.api.BSerializer_1097919350.instance);
 		}
 		
@@ -37,8 +37,8 @@ namespace byps.test.api.remote
 			BRequest_RemoteSetTypes_setDate1 obj = (BRequest_RemoteSetTypes_setDate1)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteSetTypes_setDate1()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
-			obj.obj1Value = (ISet<java.util.Date>)bin.readObj(false, null);
+			// checkpoint byps.gen.cs.PrintContext:447
+			obj.obj1Value = (ISet<DateTime>)bin.readObj(false, null);
 			
 			return obj;
 		}

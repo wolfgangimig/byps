@@ -27,11 +27,11 @@ namespace byps.test.api.inherit
 			Class1Collections obj = (Class1Collections)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.List1, false, byps.test.api.BSerializer_510524840.instance);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.Map1, false, byps.test.api.BSerializer_2058676657.instance);
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.Set1, false, byps.test.api.BSerializer_484881308.instance);
 		}
 		
@@ -41,11 +41,11 @@ namespace byps.test.api.inherit
 			Class1Collections obj = (Class1Collections)(obj1 != null ? obj1 : bin.onObjectCreated(new Class1Collections()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.List1 = (IList<byps.test.api.inherit.Class1>)bin.readObj(false, null);
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.Map1 = (IDictionary<String,byps.test.api.inherit.Class1>)bin.readObj(false, null);
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.Set1 = (ISet<byps.test.api.inherit.Class1>)bin.readObj(false, null);
 			
 			return obj;

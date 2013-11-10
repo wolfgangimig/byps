@@ -27,7 +27,7 @@ namespace byps.test.api.srvr
 			BRequest_ServerIF_setPartner obj = (BRequest_ServerIF_setPartner)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.clientValue, false, null);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.srvr
 			BRequest_ServerIF_setPartner obj = (BRequest_ServerIF_setPartner)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ServerIF_setPartner()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.clientValue = (byps.test.api.srvr.ClientIF)bin.readObj(false, null);
 			
 			return obj;

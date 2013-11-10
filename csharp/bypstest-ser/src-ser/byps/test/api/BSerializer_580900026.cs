@@ -27,7 +27,7 @@ namespace byps.test.api
 			BResult_769021986 obj = (BResult_769021986)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bout.writeObj(obj.resultValue, false, byps.test.api.BSerializer_769021986.instance);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api
 			BResult_769021986 obj = (BResult_769021986)(obj1 != null ? obj1 : bin.onObjectCreated(new BResult_769021986()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.resultValue = (char[,,,])bin.readObj(false, byps.test.api.BSerializer_769021986.instance);
 			
 			return obj;

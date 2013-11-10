@@ -21,12 +21,12 @@ namespace byps.test.api
 		public override Object read(object obj1, BInput bin1, long version) {
 			BInputBin bin = ((BInputBin)bin1);
 			BBufferBin bbuf = bin.bbuf;
-			Dictionary<String,java.util.Date> map = new Dictionary<String,java.util.Date>();
+			Dictionary<String,DateTime> map = new Dictionary<String,DateTime>();
 			bin.onObjectCreated(map);
 			int n = bbuf.getLength();
 			for (int i = 0; i < n; i++) {
 				String key = bbuf.getString();
-				java.util.Date value = bbuf.getDate();
+				DateTime value = bbuf.getDate();
 				map[key] = value;
 			}
 			return map;
@@ -35,10 +35,10 @@ namespace byps.test.api
 		public override void write(Object obj1, BOutput bout1, long version)  {
 			BOutputBin bout = ((BOutputBin)bout1);
 			BBufferBin bbuf = bout.bbuf;
-			Dictionary<String,java.util.Date> map = (Dictionary<String,java.util.Date>)obj1;
+			Dictionary<String,DateTime> map = (Dictionary<String,DateTime>)obj1;
 			int n = map.Count;
 			bout.bbuf.putLength(n);
-			foreach (KeyValuePair<String,java.util.Date> obj in map) {
+			foreach (KeyValuePair<String,DateTime> obj in map) {
 				bbuf.putString(obj.Key);
 				bbuf.putDate(obj.Value);
 			}

@@ -27,7 +27,7 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_incrementInt obj = (BRequest_ClientIF_incrementInt)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:490
+			// checkpoint byps.gen.cs.PrintContext:492
 			bbuf.putInt(obj.aValue);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_incrementInt obj = (BRequest_ClientIF_incrementInt)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ClientIF_incrementInt()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:445
+			// checkpoint byps.gen.cs.PrintContext:447
 			obj.aValue = bbuf.getInt();
 			
 			return obj;

@@ -33,7 +33,7 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal IDictionary<String,java.util.Date> obj1Value;
+		internal IDictionary<String,DateTime> obj1Value;
 
 		#endregion
 		

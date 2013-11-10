@@ -18,7 +18,7 @@ namespace byps.test.api.set
 		public SetTypes() {
 		}		
 		
-		internal SetTypes(ISet<bool> @boolean1, HashSet<byte> @byte1, HashSet<char> @char1, ISet<short> @short1, ISet<int> @int1, ISet<long> @long1, ISet<float> @float1, ISet<double> @double1, ISet<String> @string1, ISet<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, ISet<byte[]> @byte2, ISet<int[]> @int2, ISet<Object> @obj1, ISet<java.util.Date> @date1) {
+		internal SetTypes(ISet<bool> @boolean1, HashSet<byte> @byte1, HashSet<char> @char1, ISet<short> @short1, ISet<int> @int1, ISet<long> @long1, ISet<float> @float1, ISet<double> @double1, ISet<String> @string1, ISet<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, ISet<byte[]> @byte2, ISet<int[]> @int2, ISet<Object> @obj1, ISet<DateTime> @date1) {
 			this.boolean1Value = @boolean1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -208,7 +208,7 @@ namespace byps.test.api.set
 		}
 		
 		
-		public ISet<java.util.Date> Date1
+		public ISet<DateTime> Date1
 		{
 			get
 			{
@@ -251,7 +251,7 @@ namespace byps.test.api.set
 
 		protected ISet<Object> obj1Value;
 
-		protected ISet<java.util.Date> date1Value;
+		protected ISet<DateTime> date1Value;
 
 		#endregion
 		

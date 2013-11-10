@@ -26,7 +26,7 @@ namespace byps.test.api
 			int n0 = bbuf.getLength();
 			
 			// create array
-			java.util.Date[] arr =  new java.util.Date[n0];
+			DateTime[] arr =  new DateTime[n0];
 			
 			// read
 			for (int i0 = 0; i0 < n0; i0++) {
@@ -40,7 +40,7 @@ namespace byps.test.api
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
 			
-			java.util.Date[] arr = (java.util.Date[])obj1;
+			DateTime[] arr = (DateTime[])obj1;
 			
 			// lengths
 			int n0 = arr.GetLength(0);

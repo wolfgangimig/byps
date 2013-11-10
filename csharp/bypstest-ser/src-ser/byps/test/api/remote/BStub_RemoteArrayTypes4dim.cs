@@ -211,18 +211,18 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetDate(java.util.Date[,,,] v) {
+		public void SetDate(DateTime[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate(java.util.Date[,,,] v, BAsyncResult<Object> asyncResult) {
+		public void SetDate(DateTime[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setDate req = new BRequest_RemoteArrayTypes4dim_setDate();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task SetDateAsync(java.util.Date[,,,] v){
+		public async Task SetDateAsync(DateTime[,,,] v){
 			BRequest_RemoteArrayTypes4dim_setDate req = new BRequest_RemoteArrayTypes4dim_setDate();			
 			req.vValue = v;
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
@@ -405,19 +405,19 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public java.util.Date[,,,] GetDate() {
-			BSyncResult<java.util.Date[,,,]> asyncResult = new BSyncResult<java.util.Date[,,,]>();			
-			GetDate(BAsyncResultHelper.ToDelegate<java.util.Date[,,,]>(asyncResult));
+		public DateTime[,,,] GetDate() {
+			BSyncResult<DateTime[,,,]> asyncResult = new BSyncResult<DateTime[,,,]>();			
+			GetDate(BAsyncResultHelper.ToDelegate<DateTime[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate(BAsyncResult<java.util.Date[,,,]> asyncResult) {
+		public void GetDate(BAsyncResult<DateTime[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getDate req = new BRequest_RemoteArrayTypes4dim_getDate();			
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<java.util.Date[,,,]> GetDateAsync(){
+		public async Task<DateTime[,,,]> GetDateAsync(){
 			BRequest_RemoteArrayTypes4dim_getDate req = new BRequest_RemoteArrayTypes4dim_getDate();			
-			Task<java.util.Date[,,,]> task = Task<java.util.Date[,,,]>.Factory.FromAsync(transport.BeginSend<java.util.Date[,,,]>, transport.EndSend<java.util.Date[,,,]>, req, null);
+			Task<DateTime[,,,]> task = Task<DateTime[,,,]>.Factory.FromAsync(transport.BeginSend<DateTime[,,,]>, transport.EndSend<DateTime[,,,]>, req, null);
 			return await task;
 		}
 		

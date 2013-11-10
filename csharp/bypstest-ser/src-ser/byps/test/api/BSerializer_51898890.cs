@@ -29,7 +29,7 @@ namespace byps.test.api
 			int n0 = bbuf.getLength();
 			
 			// create array
-			java.util.Date[,,,] arr =  new java.util.Date[n3,n2,n1,n0];
+			DateTime[,,,] arr =  new DateTime[n3,n2,n1,n0];
 			
 			// read
 			for (int i3 = 0; i3 < n3; i3++) {
@@ -49,7 +49,7 @@ namespace byps.test.api
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
 			
-			java.util.Date[,,,] arr = (java.util.Date[,,,])obj1;
+			DateTime[,,,] arr = (DateTime[,,,])obj1;
 			
 			// lengths
 			int n3 = arr.GetLength(0);
