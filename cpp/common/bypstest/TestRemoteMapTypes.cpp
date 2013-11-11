@@ -56,6 +56,7 @@ public:
 			);
         obj->short1 = toMap((int64_t)-55LL, (int16_t)1234, (int64_t)0x5555555555555555LL, (int16_t)5555, (int64_t)0LL, (int16_t)0);
 		obj->string1 = toMap(wstring(L"A"), wstring(L"a"), wstring(L"B"), wstring(L"b"), wstring(L"€"), wstring(L"€€€"));
+		obj->date1 = toMap(wstring(L"A"), BDateTime(2000,01,01,12,13,14,15), wstring(L"B"), BDateTime(), wstring(L"C"), BDateTime(1601,11,30,23,25,52,999));
 		obj->obj1 = toMap(
 			std::wstring(L"11"), byps_ptr_cast<BSerializable>(TestUtils::createObjectPrimitiveTypes()), 
 			std::wstring(L"21"), byps_ptr_cast<BSerializable>(TestUtils::createObjectPrimitiveTypes()),
@@ -97,6 +98,10 @@ public:
 		l_info << L"string1";
 		remote->setString1(obj->string1);
 		assertMap(obj->string1, remote->getString1());
+
+		l_info << L"date1";
+		remote->setDate1(obj->date1);
+		assertMap(obj->date1, remote->getDate1());
 
 		{
 			l_info << L"primitiveTypes1";

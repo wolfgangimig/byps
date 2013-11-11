@@ -221,60 +221,54 @@ public abstract class BBufferBin extends BBuffer {
   }
   
   public void putDate(Date v) {
-    if (v != null) {
-      GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
-      calendar.setTime(v);
-        
-      final int year = calendar.get(Calendar.YEAR);
-      final int month = calendar.get(Calendar.MONTH) + 1;
-      final int day = calendar.get(Calendar.DAY_OF_MONTH);
-      final int hour = calendar.get(Calendar.HOUR_OF_DAY);
-      final int minute = calendar.get(Calendar.MINUTE);
-      final int second = calendar.get(Calendar.SECOND);
-      final int millis = calendar.get(Calendar.MILLISECOND);
+    if (v == null ) v = new Date(0);
+    GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+    calendar.setTime(v);
       
-      final int _year = year >= 0 ? (year+1) : year;
-      final short _mmdd = (short)((month << 8) | day);
-      final short _hhmm = (short)((hour << 8) | minute);
-      final short _ssuu = (short)((second << 10) | millis);
-      
-      ensureRemaining(10);
-      putInt(_year);
-      putShort(_mmdd);
-      putShort(_hhmm);
-      putShort(_ssuu);
-    }
-    else {
-      putInt(0);
-    }
+    final int year = calendar.get(Calendar.YEAR);
+    final int month = calendar.get(Calendar.MONTH) + 1;
+    final int day = calendar.get(Calendar.DAY_OF_MONTH);
+    final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+    final int minute = calendar.get(Calendar.MINUTE);
+    final int second = calendar.get(Calendar.SECOND);
+    final int millis = calendar.get(Calendar.MILLISECOND);
+    
+    final short _year = (short)year;
+    final short _mmdd = (short)((month << 8) | day);
+    final short _hhmm = (short)((hour << 8) | minute);
+    final short _ssuu = (short)((second << 10) | millis);
+    
+    ensureRemaining(10);
+    putShort(_year);
+    putShort(_mmdd);
+    putShort(_hhmm);
+    putShort(_ssuu);
   }
   
   public Date getDate() {
-    Date date = null;
-    final int _year = getInt();
-    if (_year != 0) {
-      final short _mmdd = getShort();
-      final short _hhmm = getShort();
-      final short _ssuu = getShort();
-      
-      final int year = _year > 0 ? (_year-1) : _year;
-      final int month = _mmdd >>> 8;
-      final int day = _mmdd & 0xFF;
-      final int hour = _hhmm >>> 8;
-      final int minute = _hhmm & 0xFF;
-      final int second = ((int)_ssuu >>> 10) & 0x3F; 
-      final int millis = _ssuu & 0x3FF;
-      
-      GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
-      calendar.set(Calendar.YEAR, year);
-      calendar.set(Calendar.MONTH, month-1);
-      calendar.set(Calendar.DAY_OF_MONTH, day);
-      calendar.set(Calendar.HOUR_OF_DAY, hour);
-      calendar.set(Calendar.MINUTE, minute);
-      calendar.set(Calendar.SECOND, second);
-      calendar.set(Calendar.MILLISECOND, millis);
-      date = calendar.getTime();
-    }
+    final short _year = getShort();
+    final short _mmdd = getShort();
+    final short _hhmm = getShort();
+    final short _ssuu = getShort();
+    
+    final int year = _year;
+    final int month = _mmdd >>> 8;
+    final int day = _mmdd & 0xFF;
+    final int hour = _hhmm >>> 8;
+    final int minute = _hhmm & 0xFF;
+    final int second = ((int)_ssuu >>> 10) & 0x3F; 
+    final int millis = _ssuu & 0x3FF;
+    
+    GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+    calendar.set(Calendar.YEAR, year);
+    calendar.set(Calendar.MONTH, month-1);
+    calendar.set(Calendar.DAY_OF_MONTH, day);
+    calendar.set(Calendar.HOUR_OF_DAY, hour);
+    calendar.set(Calendar.MINUTE, minute);
+    calendar.set(Calendar.SECOND, second);
+    calendar.set(Calendar.MILLISECOND, millis);
+    
+    Date date = calendar.getTime();
     return date;
   }
 

@@ -158,55 +158,32 @@ BINLINE void BBuffer::serialize (double& v) {
 BINLINE void BBuffer::serialize(BDateTime& v) {
 	if (isWrite) {
 
-		if (v.isValid()) {
+		int16_t _mmdd = (int16_t)((v.month << 8) | v.day);
+		int16_t _hhmm = (int16_t)((v.hour << 8) | v.minute);
+		int16_t _ssuu = (int16_t)((v.second << 10) | (v.millisecond));
 
-			struct tm timeInfo = {0};
-			v.toStruct(timeInfo);
-
-			int32_t _year = timeInfo.tm_year + 1900;
-			if (_year >= 0) _year++;
-			int16_t _mmdd = (int16_t)(((timeInfo.tm_mon + 1) << 8) | timeInfo.tm_mday);
-			int16_t _hhmm = (int16_t)((timeInfo.tm_hour << 8) | timeInfo.tm_min);
-			int16_t _ssuu = (int16_t)((timeInfo.tm_sec << 10) | (0));
-
-			serialize(_year);
-			serialize(_mmdd);
-			serialize(_hhmm);
-			serialize(_ssuu);
-		}
-		else {
-			int32_t _year = 0;
-			serialize(_year);
-		}
+		serialize(v.year);
+		serialize(_mmdd);
+		serialize(_hhmm);
+		serialize(_ssuu);
 
 	}
 	else {
 
-		int32_t _year = 0;
-		serialize(_year);
+		int16_t _mmdd = 0;
+		int16_t _hhmm = 0;
+		int16_t _ssuu = 0;
+		serialize(v.year);
+		serialize(_mmdd);
+		serialize(_hhmm);
+		serialize(_ssuu);
 
-		if (_year) {
-			int16_t _mmdd = 0;
-			int16_t _hhmm = 0;
-			int16_t _ssuu = 0;
-			serialize(_mmdd);
-			serialize(_hhmm);
-			serialize(_ssuu);
-
-			struct tm timeInfo = {0};
-			if (_year > 0) _year--;
-			timeInfo.tm_year =  _year - 1900;
-			timeInfo.tm_mon = (_mmdd >> 8) & 0xFF;
-			timeInfo.tm_mday = _mmdd & 0xFF;
-			timeInfo.tm_hour = (_hhmm >> 8) & 0xFF;
-			timeInfo.tm_min = _hhmm & 0xFF;
-			timeInfo.tm_sec = (_ssuu >> 10) & 0x3F;
-			
-			v = BDateTime::fromStruct(timeInfo);
-		}
-		else {
-			v = BDateTime();
-		}
+		v.month = (_mmdd >> 8) & 0xFF;
+		v.day = _mmdd & 0xFF;
+		v.hour = (_hhmm >> 8) & 0xFF;
+		v.minute = _hhmm & 0xFF;
+		v.second = (_ssuu >> 10) & 0x3F;
+		v.millisecond = _ssuu & 0x3FF;
 
 	}
 }

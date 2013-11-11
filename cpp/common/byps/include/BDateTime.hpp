@@ -6,13 +6,17 @@
 namespace byps {
 
 BINLINE BDateTime::BDateTime() {
-	year = month = day = hour = minute = second = millisecond = _reserved = 0;
+	year = 1970;
+	month = 01;
+	day = 01;
+	hour = minute = second = millisecond = _reserved = 0;
 }
 
 BINLINE BDateTime::BDateTime(const BDateTime& rhs) {
 	year = rhs.year;
 	month = rhs.month;
 	day = rhs.day;
+	hour = rhs.hour;
 	minute = rhs.minute;
 	second = rhs.second;
 	millisecond = rhs.millisecond;
@@ -23,10 +27,11 @@ BINLINE BDateTime::BDateTime(int32_t year, int32_t month, int32_t day, int32_t h
 	this->year = year;
 	this->month = month;
 	this->day = day;
+	this->hour = hour;
 	this->minute = minute;
 	this->second = second;
 	this->millisecond = millisecond;
-	this->_reserved = _reserved;
+	this->_reserved = 0;
 }
 
 BINLINE BDateTime BDateTime::fromString(const std::wstring& iso) {
@@ -55,7 +60,8 @@ BINLINE BDateTime BDateTime::fromString(const std::wstring& iso) {
 
 	}
 	else {
-		return BDateTime();
+		// Java Date value initialized with 0.
+		return BDateTime(1970, 01, 01, 00, 00, 00, 000);
 	}
 }
 
@@ -68,33 +74,19 @@ BINLINE bool BDateTime:: operator != (const BDateTime rhs) const {
 }
 
 BINLINE int16_t BDateTime::diff(const BDateTime& rhs) const {
-	int16_t d = 0;
-	bool u = isValid();
-	bool v = rhs.isValid();
-	if (!u && v) {
-		d = -1;
-	}
-	else if (u && !v) {
-		d = +1;
-	}
-	else if (!u && !v) {
-		d = 0;
-	}
-	else {
-		d = year - rhs.year;
+	int16_t d = year - rhs.year;
+	if (d == 0) {
+		d = month - rhs.month;
 		if (d == 0) {
-			d = month - rhs.month;
+			d = day - rhs.day;
 			if (d == 0) {
-				d = day - rhs.day;
+				d = hour - rhs.hour;
 				if (d == 0) {
-					d = hour - rhs.hour;
+					d = minute - rhs.minute;
 					if (d == 0) {
-						d = minute - rhs.minute;
+						d = second - rhs.second;
 						if (d == 0) {
-							d = second - rhs.second;
-							if (d == 0) {
-								d = millisecond - rhs.millisecond;
-							}
+							d = millisecond - rhs.millisecond;
 						}
 					}
 				}
@@ -143,11 +135,6 @@ BINLINE bool BDateTime:: operator > (const BDateTime rhs) const {
 //	return utcT;
 //}
 
-
-BINLINE bool BDateTime::isValid() const {
-	// Gregorian calendar starts at 1582
-	return year >= 1600;
-}
 
 BINLINE BDateTime BDateTime::fromStruct(const struct tm& tm) {
 	return BDateTime(tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, 0);

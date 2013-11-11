@@ -21,15 +21,11 @@ public:
 	BDateTime(const BDateTime& rhs);
 	BDateTime(int32_t year, int32_t month, int32_t day, int32_t hour, int32_t minute, int32_t second, int32_t millisecond);
 
-	bool isValid() const;
-
 	static BDateTime fromStruct(const struct tm& tm);
 	void toStruct(struct tm& tm) const;
 
 	std::wstring toString() const;
 	static BDateTime fromString(const std::wstring& iso);
-
-	operator bool () const { return isValid(); }
 
 	bool operator == (const BDateTime rhs) const;
 	bool operator != (const BDateTime rhs) const;
@@ -38,18 +34,15 @@ public:
 
 	template <typename _CHAR> 
     friend std::basic_ostream<_CHAR>& operator << (std::basic_ostream<_CHAR>& os, const BDateTime& dt) {
-		if (dt.isValid()) {
-
-			_CHAR prevFill = os.fill(L'0');
-			os 	<< setw(4) << dt.year << (_CHAR)'-'
-				<< setw(2) << dt.month << (_CHAR)'-'
-				<< setw(2) << dt.day << (_CHAR)'T'
-				<< setw(2) << dt.hour << (_CHAR)':'
-				<< setw(2) << dt.minute << (_CHAR)':'
-				<< setw(2) << dt.second << (_CHAR)'.'
-				<< setw(3) << dt.millisecond;
-
-		}
+		_CHAR prevFill = os.fill(L'0');
+		os 	<< setw(4) << dt.year << (_CHAR)'-'
+			<< setw(2) << dt.month << (_CHAR)'-'
+			<< setw(2) << dt.day << (_CHAR)'T'
+			<< setw(2) << dt.hour << (_CHAR)':'
+			<< setw(2) << dt.minute << (_CHAR)':'
+			<< setw(2) << dt.second << (_CHAR)'.'
+			<< setw(3) << dt.millisecond << (_CHAR)'Z';
+		os.fill(prevFill);
 		return os;
 	}
 

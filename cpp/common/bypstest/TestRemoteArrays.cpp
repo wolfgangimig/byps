@@ -127,6 +127,19 @@ public:
 		assertArray(arr, arrR);
 	}
 
+	void internalTestRemoteArrayTypes1dimDate() {
+        PRemoteArrayTypes1dim remote = client->remoteArrayTypes1dim;
+
+	    byps_ptr<BArray1<BDateTime> > arr(new BArray1<BDateTime>(3));
+		arr->at(0) = BDateTime(1600, 01, 01, 00, 00, 00, 000);
+		arr->at(1) = BDateTime();
+		arr->at(2) = BDateTime(1900, 01, 01, 00, 00, 00, 000);
+
+		remote->setDate(arr);
+		byps_ptr<BArray1<BDateTime> > arrR = remote->getDate();
+		assertArray(arr, arrR);
+	}
+
 	void testRemoteArrayTypes1dim() {
         PRemoteArrayTypes1dim remote = client->remoteArrayTypes1dim;
 		
@@ -199,6 +212,7 @@ public:
 		}
 
 		internalTestRemoteArrayTypes1dimString();
+		internalTestRemoteArrayTypes1dimDate();
 		internalTestRemoteArrayPrimitiveTypes();
 		internalTestRemoteArrayObject();
 	}
