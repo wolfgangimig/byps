@@ -2,11 +2,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+// using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+// using System.Threading.Tasks;
 
 namespace byps
 {
@@ -255,7 +255,8 @@ namespace byps
             HttpWebRequest conn = (HttpWebRequest)HttpWebRequest.Create(destUrl);
             request.setConnection(conn);
             conn.Method = isNegotiate ? "GET" : "POST";
-
+            conn.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            
             // Content-Type for POST request
             if (!isNegotiate)
             {
@@ -356,10 +357,8 @@ namespace byps
 
                     if (log.isDebugEnabled()) log.debug("bufferFromStream");
 
-                    bool gzip = response.ContentEncoding.Equals("gzip");
-
                     Stream responseStream = response.GetResponseStream();
-                    returnBuffer = bufferFromStream(responseStream, gzip);
+                    returnBuffer = bufferFromStream(responseStream, false);
                 }
 
             }

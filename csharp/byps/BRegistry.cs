@@ -16,6 +16,7 @@ namespace byps
 	    public const int TYPEID_SET = 14;
 	    public const int TYPEID_STREAM = 15;
 	    public const int TYPEID_STUB = 16;
+        public const int TYPEID_VOID = 19;
 	    public const int TYPEID_EXCEPTION = 20;
         public const int TYPEID_VALUECLASS = 22;
 

@@ -562,6 +562,13 @@ public class ClassDB {
     }
     return ret;
   }
+  
+  private void checkCLScompliant(String name, String errorContext) {
+    // Names starting with underscore cause a warning "... not CLS-compliant..." in .NET
+//    if (name.startsWith("_")) {
+//      log.warn("Symbol name should not start with an underscore. " + errorContext + " is not CLS-compliant and will cause a warning in C# compilation.");
+//    }
+  }
 
   private boolean validate(SerialInfo sinfo) {
     boolean ret = validatePackage(sinfo.pack);
@@ -571,6 +578,8 @@ public class ClassDB {
     if (!sinfo.isPrimitiveType()) {
       if (!Keywords.checkIdentifier(log, errorContext, sinfo.name)) ret = false;
     }
+    
+    checkCLScompliant(sinfo.name, errorContext);
     
     if (sinfo.methodInfo != null) {
       
@@ -598,6 +607,8 @@ public class ClassDB {
     // Member name must not be a keyword
     if (!Keywords.checkIdentifier(log, errorContext, minfo.name)) ret = false;
 
+    checkCLScompliant(minfo.name,errorContext);
+    
     // A static field must also be final
     if (minfo.isStatic) {
       if (!minfo.isFinal) {
@@ -616,6 +627,7 @@ public class ClassDB {
       if (!Keywords.checkIdentifier(log, "Package name \"" + pack + "\"", s)) {
         ret = false;
       }
+      checkCLScompliant(pack, pack);
     }
     return ret;
   }
