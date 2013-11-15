@@ -171,87 +171,45 @@ public:
 	}
 
 	void testPrimitiveTypesDateTime() {
-
-		// Winter time in Germany: 2013-03-31 00:00:00
-		struct tm winterTm = {0};
-		winterTm.tm_year = 2013 - 1900;
-		winterTm.tm_mon = 3 - 1;
-		winterTm.tm_mday = 31;
-		winterTm.tm_hour = 0;
-		winterTm.tm_min = 0;
-		winterTm.tm_sec = 0;
-
-		time_t t1 = mktime(&winterTm); // == 1364684400
-		gmtime_s(&winterTm, &t1); 
-		localtime_s(&winterTm, &t1);
-
-		// Summer time in Germany: 2013-03-31 04:00:00
-		struct tm summerTm = {0};
-		summerTm.tm_year = 2013 - 1900;
-		summerTm.tm_mon = 3 - 1;
-		summerTm.tm_mday = 31;
-		summerTm.tm_hour = 4;
-		summerTm.tm_min = 0;
-		summerTm.tm_sec = 0;
-
-		time_t t2 = mktime(&summerTm); // == 1364698800
-		if (summerTm.tm_isdst) t2 -= 3600;
-		gmtime_s(&summerTm, &t2); 
-
-		// Time difference must be 3 hours, 4 hours are found:
-		int64_t diffHours = (t2 - t1) / 3600;
-
-		//// Verfiy: toString -> fromString returns equal BDateTime object
-		//time_t t1;
-		//time(&t1);
-		//BDateTime dt1 = BDateTime(t1);
-		//wstring str1r = dt1.toString();
-		//BDateTime dt2 = BDateTime::fromString(str1r);
-		//TASSERT(L"toString->fromString", dt1, dt2);
-
-		//BDateTime summerTime(2013, 8, 9, 10, 11, 12);
-		//wstring strSummerTime = summerTime.toString();
-
-
-		//PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
-		//BDateTime dt = remote->makeDate(1600, 11, 12, 13, 14, 15, 16);
-		//TASSERT(L"makeDate", BDateTime(1600, 11, 12, 13, 14, 15, 16), dt);
-
-
+		internalTestReadWriteDate(BDateTime(1600, 01, 01, 00, 00, 00, 999));
+		internalTestReadWriteDate(BDateTime(1600, 01, 01, 00, 00, 59, 000));
+		internalTestReadWriteDate(BDateTime(1600, 01, 01, 00, 59, 59, 999));
+		internalTestReadWriteDate(BDateTime(1600, 01, 01, 00, 00, 59, 000));
+		internalTestReadWriteDate(BDateTime(1600, 01, 01, 23, 00, 59, 000));
+		internalTestReadWriteDate(BDateTime(1600, 01, 31, 23, 00, 59, 000));
+		internalTestReadWriteDate(BDateTime(1600, 12, 01, 23, 00, 59, 000));
+		internalTestReadWriteDate(BDateTime(3000, 12, 01, 23, 00, 59, 000));
+		internalTestReadWriteDate(BDateTime());
 	}
 
-		void testPrimitiveTypesDateTime2() {
+	void internalTestReadWriteDate(const BDateTime& dt) {
+		internalTestReadDate(dt);
+		internalTestWriteDate(dt);
+	}
 
-		// Summer time in Germany: 2013-10-27 01:00:00
-		struct tm summerTm = {0};
-		summerTm.tm_year = 2013 - 1900;
-		summerTm.tm_mon = 3 - 1;
-		summerTm.tm_mday = 31;
-		summerTm.tm_hour = 1;
-		summerTm.tm_min = 0;
-		summerTm.tm_sec = 0;
+	void internalTestReadDate(const BDateTime& dt) {
+		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		BDateTime dtR = remote->makeDate(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second, dt.millisecond);
+		TASSERT(L"makeDate", dt, dtR);
+	}
 
-		time_t t2 = mktime(&summerTm); // == 1364698800
-		if (summerTm.tm_isdst) t2 -= 3600;
-		gmtime_s(&summerTm, &t2); 
+	void internalTestWriteDate(const BDateTime& dt) {
+		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		PArrayInt arr = remote->parseDate(dt);
+		TASSERT(L"parseDate must not return null", true, !!arr);
+		TASSERT(L"#arr", (size_t)7, arr->length());
 
-		// Winter time in Germany: 2013-10-27 05:00:00
-		struct tm winterTm = {0};
-		winterTm.tm_year = 2013 - 1900;
-		winterTm.tm_mon = 10 - 1;
-		winterTm.tm_mday = 27;
-		winterTm.tm_hour = 5;
-		winterTm.tm_min = 0;
-		winterTm.tm_sec = 0;
+		BDateTime dtR;
+		size_t idx=0;
+		dtR.year = arr->at(idx++);
+		dtR.month = arr->at(idx++);
+		dtR.day = arr->at(idx++);
+		dtR.hour = arr->at(idx++);
+		dtR.minute = arr->at(idx++);
+		dtR.second = arr->at(idx++);
+		dtR.millisecond = arr->at(idx++);
 
-		time_t t1 = mktime(&winterTm); // == 1364684400
-		gmtime_s(&winterTm, &t1); 
-		localtime_s(&winterTm, &t1);
-
-		// Time difference must be 3 hours, 4 hours are found:
-		int64_t diffHours = (t2 - t1) / 3600;
-
-
+		TASSERT(L"parseDate", dt, dtR);
 	}
 
 	void testRemotePrimitvieTypesSendAsObjectType() {
@@ -304,14 +262,14 @@ public:
 
 	virtual void init() {
 		ADD_TEST(testPrimitiveTypesDateTime);
-        //ADD_TEST(testRemotePrimitiveTypes);
-		//ADD_TEST(testSerializeInt);
-  //      ADD_TEST(testSerializeIntSendToServer);
-  //      ADD_TEST(testSerializeLong);
-  //      ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
-  //      ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);
-  //      ADD_TEST(testRemotePrimitiveTypesSendAll);
-  //      ADD_TEST(testPrimitiveTypesReferenceToSelf);
+        ADD_TEST(testRemotePrimitiveTypes);
+		ADD_TEST(testSerializeInt);
+        ADD_TEST(testSerializeIntSendToServer);
+        ADD_TEST(testSerializeLong);
+        ADD_TEST(testPrimitiveTypesReferenceToOtherObject);
+        ADD_TEST(testRemotePrimitvieTypesSendAsObjectType);
+        ADD_TEST(testRemotePrimitiveTypesSendAll);
+        ADD_TEST(testPrimitiveTypesReferenceToSelf);
 		
 	}
 };

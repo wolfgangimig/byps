@@ -167,30 +167,40 @@ public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
 
 	@Override
 	public Date makeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) throws RemoteException {
-    GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
-    calendar.set(Calendar.YEAR, year);
-    calendar.set(Calendar.MONTH, month-1);
-    calendar.set(Calendar.DAY_OF_MONTH, day);
-    calendar.set(Calendar.HOUR_OF_DAY, hour);
-    calendar.set(Calendar.MINUTE, minute);
-    calendar.set(Calendar.SECOND, second);
-    calendar.set(Calendar.MILLISECOND, millisecond);
-    return calendar.getTime();
+	  if (year != 0) {
+      GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+      calendar.set(Calendar.YEAR, year);
+      calendar.set(Calendar.MONTH, month-1);
+      calendar.set(Calendar.DAY_OF_MONTH, day);
+      calendar.set(Calendar.HOUR_OF_DAY, hour);
+      calendar.set(Calendar.MINUTE, minute);
+      calendar.set(Calendar.SECOND, second);
+      calendar.set(Calendar.MILLISECOND, millisecond);
+      return calendar.getTime();
+	  }
+	  else {
+	    return null;
+	  }
 	}
 	
 	@Override
 	public int[] parseDate(Date date) throws RemoteException {
-    GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
-    calendar.setTime(date);
-      
-    final int year = calendar.get(Calendar.YEAR);
-    final int month = calendar.get(Calendar.MONTH) + 1;
-    final int day = calendar.get(Calendar.DAY_OF_MONTH);
-    final int hour = calendar.get(Calendar.HOUR_OF_DAY);
-    final int minute = calendar.get(Calendar.MINUTE);
-    final int second = calendar.get(Calendar.SECOND);
-    final int millis = calendar.get(Calendar.MILLISECOND);
-
-    return new int[] { year, month, day, hour, minute, second, millis };
+	  if (date != null) {
+      GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+      calendar.setTime(date);
+        
+      final int year = calendar.get(Calendar.YEAR);
+      final int month = calendar.get(Calendar.MONTH) + 1;
+      final int day = calendar.get(Calendar.DAY_OF_MONTH);
+      final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+      final int minute = calendar.get(Calendar.MINUTE);
+      final int second = calendar.get(Calendar.SECOND);
+      final int millis = calendar.get(Calendar.MILLISECOND);
+  
+      return new int[] { year, month, day, hour, minute, second, millis };
+	  }
+	  else {
+	    return null;
+	  }
 	}
 }

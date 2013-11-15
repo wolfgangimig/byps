@@ -51,6 +51,7 @@ public:
 		obj->double1 = toVector(1.1,1.2,1.3,1.4);
 		obj->float1 = toVector(11.1f, 22.2f, 33.3f, 44.4f);
 		obj->string1 = toVector(string1, string2, string3, string4);
+		obj->date1 = toVector(BDateTime(2000,01,01,12,13,14,15), BDateTime(), BDateTime(), BDateTime(3000,12,31,01,02,03,444));
 		obj->primitiveTypes1 = toVector(
 			TestUtils::createObjectPrimitiveTypes(),
 			TestUtils::createObjectPrimitiveTypes(),
@@ -76,11 +77,12 @@ public:
 		TASSERT(L"int1", obj->int1, remote->getInt1());
 		remote->setLong1(obj->long1);
 		TASSERT(L"long1", obj->long1, remote->getLong1());
-
 		remote->setShort1(obj->short1);
 		TASSERT(L"short1", obj->short1, remote->getShort1());
 		remote->setString1(obj->string1);
 		TASSERT(L"string1", obj->string1, remote->getString1());
+		remote->setDate1(obj->date1);
+		TASSERT(L"date1", obj->date1, remote->getDate1());
 
 		{
 			remote->setPrimitiveTypes1(obj->primitiveTypes1);

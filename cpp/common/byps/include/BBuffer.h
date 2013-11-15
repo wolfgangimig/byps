@@ -154,10 +154,11 @@ private:
 				v = (int64_t)((uint64_t)v >> 1);   
 				if (neg) v = -(v+1);
 
-				v1 = (_int3264)v;
-
 				pos += i;
 			}
+
+			v1 = (_int3264)v;
+
 		}
 	}
 

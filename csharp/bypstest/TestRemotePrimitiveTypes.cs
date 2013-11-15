@@ -198,6 +198,52 @@ namespace bypstest
             TestUtils.assertEquals(log, "Wrong long", v, r);
         }
 
-    }
+        [TestMethod]
+        public void testPrimitiveTypesDateTime()
+        {
+            internalTestReadWriteDate(new DateTime(1600, 01, 01, 00, 00, 00, 000));
+            internalTestReadWriteDate(new DateTime(1600, 01, 01, 00, 00, 59, 000));
+            internalTestReadWriteDate(new DateTime(1600, 01, 01, 00, 59, 59, 999));
+            internalTestReadWriteDate(new DateTime(1600, 01, 01, 00, 00, 59, 000));
+            internalTestReadWriteDate(new DateTime(1600, 01, 01, 23, 00, 59, 000));
+            internalTestReadWriteDate(new DateTime(1600, 01, 31, 23, 00, 59, 000));
+            internalTestReadWriteDate(new DateTime(1600, 12, 01, 23, 00, 59, 000));
+            internalTestReadWriteDate(new DateTime(3000, 12, 01, 23, 00, 59, 000));
+        }
+
+	    void internalTestReadWriteDate(DateTime dt)
+        {
+		    internalTestReadDate(dt);
+		    internalTestWriteDate(dt);
+	    }
+
+	    void internalTestReadDate(DateTime dt) 
+        {
+		    RemotePrimitiveTypes remote = client.RemotePrimitiveTypes;
+            DateTime dtR = remote.MakeDate(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+            TestUtils.assertEquals(log, "makeDate", dt, dtR);
+	    }
+
+	    void internalTestWriteDate(DateTime dt) 
+        {
+		    RemotePrimitiveTypes remote = client.RemotePrimitiveTypes;
+		    int[] arr = remote.ParseDate(dt);
+		    TestUtils.assertEquals(log, "parseDate must not return null", true, arr != null);
+		    TestUtils.assertEquals(log, "#arr", 7, arr.Length);
+
+		    int idx=0;
+		    int Year = arr[idx++];
+		    int Month = arr[idx++];
+		    int Day = arr[idx++];
+		    int Hour = arr[idx++];
+		    int Minute = arr[idx++];
+		    int Second = arr[idx++];
+		    int Millisecond = arr[idx++];
+            DateTime dtR = new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond);
+
+            TestUtils.assertEquals(log, "parseDate", dt, dtR);
+	    }
+
+     }
 
 }

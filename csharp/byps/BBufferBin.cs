@@ -220,54 +220,42 @@ namespace byps
 
         public DateTime getDate()
         {
-            DateTime date = new DateTime(1, 1, 1); // invalid, Gregorian calendar starts at 1582
-            int _year = getInt();
-            if (_year != 0)
-            {
-                short _mmdd = getShort();
-                short _hhmm = getShort();
-                short _ssuu = getShort();
+            short _year = getShort();
+            short _mmdd = getShort();
+            short _hhmm = getShort();
+            short _ssuu = getShort();
 
-                int year = _year > 0 ? (_year - 1) : _year;
-                int month = (_mmdd >> 8) & 0xFF;
-                int day = _mmdd & 0xFF;
-                int hour = (_hhmm >> 8) & 0xFF;
-                int minute = _hhmm & 0xFF;
-                int second = ((int)_ssuu >> 10) & 0x3F;
-                int millis = _ssuu & 0x3FF;
+            int year = _year;
+            int month = (_mmdd >> 8) & 0xFF;
+            int day = _mmdd & 0xFF;
+            int hour = (_hhmm >> 8) & 0xFF;
+            int minute = _hhmm & 0xFF;
+            int second = ((int)_ssuu >> 10) & 0x3F;
+            int millis = _ssuu & 0x3FF;
 
-                date = new DateTime(year, month, day, hour, minute, second, millis);
-            }
+            DateTime date = new DateTime(year, month, day, hour, minute, second, millis);
             return date;
         }
 
         public void putDate(DateTime v)
         {
-            if (v.Year >= 1600)
-            {
-                int year = v.Year;
-                int month = v.Month;
-                int day = v.Day;
-                int hour = v.Hour;
-                int minute = v.Minute;
-                int second = v.Second;
-                int millis = v.Millisecond;
+            int year = v.Year;
+            int month = v.Month;
+            int day = v.Day;
+            int hour = v.Hour;
+            int minute = v.Minute;
+            int second = v.Second;
+            int millis = v.Millisecond;
 
-                int _year = year >= 0 ? (year + 1) : year;
-                short _mmdd = (short)((month << 8) | day);
-                short _hhmm = (short)((hour << 8) | minute);
-                short _ssuu = (short)((second << 10) | millis);
+            short _year = (short)year;
+            short _mmdd = (short)((month << 8) | day);
+            short _hhmm = (short)((hour << 8) | minute);
+            short _ssuu = (short)((second << 10) | millis);
 
-                putInt(_year);
-                putShort(_mmdd);
-                putShort(_hhmm);
-                putShort(_ssuu);
-            }
-            else
-            {
-                putInt(0);
-            }
-
+            putShort(_year);
+            putShort(_mmdd);
+            putShort(_hhmm);
+            putShort(_ssuu);
         }
 
         public void getArrayByte(byte[] arr)

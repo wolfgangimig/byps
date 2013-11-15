@@ -85,6 +85,7 @@ public:
 		obj->double1 = toSet(1.1,1.2,1.3,1.4);
 		obj->float1 = toSet(11.1f, 22.2f, 33.3f, 44.4f);
 		obj->string1 = toSet(string1, string2, string3, string4);
+		obj->date1 = toSet(BDateTime(2012, 02, 29, 00, 00, 00, 000), BDateTime(), BDateTime(2008, 02, 29, 01, 02, 03, 001), BDateTime());
 		obj->primitiveTypes1 = toSet(
 			TestUtils::createObjectPrimitiveTypes(),
 			TestUtils::createObjectPrimitiveTypes(),
@@ -110,11 +111,12 @@ public:
 		assertSet(L"int1", obj->int1, remote->getInt1());
 		remote->setLong1(obj->long1);
 		assertSet(L"long1", obj->long1, remote->getLong1());
-
 		remote->setShort1(obj->short1);
 		assertSet(L"short1", obj->short1, remote->getShort1());
 		remote->setString1(obj->string1);
 		assertSet(L"string1", obj->string1, remote->getString1());
+		remote->setDate1(obj->date1);
+		assertSet(L"date1", obj->date1, remote->getDate1());
 
 		{
 			remote->setPrimitiveTypes1(obj->primitiveTypes1);

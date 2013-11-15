@@ -44,6 +44,7 @@ namespace bypstest
 		    obj.PrimitiveTypes1 = new List<PrimitiveTypes>(new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() });
 		    obj.Short1 = new List<short>(new short[] {(short)1});
 		    obj.String1 = new List<String>(new String[] {"a", "b", "c"});
+            obj.Date1 = new List<DateTime>(new DateTime[] { new DateTime(), new DateTime(1999, 11, 22, 23, 33, 33, 333) });
 		    obj.Obj1 = new List<Object>();
 		    obj.Obj1.Add(TestUtils.createObjectPrimitiveTypes());
 		
@@ -65,9 +66,11 @@ namespace bypstest
 		    TestUtils.assertEquals(log, "primitiveTypes1", obj.PrimitiveTypes1, remote.GetPrimitiveTypes1());
 		    remote.SetShort1(obj.Short1);
 		    TestUtils.assertEquals(log, "short1", obj.Short1, remote.GetShort1());
-		    remote.SetString1(obj.String1);
-		    TestUtils.assertEquals(log, "string1", obj.String1, remote.GetString1());
-		    remote.SetObj1(obj.Obj1);
+            remote.SetString1(obj.String1);
+            TestUtils.assertEquals(log, "string1", obj.String1, remote.GetString1());
+            remote.SetDate1(obj.Date1);
+            TestUtils.assertEquals(log, "date1", obj.Date1, remote.GetDate1());
+            remote.SetObj1(obj.Obj1);
 		    TestUtils.assertEquals(log, "obj1", obj.Obj1, remote.GetObj1());
 		
 		    log.info(")testRemoteListTypes");

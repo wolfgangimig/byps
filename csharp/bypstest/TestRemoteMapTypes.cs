@@ -44,6 +44,7 @@ namespace bypstest
 		    obj.Long1 = new MyMap<short, long>().add((short)99, 33L).add((short)-99, -33L);
 		    obj.PrimitiveTypes1 = new MyMap<int, PrimitiveTypes>().add(1, TestUtils.createObjectPrimitiveTypes()).add(2, TestUtils.createObjectPrimitiveTypes());
 		    obj.Short1 = new MyMap<long, short>().add(-55L, (short)1234).add(0x5555555555555555L, (short)5555);
+            obj.Date1 = new MyMap<string, DateTime>().add("A", new DateTime(1600, 1, 2, 3, 4, 5, 6));
 		    obj.String1 = new MyMap<String, String>().add("A", "a").add("B","b");
 
 		    remote.SetBoolean1(obj.Boolean1);
@@ -66,6 +67,8 @@ namespace bypstest
 		    TestUtils.assertEquals(log, "short1", obj.Short1, remote.GetShort1());
 		    remote.SetString1(obj.String1);
 		    TestUtils.assertEquals(log, "string1", obj.String1, remote.GetString1());
+            remote.SetDate1(obj.Date1);
+            TestUtils.assertEquals(log, "date1", obj.Date1, remote.GetDate1());
 		
 		    log.info(")testRemoteMapTypes");
 	    }

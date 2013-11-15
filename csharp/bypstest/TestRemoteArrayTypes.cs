@@ -98,6 +98,7 @@ namespace bypstest
 		    float[] float1 = new float[] {1.2f, 2.2f, 3.2f};
 		    double[] double1 = new double[] {1e1, 1e2, 1e3};
 		    String[] string1 = new String[] {"ôôôô"};
+            DateTime[] date1 = new DateTime[] { new DateTime(2012, 2, 29, 1, 2, 3, 4), new DateTime() };
 		    PrimitiveTypes[] primitiveTypes1 = new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() };
 		    Object[] object1 = new ArrayTypes1dim[] { new ArrayTypes1dim() };
 
@@ -117,8 +118,10 @@ namespace bypstest
 		    TestUtils.assertEquals(log,  "float", float1, remote.GetFloat());
 		    remote.SetDouble(double1);
 		    TestUtils.assertEquals(log,  "double", double1, remote.GetDouble());
-		    remote.SetString(string1);
-		    TestUtils.assertEquals(log,  "String", string1, remote.GetString());
+            remote.SetString(string1);
+            TestUtils.assertEquals(log, "String", string1, remote.GetString());
+            remote.SetDate(date1);
+            TestUtils.assertEquals(log, "date", date1, remote.GetDate());
 		
 		    remote.SetObject(object1);
 		    TestUtils.assertEquals(log,  "Object", object1, remote.GetObject());

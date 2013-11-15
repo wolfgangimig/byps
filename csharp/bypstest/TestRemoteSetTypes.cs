@@ -49,6 +49,7 @@ namespace bypstest
 		    obj.PrimitiveTypes1 = new HashSet<PrimitiveTypes>(new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() });
             obj.Short1 = new HashSet<short>(new short[] { 1 });
             obj.String1 = new HashSet<String>(new String[] { "a", "b", "c" });
+            obj.Date1 = new HashSet<DateTime>(new DateTime[] { new DateTime(3010, 8, 9, 10, 11, 12, 13) });
 		    obj.Obj1 = new HashSet<Object>(new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() });
 
             for (int i = 0; i < 1; i++)
@@ -63,6 +64,7 @@ namespace bypstest
                 remote.SetPrimitiveTypes1(obj.PrimitiveTypes1);
                 remote.SetShort1(obj.Short1);
                 remote.SetString1(obj.String1);
+                remote.SetDate1(obj.Date1);
                 remote.SetObj1(obj.Obj1);
 
                 objR.Boolean1 = remote.GetBoolean1();
@@ -75,6 +77,7 @@ namespace bypstest
                 objR.PrimitiveTypes1 = remote.GetPrimitiveTypes1();
                 objR.Short1 = remote.GetShort1();
                 objR.String1 = remote.GetString1();
+                objR.Date1 = remote.GetDate1();
                 objR.Obj1 = remote.GetObj1();
             }
 
