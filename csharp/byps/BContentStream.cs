@@ -8,12 +8,28 @@ namespace byps
 {
     public abstract class BContentStream : Stream
     {
+    	public readonly static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
+
+        protected String contentTypeVal;
+        protected long contentLengthVal;
+
+        public BContentStream(String contentType, long contentLength)
+        {
+            this.contentTypeVal = contentType;
+            this.contentLengthVal = contentLength;
+        }
+
+        public BContentStream()
+        {
+            this.contentTypeVal = DEFAULT_CONTENT_TYPE;
+            this.contentLengthVal = -1L;
+        }
 
 	    public virtual String ContentType
         {
             get
             {
-                return null;
+                return contentTypeVal;
             }
 	    }
 
@@ -21,7 +37,7 @@ namespace byps
         {
             get
             {
-                return -1L;
+                return contentLengthVal;
             }
         }
 	

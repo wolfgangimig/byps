@@ -337,7 +337,10 @@ class GenApiClass {
 			}
 			
 			if (constrMembers.size() != 0) {
-				CodePrinter mpr = pr.print("internal ").print(serInfo.name).print("(");
+			  
+			  // Construtor with initializer list
+			  
+				CodePrinter mpr = pr.print("public ").print(serInfo.name).print("(");
 				boolean first = true;
 				for (MemberInfo minfo : constrMembers) {
 					if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
@@ -359,8 +362,31 @@ class GenApiClass {
 				pr.endBlock();
 				
 				pr.print("}");
-				pr.println();
-			}
+        pr.println();
+        pr.println();
+      }
+			
+      // Copy-Construtor 
+			{
+        CodePrinter mpr = pr.print("public ").print(serInfo.name).print("(").print(serInfo.name).print(" rhs)");
+        if (serInfo.baseInfo != null) {
+          mpr.print(" : base(rhs)");
+        }
+        mpr.println();
+        
+        pr.println("{");
+        pr.beginBlock();
+        for (MemberInfo minfo : constrMembers) {
+          if (minfo.type.typeId == BRegistry.TYPEID_VOID) continue;
+          if (minfo.isStatic) continue;
+          String memberName = pctxt.makeDataMemberName(minfo.name);
+          pr.print("this.").print(memberName).print(" = rhs.").print(memberName).println(";");
+        }
+        pr.endBlock();
+        
+        pr.print("}");
+        pr.println();
+			}			
 		}
 		
 		log.debug(")printConstructors");
@@ -390,8 +416,11 @@ class GenApiClass {
 
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, serInfo.pack);
 		String outerResultType = "BAsyncResultSendMethod<" + rtype + ">";
+		
+		String bresultClass = pctxt.renameClassPackage(methodInfo.resultInfo.toString(serInfo.pack));
+		
 		pr.print(outerResultType).print(" __byps__outerResult = new ").print(outerResultType)
-			.print("(__byps__asyncResult, new ").print(methodInfo.resultInfo.toString(serInfo.pack))
+			.print("(__byps__asyncResult, new ").print(bresultClass)
 			.print("());");
 		pr.println();
 		
@@ -446,7 +475,8 @@ class GenApiClass {
         pr.println("public override void setSession(Object __byps__sess) {");
         pr.beginBlock();
         String memberName = pctxt.makeDataMemberName(pinfo.name);
-        pr.print(memberName).print(" = (").print(rinfo.authParamClassName).println(")__byps__sess;");
+        String authClassName = pctxt.renameClassPackage(rinfo.authParamClassName);
+        pr.print(memberName).print(" = (").print(authClassName).println(")__byps__sess;");
         pr.endBlock();
         pr.println("}");
         pr.println();
@@ -632,8 +662,7 @@ class GenApiClass {
 		}
 		else {
 			// has base class?
-			// and base class is not Exception - which does not define a serialVersionUID
-			if (serInfo.baseInfo != null && !serInfo.baseInfo.isBuiltInType()) {
+  		if (serInfo.baseInfo != null) {
 				kw = "new "; 
 			}
 		}
@@ -649,7 +678,7 @@ class GenApiClass {
 		pr.println("using System.Collections.Generic;");
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + serInfo.pack);
+		pr.print("namespace ").println(pctxt.renamePackage(serInfo.pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();
@@ -716,10 +745,8 @@ class GenApiClass {
 		else {
 			if (serInfo.baseInfo != null) {
 				TypeInfo csinfo = pctxt.toCSharp(serInfo.baseInfo);
-				mpr.print(" : ").print(csinfo.toString(serInfo.pack)).print(", BSerializable");
-			}
-			else if (serInfo.name.equals("ValueClass")) {
-			  mpr.print(" : BValueClass");
+				String baseName = csinfo.toString(serInfo.pack);
+				mpr.print(" : ").print(baseName).print(", BSerializable");
 			}
 			else {
 	       mpr.print(" : BSerializable");

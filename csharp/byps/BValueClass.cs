@@ -7,17 +7,29 @@ namespace byps
 {
     public class BValueClass : BSerializable
     {
+        public static readonly long serialVersionUID = 22L;		
+
         protected long changedMembersVal;
 
         protected Object dbHelperVal;
 
-        public long ChangedMembers
+        public BValueClass()
+        {
+        }
+
+        public BValueClass(BValueClass rhs)
+        {
+            changedMembersVal = rhs.changedMembersVal;
+            dbHelperVal = rhs.dbHelperVal;
+        }
+
+        public long changedMembers
         {
             get { return changedMembersVal; }
             set { changedMembersVal = value; }
         }
 
-        public virtual Object DBHelper
+        public virtual Object dbHelper
         {
             get { return dbHelperVal; }
             set { dbHelperVal = value; }

@@ -13,6 +13,7 @@ public class PropertiesCS extends GeneratorProperties {
 	public static final String DEST_DIR_SER = "-gencs.dir-ser";
 	public static final String UPPER_CASE_FIRST_LETTER = "-gencs.upfirst";
   public static final String DOTNET_VERSION = "-gencs.dot-net-version";
+  public static final String RENAME_PACKAGES = "-gencs.rename-packages";
 
 	public PropertiesCS(GeneratorProperties defaultProps) {
 		super(defaultProps);

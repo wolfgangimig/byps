@@ -245,7 +245,7 @@ public class GenSerArray {
 		pr.println("using System.Collections.Generic;");
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + pack);
+    pr.print("namespace ").println(pctxt.renamePackage(pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();

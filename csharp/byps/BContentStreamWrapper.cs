@@ -11,12 +11,18 @@ namespace byps
 
 	    protected Stream innerStream;
 
-        public BContentStreamWrapper() 
-            : this(null)
+        public BContentStreamWrapper()
+            : this(null, DEFAULT_CONTENT_TYPE, -1L)
         {
         }
 
         public BContentStreamWrapper(Stream innerStream)
+            : this(innerStream, DEFAULT_CONTENT_TYPE, -1L)
+        {
+        }
+
+        public BContentStreamWrapper(Stream innerStream, String contentType, long contentLength)
+            : base(contentType, contentLength)
         {
             this.innerStream = innerStream;
         }

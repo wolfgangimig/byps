@@ -227,7 +227,7 @@ public class GenSerStruct {
 		pr.println("using System.Collections.Generic;");
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + pack);
+    pr.print("namespace ").println(pctxt.renamePackage(pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();
@@ -235,7 +235,7 @@ public class GenSerStruct {
 		{ 
 			CodePrinter mpr = pr.print("public class ").print(serializerName).print(" : ");
 			if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
-				mpr.print(baseSerializerName);
+				mpr.print(pctxt.renameClassPackage(baseSerializerName));
 			}
 			else {
 				if (bmodel == BBinaryModel.JSON) {

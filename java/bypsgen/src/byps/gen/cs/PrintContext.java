@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,23 +44,23 @@ public class PrintContext extends PrintContextBase {
 		dirSerBin.mkdirs();
 		dirSer.mkdirs();
 		
-//		String packAlias = props.getOptionalPropertyString(PropertiesCS.RENAME_PACKAGES, "");
-//		if (packAlias.length() != 0) {
-//		  String[] aliasDefs = packAlias.split(";");
-//		  for (int i = 0; i < aliasDefs.length; i++) {
-//		    String[] alias = aliasDefs[i].trim().split("=");
-//		    if (alias.length != 2) {
-//		      throw new GeneratorException("Option " + PropertiesCS.RENAME_PACKAGES + " must be a semicolon separated list of new=old pairs. Error at " + Arrays.toString(alias));
-//		    }
-//		    packageAliasses.put(alias[1].trim(), alias[0].trim());		    
-//		  }
-//		}
+		String packAlias = props.getOptionalPropertyString(PropertiesCS.RENAME_PACKAGES, "");
+		if (packAlias.length() != 0) {
+		  String[] aliasDefs = packAlias.split(";");
+		  for (int i = 0; i < aliasDefs.length; i++) {
+		    String[] alias = aliasDefs[i].trim().split("=");
+		    if (alias.length != 2) {
+		      throw new GeneratorException("Option " + PropertiesCS.RENAME_PACKAGES + " must be a semicolon separated list of new=old pairs. Error at " + Arrays.toString(alias));
+		    }
+		    packageAliasses.put(alias[1].trim(), alias[0].trim());		    
+		  }
+		}
 		
 		logProperties();
 	}
 
 	CodePrinter getPrinterForApiClass(TypeInfo tinfo, String namePrefix, boolean inSerDir) throws IOException {
-		String packDirs = Utils.getPackageAsSubdir(tinfo.pack); 
+		String packDirs = Utils.getPackageAsSubdir(renamePackage(tinfo.pack)); 
 		File file = new File(inSerDir ? dirSer : dirApi, packDirs);
 		file.mkdirs();
 		file = new File(file, namePrefix + tinfo.name + ".cs");
@@ -86,7 +87,7 @@ public class PrintContext extends PrintContextBase {
 	
 	CodePrinter getPrinterForRegistry(BBinaryModel pformat) throws IOException {
 		String tdescClassName = getRegistryClassName(pformat);
-		String packDirs = Utils.getPackageAsSubdir(apiPack); 
+		String packDirs = Utils.getPackageAsSubdir(renamePackage(apiPack)); 
 		File file = new File(dirSerBin, packDirs);
 		file.mkdirs();
 		file = new File(file, tdescClassName + ".cs");
@@ -95,7 +96,7 @@ public class PrintContext extends PrintContextBase {
 
 	CodePrinter getPrinterForApiDescriptor() throws IOException {
 		String tdescClassName = getApiDescriptorClassName();
-		String packDirs = Utils.getPackageAsSubdir(apiPack); 
+		String packDirs = Utils.getPackageAsSubdir(renamePackage(apiPack)); 
 		File file = new File(dirSer, packDirs);
 		file.mkdirs();
 		file = new File(file, tdescClassName + ".cs");
@@ -165,6 +166,7 @@ public class PrintContext extends PrintContextBase {
 		else if (qname.equals("java.util.HashSet")) name = qname = "HashSet";
 		else if (qname.equals("java.util.TreeSet")) name = qname = "HashSet";
 		else if (qname.equals("java.io.InputStream")) { name = "Stream"; qname = "System.IO.Stream"; }
+		else { qname = renameClassPackage(qname); }
 		
 		ArrayList<TypeInfo> args = toCSharp(tinfo.typeArgs);
 		
@@ -413,7 +415,7 @@ public class PrintContext extends PrintContextBase {
 
 	CodePrinter getPrinterForClient() throws IOException {
 		String className = getClientClassName();
-		String packDirs = Utils.getPackageAsSubdir(apiPack); 
+		String packDirs = Utils.getPackageAsSubdir(renamePackage(apiPack)); 
 		File file = new File(dirSer, packDirs);
 		file.mkdirs();
 		file = new File(file, className + ".cs");
@@ -422,7 +424,7 @@ public class PrintContext extends PrintContextBase {
 
 	CodePrinter getPrinterForServer() throws IOException {
 		String className = getServerClassName();
-		String packDirs = Utils.getPackageAsSubdir(apiPack); 
+		String packDirs = Utils.getPackageAsSubdir(renamePackage(apiPack)); 
 		File file = new File(dirSer, packDirs);
 		file.mkdirs();
 		file = new File(file, className + ".cs");
@@ -627,47 +629,58 @@ public class PrintContext extends PrintContextBase {
 		String className = "";
 		if (!rinfo.pack.equals(pack)) className += rinfo.pack + ".";
 		className += PrintContext.STUB_PREFIX + rinfo.name;
-		return className;
+		return renameClassPackage(className);
 	}
 	
 	public String getSkeletonClassQName(RemoteInfo rinfo, String pack) {
 		String className = "";
 		if (!rinfo.pack.equals(pack)) className += rinfo.pack + ".";
 		className += PrintContext.SKELETON_PREFIX + rinfo.name;
-		return className;
+    return renameClassPackage(className);
 	}
 	
-//  public String renamePackage(String classPackage) {
-//    
+  public String getSerializerPackage(TypeInfo tinfo) {
+    return renamePackage(super.getSerializerPackage(tinfo));
+  }
+	
+  public String renamePackage(String classPackage) {
+    
 //    String bestOldPackage = "";
 //    for (String oldPackage : packageAliasses.keySet()) {
 //      int nbOfEqualChars = 0;
-//      for (; nbOfEqualChars < Math.min(oldPackage.length(), classPackage.length()); nbOfEqualChars++) {}
-//      if (nbOfEqualChars > bestOldPackage.length()) {
-//        bestOldPackage = oldPackage;
+//      if (oldPackage.length() <= classPackage.length()) {
+//        for (; nbOfEqualChars < Math.min(oldPackage.length(), classPackage.length()); nbOfEqualChars++) {}
+//        if (nbOfEqualChars > bestOldPackage.length()) {
+//          bestOldPackage = oldPackage;
+//        }
 //      }
 //    }
 //
 //    if (bestOldPackage.length() != 0) {
 //      classPackage = packageAliasses.get(bestOldPackage);
 //    }
-//
-//    return classPackage;
-//  }
-//
-//  public String renameClassPackage(String className) {
-//    
-//    int p = className.lastIndexOf('.');
-//    if (p >= 0) {
-//      String oldPackage = className.substring(0, p);
-//      String newPackage = renamePackage(oldPackage);
-//      if (!oldPackage.equals(newPackage)) {
-//        className = newPackage + className.substring(p);
-//      }
-//    }
-//
-//    return className;
-//  }
+    
+    String oldPackage = packageAliasses.get(classPackage);
+    if (oldPackage != null) {
+      classPackage = oldPackage;
+    }
+
+    return classPackage;
+  }
+
+  public String renameClassPackage(String className) {
+    
+    int p = className.lastIndexOf('.');
+    if (p >= 0) {
+      String oldPackage = className.substring(0, p);
+      String newPackage = renamePackage(oldPackage);
+      if (!oldPackage.equals(newPackage)) {
+        className = newPackage + className.substring(p);
+      }
+    }
+
+    return className;
+  }
 
 	public void printSetChangedMembers(CodePrinter pr, SerialInfo serInfo, MemberInfo minfo) {
 		if (isGenerateChangedMembers()) {

@@ -83,7 +83,7 @@ class GenRemoteClass {
     
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + rinfo.pack);
+    pr.print("namespace ").println(pctxt.renamePackage(rinfo.pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();

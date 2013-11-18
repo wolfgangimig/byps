@@ -24,7 +24,7 @@ namespace byps
         {
 		    BOutputBin bout = ((BOutputBin)bout1);
 		    BValueClass obj = (BValueClass)obj1;
-            bout.bbuf.putLong(obj.ChangedMembers);
+            bout.bbuf.putLong(obj.changedMembers);
 	    }
 
         public override Object read(Object obj1, BInput bin1, long version)
@@ -32,7 +32,7 @@ namespace byps
 		    BInputBin bin = ((BInputBin)bin1);
 		    long v = bin.bbuf.getLong();
             BValueClass obj = (BValueClass)(obj1 != null ? obj1 : bin.onObjectCreated(new BValueClass()));
-            obj.ChangedMembers = v;
+            obj.changedMembers = v;
 		    return obj;
 	    }
 

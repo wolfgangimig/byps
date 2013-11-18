@@ -37,7 +37,7 @@ class GenRemoteStub {
 	private void printMethod(MethodInfo methodInfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printMethod");
 		
-		CodePrinter mpr = pr.print("public ");
+		CodePrinter mpr = pr.print("public virtual ");
 		pctxt.printDeclareMethod(mpr, rinfo, methodInfo).println(" {");
 		
 		pr.beginBlock();
@@ -103,7 +103,7 @@ class GenRemoteStub {
 	
   private void printMethodDelegate(MethodInfo methodInfo) throws IOException {
     
-    CodePrinter mpr = pr.print("public ");
+    CodePrinter mpr = pr.print("public virtual ");
     mpr = pctxt.printDeclareMethodDelegate(mpr, rinfo, methodInfo);
     mpr.println("{");
     pr.beginBlock();
@@ -233,7 +233,7 @@ class GenRemoteStub {
 		
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + rinfo.pack);
+    pr.print("namespace ").println(pctxt.renamePackage(rinfo.pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();

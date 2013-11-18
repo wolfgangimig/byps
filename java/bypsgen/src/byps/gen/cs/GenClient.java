@@ -37,7 +37,7 @@ public class GenClient {
 		pr.println("using System.Collections.Generic;");
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + pack);
+    pr.print("namespace ").println(pctxt.renamePackage(pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();
@@ -162,6 +162,7 @@ public class GenClient {
       RemoteInfo rinfoInterface = rinfo.getRemoteAuth();
       if (rinfoInterface == null) rinfoInterface = rinfo;
       String remoteName = rinfoInterface.toString(pack);
+			remoteName = pctxt.renameClassPackage(remoteName);
 			
 			pr.print("public readonly ").print(remoteName).print(" ").print(varName).println(";");
 		}

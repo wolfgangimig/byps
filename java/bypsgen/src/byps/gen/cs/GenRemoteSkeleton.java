@@ -91,12 +91,12 @@ class GenRemoteSkeleton {
 		boolean isReturnVoid = returnInfo.type.typeId == BRegistry.TYPEID_VOID;
 		
 		String rtype = pctxt.getReturnTypeAsObjType(methodInfo, rinfo.pack);
-    pr.print(rtype).print(" ret = default(").print(rtype).println(");");
+    pr.print(rtype).print(" __byps__ret = default(").print(rtype).println(");");
     
-    pr.println("Exception ex = null;");
+    pr.println("Exception __byps__ex = null;");
     
     if (pctxt.isAwaitSupported()) {
-      pr.println("bool callAsync = false;");
+      pr.println("bool __byps__callAsync = false;");
     }
     
 		pr.println("try {");
@@ -104,7 +104,7 @@ class GenRemoteSkeleton {
 		
 		
     mpr = pr;
-		if (!isReturnVoid) mpr = mpr.print("ret = ");
+		if (!isReturnVoid) mpr = mpr.print("__byps__ret = ");
 		mpr = mpr.print(methodName + "(");
 		
 		mpr = printPassParameters(methodInfo, mpr);
@@ -114,10 +114,10 @@ class GenRemoteSkeleton {
     pr.println("}");
 		
 		if (pctxt.isAwaitSupported()) {
-		  pr.println("catch (NotImplementedException) { callAsync = true; }");
+		  pr.println("catch (NotImplementedException) { __byps__callAsync = true; }");
 		}
 
-		pr.println("catch (Exception e) { ex = e; }");
+		pr.println("catch (Exception e) { __byps__ex = e; }");
 		
 		if (pctxt.isAwaitSupported()) {
 		  pr.println("if (callAsync) try {");
@@ -125,7 +125,7 @@ class GenRemoteSkeleton {
 		  pr.beginBlock();
 		  
 	    mpr = pr;
-	    if (!isReturnVoid) mpr = mpr.print("ret = ");
+	    if (!isReturnVoid) mpr = mpr.print("__byps__ret = ");
 	    mpr = mpr.print("await ").print(methodName).print("Async(");
 	    
 	    mpr = printPassParameters(methodInfo, mpr);
@@ -134,13 +134,13 @@ class GenRemoteSkeleton {
 	    pr.endBlock();
 	    
 	    pr.println("}");
-	    pr.println("catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, \"\"); }");
+	    pr.println("catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, \"\"); }");
 
-	    pr.println("catch (Exception e) { ex = e; }");
+	    pr.println("catch (Exception e) { __byps__ex = e; }");
 	    
 		}
 		
-    pr.println("asyncResult(ret, ex);");
+    pr.println("asyncResult(__byps__ret, __byps__ex);");
 
 		pr.endBlock();
 		
@@ -197,7 +197,7 @@ class GenRemoteSkeleton {
 
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + rinfo.pack);
+    pr.print("namespace ").println(pctxt.renamePackage(rinfo.pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();

@@ -37,7 +37,7 @@ public class GenApiDescriptor {
 		pr.println("using System.Collections.Generic;");
 		pr.println("using byps;");
 		pr.println();
-		pr.println("namespace " + pack);
+		pr.println("namespace " + pctxt.renamePackage(pack));
 		pr.println("{");
 		pr.beginBlock();
 		pr.println();
