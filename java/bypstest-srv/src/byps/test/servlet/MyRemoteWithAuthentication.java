@@ -44,7 +44,7 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
       // Extend the session lifetime. 
       // The inactive interval is initialized with a short value in the negotiate request.
       // On successful authentication, the interval has to be extended.
-      mySession.setSessionAuthenticated(HSession.DEFAULT_INACTIVE_SECONDS);
+      mySession.setSessionAuthenticated();
       
       state = EState.AUTHENTICATED;
       sess = new SessionInfo();

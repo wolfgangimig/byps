@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -26,6 +27,7 @@ import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
+import byps.gen.doclet.BConvert;
 
 public class ClassDB {
 
@@ -549,6 +551,7 @@ public class ClassDB {
     boolean ret = true;
 
     if (!validateSerials()) ret = false;
+    if (!validateRemotes()) ret = false;
 
     if (!ret) {
       throw new BException(BExceptionC.GENERATOR_EXCEPTION, "Validate classDB failed. See error(s) printed before.");
@@ -563,6 +566,67 @@ public class ClassDB {
     return ret;
   }
   
+  private boolean validateRemotes() throws BException {
+    boolean ret = true;
+    for (RemoteInfo rinfo : remotes.values()) {
+      if (!validate(rinfo)) ret = false;
+    }
+    return ret;
+  }
+  
+  private boolean validate(RemoteInfo rinfo) throws BException {
+    
+    // Client side interfaces cannot pass a session parameter.
+    // This would be a security risk, because session object 
+    // of the caller were transfered to the receiver.
+    if (rinfo.isClientRemote && rinfo.getRemoteAuth() != null) {
+      log.error("An interface cannot be tagged with both, " + BConvert.TAG_CLIENT_REMOTE + " and " + BConvert.TAG_SESSION_PARAM_TYPE + ", " + rinfo);
+      return false;
+    }
+    
+    // If an interface is derived from an interface which 
+    // uses authentication, it must also be tagged with TAG_SESSION_PARAM_TYPE
+    // even if it does not use the session parameter in its methods.
+    HashSet<String> baseRemotes = new HashSet<String>();
+    String baseRemoteWithAuth = getBaseRemoteUsingAuth(rinfo, baseRemotes);
+    if (baseRemoteWithAuth != null) {
+      if (rinfo.getRemoteAuth() == null) {
+        log.error("Interface " + rinfo + " must also be tagged with " + BConvert.TAG_SESSION_PARAM_TYPE +" because the base interface " + baseRemoteWithAuth + " is tagged.");
+      }
+      else {
+        String baseAuthParamClassName = getRemoteInfo(baseRemoteWithAuth).authParamClassName;
+        if (!baseAuthParamClassName.equals(rinfo.authParamClassName)) {
+          log.error("Interface " + rinfo + " must use the same class for " + BConvert.TAG_SESSION_PARAM_TYPE +" as interface " + baseRemoteWithAuth + ".");
+        }
+      }
+    }
+    
+    return true;
+  }
+  
+  private String getBaseRemoteUsingAuth(RemoteInfo rinfo, HashSet<String> baseRemotes) {
+    String ret = null;
+    for (String baseQName : rinfo.baseQNames) {
+      RemoteInfo baseInfo = this.getRemoteInfo(baseQName);
+      if (baseInfo == null) {
+        log.error("Internal: base interface of " + rinfo + " not found.");
+        break;
+      }
+      
+      if (baseInfo.getRemoteAuth() != null) {
+        ret = baseQName;
+        break;
+      }
+      
+      if (!baseRemotes.contains(baseInfo.qname)) {
+        baseRemotes.add(baseInfo.qname);
+        ret = getBaseRemoteUsingAuth(baseInfo, baseRemotes);
+        if (ret != null) break;
+      }
+    }
+    return ret;
+  }
+
   private void checkCLScompliant(String name, String errorContext) {
     // Names starting with underscore cause a warning "... not CLS-compliant..." in .NET
 //    if (name.startsWith("_")) {

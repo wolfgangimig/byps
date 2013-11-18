@@ -32,21 +32,6 @@ namespace byps.test.api
 		{
 		}
 		
-		public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) {
-			addRemote(363642571, remoteSkeleton);
-			return this;
-		}
-		
-		public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) {
-			addRemote(474058508, remoteSkeleton);
-			return this;
-		}
-		
-		public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) {
-			addRemote(1983670399, remoteSkeleton);
-			return this;
-		}
-		
 		public BServer_Testser addRemote(byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) {
 			addRemote(2049072174, remoteSkeleton);
 			return this;

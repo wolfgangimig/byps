@@ -21,7 +21,6 @@ BINLINE BTransport::BTransport(const BTransport &rhs, const BTargetId &targetId)
 	, apiDesc(rhs.apiDesc)
 	, protocol(rhs.protocol)
 	, targetId(targetId)
-	, authentication(rhs.authentication)
 {
 }
 

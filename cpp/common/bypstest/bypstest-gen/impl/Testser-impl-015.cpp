@@ -963,65 +963,86 @@ void BSerializer_1043578866(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 
 namespace byps { namespace test { namespace api { namespace remote { 
 
-void BSkeleton_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+BStub_RemoteWithAuthentication::BStub_RemoteWithAuthentication(PTransport transport) 
+	: BStub(transport) {}
+
+void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
+	BSyncResultT< bool > syncResult;	
+	setUseAuthentication(useAuth, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
 }
-void BSkeleton_RemoteWithAuthentication::setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setUseAuthentication(useAuth);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_setUseAuthentication(useAuth));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
-byps::test::api::auth::PSessionInfo BSkeleton_RemoteWithAuthentication::login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+byps::test::api::auth::PSessionInfo BStub_RemoteWithAuthentication::login(const ::std::wstring& userName, const ::std::wstring& userPwd)  {
+	BSyncResultT< byps::test::api::auth::PSessionInfo > syncResult;	
+	login(userName, userPwd, [&syncResult](byps::test::api::auth::PSessionInfo v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
 }
-void BSkeleton_RemoteWithAuthentication::login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
-	byps::test::api::auth::PSessionInfo ret = byps::test::api::auth::PSessionInfo();
-	try {
-		ret = login(sess, userName, userPwd);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_RemoteWithAuthentication::login(const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_login(userName, userPwd));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::auth::PSessionInfo, byps::test::api::BResult_65775978 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
-int32_t BSkeleton_RemoteWithAuthentication::doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+int32_t BStub_RemoteWithAuthentication::doit(int32_t value)  {
+	BSyncResultT< int32_t > syncResult;	
+	doit(value, [&syncResult](int32_t v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
 }
-void BSkeleton_RemoteWithAuthentication::doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  {
-	int32_t ret = int32_t();
-	try {
-		ret = doit(sess, value);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_RemoteWithAuthentication::doit(int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_doit(value));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
-void BSkeleton_RemoteWithAuthentication::expire(const byps::test::api::auth::PSessionInfo& sess)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+void BStub_RemoteWithAuthentication::expire()  {
+	BSyncResultT< bool > syncResult;	
+	expire([&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
 }
-void BSkeleton_RemoteWithAuthentication::expire(const byps::test::api::auth::PSessionInfo& sess, ::std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		expire(sess);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_RemoteWithAuthentication::expire(::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_expire());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
-void BSkeleton_RemoteWithAuthentication::setReloginCount(int32_t count)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+void BStub_RemoteWithAuthentication::setReloginCount(int32_t count)  {
+	BSyncResultT< bool > syncResult;	
+	setReloginCount(count, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
 }
-void BSkeleton_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = false;
-	try {
-		setReloginCount(count);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_setReloginCount(count));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
+// checkpoint byps.gen.cpp.GenRemoteStub:225
+namespace byps { namespace test { namespace api { 
+void BSerializer_1983670399(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new byps::test::api::remote::BStub_RemoteWithAuthentication(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}

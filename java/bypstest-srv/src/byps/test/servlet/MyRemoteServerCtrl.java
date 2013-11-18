@@ -1,6 +1,6 @@
 package byps.test.servlet;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
@@ -34,7 +34,7 @@ public class MyRemoteServerCtrl extends BSkeleton_RemoteServerCtrl {
 			
 			if (forwardToOtherServers) {
 			
-				final ArrayList<BClient> clients = serverRegistry.getForwardClientsToOtherServers();
+				final Collection<BClient> clients = serverRegistry.getForwardClientsToOtherServers();
 				
 				BAsyncResult<Object> outerResult = new BAsyncResult<Object>() {
 					CountDownLatch cdl = new CountDownLatch(clients.size());

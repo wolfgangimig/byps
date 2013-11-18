@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import byps.gen.api.GeneratorException;
 import byps.gen.api.RemoteInfo;
-import byps.gen.utils.CodePrinter;
+import byps.gen.doclet.BConvert;
 
 public class GenRemoteClassAuth extends GenRemoteClass {
 
@@ -28,9 +28,6 @@ public class GenRemoteClassAuth extends GenRemoteClass {
   @Override
   protected RemoteInfo getBaseRemoteInfo(RemoteInfo rinfoBase) throws GeneratorException {
     RemoteInfo rinfoAuth = rinfoBase.getRemoteAuth();
-    if (rinfoAuth == null) {
-      throw new GeneratorException("Interface " + rinfoBase.qname + " must also be tagged with @BSessionParamType because the derived interface " + rinfo.qname + " is tagged.");
-    }
     return rinfoAuth;
   }
 

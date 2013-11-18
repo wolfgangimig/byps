@@ -47,24 +47,6 @@ namespace byps.test.api
 			EvolveIF = new byps.test.api.ver.BStub_EvolveIF(transport);
 		}
 		
-		public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) {
-			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-			serverR.server.addRemote(363642571, remoteSkeleton);
-			return this;
-		}
-		
-		public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) {
-			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-			serverR.server.addRemote(474058508, remoteSkeleton);
-			return this;
-		}
-		
-		public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) {
-			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-			serverR.server.addRemote(1983670399, remoteSkeleton);
-			return this;
-		}
-		
 		public BClient_Testser addRemote(byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) {
 			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 			serverR.server.addRemote(2049072174, remoteSkeleton);

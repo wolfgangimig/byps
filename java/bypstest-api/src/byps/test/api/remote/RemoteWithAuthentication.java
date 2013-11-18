@@ -7,7 +7,6 @@ import byps.test.api.auth.SessionInfo;
 /**
  * This interface is an example for using the authentication mechanism.
  * @BSessionParamType byps.test.api.auth.SessionInfo
- * @BClientRemote
  */
 public interface RemoteWithAuthentication extends BRemote {
 

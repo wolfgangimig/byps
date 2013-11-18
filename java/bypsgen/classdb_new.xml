@@ -9766,7 +9766,7 @@
             <typeName>byps.test.api.inherit.BioFruitService</typeName>
             <typeId>363642571</typeId>
             <authParamClassName>com.wilutions.byps.test.api.auth.SessionInfo</authParamClassName>
-            <isClientRemote>true</isClientRemote>
+            <isClientRemote>false</isClientRemote>
             <methods>
                 <method>
                     <name>certify</name>
@@ -9779,16 +9779,8 @@
             </methods>
             <comments>
                 <comment>
-                    <kind>@BClientRemote</kind>
-                    <text></text>
-                </comment>
-                <comment>
                     <kind>@BSessionParamType</kind>
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
-                </comment>
-                <comment>
-                    <kind>@BClientRemote</kind>
-                    <text></text>
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
@@ -9801,7 +9793,7 @@
             <typeName>byps.test.api.inherit.BioLemonService</typeName>
             <typeId>474058508</typeId>
             <authParamClassName>com.wilutions.byps.test.api.auth.SessionInfo</authParamClassName>
-            <isClientRemote>true</isClientRemote>
+            <isClientRemote>false</isClientRemote>
             <methods>
                 <method>
                     <name>useParing</name>
@@ -9814,16 +9806,8 @@
             </methods>
             <comments>
                 <comment>
-                    <kind>@BClientRemote</kind>
-                    <text></text>
-                </comment>
-                <comment>
                     <kind>@BSessionParamType</kind>
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
-                </comment>
-                <comment>
-                    <kind>@BClientRemote</kind>
-                    <text></text>
                 </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
@@ -11620,7 +11604,7 @@
             <typeName>byps.test.api.remote.RemoteWithAuthentication</typeName>
             <typeId>1983670399</typeId>
             <authParamClassName>byps.test.api.auth.SessionInfo</authParamClassName>
-            <isClientRemote>true</isClientRemote>
+            <isClientRemote>false</isClientRemote>
             <methods>
                 <method>
                     <name>setUseAuthentication</name>
@@ -11766,16 +11750,8 @@
                     <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
                 <comment>
-                    <kind>@BClientRemote</kind>
-                    <text></text>
-                </comment>
-                <comment>
                     <kind>@BSessionParamType</kind>
                     <text>byps.test.api.auth.SessionInfo</text>
-                </comment>
-                <comment>
-                    <kind>@BClientRemote</kind>
-                    <text></text>
                 </comment>
             </comments>
         </remote>

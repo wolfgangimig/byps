@@ -52,7 +52,7 @@ public class BConvert {
    * over a BAuthentication implementation in the BClient object. 
    * 
    */
-  private static final String TAG_SESSION_PARAM_TYPE = "@BSessionParamType";
+  public static final String TAG_SESSION_PARAM_TYPE = "@BSessionParamType";
 	
   /**
    * Remote interface for the client side.
@@ -60,7 +60,7 @@ public class BConvert {
    * If the tag is not set, e.g. JavaScript serialization code will not 
    * contain a BSkeleton class for this interface. 
    */
-  private static final String TAG_CLIENT_REMOTE = "@BClientRemote";
+  public static final String TAG_CLIENT_REMOTE = "@BClientRemote";
   
 	/**
 	 * Option: all classes should be serialized.

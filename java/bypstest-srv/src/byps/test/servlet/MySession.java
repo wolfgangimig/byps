@@ -42,7 +42,7 @@ public class MySession extends HSession {
 		
 		if (log.isDebugEnabled()) log.debug("useAuthentication=" + useAuthentication);
 		if (!useAuthentication) {
-		  setSessionAuthenticated(HSession.DEFAULT_INACTIVE_SECONDS);
+		  setSessionAuthenticated();
 		}
 		
 		// Define an API descriptor with an application version from static member appVersion.

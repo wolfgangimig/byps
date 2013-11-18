@@ -2096,35 +2096,6 @@ class BioFruitServiceAuth : public virtual BRemote,
 
 }}}}
 //-------------------------------------------------
-// Skeleton class BSkeleton_BioFruitService
-// Your interface implementation class has to be derived from this skeleton.
-// Either provide an asynchronous or a synchronous function in your subclass.
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-using namespace ::byps;
-
-class BSkeleton_BioFruitService;
-typedef byps_ptr<BSkeleton_BioFruitService> PSkeleton_BioFruitService;
-
-class BSkeleton_BioFruitService : public BSkeleton, public virtual BioFruitService {
-	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 363642571; }
-	
-	public: virtual bool certify(const ::std::wstring& param) ;
-	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	public: virtual ::std::wstring grow() ;
-	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual ::std::wstring squeeze() ;
-	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	
-};
-}}}}
-
-//-------------------------------------------------
 // Stub class BStub_BioFruitService
 
 namespace byps { namespace test { namespace api { namespace inherit { 
@@ -2256,41 +2227,6 @@ class BioLemonServiceAuth : public virtual BRemote,
 };
 
 }}}}
-//-------------------------------------------------
-// Skeleton class BSkeleton_BioLemonService
-// Your interface implementation class has to be derived from this skeleton.
-// Either provide an asynchronous or a synchronous function in your subclass.
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-using namespace ::byps;
-
-class BSkeleton_BioLemonService;
-typedef byps_ptr<BSkeleton_BioLemonService> PSkeleton_BioLemonService;
-
-class BSkeleton_BioLemonService : public BSkeleton, public virtual BioLemonService {
-	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 474058508; }
-	
-	public: virtual bool certify(const ::std::wstring& param) ;
-	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	public: virtual ::std::wstring grow() ;
-	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual ::std::wstring squeeze() ;
-	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
-	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	
-	public: virtual int32_t useParing() ;
-	public: virtual void useParing(::std::function< void (int32_t, BException ex) > asyncResult) ;
-	
-	
-};
-}}}}
-
 //-------------------------------------------------
 // Stub class BStub_BioLemonService
 
@@ -4072,41 +4008,6 @@ class RemoteWithAuthenticationAuth : public virtual BRemote {
 
 }}}}
 //-------------------------------------------------
-// Skeleton class BSkeleton_RemoteWithAuthentication
-// Your interface implementation class has to be derived from this skeleton.
-// Either provide an asynchronous or a synchronous function in your subclass.
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-using namespace ::byps;
-
-class BSkeleton_RemoteWithAuthentication;
-typedef byps_ptr<BSkeleton_RemoteWithAuthentication> PSkeleton_RemoteWithAuthentication;
-
-class BSkeleton_RemoteWithAuthentication : public BSkeleton, public virtual RemoteWithAuthentication {
-	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1983670399; }
-	
-	public: virtual void setUseAuthentication(bool useAuth) ;
-	public: virtual void setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	public: virtual byps::test::api::auth::PSessionInfo login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd) ;
-	public: virtual void login(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult) ;
-	
-	public: virtual int32_t doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value) ;
-	public: virtual void doit(const byps::test::api::auth::PSessionInfo& sess, int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult) ;
-	
-	public: virtual void expire(const byps::test::api::auth::PSessionInfo& sess) ;
-	public: virtual void expire(const byps::test::api::auth::PSessionInfo& sess, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	public: virtual void setReloginCount(int32_t count) ;
-	public: virtual void setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	
-};
-}}}}
-
-//-------------------------------------------------
 // Stub class BStub_RemoteWithAuthentication
 
 namespace byps { namespace test { namespace api { namespace remote { 
@@ -4421,12 +4322,6 @@ class BClient_Testser : public BClient {
 	
 	public: static PClient_Testser createClientR(PTransport transport);
 	
-	public: void addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton);
-	
-	public: void addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton);
-	
-	public: void addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
-	
 	public: void addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
 	
 	protected: BClient_Testser(PTransportFactory transportFactory); 
@@ -4476,12 +4371,6 @@ class BServer_Testser : public BServer {
 	public: static PServer_Testser createServer(PTransportFactory transportFactory);
 	
 	public: static PServer_Testser createServerR(PTransport transport);
-	
-	public: void addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton);
-	
-	public: void addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton);
-	
-	public: void addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton);
 	
 	public: void addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton);
 	

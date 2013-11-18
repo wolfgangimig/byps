@@ -179,6 +179,11 @@ public class TestUtils {
 		internalAssertEquals(log, msg, a, b, new HashSet<Object>());
 	}
 	
+  public static void assertEqualDates(Log log, String msg, Date a, Date b) {
+    if (a == null) a = new Date(0);
+    internalAssertEquals(log, msg, a, b, new HashSet<Object>());
+  }
+
 	public static void assertTrue(Log log, String msg, boolean val) {
 		if (!val) {
 			log.error(msg);
@@ -196,6 +201,12 @@ public class TestUtils {
 		if (a != null) {
 			if (alreadyCheckedObjs.contains(a)) return;
 			alreadyCheckedObjs.add(a);
+		}
+		
+		if (b instanceof Date) {
+		  if (a == null) {
+		    a = new Date(0);
+		  }
 		}
 		
 		try {
@@ -397,6 +408,9 @@ public class TestUtils {
 							clazz == Date.class ||
 							clazz == String.class) {
 							Assert.assertEquals(msg, a, b);
+						}
+						else if (clazz == Date.class){
+						  assertEqualDates(log, msg, (Date)a, (Date)b);
 						}
 						else if (clazz == PrimitiveTypes.class) {
 							if (!compare((PrimitiveTypes)a, (PrimitiveTypes)b)) {
@@ -676,6 +690,7 @@ public class TestUtils {
 		pt.y = (short)(x*x);
 		return pt;
 	}
+
 }
 
 

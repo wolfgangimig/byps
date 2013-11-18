@@ -24,21 +24,6 @@ PClient_Testser BClient_Testser::createClient(PTransportFactory transportFactory
 PClient_Testser BClient_Testser::createClientR(PTransport transport) {
 	return PClient_Testser(new BClient_Testser(transport));
 }
-void BClient_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
-	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
-	serverR->server->addRemote(363642571, remoteSkeleton);
-}
-
-void BClient_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
-	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
-	serverR->server->addRemote(474058508, remoteSkeleton);
-}
-
-void BClient_Testser::addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
-	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
-	serverR->server->addRemote(1983670399, remoteSkeleton);
-}
-
 void BClient_Testser::addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(2049072174, remoteSkeleton);
@@ -136,18 +121,6 @@ PServer_Testser BServer_Testser::createServer(PTransportFactory transportFactory
 PServer_Testser BServer_Testser::createServerR(PTransport transport) {
 	return PServer_Testser(new BServer_Testser(transport));
 }
-void BServer_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioFruitService remoteSkeleton) {
-	BServer::addRemote(363642571, remoteSkeleton);
-}
-
-void BServer_Testser::addRemote(byps::test::api::inherit::PSkeleton_BioLemonService remoteSkeleton) {
-	BServer::addRemote(474058508, remoteSkeleton);
-}
-
-void BServer_Testser::addRemote(byps::test::api::remote::PSkeleton_RemoteWithAuthentication remoteSkeleton) {
-	BServer::addRemote(1983670399, remoteSkeleton);
-}
-
 void BServer_Testser::addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
 	BServer::addRemote(2049072174, remoteSkeleton);
 }

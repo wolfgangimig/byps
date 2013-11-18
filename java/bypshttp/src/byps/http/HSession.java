@@ -3,6 +3,7 @@ package byps.http;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Collection;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +18,24 @@ import byps.BServer;
 import byps.BServerRegistry;
 import byps.BTargetId;
 import byps.BTransportFactory;
+import byps.RemoteException;
 
-public abstract class HSession {
+/**
+ * This class represents a session.
+ * Objects of this class are added to the application server session under the key
+ * {@link HConstants#HTTP_SESSION_ATTRIBUTE_NAME}
+ * 
+ * A HSession object is already created for negotiation, but it keeps alive only
+ * for a short time {@link HConstants#MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED} 
+ * if the negotiate request does not contain a remote user attribute. If your session class
+ * does not make use of authentication, call {@link #setSessionAuthenticated()} in the constructor.
+ * Otherwise, call setSessionAuthenticated somewhere in your implementation.
+ *
+ */
+public abstract class HSession 
+//implements Serializable, don't know how to serialize this class. Don't know how to resolve the dependencies to other objects.
+{
 
-  public final static int DEFAULT_INACTIVE_SECONDS = -1;
-  
   protected HttpSession httpSess;
   protected final BServerRegistry serverRegistry;
   protected final HWriteResponseHelper writeHelper;
@@ -112,6 +126,10 @@ public abstract class HSession {
     wireServer.cleanup();
     wireClientR.cleanup();
   }
+  
+  public Collection<BClient> getForwardClientsToOtherServers() throws RemoteException {
+    return serverRegistry.getForwardClientsToOtherServers();
+  }
 
   public void setTargetId(BTargetId v) {
     getServer().setTargetId(v);
@@ -132,12 +150,10 @@ public abstract class HSession {
   /**
    * Set session authenticated.
    * Extend the inactive interval of the session to the default value.
-   * @param inactiveSeconds Number of inactive seconds until the session is invalidated by the server.
    */
-  public void setSessionAuthenticated(int inactiveSeconds) {
+  public void setSessionAuthenticated() {
     if (httpSess != null) {
-      if (inactiveSeconds == DEFAULT_INACTIVE_SECONDS) inactiveSeconds = defaultInactiveSeconds;
-      httpSess.setMaxInactiveInterval(inactiveSeconds);
+      httpSess.setMaxInactiveInterval(defaultInactiveSeconds);
     }
   }
   
@@ -145,6 +161,14 @@ public abstract class HSession {
     return getServer().clientR;
   }
 
+//  private void writeObject(java.io.ObjectOutputStream out)
+//      throws IOException {
+//    
+//  }
+//  private void readObject(java.io.ObjectInputStream in)
+//      throws IOException, ClassNotFoundException  {
+//  }
+  
   private final Log log = LogFactory.getLog(HSession.class);
 
 }

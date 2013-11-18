@@ -34,8 +34,6 @@ namespace byps
             this.wire = rhs.wire;
             this.targetId = targetId;
             this.protocol = rhs.getProtocol();
-            this.authentication = rhs.authentication;
-            this.remoteRegistry = rhs.remoteRegistry;
         }
 
         public void setProtocol(BProtocol protocol) {

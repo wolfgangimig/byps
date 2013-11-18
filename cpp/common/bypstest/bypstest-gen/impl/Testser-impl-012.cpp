@@ -1464,41 +1464,62 @@ void BSerializer_715959905(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 
 namespace byps { namespace test { namespace api { namespace inherit { 
 
-bool BSkeleton_BioFruitService::certify(const ::std::wstring& param)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+BStub_BioFruitService::BStub_BioFruitService(PTransport transport) 
+	: BStub(transport) {}
+
+::std::wstring BStub_BioFruitService::grow()  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	grow([&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
 }
-void BSkeleton_BioFruitService::certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult)  {
-	bool ret = bool();
-	try {
-		ret = certify(param);
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_BioFruitService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_PlantService_grow());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
-::std::wstring BSkeleton_BioFruitService::grow()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+bool BStub_BioFruitService::certify(const ::std::wstring& param)  {
+	BSyncResultT< bool > syncResult;	
+	certify(param, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
 }
-void BSkeleton_BioFruitService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	::std::wstring ret = ::std::wstring();
-	try {
-		ret = grow();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_BioFruitService::certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_BioFruitService_certify(param));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_1 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
-::std::wstring BSkeleton_BioFruitService::squeeze()  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+::std::wstring BStub_BioFruitService::squeeze()  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	squeeze([&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
 }
-void BSkeleton_BioFruitService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	::std::wstring ret = ::std::wstring();
-	try {
-		ret = squeeze();
-		asyncResult(ret, BException());
-	} catch (const std::exception& ex) {
-		asyncResult(ret, ex);
-	}
+void BStub_BioFruitService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_FruitService_squeeze());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
 }
 }}}}
 
+// checkpoint byps.gen.cpp.GenRemoteStub:225
+namespace byps { namespace test { namespace api { 
+void BSerializer_363642571(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new byps::test::api::inherit::BStub_BioFruitService(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}

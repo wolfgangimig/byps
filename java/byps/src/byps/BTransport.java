@@ -35,10 +35,15 @@ public class BTransport {
   public BTransport(BTransport rhs, BTargetId targetId) {
     this.apiDesc = rhs.apiDesc;
     this.wire = rhs.wire;
-    this.authentication = rhs.authentication;
     this.targetId = targetId;
     this.protocol = rhs.getProtocol();
-    this.serverRegistry = rhs.serverRegistry;
+    
+    // This constructor is called, if a stub maybe from another client is deserialized.
+    // We cannot use the same authentication here, because the other client can only 
+    // authenticate this stub.
+    this.authentication = null;
+    
+    this.serverRegistry = null;
   }
 
   public synchronized void setProtocol(BProtocol protocol) {
