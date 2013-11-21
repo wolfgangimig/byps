@@ -252,7 +252,20 @@ public class BTransport {
             final BMessage msg = bout.toMessage();
             asyncResult.setAsyncResult(msg, null);
           } catch (BException ex) {
-            asyncResult.setAsyncResult(null, ex);
+            
+            // Try to send the exception to the other part
+            try {
+              BOutput bout = getResponse(bin.header);
+              bout.setException(ex);
+              final BMessage msg = bout.toMessage();
+              asyncResult.setAsyncResult(msg, null);
+            }
+            catch (BException ex2) {
+              
+              // Process the error in this part. 
+              // The server side will return a HTTP 500.
+              asyncResult.setAsyncResult(null, ex2);
+            }
           }
           if (log.isDebugEnabled()) log.debug(")setAsyncResultOrException");
         }

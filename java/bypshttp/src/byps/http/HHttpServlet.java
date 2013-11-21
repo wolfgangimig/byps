@@ -406,7 +406,7 @@ public abstract class HHttpServlet extends HttpServlet {
                   if (log.isDebugEnabled()) log.debug("received result=" + omsg);
                   asyncResponse.setAsyncResult(omsg, null);
                 } catch (Throwable e) {
-                  if (log.isDebugEnabled()) log.debug("wait for result failed:", e);
+                  if (log.isDebugEnabled()) log.debug("Failed to execute.", e);
                   asyncResponse.setAsyncResult(null, e);
                 }
               }
