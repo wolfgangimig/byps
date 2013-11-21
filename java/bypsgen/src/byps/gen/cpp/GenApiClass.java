@@ -197,7 +197,14 @@ class GenApiClass {
 		}
 		else if (tinfo.qname.equals("int")) {
 			if (value instanceof Number) value = ((Number)value).longValue();
-			mpr = mpr.print(""+value);
+			if (value instanceof String) value = Integer.parseInt((String)value);
+			Integer intVal = (Integer)value;
+			if (intVal == Integer.MIN_VALUE) {
+	      mpr = mpr.print("0"+value); // solve MSVC error C4146: unary minus operator applied to unsigned type
+			}
+			else {
+			  mpr = mpr.print(""+value);
+			}
 		}
 		else if (tinfo.qname.equals("long")) {
 			if (value instanceof Number) value = ((Number)value).longValue();
@@ -396,7 +403,7 @@ class GenApiClass {
 	
 	private void printGetSet(MemberInfo minfo) throws IOException {
 		
-		String staticDecl = minfo.isStatic ? "static " : " ";
+		String staticDecl = minfo.isStatic ? "static " : "";
 
 		if (minfo.access != MemberAccess.PUBLIC) {
 			
@@ -406,37 +413,30 @@ class GenApiClass {
 			if (!memberType.equals("void")) {
 				prH.print("public: ").print(staticDecl)
 				  .print(memberType).print(" ")
-				  .print("get").print(Utils.firstCharToUpper(minfo.name)).print("() {").println();
-				prH.beginBlock();
-				prH.print("return ").print(minfo.name).println(";");
-				prH.endBlock();
-				prH.println("}");
+				  .print("get").print(Utils.firstCharToUpper(minfo.name)).print("() { ")
+				  .print("return ").print(minfo.name).println("; }");
 			}
 			
 			if (!minfo.isFinal) { 
 				if (memberType.equals("void")) {
-					prH.print("public: void ")		  
-					  .print("set").print(Utils.firstCharToUpper(minfo.name))
-					  .print("() {").println();
-					prH.beginBlock();
+          prH.print("public: void set").print(Utils.firstCharToUpper(minfo.name)).print("();").println();
+          prC.print("void ").print(serInfo.name).print("::set").print(Utils.firstCharToUpper(minfo.name)).print("() {").println();
+          prC.beginBlock();
 				}
 				else {
-					
-					prH.print("public: void ")		  
-					  .print("set").print(Utils.firstCharToUpper(minfo.name))
-					  .print("(").print(memberType).print(" v) {").println();
-					prH.beginBlock();
-					prH.print(minfo.name).println(" = v;");
-					pctxt.printSetChangedMember(prH, serInfo, minfo);				
+          prH.print("public: void set").print(Utils.firstCharToUpper(minfo.name)).print("(").print(memberType).print(" v);").println();
+          prC.print("void ").print(serInfo.name).print("::set").print(Utils.firstCharToUpper(minfo.name)).print("(").print(memberType).print(" v) {").println();
+					prC.beginBlock();
+					prC.print(minfo.name).println(" = v;");
+					pctxt.printSetChangedMember(prC, serInfo, minfo);				
 				}
 			
 				if (serInfo.isResultClass()) {
-					prH.println("if (resp != null) resp.ready(this);");
+					prC.println("if (resp != null) resp.ready(this);");
 				}
 				
-				prH.endBlock();
-				prH.println("}");
-				prH.println();
+				prC.endBlock();
+				prC.println("}");
 			}
 		}
 
@@ -490,7 +490,7 @@ class GenApiClass {
 
         prH.print("public: ").print(serInfo.name).println("();");
 				
-				CodePrinter mpr = prC.print(qname).print("::").print(serInfo.name).print("() ");
+				CodePrinter mpr = prC.print(serInfo.name).print("::").print(serInfo.name).print("() ");
 				
 				if (serInfo.isRequestClass()) {
 					int remoteId = methodInfo.remoteInfo.typeId;
@@ -1022,31 +1022,18 @@ class GenApiClass {
 
 	protected void printSerializeMember(String memberName, TypeInfo tinfo) {
 		if (tinfo.isEnum){
-//			prC.print("{ int32_t v = this->").print(minfo.name).print("; ")
-//			   .print("ar & v; ")
-//			   .print("this->").print(minfo.name).print(" = v; }")
-//			   .println();
-			prC.print("ar & ").print(memberName).print(";")
+			prC.print("ar & this->").print(memberName).print(";")
 			   .println();
 		}
 		else if (tinfo.isInheritable()) {
-			prC.print("ar & ").print(memberName).println(";");
-//			TypeInfoCpp tinfoCpp = new TypeInfoCpp(tinfo);
-//			prC.println("{");
-//			prC.beginBlock();
-//			prC.print("PSerializable p = ").print(memberName).println(";");
-//			prC.println("ar | p;");
-//			prC.print("if (ar.is_loading) ")
-//			   .print(memberName).print(" = byps_ptr_cast<").print(tinfoCpp.getQClassName()).print(">(p)").println(";");
-//			prC.endBlock();
-//			prC.println("}");
+			prC.print("ar & this->").print(memberName).println(";");
 		}
 		else if (tinfo.isVoidType()) {
 			// We are here for serializing the return value of a method.
 			// The return type is VOID. So there is nothing to serialize.
 		}
 		else { 
-			prC.print("ar & ").print(memberName).print(";")
+			prC.print("ar & this->").print(memberName).print(";")
 			   .println();
 		}
 	}

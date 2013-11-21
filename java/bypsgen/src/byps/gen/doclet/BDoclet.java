@@ -66,12 +66,12 @@ public class BDoclet extends Doclet {
    * API definition file with the new classes. The API classes found by this run
    * are written into this file.
    */
-  private static File fileClassDB_New = new File("classdb_new.xml");
+  private static File fileClassDB_New = new File("bapi_new.xml");
 
   /**
    * API definition file with the reference classes.
    */
-  private static File fileClassDB = new File("classdb.xml");
+  private static File fileClassDB = new File("bapi.xml");
 
   /**
    * Generator properties for C# code generator.

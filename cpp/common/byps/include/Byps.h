@@ -174,5 +174,6 @@ typedef byps_ptr<BContentStream> PContentStream;
 #include "BAuthentication.h"
 #include "BLostConnectionHandler.h"
 #include "BDateTime.h"
+#include "BValueClass.h"
 
 #endif
