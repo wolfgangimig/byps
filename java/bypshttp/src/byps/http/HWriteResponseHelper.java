@@ -51,6 +51,10 @@ public class HWriteResponseHelper {
           status = HttpServletResponse.SC_NO_CONTENT;
         }
       }
+      
+      if (status == HttpServletResponse.SC_INTERNAL_SERVER_ERROR) {
+        log.warn("Responding server error.", e);
+      }
 
       resp.setStatus(status);
 

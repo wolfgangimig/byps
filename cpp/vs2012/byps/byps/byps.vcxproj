@@ -216,6 +216,8 @@
     <ClInclude Include="..\..\..\common\byps\include\BTransportFactory.h" />
     <ClInclude Include="..\..\..\common\byps\include\BUtils.h" />
     <ClInclude Include="..\..\..\common\byps\include\BUtils.hpp" />
+    <ClInclude Include="..\..\..\common\byps\include\BValueClass.h" />
+    <ClInclude Include="..\..\..\common\byps\include\BValueClass.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\BVariant.h" />
     <ClInclude Include="..\..\..\common\byps\include\BVariant.hpp" />
     <ClInclude Include="..\..\..\common\byps\include\BVersioning.h" />

@@ -97,15 +97,23 @@ public class GeneratorCpp implements Generator {
   }
 
   private int findInsertPosForSerialInfo(SerialInfo sinfo, ArrayList<SerialInfo> arr) {
-    if (sinfo.isInline) {
+    int idx = 0;
+    if (sinfo.isEnum){
+      idx = 0;
+    }
+    else if (sinfo.isInline) {
       for (int i = 0; i < arr.size(); i++) {
         SerialInfo sinfo2 = arr.get(i);
         if (!sinfo2.isInline || isUsedBy_SerialInfo(sinfo, sinfo2)) {
-          return i;
+          idx = i;
+          break;
         }
       }
     }
-    return arr.size();
+    else {
+      idx = arr.size();
+    }
+    return idx;
   }
 
   protected void printSerials(Collection<SerialInfo> serials) throws IOException {

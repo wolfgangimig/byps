@@ -34,6 +34,7 @@
 #include "BUtils.hpp"
 #include "BLostConnectionHandler.hpp"
 #include "BDateTime.hpp"
+#include "BValueClass.hpp"
 
 #include "platform/platform.hpp"
 

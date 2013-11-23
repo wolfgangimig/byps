@@ -32,14 +32,14 @@ class GenApiClassFwd {
 		else if (tinfo.isExceptionType()) {
 			
 		}
-		else if (tinfo.isAnyType()) {
-			
-		}
+    else if (tinfo.isAnyType()) {
+      
+    }
+//    else if (tinfo.isArrayType()) {
+//      
+//    }
 		else if (tinfo.isCollectionType()) {
 			// keine Forward-Decl für vector, set, map
-		}
-		else if (tinfo.isArrayType()) {
-			// keine Forward-Decl für int[] usw. -> wird zu vector<int>
 		}
 		else if (serInfo != null && serInfo.isResultClass()) {
 			// kein shared_ptr benötigt 
@@ -89,7 +89,15 @@ class GenApiClassFwd {
 			}
 			
 			if (declPtrClass) {
-				pr.print("typedef byps_ptr< ").print(className).print(" > ").print(pclassName).println("; ");
+			  if (tinfo.dims.length() > 2) {
+			    String arrayName = className + "Array" + tinfo.dims.length() / 2;
+			    pclassName = "P" + arrayName;
+			    pr.print("typedef ").print(className).print(" ").print(arrayName);
+			    pr.print("typedef byps_ptr< ").print(arrayName).print(" > ").print(pclassName).println("; ");
+			  }
+			  else {
+			    pr.print("typedef byps_ptr< ").print(className).print(" > ").print(pclassName).println("; ");
+			  }
 			}
 			
 			pr.println();

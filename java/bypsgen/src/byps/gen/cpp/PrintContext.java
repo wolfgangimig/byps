@@ -502,7 +502,7 @@ class PrintContext extends PrintContextBase {
 				String elementSelectorName = getElementSelectorName(minfo);
 				MemberInfo minfoC = serInfoC.findMember(elementSelectorName, "long");
 				if (minfoC != null) {
-					String elms = getElementSelectorClassName(serInfo) + "." + minfoC.name;
+					String elms = getElementSelectorClassName(serInfo) + "::" + minfoC.name;
 					pr.print("setChangedMember(").print(elms).print(");").println();
 				}
 			}

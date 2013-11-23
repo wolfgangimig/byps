@@ -63,12 +63,12 @@ class GenRemoteSkeleton {
 		boolean isReturnVoid = returnInfo.type.typeId == BRegistry.TYPEID_VOID;
 		
 		if (isReturnVoid) {
-			prC.println("bool ret = false;");
+			prC.println("bool __byps__ret = false;");
 		}
 		else {
 			TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
 			String rtype = tinfoCpp.toString(rinfo.pack);
-			prC.print(rtype).print(" ret = ").print(rtype).println("();");
+			prC.print(rtype).print(" __byps__ret = ").print(rtype).println("();");
 		}
 		
 		prC.println("try {");
@@ -76,7 +76,7 @@ class GenRemoteSkeleton {
 		
 		String methodName = pctxt.makePublicMemberName(methodInfo.name);
 		CodePrinter mpr = prC;
-		if (!isReturnVoid) mpr = prC.print("ret = ");
+		if (!isReturnVoid) mpr = prC.print("__byps__ret = ");
 		mpr = mpr.print(methodName + "(");
 		
 		boolean first = true;
@@ -87,10 +87,10 @@ class GenRemoteSkeleton {
 		mpr.println(");");
 		
 		if (pctxt.lambdaSupported) {
-			prC.println("asyncResult(ret, BException());");
+			prC.println("asyncResult(__byps__ret, BException());");
 		}
 		else {
-			prC.println("asyncResult->setAsyncResult(BVariant(ret));");
+			prC.println("asyncResult->setAsyncResult(BVariant(__byps__ret));");
 		}
 		
 		prC.endBlock();
@@ -98,13 +98,13 @@ class GenRemoteSkeleton {
 //		pr.beginBlock();
 //		pr.println("asyncResult.setException(e);");
 //		pr.endBlock();
-		prC.println("} catch (const std::exception& ex) {");
+		prC.println("} catch (const std::exception& __byps__ex) {");
 		prC.beginBlock();
 		if (pctxt.lambdaSupported) {
-			prC.print("asyncResult(ret, ex);").println();
+			prC.print("asyncResult(__byps__ret, __byps__ex);").println();
 		}
 		else {
-			prC.print("asyncResult->setAsyncResult(BVariant(ex));").println();
+			prC.print("asyncResult->setAsyncResult(BVariant(__byps__ex));").println();
 		}
 		prC.endBlock();
 //		pr.println("} finally {");
