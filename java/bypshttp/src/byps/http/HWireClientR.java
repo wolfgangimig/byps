@@ -289,8 +289,8 @@ public class HWireClientR extends BWire {
    * The client application receives a status code 408 for a long-poll. 
    */
   public synchronized void cleanup() {
-    releaseExpiredLongpolls();
-    terminateExpiredMessages();
+    releaseExpiredLongpolls_invoke_sync();
+    terminateExpiredMessages_invoke_sync();
   }
 
   /**
@@ -298,7 +298,7 @@ public class HWireClientR extends BWire {
    * A long-poll is returned with HTTP status 408, if it is unused longer than
    * {@link HConstants#TIMEOUT_LONGPOLL_MILLIS}.
    */
-  protected void releaseExpiredLongpolls() {
+  protected void releaseExpiredLongpolls_invoke_sync() {
     BException ex = null;
     ArrayList<AsyncRequestFromLongpoll> arr = new ArrayList<AsyncRequestFromLongpoll>(asyncRequests_access_sync);
     asyncRequests_access_sync.clear();
@@ -306,8 +306,9 @@ public class HWireClientR extends BWire {
     for (AsyncRequestFromLongpoll lrequest : arr) {
       if (lrequest.isExpired()) {
         
-        // Send a HttpServletResponse.SC_REQUEST_TIMEOUT to the client
-        if (ex == null) ex = new BException(BExceptionC.TIMEOUT, "Long-poll timeout");
+        // The client should send a new long-poll.
+        // HWriteResponseHelper will return an empty request.
+        if (ex == null) ex = new BException(BExceptionC.RESEND_LONG_POLL, "");
         lrequest.request.setAsyncResult(null, ex);
         
       }
@@ -322,7 +323,7 @@ public class HWireClientR extends BWire {
    * A message is terminated, if it has been waiting more than {@link HConstants#MAX_WAIT_FOR_LONGPOLL_MILLIS}
    * for a long-poll.
    */
-  protected void terminateExpiredMessages() {
+  protected void terminateExpiredMessages_invoke_sync() {
     ArrayList<PendingMessage> arr = new ArrayList<PendingMessage>(pendingMessages_access_sync);
     pendingMessages_access_sync.clear();
     
