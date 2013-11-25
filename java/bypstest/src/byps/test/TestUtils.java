@@ -52,7 +52,7 @@ public class TestUtils {
 
 	private static Log log = LogFactory.getLog(TestUtils.class);
 	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
-	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
+	public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
 	public static boolean TEST_LARGE_STREAMS = false;
 
 	public static BTransport createTransport() {

@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteInlineInstance : BStub, RemoteInlineInstance, BSerializable {	
 		
-		public readonly static long serialVersionUID = 567395951L;
+		public readonly static long serialVersionUID = 355071648L;
 		
 		public BStub_RemoteInlineInstance(BTransport transport)
 			: base(transport) {}			
 		
-		public void SetActor(byps.test.api.inl.Actor act) {
+		public virtual void SetActor(byps.test.api.inl.Actor act) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetActor(act, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetActor(byps.test.api.inl.Actor act, BAsyncResult<Object> asyncResult) {
+		public virtual void SetActor(byps.test.api.inl.Actor act, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setActor req = new BRequest_RemoteInlineInstance_setActor();			
 			req.actValue = act;
 			transport.sendMethod(req, asyncResult);
@@ -31,12 +31,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public byps.test.api.inl.Actor GetActor() {
+		public virtual byps.test.api.inl.Actor GetActor() {
 			BSyncResult<byps.test.api.inl.Actor> asyncResult = new BSyncResult<byps.test.api.inl.Actor>();			
 			GetActor(BAsyncResultHelper.ToDelegate<byps.test.api.inl.Actor>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetActor(BAsyncResult<byps.test.api.inl.Actor> asyncResult) {
+		public virtual void GetActor(BAsyncResult<byps.test.api.inl.Actor> asyncResult) {
 			BRequest_RemoteInlineInstance_getActor req = new BRequest_RemoteInlineInstance_getActor();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -47,12 +47,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray) {
+		public virtual void SetPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPoint2DArray1dim(pointArray, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DArray1dim req = new BRequest_RemoteInlineInstance_setPoint2DArray1dim();			
 			req.pointArrayValue = pointArray;
 			transport.sendMethod(req, asyncResult);
@@ -65,12 +65,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public byps.test.api.inl.Point2D[] GetPoint2DArray1dim() {
+		public virtual byps.test.api.inl.Point2D[] GetPoint2DArray1dim() {
 			BSyncResult<byps.test.api.inl.Point2D[]> asyncResult = new BSyncResult<byps.test.api.inl.Point2D[]>();			
 			GetPoint2DArray1dim(BAsyncResultHelper.ToDelegate<byps.test.api.inl.Point2D[]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPoint2DArray1dim(BAsyncResult<byps.test.api.inl.Point2D[]> asyncResult) {
+		public virtual void GetPoint2DArray1dim(BAsyncResult<byps.test.api.inl.Point2D[]> asyncResult) {
 			BRequest_RemoteInlineInstance_getPoint2DArray1dim req = new BRequest_RemoteInlineInstance_getPoint2DArray1dim();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -81,12 +81,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetPoint2DArray4dim(byps.test.api.inl.Point2D[,,,] pointArray) {
+		public virtual void SetPoint2DArray4dim(byps.test.api.inl.Point2D[,,,] pointArray) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPoint2DArray4dim(pointArray, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPoint2DArray4dim(byps.test.api.inl.Point2D[,,,] pointArray, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DArray4dim(byps.test.api.inl.Point2D[,,,] pointArray, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DArray4dim req = new BRequest_RemoteInlineInstance_setPoint2DArray4dim();			
 			req.pointArrayValue = pointArray;
 			transport.sendMethod(req, asyncResult);
@@ -99,12 +99,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public byps.test.api.inl.Point2D[,,,] GetPoint2DArray4dim() {
+		public virtual byps.test.api.inl.Point2D[,,,] GetPoint2DArray4dim() {
 			BSyncResult<byps.test.api.inl.Point2D[,,,]> asyncResult = new BSyncResult<byps.test.api.inl.Point2D[,,,]>();			
 			GetPoint2DArray4dim(BAsyncResultHelper.ToDelegate<byps.test.api.inl.Point2D[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPoint2DArray4dim(BAsyncResult<byps.test.api.inl.Point2D[,,,]> asyncResult) {
+		public virtual void GetPoint2DArray4dim(BAsyncResult<byps.test.api.inl.Point2D[,,,]> asyncResult) {
 			BRequest_RemoteInlineInstance_getPoint2DArray4dim req = new BRequest_RemoteInlineInstance_getPoint2DArray4dim();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -115,12 +115,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetPoint2DList(IList<byps.test.api.inl.Point2D> pointList) {
+		public virtual void SetPoint2DList(IList<byps.test.api.inl.Point2D> pointList) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPoint2DList(pointList, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPoint2DList(IList<byps.test.api.inl.Point2D> pointList, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DList(IList<byps.test.api.inl.Point2D> pointList, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DList req = new BRequest_RemoteInlineInstance_setPoint2DList();			
 			req.pointListValue = pointList;
 			transport.sendMethod(req, asyncResult);
@@ -133,12 +133,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IList<byps.test.api.inl.Point2D> GetPoint2DList() {
+		public virtual IList<byps.test.api.inl.Point2D> GetPoint2DList() {
 			BSyncResult<IList<byps.test.api.inl.Point2D>> asyncResult = new BSyncResult<IList<byps.test.api.inl.Point2D>>();			
 			GetPoint2DList(BAsyncResultHelper.ToDelegate<IList<byps.test.api.inl.Point2D>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPoint2DList(BAsyncResult<IList<byps.test.api.inl.Point2D>> asyncResult) {
+		public virtual void GetPoint2DList(BAsyncResult<IList<byps.test.api.inl.Point2D>> asyncResult) {
 			BRequest_RemoteInlineInstance_getPoint2DList req = new BRequest_RemoteInlineInstance_getPoint2DList();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -149,12 +149,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetPoint2DListList(IList<IList<byps.test.api.inl.Point2D>> pointListList) {
+		public virtual void SetPoint2DListList(IList<IList<byps.test.api.inl.Point2D>> pointListList) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPoint2DListList(pointListList, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPoint2DListList(IList<IList<byps.test.api.inl.Point2D>> pointListList, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DListList(IList<IList<byps.test.api.inl.Point2D>> pointListList, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DListList req = new BRequest_RemoteInlineInstance_setPoint2DListList();			
 			req.pointListListValue = pointListList;
 			transport.sendMethod(req, asyncResult);
@@ -167,12 +167,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IList<IList<byps.test.api.inl.Point2D>> GetPoint2DListList() {
+		public virtual IList<IList<byps.test.api.inl.Point2D>> GetPoint2DListList() {
 			BSyncResult<IList<IList<byps.test.api.inl.Point2D>>> asyncResult = new BSyncResult<IList<IList<byps.test.api.inl.Point2D>>>();			
 			GetPoint2DListList(BAsyncResultHelper.ToDelegate<IList<IList<byps.test.api.inl.Point2D>>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPoint2DListList(BAsyncResult<IList<IList<byps.test.api.inl.Point2D>>> asyncResult) {
+		public virtual void GetPoint2DListList(BAsyncResult<IList<IList<byps.test.api.inl.Point2D>>> asyncResult) {
 			BRequest_RemoteInlineInstance_getPoint2DListList req = new BRequest_RemoteInlineInstance_getPoint2DListList();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -183,12 +183,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetPoint2DMap(IDictionary<int,byps.test.api.inl.Point2D> pointMap) {
+		public virtual void SetPoint2DMap(IDictionary<int,byps.test.api.inl.Point2D> pointMap) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPoint2DMap(pointMap, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPoint2DMap(IDictionary<int,byps.test.api.inl.Point2D> pointMap, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPoint2DMap(IDictionary<int,byps.test.api.inl.Point2D> pointMap, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteInlineInstance_setPoint2DMap req = new BRequest_RemoteInlineInstance_setPoint2DMap();			
 			req.pointMapValue = pointMap;
 			transport.sendMethod(req, asyncResult);
@@ -201,12 +201,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<int,byps.test.api.inl.Point2D> GetPoint2DMap() {
+		public virtual IDictionary<int,byps.test.api.inl.Point2D> GetPoint2DMap() {
 			BSyncResult<IDictionary<int,byps.test.api.inl.Point2D>> asyncResult = new BSyncResult<IDictionary<int,byps.test.api.inl.Point2D>>();			
 			GetPoint2DMap(BAsyncResultHelper.ToDelegate<IDictionary<int,byps.test.api.inl.Point2D>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPoint2DMap(BAsyncResult<IDictionary<int,byps.test.api.inl.Point2D>> asyncResult) {
+		public virtual void GetPoint2DMap(BAsyncResult<IDictionary<int,byps.test.api.inl.Point2D>> asyncResult) {
 			BRequest_RemoteInlineInstance_getPoint2DMap req = new BRequest_RemoteInlineInstance_getPoint2DMap();			
 			transport.sendMethod(req, asyncResult);
 		}

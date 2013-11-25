@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_PlantService extends BStub implements PlantServiceAuth, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1954605928L;
+	public final static long serialVersionUID = 1733272281L;
 	
 	public BStub_PlantService(final BTransport transport) {
 		super(transport);		

@@ -18,10 +18,17 @@ namespace byps.test.api.inherit
 		public Class1Collections() {
 		}		
 		
-		internal Class1Collections(IList<Class1> @list1, IDictionary<String,Class1> @map1, ISet<Class1> @set1) {
+		public Class1Collections(IList<Class1> @list1, IDictionary<String,Class1> @map1, ISet<Class1> @set1) {
 			this.list1Value = @list1;
 			this.map1Value = @map1;
 			this.set1Value = @set1;
+		}		
+		
+		public Class1Collections(Class1Collections rhs)
+		{
+			this.list1Value = rhs.list1Value;
+			this.map1Value = rhs.map1Value;
+			this.set1Value = rhs.set1Value;
 		}		
 		
 		#endregion

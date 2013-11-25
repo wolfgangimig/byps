@@ -27,11 +27,11 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes23_sendArraysInline obj = (BRequest_RemoteArrayTypes23_sendArraysInline)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:492
+			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.arr2Value, false, byps.test.api.BSerializer_827767075.instance);
-			// checkpoint byps.gen.cs.PrintContext:492
+			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.arr3Value, false, byps.test.api.BSerializer_915212229.instance);
-			// checkpoint byps.gen.cs.PrintContext:492
+			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.arr4Value, false, byps.test.api.BSerializer_949340697.instance);
 		}
 		
@@ -41,11 +41,11 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes23_sendArraysInline obj = (BRequest_RemoteArrayTypes23_sendArraysInline)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteArrayTypes23_sendArraysInline()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:447
+			// checkpoint byps.gen.cs.PrintContext:449
 			obj.arr2Value = (byps.test.api.inl.Point2D[,])bin.readObj(false, byps.test.api.BSerializer_827767075.instance);
-			// checkpoint byps.gen.cs.PrintContext:447
+			// checkpoint byps.gen.cs.PrintContext:449
 			obj.arr3Value = (byps.test.api.inl.Point2D[,,])bin.readObj(false, byps.test.api.BSerializer_915212229.instance);
-			// checkpoint byps.gen.cs.PrintContext:447
+			// checkpoint byps.gen.cs.PrintContext:449
 			obj.arr4Value = (byps.test.api.inl.Point2D[,,,])bin.readObj(false, byps.test.api.BSerializer_949340697.instance);
 			
 			return obj;

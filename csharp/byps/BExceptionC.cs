@@ -90,12 +90,21 @@ namespace byps
       public const int CANCELLED = 19;
 
       /**
+       * Reverse HTTP request should be sent again.
+       * After HConstants#TIMEOUT_LONGPOLL_MILLIS, the server releases
+       * a long-poll (reverse) request. The client should open 
+       * a new long-poll. The server sends an empty response to the client.
+       *  SC_NO_CONTENT
+       */
+      public const int RESEND_LONG_POLL = 204;
+
+      /**
        * This code can be used, if authentication is required for the method.
        * Same as HttpURLConnection.HTTP_UNAUTHORIZED.
        */
       public const int UNAUTHORIZED = 401;
   
-      /**
+     /**
        * Timeout.
        * This code is used, if an operation exceeds its time limit.
        * HWireClientR sends this code for expired long-polls.

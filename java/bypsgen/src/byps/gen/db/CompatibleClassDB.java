@@ -5,10 +5,12 @@ import java.util.Collection;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BVersioning;
 import byps.gen.api.GeneratorException;
 import byps.gen.api.MemberAccess;
 import byps.gen.api.MemberInfo;
 import byps.gen.api.MethodInfo;
+import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 
 
@@ -25,6 +27,12 @@ public class CompatibleClassDB {
 		CompatibilityViolations viols = new CompatibilityViolations();
 		
 		if (prevClassDB != null) {
+		  
+		  if (prevClassDB.getApiDescriptor().version > classDB.getApiDescriptor().version) {
+		    String sverP = BVersioning.longToString(prevClassDB.getApiDescriptor().version);
+		    String sver = BVersioning.longToString(classDB.getApiDescriptor().version);
+		    viols.add("BApi.VERSION=" + sver + " must be greater or equal to previsious version=" + sverP);
+		  }
 			
 			ensureCompatibleSerInfos(viols);
 			
@@ -68,44 +76,102 @@ public class CompatibleClassDB {
 		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatibleSerInfos");
 	}
 	
-	/**
-	 * Check whether the given SerialInfo objects are compatible.
-	 * @param sinfoP SerialInfo object from previous API version.
-	 * @param sinfo SerialInfo object from current API version
-	 * @param viols List of violations.
-	 * @return true, if the objects are compatible
-	 * @throws GeneratorException
-	 */
+  /**
+   * Check whether the given SerialInfo objects are compatible.
+   * @param sinfoP SerialInfo object from previous API version.
+   * @param sinfo SerialInfo object from current API version
+   * @param viols List of violations.
+   * @return true, if the objects are compatible
+   * @throws GeneratorException
+   */
 	private boolean ensureCompatibleSerInfo(SerialInfo sinfoP, SerialInfo sinfo, CompatibilityViolations viols) throws GeneratorException {
 		boolean ret = true;
+		
+    if (sinfoP.isEnum != sinfo.isEnum){
+      viols.add(sinfoP.qname + ": class cannot be converted to enum and vice versa.");
+    }
+		
+		// typeId changed?
+		if (sinfoP.typeId != sinfo.typeId){
+      viols.add(sinfoP.qname + ": modified serialVersionUID ( & 0xFFFFFFFF), previsious=" + sinfoP.typeId + ", current=" + sinfo.typeId);
+		}
 		
 		// Base class changed?
 		if (!sinfoP.baseFullName.equals(sinfo.baseFullName)) {
 			viols.add(sinfoP.qname + ": modified base class, previsious=" + sinfoP.baseFullName + ", current=" + sinfo.baseFullName);
 		}
 		
-		// The old members must still be defined in the new class
-		for (int i = 0; i < sinfoP.members.size(); i++) {
-			MemberInfo minfoP = sinfoP.members.get(i);
-			
-			// Find member in new class
-			MemberInfo minfo = null;
-			for (MemberInfo m : sinfo.members) {
-			  if (m.name.equals(minfoP.name)) {
-			    minfo = m; 
-			    break;
-			  }
-			}
+		if (sinfoP.isEnum) {
+		  
+	    // The old members must be at the same position
+	    for (int i = 0; i < sinfoP.members.size(); i++) {
+	      MemberInfo minfoP = sinfoP.members.get(i);
+	      MemberInfo minfo = i < sinfo.members.size() ? sinfo.members.get(i) : null;
 
-			if (minfo != null) {
-			  // Compare type, transient state etc.
-				if (!ensureCompatibleMemberInfo(sinfo.qname, minfoP, minfo, viols)) break;
-			}
-			else {
-				viols.add(sinfoP.qname + ": missing member " + minfoP.name);
-				break;
-			}
+	      if (minfo == null) {
+	        viols.add(sinfoP.qname + ": missing member " + minfoP.name);
+	      }
+	      else if (!minfoP.name.equals(minfo.name)) {
+	        viols.add(sinfoP.qname + ": missing member " + minfoP.name + " at position " + (i+1) + " (ordinal value=" + i + ").");
+	      }
+	    }
 		}
+		else {
+  		// The old members must still be defined in the new class
+  		for (int i = 0; i < sinfoP.members.size(); i++) {
+  			MemberInfo minfoP = sinfoP.members.get(i);
+  			
+  			// Find member in new class
+  			MemberInfo minfo = null;
+  			for (MemberInfo m : sinfo.members) {
+  			  if (m.name.equals(minfoP.name)) {
+  			    minfo = m; 
+  			    break;
+  			  }
+  			}
+  
+  			if (minfo != null) {
+  			  // Compare type, transient state etc.
+  				if (!ensureCompatibleMemberInfo(sinfo.qname, minfoP, minfo, viols)) break;
+  			}
+  			else {
+  				viols.add(sinfoP.qname + ": missing member " + minfoP.name);
+  			}
+  		}
+		}
+		
+		// The new members must have a since tag  
+    for (int i = 0; i < sinfo.members.size(); i++) {
+      MemberInfo minfo = sinfo.members.get(i);
+      
+      // Find member in new class
+      MemberInfo minfoP = null;
+      for (MemberInfo m : sinfoP.members) {
+        if (m.name.equals(minfo.name)) {
+          minfoP = m; 
+          break;
+        }
+      }
+
+      if (minfoP == null) {
+        
+        long verP = prevClassDB.getApiDescriptor().version;
+        long ver = classDB.getApiDescriptor().version;
+        
+        if (verP == ver) {
+          viols.add(sinfo.qname + ": member " + minfo.name + " added but API version not incremented.");
+        }
+        else if (minfo.since == 0) {
+          viols.add(sinfo.qname + ": missing @since tag for member " + minfo.name + ". Value " + BVersioning.longToString(ver) + " is expected.");
+        }
+        else if (minfo.since < verP) {
+          viols.add(sinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
+        }
+        else if (minfo.since > ver) {
+          viols.add(sinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be less than or equal to the current API version=" + BVersioning.longToString(ver));
+        }
+      }
+    }
 				
 		return ret;
 	}
@@ -154,20 +220,43 @@ public class CompatibleClassDB {
 	}
 
 	private void ensureCompatibleMethodInfos(CompatibilityViolations viols) throws GeneratorException {
-		Collection<MethodInfo> minfosP = prevClassDB.getMethods();
-		for (MethodInfo minfoP : minfosP) {
-			String qname = minfoP.getQName();
-			MethodInfo minfo = classDB.getMethodInfo(qname);
-			if (minfo != null) {
-				if (!ensureCompatibleMethodInfo(minfoP, minfo, viols)) {
-					break;
-				}
-			}
-			else {
+
+	  for (MethodInfo minfoP : prevClassDB.getMethods()) {
+      String qname = minfoP.getQName();
+      MethodInfo minfo = classDB.getMethodInfo(qname);
+      if (minfo != null) {
+        if (!ensureCompatibleMethodInfo(minfoP, minfo, viols)) {
+          break;
+        }
+      }
+      else {
         viols.add(minfoP + ": missing");
         break;
-			}
-		}
+      }
+    }
+    
+    for (MethodInfo minfo : classDB.getMethods()) {
+      String qname = minfo.getQName();
+      MethodInfo minfoP = prevClassDB.getMethodInfo(qname);
+      if (minfoP == null) {
+        long verP = prevClassDB.getApiDescriptor().version;
+        long ver = classDB.getApiDescriptor().version;
+        
+        RemoteInfo rinfo = minfo.remoteInfo;
+        if (verP == ver) {
+          viols.add(rinfo.qname + ": member " + minfo.name + " added but API version not incremented.");
+        }
+        else if (minfo.since == 0) {
+          viols.add(rinfo.qname + ": missing @since tag for member " + minfo.name + ". Value " + BVersioning.longToString(ver) + " is expected.");
+        }
+        else if (minfo.since < verP) {
+          viols.add(rinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
+        }
+        else if (minfo.since > ver) {
+          viols.add(rinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be less than or equal to the current API version=" + BVersioning.longToString(ver));
+        }
+      }
+    }
 	}
 
 	private void addMessageWrongMethodParams(String methodQName, String paramKind, String paramName, String propStr, String npropStr, boolean expected, boolean found, CompatibilityViolations viols) {
@@ -203,7 +292,7 @@ public class CompatibleClassDB {
 			}
 			
 		}
-
+		
 		if (!minfoP.resultInfo.toString().equals(minfo.resultInfo.toString())) {
 			addMessageWrongMethodParams(qname, "return", "value", 
 					minfoP.resultInfo.toString(), 
@@ -211,6 +300,16 @@ public class CompatibleClassDB {
 					true, false, viols);
 		}
 		
+    MemberInfo returnInfoP = minfoP.resultInfo.members.get(0);
+    MemberInfo returnInfo = minfo.resultInfo.members.get(0);
+    
+    if (!returnInfoP.toString().equals(returnInfo.toString())) {
+      addMessageWrongMethodParams(qname, "return", "value", 
+          returnInfoP.toString(), 
+          returnInfo.toString(), 
+          true, false, viols);
+    }
+
 		return ret;
 	}
 

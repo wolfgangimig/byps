@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlTransient;
 
+import byps.BVersioning;
 import byps.gen.api.CommentInfo;
 import byps.gen.api.ErrorInfo;
 import byps.gen.api.GeneratorException;
@@ -18,6 +19,7 @@ public class XmlMethodInfo implements XmlInfo {
 
 	public String name;
 	public String remoteName;
+	public String since;
 
 	public String requestTypeName;
 	public String resultTypeName;
@@ -40,6 +42,7 @@ public class XmlMethodInfo implements XmlInfo {
 		x.resultTypeName = m.resultInfo.toXmlTypeName();
 		x.remoteName = m.remoteInfo.toXmlTypeName();
 		x.comments = m.comments;
+		x.since = BVersioning.longToString(m.since);
 		
 		x.exceptionTypeNames = new ArrayList<String>();
 		for (TypeInfo einfo : m.exceptions) {
@@ -70,7 +73,13 @@ public class XmlMethodInfo implements XmlInfo {
 		}
 		
 		ArrayList<TypeInfo> exceptions = new ArrayList<TypeInfo>();
-		methodInfo = new MethodInfo(name, comments, requestInfo, resultInfo, exceptions);
+		methodInfo = new MethodInfo(name, 
+		    comments, 
+		    requestInfo, 
+		    resultInfo, 
+		    exceptions,
+		    BVersioning.stringToLong(since));
+		
 		requestInfo.methodInfo = methodInfo;
 		resultInfo.methodInfo = methodInfo;
 		

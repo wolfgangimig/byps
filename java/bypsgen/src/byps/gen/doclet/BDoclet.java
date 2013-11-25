@@ -149,7 +149,7 @@ public class BDoclet extends Doclet {
       // Convert javadoc objects to internal representation
 
       log.info("Analyze classes in source directories ==============");
-      ClassDB jdocClassDB = BConvert.makeClassDB(prevClassDB, root, compileSource, convertOptions);
+      ClassDB jdocClassDB = BConvert.makeClassDB(root, compileSource, convertOptions);
       log.info("");
 
       // ------------------------------------------------
@@ -568,7 +568,7 @@ public class BDoclet extends Doclet {
       // "-genc.pack.alias", "byps.sample1=IX",
       "-gencpp.max-fsize", "50000",
 
-      // "-verbose",
+       "-verbose",
 
       // "--packages",
       // "byps.test.api",

@@ -31,16 +31,8 @@ import byps.gen.doclet.BConvert;
 
 public class ClassDB {
 
-  public static ClassDB createNewVersion(ClassDB prevClassDB, ConstFieldReader tidProv) throws GeneratorException {
+  public static ClassDB createNewVersion(ConstFieldReader tidProv) throws GeneratorException {
     ClassDB classDB = new ClassDB(tidProv);
-
-    // Die Type-IDs der vorigen ClassDB-Version
-    // sollen auch für die aktuelle ClassDB gelten.
-    // D.h. gleichnamige Strukturen bekommen dieselbe Typ-ID.
-    if (prevClassDB != null) {
-      classDB.prevClassDB = prevClassDB;
-    }
-
     return classDB;
   }
 
@@ -196,6 +188,10 @@ public class ClassDB {
   MethodInfo getMethodInfo(String qname) {
     return mapQnameToMethodInfo.get(qname);
   }
+  
+  void updateMethodInfoAfterRead(MethodInfo methodInfo) {
+    mapQnameToMethodInfo.put(methodInfo.getQName(),  methodInfo);
+  }
 
   public TypeInfo createTypeInfo(String name, String qname, String dims, List<TypeInfo> typeArgs, boolean isEnum, boolean isFinal, boolean isInline) throws GeneratorException {
     TypeInfo tinfo = new TypeInfo(name, qname, dims, typeArgs, isEnum, isFinal, isInline);
@@ -220,7 +216,7 @@ public class ClassDB {
     for (RemoteInfo rinfo : remotes.values()) {
       String stubQname = makeStubName(rinfo.qname);
       SerialInfo sinfo = serials.get(stubQname);
-      rinfo.typeId = sinfo.typeId;
+      rinfo.typeId = sinfo.typeId = getOrCreateTypeId(rinfo);
     }
 
     log.debug(")assignTypeIds");
@@ -316,13 +312,6 @@ public class ClassDB {
     log.debug("getKnownType(" + qname + ", dims=" + dims + ", typeArgs=" + typeArgs);
 
     TypeInfo retTypeInfo = null;
-
-    if (prevClassDB != null) {
-      log.debug("get from prevClassDB");
-      TypeInfo prevTypeInfo = prevClassDB.getKnownType(qname, dims, typeArgs);
-      log.debug("prevTypeInfo=" + prevTypeInfo);
-      retTypeInfo = prevTypeInfo;
-    }
 
     if (retTypeInfo == null) {
       String name = qname;
@@ -516,6 +505,7 @@ public class ClassDB {
       typeId = (int) (longTypeId & typeIdMask);
 
       if (typeId == 0) {
+        log.info("make typeId from hash for " + tinfo);
         typeId = makeTypeIdFromNameHash(tinfo);
       }
       else if (typeId < registry.getMinTypeIdUser()) {
@@ -704,8 +694,6 @@ public class ClassDB {
   private TreeMap<String, SerialInfo> serials = new TreeMap<String, SerialInfo>();
 
   private HashMap<String, MethodInfo> mapQnameToMethodInfo = new HashMap<String, MethodInfo>();
-
-  private ClassDB prevClassDB;
 
   public final ConstFieldReader fieldReader;
 

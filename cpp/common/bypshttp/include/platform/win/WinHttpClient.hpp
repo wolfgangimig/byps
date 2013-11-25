@@ -144,7 +144,7 @@ public:
 			::GetVersionExW((OSVERSIONINFOW*)&verInfo);
 
 			if (verInfo.dwMajorVersion >= 6) {
-				wssHeaders << L"Content-Length: " << contentLength << "\r\n";
+				wssHeaders << L"Content-Length: " << contentLength << L"\r\n";
 				totalLength = WINHTTP_IGNORE_REQUEST_TOTAL_LENGTH;
 			}
 			else {
@@ -178,7 +178,8 @@ public:
 
 		if (contentLength != 0) {
 			if (contentType.size()) {
-				wssHeaders << L"Content-Type: " << contentType << L"\r\n";
+				wssHeaders << L"Content-Type: " << contentType;
+				wssHeaders << L"\r\n";
 			}
 		}
 		else {

@@ -18,7 +18,7 @@ namespace byps.test.api.set
 		public SetTypes() {
 		}		
 		
-		internal SetTypes(ISet<bool> @boolean1, HashSet<byte> @byte1, HashSet<char> @char1, ISet<short> @short1, ISet<int> @int1, ISet<long> @long1, ISet<float> @float1, ISet<double> @double1, ISet<String> @string1, ISet<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, ISet<byte[]> @byte2, ISet<int[]> @int2, ISet<Object> @obj1, ISet<DateTime> @date1) {
+		public SetTypes(ISet<bool> @boolean1, HashSet<byte> @byte1, HashSet<char> @char1, ISet<short> @short1, ISet<int> @int1, ISet<long> @long1, ISet<float> @float1, ISet<double> @double1, ISet<String> @string1, ISet<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, ISet<byte[]> @byte2, ISet<int[]> @int2, ISet<Object> @obj1, ISet<DateTime> @date1) {
 			this.boolean1Value = @boolean1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -33,6 +33,24 @@ namespace byps.test.api.set
 			this.int2Value = @int2;
 			this.obj1Value = @obj1;
 			this.date1Value = @date1;
+		}		
+		
+		public SetTypes(SetTypes rhs)
+		{
+			this.boolean1Value = rhs.boolean1Value;
+			this.byte1Value = rhs.byte1Value;
+			this.char1Value = rhs.char1Value;
+			this.short1Value = rhs.short1Value;
+			this.int1Value = rhs.int1Value;
+			this.long1Value = rhs.long1Value;
+			this.float1Value = rhs.float1Value;
+			this.double1Value = rhs.double1Value;
+			this.string1Value = rhs.string1Value;
+			this.primitiveTypes1Value = rhs.primitiveTypes1Value;
+			this.byte2Value = rhs.byte2Value;
+			this.int2Value = rhs.int2Value;
+			this.obj1Value = rhs.obj1Value;
+			this.date1Value = rhs.date1Value;
 		}		
 		
 		#endregion

@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_EvolveIF extends BStub implements EvolveIFAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 15377840L;
+	public final static long serialVersionUID = 564008001L;
 	
 	public BStub_EvolveIF(final BTransport transport) {
 		super(transport);		

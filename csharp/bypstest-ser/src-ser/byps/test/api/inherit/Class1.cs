@@ -21,9 +21,15 @@ namespace byps.test.api.inherit
 		public Class1() {
 		}		
 		
-		internal Class1(int @int1, Class1 @nextClass1) {
+		public Class1(int @int1, Class1 @nextClass1) {
 			this.int1Value = @int1;
 			this.nextClass1Value = @nextClass1;
+		}		
+		
+		public Class1(Class1 rhs)
+		{
+			this.int1Value = rhs.int1Value;
+			this.nextClass1Value = rhs.nextClass1Value;
 		}		
 		
 		#endregion

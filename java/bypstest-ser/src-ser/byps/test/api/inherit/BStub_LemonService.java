@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_LemonService extends BStub implements LemonServiceAuth, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 605543968L;
+	public final static long serialVersionUID = 826877615L;
 	
 	public BStub_LemonService(final BTransport transport) {
 		super(transport);		

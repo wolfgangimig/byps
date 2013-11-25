@@ -8,17 +8,17 @@ namespace byps.test.api.inherit
 	
 	public class BStub_BioLemonService : BStub, BioLemonServiceAuth, BSerializable {	
 		
-		public readonly static long serialVersionUID = 474058508L;
+		public readonly static long serialVersionUID = 501819909L;
 		
 		public BStub_BioLemonService(BTransport transport)
 			: base(transport) {}			
 		
-		public bool Certify(String param) {
+		public virtual bool Certify(String param) {
 			BSyncResult<bool> asyncResult = new BSyncResult<bool>();			
 			Certify(param, BAsyncResultHelper.ToDelegate<bool>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Certify(String param, BAsyncResult<bool> asyncResult) {
+		public virtual void Certify(String param, BAsyncResult<bool> asyncResult) {
 			BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();			
 			req.paramValue = param;
 			transport.sendMethod(req, asyncResult);
@@ -31,12 +31,12 @@ namespace byps.test.api.inherit
 			return await task;
 		}
 		
-		public String Grow() {
+		public virtual String Grow() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
 			Grow(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Grow(BAsyncResult<String> asyncResult) {
+		public virtual void Grow(BAsyncResult<String> asyncResult) {
 			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -47,12 +47,12 @@ namespace byps.test.api.inherit
 			return await task;
 		}
 		
-		public String Squeeze() {
+		public virtual String Squeeze() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
 			Squeeze(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Squeeze(BAsyncResult<String> asyncResult) {
+		public virtual void Squeeze(BAsyncResult<String> asyncResult) {
 			BRequest_FruitService_squeeze req = new BRequest_FruitService_squeeze();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -63,12 +63,12 @@ namespace byps.test.api.inherit
 			return await task;
 		}
 		
-		public String Pick(byps.test.api.auth.SessionInfo sess, String fromTree) {
+		public virtual String Pick(byps.test.api.auth.SessionInfo sess, String fromTree) {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
 			Pick(sess, fromTree, BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Pick(byps.test.api.auth.SessionInfo sess, String fromTree, BAsyncResult<String> asyncResult) {
+		public virtual void Pick(byps.test.api.auth.SessionInfo sess, String fromTree, BAsyncResult<String> asyncResult) {
 			BRequest_LemonService_pick req = new BRequest_LemonService_pick();			
 			req.sessValue = sess;
 			req.fromTreeValue = fromTree;
@@ -83,12 +83,12 @@ namespace byps.test.api.inherit
 			return await task;
 		}
 		
-		public int UseParing() {
+		public virtual int UseParing() {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
 			UseParing(BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void UseParing(BAsyncResult<int> asyncResult) {
+		public virtual void UseParing(BAsyncResult<int> asyncResult) {
 			BRequest_BioLemonService_useParing req = new BRequest_BioLemonService_useParing();			
 			transport.sendMethod(req, asyncResult);
 		}

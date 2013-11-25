@@ -142,6 +142,14 @@ byps.BExceptionC = {
   CANCELLED : 19,
 
   /**
+   * Reverse HTTP request should be sent again.
+   * After HConstants#TIMEOUT_LONGPOLL_MILLIS, the server releases
+   * a long-poll (reverse) request. The client should open 
+   * a new long-poll. The server sends an empty response to the client.
+   */
+  RESEND_LONG_POLL : 204,
+  
+  /**
 	 * This code can be used, if authentication is required for the method. Same
 	 * as HttpURLConnection.HTTP_UNAUTHORIZED.
 	 */
@@ -1536,7 +1544,7 @@ byps.BServerR = function(transport, server) {
 						// no retry
 						break;
 
-					case byps.BExceptionC.TIMEOUT:
+					case byps.BExceptionC.RESEND_LONG_POLL:
 						// HWireClientR has released the expried long-poll.
 						// Ignore the error and send a new long-poll.
 						asyncResult(null, null);

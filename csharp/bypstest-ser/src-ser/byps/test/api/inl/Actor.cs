@@ -18,9 +18,15 @@ namespace byps.test.api.inl
 		public Actor() {
 		}		
 		
-		internal Actor(Point2D[] @shape, Matrix2D @position) {
+		public Actor(Point2D[] @shape, Matrix2D @position) {
 			this.shapeValue = @shape;
 			this.positionValue = @position;
+		}		
+		
+		public Actor(Actor rhs)
+		{
+			this.shapeValue = rhs.shapeValue;
+			this.positionValue = rhs.positionValue;
 		}		
 		
 		#endregion

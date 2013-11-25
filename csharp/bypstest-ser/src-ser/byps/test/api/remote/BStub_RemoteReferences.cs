@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteReferences : BStub, RemoteReferences, BSerializable {	
 		
-		public readonly static long serialVersionUID = 568637225L;
+		public readonly static long serialVersionUID = 1173792730L;
 		
 		public BStub_RemoteReferences(BTransport transport)
 			: base(transport) {}			
 		
-		public byps.test.api.refs.Node GetNode() {
+		public virtual byps.test.api.refs.Node GetNode() {
 			BSyncResult<byps.test.api.refs.Node> asyncResult = new BSyncResult<byps.test.api.refs.Node>();			
 			GetNode(BAsyncResultHelper.ToDelegate<byps.test.api.refs.Node>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetNode(BAsyncResult<byps.test.api.refs.Node> asyncResult) {
+		public virtual void GetNode(BAsyncResult<byps.test.api.refs.Node> asyncResult) {
 			BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -29,12 +29,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetNode(byps.test.api.refs.Node v) {
+		public virtual void SetNode(byps.test.api.refs.Node v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetNode(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetNode(byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetNode(byps.test.api.refs.Node v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);

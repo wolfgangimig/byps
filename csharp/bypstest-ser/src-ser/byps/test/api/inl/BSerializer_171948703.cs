@@ -27,9 +27,9 @@ namespace byps.test.api.inl
 			Actor obj = (Actor)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:492
+			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.Position, false, byps.test.api.inl.BSerializer_135329019.instance);
-			// checkpoint byps.gen.cs.PrintContext:492
+			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.Shape, false, byps.test.api.BSerializer_184101377.instance);
 		}
 		
@@ -39,9 +39,9 @@ namespace byps.test.api.inl
 			Actor obj = (Actor)(obj1 != null ? obj1 : bin.onObjectCreated(new Actor()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:447
+			// checkpoint byps.gen.cs.PrintContext:449
 			obj.Position = (byps.test.api.inl.Matrix2D)bin.readObj(false, byps.test.api.inl.BSerializer_135329019.instance);
-			// checkpoint byps.gen.cs.PrintContext:447
+			// checkpoint byps.gen.cs.PrintContext:449
 			obj.Shape = (byps.test.api.inl.Point2D[])bin.readObj(false, byps.test.api.BSerializer_184101377.instance);
 			
 			return obj;

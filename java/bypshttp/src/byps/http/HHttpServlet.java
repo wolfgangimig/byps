@@ -88,40 +88,30 @@ public abstract class HHttpServlet extends HttpServlet {
 
     if (log.isDebugEnabled()) log.debug(")init");
   }
-  
+
   private void initLogger(HConfig config) {
-    
+
     String logLevel = config.getValue("bypshttp.log.level", "WARN");
     String logFile = config.getValue("bypshttp.log.file", null);
 
     if (logFile != null) {
       logFile = logFile.replace('/', File.separatorChar);
-      // Properties props = new Properties();
-      // props.put("log4j.rootLogger=", logLevel + ", FI");
-      // props.put("log4j.appender.FI.File", logFile);
-      // props.put("log4j.appender.FI",
-      // "org.apache.log4j.DailyRollingFileAppender");
-      // props.put("log4j.appender.FI.DatePattern", "'.'yyyy-MM-dd");
-      // props.put("log4j.appender.FI.layout",
-      // "org.apache.log4j.PatternLayout");
-      // props.put("log4j.appender.FI.layout.ConversionPattern",
-      // "%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
-      // props.put("log4j.appender.FI.append", "false");
-      // PropertyConfigurator.configure(props);
 
-      Logger rootLogger = Logger.getRootLogger();
-      Appender ap = rootLogger.getAppender("FI");
-      if (ap != null) {
-        FileAppender fap = (FileAppender) ap;
-        fap.setFile(logFile);
-        fap.activateOptions();
-      }
-
-      if (logLevel.equalsIgnoreCase("DEBUG")) rootLogger.setLevel(Level.DEBUG);
-      if (logLevel.equalsIgnoreCase("INFO")) rootLogger.setLevel(Level.INFO);
-      if (logLevel.equalsIgnoreCase("WARN")) rootLogger.setLevel(Level.WARN);
-      if (logLevel.equalsIgnoreCase("ERROR")) rootLogger.setLevel(Level.ERROR);
+       Logger rootLogger = Logger.getRootLogger();
+       Appender ap = rootLogger.getAppender("FI");
+       if (ap != null) {
+       FileAppender fap = (FileAppender) ap;
+       fap.setFile(logFile);
+       fap.activateOptions();
+       }
       
+       if (logLevel.equalsIgnoreCase("DEBUG"))
+       rootLogger.setLevel(Level.DEBUG);
+       if (logLevel.equalsIgnoreCase("INFO")) rootLogger.setLevel(Level.INFO);
+       if (logLevel.equalsIgnoreCase("WARN")) rootLogger.setLevel(Level.WARN);
+       if (logLevel.equalsIgnoreCase("ERROR"))
+       rootLogger.setLevel(Level.ERROR);
+
       if (log.isDebugEnabled()) log.debug("Logger opened.");
     }
 
@@ -144,7 +134,7 @@ public abstract class HHttpServlet extends HttpServlet {
       try {
         HConfig config = getConfig();
         config.init(servletConfig);
-        
+
         initLogger(config);
 
         int serverId = config.getMyServerId();
@@ -239,7 +229,7 @@ public abstract class HHttpServlet extends HttpServlet {
       if (log.isDebugEnabled()) log.debug(")doGet");
       return;
     }
-    
+
     final String negoStr = request.getParameter("negotiate");
     if (log.isDebugEnabled()) log.debug("negotiate=" + negoStr);
     if (negoStr != null && negoStr.length() != 0) {
@@ -253,7 +243,7 @@ public abstract class HHttpServlet extends HttpServlet {
     final String messageIdStr = request.getParameter("messageid");
     if (log.isDebugEnabled()) log.debug("messageId=" + messageIdStr);
     if (messageIdStr == null || messageIdStr.length() == 0) {
-      //response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+      // response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
       response.getWriter().println("HHttpServlet running.");
       return;
     }
@@ -306,15 +296,15 @@ public abstract class HHttpServlet extends HttpServlet {
       }
     } catch (Throwable e) {
       log.error("GET failed, messageId=" + messageIdStr + ", streamId=" + streamIdStr + ", cancel=" + cancelStr, e);
-      
+
       int status = HttpServletResponse.SC_BAD_REQUEST;
       if (e instanceof FileNotFoundException) {
         status = HttpServletResponse.SC_NOT_FOUND;
       }
       response.sendError(status, e.toString());
-//      response.setHeader("Content-Length", "0");
-//      response.getOutputStream().close();
-      
+      // response.setHeader("Content-Length", "0");
+      // response.getOutputStream().close();
+
     } finally {
       // NDC.pop();
     }
@@ -523,20 +513,22 @@ public abstract class HHttpServlet extends HttpServlet {
 
   private HRequestContext createRequestContext(HttpServletRequest request, HttpServletResponse response, boolean async) {
     final HRequestContext rctxt = async ? new HAsyncContext(request.startAsync(request, response)) : new HSyncContext(request, response);
-    
+
     // Asynchronous requests are only used for reverse HTTP calls.
     // They are under control of the HWireClientR object of the session.
-    // This object stores the request context in a map for the next reverse request.
-    // If no reverse request is made for a certain time (timeout time), 
-    // the HWireClientR object has to release the context. 
-    // Killing the context by a timeout would not remove it from 
+    // This object stores the request context in a map for the next reverse
+    // request.
+    // If no reverse request is made for a certain time (timeout time),
+    // the HWireClientR object has to release the context.
+    // Killing the context by a timeout would not remove it from
     // the HWireClientR object.
-    // Thus, set the request timeout for Tomcat to a large value. 
-    // The request timeout for long-polls is HConstants.TIMEOUT_LONGPOLL_MILLIS which should be 
+    // Thus, set the request timeout for Tomcat to a large value.
+    // The request timeout for long-polls is HConstants.TIMEOUT_LONGPOLL_MILLIS
+    // which should be
     // less than HConstants.REQUEST_TIMEOUT_MILLIS.
-    
+
     rctxt.setTimeout(HConstants.REQUEST_TIMEOUT_MILLIS);
-    
+
     return rctxt;
   }
 
@@ -819,23 +811,23 @@ public abstract class HHttpServlet extends HttpServlet {
     }
 
     if (hsess != null) {
-    	try {
+      try {
         sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
         if (log.isDebugEnabled()) log.debug("byps session=" + sess);
         if (sess == null) {
-  
+
           if (createNewIfNotEx) {
-  
+
             HTargetIdFactory targetIdFactory = getTargetIdFactory();
-  
+
             // Initialized?
             if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
             if (targetIdFactory != null) {
               sess = createSession(request, response, hsess, serverRegistry);
               if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
-  
+
               sess.setTargetId(targetIdFactory.createTargetId());
-  
+
               HSessionListener.attachBSession(hsess, sess);
             }
             else {
@@ -844,10 +836,9 @@ public abstract class HHttpServlet extends HttpServlet {
             }
           }
         }
-    	}
-    	catch (Exception e) {
-    	  log.info("Cannot get/create session", e);
-    	}
+      } catch (Exception e) {
+        log.info("Cannot get/create session", e);
+      }
     }
 
     if (sess == null) {
@@ -865,14 +856,14 @@ public abstract class HHttpServlet extends HttpServlet {
       log.debug("params= " + request.getParameterMap());
     }
     try {
-      
+
       super.service(request, response);
-      
+
       int status = response.getStatus();
       if (status != HttpServletResponse.SC_OK) {
         if (log.isDebugEnabled()) log.debug("Request failed with HTTP status " + status);
       }
-      
+
     } catch (ServletException e) {
       if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
       throw e;

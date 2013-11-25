@@ -39,11 +39,23 @@ BINLINE BContentStreamFile::BContentStreamFile(const wstring& fname) {
     ifstream* fstrm = new ifstream(fname.c_str(), ios_base::binary|ios_base::in);
     init(fstrm);
 }
+BINLINE BContentStreamFile::BContentStreamFile(const wstring& fname, const wstring& contentType, int64_t contentLength) {
+    ifstream* fstrm = new ifstream(fname.c_str(), ios_base::binary|ios_base::in);
+    this->stream = PStream(fstrm);
+	this->contentType = contentType;
+	this->contentLength = contentLength;
+}
 #endif
 
 BINLINE BContentStreamFile::BContentStreamFile(const string& fname) {
     ifstream* fstrm = new ifstream(fname.c_str(), ios_base::binary|ios_base::in);
     init(fstrm);
+}
+BINLINE BContentStreamFile::BContentStreamFile(const string& fname, const string& contentType, int64_t contentLength) {
+    ifstream* fstrm = new ifstream(fname.c_str(), ios_base::binary|ios_base::in);
+    this->stream = PStream(fstrm);
+	this->contentType = BToStdWString(contentType);
+	this->contentLength = contentLength;
 }
 
 BINLINE void BContentStreamFile::init(ifstream* fstrm) {

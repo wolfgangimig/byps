@@ -19,7 +19,7 @@ public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodReques
 	
 	public final static long serialVersionUID = 1543768912L;
 	
-	public int getRemoteId() { return 1652234479; }
+	public int getRemoteId() { return 2037577312; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

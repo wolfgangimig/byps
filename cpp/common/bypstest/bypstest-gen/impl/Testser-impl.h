@@ -9508,15 +9508,15 @@ void BSerializer_1022088379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 // Serializer for byps.test.api.inherit.BRequest_PlantService_grow
 void BSerializer_695716901(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.inherit.BStub_BioFruitService
-void BSerializer_363642571(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_612235846(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.inherit.BStub_BioLemonService
-void BSerializer_474058508(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_501819909(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.inherit.BStub_FruitService
-void BSerializer_715959905(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_937293552(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.inherit.BStub_LemonService
-void BSerializer_605543968(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_826877615(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.inherit.BStub_PlantService
-void BSerializer_1954605928(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1733272281(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.inherit.Class1
 void BSerializer_6001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.inherit.Class1Collections
@@ -9966,33 +9966,33 @@ void BSerializer_802968058(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 // Serializer for byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
 void BSerializer_946544530(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteArrayTypes1dim
-void BSerializer_963816328(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1176140631(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteArrayTypes23
-void BSerializer_769717182(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_964138163(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteArrayTypes4dim
-void BSerializer_963726955(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1176051258(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteConstants
-void BSerializer_2045242510(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_429088323(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteEnums
-void BSerializer_485761455(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1222673152(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteInlineInstance
-void BSerializer_567395951(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_355071648(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteListTypes
-void BSerializer_1233438138(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1240892695(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteMapTypes
-void BSerializer_664304990(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1277224527(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemotePrimitiveTypes
-void BSerializer_1178916877(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1391241180(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteReferences
-void BSerializer_568637225(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1173792730(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteServerCtrl
-void BSerializer_1652234479(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_2037577312(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteSetTypes
-void BSerializer_1900796440(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1781251319(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteStreams
-void BSerializer_1043578866(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_2123238175(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteWithAuthentication
-void BSerializer_1983670399(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1532028880(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.set.SetTypes
 void BSerializer_5001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.srvr.BRequest_ClientIF_getStreams
@@ -10022,9 +10022,9 @@ void BSerializer_1533268444(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 // Serializer for byps.test.api.srvr.BRequest_ServerIF_setPartner
 void BSerializer_1332497686(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.srvr.BStub_ClientIF
-void BSerializer_2049072174(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_955752991(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.srvr.BStub_ServerIF
-void BSerializer_1775199834(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1426448279(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.srvr.ChatStructure
 void BSerializer_7007(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.strm.Stream1
@@ -10040,7 +10040,7 @@ void BSerializer_998004147(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 // Serializer for byps.test.api.ver.BRequest_EvolveIF_setEvolve
 void BSerializer_1064683365(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.ver.BStub_EvolveIF
-void BSerializer_15377840(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_564008001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.ver.Evolve
 void BSerializer_1391985860(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.ver.Evolve2

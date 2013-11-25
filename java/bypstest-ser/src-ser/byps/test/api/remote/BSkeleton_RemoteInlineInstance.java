@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteInlineInstance extends BSkeleton implements RemoteInlineInstanceAsync {
 	
-	public final static long serialVersionUID = 567395951L;
+	public final static long serialVersionUID = 355071648L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public void setActor(byps.test.api.inl.Actor act) throws RemoteException {

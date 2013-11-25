@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_LemonService extends BSkeleton implements LemonServiceAsync {
 	
-	public final static long serialVersionUID = 605543968L;
+	public final static long serialVersionUID = 826877615L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException {

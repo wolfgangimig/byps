@@ -40,8 +40,10 @@ class BContentStreamFile : public BContentStreamImpl {
 public:
 #ifdef BFSTREAM_WCHAR
     BContentStreamFile(const wstring& fname);
+    BContentStreamFile(const wstring& fname, const wstring& contentType, int64_t contentLength);
 #endif
-    BContentStreamFile(const string& fname);
+	BContentStreamFile(const string& fname);
+    BContentStreamFile(const string& fname, const string& contentType, int64_t contentLength);
 	virtual ~BContentStreamFile();
 private:
     void init(ifstream* fstrm);

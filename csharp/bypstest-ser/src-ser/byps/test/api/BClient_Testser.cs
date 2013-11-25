@@ -49,7 +49,7 @@ namespace byps.test.api
 		
 		public BClient_Testser addRemote(byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) {
 			if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-			serverR.server.addRemote(2049072174, remoteSkeleton);
+			serverR.server.addRemote(955752991, remoteSkeleton);
 			return this;
 		}
 		
@@ -81,28 +81,28 @@ namespace byps.test.api
 		}
 		
 		public override BRemote getStub(int remoteId) {
-			if (remoteId == 363642571) return BioFruitService;
-			if (remoteId == 474058508) return BioLemonService;
-			if (remoteId == 715959905) return FruitService;
-			if (remoteId == 605543968) return LemonService;
-			if (remoteId == 1954605928) return PlantService;
-			if (remoteId == 963816328) return RemoteArrayTypes1dim;
-			if (remoteId == 769717182) return RemoteArrayTypes23;
-			if (remoteId == 963726955) return RemoteArrayTypes4dim;
-			if (remoteId == 2045242510) return RemoteConstants;
-			if (remoteId == 485761455) return RemoteEnums;
-			if (remoteId == 567395951) return RemoteInlineInstance;
-			if (remoteId == 1233438138) return RemoteListTypes;
-			if (remoteId == 664304990) return RemoteMapTypes;
-			if (remoteId == 1178916877) return RemotePrimitiveTypes;
-			if (remoteId == 568637225) return RemoteReferences;
-			if (remoteId == 1652234479) return RemoteServerCtrl;
-			if (remoteId == 1900796440) return RemoteSetTypes;
-			if (remoteId == 1043578866) return RemoteStreams;
-			if (remoteId == 1983670399) return RemoteWithAuthentication;
-			if (remoteId == 2049072174) return ClientIF;
-			if (remoteId == 1775199834) return ServerIF;
-			if (remoteId == 15377840) return EvolveIF;
+			if (remoteId == 612235846) return BioFruitService;
+			if (remoteId == 501819909) return BioLemonService;
+			if (remoteId == 937293552) return FruitService;
+			if (remoteId == 826877615) return LemonService;
+			if (remoteId == 1733272281) return PlantService;
+			if (remoteId == 1176140631) return RemoteArrayTypes1dim;
+			if (remoteId == 964138163) return RemoteArrayTypes23;
+			if (remoteId == 1176051258) return RemoteArrayTypes4dim;
+			if (remoteId == 429088323) return RemoteConstants;
+			if (remoteId == 1222673152) return RemoteEnums;
+			if (remoteId == 355071648) return RemoteInlineInstance;
+			if (remoteId == 1240892695) return RemoteListTypes;
+			if (remoteId == 1277224527) return RemoteMapTypes;
+			if (remoteId == 1391241180) return RemotePrimitiveTypes;
+			if (remoteId == 1173792730) return RemoteReferences;
+			if (remoteId == 2037577312) return RemoteServerCtrl;
+			if (remoteId == 1781251319) return RemoteSetTypes;
+			if (remoteId == 2123238175) return RemoteStreams;
+			if (remoteId == 1532028880) return RemoteWithAuthentication;
+			if (remoteId == 955752991) return ClientIF;
+			if (remoteId == 1426448279) return ServerIF;
+			if (remoteId == 564008001) return EvolveIF;
 			return null;
 		}
 		

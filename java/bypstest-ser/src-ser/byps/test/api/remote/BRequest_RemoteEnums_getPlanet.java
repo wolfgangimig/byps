@@ -16,7 +16,7 @@ public final class BRequest_RemoteEnums_getPlanet extends BMethodRequest impleme
 	
 	public final static long serialVersionUID = 6352043L;
 	
-	public int getRemoteId() { return 485761455; }
+	public int getRemoteId() { return 1222673152; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

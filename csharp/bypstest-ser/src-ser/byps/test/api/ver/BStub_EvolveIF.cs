@@ -8,17 +8,17 @@ namespace byps.test.api.ver
 	
 	public class BStub_EvolveIF : BStub, EvolveIF, BSerializable {	
 		
-		public readonly static long serialVersionUID = 15377840L;
+		public readonly static long serialVersionUID = 564008001L;
 		
 		public BStub_EvolveIF(BTransport transport)
 			: base(transport) {}			
 		
-		public void SetEvolve(Evolve obj) {
+		public virtual void SetEvolve(Evolve obj) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetEvolve(obj, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetEvolve(Evolve obj, BAsyncResult<Object> asyncResult) {
+		public virtual void SetEvolve(Evolve obj, BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();			
 			req.objValue = obj;
 			transport.sendMethod(req, asyncResult);
@@ -31,12 +31,12 @@ namespace byps.test.api.ver
 			await task;
 		}
 		
-		public Evolve GetEvolve() {
+		public virtual Evolve GetEvolve() {
 			BSyncResult<Evolve> asyncResult = new BSyncResult<Evolve>();			
 			GetEvolve(BAsyncResultHelper.ToDelegate<Evolve>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetEvolve(BAsyncResult<Evolve> asyncResult) {
+		public virtual void GetEvolve(BAsyncResult<Evolve> asyncResult) {
 			BRequest_EvolveIF_getEvolve req = new BRequest_EvolveIF_getEvolve();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -47,12 +47,12 @@ namespace byps.test.api.ver
 			return await task;
 		}
 		
-		public void SetClient(EvolveIF partner) {
+		public virtual void SetClient(EvolveIF partner) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetClient(partner, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetClient(EvolveIF partner, BAsyncResult<Object> asyncResult) {
+		public virtual void SetClient(EvolveIF partner, BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();			
 			req.partnerValue = partner;
 			transport.sendMethod(req, asyncResult);
@@ -65,12 +65,12 @@ namespace byps.test.api.ver
 			await task;
 		}
 		
-		public EvolveIF GetClient() {
+		public virtual EvolveIF GetClient() {
 			BSyncResult<EvolveIF> asyncResult = new BSyncResult<EvolveIF>();			
 			GetClient(BAsyncResultHelper.ToDelegate<EvolveIF>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetClient(BAsyncResult<EvolveIF> asyncResult) {
+		public virtual void GetClient(BAsyncResult<EvolveIF> asyncResult) {
 			BRequest_EvolveIF_getClient req = new BRequest_EvolveIF_getClient();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -81,12 +81,12 @@ namespace byps.test.api.ver
 			return await task;
 		}
 		
-		public void SendEvolveToClient() {
+		public virtual void SendEvolveToClient() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SendEvolveToClient(BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SendEvolveToClient(BAsyncResult<Object> asyncResult) {
+		public virtual void SendEvolveToClient(BAsyncResult<Object> asyncResult) {
 			BRequest_EvolveIF_sendEvolveToClient req = new BRequest_EvolveIF_sendEvolveToClient();			
 			transport.sendMethod(req, asyncResult);
 		}

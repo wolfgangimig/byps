@@ -18,12 +18,21 @@ namespace byps.test.api.enu
 		public UsePlanets() {
 		}		
 		
-		internal UsePlanets(EnumPlanets @planet, EnumPlanets @planet2, EnumPlanets[] @arrayOfPlanets, List<EnumPlanets> @listOfPlanets, IDictionary<String,EnumPlanets> @mapOfPlanets) {
+		public UsePlanets(EnumPlanets @planet, EnumPlanets @planet2, EnumPlanets[] @arrayOfPlanets, List<EnumPlanets> @listOfPlanets, IDictionary<String,EnumPlanets> @mapOfPlanets) {
 			this.planetValue = @planet;
 			this.planet2Value = @planet2;
 			this.arrayOfPlanetsValue = @arrayOfPlanets;
 			this.listOfPlanetsValue = @listOfPlanets;
 			this.mapOfPlanetsValue = @mapOfPlanets;
+		}		
+		
+		public UsePlanets(UsePlanets rhs)
+		{
+			this.planetValue = rhs.planetValue;
+			this.planet2Value = rhs.planet2Value;
+			this.arrayOfPlanetsValue = rhs.arrayOfPlanetsValue;
+			this.listOfPlanetsValue = rhs.listOfPlanetsValue;
+			this.mapOfPlanetsValue = rhs.mapOfPlanetsValue;
 		}		
 		
 		#endregion

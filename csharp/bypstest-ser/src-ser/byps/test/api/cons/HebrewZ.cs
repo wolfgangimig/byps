@@ -18,8 +18,13 @@ namespace byps.test.api.cons
 		public HebrewZ() {
 		}		
 		
-		internal HebrewZ(String @core) {
+		public HebrewZ(String @core) {
 			this.coreValue = @core;
+		}		
+		
+		public HebrewZ(HebrewZ rhs)
+		{
+			this.coreValue = rhs.coreValue;
 		}		
 		
 		#endregion

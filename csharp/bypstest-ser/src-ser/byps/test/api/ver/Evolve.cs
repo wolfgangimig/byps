@@ -21,7 +21,7 @@ namespace byps.test.api.ver
 		public Evolve() {
 		}		
 		
-		internal Evolve(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, bool[] @bools1, byte[] @bytes1, char[] @chars1, short[] @shorts1, int[] @ints1, long[] @longs1, float[] @floats1, double[] @doubles1, String @str1, Object @obj1, Evolve2 @evo1, IList<int> @list1, ISet<int> @set1, IDictionary<int,int> @map1, bool @bool2, byte @byte2, char @char2, short @short2, int @int2, long @long2, float @float2, double @double2, bool[] @bools2, byte[] @bytes2, char[] @chars2, short[] @shorts2, int[] @ints2, long[] @longs2, float[] @floats2, double[] @doubles2, String @str2, Object @obj2, Evolve2 @evo2, IList<int> @list2, ISet<int> @set2, IDictionary<int,int> @map2, bool @bool3, byte @byte3, char @char3, short @short3, int @int3, long @long3, float @float3, double @double3, bool[] @bools3, byte[] @bytes3, char[] @chars3, short[] @shorts3, int[] @ints3, long[] @longs3, float[] @floats3, double[] @doubles3, String @str3, Object @obj3, Evolve2 @evo3, IList<int> @list3, ISet<int> @set3, IDictionary<int,int> @map3) {
+		public Evolve(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, bool[] @bools1, byte[] @bytes1, char[] @chars1, short[] @shorts1, int[] @ints1, long[] @longs1, float[] @floats1, double[] @doubles1, String @str1, Object @obj1, Evolve2 @evo1, IList<int> @list1, ISet<int> @set1, IDictionary<int,int> @map1, bool @bool2, byte @byte2, char @char2, short @short2, int @int2, long @long2, float @float2, double @double2, bool[] @bools2, byte[] @bytes2, char[] @chars2, short[] @shorts2, int[] @ints2, long[] @longs2, float[] @floats2, double[] @doubles2, String @str2, Object @obj2, Evolve2 @evo2, IList<int> @list2, ISet<int> @set2, IDictionary<int,int> @map2, bool @bool3, byte @byte3, char @char3, short @short3, int @int3, long @long3, float @float3, double @double3, bool[] @bools3, byte[] @bytes3, char[] @chars3, short[] @shorts3, int[] @ints3, long[] @longs3, float[] @floats3, double[] @doubles3, String @str3, Object @obj3, Evolve2 @evo3, IList<int> @list3, ISet<int> @set3, IDictionary<int,int> @map3) {
 			this.bool1Value = @bool1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -88,6 +88,76 @@ namespace byps.test.api.ver
 			this.list3Value = @list3;
 			this.set3Value = @set3;
 			this.map3Value = @map3;
+		}		
+		
+		public Evolve(Evolve rhs)
+		{
+			this.bool1Value = rhs.bool1Value;
+			this.byte1Value = rhs.byte1Value;
+			this.char1Value = rhs.char1Value;
+			this.short1Value = rhs.short1Value;
+			this.int1Value = rhs.int1Value;
+			this.long1Value = rhs.long1Value;
+			this.float1Value = rhs.float1Value;
+			this.double1Value = rhs.double1Value;
+			this.bools1Value = rhs.bools1Value;
+			this.bytes1Value = rhs.bytes1Value;
+			this.chars1Value = rhs.chars1Value;
+			this.shorts1Value = rhs.shorts1Value;
+			this.ints1Value = rhs.ints1Value;
+			this.longs1Value = rhs.longs1Value;
+			this.floats1Value = rhs.floats1Value;
+			this.doubles1Value = rhs.doubles1Value;
+			this.str1Value = rhs.str1Value;
+			this.obj1Value = rhs.obj1Value;
+			this.evo1Value = rhs.evo1Value;
+			this.list1Value = rhs.list1Value;
+			this.set1Value = rhs.set1Value;
+			this.map1Value = rhs.map1Value;
+			this.bool2Value = rhs.bool2Value;
+			this.byte2Value = rhs.byte2Value;
+			this.char2Value = rhs.char2Value;
+			this.short2Value = rhs.short2Value;
+			this.int2Value = rhs.int2Value;
+			this.long2Value = rhs.long2Value;
+			this.float2Value = rhs.float2Value;
+			this.double2Value = rhs.double2Value;
+			this.bools2Value = rhs.bools2Value;
+			this.bytes2Value = rhs.bytes2Value;
+			this.chars2Value = rhs.chars2Value;
+			this.shorts2Value = rhs.shorts2Value;
+			this.ints2Value = rhs.ints2Value;
+			this.longs2Value = rhs.longs2Value;
+			this.floats2Value = rhs.floats2Value;
+			this.doubles2Value = rhs.doubles2Value;
+			this.str2Value = rhs.str2Value;
+			this.obj2Value = rhs.obj2Value;
+			this.evo2Value = rhs.evo2Value;
+			this.list2Value = rhs.list2Value;
+			this.set2Value = rhs.set2Value;
+			this.map2Value = rhs.map2Value;
+			this.bool3Value = rhs.bool3Value;
+			this.byte3Value = rhs.byte3Value;
+			this.char3Value = rhs.char3Value;
+			this.short3Value = rhs.short3Value;
+			this.int3Value = rhs.int3Value;
+			this.long3Value = rhs.long3Value;
+			this.float3Value = rhs.float3Value;
+			this.double3Value = rhs.double3Value;
+			this.bools3Value = rhs.bools3Value;
+			this.bytes3Value = rhs.bytes3Value;
+			this.chars3Value = rhs.chars3Value;
+			this.shorts3Value = rhs.shorts3Value;
+			this.ints3Value = rhs.ints3Value;
+			this.longs3Value = rhs.longs3Value;
+			this.floats3Value = rhs.floats3Value;
+			this.doubles3Value = rhs.doubles3Value;
+			this.str3Value = rhs.str3Value;
+			this.obj3Value = rhs.obj3Value;
+			this.evo3Value = rhs.evo3Value;
+			this.list3Value = rhs.list3Value;
+			this.set3Value = rhs.set3Value;
+			this.map3Value = rhs.map3Value;
 		}		
 		
 		#endregion

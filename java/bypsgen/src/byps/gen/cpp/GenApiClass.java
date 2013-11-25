@@ -196,7 +196,7 @@ class GenApiClass {
 			mpr = mpr.print("(int16_t)" + value);
 		}
 		else if (tinfo.qname.equals("int")) {
-			if (value instanceof Number) value = ((Number)value).longValue();
+			if (value instanceof Number) value = ((Number)value).intValue();
 			if (value instanceof String) value = Integer.parseInt((String)value);
 			Integer intVal = (Integer)value;
 			if (intVal == Integer.MIN_VALUE) {

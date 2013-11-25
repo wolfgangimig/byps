@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_BioLemonService extends BSkeleton implements BioLemonServiceAsync {
 	
-	public final static long serialVersionUID = 474058508L;
+	public final static long serialVersionUID = 501819909L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public boolean certify(java.lang.String param) throws RemoteException {

@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteServerCtrl : BStub, RemoteServerCtrl, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1652234479L;
+		public readonly static long serialVersionUID = 2037577312L;
 		
 		public BStub_RemoteServerCtrl(BTransport transport)
 			: base(transport) {}			
 		
-		public void PublishRemote(String name, BRemote remote, bool fowardToOtherServers) {
+		public virtual void PublishRemote(String name, BRemote remote, bool fowardToOtherServers) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			PublishRemote(name, remote, fowardToOtherServers, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void PublishRemote(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
+		public virtual void PublishRemote(String name, BRemote remote, bool fowardToOtherServers, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();			
 			req.nameValue = name;
 			req.remoteValue = remote;
@@ -35,12 +35,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public BRemote GetPublishedRemote(String name) {
+		public virtual BRemote GetPublishedRemote(String name) {
 			BSyncResult<BRemote> asyncResult = new BSyncResult<BRemote>();			
 			GetPublishedRemote(name, BAsyncResultHelper.ToDelegate<BRemote>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPublishedRemote(String name, BAsyncResult<BRemote> asyncResult) {
+		public virtual void GetPublishedRemote(String name, BAsyncResult<BRemote> asyncResult) {
 			BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();			
 			req.nameValue = name;
 			transport.sendMethod(req, asyncResult);
@@ -53,12 +53,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void RemovePublishedRemote(String name) {
+		public virtual void RemovePublishedRemote(String name) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			RemovePublishedRemote(name, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void RemovePublishedRemote(String name, BAsyncResult<Object> asyncResult) {
+		public virtual void RemovePublishedRemote(String name, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();			
 			req.nameValue = name;
 			transport.sendMethod(req, asyncResult);

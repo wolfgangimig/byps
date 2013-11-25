@@ -58,6 +58,12 @@
   <ItemGroup>
     <None Include="bypshttp.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\byps\byps.csproj">
+      <Project>{fe91f63d-5bcd-456a-9b38-5a348dfb067c}</Project>
+      <Name>byps</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

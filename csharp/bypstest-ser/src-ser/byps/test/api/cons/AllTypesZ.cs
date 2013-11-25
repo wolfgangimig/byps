@@ -18,7 +18,7 @@ namespace byps.test.api.cons
 		public AllTypesZ() {
 		}		
 		
-		internal AllTypesZ(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, String @string1, HebrewZ @hebrew1, byte[] @byte2, int[] @int2, String[] @string2, HebrewZ[] @hebrew2) {
+		public AllTypesZ(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, String @string1, HebrewZ @hebrew1, byte[] @byte2, int[] @int2, String[] @string2, HebrewZ[] @hebrew2) {
 			this.bool1Value = @bool1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -33,6 +33,24 @@ namespace byps.test.api.cons
 			this.int2Value = @int2;
 			this.string2Value = @string2;
 			this.hebrew2Value = @hebrew2;
+		}		
+		
+		public AllTypesZ(AllTypesZ rhs)
+		{
+			this.bool1Value = rhs.bool1Value;
+			this.byte1Value = rhs.byte1Value;
+			this.char1Value = rhs.char1Value;
+			this.short1Value = rhs.short1Value;
+			this.int1Value = rhs.int1Value;
+			this.long1Value = rhs.long1Value;
+			this.float1Value = rhs.float1Value;
+			this.double1Value = rhs.double1Value;
+			this.string1Value = rhs.string1Value;
+			this.hebrew1Value = rhs.hebrew1Value;
+			this.byte2Value = rhs.byte2Value;
+			this.int2Value = rhs.int2Value;
+			this.string2Value = rhs.string2Value;
+			this.hebrew2Value = rhs.hebrew2Value;
 		}		
 		
 		#endregion

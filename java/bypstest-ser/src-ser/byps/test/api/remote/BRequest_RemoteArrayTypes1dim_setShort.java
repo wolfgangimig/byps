@@ -17,7 +17,7 @@ public final class BRequest_RemoteArrayTypes1dim_setShort extends BMethodRequest
 	
 	public final static long serialVersionUID = 1934214314L;
 	
-	public int getRemoteId() { return 963816328; }
+	public int getRemoteId() { return 1176140631; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

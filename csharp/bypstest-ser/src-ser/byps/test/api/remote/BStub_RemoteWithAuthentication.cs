@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteWithAuthentication : BStub, RemoteWithAuthenticationAuth, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1983670399L;
+		public readonly static long serialVersionUID = 1532028880L;
 		
 		public BStub_RemoteWithAuthentication(BTransport transport)
 			: base(transport) {}			
 		
-		public void SetUseAuthentication(bool useAuth) {
+		public virtual void SetUseAuthentication(bool useAuth) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetUseAuthentication(useAuth, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetUseAuthentication(bool useAuth, BAsyncResult<Object> asyncResult) {
+		public virtual void SetUseAuthentication(bool useAuth, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteWithAuthentication_setUseAuthentication req = new BRequest_RemoteWithAuthentication_setUseAuthentication();			
 			req.useAuthValue = useAuth;
 			transport.sendMethod(req, asyncResult);
@@ -31,12 +31,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public byps.test.api.auth.SessionInfo Login(String userName, String userPwd) {
+		public virtual byps.test.api.auth.SessionInfo Login(String userName, String userPwd) {
 			BSyncResult<byps.test.api.auth.SessionInfo> asyncResult = new BSyncResult<byps.test.api.auth.SessionInfo>();			
 			Login(userName, userPwd, BAsyncResultHelper.ToDelegate<byps.test.api.auth.SessionInfo>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Login(String userName, String userPwd, BAsyncResult<byps.test.api.auth.SessionInfo> asyncResult) {
+		public virtual void Login(String userName, String userPwd, BAsyncResult<byps.test.api.auth.SessionInfo> asyncResult) {
 			BRequest_RemoteWithAuthentication_login req = new BRequest_RemoteWithAuthentication_login();			
 			req.userNameValue = userName;
 			req.userPwdValue = userPwd;
@@ -51,12 +51,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public int Doit(int value) {
+		public virtual int Doit(int value) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
 			Doit(value, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Doit(int value, BAsyncResult<int> asyncResult) {
+		public virtual void Doit(int value, BAsyncResult<int> asyncResult) {
 			BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();			
 			req.valueValue = value;
 			transport.sendMethod(req, asyncResult);
@@ -69,12 +69,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void Expire() {
+		public virtual void Expire() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			Expire(BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void Expire(BAsyncResult<Object> asyncResult) {
+		public virtual void Expire(BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteWithAuthentication_expire req = new BRequest_RemoteWithAuthentication_expire();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -85,12 +85,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetReloginCount(int count) {
+		public virtual void SetReloginCount(int count) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetReloginCount(count, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetReloginCount(int count, BAsyncResult<Object> asyncResult) {
+		public virtual void SetReloginCount(int count, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteWithAuthentication_setReloginCount req = new BRequest_RemoteWithAuthentication_setReloginCount();			
 			req.countValue = count;
 			transport.sendMethod(req, asyncResult);

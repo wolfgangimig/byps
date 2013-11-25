@@ -18,12 +18,21 @@ namespace byps.test.api.strm
 		public Stream1() {
 		}		
 		
-		internal Stream1(System.IO.Stream @is1, String @contentType, System.IO.Stream[] @arrStream, IList<System.IO.Stream> @listStream, IDictionary<int,System.IO.Stream> @mapStream) {
+		public Stream1(System.IO.Stream @is1, String @contentType, System.IO.Stream[] @arrStream, IList<System.IO.Stream> @listStream, IDictionary<int,System.IO.Stream> @mapStream) {
 			this.is1Value = @is1;
 			this.contentTypeValue = @contentType;
 			this.arrStreamValue = @arrStream;
 			this.listStreamValue = @listStream;
 			this.mapStreamValue = @mapStream;
+		}		
+		
+		public Stream1(Stream1 rhs)
+		{
+			this.is1Value = rhs.is1Value;
+			this.contentTypeValue = rhs.contentTypeValue;
+			this.arrStreamValue = rhs.arrStreamValue;
+			this.listStreamValue = rhs.listStreamValue;
+			this.mapStreamValue = rhs.mapStreamValue;
 		}		
 		
 		#endregion

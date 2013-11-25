@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServerCtrlAsync {
 	
-	public final static long serialVersionUID = 1652234479L;
+	public final static long serialVersionUID = 2037577312L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {

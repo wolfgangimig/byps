@@ -16,26 +16,26 @@ namespace byps.test.api.srvr
 	/// </remark>
 	public class BSkeleton_ClientIF : BSkeleton, ClientIF {	
 		
-		public readonly static long serialVersionUID = 2049072174L;
+		public readonly static long serialVersionUID = 955752991L;
 		
 		public virtual int IncrementInt(int a) {
 			throw new NotImplementedException();
 		}
 		public virtual async void IncrementInt(int a, BAsyncResult<int> asyncResult) {
-			int ret = default(int);
-			Exception ex = null;
-			bool callAsync = false;
+			int __byps__ret = default(int);
+			Exception __byps__ex = null;
+			bool __byps__callAsync = false;
 			try {
-				ret = IncrementInt(a);
+				__byps__ret = IncrementInt(a);
 			}
-			catch (NotImplementedException) { callAsync = true; }
-			catch (Exception e) { ex = e; }
+			catch (NotImplementedException) { __byps__callAsync = true; }
+			catch (Exception e) { __byps__ex = e; }
 			if (callAsync) try {
-				ret = await IncrementIntAsync(a);
+				__byps__ret = await IncrementIntAsync(a);
 			}
-			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
-			catch (Exception e) { ex = e; }
-			asyncResult(ret, ex);
+			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { __byps__ex = e; }
+			asyncResult(__byps__ret, __byps__ex);
 		}
 		public virtual Task<int> IncrementIntAsync(int a){
 			return BTaskConstants<int>.NotImplemented;
@@ -45,20 +45,20 @@ namespace byps.test.api.srvr
 			throw new NotImplementedException();
 		}
 		public virtual async void GetStreams(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
-			IList<System.IO.Stream> ret = default(IList<System.IO.Stream>);
-			Exception ex = null;
-			bool callAsync = false;
+			IList<System.IO.Stream> __byps__ret = default(IList<System.IO.Stream>);
+			Exception __byps__ex = null;
+			bool __byps__callAsync = false;
 			try {
-				ret = GetStreams(ctrl);
+				__byps__ret = GetStreams(ctrl);
 			}
-			catch (NotImplementedException) { callAsync = true; }
-			catch (Exception e) { ex = e; }
+			catch (NotImplementedException) { __byps__callAsync = true; }
+			catch (Exception e) { __byps__ex = e; }
 			if (callAsync) try {
-				ret = await GetStreamsAsync(ctrl);
+				__byps__ret = await GetStreamsAsync(ctrl);
 			}
-			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
-			catch (Exception e) { ex = e; }
-			asyncResult(ret, ex);
+			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { __byps__ex = e; }
+			asyncResult(__byps__ret, __byps__ex);
 		}
 		public virtual Task<IList<System.IO.Stream>> GetStreamsAsync(int ctrl){
 			return BTaskConstants<IList<System.IO.Stream>>.NotImplemented;
@@ -68,20 +68,20 @@ namespace byps.test.api.srvr
 			throw new NotImplementedException();
 		}
 		public virtual async void PutStreams(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
-			Object ret = default(Object);
-			Exception ex = null;
-			bool callAsync = false;
+			Object __byps__ret = default(Object);
+			Exception __byps__ex = null;
+			bool __byps__callAsync = false;
 			try {
 				PutStreams(strm, ctrl);
 			}
-			catch (NotImplementedException) { callAsync = true; }
-			catch (Exception e) { ex = e; }
+			catch (NotImplementedException) { __byps__callAsync = true; }
+			catch (Exception e) { __byps__ex = e; }
 			if (callAsync) try {
 				await PutStreamsAsync(strm, ctrl);
 			}
-			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
-			catch (Exception e) { ex = e; }
-			asyncResult(ret, ex);
+			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { __byps__ex = e; }
+			asyncResult(__byps__ret, __byps__ex);
 		}
 		public virtual Task PutStreamsAsync(IList<System.IO.Stream> strm, int ctrl){
 			return BTaskConstants<Object>.NotImplemented;
@@ -91,20 +91,20 @@ namespace byps.test.api.srvr
 			throw new NotImplementedException();
 		}
 		public virtual async void SendChat(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
-			ChatStructure ret = default(ChatStructure);
-			Exception ex = null;
-			bool callAsync = false;
+			ChatStructure __byps__ret = default(ChatStructure);
+			Exception __byps__ex = null;
+			bool __byps__callAsync = false;
 			try {
-				ret = SendChat(cs);
+				__byps__ret = SendChat(cs);
 			}
-			catch (NotImplementedException) { callAsync = true; }
-			catch (Exception e) { ex = e; }
+			catch (NotImplementedException) { __byps__callAsync = true; }
+			catch (Exception e) { __byps__ex = e; }
 			if (callAsync) try {
-				ret = await SendChatAsync(cs);
+				__byps__ret = await SendChatAsync(cs);
 			}
-			catch (NotImplementedException) { ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
-			catch (Exception e) { ex = e; }
-			asyncResult(ret, ex);
+			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
+			catch (Exception e) { __byps__ex = e; }
+			asyncResult(__byps__ret, __byps__ex);
 		}
 		public virtual Task<ChatStructure> SendChatAsync(ChatStructure cs){
 			return BTaskConstants<ChatStructure>.NotImplemented;

@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteArrayTypes23 : BStub, RemoteArrayTypes23, BSerializable {	
 		
-		public readonly static long serialVersionUID = 769717182L;
+		public readonly static long serialVersionUID = 964138163L;
 		
 		public BStub_RemoteArrayTypes23(BTransport transport)
 			: base(transport) {}			
 		
-		public int[] SendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4) {
+		public virtual int[] SendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4) {
 			BSyncResult<int[]> asyncResult = new BSyncResult<int[]>();			
 			SendArraysInt(arr2, arr3, arr4, BAsyncResultHelper.ToDelegate<int[]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void SendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4, BAsyncResult<int[]> asyncResult) {
+		public virtual void SendArraysInt(int[,] arr2, int[,,] arr3, int[,,,] arr4, BAsyncResult<int[]> asyncResult) {
 			BRequest_RemoteArrayTypes23_sendArraysInt req = new BRequest_RemoteArrayTypes23_sendArraysInt();			
 			req.arr2Value = arr2;
 			req.arr3Value = arr3;
@@ -35,12 +35,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public String[] SendArraysString(String[,] arr2, String[,,] arr3, String[,,,] arr4) {
+		public virtual String[] SendArraysString(String[,] arr2, String[,,] arr3, String[,,,] arr4) {
 			BSyncResult<String[]> asyncResult = new BSyncResult<String[]>();			
 			SendArraysString(arr2, arr3, arr4, BAsyncResultHelper.ToDelegate<String[]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void SendArraysString(String[,] arr2, String[,,] arr3, String[,,,] arr4, BAsyncResult<String[]> asyncResult) {
+		public virtual void SendArraysString(String[,] arr2, String[,,] arr3, String[,,,] arr4, BAsyncResult<String[]> asyncResult) {
 			BRequest_RemoteArrayTypes23_sendArraysString req = new BRequest_RemoteArrayTypes23_sendArraysString();			
 			req.arr2Value = arr2;
 			req.arr3Value = arr3;
@@ -57,12 +57,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public byps.test.api.prim.PrimitiveTypes[] SendArraysClass(byps.test.api.prim.PrimitiveTypes[,] arr2, byps.test.api.prim.PrimitiveTypes[,,] arr3, byps.test.api.prim.PrimitiveTypes[,,,] arr4) {
+		public virtual byps.test.api.prim.PrimitiveTypes[] SendArraysClass(byps.test.api.prim.PrimitiveTypes[,] arr2, byps.test.api.prim.PrimitiveTypes[,,] arr3, byps.test.api.prim.PrimitiveTypes[,,,] arr4) {
 			BSyncResult<byps.test.api.prim.PrimitiveTypes[]> asyncResult = new BSyncResult<byps.test.api.prim.PrimitiveTypes[]>();			
 			SendArraysClass(arr2, arr3, arr4, BAsyncResultHelper.ToDelegate<byps.test.api.prim.PrimitiveTypes[]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void SendArraysClass(byps.test.api.prim.PrimitiveTypes[,] arr2, byps.test.api.prim.PrimitiveTypes[,,] arr3, byps.test.api.prim.PrimitiveTypes[,,,] arr4, BAsyncResult<byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
+		public virtual void SendArraysClass(byps.test.api.prim.PrimitiveTypes[,] arr2, byps.test.api.prim.PrimitiveTypes[,,] arr3, byps.test.api.prim.PrimitiveTypes[,,,] arr4, BAsyncResult<byps.test.api.prim.PrimitiveTypes[]> asyncResult) {
 			BRequest_RemoteArrayTypes23_sendArraysClass req = new BRequest_RemoteArrayTypes23_sendArraysClass();			
 			req.arr2Value = arr2;
 			req.arr3Value = arr3;
@@ -79,12 +79,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public Object[] SendArraysObject(Object[,] arr2, Object[,,] arr3, Object[,,,] arr4) {
+		public virtual Object[] SendArraysObject(Object[,] arr2, Object[,,] arr3, Object[,,,] arr4) {
 			BSyncResult<Object[]> asyncResult = new BSyncResult<Object[]>();			
 			SendArraysObject(arr2, arr3, arr4, BAsyncResultHelper.ToDelegate<Object[]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void SendArraysObject(Object[,] arr2, Object[,,] arr3, Object[,,,] arr4, BAsyncResult<Object[]> asyncResult) {
+		public virtual void SendArraysObject(Object[,] arr2, Object[,,] arr3, Object[,,,] arr4, BAsyncResult<Object[]> asyncResult) {
 			BRequest_RemoteArrayTypes23_sendArraysObject req = new BRequest_RemoteArrayTypes23_sendArraysObject();			
 			req.arr2Value = arr2;
 			req.arr3Value = arr3;
@@ -101,12 +101,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public byps.test.api.inl.Point2D[] SendArraysInline(byps.test.api.inl.Point2D[,] arr2, byps.test.api.inl.Point2D[,,] arr3, byps.test.api.inl.Point2D[,,,] arr4) {
+		public virtual byps.test.api.inl.Point2D[] SendArraysInline(byps.test.api.inl.Point2D[,] arr2, byps.test.api.inl.Point2D[,,] arr3, byps.test.api.inl.Point2D[,,,] arr4) {
 			BSyncResult<byps.test.api.inl.Point2D[]> asyncResult = new BSyncResult<byps.test.api.inl.Point2D[]>();			
 			SendArraysInline(arr2, arr3, arr4, BAsyncResultHelper.ToDelegate<byps.test.api.inl.Point2D[]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void SendArraysInline(byps.test.api.inl.Point2D[,] arr2, byps.test.api.inl.Point2D[,,] arr3, byps.test.api.inl.Point2D[,,,] arr4, BAsyncResult<byps.test.api.inl.Point2D[]> asyncResult) {
+		public virtual void SendArraysInline(byps.test.api.inl.Point2D[,] arr2, byps.test.api.inl.Point2D[,,] arr3, byps.test.api.inl.Point2D[,,,] arr4, BAsyncResult<byps.test.api.inl.Point2D[]> asyncResult) {
 			BRequest_RemoteArrayTypes23_sendArraysInline req = new BRequest_RemoteArrayTypes23_sendArraysInline();			
 			req.arr2Value = arr2;
 			req.arr3Value = arr3;

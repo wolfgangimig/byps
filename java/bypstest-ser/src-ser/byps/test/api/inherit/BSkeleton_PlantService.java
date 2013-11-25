@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_PlantService extends BSkeleton implements PlantServiceAsync {
 	
-	public final static long serialVersionUID = 1954605928L;
+	public final static long serialVersionUID = 1733272281L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String grow() throws RemoteException {

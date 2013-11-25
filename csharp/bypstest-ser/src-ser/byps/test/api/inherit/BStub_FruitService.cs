@@ -8,17 +8,17 @@ namespace byps.test.api.inherit
 	
 	public class BStub_FruitService : BStub, FruitServiceAuth, BSerializable {	
 		
-		public readonly static long serialVersionUID = 715959905L;
+		public readonly static long serialVersionUID = 937293552L;
 		
 		public BStub_FruitService(BTransport transport)
 			: base(transport) {}			
 		
-		public String Grow() {
+		public virtual String Grow() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
 			Grow(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Grow(BAsyncResult<String> asyncResult) {
+		public virtual void Grow(BAsyncResult<String> asyncResult) {
 			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -29,12 +29,12 @@ namespace byps.test.api.inherit
 			return await task;
 		}
 		
-		public String Squeeze() {
+		public virtual String Squeeze() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
 			Squeeze(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Squeeze(BAsyncResult<String> asyncResult) {
+		public virtual void Squeeze(BAsyncResult<String> asyncResult) {
 			BRequest_FruitService_squeeze req = new BRequest_FruitService_squeeze();			
 			transport.sendMethod(req, asyncResult);
 		}

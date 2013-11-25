@@ -17,7 +17,7 @@ public final class BRequest_RemoteMapTypes_setByte2 extends BMethodRequest imple
 	
 	public final static long serialVersionUID = 685835106L;
 	
-	public int getRemoteId() { return 664304990; }
+	public int getRemoteId() { return 1277224527; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

@@ -8,9 +8,7 @@ import byps.BAsyncResult;
 public interface BAuthentication {
 
   /**
-   * Authenticate the current user. An implementation can call
-   * BTransport.isReloginException if there are no application specific
-   * exceptions that should trigger an authentication.
+   * Authenticate the current user. 
    * 
    * @param client
    *          BClient object

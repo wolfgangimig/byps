@@ -18,6 +18,9 @@ namespace byps.test.api.cons
 		public AllTypesC() {
 		}		
 		
+		public AllTypesC(AllTypesC rhs)
+		{
+		}		
 		
 		#endregion
 		

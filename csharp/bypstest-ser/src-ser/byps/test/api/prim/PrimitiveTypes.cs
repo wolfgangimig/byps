@@ -21,7 +21,7 @@ namespace byps.test.api.prim
 		public PrimitiveTypes() {
 		}		
 		
-		internal PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, DateTime @dateVal, Object @objVal, Object @objVal2, bool @value, Object @temp) {
+		public PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, DateTime @dateVal, Object @objVal, Object @objVal2, bool @value, Object @temp) {
 			this.boolValValue = @boolVal;
 			this.byteValValue = @byteVal;
 			this.charValValue = @charVal;
@@ -36,6 +36,24 @@ namespace byps.test.api.prim
 			this.objVal2Value = @objVal2;
 			this.valueValue = @value;
 			this.tempValue = @temp;
+		}		
+		
+		public PrimitiveTypes(PrimitiveTypes rhs)
+		{
+			this.boolValValue = rhs.boolValValue;
+			this.byteValValue = rhs.byteValValue;
+			this.charValValue = rhs.charValValue;
+			this.shortValValue = rhs.shortValValue;
+			this.intValValue = rhs.intValValue;
+			this.longValValue = rhs.longValValue;
+			this.floatValValue = rhs.floatValValue;
+			this.doubleValValue = rhs.doubleValValue;
+			this.stringValValue = rhs.stringValValue;
+			this.dateValValue = rhs.dateValValue;
+			this.objValValue = rhs.objValValue;
+			this.objVal2Value = rhs.objVal2Value;
+			this.valueValue = rhs.valueValue;
+			this.tempValue = rhs.tempValue;
 		}		
 		
 		#endregion

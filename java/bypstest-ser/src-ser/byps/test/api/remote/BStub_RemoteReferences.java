@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 568637225L;
+	public final static long serialVersionUID = 1173792730L;
 	
 	public BStub_RemoteReferences(final BTransport transport) {
 		super(transport);		

@@ -18,8 +18,13 @@ namespace byps.test.api.ver
 		public Evolve2() {
 		}		
 		
-		internal Evolve2(int @n1) {
+		public Evolve2(int @n1) {
 			this.n1Value = @n1;
+		}		
+		
+		public Evolve2(Evolve2 rhs)
+		{
+			this.n1Value = rhs.n1Value;
 		}		
 		
 		#endregion

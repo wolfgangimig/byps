@@ -18,6 +18,9 @@ namespace byps.test.api.cons
 		public HebrewC() {
 		}		
 		
+		public HebrewC(HebrewC rhs)
+		{
+		}		
 		
 		#endregion
 		

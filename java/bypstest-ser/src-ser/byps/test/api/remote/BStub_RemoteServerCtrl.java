@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemoteServerCtrl extends BStub implements RemoteServerCtrlAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1652234479L;
+	public final static long serialVersionUID = 2037577312L;
 	
 	public BStub_RemoteServerCtrl(final BTransport transport) {
 		super(transport);		

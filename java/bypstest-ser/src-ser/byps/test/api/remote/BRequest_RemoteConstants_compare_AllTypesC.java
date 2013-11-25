@@ -33,7 +33,7 @@ public final class BRequest_RemoteConstants_compare_AllTypesC extends BMethodReq
 	
 	public final static long serialVersionUID = 1609344203L;
 	
-	public int getRemoteId() { return 2045242510; }
+	public int getRemoteId() { return 429088323; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

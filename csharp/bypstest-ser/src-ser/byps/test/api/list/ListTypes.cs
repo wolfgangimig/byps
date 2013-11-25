@@ -18,7 +18,7 @@ namespace byps.test.api.list
 		public ListTypes() {
 		}		
 		
-		internal ListTypes(IList<bool> @boolean1, IList<byte> @byte1, IList<char> @char1, IList<short> @short1, IList<int> @int1, IList<long> @long1, IList<float> @float1, IList<double> @double1, IList<String> @string1, IList<DateTime> @date1, IList<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IList<byte[]> @byte2, IList<int[]> @int2, IList<int[,,,]> @int4, IList<Object> @obj1) {
+		public ListTypes(IList<bool> @boolean1, IList<byte> @byte1, IList<char> @char1, IList<short> @short1, IList<int> @int1, IList<long> @long1, IList<float> @float1, IList<double> @double1, IList<String> @string1, IList<DateTime> @date1, IList<byps.test.api.prim.PrimitiveTypes> @primitiveTypes1, IList<byte[]> @byte2, IList<int[]> @int2, IList<int[,,,]> @int4, IList<Object> @obj1) {
 			this.boolean1Value = @boolean1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -34,6 +34,25 @@ namespace byps.test.api.list
 			this.int2Value = @int2;
 			this.int4Value = @int4;
 			this.obj1Value = @obj1;
+		}		
+		
+		public ListTypes(ListTypes rhs)
+		{
+			this.boolean1Value = rhs.boolean1Value;
+			this.byte1Value = rhs.byte1Value;
+			this.char1Value = rhs.char1Value;
+			this.short1Value = rhs.short1Value;
+			this.int1Value = rhs.int1Value;
+			this.long1Value = rhs.long1Value;
+			this.float1Value = rhs.float1Value;
+			this.double1Value = rhs.double1Value;
+			this.string1Value = rhs.string1Value;
+			this.date1Value = rhs.date1Value;
+			this.primitiveTypes1Value = rhs.primitiveTypes1Value;
+			this.byte2Value = rhs.byte2Value;
+			this.int2Value = rhs.int2Value;
+			this.int4Value = rhs.int4Value;
+			this.obj1Value = rhs.obj1Value;
 		}		
 		
 		#endregion

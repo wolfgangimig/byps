@@ -28,9 +28,15 @@ namespace byps.test.api.inl
 		public Point2D() {
 		}		
 		
-		internal Point2D(short @x, short @y) {
+		public Point2D(short @x, short @y) {
 			this.xValue = @x;
 			this.yValue = @y;
+		}		
+		
+		public Point2D(Point2D rhs)
+		{
+			this.xValue = rhs.xValue;
+			this.yValue = rhs.yValue;
 		}		
 		
 		#endregion

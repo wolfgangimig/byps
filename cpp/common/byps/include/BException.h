@@ -110,6 +110,15 @@ const int32_t EX_UNSUPPORTED_METHOD = 17;
 const int32_t EX_CANCELLED = 19;
 
 /**
+* Reverse HTTP request should be sent again.
+* After HConstants#TIMEOUT_LONGPOLL_MILLIS, the server releases
+* a long-poll (reverse) request. The client should open 
+* a new long-poll. The server sends an empty response to the client.
+*  SC_NO_CONTENT
+*/
+const int32_t RESEND_LONG_POLL = 204;
+
+/**
 * This code can be used, if authentication is required for the method.
 * Same as HttpURLConnection.HTTP_UNAUTHORIZED.
 */

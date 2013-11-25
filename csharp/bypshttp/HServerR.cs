@@ -106,7 +106,7 @@ namespace byps
                                 // no retry
                                 break;
 
-                            case BExceptionC.TIMEOUT:
+                            case BExceptionC.RESEND_LONG_POLL:
                                 // HWireClientR has released the expried long-poll.
                                 // Ignore the error and send a new long-poll.
                                 pthis.sendLongPoll(null);

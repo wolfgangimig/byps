@@ -18,11 +18,19 @@ namespace byps.test.api.refs
 		public Node() {
 		}		
 		
-		internal Node(Node @next, Node @me, IDictionary<String,Node> @mapOfNodes, IList<Node> @listOfNodes) {
+		public Node(Node @next, Node @me, IDictionary<String,Node> @mapOfNodes, IList<Node> @listOfNodes) {
 			this.nextValue = @next;
 			this.meValue = @me;
 			this.mapOfNodesValue = @mapOfNodes;
 			this.listOfNodesValue = @listOfNodes;
+		}		
+		
+		public Node(Node rhs)
+		{
+			this.nextValue = rhs.nextValue;
+			this.meValue = rhs.meValue;
+			this.mapOfNodesValue = rhs.mapOfNodesValue;
+			this.listOfNodesValue = rhs.listOfNodesValue;
 		}		
 		
 		#endregion

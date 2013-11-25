@@ -18,10 +18,17 @@ namespace byps.test.api.list
 		public ListListTypes() {
 		}		
 		
-		internal ListListTypes(IList<IList<int>> @int2, IList<IDictionary<int,IList<HashSet<int>>>> @int3, IList<IList<int[,,,]>> @int24) {
+		public ListListTypes(IList<IList<int>> @int2, IList<IDictionary<int,IList<HashSet<int>>>> @int3, IList<IList<int[,,,]>> @int24) {
 			this.int2Value = @int2;
 			this.int3Value = @int3;
 			this.int24Value = @int24;
+		}		
+		
+		public ListListTypes(ListListTypes rhs)
+		{
+			this.int2Value = rhs.int2Value;
+			this.int3Value = rhs.int3Value;
+			this.int24Value = rhs.int24Value;
 		}		
 		
 		#endregion

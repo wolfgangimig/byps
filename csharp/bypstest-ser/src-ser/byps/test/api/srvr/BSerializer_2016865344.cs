@@ -27,9 +27,9 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_putStreams obj = (BRequest_ClientIF_putStreams)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:492
+			// checkpoint byps.gen.cs.PrintContext:494
 			bbuf.putInt(obj.ctrlValue);
-			// checkpoint byps.gen.cs.PrintContext:492
+			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.strmValue, false, byps.test.api.BSerializer_1218831438.instance);
 		}
 		
@@ -39,9 +39,9 @@ namespace byps.test.api.srvr
 			BRequest_ClientIF_putStreams obj = (BRequest_ClientIF_putStreams)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ClientIF_putStreams()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:447
+			// checkpoint byps.gen.cs.PrintContext:449
 			obj.ctrlValue = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:447
+			// checkpoint byps.gen.cs.PrintContext:449
 			obj.strmValue = (IList<System.IO.Stream>)bin.readObj(false, null);
 			
 			return obj;

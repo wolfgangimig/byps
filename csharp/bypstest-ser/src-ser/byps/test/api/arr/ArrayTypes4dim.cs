@@ -18,7 +18,7 @@ namespace byps.test.api.arr
 		public ArrayTypes4dim() {
 		}		
 		
-		internal ArrayTypes4dim(bool[,,,] @boolean4, byte[,,,] @byte4, char[,,,] @char4, short[,,,] @short4, int[,,,] @int4, long[,,,] @long4, float[,,,] @float4, double[,,,] @double4, String[,,,] @string4, byps.test.api.prim.PrimitiveTypes[,,,] @primitiveTypes4) {
+		public ArrayTypes4dim(bool[,,,] @boolean4, byte[,,,] @byte4, char[,,,] @char4, short[,,,] @short4, int[,,,] @int4, long[,,,] @long4, float[,,,] @float4, double[,,,] @double4, String[,,,] @string4, byps.test.api.prim.PrimitiveTypes[,,,] @primitiveTypes4) {
 			this.boolean4Value = @boolean4;
 			this.byte4Value = @byte4;
 			this.char4Value = @char4;
@@ -29,6 +29,20 @@ namespace byps.test.api.arr
 			this.double4Value = @double4;
 			this.string4Value = @string4;
 			this.primitiveTypes4Value = @primitiveTypes4;
+		}		
+		
+		public ArrayTypes4dim(ArrayTypes4dim rhs)
+		{
+			this.boolean4Value = rhs.boolean4Value;
+			this.byte4Value = rhs.byte4Value;
+			this.char4Value = rhs.char4Value;
+			this.short4Value = rhs.short4Value;
+			this.int4Value = rhs.int4Value;
+			this.long4Value = rhs.long4Value;
+			this.float4Value = rhs.float4Value;
+			this.double4Value = rhs.double4Value;
+			this.string4Value = rhs.string4Value;
+			this.primitiveTypes4Value = rhs.primitiveTypes4Value;
 		}		
 		
 		#endregion

@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteArrayTypes4dim : BStub, RemoteArrayTypes4dim, BSerializable {	
 		
-		public readonly static long serialVersionUID = 963726955L;
+		public readonly static long serialVersionUID = 1176051258L;
 		
 		public BStub_RemoteArrayTypes4dim(BTransport transport)
 			: base(transport) {}			
 		
-		public void SetBool(bool[,,,] v) {
+		public virtual void SetBool(bool[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetBool(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetBool(bool[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetBool(bool[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setBool req = new BRequest_RemoteArrayTypes4dim_setBool();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -31,12 +31,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetByte(byte[,,,] v) {
+		public virtual void SetByte(byte[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetByte(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte(byte[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetByte(byte[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setByte req = new BRequest_RemoteArrayTypes4dim_setByte();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -49,12 +49,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetChar(char[,,,] v) {
+		public virtual void SetChar(char[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetChar(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetChar(char[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetChar(char[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setChar req = new BRequest_RemoteArrayTypes4dim_setChar();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -67,12 +67,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetShort(short[,,,] v) {
+		public virtual void SetShort(short[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetShort(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetShort(short[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetShort(short[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setShort req = new BRequest_RemoteArrayTypes4dim_setShort();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -85,12 +85,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetInt(int[,,,] v) {
+		public virtual void SetInt(int[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetInt(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt(int[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetInt(int[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setInt req = new BRequest_RemoteArrayTypes4dim_setInt();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -103,12 +103,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetLong(long[,,,] v) {
+		public virtual void SetLong(long[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetLong(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetLong(long[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetLong(long[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setLong req = new BRequest_RemoteArrayTypes4dim_setLong();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -121,12 +121,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetFloat(float[,,,] v) {
+		public virtual void SetFloat(float[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetFloat(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetFloat(float[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetFloat(float[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setFloat req = new BRequest_RemoteArrayTypes4dim_setFloat();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -139,12 +139,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetDouble(double[,,,] v) {
+		public virtual void SetDouble(double[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDouble(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDouble(double[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetDouble(double[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setDouble req = new BRequest_RemoteArrayTypes4dim_setDouble();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -157,12 +157,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetString(String[,,,] v) {
+		public virtual void SetString(String[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetString(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetString(String[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetString(String[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setString req = new BRequest_RemoteArrayTypes4dim_setString();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -175,12 +175,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[,,,] v) {
+		public virtual void SetPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPrimitiveTypes(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setPrimitiveTypes req = new BRequest_RemoteArrayTypes4dim_setPrimitiveTypes();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -193,12 +193,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetObject(Object[,,,] v) {
+		public virtual void SetObject(Object[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetObject(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetObject(Object[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetObject(Object[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setObject req = new BRequest_RemoteArrayTypes4dim_setObject();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -211,12 +211,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetDate(DateTime[,,,] v) {
+		public virtual void SetDate(DateTime[,,,] v) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate(v, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate(DateTime[,,,] v, BAsyncResult<Object> asyncResult) {
+		public virtual void SetDate(DateTime[,,,] v, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_setDate req = new BRequest_RemoteArrayTypes4dim_setDate();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -229,12 +229,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public bool[,,,] GetBool() {
+		public virtual bool[,,,] GetBool() {
 			BSyncResult<bool[,,,]> asyncResult = new BSyncResult<bool[,,,]>();			
 			GetBool(BAsyncResultHelper.ToDelegate<bool[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetBool(BAsyncResult<bool[,,,]> asyncResult) {
+		public virtual void GetBool(BAsyncResult<bool[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getBool req = new BRequest_RemoteArrayTypes4dim_getBool();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -245,12 +245,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public byte[,,,] GetByte() {
+		public virtual byte[,,,] GetByte() {
 			BSyncResult<byte[,,,]> asyncResult = new BSyncResult<byte[,,,]>();			
 			GetByte(BAsyncResultHelper.ToDelegate<byte[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte(BAsyncResult<byte[,,,]> asyncResult) {
+		public virtual void GetByte(BAsyncResult<byte[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getByte req = new BRequest_RemoteArrayTypes4dim_getByte();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -261,12 +261,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public char[,,,] GetChar() {
+		public virtual char[,,,] GetChar() {
 			BSyncResult<char[,,,]> asyncResult = new BSyncResult<char[,,,]>();			
 			GetChar(BAsyncResultHelper.ToDelegate<char[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetChar(BAsyncResult<char[,,,]> asyncResult) {
+		public virtual void GetChar(BAsyncResult<char[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getChar req = new BRequest_RemoteArrayTypes4dim_getChar();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -277,12 +277,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public short[,,,] GetShort() {
+		public virtual short[,,,] GetShort() {
 			BSyncResult<short[,,,]> asyncResult = new BSyncResult<short[,,,]>();			
 			GetShort(BAsyncResultHelper.ToDelegate<short[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetShort(BAsyncResult<short[,,,]> asyncResult) {
+		public virtual void GetShort(BAsyncResult<short[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getShort req = new BRequest_RemoteArrayTypes4dim_getShort();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -293,12 +293,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public int[,,,] GetInt() {
+		public virtual int[,,,] GetInt() {
 			BSyncResult<int[,,,]> asyncResult = new BSyncResult<int[,,,]>();			
 			GetInt(BAsyncResultHelper.ToDelegate<int[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt(BAsyncResult<int[,,,]> asyncResult) {
+		public virtual void GetInt(BAsyncResult<int[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getInt req = new BRequest_RemoteArrayTypes4dim_getInt();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -309,12 +309,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public long[,,,] GetLong() {
+		public virtual long[,,,] GetLong() {
 			BSyncResult<long[,,,]> asyncResult = new BSyncResult<long[,,,]>();			
 			GetLong(BAsyncResultHelper.ToDelegate<long[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetLong(BAsyncResult<long[,,,]> asyncResult) {
+		public virtual void GetLong(BAsyncResult<long[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getLong req = new BRequest_RemoteArrayTypes4dim_getLong();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -325,12 +325,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public float[,,,] GetFloat() {
+		public virtual float[,,,] GetFloat() {
 			BSyncResult<float[,,,]> asyncResult = new BSyncResult<float[,,,]>();			
 			GetFloat(BAsyncResultHelper.ToDelegate<float[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetFloat(BAsyncResult<float[,,,]> asyncResult) {
+		public virtual void GetFloat(BAsyncResult<float[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getFloat req = new BRequest_RemoteArrayTypes4dim_getFloat();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -341,12 +341,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public double[,,,] GetDouble() {
+		public virtual double[,,,] GetDouble() {
 			BSyncResult<double[,,,]> asyncResult = new BSyncResult<double[,,,]>();			
 			GetDouble(BAsyncResultHelper.ToDelegate<double[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDouble(BAsyncResult<double[,,,]> asyncResult) {
+		public virtual void GetDouble(BAsyncResult<double[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getDouble req = new BRequest_RemoteArrayTypes4dim_getDouble();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -357,12 +357,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public String[,,,] GetString() {
+		public virtual String[,,,] GetString() {
 			BSyncResult<String[,,,]> asyncResult = new BSyncResult<String[,,,]>();			
 			GetString(BAsyncResultHelper.ToDelegate<String[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetString(BAsyncResult<String[,,,]> asyncResult) {
+		public virtual void GetString(BAsyncResult<String[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getString req = new BRequest_RemoteArrayTypes4dim_getString();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -373,12 +373,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public byps.test.api.prim.PrimitiveTypes[,,,] GetPrimitiveTypes() {
+		public virtual byps.test.api.prim.PrimitiveTypes[,,,] GetPrimitiveTypes() {
 			BSyncResult<byps.test.api.prim.PrimitiveTypes[,,,]> asyncResult = new BSyncResult<byps.test.api.prim.PrimitiveTypes[,,,]>();			
 			GetPrimitiveTypes(BAsyncResultHelper.ToDelegate<byps.test.api.prim.PrimitiveTypes[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPrimitiveTypes(BAsyncResult<byps.test.api.prim.PrimitiveTypes[,,,]> asyncResult) {
+		public virtual void GetPrimitiveTypes(BAsyncResult<byps.test.api.prim.PrimitiveTypes[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getPrimitiveTypes req = new BRequest_RemoteArrayTypes4dim_getPrimitiveTypes();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -389,12 +389,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public Object[,,,] GetObject() {
+		public virtual Object[,,,] GetObject() {
 			BSyncResult<Object[,,,]> asyncResult = new BSyncResult<Object[,,,]>();			
 			GetObject(BAsyncResultHelper.ToDelegate<Object[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetObject(BAsyncResult<Object[,,,]> asyncResult) {
+		public virtual void GetObject(BAsyncResult<Object[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getObject req = new BRequest_RemoteArrayTypes4dim_getObject();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -405,12 +405,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public DateTime[,,,] GetDate() {
+		public virtual DateTime[,,,] GetDate() {
 			BSyncResult<DateTime[,,,]> asyncResult = new BSyncResult<DateTime[,,,]>();			
 			GetDate(BAsyncResultHelper.ToDelegate<DateTime[,,,]>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate(BAsyncResult<DateTime[,,,]> asyncResult) {
+		public virtual void GetDate(BAsyncResult<DateTime[,,,]> asyncResult) {
 			BRequest_RemoteArrayTypes4dim_getDate req = new BRequest_RemoteArrayTypes4dim_getDate();			
 			transport.sendMethod(req, asyncResult);
 		}

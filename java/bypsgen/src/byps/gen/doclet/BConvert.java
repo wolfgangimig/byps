@@ -90,22 +90,21 @@ public class BConvert {
 
 	/**
 	 * Evaluate the javadoc objects and create an internal representation of the API.
-	 * @param prevClassDB Previous representation used to find type IDs from existing classes.
 	 * @param rdoc javadoc objects.
 	 * @param constReader Constant values are read over this interface.
 	 * @param opts OPT_* constants.
 	 * @return API representation object.
 	 * @throws GeneratorException
 	 */
-	public static ClassDB makeClassDB(ClassDB prevClassDB, RootDoc rdoc, ConstFieldReader constReader, int opts) throws GeneratorException {
+	public static ClassDB makeClassDB(RootDoc rdoc, ConstFieldReader constReader, int opts) throws GeneratorException {
 		BConvert conv = new BConvert(opts);
-		return conv.internalMakeClassDB(prevClassDB, rdoc, constReader);
+		return conv.internalMakeClassDB(rdoc, constReader);
 	}
 	
-	private ClassDB internalMakeClassDB(ClassDB prevClassDB, RootDoc rdoc, ConstFieldReader constReader) throws GeneratorException {
-		log.debug("makeClassDB(prevClassDB=" + prevClassDB + ", rdoc=" + rdoc + ", + constReader=" + constReader);
+	private ClassDB internalMakeClassDB(RootDoc rdoc, ConstFieldReader constReader) throws GeneratorException {
+		log.debug("makeClassDB(rdoc=" + rdoc + ", + constReader=" + constReader);
 
-		classDB = ClassDB.createNewVersion(prevClassDB, constReader);
+		classDB = ClassDB.createNewVersion(constReader);
 		
 		ClassDoc[] classes = rdoc.classes();
 		log.debug("#classes=" + classes.length);
@@ -970,6 +969,8 @@ public class BConvert {
 		
 		errInfo.methodName = method.name();
 		
+		long since = getSince(errInfo, method.tags());
+		
 		SerialInfo requestInfo = makeMethodRequest(errInfo, remoteName, remoteQName, method);
 
 		SerialInfo resultInfo = makeMethodResult(errInfo, remoteName, remoteQName, method);
@@ -1007,7 +1008,7 @@ public class BConvert {
 		MethodInfo minfo = new MethodInfo(
 				method.name(), cinfos, 
 				requestInfo, resultInfo, 
-				exceptions); 
+				exceptions, since); 
 		
 		return minfo;
 	}

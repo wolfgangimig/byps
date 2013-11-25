@@ -18,7 +18,7 @@ namespace byps.test.api.arr
 		public ArrayTypes1dim() {
 		}		
 		
-		internal ArrayTypes1dim(bool[] @boolean1, byte[] @byte1, char[] @char1, short[] @short1, int[] @int1, long[] @long1, float[] @float1, double[] @double1, String[] @string1, DateTime[] @date1, byps.test.api.prim.PrimitiveTypes[] @primitiveTypes1) {
+		public ArrayTypes1dim(bool[] @boolean1, byte[] @byte1, char[] @char1, short[] @short1, int[] @int1, long[] @long1, float[] @float1, double[] @double1, String[] @string1, DateTime[] @date1, byps.test.api.prim.PrimitiveTypes[] @primitiveTypes1) {
 			this.boolean1Value = @boolean1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -30,6 +30,21 @@ namespace byps.test.api.arr
 			this.string1Value = @string1;
 			this.date1Value = @date1;
 			this.primitiveTypes1Value = @primitiveTypes1;
+		}		
+		
+		public ArrayTypes1dim(ArrayTypes1dim rhs)
+		{
+			this.boolean1Value = rhs.boolean1Value;
+			this.byte1Value = rhs.byte1Value;
+			this.char1Value = rhs.char1Value;
+			this.short1Value = rhs.short1Value;
+			this.int1Value = rhs.int1Value;
+			this.long1Value = rhs.long1Value;
+			this.float1Value = rhs.float1Value;
+			this.double1Value = rhs.double1Value;
+			this.string1Value = rhs.string1Value;
+			this.date1Value = rhs.date1Value;
+			this.primitiveTypes1Value = rhs.primitiveTypes1Value;
 		}		
 		
 		#endregion

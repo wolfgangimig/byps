@@ -21,8 +21,13 @@ namespace byps.test.api.auth
 		public SessionInfo() {
 		}		
 		
-		internal SessionInfo(String @sessionID) {
+		public SessionInfo(String @sessionID) {
 			this.sessionIDValue = @sessionID;
+		}		
+		
+		public SessionInfo(SessionInfo rhs)
+		{
+			this.sessionIDValue = rhs.sessionIDValue;
 		}		
 		
 		#endregion

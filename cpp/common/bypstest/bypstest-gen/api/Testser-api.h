@@ -529,6 +529,32 @@ class Point2D : public BSerializable {
 }}}}
 
 //-------------------------------------------------
+// EnumPlanets
+// typeId=1375035164
+
+namespace byps { namespace test { namespace api { namespace enu { 
+
+
+using namespace ::byps;
+
+/// <summary>
+/// Sample enum.
+/// </summary>
+enum EnumPlanets : int32_t  {
+	/// <summary>
+	/// ... is the closest planet to the Sun ...
+	/// </summary>
+	Mercury = 0,
+	Venus = 1,
+	Earth = 2,
+	
+};
+
+void operator & (BIO& ar, EnumPlanets& e);
+
+}}}}
+
+//-------------------------------------------------
 // ArrayTypes1dim
 // typeId=2001
 
@@ -701,104 +727,34 @@ class AllTypesZ : public BSerializable {
 	public: AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const ::std::wstring& string1, const PHebrewZ& hebrew1, const PBytes& byte2, const byps_ptr< BArray1< int32_t > >& int2, const byps_ptr< BArray1< ::std::wstring > >& string2, const byps_ptr< BArray1< PHebrewZ > >& hebrew2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 142458; }
 	
-	public:  bool getBool1() {
-		return bool1;
-	}
-	public: void setBool1(bool v) {
-		bool1 = v;
-	}
-	
-	public:  int8_t getByte1() {
-		return byte1;
-	}
-	public: void setByte1(int8_t v) {
-		byte1 = v;
-	}
-	
-	public:  wchar_t getChar1() {
-		return char1;
-	}
-	public: void setChar1(wchar_t v) {
-		char1 = v;
-	}
-	
-	public:  int16_t getShort1() {
-		return short1;
-	}
-	public: void setShort1(int16_t v) {
-		short1 = v;
-	}
-	
-	public:  int32_t getInt1() {
-		return int1;
-	}
-	public: void setInt1(int32_t v) {
-		int1 = v;
-	}
-	
-	public:  int64_t getLong1() {
-		return long1;
-	}
-	public: void setLong1(int64_t v) {
-		long1 = v;
-	}
-	
-	public:  float getFloat1() {
-		return float1;
-	}
-	public: void setFloat1(float v) {
-		float1 = v;
-	}
-	
-	public:  double getDouble1() {
-		return double1;
-	}
-	public: void setDouble1(double v) {
-		double1 = v;
-	}
-	
-	public:  ::std::wstring getString1() {
-		return string1;
-	}
-	public: void setString1(::std::wstring v) {
-		string1 = v;
-	}
-	
-	public:  PHebrewZ getHebrew1() {
-		return hebrew1;
-	}
-	public: void setHebrew1(PHebrewZ v) {
-		hebrew1 = v;
-	}
-	
-	public:  PBytes getByte2() {
-		return byte2;
-	}
-	public: void setByte2(PBytes v) {
-		byte2 = v;
-	}
-	
-	public:  byps_ptr< BArray1< int32_t > > getInt2() {
-		return int2;
-	}
-	public: void setInt2(byps_ptr< BArray1< int32_t > > v) {
-		int2 = v;
-	}
-	
-	public:  byps_ptr< BArray1< ::std::wstring > > getString2() {
-		return string2;
-	}
-	public: void setString2(byps_ptr< BArray1< ::std::wstring > > v) {
-		string2 = v;
-	}
-	
-	public:  byps_ptr< BArray1< PHebrewZ > > getHebrew2() {
-		return hebrew2;
-	}
-	public: void setHebrew2(byps_ptr< BArray1< PHebrewZ > > v) {
-		hebrew2 = v;
-	}
-	
+	public: bool getBool1() { return bool1; }
+	public: void setBool1(bool v);
+	public: int8_t getByte1() { return byte1; }
+	public: void setByte1(int8_t v);
+	public: wchar_t getChar1() { return char1; }
+	public: void setChar1(wchar_t v);
+	public: int16_t getShort1() { return short1; }
+	public: void setShort1(int16_t v);
+	public: int32_t getInt1() { return int1; }
+	public: void setInt1(int32_t v);
+	public: int64_t getLong1() { return long1; }
+	public: void setLong1(int64_t v);
+	public: float getFloat1() { return float1; }
+	public: void setFloat1(float v);
+	public: double getDouble1() { return double1; }
+	public: void setDouble1(double v);
+	public: ::std::wstring getString1() { return string1; }
+	public: void setString1(::std::wstring v);
+	public: PHebrewZ getHebrew1() { return hebrew1; }
+	public: void setHebrew1(PHebrewZ v);
+	public: PBytes getByte2() { return byte2; }
+	public: void setByte2(PBytes v);
+	public: byps_ptr< BArray1< int32_t > > getInt2() { return int2; }
+	public: void setInt2(byps_ptr< BArray1< int32_t > > v);
+	public: byps_ptr< BArray1< ::std::wstring > > getString2() { return string2; }
+	public: void setString2(byps_ptr< BArray1< ::std::wstring > > v);
+	public: byps_ptr< BArray1< PHebrewZ > > getHebrew2() { return hebrew2; }
+	public: void setHebrew2(byps_ptr< BArray1< PHebrewZ > > v);
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -824,12 +780,8 @@ class HebrewC : public BSerializable {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 691741677; }
 	
-	public: static ::std::wstring getAleph() {
-		return aleph;
-	}
-	public: static ::std::wstring getBeth() {
-		return beth;
-	}
+	public: static ::std::wstring getAleph() { return aleph; }
+	public: static ::std::wstring getBeth() { return beth; }
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -853,42 +805,11 @@ class HebrewZ : public BSerializable {
 	public: HebrewZ(const ::std::wstring& core);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1518668429; }
 	
-	public:  ::std::wstring getCore() {
-		return core;
-	}
-	public: void setCore(::std::wstring v) {
-		core = v;
-	}
-	
+	public: ::std::wstring getCore() { return core; }
+	public: void setCore(::std::wstring v);
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
 };
-
-}}}}
-
-//-------------------------------------------------
-// EnumPlanets
-// typeId=1375035164
-
-namespace byps { namespace test { namespace api { namespace enu { 
-
-
-using namespace ::byps;
-
-/// <summary>
-/// Sample enum.
-/// </summary>
-enum EnumPlanets : int32_t  {
-	/// <summary>
-	/// ... is the closest planet to the Sun ...
-	/// </summary>
-	Mercury = 0,
-	Venus = 1,
-	Earth = 2,
-	
-};
-
-void operator & (BIO& ar, EnumPlanets& e);
 
 }}}}
 
@@ -913,13 +834,8 @@ class UsePlanets : public BSerializable {
 	public: UsePlanets(EnumPlanets planet, EnumPlanets planet2, const byps_ptr< BArray1< EnumPlanets > >& arrayOfPlanets, const byps_ptr< ::std::vector< EnumPlanets > >& listOfPlanets, const byps_ptr< ::std::map< ::std::wstring , EnumPlanets > >& mapOfPlanets);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 10000; }
 	
-	public:  EnumPlanets getPlanet2() {
-		return planet2;
-	}
-	public: void setPlanet2(EnumPlanets v) {
-		planet2 = v;
-	}
-	
+	public: EnumPlanets getPlanet2() { return planet2; }
+	public: void setPlanet2(EnumPlanets v);
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -1252,153 +1168,48 @@ class PrivateMembers : public BSerializable {
 	public: PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const byps::test::api::prim::PPrimitiveTypes& primitiveTypes, const byps_ptr< BArray1< bool > >& arrBool, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray1< ::std::wstring > >& arrString, const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& arrPrimitiveTypes, const byps_ptr< ::std::vector< bool > >& listBool, const byps_ptr< ::std::vector< int32_t > >& listInt, const byps_ptr< ::std::vector< ::std::wstring > >& listString, const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& listPrimitiveTypes, const byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > >& mapIntListString, int32_t protInt, int32_t pprotInt);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 8001; }
 	
-	public:  bool getBoolVal() {
-		return boolVal;
-	}
-	public: void setBoolVal(bool v) {
-		boolVal = v;
-	}
-	
-	public:  int8_t getByteVal() {
-		return byteVal;
-	}
-	public: void setByteVal(int8_t v) {
-		byteVal = v;
-	}
-	
-	public:  wchar_t getCharVal() {
-		return charVal;
-	}
-	public: void setCharVal(wchar_t v) {
-		charVal = v;
-	}
-	
-	public:  int16_t getShortVal() {
-		return shortVal;
-	}
-	public: void setShortVal(int16_t v) {
-		shortVal = v;
-	}
-	
-	public:  int32_t getIntVal() {
-		return intVal;
-	}
-	public: void setIntVal(int32_t v) {
-		intVal = v;
-	}
-	
-	public:  int64_t getLongVal() {
-		return longVal;
-	}
-	public: void setLongVal(int64_t v) {
-		longVal = v;
-	}
-	
-	public:  float getFloatVal() {
-		return floatVal;
-	}
-	public: void setFloatVal(float v) {
-		floatVal = v;
-	}
-	
-	public:  double getDoubleVal() {
-		return doubleVal;
-	}
-	public: void setDoubleVal(double v) {
-		doubleVal = v;
-	}
-	
-	public:  ::std::wstring getStringVal() {
-		return stringVal;
-	}
-	public: void setStringVal(::std::wstring v) {
-		stringVal = v;
-	}
-	
-	public:  byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() {
-		return primitiveTypes;
-	}
-	public: void setPrimitiveTypes(byps::test::api::prim::PPrimitiveTypes v) {
-		primitiveTypes = v;
-	}
-	
-	public:  byps_ptr< BArray1< bool > > getArrBool() {
-		return arrBool;
-	}
-	public: void setArrBool(byps_ptr< BArray1< bool > > v) {
-		arrBool = v;
-	}
-	
-	public:  byps_ptr< BArray1< int32_t > > getArrInt() {
-		return arrInt;
-	}
-	public: void setArrInt(byps_ptr< BArray1< int32_t > > v) {
-		arrInt = v;
-	}
-	
-	public:  byps_ptr< BArray1< ::std::wstring > > getArrString() {
-		return arrString;
-	}
-	public: void setArrString(byps_ptr< BArray1< ::std::wstring > > v) {
-		arrString = v;
-	}
-	
-	public:  byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > getArrPrimitiveTypes() {
-		return arrPrimitiveTypes;
-	}
-	public: void setArrPrimitiveTypes(byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > v) {
-		arrPrimitiveTypes = v;
-	}
-	
-	public:  byps_ptr< ::std::vector< bool > > getListBool() {
-		return listBool;
-	}
-	public: void setListBool(byps_ptr< ::std::vector< bool > > v) {
-		listBool = v;
-	}
-	
-	public:  byps_ptr< ::std::vector< int32_t > > getListInt() {
-		return listInt;
-	}
-	public: void setListInt(byps_ptr< ::std::vector< int32_t > > v) {
-		listInt = v;
-	}
-	
-	public:  byps_ptr< ::std::vector< ::std::wstring > > getListString() {
-		return listString;
-	}
-	public: void setListString(byps_ptr< ::std::vector< ::std::wstring > > v) {
-		listString = v;
-	}
-	
-	public:  byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > getListPrimitiveTypes() {
-		return listPrimitiveTypes;
-	}
-	public: void setListPrimitiveTypes(byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > v) {
-		listPrimitiveTypes = v;
-	}
-	
-	public:  byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > getMapIntListString() {
-		return mapIntListString;
-	}
-	public: void setMapIntListString(byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > v) {
-		mapIntListString = v;
-	}
-	
-	public:  int32_t getProtInt() {
-		return protInt;
-	}
-	public: void setProtInt(int32_t v) {
-		protInt = v;
-	}
-	
-	public:  int32_t getPprotInt() {
-		return pprotInt;
-	}
-	public: void setPprotInt(int32_t v) {
-		pprotInt = v;
-	}
-	
+	public: bool getBoolVal() { return boolVal; }
+	public: void setBoolVal(bool v);
+	public: int8_t getByteVal() { return byteVal; }
+	public: void setByteVal(int8_t v);
+	public: wchar_t getCharVal() { return charVal; }
+	public: void setCharVal(wchar_t v);
+	public: int16_t getShortVal() { return shortVal; }
+	public: void setShortVal(int16_t v);
+	public: int32_t getIntVal() { return intVal; }
+	public: void setIntVal(int32_t v);
+	public: int64_t getLongVal() { return longVal; }
+	public: void setLongVal(int64_t v);
+	public: float getFloatVal() { return floatVal; }
+	public: void setFloatVal(float v);
+	public: double getDoubleVal() { return doubleVal; }
+	public: void setDoubleVal(double v);
+	public: ::std::wstring getStringVal() { return stringVal; }
+	public: void setStringVal(::std::wstring v);
+	public: byps::test::api::prim::PPrimitiveTypes getPrimitiveTypes() { return primitiveTypes; }
+	public: void setPrimitiveTypes(byps::test::api::prim::PPrimitiveTypes v);
+	public: byps_ptr< BArray1< bool > > getArrBool() { return arrBool; }
+	public: void setArrBool(byps_ptr< BArray1< bool > > v);
+	public: byps_ptr< BArray1< int32_t > > getArrInt() { return arrInt; }
+	public: void setArrInt(byps_ptr< BArray1< int32_t > > v);
+	public: byps_ptr< BArray1< ::std::wstring > > getArrString() { return arrString; }
+	public: void setArrString(byps_ptr< BArray1< ::std::wstring > > v);
+	public: byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > getArrPrimitiveTypes() { return arrPrimitiveTypes; }
+	public: void setArrPrimitiveTypes(byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > v);
+	public: byps_ptr< ::std::vector< bool > > getListBool() { return listBool; }
+	public: void setListBool(byps_ptr< ::std::vector< bool > > v);
+	public: byps_ptr< ::std::vector< int32_t > > getListInt() { return listInt; }
+	public: void setListInt(byps_ptr< ::std::vector< int32_t > > v);
+	public: byps_ptr< ::std::vector< ::std::wstring > > getListString() { return listString; }
+	public: void setListString(byps_ptr< ::std::vector< ::std::wstring > > v);
+	public: byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > getListPrimitiveTypes() { return listPrimitiveTypes; }
+	public: void setListPrimitiveTypes(byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > v);
+	public: byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > getMapIntListString() { return mapIntListString; }
+	public: void setMapIntListString(byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > v);
+	public: int32_t getProtInt() { return protInt; }
+	public: void setProtInt(int32_t v);
+	public: int32_t getPprotInt() { return pprotInt; }
+	public: void setPprotInt(int32_t v);
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -1513,27 +1324,12 @@ class Stream1 : public BSerializable {
 	public: Stream1(const PContentStream& is1, const ::std::wstring& contentType, const byps_ptr< BArray1< PContentStream > >& arrStream, const byps_ptr< ::std::vector< PContentStream > >& listStream, const byps_ptr< ::std::map< int32_t , PContentStream > >& mapStream);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1541129345; }
 	
-	public:  ::std::wstring getContentType() {
-		return contentType;
-	}
-	public: void setContentType(::std::wstring v) {
-		contentType = v;
-	}
-	
-	public:  byps_ptr< BArray1< PContentStream > > getArrStream() {
-		return arrStream;
-	}
-	public: void setArrStream(byps_ptr< BArray1< PContentStream > > v) {
-		arrStream = v;
-	}
-	
-	public:  byps_ptr< ::std::vector< PContentStream > > getListStream() {
-		return listStream;
-	}
-	public: void setListStream(byps_ptr< ::std::vector< PContentStream > > v) {
-		listStream = v;
-	}
-	
+	public: ::std::wstring getContentType() { return contentType; }
+	public: void setContentType(::std::wstring v);
+	public: byps_ptr< BArray1< PContentStream > > getArrStream() { return arrStream; }
+	public: void setArrStream(byps_ptr< BArray1< PContentStream > > v);
+	public: byps_ptr< ::std::vector< PContentStream > > getListStream() { return listStream; }
+	public: void setListStream(byps_ptr< ::std::vector< PContentStream > > v);
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -1648,13 +1444,8 @@ class Evolve2 : public BSerializable {
 	public: Evolve2(int32_t n1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 573592593; }
 	
-	public:  int32_t getN1() {
-		return n1;
-	}
-	public: void setN1(int32_t v) {
-		n1 = v;
-	}
-	
+	public: int32_t getN1() { return n1; }
+	public: void setN1(int32_t v);
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -1988,7 +1779,7 @@ class BStub_PlantService : public BStub, public virtual PlantServiceAuth {
 	
 	public: BStub_PlantService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1954605928; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1733272281; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
@@ -2047,7 +1838,7 @@ class BStub_FruitService : public BStub, public virtual FruitServiceAuth {
 	
 	public: BStub_FruitService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 715959905; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 937293552; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
@@ -2109,7 +1900,7 @@ class BStub_BioFruitService : public BStub, public virtual BioFruitServiceAuth {
 	
 	public: BStub_BioFruitService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 363642571; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 612235846; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
@@ -2174,7 +1965,7 @@ class BStub_LemonService : public BStub, public virtual LemonServiceAuth {
 	
 	public: BStub_LemonService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 605543968; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 826877615; }
 	
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
@@ -2241,7 +2032,7 @@ class BStub_BioLemonService : public BStub, public virtual BioLemonServiceAuth {
 	
 	public: BStub_BioLemonService(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 474058508; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 501819909; }
 	
 	public: virtual bool certify(const ::std::wstring& param) ;
 	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2365,7 +2156,7 @@ class BStub_RemoteArrayTypes1dim : public BStub, public virtual RemoteArrayTypes
 	
 	public: BStub_RemoteArrayTypes1dim(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 963816328; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1176140631; }
 	
 	public: virtual void setBool(const byps_ptr< BArray1< bool > >& v) ;
 	public: virtual void setBool(const byps_ptr< BArray1< bool > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2486,7 +2277,7 @@ class BStub_RemoteArrayTypes23 : public BStub, public virtual RemoteArrayTypes23
 	
 	public: BStub_RemoteArrayTypes23(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 769717182; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 964138163; }
 	
 	public: virtual byps_ptr< BArray1< int32_t > > sendArraysInt(const byps_ptr< BArray2< int32_t > >& arr2, const byps_ptr< BArray3< int32_t > >& arr3, const byps_ptr< BArray4< int32_t > >& arr4) ;
 	public: virtual void sendArraysInt(const byps_ptr< BArray2< int32_t > >& arr2, const byps_ptr< BArray3< int32_t > >& arr3, const byps_ptr< BArray4< int32_t > >& arr4, ::std::function< void (byps_ptr< BArray1< int32_t > >, BException ex) > asyncResult) ;
@@ -2610,7 +2401,7 @@ class BStub_RemoteArrayTypes4dim : public BStub, public virtual RemoteArrayTypes
 	
 	public: BStub_RemoteArrayTypes4dim(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 963726955; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1176051258; }
 	
 	public: virtual void setBool(const byps_ptr< BArray4< bool > >& v) ;
 	public: virtual void setBool(const byps_ptr< BArray4< bool > >& v, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2725,7 +2516,7 @@ class BStub_RemoteConstants : public BStub, public virtual RemoteConstants {
 	
 	public: BStub_RemoteConstants(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2045242510; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 429088323; }
 	
 	public: virtual void compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH) ;
 	public: virtual void compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -2771,7 +2562,7 @@ class BStub_RemoteEnums : public BStub, public virtual RemoteEnums {
 	
 	public: BStub_RemoteEnums(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 485761455; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1222673152; }
 	
 	public: virtual byps::test::api::enu::EnumPlanets getPlanet() ;
 	public: virtual void getPlanet(::std::function< void (byps::test::api::enu::EnumPlanets, BException ex) > asyncResult) ;
@@ -2847,7 +2638,7 @@ class BStub_RemoteInlineInstance : public BStub, public virtual RemoteInlineInst
 	
 	public: BStub_RemoteInlineInstance(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 567395951; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 355071648; }
 	
 	public: virtual void setActor(const byps::test::api::inl::PActor& act) ;
 	public: virtual void setActor(const byps::test::api::inl::PActor& act, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -3013,7 +2804,7 @@ class BStub_RemoteListTypes : public BStub, public virtual RemoteListTypes {
 	
 	public: BStub_RemoteListTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1233438138; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1240892695; }
 	
 	public: virtual byps_ptr< ::std::vector< bool > > getBoolean1() ;
 	public: virtual void getBoolean1(::std::function< void (byps_ptr< ::std::vector< bool > >, BException ex) > asyncResult) ;
@@ -3227,7 +3018,7 @@ class BStub_RemoteMapTypes : public BStub, public virtual RemoteMapTypes {
 	
 	public: BStub_RemoteMapTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 664304990; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1277224527; }
 	
 	public: virtual byps_ptr< ::std::map< ::std::wstring , bool > > getBoolean1() ;
 	public: virtual void getBoolean1(::std::function< void (byps_ptr< ::std::map< ::std::wstring , bool > >, BException ex) > asyncResult) ;
@@ -3435,7 +3226,7 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	
 	public: BStub_RemotePrimitiveTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1178916877; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1391241180; }
 	
 	public: virtual void voidFunctionVoid() ;
 	public: virtual void voidFunctionVoid(::std::function< void (bool, BException ex) > asyncResult) ;
@@ -3565,7 +3356,7 @@ class BStub_RemoteReferences : public BStub, public virtual RemoteReferences {
 	
 	public: BStub_RemoteReferences(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 568637225; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1173792730; }
 	
 	public: virtual byps::test::api::refs::PNode getNode() ;
 	public: virtual void getNode(::std::function< void (byps::test::api::refs::PNode, BException ex) > asyncResult) ;
@@ -3614,7 +3405,7 @@ class BStub_RemoteServerCtrl : public BStub, public virtual RemoteServerCtrl {
 	
 	public: BStub_RemoteServerCtrl(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1652234479; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2037577312; }
 	
 	public: virtual void publishRemote(const ::std::wstring& name, const PRemote& remote, bool fowardToOtherServers) ;
 	public: virtual void publishRemote(const ::std::wstring& name, const PRemote& remote, bool fowardToOtherServers, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -3741,7 +3532,7 @@ class BStub_RemoteSetTypes : public BStub, public virtual RemoteSetTypes {
 	
 	public: BStub_RemoteSetTypes(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1900796440; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1781251319; }
 	
 	public: virtual byps_ptr< ::std::set< bool > > getBoolean1() ;
 	public: virtual void getBoolean1(::std::function< void (byps_ptr< ::std::set< bool > >, BException ex) > asyncResult) ;
@@ -3877,7 +3668,7 @@ class BStub_RemoteStreams : public BStub, public virtual RemoteStreams {
 	
 	public: BStub_RemoteStreams(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1043578866; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 2123238175; }
 	
 	public: virtual PContentStream getImage() ;
 	public: virtual void getImage(::std::function< void (PContentStream, BException ex) > asyncResult) ;
@@ -4021,7 +3812,7 @@ class BStub_RemoteWithAuthentication : public BStub, public virtual RemoteWithAu
 	
 	public: BStub_RemoteWithAuthentication(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1983670399; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1532028880; }
 	
 	public: virtual void setUseAuthentication(bool useAuth) ;
 	public: virtual void setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -4082,7 +3873,7 @@ typedef byps_ptr<BSkeleton_ClientIF> PSkeleton_ClientIF;
 
 class BSkeleton_ClientIF : public BSkeleton, public virtual ClientIF {
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2049072174; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 955752991; }
 	
 	public: virtual int32_t incrementInt(int32_t a) ;
 	public: virtual void incrementInt(int32_t a, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4114,7 +3905,7 @@ class BStub_ClientIF : public BStub, public virtual ClientIF {
 	
 	public: BStub_ClientIF(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 2049072174; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 955752991; }
 	
 	public: virtual int32_t incrementInt(int32_t a) ;
 	public: virtual void incrementInt(int32_t a, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4187,7 +3978,7 @@ class BStub_ServerIF : public BStub, public virtual ServerIF {
 	
 	public: BStub_ServerIF(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 1775199834; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1426448279; }
 	
 	public: virtual int32_t callClientIncrementInt(int32_t v) ;
 	public: virtual void callClientIncrementInt(int32_t v, ::std::function< void (int32_t, BException ex) > asyncResult) ;
@@ -4263,7 +4054,7 @@ class BStub_EvolveIF : public BStub, public virtual EvolveIF {
 	
 	public: BStub_EvolveIF(PTransport transport);	
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 15377840; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 564008001; }
 	
 	public: virtual void setEvolve(const PEvolve& obj) ;
 	public: virtual void setEvolve(const PEvolve& obj, ::std::function< void (bool, BException ex) > asyncResult) ;
@@ -4301,9 +4092,9 @@ using namespace ::byps;
 
 class BApiDescriptor_Testser { 
 	/**
-	 * API serialisation version: 0.0.0.791
+	 * API serialisation version: 0.0.0.792
 	 */
-	public: const static int64_t VERSION = 791LL;
+	public: const static int64_t VERSION = 792LL;
 	public: static PApiDescriptor instance();
 };
 

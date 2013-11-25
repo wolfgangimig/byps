@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteMapTypes : BStub, RemoteMapTypes, BSerializable {	
 		
-		public readonly static long serialVersionUID = 664304990L;
+		public readonly static long serialVersionUID = 1277224527L;
 		
 		public BStub_RemoteMapTypes(BTransport transport)
 			: base(transport) {}			
 		
-		public IDictionary<String,bool> GetBoolean1() {
+		public virtual IDictionary<String,bool> GetBoolean1() {
 			BSyncResult<IDictionary<String,bool>> asyncResult = new BSyncResult<IDictionary<String,bool>>();			
 			GetBoolean1(BAsyncResultHelper.ToDelegate<IDictionary<String,bool>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetBoolean1(BAsyncResult<IDictionary<String,bool>> asyncResult) {
+		public virtual void GetBoolean1(BAsyncResult<IDictionary<String,bool>> asyncResult) {
 			BRequest_RemoteMapTypes_getBoolean1 req = new BRequest_RemoteMapTypes_getBoolean1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -29,12 +29,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetBoolean1(IDictionary<String,bool> boolean1) {
+		public virtual void SetBoolean1(IDictionary<String,bool> boolean1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetBoolean1(boolean1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetBoolean1(IDictionary<String,bool> boolean1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetBoolean1(IDictionary<String,bool> boolean1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setBoolean1 req = new BRequest_RemoteMapTypes_setBoolean1();			
 			req.boolean1Value = boolean1;
 			transport.sendMethod(req, asyncResult);
@@ -47,12 +47,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public Dictionary<double,byte> GetByte1() {
+		public virtual Dictionary<double,byte> GetByte1() {
 			BSyncResult<Dictionary<double,byte>> asyncResult = new BSyncResult<Dictionary<double,byte>>();			
 			GetByte1(BAsyncResultHelper.ToDelegate<Dictionary<double,byte>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte1(BAsyncResult<Dictionary<double,byte>> asyncResult) {
+		public virtual void GetByte1(BAsyncResult<Dictionary<double,byte>> asyncResult) {
 			BRequest_RemoteMapTypes_getByte1 req = new BRequest_RemoteMapTypes_getByte1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -63,12 +63,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetByte1(Dictionary<double,byte> byte1) {
+		public virtual void SetByte1(Dictionary<double,byte> byte1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetByte1(byte1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte1(Dictionary<double,byte> byte1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetByte1(Dictionary<double,byte> byte1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setByte1 req = new BRequest_RemoteMapTypes_setByte1();			
 			req.byte1Value = byte1;
 			transport.sendMethod(req, asyncResult);
@@ -81,12 +81,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public Dictionary<float,char> GetChar1() {
+		public virtual Dictionary<float,char> GetChar1() {
 			BSyncResult<Dictionary<float,char>> asyncResult = new BSyncResult<Dictionary<float,char>>();			
 			GetChar1(BAsyncResultHelper.ToDelegate<Dictionary<float,char>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetChar1(BAsyncResult<Dictionary<float,char>> asyncResult) {
+		public virtual void GetChar1(BAsyncResult<Dictionary<float,char>> asyncResult) {
 			BRequest_RemoteMapTypes_getChar1 req = new BRequest_RemoteMapTypes_getChar1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -97,12 +97,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetChar1(Dictionary<float,char> char1) {
+		public virtual void SetChar1(Dictionary<float,char> char1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetChar1(char1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetChar1(Dictionary<float,char> char1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetChar1(Dictionary<float,char> char1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setChar1 req = new BRequest_RemoteMapTypes_setChar1();			
 			req.char1Value = char1;
 			transport.sendMethod(req, asyncResult);
@@ -115,12 +115,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<long,short> GetShort1() {
+		public virtual IDictionary<long,short> GetShort1() {
 			BSyncResult<IDictionary<long,short>> asyncResult = new BSyncResult<IDictionary<long,short>>();			
 			GetShort1(BAsyncResultHelper.ToDelegate<IDictionary<long,short>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetShort1(BAsyncResult<IDictionary<long,short>> asyncResult) {
+		public virtual void GetShort1(BAsyncResult<IDictionary<long,short>> asyncResult) {
 			BRequest_RemoteMapTypes_getShort1 req = new BRequest_RemoteMapTypes_getShort1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -131,12 +131,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetShort1(IDictionary<long,short> short1) {
+		public virtual void SetShort1(IDictionary<long,short> short1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetShort1(short1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetShort1(IDictionary<long,short> short1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetShort1(IDictionary<long,short> short1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setShort1 req = new BRequest_RemoteMapTypes_setShort1();			
 			req.short1Value = short1;
 			transport.sendMethod(req, asyncResult);
@@ -149,12 +149,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<int,int> GetInt1() {
+		public virtual IDictionary<int,int> GetInt1() {
 			BSyncResult<IDictionary<int,int>> asyncResult = new BSyncResult<IDictionary<int,int>>();			
 			GetInt1(BAsyncResultHelper.ToDelegate<IDictionary<int,int>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt1(BAsyncResult<IDictionary<int,int>> asyncResult) {
+		public virtual void GetInt1(BAsyncResult<IDictionary<int,int>> asyncResult) {
 			BRequest_RemoteMapTypes_getInt1 req = new BRequest_RemoteMapTypes_getInt1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -165,12 +165,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetInt1(IDictionary<int,int> int1) {
+		public virtual void SetInt1(IDictionary<int,int> int1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetInt1(int1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt1(IDictionary<int,int> int1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetInt1(IDictionary<int,int> int1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setInt1 req = new BRequest_RemoteMapTypes_setInt1();			
 			req.int1Value = int1;
 			transport.sendMethod(req, asyncResult);
@@ -183,12 +183,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<short,long> GetLong1() {
+		public virtual IDictionary<short,long> GetLong1() {
 			BSyncResult<IDictionary<short,long>> asyncResult = new BSyncResult<IDictionary<short,long>>();			
 			GetLong1(BAsyncResultHelper.ToDelegate<IDictionary<short,long>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetLong1(BAsyncResult<IDictionary<short,long>> asyncResult) {
+		public virtual void GetLong1(BAsyncResult<IDictionary<short,long>> asyncResult) {
 			BRequest_RemoteMapTypes_getLong1 req = new BRequest_RemoteMapTypes_getLong1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -199,12 +199,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetLong1(IDictionary<short,long> long1) {
+		public virtual void SetLong1(IDictionary<short,long> long1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetLong1(long1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetLong1(IDictionary<short,long> long1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetLong1(IDictionary<short,long> long1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setLong1 req = new BRequest_RemoteMapTypes_setLong1();			
 			req.long1Value = long1;
 			transport.sendMethod(req, asyncResult);
@@ -217,12 +217,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<char,float> GetFloat1() {
+		public virtual IDictionary<char,float> GetFloat1() {
 			BSyncResult<IDictionary<char,float>> asyncResult = new BSyncResult<IDictionary<char,float>>();			
 			GetFloat1(BAsyncResultHelper.ToDelegate<IDictionary<char,float>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetFloat1(BAsyncResult<IDictionary<char,float>> asyncResult) {
+		public virtual void GetFloat1(BAsyncResult<IDictionary<char,float>> asyncResult) {
 			BRequest_RemoteMapTypes_getFloat1 req = new BRequest_RemoteMapTypes_getFloat1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -233,12 +233,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetFloat1(IDictionary<char,float> float1) {
+		public virtual void SetFloat1(IDictionary<char,float> float1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetFloat1(float1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetFloat1(IDictionary<char,float> float1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetFloat1(IDictionary<char,float> float1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setFloat1 req = new BRequest_RemoteMapTypes_setFloat1();			
 			req.float1Value = float1;
 			transport.sendMethod(req, asyncResult);
@@ -251,12 +251,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<byte,double> GetDouble1() {
+		public virtual IDictionary<byte,double> GetDouble1() {
 			BSyncResult<IDictionary<byte,double>> asyncResult = new BSyncResult<IDictionary<byte,double>>();			
 			GetDouble1(BAsyncResultHelper.ToDelegate<IDictionary<byte,double>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDouble1(BAsyncResult<IDictionary<byte,double>> asyncResult) {
+		public virtual void GetDouble1(BAsyncResult<IDictionary<byte,double>> asyncResult) {
 			BRequest_RemoteMapTypes_getDouble1 req = new BRequest_RemoteMapTypes_getDouble1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -267,12 +267,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetDouble1(IDictionary<byte,double> double1) {
+		public virtual void SetDouble1(IDictionary<byte,double> double1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDouble1(double1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDouble1(IDictionary<byte,double> double1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetDouble1(IDictionary<byte,double> double1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setDouble1 req = new BRequest_RemoteMapTypes_setDouble1();			
 			req.double1Value = double1;
 			transport.sendMethod(req, asyncResult);
@@ -285,12 +285,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<String,String> GetString1() {
+		public virtual IDictionary<String,String> GetString1() {
 			BSyncResult<IDictionary<String,String>> asyncResult = new BSyncResult<IDictionary<String,String>>();			
 			GetString1(BAsyncResultHelper.ToDelegate<IDictionary<String,String>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetString1(BAsyncResult<IDictionary<String,String>> asyncResult) {
+		public virtual void GetString1(BAsyncResult<IDictionary<String,String>> asyncResult) {
 			BRequest_RemoteMapTypes_getString1 req = new BRequest_RemoteMapTypes_getString1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -301,12 +301,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetString1(IDictionary<String,String> string1) {
+		public virtual void SetString1(IDictionary<String,String> string1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetString1(string1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetString1(IDictionary<String,String> string1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetString1(IDictionary<String,String> string1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setString1 req = new BRequest_RemoteMapTypes_setString1();			
 			req.string1Value = string1;
 			transport.sendMethod(req, asyncResult);
@@ -319,12 +319,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<int,byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypes1() {
+		public virtual IDictionary<int,byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypes1() {
 			BSyncResult<IDictionary<int,byps.test.api.prim.PrimitiveTypes>> asyncResult = new BSyncResult<IDictionary<int,byps.test.api.prim.PrimitiveTypes>>();			
 			GetPrimitiveTypes1(BAsyncResultHelper.ToDelegate<IDictionary<int,byps.test.api.prim.PrimitiveTypes>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPrimitiveTypes1(BAsyncResult<IDictionary<int,byps.test.api.prim.PrimitiveTypes>> asyncResult) {
+		public virtual void GetPrimitiveTypes1(BAsyncResult<IDictionary<int,byps.test.api.prim.PrimitiveTypes>> asyncResult) {
 			BRequest_RemoteMapTypes_getPrimitiveTypes1 req = new BRequest_RemoteMapTypes_getPrimitiveTypes1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -335,12 +335,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetPrimitiveTypes1(IDictionary<int,byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
+		public virtual void SetPrimitiveTypes1(IDictionary<int,byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPrimitiveTypes1(primitiveTypes1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPrimitiveTypes1(IDictionary<int,byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPrimitiveTypes1(IDictionary<int,byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setPrimitiveTypes1 req = new BRequest_RemoteMapTypes_setPrimitiveTypes1();			
 			req.primitiveTypes1Value = primitiveTypes1;
 			transport.sendMethod(req, asyncResult);
@@ -353,12 +353,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<int,byte[]> GetByte2() {
+		public virtual IDictionary<int,byte[]> GetByte2() {
 			BSyncResult<IDictionary<int,byte[]>> asyncResult = new BSyncResult<IDictionary<int,byte[]>>();			
 			GetByte2(BAsyncResultHelper.ToDelegate<IDictionary<int,byte[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte2(BAsyncResult<IDictionary<int,byte[]>> asyncResult) {
+		public virtual void GetByte2(BAsyncResult<IDictionary<int,byte[]>> asyncResult) {
 			BRequest_RemoteMapTypes_getByte2 req = new BRequest_RemoteMapTypes_getByte2();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -369,12 +369,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetByte2(IDictionary<int,byte[]> byte2) {
+		public virtual void SetByte2(IDictionary<int,byte[]> byte2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetByte2(byte2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte2(IDictionary<int,byte[]> byte2, BAsyncResult<Object> asyncResult) {
+		public virtual void SetByte2(IDictionary<int,byte[]> byte2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setByte2 req = new BRequest_RemoteMapTypes_setByte2();			
 			req.byte2Value = byte2;
 			transport.sendMethod(req, asyncResult);
@@ -387,12 +387,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<int,int[]> GetInt2() {
+		public virtual IDictionary<int,int[]> GetInt2() {
 			BSyncResult<IDictionary<int,int[]>> asyncResult = new BSyncResult<IDictionary<int,int[]>>();			
 			GetInt2(BAsyncResultHelper.ToDelegate<IDictionary<int,int[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt2(BAsyncResult<IDictionary<int,int[]>> asyncResult) {
+		public virtual void GetInt2(BAsyncResult<IDictionary<int,int[]>> asyncResult) {
 			BRequest_RemoteMapTypes_getInt2 req = new BRequest_RemoteMapTypes_getInt2();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -403,12 +403,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetInt2(IDictionary<int,int[]> int2) {
+		public virtual void SetInt2(IDictionary<int,int[]> int2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetInt2(int2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt2(IDictionary<int,int[]> int2, BAsyncResult<Object> asyncResult) {
+		public virtual void SetInt2(IDictionary<int,int[]> int2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setInt2 req = new BRequest_RemoteMapTypes_setInt2();			
 			req.int2Value = int2;
 			transport.sendMethod(req, asyncResult);
@@ -421,12 +421,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<String,Object> GetObj1() {
+		public virtual IDictionary<String,Object> GetObj1() {
 			BSyncResult<IDictionary<String,Object>> asyncResult = new BSyncResult<IDictionary<String,Object>>();			
 			GetObj1(BAsyncResultHelper.ToDelegate<IDictionary<String,Object>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetObj1(BAsyncResult<IDictionary<String,Object>> asyncResult) {
+		public virtual void GetObj1(BAsyncResult<IDictionary<String,Object>> asyncResult) {
 			BRequest_RemoteMapTypes_getObj1 req = new BRequest_RemoteMapTypes_getObj1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -437,12 +437,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetObj1(IDictionary<String,Object> obj1) {
+		public virtual void SetObj1(IDictionary<String,Object> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetObj1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetObj1(IDictionary<String,Object> obj1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetObj1(IDictionary<String,Object> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setObj1 req = new BRequest_RemoteMapTypes_setObj1();			
 			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);
@@ -455,12 +455,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public IDictionary<String,DateTime> GetDate1() {
+		public virtual IDictionary<String,DateTime> GetDate1() {
 			BSyncResult<IDictionary<String,DateTime>> asyncResult = new BSyncResult<IDictionary<String,DateTime>>();			
 			GetDate1(BAsyncResultHelper.ToDelegate<IDictionary<String,DateTime>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate1(BAsyncResult<IDictionary<String,DateTime>> asyncResult) {
+		public virtual void GetDate1(BAsyncResult<IDictionary<String,DateTime>> asyncResult) {
 			BRequest_RemoteMapTypes_getDate1 req = new BRequest_RemoteMapTypes_getDate1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -471,12 +471,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetDate1(IDictionary<String,DateTime> obj1) {
+		public virtual void SetDate1(IDictionary<String,DateTime> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate1(IDictionary<String,DateTime> obj1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetDate1(IDictionary<String,DateTime> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteMapTypes_setDate1 req = new BRequest_RemoteMapTypes_setDate1();			
 			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);

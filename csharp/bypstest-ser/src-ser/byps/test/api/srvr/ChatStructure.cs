@@ -18,10 +18,17 @@ namespace byps.test.api.srvr
 		public ChatStructure() {
 		}		
 		
-		internal ChatStructure(String @msg, double @sentAt, double @receivedAt) {
+		public ChatStructure(String @msg, double @sentAt, double @receivedAt) {
 			this.msgValue = @msg;
 			this.sentAtValue = @sentAt;
 			this.receivedAtValue = @receivedAt;
+		}		
+		
+		public ChatStructure(ChatStructure rhs)
+		{
+			this.msgValue = rhs.msgValue;
+			this.sentAtValue = rhs.sentAtValue;
+			this.receivedAtValue = rhs.receivedAtValue;
 		}		
 		
 		#endregion

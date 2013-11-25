@@ -50,133 +50,133 @@ public class BClient_Testser extends BClient {
 	
 	public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(363642571, remoteSkeleton);
+		serverR.server.addRemote(612235846, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(474058508, remoteSkeleton);
+		serverR.server.addRemote(501819909, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_FruitService remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(715959905, remoteSkeleton);
+		serverR.server.addRemote(937293552, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_LemonService remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(605543968, remoteSkeleton);
+		serverR.server.addRemote(826877615, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_PlantService remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1954605928, remoteSkeleton);
+		serverR.server.addRemote(1733272281, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(963816328, remoteSkeleton);
+		serverR.server.addRemote(1176140631, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteArrayTypes23 remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(769717182, remoteSkeleton);
+		serverR.server.addRemote(964138163, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(963726955, remoteSkeleton);
+		serverR.server.addRemote(1176051258, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteConstants remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(2045242510, remoteSkeleton);
+		serverR.server.addRemote(429088323, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteEnums remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(485761455, remoteSkeleton);
+		serverR.server.addRemote(1222673152, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteInlineInstance remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(567395951, remoteSkeleton);
+		serverR.server.addRemote(355071648, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteListTypes remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1233438138, remoteSkeleton);
+		serverR.server.addRemote(1240892695, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteMapTypes remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(664304990, remoteSkeleton);
+		serverR.server.addRemote(1277224527, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemotePrimitiveTypes remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1178916877, remoteSkeleton);
+		serverR.server.addRemote(1391241180, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteReferences remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(568637225, remoteSkeleton);
+		serverR.server.addRemote(1173792730, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteServerCtrl remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1652234479, remoteSkeleton);
+		serverR.server.addRemote(2037577312, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteSetTypes remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1900796440, remoteSkeleton);
+		serverR.server.addRemote(1781251319, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteStreams remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1043578866, remoteSkeleton);
+		serverR.server.addRemote(2123238175, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1983670399, remoteSkeleton);
+		serverR.server.addRemote(1532028880, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(2049072174, remoteSkeleton);
+		serverR.server.addRemote(955752991, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.srvr.BSkeleton_ServerIF remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(1775199834, remoteSkeleton);
+		serverR.server.addRemote(1426448279, remoteSkeleton);
 		return this;
 	}
 	
 	public BClient_Testser addRemote(byps.test.api.ver.BSkeleton_EvolveIF remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
-		serverR.server.addRemote(15377840, remoteSkeleton);
+		serverR.server.addRemote(564008001, remoteSkeleton);
 		return this;
 	}
 	
@@ -208,28 +208,28 @@ public class BClient_Testser extends BClient {
 	
 	@Override
 	public BRemote getStub(int remoteId) {
-		if (remoteId == 363642571) return bioFruitService;
-		if (remoteId == 474058508) return bioLemonService;
-		if (remoteId == 715959905) return fruitService;
-		if (remoteId == 605543968) return lemonService;
-		if (remoteId == 1954605928) return plantService;
-		if (remoteId == 963816328) return remoteArrayTypes1dim;
-		if (remoteId == 769717182) return remoteArrayTypes23;
-		if (remoteId == 963726955) return remoteArrayTypes4dim;
-		if (remoteId == 2045242510) return remoteConstants;
-		if (remoteId == 485761455) return remoteEnums;
-		if (remoteId == 567395951) return remoteInlineInstance;
-		if (remoteId == 1233438138) return remoteListTypes;
-		if (remoteId == 664304990) return remoteMapTypes;
-		if (remoteId == 1178916877) return remotePrimitiveTypes;
-		if (remoteId == 568637225) return remoteReferences;
-		if (remoteId == 1652234479) return remoteServerCtrl;
-		if (remoteId == 1900796440) return remoteSetTypes;
-		if (remoteId == 1043578866) return remoteStreams;
-		if (remoteId == 1983670399) return remoteWithAuthentication;
-		if (remoteId == 2049072174) return clientIF;
-		if (remoteId == 1775199834) return serverIF;
-		if (remoteId == 15377840) return evolveIF;
+		if (remoteId == 612235846) return bioFruitService;
+		if (remoteId == 501819909) return bioLemonService;
+		if (remoteId == 937293552) return fruitService;
+		if (remoteId == 826877615) return lemonService;
+		if (remoteId == 1733272281) return plantService;
+		if (remoteId == 1176140631) return remoteArrayTypes1dim;
+		if (remoteId == 964138163) return remoteArrayTypes23;
+		if (remoteId == 1176051258) return remoteArrayTypes4dim;
+		if (remoteId == 429088323) return remoteConstants;
+		if (remoteId == 1222673152) return remoteEnums;
+		if (remoteId == 355071648) return remoteInlineInstance;
+		if (remoteId == 1240892695) return remoteListTypes;
+		if (remoteId == 1277224527) return remoteMapTypes;
+		if (remoteId == 1391241180) return remotePrimitiveTypes;
+		if (remoteId == 1173792730) return remoteReferences;
+		if (remoteId == 2037577312) return remoteServerCtrl;
+		if (remoteId == 1781251319) return remoteSetTypes;
+		if (remoteId == 2123238175) return remoteStreams;
+		if (remoteId == 1532028880) return remoteWithAuthentication;
+		if (remoteId == 955752991) return clientIF;
+		if (remoteId == 1426448279) return serverIF;
+		if (remoteId == 564008001) return evolveIF;
 		return null;
 	}
 	

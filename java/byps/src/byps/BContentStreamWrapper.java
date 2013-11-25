@@ -1,7 +1,13 @@
 package byps;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * This class wraps an arbitrary InputStream into a BContentStream.
@@ -41,6 +47,21 @@ public class BContentStreamWrapper extends BContentStream {
 			lifetimeMillis
 		);
 		this.innerStream = innerStream;
+	}
+	
+	public BContentStreamWrapper(File file) throws FileNotFoundException {
+	  super(getFileContentType(file), file.length());
+	  innerStream = new FileInputStream(file);
+	}
+	
+	private static String getFileContentType(File file) {
+    String contentType = DEFAULT_CONTENT_TYPE;
+    Path fpath = Paths.get(file.getAbsolutePath());
+    try {
+      contentType = Files.probeContentType(fpath);
+    } catch (IOException ignored) {
+    }
+    return contentType;
 	}
 	
 	private static String makeValidContentType(InputStream innerStream, String contentType) {

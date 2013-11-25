@@ -89,7 +89,7 @@ public class BExceptionC {
    * After HConstants#TIMEOUT_LONGPOLL_MILLIS, the server releases
    * a long-poll (reverse) request. The client should open 
    * a new long-poll. The server sends an empty response to the client.
-   *  SC_NO_CONTENT
+   * Same as HttpURLConnection.HTTP_NO_CONTENT.
    */
   public static final int RESEND_LONG_POLL = 204;
 

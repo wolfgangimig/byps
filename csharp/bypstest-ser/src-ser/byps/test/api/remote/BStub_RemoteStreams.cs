@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteStreams : BStub, RemoteStreams, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1043578866L;
+		public readonly static long serialVersionUID = 2123238175L;
 		
 		public BStub_RemoteStreams(BTransport transport)
 			: base(transport) {}			
 		
-		public System.IO.Stream GetImage() {
+		public virtual System.IO.Stream GetImage() {
 			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
 			GetImage(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetImage(BAsyncResult<System.IO.Stream> asyncResult) {
+		public virtual void GetImage(BAsyncResult<System.IO.Stream> asyncResult) {
 			BRequest_RemoteStreams_getImage req = new BRequest_RemoteStreams_getImage();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -29,12 +29,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetImage(System.IO.Stream istrm) {
+		public virtual void SetImage(System.IO.Stream istrm) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetImage(istrm, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
+		public virtual void SetImage(System.IO.Stream istrm, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImage req = new BRequest_RemoteStreams_setImage();			
 			req.istrmValue = istrm;
 			transport.sendMethod(req, asyncResult);
@@ -47,12 +47,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public Dictionary<int,System.IO.Stream> GetImages() {
+		public virtual Dictionary<int,System.IO.Stream> GetImages() {
 			BSyncResult<Dictionary<int,System.IO.Stream>> asyncResult = new BSyncResult<Dictionary<int,System.IO.Stream>>();			
 			GetImages(BAsyncResultHelper.ToDelegate<Dictionary<int,System.IO.Stream>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetImages(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
+		public virtual void GetImages(BAsyncResult<Dictionary<int,System.IO.Stream>> asyncResult) {
 			BRequest_RemoteStreams_getImages req = new BRequest_RemoteStreams_getImages();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -63,12 +63,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
+		public virtual void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetImages(istrms, doNotReadStreamAtKey, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
+		public virtual void SetImages(IDictionary<int,System.IO.Stream> istrms, int doNotReadStreamAtKey, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_setImages req = new BRequest_RemoteStreams_setImages();			
 			req.istrmsValue = istrms;
 			req.doNotReadStreamAtKeyValue = doNotReadStreamAtKey;
@@ -83,12 +83,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void ThrowLastException() {
+		public virtual void ThrowLastException() {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			ThrowLastException(BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void ThrowLastException(BAsyncResult<Object> asyncResult) {
+		public virtual void ThrowLastException(BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteStreams_throwLastException req = new BRequest_RemoteStreams_throwLastException();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -99,12 +99,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public System.IO.Stream GetTextStream() {
+		public virtual System.IO.Stream GetTextStream() {
 			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
 			GetTextStream(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetTextStream(BAsyncResult<System.IO.Stream> asyncResult) {
+		public virtual void GetTextStream(BAsyncResult<System.IO.Stream> asyncResult) {
 			BRequest_RemoteStreams_getTextStream req = new BRequest_RemoteStreams_getTextStream();			
 			transport.sendMethod(req, asyncResult);
 		}

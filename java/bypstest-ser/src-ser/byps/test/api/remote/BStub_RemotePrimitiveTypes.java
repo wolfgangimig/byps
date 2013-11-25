@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemotePrimitiveTypes extends BStub implements RemotePrimitiveTypesAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1178916877L;
+	public final static long serialVersionUID = 1391241180L;
 	
 	public BStub_RemotePrimitiveTypes(final BTransport transport) {
 		super(transport);		

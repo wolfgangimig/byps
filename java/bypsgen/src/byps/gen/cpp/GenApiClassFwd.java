@@ -35,9 +35,9 @@ class GenApiClassFwd {
     else if (tinfo.isAnyType()) {
       
     }
-//    else if (tinfo.isArrayType()) {
-//      
-//    }
+    else if (tinfo.isArrayType()) {
+      
+    }
 		else if (tinfo.isCollectionType()) {
 			// keine Forward-Decl für vector, set, map
 		}

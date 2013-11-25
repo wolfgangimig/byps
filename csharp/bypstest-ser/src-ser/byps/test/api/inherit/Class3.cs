@@ -18,8 +18,13 @@ namespace byps.test.api.inherit
 		public Class3() {
 		}		
 		
-		internal Class3(int @int3) {
+		public Class3(int @int3) {
 			this.int3Value = @int3;
+		}		
+		
+		public Class3(Class3 rhs) : base(rhs)
+		{
+			this.int3Value = rhs.int3Value;
 		}		
 		
 		#endregion

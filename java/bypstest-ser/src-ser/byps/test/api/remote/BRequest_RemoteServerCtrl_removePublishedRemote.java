@@ -17,7 +17,7 @@ public final class BRequest_RemoteServerCtrl_removePublishedRemote extends BMeth
 	
 	public final static long serialVersionUID = 135366859L;
 	
-	public int getRemoteId() { return 1652234479; }
+	public int getRemoteId() { return 2037577312; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

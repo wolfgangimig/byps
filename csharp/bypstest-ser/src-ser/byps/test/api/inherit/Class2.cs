@@ -18,8 +18,13 @@ namespace byps.test.api.inherit
 		public Class2() {
 		}		
 		
-		internal Class2(int @int2) {
+		public Class2(int @int2) {
 			this.int2Value = @int2;
+		}		
+		
+		public Class2(Class2 rhs) : base(rhs)
+		{
+			this.int2Value = rhs.int2Value;
 		}		
 		
 		#endregion

@@ -8,17 +8,17 @@ namespace byps.test.api.srvr
 	
 	public class BStub_ClientIF : BStub, ClientIF, BSerializable {	
 		
-		public readonly static long serialVersionUID = 2049072174L;
+		public readonly static long serialVersionUID = 955752991L;
 		
 		public BStub_ClientIF(BTransport transport)
 			: base(transport) {}			
 		
-		public int IncrementInt(int a) {
+		public virtual int IncrementInt(int a) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
 			IncrementInt(a, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void IncrementInt(int a, BAsyncResult<int> asyncResult) {
+		public virtual void IncrementInt(int a, BAsyncResult<int> asyncResult) {
 			BRequest_ClientIF_incrementInt req = new BRequest_ClientIF_incrementInt();			
 			req.aValue = a;
 			transport.sendMethod(req, asyncResult);
@@ -31,12 +31,12 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public IList<System.IO.Stream> GetStreams(int ctrl) {
+		public virtual IList<System.IO.Stream> GetStreams(int ctrl) {
 			BSyncResult<IList<System.IO.Stream>> asyncResult = new BSyncResult<IList<System.IO.Stream>>();			
 			GetStreams(ctrl, BAsyncResultHelper.ToDelegate<IList<System.IO.Stream>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetStreams(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+		public virtual void GetStreams(int ctrl, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
 			BRequest_ClientIF_getStreams req = new BRequest_ClientIF_getStreams();			
 			req.ctrlValue = ctrl;
 			transport.sendMethod(req, asyncResult);
@@ -49,12 +49,12 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public void PutStreams(IList<System.IO.Stream> strm, int ctrl) {
+		public virtual void PutStreams(IList<System.IO.Stream> strm, int ctrl) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			PutStreams(strm, ctrl, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void PutStreams(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
+		public virtual void PutStreams(IList<System.IO.Stream> strm, int ctrl, BAsyncResult<Object> asyncResult) {
 			BRequest_ClientIF_putStreams req = new BRequest_ClientIF_putStreams();			
 			req.strmValue = strm;
 			req.ctrlValue = ctrl;
@@ -69,12 +69,12 @@ namespace byps.test.api.srvr
 			await task;
 		}
 		
-		public ChatStructure SendChat(ChatStructure cs) {
+		public virtual ChatStructure SendChat(ChatStructure cs) {
 			BSyncResult<ChatStructure> asyncResult = new BSyncResult<ChatStructure>();			
 			SendChat(cs, BAsyncResultHelper.ToDelegate<ChatStructure>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void SendChat(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
+		public virtual void SendChat(ChatStructure cs, BAsyncResult<ChatStructure> asyncResult) {
 			BRequest_ClientIF_sendChat req = new BRequest_ClientIF_sendChat();			
 			req.csValue = cs;
 			transport.sendMethod(req, asyncResult);

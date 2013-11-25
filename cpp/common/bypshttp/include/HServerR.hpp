@@ -131,7 +131,7 @@ class HServerR_LongPoll {
 						// no retry
 						break;
                 
-					case EX_TIMEOUT:
+					case RESEND_LONG_POLL:
 						// HWireClientR has released the expried long-poll.
 						// Ignore the error and send a new long-poll.
 						sendLongPoll->send(transport, server, PMessage());
@@ -213,12 +213,62 @@ BINLINE void HServerR_SendLongPoll::send(PTransport transport, PServer server, P
 	}
 }
 
+//class MyThread {
+//public:
+//	
+//	virtual void run() {
+//	}
+//
+//	static MyThread* start() {
+//		byps_unique_lock(mtx);
+//
+//		for (size_t i = 0; i < stoppedThreads.size(); i++) {
+//			delete stoppedThreads[i];
+//		}
+//		stoppedThreads.clear();
+//
+//		MyThread* t = new MyThread();
+//		t->std_thread = new std::thread(threadFunct, t);
+//	}
+//
+//	void join() {
+//	}
+//
+//private:
+//	virtual ~MyThread() {
+//	}
+//
+//	std::thread* std_thread;
+//	static byps_mutex mtx;
+//	static vector<MyThread*> stoppedThreads;
+//
+//	static void threadFunct(MyThread* pThread) {
+//
+//		try {
+//			pThread->run();
+//		}
+//		catch (...) {}
+//
+//		{
+//			byps_unique_lock lock(mtx);
+//			stoppedThreads.push_back(pThread);
+//		}
+//	}
+//};
+
+BINLINE void lostConnection(PLostConnectionHandler lostConnectionHandler, BException ex) {
+	try {
+		lostConnectionHandler->onLostConnection(ex);
+	}
+	catch (...) {}
+}
 
 BINLINE void HServerR_SendLongPoll::onLostConnection(const BException& ex, PTransport transport, PServer server) {
 	if (isDone) return;
 
 	if (lostConnectionHandler) {
-		lostConnectionHandler->onLostConnection(ex);
+		std::thread t(lostConnection, lostConnectionHandler, ex);
+		t.detach();
 	}
 	else if (waitBeforeRetry()) { // e.g. Socket error
 		send(transport, server, PMessage());

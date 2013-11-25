@@ -16,7 +16,7 @@ public final class BRequest_RemotePrimitiveTypes_voidFunctionVoid extends BMetho
 	
 	public final static long serialVersionUID = 2033139391L;
 	
-	public int getRemoteId() { return 1178916877; }
+	public int getRemoteId() { return 1391241180; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

@@ -17,7 +17,7 @@ public final class BRequest_ClientIF_getStreams extends BMethodRequest implement
 	
 	public final static long serialVersionUID = 1654980071L;
 	
-	public int getRemoteId() { return 2049072174; }
+	public int getRemoteId() { return 955752991; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

@@ -8,17 +8,17 @@ namespace byps.test.api.srvr
 	
 	public class BStub_ServerIF : BStub, ServerIF, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1775199834L;
+		public readonly static long serialVersionUID = 1426448279L;
 		
 		public BStub_ServerIF(BTransport transport)
 			: base(transport) {}			
 		
-		public int CallClientIncrementInt(int v) {
+		public virtual int CallClientIncrementInt(int v) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
 			CallClientIncrementInt(v, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void CallClientIncrementInt(int v, BAsyncResult<int> asyncResult) {
+		public virtual void CallClientIncrementInt(int v, BAsyncResult<int> asyncResult) {
 			BRequest_ServerIF_callClientIncrementInt req = new BRequest_ServerIF_callClientIncrementInt();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);
@@ -31,12 +31,12 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public void SetPartner(ClientIF client) {
+		public virtual void SetPartner(ClientIF client) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPartner(client, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPartner(ClientIF client, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPartner(ClientIF client, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_setPartner req = new BRequest_ServerIF_setPartner();			
 			req.clientValue = client;
 			transport.sendMethod(req, asyncResult);
@@ -49,12 +49,12 @@ namespace byps.test.api.srvr
 			await task;
 		}
 		
-		public ClientIF GetPartner() {
+		public virtual ClientIF GetPartner() {
 			BSyncResult<ClientIF> asyncResult = new BSyncResult<ClientIF>();			
 			GetPartner(BAsyncResultHelper.ToDelegate<ClientIF>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPartner(BAsyncResult<ClientIF> asyncResult) {
+		public virtual void GetPartner(BAsyncResult<ClientIF> asyncResult) {
 			BRequest_ServerIF_getPartner req = new BRequest_ServerIF_getPartner();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -65,12 +65,12 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public IList<System.IO.Stream> GetStreamsFromClient() {
+		public virtual IList<System.IO.Stream> GetStreamsFromClient() {
 			BSyncResult<IList<System.IO.Stream>> asyncResult = new BSyncResult<IList<System.IO.Stream>>();			
 			GetStreamsFromClient(BAsyncResultHelper.ToDelegate<IList<System.IO.Stream>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetStreamsFromClient(BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+		public virtual void GetStreamsFromClient(BAsyncResult<IList<System.IO.Stream>> asyncResult) {
 			BRequest_ServerIF_getStreamsFromClient req = new BRequest_ServerIF_getStreamsFromClient();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -81,12 +81,12 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public void PutStreamsOnClient(IList<System.IO.Stream> streams) {
+		public virtual void PutStreamsOnClient(IList<System.IO.Stream> streams) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			PutStreamsOnClient(streams, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void PutStreamsOnClient(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) {
+		public virtual void PutStreamsOnClient(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_putStreamsOnClient req = new BRequest_ServerIF_putStreamsOnClient();			
 			req.streamsValue = streams;
 			transport.sendMethod(req, asyncResult);
@@ -99,12 +99,12 @@ namespace byps.test.api.srvr
 			await task;
 		}
 		
-		public void RegisterWithClientMap(int id) {
+		public virtual void RegisterWithClientMap(int id) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			RegisterWithClientMap(id, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void RegisterWithClientMap(int id, BAsyncResult<Object> asyncResult) {
+		public virtual void RegisterWithClientMap(int id, BAsyncResult<Object> asyncResult) {
 			BRequest_ServerIF_registerWithClientMap req = new BRequest_ServerIF_registerWithClientMap();			
 			req.idValue = id;
 			transport.sendMethod(req, asyncResult);
@@ -117,12 +117,12 @@ namespace byps.test.api.srvr
 			await task;
 		}
 		
-		public ClientIF GetClient(int id) {
+		public virtual ClientIF GetClient(int id) {
 			BSyncResult<ClientIF> asyncResult = new BSyncResult<ClientIF>();			
 			GetClient(id, BAsyncResultHelper.ToDelegate<ClientIF>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetClient(int id, BAsyncResult<ClientIF> asyncResult) {
+		public virtual void GetClient(int id, BAsyncResult<ClientIF> asyncResult) {
 			BRequest_ServerIF_getClient req = new BRequest_ServerIF_getClient();			
 			req.idValue = id;
 			transport.sendMethod(req, asyncResult);
@@ -135,12 +135,12 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public ISet<int> GetClientIds() {
+		public virtual ISet<int> GetClientIds() {
 			BSyncResult<ISet<int>> asyncResult = new BSyncResult<ISet<int>>();			
 			GetClientIds(BAsyncResultHelper.ToDelegate<ISet<int>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetClientIds(BAsyncResult<ISet<int>> asyncResult) {
+		public virtual void GetClientIds(BAsyncResult<ISet<int>> asyncResult) {
 			BRequest_ServerIF_getClientIds req = new BRequest_ServerIF_getClientIds();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -151,12 +151,12 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public int CallClientParallel(int v) {
+		public virtual int CallClientParallel(int v) {
 			BSyncResult<int> asyncResult = new BSyncResult<int>();			
 			CallClientParallel(v, BAsyncResultHelper.ToDelegate<int>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void CallClientParallel(int v, BAsyncResult<int> asyncResult) {
+		public virtual void CallClientParallel(int v, BAsyncResult<int> asyncResult) {
 			BRequest_ServerIF_callClientParallel req = new BRequest_ServerIF_callClientParallel();			
 			req.vValue = v;
 			transport.sendMethod(req, asyncResult);

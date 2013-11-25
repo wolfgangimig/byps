@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_BioFruitService extends BSkeleton implements BioFruitServiceAsync {
 	
-	public final static long serialVersionUID = 363642571L;
+	public final static long serialVersionUID = 612235846L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public java.lang.String grow() throws RemoteException {

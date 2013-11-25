@@ -16,14 +16,17 @@ public class MethodInfo extends ItemInfo {
 	
 	public RemoteInfo remoteInfo;
 	
+	public final long since;
+	
 	public final static String METHOD_REQUEST_NAME_PREFIX  = "BRequest_";
 	public final static String METHOD_RESULT_NAME_PREFIX  = "BResult_";
 	
-	public MethodInfo(String name, List<CommentInfo> comments, SerialInfo requestInfo, SerialInfo resultInfo, ArrayList<TypeInfo> exceptions) {
+	public MethodInfo(String name, List<CommentInfo> comments, SerialInfo requestInfo, SerialInfo resultInfo, ArrayList<TypeInfo> exceptions, long since) {
 		super(name, comments);
 		this.requestInfo = requestInfo;
 		this.resultInfo = resultInfo;
 		this.exceptions = exceptions != null ? exceptions : new ArrayList<TypeInfo>();
+		this.since = since;
 	}
 
 	public String getQName() {

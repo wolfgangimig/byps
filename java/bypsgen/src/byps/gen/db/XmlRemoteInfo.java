@@ -92,10 +92,12 @@ public class XmlRemoteInfo implements XmlInfo {
 		for (XmlMethodInfo x : methods) {
 			MethodInfo m = x.toValue(classDB); 
 			methodInfos.add(m); 
+			
+			classDB.updateMethodInfoAfterRead(m);
 		}
 		
 		remoteInfo.methods = methodInfos;
-		
+
 		log.debug(")updateAfterRead");
 	}
 

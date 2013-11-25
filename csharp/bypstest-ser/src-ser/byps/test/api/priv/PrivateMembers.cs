@@ -21,7 +21,7 @@ namespace byps.test.api.priv
 		public PrivateMembers() {
 		}		
 		
-		internal PrivateMembers(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, byps.test.api.prim.PrimitiveTypes @primitiveTypes, bool[] @arrBool, int[] @arrInt, String[] @arrString, byps.test.api.prim.PrimitiveTypes[] @arrPrimitiveTypes, IList<bool> @listBool, IList<int> @listInt, IList<String> @listString, IList<byps.test.api.prim.PrimitiveTypes> @listPrimitiveTypes, IDictionary<int,IList<String>> @mapIntListString, int @protInt, int @pprotInt) {
+		public PrivateMembers(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, byps.test.api.prim.PrimitiveTypes @primitiveTypes, bool[] @arrBool, int[] @arrInt, String[] @arrString, byps.test.api.prim.PrimitiveTypes[] @arrPrimitiveTypes, IList<bool> @listBool, IList<int> @listInt, IList<String> @listString, IList<byps.test.api.prim.PrimitiveTypes> @listPrimitiveTypes, IDictionary<int,IList<String>> @mapIntListString, int @protInt, int @pprotInt) {
 			this.boolValValue = @boolVal;
 			this.byteValValue = @byteVal;
 			this.charValValue = @charVal;
@@ -43,6 +43,31 @@ namespace byps.test.api.priv
 			this.mapIntListStringValue = @mapIntListString;
 			this.protIntValue = @protInt;
 			this.pprotIntValue = @pprotInt;
+		}		
+		
+		public PrivateMembers(PrivateMembers rhs)
+		{
+			this.boolValValue = rhs.boolValValue;
+			this.byteValValue = rhs.byteValValue;
+			this.charValValue = rhs.charValValue;
+			this.shortValValue = rhs.shortValValue;
+			this.intValValue = rhs.intValValue;
+			this.longValValue = rhs.longValValue;
+			this.floatValValue = rhs.floatValValue;
+			this.doubleValValue = rhs.doubleValValue;
+			this.stringValValue = rhs.stringValValue;
+			this.primitiveTypesValue = rhs.primitiveTypesValue;
+			this.arrBoolValue = rhs.arrBoolValue;
+			this.arrIntValue = rhs.arrIntValue;
+			this.arrStringValue = rhs.arrStringValue;
+			this.arrPrimitiveTypesValue = rhs.arrPrimitiveTypesValue;
+			this.listBoolValue = rhs.listBoolValue;
+			this.listIntValue = rhs.listIntValue;
+			this.listStringValue = rhs.listStringValue;
+			this.listPrimitiveTypesValue = rhs.listPrimitiveTypesValue;
+			this.mapIntListStringValue = rhs.mapIntListStringValue;
+			this.protIntValue = rhs.protIntValue;
+			this.pprotIntValue = rhs.pprotIntValue;
 		}		
 		
 		#endregion

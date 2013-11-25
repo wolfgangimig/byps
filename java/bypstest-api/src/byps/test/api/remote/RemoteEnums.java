@@ -12,4 +12,5 @@ public interface RemoteEnums extends BRemote {
 	EnumPlanets getPlanet() throws RemoteException;
 	
 	void setPlanet(EnumPlanets planet) throws RemoteException;
+	
 }

@@ -5,64 +5,20 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace ver { 
 
 //-------------------------------------------------
-// Implementation of class BRequest_EvolveIF_setClient
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-byps::test::api::ver::BRequest_EvolveIF_setClient::BRequest_EvolveIF_setClient() : BMethodRequest(15377840) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::ver::BRequest_EvolveIF_setClient::BRequest_EvolveIF_setClient(const PEvolveIF& partner)
-	: BMethodRequest(15377840) 
-	, partner(partner)
-	{}
-// checkpoint byps.gen.cpp.GenApiClass:877
-void byps::test::api::ver::BRequest_EvolveIF_setClient::serialize(BIO& ar, const BVERSION version) {
-	ar & partner;
-}
-void byps::test::api::ver::BRequest_EvolveIF_setClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
-	__byps__remoteT->setClient(partner, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:934
-namespace byps { namespace test { namespace api { 
-void BSerializer_998004147(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		byps::test::api::ver::BRequest_EvolveIF_setClient& r = * dynamic_cast< byps::test::api::ver::BRequest_EvolveIF_setClient*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new byps::test::api::ver::BRequest_EvolveIF_setClient());
-	}
-}
-}}}
-namespace byps { namespace test { namespace api { namespace ver { 
-
-//-------------------------------------------------
 // Implementation of class BRequest_EvolveIF_setEvolve
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve() : BMethodRequest(15377840) {
+BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve() : BMethodRequest(564008001) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve(const PEvolve& obj)
-	: BMethodRequest(15377840) 
+	: BMethodRequest(564008001) 
 	, obj(obj)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::ver::BRequest_EvolveIF_setEvolve::serialize(BIO& ar, const BVERSION version) {
-	ar & obj;
+	ar & this->obj;
 }
 void byps::test::api::ver::BRequest_EvolveIF_setEvolve::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
@@ -97,7 +53,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-byps::test::api::ver::Evolve::Evolve() {
+Evolve::Evolve() {
 	bool1 = false;
 	byte1 = 0;
 	char1 = '\0';
@@ -194,78 +150,78 @@ byps::test::api::ver::Evolve::Evolve(bool bool1, int8_t byte1, wchar_t char1, in
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::ver::Evolve::serialize(BIO& ar, const BVERSION version) {
-	ar & bool1;
-	ar & byte1;
-	ar & char1;
-	ar & double1;
-	ar & float1;
-	ar & int1;
-	ar & long1;
-	ar & short1;
-	ar & str1;
+	ar & this->bool1;
+	ar & this->byte1;
+	ar & this->char1;
+	ar & this->double1;
+	ar & this->float1;
+	ar & this->int1;
+	ar & this->long1;
+	ar & this->short1;
+	ar & this->str1;
 	if (version >= 2) {
-		ar & bool2;
-		ar & byte2;
-		ar & char2;
-		ar & double2;
-		ar & float2;
-		ar & int2;
-		ar & long2;
-		ar & short2;
-		ar & str2;
+		ar & this->bool2;
+		ar & this->byte2;
+		ar & this->char2;
+		ar & this->double2;
+		ar & this->float2;
+		ar & this->int2;
+		ar & this->long2;
+		ar & this->short2;
+		ar & this->str2;
 		if (version >= 3) {
-			ar & bool3;
-			ar & byte3;
-			ar & char3;
-			ar & double3;
-			ar & float3;
-			ar & int3;
-			ar & long3;
-			ar & short3;
-			ar & str3;
+			ar & this->bool3;
+			ar & this->byte3;
+			ar & this->char3;
+			ar & this->double3;
+			ar & this->float3;
+			ar & this->int3;
+			ar & this->long3;
+			ar & this->short3;
+			ar & this->str3;
 		}
 	}
-	ar & bools1;
-	ar & bytes1;
-	ar & chars1;
-	ar & doubles1;
-	ar & evo1;
-	ar & floats1;
-	ar & ints1;
-	ar & list1;
-	ar & longs1;
-	ar & map1;
-	ar & obj1;
-	ar & set1;
-	ar & shorts1;
+	ar & this->bools1;
+	ar & this->bytes1;
+	ar & this->chars1;
+	ar & this->doubles1;
+	ar & this->evo1;
+	ar & this->floats1;
+	ar & this->ints1;
+	ar & this->list1;
+	ar & this->longs1;
+	ar & this->map1;
+	ar & this->obj1;
+	ar & this->set1;
+	ar & this->shorts1;
 	if (version >= 2) {
-		ar & bools2;
-		ar & bytes2;
-		ar & chars2;
-		ar & doubles2;
-		ar & evo2;
-		ar & floats2;
-		ar & ints2;
-		ar & list2;
-		ar & longs2;
-		ar & map2;
-		ar & obj2;
-		ar & set2;
-		ar & shorts2;
+		ar & this->bools2;
+		ar & this->bytes2;
+		ar & this->chars2;
+		ar & this->doubles2;
+		ar & this->evo2;
+		ar & this->floats2;
+		ar & this->ints2;
+		ar & this->list2;
+		ar & this->longs2;
+		ar & this->map2;
+		ar & this->obj2;
+		ar & this->set2;
+		ar & this->shorts2;
 		if (version >= 3) {
-			ar & bools3;
-			ar & bytes3;
-			ar & chars3;
-			ar & doubles3;
-			ar & evo3;
-			ar & floats3;
-			ar & ints3;
-			ar & list3;
-			ar & longs3;
-			ar & map3;
-			ar & obj3;
-			ar & set3;
-			ar & shorts3;
+			ar & this->bools3;
+			ar & this->bytes3;
+			ar & this->chars3;
+			ar & this->doubles3;
+			ar & this->evo3;
+			ar & this->floats3;
+			ar & this->ints3;
+			ar & this->list3;
+			ar & this->longs3;
+			ar & this->map3;
+			ar & this->obj3;
+			ar & this->set3;
+			ar & this->shorts3;
 		}
 	}
 }
@@ -290,16 +246,19 @@ namespace byps { namespace test { namespace api { namespace ver {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-byps::test::api::ver::Evolve2::Evolve2() {
+Evolve2::Evolve2() {
 	n1 = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::ver::Evolve2::Evolve2(int32_t n1)
 	: n1(n1)
 	{}
+void Evolve2::setN1(int32_t v) {
+	n1 = v;
+}
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::ver::Evolve2::serialize(BIO& ar, const BVERSION version) {
-	ar & n1;
+	ar & this->n1;
 }
 }}}}
 
@@ -1395,7 +1354,7 @@ void BStub_PlantService::grow(::std::function< void (::std::wstring, BException 
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1954605928(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1733272281(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -1445,7 +1404,7 @@ void BStub_FruitService::squeeze(::std::function< void (::std::wstring, BExcepti
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_715959905(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_937293552(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -1507,7 +1466,7 @@ void BStub_BioFruitService::squeeze(::std::function< void (::std::wstring, BExce
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_363642571(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_612235846(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;

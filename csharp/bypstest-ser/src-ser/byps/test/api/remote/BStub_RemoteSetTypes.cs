@@ -8,17 +8,17 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteSetTypes : BStub, RemoteSetTypes, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1900796440L;
+		public readonly static long serialVersionUID = 1781251319L;
 		
 		public BStub_RemoteSetTypes(BTransport transport)
 			: base(transport) {}			
 		
-		public ISet<bool> GetBoolean1() {
+		public virtual ISet<bool> GetBoolean1() {
 			BSyncResult<ISet<bool>> asyncResult = new BSyncResult<ISet<bool>>();			
 			GetBoolean1(BAsyncResultHelper.ToDelegate<ISet<bool>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetBoolean1(BAsyncResult<ISet<bool>> asyncResult) {
+		public virtual void GetBoolean1(BAsyncResult<ISet<bool>> asyncResult) {
 			BRequest_RemoteSetTypes_getBoolean1 req = new BRequest_RemoteSetTypes_getBoolean1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -29,12 +29,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetBoolean1(ISet<bool> boolean1) {
+		public virtual void SetBoolean1(ISet<bool> boolean1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetBoolean1(boolean1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetBoolean1(ISet<bool> boolean1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetBoolean1(ISet<bool> boolean1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setBoolean1 req = new BRequest_RemoteSetTypes_setBoolean1();			
 			req.boolean1Value = boolean1;
 			transport.sendMethod(req, asyncResult);
@@ -47,12 +47,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public HashSet<byte> GetByte1() {
+		public virtual HashSet<byte> GetByte1() {
 			BSyncResult<HashSet<byte>> asyncResult = new BSyncResult<HashSet<byte>>();			
 			GetByte1(BAsyncResultHelper.ToDelegate<HashSet<byte>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte1(BAsyncResult<HashSet<byte>> asyncResult) {
+		public virtual void GetByte1(BAsyncResult<HashSet<byte>> asyncResult) {
 			BRequest_RemoteSetTypes_getByte1 req = new BRequest_RemoteSetTypes_getByte1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -63,12 +63,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetByte1(HashSet<byte> byte1) {
+		public virtual void SetByte1(HashSet<byte> byte1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetByte1(byte1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte1(HashSet<byte> byte1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetByte1(HashSet<byte> byte1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setByte1 req = new BRequest_RemoteSetTypes_setByte1();			
 			req.byte1Value = byte1;
 			transport.sendMethod(req, asyncResult);
@@ -81,12 +81,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public HashSet<char> GetChar1() {
+		public virtual HashSet<char> GetChar1() {
 			BSyncResult<HashSet<char>> asyncResult = new BSyncResult<HashSet<char>>();			
 			GetChar1(BAsyncResultHelper.ToDelegate<HashSet<char>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetChar1(BAsyncResult<HashSet<char>> asyncResult) {
+		public virtual void GetChar1(BAsyncResult<HashSet<char>> asyncResult) {
 			BRequest_RemoteSetTypes_getChar1 req = new BRequest_RemoteSetTypes_getChar1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -97,12 +97,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetChar1(HashSet<char> char1) {
+		public virtual void SetChar1(HashSet<char> char1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetChar1(char1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetChar1(HashSet<char> char1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetChar1(HashSet<char> char1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setChar1 req = new BRequest_RemoteSetTypes_setChar1();			
 			req.char1Value = char1;
 			transport.sendMethod(req, asyncResult);
@@ -115,12 +115,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<short> GetShort1() {
+		public virtual ISet<short> GetShort1() {
 			BSyncResult<ISet<short>> asyncResult = new BSyncResult<ISet<short>>();			
 			GetShort1(BAsyncResultHelper.ToDelegate<ISet<short>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetShort1(BAsyncResult<ISet<short>> asyncResult) {
+		public virtual void GetShort1(BAsyncResult<ISet<short>> asyncResult) {
 			BRequest_RemoteSetTypes_getShort1 req = new BRequest_RemoteSetTypes_getShort1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -131,12 +131,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetShort1(ISet<short> short1) {
+		public virtual void SetShort1(ISet<short> short1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetShort1(short1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetShort1(ISet<short> short1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetShort1(ISet<short> short1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setShort1 req = new BRequest_RemoteSetTypes_setShort1();			
 			req.short1Value = short1;
 			transport.sendMethod(req, asyncResult);
@@ -149,12 +149,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<int> GetInt1() {
+		public virtual ISet<int> GetInt1() {
 			BSyncResult<ISet<int>> asyncResult = new BSyncResult<ISet<int>>();			
 			GetInt1(BAsyncResultHelper.ToDelegate<ISet<int>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt1(BAsyncResult<ISet<int>> asyncResult) {
+		public virtual void GetInt1(BAsyncResult<ISet<int>> asyncResult) {
 			BRequest_RemoteSetTypes_getInt1 req = new BRequest_RemoteSetTypes_getInt1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -165,12 +165,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetInt1(ISet<int> int1) {
+		public virtual void SetInt1(ISet<int> int1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetInt1(int1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt1(ISet<int> int1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetInt1(ISet<int> int1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setInt1 req = new BRequest_RemoteSetTypes_setInt1();			
 			req.int1Value = int1;
 			transport.sendMethod(req, asyncResult);
@@ -183,12 +183,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<long> GetLong1() {
+		public virtual ISet<long> GetLong1() {
 			BSyncResult<ISet<long>> asyncResult = new BSyncResult<ISet<long>>();			
 			GetLong1(BAsyncResultHelper.ToDelegate<ISet<long>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetLong1(BAsyncResult<ISet<long>> asyncResult) {
+		public virtual void GetLong1(BAsyncResult<ISet<long>> asyncResult) {
 			BRequest_RemoteSetTypes_getLong1 req = new BRequest_RemoteSetTypes_getLong1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -199,12 +199,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetLong1(ISet<long> long1) {
+		public virtual void SetLong1(ISet<long> long1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetLong1(long1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetLong1(ISet<long> long1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetLong1(ISet<long> long1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setLong1 req = new BRequest_RemoteSetTypes_setLong1();			
 			req.long1Value = long1;
 			transport.sendMethod(req, asyncResult);
@@ -217,12 +217,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<float> GetFloat1() {
+		public virtual ISet<float> GetFloat1() {
 			BSyncResult<ISet<float>> asyncResult = new BSyncResult<ISet<float>>();			
 			GetFloat1(BAsyncResultHelper.ToDelegate<ISet<float>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetFloat1(BAsyncResult<ISet<float>> asyncResult) {
+		public virtual void GetFloat1(BAsyncResult<ISet<float>> asyncResult) {
 			BRequest_RemoteSetTypes_getFloat1 req = new BRequest_RemoteSetTypes_getFloat1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -233,12 +233,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetFloat1(ISet<float> float1) {
+		public virtual void SetFloat1(ISet<float> float1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetFloat1(float1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetFloat1(ISet<float> float1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetFloat1(ISet<float> float1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setFloat1 req = new BRequest_RemoteSetTypes_setFloat1();			
 			req.float1Value = float1;
 			transport.sendMethod(req, asyncResult);
@@ -251,12 +251,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<double> GetDouble1() {
+		public virtual ISet<double> GetDouble1() {
 			BSyncResult<ISet<double>> asyncResult = new BSyncResult<ISet<double>>();			
 			GetDouble1(BAsyncResultHelper.ToDelegate<ISet<double>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDouble1(BAsyncResult<ISet<double>> asyncResult) {
+		public virtual void GetDouble1(BAsyncResult<ISet<double>> asyncResult) {
 			BRequest_RemoteSetTypes_getDouble1 req = new BRequest_RemoteSetTypes_getDouble1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -267,12 +267,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetDouble1(ISet<double> double1) {
+		public virtual void SetDouble1(ISet<double> double1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDouble1(double1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDouble1(ISet<double> double1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetDouble1(ISet<double> double1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setDouble1 req = new BRequest_RemoteSetTypes_setDouble1();			
 			req.double1Value = double1;
 			transport.sendMethod(req, asyncResult);
@@ -285,12 +285,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<String> GetString1() {
+		public virtual ISet<String> GetString1() {
 			BSyncResult<ISet<String>> asyncResult = new BSyncResult<ISet<String>>();			
 			GetString1(BAsyncResultHelper.ToDelegate<ISet<String>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetString1(BAsyncResult<ISet<String>> asyncResult) {
+		public virtual void GetString1(BAsyncResult<ISet<String>> asyncResult) {
 			BRequest_RemoteSetTypes_getString1 req = new BRequest_RemoteSetTypes_getString1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -301,12 +301,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetString1(ISet<String> string1) {
+		public virtual void SetString1(ISet<String> string1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetString1(string1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetString1(ISet<String> string1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetString1(ISet<String> string1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setString1 req = new BRequest_RemoteSetTypes_setString1();			
 			req.string1Value = string1;
 			transport.sendMethod(req, asyncResult);
@@ -319,12 +319,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypes1() {
+		public virtual ISet<byps.test.api.prim.PrimitiveTypes> GetPrimitiveTypes1() {
 			BSyncResult<ISet<byps.test.api.prim.PrimitiveTypes>> asyncResult = new BSyncResult<ISet<byps.test.api.prim.PrimitiveTypes>>();			
 			GetPrimitiveTypes1(BAsyncResultHelper.ToDelegate<ISet<byps.test.api.prim.PrimitiveTypes>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetPrimitiveTypes1(BAsyncResult<ISet<byps.test.api.prim.PrimitiveTypes>> asyncResult) {
+		public virtual void GetPrimitiveTypes1(BAsyncResult<ISet<byps.test.api.prim.PrimitiveTypes>> asyncResult) {
 			BRequest_RemoteSetTypes_getPrimitiveTypes1 req = new BRequest_RemoteSetTypes_getPrimitiveTypes1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -335,12 +335,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetPrimitiveTypes1(ISet<byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
+		public virtual void SetPrimitiveTypes1(ISet<byps.test.api.prim.PrimitiveTypes> primitiveTypes1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetPrimitiveTypes1(primitiveTypes1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetPrimitiveTypes1(ISet<byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetPrimitiveTypes1(ISet<byps.test.api.prim.PrimitiveTypes> primitiveTypes1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setPrimitiveTypes1 req = new BRequest_RemoteSetTypes_setPrimitiveTypes1();			
 			req.primitiveTypes1Value = primitiveTypes1;
 			transport.sendMethod(req, asyncResult);
@@ -353,12 +353,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<byte[]> GetByte2() {
+		public virtual ISet<byte[]> GetByte2() {
 			BSyncResult<ISet<byte[]>> asyncResult = new BSyncResult<ISet<byte[]>>();			
 			GetByte2(BAsyncResultHelper.ToDelegate<ISet<byte[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetByte2(BAsyncResult<ISet<byte[]>> asyncResult) {
+		public virtual void GetByte2(BAsyncResult<ISet<byte[]>> asyncResult) {
 			BRequest_RemoteSetTypes_getByte2 req = new BRequest_RemoteSetTypes_getByte2();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -369,12 +369,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetByte2(ISet<byte[]> byte2) {
+		public virtual void SetByte2(ISet<byte[]> byte2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetByte2(byte2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetByte2(ISet<byte[]> byte2, BAsyncResult<Object> asyncResult) {
+		public virtual void SetByte2(ISet<byte[]> byte2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setByte2 req = new BRequest_RemoteSetTypes_setByte2();			
 			req.byte2Value = byte2;
 			transport.sendMethod(req, asyncResult);
@@ -387,12 +387,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<int[]> GetInt2() {
+		public virtual ISet<int[]> GetInt2() {
 			BSyncResult<ISet<int[]>> asyncResult = new BSyncResult<ISet<int[]>>();			
 			GetInt2(BAsyncResultHelper.ToDelegate<ISet<int[]>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetInt2(BAsyncResult<ISet<int[]>> asyncResult) {
+		public virtual void GetInt2(BAsyncResult<ISet<int[]>> asyncResult) {
 			BRequest_RemoteSetTypes_getInt2 req = new BRequest_RemoteSetTypes_getInt2();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -403,12 +403,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetInt2(ISet<int[]> int2) {
+		public virtual void SetInt2(ISet<int[]> int2) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetInt2(int2, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetInt2(ISet<int[]> int2, BAsyncResult<Object> asyncResult) {
+		public virtual void SetInt2(ISet<int[]> int2, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setInt2 req = new BRequest_RemoteSetTypes_setInt2();			
 			req.int2Value = int2;
 			transport.sendMethod(req, asyncResult);
@@ -421,12 +421,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<Object> GetObj1() {
+		public virtual ISet<Object> GetObj1() {
 			BSyncResult<ISet<Object>> asyncResult = new BSyncResult<ISet<Object>>();			
 			GetObj1(BAsyncResultHelper.ToDelegate<ISet<Object>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetObj1(BAsyncResult<ISet<Object>> asyncResult) {
+		public virtual void GetObj1(BAsyncResult<ISet<Object>> asyncResult) {
 			BRequest_RemoteSetTypes_getObj1 req = new BRequest_RemoteSetTypes_getObj1();			
 			transport.sendMethod(req, asyncResult);
 		}
@@ -437,12 +437,12 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
-		public void SetObj1(ISet<Object> obj1) {
+		public virtual void SetObj1(ISet<Object> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetObj1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetObj1(ISet<Object> obj1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetObj1(ISet<Object> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setObj1 req = new BRequest_RemoteSetTypes_setObj1();			
 			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);
@@ -455,12 +455,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public void SetDate1(ISet<DateTime> obj1) {
+		public virtual void SetDate1(ISet<DateTime> obj1) {
 			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
 			SetDate1(obj1, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
 			asyncResult.GetResult();			
 		}
-		public void SetDate1(ISet<DateTime> obj1, BAsyncResult<Object> asyncResult) {
+		public virtual void SetDate1(ISet<DateTime> obj1, BAsyncResult<Object> asyncResult) {
 			BRequest_RemoteSetTypes_setDate1 req = new BRequest_RemoteSetTypes_setDate1();			
 			req.obj1Value = obj1;
 			transport.sendMethod(req, asyncResult);
@@ -473,12 +473,12 @@ namespace byps.test.api.remote
 			await task;
 		}
 		
-		public ISet<DateTime> GetDate1() {
+		public virtual ISet<DateTime> GetDate1() {
 			BSyncResult<ISet<DateTime>> asyncResult = new BSyncResult<ISet<DateTime>>();			
 			GetDate1(BAsyncResultHelper.ToDelegate<ISet<DateTime>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void GetDate1(BAsyncResult<ISet<DateTime>> asyncResult) {
+		public virtual void GetDate1(BAsyncResult<ISet<DateTime>> asyncResult) {
 			BRequest_RemoteSetTypes_getDate1 req = new BRequest_RemoteSetTypes_getDate1();			
 			transport.sendMethod(req, asyncResult);
 		}

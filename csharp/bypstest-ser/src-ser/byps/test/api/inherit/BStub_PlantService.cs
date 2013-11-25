@@ -8,17 +8,17 @@ namespace byps.test.api.inherit
 	
 	public class BStub_PlantService : BStub, PlantServiceAuth, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1954605928L;
+		public readonly static long serialVersionUID = 1733272281L;
 		
 		public BStub_PlantService(BTransport transport)
 			: base(transport) {}			
 		
-		public String Grow() {
+		public virtual String Grow() {
 			BSyncResult<String> asyncResult = new BSyncResult<String>();			
 			Grow(BAsyncResultHelper.ToDelegate<String>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public void Grow(BAsyncResult<String> asyncResult) {
+		public virtual void Grow(BAsyncResult<String> asyncResult) {
 			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
 			transport.sendMethod(req, asyncResult);
 		}

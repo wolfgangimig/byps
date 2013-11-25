@@ -18,7 +18,7 @@ namespace byps.test.api.inl
 		public Matrix2D() {
 		}		
 		
-		internal Matrix2D(float @_11, float @_12, float @_13, float @_21, float @_22, float @_23, float @_31, float @_32, float @_33) {
+		public Matrix2D(float @_11, float @_12, float @_13, float @_21, float @_22, float @_23, float @_31, float @_32, float @_33) {
 			this._11Value = @_11;
 			this._12Value = @_12;
 			this._13Value = @_13;
@@ -28,6 +28,19 @@ namespace byps.test.api.inl
 			this._31Value = @_31;
 			this._32Value = @_32;
 			this._33Value = @_33;
+		}		
+		
+		public Matrix2D(Matrix2D rhs)
+		{
+			this._11Value = rhs._11Value;
+			this._12Value = rhs._12Value;
+			this._13Value = rhs._13Value;
+			this._21Value = rhs._21Value;
+			this._22Value = rhs._22Value;
+			this._23Value = rhs._23Value;
+			this._31Value = rhs._31Value;
+			this._32Value = rhs._32Value;
+			this._33Value = rhs._33Value;
 		}		
 		
 		#endregion

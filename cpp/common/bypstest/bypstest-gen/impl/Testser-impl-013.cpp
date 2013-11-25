@@ -48,7 +48,7 @@ void BStub_LemonService::squeeze(::std::function< void (::std::wstring, BExcepti
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_605543968(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_826877615(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -134,7 +134,7 @@ void BStub_BioLemonService::useParing(::std::function< void (int32_t, BException
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_474058508(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_501819909(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -448,7 +448,7 @@ void BStub_RemoteArrayTypes1dim::getDate(::std::function< void (byps_ptr< BArray
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_963816328(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1176140631(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -534,7 +534,7 @@ void BStub_RemoteArrayTypes23::sendArraysInline(const byps_ptr< BArray2< byps::t
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_769717182(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_964138163(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -848,7 +848,7 @@ void BStub_RemoteArrayTypes4dim::getDate(::std::function< void (byps_ptr< BArray
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_963726955(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1176051258(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -898,7 +898,7 @@ void BStub_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t 
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_2045242510(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_429088323(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -948,7 +948,7 @@ void BStub_RemoteEnums::setPlanet(byps::test::api::enu::EnumPlanets planet, ::st
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_485761455(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1222673152(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;

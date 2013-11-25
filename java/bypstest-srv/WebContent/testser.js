@@ -30,9 +30,9 @@ byps.test.api.cons = byps.test.api.cons || {};
 */
 byps.test.api.BApiDescriptor_Testser = {
 	/**
-	 * API serialisation version: 0.0.0.791
+	 * API serialisation version: 0.0.0.792
 	 */
-	VERSION : "0.0.0.791",
+	VERSION : "0.0.0.792",
 	
 	/**
 	 * Internal used API Desciptor.
@@ -41,7 +41,7 @@ byps.test.api.BApiDescriptor_Testser = {
 		return new byps.BApiDescriptor(
 			"Testser",
 			"byps.test.api",
-			"0.0.0.791",
+			"0.0.0.792",
 			false, // uniqueObjects
 			new byps.test.api.BRegistry_Testser()
 		);
@@ -590,12 +590,12 @@ byps.test.api.cons.HebrewC = new byps.test.api.cons.HebrewC_Type();
  */
 byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	
-	this._typeId = 2049072174;
+	this._typeId = 955752991;
 	
 	this.transport = null; // is set in BServer.addRemote
 	
 	this.toJSON = function (key) {
-		return { _typeId : 2049072174, targetId : this.transport.targetId };
+		return { _typeId : 955752991, targetId : this.transport.targetId };
 	};
 	
 	
@@ -686,7 +686,7 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __
 */
 byps.test.api.inherit.BStub_BioFruitService = function(transport) {
 	
-	this._typeId = 363642571;
+	this._typeId = 612235846;
 	
 	this.transport = transport;
 	
@@ -728,7 +728,7 @@ byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps_
 */
 byps.test.api.inherit.BStub_BioLemonService = function(transport) {
 	
-	this._typeId = 474058508;
+	this._typeId = 501819909;
 	
 	this.transport = transport;
 	
@@ -790,7 +790,7 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.useParing = function(__byp
 */
 byps.test.api.inherit.BStub_FruitService = function(transport) {
 	
-	this._typeId = 715959905;
+	this._typeId = 937293552;
 	
 	this.transport = transport;
 	
@@ -822,7 +822,7 @@ byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__as
 */
 byps.test.api.inherit.BStub_LemonService = function(transport) {
 	
-	this._typeId = 605543968;
+	this._typeId = 826877615;
 	
 	this.transport = transport;
 	
@@ -864,7 +864,7 @@ byps.test.api.inherit.BStub_LemonService.prototype.pick = function(sess, fromTre
 */
 byps.test.api.inherit.BStub_PlantService = function(transport) {
 	
-	this._typeId = 1954605928;
+	this._typeId = 1733272281;
 	
 	this.transport = transport;
 	
@@ -885,7 +885,7 @@ byps.test.api.inherit.BStub_PlantService.prototype.grow = function(__byps__async
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transport) {
 	
-	this._typeId = 963816328;
+	this._typeId = 1176140631;
 	
 	this.transport = transport;
 	
@@ -1135,7 +1135,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDate = function(__b
 */
 byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport) {
 	
-	this._typeId = 769717182;
+	this._typeId = 964138163;
 	
 	this.transport = transport;
 	
@@ -1196,7 +1196,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInline = funct
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transport) {
 	
-	this._typeId = 963726955;
+	this._typeId = 1176051258;
 	
 	this.transport = transport;
 	
@@ -1447,7 +1447,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDate = function(__b
 */
 byps.test.api.remote.BStub_RemoteConstants = function(transport) {
 	
-	this._typeId = 2045242510;
+	this._typeId = 429088323;
 	
 	this.transport = transport;
 	
@@ -1477,7 +1477,7 @@ byps.test.api.remote.BStub_RemoteConstants.prototype.compare_AllTypesC = functio
 */
 byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 	
-	this._typeId = 485761455;
+	this._typeId = 1222673152;
 	
 	this.transport = transport;
 	
@@ -1507,7 +1507,7 @@ byps.test.api.remote.BStub_RemoteEnums.prototype.setPlanet = function(planet, __
 */
 byps.test.api.remote.BStub_RemoteInlineInstance = function(transport) {
 	
-	this._typeId = 567395951;
+	this._typeId = 355071648;
 	
 	this.transport = transport;
 	
@@ -1637,7 +1637,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DMap = functi
 */
 byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
-	this._typeId = 1233438138;
+	this._typeId = 1240892695;
 	
 	this.transport = transport;
 	
@@ -1967,7 +1967,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt4 = function(int4, __
 */
 byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
-	this._typeId = 664304990;
+	this._typeId = 1277224527;
 	
 	this.transport = transport;
 	
@@ -2257,7 +2257,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDate1 = function(obj1, __
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transport) {
 	
-	this._typeId = 1178916877;
+	this._typeId = 1391241180;
 	
 	this.transport = transport;
 	
@@ -2567,7 +2567,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.throwException = funct
 */
 byps.test.api.remote.BStub_RemoteReferences = function(transport) {
 	
-	this._typeId = 568637225;
+	this._typeId = 1173792730;
 	
 	this.transport = transport;
 	
@@ -2597,7 +2597,7 @@ byps.test.api.remote.BStub_RemoteReferences.prototype.setNode = function(v, __by
 */
 byps.test.api.remote.BStub_RemoteServerCtrl = function(transport) {
 	
-	this._typeId = 1652234479;
+	this._typeId = 2037577312;
 	
 	this.transport = transport;
 	
@@ -2637,7 +2637,7 @@ byps.test.api.remote.BStub_RemoteServerCtrl.prototype.removePublishedRemote = fu
 */
 byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
-	this._typeId = 1900796440;
+	this._typeId = 1781251319;
 	
 	this.transport = transport;
 	
@@ -2927,7 +2927,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDate1 = function(__byps__
 */
 byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
-	this._typeId = 1043578866;
+	this._typeId = 2123238175;
 	
 	this.transport = transport;
 	
@@ -3000,7 +3000,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__by
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 	
-	this._typeId = 1983670399;
+	this._typeId = 1532028880;
 	
 	this.transport = transport;
 	
@@ -3084,7 +3084,7 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setReloginCount = 
 */
 byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
-	this._typeId = 2049072174;
+	this._typeId = 955752991;
 	
 	this.transport = transport;
 	
@@ -3134,7 +3134,7 @@ byps.test.api.srvr.BStub_ClientIF.prototype.sendChat = function(cs, __byps__asyn
 */
 byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
-	this._typeId = 1775199834;
+	this._typeId = 1426448279;
 	
 	this.transport = transport;
 	
@@ -3234,7 +3234,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.callClientParallel = function(v, __b
 */
 byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
-	this._typeId = 15377840;
+	this._typeId = 564008001;
 	
 	this.transport = transport;
 	
@@ -3307,7 +3307,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface BioFruitService			
 			// Method certify
 			1435417025 : [ // _typeId of request class
-				363642571, // _typeId of remote interface
+				612235846, // _typeId of remote interface
 				432867947, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_certify(methodObj.param, methodResult);
@@ -3318,7 +3318,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface BioLemonService			
 			// Method useParing
 			2108700976 : [ // _typeId of request class
-				474058508, // _typeId of remote interface
+				501819909, // _typeId of remote interface
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_useParing(methodResult);
@@ -3329,7 +3329,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface FruitService			
 			// Method squeeze
 			1290167289 : [ // _typeId of request class
-				715959905, // _typeId of remote interface
+				937293552, // _typeId of remote interface
 				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_squeeze(methodResult);
@@ -3340,7 +3340,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface LemonService			
 			// Method pick
 			1022088379 : [ // _typeId of request class
-				605543968, // _typeId of remote interface
+				826877615, // _typeId of remote interface
 				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_pick(methodObj.sess, methodObj.fromTree, methodResult);
@@ -3351,7 +3351,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface PlantService			
 			// Method grow
 			695716901 : [ // _typeId of request class
-				1954605928, // _typeId of remote interface
+				1733272281, // _typeId of remote interface
 				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_grow(methodResult);
@@ -3362,7 +3362,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteArrayTypes1dim			
 			// Method setBool
 			201441072 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBool(methodObj.v, methodResult);
@@ -3371,7 +3371,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte
 			201431314 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte(methodObj.v, methodResult);
@@ -3380,7 +3380,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setChar
 			201418436 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar(methodObj.v, methodResult);
@@ -3389,7 +3389,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setShort
 			1934214314 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort(methodObj.v, methodResult);
@@ -3398,7 +3398,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt
 			1530512055 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt(methodObj.v, methodResult);
@@ -3407,7 +3407,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setLong
 			201143198 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong(methodObj.v, methodResult);
@@ -3416,7 +3416,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setFloat
 			1946101450 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat(methodObj.v, methodResult);
@@ -3425,7 +3425,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDouble
 			253910985 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble(methodObj.v, methodResult);
@@ -3434,7 +3434,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setString
 			180061303 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString(methodObj.v, methodResult);
@@ -3443,7 +3443,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPrimitiveTypes
 			1362276920 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes(methodObj.v, methodResult);
@@ -3452,7 +3452,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setObject
 			48678821 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObject(methodObj.v, methodResult);
@@ -3461,7 +3461,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDate
 			201394796 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDate(methodObj.v, methodResult);
@@ -3470,7 +3470,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getBool
 			2033416644 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				1698849803, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBool(methodResult);
@@ -3479,7 +3479,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte
 			2033426402 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				1484626910, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte(methodResult);
@@ -3488,7 +3488,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getChar
 			2033439280 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				1548641599, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar(methodResult);
@@ -3497,7 +3497,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getShort
 			1373101854 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				925799231, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort(methodResult);
@@ -3506,7 +3506,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt
 			1874061867 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				498939805, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt(methodResult);
@@ -3515,7 +3515,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getLong
 			2033714518 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				200721390, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong(methodResult);
@@ -3524,7 +3524,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getFloat
 			1384988990 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				1167917980, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat(methodResult);
@@ -3533,7 +3533,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDouble
 			39293909 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				1738389572, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble(methodResult);
@@ -3542,7 +3542,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getString
 			394678379 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				2063745441, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString(methodResult);
@@ -3551,7 +3551,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPrimitiveTypes
 			1992537556 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				1814499786, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes(methodResult);
@@ -3560,7 +3560,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getObject
 			263295897 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				15818284, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
@@ -3569,7 +3569,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDate
 			2033462920 : [ // _typeId of request class
-				963816328, // _typeId of remote interface
+				1176140631, // _typeId of remote interface
 				1980364794, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDate(methodResult);
@@ -3580,7 +3580,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteArrayTypes23			
 			// Method sendArraysInt
 			1828268517 : [ // _typeId of request class
-				769717182, // _typeId of remote interface
+				964138163, // _typeId of remote interface
 				498939805, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysInt(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
@@ -3589,7 +3589,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method sendArraysString
 			1175231899 : [ // _typeId of request class
-				769717182, // _typeId of remote interface
+				964138163, // _typeId of remote interface
 				2063745441, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysString(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
@@ -3598,7 +3598,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method sendArraysClass
 			330036060 : [ // _typeId of request class
-				769717182, // _typeId of remote interface
+				964138163, // _typeId of remote interface
 				1814499786, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysClass(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
@@ -3607,7 +3607,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method sendArraysObject
 			1306614381 : [ // _typeId of request class
-				769717182, // _typeId of remote interface
+				964138163, // _typeId of remote interface
 				15818284, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysObject(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
@@ -3616,7 +3616,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method sendArraysInline
 			1467243283 : [ // _typeId of request class
-				769717182, // _typeId of remote interface
+				964138163, // _typeId of remote interface
 				748770738, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendArraysInline(methodObj.arr2, methodObj.arr3, methodObj.arr4, methodResult);
@@ -3627,7 +3627,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteArrayTypes4dim			
 			// Method setBool
 			185807085 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBool(methodObj.v, methodResult);
@@ -3636,7 +3636,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte
 			185816843 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte(methodObj.v, methodResult);
@@ -3645,7 +3645,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setChar
 			185829721 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar(methodObj.v, methodResult);
@@ -3654,7 +3654,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setShort
 			1480543961 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort(methodObj.v, methodResult);
@@ -3663,7 +3663,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt
 			1668568460 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt(methodObj.v, methodResult);
@@ -3672,7 +3672,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setLong
 			186104959 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong(methodObj.v, methodResult);
@@ -3681,7 +3681,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setFloat
 			1468656825 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat(methodObj.v, methodResult);
@@ -3690,7 +3690,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDouble
 			1770586860 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble(methodObj.v, methodResult);
@@ -3699,7 +3699,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setString
 			1336614572 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString(methodObj.v, methodResult);
@@ -3708,7 +3708,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPrimitiveTypes
 			456924651 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes(methodObj.v, methodResult);
@@ -3717,7 +3717,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setObject
 			1467997054 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObject(methodObj.v, methodResult);
@@ -3726,7 +3726,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDate
 			185853361 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDate(methodObj.v, methodResult);
@@ -3735,7 +3735,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getBool
 			1874302495 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				1852992857, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBool(methodResult);
@@ -3744,7 +3744,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte
 			1874292737 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				1521577218, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte(methodResult);
@@ -3753,7 +3753,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getChar
 			1874279859 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				580900026, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar(methodResult);
@@ -3762,7 +3762,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getShort
 			2041656421 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				2130431383, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort(methodResult);
@@ -3771,7 +3771,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt
 			1325018648 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				245460547, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt(methodResult);
@@ -3780,7 +3780,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getLong
 			1874004621 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				167272824, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong(methodResult);
@@ -3789,7 +3789,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getFloat
 			2029769285 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				2043070523, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat(methodResult);
@@ -3798,7 +3798,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDouble
 			1555969784 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				1650981375, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble(methodResult);
@@ -3807,7 +3807,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getString
 			1121997496 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				1537615291, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString(methodResult);
@@ -3816,7 +3816,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPrimitiveTypes
 			483228169 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				1168951451, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes(methodResult);
@@ -3825,7 +3825,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getObject
 			1253379978 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				996163680, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
@@ -3834,7 +3834,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDate
 			1874256219 : [ // _typeId of request class
-				963726955, // _typeId of remote interface
+				1176051258, // _typeId of remote interface
 				905019472, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDate(methodResult);
@@ -3845,7 +3845,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteConstants			
 			// Method compare_HebrewC
 			1711871378 : [ // _typeId of request class
-				2045242510, // _typeId of remote interface
+				429088323, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_compare_HebrewC(methodObj.ALEPH, methodObj.BETH, methodResult);
@@ -3854,7 +3854,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method compare_AllTypesC
 			1609344203 : [ // _typeId of request class
-				2045242510, // _typeId of remote interface
+				429088323, // _typeId of remote interface
 				432867947, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_compare_AllTypesC(methodObj.bool1s, methodObj.bool2s, methodObj.char1s, methodObj.stringNull, methodObj.char2s, methodObj.short1s, methodObj.int1s, methodObj.long1s, methodObj.float1s, methodObj.double1s, methodObj.string1s, methodObj.ALL, methodObj.arrInt, methodObj.arrInt4, methodObj.arrStrings, methodObj.arrStrings4, methodObj.arrAll, methodResult);
@@ -3865,7 +3865,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteEnums			
 			// Method getPlanet
 			6352043 : [ // _typeId of request class
-				485761455, // _typeId of remote interface
+				1222673152, // _typeId of remote interface
 				1920161159, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPlanet(methodResult);
@@ -3874,7 +3874,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPlanet
 			220969119 : [ // _typeId of request class
-				485761455, // _typeId of remote interface
+				1222673152, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPlanet(methodObj.planet, methodResult);
@@ -3885,7 +3885,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteInlineInstance			
 			// Method setActor
 			1162005320 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setActor(methodObj.act, methodResult);
@@ -3894,7 +3894,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getActor
 			600892860 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				871356108, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getActor(methodResult);
@@ -3903,7 +3903,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPoint2DArray1dim
 			1355334613 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DArray1dim(methodObj.pointArray, methodResult);
@@ -3912,7 +3912,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPoint2DArray1dim
 			188393247 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				748770738, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DArray1dim(methodResult);
@@ -3921,7 +3921,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPoint2DArray4dim
 			1355245240 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DArray4dim(methodObj.pointArray, methodResult);
@@ -3930,7 +3930,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPoint2DArray4dim
 			188482620 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				996206823, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DArray4dim(methodResult);
@@ -3939,7 +3939,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPoint2DList
 			343422941 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DList(methodObj.pointList, methodResult);
@@ -3948,7 +3948,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPoint2DList
 			1428313263 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				937508540, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DList(methodResult);
@@ -3957,7 +3957,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPoint2DListList
 			730520735 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DListList(methodObj.pointListList, methodResult);
@@ -3966,7 +3966,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPoint2DListList
 			1650554387 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				114088296, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DListList(methodResult);
@@ -3975,7 +3975,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPoint2DMap
 			127469879 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPoint2DMap(methodObj.pointMap, methodResult);
@@ -3984,7 +3984,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPoint2DMap
 			646661333 : [ // _typeId of request class
-				567395951, // _typeId of remote interface
+				355071648, // _typeId of remote interface
 				1693860029, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPoint2DMap(methodResult);
@@ -3995,7 +3995,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteListTypes			
 			// Method getBoolean1
 			2058662161 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1330811042, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBoolean1(methodResult);
@@ -4004,7 +4004,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setBoolean1
 			2147241989 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBoolean1(methodObj.boolean1, methodResult);
@@ -4013,7 +4013,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte1
 			608486403 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				698727944, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte1(methodResult);
@@ -4022,7 +4022,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte1
 			47373943 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte1(methodObj.byte1, methodResult);
@@ -4031,7 +4031,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getChar1
 			608885621 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				475882038, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar1(methodResult);
@@ -4040,7 +4040,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setChar1
 			47773161 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar1(methodObj.char1, methodResult);
@@ -4049,7 +4049,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getShort1
 			2140896613 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1082818537, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort1(methodResult);
@@ -4058,7 +4058,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setShort1
 			1939453607 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort1(methodObj.short1, methodResult);
@@ -4067,7 +4067,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt1
 			2098036488 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1763202727, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt1(methodResult);
@@ -4076,7 +4076,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt1
 			136821228 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt1(methodObj.int1, methodResult);
@@ -4085,7 +4085,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getLong1
 			617417999 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				70523627, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong1(methodResult);
@@ -4094,7 +4094,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setLong1
 			56305539 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong1(methodObj.long1, methodResult);
@@ -4103,7 +4103,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getFloat1
 			1785569467 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				368905437, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat1(methodResult);
@@ -4112,7 +4112,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setFloat1
 			1570952391 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat1(methodObj.float1, methodResult);
@@ -4121,7 +4121,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDouble1
 			2129490906 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				343940505, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble1(methodResult);
@@ -4130,7 +4130,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDouble1
 			228671154 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble1(methodObj.double1, methodResult);
@@ -4139,7 +4139,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getString1
 			1597237350 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				253151806, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString1(methodResult);
@@ -4148,7 +4148,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setString1
 			339567886 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString1(methodObj.string1, methodResult);
@@ -4157,7 +4157,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPrimitiveTypes1
 			1679973895 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1073221568, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes1(methodResult);
@@ -4166,7 +4166,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPrimitiveTypes1
 			759940243 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes1(methodObj.primitiveTypes1, methodResult);
@@ -4175,7 +4175,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte2
 			608486404 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1068483136, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte2(methodResult);
@@ -4184,7 +4184,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte2
 			47373944 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte2(methodObj.byte2, methodResult);
@@ -4193,7 +4193,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt2
 			2098036489 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1912328929, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt2(methodResult);
@@ -4202,7 +4202,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt2
 			136821227 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt2(methodObj.int2, methodResult);
@@ -4211,7 +4211,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getObj1
 			2098203392 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004419, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObj1(methodResult);
@@ -4220,7 +4220,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setObj1
 			136654324 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
@@ -4229,7 +4229,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDate1
 			48506001 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDate1(methodObj.obj1, methodResult);
@@ -4238,7 +4238,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDate1
 			609618461 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1210513700, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDate1(methodResult);
@@ -4247,7 +4247,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt3
 			2098036490 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				408452669, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt3(methodResult);
@@ -4256,7 +4256,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt3
 			136821226 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt3(methodObj.int3, methodResult);
@@ -4265,7 +4265,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt4
 			2098036491 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				1231328865, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt4(methodResult);
@@ -4274,7 +4274,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt4
 			136821225 : [ // _typeId of request class
-				1233438138, // _typeId of remote interface
+				1240892695, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt4(methodObj.int4, methodResult);
@@ -4285,7 +4285,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteMapTypes			
 			// Method getBoolean1
 			885803255 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				629604454, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBoolean1(methodResult);
@@ -4294,7 +4294,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setBoolean1
 			974383083 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBoolean1(methodObj.boolean1, methodResult);
@@ -4303,7 +4303,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte1
 			124722647 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				1958357790, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte1(methodResult);
@@ -4312,7 +4312,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte1
 			685835107 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte1(methodObj.byte1, methodResult);
@@ -4321,7 +4321,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getChar1
 			124323429 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				323111619, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar1(methodResult);
@@ -4330,7 +4330,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setChar1
 			685435889 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar1(methodObj.char1, methodResult);
@@ -4339,7 +4339,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getShort1
 			899426613 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				856233055, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort1(methodResult);
@@ -4348,7 +4348,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setShort1
 			684809537 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort1(methodObj.short1, methodResult);
@@ -4357,7 +4357,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt1
 			827458594 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				881037921, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt1(methodResult);
@@ -4366,7 +4366,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt1
 			1407399122 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt1(methodObj.int1, methodResult);
@@ -4375,7 +4375,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getLong1
 			115791051 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				1391760319, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong1(methodResult);
@@ -4384,7 +4384,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setLong1
 			676903511 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong1(methodObj.long1, methodResult);
@@ -4393,7 +4393,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getFloat1
 			530925397 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				1800858646, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat1(methodResult);
@@ -4402,7 +4402,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setFloat1
 			316308321 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat1(methodObj.float1, methodResult);
@@ -4411,7 +4411,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDouble1
 			1890230400 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				149769063, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble1(methodResult);
@@ -4420,7 +4420,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDouble1
 			467931660 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble1(methodObj.double1, methodResult);
@@ -4429,7 +4429,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getString1
 			1836497856 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				1899847531, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString1(methodResult);
@@ -4438,7 +4438,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setString1
 			100307380 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString1(methodObj.string1, methodResult);
@@ -4447,7 +4447,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPrimitiveTypes1
 			1745799327 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				50516327, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes1(methodResult);
@@ -4456,7 +4456,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPrimitiveTypes1
 			1629134317 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes1(methodObj.primitiveTypes1, methodResult);
@@ -4465,7 +4465,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte2
 			124722646 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				2052610089, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte2(methodResult);
@@ -4474,7 +4474,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte2
 			685835106 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte2(methodObj.byte2, methodResult);
@@ -4483,7 +4483,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt2
 			827458595 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				1293200061, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt2(methodResult);
@@ -4492,7 +4492,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt2
 			1407399121 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt2(methodObj.int2, methodResult);
@@ -4501,7 +4501,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getObj1
 			827625498 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				822552572, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObj1(methodResult);
@@ -4510,7 +4510,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setObj1
 			1407232218 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
@@ -4519,7 +4519,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDate1
 			123590589 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				1725564610, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDate1(methodResult);
@@ -4528,7 +4528,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDate1
 			684703049 : [ // _typeId of request class
-				664304990, // _typeId of remote interface
+				1277224527, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDate1(methodObj.obj1, methodResult);
@@ -4539,7 +4539,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemotePrimitiveTypes			
 			// Method voidFunctionVoid
 			2033139391 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_voidFunctionVoid(methodResult);
@@ -4548,7 +4548,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setBool
 			243951947 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBool(methodObj.v, methodResult);
@@ -4557,7 +4557,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte
 			243961705 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte(methodObj.v, methodResult);
@@ -4566,7 +4566,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setChar
 			243974583 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar(methodObj.v, methodResult);
@@ -4575,7 +4575,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setShort
 			1011932613 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort(methodObj.v, methodResult);
@@ -4584,7 +4584,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt
 			1239049874 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt(methodObj.v, methodResult);
@@ -4593,7 +4593,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setLong
 			244249821 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong(methodObj.v, methodResult);
@@ -4602,7 +4602,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setFloat
 			1023819749 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat(methodObj.v, methodResult);
@@ -4611,7 +4611,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDouble
 			1727949326 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble(methodObj.v, methodResult);
@@ -4620,7 +4620,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setString
 			1293977038 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString(methodObj.v, methodResult);
@@ -4629,7 +4629,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPrimitiveTypes
 			225526541 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes(methodObj.v, methodResult);
@@ -4638,7 +4638,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setObject
 			1425359520 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObject(methodObj.v, methodResult);
@@ -4647,7 +4647,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDate
 			243998223 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDate(methodObj.v, methodResult);
@@ -4656,7 +4656,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getBool
 			1816157633 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867947, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBool(methodResult);
@@ -4665,7 +4665,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte
 			1816147875 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867946, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte(methodResult);
@@ -4674,7 +4674,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getChar
 			1816134997 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867944, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar(methodResult);
@@ -4683,7 +4683,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getShort
 			450820153 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867945, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort(methodResult);
@@ -4692,7 +4692,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt
 			1582599686 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt(methodResult);
@@ -4701,7 +4701,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getLong
 			1815859759 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867942, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong(methodResult);
@@ -4710,7 +4710,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getFloat
 			462707289 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867941, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat(methodResult);
@@ -4719,7 +4719,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDouble
 			1513332250 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867940, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble(methodResult);
@@ -4728,7 +4728,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getString
 			1079359962 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004421, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString(methodResult);
@@ -4737,7 +4737,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPrimitiveTypes
 			714626279 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				2077138821, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes(methodResult);
@@ -4746,7 +4746,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getObject
 			1210742444 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004389, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObject(methodResult);
@@ -4755,7 +4755,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDate
 			1816111357 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004414, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDate(methodResult);
@@ -4764,7 +4764,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method sendAllTypes
 			677876863 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendAllTypes(methodObj.b, methodObj.c, methodObj.s, methodObj.i, methodObj.l, methodObj.f, methodObj.d, methodObj.str, methodObj.pt, methodObj.o, methodResult);
@@ -4773,7 +4773,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method add
 			362528512 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_add(methodObj.a, methodObj.b, methodResult);
@@ -4782,7 +4782,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method makeDate
 			1918934973 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004414, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_makeDate(methodObj.year, methodObj.month, methodObj.day, methodObj.hour, methodObj.minute, methodObj.second, methodObj.millisecond, methodResult);
@@ -4791,7 +4791,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method parseDate
 			578007072 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				498939805, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_parseDate(methodObj.date, methodResult);
@@ -4800,7 +4800,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method throwException
 			1278149706 : [ // _typeId of request class
-				1178916877, // _typeId of remote interface
+				1391241180, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_throwException(methodResult);
@@ -4811,7 +4811,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteReferences			
 			// Method getNode
 			1366991859 : [ // _typeId of request class
-				568637225, // _typeId of remote interface
+				1173792730, // _typeId of remote interface
 				2076900492, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getNode(methodResult);
@@ -4820,7 +4820,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setNode
 			693117721 : [ // _typeId of request class
-				568637225, // _typeId of remote interface
+				1173792730, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setNode(methodObj.v, methodResult);
@@ -4831,7 +4831,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteServerCtrl			
 			// Method publishRemote
 			1543768912 : [ // _typeId of request class
-				1652234479, // _typeId of remote interface
+				2037577312, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_publishRemote(methodObj.name, methodObj.remote, methodObj.fowardToOtherServers, methodResult);
@@ -4840,7 +4840,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPublishedRemote
 			648762723 : [ // _typeId of request class
-				1652234479, // _typeId of remote interface
+				2037577312, // _typeId of remote interface
 				534004415, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPublishedRemote(methodObj.name, methodResult);
@@ -4849,7 +4849,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method removePublishedRemote
 			135366859 : [ // _typeId of request class
-				1652234479, // _typeId of remote interface
+				2037577312, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_removePublishedRemote(methodObj.name, methodResult);
@@ -4860,7 +4860,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteSetTypes			
 			// Method getBoolean1
 			2114990909 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				809340660, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getBoolean1(methodResult);
@@ -4869,7 +4869,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setBoolean1
 			2091396559 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setBoolean1(methodObj.boolean1, methodResult);
@@ -4878,7 +4878,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte1
 			901695825 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				1620912700, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte1(methodResult);
@@ -4887,7 +4887,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte1
 			1462808285 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte1(methodObj.byte1, methodResult);
@@ -4896,7 +4896,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getChar1
 			901296607 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				968248604, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getChar1(methodResult);
@@ -4905,7 +4905,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setChar1
 			1462409067 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setChar1(methodObj.char1, methodResult);
@@ -4914,7 +4914,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getShort1
 			1711905425 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				1664501789, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getShort1(methodResult);
@@ -4923,7 +4923,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setShort1
 			1926522501 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setShort1(methodObj.short1, methodResult);
@@ -4932,7 +4932,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt1
 			1772226268 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				1955210948, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt1(methodResult);
@@ -4941,7 +4941,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt1
 			462631448 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt1(methodObj.int1, methodResult);
@@ -4950,7 +4950,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getLong1
 			892764229 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				1111888832, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getLong1(methodResult);
@@ -4959,7 +4959,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setLong1
 			1453876689 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setLong1(methodObj.long1, methodResult);
@@ -4968,7 +4968,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getFloat1
 			2080406641 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				515346332, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getFloat1(methodResult);
@@ -4977,7 +4977,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setFloat1
 			1999943579 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setFloat1(methodObj.float1, methodResult);
@@ -4986,7 +4986,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDouble1
 			1751651450 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				2041057155, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDouble1(methodResult);
@@ -4995,7 +4995,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDouble1
 			185153786 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDouble1(methodObj.double1, methodResult);
@@ -5004,7 +5004,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getString1
 			1183412410 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				2051074845, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getString1(methodResult);
@@ -5013,7 +5013,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setString1
 			753392826 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setString1(methodObj.string1, methodResult);
@@ -5022,7 +5022,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPrimitiveTypes1
 			669274715 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				2098743607, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPrimitiveTypes1(methodResult);
@@ -5031,7 +5031,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPrimitiveTypes1
 			250758937 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPrimitiveTypes1(methodObj.primitiveTypes1, methodResult);
@@ -5040,7 +5040,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getByte2
 			901695824 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				1566928477, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getByte2(methodResult);
@@ -5049,7 +5049,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setByte2
 			1462808284 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setByte2(methodObj.byte2, methodResult);
@@ -5058,7 +5058,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getInt2
 			1772226269 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				2127200796, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getInt2(methodResult);
@@ -5067,7 +5067,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setInt2
 			462631447 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setInt2(methodObj.int2, methodResult);
@@ -5076,7 +5076,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getObj1
 			1772393172 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004417, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getObj1(methodResult);
@@ -5085,7 +5085,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setObj1
 			462464544 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setObj1(methodObj.obj1, methodResult);
@@ -5094,7 +5094,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setDate1
 			1461676227 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setDate1(methodObj.obj1, methodResult);
@@ -5103,7 +5103,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getDate1
 			900563767 : [ // _typeId of request class
-				1900796440, // _typeId of remote interface
+				1781251319, // _typeId of remote interface
 				428832038, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDate1(methodResult);
@@ -5114,7 +5114,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteStreams			
 			// Method getImage
 			61677379 : [ // _typeId of request class
-				1043578866, // _typeId of remote interface
+				2123238175, // _typeId of remote interface
 				534004416, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getImage(methodResult);
@@ -5123,7 +5123,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setImage
 			622789839 : [ // _typeId of request class
-				1043578866, // _typeId of remote interface
+				2123238175, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setImage(methodObj.istrm, methodResult);
@@ -5132,7 +5132,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getImages
 			1911998634 : [ // _typeId of request class
-				1043578866, // _typeId of remote interface
+				2123238175, // _typeId of remote interface
 				255681041, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getImages(methodResult);
@@ -5141,7 +5141,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setImages
 			2126615710 : [ // _typeId of request class
-				1043578866, // _typeId of remote interface
+				2123238175, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setImages(methodObj.istrms, methodObj.doNotReadStreamAtKey, methodResult);
@@ -5150,7 +5150,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method throwLastException
 			2127402965 : [ // _typeId of request class
-				1043578866, // _typeId of remote interface
+				2123238175, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_throwLastException(methodResult);
@@ -5159,7 +5159,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getTextStream
 			818823403 : [ // _typeId of request class
-				1043578866, // _typeId of remote interface
+				2123238175, // _typeId of remote interface
 				534004416, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getTextStream(methodResult);
@@ -5170,7 +5170,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface RemoteWithAuthentication			
 			// Method setUseAuthentication
 			946544530 : [ // _typeId of request class
-				1983670399, // _typeId of remote interface
+				1532028880, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setUseAuthentication(methodObj.useAuth, methodResult);
@@ -5179,7 +5179,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method login
 			134687724 : [ // _typeId of request class
-				1983670399, // _typeId of remote interface
+				1532028880, // _typeId of remote interface
 				1872312576, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_login(methodObj.sess, methodObj.userName, methodObj.userPwd, methodResult);
@@ -5188,7 +5188,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method doit
 			1251509013 : [ // _typeId of request class
-				1983670399, // _typeId of remote interface
+				1532028880, // _typeId of remote interface
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_doit(methodObj.sess, methodObj.value, methodResult);
@@ -5197,7 +5197,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method expire
 			72176172 : [ // _typeId of request class
-				1983670399, // _typeId of remote interface
+				1532028880, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_expire(methodObj.sess, methodResult);
@@ -5206,7 +5206,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setReloginCount
 			802968058 : [ // _typeId of request class
-				1983670399, // _typeId of remote interface
+				1532028880, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setReloginCount(methodObj.count, methodResult);
@@ -5217,7 +5217,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface ClientIF			
 			// Method incrementInt
 			1685952420 : [ // _typeId of request class
-				2049072174, // _typeId of remote interface
+				955752991, // _typeId of remote interface
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_incrementInt(methodObj.a, methodResult);
@@ -5226,7 +5226,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getStreams
 			1654980071 : [ // _typeId of request class
-				2049072174, // _typeId of remote interface
+				955752991, // _typeId of remote interface
 				911793767, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getStreams(methodObj.ctrl, methodResult);
@@ -5235,7 +5235,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method putStreams
 			2016865344 : [ // _typeId of request class
-				2049072174, // _typeId of remote interface
+				955752991, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_putStreams(methodObj.strm, methodObj.ctrl, methodResult);
@@ -5244,7 +5244,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method sendChat
 			41050276 : [ // _typeId of request class
-				2049072174, // _typeId of remote interface
+				955752991, // _typeId of remote interface
 				2076960068, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendChat(methodObj.cs, methodResult);
@@ -5255,7 +5255,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface ServerIF			
 			// Method callClientIncrementInt
 			389860173 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_callClientIncrementInt(methodObj.v, methodResult);
@@ -5264,7 +5264,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setPartner
 			1332497686 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setPartner(methodObj.client, methodResult);
@@ -5273,7 +5273,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getPartner
 			1025664374 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				695494982, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getPartner(methodResult);
@@ -5282,7 +5282,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getStreamsFromClient
 			1679867754 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				911793767, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getStreamsFromClient(methodResult);
@@ -5291,7 +5291,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method putStreamsOnClient
 			1934886286 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_putStreamsOnClient(methodObj.streams, methodResult);
@@ -5300,7 +5300,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method registerWithClientMap
 			1533268444 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_registerWithClientMap(methodObj.id, methodResult);
@@ -5309,7 +5309,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getClient
 			190669475 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				695494982, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodObj.id, methodResult);
@@ -5318,7 +5318,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getClientIds
 			2007476251 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				1955210948, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClientIds(methodResult);
@@ -5327,7 +5327,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method callClientParallel
 			772308436 : [ // _typeId of request class
-				1775199834, // _typeId of remote interface
+				1426448279, // _typeId of remote interface
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_callClientParallel(methodObj.v, methodResult);
@@ -5338,7 +5338,7 @@ byps.test.api.BServer_Testser = function(transport) {
 		// Remote Interface EvolveIF			
 			// Method setEvolve
 			1064683365 : [ // _typeId of request class
-				15377840, // _typeId of remote interface
+				564008001, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setEvolve(methodObj.obj, methodResult);
@@ -5347,7 +5347,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getEvolve
 			1279300441 : [ // _typeId of request class
-				15377840, // _typeId of remote interface
+				564008001, // _typeId of remote interface
 				1722268526, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getEvolve(methodResult);
@@ -5356,7 +5356,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method setClient
 			998004147 : [ // _typeId of request class
-				15377840, // _typeId of remote interface
+				564008001, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_setClient(methodObj.partner, methodResult);
@@ -5365,7 +5365,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method getClient
 			1212621223 : [ // _typeId of request class
-				15377840, // _typeId of remote interface
+				564008001, // _typeId of remote interface
 				1405156912, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getClient(methodResult);
@@ -5374,7 +5374,7 @@ byps.test.api.BServer_Testser = function(transport) {
 			
 			// Method sendEvolveToClient
 			714115141 : [ // _typeId of request class
-				15377840, // _typeId of remote interface
+				564008001, // _typeId of remote interface
 				534004412, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_sendEvolveToClient(methodResult);
@@ -6619,7 +6619,7 @@ byps.test.api.BRegistry_Testser = function() {
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":15377840 // byps.test.api.ver.EvolveIF
+				"result":564008001 // byps.test.api.ver.EvolveIF
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
@@ -6902,7 +6902,7 @@ byps.test.api.BRegistry_Testser = function() {
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"result":2049072174 // byps.test.api.srvr.ClientIF
+				"result":955752991 // byps.test.api.srvr.ClientIF
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
@@ -7274,19 +7274,19 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.inherit.BStub_BioFruitService
-		363642571 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioFruitService),
+		612235846 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioFruitService),
 		
 		// byps.test.api.inherit.BStub_BioLemonService
-		474058508 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioLemonService),
+		501819909 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioLemonService),
 		
 		// byps.test.api.inherit.BStub_FruitService
-		715959905 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_FruitService),
+		937293552 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_FruitService),
 		
 		// byps.test.api.inherit.BStub_LemonService
-		605543968 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_LemonService),
+		826877615 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_LemonService),
 		
 		// byps.test.api.inherit.BStub_PlantService
-		1954605928 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_PlantService),
+		1733272281 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_PlantService),
 		
 		// byps.test.api.inherit.Class1
 		6001 : new byps.BSerializer(
@@ -10495,46 +10495,46 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.remote.BStub_RemoteArrayTypes1dim
-		963816328 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes1dim),
+		1176140631 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes1dim),
 		
 		// byps.test.api.remote.BStub_RemoteArrayTypes23
-		769717182 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes23),
+		964138163 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes23),
 		
 		// byps.test.api.remote.BStub_RemoteArrayTypes4dim
-		963726955 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes4dim),
+		1176051258 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes4dim),
 		
 		// byps.test.api.remote.BStub_RemoteConstants
-		2045242510 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteConstants),
+		429088323 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteConstants),
 		
 		// byps.test.api.remote.BStub_RemoteEnums
-		485761455 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteEnums),
+		1222673152 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteEnums),
 		
 		// byps.test.api.remote.BStub_RemoteInlineInstance
-		567395951 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteInlineInstance),
+		355071648 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteInlineInstance),
 		
 		// byps.test.api.remote.BStub_RemoteListTypes
-		1233438138 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteListTypes),
+		1240892695 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteListTypes),
 		
 		// byps.test.api.remote.BStub_RemoteMapTypes
-		664304990 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteMapTypes),
+		1277224527 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteMapTypes),
 		
 		// byps.test.api.remote.BStub_RemotePrimitiveTypes
-		1178916877 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemotePrimitiveTypes),
+		1391241180 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemotePrimitiveTypes),
 		
 		// byps.test.api.remote.BStub_RemoteReferences
-		568637225 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteReferences),
+		1173792730 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteReferences),
 		
 		// byps.test.api.remote.BStub_RemoteServerCtrl
-		1652234479 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteServerCtrl),
+		2037577312 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteServerCtrl),
 		
 		// byps.test.api.remote.BStub_RemoteSetTypes
-		1900796440 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteSetTypes),
+		1781251319 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteSetTypes),
 		
 		// byps.test.api.remote.BStub_RemoteStreams
-		1043578866 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteStreams),
+		2123238175 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteStreams),
 		
 		// byps.test.api.remote.BStub_RemoteWithAuthentication
-		1983670399 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteWithAuthentication),
+		1532028880 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteWithAuthentication),
 		
 		// byps.test.api.set.SetTypes
 		5001 : new byps.BSerializer(
@@ -10764,7 +10764,7 @@ byps.test.api.BRegistry_Testser = function() {
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"client":2049072174 // byps.test.api.srvr.ClientIF
+				"client":955752991 // byps.test.api.srvr.ClientIF
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
@@ -10773,10 +10773,10 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.srvr.BStub_ClientIF
-		2049072174 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ClientIF),
+		955752991 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ClientIF),
 		
 		// byps.test.api.srvr.BStub_ServerIF
-		1775199834 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ServerIF),
+		1426448279 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ServerIF),
 		
 		// byps.test.api.srvr.ChatStructure
 		7007 : new byps.BSerializer(
@@ -10858,7 +10858,7 @@ byps.test.api.BRegistry_Testser = function() {
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{
-				"partner":15377840 // byps.test.api.ver.EvolveIF
+				"partner":564008001 // byps.test.api.ver.EvolveIF
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
@@ -10880,7 +10880,7 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.ver.BStub_EvolveIF
-		15377840 : new byps.BSerializerRemote(byps.test.api.ver.BStub_EvolveIF),
+		564008001 : new byps.BSerializerRemote(byps.test.api.ver.BStub_EvolveIF),
 		
 		// byps.test.api.ver.Evolve
 		1391985860 : new byps.BSerializer(

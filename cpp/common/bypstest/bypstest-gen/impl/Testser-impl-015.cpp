@@ -372,7 +372,7 @@ void BStub_RemotePrimitiveTypes::throwException(::std::function< void (bool, BEx
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1178916877(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1391241180(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -422,7 +422,7 @@ void BStub_RemoteReferences::setNode(const byps::test::api::refs::PNode& v, ::st
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_568637225(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1173792730(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -484,7 +484,7 @@ void BStub_RemoteServerCtrl::removePublishedRemote(const ::std::wstring& name, :
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1652234479(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_2037577312(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -846,7 +846,7 @@ void BStub_RemoteSetTypes::getDate1(::std::function< void (byps_ptr< ::std::set<
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1900796440(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1781251319(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -944,7 +944,7 @@ void BStub_RemoteStreams::getTextStream(::std::function< void (PContentStream, B
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1043578866(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_2123238175(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -1030,7 +1030,7 @@ void BStub_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::funct
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1983670399(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1532028880(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;

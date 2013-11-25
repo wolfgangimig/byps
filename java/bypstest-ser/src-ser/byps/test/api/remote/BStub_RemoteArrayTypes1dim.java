@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemoteArrayTypes1dim extends BStub implements RemoteArrayTypes1dimAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 963816328L;
+	public final static long serialVersionUID = 1176140631L;
 	
 	public BStub_RemoteArrayTypes1dim(final BTransport transport) {
 		super(transport);		
