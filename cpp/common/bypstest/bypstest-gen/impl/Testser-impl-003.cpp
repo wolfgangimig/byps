@@ -28,7 +28,7 @@ void byps::test::api::cons::HebrewC::serialize(BIO& ar, const BVERSION version) 
 
 // checkpoint byps.gen.cpp.GenApiClass:934
 namespace byps { namespace test { namespace api { 
-void BSerializer_691741677(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+void BSerializer_1770673942(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
 	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
 	if (p) { 
 		byps::test::api::cons::HebrewC& r = * dynamic_cast< byps::test::api::cons::HebrewC*>(p);

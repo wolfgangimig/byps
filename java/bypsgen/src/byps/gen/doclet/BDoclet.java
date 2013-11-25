@@ -275,11 +275,6 @@ public class BDoclet extends Doclet {
     GeneratorProperties defaultProps = new GeneratorProperties();
     defaultProps.put(PropertiesCS.UPPER_CASE_FIRST_LETTER, "true");
 
-    // This variable is set by a command line option -ensureUIDs
-    // and starts a function that checks for unique serialVersionUIDs (type IDs)
-    // in the classes to be serialized.
-    boolean ensureUIDs = false;
-
     try {
 
       // Params passed to javadoc tool
@@ -298,12 +293,6 @@ public class BDoclet extends Doclet {
         String arg = args[argIdx];
         if (arg.startsWith("-verbose")) {
           configureLog4j("INFO");
-          argIdx++;
-        }
-
-        // check serialVersionUID
-        else if (arg.startsWith("-ensureUIDs")) {
-          ensureUIDs = true;
           argIdx++;
         }
 
@@ -450,12 +439,9 @@ public class BDoclet extends Doclet {
       // -------------------------------------------------------------------
       // Ensure that serializable classes have a unique serialVersionUID (type ID).
       
-      if (ensureUIDs) {
-        log.info("Ensure having serialVersionUIDs ==============");
-        log.info("source dirs=" + Arrays.toString(sourceDirs));
-        new AssignUniqueSerialVersionUID(sourceDirs, true).processFiles();
-      }
-      
+      log.info("Ensure having serialVersionUIDs ==============");
+      log.info("source dirs=" + Arrays.toString(sourceDirs));
+      new AssignUniqueSerialVersionUID(sourceDirs, true).processFiles();
       
       // --------------------------------------------------------------------
       // Compile source and provide access to read constant values.
@@ -568,7 +554,7 @@ public class BDoclet extends Doclet {
       // "-genc.pack.alias", "byps.sample1=IX",
       "-gencpp.max-fsize", "50000",
 
-       "-verbose",
+      // "-verbose",
 
       // "--packages",
       // "byps.test.api",

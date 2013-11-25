@@ -36,8 +36,8 @@ public class CompatibleClassDB {
 			
 			ensureCompatibleSerInfos(viols);
 			
-			ensureCompatibleMethodInfos(viols);
-			
+      ensureCompatibleRemoteInfos(viols);
+      
 			for (CompatibilityViolation viol : viols) {
 				log.error(viol.msg);
 			}
@@ -48,31 +48,84 @@ public class CompatibleClassDB {
 		return ret;
 	}
 	
-	private void ensureCompatibleSerInfos(CompatibilityViolations viols) throws GeneratorException {
-		////log.debug(CompatibleClassDB.class.getName(), "ensureCompatibleSerInfos");
-		Collection<SerialInfo> sinfos = classDB.getSerials(); 
-		//log.debug("#serials=" + sinfos.size());
+	private void ensureCompatibleRemoteInfos(CompatibilityViolations viols) throws GeneratorException {
+    Collection<RemoteInfo> rinfos = classDB.getRemotes(); 
+    
+    for (RemoteInfo rinfo : rinfos) {
+      String fullName = rinfo.toString();
+      RemoteInfo rinfoP = prevClassDB.getRemoteInfo(fullName);
+
+      if (rinfoP != null) {
+        ensureCompatibleRemoteInfo(rinfoP, rinfo, viols);
+      }
+      else {
+        checkSinceOfNewMember(rinfo.qname, rinfo.name, rinfo.since, viols);
+      }
+    }
+  }
+
+  private void ensureCompatibleRemoteInfo(RemoteInfo rinfoP, RemoteInfo rinfo, CompatibilityViolations viols) throws GeneratorException {
+    
+    for (MethodInfo minfoP : rinfoP.methods) {
+      
+      MethodInfo minfo = null;
+      for (MethodInfo m : rinfo.methods) {
+        if (minfoP.name.equals(m.name)) {
+          minfo = m;
+          break;
+        }
+      }
+      
+      if (minfo != null) {
+        if (!ensureCompatibleMethodInfo(minfoP, minfo, viols)) {
+          break;
+        }
+      }
+      else {
+        viols.add(minfoP + ": missing");
+        break;
+      }
+    }
+
+    for (MethodInfo minfo : rinfo.methods) {
+      
+      MethodInfo minfoP = null;
+      for (MethodInfo m : rinfoP.methods) {
+        if (minfo.name.equals(m.name)) {
+          minfoP = m;
+          break;
+        }
+      }
+      
+      if (minfoP == null) {
+        checkSinceOfNewMember(rinfo.qname, minfo.name, minfo.since, viols);
+      }
+    
+    }
+  }
+
+  private void ensureCompatibleSerInfos(CompatibilityViolations viols) throws GeneratorException {
+		
+	  Collection<SerialInfo> sinfos = classDB.getSerials(); 
+		
 		for (SerialInfo sinfo : sinfos) {
+		  
+		  // Result and request classes need not to be checked,
+		  // since the method definitions are checked.
+		  if (sinfo.isResultClass()) return;
+		  if (sinfo.isRequestClass()) return;
+		  
 			String fullName = sinfo.toString();
 			SerialInfo sinfoP = prevClassDB.getSerInfo(fullName);
-			//log.debug("sinfo.qname=" + qname + ", sinfoP=" + sinfoP);
+
 			if (sinfoP != null) {
-				int n1 = viols.size();
-				if (!ensureCompatibleSerInfo(sinfoP, sinfo, viols)) {
-					break;
-				}
-				int n2 = viols.size();
-				if (n1 == n2) {
-					//log.info(sinfo.qname + " is compatible");
-				}
-				else {
-					//log.info(sinfo.qname + " is incompatible, see errors below");
-				}
+				ensureCompatibleSerInfo(sinfoP, sinfo, viols);
 			}
 			else {
-				//log.info(sinfo.qname + " is new");
+        checkSinceOfNewMember(sinfo.qname, sinfo.name, sinfo.since, viols);
 			}
 		}
+		
 		//log.exiting(CompatibleClassDB.class.getName(), "ensureCompatibleSerInfos");
 	}
 	
@@ -132,7 +185,7 @@ public class CompatibleClassDB {
   
   			if (minfo != null) {
   			  // Compare type, transient state etc.
-  				if (!ensureCompatibleMemberInfo(sinfo.qname, minfoP, minfo, viols)) break;
+  				ensureCompatibleMemberInfo(sinfo.qname, minfoP, minfo, viols);
   			}
   			else {
   				viols.add(sinfoP.qname + ": missing member " + minfoP.name);
@@ -154,26 +207,29 @@ public class CompatibleClassDB {
       }
 
       if (minfoP == null) {
-        
-        long verP = prevClassDB.getApiDescriptor().version;
-        long ver = classDB.getApiDescriptor().version;
-        
-        if (verP == ver) {
-          viols.add(sinfo.qname + ": member " + minfo.name + " added but API version not incremented.");
-        }
-        else if (minfo.since == 0) {
-          viols.add(sinfo.qname + ": missing @since tag for member " + minfo.name + ". Value " + BVersioning.longToString(ver) + " is expected.");
-        }
-        else if (minfo.since < verP) {
-          viols.add(sinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
-        }
-        else if (minfo.since > ver) {
-          viols.add(sinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be less than or equal to the current API version=" + BVersioning.longToString(ver));
-        }
+        checkSinceOfNewMember(sinfo.qname, minfo.name, minfo.since, viols);
       }
     }
 				
 		return ret;
+	}
+	
+	private void checkSinceOfNewMember(String qname, String memberName, long since, CompatibilityViolations viols) {
+    long verP = prevClassDB.getApiDescriptor().version;
+    long ver = classDB.getApiDescriptor().version;
+    
+    if (verP == ver) {
+      viols.add(qname + ": member " + memberName + " added but API version not incremented.");
+    }
+    else if (since == 0) {
+      viols.add(qname + ": missing @since tag for " + memberName + ". Value " + BVersioning.longToString(ver) + " is expected.");
+    }
+    else if (since < verP) {
+      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
+    }
+    else if (since > ver) {
+      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be less than or equal to the current API version=" + BVersioning.longToString(ver));
+    }
 	}
 	
 	private void addMessageWrongMemberProps(String serialQName, String memberName, String propStr, String npropStr, boolean expected, boolean found, CompatibilityViolations viols) {
@@ -217,46 +273,6 @@ public class CompatibleClassDB {
 		}
 
 		return ret;
-	}
-
-	private void ensureCompatibleMethodInfos(CompatibilityViolations viols) throws GeneratorException {
-
-	  for (MethodInfo minfoP : prevClassDB.getMethods()) {
-      String qname = minfoP.getQName();
-      MethodInfo minfo = classDB.getMethodInfo(qname);
-      if (minfo != null) {
-        if (!ensureCompatibleMethodInfo(minfoP, minfo, viols)) {
-          break;
-        }
-      }
-      else {
-        viols.add(minfoP + ": missing");
-        break;
-      }
-    }
-    
-    for (MethodInfo minfo : classDB.getMethods()) {
-      String qname = minfo.getQName();
-      MethodInfo minfoP = prevClassDB.getMethodInfo(qname);
-      if (minfoP == null) {
-        long verP = prevClassDB.getApiDescriptor().version;
-        long ver = classDB.getApiDescriptor().version;
-        
-        RemoteInfo rinfo = minfo.remoteInfo;
-        if (verP == ver) {
-          viols.add(rinfo.qname + ": member " + minfo.name + " added but API version not incremented.");
-        }
-        else if (minfo.since == 0) {
-          viols.add(rinfo.qname + ": missing @since tag for member " + minfo.name + ". Value " + BVersioning.longToString(ver) + " is expected.");
-        }
-        else if (minfo.since < verP) {
-          viols.add(rinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
-        }
-        else if (minfo.since > ver) {
-          viols.add(rinfo.qname + ": @since tag for member " + minfo.name + ", value=" + BVersioning.longToString(minfo.since) + ", must be less than or equal to the current API version=" + BVersioning.longToString(ver));
-        }
-      }
-    }
 	}
 
 	private void addMessageWrongMethodParams(String methodQName, String paramKind, String paramName, String propStr, String npropStr, boolean expected, boolean found, CompatibilityViolations viols) {

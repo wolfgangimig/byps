@@ -7144,7 +7144,7 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.cons.HebrewC
-		691741677 : new byps.BSerializer(
+		1770673942 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of persistent elements
 			{

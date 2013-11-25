@@ -339,8 +339,10 @@ public class BConvert {
 				}
 			}
 			
-			SerialInfo serInfo = classDB.createSerialInfo(tinfo.name, null, tinfo.qname, null, "", tinfo.typeArgs,
-					null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
+			SerialInfo serInfo = classDB.createSerialInfo(tinfo.name, null, 
+			    tinfo.qname, null, "", tinfo.typeArgs,
+					null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline,
+					0L);
 			classDB.add(serInfo);
 		}
 
@@ -359,7 +361,7 @@ public class BConvert {
 			}
 			
 			SerialInfo sinfo = classDB.createSerialInfo(tinfo.name, null, tinfo.qname, null, 
-					tinfo.dims, tinfo.typeArgs, null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
+					tinfo.dims, tinfo.typeArgs, null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline, 0L);
 			classDB.add(sinfo);
 		}
 		
@@ -708,9 +710,10 @@ public class BConvert {
 		}
 		
 		boolean isInline = isInline(cls);
+		long since = getSince(errInfo, cls.tags());
 		
 		SerialInfo sinfo = classDB.createSerialInfo(name, commentInfos, qname, baseQname, "", argInfos, 
-				members, cls.isEnum(), cls.isFinal(), isInline);
+				members, cls.isEnum(), cls.isFinal(), isInline, since);
 		classDB.add(sinfo);
 		
 		log.debug(")makeSerialInfo");
@@ -881,7 +884,8 @@ public class BConvert {
 				pinfos,
 				false, // isEnum
 				true, // isFinal
-				false // inlineInstance
+				false, // inlineInstance
+				0L
 				);
 		classDB.add(requestInfo);
 		
@@ -944,7 +948,8 @@ public class BConvert {
 					rinfos,
 					false, // isEnum
 					true, // isFinal
-					false // inlineInstance
+					false, // inlineInstance
+					0L
 					);
 			classDB.add(resultInfo);
 		}
@@ -1050,8 +1055,13 @@ public class BConvert {
       
       cinfos.add(makeCommentInfo(tag.kind(), tag.text()));
     }
+    
+    long since = getSince(errInfo, cls.tags());
 		
-		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, qname, baseQNames, minfos, authParamClassName, isClientRemote);
+		RemoteInfo rinfo = classDB.createRemoteInfo(name, cinfos, 
+		    qname, baseQNames, 
+		    minfos, authParamClassName, 
+		    isClientRemote, since);
 		
 		classDB.createStubForRemote(rinfo);
 

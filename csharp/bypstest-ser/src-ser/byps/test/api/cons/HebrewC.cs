@@ -41,6 +41,6 @@ namespace byps.test.api.cons
 		#endregion
 		
 		
-		public static readonly long serialVersionUID = 691741677L;		
+		public static readonly long serialVersionUID = 1770673942L;		
 	} // end class
 }  // end namespace

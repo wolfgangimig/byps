@@ -763,7 +763,7 @@ class AllTypesZ : public BSerializable {
 
 //-------------------------------------------------
 // HebrewC
-// typeId=691741677
+// typeId=1770673942
 
 namespace byps { namespace test { namespace api { namespace cons { 
 
@@ -778,7 +778,7 @@ class HebrewC : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: HebrewC();
 	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 691741677; }
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1770673942; }
 	
 	public: static ::std::wstring getAleph() { return aleph; }
 	public: static ::std::wstring getBeth() { return beth; }

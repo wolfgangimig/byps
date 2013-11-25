@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class HebrewC implements Serializable {
 
-	private static final long serialVersionUID = -197616602852940819L;
+  private final static long serialVersionUID = 1770673942L;
 	
 	protected final static String aleph = "\u05D0";
 	protected final static String beth = "\u05D1";

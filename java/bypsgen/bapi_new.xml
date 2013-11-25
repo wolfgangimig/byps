@@ -16,6 +16,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>boolean[][][][]</typeName>
@@ -26,6 +27,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1</typeName>
@@ -46,6 +48,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_10</typeName>
@@ -66,6 +69,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1000</typeName>
@@ -86,6 +90,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_100361105</typeName>
@@ -106,6 +111,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1050216688</typeName>
@@ -126,6 +132,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1059148284</typeName>
@@ -146,6 +153,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1097129250</typeName>
@@ -166,6 +174,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1097919350</typeName>
@@ -186,6 +195,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1174971318</typeName>
@@ -206,6 +216,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_12</typeName>
@@ -226,6 +237,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1201775504</typeName>
@@ -246,6 +258,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1218831438</typeName>
@@ -266,6 +279,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_124584219</typeName>
@@ -286,6 +300,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1279823631</typeName>
@@ -306,6 +321,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1320560671</typeName>
@@ -326,6 +342,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1347703734</typeName>
@@ -346,6 +363,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1358523233</typeName>
@@ -366,6 +384,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1359468275</typeName>
@@ -386,6 +405,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1361632968</typeName>
@@ -406,6 +426,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1365696060</typeName>
@@ -426,6 +447,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1366799209</typeName>
@@ -446,6 +468,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1374008726</typeName>
@@ -466,6 +489,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1375035164</typeName>
@@ -486,6 +510,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1391985860</typeName>
@@ -506,6 +531,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_14</typeName>
@@ -526,6 +552,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1406124761</typeName>
@@ -546,6 +573,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1406664368</typeName>
@@ -566,6 +594,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1457164460</typeName>
@@ -586,6 +615,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1487265161</typeName>
@@ -606,6 +636,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1488550492</typeName>
@@ -626,6 +657,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1493282670</typeName>
@@ -646,6 +678,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_15</typeName>
@@ -666,6 +699,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1504867122</typeName>
@@ -686,6 +720,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1516687588</typeName>
@@ -706,6 +741,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1555345627</typeName>
@@ -726,6 +762,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1596367810</typeName>
@@ -746,6 +783,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_16</typeName>
@@ -766,6 +804,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1617670280</typeName>
@@ -786,6 +825,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1628501332</typeName>
@@ -806,6 +846,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1633500852</typeName>
@@ -826,6 +867,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1633750383</typeName>
@@ -846,6 +888,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1661807911</typeName>
@@ -866,6 +909,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_17</typeName>
@@ -886,6 +930,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1710660846</typeName>
@@ -906,6 +951,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_171948703</typeName>
@@ -926,6 +972,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1746702954</typeName>
@@ -946,6 +993,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1752158699</typeName>
@@ -966,6 +1014,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1799280818</typeName>
@@ -986,6 +1035,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_181681714</typeName>
@@ -1006,6 +1056,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1823330785</typeName>
@@ -1026,6 +1077,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1831201218</typeName>
@@ -1046,6 +1098,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_183594037</typeName>
@@ -1066,6 +1119,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_184101377</typeName>
@@ -1086,6 +1140,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1859644668</typeName>
@@ -1106,6 +1161,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1888107655</typeName>
@@ -1126,6 +1182,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1888799711</typeName>
@@ -1146,6 +1203,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1898022288</typeName>
@@ -1166,6 +1224,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_19</typeName>
@@ -1186,6 +1245,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1972793385</typeName>
@@ -1206,6 +1266,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1973996106</typeName>
@@ -1226,6 +1287,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_1997002548</typeName>
@@ -1246,6 +1308,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2</typeName>
@@ -1266,6 +1329,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2028443792</typeName>
@@ -1286,6 +1350,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2052431866</typeName>
@@ -1306,6 +1371,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2053507648</typeName>
@@ -1326,6 +1392,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2058423690</typeName>
@@ -1346,6 +1413,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2064980445</typeName>
@@ -1366,6 +1434,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2067161310</typeName>
@@ -1386,6 +1455,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2087445849</typeName>
@@ -1406,6 +1476,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_21</typeName>
@@ -1426,6 +1497,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_2123584667</typeName>
@@ -1446,6 +1518,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_3</typeName>
@@ -1466,6 +1539,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_31512998</typeName>
@@ -1486,6 +1560,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_39910537</typeName>
@@ -1506,6 +1581,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_4</typeName>
@@ -1526,6 +1602,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_476459792</typeName>
@@ -1546,6 +1623,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_5</typeName>
@@ -1566,6 +1644,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_51898890</typeName>
@@ -1586,6 +1665,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_564008001</typeName>
@@ -1606,6 +1686,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_588723219</typeName>
@@ -1626,6 +1707,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_6</typeName>
@@ -1646,6 +1728,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_601099730</typeName>
@@ -1666,6 +1749,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_65775978</typeName>
@@ -1686,6 +1770,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_673917574</typeName>
@@ -1706,6 +1791,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_7</typeName>
@@ -1726,6 +1812,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_7007</typeName>
@@ -1746,6 +1833,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_758319514</typeName>
@@ -1766,6 +1854,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_766441794</typeName>
@@ -1786,6 +1875,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_769021986</typeName>
@@ -1806,6 +1896,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_8</typeName>
@@ -1826,6 +1917,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_846419204</typeName>
@@ -1846,6 +1938,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_8789515</typeName>
@@ -1866,6 +1959,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_9001</typeName>
@@ -1886,6 +1980,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_936607009</typeName>
@@ -1906,6 +2001,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_94341197</typeName>
@@ -1926,6 +2022,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_945713488</typeName>
@@ -1946,6 +2043,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_949340697</typeName>
@@ -1966,6 +2064,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.BResult_955752991</typeName>
@@ -1986,6 +2085,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.arr.ArrayTypes1dim</typeName>
@@ -2096,6 +2196,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.arr.ArrayTypes4dim</typeName>
@@ -2197,6 +2298,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.auth.SessionInfo</typeName>
@@ -2226,6 +2328,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.cons.AllTypesC</typeName>
@@ -2434,6 +2537,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.cons.AllTypesZ</typeName>
@@ -2571,6 +2675,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.cons.AllTypesZ[][]</typeName>
@@ -2581,10 +2686,11 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.cons.HebrewC</typeName>
-            <typeId>691741677</typeId>
+            <typeId>1770673942</typeId>
             <members>
                 <member>
                     <name>aleph</name>
@@ -2632,6 +2738,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.cons.HebrewZ</typeName>
@@ -2652,6 +2759,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.cons.HebrewZ[]</typeName>
@@ -2662,6 +2770,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.enu.EnumPlanets</typeName>
@@ -2712,6 +2821,7 @@
             <isInline>false</isInline>
             <isEnum>true</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.enu.EnumPlanets[]</typeName>
@@ -2722,6 +2832,7 @@
             <isInline>false</isInline>
             <isEnum>true</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.enu.UsePlanets</typeName>
@@ -2778,6 +2889,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.BRequest_BioFruitService_certify</typeName>
@@ -2798,6 +2910,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.BRequest_BioLemonService_useParing</typeName>
@@ -2808,6 +2921,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.BRequest_FruitService_squeeze</typeName>
@@ -2818,6 +2932,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.BRequest_LemonService_pick</typeName>
@@ -2847,6 +2962,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.BRequest_PlantService_grow</typeName>
@@ -2857,6 +2973,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.Class1</typeName>
@@ -2891,6 +3008,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.Class1Collections</typeName>
@@ -2929,6 +3047,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.Class2</typeName>
@@ -2949,6 +3068,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inherit.Class3</typeName>
@@ -2969,6 +3089,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inl.Actor</typeName>
@@ -2998,6 +3119,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inl.Matrix2D</typeName>
@@ -3095,6 +3217,7 @@
             <isInline>true</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inl.Point2D</typeName>
@@ -3141,6 +3264,7 @@
             <isInline>true</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inl.Point2D[]</typeName>
@@ -3151,6 +3275,7 @@
             <isInline>true</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inl.Point2D[][]</typeName>
@@ -3161,6 +3286,7 @@
             <isInline>true</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inl.Point2D[][][]</typeName>
@@ -3171,6 +3297,7 @@
             <isInline>true</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.inl.Point2D[][][][]</typeName>
@@ -3181,6 +3308,7 @@
             <isInline>true</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.list.ListListTypes</typeName>
@@ -3219,6 +3347,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.list.ListTypes</typeName>
@@ -3365,6 +3494,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.map.MapTypes</typeName>
@@ -3502,6 +3632,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.prim.PrimitiveTypes</typeName>
@@ -3680,6 +3811,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.prim.PrimitiveTypes[]</typeName>
@@ -3690,6 +3822,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.prim.PrimitiveTypes[][]</typeName>
@@ -3700,6 +3833,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.prim.PrimitiveTypes[][][]</typeName>
@@ -3710,6 +3844,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.prim.PrimitiveTypes[][][][]</typeName>
@@ -3720,6 +3855,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.priv.PrivateMembers</typeName>
@@ -3925,6 +4061,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.refs.Node</typeName>
@@ -3972,6 +4109,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool</typeName>
@@ -3982,6 +4120,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte</typeName>
@@ -3992,6 +4131,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar</typeName>
@@ -4002,6 +4142,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDate</typeName>
@@ -4012,6 +4153,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble</typeName>
@@ -4022,6 +4164,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat</typeName>
@@ -4032,6 +4175,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt</typeName>
@@ -4042,6 +4186,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong</typeName>
@@ -4052,6 +4197,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject</typeName>
@@ -4062,6 +4208,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes</typeName>
@@ -4072,6 +4219,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort</typeName>
@@ -4082,6 +4230,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString</typeName>
@@ -4092,6 +4241,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool</typeName>
@@ -4112,6 +4262,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte</typeName>
@@ -4132,6 +4283,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar</typeName>
@@ -4152,6 +4304,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDate</typeName>
@@ -4172,6 +4325,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble</typeName>
@@ -4192,6 +4346,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat</typeName>
@@ -4212,6 +4367,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt</typeName>
@@ -4232,6 +4388,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong</typeName>
@@ -4252,6 +4409,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject</typeName>
@@ -4272,6 +4430,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes</typeName>
@@ -4292,6 +4451,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort</typeName>
@@ -4312,6 +4472,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString</typeName>
@@ -4332,6 +4493,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysClass</typeName>
@@ -4370,6 +4532,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInline</typeName>
@@ -4408,6 +4571,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInt</typeName>
@@ -4446,6 +4610,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysObject</typeName>
@@ -4484,6 +4649,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysString</typeName>
@@ -4522,6 +4688,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool</typeName>
@@ -4532,6 +4699,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte</typeName>
@@ -4542,6 +4710,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar</typeName>
@@ -4552,6 +4721,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDate</typeName>
@@ -4562,6 +4732,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble</typeName>
@@ -4572,6 +4743,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat</typeName>
@@ -4582,6 +4754,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt</typeName>
@@ -4592,6 +4765,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong</typeName>
@@ -4602,6 +4776,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject</typeName>
@@ -4612,6 +4787,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes</typeName>
@@ -4622,6 +4798,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort</typeName>
@@ -4632,6 +4809,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString</typeName>
@@ -4642,6 +4820,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool</typeName>
@@ -4662,6 +4841,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte</typeName>
@@ -4682,6 +4862,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar</typeName>
@@ -4702,6 +4883,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDate</typeName>
@@ -4722,6 +4904,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble</typeName>
@@ -4742,6 +4925,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat</typeName>
@@ -4762,6 +4946,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt</typeName>
@@ -4782,6 +4967,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong</typeName>
@@ -4802,6 +4988,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject</typeName>
@@ -4822,6 +5009,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes</typeName>
@@ -4842,6 +5030,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setShort</typeName>
@@ -4862,6 +5051,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString</typeName>
@@ -4882,6 +5072,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC</typeName>
@@ -5046,6 +5237,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC</typeName>
@@ -5075,6 +5267,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteEnums_getPlanet</typeName>
@@ -5085,6 +5278,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteEnums_setPlanet</typeName>
@@ -5105,6 +5299,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_getActor</typeName>
@@ -5115,6 +5310,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray1dim</typeName>
@@ -5125,6 +5321,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray4dim</typeName>
@@ -5135,6 +5332,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DList</typeName>
@@ -5145,6 +5343,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DListList</typeName>
@@ -5155,6 +5354,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DMap</typeName>
@@ -5165,6 +5365,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_setActor</typeName>
@@ -5185,6 +5386,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray1dim</typeName>
@@ -5205,6 +5407,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray4dim</typeName>
@@ -5225,6 +5428,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DList</typeName>
@@ -5245,6 +5449,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DListList</typeName>
@@ -5265,6 +5470,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DMap</typeName>
@@ -5285,6 +5491,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1</typeName>
@@ -5295,6 +5502,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getByte1</typeName>
@@ -5305,6 +5513,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getByte2</typeName>
@@ -5315,6 +5524,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getChar1</typeName>
@@ -5325,6 +5535,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getDate1</typeName>
@@ -5335,6 +5546,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getDouble1</typeName>
@@ -5345,6 +5557,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getFloat1</typeName>
@@ -5355,6 +5568,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getInt1</typeName>
@@ -5365,6 +5579,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getInt2</typeName>
@@ -5375,6 +5590,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getInt3</typeName>
@@ -5385,6 +5601,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getInt4</typeName>
@@ -5395,6 +5612,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getLong1</typeName>
@@ -5405,6 +5623,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getObj1</typeName>
@@ -5415,6 +5634,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1</typeName>
@@ -5425,6 +5645,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getShort1</typeName>
@@ -5435,6 +5656,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_getString1</typeName>
@@ -5445,6 +5667,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1</typeName>
@@ -5465,6 +5688,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setByte1</typeName>
@@ -5485,6 +5709,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setByte2</typeName>
@@ -5505,6 +5730,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setChar1</typeName>
@@ -5525,6 +5751,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setDate1</typeName>
@@ -5545,6 +5772,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setDouble1</typeName>
@@ -5565,6 +5793,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setFloat1</typeName>
@@ -5585,6 +5814,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setInt1</typeName>
@@ -5605,6 +5835,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setInt2</typeName>
@@ -5625,6 +5856,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setInt3</typeName>
@@ -5645,6 +5877,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setInt4</typeName>
@@ -5665,6 +5898,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setLong1</typeName>
@@ -5685,6 +5919,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setObj1</typeName>
@@ -5705,6 +5940,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1</typeName>
@@ -5725,6 +5961,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setShort1</typeName>
@@ -5745,6 +5982,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteListTypes_setString1</typeName>
@@ -5765,6 +6003,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1</typeName>
@@ -5775,6 +6014,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getByte1</typeName>
@@ -5785,6 +6025,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getByte2</typeName>
@@ -5795,6 +6036,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getChar1</typeName>
@@ -5805,6 +6047,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getDate1</typeName>
@@ -5815,6 +6058,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1</typeName>
@@ -5825,6 +6069,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1</typeName>
@@ -5835,6 +6080,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getInt1</typeName>
@@ -5845,6 +6091,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getInt2</typeName>
@@ -5855,6 +6102,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getLong1</typeName>
@@ -5865,6 +6113,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getObj1</typeName>
@@ -5875,6 +6124,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1</typeName>
@@ -5885,6 +6135,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getShort1</typeName>
@@ -5895,6 +6146,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_getString1</typeName>
@@ -5905,6 +6157,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1</typeName>
@@ -5925,6 +6178,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setByte1</typeName>
@@ -5945,6 +6199,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setByte2</typeName>
@@ -5965,6 +6220,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setChar1</typeName>
@@ -5985,6 +6241,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setDate1</typeName>
@@ -6005,6 +6262,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1</typeName>
@@ -6025,6 +6283,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1</typeName>
@@ -6045,6 +6304,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setInt1</typeName>
@@ -6065,6 +6325,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setInt2</typeName>
@@ -6085,6 +6346,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setLong1</typeName>
@@ -6105,6 +6367,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setObj1</typeName>
@@ -6125,6 +6388,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1</typeName>
@@ -6145,6 +6409,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setShort1</typeName>
@@ -6165,6 +6430,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteMapTypes_setString1</typeName>
@@ -6185,6 +6451,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_add</typeName>
@@ -6214,6 +6481,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool</typeName>
@@ -6224,6 +6492,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte</typeName>
@@ -6234,6 +6503,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar</typeName>
@@ -6244,6 +6514,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDate</typeName>
@@ -6254,6 +6525,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble</typeName>
@@ -6264,6 +6536,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat</typeName>
@@ -6274,6 +6547,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt</typeName>
@@ -6284,6 +6558,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong</typeName>
@@ -6294,6 +6569,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject</typeName>
@@ -6304,6 +6580,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes</typeName>
@@ -6314,6 +6591,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort</typeName>
@@ -6324,6 +6602,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString</typeName>
@@ -6334,6 +6613,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_makeDate</typeName>
@@ -6408,6 +6688,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_parseDate</typeName>
@@ -6428,6 +6709,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes</typeName>
@@ -6529,6 +6811,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool</typeName>
@@ -6549,6 +6832,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte</typeName>
@@ -6569,6 +6853,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar</typeName>
@@ -6589,6 +6874,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDate</typeName>
@@ -6609,6 +6895,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble</typeName>
@@ -6629,6 +6916,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat</typeName>
@@ -6649,6 +6937,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt</typeName>
@@ -6669,6 +6958,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong</typeName>
@@ -6689,6 +6979,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject</typeName>
@@ -6709,6 +7000,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes</typeName>
@@ -6729,6 +7021,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort</typeName>
@@ -6749,6 +7042,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString</typeName>
@@ -6769,6 +7063,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException</typeName>
@@ -6779,6 +7074,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid</typeName>
@@ -6789,6 +7085,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteReferences_getNode</typeName>
@@ -6799,6 +7096,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteReferences_setNode</typeName>
@@ -6819,6 +7117,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote</typeName>
@@ -6839,6 +7138,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote</typeName>
@@ -6877,6 +7177,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote</typeName>
@@ -6897,6 +7198,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1</typeName>
@@ -6907,6 +7209,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getByte1</typeName>
@@ -6917,6 +7220,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getByte2</typeName>
@@ -6927,6 +7231,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getChar1</typeName>
@@ -6937,6 +7242,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getDate1</typeName>
@@ -6947,6 +7253,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1</typeName>
@@ -6957,6 +7264,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1</typeName>
@@ -6967,6 +7275,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getInt1</typeName>
@@ -6977,6 +7286,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getInt2</typeName>
@@ -6987,6 +7297,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getLong1</typeName>
@@ -6997,6 +7308,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getObj1</typeName>
@@ -7007,6 +7319,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1</typeName>
@@ -7017,6 +7330,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getShort1</typeName>
@@ -7027,6 +7341,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_getString1</typeName>
@@ -7037,6 +7352,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1</typeName>
@@ -7057,6 +7373,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setByte1</typeName>
@@ -7077,6 +7394,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setByte2</typeName>
@@ -7097,6 +7415,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setChar1</typeName>
@@ -7117,6 +7436,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setDate1</typeName>
@@ -7137,6 +7457,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1</typeName>
@@ -7157,6 +7478,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1</typeName>
@@ -7177,6 +7499,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setInt1</typeName>
@@ -7197,6 +7520,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setInt2</typeName>
@@ -7217,6 +7541,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setLong1</typeName>
@@ -7237,6 +7562,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setObj1</typeName>
@@ -7257,6 +7583,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1</typeName>
@@ -7277,6 +7604,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setShort1</typeName>
@@ -7297,6 +7625,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteSetTypes_setString1</typeName>
@@ -7317,6 +7646,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteStreams_getImage</typeName>
@@ -7327,6 +7657,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteStreams_getImages</typeName>
@@ -7337,6 +7668,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteStreams_getTextStream</typeName>
@@ -7347,6 +7679,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteStreams_setImage</typeName>
@@ -7367,6 +7700,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteStreams_setImages</typeName>
@@ -7396,6 +7730,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteStreams_throwLastException</typeName>
@@ -7406,6 +7741,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteWithAuthentication_doit</typeName>
@@ -7435,6 +7771,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteWithAuthentication_expire</typeName>
@@ -7455,6 +7792,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteWithAuthentication_login</typeName>
@@ -7493,6 +7831,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount</typeName>
@@ -7513,6 +7852,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication</typeName>
@@ -7533,6 +7873,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.set.SetTypes</typeName>
@@ -7670,6 +8011,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ClientIF_getStreams</typeName>
@@ -7690,6 +8032,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ClientIF_incrementInt</typeName>
@@ -7710,6 +8053,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ClientIF_putStreams</typeName>
@@ -7739,6 +8083,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ClientIF_sendChat</typeName>
@@ -7759,6 +8104,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt</typeName>
@@ -7779,6 +8125,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_callClientParallel</typeName>
@@ -7799,6 +8146,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_getClient</typeName>
@@ -7819,6 +8167,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_getClientIds</typeName>
@@ -7829,6 +8178,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_getPartner</typeName>
@@ -7839,6 +8189,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient</typeName>
@@ -7849,6 +8200,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient</typeName>
@@ -7869,6 +8221,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap</typeName>
@@ -7889,6 +8242,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_setPartner</typeName>
@@ -7909,6 +8263,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.srvr.ChatStructure</typeName>
@@ -7947,6 +8302,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.strm.Stream1</typeName>
@@ -8003,6 +8359,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.ver.BRequest_EvolveIF_getClient</typeName>
@@ -8013,6 +8370,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.ver.BRequest_EvolveIF_getEvolve</typeName>
@@ -8023,6 +8381,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient</typeName>
@@ -8033,6 +8392,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.ver.BRequest_EvolveIF_setClient</typeName>
@@ -8053,6 +8413,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.ver.BRequest_EvolveIF_setEvolve</typeName>
@@ -8073,6 +8434,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.ver.Evolve</typeName>
@@ -8859,6 +9221,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byps.test.api.ver.Evolve2</typeName>
@@ -8879,6 +9242,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byte[]</typeName>
@@ -8889,6 +9253,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>byte[][][][]</typeName>
@@ -8899,6 +9264,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>char[]</typeName>
@@ -8909,6 +9275,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>char[][][][]</typeName>
@@ -8919,6 +9286,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>double[]</typeName>
@@ -8929,6 +9297,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>double[][][][]</typeName>
@@ -8939,6 +9308,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>float[]</typeName>
@@ -8949,6 +9319,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>float[][][][]</typeName>
@@ -8959,6 +9330,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>int[]</typeName>
@@ -8969,6 +9341,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>int[][]</typeName>
@@ -8979,6 +9352,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>int[][][]</typeName>
@@ -8989,6 +9363,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>int[][][][]</typeName>
@@ -8999,6 +9374,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.io.InputStream[]</typeName>
@@ -9009,6 +9385,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.Object[]</typeName>
@@ -9019,6 +9396,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.Object[][]</typeName>
@@ -9029,6 +9407,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.Object[][][]</typeName>
@@ -9039,6 +9418,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.Object[][][][]</typeName>
@@ -9049,6 +9429,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.String[]</typeName>
@@ -9059,6 +9440,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.String[][]</typeName>
@@ -9069,6 +9451,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.String[][][]</typeName>
@@ -9079,6 +9462,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.lang.String[][][][]</typeName>
@@ -9089,6 +9473,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.ArrayList{byps.test.api.enu.EnumPlanets}</typeName>
@@ -9099,6 +9484,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Date[]</typeName>
@@ -9109,6 +9495,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Date[][][][]</typeName>
@@ -9119,6 +9506,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.HashMap{java.lang.Double,java.lang.Byte}</typeName>
@@ -9129,6 +9517,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.HashSet{java.lang.Byte}</typeName>
@@ -9139,6 +9528,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{byps.test.api.inherit.Class1}</typeName>
@@ -9149,6 +9539,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{byps.test.api.inl.Point2D}</typeName>
@@ -9159,6 +9550,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{byps.test.api.prim.PrimitiveTypes}</typeName>
@@ -9169,6 +9561,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{byps.test.api.refs.Node}</typeName>
@@ -9179,6 +9572,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{byte[]}</typeName>
@@ -9189,6 +9583,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{int[]}</typeName>
@@ -9199,6 +9594,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{int[][][][]}</typeName>
@@ -9209,6 +9605,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.io.InputStream}</typeName>
@@ -9219,6 +9616,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Boolean}</typeName>
@@ -9229,6 +9627,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Byte}</typeName>
@@ -9239,6 +9638,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Character}</typeName>
@@ -9249,6 +9649,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Double}</typeName>
@@ -9259,6 +9660,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Float}</typeName>
@@ -9269,6 +9671,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Integer}</typeName>
@@ -9279,6 +9682,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Long}</typeName>
@@ -9289,6 +9693,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.Short}</typeName>
@@ -9299,6 +9704,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.lang.String}</typeName>
@@ -9309,6 +9715,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.util.Date}</typeName>
@@ -9319,6 +9726,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.util.List{byps.test.api.inl.Point2D}}</typeName>
@@ -9329,6 +9737,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.util.List{int[][][][]}}</typeName>
@@ -9339,6 +9748,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.util.List{java.lang.Integer}}</typeName>
@@ -9349,6 +9759,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.util.Map{java.lang.Integer,java.util.List{java.util.TreeSet{java.lang.Integer}}}}</typeName>
@@ -9359,6 +9770,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.List{java.util.TreeSet{java.lang.Integer}}</typeName>
@@ -9369,6 +9781,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Byte,java.lang.Double}</typeName>
@@ -9379,6 +9792,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Character,java.lang.Float}</typeName>
@@ -9389,6 +9803,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,byps.test.api.inl.Point2D}</typeName>
@@ -9399,6 +9814,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,byps.test.api.prim.PrimitiveTypes}</typeName>
@@ -9409,6 +9825,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,byte[]}</typeName>
@@ -9419,6 +9836,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,int[]}</typeName>
@@ -9429,6 +9847,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,java.io.InputStream}</typeName>
@@ -9439,6 +9858,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,java.lang.Integer}</typeName>
@@ -9449,6 +9869,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,java.util.List{java.lang.String}}</typeName>
@@ -9459,6 +9880,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Integer,java.util.List{java.util.TreeSet{java.lang.Integer}}}</typeName>
@@ -9469,6 +9891,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Long,java.lang.Short}</typeName>
@@ -9479,6 +9902,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.Short,java.lang.Long}</typeName>
@@ -9489,6 +9913,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.String,byps.test.api.enu.EnumPlanets}</typeName>
@@ -9499,6 +9924,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.String,byps.test.api.inherit.Class1}</typeName>
@@ -9509,6 +9935,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.String,byps.test.api.refs.Node}</typeName>
@@ -9519,6 +9946,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.String,java.lang.Boolean}</typeName>
@@ -9529,6 +9957,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.String,java.lang.Object}</typeName>
@@ -9539,6 +9968,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.String,java.lang.String}</typeName>
@@ -9549,6 +9979,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Map{java.lang.String,java.util.Date}</typeName>
@@ -9559,6 +9990,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{byps.test.api.inherit.Class1}</typeName>
@@ -9569,6 +10001,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{byps.test.api.prim.PrimitiveTypes}</typeName>
@@ -9579,6 +10012,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{byte[]}</typeName>
@@ -9589,6 +10023,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{int[]}</typeName>
@@ -9599,6 +10034,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.lang.Boolean}</typeName>
@@ -9609,6 +10045,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.lang.Double}</typeName>
@@ -9619,6 +10056,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.lang.Float}</typeName>
@@ -9629,6 +10067,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.lang.Integer}</typeName>
@@ -9639,6 +10078,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.lang.Long}</typeName>
@@ -9649,6 +10089,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.lang.Short}</typeName>
@@ -9659,6 +10100,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.lang.String}</typeName>
@@ -9669,6 +10111,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.Set{java.util.Date}</typeName>
@@ -9679,6 +10122,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.TreeMap{java.lang.Float,java.lang.Character}</typeName>
@@ -9689,6 +10133,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.TreeMap{java.lang.Integer,java.io.InputStream}</typeName>
@@ -9699,6 +10144,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.TreeSet{java.lang.Character}</typeName>
@@ -9709,6 +10155,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>java.util.TreeSet{java.lang.Integer}</typeName>
@@ -9719,6 +10166,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>long[]</typeName>
@@ -9729,6 +10177,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>long[][][][]</typeName>
@@ -9739,6 +10188,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>short[]</typeName>
@@ -9749,6 +10199,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
         <serial>
             <typeName>short[][][][]</typeName>
@@ -9759,6 +10210,7 @@
             <isInline>false</isInline>
             <isEnum>false</isEnum>
             <isFinal>false</isFinal>
+            <since>0.0.0.0</since>
         </serial>
     </serials>
     <remotes>
@@ -9789,6 +10241,7 @@
                 </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.FruitService</baseQNames>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.inherit.BioLemonService</typeName>
@@ -9818,6 +10271,7 @@
             </comments>
             <baseQNames>byps.test.api.inherit.BioFruitService</baseQNames>
             <baseQNames>byps.test.api.inherit.LemonService</baseQNames>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.inherit.FruitService</typeName>
@@ -9846,6 +10300,7 @@
                 </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.PlantService</baseQNames>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.inherit.LemonService</typeName>
@@ -9874,6 +10329,7 @@
                 </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.FruitService</baseQNames>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.inherit.PlantService</typeName>
@@ -9901,6 +10357,7 @@
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
                 </comment>
             </comments>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteArrayTypes1dim</typeName>
@@ -10130,6 +10587,7 @@
                     <text>Interface with functions using 1-dimensional arrays.</text>
                 </comment>
             </comments>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteArrayTypes23</typeName>
@@ -10183,6 +10641,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteArrayTypes4dim</typeName>
@@ -10412,6 +10871,7 @@
                     <text>Interface with functions using 4-dimensional arrays.</text>
                 </comment>
             </comments>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteConstants</typeName>
@@ -10443,6 +10903,7 @@
                     <text>Interface functions to verify constant definitions.</text>
                 </comment>
             </comments>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteEnums</typeName>
@@ -10469,6 +10930,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteInlineInstance</typeName>
@@ -10585,6 +11047,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteListTypes</typeName>
@@ -10881,6 +11344,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteMapTypes</typeName>
@@ -11141,6 +11605,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemotePrimitiveTypes</typeName>
@@ -11419,6 +11884,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteReferences</typeName>
@@ -11445,6 +11911,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteServerCtrl</typeName>
@@ -11480,6 +11947,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteSetTypes</typeName>
@@ -11740,6 +12208,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteStreams</typeName>
@@ -11802,6 +12271,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.remote.RemoteWithAuthentication</typeName>
@@ -11962,6 +12432,7 @@
                     <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
             </comments>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.srvr.ClientIF</typeName>
@@ -12015,6 +12486,7 @@
                     <text></text>
                 </comment>
             </comments>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.srvr.ServerIF</typeName>
@@ -12104,6 +12576,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
         <remote>
             <typeName>byps.test.api.ver.EvolveIF</typeName>
@@ -12157,6 +12630,7 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
         </remote>
     </remotes>
 </ns2:xmlClassDB>

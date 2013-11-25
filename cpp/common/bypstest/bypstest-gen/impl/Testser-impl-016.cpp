@@ -460,7 +460,7 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::cons::AllTypesC), byps::test::api::BSerializer_930294276, 930294276);
 	registerClass(typeid(byps::test::api::cons::AllTypesZ), byps::test::api::BSerializer_142458, 142458);
 	registerClass(typeid(BArray2< byps::test::api::cons::PAllTypesZ > ), byps::test::api::BSerializer_81775365, 81775365);
-	registerClass(typeid(byps::test::api::cons::HebrewC), byps::test::api::BSerializer_691741677, 691741677);
+	registerClass(typeid(byps::test::api::cons::HebrewC), byps::test::api::BSerializer_1770673942, 1770673942);
 	registerClass(typeid(byps::test::api::cons::HebrewZ), byps::test::api::BSerializer_1518668429, 1518668429);
 	registerClass(typeid(BArray1< byps::test::api::cons::PHebrewZ > ), byps::test::api::BSerializer_92445340, 92445340);
 	registerClass(typeid(BArray1< byps::test::api::enu::EnumPlanets > ), byps::test::api::BSerializer_1441131650, 1441131650);

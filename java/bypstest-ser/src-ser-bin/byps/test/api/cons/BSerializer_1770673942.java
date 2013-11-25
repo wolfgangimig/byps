@@ -16,15 +16,15 @@ import byps.*;
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
-public class BSerializer_691741677 extends BSerializer {
+public class BSerializer_1770673942 extends BSerializer {
 	
-	public final static BSerializer instance = new BSerializer_691741677();
+	public final static BSerializer instance = new BSerializer_1770673942();
 	
-	public BSerializer_691741677() {
-		super(691741677);
+	public BSerializer_1770673942() {
+		super(1770673942);
 	}
 	
-	public BSerializer_691741677(int typeId) {
+	public BSerializer_1770673942(int typeId) {
 		super(typeId);
 	}
 	

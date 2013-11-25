@@ -1,7 +1,6 @@
 package byps.gen.api;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class RemoteInfo extends TypeInfo {
@@ -29,6 +28,8 @@ public class RemoteInfo extends TypeInfo {
 	 * This remote extends the interfaces baseQNames.
 	 */
 	public final List<String> baseQNames = new ArrayList<String>();
+	
+	public final long since;
 
 	public RemoteInfo(
 	    String name, 
@@ -37,17 +38,19 @@ public class RemoteInfo extends TypeInfo {
 	    List<String> baseQNames,
 	    List<MethodInfo> methods,
 	    String authParamClassName, 
-	    boolean isClientRemote) {
+	    boolean isClientRemote,
+	    long since) {
 		super(name, qname, "", null, false, false, false);
 		this.methods = methods;
 		this.comments = comments;
 		this.authParamClassName = authParamClassName;
 		this.isClientRemote = isClientRemote;
 		if (baseQNames != null) this.baseQNames.addAll(baseQNames);
+		this.since = since;
 	}
 
 	public RemoteInfo() {
-		this(null, null, null, null, null, null, false);
+		this(null, null, null, null, null, null, false, 0L);
 	}
 	
 	public List<MethodInfo> methods;
@@ -62,7 +65,8 @@ public class RemoteInfo extends TypeInfo {
         baseQNames,
         methods, 
         null, 
-        isClientRemote);
+        isClientRemote,
+        since);
     rinfo.typeId = this.typeId;
     return rinfo;
   }
@@ -83,13 +87,21 @@ public class RemoteInfo extends TypeInfo {
         baseQNames,
         methods, 
         authParamClassName, 
-        isClientRemote);
+        isClientRemote,
+        since);
     rinfo.typeId = this.typeId;
     return rinfo;
   }
   
   public RemoteInfo getRemoteNoAuth() {
-    RemoteInfo rinfo = new RemoteInfo(name, comments, qname, baseQNames, methods, null, isClientRemote);
+    RemoteInfo rinfo = new RemoteInfo(name, 
+        comments, 
+        qname, 
+        baseQNames, 
+        methods, 
+        null, 
+        isClientRemote, 
+        since);
     rinfo.typeId = this.typeId;
     return rinfo;
   }

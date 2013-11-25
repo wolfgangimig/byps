@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BVersioning;
 import byps.gen.api.CommentInfo;
 import byps.gen.api.GeneratorException;
 import byps.gen.api.MethodInfo;
@@ -40,6 +41,8 @@ public class XmlRemoteInfo implements XmlInfo {
 	public List<CommentInfo> comments;
 
   public List<String> baseQNames;
+  
+  public String since;
 	
 	public static XmlRemoteInfo fromValue(ClassDB classDB, RemoteInfo v) {
 		XmlRemoteInfo x = new XmlRemoteInfo();
@@ -49,6 +52,7 @@ public class XmlRemoteInfo implements XmlInfo {
 		x.authParamClassName = v.authParamClassName;
 		x.isClientRemote = v.isClientRemote;
 		x.baseQNames = v.baseQNames;
+		x.since = BVersioning.longToString(v.since);
 		
 		x.methods = new ArrayList<XmlMethodInfo>(v.methods.size());
 		for (MethodInfo m : v.methods) {
@@ -67,7 +71,10 @@ public class XmlRemoteInfo implements XmlInfo {
 		TypeInfo t = TypeInfo.fromXmlFullName(typeName);
 		log.debug("typeInfo=" + t);
 
-		RemoteInfo remoteInfo = classDB.createRemoteInfo(t.name, comments, t.qname, baseQNames, null, authParamClassName, isClientRemote);
+		RemoteInfo remoteInfo = classDB.createRemoteInfo(t.name, 
+		    comments, t.qname, baseQNames, 
+		    null, authParamClassName, isClientRemote,
+		    BVersioning.stringToLong(since));
 		xmlClassDB.pushUpdate(this);
 		
 		remoteInfo.typeId = this.typeId;

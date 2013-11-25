@@ -9,7 +9,7 @@ public class SerialInfo extends TypeInfo implements Comparable<SerialInfo> {
 	
 	public SerialInfo(String name, List<CommentInfo> comments, String qname, String baseFullName, 
 			String dims, List<TypeInfo> typeArgs, List<MemberInfo> members,
-			boolean isEnum, boolean isFinal, boolean isInline) {
+			boolean isEnum, boolean isFinal, boolean isInline, long since) {
 		super(name, qname, 
 				dims != null ? dims : "", 
 				typeArgs != null ? typeArgs : new ArrayList<TypeInfo>(0),
@@ -23,11 +23,11 @@ public class SerialInfo extends TypeInfo implements Comparable<SerialInfo> {
 		this.baseFullName = baseFullName;
 		this.members = members;
 		this.comments = comments;
-		
+		this.since = since;
 	}
 	
 	public SerialInfo() throws GeneratorException {
-		this(null, null, null, "", null, null, null, false, false, false);
+		this(null, null, null, "", null, null, null, false, false, false, 0L);
 	}
 
 	public List<MemberInfo> members;
@@ -39,6 +39,8 @@ public class SerialInfo extends TypeInfo implements Comparable<SerialInfo> {
 	public SerialInfo baseInfo;
 	
 	public MethodInfo methodInfo;
+	
+	public final long since;
 	
 	@Override
 	public int compareTo(SerialInfo o) {

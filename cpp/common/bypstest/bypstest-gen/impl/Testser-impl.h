@@ -9488,7 +9488,7 @@ void BSerializer_142458(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBa
 // Serializer for byps.test.api.cons.AllTypesZ[][]
 void BSerializer_81775365(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.HebrewC
-void BSerializer_691741677(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+void BSerializer_1770673942(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.HebrewZ
 void BSerializer_1518668429(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.HebrewZ[]

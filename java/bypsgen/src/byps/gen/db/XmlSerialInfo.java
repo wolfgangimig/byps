@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BVersioning;
 import byps.gen.api.CommentInfo;
 import byps.gen.api.GeneratorException;
 import byps.gen.api.MemberInfo;
@@ -36,6 +37,7 @@ public class XmlSerialInfo implements XmlInfo {
 	public boolean isInline;
 	public boolean isEnum;
 	public boolean isFinal;
+	public String since;
 	
 	public static XmlSerialInfo fromValue(ClassDB classDB, SerialInfo v) {
 		XmlSerialInfo x = new XmlSerialInfo();
@@ -54,7 +56,7 @@ public class XmlSerialInfo implements XmlInfo {
 		x.isInline = v.isInline;
 		x.isEnum = v.isEnum;
 		x.isFinal = v.isFinal;
-		
+		x.since = BVersioning.longToString(v.since);
 		return x;
 	}
 	
@@ -71,7 +73,8 @@ public class XmlSerialInfo implements XmlInfo {
 				null, 
 				this.isEnum, 
 				this.isFinal,
-				this.isInline);
+				this.isInline,
+				BVersioning.stringToLong(since));
 		
 		classDB.add(serInfo);
 		xmlClassDB.pushUpdate(this);

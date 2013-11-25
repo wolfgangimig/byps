@@ -116,8 +116,8 @@ public class AssignUniqueSerialVersionUID {
 						value = value.substring(0, p);
 						
 						try {
-							long uid = Long.parseLong(value);
-							isValidSerialVersionUID = uid > 1;
+							Long.parseLong(value);
+							isValidSerialVersionUID = true;
 						}
 						catch (NumberFormatException e) {
 							log.debug(e);

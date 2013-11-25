@@ -130,17 +130,27 @@ public class ClassDB {
   }
 
   public SerialInfo createSerialInfo(String name, List<CommentInfo> comments, String qname, String baseQname, String dims, List<TypeInfo> typeArgs, List<MemberInfo> members, boolean isEnum,
-      boolean isFinal, boolean inlineInstance) throws GeneratorException {
+      boolean isFinal, boolean inlineInstance, long since) throws GeneratorException {
     log.debug("createSerialInfo: " + qname + ", baseQname=" + baseQname + ", dims=" + dims + ", typeArgs=" + typeArgs + ", members=" + members + ", inlineInstance=" + inlineInstance + ", isEnum="
         + isEnum);
-    SerialInfo serInfo = new SerialInfo(name, comments, qname, baseQname, dims, typeArgs, members, isEnum, isFinal, inlineInstance);
+    SerialInfo serInfo = new SerialInfo(name, comments, qname, baseQname, dims, typeArgs, members, isEnum, isFinal, inlineInstance, since);
     return serInfo;
   }
 
-  public RemoteInfo createRemoteInfo(String name, List<CommentInfo> comments, String qname, List<String> baseQNames, List<MethodInfo> methods, String authParamClassName, boolean isClientRemote)
+  public RemoteInfo createRemoteInfo(String name, List<CommentInfo> comments, 
+      String qname, List<String> baseQNames, List<MethodInfo> methods, 
+      String authParamClassName, boolean isClientRemote,
+      long since)
       throws GeneratorException {
 
-    RemoteInfo rinfo = new RemoteInfo(name, comments, qname, baseQNames, methods, authParamClassName, isClientRemote);
+    RemoteInfo rinfo = new RemoteInfo(name, 
+        comments, 
+        qname, 
+        baseQNames, 
+        methods, 
+        authParamClassName, 
+        isClientRemote, 
+        since);
 
     if (methods != null) {
       for (MethodInfo method : methods) {
@@ -169,7 +179,17 @@ public class ClassDB {
     String stubQname = makeStubName(rinfo.qname);
     List<MemberInfo> stubMembers = new ArrayList<MemberInfo>();
 
-    SerialInfo sinfo = createSerialInfo(stubName, null, stubQname, baseQname, "", null, stubMembers, false, false, false);
+    SerialInfo sinfo = createSerialInfo(stubName, 
+        null, 
+        stubQname, 
+        baseQname, 
+        "", 
+        null, 
+        stubMembers, 
+        false, 
+        false, 
+        false,
+        rinfo.since);
     add(sinfo);
 
     return sinfo;
@@ -367,26 +387,26 @@ public class ClassDB {
 
   private SerialInfo makeExceptionSerialInfo() throws GeneratorException {
     ArrayList<MemberInfo> memberInfos = new ArrayList<MemberInfo>(1);
-    SerialInfo sinfo = new SerialInfo("Exception", null, Exception.class.getName(), "", "", null, memberInfos, false, false, false);
+    SerialInfo sinfo = new SerialInfo("Exception", null, Exception.class.getName(), "", "", null, memberInfos, false, false, false, 0L);
     sinfo.typeId = BRegistry.TYPEID_EXCEPTION;
     return sinfo;
   }
 
   private SerialInfo makeThrowableSerialInfo() throws GeneratorException {
     ArrayList<MemberInfo> memberInfos = new ArrayList<MemberInfo>(1);
-    SerialInfo sinfo = new SerialInfo("Throwable", null, Throwable.class.getName(), "", "", null, memberInfos, false, false, false);
+    SerialInfo sinfo = new SerialInfo("Throwable", null, Throwable.class.getName(), "", "", null, memberInfos, false, false, false, 0L);
     sinfo.typeId = BRegistry.TYPEID_EXCEPTION;
     return sinfo;
   }
 
   private SerialInfo makeStringSerialInfo() throws GeneratorException {
-    SerialInfo sinfo = new SerialInfo("String", null, "java.lang.String", null, "", null, null, false, true, true);
+    SerialInfo sinfo = new SerialInfo("String", null, "java.lang.String", null, "", null, null, false, true, true, 0L);
     sinfo.typeId = BRegistry.TYPEID_STRING;
     return sinfo;
   }
 
   private SerialInfo makeObjectSerialInfo() throws GeneratorException {
-    SerialInfo sinfo = new SerialInfo("Object", null, "java.lang.Object", null, "", null, null, false, false, false);
+    SerialInfo sinfo = new SerialInfo("Object", null, "java.lang.Object", null, "", null, null, false, false, false, 0L);
     sinfo.typeId = BRegistry.TYPEID_OBJECT;
     return sinfo;
   }
@@ -394,7 +414,7 @@ public class ClassDB {
   private SerialInfo makeListOfObjectSerialInfo() throws GeneratorException {
     ArrayList<TypeInfo> args = new ArrayList<TypeInfo>();
     args.add(this.getTypeInfo("java.lang.Object"));
-    SerialInfo sinfo = new SerialInfo("List", null, "java.util.List", null, "", args, null, false, false, false);
+    SerialInfo sinfo = new SerialInfo("List", null, "java.util.List", null, "", args, null, false, false, false, 0L);
     sinfo.typeId = BRegistry.TYPEID_LIST;
     return sinfo;
   }
@@ -402,13 +422,13 @@ public class ClassDB {
   private SerialInfo makeSetOfObjectSerialInfo() throws GeneratorException {
     ArrayList<TypeInfo> args = new ArrayList<TypeInfo>();
     args.add(this.getTypeInfo("java.lang.Object"));
-    SerialInfo sinfo = new SerialInfo("Set", null, "java.util.Set", null, "", args, null, false, false, false);
+    SerialInfo sinfo = new SerialInfo("Set", null, "java.util.Set", null, "", args, null, false, false, false, 0L);
     sinfo.typeId = BRegistry.TYPEID_SET;
     return sinfo;
   }
 
   private SerialInfo makeValueClassSerialInfo() throws GeneratorException {
-    SerialInfo sinfo = new SerialInfo("BValueClass", null, "byps.BValueClass", null, "", null, null, false, false, false);
+    SerialInfo sinfo = new SerialInfo("BValueClass", null, "byps.BValueClass", null, "", null, null, false, false, false, 0L);
     sinfo.typeId = BRegistry.TYPEID_VALUECLASS;
     return sinfo;
   }

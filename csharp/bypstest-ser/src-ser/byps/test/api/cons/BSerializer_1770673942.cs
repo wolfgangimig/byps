@@ -11,14 +11,14 @@ using byps;
 namespace byps.test.api.cons
 {
 	
-	public class BSerializer_691741677 : BSerializer {
+	public class BSerializer_1770673942 : BSerializer {
 		
-		public readonly static BSerializer instance = new BSerializer_691741677();
+		public readonly static BSerializer instance = new BSerializer_1770673942();
 		
-		public BSerializer_691741677()
-			: base(691741677) {}
+		public BSerializer_1770673942()
+			: base(1770673942) {}
 		
-		public BSerializer_691741677(int typeId)
+		public BSerializer_1770673942(int typeId)
 			: base(typeId) {}
 		
 		
