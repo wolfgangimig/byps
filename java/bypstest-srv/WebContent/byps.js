@@ -1008,8 +1008,13 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 
 	this._internalIsReloginException = function(ex, typeId) {
 		var ret = false;
-		if (this._authentication && ex) {
-			ret = this._authentication.isReloginException(null, ex, typeId);
+		if (ex && this._authentication) {
+			if (this._authentication.isReloginException) {
+				ret = this._authentication.isReloginException(null, ex, typeId);
+			}
+			else {
+				ret = this.isReloginException(ex, typeId);
+			}
 		}
 		return ret;
 	};
@@ -1395,7 +1400,7 @@ byps.BClient = function() {
 
 		  getSession : function(ignored, typeId, asyncResult) {
 			  var ret = null;
-			  if (innerAuth) {
+			  if (innerAuth && innerAuth.getSession) {
 				  ret = innerAuth.getSession(this, typeId, asyncResult);
 			  }
 			  else if (asyncResult) {
