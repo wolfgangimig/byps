@@ -107,17 +107,17 @@ public class CompatibleClassDB {
   private void ensureCompatibleSerInfos(CompatibilityViolations viols) throws GeneratorException {
 		
 	  Collection<SerialInfo> sinfos = classDB.getSerials(); 
-		
+
 		for (SerialInfo sinfo : sinfos) {
-		  
+
 		  // Result and request classes need not to be checked,
 		  // since the method definitions are checked.
-		  if (sinfo.isResultClass()) return;
-		  if (sinfo.isRequestClass()) return;
+		  if (sinfo.isResultClass()) continue;
+		  if (sinfo.isRequestClass()) continue;
 		  
 			String fullName = sinfo.toString();
 			SerialInfo sinfoP = prevClassDB.getSerInfo(fullName);
-
+			
 			if (sinfoP != null) {
 				ensureCompatibleSerInfo(sinfoP, sinfo, viols);
 			}
