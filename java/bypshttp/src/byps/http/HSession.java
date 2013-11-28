@@ -153,7 +153,10 @@ public abstract class HSession
    */
   public void setSessionAuthenticated() {
     if (httpSess != null) {
-      httpSess.setMaxInactiveInterval(defaultInactiveSeconds);
+      int n = httpSess.getMaxInactiveInterval();
+      if (n != defaultInactiveSeconds) {
+        httpSess.setMaxInactiveInterval(defaultInactiveSeconds);
+      }
     }
   }
   
