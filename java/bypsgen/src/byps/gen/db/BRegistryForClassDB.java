@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Random;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -88,38 +87,5 @@ public class BRegistryForClassDB extends BRegistry {
 		return qname.substring(0,1).toUpperCase() + qname.substring(1);
 	}
 
-    private Random rand = new Random(System.currentTimeMillis()+1L);
-
-	public int makeRandomTypeId() {
-		int typeId = 0;
-		
-		if (bmodel == BBinaryModel.MEDIUM) {
-			do {
-				typeId = rand.nextInt();
-				if (typeId < 0) typeId = -typeId;
-			}
-			while (typeId < getMinTypeIdUser());
-		}
-//		else if (bmodel == BBinaryModel.LARGE) {
-//			do {
-//				typeId = rand.nextInt();
-//				if (typeId < 0) typeId = -typeId;
-//			}
-//			while (typeId < getMinTypeIdUser());
-//		}
-//		else if (bmodel == BBinaryModel.SMALL) {
-//			do {
-//				typeId = rand.nextInt((int)getMaxTypeIdUser());
-//			}
-//			while (typeId < getMinTypeIdUser());
-//		}
-//		else if (bmodel == BBinaryModel.TINY) {
-//			int _128 = (int)getMinTypeIdUser();
-//			typeId = rand.nextInt(_128) + _128;
-//		}
-		else throw new IllegalStateException();
-		
-		return typeId;
-	}
 
 }
