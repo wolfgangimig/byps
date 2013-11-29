@@ -6,8 +6,13 @@
 
 #ifdef _MSC_VER
 
-#pragma warning (disable : 4512) // Assignment operators cannot be generated due to const members in some classes.
+// Assignment operators cannot be generated due to const members in some classes.
+#pragma warning (disable : 4512) 
 
+// Two or more members have the same name. 
+// "... inherits 'byps::BStub::byps::BStub::BRemote_getTargetId' via dominance"
+// This warning is printed for BRemote_getTargetId.
+#pragma warning( disable : 4250 ) 
 
 #ifndef BSTD_SYMBOLS
 #define BSTD_SYMBOLS

@@ -2,7 +2,8 @@
 #define BBYTEORDER_H_
 
 #include "BException.h"
-#include "platform/platform-impl.h"
+
+#include "platform/platform-api.h"
 
 namespace byps {
 
