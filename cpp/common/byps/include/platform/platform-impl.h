@@ -3,10 +3,6 @@
 
 #ifdef _MSC_VER
 
-// Two or more members have the same name. 
-// This warning is printed for BRemote_getTargetId.
-#pragma warning( disable : 4250 ) 
-
 // Decorated name length exceeded, name was truncated.
 #pragma warning( disable : 4503 ) 
 
