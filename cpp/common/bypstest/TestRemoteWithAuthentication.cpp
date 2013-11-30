@@ -43,7 +43,7 @@ public:
 		return client->transport->isReloginException(ex, typeId);
 	}
     
-	virtual void getSession(PClient client, BTYPEID typeId, std::function<void (PSerializable, BException)> asyncResult) {
+    virtual void getSession(PClient , BTYPEID , std::function<void (PSerializable, BException)> asyncResult) {
 		asyncResult(sess, BException());
 	}
 

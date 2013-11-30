@@ -48,7 +48,7 @@ inline struct tm* byps_localtime(struct tm* buf, const ::std::time_t* t) {
 
 #include <stdint.h>
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 inline int16_t BSWAP2(register int16_t v) {
 	__asm__ ("xchg %%ah,%%al; "	: "=a"(v) : "0"(v) );
@@ -78,7 +78,7 @@ inline int64_t BSWAP8(register int64_t v) {
 
 #endif // __x86_64__
 
-}}}
+}
 
 #endif // BSWAP_FUNCTIONS
 

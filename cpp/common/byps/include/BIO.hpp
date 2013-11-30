@@ -74,7 +74,7 @@ BINLINE void BIO::operator&(PBytes& ptr) {
 	if (is_loading) ptr = byps_static_ptr_cast<BBytes>(pObj);
 }
  
-BINLINE PStreamRequest BIO::createStreamRequest(PContentStream inputStream) {
+BINLINE PStreamRequest BIO::createStreamRequest(PContentStream ) {
 	return PStreamRequest();
 }
 

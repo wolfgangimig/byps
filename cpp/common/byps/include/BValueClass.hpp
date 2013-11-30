@@ -6,7 +6,7 @@
 
 namespace byps {
 
-void BValueClass::serialize(BIO& ar, const BVERSION version) {
+void BValueClass::serialize(BIO& ar, const BVERSION ) {
 	ar & changedMembers;
 }
 

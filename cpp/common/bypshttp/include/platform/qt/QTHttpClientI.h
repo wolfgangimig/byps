@@ -1,3 +1,4 @@
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 #ifndef QTHTTPCLIENTI_H
 #define QTHTTPCLIENTI_H
 
@@ -5,9 +6,9 @@
 #include "Bypshttp.h"
 #include "BLogger.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http { namespace qthttp {
+namespace byps { namespace http { namespace qthttp {
 
-using namespace com::wilutions::byps;
+using namespace byps;
 
 class QTHttpRequest;
 typedef byps_ptr<QTHttpRequest> PQTHttpRequest;
@@ -122,6 +123,6 @@ private:
 };
 
 
-}}}}}
+}}}
 
 #endif // QTHTTPCLIENTI_H

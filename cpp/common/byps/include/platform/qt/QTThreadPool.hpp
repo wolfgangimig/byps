@@ -1,3 +1,4 @@
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 #ifndef QTTHREADPOOL_HPP_
 #define QTTHREADPOOL_HPP_
 
@@ -7,8 +8,7 @@
 #include "Byps.h"
 #include "QTThreadPool.h"
 
-
-namespace com { namespace wilutions { namespace byps { namespace QT {
+namespace byps { namespace QT {
 
 using namespace ::std;
 
@@ -139,16 +139,16 @@ PoolThread::PoolThread() {
 
 }
 
-}}}}
+}}
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
-BINLINE PThreadPool BThreadPool::create(void* app, int maxThreads) {
-    com::wilutions::byps::QT::PThreadPoolImpl tpool(new com::wilutions::byps::QT::BThreadPoolImpl(maxThreads));
+BINLINE PThreadPool BThreadPool::create(void* , int maxThreads) {
+    byps::QT::PThreadPoolImpl tpool(new byps::QT::BThreadPoolImpl(maxThreads));
     return tpool;
 }
 
-}}}
+}
 
 #endif // BTHREADPOOL
 

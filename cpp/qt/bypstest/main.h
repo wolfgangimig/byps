@@ -4,8 +4,8 @@
 #include <QObject>
 #include "Bypshttp.h"
 
-using namespace com::wilutions::byps;
-using namespace com::wilutions::byps::http;
+using namespace byps;
+using namespace byps::http;
 
 class Task : public QObject
 {

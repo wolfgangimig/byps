@@ -4,6 +4,7 @@
 
 #include "BBytes.h"
 #include <cstdarg>
+#include <assert.h>
 
 namespace byps {
 
@@ -24,7 +25,7 @@ void BBytes::check() {
 	int8_t* pcheck = mem + sizeof(size_t) + this->length;
 	int64_t endm = DEBUG_END_MARKER;
 	int cmp = memcmp(pcheck, &endm, sizeof(int64_t));
-	assert(cmp == 0);
+    assert(cmp == 0);
 }
 
 BINLINE PBytes BBytes::create(size_t length) {

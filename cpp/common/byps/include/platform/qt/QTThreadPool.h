@@ -1,3 +1,4 @@
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 #ifndef QTTHREADPOOLI_H
 #define QTTHREADPOOLI_H
 
@@ -5,7 +6,7 @@
 #include <QRunnable>
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps { namespace QT {
+namespace byps { namespace QT {
 
 //http://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/
 
@@ -34,6 +35,6 @@ signals:
 };
 
 
-}}}}
+}}
 
 #endif // QTTHREADPOOLI_H

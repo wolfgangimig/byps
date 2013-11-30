@@ -223,7 +223,12 @@ public:
 		PRemoteStreams remote = client->remoteStreams;
 		l_info << L"remote->setImage...";
 		remote->setImage(strm, [this, remote, nbOfBytes, &testResult](bool, BException ex) {
-	
+
+            if (ex) {
+                testResult.bex = ex;
+                return;
+            }
+
 			l_info << L"remote->setImage OK";
 
 			// read stream and compare bytes

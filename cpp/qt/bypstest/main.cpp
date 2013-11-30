@@ -18,7 +18,7 @@ void Task::run() {
     emit finished();
 }
 
-static com::wilutions::byps::BLogger g_log("main");
+static byps::BLogger g_log("main");
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &, const QString &msg)
 {

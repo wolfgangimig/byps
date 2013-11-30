@@ -1,3 +1,4 @@
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 #ifndef QTHTTPCLIENT_H
 #define QTHTTPCLIENT_H
 
@@ -13,10 +14,10 @@
 #include "Byps.h"
 #include "Bypshttp.h"
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
 PHttpClient HttpClient_create(void* app);
 
-}}}}
+}}
 
 #endif // QTHTTPCLIENT_H

@@ -25,7 +25,7 @@ BLogger ClientIFImpl::log("ClientIFImpl");
 class ClientIFImplThrowEx : public BSkeleton_ClientIF {
 public:
 	const static int code = 1111;
-	virtual int32_t incrementInt(int32_t a) {
+    virtual int32_t incrementInt(int32_t ) {
 		throw BException(code);
 	}
 };
@@ -33,7 +33,7 @@ public:
 class ClientIFImplPutStreams : public BSkeleton_ClientIF {
 	static BLogger log;
 public:
-	virtual void putStreams(const byps_ptr< std::vector< PContentStream > >& vecR, int32_t ctrl) {
+    virtual void putStreams(const byps_ptr< std::vector< PContentStream > >& vecR, int32_t ) {
 		l_info << L"putStreams(";
 		try {
 			byps_ptr< std::vector< PContentStream > > vec = TestUtilHttp::makeTestStreams();

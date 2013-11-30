@@ -156,7 +156,7 @@ public:
         return ret;
     }
 
-    virtual void getSession(PClient client, BTYPEID typeId, PAsyncResult asyncResult)
+    virtual void getSession(PClient , BTYPEID typeId, PAsyncResult asyncResult)
     {
         if (innerAuth) {
             innerAuth->getSession(this->client.lock(), typeId, asyncResult);
