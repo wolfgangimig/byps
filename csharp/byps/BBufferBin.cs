@@ -226,7 +226,8 @@ namespace byps
             short _ssuu = getShort();
 
             int year = _year;
-            int month = (_mmdd >> 8) & 0xFF;
+            int month = (_mmdd >> 8) & 0xFF;/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
             int day = _mmdd & 0xFF;
             int hour = (_hhmm >> 8) & 0xFF;
             int minute = _hhmm & 0xFF;

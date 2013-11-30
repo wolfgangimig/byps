@@ -1,5 +1,7 @@
 package byps;
 
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
 /**
  * This interface provides functions used in the test suite.
  * An object implementing this interface is available by the {@link BWire#getTestAdapter()} function.

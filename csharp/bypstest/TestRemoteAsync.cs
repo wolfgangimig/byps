@@ -1,4 +1,5 @@
-﻿using System;
+﻿/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using byps;
 using byps.test.api.remote;

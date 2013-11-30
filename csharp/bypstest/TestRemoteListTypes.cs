@@ -77,7 +77,9 @@ namespace bypstest
 	    }
 	
 	    [TestMethod]
-	    public void testRemoteListMapSetListInteger() {
+        public void testRemoteListMapSetListInteger()
+        {/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
 		    log.info("testRemoteListMapSetListInteger(");
 		
 		    ListListTypes obj = new ListListTypes();

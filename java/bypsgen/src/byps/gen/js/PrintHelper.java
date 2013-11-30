@@ -1,5 +1,5 @@
 package byps.gen.js;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;

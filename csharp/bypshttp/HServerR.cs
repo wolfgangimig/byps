@@ -106,7 +106,8 @@ namespace byps
                                 // no retry
                                 break;
 
-                            case BExceptionC.RESEND_LONG_POLL:
+                            case BExceptionC.RESEND_LONG_POLL/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+:
                                 // HWireClientR has released the expried long-poll.
                                 // Ignore the error and send a new long-poll.
                                 pthis.sendLongPoll(null);

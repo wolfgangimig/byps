@@ -1,5 +1,5 @@
 package byps.gen.c;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import byps.gen.api.SerialInfo;
 import byps.gen.utils.CodePrinter;
 import byps.gen.utils.Utils;

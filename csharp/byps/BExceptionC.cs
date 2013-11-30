@@ -98,6 +98,7 @@ namespace byps
        */
       public const int RESEND_LONG_POLL = 204;
 
+      /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
       /**
        * This code can be used, if authentication is required for the method.
        * Same as HttpURLConnection.HTTP_UNAUTHORIZED.

@@ -1,5 +1,7 @@
 package byps;
 
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
 /**
  * This class is used to convert version numbers to strings and vice versa.
  * Version numbers are used in string format e.g. at the javadoc since tags.

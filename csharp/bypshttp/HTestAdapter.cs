@@ -5,7 +5,8 @@ using System.Text;
 
 namespace byps
 {
-    public class HTestAdapter : BTestAdapter
+    public class HTestAdapter : /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+BTestAdapter
     {
         protected HWireClient wire;
 

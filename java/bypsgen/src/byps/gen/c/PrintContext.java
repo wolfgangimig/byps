@@ -1,5 +1,5 @@
 package byps.gen.c;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
