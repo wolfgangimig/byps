@@ -66,7 +66,8 @@ namespace bypstest
 		    remote.SetShort1(obj.Short1);
 		    TestUtils.assertEquals(log, "short1", obj.Short1, remote.GetShort1());
 		    remote.SetString1(obj.String1);
-		    TestUtils.assertEquals(log, "string1", obj.String1, remote.GetString1());
+            TestUtils.assertEquals(log, "string1", obj.String1, remote.GetString1());/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
             remote.SetDate1(obj.Date1);
             TestUtils.assertEquals(log, "date1", obj.Date1, remote.GetDate1());
 		

@@ -81,7 +81,8 @@ namespace bypstest
                 objR.Obj1 = remote.GetObj1();
             }
 
-            TestUtils.assertEquals(log, "SetTypes", obj, objR);
+            TestUtils.assertEq/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+uals(log, "SetTypes", obj, objR);
 		
 		    log.info(")testRemoteSetTypes");
 	    }

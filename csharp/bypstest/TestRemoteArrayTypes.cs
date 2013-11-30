@@ -162,7 +162,8 @@ namespace bypstest
 		    remote.SetShort(obj.Short4);
 		    TestUtils.assertEquals(log, "short", obj.Short4, remote.GetShort());
 		    remote.SetInt(obj.Int4);
-		    TestUtils.assertEquals(log,  "int", obj.Int4, remote.GetInt());
+            TestUtils.assertEquals(log, "int", obj.Int4, remote.GetInt());/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
 		    remote.SetLong(obj.Long4);
 		    TestUtils.assertEquals(log, "long", obj.Long4, remote.GetLong());
 		    remote.SetFloat(obj.Float4);

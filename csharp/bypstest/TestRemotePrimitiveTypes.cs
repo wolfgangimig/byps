@@ -208,7 +208,8 @@ namespace bypstest
             internalTestReadWriteDate(new DateTime(1600, 01, 01, 23, 00, 59, 000));
             internalTestReadWriteDate(new DateTime(1600, 01, 31, 23, 00, 59, 000));
             internalTestReadWriteDate(new DateTime(1600, 12, 01, 23, 00, 59, 000));
-            internalTestReadWriteDate(new DateTime(3000, 12, 01, 23, 00, 59, 000));
+            internalTestReadWriteDate(new /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+DateTime(3000, 12, 01, 23, 00, 59, 000));
         }
 
 	    void internalTestReadWriteDate(DateTime dt)
