@@ -1,5 +1,5 @@
 package byps.test.servlet;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import byps.test.api.refs.Node;
 import byps.test.api.remote.BSkeleton_RemoteReferences;
 
