@@ -1,5 +1,5 @@
 package byps;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 public class BExceptionO {
 
   public final static String formatMessage(int code, String msg, String details, Throwable cause) {

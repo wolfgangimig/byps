@@ -1,5 +1,5 @@
 package byps.http;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import javax.servlet.AsyncContext;
 import javax.servlet.AsyncListener;
 import javax.servlet.ServletRequest;

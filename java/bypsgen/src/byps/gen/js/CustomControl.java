@@ -1,5 +1,5 @@
 package byps.gen.js;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import byps.gen.api.MemberInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.utils.CodePrinter;

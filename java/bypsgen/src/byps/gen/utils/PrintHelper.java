@@ -1,5 +1,5 @@
 package byps.gen.utils;
-
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
