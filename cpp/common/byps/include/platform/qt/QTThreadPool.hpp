@@ -7,8 +7,7 @@
 #include "Byps.h"
 #include "QTThreadPool.h"
 
-
-namespace com { namespace wilutions { namespace byps { namespace QT {
+namespace byps { namespace QT {
 
 using namespace ::std;
 
@@ -139,16 +138,16 @@ PoolThread::PoolThread() {
 
 }
 
-}}}}
+}}
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
-BINLINE PThreadPool BThreadPool::create(void* app, int maxThreads) {
-    com::wilutions::byps::QT::PThreadPoolImpl tpool(new com::wilutions::byps::QT::BThreadPoolImpl(maxThreads));
+BINLINE PThreadPool BThreadPool::create(void* , int maxThreads) {
+    byps::QT::PThreadPoolImpl tpool(new byps::QT::BThreadPoolImpl(maxThreads));
     return tpool;
 }
 
-}}}
+}
 
 #endif // BTHREADPOOL
 

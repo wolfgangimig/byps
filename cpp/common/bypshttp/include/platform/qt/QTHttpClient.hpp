@@ -6,10 +6,10 @@
 #include "QTHttpClientI.h"
 #include <QStack>
 
-namespace com { namespace wilutions { namespace byps { namespace http { namespace qthttp {
+namespace byps { namespace http { namespace qthttp {
 
-using namespace com::wilutions::byps;
-using namespace com::wilutions::byps::http;
+using namespace byps;
+using namespace byps::http;
 
 #define MAX_STREAM_PART_SIZE (1000 * 1000)
 
@@ -821,7 +821,7 @@ public:
 
         }
         else {
-            // httpClient is already release. This should not happend during the HTTP request.
+            // httpClient is already released. This should not happend during the HTTP request.
             result = BVariant(BException(EX_CANCELLED, L"HTTP client has already been released."));
             internalApplyResult();
         }
@@ -1058,15 +1058,15 @@ BLogger QTHttpWorkerThread::log("QTHttpWorkerThread");
 BLogger QTHttpRequestBridge::log("QTHttpRequestBridge");
 BLogger QTHttpWorkerBridge::log("QTHttpWorkerBridge");
 
-}}}}}
+}}}
 
 
-namespace com { namespace wilutions { namespace byps { namespace http {
+namespace byps { namespace http {
 
 BINLINE PHttpClient HttpClient_create(void* app) {
-    return PHttpClient(new com::wilutions::byps::http::qthttp::QTHttpClient(app));
+    return PHttpClient(new byps::http::qthttp::QTHttpClient(app));
 }
 
-}}}}
+}}
 
 #endif // QTHTTPCLIENT_HPP

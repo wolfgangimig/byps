@@ -12,7 +12,7 @@ public:
     const BTYPEID remoteId;
     BMethodRequest(BTYPEID remoteId) : remoteId(remoteId) {}
     virtual void execute(PRemote remote, PAsyncResult methodResult) = 0;
-	virtual void setSession(PSerializable session) {}
+    virtual void setSession(PSerializable) {}
 };
 
 //template <BTYPEID _remoteId> class BMethodRequestT : public BMethodRequest {

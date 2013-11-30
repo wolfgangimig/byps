@@ -5,7 +5,7 @@
 #include <QRunnable>
 #include "Byps.h"
 
-namespace com { namespace wilutions { namespace byps { namespace QT {
+namespace byps { namespace QT {
 
 //http://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/
 
@@ -34,6 +34,6 @@ signals:
 };
 
 
-}}}}
+}}
 
 #endif // QTTHREADPOOLI_H

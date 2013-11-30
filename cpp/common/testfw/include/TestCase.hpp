@@ -26,7 +26,7 @@ void TestCase::beforeFunction(const TestCase::TestFunction& tfunc) {
 	std::cout << tfunc.name << "... ";
 }
 
-void TestCase::afterFunction(const TestCase::TestFunction& tfunc) {
+void TestCase::afterFunction(const TestCase::TestFunction& ) {
 
 }
 
@@ -78,16 +78,16 @@ void TestCase::onError(const std::exception& ex) {
 	std::cout << "ERROR: " << ex.what() << std::endl;
 }
 
-void TestCase::onError(const TestCase::TestFunction& tfunc, const std::exception& ex) {
+void TestCase::onError(const TestCase::TestFunction& , const std::exception& ex) {
 	std::cout << "ERROR: " << ex.what() << std::endl;
 }
 
-void TestCase::onFailed(const TestCase::TestFunction& tfunc, const AssertException& ex) {
+void TestCase::onFailed(const TestCase::TestFunction& , const AssertException& ex) {
 	std::cout << "FAILED" << std::endl;
 	std::wcout << ex;
 }
 
-void TestCase::onSuccess(const TestCase::TestFunction& tfunc) {
+void TestCase::onSuccess(const TestCase::TestFunction& ) {
 	std::cout << "OK" << std::endl;
 }
 

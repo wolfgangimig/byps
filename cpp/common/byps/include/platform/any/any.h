@@ -38,7 +38,7 @@
 #ifndef BSWAP_FUNCTIONS
 #define BSWAP_FUNCTIONS
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 inline int16_t BSWAP2(register int16_t v) {
 	return ((v & 0xFF) << 8) | ((v >> 8) & 0xFF);
@@ -62,7 +62,7 @@ inline int64_t BSWAP8(register int64_t v) {
 			((v & 0xFF00000000000000LL) >> 56);
 }
 
-}}}
+}
 
 #endif // BSWAP_FUNCTIONS
 
@@ -118,7 +118,7 @@ inline double doubleFromIEEE(int64_t v) {
 #ifndef BSERIALIZE_UNALIGNED_FUNCTIONS
 #define BSERIALIZE_UNALIGNED_FUNCTIONS
 
-namespace com { namespace wilutions { namespace byps {
+namespace byps {
 
 template<typename _int163264> void writeUnalignedInt163264(void* p, _int163264& v) {
 	memcpy(p, &v, sizeof(_int163264));
@@ -127,7 +127,7 @@ template<typename _int163264> void readUnalignedInt163264(void* p, _int163264& v
 	memcpy(&v, p, sizeof(_int163264));
 }
 
-}}}
+}
 
 #endif // BSERIALIZE_UNALIGNED_FUNCTIONS
 

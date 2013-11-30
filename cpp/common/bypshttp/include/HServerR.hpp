@@ -19,6 +19,7 @@ class HServerR_SendLongPoll : public byps_enable_shared_from_this<HServerR_SendL
 	bool isDone;
 	int32_t sleepMillisBeforeRetry;
 
+
 	PLostConnectionHandler lostConnectionHandler;
 	friend class HServerR;
 
@@ -28,9 +29,9 @@ public:
 	HServerR_SendLongPoll() 
 		: isDone(false)
 		, sleepMillisBeforeRetry(60 * 1000)
-		, nbOfActiveLongPolls(0)
-		, lostConnectionHandler(NULL) {
-	}
+        , lostConnectionHandler(NULL)
+        , nbOfActiveLongPolls(0) {
+    }
 
 	bool waitBeforeRetry() {
 		byps_unique_lock lock(mutex);
