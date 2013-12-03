@@ -176,15 +176,13 @@ public:
 				throw HException(L"WinHttpSendRequest", ERROR_INVALID_PARAMETER);
 			}
 		}
-
-		if (contentLength != 0) {
-			if (contentType.size()) {
-				wssHeaders << L"Content-Type: " << contentType;
-				wssHeaders << L"\r\n";
-			}
-		}
 		else {
 			totalLength = 0;
+		}
+
+		if (contentType.size()) {
+			wssHeaders << L"Content-Type: " << contentType;
+			wssHeaders << L"\r\n";
 		}
 
 		headers = wssHeaders.str();

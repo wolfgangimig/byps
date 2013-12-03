@@ -30,7 +30,7 @@ namespace byps.test.api.srvr
 			}
 			catch (NotImplementedException) { __byps__callAsync = true; }
 			catch (Exception e) { __byps__ex = e; }
-			if (callAsync) try {
+			if (__byps__callAsync) try {
 				__byps__ret = await IncrementIntAsync(a);
 			}
 			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
@@ -53,7 +53,7 @@ namespace byps.test.api.srvr
 			}
 			catch (NotImplementedException) { __byps__callAsync = true; }
 			catch (Exception e) { __byps__ex = e; }
-			if (callAsync) try {
+			if (__byps__callAsync) try {
 				__byps__ret = await GetStreamsAsync(ctrl);
 			}
 			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
@@ -76,7 +76,7 @@ namespace byps.test.api.srvr
 			}
 			catch (NotImplementedException) { __byps__callAsync = true; }
 			catch (Exception e) { __byps__ex = e; }
-			if (callAsync) try {
+			if (__byps__callAsync) try {
 				await PutStreamsAsync(strm, ctrl);
 			}
 			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }
@@ -99,7 +99,7 @@ namespace byps.test.api.srvr
 			}
 			catch (NotImplementedException) { __byps__callAsync = true; }
 			catch (Exception e) { __byps__ex = e; }
-			if (callAsync) try {
+			if (__byps__callAsync) try {
 				__byps__ret = await SendChatAsync(cs);
 			}
 			catch (NotImplementedException) { __byps__ex = new BException(BExceptionC.UNSUPPORTED_METHOD, ""); }

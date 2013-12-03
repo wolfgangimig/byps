@@ -1,4 +1,5 @@
-﻿using System;
+﻿/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using byps;
 using byps.test.api;
@@ -81,8 +82,7 @@ namespace bypstest
                 objR.Obj1 = remote.GetObj1();
             }
 
-            TestUtils.assertEq/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-uals(log, "SetTypes", obj, objR);
+            TestUtils.assertEquals(log, "SetTypes", obj, objR);
 		
 		    log.info(")testRemoteSetTypes");
 	    }

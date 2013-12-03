@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="build" name="Create bypshttp.jar">
+    <target name="build">
+        <jar destfile="d:/java/lib/byps/bypshttp.jar">
+            <fileset dir="D:/git/byps/java/bypshttp/bin"/>
+            <fileset dir="D:/git/byps/java/byps/bin"/>
+            <fileset dir="D:/git/byps/java/byps-api/bin"/>
+            <fileset dir="D:/git/byps/java/byps-override/bin"/>
+        </jar>
+        <copy file="D:/java/lib/apache-log4j-1.2.15/log4j-1.2.15.jar" todir="d:/java/lib/byps"/>
+        <copy file="D:/java/lib/commons-logging-1.1.1/commons-logging-1.1.1.jar" todir="d:/java/lib/byps"/>
+    </target>
+</project>

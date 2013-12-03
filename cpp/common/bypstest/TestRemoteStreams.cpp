@@ -304,9 +304,9 @@ public:
 	}
 
     virtual void init() {
-//        ADD_TEST(testRemoteStreamsOneFileStream);
-//        ADD_TEST(testRemoteStreamsContentLength);
-//        ADD_TEST(testRemoteStreamsChunked);
+        ADD_TEST(testRemoteStreamsOneFileStream);
+        ADD_TEST(testRemoteStreamsContentLength);
+        ADD_TEST(testRemoteStreamsChunked);
         ADD_TEST(testRemoteStreamAsync);
 
 #ifdef TEST_LARGE_STREAMS

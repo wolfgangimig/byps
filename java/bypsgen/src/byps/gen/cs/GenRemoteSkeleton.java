@@ -120,7 +120,7 @@ class GenRemoteSkeleton {
 		pr.println("catch (Exception e) { __byps__ex = e; }");
 		
 		if (pctxt.isAwaitSupported()) {
-		  pr.println("if (callAsync) try {");
+		  pr.println("if (__byps__callAsync) try {");
 		  
 		  pr.beginBlock();
 		  

@@ -29,31 +29,25 @@ BINLINE BTransport::~BTransport() {
 }
 
 BINLINE POutput BTransport::getOutput() {
-    byps_unique_lock lock(mtx);
-    if (!protocol) throw BException(EX_INTERNAL, L"No protocol negotiated.");
-	
+
 	PTransport pthis = shared_from_this();
 	if (!pthis) throw BException(EX_CANCELLED);
 
-    return protocol->getOutput(pthis, BMessageHeader());
+    return getProtocol()->getOutput(pthis, BMessageHeader());
 }
 
 BINLINE POutput BTransport::getResponse(BMessageHeader& requestHeader) {
-    byps_unique_lock lock(mtx);
-    if (!protocol) throw BException(EX_INTERNAL, L"No protocol negotiated.");
 
 	PTransport pthis = shared_from_this();
 	if (!pthis) throw BException(EX_CANCELLED);
 
 	BMessageHeader responseHeader(requestHeader);
 	responseHeader.flags |= BHEADER_FLAG_RESPONSE;
-    return protocol->getOutput(pthis, responseHeader);
+    return getProtocol()->getOutput(pthis, responseHeader);
 }
 
 BINLINE PInput BTransport::getInput(BMessageHeader& header, PBytes& buf) {
-    byps_unique_lock lock(mtx);
-    if (!protocol) throw BException(EX_INTERNAL, L"No protocol negotiated.");
-    return protocol->getInput(shared_from_this(), header, buf);
+    return getProtocol()->getInput(shared_from_this(), header, buf);
 }
 
 BINLINE BTargetId BTransport::getTargetId() {
@@ -358,7 +352,7 @@ BINLINE void BTransport::assignSessionThenSendMethod(PSerializable requestObject
 BINLINE BTYPEID BTransport::getObjectTypeId(PSerializable ser)
 {
 	BTYPEID typeId = 0;
-	protocol->getRegistry()->getSerializer(typeid(*ser.get()), typeId);
+	getProtocol()->getRegistry()->getSerializer(typeid(*ser.get()), typeId);
 	return typeId;
 }
 

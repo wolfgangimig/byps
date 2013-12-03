@@ -110,29 +110,32 @@ public class GeneratorJS implements Generator {
 	}
 
 	private void compressJavaScript(File fileApiJS) throws BException {
-		
-		String fname = fileApiJS.getName();
-		int p = fname.lastIndexOf('.');
-		if (p >= 0) fname = fname.substring(0, p);
 
-		File fileApiJSmin = new File(fileApiJS.getParentFile(), fname + "-min.js");
-
-		String[] args = new String[] {
-				// "--nomunge",
-				"--preserve-semi", 
-				"--charset", 
-				"UTF-8", 
-				"--line-break", "1000", 
-				"-o", fileApiJSmin.getAbsolutePath(),
-				fileApiJS.getAbsolutePath() };
-
-		try {
-			com.yahoo.platform.yui.compressor.YUICompressor.main(args);
-		} catch (Exception e) {
-			throw new BException(BExceptionC.GENERATOR_EXCEPTION, "Cannot compress JS file", e);
-		}
-		
-		log.info("Created compressed JSON API file. Original file #bytes=" + fileApiJS.length() + ", compressed file #bytes=" + fileApiJSmin.length());
+	  // Optional: compress JS file using yui-compressor 
+	  // https://github.com/yui/yuicompressor/releases
+	  
+//		String fname = fileApiJS.getName();
+//		int p = fname.lastIndexOf('.');
+//		if (p >= 0) fname = fname.substring(0, p);
+//
+//		File fileApiJSmin = new File(fileApiJS.getParentFile(), fname + "-min.js");
+//
+//		String[] args = new String[] {
+//				// "--nomunge",
+//				"--preserve-semi", 
+//				"--charset", 
+//				"UTF-8", 
+//				"--line-break", "1000", 
+//				"-o", fileApiJSmin.getAbsolutePath(),
+//				fileApiJS.getAbsolutePath() };
+//
+//		try {
+//			com.yahoo.platform.yui.compressor.YUICompressor.main(args);
+//		} catch (Exception e) {
+//			throw new BException(BExceptionC.GENERATOR_EXCEPTION, "Cannot compress JS file", e);
+//		}
+//		
+//		log.info("Created compressed JSON API file. Original file #bytes=" + fileApiJS.length() + ", compressed file #bytes=" + fileApiJSmin.length());
 	}
 	
 	private PrintContext pctxt;

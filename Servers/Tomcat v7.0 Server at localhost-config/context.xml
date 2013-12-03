@@ -30,7 +30,7 @@
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
 
-	<Environment type="java.lang.String" name="bypshttp.log.level" value="debug" />
+	<Environment type="java.lang.String" name="bypshttp.log.level" value="warn" />
 	<Environment type="java.lang.String" name="bypshttp.log.file" value="d:/temp/log/server11.log" />
  	<Environment type="java.lang.String" name="bypshttp.serverId" value="11" />
  	<Environment type="java.lang.String" name="bypshttp.serverIds" value="11,22" />
