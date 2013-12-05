@@ -531,7 +531,16 @@ public class BDoclet extends Doclet {
     props.put("log4j.appender.stdout", "org.apache.log4j.ConsoleAppender");
     props.put("log4j.appender.stdout.layout", "org.apache.log4j.PatternLayout");
     props.put("log4j.appender.stdout.layout.ConversionPattern", "%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
-
+//
+    
+//    props.put("log4j.rootLogger", "debug, FI");
+//    props.put("log4j.appender.FI", "org.apache.log4j.DailyRollingFileAppender");
+//    props.put("log4j.appender.FI.File", "D:/temp/log/bypsgen.log");
+//    props.put("log4j.appender.FI.DatePattern", "'.'yyyy-MM-dd'.txt'");
+//    props.put("log4j.appender.FI.layout", "org.apache.log4j.PatternLayout");
+//    props.put("log4j.appender.FI.layout.ConversionPattern", "%d{ABSOLUTE} %1x %-5p (%F:%L) - %m%n");
+//    props.put("log4j.appender.FI.append", "true");
+    
     PropertyConfigurator.configure(props);
   }
 

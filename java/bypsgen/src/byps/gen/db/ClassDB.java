@@ -236,7 +236,7 @@ public class ClassDB {
     for (RemoteInfo rinfo : remotes.values()) {
       String stubQname = makeStubName(rinfo.qname);
       SerialInfo sinfo = serials.get(stubQname);
-      rinfo.typeId = sinfo.typeId = getOrCreateTypeId(rinfo);
+      rinfo.typeId = sinfo.typeId;
     }
 
     log.debug(")assignTypeIds");
@@ -487,6 +487,7 @@ public class ClassDB {
   }
 
   private int makeTypeIdFromNameHash(TypeInfo tinfo) {
+    log.info("make typeId from hash for " + tinfo);
     String s = tinfo.toString();
     int retries = 1000;
     int typeId = 0;
@@ -499,6 +500,7 @@ public class ClassDB {
       if (!found) break;
 
       s += "X";
+      log.info("retry make typeId from hash for " + s);
     }
 
     return typeId;
@@ -525,7 +527,6 @@ public class ClassDB {
       typeId = (int) (longTypeId & typeIdMask);
 
       if (typeId == 0) {
-        log.info("make typeId from hash for " + tinfo);
         typeId = makeTypeIdFromNameHash(tinfo);
       }
       else if (typeId < registry.getMinTypeIdUser()) {
