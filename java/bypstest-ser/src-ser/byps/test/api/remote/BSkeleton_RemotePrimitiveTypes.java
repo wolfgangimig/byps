@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemotePrimitiveTypesAsync {
 	
-	public final static long serialVersionUID = 1391241180L;
+	public final static long serialVersionUID = 1178916877L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public void voidFunctionVoid() throws RemoteException {

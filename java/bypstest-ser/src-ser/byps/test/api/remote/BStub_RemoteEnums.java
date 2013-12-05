@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemoteEnums extends BStub implements RemoteEnumsAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1222673152L;
+	public final static long serialVersionUID = 485761455L;
 	
 	public BStub_RemoteEnums(final BTransport transport) {
 		super(transport);		

@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_BioLemonService extends BStub implements BioLemonServiceAuth, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 501819909L;
+	public final static long serialVersionUID = 474058508L;
 	
 	public BStub_BioLemonService(final BTransport transport) {
 		super(transport);		

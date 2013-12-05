@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteSetTypes extends BSkeleton implements RemoteSetTypesAsync {
 	
-	public final static long serialVersionUID = 1781251319L;
+	public final static long serialVersionUID = 1900796440L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Set<java.lang.Boolean> getBoolean1() throws RemoteException {

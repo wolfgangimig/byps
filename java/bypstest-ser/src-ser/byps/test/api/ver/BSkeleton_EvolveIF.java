@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_EvolveIF extends BSkeleton implements EvolveIFAsync {
 	
-	public final static long serialVersionUID = 564008001L;
+	public final static long serialVersionUID = 15377840L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public void setEvolve(Evolve obj) throws RemoteException {

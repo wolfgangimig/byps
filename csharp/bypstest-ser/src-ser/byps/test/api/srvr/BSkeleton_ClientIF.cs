@@ -16,7 +16,7 @@ namespace byps.test.api.srvr
 	/// </remark>
 	public class BSkeleton_ClientIF : BSkeleton, ClientIF {	
 		
-		public readonly static long serialVersionUID = 955752991L;
+		public readonly static long serialVersionUID = 2049072174L;
 		
 		public virtual int IncrementInt(int a) {
 			throw new NotImplementedException();

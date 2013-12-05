@@ -18,7 +18,7 @@ public final class BRequest_RemoteStreams_setImages extends BMethodRequest imple
 	
 	public final static long serialVersionUID = 2126615710L;
 	
-	public int getRemoteId() { return 2123238175; }
+	public int getRemoteId() { return 1043578866; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

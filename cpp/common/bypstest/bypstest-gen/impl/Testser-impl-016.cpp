@@ -113,7 +113,7 @@ void BStub_ClientIF::sendChat(const PChatStructure& cs, ::std::function< void (P
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_955752991(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_2049072174(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -247,7 +247,7 @@ void BStub_ServerIF::callClientParallel(int32_t v, ::std::function< void (int32_
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1426448279(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1775199834(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -333,7 +333,7 @@ void BStub_EvolveIF::sendEvolveToClient(::std::function< void (bool, BException 
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_564008001(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_15377840(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -470,11 +470,11 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::inherit::BRequest_FruitService_squeeze), byps::test::api::BSerializer_1290167289, 1290167289);
 	registerClass(typeid(byps::test::api::inherit::BRequest_LemonService_pick), byps::test::api::BSerializer_1022088379, 1022088379);
 	registerClass(typeid(byps::test::api::inherit::BRequest_PlantService_grow), byps::test::api::BSerializer_695716901, 695716901);
-	registerClass(typeid(byps::test::api::inherit::BStub_BioFruitService), byps::test::api::BSerializer_612235846, 612235846);
-	registerClass(typeid(byps::test::api::inherit::BStub_BioLemonService), byps::test::api::BSerializer_501819909, 501819909);
-	registerClass(typeid(byps::test::api::inherit::BStub_FruitService), byps::test::api::BSerializer_937293552, 937293552);
-	registerClass(typeid(byps::test::api::inherit::BStub_LemonService), byps::test::api::BSerializer_826877615, 826877615);
-	registerClass(typeid(byps::test::api::inherit::BStub_PlantService), byps::test::api::BSerializer_1733272281, 1733272281);
+	registerClass(typeid(byps::test::api::inherit::BStub_BioFruitService), byps::test::api::BSerializer_363642571, 363642571);
+	registerClass(typeid(byps::test::api::inherit::BStub_BioLemonService), byps::test::api::BSerializer_474058508, 474058508);
+	registerClass(typeid(byps::test::api::inherit::BStub_FruitService), byps::test::api::BSerializer_715959905, 715959905);
+	registerClass(typeid(byps::test::api::inherit::BStub_LemonService), byps::test::api::BSerializer_605543968, 605543968);
+	registerClass(typeid(byps::test::api::inherit::BStub_PlantService), byps::test::api::BSerializer_1954605928, 1954605928);
 	registerClass(typeid(byps::test::api::inherit::Class1), byps::test::api::BSerializer_6001, 6001);
 	registerClass(typeid(byps::test::api::inherit::Class1Collections), byps::test::api::BSerializer_6004, 6004);
 	registerClass(typeid(byps::test::api::inherit::Class2), byps::test::api::BSerializer_6002, 6002);
@@ -699,20 +699,20 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::remote::BRequest_RemoteWithAuthentication_login), byps::test::api::BSerializer_134687724, 134687724);
 	registerClass(typeid(byps::test::api::remote::BRequest_RemoteWithAuthentication_setReloginCount), byps::test::api::BSerializer_802968058, 802968058);
 	registerClass(typeid(byps::test::api::remote::BRequest_RemoteWithAuthentication_setUseAuthentication), byps::test::api::BSerializer_946544530, 946544530);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteArrayTypes1dim), byps::test::api::BSerializer_1176140631, 1176140631);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteArrayTypes23), byps::test::api::BSerializer_964138163, 964138163);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteArrayTypes4dim), byps::test::api::BSerializer_1176051258, 1176051258);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteConstants), byps::test::api::BSerializer_429088323, 429088323);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteEnums), byps::test::api::BSerializer_1222673152, 1222673152);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteInlineInstance), byps::test::api::BSerializer_355071648, 355071648);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteListTypes), byps::test::api::BSerializer_1240892695, 1240892695);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteMapTypes), byps::test::api::BSerializer_1277224527, 1277224527);
-	registerClass(typeid(byps::test::api::remote::BStub_RemotePrimitiveTypes), byps::test::api::BSerializer_1391241180, 1391241180);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteReferences), byps::test::api::BSerializer_1173792730, 1173792730);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteServerCtrl), byps::test::api::BSerializer_2037577312, 2037577312);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteSetTypes), byps::test::api::BSerializer_1781251319, 1781251319);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteStreams), byps::test::api::BSerializer_2123238175, 2123238175);
-	registerClass(typeid(byps::test::api::remote::BStub_RemoteWithAuthentication), byps::test::api::BSerializer_1532028880, 1532028880);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteArrayTypes1dim), byps::test::api::BSerializer_963816328, 963816328);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteArrayTypes23), byps::test::api::BSerializer_769717182, 769717182);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteArrayTypes4dim), byps::test::api::BSerializer_963726955, 963726955);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteConstants), byps::test::api::BSerializer_2045242510, 2045242510);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteEnums), byps::test::api::BSerializer_485761455, 485761455);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteInlineInstance), byps::test::api::BSerializer_567395951, 567395951);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteListTypes), byps::test::api::BSerializer_1233438138, 1233438138);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteMapTypes), byps::test::api::BSerializer_664304990, 664304990);
+	registerClass(typeid(byps::test::api::remote::BStub_RemotePrimitiveTypes), byps::test::api::BSerializer_1178916877, 1178916877);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteReferences), byps::test::api::BSerializer_568637225, 568637225);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteServerCtrl), byps::test::api::BSerializer_1652234479, 1652234479);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteSetTypes), byps::test::api::BSerializer_1900796440, 1900796440);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteStreams), byps::test::api::BSerializer_1043578866, 1043578866);
+	registerClass(typeid(byps::test::api::remote::BStub_RemoteWithAuthentication), byps::test::api::BSerializer_1983670399, 1983670399);
 	registerClass(typeid(byps::test::api::set::SetTypes), byps::test::api::BSerializer_5001, 5001);
 	registerClass(typeid(byps::test::api::srvr::BRequest_ClientIF_getStreams), byps::test::api::BSerializer_1654980071, 1654980071);
 	registerClass(typeid(byps::test::api::srvr::BRequest_ClientIF_incrementInt), byps::test::api::BSerializer_1685952420, 1685952420);
@@ -727,8 +727,8 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::srvr::BRequest_ServerIF_putStreamsOnClient), byps::test::api::BSerializer_1934886286, 1934886286);
 	registerClass(typeid(byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap), byps::test::api::BSerializer_1533268444, 1533268444);
 	registerClass(typeid(byps::test::api::srvr::BRequest_ServerIF_setPartner), byps::test::api::BSerializer_1332497686, 1332497686);
-	registerClass(typeid(byps::test::api::srvr::BStub_ClientIF), byps::test::api::BSerializer_955752991, 955752991);
-	registerClass(typeid(byps::test::api::srvr::BStub_ServerIF), byps::test::api::BSerializer_1426448279, 1426448279);
+	registerClass(typeid(byps::test::api::srvr::BStub_ClientIF), byps::test::api::BSerializer_2049072174, 2049072174);
+	registerClass(typeid(byps::test::api::srvr::BStub_ServerIF), byps::test::api::BSerializer_1775199834, 1775199834);
 	registerClass(typeid(byps::test::api::srvr::ChatStructure), byps::test::api::BSerializer_7007, 7007);
 	registerClass(typeid(byps::test::api::strm::Stream1), byps::test::api::BSerializer_1541129345, 1541129345);
 	registerClass(typeid(byps::test::api::ver::BRequest_EvolveIF_getClient), byps::test::api::BSerializer_1212621223, 1212621223);
@@ -736,7 +736,7 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient), byps::test::api::BSerializer_714115141, 714115141);
 	registerClass(typeid(byps::test::api::ver::BRequest_EvolveIF_setClient), byps::test::api::BSerializer_998004147, 998004147);
 	registerClass(typeid(byps::test::api::ver::BRequest_EvolveIF_setEvolve), byps::test::api::BSerializer_1064683365, 1064683365);
-	registerClass(typeid(byps::test::api::ver::BStub_EvolveIF), byps::test::api::BSerializer_564008001, 564008001);
+	registerClass(typeid(byps::test::api::ver::BStub_EvolveIF), byps::test::api::BSerializer_15377840, 15377840);
 	registerClass(typeid(byps::test::api::ver::Evolve), byps::test::api::BSerializer_1391985860, 1391985860);
 	registerClass(typeid(byps::test::api::ver::Evolve2), byps::test::api::BSerializer_573592593, 573592593);
 	registerClass(typeid(BBytes), byps::test::api::BSerializer_1374008726, 1374008726);

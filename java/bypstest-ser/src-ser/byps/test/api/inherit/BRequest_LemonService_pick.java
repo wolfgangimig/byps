@@ -18,7 +18,7 @@ public final class BRequest_LemonService_pick extends BMethodRequest implements 
 	
 	public final static long serialVersionUID = 1022088379L;
 	
-	public int getRemoteId() { return 826877615; }
+	public int getRemoteId() { return 605543968; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

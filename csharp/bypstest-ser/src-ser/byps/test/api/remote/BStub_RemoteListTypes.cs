@@ -8,7 +8,7 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteListTypes : BStub, RemoteListTypes, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1240892695L;
+		public readonly static long serialVersionUID = 1233438138L;
 		
 		public BStub_RemoteListTypes(BTransport transport)
 			: base(transport) {}			

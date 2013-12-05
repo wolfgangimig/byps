@@ -9,12 +9,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteStreams_setImages::BRequest_RemoteStreams_setImages() : BMethodRequest(2123238175) {
+BRequest_RemoteStreams_setImages::BRequest_RemoteStreams_setImages() : BMethodRequest(1043578866) {
 	doNotReadStreamAtKey = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteStreams_setImages::BRequest_RemoteStreams_setImages(const byps_ptr< ::std::map< int32_t , PContentStream > >& istrms, int32_t doNotReadStreamAtKey)
-	: BMethodRequest(2123238175) 
+	: BMethodRequest(1043578866) 
 	, istrms(istrms)
 	, doNotReadStreamAtKey(doNotReadStreamAtKey)
 	{}
@@ -56,7 +56,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteStreams_throwLastException::BRequest_RemoteStreams_throwLastException() : BMethodRequest(2123238175) {
+BRequest_RemoteStreams_throwLastException::BRequest_RemoteStreams_throwLastException() : BMethodRequest(1043578866) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::remote::BRequest_RemoteStreams_throwLastException::serialize(BIO& ar, const BVERSION version) {
@@ -94,12 +94,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteWithAuthentication_doit::BRequest_RemoteWithAuthentication_doit() : BMethodRequest(1532028880) {
+BRequest_RemoteWithAuthentication_doit::BRequest_RemoteWithAuthentication_doit() : BMethodRequest(1983670399) {
 	value = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteWithAuthentication_doit::BRequest_RemoteWithAuthentication_doit(int32_t value)
-	: BMethodRequest(1532028880) 
+	: BMethodRequest(1983670399) 
 	, value(value)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -145,7 +145,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteWithAuthentication_expire::BRequest_RemoteWithAuthentication_expire() : BMethodRequest(1532028880) {
+BRequest_RemoteWithAuthentication_expire::BRequest_RemoteWithAuthentication_expire() : BMethodRequest(1983670399) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::remote::BRequest_RemoteWithAuthentication_expire::serialize(BIO& ar, const BVERSION version) {
@@ -189,11 +189,11 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteWithAuthentication_login::BRequest_RemoteWithAuthentication_login() : BMethodRequest(1532028880) {
+BRequest_RemoteWithAuthentication_login::BRequest_RemoteWithAuthentication_login() : BMethodRequest(1983670399) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteWithAuthentication_login::BRequest_RemoteWithAuthentication_login(const ::std::wstring& userName, const ::std::wstring& userPwd)
-	: BMethodRequest(1532028880) 
+	: BMethodRequest(1983670399) 
 	, userName(userName)
 	, userPwd(userPwd)
 	{}
@@ -241,12 +241,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteWithAuthentication_setReloginCount::BRequest_RemoteWithAuthentication_setReloginCount() : BMethodRequest(1532028880) {
+BRequest_RemoteWithAuthentication_setReloginCount::BRequest_RemoteWithAuthentication_setReloginCount() : BMethodRequest(1983670399) {
 	count = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteWithAuthentication_setReloginCount::BRequest_RemoteWithAuthentication_setReloginCount(int32_t count)
-	: BMethodRequest(1532028880) 
+	: BMethodRequest(1983670399) 
 	, count(count)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -286,12 +286,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteWithAuthentication_setUseAuthentication::BRequest_RemoteWithAuthentication_setUseAuthentication() : BMethodRequest(1532028880) {
+BRequest_RemoteWithAuthentication_setUseAuthentication::BRequest_RemoteWithAuthentication_setUseAuthentication() : BMethodRequest(1983670399) {
 	useAuth = false;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteWithAuthentication_setUseAuthentication::BRequest_RemoteWithAuthentication_setUseAuthentication(bool useAuth)
-	: BMethodRequest(1532028880) 
+	: BMethodRequest(1983670399) 
 	, useAuth(useAuth)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -388,12 +388,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ClientIF_getStreams::BRequest_ClientIF_getStreams() : BMethodRequest(955752991) {
+BRequest_ClientIF_getStreams::BRequest_ClientIF_getStreams() : BMethodRequest(2049072174) {
 	ctrl = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ClientIF_getStreams::BRequest_ClientIF_getStreams(int32_t ctrl)
-	: BMethodRequest(955752991) 
+	: BMethodRequest(2049072174) 
 	, ctrl(ctrl)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -433,12 +433,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ClientIF_incrementInt::BRequest_ClientIF_incrementInt() : BMethodRequest(955752991) {
+BRequest_ClientIF_incrementInt::BRequest_ClientIF_incrementInt() : BMethodRequest(2049072174) {
 	a = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ClientIF_incrementInt::BRequest_ClientIF_incrementInt(int32_t a)
-	: BMethodRequest(955752991) 
+	: BMethodRequest(2049072174) 
 	, a(a)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -478,12 +478,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ClientIF_putStreams::BRequest_ClientIF_putStreams() : BMethodRequest(955752991) {
+BRequest_ClientIF_putStreams::BRequest_ClientIF_putStreams() : BMethodRequest(2049072174) {
 	ctrl = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ClientIF_putStreams::BRequest_ClientIF_putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl)
-	: BMethodRequest(955752991) 
+	: BMethodRequest(2049072174) 
 	, strm(strm)
 	, ctrl(ctrl)
 	{}
@@ -525,11 +525,11 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ClientIF_sendChat::BRequest_ClientIF_sendChat() : BMethodRequest(955752991) {
+BRequest_ClientIF_sendChat::BRequest_ClientIF_sendChat() : BMethodRequest(2049072174) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ClientIF_sendChat::BRequest_ClientIF_sendChat(const PChatStructure& cs)
-	: BMethodRequest(955752991) 
+	: BMethodRequest(2049072174) 
 	, cs(cs)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -569,12 +569,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_callClientIncrementInt::BRequest_ServerIF_callClientIncrementInt() : BMethodRequest(1426448279) {
+BRequest_ServerIF_callClientIncrementInt::BRequest_ServerIF_callClientIncrementInt() : BMethodRequest(1775199834) {
 	v = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ServerIF_callClientIncrementInt::BRequest_ServerIF_callClientIncrementInt(int32_t v)
-	: BMethodRequest(1426448279) 
+	: BMethodRequest(1775199834) 
 	, v(v)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -614,12 +614,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_callClientParallel::BRequest_ServerIF_callClientParallel() : BMethodRequest(1426448279) {
+BRequest_ServerIF_callClientParallel::BRequest_ServerIF_callClientParallel() : BMethodRequest(1775199834) {
 	v = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ServerIF_callClientParallel::BRequest_ServerIF_callClientParallel(int32_t v)
-	: BMethodRequest(1426448279) 
+	: BMethodRequest(1775199834) 
 	, v(v)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -659,12 +659,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_getClient::BRequest_ServerIF_getClient() : BMethodRequest(1426448279) {
+BRequest_ServerIF_getClient::BRequest_ServerIF_getClient() : BMethodRequest(1775199834) {
 	id = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ServerIF_getClient::BRequest_ServerIF_getClient(int32_t id)
-	: BMethodRequest(1426448279) 
+	: BMethodRequest(1775199834) 
 	, id(id)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -704,7 +704,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_getClientIds::BRequest_ServerIF_getClientIds() : BMethodRequest(1426448279) {
+BRequest_ServerIF_getClientIds::BRequest_ServerIF_getClientIds() : BMethodRequest(1775199834) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::srvr::BRequest_ServerIF_getClientIds::serialize(BIO& ar, const BVERSION version) {
@@ -742,7 +742,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_getPartner::BRequest_ServerIF_getPartner() : BMethodRequest(1426448279) {
+BRequest_ServerIF_getPartner::BRequest_ServerIF_getPartner() : BMethodRequest(1775199834) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::srvr::BRequest_ServerIF_getPartner::serialize(BIO& ar, const BVERSION version) {
@@ -780,7 +780,7 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_getStreamsFromClient::BRequest_ServerIF_getStreamsFromClient() : BMethodRequest(1426448279) {
+BRequest_ServerIF_getStreamsFromClient::BRequest_ServerIF_getStreamsFromClient() : BMethodRequest(1775199834) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::serialize(BIO& ar, const BVERSION version) {
@@ -818,11 +818,11 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_putStreamsOnClient::BRequest_ServerIF_putStreamsOnClient() : BMethodRequest(1426448279) {
+BRequest_ServerIF_putStreamsOnClient::BRequest_ServerIF_putStreamsOnClient() : BMethodRequest(1775199834) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ServerIF_putStreamsOnClient::BRequest_ServerIF_putStreamsOnClient(const byps_ptr< ::std::vector< PContentStream > >& streams)
-	: BMethodRequest(1426448279) 
+	: BMethodRequest(1775199834) 
 	, streams(streams)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -862,12 +862,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_registerWithClientMap::BRequest_ServerIF_registerWithClientMap() : BMethodRequest(1426448279) {
+BRequest_ServerIF_registerWithClientMap::BRequest_ServerIF_registerWithClientMap() : BMethodRequest(1775199834) {
 	id = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ServerIF_registerWithClientMap::BRequest_ServerIF_registerWithClientMap(int32_t id)
-	: BMethodRequest(1426448279) 
+	: BMethodRequest(1775199834) 
 	, id(id)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -907,11 +907,11 @@ namespace byps { namespace test { namespace api { namespace srvr {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ServerIF_setPartner::BRequest_ServerIF_setPartner() : BMethodRequest(1426448279) {
+BRequest_ServerIF_setPartner::BRequest_ServerIF_setPartner() : BMethodRequest(1775199834) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::srvr::BRequest_ServerIF_setPartner::BRequest_ServerIF_setPartner(const PClientIF& client)
-	: BMethodRequest(1426448279) 
+	: BMethodRequest(1775199834) 
 	, client(client)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -1036,7 +1036,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_EvolveIF_getClient::BRequest_EvolveIF_getClient() : BMethodRequest(564008001) {
+BRequest_EvolveIF_getClient::BRequest_EvolveIF_getClient() : BMethodRequest(15377840) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::ver::BRequest_EvolveIF_getClient::serialize(BIO& ar, const BVERSION version) {
@@ -1074,7 +1074,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_EvolveIF_getEvolve::BRequest_EvolveIF_getEvolve() : BMethodRequest(564008001) {
+BRequest_EvolveIF_getEvolve::BRequest_EvolveIF_getEvolve() : BMethodRequest(15377840) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::ver::BRequest_EvolveIF_getEvolve::serialize(BIO& ar, const BVERSION version) {
@@ -1112,7 +1112,7 @@ namespace byps { namespace test { namespace api { namespace ver {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_EvolveIF_sendEvolveToClient::BRequest_EvolveIF_sendEvolveToClient() : BMethodRequest(564008001) {
+BRequest_EvolveIF_sendEvolveToClient::BRequest_EvolveIF_sendEvolveToClient() : BMethodRequest(15377840) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::ver::BRequest_EvolveIF_sendEvolveToClient::serialize(BIO& ar, const BVERSION version) {
@@ -1150,11 +1150,11 @@ namespace byps { namespace test { namespace api { namespace ver {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_EvolveIF_setClient::BRequest_EvolveIF_setClient() : BMethodRequest(564008001) {
+BRequest_EvolveIF_setClient::BRequest_EvolveIF_setClient() : BMethodRequest(15377840) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::ver::BRequest_EvolveIF_setClient::BRequest_EvolveIF_setClient(const PEvolveIF& partner)
-	: BMethodRequest(564008001) 
+	: BMethodRequest(15377840) 
 	, partner(partner)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877

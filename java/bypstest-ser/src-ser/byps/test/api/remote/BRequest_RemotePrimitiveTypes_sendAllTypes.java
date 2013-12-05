@@ -26,7 +26,7 @@ public final class BRequest_RemotePrimitiveTypes_sendAllTypes extends BMethodReq
 	
 	public final static long serialVersionUID = 677876863L;
 	
-	public int getRemoteId() { return 1391241180; }
+	public int getRemoteId() { return 1178916877; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

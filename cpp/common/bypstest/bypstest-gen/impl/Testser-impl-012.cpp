@@ -9,11 +9,11 @@ namespace byps { namespace test { namespace api { namespace ver {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve() : BMethodRequest(564008001) {
+BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve() : BMethodRequest(15377840) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve(const PEvolve& obj)
-	: BMethodRequest(564008001) 
+	: BMethodRequest(15377840) 
 	, obj(obj)
 	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -1354,7 +1354,7 @@ void BStub_PlantService::grow(::std::function< void (::std::wstring, BException 
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1733272281(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1954605928(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -1404,7 +1404,7 @@ void BStub_FruitService::squeeze(::std::function< void (::std::wstring, BExcepti
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_937293552(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_715959905(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -1466,7 +1466,7 @@ void BStub_BioFruitService::squeeze(::std::function< void (::std::wstring, BExce
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_612235846(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_363642571(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;

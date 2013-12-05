@@ -15,7 +15,7 @@ namespace byps.test.api.remote
 	
 		#region Execute
 		
-		public override int getRemoteId() { return 1532028880; }
+		public override int getRemoteId() { return 1983670399; }
 		
 		// checkpoint byps.gen.cs.GenApiClass:473
 		public override void setSession(Object __byps__sess) {

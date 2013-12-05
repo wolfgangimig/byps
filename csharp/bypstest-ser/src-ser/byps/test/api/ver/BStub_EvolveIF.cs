@@ -8,7 +8,7 @@ namespace byps.test.api.ver
 	
 	public class BStub_EvolveIF : BStub, EvolveIF, BSerializable {	
 		
-		public readonly static long serialVersionUID = 564008001L;
+		public readonly static long serialVersionUID = 15377840L;
 		
 		public BStub_EvolveIF(BTransport transport)
 			: base(transport) {}			

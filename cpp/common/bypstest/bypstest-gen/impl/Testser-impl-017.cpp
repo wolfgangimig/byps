@@ -26,7 +26,7 @@ PClient_Testser BClient_Testser::createClientR(PTransport transport) {
 }
 void BClient_Testser::addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
 	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
-	serverR->server->addRemote(955752991, remoteSkeleton);
+	serverR->server->addRemote(2049072174, remoteSkeleton);
 }
 
 BClient_Testser::BClient_Testser(PTransportFactory transportFactory) 
@@ -87,28 +87,28 @@ BClient_Testser::BClient_Testser(PTransport transport)
 	{
 }
 PRemote BClient_Testser::getStub(int remoteId) {
-	if (remoteId == 612235846) return bioFruitService;
-	if (remoteId == 501819909) return bioLemonService;
-	if (remoteId == 937293552) return fruitService;
-	if (remoteId == 826877615) return lemonService;
-	if (remoteId == 1733272281) return plantService;
-	if (remoteId == 1176140631) return remoteArrayTypes1dim;
-	if (remoteId == 964138163) return remoteArrayTypes23;
-	if (remoteId == 1176051258) return remoteArrayTypes4dim;
-	if (remoteId == 429088323) return remoteConstants;
-	if (remoteId == 1222673152) return remoteEnums;
-	if (remoteId == 355071648) return remoteInlineInstance;
-	if (remoteId == 1240892695) return remoteListTypes;
-	if (remoteId == 1277224527) return remoteMapTypes;
-	if (remoteId == 1391241180) return remotePrimitiveTypes;
-	if (remoteId == 1173792730) return remoteReferences;
-	if (remoteId == 2037577312) return remoteServerCtrl;
-	if (remoteId == 1781251319) return remoteSetTypes;
-	if (remoteId == 2123238175) return remoteStreams;
-	if (remoteId == 1532028880) return remoteWithAuthentication;
-	if (remoteId == 955752991) return clientIF;
-	if (remoteId == 1426448279) return serverIF;
-	if (remoteId == 564008001) return evolveIF;
+	if (remoteId == 363642571) return bioFruitService;
+	if (remoteId == 474058508) return bioLemonService;
+	if (remoteId == 715959905) return fruitService;
+	if (remoteId == 605543968) return lemonService;
+	if (remoteId == 1954605928) return plantService;
+	if (remoteId == 963816328) return remoteArrayTypes1dim;
+	if (remoteId == 769717182) return remoteArrayTypes23;
+	if (remoteId == 963726955) return remoteArrayTypes4dim;
+	if (remoteId == 2045242510) return remoteConstants;
+	if (remoteId == 485761455) return remoteEnums;
+	if (remoteId == 567395951) return remoteInlineInstance;
+	if (remoteId == 1233438138) return remoteListTypes;
+	if (remoteId == 664304990) return remoteMapTypes;
+	if (remoteId == 1178916877) return remotePrimitiveTypes;
+	if (remoteId == 568637225) return remoteReferences;
+	if (remoteId == 1652234479) return remoteServerCtrl;
+	if (remoteId == 1900796440) return remoteSetTypes;
+	if (remoteId == 1043578866) return remoteStreams;
+	if (remoteId == 1983670399) return remoteWithAuthentication;
+	if (remoteId == 2049072174) return clientIF;
+	if (remoteId == 1775199834) return serverIF;
+	if (remoteId == 15377840) return evolveIF;
 	return PRemote();
 }
 }}}
@@ -122,7 +122,7 @@ PServer_Testser BServer_Testser::createServerR(PTransport transport) {
 	return PServer_Testser(new BServer_Testser(transport));
 }
 void BServer_Testser::addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
-	BServer::addRemote(955752991, remoteSkeleton);
+	BServer::addRemote(2049072174, remoteSkeleton);
 }
 
 BServer_Testser::BServer_Testser(PTransportFactory transportFactory) 

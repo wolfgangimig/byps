@@ -18,7 +18,7 @@ public final class BRequest_RemoteWithAuthentication_doit extends BMethodRequest
 	
 	public final static long serialVersionUID = 1251509013L;
 	
-	public int getRemoteId() { return 1532028880; }
+	public int getRemoteId() { return 1983670399; }
 	
 	// checkpoint byps.gen.j.GenApiClass:628
 	public void setSession(Object __byps__sess) {

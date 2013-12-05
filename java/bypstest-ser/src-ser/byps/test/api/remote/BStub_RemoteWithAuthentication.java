@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemoteWithAuthentication extends BStub implements RemoteWithAuthenticationAuth, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1532028880L;
+	public final static long serialVersionUID = 1983670399L;
 	
 	public BStub_RemoteWithAuthentication(final BTransport transport) {
 		super(transport);		

@@ -8,7 +8,7 @@ namespace byps.test.api.inherit
 	
 	public class BStub_BioFruitService : BStub, BioFruitServiceAuth, BSerializable {	
 		
-		public readonly static long serialVersionUID = 612235846L;
+		public readonly static long serialVersionUID = 363642571L;
 		
 		public BStub_BioFruitService(BTransport transport)
 			: base(transport) {}			

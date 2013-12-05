@@ -8,7 +8,7 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteEnums : BStub, RemoteEnums, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1222673152L;
+		public readonly static long serialVersionUID = 485761455L;
 		
 		public BStub_RemoteEnums(BTransport transport)
 			: base(transport) {}			

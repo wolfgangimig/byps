@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemoteConstants extends BStub implements RemoteConstantsAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 429088323L;
+	public final static long serialVersionUID = 2045242510L;
 	
 	public BStub_RemoteConstants(final BTransport transport) {
 		super(transport);		

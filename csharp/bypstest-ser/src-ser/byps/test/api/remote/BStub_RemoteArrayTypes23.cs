@@ -8,7 +8,7 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteArrayTypes23 : BStub, RemoteArrayTypes23, BSerializable {	
 		
-		public readonly static long serialVersionUID = 964138163L;
+		public readonly static long serialVersionUID = 769717182L;
 		
 		public BStub_RemoteArrayTypes23(BTransport transport)
 			: base(transport) {}			

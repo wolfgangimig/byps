@@ -16,7 +16,7 @@ public final class BRequest_FruitService_squeeze extends BMethodRequest implemen
 	
 	public final static long serialVersionUID = 1290167289L;
 	
-	public int getRemoteId() { return 937293552; }
+	public int getRemoteId() { return 715959905; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

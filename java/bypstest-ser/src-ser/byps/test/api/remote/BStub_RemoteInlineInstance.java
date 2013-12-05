@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemoteInlineInstance extends BStub implements RemoteInlineInstanceAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 355071648L;
+	public final static long serialVersionUID = 567395951L;
 	
 	public BStub_RemoteInlineInstance(final BTransport transport) {
 		super(transport);		

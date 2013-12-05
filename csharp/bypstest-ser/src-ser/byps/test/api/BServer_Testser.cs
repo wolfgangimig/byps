@@ -33,7 +33,7 @@ namespace byps.test.api
 		}
 		
 		public BServer_Testser addRemote(byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) {
-			addRemote(955752991, remoteSkeleton);
+			addRemote(2049072174, remoteSkeleton);
 			return this;
 		}
 		

@@ -156,7 +156,7 @@ void BStub_RemoteInlineInstance::getPoint2DMap(::std::function< void (byps_ptr< 
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_355071648(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_567395951(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -566,7 +566,7 @@ void BStub_RemoteListTypes::setInt4(const byps_ptr< ::std::vector< byps_ptr< ::s
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1240892695(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_1233438138(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;
@@ -928,7 +928,7 @@ void BStub_RemoteMapTypes::setDate1(const byps_ptr< ::std::map< ::std::wstring ,
 
 // checkpoint byps.gen.cpp.GenRemoteStub:225
 namespace byps { namespace test { namespace api { 
-void BSerializer_1277224527(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+void BSerializer_664304990(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
 	if (bio.is_loading) {
 		if (p) return;

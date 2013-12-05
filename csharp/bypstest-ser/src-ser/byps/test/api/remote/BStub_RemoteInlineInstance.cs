@@ -8,7 +8,7 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemoteInlineInstance : BStub, RemoteInlineInstance, BSerializable {	
 		
-		public readonly static long serialVersionUID = 355071648L;
+		public readonly static long serialVersionUID = 567395951L;
 		
 		public BStub_RemoteInlineInstance(BTransport transport)
 			: base(transport) {}			

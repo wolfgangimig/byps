@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_BioFruitService extends BStub implements BioFruitServiceAuth, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 612235846L;
+	public final static long serialVersionUID = 363642571L;
 	
 	public BStub_BioFruitService(final BTransport transport) {
 		super(transport);		

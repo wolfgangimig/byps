@@ -8,7 +8,7 @@ namespace byps.test.api.srvr
 	
 	public class BStub_ServerIF : BStub, ServerIF, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1426448279L;
+		public readonly static long serialVersionUID = 1775199834L;
 		
 		public BStub_ServerIF(BTransport transport)
 			: base(transport) {}			

@@ -16,7 +16,7 @@ public final class BRequest_RemoteReferences_getNode extends BMethodRequest impl
 	
 	public final static long serialVersionUID = 1366991859L;
 	
-	public int getRemoteId() { return 1173792730; }
+	public int getRemoteId() { return 568637225; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

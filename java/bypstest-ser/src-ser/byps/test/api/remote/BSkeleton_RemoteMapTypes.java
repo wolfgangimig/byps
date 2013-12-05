@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteMapTypes extends BSkeleton implements RemoteMapTypesAsync {
 	
-	public final static long serialVersionUID = 1277224527L;
+	public final static long serialVersionUID = 664304990L;
 	
 	// checkpoint byps.gen.j.PrintContext:365
 	public java.util.Map<java.lang.String,java.lang.Boolean> getBoolean1() throws RemoteException {

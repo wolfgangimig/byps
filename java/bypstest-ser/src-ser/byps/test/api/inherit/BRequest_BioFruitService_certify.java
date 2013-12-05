@@ -17,7 +17,7 @@ public final class BRequest_BioFruitService_certify extends BMethodRequest imple
 	
 	public final static long serialVersionUID = 1435417025L;
 	
-	public int getRemoteId() { return 612235846; }
+	public int getRemoteId() { return 363642571; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

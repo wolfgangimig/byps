@@ -8,7 +8,7 @@ namespace byps.test.api.inherit
 	
 	public class BStub_BioLemonService : BStub, BioLemonServiceAuth, BSerializable {	
 		
-		public readonly static long serialVersionUID = 501819909L;
+		public readonly static long serialVersionUID = 474058508L;
 		
 		public BStub_BioLemonService(BTransport transport)
 			: base(transport) {}			

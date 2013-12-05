@@ -15,7 +15,7 @@ namespace byps.test.api.srvr
 	
 		#region Execute
 		
-		public override int getRemoteId() { return 1426448279; }
+		public override int getRemoteId() { return 1775199834; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
 			// checkpoint byps.gen.cs.GenApiClass:406

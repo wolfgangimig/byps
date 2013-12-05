@@ -34,112 +34,112 @@ public class BServer_Testser extends BServer {
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) {
-		addRemote(612235846, remoteSkeleton);
+		addRemote(363642571, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_BioLemonService remoteSkeleton) {
-		addRemote(501819909, remoteSkeleton);
+		addRemote(474058508, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_FruitService remoteSkeleton) {
-		addRemote(937293552, remoteSkeleton);
+		addRemote(715959905, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_LemonService remoteSkeleton) {
-		addRemote(826877615, remoteSkeleton);
+		addRemote(605543968, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_PlantService remoteSkeleton) {
-		addRemote(1733272281, remoteSkeleton);
+		addRemote(1954605928, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim remoteSkeleton) {
-		addRemote(1176140631, remoteSkeleton);
+		addRemote(963816328, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteArrayTypes23 remoteSkeleton) {
-		addRemote(964138163, remoteSkeleton);
+		addRemote(769717182, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim remoteSkeleton) {
-		addRemote(1176051258, remoteSkeleton);
+		addRemote(963726955, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteConstants remoteSkeleton) {
-		addRemote(429088323, remoteSkeleton);
+		addRemote(2045242510, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteEnums remoteSkeleton) {
-		addRemote(1222673152, remoteSkeleton);
+		addRemote(485761455, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteInlineInstance remoteSkeleton) {
-		addRemote(355071648, remoteSkeleton);
+		addRemote(567395951, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteListTypes remoteSkeleton) {
-		addRemote(1240892695, remoteSkeleton);
+		addRemote(1233438138, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteMapTypes remoteSkeleton) {
-		addRemote(1277224527, remoteSkeleton);
+		addRemote(664304990, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemotePrimitiveTypes remoteSkeleton) {
-		addRemote(1391241180, remoteSkeleton);
+		addRemote(1178916877, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteReferences remoteSkeleton) {
-		addRemote(1173792730, remoteSkeleton);
+		addRemote(568637225, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteServerCtrl remoteSkeleton) {
-		addRemote(2037577312, remoteSkeleton);
+		addRemote(1652234479, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteSetTypes remoteSkeleton) {
-		addRemote(1781251319, remoteSkeleton);
+		addRemote(1900796440, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteStreams remoteSkeleton) {
-		addRemote(2123238175, remoteSkeleton);
+		addRemote(1043578866, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteWithAuthentication remoteSkeleton) {
-		addRemote(1532028880, remoteSkeleton);
+		addRemote(1983670399, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.srvr.BSkeleton_ClientIF remoteSkeleton) {
-		addRemote(955752991, remoteSkeleton);
+		addRemote(2049072174, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.srvr.BSkeleton_ServerIF remoteSkeleton) {
-		addRemote(1426448279, remoteSkeleton);
+		addRemote(1775199834, remoteSkeleton);
 		return this;
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.ver.BSkeleton_EvolveIF remoteSkeleton) {
-		addRemote(564008001, remoteSkeleton);
+		addRemote(15377840, remoteSkeleton);
 		return this;
 	}
 	

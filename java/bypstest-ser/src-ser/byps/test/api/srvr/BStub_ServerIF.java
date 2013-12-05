@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_ServerIF extends BStub implements ServerIFAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1426448279L;
+	public final static long serialVersionUID = 1775199834L;
 	
 	public BStub_ServerIF(final BTransport transport) {
 		super(transport);		

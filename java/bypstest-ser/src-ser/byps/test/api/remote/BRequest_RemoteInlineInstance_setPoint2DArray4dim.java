@@ -17,7 +17,7 @@ public final class BRequest_RemoteInlineInstance_setPoint2DArray4dim extends BMe
 	
 	public final static long serialVersionUID = 1355245240L;
 	
-	public int getRemoteId() { return 355071648; }
+	public int getRemoteId() { return 567395951; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
