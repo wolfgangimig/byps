@@ -96,15 +96,17 @@ public class Utils {
 			}
 			else {
 				boolean found = false;
-				for (String ext : exts) {
-					found = f.getName().toLowerCase().endsWith(ext.toLowerCase());
-					if (found) break;
-				}
-				if (!found) {
-					// We do not delete other files than the generated.
-					// The generator must not delete arbitrary directories, 
-					// if there is just a mistake in the configuration.
-					throw new IOException("The generator deletes only files named with extensions \"" + Arrays.toString(exts) + "\". It does not delete the file=" + f + ". Delete this file manually.");
+				if (exts != null) {
+  				for (String ext : exts) {
+  					found = f.getName().toLowerCase().endsWith(ext.toLowerCase());
+  					if (found) break;
+  				}
+  				if (!found) {
+  					// We do not delete other files than the generated.
+  					// The generator must not delete arbitrary directories, 
+  					// if there is just a mistake in the configuration.
+  					throw new IOException("The generator deletes only files named with extensions \"" + Arrays.toString(exts) + "\". It does not delete the file=" + f + ". Delete this file manually.");
+  				}
 				}
 				if (!f.delete()) {
 					throw new IOException("Cannot delete file " + f);

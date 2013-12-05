@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -75,19 +76,22 @@ public class CompileSource implements ConstFieldReader {
 	
 	@Override
 	public long getSerialVersionUID(TypeInfo typeInfo) throws GeneratorException {
-		log.debug("readSerialVersionUID(" + typeInfo);
+		if (log.isDebugEnabled()) log.debug("readSerialVersionUID(" + typeInfo);
 		Object valueObj = getValue(typeInfo, "serialVersionUID");
 		long value = valueObj != null ? (Long)valueObj : 0;
-		log.debug(")readSerialVersionUID=" + value);
+		if (log.isDebugEnabled()) log.debug(")readSerialVersionUID=" + value);
 		return value;
 	}
 	
 	@Override
 	public Object getValue(TypeInfo typeInfo, String fieldName) throws GeneratorException {
+    if (log.isDebugEnabled()) log.debug("getValue(" + fieldName);
 		Object value = null;
 		try {
 		    Class<?> c = classLoader.loadClass( typeInfo.qname );
+        if (log.isDebugEnabled()) log.debug("loaded class " + c);
 		    Field f = c.getDeclaredField(fieldName);
+        if (log.isDebugEnabled()) log.debug("declared field " + f);
 		    f.setAccessible(true);
 		    value = f.get(null);
 		}
@@ -102,12 +106,15 @@ public class CompileSource implements ConstFieldReader {
 			errInfo.msg = "Failed to read serialVersionUID.";
 			throw new GeneratorException(errInfo, e);
 		}
+    if (log.isDebugEnabled()) log.debug(")getValue=" + value);
 		return value;
 	}
 
 	public int compile(String[] opts, String[] sourceDirs) throws GeneratorException {
-		
+    if (log.isDebugEnabled()) log.debug("compile(opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
+
 		List<File> files = findSourceFiles(sourceDirs);
+    if (log.isDebugEnabled()) log.debug("files=" + files);
 		
 		List<String> params = new ArrayList<String>();
 		for (String opt : opts) params.add(opt);
@@ -129,6 +136,7 @@ public class CompileSource implements ConstFieldReader {
 			if (msg.length() != 0) log.info(msg);
 		}
 		
+    if (log.isDebugEnabled()) log.debug(")compile=" + status);
 		return status;
 	}
 	

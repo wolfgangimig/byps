@@ -29,6 +29,7 @@ import byps.gen.j.PropertiesJ;
 import byps.gen.js.GeneratorJS;
 import byps.gen.js.PropertiesJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
+import byps.gen.utils.Utils;
 
 import com.sun.javadoc.Doclet;
 import com.sun.javadoc.LanguageVersion;
@@ -295,6 +296,10 @@ public class BDoclet extends Doclet {
           configureLog4j("INFO");
           argIdx++;
         }
+        else if (arg.startsWith("-debug")) {
+          configureLog4j("DEBUG");
+          argIdx++;
+        }
 
         // C++ generator option?
         else if (arg.startsWith(PropertiesCpp.OPT_PREFIX)) {
@@ -425,12 +430,13 @@ public class BDoclet extends Doclet {
         
         // Create a sub-directory under the temporary directory for the compiler output.
         dir = new File(dir, "byps-gen");
-        if (!dir.exists()) {
-          if (!dir.mkdirs()) {
-            ErrorInfo errInfo = new ErrorInfo();
-            errInfo.msg = "Invalid temporary directory=\"" + dir + "\".";
-            throw new GeneratorException(errInfo);
-          }
+        if (dir.exists()) {
+          Utils.purgeDir(dir, null);
+        }
+        else if (!dir.mkdirs()) {
+          ErrorInfo errInfo = new ErrorInfo();
+          errInfo.msg = "Invalid temporary directory=\"" + dir + "\".";
+          throw new GeneratorException(errInfo);
         }
         
         tempDir = dir.getAbsolutePath();
@@ -447,7 +453,7 @@ public class BDoclet extends Doclet {
       // Compile source and provide access to read constant values.
 
       log.info("Compile source files ==============");
-      log.info("source dirs=" + Arrays.toString(sourceDirs));
+      log.info("source dirs=" + Arrays.toString(sourceDirs) + ", classpath=" + classpath);
       compileSource = new CompileSource(tempDir, sourceDirs, classpath);
       
       
