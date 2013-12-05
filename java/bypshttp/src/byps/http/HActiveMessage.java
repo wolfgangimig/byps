@@ -419,7 +419,7 @@ public class HActiveMessage {
     }
     else if (rctxtMessage != null) {
 
-      if (log.isDebugEnabled()) log.debug("assume long-poll, complete response with HTTP 403");
+      if (log.isDebugEnabled()) log.debug("assume long-poll, complete response with HTTP 410");
 
       // Assume Longpoll request because a worker thread would have called
       // getAndRemoveRequestContext
