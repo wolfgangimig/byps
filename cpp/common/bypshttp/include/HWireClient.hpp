@@ -207,8 +207,24 @@ BINLINE void HWireClient::sendR(const PMessage& msg, PAsyncResult asyncResult) {
 	//internalSendStreamsThenMessage(msg, asyncResult, 0);
 }
 
+class BMessageRequest_SetAsyncResultInBackground : public BRunnable {
+    PAsyncResult asyncResult;
+    BVariant var;
+
+public:
+    BMessageRequest_SetAsyncResultInBackground(PAsyncResult asyncResult, const BVariant& var)
+        : asyncResult(asyncResult)
+        , var(var) {
+    }
+
+    virtual void run() {
+        asyncResult->setAsyncResult(var);
+    }
+};
+
 class BMessageRequest_AsyncResult : public BAsyncResult {
 	PWireClient_RequestsToCancel requests;
+    PThreadPool tpool;
     byps_atomic<PAsyncResult> innerResult;
 	int64_t messageId;
     static BLogger log;
@@ -216,8 +232,9 @@ class BMessageRequest_AsyncResult : public BAsyncResult {
 public:
 	const intptr_t id;
 
-	BMessageRequest_AsyncResult(PWireClient_RequestsToCancel requests, PAsyncResult innerResult, int64_t messageId) 
+    BMessageRequest_AsyncResult(PWireClient_RequestsToCancel requests, PThreadPool tpool, PAsyncResult innerResult, int64_t messageId)
 		: requests(requests)
+        , tpool(tpool)
 		, innerResult(innerResult)
 		, messageId(messageId)
 		, id(reinterpret_cast<intptr_t>(this))
@@ -233,7 +250,8 @@ public:
         l_debug << L"internalSetAsyncResult(" << var.toString();
         PAsyncResult r = innerResult.exchange(NULL);
         if (r) {
-            r->setAsyncResult(var);
+            PRunnable run(new BMessageRequest_SetAsyncResultInBackground(r, var));
+            tpool->execute(run);
         }
         l_debug << L")internalSetAsyncResult";
     }
@@ -336,7 +354,7 @@ BINLINE void HWireClient::internalSend(const PMessage& msg, PAsyncResult asyncRe
 		PAsyncResult outerResult(new HWireClient_AsyncResultAfterAllRequests(shared_from_this(), tpool, msg->header.messageId, asyncResult, nbOfRequests));
 
 		l_debug << L"create message result";
-		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, outerResult, msg->header.messageId);
+        BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, tpool, outerResult, msg->header.messageId);
 
 		// Create request for message
 		l_debug << L"create post request";
@@ -412,7 +430,7 @@ public:
 
 			l_debug << L"create message result";
 			BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(
-				wire->requestsToCancel, innerResult, msg->header.messageId);
+                wire->requestsToCancel, wire->tpool, innerResult, msg->header.messageId);
 
 			wire->requestsToCancel->add(messageResult->id, messageRequest);
 			l_debug << L"send message buf";
@@ -501,7 +519,8 @@ BINLINE void HWireClient::internalSendMessageWithoutStreams(const PMessage& msg,
 		messageRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
 
 		l_debug << L"create message result";
-		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, asyncResult, msg->header.messageId);
+        BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(
+                    requestsToCancel, tpool, asyncResult, msg->header.messageId);
 
 		requestsToCancel->add(messageResult->id, messageRequest);
 
@@ -521,7 +540,8 @@ BINLINE void HWireClient::internalSendMessageWithoutStreams(const PMessage& msg,
 		messageRequest->setTimeouts(timeoutSecondsClient, isReverse ? 0 : timeoutSecondsRequest);
 
 		l_debug << L"create message result";
-		BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(requestsToCancel, asyncResult, msg->header.messageId);
+        BMessageRequest_AsyncResult* messageResult = new BMessageRequest_AsyncResult(
+                    requestsToCancel, tpool, asyncResult, msg->header.messageId);
 
 		requestsToCancel->add(messageResult->id, messageRequest);
 		l_debug << L"send message buf";
