@@ -715,6 +715,9 @@ class GenApiClass {
 
 			printExecute();
 			pr.println();
+			
+			printToString();
+			pr.println();
 		}
 		
 		// Generate hashCode() and equals() 
@@ -733,7 +736,29 @@ class GenApiClass {
 		log.debug(")generate");
 	}
 
-	private boolean isValueClass() {
+  private void printToString() throws GeneratorException {
+    pr.println("public String toString() {");
+    pr.beginBlock();
+    
+    pr.println("StringBuilder s = new StringBuilder();");
+    pr.print("s.append(\"[").print(methodInfo.remoteInfo.name).print(".").print(methodInfo.name).print("(\");").println();
+    
+    CodePrinter mpr = pr;
+    boolean first = true;
+    for (MemberInfo pinfo : methodInfo.requestInfo.members) {
+      if (first)  mpr = pr.print("s."); else mpr = pr.print("s.append(\",\").");  
+      mpr.print("append(").print(pinfo.name).print(");").println();
+      first = false;
+    }
+    
+    pr.println("s.append(\")]\");");
+    pr.println("return s.toString();");
+    
+    pr.endBlock();
+    pr.println("}");
+  }
+
+  private boolean isValueClass() {
 		return methodInfo == null;
 	}
 

@@ -31,7 +31,7 @@ public class HConstants {
    * A long-poll request is returned at latest after this time. 
    * If no reverse request is made from the server to the client,   
    * the HWireClientR object inside the server releases the long-poll after this 
-   * time and sends status code 408 to the client. 
+   * time and sends status code 204 to the client. 
    * The client application (HServerR object) has to ignore this response
    * and has to send a new long-poll.
    * This value should be less than {@link #REQUEST_TIMEOUT_MILLIS}.
