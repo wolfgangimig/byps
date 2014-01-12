@@ -14,6 +14,10 @@ BINLINE BClient::~BClient() {
 
 }
 
+BINLINE PTransport BClient::getTransport() {
+	return transport;
+}
+
 BINLINE void BClient::done() {
 
     if (serverR) {
@@ -23,9 +27,9 @@ BINLINE void BClient::done() {
 	// Close the wire connection.
 	// In HWireClient it will call internalCancelAllRequests which cancels 
 	// all messages - inclusive long polls from serverR - for this session.
-	transport->wire->done();
+	getTransport()->wire->done();
 
-	transport->setAuthentication(PAuthentication(), false);
+	getTransport()->setAuthentication(PAuthentication(), false);
 }
 
 #ifdef CPP11_LAMBDA
@@ -100,7 +104,7 @@ public:
 
 BINLINE void BClient::internalStart(PAsyncResult asyncResult) {
 	setAuthentication(PAuthentication());
-    transport->negotiateProtocolClient(asyncResult);
+    getTransport()->negotiateProtocolClient(asyncResult);
 }
 
 class BClient_ClientAuthentication : public BAuthentication
@@ -149,7 +153,7 @@ public:
 			}
 			else
 			{
-				ret = client->transport->isReloginException(ex, typeId);
+				ret = client->getTransport()->isReloginException(ex, typeId);
 			}
 		}
 
@@ -177,13 +181,13 @@ public:
 };
 
 BINLINE void BClient::setAuthentication(PAuthentication innerAuth) {
-	transport->setAuthentication(
+	getTransport()->setAuthentication(
 		PAuthentication(new BClient_ClientAuthentication(shared_from_this(), innerAuth)),
 		innerAuth == NULL); // onlyIfNull
 }
 
 BINLINE PAuthentication BClient::getAuthentication() {
-	PAuthentication auth = transport->authentication;
+	PAuthentication auth = getTransport()->authentication;
 	if (auth) {
 		BClient_ClientAuthentication* clientAuth = dynamic_cast<BClient_ClientAuthentication*>(auth.get());
 		if (clientAuth) {

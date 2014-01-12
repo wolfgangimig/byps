@@ -21,14 +21,14 @@ void TestBase::beforeCase() {
 	if (!client) {
 		client = TestUtilHttp::createClient(app);
 	}
-	long rc = client->transport.use_count();
+	long rc = client->getTransport().use_count();
 	assert(rc >= 1);
     log.debug() << L")beforeCase";
 }
 void TestBase::afterCase() {
     log.debug() << L"afterCase(";
 
-    long rc = client->transport.use_count();
+    long rc = client->getTransport().use_count();
     assert(rc >= 1);
 
 	client->done();

@@ -35,12 +35,12 @@ public:
 			asyncResult(false, ex);
 		};
 
-		myclient->remoteWithAuthentication->login(userName, pwd, outerResult);
+		myclient->getRemoteWithAuthentication()->login(userName, pwd, outerResult);
 		l_info << L")authenticate";
 	}
 
 	virtual bool isReloginException(PClient client, BException ex, int typeId) {
-		return client->transport->isReloginException(ex, typeId);
+		return client->getTransport()->isReloginException(ex, typeId);
 	}
     
     virtual void getSession(PClient , BTYPEID , std::function<void (PSerializable, BException)> asyncResult) {
@@ -60,7 +60,7 @@ public:
 
 	virtual void beforeCase() {
 		PClient_Testser client1 = TestUtilHttp::createClient(app);
-		client1->remoteWithAuthentication->setUseAuthentication(true);
+		client1->getRemoteWithAuthentication()->setUseAuthentication(true);
 		client1->done();
 
 		TestBase::beforeCase();
@@ -71,7 +71,7 @@ public:
         {
             try
             {
-				client->remoteWithAuthentication->setUseAuthentication(false);
+				client->getRemoteWithAuthentication()->setUseAuthentication(false);
             }
             catch (const BException&) { }
         }
@@ -84,7 +84,7 @@ public:
         {
             try
             {
-				client->remoteWithAuthentication->expire();
+				client->getRemoteWithAuthentication()->expire();
             }
             catch (const BException&) { }
         }
@@ -95,7 +95,7 @@ public:
 	void testNoAuthObjectSupplied() {
 		l_info << L"testNoAuthObjectSupplied(";
     
-		PRemoteWithAuthenticationAuth remote = client->remoteWithAuthentication;
+		PRemoteWithAuthenticationAuth remote = client->getRemoteWithAuthentication();
 
 		PSessionInfo sess = remote->login(L"Fritz", L"abc");
 		l_info << L"sess avail=" << (sess != NULL);
@@ -108,7 +108,7 @@ public:
     
 		client->setAuthentication(PAuthentication(new MyAuthentication(L"Fritz", L"abc")));
 
-		PRemoteWithAuthenticationAuth remote = client->remoteWithAuthentication;
+		PRemoteWithAuthenticationAuth remote = client->getRemoteWithAuthentication();
 
 		// This method call will fail internally the first time with a BExceptionC.AUTHENTICATION_REQUIRED.
 		// Then, BTranpsport invokes MyAuthentication.authenticate and retries the method call.
@@ -123,7 +123,7 @@ public:
     
 		client->setAuthentication(PAuthentication(new MyAuthentication(L"Unknownuser", L"")));
 
-		PRemoteWithAuthenticationAuth remote = client->remoteWithAuthentication;
+		PRemoteWithAuthenticationAuth remote = client->getRemoteWithAuthentication();
 
 		try {
             remote->doit(1);
@@ -143,7 +143,7 @@ public:
     
 		client->setAuthentication(PAuthentication(new MyAuthentication(L"Fritz", L"abc")));
 
-		PRemoteWithAuthenticationAuth remote = client->remoteWithAuthentication;
+		PRemoteWithAuthenticationAuth remote = client->getRemoteWithAuthentication();
 
         l_info << L"1 remote.Doit ... ";
         int ret = remote->doit(1);

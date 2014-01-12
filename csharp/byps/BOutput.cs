@@ -14,8 +14,8 @@ namespace byps
 	    public readonly BRegistry registry;
 	
 	    public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
-		    this.objMap = transport.apiDesc.uniqueObjects ? null : new BObjMap();
-		    this.header = new BMessageHeader(streamHeaderMagic, negotiatedVersion, negotiatedByteOrder, transport.wire.makeMessageId());
+		    this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
+		    this.header = new BMessageHeader(streamHeaderMagic, negotiatedVersion, negotiatedByteOrder, transport.getWire().makeMessageId());
 		    this.header.targetId = transport.getTargetId();
 		    this.transport = transport;
 		    this.registry = registry;
@@ -23,7 +23,7 @@ namespace byps
 	    }
 	
 	    public BOutput(BTransport transport, BRegistry registry, BMessageHeader requestHeader) {
-		    this.objMap = transport.apiDesc.uniqueObjects ? null : new BObjMap();
+            this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
 		    this.header = requestHeader;
 		    this.header.targetId = transport.getTargetId();
 		    this.transport = transport;
@@ -82,7 +82,7 @@ namespace byps
 		    if (streams == null) streams = new List<BStreamRequest>();
 		    BStreamRequest streamRequest = new BStreamRequest();
 		    streamRequest.messageId = header.messageId;
-		    streamRequest.streamId = transport.wire.makeMessageId();
+		    streamRequest.streamId = transport.getWire().makeMessageId();
 		    streamRequest.strm = strm;
             streams.Add(streamRequest);
 		    return streamRequest;

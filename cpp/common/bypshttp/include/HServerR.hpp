@@ -179,7 +179,7 @@ public:
 	void run() {
 
 		NextAsyncMethod* nextMethod = new NextAsyncMethod(sendLongPoll, transport, server);
-		transport->wire->sendR(methodResult, nextMethod);
+		transport->getWire()->sendR(methodResult, nextMethod);
 
 	}
 };

@@ -7,14 +7,19 @@
 namespace byps {
 
 class BTransport : public byps_enable_shared_from_this<BTransport> {
-public:
-    const PWire wire;
-    const PRemoteRegistry remoteRegistry;
-    const PApiDescriptor apiDesc;
+protected:
+    PWire wire;
+    PRemoteRegistry remoteRegistry;
+    PApiDescriptor apiDesc;
 
+public:
     BTransport(PApiDescriptor apiDesc, const PWire& wire, const PRemoteRegistry& remoteRegistry);
     BTransport(const BTransport& rhs, const BTargetId& targetId);
 	virtual ~BTransport();
+
+	virtual PWire getWire();
+	virtual PRemoteRegistry getRemoteRegistry();
+	virtual PApiDescriptor getApiDesc();
 
     POutput getOutput();
     POutput getResponse(BMessageHeader& requestHeader);

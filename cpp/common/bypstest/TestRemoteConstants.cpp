@@ -17,7 +17,7 @@ public:
 	TestRemoteConstants(void* app) : TestBase(app) {}
 
 	void testCompareConstants() {
-		PRemoteConstants remote = client->remoteConstants;
+		PRemoteConstants remote = client->getRemoteConstants();
 
 		remote->compare_HebrewC(HebrewC::ALEPH, HebrewC::BETH);
 

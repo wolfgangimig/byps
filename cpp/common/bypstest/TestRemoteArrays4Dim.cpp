@@ -37,7 +37,7 @@ public:
 
 	void testRemoteArray4DimPrimitiveTypes() {
 
-        PRemoteArrayTypes4dim remote = client->remoteArrayTypes4dim;
+        PRemoteArrayTypes4dim remote = client->getRemoteArrayTypes4dim();
 
 		byps_ptr<BArray4<PPrimitiveTypes> > arr(new BArray4<PPrimitiveTypes>(3,4,5,6));
 
@@ -77,7 +77,7 @@ public:
 	}
 
 	void testRemoteArrayTypes4DimString() {
-        PRemoteArrayTypes4dim remote = client->remoteArrayTypes4dim;
+        PRemoteArrayTypes4dim remote = client->getRemoteArrayTypes4dim();
 
 	    byps_ptr<BArray4<std::wstring> > arr(new BArray4<std::wstring>(5,1,5,1));
 

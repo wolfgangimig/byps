@@ -36,55 +36,79 @@ BClient_Testser::BClient_Testser(PTransportFactory transportFactory)
 			BServer_Testser::createServerR(transportFactory->createServerTransport())
 		)
 	)
-	, bioFruitService(new byps::test::api::inherit::BStub_BioFruitService(transport))
-	, bioLemonService(new byps::test::api::inherit::BStub_BioLemonService(transport))
-	, fruitService(new byps::test::api::inherit::BStub_FruitService(transport))
-	, lemonService(new byps::test::api::inherit::BStub_LemonService(transport))
-	, plantService(new byps::test::api::inherit::BStub_PlantService(transport))
-	, remoteArrayTypes1dim(new byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
-	, remoteArrayTypes23(new byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
-	, remoteArrayTypes4dim(new byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
-	, remoteConstants(new byps::test::api::remote::BStub_RemoteConstants(transport))
-	, remoteEnums(new byps::test::api::remote::BStub_RemoteEnums(transport))
-	, remoteInlineInstance(new byps::test::api::remote::BStub_RemoteInlineInstance(transport))
-	, remoteListTypes(new byps::test::api::remote::BStub_RemoteListTypes(transport))
-	, remoteMapTypes(new byps::test::api::remote::BStub_RemoteMapTypes(transport))
-	, remotePrimitiveTypes(new byps::test::api::remote::BStub_RemotePrimitiveTypes(transport))
-	, remoteReferences(new byps::test::api::remote::BStub_RemoteReferences(transport))
-	, remoteServerCtrl(new byps::test::api::remote::BStub_RemoteServerCtrl(transport))
-	, remoteSetTypes(new byps::test::api::remote::BStub_RemoteSetTypes(transport))
-	, remoteStreams(new byps::test::api::remote::BStub_RemoteStreams(transport))
-	, remoteWithAuthentication(new byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
-	, clientIF(new byps::test::api::srvr::BStub_ClientIF(transport))
-	, serverIF(new byps::test::api::srvr::BStub_ServerIF(transport))
-	, evolveIF(new byps::test::api::ver::BStub_EvolveIF(transport))
 	{
+	initStubs(transport);
 }
 BClient_Testser::BClient_Testser(PTransport transport) 
 	: BClient(transport, NULL)
-	, bioFruitService(new byps::test::api::inherit::BStub_BioFruitService(transport))
-	, bioLemonService(new byps::test::api::inherit::BStub_BioLemonService(transport))
-	, fruitService(new byps::test::api::inherit::BStub_FruitService(transport))
-	, lemonService(new byps::test::api::inherit::BStub_LemonService(transport))
-	, plantService(new byps::test::api::inherit::BStub_PlantService(transport))
-	, remoteArrayTypes1dim(new byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport))
-	, remoteArrayTypes23(new byps::test::api::remote::BStub_RemoteArrayTypes23(transport))
-	, remoteArrayTypes4dim(new byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport))
-	, remoteConstants(new byps::test::api::remote::BStub_RemoteConstants(transport))
-	, remoteEnums(new byps::test::api::remote::BStub_RemoteEnums(transport))
-	, remoteInlineInstance(new byps::test::api::remote::BStub_RemoteInlineInstance(transport))
-	, remoteListTypes(new byps::test::api::remote::BStub_RemoteListTypes(transport))
-	, remoteMapTypes(new byps::test::api::remote::BStub_RemoteMapTypes(transport))
-	, remotePrimitiveTypes(new byps::test::api::remote::BStub_RemotePrimitiveTypes(transport))
-	, remoteReferences(new byps::test::api::remote::BStub_RemoteReferences(transport))
-	, remoteServerCtrl(new byps::test::api::remote::BStub_RemoteServerCtrl(transport))
-	, remoteSetTypes(new byps::test::api::remote::BStub_RemoteSetTypes(transport))
-	, remoteStreams(new byps::test::api::remote::BStub_RemoteStreams(transport))
-	, remoteWithAuthentication(new byps::test::api::remote::BStub_RemoteWithAuthentication(transport))
-	, clientIF(new byps::test::api::srvr::BStub_ClientIF(transport))
-	, serverIF(new byps::test::api::srvr::BStub_ServerIF(transport))
-	, evolveIF(new byps::test::api::ver::BStub_EvolveIF(transport))
 	{
+	initStubs(transport);
+}
+BINLINE byps::test::api::inherit::PBioFruitServiceAuth BClient_Testser::getBioFruitService() {
+	return bioFruitService;
+}
+BINLINE byps::test::api::inherit::PBioLemonServiceAuth BClient_Testser::getBioLemonService() {
+	return bioLemonService;
+}
+BINLINE byps::test::api::inherit::PFruitServiceAuth BClient_Testser::getFruitService() {
+	return fruitService;
+}
+BINLINE byps::test::api::inherit::PLemonServiceAuth BClient_Testser::getLemonService() {
+	return lemonService;
+}
+BINLINE byps::test::api::inherit::PPlantServiceAuth BClient_Testser::getPlantService() {
+	return plantService;
+}
+BINLINE byps::test::api::remote::PRemoteArrayTypes1dim BClient_Testser::getRemoteArrayTypes1dim() {
+	return remoteArrayTypes1dim;
+}
+BINLINE byps::test::api::remote::PRemoteArrayTypes23 BClient_Testser::getRemoteArrayTypes23() {
+	return remoteArrayTypes23;
+}
+BINLINE byps::test::api::remote::PRemoteArrayTypes4dim BClient_Testser::getRemoteArrayTypes4dim() {
+	return remoteArrayTypes4dim;
+}
+BINLINE byps::test::api::remote::PRemoteConstants BClient_Testser::getRemoteConstants() {
+	return remoteConstants;
+}
+BINLINE byps::test::api::remote::PRemoteEnums BClient_Testser::getRemoteEnums() {
+	return remoteEnums;
+}
+BINLINE byps::test::api::remote::PRemoteInlineInstance BClient_Testser::getRemoteInlineInstance() {
+	return remoteInlineInstance;
+}
+BINLINE byps::test::api::remote::PRemoteListTypes BClient_Testser::getRemoteListTypes() {
+	return remoteListTypes;
+}
+BINLINE byps::test::api::remote::PRemoteMapTypes BClient_Testser::getRemoteMapTypes() {
+	return remoteMapTypes;
+}
+BINLINE byps::test::api::remote::PRemotePrimitiveTypes BClient_Testser::getRemotePrimitiveTypes() {
+	return remotePrimitiveTypes;
+}
+BINLINE byps::test::api::remote::PRemoteReferences BClient_Testser::getRemoteReferences() {
+	return remoteReferences;
+}
+BINLINE byps::test::api::remote::PRemoteServerCtrl BClient_Testser::getRemoteServerCtrl() {
+	return remoteServerCtrl;
+}
+BINLINE byps::test::api::remote::PRemoteSetTypes BClient_Testser::getRemoteSetTypes() {
+	return remoteSetTypes;
+}
+BINLINE byps::test::api::remote::PRemoteStreams BClient_Testser::getRemoteStreams() {
+	return remoteStreams;
+}
+BINLINE byps::test::api::remote::PRemoteWithAuthenticationAuth BClient_Testser::getRemoteWithAuthentication() {
+	return remoteWithAuthentication;
+}
+BINLINE byps::test::api::srvr::PClientIF BClient_Testser::getClientIF() {
+	return clientIF;
+}
+BINLINE byps::test::api::srvr::PServerIF BClient_Testser::getServerIF() {
+	return serverIF;
+}
+BINLINE byps::test::api::ver::PEvolveIF BClient_Testser::getEvolveIF() {
+	return evolveIF;
 }
 PRemote BClient_Testser::getStub(int remoteId) {
 	if (remoteId == 363642571) return bioFruitService;
@@ -110,6 +134,30 @@ PRemote BClient_Testser::getStub(int remoteId) {
 	if (remoteId == 1775199834) return serverIF;
 	if (remoteId == 15377840) return evolveIF;
 	return PRemote();
+}
+BINLINE void BClient_Testser::initStubs(PTransport transport) {
+	bioFruitService = byps::test::api::inherit::PBioFruitServiceAuth(new byps::test::api::inherit::BStub_BioFruitService(transport));
+	bioLemonService = byps::test::api::inherit::PBioLemonServiceAuth(new byps::test::api::inherit::BStub_BioLemonService(transport));
+	fruitService = byps::test::api::inherit::PFruitServiceAuth(new byps::test::api::inherit::BStub_FruitService(transport));
+	lemonService = byps::test::api::inherit::PLemonServiceAuth(new byps::test::api::inherit::BStub_LemonService(transport));
+	plantService = byps::test::api::inherit::PPlantServiceAuth(new byps::test::api::inherit::BStub_PlantService(transport));
+	remoteArrayTypes1dim = byps::test::api::remote::PRemoteArrayTypes1dim(new byps::test::api::remote::BStub_RemoteArrayTypes1dim(transport));
+	remoteArrayTypes23 = byps::test::api::remote::PRemoteArrayTypes23(new byps::test::api::remote::BStub_RemoteArrayTypes23(transport));
+	remoteArrayTypes4dim = byps::test::api::remote::PRemoteArrayTypes4dim(new byps::test::api::remote::BStub_RemoteArrayTypes4dim(transport));
+	remoteConstants = byps::test::api::remote::PRemoteConstants(new byps::test::api::remote::BStub_RemoteConstants(transport));
+	remoteEnums = byps::test::api::remote::PRemoteEnums(new byps::test::api::remote::BStub_RemoteEnums(transport));
+	remoteInlineInstance = byps::test::api::remote::PRemoteInlineInstance(new byps::test::api::remote::BStub_RemoteInlineInstance(transport));
+	remoteListTypes = byps::test::api::remote::PRemoteListTypes(new byps::test::api::remote::BStub_RemoteListTypes(transport));
+	remoteMapTypes = byps::test::api::remote::PRemoteMapTypes(new byps::test::api::remote::BStub_RemoteMapTypes(transport));
+	remotePrimitiveTypes = byps::test::api::remote::PRemotePrimitiveTypes(new byps::test::api::remote::BStub_RemotePrimitiveTypes(transport));
+	remoteReferences = byps::test::api::remote::PRemoteReferences(new byps::test::api::remote::BStub_RemoteReferences(transport));
+	remoteServerCtrl = byps::test::api::remote::PRemoteServerCtrl(new byps::test::api::remote::BStub_RemoteServerCtrl(transport));
+	remoteSetTypes = byps::test::api::remote::PRemoteSetTypes(new byps::test::api::remote::BStub_RemoteSetTypes(transport));
+	remoteStreams = byps::test::api::remote::PRemoteStreams(new byps::test::api::remote::BStub_RemoteStreams(transport));
+	remoteWithAuthentication = byps::test::api::remote::PRemoteWithAuthenticationAuth(new byps::test::api::remote::BStub_RemoteWithAuthentication(transport));
+	clientIF = byps::test::api::srvr::PClientIF(new byps::test::api::srvr::BStub_ClientIF(transport));
+	serverIF = byps::test::api::srvr::PServerIF(new byps::test::api::srvr::BStub_ServerIF(transport));
+	evolveIF = byps::test::api::ver::PEvolveIF(new byps::test::api::ver::BStub_EvolveIF(transport));
 }
 }}}
 

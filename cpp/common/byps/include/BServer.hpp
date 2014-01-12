@@ -47,8 +47,8 @@ BINLINE void BServer::recv(const BTargetId& clientTargetId, PSerializable method
         if (clientTargetId == serverTargetId) {
             remote = remotes[remoteId];
         }
-        else if (transport->remoteRegistry) {
-            remote = transport->remoteRegistry->getRemote(clientTargetId, remoteId);
+        else if (transport->getRemoteRegistry()) {
+            remote = transport->getRemoteRegistry()->getRemote(clientTargetId, remoteId);
         }
 
         if (!remote) {

@@ -32,7 +32,7 @@ namespace byps
             long streamId = bin.bbuf.getLong();
             try
             {
-                Stream strm = bin.transport.wire.getStream(bin.header.messageId, streamId);
+                Stream strm = bin.transport.getWire().getStream(bin.header.messageId, streamId);
                 return strm;
             }
             catch (IOException e)

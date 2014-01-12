@@ -27,7 +27,7 @@ namespace byps
 		    BInputBin bin = ((BInputBin)bin1);
 		    BRemote remote = null;
 		    BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer());
-		    BRemoteRegistry rreg = bin.transport.remoteRegistry;
+		    BRemoteRegistry rreg = bin.transport.getRemoteRegistry();
 		    if (rreg != null) {
 			    remote = rreg.getRemote(bin.header.targetId, targetId, typeId);
 		    }

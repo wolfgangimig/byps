@@ -9,22 +9,27 @@ namespace byps
 {
     public abstract class BClient
     {
-	    public readonly BTransport transport;
-	    protected readonly BServerR serverR;
+	    protected BTransport transportVal;
+	    protected BServerR serverR;
 	
 	    public BClient(BTransport transport, BServerR serverR) {
-		    this.transport = transport;
+            this.transportVal = transport;
 		    this.serverR = serverR;
 	    }
 	
 	    public abstract BRemote getStub(int remoteId);
+
+        public virtual BTransport getTransport()
+        {
+            return transportVal;
+        }
 	
 	    public void done() {
             if (serverR != null)
             {
                 serverR.done();
             }
-            transport.wire.done();
+            getTransport().getWire().done();
 	    }
 	
         private class MyNegoAsyncResult : BAsyncResultIF<bool> 
@@ -65,7 +70,7 @@ namespace byps
 	    public void start(BAsyncResult<bool> asyncResult)
         {
             setAuthentication(null);
-            transport.negotiateProtocolClient(BAsyncResultHelper.FromDelegate<bool>(asyncResult));
+            getTransport().negotiateProtocolClient(BAsyncResultHelper.FromDelegate<bool>(asyncResult));
 	    }
 
 
@@ -110,7 +115,7 @@ namespace byps
                 else
                 {
                     if (log.isDebugEnabled()) log.debug("transport.isReloginException");
-                    ret = client.transport.isReloginException(ex, typeId);
+                    ret = client.getTransport().isReloginException(ex, typeId);
                 }
                 if (log.isDebugEnabled()) log.debug(")isReloginException=" + ret);
                 return ret;
@@ -135,14 +140,14 @@ namespace byps
         public void setAuthentication(BAuthentication auth)
         {
             if (log.isDebugEnabled()) log.debug("setAuthentication(" + auth + ")");
-            transport.setAuthentication(
+            getTransport().setAuthentication(
                 new ClientAuthentication(this, auth),
                 auth == null); //onlyIfNull
         }
 
         public BAuthentication getAuthentication()
         {
-            BAuthentication auth = transport.authentication;
+            BAuthentication auth = getTransport().authentication;
             if (auth != null)
             {
                 ClientAuthentication clientAuth = (ClientAuthentication)auth;

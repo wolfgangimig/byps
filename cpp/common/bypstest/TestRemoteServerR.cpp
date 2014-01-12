@@ -68,7 +68,7 @@ public:
 
 		client->addRemote(PSkeleton_ClientIF(new ClientIFImpl()));
 
-		PServerIF r = client->serverIF;
+		PServerIF r = client->getServerIF();
 		l_info << L"callClientIncrementInt...";
 		int ret = r->callClientIncrementInt(5);
 		l_info << L"callClientIncrementInt OK";
@@ -86,7 +86,7 @@ public:
 		l_info << L"testCallClientFromServerNoRemoteImpl(";
 
 		client->addRemote(PSkeleton_ClientIF());
-		PServerIF r = client->serverIF;
+		PServerIF r = client->getServerIF();
 		try {
 			l_info << L"callClientIncrementInt...";
             r->callClientIncrementInt(5);
@@ -107,7 +107,7 @@ public:
 
 		client->addRemote(PSkeleton_ClientIF(new ClientIFImpl()));
 		
-		PServerIF r = client->serverIF;
+		PServerIF r = client->getServerIF();
 		l_info << L"callClientParallel...";
 		int ret = r->callClientParallel(10);
 		l_info << L"callClientParallel OK, ret=" << ret;
@@ -128,27 +128,27 @@ public:
 		
 		// Pass the interface of the second client to the server side of the first client
 		l_info << "setPartner...";
-		client->serverIF->setPartner(partner);
+		client->getServerIF()->setPartner(partner);
 		l_info << "setPartner OK";
 		
 		// First client queries the interface of the second client from the server side
 		l_info << "getPartner...";
-		PClientIF partnerIF = client->serverIF->getPartner();
+		PClientIF partnerIF = client->getServerIF()->getPartner();
 		l_info << "setPartner...";
 
 		// Invoke interface of second client.
 		int r = partnerIF->incrementInt(7);
 		TASSERT(L"incrementInt", 8, r);
 		
-		client->serverIF->setPartner(PClientIF());
+		client->getServerIF()->setPartner(PClientIF());
 		client2->done();
 		
 	}
 
 	void testCallClient2FromServer1() {
 	
-		client->serverIF->setPartner(PClientIF());
-		PServerIF remote = client->serverIF;
+		client->getServerIF()->setPartner(PClientIF());
+		PServerIF remote = client->getServerIF();
 
 		// Interface implementation for the second client
 		PSkeleton_ClientIF partner = PSkeleton_ClientIF(new ClientIFImpl());
@@ -159,14 +159,14 @@ public:
 		
 		// Pass the interface of the second client to the server side of the first client
 		l_info << "setPartner...";
-		client->serverIF->setPartner(partner);
+		client->getServerIF()->setPartner(partner);
 		l_info << "setPartner OK";
 		
 		// Invoke interface of second client from the server.
 		int r = remote->callClientIncrementInt(7);
 		TASSERT(L"incrementInt", 8, r);
 		
-		client->serverIF->setPartner(PClientIF());
+		client->getServerIF()->setPartner(PClientIF());
 		client2->done();
 		
 	}
@@ -178,9 +178,9 @@ public:
 		PClient_Testser client2 = TestUtilHttp::createClient(app);
 		client2->addRemote(partner);
 		
-		client->serverIF->setPartner(partner);
+		client->getServerIF()->setPartner(partner);
 		
-		PClientIF partnerIF = client->serverIF->getPartner();
+		PClientIF partnerIF = client->getServerIF()->getPartner();
 		try {
 			partnerIF->incrementInt(7);
 		}
@@ -189,7 +189,7 @@ public:
 			TASSERT(L"exception", ClientIFImplThrowEx::code, e.getCode());
 		}
 
-		client->serverIF->setPartner(PSkeleton_ClientIF());
+		client->getServerIF()->setPartner(PSkeleton_ClientIF());
 		client2->done();
 	}
 
@@ -202,10 +202,10 @@ public:
 		client2->addRemote(partner);
 		
 		l_info << "submit interface of second client";
-		client->serverIF->setPartner(partner);
+		client->getServerIF()->setPartner(partner);
 				
 		l_info << "receive interface of second client";
-		PClientIF partnerIF = client->serverIF->getPartner();
+		PClientIF partnerIF = client->getServerIF()->getPartner();
 		
 		// stop second client
 		l_info << "stop second client";
@@ -232,11 +232,11 @@ public:
 	void testCallKilledClientFromClient() {
 		
 
-		l_info << "client.targetId=" << client->transport->getTargetId().toString();
+		l_info << "client.targetId=" << client->getTransport()->getTargetId().toString();
 		
 		l_info << "create second client";
 		PClient_Testser client2 = TestUtilHttp::createClient(app);
-		BTargetId targetId2 = client2->transport->getTargetId();
+		BTargetId targetId2 = client2->getTransport()->getTargetId();
 		l_info << "client2.targetId=" << targetId2.toString();
 
 		// Add interface impl to client2
@@ -249,10 +249,10 @@ public:
 		TASSERT(L"TargetId", targetId2, targetIdPartner);
 
 		l_info << "submit interface of second client";
-		client->serverIF->setPartner(partner);
+		client->getServerIF()->setPartner(partner);
 				
 		l_info << "receive interface of second client";
-		PClientIF partnerIF = client->serverIF->getPartner();
+		PClientIF partnerIF = client->getServerIF()->getPartner();
 		BTargetId targetIdPartnerIF = partnerIF->BRemote_getTargetId();
 		l_info << "partnerIF.targetId=" << targetIdPartnerIF.toString();
 
@@ -261,7 +261,7 @@ public:
 
 		// stop second client
 		l_info << "stop second client";
-		client2->transport->wire->getTestAdapter()->killClientConnections();
+		client2->getTransport()->getWire()->getTestAdapter()->killClientConnections();
 		
 		// first client calls interface method of second client
 		try {
@@ -293,7 +293,7 @@ public:
 		// registered in step (1)
 		l_info << "call client...";
 		byps_ptr<std::vector<PContentStream> > arr = TestUtilHttp::makeTestStreams();
-		client->serverIF->putStreamsOnClient(arr);
+		client->getServerIF()->putStreamsOnClient(arr);
 		l_info << "call client OK";
 		
 		

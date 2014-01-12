@@ -12,13 +12,13 @@ namespace byps
 	    public readonly BBufferBin bbuf;
 
 	    public BOutputBin(BTransport transport, BMessageHeader requestHeader)
-		    : base(transport, transport.apiDesc.getRegistry(BBinaryModel.MEDIUM), requestHeader)
+            : base(transport, transport.getApiDesc().getRegistry(BBinaryModel.MEDIUM), requestHeader)
         {
             this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	    }
 
-	    public BOutputBin(BTransport transport, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) 
-		    : base (transport, transport.apiDesc.getRegistry(BBinaryModel.MEDIUM), streamHeaderMagic, negotiatedVersion, negotiatedByteOrder)
+	    public BOutputBin(BTransport transport, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder)
+            : base(transport, transport.getApiDesc().getRegistry(BBinaryModel.MEDIUM), streamHeaderMagic, negotiatedVersion, negotiatedByteOrder)
         {
             this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	    }

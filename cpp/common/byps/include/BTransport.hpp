@@ -65,6 +65,18 @@ BINLINE PProtocol BTransport::getProtocol() {
     return protocol;
 }
 
+BINLINE PWire BTransport::getWire() {
+	return wire;
+}
+
+BINLINE PRemoteRegistry BTransport::getRemoteRegistry() {
+	return remoteRegistry;
+}
+
+BINLINE PApiDescriptor BTransport::getApiDesc() {
+	return apiDesc;
+}
+
 class BTransport_ReloginAndRetrySend;
 typedef BTransport_ReloginAndRetrySend* PTransport_BAsyncOuterResult;
 

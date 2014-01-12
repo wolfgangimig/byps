@@ -53,20 +53,26 @@ public class GenClient {
 		printCreate(false);
 		pr.println();
 		
-		printConstructorWithServerImpl();
-		pr.println();
-		
 		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
 			printAddRemote(rinfo);
 		}
 		
+    printGetStub();
+    pr.println();
+    
+    printGetStubById();
+    pr.println();
+
+    printConstructorWithServerImpl();
+    pr.println();
+    
 		printConstructorWithoutServerR();
 		pr.println();
 		
-		printGetStub();
+		printDefineStubs();
 		pr.println();
 		
-		printDefineStubs();
+		printInitStubMembers();
 		pr.println();
 		
 		pr.endBlock();
@@ -79,7 +85,7 @@ public class GenClient {
 	}
 
 	private String getRemoteVariableName(RemoteInfo rinfo) {
-		return Utils.firstCharToUpper(rinfo.name);
+		return Utils.firstCharToLower(rinfo.name)+ "Val";
 	}
 
 	private void printCreate(boolean withServerR) {
@@ -112,19 +118,23 @@ public class GenClient {
 		pr.endBlock();
 		pr.println("{");
 		pr.beginBlock();
+		pr.println("initStubs(transportVal);");
 		
-		printInitStubMembers();
 		pr.endBlock();
 		pr.println("}");
 	}
 	
-	private void printInitStubMembers() {
-		for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
-			String stubClassName  = pctxt.getStubClassQName(rinfo, pack);
-			String varName = getRemoteVariableName(rinfo);
-			pr.print(varName).print(" = new ").print(stubClassName).println("(transport);");
-		}
-	}
+  private void printInitStubMembers() {
+    pr.println("private void initStubs(BTransport transport) {");
+    pr.beginBlock();
+    for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
+      String stubClassName = pctxt.getStubClassQName(rinfo, pack);
+      String varName = getRemoteVariableName(rinfo);
+      pr.print(varName).print(" = new ").print(stubClassName).println("(transport);");
+    }
+    pr.endBlock();
+    pr.println("}");
+  }
 	
 	private void printConstructorWithServerImpl() {
 		pr.print("protected ").print(clientClassName).println("(BTransportFactory transportFactory)");
@@ -148,7 +158,7 @@ public class GenClient {
 		pr.println("{");
 		pr.beginBlock();
 		
-		printInitStubMembers();
+    pr.println("initStubs(transportVal);");
 
 		pr.endBlock();
 		pr.println("}");
@@ -164,7 +174,7 @@ public class GenClient {
       String remoteName = rinfoInterface.toString(pack);
 			remoteName = pctxt.renameClassPackage(remoteName);
 			
-			pr.print("public readonly ").print(remoteName).print(" ").print(varName).println(";");
+			pr.print("protected ").print(remoteName).print(" ").print(varName).println(";");
 		}
 		log.debug(")printDefineStubs");
 	}
@@ -172,7 +182,7 @@ public class GenClient {
 	private void printAddRemote(RemoteInfo rinfo) {
 	  if (rinfo.isClientRemote) {
   		String typeName = pctxt.getSkeletonClassQName(rinfo, pack);
-  		pr.print("public ").print(clientClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) {");
+  		pr.print("public virtual ").print(clientClassName).print(" addRemote(").print(typeName).println(" remoteSkeleton) {");
   		pr.beginBlock();
   		pr.println("if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, \"No reverse connections.\");");
   		pr.println("serverR.server.addRemote(" + rinfo.typeId + ", remoteSkeleton);");
@@ -183,8 +193,28 @@ public class GenClient {
 	  }
 	}
 
+  private void printGetStub() throws GeneratorException {
+    log.debug("printGetStub(");
+    for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
+      String varName = getRemoteVariableName(rinfo);
 
-	private void printGetStub() {
+      RemoteInfo rinfoInterface = rinfo.getRemoteAuth();
+      if (rinfoInterface == null) rinfoInterface = rinfo;
+      String remoteName = rinfoInterface.toString(pack);
+      remoteName = pctxt.renameClassPackage(remoteName);
+      
+      pr.print("public virtual ").print(remoteName).print(" ").print(rinfo.name).println("");
+      pr.println("{");
+      pr.beginBlock();
+      pr.print("get { return ").print(varName).println("; }");
+      pr.endBlock();
+      pr.println("}");
+     
+    }
+    log.debug(")printGetStub");
+  }
+
+	private void printGetStubById() {
 		pr.println("public override BRemote getStub(int remoteId) {");
 		pr.beginBlock();
 		
