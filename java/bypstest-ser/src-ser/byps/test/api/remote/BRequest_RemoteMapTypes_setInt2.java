@@ -30,4 +30,12 @@ public final class BRequest_RemoteMapTypes_setInt2 extends BMethodRequest implem
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.setInt2(");
+		s.append(int2);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

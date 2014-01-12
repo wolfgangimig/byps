@@ -29,4 +29,11 @@ public final class BRequest_RemoteInlineInstance_getPoint2DList extends BMethodR
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteInlineInstance.getPoint2DList(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

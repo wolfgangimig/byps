@@ -29,4 +29,11 @@ public final class BRequest_RemoteArrayTypes4dim_getDouble extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes4dim.getDouble(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -29,4 +29,11 @@ public final class BRequest_RemoteSetTypes_getBoolean1 extends BMethodRequest im
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteSetTypes.getBoolean1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

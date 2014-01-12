@@ -32,4 +32,14 @@ public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteServerCtrl.publishRemote(");
+		s.append(name);
+		s.append(",").append(remote);
+		s.append(",").append(fowardToOtherServers);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

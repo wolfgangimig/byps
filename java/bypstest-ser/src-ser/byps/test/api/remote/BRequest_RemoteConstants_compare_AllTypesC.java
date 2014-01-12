@@ -46,4 +46,28 @@ public final class BRequest_RemoteConstants_compare_AllTypesC extends BMethodReq
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteConstants.compare_AllTypesC(");
+		s.append(bool1s);
+		s.append(",").append(bool2s);
+		s.append(",").append(char1s);
+		s.append(",").append(stringNull);
+		s.append(",").append(char2s);
+		s.append(",").append(short1s);
+		s.append(",").append(int1s);
+		s.append(",").append(long1s);
+		s.append(",").append(float1s);
+		s.append(",").append(double1s);
+		s.append(",").append(string1s);
+		s.append(",").append(ALL);
+		s.append(",").append(arrInt);
+		s.append(",").append(arrInt4);
+		s.append(",").append(arrStrings);
+		s.append(",").append(arrStrings4);
+		s.append(",").append(arrAll);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

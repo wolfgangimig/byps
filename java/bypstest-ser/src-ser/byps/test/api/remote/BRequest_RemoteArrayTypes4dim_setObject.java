@@ -30,4 +30,12 @@ public final class BRequest_RemoteArrayTypes4dim_setObject extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes4dim.setObject(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -30,4 +30,12 @@ public final class BRequest_ServerIF_setPartner extends BMethodRequest implement
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ServerIF.setPartner(");
+		s.append(client);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

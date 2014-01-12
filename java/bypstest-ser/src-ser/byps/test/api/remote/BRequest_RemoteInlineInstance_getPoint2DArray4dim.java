@@ -29,4 +29,11 @@ public final class BRequest_RemoteInlineInstance_getPoint2DArray4dim extends BMe
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteInlineInstance.getPoint2DArray4dim(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

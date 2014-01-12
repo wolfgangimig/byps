@@ -29,4 +29,11 @@ public final class BRequest_RemoteArrayTypes1dim_getString extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes1dim.getString(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

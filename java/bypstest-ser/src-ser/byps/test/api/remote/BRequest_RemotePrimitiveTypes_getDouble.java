@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_getDouble extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.getDouble(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

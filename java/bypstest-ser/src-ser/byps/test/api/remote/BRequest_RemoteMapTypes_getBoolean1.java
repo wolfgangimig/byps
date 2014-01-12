@@ -29,4 +29,11 @@ public final class BRequest_RemoteMapTypes_getBoolean1 extends BMethodRequest im
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.getBoolean1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

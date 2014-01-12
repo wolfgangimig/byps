@@ -30,4 +30,12 @@ public final class BRequest_RemoteListTypes_setObj1 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.setObj1(");
+		s.append(obj1);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

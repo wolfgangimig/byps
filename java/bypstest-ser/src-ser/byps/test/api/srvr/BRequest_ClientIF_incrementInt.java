@@ -30,4 +30,12 @@ public final class BRequest_ClientIF_incrementInt extends BMethodRequest impleme
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ClientIF.incrementInt(");
+		s.append(a);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

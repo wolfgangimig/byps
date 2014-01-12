@@ -29,4 +29,11 @@ public final class BRequest_RemoteInlineInstance_getActor extends BMethodRequest
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteInlineInstance.getActor(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

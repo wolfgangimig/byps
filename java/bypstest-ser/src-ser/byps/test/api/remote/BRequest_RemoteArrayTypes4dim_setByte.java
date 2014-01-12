@@ -30,4 +30,12 @@ public final class BRequest_RemoteArrayTypes4dim_setByte extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes4dim.setByte(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

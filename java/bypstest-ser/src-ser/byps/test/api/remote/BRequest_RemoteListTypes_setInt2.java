@@ -30,4 +30,12 @@ public final class BRequest_RemoteListTypes_setInt2 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.setInt2(");
+		s.append(int2);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

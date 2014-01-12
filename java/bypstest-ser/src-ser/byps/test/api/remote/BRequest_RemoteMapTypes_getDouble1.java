@@ -29,4 +29,11 @@ public final class BRequest_RemoteMapTypes_getDouble1 extends BMethodRequest imp
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.getDouble1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

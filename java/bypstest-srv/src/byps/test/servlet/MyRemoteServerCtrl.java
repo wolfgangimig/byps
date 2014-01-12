@@ -48,7 +48,7 @@ public class MyRemoteServerCtrl extends BSkeleton_RemoteServerCtrl {
 				
 				for (BClient client : clients) {
 					BClient_Testser myclient = (BClient_Testser)client;
-					myclient.remoteServerCtrl.publishRemote(name, remote, false, outerResult);
+					myclient.getRemoteServerCtrl().publishRemote(name, remote, false, outerResult);
 				}
 			
 			}

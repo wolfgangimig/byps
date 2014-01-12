@@ -30,4 +30,12 @@ public final class BRequest_RemoteArrayTypes4dim_setFloat extends BMethodRequest
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes4dim.setFloat(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -29,4 +29,11 @@ public final class BRequest_RemoteListTypes_getInt4 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.getInt4(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -30,4 +30,12 @@ public final class BRequest_ClientIF_sendChat extends BMethodRequest implements 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ClientIF.sendChat(");
+		s.append(cs);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

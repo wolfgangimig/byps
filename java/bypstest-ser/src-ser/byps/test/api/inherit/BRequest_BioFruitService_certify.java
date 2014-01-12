@@ -30,4 +30,12 @@ public final class BRequest_BioFruitService_certify extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[BioFruitService.certify(");
+		s.append(param);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

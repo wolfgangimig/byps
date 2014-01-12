@@ -30,4 +30,12 @@ public final class BRequest_RemoteArrayTypes1dim_setChar extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes1dim.setChar(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

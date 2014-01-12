@@ -30,4 +30,12 @@ public final class BRequest_RemoteReferences_setNode extends BMethodRequest impl
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteReferences.setNode(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

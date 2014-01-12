@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_getLong extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.getLong(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

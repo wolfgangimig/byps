@@ -42,7 +42,7 @@ public class TestRemoteStreams {
   @Before
   public void setUp() throws RemoteException {
     client = TestUtilsHttp.createClient();
-    remote = client.remoteStreams;
+    remote = client.getRemoteStreams();
   }
 
   @After

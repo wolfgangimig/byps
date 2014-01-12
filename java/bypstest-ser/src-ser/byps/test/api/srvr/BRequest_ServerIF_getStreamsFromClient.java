@@ -29,4 +29,11 @@ public final class BRequest_ServerIF_getStreamsFromClient extends BMethodRequest
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ServerIF.getStreamsFromClient(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

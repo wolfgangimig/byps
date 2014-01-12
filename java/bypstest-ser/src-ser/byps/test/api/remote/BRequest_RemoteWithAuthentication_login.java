@@ -37,4 +37,14 @@ public final class BRequest_RemoteWithAuthentication_login extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteWithAuthentication.login(");
+		s.append(sess);
+		s.append(",").append(userName);
+		s.append(",").append(userPwd);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

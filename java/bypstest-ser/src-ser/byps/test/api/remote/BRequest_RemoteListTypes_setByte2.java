@@ -30,4 +30,12 @@ public final class BRequest_RemoteListTypes_setByte2 extends BMethodRequest impl
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.setByte2(");
+		s.append(byte2);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

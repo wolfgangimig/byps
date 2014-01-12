@@ -32,4 +32,14 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInt extends BMethodRequ
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes23.sendArraysInt(");
+		s.append(arr2);
+		s.append(",").append(arr3);
+		s.append(",").append(arr4);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

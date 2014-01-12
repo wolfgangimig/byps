@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_getChar extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.getChar(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -30,4 +30,12 @@ public final class BRequest_RemoteArrayTypes4dim_setDate extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes4dim.setDate(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

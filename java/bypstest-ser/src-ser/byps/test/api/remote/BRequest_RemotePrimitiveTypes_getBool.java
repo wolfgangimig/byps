@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_getBool extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.getBool(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

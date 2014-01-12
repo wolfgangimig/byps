@@ -29,4 +29,11 @@ public final class BRequest_PlantService_grow extends BMethodRequest implements 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[PlantService.grow(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -47,7 +47,7 @@ public class TestRemoteServerR {
 	@Before
 	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
-		remote = client.serverIF;
+		remote = client.getServerIF();
 	}
 	
 	@After
@@ -240,18 +240,18 @@ public class TestRemoteServerR {
 		client2.addRemote(remoteImplOfClient2);
 		
 		// Publish the interface to all servers
-		client2.remoteServerCtrl.publishRemote("remoteOfClient2", remoteImplOfClient2, true);
+		client2.getRemoteServerCtrl().publishRemote("remoteOfClient2", remoteImplOfClient2, true);
 		
 		// First client queries for published interface.
 		// The interface should have been transferred to Server1.
-		ClientIF remoteOfClient2 = (ClientIF)client.remoteServerCtrl.getPublishedRemote("remoteOfClient2");
+		ClientIF remoteOfClient2 = (ClientIF)client.getRemoteServerCtrl().getPublishedRemote("remoteOfClient2");
 		TestUtils.assertTrue(log, "Cannot get interface to client2", remoteOfClient2 != null);
 		
 		// Invoke interface of second client.
 		int r = remoteOfClient2.incrementInt(7);
 		TestUtils.assertEquals(log, "incrementInt", 18, r);
 		
-		client2.remoteServerCtrl.removePublishedRemote("remoteOfClient2");
+		client2.getRemoteServerCtrl().removePublishedRemote("remoteOfClient2");
 		
 		client2.done();
 		log.info(")testCallClientFromClientSameServer");
@@ -281,11 +281,11 @@ public class TestRemoteServerR {
 		client2.addRemote(remoteImplOfClient2);
 		
 		// Publish the interface to all servers
-		client2.remoteServerCtrl.publishRemote("remoteOfClient2", remoteImplOfClient2, true);
+		client2.getRemoteServerCtrl().publishRemote("remoteOfClient2", remoteImplOfClient2, true);
 		
 		// First client queries for published interface.
 		// The interface should have been transferred to Server1.
-		ClientIF remoteOfClient2 = (ClientIF)client.remoteServerCtrl.getPublishedRemote("remoteOfClient2");
+		ClientIF remoteOfClient2 = (ClientIF)client.getRemoteServerCtrl().getPublishedRemote("remoteOfClient2");
 		TestUtils.assertTrue(log, "Cannot get interface to client2", remoteOfClient2 != null);
 		
 		// Invoke interface of second client.
@@ -294,7 +294,7 @@ public class TestRemoteServerR {
 			TestUtils.assertEquals(log, "incrementInt", i+1, r);
 		}
 		
-		client2.remoteServerCtrl.removePublishedRemote("remoteOfClient2");
+		client2.getRemoteServerCtrl().removePublishedRemote("remoteOfClient2");
 		
 		client2.done();
 		log.info(")testCallClientFromClientOnOtherServer");
@@ -323,7 +323,7 @@ public class TestRemoteServerR {
 		client2.addRemote(partner);
 		
 		// Pass the interface of the second client to the server side of the first client
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 		
 		// Invoke interface of second client from the server.
 		int r = remote.callClientIncrementInt(7);
@@ -358,7 +358,7 @@ public class TestRemoteServerR {
 		client2.addRemote(partner);
 		
 		// Pass the interface of the client2 to the server side of the first client
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 		
 		// Invoke interface of second client from the server.
 		int r = remote.callClientIncrementInt(7);
@@ -395,7 +395,7 @@ public class TestRemoteServerR {
 		client.addRemote(partner);
 		
 		// Pass the interface of the client to the server side 
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 		
 		// Invoke interface of client.
 		int r = remote.callClientIncrementInt(7);
@@ -420,9 +420,9 @@ public class TestRemoteServerR {
 		BClient_Testser client2 = TestUtilsHttp.createClient();
 		client2.addRemote(partner);
 		
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 		
-		ClientIF partnerIF = client.serverIF.getPartner();
+		ClientIF partnerIF = client.getServerIF().getPartner();
 		try {
 			partnerIF.incrementInt(7);
 		}
@@ -458,10 +458,10 @@ public class TestRemoteServerR {
 		client2.addRemote(partner);
 		
 		log.info("submit interface of second client");
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 				
 		log.info("receive interface of second client");
-		ClientIF partnerIF = client.serverIF.getPartner();
+		ClientIF partnerIF = client.getServerIF().getPartner();
 		
 		// stop second client
 		log.info("stop second client");
@@ -513,10 +513,10 @@ public class TestRemoteServerR {
 		client2.addRemote(partner);
 		
 		log.info("submit interface of second client");
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 				
 		log.info("receive interface of second client");
-		ClientIF partnerIF = client.serverIF.getPartner();
+		ClientIF partnerIF = client.getServerIF().getPartner();
 		
 		TestUtils.assertEquals(log, "targetId", 
 		    client2.getTransport().getTargetId(), 
@@ -638,10 +638,10 @@ public class TestRemoteServerR {
 		client2.addRemote(partner);
 		
 		// Pass the interface of the second client to the server side of the first client
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 		
 		// First client queries the interface of the second client from the server side
-		ClientIF partnerIF = client.serverIF.getPartner();
+		ClientIF partnerIF = client.getServerIF().getPartner();
 		
 		log.info("call client...");
 		List<InputStream> arrR = partnerIF.getStreams(0);
@@ -695,10 +695,10 @@ public class TestRemoteServerR {
 		client2.addRemote(partner);
 		
 		// Pass the interface of the second client to the server side of the first client
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 		
 		// First client queries the interface of the second client from the server side
-		ClientIF partnerIF = client.serverIF.getPartner();
+		ClientIF partnerIF = client.getServerIF().getPartner();
 		
 		log.info("call client...");
 		final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
@@ -746,10 +746,10 @@ public class TestRemoteServerR {
 		client2.addRemote(partner);
 		
 		// Pass the interface of the second client to the server side of the first client
-		client.serverIF.setPartner(partner);
+		client.getServerIF().setPartner(partner);
 		
 		// First client queries the interface of the second client from the server side
-		ClientIF partnerIF = client.serverIF.getPartner();
+		ClientIF partnerIF = client.getServerIF().getPartner();
 		
 		log.info("call client...");
 		final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
@@ -785,10 +785,10 @@ public class TestRemoteServerR {
 		clientBin.addRemote(partner);
 		
 		// Pass the interface of the second client to the server side of the first client
-		clientJson.serverIF.setPartner(partner);
+		clientJson.getServerIF().setPartner(partner);
 		
 		// First client queries the interface of the second client from the server side
-		ClientIF partnerIF = clientJson.serverIF.getPartner();
+		ClientIF partnerIF = clientJson.getServerIF().getPartner();
 		
 		// Invoke interface of second client.
 		int r = partnerIF.incrementInt(7);

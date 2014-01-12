@@ -36,4 +36,13 @@ public final class BRequest_RemoteWithAuthentication_doit extends BMethodRequest
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteWithAuthentication.doit(");
+		s.append(sess);
+		s.append(",").append(value);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

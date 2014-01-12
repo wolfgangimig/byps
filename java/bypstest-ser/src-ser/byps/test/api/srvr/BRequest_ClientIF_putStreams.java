@@ -31,4 +31,13 @@ public final class BRequest_ClientIF_putStreams extends BMethodRequest implement
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ClientIF.putStreams(");
+		s.append(strm);
+		s.append(",").append(ctrl);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

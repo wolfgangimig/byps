@@ -30,4 +30,12 @@ public final class BRequest_RemoteListTypes_setFloat1 extends BMethodRequest imp
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.setFloat1(");
+		s.append(float1);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -29,4 +29,11 @@ public final class BRequest_RemoteMapTypes_getObj1 extends BMethodRequest implem
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.getObj1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

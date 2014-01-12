@@ -29,4 +29,11 @@ public final class BRequest_RemoteSetTypes_getChar1 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteSetTypes.getChar1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

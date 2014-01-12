@@ -29,4 +29,11 @@ public final class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes extends BMeth
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes4dim.getPrimitiveTypes(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

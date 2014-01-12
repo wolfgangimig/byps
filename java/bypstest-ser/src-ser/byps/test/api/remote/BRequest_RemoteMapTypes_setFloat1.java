@@ -30,4 +30,12 @@ public final class BRequest_RemoteMapTypes_setFloat1 extends BMethodRequest impl
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.setFloat1(");
+		s.append(float1);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

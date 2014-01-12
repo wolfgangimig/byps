@@ -29,4 +29,11 @@ public final class BRequest_RemoteEnums_getPlanet extends BMethodRequest impleme
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteEnums.getPlanet(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

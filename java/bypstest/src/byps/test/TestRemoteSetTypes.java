@@ -32,7 +32,7 @@ public class TestRemoteSetTypes {
 	@Before
 	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
-		remote = client.remoteSetTypes;
+		remote = client.getRemoteSetTypes();
 	}
 	
 	@After

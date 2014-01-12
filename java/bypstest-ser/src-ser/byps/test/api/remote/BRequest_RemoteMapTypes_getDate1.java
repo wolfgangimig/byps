@@ -29,4 +29,11 @@ public final class BRequest_RemoteMapTypes_getDate1 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.getDate1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }
