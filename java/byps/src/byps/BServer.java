@@ -35,7 +35,7 @@ public class BServer {
 	
   public void setTargetId(BTargetId targetId) {
     transport.setTargetId(targetId);
-    if (clientR != null) clientR.transport.setTargetId(targetId);
+    if (clientR != null) clientR.getTransport().setTargetId(targetId);
   }
   
   public BTargetId getTargetId() {
@@ -76,13 +76,13 @@ public class BServer {
 				remote = remotes.get(remoteId);
 				if (log.isDebugEnabled()) log.debug("client calls its server-side: remoteId=" + remoteId + ", remote=" + remote);
 			}
-			else if (this.transport.serverRegistry != null) { // should not be null for server-side transport
+			else if (this.transport.getServerRegistry() != null) { // should not be null for server-side transport
 				
 				// Es wird eine andere Target-ID angesteuert.
 				// Ermittle hier die BRemote-Schnittstelle dieser Target-ID.
 				// I.d.R. dürfte sie einem anderen Client gehören.
 				
-				remote = this.transport.serverRegistry.getRemote(clientTargetId, remoteId);
+				remote = this.transport.getServerRegistry().getRemote(clientTargetId, remoteId);
 				if (log.isDebugEnabled()) log.debug("client calls another client: remoteId=" + remoteId + ", remote=" + remote);
 			}
 			

@@ -1542,7 +1542,7 @@ byps.BServerR = function(transport, server) {
 
 				}
 				else {
-
+					
 					switch (ex.code) {
 
 					case byps.BExceptionC.SESSION_CLOSED: // Session was invalidated.

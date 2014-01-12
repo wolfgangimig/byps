@@ -77,7 +77,7 @@ public class TestRemoteDifferentVersions {
 	 */
 	private void setServerAppVersion(long version) throws RemoteException {
 		BClient_Testser client = TestUtilsHttp.createClient();
-		client.transport.wire.getTestAdapter().setServerAppVersion(version);
+		client.getTransport().getWire().getTestAdapter().setServerAppVersion(version);
 		client.done();
 	}
 	

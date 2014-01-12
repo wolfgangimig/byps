@@ -247,7 +247,7 @@ public class TestRemoteStreams {
       internalTestRemoteStreamsClosed();
 
       String logLine = "testRemoteStreamsCloseStreamAfterSend-" + i;
-      client.transport.wire.getTestAdapter().printServerLog(logLine);
+      client.getTransport().getWire().getTestAdapter().printServerLog(logLine);
     }
 
     log.info(")testRemoteStreamsCloseStreamAfterSend");
@@ -300,7 +300,7 @@ public class TestRemoteStreams {
       internalTestThrowExOnRead(false, true);
     }
 
-    client.transport.wire.cancelAllRequests();
+    client.getTransport().getWire().cancelAllRequests();
 
     try {
       // There should be no active messages on the server after the client side
@@ -310,7 +310,7 @@ public class TestRemoteStreams {
       int cleanupSeconds = (int) HConstants.CLEANUP_MILLIS / 1000;
       int waitUntilMessagesExpired = 2 * Math.max(cleanupSeconds, keepMessageSeconds) + 1;
       for (int retry = 0; retry < waitUntilMessagesExpired; retry++) {
-        messageIds = client.transport.wire.getTestAdapter().getAcitveMessagesOnServer(false);
+        messageIds = client.getTransport().getWire().getTestAdapter().getAcitveMessagesOnServer(false);
         if (messageIds.length == 0) break;
         Thread.sleep(1000);
       }

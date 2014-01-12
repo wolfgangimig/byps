@@ -32,7 +32,7 @@ public class JSerializer_15 extends JSerializer_Object {
 	public Object internalRead(final Object obj1, final BInputJson bin) throws BException {
 		long streamId = bin.currentObject.getLong("streamId");
 		try {
-			InputStream strm = bin.transport.wire.getStream(bin.header.messageId, streamId);
+			InputStream strm = bin.transport.getWire().getStream(bin.header.messageId, streamId);
 			bin.onObjectCreated(strm);
 			return strm;
 		} catch (IOException e) {

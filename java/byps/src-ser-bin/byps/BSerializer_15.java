@@ -35,7 +35,7 @@ public class BSerializer_15 extends BSerializer {
 		BInputBin bin = ((BInputBin)bin1);
 		long streamId = bin.bbuf.getLong();
 		try {
-			InputStream strm = bin.transport.wire.getStream(bin.header.messageId, streamId);
+			InputStream strm = bin.transport.getWire().getStream(bin.header.messageId, streamId);
 			bin.onObjectCreated(strm);
 			return strm;
 		} catch (IOException e) {

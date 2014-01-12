@@ -66,7 +66,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		  
       // Is valid? (see catch block below) 
 
-		  long invalidUntil = client.transport.wire.getInvalidUntilMillis();
+		  long invalidUntil = client.getTransport().getWire().getInvalidUntilMillis();
 		  if (invalidUntil == 0) { 
 		    return client;
 		  }
@@ -139,7 +139,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 			// Clone the transport to the other server.
 			// The cloned transport has the same connection (BWire) as the server-to-server transport,
 			// but it acts for the passed targetId.
-			final BTransport forwardTransport = new BTransport(client.transport, targetId);
+			final BTransport forwardTransport = new BTransport(client.getTransport(), targetId);
 			
 			// Create a client object for the forward transport.
 			BClient forwardClient = createForwardClientToOtherServer(forwardTransport);

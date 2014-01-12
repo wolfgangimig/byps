@@ -177,7 +177,7 @@ public class HServerR extends BServerR {
       // Anfrage.
       // Als Ergebnis des longPoll kommt eine neue Serveranfrage (Methode).
 
-      transport.wire.sendR(methodResult, nextAsyncMethod);
+      transport.getWire().sendR(methodResult, nextAsyncMethod);
 
       if (log.isDebugEnabled()) log.debug(")run");
     }

@@ -89,7 +89,7 @@ public class TestRemoteArrays {
 		TestUtils.protocol = protocol;
 		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, flags, BApiDescriptor_Testser.VERSION);
 		
-		client.transport.wire.clearStatistics();
+		client.getTransport().getWire().clearStatistics();
 
 		PrimitiveTypes[] primitiveTypes1 = new PrimitiveTypes[objCount];
 		for (int i = 0; i < primitiveTypes1.length; i++) {
@@ -108,7 +108,7 @@ public class TestRemoteArrays {
 		}
 		long t4 = System.currentTimeMillis();
 
-		BWire.Statistics stats = client.transport.wire.getStatistics();
+		BWire.Statistics stats = client.getTransport().getWire().getStatistics();
 		
 		client.done();
 		

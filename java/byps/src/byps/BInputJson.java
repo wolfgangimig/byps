@@ -13,7 +13,7 @@ import byps.BException;
 public class BInputJson extends BInput {
 
 	public BInputJson(BMessageHeader header, ByteBuffer buf, BTransport transport) {
-		super(header, transport, transport.apiDesc.getRegistry(BProtocolJson.BINARY_MODEL));
+		super(header, transport, transport.getApiDesc().getRegistry(BProtocolJson.BINARY_MODEL));
 		this.bbuf = new BBufferJson(buf);
 	}
 

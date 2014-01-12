@@ -497,7 +497,7 @@ public abstract class HHttpServlet extends HttpServlet {
           BClient clientR = sess.getClientR();
           if (clientR != null) {
             if (log.isDebugEnabled()) log.debug("clientR=" + clientR + ", set negotiated protocol=" + protocol);
-            clientR.transport.setProtocol(protocol);
+            clientR.getTransport().setProtocol(protocol);
           }
 
         } catch (Throwable e) {

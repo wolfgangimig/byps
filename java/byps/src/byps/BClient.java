@@ -18,7 +18,7 @@ public abstract class BClient {
 	/**
 	 * Transport object.
 	 */
-	public final BTransport transport;
+	protected final BTransport transport;
 	
 	/**
 	 * Server side of the subscriber.
@@ -45,6 +45,15 @@ public abstract class BClient {
 	public abstract BRemote getStub(int remoteId);
 	
 	/**
+	 * Get transport object.
+	 * @return BTransport object
+	 */
+	public BTransport getTransport() {
+	  return transport;
+	}
+	
+	
+	/**
 	 * Handler that is called when a reverse connection is interrupted.
 	 * @param lostConnectionHandler
 	 */
@@ -64,7 +73,7 @@ public abstract class BClient {
 			serverR.done();
 		}
 		
-		transport.wire.done();
+		transport.getWire().done();
 	}
 	
 	/**

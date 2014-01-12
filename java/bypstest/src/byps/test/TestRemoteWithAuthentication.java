@@ -161,7 +161,7 @@ public class TestRemoteWithAuthentication {
 
     @Override
     public boolean isReloginException(BClient client, Throwable ex, int typeId) {
-      return client.transport.isReloginException(ex, typeId);
+      return client.getTransport().isReloginException(ex, typeId);
     }
     
     @Override
