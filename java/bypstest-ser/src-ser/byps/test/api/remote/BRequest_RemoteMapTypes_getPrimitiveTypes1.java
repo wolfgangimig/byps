@@ -29,4 +29,11 @@ public final class BRequest_RemoteMapTypes_getPrimitiveTypes1 extends BMethodReq
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.getPrimitiveTypes1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -36,7 +36,7 @@ public class TestRemoteListTypes {
 	@Before
 	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
-		remote = client.remoteListTypes;
+		remote = client.getRemoteListTypes();
 	}
 	
 	@After

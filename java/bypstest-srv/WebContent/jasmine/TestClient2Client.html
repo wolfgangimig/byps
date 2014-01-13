@@ -13,10 +13,12 @@
 	var wire = new byps.BWireClient(url, 0, 60);
 	var transportFactory = new byps.BTransportFactory(byps.test.api.BApiDescriptor_Testser.instance(), wire, 1);
 	var client = byps.test.api.createClient_Testser(transportFactory);
-	client.start();
+	// Create a random ID for this client connection
+	var clientId = Math.floor(Math.random() * 1000 * 1000);
+	
 
 	// Define an implementation for the ClientIF interface function sendChat
-	byps.test.api.ClientIFImpl = function() {
+	var ClientIFImpl = function() {
 		
 		this.sendChat = function(chatMsg) {
 			
@@ -28,13 +30,18 @@
 			return chatMsg;
 		}
 	};
-	byps.test.api.ClientIFImpl.prototype = new byps.test.api.srvr.BSkeleton_ClientIF();
-	client.addRemote(new byps.test.api.ClientIFImpl()); 
+	ClientIFImpl.prototype = new byps.test.api.srvr.BSkeleton_ClientIF();
+	client.addRemote(new ClientIFImpl()); 
 	
-	// Create a random ID for this client connection
-	// and register this ID with a global HashMap in the server.
-	var clientId = Math.floor(Math.random() * 1000 * 1000);
-	client.serverIF.registerWithClientMap(clientId);
+	setTimeout(function() {
+		client.start(function(ignored, ex) {
+			if (ex) return;
+			// Register client ID with a global HashMap in the server.
+			client.serverIF.registerWithClientMap(clientId);
+			onRefreshClientIds();
+		});},
+		500
+	);
 	
 </script>
 
@@ -74,7 +81,7 @@
 	};
 	
 	function onLoadBody() {
-		onRefreshClientIds();
+		
 	};
 	
 	function onSend() {

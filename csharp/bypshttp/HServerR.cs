@@ -164,7 +164,7 @@ namespace byps
 			    // Im Body befindet sich die Antwort auf die vorige vom Server gestellte Anfrage.
 			    // Als Ergebnis des longPoll kommt eine neue Serveranfrage (Methode).
 
-                pthis.transport.wire.sendR(methodResult, nextAsyncMethod);
+                pthis.transport.getWire().sendR(methodResult, nextAsyncMethod);
 
                 if (log.isDebugEnabled()) log.debug(")run");
 		    }

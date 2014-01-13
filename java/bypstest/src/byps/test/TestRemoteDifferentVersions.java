@@ -59,8 +59,8 @@ public class TestRemoteDifferentVersions {
 		setServerAppVersion(serverVersion);
 		
 		BClient_Testser client2 = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, clientVersion);
-		client2.evolveIF.setEvolve(obj);
-		Evolve objR = client2.evolveIF.getEvolve();
+		client2.getEvolveIF().setEvolve(obj);
+		Evolve objR = client2.getEvolveIF().getEvolve();
 		
 		TestSerializeDifferentVersions.compareEvolve(log, obj, objR, clientVersion, serverVersion);
 		
@@ -77,7 +77,7 @@ public class TestRemoteDifferentVersions {
 	 */
 	private void setServerAppVersion(long version) throws RemoteException {
 		BClient_Testser client = TestUtilsHttp.createClient();
-		client.transport.wire.getTestAdapter().setServerAppVersion(version);
+		client.getTransport().getWire().getTestAdapter().setServerAppVersion(version);
 		client.done();
 	}
 	
@@ -119,10 +119,10 @@ public class TestRemoteDifferentVersions {
 		
 		// Create a sample object and store it on the server side, see MyEvolve class.
 		Evolve obj = TestSerializeDifferentVersions.createEvolve(clientVersion);
-		client2.evolveIF.setEvolve(obj);
+		client2.getEvolveIF().setEvolve(obj);
 		
 		// Send the object back to the client.
-		client2.evolveIF.sendEvolveToClient();
+		client2.getEvolveIF().sendEvolveToClient();
 		
 		TestSerializeDifferentVersions.compareEvolve(log, obj, refObj[0], clientVersion, serverVersion);
 		
@@ -170,10 +170,10 @@ public class TestRemoteDifferentVersions {
 		client2.addRemote(remote2);
 		
 		// Pass interface of client2 to the server-side of client1
-		client1.evolveIF.setClient(remote2);
+		client1.getEvolveIF().setClient(remote2);
 		
 		// Read this interface from the server
-		EvolveIF remoteOfClient2 = client1.evolveIF.getClient();
+		EvolveIF remoteOfClient2 = client1.getEvolveIF().getClient();
 		
 		// Create a sample object and pass it to the interface of client2.
 		Evolve obj = TestSerializeDifferentVersions.createEvolve(clientVersion);

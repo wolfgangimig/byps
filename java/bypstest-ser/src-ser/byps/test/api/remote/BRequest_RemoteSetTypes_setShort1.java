@@ -30,4 +30,12 @@ public final class BRequest_RemoteSetTypes_setShort1 extends BMethodRequest impl
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteSetTypes.setShort1(");
+		s.append(short1);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

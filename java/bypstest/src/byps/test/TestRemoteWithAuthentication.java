@@ -27,11 +27,11 @@ public class TestRemoteWithAuthentication {
   @Before
   public void setUp() throws RemoteException {
     BClient_Testser client1 = TestUtilsHttp.createClient();
-    client1.remoteWithAuthentication.setUseAuthentication(true);
+    client1.getRemoteWithAuthentication().setUseAuthentication(true);
     client1.done();
     
     client = TestUtilsHttp.createClient();
-    remote = client.remoteWithAuthentication;
+    remote = client.getRemoteWithAuthentication();
   }
   
   @After
@@ -155,13 +155,13 @@ public class TestRemoteWithAuthentication {
         }
       };
       
-      ((BClient_Testser)client).remoteWithAuthentication.login(userName, pwd, outerResult);
+      ((BClient_Testser)client).getRemoteWithAuthentication().login(userName, pwd, outerResult);
       log.info(")authenticate");
     }
 
     @Override
     public boolean isReloginException(BClient client, Throwable ex, int typeId) {
-      return client.transport.isReloginException(ex, typeId);
+      return client.getTransport().isReloginException(ex, typeId);
     }
     
     @Override

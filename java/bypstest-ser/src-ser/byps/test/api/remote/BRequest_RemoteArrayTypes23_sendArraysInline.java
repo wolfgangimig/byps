@@ -32,4 +32,14 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInline extends BMethodR
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes23.sendArraysInline(");
+		s.append(arr2);
+		s.append(",").append(arr3);
+		s.append(",").append(arr4);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

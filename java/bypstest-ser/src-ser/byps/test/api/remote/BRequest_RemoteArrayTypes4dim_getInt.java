@@ -29,4 +29,11 @@ public final class BRequest_RemoteArrayTypes4dim_getInt extends BMethodRequest i
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteArrayTypes4dim.getInt(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

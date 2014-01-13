@@ -60,7 +60,7 @@ namespace byps
 				    // Ermittle hier die BRemote-Schnittstelle dieser Target-ID.
 				    // Sie kommt möglicherweise von einem anderen Client.
 				
-				    remote = this.transport.remoteRegistry.getRemote(serverTargetId, clientTargetId, remoteId);
+				    remote = this.transport.getRemoteRegistry().getRemote(serverTargetId, clientTargetId, remoteId);
 			    }
 			
                 if (remote != null)

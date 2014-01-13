@@ -8,16 +8,16 @@ namespace byps {
 
 BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
     : transport(transport)
-    , registry(transport->apiDesc->getRegistry(bmodel))
+    , registry(transport->getApiDesc()->getRegistry(bmodel))
     , is_loading(false)
-    , header(BMAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder, transport->wire->makeMessageId())
+    , header(BMAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder, transport->getWire()->makeMessageId())
     , bbuf(bmodel, negotiatedByteOrder) {
 
 }
 
 BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, PBytes& pBytes, BMessageHeader header)
     : transport(transport)
-    , registry(transport->apiDesc->getRegistry(bmodel))
+    , registry(transport->getApiDesc()->getRegistry(bmodel))
     , is_loading(true)
     , header(header)
     , bbuf(bmodel, pBytes, header.byteOrder) {

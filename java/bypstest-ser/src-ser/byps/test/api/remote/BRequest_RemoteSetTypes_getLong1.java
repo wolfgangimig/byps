@@ -29,4 +29,11 @@ public final class BRequest_RemoteSetTypes_getLong1 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteSetTypes.getLong1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

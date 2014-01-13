@@ -30,4 +30,12 @@ public final class BRequest_ServerIF_getClient extends BMethodRequest implements
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ServerIF.getClient(");
+		s.append(id);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

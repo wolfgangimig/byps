@@ -29,4 +29,11 @@ public final class BRequest_RemoteSetTypes_getObj1 extends BMethodRequest implem
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteSetTypes.getObj1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -11,7 +11,7 @@ import byps.BException;
 public class BInputS extends BInputBin {
 
 	public BInputS(BTransport transport, BMessageHeader header, ByteBuffer buf) {
-		super(header, buf, transport, transport.apiDesc.getRegistry(BProtocolS.BINARY_MODEL));
+		super(header, buf, transport, transport.getApiDesc().getRegistry(BProtocolS.BINARY_MODEL));
 	}
 
 	@Override

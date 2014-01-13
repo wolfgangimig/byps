@@ -29,4 +29,11 @@ public final class BRequest_ServerIF_getClientIds extends BMethodRequest impleme
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ServerIF.getClientIds(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

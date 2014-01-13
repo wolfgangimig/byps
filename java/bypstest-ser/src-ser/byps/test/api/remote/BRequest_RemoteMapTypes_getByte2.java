@@ -29,4 +29,11 @@ public final class BRequest_RemoteMapTypes_getByte2 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.getByte2(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

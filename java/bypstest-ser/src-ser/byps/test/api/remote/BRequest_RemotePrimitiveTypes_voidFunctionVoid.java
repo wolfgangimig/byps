@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_voidFunctionVoid extends BMetho
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.voidFunctionVoid(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

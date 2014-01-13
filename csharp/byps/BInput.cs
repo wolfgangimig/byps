@@ -17,7 +17,7 @@ namespace byps
             this.header = responseHeader;
 		    this.transport = transport;
 		    this.registry = registry;
-            this.idMap = transport.apiDesc.uniqueObjects ? null : new Dictionary<int, Object>();
+            this.idMap = transport.getApiDesc().uniqueObjects ? null : new Dictionary<int, Object>();
         }
 
         public Object onObjectCreated(Object obj)

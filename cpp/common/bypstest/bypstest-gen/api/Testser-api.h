@@ -4121,30 +4121,55 @@ class BClient_Testser : public BClient {
 	
 	public: virtual ~BClient_Testser() {}
 	
+	virtual byps::test::api::inherit::PBioFruitServiceAuth getBioFruitService();	
+	virtual byps::test::api::inherit::PBioLemonServiceAuth getBioLemonService();	
+	virtual byps::test::api::inherit::PFruitServiceAuth getFruitService();	
+	virtual byps::test::api::inherit::PLemonServiceAuth getLemonService();	
+	virtual byps::test::api::inherit::PPlantServiceAuth getPlantService();	
+	virtual byps::test::api::remote::PRemoteArrayTypes1dim getRemoteArrayTypes1dim();	
+	virtual byps::test::api::remote::PRemoteArrayTypes23 getRemoteArrayTypes23();	
+	virtual byps::test::api::remote::PRemoteArrayTypes4dim getRemoteArrayTypes4dim();	
+	virtual byps::test::api::remote::PRemoteConstants getRemoteConstants();	
+	virtual byps::test::api::remote::PRemoteEnums getRemoteEnums();	
+	virtual byps::test::api::remote::PRemoteInlineInstance getRemoteInlineInstance();	
+	virtual byps::test::api::remote::PRemoteListTypes getRemoteListTypes();	
+	virtual byps::test::api::remote::PRemoteMapTypes getRemoteMapTypes();	
+	virtual byps::test::api::remote::PRemotePrimitiveTypes getRemotePrimitiveTypes();	
+	virtual byps::test::api::remote::PRemoteReferences getRemoteReferences();	
+	virtual byps::test::api::remote::PRemoteServerCtrl getRemoteServerCtrl();	
+	virtual byps::test::api::remote::PRemoteSetTypes getRemoteSetTypes();	
+	virtual byps::test::api::remote::PRemoteStreams getRemoteStreams();	
+	virtual byps::test::api::remote::PRemoteWithAuthenticationAuth getRemoteWithAuthentication();	
+	virtual byps::test::api::srvr::PClientIF getClientIF();	
+	virtual byps::test::api::srvr::PServerIF getServerIF();	
+	virtual byps::test::api::ver::PEvolveIF getEvolveIF();	
+	
 	public: virtual PRemote getStub(int remoteId);
 	
-	public: const byps::test::api::inherit::PBioFruitServiceAuth bioFruitService;
-	public: const byps::test::api::inherit::PBioLemonServiceAuth bioLemonService;
-	public: const byps::test::api::inherit::PFruitServiceAuth fruitService;
-	public: const byps::test::api::inherit::PLemonServiceAuth lemonService;
-	public: const byps::test::api::inherit::PPlantServiceAuth plantService;
-	public: const byps::test::api::remote::PRemoteArrayTypes1dim remoteArrayTypes1dim;
-	public: const byps::test::api::remote::PRemoteArrayTypes23 remoteArrayTypes23;
-	public: const byps::test::api::remote::PRemoteArrayTypes4dim remoteArrayTypes4dim;
-	public: const byps::test::api::remote::PRemoteConstants remoteConstants;
-	public: const byps::test::api::remote::PRemoteEnums remoteEnums;
-	public: const byps::test::api::remote::PRemoteInlineInstance remoteInlineInstance;
-	public: const byps::test::api::remote::PRemoteListTypes remoteListTypes;
-	public: const byps::test::api::remote::PRemoteMapTypes remoteMapTypes;
-	public: const byps::test::api::remote::PRemotePrimitiveTypes remotePrimitiveTypes;
-	public: const byps::test::api::remote::PRemoteReferences remoteReferences;
-	public: const byps::test::api::remote::PRemoteServerCtrl remoteServerCtrl;
-	public: const byps::test::api::remote::PRemoteSetTypes remoteSetTypes;
-	public: const byps::test::api::remote::PRemoteStreams remoteStreams;
-	public: const byps::test::api::remote::PRemoteWithAuthenticationAuth remoteWithAuthentication;
-	public: const byps::test::api::srvr::PClientIF clientIF;
-	public: const byps::test::api::srvr::PServerIF serverIF;
-	public: const byps::test::api::ver::PEvolveIF evolveIF;
+	protected: byps::test::api::inherit::PBioFruitServiceAuth bioFruitService;
+	protected: byps::test::api::inherit::PBioLemonServiceAuth bioLemonService;
+	protected: byps::test::api::inherit::PFruitServiceAuth fruitService;
+	protected: byps::test::api::inherit::PLemonServiceAuth lemonService;
+	protected: byps::test::api::inherit::PPlantServiceAuth plantService;
+	protected: byps::test::api::remote::PRemoteArrayTypes1dim remoteArrayTypes1dim;
+	protected: byps::test::api::remote::PRemoteArrayTypes23 remoteArrayTypes23;
+	protected: byps::test::api::remote::PRemoteArrayTypes4dim remoteArrayTypes4dim;
+	protected: byps::test::api::remote::PRemoteConstants remoteConstants;
+	protected: byps::test::api::remote::PRemoteEnums remoteEnums;
+	protected: byps::test::api::remote::PRemoteInlineInstance remoteInlineInstance;
+	protected: byps::test::api::remote::PRemoteListTypes remoteListTypes;
+	protected: byps::test::api::remote::PRemoteMapTypes remoteMapTypes;
+	protected: byps::test::api::remote::PRemotePrimitiveTypes remotePrimitiveTypes;
+	protected: byps::test::api::remote::PRemoteReferences remoteReferences;
+	protected: byps::test::api::remote::PRemoteServerCtrl remoteServerCtrl;
+	protected: byps::test::api::remote::PRemoteSetTypes remoteSetTypes;
+	protected: byps::test::api::remote::PRemoteStreams remoteStreams;
+	protected: byps::test::api::remote::PRemoteWithAuthenticationAuth remoteWithAuthentication;
+	protected: byps::test::api::srvr::PClientIF clientIF;
+	protected: byps::test::api::srvr::PServerIF serverIF;
+	protected: byps::test::api::ver::PEvolveIF evolveIF;
+	
+	private: void initStubs(PTransport transport);
 	
 };
 

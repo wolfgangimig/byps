@@ -9,7 +9,7 @@ namespace byps
     public class BInputS : BInputBin
     {
         public BInputS(BTransport transport, BMessageHeader responseHeader, ByteBuffer buf)
-            : base(transport, responseHeader, buf, transport.apiDesc.getRegistry(BBinaryModel.MEDIUM))
+            : base(transport, responseHeader, buf, transport.getApiDesc().getRegistry(BBinaryModel.MEDIUM))
         {
         }
 

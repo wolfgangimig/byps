@@ -29,4 +29,11 @@ public final class BRequest_RemoteStreams_getTextStream extends BMethodRequest i
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteStreams.getTextStream(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -29,4 +29,11 @@ public final class BRequest_EvolveIF_getEvolve extends BMethodRequest implements
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[EvolveIF.getEvolve(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

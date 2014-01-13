@@ -29,7 +29,7 @@ public class TestRemoteMapTypes {
 	@Before
 	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
-		remote = client.remoteMapTypes;
+		remote = client.getRemoteMapTypes();
 	}
 	
 	@After

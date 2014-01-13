@@ -14,7 +14,7 @@ public:
 	TestRemotePrimitiveTypes(void* app) : TestBase(app) {}
 
 	void testPrimitiveTypesReferenceToOtherObject() {	
-        PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+        PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 
 		PPrimitiveTypes obj1(new PrimitiveTypes());
 		obj1->intVal = 123;
@@ -71,7 +71,7 @@ public:
 
         // Send to server, receive from server
         if (sendToServer) {
-            PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+            PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
             remote->setInt(v);
             int32_t vR = remote->getInt();
             TASSERT( L"Wrong int", v, vR);
@@ -129,7 +129,7 @@ public:
 		TASSERT( L"Wrong long", v, vR);
 
         // Send to server, receive from server
-		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 		remote->setLong(v);
 		vR = remote->getLong();
 		TASSERT( L"Wrong long", v, vR);
@@ -137,7 +137,7 @@ public:
 
 	void testRemotePrimitiveTypes() {
 
-        PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+        PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 		remote->setBool(true);
 		TASSERT(L"bool", true, remote->getBool());
 		remote->setBool(false);
@@ -189,13 +189,13 @@ public:
 	}
 
 	void internalTestReadDate(const BDateTime& dt) {
-		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 		BDateTime dtR = remote->makeDate(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second, dt.millisecond);
 		TASSERT(L"makeDate", dt, dtR);
 	}
 
 	void internalTestWriteDate(const BDateTime& dt) {
-		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 		PArrayInt arr = remote->parseDate(dt);
 		TASSERT(L"parseDate must not return null", true, !!arr);
 		TASSERT(L"#arr", (size_t)7, arr->length());
@@ -214,7 +214,7 @@ public:
 	}
 
 	void testRemotePrimitvieTypesSendAsObjectType() {
-		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 		PPrimitiveTypes pt = TestUtils::createObjectPrimitiveTypes();
 		remote->setObject(pt);
 		PPrimitiveTypes ptR = byps_static_ptr_cast<PrimitiveTypes>(remote->getObject());
@@ -224,7 +224,7 @@ public:
 	}
 
 	void testRemotePrimitiveTypesSendAll() {
-		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 
 		PPrimitiveTypes pt = TestUtils::createObjectPrimitiveTypes();
 		PPrimitiveTypes pt2  =TestUtils::createObjectPrimitiveTypes();
@@ -244,7 +244,7 @@ public:
 	}
 
 	void testPrimitiveTypesReferenceToSelf()  {	
-		PRemotePrimitiveTypes remote = client->remotePrimitiveTypes;
+		PRemotePrimitiveTypes remote = client->getRemotePrimitiveTypes();
 
 		PPrimitiveTypes obj1(new PrimitiveTypes());
 		obj1->intVal = 123;

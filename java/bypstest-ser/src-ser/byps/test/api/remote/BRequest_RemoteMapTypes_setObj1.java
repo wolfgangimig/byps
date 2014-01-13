@@ -30,4 +30,12 @@ public final class BRequest_RemoteMapTypes_setObj1 extends BMethodRequest implem
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.setObj1(");
+		s.append(obj1);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -39,7 +39,7 @@ public:
 		
 		PContentStream strm(new BContentStreamFile(fname));
 
-		PRemoteStreams remote = client->remoteStreams;
+		PRemoteStreams remote = client->getRemoteStreams();
 		l_info << L"remote->setImage ...";
 		remote->setImage(strm);
 		l_info << L"remote->setImage OK";
@@ -108,7 +108,7 @@ public:
 		PContentStream strm(new MyContentStreamBytes(nbOfBytes, chunked));
 
 		// send stream
-		PRemoteStreams remote = client->remoteStreams;
+		PRemoteStreams remote = client->getRemoteStreams();
 		l_info << L"remote->setImage...";
 		remote->setImage(strm);
 		l_info << L"remote->setImage OK";
@@ -220,7 +220,7 @@ public:
 		TestAsyncResult testResult;
 
 		// send stream
-		PRemoteStreams remote = client->remoteStreams;
+		PRemoteStreams remote = client->getRemoteStreams();
 		l_info << L"remote->setImage...";
 		remote->setImage(strm, [this, remote, nbOfBytes, &testResult](bool, BException ex) {
 

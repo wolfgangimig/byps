@@ -29,4 +29,11 @@ public final class BRequest_FruitService_squeeze extends BMethodRequest implemen
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[FruitService.squeeze(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

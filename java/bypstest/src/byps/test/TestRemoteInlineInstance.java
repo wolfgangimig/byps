@@ -27,7 +27,7 @@ public class TestRemoteInlineInstance {
 	@Before
 	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
-		remote = client.remoteInlineInstance;
+		remote = client.getRemoteInlineInstance();
 	}
 	
 	@After

@@ -62,7 +62,7 @@ public:
 
 	void testRemoteInlineInstance() {
 
-        PRemoteInlineInstance remote = client->remoteInlineInstance;
+        PRemoteInlineInstance remote = client->getRemoteInlineInstance();
 
 		PActor actor = createActor();
 		remote->setActor(actor);
@@ -72,7 +72,7 @@ public:
 
 	void testRemoteInlineInstanceArray1dim() {
 
-        PRemoteInlineInstance remote = client->remoteInlineInstance;
+        PRemoteInlineInstance remote = client->getRemoteInlineInstance();
 
 		byps_ptr<BArray1<Point2D> > arr(new BArray1<Point2D>(2));
 		for (size_t i = 0; i < arr->length(); i++) {
@@ -92,7 +92,7 @@ public:
 
 	void testRemoteInlineInstanceArray4Dim() {
 
-        PRemoteInlineInstance remote = client->remoteInlineInstance;
+        PRemoteInlineInstance remote = client->getRemoteInlineInstance();
 
 		byps_ptr<BArray4<Point2D> > arr(new BArray4<Point2D>(2,3,1,1));
 		for (size_t i3 = 0; i3 < arr->length3(); i3++) {
@@ -125,7 +125,7 @@ public:
 	}
 
 	void testRemoteInlineInstanceList() {
-		PRemoteInlineInstance remote = client->remoteInlineInstance;
+		PRemoteInlineInstance remote = client->getRemoteInlineInstance();
 		byps_ptr<std::vector<Point2D> > vec(new std::vector<Point2D>());
 		vec->push_back(TestUtils::createPoint2D());
 		vec->push_back(TestUtils::createPoint2D());
@@ -138,7 +138,7 @@ public:
 	}
 
 	void testRemoteInlineInstanceListList() {
-		PRemoteInlineInstance remote = client->remoteInlineInstance;
+		PRemoteInlineInstance remote = client->getRemoteInlineInstance();
 		byps_ptr<std::vector<Point2D> > vec(new std::vector<Point2D>());
 		vec->push_back(TestUtils::createPoint2D());
 		vec->push_back(TestUtils::createPoint2D());
@@ -159,7 +159,7 @@ public:
 	}
 
 	void testRemoteInlineInstanceMap() {
-		PRemoteInlineInstance remote = client->remoteInlineInstance;
+		PRemoteInlineInstance remote = client->getRemoteInlineInstance();
 		byps_ptr<std::map<int32_t, Point2D> > map(new std::map<int32_t, Point2D>());
 		(*map)[11] = TestUtils::createPoint2D();
 		(*map)[12] = TestUtils::createPoint2D();

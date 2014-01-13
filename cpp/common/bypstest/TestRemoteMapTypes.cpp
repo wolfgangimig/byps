@@ -40,7 +40,7 @@ public:
 
 	void testRemoteMapTypes() {
 
-        PRemoteMapTypes remote = client->remoteMapTypes;
+        PRemoteMapTypes remote = client->getRemoteMapTypes();
 
 		PMapTypes obj(new MapTypes());
 		obj->boolean1 = toMap(wstring(L"bool1"), true, wstring(L"bool2"), false, wstring(L"bool3"), true);

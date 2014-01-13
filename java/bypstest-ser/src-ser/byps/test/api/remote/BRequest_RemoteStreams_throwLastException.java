@@ -29,4 +29,11 @@ public final class BRequest_RemoteStreams_throwLastException extends BMethodRequ
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteStreams.throwLastException(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

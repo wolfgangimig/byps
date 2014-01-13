@@ -30,4 +30,12 @@ public final class BRequest_RemoteMapTypes_setChar1 extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteMapTypes.setChar1(");
+		s.append(char1);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

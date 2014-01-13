@@ -581,6 +581,7 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		destUrl += new Date().getTime();
 
 		xhr.open(isNegotiate ? 'GET' : 'POST', destUrl, processAsync);
+		xhr.withCredentials = true;
 
 		// XHR supports timeout only for async requests
 		if (processAsync && timeoutMillis > 0) {
@@ -1541,7 +1542,7 @@ byps.BServerR = function(transport, server) {
 
 				}
 				else {
-
+					
 					switch (ex.code) {
 
 					case byps.BExceptionC.SESSION_CLOSED: // Session was invalidated.

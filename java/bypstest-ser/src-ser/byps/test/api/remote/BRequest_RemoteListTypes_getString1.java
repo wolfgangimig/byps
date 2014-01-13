@@ -29,4 +29,11 @@ public final class BRequest_RemoteListTypes_getString1 extends BMethodRequest im
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.getString1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

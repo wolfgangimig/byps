@@ -53,7 +53,7 @@ public:
 
 	void internalTestRemoteArrayPrimitiveTypes() {
 
-        PRemoteArrayTypes1dim remote = client->remoteArrayTypes1dim;
+        PRemoteArrayTypes1dim remote = client->getRemoteArrayTypes1dim();
 
 		std::vector<PPrimitiveTypes> vec;
 		vec.push_back(TestUtils::createObjectPrimitiveTypes());
@@ -85,7 +85,7 @@ public:
 
 	void internalTestRemoteArrayObject() {
 
-        PRemoteArrayTypes1dim remote = client->remoteArrayTypes1dim;
+        PRemoteArrayTypes1dim remote = client->getRemoteArrayTypes1dim();
 
 		std::vector<PSerializable> vec;
 		vec.push_back(TestUtils::createObjectPrimitiveTypes());
@@ -116,7 +116,7 @@ public:
 	}
 
 	void internalTestRemoteArrayTypes1dimString() {
-        PRemoteArrayTypes1dim remote = client->remoteArrayTypes1dim;
+        PRemoteArrayTypes1dim remote = client->getRemoteArrayTypes1dim();
 
 	    byps_ptr<BArray1<std::wstring> > arr(new BArray1<std::wstring>(3));
 		arr->at(0) = L"ABC";
@@ -129,7 +129,7 @@ public:
 	}
 
 	void internalTestRemoteArrayTypes1dimDate() {
-        PRemoteArrayTypes1dim remote = client->remoteArrayTypes1dim;
+        PRemoteArrayTypes1dim remote = client->getRemoteArrayTypes1dim();
 
 	    byps_ptr<BArray1<BDateTime> > arr(new BArray1<BDateTime>(3));
 		arr->at(0) = BDateTime(1600, 01, 01, 00, 00, 00, 000);
@@ -142,7 +142,7 @@ public:
 	}
 
 	void testRemoteArrayTypes1dim() {
-        PRemoteArrayTypes1dim remote = client->remoteArrayTypes1dim;
+        PRemoteArrayTypes1dim remote = client->getRemoteArrayTypes1dim();
 		
 		l_info << L"bool...";
 		{
@@ -224,7 +224,7 @@ public:
 	}
 
 	void testRemoteArrayTypes23() {
-		PRemoteArrayTypes23 remote = client->remoteArrayTypes23;
+		PRemoteArrayTypes23 remote = client->getRemoteArrayTypes23();
 
 		if (true)
 		{
@@ -425,13 +425,13 @@ public:
 		size_t n = 0;
 
 		for (int i = 0; i < loopCount; i++) {
-			POutput outp = client->transport->getOutput();
+			POutput outp = client->getTransport()->getOutput();
 			PSerializable req(new BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(primitiveTypes1));
 			outp->store(req);
 
 			PMessage msg = outp->toMessage();
 
-			PInput inp = client->transport->getInput(msg->header, msg->buf);
+			PInput inp = client->getTransport()->getInput(msg->header, msg->buf);
 			PSerializable resp = inp->load();
 
 			n += resp->BSerializable_getTypeId();
@@ -460,13 +460,13 @@ public:
 
 		t1 = system_clock::now();
 		for (int i = 0; i < loopCount; i++) {
-			client->remoteArrayTypes1dim->setPrimitiveTypes(primitiveTypes1);
+			client->getRemoteArrayTypes1dim()->setPrimitiveTypes(primitiveTypes1);
 		}
 		t2 = system_clock::now();
 
 		t3 = system_clock::now();
 		for (int i = 0; i < loopCount; i++) {
-			client->remoteArrayTypes1dim->getPrimitiveTypes();
+			client->getRemoteArrayTypes1dim()->getPrimitiveTypes();
 		}
 		t4 = system_clock::now();
 

@@ -592,7 +592,7 @@ namespace bypstest
 	    public static void checkTempDirEmpty(BClient client) 
         {
 		    log.info("check temp dir is empty");
-		    String[] tempFiles = client.transport.wire.getTestAdapter().getServerTempFiles();
+		    String[] tempFiles = client.getTransport().getWire().getTestAdapter().getServerTempFiles();
 		    TestUtils.assertEquals(log, "temp files", new String[0], tempFiles);
 	    }
 

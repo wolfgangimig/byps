@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_getFloat extends BMethodRequest
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.getFloat(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

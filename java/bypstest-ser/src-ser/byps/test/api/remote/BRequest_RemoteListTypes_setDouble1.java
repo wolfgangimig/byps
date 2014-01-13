@@ -30,4 +30,12 @@ public final class BRequest_RemoteListTypes_setDouble1 extends BMethodRequest im
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.setDouble1(");
+		s.append(double1);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

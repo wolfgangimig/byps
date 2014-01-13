@@ -31,4 +31,13 @@ public final class BRequest_RemoteConstants_compare_HebrewC extends BMethodReque
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteConstants.compare_HebrewC(");
+		s.append(ALEPH);
+		s.append(",").append(BETH);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

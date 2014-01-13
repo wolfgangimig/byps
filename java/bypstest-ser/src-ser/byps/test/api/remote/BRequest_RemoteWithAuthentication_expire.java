@@ -35,4 +35,12 @@ public final class BRequest_RemoteWithAuthentication_expire extends BMethodReque
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteWithAuthentication.expire(");
+		s.append(sess);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

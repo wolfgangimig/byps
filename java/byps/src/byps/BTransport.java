@@ -9,17 +9,13 @@ import java.util.ArrayList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import byps.BAsyncResult;
-import byps.BException;
-import byps.BTargetId;
-
 public class BTransport {
 
-  public final BApiDescriptor apiDesc;
+  private final BApiDescriptor apiDesc;
 
-  public final BWire wire;
+  private final BWire wire;
 
-  public final BServerRegistry serverRegistry;
+  private final BServerRegistry serverRegistry;
 
   private BTargetId targetId;
 
@@ -47,7 +43,19 @@ public class BTransport {
     
     this.serverRegistry = null;
   }
+  
+  public BWire getWire() {
+    return wire;
+  }
+  
+  public BApiDescriptor getApiDesc() {
+    return apiDesc;
+  }
 
+  public BServerRegistry getServerRegistry() {
+    return serverRegistry;
+  }
+  
   public synchronized void setProtocol(BProtocol protocol) {
     this.protocol = protocol;
   }
@@ -55,7 +63,7 @@ public class BTransport {
   public synchronized BProtocol getProtocol() {
     return protocol;
   }
-
+  
   public synchronized BOutput getOutput() throws BException {
     if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
     BOutput bout = protocol.getOutput(this, null);
@@ -298,7 +306,7 @@ public class BTransport {
   }
 
   protected void forwardMessage(final BClient client, final BTargetId clientTargetId, final Object methodObj, final BAsyncResult<Object> methodResult) throws BException {
-    BOutput bout = client.transport.getOutput();
+    BOutput bout = client.getTransport().getOutput();
     bout.header.targetId = clientTargetId;
     bout.store(methodObj);
     BMessage forwardMessage = bout.toMessage();
@@ -310,7 +318,7 @@ public class BTransport {
             methodResult.setAsyncResult(null, ex);
           }
           else {
-            BInput bin = client.transport.getInput(result.header, result.buf);
+            BInput bin = client.getTransport().getInput(result.header, result.buf);
             Object obj = bin.load();
             methodResult.setAsyncResult(obj, null);
           }
@@ -320,7 +328,7 @@ public class BTransport {
       }
     };
 
-    client.transport.wire.send(forwardMessage, messageResult);
+    client.getTransport().wire.send(forwardMessage, messageResult);
   }
 
   public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) {

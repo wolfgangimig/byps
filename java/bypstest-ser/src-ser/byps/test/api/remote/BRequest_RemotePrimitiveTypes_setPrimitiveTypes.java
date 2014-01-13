@@ -30,4 +30,12 @@ public final class BRequest_RemotePrimitiveTypes_setPrimitiveTypes extends BMeth
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.setPrimitiveTypes(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

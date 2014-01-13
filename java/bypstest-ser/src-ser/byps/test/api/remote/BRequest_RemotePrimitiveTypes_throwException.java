@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_throwException extends BMethodR
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.throwException(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

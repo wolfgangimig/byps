@@ -1,17 +1,5 @@
 package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import byps.BException;
-import byps.BExceptionC;
-import byps.BInput;
-import byps.BInputBin;
-import byps.BOutput;
-import byps.BOutputBin;
-import byps.BRemote;
-import byps.BSerializer;
-import byps.BServerRegistry;
-import byps.BTargetId;
-import byps.BTransport;
-import byps.RemoteException;
 
 
 /**
@@ -40,7 +28,7 @@ public class BSerializer_16 extends BSerializer {
 		BInputBin bin = ((BInputBin)bin1);
 		BRemote remote = null;
 		final BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer());
-		final BServerRegistry rreg = bin.transport.serverRegistry;
+		final BServerRegistry rreg = bin.transport.getServerRegistry();
 		if (rreg != null) {
 			try {
 				remote = rreg.getRemote(targetId, typeId);

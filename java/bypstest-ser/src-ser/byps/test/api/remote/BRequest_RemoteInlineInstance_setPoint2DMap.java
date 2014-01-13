@@ -30,4 +30,12 @@ public final class BRequest_RemoteInlineInstance_setPoint2DMap extends BMethodRe
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteInlineInstance.setPoint2DMap(");
+		s.append(pointMap);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

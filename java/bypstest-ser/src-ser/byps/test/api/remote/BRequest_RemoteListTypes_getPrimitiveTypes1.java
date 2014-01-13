@@ -29,4 +29,11 @@ public final class BRequest_RemoteListTypes_getPrimitiveTypes1 extends BMethodRe
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.getPrimitiveTypes1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

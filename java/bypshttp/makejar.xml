@@ -6,6 +6,13 @@
             <fileset dir="D:/git/byps/java/byps/bin"/>
             <fileset dir="D:/git/byps/java/byps-api/bin"/>
             <fileset dir="D:/git/byps/java/byps-override/bin"/>
+        	
+            <fileset includes="**/*.java" dir="D:/git/byps/java/bypshttp/src"/>
+            <fileset includes="**/*.java" dir="D:/git/byps/java/byps/src"/>
+            <fileset includes="**/*.java" dir="D:/git/byps/java/byps/src-ser-bin"/>
+            <fileset includes="**/*.java" dir="D:/git/byps/java/byps/src-ser-json"/>
+            <fileset includes="**/*.java" dir="D:/git/byps/java/byps-api/bin"/>
+
         </jar>
         <copy file="D:/java/lib/apache-log4j-1.2.15/log4j-1.2.15.jar" todir="d:/java/lib/byps"/>
         <copy file="D:/java/lib/commons-logging-1.1.1/commons-logging-1.1.1.jar" todir="d:/java/lib/byps"/>

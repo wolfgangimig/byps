@@ -30,4 +30,12 @@ public final class BRequest_RemotePrimitiveTypes_setDouble extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.setDouble(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

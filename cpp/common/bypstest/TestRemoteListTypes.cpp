@@ -40,7 +40,7 @@ public:
 
 	void testPrimitiveTypes() {
 
-        PRemoteListTypes remote = client->remoteListTypes;
+        PRemoteListTypes remote = client->getRemoteListTypes();
 
 		PListTypes obj(new ListTypes());
 		obj->boolean1 = toVector(true, false, false, true);
@@ -126,7 +126,7 @@ public:
 
 	void testRemoteListListInteger() {
 		
-		PRemoteListTypes remote = client->remoteListTypes;
+		PRemoteListTypes remote = client->getRemoteListTypes();
 
 		auto obj =  byps_ptr< std::vector< byps_ptr< std::vector< int32_t > > > >(new  std::vector< byps_ptr< std::vector< int32_t > > >());
 
@@ -156,7 +156,7 @@ public:
 
 	void testRemoteListMapSetListInteger() {
 		
-		PRemoteListTypes remote = client->remoteListTypes;
+		PRemoteListTypes remote = client->getRemoteListTypes();
 
 		byps_ptr< std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > > obj(
 			new std::vector< byps_ptr< std::map< int32_t , byps_ptr< std::vector< byps_ptr< std::set< int32_t > > > > > > > ());

@@ -79,7 +79,7 @@ BINLINE void BContentStream::serialize(BIO& bio, POBJECT& , PSerializable& pObjS
 		if (!pObjS) {
 			int64_t streamId = 0;
 			bio & streamId;
-			pObjS = bio.transport->wire->getStream(bio.header.messageId, streamId);
+			pObjS = bio.transport->getWire()->getStream(bio.header.messageId, streamId);
 		}
 	}
 	else {

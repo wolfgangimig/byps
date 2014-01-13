@@ -29,4 +29,11 @@ public final class BRequest_RemotePrimitiveTypes_getDate extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.getDate(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

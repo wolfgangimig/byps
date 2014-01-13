@@ -89,7 +89,7 @@ public class TestRemoteArrays {
 		TestUtils.protocol = protocol;
 		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, flags, BApiDescriptor_Testser.VERSION);
 		
-		client.transport.wire.clearStatistics();
+		client.getTransport().getWire().clearStatistics();
 
 		PrimitiveTypes[] primitiveTypes1 = new PrimitiveTypes[objCount];
 		for (int i = 0; i < primitiveTypes1.length; i++) {
@@ -98,17 +98,17 @@ public class TestRemoteArrays {
 		
 		long t1 = System.currentTimeMillis();
 		for (int i = 0; i < loopCount; i++) {
-			client.remoteArrayTypes1dim.setPrimitiveTypes(primitiveTypes1);
+			client.getRemoteArrayTypes1dim().setPrimitiveTypes(primitiveTypes1);
 		}
 		long t2 = System.currentTimeMillis();
 		
 		long t3 = System.currentTimeMillis();
 		for (int i = 0; i < loopCount; i++) {
-			client.remoteArrayTypes1dim.getPrimitiveTypes();
+			client.getRemoteArrayTypes1dim().getPrimitiveTypes();
 		}
 		long t4 = System.currentTimeMillis();
 
-		BWire.Statistics stats = client.transport.wire.getStatistics();
+		BWire.Statistics stats = client.getTransport().getWire().getStatistics();
 		
 		client.done();
 		
@@ -128,7 +128,7 @@ public class TestRemoteArrays {
 		log.info("testRemoteArrayTypes1dim(");
 
 		RemoteArrayTypes1dim remote;
-		remote = client.remoteArrayTypes1dim;
+		remote = client.getRemoteArrayTypes1dim();
 
 		boolean[] boolean1 = new boolean[] {true, false, true};
 		byte[] byte1 = new byte[] {1,2,3};
@@ -177,7 +177,7 @@ public class TestRemoteArrays {
 		log.info("testRemoteArrayTypes4dim(");
 
 		RemoteArrayTypes4dim remote;
-		remote = client.remoteArrayTypes4dim;
+		remote = client.getRemoteArrayTypes4dim();
 
 		ArrayTypes4dim obj = new ArrayTypes4dim();
 		obj.boolean4 = new boolean[][][][] {{{{true}}}};
@@ -256,7 +256,7 @@ public class TestRemoteArrays {
 			arr1[2] = arr4[1][1][1][1];
 			
 			RemoteArrayTypes23 remote;
-			remote = client.remoteArrayTypes23;
+			remote = client.getRemoteArrayTypes23();
 			
 			int[] arrR = remote.sendArraysInt(arr2, arr3, arr4);
 			TestUtils.assertEquals(log,  "int", arr1, arrR);
@@ -286,7 +286,7 @@ public class TestRemoteArrays {
 			arr1[2] = arr4[1][1][1][1];
 			
 			RemoteArrayTypes23 remote;
-			remote = client.remoteArrayTypes23;
+			remote = client.getRemoteArrayTypes23();
 			
 			String[] arrR = remote.sendArraysString(arr2, arr3, arr4);
 			TestUtils.assertEquals(log,  "String", arr1, arrR);
@@ -316,7 +316,7 @@ public class TestRemoteArrays {
 			arr1[2] = arr4[1][1][1][1];
 		
 			RemoteArrayTypes23 remote;
-			remote = client.remoteArrayTypes23;
+			remote = client.getRemoteArrayTypes23();
 			
 			PrimitiveTypes[] arrR = remote.sendArraysClass(arr2, arr3, arr4);
 			TestUtils.assertEquals(log,  "PrimitiveTypes", arr1, arrR);
@@ -346,7 +346,7 @@ public class TestRemoteArrays {
 			arr1[2] = arr4[1][1][1][1];
 		
 			RemoteArrayTypes23 remote;
-			remote = client.remoteArrayTypes23;
+			remote = client.getRemoteArrayTypes23();
 			
 			Object[] arrR = remote.sendArraysObject(arr2, arr3, arr4);
 			TestUtils.assertEquals(log,  "Object", arr1, arrR);
@@ -376,7 +376,7 @@ public class TestRemoteArrays {
 			arr1[2] = arr4[1][1][1][1];
 		
 			RemoteArrayTypes23 remote;
-			remote = client.remoteArrayTypes23;
+			remote = client.getRemoteArrayTypes23();
 			
 			Point2D[] arrR = remote.sendArraysInline(arr2, arr3, arr4);
 			TestUtils.assertEquals(log,  "Point2D", arr1, arrR);

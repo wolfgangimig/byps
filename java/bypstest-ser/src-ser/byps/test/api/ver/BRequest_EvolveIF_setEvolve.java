@@ -30,4 +30,12 @@ public final class BRequest_EvolveIF_setEvolve extends BMethodRequest implements
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[EvolveIF.setEvolve(");
+		s.append(obj);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

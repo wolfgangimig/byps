@@ -30,4 +30,12 @@ public final class BRequest_EvolveIF_setClient extends BMethodRequest implements
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[EvolveIF.setClient(");
+		s.append(partner);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

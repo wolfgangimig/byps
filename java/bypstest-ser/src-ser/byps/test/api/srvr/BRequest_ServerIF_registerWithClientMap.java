@@ -30,4 +30,12 @@ public final class BRequest_ServerIF_registerWithClientMap extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ServerIF.registerWithClientMap(");
+		s.append(id);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

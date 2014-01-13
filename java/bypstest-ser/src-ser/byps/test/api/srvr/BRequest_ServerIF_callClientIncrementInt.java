@@ -30,4 +30,12 @@ public final class BRequest_ServerIF_callClientIncrementInt extends BMethodReque
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ServerIF.callClientIncrementInt(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

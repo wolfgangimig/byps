@@ -9,13 +9,15 @@ namespace byps {
 using namespace ::std;
 
 class BClient : public byps_enable_shared_from_this<BClient> {
+protected:
+	PTransport transport;
 public:
-    const PTransport transport;
 
     BClient(PTransport transport, PServerR serverR);
     virtual ~BClient();
 
     virtual PRemote getStub(int remoteId) = 0;
+	virtual PTransport getTransport();
 
 	void start();
 
@@ -26,7 +28,6 @@ public:
 #endif
 
     virtual void done();
-
 	virtual void setAuthentication(PAuthentication auth);
 	virtual PAuthentication getAuthentication();
 

@@ -30,4 +30,12 @@ public final class BRequest_RemotePrimitiveTypes_setDate extends BMethodRequest 
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.setDate(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

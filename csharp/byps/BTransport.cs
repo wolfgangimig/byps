@@ -8,11 +8,11 @@ namespace byps
 {
     public class BTransport
     {
-        public readonly BWire wire;
+        protected BWire wire;
 	
-	    public readonly BApiDescriptor apiDesc;
+	    protected BApiDescriptor apiDesc;
 	
-	    public readonly BRemoteRegistry remoteRegistry;
+	    protected BRemoteRegistry remoteRegistry;
 
         private BTargetId targetId;
 
@@ -65,6 +65,21 @@ namespace byps
             {
                 return targetId;
             }
+        }
+
+        public virtual BWire getWire()
+        {
+            return wire;
+        }
+
+        public virtual BApiDescriptor getApiDesc() 
+        {
+            return apiDesc;
+        }
+
+        public virtual BRemoteRegistry getRemoteRegistry()
+        {
+            return remoteRegistry;
         }
 
         public BOutput getOutput()  {

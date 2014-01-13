@@ -17,7 +17,7 @@ public:
 	TestRemoteEnums(void* app) : TestBase(app) {}
 
 	void testRemoteEnums() {
-        PRemoteEnums remote = client->remoteEnums;
+        PRemoteEnums remote = client->getRemoteEnums();
         remote->setPlanet(EnumPlanets::Earth);
         EnumPlanets v = remote->getPlanet();
         TASSERT(L"enum", EnumPlanets::Earth, v);

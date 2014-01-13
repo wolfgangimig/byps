@@ -74,7 +74,7 @@ public:
 
 	void testPrimitiveTypes() {
 
-        PRemoteSetTypes remote = client->remoteSetTypes;
+        PRemoteSetTypes remote = client->getRemoteSetTypes();
 
 		PSetTypes obj(new SetTypes());
 		obj->boolean1 = toSet(true, false, false, true);

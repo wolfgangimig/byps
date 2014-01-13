@@ -30,4 +30,12 @@ public final class BRequest_RemotePrimitiveTypes_setObject extends BMethodReques
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.setObject(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

@@ -171,7 +171,7 @@ namespace bypstest
 
             public bool isReloginException(BClient client, Exception ex, int typeId)
             {
-                return client.transport.isReloginException(ex, typeId);
+                return client.getTransport().isReloginException(ex, typeId);
             }
 
             public void getSession(BClient client, int typeId, BAsyncResult<Object> asyncResult)

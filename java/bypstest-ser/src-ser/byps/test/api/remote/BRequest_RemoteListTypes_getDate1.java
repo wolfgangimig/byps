@@ -29,4 +29,11 @@ public final class BRequest_RemoteListTypes_getDate1 extends BMethodRequest impl
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteListTypes.getDate1(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

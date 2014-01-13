@@ -29,4 +29,11 @@ public final class BRequest_BioLemonService_useParing extends BMethodRequest imp
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[BioLemonService.useParing(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

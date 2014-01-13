@@ -30,4 +30,12 @@ public final class BRequest_RemotePrimitiveTypes_setFloat extends BMethodRequest
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemotePrimitiveTypes.setFloat(");
+		s.append(v);
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

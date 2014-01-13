@@ -29,4 +29,11 @@ public final class BRequest_RemoteStreams_getImages extends BMethodRequest imple
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[RemoteStreams.getImages(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }

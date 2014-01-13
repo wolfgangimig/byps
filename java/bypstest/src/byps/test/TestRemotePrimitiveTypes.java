@@ -30,7 +30,7 @@ public class TestRemotePrimitiveTypes {
 	@Before
 	public void setUp() throws RemoteException {
 		client = TestUtilsHttp.createClient();
-		remote = client.remotePrimitiveTypes;
+		remote = client.getRemotePrimitiveTypes();
 	}
 	
 	@After

@@ -29,4 +29,11 @@ public final class BRequest_ServerIF_getPartner extends BMethodRequest implement
 		}
 	}	
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[ServerIF.getPartner(");
+		s.append(")]");
+		return s.toString();
+	}
+	
 }
