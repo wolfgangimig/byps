@@ -9,11 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import byps.BAsyncResult;
-import byps.BException;
-import byps.BRemote;
-import byps.BTargetId;
-
 public class BServer {
 	
 	public final BTransport transport;
@@ -47,6 +42,10 @@ public class BServer {
 			remotes.put(remoteId, remoteImpl);
 			remoteImpl.BSkeleton_setTargetId(transport.getTargetId());
 		}
+	}
+	
+	public BSkeleton getRemote(int remoteId) {
+	  return remotes.get(remoteId);
 	}
 	
 	public BProtocol negotiate(BTargetId targetId, ByteBuffer in, final BAsyncResult<ByteBuffer> asyncResult) throws Throwable {
