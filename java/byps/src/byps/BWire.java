@@ -353,7 +353,11 @@ public class BWire {
 	  return 0;
 	}
 	
-	protected SecureRandom rand;
+  public String toString() {
+    return "[]";
+  }
+
+  protected SecureRandom rand;
 	protected Object sess;
 	protected int flags;
 	private final Log log = LogFactory.getLog(BWire.class);

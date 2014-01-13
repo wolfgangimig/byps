@@ -510,7 +510,7 @@ public class BTransport {
   }
 
   public String toString() {
-    return "[" + targetId + "]";
+    return "[" + targetId + ", wire=" + wire + "]";
   }
   
   protected boolean internalIsReloginException(Throwable ex, int typeId) {
@@ -579,8 +579,8 @@ public class BTransport {
   /**
    * Last authentication result is assumed to be valid for this time.
    */
-  protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000; 
-
+  protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+  
   private final Log log = LogFactory.getLog(BTransport.class);
 
 }

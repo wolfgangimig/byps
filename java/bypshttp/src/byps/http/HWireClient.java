@@ -1349,4 +1349,10 @@ public class HWireClient extends BWire {
     }
     return sbuf.toString();
 	}
+	
+  public String toString() {
+    return "[url=" + surl + "]";
+  }
+  
+	
 }
