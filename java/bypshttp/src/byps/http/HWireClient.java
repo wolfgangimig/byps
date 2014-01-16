@@ -279,7 +279,6 @@ public class HWireClient extends BWire {
 						// Send the message 
 						try {
 							RequestToCancel messageRequest = createRequestForMessage(msg, asyncResult);
-							requests.add(messageRequest);
 							executeRequest(messageRequest);
 						} catch (BException e) {
 							asyncResult.setAsyncResult(null, e);
