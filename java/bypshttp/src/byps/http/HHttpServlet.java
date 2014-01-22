@@ -379,7 +379,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
               // ---------- execute Message ------------------
               final BServer server = sess.getServer();
-              final BTransport transport = server.transport;
+              final BTransport transport = server.getTransport();
 
               if (HConstants.PROCESS_MESSAGE_ASYNC) {
                 transport.recv(server, msg, asyncResponse);
@@ -488,7 +488,7 @@ public abstract class HHttpServlet extends HttpServlet {
         try {
           BServer server = sess.getServer();
 
-          BProtocol protocol = server.negotiate(server.transport.getTargetId(), ibuf, asyncResponse);
+          BProtocol protocol = server.negotiate(server.getTransport().getTargetId(), ibuf, asyncResponse);
 
           // Teile dem Reverse-Client das ausgehandelte Protokoll mit.
           // Server und ClientR müssen dasselbe Protokoll verwenden, andernfalls

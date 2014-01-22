@@ -95,7 +95,12 @@ public class BTransport {
   }
   
   protected <T> void assignSessionThenSendMethod(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
-    if (authentication != null) {
+    
+    if (protocol == null) {
+      Throwable exception = new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
+      asyncResult.setAsyncResult(null, exception);
+    }
+    else if (authentication != null) {
 
       try {
         final int typeId = protocol.getRegistry().getSerializer(methodRequest, true).typeId;

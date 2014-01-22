@@ -110,7 +110,22 @@ public abstract class HSession
       hsess.invalidate();
     }
 
-    wireServer.done();
+    // HWireServer.done() could interrupt the current thread.
+    // Delete the interrupt signal that might be set in this function.
+    // If the thread has already been interrupted before, interrupt it after 
+    // done() again.
+        
+    boolean intrp = Thread.currentThread().isInterrupted();
+    try { 
+      wireServer.done(); 
+      synchronized(wireServer) { wireServer.wait(1); }
+    } catch (InterruptedException ignored) {
+    }
+    
+    if (intrp) { 
+      Thread.currentThread().interrupt();
+    }
+    
     wireClientR.done();
 
     if (log.isDebugEnabled()) log.debug(")done");
@@ -161,7 +176,12 @@ public abstract class HSession
   }
   
   public BClient getClientR() {
-    return getServer().clientR;
+    return getServer().getClientR();
+  }
+  
+  public String toString() {
+    BServer server = getServer();
+    return "[user=" + remoteUser + ", targetId=" + server.getTargetId() + ", JSESSIONID=" + httpSess + "]";
   }
 
 //  private void writeObject(java.io.ObjectOutputStream out)
