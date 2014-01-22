@@ -115,6 +115,11 @@ public class CompatibleClassDB {
 		  if (sinfo.isResultClass()) continue;
 		  if (sinfo.isRequestClass()) continue;
 		  
+		  // Collection classes or arrays need not to be checked,
+		  // because they do not change.
+		  if (sinfo.isCollectionType()) continue;
+		  if (sinfo.isArrayType()) continue;
+		  
 			String fullName = sinfo.toString();
 			SerialInfo sinfoP = prevClassDB.getSerInfo(fullName);
 			
@@ -224,11 +229,11 @@ public class CompatibleClassDB {
     else if (since == 0) {
       viols.add(qname + ": missing @since tag for " + memberName + ". Value " + BVersioning.longToString(ver) + " is expected.");
     }
-    else if (since < verP) {
-      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
-    }
-    else if (since > ver) {
-      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be less than or equal to the current API version=" + BVersioning.longToString(ver));
+//    else if (since <= verP) {
+//      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
+//    }
+    else if (since != ver) {
+      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be equal to current API version=" + BVersioning.longToString(ver));
     }
 	}
 	
