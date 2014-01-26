@@ -634,7 +634,7 @@ public class TestSerializePrimitiveTypes {
 			bout.store(obj);
 			buf = bout.toByteBuffer();
 			os = new ByteArrayOutputStream();
-			transport.getWire().bufferToStream(buf, os);
+			BWire.bufferToStream(buf, (transport.getWire().getFlags() & BWire.FLAG_GZIP) != 0, os);
 		}
 		long t2 = System.currentTimeMillis();
 		bytesCount = (long)loopCount * buf.remaining();

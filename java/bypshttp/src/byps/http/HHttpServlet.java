@@ -464,7 +464,7 @@ public abstract class HHttpServlet extends HttpServlet {
           else {
             resp.setContentType("application/json");
             OutputStream os = resp.getOutputStream();
-            sess.wireServer.bufferToStream(obuf, os);
+            BWire.bufferToStream(obuf, false, os);
           }
 
         } catch (Throwable ex) {

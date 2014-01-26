@@ -7,8 +7,15 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ 
   AllTestsMEDIUM.class,
+  AllTestsJSON.class,
   AllTestsMEDIUM.class,
+  AllTestsJSON.class,
   AllTestsMEDIUM.class,
+  AllTestsJSON.class,
+  AllTestsMEDIUM.class,
+  AllTestsJSON.class,
+  AllTestsMEDIUM.class,
+  AllTestsJSON.class,
 
   
   })

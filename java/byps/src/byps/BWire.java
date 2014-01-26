@@ -18,9 +18,6 @@ import java.util.zip.GZIPOutputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import byps.BAsyncResult;
-import byps.BException;
-
 /**
  * An object of this class sends and receives bytes.
  * 
@@ -118,8 +115,8 @@ public class BWire {
      * @param os
      * @throws IOException
      */
-    public void bufferToStream(ByteBuffer buf, OutputStream os) throws IOException {
-    	if ((flags & FLAG_GZIP) != 0) {
+    public static void bufferToStream(ByteBuffer buf, boolean gzip, OutputStream os) throws IOException {
+    	if (gzip) {
     		os = new GZIPOutputStream(os);
     	}
     	

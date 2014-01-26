@@ -446,7 +446,7 @@ public class TestRemoteStreams {
 
       @Override
       public void onReceivedContentType(String contentType) {
-        TestUtils.assertEquals(log, "stream length", "application/octet-stream", contentType);
+        TestUtils.assertEquals(log, "stream content type", "application/octet-stream", contentType);
         waitForFinished.countDown();
       }
 
