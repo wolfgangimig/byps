@@ -11,8 +11,8 @@ import org.apache.commons.logging.LogFactory;
 
 public class BServer {
 	
-	public final BTransport transport;
-	public final BClient clientR;
+	protected final BTransport transport;
+	protected final BClient clientR;
 	
 	protected final Map<Integer, BSkeleton> remotes;
 	
@@ -103,5 +103,14 @@ public class BServer {
 		if (log.isDebugEnabled()) log.debug(")recv");
 	}
 
+  public BTransport getTransport() {
+    return transport;
+  }
+  
+  public BClient getClientR() {
+    return clientR;
+  }
+  
 	private final Log log = LogFactory.getLog(BServer.class);
+
 }
