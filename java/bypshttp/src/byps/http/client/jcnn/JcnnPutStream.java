@@ -161,7 +161,7 @@ public class JcnnPutStream extends JcnnRequest {
         
         int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
         try {
-          statusCode = conn.getResponseCode();
+          statusCode = getResponseCode(conn);
           if (statusCode != HttpURLConnection.HTTP_OK) {
             throw new IOException("HTTP " + statusCode); 
           }

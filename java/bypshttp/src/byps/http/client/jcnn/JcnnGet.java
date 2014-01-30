@@ -44,7 +44,7 @@ public class JcnnGet extends JcnnRequest {
       c.setRequestProperty("Accept", "application/json, application/byps, text/plain, text/html");
       c.setRequestProperty("Accept-Encoding", "gzip");
 
-      statusCode = c.getResponseCode();
+      statusCode = getResponseCode(c);
 
       if (statusCode != HttpURLConnection.HTTP_OK) {
         throw new IOException("HTTP status " + statusCode);

@@ -56,7 +56,7 @@ public class JcnnPost extends JcnnRequest {
       BWire.bufferToStream(buf, isJson, osbc);
       if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
       
-      statusCode = c.getResponseCode();
+      statusCode = getResponseCode(c);
 
       if (statusCode != HttpURLConnection.HTTP_OK) {
         throw new IOException("HTTP status " + statusCode);

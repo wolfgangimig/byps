@@ -44,7 +44,7 @@ public class JcnnGetStream extends JcnnRequest {
 
       c.setRequestMethod("GET");
 
-      statusCode = c.getResponseCode();
+      statusCode = getResponseCode(c);
 
       if (statusCode != HttpURLConnection.HTTP_OK) {
         throw new IOException("HTTP status " + statusCode);
