@@ -35,7 +35,6 @@ import byps.BWire;
 import byps.http.client.HHttpClient;
 import byps.http.client.HHttpClientFactory;
 import byps.http.client.HHttpRequest;
-import byps.http.client.HHttpSessionManager;
 import byps.http.client.jcnn.JcnnClientFactory;
 
 public class HWireClient extends BWire {
@@ -96,10 +95,10 @@ public class HWireClient extends BWire {
    *          created.
    * @see BWire#FLAG_GZIP
    */
-  public HWireClient(String url, int flags, int timeoutSeconds, HHttpSessionManager sessionManager, Executor threadPool) {
+  public HWireClient(String url, int flags, int timeoutSeconds, Executor threadPool) {
     super(flags);
     
-    if (log.isDebugEnabled()) log.debug("HWireClient(" + url + ", flags=" + flags + ", timeoutSeconds=" + timeoutSeconds + ", sessionManager=" + sessionManager + ", threadPool=" + threadPool);
+    if (log.isDebugEnabled()) log.debug("HWireClient(" + url + ", flags=" + flags + ", timeoutSeconds=" + timeoutSeconds + ", threadPool=" + threadPool);
 
     if (url == null || url.length() == 0) throw new IllegalStateException("Missing URL");
 
@@ -135,11 +134,8 @@ public class HWireClient extends BWire {
       throw new IllegalStateException(e);
     }
 
-    // Create the HTTP client object and supply a session manager.
-    if (sessionManager == null) sessionManager = fact.createSessionManager();
-    
     if (log.isDebugEnabled()) log.debug("createHttpClient...");
-    this.httpClient = fact.createHttpClient(url, sessionManager);
+    this.httpClient = fact.createHttpClient(url);
     if (log.isDebugEnabled()) log.debug("createHttpClient OK, " + this.httpClient);
 
     if (log.isDebugEnabled()) log.debug(")HWireClient");
@@ -873,14 +869,6 @@ public class HWireClient extends BWire {
     return ret;
   }
 
-  void applySession(HHttpRequest req) {
-    this.httpClient.getSessionManager().applySession(req);
-  }
-
-  void saveSession(HHttpRequest req) {
-    this.httpClient.getSessionManager().saveSession(req);
-  }
-
   @Override
   public synchronized Statistics getStatistics() {
     return new Statistics(stats);
@@ -956,4 +944,7 @@ public class HWireClient extends BWire {
     return "[url=" + surl + "]";
   }
 
+  public HHttpClient getHttpClient() {
+    return this.httpClient;
+  }
 }
