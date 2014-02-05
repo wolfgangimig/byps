@@ -2,7 +2,6 @@ package byps.http.client.asf;
 
 import byps.http.client.HHttpClient;
 import byps.http.client.HHttpClientFactory;
-import byps.http.client.HHttpSessionManager;
 
 public class AsfClientFactory implements HHttpClientFactory {
   

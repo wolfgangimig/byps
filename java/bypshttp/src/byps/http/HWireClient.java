@@ -940,4 +940,7 @@ public class HWireClient extends BWire {
     return "[url=" + surl + "]";
   }
 
+  public HHttpClient getHttpClient() {
+    return this.httpClient;
+  }
 }
