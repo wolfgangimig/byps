@@ -62,7 +62,7 @@ public class TestUtilsHttp {
 		
 		myDesc.addRegistry(registry);
 
-		BWire wire = new HWireClient(url, flags, 600, null, tpool);
+		BWire wire = new HWireClient(url, flags, 600, tpool);
 		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 1); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
@@ -76,7 +76,7 @@ public class TestUtilsHttp {
 	
 	public static BClient_Testser createClient2() throws RemoteException {
 		
-		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, null, tpool);
+		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, tpool);
 		
 		final BTransportFactory transportFactory = new HTransportFactoryClient(
 				BApiDescriptor_Testser.instance(), wire, 3); 

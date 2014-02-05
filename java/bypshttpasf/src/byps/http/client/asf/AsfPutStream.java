@@ -1,16 +1,20 @@
-package byps.http.client.jcnn;
+package byps.http.client.asf;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.CloseableHttpClient;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -19,16 +23,16 @@ import byps.BExceptionC;
 import byps.BWire;
 import byps.BWire.OutputStreamByteCount;
 
-public class JcnnPutStream extends JcnnRequest {
+public class AsfPutStream extends AsfRequest {
   
-  private Log log = LogFactory.getLog(JcnnPutStream.class);
+  private Log log = LogFactory.getLog(AsfPutStream.class);
   private final InputStream stream;
   private final BAsyncResult<ByteBuffer> asyncResult;
   private final static int CHUNK_SIZE = 10 * 1000;
   private final static int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE; // should be a multiple of CHUNK_SIZE
 
-  protected JcnnPutStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
-    super(url, cookieManager);
+  protected AsfPutStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient) {
+    super(url, httpClient);
     this.stream = stream;
     this.asyncResult = asyncResult;
   }
@@ -57,33 +61,6 @@ public class JcnnPutStream extends JcnnRequest {
         contentType = BContentStream.DEFAULT_CONTENT_TYPE;
       }
       if (log.isDebugEnabled()) log.debug("Content-Type=" + contentType);
-      
-        // Cannot use neither setFixedLengthStreamingMode nor setChunkedStreamMode
-        // due to a concurrency bug in JVM, Bug ID 9005601
-        // Concurrent requests with setFixedLengthStreamingMode or setChunkedStreamMode
-        // cause Socket read timeout exceptions in Tomcat.
-      
-//        if (contentLength >= 0) {
-//          conn.setFixedLengthStreamingMode((int)contentLength);
-//          try {
-//            conn.setFixedLengthStreamingMode(contentLength);
-//            if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
-//          }
-//          catch (NoSuchMethodError ignored) { // Java 6
-//            if (contentLength <= Integer.MAX_VALUE) {
-//              conn.setFixedLengthStreamingMode((int)contentLength);
-//              if (log.isDebugEnabled()) log.debug("Content-Length=" + contentLength);
-//            }
-//            else {
-//              conn.setChunkedStreamingMode(CHUNK_SIZE); 
-//              if (log.isDebugEnabled()) log.debug("Content-Length > 2GB, Java 6 -> Chunked-Encoding");
-//            }
-//          }
-//        }
-//        else {
-//          if (log.isDebugEnabled()) log.debug("Content-Length < 0 -> Chunked-Encoding");
-//          conn.setChunkedStreamingMode(CHUNK_SIZE); // Chunked-Encoding + AsyncServlet erst ab Tomcat 7.0.28: https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
-//        }
         
       
       // Compute number of stream parts
@@ -127,8 +104,54 @@ public class JcnnPutStream extends JcnnRequest {
           .append("&total=").append(totalLength);
           
         if (log.isDebugEnabled()) log.debug("open connection, url=" + destUrl);
+       
+        request = new HttpPut(url);
+        applyTimeout();
         
-        HttpURLConnection conn = createConnection(destUrl.toString());
+        HttpEntity entity = new HttpEntity() {
+
+          public void consumeContent() throws IOException {
+            throw new IOException(new UnsupportedOperationException());
+          }
+
+          public InputStream getContent() throws IOException, IllegalStateException {
+            throw new IllegalStateException();
+          }
+
+          public Header getContentEncoding() {
+            return null;
+          }
+
+          public long getContentLength() {
+            return buf.remaining();
+          }
+
+          public Header getContentType() {
+            return null;
+          }
+
+          public boolean isChunked() {
+            return false;
+          }
+
+          public boolean isRepeatable() {
+            return true;
+          }
+
+          public boolean isStreaming() {
+            return false;
+          }
+
+          public void writeTo(OutputStream os) throws IOException {
+            int pos = buf.position();
+            BWire.bufferToStream(buf, isJson, os);
+            buf.position(pos); // to be repeatable
+          }
+          
+        };
+        
+        ((HttpPost)request).setEntity(entity);
+        
         OutputStream os = null;
         OutputStreamByteCount osbc = null;
         

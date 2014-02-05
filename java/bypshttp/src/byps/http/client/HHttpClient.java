@@ -67,11 +67,4 @@ public interface HHttpClient {
    */
   public HHttpRequest putStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult);
 
-  /**
-   * Get the session manager object. This objects stores the application server
-   * session.
-   * 
-   * @return Session manager object.
-   */
-  public HHttpSessionManager getSessionManager();
 }

@@ -7,16 +7,8 @@ public interface HHttpClientFactory {
    * 
    * @param url
    *          URL, only server and port is required.
-   * @param sessionManager
-   *          An object to handle application server sessions.
    * @return
    */
-  HHttpClient createHttpClient(String url, HHttpSessionManager sessionManager);
+  HHttpClient createHttpClient(String url);
 
-  /**
-   * Create session manager object.
-   * This object stores the application server session ID.
-   * @return session manager object.
-   */
-  HHttpSessionManager createSessionManager();
 }

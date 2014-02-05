@@ -2,6 +2,7 @@ package byps.http.client.jcnn;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
@@ -16,7 +17,6 @@ import byps.BExceptionC;
 import byps.BMessageHeader;
 import byps.BWire;
 import byps.BWire.OutputStreamByteCount;
-import byps.http.client.HHttpSessionManager;
 
 public class JcnnPost extends JcnnRequest {
 
@@ -24,8 +24,8 @@ public class JcnnPost extends JcnnRequest {
   private final ByteBuffer buf;
   private final BAsyncResult<ByteBuffer> asyncResult;
   
-  protected JcnnPost(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, HHttpSessionManager sessManager) {
-    super(url, sessManager);
+  protected JcnnPost(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
+    super(url, cookieManager);
     this.buf = buf;
     this.asyncResult = asyncResult;
   }
@@ -62,7 +62,7 @@ public class JcnnPost extends JcnnRequest {
         throw new IOException("HTTP status " + statusCode);
       }
 
-      sessionManager.saveSession(this);
+      saveSession(this);
 
       is = c.getInputStream();
 

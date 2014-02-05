@@ -1,14 +1,19 @@
-package byps.http.client.jcnn;
+package byps.http.client.asf;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
 
 import byps.BAsyncResult;
 import byps.BBufferJson;
@@ -16,46 +21,52 @@ import byps.BException;
 import byps.BExceptionC;
 import byps.BWire;
 
-public class JcnnGet extends JcnnRequest {
+public class AsfGet extends AsfRequest {
 
-  private Log log = LogFactory.getLog(JcnnGet.class);
+  private Log log = LogFactory.getLog(AsfGet.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
-
-  protected JcnnGet(String url, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
-    super(url, cookieManager);
+  
+  protected AsfGet(String url, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient) {
+    super(url, httpClient);
     this.asyncResult = asyncResult;
   }
 
   @Override
   public void run() {
-    HttpURLConnection c = null;
+    
+    request = new HttpGet(url);
+    applyTimeout();
+    
+    CloseableHttpResponse response = null; 
     InputStream is = null;
     ByteBuffer returnBuffer = null;
     Throwable returnException = null;
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
-
+    
     try {
-      c = createConnection(url);
 
-      c.setDoInput(true);
-      c.setDoOutput(false);
+      request.setHeader("Accept", "application/json, application/byps, text/plain, text/html");
+      request.setHeader("Accept-Encoding", "gzip");
 
-      c.setRequestMethod("GET");
-      c.setRequestProperty("Accept", "application/json, application/byps, text/plain, text/html");
-      c.setRequestProperty("Accept-Encoding", "gzip");
+      response = httpClient.execute(request);
 
-      statusCode = getResponseCode(c);
-
+      statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK) {
         throw new IOException("HTTP status " + statusCode);
       }
 
-      saveSession(this);
+      HttpEntity entity = response.getEntity();
 
-      is = c.getInputStream();
+      boolean gzip = false;
+      {
+        Header header = entity.getContentEncoding();
+        if (header != null) {
+          String enc = header.getValue();
+          gzip = enc != null && enc.equals("gzip");
+        }
+      }
 
-      String enc = c.getHeaderField("Content-Encoding");
-      boolean gzip = enc != null && enc.equals("gzip");
+      is = response.getEntity().getContent();
 
       if (log.isDebugEnabled()) log.debug("read stream");
       ByteBuffer obuf = BWire.bufferFromStream(is, gzip);
@@ -76,17 +87,6 @@ public class JcnnGet extends JcnnRequest {
     }
     catch (IOException e) {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
-
-      try {
-        if (c != null) {
-          is = c.getErrorStream();
-          BWire.bufferFromStream(is, false);
-          is = null;
-        }
-      }
-      catch (IOException ignored) {
-      }
-
       returnException = new BException(statusCode, "Send message failed", e);
     }
     finally {
@@ -98,11 +98,20 @@ public class JcnnGet extends JcnnRequest {
         }
       }
       
+      if (response != null) {
+        try {
+          response.close();
+        }
+        catch (IOException e) {
+        }
+      }
+      
       asyncResult.setAsyncResult(returnBuffer, returnException);
       done();
     }
 
     
   }
+
 
 }

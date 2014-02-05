@@ -1,49 +1,37 @@
-package byps.http.client.jcnn;
+package byps.http.client.asf;
 
 import java.io.IOException;
-import java.net.CookieManager;
-import java.net.CookieStore;
-import java.net.HttpCookie;
 import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.impl.client.CloseableHttpClient;
 
-import byps.BException;
-import byps.BExceptionC;
 import byps.http.client.HHttpRequest;
 
-public abstract class JcnnRequest implements HHttpRequest {
+public abstract class AsfRequest implements HHttpRequest {
 
   protected AtomicReference<HttpURLConnection> conn = new AtomicReference<HttpURLConnection>();
   protected String url;
-  protected BException ex;
-  protected CookieManager cookieManager;
+  protected CloseableHttpClient httpClient;
+  protected volatile HttpRequestBase request;
   protected int connectTimeoutSeconds;
   protected int sendRecvTimeoutSeconds;
   protected AtomicBoolean cancelled = new AtomicBoolean();
-  private Log log = LogFactory.getLog(JcnnRequest.class);
+  private Log log = LogFactory.getLog(AsfRequest.class);
   
   /**
    * HTTP status code. 
    */
   private int responseCode = -1;
 
-  protected JcnnRequest(String url, CookieManager cookieManager) {
+  protected AsfRequest(String url, CloseableHttpClient httpClient) {
     this.url = url;
-    this.cookieManager = cookieManager;
-  }
-
-  protected HttpURLConnection createConnection(String destUrl) throws IOException {
-    if (cancelled.get()) throw new BException(BExceptionC.CANCELLED, "Request cancelled");
-    HttpURLConnection c = (HttpURLConnection) new URL(destUrl).openConnection();
-    conn.set(c);
-    applySession(this);
-    return c;
+    this.httpClient = httpClient;
   }
 
   @Override
@@ -56,6 +44,9 @@ public abstract class JcnnRequest implements HHttpRequest {
   public void cancel() {
     if (log.isDebugEnabled()) log.debug("cancel(");
     cancelled.set(true);
+    if (request != null) {
+      request.abort();
+    }
     done();
     if (log.isDebugEnabled()) log.debug(")cancel");
   }
@@ -66,18 +57,6 @@ public abstract class JcnnRequest implements HHttpRequest {
   }
 
   public void done() {
-    if (log.isDebugEnabled()) log.debug("done(" + this);
-    HttpURLConnection c = conn.getAndSet(null);
-    if (c != null) {
-      if (log.isDebugEnabled()) log.debug("disconnect");
-      try {
-        c.disconnect();
-      }
-      catch (Throwable npe) {
-      }
-      c = null;
-    }
-    if (log.isDebugEnabled()) log.debug(")done");
   }
 
   /**
@@ -151,29 +130,12 @@ public abstract class JcnnRequest implements HHttpRequest {
 
   }
   
-  public void applySession(HHttpRequest req1) {
-    JcnnRequest req = (JcnnRequest)req1;
-    HttpURLConnection c = req.conn.get();
-    if (c != null) {
-      CookieStore cookies = cookieManager.getCookieStore();
-      for (HttpCookie cookie : cookies.getCookies()) {
-        c.setRequestProperty("Cookie", cookie.toString());
-      }
-    }
+  protected void applyTimeout() {
+    RequestConfig.Builder requestBuilder = RequestConfig.custom();
+    requestBuilder = requestBuilder.setConnectTimeout(this.connectTimeoutSeconds);
+    requestBuilder = requestBuilder.setConnectionRequestTimeout(this.connectTimeoutSeconds);
+    requestBuilder = requestBuilder.setSocketTimeout(this.sendRecvTimeoutSeconds);
+    request.setConfig(requestBuilder.build());
   }
 
-  public void saveSession(HHttpRequest req1) {
-    JcnnRequest req = (JcnnRequest)req1;
-    HttpURLConnection c = req.conn.get();
-    if (c != null) {
-      try {
-        URI uri = new URI(req.url);
-        cookieManager.put(uri, c.getHeaderFields());
-      }
-      catch (Exception e) {
-        req.ex = new BException(BExceptionC.IOERROR, "Cannot set session cookie.", e);
-      }
-    }
-  }
-  
 }

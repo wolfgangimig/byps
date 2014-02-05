@@ -5,17 +5,10 @@ import byps.http.client.HHttpClientFactory;
 import byps.http.client.HHttpSessionManager;
 
 public class AsfClientFactory implements HHttpClientFactory {
-
+  
   @Override
-  public HHttpClient createHttpClient(String url, HHttpSessionManager sessionManager) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public HHttpSessionManager createSessionManager() {
-    // TODO Auto-generated method stub
-    return null;
+  public HHttpClient createHttpClient(String url) {
+    return new AsfClient(url);
   }
 
 }

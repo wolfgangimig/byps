@@ -2,6 +2,7 @@ package byps.http.client.jcnn;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 
@@ -14,15 +15,14 @@ import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BWire;
-import byps.http.client.HHttpSessionManager;
 
 public class JcnnGetStream extends JcnnRequest {
 
   private Log log = LogFactory.getLog(JcnnGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
-  protected JcnnGetStream(String url, BAsyncResult<BContentStream> asyncResult, HHttpSessionManager sessManager) {
-    super(url, sessManager);
+  protected JcnnGetStream(String url, BAsyncResult<BContentStream> asyncResult, CookieManager cookieManager) {
+    super(url, cookieManager);
     this.asyncResult = asyncResult;
   }
 
@@ -92,7 +92,7 @@ public class JcnnGetStream extends JcnnRequest {
       }
       public void close() throws IOException {
         super.close();
-        done();
+        JcnnGetStream.this.done();
       }
     };
 
