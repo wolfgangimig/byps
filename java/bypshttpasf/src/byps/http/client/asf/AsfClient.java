@@ -2,8 +2,6 @@ package byps.http.client.asf;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.nio.ByteBuffer;
 
 import org.apache.http.impl.client.CloseableHttpClient;

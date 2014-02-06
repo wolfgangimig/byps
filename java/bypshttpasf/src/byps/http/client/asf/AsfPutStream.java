@@ -5,13 +5,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.SocketException;
 import java.nio.ByteBuffer;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -21,7 +24,6 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BWire;
-import byps.BWire.OutputStreamByteCount;
 
 public class AsfPutStream extends AsfRequest {
   
@@ -40,8 +42,8 @@ public class AsfPutStream extends AsfRequest {
   @Override
   public void run() {
     
-    BException returnException = null;
-    
+    Throwable returnException = null;
+
     try {
       
       // Try to get content type and stream length
@@ -87,8 +89,10 @@ public class AsfPutStream extends AsfRequest {
         
         // Read the first chunk to find out, 
         // wether it is the last part to be sent.
-        byte[] buf = new byte[CHUNK_SIZE];
-        int len = stream.read(buf, 0, buf.length);
+        ByteBuffer bbuf = ByteBuffer.allocate(CHUNK_SIZE);
+        ReadableByteChannel ch = Channels.newChannel(stream);
+        bbuf.limit(CHUNK_SIZE);
+        int len = ch.read(bbuf);
         
         if (totalLength >= 0) {
           lastPart = partId == nbOfParts-1;
@@ -96,120 +100,34 @@ public class AsfPutStream extends AsfRequest {
         else {
           lastPart = len < CHUNK_SIZE;
         }
-        
-        StringBuilder destUrl = new StringBuilder();
-        destUrl.append(url)
-          .append("&partid=").append(partId)
-          .append("&last=").append(lastPart ? 1 : 0)
-          .append("&total=").append(totalLength);
-          
-        if (log.isDebugEnabled()) log.debug("open connection, url=" + destUrl);
-       
-        request = new HttpPut(url);
-        applyTimeout();
-        
-        HttpEntity entity = new HttpEntity() {
 
-          public void consumeContent() throws IOException {
-            throw new IOException(new UnsupportedOperationException());
-          }
+        // Read part in memory.
+        // This allows to obtain Content-Length header.
+        while (len != -1 && bbuf.position() < MAX_STREAM_PART_SIZE) {
 
-          public InputStream getContent() throws IOException, IllegalStateException {
-            throw new IllegalStateException();
+          // Need to enlarge buffer?
+          if (bbuf.remaining() == 0) {
+            
+            // Allocate new buffer, capacity is 10x larger
+            int cap = Math.min(MAX_STREAM_PART_SIZE, bbuf.capacity() * 10);
+            ByteBuffer nbuf = ByteBuffer.allocate(cap);
+            bbuf.flip();
+            nbuf.put(bbuf);
+            bbuf = nbuf;
           }
+         
+          // Check whether request was cancelled
+          if (isCancelled()) throw new BException(BExceptionC.CANCELLED, "");
 
-          public Header getContentEncoding() {
-            return null;
-          }
-
-          public long getContentLength() {
-            return buf.remaining();
-          }
-
-          public Header getContentType() {
-            return null;
-          }
-
-          public boolean isChunked() {
-            return false;
-          }
-
-          public boolean isRepeatable() {
-            return true;
-          }
-
-          public boolean isStreaming() {
-            return false;
-          }
-
-          public void writeTo(OutputStream os) throws IOException {
-            int pos = buf.position();
-            BWire.bufferToStream(buf, isJson, os);
-            buf.position(pos); // to be repeatable
-          }
-          
-        };
-        
-        ((HttpPost)request).setEntity(entity);
-        
-        OutputStream os = null;
-        OutputStreamByteCount osbc = null;
-        
-        conn.setConnectTimeout(super.connectTimeoutSeconds * 1000);
-        conn.setReadTimeout(sendRecvTimeoutSeconds * 1000);
-  
-        conn.setDoInput(true);
-        conn.setDoOutput(true);
-        conn.setRequestMethod("PUT");
-        conn.setRequestProperty("Content-Type", contentType);
-        
-        applySession(this);
-        
-        if (log.isDebugEnabled()) log.debug("write to output stream");
-        
-        os = osbc = new OutputStreamByteCount(conn.getOutputStream());      
-        
-        long sum = 0;
-        while (len != -1) {
-          os.write(buf, 0, len);
-          sum += len;
-          if (sum >= MAX_STREAM_PART_SIZE) break;
-          len = stream.read(buf, 0, buf.length);
+          // Read into buffer, reads up to bbuf.remaining() bytes and sets position.  
+          len = ch.read(bbuf);
         }
+        bbuf.flip();
         
-        os.flush();
-        os.close();
-        os = null;
-        if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
+        // Send request
+        sendPart(partId, lastPart, totalLength, contentType, bbuf);
         
-        int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
-        try {
-          statusCode = getResponseCode(conn);
-          if (statusCode != HttpURLConnection.HTTP_OK) {
-            throw new IOException("HTTP " + statusCode); 
-          }
-          
-          InputStream isResp = conn.getInputStream();
-          BWire.bufferFromStream(isResp, false); // closes isResp
-        }
-        catch (SocketException e) {
-          if (log.isDebugEnabled()) log.debug("received exception=" + e);
-          returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
-        }
-        catch (IOException e) {
-          if (log.isDebugEnabled()) log.debug("Failed to read response", e);
-          InputStream errStrm = conn.getErrorStream();
-          BWire.bufferFromStream(errStrm, false);
-          
-          throw new BException(statusCode, "Put stream failed", e);
-        }
-        finally {
-          if (conn != null) {
-            conn.disconnect();
-          }
-        }
-  
-      }
+      }        
     }
     catch (BException e) {
       // thrown in RequestToCancel.setConnection
@@ -236,6 +154,102 @@ public class AsfPutStream extends AsfRequest {
       
       asyncResult.setAsyncResult(null, returnException);
       done();
+    }
+    
+  }
+
+  /**
+   * Send bytes to the server by HTTP PUT.
+   * @param partId 
+   * @param islastPart
+   * @param totalLength
+   * @param contentType
+   * @param bbuf
+   * @throws BException
+   * @throws IOException
+   * @throws ClientProtocolException
+   */
+  private void sendPart(long partId, boolean lastPart, long totalLength, String contentType, final ByteBuffer bbuf) throws BException, IOException, ClientProtocolException {
+    
+    StringBuilder destUrl = new StringBuilder();
+    destUrl.append(url)
+      .append("&partid=").append(partId)
+      .append("&last=").append(lastPart ? 1 : 0)
+      .append("&total=").append(totalLength);
+    if (log.isDebugEnabled()) log.debug("open connection, url=" + destUrl);
+      
+    if (isCancelled()) {
+      throw new BException(BExceptionC.CANCELLED, "");
+    }
+    
+    HttpEntity entity = new HttpEntity() {
+
+      public void consumeContent() throws IOException {
+        throw new IOException(new UnsupportedOperationException());
+      }
+
+      public InputStream getContent() throws IOException, IllegalStateException {
+        throw new IllegalStateException();
+      }
+
+      public Header getContentEncoding() { return null; }
+
+      public long getContentLength() {  
+        return bbuf.remaining();
+      }
+
+      public Header getContentType() {
+        return null;
+      }
+
+      public boolean isChunked() {
+        return false;
+      }
+
+      public boolean isRepeatable() {
+        return true;
+      }
+
+      public boolean isStreaming() {
+        return false;
+      }
+
+      public void writeTo(OutputStream os) throws IOException {
+        int pos = bbuf.position();
+        BWire.bufferToStream(bbuf, false, os);
+        bbuf.position(pos); // to be repeatable
+      }
+      
+    };
+    
+    CloseableHttpResponse response = null;
+    
+    try {
+
+      request = new HttpPut(destUrl.toString());
+      request.setHeader("Content-Type", contentType);
+      applyTimeout();
+      
+      ((HttpPut)request).setEntity(entity);
+      response = httpClient.execute(request);
+      
+      request = null;
+ 
+      // Check status code.
+      int statusCode = response.getStatusLine().getStatusCode();
+      if (statusCode != HttpURLConnection.HTTP_OK) {
+        throw new IOException("HTTP status " + statusCode);
+      }
+      
+    }
+    finally {
+      if (response != null) {
+        try {
+          response.close();
+        }
+        catch (IOException e) {
+        }
+      }
     }
     
   }

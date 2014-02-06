@@ -53,7 +53,6 @@ public class AsfPost extends AsfRequest {
       request.setHeader("Accept", "application/json, application/byps");
       request.setHeader("Accept-Encoding", "gzip");
       request.setHeader("Content-Type", contentType);
-      request.setHeader("Content-Length", Integer.toString(buf.remaining()));
       if (isJson) request.setHeader("Content-Encoding", "gzip");
       
       HttpEntity entity = new HttpEntity() {

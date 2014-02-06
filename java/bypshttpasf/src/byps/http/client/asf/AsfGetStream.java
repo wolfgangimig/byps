@@ -79,12 +79,15 @@ public class AsfGetStream extends AsfRequest {
       this.ex = ex;
       this.entity = entity;
       this.response = response;
-      Header header = entity.getContentType();
-      contentType = header != null ? header.getValue() : BContentStream.DEFAULT_CONTENT_TYPE;
-      contentLength = entity.getContentLength();
+      if (ex == null) {
+        Header header = entity.getContentType();
+        contentType = header != null ? header.getValue() : BContentStream.DEFAULT_CONTENT_TYPE;
+        contentLength = entity.getContentLength();
+      }
     }
 
     public InputStream ensureStream() throws IOException {
+      if (ex != null) throw ex;
       return entity.getContent();
     }
 
