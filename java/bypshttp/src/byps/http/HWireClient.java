@@ -37,6 +37,13 @@ import byps.http.client.HHttpClientFactory;
 import byps.http.client.HHttpRequest;
 import byps.http.client.jcnn.JcnnClientFactory;
 
+/**
+ * BWire implementation for HTTP.
+ * By default, this class uses HttpURLConnection to communicate with the server.  
+ * Set 
+ * <code>System.setProperty(HWireClient.SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY, "byps.http.client.asf.AsfClientFactory");</code>
+ * in order to send messages by Apache HTTP Components 4.3.2.
+ */
 public class HWireClient extends BWire {
 
   /**
