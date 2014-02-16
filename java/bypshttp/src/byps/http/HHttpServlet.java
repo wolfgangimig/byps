@@ -351,19 +351,25 @@ public abstract class HHttpServlet extends HttpServlet {
       final BMessageHeader header = new BMessageHeader();
       header.read(ibuf);
 
-      final boolean isClientR = (header.flags & BMessageHeader.FLAG_RESPONSE) != 0;
+      final boolean isClientR = (header.flags & BMessageHeader.FLAG_LONGPOLL) != 0;
 
       if (log.isDebugEnabled()) log.debug("longpoll=" + isClientR);
 
       final BMessage msg = new BMessage(header, ibuf, null);
 
       if (isClientR) {
-        rctxt = createRequestContext(request, response, HConstants.PROCESS_LONGPOLL_ASYNC);
+        rctxt = createRequestContext(request, response, true);
+        
+        long timeout = (header.flags & BMessageHeader.FLAG_TIMEOUT) != 0 ? (header.timeoutSeconds * 1000) : HConstants.TIMEOUT_LONGPOLL_MILLIS;
+        if (log.isDebugEnabled()) log.debug("set timeout=" + timeout);
+        rctxt.setTimeout(timeout);
+
         final BAsyncResult<BMessage> asyncResponse = sess.wireServer.addMessage(header, rctxt, null);
         sess.wireClientR.recvLongPoll(msg, asyncResponse);
       }
       else {
         final HRequestContext rctxt2 = rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
+        
         final Runnable run = new Runnable() {
           public void run() {
 
@@ -416,7 +422,13 @@ public abstract class HHttpServlet extends HttpServlet {
           }
         };
 
-        if (log.isDebugEnabled()) log.debug("start async");
+        // Set request timeout
+        long timeout = (header.flags & BMessageHeader.FLAG_TIMEOUT) != 0 ? (header.timeoutSeconds * 1000) : HConstants.REQUEST_TIMEOUT_MILLIS;
+        if (log.isDebugEnabled()) log.debug("set timeout=" + timeout);
+        rctxt.setTimeout(timeout);
+        
+        // Start request
+        if (log.isDebugEnabled()) log.debug("start sync/async");
         rctxt.start(run);
       }
 
@@ -513,22 +525,6 @@ public abstract class HHttpServlet extends HttpServlet {
 
   private HRequestContext createRequestContext(HttpServletRequest request, HttpServletResponse response, boolean async) {
     final HRequestContext rctxt = async ? new HAsyncContext(request.startAsync(request, response)) : new HSyncContext(request, response);
-
-    // Asynchronous requests are only used for reverse HTTP calls.
-    // They are under control of the HWireClientR object of the session.
-    // This object stores the request context in a map for the next reverse
-    // request.
-    // If no reverse request is made for a certain time (timeout time),
-    // the HWireClientR object has to release the context.
-    // Killing the context by a timeout would not remove it from
-    // the HWireClientR object.
-    // Thus, set the request timeout for Tomcat to a large value.
-    // The request timeout for long-polls is HConstants.TIMEOUT_LONGPOLL_MILLIS
-    // which should be
-    // less than HConstants.REQUEST_TIMEOUT_MILLIS.
-
-    rctxt.setTimeout(HConstants.REQUEST_TIMEOUT_MILLIS);
-
     return rctxt;
   }
 
@@ -548,6 +544,7 @@ public abstract class HHttpServlet extends HttpServlet {
       if (log.isDebugEnabled()) log.debug("start async, timeout=" + HConstants.REQUEST_TIMEOUT_MILLIS);
 
       final HRequestContext rctxt = createRequestContext(request, response, HConstants.PROCESS_PUT_STREAM_ASYNC);
+      rctxt.setTimeout(HConstants.REQUEST_TIMEOUT_MILLIS);
 
       try {
         sess.wireServer.activeMessages.addIncomingStream(messageId, streamId, rctxt);

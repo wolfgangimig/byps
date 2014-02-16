@@ -17,6 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BMessageHeader;
 import byps.BStreamRequest;
 
 public class HActiveMessages {
@@ -64,34 +65,38 @@ public class HActiveMessages {
 	
 	/**
 	 * This function is called when a new message arrives in onPost
-	 * @param messageId
+	 * @param header
 	 * @param rctxt
 	 * @param workerThread 
 	 * @throws BException
 	 */
-	public void addMessage(final Long messageId, final HRequestContext rctxt, Thread workerThread) throws BException {
-		if (log.isDebugEnabled()) log.debug("addMessage(" + messageId + ", rctxt=" + rctxt);
-		HActiveMessage msg = getOrCreateActiveMessage(messageId);
+	public void addMessage(final BMessageHeader header, final HRequestContext rctxt, Thread workerThread) throws BException {
+		if (log.isDebugEnabled()) log.debug("addMessage(" + header + ", rctxt=" + rctxt);
+		HActiveMessage msg = getOrCreateActiveMessage(header.messageId);
 		
 		HAsyncErrorListener alsn = new HAsyncErrorListener() {
+		  
 			@Override
 			public void onTimeout(AsyncEvent arg0) throws IOException {
-				if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onTimeout(" + arg0 + ")");
-				//HRequestContext rctxt = getAndRemoveRequestContext(messageId); is null
-				
-				// The request should not be killed by a timeout.
-				// It is still hold by a HWireClientR object.
-				// The HWireClientR object releases requests after a 
-				// certain time to prevent timeout errors.
-				
+			  
+	      HRequestContext rctxt = getAndRemoveRequestContext(header.messageId);
+	      if (rctxt == null) return;
+	       
 				HttpServletResponse resp = (HttpServletResponse)arg0.getSuppliedResponse();
-				resp.setStatus(HttpServletResponse.SC_REQUEST_TIMEOUT);
+				
+				boolean isLongPoll = (header.flags & BMessageHeader.FLAG_LONGPOLL) != 0;
+				int status = isLongPoll ? HttpServletResponse.SC_NO_CONTENT : HttpServletResponse.SC_REQUEST_TIMEOUT;
+				resp.setStatus(status);
+				  
 				resp.getOutputStream().close();
+				
+        if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onTimeout(" + arg0 + ") status=" + status);
 			}
+			
 			@Override
 			public void onError(AsyncEvent arg0) throws IOException {
 				if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onError(" + arg0 + ")");
-				getAndRemoveRequestContext(messageId);
+				getAndRemoveRequestContext(header.messageId);
 			}
 		};
 		rctxt.addListener(alsn);

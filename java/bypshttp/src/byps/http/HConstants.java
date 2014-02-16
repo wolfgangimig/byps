@@ -35,6 +35,9 @@ public class HConstants {
    * The client application (HServerR object) has to ignore this response
    * and has to send a new long-poll.
    * This value should be less than {@link #REQUEST_TIMEOUT_MILLIS}.
+   * The client application can override this value by setting 
+   * appropriate values in BMessageHeader. This is applied in byps.js 
+   * for browser clients, where a timeout of 30s is passed.
    */
   public final static long TIMEOUT_LONGPOLL_MILLIS = 5 * 60 * 1000L;
 
@@ -55,11 +58,6 @@ public class HConstants {
    * TestRemoteStreams.testRemoteStreamsCloseStreamAfterSend.
    */
   public final static boolean PROCESS_PUT_STREAM_ASYNC = false;
-
-  /**
-   * Process reverse HTTP calls asynchronously.
-   */
-  public final static boolean PROCESS_LONGPOLL_ASYNC = true;
 
   /**
    * Process messages asynchronously.

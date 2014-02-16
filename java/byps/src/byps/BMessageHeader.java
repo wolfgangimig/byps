@@ -5,9 +5,6 @@ package byps;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import byps.BException;
-import byps.BTargetId;
-
 
 /**
  * Stream Header
@@ -33,7 +30,10 @@ public class BMessageHeader {
 	private final static int MAGIC_JSON_SINGLE_QUOTE = ((int)'{' << 24) | ((int)'\'' << 16) | ((int)'h' << 8) | ((int)'e');
 		
 	//public final static int FLAG_STREAM = 1;
-	public final static int FLAG_RESPONSE = 2;
+	public final static int FLAG_RESPONSE = 2; 
+	public final static int FLAG_LONGPOLL = 2;
+	public final static int FLAG_TIMEOUT = 4;
+	public final static int FLAG_LONGPOLL_WITH_TIMEOUT = FLAG_LONGPOLL + 4;
 	
 	public int magic;
 	public int error;
@@ -41,6 +41,14 @@ public class BMessageHeader {
 	public long version;
 	public BTargetId targetId;
 	public long messageId;
+	
+	/**
+	 * Timeout.
+	 * This field is only valid if {@link #flags} contains {@link #FLAG_TIMEOUT}.
+	 */
+	public int timeoutSeconds;
+	
+	
 //	public long streamId; // if (flags & FLAG_STREAM)
 	//public BInt128 sessionId;
 	
@@ -73,6 +81,7 @@ public class BMessageHeader {
 		this.messageId = rhs.messageId;
 //		this.streamId = rhs.streamId;
 		this.targetId = rhs.targetId;
+		this.timeoutSeconds = rhs.timeoutSeconds;
 	}
 	
 	public final BMessageHeader createResponse() {
@@ -139,6 +148,9 @@ public class BMessageHeader {
 //			buf.putLong(streamId);
 //		}
 		
+		if ((flags & FLAG_TIMEOUT) != 0) {
+		  buf.putInt(timeoutSeconds);
+		}
 	}
 
 	protected void writeJson(BBufferJson bbuf) {
@@ -147,6 +159,11 @@ public class BMessageHeader {
 		bbuf.putInt("flags", flags);
 		bbuf.putString("targetId", targetId.toString());
 		bbuf.putLong("messageId", messageId);
+   
+		if ((flags & FLAG_TIMEOUT) != 0) {
+      bbuf.putInt("timeout", timeoutSeconds);
+    }
+
 		bbuf.endObject();
 	}
 	
@@ -159,6 +176,11 @@ public class BMessageHeader {
 //		if (isStreamRequest()) {
 //			streamId = buf.getLong();
 //		}
+		
+    if ((flags & FLAG_TIMEOUT) != 0) {
+      timeoutSeconds = buf.getInt();
+    }
+
 	}
 	
 	public final void read(ByteBuffer buf) throws BException {
@@ -199,6 +221,10 @@ public class BMessageHeader {
 		targetId = BTargetId.parseString(targetIdStr);
 
 		messageId = jsonObj.getLong("messageId");
+		
+		if ((flags & FLAG_TIMEOUT) != 0) {
+		  timeoutSeconds = jsonObj.getInt("timeout");
+		}
 	}
 	
 //	public final boolean isStreamRequest() {
@@ -213,6 +239,7 @@ public class BMessageHeader {
 			.append(", version=").append(version)
 			.append(", targetId=").append(targetId)
 			.append(", messageId=").append(messageId)
+			.append(", timeout=").append(timeoutSeconds)
 			.append(", messageObject=").append(messageObject)
 			.append("]");
 		return sbuf.toString();

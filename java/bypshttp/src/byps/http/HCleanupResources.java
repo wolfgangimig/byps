@@ -23,33 +23,35 @@ public class HCleanupResources {
 		this.cleanupThread.interrupt();
 	}
 	
-    private class MyCleanupThread extends Thread {
-    	
-    	public MyCleanupThread() {
-    		setName("cleanup-resources");
-    		setDaemon(true);
-    	}
-    	
-    	@Override
-    	public void run() {
-    		Log log = LogFactory.getLog(HCleanupResources.class);
-       		try {
-	    		while (!Thread.interrupted()) {
-	    			Thread.sleep(HConstants.CLEANUP_MILLIS);
-	    			
-	    			ArrayList<HSession> arrSessions = new ArrayList<HSession>(sessions.values());
-	    			for (HSession sess : arrSessions) {
-	    		    	sess.removeExpiredResources();
-	    			}
-	    			
-	    		}
-    		}
-    		catch (InterruptedException e) {
-    		}
-    		catch (Throwable e) {
-    			log.error("Unexpected exception in cleanup-thread: ", e);
-    		}
-    	}
+  private class MyCleanupThread extends Thread {
+
+    public MyCleanupThread() {
+      setName("cleanup-resources");
+      setDaemon(true);
     }
+
+    @Override
+    public void run() {
+      Log log = LogFactory.getLog(HCleanupResources.class);
+      try {
+        while (!Thread.interrupted()) {
+          Thread.sleep(HConstants.CLEANUP_MILLIS);
+          
+          try {
+            ArrayList<HSession> arrSessions = new ArrayList<HSession>(sessions.values());
+            for (HSession sess : arrSessions) {
+              sess.removeExpiredResources();
+            }
+          }
+          catch (Throwable e) {
+            log.error("Unexpected exception in cleanup-thread: ", e);
+          }
+
+        }
+      }
+      catch (InterruptedException e) {
+      }
+    }
+  }
 
 }
