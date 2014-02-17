@@ -12,6 +12,10 @@ import byps.BContentStream;
 import byps.http.client.HHttpClient;
 import byps.http.client.HHttpRequest;
 
+/**
+ * HHttpClient implementation using Apache HTTP Components.
+ *
+ */
 public class AsfClient implements HHttpClient {
   
   private CloseableHttpClient httpclient;

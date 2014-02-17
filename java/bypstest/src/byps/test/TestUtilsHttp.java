@@ -29,17 +29,22 @@ public class TestUtilsHttp {
 
 	private static Log log = LogFactory.getLog(TestUtilsHttp.class);
 	
+	//public static String url = "http://www.wilutions.com/bypstest-srv/bypsservlet";
 	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
 	public static String url2 = "http://localhost:5080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	
 	private static Executor tpool = Executors.newCachedThreadPool();
 	
-	public static BClient_Testser createClient() throws RemoteException {
-		return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
-	}
-	
-	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, long appVersion) throws RemoteException {
+  public static BClient_Testser createClient() throws RemoteException {
+    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, 1);
+  }
+  
+  public static BClient_Testser createClient(int nbOfReverseRequests) throws RemoteException {
+    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, nbOfReverseRequests);
+  }
+  
+	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, long appVersion, int nbOfReverseRequests) throws RemoteException {
 		
 		BRegistry registry = null;
 		
@@ -63,7 +68,7 @@ public class TestUtilsHttp {
 		myDesc.addRegistry(registry);
 
 		BWire wire = new HWireClient(url, flags, 600, tpool);
-		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, 1); 
+		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, nbOfReverseRequests); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
 
@@ -94,7 +99,6 @@ public class TestUtilsHttp {
 	public static ArrayList<InputStream> makeTestStreams() throws IOException {
 		log.info("makeTestStreams(");
 		ArrayList<InputStream> ret = new ArrayList<InputStream>();
-		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, true));
 		ret.add(new TestUtils.MyContentStream(0, true));
 		ret.add(new TestUtils.MyContentStream(1, true));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER-1, true));

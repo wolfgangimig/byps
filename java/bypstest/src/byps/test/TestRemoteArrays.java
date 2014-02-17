@@ -87,7 +87,7 @@ public class TestRemoteArrays {
 	
 	private void internalTestPerformance(BBinaryModel protocol, int flags, int loopCount, int objCount) throws RemoteException {
 		TestUtils.protocol = protocol;
-		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, flags, BApiDescriptor_Testser.VERSION);
+		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, flags, BApiDescriptor_Testser.VERSION, 1);
 		
 		client.getTransport().getWire().clearStatistics();
 

@@ -165,7 +165,10 @@ public class TestRemoteServerR {
 	public void testCallClientFromServerParallel() throws RemoteException {
 		log.info("testCallClientFromServerParallel(");
 		
+		int nbOfReverseRequests = 10;
+		
 		// (1) Provide implementation for interface ClientIF
+		BClient_Testser client = TestUtilsHttp.createClient(nbOfReverseRequests);
 		client.addRemote(new BSkeleton_ClientIF() {
 			@Override
 			public int incrementInt(int a) throws RemoteException {
@@ -176,7 +179,7 @@ public class TestRemoteServerR {
 					throw new BException(BExceptionC.CANCELLED, e.toString(), e);
 				}
 				log.info(")incrementInt");
-				return a+1;
+				return 1;
 			}
 		});
 		
@@ -184,7 +187,7 @@ public class TestRemoteServerR {
 		// On the server, this method calls the client-side interface 
 		// from step (1)
 		log.info("callClientIncrementInt...");
-		int r = remote.callClientParallel(10);
+		int r = client.getServerIF().callClientParallel(nbOfReverseRequests);
 		log.info("callClientIncrementInt OK");
 		
 		TestUtils.assertEquals(log, "callClientParallel", 10, r);
@@ -771,10 +774,10 @@ public class TestRemoteServerR {
 		log.info("testJsonClientCallsBinClient(");
 		
 		// First client
-		BClient_Testser clientJson = TestUtilsHttp.createClient(BProtocolJson.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
+		BClient_Testser clientJson = TestUtilsHttp.createClient(BProtocolJson.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, 1);
 		
 		// Create second client
-		BClient_Testser clientBin = TestUtilsHttp.createClient(BProtocolS.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION);
+		BClient_Testser clientBin = TestUtilsHttp.createClient(BProtocolS.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, 1);
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
 			public int incrementInt(int a) throws RemoteException {

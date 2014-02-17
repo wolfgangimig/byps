@@ -25,7 +25,7 @@
 			chatMsg.receivedAt = new Date().getTime();
 			
 			var textarea = document.getElementById("txRecvMsgs");
-			textarea.value += "{" + chatMsg.msg + ", sentAt=" + new Date(chatMsg.sentAt) + "}";
+			textarea.value += "\n\n{" + chatMsg.msg + ", sentAt=" + new Date(chatMsg.sentAt) + "}";
 			
 			return chatMsg;
 		}
@@ -146,7 +146,7 @@
 
 		<tr>
 			<td>
-				<table border="2">
+				<table border="2" width="100%">
 					<tr>
 						<td colspan="3">Send Form</td>
 					</tr>
@@ -157,7 +157,7 @@
 					</tr>
 					<tr>
 						<td>Select other ID:</td>
-						<td><select id="lbClientIds" size="3"></select></td>
+						<td><select id="lbClientIds" size="3" ></select></td>
 						<td><input type="button" value="Refresh" onclick="onRefreshClientIds()" /></td>
 					</tr>
 					<tr>
@@ -166,7 +166,7 @@
 						<td><input type="button" value="Send" onclick="onSend()" /></td>
 					</tr>
 					<tr>
-						<td colspan="3">Acknowledgment: <input id="edRecv" /></td>
+						<td colspan="3">Acknowledgment: <input id="edRecv" size="50"/></td>
 					</tr>
 				</table>
 			</td>

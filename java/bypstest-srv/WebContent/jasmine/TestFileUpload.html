@@ -12,7 +12,8 @@
 	var url = "/bypstest-srv/bypsservlet";
 	var wire = new byps.BWireClient(url, 0, 60);
 	var transportFactory = new byps.BTransportFactory(byps.test.api.BApiDescriptor_Testser.instance(), wire);
-	var client = com.wilutions.jsfs.createClient_Testser(transportFactory);
+	var client = byps.test.api.createClient_Testser(transportFactory);
+	client.start();
   </script>
 
 </head>
