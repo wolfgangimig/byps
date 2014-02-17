@@ -210,13 +210,13 @@ public class HWireClient extends BWire {
   public synchronized void send(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
     // internalSendMessageAndStreams(msg, asyncResult,
     // this.timeoutSecondsClient);
-    internalSendStreamsThenMessage(msg, asyncResult);
+    internalSendMessageAndStreams(msg, asyncResult);
   }
 
   @Override
   public void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult) {
     // internalSendMessageAndStreams(msg, asyncResult, 0);
-    internalSendStreamsThenMessage(msg, asyncResult);
+    internalSendMessageAndStreams(msg, asyncResult);
   }
 
   protected void executeRequest(RequestToCancel r) throws BException {
@@ -262,14 +262,12 @@ public class HWireClient extends BWire {
     }
   }
 
-  @SuppressWarnings("unused")
-  private synchronized void internalSendMessageAndStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult, long timeout) {
+  private synchronized void internalSendMessageAndStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
 
     try {
 
-      // If the BMessage contains streams, the given asyncResult is wrapped into
-      // a
+      // If the BMessage contains streams, the given asyncResult is wrapped into a
       // BAsyncRequest object that sets the asynchronous result after the
       // message and all streams
       // have been sent.
@@ -278,13 +276,20 @@ public class HWireClient extends BWire {
         if (log.isDebugEnabled()) log.debug("wrap asyncResult");
         outerResult = new AsyncResultAfterAllRequests(msg.header.messageId, asyncResult, msg.streams.size() + 1);
       }
+      
+      // Eval timeout for message.
+      // If the message is sent with streams, it does not return before all streams are sent.
+      // If large streams are uploaded, the message could cause a timeout error on the client side. 
+      // In order to prevent this situation, set an infinite timeout (=0).
+      boolean hasStreams = msg.streams != null && msg.streams.size() != 0;
+      int timeoutSecondsRequest = hasStreams ? 0 : this.timeoutSecondsClient; 
 
       // Create RequestToCancel for message
-      RequestToCancel req = createRequestForMessage(msg, outerResult);
+      RequestToCancel req = createRequestForMessage(msg, outerResult, timeoutSecondsRequest);
       executeRequest(req);
 
       // Create RequestToCancel objects for each stream.
-      if (msg.streams != null && msg.streams.size() != 0) {
+      if (hasStreams) {
         putStreams(msg.streams, outerResult);
       }
 
@@ -296,6 +301,7 @@ public class HWireClient extends BWire {
     if (log.isDebugEnabled()) log.debug(")send");
   }
 
+  @SuppressWarnings("unused")
   private synchronized void internalSendStreamsThenMessage(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("internalSendStreamsThenMessage(" + msg + ", asyncResult=" + asyncResult);
 
@@ -325,7 +331,7 @@ public class HWireClient extends BWire {
           else {
             // Send the message
             try {
-              RequestToCancel messageRequest = createRequestForMessage(msg, asyncResult);
+              RequestToCancel messageRequest = createRequestForMessage(msg, asyncResult, timeoutSecondsClient);
               executeRequest(messageRequest);
             }
             catch (BException e) {
@@ -345,7 +351,7 @@ public class HWireClient extends BWire {
     }
     else {
       // Create RequestToCancel for msg.buf
-      RequestToCancel req = createRequestForMessage(msg, asyncResult);
+      RequestToCancel req = createRequestForMessage(msg, asyncResult, timeoutSecondsClient);
       requests.add(req);
     }
 
@@ -363,7 +369,7 @@ public class HWireClient extends BWire {
     if (log.isDebugEnabled()) log.debug(")internalSendStreamsThenMessage");
   }
 
-  protected RequestToCancel createRequestForMessage(BMessage msg, BAsyncResult<BMessage> asyncResult) {
+  protected RequestToCancel createRequestForMessage(BMessage msg, BAsyncResult<BMessage> asyncResult, int timeoutSecondsRequest) {
     if (log.isDebugEnabled()) log.debug("createRequestForMessage(" + msg);
     ByteBuffer requestDataBuffer = msg.buf;
 
@@ -379,8 +385,6 @@ public class HWireClient extends BWire {
     final boolean isNegotiate = BNegotiate.isNegotiateMessage(requestDataBuffer);
     final boolean isJson = isNegotiate || BMessageHeader.detectProtocol(requestDataBuffer) == BMessageHeader.MAGIC_JSON;
     if (log.isDebugEnabled()) log.debug("isJson=" + isJson);
-
-    int timeoutSecondsRequest = this.timeoutSecondsClient;
 
     try {
       String destUrl = surl;

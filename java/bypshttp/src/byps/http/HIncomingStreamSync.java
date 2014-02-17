@@ -83,6 +83,10 @@ public class HIncomingStreamSync extends BContentStream {
 	@Override
 	public synchronized long getContentLength() {
 		
+	  if (contentLength > 0) {
+	    return contentLength;
+	  }
+	  
 		while (!writeClosed) {
 			try {
 				wait(10*1000);
@@ -96,6 +100,7 @@ public class HIncomingStreamSync extends BContentStream {
 			case SECOND_BYTES: return (long)secondBytesWritePos;
 			case FILE_BYTES: return file.getFile().length();
 		}
+		
 		return -1;
 	}
 	
@@ -257,14 +262,16 @@ public class HIncomingStreamSync extends BContentStream {
 				}
 			}
 			else if (bytesSource == FILE_BYTES) {
-				if (fis == null) {
-					fis = new FileInputStream(file.getFile());
-					fis.skip(readPos);
-				}
-				bytesRead = fis.read(b, offs, len);
-				if (bytesRead >= 0) {
-					break;
-				}
+			  if (file != null) {
+  				if (fis == null) {
+  					fis = new FileInputStream(file.getFile());
+  					fis.skip(readPos);
+  				}
+  				bytesRead = fis.read(b, offs, len);
+  				if (bytesRead >= 0) {
+  					break;
+  				}
+			  }
 			}
 			else {
 				throw new IllegalStateException("Illegal bytesSource=" + bytesSource);

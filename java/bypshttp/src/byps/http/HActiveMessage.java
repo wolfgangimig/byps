@@ -223,6 +223,8 @@ public class HActiveMessage {
             }
           };
 
+          incomingStreams.put(streamId, istrm);
+          
         }
 
         ((HIncomingSplittedStreamAsync) istrm).addStream(partId, contentLength, rctxt);
@@ -248,9 +250,11 @@ public class HActiveMessage {
             if (log.isDebugEnabled()) log.debug(")close");
           }
         };
+        
+        incomingStreams.put(streamId, istrm);
+        
       }
 
-      incomingStreams.put(streamId, istrm);
       notifyAll();
 
     } catch (Throwable e) {
@@ -260,27 +264,45 @@ public class HActiveMessage {
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamAsync");
   }
 
-  private synchronized void addIncomingStreamSync(final Long streamId, final HRequestContext rctxt) throws BException {
+  private void addIncomingStreamSync(final Long streamId, final HRequestContext rctxt) throws BException {
     if (log.isDebugEnabled()) log.debug("addIncomingStreamSync(" + streamId);
+    
+    // Create or get HIncomingStream object in synchronized function.
+    final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
+    final HIncomingStreamSync istrm = addIncomingStreamSync2(streamId, request);
+    
+    final String partIdStr = request.getParameter("partid");
+    final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
+    final String lastPartStr = request.getParameter("last");
+    final boolean lastPart = lastPartStr == null || lastPartStr.length() == 0 || Integer.parseInt(lastPartStr) == 1;
 
+    // Copy the stream into the buffer.
+    // This is done synchronously.
+    if (log.isDebugEnabled()) log.debug("start copying stream, streamId=" + streamId + ", partId=" + partId);
+    istrm.addStream(rctxt, partId, lastPart);
+    if (log.isDebugEnabled()) log.debug("end copying stream, streamId=" + streamId + ", partId=" + partId);
+    
+    if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync");
+  }
+  
+  private synchronized HIncomingStreamSync addIncomingStreamSync2(final Long streamId, HttpServletRequest request) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2(" + streamId);
+    
+    HIncomingStreamSync istrm = null;
+    
     try {
       final HActiveMessage msg = this;
-      final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
       final String contentType = request.getContentType();
       final String contentLengthStr = request.getHeader("Content-Length");
       final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
       final String totalLengthStr = request.getParameter("total");
       final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
-      final String partIdStr = request.getParameter("partid");
-      final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
-      final String lastPartStr = request.getParameter("last");
-      final boolean lastPart = lastPartStr == null || lastPartStr.length() == 0 || Integer.parseInt(lastPartStr) == 1;
 
       if (log.isDebugEnabled()) {
-        log.debug("contentType=" + contentType + ", contentLength=" + contentLengthStr + ", partId=" + partId + ", totalLength=" + totalLength);
+        log.debug("contentType=" + contentType + ", contentLength=" + contentLengthStr + ", totalLength=" + totalLength);
       }
-
-      HIncomingStreamSync istrm = incomingStreams != null ? (HIncomingStreamSync) incomingStreams.get(streamId) : null;
+      
+      istrm = incomingStreams != null ? (HIncomingStreamSync) incomingStreams.get(streamId) : null;
 
       if (istrm == null) {
 
@@ -313,12 +335,6 @@ public class HActiveMessage {
         }
       }
 
-      // Copy the stream into the buffer.
-      // This is done synchronously.
-      if (log.isDebugEnabled()) log.debug("start copying stream, streamId=" + streamId + ", partId=" + partId);
-      istrm.addStream(rctxt, partId, lastPart);
-      if (log.isDebugEnabled()) log.debug("end copying stream, streamId=" + streamId + ", partId=" + partId);
-
       // Notify threads waiting to read this stream
       notifyAll();
 
@@ -326,7 +342,8 @@ public class HActiveMessage {
       throw new BException(BExceptionC.IOERROR, "Failed to add incoming stream", e);
     }
 
-    if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync");
+    if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync2=" + istrm);
+    return istrm;
   }
 
   public synchronized BContentStream getIncomingStream(Long streamId, long timeoutMillis) throws InterruptedException, BException {
