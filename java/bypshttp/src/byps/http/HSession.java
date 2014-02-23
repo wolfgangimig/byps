@@ -47,8 +47,8 @@ public abstract class HSession
   /**
    * Construtor
    * @param hsess HTTP session object, can be null.
-   * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser()
-   * @param tempDir Temporary directory for storing streams.
+   * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser(), can be null.
+   * @param tempDir Temporary directory for storing streams, can be null.
    * @param serverRegistry Registry for BStub objects of all subscribers.
    * @param listener Listener for events triggered during processing.
    */
