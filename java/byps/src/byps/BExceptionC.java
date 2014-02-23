@@ -6,6 +6,7 @@ package byps;
  * BException error codes.
  * This error codes can be set in a BException.  
  * Furthermore, a BException can uses a HTTP status code as error code. 
+ * Application defined error codes start at value 1000.
  */
 public class BExceptionC {
 
