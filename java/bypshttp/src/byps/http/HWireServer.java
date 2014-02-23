@@ -33,6 +33,17 @@ public class HWireServer extends BWire {
     super(FLAG_DEFAULT);
     this.writeHelper = writeHelper;
     activeMessages.init(tempDir);
+    
+    if (tempDir == null) {
+      String tempDirStr = System.getProperty("java.io.tmpdir");
+      if (tempDirStr != null && tempDirStr.length() != 0) {
+        tempDir = new File(tempDirStr);
+      }
+      else {
+        tempDir = new File(".");
+      }
+      tempDir = new File(tempDir, "byps");
+    }
     this.tempDir = tempDir;
   }
 
