@@ -1001,7 +1001,7 @@ public class BConvert {
 		}
 		
 		if (!foundBException) {
-			errInfo.msg = "Method must throw RemoteException";
+			errInfo.msg = "Method must throw byps.RemoteException";
 			throw new GeneratorException(errInfo);
 		}
 		
