@@ -6,7 +6,8 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Logging"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache HTTP Components"/>
+	<classpathentry kind="lib" path="D:/dev/BYPS/java/lib/commons-logging-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/dev/BYPS/java/lib/log4j-1.2.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
