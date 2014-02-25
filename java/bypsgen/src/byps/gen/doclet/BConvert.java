@@ -11,7 +11,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import byps.BApiDescriptor;
-import byps.BException;
 import byps.BVersioning;
 import byps.RemoteException;
 import byps.gen.api.CommentInfo;
@@ -984,10 +983,6 @@ public class BConvert {
 		ArrayList<TypeInfo> exceptions = new ArrayList<TypeInfo>();
 		
 		for (Type ex : method.thrownExceptionTypes()) {
-			if (ex.simpleTypeName().equals(BException.class.getSimpleName())) {
-				foundBException = true; 
-				continue;
-			}
 			if (ex.simpleTypeName().equals(RemoteException.class.getSimpleName())) {
 				foundBException = true; 
 				continue;
@@ -1006,7 +1001,7 @@ public class BConvert {
 		}
 		
 		if (!foundBException) {
-			errInfo.msg = "Method must throw RemoteException or BException";
+			errInfo.msg = "Method must throw RemoteException";
 			throw new GeneratorException(errInfo);
 		}
 		
