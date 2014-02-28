@@ -164,7 +164,13 @@ public class HWireServer extends BWire {
         throw new IllegalStateException(ex);
       }
       catch (Throwable ex) {
-        log.error("Failed to write response.", ex);
+        // Seen under high load:
+        //   called from HWireClientR.cancelAllRequests:
+        //     java.lang.IllegalStateException: Calling [asyncComplete()] is not valid for a request with Async state [DISPATCHED]
+        //     java.lang.IllegalStateException: The request associated with the AsyncContext has already completed processing.
+        //   called from HWireClientR.cleanup
+        //     java.lang.IllegalStateException: The request associated with the AsyncContext has already completed processing.
+        if (log.isDebugEnabled()) log.debug("Failed to write response.", ex);
         throw new IllegalStateException(ex);
       }
       finally {

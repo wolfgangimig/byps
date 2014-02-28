@@ -42,7 +42,11 @@ public class HWireClientR extends BWire {
       // Gib iBuf an den Thread weiter, der auf das Resultat wartet.
       synchronized (asyncResult) {
         if (log.isDebugEnabled()) log.debug("pass cancel message to asyncResult, notify thread waiting in send()");
-        asyncResult.setAsyncResult(null, bex);
+        try { 
+          asyncResult.setAsyncResult(null, bex); 
+        } catch (Throwable ex) {
+          // just make sure, that all results are handled.
+        }
         asyncResult.notifyAll();
       }
     }
