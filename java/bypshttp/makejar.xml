@@ -3,11 +3,16 @@
     <target name="build">
         <jar destfile="d:/java/lib/byps/bypshttp.jar">
             <fileset dir="D:/git/byps/java/bypshttp/bin"/>
+            <fileset dir="D:/git/byps/java/bypshttpasf/bin"/>
             <fileset dir="D:/git/byps/java/byps/bin"/>
             <fileset dir="D:/git/byps/java/byps-api/bin"/>
+        	
+        	<!--
             <fileset dir="D:/git/byps/java/byps-override/bin"/>
+            -->
         	
             <fileset includes="**/*.java" dir="D:/git/byps/java/bypshttp/src"/>
+            <fileset includes="**/*.java" dir="D:/git/byps/java/bypshttpasf/src"/>
             <fileset includes="**/*.java" dir="D:/git/byps/java/byps/src"/>
             <fileset includes="**/*.java" dir="D:/git/byps/java/byps/src-ser-bin"/>
             <fileset includes="**/*.java" dir="D:/git/byps/java/byps/src-ser-json"/>

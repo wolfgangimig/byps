@@ -48,14 +48,14 @@ public class HWireClientR extends BWire {
     }
 
     // Notify the client that the long-poll has finished.
-    for (AsyncRequestFromLongpoll lrequest : lonpollRequests_access_sync) {
+    for (AsyncRequestFromLongpoll lrequest : lonpollRequests) {
       try {
         lrequest.request.setAsyncResult(null, bex);
       } catch (Throwable ignored) {
         // happens, if the HTTP session has already been invalidated
       }
     }
-    lonpollRequests_access_sync.clear();
+    lonpollRequests.clear();
 
     if (log.isDebugEnabled()) log.debug(")cancelAllRequests");
   }
@@ -104,7 +104,7 @@ public class HWireClientR extends BWire {
 
     // If function send() could not find a pending long-poll, it pushed 
     // the message into the queue of pending messages.
-    PendingMessage pendingMessage = pendingMessages_access_sync.poll(); 
+    PendingMessage pendingMessage = pendingMessages.poll(); 
         
     // Pending message available? ...
     if (pendingMessage != null) {
@@ -115,8 +115,8 @@ public class HWireClientR extends BWire {
     else {
       
       // ... push the long-poll into the queue.
-      lonpollRequests_access_sync.add(new AsyncRequestFromLongpoll(nextRequest, ibuf.header));
-      if (log.isDebugEnabled()) log.debug("add longpoll to list, #polls=" + lonpollRequests_access_sync.size());
+      lonpollRequests.add(new AsyncRequestFromLongpoll(nextRequest, ibuf.header));
+      if (log.isDebugEnabled()) log.debug("add longpoll to list, #polls=" + lonpollRequests.size());
     }
     
     if (log.isDebugEnabled()) log.debug(")recvLongPoll");
@@ -186,14 +186,14 @@ public class HWireClientR extends BWire {
   protected BAsyncResult<BMessage> getNextLongpollRequestOrPushMessage(BMessage msg) {
     
     // Get next long-poll request from queue.
-    AsyncRequestFromLongpoll longpollRequest = lonpollRequests_access_sync.poll();
+    AsyncRequestFromLongpoll longpollRequest = lonpollRequests.poll();
     
     // long-poll active? ...
     if (longpollRequest != null) return longpollRequest.request;
     
     // Push message into the queue of pending messages.
     // This message will be immediately sent at the next time recvLongPoll is called.
-    if (!pendingMessages_access_sync.offer(new PendingMessage(msg))) {
+    if (!pendingMessages.offer(new PendingMessage(msg))) {
       
       // Queue is full, terminate message with error.
       if (log.isDebugEnabled()) log.debug("Failed to add pending msg=" + msg);
@@ -254,12 +254,8 @@ public class HWireClientR extends BWire {
    */
   public void cleanup() {
     
-    ArrayList<AsyncRequestFromLongpoll> lpolls = null;
-    ArrayList<PendingMessage> msgs = terminateExpiredMessages();
-    
-    synchronized(this) {
-      lpolls = removeExpiredLongpolls_invoke_sync();
-    }
+    ArrayList<AsyncRequestFromLongpoll> lpolls = removeExpiredLongpolls();
+    ArrayList<PendingMessage> msgs = getExpiredMessages();
     
     if (lpolls.size() != 0) {
 
@@ -268,7 +264,13 @@ public class HWireClientR extends BWire {
 
       BException ex = new BException(BExceptionC.RESEND_LONG_POLL, "");
       for (AsyncRequestFromLongpoll lrequest : lpolls) {
-        lrequest.request.setAsyncResult(null, ex);
+        try {
+          lrequest.request.setAsyncResult(null, ex);
+        }
+        catch (Throwable e) {
+          // catch "Response already written"
+          if (log.isDebugEnabled()) log.debug("Failed to respond to longpoll=" + lrequest, e);
+        }
       }
     }
     
@@ -276,7 +278,13 @@ public class HWireClientR extends BWire {
       
       BException ex = new BException(BExceptionC.TIMEOUT, "Timeout while waiting for reverse request.");
       for (PendingMessage msg : msgs) {
-        terminateMessage(msg.msg.header.messageId, ex);
+        try {
+          terminateMessage(msg.msg.header.messageId, ex);
+        }
+        catch (Throwable e) {
+          // just make sure that cleanup runs over all messages.
+          if (log.isDebugEnabled()) log.debug("Failed to terminate pending message=" + msg, e);
+        }
       }
     }
 
@@ -286,19 +294,23 @@ public class HWireClientR extends BWire {
    * Remove expired long-poll requests from internal list.
    * @return Removed long-poll requests.
    */
-  protected ArrayList<AsyncRequestFromLongpoll> removeExpiredLongpolls_invoke_sync() {
-    ArrayList<AsyncRequestFromLongpoll> ret = new ArrayList<AsyncRequestFromLongpoll>(lonpollRequests_access_sync.size());
-    ArrayList<AsyncRequestFromLongpoll> arr = new ArrayList<AsyncRequestFromLongpoll>(lonpollRequests_access_sync);
-    lonpollRequests_access_sync.clear();
+  protected ArrayList<AsyncRequestFromLongpoll> removeExpiredLongpolls() {
+    ArrayList<AsyncRequestFromLongpoll> ret = new ArrayList<AsyncRequestFromLongpoll>();
     
-    for (AsyncRequestFromLongpoll lrequest : arr) {
-      if (lrequest.isExpired()) {
-        ret.add(lrequest);
-      }
-      else {
-        lonpollRequests_access_sync.add(lrequest);
+    boolean found = true;
+    while (found) {
+      found = false;
+      for (Iterator<AsyncRequestFromLongpoll> it = lonpollRequests.iterator(); it.hasNext(); ) {
+        AsyncRequestFromLongpoll lrequest = it.next();
+        if (lrequest.isExpired()) {
+          ret.add(lrequest);
+          it.remove();
+          found = true;
+          break;
+        }
       }
     }
+    
     return ret;
   }
 
@@ -307,13 +319,13 @@ public class HWireClientR extends BWire {
    * A message is terminated, if it has been waiting more than {@link HConstants#MAX_WAIT_FOR_LONGPOLL_MILLIS}
    * for a long-poll.
    */
-  protected ArrayList<PendingMessage> terminateExpiredMessages() {
+  protected ArrayList<PendingMessage> getExpiredMessages() {
     ArrayList<PendingMessage> ret = new ArrayList<PendingMessage>();
 
     boolean foundOne = true;
     while (foundOne) {
       foundOne = false;
-      for (Iterator<PendingMessage> it = pendingMessages_access_sync.iterator(); it.hasNext(); ) {
+      for (Iterator<PendingMessage> it = pendingMessages.iterator(); it.hasNext(); ) {
         PendingMessage pendingMessage = it.next();
         if (pendingMessage.isExpired()) {
           it.remove();
@@ -328,19 +340,25 @@ public class HWireClientR extends BWire {
   }
   
   static class AsyncRequestFromLongpoll {
-    long bestBefore;
-    Date dt;
-    BAsyncResult<BMessage> request;
+    final long bestBefore;
+    //Date dt;
+    final BAsyncResult<BMessage> request;
+    final BMessageHeader header;
     
     AsyncRequestFromLongpoll(BAsyncResult<BMessage> request, BMessageHeader header) {
       this.request = request;
+      this.header = header;
       long timeout = header.timeoutSeconds != 0 ? (header.timeoutSeconds*1000) : HConstants.TIMEOUT_LONGPOLL_MILLIS;
       this.bestBefore = System.currentTimeMillis() + timeout;
-      this.dt = new Date(bestBefore);
+      //this.dt = new Date(bestBefore);
     }
     
     boolean isExpired() {
       return bestBefore < System.currentTimeMillis();
+    }
+    
+    public String toString() {
+      return "[" + header + ", expired=" + isExpired() + ", bestBefore=" + new Date(bestBefore) + "]";
     }
   }
 
@@ -356,11 +374,15 @@ public class HWireClientR extends BWire {
     boolean isExpired() {
       return bestBefore < System.currentTimeMillis();
     }
+
+    public String toString() {
+      return "[" + msg + ", expired=" + isExpired() + ", bestBefore=" + new Date(bestBefore) + "]";
+    }
   }
 
-  private final BlockingQueue<AsyncRequestFromLongpoll> lonpollRequests_access_sync = new LinkedBlockingQueue<AsyncRequestFromLongpoll>();
+  private final BlockingQueue<AsyncRequestFromLongpoll> lonpollRequests = new LinkedBlockingQueue<AsyncRequestFromLongpoll>();
   private final ConcurrentHashMap<Long, BAsyncResult<BMessage>> mapAsyncResults = new ConcurrentHashMap<Long, BAsyncResult<BMessage>>();
-  private final BlockingQueue<PendingMessage> pendingMessages_access_sync = new LinkedBlockingQueue<PendingMessage>();
+  private final BlockingQueue<PendingMessage> pendingMessages = new LinkedBlockingQueue<PendingMessage>();
   private final BWire wireServer;
   private final Log log = LogFactory.getLog(HWireClientR.class);
   private volatile boolean canceled;

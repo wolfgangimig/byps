@@ -181,7 +181,7 @@ public abstract class HSession
   
   public String toString() {
     BServer server = getServer();
-    return "[user=" + remoteUser + ", targetId=" + server.getTargetId() + ", JSESSIONID=" + httpSess + "]";
+    return "[user=" + remoteUser + ", targetId=" + server.getTargetId() + ", JSESSIONID=" + (httpSess != null ? httpSess.getId() : "null") + "]";
   }
 
 //  private void writeObject(java.io.ObjectOutputStream out)

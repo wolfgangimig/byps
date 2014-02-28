@@ -132,9 +132,9 @@ public abstract class AsfRequest implements HHttpRequest {
   
   protected void applyTimeout() {
     RequestConfig.Builder requestBuilder = RequestConfig.custom();
-    requestBuilder = requestBuilder.setConnectTimeout(this.connectTimeoutSeconds);
-    requestBuilder = requestBuilder.setConnectionRequestTimeout(this.connectTimeoutSeconds);
-    requestBuilder = requestBuilder.setSocketTimeout(this.sendRecvTimeoutSeconds);
+    requestBuilder = requestBuilder.setConnectTimeout(this.connectTimeoutSeconds * 1000);
+    requestBuilder = requestBuilder.setConnectionRequestTimeout(this.connectTimeoutSeconds * 1000);
+    requestBuilder = requestBuilder.setSocketTimeout(this.sendRecvTimeoutSeconds * 1000);
     request.setConfig(requestBuilder.build());
   }
 
