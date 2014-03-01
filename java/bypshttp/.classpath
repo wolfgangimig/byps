@@ -5,10 +5,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
-	<classpathentry kind="lib" path="D:/git/byps/java/lib/commons-fileupload-1.2.2.jar"/>
-	<classpathentry kind="lib" path="D:/git/byps/java/lib/commons-io-2.3.jar"/>
-	<classpathentry kind="lib" path="D:/git/byps/java/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/git/byps/java/lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.utility"/>
@@ -19,5 +15,9 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/java/lib/byps/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/commons-io-2.3.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/log4j-1.2.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
