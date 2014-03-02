@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import byps.BProtocolJson;
+import byps.http.HWireClient;
 
 
 @RunWith(Suite.class)

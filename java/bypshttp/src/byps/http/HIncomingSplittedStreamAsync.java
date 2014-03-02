@@ -19,6 +19,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	protected final long streamId;
 	protected long readPos;
 	protected long currentPartId;
+	protected long maxPartId = Long.MAX_VALUE;
 	protected HIncomingStreamAsync currentStreamPart;
 	private HashMap<Long, HIncomingStreamAsync> streamParts = new HashMap<Long, HIncomingStreamAsync>();
 	
@@ -28,10 +29,11 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 		this.tempDir = tempDir;
 	}
 	
-	public synchronized void addStream(long partId, long contentLength, HRequestContext rctxt) throws IOException {
-		if (log.isDebugEnabled()) log.debug("addStream(" + streamId + ", partId=" + partId + ", contentLength=" + contentLength);
+	public synchronized void addStream(long partId, long contentLength, boolean isLastPart, HRequestContext rctxt) throws IOException {
+		if (log.isDebugEnabled()) log.debug("addStream(" + streamId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
 		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(contentType, contentLength, streamId, lifetimeMillis, tempDir, rctxt);
 		streamParts.put(partId, streamPart);
+		if (isLastPart) maxPartId = partId+1;
 		notifyAll(); // notify thread that might wait in read()
 		if (log.isDebugEnabled()) log.debug(")addStream");
 	}
@@ -51,24 +53,30 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 		if (log.isDebugEnabled()) log.debug(")close");
 	}
 	
-	private HIncomingStreamAsync getCurrentStreamPart() throws IOException {
-		if (currentStreamPart == null) {
+	private HIncomingStreamAsync getCurrentStreamPart(boolean nextPart) throws IOException {
+		if (nextPart || currentStreamPart == null) {
 			long t1 = System.currentTimeMillis();
 			long timeout = lifetimeMillis;
 			synchronized(this) {
-				currentStreamPart = streamParts.get(currentPartId);
-				while (currentStreamPart == null) {
-					try {
-						wait(timeout);
-						long t2 = System.currentTimeMillis();
-						if (t2 - t1 > timeout) {
-							throw new BException(BExceptionC.TIMEOUT, "Timeout while reading stream part");
-						}
-					} catch (InterruptedException e) {
-						throw new InterruptedIOException();
-					}
-					currentStreamPart = streamParts.get(currentPartId);
-				}
+			  if (nextPart) currentPartId++;
+			  if (currentPartId < maxPartId) {
+  				currentStreamPart = streamParts.get(currentPartId);
+  				while (currentStreamPart == null) {
+  					try {
+  						wait(timeout);
+  						long t2 = System.currentTimeMillis();
+  						if (t2 - t1 > timeout) {
+  							throw new BException(BExceptionC.TIMEOUT, "Timeout while reading stream part");
+  						}
+  					} catch (InterruptedException e) {
+  						throw new InterruptedIOException();
+  					}
+  					currentStreamPart = streamParts.get(currentPartId);
+  				}
+			  }
+			  else {
+			    currentStreamPart = null;
+			  }
 			}
 		}
 		return currentStreamPart;
@@ -76,16 +84,17 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	
 	private int internalRead(byte[] b, int off, int len) throws IOException {
 		int ret = -1;
-		if (readPos != contentLength) { 
-			HIncomingStreamAsync streamPart = getCurrentStreamPart();
+		final long totalLength = super.contentLength;
+		if (totalLength == -1 || readPos < totalLength) {
+			HIncomingStreamAsync streamPart = getCurrentStreamPart(false);
 			if (streamPart != null) {
 				ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
 				if (ret == -1) {
-					currentStreamPart.close();
-					currentStreamPart = null;
-					currentPartId++;
-					streamPart = getCurrentStreamPart();
-					ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
+				  streamPart.close();
+					streamPart = getCurrentStreamPart(true);
+					if (streamPart != null) {
+					  ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
+					}
 				}
 			}
 		}

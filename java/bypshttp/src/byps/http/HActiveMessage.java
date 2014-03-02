@@ -176,7 +176,9 @@ public class HActiveMessage {
       final String totalLengthStr = request.getParameter("total");
       final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
       final String partIdStr = request.getParameter("partid");
-      final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
+      final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : -1L;
+      final String lastPartStr = request.getParameter("last");
+      final boolean isLastPart = lastPartStr != null && lastPartStr.length() != 0 ? (Integer.valueOf(lastPartStr) != 0) : true;
 
       HAsyncErrorListener alsn = new HAsyncErrorListener() {
         @Override
@@ -198,7 +200,7 @@ public class HActiveMessage {
       BContentStream istrm = null;
 
       // Is splitted stream?
-      if (partId != 0 || totalLength != -1L) {
+      if (partId != -1L) {
 
         istrm = incomingStreams.get(streamId);
 
@@ -227,7 +229,7 @@ public class HActiveMessage {
           
         }
 
-        ((HIncomingSplittedStreamAsync) istrm).addStream(partId, contentLength, rctxt);
+        ((HIncomingSplittedStreamAsync) istrm).addStream(partId, contentLength, isLastPart, rctxt);
 
       }
       else {

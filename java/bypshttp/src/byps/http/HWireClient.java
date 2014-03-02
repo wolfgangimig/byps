@@ -52,6 +52,7 @@ public class HWireClient extends BWire {
    * create a HTTP client object and other necessary objects. If this system
    * property is not set, the factory
    * {@link byps.http.client.jcnn.JcnnClientFactory} is used.
+   * The value of this property is "byps.http.client.factory".
    */
   public final static String SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY = "byps.http.client.factory";
 
@@ -177,7 +178,7 @@ public class HWireClient extends BWire {
           if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
         }
 
-        if (msg != null && msg.buf != null && msg.buf.remaining() != 0) {
+        if (msg != null && msg.buf != null) {
           if (log.isDebugEnabled()) log.debug("set result=" + msg);
           this.result = msg;
         }

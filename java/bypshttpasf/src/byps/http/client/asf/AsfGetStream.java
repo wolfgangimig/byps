@@ -56,7 +56,7 @@ public class AsfGetStream extends AsfRequest {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
       returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
     }
-    catch (IOException e) {
+    catch (Throwable e) {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
 
       returnException = new BException(statusCode, "Send message failed", e);
@@ -75,20 +75,29 @@ public class AsfGetStream extends AsfRequest {
     final HttpEntity entity;
     final CloseableHttpResponse response;
 
-    MyContentStream(BException ex, HttpEntity entity, CloseableHttpResponse response) {
-      this.ex = ex;
+    MyContentStream(IOException ex2, HttpEntity entity, CloseableHttpResponse response) {
       this.entity = entity;
       this.response = response;
-      if (ex == null) {
+      if (ex2 == null) {
         Header header = entity.getContentType();
         contentType = header != null ? header.getValue() : BContentStream.DEFAULT_CONTENT_TYPE;
         contentLength = entity.getContentLength();
+        try {
+          innerStream = entity.getContent();
+        }
+        catch (IOException e) {
+          ex2 = e;
+        }
+        catch (Throwable e) {
+          ex2 = new BException(BExceptionC.INTERNAL, "Failed to get stream content.", e);
+        }
       }
+      this.ex = ex2;
     }
 
     public InputStream ensureStream() throws IOException {
       if (ex != null) throw ex;
-      return entity.getContent();
+      return innerStream;
     }
 
     public void close() throws IOException {

@@ -104,7 +104,9 @@ public class HIncomingStreamAsync extends BContentStream  {
 		if (log.isDebugEnabled()) log.debug("read " + streamId + "(" + b + ", offs=" + off + ", len=" + len);
 		try {
 			int n = strm().read(b, off, len);
-			readPos += n;
+			if (n != -1) {
+			  readPos += n;
+			}
 			if (log.isDebugEnabled()) log.debug(")read=" + n);
 			return n;
 		}

@@ -3,7 +3,6 @@ package byps.http.client.asf;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
@@ -11,19 +10,16 @@ import java.nio.channels.ReadableByteChannel;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
-import byps.BWire;
 
 public class AsfPutStream extends AsfRequest {
   
@@ -182,46 +178,6 @@ public class AsfPutStream extends AsfRequest {
       throw new BException(BExceptionC.CANCELLED, "");
     }
     
-    HttpEntity entity = new HttpEntity() {
-
-      public void consumeContent() throws IOException {
-        throw new IOException(new UnsupportedOperationException());
-      }
-
-      public InputStream getContent() throws IOException, IllegalStateException {
-        throw new IllegalStateException();
-      }
-
-      public Header getContentEncoding() { return null; }
-
-      public long getContentLength() {  
-        return bbuf.remaining();
-      }
-
-      public Header getContentType() {
-        return null;
-      }
-
-      public boolean isChunked() {
-        return false;
-      }
-
-      public boolean isRepeatable() {
-        return true;
-      }
-
-      public boolean isStreaming() {
-        return false;
-      }
-
-      public void writeTo(OutputStream os) throws IOException {
-        int pos = bbuf.position();
-        BWire.bufferToStream(bbuf, false, os);
-        bbuf.position(pos); // to be repeatable
-      }
-      
-    };
-    
     CloseableHttpResponse response = null;
     
     try {
@@ -230,7 +186,8 @@ public class AsfPutStream extends AsfRequest {
       request.setHeader("Content-Type", contentType);
       applyTimeout();
       
-      ((HttpPut)request).setEntity(entity);
+      byte[] content = bbuf.array();
+      ((HttpPut)request).setEntity(new ByteArrayEntity(content, bbuf.position(), bbuf.remaining()));
       response = httpClient.execute(request);
       
       request = null;

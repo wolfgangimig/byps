@@ -109,7 +109,7 @@ public class JcnnPutStream extends JcnnRequest {
         }
         
         // Read the first chunk to find out, 
-        // wether it is the last part to be sent.
+        // whether it is the last part to be sent.
         byte[] buf = new byte[CHUNK_SIZE];
         int len = stream.read(buf, 0, buf.length);
         

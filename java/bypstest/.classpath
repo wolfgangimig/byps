@@ -12,5 +12,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
 	<classpathentry kind="lib" path="D:/java/lib/byps/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="D:/java/lib/byps/log4j-1.2.15.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bypshttpasf"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -48,6 +48,8 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 			try {
 				// Clone the stream to be able to store it in a member variable
 				imageStream = ((BContentStream)istrm).cloneInputStream();
+			} catch (BException e) {
+			  throw e;
 			} catch (IOException e) {
 				throw new BException(BExceptionC.IOERROR, "", e);
 			}
@@ -61,6 +63,8 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 		InputStream istrm;
 		try {
 			istrm = imageStream.cloneInputStream();
+    } catch (BException e) {
+      throw e;
 		} catch (IOException e) {
 			throw new BException(BExceptionC.IOERROR, "", e);
 		}

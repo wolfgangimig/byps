@@ -1,8 +1,8 @@
 package byps.http.client.asf;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
@@ -13,6 +13,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import byps.BAsyncResult;
@@ -53,51 +54,18 @@ public class AsfPost extends AsfRequest {
       request.setHeader("Accept", "application/json, application/byps");
       request.setHeader("Accept-Encoding", "gzip");
       request.setHeader("Content-Type", contentType);
-      if (isJson) request.setHeader("Content-Encoding", "gzip");
+      if (isJson) {
+        request.setHeader("Content-Encoding", "gzip");
+      }
       
-      HttpEntity entity = new HttpEntity() {
-
-        public void consumeContent() throws IOException {
-          throw new IOException(new UnsupportedOperationException());
-        }
-
-        public InputStream getContent() throws IOException, IllegalStateException {
-          throw new IllegalStateException();
-        }
-
-        public Header getContentEncoding() {
-          return null;
-        }
-
-        public long getContentLength() {
-          return buf.remaining();
-        }
-
-        public Header getContentType() {
-          return null;
-        }
-
-        public boolean isChunked() {
-          return false;
-        }
-
-        public boolean isRepeatable() {
-          return true;
-        }
-
-        public boolean isStreaming() {
-          return false;
-        }
-
-        public void writeTo(OutputStream os) throws IOException {
-          int pos = buf.position();
-          BWire.bufferToStream(buf, isJson, os);
-          buf.position(pos); // to be repeatable
-        }
-        
-      };
+      byte[] content = buf.array();
+      if (isJson || buf.position() != 0) {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        BWire.bufferToStream(buf, isJson, bos);
+        content = bos.toByteArray();
+      }
       
-      ((HttpPost)request).setEntity(entity);
+      ((HttpPost)request).setEntity(new ByteArrayEntity(content));
       
       response = httpClient.execute(request);
 
@@ -106,7 +74,7 @@ public class AsfPost extends AsfRequest {
         throw new IOException("HTTP status " + statusCode);
       }
 
-      entity = response.getEntity();
+      HttpEntity entity = response.getEntity();
 
       boolean gzip = false;
       {
@@ -133,11 +101,11 @@ public class AsfPost extends AsfRequest {
       returnBuffer = obuf;
     }
     catch (SocketException e) {
-      if (log.isDebugEnabled()) log.debug("received exception=" + e);
+      if (log.isDebugEnabled()) log.debug("received exception=", e);
       returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
     }
-    catch (IOException e) {
-      if (log.isDebugEnabled()) log.debug("received exception=" + e);
+    catch (Throwable e) {
+      if (log.isDebugEnabled()) log.debug("received exception=", e);
       returnException = new BException(statusCode, "Send message failed", e);
     }
     finally {

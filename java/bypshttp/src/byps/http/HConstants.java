@@ -93,4 +93,4 @@ public class HConstants {
    */
   public final static long CONNECTION_RETRY_PAUSE = 60 * 1000L;
   
-}
+ }
