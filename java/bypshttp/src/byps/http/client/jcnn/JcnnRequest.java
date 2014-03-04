@@ -82,73 +82,25 @@ public abstract class JcnnRequest implements HHttpRequest {
 
   /**
    * Return HTTP status code.
-   * Android throws an exception in getResponseCode, if code is 401.
+   * Android 4.0 throws an exception in getResponseCode, if code is 401.
    * BYPS does not understand this exception and does not perform a re-authentication.
-   * That's why we cannot use getResponseCode in Android.
+   * That's why we cannot use getResponseCode in Android 4.0.
+   * Android 4.1 does not throw an exception if code is 401.
    * @param c HTTP connection object.
    * @return Response code.
    * @throws IOException
    */
   protected int getResponseCode(HttpURLConnection c) throws IOException {
-    
-    /*
-     * Ensure that we have connected to the server. Record
-     * exception as we need to re-throw it if there isn't
-     * a status line.
-     */
-    Exception exc = null;
-    try {
-        c.getInputStream();
-    } catch (Exception e) {
-        exc = e;
+    if (responseCode == -1) {
+      try {
+        responseCode = c.getResponseCode();
+      }
+      catch (IOException ex) {
+        if (ex.toString().indexOf("authenication challenge is null") < 0) throw ex;
+        responseCode = HttpURLConnection.HTTP_UNAUTHORIZED;
+      }
     }
-
-    /*
-     * If we can't a status-line then re-throw any exception
-     * that getInputStream threw.
-     */
-    String statusLine = c.getHeaderField(0);
-    if (statusLine == null) {
-        if (exc != null) {
-            if (exc instanceof RuntimeException)
-                throw (RuntimeException)exc;
-            else
-                throw (IOException)exc;
-        }
-        return -1;
-    }
-
-    /*
-     * Examine the status-line - should be formatted as per
-     * section 6.1 of RFC 2616 :-
-     *
-     * Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase
-     *
-     * If status line can't be parsed return -1.
-     */
-    if (statusLine.startsWith("HTTP/1.")) {
-        int codePos = statusLine.indexOf(' ');
-        if (codePos > 0) {
-
-            int phrasePos = statusLine.indexOf(' ', codePos+1);
-//            if (phrasePos > 0 && phrasePos < statusLine.length()) {
-//                responseMessage = statusLine.substring(phrasePos+1);
-//            }
-
-            // deviation from RFC 2616 - don't reject status line
-            // if SP Reason-Phrase is not included.
-            if (phrasePos < 0)
-                phrasePos = statusLine.length();
-
-            try {
-                responseCode = Integer.parseInt
-                        (statusLine.substring(codePos+1, phrasePos));
-                return responseCode;
-            } catch (NumberFormatException e) { }
-        }
-    }
-    return -1;
-
+    return responseCode;
   }
   
   public void applySession(HHttpRequest req1) {
