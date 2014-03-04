@@ -96,7 +96,7 @@ public abstract class JcnnRequest implements HHttpRequest {
         responseCode = c.getResponseCode();
       }
       catch (IOException ex) {
-        if (ex.toString().indexOf("authenication challenge is null") < 0) throw ex;
+        if (ex.toString().indexOf("authentication challenge is null") < 0) throw ex;
         responseCode = HttpURLConnection.HTTP_UNAUTHORIZED;
       }
     }
