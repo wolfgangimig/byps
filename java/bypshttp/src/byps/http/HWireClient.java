@@ -246,7 +246,7 @@ public class HWireClient extends BWire {
       }
     }
 
-    BException e = new BException(BExceptionC.TOO_MANY_REQUESTS, "Failed to send method or stream because to many requests are currently active.");
+    BException e = new BException(BExceptionC.TOO_MANY_REQUESTS, "Failed to send method or stream because too many requests are currently active.");
     throw e;
   }
 
