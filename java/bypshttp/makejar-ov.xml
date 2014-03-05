@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<!-- ANT script to build byps communication lib without byps-override -->
+<!-- ANT script to build byps communication lib inclusive byps-override -->
 
-<project default="build" name="Create bypshttp.jar">
-
+<project default="build" name="Create bypshttp-ov.jar">
+	
 	<property name="libdir" value="d:/java/lib" />
 
-	<target name="build">
-        <jar destfile="${libdir}/byps/bypshttp.jar">
+    <target name="build">
+        <jar destfile="${libdir}/byps/bypshttp-ov.jar">
             <fileset dir="../bypshttp/bin"/>
             <fileset dir="../bypshttpasf/bin"/>
             <fileset dir="../byps/bin"/>
             <fileset dir="../byps-api/bin"/>
+           	<fileset dir="../byps-override/bin"/>
 
         	<!-- include source -->
         	
@@ -21,6 +22,7 @@
             <fileset includes="**/*.java" dir="../byps-api/src"/>
             <fileset includes="**/*.java" dir="../bypshttp/src"/>
             <fileset includes="**/*.java" dir="../bypshttpasf/src"/>
+            <fileset includes="**/*.java" dir="../byps-override/src"/>
         		
         	
         </jar>

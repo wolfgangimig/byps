@@ -26,11 +26,11 @@ public class BValueClass implements Serializable {
 		changedMembers |= v;
 	}
 	
-  public Object getDBHelper() {
+  public Object getDbHelper() {
     return dbHelper;
   }
 
-  public void setDBHelper(Object dbHelper) {
+  public void setDbHelper(Object dbHelper) {
     this.dbHelper = dbHelper;
   }
 
