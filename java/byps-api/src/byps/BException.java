@@ -86,6 +86,14 @@ public class BException extends byps.RemoteException {
 	}
 	
 	/**
+	 * Copy constructor
+	 * @param rhs
+	 */
+	public BException(BException rhs) {
+	  this(rhs.code, rhs.msg, rhs.details);
+	}
+	
+	/**
 	 * Return a String of the form [BYPS:code][message][details].
 	 * @return Message string
 	 */

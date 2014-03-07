@@ -43,13 +43,18 @@ public class BSyncResult<T> implements BAsyncResult<T> {
 					this.wait(timeout);
 					long dt = System.currentTimeMillis() - t1;
 					if (dt >= timeout) {
-						ex = new BException(BExceptionC.TIMEOUT, "Timeout while waiting for result.");
-						break;
+						throw new BException(BExceptionC.TIMEOUT, "Timeout while waiting for result.");
 					}
 				}
 				if (ex != null) {
-					if (ex instanceof BException) throw (BException)ex;
-					throw new BException(BExceptionC.REMOTE_ERROR, "", ex);
+					if (ex instanceof BException) {
+					  // Copy exception information.
+					  // The new exception has a more helpful stack trace.
+					  throw new BException((BException)ex); 
+					}
+					else {
+					  throw new BException(BExceptionC.REMOTE_ERROR, "", ex);
+					}
 				}
 				return result;
 			}
