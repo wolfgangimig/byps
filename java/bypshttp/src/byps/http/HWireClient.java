@@ -399,6 +399,9 @@ public class HWireClient extends BWire {
         negoStr = URLEncoder.encode(negoStr, "UTF-8");
 
         destUrl = makeUrl(getServletPathForNegotiationAndAuthentication(), new String[] { "negotiate", negoStr });
+        
+        // Clear session Cookie
+        httpClient.clearHttpSession();
       }
 
       // Reverse request (long-poll) ?

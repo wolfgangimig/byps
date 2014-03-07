@@ -67,4 +67,9 @@ public interface HHttpClient {
    */
   public HHttpRequest putStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult);
 
+  /**
+   * Clear HTTP Session cookie.
+   */
+  public void clearHttpSession();
+  
 }

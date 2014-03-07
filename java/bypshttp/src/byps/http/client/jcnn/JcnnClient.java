@@ -13,7 +13,7 @@ import byps.http.client.HHttpSessionManager;
 
 public class JcnnClient implements HHttpClient {
   
-  private CookieManager cookieManager;
+  private final CookieManager cookieManager;
   
   public JcnnClient(String url) {
     cookieManager = new CookieManager(); 
@@ -44,4 +44,8 @@ public class JcnnClient implements HHttpClient {
     return new JcnnPutStream(url, stream, asyncResult, cookieManager);
   }
 
+  @Override
+  public void clearHttpSession() {
+    cookieManager.getCookieStore().removeAll();
+  }
 }
