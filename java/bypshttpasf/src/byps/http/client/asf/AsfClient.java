@@ -4,11 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
-import org.apache.http.client.CookieStore;
-import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -21,7 +18,7 @@ import byps.http.client.HHttpRequest;
  */
 public class AsfClient implements HHttpClient {
   
-  private CloseableHttpClient httpclient;
+  private volatile CloseableHttpClient httpclient;
   
   public AsfClient(String url) {
     ///httpclient = HttpClients.createDefault();
@@ -36,8 +33,6 @@ public class AsfClient implements HHttpClient {
     
     httpclient = HttpClients.createSystem();
     
-    CookieStore cookieStore = new BasicCookieStore();
-
   }
 
   @Override
@@ -69,4 +64,9 @@ public class AsfClient implements HHttpClient {
     return new AsfPutStream(url, stream, asyncResult, httpclient);
   }
 
+  @Override
+  public void clearHttpSession() {
+    done();
+    httpclient = HttpClients.createSystem();
+  }
 }

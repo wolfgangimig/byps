@@ -442,7 +442,6 @@ class GenApiClass {
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
 		String nullValue = PrintHelper.getDefaultValueForType(returnInfo.type);
 		pr.println("__byps__asyncResult.setAsyncResult(" + nullValue + ", e);");
-		pr.println("throw e;");
 		pr.endBlock();
 		pr.println("}");
 	}

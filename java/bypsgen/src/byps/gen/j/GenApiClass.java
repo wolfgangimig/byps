@@ -383,7 +383,6 @@ class GenApiClass {
 		pr.println("} catch (Throwable e) {");
 		pr.beginBlock();
 		pr.println("__byps__asyncResult.setAsyncResult(null, e);");
-		pr.println("throw e;");
 		pr.endBlock();
 		pr.println("}");
 	}
