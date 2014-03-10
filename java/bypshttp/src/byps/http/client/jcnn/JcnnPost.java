@@ -21,8 +21,8 @@ import byps.BWire.OutputStreamByteCount;
 public class JcnnPost extends JcnnRequest {
 
   private Log log = LogFactory.getLog(JcnnPost.class);
-  private final ByteBuffer buf;
   private final BAsyncResult<ByteBuffer> asyncResult;
+  private ByteBuffer buf;
   
   protected JcnnPost(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
     super(url, cookieManager);
@@ -55,6 +55,7 @@ public class JcnnPost extends JcnnRequest {
       OutputStreamByteCount osbc = new OutputStreamByteCount(c.getOutputStream());
       BWire.bufferToStream(buf, isJson, osbc);
       if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
+      buf = null; // Speicher freigeben
       
       statusCode = getResponseCode(c);
 

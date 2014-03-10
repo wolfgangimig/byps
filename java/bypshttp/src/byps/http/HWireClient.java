@@ -489,7 +489,6 @@ public class HWireClient extends BWire {
     final ERequestDirection requestDirection;
     final long messageId;
     final long streamId;
-    final ByteBuffer buf;
     final BStreamRequest streamRequest;
     final long cancelMessageId;
     final BAsyncResult<BMessage> asyncResult;
@@ -497,24 +496,10 @@ public class HWireClient extends BWire {
     final int timeoutSecondsRequest;
     HHttpRequest httpRequest;
 
-    protected RequestToCancel(ERequestDirection requestDirection, long messageId, ByteBuffer buf, BStreamRequest streamRequest, long streamId, long cancelMessageId, int timeoutSeconds,
-        BAsyncResult<BMessage> asyncResult) {
-      this.requestDirection = requestDirection;
-      this.messageId = messageId;
-      this.streamId = streamId;
-      this.buf = buf;
-      this.streamRequest = streamRequest;
-      this.cancelMessageId = cancelMessageId;
-      this.timeoutSecondsRequest = timeoutSeconds;
-      this.asyncResult = asyncResult;
-      this.httpRequest = null;
-    }
-
     protected RequestToCancel(long messageId, long streamId, long cancelMessageId, BAsyncResult<BMessage> asyncResult) {
       this.requestDirection = ERequestDirection.FORWARD;
       this.messageId = messageId;
       this.streamId = streamId;
-      this.buf = null;
       this.streamRequest = null;
       this.cancelMessageId = cancelMessageId;
       this.timeoutSecondsRequest = 0;
@@ -532,32 +517,33 @@ public class HWireClient extends BWire {
 
     public void setAsyncResult(ByteBuffer buf, Throwable e) {
       if (log.isDebugEnabled()) log.debug("setAsyncResult" + this + "(");
-
-      if (isOpen.getAndSet(false) && asyncResult != null) {
-        if (e == null && buf != null && buf.remaining() != 0) {
-          BMessageHeader header = new BMessageHeader();
-          try {
-            if (BNegotiate.isNegotiateMessage(buf)) {
-              header.messageId = messageId;
+      try {
+        if (isOpen.getAndSet(false) && asyncResult != null) {
+          if (e == null && buf != null && buf.remaining() != 0) {
+            BMessageHeader header = new BMessageHeader();
+            try {
+              if (BNegotiate.isNegotiateMessage(buf)) {
+                header.messageId = messageId;
+              }
+              else {
+                header.read(buf);
+              }
+              BMessage msg = new BMessage(header, buf, null);
+              asyncResult.setAsyncResult(msg, null);
             }
-            else {
-              header.read(buf);
+            catch (BException ex) {
+              asyncResult.setAsyncResult(null, ex);
             }
-            BMessage msg = new BMessage(header, buf, null);
-            asyncResult.setAsyncResult(msg, null);
           }
-          catch (BException ex) {
-            asyncResult.setAsyncResult(null, ex);
+          else {
+            asyncResult.setAsyncResult(null, e);
           }
-        }
-        else {
-          asyncResult.setAsyncResult(null, e);
         }
       }
-
-      // Remove request from HWireClient's internal map of requests.
-      HWireClient.this.removeRequest(this);
-
+      finally {
+        // Remove request from HWireClient's internal map of requests.
+        HWireClient.this.removeRequest(this);
+      }
       if (log.isDebugEnabled()) log.debug(")setAsyncResult");
     }
 
@@ -582,7 +568,6 @@ public class HWireClient extends BWire {
     public String toString() {
       StringBuilder sbuf = new StringBuilder();
       sbuf.append("[").append(messageId);
-      if (buf != null) sbuf.append(",buf=").append(buf);
       if (streamRequest != null) sbuf.append(",streamId=").append(streamRequest.streamId);
       if (cancelMessageId != 0) sbuf.append(",cancelMessageId=").append(cancelMessageId);
       sbuf.append(",httpRequest=").append(System.identityHashCode(httpRequest));
@@ -952,7 +937,7 @@ public class HWireClient extends BWire {
   }
 
   public String toString() {
-    return "[url=" + surl + "]";
+    return "[url=" + surl + ", #openreq=" + openRequestsToCancel.size() + "]";
   }
 
   public HHttpClient getHttpClient() {
