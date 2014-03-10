@@ -937,7 +937,7 @@ public class HWireClient extends BWire {
   }
 
   public String toString() {
-    return "[url=" + surl + ", #openreq=" + openRequestsToCancel.size() + "]";
+    return "[url=" + surl + ", #openreq=" + openRequestsToCancel.size() + ", done=" + isDone + "]";
   }
 
   public HHttpClient getHttpClient() {
