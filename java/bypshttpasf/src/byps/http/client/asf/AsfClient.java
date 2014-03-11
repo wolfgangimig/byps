@@ -21,7 +21,8 @@ public class AsfClient implements HHttpClient {
   private volatile CloseableHttpClient httpclient;
   
   public AsfClient(String url) {
-    ///httpclient = HttpClients.createDefault();
+    
+    httpclient = internalCreateHttpClient();
     
 //    String maxConnStr = System.getProperty("http.maxConnections");
 //    int maxConnections = maxConnStr != null && maxConnStr.length() != 0 ? Integer.parseInt(maxConnStr) : 10;
@@ -30,9 +31,20 @@ public class AsfClient implements HHttpClient {
 //    cm.setMaxTotal(maxConnections);
 //    cm.setDefaultMaxPerRoute(maxConnections);
 //    
+
+    // Braucht unter Notes sehr lang für Aufrufe!
+    //httpclient = HttpClients.createSystem();
     
-    httpclient = HttpClients.createSystem();
-    
+  }
+  
+  private static CloseableHttpClient internalCreateHttpClient() {
+    return HttpClients.createDefault();
+  }
+
+  @Override
+  public void clearHttpSession() {
+    done();
+    httpclient = internalCreateHttpClient();
   }
 
   @Override
@@ -64,9 +76,4 @@ public class AsfClient implements HHttpClient {
     return new AsfPutStream(url, stream, asyncResult, httpclient);
   }
 
-  @Override
-  public void clearHttpSession() {
-    done();
-    httpclient = HttpClients.createSystem();
-  }
 }
