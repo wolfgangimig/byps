@@ -64,8 +64,8 @@ public class BWire {
 	}
 	
 	/**
-	 * Die Funktion wird client- und serverseitig benötig
-	 * @return
+	 * Returns a unique message ID.
+	 * @return message ID
 	 */
 	public long makeMessageId() {
 		long mid = rand.nextLong();
@@ -75,7 +75,8 @@ public class BWire {
 	
 	/**
 	 * Stellt den Stream zum Versenden bereit.
-	 * @return
+	 * @param streamRequests Streams to send.
+	 * @param asyncResult Result callback.
 	 */
 	public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
     asyncResult.setAsyncResult(null, new BException(BExceptionC.INTERNAL, "No wire attached to transport."));
@@ -86,13 +87,16 @@ public class BWire {
 	 * Der Stream wird erst beim ersten read() geöffnet. Bzw. der BLOB wird erst beim ersten read() angefordert.
 	 * Funktion wird client- und serverseitig benötigt.
 	 * @param strmId
-	 * @return
+	 * @return BContentStream object.
 	 * @throws IOException
 	 */
 	public BContentStream getStream(long messageId, long strmId) throws IOException {
     throw new BException(BExceptionC.INTERNAL, "No wire attached to transport.");
 	}
 	
+	/**
+	 * Kill all requests and free resources.
+	 */
 	public void done() {
 		cancelAllRequests();
 	}
