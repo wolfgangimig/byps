@@ -82,11 +82,11 @@ public class AsfGet extends AsfRequest {
     }
     catch (SocketException e) {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
-      returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
+      returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error, url=" + url, e);
     }
     catch (Throwable e) {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
-      returnException = new BException(statusCode, "Send message failed", e);
+      returnException = new BException(statusCode, "Send message failed, url=" + url, e);
     }
     finally {
       if (is != null) {
