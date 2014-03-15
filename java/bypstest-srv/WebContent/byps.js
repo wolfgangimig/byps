@@ -612,7 +612,9 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 					asyncResult(responseMessage, null);
 				}
 				else {
-					var ex = new byps.BException(xhr.status, "HTTP status " + xhr.status, xhr.responseText);
+					// xhr.status == 0 if xhr.abort() has been called - see cancelAllRequests()
+					var errorCode = xhr.status ? xhr.status : byps.BExceptionC.CANCELLED;
+					var ex = new byps.BException(errorCode, "HTTP status " + xhr.status, xhr.responseText);
 					asyncResult(null, ex);
 				}
 
@@ -676,12 +678,38 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		return v1.toString();
 	};
 
+	const MESSAGEID_CANCEL_ALL_REQUESTS = -1;
+	const MESSAGEID_DISCONNECT = -2;
+		
+	this.done = function() {
+		this._internalCancelAllRequests(MESSAGEID_DISCONNECT);
+	};
+	
 	this.cancelAllRequests = function() {
+		this._internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS);
+	};
+
+	this._internalCancelAllRequests = function(cancelMessageId) {
+		
 		for (requestId in this.openRequestsToCancel) {
 			var xhr = this.openRequestsToCancel[requestId];
 			xhr.abort();
 		}
+		
+		// Notify the server about the canceled messages
+		if (cancelMessageId) {
+			this._sendCancelMessage(cancelMessageId);
+		}
+		
 		this.openRequestsToCancel = {};
+	};
+	
+	this._sendCancelMessage = function(cancelMessageId) {
+		var destUrl = me.url + "?messageid=" + cancelMessageId + "&cancel=1";
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', destUrl, false);
+		xhr.withCredentials = true;
+		xhr.send();
 	};
 
 	this.getServletPathForNegotiationAndAuthentication = function() {
