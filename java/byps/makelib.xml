@@ -29,8 +29,8 @@
 		</copy>
 		
 		
-		<!-- Pack into lib.zip -->
-		<zip destfile="../../lib.zip" basedir="${libdir}" />
+		<!-- Pack into byps-lib.zip -->
+		<zip destfile="../../byps-lib.zip" basedir="${libdir}" />
 		
     </target>
 </project>
