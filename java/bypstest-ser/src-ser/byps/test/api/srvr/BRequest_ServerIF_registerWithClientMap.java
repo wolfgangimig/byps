@@ -26,7 +26,6 @@ public final class BRequest_ServerIF_registerWithClientMap extends BMethodReques
 			__byps__remoteT.registerWithClientMap(id, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

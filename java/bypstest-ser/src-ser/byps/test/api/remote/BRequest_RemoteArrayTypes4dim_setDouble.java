@@ -26,7 +26,6 @@ public final class BRequest_RemoteArrayTypes4dim_setDouble extends BMethodReques
 			__byps__remoteT.setDouble(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

@@ -26,7 +26,6 @@ public final class BRequest_ClientIF_getStreams extends BMethodRequest implement
 			__byps__remoteT.getStreams(ctrl, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

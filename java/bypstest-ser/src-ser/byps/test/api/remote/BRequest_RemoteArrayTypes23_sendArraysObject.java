@@ -28,7 +28,6 @@ public final class BRequest_RemoteArrayTypes23_sendArraysObject extends BMethodR
 			__byps__remoteT.sendArraysObject(arr2, arr3, arr4, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

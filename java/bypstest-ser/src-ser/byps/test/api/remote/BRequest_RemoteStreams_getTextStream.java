@@ -25,7 +25,6 @@ public final class BRequest_RemoteStreams_getTextStream extends BMethodRequest i
 			__byps__remoteT.getTextStream(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

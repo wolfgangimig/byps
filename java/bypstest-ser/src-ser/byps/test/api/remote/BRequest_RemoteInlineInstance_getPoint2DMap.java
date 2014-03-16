@@ -25,7 +25,6 @@ public final class BRequest_RemoteInlineInstance_getPoint2DMap extends BMethodRe
 			__byps__remoteT.getPoint2DMap(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

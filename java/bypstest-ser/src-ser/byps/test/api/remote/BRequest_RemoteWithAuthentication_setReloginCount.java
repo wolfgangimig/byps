@@ -26,7 +26,6 @@ public final class BRequest_RemoteWithAuthentication_setReloginCount extends BMe
 			__byps__remoteT.setReloginCount(count, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

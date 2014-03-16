@@ -26,7 +26,6 @@ public final class BRequest_RemoteWithAuthentication_setUseAuthentication extend
 			__byps__remoteT.setUseAuthentication(useAuth, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

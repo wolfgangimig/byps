@@ -25,7 +25,6 @@ public final class BRequest_RemoteArrayTypes4dim_getShort extends BMethodRequest
 			__byps__remoteT.getShort(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

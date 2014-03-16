@@ -26,7 +26,6 @@ public final class BRequest_RemotePrimitiveTypes_setByte extends BMethodRequest 
 			__byps__remoteT.setByte(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

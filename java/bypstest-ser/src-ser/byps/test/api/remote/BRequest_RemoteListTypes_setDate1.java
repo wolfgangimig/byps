@@ -26,7 +26,6 @@ public final class BRequest_RemoteListTypes_setDate1 extends BMethodRequest impl
 			__byps__remoteT.setDate1(obj1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

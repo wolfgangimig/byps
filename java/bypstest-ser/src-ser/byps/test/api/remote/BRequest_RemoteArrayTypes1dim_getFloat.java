@@ -25,7 +25,6 @@ public final class BRequest_RemoteArrayTypes1dim_getFloat extends BMethodRequest
 			__byps__remoteT.getFloat(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

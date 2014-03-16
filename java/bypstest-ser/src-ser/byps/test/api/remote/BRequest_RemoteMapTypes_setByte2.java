@@ -26,7 +26,6 @@ public final class BRequest_RemoteMapTypes_setByte2 extends BMethodRequest imple
 			__byps__remoteT.setByte2(byte2, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

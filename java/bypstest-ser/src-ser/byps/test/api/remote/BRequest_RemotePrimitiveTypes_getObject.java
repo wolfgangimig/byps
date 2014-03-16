@@ -25,7 +25,6 @@ public final class BRequest_RemotePrimitiveTypes_getObject extends BMethodReques
 			__byps__remoteT.getObject(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

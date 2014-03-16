@@ -26,7 +26,6 @@ public final class BRequest_RemoteMapTypes_setFloat1 extends BMethodRequest impl
 			__byps__remoteT.setFloat1(float1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

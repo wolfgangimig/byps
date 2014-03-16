@@ -26,7 +26,6 @@ public final class BRequest_RemoteEnums_setPlanet extends BMethodRequest impleme
 			__byps__remoteT.setPlanet(planet, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

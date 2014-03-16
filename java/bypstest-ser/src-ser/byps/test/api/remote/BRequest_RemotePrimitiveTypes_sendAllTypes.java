@@ -35,7 +35,6 @@ public final class BRequest_RemotePrimitiveTypes_sendAllTypes extends BMethodReq
 			__byps__remoteT.sendAllTypes(b, c, s, i, l, f, d, str, pt, o, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

@@ -27,7 +27,6 @@ public final class BRequest_LemonService_pick extends BMethodRequest implements 
 			__byps__remoteT.pick(sess, fromTree, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

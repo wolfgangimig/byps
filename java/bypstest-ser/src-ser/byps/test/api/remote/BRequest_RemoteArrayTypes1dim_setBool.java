@@ -26,7 +26,6 @@ public final class BRequest_RemoteArrayTypes1dim_setBool extends BMethodRequest 
 			__byps__remoteT.setBool(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

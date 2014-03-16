@@ -25,7 +25,6 @@ public final class BRequest_ServerIF_getClientIds extends BMethodRequest impleme
 			__byps__remoteT.getClientIds(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

@@ -25,7 +25,6 @@ public final class BRequest_PlantService_grow extends BMethodRequest implements 
 			__byps__remoteT.grow(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

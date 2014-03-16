@@ -26,7 +26,6 @@ public final class BRequest_RemoteSetTypes_setInt2 extends BMethodRequest implem
 			__byps__remoteT.setInt2(int2, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	
