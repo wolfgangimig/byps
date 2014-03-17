@@ -26,7 +26,6 @@ public final class BRequest_RemoteInlineInstance_setPoint2DList extends BMethodR
 			__byps__remoteT.setPoint2DList(pointList, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

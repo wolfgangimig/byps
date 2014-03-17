@@ -26,7 +26,6 @@ public final class BRequest_RemoteListTypes_setBoolean1 extends BMethodRequest i
 			__byps__remoteT.setBoolean1(boolean1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

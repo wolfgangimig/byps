@@ -26,7 +26,6 @@ public final class BRequest_RemoteListTypes_setInt4 extends BMethodRequest imple
 			__byps__remoteT.setInt4(int4, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

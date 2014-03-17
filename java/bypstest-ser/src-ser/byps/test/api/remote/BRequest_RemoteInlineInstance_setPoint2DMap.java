@@ -26,7 +26,6 @@ public final class BRequest_RemoteInlineInstance_setPoint2DMap extends BMethodRe
 			__byps__remoteT.setPoint2DMap(pointMap, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

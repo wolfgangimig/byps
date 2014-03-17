@@ -26,7 +26,6 @@ public final class BRequest_RemoteListTypes_setPrimitiveTypes1 extends BMethodRe
 			__byps__remoteT.setPrimitiveTypes1(primitiveTypes1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

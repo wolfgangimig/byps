@@ -26,7 +26,6 @@ public final class BRequest_RemoteListTypes_setObj1 extends BMethodRequest imple
 			__byps__remoteT.setObj1(obj1, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

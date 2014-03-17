@@ -27,7 +27,6 @@ public final class BRequest_RemoteStreams_setImages extends BMethodRequest imple
 			__byps__remoteT.setImages(istrms, doNotReadStreamAtKey, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

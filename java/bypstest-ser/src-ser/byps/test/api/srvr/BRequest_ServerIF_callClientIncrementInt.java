@@ -26,7 +26,6 @@ public final class BRequest_ServerIF_callClientIncrementInt extends BMethodReque
 			__byps__remoteT.callClientIncrementInt(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

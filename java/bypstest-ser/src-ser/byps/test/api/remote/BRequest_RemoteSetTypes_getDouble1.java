@@ -25,7 +25,6 @@ public final class BRequest_RemoteSetTypes_getDouble1 extends BMethodRequest imp
 			__byps__remoteT.getDouble1(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

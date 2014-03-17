@@ -26,7 +26,6 @@ public final class BRequest_ClientIF_sendChat extends BMethodRequest implements 
 			__byps__remoteT.sendChat(cs, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

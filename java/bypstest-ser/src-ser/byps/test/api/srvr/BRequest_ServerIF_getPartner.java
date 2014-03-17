@@ -25,7 +25,6 @@ public final class BRequest_ServerIF_getPartner extends BMethodRequest implement
 			__byps__remoteT.getPartner(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

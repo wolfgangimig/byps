@@ -26,7 +26,6 @@ public final class BRequest_RemotePrimitiveTypes_setFloat extends BMethodRequest
 			__byps__remoteT.setFloat(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

@@ -25,7 +25,6 @@ public final class BRequest_RemotePrimitiveTypes_throwException extends BMethodR
 			__byps__remoteT.throwException(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

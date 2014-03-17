@@ -25,7 +25,6 @@ public final class BRequest_RemoteMapTypes_getChar1 extends BMethodRequest imple
 			__byps__remoteT.getChar1(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

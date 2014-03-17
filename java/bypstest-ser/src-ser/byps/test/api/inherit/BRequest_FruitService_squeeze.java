@@ -25,7 +25,6 @@ public final class BRequest_FruitService_squeeze extends BMethodRequest implemen
 			__byps__remoteT.squeeze(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

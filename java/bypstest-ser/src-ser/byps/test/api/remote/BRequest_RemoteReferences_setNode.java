@@ -26,7 +26,6 @@ public final class BRequest_RemoteReferences_setNode extends BMethodRequest impl
 			__byps__remoteT.setNode(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

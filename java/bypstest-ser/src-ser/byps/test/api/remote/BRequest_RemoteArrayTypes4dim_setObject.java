@@ -26,7 +26,6 @@ public final class BRequest_RemoteArrayTypes4dim_setObject extends BMethodReques
 			__byps__remoteT.setObject(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

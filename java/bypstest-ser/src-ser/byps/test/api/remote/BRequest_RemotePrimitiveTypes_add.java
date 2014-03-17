@@ -27,7 +27,6 @@ public final class BRequest_RemotePrimitiveTypes_add extends BMethodRequest impl
 			__byps__remoteT.add(a, b, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

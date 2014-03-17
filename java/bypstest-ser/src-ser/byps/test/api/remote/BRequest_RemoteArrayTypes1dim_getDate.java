@@ -25,7 +25,6 @@ public final class BRequest_RemoteArrayTypes1dim_getDate extends BMethodRequest 
 			__byps__remoteT.getDate(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

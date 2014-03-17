@@ -32,7 +32,6 @@ public final class BRequest_RemotePrimitiveTypes_makeDate extends BMethodRequest
 			__byps__remoteT.makeDate(year, month, day, hour, minute, second, millisecond, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

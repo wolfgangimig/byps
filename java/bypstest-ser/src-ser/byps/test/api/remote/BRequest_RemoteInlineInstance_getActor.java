@@ -25,7 +25,6 @@ public final class BRequest_RemoteInlineInstance_getActor extends BMethodRequest
 			__byps__remoteT.getActor(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

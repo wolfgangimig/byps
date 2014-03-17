@@ -25,7 +25,6 @@ public final class BRequest_RemotePrimitiveTypes_getPrimitiveTypes extends BMeth
 			__byps__remoteT.getPrimitiveTypes(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

@@ -27,7 +27,6 @@ public final class BRequest_RemoteConstants_compare_HebrewC extends BMethodReque
 			__byps__remoteT.compare_HebrewC(ALEPH, BETH, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

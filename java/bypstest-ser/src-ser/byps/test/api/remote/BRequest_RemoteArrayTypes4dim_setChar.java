@@ -26,7 +26,6 @@ public final class BRequest_RemoteArrayTypes4dim_setChar extends BMethodRequest 
 			__byps__remoteT.setChar(v, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

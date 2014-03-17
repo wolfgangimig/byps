@@ -4,10 +4,13 @@
 
 <project default="build" name="Create bypshttp-ov.jar">
 	
-	<property name="libdir" value="d:/java/lib" />
+	<property name="libdir" value="../../lib" />
+	<property name="javalibdir" value="${libdir}/java" />
 
     <target name="build">
-        <jar destfile="${libdir}/byps/bypshttp-ov.jar">
+    	<delete file="${javalibdir}/bypshttp-ov.jar" />
+    	
+        <jar destfile="${javalibdir}/bypshttp-ov.jar">
             <fileset dir="../bypshttp/bin"/>
             <fileset dir="../bypshttpasf/bin"/>
             <fileset dir="../byps/bin"/>
@@ -26,7 +29,5 @@
         		
         	
         </jar>
-        <copy file="${libdir}/apache-log4j-1.2.15/log4j-1.2.15.jar" todir="${libdir}/byps"/>
-        <copy file="${libdir}/commons-logging-1.1.1/commons-logging-1.1.1.jar" todir="${libdir}/byps"/>
     </target>
 </project>

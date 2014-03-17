@@ -25,7 +25,6 @@ public final class BRequest_RemoteInlineInstance_getPoint2DArray1dim extends BMe
 			__byps__remoteT.getPoint2DArray1dim(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

@@ -20,7 +20,7 @@ public final class BRequest_RemoteWithAuthentication_doit extends BMethodRequest
 	
 	public int getRemoteId() { return 1983670399; }
 	
-	// checkpoint byps.gen.j.GenApiClass:628
+	// checkpoint byps.gen.j.GenApiClass:627
 	public void setSession(Object __byps__sess) {
 		sess = (byps.test.api.auth.SessionInfo)__byps__sess;
 	}
@@ -32,7 +32,6 @@ public final class BRequest_RemoteWithAuthentication_doit extends BMethodRequest
 			__byps__remoteT.doit(sess, value, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

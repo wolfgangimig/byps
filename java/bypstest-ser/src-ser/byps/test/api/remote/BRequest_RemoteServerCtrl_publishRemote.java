@@ -28,7 +28,6 @@ public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodReques
 			__byps__remoteT.publishRemote(name, remote, fowardToOtherServers, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

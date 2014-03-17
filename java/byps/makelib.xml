@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- ANT script to update lib directory -->
+
+<project default="build" name="Create bypshttp.jar">
+
+	<property name="libdir" value="../../lib" />
+
+	<target name="build">
+		
+		<!-- Java Libs -->
+		<ant dir="../bypsgen" antfile="makejar.xml" />
+		<ant dir="../bypshttp" antfile="makejar.xml" />
+		<ant dir="../bypshttp" antfile="makejar-ov.xml" />
+		
+		<!-- JavaScript -->
+		<copy file="../bypstest-srv/WebContent/byps.js" todir="${libdir}/js" 
+			overwrite="true" preservelastmodified="true" />
+		
+		<!-- C++ includes -->
+		<copy todir="${libdir}/cpp/include" overwrite="true" preservelastmodified="true" >
+			<fileset dir="../../cpp/common/byps/include" includes="**/*.*" />
+			<fileset dir="../../cpp/common/bypshttp/include" includes="**/*.*" />
+		</copy>
+		
+		<!-- C# libs -->
+		<copy todir="${libdir}/csharp" overwrite="true" preservelastmodified="true" >
+			<fileset dir="../../csharp/bypshttp/bin" includes="**/*.*" />
+		</copy>
+		
+		
+		<!-- Pack into byps-lib.zip -->
+		<zip destfile="../../byps-lib.zip" basedir="${libdir}" />
+		
+    </target>
+</project>

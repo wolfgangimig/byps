@@ -26,7 +26,6 @@ public final class BRequest_ServerIF_putStreamsOnClient extends BMethodRequest i
 			__byps__remoteT.putStreamsOnClient(streams, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

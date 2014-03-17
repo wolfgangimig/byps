@@ -25,7 +25,6 @@ public final class BRequest_EvolveIF_getEvolve extends BMethodRequest implements
 			__byps__remoteT.getEvolve(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	

@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project bypsgen with libraries in sub-folder">
+<project default="build" name="Create Runnable Jar for Project bypsgen with libraries in sub-folder">
 	
-	<property name="libdir" value="d:/java/lib" />
+	<property name="libdir" value="../../lib" />
+	<property name="javalibdir" value="${libdir}/java" />
 	
-    <target name="create_run_jar">
-        <jar destfile="${libdir}/byps/bypsgen.jar">
+    <target name="build">
+    	<delete file="${javalibdir}/bypsgen.jar" />	
+    	
+        <jar destfile="${javalibdir}/bypsgen.jar">
             <manifest>
                 <attribute name="Main-Class" value="byps.gen.doclet.BDoclet"/>
-                <attribute name="Class-Path" value=". tools.jar log4j-1.2.15.jar commons-logging-1.1.1.jar jargs-1.0.jar rhino-1.6R7.jar yuicompressor-2.4.7.jar"/>
+                <attribute name="Class-Path" value=". tools.jar log4j-1.2.15.jar commons-logging-1.1.1.jar jargs-1.0.jar"/>
             </manifest>
             <fileset dir="../bypsgen/bin"/>
             <fileset dir="../byps/bin"/>
             <fileset dir="../byps-api/bin"/>
             <fileset dir="../byps-override/bin"/>
         </jar>
-        <copy file="${libdir}/apache-log4j-1.2.15/log4j-1.2.15.jar" todir="${libdir}/byps"/>
-        <copy file="${libdir}/commons-logging-1.1.1/commons-logging-1.1.1.jar" todir="${libdir}/byps"/>
     	
-    	<!--
-        <copy file="${libdir}/yuicompressor-2.4.7/lib/jargs-1.0.jar" todir="${libdir}/byps"/>
-        <copy file="${libdir}/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar" todir="${libdir}/byps"/>
-        -->
-    	
-		<copy file="${java.home}/../lib/tools.jar" todir="${libdir}/byps"/>
+		<copy file="${java.home}/../lib/tools.jar" todir="${javalibdir}"/>
     </target>
 </project>

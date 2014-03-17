@@ -26,7 +26,6 @@ public final class BRequest_RemoteServerCtrl_removePublishedRemote extends BMeth
 			__byps__remoteT.removePublishedRemote(name, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
-			throw e;
 		}
 	}	
 	
