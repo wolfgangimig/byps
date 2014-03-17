@@ -12,6 +12,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -187,7 +188,7 @@ public class AsfPutStream extends AsfRequest {
       applyTimeout();
       
       byte[] content = bbuf.array();
-      ((HttpPut)request).setEntity(new ByteArrayEntity(content, bbuf.position(), bbuf.remaining()));
+      ((HttpEntityEnclosingRequestBase)request).setEntity(new ByteArrayEntity(content, bbuf.position(), bbuf.remaining()));
       response = httpClient.execute(request);
       
       request = null;
