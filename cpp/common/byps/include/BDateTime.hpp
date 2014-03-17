@@ -24,7 +24,7 @@ BINLINE BDateTime::BDateTime(const BDateTime& rhs) {
 	_reserved = rhs._reserved;
 }
 
-BINLINE BDateTime::BDateTime(int32_t year, int32_t month, int32_t day, int32_t hour, int32_t minute, int32_t second, int32_t millisecond) {
+BINLINE BDateTime::BDateTime(int16_t year, int16_t month, int16_t day, int16_t hour, int16_t minute, int16_t second, int16_t millisecond) {
 	this->year = year;
 	this->month = month;
 	this->day = day;
@@ -138,7 +138,7 @@ BINLINE bool BDateTime:: operator > (const BDateTime rhs) const {
 
 
 BINLINE BDateTime BDateTime::fromStruct(const struct tm& tm) {
-	return BDateTime(tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, 0);
+	return BDateTime((int16_t)(tm.tm_year + 1900), (int16_t)(tm.tm_mon + 1), (int16_t)tm.tm_mday, (int16_t)tm.tm_hour, (int16_t)tm.tm_min, (int16_t)tm.tm_sec, 0);
 }
 
 BINLINE void BDateTime::toStruct(struct tm& tm) const {

@@ -20,7 +20,7 @@ public:
 
 	BDateTime();
 	BDateTime(const BDateTime& rhs);
-	BDateTime(int32_t year, int32_t month, int32_t day, int32_t hour, int32_t minute, int32_t second, int32_t millisecond);
+	BDateTime(int16_t year, int16_t month, int16_t day, int16_t hour, int16_t minute, int16_t second, int16_t millisecond);
 
 	static BDateTime fromStruct(const struct tm& tm);
 	void toStruct(struct tm& tm) const;
