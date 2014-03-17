@@ -46,12 +46,18 @@ public class BJsonObject {
 	}
 	
 	private final boolean parseBoolean(Object v) {
+	  if (v == null) return false;
 		try {
-			return v != null ? (Boolean)v : false;
+			return (Boolean)v;
 		}
-		catch (ClassCastException ignored) {
-			return Boolean.parseBoolean((String)v);
+		catch (Throwable ignored) {
 		}
+    try {
+      return Boolean.parseBoolean((String)v);
+    }
+    catch (Throwable ignored) {
+    }
+    return false;
 	}
 	
 	public final boolean getBoolean(String name) {
@@ -63,12 +69,18 @@ public class BJsonObject {
 	}
 	
 	private final byte parseByte(Object v) {
+	  if (v == null) return 0;
 		try {
-			return v != null ? ((Double)v).byteValue() : 0;
+			return ((Double)v).byteValue();
 		}
-		catch (ClassCastException ignored) {
-			return Byte.valueOf((String)v);
+		catch (Throwable ignored) {
 		}
+		try {
+		  return Byte.valueOf((String)v);
+		}
+		catch (Throwable ignored) {
+		}
+		return 0;
 	}
 	
 	public final byte getByte(String name) {
@@ -93,12 +105,18 @@ public class BJsonObject {
 	}
 
 	private final short parseShort(Object v) {
-		try {
-			return v != null ? ((Double)v).shortValue() : 0;
-		}
-		catch (ClassCastException ignored) {
-			return Short.valueOf((String)v);
-		}
+    if (v == null) return 0;
+    try {
+      return ((Double)v).shortValue();
+    }
+    catch (Throwable ignored) {
+    }
+    try {
+      return Short.valueOf((String)v);
+    }
+    catch (Throwable ignored) {
+    }
+    return 0;
 	}
 	
 	public final short getShort(String name) {
@@ -110,12 +128,18 @@ public class BJsonObject {
 	}
 
 	private final int parseInt(Object v) {
-		try {
-			return v != null ? ((Double)v).intValue() : 0;
-		}
-		catch (ClassCastException ignored) {
-			return Integer.valueOf((String)v);
-		}
+    if (v == null) return 0;
+    try {
+      return ((Double)v).intValue();
+    }
+    catch (Throwable ignored) {
+    }
+    try {
+      return Integer.valueOf((String)v);
+    }
+    catch (Throwable ignored) {
+    }
+    return 0;
 	}
 	
 	public final int getInt(String name) {
@@ -127,12 +151,18 @@ public class BJsonObject {
 	}
 	
 	private final long parseLong(Object v) {
-		try {
-			return BBufferJson.parseLong((String)v);
-		}
-		catch (ClassCastException ignored) {
-			return ((Double)v).longValue();
-		}
+    if (v == null) return 0;
+    try {
+      return BBufferJson.parseLong((String)v);
+    }
+    catch (Throwable ignored) {
+    }
+    try {
+      return ((Double)v).longValue();
+    }
+    catch (Throwable ignored) {
+    }
+    return 0;
 	}
 	
 	public final long getLong(String name) {
