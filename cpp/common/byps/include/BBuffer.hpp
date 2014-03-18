@@ -41,11 +41,11 @@ BINLINE void BBuffer::setByteOrder(BByteOrder byteOrder) {
     this->byteOrder = byteOrder;
 }
 
-bool BBuffer::isCompressInteger() const {
+BINLINE bool BBuffer::isCompressInteger() const {
 	return this->compressInteger;
 }
 
-bool BBuffer::setCompressInteger(bool v) {
+BINLINE bool BBuffer::setCompressInteger(bool v) {
 	bool ret = this->compressInteger;
 	this->compressInteger = v;
 	return ret;

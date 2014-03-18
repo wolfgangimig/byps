@@ -20,7 +20,7 @@ BINLINE BBytes* BBytes::myalloc(size_t length) {
 	return p;
 }
 
-void BBytes::check() {
+BINLINE void BBytes::check() {
 	int8_t* mem = (int8_t*)this;
 	int8_t* pcheck = mem + sizeof(size_t) + this->length;
 	int64_t endm = DEBUG_END_MARKER;
@@ -54,7 +54,7 @@ BINLINE PBytes BBytes::create(const PBytes& p, size_t length) {
 	return q;
 }
 
-PBytes BBytes::create(const void* p, size_t length) {
+BINLINE PBytes BBytes::create(const void* p, size_t length) {
 	PBytes q = create(length);
 	if (p) {
 		memcpy(q->data, p, length);

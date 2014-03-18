@@ -509,7 +509,7 @@ BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
 	}
 }
 
-void BTransport::setAuthentication(PAuthentication auth, bool onlyIfNull) {
+BINLINE void BTransport::setAuthentication(PAuthentication auth, bool onlyIfNull) {
 	byps_unique_lock lock(mtx);
 	if (onlyIfNull && authentication) return;
 	authentication = auth;

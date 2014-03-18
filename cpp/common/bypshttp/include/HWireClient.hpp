@@ -505,7 +505,7 @@ BINLINE void HWireClient::internalSendMessageWithoutStreams(const PMessage& msg,
 		l_debug << L"create negotiate request";
 
 		std::string negoStr((char*)msg->buf->data, msg->buf->length);
-		std::wstring negoWStr = BToStdWString(negoStr);
+		std::wstring negoWStr = fromUtf8(negoStr);
 		negoWStr = escapeUrl(negoWStr);
 
 		std::wstring servletPath = getServletPathForNegotiationAndAuthentication();
@@ -755,19 +755,19 @@ BINLINE std::wstring HWireClient::makeUrl(const std::wstring& servletPath, const
 	return wss.str();
 }
 
-HWireClient_ExecResult::HWireClient_ExecResult(PAsyncResult asyncResult, BVariant var) 
+BINLINE HWireClient_ExecResult::HWireClient_ExecResult(PAsyncResult asyncResult, BVariant var) 
 	: asyncResult(asyncResult)
 	, var(var) {
     l_debug << L"ctor()";
 }
 
-void HWireClient_ExecResult::run() {
+BINLINE void HWireClient_ExecResult::run() {
     l_debug << L"run(";
 	asyncResult->setAsyncResult(var);
     l_debug << L")run";
 }
 
-void HWireClient_TestAdapter::killClientConnections() {
+BINLINE void HWireClient_TestAdapter::killClientConnections() {
     l_debug << L"killClientConnections(";
 	wire->internalCancelAllRequests(0);
     l_debug << L")killClientConnections";

@@ -23,8 +23,11 @@ inline BTYPEID BHash(const char* s, int bias) {
 
 #endif
 
-wstring BToStdWString(const string& str);
-wstring BToStdWString(const char* str, size_t len = string::npos);
+//wstring BToStdWString(const string& str);
+//wstring BToStdWString(const char* str, size_t len = string::npos, bool isUtf8 = false);
+
+BINLINE string toUtf8(const wstring& str);
+BINLINE wstring fromUtf8(const string& str);
 
 }
 

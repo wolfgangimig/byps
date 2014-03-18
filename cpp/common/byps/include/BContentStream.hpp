@@ -55,7 +55,7 @@ BINLINE BContentStreamFile::BContentStreamFile(const string& fname) {
 BINLINE BContentStreamFile::BContentStreamFile(const string& fname, const string& contentType, int64_t contentLength) {
     ifstream* fstrm = new ifstream(fname.c_str(), ios_base::binary|ios_base::in);
     this->stream = PStream(fstrm);
-	this->contentType = BToStdWString(contentType);
+	this->contentType = fromUtf8(contentType);
 	this->contentLength = contentLength;
 }
 
