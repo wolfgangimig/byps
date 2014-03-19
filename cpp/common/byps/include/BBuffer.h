@@ -13,37 +13,37 @@
 
 namespace byps {
 
-// wird als Version von BInputC und BOutputC verwendet
-const int32_t BDISABLE_VERSION_CHECK = 0x7FFFFFFF;
+  // wird als Version von BInputC und BOutputC verwendet
+  const int32_t BDISABLE_VERSION_CHECK = 0x7FFFFFFF;
 
-class BBuffer {
-public:
+  class BBuffer {
+  public:
 
     BBuffer(const BBinaryModel& bmodel, BByteOrder byteOrder);
     BBuffer(const BBinaryModel& bmodel, const PBytes& pBytes, BByteOrder byteOrder);
 
     const PBytes& getBytes() const;
 
-	void clear();
+    void clear();
 
     BByteOrder getByteOrder() const;
 
     void setByteOrder(BByteOrder byteOrder);
 
-	bool isCompressInteger() const;
-	bool setCompressInteger(bool v);
+    bool isCompressInteger() const;
+    bool setCompressInteger(bool v);
 
-	void serialize(PBytes& v);
+    void serialize(PBytes& v);
 
-	void serialize(int8_t& v);
-	void serialize(int16_t& v);
-	void serialize(int32_t& v);
-	void serialize(int64_t& v);
-	void serialize(bool& b);
-	void serialize(wchar_t& c);
+    void serialize(int8_t& v);
+    void serialize(int16_t& v);
+    void serialize(int32_t& v);
+    void serialize(int64_t& v);
+    void serialize(bool& b);
+    void serialize(wchar_t& c);
     void serialize(float& v);
     void serialize(double& v);
-	void serialize(BDateTime& v);
+    void serialize(BDateTime& v);
 
     void serializePointer(BPOINTER& p);
 
@@ -57,113 +57,104 @@ public:
 
     bool isEmpty();
 
-	virtual ~BBuffer();
+    virtual ~BBuffer();
 
-private:
+  private:
 
-	void ensureRemaining(int32_t size) {
-		if (isWrite && pBytes) {
-			pBytes->check();
-		}
-
-		if (pos + size > capacity) {
-			growForRemaining(size);
-		}
-	}
-
+    void ensureRemaining(int32_t size);
     void growForRemaining(int32_t size);
 
-	template<typename _int163264> void serializeIntegerUnaligned(_int163264& v) {
-		
-		ensureRemaining(sizeof(v));
-		
-		{
-			int8_t* p = pBytes->data + pos;
-			if (isWrite) {
-				_int163264 v1 = byteOrder.swapIf(v);
-				writeUnalignedInt163264(p, v1);
-			}
-			else {
-				_int163264 v1 = _int163264();
-				readUnalignedInt163264(p, v1);
-				v = byteOrder.swapIf(v1);
-			}
+    template<typename _int163264> void serializeIntegerUnaligned(_int163264& v) {
 
-			pos += sizeof(_int163264);
-		}
-	}
+      ensureRemaining(sizeof(v));
 
-	template<typename _int3264> void serializeIntegerCompressed(_int3264& v1) {
+      {
+        int8_t* p = pBytes->data + pos;
+        if (isWrite) {
+          _int163264 v1 = byteOrder.swapIf(v);
+          writeUnalignedInt163264(p, v1);
+        }
+        else {
+          _int163264 v1 = _int163264();
+          readUnalignedInt163264(p, v1);
+          v = byteOrder.swapIf(v1);
+        }
 
-		register int64_t v = v1;
+        pos += sizeof(_int163264);
+      }
+    }
 
-		if (isWrite) {
+    template<typename _int3264> void serializeIntegerCompressed(_int3264& v1) {
 
-			if (v == 0) {
-				ensureRemaining(1);
-				pBytes->data[pos++] = 0;
-			}
-			else {
-				ensureRemaining(sizeof(v) + 2);
-				int8_t *p = pBytes->data + pos;
+      register int64_t v = v1;
 
-                bool neg = v < 0;
-                if (neg) v = -(v + 1);
-                v <<= 1;
-                if (neg) v |= 1;
+      if (isWrite) {
 
-                int i = 0;
-                for (; i < 10 && v != 0; i++)
-                {
-                    bool moreBytes = (v & ~0x7F) != 0;
-                    int h = ((int)v) & 0x7F;
-                    if (moreBytes) h |= 0x80;
-                    p[i] = (int8_t)h;
-                    v = (int64_t)((uint64_t)v >> 7);
-                }
+        if (v == 0) {
+          ensureRemaining(1);
+          pBytes->data[pos++] = 0;
+        }
+        else {
+          ensureRemaining(sizeof(v) + 2);
+          int8_t *p = pBytes->data + pos;
 
-                pos += i;
-			}
-		}
+          bool neg = v < 0;
+          if (neg) v = -(v + 1);
+          v <<= 1;
+          if (neg) v |= 1;
 
-		else {
-				
-			int8_t *p = pBytes->data + pos;
-				
-			v = 0;
+          int i = 0;
+          for (; i < 10 && v != 0; i++)
+          {
+            bool moreBytes = (v & ~0x7F) != 0;
+            int h = ((int)v) & 0x7F;
+            if (moreBytes) h |= 0x80;
+            p[i] = (int8_t)h;
+            v = (int64_t)((uint64_t)v >> 7);
+          }
 
-			if (*p == 0) {
-				ensureRemaining(1);
-				pos++;
-			}
-			else {
-				int i = 0;
-				int shift = 0;
-				bool moreBytes = true;
-				for (; i < 10 && moreBytes; i++) {
-					int h = p[i];
-					moreBytes = (h & 0x80) != 0;
-					v |= ((int64_t)(h & 0x7F)) << shift;
-					shift += 7;
-				}
+          pos += i;
+        }
+      }
 
-				if (moreBytes) {
-					throw BException(EX_CORRUPT, L"Read integer failed.");
-				}
+      else {
 
-				bool neg = (v & 0x01) != 0;
-				v = (int64_t)((uint64_t)v >> 1);   
-				if (neg) v = -(v+1);
+        int8_t *p = pBytes->data + pos;
 
-				pos += i;
-			}
+        v = 0;
 
-			v1 = (_int3264)v;
+        if (*p == 0) {
+          ensureRemaining(1);
+          pos++;
+        }
+        else {
+          int i = 0;
+          int shift = 0;
+          bool moreBytes = true;
+          for (; i < 10 && moreBytes; i++) {
+            int h = p[i];
+            moreBytes = (h & 0x80) != 0;
+            v |= ((int64_t)(h & 0x7F)) << shift;
+            shift += 7;
+          }
 
-		}
-	}
+          if (moreBytes) {
+            throw BException(EX_CORRUPT, L"Read integer failed.");
+          }
 
-	int32_t getStringLengthUtf8(const ::std::wstring& str);
+          bool neg = (v & 0x01) != 0;
+          v = (int64_t)((uint64_t)v >> 1);   
+          if (neg) v = -(v+1);
+
+          pos += i;
+        }
+
+        v1 = (_int3264)v;
+
+      }
+    }
+
+    int32_t getStringLengthUtf8(const ::std::wstring& str);
 
     BBinaryModel bmodel;
     bool isWrite;
@@ -171,8 +162,8 @@ private:
     PBytes pBytes;
     int32_t pos, limit, capacity;
     int32_t grow;
-	bool compressInteger;
-};
+    bool compressInteger;
+  };
 
 } /* namespace byps */
 #endif /* BMEM_H_ */

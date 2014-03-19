@@ -18,6 +18,7 @@ const int64_t MESSAGEID_CANCEL_ALL_REQUESTS = -1;
 const int64_t MESSAGEID_DISCONNECT = -2;
 
 class HWireClient : public BWire, public std::enable_shared_from_this<HWireClient> {
+protected:
 	std::mt19937_64 rand;
 	PHttpClient httpClient;
 	void* app;

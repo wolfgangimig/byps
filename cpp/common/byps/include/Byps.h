@@ -58,6 +58,7 @@ class BByteOrder;
 class BBytes;
 class BClient;
 class BContentStream;
+class BContentStreamFile;
 class BException;
 class BInput;
 class BIO;
@@ -130,6 +131,7 @@ typedef byps_ptr<void> POBJECT;
 typedef void (*BSERIALIZER)(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 
 typedef byps_ptr<BContentStream> PContentStream;
+typedef byps_ptr<BContentStreamFile> PContentStreamFile;
 
 }
 
