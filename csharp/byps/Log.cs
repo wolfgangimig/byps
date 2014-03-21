@@ -185,8 +185,12 @@ namespace byps
 
                 if (LogFactory.c_config.fileName != null)
                 {
-                    writer = new StreamWriter(LogFactory.c_config.fileName);
-                    fileName = LogFactory.c_config.fileName;
+                    try
+                    {
+                        writer = new StreamWriter(LogFactory.c_config.fileName);
+                        fileName = LogFactory.c_config.fileName;
+                    }
+                    catch (Exception) { }
                 }
             }
 

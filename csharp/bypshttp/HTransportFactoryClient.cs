@@ -14,6 +14,17 @@ namespace byps
         {
             this.transport = new BTransport(apiDesc, wire, null);
             this.nbOfServerRConns = nbOfServerRConns;
+
+            // By default, .NET allows only 2 connections per server.
+            // This is not sufficient when sending stream requests. 
+            // In this case we need 1 + nbOfServerRConns + number-of-streams connections.
+            // Assume here that a requests does not send more than 10 streams. If more streams 
+            // should be sent, the .NET option has to be increased.
+            int nbConns = 1 + nbOfServerRConns + 10;
+            if (System.Net.ServicePointManager.DefaultConnectionLimit < nbConns)
+            {
+                System.Net.ServicePointManager.DefaultConnectionLimit = nbConns;
+            }
         }
 
         public BTransport createClientTransport()
