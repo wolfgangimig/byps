@@ -257,6 +257,8 @@ class GenRemoteStub {
 		prC.println("}");
 		
 		prC.println(regCppInfo.namespaceEnd);
+		prC.println();
+    prC.flush();
 	}
 
 	private void generate() throws IOException {
@@ -269,7 +271,6 @@ class GenRemoteStub {
 		prH.println();
 		prC.println();
 		prH.println(cppInfo.namespaceBegin);
-		prC.println(cppInfo.namespaceBegin);
 		prH.println();
 		prC.println();
 		prH.println("using namespace ::byps;");
@@ -305,8 +306,7 @@ class GenRemoteStub {
 		
 		prH.println(cppInfo.namespaceEnd);
 		prH.println();
-		prC.println(cppInfo.namespaceEnd);
-		prC.println();
+
 		
 		printSerializer();
 		
@@ -316,14 +316,23 @@ class GenRemoteStub {
   private void printMethods(RemoteInfo rinfoImpl) throws IOException {
     
     for (MethodInfo minfo : rinfoImpl.methods) {
+
+      prC.println(cppInfo.namespaceBegin);
+
       printMethod(minfo);
       printMethodAsync(minfo);
-      prH.println();
+      
+      prC.println(cppInfo.namespaceEnd);
+      prC.println();
+
+      prC.flush();
     }
   }
 
 	private void printConstructor() {
 		String className = cppInfo.getClassName(rinfo.pack);
+
+    prC.println(cppInfo.namespaceBegin);
 		
 		prH.print("public: ").print(className).print("(PTransport transport);");
 		prH.println();
@@ -333,8 +342,11 @@ class GenRemoteStub {
 		prC.beginBlock();
 		prC.print(": BStub(transport)").println(" {}");
 		prC.endBlock();
+
+    prC.println(cppInfo.namespaceEnd);
 		prC.println();
 		
+		prC.flush();
 	}
 
 	private final RemoteInfo rinfo;
