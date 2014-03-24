@@ -18,6 +18,5 @@
             <fileset dir="../byps-override/bin"/>
         </jar>
     	
-		<copy file="${java.home}/../lib/tools.jar" todir="${javalibdir}"/>
     </target>
 </project>
