@@ -25,7 +25,6 @@ namespace byps.test.api.remote
 				__byps__remoteT.SetFloat1(float1Value, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

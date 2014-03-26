@@ -5,94 +5,6 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
-// Implementation of class BRequest_RemoteListTypes_setChar1
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteListTypes_setChar1::BRequest_RemoteListTypes_setChar1() : BMethodRequest(1233438138) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setChar1::BRequest_RemoteListTypes_setChar1(const byps_ptr< ::std::vector< wchar_t > >& char1)
-	: BMethodRequest(1233438138) 
-	, char1(char1)
-	{}
-// checkpoint byps.gen.cpp.GenApiClass:877
-void byps::test::api::remote::BRequest_RemoteListTypes_setChar1::serialize(BIO& ar, const BVERSION version) {
-	ar & this->char1;
-}
-void byps::test::api::remote::BRequest_RemoteListTypes_setChar1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->setChar1(char1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:934
-namespace byps { namespace test { namespace api { 
-void BSerializer_47773161(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		byps::test::api::remote::BRequest_RemoteListTypes_setChar1& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteListTypes_setChar1*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteListTypes_setChar1());
-	}
-}
-}}}
-namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_RemoteListTypes_setDate1
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteListTypes_setDate1::BRequest_RemoteListTypes_setDate1() : BMethodRequest(1233438138) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setDate1::BRequest_RemoteListTypes_setDate1(const byps_ptr< ::std::vector< BDateTime > >& obj1)
-	: BMethodRequest(1233438138) 
-	, obj1(obj1)
-	{}
-// checkpoint byps.gen.cpp.GenApiClass:877
-void byps::test::api::remote::BRequest_RemoteListTypes_setDate1::serialize(BIO& ar, const BVERSION version) {
-	ar & this->obj1;
-}
-void byps::test::api::remote::BRequest_RemoteListTypes_setDate1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->setDate1(obj1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:934
-namespace byps { namespace test { namespace api { 
-void BSerializer_48506001(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		byps::test::api::remote::BRequest_RemoteListTypes_setDate1& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteListTypes_setDate1*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteListTypes_setDate1());
-	}
-}
-}}}
-namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
 // Implementation of class BRequest_RemoteListTypes_setDouble1
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -100,7 +12,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setDouble1::BRequest_RemoteListTypes_setDouble1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setDouble1::BRequest_RemoteListTypes_setDouble1(const byps_ptr< ::std::vector< double > >& double1)
+byps::test::api::remote::BRequest_RemoteListTypes_setDouble1::BRequest_RemoteListTypes_setDouble1(const byps::PVectorDouble& double1)
 	: BMethodRequest(1233438138) 
 	, double1(double1)
 	{}
@@ -144,7 +56,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setFloat1::BRequest_RemoteListTypes_setFloat1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setFloat1::BRequest_RemoteListTypes_setFloat1(const byps_ptr< ::std::vector< float > >& float1)
+byps::test::api::remote::BRequest_RemoteListTypes_setFloat1::BRequest_RemoteListTypes_setFloat1(const byps::PVectorFloat& float1)
 	: BMethodRequest(1233438138) 
 	, float1(float1)
 	{}
@@ -188,7 +100,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setInt1::BRequest_RemoteListTypes_setInt1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setInt1::BRequest_RemoteListTypes_setInt1(const byps_ptr< ::std::vector< int32_t > >& int1)
+byps::test::api::remote::BRequest_RemoteListTypes_setInt1::BRequest_RemoteListTypes_setInt1(const byps::PVectorInteger& int1)
 	: BMethodRequest(1233438138) 
 	, int1(int1)
 	{}
@@ -232,7 +144,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setInt2::BRequest_RemoteListTypes_setInt2() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setInt2::BRequest_RemoteListTypes_setInt2(const byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >& int2)
+byps::test::api::remote::BRequest_RemoteListTypes_setInt2::BRequest_RemoteListTypes_setInt2(const byps_ptr< ::std::vector< PArrayInt > >& int2)
 	: BMethodRequest(1233438138) 
 	, int2(int2)
 	{}
@@ -276,7 +188,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setInt3::BRequest_RemoteListTypes_setInt3() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setInt3::BRequest_RemoteListTypes_setInt3(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >& int3)
+byps::test::api::remote::BRequest_RemoteListTypes_setInt3::BRequest_RemoteListTypes_setInt3(const byps_ptr< ::std::vector< byps::PVectorInteger > >& int3)
 	: BMethodRequest(1233438138) 
 	, int3(int3)
 	{}
@@ -320,7 +232,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setInt4::BRequest_RemoteListTypes_setInt4() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setInt4::BRequest_RemoteListTypes_setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >& int4)
+byps::test::api::remote::BRequest_RemoteListTypes_setInt4::BRequest_RemoteListTypes_setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int4)
 	: BMethodRequest(1233438138) 
 	, int4(int4)
 	{}
@@ -364,7 +276,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setLong1::BRequest_RemoteListTypes_setLong1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setLong1::BRequest_RemoteListTypes_setLong1(const byps_ptr< ::std::vector< int64_t > >& long1)
+byps::test::api::remote::BRequest_RemoteListTypes_setLong1::BRequest_RemoteListTypes_setLong1(const byps::PVectorLong& long1)
 	: BMethodRequest(1233438138) 
 	, long1(long1)
 	{}
@@ -408,7 +320,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setObj1::BRequest_RemoteListTypes_setObj1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setObj1::BRequest_RemoteListTypes_setObj1(const byps_ptr< ::std::vector< PSerializable > >& obj1)
+byps::test::api::remote::BRequest_RemoteListTypes_setObj1::BRequest_RemoteListTypes_setObj1(const byps::PVectorObject& obj1)
 	: BMethodRequest(1233438138) 
 	, obj1(obj1)
 	{}
@@ -452,7 +364,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setPrimitiveTypes1::BRequest_RemoteListTypes_setPrimitiveTypes1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setPrimitiveTypes1::BRequest_RemoteListTypes_setPrimitiveTypes1(const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)
+byps::test::api::remote::BRequest_RemoteListTypes_setPrimitiveTypes1::BRequest_RemoteListTypes_setPrimitiveTypes1(const byps::test::api::prim::PVectorPrimitiveTypes& primitiveTypes1)
 	: BMethodRequest(1233438138) 
 	, primitiveTypes1(primitiveTypes1)
 	{}
@@ -496,7 +408,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setShort1::BRequest_RemoteListTypes_setShort1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setShort1::BRequest_RemoteListTypes_setShort1(const byps_ptr< ::std::vector< int16_t > >& short1)
+byps::test::api::remote::BRequest_RemoteListTypes_setShort1::BRequest_RemoteListTypes_setShort1(const byps::PVectorShort& short1)
 	: BMethodRequest(1233438138) 
 	, short1(short1)
 	{}
@@ -540,7 +452,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setString1::BRequest_RemoteListTypes_setString1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setString1::BRequest_RemoteListTypes_setString1(const byps_ptr< ::std::vector< ::std::wstring > >& string1)
+byps::test::api::remote::BRequest_RemoteListTypes_setString1::BRequest_RemoteListTypes_setString1(const byps::PVectorString& string1)
 	: BMethodRequest(1233438138) 
 	, string1(string1)
 	{}
@@ -588,7 +500,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getBoolean1::serialize(BIO
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getBoolean1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getBoolean1([__byps__asyncResult](byps_ptr< ::std::map< ::std::wstring , bool > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getBoolean1([__byps__asyncResult](byps::PMapStringBoolean __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -626,7 +538,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getByte1::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getByte1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getByte1([__byps__asyncResult](byps_ptr< ::std::map< double , int8_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getByte1([__byps__asyncResult](byps::PMapDoubleByte __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -702,7 +614,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getChar1::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getChar1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getChar1([__byps__asyncResult](byps_ptr< ::std::map< float , wchar_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getChar1([__byps__asyncResult](byps::PMapFloatCharacter __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -740,7 +652,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getDate1::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getDate1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getDate1([__byps__asyncResult](byps_ptr< ::std::map< ::std::wstring , BDateTime > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getDate1([__byps__asyncResult](byps::PMapStringDate __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -778,7 +690,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getDouble1::serialize(BIO&
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getDouble1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getDouble1([__byps__asyncResult](byps_ptr< ::std::map< int8_t , double > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getDouble1([__byps__asyncResult](byps::PMapByteDouble __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -816,7 +728,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getFloat1::serialize(BIO& 
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getFloat1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getFloat1([__byps__asyncResult](byps_ptr< ::std::map< wchar_t , float > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getFloat1([__byps__asyncResult](byps::PMapCharacterFloat __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -854,7 +766,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getInt1::serialize(BIO& ar
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getInt1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getInt1([__byps__asyncResult](byps_ptr< ::std::map< int32_t , int32_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getInt1([__byps__asyncResult](byps::PMapIntegerInteger __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -892,7 +804,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getInt2::serialize(BIO& ar
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getInt2::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getInt2([__byps__asyncResult](byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getInt2([__byps__asyncResult](byps_ptr< ::std::map< int32_t , PArrayInt > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -930,7 +842,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getLong1::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getLong1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getLong1([__byps__asyncResult](byps_ptr< ::std::map< int16_t , int64_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getLong1([__byps__asyncResult](byps::PMapShortLong __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -968,7 +880,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getObj1::serialize(BIO& ar
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getObj1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getObj1([__byps__asyncResult](byps_ptr< ::std::map< ::std::wstring , PSerializable > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getObj1([__byps__asyncResult](byps::PMapStringObject __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1006,7 +918,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getPrimitiveTypes1::serial
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getPrimitiveTypes1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getPrimitiveTypes1([__byps__asyncResult](byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getPrimitiveTypes1([__byps__asyncResult](byps::test::api::prim::PMapIntegerPrimitiveTypes __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1044,7 +956,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getShort1::serialize(BIO& 
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getShort1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getShort1([__byps__asyncResult](byps_ptr< ::std::map< int64_t , int16_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getShort1([__byps__asyncResult](byps::PMapLongShort __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1082,7 +994,7 @@ void byps::test::api::remote::BRequest_RemoteMapTypes_getString1::serialize(BIO&
 }
 void byps::test::api::remote::BRequest_RemoteMapTypes_getString1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
-	__byps__remoteT->getString1([__byps__asyncResult](byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getString1([__byps__asyncResult](byps::PMapStringString __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1103,6 +1015,138 @@ void BSerializer_1836497856(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		bio & r;
 	} else {
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteMapTypes_getString1());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteMapTypes_setBoolean1
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteMapTypes_setBoolean1::BRequest_RemoteMapTypes_setBoolean1() : BMethodRequest(664304990) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1::BRequest_RemoteMapTypes_setBoolean1(const byps::PMapStringBoolean& boolean1)
+	: BMethodRequest(664304990) 
+	, boolean1(boolean1)
+	{}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1::serialize(BIO& ar, const BVERSION version) {
+	ar & this->boolean1;
+}
+void byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
+	__byps__remoteT->setBoolean1(boolean1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_974383083(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteMapTypes_setBoolean1());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteMapTypes_setByte1
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteMapTypes_setByte1::BRequest_RemoteMapTypes_setByte1() : BMethodRequest(664304990) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteMapTypes_setByte1::BRequest_RemoteMapTypes_setByte1(const byps::PMapDoubleByte& byte1)
+	: BMethodRequest(664304990) 
+	, byte1(byte1)
+	{}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteMapTypes_setByte1::serialize(BIO& ar, const BVERSION version) {
+	ar & this->byte1;
+}
+void byps::test::api::remote::BRequest_RemoteMapTypes_setByte1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
+	__byps__remoteT->setByte1(byte1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_685835107(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteMapTypes_setByte1& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteMapTypes_setByte1*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteMapTypes_setByte1());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteMapTypes_setByte2
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteMapTypes_setByte2::BRequest_RemoteMapTypes_setByte2() : BMethodRequest(664304990) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteMapTypes_setByte2::BRequest_RemoteMapTypes_setByte2(const byps_ptr< ::std::map< int32_t , PBytes > >& byte2)
+	: BMethodRequest(664304990) 
+	, byte2(byte2)
+	{}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteMapTypes_setByte2::serialize(BIO& ar, const BVERSION version) {
+	ar & this->byte2;
+}
+void byps::test::api::remote::BRequest_RemoteMapTypes_setByte2::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteMapTypes __byps__remoteT = byps_ptr_cast<RemoteMapTypes>(__byps__remote);
+	__byps__remoteT->setByte2(byte2, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_685835106(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteMapTypes_setByte2& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteMapTypes_setByte2*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteMapTypes_setByte2());
 	}
 }
 }}}

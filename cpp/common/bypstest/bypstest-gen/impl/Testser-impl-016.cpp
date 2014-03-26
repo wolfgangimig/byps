@@ -2,6 +2,141 @@
 using namespace ::std;
 using namespace ::byps;
 
+namespace byps { namespace test { namespace api { namespace remote { 
+PContentStream BStub_RemoteStreams::getTextStream()  {
+	BSyncResultT< PContentStream > syncResult;	
+	getTextStream([&syncResult](PContentStream v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteStreams::getTextStream(::std::function< void (PContentStream, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteStreams_getTextStream());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PContentStream, byps::test::api::BResult_15 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenRemoteStub:224
+namespace byps { namespace test { namespace api { 
+void BSerializer_1043578866(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new byps::test::api::remote::BStub_RemoteStreams(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}
+
+
+
+namespace byps { namespace test { namespace api { namespace remote { 
+BStub_RemoteWithAuthentication::BStub_RemoteWithAuthentication(PTransport transport) 
+	: BStub(transport) {}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
+void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth)  {
+	BSyncResultT< bool > syncResult;	
+	setUseAuthentication(useAuth, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::setUseAuthentication(bool useAuth, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_setUseAuthentication(useAuth));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
+byps::test::api::auth::PSessionInfo BStub_RemoteWithAuthentication::login(const ::std::wstring& userName, const ::std::wstring& userPwd)  {
+	BSyncResultT< byps::test::api::auth::PSessionInfo > syncResult;	
+	login(userName, userPwd, [&syncResult](byps::test::api::auth::PSessionInfo v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::login(const ::std::wstring& userName, const ::std::wstring& userPwd, ::std::function< void (byps::test::api::auth::PSessionInfo, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_login(userName, userPwd));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::auth::PSessionInfo, byps::test::api::BResult_65775978 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
+int32_t BStub_RemoteWithAuthentication::doit(int32_t value)  {
+	BSyncResultT< int32_t > syncResult;	
+	doit(value, [&syncResult](int32_t v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::doit(int32_t value, ::std::function< void (int32_t, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_doit(value));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
+void BStub_RemoteWithAuthentication::expire()  {
+	BSyncResultT< bool > syncResult;	
+	expire([&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::expire(::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_expire());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
+void BStub_RemoteWithAuthentication::setReloginCount(int32_t count)  {
+	BSyncResultT< bool > syncResult;	
+	setReloginCount(count, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteWithAuthentication::setReloginCount(int32_t count, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteWithAuthentication_setReloginCount(count));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenRemoteStub:224
+namespace byps { namespace test { namespace api { 
+void BSerializer_1983670399(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new byps::test::api::remote::BStub_RemoteWithAuthentication(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}
+
 
 namespace byps { namespace test { namespace api { namespace srvr { 
 
@@ -17,11 +152,11 @@ void BSkeleton_ClientIF::incrementInt(int32_t a, ::std::function< void (int32_t,
 		asyncResult(__byps__ret, __byps__ex);
 	}
 }
-byps_ptr< ::std::vector< PContentStream > > BSkeleton_ClientIF::getStreams(int32_t ctrl)  {
+byps::PVectorInputStream BSkeleton_ClientIF::getStreams(int32_t ctrl)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
-	byps_ptr< ::std::vector< PContentStream > > __byps__ret = byps_ptr< ::std::vector< PContentStream > >();
+void BSkeleton_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  {
+	byps::PVectorInputStream __byps__ret = byps::PVectorInputStream();
 	try {
 		__byps__ret = getStreams(ctrl);
 		asyncResult(__byps__ret, BException());
@@ -29,10 +164,10 @@ void BSkeleton_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps_pt
 		asyncResult(__byps__ret, __byps__ex);
 	}
 }
-void BSkeleton_ClientIF::putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl)  {
+void BSkeleton_ClientIF::putStreams(const byps::PVectorInputStream& strm, int32_t ctrl)  {
 	throw BException(EX_UNSUPPORTED_METHOD, L"");
 }
-void BSkeleton_ClientIF::putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl, ::std::function< void (bool, BException ex) > asyncResult)  {
+void BSkeleton_ClientIF::putStreams(const byps::PVectorInputStream& strm, int32_t ctrl, ::std::function< void (bool, BException ex) > asyncResult)  {
 	bool __byps__ret = false;
 	try {
 		putStreams(strm, ctrl);
@@ -56,11 +191,13 @@ void BSkeleton_ClientIF::sendChat(const PChatStructure& cs, ::std::function< voi
 }}}}
 
 
-namespace byps { namespace test { namespace api { namespace srvr { 
 
+namespace byps { namespace test { namespace api { namespace srvr { 
 BStub_ClientIF::BStub_ClientIF(PTransport transport) 
 	: BStub(transport) {}
+}}}}
 
+namespace byps { namespace test { namespace api { namespace srvr { 
 int32_t BStub_ClientIF::incrementInt(int32_t a)  {
 	BSyncResultT< int32_t > syncResult;	
 	incrementInt(a, [&syncResult](int32_t v, BException ex) {
@@ -73,30 +210,39 @@ void BStub_ClientIF::incrementInt(int32_t a, ::std::function< void (int32_t, BEx
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
-byps_ptr< ::std::vector< PContentStream > > BStub_ClientIF::getStreams(int32_t ctrl)  {
-	BSyncResultT< byps_ptr< ::std::vector< PContentStream > > > syncResult;	
-	getStreams(ctrl, [&syncResult](byps_ptr< ::std::vector< PContentStream > > v, BException ex) {
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
+byps::PVectorInputStream BStub_ClientIF::getStreams(int32_t ctrl)  {
+	BSyncResultT< byps::PVectorInputStream > syncResult;	
+	getStreams(ctrl, [&syncResult](byps::PVectorInputStream v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
+void BStub_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_ClientIF_getStreams(ctrl));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::vector< PContentStream > >, byps::test::api::BResult_1218831438 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::PVectorInputStream, byps::test::api::BResult_1218831438 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
-void BStub_ClientIF::putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl)  {
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
+void BStub_ClientIF::putStreams(const byps::PVectorInputStream& strm, int32_t ctrl)  {
 	BSyncResultT< bool > syncResult;	
 	putStreams(strm, ctrl, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	syncResult.getResult();
 }
-void BStub_ClientIF::putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl, ::std::function< void (bool, BException ex) > asyncResult)  {
+void BStub_ClientIF::putStreams(const byps::PVectorInputStream& strm, int32_t ctrl, ::std::function< void (bool, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_ClientIF_putStreams(strm, ctrl));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
 PChatStructure BStub_ClientIF::sendChat(const PChatStructure& cs)  {
 	BSyncResultT< PChatStructure > syncResult;	
 	sendChat(cs, [&syncResult](PChatStructure v, BException ex) {
@@ -111,7 +257,7 @@ void BStub_ClientIF::sendChat(const PChatStructure& cs, ::std::function< void (P
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenRemoteStub:225
+// checkpoint byps.gen.cpp.GenRemoteStub:224
 namespace byps { namespace test { namespace api { 
 void BSerializer_2049072174(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
@@ -130,11 +276,14 @@ void BSerializer_2049072174(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 }
 }}}
 
-namespace byps { namespace test { namespace api { namespace srvr { 
 
+
+namespace byps { namespace test { namespace api { namespace srvr { 
 BStub_ServerIF::BStub_ServerIF(PTransport transport) 
 	: BStub(transport) {}
+}}}}
 
+namespace byps { namespace test { namespace api { namespace srvr { 
 int32_t BStub_ServerIF::callClientIncrementInt(int32_t v)  {
 	BSyncResultT< int32_t > syncResult;	
 	callClientIncrementInt(v, [&syncResult](int32_t v, BException ex) {
@@ -147,6 +296,9 @@ void BStub_ServerIF::callClientIncrementInt(int32_t v, ::std::function< void (in
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
 void BStub_ServerIF::setPartner(const PClientIF& client)  {
 	BSyncResultT< bool > syncResult;	
 	setPartner(client, [&syncResult](bool v, BException ex) {
@@ -159,6 +311,9 @@ void BStub_ServerIF::setPartner(const PClientIF& client, ::std::function< void (
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
 PClientIF BStub_ServerIF::getPartner()  {
 	BSyncResultT< PClientIF > syncResult;	
 	getPartner([&syncResult](PClientIF v, BException ex) {
@@ -171,30 +326,39 @@ void BStub_ServerIF::getPartner(::std::function< void (PClientIF, BException ex)
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, byps::test::api::BResult_955752991 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
-byps_ptr< ::std::vector< PContentStream > > BStub_ServerIF::getStreamsFromClient()  {
-	BSyncResultT< byps_ptr< ::std::vector< PContentStream > > > syncResult;	
-	getStreamsFromClient([&syncResult](byps_ptr< ::std::vector< PContentStream > > v, BException ex) {
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
+byps::PVectorInputStream BStub_ServerIF::getStreamsFromClient()  {
+	BSyncResultT< byps::PVectorInputStream > syncResult;	
+	getStreamsFromClient([&syncResult](byps::PVectorInputStream v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_ServerIF::getStreamsFromClient(::std::function< void (byps_ptr< ::std::vector< PContentStream > >, BException ex) > asyncResult)  {
+void BStub_ServerIF::getStreamsFromClient(::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_ServerIF_getStreamsFromClient());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::vector< PContentStream > >, byps::test::api::BResult_1218831438 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::PVectorInputStream, byps::test::api::BResult_1218831438 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
-void BStub_ServerIF::putStreamsOnClient(const byps_ptr< ::std::vector< PContentStream > >& streams)  {
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
+void BStub_ServerIF::putStreamsOnClient(const byps::PVectorInputStream& streams)  {
 	BSyncResultT< bool > syncResult;	
 	putStreamsOnClient(streams, [&syncResult](bool v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	syncResult.getResult();
 }
-void BStub_ServerIF::putStreamsOnClient(const byps_ptr< ::std::vector< PContentStream > >& streams, ::std::function< void (bool, BException ex) > asyncResult)  {
+void BStub_ServerIF::putStreamsOnClient(const byps::PVectorInputStream& streams, ::std::function< void (bool, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_ServerIF_putStreamsOnClient(streams));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
 void BStub_ServerIF::registerWithClientMap(int32_t id)  {
 	BSyncResultT< bool > syncResult;	
 	registerWithClientMap(id, [&syncResult](bool v, BException ex) {
@@ -207,6 +371,9 @@ void BStub_ServerIF::registerWithClientMap(int32_t id, ::std::function< void (bo
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
 PClientIF BStub_ServerIF::getClient(int32_t id)  {
 	BSyncResultT< PClientIF > syncResult;	
 	getClient(id, [&syncResult](PClientIF v, BException ex) {
@@ -219,18 +386,24 @@ void BStub_ServerIF::getClient(int32_t id, ::std::function< void (PClientIF, BEx
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PClientIF, byps::test::api::BResult_955752991 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
-byps_ptr< ::std::set< int32_t > > BStub_ServerIF::getClientIds()  {
-	BSyncResultT< byps_ptr< ::std::set< int32_t > > > syncResult;	
-	getClientIds([&syncResult](byps_ptr< ::std::set< int32_t > > v, BException ex) {
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
+byps::PSetInteger BStub_ServerIF::getClientIds()  {
+	BSyncResultT< byps::PSetInteger > syncResult;	
+	getClientIds([&syncResult](byps::PSetInteger v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_ServerIF::getClientIds(::std::function< void (byps_ptr< ::std::set< int32_t > >, BException ex) > asyncResult)  {
+void BStub_ServerIF::getClientIds(::std::function< void (byps::PSetInteger, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_ServerIF_getClientIds());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::set< int32_t > >, byps::test::api::BResult_1493282670 >(asyncResult) );
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::PSetInteger, byps::test::api::BResult_1493282670 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace srvr { 
 int32_t BStub_ServerIF::callClientParallel(int32_t v)  {
 	BSyncResultT< int32_t > syncResult;	
 	callClientParallel(v, [&syncResult](int32_t v, BException ex) {
@@ -245,7 +418,7 @@ void BStub_ServerIF::callClientParallel(int32_t v, ::std::function< void (int32_
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenRemoteStub:225
+// checkpoint byps.gen.cpp.GenRemoteStub:224
 namespace byps { namespace test { namespace api { 
 void BSerializer_1775199834(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
@@ -264,11 +437,14 @@ void BSerializer_1775199834(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 }
 }}}
 
-namespace byps { namespace test { namespace api { namespace ver { 
 
+
+namespace byps { namespace test { namespace api { namespace ver { 
 BStub_EvolveIF::BStub_EvolveIF(PTransport transport) 
 	: BStub(transport) {}
+}}}}
 
+namespace byps { namespace test { namespace api { namespace ver { 
 void BStub_EvolveIF::setEvolve(const PEvolve& obj)  {
 	BSyncResultT< bool > syncResult;	
 	setEvolve(obj, [&syncResult](bool v, BException ex) {
@@ -281,6 +457,9 @@ void BStub_EvolveIF::setEvolve(const PEvolve& obj, ::std::function< void (bool, 
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace ver { 
 PEvolve BStub_EvolveIF::getEvolve()  {
 	BSyncResultT< PEvolve > syncResult;	
 	getEvolve([&syncResult](PEvolve v, BException ex) {
@@ -293,6 +472,9 @@ void BStub_EvolveIF::getEvolve(::std::function< void (PEvolve, BException ex) > 
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolve, byps::test::api::BResult_1391985860 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace ver { 
 void BStub_EvolveIF::setClient(const PEvolveIF& partner)  {
 	BSyncResultT< bool > syncResult;	
 	setClient(partner, [&syncResult](bool v, BException ex) {
@@ -305,6 +487,9 @@ void BStub_EvolveIF::setClient(const PEvolveIF& partner, ::std::function< void (
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace ver { 
 PEvolveIF BStub_EvolveIF::getClient()  {
 	BSyncResultT< PEvolveIF > syncResult;	
 	getClient([&syncResult](PEvolveIF v, BException ex) {
@@ -317,6 +502,9 @@ void BStub_EvolveIF::getClient(::std::function< void (PEvolveIF, BException ex) 
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, byps::test::api::BResult_564008001 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
+}}}}
+
+namespace byps { namespace test { namespace api { namespace ver { 
 void BStub_EvolveIF::sendEvolveToClient()  {
 	BSyncResultT< bool > syncResult;	
 	sendEvolveToClient([&syncResult](bool v, BException ex) {
@@ -331,7 +519,7 @@ void BStub_EvolveIF::sendEvolveToClient(::std::function< void (bool, BException 
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenRemoteStub:225
+// checkpoint byps.gen.cpp.GenRemoteStub:224
 namespace byps { namespace test { namespace api { 
 void BSerializer_15377840(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	BSerializable* p = pObjS.get();
@@ -349,13 +537,14 @@ void BSerializer_15377840(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 	}
 }
 }}}
+
 //-------------------------------------------------
 // Registry 
 
 byps::test::api::BRegistry_Testser::BRegistry_Testser()
 {
-	registerClass(typeid(BArray1< bool > ), byps::test::api::BSerializer_2058423690, 2058423690);
-	registerClass(typeid(BArray4< bool > ), byps::test::api::BSerializer_945713488, 945713488);
+	registerClass(typeid(::byps::BArray1< bool > ), byps::test::api::BSerializer_2058423690, 2058423690);
+	registerClass(typeid(::byps::BArray4< bool > ), byps::test::api::BSerializer_945713488, 945713488);
 	registerClass(typeid(byps::test::api::BResult_1), byps::test::api::BSerializer_432867947, 432867947);
 	registerClass(typeid(byps::test::api::BResult_10), byps::test::api::BSerializer_534004421, 534004421);
 	registerClass(typeid(byps::test::api::BResult_1000), byps::test::api::BSerializer_2077138821, 2077138821);
@@ -459,11 +648,11 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::auth::SessionInfo), byps::test::api::BSerializer_65775978, 65775978);
 	registerClass(typeid(byps::test::api::cons::AllTypesC), byps::test::api::BSerializer_930294276, 930294276);
 	registerClass(typeid(byps::test::api::cons::AllTypesZ), byps::test::api::BSerializer_142458, 142458);
-	registerClass(typeid(BArray2< byps::test::api::cons::PAllTypesZ > ), byps::test::api::BSerializer_81775365, 81775365);
+	registerClass(typeid(::byps::BArray2< byps::test::api::cons::PAllTypesZ > ), byps::test::api::BSerializer_81775365, 81775365);
 	registerClass(typeid(byps::test::api::cons::HebrewC), byps::test::api::BSerializer_1770673942, 1770673942);
 	registerClass(typeid(byps::test::api::cons::HebrewZ), byps::test::api::BSerializer_1518668429, 1518668429);
-	registerClass(typeid(BArray1< byps::test::api::cons::PHebrewZ > ), byps::test::api::BSerializer_92445340, 92445340);
-	registerClass(typeid(BArray1< byps::test::api::enu::EnumPlanets > ), byps::test::api::BSerializer_1441131650, 1441131650);
+	registerClass(typeid(::byps::BArray1< byps::test::api::cons::PHebrewZ > ), byps::test::api::BSerializer_92445340, 92445340);
+	registerClass(typeid(::byps::BArray1< byps::test::api::enu::EnumPlanets > ), byps::test::api::BSerializer_1441131650, 1441131650);
 	registerClass(typeid(byps::test::api::enu::UsePlanets), byps::test::api::BSerializer_10000, 10000);
 	registerClass(typeid(byps::test::api::inherit::BRequest_BioFruitService_certify), byps::test::api::BSerializer_1435417025, 1435417025);
 	registerClass(typeid(byps::test::api::inherit::BRequest_BioLemonService_useParing), byps::test::api::BSerializer_2108700976, 2108700976);
@@ -482,18 +671,18 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::inl::Actor), byps::test::api::BSerializer_171948703, 171948703);
 	registerClass(typeid(byps::test::api::inl::Matrix2D), byps::test::api::BSerializer_135329019, 135329019);
 	registerClass(typeid(byps::test::api::inl::Point2D), byps::test::api::BSerializer_1835035436, 1835035436);
-	registerClass(typeid(BArray1< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_184101377, 184101377);
-	registerClass(typeid(BArray2< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_827767075, 827767075);
-	registerClass(typeid(BArray3< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_915212229, 915212229);
-	registerClass(typeid(BArray4< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_949340697, 949340697);
+	registerClass(typeid(::byps::BArray1< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_184101377, 184101377);
+	registerClass(typeid(::byps::BArray2< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_827767075, 827767075);
+	registerClass(typeid(::byps::BArray3< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_915212229, 915212229);
+	registerClass(typeid(::byps::BArray4< byps::test::api::inl::Point2D > ), byps::test::api::BSerializer_949340697, 949340697);
 	registerClass(typeid(byps::test::api::list::ListListTypes), byps::test::api::BSerializer_3002, 3002);
 	registerClass(typeid(byps::test::api::list::ListTypes), byps::test::api::BSerializer_3001, 3001);
 	registerClass(typeid(byps::test::api::map::MapTypes), byps::test::api::BSerializer_4001, 4001);
 	registerClass(typeid(byps::test::api::prim::PrimitiveTypes), byps::test::api::BSerializer_1000, 1000);
-	registerClass(typeid(BArray1< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_2053507648, 2053507648);
-	registerClass(typeid(BArray2< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_2030857950, 2030857950);
-	registerClass(typeid(BArray3< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_1739334652, 1739334652);
-	registerClass(typeid(BArray4< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_758319514, 758319514);
+	registerClass(typeid(::byps::BArray1< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_2053507648, 2053507648);
+	registerClass(typeid(::byps::BArray2< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_2030857950, 2030857950);
+	registerClass(typeid(::byps::BArray3< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_1739334652, 1739334652);
+	registerClass(typeid(::byps::BArray4< byps::test::api::prim::PPrimitiveTypes > ), byps::test::api::BSerializer_758319514, 758319514);
 	registerClass(typeid(byps::test::api::priv::PrivateMembers), byps::test::api::BSerializer_8001, 8001);
 	registerClass(typeid(byps::test::api::refs::Node), byps::test::api::BSerializer_9001, 9001);
 	registerClass(typeid(byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool), byps::test::api::BSerializer_2033416644, 2033416644);
@@ -740,29 +929,29 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::ver::Evolve), byps::test::api::BSerializer_1391985860, 1391985860);
 	registerClass(typeid(byps::test::api::ver::Evolve2), byps::test::api::BSerializer_573592593, 573592593);
 	registerClass(typeid(BBytes), byps::test::api::BSerializer_1374008726, 1374008726);
-	registerClass(typeid(BArray4< int8_t > ), byps::test::api::BSerializer_1201775504, 1201775504);
-	registerClass(typeid(BArray1< wchar_t > ), byps::test::api::BSerializer_1361632968, 1361632968);
-	registerClass(typeid(BArray4< wchar_t > ), byps::test::api::BSerializer_769021986, 769021986);
-	registerClass(typeid(BArray1< double > ), byps::test::api::BSerializer_1359468275, 1359468275);
-	registerClass(typeid(BArray4< double > ), byps::test::api::BSerializer_2087445849, 2087445849);
-	registerClass(typeid(BArray1< float > ), byps::test::api::BSerializer_766441794, 766441794);
-	registerClass(typeid(BArray4< float > ), byps::test::api::BSerializer_1516687588, 1516687588);
-	registerClass(typeid(BArray1< int32_t > ), byps::test::api::BSerializer_100361105, 100361105);
-	registerClass(typeid(BArray2< int32_t > ), byps::test::api::BSerializer_1957744307, 1957744307);
-	registerClass(typeid(BArray3< int32_t > ), byps::test::api::BSerializer_196606293, 196606293);
-	registerClass(typeid(BArray4< int32_t > ), byps::test::api::BSerializer_39910537, 39910537);
-	registerClass(typeid(BArray1< PContentStream > ), byps::test::api::BSerializer_1950626768, 1950626768);
-	registerClass(typeid(BArray1< PSerializable > ), byps::test::api::BSerializer_183594037, 183594037);
-	registerClass(typeid(BArray2< PSerializable > ), byps::test::api::BSerializer_340213335, 340213335);
-	registerClass(typeid(BArray3< PSerializable > ), byps::test::api::BSerializer_527503353, 527503353);
-	registerClass(typeid(BArray4< PSerializable > ), byps::test::api::BSerializer_124584219, 124584219);
-	registerClass(typeid(BArray1< ::std::wstring > ), byps::test::api::BSerializer_1888107655, 1888107655);
-	registerClass(typeid(BArray2< ::std::wstring > ), byps::test::api::BSerializer_1995260457, 1995260457);
-	registerClass(typeid(BArray3< ::std::wstring > ), byps::test::api::BSerializer_1889888075, 1889888075);
-	registerClass(typeid(BArray4< ::std::wstring > ), byps::test::api::BSerializer_588723219, 588723219);
+	registerClass(typeid(::byps::BArray4< int8_t > ), byps::test::api::BSerializer_1201775504, 1201775504);
+	registerClass(typeid(::byps::BArray1< wchar_t > ), byps::test::api::BSerializer_1361632968, 1361632968);
+	registerClass(typeid(::byps::BArray4< wchar_t > ), byps::test::api::BSerializer_769021986, 769021986);
+	registerClass(typeid(::byps::BArray1< double > ), byps::test::api::BSerializer_1359468275, 1359468275);
+	registerClass(typeid(::byps::BArray4< double > ), byps::test::api::BSerializer_2087445849, 2087445849);
+	registerClass(typeid(::byps::BArray1< float > ), byps::test::api::BSerializer_766441794, 766441794);
+	registerClass(typeid(::byps::BArray4< float > ), byps::test::api::BSerializer_1516687588, 1516687588);
+	registerClass(typeid(::byps::BArray1< int32_t > ), byps::test::api::BSerializer_100361105, 100361105);
+	registerClass(typeid(::byps::BArray2< int32_t > ), byps::test::api::BSerializer_1957744307, 1957744307);
+	registerClass(typeid(::byps::BArray3< int32_t > ), byps::test::api::BSerializer_196606293, 196606293);
+	registerClass(typeid(::byps::BArray4< int32_t > ), byps::test::api::BSerializer_39910537, 39910537);
+	registerClass(typeid(::byps::BArray1< PContentStream > ), byps::test::api::BSerializer_1950626768, 1950626768);
+	registerClass(typeid(::byps::BArray1< PSerializable > ), byps::test::api::BSerializer_183594037, 183594037);
+	registerClass(typeid(::byps::BArray2< PSerializable > ), byps::test::api::BSerializer_340213335, 340213335);
+	registerClass(typeid(::byps::BArray3< PSerializable > ), byps::test::api::BSerializer_527503353, 527503353);
+	registerClass(typeid(::byps::BArray4< PSerializable > ), byps::test::api::BSerializer_124584219, 124584219);
+	registerClass(typeid(::byps::BArray1< ::std::wstring > ), byps::test::api::BSerializer_1888107655, 1888107655);
+	registerClass(typeid(::byps::BArray2< ::std::wstring > ), byps::test::api::BSerializer_1995260457, 1995260457);
+	registerClass(typeid(::byps::BArray3< ::std::wstring > ), byps::test::api::BSerializer_1889888075, 1889888075);
+	registerClass(typeid(::byps::BArray4< ::std::wstring > ), byps::test::api::BSerializer_588723219, 588723219);
 	registerClass(typeid(::std::vector< byps::test::api::enu::EnumPlanets >), byps::test::api::BSerializer_819140569, 819140569);
-	registerClass(typeid(BArray1< BDateTime > ), byps::test::api::BSerializer_1406664368, 1406664368);
-	registerClass(typeid(BArray4< BDateTime > ), byps::test::api::BSerializer_51898890, 51898890);
+	registerClass(typeid(::byps::BArray1< BDateTime > ), byps::test::api::BSerializer_1406664368, 1406664368);
+	registerClass(typeid(::byps::BArray4< BDateTime > ), byps::test::api::BSerializer_51898890, 51898890);
 	registerClass(typeid(::std::map< double , int8_t >), byps::test::api::BSerializer_1972793385, 1972793385);
 	registerClass(typeid(::std::set< int8_t >), byps::test::api::BSerializer_31512998, 31512998);
 	registerClass(typeid(::std::vector< byps::test::api::inherit::PClass1 >), byps::test::api::BSerializer_510524840, 510524840);
@@ -770,8 +959,8 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(::std::vector< byps::test::api::prim::PPrimitiveTypes >), byps::test::api::BSerializer_1596367810, 1596367810);
 	registerClass(typeid(::std::vector< byps::test::api::refs::PNode >), byps::test::api::BSerializer_1442786648, 1442786648);
 	registerClass(typeid(::std::vector< PBytes >), byps::test::api::BSerializer_1174971318, 1174971318);
-	registerClass(typeid(::std::vector< byps_ptr< BArray1< int32_t > > >), byps::test::api::BSerializer_1752158699, 1752158699);
-	registerClass(typeid(::std::vector< byps_ptr< BArray4< int32_t > > >), byps::test::api::BSerializer_1088217157, 1088217157);
+	registerClass(typeid(::std::vector< PArrayInt >), byps::test::api::BSerializer_1752158699, 1752158699);
+	registerClass(typeid(::std::vector< PArray4Int >), byps::test::api::BSerializer_1088217157, 1088217157);
 	registerClass(typeid(::std::vector< PContentStream >), byps::test::api::BSerializer_1218831438, 1218831438);
 	registerClass(typeid(::std::vector< bool >), byps::test::api::BSerializer_1617670280, 1617670280);
 	registerClass(typeid(::std::vector< int8_t >), byps::test::api::BSerializer_1059148284, 1059148284);
@@ -783,21 +972,21 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(::std::vector< int16_t >), byps::test::api::BSerializer_1997002548, 1997002548);
 	registerClass(typeid(::std::vector< ::std::wstring >), byps::test::api::BSerializer_2123584667, 2123584667);
 	registerClass(typeid(::std::vector< BDateTime >), byps::test::api::BSerializer_1504867122, 1504867122);
-	registerClass(typeid(::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > >), byps::test::api::BSerializer_1823330785, 1823330785);
-	registerClass(typeid(::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > >), byps::test::api::BSerializer_1865834185, 1865834185);
-	registerClass(typeid(::std::vector< byps_ptr< ::std::vector< int32_t > > >), byps::test::api::BSerializer_1746702954, 1746702954);
-	registerClass(typeid(::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > >), byps::test::api::BSerializer_1633500852, 1633500852);
-	registerClass(typeid(::std::vector< byps_ptr< ::std::set< int32_t > > >), byps::test::api::BSerializer_724129228, 724129228);
+	registerClass(typeid(::std::vector< byps::test::api::inl::PVectorPoint2D >), byps::test::api::BSerializer_1823330785, 1823330785);
+	registerClass(typeid(::std::vector< byps_ptr< ::std::vector< PArray4Int > > >), byps::test::api::BSerializer_1865834185, 1865834185);
+	registerClass(typeid(::std::vector< byps::PVectorInteger >), byps::test::api::BSerializer_1746702954, 1746702954);
+	registerClass(typeid(::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > >), byps::test::api::BSerializer_1633500852, 1633500852);
+	registerClass(typeid(::std::vector< byps::PSetInteger >), byps::test::api::BSerializer_724129228, 724129228);
 	registerClass(typeid(::std::map< int8_t , double >), byps::test::api::BSerializer_1487265161, 1487265161);
 	registerClass(typeid(::std::map< wchar_t , float >), byps::test::api::BSerializer_94341197, 94341197);
 	registerClass(typeid(::std::map< int32_t , byps::test::api::inl::Point2D >), byps::test::api::BSerializer_1358523233, 1358523233);
 	registerClass(typeid(::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes >), byps::test::api::BSerializer_1831201218, 1831201218);
 	registerClass(typeid(::std::map< int32_t , PBytes >), byps::test::api::BSerializer_1799280818, 1799280818);
-	registerClass(typeid(::std::map< int32_t , byps_ptr< BArray1< int32_t > > >), byps::test::api::BSerializer_1633750383, 1633750383);
+	registerClass(typeid(::std::map< int32_t , PArrayInt >), byps::test::api::BSerializer_1633750383, 1633750383);
 	registerClass(typeid(::std::map< int32_t , PContentStream >), byps::test::api::BSerializer_779528402, 779528402);
 	registerClass(typeid(::std::map< int32_t , int32_t >), byps::test::api::BSerializer_1347703734, 1347703734);
-	registerClass(typeid(::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > >), byps::test::api::BSerializer_132175071, 132175071);
-	registerClass(typeid(::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > >), byps::test::api::BSerializer_49984088, 49984088);
+	registerClass(typeid(::std::map< int32_t , byps::PVectorString >), byps::test::api::BSerializer_132175071, 132175071);
+	registerClass(typeid(::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > >), byps::test::api::BSerializer_49984088, 49984088);
 	registerClass(typeid(::std::map< int64_t , int16_t >), byps::test::api::BSerializer_601099730, 601099730);
 	registerClass(typeid(::std::map< int16_t , int64_t >), byps::test::api::BSerializer_1973996106, 1973996106);
 	registerClass(typeid(::std::map< ::std::wstring , byps::test::api::enu::EnumPlanets >), byps::test::api::BSerializer_493795497, 493795497);
@@ -810,7 +999,7 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(::std::set< byps::test::api::inherit::PClass1 >), byps::test::api::BSerializer_484881308, 484881308);
 	registerClass(typeid(::std::set< byps::test::api::prim::PPrimitiveTypes >), byps::test::api::BSerializer_673917574, 673917574);
 	registerClass(typeid(::std::set< PBytes >), byps::test::api::BSerializer_2052431866, 2052431866);
-	registerClass(typeid(::std::set< byps_ptr< BArray1< int32_t > > >), byps::test::api::BSerializer_1406124761, 1406124761);
+	registerClass(typeid(::std::set< PArrayInt >), byps::test::api::BSerializer_1406124761, 1406124761);
 	registerClass(typeid(::std::set< bool >), byps::test::api::BSerializer_1365696060, 1365696060);
 	registerClass(typeid(::std::set< double >), byps::test::api::BSerializer_1320560671, 1320560671);
 	registerClass(typeid(::std::set< float >), byps::test::api::BSerializer_1898022288, 1898022288);
@@ -823,8 +1012,8 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(::std::map< int32_t , PContentStream >), byps::test::api::BSerializer_476459792, 476459792);
 	registerClass(typeid(::std::set< wchar_t >), byps::test::api::BSerializer_936607009, 936607009);
 	registerClass(typeid(::std::set< int32_t >), byps::test::api::BSerializer_855786668, 855786668);
-	registerClass(typeid(BArray1< int64_t > ), byps::test::api::BSerializer_1097129250, 1097129250);
-	registerClass(typeid(BArray4< int64_t > ), byps::test::api::BSerializer_846419204, 846419204);
-	registerClass(typeid(BArray1< int16_t > ), byps::test::api::BSerializer_2067161310, 2067161310);
-	registerClass(typeid(BArray4< int16_t > ), byps::test::api::BSerializer_1859644668, 1859644668);
+	registerClass(typeid(::byps::BArray1< int64_t > ), byps::test::api::BSerializer_1097129250, 1097129250);
+	registerClass(typeid(::byps::BArray4< int64_t > ), byps::test::api::BSerializer_846419204, 846419204);
+	registerClass(typeid(::byps::BArray1< int16_t > ), byps::test::api::BSerializer_2067161310, 2067161310);
+	registerClass(typeid(::byps::BArray4< int16_t > ), byps::test::api::BSerializer_1859644668, 1859644668);
 }

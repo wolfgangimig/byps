@@ -6,2040 +6,6 @@
 
 
 //-------------------------------------------------
-// Forward Declaration of class BRequest_BioFruitService_certify
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-class BRequest_BioFruitService_certify; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_BioLemonService_useParing
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-class BRequest_BioLemonService_useParing; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_FruitService_squeeze
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-class BRequest_FruitService_squeeze; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_LemonService_pick
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-class BRequest_LemonService_pick; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_PlantService_grow
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-class BRequest_PlantService_grow; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getBool
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getBool; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getByte
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getByte; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getChar
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getChar; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getDouble
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getDouble; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getFloat
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getFloat; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getInt
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getLong
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getLong; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getObject
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getObject; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getShort
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getShort; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_getString
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_getString; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setBool
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setBool; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setByte
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setByte; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setChar
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setChar; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setDouble
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setDouble; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setFloat
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setFloat; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setInt
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setLong
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setLong; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setObject
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setObject; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setShort
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setShort; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes1dim_setString
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes1dim_setString; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysClass
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes23_sendArraysClass; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysInline
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes23_sendArraysInline; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysInt
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes23_sendArraysInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysObject
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes23_sendArraysObject; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes23_sendArraysString
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes23_sendArraysString; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getBool
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getBool; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getByte
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getByte; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getChar
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getChar; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getDouble
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getDouble; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getFloat
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getFloat; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getInt
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getLong
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getLong; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getObject
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getObject; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getShort
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getShort; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_getString
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_getString; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setBool
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setBool; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setByte
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setByte; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setChar
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setChar; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setDouble
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setDouble; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setFloat
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setFloat; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setInt
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setLong
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setLong; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setObject
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setObject; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setShort
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setShort; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteArrayTypes4dim_setString
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteArrayTypes4dim_setString; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteConstants_compare_AllTypesC
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteConstants_compare_AllTypesC; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteConstants_compare_HebrewC
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteConstants_compare_HebrewC; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteEnums_getPlanet
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteEnums_getPlanet; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteEnums_setPlanet
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteEnums_setPlanet; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_getActor
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_getActor; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DArray1dim
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_getPoint2DArray1dim; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DArray4dim
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_getPoint2DArray4dim; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DList
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_getPoint2DList; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DListList
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_getPoint2DListList; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_getPoint2DMap
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_getPoint2DMap; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_setActor
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_setActor; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DArray1dim
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_setPoint2DArray1dim; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DArray4dim
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_setPoint2DArray4dim; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DList
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_setPoint2DList; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DListList
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_setPoint2DListList; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteInlineInstance_setPoint2DMap
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteInlineInstance_setPoint2DMap; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getBoolean1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getBoolean1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getByte1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getByte1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getByte2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getByte2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getChar1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getChar1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getDate1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getDate1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getDouble1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getDouble1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getFloat1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getFloat1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getInt1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getInt1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getInt2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getInt2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getInt3
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getInt3; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getInt4
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getInt4; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getLong1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getLong1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getObj1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getObj1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getPrimitiveTypes1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getPrimitiveTypes1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getShort1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getShort1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_getString1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_getString1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setBoolean1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setBoolean1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setByte1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setByte1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setByte2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setByte2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setChar1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setChar1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setDate1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setDate1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setDouble1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setDouble1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setFloat1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setFloat1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setInt1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setInt1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setInt2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setInt2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setInt3
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setInt3; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setInt4
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setInt4; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setLong1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setLong1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setObj1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setObj1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setPrimitiveTypes1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setPrimitiveTypes1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setShort1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setShort1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteListTypes_setString1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteListTypes_setString1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getBoolean1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getBoolean1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getByte1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getByte1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getByte2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getByte2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getChar1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getChar1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getDate1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getDate1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getDouble1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getDouble1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getFloat1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getFloat1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getInt1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getInt1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getInt2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getInt2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getLong1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getLong1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getObj1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getObj1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getPrimitiveTypes1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getPrimitiveTypes1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getShort1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getShort1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_getString1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_getString1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setBoolean1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setBoolean1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setByte1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setByte1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setByte2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setByte2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setChar1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setChar1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setDate1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setDate1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setDouble1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setDouble1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setFloat1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setFloat1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setInt1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setInt1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setInt2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setInt2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setLong1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setLong1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setObj1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setObj1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setPrimitiveTypes1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setPrimitiveTypes1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setShort1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setShort1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteMapTypes_setString1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteMapTypes_setString1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_add
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_add; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getBool
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getBool; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getByte
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getByte; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getChar
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getChar; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getDouble
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getDouble; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getFloat
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getFloat; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getInt
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getLong
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getLong; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getObject
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getObject; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getPrimitiveTypes
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getPrimitiveTypes; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getShort
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getShort; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_getString
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_getString; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_makeDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_makeDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_parseDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_parseDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_sendAllTypes
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_sendAllTypes; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setBool
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setBool; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setByte
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setByte; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setChar
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setChar; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setDate
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setDate; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setDouble
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setDouble; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setFloat
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setFloat; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setInt
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setLong
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setLong; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setObject
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setObject; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setPrimitiveTypes
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setPrimitiveTypes; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setShort
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setShort; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_setString
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_setString; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_throwException
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_throwException; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemotePrimitiveTypes_voidFunctionVoid
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemotePrimitiveTypes_voidFunctionVoid; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteReferences_getNode
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteReferences_getNode; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteReferences_setNode
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteReferences_setNode; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteServerCtrl_getPublishedRemote
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteServerCtrl_getPublishedRemote; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteServerCtrl_publishRemote
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteServerCtrl_publishRemote; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteServerCtrl_removePublishedRemote
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteServerCtrl_removePublishedRemote; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getBoolean1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getBoolean1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getByte1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getByte1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getByte2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getByte2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getChar1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getChar1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getDate1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getDate1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getDouble1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getDouble1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getFloat1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getFloat1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getInt1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getInt1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getInt2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getInt2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getLong1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getLong1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getObj1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getObj1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getPrimitiveTypes1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getPrimitiveTypes1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getShort1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getShort1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_getString1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_getString1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setBoolean1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setBoolean1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setByte1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setByte1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setByte2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setByte2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setChar1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setChar1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setDate1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setDate1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setDouble1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setDouble1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setFloat1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setFloat1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setInt1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setInt1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setInt2
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setInt2; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setLong1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setLong1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setObj1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setObj1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setPrimitiveTypes1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setPrimitiveTypes1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setShort1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setShort1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteSetTypes_setString1
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteSetTypes_setString1; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteStreams_getImage
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteStreams_getImage; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteStreams_getImages
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteStreams_getImages; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteStreams_getTextStream
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteStreams_getTextStream; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteStreams_setImage
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteStreams_setImage; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteStreams_setImages
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteStreams_setImages; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteStreams_throwLastException
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteStreams_throwLastException; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteWithAuthentication_doit
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteWithAuthentication_doit; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteWithAuthentication_expire
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteWithAuthentication_expire; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteWithAuthentication_login
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteWithAuthentication_login; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteWithAuthentication_setReloginCount
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteWithAuthentication_setReloginCount; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_RemoteWithAuthentication_setUseAuthentication
-
-namespace byps { namespace test { namespace api { namespace remote { 
-
-class BRequest_RemoteWithAuthentication_setUseAuthentication; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ClientIF_getStreams
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ClientIF_getStreams; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ClientIF_incrementInt
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ClientIF_incrementInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ClientIF_putStreams
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ClientIF_putStreams; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ClientIF_sendChat
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ClientIF_sendChat; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_callClientIncrementInt
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_callClientIncrementInt; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_callClientParallel
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_callClientParallel; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_getClient
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_getClient; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_getClientIds
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_getClientIds; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_getPartner
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_getPartner; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_getStreamsFromClient
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_getStreamsFromClient; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_putStreamsOnClient
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_putStreamsOnClient; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_registerWithClientMap
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_registerWithClientMap; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_ServerIF_setPartner
-
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-class BRequest_ServerIF_setPartner; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_EvolveIF_getClient
-
-namespace byps { namespace test { namespace api { namespace ver { 
-
-class BRequest_EvolveIF_getClient; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_EvolveIF_getEvolve
-
-namespace byps { namespace test { namespace api { namespace ver { 
-
-class BRequest_EvolveIF_getEvolve; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_EvolveIF_sendEvolveToClient
-
-namespace byps { namespace test { namespace api { namespace ver { 
-
-class BRequest_EvolveIF_sendEvolveToClient; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_EvolveIF_setClient
-
-namespace byps { namespace test { namespace api { namespace ver { 
-
-class BRequest_EvolveIF_setClient; 
-
-}}}}
-
-//-------------------------------------------------
-// Forward Declaration of class BRequest_EvolveIF_setEvolve
-
-namespace byps { namespace test { namespace api { namespace ver { 
-
-class BRequest_EvolveIF_setEvolve; 
-
-}}}}
-
-//-------------------------------------------------
 // BResult_1
 // typeId=432867947
 
@@ -2108,9 +74,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_100361105 : public BSerializable {
-	public: byps_ptr< BArray1< int32_t > > result;
+	public: PArrayInt result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_100361105(byps_ptr< BArray1< int32_t > > result = byps_ptr< BArray1< int32_t > >()) : result(result) {}	
+	public: BResult_100361105(PArrayInt result = PArrayInt()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 498939805; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2128,9 +94,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1050216688 : public BSerializable {
-	public: byps_ptr< ::std::vector< int64_t > > result;
+	public: byps::PVectorLong result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1050216688(byps_ptr< ::std::vector< int64_t > > result = byps_ptr< ::std::vector< int64_t > >()) : result(result) {}	
+	public: BResult_1050216688(byps::PVectorLong result = byps::PVectorLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 70523627; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2148,9 +114,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1059148284 : public BSerializable {
-	public: byps_ptr< ::std::vector< int8_t > > result;
+	public: byps::PVectorByte result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1059148284(byps_ptr< ::std::vector< int8_t > > result = byps_ptr< ::std::vector< int8_t > >()) : result(result) {}	
+	public: BResult_1059148284(byps::PVectorByte result = byps::PVectorByte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 698727944; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2168,9 +134,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1097129250 : public BSerializable {
-	public: byps_ptr< BArray1< int64_t > > result;
+	public: PArrayLong result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1097129250(byps_ptr< BArray1< int64_t > > result = byps_ptr< BArray1< int64_t > >()) : result(result) {}	
+	public: BResult_1097129250(PArrayLong result = PArrayLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 200721390; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2188,9 +154,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1097919350 : public BSerializable {
-	public: byps_ptr< ::std::set< BDateTime > > result;
+	public: byps::PSetDate result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1097919350(byps_ptr< ::std::set< BDateTime > > result = byps_ptr< ::std::set< BDateTime > >()) : result(result) {}	
+	public: BResult_1097919350(byps::PSetDate result = byps::PSetDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 428832038; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2228,9 +194,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_12 : public BSerializable {
-	public: byps_ptr< ::std::vector< PSerializable > > result;
+	public: byps::PVectorObject result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_12(byps_ptr< ::std::vector< PSerializable > > result = byps_ptr< ::std::vector< PSerializable > >()) : result(result) {}	
+	public: BResult_12(byps::PVectorObject result = byps::PVectorObject()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 534004419; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2248,9 +214,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1201775504 : public BSerializable {
-	public: byps_ptr< BArray4< int8_t > > result;
+	public: PArray4Byte result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1201775504(byps_ptr< BArray4< int8_t > > result = byps_ptr< BArray4< int8_t > >()) : result(result) {}	
+	public: BResult_1201775504(PArray4Byte result = PArray4Byte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1521577218; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2268,9 +234,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1218831438 : public BSerializable {
-	public: byps_ptr< ::std::vector< PContentStream > > result;
+	public: byps::PVectorInputStream result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1218831438(byps_ptr< ::std::vector< PContentStream > > result = byps_ptr< ::std::vector< PContentStream > >()) : result(result) {}	
+	public: BResult_1218831438(byps::PVectorInputStream result = byps::PVectorInputStream()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 911793767; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2288,9 +254,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_124584219 : public BSerializable {
-	public: byps_ptr< BArray4< PSerializable > > result;
+	public: byps::PArray4Object result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_124584219(byps_ptr< BArray4< PSerializable > > result = byps_ptr< BArray4< PSerializable > >()) : result(result) {}	
+	public: BResult_124584219(byps::PArray4Object result = byps::PArray4Object()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 996163680; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2308,9 +274,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1279823631 : public BSerializable {
-	public: byps_ptr< ::std::map< ::std::wstring , bool > > result;
+	public: byps::PMapStringBoolean result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1279823631(byps_ptr< ::std::map< ::std::wstring , bool > > result = byps_ptr< ::std::map< ::std::wstring , bool > >()) : result(result) {}	
+	public: BResult_1279823631(byps::PMapStringBoolean result = byps::PMapStringBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 629604454; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2328,9 +294,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1320560671 : public BSerializable {
-	public: byps_ptr< ::std::set< double > > result;
+	public: byps::PSetDouble result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1320560671(byps_ptr< ::std::set< double > > result = byps_ptr< ::std::set< double > >()) : result(result) {}	
+	public: BResult_1320560671(byps::PSetDouble result = byps::PSetDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2041057155; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2348,9 +314,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1347703734 : public BSerializable {
-	public: byps_ptr< ::std::map< int32_t , int32_t > > result;
+	public: byps::PMapIntegerInteger result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1347703734(byps_ptr< ::std::map< int32_t , int32_t > > result = byps_ptr< ::std::map< int32_t , int32_t > >()) : result(result) {}	
+	public: BResult_1347703734(byps::PMapIntegerInteger result = byps::PMapIntegerInteger()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 881037921; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2368,9 +334,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1358523233 : public BSerializable {
-	public: byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > result;
+	public: byps::test::api::inl::PMapIntegerPoint2D result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1358523233(byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > result = byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: BResult_1358523233(byps::test::api::inl::PMapIntegerPoint2D result = byps::test::api::inl::PMapIntegerPoint2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1693860029; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2388,9 +354,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1359468275 : public BSerializable {
-	public: byps_ptr< BArray1< double > > result;
+	public: PArrayDouble result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1359468275(byps_ptr< BArray1< double > > result = byps_ptr< BArray1< double > >()) : result(result) {}	
+	public: BResult_1359468275(PArrayDouble result = PArrayDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1738389572; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2408,9 +374,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1361632968 : public BSerializable {
-	public: byps_ptr< BArray1< wchar_t > > result;
+	public: PArrayChar result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1361632968(byps_ptr< BArray1< wchar_t > > result = byps_ptr< BArray1< wchar_t > >()) : result(result) {}	
+	public: BResult_1361632968(PArrayChar result = PArrayChar()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1548641599; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2428,9 +394,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1365696060 : public BSerializable {
-	public: byps_ptr< ::std::set< bool > > result;
+	public: byps::PSetBoolean result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1365696060(byps_ptr< ::std::set< bool > > result = byps_ptr< ::std::set< bool > >()) : result(result) {}	
+	public: BResult_1365696060(byps::PSetBoolean result = byps::PSetBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 809340660; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2448,9 +414,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1366799209 : public BSerializable {
-	public: byps_ptr< ::std::map< ::std::wstring , BDateTime > > result;
+	public: byps::PMapStringDate result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1366799209(byps_ptr< ::std::map< ::std::wstring , BDateTime > > result = byps_ptr< ::std::map< ::std::wstring , BDateTime > >()) : result(result) {}	
+	public: BResult_1366799209(byps::PMapStringDate result = byps::PMapStringDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1725564610; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2548,9 +514,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1406124761 : public BSerializable {
-	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > result;
+	public: byps_ptr< ::std::set< PArrayInt > > result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1406124761(byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
+	public: BResult_1406124761(byps_ptr< ::std::set< PArrayInt > > result = byps_ptr< ::std::set< PArrayInt > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2127200796; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2568,9 +534,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1406664368 : public BSerializable {
-	public: byps_ptr< BArray1< BDateTime > > result;
+	public: PArrayDate result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1406664368(byps_ptr< BArray1< BDateTime > > result = byps_ptr< BArray1< BDateTime > >()) : result(result) {}	
+	public: BResult_1406664368(PArrayDate result = PArrayDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1980364794; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2588,9 +554,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1457164460 : public BSerializable {
-	public: byps_ptr< ::std::set< int64_t > > result;
+	public: byps::PSetLong result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1457164460(byps_ptr< ::std::set< int64_t > > result = byps_ptr< ::std::set< int64_t > >()) : result(result) {}	
+	public: BResult_1457164460(byps::PSetLong result = byps::PSetLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1111888832; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2608,9 +574,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1487265161 : public BSerializable {
-	public: byps_ptr< ::std::map< int8_t , double > > result;
+	public: byps::PMapByteDouble result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1487265161(byps_ptr< ::std::map< int8_t , double > > result = byps_ptr< ::std::map< int8_t , double > >()) : result(result) {}	
+	public: BResult_1487265161(byps::PMapByteDouble result = byps::PMapByteDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 149769063; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2628,9 +594,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1488550492 : public BSerializable {
-	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > result;
+	public: byps::PMapStringObject result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1488550492(byps_ptr< ::std::map< ::std::wstring , PSerializable > > result = byps_ptr< ::std::map< ::std::wstring , PSerializable > >()) : result(result) {}	
+	public: BResult_1488550492(byps::PMapStringObject result = byps::PMapStringObject()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 822552572; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2648,9 +614,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1493282670 : public BSerializable {
-	public: byps_ptr< ::std::set< int32_t > > result;
+	public: byps::PSetInteger result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1493282670(byps_ptr< ::std::set< int32_t > > result = byps_ptr< ::std::set< int32_t > >()) : result(result) {}	
+	public: BResult_1493282670(byps::PSetInteger result = byps::PSetInteger()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1955210948; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2688,9 +654,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1504867122 : public BSerializable {
-	public: byps_ptr< ::std::vector< BDateTime > > result;
+	public: byps::PVectorDate result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1504867122(byps_ptr< ::std::vector< BDateTime > > result = byps_ptr< ::std::vector< BDateTime > >()) : result(result) {}	
+	public: BResult_1504867122(byps::PVectorDate result = byps::PVectorDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1210513700; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2708,9 +674,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1516687588 : public BSerializable {
-	public: byps_ptr< BArray4< float > > result;
+	public: PArray4Float result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1516687588(byps_ptr< BArray4< float > > result = byps_ptr< BArray4< float > >()) : result(result) {}	
+	public: BResult_1516687588(PArray4Float result = PArray4Float()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2043070523; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2728,9 +694,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1555345627 : public BSerializable {
-	public: byps_ptr< ::std::vector< double > > result;
+	public: byps::PVectorDouble result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1555345627(byps_ptr< ::std::vector< double > > result = byps_ptr< ::std::vector< double > >()) : result(result) {}	
+	public: BResult_1555345627(byps::PVectorDouble result = byps::PVectorDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 343940505; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2748,9 +714,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1596367810 : public BSerializable {
-	public: byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > result;
+	public: byps::test::api::prim::PVectorPrimitiveTypes result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1596367810(byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: BResult_1596367810(byps::test::api::prim::PVectorPrimitiveTypes result = byps::test::api::prim::PVectorPrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1073221568; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2788,9 +754,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1617670280 : public BSerializable {
-	public: byps_ptr< ::std::vector< bool > > result;
+	public: byps::PVectorBoolean result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1617670280(byps_ptr< ::std::vector< bool > > result = byps_ptr< ::std::vector< bool > >()) : result(result) {}	
+	public: BResult_1617670280(byps::PVectorBoolean result = byps::PVectorBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1330811042; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2808,9 +774,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1628501332 : public BSerializable {
-	public: byps_ptr< ::std::vector< float > > result;
+	public: byps::PVectorFloat result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1628501332(byps_ptr< ::std::vector< float > > result = byps_ptr< ::std::vector< float > >()) : result(result) {}	
+	public: BResult_1628501332(byps::PVectorFloat result = byps::PVectorFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 368905437; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2828,9 +794,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1633500852 : public BSerializable {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > result;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > > result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1633500852(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >()) : result(result) {}	
+	public: BResult_1633500852(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1231328865; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2848,9 +814,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1633750383 : public BSerializable {
-	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result;
+	public: byps_ptr< ::std::map< int32_t , PArrayInt > > result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1633750383(byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
+	public: BResult_1633750383(byps_ptr< ::std::map< int32_t , PArrayInt > > result = byps_ptr< ::std::map< int32_t , PArrayInt > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1293200061; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2868,9 +834,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1661807911 : public BSerializable {
-	public: byps_ptr< ::std::vector< wchar_t > > result;
+	public: byps::PVectorCharacter result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1661807911(byps_ptr< ::std::vector< wchar_t > > result = byps_ptr< ::std::vector< wchar_t > >()) : result(result) {}	
+	public: BResult_1661807911(byps::PVectorCharacter result = byps::PVectorCharacter()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 475882038; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2908,9 +874,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1710660846 : public BSerializable {
-	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > result;
+	public: byps::PMapStringString result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1710660846(byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > result = byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >()) : result(result) {}	
+	public: BResult_1710660846(byps::PMapStringString result = byps::PMapStringString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1899847531; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2948,9 +914,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1746702954 : public BSerializable {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > result;
+	public: byps_ptr< ::std::vector< byps::PVectorInteger > > result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1746702954(byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >()) : result(result) {}	
+	public: BResult_1746702954(byps_ptr< ::std::vector< byps::PVectorInteger > > result = byps_ptr< ::std::vector< byps::PVectorInteger > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 408452669; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -2968,9 +934,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1752158699 : public BSerializable {
-	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > result;
+	public: byps_ptr< ::std::vector< PArrayInt > > result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1752158699(byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > result = byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >()) : result(result) {}	
+	public: BResult_1752158699(byps_ptr< ::std::vector< PArrayInt > > result = byps_ptr< ::std::vector< PArrayInt > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1912328929; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3008,9 +974,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_181681714 : public BSerializable {
-	public: byps_ptr< ::std::vector< int32_t > > result;
+	public: byps::PVectorInteger result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_181681714(byps_ptr< ::std::vector< int32_t > > result = byps_ptr< ::std::vector< int32_t > >()) : result(result) {}	
+	public: BResult_181681714(byps::PVectorInteger result = byps::PVectorInteger()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1763202727; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3028,9 +994,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1823330785 : public BSerializable {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > result;
+	public: byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > > result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1823330785(byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >()) : result(result) {}	
+	public: BResult_1823330785(byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > > result = byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 114088296; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3048,9 +1014,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1831201218 : public BSerializable {
-	public: byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > result;
+	public: byps::test::api::prim::PMapIntegerPrimitiveTypes result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1831201218(byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: BResult_1831201218(byps::test::api::prim::PMapIntegerPrimitiveTypes result = byps::test::api::prim::PMapIntegerPrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 50516327; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3068,9 +1034,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_183594037 : public BSerializable {
-	public: byps_ptr< BArray1< PSerializable > > result;
+	public: byps::PArrayObject result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_183594037(byps_ptr< BArray1< PSerializable > > result = byps_ptr< BArray1< PSerializable > >()) : result(result) {}	
+	public: BResult_183594037(byps::PArrayObject result = byps::PArrayObject()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 15818284; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3088,9 +1054,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_184101377 : public BSerializable {
-	public: byps_ptr< BArray1< byps::test::api::inl::Point2D > > result;
+	public: byps::test::api::inl::PArrayPoint2D result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_184101377(byps_ptr< BArray1< byps::test::api::inl::Point2D > > result = byps_ptr< BArray1< byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: BResult_184101377(byps::test::api::inl::PArrayPoint2D result = byps::test::api::inl::PArrayPoint2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 748770738; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3108,9 +1074,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1859644668 : public BSerializable {
-	public: byps_ptr< BArray4< int16_t > > result;
+	public: PArray4Short result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1859644668(byps_ptr< BArray4< int16_t > > result = byps_ptr< BArray4< int16_t > >()) : result(result) {}	
+	public: BResult_1859644668(PArray4Short result = PArray4Short()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2130431383; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3128,9 +1094,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1888107655 : public BSerializable {
-	public: byps_ptr< BArray1< ::std::wstring > > result;
+	public: PArrayString result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1888107655(byps_ptr< BArray1< ::std::wstring > > result = byps_ptr< BArray1< ::std::wstring > >()) : result(result) {}	
+	public: BResult_1888107655(PArrayString result = PArrayString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2063745441; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3148,9 +1114,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1888799711 : public BSerializable {
-	public: byps_ptr< ::std::set< ::std::wstring > > result;
+	public: byps::PSetString result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1888799711(byps_ptr< ::std::set< ::std::wstring > > result = byps_ptr< ::std::set< ::std::wstring > >()) : result(result) {}	
+	public: BResult_1888799711(byps::PSetString result = byps::PSetString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2051074845; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3168,9 +1134,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1898022288 : public BSerializable {
-	public: byps_ptr< ::std::set< float > > result;
+	public: byps::PSetFloat result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1898022288(byps_ptr< ::std::set< float > > result = byps_ptr< ::std::set< float > >()) : result(result) {}	
+	public: BResult_1898022288(byps::PSetFloat result = byps::PSetFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 515346332; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3208,9 +1174,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1972793385 : public BSerializable {
-	public: byps_ptr< ::std::map< double , int8_t > > result;
+	public: byps::PMapDoubleByte result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1972793385(byps_ptr< ::std::map< double , int8_t > > result = byps_ptr< ::std::map< double , int8_t > >()) : result(result) {}	
+	public: BResult_1972793385(byps::PMapDoubleByte result = byps::PMapDoubleByte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1958357790; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3228,9 +1194,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1973996106 : public BSerializable {
-	public: byps_ptr< ::std::map< int16_t , int64_t > > result;
+	public: byps::PMapShortLong result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1973996106(byps_ptr< ::std::map< int16_t , int64_t > > result = byps_ptr< ::std::map< int16_t , int64_t > >()) : result(result) {}	
+	public: BResult_1973996106(byps::PMapShortLong result = byps::PMapShortLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1391760319; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3248,9 +1214,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_1997002548 : public BSerializable {
-	public: byps_ptr< ::std::vector< int16_t > > result;
+	public: byps::PVectorShort result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_1997002548(byps_ptr< ::std::vector< int16_t > > result = byps_ptr< ::std::vector< int16_t > >()) : result(result) {}	
+	public: BResult_1997002548(byps::PVectorShort result = byps::PVectorShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1082818537; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3288,9 +1254,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_2028443792 : public BSerializable {
-	public: byps_ptr< ::std::set< int16_t > > result;
+	public: byps::PSetShort result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_2028443792(byps_ptr< ::std::set< int16_t > > result = byps_ptr< ::std::set< int16_t > >()) : result(result) {}	
+	public: BResult_2028443792(byps::PSetShort result = byps::PSetShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1664501789; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3328,9 +1294,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_2053507648 : public BSerializable {
-	public: byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > result;
+	public: byps::test::api::prim::PArrayPrimitiveTypes result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_2053507648(byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: BResult_2053507648(byps::test::api::prim::PArrayPrimitiveTypes result = byps::test::api::prim::PArrayPrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1814499786; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3348,9 +1314,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_2058423690 : public BSerializable {
-	public: byps_ptr< BArray1< bool > > result;
+	public: PArrayBoolean result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_2058423690(byps_ptr< BArray1< bool > > result = byps_ptr< BArray1< bool > >()) : result(result) {}	
+	public: BResult_2058423690(PArrayBoolean result = PArrayBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1698849803; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3368,9 +1334,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_2064980445 : public BSerializable {
-	public: byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > result;
+	public: byps::test::api::inl::PVectorPoint2D result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_2064980445(byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > result = byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: BResult_2064980445(byps::test::api::inl::PVectorPoint2D result = byps::test::api::inl::PVectorPoint2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 937508540; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3388,9 +1354,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_2067161310 : public BSerializable {
-	public: byps_ptr< BArray1< int16_t > > result;
+	public: PArrayShort result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_2067161310(byps_ptr< BArray1< int16_t > > result = byps_ptr< BArray1< int16_t > >()) : result(result) {}	
+	public: BResult_2067161310(PArrayShort result = PArrayShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 925799231; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3408,9 +1374,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_2087445849 : public BSerializable {
-	public: byps_ptr< BArray4< double > > result;
+	public: PArray4Double result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_2087445849(byps_ptr< BArray4< double > > result = byps_ptr< BArray4< double > >()) : result(result) {}	
+	public: BResult_2087445849(PArray4Double result = PArray4Double()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1650981375; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3448,9 +1414,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_2123584667 : public BSerializable {
-	public: byps_ptr< ::std::vector< ::std::wstring > > result;
+	public: byps::PVectorString result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_2123584667(byps_ptr< ::std::vector< ::std::wstring > > result = byps_ptr< ::std::vector< ::std::wstring > >()) : result(result) {}	
+	public: BResult_2123584667(byps::PVectorString result = byps::PVectorString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 253151806; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3488,9 +1454,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_31512998 : public BSerializable {
-	public: byps_ptr< ::std::set< int8_t > > result;
+	public: byps::PSetByte result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_31512998(byps_ptr< ::std::set< int8_t > > result = byps_ptr< ::std::set< int8_t > >()) : result(result) {}	
+	public: BResult_31512998(byps::PSetByte result = byps::PSetByte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1620912700; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3508,9 +1474,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_39910537 : public BSerializable {
-	public: byps_ptr< BArray4< int32_t > > result;
+	public: PArray4Int result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_39910537(byps_ptr< BArray4< int32_t > > result = byps_ptr< BArray4< int32_t > >()) : result(result) {}	
+	public: BResult_39910537(PArray4Int result = PArray4Int()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 245460547; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3548,9 +1514,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_476459792 : public BSerializable {
-	public: byps_ptr< ::std::map< int32_t , PContentStream > > result;
+	public: byps::PMapIntegerInputStream result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_476459792(byps_ptr< ::std::map< int32_t , PContentStream > > result = byps_ptr< ::std::map< int32_t , PContentStream > >()) : result(result) {}	
+	public: BResult_476459792(byps::PMapIntegerInputStream result = byps::PMapIntegerInputStream()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 255681041; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3588,9 +1554,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_51898890 : public BSerializable {
-	public: byps_ptr< BArray4< BDateTime > > result;
+	public: PArray4Date result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_51898890(byps_ptr< BArray4< BDateTime > > result = byps_ptr< BArray4< BDateTime > >()) : result(result) {}	
+	public: BResult_51898890(PArray4Date result = PArray4Date()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 905019472; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3628,9 +1594,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_588723219 : public BSerializable {
-	public: byps_ptr< BArray4< ::std::wstring > > result;
+	public: PArray4String result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_588723219(byps_ptr< BArray4< ::std::wstring > > result = byps_ptr< BArray4< ::std::wstring > >()) : result(result) {}	
+	public: BResult_588723219(PArray4String result = PArray4String()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1537615291; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3668,9 +1634,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_601099730 : public BSerializable {
-	public: byps_ptr< ::std::map< int64_t , int16_t > > result;
+	public: byps::PMapLongShort result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_601099730(byps_ptr< ::std::map< int64_t , int16_t > > result = byps_ptr< ::std::map< int64_t , int16_t > >()) : result(result) {}	
+	public: BResult_601099730(byps::PMapLongShort result = byps::PMapLongShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 856233055; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3768,9 +1734,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_758319514 : public BSerializable {
-	public: byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > result;
+	public: byps::test::api::prim::PArray4PrimitiveTypes result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_758319514(byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
+	public: BResult_758319514(byps::test::api::prim::PArray4PrimitiveTypes result = byps::test::api::prim::PArray4PrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1168951451; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3788,9 +1754,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_766441794 : public BSerializable {
-	public: byps_ptr< BArray1< float > > result;
+	public: PArrayFloat result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_766441794(byps_ptr< BArray1< float > > result = byps_ptr< BArray1< float > >()) : result(result) {}	
+	public: BResult_766441794(PArrayFloat result = PArrayFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1167917980; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3808,9 +1774,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_769021986 : public BSerializable {
-	public: byps_ptr< BArray4< wchar_t > > result;
+	public: PArray4Char result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_769021986(byps_ptr< BArray4< wchar_t > > result = byps_ptr< BArray4< wchar_t > >()) : result(result) {}	
+	public: BResult_769021986(PArray4Char result = PArray4Char()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 580900026; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3848,9 +1814,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_846419204 : public BSerializable {
-	public: byps_ptr< BArray4< int64_t > > result;
+	public: PArray4Long result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_846419204(byps_ptr< BArray4< int64_t > > result = byps_ptr< BArray4< int64_t > >()) : result(result) {}	
+	public: BResult_846419204(PArray4Long result = PArray4Long()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 167272824; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3868,9 +1834,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_8789515 : public BSerializable {
-	public: byps_ptr< ::std::map< float , wchar_t > > result;
+	public: byps::PMapFloatCharacter result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_8789515(byps_ptr< ::std::map< float , wchar_t > > result = byps_ptr< ::std::map< float , wchar_t > >()) : result(result) {}	
+	public: BResult_8789515(byps::PMapFloatCharacter result = byps::PMapFloatCharacter()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 323111619; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3908,9 +1874,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_936607009 : public BSerializable {
-	public: byps_ptr< ::std::set< wchar_t > > result;
+	public: byps::PSetCharacter result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_936607009(byps_ptr< ::std::set< wchar_t > > result = byps_ptr< ::std::set< wchar_t > >()) : result(result) {}	
+	public: BResult_936607009(byps::PSetCharacter result = byps::PSetCharacter()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 968248604; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3928,9 +1894,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_94341197 : public BSerializable {
-	public: byps_ptr< ::std::map< wchar_t , float > > result;
+	public: byps::PMapCharacterFloat result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_94341197(byps_ptr< ::std::map< wchar_t , float > > result = byps_ptr< ::std::map< wchar_t , float > >()) : result(result) {}	
+	public: BResult_94341197(byps::PMapCharacterFloat result = byps::PMapCharacterFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1800858646; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3948,9 +1914,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_945713488 : public BSerializable {
-	public: byps_ptr< BArray4< bool > > result;
+	public: PArray4Boolean result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_945713488(byps_ptr< BArray4< bool > > result = byps_ptr< BArray4< bool > >()) : result(result) {}	
+	public: BResult_945713488(PArray4Boolean result = PArray4Boolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1852992857; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -3968,9 +1934,9 @@ namespace byps { namespace test { namespace api {
 using namespace ::byps;
 
 class BResult_949340697 : public BSerializable {
-	public: byps_ptr< BArray4< byps::test::api::inl::Point2D > > result;
+	public: byps::test::api::inl::PArray4Point2D result;
 	// checkpoint byps.gen.cpp.GenApiClass:473
-	public: BResult_949340697(byps_ptr< BArray4< byps::test::api::inl::Point2D > > result = byps_ptr< BArray4< byps::test::api::inl::Point2D > >()) : result(result) {}	
+	public: BResult_949340697(byps::test::api::inl::PArray4Point2D result = byps::test::api::inl::PArray4Point2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 996206823; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4387,12 +2353,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setBool : public BMethodRequest {
-	public: byps_ptr< BArray1< bool > > v;
+	public: PArrayBoolean v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setBool();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setBool(const byps_ptr< BArray1< bool > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setBool(const PArrayBoolean& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 201441072; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4435,12 +2401,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setChar : public BMethodRequest {
-	public: byps_ptr< BArray1< wchar_t > > v;
+	public: PArrayChar v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setChar();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setChar(const byps_ptr< BArray1< wchar_t > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setChar(const PArrayChar& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 201418436; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4459,12 +2425,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setDate : public BMethodRequest {
-	public: byps_ptr< BArray1< BDateTime > > v;
+	public: PArrayDate v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setDate();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setDate(const byps_ptr< BArray1< BDateTime > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setDate(const PArrayDate& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 201394796; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4483,12 +2449,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setDouble : public BMethodRequest {
-	public: byps_ptr< BArray1< double > > v;
+	public: PArrayDouble v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setDouble();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setDouble(const byps_ptr< BArray1< double > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setDouble(const PArrayDouble& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 253910985; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4507,12 +2473,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setFloat : public BMethodRequest {
-	public: byps_ptr< BArray1< float > > v;
+	public: PArrayFloat v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setFloat();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setFloat(const byps_ptr< BArray1< float > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setFloat(const PArrayFloat& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1946101450; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4531,12 +2497,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setInt : public BMethodRequest {
-	public: byps_ptr< BArray1< int32_t > > v;
+	public: PArrayInt v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setInt();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setInt(const byps_ptr< BArray1< int32_t > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setInt(const PArrayInt& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1530512055; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4555,12 +2521,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setLong : public BMethodRequest {
-	public: byps_ptr< BArray1< int64_t > > v;
+	public: PArrayLong v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setLong();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setLong(const byps_ptr< BArray1< int64_t > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setLong(const PArrayLong& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 201143198; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4579,12 +2545,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setObject : public BMethodRequest {
-	public: byps_ptr< BArray1< PSerializable > > v;
+	public: byps::PArrayObject v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setObject();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setObject(const byps_ptr< BArray1< PSerializable > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setObject(const byps::PArrayObject& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 48678821; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4603,12 +2569,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes : public BMethodRequest {
-	public: byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > v;
+	public: byps::test::api::prim::PArrayPrimitiveTypes v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setPrimitiveTypes();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(const byps::test::api::prim::PArrayPrimitiveTypes& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1362276920; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4627,12 +2593,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setShort : public BMethodRequest {
-	public: byps_ptr< BArray1< int16_t > > v;
+	public: PArrayShort v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setShort();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setShort(const byps_ptr< BArray1< int16_t > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setShort(const PArrayShort& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1934214314; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4651,12 +2617,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes1dim_setString : public BMethodRequest {
-	public: byps_ptr< BArray1< ::std::wstring > > v;
+	public: PArrayString v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes1dim_setString();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes1dim_setString(const byps_ptr< BArray1< ::std::wstring > >& v);	
+	public: BRequest_RemoteArrayTypes1dim_setString(const PArrayString& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 180061303; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4675,14 +2641,14 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysClass : public BMethodRequest {
-	public: byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > > arr2;
-	public: byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > > arr3;
-	public: byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > arr4;
+	public: byps::test::api::prim::PArray2PrimitiveTypes arr2;
+	public: byps::test::api::prim::PArray3PrimitiveTypes arr3;
+	public: byps::test::api::prim::PArray4PrimitiveTypes arr4;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes23_sendArraysClass();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes23_sendArraysClass(const byps_ptr< BArray2< byps::test::api::prim::PPrimitiveTypes > >& arr2, const byps_ptr< BArray3< byps::test::api::prim::PPrimitiveTypes > >& arr3, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& arr4);	
+	public: BRequest_RemoteArrayTypes23_sendArraysClass(const byps::test::api::prim::PArray2PrimitiveTypes& arr2, const byps::test::api::prim::PArray3PrimitiveTypes& arr3, const byps::test::api::prim::PArray4PrimitiveTypes& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 330036060; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4701,14 +2667,14 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysInline : public BMethodRequest {
-	public: byps_ptr< BArray2< byps::test::api::inl::Point2D > > arr2;
-	public: byps_ptr< BArray3< byps::test::api::inl::Point2D > > arr3;
-	public: byps_ptr< BArray4< byps::test::api::inl::Point2D > > arr4;
+	public: byps::test::api::inl::PArray2Point2D arr2;
+	public: byps::test::api::inl::PArray3Point2D arr3;
+	public: byps::test::api::inl::PArray4Point2D arr4;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes23_sendArraysInline();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes23_sendArraysInline(const byps_ptr< BArray2< byps::test::api::inl::Point2D > >& arr2, const byps_ptr< BArray3< byps::test::api::inl::Point2D > >& arr3, const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& arr4);	
+	public: BRequest_RemoteArrayTypes23_sendArraysInline(const byps::test::api::inl::PArray2Point2D& arr2, const byps::test::api::inl::PArray3Point2D& arr3, const byps::test::api::inl::PArray4Point2D& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1467243283; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4727,14 +2693,14 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysInt : public BMethodRequest {
-	public: byps_ptr< BArray2< int32_t > > arr2;
-	public: byps_ptr< BArray3< int32_t > > arr3;
-	public: byps_ptr< BArray4< int32_t > > arr4;
+	public: PArray2Int arr2;
+	public: PArray3Int arr3;
+	public: PArray4Int arr4;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes23_sendArraysInt();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes23_sendArraysInt(const byps_ptr< BArray2< int32_t > >& arr2, const byps_ptr< BArray3< int32_t > >& arr3, const byps_ptr< BArray4< int32_t > >& arr4);	
+	public: BRequest_RemoteArrayTypes23_sendArraysInt(const PArray2Int& arr2, const PArray3Int& arr3, const PArray4Int& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1828268517; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4753,14 +2719,14 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysObject : public BMethodRequest {
-	public: byps_ptr< BArray2< PSerializable > > arr2;
-	public: byps_ptr< BArray3< PSerializable > > arr3;
-	public: byps_ptr< BArray4< PSerializable > > arr4;
+	public: byps::PArray2Object arr2;
+	public: byps::PArray3Object arr3;
+	public: byps::PArray4Object arr4;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes23_sendArraysObject();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes23_sendArraysObject(const byps_ptr< BArray2< PSerializable > >& arr2, const byps_ptr< BArray3< PSerializable > >& arr3, const byps_ptr< BArray4< PSerializable > >& arr4);	
+	public: BRequest_RemoteArrayTypes23_sendArraysObject(const byps::PArray2Object& arr2, const byps::PArray3Object& arr3, const byps::PArray4Object& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1306614381; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -4779,14 +2745,14 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes23_sendArraysString : public BMethodRequest {
-	public: byps_ptr< BArray2< ::std::wstring > > arr2;
-	public: byps_ptr< BArray3< ::std::wstring > > arr3;
-	public: byps_ptr< BArray4< ::std::wstring > > arr4;
+	public: PArray2String arr2;
+	public: PArray3String arr3;
+	public: PArray4String arr4;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes23_sendArraysString();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes23_sendArraysString(const byps_ptr< BArray2< ::std::wstring > >& arr2, const byps_ptr< BArray3< ::std::wstring > >& arr3, const byps_ptr< BArray4< ::std::wstring > >& arr4);	
+	public: BRequest_RemoteArrayTypes23_sendArraysString(const PArray2String& arr2, const PArray3String& arr3, const PArray4String& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1175231899; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5069,12 +3035,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setBool : public BMethodRequest {
-	public: byps_ptr< BArray4< bool > > v;
+	public: PArray4Boolean v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setBool();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setBool(const byps_ptr< BArray4< bool > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setBool(const PArray4Boolean& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 185807085; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5093,12 +3059,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setByte : public BMethodRequest {
-	public: byps_ptr< BArray4< int8_t > > v;
+	public: PArray4Byte v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setByte();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setByte(const byps_ptr< BArray4< int8_t > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setByte(const PArray4Byte& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 185816843; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5117,12 +3083,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setChar : public BMethodRequest {
-	public: byps_ptr< BArray4< wchar_t > > v;
+	public: PArray4Char v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setChar();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setChar(const byps_ptr< BArray4< wchar_t > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setChar(const PArray4Char& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 185829721; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5141,12 +3107,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setDate : public BMethodRequest {
-	public: byps_ptr< BArray4< BDateTime > > v;
+	public: PArray4Date v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setDate();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setDate(const byps_ptr< BArray4< BDateTime > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setDate(const PArray4Date& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 185853361; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5165,12 +3131,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setDouble : public BMethodRequest {
-	public: byps_ptr< BArray4< double > > v;
+	public: PArray4Double v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setDouble();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setDouble(const byps_ptr< BArray4< double > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setDouble(const PArray4Double& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1770586860; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5189,12 +3155,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setFloat : public BMethodRequest {
-	public: byps_ptr< BArray4< float > > v;
+	public: PArray4Float v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setFloat();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setFloat(const byps_ptr< BArray4< float > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setFloat(const PArray4Float& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1468656825; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5213,12 +3179,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setInt : public BMethodRequest {
-	public: byps_ptr< BArray4< int32_t > > v;
+	public: PArray4Int v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setInt();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setInt(const byps_ptr< BArray4< int32_t > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setInt(const PArray4Int& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1668568460; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5237,12 +3203,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setLong : public BMethodRequest {
-	public: byps_ptr< BArray4< int64_t > > v;
+	public: PArray4Long v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setLong();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setLong(const byps_ptr< BArray4< int64_t > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setLong(const PArray4Long& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 186104959; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5261,12 +3227,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setObject : public BMethodRequest {
-	public: byps_ptr< BArray4< PSerializable > > v;
+	public: byps::PArray4Object v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setObject();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setObject(const byps_ptr< BArray4< PSerializable > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setObject(const byps::PArray4Object& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1467997054; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5285,12 +3251,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes : public BMethodRequest {
-	public: byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > > v;
+	public: byps::test::api::prim::PArray4PrimitiveTypes v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setPrimitiveTypes();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setPrimitiveTypes(const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setPrimitiveTypes(const byps::test::api::prim::PArray4PrimitiveTypes& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 456924651; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5309,12 +3275,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setShort : public BMethodRequest {
-	public: byps_ptr< BArray4< int16_t > > v;
+	public: PArray4Short v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setShort();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setShort(const byps_ptr< BArray4< int16_t > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setShort(const PArray4Short& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1480543961; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5333,12 +3299,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteArrayTypes4dim_setString : public BMethodRequest {
-	public: byps_ptr< BArray4< ::std::wstring > > v;
+	public: PArray4String v;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteArrayTypes4dim_setString();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteArrayTypes4dim_setString(const byps_ptr< BArray4< ::std::wstring > >& v);	
+	public: BRequest_RemoteArrayTypes4dim_setString(const PArray4String& v);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1336614572; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5369,16 +3335,16 @@ class BRequest_RemoteConstants_compare_AllTypesC : public BMethodRequest {
 	public: double double1s;
 	public: ::std::wstring string1s;
 	public: byps::test::api::cons::PAllTypesZ ALL;
-	public: byps_ptr< BArray1< int32_t > > arrInt;
-	public: byps_ptr< BArray4< int32_t > > arrInt4;
-	public: byps_ptr< BArray1< ::std::wstring > > arrStrings;
-	public: byps_ptr< BArray4< ::std::wstring > > arrStrings4;
-	public: byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > > arrAll;
+	public: PArrayInt arrInt;
+	public: PArray4Int arrInt4;
+	public: PArrayString arrStrings;
+	public: PArray4String arrStrings4;
+	public: byps::test::api::cons::PArray2AllTypesZ arrAll;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteConstants_compare_AllTypesC();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteConstants_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray4< int32_t > >& arrInt4, const byps_ptr< BArray1< ::std::wstring > >& arrStrings, const byps_ptr< BArray4< ::std::wstring > >& arrStrings4, const byps_ptr< BArray2< byps::test::api::cons::PAllTypesZ > >& arrAll);	
+	public: BRequest_RemoteConstants_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const PArrayInt& arrInt, const PArray4Int& arrInt4, const PArrayString& arrStrings, const PArray4String& arrStrings4, const byps::test::api::cons::PArray2AllTypesZ& arrAll);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1609344203; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5624,12 +3590,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DArray1dim : public BMethodRequest {
-	public: byps_ptr< BArray1< byps::test::api::inl::Point2D > > pointArray;
+	public: byps::test::api::inl::PArrayPoint2D pointArray;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteInlineInstance_setPoint2DArray1dim();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteInlineInstance_setPoint2DArray1dim(const byps_ptr< BArray1< byps::test::api::inl::Point2D > >& pointArray);	
+	public: BRequest_RemoteInlineInstance_setPoint2DArray1dim(const byps::test::api::inl::PArrayPoint2D& pointArray);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1355334613; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5648,12 +3614,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DArray4dim : public BMethodRequest {
-	public: byps_ptr< BArray4< byps::test::api::inl::Point2D > > pointArray;
+	public: byps::test::api::inl::PArray4Point2D pointArray;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteInlineInstance_setPoint2DArray4dim();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteInlineInstance_setPoint2DArray4dim(const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& pointArray);	
+	public: BRequest_RemoteInlineInstance_setPoint2DArray4dim(const byps::test::api::inl::PArray4Point2D& pointArray);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1355245240; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5672,12 +3638,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DList : public BMethodRequest {
-	public: byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > pointList;
+	public: byps::test::api::inl::PVectorPoint2D pointList;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteInlineInstance_setPoint2DList();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteInlineInstance_setPoint2DList(const byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >& pointList);	
+	public: BRequest_RemoteInlineInstance_setPoint2DList(const byps::test::api::inl::PVectorPoint2D& pointList);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 343422941; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5696,12 +3662,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DListList : public BMethodRequest {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > pointListList;
+	public: byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > > pointListList;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteInlineInstance_setPoint2DListList();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteInlineInstance_setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >& pointListList);	
+	public: BRequest_RemoteInlineInstance_setPoint2DListList(const byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > >& pointListList);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 730520735; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -5720,12 +3686,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteInlineInstance_setPoint2DMap : public BMethodRequest {
-	public: byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > pointMap;
+	public: byps::test::api::inl::PMapIntegerPoint2D pointMap;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteInlineInstance_setPoint2DMap();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteInlineInstance_setPoint2DMap(const byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >& pointMap);	
+	public: BRequest_RemoteInlineInstance_setPoint2DMap(const byps::test::api::inl::PMapIntegerPoint2D& pointMap);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 127469879; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6096,12 +4062,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setBoolean1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< bool > > boolean1;
+	public: byps::PVectorBoolean boolean1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setBoolean1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setBoolean1(const byps_ptr< ::std::vector< bool > >& boolean1);	
+	public: BRequest_RemoteListTypes_setBoolean1(const byps::PVectorBoolean& boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2147241989; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6120,12 +4086,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setByte1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< int8_t > > byte1;
+	public: byps::PVectorByte byte1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setByte1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setByte1(const byps_ptr< ::std::vector< int8_t > >& byte1);	
+	public: BRequest_RemoteListTypes_setByte1(const byps::PVectorByte& byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 47373943; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6168,12 +4134,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setChar1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< wchar_t > > char1;
+	public: byps::PVectorCharacter char1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setChar1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setChar1(const byps_ptr< ::std::vector< wchar_t > >& char1);	
+	public: BRequest_RemoteListTypes_setChar1(const byps::PVectorCharacter& char1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 47773161; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6192,12 +4158,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setDate1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< BDateTime > > obj1;
+	public: byps::PVectorDate obj1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setDate1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setDate1(const byps_ptr< ::std::vector< BDateTime > >& obj1);	
+	public: BRequest_RemoteListTypes_setDate1(const byps::PVectorDate& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 48506001; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6216,12 +4182,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setDouble1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< double > > double1;
+	public: byps::PVectorDouble double1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setDouble1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setDouble1(const byps_ptr< ::std::vector< double > >& double1);	
+	public: BRequest_RemoteListTypes_setDouble1(const byps::PVectorDouble& double1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 228671154; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6240,12 +4206,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setFloat1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< float > > float1;
+	public: byps::PVectorFloat float1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setFloat1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setFloat1(const byps_ptr< ::std::vector< float > >& float1);	
+	public: BRequest_RemoteListTypes_setFloat1(const byps::PVectorFloat& float1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1570952391; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6264,12 +4230,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< int32_t > > int1;
+	public: byps::PVectorInteger int1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setInt1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setInt1(const byps_ptr< ::std::vector< int32_t > >& int1);	
+	public: BRequest_RemoteListTypes_setInt1(const byps::PVectorInteger& int1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 136821228; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6288,12 +4254,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt2 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::vector< PArrayInt > > int2;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setInt2();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setInt2(const byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >& int2);	
+	public: BRequest_RemoteListTypes_setInt2(const byps_ptr< ::std::vector< PArrayInt > >& int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 136821227; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6312,12 +4278,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt3 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > int3;
+	public: byps_ptr< ::std::vector< byps::PVectorInteger > > int3;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setInt3();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setInt3(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >& int3);	
+	public: BRequest_RemoteListTypes_setInt3(const byps_ptr< ::std::vector< byps::PVectorInteger > >& int3);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 136821226; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6336,12 +4302,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setInt4 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > int4;
+	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > > int4;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setInt4();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >& int4);	
+	public: BRequest_RemoteListTypes_setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int4);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 136821225; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6360,12 +4326,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setLong1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< int64_t > > long1;
+	public: byps::PVectorLong long1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setLong1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setLong1(const byps_ptr< ::std::vector< int64_t > >& long1);	
+	public: BRequest_RemoteListTypes_setLong1(const byps::PVectorLong& long1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 56305539; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6384,12 +4350,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setObj1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< PSerializable > > obj1;
+	public: byps::PVectorObject obj1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setObj1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setObj1(const byps_ptr< ::std::vector< PSerializable > >& obj1);	
+	public: BRequest_RemoteListTypes_setObj1(const byps::PVectorObject& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 136654324; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6408,12 +4374,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps::test::api::prim::PVectorPrimitiveTypes primitiveTypes1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setPrimitiveTypes1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setPrimitiveTypes1(const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
+	public: BRequest_RemoteListTypes_setPrimitiveTypes1(const byps::test::api::prim::PVectorPrimitiveTypes& primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 759940243; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6432,12 +4398,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setShort1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< int16_t > > short1;
+	public: byps::PVectorShort short1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setShort1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setShort1(const byps_ptr< ::std::vector< int16_t > >& short1);	
+	public: BRequest_RemoteListTypes_setShort1(const byps::PVectorShort& short1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1939453607; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6456,12 +4422,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteListTypes_setString1 : public BMethodRequest {
-	public: byps_ptr< ::std::vector< ::std::wstring > > string1;
+	public: byps::PVectorString string1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteListTypes_setString1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteListTypes_setString1(const byps_ptr< ::std::vector< ::std::wstring > >& string1);	
+	public: BRequest_RemoteListTypes_setString1(const byps::PVectorString& string1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 339567886; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6788,12 +4754,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setBoolean1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< ::std::wstring , bool > > boolean1;
+	public: byps::PMapStringBoolean boolean1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setBoolean1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setBoolean1(const byps_ptr< ::std::map< ::std::wstring , bool > >& boolean1);	
+	public: BRequest_RemoteMapTypes_setBoolean1(const byps::PMapStringBoolean& boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 974383083; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6812,12 +4778,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setByte1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< double , int8_t > > byte1;
+	public: byps::PMapDoubleByte byte1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setByte1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setByte1(const byps_ptr< ::std::map< double , int8_t > >& byte1);	
+	public: BRequest_RemoteMapTypes_setByte1(const byps::PMapDoubleByte& byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 685835107; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6860,12 +4826,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setChar1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< float , wchar_t > > char1;
+	public: byps::PMapFloatCharacter char1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setChar1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setChar1(const byps_ptr< ::std::map< float , wchar_t > >& char1);	
+	public: BRequest_RemoteMapTypes_setChar1(const byps::PMapFloatCharacter& char1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 685435889; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6884,12 +4850,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setDate1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< ::std::wstring , BDateTime > > obj1;
+	public: byps::PMapStringDate obj1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setDate1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setDate1(const byps_ptr< ::std::map< ::std::wstring , BDateTime > >& obj1);	
+	public: BRequest_RemoteMapTypes_setDate1(const byps::PMapStringDate& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 684703049; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6908,12 +4874,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setDouble1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< int8_t , double > > double1;
+	public: byps::PMapByteDouble double1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setDouble1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setDouble1(const byps_ptr< ::std::map< int8_t , double > >& double1);	
+	public: BRequest_RemoteMapTypes_setDouble1(const byps::PMapByteDouble& double1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 467931660; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6932,12 +4898,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setFloat1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< wchar_t , float > > float1;
+	public: byps::PMapCharacterFloat float1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setFloat1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setFloat1(const byps_ptr< ::std::map< wchar_t , float > >& float1);	
+	public: BRequest_RemoteMapTypes_setFloat1(const byps::PMapCharacterFloat& float1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 316308321; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6956,12 +4922,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setInt1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< int32_t , int32_t > > int1;
+	public: byps::PMapIntegerInteger int1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setInt1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setInt1(const byps_ptr< ::std::map< int32_t , int32_t > >& int1);	
+	public: BRequest_RemoteMapTypes_setInt1(const byps::PMapIntegerInteger& int1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1407399122; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -6980,12 +4946,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setInt2 : public BMethodRequest {
-	public: byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::map< int32_t , PArrayInt > > int2;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setInt2();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setInt2(const byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >& int2);	
+	public: BRequest_RemoteMapTypes_setInt2(const byps_ptr< ::std::map< int32_t , PArrayInt > >& int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1407399121; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -7004,12 +4970,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setLong1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< int16_t , int64_t > > long1;
+	public: byps::PMapShortLong long1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setLong1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setLong1(const byps_ptr< ::std::map< int16_t , int64_t > >& long1);	
+	public: BRequest_RemoteMapTypes_setLong1(const byps::PMapShortLong& long1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 676903511; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -7028,12 +4994,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setObj1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< ::std::wstring , PSerializable > > obj1;
+	public: byps::PMapStringObject obj1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setObj1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setObj1(const byps_ptr< ::std::map< ::std::wstring , PSerializable > >& obj1);	
+	public: BRequest_RemoteMapTypes_setObj1(const byps::PMapStringObject& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1407232218; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -7052,12 +5018,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setPrimitiveTypes1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > > primitiveTypes1;
+	public: byps::test::api::prim::PMapIntegerPrimitiveTypes primitiveTypes1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setPrimitiveTypes1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setPrimitiveTypes1(const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
+	public: BRequest_RemoteMapTypes_setPrimitiveTypes1(const byps::test::api::prim::PMapIntegerPrimitiveTypes& primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1629134317; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -7076,12 +5042,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setShort1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< int64_t , int16_t > > short1;
+	public: byps::PMapLongShort short1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setShort1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setShort1(const byps_ptr< ::std::map< int64_t , int16_t > >& short1);	
+	public: BRequest_RemoteMapTypes_setShort1(const byps::PMapLongShort& short1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 684809537; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -7100,12 +5066,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteMapTypes_setString1 : public BMethodRequest {
-	public: byps_ptr< ::std::map< ::std::wstring , ::std::wstring > > string1;
+	public: byps::PMapStringString string1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteMapTypes_setString1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteMapTypes_setString1(const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1);	
+	public: BRequest_RemoteMapTypes_setString1(const byps::PMapStringString& string1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 100307380; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8260,12 +6226,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setBoolean1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< bool > > boolean1;
+	public: byps::PSetBoolean boolean1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setBoolean1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setBoolean1(const byps_ptr< ::std::set< bool > >& boolean1);	
+	public: BRequest_RemoteSetTypes_setBoolean1(const byps::PSetBoolean& boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2091396559; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8284,12 +6250,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setByte1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< int8_t > > byte1;
+	public: byps::PSetByte byte1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setByte1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setByte1(const byps_ptr< ::std::set< int8_t > >& byte1);	
+	public: BRequest_RemoteSetTypes_setByte1(const byps::PSetByte& byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1462808285; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8332,12 +6298,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setChar1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< wchar_t > > char1;
+	public: byps::PSetCharacter char1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setChar1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setChar1(const byps_ptr< ::std::set< wchar_t > >& char1);	
+	public: BRequest_RemoteSetTypes_setChar1(const byps::PSetCharacter& char1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1462409067; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8356,12 +6322,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setDate1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< BDateTime > > obj1;
+	public: byps::PSetDate obj1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setDate1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setDate1(const byps_ptr< ::std::set< BDateTime > >& obj1);	
+	public: BRequest_RemoteSetTypes_setDate1(const byps::PSetDate& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1461676227; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8380,12 +6346,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setDouble1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< double > > double1;
+	public: byps::PSetDouble double1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setDouble1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setDouble1(const byps_ptr< ::std::set< double > >& double1);	
+	public: BRequest_RemoteSetTypes_setDouble1(const byps::PSetDouble& double1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 185153786; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8404,12 +6370,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setFloat1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< float > > float1;
+	public: byps::PSetFloat float1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setFloat1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setFloat1(const byps_ptr< ::std::set< float > >& float1);	
+	public: BRequest_RemoteSetTypes_setFloat1(const byps::PSetFloat& float1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1999943579; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8428,12 +6394,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setInt1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< int32_t > > int1;
+	public: byps::PSetInteger int1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setInt1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setInt1(const byps_ptr< ::std::set< int32_t > >& int1);	
+	public: BRequest_RemoteSetTypes_setInt1(const byps::PSetInteger& int1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 462631448; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8452,12 +6418,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setInt2 : public BMethodRequest {
-	public: byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > > int2;
+	public: byps_ptr< ::std::set< PArrayInt > > int2;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setInt2();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setInt2(const byps_ptr< ::std::set< byps_ptr< BArray1< int32_t > > > >& int2);	
+	public: BRequest_RemoteSetTypes_setInt2(const byps_ptr< ::std::set< PArrayInt > >& int2);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 462631447; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8476,12 +6442,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setLong1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< int64_t > > long1;
+	public: byps::PSetLong long1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setLong1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setLong1(const byps_ptr< ::std::set< int64_t > >& long1);	
+	public: BRequest_RemoteSetTypes_setLong1(const byps::PSetLong& long1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1453876689; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8548,12 +6514,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setShort1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< int16_t > > short1;
+	public: byps::PSetShort short1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setShort1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setShort1(const byps_ptr< ::std::set< int16_t > >& short1);	
+	public: BRequest_RemoteSetTypes_setShort1(const byps::PSetShort& short1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1926522501; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8572,12 +6538,12 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteSetTypes_setString1 : public BMethodRequest {
-	public: byps_ptr< ::std::set< ::std::wstring > > string1;
+	public: byps::PSetString string1;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteSetTypes_setString1();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteSetTypes_setString1(const byps_ptr< ::std::set< ::std::wstring > >& string1);	
+	public: BRequest_RemoteSetTypes_setString1(const byps::PSetString& string1);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 753392826; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8686,13 +6652,13 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemoteStreams_setImages : public BMethodRequest {
-	public: byps_ptr< ::std::map< int32_t , PContentStream > > istrms;
+	public: byps::PMapIntegerInputStream istrms;
 	public: int32_t doNotReadStreamAtKey;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteStreams_setImages();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_RemoteStreams_setImages(const byps_ptr< ::std::map< int32_t , PContentStream > >& istrms, int32_t doNotReadStreamAtKey);	
+	public: BRequest_RemoteStreams_setImages(const byps::PMapIntegerInputStream& istrms, int32_t doNotReadStreamAtKey);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2126615710; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -8909,13 +6875,13 @@ namespace byps { namespace test { namespace api { namespace srvr {
 using namespace ::byps;
 
 class BRequest_ClientIF_putStreams : public BMethodRequest {
-	public: byps_ptr< ::std::vector< PContentStream > > strm;
+	public: byps::PVectorInputStream strm;
 	public: int32_t ctrl;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_ClientIF_putStreams();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_ClientIF_putStreams(const byps_ptr< ::std::vector< PContentStream > >& strm, int32_t ctrl);	
+	public: BRequest_ClientIF_putStreams(const byps::PVectorInputStream& strm, int32_t ctrl);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2016865344; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
@@ -9096,12 +7062,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 using namespace ::byps;
 
 class BRequest_ServerIF_putStreamsOnClient : public BMethodRequest {
-	public: byps_ptr< ::std::vector< PContentStream > > streams;
+	public: byps::PVectorInputStream streams;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_ServerIF_putStreamsOnClient();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: BRequest_ServerIF_putStreamsOnClient(const byps_ptr< ::std::vector< PContentStream > >& streams);	
+	public: BRequest_ServerIF_putStreamsOnClient(const byps::PVectorInputStream& streams);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1934886286; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871

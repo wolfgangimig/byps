@@ -25,7 +25,6 @@ namespace byps.test.api.remote
 				__byps__remoteT.SendArraysInline(arr2Value, arr3Value, arr4Value, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

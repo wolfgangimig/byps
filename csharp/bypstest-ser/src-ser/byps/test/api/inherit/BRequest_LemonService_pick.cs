@@ -25,7 +25,6 @@ namespace byps.test.api.inherit
 				__byps__remoteT.Pick(sessValue, fromTreeValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult("", e);
-				throw e;
 			}
 		}		
 		

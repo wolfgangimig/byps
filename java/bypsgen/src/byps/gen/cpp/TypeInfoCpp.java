@@ -86,7 +86,7 @@ class TypeInfoCpp {
 		else if (tinfo.dims.length() != 0) {
 			
 			if (purpose == Purpose.CLASS) {
-			  tbuf.append(makeCollectionName(currentPackage, false));
+			  tbuf.append(makeComplexCollectionName(currentPackage, false));
 			}
 			else {
         tbuf.append(makeSimpleCollectionPointer( currentPackage));
@@ -147,7 +147,7 @@ class TypeInfoCpp {
 		
 		else if (tinfo.isListType()) {
 			if (purpose == Purpose.CLASS) {
-        tbuf.append(makeCollectionName( currentPackage, false));
+        tbuf.append(makeComplexCollectionName( currentPackage, false));
 			}
 			else {
         tbuf.append(makeSimpleCollectionPointer( currentPackage));
@@ -155,7 +155,7 @@ class TypeInfoCpp {
 		}
 		else if (tinfo.isMapType()) {
 			if (purpose == Purpose.CLASS) {
-        tbuf.append(makeCollectionName( currentPackage, false));
+        tbuf.append(makeComplexCollectionName( currentPackage, false));
 			}
 			else {
         tbuf.append(makeSimpleCollectionPointer( currentPackage));
@@ -163,7 +163,7 @@ class TypeInfoCpp {
 		}
 		else if (tinfo.isSetType()) {
 			if (purpose == Purpose.CLASS) {
-        tbuf.append(makeCollectionName( currentPackage, false));
+        tbuf.append(makeComplexCollectionName( currentPackage, false));
 			}
       else {
         tbuf.append(makeSimpleCollectionPointer( currentPackage));
@@ -235,9 +235,9 @@ class TypeInfoCpp {
 	public String getCppPackage() {
     String pack = tinfo.pack;
     if (tinfo.isListType()) pack = tinfo.typeArgs.get(0).pack;
-    if (tinfo.isSetType()) pack = tinfo.typeArgs.get(0).pack;
-    if (tinfo.isMapType()) pack = tinfo.typeArgs.get(1).pack; // Value type
-    if (pack.startsWith("java.")) pack = apiPack;
+    else if (tinfo.isSetType()) pack = tinfo.typeArgs.get(0).pack;
+    else if (tinfo.isMapType()) pack = tinfo.typeArgs.get(1).pack; // Value type
+    if (pack.startsWith("java.")) pack = "byps";
     if (pack.length() == 0) pack = apiPack;
     return pack;
 	}
@@ -315,7 +315,7 @@ class TypeInfoCpp {
       return makeSimpleCollectionName(currentPackage,true);
     }
     else {
-      return makeCollectionName(currentPackage, true);
+      return makeComplexCollectionName(currentPackage, true);
     }
   }
   
@@ -324,11 +324,11 @@ class TypeInfoCpp {
       return makeSimpleCollectionName(null, false);
     }
     else {
-      return makeCollectionName("", false);
+      return makeComplexCollectionName("", false);
     }
   }
   
-  private String makeCollectionName(String currentPackage, boolean ptr) {
+  private String makeComplexCollectionName(String currentPackage, boolean ptr) {
     StringBuilder tbuf = new StringBuilder();
     
     if (tinfo.isListType()) {

@@ -17,7 +17,7 @@ namespace byps.test.api.remote
 		
 		public override int getRemoteId() { return 1983670399; }
 		
-		// checkpoint byps.gen.cs.GenApiClass:473
+		// checkpoint byps.gen.cs.GenApiClass:472
 		public override void setSession(Object __byps__sess) {
 			sessValue = (byps.test.api.auth.SessionInfo)__byps__sess;
 		}
@@ -30,7 +30,6 @@ namespace byps.test.api.remote
 				__byps__remoteT.Expire(sessValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

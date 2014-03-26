@@ -25,7 +25,6 @@ namespace byps.test.api.srvr
 				__byps__remoteT.GetClientIds(BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

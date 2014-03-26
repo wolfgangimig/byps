@@ -25,7 +25,6 @@ namespace byps.test.api.ver
 				__byps__remoteT.GetEvolve(BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

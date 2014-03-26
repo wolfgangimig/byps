@@ -5,44 +5,6 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
-// Implementation of class BRequest_RemoteInlineInstance_getPoint2DListList
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteInlineInstance_getPoint2DListList::BRequest_RemoteInlineInstance_getPoint2DListList() : BMethodRequest(567395951) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:877
-void byps::test::api::remote::BRequest_RemoteInlineInstance_getPoint2DListList::serialize(BIO& ar, const BVERSION version) {
-}
-void byps::test::api::remote::BRequest_RemoteInlineInstance_getPoint2DListList::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemoteInlineInstance __byps__remoteT = byps_ptr_cast<RemoteInlineInstance>(__byps__remote);
-	__byps__remoteT->getPoint2DListList([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > > __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_1823330785(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:934
-namespace byps { namespace test { namespace api { 
-void BSerializer_1650554387(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		byps::test::api::remote::BRequest_RemoteInlineInstance_getPoint2DListList& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteInlineInstance_getPoint2DListList*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteInlineInstance_getPoint2DListList());
-	}
-}
-}}}
-namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
 // Implementation of class BRequest_RemoteInlineInstance_getPoint2DMap
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -54,7 +16,7 @@ void byps::test::api::remote::BRequest_RemoteInlineInstance_getPoint2DMap::seria
 }
 void byps::test::api::remote::BRequest_RemoteInlineInstance_getPoint2DMap::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteInlineInstance __byps__remoteT = byps_ptr_cast<RemoteInlineInstance>(__byps__remote);
-	__byps__remoteT->getPoint2DMap([__byps__asyncResult](byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getPoint2DMap([__byps__asyncResult](byps::test::api::inl::PMapIntegerPoint2D __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -132,7 +94,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteInlineInstance_setPoint2DArray1dim::BRequest_RemoteInlineInstance_setPoint2DArray1dim() : BMethodRequest(567395951) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DArray1dim::BRequest_RemoteInlineInstance_setPoint2DArray1dim(const byps_ptr< BArray1< byps::test::api::inl::Point2D > >& pointArray)
+byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DArray1dim::BRequest_RemoteInlineInstance_setPoint2DArray1dim(const byps::test::api::inl::PArrayPoint2D& pointArray)
 	: BMethodRequest(567395951) 
 	, pointArray(pointArray)
 	{}
@@ -176,7 +138,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteInlineInstance_setPoint2DArray4dim::BRequest_RemoteInlineInstance_setPoint2DArray4dim() : BMethodRequest(567395951) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DArray4dim::BRequest_RemoteInlineInstance_setPoint2DArray4dim(const byps_ptr< BArray4< byps::test::api::inl::Point2D > >& pointArray)
+byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DArray4dim::BRequest_RemoteInlineInstance_setPoint2DArray4dim(const byps::test::api::inl::PArray4Point2D& pointArray)
 	: BMethodRequest(567395951) 
 	, pointArray(pointArray)
 	{}
@@ -220,7 +182,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteInlineInstance_setPoint2DList::BRequest_RemoteInlineInstance_setPoint2DList() : BMethodRequest(567395951) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DList::BRequest_RemoteInlineInstance_setPoint2DList(const byps_ptr< ::std::vector< byps::test::api::inl::Point2D > >& pointList)
+byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DList::BRequest_RemoteInlineInstance_setPoint2DList(const byps::test::api::inl::PVectorPoint2D& pointList)
 	: BMethodRequest(567395951) 
 	, pointList(pointList)
 	{}
@@ -264,7 +226,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteInlineInstance_setPoint2DListList::BRequest_RemoteInlineInstance_setPoint2DListList() : BMethodRequest(567395951) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DListList::BRequest_RemoteInlineInstance_setPoint2DListList(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps::test::api::inl::Point2D > > > >& pointListList)
+byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DListList::BRequest_RemoteInlineInstance_setPoint2DListList(const byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > >& pointListList)
 	: BMethodRequest(567395951) 
 	, pointListList(pointListList)
 	{}
@@ -308,7 +270,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteInlineInstance_setPoint2DMap::BRequest_RemoteInlineInstance_setPoint2DMap() : BMethodRequest(567395951) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DMap::BRequest_RemoteInlineInstance_setPoint2DMap(const byps_ptr< ::std::map< int32_t , byps::test::api::inl::Point2D > >& pointMap)
+byps::test::api::remote::BRequest_RemoteInlineInstance_setPoint2DMap::BRequest_RemoteInlineInstance_setPoint2DMap(const byps::test::api::inl::PMapIntegerPoint2D& pointMap)
 	: BMethodRequest(567395951) 
 	, pointMap(pointMap)
 	{}
@@ -356,7 +318,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getBoolean1::serialize(BI
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getBoolean1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getBoolean1([__byps__asyncResult](byps_ptr< ::std::vector< bool > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getBoolean1([__byps__asyncResult](byps::PVectorBoolean __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -394,7 +356,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getByte1::serialize(BIO& 
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getByte1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getByte1([__byps__asyncResult](byps_ptr< ::std::vector< int8_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getByte1([__byps__asyncResult](byps::PVectorByte __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -470,7 +432,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getChar1::serialize(BIO& 
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getChar1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getChar1([__byps__asyncResult](byps_ptr< ::std::vector< wchar_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getChar1([__byps__asyncResult](byps::PVectorCharacter __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -508,7 +470,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getDate1::serialize(BIO& 
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getDate1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getDate1([__byps__asyncResult](byps_ptr< ::std::vector< BDateTime > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getDate1([__byps__asyncResult](byps::PVectorDate __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -546,7 +508,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getDouble1::serialize(BIO
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getDouble1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getDouble1([__byps__asyncResult](byps_ptr< ::std::vector< double > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getDouble1([__byps__asyncResult](byps::PVectorDouble __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -584,7 +546,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getFloat1::serialize(BIO&
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getFloat1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getFloat1([__byps__asyncResult](byps_ptr< ::std::vector< float > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getFloat1([__byps__asyncResult](byps::PVectorFloat __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -622,7 +584,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getInt1::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getInt1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getInt1([__byps__asyncResult](byps_ptr< ::std::vector< int32_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getInt1([__byps__asyncResult](byps::PVectorInteger __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -660,7 +622,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getInt2::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getInt2::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getInt2([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getInt2([__byps__asyncResult](byps_ptr< ::std::vector< PArrayInt > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -698,7 +660,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getInt3::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getInt3::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getInt3([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getInt3([__byps__asyncResult](byps_ptr< ::std::vector< byps::PVectorInteger > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -736,7 +698,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getInt4::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getInt4::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getInt4([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getInt4([__byps__asyncResult](byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > > __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -774,7 +736,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getLong1::serialize(BIO& 
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getLong1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getLong1([__byps__asyncResult](byps_ptr< ::std::vector< int64_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getLong1([__byps__asyncResult](byps::PVectorLong __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -812,7 +774,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getObj1::serialize(BIO& a
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getObj1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getObj1([__byps__asyncResult](byps_ptr< ::std::vector< PSerializable > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getObj1([__byps__asyncResult](byps::PVectorObject __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -850,7 +812,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getPrimitiveTypes1::seria
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getPrimitiveTypes1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getPrimitiveTypes1([__byps__asyncResult](byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getPrimitiveTypes1([__byps__asyncResult](byps::test::api::prim::PVectorPrimitiveTypes __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -888,7 +850,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getShort1::serialize(BIO&
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getShort1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getShort1([__byps__asyncResult](byps_ptr< ::std::vector< int16_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getShort1([__byps__asyncResult](byps::PVectorShort __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -926,7 +888,7 @@ void byps::test::api::remote::BRequest_RemoteListTypes_getString1::serialize(BIO
 }
 void byps::test::api::remote::BRequest_RemoteListTypes_getString1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
-	__byps__remoteT->getString1([__byps__asyncResult](byps_ptr< ::std::vector< ::std::wstring > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getString1([__byps__asyncResult](byps::PVectorString __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -960,7 +922,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setBoolean1::BRequest_RemoteListTypes_setBoolean1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setBoolean1::BRequest_RemoteListTypes_setBoolean1(const byps_ptr< ::std::vector< bool > >& boolean1)
+byps::test::api::remote::BRequest_RemoteListTypes_setBoolean1::BRequest_RemoteListTypes_setBoolean1(const byps::PVectorBoolean& boolean1)
 	: BMethodRequest(1233438138) 
 	, boolean1(boolean1)
 	{}
@@ -1004,7 +966,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 BRequest_RemoteListTypes_setByte1::BRequest_RemoteListTypes_setByte1() : BMethodRequest(1233438138) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteListTypes_setByte1::BRequest_RemoteListTypes_setByte1(const byps_ptr< ::std::vector< int8_t > >& byte1)
+byps::test::api::remote::BRequest_RemoteListTypes_setByte1::BRequest_RemoteListTypes_setByte1(const byps::PVectorByte& byte1)
 	: BMethodRequest(1233438138) 
 	, byte1(byte1)
 	{}
@@ -1079,6 +1041,94 @@ void BSerializer_47373944(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase
 		bio & r;
 	} else {
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteListTypes_setByte2());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteListTypes_setChar1
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteListTypes_setChar1::BRequest_RemoteListTypes_setChar1() : BMethodRequest(1233438138) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteListTypes_setChar1::BRequest_RemoteListTypes_setChar1(const byps::PVectorCharacter& char1)
+	: BMethodRequest(1233438138) 
+	, char1(char1)
+	{}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteListTypes_setChar1::serialize(BIO& ar, const BVERSION version) {
+	ar & this->char1;
+}
+void byps::test::api::remote::BRequest_RemoteListTypes_setChar1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
+	__byps__remoteT->setChar1(char1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_47773161(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteListTypes_setChar1& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteListTypes_setChar1*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteListTypes_setChar1());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteListTypes_setDate1
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteListTypes_setDate1::BRequest_RemoteListTypes_setDate1() : BMethodRequest(1233438138) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteListTypes_setDate1::BRequest_RemoteListTypes_setDate1(const byps::PVectorDate& obj1)
+	: BMethodRequest(1233438138) 
+	, obj1(obj1)
+	{}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteListTypes_setDate1::serialize(BIO& ar, const BVERSION version) {
+	ar & this->obj1;
+}
+void byps::test::api::remote::BRequest_RemoteListTypes_setDate1::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteListTypes __byps__remoteT = byps_ptr_cast<RemoteListTypes>(__byps__remote);
+	__byps__remoteT->setDate1(obj1, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_48506001(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteListTypes_setDate1& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteListTypes_setDate1*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteListTypes_setDate1());
 	}
 }
 }}}

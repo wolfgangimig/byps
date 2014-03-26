@@ -25,7 +25,6 @@ namespace byps.test.api.remote
 				__byps__remoteT.GetChar(BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(((char)0), e);
-				throw e;
 			}
 		}		
 		

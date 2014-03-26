@@ -5,42 +5,6 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace cons { 
 
 //-------------------------------------------------
-// Implementation of class HebrewC
-// Generated from class byps.gen.cpp.GenApiClass
-
-const ::std::wstring HebrewC::aleph = std::wstring(L"\u05d0");
-
-const ::std::wstring HebrewC::beth = std::wstring(L"\u05d1");
-
-const PHebrewZ HebrewC::ALEPH = PHebrewZ(new HebrewZ(
-	std::wstring(L"\u05d0")));
-
-const PHebrewZ HebrewC::BETH = PHebrewZ(new HebrewZ(
-	std::wstring(L"\u05d1")));
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-HebrewC::HebrewC() {
-}
-// checkpoint byps.gen.cpp.GenApiClass:877
-void byps::test::api::cons::HebrewC::serialize(BIO& ar, const BVERSION version) {
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:934
-namespace byps { namespace test { namespace api { 
-void BSerializer_1770673942(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		byps::test::api::cons::HebrewC& r = * dynamic_cast< byps::test::api::cons::HebrewC*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new byps::test::api::cons::HebrewC());
-	}
-}
-}}}
-namespace byps { namespace test { namespace api { namespace cons { 
-
-//-------------------------------------------------
 // Implementation of class HebrewZ
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -77,10 +41,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_92445340(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray1< byps::test::api::cons::PHebrewZ > & r = * reinterpret_cast< BArray1< byps::test::api::cons::PHebrewZ > *>(p);
+		::byps::BArray1< byps::test::api::cons::PHebrewZ > & r = * reinterpret_cast< ::byps::BArray1< byps::test::api::cons::PHebrewZ > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray1< byps::test::api::cons::PHebrewZ > ());
+		pObj = POBJECT(new ::byps::BArray1< byps::test::api::cons::PHebrewZ > ());
 	}
 }
 }}}
@@ -96,7 +60,7 @@ UsePlanets::UsePlanets() {
 	planet2 = byps::test::api::enu::EnumPlanets::Mercury;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::enu::UsePlanets::UsePlanets(EnumPlanets planet, EnumPlanets planet2, const byps_ptr< BArray1< EnumPlanets > >& arrayOfPlanets, const byps_ptr< ::std::vector< EnumPlanets > >& listOfPlanets, const byps_ptr< ::std::map< ::std::wstring , EnumPlanets > >& mapOfPlanets)
+byps::test::api::enu::UsePlanets::UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets)
 	: planet(planet)
 	, planet2(planet2)
 	, arrayOfPlanets(arrayOfPlanets)
@@ -376,7 +340,7 @@ namespace byps { namespace test { namespace api { namespace inherit {
 Class1Collections::Class1Collections() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::inherit::Class1Collections::Class1Collections(const byps_ptr< ::std::vector< PClass1 > >& list1, const byps_ptr< ::std::map< ::std::wstring , PClass1 > >& map1, const byps_ptr< ::std::set< PClass1 > >& set1)
+byps::test::api::inherit::Class1Collections::Class1Collections(const PVectorClass1& list1, const PMapStringClass1& map1, const byps_ptr< ::std::set< PClass1 > >& set1)
 	: list1(list1)
 	, map1(map1)
 	, set1(set1)
@@ -477,7 +441,7 @@ namespace byps { namespace test { namespace api { namespace inl {
 Actor::Actor() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::inl::Actor::Actor(const byps_ptr< BArray1< Point2D > >& shape, const Matrix2D& position)
+byps::test::api::inl::Actor::Actor(const PArrayPoint2D& shape, const Matrix2D& position)
 	: shape(shape)
 	, position(position)
 	{}
@@ -510,7 +474,7 @@ namespace byps { namespace test { namespace api { namespace list {
 ListListTypes::ListListTypes() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::list::ListListTypes::ListListTypes(const byps_ptr< ::std::vector< byps_ptr< ::std::vector< int32_t > > > >& int2, const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps_ptr< ::std::set< int32_t > > > > > > > >& int3, const byps_ptr< ::std::vector< byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > > > >& int24)
+byps::test::api::list::ListListTypes::ListListTypes(const byps_ptr< ::std::vector< byps::PVectorInteger > >& int2, const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int3, const byps_ptr< ::std::vector< byps_ptr< ::std::vector< PArray4Int > > > >& int24)
 	: int2(int2)
 	, int3(int3)
 	, int24(int24)
@@ -545,7 +509,7 @@ namespace byps { namespace test { namespace api { namespace list {
 ListTypes::ListTypes() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::list::ListTypes::ListTypes(const byps_ptr< ::std::vector< bool > >& boolean1, const byps_ptr< ::std::vector< int8_t > >& byte1, const byps_ptr< ::std::vector< wchar_t > >& char1, const byps_ptr< ::std::vector< int16_t > >& short1, const byps_ptr< ::std::vector< int32_t > >& int1, const byps_ptr< ::std::vector< int64_t > >& long1, const byps_ptr< ::std::vector< float > >& float1, const byps_ptr< ::std::vector< double > >& double1, const byps_ptr< ::std::vector< ::std::wstring > >& string1, const byps_ptr< ::std::vector< BDateTime > >& date1, const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::vector< PBytes > >& byte2, const byps_ptr< ::std::vector< byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::vector< byps_ptr< BArray4< int32_t > > > >& int4, const byps_ptr< ::std::vector< PSerializable > >& obj1)
+byps::test::api::list::ListTypes::ListTypes(const byps::PVectorBoolean& boolean1, const byps::PVectorByte& byte1, const byps::PVectorCharacter& char1, const byps::PVectorShort& short1, const byps::PVectorInteger& int1, const byps::PVectorLong& long1, const byps::PVectorFloat& float1, const byps::PVectorDouble& double1, const byps::PVectorString& string1, const byps::PVectorDate& date1, const byps::test::api::prim::PVectorPrimitiveTypes& primitiveTypes1, const byps_ptr< ::std::vector< PBytes > >& byte2, const byps_ptr< ::std::vector< PArrayInt > >& int2, const byps_ptr< ::std::vector< PArray4Int > >& int4, const byps::PVectorObject& obj1)
 	: boolean1(boolean1)
 	, byte1(byte1)
 	, char1(char1)
@@ -604,7 +568,7 @@ namespace byps { namespace test { namespace api { namespace map {
 MapTypes::MapTypes() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::map::MapTypes::MapTypes(const byps_ptr< ::std::map< ::std::wstring , bool > >& boolean1, const byps_ptr< ::std::map< double , int8_t > >& byte1, const byps_ptr< ::std::map< float , wchar_t > >& char1, const byps_ptr< ::std::map< int64_t , int16_t > >& short1, const byps_ptr< ::std::map< int32_t , int32_t > >& int1, const byps_ptr< ::std::map< int16_t , int64_t > >& long1, const byps_ptr< ::std::map< wchar_t , float > >& float1, const byps_ptr< ::std::map< int8_t , double > >& double1, const byps_ptr< ::std::map< ::std::wstring , ::std::wstring > >& string1, const byps_ptr< ::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::map< int32_t , PBytes > >& byte2, const byps_ptr< ::std::map< int32_t , byps_ptr< BArray1< int32_t > > > >& int2, const byps_ptr< ::std::map< ::std::wstring , PSerializable > >& obj1, const byps_ptr< ::std::map< ::std::wstring , BDateTime > >& date1)
+byps::test::api::map::MapTypes::MapTypes(const byps::PMapStringBoolean& boolean1, const byps::PMapDoubleByte& byte1, const byps::PMapFloatCharacter& char1, const byps::PMapLongShort& short1, const byps::PMapIntegerInteger& int1, const byps::PMapShortLong& long1, const byps::PMapCharacterFloat& float1, const byps::PMapByteDouble& double1, const byps::PMapStringString& string1, const byps::test::api::prim::PMapIntegerPrimitiveTypes& primitiveTypes1, const byps_ptr< ::std::map< int32_t , PBytes > >& byte2, const byps_ptr< ::std::map< int32_t , PArrayInt > >& int2, const byps::PMapStringObject& obj1, const byps::PMapStringDate& date1)
 	: boolean1(boolean1)
 	, byte1(byte1)
 	, char1(char1)
@@ -722,10 +686,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_2053507648(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray1< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray1< byps::test::api::prim::PPrimitiveTypes > *>(p);
+		::byps::BArray1< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< ::byps::BArray1< byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray1< byps::test::api::prim::PPrimitiveTypes > ());
+		pObj = POBJECT(new ::byps::BArray1< byps::test::api::prim::PPrimitiveTypes > ());
 	}
 }
 }}}
@@ -734,10 +698,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_2030857950(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray2< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray2< byps::test::api::prim::PPrimitiveTypes > *>(p);
+		::byps::BArray2< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< ::byps::BArray2< byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray2< byps::test::api::prim::PPrimitiveTypes > ());
+		pObj = POBJECT(new ::byps::BArray2< byps::test::api::prim::PPrimitiveTypes > ());
 	}
 }
 }}}
@@ -746,10 +710,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_1739334652(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray3< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray3< byps::test::api::prim::PPrimitiveTypes > *>(p);
+		::byps::BArray3< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< ::byps::BArray3< byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray3< byps::test::api::prim::PPrimitiveTypes > ());
+		pObj = POBJECT(new ::byps::BArray3< byps::test::api::prim::PPrimitiveTypes > ());
 	}
 }
 }}}
@@ -758,10 +722,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_758319514(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray4< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< BArray4< byps::test::api::prim::PPrimitiveTypes > *>(p);
+		::byps::BArray4< byps::test::api::prim::PPrimitiveTypes > & r = * reinterpret_cast< ::byps::BArray4< byps::test::api::prim::PPrimitiveTypes > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray4< byps::test::api::prim::PPrimitiveTypes > ());
+		pObj = POBJECT(new ::byps::BArray4< byps::test::api::prim::PPrimitiveTypes > ());
 	}
 }
 }}}
@@ -785,7 +749,7 @@ PrivateMembers::PrivateMembers() {
 	pprotInt = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::priv::PrivateMembers::PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const byps::test::api::prim::PPrimitiveTypes& primitiveTypes, const byps_ptr< BArray1< bool > >& arrBool, const byps_ptr< BArray1< int32_t > >& arrInt, const byps_ptr< BArray1< ::std::wstring > >& arrString, const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& arrPrimitiveTypes, const byps_ptr< ::std::vector< bool > >& listBool, const byps_ptr< ::std::vector< int32_t > >& listInt, const byps_ptr< ::std::vector< ::std::wstring > >& listString, const byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > >& listPrimitiveTypes, const byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > >& mapIntListString, int32_t protInt, int32_t pprotInt)
+byps::test::api::priv::PrivateMembers::PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const byps::test::api::prim::PPrimitiveTypes& primitiveTypes, const PArrayBoolean& arrBool, const PArrayInt& arrInt, const PArrayString& arrString, const byps::test::api::prim::PArrayPrimitiveTypes& arrPrimitiveTypes, const byps::PVectorBoolean& listBool, const byps::PVectorInteger& listInt, const byps::PVectorString& listString, const byps::test::api::prim::PVectorPrimitiveTypes& listPrimitiveTypes, const byps_ptr< ::std::map< int32_t , byps::PVectorString > >& mapIntListString, int32_t protInt, int32_t pprotInt)
 	: boolVal(boolVal)
 	, byteVal(byteVal)
 	, charVal(charVal)
@@ -838,31 +802,31 @@ void PrivateMembers::setStringVal(::std::wstring v) {
 void PrivateMembers::setPrimitiveTypes(byps::test::api::prim::PPrimitiveTypes v) {
 	primitiveTypes = v;
 }
-void PrivateMembers::setArrBool(byps_ptr< BArray1< bool > > v) {
+void PrivateMembers::setArrBool(PArrayBoolean v) {
 	arrBool = v;
 }
-void PrivateMembers::setArrInt(byps_ptr< BArray1< int32_t > > v) {
+void PrivateMembers::setArrInt(PArrayInt v) {
 	arrInt = v;
 }
-void PrivateMembers::setArrString(byps_ptr< BArray1< ::std::wstring > > v) {
+void PrivateMembers::setArrString(PArrayString v) {
 	arrString = v;
 }
-void PrivateMembers::setArrPrimitiveTypes(byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > > v) {
+void PrivateMembers::setArrPrimitiveTypes(byps::test::api::prim::PArrayPrimitiveTypes v) {
 	arrPrimitiveTypes = v;
 }
-void PrivateMembers::setListBool(byps_ptr< ::std::vector< bool > > v) {
+void PrivateMembers::setListBool(byps::PVectorBoolean v) {
 	listBool = v;
 }
-void PrivateMembers::setListInt(byps_ptr< ::std::vector< int32_t > > v) {
+void PrivateMembers::setListInt(byps::PVectorInteger v) {
 	listInt = v;
 }
-void PrivateMembers::setListString(byps_ptr< ::std::vector< ::std::wstring > > v) {
+void PrivateMembers::setListString(byps::PVectorString v) {
 	listString = v;
 }
-void PrivateMembers::setListPrimitiveTypes(byps_ptr< ::std::vector< byps::test::api::prim::PPrimitiveTypes > > v) {
+void PrivateMembers::setListPrimitiveTypes(byps::test::api::prim::PVectorPrimitiveTypes v) {
 	listPrimitiveTypes = v;
 }
-void PrivateMembers::setMapIntListString(byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< ::std::wstring > > > > v) {
+void PrivateMembers::setMapIntListString(byps_ptr< ::std::map< int32_t , byps::PVectorString > > v) {
 	mapIntListString = v;
 }
 void PrivateMembers::setProtInt(int32_t v) {
@@ -919,7 +883,7 @@ namespace byps { namespace test { namespace api { namespace refs {
 Node::Node() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::refs::Node::Node(const PNode& next, const PNode& me, const byps_ptr< ::std::map< ::std::wstring , PNode > >& mapOfNodes, const byps_ptr< ::std::vector< PNode > >& listOfNodes)
+byps::test::api::refs::Node::Node(const PNode& next, const PNode& me, const PMapStringNode& mapOfNodes, const PVectorNode& listOfNodes)
 	: next(next)
 	, me(me)
 	, mapOfNodes(mapOfNodes)
@@ -960,7 +924,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool::serialize(B
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getBool([__byps__asyncResult](byps_ptr< BArray1< bool > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getBool([__byps__asyncResult](PArrayBoolean __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1036,7 +1000,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar::serialize(B
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getChar([__byps__asyncResult](byps_ptr< BArray1< wchar_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getChar([__byps__asyncResult](PArrayChar __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1074,7 +1038,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDate::serialize(B
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDate::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getDate([__byps__asyncResult](byps_ptr< BArray1< BDateTime > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getDate([__byps__asyncResult](PArrayDate __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1112,7 +1076,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble::serialize
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getDouble([__byps__asyncResult](byps_ptr< BArray1< double > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getDouble([__byps__asyncResult](PArrayDouble __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1150,7 +1114,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat::serialize(
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getFloat([__byps__asyncResult](byps_ptr< BArray1< float > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getFloat([__byps__asyncResult](PArrayFloat __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1188,7 +1152,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt::serialize(BI
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getInt([__byps__asyncResult](byps_ptr< BArray1< int32_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getInt([__byps__asyncResult](PArrayInt __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1226,7 +1190,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong::serialize(B
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getLong([__byps__asyncResult](byps_ptr< BArray1< int64_t > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getLong([__byps__asyncResult](PArrayLong __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1264,7 +1228,7 @@ void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject::serialize
 }
 void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
-	__byps__remoteT->getObject([__byps__asyncResult](byps_ptr< BArray1< PSerializable > > __byps__result, BException __byps__ex) {
+	__byps__remoteT->getObject([__byps__asyncResult](byps::PArrayObject __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}
@@ -1285,6 +1249,44 @@ void BSerializer_263295897(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBas
 		bio & r;
 	} else {
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes() : BMethodRequest(963816328) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::serialize(BIO& ar, const BVERSION version) {
+}
+void byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteArrayTypes1dim __byps__remoteT = byps_ptr_cast<RemoteArrayTypes1dim>(__byps__remote);
+	__byps__remoteT->getPrimitiveTypes([__byps__asyncResult](byps::test::api::prim::PArrayPrimitiveTypes __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_2053507648(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_1992537556(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes());
 	}
 }
 }}}

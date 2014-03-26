@@ -133,6 +133,66 @@ typedef void (*BSERIALIZER)(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 typedef byps_ptr<BContentStream> PContentStream;
 typedef byps_ptr<BContentStreamFile> PContentStreamFile;
 
+typedef vector<bool> BVectorBool;
+typedef vector<wchar_t> BVectorChar;
+typedef vector<int16_t> BVectorShort;
+typedef vector<int32_t> BVectorInt;
+typedef vector<int64_t> BVectorLong;
+typedef vector<float> BVectorFloat;
+typedef vector<double> BVectorDouble;
+typedef vector<wstring> BVectorString;
+typedef vector<BDateTime> BVectorDate;
+typedef vector<PSerializable> BVectorObject;
+
+typedef byps_ptr<BVectorBool> PVectorBool;
+typedef byps_ptr<BVectorChar> PVectorChar;
+typedef byps_ptr<BVectorShort> PVectorShort;
+typedef byps_ptr<BVectorInt> PVectorInt;
+typedef byps_ptr<BVectorLong> PVectorLong;
+typedef byps_ptr<BVectorFloat> PVectorFloat;
+typedef byps_ptr<BVectorDouble> PVectorDouble;
+typedef byps_ptr<BVectorString> PVectorString;
+typedef byps_ptr<BVectorDate> PVectorDate;
+typedef byps_ptr<BVectorObject> PVectorObject;
+
+typedef set<bool> BSetBool;
+typedef set<wchar_t> BSetChar;
+typedef set<int16_t> BSetShort;
+typedef set<int32_t> BSetInt;
+typedef set<int64_t> BSetLong;
+typedef set<float> BSetFloat;
+typedef set<double> BSetDouble;
+typedef set<wstring> BSetString;
+typedef set<BDateTime> BSetDate;
+
+typedef byps_ptr<BSetBool> PSetBool;
+typedef byps_ptr<BSetChar> PSetChar;
+typedef byps_ptr<BSetShort> PSetShort;
+typedef byps_ptr<BSetInt> PSetInt;
+typedef byps_ptr<BSetLong> PSetLong;
+typedef byps_ptr<BSetFloat> PSetFloat;
+typedef byps_ptr<BSetDouble> PSetDouble;
+typedef byps_ptr<BSetString> PSetString;
+typedef byps_ptr<BSetDate> PSetDate;
+
+typedef map<bool, PSerializable> BMapBoolObject;
+typedef map<wchar_t, PSerializable> BMapCharObject;
+typedef map<int16_t, PSerializable> BMapShortObject;
+typedef map<int32_t, PSerializable> BMapIntObject;
+typedef map<int64_t, PSerializable> BMapLongObject;
+typedef map<float, PSerializable> BMapFloatObject;
+typedef map<double, PSerializable> BMapDoubleObject;
+typedef map<wstring, PSerializable> BMapStringObject;
+
+typedef byps_ptr<BMapBoolObject> PMapBoolObject;
+typedef byps_ptr<BMapCharObject> PMapCharObject;
+typedef byps_ptr<BMapShortObject> PMapShortObject;
+typedef byps_ptr<BMapIntObject> PMapIntObject;
+typedef byps_ptr<BMapLongObject> PMapLongObject;
+typedef byps_ptr<BMapFloatObject> PMapFloatObject;
+typedef byps_ptr<BMapDoubleObject> PMapDoubleObject;
+typedef byps_ptr<BMapStringObject> PMapStringObject;
+
 }
 
 #include "BException.h"

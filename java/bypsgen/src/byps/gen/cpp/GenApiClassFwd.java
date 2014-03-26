@@ -25,19 +25,16 @@ class GenApiClassFwd {
 	  TypeInfo tinfo = tinfoCpp.tinfo;
 	  EForwardMode ret = EForwardMode.NOTHING;
     SerialInfo serInfo = (tinfo instanceof SerialInfo) ? (SerialInfo)tinfo : null;
-	  
+    
     if (tinfo.isBuiltInType()) {
-      // Für int, long, java.lang.String, java.lang.Object, java.util.Map, usw.
+      // Für int, long, java.lang.String, java.lang.Object, java.util.List
       // werden keine Forward-Decl benötigt
-    }
-    else if (tinfo.isInline || tinfo.isEnum) {
-      
     }
     else if (tinfo.isExceptionType()) {
       
     }
-    else if (tinfo.isAnyType()) {
-      
+    else if (tinfo.isArrayType() && tinfo.dims.length() <= 2 && (tinfo.isPrimitiveType() || tinfo.isAnyType()) ) {
+      // No forward definition for 1-dimensional arrays of int, long, ... java.lang.Object
     }
     else if (tinfo.isByteArray1dim()) {
       
@@ -46,7 +43,7 @@ class GenApiClassFwd {
       if (tinfoCpp.isSimpleNameAvailable()) {
         ret = EForwardMode.PUBLIC;
       }
-    }
+   }
     else if (serInfo != null && serInfo.isResultClass()) {
       // kein shared_ptr benötigt 
     }
@@ -156,6 +153,11 @@ class GenApiClassFwd {
 
 	}
 	
+	/**
+	 * Print forward typedef.
+	 * @param pr
+	 * @param tinfo
+	 */
 	private void printForwardTypedef(CodePrinter pr, TypeInfo tinfo) {
     TypeInfoCpp cppInfo = new TypeInfoCpp(tinfo, pctxt.apiPack);
 	  if (cppInfo.tinfo.isArrayType() || cppInfo.tinfo.isCollectionType()) {
@@ -166,22 +168,39 @@ class GenApiClassFwd {
 	  }
 	}
 	
+	/**
+	 * Print forward declarations of user-defined classes.
+	 * @param pr
+	 * @param cppInfo
+	 */
 	private void printForwardTypedefSerInfo(CodePrinter pr, TypeInfoCpp cppInfo) {
     String className = cppInfo.getClassName(cppInfo.tinfo.pack);
     String pclassName = cppInfo.getTypeName(cppInfo.tinfo.pack);
 
     pr.print("// ").println(cppInfo.tinfo.toString());  
-    pr.print("class ").print(className).println("; ");
+    
+    // Print forward definition for class or enum
+    pr.print(cppInfo.tinfo.isEnum ? "enum " : "class ").print(className).println("; ");
   
-    boolean declPtrClass = true;
-    if ((cppInfo.tinfo instanceof SerialInfo)) {
-      declPtrClass = !((SerialInfo)cppInfo.tinfo).isRequestClass();
+    // Print forward definition for pointer class.
+    // But not for enums, inlines, and (internal) request classes.
+    boolean declPtrClass = !cppInfo.tinfo.isEnum && !cppInfo.tinfo.isInline;
+    if (declPtrClass) {
+      if ((cppInfo.tinfo instanceof SerialInfo)) {
+        declPtrClass = !((SerialInfo)cppInfo.tinfo).isRequestClass();
+      }
     }
+    
     if (declPtrClass) {
       pr.print("typedef byps_ptr< ").print(className).print(" > ").print(pclassName).println("; ");
     }
   }
 
+	/**
+	 * Print forward declaration for arrays, vectory, maps and sets.
+	 * @param pr
+	 * @param cppInfo
+	 */
   private void printForwardTypedefCollection(CodePrinter pr, TypeInfoCpp cppInfo) {
     
     String className = cppInfo.getClassName(null); // == BArray1< PBackupProfile >
@@ -194,7 +213,11 @@ class GenApiClassFwd {
     pr.print("typedef byps_ptr< ").print(arrayName).print(" > ").print(pclassName).println(";");
   }
 
-  
+  /**
+   * Sort classes so that arrays and collections come last.
+   * @param arr
+   * @return Sorted list.
+   */
   private static ArrayList<TypeInfo> sortSerials_ArraysAndCollectionsLast(Collection<TypeInfo> arr) {
     ArrayList<TypeInfo> serials = new ArrayList<TypeInfo>();
     ArrayList<TypeInfo> arrays = new ArrayList<TypeInfo>();
@@ -213,6 +236,13 @@ class GenApiClassFwd {
     return all;
   }
   
+  /**
+   * Distribute classes into a hash map ordered by namespace.
+   * Return a map with namespace name as key and array of classes in this namespace as value.
+   * @param pctxt 
+   * @param arr
+   * @return Map
+   */
   private static Map< String, ArrayList<TypeInfo> > splitSerialsIntoNamespaces(PrintContext pctxt, Collection<? extends TypeInfo> arr) {
 
     // Split classes into map. Package name is used as map key.

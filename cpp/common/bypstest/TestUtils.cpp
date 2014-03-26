@@ -51,7 +51,7 @@ Point2D TestUtils::createPoint2D() {
 	return pt;
 }
 
-#define TASSERT_MEMBER(name) ::tassert(file, line, msg + std::wstring(L".") + BToStdWString(#name), e->name, r->name)
+#define TASSERT_MEMBER(name) ::tassert(file, line, msg + std::wstring(L".") + fromUtf8(#name), e->name, r->name)
 
 void TestUtils::tassert(const char* file, int line, 
 						const std::wstring& msg, 

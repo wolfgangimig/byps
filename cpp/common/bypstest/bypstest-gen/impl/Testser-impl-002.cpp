@@ -1091,7 +1091,7 @@ namespace byps { namespace test { namespace api { namespace arr {
 ArrayTypes1dim::ArrayTypes1dim() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::arr::ArrayTypes1dim::ArrayTypes1dim(const byps_ptr< BArray1< bool > >& boolean1, const PBytes& byte1, const byps_ptr< BArray1< wchar_t > >& char1, const byps_ptr< BArray1< int16_t > >& short1, const byps_ptr< BArray1< int32_t > >& int1, const byps_ptr< BArray1< int64_t > >& long1, const byps_ptr< BArray1< float > >& float1, const byps_ptr< BArray1< double > >& double1, const byps_ptr< BArray1< ::std::wstring > >& string1, const byps_ptr< BArray1< BDateTime > >& date1, const byps_ptr< BArray1< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1)
+byps::test::api::arr::ArrayTypes1dim::ArrayTypes1dim(const PArrayBoolean& boolean1, const PBytes& byte1, const PArrayChar& char1, const PArrayShort& short1, const PArrayInt& int1, const PArrayLong& long1, const PArrayFloat& float1, const PArrayDouble& double1, const PArrayString& string1, const PArrayDate& date1, const byps::test::api::prim::PArrayPrimitiveTypes& primitiveTypes1)
 	: boolean1(boolean1)
 	, byte1(byte1)
 	, char1(char1)
@@ -1142,7 +1142,7 @@ namespace byps { namespace test { namespace api { namespace arr {
 ArrayTypes4dim::ArrayTypes4dim() {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::arr::ArrayTypes4dim::ArrayTypes4dim(const byps_ptr< BArray4< bool > >& boolean4, const byps_ptr< BArray4< int8_t > >& byte4, const byps_ptr< BArray4< wchar_t > >& char4, const byps_ptr< BArray4< int16_t > >& short4, const byps_ptr< BArray4< int32_t > >& int4, const byps_ptr< BArray4< int64_t > >& long4, const byps_ptr< BArray4< float > >& float4, const byps_ptr< BArray4< double > >& double4, const byps_ptr< BArray4< ::std::wstring > >& string4, const byps_ptr< BArray4< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes4)
+byps::test::api::arr::ArrayTypes4dim::ArrayTypes4dim(const PArray4Boolean& boolean4, const PArray4Byte& byte4, const PArray4Char& char4, const PArray4Short& short4, const PArray4Int& int4, const PArray4Long& long4, const PArray4Float& float4, const PArray4Double& double4, const PArray4String& string4, const byps::test::api::prim::PArray4PrimitiveTypes& primitiveTypes4)
 	: boolean4(boolean4)
 	, byte4(byte4)
 	, char4(char4)
@@ -1242,28 +1242,28 @@ const PAllTypesZ AllTypesC::ALL = PAllTypesZ(new AllTypesZ(
 		(int8_t)1,
 		(int8_t)2,
 		(int8_t)3),
-	byps_ptr< BArray1< int32_t > >((new BArray1< int32_t > (2))
+	PArrayInt((new ::byps::BArray1< int32_t > (2))
 		->set(0, -4)
 		->set(1, -5)
 	),
-	byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
+	PArrayString((new ::byps::BArray1< ::std::wstring > (2))
 		->set(0, std::wstring(L"a"))
 		->set(1, std::wstring(L"b"))
 	),
-	byps_ptr< BArray1< PHebrewZ > >((new BArray1< byps::test::api::cons::PHebrewZ > (2))
+	PArrayHebrewZ((new ::byps::BArray1< byps::test::api::cons::PHebrewZ > (2))
 		->set(0, PHebrewZ(new HebrewZ(
 			std::wstring(L"\u05d0"))))
 		->set(1, PHebrewZ(new HebrewZ(
 			std::wstring(L"\u05d1"))))
 	)));
 
-const byps_ptr< BArray1< int32_t > > AllTypesC::arrInt = byps_ptr< BArray1< int32_t > >((new BArray1< int32_t > (3))
+const PArrayInt AllTypesC::arrInt = PArrayInt((new ::byps::BArray1< int32_t > (3))
 	->set(0, 1)
 	->set(1, 2)
 	->set(2, 3)
 );
 
-const byps_ptr< BArray4< int32_t > > AllTypesC::arrInt4 = byps_ptr< BArray4< int32_t > >((new BArray4< int32_t > (2,2,2,2))
+const PArray4Int AllTypesC::arrInt4 = PArray4Int((new ::byps::BArray4< int32_t > (2,2,2,2))
 	->set(0,0,0,0, 1)
 	->set(0,0,0,1, 2)
 	->set(0,0,1,0, 4)
@@ -1282,17 +1282,17 @@ const byps_ptr< BArray4< int32_t > > AllTypesC::arrInt4 = byps_ptr< BArray4< int
 	->set(1,1,1,1, 215)
 );
 
-const byps_ptr< BArray1< ::std::wstring > > AllTypesC::arrStrings = byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
+const PArrayString AllTypesC::arrStrings = PArrayString((new ::byps::BArray1< ::std::wstring > (2))
 	->set(0, std::wstring(L"s1"))
 	->set(1, std::wstring(L"s2"))
 );
 
-const byps_ptr< BArray4< ::std::wstring > > AllTypesC::arrStrings4 = byps_ptr< BArray4< ::std::wstring > >((new BArray4< ::std::wstring > (1,1,1,2))
+const PArray4String AllTypesC::arrStrings4 = PArray4String((new ::byps::BArray4< ::std::wstring > (1,1,1,2))
 	->set(0,0,0,0, std::wstring(L"s1"))
 	->set(0,0,0,1, std::wstring(L"s2"))
 );
 
-const byps_ptr< BArray2< PAllTypesZ > > AllTypesC::arrALL = byps_ptr< BArray2< PAllTypesZ > >((new BArray2< byps::test::api::cons::PAllTypesZ > (2,1))
+const PArray2AllTypesZ AllTypesC::arrALL = PArray2AllTypesZ((new ::byps::BArray2< byps::test::api::cons::PAllTypesZ > (2,1))
 	->set(0,0, PAllTypesZ(new AllTypesZ(
 		false,
 		(int8_t)0,
@@ -1305,9 +1305,9 @@ const byps_ptr< BArray2< PAllTypesZ > > AllTypesC::arrALL = byps_ptr< BArray2< P
 		std::wstring(),
 		PHebrewZ(),
 		PBytes(),
-		byps_ptr< BArray1< int32_t > >(),
-		byps_ptr< BArray1< ::std::wstring > >(),
-		byps_ptr< BArray1< PHebrewZ > >())))
+		PArrayInt(),
+		PArrayString(),
+		PArrayHebrewZ())))
 	->set(1,0, PAllTypesZ(new AllTypesZ(
 		true,
 		(int8_t)1,
@@ -1324,15 +1324,15 @@ const byps_ptr< BArray2< PAllTypesZ > > AllTypesC::arrALL = byps_ptr< BArray2< P
 			(int8_t)1,
 			(int8_t)2,
 			(int8_t)3),
-		byps_ptr< BArray1< int32_t > >((new BArray1< int32_t > (2))
+		PArrayInt((new ::byps::BArray1< int32_t > (2))
 			->set(0, -4)
 			->set(1, -5)
 		),
-		byps_ptr< BArray1< ::std::wstring > >((new BArray1< ::std::wstring > (2))
+		PArrayString((new ::byps::BArray1< ::std::wstring > (2))
 			->set(0, std::wstring(L"a"))
 			->set(1, std::wstring(L"b"))
 		),
-		byps_ptr< BArray1< PHebrewZ > >((new BArray1< byps::test::api::cons::PHebrewZ > (2))
+		PArrayHebrewZ((new ::byps::BArray1< byps::test::api::cons::PHebrewZ > (2))
 			->set(0, PHebrewZ(new HebrewZ(
 				std::wstring(L"\u05d0"))))
 			->set(1, PHebrewZ(new HebrewZ(
@@ -1378,7 +1378,7 @@ AllTypesZ::AllTypesZ() {
 	double1 = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::cons::AllTypesZ::AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const ::std::wstring& string1, const PHebrewZ& hebrew1, const PBytes& byte2, const byps_ptr< BArray1< int32_t > >& int2, const byps_ptr< BArray1< ::std::wstring > >& string2, const byps_ptr< BArray1< PHebrewZ > >& hebrew2)
+byps::test::api::cons::AllTypesZ::AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const ::std::wstring& string1, const PHebrewZ& hebrew1, const PBytes& byte2, const PArrayInt& int2, const PArrayString& string2, const PArrayHebrewZ& hebrew2)
 	: bool1(bool1)
 	, byte1(byte1)
 	, char1(char1)
@@ -1427,13 +1427,13 @@ void AllTypesZ::setHebrew1(PHebrewZ v) {
 void AllTypesZ::setByte2(PBytes v) {
 	byte2 = v;
 }
-void AllTypesZ::setInt2(byps_ptr< BArray1< int32_t > > v) {
+void AllTypesZ::setInt2(PArrayInt v) {
 	int2 = v;
 }
-void AllTypesZ::setString2(byps_ptr< BArray1< ::std::wstring > > v) {
+void AllTypesZ::setString2(PArrayString v) {
 	string2 = v;
 }
-void AllTypesZ::setHebrew2(byps_ptr< BArray1< PHebrewZ > > v) {
+void AllTypesZ::setHebrew2(PArrayHebrewZ v) {
 	hebrew2 = v;
 }
 // checkpoint byps.gen.cpp.GenApiClass:877
@@ -1472,10 +1472,46 @@ namespace byps { namespace test { namespace api {
 void BSerializer_81775365(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray2< byps::test::api::cons::PAllTypesZ > & r = * reinterpret_cast< BArray2< byps::test::api::cons::PAllTypesZ > *>(p);
+		::byps::BArray2< byps::test::api::cons::PAllTypesZ > & r = * reinterpret_cast< ::byps::BArray2< byps::test::api::cons::PAllTypesZ > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray2< byps::test::api::cons::PAllTypesZ > ());
+		pObj = POBJECT(new ::byps::BArray2< byps::test::api::cons::PAllTypesZ > ());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace cons { 
+
+//-------------------------------------------------
+// Implementation of class HebrewC
+// Generated from class byps.gen.cpp.GenApiClass
+
+const ::std::wstring HebrewC::aleph = std::wstring(L"\u05d0");
+
+const ::std::wstring HebrewC::beth = std::wstring(L"\u05d1");
+
+const PHebrewZ HebrewC::ALEPH = PHebrewZ(new HebrewZ(
+	std::wstring(L"\u05d0")));
+
+const PHebrewZ HebrewC::BETH = PHebrewZ(new HebrewZ(
+	std::wstring(L"\u05d1")));
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+HebrewC::HebrewC() {
+}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::cons::HebrewC::serialize(BIO& ar, const BVERSION version) {
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_1770673942(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::cons::HebrewC& r = * dynamic_cast< byps::test::api::cons::HebrewC*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::cons::HebrewC());
 	}
 }
 }}}

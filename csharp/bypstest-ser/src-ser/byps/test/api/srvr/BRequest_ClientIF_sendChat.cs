@@ -25,7 +25,6 @@ namespace byps.test.api.srvr
 				__byps__remoteT.SendChat(csValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

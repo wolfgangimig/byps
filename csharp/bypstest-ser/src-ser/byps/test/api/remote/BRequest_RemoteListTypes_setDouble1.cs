@@ -25,7 +25,6 @@ namespace byps.test.api.remote
 				__byps__remoteT.SetDouble1(double1Value, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

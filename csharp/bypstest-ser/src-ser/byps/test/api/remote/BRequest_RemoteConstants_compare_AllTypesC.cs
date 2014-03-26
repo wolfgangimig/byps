@@ -25,7 +25,6 @@ namespace byps.test.api.remote
 				__byps__remoteT.Compare_AllTypesC(bool1sValue, bool2sValue, char1sValue, stringNullValue, char2sValue, short1sValue, int1sValue, long1sValue, float1sValue, double1sValue, string1sValue, ALLValue, arrIntValue, arrInt4Value, arrStringsValue, arrStrings4Value, arrAllValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(false, e);
-				throw e;
 			}
 		}		
 		

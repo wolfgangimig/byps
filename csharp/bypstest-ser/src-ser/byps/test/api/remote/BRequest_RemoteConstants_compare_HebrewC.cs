@@ -25,7 +25,6 @@ namespace byps.test.api.remote
 				__byps__remoteT.Compare_HebrewC(ALEPHValue, BETHValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
-				throw e;
 			}
 		}		
 		

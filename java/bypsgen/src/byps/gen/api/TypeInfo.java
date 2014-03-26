@@ -258,10 +258,10 @@ public class TypeInfo {
 		if (isSetType() && typeArgs.get(0).isAnyType()) return true;
 		if (isMapType() && typeArgs.get(0).isAnyType() && typeArgs.get(1).isAnyType()) return true;
 		if (isPrimitiveType()) return true;
+		if (isAnyType()) return true;
+		if (isStringType()) return true;
 		if (isExceptionType()) return true;
-		return qname.equals("java.lang.Object") 
-				|| qname.equals("java.lang.String")
-				|| qname.equals("byps.BValueClass");
+		return qname.equals("byps.BValueClass");
 	}
 	
 	public boolean isPointerType() {

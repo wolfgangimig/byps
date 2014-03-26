@@ -98,10 +98,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_184101377(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray1< byps::test::api::inl::Point2D > & r = * reinterpret_cast< BArray1< byps::test::api::inl::Point2D > *>(p);
+		::byps::BArray1< byps::test::api::inl::Point2D > & r = * reinterpret_cast< ::byps::BArray1< byps::test::api::inl::Point2D > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray1< byps::test::api::inl::Point2D > ());
+		pObj = POBJECT(new ::byps::BArray1< byps::test::api::inl::Point2D > ());
 	}
 }
 }}}
@@ -110,10 +110,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_827767075(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray2< byps::test::api::inl::Point2D > & r = * reinterpret_cast< BArray2< byps::test::api::inl::Point2D > *>(p);
+		::byps::BArray2< byps::test::api::inl::Point2D > & r = * reinterpret_cast< ::byps::BArray2< byps::test::api::inl::Point2D > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray2< byps::test::api::inl::Point2D > ());
+		pObj = POBJECT(new ::byps::BArray2< byps::test::api::inl::Point2D > ());
 	}
 }
 }}}
@@ -122,10 +122,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_915212229(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray3< byps::test::api::inl::Point2D > & r = * reinterpret_cast< BArray3< byps::test::api::inl::Point2D > *>(p);
+		::byps::BArray3< byps::test::api::inl::Point2D > & r = * reinterpret_cast< ::byps::BArray3< byps::test::api::inl::Point2D > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray3< byps::test::api::inl::Point2D > ());
+		pObj = POBJECT(new ::byps::BArray3< byps::test::api::inl::Point2D > ());
 	}
 }
 }}}
@@ -134,10 +134,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_949340697(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray4< byps::test::api::inl::Point2D > & r = * reinterpret_cast< BArray4< byps::test::api::inl::Point2D > *>(p);
+		::byps::BArray4< byps::test::api::inl::Point2D > & r = * reinterpret_cast< ::byps::BArray4< byps::test::api::inl::Point2D > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray4< byps::test::api::inl::Point2D > ());
+		pObj = POBJECT(new ::byps::BArray4< byps::test::api::inl::Point2D > ());
 	}
 }
 }}}
@@ -146,10 +146,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_1441131650(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray1< byps::test::api::enu::EnumPlanets > & r = * reinterpret_cast< BArray1< byps::test::api::enu::EnumPlanets > *>(p);
+		::byps::BArray1< byps::test::api::enu::EnumPlanets > & r = * reinterpret_cast< ::byps::BArray1< byps::test::api::enu::EnumPlanets > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray1< byps::test::api::enu::EnumPlanets > ());
+		pObj = POBJECT(new ::byps::BArray1< byps::test::api::enu::EnumPlanets > ());
 	}
 }
 }}}
@@ -169,10 +169,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_2058423690(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray1< bool > & r = * reinterpret_cast< BArray1< bool > *>(p);
+		::byps::BArray1< bool > & r = * reinterpret_cast< ::byps::BArray1< bool > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray1< bool > ());
+		pObj = POBJECT(new ::byps::BArray1< bool > ());
 	}
 }
 }}}
@@ -181,10 +181,10 @@ namespace byps { namespace test { namespace api {
 void BSerializer_945713488(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
 	void* p = pObj.get();
 	if (p) { 
-		BArray4< bool > & r = * reinterpret_cast< BArray4< bool > *>(p);
+		::byps::BArray4< bool > & r = * reinterpret_cast< ::byps::BArray4< bool > *>(p);
 		bio & r;
 	} else {
-		pObj = POBJECT(new BArray4< bool > ());
+		pObj = POBJECT(new ::byps::BArray4< bool > ());
 	}
 }
 }}}
