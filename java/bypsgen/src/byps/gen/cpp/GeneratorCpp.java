@@ -22,6 +22,7 @@ public class GeneratorCpp implements Generator {
   public void build(ClassDB classDB, GeneratorProperties props) throws IOException {
 
     pctxt = new PrintContext(classDB, props);
+    printForwardDecls(classDB.getSerials(), classDB.getRemotes());
     printSerials(classDB.getSerials());
     printRemotes(classDB.getRemotes());
     GenRegistry.generate(pctxt, classDB.getSerials(), BBinaryModel.MEDIUM);
@@ -35,11 +36,6 @@ public class GeneratorCpp implements Generator {
     
     ArrayList<RemoteInfo> sarr = sortRemotesByInheritance(remotes);
     
-    for (RemoteInfo rinfo : sarr) {
-      GenApiClassFwd.generate(pctxt, rinfo);
-      GenApiClassFwd.generate(pctxt, rinfo.getRemoteAuth());
-    }
-
     for (RemoteInfo rinfo : sarr) {
       GenRemoteClass.generate(pctxt, rinfo.getRemoteNoAuth());
       GenRemoteClassAuth.generate(pctxt, rinfo.getRemoteAuth());
@@ -115,9 +111,21 @@ public class GeneratorCpp implements Generator {
     }
     return idx;
   }
+  
+  protected void printForwardDecls(Collection<SerialInfo> serials, Collection<RemoteInfo> remotes) throws IOException {
+    ArrayList<TypeInfo> all = new ArrayList<TypeInfo>();
+    all.addAll(serials);
+    all.addAll(remotes);
+    for (RemoteInfo rinfo : remotes) {
+      RemoteInfo rauthInfo = rinfo.getRemoteAuth();
+      if (rauthInfo != null) all.add(rauthInfo);
+    }
+    GenApiClassFwd.generate(pctxt, all);
+  }
 
   protected void printSerials(Collection<SerialInfo> serials) throws IOException {
 
+    // Put base classes before child classes.
     ArrayList<SerialInfo> sarr = sortSerialsByInheritance(serials);
     
     // Klassen so sortieren, dass die Inline-Klassen zuerst kommen.
@@ -127,10 +135,6 @@ public class GeneratorCpp implements Generator {
     for (SerialInfo sinfo : sarr) {
       int idx = findInsertPosForSerialInfo(sinfo, arr);
       arr.add(idx, sinfo);
-    }
-
-    for (SerialInfo sinfo : arr) {
-      GenApiClassFwd.generate(pctxt, sinfo);
     }
 
     for (SerialInfo sinfo : arr) {

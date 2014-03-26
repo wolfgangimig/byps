@@ -26,7 +26,7 @@ class GenRemoteClass {
 	
 	protected GenRemoteClass(PrintContext pctxt, RemoteInfo rinfo) {
 		this.pctxt = pctxt;
-		this.cppInfo = new TypeInfoCpp(rinfo);
+		this.cppInfo = new TypeInfoCpp(rinfo, pctxt.apiPack);
 		this.prH = pctxt.getPrApiAllH();
 		this.rinfo = rinfo;
 	}
@@ -69,7 +69,7 @@ class GenRemoteClass {
       
       RemoteInfo rinfoBase = pctxt.classDB.getRemoteInfo(baseName);
       RemoteInfo rinfoImpl = getBaseRemoteInfo(rinfoBase);
-      TypeInfoCpp rinfoImplCpp = new TypeInfoCpp(rinfoImpl);
+      TypeInfoCpp rinfoImplCpp = new TypeInfoCpp(rinfoImpl, pctxt.apiPack);
     
       mpr.print(", ").println();
       mpr = prH.print("public virtual ").print(rinfoImplCpp.getClassName(rinfo.pack));

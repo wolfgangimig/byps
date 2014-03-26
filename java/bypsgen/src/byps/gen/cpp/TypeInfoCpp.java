@@ -5,34 +5,36 @@ import byps.BRemote;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.utils.PrintContextBase;
+import byps.gen.utils.Utils;
 
 
 class TypeInfoCpp {
 	
-	TypeInfo tinfo;
+  final TypeInfo tinfo;
 	
-	String namespace;
-	String namespaceBegin;
-	String namespaceEnd;
+	final String namespace;
+	final String namespaceBegin;
+	final String namespaceEnd;
+	final String apiPack;
 	
-	
-	TypeInfoCpp(TypeInfo tinfo) {
+	TypeInfoCpp(TypeInfo tinfo, String apiPack) {
 		this.tinfo = tinfo;
 		this.namespace = makeNamespace(tinfo.pack);
 		this.namespaceBegin = makeBeginNamespace(tinfo.pack);
 		this.namespaceEnd = makeEndNamespace(tinfo.pack);
+		this.apiPack = apiPack;
 	}
 	
-	static TypeInfoCpp makeSerializerTypeInfoCpp(PrintContextBase pctxt, TypeInfo tinfo) {
+	static TypeInfoCpp makeSerializerTypeInfoCpp(PrintContextBase pctxt, TypeInfo tinfo, String apiPack) {
 		String name = pctxt.getSerializerClassName(tinfo, BBinaryModel.MEDIUM);
 		String pack = pctxt.getSerializerPackage(tinfo);
 		String qname = pack + "." + name;
 		TypeInfo tinfoSerializer = new TypeInfo(name, qname, "", null, false, false, false);
-		return new TypeInfoCpp(tinfoSerializer);
+		return new TypeInfoCpp(tinfoSerializer, apiPack);
 	}
 
 	String getClassName(String pack) {
-		String name = makeCppName(tinfo, pack, Purpose.CLASS);
+		String name = makeCppName(pack, Purpose.CLASS);
 		return name;
 	}
 	
@@ -41,7 +43,7 @@ class TypeInfoCpp {
 	}
 	
 	String getTypeName(String pack) {
-		String name = makeCppName(tinfo, pack, Purpose.TYPE);
+		String name = makeCppName(pack, Purpose.TYPE);
 		return name;
 	}
 	
@@ -54,14 +56,14 @@ class TypeInfoCpp {
 		if (tinfo instanceof SerialInfo) {
 			SerialInfo serInfo = (SerialInfo)tinfo;
 			if (serInfo.baseInfo != null) {
-				baseInfo = new TypeInfoCpp(serInfo.baseInfo);
+				baseInfo = new TypeInfoCpp(serInfo.baseInfo, apiPack);
 			}
 		}
 		return baseInfo;
 	}
 	
 	String toString(String currentPackage) {
-		return makeCppName(tinfo, currentPackage, Purpose.TYPE);
+		return makeCppName(currentPackage, Purpose.TYPE);
 	}
 	
 	public String toString() {
@@ -70,7 +72,7 @@ class TypeInfoCpp {
 	
 	private enum Purpose { CLASS, TYPE, PARAM, RETURN }
 	
-	private static String makeCppName(TypeInfo tinfo, String currentPackage, Purpose purpose) {
+	private String makeCppName(String currentPackage, Purpose purpose) {
 		StringBuilder tbuf = new StringBuilder();
 
 		if (tinfo.isByteArray1dim()) {
@@ -82,13 +84,13 @@ class TypeInfoCpp {
 			}
 		}
 		else if (tinfo.dims.length() != 0) {
-			int ndims = tinfo.dims.length() / 2;
-			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("BArray").append(ndims).append("< ");
-			TypeInfo tinfoArg = new TypeInfo(tinfo.name, tinfo.qname, "", null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
-			tbuf.append(makeCppName(tinfoArg, currentPackage, Purpose.TYPE));
-			tbuf.append(" > ");
-			if (purpose != Purpose.CLASS) tbuf.append(">");
+			
+			if (purpose == Purpose.CLASS) {
+			  tbuf.append(makeCollectionName(currentPackage, false));
+			}
+			else {
+        tbuf.append(makeSimpleCollectionPointer( currentPackage));
+			}
 			
 		}
 		else if (tinfo.qname.equals("boolean")) tbuf.append("bool");
@@ -144,21 +146,28 @@ class TypeInfoCpp {
 		}
 		
 		else if (tinfo.isListType()) {
-			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("::std::vector< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
-			if (purpose != Purpose.CLASS) tbuf.append(" >");
+			if (purpose == Purpose.CLASS) {
+        tbuf.append(makeCollectionName( currentPackage, false));
+			}
+			else {
+        tbuf.append(makeSimpleCollectionPointer( currentPackage));
+			}
 		}
 		else if (tinfo.isMapType()) {
-			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("::std::map< ")
-				.append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" , ")
-				.append(makeCppName(tinfo.typeArgs.get(1), currentPackage, Purpose.TYPE)).append(" >");
-			if (purpose != Purpose.CLASS) tbuf.append(" >");
+			if (purpose == Purpose.CLASS) {
+        tbuf.append(makeCollectionName( currentPackage, false));
+			}
+			else {
+        tbuf.append(makeSimpleCollectionPointer( currentPackage));
+			}
 		}
 		else if (tinfo.isSetType()) {
-			if (purpose != Purpose.CLASS) tbuf.append("byps_ptr< ");
-			tbuf.append("::std::set< ").append(makeCppName(tinfo.typeArgs.get(0), currentPackage, Purpose.TYPE)).append(" >");
-			if (purpose != Purpose.CLASS) tbuf.append(" >");
+			if (purpose == Purpose.CLASS) {
+        tbuf.append(makeCollectionName( currentPackage, false));
+			}
+      else {
+        tbuf.append(makeSimpleCollectionPointer( currentPackage));
+      }
 		}
 		
 //		else if (tinfo.isEnum) {
@@ -203,12 +212,12 @@ class TypeInfoCpp {
 		return tbuf.toString();
 	}
 
-	static String makeBeginNamespace(String pack) {
+	public static String makeBeginNamespace(String pack) {
 		String ns = pack.replaceAll("\\.", " { namespace ");
 		return "namespace " + ns + " { ";
 	}
 	
-	static String makeEndNamespace(String pack) {
+	public static String makeEndNamespace(String pack) {
 		String[] ns = pack.split("\\.");
 		StringBuilder sbuf = new StringBuilder();
 		for (int i = 0; i < ns.length; i++) sbuf.append("}");
@@ -220,8 +229,144 @@ class TypeInfoCpp {
 	}
 
 	String getParamType(String pack) {
-		return makeCppName(this.tinfo, pack, Purpose.PARAM);
+		return makeCppName(pack, Purpose.PARAM);
 	}
 	
+	public String getCppPackage() {
+    String pack = tinfo.pack;
+    if (tinfo.isListType()) pack = tinfo.typeArgs.get(0).pack;
+    if (tinfo.isSetType()) pack = tinfo.typeArgs.get(0).pack;
+    if (tinfo.isMapType()) pack = tinfo.typeArgs.get(1).pack; // Value type
+    if (pack.startsWith("java.")) pack = apiPack;
+    if (pack.length() == 0) pack = apiPack;
+    return pack;
+	}
+
+  private String makeSimpleCollectionName(String currentPackage, boolean ptr) {
+    StringBuilder tbuf = new StringBuilder();
+
+    if (currentPackage != null) {
+      String pack = getCppPackage();
+      if (!currentPackage.equals(pack) && !tinfo.isPrimitiveType()) {
+        tbuf.append(pack.replaceAll("\\.", "::")).append("::");
+      }
+    }
+    
+    tbuf.append(ptr ? 'P' : 'B');
+    
+    if (tinfo.isListType()) {
+      tbuf.append("Vector");
+      tbuf.append(Utils.firstCharToUpper(tinfo.typeArgs.get(0).name));
+    }
+    else if (tinfo.isSetType()) {
+      tbuf.append("Set");
+      tbuf.append(Utils.firstCharToUpper(tinfo.typeArgs.get(0).name));
+    }
+    else if (tinfo.isMapType()) {
+      tbuf.append("Map");
+      tbuf.append(Utils.firstCharToUpper(tinfo.typeArgs.get(0).name));
+      tbuf.append(Utils.firstCharToUpper(tinfo.typeArgs.get(1).name));
+    }
+    else {
+      tbuf.append("Array");
+      int ndims = tinfo.dims.length() / 2;
+      String sdims = ndims > 1 ? Integer.toString(ndims) : "";
+      tbuf.append(sdims);
+      tbuf.append(Utils.firstCharToUpper(tinfo.name));
+    }
+
+    return tbuf.toString();
+  }
+  
+  public boolean isSimpleNameAvailable() {
+    boolean ret = false;
+    
+    if (tinfo.isListType()) {
+      // Forward typedef is generated for vector of simple types. 
+      TypeInfo targ = tinfo.typeArgs.get(0); 
+      if (!targ.isArrayType() && !targ.isCollectionType()) {
+        ret = true;
+      }
+    }
+    else if (tinfo.isSetType()) {
+      // Forward typedef is generated for vector of primitive types. 
+      TypeInfo targ = tinfo.typeArgs.get(0); 
+      if (!targ.isArrayType() && targ.isPrimitiveType()) {
+        ret = true;
+      }
+    }
+    else if (tinfo.isMapType()) {
+      // Forward typedef is generated for map of simple value types. 
+      // (Key type can only be a primitive type.)
+      TypeInfo targ = tinfo.typeArgs.get(1); 
+      if (!targ.isArrayType() && !targ.isCollectionType()) {
+        ret = true;
+      }
+    }
+    else {
+      ret = true;
+    }
+    
+    return ret;
+  }
+  
+  public String makeSimpleCollectionPointer(String currentPackage) {
+    if (isSimpleNameAvailable()) {
+      return makeSimpleCollectionName(currentPackage,true);
+    }
+    else {
+      return makeCollectionName(currentPackage, true);
+    }
+  }
+  
+  public String makeSimpleCollectionClass() {
+    if (isSimpleNameAvailable()) {
+      return makeSimpleCollectionName(null, false);
+    }
+    else {
+      return makeCollectionName("", false);
+    }
+  }
+  
+  private String makeCollectionName(String currentPackage, boolean ptr) {
+    StringBuilder tbuf = new StringBuilder();
+    
+    if (tinfo.isListType()) {
+      if (ptr) tbuf.append("byps_ptr< ");
+      TypeInfoCpp tinfoArg = new TypeInfoCpp(tinfo.typeArgs.get(0), apiPack);
+      tbuf.append("::std::vector< ").append(tinfoArg.makeCppName(currentPackage, Purpose.TYPE)).append(" >");
+      if (ptr) tbuf.append(" >");
+    }
+    else if (tinfo.isSetType()) {
+      if (ptr) tbuf.append("byps_ptr< ");
+      TypeInfoCpp tinfoArg = new TypeInfoCpp(tinfo.typeArgs.get(0), apiPack);
+      tbuf.append("::std::set< ").append(tinfoArg.makeCppName(currentPackage, Purpose.TYPE)).append(" >");    
+      if (ptr) tbuf.append(" >");
+    }
+    else if (tinfo.isMapType()) {
+      if (ptr) tbuf.append("byps_ptr< ");
+      TypeInfoCpp tinfoArg0 = new TypeInfoCpp(tinfo.typeArgs.get(0), apiPack);
+      TypeInfoCpp tinfoArg1 = new TypeInfoCpp(tinfo.typeArgs.get(1), apiPack);
+      tbuf.append("::std::map< ")
+      .append(tinfoArg0.makeCppName(currentPackage, Purpose.TYPE)).append(" , ")
+      .append(tinfoArg1.makeCppName(currentPackage, Purpose.TYPE)).append(" >");
+      if (ptr) tbuf.append(" >");
+    }
+    else {
+      if (ptr) tbuf.append("byps_ptr< ");
+      int ndims = tinfo.dims.length() / 2;
+      tbuf.append("::byps::BArray").append(ndims).append("< ");
+      TypeInfo tinfoArg = new TypeInfo(tinfo.name, tinfo.qname, "", null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline);
+      TypeInfoCpp tinfoArgCpp = new TypeInfoCpp(tinfoArg, apiPack);
+      tbuf.append(tinfoArgCpp.makeCppName(currentPackage, Purpose.TYPE));
+      tbuf.append(" > ");
+      if (ptr) tbuf.append(" >");
+    }
+    
+    return tbuf.toString();
+  }
+	
 	private final static String POINTER_CLASS_PREFIX = "P";
+
+
 }

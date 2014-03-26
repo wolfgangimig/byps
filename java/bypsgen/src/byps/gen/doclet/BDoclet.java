@@ -267,7 +267,7 @@ public class BDoclet extends Doclet {
 
     // DEBUG
     if (args == null || args.length == 0) {
-      args = bypstest_ser;
+      args = byps_ix_serAll;
     }
 
     // -------------------------------------------------------------
@@ -596,7 +596,7 @@ public class BDoclet extends Doclet {
 
   private static String[] byps_ix_serAll = new String[] {
 
-  "-genj.dir-ser", "d:\\java\\workspace_git\\Eloix-byps\\src",
+      //"-genj.dir-ser", "d:\\java\\workspace_git\\Eloix-byps\\src",
 
       // "-genj.dir-ser-bin", "d:\\dev\\BYPS2\\java\\byps-ix-ser\\src-ser-bin",
       // "-genj.dir-ser-json",
@@ -606,17 +606,17 @@ public class BDoclet extends Doclet {
       // "-gencs.upfirst", "false",
       //
 
-      "-gencpp.dir-api", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\api", "-gencpp.dir-impl", "d:\\dev\\BYPS2\\cpp-msvc\\byps\\bypstest\\byps_ix_ser\\impl", "-gencpp.max-fsize", "50000",
+      "-gencpp.dir-api", "d:\\git\\ELOixclientcpp\\src-ser\\api", "-gencpp.dir-impl", "d:\\git\\ELOixclientcpp\\src-ser\\impl", "-gencpp.max-fsize", "50000",
 
-      "-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\json-api\\ixbyps.js", "-genjs.suppressConstClasses",
+      //"-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\json-api\\ixbyps.js", "-genjs.suppressConstClasses",
 
-      "-allserials", "-allremotes", "-gen.changedmembers",
+      "-allserials", "-onlyBRemotes", "-gen.changedmembers",
 
       // "-verbose",
 
       "-ensureUIDs",
 
-      "--packages", "de.elo.ix.client;de.elo.ix.client.discuss;de.elo.ix.client.msg",
+      "--packages", "de.elo.ix.client;de.elo.ix.client.feed;de.elo.ix.client.compatibility;de.elo.ix.client.notify",
 
       "--sourcepath", "d:\\git\\ELOindexserver\\Eloix-api\\src;d:\\git\\ELOindexserver\\Eloix-api\\src-gen",
 
@@ -640,7 +640,7 @@ public class BDoclet extends Doclet {
       // //"-genc.pack.alias", "byps.sample1=IX",
       // "-gencpp.max-fsize", "50000",
 
-      "-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\json-api\\ixbyps.js",
+      //"-genjs.dest", "d:\\git\\ELOindexserver\\EloixWar\\json-api\\ixbyps.js",
 
       // "-verbose",
 

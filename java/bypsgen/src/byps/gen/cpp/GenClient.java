@@ -145,7 +145,7 @@ public class GenClient {
       
       RemoteInfo remoteBase = rinfo.getRemoteAuth();
       if (remoteBase == null) remoteBase = rinfo;
-      TypeInfoCpp rinfoCpp = new TypeInfoCpp(remoteBase);
+      TypeInfoCpp rinfoCpp = new TypeInfoCpp(remoteBase, pctxt.apiPack);
       String rinfoName = rinfoCpp.getQTypeName();
 
       String varName = getRemoteVariableName(rinfo);
@@ -196,7 +196,7 @@ public class GenClient {
       RemoteInfo remoteBase = rinfo.getRemoteAuth();
       if (remoteBase == null) remoteBase = rinfo;
 
-      TypeInfoCpp rinfoCpp = new TypeInfoCpp(remoteBase);
+      TypeInfoCpp rinfoCpp = new TypeInfoCpp(remoteBase, pctxt.apiPack);
       String rinfoName = rinfoCpp.getQTypeName();
 
       String varName = getRemoteVariableName(rinfo);
@@ -233,7 +233,7 @@ public class GenClient {
       RemoteInfo remoteBase = rinfo.getRemoteAuth();
       if (remoteBase == null) remoteBase = rinfo;
 
-      TypeInfoCpp rinfoCpp = new TypeInfoCpp(remoteBase);
+      TypeInfoCpp rinfoCpp = new TypeInfoCpp(remoteBase, pctxt.apiPack);
 
       String rinfoName = rinfoCpp.getQTypeName();
 

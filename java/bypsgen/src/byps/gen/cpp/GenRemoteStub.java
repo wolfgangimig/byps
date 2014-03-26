@@ -12,7 +12,6 @@ import byps.gen.api.GeneratorException;
 import byps.gen.api.MemberInfo;
 import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
-import byps.gen.cpp.PrintContext.EMethodDecl;
 import byps.gen.utils.CodePrinter;
 
 class GenRemoteStub {
@@ -46,7 +45,7 @@ class GenRemoteStub {
 		prC.beginBlock();
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
-		TypeInfoCpp returnTypeInfoCpp = new TypeInfoCpp(returnInfo.type);
+		TypeInfoCpp returnTypeInfoCpp = new TypeInfoCpp(returnInfo.type, pctxt.apiPack);
 		String rtype = returnTypeInfoCpp.getTypeName(rinfo.pack);
 		if (returnTypeInfoCpp.tinfo.isVoidType()) rtype = "bool";
 		
@@ -165,7 +164,7 @@ class GenRemoteStub {
 		pctxt.printDeclareMethodAsync(prC, cppInfo.getClassName(rinfo.pack), rinfo, methodInfo).println(" {");
 		prC.beginBlock();
 		
-		TypeInfoCpp requestCppInfo = new TypeInfoCpp(methodInfo.requestInfo);
+		TypeInfoCpp requestCppInfo = new TypeInfoCpp(methodInfo.requestInfo, pctxt.apiPack);
 		String requestClass = requestCppInfo.getClassName(rinfo.pack);
 		
 		CodePrinter mpr = prC.print("PMethodRequest req(new ").print(requestClass).print("(");
@@ -189,14 +188,14 @@ class GenRemoteStub {
 		
 		if (pctxt.lambdaSupported) {
 
-			TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+			TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type, pctxt.apiPack);
 			String outerAsyncClass = "";
 			String rtype = "bool";
 			if (!isReturnVoid) {
 				rtype = tinfoCpp.toString(rinfo.pack);
 			}
 			
-			TypeInfoCpp resultClassCpp = new TypeInfoCpp(methodInfo.resultInfo);
+			TypeInfoCpp resultClassCpp = new TypeInfoCpp(methodInfo.resultInfo, pctxt.apiPack);
 			String resultClassName = resultClassCpp.getClassName(rinfo.pack);
 			//MethodInfo.METHOD_RESULT_NAME_PREFIX + tinfoCpp.tinfo.typeId;
 			
@@ -225,7 +224,7 @@ class GenRemoteStub {
 	  prC.checkpoint();
 	  
 		String className = cppInfo.getQClassName();
-		String remoteClassName = new TypeInfoCpp(rinfo).getQClassName();
+		String remoteClassName = new TypeInfoCpp(rinfo, pctxt.apiPack).getQClassName();
 		
 		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);
 		prC.println(regCppInfo.namespaceBegin);

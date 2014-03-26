@@ -199,16 +199,21 @@ public class BConvert {
 	  
 	  // Only interfaces tagged with @BRemote?
 	  if ((options & OPT_ONLY_BREMOTES) != 0) {
-	    return c.tags("@BRemote").length != 0;
+	    boolean taggedWithBRemote = c.tags("@BRemote").length != 0;
+	    return taggedWithBRemote;
 	  }
 		
-	  // Inherits from byps.Remote?
-		boolean doesImplementBRemote = doesImplement(c, byps.Remote.class.getName());
-		log.debug("does implement BRemote: " + doesImplementBRemote);
-		if (doesImplementBRemote) return doesImplementBRemote;
+	  // Inherits from byps.BRemote?
+		boolean doesImplementBRemote = doesImplement(c, byps.BRemote.class.getName());
+		log.debug("does implement byps.BRemote: " + doesImplementBRemote);
+		if (doesImplementBRemote) {
+		  return doesImplementBRemote;
+		}
 		
 		// Does not inherit from Remote, use it either?
-		if ((options & OPT_ALL_REMOTES) != 0) return true;
+		if ((options & OPT_ALL_REMOTES) != 0) {
+		  return true;
+		}
 		
 		// This class will be ignored.
 		return false;

@@ -27,7 +27,7 @@ public class GenApiDescriptor {
 	
 		String className  = pctxt.getApiDescriptorClassName();
 		TypeInfo tinfo = new TypeInfo(className, pctxt.apiPack + "." + className, "", null, false, false, false);
-		this.cppInfo = new TypeInfoCpp(tinfo);
+		this.cppInfo = new TypeInfoCpp(tinfo, pctxt.apiPack);
 		
 		this.prH = pctxt.getPrApiAllH();
 		this.prC = pctxt.getPrImplC();

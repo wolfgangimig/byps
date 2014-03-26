@@ -66,7 +66,7 @@ class GenRemoteSkeleton {
 			prC.println("bool __byps__ret = false;");
 		}
 		else {
-			TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+			TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type, pctxt.apiPack);
 			String rtype = tinfoCpp.toString(rinfo.pack);
 			prC.print(rtype).print(" __byps__ret = ").print(rtype).println("();");
 		}

@@ -80,7 +80,7 @@ public class GenRegistry {
 			if (serInfo.isBuiltInType()) continue;
 			if (!serInfo.isPointerType()) continue;
 			
-			TypeInfoCpp cppSerInfo = new TypeInfoCpp(serInfo);
+			TypeInfoCpp cppSerInfo = new TypeInfoCpp(serInfo, pctxt.apiPack);
 			
 			String qtype = cppSerInfo.getQClassName();
 			pr.print("registerClass(typeid(").print(qtype).print(")")

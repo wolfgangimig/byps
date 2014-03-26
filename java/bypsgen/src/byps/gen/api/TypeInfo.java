@@ -57,6 +57,7 @@ public class TypeInfo {
 	}
 	
 	public String toString(String currentPackage) {
+	  if (currentPackage == null) currentPackage = "";
 		return toStringNoDims(new String[] {currentPackage, "byps"}) + getDimsAsString();
 	}
 	

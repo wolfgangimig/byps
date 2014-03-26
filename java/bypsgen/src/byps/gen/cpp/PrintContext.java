@@ -279,7 +279,7 @@ class PrintContext extends PrintContextBase {
 
 	TypeInfoCpp getReturnType(MethodInfo methodInfo) {
 		TypeInfo rtype = methodInfo.resultInfo.members.get(0).type;
-		TypeInfoCpp cppInfo = new TypeInfoCpp(rtype);
+		TypeInfoCpp cppInfo = new TypeInfoCpp(rtype, apiPack);
 		return cppInfo;
 	}
 	
@@ -345,7 +345,7 @@ class PrintContext extends PrintContextBase {
 		}
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
-		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type, apiPack);
 		String rtype = tinfoCpp.toString(rinfo.pack);
 		if (rtype.equals("void")) rtype = "bool";
 		if (!first) mpr.print(", ");
@@ -365,7 +365,7 @@ class PrintContext extends PrintContextBase {
 		String methodName = makePublicMemberName(methodInfo.name);
 
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
-		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type, apiPack);
 		String rtype = tinfoCpp.toString(rinfo.pack);
 		
 		String classNameMethodName = methodName;
@@ -394,7 +394,7 @@ class PrintContext extends PrintContextBase {
 	
 	public String printMethodParam(MemberInfo pinfo, String pack) {
 	  StringBuilder sbuf = new StringBuilder();
-    TypeInfoCpp tinfoCppParam = new TypeInfoCpp(pinfo.type);
+    TypeInfoCpp tinfoCppParam = new TypeInfoCpp(pinfo.type, apiPack);
     String stype = tinfoCppParam.toString(pack);
     
     if (pinfo.type.isPointerType() || pinfo.type.isStringType() || pinfo.type.isDateType()) {
@@ -427,7 +427,7 @@ class PrintContext extends PrintContextBase {
 		String registryClassName = getRegistryClassName(pformat);
 		String pack = getRegistryPackage();
 		TypeInfo regInfo = new TypeInfo(registryClassName, pack + "." + registryClassName, "", null, false, false, false);
-		return new TypeInfoCpp(regInfo);
+		return new TypeInfoCpp(regInfo, apiPack);
 	}
 	
 	public String getRegistryPackage() {
@@ -437,7 +437,7 @@ class PrintContext extends PrintContextBase {
 	public TypeInfoCpp getClientTypeInfoCpp() {
 		String cs = "BClient_" + apiName;
 		TypeInfo regInfo = new TypeInfo(cs, apiPack + "." + cs, "", null, false, false, false);
-		return new TypeInfoCpp(regInfo);
+		return new TypeInfoCpp(regInfo, apiPack);
 	}
 	
 	public String getApiDescriptorPackage() {
@@ -447,19 +447,19 @@ class PrintContext extends PrintContextBase {
 	public TypeInfoCpp getServerTypeInfoCpp() {
 		String cs = "BServer_" + apiName;
 		TypeInfo regInfo = new TypeInfo(cs, apiPack + "." + cs, "", null, false, false, false);
-		return new TypeInfoCpp(regInfo);
+		return new TypeInfoCpp(regInfo, apiPack);
 	}
 	
 	public TypeInfoCpp getStubTypeInfoCpp(RemoteInfo rinfo) {
 		String cs = "BStub_" + rinfo.name;
 		TypeInfo regInfo = new TypeInfo(cs, rinfo.pack + "." + cs, "", null, false, false, false);
-		return new TypeInfoCpp(regInfo);
+		return new TypeInfoCpp(regInfo, apiPack);
 	}
 	
 	public TypeInfoCpp getSkeletonTypeInfoCpp(RemoteInfo rinfo) {
 		String cs = "BSkeleton_" + rinfo.name;
 		TypeInfo regInfo = new TypeInfo(cs, rinfo.pack + "." + cs, "", null, false, false, false);
-		return new TypeInfoCpp(regInfo);
+		return new TypeInfoCpp(regInfo, apiPack);
 	}
 	
 	public CodePrinter getPrImplC() {

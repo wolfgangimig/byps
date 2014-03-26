@@ -58,7 +58,7 @@ class GenApiClass {
 	private GenApiClass(PrintContext pctxt, SerialInfo serInfo, CodePrinter prH, CodePrinter prCpp) {
 		this.pctxt = pctxt;
 		this.serInfo = serInfo;
-		this.cppInfo = new TypeInfoCpp(serInfo);
+		this.cppInfo = new TypeInfoCpp(serInfo, pctxt.apiPack);
 		this.baseCppInfo = cppInfo.getBaseInfo();
 		this.prH = prH;
 		this.prC = prCpp;
@@ -114,7 +114,7 @@ class GenApiClass {
 			String s = minfo.isStatic ? "static " : "";
 			String t = ""; // minfo.isTransient is unsupported by C++
 			
-			TypeInfoCpp cppMInfo = new TypeInfoCpp(minfo.type);
+			TypeInfoCpp cppMInfo = new TypeInfoCpp(minfo.type, pctxt.apiPack);
 			String typeName = cppMInfo.getTypeName(serInfo.pack);
 	
 			CodePrinter mpr = prH.print(access).print(f).print(s).print(t)
@@ -293,7 +293,7 @@ class GenApiClass {
 	
 	private CodePrinter makeNewArrayInstance(CodePrinter mpr, String path, TypeInfo tinfo, BJsonObject js) throws BException, GeneratorException {
 		
-		TypeInfoCpp tinfoCpp = new TypeInfoCpp(tinfo);
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(tinfo, pctxt.apiPack);
 		TypeInfo elmType = pctxt.classDB.getTypeInfo(tinfo.qname);
 		
 		
@@ -363,7 +363,7 @@ class GenApiClass {
 			throw new GeneratorException(errInfo);
 		}
 		
-		TypeInfoCpp cppMInfo = new TypeInfoCpp(sinfo);
+		TypeInfoCpp cppMInfo = new TypeInfoCpp(sinfo, pctxt.apiPack);
 		
 		if (params == null) {
 			mpr = mpr.print(cppMInfo.getTypeName(serInfo.pack)).print("()");
@@ -407,7 +407,7 @@ class GenApiClass {
 
 		if (minfo.access != MemberAccess.PUBLIC) {
 			
-			TypeInfoCpp typeCpp = new TypeInfoCpp(minfo.type);
+			TypeInfoCpp typeCpp = new TypeInfoCpp(minfo.type, pctxt.apiPack);
 			String memberType = typeCpp.toString(serInfo.pack);
 			
 			if (!memberType.equals("void")) {
@@ -450,7 +450,7 @@ class GenApiClass {
 			SerialInfo enumInfo = pctxt.classDB.getSerInfo(tinfo.toString());
 			if (enumInfo != null && enumInfo.members.size() != 0) {
 				MemberInfo minfo = enumInfo.members.get(0);
-				TypeInfoCpp mtinfoCpp = new TypeInfoCpp(minfo.type);
+				TypeInfoCpp mtinfoCpp = new TypeInfoCpp(minfo.type, pctxt.apiPack);
 				return mtinfoCpp.namespace + "::" + enumInfo.name + "::" + minfo.name;
 			}
 		}
@@ -798,7 +798,7 @@ class GenApiClass {
 		}		
 		
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
-		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type);
+		TypeInfoCpp tinfoCpp = new TypeInfoCpp(returnInfo.type, pctxt.apiPack);
 		String rtype = tinfoCpp.toString(serInfo.pack);
 		if (rtype.equals("void")) rtype = "bool";
 		if (!first) mpr.print(", ");
@@ -853,7 +853,7 @@ class GenApiClass {
         prC.beginBlock();
         
         SerialInfo sessClass = pctxt.classDB.getSerInfo(rinfo.authParamClassName);
-        TypeInfoCpp cppSessClass = new TypeInfoCpp(sessClass);
+        TypeInfoCpp cppSessClass = new TypeInfoCpp(sessClass, pctxt.apiPack);
         
         prC.print(pinfo.name).print(" = byps_ptr_cast<").print(cppSessClass.getQClassName()).println(">(__byps__sess);");
         prC.endBlock();
