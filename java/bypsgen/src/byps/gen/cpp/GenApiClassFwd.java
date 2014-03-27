@@ -26,31 +26,28 @@ class GenApiClassFwd {
 	  EForwardMode ret = EForwardMode.NOTHING;
     SerialInfo serInfo = (tinfo instanceof SerialInfo) ? (SerialInfo)tinfo : null;
     
-    if (tinfo.isBuiltInType()) {
-      // Für int, long, java.lang.String, java.lang.Object, java.util.List
-      // werden keine Forward-Decl benötigt
+    if (tinfo.isByteArray1dim()) {
+      // Is already defined as PBytes in BYPS headers.
     }
-    else if (tinfo.isExceptionType()) {
-      
-    }
-    else if (tinfo.isArrayType() && tinfo.dims.length() <= 2 && (tinfo.isPrimitiveType() || tinfo.isAnyType()) ) {
-      // No forward definition for 1-dimensional arrays of int, long, ... java.lang.Object
-    }
-    else if (tinfo.isByteArray1dim()) {
-      
-    }
-    else if (tinfo.isCollectionType()) {
+    else if (tinfo.isArrayType() || tinfo.isCollectionType()) {
       if (tinfoCpp.isSimpleNameAvailable()) {
         ret = EForwardMode.PUBLIC;
       }
-   }
+    }
+    else if (tinfo.isExceptionType()) {
+      // Currently only one exception type (BException) is supported.
+      // This type is declared in the BYPS headers, thus a forward definition is not requrired.
+    }
+    else if (tinfo.isPrimitiveType()) {
+      // Für int, long, java.lang.String, java.lang.Object
+      // werden keine Forward-Decl benötigt
+    }
     else if (serInfo != null && serInfo.isResultClass()) {
-      // kein shared_ptr benötigt 
     }
     else if (serInfo != null && serInfo.isRequestClass()) {
-      ret = EForwardMode.PRIVATE;
     }
     else {
+      // User defined class
       ret = EForwardMode.PUBLIC;
     }
     

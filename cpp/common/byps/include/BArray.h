@@ -45,28 +45,6 @@ private:
 template<> class BArray1<int8_t> { private: BArray1() {} BArray1(size_t) {} };
 template<> class BArray1<char> { private: BArray1() {} BArray1(size_t) {} };
 
-typedef BArray1<bool> BArrayBoolean;
-typedef BArray1<wchar_t> BArrayChar;
-typedef BArray1<int16_t> BArrayShort;
-typedef BArray1<int32_t> BArrayInt;
-typedef BArray1<int64_t> BArrayLong;
-typedef BArray1<float> BArrayFloat;
-typedef BArray1<double> BArrayDouble;
-typedef BArray1<wstring> BArrayString;
-typedef BArray1<BDateTime> BArrayDate;
-typedef BArray1<PSerializable> BArrayObject;
-
-typedef byps_ptr<BArrayBoolean> PArrayBoolean;
-typedef byps_ptr<BArrayChar> PArrayChar;
-typedef byps_ptr<BArrayShort> PArrayShort;
-typedef byps_ptr<BArrayInt> PArrayInt;
-typedef byps_ptr<BArrayLong> PArrayLong;
-typedef byps_ptr<BArrayFloat> PArrayFloat;
-typedef byps_ptr<BArrayDouble> PArrayDouble;
-typedef byps_ptr<BArrayString> PArrayString;
-typedef byps_ptr<BArrayDate> PArrayDate;
-typedef byps_ptr<BArrayObject> PArrayObject;
-
 template<typename _Type> class BArray2 {
 public:
     BArray2(size_t length1, size_t length0);

@@ -9,6 +9,14 @@
 
 namespace byps {
 
+	// byps.BValueClass
+	class BValueClass; 
+	typedef byps_ptr< BValueClass > PBValueClass; 
+	
+	// java.lang.Object
+	class BSerializable; 
+	typedef byps_ptr< BSerializable > PSerializable; 
+	
 	// java.io.InputStream[]
 	typedef ::byps::BArray1< PContentStream >  BArrayInputStream;
 	typedef byps_ptr< BArrayInputStream > PArrayInputStream;
@@ -29,6 +37,10 @@ namespace byps {
 	typedef ::byps::BArray4< PSerializable >  BArray4Object;
 	typedef byps_ptr< BArray4Object > PArray4Object;
 	
+	// java.lang.String[]
+	typedef ::byps::BArray1< ::std::wstring >  BArrayString;
+	typedef byps_ptr< BArrayString > PArrayString;
+	
 	// java.lang.String[][]
 	typedef ::byps::BArray2< ::std::wstring >  BArray2String;
 	typedef byps_ptr< BArray2String > PArray2String;
@@ -40,6 +52,10 @@ namespace byps {
 	// java.lang.String[][][][]
 	typedef ::byps::BArray4< ::std::wstring >  BArray4String;
 	typedef byps_ptr< BArray4String > PArray4String;
+	
+	// java.util.Date[]
+	typedef ::byps::BArray1< BDateTime >  BArrayDate;
+	typedef byps_ptr< BArrayDate > PArrayDate;
 	
 	// java.util.Date[][][][]
 	typedef ::byps::BArray4< BDateTime >  BArray4Date;
@@ -84,6 +100,10 @@ namespace byps {
 	// java.util.List<java.lang.Long>
 	typedef ::std::vector< int64_t > BVectorLong;
 	typedef byps_ptr< BVectorLong > PVectorLong;
+	
+	// java.util.List<java.lang.Object>
+	typedef ::std::vector< PSerializable > BVectorObject;
+	typedef byps_ptr< BVectorObject > PVectorObject;
 	
 	// java.util.List<java.lang.Short>
 	typedef ::std::vector< int16_t > BVectorShort;
@@ -194,6 +214,10 @@ namespace byps {
 	
 		namespace api {
 		
+			// boolean[]
+			typedef ::byps::BArray1< bool >  BArrayBoolean;
+			typedef byps_ptr< BArrayBoolean > PArrayBoolean;
+			
 			// boolean[][][][]
 			typedef ::byps::BArray4< bool >  BArray4Boolean;
 			typedef byps_ptr< BArray4Boolean > PArray4Boolean;
@@ -202,17 +226,33 @@ namespace byps {
 			typedef ::byps::BArray4< int8_t >  BArray4Byte;
 			typedef byps_ptr< BArray4Byte > PArray4Byte;
 			
+			// char[]
+			typedef ::byps::BArray1< wchar_t >  BArrayChar;
+			typedef byps_ptr< BArrayChar > PArrayChar;
+			
 			// char[][][][]
 			typedef ::byps::BArray4< wchar_t >  BArray4Char;
 			typedef byps_ptr< BArray4Char > PArray4Char;
+			
+			// double[]
+			typedef ::byps::BArray1< double >  BArrayDouble;
+			typedef byps_ptr< BArrayDouble > PArrayDouble;
 			
 			// double[][][][]
 			typedef ::byps::BArray4< double >  BArray4Double;
 			typedef byps_ptr< BArray4Double > PArray4Double;
 			
+			// float[]
+			typedef ::byps::BArray1< float >  BArrayFloat;
+			typedef byps_ptr< BArrayFloat > PArrayFloat;
+			
 			// float[][][][]
 			typedef ::byps::BArray4< float >  BArray4Float;
 			typedef byps_ptr< BArray4Float > PArray4Float;
+			
+			// int[]
+			typedef ::byps::BArray1< int32_t >  BArrayInt;
+			typedef byps_ptr< BArrayInt > PArrayInt;
 			
 			// int[][]
 			typedef ::byps::BArray2< int32_t >  BArray2Int;
@@ -226,9 +266,17 @@ namespace byps {
 			typedef ::byps::BArray4< int32_t >  BArray4Int;
 			typedef byps_ptr< BArray4Int > PArray4Int;
 			
+			// long[]
+			typedef ::byps::BArray1< int64_t >  BArrayLong;
+			typedef byps_ptr< BArrayLong > PArrayLong;
+			
 			// long[][][][]
 			typedef ::byps::BArray4< int64_t >  BArray4Long;
 			typedef byps_ptr< BArray4Long > PArray4Long;
+			
+			// short[]
+			typedef ::byps::BArray1< int16_t >  BArrayShort;
+			typedef byps_ptr< BArrayShort > PArrayShort;
 			
 			// short[][][][]
 			typedef ::byps::BArray4< int16_t >  BArray4Short;

@@ -303,7 +303,7 @@ class TypeInfoCpp {
         ret = true;
       }
     }
-    else {
+    else if (tinfo.isArrayType()) {
       ret = true;
     }
     
