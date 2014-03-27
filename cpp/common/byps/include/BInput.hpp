@@ -52,7 +52,7 @@ BINLINE void BInput::internalLoadObj(POBJECT& pObj) {
         // Read type and size from stream
         BTYPEID typeId = 0;
         bbuf.serializeTypeId(typeId);
-        if (typeId < 0) throw BException(EX_CORRUPT);
+        if (typeId < 0) throw BException(BExceptionC::CORRUPT);
 
         BSERIALIZER ser = registry->getSerializer(typeId);
 
@@ -68,7 +68,7 @@ BINLINE void BInput::internalLoadObj(POBJECT& pObj) {
     }
     else if (id < 0) {
         IDMAP::iterator it = idMap.find(-id);
-        if (it == idMap.end()) throw BException(EX_CORRUPT);
+        if (it == idMap.end()) throw BException(BExceptionC::CORRUPT);
         pObj = (*it).second;
     }
     else {
@@ -87,7 +87,7 @@ BINLINE void BInput::internalLoadObjS(PSerializable& pObjS) {
         // Read type and size from stream
         BTYPEID typeId = 0;
         bbuf.serializeTypeId(typeId);
-        if (typeId < 0) throw BException(EX_CORRUPT);
+        if (typeId < 0) throw BException(BExceptionC::CORRUPT);
 
         BSERIALIZER ser = registry->getSerializer(typeId);
 
@@ -103,7 +103,7 @@ BINLINE void BInput::internalLoadObjS(PSerializable& pObjS) {
     }
     else if (id < 0) {
         IDMAP::iterator it = idMap.find(-id);
-        if (it == idMap.end()) throw BException(EX_CORRUPT);
+        if (it == idMap.end()) throw BException(BExceptionC::CORRUPT);
 		pObjS = byps_static_ptr_cast<BSerializable>((*it).second);
     }
     else {

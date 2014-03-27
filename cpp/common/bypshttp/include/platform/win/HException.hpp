@@ -116,9 +116,9 @@ BINLINE HException::HException(LPCWSTR fnctName, DWORD err) : BException() {
 	std::wstring details;
 
 	switch(err) {
-	case ERROR_WINHTTP_TIMEOUT : code = EX_TIMEOUT; break;
-	case ERROR_WINHTTP_OPERATION_CANCELLED : code = EX_CANCELLED; break;
-	default : code = EX_CONNECTION_TO_SERVER_FAILED;
+	case ERROR_WINHTTP_TIMEOUT : code = BExceptionC::TIMEOUT; break;
+	case ERROR_WINHTTP_OPERATION_CANCELLED : code = BExceptionC::CANCELLED; break;
+	default : code = BExceptionC::CONNECTION_TO_SERVER_FAILED;
 	}
 
 	{

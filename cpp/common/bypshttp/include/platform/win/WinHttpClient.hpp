@@ -117,7 +117,7 @@ public:
 				asyncResult->setAsyncResult(BVariant(respBytes));
 			}
 			else {
-				asyncResult->setAsyncResult(BVariant(BException(EX_IOERROR, L"No bytes received")));
+				asyncResult->setAsyncResult(BVariant(BException(BExceptionC::IOERROR, L"No bytes received")));
 			}
 			asyncResult = NULL;
 		}
@@ -382,7 +382,7 @@ public:
 		if (respBytes) {
 
 			if (respBytes->length < respIdx) {
-				finishOnError(BException(EX_INTERNAL, L"Read-buffer overflow"));
+				finishOnError(BException(BExceptionC::INTERNAL, L"Read-buffer overflow"));
 				return;
 			}
 
@@ -397,7 +397,7 @@ public:
 			// Since Java does not support byte arrays > 2GB, we also do not allow
 			// them for C++.
 			if (contentLength > 0x7FFFFFFF) {
-				finishOnError(BException(EX_INTERNAL, L"Message tool large."));
+				finishOnError(BException(BExceptionC::INTERNAL, L"Message tool large."));
 				return;
 			}
 
@@ -593,7 +593,7 @@ BINLINE int32_t GetRequestContentStream::read(char* buffer, int32_t offs, int32_
 		}) 
 			== std::cv_status::timeout) {
 
-		request->ex = BException(EX_TIMEOUT, L"Read timeout");
+		request->ex = BException(BExceptionC::TIMEOUT, L"Read timeout");
 		throw request->ex;
 	}
 
@@ -606,7 +606,7 @@ BINLINE int32_t GetRequestContentStream::read(char* buffer, int32_t offs, int32_
 	else {
 
 		if (request->bufferPos > request->bufferLimit) {
-			BException ex(EX_INTERNAL, L"Illegal state in WinHttpClient::ContentStream::readData");
+			BException ex(BExceptionC::INTERNAL, L"Illegal state in WinHttpClient::ContentStream::readData");
 			throw request->ex;
 		}
 

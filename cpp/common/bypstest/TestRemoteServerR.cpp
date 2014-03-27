@@ -93,7 +93,7 @@ public:
 			TFAIL(L"callClientIncrementInt must fail.");
 		}
 		catch (const BException& ex) {
-			TASSERT(L"Wrong exepction", EX_SERVICE_NOT_IMPLEMENTED, ex.getCode());
+			TASSERT(L"Wrong exepction", BExceptionC::SERVICE_NOT_IMPLEMENTED, ex.getCode());
 		}
 
 		l_info << L")testCallClientFromServerNoRemoteImpl";
@@ -224,7 +224,7 @@ public:
 		}
         catch (const BException& e) {
             l_info << L"OK, exception=" << e.toString();
-			TASSERT(L"Exception", EX_CLIENT_DIED, e.getCode());
+			TASSERT(L"Exception", BExceptionC::CLIENT_DIED, e.getCode());
 		}
 	}
 
@@ -272,7 +272,7 @@ public:
 		}
         catch (const BException& e) {
             l_info << L"OK, exception=" << e.toString();
-			TASSERT(L"Exception", EX_CLIENT_DIED, e.getCode());
+			TASSERT(L"Exception", BExceptionC::CLIENT_DIED, e.getCode());
 		}
 
         client2->done();

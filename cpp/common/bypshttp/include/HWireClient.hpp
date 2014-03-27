@@ -297,7 +297,7 @@ public:
 				}
 			}
 			else {
-				BException ex = BException(EX_IOERROR, L"No bytes received.");
+				BException ex = BException(BExceptionC::IOERROR, L"No bytes received.");
                 internalSetAsyncResult(BVariant(ex));
 			}
 		}
@@ -611,7 +611,7 @@ public:
         }
         else {
             l_debug << L"HTTP client already released";
-            throw BException(EX_CANCELLED, L"HTTP client already released.");
+            throw BException(BExceptionC::CANCELLED, L"HTTP client already released.");
         }
         l_debug << L")ensureOpen";
 	}

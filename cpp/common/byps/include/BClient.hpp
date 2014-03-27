@@ -136,7 +136,7 @@ public:
 			}
 		}
 		else {
-			asyncResult->setAsyncResult(BVariant(BException(EX_CANCELLED)));
+			asyncResult->setAsyncResult(BVariant(BException(BExceptionC::CANCELLED)));
 		}
     }
 

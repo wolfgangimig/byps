@@ -139,7 +139,7 @@ namespace byps {
           }
 
           if (moreBytes) {
-            throw BException(EX_CORRUPT, L"Read integer failed.");
+            throw BException(BExceptionC::CORRUPT, L"Read integer failed.");
           }
 
           bool neg = (v & 0x01) != 0;

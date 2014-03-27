@@ -45,31 +45,31 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 	// Magic ["N"
 
 	size_t len = min((size_t)4, bytes->length);
-    if (strncmp(p, NEGOTIATE_MAGIC_DOUBLE_QUOTES, len) != 0) throw BException(EX_CORRUPT);
+    if (strncmp(p, NEGOTIATE_MAGIC_DOUBLE_QUOTES, len) != 0) throw BException(BExceptionC::CORRUPT);
 
 	idx += len;
-	if (idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
-	if (p[idx] != ',') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (p[idx] != ',') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	// Protokolle
 
-	if (p[idx] != '\"') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (p[idx] != '\"') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	for (; idx < bytes->length && p[idx] != '\"'; idx++) {
         protocols += p[idx];
 	}
 
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
-	if (p[idx] != ',') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
+	if (p[idx] != ',') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	// Version
 
-	if (p[idx] != '\"') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (p[idx] != '\"') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	std::stringstream ssversion;
 	for (; idx < bytes->length && p[idx] != '\"'; idx++) {
@@ -77,27 +77,27 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 	}
 	version = BVersioning::stringToLong(ssversion.str());
 
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
-	if (p[idx] != ',') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
+	if (p[idx] != ',') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	// Byteorder
 
-	if (p[idx] != '\"') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (p[idx] != '\"') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	byteOrder = p[idx] == 'B' ? BBIG_ENDIAN : BLITTLE_ENDIAN;
 
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
-	if (p[idx] != '\"') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
-	if (p[idx] != ',') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
+	if (p[idx] != '\"') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
+	if (p[idx] != ',') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	// Target-ID
 
-	if (p[idx] != '\"') throw BException(EX_CORRUPT);
-	if (++idx >= bytes->length) throw BException(EX_CORRUPT);
+	if (p[idx] != '\"') throw BException(BExceptionC::CORRUPT);
+	if (++idx >= bytes->length) throw BException(BExceptionC::CORRUPT);
 
 	size_t idxTargetIdBegin = idx;
 	for (; idx < bytes->length && p[idx] != '\"'; idx++) {}

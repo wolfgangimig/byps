@@ -316,7 +316,7 @@ namespace byps {
       }
 
       char _0 = *p++;
-      if (_0 != 0) throw new BException(EX_CORRUPT);
+      if (_0 != 0) throw new BException(BExceptionC::CORRUPT);
 
       pos = (int32_t)(p - buf);
     }
@@ -347,7 +347,7 @@ namespace byps {
       str = string((char*)p, (size_t)n);
 
       char _0 = *(p + n);
-      if (_0 != 0) throw new BException(EX_CORRUPT);
+      if (_0 != 0) throw new BException(BExceptionC::CORRUPT);
 
       pos += n + 1;
     }
@@ -366,7 +366,7 @@ namespace byps {
     growNow = ((growNow / grow) + 1) * grow;
     int32_t newCap = capacity + growNow;
     pBytes = BBytes::create(pBytes, newCap);
-    if (!pBytes) throw BException(EX_INTERNAL, L"Out of memory.");
+    if (!pBytes) throw BException(BExceptionC::INTERNAL, L"Out of memory.");
     capacity = newCap;
     limit = capacity;
   }

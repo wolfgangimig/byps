@@ -127,13 +127,13 @@ class HServerR_LongPoll {
 					BException ex = varmsg.getException();
 					switch (ex.getCode()) {
 
-					case EX_SESSION_CLOSED: // Session was invalidated.
-					case EX_UNAUTHORIZED: // Re-login required
-					case EX_CANCELLED:
+					case BExceptionC::SESSION_CLOSED: // Session was invalidated.
+					case BExceptionC::UNAUTHORIZED: // Re-login required
+					case BExceptionC::CANCELLED:
 						// no retry
 						break;
                 
-					case RESEND_LONG_POLL:
+					case BExceptionC::RESEND_LONG_POLL:
 						// HWireClientR has released the expried long-poll.
 						// Ignore the error and send a new long-poll.
 						sendLongPoll->send(transport, server, PMessage());

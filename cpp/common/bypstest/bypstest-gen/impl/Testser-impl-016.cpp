@@ -141,7 +141,7 @@ void BSerializer_1983670399(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
 namespace byps { namespace test { namespace api { namespace srvr { 
 
 int32_t BSkeleton_ClientIF::incrementInt(int32_t a)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+	throw BException(BExceptionC::UNSUPPORTED_METHOD, L"");
 }
 void BSkeleton_ClientIF::incrementInt(int32_t a, ::std::function< void (int32_t, BException ex) > asyncResult)  {
 	int32_t __byps__ret = int32_t();
@@ -153,7 +153,7 @@ void BSkeleton_ClientIF::incrementInt(int32_t a, ::std::function< void (int32_t,
 	}
 }
 byps::PVectorInputStream BSkeleton_ClientIF::getStreams(int32_t ctrl)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+	throw BException(BExceptionC::UNSUPPORTED_METHOD, L"");
 }
 void BSkeleton_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  {
 	byps::PVectorInputStream __byps__ret = byps::PVectorInputStream();
@@ -165,7 +165,7 @@ void BSkeleton_ClientIF::getStreams(int32_t ctrl, ::std::function< void (byps::P
 	}
 }
 void BSkeleton_ClientIF::putStreams(const byps::PVectorInputStream& strm, int32_t ctrl)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+	throw BException(BExceptionC::UNSUPPORTED_METHOD, L"");
 }
 void BSkeleton_ClientIF::putStreams(const byps::PVectorInputStream& strm, int32_t ctrl, ::std::function< void (bool, BException ex) > asyncResult)  {
 	bool __byps__ret = false;
@@ -177,7 +177,7 @@ void BSkeleton_ClientIF::putStreams(const byps::PVectorInputStream& strm, int32_
 	}
 }
 PChatStructure BSkeleton_ClientIF::sendChat(const PChatStructure& cs)  {
-	throw BException(EX_UNSUPPORTED_METHOD, L"");
+	throw BException(BExceptionC::UNSUPPORTED_METHOD, L"");
 }
 void BSkeleton_ClientIF::sendChat(const PChatStructure& cs, ::std::function< void (PChatStructure, BException ex) > asyncResult)  {
 	PChatStructure __byps__ret = PChatStructure();

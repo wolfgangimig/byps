@@ -31,7 +31,7 @@ namespace byps {
   BINLINE POutput BTransport::getOutput() {
 
     PTransport pthis = shared_from_this();
-    if (!pthis) throw BException(EX_CANCELLED);
+    if (!pthis) throw BException(BExceptionC::CANCELLED);
 
     return getProtocol()->getOutput(pthis, BMessageHeader());
   }
@@ -39,7 +39,7 @@ namespace byps {
   BINLINE POutput BTransport::getResponse(BMessageHeader& requestHeader) {
 
     PTransport pthis = shared_from_this();
-    if (!pthis) throw BException(EX_CANCELLED);
+    if (!pthis) throw BException(BExceptionC::CANCELLED);
 
     BMessageHeader responseHeader(requestHeader);
     responseHeader.flags |= BHEADER_FLAG_RESPONSE;
@@ -185,7 +185,7 @@ namespace byps {
               innerResult->setAsyncResult(BVariant(sobj));
             }
             else {
-              BException ex(EX_CORRUPT, L"Missing message object in result.");
+              BException ex(BExceptionC::CORRUPT, L"Missing message object in result.");
               innerResult->setAsyncResult(BVariant(ex));
             }
           }
@@ -276,7 +276,7 @@ namespace byps {
     PProtocol protocol;
 
     if (nego.protocols.size() == 0) {
-      throw BException(EX_CORRUPT, L"Protocol negotiation failed. Cannot detect protocol.");
+      throw BException(BExceptionC::CORRUPT, L"Protocol negotiation failed. Cannot detect protocol.");
     }
 
     if (nego.protocols.find(BBinaryModel::MEDIUM().getProtocolId()) != string::npos) {
@@ -286,7 +286,7 @@ namespace byps {
       nego.version = negotiatedVersion;
     }
     else {
-      throw BException(EX_CORRUPT, L"Protocol negotiation failed. Cannot detect protocol.");
+      throw BException(BExceptionC::CORRUPT, L"Protocol negotiation failed. Cannot detect protocol.");
     }
     return protocol;
   }
@@ -302,7 +302,7 @@ namespace byps {
   BINLINE void BTransport::send(const PSerializable& obj, PAsyncResult asyncResult) {
 
     PTransport pthis = shared_from_this();
-    if (!pthis) throw BException(EX_CANCELLED);
+    if (!pthis) throw BException(BExceptionC::CANCELLED);
 
     try {
       POutput outp = getOutput();
@@ -425,7 +425,7 @@ namespace byps {
     // Check exception
     if (ex) 
     {
-      ret = ex.getCode() == EX_UNAUTHORIZED;
+      ret = ex.getCode() == BExceptionC::UNAUTHORIZED;
     }
 
     return ret;

@@ -25,7 +25,7 @@ PClient_Testser BClient_Testser::createClientR(PTransport transport) {
 	return PClient_Testser(new BClient_Testser(transport));
 }
 void BClient_Testser::addRemote(byps::test::api::srvr::PSkeleton_ClientIF remoteSkeleton) {
-	if (!serverR) throw BException(EX_NO_REVERSE_CONNECTIONS, L"No reverse connections.");
+	if (!serverR) throw BException(BExceptionC::NO_REVERSE_CONNECTIONS, L"No reverse connections.");
 	serverR->server->addRemote(2049072174, remoteSkeleton);
 }
 

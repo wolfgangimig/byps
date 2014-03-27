@@ -28,7 +28,7 @@ BINLINE BException::BException(const exception& ex) throw() {
 		data = bex->data;
 	}
 	else {
-		init(EX_INTERNAL, L"", L"", ex.what());
+		init(BExceptionC::INTERNAL, L"", L"", ex.what());
 	}
 }
 

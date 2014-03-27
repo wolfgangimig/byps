@@ -44,7 +44,7 @@ class GenRemoteSkeleton {
 		pctxt.printDeclareMethod(prC, cppInfo.getClassName(rinfo.pack), rinfo, methodInfo).println(" {");
 		
 		prC.beginBlock();
-		prC.println("throw BException(EX_UNSUPPORTED_METHOD, L\"\");");
+		prC.println("throw BException(BExceptionC::UNSUPPORTED_METHOD, L\"\");");
 		prC.endBlock();
 		prC.println("}");
 		

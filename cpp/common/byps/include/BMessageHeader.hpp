@@ -60,7 +60,7 @@ BINLINE void BMessageHeader::read(BBuffer& bbuf) {
         bbuf.setByteOrder(BLITTLE_ENDIAN);
 		break;
 	default:
-		throw BException(EX_CORRUPT, L"Stream must start with BYPS, BYPC, SPYB, CPYB");
+		throw BException(BExceptionC::CORRUPT, L"Stream must start with BYPS, BYPC, SPYB, CPYB");
 	}
 
     bbuf.serialize(error);

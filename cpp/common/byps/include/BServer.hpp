@@ -37,7 +37,7 @@ BINLINE void BServer::recv(const BTargetId& clientTargetId, PSerializable method
     try {
         PMethodRequest method = byps_ptr_cast<BMethodRequest>(methodObj);
         if (!method) {
-            throw BException(EX_CORRUPT, L"Message is not a method");
+            throw BException(BExceptionC::CORRUPT, L"Message is not a method");
         }
 
         PRemote remote;
@@ -54,7 +54,7 @@ BINLINE void BServer::recv(const BTargetId& clientTargetId, PSerializable method
         if (!remote) {
             wstringstream ss;
             ss << L"Service not implemented: remoteId=" << remoteId;
-            throw BException(EX_SERVICE_NOT_IMPLEMENTED, ss.str());
+            throw BException(BExceptionC::SERVICE_NOT_IMPLEMENTED, ss.str());
         }
 
         method->execute(remote, methodResult);
@@ -63,7 +63,7 @@ BINLINE void BServer::recv(const BTargetId& clientTargetId, PSerializable method
         methodResult->setAsyncResult(BVariant(ex));
     }
     catch (...) {
-        BException ex(EX_CORRUPT);
+        BException ex(BExceptionC::CORRUPT);
         methodResult->setAsyncResult(BVariant(ex));
     }
 }
