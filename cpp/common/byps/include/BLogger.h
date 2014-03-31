@@ -2,10 +2,12 @@
 #ifndef BLOGGER_H_
 #define BLOGGER_H_
 
-
+#include "Byps.h"
 #include <fstream>
 
 namespace byps {
+
+using namespace std;
 
 enum BLogLevel {
 	Nothing, Debug, Info, Warn, Error
