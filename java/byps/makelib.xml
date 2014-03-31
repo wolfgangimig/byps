@@ -30,7 +30,8 @@
 		
 		
 		<!-- Pack into byps-lib.zip -->
-		<zip destfile="../../byps-lib.zip" basedir="${libdir}" />
+		<zip destfile="../../byps-lib.zip" basedir="${libdir}" excludes="tools.jar">
+		</zip>
 		
     </target>
 </project>

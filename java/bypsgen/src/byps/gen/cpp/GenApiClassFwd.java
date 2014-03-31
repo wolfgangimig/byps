@@ -177,7 +177,12 @@ class GenApiClassFwd {
     pr.print("// ").println(cppInfo.tinfo.toString());  
     
     // Print forward definition for class or enum
-    pr.print(cppInfo.tinfo.isEnum ? "enum " : "class ").print(className).println("; ");
+    if (cppInfo.tinfo.isEnum) {
+      pr.print("enum ").print(className).println(" : int32_t; ");
+    }
+    else {
+      pr.print("class ").print(className).println("; ");
+    }
   
     // Print forward definition for pointer class.
     // But not for enums, inlines, and (internal) request classes.

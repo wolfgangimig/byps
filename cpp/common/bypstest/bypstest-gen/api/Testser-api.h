@@ -350,7 +350,7 @@ namespace byps {
 			namespace enu {
 			
 				// byps.test.api.enu.EnumPlanets
-				enum EnumPlanets; 
+				enum EnumPlanets : int32_t; 
 				
 				// byps.test.api.enu.UsePlanets
 				class UsePlanets; 
