@@ -15,10 +15,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import byps.BApiDescriptor;
-import byps.BClient;
-import byps.BException;
 import byps.BServerRegistry;
-import byps.BTransport;
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
 import byps.http.HFileUploadItem;
@@ -26,7 +23,6 @@ import byps.http.HHttpServlet;
 import byps.http.HSession;
 import byps.http.HTestAdapter;
 import byps.test.api.BApiDescriptor_Testser;
-import byps.test.api.BClient_Testser;
 
 /**
  * Servlet implementation class BypsServlet
@@ -164,11 +160,6 @@ public class BypsServlet extends HHttpServlet {
     return BApiDescriptor_Testser.instance();
   }
 
-  @Override
-  public BClient createForwardClientToOtherServer(BTransport transport) throws BException {
-    return BClient_Testser.createClientR(transport);
-  }
-  
   @Override
   protected HConfig getConfig() {
     return config;

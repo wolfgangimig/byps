@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -59,8 +60,6 @@ public abstract class HHttpServlet extends HttpServlet {
   }
 
   protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BServerRegistry serverRegistry);
-
-  protected abstract BClient createForwardClientToOtherServer(BTransport transport) throws BException;
 
   protected abstract BApiDescriptor getApiDescriptor();
 
@@ -794,6 +793,22 @@ public abstract class HHttpServlet extends HttpServlet {
     return serverRegistry;
   }
 
+  protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {
+    BClient clientR = null;
+    BApiDescriptor apiDesc = getApiDescriptor();
+    String clientClassName = apiDesc.basePackage + ".BClient_" + apiDesc.name;
+    
+    try {
+      Class<?> clazz = Class.forName(clientClassName);
+      Method m = clazz.getDeclaredMethod("createClientR", BTransport.class);
+      clientR = (BClient)m.invoke(null, transport);
+    } catch (Throwable e) {
+      throw new BException(BExceptionC.INTERNAL, "Failed to create forward client", e);
+    }
+  
+    return clientR;
+  }
+  
   protected HSession getSessionFromRequest(HttpServletRequest request, HttpServletResponse response, boolean createNewIfNotEx) {
     HSession sess = null;
     int httpStatus = HttpServletResponse.SC_UNAUTHORIZED;
