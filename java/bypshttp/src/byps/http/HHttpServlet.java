@@ -68,7 +68,8 @@ public abstract class HHttpServlet extends HttpServlet {
   /**
    * This function is called after initialization has finished.
    */
-  protected abstract void initializationFinished();
+  protected void initializationFinished() {
+  }
 
   protected HTargetIdFactory getTargetIdFactory() {
     return targetIdFact_use_getTargetIdFactory;
