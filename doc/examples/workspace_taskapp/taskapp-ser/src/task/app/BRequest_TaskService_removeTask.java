@@ -13,7 +13,6 @@ import java.io.Serializable;
 @SuppressWarnings("all")
 public final class BRequest_TaskService_removeTask extends BMethodRequest implements Serializable {
 
-	public Token token;
 	public long taskId;
 	
 	public final static long serialVersionUID = 1265487020L;
@@ -24,7 +23,7 @@ public final class BRequest_TaskService_removeTask extends BMethodRequest implem
 		try {
 			final TaskServiceAsync __byps__remoteT = (TaskServiceAsync)__byps__remote;			
 			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new BResult_19());			
-			__byps__remoteT.removeTask(token, taskId, __byps__outerResult);
+			__byps__remoteT.removeTask(taskId, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 		}
@@ -33,8 +32,7 @@ public final class BRequest_TaskService_removeTask extends BMethodRequest implem
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[TaskService.removeTask(");
-		s.append(token);
-		s.append(",").append(taskId);
+		s.append(taskId);
 		s.append(")]");
 		return s.toString();
 	}

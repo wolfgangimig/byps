@@ -18,80 +18,46 @@ public class BStub_TaskService extends BStub implements TaskServiceAsync, java.i
 	}
 	
 	// checkpoint byps.gen.j.PrintContext:365
-	public Token login(java.lang.String name, java.lang.String pwd) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Token> asyncResult = new BSyncResult<Token>();		
-		login(name, pwd, asyncResult);
-		return asyncResult.getResult();		
-	}
-	// checkpoint byps.gen.j.PrintContext:409
-	public void login(java.lang.String name, java.lang.String pwd, final BAsyncResult<Token> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_TaskService_login req = new BRequest_TaskService_login();		
-		req.name = name;
-		req.pwd = pwd;
-		transport.sendMethod(req, asyncResult);
-	}
-	
-	// checkpoint byps.gen.j.PrintContext:365
-	public void logout(Token token) throws RemoteException {
+	public void addTask(TaskInfo task) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		logout(token, asyncResult);
+		addTask(task, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint byps.gen.j.PrintContext:409
-	public void logout(Token token, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_TaskService_logout req = new BRequest_TaskService_logout();		
-		req.token = token;
-		transport.sendMethod(req, asyncResult);
-	}
-	
-	// checkpoint byps.gen.j.PrintContext:365
-	public void addTask(Token token, TaskInfo task) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		addTask(token, task, asyncResult);
-		asyncResult.getResult();		
-	}
-	// checkpoint byps.gen.j.PrintContext:409
-	public void addTask(Token token, TaskInfo task, final BAsyncResult<Object> asyncResult) {
+	public void addTask(TaskInfo task, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_TaskService_addTask req = new BRequest_TaskService_addTask();		
-		req.token = token;
 		req.task = task;
 		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint byps.gen.j.PrintContext:365
-	public void removeTask(Token token, long taskId) throws RemoteException {
+	public void removeTask(long taskId) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		removeTask(token, taskId, asyncResult);
+		removeTask(taskId, asyncResult);
 		asyncResult.getResult();		
 	}
 	// checkpoint byps.gen.j.PrintContext:409
-	public void removeTask(Token token, long taskId, final BAsyncResult<Object> asyncResult) {
+	public void removeTask(long taskId, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_TaskService_removeTask req = new BRequest_TaskService_removeTask();		
-		req.token = token;
 		req.taskId = taskId;
 		transport.sendMethod(req, asyncResult);
 	}
 	
 	// checkpoint byps.gen.j.PrintContext:365
-	public java.util.List<TaskInfo> getTasks(Token token) throws RemoteException {
+	public java.util.List<TaskInfo> getTasks() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.List<TaskInfo>> asyncResult = new BSyncResult<java.util.List<TaskInfo>>();		
-		getTasks(token, asyncResult);
+		getTasks(asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint byps.gen.j.PrintContext:409
-	public void getTasks(Token token, final BAsyncResult<java.util.List<TaskInfo>> asyncResult) {
+	public void getTasks(final BAsyncResult<java.util.List<TaskInfo>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_TaskService_getTasks req = new BRequest_TaskService_getTasks();		
-		req.token = token;
 		transport.sendMethod(req, asyncResult);
 	}
 	

@@ -3,35 +3,52 @@
 
 #include <Byps.h>
 
-//-------------------------------------------------
-// Forward Declaration of class BStub_TaskService
+//--------------------------------------------------------
+// Forward Definitions for Namespace byps
+//--------------------------------------------------------
 
-namespace task { namespace app { 
+namespace byps {
 
-class BStub_TaskService; 
-typedef byps_ptr< BStub_TaskService > PStub_TaskService; 
+	// byps.BValueClass
+	class BValueClass; 
+	typedef byps_ptr< BValueClass > PBValueClass; 
+	
+	// java.lang.Object
+	class BSerializable; 
+	typedef byps_ptr< BSerializable > PSerializable; 
+	
+	// java.util.List<java.lang.Object>
+	typedef ::std::vector< PSerializable > BVectorObject;
+	typedef byps_ptr< BVectorObject > PVectorObject;
+	
+} // byps
 
-}}
+//--------------------------------------------------------
+// Forward Definitions for Namespace task::app
+//--------------------------------------------------------
 
-//-------------------------------------------------
-// Forward Declaration of class TaskInfo
+namespace task {
 
-namespace task { namespace app { 
-
-class TaskInfo; 
-typedef byps_ptr< TaskInfo > PTaskInfo; 
-
-}}
-
-//-------------------------------------------------
-// Forward Declaration of class Token
-
-namespace task { namespace app { 
-
-class Token; 
-typedef byps_ptr< Token > PToken; 
-
-}}
+	namespace app {
+	
+		// task.app.BStub_TaskService
+		class BStub_TaskService; 
+		typedef byps_ptr< BStub_TaskService > PStub_TaskService; 
+		
+		// task.app.TaskInfo
+		class TaskInfo; 
+		typedef byps_ptr< TaskInfo > PTaskInfo; 
+		
+		// task.app.TaskService
+		class TaskService; 
+		typedef byps_ptr< TaskService > PTaskService; 
+		
+		// java.util.List<task.app.TaskInfo>
+		typedef ::std::vector< task::app::PTaskInfo > BVectorTaskInfo;
+		typedef byps_ptr< BVectorTaskInfo > PVectorTaskInfo;
+		
+	} // task::app
+} // task
 
 //-------------------------------------------------
 // TaskInfo
@@ -68,41 +85,6 @@ class TaskInfo : public BSerializable {
 }}
 
 //-------------------------------------------------
-// Token
-// typeId=323961470
-
-namespace task { namespace app { 
-
-using namespace ::byps;
-
-class Token : public BSerializable {
-	protected: ::std::wstring sessionId;
-	
-	// checkpoint byps.gen.cpp.GenApiClass:488
-	public: Token();
-	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: Token(const ::std::wstring& sessionId);	
-	public: virtual BTYPEID BSerializable_getTypeId() { return 323961470; }
-	
-	public: ::std::wstring getSessionId() { return sessionId; }
-	public: void setSessionId(::std::wstring v);
-	// checkpoint byps.gen.cpp.GenApiClass:871
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}
-
-//-------------------------------------------------
-// Forward Declaration of class TaskService
-
-namespace task { namespace app { 
-
-class TaskService; 
-typedef byps_ptr< TaskService > PTaskService; 
-
-}}
-
-//-------------------------------------------------
 // TaskService
 
 namespace task { namespace app { 
@@ -111,20 +93,14 @@ using namespace ::byps;
 
 class TaskService : public virtual BRemote {
 	
-	public: virtual PToken login(const ::std::wstring& name, const ::std::wstring& pwd)  = 0;
-	public: virtual void login(const ::std::wstring& name, const ::std::wstring& pwd, ::std::function< void (PToken, BException ex) > asyncResult)  = 0;
+	public: virtual void addTask(const PTaskInfo& task)  = 0;
+	public: virtual void addTask(const PTaskInfo& task, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void logout(const PToken& token)  = 0;
-	public: virtual void logout(const PToken& token, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	public: virtual void removeTask(int64_t taskId)  = 0;
+	public: virtual void removeTask(int64_t taskId, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
-	public: virtual void addTask(const PToken& token, const PTaskInfo& task)  = 0;
-	public: virtual void addTask(const PToken& token, const PTaskInfo& task, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
-	
-	public: virtual void removeTask(const PToken& token, int64_t taskId)  = 0;
-	public: virtual void removeTask(const PToken& token, int64_t taskId, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
-	
-	public: virtual byps_ptr< ::std::vector< PTaskInfo > > getTasks(const PToken& token)  = 0;
-	public: virtual void getTasks(const PToken& token, ::std::function< void (byps_ptr< ::std::vector< PTaskInfo > >, BException ex) > asyncResult)  = 0;
+	public: virtual PVectorTaskInfo getTasks()  = 0;
+	public: virtual void getTasks(::std::function< void (PVectorTaskInfo, BException ex) > asyncResult)  = 0;
 	
 	
 };
@@ -146,21 +122,12 @@ class BStub_TaskService : public BStub, public virtual TaskService {
 	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 216769899; }
 	
-	public: virtual PToken login(const ::std::wstring& name, const ::std::wstring& pwd) ;
-	public: virtual void login(const ::std::wstring& name, const ::std::wstring& pwd, ::std::function< void (PToken, BException ex) > asyncResult) ;
-	
-	public: virtual void logout(const PToken& token) ;
-	public: virtual void logout(const PToken& token, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	public: virtual void addTask(const PToken& token, const PTaskInfo& task) ;
-	public: virtual void addTask(const PToken& token, const PTaskInfo& task, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	public: virtual void removeTask(const PToken& token, int64_t taskId) ;
-	public: virtual void removeTask(const PToken& token, int64_t taskId, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-	public: virtual byps_ptr< ::std::vector< PTaskInfo > > getTasks(const PToken& token) ;
-	public: virtual void getTasks(const PToken& token, ::std::function< void (byps_ptr< ::std::vector< PTaskInfo > >, BException ex) > asyncResult) ;
-	
+	public: virtual void addTask(const PTaskInfo& task) ;
+	public: virtual void addTask(const PTaskInfo& task, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void removeTask(int64_t taskId) ;
+	public: virtual void removeTask(int64_t taskId, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual PVectorTaskInfo getTasks() ;
+	public: virtual void getTasks(::std::function< void (PVectorTaskInfo, BException ex) > asyncResult) ;
 	
 };
 }}

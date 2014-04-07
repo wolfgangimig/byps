@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=true
 // isInline=false
-// #members=1
+// #members=0
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -30,21 +30,9 @@ public class BSerializer_280075325 extends BSerializer {
 	
 	
 	@Override
-	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
-		final BRequest_TaskService_getTasks obj = (BRequest_TaskService_getTasks)obj1;		
-		final BOutputBin bout = (BOutputBin)bout1;
-		final BBufferBin bbuf = bout.bbuf;
-		bout.writeObj(obj.token, false, null);
-	}
-	
-	@Override
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = (BInputBin)bin1;
 		final BRequest_TaskService_getTasks obj = (BRequest_TaskService_getTasks)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_TaskService_getTasks()));
-		
-		final BBufferBin bbuf = bin.bbuf;
-		
-		obj.token = (task.app.Token)bin.readObj(false, null);
 		
 		return obj;
 	}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="taskapp-srv">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src-ser-json"/>
+        <dependent-module archiveName="taskapp-api.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/taskapp-api/taskapp-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="taskapp-ser.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/taskapp-ser/taskapp-ser">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="taskapp-srv"/>
+        <property name="java-output-path" value="/taskapp-srv/build/classes"/>
+    </wb-module>
+</project-modules>

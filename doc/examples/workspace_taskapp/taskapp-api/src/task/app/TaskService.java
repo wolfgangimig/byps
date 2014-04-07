@@ -7,14 +7,10 @@ import byps.RemoteException;
 
 public interface TaskService extends BRemote {
 
-	Token login(String name, String pwd) throws RemoteException;
+	void addTask(TaskInfo task) throws RemoteException;
 	
-	void logout(Token token) throws RemoteException;
+	void removeTask(long taskId) throws RemoteException;
 	
-	void addTask(Token token, TaskInfo task) throws RemoteException;
-	
-	void removeTask(Token token, long taskId) throws RemoteException;
-	
-	List<TaskInfo> getTasks(Token token) throws RemoteException;
+	List<TaskInfo> getTasks() throws RemoteException;
 	
 }

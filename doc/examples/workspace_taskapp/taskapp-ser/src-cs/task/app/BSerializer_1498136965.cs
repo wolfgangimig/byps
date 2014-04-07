@@ -29,8 +29,6 @@ namespace task.app
 			BBufferBin bbuf = bout.bbuf;
 			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.taskValue, false, null);
-			// checkpoint byps.gen.cs.PrintContext:494
-			bout.writeObj(obj.tokenValue, false, null);
 		}
 		
 		public override Object read(Object obj1, BInput bin1, long version)
@@ -41,8 +39,6 @@ namespace task.app
 			BBufferBin bbuf = bin.bbuf;
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.taskValue = (task.app.TaskInfo)bin.readObj(false, null);
-			// checkpoint byps.gen.cs.PrintContext:449
-			obj.tokenValue = (task.app.Token)bin.readObj(false, null);
 			
 			return obj;
 		}

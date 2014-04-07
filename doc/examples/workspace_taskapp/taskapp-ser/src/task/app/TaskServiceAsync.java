@@ -13,37 +13,23 @@ public interface TaskServiceAsync extends BRemote,
 	/**
 	*/
 	// checkpoint byps.gen.j.PrintContext:365
-	public Token login(java.lang.String name, java.lang.String pwd) throws RemoteException;
+	public void addTask(TaskInfo task) throws RemoteException;
 	// checkpoint byps.gen.j.PrintContext:409
-	public void login(java.lang.String name, java.lang.String pwd, final BAsyncResult<Token> asyncResult) ;
+	public void addTask(TaskInfo task, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint byps.gen.j.PrintContext:365
-	public void logout(Token token) throws RemoteException;
+	public void removeTask(long taskId) throws RemoteException;
 	// checkpoint byps.gen.j.PrintContext:409
-	public void logout(Token token, final BAsyncResult<Object> asyncResult) ;
+	public void removeTask(long taskId, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
 	// checkpoint byps.gen.j.PrintContext:365
-	public void addTask(Token token, TaskInfo task) throws RemoteException;
+	public java.util.List<TaskInfo> getTasks() throws RemoteException;
 	// checkpoint byps.gen.j.PrintContext:409
-	public void addTask(Token token, TaskInfo task, final BAsyncResult<Object> asyncResult) ;
-	
-	/**
-	*/
-	// checkpoint byps.gen.j.PrintContext:365
-	public void removeTask(Token token, long taskId) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
-	public void removeTask(Token token, long taskId, final BAsyncResult<Object> asyncResult) ;
-	
-	/**
-	*/
-	// checkpoint byps.gen.j.PrintContext:365
-	public java.util.List<TaskInfo> getTasks(Token token) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
-	public void getTasks(Token token, final BAsyncResult<java.util.List<TaskInfo>> asyncResult) ;
+	public void getTasks(final BAsyncResult<java.util.List<TaskInfo>> asyncResult) ;
 	
 	
 }

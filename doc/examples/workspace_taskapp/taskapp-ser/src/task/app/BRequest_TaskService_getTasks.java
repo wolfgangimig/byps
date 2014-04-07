@@ -13,7 +13,6 @@ import java.io.Serializable;
 @SuppressWarnings("all")
 public final class BRequest_TaskService_getTasks extends BMethodRequest implements Serializable {
 
-	public Token token;
 	
 	public final static long serialVersionUID = 280075325L;
 	
@@ -23,7 +22,7 @@ public final class BRequest_TaskService_getTasks extends BMethodRequest implemen
 		try {
 			final TaskServiceAsync __byps__remoteT = (TaskServiceAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.util.List<TaskInfo>> __byps__outerResult = new BAsyncResultSendMethod<java.util.List<TaskInfo>>(__byps__asyncResult, new BResult_1182472339());			
-			__byps__remoteT.getTasks(token, __byps__outerResult);
+			__byps__remoteT.getTasks(__byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 		}
@@ -32,7 +31,6 @@ public final class BRequest_TaskService_getTasks extends BMethodRequest implemen
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[TaskService.getTasks(");
-		s.append(token);
 		s.append(")]");
 		return s.toString();
 	}

@@ -22,7 +22,7 @@ namespace task.app
 			try {
 				TaskService __byps__remoteT = (TaskService)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new BResult_19());				
-				__byps__remoteT.RemoveTask(tokenValue, taskIdValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.RemoveTask(taskIdValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 			}
@@ -32,8 +32,6 @@ namespace task.app
 		
 		#region Fields
 		
-		internal Token tokenValue;
-
 		internal long taskIdValue;
 
 		#endregion

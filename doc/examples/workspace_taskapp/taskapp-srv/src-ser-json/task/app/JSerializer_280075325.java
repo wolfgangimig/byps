@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=true
 // isInline=false
-// #members=1
+// #members=0
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -30,17 +30,8 @@ public class JSerializer_280075325 extends JSerializer_Object {
 	
 	
 	@Override
-	public void internalWrite(final Object obj1, final BOutputJson bout, final BBufferJson bbuf) throws BException {
-		final BRequest_TaskService_getTasks obj = (BRequest_TaskService_getTasks)obj1;		
-		bout.writeObj("token",obj.token, false, null);
-	}
-	
-	@Override
 	public Object internalRead(final Object obj1, final BInputJson bin) throws BException {
 		final BRequest_TaskService_getTasks obj = (BRequest_TaskService_getTasks)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_TaskService_getTasks()));
-		
-		final BJsonObject js = bin.currentObject;
-		obj.token = (task.app.Token)bin.readObj("token", false, null);
 		
 		return obj;
 	}
