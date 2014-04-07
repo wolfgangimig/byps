@@ -40,6 +40,7 @@ public:
 protected:   
 
     virtual void internalStart(PAsyncResult asyncResult);
+	static void internalDone(PClient client);
 
 	const PServerR serverR;
 

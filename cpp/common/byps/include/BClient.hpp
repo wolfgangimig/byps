@@ -3,6 +3,7 @@
 #define BCLIENT_HPP
 
 #include "BClient.h"
+#include <thread>
 
 namespace byps {
 
@@ -18,16 +19,26 @@ BINLINE PTransport BClient::getTransport() {
 	return transport;
 }
 
+BINLINE void BClient::internalDone(PClient client) {
+	// Close the wire connection.
+	// In HWireClient it will call internalCancelAllRequests which cancels 
+	// all messages - inclusive long polls from serverR - for this session.
+	client->getTransport()->wire->done();
+}
+
 BINLINE void BClient::done() {
 
     if (serverR) {
         serverR->done();
     }
 
-	// Close the wire connection.
-	// In HWireClient it will call internalCancelAllRequests which cancels 
-	// all messages - inclusive long polls from serverR - for this session.
-	getTransport()->wire->done();
+	// Call BWire::done in background thread, since this function
+	// could be called in a thread that belongs to the internal thread pool
+	// and would kill itself.
+	{
+		std::thread th(internalDone, shared_from_this());
+		th.detach();
+	}
 
 	getTransport()->setAuthentication(PAuthentication(), false);
 }
