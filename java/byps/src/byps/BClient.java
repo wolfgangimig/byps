@@ -77,7 +77,7 @@ public abstract class BClient {
 	}
 	
 	/**
-	 * Start communication with provider.
+	 * Asynchronously start communication.
 	 * This method has to be called before any API methods can be invoked. 
 	 * It returns immediately. The result is submitted to the supplied asyncResult object.
 	 * If an authentication object was supplied, the authenticate method is called after 
@@ -97,6 +97,17 @@ public abstract class BClient {
 		transport.negotiateProtocolClient(asyncResult);
 				
 		if (log.isDebugEnabled()) log.debug(")negotiateTransportProtocol");
+	}
+	
+	/**
+	 * Synchronously start communication.
+	 * @see #start(BAsyncResult)
+	 * @throws RemoteException
+	 */
+	public void start() throws RemoteException {
+	  BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();
+	  start(asyncResult);
+	  asyncResult.getResult();
 	}
 	
 	/**
