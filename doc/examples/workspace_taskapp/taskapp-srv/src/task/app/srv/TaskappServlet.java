@@ -22,7 +22,7 @@ import byps.http.HSession;
 		asyncSupported = true,
 
 		// mandatory: server URL patterns
-		urlPatterns = { "/testapp", "/testapptauth/auth" }
+		urlPatterns = { "/taskapp", "/taskapptauth/auth" }
 )
 public class TaskappServlet extends HHttpServlet {
 	private static final long serialVersionUID = 1L;
