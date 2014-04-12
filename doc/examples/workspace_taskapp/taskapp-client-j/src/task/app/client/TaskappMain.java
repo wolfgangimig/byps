@@ -17,10 +17,10 @@ public class TaskappMain {
 	public final static void main(String[] args) {
 	
 		String url = "http://localhost:8080/taskapp-srv/taskapp";
-		BClient_Taskapp bclient = null;
+		BClient_Taskapp bclient = createClient(url);
 		
 		try {
-			bclient = connect(url);
+			bclient.start();
 			System.out.println("connected, targetId=" + bclient.getTransport().getTargetId());
 
 			String command = args.length > 0 ? args[0] : "";
@@ -44,11 +44,10 @@ public class TaskappMain {
 		}
 	}
 	
-	private static BClient_Taskapp connect(String url) throws RemoteException {
+	private static BClient_Taskapp createClient(String url) {
 		BWire wire = new HWireClient(url, 0, 120, null);
 		BTransportFactory tfact = new HTransportFactoryClient(BApiDescriptor_Taskapp.instance(), wire, 1);
 		BClient_Taskapp bclient = BClient_Taskapp.createClient(tfact);
-		bclient.start();
 		return bclient;
 	}
 	
