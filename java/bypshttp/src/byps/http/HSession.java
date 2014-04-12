@@ -183,15 +183,11 @@ public abstract class HSession
     BServer server = getServer();
     return "[user=" + remoteUser + ", targetId=" + server.getTargetId() + ", JSESSIONID=" + (httpSess != null ? httpSess.getId() : "null") + "]";
   }
-
-//  private void writeObject(java.io.ObjectOutputStream out)
-//      throws IOException {
-//    
-//  }
-//  private void readObject(java.io.ObjectInputStream in)
-//      throws IOException, ClassNotFoundException  {
-//  }
   
+  public String getRemoteUser() {
+    return this.remoteUser;
+  }
+
   private final Log log = LogFactory.getLog(HSession.class);
 
 }
