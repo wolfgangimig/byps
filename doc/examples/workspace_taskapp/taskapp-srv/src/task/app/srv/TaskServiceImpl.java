@@ -19,7 +19,7 @@ public class TaskServiceImpl extends BSkeleton_TaskService {
 
 	@Override
 	public void addTask(TaskInfo task) throws RemoteException {
-		synchronized(TaskServiceImpl.class) {
+		synchronized(tasksOfAllUsers) {
 			ArrayList<TaskInfo> tasksOfUser = tasksOfAllUsers.get(userName);
 			if (tasksOfUser == null) {
 				tasksOfAllUsers.put(task.getUserName(), tasksOfUser = new ArrayList<TaskInfo>()); 
@@ -30,7 +30,7 @@ public class TaskServiceImpl extends BSkeleton_TaskService {
 
 	@Override
 	public void removeTask(long taskId) throws RemoteException {
-		synchronized(TaskServiceImpl.class) {
+		synchronized(tasksOfAllUsers) {
 			ArrayList<TaskInfo> tasksOfUser = tasksOfAllUsers.get(this.userName);
 			if (tasksOfUser != null) {
 				for (int i = 0; i < tasksOfUser.size(); i++) {
@@ -45,7 +45,7 @@ public class TaskServiceImpl extends BSkeleton_TaskService {
 
 	@Override
 	public List<TaskInfo> getTasks() throws RemoteException {
-		synchronized(TaskServiceImpl.class) {
+		synchronized(tasksOfAllUsers) {
 			ArrayList<TaskInfo> tasksOfUser = tasksOfAllUsers.get(userName);
 			if (tasksOfUser == null) {
 				tasksOfAllUsers.put(this.userName, tasksOfUser = new ArrayList<TaskInfo>()); 
