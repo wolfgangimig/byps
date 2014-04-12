@@ -14,13 +14,13 @@ public class TaskServiceImpl extends BSkeleton_TaskService {
 	private static HashMap<String, ArrayList<TaskInfo>> tasksOfAllUsers = new HashMap<String, ArrayList<TaskInfo>>();
 	
 	public TaskServiceImpl(String userName) {
-		this.userName = userName;
+		this.userName = "Fritz"; //userName;
 	}
 
 	@Override
 	public void addTask(TaskInfo task) throws RemoteException {
 		synchronized(tasksOfAllUsers) {
-			ArrayList<TaskInfo> tasksOfUser = tasksOfAllUsers.get(userName);
+			ArrayList<TaskInfo> tasksOfUser = tasksOfAllUsers.get(task.getUserName());
 			if (tasksOfUser == null) {
 				tasksOfAllUsers.put(task.getUserName(), tasksOfUser = new ArrayList<TaskInfo>()); 
 			}

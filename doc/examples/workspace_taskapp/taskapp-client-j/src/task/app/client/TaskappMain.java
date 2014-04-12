@@ -67,11 +67,10 @@ public class TaskappMain {
 	
 	private static void listTasks(BClient_Taskapp bclient) throws RemoteException {
 		List<TaskInfo> tasks = bclient.getTaskService().getTasks();
-		System.out.println("id\tuser\ttodo");
 		for (TaskInfo t : tasks) {
 			System.out.println("id=" + t.getId() + 
 					"\tuserName=" + t.getUserName() + 
-					"\ttoDo=" + t.getTodo());
+					"\ttodo=" + t.getTodo());
 		}
 	}
 }
