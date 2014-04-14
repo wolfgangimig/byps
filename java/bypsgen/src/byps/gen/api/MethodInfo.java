@@ -32,4 +32,8 @@ public class MethodInfo extends ItemInfo {
 	public String getQName() {
 		return remoteInfo.qname + "." + name;
 	}
+	
+	public String toString() {
+	  return "[" + getQName() + "(...)]";
+	}
 }

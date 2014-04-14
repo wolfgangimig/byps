@@ -82,7 +82,7 @@ public class CompatibleClassDB {
         }
       }
       else {
-        viols.add(minfoP + ": missing");
+        viols.add("Missing method " + minfoP);
         break;
       }
     }
@@ -114,6 +114,7 @@ public class CompatibleClassDB {
 		  // since the method definitions are checked.
 		  if (sinfo.isResultClass()) continue;
 		  if (sinfo.isRequestClass()) continue;
+		  if (sinfo.isStubType()) continue;
 		  
 		  // Collection classes or arrays need not to be checked,
 		  // because they do not change.

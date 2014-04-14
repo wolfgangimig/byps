@@ -21,4 +21,8 @@ public class ItemInfo {
 	public ItemInfo() {
 		this(null,null);
 	}
+	
+	public String toString() {
+	  return name;
+	}
 }
