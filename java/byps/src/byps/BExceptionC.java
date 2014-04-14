@@ -103,6 +103,12 @@ public class BExceptionC {
   public static final int UNAUTHORIZED = 401;
   
   /**
+   * This code can be used, if authentication has failed.
+   * Same as HttpURLConnection.HTTP_FORBIDDEN.
+   */
+  public static final int FORBIDDEN = 403;
+  
+  /**
    * Timeout.
    * This code is used, if an operation exceeds its time limit.
    * Same value as HttpURLConnection.HTTP_CLIENT_TIMEOUT.
