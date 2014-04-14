@@ -59,10 +59,27 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("BHttpServlet()");
   }
 
-  protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BServerRegistry serverRegistry);
+  /**
+   * Create a session.
+   * @param request Servlet request
+   * @param response Servlet response
+   * @param hsess Application server session
+   * @param serverRegistry Server/stub registry
+   * @return HSession object 
+   * @throws BExeption with code=BExceptionC.FORBIDDEN if authentication has failed.
+   */
+  protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BServerRegistry serverRegistry) throws BException;
 
+  /**
+   * Return the API descriptor
+   * @return API descriptor
+   */
   protected abstract BApiDescriptor getApiDescriptor();
 
+  /**
+   * Get configuration object.
+   * @return Configuration object.
+   */
   protected abstract HConfig getConfig();
 
   /**
@@ -258,10 +275,7 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug("cancel=" + cancelStr);
 
     final HSession sess = getSessionFromRequest(request, response, false);
-    if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      return;
-    }
+    if (sess == null) return;
 
     try {
       // NDC.push(hsess.getId());
@@ -339,10 +353,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      return;
-    }
+    if (sess == null) return;
 
     try {
       // NDC.push(hsess.getId());
@@ -455,10 +466,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     final HSession sess = getSessionFromRequest(request, response, true);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      return;
-    }
+    if (sess == null) return;
 
     final HRequestContext rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
 
@@ -533,10 +541,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      return;
-    }
+    if (sess == null) return;
 
     try {
       // NDC.push(hsess.getId());
@@ -581,10 +586,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      return;
-    }
+    if (sess == null) return;
 
     final String testAdapter = request.getParameter(HTestAdapter.KEY_PARAM);
     if (testAdapter == null) {
@@ -704,10 +706,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     final HSession sess = getSessionFromRequest(request, response, false);
     if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      return;
-    }
+    if (sess == null) return;
 
     try {
       // NDC.push(hsess.getId());
@@ -851,6 +850,7 @@ public abstract class HHttpServlet extends HttpServlet {
         }
       } catch (Exception e) {
         log.info("Cannot get/create session", e);
+        httpStatus = HttpServletResponse.SC_FORBIDDEN;
       }
     }
 

@@ -888,9 +888,10 @@ public class HWireClient extends BWire {
    * http://server/app/bypsauth/auth. The reason for this is that some browsers
    * initiate the authentication handshake in each request if the first one has
    * had to be authenticated.
+   * In order to support HTTP authentication, this function has to be overridden.
+   * The default implementation returns the servlet path.
    * 
-   * @return servlet path of the URL that was passed in the constructor, e.g.
-   *         /byps
+   * @return servlet path of the URL that was passed in the constructor, e.g. "/byps". 
    */
   public String getServletPathForNegotiationAndAuthentication() {
     String authUrl = surl;
