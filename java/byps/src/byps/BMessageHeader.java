@@ -29,7 +29,7 @@ public class BMessageHeader {
 	public final static int MAGIC_JSON = ((int)'{' << 24) | ((int)'\"' << 16) | ((int)'h' << 8) | ((int)'e');
 	private final static int MAGIC_JSON_SINGLE_QUOTE = ((int)'{' << 24) | ((int)'\'' << 16) | ((int)'h' << 8) | ((int)'e');
 		
-	//public final static int FLAG_STREAM = 1;
+	public final static int FLAG_STREAM = 1;
 	public final static int FLAG_RESPONSE = 2; 
 	public final static int FLAG_LONGPOLL = 2;
 	public final static int FLAG_TIMEOUT = 4;
@@ -48,8 +48,7 @@ public class BMessageHeader {
 	 */
 	public int timeoutSeconds;
 	
-	
-//	public long streamId; // if (flags & FLAG_STREAM)
+	public long streamId; // if (flags & FLAG_STREAM)
 	//public BInt128 sessionId;
 	
 	public transient ByteOrder byteOrder;
@@ -79,7 +78,7 @@ public class BMessageHeader {
 		this.error = rhs.error;
 		this.flags = rhs.flags;
 		this.messageId = rhs.messageId;
-//		this.streamId = rhs.streamId;
+		this.streamId = rhs.streamId;
 		this.targetId = rhs.targetId;
 		this.timeoutSeconds = rhs.timeoutSeconds;
 	}
@@ -144,9 +143,9 @@ public class BMessageHeader {
 		buf.putLong(version);
 		targetId.write(buf);
 		buf.putLong(messageId);
-//		if ((flags & FLAG_STREAM) != 0) {
-//			buf.putLong(streamId);
-//		}
+		if ((flags & FLAG_STREAM) != 0) {
+			buf.putLong(streamId);
+		}
 		
 		if ((flags & FLAG_TIMEOUT) != 0) {
 		  buf.putInt(timeoutSeconds);
@@ -167,15 +166,15 @@ public class BMessageHeader {
 		bbuf.endObject();
 	}
 	
-	private void readBinaryWithoutMagic(ByteBuffer buf) {
+	protected void readBinaryWithoutMagic(ByteBuffer buf) {
 		error = buf.getInt();
 		flags = buf.getInt();
 		version = buf.getLong();
 		targetId = BTargetId.read(buf);
 		messageId = buf.getLong();
-//		if (isStreamRequest()) {
-//			streamId = buf.getLong();
-//		}
+		if ((flags & FLAG_STREAM) != 0) {
+			streamId = buf.getLong();
+		}
 		
     if ((flags & FLAG_TIMEOUT) != 0) {
       timeoutSeconds = buf.getInt();
@@ -239,6 +238,7 @@ public class BMessageHeader {
 			.append(", version=").append(version)
 			.append(", targetId=").append(targetId)
 			.append(", messageId=").append(messageId)
+			.append(", streamId=").append(streamId)
 			.append(", timeout=").append(timeoutSeconds)
 			.append(", messageObject=").append(messageObject)
 			.append("]");
