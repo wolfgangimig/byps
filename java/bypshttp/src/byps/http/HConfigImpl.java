@@ -95,7 +95,7 @@ public class HConfigImpl implements HConfig {
         }
 
       } catch (NamingException e) {
-        throw new IllegalStateException(e);
+        
       }
     }
 
