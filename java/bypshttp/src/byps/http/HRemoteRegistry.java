@@ -3,8 +3,10 @@ package byps.http;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -24,7 +26,7 @@ import byps.RemoteException;
 public abstract class HRemoteRegistry implements BServerRegistry {
 	
 	private final ConcurrentHashMap<Integer, BClient> clientMap = new ConcurrentHashMap<Integer, BClient>();
-	private final Executor tpool = Executors.newCachedThreadPool();
+	private final ExecutorService tpool = Executors.newCachedThreadPool(new PoolThreadFactory());
 	private final HConfig config;
 	private final Log log = LogFactory.getLog(HRemoteRegistry.class);
 	
@@ -57,6 +59,10 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		}
 		if (log.isDebugEnabled()) log.debug(")getForwardClientIfForeignTargetId=" + client);
 		return client;
+	}
+	
+	public void done() {
+	  tpool.shutdown();
 	}
 
 	protected BClient getForwardClient(int serverId) throws RemoteException {
@@ -162,6 +168,21 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		return remote;
 	}
 
+	private static AtomicInteger threadId = new AtomicInteger();
+	
+  private static class PoolThread extends Thread {
+    PoolThread(Runnable r) {
+      super(r, "rcli-" + (threadId.incrementAndGet()));
+    }
+  }
+  
+  private static class PoolThreadFactory implements ThreadFactory {
+    public Thread newThread( Runnable r ) {
+      Thread t = new PoolThread(r);
+      return t;
+    }
+  }
+	
 	protected abstract BClient createForwardClientToOtherServer(BTransport transport) throws BException;
 	protected abstract BApiDescriptor getApiDescriptor();
 }

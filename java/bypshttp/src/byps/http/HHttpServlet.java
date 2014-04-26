@@ -188,6 +188,9 @@ public abstract class HHttpServlet extends HttpServlet {
     if (cleanupThread != null) {
       cleanupThread.done();
     }
+    if (serverRegistry != null) {
+      serverRegistry.done();
+    }
     if (log.isDebugEnabled()) log.debug(")done");
   }
 
