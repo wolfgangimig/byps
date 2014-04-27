@@ -43,10 +43,13 @@ public class JcnnPutStream extends JcnnRequest {
       // Try to get content type and stream length
       String contentType = null;
       long totalLength = -1L;
+      String contentDisposition = null;
+      
       if (stream instanceof BContentStream) {
         BContentStream cstream = (BContentStream)stream;
         contentType = cstream.getContentType();
         totalLength = cstream.getContentLength();
+        contentDisposition = cstream.getContentDisposition();
       }
       else if (stream instanceof ByteArrayInputStream) {
         contentType = BContentStream.DEFAULT_CONTENT_TYPE;
@@ -139,6 +142,10 @@ public class JcnnPutStream extends JcnnRequest {
         conn.setDoOutput(true);
         conn.setRequestMethod("PUT");
         conn.setRequestProperty("Content-Type", contentType);
+        
+        if (contentDisposition != null && contentDisposition.length() != 0) {
+          conn.setRequestProperty("Content-Disposition", contentDisposition);
+        }
         
         applySession(this);
         

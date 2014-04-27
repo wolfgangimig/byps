@@ -35,7 +35,7 @@ public class HIncomingStreamSync extends BContentStream {
 	private byte[] readBuf1 = new byte[1];
 	
 	private int secondBytesWritePos;
-	private int secondBytesCapacity = 1000 * 1000; 
+	private final int secondBytesCapacity = HConstants.INCOMING_STREAM_BUFFER; 
 	private FileOutputStream fos;
 	protected IOException ex;
 	
@@ -44,22 +44,23 @@ public class HIncomingStreamSync extends BContentStream {
 
 	private File tempDir;
 	
-	public HIncomingStreamSync(String contentType, long contentLength, long streamId, long lifetimeMillis, File tempDir) {
+	public HIncomingStreamSync(String contentType, long contentLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir) {
 		super(contentType, contentLength, lifetimeMillis);
 		this.streamId = streamId;
 		this.tempDir = tempDir;
 		if (contentLength > secondBytesCapacity) {
 			bytesSource = FILE_BYTES;
 		}
+    setContentDisposition(contentDisposition);
 	}
 	
 	private HIncomingStreamSync(HIncomingStreamSync rhs) throws FileNotFoundException {
-		super(rhs.contentType, rhs.contentLength, 0);
+		super(rhs);
 		
 		this.streamId = rhs.streamId;
 		this.bytesSource = rhs.bytesSource;
 		
-		this.readPos = rhs.readPos;
+		this.readPos = 0;
 		this.firstBytes = rhs.firstBytes;
 		this.secondBytes = rhs.secondBytes;
 		this.readBuf1 = new byte[1];
@@ -72,8 +73,8 @@ public class HIncomingStreamSync extends BContentStream {
 		
 		this.secondBytesWritePos = rhs.secondBytesWritePos;
 
-		this.closed = rhs.closed;
-		this.writeClosed = rhs.writeClosed;
+		this.closed = false;
+		this.writeClosed = true;
 		
 		this.ex = rhs.ex;
 
@@ -104,14 +105,14 @@ public class HIncomingStreamSync extends BContentStream {
 		return -1;
 	}
 	
-	public void assignBytes(byte[] buf) {
+	public synchronized void assignBytes(byte[] buf) {
 		this.firstBytes = buf;
 		this.bytesSource = FIRST_BYTES;
 		this.readPos = 0;
 		this.writeClosed = true;
 	}
 	
-	public void assignFile(HTempFile file) {
+	public synchronized void assignFile(HTempFile file) {
 		this.file = file;
 		this.file.addref();
 		this.bytesSource = FILE_BYTES;
@@ -129,6 +130,15 @@ public class HIncomingStreamSync extends BContentStream {
 
 		this.readPos = 0;
 		this.writeClosed = true;
+	}
+	
+	@Override
+	public synchronized void reset() throws IOException {
+	  readPos = 0;
+	  if (fis != null ){
+	    fis.close();
+	    fis = null;
+	  }
 	}
 	
 	public void addStream(HRequestContext rctxt, long partId, boolean lastPart) throws BException {
@@ -201,6 +211,10 @@ public class HIncomingStreamSync extends BContentStream {
 			}
 		}
 		
+		if (closed) {
+		  throw new BException(BExceptionC.IOERROR, "Cannot copy closed stream");
+		}
+		
 		HIncomingStreamSync is;
 		try {
 			is = new HIncomingStreamSync(this);
@@ -213,7 +227,7 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	@Override
 	protected void finalize() throws Throwable {
-		close();
+		close(); // make sure the internally used file is deleted.
 	}
 	
 	@Override
@@ -481,6 +495,5 @@ public class HIncomingStreamSync extends BContentStream {
 		
 		if (log.isDebugEnabled()) log.debug(")close");
 	}
-
 	
 }

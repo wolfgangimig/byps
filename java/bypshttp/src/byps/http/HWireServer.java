@@ -234,19 +234,28 @@ public class HWireServer extends BWire {
     OutputStream os = null;
     try {
       is = activeMessages.getOutgoingStream(messageId, streamId);
+      
+      // Before setting headers: check that the InputStream can be read.
+      byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
+      int len = is.read(buf);
 
       final String contentType = is.getContentType();
-      final long contentLength = is.getContentLength();
       response.setContentType(contentType);
+
+      final long contentLength = is.getContentLength();
       if (contentLength >= 0) {
         response.setHeader("Content-Length", Long.toString(contentLength));
       }
+      
+      final String contentDisposition = is.getContentDisposition();
+      if (contentDisposition != null && contentDisposition.length() != 0) {
+        response.setHeader("Content-Disposition", contentDisposition);
+      }
 
       os = response.getOutputStream();
-      byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
-      int len = 0;
-      while ((len = is.read(buf)) != -1) {
+      while (len != -1) {
         os.write(buf, 0, len);
+        len = is.read(buf);
       }
     }
     catch (IOException e) {

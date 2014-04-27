@@ -46,10 +46,13 @@ public class AsfPutStream extends AsfRequest {
       // Try to get content type and stream length
       String contentType = null;
       long totalLength = -1L;
+      String contentDisposition = null;
+      
       if (stream instanceof BContentStream) {
         BContentStream cstream = (BContentStream)stream;
         contentType = cstream.getContentType();
         totalLength = cstream.getContentLength();
+        contentDisposition = cstream.getContentDisposition();
       }
       else if (stream instanceof ByteArrayInputStream) {
         contentType = BContentStream.DEFAULT_CONTENT_TYPE;
@@ -122,7 +125,7 @@ public class AsfPutStream extends AsfRequest {
         bbuf.flip();
         
         // Send request
-        sendPart(partId, lastPart, totalLength, contentType, bbuf);
+        sendPart(partId, lastPart, totalLength, contentType, contentDisposition, bbuf);
         
       }        
     }
@@ -161,12 +164,13 @@ public class AsfPutStream extends AsfRequest {
    * @param islastPart
    * @param totalLength
    * @param contentType
+   * @param contentDisposition 
    * @param bbuf
    * @throws BException
    * @throws IOException
    * @throws ClientProtocolException
    */
-  private void sendPart(long partId, boolean lastPart, long totalLength, String contentType, final ByteBuffer bbuf) throws BException, IOException, ClientProtocolException {
+  private void sendPart(long partId, boolean lastPart, long totalLength, String contentType, String contentDisposition, final ByteBuffer bbuf) throws BException, IOException, ClientProtocolException {
     
     StringBuilder destUrl = new StringBuilder();
     destUrl.append(url)
@@ -185,6 +189,11 @@ public class AsfPutStream extends AsfRequest {
 
       request = new HttpPut(destUrl.toString());
       request.setHeader("Content-Type", contentType);
+      
+      if (contentDisposition != null && contentDisposition.length() != 0) {
+        request.setHeader("Content-Disposition", contentDisposition);
+      }
+
       applyTimeout();
       
       byte[] content = bbuf.array();

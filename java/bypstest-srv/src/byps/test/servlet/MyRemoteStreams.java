@@ -59,17 +59,12 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	
 	@Override
 	public InputStream getImage() throws RemoteException {
-		if (log.isDebugEnabled()) log.debug("getImage(");
-		InputStream istrm;
+		if (log.isDebugEnabled()) log.debug("getImage()=" + imageStream);
 		try {
-			istrm = imageStream.cloneInputStream();
-    } catch (BException e) {
-      throw e;
-		} catch (IOException e) {
-			throw new BException(BExceptionC.IOERROR, "", e);
-		}
-		if (log.isDebugEnabled()) log.debug(")getImage=" + istrm);
-		return istrm;
+      return imageStream.cloneInputStream();
+    } catch (IOException e) {
+      throw new RemoteException("Failed to clone stream.", e);
+    }
 	}
 
 	@Override
@@ -135,6 +130,10 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 			@Override
 			public String getContentType() {
 				return "text/plain; charset=utf-8";
+			}
+			@Override 
+			public String getContentDisposition() {
+			  return "attachment; filename=\"text*stream €\"";
 			}
 		};
 		

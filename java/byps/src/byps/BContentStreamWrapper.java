@@ -54,6 +54,7 @@ public class BContentStreamWrapper extends BContentStream {
 	public BContentStreamWrapper(File file) throws FileNotFoundException {
 	  super(getFileContentType(file), file.length());
 	  innerStream = new FileInputStream(file);
+	  setContentDisposition(file.getName(), false);
 	}
 	
 	private static String getFileContentType(File file) {

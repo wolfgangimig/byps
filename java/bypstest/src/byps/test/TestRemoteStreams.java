@@ -398,9 +398,10 @@ public class TestRemoteStreams {
   protected void internalTestCloneStream(InputStream istrm, InputStream istrm2) throws BException, InterruptedException, IOException {
 
     log.info("internalTestCloneStream(" + istrm);
+    
+    // setImage clones the stream for reuse
     remote.setImage(istrm);
 
-    // remote.getImage() clones the stream.
     log.info("start download");
     InputStream istrmR = remote.getImage();
 

@@ -678,13 +678,13 @@ public abstract class HHttpServlet extends HttpServlet {
     public synchronized BContentStream cloneInputStream() throws IOException {
       HIncomingStreamSync incomingStream = null;
       if (this.fileItem.isInMemory()) {
-        incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), streamId, lifetimeMillis, tempDir);
+        incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), "", streamId, lifetimeMillis, tempDir);
         incomingStream.assignBytes(fileItem.get());
       }
       else {
         HTempFile tempFile = null;
         try {
-          incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), streamId, lifetimeMillis, tempDir);
+          incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), "", streamId, lifetimeMillis, tempDir);
           tempFile = HTempFile.createTemp(tempDir, streamId);
           tempFile.getFile().delete(); // FileItem.write will move the file.
           fileItem.write(tempFile.getFile());
@@ -699,6 +699,7 @@ public abstract class HHttpServlet extends HttpServlet {
           }
         }
       }
+      incomingStream.setContentDisposition(fileItem.getName(), false);
       return incomingStream;
     }
   }

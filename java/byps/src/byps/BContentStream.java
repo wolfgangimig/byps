@@ -5,8 +5,6 @@ package byps;
 import java.io.IOException;
 import java.io.InputStream;
 
-import byps.BException;
-
 /**
  * BContentStream is an InputStream with content type and content length.
  * Streams should always be transferred with a given content length. This 
@@ -46,12 +44,15 @@ public abstract class BContentStream extends InputStream {
 	
 	/**
 	 * Internally used copy constructor.
+	 * Does not copy lifetimeMillis.
 	 * @param rhs
 	 */
 	public BContentStream(BContentStream rhs) {
-		this.lifetimeMillis = rhs.lifetimeMillis;
+		this.lifetimeMillis = 0;
 		this.contentType = rhs.contentType;
 		this.contentLength = rhs.contentLength;
+		this.attachment = rhs.attachment;
+		this.fileName = rhs.fileName;
 		extendLifetime();
 	}
 	
@@ -83,16 +84,17 @@ public abstract class BContentStream extends InputStream {
 		return contentLength; 
 	}
 	
-	/**
-	 * Clone stream.
-	 * This function is only used on the provider side.
-	 * @return
-	 * @throws IOException
-	 */
-	public BContentStream cloneInputStream() throws IOException {
-		throw new IOException("Stream cannot be cloned.");
-	}
-	
+  /**
+   * Clone stream.
+   * This function is only supported by sub-classes available on the server side.
+   * A large cloned stream uses a temporary file. 
+   * @return Cloned stream.
+   * @throws IOException
+   */
+  public BContentStream cloneInputStream() throws IOException {
+    throw new IOException("Stream cannot be cloned.");
+  }
+  
 	/**
 	 * Checks, whether the stream is expired.
 	 * This function is only used on the provider side.
@@ -150,10 +152,95 @@ public abstract class BContentStream extends InputStream {
 	  this.callback = cb;
 	}
 	
-	private volatile long bestBefore;
+	/**
+	 * Set HTTP header Content-Disposition.
+	 * @param fileName File name
+	 * @param attachment true, if the browser should open the file as an attachment.
+	 */
+	public void setContentDisposition(String fileName, boolean attachment) {
+    this.fileName = fileName;
+    this.attachment = attachment;
+	}
+	
+	/**
+   * Set HTTP header Content-Disposition.
+   */
+ 	public void setContentDisposition(String value) {
+ 	  String fileName = "";
+ 	  boolean att = false;
+	  if (value != null && value.length() != 0) {
+	    value = value.trim();
+	    att = value.indexOf("attachment;") >= 0;
+	    int p = value.indexOf("filename=");
+	    if (p >= 0) {
+	      fileName = value.substring(p + "filename=".length()).trim();
+	      if (fileName.startsWith("\"")) {
+	        fileName = fileName.substring(1);
+	        if (fileName.endsWith("\"")) {
+	          fileName = fileName.substring(0, fileName.length()-1);
+	        }
+	      }
+	    }
+	  }
+	  setContentDisposition(fileName, att);
+	}
+ 	
+  /**
+   * Get HTTP header Content-Disposition.
+   * @return HTTP header Content-Disposition.
+   */
+ 	public String getContentDisposition() {
+    StringBuilder sbuf = new StringBuilder();
+    sbuf.append( isAttachment() ? "attachment;" : "inline;" );
+    final String fileName = getFileName();
+    if (fileName != null && fileName.length() != 0) {
+      sbuf.append(" filename=");
+      boolean q = fileName.indexOf(' ') >= 0;
+      if (q) sbuf.append("\"");
+      sbuf.append(fileName);
+      if (q) sbuf.append("\"");
+    }
+    return sbuf.toString();
+ 	}
+ 	
+ 	/**
+ 	 * Get content disposition attachment.
+ 	 * @return true, if the browser should open this stream as an attachment.
+ 	 */
+  public boolean isAttachment() {
+    return attachment;
+  }
+  
+  /**
+   * Set content disposition attachment.
+   * @param att true, if the browser should open this stream as an attachment.
+   */
+  public void setAttachment(boolean att) {
+    attachment = att;
+  }
+  
+  /**
+   * Get file name.
+   * @return file name.
+   */
+  public String getFileName() {
+    return fileName;
+  }
+  
+  /**
+   * Set file name.
+   * @param fileName File name.
+   */
+  public void setFileName(String fileName) {
+    this.fileName = fileName;
+  }
+  
+  private volatile long bestBefore;
 	protected final long lifetimeMillis;
 	protected volatile String contentType;
 	protected volatile long contentLength;
+	protected volatile String fileName;
+	protected volatile boolean attachment;
 
 	protected volatile BContentStreamAsyncCallback callback;
 }

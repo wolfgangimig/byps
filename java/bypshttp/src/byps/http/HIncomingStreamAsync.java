@@ -27,12 +27,13 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	private AtomicBoolean closed = new AtomicBoolean();
 
-	HIncomingStreamAsync(String contentType, long contentLength, long streamId, long lifetimeMillis, File tempDir, HRequestContext rctxt) throws IOException {
+	HIncomingStreamAsync(String contentType, long contentLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir, HRequestContext rctxt) throws IOException {
 		super(contentType, contentLength, lifetimeMillis);
 		this.rctxt = rctxt;
 		this.is = rctxt.getRequest().getInputStream();
 		this.tempDir = tempDir;
 		this.streamId = streamId;
+		setContentDisposition(contentDisposition);
 	}
 	
 	private final InputStream strm() throws IOException {
@@ -131,7 +132,7 @@ public class HIncomingStreamAsync extends BContentStream  {
 	@Override
 	public synchronized BContentStream cloneInputStream() throws BException {
 		if (readPos != 0) throw new BException(BExceptionC.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
-		HIncomingStreamSync istrm = new HIncomingStreamSync(contentType, contentLength, streamId, lifetimeMillis, tempDir);
+		HIncomingStreamSync istrm = new HIncomingStreamSync(contentType, contentLength, getContentDisposition(), streamId, lifetimeMillis, tempDir);
 		try {
 			istrm.assignStream(strm());
 		} catch (IOException e) {

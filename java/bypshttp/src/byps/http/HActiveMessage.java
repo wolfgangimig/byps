@@ -171,6 +171,7 @@ public class HActiveMessage {
       final HActiveMessage msg = this;
       final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
       final String contentType = request.getContentType();
+      final String contentDisposition = request.getHeader("Content-Disposition");
       final String contentLengthStr = request.getHeader("Content-Length");
       final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
       final String totalLengthStr = request.getParameter("total");
@@ -206,7 +207,7 @@ public class HActiveMessage {
 
         if (istrm == null) {
 
-          istrm = new HIncomingSplittedStreamAsync(contentType, totalLength, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
+          istrm = new HIncomingSplittedStreamAsync(contentType, totalLength, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
             private Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
 
             public void close() throws IOException {
@@ -234,7 +235,7 @@ public class HActiveMessage {
       }
       else {
 
-        istrm = new HIncomingStreamAsync(contentType, contentLength, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
+        istrm = new HIncomingStreamAsync(contentType, contentLength, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
           private Log log = LogFactory.getLog(HIncomingStreamAsync.class);
 
           public void close() throws IOException {
@@ -295,6 +296,7 @@ public class HActiveMessage {
     try {
       final HActiveMessage msg = this;
       final String contentType = request.getContentType();
+      final String contentDisposition = request.getHeader("Content-Disposition");
       final String contentLengthStr = request.getHeader("Content-Length");
       final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
       final String totalLengthStr = request.getParameter("total");
@@ -310,7 +312,7 @@ public class HActiveMessage {
 
         if (log.isDebugEnabled()) log.debug("create HInputStreamBuffer");
         long length = totalLength >= 0 ? totalLength : contentLength;
-        istrm = new HIncomingStreamSync(contentType, length, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
+        istrm = new HIncomingStreamSync(contentType, length, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
 
           @Override
           public void close() throws IOException {

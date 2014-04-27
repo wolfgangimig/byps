@@ -99,6 +99,7 @@ public class TestUtilsHttp {
 	public static ArrayList<InputStream> makeTestStreams() throws IOException {
 		log.info("makeTestStreams(");
 		ArrayList<InputStream> ret = new ArrayList<InputStream>();
+    ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, false));
 		ret.add(new TestUtils.MyContentStream(0, true));
 		ret.add(new TestUtils.MyContentStream(1, true));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER-1, true));
@@ -111,7 +112,6 @@ public class TestUtilsHttp {
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER, false));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1, false));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2, false));
-		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, false));
 		if (TestUtils.TEST_LARGE_STREAMS) {
 			ret.add(new TestUtils.MyContentStream(0x100000000L, false));
 		}

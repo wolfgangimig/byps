@@ -23,15 +23,16 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	protected HIncomingStreamAsync currentStreamPart;
 	private HashMap<Long, HIncomingStreamAsync> streamParts = new HashMap<Long, HIncomingStreamAsync>();
 	
-	HIncomingSplittedStreamAsync(String contentType, long totalLength, long streamId, long lifetimeMillis, File tempDir) throws IOException {
+	HIncomingSplittedStreamAsync(String contentType, long totalLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir) throws IOException {
 		super(contentType, totalLength, lifetimeMillis);
 		this.streamId = streamId;
 		this.tempDir = tempDir;
+		setContentDisposition(contentDisposition);
 	}
 	
 	public synchronized void addStream(long partId, long contentLength, boolean isLastPart, HRequestContext rctxt) throws IOException {
 		if (log.isDebugEnabled()) log.debug("addStream(" + streamId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
-		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(contentType, contentLength, streamId, lifetimeMillis, tempDir, rctxt);
+		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(contentType, contentLength, "", streamId, lifetimeMillis, tempDir, rctxt);
 		streamParts.put(partId, streamPart);
 		if (isLastPart) maxPartId = partId+1;
 		notifyAll(); // notify thread that might wait in read()
@@ -119,7 +120,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	@Override
 	public synchronized BContentStream cloneInputStream() throws BException {
 		if (readPos != 0) throw new BException(BExceptionC.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
-		HIncomingStreamSync istrm = new HIncomingStreamSync(contentType, contentLength, streamId, lifetimeMillis, tempDir);
+		HIncomingStreamSync istrm = new HIncomingStreamSync(contentType, contentLength, getContentDisposition(), streamId, lifetimeMillis, tempDir);
 		try {
 			istrm.assignStream(this);
 		} catch (IOException e) {
