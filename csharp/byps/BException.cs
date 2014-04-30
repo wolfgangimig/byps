@@ -1,13 +1,14 @@
 ﻿/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace byps
 {
-    public class BException : System.Exception
+    public class BException : IOException
     {
         public static readonly long serialVersionUID = BRegistry.TYPEID_EXCEPTION;
 
