@@ -338,6 +338,25 @@ public class BTransport {
 
   public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) {
 
+    // Check that we do not run into recursive authentication requests.
+    // In deed, there could be more items in asyncResultsWaitingForAuthentication, if 
+    // many parallel requests receive an 401 response. 
+    // But only the first one calls this function to re-login - see internalAuthenticate.
+    // Thus, if the function is called the second time (one item in the array), 
+    // we run into a recursion. 
+    // A recursion happens if the authentication.authenticate() receives the error 401.
+    // This problem can be observed with bypshttp, if the time between negotiation and authentication is 
+    // longer than 10s (HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED). 
+    synchronized (asyncResultsWaitingForAuthentication) {
+      if (asyncResultsWaitingForAuthentication.size() > 0) {
+        BException ex = new BException(BExceptionC.FORBIDDEN, 
+            "Authentication procedure failed. Server returned 401 for every request. "
+            + "A common reason for this error is slow authentication handling.");
+        asyncResult.setAsyncResult(false, ex);
+        return;
+      }
+    }
+        
     try {
       ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
       final BNegotiate nego = new BNegotiate(apiDesc);
