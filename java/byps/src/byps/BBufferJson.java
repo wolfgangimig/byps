@@ -657,7 +657,7 @@ public class BBufferJson extends BBuffer {
 	
 	private void internalPutDate(String name, Date date) {
 	  if (date != null) {
-	    putJsonValueAscii(name, dateFormat.format(date), STRING_WITH_QUOTE);
+	    putJsonValueAscii(name, dateFormats[0].format(date), STRING_WITH_QUOTE);
 	  }
 	  else {
 	    putJsonValueAscii(name, "null", STRING_WITHOUT_QUOTE);
@@ -675,18 +675,17 @@ public class BBufferJson extends BBuffer {
 	public static Date toDate(Object value) {
     Date date = null;
     if (value != null) {
-      try {
-        String svalue = (String)value;
-        
-        // 2013-11-09T20:35:16.596Z
-        if (svalue.length() != 0) {
-          date = dateFormat.parse(svalue);
+      String svalue = (String)value;
+      if (svalue.length() != 0) {
+        for (SimpleDateFormat df : dateFormats) {
+          try {
+             date = df.parse(svalue);
+             break;
+          } catch (ParseException ignored) {
+          }
         }
-        
-      } catch (ParseException e) {
-        date = null;
       }
-    }
+     }
     return date;	  
 	}
 	
@@ -912,12 +911,19 @@ public class BBufferJson extends BBuffer {
     return ret;
 	}
 
-  private static SimpleDateFormat dateFormat;
+  private static SimpleDateFormat[] dateFormats;
   static {
     try {
-      // JSON Date format e.g.: 2013-11-09T20:35:16.596Z
-      dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"); 
-      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+      dateFormats = new SimpleDateFormat[] {
+        // JSON Date format e.g.: 2013-11-09T20:35:16.596Z
+        new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
+        new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"),
+        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"),
+        new SimpleDateFormat("yyyy-MM-dd"),
+      };
+      for (SimpleDateFormat df : dateFormats) {
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+      }
     }
     catch (Throwable e) {
       System.err.println(e);
