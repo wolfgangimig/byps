@@ -120,8 +120,9 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	@Override
 	public synchronized BContentStream cloneInputStream() throws BException {
 		if (readPos != 0) throw new BException(BExceptionC.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
-		HIncomingStreamSync istrm = new HIncomingStreamSync(contentType, contentLength, getContentDisposition(), streamId, lifetimeMillis, tempDir);
+		HIncomingStreamSync istrm = null; 
 		try {
+	    istrm = new HIncomingStreamSync(contentType, contentLength, getContentDisposition(), streamId, lifetimeMillis, tempDir);
 			istrm.assignStream(this);
 		} catch (IOException e) {
 			throw new BException(BExceptionC.IOERROR, "Failed to clone stream", e);
