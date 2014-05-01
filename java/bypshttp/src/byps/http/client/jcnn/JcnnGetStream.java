@@ -35,6 +35,7 @@ public class JcnnGetStream extends JcnnRequest {
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
     String contentType = null;
     long contentLength = -1;
+    String contentDisposition = null;
 
     try {
       c = createConnection(url);
@@ -51,6 +52,7 @@ public class JcnnGetStream extends JcnnRequest {
       }
 
       contentType = c.getContentType();
+      contentDisposition = c.getHeaderField("Content-Disposition");
 
       contentLength = -1L;
       try {
@@ -95,6 +97,7 @@ public class JcnnGetStream extends JcnnRequest {
         JcnnGetStream.this.done();
       }
     };
+    stream.setContentDisposition(contentDisposition);
 
     asyncResult.setAsyncResult(stream, null);
   }
