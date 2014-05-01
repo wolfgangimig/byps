@@ -596,6 +596,9 @@ public class TestUtils {
 		public MyContentStream(long nbOfBytes, boolean chunked) {
 			this.nbOfBytes = nbOfBytes;
 			this.chunked = chunked;
+			
+			super.fileName = "file-" + nbOfBytes + ".txt";
+			super.attachment = nbOfBytes > 10000;
 		}
 
 		@Override
@@ -629,6 +632,7 @@ public class TestUtils {
 			if (rstrm instanceof BContentStream) {
 				BContentStream rcs = (BContentStream)rstrm;
 				assertEquals(log, msg + ".contentType", ecs.getContentType(), rcs.getContentType());
+				assertEquals(log, msg + ".contentDisposition", ecs.getContentDisposition(), rcs.getContentDisposition());
 				if (ecs.getContentLength() != -1) {
 					assertEquals(log, msg + ".contentLength", ecs.getContentLength(), rcs.getContentLength());
 				}
