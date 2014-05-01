@@ -9,7 +9,9 @@ import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.ClientAbortException;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -280,50 +283,33 @@ public abstract class HHttpServlet extends HttpServlet {
     final HSession sess = getSessionFromRequest(request, response, false);
     if (sess == null) return;
 
-    try {
-      // NDC.push(hsess.getId());
+    if (streamIdStr != null && streamIdStr.length() != 0) {
+      if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
+      sess.wireServer.sendOutgoingStream(BBufferJson.parseLong(messageIdStr), BBufferJson.parseLong(streamIdStr), response);
+    }
+    else if (cancelStr != null && cancelStr.length() != 0) {
 
-      if (streamIdStr != null && streamIdStr.length() != 0) {
-        if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
-        sess.wireServer.sendOutgoingStream(BBufferJson.parseLong(messageIdStr), BBufferJson.parseLong(streamIdStr), response);
+      long messageId = BBufferJson.parseLong(messageIdStr);
+
+      if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
+        if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
+        sess.wireServer.activeMessages.cleanup(true);
       }
-      else if (cancelStr != null && cancelStr.length() != 0) {
-
-        long messageId = BBufferJson.parseLong(messageIdStr);
-
-        if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
-          if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
-          sess.wireServer.activeMessages.cleanup(true);
-        }
-        else if (messageId == HWireClient.MESSAGEID_DISCONNECT) {
-          if (log.isDebugEnabled()) log.debug("sess.done");
-          sess.done();
-        }
-        else {
-          if (log.isDebugEnabled()) log.debug("activeMessages.cancelMessage");
-          sess.wireServer.activeMessages.cancelMessage(messageId);
-        }
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getOutputStream().close();
-
+      else if (messageId == HWireClient.MESSAGEID_DISCONNECT) {
+        if (log.isDebugEnabled()) log.debug("sess.done");
+        sess.done();
       }
       else {
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        response.getOutputStream().close();
+        if (log.isDebugEnabled()) log.debug("activeMessages.cancelMessage");
+        sess.wireServer.activeMessages.cancelMessage(messageId);
       }
-    } catch (Throwable e) {
-      log.error("GET failed, messageId=" + messageIdStr + ", streamId=" + streamIdStr + ", cancel=" + cancelStr, e);
+      response.setStatus(HttpServletResponse.SC_OK);
+      response.getOutputStream().close();
 
-      int status = HttpServletResponse.SC_BAD_REQUEST;
-      if (e instanceof FileNotFoundException) {
-        status = HttpServletResponse.SC_NOT_FOUND;
-      }
-      response.sendError(status, e.toString());
-      // response.setHeader("Content-Length", "0");
-      // response.getOutputStream().close();
-
-    } finally {
-      // NDC.pop();
+    }
+    else {
+      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+      response.getOutputStream().close();
     }
 
     if (log.isDebugEnabled()) log.debug(")doGet");
@@ -872,26 +858,59 @@ public abstract class HHttpServlet extends HttpServlet {
       log.debug("method=" + request.getMethod());
       log.debug("params= " + request.getParameterMap());
     }
+    
+    int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+    Throwable ex = null;
+    
     try {
 
       super.service(request, response);
+      status = response.getStatus();
 
-      int status = response.getStatus();
-      if (status != HttpServletResponse.SC_OK) {
-        if (log.isDebugEnabled()) log.debug("Request failed with HTTP status " + status);
+    } catch (Throwable e) {
+      ex = e;
+
+      if (!(e instanceof ClientAbortException)) {
+        if (e instanceof FileNotFoundException) {
+          status = HttpServletResponse.SC_NOT_FOUND;
+        }
+        response.sendError(status, e.toString());
       }
 
-    } catch (ServletException e) {
-      if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
-      throw e;
-    } catch (IOException e) {
-      if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
-      throw e;
-    } catch (Throwable e) {
-      if (log.isDebugEnabled()) log.debug("Request failed with exception.", e);
-      throw new ServletException(e);
+    } finally {
+      
+      switch (status) {
+      case HttpServletResponse.SC_OK: 
+      case BExceptionC.RESEND_LONG_POLL:
+      case BExceptionC.UNAUTHORIZED:
+      case BExceptionC.SESSION_CLOSED:
+        if (log.isDebugEnabled()) log.debug(makeLogRequest(request, status));
+        break;
+      case BExceptionC.FORBIDDEN:
+      case BExceptionC.TIMEOUT:
+        if (log.isInfoEnabled()) log.info(makeLogRequest(request, status));
+        break;
+      default:
+        log.error(makeLogRequest(request, status), ex);
+        break;
+      }
     }
+    
     if (log.isDebugEnabled()) log.debug(")service");
+  }
+  
+  private String makeLogRequest(HttpServletRequest request, int status) {
+    StringBuilder sbuf = new StringBuilder();
+    sbuf.append("Request: ").append(request.getMethod()).append(" ")
+      .append(" ").append(request.getRequestURI()).append(" (");
+    for (Enumeration<String> en = request.getParameterNames(); en.hasMoreElements(); ) {
+      String paramName = en.nextElement();
+      String[] paramValues = request.getParameterValues(paramName);
+      sbuf.append(paramName).append("=").append(Arrays.toString(paramValues));
+      if (en.hasMoreElements()) sbuf.append(", ");
+    }
+    sbuf.append(") = ").append(status);
+    return sbuf.toString();
   }
 
   private Log log = LogFactory.getLog(HHttpServlet.class);
