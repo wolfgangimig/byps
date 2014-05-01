@@ -203,13 +203,13 @@ public class BConvert {
 	    return taggedWithBRemote;
 	  }
 		
-	  // Inherits from byps.BRemote?
-		boolean doesImplementBRemote = doesImplement(c, byps.BRemote.class.getName());
-		log.debug("does implement byps.BRemote: " + doesImplementBRemote);
-		if (doesImplementBRemote) {
-		  return doesImplementBRemote;
-		}
-		
+    // Inherits from byps.Remote?
+    boolean doesImplementBypsRemote = doesImplement(c, byps.Remote.class.getName());
+    log.debug("does implement byps.BRemote: " + doesImplementBypsRemote);
+    if (doesImplementBypsRemote) {
+      return doesImplementBypsRemote;
+    }
+    
 		// Does not inherit from Remote, use it either?
 		if ((options & OPT_ALL_REMOTES) != 0) {
 		  return true;
