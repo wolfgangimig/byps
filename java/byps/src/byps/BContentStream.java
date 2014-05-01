@@ -67,11 +67,21 @@ public abstract class BContentStream extends InputStream {
 	
 	/**
 	 * Returns the content type.
-	 * This value is used as HTTP Header Content-Type.
+	 * This value is used as HTTP header Content-Type.
 	 * @return Content type.
 	 */
 	public String getContentType() throws IOException {
 		return contentType; // e.g. "text/plain; charset=utf-8"
+	}
+	
+	/**
+	 * Set content type.
+	 * @param v Content-Type header value
+	 * @return this
+	 */
+	public BContentStream setContentType(String v) {
+	  contentType = v;
+	  return this;
 	}
 	
 	/**
@@ -82,6 +92,16 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public long getContentLength() throws IOException {
 		return contentLength; 
+	}
+	
+	/**
+	 * Set content length
+	 * @param v Content-Length header value
+	 * @return this
+	 */
+	public BContentStream setContentLength(long v) {
+	  contentLength = v;
+	  return this;
 	}
 	
   /**
@@ -148,24 +168,29 @@ public abstract class BContentStream extends InputStream {
 	  }
 	}
 	
-	protected void setAsyncCallback(BContentStreamAsyncCallback cb) throws IOException {
+	protected BContentStream setAsyncCallback(BContentStreamAsyncCallback cb) throws IOException {
 	  this.callback = cb;
+	  return this;
 	}
 	
 	/**
 	 * Set HTTP header Content-Disposition.
 	 * @param fileName File name
 	 * @param attachment true, if the browser should open the file as an attachment.
+	 * @return this
 	 */
-	public void setContentDisposition(String fileName, boolean attachment) {
+	public BContentStream setContentDisposition(String fileName, boolean attachment) {
     this.fileName = fileName;
     this.attachment = attachment;
+    return this;
 	}
 	
 	/**
    * Set HTTP header Content-Disposition.
+   * @param value Content-Dispostion header value
+   * @return this
    */
- 	public void setContentDisposition(String value) {
+ 	public BContentStream setContentDisposition(String value) {
  	  String fileName = "";
  	  boolean att = false;
 	  if (value != null && value.length() != 0) {
@@ -182,14 +207,14 @@ public abstract class BContentStream extends InputStream {
 	      }
 	    }
 	  }
-	  setContentDisposition(fileName, att);
+	  return setContentDisposition(fileName, att);
 	}
  	
   /**
    * Get HTTP header Content-Disposition.
    * @return HTTP header Content-Disposition.
    */
- 	public String getContentDisposition() {
+ 	public String getContentDisposition() throws IOException {
     StringBuilder sbuf = new StringBuilder();
     sbuf.append( isAttachment() ? "attachment;" : "inline;" );
     final String fileName = getFileName();
@@ -214,9 +239,11 @@ public abstract class BContentStream extends InputStream {
   /**
    * Set content disposition attachment.
    * @param att true, if the browser should open this stream as an attachment.
+   * @return this;
    */
-  public void setAttachment(boolean att) {
+  public BContentStream setAttachment(boolean att) {
     attachment = att;
+    return this;
   }
   
   /**
@@ -230,15 +257,17 @@ public abstract class BContentStream extends InputStream {
   /**
    * Set file name.
    * @param fileName File name.
+   * @return this
    */
-  public void setFileName(String fileName) {
+  public BContentStream setFileName(String fileName) {
     this.fileName = fileName;
+    return this;
   }
   
   private volatile long bestBefore;
 	protected final long lifetimeMillis;
 	protected volatile String contentType;
-	protected volatile long contentLength;
+	protected volatile long contentLength = -1L;
 	protected volatile String fileName;
 	protected volatile boolean attachment;
 

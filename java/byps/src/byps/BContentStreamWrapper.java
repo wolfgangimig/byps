@@ -2,6 +2,7 @@ package byps;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -57,6 +58,14 @@ public class BContentStreamWrapper extends BContentStream {
 	  setContentDisposition(file.getName(), false);
 	}
 	
+  public BContentStreamWrapper(ByteArrayInputStream is, String contentType) {
+    this(is, contentType, is.available(), 0L);
+  }
+  
+  public BContentStreamWrapper(ByteArrayInputStream is) {
+    this(is, null, is.available(), 0L);
+  }
+    
 	private static String getFileContentType(File file) {
     String contentType = DEFAULT_CONTENT_TYPE;
     Path fpath = Paths.get(file.getAbsolutePath());
@@ -79,9 +88,10 @@ public class BContentStreamWrapper extends BContentStream {
 		return -1L;
 	}
 	
-  protected void setAsyncCallback(BContentStreamAsyncCallback cb) throws IOException {
+  protected BContentStream setAsyncCallback(BContentStreamAsyncCallback cb) throws IOException {
     super.setAsyncCallback(cb);
     ensureStream();
+    return this;
   }
   	
 	protected InputStream openStream() throws IOException {
@@ -108,6 +118,17 @@ public class BContentStreamWrapper extends BContentStream {
     }
     else {
       return super.getContentType();
+    }
+  }
+  
+  @Override
+  public String getContentDisposition() throws IOException {
+    ensureStream();   
+    if (innerStream instanceof BContentStream) {
+      return ((BContentStream)innerStream).getContentDisposition();
+    }
+    else {
+      return super.getContentDisposition();
     }
   }
   
