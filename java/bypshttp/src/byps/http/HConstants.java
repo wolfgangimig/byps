@@ -52,10 +52,14 @@ public class HConstants {
   public final static long KEEP_MESSAGE_AFTER_FINISHED = 10L * 1000L;
 
   /**
-   * Use Servlet 3.0 asynchronous processing. I encountered problems with Tomcat
+   * Use Servlet 3.0 asynchronous processing. 
+   * If this option is true, a message with streams can be handled by
+   * a single thread. Furthermore, asynchronous processing
+   * does not read the entire stream into memory or into a temporary file. 
+   * (But I encountered problems with Tomcat
    * 7.0.34 and asynchronous processing: - Tomcat returns sporadically 501 in
    * HWireClient.internalPutStream. I received this error in test case
-   * TestRemoteStreams.testRemoteStreamsCloseStreamAfterSend.
+   * TestRemoteStreams.testRemoteStreamsCloseStreamAfterSend.)
    */
   public final static boolean PROCESS_PUT_STREAM_ASYNC = true;
 
