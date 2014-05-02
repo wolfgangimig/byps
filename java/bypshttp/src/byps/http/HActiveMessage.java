@@ -367,15 +367,15 @@ public class HActiveMessage {
 
       // Wait until the requested stream is received
       long t2 = System.currentTimeMillis();
-      long to = timeoutMillis - (t2 - t1);
-      if (to <= 0) {
+      timeoutMillis = timeoutMillis - (t2 - t1);
+      if (timeoutMillis <= 0) {
         if (log.isDebugEnabled()) log.debug("Timeout");
         throw new BException(BExceptionC.TIMEOUT, "Timeout while waiting for streamId=" + streamId);
       }
 
       // Wait not more than 10s to make sure,
       // that we never will hang here because of a lost notify().
-      to = Math.min(to, 10 * 1000);
+      long to = Math.min(timeoutMillis, 10 * 1000);
       if (log.isDebugEnabled()) log.debug("wait for stream, timeout=" + to);
       wait(to);
     }
