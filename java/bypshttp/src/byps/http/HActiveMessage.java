@@ -142,8 +142,9 @@ public class HActiveMessage {
           if (log.isDebugEnabled()) log.debug("close outgoing stream " + streamId + "(");
           synchronized (msg) {
             if (log.isDebugEnabled()) log.debug("remove outgoing stream, streamId=" + streamId);
-            outgoingStreams.remove(streamId);
-            checkFinished();
+            if (outgoingStreams.remove(streamId) != null) {
+            	checkFinished();
+            }
           }
           super.close();
           if (log.isDebugEnabled()) log.debug(")close");
@@ -243,8 +244,9 @@ public class HActiveMessage {
 
             synchronized (msg) {
               if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + streamId);
-              incomingStreams.remove(streamId);
-              checkFinished();
+              if (incomingStreams.remove(streamId) != null) {
+                checkFinished();
+              }
               msg.notifyAll();
             }
 
@@ -320,8 +322,9 @@ public class HActiveMessage {
 
             synchronized (msg) {
               if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + streamId);
-              incomingStreams.remove(streamId);
-              checkFinished();
+              if (incomingStreams.remove(streamId) != null) {
+                checkFinished();
+              }
             }
 
             super.close();
