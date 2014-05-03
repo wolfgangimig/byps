@@ -110,27 +110,33 @@ public class HIncomingStreamSync extends BContentStream {
 		this.bytesSource = FIRST_BYTES;
 		this.readPos = 0;
 		this.writeClosed = true;
+		this.contentLength = buf.length;
 	}
 	
-	public synchronized void assignFile(HTempFile file) {
-		this.file = file;
-		this.file.addref();
-		this.bytesSource = FILE_BYTES;
-		this.readPos = 0;
-		this.writeClosed = true;
-	}
-	
-	public void assignStream(InputStream is) throws IOException {
-		byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
-		int len = 0;
-		
-		while ((len = is.read(bytes)) != -1) {
-			write(bytes, 0, len);
-		}
+  protected synchronized void assignFile(HTempFile file) {
+    this.file = file;
+    this.file.addref();
+    this.bytesSource = FILE_BYTES;
+    this.readPos = 0;
+    this.writeClosed = true;
+    this.contentLength = file.getFile().length();
+  }
+  
+  protected void assignStream(InputStream is) throws IOException {
+    byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
+    int len = 0;
+    long sum = 0;
+    
+    while ((len = is.read(bytes)) != -1) {
+      write(bytes, 0, len);
+      sum += len;
+    }
 
-		this.readPos = 0;
-		this.writeClosed = true;
-	}
+    writeClose();
+    
+    this.readPos = 0;
+    this.contentLength = sum;
+  }
 	
 	@Override
 	public synchronized void reset() throws IOException {
