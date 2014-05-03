@@ -18,7 +18,6 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BMessageHeader;
-import byps.BStreamRequest;
 
 public class HActiveMessages {
 	
@@ -35,13 +34,10 @@ public class HActiveMessages {
 	private final ConcurrentHashMap<Long, BContentStream> uploadStreams = new ConcurrentHashMap<Long, BContentStream>();
 	
 	private Log log = LogFactory.getLog(HActiveMessages.class);
-	private File tempDir;
+	private final File tempDir;
 	
-	public HActiveMessages() {
-	}
-	
-	public void init(File tempDir) {
-		this.tempDir = tempDir;
+	public HActiveMessages(File tempDir) {
+	  this.tempDir = tempDir;
 	}
 	
 	public void done() {
@@ -141,10 +137,10 @@ public class HActiveMessages {
 	 * @param streamRequests
 	 * @throws BException
 	 */
-	public void addOutgoingStreams(List<BStreamRequest> streamRequests) throws BException {
+	public void addOutgoingStreams(List<BContentStream> streamRequests) throws BException {
 		if (log.isDebugEnabled()) log.debug("addOutgoingStreams(");
 		if (streamRequests != null && streamRequests.size() != 0) {
-			Long messageId = streamRequests.get(0).messageId;
+			Long messageId = streamRequests.get(0).getMessageId();
 			HActiveMessage msg = getOrCreateActiveMessage(messageId);
 			synchronized(msg) {
 				msg.addOutgoingStreams(streamRequests);
@@ -153,22 +149,22 @@ public class HActiveMessages {
 		if (log.isDebugEnabled()) log.debug(")addOutgoingStreams");
 	}
 	
-	public BContentStream getIncomingStream(Long messageId, Long streamId, long timeoutMillis) throws InterruptedException, BException {
-    	if (log.isDebugEnabled()) log.debug("getIncomingStream(messageId=" + messageId + ", streamId=" + streamId);
-    	
-    	// Streams uploaded from a HTML form are received before the
-    	// corresponding message arrives. This streams are stored in the
-    	// map uploadStreams since the message ID is unknown at the time the arrive.
-    	BContentStream stream = uploadStreams.get(streamId);
-    	
-    	if (stream == null) {
-    		
-    		// The stream is not available. So it cannot be a HTML file upload.
-    		// The client side must send this stream with a message ID.
-    		
-    		HActiveMessage msg = getOrCreateActiveMessage(messageId);
-    		stream = msg.getIncomingStream(streamId, timeoutMillis);
-    	}
+	public BContentStream getIncomingStream(Long messageId, Long streamId) throws IOException {
+  	if (log.isDebugEnabled()) log.debug("getIncomingStream(messageId=" + messageId + ", streamId=" + streamId);
+  	
+  	// Streams uploaded from a HTML form are received before the
+  	// corresponding message arrives. This streams are stored in the
+  	// map uploadStreams since the message ID is unknown at the time the arrive.
+  	BContentStream stream = uploadStreams.get(streamId);
+  	
+  	if (stream == null) {
+  		
+  		// The stream is not available. So it cannot be a HTML file upload.
+  		// The client side must send this stream with a message ID.
+  		
+  		HActiveMessage msg = getOrCreateActiveMessage(messageId);
+  		stream = msg.getIncomingOrOutgoingStream(streamId);
+  	}
     	
 		if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
 		return stream;
@@ -181,7 +177,7 @@ public class HActiveMessages {
 		if (msg == null) {
 			throw new FileNotFoundException("Message for outgoing stream not found, messageId=" + messageId + ", streamId=" + streamId);
 		}
-    	ret = msg.getOutgoingStream(streamId);
+    	ret = msg.getIncomingOrOutgoingStream(streamId);
 		if (log.isDebugEnabled()) log.debug(")getOutgoingStream=" + ret);
 		return ret;
 	}
@@ -283,4 +279,5 @@ public class HActiveMessages {
 		}
 		return list;
 	}
+
 }

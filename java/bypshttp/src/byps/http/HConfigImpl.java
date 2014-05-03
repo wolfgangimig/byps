@@ -1,5 +1,6 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ public class HConfigImpl implements HConfig {
   private ArrayList<Integer> serverIds;
   private HashMap<Integer, String> serverUrls;
   private boolean testAdapterEnabled;
+  private File tempDir;
 
   public HConfigImpl() {
   }
@@ -147,6 +149,21 @@ public class HConfigImpl implements HConfig {
       testAdapterEnabled = testAdapterEnabledStr != null && Boolean.parseBoolean(testAdapterEnabledStr);
     }
 
+    // Temp dir
+    try {
+      String tempDirStr = configMap.get("temp.dir");
+      if (tempDirStr != null && tempDirStr.length() != 0) {
+        tempDir = new File(tempDirStr);
+        tempDir.mkdirs();
+      }
+    }
+    catch (Throwable e) {
+      String tempDirStr = System.getProperty("java.io.tmpdir");
+      tempDir = new File(tempDirStr);
+    }
   }
 
+  public File getTempDir() {
+    return tempDir;
+  }
 }

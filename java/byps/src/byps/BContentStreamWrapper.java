@@ -35,10 +35,15 @@ public class BContentStreamWrapper extends BContentStream {
 	 * 
 	 * @param innerStream
 	 */
-	public BContentStreamWrapper(InputStream innerStream) {
-		this(innerStream, BContentStream.DEFAULT_CONTENT_TYPE, -1L, 0L);
-	}
-	
+  public BContentStreamWrapper(InputStream innerStream) {
+    this(innerStream, BContentStream.DEFAULT_CONTENT_TYPE, -1L, 0L);
+  }
+  
+  public BContentStreamWrapper(BContentStream innerStream, long lifetimeMillis) {
+    super(innerStream, lifetimeMillis);
+    this.innerStream = innerStream;
+  }
+  
 	public BContentStreamWrapper(InputStream innerStream, String contentType, long contentLength) {
 		this(innerStream, contentType, contentLength, 0L);
 	}
@@ -104,45 +109,16 @@ public class BContentStreamWrapper extends BContentStream {
 		synchronized(this) {
 			if (innerStream == null) {
 				innerStream = openStream();
+				if (innerStream instanceof BContentStream) {
+				  BContentStream bstream = (BContentStream)innerStream;
+				  this.copyProperies(bstream); // copy contentType, contentLength etc.
+				}
 			}
 		}
 		
 		return innerStream;
 	}
 	
-  @Override
-  public String getContentType() throws IOException {
-    ensureStream();   
-    if (innerStream instanceof BContentStream) {
-      return ((BContentStream)innerStream).getContentType();
-    }
-    else {
-      return super.getContentType();
-    }
-  }
-  
-  @Override
-  public String getContentDisposition() throws IOException {
-    ensureStream();   
-    if (innerStream instanceof BContentStream) {
-      return ((BContentStream)innerStream).getContentDisposition();
-    }
-    else {
-      return super.getContentDisposition();
-    }
-  }
-  
-  @Override
-  public long getContentLength() throws IOException {
-    ensureStream();   
-    if (innerStream instanceof BContentStream) {
-      return ((BContentStream)innerStream).getContentLength();
-    }
-    else {
-      return super.getContentLength();
-    }
-  }
-  
 	@Override
 	public int read() throws IOException {
 		return ensureStream().read();
@@ -179,7 +155,7 @@ public class BContentStreamWrapper extends BContentStream {
 		try {
 			return ensureStream().markSupported();
 		} catch (IOException e) {
-			throw new IllegalStateException();
+			throw new IllegalStateException(e);
 		}
 	}
 	@Override

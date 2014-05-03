@@ -16,7 +16,6 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 
 	private Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
 	protected final File tempDir;
-	protected final long streamId;
 	protected long readPos;
 	protected long currentPartId;
 	protected long maxPartId = Long.MAX_VALUE;
@@ -25,7 +24,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	
 	HIncomingSplittedStreamAsync(String contentType, long totalLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir) throws IOException {
 		super(contentType, totalLength, lifetimeMillis);
-		this.streamId = streamId;
+		this.setStreamId(streamId);
 		this.tempDir = tempDir;
 		setContentDisposition(contentDisposition);
 	}
@@ -90,12 +89,11 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 			HIncomingStreamAsync streamPart = getCurrentStreamPart(false);
 			if (streamPart != null) {
 				ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
-				if (ret == -1) {
+				while (ret == -1) {
 				  streamPart.close();
 					streamPart = getCurrentStreamPart(true);
-					if (streamPart != null) {
-					  ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
-					}
+					if (streamPart == null) break;
+					ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
 				}
 			}
 		}
@@ -118,12 +116,15 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	}
 	
 	@Override
-	public synchronized BContentStream cloneInputStream() throws BException {
+	public synchronized BContentStream materialize() throws BException {
 		if (readPos != 0) throw new BException(BExceptionC.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
 		HIncomingStreamSync istrm = null; 
 		try {
-	    istrm = new HIncomingStreamSync(contentType, contentLength, getContentDisposition(), streamId, lifetimeMillis, tempDir);
+	    istrm = new HIncomingStreamSync(this, lifetimeMillis, tempDir);
 			istrm.assignStream(this);
+			
+			// materialize closes "this"
+			this.close();
 		} catch (IOException e) {
 			throw new BException(BExceptionC.IOERROR, "Failed to clone stream", e);
 		}

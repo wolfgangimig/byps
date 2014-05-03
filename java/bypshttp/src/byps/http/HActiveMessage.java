@@ -1,9 +1,9 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,7 +19,6 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
-import byps.BStreamRequest;
 
 public class HActiveMessage {
   private final Log log = LogFactory.getLog(HActiveMessage.class);
@@ -125,7 +124,7 @@ public class HActiveMessage {
     //if (log.isDebugEnabled()) log.debug(")cleanupOutgoingStreams");
   }
 
-  public synchronized void addOutgoingStreams(List<BStreamRequest> streamRequests) throws BException {
+  public synchronized void addOutgoingStreams(List<BContentStream> streamRequests) throws BException {
     if (log.isDebugEnabled()) log.debug("addOutgoingStreams(");
 
     final HActiveMessage msg = this;
@@ -134,22 +133,23 @@ public class HActiveMessage {
       outgoingStreams = new HashMap<Long, BContentStream>();
     }
 
-    for (BStreamRequest streamRequest : streamRequests) {
-      if (log.isDebugEnabled()) log.debug("put outgoing stream, messageId=" + streamRequest.messageId + ", streamId=" + streamRequest.streamId + ", stream=" + streamRequest.strm);
-      HOutgoingStream ish = new HOutgoingStream(streamRequest.strm, streamRequest.streamId, HConstants.REQUEST_TIMEOUT_MILLIS) {
+    for (BContentStream streamRequest : streamRequests) {
+      if (log.isDebugEnabled()) log.debug("put outgoing stream=" + streamRequest);
+      HOutgoingStream ish = new HOutgoingStream(streamRequest, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
         @Override
         public void close() throws IOException {
           if (log.isDebugEnabled()) log.debug("close outgoing stream " + streamId + "(");
           synchronized (msg) {
             if (log.isDebugEnabled()) log.debug("remove outgoing stream, streamId=" + streamId);
-            outgoingStreams.remove(streamId);
-            checkFinished();
+            if (outgoingStreams.remove(streamId) != null) {
+              checkFinished();
+            }
           }
           super.close();
           if (log.isDebugEnabled()) log.debug(")close");
         }
       };
-      outgoingStreams.put(streamRequest.streamId, ish);
+      outgoingStreams.put(streamRequest.getStreamId(), ish);
     }
 
     if (log.isDebugEnabled()) log.debug(")addOutgoingStreams");
@@ -243,8 +243,9 @@ public class HActiveMessage {
 
             synchronized (msg) {
               if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + streamId);
-              incomingStreams.remove(streamId);
-              checkFinished();
+              if (incomingStreams.remove(streamId) != null) {
+                checkFinished();
+              }
               msg.notifyAll();
             }
 
@@ -320,8 +321,9 @@ public class HActiveMessage {
 
             synchronized (msg) {
               if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + streamId);
-              incomingStreams.remove(streamId);
-              checkFinished();
+              if (incomingStreams.remove(streamId) != null) {
+                checkFinished();
+              }
             }
 
             super.close();
@@ -350,10 +352,11 @@ public class HActiveMessage {
     return istrm;
   }
 
-  public synchronized BContentStream getIncomingStream(Long streamId, long timeoutMillis) throws InterruptedException, BException {
+  public synchronized BContentStream getIncomingOrOutgoingStream(Long streamId) throws IOException, BException {
     if (log.isDebugEnabled()) log.debug("getIncomingStream(streamId=" + streamId);
     long t1 = System.currentTimeMillis();
     BContentStream stream = null;
+    long timeoutMillis = HConstants.REQUEST_TIMEOUT_MILLIS;
 
     while (timeoutMillis > 0) {
 
@@ -363,6 +366,9 @@ public class HActiveMessage {
       }
 
       stream = incomingStreams != null ? incomingStreams.get(streamId) : null;
+      if (stream != null) break;
+
+      stream = outgoingStreams != null ? outgoingStreams.get(streamId) : null;
       if (stream != null) break;
 
       // Wait until the requested stream is received
@@ -377,29 +383,15 @@ public class HActiveMessage {
       // that we never will hang here because of a lost notify().
       long to = Math.min(timeoutMillis, 10 * 1000);
       if (log.isDebugEnabled()) log.debug("wait for stream, timeout=" + to);
-      wait(to);
+      try {
+        wait(to);
+      } catch (InterruptedException e) {
+        throw new InterruptedIOException("Wait for stream=" + streamId + " interrupted.");
+      }
     }
 
     if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
     return stream;
-  }
-
-  public synchronized BContentStream getOutgoingStream(Long streamId) throws IOException {
-    if (log.isDebugEnabled()) log.debug("getOutgoingStream(messageId=" + messageId + ", streamId=" + streamId);
-    BContentStream ret = null;
-
-    if (outgoingStreams == null) {
-      throw new FileNotFoundException("Message does not contain any outgoing streams, messageId=" + messageId + ", streamId=" + streamId);
-    }
-
-    BContentStream streamHolder = outgoingStreams.get(streamId);
-    if (streamHolder == null) {
-      throw new FileNotFoundException("Message does not contain outgoing stream, messageId=" + messageId + ", streamId=" + streamId);
-    }
-    ret = streamHolder;
-
-    if (log.isDebugEnabled()) log.debug(")getOutgoingStream=" + ret);
-    return ret;
   }
 
   public synchronized HRequestContext getAndRemoveRequestContext() throws BException {

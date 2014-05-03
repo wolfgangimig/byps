@@ -482,11 +482,12 @@ public class BTransport {
     BProtocol protocol = null;
 
     if (nego.protocols.startsWith(BProtocolS.BINARY_MODEL.getProtocolId())) {
+      int negotiatedBypsVersion = Math.min(BMessageHeader.BYPS_VERSION_CURRENT, nego.bversion);
       long negotiatedVersion = Math.min(apiDesc.version, nego.version);
       nego.protocols = BProtocolS.BINARY_MODEL.getProtocolId();
       if (nego.byteOrder == null) nego.byteOrder = ByteOrder.BIG_ENDIAN;
       nego.version = negotiatedVersion;
-      protocol = new BProtocolS(apiDesc, negotiatedVersion, nego.byteOrder);
+      protocol = new BProtocolS(apiDesc, negotiatedBypsVersion, negotiatedVersion, nego.byteOrder);
     }
     else if (nego.protocols.startsWith(BProtocolJson.BINARY_MODEL.getProtocolId())) {
       nego.protocols = BProtocolJson.BINARY_MODEL.getProtocolId();

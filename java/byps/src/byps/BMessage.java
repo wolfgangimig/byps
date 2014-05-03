@@ -7,10 +7,10 @@ import java.util.List;
 
 public class BMessage {
 	final public ByteBuffer buf;
-	final public List<BStreamRequest> streams;
+	final public List<BContentStream> streams;
 	final public BMessageHeader header;
 	
-	public BMessage(final BMessageHeader header, final ByteBuffer buf, final List<BStreamRequest> streams) {
+	public BMessage(final BMessageHeader header, final ByteBuffer buf, final List<BContentStream> streams) {
 		this.buf = buf;
 		this.streams = streams;
 		this.header = header;

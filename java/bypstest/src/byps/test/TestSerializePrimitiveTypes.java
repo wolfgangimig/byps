@@ -22,6 +22,7 @@ import byps.BBufferBin;
 import byps.BBufferJson;
 import byps.BException;
 import byps.BInput;
+import byps.BMessageHeader;
 import byps.BOutput;
 import byps.BProtocolJson;
 import byps.BTransport;
@@ -615,7 +616,7 @@ public class TestSerializePrimitiveTypes {
 		
 		TestUtils.protocol = protocol;
 		
-		BTransport transport = TestUtils.createTransport(flags, 0);
+		BTransport transport = TestUtils.createTransport(flags, BMessageHeader.BYPS_VERSION_CURRENT, 0);
 		
 		BOutput bout = transport.getOutput();
 		long bytesCount = 0;

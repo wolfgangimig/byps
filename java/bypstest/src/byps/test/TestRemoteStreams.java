@@ -300,7 +300,7 @@ public class TestRemoteStreams {
       internalTestThrowExOnRead(false, true);
     }
 
-    client.getTransport().getWire().cancelAllRequests();
+    client.getTransport().getWire().getTestAdapter().cancelAllRequests();
 
     try {
       // There should be no active messages on the server after the client side
@@ -327,7 +327,7 @@ public class TestRemoteStreams {
     log.info("internalTestThrowExOnRead(throwEx=" + throwEx + ", throwError=" + throwError);
 
     Map<Integer, InputStream> streams = new TreeMap<Integer, InputStream>();
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 3; i++) {
       String str = "hello-" + i;
       byte[] buf = str.getBytes();
       InputStream istrm = new MyInputStream(buf, i == 1 && throwEx, i == 1 && throwError);
@@ -472,4 +472,40 @@ public class TestRemoteStreams {
     
     log.info(")testRemoteStreamsAsyncCallback");
   }
+  
+  /**
+   * A stream returned from the server can be passed as input parameter
+   * to another call to the same server.
+   * @throws IOException 
+   */
+  @Test
+  public void testHandoverStream() throws IOException {
+    log.info("testHandoverStream(");
+    
+    ArrayList<InputStream> streams = TestUtilsHttp.makeTestStreams();
+    
+    for (int i = 0; i < streams.size(); i++) {
+    
+      InputStream istrm = streams.get(i);
+      
+      remote.setImage(istrm);
+      
+      InputStream strmFromServer = remote.getImage();
+      remote.setImage(strmFromServer);
+      
+      for (int j = 0; j < 2; j++) {
+        ArrayList<InputStream> estreams = TestUtilsHttp.makeTestStreams();
+        InputStream estrm = estreams.get(i);
+        InputStream rstrm = remote.getImage();
+        TestUtils.assertEquals(log, "stream[" + i + "]=" + estrm, estrm, rstrm);
+      }
+      
+      remote.setImage(null);
+      TestUtils.checkTempDirEmpty(client);
+    }
+    
+    log.info(")testHandoverStream");
+  }
+
+
 }

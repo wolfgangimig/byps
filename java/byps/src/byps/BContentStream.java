@@ -47,14 +47,26 @@ public abstract class BContentStream extends InputStream {
 	 * Does not copy lifetimeMillis.
 	 * @param rhs
 	 */
-	public BContentStream(BContentStream rhs) {
-		this.lifetimeMillis = 0;
-		this.contentType = rhs.contentType;
+	public BContentStream(BContentStream rhs, long lifetimeMillis) {
+		this.lifetimeMillis = lifetimeMillis;
+		copyProperies(rhs);
+		extendLifetime();
+	}
+
+	/**
+	 * Copy properties from given stream.
+	 * Copies contentType, contentLength, attachment, fileName, streamId, messageId, serverId
+	 * @param rhs Other stream to get values from.
+	 */
+  public void copyProperies(BContentStream rhs) {
+    this.contentType = rhs.contentType;
 		this.contentLength = rhs.contentLength;
 		this.attachment = rhs.attachment;
 		this.fileName = rhs.fileName;
-		extendLifetime();
-	}
+		this.streamId = rhs.streamId;
+		this.messageId = rhs.messageId;
+		this.serverId = rhs.serverId;
+  }
 	
 	/**
 	 * Default constructor.
@@ -70,7 +82,7 @@ public abstract class BContentStream extends InputStream {
 	 * This value is used as HTTP header Content-Type.
 	 * @return Content type.
 	 */
-	public String getContentType() throws IOException {
+	public String getContentType() {
 		return contentType; // e.g. "text/plain; charset=utf-8"
 	}
 	
@@ -90,7 +102,7 @@ public abstract class BContentStream extends InputStream {
 	 * This function returns -1L, if the content length is unknown.
 	 * @return Content length.
 	 */
-	public long getContentLength() throws IOException {
+	public long getContentLength() {
 		return contentLength; 
 	}
 	
@@ -105,14 +117,39 @@ public abstract class BContentStream extends InputStream {
 	}
 	
   /**
-   * Clone stream.
+   * Duplicate stream.
    * This function is only supported by sub-classes available on the server side.
-   * A large cloned stream uses a temporary file. 
-   * @return Cloned stream.
+   * Use this function should be returned to the client.
+   * @return materialized stream.
+   * @throws CloneNotSupportedException 
+   */
+  public BContentStream cloneStream() throws IOException {
+    throw new IOException("Stream cannot be cloned. Create a materialized stream first.");
+  }
+  
+  /**
+   * Write stream data into buffer or temporary file.
+   * This function is only supported by sub-classes available on the server side.
+   * Use this function for an incoming stream that has to be still available 
+   * after the message was processed.
+   * The stream represented by "this" is closed by this function.
+   * @return materialized stream.
    * @throws IOException
    */
-  public BContentStream cloneInputStream() throws IOException {
-    throw new IOException("Stream cannot be cloned.");
+  public BContentStream materialize() throws IOException {
+    throw new IOException("Stream cannot be materialized.");
+  }
+  
+  /**
+   * Write stream data into buffer or temporary file.
+   * @param is stream to be materialized.
+   * @return materialized stream.
+   * @throws IOException
+   * @see {@link #materialize()}
+   */
+  public static BContentStream materialize(InputStream is) throws IOException {
+    if (!(is instanceof BContentStream)) throw new IOException("InputStream cannot be materialized.");
+    return ((BContentStream)is).materialize();
   }
   
 	/**
@@ -214,7 +251,7 @@ public abstract class BContentStream extends InputStream {
    * Get HTTP header Content-Disposition.
    * @return HTTP header Content-Disposition.
    */
- 	public String getContentDisposition() throws IOException {
+ 	public String getContentDisposition() {
     StringBuilder sbuf = new StringBuilder();
     sbuf.append( isAttachment() ? "attachment;" : "inline;" );
     final String fileName = getFileName();
@@ -264,12 +301,57 @@ public abstract class BContentStream extends InputStream {
     return this;
   }
   
+  public long getStreamId() {
+    return streamId;
+  }
+
+  public void setStreamId(long streamId) {
+    this.streamId = streamId;
+  }
+
+  public int getServerId() {
+    return serverId;
+  }
+
+  public void setServerId(int serverId) {
+    this.serverId = serverId;
+  }
+
+  public long getMessageId() {
+    return messageId;
+  }
+
+  public void setMessageId(long messageId) {
+    this.messageId = messageId;
+  }
+
+  @Override
+  public void close() throws IOException {
+    // isExpired should return true
+    bestBefore = System.currentTimeMillis() - 1;
+    
+    super.close();
+  }
+  
   private volatile long bestBefore;
 	protected final long lifetimeMillis;
 	protected volatile String contentType;
 	protected volatile long contentLength = -1L;
 	protected volatile String fileName;
 	protected volatile boolean attachment;
+	protected volatile long messageId;
+	protected volatile long streamId;
+	protected volatile int serverId;
 
 	protected volatile BContentStreamAsyncCallback callback;
+	
+	public String toString() {
+	  StringBuilder sbuf = new StringBuilder();
+	  sbuf.append("[").append(contentType).append(", #=").append(contentLength);
+    if (serverId != 0) sbuf.append(",serverId=").append(serverId);
+	  if (messageId != 0) sbuf.append(",messageId=").append(messageId);
+	  if (streamId != 0) sbuf.append(",streamId=").append(streamId);
+	  sbuf.append("]");
+	  return sbuf.toString();
+	}
 }

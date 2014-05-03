@@ -18,7 +18,6 @@ import byps.BException;
 import byps.BExceptionC;
 import byps.BMessage;
 import byps.BMessageHeader;
-import byps.BStreamRequest;
 import byps.BWire;
 
 public class HWireClientR extends BWire {
@@ -28,9 +27,8 @@ public class HWireClientR extends BWire {
     this.wireServer = wireServer;
   }
 
-  @Override
-  public synchronized void cancelAllRequests() {
-    if (log.isDebugEnabled()) log.debug("cancelAllRequests(");
+  public synchronized void done() {
+    if (log.isDebugEnabled()) log.debug("done(");
 
     canceled = true;
 
@@ -61,7 +59,7 @@ public class HWireClientR extends BWire {
     }
     lonpollRequests.clear();
 
-    if (log.isDebugEnabled()) log.debug(")cancelAllRequests");
+    if (log.isDebugEnabled()) log.debug(")done");
   }
 
   /**
@@ -209,13 +207,13 @@ public class HWireClientR extends BWire {
   }
 
   @Override
-  public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
-    wireServer.putStreams(streamRequests, asyncResult);
+  public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
+    wireServer.putStreams(streams, asyncResult);
   };
 
   @Override
-  public BContentStream getStream(long messageId, long strmId) throws IOException {
-    return wireServer.getStream(messageId, strmId);
+  public BContentStream getStream(int serverId, long messageId, long strmId) throws IOException {
+    return wireServer.getStream(serverId, messageId, strmId);
   }
 
   /**

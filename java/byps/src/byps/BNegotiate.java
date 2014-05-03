@@ -6,13 +6,10 @@ import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import byps.BException;
-import byps.BTargetId;
-
 /**
  * 
  * Negotiate-Nachricht besteht aus:
- * ["N","SCJ","version","{B,L,_}"]
+ * ["N","SCJ","version","{B,L,_}", "targetId", "bversion"]
  *
  * JSON-Nachricht besteht aus:
  * ["J",{nachricht}]
@@ -33,6 +30,7 @@ public class BNegotiate {
 	public long version;
 	public ByteOrder byteOrder; 
 	public BTargetId targetId;
+	public int bversion;
 	
 	public BNegotiate() {
 	}
@@ -46,6 +44,7 @@ public class BNegotiate {
 	public BNegotiate(BApiDescriptor apiDesc) {
 		this.version = apiDesc.version;
 		this.protocols = apiDesc.getProtocolIds();
+		this.bversion = BMessageHeader.BYPS_VERSION_CURRENT;
 	}
 	
 	/**
@@ -117,6 +116,10 @@ public class BNegotiate {
 
 		bbuf.putString((targetId != null ? targetId : new BTargetId()).toString());
 		
+		if (bversion != 0) {
+		  bbuf.putInt(bversion);
+		}
+		
 		bbuf.endArray();
 
 	}
@@ -151,7 +154,10 @@ public class BNegotiate {
 		
 		// Target ID
 		targetId = BTargetId.parseString(bbuf.getString());
-
+		
+		if (bbuf.nextJsonChar(true) == ',') {
+		  bversion = bbuf.getInt();
+		}
 	}
 	
 }

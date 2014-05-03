@@ -39,4 +39,5 @@ public interface BTestAdapter {
 	 */
 	void setServerAppVersion(long version);
 	
+	void cancelAllRequests();
 }

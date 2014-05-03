@@ -3,15 +3,6 @@ package byps;
 import java.io.IOException;
 import java.io.InputStream;
 
-import byps.BBufferJson;
-import byps.BException;
-import byps.BExceptionC;
-import byps.BInputJson;
-import byps.BOutputJson;
-import byps.BRegistry;
-import byps.BSerializer;
-import byps.BStreamRequest;
-
 
 public class JSerializer_15 extends JSerializer_Object {
 
@@ -24,15 +15,24 @@ public class JSerializer_15 extends JSerializer_Object {
 	@Override
 	public void internalWrite(final Object obj, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		InputStream is = (InputStream)obj;
-		BStreamRequest streamRequest = bout.createStreamRequest(is);
-		bout.bbuf.putLong("streamId", streamRequest.streamId);
+		BContentStream bstream = bout.createStreamRequest(is);
+		bout.bbuf.putLong("streamId", bstream.getStreamId());
+		bout.bbuf.putInt("serverId", bstream.getServerId());
+		bout.bbuf.putLong("messageId", bstream.getMessageId());
 	}
 
 	@Override
 	public Object internalRead(final Object obj1, final BInputJson bin) throws BException {
-		long streamId = bin.currentObject.getLong("streamId");
+		
+	  final long streamId = bin.currentObject.getLong("streamId");
+		int serverId = bin.currentObject.getInt("serverId");
+    long messageId = bin.currentObject.getLong("messageId");
+    
+    if (serverId == 0) serverId = bin.transport.getTargetId().serverId;
+    if (messageId == 0) messageId =  bin.header.messageId;
+    
 		try {
-			InputStream strm = bin.transport.getWire().getStream(bin.header.messageId, streamId);
+			InputStream strm = bin.transport.getWire().getStream(serverId, messageId, streamId);
 			bin.onObjectCreated(strm);
 			return strm;
 		} catch (IOException e) {

@@ -20,6 +20,7 @@ import org.junit.Test;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BMessageHeader;
 import byps.BProtocolJson;
 import byps.BProtocolS;
 import byps.BWire;
@@ -101,8 +102,6 @@ public class TestRemoteServerR {
 			tearDown(); setUp();
 			testCallClientFromClientOnOtherServer();
 			tearDown(); setUp();
-			testCallClientFromClientThrowEx();
-			tearDown(); setUp();
 			testCallClientFromServer();
 			tearDown(); setUp();
 			testCallClientFromServerNoRemoteImpl();
@@ -140,6 +139,8 @@ public class TestRemoteServerR {
 			@Override
 			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
+				if (a == -1) throw new BException(123, "Test exception");
+				if (a == -2) throw new IllegalStateException("Test error");
 				return a + 1;
 			}
 		});
@@ -153,8 +154,29 @@ public class TestRemoteServerR {
 		
 		TestUtils.assertEquals(log, "incrementInt", 6, r);
 		
+    checkException_callClientIncrementInt(remote);
+    
+		
 		log.info(")testCallClientFromServer");
 	}
+
+  private void checkException_callClientIncrementInt(ServerIF remote2) {
+    try {
+      remote2.callClientIncrementInt(-1);
+    }
+    catch (RemoteException e) {
+      TestUtils.assertEquals(log, "Unexpected exception code", 123, ((BException)e).code);
+      TestUtils.assertTrue(log, "Unexpected exception", e.toString().indexOf("Test exception") >= 0);
+    }
+
+    try {
+      remote2.callClientIncrementInt(-2);
+    }
+    catch (RemoteException e) {
+      TestUtils.assertEquals(log, "Unexpected exception code", BExceptionC.REMOTE_ERROR, ((BException)e).code);
+      TestUtils.assertTrue(log, "Unexpected exception", e.toString().indexOf("Test error") >= 0);
+    }
+  }
 	
 	/**
 	 * Call a server function which in turn calls a client function many times simultaneously.
@@ -222,6 +244,7 @@ public class TestRemoteServerR {
 	/**
 	 * Call an interface method of another client. 
 	 * Both clients are connected to the same server.
+	 * However, both servers must be started.
 	 * @throws InterruptedException 
 	 * @throws BException 
 	 */
@@ -234,6 +257,8 @@ public class TestRemoteServerR {
 			@Override
 			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
+        if (a == -1) throw new BException(123, "Test exception");
+        if (a == -2) throw new IllegalStateException("Test error");
 				return a + 11;
 			}
 		};
@@ -253,6 +278,23 @@ public class TestRemoteServerR {
 		// Invoke interface of second client.
 		int r = remoteOfClient2.incrementInt(7);
 		TestUtils.assertEquals(log, "incrementInt", 18, r);
+		
+    try {
+      remoteOfClient2.incrementInt(-1);
+    }
+    catch (RemoteException e) {
+      TestUtils.assertEquals(log, "Unexpected exception code", 123, ((BException)e).code);
+      TestUtils.assertTrue(log, "Unexpected exception", e.toString().indexOf("Test exception") >= 0);
+    }
+
+    try {
+      remoteOfClient2.incrementInt(-2);
+    }
+    catch (RemoteException e) {
+      TestUtils.assertEquals(log, "Unexpected exception code", BExceptionC.REMOTE_ERROR, ((BException)e).code);
+      TestUtils.assertTrue(log, "Unexpected exception", e.toString().indexOf("Test error") >= 0);
+    }
+		
 		
 		client2.getRemoteServerCtrl().removePublishedRemote("remoteOfClient2");
 		
@@ -275,7 +317,9 @@ public class TestRemoteServerR {
 			@Override
 			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
-				return a + 1;
+        if (a == -1) throw new BException(123, "Test exception");
+        if (a == -2) throw new IllegalStateException("Test error");
+        return a + 1;
 			}
 		};
 		
@@ -297,6 +341,24 @@ public class TestRemoteServerR {
 			TestUtils.assertEquals(log, "incrementInt", i+1, r);
 		}
 		
+		
+    try {
+      remoteOfClient2.incrementInt(-1);
+    }
+    catch (RemoteException e) {
+      TestUtils.assertEquals(log, "Unexpected exception code", 123, ((BException)e).code);
+      TestUtils.assertTrue(log, "Unexpected exception", e.toString().indexOf("Test exception") >= 0);
+    }
+
+    try {
+      remoteOfClient2.incrementInt(-2);
+    }
+    catch (RemoteException e) {
+      TestUtils.assertEquals(log, "Unexpected exception code", BExceptionC.REMOTE_ERROR, ((BException)e).code);
+      TestUtils.assertTrue(log, "Unexpected exception", e.toString().indexOf("Test error") >= 0);
+    }
+
+		
 		client2.getRemoteServerCtrl().removePublishedRemote("remoteOfClient2");
 		
 		client2.done();
@@ -317,6 +379,8 @@ public class TestRemoteServerR {
 			@Override
 			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
+        if (a == -1) throw new BException(123, "Test exception");
+        if (a == -2) throw new IllegalStateException("Test error");
 				return a + 1;
 			}
 		};
@@ -331,6 +395,8 @@ public class TestRemoteServerR {
 		// Invoke interface of second client from the server.
 		int r = remote.callClientIncrementInt(7);
 		TestUtils.assertEquals(log, "incrementInt", 8, r);
+		
+		checkException_callClientIncrementInt(remote);
 		
 		client2.done();
 		log.info(")testCallClient2FromServer1");
@@ -352,6 +418,8 @@ public class TestRemoteServerR {
 			@Override
 			public int incrementInt(int a) throws RemoteException {
 				log.info("incrementInt(" + a + ")");
+        if (a == -1) throw new BException(123, "Test exception");
+        if (a == -2) throw new IllegalStateException("Test error");
 				return a + 1;
 			}
 		};
@@ -366,6 +434,8 @@ public class TestRemoteServerR {
 		// Invoke interface of second client from the server.
 		int r = remote.callClientIncrementInt(7);
 		TestUtils.assertEquals(log, "incrementInt", 8, r);
+		
+		checkException_callClientIncrementInt(remote);
 		
 		client2.done();
 		log.info(")testCallClient2FromForeignServer1");
@@ -406,37 +476,6 @@ public class TestRemoteServerR {
 		
 		log.info(")testCallClient1FromServer1");
 	}
-
-	@Test
-	public void testCallClientFromClientThrowEx() throws RemoteException {
-		log.info("testCallClientFromClientThrowEx(");
-		
-		final int exceptionCode = 1111;
-		
-		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
-			@Override
-			public int incrementInt(int a) throws RemoteException {
-				throw new BException(exceptionCode, "my exception", "details");
-			}
-		};
-		
-		BClient_Testser client2 = TestUtilsHttp.createClient();
-		client2.addRemote(partner);
-		
-		client.getServerIF().setPartner(partner);
-		
-		ClientIF partnerIF = client.getServerIF().getPartner();
-		try {
-			partnerIF.incrementInt(7);
-		}
-		catch (BException e) {
-			TestUtils.assertEquals(log, "exception", exceptionCode, e.code);
-		}
-		
-		client2.done();
-		log.info(")testCallClientFromClientThrowEx");
-	}
-	
 	/**
 	 * Call an interface of a dead client.
 	 * The first client calls an interface method of the second client while the second client is no more listening.
@@ -656,8 +695,10 @@ public class TestRemoteServerR {
 			TestUtils.assertEquals(log, "stream[" + i + "]", arr.get(i), arrR.get(i));
 		}
 		
+		TestUtils.checkTempDirEmpty(client);
+		TestUtils.checkTempDirEmpty(client2);
+		
 		client2.done();
-
 
 		log.info(")testReturnStreamFromClientToClient");
 	}
@@ -708,6 +749,9 @@ public class TestRemoteServerR {
 		partnerIF.putStreams(arr, 0);
 		log.info("call client OK");
 
+    TestUtils.checkTempDirEmpty(client);
+    TestUtils.checkTempDirEmpty(client2);
+		
 		client2.done();
 
 		log.info(")testPutStreamFromClientToClientSameServer");
@@ -718,7 +762,7 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	@Test
+	//@Test
 	public void testPutStreamFromClientToClientOnOtherServer() throws InterruptedException, IOException {
 		log.info("testPutStreamFromClientToClientOnOtherServer(");
 		
@@ -759,6 +803,9 @@ public class TestRemoteServerR {
 		partnerIF.putStreams(arr, 0);
 		log.info("call client OK");
 
+    TestUtils.checkTempDirEmpty(client);
+    TestUtils.checkTempDirEmpty(client2);
+
 		client2.done();
 
 		log.info(")testPutStreamFromClientToClientOnOtherServer");
@@ -774,10 +821,10 @@ public class TestRemoteServerR {
 		log.info("testJsonClientCallsBinClient(");
 		
 		// First client
-		BClient_Testser clientJson = TestUtilsHttp.createClient(BProtocolJson.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, 1);
+		BClient_Testser clientJson = TestUtilsHttp.createClient(BProtocolJson.BINARY_MODEL, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, 1);
 		
 		// Create second client
-		BClient_Testser clientBin = TestUtilsHttp.createClient(BProtocolS.BINARY_MODEL, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, 1);
+		BClient_Testser clientBin = TestUtilsHttp.createClient(BProtocolS.BINARY_MODEL, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, 1);
 		BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
 			@Override
 			public int incrementInt(int a) throws RemoteException {
@@ -802,4 +849,92 @@ public class TestRemoteServerR {
 
 		log.info(")testJsonClientCallsBinClient");
 	}
+	
+  /**
+   * A stream returned from the server can be passed from one client to another client.
+   * It is not required to copy the stream.
+   * @throws IOException 
+   */
+  @Test
+  public void testHandoverStreamFromClientToClientSameServer() throws InterruptedException, IOException {
+    handoverStreamFromClientToClient(false);
+  } 
+  
+  /**
+    * A stream returned from the server can be passed from one client to another client.
+    * It is not required to copy the stream.
+    * Clients are connected to different servers.
+   * @throws IOException 
+   */
+  @Test
+  public void testHandoverStreamFromClientToClientOtherServer() throws InterruptedException, IOException {
+    handoverStreamFromClientToClient(true);
+  } 
+  
+  private void handoverStreamFromClientToClient(boolean otherServer) throws IOException {
+    log.info("handoverStreamFromClientToClient(otherServer=" + otherServer);
+    
+    // Interface implementation for the second client
+    BSkeleton_ClientIF partner = new BSkeleton_ClientIF() {
+      @Override
+      public void putStreams(List<InputStream> streams, int ctrl) throws RemoteException {
+        log.info("putStreams(" + streams.size());
+        try {
+          final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
+          TestUtils.assertEquals(log, "#streams", arr.size(), streams.size());
+          for (int i = 0; i < arr.size(); i++) {
+            BContentStream estrm = (BContentStream)arr.get(i);
+            BContentStream rstrm = (BContentStream)streams.get(i);
+            TestUtils.assertEquals(log, "stream[" + i + "]="+ estrm, estrm, rstrm);
+          }
+        } catch (IOException e) {
+          log.error(e);
+          throw new BException(BExceptionC.IOERROR, "", e);
+        }
+        log.info(")putStreams");
+      }
+    };
+
+    // Create second client
+    BClient_Testser client2 = otherServer ? TestUtilsHttp.createClient2() : TestUtilsHttp.createClient();
+    client2.addRemote(partner);
+    
+    // Pass the interface of the second client to the server side of the first client
+    client.getServerIF().setPartner(partner);
+    
+    // First client queries the interface of the second client from the server side
+    ClientIF partnerIF = client.getServerIF().getPartner();
+   
+    // Upload test streams to the server.
+    // Obtain the streams from the server - but do not download the contents.
+    final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
+    final ArrayList<InputStream> receivedStreams = new ArrayList<InputStream>();
+    for (InputStream istream : arr) {
+      // Upload
+      client.getRemoteStreams().setImage(istream);
+      // Get stream object from server
+      InputStream rstream = client.getRemoteStreams().getImage();
+      receivedStreams.add(rstream);
+    }
+    client.getRemoteStreams().setImage(null);
+    
+    // Send stream objects (which are not downloaded) to the other client.
+    log.info("call client...");
+    partnerIF.putStreams(receivedStreams, 0);
+    log.info("call client OK");
+
+    TestUtils.checkTempDirEmpty(client);
+    TestUtils.checkTempDirEmpty(client2);
+
+    client2.done();
+
+    log.info(")handoverStreamFromClientToClient");
+    
+  }
+	
+/**
+ *   * This is especially useful for a JavaScript client that receives a 
+   * stream an wants to send it to a helper service (acts as another client).
+	
+ */
 }

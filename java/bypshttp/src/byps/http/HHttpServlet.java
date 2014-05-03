@@ -47,10 +47,11 @@ import byps.BProtocol;
 import byps.BServer;
 import byps.BServerRegistry;
 import byps.BSyncResult;
+import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
 
-public abstract class HHttpServlet extends HttpServlet {
+public abstract class HHttpServlet extends HttpServlet implements HServerContext {
   private static final long serialVersionUID = 1L;
 
   private HCleanupResources cleanupThread;
@@ -66,25 +67,47 @@ public abstract class HHttpServlet extends HttpServlet {
    * Create a session.
    * @param request Servlet request
    * @param response Servlet response
+   * @param hsess 
    * @param hsess Application server session
-   * @param serverRegistry Server/stub registry
    * @return HSession object 
    * @throws BExeption with code=BExceptionC.FORBIDDEN if authentication has failed.
    */
-  protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess, BServerRegistry serverRegistry) throws BException;
+  protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess) throws BException;
+  
 
   /**
    * Return the API descriptor
    * @return API descriptor
    */
   protected abstract BApiDescriptor getApiDescriptor();
+  
+  ///////////////////////////////////////////////////
+  // Begin implementation of HServerContext 
 
   /**
    * Get configuration object.
    * @return Configuration object.
    */
-  protected abstract HConfig getConfig();
+  public abstract HConfig getConfig();
+  
+  @Override
+  public BServerRegistry getServerRegistry() {
+    return serverRegistry_use_getServerRegistry;
+  }
 
+  @Override
+  public HServerListener getListener() {
+    return defaultListener;
+  }
+  
+  @Override
+  public HActiveMessages getActiveMessages() {
+    return activeMessages_use_getActiveMessages;
+  }
+      
+  // End implementation of HServerContext 
+  ///////////////////////////////////////////////////
+  
   /**
    * This function is called after initialization has finished.
    */
@@ -160,7 +183,7 @@ public abstract class HHttpServlet extends HttpServlet {
         int serverId = config.getMyServerId();
         targetIdFact_use_getTargetIdFactory = new HTargetIdFactory(serverId);
 
-        serverRegistry = new HRemoteRegistry(config) {
+        serverRegistry_use_getServerRegistry = new HRemoteRegistry(config) {
 
           @Override
           protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {
@@ -173,9 +196,11 @@ public abstract class HHttpServlet extends HttpServlet {
           }
 
         };
+        
+        activeMessages_use_getActiveMessages = new HActiveMessages(config.getTempDir());
 
         cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
-
+        
         initializationFinished();
 
       } catch (ServletException e) {
@@ -191,8 +216,8 @@ public abstract class HHttpServlet extends HttpServlet {
     if (cleanupThread != null) {
       cleanupThread.done();
     }
-    if (serverRegistry != null) {
-      serverRegistry.done();
+    if (serverRegistry_use_getServerRegistry != null) {
+      serverRegistry_use_getServerRegistry.done();
     }
     if (log.isDebugEnabled()) log.debug(")done");
   }
@@ -242,6 +267,59 @@ public abstract class HHttpServlet extends HttpServlet {
     if (log.isDebugEnabled()) log.debug(")doPost");
   }
 
+  private void sendOutgoingStream(BContentStream is, HttpServletResponse response) throws IOException {
+    if (log.isDebugEnabled()) log.debug("sendOutgoingStream(stream=" + is);
+
+    OutputStream os = null;
+    try {
+      
+      // Before setting headers: check that the InputStream can be read.
+      byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
+      int len = is.read(buf);
+
+      final String contentType = is.getContentType();
+      response.setContentType(contentType);
+
+      final long contentLength = is.getContentLength();
+      if (contentLength >= 0) {
+        response.setHeader("Content-Length", Long.toString(contentLength));
+      }
+      
+      final String contentDisposition = is.getContentDisposition();
+      if (contentDisposition != null && contentDisposition.length() != 0) {
+        response.setHeader("Content-Disposition", contentDisposition);
+      }
+
+      os = response.getOutputStream();
+      while (len != -1) {
+        os.write(buf, 0, len);
+        len = is.read(buf);
+      }
+    }
+    catch (IOException e) {
+      throw e;
+    }
+    catch (Throwable e) {
+      throw new IOException("Read stream failed.", e);
+    }
+    finally {
+      if (log.isDebugEnabled()) log.debug("close response of outgoing stream, stream=" + is);
+      if (is != null) try {
+        is.close();
+      }
+      catch (IOException ignored) {
+      }
+      if (os != null) try {
+        os.close();
+      }
+      catch (IOException ignored) {
+      }
+    }
+
+    if (log.isDebugEnabled()) log.debug(")sendOutgoingStream");
+  }
+
+  
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doGet(");
@@ -285,7 +363,20 @@ public abstract class HHttpServlet extends HttpServlet {
 
     if (streamIdStr != null && streamIdStr.length() != 0) {
       if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
-      sess.wireServer.sendOutgoingStream(BBufferJson.parseLong(messageIdStr), BBufferJson.parseLong(streamIdStr), response);
+      
+      final long messageId = BBufferJson.parseLong(messageIdStr);
+      final long streamId = BBufferJson.parseLong(streamIdStr);
+      final String serverIdStr = request.getParameter("serverid");
+      
+      final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer.valueOf(serverIdStr) : 0;
+      final BTargetId targetId = new BTargetId(serverId, 0, 0);
+      final BClient forwardClient = serverId != 0 ? getServerRegistry().getForwardClientIfForeignTargetId(targetId) : null;
+      
+      final BContentStream stream = forwardClient != null ? 
+        forwardClient.getTransport().getWire().getStream(serverId, messageId, streamId) :
+        getActiveMessages().getOutgoingStream(messageId, streamId);
+      
+      sendOutgoingStream(stream, response);
     }
     else if (cancelStr != null && cancelStr.length() != 0) {
 
@@ -293,7 +384,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
       if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
         if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
-        sess.wireServer.activeMessages.cleanup(true);
+        sess.wireServer.cancelAllMessages();
       }
       else if (messageId == HWireClient.MESSAGEID_DISCONNECT) {
         if (log.isDebugEnabled()) log.debug("sess.done");
@@ -301,7 +392,7 @@ public abstract class HHttpServlet extends HttpServlet {
       }
       else {
         if (log.isDebugEnabled()) log.debug("activeMessages.cancelMessage");
-        sess.wireServer.activeMessages.cancelMessage(messageId);
+        sess.wireServer.cancelMessage(messageId);
       }
       response.setStatus(HttpServletResponse.SC_OK);
       response.getOutputStream().close();
@@ -412,7 +503,7 @@ public abstract class HHttpServlet extends HttpServlet {
               asyncResponse.setAsyncResult(null, e);
             } finally {
 
-              sess.wireServer.activeMessages.removeWorker(header.messageId);
+              getActiveMessages().removeWorker(header.messageId);
 
               if (HConstants.PROCESS_MESSAGE_ASYNC) {
                 // NDC.pop();
@@ -541,7 +632,7 @@ public abstract class HHttpServlet extends HttpServlet {
       rctxt.setTimeout(HConstants.REQUEST_TIMEOUT_MILLIS);
 
       try {
-        sess.wireServer.activeMessages.addIncomingStream(messageId, streamId, rctxt);
+        getActiveMessages().addIncomingStream(messageId, streamId, rctxt);
       } catch (BException e) {
         int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
         if (e.code == BExceptionC.CANCELLED) {
@@ -590,7 +681,7 @@ public abstract class HHttpServlet extends HttpServlet {
       String inclLongPollsStr = request.getParameter(HTestAdapter.INCL_LONG_POLLS);
       boolean inclLongPolls = (inclLongPollsStr != null && inclLongPollsStr.length() != 0) ? Boolean.parseBoolean(inclLongPollsStr) : true;
 
-      List<Long> messageIds = sess.wireServer.activeMessages.getActiveMessageIds(inclLongPolls);
+      List<Long> messageIds = getActiveMessages().getActiveMessageIds(inclLongPolls);
       if (log.isDebugEnabled()) log.debug("active messageIds=" + messageIds);
       PrintWriter wr = response.getWriter();
       for (Long messageId : messageIds) {
@@ -609,7 +700,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
     // Return the file names in the temporary directory.
     if (testAdapter.equals(HTestAdapter.TEMP_FILES)) {
-      File[] files = sess.wireServer.getTempDir().listFiles();
+      File[] files = getConfig().getTempDir().listFiles();
       PrintWriter wr = response.getWriter();
       for (File file : files) {
         wr.println(file.getName());
@@ -661,7 +752,7 @@ public abstract class HHttpServlet extends HttpServlet {
     }
 
     @Override
-    public synchronized BContentStream cloneInputStream() throws IOException {
+    public synchronized BContentStream materialize() throws IOException {
       HIncomingStreamSync incomingStream = null;
       if (this.fileItem.isInMemory()) {
         incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), "", streamId, lifetimeMillis, tempDir);
@@ -707,7 +798,7 @@ public abstract class HHttpServlet extends HttpServlet {
       }
 
       // Create a factory for disk-based file items
-      DiskFileItemFactory factory = new DiskFileItemFactory(HConstants.INCOMING_STREAM_BUFFER, sess.wireServer.getTempDir());
+      DiskFileItemFactory factory = new DiskFileItemFactory(HConstants.INCOMING_STREAM_BUFFER, getConfig().getTempDir());
 
       // Create a new file upload handler
       ServletFileUpload upload = new ServletFileUpload(factory);
@@ -740,7 +831,7 @@ public abstract class HHttpServlet extends HttpServlet {
 
         if (item.isFormField()) continue;
 
-        sess.wireServer.activeMessages.addIncomingStream(streamId.longValue(), new FileUploadItemIncomingStream(item, streamId, sess.wireServer.getTempDir()));
+        getActiveMessages().addIncomingStream(streamId.longValue(), new FileUploadItemIncomingStream(item, streamId, getConfig().getTempDir()));
 
       }
 
@@ -777,10 +868,6 @@ public abstract class HHttpServlet extends HttpServlet {
 
   protected long getHtmlUploadMaxSize() {
     return -1L;
-  }
-
-  protected BServerRegistry getServerRegistry() {
-    return serverRegistry;
   }
 
   protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {
@@ -825,7 +912,7 @@ public abstract class HHttpServlet extends HttpServlet {
             // Initialized?
             if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
             if (targetIdFactory != null) {
-              sess = createSession(request, response, hsess, serverRegistry);
+              sess = createSession(request, response, hsess);
               if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
 
               sess.setTargetId(targetIdFactory.createTargetId());
@@ -914,7 +1001,18 @@ public abstract class HHttpServlet extends HttpServlet {
   }
 
   private Log log = LogFactory.getLog(HHttpServlet.class);
-  private volatile BServerRegistry serverRegistry;
+  private volatile BServerRegistry serverRegistry_use_getServerRegistry;
   private volatile HTargetIdFactory targetIdFact_use_getTargetIdFactory;
+  private volatile HActiveMessages activeMessages_use_getActiveMessages;
+  
+  private final static HServerListener defaultListener = new HServerListener() {
+    @Override
+    public boolean onBeforeWriteHttpResponse(ByteBuffer obuf, Throwable e, HttpServletResponse resp, boolean isAsync) throws IOException {
+      return false;
+    }
+    @Override
+    public void onAfterWriteHttpResponse(int nbOfBytesWritten) {
+    }
+  };
 
 }

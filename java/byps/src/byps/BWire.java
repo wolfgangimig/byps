@@ -78,7 +78,7 @@ public class BWire {
 	 * @param streamRequests Streams to send.
 	 * @param asyncResult Result callback.
 	 */
-	public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
+	public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
     asyncResult.setAsyncResult(null, new BException(BExceptionC.INTERNAL, "No wire attached to transport."));
 	}
 	
@@ -86,11 +86,12 @@ public class BWire {
 	 * Gib den Stream zur ID zurück.
 	 * Der Stream wird erst beim ersten read() geöffnet. Bzw. der BLOB wird erst beim ersten read() angefordert.
 	 * Funktion wird client- und serverseitig benötigt.
+	 * @param serverId
 	 * @param strmId
 	 * @return BContentStream object.
 	 * @throws IOException
 	 */
-	public BContentStream getStream(long messageId, long strmId) throws IOException {
+	public BContentStream getStream(int serverId, long messageId, long strmId) throws IOException {
     throw new BException(BExceptionC.INTERNAL, "No wire attached to transport.");
 	}
 	
@@ -98,17 +99,14 @@ public class BWire {
 	 * Kill all requests and free resources.
 	 */
 	public void done() {
-		cancelAllRequests();
 	}
 	
     public static class InputStreamWrapper extends BContentStreamWrapper {
     	
-		public final long messageId;
-    	public final long streamId;
-    	
-    	public InputStreamWrapper(long messageId, long streamId) {
-    		this.messageId = messageId;
-    		this.streamId = streamId;
+    	public InputStreamWrapper(int serverId, long messageId, long streamId) {
+    	  setServerId(serverId);
+    		setMessageId(messageId);
+    		setStreamId(streamId);
     	}
     }
     
@@ -181,9 +179,6 @@ public class BWire {
 		finally {
 			is.close();
 		}
-	}
-
-	public synchronized void cancelAllRequests() {
 	}
 
 	public Object getSessionContext() {

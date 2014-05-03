@@ -20,7 +20,6 @@ public class HIncomingStreamAsync extends BContentStream  {
 	protected InputStream is;
 	protected final HRequestContext rctxt;
 	protected final File tempDir;
-	protected final long streamId;
 	
 	protected long readPos = 0;
 	protected long readMark = 0;
@@ -32,7 +31,7 @@ public class HIncomingStreamAsync extends BContentStream  {
 		this.rctxt = rctxt;
 		this.is = rctxt.getRequest().getInputStream();
 		this.tempDir = tempDir;
-		this.streamId = streamId;
+    this.setStreamId(streamId);
 		setContentDisposition(contentDisposition);
 	}
 	
@@ -73,7 +72,7 @@ public class HIncomingStreamAsync extends BContentStream  {
 			// disturbs the next request.
 			int c = 0;
 			while ((c = is.read()) != -1) {
-				if (log.isDebugEnabled()) log.debug("read before close, " + (char)c);
+				//if (log.isDebugEnabled()) log.debug("read before close, " + (char)c);
 			}
 			is.close();
 			
@@ -130,12 +129,15 @@ public class HIncomingStreamAsync extends BContentStream  {
 	}
 
 	@Override
-	public synchronized BContentStream cloneInputStream() throws BException {
+	public synchronized BContentStream materialize() throws BException {
 		if (readPos != 0) throw new BException(BExceptionC.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
 		HIncomingStreamSync istrm = null;
 		try {
-		  istrm = new HIncomingStreamSync(contentType, contentLength, getContentDisposition(), streamId, lifetimeMillis, tempDir);
+		  istrm = new HIncomingStreamSync(this, lifetimeMillis, tempDir);
 			istrm.assignStream(strm());
+			
+      // materialize closes "this"
+      this.close();
 		} catch (IOException e) {
 			throw new BException(BExceptionC.IOERROR, "Failed to clone stream", e);
 		}

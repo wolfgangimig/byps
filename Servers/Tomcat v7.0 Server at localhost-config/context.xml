@@ -36,5 +36,5 @@
  	<Environment type="java.lang.String" name="bypshttp.serverIds" value="11,22" />
  	<Environment type="java.lang.String" name="bypshttp.server.11.url" value="http://localhost:6080/bypstest-srv/bypsservlet" />
  	<Environment type="java.lang.String" name="bypshttp.server.22.url" value="http://localhost:5080/bypstest-srv/bypsservlet" />
-
+	<Environment type="java.lang.String" name="temp.dir" value="d:/temp/bypssrv/11" />
 </Context>

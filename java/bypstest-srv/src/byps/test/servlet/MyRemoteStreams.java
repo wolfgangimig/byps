@@ -47,7 +47,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 		if (istrm != null) {
 			try {
 				// Clone the stream to be able to store it in a member variable
-				imageStream = ((BContentStream)istrm).cloneInputStream();
+				imageStream = BContentStream.materialize(istrm);
 			} catch (BException e) {
 			  throw e;
 			} catch (IOException e) {
@@ -61,7 +61,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	public InputStream getImage() throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("getImage()=" + imageStream);
 		try {
-      return imageStream.cloneInputStream();
+      return imageStream.cloneStream();
     } catch (IOException e) {
       throw new RemoteException("Failed to clone stream.", e);
     }

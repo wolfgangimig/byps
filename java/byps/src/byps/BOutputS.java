@@ -9,8 +9,8 @@ import byps.BException;
 
 public class BOutputS extends BOutputBin {
 	
-	public BOutputS(BTransport transport, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
-		super(transport, BMessageHeader.MAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder);
+	public BOutputS(BTransport transport, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
+		super(transport, BMessageHeader.MAGIC_BINARY_STREAM, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder);
 	}
 	
 	public BOutputS(BTransport transport, BMessageHeader requestHeader) {

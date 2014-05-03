@@ -95,16 +95,18 @@ public class BTargetId {
 	public static BTargetId parseString(String s) {
 	  int serverId = 0;
 	  long v1 = 0, v2 = 0;
-	  int p = s.indexOf('.');
-	  if (p >= 0) {
-	    serverId = Integer.parseInt(s.substring(0,p));
-	    p++;
-	    int e = s.indexOf('.', p);
-	    if (e >= 0) {
-	      v1 = Long.parseLong(s.substring(p, e));
-	      e++;
-	      v2 = Long.parseLong(s.substring(e));
-	    }
+	  if (s != null) {
+  	  int p = s.indexOf('.');
+  	  if (p >= 0) {
+  	    serverId = Integer.parseInt(s.substring(0,p));
+  	    p++;
+  	    int e = s.indexOf('.', p);
+  	    if (e >= 0) {
+  	      v1 = Long.parseLong(s.substring(p, e));
+  	      e++;
+  	      v2 = Long.parseLong(s.substring(e));
+  	    }
+  	  }
 	  }
 		return new BTargetId(serverId, v1,v2);
 	}

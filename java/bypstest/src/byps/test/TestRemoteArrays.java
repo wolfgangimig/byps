@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import byps.BBinaryModel;
 import byps.BException;
+import byps.BMessageHeader;
 import byps.BProtocolJson;
 import byps.BProtocolS;
 import byps.BWire;
@@ -87,7 +88,7 @@ public class TestRemoteArrays {
 	
 	private void internalTestPerformance(BBinaryModel protocol, int flags, int loopCount, int objCount) throws RemoteException {
 		TestUtils.protocol = protocol;
-		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, flags, BApiDescriptor_Testser.VERSION, 1);
+		BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, flags, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, 1);
 		
 		client.getTransport().getWire().clearStatistics();
 

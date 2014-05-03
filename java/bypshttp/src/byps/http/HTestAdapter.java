@@ -47,6 +47,11 @@ public class HTestAdapter implements BTestAdapter {
 				new String[] { HTestAdapter.VERSION + "=" + version });
 	}
 	
+  @Override
+  public void cancelAllRequests() {
+    wire.internalCancelAllRequests(HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS);
+  }
+	
 	protected final HWireClient wire;
 	
 	/**
