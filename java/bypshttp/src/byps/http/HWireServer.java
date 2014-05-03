@@ -174,10 +174,11 @@ public class HWireServer extends BWire {
         throw new IllegalStateException(ex);
       }
       finally {
-        // Alle Streams zur Anfrage müssen geschlossen sein.
-        // Dies stellt sicher, dass nicht versucht wird, einen eingehenden
-        // Stream
-        // als ausgehenden Stream zurückzugeben
+        // Close all incoming streams of this message.
+        // This is especially important if the server-side has not completely 
+        // read all incoming streams. Since the client waits until all requests
+        // of a message are returned, all incoming streams must be closed and 
+        // the associated requests must return.
         activeMessages.closeMessageIncomingStreams(header.messageId);
       }
       if (log.isDebugEnabled()) log.debug(")setAsyncResult");
