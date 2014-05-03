@@ -18,8 +18,13 @@ public class HTempFile {
 	
 	public static HTempFile createTemp(File tempDir, long streamId) throws IOException {
 		HTempFile t = new HTempFile();
-		String fileName = "bupload_" + streamId + ".tmp";
-		t.file = new File(tempDir, fileName);
+    if (streamId != 0) {
+      String fileName = "bupload_" + streamId + ".tmp";
+      t.file = new File(tempDir, fileName);
+    }
+    else {
+      t.file = File.createTempFile("bupload_", ".tmp", tempDir);
+    }
 		return t;
 	}
 	
