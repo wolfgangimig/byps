@@ -21,7 +21,7 @@ import byps.BWire.OutputStreamByteCount;
 
 public class JcnnPutStream extends JcnnRequest {
   
-  private Log log = LogFactory.getLog(JcnnPutStream.class);
+  private static Log log = LogFactory.getLog(JcnnPutStream.class);
   private final InputStream stream;
   private final BAsyncResult<ByteBuffer> asyncResult;
   private final static int CHUNK_SIZE = 10 * 1000;

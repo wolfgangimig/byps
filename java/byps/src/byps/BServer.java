@@ -111,6 +111,6 @@ public class BServer {
     return clientR;
   }
   
-	private final Log log = LogFactory.getLog(BServer.class);
+	private final static Log log = LogFactory.getLog(BServer.class);
 
 }

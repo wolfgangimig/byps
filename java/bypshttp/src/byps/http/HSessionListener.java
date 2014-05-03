@@ -16,7 +16,7 @@ import byps.BTargetId;
 @WebListener
 public class HSessionListener implements HttpSessionListener {
 
-  private final Log log = LogFactory.getLog(HSessionListener.class);
+  private final static Log log = LogFactory.getLog(HSessionListener.class);
   private final static ConcurrentHashMap<BTargetId, HSession> sessions = new ConcurrentHashMap<BTargetId, HSession>();
   
   public HSessionListener() {
@@ -44,7 +44,6 @@ public class HSessionListener implements HttpSessionListener {
   }
 
   public static void attachBSession(HttpSession hsess, HSession sess) {
-    Log log = LogFactory.getLog(HSessionListener.class);
     if (log.isDebugEnabled()) log.debug("sessionDestroyed(");
     hsess.setAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME, sess);
     BTargetId targetId = sess.getTargetId();

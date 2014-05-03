@@ -16,7 +16,7 @@ import byps.BExceptionC;
 
 public class HIncomingStreamAsync extends BContentStream  {
 
-	private Log log = LogFactory.getLog(HIncomingStreamAsync.class);
+	private static Log log = LogFactory.getLog(HIncomingStreamAsync.class);
 	protected InputStream is;
 	protected final HRequestContext rctxt;
 	protected final File tempDir;

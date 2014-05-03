@@ -361,6 +361,6 @@ public class BWire {
   protected SecureRandom rand;
 	protected Object sess;
 	protected int flags;
-	private final Log log = LogFactory.getLog(BWire.class);
+	private final static Log log = LogFactory.getLog(BWire.class);
 
 }

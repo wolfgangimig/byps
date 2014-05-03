@@ -691,7 +691,6 @@ public abstract class HHttpServlet extends HttpServlet {
   }
 
   protected void doHtmlUpload(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Log log = LogFactory.getLog(HFileUploadItem.class);
     if (log.isDebugEnabled()) log.debug("doHtmlUpload(");
 
     final HSession sess = getSessionFromRequest(request, response, false);
@@ -913,7 +912,7 @@ public abstract class HHttpServlet extends HttpServlet {
     return sbuf.toString();
   }
 
-  private Log log = LogFactory.getLog(HHttpServlet.class);
+  private static Log log = LogFactory.getLog(HHttpServlet.class);
   private volatile BServerRegistry serverRegistry;
   private volatile HTargetIdFactory targetIdFact_use_getTargetIdFactory;
 

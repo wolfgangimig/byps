@@ -20,7 +20,7 @@ import byps.BWire.OutputStreamByteCount;
 
 public class JcnnPost extends JcnnRequest {
 
-  private Log log = LogFactory.getLog(JcnnPost.class);
+  private static Log log = LogFactory.getLog(JcnnPost.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
   private ByteBuffer buf;
   

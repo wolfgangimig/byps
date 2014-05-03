@@ -22,7 +22,7 @@ import byps.BWire;
 
 public class AsfGet extends AsfRequest {
 
-  private Log log = LogFactory.getLog(AsfGet.class);
+  private static Log log = LogFactory.getLog(AsfGet.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
   
   protected AsfGet(String url, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient) {

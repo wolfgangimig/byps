@@ -21,7 +21,7 @@ import byps.BExceptionC;
 
 public class AsfGetStream extends AsfRequest {
 
-  private Log log = LogFactory.getLog(AsfGetStream.class);
+  private static Log log = LogFactory.getLog(AsfGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
   protected AsfGetStream(String url, BAsyncResult<BContentStream> asyncResult, CloseableHttpClient httpClient) {

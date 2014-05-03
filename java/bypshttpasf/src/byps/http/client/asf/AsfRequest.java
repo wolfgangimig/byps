@@ -21,7 +21,7 @@ public abstract class AsfRequest implements HHttpRequest {
   protected int connectTimeoutSeconds;
   protected int sendRecvTimeoutSeconds;
   protected AtomicBoolean cancelled = new AtomicBoolean();
-  private Log log = LogFactory.getLog(AsfRequest.class);
+  private static Log log = LogFactory.getLog(AsfRequest.class);
   
   /**
    * HTTP status code. 

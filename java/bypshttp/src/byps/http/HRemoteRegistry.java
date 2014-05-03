@@ -28,7 +28,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 	private final ConcurrentHashMap<Integer, BClient> clientMap = new ConcurrentHashMap<Integer, BClient>();
 	private final ExecutorService tpool = Executors.newCachedThreadPool(new PoolThreadFactory());
 	private final HConfig config;
-	private final Log log = LogFactory.getLog(HRemoteRegistry.class);
+	private final static Log log = LogFactory.getLog(HRemoteRegistry.class);
 	
 	public HRemoteRegistry(HConfig config) {
 		this.config = config;

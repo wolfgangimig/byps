@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
  * If the reference counter is decremented to zero, the file is deleted.
  */
 public class HTempFile {
-	private Log log = LogFactory.getLog(HTempFile.class);
+	private static Log log = LogFactory.getLog(HTempFile.class);
 	private File file;
 	private AtomicInteger refCount = new AtomicInteger(1);
 	

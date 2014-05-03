@@ -58,7 +58,6 @@ public class HServerR extends BServerR {
 
   protected class LongPoll implements Runnable {
 
-    private final Log log = LogFactory.getLog("LongPoll");
     protected BMessage methodResult;
 
     protected LongPoll(BMessage methodResult) throws BException {
@@ -241,5 +240,5 @@ public class HServerR extends BServerR {
   protected final long sleepMillisBeforeRetry;
   // protected final Thread workerThread = new WorkerThread();
   // protected LongPoll currentLongPoll_access_sync;
-  private final Log log = LogFactory.getLog(HServerR.class);
+  private final static Log log = LogFactory.getLog(HServerR.class);
 }

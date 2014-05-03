@@ -10,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStreamWrapper;
 
 public class HOutgoingStream extends BContentStreamWrapper {
-	private Log log = LogFactory.getLog(HOutgoingStream.class);
+	private static Log log = LogFactory.getLog(HOutgoingStream.class);
 	public final long streamId;
 	
 	private AtomicBoolean closed = new AtomicBoolean();

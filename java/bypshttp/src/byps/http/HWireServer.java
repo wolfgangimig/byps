@@ -26,7 +26,7 @@ public class HWireServer extends BWire {
 
   private final HWriteResponseHelper writeHelper;
   public final HActiveMessages activeMessages = new HActiveMessages();
-  private final Log log = LogFactory.getLog(HWireServer.class);
+  private final static Log log = LogFactory.getLog(HWireServer.class);
   private final File tempDir;
 
   public HWireServer(HWriteResponseHelper writeHelper, File tempDir) {
@@ -139,7 +139,6 @@ public class HWireServer extends BWire {
 
     final boolean isAsync;
     final BMessageHeader header;
-    private final Log log = LogFactory.getLog("AsyncMessageResponse");
 
     AsyncMessageResponse(BMessageHeader header, boolean isAsync) {
       this.header = header;

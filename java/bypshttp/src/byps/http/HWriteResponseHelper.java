@@ -17,7 +17,7 @@ import byps.BMessageHeader;
 
 public class HWriteResponseHelper {
 
-  private final Log log = LogFactory.getLog(HWriteResponseHelper.class);
+  private final static Log log = LogFactory.getLog(HWriteResponseHelper.class);
   private HServerListener listener;
 
   public HWriteResponseHelper(HServerListener listener) {

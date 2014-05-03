@@ -17,7 +17,7 @@ import byps.BExceptionC;
 
 public class HIncomingStreamSync extends BContentStream {
 	
-	private final Log log = LogFactory.getLog(HIncomingStreamSync.class);
+	private final static Log log = LogFactory.getLog(HIncomingStreamSync.class);
 	private final static int NO_BYTES = 0;
 	private final static int FIRST_BYTES = 1;
 	private final static int SECOND_BYTES = 2;

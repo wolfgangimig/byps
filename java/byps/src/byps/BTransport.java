@@ -605,6 +605,6 @@ public class BTransport {
    */
   protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
   
-  private final Log log = LogFactory.getLog(BTransport.class);
+  private final static Log log = LogFactory.getLog(BTransport.class);
 
 }

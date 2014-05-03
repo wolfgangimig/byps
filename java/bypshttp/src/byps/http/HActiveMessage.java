@@ -22,7 +22,7 @@ import byps.BExceptionC;
 import byps.BStreamRequest;
 
 public class HActiveMessage {
-  private final Log log = LogFactory.getLog(HActiveMessage.class);
+  private final static Log log = LogFactory.getLog(HActiveMessage.class);
   public final Long messageId;
   private long bestBefore;
   private HRequestContext rctxtMessage;
@@ -209,7 +209,6 @@ public class HActiveMessage {
         if (istrm == null) {
 
           istrm = new HIncomingSplittedStreamAsync(contentType, totalLength, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
-            private Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
 
             public void close() throws IOException {
               if (log.isDebugEnabled()) log.debug("close incoming stream " + streamId + "(");
@@ -237,7 +236,6 @@ public class HActiveMessage {
       else {
 
         istrm = new HIncomingStreamAsync(contentType, contentLength, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
-          private Log log = LogFactory.getLog(HIncomingStreamAsync.class);
 
           public void close() throws IOException {
             if (log.isDebugEnabled()) log.debug("close incoming stream " + streamId + "(");

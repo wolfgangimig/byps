@@ -14,7 +14,7 @@ import byps.BExceptionC;
 
 public class HIncomingSplittedStreamAsync extends BContentStream {
 
-	private Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
+	private static Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
 	protected final File tempDir;
 	protected final long streamId;
 	protected long readPos;

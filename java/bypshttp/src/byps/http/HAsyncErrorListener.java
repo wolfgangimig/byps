@@ -29,5 +29,5 @@ abstract class HAsyncErrorListener implements AsyncListener {
 //	public void onError(AsyncEvent arg0) throws IOException {
 //	}
 
-	private final Log log = LogFactory.getLog(HAsyncErrorListener.class);
+	private final static Log log = LogFactory.getLog(HAsyncErrorListener.class);
 }

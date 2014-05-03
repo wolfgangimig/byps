@@ -24,7 +24,7 @@ import byps.BExceptionC;
 
 public class AsfPutStream extends AsfRequest {
   
-  private Log log = LogFactory.getLog(AsfPutStream.class);
+  private static Log log = LogFactory.getLog(AsfPutStream.class);
   private final InputStream stream;
   private final BAsyncResult<ByteBuffer> asyncResult;
   private final static int CHUNK_SIZE = 10 * 1000;

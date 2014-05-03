@@ -388,7 +388,7 @@ public class HWireClientR extends BWire {
   private final ConcurrentHashMap<Long, BAsyncResult<BMessage>> mapAsyncResults = new ConcurrentHashMap<Long, BAsyncResult<BMessage>>();
   private final BlockingQueue<PendingMessage> pendingMessages = new LinkedBlockingQueue<PendingMessage>();
   private final BWire wireServer;
-  private final Log log = LogFactory.getLog(HWireClientR.class);
+  private final static Log log = LogFactory.getLog(HWireClientR.class);
   private volatile boolean canceled;
 
 }

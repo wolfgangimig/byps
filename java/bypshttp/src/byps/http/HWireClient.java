@@ -66,7 +66,7 @@ public class HWireClient extends BWire {
                                                                        // multiple
                                                                        // of
                                                                        // CHUNK_SIZE
-  protected final Log log = LogFactory.getLog(HWireClient.class);
+  protected final static Log log = LogFactory.getLog(HWireClient.class);
   protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
   // protected final Map<RequestToCancel, Boolean> openRequestsToCancel =
   // Collections.synchronizedMap(new HashMap<RequestToCancel, Boolean>());
@@ -615,7 +615,6 @@ public class HWireClient extends BWire {
     volatile RequestToCancel request;
     volatile HttpURLConnection conn;
     volatile Throwable ex;
-    protected final Log log = LogFactory.getLog(MyInputStream.class);
 
     public MyInputStream(long messageId, long streamId) {
       super(messageId, streamId);

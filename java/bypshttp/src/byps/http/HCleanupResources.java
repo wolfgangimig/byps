@@ -12,7 +12,8 @@ public class HCleanupResources {
 	
 	protected final Map<BTargetId, HSession> sessions;
 	protected final MyCleanupThread cleanupThread;
-	
+  private final static Log log = LogFactory.getLog(HCleanupResources.class);
+
 	public HCleanupResources(Map<BTargetId, HSession> sessions) {
 		this.sessions = sessions;
 		this.cleanupThread = new MyCleanupThread();
@@ -32,7 +33,6 @@ public class HCleanupResources {
 
     @Override
     public void run() {
-      Log log = LogFactory.getLog(HCleanupResources.class);
       try {
         while (!Thread.interrupted()) {
           Thread.sleep(HConstants.CLEANUP_MILLIS);

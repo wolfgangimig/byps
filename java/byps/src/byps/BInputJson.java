@@ -191,6 +191,6 @@ public class BInputJson extends BInput {
 	protected BJsonObject objectTable;
 	public BJsonObject currentObject;
 	public final BBufferJson bbuf;
-	private final Log log = LogFactory.getLog(BInputJson.class);
+	private final static Log log = LogFactory.getLog(BInputJson.class);
 }
 

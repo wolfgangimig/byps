@@ -188,6 +188,6 @@ public abstract class HSession
     return this.remoteUser;
   }
 
-  private final Log log = LogFactory.getLog(HSession.class);
+  private final static Log log = LogFactory.getLog(HSession.class);
 
 }

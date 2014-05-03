@@ -25,7 +25,7 @@ import byps.BWire;
 
 public class AsfPost extends AsfRequest {
 
-  private Log log = LogFactory.getLog(AsfPost.class);
+  private static Log log = LogFactory.getLog(AsfPost.class);
   private final ByteBuffer buf;
   private final BAsyncResult<ByteBuffer> asyncResult;
   

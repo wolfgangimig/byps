@@ -206,6 +206,6 @@ public abstract class BClient {
     return "[" + getClass().getSimpleName() + ", transport=" + transport.toString() + "]";
   }
 	
-  private final Log log = LogFactory.getLog(BClient.class);
+  private final static Log log = LogFactory.getLog(BClient.class);
 
 }

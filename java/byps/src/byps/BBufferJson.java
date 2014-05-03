@@ -931,7 +931,7 @@ public class BBufferJson extends BBuffer {
   }
 
 	
-	private Log log = LogFactory.getLog(BBufferJson.class);
+	private static Log log = LogFactory.getLog(BBufferJson.class);
 }
 
 //2,5 times slower for strings with 30 characters.

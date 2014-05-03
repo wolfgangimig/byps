@@ -18,7 +18,7 @@ import byps.BWire;
 
 public class JcnnGetStream extends JcnnRequest {
 
-  private Log log = LogFactory.getLog(JcnnGetStream.class);
+  private static Log log = LogFactory.getLog(JcnnGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
   protected JcnnGetStream(String url, BAsyncResult<BContentStream> asyncResult, CookieManager cookieManager) {

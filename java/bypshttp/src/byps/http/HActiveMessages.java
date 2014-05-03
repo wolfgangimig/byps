@@ -34,7 +34,7 @@ public class HActiveMessages {
 	 */
 	private final ConcurrentHashMap<Long, BContentStream> uploadStreams = new ConcurrentHashMap<Long, BContentStream>();
 	
-	private Log log = LogFactory.getLog(HActiveMessages.class);
+	private static Log log = LogFactory.getLog(HActiveMessages.class);
 	private File tempDir;
 	
 	public HActiveMessages() {
