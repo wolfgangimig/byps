@@ -51,7 +51,7 @@ public class BSerializer_15 extends BSerializer {
 		  final long streamId = bin.bbuf.getLong();
 		  final int serverId = bin1.transport.getTargetId().serverId;
 		  final long messageId =  bin1.header.messageId;
-		  targetId = new BTargetId(serverId, streamId, messageId);
+		  targetId = new BTargetId(serverId, messageId, streamId);
 		}
 
 		try {

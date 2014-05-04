@@ -139,7 +139,7 @@ namespace byps
             int lineNumber = callStack.GetFileLineNumber();
 
             String iso = DateTime.Now.ToString("HH':'mm':'ss','fff");
-            int threadName = Thread.CurrentThread.ManagedThreadId;
+            String threadName = "thread-" + Thread.CurrentThread.ManagedThreadId;
 
             String logline = iso + " " + threadName + " " + level + " " + fileName + ":" + lineNumber + " " + msg;
 

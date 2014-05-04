@@ -199,7 +199,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         
         activeMessages_use_getActiveMessages = new HActiveMessages(config.getTempDir());
 
-        cleanupThread = new HCleanupResources(HSessionListener.getAllSessions());
+        cleanupThread = new HCleanupResources(HSessionListener.getAllSessions(), HHttpServlet.this);
         
         initializationFinished();
 
@@ -368,7 +368,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       final long streamId = BBufferJson.parseLong(streamIdStr);
       final String serverIdStr = request.getParameter("serverid");
       
-      final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer.valueOf(serverIdStr) : 0;
+      final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer.valueOf(serverIdStr) : getConfig().getMyServerId();
       final BTargetId targetId = new BTargetId(serverId, messageId, streamId);
       final BClient forwardClient = serverId != 0 ? getServerRegistry().getForwardClientIfForeignTargetId(targetId) : null;
       
@@ -456,7 +456,12 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         rctxt.setTimeout(timeout);
 
         final BAsyncResult<BMessage> asyncResponse = sess.wireServer.addMessage(header, rctxt, null);
-        sess.wireClientR.recvLongPoll(msg, asyncResponse);
+        
+        // Message already canceled?
+        if (asyncResponse != null) {
+          sess.wireClientR.recvLongPoll(msg, asyncResponse);
+        }
+        
       }
       else {
         final HRequestContext rctxt2 = rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);

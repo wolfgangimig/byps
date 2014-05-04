@@ -102,13 +102,12 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	@Override
 	public int read(byte[] b, int off, int len) throws IOException {
-		if (log.isDebugEnabled()) log.debug("read " + targetId + "(" + b + ", offs=" + off + ", len=" + len);
 		try {
 			int n = strm().read(b, off, len);
 			if (n != -1) {
 			  readPos += n;
 			}
-			if (log.isDebugEnabled()) log.debug(")read=" + n);
+	    //if (log.isDebugEnabled()) log.debug("read " + targetId + " (len=" + len + ")=" + n);
 			return n;
 		}
 		catch (IOException e) {

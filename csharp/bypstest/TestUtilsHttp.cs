@@ -8,6 +8,7 @@ using byps;
 using byps.test.api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Net;
 
 namespace bypstest
 {
@@ -25,9 +26,10 @@ namespace bypstest
             BClient_Testser client = null;
             try
             {
+                ServicePointManager.DefaultConnectionLimit = 1000;
 
                 BWire wire = new HWireClient(url, flags, 120);
-                BTransportFactory transportFactory = new HTransportFactoryClient(BApiDescriptor_Testser.instance, wire, 3);
+                BTransportFactory transportFactory = new HTransportFactoryClient(BApiDescriptor_Testser.instance, wire, 1);
 
                 client = BClient_Testser.createClient(transportFactory);
 

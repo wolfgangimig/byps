@@ -497,7 +497,6 @@ namespace byps
 
             public override void Close()
             {
-                base.Close();
                 if (response != null)
                 {
                     response.Close();
@@ -508,32 +507,19 @@ namespace byps
 
 		    public override long ContentLength 
             {
-                get 
+                get
                 {
-			        try 
-                    {
-				        ensureStream();
-				        return contentLength;
-			        } catch (IOException e) 
-                    {
-				        throw new InvalidOperationException(e.ToString());
-			        }
-		        }
+                    ensureStream();
+                    return contentLength;
+                }
             }
 
             public override String ContentType
             {
                 get
                 {
-                    try
-                    {
-                        ensureStream();
-                        return contentType;
-                    }
-                    catch (IOException e)
-                    {
-                        throw new InvalidOperationException(e.ToString());
-                    }
+                    ensureStream();
+                    return contentType;
                 }
             }
 

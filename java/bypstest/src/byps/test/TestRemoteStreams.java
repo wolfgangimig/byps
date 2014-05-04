@@ -241,7 +241,7 @@ public class TestRemoteStreams {
   @Test
   public void testRemoteStreamsCloseStreamAfterSend() throws RemoteException {
     log.info("testRemoteStreamsCloseStreamAfterSend(");
-    int count = 10;
+    int count = 1;
 
     for (int i = 0; i < count; i++) {
       internalTestRemoteStreamsClosed();
@@ -271,6 +271,13 @@ public class TestRemoteStreams {
     if (log.isDebugEnabled()) log.debug("setImages...");
     remote.setImages(mystreams, 1);
     if (log.isDebugEnabled()) log.debug("setImages OK");
+    
+    // Stream at index 1 has not been read by the server.
+    // The internal cleanup thread has to read the stream and close it 
+    // after the message is sent.
+    // Now wait for at most HConstants.CLEANUP_MILLIS until HActiveMessages.cleanup()
+    // closes the stream and returns a response for this stream.
+    // Then, the client will return from remote.setImages().
 
     for (int i = 0; i < nbOfStreams; i++) {
       MyInputStream istrm = (MyInputStream) mystreams.get(i);
@@ -295,7 +302,7 @@ public class TestRemoteStreams {
   public void testRemoteStreamsThrowExceptionOnRead() throws InterruptedException, IOException {
     log.info("testRemoteStreamsThrowExceptionOnRead(");
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
       internalTestThrowExOnRead(true, false);
       internalTestThrowExOnRead(false, true);
     }
@@ -340,6 +347,14 @@ public class TestRemoteStreams {
       log.info("setImages...");
       remote.setImages(streams, -1);
       Assert.fail("Exception expected");
+      
+      // The server waits for the stream in HActiveMessages.getIncomingOrOutgoingStream().
+      // But the stream is never sent due to the text exception.
+      // The client handles the exception by sending a cancel message.
+      // This message interrupts the server. It needs at most HConstants.CLEANUP_MILLIS
+      // until all streams of the message are internally released. 
+      // Then the remote.setImages() will return.
+      
     } catch (BException e) {
       log.info("setImages ex=" + e + ", OK");
 

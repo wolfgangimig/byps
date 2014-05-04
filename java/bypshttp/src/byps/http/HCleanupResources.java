@@ -12,9 +12,11 @@ public class HCleanupResources {
 	
 	protected final Map<BTargetId, HSession> sessions;
 	protected final MyCleanupThread cleanupThread;
+	protected final HServerContext serverContext;
 	
-	public HCleanupResources(Map<BTargetId, HSession> sessions) {
+	public HCleanupResources(Map<BTargetId, HSession> sessions, HServerContext serverContext) {
 		this.sessions = sessions;
+		this.serverContext = serverContext;
 		this.cleanupThread = new MyCleanupThread();
 		this.cleanupThread.start();
 	}
@@ -42,6 +44,8 @@ public class HCleanupResources {
             for (HSession sess : arrSessions) {
               sess.removeExpiredResources();
             }
+            
+            serverContext.getActiveMessages().cleanup(false);
           }
           catch (Throwable e) {
             log.error("Unexpected exception in cleanup-thread: ", e);
