@@ -86,12 +86,11 @@ public class BWire {
 	 * Gib den Stream zur ID zurück.
 	 * Der Stream wird erst beim ersten read() geöffnet. Bzw. der BLOB wird erst beim ersten read() angefordert.
 	 * Funktion wird client- und serverseitig benötigt.
-	 * @param serverId
-	 * @param strmId
+	 * @param targetId Stream target ID
 	 * @return BContentStream object.
 	 * @throws IOException
 	 */
-	public BContentStream getStream(int serverId, long messageId, long strmId) throws IOException {
+	public BContentStream getStream(BTargetId targetId) throws IOException {
     throw new BException(BExceptionC.INTERNAL, "No wire attached to transport.");
 	}
 	
@@ -103,11 +102,10 @@ public class BWire {
 	
     public static class InputStreamWrapper extends BContentStreamWrapper {
     	
-    	public InputStreamWrapper(int serverId, long messageId, long streamId) {
-    	  setServerId(serverId);
-    		setMessageId(messageId);
-    		setStreamId(streamId);
+    	public InputStreamWrapper(BTargetId targetId) {
+    	  setTargetId(targetId);
     	}
+
     }
     
     /**

@@ -15,48 +15,47 @@ public class BSerializer_15 extends BSerializer {
 	@Override
 	public void write(final Object obj, final BOutput bout1, final long version) throws BException {
 		final BOutputBin bout = ((BOutputBin)bout1);
-		InputStream is = (InputStream)obj;
-		BContentStream bstream = bout.createStreamRequest(is);
-		
-		bout.bbuf.putLong(bstream.getStreamId());
+		final InputStream is = (InputStream)obj;
+		final BContentStream bstream = bout.createStreamRequest(is);
+		final BTargetId targetId = bstream.getTargetId();
 		
 		if (bout1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION) {
-      bout.bbuf.putInt(bstream.getServerId());
-      bout.bbuf.putLong(bstream.getMessageId());
+      bstream.getTargetId().write(bout.bbuf);
       bout.bbuf.putLong(bstream.getContentLength());
       bout.bbuf.putString(bstream.getContentType());
       bout.bbuf.putBoolean(bstream.isAttachment());
       bout.bbuf.putString(bstream.getFileName());
+		}
+		else {
+		  bout.bbuf.putLong(targetId.getStreamId());
 		}
 	}
 
 	@Override
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		BInputBin bin = ((BInputBin)bin1);
-		
-		long streamId = bin.bbuf.getLong();
-		int serverId = 0;
-		long messageId = 0;
+		BTargetId targetId = null;
 		long contentLength = 0;
 		String contentType = BContentStream.DEFAULT_CONTENT_TYPE;
     boolean attachment = false;
 		String fileName = "";
 		
 		if (bin1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION) {
-		  serverId = bin.bbuf.getInt();
-		  messageId = bin.bbuf.getLong();
+		  targetId = BTargetId.read(bin.bbuf);
 		  contentLength = bin.bbuf.getLong();
 		  contentType = bin.bbuf.getString();
 		  attachment = bin.bbuf.getBoolean();
 		  fileName = bin.bbuf.getString();
     }
 		else {
-		  serverId = bin1.transport.getTargetId().serverId;
-		  messageId =  bin1.header.messageId;
+		  final long streamId = bin.bbuf.getLong();
+		  final int serverId = bin1.transport.getTargetId().serverId;
+		  final long messageId =  bin1.header.messageId;
+		  targetId = new BTargetId(serverId, streamId, messageId);
 		}
 
 		try {
-			BContentStream strm = bin.transport.getWire().getStream(serverId, messageId, streamId);
+			BContentStream strm = bin.transport.getWire().getStream(targetId);
 			bin.onObjectCreated(strm);
 			strm.setContentLength(contentLength);
 			strm.setContentType(contentType);

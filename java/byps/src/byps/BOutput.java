@@ -107,10 +107,12 @@ public abstract class BOutput {
 		// wants to forward the stream to another client. Thus 
 		// we do not have to upload the stream.
 		
-		if (bstrm.getStreamId() == 0) { 
-		  bstrm.setMessageId( header.messageId);
-		  bstrm.setStreamId( transport.getWire().makeMessageId() );
-  		bstrm.setServerId( transport.getTargetId().serverId );
+		if (bstrm.getTargetId().isZero()) {
+		  BTargetId targetId = new BTargetId(
+		      transport.getConnectedServerId(),
+		      header.messageId,
+		      transport.getWire().makeMessageId());
+		  bstrm.setTargetId(targetId);
       streams.add(bstrm);
 		}
 		

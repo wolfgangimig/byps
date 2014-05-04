@@ -37,6 +37,7 @@ import byps.BMessageHeader;
 import byps.BProtocol;
 import byps.BProtocolJson;
 import byps.BProtocolS;
+import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
@@ -51,8 +52,8 @@ import byps.test.api.prim.PrimitiveTypes;
 public class TestUtils {
 
 	private static Log log = LogFactory.getLog(TestUtils.class);
-	public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
-	//public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
+	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
+	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	public static boolean TEST_LARGE_STREAMS = false;
 	
 	public static BTransport createTransport() {
@@ -106,12 +107,12 @@ public class TestUtils {
 				ByteBuffer buf;
 				try {
 					buf = bufferFromStream(streamRequest);
-					HashMap<Long, ByteBuffer> map = mapStreams.get(streamRequest.getMessageId());
+					HashMap<Long, ByteBuffer> map = mapStreams.get(streamRequest.getTargetId().getMessageId());
 					if (map == null) {
 						map = new HashMap<Long, ByteBuffer>();
-						mapStreams.put(streamRequest.getMessageId(), map);
+						mapStreams.put(streamRequest.getTargetId().getMessageId(), map);
 					}
-					map.put(streamRequest.getMessageId(), buf);
+					map.put(streamRequest.getTargetId().getMessageId(), buf);
 				} catch (IOException e) {
 					asyncResult.setAsyncResult(null, e);
 					break;
@@ -120,11 +121,11 @@ public class TestUtils {
 		}
 
 		@Override
-		public BContentStream getStream(int serverId, long messageId, long streamId)
+		public BContentStream getStream(BTargetId targetId)
 				throws IOException {
-			HashMap<Long, ByteBuffer> map = mapStreams.get(messageId);
+			HashMap<Long, ByteBuffer> map = mapStreams.get(targetId.getMessageId());
 			if (map == null) throw new IOException("Stream not found.");
-			ByteBuffer buf = map.get(streamId);
+			ByteBuffer buf = map.get(targetId.getStreamId());
 			if (buf == null) throw new IOException("Stream not found.");
 			return new BContentStreamWrapper(
 					new ByteArrayInputStream(buf.array(), buf.position(), buf.remaining()),

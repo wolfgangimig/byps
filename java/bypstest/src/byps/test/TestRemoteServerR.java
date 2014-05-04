@@ -762,7 +762,7 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	//@Test
+	@Test
 	public void testPutStreamFromClientToClientOnOtherServer() throws InterruptedException, IOException {
 		log.info("testPutStreamFromClientToClientOnOtherServer(");
 		

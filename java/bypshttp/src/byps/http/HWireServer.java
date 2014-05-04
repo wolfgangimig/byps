@@ -19,6 +19,7 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BMessage;
 import byps.BMessageHeader;
+import byps.BTargetId;
 import byps.BWire;
 
 public class HWireServer extends BWire {
@@ -55,8 +56,8 @@ public class HWireServer extends BWire {
 
   private class MyIncomingInputStream extends BWire.InputStreamWrapper {
 
-    public MyIncomingInputStream(int serverId, long messageId, long streamId) {
-      super(serverId, messageId, streamId);
+    public MyIncomingInputStream(BTargetId targetId) {
+      super(targetId);
     }
 
     @Override
@@ -65,8 +66,8 @@ public class HWireServer extends BWire {
 
       BContentStream is = null;
       try {
-        is = activeMessages.getIncomingStream(messageId, streamId);
-        if (log.isDebugEnabled()) log.debug("stream for messageId=" + messageId + ", streamId=" + streamId + ", is=" + is);
+        is = activeMessages.getIncomingStream(targetId);
+        if (log.isDebugEnabled()) log.debug("stream for targetId=" + targetId + ", is=" + is);
 
         if (is == null) {
           throw new IOException("Timeout while waiting for stream");
@@ -106,9 +107,9 @@ public class HWireServer extends BWire {
   }
 
   @Override
-  public BContentStream getStream(int serverId, long messageId, long streamId) throws IOException {
-    if (log.isDebugEnabled()) log.debug("getStream(messageId=" + messageId + ", streamId=" + streamId);
-    MyIncomingInputStream is = new MyIncomingInputStream(serverId, messageId, streamId);
+  public BContentStream getStream(BTargetId targetId) throws IOException {
+    if (log.isDebugEnabled()) log.debug("getStream(" + targetId);
+    MyIncomingInputStream is = new MyIncomingInputStream(targetId);
     if (log.isDebugEnabled()) log.debug(")getStream=" + is);
     return is;
   }

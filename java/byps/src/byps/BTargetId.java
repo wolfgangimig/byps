@@ -16,31 +16,30 @@ public class BTargetId {
 	
 	/**
 	 * First ID value.
+	 * If used for a stream, this value is the message ID.
 	 */
-	public final long v1;
+	private final long v1;
 	
 	/**
 	 * Second ID value.
+   * If used for a stream, this value is the stream ID.
 	 */
-	public final long v2;
+	private final long v2;
+	
+	/**
+	 * Constant object to be used instead of a null reference.
+	 */
+	public final static BTargetId ZERO = new BTargetId(0,0,0);
 	
 	/**
 	 * Constructor.
-	 * @param v1
-	 * @param v2
+	 * @param v1 If used for a stream, this value is the message ID.
+	 * @param v2 If used for a stream, this value is the stream ID.
 	 */
 	public BTargetId(int serverId, long v1, long v2) {
 	  this.serverId = serverId;
 		this.v1 = v1;
 		this.v2 = v2;
-	}
-	
-	/**
-	 * Default constructor.
-	 */
-	public BTargetId() {
-	  serverId = 0;
-		v1 = v2 = 0;
 	}
 	
 	/**
@@ -133,5 +132,33 @@ public class BTargetId {
     return true;
   }
 
+  public long getMessageId() {
+    return v1;
+  }
+  
+  public long getStreamId() {
+    return v2;
+  }
 
+  /**
+   * Serialize the object into a buffer.
+   * @param buf Destination buffer.
+   */
+  public void write(BBuffer buf) {
+    buf.putInt(serverId);
+    buf.putLong(v1);
+    buf.putLong(v2);
+  }
+  
+  /**
+   * Deserialize a target ID from a buffer.
+   * @param buf Source buffer
+   * @return target ID
+   */
+  public static BTargetId read(BBuffer buf) {
+    int serverId = buf.getInt();
+    long v1 = buf.getLong();
+    long v2 = buf.getLong();
+    return new BTargetId(serverId,v1,v2);
+  }
 }

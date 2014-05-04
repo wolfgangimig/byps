@@ -114,7 +114,7 @@ public class BNegotiate {
 			bbuf.putChar('L');
 		}
 
-		bbuf.putString((targetId != null ? targetId : new BTargetId()).toString());
+		bbuf.putString((targetId != null ? targetId : BTargetId.ZERO).toString());
 		
 		if (bversion != 0) {
 		  bbuf.putInt(bversion);

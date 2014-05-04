@@ -19,6 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BTargetId;
 
 public class HActiveMessage {
   private final Log log = LogFactory.getLog(HActiveMessage.class);
@@ -138,10 +139,10 @@ public class HActiveMessage {
       HOutgoingStream ish = new HOutgoingStream(streamRequest, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
         @Override
         public void close() throws IOException {
-          if (log.isDebugEnabled()) log.debug("close outgoing stream " + streamId + "(");
+          if (log.isDebugEnabled()) log.debug("close outgoing stream " + targetId + "(");
           synchronized (msg) {
-            if (log.isDebugEnabled()) log.debug("remove outgoing stream, streamId=" + streamId);
-            if (outgoingStreams.remove(streamId) != null) {
+            if (log.isDebugEnabled()) log.debug("remove outgoing stream, streamId=" + targetId);
+            if (outgoingStreams.remove(targetId.getStreamId()) != null) {
               checkFinished();
             }
           }
@@ -149,23 +150,23 @@ public class HActiveMessage {
           if (log.isDebugEnabled()) log.debug(")close");
         }
       };
-      outgoingStreams.put(streamRequest.getStreamId(), ish);
+      outgoingStreams.put(streamRequest.getTargetId().getStreamId(), ish);
     }
 
     if (log.isDebugEnabled()) log.debug(")addOutgoingStreams");
   }
 
-  public void addIncomingStream(final Long streamId, HRequestContext rctxt) throws BException {
+  public void addIncomingStream(final BTargetId targetId, final HRequestContext rctxt) throws BException {
     if (rctxt.isAsync()) {
-      addIncomingStreamAsync(streamId, rctxt);
+      addIncomingStreamAsync(targetId, rctxt);
     }
     else {
-      addIncomingStreamSync(streamId, rctxt);
+      addIncomingStreamSync(targetId, rctxt);
     }
   }
 
-  private synchronized void addIncomingStreamAsync(final Long streamId, HRequestContext rctxt) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(streamId=" + streamId + ", rctxt=" + rctxt);
+  private synchronized void addIncomingStreamAsync(final BTargetId targetId, HRequestContext rctxt) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(targetId=" + targetId + ", rctxt=" + rctxt);
 
     try {
       final HActiveMessage msg = this;
@@ -187,7 +188,7 @@ public class HActiveMessage {
           if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onError(" + arg0 + ")");
           InputStream is = null;
           synchronized (msg) {
-            is = incomingStreams.remove(streamId);
+            is = incomingStreams.remove(targetId.getStreamId());
           }
           if (is != null) is.close();
         }
@@ -203,19 +204,19 @@ public class HActiveMessage {
       // Is splitted stream?
       if (partId != -1L) {
 
-        istrm = incomingStreams.get(streamId);
+        istrm = incomingStreams.get(targetId.getStreamId());
 
         if (istrm == null) {
 
-          istrm = new HIncomingSplittedStreamAsync(contentType, totalLength, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
+          istrm = new HIncomingSplittedStreamAsync(targetId, contentType, totalLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
             private Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
 
             public void close() throws IOException {
-              if (log.isDebugEnabled()) log.debug("close incoming stream " + streamId + "(");
+              if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
 
               synchronized (msg) {
-                if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + streamId);
-                if (incomingStreams.remove(streamId) != null) {
+                if (log.isDebugEnabled()) log.debug("remove incoming stream, targetId=" + targetId);
+                if (incomingStreams.remove(targetId.getStreamId()) != null) {
                   checkFinished();
                 }
               }
@@ -226,7 +227,7 @@ public class HActiveMessage {
             }
           };
 
-          incomingStreams.put(streamId, istrm);
+          incomingStreams.put(targetId.getStreamId(), istrm);
           
         }
 
@@ -235,15 +236,15 @@ public class HActiveMessage {
       }
       else {
 
-        istrm = new HIncomingStreamAsync(contentType, contentLength, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
+        istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
           private Log log = LogFactory.getLog(HIncomingStreamAsync.class);
 
           public void close() throws IOException {
-            if (log.isDebugEnabled()) log.debug("close incoming stream " + streamId + "(");
+            if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
 
             synchronized (msg) {
-              if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + streamId);
-              if (incomingStreams.remove(streamId) != null) {
+              if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + targetId);
+              if (incomingStreams.remove(targetId.getStreamId()) != null) {
                 checkFinished();
               }
               msg.notifyAll();
@@ -255,7 +256,7 @@ public class HActiveMessage {
           }
         };
         
-        incomingStreams.put(streamId, istrm);
+        incomingStreams.put(targetId.getStreamId(), istrm);
         
       }
 
@@ -268,12 +269,12 @@ public class HActiveMessage {
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamAsync");
   }
 
-  private void addIncomingStreamSync(final Long streamId, final HRequestContext rctxt) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync(" + streamId);
+  private void addIncomingStreamSync(final BTargetId targetId, final HRequestContext rctxt) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync(" + targetId);
     
     // Create or get HIncomingStream object in synchronized function.
     final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
-    final HIncomingStreamSync istrm = addIncomingStreamSync2(streamId, request);
+    final HIncomingStreamSync istrm = addIncomingStreamSync2(targetId, request);
     
     final String partIdStr = request.getParameter("partid");
     final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
@@ -282,15 +283,15 @@ public class HActiveMessage {
 
     // Copy the stream into the buffer.
     // This is done synchronously.
-    if (log.isDebugEnabled()) log.debug("start copying stream, streamId=" + streamId + ", partId=" + partId);
+    if (log.isDebugEnabled()) log.debug("start copying stream, targetId=" + targetId + ", partId=" + partId);
     istrm.addStream(rctxt, partId, lastPart);
-    if (log.isDebugEnabled()) log.debug("end copying stream, streamId=" + streamId + ", partId=" + partId);
+    if (log.isDebugEnabled()) log.debug("end copying stream, targetId=" + targetId + ", partId=" + partId);
     
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync");
   }
   
-  private synchronized HIncomingStreamSync addIncomingStreamSync2(final Long streamId, HttpServletRequest request) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2(" + streamId);
+  private synchronized HIncomingStreamSync addIncomingStreamSync2(final BTargetId targetId, HttpServletRequest request) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2(" + targetId);
     
     HIncomingStreamSync istrm = null;
     
@@ -307,21 +308,21 @@ public class HActiveMessage {
         log.debug("contentType=" + contentType + ", contentLength=" + contentLengthStr + ", totalLength=" + totalLength);
       }
       
-      istrm = incomingStreams != null ? (HIncomingStreamSync) incomingStreams.get(streamId) : null;
+      istrm = incomingStreams != null ? (HIncomingStreamSync) incomingStreams.get(targetId.getStreamId()) : null;
 
       if (istrm == null) {
 
         if (log.isDebugEnabled()) log.debug("create HInputStreamBuffer");
         long length = totalLength >= 0 ? totalLength : contentLength;
-        istrm = new HIncomingStreamSync(contentType, length, contentDisposition, streamId, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
+        istrm = new HIncomingStreamSync(targetId, contentType, length, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
 
           @Override
           public void close() throws IOException {
-            if (log.isDebugEnabled()) log.debug("close " + streamId + "(");
+            if (log.isDebugEnabled()) log.debug("close " + targetId + "(");
 
             synchronized (msg) {
-              if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + streamId);
-              if (incomingStreams.remove(streamId) != null) {
+              if (log.isDebugEnabled()) log.debug("remove incoming stream, streamId=" + targetId);
+              if (incomingStreams.remove(targetId.getStreamId()) != null) {
                 checkFinished();
               }
             }
@@ -333,11 +334,11 @@ public class HActiveMessage {
 
         // synchronized (this) -- not needed: method is synchronized
         {
-          if (log.isDebugEnabled()) log.debug("put incoming stream into map, streamId=" + streamId);
+          if (log.isDebugEnabled()) log.debug("put incoming stream into map, targetId=" + targetId);
           if (incomingStreams == null) {
             incomingStreams = new HashMap<Long, BContentStream>();
           }
-          incomingStreams.put(streamId, istrm);
+          incomingStreams.put(targetId.getStreamId(), istrm);
         }
       }
 

@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BTargetId;
 
 public class HIncomingStreamSync extends BContentStream {
 	
@@ -41,9 +42,9 @@ public class HIncomingStreamSync extends BContentStream {
 
 	private File tempDir;
 	
-	protected HIncomingStreamSync(String contentType, long contentLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir) {
+	protected HIncomingStreamSync(BTargetId targetId, String contentType, long contentLength, String contentDisposition, long lifetimeMillis, File tempDir) {
 		super(contentType, contentLength, lifetimeMillis);
-		this.setStreamId(streamId);
+		this.setTargetId(targetId);
 		this.tempDir = tempDir;
 		if (contentLength > secondBytesCapacity) {
 			bytesSource = FILE_BYTES;
@@ -63,9 +64,7 @@ public class HIncomingStreamSync extends BContentStream {
 	  
     // Reset stream IDs. 
     // Otherwise the stream would not be sent, see BOutput.createStreamRequest.
-    this.streamId = 0;
-    this.messageId = 0;
-    this.serverId = 0;
+    this.setTargetId(BTargetId.ZERO);
     
     this.tempDir = tempDir;
     
@@ -179,7 +178,7 @@ public class HIncomingStreamSync extends BContentStream {
 	}
 	
 	public void addStream(HRequestContext rctxt, long partId, boolean lastPart) throws BException {
-		if (log.isDebugEnabled()) log.debug("addStream " + streamId + "(partId=" + partId + ", lastPart="  + lastPart);
+		if (log.isDebugEnabled()) log.debug("addStream " + targetId + "(partId=" + partId + ", lastPart="  + lastPart);
 		
 		InputStream is = null;
 		try {
@@ -325,19 +324,19 @@ public class HIncomingStreamSync extends BContentStream {
 			
 			try {
 				long to = getLifetimeMillis();
-				if (log.isDebugEnabled()) log.debug("wait for streamId=" + streamId + " for reading");
+				if (log.isDebugEnabled()) log.debug("wait for targetId=" + targetId + " for reading");
 				this.wait(to);
 				
 				long t2 = System.currentTimeMillis();
 				if (t2-t1 >= to) {
-					if (log.isDebugEnabled()) log.debug("timeout while waiting for streamId=" + streamId);
+					if (log.isDebugEnabled()) log.debug("timeout while waiting for targetId=" + targetId);
 					throw new IOException("Timeout");
 				}
 
 				if (log.isDebugEnabled()) log.debug("received singal, continue read");
 				
 			} catch (InterruptedException e) {
-				if (log.isDebugEnabled()) log.debug("waiting for streamId=" + streamId + " interrupted");
+				if (log.isDebugEnabled()) log.debug("waiting for targetId=" + targetId + " interrupted");
 				throw new InterruptedIOException();
 			}
 		}
@@ -430,7 +429,7 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	private void internalWriteFileBytes(byte[] bytes, int offs, int len) throws IOException {
 		if (file == null) {
-			file = HTempFile.createTemp(tempDir, streamId);
+			file = HTempFile.createTemp(tempDir, targetId.getStreamId());
 			fos = new FileOutputStream(file.getFile());
 		}
 		fos.write(bytes, offs, len);
@@ -498,7 +497,7 @@ public class HIncomingStreamSync extends BContentStream {
 			fos = null;
 		}
 		
-		if (log.isDebugEnabled()) log.debug("notify threads waiting for streamId=" + streamId);
+		if (log.isDebugEnabled()) log.debug("notify threads waiting for targetId=" + targetId);
 		this.notifyAll();
 		if (log.isDebugEnabled()) log.debug(")writeClose");
 	}

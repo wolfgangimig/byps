@@ -29,6 +29,7 @@ import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BNegotiate;
 import byps.BSyncResult;
+import byps.BTargetId;
 import byps.BTestAdapter;
 import byps.BWire;
 import byps.http.client.HHttpClient;
@@ -432,11 +433,10 @@ public class HWireClient extends BWire {
   protected RequestToCancel createRequestForPutStream(BContentStream stream, BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("createRequestForPutStream(" + stream);
 
-    final int serverId = stream.getServerId();
-    final long messageId = stream.getMessageId();
-    final long streamId = stream.getStreamId();
+    final long messageId = stream.getTargetId().getMessageId();
+    final long streamId = stream.getTargetId().getStreamId();
     StringBuilder destUrl = new StringBuilder(surl);
-    destUrl.append("?serverId=").append(serverId).append("&messageid=").append(messageId).append("&streamid=").append(streamId);
+    destUrl.append("?&messageid=").append(messageId).append("&streamid=").append(streamId);
 
     final RequestToCancel requestToCancel = new RequestToCancel(messageId, streamId, 0L, asyncResult);
     final HHttpRequest httpRequest = httpClient.putStream(destUrl.toString(), stream, requestToCancel);
@@ -448,11 +448,14 @@ public class HWireClient extends BWire {
     return requestToCancel;
   }
 
-  protected RequestToCancel createRequestForGetStream(int serverId, long messageId, long streamId, final BAsyncResult<BContentStream> asyncResult) {
-    if (log.isDebugEnabled()) log.debug("createRequestForPutStream(serverId=" + serverId + ", messageId=" + messageId + ", streamId=" + streamId);
+  protected RequestToCancel createRequestForGetStream(final BTargetId targetId, final BAsyncResult<BContentStream> asyncResult) {
+    if (log.isDebugEnabled()) log.debug("createRequestForGetStream(" + targetId);
 
+    final long messageId = targetId.getMessageId();
+    final long streamId = targetId.getStreamId();
+    
     StringBuilder destUrl = new StringBuilder(surl);
-    destUrl.append("?").append("serverid=").append(serverId)
+    destUrl.append("?").append("serverid=").append(targetId.serverId)
       .append("&messageid=").append(messageId)
       .append("&streamid=").append(streamId);
 
@@ -467,7 +470,7 @@ public class HWireClient extends BWire {
     requestToCancel.setHttpRequest(httpRequest);
     addRequest(requestToCancel);
 
-    if (log.isDebugEnabled()) log.debug(")createRequestForPutStream=" + requestToCancel);
+    if (log.isDebugEnabled()) log.debug(")createRequestForGetStream=" + requestToCancel);
     return requestToCancel;
   }
 
@@ -616,8 +619,8 @@ public class HWireClient extends BWire {
     volatile Throwable ex;
     protected final Log log = LogFactory.getLog(MyInputStream.class);
 
-    public MyInputStream(int serverId, long messageId, long streamId) {
-      super(serverId, messageId, streamId);
+    public MyInputStream(BTargetId targetId) {
+      super(targetId);
     }
 
     @Override
@@ -719,7 +722,7 @@ public class HWireClient extends BWire {
 
     protected void internalOpenStream(BAsyncResult<BContentStream> asyncResult) throws IOException {
       if (log.isDebugEnabled()) log.debug("internalOpenStream(");
-      RequestToCancel requestToCancel = createRequestForGetStream(serverId, messageId, streamId, asyncResult);
+      RequestToCancel requestToCancel = createRequestForGetStream(targetId, asyncResult);
       executeRequest(requestToCancel);
       if (log.isDebugEnabled()) log.debug(")internalOpenStream");
     }
@@ -732,9 +735,9 @@ public class HWireClient extends BWire {
   }
 
   @Override
-  public BContentStream getStream(int serverId, long messageId, long strmId) throws IOException {
-    if (log.isDebugEnabled()) log.debug("getStream(messageId=" + messageId + ", streamId=" + strmId);
-    BContentStream is = new MyInputStream(serverId, messageId, strmId);
+  public BContentStream getStream(BTargetId targetId) throws IOException {
+    if (log.isDebugEnabled()) log.debug("getStream(" + targetId);
+    BContentStream is = new MyInputStream(targetId);
     if (log.isDebugEnabled()) log.debug(")getStream=" + is);
     return is;
   }

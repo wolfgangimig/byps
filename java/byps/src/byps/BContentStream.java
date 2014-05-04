@@ -63,9 +63,7 @@ public abstract class BContentStream extends InputStream {
 		this.contentLength = rhs.contentLength;
 		this.attachment = rhs.attachment;
 		this.fileName = rhs.fileName;
-		this.streamId = rhs.streamId;
-		this.messageId = rhs.messageId;
-		this.serverId = rhs.serverId;
+		this.targetId = rhs.targetId;
   }
 	
 	/**
@@ -301,28 +299,12 @@ public abstract class BContentStream extends InputStream {
     return this;
   }
   
-  public long getStreamId() {
-    return streamId;
+  public BTargetId getTargetId() {
+    return targetId;
   }
 
-  public void setStreamId(long streamId) {
-    this.streamId = streamId;
-  }
-
-  public int getServerId() {
-    return serverId;
-  }
-
-  public void setServerId(int serverId) {
-    this.serverId = serverId;
-  }
-
-  public long getMessageId() {
-    return messageId;
-  }
-
-  public void setMessageId(long messageId) {
-    this.messageId = messageId;
+  public void setTargetId(BTargetId targetId) {
+    this.targetId = targetId;
   }
 
   @Override
@@ -339,18 +321,14 @@ public abstract class BContentStream extends InputStream {
 	protected volatile long contentLength = -1L;
 	protected volatile String fileName;
 	protected volatile boolean attachment;
-	protected volatile long messageId;
-	protected volatile long streamId;
-	protected volatile int serverId;
+	protected volatile BTargetId targetId = BTargetId.ZERO;
 
 	protected volatile BContentStreamAsyncCallback callback;
 	
 	public String toString() {
 	  StringBuilder sbuf = new StringBuilder();
 	  sbuf.append("[").append(contentType).append(", #=").append(contentLength);
-    if (serverId != 0) sbuf.append(",serverId=").append(serverId);
-	  if (messageId != 0) sbuf.append(",messageId=").append(messageId);
-	  if (streamId != 0) sbuf.append(",streamId=").append(streamId);
+    if (targetId != null) sbuf.append(",targetId=").append(targetId);
 	  sbuf.append("]");
 	  return sbuf.toString();
 	}

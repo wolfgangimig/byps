@@ -18,6 +18,14 @@ public class BTransport {
   private final BServerRegistry serverRegistry;
 
   private BTargetId targetId;
+  
+  /**
+   * Server ID to which this BTransport is connected.
+   * If this object belongs to a foreign interface, 
+   * the connectedServerId is not equal to targetId.serverId.
+   * This value is used as serverId for streams to be sent.
+   */
+  private int connectedServerId;
 
   private BProtocol protocol;
 
@@ -26,7 +34,7 @@ public class BTransport {
   public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
     this.apiDesc = apiDesc;
     this.wire = wire;
-    this.targetId = new BTargetId();
+    this.targetId = BTargetId.ZERO;
     this.serverRegistry = serverRegistry;
   }
 
@@ -42,7 +50,10 @@ public class BTransport {
     this.authentication = null;
     
     this.serverRegistry = null;
-  }
+  
+    // Still connected to the server given by rhs.
+    this.connectedServerId = rhs.targetId.serverId;
+}
   
   public BWire getWire() {
     return wire;
@@ -532,6 +543,11 @@ public class BTransport {
 
   public synchronized void setTargetId(BTargetId v) {
     this.targetId = v;
+    this.connectedServerId = v.serverId;
+  }
+  
+  public synchronized int getConnectedServerId() {
+    return this.connectedServerId;
   }
 
   public String toString() {

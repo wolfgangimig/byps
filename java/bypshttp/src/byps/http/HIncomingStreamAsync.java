@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BTargetId;
 
 public class HIncomingStreamAsync extends BContentStream  {
 
@@ -26,18 +27,18 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	private AtomicBoolean closed = new AtomicBoolean();
 
-	HIncomingStreamAsync(String contentType, long contentLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir, HRequestContext rctxt) throws IOException {
+	HIncomingStreamAsync(BTargetId targetId, String contentType, long contentLength, String contentDisposition, long lifetimeMillis, File tempDir, HRequestContext rctxt) throws IOException {
 		super(contentType, contentLength, lifetimeMillis);
+		this.setTargetId(targetId);
 		this.rctxt = rctxt;
 		this.is = rctxt.getRequest().getInputStream();
 		this.tempDir = tempDir;
-    this.setStreamId(streamId);
 		setContentDisposition(contentDisposition);
 	}
 	
 	private final InputStream strm() throws IOException {
 		if (closed.get()) {
-			if (log.isDebugEnabled()) log.debug("Outgoing stream already closed, streamId=" + streamId);
+			if (log.isDebugEnabled()) log.debug("Outgoing stream already closed, targetId=" + targetId);
 			throw new IOException("Stream is closed");
 		}
 		return is;
@@ -59,13 +60,13 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	@Override
 	public void close() throws IOException {
-		if (log.isDebugEnabled()) log.debug("close(streamId=" + streamId);
+		if (log.isDebugEnabled()) log.debug("close(targetId=" + targetId);
 		
 		boolean alreadyClosed = closed.getAndSet(true);
 		if (log.isDebugEnabled()) log.debug("alreadyClosed=" + alreadyClosed);
 		if (!alreadyClosed) {
 		
-			if (log.isDebugEnabled()) log.debug("complete AsyncContext of streamId=" + streamId + " with status=" + HttpServletResponse.SC_OK);
+			if (log.isDebugEnabled()) log.debug("complete AsyncContext of targetId=" + targetId + " with status=" + HttpServletResponse.SC_OK);
 			
 			// The stream data must be completely read.
 			// Otherwise the data remains in the socket and 
@@ -101,7 +102,7 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	@Override
 	public int read(byte[] b, int off, int len) throws IOException {
-		if (log.isDebugEnabled()) log.debug("read " + streamId + "(" + b + ", offs=" + off + ", len=" + len);
+		if (log.isDebugEnabled()) log.debug("read " + targetId + "(" + b + ", offs=" + off + ", len=" + len);
 		try {
 			int n = strm().read(b, off, len);
 			if (n != -1) {

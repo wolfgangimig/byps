@@ -16,23 +16,44 @@ public class JSerializer_15 extends JSerializer_Object {
 	public void internalWrite(final Object obj, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		InputStream is = (InputStream)obj;
 		BContentStream bstream = bout.createStreamRequest(is);
-		bout.bbuf.putLong("streamId", bstream.getStreamId());
-		bout.bbuf.putInt("serverId", bstream.getServerId());
-		bout.bbuf.putLong("messageId", bstream.getMessageId());
+		bout.bbuf.putLong("streamId", bstream.getTargetId().getStreamId());
+		bout.bbuf.putString("targetId", bstream.getTargetId().toString());
+    bout.bbuf.putLong("contentLength", bstream.getContentLength());
+    bout.bbuf.putString("contentType", bstream.getContentType());
+    bout.bbuf.putBoolean("attachment", bstream.isAttachment());
+    bout.bbuf.putString("fileName", bstream.getFileName());
 	}
 
 	@Override
 	public Object internalRead(final Object obj1, final BInputJson bin) throws BException {
-		
-	  final long streamId = bin.currentObject.getLong("streamId");
-		int serverId = bin.currentObject.getInt("serverId");
-    long messageId = bin.currentObject.getLong("messageId");
-    
-    if (serverId == 0) serverId = bin.transport.getTargetId().serverId;
-    if (messageId == 0) messageId =  bin.header.messageId;
+	  
+	  BTargetId targetId = BTargetId.ZERO;
+	  
+	  final String targetIdStr = bin.currentObject.getString("targetId");
+	  if (targetIdStr != null && targetIdStr.length() != 0) {
+	    targetId = BTargetId.parseString(targetIdStr);
+	  }
+	  else {
+	    final long streamId = bin.currentObject.getLong("streamId");
+	    final int serverId = bin.transport.getTargetId().serverId;
+	    final long messageId = bin.header.messageId;
+	    targetId = new BTargetId(serverId, messageId, streamId);
+	  }
     
 		try {
-			InputStream strm = bin.transport.getWire().getStream(serverId, messageId, streamId);
+			BContentStream strm = bin.transport.getWire().getStream(targetId);
+			
+      final String contentType = bin.currentObject.getString("contentType");
+			if (contentType != null && contentType.length() != 0) {
+        final long contentLength = bin.currentObject.getLong("contentLength");
+        final boolean attachment = bin.currentObject.getBoolean("attachment");
+        final String fileName = bin.currentObject.getString("fileName");
+        strm.setContentType(contentType);
+        strm.setContentLength(contentLength);
+        strm.setAttachment(attachment);
+        strm.setFileName(fileName);
+			}      
+		    
 			bin.onObjectCreated(strm);
 			return strm;
 		} catch (IOException e) {

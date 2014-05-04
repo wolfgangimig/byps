@@ -18,6 +18,7 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BMessageHeader;
+import byps.BTargetId;
 
 public class HActiveMessages {
 	
@@ -109,13 +110,13 @@ public class HActiveMessages {
 	 * @param rctxt
 	 * @throws BException
 	 */
-	public void addIncomingStream(final Long messageId, final Long streamId, HRequestContext rctxt) throws BException {
-		if (log.isDebugEnabled()) log.debug("addIncomingStream(messageId=" + messageId + ", streamId=" + streamId + ", rctxt=" + rctxt);
+	public void addIncomingStream(final BTargetId targetId, HRequestContext rctxt) throws BException {
+		if (log.isDebugEnabled()) log.debug("addIncomingStream(" + targetId + ", rctxt=" + rctxt);
 		
-		final HActiveMessage msg = getOrCreateActiveMessage(messageId);
-		msg.addIncomingStream(streamId, rctxt);
+		final HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
+		msg.addIncomingStream(targetId, rctxt);
 		
-        if (log.isDebugEnabled()) log.debug(")addIncomingStream");
+    if (log.isDebugEnabled()) log.debug(")addIncomingStream");
 	}
 	
 	/**
@@ -124,12 +125,12 @@ public class HActiveMessages {
 	 * @param rctxt
 	 * @throws BException
 	 */
-	public void addIncomingStream(final Long streamId, BContentStream is) throws BException {
-		if (log.isDebugEnabled()) log.debug("addIncomingStream(streamId=" + streamId + ", is=" + is);
+	public void addIncomingUploadStream(final BTargetId targetId, BContentStream is) throws BException {
+		if (log.isDebugEnabled()) log.debug("addIncomingStream(targetId=" + targetId + ", is=" + is);
 		
-		uploadStreams.put(streamId, is);
+		uploadStreams.put(targetId.getStreamId(), is);
 		
-        if (log.isDebugEnabled()) log.debug(")addIncomingStream");
+    if (log.isDebugEnabled()) log.debug(")addIncomingStream");
 	}
 	
 	/**
@@ -140,7 +141,7 @@ public class HActiveMessages {
 	public void addOutgoingStreams(List<BContentStream> streamRequests) throws BException {
 		if (log.isDebugEnabled()) log.debug("addOutgoingStreams(");
 		if (streamRequests != null && streamRequests.size() != 0) {
-			Long messageId = streamRequests.get(0).getMessageId();
+			Long messageId = streamRequests.get(0).getTargetId().getMessageId();
 			HActiveMessage msg = getOrCreateActiveMessage(messageId);
 			synchronized(msg) {
 				msg.addOutgoingStreams(streamRequests);
@@ -149,35 +150,35 @@ public class HActiveMessages {
 		if (log.isDebugEnabled()) log.debug(")addOutgoingStreams");
 	}
 	
-	public BContentStream getIncomingStream(Long messageId, Long streamId) throws IOException {
-  	if (log.isDebugEnabled()) log.debug("getIncomingStream(messageId=" + messageId + ", streamId=" + streamId);
+	public BContentStream getIncomingStream(BTargetId targetId) throws IOException {
+  	if (log.isDebugEnabled()) log.debug("getIncomingStream(" + targetId);
   	
   	// Streams uploaded from a HTML form are received before the
   	// corresponding message arrives. This streams are stored in the
   	// map uploadStreams since the message ID is unknown at the time the arrive.
-  	BContentStream stream = uploadStreams.get(streamId);
+  	BContentStream stream = uploadStreams.get(targetId.getStreamId());
   	
   	if (stream == null) {
   		
   		// The stream is not available. So it cannot be a HTML file upload.
   		// The client side must send this stream with a message ID.
   		
-  		HActiveMessage msg = getOrCreateActiveMessage(messageId);
-  		stream = msg.getIncomingOrOutgoingStream(streamId);
+  		HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
+  		stream = msg.getIncomingOrOutgoingStream(targetId.getStreamId());
   	}
     	
 		if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
 		return stream;
 	}
 	
-	public BContentStream getOutgoingStream(Long messageId, Long streamId) throws IOException {
-		if (log.isDebugEnabled()) log.debug("getOutgoingStream(messageId=" + messageId + ", streamId=" + streamId);
+	public BContentStream getOutgoingStream(BTargetId targetId) throws IOException {
+		if (log.isDebugEnabled()) log.debug("getOutgoingStream(" + targetId);
 		BContentStream ret = null;
-		HActiveMessage msg = activeMessages.get(messageId);
+		HActiveMessage msg = activeMessages.get(targetId.getMessageId());
 		if (msg == null) {
-			throw new FileNotFoundException("Message for outgoing stream not found, messageId=" + messageId + ", streamId=" + streamId);
+			throw new FileNotFoundException("Message for outgoing stream not found, targetId=" + targetId);
 		}
-    	ret = msg.getIncomingOrOutgoingStream(streamId);
+    	ret = msg.getIncomingOrOutgoingStream(targetId.getStreamId());
 		if (log.isDebugEnabled()) log.debug(")getOutgoingStream=" + ret);
 		return ret;
 	}

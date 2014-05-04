@@ -18,6 +18,7 @@ import byps.BException;
 import byps.BExceptionC;
 import byps.BMessage;
 import byps.BMessageHeader;
+import byps.BTargetId;
 import byps.BWire;
 
 public class HWireClientR extends BWire {
@@ -212,8 +213,8 @@ public class HWireClientR extends BWire {
   };
 
   @Override
-  public BContentStream getStream(int serverId, long messageId, long strmId) throws IOException {
-    return wireServer.getStream(serverId, messageId, strmId);
+  public BContentStream getStream(BTargetId targetId) throws IOException {
+    return wireServer.getStream(targetId);
   }
 
   /**

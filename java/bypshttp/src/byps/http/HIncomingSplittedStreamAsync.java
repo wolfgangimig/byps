@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BTargetId;
 
 public class HIncomingSplittedStreamAsync extends BContentStream {
 
@@ -22,16 +23,16 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	protected HIncomingStreamAsync currentStreamPart;
 	private HashMap<Long, HIncomingStreamAsync> streamParts = new HashMap<Long, HIncomingStreamAsync>();
 	
-	HIncomingSplittedStreamAsync(String contentType, long totalLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir) throws IOException {
+	HIncomingSplittedStreamAsync(BTargetId targetId, String contentType, long totalLength, String contentDisposition, long lifetimeMillis, File tempDir) throws IOException {
 		super(contentType, totalLength, lifetimeMillis);
-		this.setStreamId(streamId);
+		this.setTargetId(targetId);
 		this.tempDir = tempDir;
 		setContentDisposition(contentDisposition);
 	}
 	
 	public synchronized void addStream(long partId, long contentLength, boolean isLastPart, HRequestContext rctxt) throws IOException {
-		if (log.isDebugEnabled()) log.debug("addStream(" + streamId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
-		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(contentType, contentLength, "", streamId, lifetimeMillis, tempDir, rctxt);
+		if (log.isDebugEnabled()) log.debug("addStream(" + targetId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
+		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(targetId, contentType, contentLength, "", lifetimeMillis, tempDir, rctxt);
 		streamParts.put(partId, streamPart);
 		if (isLastPart) maxPartId = partId+1;
 		notifyAll(); // notify thread that might wait in read()

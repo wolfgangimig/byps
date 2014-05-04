@@ -369,12 +369,12 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       final String serverIdStr = request.getParameter("serverid");
       
       final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer.valueOf(serverIdStr) : 0;
-      final BTargetId targetId = new BTargetId(serverId, 0, 0);
+      final BTargetId targetId = new BTargetId(serverId, messageId, streamId);
       final BClient forwardClient = serverId != 0 ? getServerRegistry().getForwardClientIfForeignTargetId(targetId) : null;
       
       final BContentStream stream = forwardClient != null ? 
-        forwardClient.getTransport().getWire().getStream(serverId, messageId, streamId) :
-        getActiveMessages().getOutgoingStream(messageId, streamId);
+        forwardClient.getTransport().getWire().getStream(targetId) :
+        getActiveMessages().getOutgoingStream(targetId);
       
       sendOutgoingStream(stream, response);
     }
@@ -632,7 +632,8 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       rctxt.setTimeout(HConstants.REQUEST_TIMEOUT_MILLIS);
 
       try {
-        getActiveMessages().addIncomingStream(messageId, streamId, rctxt);
+        final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), messageId, streamId);
+        getActiveMessages().addIncomingStream(targetId, rctxt);
       } catch (BException e) {
         int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
         if (e.code == BExceptionC.CANCELLED) {
@@ -755,13 +756,13 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     public synchronized BContentStream materialize() throws IOException {
       HIncomingStreamSync incomingStream = null;
       if (this.fileItem.isInMemory()) {
-        incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), "", streamId, lifetimeMillis, tempDir);
+        incomingStream = new HIncomingStreamSync(targetId, fileItem.getContentType(), fileItem.getSize(), "", lifetimeMillis, tempDir);
         incomingStream.assignBytes(fileItem.get());
       }
       else {
         HTempFile tempFile = null;
         try {
-          incomingStream = new HIncomingStreamSync(fileItem.getContentType(), fileItem.getSize(), "", streamId, lifetimeMillis, tempDir);
+          incomingStream = new HIncomingStreamSync(targetId, fileItem.getContentType(), fileItem.getSize(), "", lifetimeMillis, tempDir);
           tempFile = HTempFile.createTemp(tempDir, streamId);
           tempFile.getFile().delete(); // FileItem.write will move the file.
           fileItem.write(tempFile.getFile());
@@ -831,7 +832,8 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
         if (item.isFormField()) continue;
 
-        getActiveMessages().addIncomingStream(streamId.longValue(), new FileUploadItemIncomingStream(item, streamId, getConfig().getTempDir()));
+        final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), 0, streamId.longValue());
+        getActiveMessages().addIncomingUploadStream(targetId, new FileUploadItemIncomingStream(item, streamId, getConfig().getTempDir()));
 
       }
 
