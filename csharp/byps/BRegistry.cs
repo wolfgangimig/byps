@@ -119,10 +119,13 @@ namespace byps
             }
             catch (Exception x)
             {
-                throw new BException(BExceptionC.CORRUPT,
-                        "No serializer for className=" + type + ". " +
-                        "Only classes marked with BSerializable can be serialized as \"Object\" types. " +
-                        "This error occurs e. g. if a List<Object> contains String values. String is not a BSerializable. " + x);
+                if (throwEx)
+                {
+                    throw new BException(BExceptionC.CORRUPT,
+                            "No serializer for className=" + type + ". " +
+                            "Only classes marked with BSerializable can be serialized as \"Object\" types. " +
+                            "This error occurs e. g. if a List<Object> contains String values. String is not a BSerializable. " + x);
+                }
             }
 
             return ret;
