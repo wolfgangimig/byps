@@ -832,7 +832,6 @@ public abstract class HHttpServlet extends HttpServlet {
               HSessionListener.attachBSession(hsess, sess);
             }
             else {
-              if (log.isInfoEnabled()) log.info("Service unavailable or still initializing.");
               httpStatus = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
             }
           }
@@ -890,7 +889,7 @@ public abstract class HHttpServlet extends HttpServlet {
         if (log.isInfoEnabled()) log.info(makeLogRequest(request, status));
         break;
       default:
-        log.error(makeLogRequest(request, status), ex);
+        if (log.isInfoEnabled()) log.info(makeLogRequest(request, status), ex);
         break;
       }
     }
