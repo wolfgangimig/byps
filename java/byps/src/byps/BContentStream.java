@@ -79,9 +79,8 @@ public abstract class BContentStream extends InputStream {
 	 * @param v Content-Type header value
 	 * @return this
 	 */
-	public BContentStream setContentType(String v) {
+	public void setContentType(String v) {
 	  contentType = v;
-	  return this;
 	}
 	
 	/**
@@ -99,9 +98,8 @@ public abstract class BContentStream extends InputStream {
 	 * @param v Content-Length header value
 	 * @return this
 	 */
-	public BContentStream setContentLength(long v) {
+	public void setContentLength(long v) {
 	  contentLength = v;
-	  return this;
 	}
 	
   /**
