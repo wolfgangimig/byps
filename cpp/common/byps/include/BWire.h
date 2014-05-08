@@ -15,7 +15,7 @@ public:
 
 	virtual void sendR(const PMessage& msg, PAsyncResult asyncResult);
 
-	virtual PContentStream getStream(int64_t messageId, int64_t streamId);
+	virtual PContentStream getStream(const BTargetId& targetId);
 
     virtual int64_t makeMessageId();
 

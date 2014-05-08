@@ -1,6 +1,7 @@
 package byps;
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
 import java.nio.ByteBuffer;
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 /**
  * This class identifies a client.
@@ -140,25 +141,25 @@ public class BTargetId {
     return v2;
   }
 
-  /**
-   * Serialize the object into a buffer.
-   * @param buf Destination buffer.
-   */
-  public void write(BBuffer buf) {
-    buf.putInt(serverId);
-    buf.putLong(v1);
-    buf.putLong(v2);
-  }
-  
-  /**
-   * Deserialize a target ID from a buffer.
-   * @param buf Source buffer
-   * @return target ID
-   */
-  public static BTargetId read(BBuffer buf) {
-    int serverId = buf.getInt();
-    long v1 = buf.getLong();
-    long v2 = buf.getLong();
-    return new BTargetId(serverId,v1,v2);
-  }
+//  /**
+//   * Serialize the object into a buffer.
+//   * @param buf Destination buffer.
+//   */
+//  public void write(BBuffer buf) {
+//    buf.putInt(serverId);
+//    buf.putLong(v1);
+//    buf.putLong(v2);
+//  }
+//  
+//  /**
+//   * Deserialize a target ID from a buffer.
+//   * @param buf Source buffer
+//   * @return target ID
+//   */
+//  public static BTargetId read(BBuffer buf) {
+//    int serverId = buf.getInt();
+//    long v1 = buf.getLong();
+//    long v2 = buf.getLong();
+//    return new BTargetId(serverId,v1,v2);
+//  }
 }

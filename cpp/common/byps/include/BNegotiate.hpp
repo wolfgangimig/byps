@@ -16,12 +16,14 @@
 namespace byps {
 
 BINLINE BNegotiate::BNegotiate(PApiDescriptor apiDesc) {
-    version = 0;
+  version = 0;
 	protocols = apiDesc->getProtocolIds();
+  bversion = BHEADER_BYPS_VERSION_CURRENT;
 }
 
 BINLINE BNegotiate::BNegotiate() {
-    version = 0;
+  version = 0;
+  bversion = BHEADER_BYPS_VERSION_CURRENT;
 }
 
 BINLINE void BNegotiate::write(const PBytes& bytes) {
@@ -30,7 +32,9 @@ BINLINE void BNegotiate::write(const PBytes& bytes) {
 		<< protocols << "\","
         << "\"" << BVersioning::longToString<char>(version) << "\",\""
         << ((BByteOrder::getMyEndian() == BLITTLE_ENDIAN) ? "L" : "B")
-		<< "\", \"\"]";
+		<< "\",\"\"";
+    if (bversion) ss << "," << bversion;
+    ss << "]";
 
 	string str = ss.str();
 	size_t len = min(str.size(), bytes->length);
@@ -103,6 +107,16 @@ BINLINE void BNegotiate::read(const PBytes& bytes) {
 	for (; idx < bytes->length && p[idx] != '\"'; idx++) {}
 
 	targetId = BTargetId::parseString(std::string(p + idxTargetIdBegin, idx - idxTargetIdBegin));
+
+  if (p[idx] == ',') {
+    idx++;
+
+    ssversion.clear();
+	  for (; idx < bytes->length && p[idx] != ']'; idx++) {
+          ssversion << p[idx];
+	  }
+    ssversion >> bversion;
+  }
 
 }
 

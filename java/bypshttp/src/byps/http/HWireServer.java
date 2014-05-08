@@ -101,9 +101,6 @@ public class HWireServer extends BWire {
   }
 
   public void cleanup() {
-    if (log.isDebugEnabled()) log.debug("cleanup(");
-    activeMessages.cleanup(false);
-    if (log.isDebugEnabled()) log.debug(")cleanup");
   }
 
   @Override

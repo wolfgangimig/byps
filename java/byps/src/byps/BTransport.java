@@ -383,7 +383,7 @@ public class BTransport {
               nego.read(msg.buf);
               synchronized (BTransport.this) {
                 protocol = createNegotiatedProtocol(nego);
-                targetId = nego.targetId;
+                setTargetId(nego.targetId);
               }
   
               internalAuthenticate(asyncResult);

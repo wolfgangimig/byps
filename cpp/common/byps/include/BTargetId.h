@@ -7,35 +7,39 @@
 
 namespace byps {
 
-class BBuffer;
+  class BBuffer;
 
-class BTargetId
-{
-	int32_t serverId;
+  class BTargetId
+  {
+    int32_t serverId;
     int64_t v1;
     int64_t v2;
 
-public:
+  public:
     BTargetId();
 
     BTargetId(int32_t serverId, int64_t v1, int64_t v2);
 
-    bool isZero();
+    int32_t getServerId() const;
+    int64_t getMessageId() const;
+    int64_t getStreamId() const;
+
+    bool isZero() const;
 
     void serialize(BBuffer& bbuf);
 
     bool operator == (const BTargetId& rhs) const;
 
-	static BTargetId parseString(const string& s);
+    static BTargetId parseString(const string& s);
 
-	std::wstring toString() const;
+    std::wstring toString() const;
 
-	template <typename _CHAR> 
+    template <typename _CHAR> 
     friend std::basic_ostream<_CHAR>& operator << (std::basic_ostream<_CHAR>& os, const BTargetId& targetId) {
-		os << (_CHAR)'[' << targetId.serverId << (_CHAR)'.' << targetId.v1 << (_CHAR)'.' << targetId.v2 <<  (_CHAR)']';
-		return os;
-	}
-};
+      os << (_CHAR)'[' << targetId.serverId << (_CHAR)'.' << targetId.v1 << (_CHAR)'.' << targetId.v2 <<  (_CHAR)']';
+      return os;
+    }
+  };
 
 
 

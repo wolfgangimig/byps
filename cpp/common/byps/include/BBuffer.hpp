@@ -289,6 +289,7 @@ namespace byps {
       int32_t blen = 0;
       serialize(blen);
 
+      str.clear();
       str.reserve((size_t)blen);
 
       int8_t* buf = pBytes->data;

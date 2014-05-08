@@ -191,8 +191,13 @@ public class HActiveMessages {
 	public void cleanup(final boolean all) {
 		if (log.isDebugEnabled()) log.debug("cleanup(");
 		
+		// HashSet for all active incoming streams
 		HashSet<Long> activeIncomingStreamIds = new HashSet<Long>(incomingStreams.keySet());
-		HashSet<Long> referencedIncomingStreamIds = new HashSet<Long>();
+		
+		// HashSet for referenced incoming streams.
+		// Initialize with outgoing streams because incoming streams might be used in 
+		// return values or sent to other clients.
+		HashSet<Long> referencedIncomingStreamIds = new HashSet<Long>(outgoingStreams.keySet());
 		
 		// Cleanup messages.
 		ArrayList<HActiveMessage> arr = new ArrayList<HActiveMessage>(activeMessages.values());

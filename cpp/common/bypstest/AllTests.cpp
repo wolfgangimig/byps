@@ -21,7 +21,7 @@ void AllTests_run(void *app) {
     BLogger log("AllTests");
     log.debug() << L"AllTest_run(";
 
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 100; i++) {
 		cout << "loop " << (i+1) << endl;
 		TestSuite suite;
 

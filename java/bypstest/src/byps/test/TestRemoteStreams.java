@@ -490,7 +490,7 @@ public class TestRemoteStreams {
   
   /**
    * A stream returned from the server can be passed as input parameter
-   * to another call to the same server.
+   * to another call to the same server. The stream must not be downloaded/uploaded therefore.
    * @throws IOException 
    */
   @Test

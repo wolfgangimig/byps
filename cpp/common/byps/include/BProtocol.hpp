@@ -8,8 +8,11 @@
 
 namespace byps {
 
-BINLINE BProtocol::BProtocol(PApiDescriptor apiDesc, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
-: apiDesc(apiDesc), m_nNegotiatedVersion(negotiatedVersion), m_negotiatedByteOrder(negotiatedByteOrder) {
+BINLINE BProtocol::BProtocol(PApiDescriptor apiDesc, int32_t negotiatedBypsVersion, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
+    : apiDesc(apiDesc)
+    , negotiatedBypsVersion(negotiatedBypsVersion)
+    , negotiatedVersion(negotiatedVersion)
+    , negotiatedByteOrder(negotiatedByteOrder) {
 }
 
 BINLINE POutput BProtocol::getOutput(PTransport transport, const BMessageHeader& responseHeader) {
@@ -17,7 +20,7 @@ BINLINE POutput BProtocol::getOutput(PTransport transport, const BMessageHeader&
         return POutput(new BOutput(transport, responseHeader));
     }
     else {
-        return POutput(new BOutput(transport, m_nNegotiatedVersion, m_negotiatedByteOrder));
+        return POutput(new BOutput(transport, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder));
     }
 }
 BINLINE PInput BProtocol::getInput(PTransport transport, const BMessageHeader &header, PBytes& pBytes) {
