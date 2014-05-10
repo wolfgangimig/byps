@@ -9,7 +9,10 @@ import org.junit.Test;
 import byps.BAsyncResult;
 import byps.BAuthentication;
 import byps.BClient;
+import byps.BException;
+import byps.BExceptionC;
 import byps.RemoteException;
+import byps.http.HConstants;
 import byps.test.api.BClient_Testser;
 import byps.test.api.auth.SessionInfo;
 import byps.test.api.remote.RemoteWithAuthenticationAuth;
@@ -129,7 +132,61 @@ public class TestRemoteWithAuthentication {
     log.info(")testAuthenticateRelogin");
   }
   
+  /**
+   * Test with an authentication class that calls a interface function
+   * which requires authentication. 
+   * This must not cause an endless loop or a stack overflow. 
+   * It results in a 403 error.
+   * @throws RemoteException
+   */
+  @Test
+  public void testAuthenticateBlocksRecursion() throws RemoteException {
+    log.info("testAuthenticateBlocksRecursion(");
+    
+    client.setAuthentication(new MyAuthenticationBlocksRecursion());
 
+    try {
+      remote.doit(1);
+      TestUtils.fail(log, "exception expected");
+    }
+    catch (BException e) {
+      TestUtils.assertEquals(log, "exception", BExceptionC.FORBIDDEN, e.code);
+    }
+    
+    log.info(")testAuthenticateBlocksRecursion");
+  }
+  
+  /**
+   * Test with an authentication class that performs too slow,
+   * so that the application server session gets invalid during
+   * authentication.
+   * This must not cause an endless loop or a stack overflow. 
+   * It results in a 403 error.
+   * @throws RemoteException
+   */
+  @Test
+  public void testAuthenticateTooSlow() throws RemoteException {
+    log.info("testAuthenticateTooSlow(");
+    
+    long waitMillis = (HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED + 1) * 1000;
+    MyAuthenticationTooSlow auth = new MyAuthenticationTooSlow("Fritz", "abc", waitMillis);
+    client.setAuthentication(auth);
+
+    try {
+      remote.doit(1);
+      TestUtils.fail(log, "exception expected");
+    }
+    catch (BException e) {
+      TestUtils.assertEquals(log, "exception", BExceptionC.FORBIDDEN, e.code);
+    }
+    
+    // Try again without sleeping -> authentication should work correctly
+    auth.waitMillis = 0;
+    remote.doit(1);
+    
+    log.info(")testAuthenticateTooSlow");
+  }
+  
   private static class MyAuthentication implements BAuthentication {
     
     private Log log = LogFactory.getLog(MyAuthentication.class);
@@ -171,4 +228,47 @@ public class TestRemoteWithAuthentication {
 
   }
 
+  class MyAuthenticationBlocksRecursion implements BAuthentication {
+
+    @Override
+    public void authenticate(BClient client, final BAsyncResult<Boolean> asyncResult) {
+      remote.doit(1, new BAsyncResult<Integer>() {
+        public void setAsyncResult(Integer result, Throwable exception) {
+          asyncResult.setAsyncResult(Boolean.FALSE, exception);
+        }
+      });
+    };
+
+    @Override
+    public boolean isReloginException(BClient client, Throwable ex, int typeId) {
+      return client.getTransport().isReloginException(ex, typeId);
+    }
+
+    @Override
+    public void getSession(BClient client, int typeId, BAsyncResult<Object> asyncResult) {
+      asyncResult.setAsyncResult(null, null);
+    }
+  }  
+  
+  class MyAuthenticationTooSlow extends MyAuthentication {
+    
+    public volatile long waitMillis;
+
+    public MyAuthenticationTooSlow(String userName, String pwd, long waitMillis) {
+      super(userName, pwd);
+      this.waitMillis = waitMillis;
+    }
+
+    @Override
+    public void authenticate(BClient client, final BAsyncResult<Boolean> asyncResult) {
+      try {
+        Thread.sleep(waitMillis);
+        super.authenticate(client, asyncResult);
+      }
+      catch (Throwable e) {
+        asyncResult.setAsyncResult(null, e);
+      }
+    };
+
+  }  
 }

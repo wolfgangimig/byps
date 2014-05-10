@@ -5,6 +5,7 @@ package byps;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -337,26 +338,17 @@ public class BTransport {
   }
 
   public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) {
-
+    
     // Check that we do not run into recursive authentication requests.
-    // In deed, there could be more items in asyncResultsWaitingForAuthentication, if 
-    // many parallel requests receive an 401 response. 
-    // But only the first one calls this function to re-login - see internalAuthenticate.
-    // Thus, if the function is called the second time (one item in the array), 
-    // we run into a recursion. 
-    // A recursion happens if the authentication.authenticate() receives the error 401.
-    // This problem can be observed with bypshttp, if the time between negotiation and authentication is 
-    // longer than 10s (HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED). 
-    synchronized (asyncResultsWaitingForAuthentication) {
-      if (asyncResultsWaitingForAuthentication.size() > 0) {
-        BException ex = new BException(BExceptionC.FORBIDDEN, 
-            "Authentication procedure failed. Server returned 401 for every request. "
-            + "A common reason for this error is slow authentication handling.");
-        asyncResult.setAsyncResult(false, ex);
-        return;
-      }
+    if (!negotiateActive.compareAndSet(false, true)) {
+      BException ex = new BException(BExceptionC.FORBIDDEN, 
+          "Authentication procedure failed. Server returned 401 for every request. "
+          + "A common reason for this error is slow authentication handling.");
+          // ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
+      asyncResult.setAsyncResult(false, ex);      
+      return;
     }
-        
+
     try {
       ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
       final BNegotiate nego = new BNegotiate(apiDesc);
@@ -445,6 +437,8 @@ public class BTransport {
             // If there are threads currently waiting at (1), they will not trigger an authentication
             // but will set the result immediately.
 
+            negotiateActive.set(false);
+            
             for (int i = 0; i < copyResults.size(); i++) {
               copyResults.get(i).setAsyncResult(ignored, ex);
             }
@@ -604,6 +598,8 @@ public class BTransport {
    * Last authentication result is assumed to be valid for this time.
    */
   protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+  
+  protected final AtomicBoolean negotiateActive = new AtomicBoolean();
   
   private final static Log log = LogFactory.getLog(BTransport.class);
 

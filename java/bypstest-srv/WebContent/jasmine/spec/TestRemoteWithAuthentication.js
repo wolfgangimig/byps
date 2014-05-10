@@ -44,12 +44,77 @@ describe("Tests with authentication.", function() {
 		};
 
 	};
+	
+	var MyAuthenticationCausesRecursion = function() {
+		
+		this.authenticate = function(client, asyncResult) {
+
+			var outerResult = function(result, ex) {
+				asyncResult(null, ex);
+			};
+
+			client.remoteWithAuthentication.doit(1, outerResult);
+		};
+
+		this.isReloginException = function(client, ex, typeId) {
+			return client.transport.isReloginException(ex, typeId);
+		};
+
+		this.getSession = function(client, typeId, asyncResult) {
+			if (asyncResult) {
+				asyncResult(null, null);
+			}
+			return null;
+		};
+		
+	};
+
+	var MyAuthenticationTooSlow = function(userName, pwd, waitMillis) {
+
+		this.userName = userName;
+		this.pwd = pwd;
+		this.sess = null;
+		this.waitMillis = waitMillis;
+
+		this.authenticate = function(client, asyncResult) {
+
+			var me = this;
+
+			var callback = function() {
+				
+				var outerResult = function(result, ex) {
+					me.sess = result;
+					asyncResult(null, ex);
+				};
+				
+				client.remoteWithAuthentication.login(me.userName, me.pwd, outerResult);
+			};
+			
+			window.setTimeout(callback, waitMillis);
+
+		};
+
+		this.isReloginException = function(client, ex, typeId) {
+			return client.transport.isReloginException(ex, typeId);
+		};
+
+		this.getSession = function(client, typeId, asyncResult) {
+			if (asyncResult) {
+				asyncResult(this.sess, null);
+			}
+			return this.sess;
+		};
+
+	};
 
 	beforeEach(function() {
 		remote = client.remoteWithAuthentication;
+		remote.setUseAuthentication(true);
 	});
 	
 	afterEach(function() {
+		client.setAuthentication(null);
+		remote.setUseAuthentication(false);
 		remote.expire();
 	});
 
@@ -59,6 +124,7 @@ describe("Tests with authentication.", function() {
 	it("testNoAuthObjectSupplied", function() {
 		log.info("testNoAuthObjectSupplied(");
 
+		client.setAuthentication(null);
 		var sess = remote.login("Fritz", "abc");
 		log.info("sess=" + sess);
 
@@ -71,6 +137,8 @@ describe("Tests with authentication.", function() {
 	it("testNoAuthObjectSuppliedAsync", function() {
 		log.info("testNoAuthObjectSuppliedAsync(");
 
+		client.setAuthentication(null);
+		
 		var sessAsync = null;
 		var exceptionAsync = null;
 
@@ -181,6 +249,76 @@ describe("Tests with authentication.", function() {
 
 
 		log.info(")testAuthenticateRelogin");
+	});
+
+    /**
+     * Test with an authentication class that 
+     * This must not cause an endless loop or a stack overflow.
+     * @throws RemoteException
+     */
+	it("testAuthenticateBlocksRecursion", function() {
+		log.info("testAuthenticateBlocksRecursion(");
+
+		var exception = null;
+		var result = null;
+
+		runs(function() {
+			
+			client.done(function() {
+				
+				client.setAuthentication(new MyAuthenticationCausesRecursion());
+				
+				remote.doit(1, function(ret, ex) {
+					result = ret;
+					exception = ex;
+				});
+			});			
+		});
+		
+		waitsFor(function() {
+			if (result) throw "Excpected exception";
+			var succ = exception && exception.code == byps.BExceptionC.FORBIDDEN;
+			log.info(")testAuthenticateBlocksRecursion");
+			return succ;
+		}, "Expected exception 403", 10 * 1000);
+
+	});
+
+	  /**
+	   * Test with an authentication class that performs too slow,
+	   * so that the application server session gets invalid during
+	   * authentication.
+	   * This must not cause an endless loop or a stack overflow. 
+	   * It results in a 403 error.
+	   * @throws RemoteException
+	   */
+	it("testAuthenticationTooSlow", function() {
+		log.info("testAuthenticationTooSlow(");
+
+		var exception = null;
+		var result = null;
+
+		runs(function() {
+			
+			client.done(function() {
+				
+				var auth = new MyAuthenticationTooSlow("Fritz", "abc", 11 * 1000);
+				client.setAuthentication(auth);
+				
+				remote.doit(1, function(ret, ex) {
+					result = ret;
+					exception = ex;
+				});
+			});			
+		});
+		
+		waitsFor(function() {
+			if (result) throw "Excpected exception";
+			var succ= exception && exception.code == byps.BExceptionC.FORBIDDEN;
+			log.info(")testAuthenticationTooSlow");
+			return succ;
+		}, "Expected exception 403", 20 * 1000);
+		
 	});
 
 });

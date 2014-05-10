@@ -165,6 +165,12 @@ byps.BExceptionC = {
   UNAUTHORIZED : 401,
 
   /**
+   * This code can be used, if authentication has failed.
+   * Same as HttpURLConnection.HTTP_FORBIDDEN.
+   */
+  FORBIDDEN : 403,
+  
+  /**
 	 * Timeout. This code is used, if an operation exceeds its time limit.
 	 * HWireClientR sends this code for expired long-polls. Same value as
 	 * HttpURLConnection.HTTP_CLIENT_TIMEOUT.
@@ -690,15 +696,15 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	var MESSAGEID_CANCEL_ALL_REQUESTS = -1;
 	var MESSAGEID_DISCONNECT = -2;
 		
-	this.done = function() {
-		this._internalCancelAllRequests(MESSAGEID_DISCONNECT);
+	this.done = function(asyncResult) {
+		this._internalCancelAllRequests(MESSAGEID_DISCONNECT, asyncResult);
 	};
 	
-	this.cancelAllRequests = function() {
-		this._internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS);
+	this.cancelAllRequests = function(asyncResult) {
+		this._internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS, asyncResult);
 	};
 
-	this._internalCancelAllRequests = function(cancelMessageId) {
+	this._internalCancelAllRequests = function(cancelMessageId, asyncResult) {
 		
 		for (requestId in this.openRequestsToCancel) {
 			var xhr = this.openRequestsToCancel[requestId];
@@ -707,17 +713,23 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		
 		// Notify the server about the canceled messages
 		if (cancelMessageId) {
-			this._sendCancelMessage(cancelMessageId);
+			this._sendCancelMessage(cancelMessageId, asyncResult);
 		}
 		
 		this.openRequestsToCancel = {};
 	};
 	
-	this._sendCancelMessage = function(cancelMessageId) {
+	this._sendCancelMessage = function(cancelMessageId, asyncResult) {
 		var destUrl = me.url + "?messageid=" + cancelMessageId + "&cancel=1";
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', destUrl, true);
 		xhr.withCredentials = true;
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState != 4) return;
+			if (asyncResult) {
+				asyncResult(true, null);
+			}
+		};
 		xhr.send();
 	};
 
@@ -780,6 +792,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	this._lastAuthenticationException = null;
 	this._asyncResultsWaitingForAuthentication = [];
 	this._RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+	this._negotiateActive = false;
 
 	this.getOutput = function() {
 		return new byps.BInputOutput(this);
@@ -961,6 +974,16 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	};
 
 	this.negotiateProtocolClient = function(asyncResult, processAsync) { // BAsyncResult<Boolean>
+		
+		if (this._negotiateActive) {
+			var ex = new byps.BException(byps.BExceptionC.FORBIDDEN,
+					"Authentication procedure failed. Server returned 401 for every request. " +
+					"A common reason for this error is slow authentication handling.");
+					// ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
+			asyncResult(null, ex);
+			return;
+		}
+		this._negotiateActive = true;
 
 		var me = this;
 
@@ -1034,6 +1057,8 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 						me._lastAuthenticationTime = (new Date()).getTime();
 						me._lastAuthenticationException = ex;
 
+						me._negotiateActive = false;
+						
 						for ( var i = 0; i < arr.length; i++) {
 							var result_i = arr[i];
 							result_i(result, ex);
@@ -1104,9 +1129,6 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 		var ret = false;
 		if (ex && ex.code) {
 			ret = ex.code == byps.BExceptionC.UNAUTHORIZED;
-			if (!ret) {
-				ret = ex.code == byps.BExceptionC.IOERROR && ("" + ex).indexOf("403") >= 0;
-			}
 		}
 		return ret;
 	};
@@ -1366,8 +1388,8 @@ byps.BClient = function() {
 		this.transport.negotiateProtocolClient(asyncResult, processAsync);
 	};
 
-	this.done = function() {
-		this.transport.wire.cancelAllRequests();
+	this.done = function(asyncResult) {
+		this.transport.wire.done(asyncResult);
 	};
 
 	this.addRemote = function(remoteImpl) {

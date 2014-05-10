@@ -13,6 +13,7 @@ namespace byps {
     , remoteRegistry(remoteRegistry)
     , apiDesc(apiDesc)
     , protocol(PProtocol())
+    , negotiateActive(false)
   {
   }
 
@@ -22,6 +23,7 @@ namespace byps {
     , apiDesc(rhs.apiDesc)
     , protocol(rhs.protocol)
     , targetId(targetId)
+    , negotiateActive(false)
   {
   }
 
@@ -230,6 +232,17 @@ namespace byps {
   BINLINE void BTransport::negotiateProtocolClient(PAsyncResult asyncResult) {
     PTransport pthis = shared_from_this();
     if (!pthis) return;
+
+    // Check that we do not run into recursive authentication requests.
+    bool expectedActive = false;
+    if (negotiateActive.compare_exchange_strong(expectedActive, true) == false) {
+      BException ex(BExceptionC::FORBIDDEN,
+          L"Authentication procedure failed. Server returned 401 for every request. "
+          L"A common reason for this error is slow authentication handling.");
+      // ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
+      asyncResult->setAsyncResult(BVariant(ex));
+      return;
+    }
 
     PBytes bytes = BBytes::create(NEGOTIATE_MAX_SIZE);
     BNegotiate nego(apiDesc);
@@ -452,6 +465,8 @@ namespace byps {
         transport->lastAuthenticationTime = system_clock::now();
         transport->lastAuthenticationException = ex;
       }
+
+      transport->negotiateActive = false;
 
       for (size_t i = 0; i < copyResults.size(); i++)
       {

@@ -106,6 +106,12 @@ public:
 	*/
 	const static int32_t UNAUTHORIZED = 401;
   
+  /**
+   * This code can be used, if authentication has failed.
+   * Same as HttpURLConnection.HTTP_FORBIDDEN.
+   */
+  const static int32_t FORBIDDEN = 403;
+ 
 	/**
 	* Timeout.
 	* This code is used, if an operation exceeds its time limit.

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace byps
@@ -162,7 +163,7 @@ namespace byps
                 {
                     if (ex != null)
                     {
-                        // BYPS relogin error? (HTTP 403)
+                        // BYPS relogin error? (HTTP 401)
                         relogin = transport.internalIsReloginException(ex, transport.getObjectTypeId(methodRequest));
                         if (!relogin)
                         {
@@ -431,6 +432,18 @@ namespace byps
         {
             if (log.isDebugEnabled()) log.debug("negotiateProtocolClient(");
 
+            // Check that we do not run into recursive authentication requests.
+            if (Interlocked.CompareExchange(ref negotiateActive, 1, 0) != 0) 
+            {
+                BException ex = new BException(BExceptionC.FORBIDDEN,
+                    "Authentication procedure failed. Server returned 401 for every request. "
+                    + "A common reason for this error is slow authentication handling.");
+                // ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
+                asyncResult.setAsyncResult(false, ex);
+                return;
+            }
+
+
 		    ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
 		    BNegotiate nego = new BNegotiate(apiDesc);
 		    nego.write(buf);
@@ -552,6 +565,8 @@ namespace byps
                     transport.lastAuthenticationException = ex;
                 }
 
+                transport.negotiateActive = 0;
+
                 if (log.isDebugEnabled()) log.debug("Call setAsyncResult for collected result objects, #=" + copyResults.Count);
                 for (int i = 0; i < copyResults.Count; i++)
                 {
@@ -647,6 +662,10 @@ namespace byps
         */
         internal long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
 
+        /**
+         * This member is not null, if a negotiate request is currently active.
+         */
+        private int negotiateActive;
 
         private Log log = LogFactory.getLog(typeof(BTransport));
     }

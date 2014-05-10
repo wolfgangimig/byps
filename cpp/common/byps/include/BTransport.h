@@ -6,20 +6,15 @@
 
 namespace byps {
 
-class BTransport : public byps_enable_shared_from_this<BTransport> {
-protected:
-    PWire wire;
-    PRemoteRegistry remoteRegistry;
-    PApiDescriptor apiDesc;
-
-public:
+  class BTransport : public byps_enable_shared_from_this<BTransport> {
+  public:
     BTransport(PApiDescriptor apiDesc, const PWire& wire, const PRemoteRegistry& remoteRegistry);
     BTransport(const BTransport& rhs, const BTargetId& targetId);
-	virtual ~BTransport();
+    virtual ~BTransport();
 
-	virtual PWire getWire();
-	virtual PRemoteRegistry getRemoteRegistry();
-	virtual PApiDescriptor getApiDesc();
+    virtual PWire getWire();
+    virtual PRemoteRegistry getRemoteRegistry();
+    virtual PApiDescriptor getApiDesc();
 
     POutput getOutput();
     POutput getResponse(BMessageHeader& requestHeader);
@@ -32,44 +27,48 @@ public:
 
     void sendMethod(const PMethodRequest& methodRequest, PAsyncResult asyncResult);
     void send(const PSerializable& obj, PAsyncResult asyncResult);
-	void recv(PServer server, PMessage message, PAsyncResult asyncResult);
+    void recv(PServer server, PMessage message, PAsyncResult asyncResult);
 
-	void negotiateProtocolClient(PAsyncResult asyncResult);
-	PProtocol negotiateProtocolServer(const BTargetId& targetId, PBytes& buf, PAsyncResult asyncResult);
+    void negotiateProtocolClient(PAsyncResult asyncResult);
+    PProtocol negotiateProtocolServer(const BTargetId& targetId, PBytes& buf, PAsyncResult asyncResult);
 
-	bool isReloginException(BException ex, int typeId);
+    bool isReloginException(BException ex, int typeId);
 
-protected:
+  protected:
     PProtocol createNegotiatedProtocol(BNegotiate& nego);
     PProtocol detectProtocolFromInputBuffer(const PBytes& buf);
-	bool internalIsReloginException(BException ex, BTYPEID typeId);
-	void internalAuthenticate(PAsyncResult asyncResult);
+    bool internalIsReloginException(BException ex, BTYPEID typeId);
+    void internalAuthenticate(PAsyncResult asyncResult);
 
+    PWire wire;
+    PRemoteRegistry remoteRegistry;
+    PApiDescriptor apiDesc;
     PProtocol protocol;
     BTargetId targetId;
-	PAuthentication authentication;
+    PAuthentication authentication;
+    byps_atomic<bool> negotiateActive;
 
     byps_mutex mtx;
 
-	std::chrono::system_clock::time_point lastAuthenticationTime;
-	std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
-	BException lastAuthenticationException;
-	void setAuthentication(PAuthentication auth, bool onlyIfNull);
-	void assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult);
-	void loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult);
-	BTYPEID getObjectTypeId(PSerializable ser);
+    std::chrono::system_clock::time_point lastAuthenticationTime;
+    std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
+    BException lastAuthenticationException;
+    void setAuthentication(PAuthentication auth, bool onlyIfNull);
+    void assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult);
+    void loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult);
+    BTYPEID getObjectTypeId(PSerializable ser);
 
-	friend class BTransport_DeserlializeMethodResultMaybeRelogin;
-	friend class BTransport_InternalAuthenticate_BAsyncResult;
-	friend class BTransport_MyNegoAsyncResult;
-	friend class BTransport_ReloginAndRetrySend;
-	friend class BClient;
+    friend class BTransport_DeserlializeMethodResultMaybeRelogin;
+    friend class BTransport_InternalAuthenticate_BAsyncResult;
+    friend class BTransport_MyNegoAsyncResult;
+    friend class BTransport_ReloginAndRetrySend;
+    friend class BClient;
 
-	// Declare BOutput, BInput as friend class to be able to access targetId
-	// without byps_unique_lock via getOutput() { getProtocol() { getOutput(transport, ...) { transport->targetId
-	friend class BOutput;
-	friend class BInput;
-};
+    // Declare BOutput, BInput as friend class to be able to access targetId
+    // without byps_unique_lock via getOutput() { getProtocol() { getOutput(transport, ...) { transport->targetId
+    friend class BOutput;
+    friend class BInput;
+  };
 
 }
 

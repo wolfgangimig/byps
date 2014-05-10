@@ -350,7 +350,8 @@ namespace byps
                 if (log.isDebugEnabled()) log.debug("status=" + response.StatusCode);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    requestToCancel.setAsyncResult(null, new BException(BExceptionC.IOERROR, "HTTP Status " + response.StatusCode));
+                    int code = Convert.ToInt32(response.StatusCode);
+                    returnException = new BException(code, "HTTP Status " + response.StatusCode);
                 }
                 else
                 {
@@ -363,9 +364,8 @@ namespace byps
                 }
 
             }
-            catch (Exception e)
+            catch (WebException e)
             {
-                if (log.isDebugEnabled()) log.debug("Exception", e);
                 BException bex = null;
                 if (_cancelAllRequests)
                 {
@@ -373,9 +373,15 @@ namespace byps
                 }
                 else
                 {
-                    bex = new BException(BExceptionC.IOERROR, e.Message, e);
+                    int code = Convert.ToInt32(((HttpWebResponse)e.Response).StatusCode);
+                    bex = new BException(code, "HTTP Status " + code);
                 }
                 returnException = bex;
+            }
+            catch (Exception e)
+            {
+                if (log.isDebugEnabled()) log.debug("Exception", e);
+                returnException = new BException(BExceptionC.IOERROR, e.Message, e);
             }
             finally
             {

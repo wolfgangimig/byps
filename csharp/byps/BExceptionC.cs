@@ -105,7 +105,13 @@ namespace byps
        */
       public const int UNAUTHORIZED = 401;
   
-     /**
+      /**
+       * This code can be used, if authentication has failed.
+       * Same as HttpURLConnection.HTTP_FORBIDDEN.
+       */
+      public const int FORBIDDEN = 403;
+
+       /**
        * Timeout.
        * This code is used, if an operation exceeds its time limit.
        * HWireClientR sends this code for expired long-polls.
