@@ -36,6 +36,7 @@
 #include "BLostConnectionHandler.hpp"
 #include "BDateTime.hpp"
 #include "BValueClass.hpp"
+#include "BFile.hpp"
 
 #include "platform/platform.hpp"
 

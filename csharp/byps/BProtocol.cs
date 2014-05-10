@@ -11,18 +11,22 @@ namespace byps
     {
         public readonly BApiDescriptor apiDesc;
 
+        public readonly int negotiatedBypsVersion;
+
         public readonly long negotiatedVersion;
 
         public readonly ByteOrder negotiatedByteOrder;
 	
-	    public BProtocol(BApiDescriptor apiDesc, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	    public BProtocol(BApiDescriptor apiDesc, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		    this.apiDesc = apiDesc;
+            this.negotiatedBypsVersion = negotiatedBypsVersion;
 		    this.negotiatedVersion = negotiatedVersion;
 		    this.negotiatedByteOrder = negotiatedByteOrder;
 	    }
 	
 	    public BProtocol(BApiDescriptor apiDesc) {
 		    this.apiDesc = apiDesc;
+            this.negotiatedBypsVersion = 0;
 		    this.negotiatedVersion = 0;
             this.negotiatedByteOrder = ByteOrder.UNDEFINED;
 	    }

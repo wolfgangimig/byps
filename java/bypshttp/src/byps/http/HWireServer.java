@@ -19,6 +19,7 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BMessage;
 import byps.BMessageHeader;
+import byps.BServerR;
 import byps.BTargetId;
 import byps.BWire;
 
@@ -73,7 +74,8 @@ public class HWireServer extends BWire {
           throw new IOException("Timeout while waiting for stream");
         }
         
-        this.copyProperies(is);
+        this.copyProperties(is);
+        
       }
       catch (InterruptedIOException e) {
         
@@ -94,6 +96,7 @@ public class HWireServer extends BWire {
       if (log.isDebugEnabled()) log.debug("cloneInputStream(");
       final BContentStream src = (BContentStream) ensureStream();
       final BContentStream ret = src.materialize();
+      ret.copyProperties(this);
       if (log.isDebugEnabled()) log.debug(")cloneInputStream=" + ret);
       return ret;
     }

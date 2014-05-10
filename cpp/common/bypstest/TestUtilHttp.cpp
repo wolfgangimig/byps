@@ -26,7 +26,7 @@ PClient_Testser TestUtilHttp::createClient(void* app) {
 	return client;
 }
 
-class MyContentStreamBytes : public BContentStreamImpl {
+class MyContentStreamBytes : public BContentStream {
 	int64_t nbOfBytes;
 	int64_t pos;
 	bool chunked;

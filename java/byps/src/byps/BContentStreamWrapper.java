@@ -31,10 +31,6 @@ public class BContentStreamWrapper extends BContentStream {
 	public BContentStreamWrapper() {
 	}
 	
-	/**
-	 * 
-	 * @param innerStream
-	 */
   public BContentStreamWrapper(InputStream innerStream) {
     this(innerStream, BContentStream.DEFAULT_CONTENT_TYPE, -1L, 0L);
   }
@@ -111,7 +107,7 @@ public class BContentStreamWrapper extends BContentStream {
 				innerStream = openStream();
 				if (innerStream instanceof BContentStream) {
 				  BContentStream bstream = (BContentStream)innerStream;
-				  this.copyProperies(bstream); // copy contentType, contentLength etc.
+				  this.copyProperties(bstream); // copy contentType, contentLength etc.
 				}
 			}
 		}

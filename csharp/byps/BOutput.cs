@@ -9,27 +9,29 @@ namespace byps
 {
     public abstract class BOutput
     {
-  	    public readonly BMessageHeader header;
-	    public readonly BTransport transport;
-	    public readonly BRegistry registry;
-	
-	    public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
-		    this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
-		    this.header = new BMessageHeader(streamHeaderMagic, negotiatedVersion, negotiatedByteOrder, transport.getWire().makeMessageId());
-		    this.header.targetId = transport.getTargetId();
-		    this.transport = transport;
-		    this.registry = registry;
-		    this.streams = null;
-	    }
-	
-	    public BOutput(BTransport transport, BRegistry registry, BMessageHeader requestHeader) {
+        public readonly BMessageHeader header;
+        public readonly BTransport transport;
+        public readonly BRegistry registry;
+
+        public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder)
+        {
             this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
-		    this.header = requestHeader;
-		    this.header.targetId = transport.getTargetId();
-		    this.transport = transport;
-		    this.registry = registry;
-		    this.streams = null;
-	    }
+            this.header = new BMessageHeader(streamHeaderMagic, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder, transport.getWire().makeMessageId());
+            this.header.targetId = transport.getTargetId();
+            this.transport = transport;
+            this.registry = registry;
+            this.streams = null;
+        }
+
+        public BOutput(BTransport transport, BRegistry registry, BMessageHeader requestHeader)
+        {
+            this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
+            this.header = requestHeader;
+            this.header.targetId = transport.getTargetId();
+            this.transport = transport;
+            this.registry = registry;
+            this.streams = null;
+        }
 
 
         public void store(Object bserializable)
@@ -57,11 +59,11 @@ namespace byps
             // Alle Streams schließen. Sie werden nicht gesendet.
             if (streams != null)
             {
-                foreach (BStreamRequest streamRequest in streams)
+                foreach (BContentStream bstream in streams)
                 {
                     try
                     {
-                        streamRequest.strm.Close();
+                        bstream.Close();
                     }
                     catch (Exception) { }
                 }
@@ -69,31 +71,56 @@ namespace byps
             }
         }
 
-       	public BMessage toMessage() {
-		    BMessage msg = new BMessage(header, toByteBuffer(), getStreamRequests());
-		    return msg;
-	    }
-	
+        public BMessage toMessage()
+        {
+            BMessage msg = new BMessage(header, toByteBuffer(), getStreamRequests());
+            return msg;
+        }
+
 
         public abstract ByteBuffer toByteBuffer();
         protected abstract void internalStore(Object bserializable);
 
-  	    internal BStreamRequest createStreamRequest(Stream strm) {
-		    if (streams == null) streams = new List<BStreamRequest>();
-		    BStreamRequest streamRequest = new BStreamRequest();
-		    streamRequest.messageId = header.messageId;
-		    streamRequest.streamId = transport.getWire().makeMessageId();
-		    streamRequest.strm = strm;
-            streams.Add(streamRequest);
-		    return streamRequest;
-	    }
-	
-	    public List<BStreamRequest> getStreamRequests() {
-		    return streams;
-	    }
-		
-	    protected BObjMap objMap;
-	    protected List<BStreamRequest> streams;
+        internal BContentStream createStreamRequest(Stream strm)
+        {
+            if (streams == null) streams = new List<BContentStream>();
+
+            BContentStream bstrm = null;
+
+            if (strm is BContentStream)
+            {
+                bstrm = (BContentStream)strm;
+            }
+            else
+            {
+                bstrm = new BContentStreamWrapper(strm);
+            }
+
+            // If the stream has already a streamId, it has been received
+            // from the server. In this case, the application obviously
+            // wants to forward the stream to another client. Thus 
+            // we do not have to upload the stream.
+
+            if (bstrm.TargetId.isZero())
+            {
+                BTargetId targetId = new BTargetId(
+                    transport.getConnectedServerId(),
+                    header.messageId,
+                    transport.getWire().makeMessageId());
+                bstrm.TargetId = targetId;
+                streams.Add(bstrm);
+            }
+
+            return bstrm;
+        }
+
+        public List<BContentStream> getStreamRequests()
+        {
+            return streams;
+        }
+
+        protected BObjMap objMap;
+        protected List<BContentStream> streams;
 
     }
 }

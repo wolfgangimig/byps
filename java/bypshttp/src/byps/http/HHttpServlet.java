@@ -730,6 +730,8 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       this.fileItem = fileItem;
       this.streamId = streamId;
       this.tempDir = tempDir;
+      this.setFileName(fileItem.getName());
+      this.setPropertiesValid(true);
     }
 
     @Override

@@ -628,7 +628,7 @@ public class HWireClient extends BWire {
       this.ex = e;
       if (e == null) {
         this.innerStream = stream;
-        this.copyProperies(stream);
+        this.copyProperties(stream);
       }
     }
 

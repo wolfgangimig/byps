@@ -9,10 +9,14 @@ namespace byps
 {
     public abstract class BContentStream : Stream
     {
-    	public readonly static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
+        public readonly static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
 
         protected String contentTypeVal;
         protected long contentLengthVal;
+        protected String fileNameVal;
+        protected bool attachmentVal;
+        protected BTargetId targetIdVal = BTargetId.ZERO;
+        protected bool propertiesValid;
 
         public BContentStream(String contentType, long contentLength)
         {
@@ -26,13 +30,22 @@ namespace byps
             this.contentLengthVal = -1L;
         }
 
-	    public virtual String ContentType
+        public BContentStream(BContentStream rhs, long lifetimeMillis)
+        {
+            copyProperties(rhs);
+        }
+
+        public virtual String ContentType
         {
             get
             {
                 return contentTypeVal;
             }
-	    }
+            set
+            {
+                contentTypeVal = value;
+            }
+        }
 
         public virtual long ContentLength
         {
@@ -40,12 +53,69 @@ namespace byps
             {
                 return contentLengthVal;
             }
+            set
+            {
+                contentLengthVal = value;
+            }
         }
-	
-	    public virtual BContentStream CloneInputStream() 
-        {
-		    throw new IOException("Stream cannot be cloned.");
-	    }
 
+        public virtual String FileName
+        {
+            get
+            {
+                return fileNameVal;
+            }
+            set
+            {
+                fileNameVal = value;
+            }
+        }
+
+        public virtual bool IsAttachment
+        {
+            get
+            {
+                return attachmentVal;
+            }
+            set
+            {
+                attachmentVal = true;
+            }
+        }
+
+        public virtual BTargetId TargetId
+        {
+            get
+            {
+                return targetIdVal;
+            }
+            set
+            {
+                targetIdVal = value;
+            }
+        }
+
+        public virtual void copyProperties(BContentStream rhs)
+        {
+            if (hasValidProperties()) return;
+            if (!rhs.hasValidProperties()) return;
+            contentTypeVal = rhs.ContentType;
+            contentLengthVal = rhs.ContentLength;
+            fileNameVal = rhs.FileName;
+            attachmentVal = rhs.IsAttachment;
+            targetIdVal = rhs.TargetId;
+            propertiesValid = true;
+        }
+
+        public virtual bool hasValidProperties()
+        {
+            return propertiesValid;
+        }
+
+        public virtual void setPropertiesValid(bool b)
+        {
+            propertiesValid = b;
+        }
     }
+
 }

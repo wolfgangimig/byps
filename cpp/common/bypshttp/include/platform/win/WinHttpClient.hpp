@@ -438,7 +438,7 @@ namespace byps { namespace http { namespace winhttp {
     }
   };
 
-  class GetRequestContentStream : public BContentStreamImpl {
+  class GetRequestContentStream : public BContentStream {
     PWinHttpGetStream request;
   public:
     GetRequestContentStream(PWinHttpGetStream request) : request(request) {
@@ -754,6 +754,24 @@ namespace byps { namespace http { namespace winhttp {
     }
 
     virtual void writeDataOrReceiveResponse() throw() {
+      try {
+        internalWriteDataOrReceiveResponse();
+      }
+      catch (HException& ex) {
+        finishOnError(ex);
+      }
+      catch (BException& ex) {
+        finishOnError(ex);
+      }
+      catch (std::exception& ex) {
+        finishOnError(ex);
+      }
+      catch (...) {
+        finishOnError(BException(BExceptionC::INTERNAL, L"writeDataOrReceiveResponse failed"));
+      }
+    }
+
+    void internalWriteDataOrReceiveResponse() {
 
       // Buffer completely send?
       if (bufferPos == bufferLimit) {
@@ -808,7 +826,6 @@ namespace byps { namespace http { namespace winhttp {
       else if (bufferLimit < bufferPos) {
         DWORD err = ERROR_INVALID_PARAMETER;
         finishOnError(HException(L"Invalid state in writeDataOrReceiveResponse: bytes->length < sendIdx", err));
-        return;
       }
       else {
         // Write buffer data

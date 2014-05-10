@@ -103,8 +103,10 @@ public class BTargetId {
   	    int e = s.indexOf('.', p);
   	    if (e >= 0) {
   	      v1 = Long.parseLong(s.substring(p, e));
-  	      e++;
-  	      v2 = Long.parseLong(s.substring(e));
+  	      p = e+1;
+  	      e = s.indexOf('.', p);
+  	      if (e < 0) e = s.length();
+  	      v2 = Long.parseLong(s.substring(p, e));
   	    }
   	  }
 	  }

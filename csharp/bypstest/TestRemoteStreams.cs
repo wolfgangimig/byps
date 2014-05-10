@@ -84,9 +84,40 @@ namespace bypstest
             log.info(")testRemoteStreamsOneStreamNotChunked");
         }
 
+        /// <summary>
+        /// Check sending/receiving correct Content-Type and file name.
+        /// </summary>
         [TestMethod]
-	    public void testRemoteStreamsManyStreams() {
-		    log.info("testRemoteStreamsOneStreams(");
+        public void testRemoteStreamsFileStream()
+        {
+            log.info("testRemoteStreamsFileStream(");
+            String str = "hallo";
+            FileInfo file = new FileInfo(Path.GetTempFileName() + ".txt");
+            File.WriteAllText(file.FullName, str);
+            Stream istrm = new BContentStreamWrapper(file);
+            remote.SetImage(istrm);
+            BContentStream istrmR = (BContentStream)remote.GetImage();
+
+            TestUtils.assertEquals(log, "Content-Type", "text/plain", istrmR.ContentType);
+            TestUtils.assertEquals(log, "Content-Length", file.Length, istrmR.ContentLength);
+            TestUtils.assertEquals(log, "FileName", file.Name, istrmR.FileName);
+
+            ByteBuffer buf = BWire.bufferFromStream(istrmR, false);
+            String strR = File.ReadAllText(file.FullName);
+            TestUtils.assertEquals(log, "stream", str, strR);
+
+            TestUtils.assertEquals(log, "Content-Type", "text/plain", istrmR.ContentType);
+            TestUtils.assertEquals(log, "Content-Length", file.Length, istrmR.ContentLength);
+            TestUtils.assertEquals(log, "FileName", file.Name, istrmR.FileName);
+
+            file.Delete();
+            log.info(")testRemoteStreamsFileStream");
+        }
+
+        [TestMethod]
+        public void testRemoteStreamsManyStreams()
+        {
+            log.info("testRemoteStreamsOneStreams(");
             int nbOfStreams = 10;
 
             for (int i = 0; i < 10; i++)
@@ -94,8 +125,8 @@ namespace bypstest
                 internalTestRemoteStreamsManyStreams(nbOfStreams);
             }
 
-		    log.info(")testRemoteStreamsOneStreams");
-	    }
+            log.info(")testRemoteStreamsOneStreams");
+        }
 
         private void internalTestRemoteStreamsManyStreams(int nbOfStreams)
         {
@@ -124,21 +155,22 @@ namespace bypstest
             private Log log = LogFactory.getLog(typeof(MyInputStream));
             readonly byte[] buf;
             int idx;
-		    public bool isClosed;
+            public bool isClosed;
             public bool throwEx;
             public bool throwError;
-		
-		    public MyInputStream(byte[] buf, bool throwEx, bool throwError)
+
+            public MyInputStream(byte[] buf, bool throwEx, bool throwError)
             {
                 this.buf = buf;
                 this.throwEx = throwEx;
                 this.throwError = throwError;
-		    }
-		
-		    public override void Close() {
-			    isClosed = true;
+            }
+
+            public override void Close()
+            {
+                isClosed = true;
                 base.Close();
-		    }
+            }
 
             public override long ContentLength
             {
@@ -250,9 +282,10 @@ namespace bypstest
             }
         }
 
-	    [TestMethod]
-	    public void testRemoteStreamsCloseStreamAfterSend() {
-		    log.info("testRemoteStreamsCloseStreamAfterSend(");
+        [TestMethod]
+        public void testRemoteStreamsCloseStreamAfterSend()
+        {
+            log.info("testRemoteStreamsCloseStreamAfterSend(");
 
             IDictionary<int, Stream> streams = new Dictionary<int, Stream>();
             for (int i = 0; i < 10; i++)
@@ -262,29 +295,32 @@ namespace bypstest
                 streams[i] = istrm;
             }
             remote.SetImages(streams, 5);
-		
-		    for (int i = 0; i < 10; i++) {
-			    MyInputStream istrm = (MyInputStream)streams[i];
+
+            for (int i = 0; i < 10; i++)
+            {
+                MyInputStream istrm = (MyInputStream)streams[i];
                 TestUtils.assertEquals(log, "InputStream.isClosed", true, istrm.isClosed);
             }
-	
-		    log.info(")testRemoteStreamsCloseStreamAfterSend");
-	    }
+
+            log.info(")testRemoteStreamsCloseStreamAfterSend");
+        }
 
 
         [TestMethod]
-        public void testRemoteStreamsThrowExceptionOnRead() {
-		    log.info("testRemoteStreamsThrowExceptionOnRead(");
-		
-		    internalTestThrowExOnRead(true, false);
-		    internalTestThrowExOnRead(false, true);
-	
-		    log.info(")testRemoteStreamsThrowExceptionOnRead");
+        public void testRemoteStreamsThrowExceptionOnRead()
+        {
+            log.info("testRemoteStreamsThrowExceptionOnRead(");
 
-	    }
+            internalTestThrowExOnRead(true, false);
+            internalTestThrowExOnRead(false, true);
 
-	    private void internalTestThrowExOnRead(bool throwEx, bool throwError) {
-		    log.info("internalTestThrowExOnRead(throwEx=" + throwEx + ", throwError=" + throwError);
+            log.info(")testRemoteStreamsThrowExceptionOnRead");
+
+        }
+
+        private void internalTestThrowExOnRead(bool throwEx, bool throwError)
+        {
+            log.info("internalTestThrowExOnRead(throwEx=" + throwEx + ", throwError=" + throwError);
 
             IDictionary<int, Stream> streams = new Dictionary<int, Stream>();
             for (int i = 0; i < 3; i++)
@@ -293,25 +329,27 @@ namespace bypstest
                 Stream istrm = new MyInputStream(Encoding.ASCII.GetBytes(str), i == 1 && throwEx, i == 1 && throwError);
                 streams[i] = istrm;
             }
-		
-		    // An exception is thrown in HWireClient.
-		    try {
-			    log.info("setImages...");
-			    remote.SetImages(streams, -1);
-			    Assert.Fail("Exception expected");
-		    }
-		    catch (BException e) {
-			    log.info("setImages ex=" + e + ", OK");
-			    String expectedMessage = throwEx ? "Test Exception" : "Test Error";
+
+            // An exception is thrown in HWireClient.
+            try
+            {
+                log.info("setImages...");
+                remote.SetImages(streams, -1);
+                Assert.Fail("Exception expected");
+            }
+            catch (BException e)
+            {
+                log.info("setImages ex=" + e + ", OK");
+                String expectedMessage = throwEx ? "Test Exception" : "Test Error";
                 String expectedDetails = throwEx ? "System.IO.IOException: Test Exception" : "System.InvalidOperationException: Test Error";
                 TestUtils.assertEquals(log, "Exception Code", BExceptionC.IOERROR, e.Code);
                 TestUtils.assertEquals(log, "Exception Message", expectedMessage, e.Message);
                 String readDetails = e.Details.Substring(0, expectedDetails.Length);
                 TestUtils.assertEquals(log, "Exception Details", expectedDetails, readDetails);
             }
-		
-		    {
-			    log.info("read streams");
+
+            {
+                log.info("read streams");
                 IDictionary<int, Stream> istrmsR = remote.GetImages();
                 for (int i = 0; i < istrmsR.Count; i++)
                 {
@@ -320,17 +358,18 @@ namespace bypstest
                     String strR = Encoding.ASCII.GetString(buf.array(), buf.position(), buf.remaining());
                     log.info("strR=" + strR);
                 }
-		    }
-		
-		    // All streams must have been closed
-		    log.info("streams must be closed");
-		    for (int i = 0; i < streams.Count; i++) {
-			    MyInputStream istrm = (MyInputStream)streams[i];
-			    TestUtils.assertEquals(log, "InputStream.isClosed", true, istrm.isClosed);
-		    }
-		
-		    log.info(")internalTestThrowExOnRead");
-	    }
+            }
+
+            // All streams must have been closed
+            log.info("streams must be closed");
+            for (int i = 0; i < streams.Count; i++)
+            {
+                MyInputStream istrm = (MyInputStream)streams[i];
+                TestUtils.assertEquals(log, "InputStream.isClosed", true, istrm.isClosed);
+            }
+
+            log.info(")internalTestThrowExOnRead");
+        }
 
         [TestMethod]
         public void testRemoteStreamsLargeStream()
@@ -357,6 +396,52 @@ namespace bypstest
             log.info(")testRemoteStreamsLargeStream");
         }
 
+        class BContentStreamWrapperFailOpen : BContentStreamWrapper
+        {
+            public BContentStreamWrapperFailOpen(Stream strmFromServer)
+                : base((BContentStream)strmFromServer, 0)
+            {
+            }
+            protected override Stream openStream()
+            {
+                throw new IOException("Stream should be passed without beeing read.");
+            }
+
+        }
+
+        [TestMethod]
+        public void testHandoverStream()
+        {
+            log.info("testHandoverStream(");
+
+            List<Stream> streams = TestUtilsHttp.makeTestStreams();
+
+            for (int i = 0; i < streams.Count; i++)
+            {
+
+                Stream istrm = streams[i];
+
+                remote.SetImage(istrm);
+
+                Stream strmFromServer = remote.GetImage();
+                BContentStream streamFailOpen = new BContentStreamWrapperFailOpen(strmFromServer);
+
+                remote.SetImage(streamFailOpen);
+
+                for (int j = 0; j < 2; j++)
+                {
+                    List<Stream> estreams = TestUtilsHttp.makeTestStreams();
+                    Stream estrm = estreams[i];
+                    Stream rstrm = remote.GetImage();
+                    TestUtils.assertEquals(log, "stream[" + i + "]=" + estrm, estrm, rstrm);
+                }
+
+                remote.SetImage(null);
+                TestUtils.checkTempDirEmpty(client);
+            }
+
+            log.info(")testHandoverStream");
+        }
 
     }
 }

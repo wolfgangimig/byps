@@ -31,13 +31,12 @@ public:
 
     std::string fileContent = "hello";
 
-    char fname[L_tmpnam] = {0};
-    tmpnam(fname);
-    FILE *file = fopen(fname, "w");
-    fputs(fileContent.c_str(), file);
-    fclose(file);
+    BFile file = BFile::createTempFile(L"byps", L".txt");
+    byps_ptr<ofstream> fos = file.openWrite();
+    (*fos) << fileContent;
+    fos->close();
 
-    PContentStream strm(new BContentStreamFile(fname));
+    PContentStream strm(new BContentStreamWrapper(file));
 
     PRemoteStreams remote = client->getRemoteStreams();
     l_info << L"remote->setImage ...";
@@ -45,17 +44,20 @@ public:
     l_info << L"remote->setImage OK";
 
     strm.reset();
-    std::remove(fname);
-
+    file.delet();
 
     l_info << L"remote->getImage ...";
     PContentStream strmR = remote->getImage();
     l_info << L"remote->getImage OK";
 
+    //TASSERT(L"Content-Type", "text/plain", strmR->getContentType()); // there is currently no Content-Type detection in BContentStreamFile
+
     l_info << L"getContentLength ...";
     int64_t contentLengthR = strmR->getContentLength();
     l_info << L"getContentLength OK, #=" << contentLengthR;
     TASSERT(L"wrong content length", fileContent.size(), (size_t)contentLengthR);
+
+    TASSERT(L"FileName", file.getName(), strmR->getFileName());
 
     l_info << L"read ...";
     char buf[1000] = {0};
@@ -63,6 +65,8 @@ public:
     l_info << L"read OK, len=" << len;
 
     TASSERT(L"wrong stream content", fileContent, std::string(buf));
+    TASSERT(L"FileName", file.getName(), strmR->getFileName());
+    TASSERT(L"wrong content length", fileContent.size(), (size_t)strmR->getContentLength());
 
     l_info << L")testRemoteStreamsOneFileStream";
   }
@@ -71,7 +75,7 @@ public:
   * Generates a stream with the given number of bytes.
   * The stream is transmitted with chunked encoding or with content length. 
   */
-  class MyContentStreamBytes : public BContentStreamImpl {
+  class MyContentStreamBytes : public BContentStream {
     int64_t nbOfBytes;
     bool chunked;
     volatile int64_t pos;
@@ -269,6 +273,20 @@ public:
     l_info << L")testRemoteStreamsAsync";
   }
 
+  class BContentStreamWrapperFailOpen : public BContentStreamWrapper
+  {
+    PContentStream strmFromServer;
+  public:
+    BContentStreamWrapperFailOpen(PContentStream strmFromServer) 
+      : BContentStreamWrapper(PStream()) {
+      copyProperties(strmFromServer);
+    }
+    virtual int32_t read(char* buf, int32_t offs, int32_t len) {
+      throw BException(BExceptionC::IOERROR, L"Stream should be passed without beeing read.");
+    }
+
+  };
+
   void testHandOverStream() {
     l_info << L"testHandOverStream(";
 
@@ -282,7 +300,8 @@ public:
 
     // Get from server and hand over to server
     PContentStream streamFromServer = remote->getImage();
-    remote->setImage(streamFromServer);
+    PContentStream streamFailOpen(new BContentStreamWrapperFailOpen(streamFromServer));
+    remote->setImage(streamFailOpen);
 
     for (int j = 0; j < 2; j++) {
       PContentStream strm(new MyContentStreamBytes(nbOfBytes, false));
@@ -324,8 +343,8 @@ public:
   }
 
   virtual void init() {
-    ADD_TEST(testHandOverStream);
     ADD_TEST(testRemoteStreamsOneFileStream);
+    ADD_TEST(testHandOverStream);
     ADD_TEST(testRemoteStreamsContentLength);
     ADD_TEST(testRemoteStreamsChunked);
     ADD_TEST(testRemoteStreamAsync);

@@ -21,7 +21,11 @@ public class JSerializer_15 extends JSerializer_Object {
     bout.bbuf.putLong("contentLength", bstream.getContentLength());
     bout.bbuf.putString("contentType", bstream.getContentType());
     bout.bbuf.putBoolean("attachment", bstream.isAttachment());
-    bout.bbuf.putString("fileName", bstream.getFileName());
+    
+    // Transfer a non-null fileName to be able to detect in internalRead()
+    // whether the properties are valid.
+    final String fileName = bstream.getFileName();
+    bout.bbuf.putString("fileName", fileName != null ? fileName : "");
 	}
 
 	@Override
@@ -43,8 +47,9 @@ public class JSerializer_15 extends JSerializer_Object {
 		try {
 			BContentStream strm = bin.transport.getWire().getStream(targetId);
 			
-      final String contentType = bin.currentObject.getString("contentType");
-			if (contentType != null && contentType.length() != 0) {
+			final boolean hasFileName = bin.currentObject.get("fileName") != null;
+			if (hasFileName) {
+	      final String contentType = bin.currentObject.getString("contentType");
         final long contentLength = bin.currentObject.getLong("contentLength");
         final boolean attachment = bin.currentObject.getBoolean("attachment");
         final String fileName = bin.currentObject.getString("fileName");
@@ -52,7 +57,8 @@ public class JSerializer_15 extends JSerializer_Object {
         strm.setContentLength(contentLength);
         strm.setAttachment(attachment);
         strm.setFileName(fileName);
-			}      
+        strm.setPropertiesValid(true);
+			}
 		    
 			bin.onObjectCreated(strm);
 			return strm;

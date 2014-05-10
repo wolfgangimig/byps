@@ -129,8 +129,8 @@ namespace byps
 		
 		    // Create RequestToCancel objects for each stream.
 		    if (msg.streams != null) {
-			    foreach (BStreamRequest stream in msg.streams) {
-				    req = createRequestForPutStream(msg.header.messageId, stream, outerResult);
+			    foreach (BContentStream stream in msg.streams) {
+				    req = createRequestForPutStream(stream, outerResult);
 				    requests.Add(req);
 			    }
 		    }
@@ -147,7 +147,7 @@ namespace byps
 		    if (log.isDebugEnabled()) log.debug(")send");
 	    }
 
-        public override void putStreams(List<BStreamRequest> streamRequests, BAsyncResultIF<BMessage> asyncResult1)
+        public override void putStreams(List<BContentStream> streamRequests, BAsyncResultIF<BMessage> asyncResult1)
         {
 		    throw new InvalidOperationException("putStreams is only for the server side");
 	    }
@@ -180,14 +180,14 @@ namespace byps
 		    return r;
 	    }
 
-        public RequestToCancel createRequestForPutStream(long messageId, BStreamRequest streamRequest, BAsyncResultIF<BMessage> asyncResult)
+        public RequestToCancel createRequestForPutStream(BContentStream stream, BAsyncResultIF<BMessage> asyncResult)
         {
             RequestToCancel r = new RequestToCancel(this, 
                 ERequestDirection.FORWARD, 
-                messageId, 
-                null, 
-                streamRequest, 
-                streamRequest.streamId, 
+                stream.TargetId.getMessageId(), 
+                null,
+                stream,
+                stream.TargetId.getStreamId(), 
                 0L, 
                 timeoutMillisClient, 
                 timeoutMillisClient, 
@@ -196,9 +196,9 @@ namespace byps
 		    return r;
 	    }
 
-        public RequestToCancel createRequestForGetStream(long messageId, long streamId, BAsyncResultIF<BMessage> asyncResult)
+        public RequestToCancel createRequestForGetStream(BTargetId targetId, BAsyncResultIF<BMessage> asyncResult)
         {
-            RequestToCancel r = new RequestToCancel(this, ERequestDirection.FORWARD, messageId, null, null, streamId, 0L, 
+            RequestToCancel r = new RequestToCancel(this, ERequestDirection.FORWARD, targetId.getMessageId(), null, null, targetId.getStreamId(), 0L, 
                 timeoutMillisClient, timeoutMillisClient, asyncResult);
 		    addRequest(r);
 		    return r;
@@ -284,9 +284,9 @@ namespace byps
             if (log.isDebugEnabled()) log.debug(")internalSend");
         }
 
-        public override Stream getStream(long messageId, long streamId)
+        public override BContentStream getStream(BTargetId targetId)
         {
- 		    Stream strm = new MyInputStream(this, messageId, streamId);
+            BContentStream strm = new MyInputStream(this, targetId);
             return strm;
         }
 
@@ -303,10 +303,10 @@ namespace byps
                     if (log.isDebugEnabled()) log.debug("bufferToStream");
                     bufferToStream(requestToCancel.buf, postStream);
                 }
-                else if (requestToCancel.streamRequest != null)
+                else if (requestToCancel.stream != null)
                 {
                     if (log.isDebugEnabled()) log.debug("copy stream");
-                    requestToCancel.streamRequest.strm.CopyTo(postStream);
+                    requestToCancel.stream.CopyTo(postStream);
                     postStream.Close();
                 }
                 conn.BeginGetResponse(new AsyncCallback(this.getResponseCallback), requestToCancel);
@@ -327,9 +327,9 @@ namespace byps
             }
             finally
             {
-                if (requestToCancel.streamRequest != null)
+                if (requestToCancel.stream != null)
                 {
-                    requestToCancel.streamRequest.strm.Close();
+                    requestToCancel.stream.Close();
                 }
             }
             if (log.isDebugEnabled()) log.debug(")getRequestStreamCallback");
@@ -391,7 +391,7 @@ namespace byps
         {
             long messageId = request.messageId;
             long streamId = request.streamId;
-            Stream stream = request.streamRequest.strm;
+            Stream stream = request.stream;
 
             if (log.isDebugEnabled()) log.debug("internalPutStream(messageId=" + messageId + ", streamId=" + streamId + ", stream=" + stream);
 
@@ -457,12 +457,10 @@ namespace byps
             RequestToCancel request;
             HttpWebResponse response;
             Stream responseStream;
-            String contentType;
-            long contentLength;
             readonly HWireClient wire;
 
-            public MyInputStream(HWireClient wire, long messageId, long streamId)
-                : base(messageId, streamId)
+            public MyInputStream(HWireClient wire, BTargetId targetId)
+                : base(targetId)
             {
                 this.wire = wire;
             }
@@ -471,16 +469,22 @@ namespace byps
             {
                 try 
                 {
-                    HttpWebRequest conn = (HttpWebRequest)HttpWebRequest.Create(wire.url + "?messageid=" + messageId + "&streamid=" + streamId);
-                    request = wire.createRequestForGetStream(messageId, streamId, this);
+                    String url = wire.url + "?serverId=" + TargetId.serverId + "&messageid=" + TargetId.getMessageId() + "&streamid=" + TargetId.getStreamId();
+                    HttpWebRequest conn = (HttpWebRequest)HttpWebRequest.Create(url);
+                    request = wire.createRequestForGetStream(TargetId, this);
                     request.setConnection(conn);
 
                     conn.Method = "GET";
                     wire.applySession(conn);
 
                     response = (HttpWebResponse)conn.GetResponse();
-                    contentType = response.ContentType;
-                    contentLength = response.ContentLength;
+
+                    if (!this.hasValidProperties())
+                    {
+                        ContentType = response.ContentType;
+                        ContentLength = response.ContentLength;
+                    }
+
                     responseStream = response.GetResponseStream();
                 }
                 catch (Exception ex)
@@ -503,24 +507,6 @@ namespace byps
                     response = null;
                 }
                 wire.removeRequest(request, null, ex);
-            }
-
-		    public override long ContentLength 
-            {
-                get
-                {
-                    ensureStream();
-                    return contentLength;
-                }
-            }
-
-            public override String ContentType
-            {
-                get
-                {
-                    ensureStream();
-                    return contentType;
-                }
             }
 
             public void setAsyncResult(BMessage msg, Exception ex)
@@ -552,7 +538,7 @@ namespace byps
             public readonly long messageId;
             public readonly long streamId;
             public readonly ByteBuffer buf;
-            public readonly BStreamRequest streamRequest;
+            public readonly BContentStream stream;
             public readonly long cancelMessageId;
             public readonly BAsyncResultIF<BMessage> asyncResult;
             public readonly HWireClient wire;
@@ -571,7 +557,7 @@ namespace byps
                 ERequestDirection requestDirection, 
                 long messageId, 
                 ByteBuffer buf, 
-                BStreamRequest streamRequest,
+                BContentStream stream,
                 long streamId, 
                 long cancelMessageId, 
                 int timeoutMillisClient, 
@@ -583,7 +569,7 @@ namespace byps
                 this.messageId = messageId;
                 this.streamId = streamId;
                 this.buf = buf;
-                this.streamRequest = streamRequest;
+                this.stream = stream;
                 this.cancelMessageId = cancelMessageId;
                 this.timeoutMillisClient = timeoutMillisClient;
                 this.timeoutMillisRequest = timeoutMillisRequest;
@@ -621,7 +607,7 @@ namespace byps
                 {
                     wire.internalSend(this);
                 }
-                else if (streamRequest != null)
+                else if (stream != null)
                 {
                     wire.internalPutStream(this);
                 }
@@ -726,7 +712,7 @@ namespace byps
 			    StringBuilder sbuf = new StringBuilder();
 			    sbuf.Append("[").Append(messageId);
 			    if (buf != null) sbuf.Append(",buf=").Append(buf);
-			    if (streamRequest != null) sbuf.Append(",streamId=").Append(streamRequest.streamId);
+                if (stream != null) sbuf.Append(",streamId=").Append(stream.TargetId.getStreamId());
 			    if (cancelMessageId != 0) sbuf.Append(",cancelMessageId=").Append(cancelMessageId);
 			    sbuf.Append(",conn=").Append(conn);
 			    sbuf.Append("]");

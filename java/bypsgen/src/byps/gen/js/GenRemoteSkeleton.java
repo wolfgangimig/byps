@@ -153,7 +153,7 @@ class GenRemoteSkeleton {
 	private void printToJSON() {
 		pr.println("this.toJSON = function (key) {");
 		pr.beginBlock();
-		pr.print("return { _typeId : ").print(rinfo.typeId).print(", targetId : this.transport.targetId };").println();
+		pr.print("return { _typeId : ").print(rinfo.typeId).print(", targetId : this.transport.targetId.toString() };").println();
 		pr.endBlock();
 		pr.println("};");
 	}

@@ -313,6 +313,7 @@ namespace byps { namespace http {
   };
 
   class BPutRequest_AsyncResult : public BAsyncResult {
+    PContentStream stream;
     PWireClient_RequestsToCancel requests;
     PAsyncResult innerResult;
     static BLogger log;
@@ -320,8 +321,9 @@ namespace byps { namespace http {
   public:
     const intptr_t id;
 
-    BPutRequest_AsyncResult(PWireClient_RequestsToCancel requests, PAsyncResult innerResult) 
-      : requests(requests)
+    BPutRequest_AsyncResult(PContentStream stream, PWireClient_RequestsToCancel requests, PAsyncResult innerResult) 
+      : stream(stream)
+      , requests(requests)
       , innerResult(innerResult)
       , id(reinterpret_cast<intptr_t>(this))
     {
@@ -333,6 +335,7 @@ namespace byps { namespace http {
       innerResult->setAsyncResult(var);
       l_debug << L"remove from requests";
       requests->remove(id);
+      stream.reset(); // close stream
       l_debug << L"delete this";
       delete this;
       l_debug << L")setAsyncResult";
@@ -380,7 +383,7 @@ namespace byps { namespace http {
         streamRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
 
         l_debug << L"create stream result";
-        BPutRequest_AsyncResult* streamResult = new BPutRequest_AsyncResult(requestsToCancel, outerResult);
+        BPutRequest_AsyncResult* streamResult = new BPutRequest_AsyncResult(stream, requestsToCancel, outerResult);
 
         l_debug << L"add put request";
         requestsToCancel->add(streamResult->id, streamRequest);
@@ -482,7 +485,7 @@ namespace byps { namespace http {
         streamRequest->setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
 
         l_debug << L"create stream result";
-        BPutRequest_AsyncResult* streamResult = new BPutRequest_AsyncResult(requestsToCancel, outerResult);
+        BPutRequest_AsyncResult* streamResult = new BPutRequest_AsyncResult(stream, requestsToCancel, outerResult);
 
         l_debug << L"add put request";
         requestsToCancel->add(streamResult->id, streamRequest);
@@ -559,7 +562,7 @@ namespace byps { namespace http {
     return wss.str();
   }
 
-  class MyContentStream : public BContentStreamImpl {
+  class MyContentStream : public BContentStream {
     std::wstring url;
     PWireClient_RequestsToCancel requestsToCancel;
     PContentStream innerStream;

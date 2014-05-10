@@ -9,20 +9,21 @@ namespace byps
 {
     public class BNegotiate
     {
-	    public const String BINARY_STREAM  = "S";
-	
-	    public const String SUPPORTED_PROTOCOLS = BINARY_STREAM;
-	
-	    private const int NEGOTIATE_MIN_SIZE = 13;  // ["N","J","1"]
-	    public const int NEGOTIATE_MAX_SIZE = 1000;
-	
-	    private const int MAGIC_DOUBLE_QUOTES = ((int)'[' << 24) | ((int)'\"' << 16) | ((int)'N' << 8) | ((int)'\"');
-	    private const int MAGIC_SINGLE_QUOTES = ((int)'[' << 24) | ((int)'\'' << 16) | ((int)'N' << 8) | ((int)'\'');
+        public const String BINARY_STREAM = "S";
+
+        public const String SUPPORTED_PROTOCOLS = BINARY_STREAM;
+
+        private const int NEGOTIATE_MIN_SIZE = 13;  // ["N","J","1"]
+        public const int NEGOTIATE_MAX_SIZE = 1000;
+
+        private const int MAGIC_DOUBLE_QUOTES = ((int)'[' << 24) | ((int)'\"' << 16) | ((int)'N' << 8) | ((int)'\"');
+        private const int MAGIC_SINGLE_QUOTES = ((int)'[' << 24) | ((int)'\'' << 16) | ((int)'N' << 8) | ((int)'\'');
 
         public String protocols = SUPPORTED_PROTOCOLS;
-	    public long version;
-	    public ByteOrder byteOrder; 
-	    public BTargetId targetId;
+        public int bversion;
+        public long version;
+        public ByteOrder byteOrder;
+        public BTargetId targetId;
 
         public BNegotiate()
         {
@@ -32,6 +33,7 @@ namespace byps
         {
             this.protocols = SUPPORTED_PROTOCOLS;
             this.version = apiDesc.version;
+            this.bversion = BMessageHeader.BYPS_VERSION_CURRENT;
         }
 
         public static bool isNegotiateMessage(ByteBuffer buf)
@@ -63,17 +65,23 @@ namespace byps
             return false;
         }
 
-        public void write(ByteBuffer buf) 
+        public void write(ByteBuffer buf)
         {
             StringBuilder sbuf = new StringBuilder();
             sbuf.Append("[\"N\",")
                 .Append("\"S\",") // Binary Stream
                 .Append("\"").Append(BVersioning.longToString(version)).Append("\"").Append(",")
                 .Append("\"L\"").Append(",") // Little Endian
-                .Append("\"").Append((targetId != null ? targetId : new BTargetId()).ToString()).Append("\"")
-                .Append("]");
+                .Append("\"").Append((targetId != null ? targetId : new BTargetId()).ToString()).Append("\"");
+
+            if (bversion != 0)
+            {
+                sbuf.Append(",").Append(bversion);
+            }
+
+            sbuf.Append("]");
             buf.put(Encoding.UTF8.GetBytes(sbuf.ToString()));
-	    }
+        }
 
 
         public void read(ByteBuffer buf)
@@ -120,9 +128,14 @@ namespace byps
                                 {
                                     targetIdStr = targetIdStr.Substring(1, targetIdStr.Length - 2);
                                     targetId = BTargetId.parseString(targetIdStr);
-
-                                    return; // OK
                                 }
+
+                                if (items.Length >= 6)
+                                {
+                                    bversion = Convert.ToInt32(items[5]);
+                                }
+
+                                return; // OK
                             }
                         }
                     }

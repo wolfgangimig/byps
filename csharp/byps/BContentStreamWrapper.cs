@@ -10,7 +10,7 @@ namespace byps
     public class BContentStreamWrapper : BContentStream
     {
 
-	    protected Stream innerStream;
+        protected Stream innerStream;
 
         public BContentStreamWrapper()
             : this(null, DEFAULT_CONTENT_TYPE, -1L)
@@ -18,8 +18,14 @@ namespace byps
         }
 
         public BContentStreamWrapper(Stream innerStream)
-            : this(innerStream, DEFAULT_CONTENT_TYPE, -1L)
+            : this(innerStream, getContentTypeFromStream(innerStream), getContentLengthFromStream(innerStream))
         {
+        }
+
+        public BContentStreamWrapper(BContentStream innerStream, long lifetimeMillis)
+            : base(innerStream, lifetimeMillis)
+        {
+            this.innerStream = innerStream;
         }
 
         public BContentStreamWrapper(Stream innerStream, String contentType, long contentLength)
@@ -28,24 +34,85 @@ namespace byps
             this.innerStream = innerStream;
         }
 
+        public BContentStreamWrapper(FileInfo file)
+            : this(file.OpenRead(), getContentTypeFromRegistry(file), file.Length)
+        {
+            this.fileNameVal = file.Name;
+        }
+
+        private static String getContentTypeFromRegistry(FileInfo file)
+        {
+            String mime = DEFAULT_CONTENT_TYPE;
+            Microsoft.Win32.RegistryKey regKey = null;
+
+            try
+            {
+                String ext = file.Extension;
+                if (!(string.IsNullOrEmpty(ext) || string.IsNullOrWhiteSpace(ext)))
+                {
+                    regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+                    if (regKey != null)
+                    {
+                        object val = regKey.GetValue("Content Type");
+                        if (val != null)
+                        {
+                            string strval = val.ToString();
+                            if (!(string.IsNullOrEmpty(strval) || string.IsNullOrWhiteSpace(strval)))
+                            {
+                                mime = strval;
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                if (regKey != null)
+                {
+                    regKey.Close();
+                }
+            }
+            return mime;
+        }
+
+        private static String getContentTypeFromStream(Stream stream)
+        {
+            return DEFAULT_CONTENT_TYPE;
+        }
+
+        private static long getContentLengthFromStream(Stream stream)
+        {
+            long ret = -1L;
+            if (stream is MemoryStream)
+            {
+                ret = ((MemoryStream)stream).Length;
+            }
+            return ret;
+        }
+
         protected virtual Stream openStream()
         {
             throw new NotImplementedException();
         }
 
- 	    protected Stream ensureStream() {
-		    if (innerStream != null) return innerStream;
-		
-		    lock(this) 
+        protected Stream ensureStream()
+        {
+            if (innerStream != null) return innerStream;
+
+            lock (this)
             {
                 if (innerStream == null)
                 {
                     innerStream = openStream();
-			    }
-		    }
+                }
+            }
 
             return innerStream;
-	    }
+        }
 
         public override int Read(byte[] buffer, int offset, int count)
         {

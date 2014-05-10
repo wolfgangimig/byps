@@ -8,8 +8,8 @@ namespace byps
 {
     public class BProtocolS : BProtocol
     {
-	    public BProtocolS(BApiDescriptor apiDesc, long negotiatedVersion, ByteOrder negotiatedByteOrder) 
-		    : base(apiDesc, negotiatedVersion, negotiatedByteOrder)
+	    public BProtocolS(BApiDescriptor apiDesc, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder)
+            : base(apiDesc, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder)
         {
 	    }
 
@@ -21,7 +21,7 @@ namespace byps
 	    public override BOutput getOutput(BTransport transport) 
         {
             if (negotiatedByteOrder == ByteOrder.UNDEFINED) throw new BException(BExceptionC.INTERNAL, "Protocol object can only be used for input.");
-		    return new BOutputS(transport, negotiatedVersion, negotiatedByteOrder);
+            return new BOutputS(transport, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder);
 	    }
 
         public override BOutput getResponse(BTransport transport, BMessageHeader requestHeader)

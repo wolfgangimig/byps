@@ -49,21 +49,25 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public BContentStream(BContentStream rhs, long lifetimeMillis) {
 		this.lifetimeMillis = lifetimeMillis;
-		copyProperies(rhs);
+		copyProperties(rhs);
 		extendLifetime();
 	}
 
 	/**
-	 * Copy properties from given stream.
+	 * Copy properties from given stream if properties are not valid.
 	 * Copies contentType, contentLength, attachment, fileName, streamId, messageId, serverId
 	 * @param rhs Other stream to get values from.
+	 * @see #hasValidProperties()
 	 */
-  public void copyProperies(BContentStream rhs) {
+  public void copyProperties(BContentStream rhs) {
+    if (hasValidProperties()) return;
+    if (!rhs.hasValidProperties()) return;
     this.contentType = rhs.contentType;
 		this.contentLength = rhs.contentLength;
 		this.attachment = rhs.attachment;
 		this.fileName = rhs.fileName;
 		this.targetId = rhs.targetId;
+		this.propertiesValid = true;
   }
 	
 	/**
@@ -306,6 +310,18 @@ public abstract class BContentStream extends InputStream {
   public void setTargetId(BTargetId targetId) {
     this.targetId = targetId;
   }
+  
+  /**
+   * Returns true, if the properties are valid.
+   * @return true, if the properties are valid
+   */
+  public boolean hasValidProperties() {
+    return propertiesValid;
+  }
+  
+  public void setPropertiesValid(boolean b) {
+    propertiesValid = b;
+  }
 
   @Override
   public void close() throws IOException {
@@ -322,6 +338,7 @@ public abstract class BContentStream extends InputStream {
 	protected volatile String fileName;
 	protected volatile boolean attachment;
 	protected volatile BTargetId targetId = BTargetId.ZERO;
+	protected volatile boolean propertiesValid;
 
 	protected volatile BContentStreamAsyncCallback callback;
 	

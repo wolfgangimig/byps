@@ -1,6 +1,8 @@
 package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -75,6 +77,51 @@ public class TestRemoteStreams {
     TestUtils.checkTempDirEmpty(client);
 
     log.info(")testRemoteStreamsOneStreamContentLength");
+  }
+
+  /**
+   * Send file stream.
+   * A file stream has the fileName property set.
+   * @throws InterruptedException
+   * @throws IOException
+   */
+  @Test
+  public void testRemoteStreamsFileStream() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsFileStream(");
+    
+    File file = File.createTempFile("byps", ".txt");
+    String str = "hello";
+    
+    FileOutputStream fos = null;
+    try {
+      fos = new FileOutputStream(file);
+      fos.write(str.getBytes());
+    }
+    finally {
+      if (fos != null) fos.close();
+    }
+    
+    InputStream istrm = new BContentStreamWrapper(file);
+    remote.setImage(istrm);
+
+    BContentStream istrmR = (BContentStream)remote.getImage();
+    
+    TestUtils.assertEquals(log,  "Content-Type", "text/plain", istrmR.getContentType());
+    TestUtils.assertEquals(log,  "Content-Length", file.length() , istrmR.getContentLength());
+    TestUtils.assertEquals(log,  "FileName", file.getName(), istrmR.getFileName());
+    
+    ByteBuffer buf = BWire.bufferFromStream(istrmR);
+    String strR = new String(buf.array(), buf.position(), buf.remaining());
+    TestUtils.assertEquals(log, "stream", str, strR);
+
+    TestUtils.assertEquals(log,  "Content-Type", "text/plain", istrmR.getContentType());
+    TestUtils.assertEquals(log,  "Content-Length", file.length() , istrmR.getContentLength());
+    TestUtils.assertEquals(log,  "FileName", file.getName(), istrmR.getFileName());
+    
+    remote.setImage(null);
+    TestUtils.checkTempDirEmpty(client);
+
+    log.info(")testRemoteStreamsFileStream");
   }
 
   /**
@@ -506,7 +553,15 @@ public class TestRemoteStreams {
       remote.setImage(istrm);
       
       InputStream strmFromServer = remote.getImage();
-      remote.setImage(strmFromServer);
+      BContentStream streamFailOpen = new BContentStreamWrapper((BContentStream)strmFromServer, 0L) {
+        @Override
+        protected InputStream openStream() throws IOException {
+          log.error("Stream must not be opened");
+          throw new IOException("Stream should be passed without beeing read.");
+        }
+      };
+      
+      remote.setImage(streamFailOpen);
       
       for (int j = 0; j < 2; j++) {
         ArrayList<InputStream> estreams = TestUtilsHttp.makeTestStreams();

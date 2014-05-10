@@ -18,8 +18,9 @@ public class BSerializer_15 extends BSerializer {
     final InputStream is = (InputStream) obj;
     final BContentStream bstream = bout.createStreamRequest(is);
     final BTargetId targetId = bstream.getTargetId();
+    final boolean withProps = bout.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
-    if (bout1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION) {
+    if (withProps) {
       bstream.getTargetId().write(bout.bbuf.getBuffer());
       bout.bbuf.putLong(bstream.getContentLength());
       bout.bbuf.putString(bstream.getContentType());
@@ -37,9 +38,10 @@ public class BSerializer_15 extends BSerializer {
     long contentLength = 0;
     String contentType = BContentStream.DEFAULT_CONTENT_TYPE;
     boolean attachment = false;
-    String fileName = "";
+    String fileName = null;
+    final boolean withProps = bin1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
-    if (bin1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION) {
+    if (withProps) {
       targetId = BTargetId.read(bin.bbuf.getBuffer());
       contentLength = bin.bbuf.getLong();
       contentType = bin.bbuf.getString();
@@ -59,6 +61,8 @@ public class BSerializer_15 extends BSerializer {
       strm.setContentType(contentType);
       strm.setAttachment(attachment);
       strm.setFileName(fileName);
+      strm.setPropertiesValid(withProps);
+      
       return strm;
     } catch (IOException e) {
       throw new BException(BExceptionC.IOERROR, e.getMessage());

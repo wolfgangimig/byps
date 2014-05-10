@@ -1,6 +1,6 @@
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-#ifndef BANY_CPU_H_
-#define BANY_CPU_H__
+#ifndef BANY_H_
+#define BANY_H__
 
 ///////////////////////////////////////////////////////////////////////////////
 // Include shared pointer etc. from BOOST library
@@ -132,4 +132,36 @@ template<typename _int163264> void readUnalignedInt163264(void* p, _int163264& v
 
 #endif // BSERIALIZE_UNALIGNED_FUNCTIONS
 
-#endif // BANY_CPU_H__
+#ifndef BFILE_SPLIT_PATH
+#define BFILE_SPLIT_PATH
+
+namespace byps {
+
+  template<typename _ch> void splitpath(const std::basic_string<_ch>& path, std::basic_string<_ch>& dir, std::basic_string<_ch>& name) {
+    int p = (int)path.size() - 1;
+    for (std::basic_string<_ch>::const_reverse_iterator it = path.rbegin(); it != path.rend(); it++, p--) {
+      if (*it == '\\' || *it == '/') break;
+    }
+    p++;
+    dir = path.substr(0, p);
+    name = path.substr(p);
+  }
+
+}
+
+#endif // BFILE_SPLIT_PATH
+
+#ifndef BFILE_CONTENT_TYPE
+#define BFILE_CONTENT_TYPE
+
+namespace byps {
+
+   inline std::wstring getFileContentType(const std::wstring& fname) {
+    std::wstring s;
+    return s;
+  }
+}
+
+#endif // BFILE_CONTENT_TYPE
+
+#endif // BANY_H__

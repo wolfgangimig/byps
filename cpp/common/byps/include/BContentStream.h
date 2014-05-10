@@ -12,32 +12,11 @@ namespace byps {
 
   class BContentStream : public BSerializable {
   public:
+    BContentStream();
+    BContentStream(const wstring& contentType, int64_t contentLength);
     virtual ~BContentStream() {}
 
     virtual BTYPEID BSerializable_getTypeId() { return BTYPEID_STREAM; }
-
-    virtual int32_t read(char* buf, int32_t offs, int32_t len) = 0;
-
-    virtual const wstring& getContentType() const = 0;
-    virtual void setContentType(const wstring&) = 0;
-    virtual int64_t getContentLength() const = 0;
-    virtual void setContentLength(int64_t) = 0;
-    virtual const wstring& getFileName() const = 0;
-    virtual void setFileName(const wstring&) = 0;
-    virtual bool isAttachment() const = 0;
-    virtual void setAttachment(bool b) = 0;
-    virtual const BTargetId& getTargetId() const = 0;
-    virtual void setTargetId(const BTargetId& rhs) = 0;
-    virtual void copyProperties(const PContentStream& rhs) = 0;
-
-    static void serialize(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
-  };
-
-  class BContentStreamImpl : public BContentStream {
-  public:
-    BContentStreamImpl(const wstring& contentType, int64_t contentLength, PStream stream);
-    BContentStreamImpl(PStream stream);
-    virtual ~BContentStreamImpl() {}
 
     virtual const wstring& getContentType() const ;
     virtual void setContentType(const wstring&);
@@ -50,31 +29,39 @@ namespace byps {
     virtual const BTargetId& getTargetId() const;
     virtual void setTargetId(const BTargetId& rhs);
     virtual void copyProperties(const PContentStream& rhs);
+    virtual bool hasValidProperties();
+    virtual void setPropertiesValid(bool b);
 
-    virtual int32_t read(char* buf, int32_t offs, int32_t len);
+    virtual int32_t read(char* buf, int32_t offs, int32_t len) = 0;
+    virtual PStream getStdStream() { return PStream(); };
 
   protected:
-    BContentStreamImpl();
     wstring contentType;
     int64_t contentLength;
-    PStream stream;
     wstring fileName;
     bool attachment;
     BTargetId targetId;
+    bool propertiesValid;
+
   };
 
 
-  class BContentStreamFile : public BContentStreamImpl {
+  class BContentStreamWrapper : public BContentStream {
   public:
-#ifdef BFSTREAM_WCHAR
-    BContentStreamFile(const wstring& fname);
-    BContentStreamFile(const wstring& fname, const wstring& contentType, int64_t contentLength);
-#endif
-    BContentStreamFile(const string& fname);
-    BContentStreamFile(const string& fname, const string& contentType, int64_t contentLength);
-    virtual ~BContentStreamFile();
-  private:
-    void init(ifstream* fstrm);
+    BContentStreamWrapper(PStream stream, const wstring& contentType, int64_t contentLength);
+    BContentStreamWrapper(PStream stream);
+
+    BContentStreamWrapper(const BFile& fname);
+    BContentStreamWrapper(const BFile& fname, const wstring& contentType);
+
+    virtual ~BContentStreamWrapper();
+
+    virtual int32_t read(char* buf, int32_t offs, int32_t len);
+    virtual PStream getStdStream();
+
+  protected:
+    void init(const BFile& file, const wstring& contentType);
+    PStream innerStream;
   };
 
 }
