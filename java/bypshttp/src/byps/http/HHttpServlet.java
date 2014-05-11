@@ -772,7 +772,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         if (item.isFormField()) continue;
 
         final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), 0, streamId.longValue());
-        getActiveMessages().addIncomingUploadStream(new HFileUploadItemIncomingStream(item, streamId, getConfig().getTempDir()));
+        getActiveMessages().addIncomingUploadStream(new HFileUploadItemIncomingStream(item, targetId, getConfig().getTempDir()));
 
       }
 

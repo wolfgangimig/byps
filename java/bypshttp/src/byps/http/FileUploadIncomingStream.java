@@ -16,10 +16,10 @@ class HFileUploadItemIncomingStream extends BContentStreamWrapper {
   private final File tempDir;
   private InputStream is;
 
-  HFileUploadItemIncomingStream(FileItem fileItem, long streamId, File tempDir) throws IOException {
+  HFileUploadItemIncomingStream(FileItem fileItem, BTargetId targetId, File tempDir) throws IOException {
     super(null, fileItem.getContentType(), fileItem.getSize(), HConstants.REQUEST_TIMEOUT_MILLIS);
     this.fileItem = fileItem;
-    this.targetId = new BTargetId(0, 0, streamId);
+    this.targetId = targetId;
     this.tempDir = tempDir;
     this.setFileName(fileItem.getName());
     this.setPropertiesValid(true);
