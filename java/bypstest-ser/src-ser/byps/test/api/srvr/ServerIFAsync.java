@@ -34,9 +34,9 @@ public interface ServerIFAsync extends BRemote,
 	/**
 	*/
 	// checkpoint byps.gen.j.PrintContext:365
-	public java.util.List<java.io.InputStream> getStreamsFromClient() throws RemoteException;
+	public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException;
 	// checkpoint byps.gen.j.PrintContext:409
-	public void getStreamsFromClient(final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) ;
+	public void getStreamsFromClient(boolean materializeOnServer, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) ;
 	
 	/**
 	*/

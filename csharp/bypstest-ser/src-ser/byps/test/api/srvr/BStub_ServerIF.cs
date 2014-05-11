@@ -65,18 +65,20 @@ namespace byps.test.api.srvr
 			return await task;
 		}
 		
-		public virtual IList<System.IO.Stream> GetStreamsFromClient() {
+		public virtual IList<System.IO.Stream> GetStreamsFromClient(bool materializeOnServer) {
 			BSyncResult<IList<System.IO.Stream>> asyncResult = new BSyncResult<IList<System.IO.Stream>>();			
-			GetStreamsFromClient(BAsyncResultHelper.ToDelegate<IList<System.IO.Stream>>(asyncResult));
+			GetStreamsFromClient(materializeOnServer, BAsyncResultHelper.ToDelegate<IList<System.IO.Stream>>(asyncResult));
 			return asyncResult.GetResult();			
 		}
-		public virtual void GetStreamsFromClient(BAsyncResult<IList<System.IO.Stream>> asyncResult) {
+		public virtual void GetStreamsFromClient(bool materializeOnServer, BAsyncResult<IList<System.IO.Stream>> asyncResult) {
 			BRequest_ServerIF_getStreamsFromClient req = new BRequest_ServerIF_getStreamsFromClient();			
+			req.materializeOnServerValue = materializeOnServer;
 			transport.sendMethod(req, asyncResult);
 		}
 		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<IList<System.IO.Stream>> GetStreamsFromClientAsync(){
+		public async Task<IList<System.IO.Stream>> GetStreamsFromClientAsync(bool materializeOnServer){
 			BRequest_ServerIF_getStreamsFromClient req = new BRequest_ServerIF_getStreamsFromClient();			
+			req.materializeOnServerValue = materializeOnServer;
 			Task<IList<System.IO.Stream>> task = Task<IList<System.IO.Stream>>.Factory.FromAsync(transport.BeginSend<IList<System.IO.Stream>>, transport.EndSend<IList<System.IO.Stream>>, req, null);
 			return await task;
 		}

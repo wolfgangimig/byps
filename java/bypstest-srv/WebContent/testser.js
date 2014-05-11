@@ -3173,9 +3173,9 @@ byps.test.api.srvr.BStub_ServerIF.prototype.getPartner = function(__byps__asyncR
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient = function(__byps__asyncResult) {
+byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient = function(materializeOnServer, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1679867754 };
+	var req =  { _typeId : 1679867754, materializeOnServer : materializeOnServer };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -5285,7 +5285,7 @@ byps.test.api.BServer_Testser = function(transport) {
 				1775199834, // _typeId of remote interface
 				911793767, // _typeId of result class
 				function(remote, methodObj, methodResult) {
-					remote.async_getStreamsFromClient(methodResult);
+					remote.async_getStreamsFromClient(methodObj.materializeOnServer, methodResult);
 				}
 			],
 			
@@ -10723,7 +10723,10 @@ byps.test.api.BRegistry_Testser = function() {
 		// byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
 		1679867754 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
-			null,
+			// names of persistent elements
+			{
+				"materializeOnServer":1 // boolean
+			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// inlineInstance

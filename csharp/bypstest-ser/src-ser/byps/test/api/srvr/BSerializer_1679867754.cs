@@ -22,12 +22,23 @@ namespace byps.test.api.srvr
 			: base(typeId) {}
 		
 		
+		public override void write(Object obj1, BOutput bout1, long version)
+		{
+			BRequest_ServerIF_getStreamsFromClient obj = (BRequest_ServerIF_getStreamsFromClient)obj1;			
+			BOutputBin bout = (BOutputBin)bout1;
+			BBufferBin bbuf = bout.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:494
+			bbuf.putBoolean(obj.materializeOnServerValue);
+		}
+		
 		public override Object read(Object obj1, BInput bin1, long version)
 		{
 			BInputBin bin = (BInputBin)bin1;
 			BRequest_ServerIF_getStreamsFromClient obj = (BRequest_ServerIF_getStreamsFromClient)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_ServerIF_getStreamsFromClient()));
 			
 			BBufferBin bbuf = bin.bbuf;
+			// checkpoint byps.gen.cs.PrintContext:449
+			obj.materializeOnServerValue = bbuf.getBoolean();
 			
 			return obj;
 		}

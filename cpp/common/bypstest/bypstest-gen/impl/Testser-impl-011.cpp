@@ -645,13 +645,20 @@ namespace byps { namespace test { namespace api { namespace srvr {
 
 // checkpoint byps.gen.cpp.GenApiClass:489
 BRequest_ServerIF_getStreamsFromClient::BRequest_ServerIF_getStreamsFromClient() : BMethodRequest(1775199834) {
+	materializeOnServer = false;
 }
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::BRequest_ServerIF_getStreamsFromClient(bool materializeOnServer)
+	: BMethodRequest(1775199834) 
+	, materializeOnServer(materializeOnServer)
+	{}
 // checkpoint byps.gen.cpp.GenApiClass:877
 void byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::serialize(BIO& ar, const BVERSION version) {
+	ar & this->materializeOnServer;
 }
 void byps::test::api::srvr::BRequest_ServerIF_getStreamsFromClient::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
 	PServerIF __byps__remoteT = byps_ptr_cast<ServerIF>(__byps__remote);
-	__byps__remoteT->getStreamsFromClient([__byps__asyncResult](byps::PVectorInputStream __byps__result, BException __byps__ex) {
+	__byps__remoteT->getStreamsFromClient(materializeOnServer, [__byps__asyncResult](byps::PVectorInputStream __byps__result, BException __byps__ex) {
 		if (__byps__ex) {
 			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
 		}

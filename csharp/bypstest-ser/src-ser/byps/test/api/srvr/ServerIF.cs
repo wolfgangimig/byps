@@ -21,9 +21,9 @@ namespace byps.test.api.srvr
 		void GetPartner(BAsyncResult<ClientIF> asyncResult) ;
 		Task<ClientIF> GetPartnerAsync();
 		
-		IList<System.IO.Stream> GetStreamsFromClient();
-		void GetStreamsFromClient(BAsyncResult<IList<System.IO.Stream>> asyncResult) ;
-		Task<IList<System.IO.Stream>> GetStreamsFromClientAsync();
+		IList<System.IO.Stream> GetStreamsFromClient(bool materializeOnServer);
+		void GetStreamsFromClient(bool materializeOnServer, BAsyncResult<IList<System.IO.Stream>> asyncResult) ;
+		Task<IList<System.IO.Stream>> GetStreamsFromClientAsync(bool materializeOnServer);
 		
 		void PutStreamsOnClient(IList<System.IO.Stream> streams);
 		void PutStreamsOnClient(IList<System.IO.Stream> streams, BAsyncResult<Object> asyncResult) ;

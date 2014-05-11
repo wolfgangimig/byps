@@ -8194,7 +8194,17 @@
         <serial>
             <typeName>byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient</typeName>
             <typeId>1679867754</typeId>
-            <members/>
+            <members>
+                <member>
+                    <name>materializeOnServer</name>
+                    <typeName>boolean</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
             <comments/>
             <baseFullName></baseFullName>
             <isInline>false</isInline>

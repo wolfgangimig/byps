@@ -15,7 +15,7 @@ public interface ServerIF extends BRemote {
 	
 	public ClientIF getPartner() throws RemoteException;
 	
-	public List<InputStream> getStreamsFromClient() throws RemoteException;
+	public List<InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException;
 	
 	public void putStreamsOnClient(List<InputStream> streams) throws RemoteException;
 	

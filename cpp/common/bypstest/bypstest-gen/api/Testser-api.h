@@ -3781,8 +3781,8 @@ class ServerIF : public virtual BRemote {
 	public: virtual PClientIF getPartner()  = 0;
 	public: virtual void getPartner(::std::function< void (PClientIF, BException ex) > asyncResult)  = 0;
 	
-	public: virtual byps::PVectorInputStream getStreamsFromClient()  = 0;
-	public: virtual void getStreamsFromClient(::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  = 0;
+	public: virtual byps::PVectorInputStream getStreamsFromClient(bool materializeOnServer)  = 0;
+	public: virtual void getStreamsFromClient(bool materializeOnServer, ::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  = 0;
 	
 	public: virtual void putStreamsOnClient(const byps::PVectorInputStream& streams)  = 0;
 	public: virtual void putStreamsOnClient(const byps::PVectorInputStream& streams, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -3825,8 +3825,8 @@ class BStub_ServerIF : public BStub, public virtual ServerIF {
 	public: virtual void setPartner(const PClientIF& client, ::std::function< void (bool, BException ex) > asyncResult) ;
 	public: virtual PClientIF getPartner() ;
 	public: virtual void getPartner(::std::function< void (PClientIF, BException ex) > asyncResult) ;
-	public: virtual byps::PVectorInputStream getStreamsFromClient() ;
-	public: virtual void getStreamsFromClient(::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult) ;
+	public: virtual byps::PVectorInputStream getStreamsFromClient(bool materializeOnServer) ;
+	public: virtual void getStreamsFromClient(bool materializeOnServer, ::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult) ;
 	public: virtual void putStreamsOnClient(const byps::PVectorInputStream& streams) ;
 	public: virtual void putStreamsOnClient(const byps::PVectorInputStream& streams, ::std::function< void (bool, BException ex) > asyncResult) ;
 	public: virtual void registerWithClientMap(int32_t id) ;

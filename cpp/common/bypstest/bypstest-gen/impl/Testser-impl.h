@@ -7040,10 +7040,12 @@ namespace byps { namespace test { namespace api { namespace srvr {
 using namespace ::byps;
 
 class BRequest_ServerIF_getStreamsFromClient : public BMethodRequest {
+	public: bool materializeOnServer;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_ServerIF_getStreamsFromClient();
-	
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: BRequest_ServerIF_getStreamsFromClient(bool materializeOnServer);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 1679867754; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871

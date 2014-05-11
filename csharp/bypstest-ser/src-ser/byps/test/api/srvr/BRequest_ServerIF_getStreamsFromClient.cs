@@ -22,7 +22,7 @@ namespace byps.test.api.srvr
 			try {
 				ServerIF __byps__remoteT = (ServerIF)__byps__remote;				
 				BAsyncResultSendMethod<IList<System.IO.Stream>> __byps__outerResult = new BAsyncResultSendMethod<IList<System.IO.Stream>>(__byps__asyncResult, new byps.test.api.BResult_1218831438());				
-				__byps__remoteT.GetStreamsFromClient(BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				__byps__remoteT.GetStreamsFromClient(materializeOnServerValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
 				__byps__asyncResult.setAsyncResult(null, e);
 			}
@@ -32,6 +32,8 @@ namespace byps.test.api.srvr
 		
 		#region Fields
 		
+		internal bool materializeOnServerValue;
+
 		#endregion
 		
 		

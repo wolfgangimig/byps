@@ -642,14 +642,26 @@ public class TestRemoteServerR {
 		// On the server, this method calls the client-side interface 
 		// registered in step (1)
 		log.info("call client...");
-		List<InputStream> arrR = remote.getStreamsFromClient();
+		List<InputStream> arrR = remote.getStreamsFromClient(true);
 		log.info("call client OK");
 
-		final ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
+		ArrayList<InputStream> arr = TestUtilsHttp.makeTestStreams();
 		TestUtils.assertEquals(log, "streams.length", arr.size(), arrR.size());
 		for (int i = 0; i < arr.size(); i++) {
 			TestUtils.assertEquals(log, "stream[" + i + "]", arr.get(i), arrR.get(i));
 		}
+		
+    // (3) Call server method, but do not materialize (buffer temporarily) the streams. 
+    log.info("call client...");
+    arrR = remote.getStreamsFromClient(false);
+    log.info("call client OK");
+
+    arr = TestUtilsHttp.makeTestStreams();
+    TestUtils.assertEquals(log, "streams.length", arr.size(), arrR.size());
+    for (int i = 0; i < arr.size(); i++) {
+      TestUtils.assertEquals(log, "stream[" + i + "]", arr.get(i), arrR.get(i));
+    }
+
 		
 		log.info(")testServerRequestsStreamFromClient");
 	}

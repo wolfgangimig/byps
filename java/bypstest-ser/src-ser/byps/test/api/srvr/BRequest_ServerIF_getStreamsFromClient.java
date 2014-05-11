@@ -13,6 +13,7 @@ import java.io.Serializable;
 @SuppressWarnings("all")
 public final class BRequest_ServerIF_getStreamsFromClient extends BMethodRequest implements Serializable {
 
+	public boolean materializeOnServer;
 	
 	public final static long serialVersionUID = 1679867754L;
 	
@@ -22,7 +23,7 @@ public final class BRequest_ServerIF_getStreamsFromClient extends BMethodRequest
 		try {
 			final ServerIFAsync __byps__remoteT = (ServerIFAsync)__byps__remote;			
 			BAsyncResultSendMethod<java.util.List<java.io.InputStream>> __byps__outerResult = new BAsyncResultSendMethod<java.util.List<java.io.InputStream>>(__byps__asyncResult, new byps.test.api.BResult_1218831438());			
-			__byps__remoteT.getStreamsFromClient(__byps__outerResult);
+			__byps__remoteT.getStreamsFromClient(materializeOnServer, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 		}
@@ -31,6 +32,7 @@ public final class BRequest_ServerIF_getStreamsFromClient extends BMethodRequest
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[ServerIF.getStreamsFromClient(");
+		s.append(materializeOnServer);
 		s.append(")]");
 		return s.toString();
 	}

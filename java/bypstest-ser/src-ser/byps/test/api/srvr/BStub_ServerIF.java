@@ -62,16 +62,17 @@ public class BStub_ServerIF extends BStub implements ServerIFAsync, java.io.Seri
 	}
 	
 	// checkpoint byps.gen.j.PrintContext:365
-	public java.util.List<java.io.InputStream> getStreamsFromClient() throws RemoteException {
+	public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.util.List<java.io.InputStream>> asyncResult = new BSyncResult<java.util.List<java.io.InputStream>>();		
-		getStreamsFromClient(asyncResult);
+		getStreamsFromClient(materializeOnServer, asyncResult);
 		return asyncResult.getResult();		
 	}
 	// checkpoint byps.gen.j.PrintContext:409
-	public void getStreamsFromClient(final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
+	public void getStreamsFromClient(boolean materializeOnServer, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_ServerIF_getStreamsFromClient req = new BRequest_ServerIF_getStreamsFromClient();		
+		req.materializeOnServer = materializeOnServer;
 		transport.sendMethod(req, asyncResult);
 	}
 	

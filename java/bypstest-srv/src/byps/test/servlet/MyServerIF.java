@@ -81,14 +81,14 @@ public class MyServerIF extends BSkeleton_ServerIF {
 	}
 		
 	@Override
-	public List<InputStream> getStreamsFromClient() throws RemoteException {
+	public List<InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException {
 		ClientIF clientIF = getClientIF();
 		List<InputStream> streams = clientIF.getStreams(0);
 		ArrayList<InputStream> retStreams = new ArrayList<InputStream>();
 		for (int i = 0; i < streams.size(); i++) {
 			try {
-				InputStream istrm = streams.get(i);
-				BContentStream rstrm = ((BContentStream)istrm).materialize();
+			  BContentStream istrm = (BContentStream)streams.get(i);
+				BContentStream rstrm = materializeOnServer ? istrm.materialize() : istrm;
 				retStreams.add(rstrm);
 			} catch (IOException e) {
 				throw new BException(BExceptionC.IOERROR, e.getMessage(), e);

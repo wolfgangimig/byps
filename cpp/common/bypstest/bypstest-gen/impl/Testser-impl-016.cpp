@@ -329,15 +329,15 @@ void BStub_ServerIF::getPartner(::std::function< void (PClientIF, BException ex)
 }}}}
 
 namespace byps { namespace test { namespace api { namespace srvr { 
-byps::PVectorInputStream BStub_ServerIF::getStreamsFromClient()  {
+byps::PVectorInputStream BStub_ServerIF::getStreamsFromClient(bool materializeOnServer)  {
 	BSyncResultT< byps::PVectorInputStream > syncResult;	
-	getStreamsFromClient([&syncResult](byps::PVectorInputStream v, BException ex) {
+	getStreamsFromClient(materializeOnServer, [&syncResult](byps::PVectorInputStream v, BException ex) {
 		syncResult.setAsyncResult(v, ex);
 	});
 	return syncResult.getResult();
 }
-void BStub_ServerIF::getStreamsFromClient(::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_ServerIF_getStreamsFromClient());
+void BStub_ServerIF::getStreamsFromClient(bool materializeOnServer, ::std::function< void (byps::PVectorInputStream, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_ServerIF_getStreamsFromClient(materializeOnServer));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::PVectorInputStream, byps::test::api::BResult_1218831438 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
