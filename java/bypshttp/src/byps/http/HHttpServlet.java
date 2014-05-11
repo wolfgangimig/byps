@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -53,8 +54,6 @@ import byps.BWire;
 
 public abstract class HHttpServlet extends HttpServlet implements HServerContext {
   private static final long serialVersionUID = 1L;
-
-  private HCleanupResources cleanupThread;
 
   /**
    * @see HttpServlet#HttpServlet()
@@ -202,6 +201,8 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         cleanupThread = new HCleanupResources(HSessionListener.getAllSessions(), HHttpServlet.this);
         
         initializationFinished();
+        
+        isInitialized.set(true);
 
       } catch (ServletException e) {
         log.error("Initialization failed.", e);
@@ -914,6 +915,10 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         if (sess == null) {
 
           if (createNewIfNotEx) {
+            
+            if (!isInitialized.get()) {
+              throw new IOException("Not initialized. Try again later.");
+            }
 
             HTargetIdFactory targetIdFactory = getTargetIdFactory();
 
@@ -933,7 +938,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
           }
         }
       } catch (Exception e) {
-        log.info("Cannot get/create session", e);
+        log.debug("Cannot get/create session", e);
         httpStatus = HttpServletResponse.SC_FORBIDDEN;
       }
     }
@@ -1011,7 +1016,9 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
   private volatile BServerRegistry serverRegistry_use_getServerRegistry;
   private volatile HTargetIdFactory targetIdFact_use_getTargetIdFactory;
   private volatile HActiveMessages activeMessages_use_getActiveMessages;
-  
+  private HCleanupResources cleanupThread;
+  private AtomicBoolean isInitialized = new AtomicBoolean();
+
   private final static HServerListener defaultListener = new HServerListener() {
     @Override
     public boolean onBeforeWriteHttpResponse(ByteBuffer obuf, Throwable e, HttpServletResponse resp, boolean isAsync) throws IOException {

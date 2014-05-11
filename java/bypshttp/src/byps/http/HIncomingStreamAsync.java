@@ -71,8 +71,7 @@ public class HIncomingStreamAsync extends BContentStream  {
 			// The stream data must be completely read.
 			// Otherwise the data remains in the socket and 
 			// disturbs the next request.
-			int c = 0;
-			while ((c = is.read()) != -1) {
+			while (is.read() != -1) {
 				//if (log.isDebugEnabled()) log.debug("read before close, " + (char)c);
 			}
 			is.close();
@@ -81,6 +80,8 @@ public class HIncomingStreamAsync extends BContentStream  {
 			response.getOutputStream().close();
 			response.setStatus(HttpServletResponse.SC_OK);
 			rctxt.complete();
+			
+			super.close();
 		}
 		if (log.isDebugEnabled()) log.debug(")close");
 	}

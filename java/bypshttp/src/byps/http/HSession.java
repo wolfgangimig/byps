@@ -163,6 +163,10 @@ public abstract class HSession
     return this.remoteUser;
   }
 
+  public HServerContext getServerContext() {
+    return serverContext;
+  }
+  
   private final static Log log = LogFactory.getLog(HSession.class);
 
 }

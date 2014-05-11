@@ -513,6 +513,12 @@ public class HIncomingStreamSync extends BContentStream {
 			file = null;
 		}
 		
+		firstBytes = null;
+		secondBytes = null;
+		
+    // Causes isExpired() to return true
+		super.close();
+		
 		if (log.isDebugEnabled()) log.debug(")close");
 	}
 	

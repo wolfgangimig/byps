@@ -50,7 +50,11 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 			catch (IOException ignored) {}
 		}
 	
-
+		streamParts.clear();
+		
+		// Causes isExpired() to return true
+		super.close();
+		
 		if (log.isDebugEnabled()) log.debug(")close");
 	}
 	

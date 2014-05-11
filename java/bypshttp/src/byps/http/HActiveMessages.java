@@ -1,6 +1,7 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
@@ -342,42 +343,16 @@ public class HActiveMessages {
         istrm = incomingStreams.get(targetId.getStreamId());
 
         if (istrm == null) {
-
-          istrm = new HIncomingSplittedStreamAsync(targetId, contentType, totalLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
-            private Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
-
-            public void close() throws IOException {
-              if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
-              Long streamId = getTargetId().getStreamId();
-              incomingStreams.remove(streamId);
-              super.close();
-              if (log.isDebugEnabled()) log.debug(")close");
-            }
-          };
-
+          istrm = new HIncomingSplittedStreamAsync(targetId, contentType, totalLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir);
           incomingStreams.put(targetId.getStreamId(), istrm);
-          
         }
 
         ((HIncomingSplittedStreamAsync) istrm).addStream(partId, contentLength, isLastPart, rctxt);
 
       }
       else {
-
-        istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
-          private Log log = LogFactory.getLog(HIncomingStreamAsync.class);
-
-          public void close() throws IOException {
-            if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
-            Long streamId = getTargetId().getStreamId();
-            incomingStreams.remove(streamId);
-            super.close();
-            if (log.isDebugEnabled()) log.debug(")close");
-          }
-        };
-        
+        istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt);        
         incomingStreams.put(targetId.getStreamId(), istrm);
-        
       }
 
       synchronized(this) {
@@ -435,18 +410,7 @@ public class HActiveMessages {
 
         if (log.isDebugEnabled()) log.debug("create HInputStreamBuffer");
         long length = totalLength >= 0 ? totalLength : contentLength;
-        istrm = new HIncomingStreamSync(targetId, contentType, length, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
-
-          @Override
-          public void close() throws IOException {
-            if (log.isDebugEnabled()) log.debug("close " + targetId + "(");
-            Long streamId = getTargetId().getStreamId();
-            incomingStreams.remove(streamId);
-            super.close();
-            if (log.isDebugEnabled()) log.debug(")close");
-          }
-        };
-
+        istrm = new HIncomingStreamSync(targetId, contentType, length, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir);
         if (log.isDebugEnabled()) log.debug("put incoming stream into map, targetId=" + targetId);
         incomingStreams.put(targetId.getStreamId(), istrm);
       }
@@ -495,6 +459,11 @@ public class HActiveMessages {
       } catch (InterruptedException e) {
         throw new InterruptedIOException("Wait for stream=" + streamId + " interrupted.");
       }
+    }
+    
+    // Stream might be already read. Then, it is closed and BContentStream.isExpired() returns true
+    if (stream.isExpired()) {
+      throw new FileNotFoundException("Stream has already been read or is expired.");
     }
 
     if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
