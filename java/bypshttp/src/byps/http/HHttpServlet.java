@@ -297,6 +297,9 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         len = is.read(buf);
       }
     }
+    catch (BException e) {
+      throw e;
+    }
     catch (IOException e) {
       throw e;
     }
@@ -719,77 +722,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
   }
 
-  private static class FileUploadItemIncomingStream extends BContentStreamWrapper {
-
-    private final FileItem fileItem;
-    private final long streamId;
-    private final File tempDir;
-    private InputStream is;
-
-    FileUploadItemIncomingStream(FileItem fileItem, long streamId, File tempDir) throws IOException {
-      super(null, fileItem.getContentType(), fileItem.getSize(), HConstants.REQUEST_TIMEOUT_MILLIS);
-      this.fileItem = fileItem;
-      this.streamId = streamId;
-      this.tempDir = tempDir;
-      this.setFileName(fileItem.getName());
-      this.setPropertiesValid(true);
-    }
-
-    @Override
-    protected synchronized InputStream openStream() throws IOException {
-      return is = fileItem.getInputStream();
-    }
-
-    @Override
-    public boolean isExpired() {
-      boolean ex = super.isExpired();
-      if (ex) {
-        fileItem.delete();
-      }
-      return ex;
-    }
-
-    @Override
-    public synchronized void close() throws IOException {
-      if (is != null) {
-        try {
-          is.close();
-        } catch (IOException ignored) {
-        }
-      }
-      fileItem.delete();
-    }
-
-    @Override
-    public synchronized BContentStream materialize() throws IOException {
-      HIncomingStreamSync incomingStream = null;
-      if (this.fileItem.isInMemory()) {
-        incomingStream = new HIncomingStreamSync(targetId, fileItem.getContentType(), fileItem.getSize(), "", lifetimeMillis, tempDir);
-        incomingStream.assignBytes(fileItem.get());
-      }
-      else {
-        HTempFile tempFile = null;
-        try {
-          incomingStream = new HIncomingStreamSync(targetId, fileItem.getContentType(), fileItem.getSize(), "", lifetimeMillis, tempDir);
-          tempFile = HTempFile.createTemp(tempDir, streamId);
-          tempFile.getFile().delete(); // FileItem.write will move the file.
-          fileItem.write(tempFile.getFile());
-          incomingStream.assignFile(tempFile);
-        } catch (IOException e) {
-          throw e;
-        } catch (Exception e) {
-          throw new IOException(e);
-        } finally {
-          if (tempFile != null) {
-            tempFile.release();
-          }
-        }
-      }
-      incomingStream.setContentDisposition(fileItem.getName(), false);
-      return incomingStream;
-    }
-  }
-
   protected void doHtmlUpload(HttpServletRequest request, HttpServletResponse response) throws IOException {
     if (log.isDebugEnabled()) log.debug("doHtmlUpload(");
 
@@ -840,7 +772,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         if (item.isFormField()) continue;
 
         final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), 0, streamId.longValue());
-        getActiveMessages().addIncomingUploadStream(targetId, new FileUploadItemIncomingStream(item, streamId, getConfig().getTempDir()));
+        getActiveMessages().addIncomingUploadStream(new HFileUploadItemIncomingStream(item, streamId, getConfig().getTempDir()));
 
       }
 
@@ -973,7 +905,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         if (e instanceof FileNotFoundException) {
           status = HttpServletResponse.SC_NOT_FOUND;
         }
-        response.sendError(status, e.toString());
+        response.sendError(status, e.getMessage());
       }
 
     } finally {
