@@ -338,8 +338,10 @@ public class BTransport {
   }
 
   public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) {
+    if (log.isDebugEnabled()) log.debug("negotiateProtocolClient(");
     
     // Check that we do not run into recursive authentication requests.
+    if (log.isDebugEnabled()) log.debug("negotiateActive=" + negotiateActive);
     if (!negotiateActive.compareAndSet(false, true)) {
       BException ex = new BException(BExceptionC.FORBIDDEN, 
           "Authentication procedure failed. Server returned 401 for every request. "
@@ -350,6 +352,7 @@ public class BTransport {
     }
 
     try {
+      if (log.isDebugEnabled()) log.debug("build nego message");
       ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
       final BNegotiate nego = new BNegotiate(apiDesc);
       nego.write(buf);
@@ -360,11 +363,13 @@ public class BTransport {
         @Override
         public void setAsyncResult(BMessage msg, Throwable e) {
           try {
+            if (log.isDebugEnabled()) log.debug("nego result=" + msg + ", ex=" + e);
             if (e == null) {
               nego.read(msg.buf);
               synchronized (BTransport.this) {
                 protocol = createNegotiatedProtocol(nego);
                 targetId = nego.targetId;
+                if (log.isDebugEnabled()) log.debug("targetId=" + targetId + ", protocol=" + protocol);
               }
   
               internalAuthenticate(asyncResult);
@@ -379,6 +384,7 @@ public class BTransport {
   
       };
   
+      if (log.isDebugEnabled()) log.debug("send nego");
       BMessageHeader header = new BMessageHeader();
       header.messageId = wire.makeMessageId();
       final BMessage msg = new BMessage(header, buf, null);
@@ -386,13 +392,15 @@ public class BTransport {
       
     }
     catch (Throwable e) {
+      if (log.isDebugEnabled()) log.debug("nego failed, ", e);
       asyncResult.setAsyncResult(Boolean.FALSE, e);
     }
-  }
+    if (log.isDebugEnabled()) log.debug(")negotiateProtocolClient");
+ }
 
   protected void internalAuthenticate(final BAsyncResult<Boolean> asyncResult) {
 
-    if (log.isDebugEnabled()) log.debug("authenticate(");
+    if (log.isDebugEnabled()) log.debug("internalAuthenticate(");
 
     // Authentication enabled?
     if (authentication != null) {
@@ -413,8 +421,10 @@ public class BTransport {
           asyncResultsWaitingForAuthentication.add(asyncResult);
         }
       }
-      
+      if (log.isDebugEnabled()) log.debug("valid auth=" + assumeAuthenticationIsValid);
+     
       // First thread in this block performs authentication.
+      if (log.isDebugEnabled()) log.debug("first auth=" + first);
       if (first) {
 
         BAsyncResult<Boolean> authResult = new BAsyncResult<Boolean>() {
@@ -437,14 +447,17 @@ public class BTransport {
             // If there are threads currently waiting at (1), they will not trigger an authentication
             // but will set the result immediately.
 
+            if (log.isDebugEnabled()) log.debug("reset negotiateActive");
             negotiateActive.set(false);
             
+            if (log.isDebugEnabled()) log.debug("notify pending=#" + copyResults.size());
             for (int i = 0; i < copyResults.size(); i++) {
               copyResults.get(i).setAsyncResult(ignored, ex);
             }
           }
         };
 
+        if (log.isDebugEnabled()) log.debug("call authenticate");
         authentication.authenticate(null, authResult);
 
       }
@@ -469,7 +482,7 @@ public class BTransport {
       asyncResult.setAsyncResult(Boolean.FALSE, null);
     }
 
-    if (log.isDebugEnabled()) log.debug(")authenticate");
+    if (log.isDebugEnabled()) log.debug(")internalAuthenticate");
   }
 
   private BProtocol createNegotiatedProtocol(BNegotiate nego) throws BException {
@@ -568,9 +581,12 @@ public class BTransport {
     return ret;
   }
   
-  protected void setAuthentication(BAuthentication auth, boolean onlyIfNull) {
+  /**
+   * Assing authentication object.
+   * @param auth Authentication object
+   */
+  protected void setAuthentication(BAuthentication auth) {
     synchronized (asyncResultsWaitingForAuthentication) {
-      if (onlyIfNull && authentication != null) return;
       authentication = auth;
       asyncResultsWaitingForAuthentication.clear();
       lastAuthenticationException = null;
@@ -597,7 +613,7 @@ public class BTransport {
   /**
    * Last authentication result is assumed to be valid for this time.
    */
-  protected final long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+  public final static long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
   
   protected final AtomicBoolean negotiateActive = new AtomicBoolean();
   

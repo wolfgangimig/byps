@@ -11,6 +11,7 @@ import byps.BAuthentication;
 import byps.BClient;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BTransport;
 import byps.RemoteException;
 import byps.http.HConstants;
 import byps.test.api.BClient_Testser;
@@ -173,6 +174,7 @@ public class TestRemoteWithAuthentication {
     client.setAuthentication(auth);
 
     try {
+      log.info("remote.doit 1");
       remote.doit(1);
       TestUtils.fail(log, "exception expected");
     }
@@ -181,15 +183,25 @@ public class TestRemoteWithAuthentication {
     }
     
     // Try again without sleeping -> authentication should work correctly
-    auth.waitMillis = 0;
-    remote.doit(1);
+    try {
+      
+      // Wait until BTransport will allow to proceed the next authentication
+      Thread.sleep(BTransport.RETRY_AUTHENTICATION_AFTER_MILLIS);
+      
+      log.info("remote.doit 2");
+      auth.waitMillis = 0;
+      remote.doit(2);
+    }
+    catch (Throwable e) {
+      TestUtils.fail(log, e.toString());
+    }
     
     log.info(")testAuthenticateTooSlow");
   }
   
   private static class MyAuthentication implements BAuthentication {
     
-    private Log log = LogFactory.getLog(MyAuthentication.class);
+    private Log log = LogFactory.getLog("MyAuthentication");
     private String userName;
     private String pwd;
     private SessionInfo sess;
@@ -212,6 +224,7 @@ public class TestRemoteWithAuthentication {
         }
       };
       
+      log.info("login, " + userName + ", " + pwd);
       ((BClient_Testser)client).getRemoteWithAuthentication().login(userName, pwd, outerResult);
       log.info(")authenticate");
     }
@@ -253,6 +266,7 @@ public class TestRemoteWithAuthentication {
   class MyAuthenticationTooSlow extends MyAuthentication {
     
     public volatile long waitMillis;
+    private Log log = LogFactory.getLog("MyAuthenticationTooSlow");
 
     public MyAuthenticationTooSlow(String userName, String pwd, long waitMillis) {
       super(userName, pwd);
@@ -261,13 +275,16 @@ public class TestRemoteWithAuthentication {
 
     @Override
     public void authenticate(BClient client, final BAsyncResult<Boolean> asyncResult) {
+      log.info("authenticate(");
       try {
+        log.info("waitMillis=" + waitMillis);
         Thread.sleep(waitMillis);
         super.authenticate(client, asyncResult);
       }
       catch (Throwable e) {
         asyncResult.setAsyncResult(null, e);
       }
+      log.info(")authenticate");
     };
 
   }  
