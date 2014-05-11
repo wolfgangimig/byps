@@ -115,6 +115,30 @@ public class BContentStreamWrapper extends BContentStream {
 		return innerStream;
 	}
 	
+  @Override
+  public BContentStream cloneStream() throws IOException {
+    InputStream is = ensureStream();
+    if (is instanceof BContentStream) {
+      return ((BContentStream)is).cloneStream();
+    }
+    else {
+      return super.cloneStream();
+    }
+  }
+  
+  @Override
+  public BContentStream materialize() throws IOException {
+    InputStream is = ensureStream();
+    if (is instanceof BContentStream) {
+      BContentStream ret = ((BContentStream)is).materialize();
+      this.close();
+      return ret;
+    }
+    else {
+      return super.materialize();
+    }
+  }
+  
 	@Override
 	public int read() throws IOException {
 		return ensureStream().read();

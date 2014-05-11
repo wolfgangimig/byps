@@ -18,6 +18,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import byps.BContentStream;
+import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BMessageHeader;
@@ -111,10 +112,21 @@ public class HActiveMessages {
 	 * @param rctxt
 	 * @throws BException
 	 */
-	public void addIncomingUploadStream(final BTargetId targetId, BContentStream is) throws BException {
-		if (log.isDebugEnabled()) log.debug("addIncomingStream(targetId=" + targetId + ", is=" + is);
+	public void addIncomingUploadStream(BContentStream is) throws BException {
+		if (log.isDebugEnabled()) log.debug("addIncomingStream(is=" + is);
 		
-		incomingStreams.put(targetId.getStreamId(), is);
+		// Added to outgoing streams, since those streams are cleaned up 
+		// merely if they are expired. An incoming stream is also cleaned up, 
+		// if it is not referenced by an active message.
+		outgoingStreams.put(is.getTargetId().getStreamId(), new BContentStreamWrapper(is, HConstants.REQUEST_TIMEOUT_MILLIS) {
+      public void close() throws IOException {
+        if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
+        Long streamId = getTargetId().getStreamId();
+        outgoingStreams.remove(streamId);
+        super.close();
+        if (log.isDebugEnabled()) log.debug(")close");
+      }
+		});
 		
     if (log.isDebugEnabled()) log.debug(")addIncomingStream");
 	}
@@ -122,7 +134,8 @@ public class HActiveMessages {
 	public BContentStream getIncomingStream(BTargetId targetId) throws IOException {
   	if (log.isDebugEnabled()) log.debug("getIncomingStream(" + targetId);
   	
-  	BContentStream stream = getIncomingOrOutgoingStream(targetId.getStreamId());
+    long timeoutMillis = HConstants.REQUEST_TIMEOUT_MILLIS;
+  	BContentStream stream = getIncomingOrOutgoingStream(targetId.getStreamId(), timeoutMillis);
     	
 		if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
 		return stream;
@@ -130,7 +143,14 @@ public class HActiveMessages {
 	
 	public BContentStream getOutgoingStream(BTargetId targetId) throws IOException {
 		if (log.isDebugEnabled()) log.debug("getOutgoingStream(" + targetId);
-		BContentStream ret = getIncomingOrOutgoingStream(targetId.getStreamId());
+		
+		// Wait only a few seconds for an outgoing stream.
+		// If the stream was generated in this server, we would not have to wait for it.
+		// But it could be handed-over by client too. In this case, the put-stream request
+		// might come some seconds later than the message that refers to it.
+    long timeoutMillis = 11 * 1000;
+		BContentStream ret = getIncomingOrOutgoingStream(targetId.getStreamId(), timeoutMillis);
+		
 		if (log.isDebugEnabled()) log.debug(")getOutgoingStream=" + ret);
 		return ret;
 	}
@@ -223,6 +243,7 @@ public class HActiveMessages {
 		    try {
 		      if (log.isDebugEnabled()) log.debug("close/remove incoming stream=" + stream);
 		      stream.close(); // removes from incomingStreams or outgoingStreams
+		      incomingStreams.remove(streamId);
 		    }
 		    catch (Throwable e) {
 		      log.debug("Failed to close stream=" + stream, e);
@@ -233,12 +254,15 @@ public class HActiveMessages {
       }
 		}
 		
-		// Cleanup expired outgoing streams
-    for (BContentStream stream : outgoingStreams.values()) {
+		// Cleanup expired outgoing streams.
+		// And cleanup expired upload streams.
+		ArrayList<BContentStream> ostreams = new ArrayList<BContentStream>(outgoingStreams.values());
+    for (BContentStream stream : ostreams) {
       if (all || stream.isExpired()) {
         try {
           if (log.isDebugEnabled()) log.debug("close/remove outgoing stream=" + stream);
           stream.close(); // removes from incomingStreams or outgoingStreams
+          outgoingStreams.remove(stream.getTargetId().getStreamId());
         }
         catch (Throwable e) {
           log.debug("Failed to close stream=" + stream, e);
@@ -343,7 +367,17 @@ public class HActiveMessages {
         istrm = incomingStreams.get(targetId.getStreamId());
 
         if (istrm == null) {
-          istrm = new HIncomingSplittedStreamAsync(targetId, contentType, totalLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir);
+
+          istrm = new HIncomingSplittedStreamAsync(targetId, contentType, totalLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
+            public void close() throws IOException {
+              if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
+              Long streamId = getTargetId().getStreamId();
+              incomingStreams.remove(streamId);
+              super.close();
+              if (log.isDebugEnabled()) log.debug(")close");
+            }
+          };
+
           incomingStreams.put(targetId.getStreamId(), istrm);
         }
 
@@ -351,7 +385,17 @@ public class HActiveMessages {
 
       }
       else {
-        istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt);        
+
+        istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
+          public void close() throws IOException {
+            if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
+            Long streamId = getTargetId().getStreamId();
+            incomingStreams.remove(streamId);
+            super.close();
+            if (log.isDebugEnabled()) log.debug(")close");
+          }
+        };
+        
         incomingStreams.put(targetId.getStreamId(), istrm);
       }
 
@@ -410,7 +454,18 @@ public class HActiveMessages {
 
         if (log.isDebugEnabled()) log.debug("create HInputStreamBuffer");
         long length = totalLength >= 0 ? totalLength : contentLength;
-        istrm = new HIncomingStreamSync(targetId, contentType, length, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir);
+        istrm = new HIncomingStreamSync(targetId, contentType, length, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
+
+          @Override
+          public void close() throws IOException {
+            if (log.isDebugEnabled()) log.debug("close " + targetId + "(");
+            Long streamId = getTargetId().getStreamId();
+            incomingStreams.remove(streamId);
+            super.close();
+            if (log.isDebugEnabled()) log.debug(")close");
+          }
+        };
+
         if (log.isDebugEnabled()) log.debug("put incoming stream into map, targetId=" + targetId);
         incomingStreams.put(targetId.getStreamId(), istrm);
       }
@@ -428,11 +483,10 @@ public class HActiveMessages {
     return istrm;
   }
 
-  public synchronized BContentStream getIncomingOrOutgoingStream(Long streamId) throws IOException, BException {
+  public synchronized BContentStream getIncomingOrOutgoingStream(Long streamId, long timeoutMillis) throws IOException, BException {
     if (log.isDebugEnabled()) log.debug("getIncomingStream(streamId=" + streamId);
     long t1 = System.currentTimeMillis();
     BContentStream stream = null;
-    long timeoutMillis = HConstants.REQUEST_TIMEOUT_MILLIS;
 
     while (timeoutMillis > 0) {
 
@@ -446,8 +500,8 @@ public class HActiveMessages {
       long t2 = System.currentTimeMillis();
       timeoutMillis = timeoutMillis - (t2 - t1);
       if (timeoutMillis <= 0) {
-        if (log.isDebugEnabled()) log.debug("Timeout");
-        throw new BException(BExceptionC.TIMEOUT, "Timeout while waiting for streamId=" + streamId);
+        if (log.isDebugEnabled()) log.debug("Stream not found, streamId=" + streamId);
+        throw new FileNotFoundException("Stream not found, streamId=" + streamId);
       }
 
       // Wait not more than 10s to make sure,
@@ -461,11 +515,6 @@ public class HActiveMessages {
       }
     }
     
-    // Stream might be already read. Then, it is closed and BContentStream.isExpired() returns true
-    if (stream.isExpired()) {
-      throw new FileNotFoundException("Stream has already been read or is expired.");
-    }
-
     if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
     return stream;
   }

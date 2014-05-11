@@ -120,20 +120,22 @@ public abstract class BContentStream extends InputStream {
    * Duplicate stream.
    * This function is only supported by sub-classes available on the server side.
    * It copies the stream contents into a new stream buffered by memory or a temporary file.
-   * The stream referenced by "this" is closed thereby. The properties are passed 
+   * The stream referenced by "this" is reseted after it is copied. The properties are passed 
    * into the returned stream. Except the targetId is not copied, it is set to {@link BTargetId#ZERO}.
-   * @return materialized stream.
+   * @return Materialized stream.
    * @throws CloneNotSupportedException 
+   * @see {@link #materialize()}
    */
   public BContentStream cloneStream() throws IOException {
-    throw new IOException("Stream cannot be cloned. Create a materialized stream first.");
+    throw new IOException("Stream cannot be cloned.");
   }
   
   /**
    * Write stream data into buffer or temporary file.
    * This function is only supported by sub-classes available on the server side.
    * Use this function for an incoming stream that has to be still available 
-   * after the message was processed.
+   * after the message was processed. The function copies the stream contents into a memory
+   * buffer or into a temporary file.
    * The stream represented by "this" is closed by this function.
    * @return materialized stream.
    * @throws IOException
@@ -325,9 +327,6 @@ public abstract class BContentStream extends InputStream {
 
   @Override
   public void close() throws IOException {
-    // isExpired should return true
-    bestBefore = System.currentTimeMillis() - 1;
-    
     super.close();
   }
   

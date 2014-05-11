@@ -835,6 +835,12 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	this._asyncResultsWaitingForAuthentication = [];
 	this._RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
 	this._negotiateActive = false;
+	
+	this.setTargetId = function(targetId) {
+		this.targetId = targetId;
+		this.connectedToServerId = targetId.serverId;
+	};
+	this.setTargetId(targetId);
 
 	this.getOutput = function() {
 		return new byps.BInputOutput(this);

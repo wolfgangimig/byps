@@ -71,6 +71,9 @@ This test uploads a file to the server. After the upload is completed the file i
 			 				
 			 				var fileViewer = document.getElementById('fileViewer');
 			 				fileViewer.src = downloadUrl;
+			 				
+			 				var fileLink = document.getElementById('fileLink');
+			 				fileLink.href = downloadUrl;
 
 			 				// Delete upload information. Otherwise it would be sent again 
 			 				// if the page was re-loaded.
@@ -99,6 +102,9 @@ This test uploads a file to the server. After the upload is completed the file i
 		</td></tr>
 		<tr><td>
 			<iframe id="fileViewer" name="fileViewer" style="width:100;height:100"></iframe>
+		</td></tr>
+		<tr><td>
+			<a href="about:blank" id="fileLink" >Download again fails with 404</a>
 		</td></tr>
 	</table>
 </td></tr>
