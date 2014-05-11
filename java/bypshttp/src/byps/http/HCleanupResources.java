@@ -12,10 +12,11 @@ public class HCleanupResources {
 	
 	protected final Map<BTargetId, HSession> sessions;
 	protected final MyCleanupThread cleanupThread;
-  private final static Log log = LogFactory.getLog(HCleanupResources.class);
-
-	public HCleanupResources(Map<BTargetId, HSession> sessions) {
+	protected final HServerContext serverContext;
+	
+	public HCleanupResources(Map<BTargetId, HSession> sessions, HServerContext serverContext) {
 		this.sessions = sessions;
+		this.serverContext = serverContext;
 		this.cleanupThread = new MyCleanupThread();
 		this.cleanupThread.start();
 	}
@@ -33,6 +34,7 @@ public class HCleanupResources {
 
     @Override
     public void run() {
+      Log log = LogFactory.getLog(HCleanupResources.class);
       try {
         while (!Thread.interrupted()) {
           Thread.sleep(HConstants.CLEANUP_MILLIS);
@@ -42,6 +44,8 @@ public class HCleanupResources {
             for (HSession sess : arrSessions) {
               sess.removeExpiredResources();
             }
+            
+            serverContext.getActiveMessages().cleanup(false);
           }
           catch (Throwable e) {
             log.error("Unexpected exception in cleanup-thread: ", e);

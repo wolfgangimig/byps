@@ -1,6 +1,8 @@
 package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -75,6 +77,51 @@ public class TestRemoteStreams {
     TestUtils.checkTempDirEmpty(client);
 
     log.info(")testRemoteStreamsOneStreamContentLength");
+  }
+
+  /**
+   * Send file stream.
+   * A file stream has the fileName property set.
+   * @throws InterruptedException
+   * @throws IOException
+   */
+  @Test
+  public void testRemoteStreamsFileStream() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsFileStream(");
+    
+    File file = File.createTempFile("byps", ".txt");
+    String str = "hello";
+    
+    FileOutputStream fos = null;
+    try {
+      fos = new FileOutputStream(file);
+      fos.write(str.getBytes());
+    }
+    finally {
+      if (fos != null) fos.close();
+    }
+    
+    InputStream istrm = new BContentStreamWrapper(file);
+    remote.setImage(istrm);
+
+    BContentStream istrmR = (BContentStream)remote.getImage();
+    
+    TestUtils.assertEquals(log,  "Content-Type", "text/plain", istrmR.getContentType());
+    TestUtils.assertEquals(log,  "Content-Length", file.length() , istrmR.getContentLength());
+    TestUtils.assertEquals(log,  "FileName", file.getName(), istrmR.getFileName());
+    
+    ByteBuffer buf = BWire.bufferFromStream(istrmR);
+    String strR = new String(buf.array(), buf.position(), buf.remaining());
+    TestUtils.assertEquals(log, "stream", str, strR);
+
+    TestUtils.assertEquals(log,  "Content-Type", "text/plain", istrmR.getContentType());
+    TestUtils.assertEquals(log,  "Content-Length", file.length() , istrmR.getContentLength());
+    TestUtils.assertEquals(log,  "FileName", file.getName(), istrmR.getFileName());
+    
+    remote.setImage(null);
+    TestUtils.checkTempDirEmpty(client);
+
+    log.info(")testRemoteStreamsFileStream");
   }
 
   /**
@@ -241,7 +288,7 @@ public class TestRemoteStreams {
   @Test
   public void testRemoteStreamsCloseStreamAfterSend() throws RemoteException {
     log.info("testRemoteStreamsCloseStreamAfterSend(");
-    int count = 10;
+    int count = 1;
 
     for (int i = 0; i < count; i++) {
       internalTestRemoteStreamsClosed();
@@ -271,6 +318,13 @@ public class TestRemoteStreams {
     if (log.isDebugEnabled()) log.debug("setImages...");
     remote.setImages(mystreams, 1);
     if (log.isDebugEnabled()) log.debug("setImages OK");
+    
+    // Stream at index 1 has not been read by the server.
+    // The internal cleanup thread has to read the stream and close it 
+    // after the message is sent.
+    // Now wait for at most HConstants.CLEANUP_MILLIS until HActiveMessages.cleanup()
+    // closes the stream and returns a response for this stream.
+    // Then, the client will return from remote.setImages().
 
     for (int i = 0; i < nbOfStreams; i++) {
       MyInputStream istrm = (MyInputStream) mystreams.get(i);
@@ -295,12 +349,12 @@ public class TestRemoteStreams {
   public void testRemoteStreamsThrowExceptionOnRead() throws InterruptedException, IOException {
     log.info("testRemoteStreamsThrowExceptionOnRead(");
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
       internalTestThrowExOnRead(true, false);
       internalTestThrowExOnRead(false, true);
     }
 
-    client.getTransport().getWire().cancelAllRequests();
+    client.getTransport().getWire().getTestAdapter().cancelAllRequests();
 
     try {
       // There should be no active messages on the server after the client side
@@ -327,7 +381,7 @@ public class TestRemoteStreams {
     log.info("internalTestThrowExOnRead(throwEx=" + throwEx + ", throwError=" + throwError);
 
     Map<Integer, InputStream> streams = new TreeMap<Integer, InputStream>();
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 3; i++) {
       String str = "hello-" + i;
       byte[] buf = str.getBytes();
       InputStream istrm = new MyInputStream(buf, i == 1 && throwEx, i == 1 && throwError);
@@ -340,6 +394,14 @@ public class TestRemoteStreams {
       log.info("setImages...");
       remote.setImages(streams, -1);
       Assert.fail("Exception expected");
+      
+      // The server waits for the stream in HActiveMessages.getIncomingOrOutgoingStream().
+      // But the stream is never sent due to the text exception.
+      // The client handles the exception by sending a cancel message.
+      // This message interrupts the server. It needs at most HConstants.CLEANUP_MILLIS
+      // until all streams of the message are internally released. 
+      // Then the remote.setImages() will return.
+      
     } catch (BException e) {
       log.info("setImages ex=" + e + ", OK");
 
@@ -472,4 +534,48 @@ public class TestRemoteStreams {
     
     log.info(")testRemoteStreamsAsyncCallback");
   }
+  
+  /**
+   * A stream returned from the server can be passed as input parameter
+   * to another call to the same server. The stream must not be downloaded/uploaded therefore.
+   * @throws IOException 
+   */
+  @Test
+  public void testHandoverStream() throws IOException {
+    log.info("testHandoverStream(");
+    
+    ArrayList<InputStream> streams = TestUtilsHttp.makeTestStreams();
+    
+    for (int i = 0; i < streams.size(); i++) {
+    
+      InputStream istrm = streams.get(i);
+      
+      remote.setImage(istrm);
+      
+      InputStream strmFromServer = remote.getImage();
+      BContentStream streamFailOpen = new BContentStreamWrapper((BContentStream)strmFromServer, 0L) {
+        @Override
+        protected InputStream openStream() throws IOException {
+          log.error("Stream must not be opened");
+          throw new IOException("Stream should be passed without beeing read.");
+        }
+      };
+      
+      remote.setImage(streamFailOpen);
+      
+      for (int j = 0; j < 2; j++) {
+        ArrayList<InputStream> estreams = TestUtilsHttp.makeTestStreams();
+        InputStream estrm = estreams.get(i);
+        InputStream rstrm = remote.getImage();
+        TestUtils.assertEquals(log, "stream[" + i + "]=" + estrm, estrm, rstrm);
+      }
+      
+      remote.setImage(null);
+      TestUtils.checkTempDirEmpty(client);
+    }
+    
+    log.info(")testHandoverStream");
+  }
+
+
 }

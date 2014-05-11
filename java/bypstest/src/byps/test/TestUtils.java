@@ -33,10 +33,11 @@ import byps.BClient;
 import byps.BContentStream;
 import byps.BContentStreamWrapper;
 import byps.BMessage;
+import byps.BMessageHeader;
 import byps.BProtocol;
 import byps.BProtocolJson;
 import byps.BProtocolS;
-import byps.BStreamRequest;
+import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
@@ -52,14 +53,14 @@ public class TestUtils {
 
 	private static Log log = LogFactory.getLog(TestUtils.class);
 	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
-	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;// BProtocolS.BINARY_MODEL;
+	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	public static boolean TEST_LARGE_STREAMS = false;
 	
 	public static BTransport createTransport() {
-		return createTransport(BWire.FLAG_DEFAULT, 0);
+		return createTransport(BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, 0);
 	}
 	
-	public static BTransport createTransport(int flags, int version) {
+	public static BTransport createTransport(int flags, int bypsVersion, long version) {
 				
 		BWire wire = new MyWire(flags);
 		
@@ -80,7 +81,7 @@ public class TestUtils {
 			proto = new BProtocolJson(apiDesc);
 		}
 		else {
-			proto = new BProtocolS(apiDesc, version, ByteOrder.LITTLE_ENDIAN);
+			proto = new BProtocolS(apiDesc, bypsVersion, version, ByteOrder.LITTLE_ENDIAN);
 		}
 		
 		BTransport transport = new BTransport(apiDesc, wire, null);
@@ -99,19 +100,19 @@ public class TestUtils {
 		}
 		
 		@Override
-		public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
+		public void putStreams(List<BContentStream> streamRequests, BAsyncResult<BMessage> asyncResult) {
 			if (streamRequests == null) return;
 			
-			for (BStreamRequest streamRequest : streamRequests) {
+			for (BContentStream streamRequest : streamRequests) {
 				ByteBuffer buf;
 				try {
-					buf = bufferFromStream(streamRequest.strm);
-					HashMap<Long, ByteBuffer> map = mapStreams.get(streamRequest.messageId);
+					buf = bufferFromStream(streamRequest);
+					HashMap<Long, ByteBuffer> map = mapStreams.get(streamRequest.getTargetId().getMessageId());
 					if (map == null) {
 						map = new HashMap<Long, ByteBuffer>();
-						mapStreams.put(streamRequest.messageId, map);
+						mapStreams.put(streamRequest.getTargetId().getMessageId(), map);
 					}
-					map.put(streamRequest.streamId, buf);
+					map.put(streamRequest.getTargetId().getMessageId(), buf);
 				} catch (IOException e) {
 					asyncResult.setAsyncResult(null, e);
 					break;
@@ -120,11 +121,11 @@ public class TestUtils {
 		}
 
 		@Override
-		public BContentStream getStream(long messageId, long streamId)
+		public BContentStream getStream(BTargetId targetId)
 				throws IOException {
-			HashMap<Long, ByteBuffer> map = mapStreams.get(messageId);
+			HashMap<Long, ByteBuffer> map = mapStreams.get(targetId.getMessageId());
 			if (map == null) throw new IOException("Stream not found.");
-			ByteBuffer buf = map.get(streamId);
+			ByteBuffer buf = map.get(targetId.getStreamId());
 			if (buf == null) throw new IOException("Stream not found.");
 			return new BContentStreamWrapper(
 					new ByteArrayInputStream(buf.array(), buf.position(), buf.remaining()),
@@ -599,6 +600,9 @@ public class TestUtils {
 			
 			super.fileName = "file-" + nbOfBytes + ".txt";
 			super.attachment = nbOfBytes > 10000;
+			
+			super.contentType = "application/byps-" + nbOfBytes;
+			super.contentLength  =chunked ? -1L : nbOfBytes;
 		}
 
 		@Override
@@ -611,18 +615,6 @@ public class TestUtils {
 				if ((ret % 5) == 0) ret = 0; 
 				return ret;
 			}
-		}
-		
-		public String getContentType() {
-			return "application/byps-" + nbOfBytes;
-		}
-		
-		public long getContentLength() {
-			return chunked ? -1L : nbOfBytes;
-		}
-		
-		public String toString() {
-			return "[contentLength=" + getContentLength() + ", contentType=" + getContentType() + "]"; 
 		}
 	}
 
@@ -649,7 +641,7 @@ public class TestUtils {
             if (n < 0)
             {
                 int n2 = rstrm.read(rbuf, 0, rbuf.length);
-                TestUtils.assertEquals(log, msg + ". stream byte, p=" + p, n, n2);
+                TestUtils.assertEquals(log, msg + ". expected end of stream, p=" + p, n, n2);
                 break;
             }
             else
@@ -658,7 +650,7 @@ public class TestUtils {
                 while (n2 < n)
                 {
                     int n3 = rstrm.read(rbuf, n2, n - n2);
-                    TestUtils.assertTrue(log, "Unexpected end of stream", n3 > 0);
+                    TestUtils.assertTrue(log, msg + ". Unexpected end of stream", n3 > 0);
                     n2 += n3;
                 }
 

@@ -12,9 +12,9 @@ class BMessage {
 public:
     BMessageHeader header;
     PBytes buf;
-    vector<PStreamRequest> streams;
+    vector<PContentStream> streams;
 
-    BMessage(const BMessageHeader& header, PBytes buf, const vector<PStreamRequest>& streams);
+    BMessage(const BMessageHeader& header, PBytes buf, const vector<PContentStream>& streams);
 
     bool isEmpty() const;
 };

@@ -11,6 +11,8 @@ public abstract class BProtocol {
 	
 	public final BApiDescriptor apiDesc;
 	
+	public final int negotiatedBypsVersion;
+	
 	public final long negotiatedVersion;
 	
 	public final ByteOrder negotiatedByteOrder;
@@ -22,8 +24,9 @@ public abstract class BProtocol {
 	 * @param negotiatedByteOrder
 	 * @param protocolName
 	 */
-	public BProtocol(BApiDescriptor apiDesc, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	public BProtocol(BApiDescriptor apiDesc, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		this.apiDesc = apiDesc;
+		this.negotiatedBypsVersion = negotiatedBypsVersion;
 		this.negotiatedVersion = negotiatedVersion;
 		this.negotiatedByteOrder = negotiatedByteOrder;
 	}
@@ -36,6 +39,7 @@ public abstract class BProtocol {
 	 */
 	public BProtocol(BApiDescriptor apiDesc) {
 		this.apiDesc = apiDesc;
+    this.negotiatedBypsVersion = 0;
 		this.negotiatedVersion = 0;
 		this.negotiatedByteOrder = null;
 	}

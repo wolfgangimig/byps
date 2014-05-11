@@ -17,8 +17,8 @@ namespace byps
             this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	    }
 
-	    public BOutputBin(BTransport transport, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder)
-            : base(transport, transport.getApiDesc().getRegistry(BBinaryModel.MEDIUM), streamHeaderMagic, negotiatedVersion, negotiatedByteOrder)
+	    public BOutputBin(BTransport transport, int streamHeaderMagic, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder)
+            : base(transport, transport.getApiDesc().getRegistry(BBinaryModel.MEDIUM), streamHeaderMagic, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder)
         {
             this.bbuf = (BBufferBin)BBuffer.create(BBinaryModel.MEDIUM, null);
 	    }

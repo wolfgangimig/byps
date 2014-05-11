@@ -11,28 +11,28 @@ import org.apache.commons.logging.LogFactory;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BTargetId;
 
 public class HIncomingSplittedStreamAsync extends BContentStream {
 
 	private static Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
 	protected final File tempDir;
-	protected final long streamId;
 	protected long readPos;
 	protected long currentPartId;
 	protected long maxPartId = Long.MAX_VALUE;
 	protected HIncomingStreamAsync currentStreamPart;
 	private HashMap<Long, HIncomingStreamAsync> streamParts = new HashMap<Long, HIncomingStreamAsync>();
 	
-	HIncomingSplittedStreamAsync(String contentType, long totalLength, String contentDisposition, long streamId, long lifetimeMillis, File tempDir) throws IOException {
+	HIncomingSplittedStreamAsync(BTargetId targetId, String contentType, long totalLength, String contentDisposition, long lifetimeMillis, File tempDir) throws IOException {
 		super(contentType, totalLength, lifetimeMillis);
-		this.streamId = streamId;
+		this.setTargetId(targetId);
 		this.tempDir = tempDir;
 		setContentDisposition(contentDisposition);
 	}
 	
 	public synchronized void addStream(long partId, long contentLength, boolean isLastPart, HRequestContext rctxt) throws IOException {
-		if (log.isDebugEnabled()) log.debug("addStream(" + streamId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
-		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(contentType, contentLength, "", streamId, lifetimeMillis, tempDir, rctxt);
+		if (log.isDebugEnabled()) log.debug("addStream(" + targetId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
+		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(targetId, contentType, contentLength, "", lifetimeMillis, tempDir, rctxt);
 		streamParts.put(partId, streamPart);
 		if (isLastPart) maxPartId = partId+1;
 		notifyAll(); // notify thread that might wait in read()
@@ -90,12 +90,11 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 			HIncomingStreamAsync streamPart = getCurrentStreamPart(false);
 			if (streamPart != null) {
 				ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
-				if (ret == -1) {
+				while (ret == -1) {
 				  streamPart.close();
 					streamPart = getCurrentStreamPart(true);
-					if (streamPart != null) {
-					  ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
-					}
+					if (streamPart == null) break;
+					ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
 				}
 			}
 		}
@@ -118,12 +117,19 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	}
 	
 	@Override
-	public synchronized BContentStream cloneInputStream() throws BException {
+	public synchronized BContentStream materialize() throws BException {
 		if (readPos != 0) throw new BException(BExceptionC.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
 		HIncomingStreamSync istrm = null; 
 		try {
-	    istrm = new HIncomingStreamSync(contentType, contentLength, getContentDisposition(), streamId, lifetimeMillis, tempDir);
+	    istrm = new HIncomingStreamSync(this, lifetimeMillis, tempDir);
 			istrm.assignStream(this);
+			
+	    // Reset stream IDs. 
+	    // Otherwise the stream would not be sent, see BOutput.createStreamRequest.
+	    istrm.setTargetId(BTargetId.ZERO);
+
+			// materialize closes "this"
+			this.close();
 		} catch (IOException e) {
 			throw new BException(BExceptionC.IOERROR, "Failed to clone stream", e);
 		}

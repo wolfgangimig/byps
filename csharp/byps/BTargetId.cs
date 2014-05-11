@@ -13,6 +13,8 @@ namespace byps
 	    public readonly long v1;
 	    public readonly long v2;
 
+        public static readonly BTargetId ZERO = new BTargetId();
+
         public BTargetId(int serverId, long v1, long v2)
         {
             this.serverId = serverId;
@@ -96,6 +98,16 @@ namespace byps
 		    return true;
 	    }
 
+
+        public long getStreamId()
+        {
+            return v2;
+        }
+
+        public long getMessageId()
+        {
+            return v1;
+        }
 
     }
 }

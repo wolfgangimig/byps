@@ -28,7 +28,6 @@ PClient_Testser TestUtilHttp::createClient(void* app) {
 
 class MyContentStreamBytes : public BContentStream {
 	int64_t nbOfBytes;
-	std::wstring contentType;
 	int64_t pos;
 	bool chunked;
 	int v;
@@ -37,10 +36,6 @@ public:
 		std::wstringstream wss;
 		wss << L"application/byps-" << (nbOfBytes%3);
 		contentType = wss.str();
-	}
-	
-	virtual const std::wstring& getContentType() const { 
-		return contentType;
 	}
 	
 	virtual int64_t getContentLength() const { 

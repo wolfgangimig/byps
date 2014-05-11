@@ -1,5 +1,6 @@
 package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+import java.io.ByteArrayInputStream;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,9 +12,11 @@ import org.junit.Test;
 
 import byps.BException;
 import byps.BInput;
+import byps.BMessageHeader;
 import byps.BOutput;
 import byps.BTransport;
 import byps.BWire;
+import byps.test.api.strm.Stream1;
 import byps.test.api.ver.Evolve;
 import byps.test.api.ver.Evolve2;
 
@@ -25,25 +28,24 @@ public class TestSerializeDifferentVersions {
 
 	private Log log = LogFactory.getLog(TestSerializeDifferentVersions.class);
 
-	@Test
-	public void testDifferentVersions() throws BException {
-		log.info("testDifferentVersions(");
-		
-		for (int appVersion = 0; appVersion < 5; appVersion++) {
-			for (int negotiatedVersion = 0; negotiatedVersion <= appVersion; negotiatedVersion++) {
-				internalTestDifferentVersions(appVersion, negotiatedVersion);
-			}
-		}
-		
-		
-		log.info(")testDifferentVersions");
-	}
-	
-	private void internalTestDifferentVersions(int appVersion, int negotiatedVersion) throws BException {
+  @Test
+  public void testDifferentVersions() throws BException {
+    log.info("testDifferentVersions(");
+    
+    for (int appVersion = 0; appVersion < 5; appVersion++) {
+      for (int negotiatedVersion = 0; negotiatedVersion <= appVersion; negotiatedVersion++) {
+        internalTestDifferentVersions(appVersion, 0, negotiatedVersion);
+      }
+    }
+    
+    log.info(")testDifferentVersions");
+  }
+  
+  private void internalTestDifferentVersions(int appVersion, int bypsVersion, int negotiatedVersion) throws BException {
 		log.info("internalTestDifferentVersions(appVersion=" + appVersion + ", negotiatedVersion=" + negotiatedVersion);
 		Evolve obj = createEvolve(appVersion);
 		
-		BTransport transport = TestUtils.createTransport(BWire.FLAG_DEFAULT, negotiatedVersion);
+		BTransport transport = TestUtils.createTransport(BWire.FLAG_DEFAULT, bypsVersion, negotiatedVersion);
 		
 		BOutput bout = transport.getOutput();
 		bout.store(obj);

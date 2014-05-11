@@ -595,7 +595,7 @@ byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	this.transport = null; // is set in BServer.addRemote
 	
 	this.toJSON = function (key) {
-		return { _typeId : 2049072174, targetId : this.transport.targetId };
+		return { _typeId : 2049072174, targetId : this.transport.targetId.toString() };
 	};
 	
 	

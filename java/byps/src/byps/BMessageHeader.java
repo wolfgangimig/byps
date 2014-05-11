@@ -29,7 +29,10 @@ public class BMessageHeader {
 	public final static int MAGIC_JSON = ((int)'{' << 24) | ((int)'\"' << 16) | ((int)'h' << 8) | ((int)'e');
 	private final static int MAGIC_JSON_SINGLE_QUOTE = ((int)'{' << 24) | ((int)'\'' << 16) | ((int)'h' << 8) | ((int)'e');
 		
-	public final static int FLAG_STREAM = 1;
+  public final static int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
+  public final static int BYPS_VERSION_CURRENT = BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
+		
+	public final static int FLAG_BYPS_VERSION = 1;
 	public final static int FLAG_RESPONSE = 2; 
 	public final static int FLAG_LONGPOLL = 2;
 	public final static int FLAG_TIMEOUT = 4;
@@ -38,6 +41,7 @@ public class BMessageHeader {
 	public int magic;
 	public int error;
 	public int flags;
+	public int bversion;
 	public long version;
 	public BTargetId targetId;
 	public long messageId;
@@ -48,7 +52,7 @@ public class BMessageHeader {
 	 */
 	public int timeoutSeconds;
 	
-	public long streamId; // if (flags & FLAG_STREAM)
+	//ublic long streamId; 
 	//public BInt128 sessionId;
 	
 	public transient ByteOrder byteOrder;
@@ -61,8 +65,12 @@ public class BMessageHeader {
 	 */
 	public Object messageObject;
 
-	public BMessageHeader(int magic, final long version, ByteOrder byteOrder, long mid) {
+	public BMessageHeader(int magic, final int bversion, final long version, ByteOrder byteOrder, long mid) {
 		this.magic = magic;
+		this.bversion = bversion;
+		if (bversion != 0) {
+		  this.flags = FLAG_BYPS_VERSION;
+		}
 		this.version = version;
 		this.byteOrder = byteOrder;
 		this.messageId = mid;
@@ -73,12 +81,12 @@ public class BMessageHeader {
 	
 	public BMessageHeader(BMessageHeader rhs) {
 		this.magic = rhs.magic;
+		this.bversion = rhs.bversion;
 		this.version = rhs.version;
 		this.byteOrder = rhs.byteOrder;
 		this.error = rhs.error;
 		this.flags = rhs.flags;
 		this.messageId = rhs.messageId;
-		this.streamId = rhs.streamId;
 		this.targetId = rhs.targetId;
 		this.timeoutSeconds = rhs.timeoutSeconds;
 	}
@@ -140,12 +148,14 @@ public class BMessageHeader {
 		buf.putInt(MAGIC_BINARY_STREAM);
 		buf.putInt(error); 
 		buf.putInt(flags); 
-		buf.putLong(version);
+
+    if ((flags & FLAG_BYPS_VERSION) != 0) {
+      buf.putInt(bversion);
+    }
+
+    buf.putLong(version);
 		targetId.write(buf);
 		buf.putLong(messageId);
-		if ((flags & FLAG_STREAM) != 0) {
-			buf.putLong(streamId);
-		}
 		
 		if ((flags & FLAG_TIMEOUT) != 0) {
 		  buf.putInt(timeoutSeconds);
@@ -156,6 +166,7 @@ public class BMessageHeader {
 		bbuf.beginObject();
 		bbuf.putInt("error", error);
 		bbuf.putInt("flags", flags);
+		bbuf.putInt("bversion", bversion);
 		bbuf.putString("targetId", targetId.toString());
 		bbuf.putLong("messageId", messageId);
    
@@ -169,12 +180,14 @@ public class BMessageHeader {
 	protected void readBinaryWithoutMagic(ByteBuffer buf) {
 		error = buf.getInt();
 		flags = buf.getInt();
+		
+		if ((flags & FLAG_BYPS_VERSION) != 0) {
+		  bversion = buf.getInt();
+		}
+		
 		version = buf.getLong();
 		targetId = BTargetId.read(buf);
 		messageId = buf.getLong();
-		if ((flags & FLAG_STREAM) != 0) {
-			streamId = buf.getLong();
-		}
 		
     if ((flags & FLAG_TIMEOUT) != 0) {
       timeoutSeconds = buf.getInt();
@@ -215,6 +228,7 @@ public class BMessageHeader {
 		
 		error = jsonObj.getInt("error");
 		flags = jsonObj.getInt("flags");
+		bversion = jsonObj.getInt("bversion");
 		
 		String targetIdStr = jsonObj.getString("targetId");
 		targetId = BTargetId.parseString(targetIdStr);
@@ -235,10 +249,10 @@ public class BMessageHeader {
 		sbuf.append("[magic=").append(magic)
 			.append(", error=").append(error)
 			.append(", flags=").append(flags)
+			.append(", bversion=").append(bversion)
 			.append(", version=").append(version)
 			.append(", targetId=").append(targetId)
 			.append(", messageId=").append(messageId)
-			.append(", streamId=").append(streamId)
 			.append(", timeout=").append(timeoutSeconds)
 			.append(", messageObject=").append(messageObject)
 			.append("]");

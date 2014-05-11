@@ -15,7 +15,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import byps.BApiDescriptor;
-import byps.BServerRegistry;
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
 import byps.http.HFileUploadItem;
@@ -63,13 +62,12 @@ public class BypsServlet extends HHttpServlet {
   }
 
   @Override
-  protected HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess,
-      BServerRegistry stubRegistry) {
+  protected HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess) {
     if (log.isDebugEnabled()) log.debug("createSession(");
     String remoteUser = request.getRemoteUser();
     if (log.isDebugEnabled()) log.debug("remoteUser=" + remoteUser);
     
-    HSession sess = new MySession(hsess, remoteUser, tempDir, stubRegistry);
+    HSession sess = new MySession(hsess, remoteUser, this);
     if (log.isDebugEnabled()) log.debug(")createSession=" + sess);
     return sess;
   }
@@ -161,7 +159,7 @@ public class BypsServlet extends HHttpServlet {
   }
 
   @Override
-  protected HConfig getConfig() {
+  public HConfig getConfig() {
     return config;
   }
   

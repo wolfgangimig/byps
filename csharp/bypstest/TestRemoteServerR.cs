@@ -272,11 +272,14 @@ namespace bypstest
 		
 		    // First client queries the interface of the second client from the server side
 		    ClientIF partnerIF = client.ServerIF.GetPartner();
-		
-		    log.info("call client...");
-		    IList<Stream> arr = TestUtilsHttp.makeTestStreams();
-		    partnerIF.PutStreams(arr, 0);
-		    log.info("call client OK");
+
+            for (int i = 0; i < 1; i++)
+            {
+                log.info("call client...");
+                IList<Stream> arr = TestUtilsHttp.makeTestStreams();
+                partnerIF.PutStreams(arr, 0);
+                log.info("call client OK");
+            }
 
 		    client2.done();
 

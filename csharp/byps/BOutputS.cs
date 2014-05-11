@@ -9,8 +9,8 @@ namespace byps
     public class BOutputS : BOutputBin
     {
  
-        public BOutputS(BTransport transport, long negotiatedVersion, ByteOrder negotiatedByteOrder)
-            : base(transport, BMessageHeader.MAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder)
+        public BOutputS(BTransport transport, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder)
+            : base(transport, BMessageHeader.MAGIC_BINARY_STREAM, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder)
         {
         }
 

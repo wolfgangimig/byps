@@ -73,7 +73,6 @@ namespace bypstest
                 Assert.Fail(e.ToString());
             }
 
-            Thread.Sleep(40 * 1000);
             log.info(")TestPrimitiveTypes");
         }
 

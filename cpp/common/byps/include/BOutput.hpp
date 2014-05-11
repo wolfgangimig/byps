@@ -6,120 +6,124 @@
 
 namespace byps {
 
-BINLINE BOutput::BOutput(PTransport transport, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
-    : BIO(transport, BBinaryModel::MEDIUM(), negotiatedVersion, negotiatedByteOrder)
+  BINLINE BOutput::BOutput(PTransport transport, int32_t bversion, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
+    : BIO(transport, BBinaryModel::MEDIUM(), bversion, negotiatedVersion, negotiatedByteOrder)
     , nextPointer(0)
-{
+  {
     header.targetId = transport->targetId;
-}
+  }
 
-BINLINE BOutput::BOutput(PTransport transport, const BMessageHeader &responseHeader)
-    : BIO(transport, BBinaryModel::MEDIUM(), responseHeader.version, responseHeader.byteOrder)
+  BINLINE BOutput::BOutput(PTransport transport, const BMessageHeader &responseHeader)
+    : BIO(transport, BBinaryModel::MEDIUM(), responseHeader.bversion, responseHeader.version, responseHeader.byteOrder)
     , nextPointer(0)
-{
-	header = responseHeader;
+  {
+    header = responseHeader;
     header.targetId = transport->targetId;
-}
+  }
 
 
-BINLINE BOutput::~BOutput() {
-}
+  BINLINE BOutput::~BOutput() {
+  }
 
-BINLINE void BOutput::store(PSerializable ptr) {
+  BINLINE void BOutput::store(PSerializable ptr) {
     header.write(bbuf);
     (*this) & ptr;
-}
+  }
 
-BINLINE void BOutput::internalStoreObj(POBJECT pObj, bool, BSERIALIZER ser, BTYPEID typeId) {
+  BINLINE void BOutput::internalStoreObj(POBJECT pObj, bool, BSERIALIZER ser, BTYPEID typeId) {
 
     if (pObj != NULL) {
 
-        OBJMAP::iterator it = objMap.find(pObj.get());
-        if (it != objMap.end()) {
-            BPOINTER id = - (*it).second;
-            bbuf.serializePointer(id);
-        }
-        else {
-            BPOINTER id = ++nextPointer;
+      OBJMAP::iterator it = objMap.find(pObj.get());
+      if (it != objMap.end()) {
+        BPOINTER id = - (*it).second;
+        bbuf.serializePointer(id);
+      }
+      else {
+        BPOINTER id = ++nextPointer;
 
-            objMap.insert( OBJMAP::value_type(pObj.get(), id));
+        objMap.insert( OBJMAP::value_type(pObj.get(), id));
 
-            bbuf.serializePointer(id);
+        bbuf.serializePointer(id);
 
-            bbuf.serializeTypeId(typeId);
+        bbuf.serializeTypeId(typeId);
 
-            PSerializable NULLS;
-            ser(*this, pObj, NULLS, NULL);
-        }
+        PSerializable NULLS;
+        ser(*this, pObj, NULLS, NULL);
+      }
 
     }
     else {
-        // NULL-Reference
-        BPOINTER id = 0;
-        bbuf.serializePointer(id);
+      // NULL-Reference
+      BPOINTER id = 0;
+      bbuf.serializePointer(id);
     }
-}
+  }
 
-BINLINE void BOutput::internalStoreObjS(PSerializable pObjS, bool, BSERIALIZER ser, BTYPEID typeId) {
+  BINLINE void BOutput::internalStoreObjS(PSerializable pObjS, bool, BSERIALIZER ser, BTYPEID typeId) {
 
     if (pObjS != NULL) {
 
-        OBJMAP::iterator it = objMap.find(pObjS.get());
-        if (it != objMap.end()) {
-            BPOINTER id = - (*it).second;
-            bbuf.serializePointer(id);
-        }
-        else {
-            BPOINTER id = ++nextPointer;
+      OBJMAP::iterator it = objMap.find(pObjS.get());
+      if (it != objMap.end()) {
+        BPOINTER id = - (*it).second;
+        bbuf.serializePointer(id);
+      }
+      else {
+        BPOINTER id = ++nextPointer;
 
-            objMap.insert( OBJMAP::value_type(pObjS.get(), id));
+        objMap.insert( OBJMAP::value_type(pObjS.get(), id));
 
-            bbuf.serializePointer(id);
+        bbuf.serializePointer(id);
 
-            bbuf.serializeTypeId(typeId);
+        bbuf.serializeTypeId(typeId);
 
-            POBJECT NULLO;
-            ser(*this, NULLO, pObjS, NULL);
-        }
+        POBJECT NULLO;
+        ser(*this, NULLO, pObjS, NULL);
+      }
 
     }
     else {
-        // NULL-Reference
-        BPOINTER id = 0;
-        bbuf.serializePointer(id);
+      // NULL-Reference
+      BPOINTER id = 0;
+      bbuf.serializePointer(id);
     }
-}
+  }
 
-BINLINE PStreamRequest BOutput::createStreamRequest(PContentStream inputStream) {
-    PStreamRequest stream(new BStreamRequest());
-    stream->messageId = header.messageId;
-    stream->streamId = transport->wire->makeMessageId();
-    stream->strm = inputStream;
-    streams.push_back(stream);
+  BINLINE PContentStream BOutput::createStreamRequest(PContentStream stream) {
+    if (stream->getTargetId().isZero()) {
+      BTargetId targetId(transport->getConnectedServerId(),
+        header.messageId, 
+        transport->getWire()->makeMessageId());
+      stream->setTargetId(targetId);
+
+      streams.push_back(stream);
+    }
+
     return stream;
-}
+  }
 
-BINLINE PMessage BOutput::toMessage() {
+  BINLINE PMessage BOutput::toMessage() {
     PMessage msg(new BMessage(header, bbuf.getBytes(), streams));
     return msg;
-}
+  }
 
 
-BINLINE void BOutput::setException(const BException& bex) {
+  BINLINE void BOutput::setException(const BException& bex) {
 
-	bbuf.clear();
+    bbuf.clear();
 
-	header.error = bex.getCode();
-	header.write(bbuf);
+    header.error = bex.getCode();
+    header.write(bbuf);
 
-	BTYPEID typeId = BTYPEID_EXCEPTION;
-	BPOINTER id = ++nextPointer;
-	bbuf.serializePointer(id);
-	bbuf.serializeTypeId(typeId);
+    BTYPEID typeId = BTYPEID_EXCEPTION;
+    BPOINTER id = ++nextPointer;
+    bbuf.serializePointer(id);
+    bbuf.serializeTypeId(typeId);
 
-	BException& ex2 = const_cast<BException&>(bex);
-	*this & ex2;
-}
+    BException& ex2 = const_cast<BException&>(bex);
+    *this & ex2;
+  }
 
 }
 

@@ -1,13 +1,13 @@
 package byps.http;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
-import java.io.OutputStream;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,49 +19,46 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BMessage;
 import byps.BMessageHeader;
-import byps.BStreamRequest;
+import byps.BServerR;
+import byps.BTargetId;
 import byps.BWire;
 
 public class HWireServer extends BWire {
 
   private final HWriteResponseHelper writeHelper;
-  public final HActiveMessages activeMessages = new HActiveMessages();
+  private final HActiveMessages activeMessages;
+  private final ConcurrentHashMap<Long, Long> activeMessageIds = new ConcurrentHashMap<Long, Long>();
   private final static Log log = LogFactory.getLog(HWireServer.class);
-  private final File tempDir;
 
-  public HWireServer(HWriteResponseHelper writeHelper, File tempDir) {
+  public HWireServer(HActiveMessages activeMessages, HWriteResponseHelper writeHelper) {
     super(FLAG_DEFAULT);
     this.writeHelper = writeHelper;
-    activeMessages.init(tempDir);
-    
-    if (tempDir == null) {
-      String tempDirStr = System.getProperty("java.io.tmpdir");
-      if (tempDirStr != null && tempDirStr.length() != 0) {
-        tempDir = new File(tempDirStr);
-      }
-      else {
-        tempDir = new File(".");
-      }
-      tempDir = new File(tempDir, "byps");
-    }
-    this.tempDir = tempDir;
+    this.activeMessages = activeMessages;
   }
 
   public void done() {
     if (log.isDebugEnabled()) log.debug("done(");
-    activeMessages.done();
+    cancelAllMessages();
     if (log.isDebugEnabled()) log.debug(")done");
   }
+  
+  public void cancelMessage(long messageId) {
+    activeMessages.cancelMessage(messageId);
+    activeMessageIds.remove(messageId);
+  }
+
+  public void cancelAllMessages() {
+    ArrayList<Long> messageIds = new ArrayList<Long>(activeMessageIds.keySet());
+    for (Long messageId : messageIds) {
+      cancelMessage(messageId);
+    }
+  }
+
 
   private class MyIncomingInputStream extends BWire.InputStreamWrapper {
 
-    public MyIncomingInputStream(long messageId, long streamId) {
-      super(messageId, streamId);
-    }
-
-    @Override
-    public String toString() {
-      return "[" + messageId + "," + streamId + "]";
+    public MyIncomingInputStream(BTargetId targetId) {
+      super(targetId);
     }
 
     @Override
@@ -70,16 +67,24 @@ public class HWireServer extends BWire {
 
       BContentStream is = null;
       try {
-        is = activeMessages.getIncomingStream(messageId, streamId, HConstants.REQUEST_TIMEOUT_MILLIS);
-        if (log.isDebugEnabled()) log.debug("stream for messageId=" + messageId + ", streamId=" + streamId + ", is=" + is);
+        is = activeMessages.getIncomingStream(targetId);
+        if (log.isDebugEnabled()) log.debug("stream for targetId=" + targetId + ", is=" + is);
 
         if (is == null) {
           throw new IOException("Timeout while waiting for stream");
         }
+        
+        this.copyProperties(is);
+        
       }
-      catch (InterruptedException e) {
-        if (log.isDebugEnabled()) log.debug("interrupted " + e);
-        throw new InterruptedIOException("Interrupted");
+      catch (InterruptedIOException e) {
+        
+        // An interrupt occurs, if the cancel message is sent by the client.
+        // This message is sent, e.g. if the client runs in an error state 
+        // while putting a stream. Then, the client sends a cancel message
+        // that gives the server the chance to cleanup resources.
+        
+        throw e;
       }
 
       if (log.isDebugEnabled()) log.debug(")openStream=" + is);
@@ -87,46 +92,38 @@ public class HWireServer extends BWire {
     }
 
     @Override
-    public BContentStream cloneInputStream() throws IOException {
+    public BContentStream materialize() throws IOException {
       if (log.isDebugEnabled()) log.debug("cloneInputStream(");
       final BContentStream src = (BContentStream) ensureStream();
-      final BContentStream ret = src.cloneInputStream();
+      final BContentStream ret = src.materialize();
+      ret.copyProperties(this);
+      
+      // Reset stream IDs. 
+      // Otherwise the stream would not be sent, see BOutput.createStreamRequest.
+      ret.setTargetId(BTargetId.ZERO);
+
       if (log.isDebugEnabled()) log.debug(")cloneInputStream=" + ret);
       return ret;
     }
 
-    @Override
-    public long getContentLength() throws IOException {
-      BContentStream src = (BContentStream) ensureStream();
-      return src.getContentLength();
-    }
-
-    @Override
-    public String getContentType() throws IOException {
-      BContentStream src = (BContentStream) ensureStream();
-      return src.getContentType();
-    }
   }
 
   public void cleanup() {
-    if (log.isDebugEnabled()) log.debug("cleanup(");
-    activeMessages.cleanup(false);
-    if (log.isDebugEnabled()) log.debug(")cleanup");
   }
 
   @Override
-  public BContentStream getStream(long messageId, long streamId) throws IOException {
-    if (log.isDebugEnabled()) log.debug("getStream(messageId=" + messageId + ", streamId=" + streamId);
-    MyIncomingInputStream is = new MyIncomingInputStream(messageId, streamId);
+  public BContentStream getStream(BTargetId targetId) throws IOException {
+    if (log.isDebugEnabled()) log.debug("getStream(" + targetId);
+    MyIncomingInputStream is = new MyIncomingInputStream(targetId);
     if (log.isDebugEnabled()) log.debug(")getStream=" + is);
     return is;
   }
 
   @Override
-  public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
+  public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("putStreams(");
     try {
-      activeMessages.addOutgoingStreams(streamRequests);
+      activeMessages.addOutgoingStreams(streams);
     }
     catch (BException e) {
       // An exception is thrown, if the message has been canceled.
@@ -137,12 +134,10 @@ public class HWireServer extends BWire {
 
   private class AsyncMessageResponse implements BAsyncResult<BMessage> {
 
-    final boolean isAsync;
     final BMessageHeader header;
 
-    AsyncMessageResponse(BMessageHeader header, boolean isAsync) {
+    AsyncMessageResponse(BMessageHeader header) {
       this.header = header;
-      this.isAsync = isAsync;
     }
 
     @Override
@@ -155,7 +150,7 @@ public class HWireServer extends BWire {
           putStreams(msg.streams, null);
           buf = msg.buf;
         }
-        writeResponse(header.messageId, buf, e, isAsync);
+        writeResponse(header.messageId, buf, e);
       }
       catch (IOException ex) { // Tomcat: Client abort Exception
         if (log.isDebugEnabled()) log.debug("ClientAbortException");
@@ -189,8 +184,12 @@ public class HWireServer extends BWire {
     }
   };
 
-  private void writeResponse(Long messageId, ByteBuffer obuf, Throwable e, boolean isAsync) throws IOException {
-    if (log.isDebugEnabled()) log.debug("writeResponse(messageId=" + messageId + ", obuf=" + obuf + ", exception=" + e);
+  private void writeResponse(Long messageId, ByteBuffer obuf, Throwable e) throws IOException {
+    if (log.isDebugEnabled()) {
+      log.debug("writeResponse(messageId=" + messageId + ", obuf=" + obuf + ", exception=" + e);
+    }
+    
+    activeMessageIds.remove(messageId);
     HRequestContext rctxt = activeMessages.getAndRemoveRequestContext(messageId);
     if (log.isDebugEnabled()) log.debug("async context of messageId: " + rctxt);
     if (rctxt == null) {
@@ -199,7 +198,7 @@ public class HWireServer extends BWire {
       throw new IOException("Response already written.");
     }
     else {
-      writeHelper.writeResponse(obuf, e, (HttpServletResponse) rctxt.getResponse(), isAsync);
+      writeHelper.writeResponse(obuf, e, (HttpServletResponse) rctxt.getResponse(), rctxt.isAsync());
       rctxt.complete();
     }
     if (log.isDebugEnabled()) log.debug(")writeResponse");
@@ -208,9 +207,10 @@ public class HWireServer extends BWire {
   public BAsyncResult<BMessage> addMessage(final BMessageHeader header, HRequestContext rctxt, Thread workerThread) {
     if (log.isDebugEnabled()) log.debug("addMessage(" + rctxt + ", messageId=" + header.messageId);
 
-    BAsyncResult<BMessage> asyncResponse = new AsyncMessageResponse(header, rctxt.isAsync());
+    BAsyncResult<BMessage> asyncResponse = new AsyncMessageResponse(header);
     try {
       activeMessages.addMessage(header, rctxt, workerThread);
+      activeMessageIds.put(header.messageId, header.messageId);
     }
     catch (BException e) {
       try {
@@ -226,67 +226,10 @@ public class HWireServer extends BWire {
     if (log.isDebugEnabled()) log.debug(")addMessage=" + header.messageId);
     return asyncResponse;
   }
-
-  public void sendOutgoingStream(Long messageId, Long streamId, HttpServletResponse response) throws IOException {
-    if (log.isDebugEnabled()) log.debug("sendOutgoingStream(streamId=" + streamId + ", response=" + response);
-
-    BContentStream is = null;
-    OutputStream os = null;
-    try {
-      is = activeMessages.getOutgoingStream(messageId, streamId);
-      
-      // Before setting headers: check that the InputStream can be read.
-      byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
-      int len = is.read(buf);
-
-      final String contentType = is.getContentType();
-      response.setContentType(contentType);
-
-      final long contentLength = is.getContentLength();
-      if (contentLength >= 0) {
-        response.setHeader("Content-Length", Long.toString(contentLength));
-      }
-      
-      final String contentDisposition = is.getContentDisposition();
-      if (contentDisposition != null && contentDisposition.length() != 0) {
-        response.setHeader("Content-Disposition", contentDisposition);
-      }
-
-      os = response.getOutputStream();
-      while (len != -1) {
-        os.write(buf, 0, len);
-        len = is.read(buf);
-      }
-    }
-    catch (IOException e) {
-      throw e;
-    }
-    catch (Throwable e) {
-      throw new IOException("Read stream failed.", e);
-    }
-    finally {
-      if (log.isDebugEnabled()) log.debug("close response of outgoing stream, streamId=" + streamId);
-      if (is != null) try {
-        is.close();
-      }
-      catch (IOException ignored) {
-      }
-      if (os != null) try {
-        os.close();
-      }
-      catch (IOException ignored) {
-      }
-    }
-
-    if (log.isDebugEnabled()) log.debug(")sendOutgoingStream");
-  }
-
+  
   @Override
   public void send(BMessage msg, BAsyncResult<BMessage> asyncResult) {
     throw new IllegalStateException("BWireServer.send must not be called");
   }
 
-  public File getTempDir() {
-    return tempDir;
-  }
 }

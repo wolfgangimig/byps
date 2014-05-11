@@ -13,6 +13,7 @@ namespace byps {
     , remoteRegistry(remoteRegistry)
     , apiDesc(apiDesc)
     , protocol(PProtocol())
+    , connectedServerId(0)
     , negotiateActive(false)
   {
   }
@@ -23,11 +24,16 @@ namespace byps {
     , apiDesc(rhs.apiDesc)
     , protocol(rhs.protocol)
     , targetId(targetId)
+    , connectedServerId(rhs.targetId.getServerId())
     , negotiateActive(false)
   {
   }
 
   BINLINE BTransport::~BTransport() {
+  }
+
+  BINLINE int32_t BTransport::getConnectedServerId() {
+    return connectedServerId;
   }
 
   BINLINE POutput BTransport::getOutput() {
@@ -59,7 +65,8 @@ namespace byps {
 
   BINLINE void BTransport::setTargetId(BTargetId targetId) {
     byps_unique_lock lock(mtx);
-    targetId = targetId;
+    this->targetId = targetId;
+    this->connectedServerId = targetId.getServerId();
   }
 
   BINLINE PProtocol BTransport::getProtocol() {
@@ -138,6 +145,7 @@ namespace byps {
             byps_unique_lock lock(transport->mtx);
             transport->protocol = transport->createNegotiatedProtocol(nego);
             transport->targetId = nego.targetId;
+            transport->connectedServerId = nego.targetId.getServerId();
           }
 
           transport->internalAuthenticate(innerResult);
@@ -253,7 +261,7 @@ namespace byps {
 
     BMessageHeader header;
     header.messageId = wire->makeMessageId();
-    vector<PStreamRequest> streams;
+    vector<PContentStream> streams;
     PMessage msg(new BMessage(header, bytes, streams));
 
     wire->send(msg, outerResult);
@@ -293,8 +301,9 @@ namespace byps {
     }
 
     if (nego.protocols.find(BBinaryModel::MEDIUM().getProtocolId()) != string::npos) {
+      int32_t negotiatedBypsVersion = min(nego.bversion, BHEADER_BYPS_VERSION_CURRENT);
       BVERSION negotiatedVersion = min(nego.version, apiDesc->version);
-      protocol = PProtocol(new BProtocol(apiDesc, negotiatedVersion, nego.byteOrder));
+      protocol = PProtocol(new BProtocol(apiDesc, negotiatedBypsVersion, negotiatedVersion, nego.byteOrder));
       nego.protocols = BBinaryModel::MEDIUM().getProtocolId();
       nego.version = negotiatedVersion;
     }
@@ -480,6 +489,9 @@ namespace byps {
     PTransport transport;
   };
 
+
+  const unsigned RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+
   BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
 
     if (authentication) {
@@ -523,6 +535,7 @@ namespace byps {
 
   BINLINE void BTransport::setAuthentication(PAuthentication auth) {
     byps_unique_lock lock(mtx);
+
     authentication = auth;
     lastAuthenticationException = BException();
     lastAuthenticationTime = system_clock::time_point();

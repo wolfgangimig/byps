@@ -24,6 +24,7 @@ namespace byps {
 
     BTargetId getTargetId();
     void setTargetId(BTargetId targetId);
+    int32_t getConnectedServerId();
 
     PProtocol getProtocol();
 
@@ -47,16 +48,18 @@ namespace byps {
     PApiDescriptor apiDesc;
     PProtocol protocol;
     BTargetId targetId;
+    int32_t connectedServerId;
     PAuthentication authentication;
     byps_atomic<bool> negotiateActive;
-
     byps_mutex mtx;
 
     std::chrono::system_clock::time_point lastAuthenticationTime;
     std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
     BException lastAuthenticationException;
+
     void setAuthentication(PAuthentication auth);
     bool hasAuthentication();
+
     void assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult);
     void loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult);
     BTYPEID getObjectTypeId(PSerializable ser);

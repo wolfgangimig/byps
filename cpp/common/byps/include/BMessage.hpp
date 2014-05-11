@@ -7,7 +7,7 @@
 
 namespace byps {
 
-BINLINE BMessage::BMessage(const BMessageHeader& header, PBytes buf, const vector<PStreamRequest>& streams)
+BINLINE BMessage::BMessage(const BMessageHeader& header, PBytes buf, const vector<PContentStream>& streams)
     : header(header), buf(buf), streams(streams) {
 }
 

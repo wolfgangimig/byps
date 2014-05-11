@@ -8,7 +8,7 @@ namespace byps {
 
 class BProtocol {
 public:
-    BProtocol(PApiDescriptor apiDesc, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder);
+    BProtocol(PApiDescriptor apiDesc, int32_t negotiatedBypsVersion, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder);
     virtual ~BProtocol() {}
 
     virtual POutput getOutput(PTransport transport, const BMessageHeader& responseHeader);
@@ -18,9 +18,11 @@ public:
 protected:
 	PApiDescriptor apiDesc;
 
-    BVERSION m_nNegotiatedVersion;
+    int32_t negotiatedBypsVersion;
 
-    BByteOrder m_negotiatedByteOrder;
+    BVERSION negotiatedVersion;
+
+    BByteOrder negotiatedByteOrder;
 
 };
 

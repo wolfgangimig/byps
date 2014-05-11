@@ -1,12 +1,7 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Collection;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
@@ -15,10 +10,8 @@ import org.apache.commons.logging.LogFactory;
 import byps.BApiDescriptor;
 import byps.BClient;
 import byps.BServer;
-import byps.BServerRegistry;
 import byps.BTargetId;
 import byps.BTransportFactory;
-import byps.RemoteException;
 
 /**
  * This class represents a session.
@@ -37,7 +30,7 @@ public abstract class HSession
 {
 
   protected HttpSession httpSess;
-  protected final BServerRegistry serverRegistry;
+  protected final HServerContext serverContext;
   protected final HWriteResponseHelper writeHelper;
   protected HWireServer wireServer;
   protected HWireClientR wireClientR;
@@ -52,11 +45,11 @@ public abstract class HSession
    * @param serverRegistry Registry for BStub objects of all subscribers.
    * @param listener Listener for events triggered during processing.
    */
-  public HSession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry serverRegistry, HServerListener listener) {
+  public HSession(HttpSession hsess, String remoteUser, HServerContext serverContext) {
     if (log.isDebugEnabled())
       log.debug("HSession(");
     this.httpSess = hsess;
-    this.serverRegistry = serverRegistry;
+    this.serverContext = serverContext;
     
     this.remoteUser = remoteUser;
     this.defaultInactiveSeconds = hsess.getMaxInactiveInterval();
@@ -67,9 +60,9 @@ public abstract class HSession
       hsess.setMaxInactiveInterval(HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
     }
     
-    writeHelper = new HWriteResponseHelper(listener);
+    writeHelper = new HWriteResponseHelper(serverContext.getListener());
 
-    wireServer = new HWireServer(writeHelper, tempDir);
+    wireServer = new HWireServer(serverContext.getActiveMessages(), writeHelper);
 
     wireClientR = new HWireClientR(wireServer);
 
@@ -80,24 +73,6 @@ public abstract class HSession
     if (log.isDebugEnabled()) log.debug(")HSession");
   }
 
-  /**
-   * Construtor
-   * @param hsess HTTP session object
-   * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser()
-   * @param tempDir Temporary directory for storing streams.
-   * @param stubRegistry Registry for BStub objects of all subscribers.
-   */
-  public HSession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry stubRegistry) {
-    this(hsess, remoteUser, tempDir, stubRegistry,
-        new HServerListener() {
-          public boolean onBeforeWriteHttpResponse(ByteBuffer obuf, Throwable e, HttpServletResponse resp, boolean isAsync) throws IOException {
-            return false;
-          }
-          public void onAfterWriteHttpResponse(int nbOfBytesWritten) {
-          }
-    });
-  }
-  
   public void done() {
     if (log.isDebugEnabled()) log.debug("done(");
 
@@ -133,7 +108,7 @@ public abstract class HSession
   
   protected BTransportFactory getTransportFactory(BApiDescriptor apiDesc) {
     BTransportFactory transportFactory = new HTransportFactoryServer(
-        apiDesc, wireServer, wireClientR, serverRegistry);
+        apiDesc, wireServer, wireClientR, serverContext.getServerRegistry());
     return transportFactory;
   }
 
@@ -142,10 +117,10 @@ public abstract class HSession
     wireClientR.cleanup();
   }
   
-  public Collection<BClient> getForwardClientsToOtherServers() throws RemoteException {
-    return serverRegistry.getForwardClientsToOtherServers();
-  }
-
+//  public Collection<BClient> getForwardClientsToOtherServers() throws RemoteException {
+//    return serverContext.getServerRegistry().getForwardClientsToOtherServers();
+//  } unused?
+//
   public void setTargetId(BTargetId v) {
     getServer().setTargetId(v);
   }

@@ -346,14 +346,26 @@ byps.BSerializerMap = function(valueTypeId) {
 byps.BSerializer_15 = function() {
 
 	this.write = function(obj, bout) {
+		
 	};
 	
 	this.read = function(obj, bin) {
 	
+		var serverId = bin.transport.targetId.serverId;
+		var messageId = bin.header.messageId;
+		var streamId = obj.streamId;
+		
+		var targetIdStr = obj.targetId;
+		if (targetIdStr) {
+			var targetId = new byps.BTargetId(targetIdStr);
+			serverId = targetId.serverId;
+			messageId = targetId.getMessageId();
+			streamId = targetId.getStreamId();
+		}
+		
 		var url = bin.transport.wire.url;
 		url += (url.indexOf('?') != url.length - 1) ? '?' : '&';
-		obj.url = url + "messageid=" + bin.header.messageId + "&streamid=" + obj.streamId;
-		return obj;
+		obj.url = url + "serverid=" + serverId + "&messageid=" + messageId + "&streamid=" + streamId;
 	
 		return obj;
 	};
@@ -395,7 +407,9 @@ byps.BSerializerRemote = function(clazz) {
 
 	this.read = function(obj, bin) {
 		if (obj.constructor !== Object) return obj;
-		var transport = new byps.BTransport(bin.transport.apiDesc, bin.transport.wire, obj.targetId);
+		var targetIdStr = obj.targetId;
+		var targetId = new byps.BTargetId(targetIdStr);
+		var transport = byps.createTransportForRemote(bin.transport, targetId);
 		obj = new clazz(transport);
 		return obj;
 	};
@@ -452,22 +466,51 @@ byps.BApiDescriptor = function(name, basePackage, version, uniqueObjects, regist
 	this.registry = registry;
 };
 
-// ------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
+
+byps.BTargetId = function(str) {
+	
+	if (str) {
+		var arr = str.split(".");
+		this.serverId = arr[0];
+		this.v1 = arr[1] + ".";
+		this.v2 = arr[2] + ".";
+	}
+	else {
+		this.serverId = 0;
+		this.v1 = "0.";
+		this.v2 = "0.";
+	}
+	
+	this.getStreamId = function() { 
+		return this.v2;
+	};
+	this.getMessageId = function() {
+		return this.v1;
+	};
+	
+	this.toString = function() {
+		var str = this.serverId + "." + this.v1 + this.v2;
+		return str;
+	};
+};
+
+//------------------------------------------------------------------------------------------------
 
 byps.BNegotiate = function(apiDesc) {
 	this.JSON = "J";
 
 	this.protocols = this.JSON;
 	this.version = apiDesc.version;
-	this.targetId = "";
+	this.targetId = new byps.BTargetId();
 
 	this.toArray = function() {
-		return [ "N", "J", this.version, "_", this.targetId ];
+		return [ "N", "J", this.version, "_", this.targetId.toString() ];
 	};
 
 	this.fromArray = function(arr) {
 		if (!arr || arr.length < 5 || arr[0] != "N") throw new byps.BException(byps.BException_CORRUPT, "Invalid negotiate message.");
-		this.targetId = arr[4];
+		this.targetId = new byps.BTargetId(arr[4]);
 	};
 };
 
@@ -511,7 +554,7 @@ byps.BMessageHeader = function(messageId_or_rhs) {
 
 	this.error = 0;
 	this.flags = 0;
-	this.targetId = "";
+	this.targetId = null;
 	this.messageId = "";
 
 	if (typeof messageId_or_rhs == 'string') {
@@ -785,7 +828,6 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 
 	this.apiDesc = apiDesc;
 	this.wire = wire;
-	this.targetId = targetId || "";
 
 	this._authentication = null;
 	this._lastAuthenticationTime = 0;
@@ -1002,7 +1044,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 				else {
 					var arr = JSON.parse(responseMessage.jsonText);
 					nego.fromArray(arr);
-					me.targetId = nego.targetId;
+					me.setTargetId(nego.targetId);
 				}
 			}
 			catch (ex2) {
@@ -1137,6 +1179,12 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	};
 };
 
+byps.createTransportForRemote = function(transport, targetId) {
+	var t = new byps.BTransport(transport.apiDesc, transport.wire, targetId);
+	t.connectedToServerId = transport.connectedToServerId;
+	return t;
+};
+
 // ------------------------------------------------------------------------------------------------
 
 byps.BInputOutput = function(transport, header, jsonText) {
@@ -1144,7 +1192,7 @@ byps.BInputOutput = function(transport, header, jsonText) {
 	this.transport = transport;
 	this.registry = transport.apiDesc.registry;
 	this.header = header || new byps.BMessageHeader(transport.wire.makeMessageId());
-	this.header.targetId = transport.targetId;
+	this.header.targetId = transport.targetId.toString();
 
 	this.store = function(root) {
 		this._root = root;
@@ -1509,7 +1557,7 @@ byps.BClient_subclass.prototype = new byps.BClient();
 byps.BTransportFactory = function(apiDesc, wire, nbOfServerRConns) {
 
 	this._nbOfServerRConns = nbOfServerRConns;
-	this._transport = new byps.BTransport(apiDesc, wire, null);
+	this._transport = new byps.BTransport(apiDesc, wire, new byps.BTargetId());
 
 	this.createClientTransport = function() {
 		return this._transport;

@@ -10,9 +10,9 @@ namespace byps
     {
         public readonly BMessageHeader header;
         public readonly ByteBuffer buf;
-        public readonly List<BStreamRequest> streams;
+        public readonly List<BContentStream> streams;
 
-        public BMessage(BMessageHeader header, ByteBuffer buf, List<BStreamRequest> streams)
+        public BMessage(BMessageHeader header, ByteBuffer buf, List<BContentStream> streams)
         {
             this.header = header;
 		    this.buf = buf;

@@ -1,7 +1,5 @@
 package byps.test.servlet;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import java.io.File;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
@@ -9,8 +7,8 @@ import org.apache.commons.logging.LogFactory;
 
 import byps.BApiDescriptor;
 import byps.BServer;
-import byps.BServerRegistry;
 import byps.BTransportFactory;
+import byps.http.HServerContext;
 import byps.http.HSession;
 import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.BRegistry_Testser;
@@ -35,8 +33,8 @@ public class MySession extends HSession {
 	 */
 	public static volatile boolean useAuthentication = false;
 
-	public MySession(HttpSession hsess, String remoteUser, File tempDir, BServerRegistry stubRegistry) {
-		super(hsess, remoteUser, tempDir, stubRegistry);
+	public MySession(HttpSession hsess, String remoteUser, HServerContext serverContext) {
+		super(hsess, remoteUser, serverContext);
 		
 		if (log.isDebugEnabled()) log.debug("MySession(");
 		
@@ -76,7 +74,7 @@ public class MySession extends HSession {
 		server.addRemote(new MyRemoteConstants());
 		server.addRemote(new MyRemoteWithAuthentication(this));
 
-		myRemoteServerCtrl.setServerRegistry(stubRegistry); 
+		myRemoteServerCtrl.setServerRegistry(serverContext.getServerRegistry()); 
 		server.addRemote(myRemoteServerCtrl);
 		
     if (log.isDebugEnabled()) log.debug(")MySession");

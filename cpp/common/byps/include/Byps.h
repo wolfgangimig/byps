@@ -58,7 +58,8 @@ class BByteOrder;
 class BBytes;
 class BClient;
 class BContentStream;
-class BContentStreamFile;
+class BContentStreamWrapper;
+class BFile;
 class BException;
 class BInput;
 class BIO;
@@ -131,7 +132,7 @@ typedef byps_ptr<void> POBJECT;
 typedef void (*BSERIALIZER)(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 
 typedef byps_ptr<BContentStream> PContentStream;
-typedef byps_ptr<BContentStreamFile> PContentStreamFile;
+typedef byps_ptr<BContentStreamWrapper> PContentStreamWrapper;
 
 }
 
@@ -178,5 +179,6 @@ typedef byps_ptr<BContentStreamFile> PContentStreamFile;
 #include "BLostConnectionHandler.h"
 #include "BDateTime.h"
 #include "BValueClass.h"
+#include "BFile.h"
 
 #endif

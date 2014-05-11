@@ -6,11 +6,11 @@
 
 namespace byps {
 
-BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
+BINLINE BIO::BIO(PTransport transport, const BBinaryModel& bmodel, int32_t bversion, BVERSION negotiatedVersion, BByteOrder negotiatedByteOrder)
     : transport(transport)
     , registry(transport->getApiDesc()->getRegistry(bmodel))
     , is_loading(false)
-    , header(BMAGIC_BINARY_STREAM, negotiatedVersion, negotiatedByteOrder, transport->getWire()->makeMessageId())
+    , header(BMAGIC_BINARY_STREAM, bversion, negotiatedVersion, negotiatedByteOrder, transport->getWire()->makeMessageId())
     , bbuf(bmodel, negotiatedByteOrder) {
 
 }
@@ -74,8 +74,8 @@ BINLINE void BIO::operator&(PBytes& ptr) {
 	if (is_loading) ptr = byps_static_ptr_cast<BBytes>(pObj);
 }
  
-BINLINE PStreamRequest BIO::createStreamRequest(PContentStream ) {
-	return PStreamRequest();
+BINLINE PContentStream BIO::createStreamRequest(PContentStream ) {
+	return PContentStream();
 }
 
 BINLINE void BIO::serializeObjS(PSerializable& pObjS) {

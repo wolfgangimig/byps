@@ -11,7 +11,7 @@ public class BProtocolJson extends BProtocol {
 	public static final BBinaryModel BINARY_MODEL = BBinaryModel.JSON;
 
 	public BProtocolJson(BApiDescriptor apiDesc) {
-		super(apiDesc, apiDesc.version, null);
+		super(apiDesc, BMessageHeader.BYPS_VERSION_CURRENT, apiDesc.version, null);
 	}
 
 	public BOutput getOutput(BTransport transport, BMessageHeader responseHeader) throws BException {

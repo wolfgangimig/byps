@@ -21,14 +21,14 @@ void AllTests_run(void *app) {
     BLogger log("AllTests");
     log.debug() << L"AllTest_run(";
 
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 100; i++) {
 		cout << "loop " << (i+1) << endl;
 		TestSuite suite;
 
-        suite.add(TestRemoteWithAuthentication_create(app));
-        suite.add(TestRemotePrimitiveTypes_create(app));
-        suite.add(TestRemoteServerR_create(app));
         suite.add(TestRemoteStreams_create(app));
+        suite.add(TestRemotePrimitiveTypes_create(app));
+        suite.add(TestRemoteWithAuthentication_create(app));
+        suite.add(TestRemoteServerR_create(app));
         suite.add(TestRemoteConstants_create(app));
         suite.add(TestRemoteEnums_create(app));
         suite.add(TestRemoteInlineInstance_create(app));

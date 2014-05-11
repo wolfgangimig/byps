@@ -19,7 +19,7 @@ BINLINE void BWire::sendR(const PMessage& , PAsyncResult ) {
 
 }
 
-BINLINE PContentStream BWire::getStream(int64_t , int64_t ) {
+BINLINE PContentStream BWire::getStream(const BTargetId&) {
 	return PContentStream();
 }
 

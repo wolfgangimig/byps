@@ -28,8 +28,8 @@ import byps.BExceptionC;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BNegotiate;
-import byps.BStreamRequest;
 import byps.BSyncResult;
+import byps.BTargetId;
 import byps.BTestAdapter;
 import byps.BWire;
 import byps.http.client.HHttpClient;
@@ -251,9 +251,9 @@ public class HWireClient extends BWire {
   }
 
   @Override
-  public void putStreams(List<BStreamRequest> streamRequests, BAsyncResult<BMessage> asyncResult) {
+  public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
     try {
-      for (BStreamRequest stream : streamRequests) {
+      for (BContentStream stream : streams) {
         RequestToCancel req = createRequestForPutStream(stream, asyncResult);
         executeRequest(req);
       }
@@ -344,7 +344,7 @@ public class HWireClient extends BWire {
 
       // Create requests for each stream
       BAsyncResult<BMessage> outerResult = new AsyncResultAfterAllRequests(msg.header.messageId, asyncSendMessage, nbOfStreams);
-      for (BStreamRequest stream : msg.streams) {
+      for (BContentStream stream : msg.streams) {
         RequestToCancel streamRequest = createRequestForPutStream(stream, outerResult);
         requests.add(streamRequest);
       }
@@ -430,16 +430,16 @@ public class HWireClient extends BWire {
     return requestToCancel;
   }
 
-  protected RequestToCancel createRequestForPutStream(BStreamRequest streamRequest, BAsyncResult<BMessage> asyncResult) {
-    if (log.isDebugEnabled()) log.debug("createRequestForPutStream(" + streamRequest);
+  protected RequestToCancel createRequestForPutStream(BContentStream stream, BAsyncResult<BMessage> asyncResult) {
+    if (log.isDebugEnabled()) log.debug("createRequestForPutStream(" + stream);
 
-    final long messageId = streamRequest.messageId;
-    final long streamId = streamRequest.streamId;
+    final long messageId = stream.getTargetId().getMessageId();
+    final long streamId = stream.getTargetId().getStreamId();
     StringBuilder destUrl = new StringBuilder(surl);
-    destUrl.append("?messageid=").append(messageId).append("&streamid=").append(streamId);
+    destUrl.append("?&messageid=").append(messageId).append("&streamid=").append(streamId);
 
     final RequestToCancel requestToCancel = new RequestToCancel(messageId, streamId, 0L, asyncResult);
-    final HHttpRequest httpRequest = httpClient.putStream(destUrl.toString(), streamRequest.strm, requestToCancel);
+    final HHttpRequest httpRequest = httpClient.putStream(destUrl.toString(), stream, requestToCancel);
 
     requestToCancel.setHttpRequest(httpRequest);
     addRequest(requestToCancel);
@@ -448,11 +448,16 @@ public class HWireClient extends BWire {
     return requestToCancel;
   }
 
-  protected RequestToCancel createRequestForGetStream(long messageId, long streamId, final BAsyncResult<BContentStream> asyncResult) {
-    if (log.isDebugEnabled()) log.debug("createRequestForPutStream(messageId=" + messageId + ", streamId=" + streamId);
+  protected RequestToCancel createRequestForGetStream(final BTargetId targetId, final BAsyncResult<BContentStream> asyncResult) {
+    if (log.isDebugEnabled()) log.debug("createRequestForGetStream(" + targetId);
 
+    final long messageId = targetId.getMessageId();
+    final long streamId = targetId.getStreamId();
+    
     StringBuilder destUrl = new StringBuilder(surl);
-    destUrl.append("?messageid=").append(messageId).append("&streamid=").append(streamId);
+    destUrl.append("?").append("serverid=").append(targetId.serverId)
+      .append("&messageid=").append(messageId)
+      .append("&streamid=").append(streamId);
 
     final RequestToCancel requestToCancel = new RequestToCancel(messageId, streamId, 0L, null);
     final HHttpRequest httpRequest = httpClient.getStream(destUrl.toString(), new BAsyncResult<BContentStream>() {
@@ -465,7 +470,7 @@ public class HWireClient extends BWire {
     requestToCancel.setHttpRequest(httpRequest);
     addRequest(requestToCancel);
 
-    if (log.isDebugEnabled()) log.debug(")createRequestForPutStream=" + requestToCancel);
+    if (log.isDebugEnabled()) log.debug(")createRequestForGetStream=" + requestToCancel);
     return requestToCancel;
   }
 
@@ -489,7 +494,6 @@ public class HWireClient extends BWire {
     final ERequestDirection requestDirection;
     final long messageId;
     final long streamId;
-    final BStreamRequest streamRequest;
     final long cancelMessageId;
     final BAsyncResult<BMessage> asyncResult;
     final AtomicBoolean isOpen = new AtomicBoolean(true);
@@ -500,7 +504,6 @@ public class HWireClient extends BWire {
       this.requestDirection = ERequestDirection.FORWARD;
       this.messageId = messageId;
       this.streamId = streamId;
-      this.streamRequest = null;
       this.cancelMessageId = cancelMessageId;
       this.timeoutSecondsRequest = 0;
       this.asyncResult = asyncResult;
@@ -568,7 +571,6 @@ public class HWireClient extends BWire {
     public String toString() {
       StringBuilder sbuf = new StringBuilder();
       sbuf.append("[").append(messageId);
-      if (streamRequest != null) sbuf.append(",streamId=").append(streamRequest.streamId);
       if (cancelMessageId != 0) sbuf.append(",cancelMessageId=").append(cancelMessageId);
       sbuf.append(",httpRequest=").append(System.identityHashCode(httpRequest));
       sbuf.append("]");
@@ -616,22 +618,16 @@ public class HWireClient extends BWire {
     volatile HttpURLConnection conn;
     volatile Throwable ex;
 
-    public MyInputStream(long messageId, long streamId) {
-      super(messageId, streamId);
+    public MyInputStream(BTargetId targetId) {
+      super(targetId);
     }
 
     @Override
     public void setAsyncResult(BContentStream stream, Throwable e) {
       this.ex = e;
       if (e == null) {
-        try {
-          this.innerStream = stream;
-          this.contentType = stream.getContentType();
-          this.contentLength = stream.getContentLength();
-        }
-        catch (IOException e1) {
-          this.ex = e1;
-        }
+        this.innerStream = stream;
+        this.copyProperties(stream);
       }
     }
 
@@ -725,7 +721,7 @@ public class HWireClient extends BWire {
 
     protected void internalOpenStream(BAsyncResult<BContentStream> asyncResult) throws IOException {
       if (log.isDebugEnabled()) log.debug("internalOpenStream(");
-      RequestToCancel requestToCancel = createRequestForGetStream(messageId, streamId, asyncResult);
+      RequestToCancel requestToCancel = createRequestForGetStream(targetId, asyncResult);
       executeRequest(requestToCancel);
       if (log.isDebugEnabled()) log.debug(")internalOpenStream");
     }
@@ -735,23 +731,12 @@ public class HWireClient extends BWire {
       super.close();
     }
 
-    @Override
-    public long getContentLength() throws IOException {
-      ensureStream();
-      return contentLength;
-    }
-
-    @Override
-    public String getContentType() throws IOException {
-      ensureStream();
-      return contentType;
-    }
   }
 
   @Override
-  public BContentStream getStream(long messageId, long strmId) throws IOException {
-    if (log.isDebugEnabled()) log.debug("getStream(messageId=" + messageId + ", streamId=" + strmId);
-    BContentStream is = new MyInputStream(messageId, strmId);
+  public BContentStream getStream(BTargetId targetId) throws IOException {
+    if (log.isDebugEnabled()) log.debug("getStream(" + targetId);
+    BContentStream is = new MyInputStream(targetId);
     if (log.isDebugEnabled()) log.debug(")getStream=" + is);
     return is;
   }
@@ -773,11 +758,6 @@ public class HWireClient extends BWire {
     }
 
     if (log.isDebugEnabled()) log.debug(")internalCancelAllRequests");
-  }
-
-  @Override
-  public void cancelAllRequests() {
-    internalCancelAllRequests(MESSAGEID_CANCEL_ALL_REQUESTS);
   }
 
   @Override

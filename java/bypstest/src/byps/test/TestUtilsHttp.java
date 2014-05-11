@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 
 import byps.BApiDescriptor;
 import byps.BBinaryModel;
+import byps.BMessageHeader;
 import byps.BProtocolJson;
 import byps.BRegistry;
 import byps.BSyncResult;
@@ -37,14 +38,14 @@ public class TestUtilsHttp {
 	private static Executor tpool = Executors.newCachedThreadPool();
 	
   public static BClient_Testser createClient() throws RemoteException {
-    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, 1);
+    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, 1);
   }
   
   public static BClient_Testser createClient(int nbOfReverseRequests) throws RemoteException {
-    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BApiDescriptor_Testser.VERSION, nbOfReverseRequests);
+    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, nbOfReverseRequests);
   }
   
-	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, long appVersion, int nbOfReverseRequests) throws RemoteException {
+	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, int bypsVersion, long appVersion, int nbOfReverseRequests) throws RemoteException {
 		
 		BRegistry registry = null;
 		
@@ -99,7 +100,7 @@ public class TestUtilsHttp {
 	public static ArrayList<InputStream> makeTestStreams() throws IOException {
 		log.info("makeTestStreams(");
 		ArrayList<InputStream> ret = new ArrayList<InputStream>();
-    ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, false));
+    ret.add(new TestUtils.MyContentStream(11, true));
 		ret.add(new TestUtils.MyContentStream(0, true));
 		ret.add(new TestUtils.MyContentStream(1, true));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER-1, true));
@@ -112,6 +113,7 @@ public class TestUtilsHttp {
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER, false));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1, false));
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2, false));
+    ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, false));
 		if (TestUtils.TEST_LARGE_STREAMS) {
 			ret.add(new TestUtils.MyContentStream(0x100000000L, false));
 		}

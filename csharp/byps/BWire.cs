@@ -59,11 +59,11 @@ namespace byps
             return mid;
         }
 
-        public virtual void putStreams(List<BStreamRequest> streamRequests, BAsyncResultIF<BMessage> asyncResult)
+        public virtual void putStreams(List<BContentStream> streamRequests, BAsyncResultIF<BMessage> asyncResult)
         {
         }
 
-        public virtual Stream getStream(long messageId, long streamId)
+        public virtual BContentStream getStream(BTargetId targetId)
         {
             return null;
         }
@@ -116,12 +116,9 @@ namespace byps
 
         public class InputStreamWrapper : BContentStreamWrapper
         {
-		    protected long messageId;
-    	    protected long streamId;
-    	
-    	    public InputStreamWrapper(long messageId, long streamId) {
-    		    this.messageId = messageId;
-    		    this.streamId = streamId;
+            public InputStreamWrapper(BTargetId targetId)
+            {
+                this.TargetId = targetId;
     	    }
 
         }

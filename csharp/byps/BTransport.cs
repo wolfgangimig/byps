@@ -17,6 +17,8 @@ namespace byps
 
         private BTargetId targetId;
 
+        private int connectedServerId;
+
         private BProtocol protocol;
 
         internal BAuthentication authentication;
@@ -35,6 +37,9 @@ namespace byps
             this.wire = rhs.wire;
             this.targetId = targetId;
             this.protocol = rhs.getProtocol();
+
+            // Still connected to the server given by rhs.
+            this.connectedServerId = rhs.targetId.serverId;
         }
 
         public void setProtocol(BProtocol protocol) {
@@ -52,11 +57,12 @@ namespace byps
             }
 	    }
 
-        public void setTargetId(BTargetId TargetId)
+        public void setTargetId(BTargetId targetId)
         {
             lock (this)
             {
-                this.targetId = TargetId;
+                this.targetId = targetId;
+                this.connectedServerId = targetId.serverId;
             }
         }
 
@@ -65,6 +71,14 @@ namespace byps
             lock (this)
             {
                 return targetId;
+            }
+        }
+
+        public int getConnectedServerId()
+        {
+            lock (this)
+            {
+                return connectedServerId;
             }
         }
 
@@ -409,7 +423,7 @@ namespace byps
                         lock (transport)
                         {
                             transport.protocol = transport.createNegotiatedProtocol(nego);
-                            transport.targetId = nego.targetId;
+                            transport.setTargetId(nego.targetId);
                         }
                         if (log.isDebugEnabled()) log.debug("protocol=" + transport.protocol + ", targetId=" + transport.targetId);
 
@@ -469,7 +483,7 @@ namespace byps
 			
 			    lock(this) {
 				    this.protocol = ret = createNegotiatedProtocol(nego);
-				    this.targetId = targetId;
+				    this.setTargetId(targetId);
 			    }
                 if (log.isDebugEnabled()) log.debug("protocol=" + this.protocol + ", targetId=" + this.targetId);
 			
@@ -496,12 +510,13 @@ namespace byps
 		    BProtocol protocol = null;
 		
 		    if (nego.protocols.IndexOf(BNegotiate.BINARY_STREAM) == 0) {
-			    long negotiatedVersion = Math.Min(apiDesc.version, nego.version);
+                int negotiatedBypsVersion = Math.Min(BMessageHeader.BYPS_VERSION_CURRENT, nego.bversion);
+                long negotiatedVersion = Math.Min(apiDesc.version, nego.version);
 			    nego.protocols = BNegotiate.BINARY_STREAM;
                 if (nego.byteOrder == ByteOrder.UNDEFINED) nego.byteOrder = ByteOrder.LITTLE_ENDIAN;
                 if (nego.byteOrder != ByteOrder.LITTLE_ENDIAN) throw new BException(BExceptionC.CORRUPT, "Protocol requires unsupported byte order BIG_ENDIAN");
 			    nego.version = negotiatedVersion;
-			    protocol = new BProtocolS(apiDesc, negotiatedVersion, nego.byteOrder);
+                protocol = new BProtocolS(apiDesc, negotiatedBypsVersion, negotiatedVersion, nego.byteOrder);
 		    }
 		    else {
 			    throw new BException(BExceptionC.CORRUPT, "Protocol negotiation failed.");

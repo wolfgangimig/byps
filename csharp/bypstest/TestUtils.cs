@@ -33,7 +33,7 @@ namespace bypstest
                     false);
 
 
-            BProtocol proto = new BProtocolS(apiDesc, 0, ByteOrder.LITTLE_ENDIAN);
+            BProtocol proto = new BProtocolS(apiDesc, 1, 0, ByteOrder.LITTLE_ENDIAN);
 
             BTransport transport = new BTransport(apiDesc, wire, null);
             transport.setProtocol(proto);
@@ -50,21 +50,22 @@ namespace bypstest
             {
             }
 
-            public override void putStreams(List<BStreamRequest> streamRequests, BAsyncResultIF<BMessage> asyncResult)
+            public override void putStreams(List<BContentStream> streams, BAsyncResultIF<BMessage> asyncResult)
             {
- 			    if (streamRequests == null) return;
-			
-			    foreach (BStreamRequest streamRequest in streamRequests) {
+                if (streams == null) return;
+
+                foreach (BContentStream stream in streams)
+                {
 				    ByteBuffer buf;
 				    try {
-					    buf = bufferFromStream(streamRequest.strm, false);
+                        buf = bufferFromStream(stream, false);
                         Dictionary<long, ByteBuffer> map = null;
-                        if (mapStreams.TryGetValue(streamRequest.messageId, out map)) 
+                        if (mapStreams.TryGetValue(stream.TargetId.getMessageId(), out map)) 
                         {
                             map = new Dictionary<long, ByteBuffer>();
-                            mapStreams[streamRequest.messageId] = map;
+                            mapStreams[stream.TargetId.getMessageId()] = map;
 					    }
-                        map[streamRequest.streamId] = buf;
+                        map[stream.TargetId.getStreamId()] = buf;
 				    } catch (IOException e) {
 					    asyncResult.setAsyncResult(null, e);
 					    break;
@@ -72,13 +73,13 @@ namespace bypstest
 			    }
             }
 
-            public override Stream getStream(long messageId, long streamId)
+            public override BContentStream getStream(BTargetId targetId)
             {
                 Dictionary<long, ByteBuffer> map = null;
-                if (!mapStreams.TryGetValue(messageId, out map)) throw new IOException("Stream not found.");
+                if (!mapStreams.TryGetValue(targetId.getMessageId(), out map)) throw new IOException("Stream not found.");
                 ByteBuffer buf = null;
-                if (!map.TryGetValue(streamId, out buf)) throw new IOException("Stream not found.");
-                return new MemoryStream(buf.array(), buf.position(), buf.remaining());
+                if (!map.TryGetValue(targetId.getStreamId(), out buf)) throw new IOException("Stream not found.");
+                return new BContentStreamWrapper(new MemoryStream(buf.array(), buf.position(), buf.remaining()));
             }
         }
 

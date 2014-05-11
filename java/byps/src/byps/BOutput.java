@@ -17,10 +17,10 @@ public abstract class BOutput {
 	public final BTransport transport;
 	public final BRegistry registry;
 	
-	public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
+	public BOutput(BTransport transport, BRegistry registry, int streamHeaderMagic, int negotiatedBypsVersion, long negotiatedVersion, ByteOrder negotiatedByteOrder) {
 		super();
 		this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
-		this.header = new BMessageHeader(streamHeaderMagic, negotiatedVersion, negotiatedByteOrder, transport.getWire().makeMessageId());
+		this.header = new BMessageHeader(streamHeaderMagic, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder, transport.getWire().makeMessageId());
 		this.header.targetId = transport.getTargetId();
 		this.transport = transport;
 		this.registry = registry;
@@ -70,9 +70,9 @@ public abstract class BOutput {
 		
 		// Alle Streams schlieﬂen. Sie werden nicht gesendet.
 		if (streams != null) {
-			for (BStreamRequest streamRequest : streams) {
+			for (BContentStream stream : streams) {
 				try { 
-					streamRequest.strm.close(); 
+				  stream.close(); 
 				} catch (IOException ignored) {}
 			}
 			streams = null;
@@ -91,17 +91,35 @@ public abstract class BOutput {
 	
 	protected abstract void internalStore(Object bserializable) throws BException;
 	
-	BStreamRequest createStreamRequest(InputStream strm) throws BException {
-		if (streams == null) streams = new ArrayList<BStreamRequest>();
-		BStreamRequest streamRequest = new BStreamRequest();
-		streamRequest.messageId = header.messageId;
-		streamRequest.streamId = transport.getWire().makeMessageId();
-		streamRequest.strm = strm;
-		streams.add(streamRequest);
-		return streamRequest;
+	BContentStream createStreamRequest(InputStream strm) throws BException {
+		if (streams == null) streams = new ArrayList<BContentStream>();
+		BContentStream bstrm = null;
+		
+		if (strm instanceof BContentStream) {
+		  bstrm = (BContentStream)strm;
+		}
+		else {
+		  bstrm = new BContentStreamWrapper(strm);
+		}
+		
+		// If the stream has already a streamId, it has been received
+		// from the server. In this case, the application obviously
+		// wants to forward the stream to another client. Thus 
+		// we do not have to upload the stream.
+		
+		if (bstrm.getTargetId().isZero()) {
+		  BTargetId targetId = new BTargetId(
+		      transport.getConnectedServerId(),
+		      header.messageId,
+		      transport.getWire().makeMessageId());
+		  bstrm.setTargetId(targetId);
+      streams.add(bstrm);
+		}
+		
+		return bstrm;
 	}
 	
 	protected BObjMap objMap;
-	protected List<BStreamRequest> streams;
+	protected List<BContentStream> streams;
 
 }

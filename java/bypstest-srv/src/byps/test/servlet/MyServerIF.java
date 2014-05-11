@@ -88,7 +88,7 @@ public class MyServerIF extends BSkeleton_ServerIF {
 		for (int i = 0; i < streams.size(); i++) {
 			try {
 				InputStream istrm = streams.get(i);
-				BContentStream rstrm = ((BContentStream)istrm).cloneInputStream();
+				BContentStream rstrm = ((BContentStream)istrm).materialize();
 				retStreams.add(rstrm);
 			} catch (IOException e) {
 				throw new BException(BExceptionC.IOERROR, e.getMessage(), e);

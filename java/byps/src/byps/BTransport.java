@@ -19,6 +19,14 @@ public class BTransport {
   private final BServerRegistry serverRegistry;
 
   private BTargetId targetId;
+  
+  /**
+   * Server ID to which this BTransport is connected.
+   * If this object belongs to a foreign interface, 
+   * the connectedServerId is not equal to targetId.serverId.
+   * This value is used as serverId for streams to be sent.
+   */
+  private int connectedServerId;
 
   private BProtocol protocol;
 
@@ -27,7 +35,7 @@ public class BTransport {
   public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
     this.apiDesc = apiDesc;
     this.wire = wire;
-    this.targetId = new BTargetId();
+    this.targetId = BTargetId.ZERO;
     this.serverRegistry = serverRegistry;
   }
 
@@ -43,7 +51,10 @@ public class BTransport {
     this.authentication = null;
     
     this.serverRegistry = null;
-  }
+  
+    // Still connected to the server given by rhs.
+    this.connectedServerId = rhs.targetId.serverId;
+}
   
   public BWire getWire() {
     return wire;
@@ -368,7 +379,7 @@ public class BTransport {
               nego.read(msg.buf);
               synchronized (BTransport.this) {
                 protocol = createNegotiatedProtocol(nego);
-                targetId = nego.targetId;
+                setTargetId(nego.targetId);
                 if (log.isDebugEnabled()) log.debug("targetId=" + targetId + ", protocol=" + protocol);
               }
   
@@ -489,11 +500,12 @@ public class BTransport {
     BProtocol protocol = null;
 
     if (nego.protocols.startsWith(BProtocolS.BINARY_MODEL.getProtocolId())) {
+      int negotiatedBypsVersion = Math.min(BMessageHeader.BYPS_VERSION_CURRENT, nego.bversion);
       long negotiatedVersion = Math.min(apiDesc.version, nego.version);
       nego.protocols = BProtocolS.BINARY_MODEL.getProtocolId();
       if (nego.byteOrder == null) nego.byteOrder = ByteOrder.BIG_ENDIAN;
       nego.version = negotiatedVersion;
-      protocol = new BProtocolS(apiDesc, negotiatedVersion, nego.byteOrder);
+      protocol = new BProtocolS(apiDesc, negotiatedBypsVersion, negotiatedVersion, nego.byteOrder);
     }
     else if (nego.protocols.startsWith(BProtocolJson.BINARY_MODEL.getProtocolId())) {
       nego.protocols = BProtocolJson.BINARY_MODEL.getProtocolId();
@@ -538,6 +550,11 @@ public class BTransport {
 
   public synchronized void setTargetId(BTargetId v) {
     this.targetId = v;
+    this.connectedServerId = v.serverId;
+  }
+  
+  public synchronized int getConnectedServerId() {
+    return this.connectedServerId;
   }
 
   public String toString() {
