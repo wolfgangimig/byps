@@ -245,6 +245,8 @@ public:
       TASSERT(L"exception code", BExceptionC::FORBIDDEN, ex.getCode());
     }
 
+    std::this_thread::sleep_for(std::chrono::milliseconds(BTransport::RETRY_AUTHENTICATION_AFTER_MILLIS));
+
     auth->waitMillis = 0;
     remote->doit(1);
     
@@ -252,8 +254,8 @@ public:
   }
 
   virtual void init() {
-    ADD_TEST(testAuthenticateBlocksRecursion);
     ADD_TEST(testAuthenticateTooSlow);
+    ADD_TEST(testAuthenticateBlocksRecursion);
     ADD_TEST(testNoAuthObjectSupplied);
     ADD_TEST(testAuthentication);
     ADD_TEST(testAuthenticationFails);

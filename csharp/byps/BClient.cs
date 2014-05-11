@@ -15,6 +15,7 @@ namespace byps
 	    public BClient(BTransport transport, BServerR serverR) {
             this.transportVal = transport;
 		    this.serverR = serverR;
+            this.setAuthentication(null);
 	    }
 	
 	    public abstract BRemote getStub(int remoteId);
@@ -140,9 +141,7 @@ namespace byps
         public void setAuthentication(BAuthentication auth)
         {
             if (log.isDebugEnabled()) log.debug("setAuthentication(" + auth + ")");
-            getTransport().setAuthentication(
-                new ClientAuthentication(this, auth),
-                auth == null); //onlyIfNull
+            getTransport().setAuthentication(new ClientAuthentication(this, auth));
         }
 
         public BAuthentication getAuthentication()

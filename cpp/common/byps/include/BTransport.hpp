@@ -97,7 +97,7 @@ namespace byps {
     virtual void setAsyncResult(const BVariant& result) {
       try {
         if (result.isException()) {
-          innerResult->setAsyncResult(BVariant(result.getException()));
+          innerResult->setAsyncResult(result);
         }
         else {
           transport->assignSessionThenSendMethod(requestObject, innerResult);
@@ -480,9 +480,6 @@ namespace byps {
     PTransport transport;
   };
 
-
-  const unsigned RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
-
   BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
 
     if (authentication) {
@@ -524,13 +521,17 @@ namespace byps {
     }
   }
 
-  BINLINE void BTransport::setAuthentication(PAuthentication auth, bool onlyIfNull) {
+  BINLINE void BTransport::setAuthentication(PAuthentication auth) {
     byps_unique_lock lock(mtx);
-    if (onlyIfNull && authentication) return;
     authentication = auth;
     lastAuthenticationException = BException();
     lastAuthenticationTime = system_clock::time_point();
     asyncResultsWaitingForAuthentication.clear();
+  }
+
+  BINLINE bool BTransport::hasAuthentication() {
+    byps_unique_lock lock(mtx);
+    return authentication != NULL;
   }
 
 

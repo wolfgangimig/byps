@@ -8,6 +8,8 @@ namespace byps {
 
   class BTransport : public byps_enable_shared_from_this<BTransport> {
   public:
+    const static unsigned RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+
     BTransport(PApiDescriptor apiDesc, const PWire& wire, const PRemoteRegistry& remoteRegistry);
     BTransport(const BTransport& rhs, const BTargetId& targetId);
     virtual ~BTransport();
@@ -53,7 +55,8 @@ namespace byps {
     std::chrono::system_clock::time_point lastAuthenticationTime;
     std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
     BException lastAuthenticationException;
-    void setAuthentication(PAuthentication auth, bool onlyIfNull);
+    void setAuthentication(PAuthentication auth);
+    bool hasAuthentication();
     void assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult);
     void loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult);
     BTYPEID getObjectTypeId(PSerializable ser);

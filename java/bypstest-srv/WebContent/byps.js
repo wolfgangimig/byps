@@ -1027,12 +1027,15 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 		return new byps.BServerR(this, server);
 	};
 
-	this.setAuthentication = function(auth, onlyIfNull) {
-		if (onlyIfNull && this._authentication) return;
+	this.setAuthentication = function(auth) {
 		this._authentication = auth;
 		this._asyncResultsWaitingForAuthentication = [];
 		this._lastAuthenticationTime = 0;
 		this._lastAuthenticationException = null;
+	};
+	
+	this.hasAuthentication = function() {
+		return !!this._authentication;
 	};
 
 	this._internalAuthenticate = function(asyncResult, processAsync) {
@@ -1375,6 +1378,10 @@ byps.BClient = function() {
 	// this._serverR;
 
 	this.start = function(asyncResult) { // BAsyncResult<BClient>
+		
+		if (!this.transport.hasAuthentication()) {
+			this.setAuthentication(null);
+		}
 
 		var processAsync = !!asyncResult;
 		if (!processAsync) {
@@ -1382,8 +1389,6 @@ byps.BClient = function() {
 				if (ex) throw ex;
 			};
 		}
-
-		this.setAuthentication(null);
 
 		this.transport.negotiateProtocolClient(asyncResult, processAsync);
 	};
@@ -1488,7 +1493,7 @@ byps.BClient = function() {
 
 		};
 
-		this.transport.setAuthentication(authentication, innerAuth == null);
+		this.transport.setAuthentication(authentication);
 	};
 };
 

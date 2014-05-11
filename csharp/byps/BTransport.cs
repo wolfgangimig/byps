@@ -629,11 +629,10 @@ namespace byps
             if (log.isDebugEnabled()) log.debug(")internalAuthenticate");
         }
 
-        internal void setAuthentication(BAuthentication auth, bool onlyIfNull) 
+        internal void setAuthentication(BAuthentication auth) 
         {
             lock (asyncResultsWaitingForAuthentication)
             {
-                if (onlyIfNull && authentication != null) return;
                 authentication = auth;
                 asyncResultsWaitingForAuthentication.Clear();
                 lastAuthenticationException = null;
@@ -660,7 +659,7 @@ namespace byps
         /**
         * Last authentication result is assumed to be valid for this time.
         */
-        internal long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
+        public const long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
 
         /**
          * This member is not null, if a negotiate request is currently active.

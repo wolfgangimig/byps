@@ -33,7 +33,7 @@ public abstract class BClient {
 	protected BClient(BTransport transport, BServerR serverR) {
 		this.transport = transport;
 		this.serverR = serverR;
-		transport.setAuthentication(new ClientAuthentication(null));
+		this.setAuthentication(null);
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public abstract class BClient {
 	 * @param authentication
 	 */
 	public void setAuthentication(BAuthentication authentication) {
-	  transport.setAuthentication(new ClientAuthentication(authentication)); // onylIfNull
+	  transport.setAuthentication(new ClientAuthentication(authentication)); 
 	}
 	
 	/**

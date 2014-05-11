@@ -184,13 +184,15 @@ namespace bypstest
 
             try
             {
-                remote.Doit(1);
+                 remote.Doit(1);
                 TestUtils.fail(log, "exception expected");
             }
             catch (BException e)
             {
                 TestUtils.assertEquals(log, "exception", BExceptionC.FORBIDDEN, e.Code);
             }
+
+            Thread.Sleep((int)BTransport.RETRY_AUTHENTICATION_AFTER_MILLIS);
 
             // Try again without sleeping -> authentication should work correctly
             auth.waitMillis = 0;
