@@ -208,7 +208,7 @@ namespace bypstest
 		    // On the server, this method calls the client-side interface 
 		    // registered in step (1)
 		    log.info("call client...");
-		    IList<Stream> arrR = remote.GetStreamsFromClient();
+		    IList<Stream> arrR = remote.GetStreamsFromClient(true);
 		    log.info("call client OK");
 
 		    List<Stream> arr = TestUtilsHttp.makeTestStreams();
