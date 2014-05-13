@@ -70,7 +70,6 @@ namespace byps
 
 	    public void start(BAsyncResult<bool> asyncResult)
         {
-            setAuthentication(null);
             getTransport().negotiateProtocolClient(BAsyncResultHelper.FromDelegate<bool>(asyncResult));
 	    }
 

@@ -89,9 +89,6 @@ public abstract class BClient {
 	public void start(final BAsyncResult<Boolean> asyncResult) {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
 
-    setAuthentication(null);
-    
-		
 		// Negotiate the protocol and authenticate.
 		// This function will call ClientAuthentication.authenticate()
 		// which starts the BServerR.
