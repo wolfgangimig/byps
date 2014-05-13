@@ -158,6 +158,9 @@ public class BNegotiate {
 		if (bbuf.nextJsonChar(true) == ',') {
 		  bversion = bbuf.getInt();
 		}
+		else {
+		  bversion = 0;
+		}
 	}
 	
 }

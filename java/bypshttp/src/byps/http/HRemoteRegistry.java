@@ -92,6 +92,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 		if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer...");
 		
 		try {
+      if (log.isInfoEnabled()) log.info("Connect to other server=[serverId=" + serverId + ", url=" + url + "]");
 		  
 		  // Create BClient object for other server
 			BWire wire = new HWireClient(url, 0, 120, tpool);
@@ -107,7 +108,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
 			if (log.isDebugEnabled()) log.debug("createForwardClientToOtherServer OK, client=" + client);
 		}
 		catch (RemoteException e) {
-		  if (log.isDebugEnabled()) log.debug("Failed to connect to other server.", e);
+      if (log.isInfoEnabled()) log.info("Failed to connect to other server=[serverId=" + serverId + ", url=" + url + "], ", e);
 
 		  // Create a dummy BWire object that is invalid for the next 60 seconds.
 		  final long invalidUntil = System.currentTimeMillis() + HConstants.CONNECTION_RETRY_PAUSE;
