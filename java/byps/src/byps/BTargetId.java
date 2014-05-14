@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 /**
- * This class identifies a client.
+ * This class identifies a client or a stream.
  * Target IDs are generated during protocol negotiation.
  * They are internally used in the generated code an in the communication layer.
  */
@@ -13,8 +13,10 @@ public class BTargetId {
   /**
    * Server ID
    */
-  public final int serverId;
-	
+  private final int serverId;
+  
+  private final int remoteId;
+
 	/**
 	 * First ID value.
 	 * If used for a stream, this value is the message ID.
@@ -27,22 +29,42 @@ public class BTargetId {
 	 */
 	private final long v2;
 	
+  private final long signature;
+	
 	/**
 	 * Constant object to be used instead of a null reference.
 	 */
 	public final static BTargetId ZERO = new BTargetId(0,0,0);
 	
-	/**
-	 * Constructor.
-	 * @param v1 If used for a stream, this value is the message ID.
-	 * @param v2 If used for a stream, this value is the stream ID.
-	 */
-	public BTargetId(int serverId, long v1, long v2) {
-	  this.serverId = serverId;
-		this.v1 = v1;
-		this.v2 = v2;
-	}
-	
+  /**
+   * Constructor.
+   * @param v1 If used for a stream, this value is the message ID.
+   * @param v2 If used for a stream, this value is the stream ID.
+   */
+  public BTargetId(int serverId, long v1, long v2) {
+    this.serverId = serverId;
+    this.remoteId = 0;
+    this.v1 = v1;
+    this.v2 = v2;
+    this.signature = 0;
+  }
+    
+  public BTargetId(int serverId, int remoteId, long v1, long v2, long v3) {
+    this.serverId = serverId;
+    this.remoteId = remoteId;
+    this.v1 = v1;
+    this.v2 = v2;
+    this.signature = v3;
+  }
+  
+  public BTargetId(BTargetId rhs, long signature) {
+    this.serverId = rhs.serverId;
+    this.remoteId = rhs.remoteId;
+    this.v1 = rhs.v1;
+    this.v2 = rhs.v2;
+    this.signature = signature;
+  }
+    
 	/**
 	 * Returns true, if the ID is zero.
 	 * @return true, if the ID is zero.
@@ -51,14 +73,22 @@ public class BTargetId {
 		return serverId == 0 && v1 == 0 && v2 == 0;
 	}
 	
+	public boolean isEncrypted() {
+	  return signature != 0;
+	}
+	
 	/**
 	 * Serialize the object into a buffer.
 	 * @param buf Destination buffer.
 	 */
-	public void write(ByteBuffer buf) {
+	public void write(ByteBuffer buf, int bversion) {
 	  buf.putInt(serverId);
 		buf.putLong(v1);
 		buf.putLong(v2);
+		if (bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
+		  buf.putInt(remoteId);
+		  buf.putLong(signature);
+		}
 	}
 	
 	/**
@@ -66,11 +96,17 @@ public class BTargetId {
 	 * @param buf Source buffer
 	 * @return target ID
 	 */
-	public static BTargetId read(ByteBuffer buf) {
+	public static BTargetId read(ByteBuffer buf, int bversion) {
     int serverId = buf.getInt();
 		long v1 = buf.getLong();
 		long v2 = buf.getLong();
-		return new BTargetId(serverId,v1,v2);
+		int remoteId = 0; 
+		long v3 = 0;
+    if (bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
+      remoteId = buf.getInt();
+      v3 = buf.getLong();
+    }
+		return new BTargetId(serverId,remoteId,v1,v2,v3);
 	}
 	
 	/**
@@ -79,38 +115,69 @@ public class BTargetId {
 	 */
 	@Override
 	public String toString() {
-		if (isZero()) return "";
-		StringBuilder builder = new StringBuilder();
-		builder.append(serverId).append(".");
-		builder.append(v1).append(".");
-		builder.append(v2);
-		return builder.toString();
+		return toString(0);
 	}
 	
+	 public String toString(int bversion) {
+	    if (isZero()) return "";
+	    StringBuilder builder = new StringBuilder();
+	    builder.append(serverId).append(".");
+	    builder.append(v1).append(".");
+	    builder.append(v2);
+	    if (bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
+	      builder.append(".");
+	      builder.append(remoteId).append(".");
+	      builder.append(signature);
+	    }
+	    return builder.toString();
+	  }
+
 	/**
 	 * Create a target ID from String.
 	 * @param s String representation
 	 * @return target ID
 	 */
 	public static BTargetId parseString(String s) {
-	  int serverId = 0;
-	  long v1 = 0, v2 = 0;
-	  if (s != null) {
-  	  int p = s.indexOf('.');
-  	  if (p >= 0) {
-  	    serverId = Integer.parseInt(s.substring(0,p));
-  	    p++;
-  	    int e = s.indexOf('.', p);
-  	    if (e >= 0) {
-  	      v1 = Long.parseLong(s.substring(p, e));
-  	      p = e+1;
-  	      e = s.indexOf('.', p);
-  	      if (e < 0) e = s.length();
-  	      v2 = Long.parseLong(s.substring(p, e));
-  	    }
-  	  }
-	  }
-		return new BTargetId(serverId, v1,v2);
+    int serverId = 0, remoteId = 0;
+    
+    long v1 = 0, v2 = 0, v3 = 0;
+    if (s != null && s.length() != 0) {
+      int p = 0;
+      int e = s.indexOf('.', p);
+      if (e < 0) e = s.length();
+      serverId = Integer.parseInt(s.substring(p,e));
+      
+      p = e+1;
+      if (p < s.length()) {
+        e = s.indexOf('.', p);
+        if (e < 0) e = s.length();
+        v1 = Long.parseLong(s.substring(p, e));
+        
+        p = e+1;
+        if (p < s.length()) {
+           e = s.indexOf('.', p);
+          if (e < 0) e = s.length();
+          v2 = Long.parseLong(s.substring(p, e));
+
+          p = e+1;
+          if (p < s.length()) {
+             e = s.indexOf('.', p);
+            if (e < 0) e = s.length();
+            remoteId = Integer.parseInt(s.substring(p, e));
+
+            p = e+1;
+            if (p < s.length()) {
+               e = s.indexOf('.', p);
+              if (e < 0) e = s.length();
+              v3 = Long.parseLong(s.substring(p, e));
+
+            }
+          }
+        }
+      }
+    }
+    
+    return new BTargetId(serverId, remoteId, v1, v2, v3);
 	}
 
   @Override
@@ -134,13 +201,25 @@ public class BTargetId {
     if (v2 != other.v2) return false;
     return true;
   }
-
+  
+  public int getServerId() {
+    return serverId;
+  }
+  
+  public int getRemoteId() {
+    return remoteId;
+  }
+  
   public long getMessageId() {
     return v1;
   }
   
   public long getStreamId() {
     return v2;
+  }
+  
+  public long getSignature() {
+    return signature;
   }
 
 //  /**

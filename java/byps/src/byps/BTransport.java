@@ -53,7 +53,7 @@ public class BTransport {
     this.serverRegistry = null;
   
     // Still connected to the server given by rhs.
-    this.connectedServerId = rhs.targetId.serverId;
+    this.connectedServerId = rhs.targetId.getServerId();
 }
   
   public BWire getWire() {
@@ -550,7 +550,7 @@ public class BTransport {
 
   public synchronized void setTargetId(BTargetId v) {
     this.targetId = v;
-    this.connectedServerId = v.serverId;
+    this.connectedServerId = v.getServerId();
   }
   
   public synchronized int getConnectedServerId() {

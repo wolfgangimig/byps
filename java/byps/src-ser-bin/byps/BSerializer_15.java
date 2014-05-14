@@ -21,7 +21,7 @@ public class BSerializer_15 extends BSerializer {
     final boolean withProps = bout.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
     if (withProps) {
-      bstream.getTargetId().write(bout.bbuf.getBuffer());
+      bstream.getTargetId().write(bout.bbuf.getBuffer(), bout1.header.bversion);
       bout.bbuf.putLong(bstream.getContentLength());
       bout.bbuf.putString(bstream.getContentType());
       bout.bbuf.putBoolean(bstream.isAttachment());
@@ -42,14 +42,14 @@ public class BSerializer_15 extends BSerializer {
     final boolean withProps = bin1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
     if (withProps) {
-      targetId = BTargetId.read(bin.bbuf.getBuffer());
+      targetId = BTargetId.read(bin.bbuf.getBuffer(), bin1.header.bversion);
       contentLength = bin.bbuf.getLong();
       contentType = bin.bbuf.getString();
       attachment = bin.bbuf.getBoolean();
       fileName = bin.bbuf.getString();
     } else {
       final long streamId = bin.bbuf.getLong();
-      final int serverId = bin1.transport.getTargetId().serverId;
+      final int serverId = bin1.transport.getTargetId().getServerId();
       final long messageId = bin1.header.messageId;
       targetId = new BTargetId(serverId, messageId, streamId);
     }

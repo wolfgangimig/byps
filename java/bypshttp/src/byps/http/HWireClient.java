@@ -455,7 +455,7 @@ public class HWireClient extends BWire {
     final long streamId = targetId.getStreamId();
     
     StringBuilder destUrl = new StringBuilder(surl);
-    destUrl.append("?").append("serverid=").append(targetId.serverId)
+    destUrl.append("?").append("serverid=").append(targetId.getServerId())
       .append("&messageid=").append(messageId)
       .append("&streamid=").append(streamId);
 
