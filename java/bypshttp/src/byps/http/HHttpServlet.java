@@ -182,7 +182,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         int serverId = config.getMyServerId();
         targetIdFact_use_getTargetIdFactory = new HTargetIdFactory(serverId);
 
-        serverRegistry_use_getServerRegistry = new HRemoteRegistry(config) {
+        serverRegistry_use_getServerRegistry = new HRemoteRegistry(config, targetIdFact_use_getTargetIdFactory) {
 
           @Override
           protected BClient createForwardClientToOtherServer(BTransport transport) throws BException {

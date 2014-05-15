@@ -10,13 +10,14 @@ namespace byps
     public abstract class BContentStream : Stream
     {
         public readonly static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
+        public readonly static int ATTACHMENT = 1;
+        public readonly static int INLINE = 2;
 
         protected String contentTypeVal;
         protected long contentLengthVal;
         protected String fileNameVal;
-        protected bool attachmentVal;
+        protected int attachmentCodeVal;
         protected BTargetId targetIdVal = BTargetId.ZERO;
-        protected bool propertiesValid;
 
         public BContentStream(String contentType, long contentLength)
         {
@@ -71,15 +72,15 @@ namespace byps
             }
         }
 
-        public virtual bool IsAttachment
+        public virtual int AttachmentCode
         {
             get
             {
-                return attachmentVal;
+                return attachmentCodeVal;
             }
             set
             {
-                attachmentVal = true;
+                attachmentCodeVal = value;
             }
         }
 
@@ -95,27 +96,59 @@ namespace byps
             }
         }
 
+        public virtual String ContentDisposition
+        {
+            get
+            {
+                StringBuilder sbuf = new StringBuilder();
+                sbuf.Append( AttachmentCode == ATTACHMENT ? "attachment;" : "inline;" );
+                String fileName = FileName;
+                if (fileName != null && fileName.Length != 0) {
+                  sbuf.Append(" filename=");
+                  bool q = fileName.IndexOf(' ') >= 0;
+                  if (q) sbuf.Append("\"");
+                  sbuf.Append(fileName);
+                  if (q) sbuf.Append("\"");
+                }
+                return sbuf.ToString();
+            }
+
+            set
+            {
+                String fileName = "";
+                int attcode = 0;
+                if (value != null && value.Length != 0)
+                {
+                    value = value.Trim();
+                    attcode = value.IndexOf("attachment;") >= 0 ? ATTACHMENT : INLINE;
+                    int p = value.IndexOf("filename=");
+                    if (p >= 0)
+                    {
+                        fileName = value.Substring(p + "filename=".Length).Trim();
+                        if (fileName.StartsWith("\""))
+                        {
+                            fileName = fileName.Substring(1);
+                            if (fileName.EndsWith("\""))
+                            {
+                                fileName = fileName.Substring(0, fileName.Length - 1);
+                            }
+                        }
+                    }
+                }
+                attachmentCodeVal = attcode;
+                fileNameVal = fileName;
+            }
+        }
+
         public virtual void copyProperties(BContentStream rhs)
         {
-            if (hasValidProperties()) return;
-            if (!rhs.hasValidProperties()) return;
-            contentTypeVal = rhs.ContentType;
-            contentLengthVal = rhs.ContentLength;
-            fileNameVal = rhs.FileName;
-            attachmentVal = rhs.IsAttachment;
+            contentTypeVal = rhs.contentTypeVal;
+            contentLengthVal = rhs.contentLengthVal;
+            fileNameVal = rhs.fileNameVal;
+            attachmentCodeVal = rhs.attachmentCodeVal;
             targetIdVal = rhs.TargetId;
-            propertiesValid = true;
         }
 
-        public virtual bool hasValidProperties()
-        {
-            return propertiesValid;
-        }
-
-        public virtual void setPropertiesValid(bool b)
-        {
-            propertiesValid = b;
-        }
-    }
+     }
 
 }

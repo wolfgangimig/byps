@@ -39,7 +39,7 @@ public class JSerializer_15 extends JSerializer_Object {
 	  }
 	  else {
 	    final long streamId = bin.currentObject.getLong("streamId");
-	    final int serverId = bin.transport.getTargetId().serverId;
+	    final int serverId = bin.transport.getTargetId().getServerId();
 	    final long messageId = bin.header.messageId;
 	    targetId = new BTargetId(serverId, messageId, streamId);
 	  }

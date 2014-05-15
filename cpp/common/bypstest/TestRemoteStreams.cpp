@@ -336,15 +336,16 @@ public:
       TASSERT(L"contentLength", nbOfBytes, strmR->getContentLength());
     }
 
-    TASSERT(L"contentType", strm->getContentType(), strmR->getContentType());
+    wstring csR = strmR->getContentType();
+    TASSERT(L"contentType", strm->getContentType(), csR);
 
     l_info << L")checkStreamContent=" << pos;
     return pos;
   }
 
   virtual void init() {
-    ADD_TEST(testRemoteStreamsOneFileStream);
     ADD_TEST(testHandOverStream);
+    ADD_TEST(testRemoteStreamsOneFileStream);
     ADD_TEST(testRemoteStreamsContentLength);
     ADD_TEST(testRemoteStreamsChunked);
     ADD_TEST(testRemoteStreamAsync);

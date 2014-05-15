@@ -11,14 +11,14 @@ namespace byps {
 
  
   BINLINE BContentStream::BContentStream() 
-    : contentType(BYPS_DEFAULT_CONTENT_TYPE), contentLength(-1), attachment(false), propertiesValid(false) {
+    : contentType(BYPS_DEFAULT_CONTENT_TYPE), contentLength(-1), attachmentCode(0) {
   }
 
   BINLINE BContentStream::BContentStream(const wstring& contentType, int64_t contentLength) 
-    : contentType(contentType), contentLength(contentLength), attachment(false), propertiesValid(false) {
+    : contentType(contentType), contentLength(contentLength), attachmentCode(0) {
   }
 
-  BINLINE const wstring& BContentStream::getContentType() const {
+  BINLINE wstring BContentStream::getContentType() const {
     return contentType;
   }
 
@@ -34,7 +34,7 @@ namespace byps {
     contentLength = v;
   }
 
-  BINLINE const wstring& BContentStream::getFileName() const {
+  BINLINE wstring BContentStream::getFileName() const {
     return fileName;
   }
 
@@ -50,47 +50,78 @@ namespace byps {
     targetId = v;
   }
 
-  BINLINE bool BContentStream::isAttachment() const {
-    return attachment;
+  BINLINE int32_t BContentStream::getAttachmentCode() const {
+    return attachmentCode;
   }
 
-  BINLINE void BContentStream::setAttachment(bool b) {
-    attachment = b;
+  BINLINE void BContentStream::setAttachmentCode(int32_t b) {
+    attachmentCode = b;
   }
 
   BINLINE void BContentStream::copyProperties(const PContentStream& rhs) {
-    if (hasValidProperties()) return;
-    if (!rhs || !rhs->hasValidProperties()) return;
-    contentType = rhs->getContentType();
-    contentLength = rhs->getContentLength();
-    fileName = rhs->getFileName();
-    attachment = rhs->isAttachment();
-    targetId = rhs->getTargetId();
-    propertiesValid = true;
+    if (rhs) {
+      contentType = rhs->contentType;
+      contentLength = rhs->contentLength;
+      fileName = rhs->fileName;
+      attachmentCode = rhs->attachmentCode;
+      targetId = rhs->getTargetId();
+    }
   }
 
-
-  BINLINE bool BContentStream::hasValidProperties() {
-    return propertiesValid;
+  BINLINE void BContentStream::setContentDisposition(const wstring& value) {
+    wstring fileName;
+    bool att = false;
+    if (value.size()) {
+      att = value.find(L"attachment;") != wstring::npos;
+      size_t p = value.find(L"filename=");
+      if (p != wstring::npos) {
+        fileName = value.substr(p + 9);
+        if (fileName.find(L'\"') == 0) {
+          fileName = fileName.substr(1);
+          if (fileName.find(L'\"') == fileName.size()-1) {
+            fileName = fileName.substr(0, fileName.size()-1);
+          }
+        }
+      }
+    }
+    this->fileName = fileName;
+    this->attachmentCode = att ? ATTACHMENT : INLINE;
   }
 
-  BINLINE void BContentStream::setPropertiesValid(bool b) {
-    propertiesValid = b;
+  BINLINE wstring BContentStream::getContentDisposition() const {
+    wstringstream wss;
+    wss << ((getAttachmentCode()==ATTACHMENT) ? L"attachment;" : L"inline;") ;
+    wstring fileName = getFileName();
+    if (fileName.size()) {
+      wss << L" filename=" << fileName;
+    }
+    return wss.str();
   }
 
   BINLINE int32_t BContentStreamWrapper::read(char* buf, int32_t offs, int32_t len) {
+    int32_t ret = -1;
     if (len < 0) return -1;
-    if (innerStream->eof()) return -1;
-    innerStream->read(buf + offs, (size_t)len);
-    return (int32_t)innerStream->gcount();
+    if (stdStream) {
+      if (stdStream->eof()) return -1;
+      stdStream->read(buf + offs, (size_t)len);
+      ret = (int32_t)stdStream->gcount();
+    }
+    else {
+      PContentStream strm = ensureStream();
+      ret = strm->read(buf, offs, len);
+    }
+    return ret;
   }
 
+ BINLINE BContentStreamWrapper::BContentStreamWrapper() {
+ }
+
  BINLINE BContentStreamWrapper::BContentStreamWrapper(PStream stream, const wstring& contentType, int64_t contentLength) 
-    : BContentStream(contentType, contentLength), innerStream(stream) {
+    : BContentStream(contentType, contentLength), stdStream(stream) {
   }
 
   BINLINE BContentStreamWrapper::BContentStreamWrapper(PStream stream) 
-    : BContentStream(BYPS_DEFAULT_CONTENT_TYPE, -1), innerStream(stream) {
+    : BContentStream(wstring(), -1), stdStream(stream) {
   }
 
   BINLINE BContentStreamWrapper::BContentStreamWrapper(const BFile& file) {
@@ -100,6 +131,24 @@ namespace byps {
     init(file, contentType);
   }
 
+  BINLINE BContentStreamWrapper::BContentStreamWrapper(PContentStream innerStream, int64_t ) 
+    : innerStream(innerStream) {
+  }
+
+  BINLINE PContentStream BContentStreamWrapper::openStream() {
+    return innerStream;
+  }
+
+  BINLINE PContentStream BContentStreamWrapper::ensureStream() {
+    if (innerStream) return innerStream;
+    byps_unique_lock lock(mutex);
+    if (!innerStream) {
+      innerStream = openStream();
+      copyProperties(innerStream);
+    }
+    return innerStream;
+  }
+
   BINLINE void BContentStreamWrapper::init(const BFile& file, const wstring& contentType) {
     this->contentLength = file.size();
     wstring cs = contentType;
@@ -107,13 +156,13 @@ namespace byps {
       cs = getFileContentType(file.getName());
       if (cs.size() == 0) cs = BYPS_DEFAULT_CONTENT_TYPE;
     }
-    this->contentType = contentType;
+    this->contentType = cs;
     this->fileName = file.getName();
-    innerStream = file.open();
+    stdStream = file.open();
   }
 
   BINLINE BContentStreamWrapper::~BContentStreamWrapper() {
-    PStream s = innerStream;
+    PStream s = stdStream;
     ifstream* fstrm = static_cast<ifstream*>(s.get());
     if (fstrm) {
       fstrm->close();
@@ -121,8 +170,61 @@ namespace byps {
   }
 
   BINLINE PStream BContentStreamWrapper::getStdStream() {
-    return innerStream;
+    return stdStream;
   }
+
+  BINLINE wstring BContentStreamWrapper::getContentType() const {
+    wstring s = this->contentType;
+    if (s.size()) return s;
+    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
+    PContentStream strm = pThis->ensureStream();
+    s = this->contentType;
+    if (s.size()) return s;
+    if (strm) {
+      pThis->contentType = s = strm->getContentType();
+    }
+    return s;
+  }
+
+  BINLINE int64_t BContentStreamWrapper::getContentLength() const {
+    int64_t s = this->contentLength;
+    if (s >= 0) return s;
+    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
+    PContentStream strm = pThis->ensureStream();
+    s = this->contentLength;
+    if (s >= 0) return s;
+    if (strm) {
+      pThis->contentLength = s = strm->getContentLength();
+    }
+    return s;
+  }
+
+  BINLINE wstring BContentStreamWrapper::getFileName() const {
+    wstring s = this->fileName;
+    if (s.size()) return s;
+    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
+    PContentStream strm = pThis->ensureStream();
+    s = this->fileName;
+    if (s.size()) return s;
+    if (strm) {
+      pThis->fileName = s = strm->getFileName();
+    }
+    return s;
+  }
+
+  BINLINE int32_t BContentStreamWrapper::getAttachmentCode() const {
+    int32_t s = this->attachmentCode;
+    if (s != 0) return s;
+    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
+    PContentStream strm = pThis->ensureStream();
+    s = this->attachmentCode;
+    if (s != 0) return s;
+    if (strm) {
+      pThis->attachmentCode = s = strm->getAttachmentCode();
+    }
+    return s;
+  }
+
 
 
 }

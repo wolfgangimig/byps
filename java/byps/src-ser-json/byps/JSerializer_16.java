@@ -18,13 +18,22 @@ public class JSerializer_16 extends BSerializer {
 		final BBufferJson bbuf = bout.bbuf;
 		final BRemote remote = (BRemote)obj;
 		BTargetId targetId = remote.BRemote_getTargetId();
-    if (targetId == null) {
-      targetId = bout1.transport.getTargetId();
+		
+    final BServerRegistry rreg = bout1.transport.getServerRegistry();
+    if (rreg != null) {
+      // server side
+      if (bout1.header.bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
+        try {
+          targetId = rreg.encryptTargetId(targetId, true);
+        } catch (RemoteException e) {
+          throw new BException(BExceptionC.INTERNAL, e.toString(), e);
+        }
+      }
     }
 
     bbuf.beginObject();
 		bbuf.putInt("_typeId", typeId);
-		bbuf.putString("targetId", targetId.toString());
+		bbuf.putString("targetId", targetId.toString(bout1.header.bversion));
 		bbuf.endObject();
 	}
 
@@ -32,10 +41,14 @@ public class JSerializer_16 extends BSerializer {
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputJson bin = ((BInputJson)bin1);
 		BRemote remote = null;
-		final BTargetId targetId = BTargetId.parseString(bin.currentObject.getString("targetId"));
+		BTargetId targetId = BTargetId.parseString(bin.currentObject.getString("targetId"));
+		
 		final BServerRegistry rreg = bin.transport.getServerRegistry();
 		if (rreg != null) {
 			try {
+        if (bin1.header.bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
+          targetId = rreg.encryptTargetId(targetId, false);
+        }
 				remote = rreg.getRemote(targetId, typeId);
 			}
 			catch (BException e) {

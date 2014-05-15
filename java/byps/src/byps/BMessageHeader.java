@@ -30,7 +30,8 @@ public class BMessageHeader {
 	private final static int MAGIC_JSON_SINGLE_QUOTE = ((int)'{' << 24) | ((int)'\'' << 16) | ((int)'h' << 8) | ((int)'e');
 		
   public final static int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
-  public final static int BYPS_VERSION_CURRENT = BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
+  public final static int BYPS_VERSION_ENCRYPTED_TARGETID = 2;
+  public final static int BYPS_VERSION_CURRENT = BYPS_VERSION_ENCRYPTED_TARGETID;
 		
 	public final static int FLAG_BYPS_VERSION = 1;
 	public final static int FLAG_RESPONSE = 2; 
@@ -154,7 +155,7 @@ public class BMessageHeader {
     }
 
     buf.putLong(version);
-		targetId.write(buf);
+		targetId.write(buf, bversion);
 		buf.putLong(messageId);
 		
 		if ((flags & FLAG_TIMEOUT) != 0) {
@@ -186,7 +187,7 @@ public class BMessageHeader {
 		}
 		
 		version = buf.getLong();
-		targetId = BTargetId.read(buf);
+		targetId = BTargetId.read(buf, bversion);
 		messageId = buf.getLong();
 		
     if ((flags & FLAG_TIMEOUT) != 0) {

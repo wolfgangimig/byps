@@ -157,9 +157,44 @@ namespace byps {
 namespace byps {
 
    inline std::wstring getFileContentType(const std::wstring& fname) {
-    std::wstring s;
-    return s;
-  }
+     std::wstring contentType;
+     
+     std::wstring ext;
+     size_t p = fname.find_last_of(L'.');
+     if (p != std::wstring::npos) {
+       ext = fname.substr(p+1);
+       // tolower
+       {
+         std::wstringstream ss; 
+         for (unsigned i = 0; i < ext.size(); i++) {
+           wchar_t c = ext[i];
+           if (c >= L'A' && c <= L'Z') {
+             c = (c - L'A') + L'a';
+           }
+           ss << c;
+         }
+         ext = ss.str();
+       }
+     }
+     else {
+       ext = fname;
+     }
+
+     if (ext == L"txt") {
+       contentType = L"text/plain";
+     }
+     else if (ext == L"jpg" || ext == L"jpeg") {
+       contentType = L"image/jpeg";
+     }
+     //else if (...) {
+     //  contentType = ...
+     //}
+     else {
+       contentType = L"application/octet-stream";
+     }
+
+     return contentType;
+   }
 }
 
 #endif // BFILE_CONTENT_TYPE

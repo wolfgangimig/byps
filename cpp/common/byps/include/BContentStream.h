@@ -12,25 +12,28 @@ namespace byps {
 
   class BContentStream : public BSerializable {
   public:
+  	const static int32_t ATTACHMENT = 1;
+  	const static int32_t INLINE = 2;
+
     BContentStream();
     BContentStream(const wstring& contentType, int64_t contentLength);
     virtual ~BContentStream() {}
 
     virtual BTYPEID BSerializable_getTypeId() { return BTYPEID_STREAM; }
 
-    virtual const wstring& getContentType() const ;
+    virtual wstring getContentType() const ;
     virtual void setContentType(const wstring&);
     virtual int64_t getContentLength() const;
     virtual void setContentLength(int64_t);
-    virtual const wstring& getFileName() const;
+    virtual wstring getFileName() const;
     virtual void setFileName(const wstring&);
-    virtual bool isAttachment() const;
-    virtual void setAttachment(bool b);
+    virtual int32_t getAttachmentCode() const;
+    virtual void setAttachmentCode(int32_t b);
     virtual const BTargetId& getTargetId() const;
     virtual void setTargetId(const BTargetId& rhs);
     virtual void copyProperties(const PContentStream& rhs);
-    virtual bool hasValidProperties();
-    virtual void setPropertiesValid(bool b);
+    virtual void setContentDisposition(const wstring& contentDisposition);
+    virtual wstring getContentDisposition() const;
 
     virtual int32_t read(char* buf, int32_t offs, int32_t len) = 0;
     virtual PStream getStdStream() { return PStream(); };
@@ -39,18 +42,19 @@ namespace byps {
     wstring contentType;
     int64_t contentLength;
     wstring fileName;
-    bool attachment;
+    int32_t attachmentCode;
     BTargetId targetId;
-    bool propertiesValid;
 
   };
 
 
   class BContentStreamWrapper : public BContentStream {
   public:
+    BContentStreamWrapper();
     BContentStreamWrapper(PStream stream, const wstring& contentType, int64_t contentLength);
     BContentStreamWrapper(PStream stream);
-
+    BContentStreamWrapper(PContentStream innerStream, int64_t reserved);
+    
     BContentStreamWrapper(const BFile& fname);
     BContentStreamWrapper(const BFile& fname, const wstring& contentType);
 
@@ -59,9 +63,20 @@ namespace byps {
     virtual int32_t read(char* buf, int32_t offs, int32_t len);
     virtual PStream getStdStream();
 
+    virtual wstring getContentType() const;
+    virtual int64_t getContentLength() const;
+    virtual wstring getFileName() const;
+    virtual int32_t getAttachmentCode() const;
+    
+    
   protected:
+    virtual PContentStream openStream();
+    virtual PContentStream ensureStream();
+
     void init(const BFile& file, const wstring& contentType);
-    PStream innerStream;
+    PStream stdStream;
+    PContentStream innerStream;
+    byps_mutex mutex;
   };
 
 }

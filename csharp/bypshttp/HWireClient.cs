@@ -403,21 +403,24 @@ namespace byps
 
             String contentType = null;
 		    long contentLength = -1L;
+            String contentDisposition = null;
 		    if (stream is BContentStream) {
 			    BContentStream cstream = (BContentStream)stream;
                 contentType = cstream.ContentType;
                 contentLength = cstream.ContentLength;
+                contentDisposition = cstream.ContentDisposition;
 		    }
 
             HttpWebRequest conn = (HttpWebRequest)HttpWebRequest.Create(url + "?messageid=" + messageId + "&streamid=" + streamId);
             request.setConnection(conn);
 
             conn.AllowWriteStreamBuffering = false;
-            conn.ContentType = contentType != null ? contentType : HConstants.DEFAULT_CONTENT_TYPE;
             conn.Method = "PUT";
             conn.SendChunked = (contentLength == -1L);
             if (contentLength != -1L) conn.ContentLength = contentLength;
-
+            conn.ContentType = contentType != null ? contentType : HConstants.DEFAULT_CONTENT_TYPE;
+            if (contentDisposition != null) conn.Headers.Add("Content-Disposition", contentDisposition);
+        
             applySession(conn);
 
             conn.BeginGetRequestStream(new AsyncCallback(this.getRequestStreamCallback), request);
@@ -484,12 +487,9 @@ namespace byps
                     wire.applySession(conn);
 
                     response = (HttpWebResponse)conn.GetResponse();
-
-                    if (!this.hasValidProperties())
-                    {
-                        ContentType = response.ContentType;
-                        ContentLength = response.ContentLength;
-                    }
+                    ContentType = response.ContentType;
+                    ContentLength = response.ContentLength;
+                    ContentDisposition = response.Headers["Content-Disposition"];
 
                     responseStream = response.GetResponseStream();
                 }

@@ -222,10 +222,9 @@ public abstract class BContentStream extends InputStream {
 	 * @param attachment true, if the browser should open the file as an attachment.
 	 * @return this
 	 */
-	public BContentStream setContentDisposition(String fileName, boolean attachment) {
+	public void setContentDisposition(String fileName, boolean attachment) {
     this.fileName = fileName;
     this.attachmentCode = attachment ? ATTACHMENT : INLINE;
-    return this;
 	}
 	
 	/**
@@ -233,7 +232,7 @@ public abstract class BContentStream extends InputStream {
    * @param value Content-Dispostion header value
    * @return this
    */
- 	public BContentStream setContentDisposition(String value) {
+ 	public void setContentDisposition(String value) {
  	  String fileName = "";
  	  boolean att = false;
 	  if (value != null && value.length() != 0) {
@@ -250,7 +249,7 @@ public abstract class BContentStream extends InputStream {
 	      }
 	    }
 	  }
-	  return setContentDisposition(fileName, att);
+	  setContentDisposition(fileName, att);
 	}
  	
   /**

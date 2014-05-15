@@ -17,20 +17,35 @@ public class BSerializer_16 extends BSerializer {
 		final BOutputBin bout = ((BOutputBin)bout1);
 		final BRemote remote = (BRemote)obj;
 		BTargetId targetId = remote.BRemote_getTargetId();
-		if (targetId == null) {
-		  targetId = bout1.transport.getTargetId();
-		}
-		targetId.write(bout.bbuf.getBuffer());
+		
+    final BServerRegistry rreg = bout1.transport.getServerRegistry();
+    if (rreg != null) {
+      // server side
+      if (bout1.header.bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
+        try {
+          targetId = rreg.encryptTargetId(targetId, true);
+        } catch (RemoteException e) {
+          throw new BException(BExceptionC.INTERNAL, e.toString(), e);
+        }
+      }
+    }
+    
+		targetId.write(bout.bbuf.getBuffer(), bout1.header.bversion);
 	}
 
 	@Override
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		BInputBin bin = ((BInputBin)bin1);
 		BRemote remote = null;
-		final BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer());
+		BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer(), bin1.header.bversion);; 
+		
 		final BServerRegistry rreg = bin.transport.getServerRegistry();
 		if (rreg != null) {
+	    // server side
 			try {
+			  if (bin1.header.bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
+			    targetId = rreg.encryptTargetId(targetId, false);
+			  }
 				remote = rreg.getRemote(targetId, typeId);
 			}
 			catch (BException e) {
@@ -41,12 +56,14 @@ public class BSerializer_16 extends BSerializer {
 			}
 		}
 		else {
+      // client side, or forward client on server side
 			final BTransport transport = new BTransport(bin.transport, targetId);
 			remote = internalCreate(transport);
 			bin.onObjectCreated(remote);
 		}
 		return remote;
 	}
+	
 
 	protected BRemote internalCreate(final BTransport transport) throws BException {
 		return null; // must be implemented by subclass

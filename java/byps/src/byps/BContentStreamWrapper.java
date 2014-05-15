@@ -32,12 +32,7 @@ public class BContentStreamWrapper extends BContentStream {
 	}
 	
   public BContentStreamWrapper(InputStream innerStream) {
-    this(innerStream, BContentStream.DEFAULT_CONTENT_TYPE, -1L, 0L);
-  }
-  
-  public BContentStreamWrapper(BContentStream innerStream, long lifetimeMillis) {
-    super(innerStream, lifetimeMillis);
-    this.innerStream = innerStream;
+    this(innerStream, "", -1L, 0L);
   }
   
 	public BContentStreamWrapper(InputStream innerStream, String contentType, long contentLength) {
@@ -49,6 +44,11 @@ public class BContentStreamWrapper extends BContentStream {
 		this.innerStream = innerStream;
 	}
 	
+  public BContentStreamWrapper(BContentStream innerStream, long lifetimeMillis) {
+    super(innerStream, lifetimeMillis);
+    this.innerStream = innerStream;
+  }
+  
 	public BContentStreamWrapper(File file) throws FileNotFoundException {
 	  super(getFileContentType(file), file.length());
 	  innerStream = new FileInputStream(file);
@@ -129,7 +129,11 @@ public class BContentStreamWrapper extends BContentStream {
     if (s != null && s.length() != 0) return s;
     InputStream is;
     try {
+      
       is = ensureStream();
+      s = contentType;
+      if (s != null && s.length() != 0) return s;
+      
       if (is instanceof BContentStream) {
         contentType = s = ((BContentStream)is).getContentType();
       }    
@@ -144,7 +148,11 @@ public class BContentStreamWrapper extends BContentStream {
     if (s >= 0) return s;
     InputStream is;
     try {
+
       is = ensureStream();
+      s = contentLength;
+      if (s >= 0) return s;
+
       if (is instanceof BContentStream) {
         contentLength = s = ((BContentStream)is).getContentLength();
       }    
@@ -159,9 +167,13 @@ public class BContentStreamWrapper extends BContentStream {
     if (s != 0) return s;
     InputStream is;
     try {
+
       is = ensureStream();
+      s = attachmentCode;
+      if (s >= 0) return s;
+
       if (is instanceof BContentStream) {
-        attachmentCode = ((BContentStream)is).getAttachmentCode();
+        attachmentCode = s = ((BContentStream)is).getAttachmentCode();
       }    
     }
     catch (IOException e) {}
@@ -174,7 +186,11 @@ public class BContentStreamWrapper extends BContentStream {
     if (s != null && s.length() != 0) return s;
     InputStream is;
     try {
+      
       is = ensureStream();
+      s = fileName;
+      if (s != null && s.length() != 0) return s;
+
       if (is instanceof BContentStream) {
         fileName = s = ((BContentStream)is).getFileName();
       }    

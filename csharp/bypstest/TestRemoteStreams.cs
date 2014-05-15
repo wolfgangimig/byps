@@ -100,6 +100,7 @@ namespace bypstest
 
             TestUtils.assertEquals(log, "Content-Type", "text/plain", istrmR.ContentType);
             TestUtils.assertEquals(log, "Content-Length", file.Length, istrmR.ContentLength);
+            TestUtils.assertEquals(log, "Content-Disposition", "inline; filename=" + file.Name, istrmR.ContentDisposition);
             TestUtils.assertEquals(log, "FileName", file.Name, istrmR.FileName);
 
             ByteBuffer buf = BWire.bufferFromStream(istrmR, false);
@@ -108,6 +109,7 @@ namespace bypstest
 
             TestUtils.assertEquals(log, "Content-Type", "text/plain", istrmR.ContentType);
             TestUtils.assertEquals(log, "Content-Length", file.Length, istrmR.ContentLength);
+            TestUtils.assertEquals(log, "Content-Disposition", "inline; filename=" + file.Name, istrmR.ContentDisposition);
             TestUtils.assertEquals(log, "FileName", file.Name, istrmR.FileName);
 
             file.Delete();

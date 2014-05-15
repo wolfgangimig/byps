@@ -8,5 +8,6 @@ public interface BServerRegistry {
 	public BRemote getRemote(BTargetId clientId, int remoteId) throws RemoteException;
 	public BClient getForwardClientIfForeignTargetId(BTargetId targetId) throws RemoteException;
 	public Collection<BClient> getForwardClientsToOtherServers() throws RemoteException;
+	public BTargetId encryptTargetId(BTargetId targetId, boolean encryptNotDecrypt) throws RemoteException;
 	public void done();
 }

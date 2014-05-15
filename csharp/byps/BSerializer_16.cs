@@ -19,14 +19,14 @@ namespace byps
 		    BOutputBin bout = ((BOutputBin)bout1);
 		    BRemote remote = (BRemote)obj;
 		    BTargetId targetId = remote.BRemote_getTargetId();
-		    targetId.write(bout.bbuf.getBuffer());
+		    targetId.write(bout.bbuf.getBuffer(), bout1.header.bversion);
 	    }
 
         public override Object read(Object obj, BInput bin1, long version)
         {
 		    BInputBin bin = ((BInputBin)bin1);
 		    BRemote remote = null;
-		    BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer());
+		    BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer(), bin1.header.bversion);
 		    BRemoteRegistry rreg = bin.transport.getRemoteRegistry();
 		    if (rreg != null) {
 			    remote = rreg.getRemote(bin.header.targetId, targetId, typeId);

@@ -21,11 +21,7 @@ public class BSerializer_15 extends BSerializer {
     final boolean withProps = bout.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
     if (withProps) {
-      bstream.getTargetId().write(bout.bbuf.getBuffer());
-//      bout.bbuf.putLong(bstream.getContentLength());
-//      bout.bbuf.putString(bstream.getContentType());
-//      bout.bbuf.putBoolean(bstream.isAttachment());
-//      bout.bbuf.putString(bstream.getFileName());
+      bstream.getTargetId().write(bout.bbuf.getBuffer(), bout1.header.bversion);
     } else {
       bout.bbuf.putLong(targetId.getStreamId());
     }
@@ -35,21 +31,13 @@ public class BSerializer_15 extends BSerializer {
   public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
     BInputBin bin = ((BInputBin) bin1);
     BTargetId targetId = null;
-    long contentLength = 0;
-    String contentType = BContentStream.DEFAULT_CONTENT_TYPE;
-    boolean attachment = false;
-    String fileName = null;
     final boolean withProps = bin1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
     if (withProps) {
-      targetId = BTargetId.read(bin.bbuf.getBuffer());
-//      contentLength = bin.bbuf.getLong();
-//      contentType = bin.bbuf.getString();
-//      attachment = bin.bbuf.getBoolean();
-//      fileName = bin.bbuf.getString();
+      targetId = BTargetId.read(bin.bbuf.getBuffer(), bin1.header.bversion);
     } else {
       final long streamId = bin.bbuf.getLong();
-      final int serverId = bin1.transport.getTargetId().serverId;
+      final int serverId = bin1.transport.getTargetId().getServerId();
       final long messageId = bin1.header.messageId;
       targetId = new BTargetId(serverId, messageId, streamId);
     }
@@ -57,12 +45,6 @@ public class BSerializer_15 extends BSerializer {
     try {
       BContentStream strm = bin.transport.getWire().getStream(targetId);
       bin.onObjectCreated(strm);
-//      strm.setContentLength(contentLength);
-//      strm.setContentType(contentType);
-//      strm.setAttachment(attachment);
-//      strm.setFileName(fileName);
-//      strm.setPropertiesValid(withProps);
-      
       return strm;
     } catch (IOException e) {
       throw new BException(BExceptionC.IOERROR, e.getMessage());

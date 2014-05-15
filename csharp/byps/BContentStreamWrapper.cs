@@ -9,26 +9,31 @@ namespace byps
 {
     public class BContentStreamWrapper : BContentStream
     {
-        protected Stream innerStream;
+        private Stream innerStream;
 
         public BContentStreamWrapper()
-            : this(null, DEFAULT_CONTENT_TYPE, -1L)
+            : this(null, "", -1L)
         {
         }
 
         public BContentStreamWrapper(Stream innerStream)
-            : this(innerStream, getContentTypeFromStream(innerStream), getContentLengthFromStream(innerStream))
+            : this(innerStream, "", -1, 0)
         {
         }
 
-        public BContentStreamWrapper(BContentStream innerStream, long lifetimeMillis)
-            : base(innerStream, lifetimeMillis)
+        public BContentStreamWrapper(Stream innerStream, String contentType, long contentLength)
+            : this(innerStream, contentType, contentLength, 0)
+        {
+        }
+
+        public BContentStreamWrapper(Stream innerStream, String contentType, long contentLength, long reserved)
+            : base(contentType, contentLength)
         {
             this.innerStream = innerStream;
         }
 
-        public BContentStreamWrapper(Stream innerStream, String contentType, long contentLength)
-            : base(contentType, contentLength)
+        public BContentStreamWrapper(BContentStream innerStream, long reserved)
+            : base(innerStream, 0)
         {
             this.innerStream = innerStream;
         }
@@ -37,6 +42,11 @@ namespace byps
             : this(file.OpenRead(), getContentTypeFromRegistry(file), file.Length)
         {
             this.fileNameVal = file.Name;
+        }
+
+        public BContentStreamWrapper(MemoryStream innerStream, String contentType)
+            : this(innerStream, contentType, innerStream.Length, 0)
+        {
         }
 
         private static String getContentTypeFromRegistry(FileInfo file)
@@ -78,21 +88,6 @@ namespace byps
             return mime;
         }
 
-        private static String getContentTypeFromStream(Stream stream)
-        {
-            return DEFAULT_CONTENT_TYPE;
-        }
-
-        private static long getContentLengthFromStream(Stream stream)
-        {
-            long ret = -1L;
-            if (stream is MemoryStream)
-            {
-                ret = ((MemoryStream)stream).Length;
-            }
-            return ret;
-        }
-
         protected virtual Stream openStream()
         {
             throw new NotImplementedException();
@@ -111,6 +106,94 @@ namespace byps
             }
 
             return innerStream;
+        }
+
+        public override String ContentType
+        {
+            get
+            {
+                String s = contentTypeVal;
+                if (s != null && s.Length != 0) return s;
+                try
+                {
+                    Stream istrm = ensureStream();
+                    s = contentTypeVal;
+                    if (s != null && s.Length != 0) return s;
+
+                    if (istrm is BContentStream)
+                    {
+                        contentTypeVal = s = ((BContentStream)istrm).ContentType;
+                    }
+                }
+                catch (IOException) { }
+                return s;
+            }
+        }
+
+        public override long ContentLength
+        {
+            get
+            {
+                long s = contentLengthVal;
+                if (s >= 0) return s;
+                try
+                {
+                    Stream istrm = ensureStream();
+                    s = contentLengthVal;
+                    if (s >= 0) return s;
+
+                    if (istrm is BContentStream)
+                    {
+                        contentLengthVal = s = ((BContentStream)istrm).ContentLength;
+                    }
+                }
+                catch (IOException) { }
+                return s;
+            }
+        }
+
+        public override String FileName
+        {
+            get
+            {
+                String s = fileNameVal;
+                if (s != null && s.Length != 0) return s;
+                try
+                {
+                    Stream istrm = ensureStream();
+                    s = fileNameVal;
+                    if (s != null && s.Length != 0) return s;
+
+                    if (istrm is BContentStream)
+                    {
+                        fileNameVal = s = ((BContentStream)istrm).FileName;
+                    }
+                }
+                catch (IOException) { }
+                return s;
+            }
+        }
+
+        public override int AttachmentCode
+        {
+            get
+            {
+                int s = attachmentCodeVal;
+                if (s != 0) return s;
+                try
+                {
+                    Stream istrm = ensureStream();
+                    s = attachmentCodeVal;
+                    if (s != 0) return s;
+
+                    if (istrm is BContentStream)
+                    {
+                        attachmentCodeVal = s = ((BContentStream)istrm).AttachmentCode;
+                    }
+                }
+                catch (IOException) { }
+                return s;
+            }
         }
 
         public override int Read(byte[] buffer, int offset, int count)

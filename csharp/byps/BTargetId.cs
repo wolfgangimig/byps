@@ -31,13 +31,14 @@ namespace byps
             return serverId == 0 && v1 == 0 && v2 == 0;
 	    }
 	
-	    public void write(ByteBuffer buf) {
+	    public void write(ByteBuffer buf, int bversion) {
             buf.putInt(serverId);
 		    buf.putLong(v1);
 		    buf.putLong(v2);
 	    }
-	
-	    public static BTargetId read(ByteBuffer buf) {
+
+        public static BTargetId read(ByteBuffer buf, int bversion)
+        {
             int serverId = buf.getInt();
 		    long v1 = buf.getLong();
 		    long v2 = buf.getLong();

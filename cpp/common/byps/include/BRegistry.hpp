@@ -39,18 +39,10 @@ BINLINE void BSerializer_15(BIO& bio, POBJECT& , PSerializable& pObjS, void* ) {
   if (bio.is_loading) {
     if (!pObjS) {
       BTargetId targetId;
-      int64_t contentLength = 0;
-      wstring contentType = BYPS_DEFAULT_CONTENT_TYPE;
-      bool attachment = false;
-      wstring fileName;
       bool withProps = bio.header.bversion >= BHEADER_BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
       if (withProps) {
         bio & targetId;
-        bio & contentLength;
-        bio & contentType;
-        bio & attachment;
-        bio & fileName;
       }
       else {
         int32_t serverId = bio.transport->getTargetId().getServerId();
@@ -61,11 +53,6 @@ BINLINE void BSerializer_15(BIO& bio, POBJECT& , PSerializable& pObjS, void* ) {
       }
 
       PContentStream stream = bio.transport->getWire()->getStream(targetId);
-      stream->setContentType(contentType);
-      stream->setContentLength(contentLength);
-      stream->setAttachment(attachment);
-      stream->setFileName(fileName);
-      stream->setPropertiesValid(true);
       pObjS = stream;
     }
   }
@@ -76,15 +63,7 @@ BINLINE void BSerializer_15(BIO& bio, POBJECT& , PSerializable& pObjS, void* ) {
     BTargetId targetId = strm->getTargetId();
 
     if (bio.header.bversion >= BHEADER_BYPS_VERSION_EXTENDED_STREAM_INFORMATION) {
-      int64_t contentLength = strm->getContentLength();
-      wstring contentType = strm->getContentType();
-      bool attachment = strm->isAttachment();
-      wstring fileName = strm->getFileName();
       bio & targetId;
-      bio & contentLength;
-      bio & contentType;
-      bio & attachment;
-      bio & fileName;
     }
     else {
       int64_t streamId = targetId.getStreamId();

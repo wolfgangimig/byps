@@ -44,6 +44,7 @@ namespace byps { namespace http { namespace winhttp {
 
     std::wstring contentType;
     int64_t contentLength;
+    std::wstring contentDisposition;
     DWORD statusCode;
     PAsyncResult asyncResult;
     std::wstring url; 
@@ -182,6 +183,11 @@ namespace byps { namespace http { namespace winhttp {
 
       if (contentType.size()) {
         wssHeaders << L"Content-Type: " << contentType;
+        wssHeaders << L"\r\n";
+      }
+
+      if (contentDisposition.size()) {
+        wssHeaders << L"Content-Disposition: " << contentDisposition;
         wssHeaders << L"\r\n";
       }
 
@@ -326,6 +332,10 @@ namespace byps { namespace http { namespace winhttp {
                 while (*p == ' ') p++;
                 contentType = p; 
               }
+              else if (_wcsicmp(L"Content-Disposition", t) == 0) {
+                while (*p == ' ') p++;
+                contentDisposition = p; 
+              }
             }
           }
 
@@ -446,8 +456,11 @@ namespace byps { namespace http { namespace winhttp {
     virtual ~GetRequestContentStream();
     virtual int32_t read(char* buf, int32_t offs, int32_t len);
 
-    virtual const wstring& getContentType() const ;
+    virtual wstring getContentType() const ;
     virtual int64_t getContentLength() const;
+    virtual wstring getContentDisposition() const;
+    virtual wstring getFileName() const;
+    virtual int32_t getAttachmentCode() const;
   
   };
 
@@ -568,12 +581,32 @@ namespace byps { namespace http { namespace winhttp {
     request->close();
   }
 
-  BINLINE const std::wstring& GetRequestContentStream::getContentType() const { 
+  BINLINE std::wstring GetRequestContentStream::getContentType() const { 
     byps_unique_lock lock(request->mutex);
     if (request->ex) throw request->ex;
     request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
     return request->contentType; 
   }
+
+  BINLINE std::wstring GetRequestContentStream::getContentDisposition() const { 
+    byps_unique_lock lock(request->mutex);
+    if (request->ex) throw request->ex;
+    request->waitForHeadersAvailable.wait(lock, [this](){ return request->statusCode != 0; });
+    wstring s = request->contentDisposition; 
+    const_cast<GetRequestContentStream*>(this)->setContentDisposition(s);
+    return s;
+  }
+
+  BINLINE std::wstring GetRequestContentStream::getFileName() const { 
+    getContentDisposition(); // sets fileName
+    return BContentStream::getFileName();
+  }
+
+  BINLINE int32_t GetRequestContentStream::getAttachmentCode() const { 
+    getContentDisposition(); // sets attachment code
+    return BContentStream::getAttachmentCode();
+  }
+
 
   BINLINE int64_t GetRequestContentStream::getContentLength() const {
     byps_unique_lock lock(request->mutex);
@@ -697,6 +730,7 @@ namespace byps { namespace http { namespace winhttp {
       contentLength = (int64_t)stream->getContentLength();
       if (contentLength < 0) m_eChunkState = EChunkState::Chunked;
       contentType = stream->getContentType();
+      contentDisposition = stream->getContentDisposition();
       sendRequest();
     }
 

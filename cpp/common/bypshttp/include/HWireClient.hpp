@@ -562,10 +562,9 @@ namespace byps { namespace http {
     return wss.str();
   }
 
-  class MyContentStream : public BContentStream {
+  class MyContentStream : public BContentStreamWrapper {
     std::wstring url;
     PWireClient_RequestsToCancel requestsToCancel;
-    PContentStream innerStream;
     byps_weak_ptr<HHttpClient> httpClient;
     int32_t timeoutSeconds;
     static BLogger log;
@@ -588,14 +587,11 @@ namespace byps { namespace http {
       l_debug << L"ctor(targetId=" << targetId << L")";
     }
 
-    void ensureOpen() const {
-
-      if (innerStream) return;
-      l_debug << L"ensureOpen(";
+    virtual PContentStream openStream() {
+      l_debug << L"openStream(";
 
       PHttpClient httpClient = this->httpClient.lock();
       if (httpClient) {
-        MyContentStream* pThis = const_cast<MyContentStream*>(this);
 
         std::wstringstream ssurl;
         ssurl << url 
@@ -610,29 +606,23 @@ namespace byps { namespace http {
         requestsToCancel->add(id, streamRequest);
 
         l_debug << L"send stream request";
-        pThis->innerStream = streamRequest->send();
+        innerStream = streamRequest->send();
+        copyProperties(innerStream);
 
-        pThis->copyProperties(pThis->innerStream);
       }
       else {
         l_debug << L"HTTP client already released";
         throw BException(BExceptionC::CANCELLED, L"HTTP client already released.");
       }
-      l_debug << L")ensureOpen";
+      l_debug << L")openStream";
+
+      return innerStream;
     }
 
     virtual ~MyContentStream() {
       l_debug << L"dtor(";
       requestsToCancel->remove(id);
       l_debug << L")dtor";
-    }
-
-    virtual int32_t read(char* buf, int32_t offs, int32_t len) {
-      ensureOpen();
-      l_debug << L"read(buf=" << (void*)buf << L", offs=" << offs << L", len=" << len;
-      int32_t ret = innerStream->read(buf, offs, len);
-      l_debug << L")read=" << ret;
-      return ret;
     }
 
   };

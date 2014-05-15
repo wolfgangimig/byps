@@ -104,7 +104,7 @@ namespace byps
             }
 
             buf.putLong(version);
-            targetId.write(buf);
+            targetId.write(buf, bversion);
             buf.putLong(messageId);
         }
 
@@ -119,7 +119,7 @@ namespace byps
             }
 
             version = buf.getLong();
-            targetId = BTargetId.read(buf);
+            targetId = BTargetId.read(buf, bversion);
             messageId = buf.getLong();
          }
 
