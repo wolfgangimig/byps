@@ -52,8 +52,8 @@ import byps.test.api.prim.PrimitiveTypes;
 public class TestUtils {
 
 	private static Log log = LogFactory.getLog(TestUtils.class);
-	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
-	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
+	public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
+	//public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	public static boolean TEST_LARGE_STREAMS = false;
 	
 	public static BTransport createTransport() {
@@ -599,7 +599,7 @@ public class TestUtils {
 			this.chunked = chunked;
 			
 			super.fileName = "file-" + nbOfBytes + ".txt";
-			super.attachment = nbOfBytes > 10000;
+			super.attachmentCode = nbOfBytes > 10000 ? ATTACHMENT : INLINE;
 			
 			super.contentType = "application/byps-" + nbOfBytes;
 			super.contentLength  =chunked ? -1L : nbOfBytes;

@@ -22,10 +22,10 @@ public class BSerializer_15 extends BSerializer {
 
     if (withProps) {
       bstream.getTargetId().write(bout.bbuf.getBuffer());
-      bout.bbuf.putLong(bstream.getContentLength());
-      bout.bbuf.putString(bstream.getContentType());
-      bout.bbuf.putBoolean(bstream.isAttachment());
-      bout.bbuf.putString(bstream.getFileName());
+//      bout.bbuf.putLong(bstream.getContentLength());
+//      bout.bbuf.putString(bstream.getContentType());
+//      bout.bbuf.putBoolean(bstream.isAttachment());
+//      bout.bbuf.putString(bstream.getFileName());
     } else {
       bout.bbuf.putLong(targetId.getStreamId());
     }
@@ -43,10 +43,10 @@ public class BSerializer_15 extends BSerializer {
 
     if (withProps) {
       targetId = BTargetId.read(bin.bbuf.getBuffer());
-      contentLength = bin.bbuf.getLong();
-      contentType = bin.bbuf.getString();
-      attachment = bin.bbuf.getBoolean();
-      fileName = bin.bbuf.getString();
+//      contentLength = bin.bbuf.getLong();
+//      contentType = bin.bbuf.getString();
+//      attachment = bin.bbuf.getBoolean();
+//      fileName = bin.bbuf.getString();
     } else {
       final long streamId = bin.bbuf.getLong();
       final int serverId = bin1.transport.getTargetId().serverId;
@@ -57,11 +57,11 @@ public class BSerializer_15 extends BSerializer {
     try {
       BContentStream strm = bin.transport.getWire().getStream(targetId);
       bin.onObjectCreated(strm);
-      strm.setContentLength(contentLength);
-      strm.setContentType(contentType);
-      strm.setAttachment(attachment);
-      strm.setFileName(fileName);
-      strm.setPropertiesValid(withProps);
+//      strm.setContentLength(contentLength);
+//      strm.setContentType(contentType);
+//      strm.setAttachment(attachment);
+//      strm.setFileName(fileName);
+//      strm.setPropertiesValid(withProps);
       
       return strm;
     } catch (IOException e) {

@@ -15,7 +15,10 @@ public abstract class BContentStream extends InputStream {
 	/**
 	 * Default content type: application/octet-stream
 	 */
-	public final static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
+  public final static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
+  
+  public final static int ATTACHMENT = 1;
+  public final static int INLINE = 2;
 
 	/**
 	 * Constructor with content type and length.
@@ -24,7 +27,7 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public BContentStream(String contentType, long contentLength) {
 		this.lifetimeMillis = 0;
-		this.contentType = contentType != null && contentType.length() != 0 ? contentType : DEFAULT_CONTENT_TYPE;
+		this.contentType = contentType;
 		this.contentLength = contentLength;
 		extendLifetime();
 	}
@@ -37,7 +40,7 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public BContentStream(String contentType, long contentLength, long lifetimeMillis) {
 		this.lifetimeMillis = lifetimeMillis;
-		this.contentType = contentType != null && contentType.length() != 0 ? contentType : DEFAULT_CONTENT_TYPE;
+		this.contentType = contentType;
 		this.contentLength = contentLength;
 		extendLifetime();
 	}
@@ -60,14 +63,11 @@ public abstract class BContentStream extends InputStream {
 	 * @see #hasValidProperties()
 	 */
   public void copyProperties(BContentStream rhs) {
-    if (hasValidProperties()) return;
-    if (!rhs.hasValidProperties()) return;
     this.contentType = rhs.contentType;
 		this.contentLength = rhs.contentLength;
-		this.attachment = rhs.attachment;
+		this.attachmentCode = rhs.attachmentCode;
 		this.fileName = rhs.fileName;
 		this.targetId = rhs.targetId;
-		this.propertiesValid = true;
   }
 	
 	/**
@@ -75,7 +75,7 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public BContentStream() {
 		this.lifetimeMillis = 0;
-		this.contentType = DEFAULT_CONTENT_TYPE;
+		this.contentType = "";
 		this.contentLength = -1L;
 	}
 	
@@ -85,7 +85,9 @@ public abstract class BContentStream extends InputStream {
 	 * @return Content type.
 	 */
 	public String getContentType() {
-		return contentType; // e.g. "text/plain; charset=utf-8"
+	  String s = contentType;
+		return s != null && s.length() != 0 ? s : DEFAULT_CONTENT_TYPE; 
+		// e.g. "text/plain; charset=utf-8"
 	}
 	
 	/**
@@ -222,7 +224,7 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public BContentStream setContentDisposition(String fileName, boolean attachment) {
     this.fileName = fileName;
-    this.attachment = attachment;
+    this.attachmentCode = attachment ? ATTACHMENT : INLINE;
     return this;
 	}
 	
@@ -257,7 +259,7 @@ public abstract class BContentStream extends InputStream {
    */
  	public String getContentDisposition() {
     StringBuilder sbuf = new StringBuilder();
-    sbuf.append( isAttachment() ? "attachment;" : "inline;" );
+    sbuf.append( getAttachmentCode() == ATTACHMENT ? "attachment;" : "inline;" );
     final String fileName = getFileName();
     if (fileName != null && fileName.length() != 0) {
       sbuf.append(" filename=");
@@ -273,18 +275,17 @@ public abstract class BContentStream extends InputStream {
  	 * Get content disposition attachment.
  	 * @return true, if the browser should open this stream as an attachment.
  	 */
-  public boolean isAttachment() {
-    return attachment;
+  public int getAttachmentCode() {
+    return attachmentCode;
   }
   
   /**
    * Set content disposition attachment.
-   * @param att true, if the browser should open this stream as an attachment.
+   * @param attachment code, {@link BContentStream#ATTACHMENT} or {@link BContentStream#INLINE}.
    * @return this;
    */
-  public BContentStream setAttachment(boolean att) {
-    attachment = att;
-    return this;
+  public void setAttachment(int att) {
+    attachmentCode = att;
   }
   
   /**
@@ -313,18 +314,6 @@ public abstract class BContentStream extends InputStream {
     this.targetId = targetId;
   }
   
-  /**
-   * Returns true, if the properties are valid.
-   * @return true, if the properties are valid
-   */
-  public boolean hasValidProperties() {
-    return propertiesValid;
-  }
-  
-  public void setPropertiesValid(boolean b) {
-    propertiesValid = b;
-  }
-
   @Override
   public void close() throws IOException {
     super.close();
@@ -335,9 +324,8 @@ public abstract class BContentStream extends InputStream {
 	protected volatile String contentType;
 	protected volatile long contentLength = -1L;
 	protected volatile String fileName;
-	protected volatile boolean attachment;
+	protected volatile int attachmentCode;
 	protected volatile BTargetId targetId = BTargetId.ZERO;
-	protected volatile boolean propertiesValid;
 
 	protected volatile BContentStreamAsyncCallback callback;
 	
