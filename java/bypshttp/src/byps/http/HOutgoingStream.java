@@ -3,10 +3,6 @@ package byps.http;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import byps.BContentStream;
 import byps.BContentStreamWrapper;
@@ -25,11 +21,13 @@ public class HOutgoingStream extends BContentStreamWrapper {
 	
 	public InputStream ensureStream() throws IOException {
 		if (innerStream instanceof BContentStreamWrapper) {
-		  ((BContentStreamWrapper)innerStream).ensureStream();
+		  BContentStreamWrapper bstream = (BContentStreamWrapper)innerStream;
+		  bstream.ensureStream();
+		  copyProperties(bstream);
 		}
 		return innerStream;
 	}
-
+	
   @Override
   public synchronized BContentStream materialize() throws BException {
     HIncomingStreamSync istrm = null;

@@ -78,7 +78,12 @@ public class BContentStreamWrapper extends BContentStream {
     ensureStream();
     return this;
   }
-  	
+
+  @Override
+  public void ensureProperties() throws IOException {
+    ensureStream();
+  }
+  
 	protected InputStream openStream() throws IOException {
 		return this.innerStream;
 	}
@@ -123,81 +128,81 @@ public class BContentStreamWrapper extends BContentStream {
     }
   }
   
-	@Override
-  public String getContentType() {
-    String s = contentType;
-    if (s != null && s.length() != 0) return s;
-    InputStream is;
-    try {
-      
-      is = ensureStream();
-      s = contentType;
-      if (s != null && s.length() != 0) return s;
-      
-      if (is instanceof BContentStream) {
-        contentType = s = ((BContentStream)is).getContentType();
-      }    
-    }
-    catch (IOException e) {}
-    return s;
-  }
-
-  @Override
-  public long getContentLength() {
-    long s = contentLength;
-    if (s >= 0) return s;
-    InputStream is;
-    try {
-
-      is = ensureStream();
-      s = contentLength;
-      if (s >= 0) return s;
-
-      if (is instanceof BContentStream) {
-        contentLength = s = ((BContentStream)is).getContentLength();
-      }    
-    }
-    catch (IOException e) {}
-    return s;
-  }
-
-  @Override
-  public int getAttachmentCode() {
-    int s = attachmentCode;
-    if (s != 0) return s;
-    InputStream is;
-    try {
-
-      is = ensureStream();
-      s = attachmentCode;
-      if (s >= 0) return s;
-
-      if (is instanceof BContentStream) {
-        attachmentCode = s = ((BContentStream)is).getAttachmentCode();
-      }    
-    }
-    catch (IOException e) {}
-    return s;
-  }
-
-  @Override
-  public String getFileName() {
-    String s = fileName;
-    if (s != null && s.length() != 0) return s;
-    InputStream is;
-    try {
-      
-      is = ensureStream();
-      s = fileName;
-      if (s != null && s.length() != 0) return s;
-
-      if (is instanceof BContentStream) {
-        fileName = s = ((BContentStream)is).getFileName();
-      }    
-    }
-    catch (IOException e) {}
-    return s;
-  }
+//	@Override
+//  public String getContentType() {
+//    String s = contentType;
+//    if (s != null && s.length() != 0) return s;
+//    InputStream is;
+//    try {
+//      
+//      is = ensureStream();
+//      s = contentType;
+//      if (s != null && s.length() != 0) return s;
+//      
+//      if (is instanceof BContentStream) {
+//        contentType = s = ((BContentStream)is).getContentType();
+//      }    
+//    }
+//    catch (IOException e) {}
+//    return s;
+//  }
+//
+//  @Override
+//  public long getContentLength() {
+//    long s = contentLength;
+//    if (s >= 0) return s;
+//    InputStream is;
+//    try {
+//
+//      is = ensureStream();
+//      s = contentLength;
+//      if (s >= 0) return s;
+//
+//      if (is instanceof BContentStream) {
+//        contentLength = s = ((BContentStream)is).getContentLength();
+//      }    
+//    }
+//    catch (IOException e) {}
+//    return s;
+//  }
+//
+//  @Override
+//  public int getAttachmentCode() {
+//    int s = attachmentCode;
+//    if (s != 0) return s;
+//    InputStream is;
+//    try {
+//
+//      is = ensureStream();
+//      s = attachmentCode;
+//      if (s >= 0) return s;
+//
+//      if (is instanceof BContentStream) {
+//        attachmentCode = s = ((BContentStream)is).getAttachmentCode();
+//      }    
+//    }
+//    catch (IOException e) {}
+//    return s;
+//  }
+//
+//  @Override
+//  public String getFileName() {
+//    String s = fileName;
+//    if (s != null && s.length() != 0) return s;
+//    InputStream is;
+//    try {
+//      
+//      is = ensureStream();
+//      s = fileName;
+//      if (s != null && s.length() != 0) return s;
+//
+//      if (is instanceof BContentStream) {
+//        fileName = s = ((BContentStream)is).getFileName();
+//      }    
+//    }
+//    catch (IOException e) {}
+//    return s;
+//  }
 
   @Override
 	public int read() throws IOException {

@@ -47,7 +47,7 @@ public abstract class BContentStream extends InputStream {
 	
 	/**
 	 * Internally used copy constructor.
-	 * Does not copy lifetimeMillis.
+	 * Copies the stream properties (contentType, etc.).
 	 * @param rhs
 	 */
 	public BContentStream(BContentStream rhs, long lifetimeMillis) {
@@ -69,7 +69,7 @@ public abstract class BContentStream extends InputStream {
 		this.fileName = rhs.fileName;
 		this.targetId = rhs.targetId;
   }
-	
+  
 	/**
 	 * Default constructor.
 	 */
@@ -80,13 +80,23 @@ public abstract class BContentStream extends InputStream {
 	}
 	
 	/**
+	 * Ensure that stream properties are valid.
+	 * This function ensures, that the properties contentType, contentLength, attachmentCode and fileName
+	 * are valid. This function may start to read the stream.
+	 * @throws IOException
+	 */
+  public void ensureProperties() throws IOException {
+  }
+	
+	/**
 	 * Returns the content type.
 	 * This value is used as HTTP header Content-Type.
+	 * @see #ensureProperies()
 	 * @return Content type.
 	 */
 	public String getContentType() {
 	  String s = contentType;
-		return s != null && s.length() != 0 ? s : DEFAULT_CONTENT_TYPE; 
+		return s != null ? s : ""; 
 		// e.g. "text/plain; charset=utf-8"
 	}
 	
@@ -104,6 +114,7 @@ public abstract class BContentStream extends InputStream {
 	 * This value is used as HTTP Header Content-Length.
 	 * This function returns -1L, if the content length is unknown.
 	 * @return Content length.
+   * @see #ensureProperies()
 	 */
 	public long getContentLength() {
 		return contentLength; 
@@ -113,6 +124,7 @@ public abstract class BContentStream extends InputStream {
 	 * Set content length
 	 * @param v Content-Length header value
 	 * @return this
+   * @see #ensureProperies()
 	 */
 	public void setContentLength(long v) {
 	  contentLength = v;
@@ -255,6 +267,7 @@ public abstract class BContentStream extends InputStream {
   /**
    * Get HTTP header Content-Disposition.
    * @return HTTP header Content-Disposition.
+   * @see #ensureProperies()
    */
  	public String getContentDisposition() {
     StringBuilder sbuf = new StringBuilder();
@@ -273,6 +286,7 @@ public abstract class BContentStream extends InputStream {
  	/**
  	 * Get content disposition attachment.
  	 * @return true, if the browser should open this stream as an attachment.
+   * @see #ensureProperies()
  	 */
   public int getAttachmentCode() {
     return attachmentCode;
@@ -283,13 +297,14 @@ public abstract class BContentStream extends InputStream {
    * @param attachment code, {@link BContentStream#ATTACHMENT} or {@link BContentStream#INLINE}.
    * @return this;
    */
-  public void setAttachment(int att) {
+  public void setAttachmentCode(int att) {
     attachmentCode = att;
   }
   
   /**
    * Get file name.
    * @return file name.
+   * @see #ensureProperies()
    */
   public String getFileName() {
     return fileName;

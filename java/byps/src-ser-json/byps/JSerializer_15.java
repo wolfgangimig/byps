@@ -18,14 +18,10 @@ public class JSerializer_15 extends JSerializer_Object {
 		BContentStream bstream = bout.createStreamRequest(is);
 		bout.bbuf.putLong("streamId", bstream.getTargetId().getStreamId());
 		bout.bbuf.putString("targetId", bstream.getTargetId().toString());
-//    bout.bbuf.putLong("contentLength", bstream.getContentLength());
-//    bout.bbuf.putString("contentType", bstream.getContentType());
-//    bout.bbuf.putBoolean("attachment", bstream.isAttachment());
-//    
-//    // Transfer a non-null fileName to be able to detect in internalRead()
-//    // whether the properties are valid.
-//    final String fileName = bstream.getFileName();
-//    bout.bbuf.putString("fileName", fileName != null ? fileName : "");
+    bout.bbuf.putLong("contentLength", bstream.getContentLength());
+    bout.bbuf.putString("contentType", bstream.getContentType());
+    bout.bbuf.putInt("attachment", bstream.getAttachmentCode());
+    bout.bbuf.putString("fileName", bstream.getFileName());
 	}
 
 	@Override
@@ -46,19 +42,15 @@ public class JSerializer_15 extends JSerializer_Object {
     
 		try {
 			BContentStream strm = bin.transport.getWire().getStream(targetId);
-			
-//			final boolean hasFileName = bin.currentObject.get("fileName") != null;
-//			if (hasFileName) {
-//	      final String contentType = bin.currentObject.getString("contentType");
-//        final long contentLength = bin.currentObject.getLong("contentLength");
-//        final boolean attachment = bin.currentObject.getBoolean("attachment");
-//        final String fileName = bin.currentObject.getString("fileName");
-//        strm.setContentType(contentType);
-//        strm.setContentLength(contentLength);
-//        strm.setAttachment(attachment);
-//        strm.setFileName(fileName);
-//        strm.setPropertiesValid(true);
-//			}
+      final boolean hasFileName = bin.currentObject.get("fileName") != null;
+      final String contentType = bin.currentObject.getString("contentType");
+      final long contentLength = bin.currentObject.getLong("contentLength");
+      final int attachmentCode = bin.currentObject.getInt("attachment");
+      final String fileName = bin.currentObject.getString("fileName");
+      strm.setContentType(contentType);
+      strm.setContentLength(contentLength);
+      strm.setAttachmentCode(attachmentCode);
+      strm.setFileName(fileName);
 		    
 			bin.onObjectCreated(strm);
 			return strm;

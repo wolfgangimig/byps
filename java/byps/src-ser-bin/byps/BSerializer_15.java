@@ -21,7 +21,11 @@ public class BSerializer_15 extends BSerializer {
     final boolean withProps = bout.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
     if (withProps) {
-      bstream.getTargetId().write(bout.bbuf.getBuffer(), bout1.header.bversion);
+      bstream.getTargetId().write(bout.bbuf.getBuffer(), bout.header.bversion);
+      bout.bbuf.putLong(bstream.getContentLength());
+      bout.bbuf.putString(bstream.getContentType());
+      bout.bbuf.putInt(bstream.getAttachmentCode());
+      bout.bbuf.putString(bstream.getFileName());
     } else {
       bout.bbuf.putLong(targetId.getStreamId());
     }
@@ -31,10 +35,18 @@ public class BSerializer_15 extends BSerializer {
   public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
     BInputBin bin = ((BInputBin) bin1);
     BTargetId targetId = null;
+    long contentLength = 0;
+    String contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+    int attachmentCode = 0;
+    String fileName = null;
     final boolean withProps = bin1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
     if (withProps) {
       targetId = BTargetId.read(bin.bbuf.getBuffer(), bin1.header.bversion);
+      contentLength = bin.bbuf.getLong();
+      contentType = bin.bbuf.getString();
+      attachmentCode = bin.bbuf.getInt();
+      fileName = bin.bbuf.getString();
     } else {
       final long streamId = bin.bbuf.getLong();
       final int serverId = bin1.transport.getTargetId().getServerId();
@@ -45,6 +57,11 @@ public class BSerializer_15 extends BSerializer {
     try {
       BContentStream strm = bin.transport.getWire().getStream(targetId);
       bin.onObjectCreated(strm);
+      strm.setContentLength(contentLength);
+      strm.setContentType(contentType);
+      strm.setAttachmentCode(attachmentCode);
+      strm.setFileName(fileName);
+      
       return strm;
     } catch (IOException e) {
       throw new BException(BExceptionC.IOERROR, e.getMessage());
