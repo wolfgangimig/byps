@@ -35,7 +35,7 @@ public class BSerializer_15 extends BSerializer {
   public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
     BInputBin bin = ((BInputBin) bin1);
     BTargetId targetId = null;
-    long contentLength = 0;
+    long contentLength = -1;
     String contentType = BContentStream.DEFAULT_CONTENT_TYPE;
     int attachmentCode = 0;
     String fileName = null;

@@ -29,6 +29,10 @@ namespace byps
             if (withProps)
             {
                 bstream.TargetId.write(bout.bbuf.getBuffer(), bout1.header.bversion);
+                bout.bbuf.putLong(bstream.ContentLength);
+                bout.bbuf.putString(bstream.ContentType);
+                bout.bbuf.putInt(bstream.AttachmentCode);
+                bout.bbuf.putString(bstream.FileName);
             }
             else
             {
@@ -40,11 +44,19 @@ namespace byps
         {
             BInputBin bin = ((BInputBin)bin1);
             BTargetId targetId = null;
+            long contentLength = -1;
+            String contentType = BContentStream.DEFAULT_CONTENT_TYPE;
+            int attachmentCode = 0;
+            String fileName = "";
             bool withProps = bin1.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
             if (withProps)
             {
                 targetId = BTargetId.read(bin.bbuf.getBuffer(), bin1.header.bversion);
+                contentLength = bin.bbuf.getLong();
+                contentType = bin.bbuf.getString();
+                attachmentCode = bin.bbuf.getInt();
+                fileName = bin.bbuf.getString();
             }
             else
             {
