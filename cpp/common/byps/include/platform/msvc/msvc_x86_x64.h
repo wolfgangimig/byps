@@ -53,13 +53,13 @@
 namespace byps {
 
 
-inline bool byps_localtime(struct tm* buf, const std::time_t* t) {
+  inline bool byps_localtime(struct tm* buf, const std::time_t* t) {
     return localtime_s(buf, t) == 0;
-}
+  }
 
-inline bool byps_gmtime(struct tm* buf, const std::time_t* t) {
-	return gmtime_s(buf, t) == 0;
-}
+  inline bool byps_gmtime(struct tm* buf, const std::time_t* t) {
+    return gmtime_s(buf, t) == 0;
+  }
 
 
 }
@@ -78,50 +78,50 @@ inline bool byps_gmtime(struct tm* buf, const std::time_t* t) {
 
 namespace byps {
 
-inline int16_t BSWAP2(register int16_t v) {
-	return _byteswap_ushort((uint16_t)v);
-}
+  inline int16_t BSWAP2(register int16_t v) {
+    return _byteswap_ushort((uint16_t)v);
+  }
 
-inline int32_t BSWAP4(register int32_t v) {
-	return _byteswap_ulong((uint32_t)v);
-}
+  inline int32_t BSWAP4(register int32_t v) {
+    return _byteswap_ulong((uint32_t)v);
+  }
 
-inline int64_t BSWAP8(register int64_t v) {
-	return _byteswap_uint64((uint64_t)v);
-}
+  inline int64_t BSWAP8(register int64_t v) {
+    return _byteswap_uint64((uint64_t)v);
+  }
 
-//inline int16_t BSWAP2(register int16_t v) {
-//	__asm 
-//	{
-//		mov ax, v;
-//		xchg ah, al;
-//		mov v, ax;
-//	}
-//	return v;
-//}
-//
-//inline int32_t BSWAP4(register int32_t v) {
-//	__asm 
-//	{
-//		mov eax, v;
-//		bswap eax;
-//		mov v, eax;
-//	}
-//	return v;
-//}
-//
-//#if _M_X64
-//
-//inline int64_t BSWAP8(register int64_t v) {
-//	__asm 
-//	{
-//		mov rax, v;
-//		bswap rax;
-//		mov v, rax;
-//	}
-//	return v;}
-//
-//#else
+  //inline int16_t BSWAP2(register int16_t v) {
+  //	__asm 
+  //	{
+  //		mov ax, v;
+  //		xchg ah, al;
+  //		mov v, ax;
+  //	}
+  //	return v;
+  //}
+  //
+  //inline int32_t BSWAP4(register int32_t v) {
+  //	__asm 
+  //	{
+  //		mov eax, v;
+  //		bswap eax;
+  //		mov v, eax;
+  //	}
+  //	return v;
+  //}
+  //
+  //#if _M_X64
+  //
+  //inline int64_t BSWAP8(register int64_t v) {
+  //	__asm 
+  //	{
+  //		mov rax, v;
+  //		bswap rax;
+  //		mov v, rax;
+  //	}
+  //	return v;}
+  //
+  //#else
 
 }
 
@@ -139,18 +139,58 @@ inline int64_t BSWAP8(register int64_t v) {
 
 namespace byps {
 
-template<typename _int163264> void writeUnalignedInt163264(void* p, _int163264& v) {
-	*((_int163264*)p) = v;
-}
-template<typename _int163264> void readUnalignedInt163264(void* p, _int163264& v) {
-	v = *((_int163264*)p);
-}
+  template<typename _int163264> void writeUnalignedInt163264(void* p, _int163264& v) {
+    *((_int163264*)p) = v;
+  }
+  template<typename _int163264> void readUnalignedInt163264(void* p, _int163264& v) {
+    v = *((_int163264*)p);
+  }
 
 
 }
 
 
 #endif  // BSERIALIZE_UNALIGNED_FUNCTIONS
+
+#ifndef BFILE_CONTENT_TYPE
+#define BFILE_CONTENT_TYPE
+
+#include <windows.h>
+
+namespace byps {
+
+  inline std::wstring getFileContentType(const std::wstring& fname) {
+    std::wstring contentType;
+
+    std::wstring ext;
+    size_t p = fname.find_last_of(L'.');
+    if (p != std::wstring::npos) {
+      ext = fname.substr(p);
+    }
+    else {
+      ext = fname;
+    }
+
+    HKEY hkey = NULL;
+    if (::RegOpenKeyEx(HKEY_CLASSES_ROOT, ext.c_str(), 0, KEY_READ, &hkey) == ERROR_SUCCESS) {
+      WCHAR buf[100] = {0};
+      DWORD len = sizeof(buf)-2;
+      DWORD err = ::RegQueryValueEx(hkey, L"Content Type", NULL, NULL, (LPBYTE)buf, &len);
+      if (err == ERROR_SUCCESS) {
+        contentType = std::wstring(buf);
+      }
+      ::RegCloseKey(hkey);
+    }
+
+    if (contentType.size() == 0) {
+      contentType = L"application/octet-stream";
+    }
+
+    return contentType;
+  }
+}
+
+#endif // BFILE_CONTENT_TYPE
 
 #endif // _M_IX86...
 
