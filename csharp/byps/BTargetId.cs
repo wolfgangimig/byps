@@ -9,32 +9,58 @@ namespace byps
 {
     public class BTargetId
     {
-        public readonly int serverId;
-	    public readonly long v1;
-	    public readonly long v2;
+        private readonly int serverId;
+        private readonly int remoteId;
+	    private readonly long v1;
+	    private readonly long v2;
+        private readonly long signature;
 
         public static readonly BTargetId ZERO = new BTargetId();
 
         public BTargetId(int serverId, long v1, long v2)
+            : this(serverId, 0, v1, v2, 0)
+        {
+        }
+
+        public BTargetId(int serverId, int remoteId, long v1, long v2, long signature)
         {
             this.serverId = serverId;
+            this.remoteId = remoteId;
             this.v1 = v1;
             this.v2 = v2;
+            this.signature = signature;
         }
-	
-	    public BTargetId() {
-            serverId = 0;
-		    v1 = v2 = 0;
+
+        public BTargetId()
+        {
 	    }
-	
+
 	    public bool isZero() {
             return serverId == 0 && v1 == 0 && v2 == 0;
 	    }
+
+        public int getServerId()
+        {
+            return serverId;
+        }
+        public int getRemoteId()
+        {
+            return remoteId;
+        }
+        public long getSignature()
+        {
+            return signature;
+        }
 	
 	    public void write(ByteBuffer buf, int bversion) {
             buf.putInt(serverId);
 		    buf.putLong(v1);
 		    buf.putLong(v2);
+            if (bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID)
+            {
+                buf.putInt(remoteId);
+                buf.putLong(signature);
+            }
 	    }
 
         public static BTargetId read(ByteBuffer buf, int bversion)
@@ -42,19 +68,46 @@ namespace byps
             int serverId = buf.getInt();
 		    long v1 = buf.getLong();
 		    long v2 = buf.getLong();
-		    return new BTargetId(serverId, v1,v2);
+            int remoteId = 0;
+            long signature = 0;
+            if (bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID)
+            {
+                remoteId = buf.getInt();
+                signature = buf.getLong();
+            }
+		    return new BTargetId(serverId, remoteId, v1,v2, signature);
 	    }
 
-	    public override String ToString() {
-		    if (isZero()) return "";
-		    StringBuilder builder = new StringBuilder();
+        public override String ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append('[');
             builder.Append(serverId).Append('.');
             builder.Append(v1).Append('.');
             builder.Append(v2);
+            if (remoteId != 0)
+            {
+                builder.Append(remoteId).Append('.').Append(signature);
+            }
+            builder.Append(']');
             return builder.ToString();
-	    }
-	
-	    public static BTargetId parseString(String s) {
+        }
+
+        //public String makeHeaderString()
+        //{
+        //    StringBuilder builder = new StringBuilder();
+        //    builder.Append(serverId).Append('.');
+        //    builder.Append(v1).Append('.');
+        //    builder.Append(v2);
+        //    if (remoteId != 0)
+        //    {
+        //        builder.Append(remoteId).Append('.').Append(signature);
+        //    }
+        //    return builder.ToString();
+        //}
+
+        public static BTargetId parseString(String s)
+        {
             int serverId = 0;
             long v1 = 0, v2 = 0;
             int p = s.IndexOf('.');

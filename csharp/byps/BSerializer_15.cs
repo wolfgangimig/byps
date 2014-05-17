@@ -61,7 +61,7 @@ namespace byps
             else
             {
                 long streamId = bin.bbuf.getLong();
-                int serverId = bin1.transport.getTargetId().serverId;
+                int serverId = bin1.transport.getTargetId().getServerId();
                 long messageId = bin1.header.messageId;
                 targetId = new BTargetId(serverId, messageId, streamId);
             }

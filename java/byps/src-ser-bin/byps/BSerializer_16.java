@@ -23,6 +23,7 @@ public class BSerializer_16 extends BSerializer {
       // server side
       if (bout1.header.bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
         try {
+          targetId = targetId.bindCopyToRemote(typeId);
           targetId = rreg.encryptTargetId(targetId, true);
         } catch (RemoteException e) {
           throw new BException(BExceptionC.INTERNAL, e.toString(), e);

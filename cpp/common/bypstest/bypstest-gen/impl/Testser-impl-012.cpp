@@ -1356,20 +1356,8 @@ void BStub_PlantService::grow(::std::function< void (::std::wstring, BException 
 
 // checkpoint byps.gen.cpp.GenRemoteStub:224
 namespace byps { namespace test { namespace api { 
-void BSerializer_1954605928(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new byps::test::api::inherit::BStub_PlantService(transport));
-	}
-	else {
-		BRemote* r = dynamic_cast<BRemote*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
-	}
+void BSerializer_1954605928(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved){
+	BSerializer_16_Template<byps::test::api::inherit::BStub_PlantService, 1954605928>(bio, pObj, pObjS, reserved);
 }
 }}}
 
@@ -1412,20 +1400,8 @@ void BStub_FruitService::squeeze(::std::function< void (::std::wstring, BExcepti
 
 // checkpoint byps.gen.cpp.GenRemoteStub:224
 namespace byps { namespace test { namespace api { 
-void BSerializer_715959905(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new byps::test::api::inherit::BStub_FruitService(transport));
-	}
-	else {
-		BRemote* r = dynamic_cast<BRemote*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
-	}
+void BSerializer_715959905(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved){
+	BSerializer_16_Template<byps::test::api::inherit::BStub_FruitService, 715959905>(bio, pObj, pObjS, reserved);
 }
 }}}
 
@@ -1480,4 +1456,11 @@ void BStub_BioFruitService::squeeze(::std::function< void (::std::wstring, BExce
 	transport->sendMethod(req, outerResult);
 }
 }}}}
+
+// checkpoint byps.gen.cpp.GenRemoteStub:224
+namespace byps { namespace test { namespace api { 
+void BSerializer_363642571(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved){
+	BSerializer_16_Template<byps::test::api::inherit::BStub_BioFruitService, 363642571>(bio, pObj, pObjS, reserved);
+}
+}}}
 

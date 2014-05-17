@@ -17,7 +17,7 @@ public class JSerializer_15 extends JSerializer_Object {
 		InputStream is = (InputStream)obj;
 		BContentStream bstream = bout.createStreamRequest(is);
 		bout.bbuf.putLong("streamId", bstream.getTargetId().getStreamId());
-		bout.bbuf.putString("targetId", bstream.getTargetId().toString());
+		bout.bbuf.putString("targetId", bstream.getTargetId().makeSerializeString(bout.header.bversion));
     bout.bbuf.putLong("contentLength", bstream.getContentLength());
     bout.bbuf.putString("contentType", bstream.getContentType());
     bout.bbuf.putInt("attachment", bstream.getAttachmentCode());
@@ -42,7 +42,6 @@ public class JSerializer_15 extends JSerializer_Object {
     
 		try {
 			BContentStream strm = bin.transport.getWire().getStream(targetId);
-      final boolean hasFileName = bin.currentObject.get("fileName") != null;
       final String contentType = bin.currentObject.getString("contentType");
       final long contentLength = bin.currentObject.getLong("contentLength");
       final int attachmentCode = bin.currentObject.getInt("attachment");

@@ -84,8 +84,8 @@ public class BConvert {
 	/**
 	 * API Classes must not define members with this names.
 	 */
-	public final static HashSet<String> FORBIDDEN_FIELD_NAMES = new HashSet<String>(
-			Arrays.asList("_typeId"));
+	public final static HashSet<String> FORBIDDEN_FIELD_AND_METHOD_NAMES = new HashSet<String>(
+			Arrays.asList("_typeId", "__byps__ret", "__byps__asyncResult", "toJSON"));
 
 	/**
 	 * Evaluate the javadoc objects and create an internal representation of the API.
@@ -510,7 +510,7 @@ public class BConvert {
 		errInfo = errInfo.copy();
 		
 		String name = field.name();
-		if (FORBIDDEN_FIELD_NAMES.contains(name)) {
+		if (FORBIDDEN_FIELD_AND_METHOD_NAMES.contains(name)) {
 			errInfo.fieldName = name;
 			errInfo.msg = "Forbidden field name";
 			throw new GeneratorException(errInfo);
@@ -976,8 +976,13 @@ public class BConvert {
 		ArrayList<CommentInfo> cinfos = new ArrayList<CommentInfo>();
 		addSummaryAndRemarksCommentInfo(method, cinfos);
 		
-		errInfo.methodName = method.name();
-		
+		String name = errInfo.methodName = method.name();
+    if (FORBIDDEN_FIELD_AND_METHOD_NAMES.contains(name)) {
+      errInfo.fieldName = name;
+      errInfo.msg = "Forbidden method name";
+      throw new GeneratorException(errInfo);
+    }
+
 		long since = getSince(errInfo, method.tags());
 		
 		SerialInfo requestInfo = makeMethodRequest(errInfo, remoteName, remoteQName, method);

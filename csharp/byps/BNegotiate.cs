@@ -72,7 +72,7 @@ namespace byps
                 .Append("\"S\",") // Binary Stream
                 .Append("\"").Append(BVersioning.longToString(version)).Append("\"").Append(",")
                 .Append("\"L\"").Append(",") // Little Endian
-                .Append("\"").Append((targetId != null ? targetId : new BTargetId()).ToString()).Append("\"");
+                .Append("\"\"");
 
             if (bversion != 0)
             {

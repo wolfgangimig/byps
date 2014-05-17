@@ -224,34 +224,18 @@ class GenRemoteStub {
 	  prC.checkpoint();
 	  
 		String className = cppInfo.getQClassName();
-		String remoteClassName = new TypeInfoCpp(rinfo, pctxt.apiPack).getQClassName();
 		
 		TypeInfoCpp regCppInfo = pctxt.getRegistryTypeInfoCpp(BBinaryModel.MEDIUM);
 		prC.println(regCppInfo.namespaceBegin);
 		
 		prC.print("void ").print("BSerializer_" + rinfo.typeId)
-			.print("(BIO& bio, POBJECT& , PSerializable& pObjS, void* )").println("{");
+			.print("(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved)").println("{");
 		prC.beginBlock();
 		
-		prC.println("BSerializable* p = pObjS.get();");
-		
-		prC.println("if (bio.is_loading) {");
-		prC.beginBlock();
-		prC.println("if (p) return;");
-		prC.println("BTargetId targetId;");
-		prC.println("bio & targetId;");
-		prC.println("PTransport transport(new BTransport(*bio.transport, targetId));");
-		prC.print("pObjS = PSerializable(new ").print(className).print("(transport));").println();
-		prC.endBlock();
-		prC.println("}");
-		prC.println("else {");
-		prC.beginBlock();
-		prC.print("BRemote* r = ").print("dynamic_cast<BRemote*>(p);").println();
-		prC.println("BTargetId targetId = r->BRemote_getTargetId();");
-		prC.println("bio & targetId;");
-		prC.endBlock();
-		prC.println("}");
-		
+		prC.print("BSerializer_16_Template<").print(className)
+		  .print(", " + rinfo.typeId)
+		  .println(">(bio, pObj, pObjS, reserved);");
+
 		prC.endBlock();
 		prC.println("}");
 		

@@ -57,12 +57,12 @@ namespace byps {
     std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
     BException lastAuthenticationException;
 
-    void setAuthentication(PAuthentication auth);
+    void setAuthentication(const PAuthentication& auth);
     bool hasAuthentication();
 
-    void assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult);
-    void loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult);
-    BTYPEID getObjectTypeId(PSerializable ser);
+    void assignSessionThenSendMethod(const PSerializable& requestObject, const PAsyncResult& asyncResult);
+    void loginAndRetrySend(const PSerializable& requestObject, const PAsyncResult& asyncResult);
+    BTYPEID getObjectTypeId(const PSerializable& ser);
 
     friend class BTransport_DeserlializeMethodResultMaybeRelogin;
     friend class BTransport_InternalAuthenticate_BAsyncResult;

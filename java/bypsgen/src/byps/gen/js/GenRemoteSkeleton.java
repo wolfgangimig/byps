@@ -119,9 +119,6 @@ class GenRemoteSkeleton {
 		pr.println("this.transport = null; // is set in BServer.addRemote");
 		pr.println();
 		
-		printToJSON();
-		pr.println();
-		
 		pr.println();
 		
 		pr.endBlock();
@@ -129,6 +126,9 @@ class GenRemoteSkeleton {
 		pr.println("};");
 		pr.println();
 
+    printToJSON();
+    pr.println();
+    		
     HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
     pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
     for (RemoteInfo r : remotes.values()) {
@@ -151,7 +151,8 @@ class GenRemoteSkeleton {
   }
 
 	private void printToJSON() {
-		pr.println("this.toJSON = function (key) {");
+	  String className = pctxt.getSkeletonClassQName(rinfo, "");
+		pr.print(className).println(".prototype.toJSON = function (key) {");
 		pr.beginBlock();
 		pr.print("return { _typeId : ").print(rinfo.typeId).print(", targetId : this.transport.targetId.toString() };").println();
 		pr.endBlock();

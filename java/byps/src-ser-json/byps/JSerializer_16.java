@@ -24,6 +24,7 @@ public class JSerializer_16 extends BSerializer {
       // server side
       if (bout1.header.bversion >= BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID) {
         try {
+          targetId = targetId.bindCopyToRemote(typeId);
           targetId = rreg.encryptTargetId(targetId, true);
         } catch (RemoteException e) {
           throw new BException(BExceptionC.INTERNAL, e.toString(), e);
@@ -33,7 +34,7 @@ public class JSerializer_16 extends BSerializer {
 
     bbuf.beginObject();
 		bbuf.putInt("_typeId", typeId);
-		bbuf.putString("targetId", targetId.toString(bout1.header.bversion));
+		bbuf.putString("targetId", targetId.makeSerializeString(bout1.header.bversion));
 		bbuf.endObject();
 	}
 

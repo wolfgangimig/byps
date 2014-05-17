@@ -15,7 +15,8 @@ namespace byps
         private const int MAGIC_JSON_SINGLE_QUOTE = ((int)'{' << 24) | ((int)'\'' << 16) | ((int)'h' << 8) | ((int)'e');
 
         public const int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
-        public const int BYPS_VERSION_CURRENT = BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
+        public const int BYPS_VERSION_ENCRYPTED_TARGETID = 2;
+        public const int BYPS_VERSION_CURRENT = BYPS_VERSION_ENCRYPTED_TARGETID;
 
         public const int FLAG_BYPS_VERSION = 1;
         public const int FLAG_RESPONSE = 2;

@@ -64,7 +64,7 @@ public class GenRegistry {
 			pr.print("// ").print(serInfo.toString("java.lang")).println();
 			if (serInfo.isStubType()) {
 				
-				pr.print(serInfo.typeId + " : new byps.BSerializerRemote(").print(serInfo.qname).println("),");
+				pr.print(serInfo.typeId + " : new byps.BSerializer_16(").print(serInfo.qname).println("),");
 			}
 			else if (serInfo.isArrayType()) {
 				TypeInfo elmType = pctxt.classDB.getTypeInfo(serInfo.toStringNoDims("")); 

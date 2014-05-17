@@ -396,7 +396,7 @@ byps.BSerializer_17.prototype = new byps.BSerializer();
 
 // ------------------------------------------------------------------------------------------------
 
-byps.BSerializerRemote = function(clazz) {
+byps.BSerializer_16 = function(clazz) {
 
 	// When sending a remote, internal members are omitted.
 	// The remote has a toJSON method that creates an
@@ -475,24 +475,37 @@ byps.BTargetId = function(str) {
 		this.serverId = arr[0];
 		this.v1 = arr[1] + ".";
 		this.v2 = arr[2] + ".";
+		this.remoteId = (arr.length > 3) ? arr[3] : 0;
+		this.signature = (arr.length > 4) ? (arr[4] + ".") : "0.";
 	}
 	else {
 		this.serverId = 0;
 		this.v1 = "0.";
 		this.v2 = "0.";
+		this.remoteId = 0;
+		this.signature = "0.";
 	}
 	
-	this.getStreamId = function() { 
-		return this.v2;
-	};
-	this.getMessageId = function() {
-		return this.v1;
-	};
-	
-	this.toString = function() {
-		var str = this.serverId + "." + this.v1 + this.v2;
-		return str;
-	};
+};
+
+byps.BTargetId.prototype.getStreamId = function() { 
+	return this.v2;
+};
+
+byps.BTargetId.prototype.getMessageId = function() {
+	return this.v1;
+};
+
+byps.BTargetId.prototype.getRemoteId = function() {
+	return this.remoteId;
+};
+
+byps.BTargetId.prototype.toString = function() {
+	var str = this.serverId + "." + this.v1 + this.v2;
+	if (this.remoteId) {
+		str += this.remoteId + "." + this.signature;
+	}
+	return str;
 };
 
 //------------------------------------------------------------------------------------------------

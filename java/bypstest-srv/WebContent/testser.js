@@ -594,11 +594,11 @@ byps.test.api.srvr.BSkeleton_ClientIF = function() {
 	
 	this.transport = null; // is set in BServer.addRemote
 	
-	this.toJSON = function (key) {
-		return { _typeId : 2049072174, targetId : this.transport.targetId.toString() };
-	};
 	
-	
+};
+
+byps.test.api.srvr.BSkeleton_ClientIF.prototype.toJSON = function (key) {
+	return { _typeId : 2049072174, targetId : this.transport.targetId.toString() };
 };
 
 // checkpoint byps.gen.js.PrintContext:133
@@ -7341,19 +7341,19 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.inherit.BStub_BioFruitService
-		363642571 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioFruitService),
+		363642571 : new byps.BSerializer_16(byps.test.api.inherit.BStub_BioFruitService),
 		
 		// byps.test.api.inherit.BStub_BioLemonService
-		474058508 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_BioLemonService),
+		474058508 : new byps.BSerializer_16(byps.test.api.inherit.BStub_BioLemonService),
 		
 		// byps.test.api.inherit.BStub_FruitService
-		715959905 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_FruitService),
+		715959905 : new byps.BSerializer_16(byps.test.api.inherit.BStub_FruitService),
 		
 		// byps.test.api.inherit.BStub_LemonService
-		605543968 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_LemonService),
+		605543968 : new byps.BSerializer_16(byps.test.api.inherit.BStub_LemonService),
 		
 		// byps.test.api.inherit.BStub_PlantService
-		1954605928 : new byps.BSerializerRemote(byps.test.api.inherit.BStub_PlantService),
+		1954605928 : new byps.BSerializer_16(byps.test.api.inherit.BStub_PlantService),
 		
 		// byps.test.api.inherit.Class1
 		6001 : new byps.BSerializer(
@@ -10595,46 +10595,46 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.remote.BStub_RemoteArrayTypes1dim
-		963816328 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes1dim),
+		963816328 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteArrayTypes1dim),
 		
 		// byps.test.api.remote.BStub_RemoteArrayTypes23
-		769717182 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes23),
+		769717182 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteArrayTypes23),
 		
 		// byps.test.api.remote.BStub_RemoteArrayTypes4dim
-		963726955 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteArrayTypes4dim),
+		963726955 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteArrayTypes4dim),
 		
 		// byps.test.api.remote.BStub_RemoteConstants
-		2045242510 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteConstants),
+		2045242510 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteConstants),
 		
 		// byps.test.api.remote.BStub_RemoteEnums
-		485761455 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteEnums),
+		485761455 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteEnums),
 		
 		// byps.test.api.remote.BStub_RemoteInlineInstance
-		567395951 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteInlineInstance),
+		567395951 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteInlineInstance),
 		
 		// byps.test.api.remote.BStub_RemoteListTypes
-		1233438138 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteListTypes),
+		1233438138 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteListTypes),
 		
 		// byps.test.api.remote.BStub_RemoteMapTypes
-		664304990 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteMapTypes),
+		664304990 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteMapTypes),
 		
 		// byps.test.api.remote.BStub_RemotePrimitiveTypes
-		1178916877 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemotePrimitiveTypes),
+		1178916877 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemotePrimitiveTypes),
 		
 		// byps.test.api.remote.BStub_RemoteReferences
-		568637225 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteReferences),
+		568637225 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteReferences),
 		
 		// byps.test.api.remote.BStub_RemoteServerCtrl
-		1652234479 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteServerCtrl),
+		1652234479 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteServerCtrl),
 		
 		// byps.test.api.remote.BStub_RemoteSetTypes
-		1900796440 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteSetTypes),
+		1900796440 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteSetTypes),
 		
 		// byps.test.api.remote.BStub_RemoteStreams
-		1043578866 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteStreams),
+		1043578866 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteStreams),
 		
 		// byps.test.api.remote.BStub_RemoteWithAuthentication
-		1983670399 : new byps.BSerializerRemote(byps.test.api.remote.BStub_RemoteWithAuthentication),
+		1983670399 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteWithAuthentication),
 		
 		// byps.test.api.set.SetTypes
 		5001 : new byps.BSerializer(
@@ -10876,10 +10876,10 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.srvr.BStub_ClientIF
-		2049072174 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ClientIF),
+		2049072174 : new byps.BSerializer_16(byps.test.api.srvr.BStub_ClientIF),
 		
 		// byps.test.api.srvr.BStub_ServerIF
-		1775199834 : new byps.BSerializerRemote(byps.test.api.srvr.BStub_ServerIF),
+		1775199834 : new byps.BSerializer_16(byps.test.api.srvr.BStub_ServerIF),
 		
 		// byps.test.api.srvr.ChatStructure
 		7007 : new byps.BSerializer(
@@ -10983,7 +10983,7 @@ byps.test.api.BRegistry_Testser = function() {
 		),
 		
 		// byps.test.api.ver.BStub_EvolveIF
-		15377840 : new byps.BSerializerRemote(byps.test.api.ver.BStub_EvolveIF),
+		15377840 : new byps.BSerializer_16(byps.test.api.ver.BStub_EvolveIF),
 		
 		// byps.test.api.ver.Evolve
 		1391985860 : new byps.BSerializer(

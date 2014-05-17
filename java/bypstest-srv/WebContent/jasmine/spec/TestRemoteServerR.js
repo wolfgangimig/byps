@@ -110,11 +110,13 @@ describe("TestRemoteServerR", function() {
 	it("testCallClient1FromServer1", function() {
 		log.info("testCallClient1FromServer1(");
 		
+		var impl = new ClientIFImpl();
+		
 		// assign interface impl to client
-		client.addRemote(new ClientIFImpl());
+		client.addRemote(impl);
 		
 		// Pass the interface of the client to the server side 
-		client.serverIF.setPartner(ClientIFImpl);
+		client.serverIF.setPartner(impl);
 		
 		// Invoke interface of client.
 		runs(function() {

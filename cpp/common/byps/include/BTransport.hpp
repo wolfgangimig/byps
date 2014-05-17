@@ -226,7 +226,7 @@ namespace byps {
 
   };
 
-  BINLINE void BTransport::loginAndRetrySend(PSerializable requestObject, PAsyncResult asyncResult) {
+  BINLINE void BTransport::loginAndRetrySend(const PSerializable& requestObject, const PAsyncResult& asyncResult) {
     // Cancel long-polls.
     // They will be restarted over negotiateProtocolClient and BClient::authentication.
     wire->cancelAllRequests();
@@ -367,7 +367,7 @@ namespace byps {
     }
   };
 
-  BINLINE void BTransport::assignSessionThenSendMethod(PSerializable requestObject, PAsyncResult asyncResult) {
+  BINLINE void BTransport::assignSessionThenSendMethod(const PSerializable& requestObject, const PAsyncResult& asyncResult) {
     if (this->authentication) {
       try {
         BTYPEID typeId = getObjectTypeId(requestObject);
@@ -383,7 +383,7 @@ namespace byps {
     }
   }
 
-  BINLINE BTYPEID BTransport::getObjectTypeId(PSerializable ser)
+  BINLINE BTYPEID BTransport::getObjectTypeId(const PSerializable& ser)
   {
     BTYPEID typeId = 0;
     getProtocol()->getRegistry()->getSerializer(typeid(*ser.get()), typeId);
@@ -533,7 +533,7 @@ namespace byps {
     }
   }
 
-  BINLINE void BTransport::setAuthentication(PAuthentication auth) {
+  BINLINE void BTransport::setAuthentication(const PAuthentication& auth) {
     byps_unique_lock lock(mtx);
 
     authentication = auth;

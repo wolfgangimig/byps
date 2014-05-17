@@ -39,7 +39,7 @@ namespace byps
             this.protocol = rhs.getProtocol();
 
             // Still connected to the server given by rhs.
-            this.connectedServerId = rhs.targetId.serverId;
+            this.connectedServerId = rhs.targetId.getServerId();
         }
 
         public void setProtocol(BProtocol protocol) {
@@ -62,7 +62,7 @@ namespace byps
             lock (this)
             {
                 this.targetId = targetId;
-                this.connectedServerId = targetId.serverId;
+                this.connectedServerId = targetId.getServerId();
             }
         }
 

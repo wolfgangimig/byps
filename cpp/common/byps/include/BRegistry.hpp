@@ -90,6 +90,22 @@ BINLINE void BSerializer_15(BIO& bio, POBJECT& , PSerializable& pObjS, void* ) {
 
 }
 
+void BSerializer_16(BIO& bio, POBJECT& , PSerializable& pObjS, void*, NewStubFunction newstub, int32_t remoteId ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(newstub(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+    BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+
 BINLINE BRegistry::BRegistry() {
 	registerClass(typeid(BContentStream), BSerializer_15, BTYPEID_STREAM);
 	registerClass(typeid(vector<PSerializable>), BSerializer_12, BTYPEID_LIST);

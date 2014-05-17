@@ -61,7 +61,7 @@ BINLINE void BIO::operator&(BVariant& obj) {
 }
 
 BINLINE void BIO::operator&(BTargetId& obj) {
-    obj.serialize(bbuf);
+    obj.serialize(bbuf, header.bversion);
 }
 
 BINLINE void BIO::operator&(BDateTime& obj) {

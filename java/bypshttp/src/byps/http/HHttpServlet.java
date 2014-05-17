@@ -39,7 +39,6 @@ import byps.BBuffer;
 import byps.BBufferJson;
 import byps.BClient;
 import byps.BContentStream;
-import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BMessage;
@@ -372,9 +371,12 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       final long streamId = BBufferJson.parseLong(streamIdStr);
       final String serverIdStr = request.getParameter("serverid");
       
+      final BServerRegistry serverRegistry = getServerRegistry();
       final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer.valueOf(serverIdStr) : getConfig().getMyServerId();
-      final BTargetId targetId = new BTargetId(serverId, messageId, streamId);
-      final BClient forwardClient = serverId != 0 ? getServerRegistry().getForwardClientIfForeignTargetId(targetId) : null;
+      final BTargetId targetIdEncr = new BTargetId(serverId, messageId, streamId);
+      final BTargetId targetId = serverRegistry.encryptTargetId(targetIdEncr, false);
+
+      final BClient forwardClient = serverId != 0 ? serverRegistry.getForwardClientIfForeignTargetId(targetId) : null;
       
       final BContentStream stream = forwardClient != null ? 
         forwardClient.getTransport().getWire().getStream(targetId) :

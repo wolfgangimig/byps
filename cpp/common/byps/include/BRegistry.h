@@ -39,6 +39,22 @@ public:
     BSERIALIZER getSerializer(BTYPEID typeId);
 };
 
+
+// -----------------
+// This definitions help to define a serializer for a remote
+
+typedef BSerializable* (*NewStubFunction)(const PTransport& transport);
+template <typename Stub> BSerializable* newStub(const PTransport& transport) {
+  return new Stub(transport);
+}
+template <typename Stub, int32_t remoteId> void BSerializer_16_Template(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved) {
+  BSerializer_16(bio, pObj, pObjS, reserved, newStub<Stub>, remoteId);
+}
+
+void BSerializer_16(BIO& bio, POBJECT& , PSerializable& pObjS, void*, NewStubFunction newStub, int32_t remoteId);
+// -----------------
+
+
 }
 
 #endif /* BREGISTRY_H_ */

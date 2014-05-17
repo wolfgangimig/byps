@@ -49,7 +49,7 @@ namespace byps {
     }
 
     bbuf.serialize(version);
-    targetId.serialize(bbuf);
+    targetId.serialize(bbuf, bversion);
     bbuf.serialize(messageId);
     bbuf.setCompressInteger(cmpr);
   }
@@ -79,7 +79,7 @@ namespace byps {
     }
 
     bbuf.serialize(version);
-    targetId.serialize(bbuf);
+    targetId.serialize(bbuf, bversion);
     bbuf.serialize(messageId);
 
     bbuf.setCompressInteger(cmpr);

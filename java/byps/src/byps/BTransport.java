@@ -260,7 +260,6 @@ public class BTransport {
     try {
       
       final BInput bin = getInput(msg.header, msg.buf);
-      final BTargetId clientTargetId = bin.header.targetId;
   
       final BAsyncResult<Object> methodResult = new BAsyncResult<Object>() {
   
@@ -299,6 +298,10 @@ public class BTransport {
   
       };
 
+      // server-side: Target ID might be encrypted
+      final BTargetId targetIdEncr = bin.header.targetId;
+      final BTargetId clientTargetId = (serverRegistry != null) ? serverRegistry.encryptTargetId(targetIdEncr, false) : targetIdEncr;
+      
       // Does the clientTargetId belong to another server?
       // If so, get the BClient object to forward the message.
       final BClient client = (serverRegistry != null) ? serverRegistry.getForwardClientIfForeignTargetId(clientTargetId) : null;

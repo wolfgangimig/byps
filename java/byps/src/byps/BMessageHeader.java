@@ -31,7 +31,7 @@ public class BMessageHeader {
 		
   public final static int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
   public final static int BYPS_VERSION_ENCRYPTED_TARGETID = 2;
-  public final static int BYPS_VERSION_CURRENT = BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
+  public final static int BYPS_VERSION_CURRENT = BYPS_VERSION_ENCRYPTED_TARGETID;
 		
 	public final static int FLAG_BYPS_VERSION = 1;
 	public final static int FLAG_RESPONSE = 2; 
@@ -168,7 +168,7 @@ public class BMessageHeader {
 		bbuf.putInt("error", error);
 		bbuf.putInt("flags", flags);
 		bbuf.putInt("bversion", bversion);
-		bbuf.putString("targetId", targetId.toString());
+		bbuf.putString("targetId", targetId.makeHeaderString());
 		bbuf.putLong("messageId", messageId);
    
 		if ((flags & FLAG_TIMEOUT) != 0) {
@@ -230,6 +230,9 @@ public class BMessageHeader {
 		error = jsonObj.getInt("error");
 		flags = jsonObj.getInt("flags");
 		bversion = jsonObj.getInt("bversion");
+		if (bversion == 0) {
+		  bversion = BMessageHeader.BYPS_VERSION_CURRENT;
+		}
 		
 		String targetIdStr = jsonObj.getString("targetId");
 		targetId = BTargetId.parseString(targetIdStr);

@@ -64,11 +64,16 @@ public class BServer {
 			BRemote remote = null;
 			final int remoteId = method.getRemoteId();
 			final BTargetId serverTargetId = this.transport.getTargetId();
-
-			if (log.isDebugEnabled()) {
-				log.debug("my targetId=" + serverTargetId + ", remote targetId=" + clientTargetId);
-			}
-
+	
+      if (log.isDebugEnabled()) {
+        log.debug("my targetId=" + serverTargetId + ", remote targetId=" + clientTargetId);
+      }
+			
+	     // Is client allowed to call the interface?
+      if (clientTargetId.getRemoteId() != 0 && clientTargetId.getRemoteId() != remoteId) {
+        throw new BException(BExceptionC.FORBIDDEN, "Access denied", "Client " + clientTargetId + " is not allowed to call interface of type=" + remoteId);
+      }
+      
 			// Die Target-ID aus dem Header ist gleich der Target-ID des BServer-Objekts
 			// für einen normalen Client-Server-Request
 			if (clientTargetId.equals(serverTargetId)) {

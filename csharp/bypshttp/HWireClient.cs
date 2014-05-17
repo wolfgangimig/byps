@@ -478,7 +478,7 @@ namespace byps
             {
                 try 
                 {
-                    String url = wire.url + "?serverId=" + TargetId.serverId + "&messageid=" + TargetId.getMessageId() + "&streamid=" + TargetId.getStreamId();
+                    String url = wire.url + "?serverId=" + TargetId.getServerId() + "&messageid=" + TargetId.getMessageId() + "&streamid=" + TargetId.getStreamId();
                     HttpWebRequest conn = (HttpWebRequest)HttpWebRequest.Create(url);
                     request = wire.createRequestForGetStream(TargetId, this);
                     request.setConnection(conn);

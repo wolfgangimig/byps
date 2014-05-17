@@ -12,7 +12,12 @@ import byps.BException;
 public class BOutputJson extends BOutput {
 	
 	public BOutputJson(BTransport transport) {
-		super(transport, transport.getApiDesc().getRegistry(BProtocolJson.BINARY_MODEL), BMessageHeader.MAGIC_JSON, 0, 0, ByteOrder.BIG_ENDIAN);
+		super(transport, 
+		    transport.getApiDesc().getRegistry(BProtocolJson.BINARY_MODEL), 
+		    BMessageHeader.MAGIC_JSON, 
+		    BMessageHeader.BYPS_VERSION_CURRENT, 
+		    0, 
+		    ByteOrder.BIG_ENDIAN);
 		this.objMap = new BObjMap();
 		ByteBuffer buf = ByteBuffer.allocate(10 * 1000);
 		this.bbuf = new BBufferJson(buf);
