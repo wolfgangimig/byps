@@ -35,41 +35,57 @@ BINLINE void BSerializer_14(BIO& bio, POBJECT& pObj, PSerializable& , void* ){
 }
 
 BINLINE void BSerializer_15(BIO& bio, POBJECT& , PSerializable& pObjS, void* ) {
+  
+  if (bio.is_loading && pObjS) return;
 
-  if (bio.is_loading) {
-    if (!pObjS) {
-      BTargetId targetId;
-      bool withProps = bio.header.bversion >= BHEADER_BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
+  int64_t streamId = 0;
+  BTargetId targetId;
+  bool withProps = bio.header.bversion >= BHEADER_BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
+  int64_t contentLength = -1;
+  wstring contentType = BYPS_DEFAULT_CONTENT_TYPE;
+  int32_t attachmentCode = 0;
+  wstring fileName;
 
-      if (withProps) {
-        bio & targetId;
-      }
-      else {
-        int32_t serverId = bio.transport->getTargetId().getServerId();
-        int64_t messageId = bio.header.messageId;
-        int64_t streamId = 0;
-        bio & streamId;
-        targetId = BTargetId(serverId, messageId, streamId);
-      }
-
-      PContentStream stream = bio.transport->getWire()->getStream(targetId);
-      pObjS = stream;
-    }
-  }
-  else {
+  if (!bio.is_loading) {
     PContentStream strm = byps_ptr_cast<BContentStream>(pObjS);
     bio.createStreamRequest(strm);
 
-    BTargetId targetId = strm->getTargetId();
+    targetId = strm->getTargetId();
+    streamId = targetId.getStreamId();
 
     if (bio.header.bversion >= BHEADER_BYPS_VERSION_EXTENDED_STREAM_INFORMATION) {
-      bio & targetId;
+      contentLength = strm->getContentLength();
+      contentType = strm->getContentType();
+      attachmentCode = strm->getAttachmentCode();
+      fileName = strm->getFileName();
     }
-    else {
-      int64_t streamId = targetId.getStreamId();
-      bio & streamId;
-    }
+  }
 
+  if (withProps) {
+    bio & targetId;
+    bio & contentLength;
+    bio & contentType;
+    bio & attachmentCode;
+    bio & fileName;
+  }
+  else {
+    int32_t serverId = bio.transport->getTargetId().getServerId();
+    int64_t messageId = bio.header.messageId;
+    int64_t streamId = 0;
+    bio & streamId;
+    targetId = BTargetId(serverId, messageId, streamId);
+  }
+
+  if (bio.is_loading) {
+    PContentStream stream;
+    pObjS = stream = bio.transport->getWire()->getStream(targetId);
+
+    if (!stream) throw BException(BExceptionC::INTERNAL, L"Serialized stream object must not be NULL");
+
+    stream->setContentLength(contentLength);
+    stream->setContentType(contentType);
+    stream->setAttachmentCode(attachmentCode);
+    stream->setFileName(fileName);
   }
 
 }

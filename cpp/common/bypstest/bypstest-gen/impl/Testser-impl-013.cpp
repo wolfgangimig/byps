@@ -2,6 +2,197 @@
 using namespace ::std;
 using namespace ::byps;
 
+// checkpoint byps.gen.cpp.GenRemoteStub:224
+namespace byps { namespace test { namespace api { 
+void BSerializer_363642571(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new byps::test::api::inherit::BStub_BioFruitService(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}
+
+
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+BStub_LemonService::BStub_LemonService(PTransport transport) 
+	: BStub(transport) {}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+::std::wstring BStub_LemonService::grow()  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	grow([&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_LemonService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_PlantService_grow());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+::std::wstring BStub_LemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	pick(sess, fromTree, [&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_LemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_LemonService_pick(sess, fromTree));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+::std::wstring BStub_LemonService::squeeze()  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	squeeze([&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_LemonService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_FruitService_squeeze());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenRemoteStub:224
+namespace byps { namespace test { namespace api { 
+void BSerializer_605543968(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new byps::test::api::inherit::BStub_LemonService(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}
+
+
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+BStub_BioLemonService::BStub_BioLemonService(PTransport transport) 
+	: BStub(transport) {}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+bool BStub_BioLemonService::certify(const ::std::wstring& param)  {
+	BSyncResultT< bool > syncResult;	
+	certify(param, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_BioLemonService::certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_BioFruitService_certify(param));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_1 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+::std::wstring BStub_BioLemonService::grow()  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	grow([&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_BioLemonService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_PlantService_grow());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+::std::wstring BStub_BioLemonService::squeeze()  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	squeeze([&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_BioLemonService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_FruitService_squeeze());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+::std::wstring BStub_BioLemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  {
+	BSyncResultT< ::std::wstring > syncResult;	
+	pick(sess, fromTree, [&syncResult](::std::wstring v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_BioLemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_LemonService_pick(sess, fromTree));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace inherit { 
+int32_t BStub_BioLemonService::useParing()  {
+	BSyncResultT< int32_t > syncResult;	
+	useParing([&syncResult](int32_t v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_BioLemonService::useParing(::std::function< void (int32_t, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_BioLemonService_useParing());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenRemoteStub:224
+namespace byps { namespace test { namespace api { 
+void BSerializer_474058508(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
+	BSerializable* p = pObjS.get();
+	if (bio.is_loading) {
+		if (p) return;
+		BTargetId targetId;
+		bio & targetId;
+		PTransport transport(new BTransport(*bio.transport, targetId));
+		pObjS = PSerializable(new byps::test::api::inherit::BStub_BioLemonService(transport));
+	}
+	else {
+		BRemote* r = dynamic_cast<BRemote*>(p);
+		BTargetId targetId = r->BRemote_getTargetId();
+		bio & targetId;
+	}
+}
+}}}
+
 
 
 namespace byps { namespace test { namespace api { namespace remote { 
@@ -908,178 +1099,6 @@ bool BStub_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t 
 void BStub_RemoteConstants::compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const PArrayInt& arrInt, const PArray4Int& arrInt4, const PArrayString& arrStrings, const PArray4String& arrStrings4, const byps::test::api::cons::PArray2AllTypesZ& arrAll, ::std::function< void (bool, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_RemoteConstants_compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_1 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenRemoteStub:224
-namespace byps { namespace test { namespace api { 
-void BSerializer_2045242510(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new byps::test::api::remote::BStub_RemoteConstants(transport));
-	}
-	else {
-		BRemote* r = dynamic_cast<BRemote*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
-	}
-}
-}}}
-
-
-
-namespace byps { namespace test { namespace api { namespace remote { 
-BStub_RemoteEnums::BStub_RemoteEnums(PTransport transport) 
-	: BStub(transport) {}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-byps::test::api::enu::EnumPlanets BStub_RemoteEnums::getPlanet()  {
-	BSyncResultT< byps::test::api::enu::EnumPlanets > syncResult;	
-	getPlanet([&syncResult](byps::test::api::enu::EnumPlanets v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteEnums::getPlanet(::std::function< void (byps::test::api::enu::EnumPlanets, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteEnums_getPlanet());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::enu::EnumPlanets, byps::test::api::BResult_1375035164 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-void BStub_RemoteEnums::setPlanet(byps::test::api::enu::EnumPlanets planet)  {
-	BSyncResultT< bool > syncResult;	
-	setPlanet(planet, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteEnums::setPlanet(byps::test::api::enu::EnumPlanets planet, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteEnums_setPlanet(planet));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenRemoteStub:224
-namespace byps { namespace test { namespace api { 
-void BSerializer_485761455(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new byps::test::api::remote::BStub_RemoteEnums(transport));
-	}
-	else {
-		BRemote* r = dynamic_cast<BRemote*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
-	}
-}
-}}}
-
-
-
-namespace byps { namespace test { namespace api { namespace remote { 
-BStub_RemoteInlineInstance::BStub_RemoteInlineInstance(PTransport transport) 
-	: BStub(transport) {}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-void BStub_RemoteInlineInstance::setActor(const byps::test::api::inl::PActor& act)  {
-	BSyncResultT< bool > syncResult;	
-	setActor(act, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteInlineInstance::setActor(const byps::test::api::inl::PActor& act, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteInlineInstance_setActor(act));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-byps::test::api::inl::PActor BStub_RemoteInlineInstance::getActor()  {
-	BSyncResultT< byps::test::api::inl::PActor > syncResult;	
-	getActor([&syncResult](byps::test::api::inl::PActor v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteInlineInstance::getActor(::std::function< void (byps::test::api::inl::PActor, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteInlineInstance_getActor());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::inl::PActor, byps::test::api::BResult_171948703 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-void BStub_RemoteInlineInstance::setPoint2DArray1dim(const byps::test::api::inl::PArrayPoint2D& pointArray)  {
-	BSyncResultT< bool > syncResult;	
-	setPoint2DArray1dim(pointArray, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteInlineInstance::setPoint2DArray1dim(const byps::test::api::inl::PArrayPoint2D& pointArray, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteInlineInstance_setPoint2DArray1dim(pointArray));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-byps::test::api::inl::PArrayPoint2D BStub_RemoteInlineInstance::getPoint2DArray1dim()  {
-	BSyncResultT< byps::test::api::inl::PArrayPoint2D > syncResult;	
-	getPoint2DArray1dim([&syncResult](byps::test::api::inl::PArrayPoint2D v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteInlineInstance::getPoint2DArray1dim(::std::function< void (byps::test::api::inl::PArrayPoint2D, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteInlineInstance_getPoint2DArray1dim());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::inl::PArrayPoint2D, byps::test::api::BResult_184101377 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-void BStub_RemoteInlineInstance::setPoint2DArray4dim(const byps::test::api::inl::PArray4Point2D& pointArray)  {
-	BSyncResultT< bool > syncResult;	
-	setPoint2DArray4dim(pointArray, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteInlineInstance::setPoint2DArray4dim(const byps::test::api::inl::PArray4Point2D& pointArray, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteInlineInstance_setPoint2DArray4dim(pointArray));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-byps::test::api::inl::PArray4Point2D BStub_RemoteInlineInstance::getPoint2DArray4dim()  {
-	BSyncResultT< byps::test::api::inl::PArray4Point2D > syncResult;	
-	getPoint2DArray4dim([&syncResult](byps::test::api::inl::PArray4Point2D v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteInlineInstance::getPoint2DArray4dim(::std::function< void (byps::test::api::inl::PArray4Point2D, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteInlineInstance_getPoint2DArray4dim());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::inl::PArray4Point2D, byps::test::api::BResult_949340697 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
 }}}}

@@ -3504,6 +3504,28 @@ class RemoteStreams : public virtual BRemote {
 	public: virtual PContentStream getTextStream()  = 0;
 	public: virtual void getTextStream(::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
 	
+	/// <summary>
+	/// Return stream without properties.
+	/// </summary>
+	/// <remarks>
+	/// The properties must be made explicitly available on the client-side by calling
+	/// BContentStream.ensureProperties()
+	/// </remarks>
+	public: virtual PContentStream getStreamDeferedProperies()  = 0;
+	public: virtual void getStreamDeferedProperies(::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Stores a stream reference but does not create an internal copy (does not materialize)
+	/// </summary>
+	public: virtual void setStreamDoNotMaterialize(const PContentStream& stream)  = 0;
+	public: virtual void setStreamDoNotMaterialize(const PContentStream& stream, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Return stream, do not call BContentStream.cloneStream().
+	/// </summary>
+	public: virtual PContentStream getStreamDoNotClone()  = 0;
+	public: virtual void getStreamDoNotClone(::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
+	
 	
 };
 
@@ -3536,6 +3558,12 @@ class BStub_RemoteStreams : public BStub, public virtual RemoteStreams {
 	public: virtual void throwLastException(::std::function< void (bool, BException ex) > asyncResult) ;
 	public: virtual PContentStream getTextStream() ;
 	public: virtual void getTextStream(::std::function< void (PContentStream, BException ex) > asyncResult) ;
+	public: virtual PContentStream getStreamDeferedProperies() ;
+	public: virtual void getStreamDeferedProperies(::std::function< void (PContentStream, BException ex) > asyncResult) ;
+	public: virtual void setStreamDoNotMaterialize(const PContentStream& stream) ;
+	public: virtual void setStreamDoNotMaterialize(const PContentStream& stream, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual PContentStream getStreamDoNotClone() ;
+	public: virtual void getStreamDoNotClone(::std::function< void (PContentStream, BException ex) > asyncResult) ;
 	
 };
 }}}}

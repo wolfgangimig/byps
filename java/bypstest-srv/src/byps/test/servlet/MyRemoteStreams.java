@@ -139,4 +139,62 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 		};
 		
 	}
+	
+	
+	/**
+	 * Define stream class that has invalid properties unless it is opened. 
+	 *
+	 */
+	private static class StreamWithDeferedProperties extends BContentStream {
+	  
+	  private volatile boolean isOpen = false;
+	  private int rc = 5;
+
+    @Override
+    public int read() throws IOException {
+      return rc < 0 ? -1 : (--rc);
+    }
+    
+    @Override
+    public void ensureProperties() {
+      isOpen = true;
+    }
+
+    @Override
+    public String getContentType() {
+      return isOpen ? "application/mycontentype" : null;
+    }
+
+    @Override
+    public long getContentLength() {
+      return isOpen ? 5 : -1;
+    }
+
+    @Override
+    public int getAttachmentCode() {
+      return isOpen ? ATTACHMENT : 0;
+    }
+
+    @Override
+    public String getFileName() {
+      return isOpen ? "myfilename" : null;
+    }
+    
+	}
+	
+	@Override
+	public InputStream getStreamDeferedProperies() throws RemoteException {
+	  return new StreamWithDeferedProperties();
+	}
+	
+	@Override
+	public void setStreamDoNotMaterialize(InputStream stream) throws RemoteException {
+	  closeImageStream();
+	  imageStream = (BContentStream)stream;
+	}
+	
+	@Override
+	public InputStream getStreamDoNotClone() throws RemoteException {
+	  return imageStream;
+	}
 }

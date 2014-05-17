@@ -6598,6 +6598,50 @@ class BRequest_RemoteStreams_getImages : public BMethodRequest {
 }}}}
 
 //-------------------------------------------------
+// BRequest_RemoteStreams_getStreamDeferedProperies
+// typeId=1205766796
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemoteStreams_getStreamDeferedProperies : public BMethodRequest {
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_RemoteStreams_getStreamDeferedProperies();
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 1205766796; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:871
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+//-------------------------------------------------
+// BRequest_RemoteStreams_getStreamDoNotClone
+// typeId=692369677
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemoteStreams_getStreamDoNotClone : public BMethodRequest {
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_RemoteStreams_getStreamDoNotClone();
+	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 692369677; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:871
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+//-------------------------------------------------
 // BRequest_RemoteStreams_getTextStream
 // typeId=818823403
 
@@ -6660,6 +6704,30 @@ class BRequest_RemoteStreams_setImages : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteStreams_setImages(const byps::PMapIntegerInputStream& istrms, int32_t doNotReadStreamAtKey);	
 	public: virtual BTYPEID BSerializable_getTypeId() { return 2126615710; }
+	
+	// checkpoint byps.gen.cpp.GenApiClass:871
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+//-------------------------------------------------
+// BRequest_RemoteStreams_setStreamDoNotMaterialize
+// typeId=199832593
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemoteStreams_setStreamDoNotMaterialize : public BMethodRequest {
+	public: PContentStream stream;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_RemoteStreams_setStreamDoNotMaterialize();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: BRequest_RemoteStreams_setStreamDoNotMaterialize(const PContentStream& stream);	
+	public: virtual BTYPEID BSerializable_getTypeId() { return 199832593; }
 	
 	// checkpoint byps.gen.cpp.GenApiClass:871
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -7915,12 +7983,18 @@ void BSerializer_753392826(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_61677379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_getImages
 void BSerializer_1911998634(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_getStreamDeferedProperies
+void BSerializer_1205766796(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_getStreamDoNotClone
+void BSerializer_692369677(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_getTextStream
 void BSerializer_818823403(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImage
 void BSerializer_622789839(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImages
 void BSerializer_2126615710(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_setStreamDoNotMaterialize
+void BSerializer_199832593(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_throwLastException
 void BSerializer_2127402965(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteWithAuthentication_doit

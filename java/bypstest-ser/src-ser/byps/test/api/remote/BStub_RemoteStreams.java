@@ -104,5 +104,48 @@ public class BStub_RemoteStreams extends BStub implements RemoteStreamsAsync, ja
 		transport.sendMethod(req, asyncResult);
 	}
 	
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getStreamDeferedProperies() throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<java.io.InputStream> asyncResult = new BSyncResult<java.io.InputStream>();		
+		getStreamDeferedProperies(asyncResult);
+		return asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getStreamDeferedProperies(final BAsyncResult<java.io.InputStream> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteStreams_getStreamDeferedProperies req = new BRequest_RemoteStreams_getStreamDeferedProperies();		
+		transport.sendMethod(req, asyncResult);
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public void setStreamDoNotMaterialize(java.io.InputStream stream) throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
+		setStreamDoNotMaterialize(stream, asyncResult);
+		asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void setStreamDoNotMaterialize(java.io.InputStream stream, final BAsyncResult<Object> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteStreams_setStreamDoNotMaterialize req = new BRequest_RemoteStreams_setStreamDoNotMaterialize();		
+		req.stream = stream;
+		transport.sendMethod(req, asyncResult);
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getStreamDoNotClone() throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<java.io.InputStream> asyncResult = new BSyncResult<java.io.InputStream>();		
+		getStreamDoNotClone(asyncResult);
+		return asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getStreamDoNotClone(final BAsyncResult<java.io.InputStream> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteStreams_getStreamDoNotClone req = new BRequest_RemoteStreams_getStreamDoNotClone();		
+		transport.sendMethod(req, asyncResult);
+	}
+	
 	
 }

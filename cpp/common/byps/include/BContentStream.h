@@ -62,12 +62,6 @@ namespace byps {
 
     virtual int32_t read(char* buf, int32_t offs, int32_t len);
     virtual PStream getStdStream();
-
-    virtual wstring getContentType() const;
-    virtual int64_t getContentLength() const;
-    virtual wstring getFileName() const;
-    virtual int32_t getAttachmentCode() const;
-    
     
   protected:
     virtual PContentStream openStream();

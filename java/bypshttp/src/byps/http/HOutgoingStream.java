@@ -13,6 +13,7 @@ public class HOutgoingStream extends BContentStreamWrapper {
 	//private Log log = LogFactory.getLog(HOutgoingStream.class);
 	
 	private final File tempDir;
+	private boolean isOpen;
 
 	HOutgoingStream(BContentStream innerStream, long lifetimeMillis, File tempDir)  {
 		super(innerStream, lifetimeMillis);
@@ -20,11 +21,22 @@ public class HOutgoingStream extends BContentStreamWrapper {
 	}
 	
 	public InputStream ensureStream() throws IOException {
-		if (innerStream instanceof BContentStreamWrapper) {
-		  BContentStreamWrapper bstream = (BContentStreamWrapper)innerStream;
-		  bstream.ensureStream();
-		  copyProperties(bstream);
-		}
+	  if (isOpen) return innerStream;
+	  
+    if (innerStream instanceof BContentStreamWrapper) {
+      BContentStreamWrapper bstream = (BContentStreamWrapper)innerStream;
+      bstream.ensureStream();
+      bstream.ensureProperties();
+      copyProperties(bstream);
+    }
+    else if (innerStream instanceof BContentStream) {
+      BContentStream bstream = (BContentStream)innerStream;
+      bstream.ensureProperties();
+      copyProperties(bstream);
+    }
+    
+    isOpen = true;
+    
 		return innerStream;
 	}
 	

@@ -102,99 +102,22 @@ namespace byps
                 if (innerStream == null)
                 {
                     innerStream = openStream();
+                    if (innerStream is BContentStream)
+                    {
+                        BContentStream bstrm = (BContentStream)innerStream;
+                        this.copyProperties(bstrm);
+                    }
                 }
             }
 
             return innerStream;
         }
 
-        public override String ContentType
+        public override void ensureProperties()
         {
-            get
-            {
-                String s = contentTypeVal;
-                if (s != null && s.Length != 0) return s;
-                try
-                {
-                    Stream istrm = ensureStream();
-                    s = contentTypeVal;
-                    if (s != null && s.Length != 0) return s;
-
-                    if (istrm is BContentStream)
-                    {
-                        contentTypeVal = s = ((BContentStream)istrm).ContentType;
-                    }
-                }
-                catch (IOException) { }
-                return s;
-            }
+            ensureStream();
         }
 
-        public override long ContentLength
-        {
-            get
-            {
-                long s = contentLengthVal;
-                if (s >= 0) return s;
-                try
-                {
-                    Stream istrm = ensureStream();
-                    s = contentLengthVal;
-                    if (s >= 0) return s;
-
-                    if (istrm is BContentStream)
-                    {
-                        contentLengthVal = s = ((BContentStream)istrm).ContentLength;
-                    }
-                }
-                catch (IOException) { }
-                return s;
-            }
-        }
-
-        public override String FileName
-        {
-            get
-            {
-                String s = fileNameVal;
-                if (s != null && s.Length != 0) return s;
-                try
-                {
-                    Stream istrm = ensureStream();
-                    s = fileNameVal;
-                    if (s != null && s.Length != 0) return s;
-
-                    if (istrm is BContentStream)
-                    {
-                        fileNameVal = s = ((BContentStream)istrm).FileName;
-                    }
-                }
-                catch (IOException) { }
-                return s;
-            }
-        }
-
-        public override int AttachmentCode
-        {
-            get
-            {
-                int s = attachmentCodeVal;
-                if (s != 0) return s;
-                try
-                {
-                    Stream istrm = ensureStream();
-                    s = attachmentCodeVal;
-                    if (s != 0) return s;
-
-                    if (istrm is BContentStream)
-                    {
-                        attachmentCodeVal = s = ((BContentStream)istrm).AttachmentCode;
-                    }
-                }
-                catch (IOException) { }
-                return s;
-            }
-        }
 
         public override int Read(byte[] buffer, int offset, int count)
         {

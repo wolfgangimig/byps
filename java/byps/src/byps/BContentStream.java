@@ -63,11 +63,11 @@ public abstract class BContentStream extends InputStream {
 	 * @see #hasValidProperties()
 	 */
   public void copyProperties(BContentStream rhs) {
-    this.contentType = rhs.contentType;
-		this.contentLength = rhs.contentLength;
-		this.attachmentCode = rhs.attachmentCode;
-		this.fileName = rhs.fileName;
-		this.targetId = rhs.targetId;
+    this.contentType = rhs.getContentType();
+		this.contentLength = rhs.getContentLength();
+		this.attachmentCode = rhs.getAttachmentCode();
+		this.fileName = rhs.getFileName();
+		this.targetId = rhs.getTargetId();
   }
   
 	/**

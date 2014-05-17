@@ -2993,6 +2993,46 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__by
 	return ret;
 };
 
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * Return stream without properties.
+ * The properties must be made explicitly available on the client-side by calling
+ * BContentStream.ensureProperties()
+ * @return InputStream
+ * @throws RemoteException
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDeferedProperies = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1205766796 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * Stores a stream reference but does not create an internal copy (does not materialize)
+ * @param stream
+ * @throws RemoteException
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.setStreamDoNotMaterialize = function(stream, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 199832593, stream : stream };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * Return stream, do not call BContentStream.cloneStream().
+ * @throws RemoteException
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDoNotClone = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 692369677 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
 /**
  * This interface is an example for using the authentication mechanism.
  * @BSessionParamType byps.test.api.auth.SessionInfo
@@ -5163,6 +5203,33 @@ byps.test.api.BServer_Testser = function(transport) {
 				534004416, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getTextStream(methodResult);
+				}
+			],
+			
+			// Method getStreamDeferedProperies
+			1205766796 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004416, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getStreamDeferedProperies(methodResult);
+				}
+			],
+			
+			// Method setStreamDoNotMaterialize
+			199832593 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_setStreamDoNotMaterialize(methodObj.stream, methodResult);
+				}
+			],
+			
+			// Method getStreamDoNotClone
+			692369677 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004416, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getStreamDoNotClone(methodResult);
 				}
 			],
 		
@@ -10372,6 +10439,26 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteStreams_getStreamDeferedProperies
+		1205766796 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteStreams_getStreamDoNotClone
+		692369677 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteStreams_getTextStream
 		818823403 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
@@ -10409,6 +10496,19 @@ byps.test.api.BRegistry_Testser = function() {
 			{
 				"istrms":779528402, // java.util.Map<java.lang.Integer,java.io.InputStream>
 			},
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteStreams_setStreamDoNotMaterialize
+		199832593 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"stream":15 // java.io.InputStream
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
 			// inlineInstance
 			false
 		),

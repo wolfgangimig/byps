@@ -445,5 +445,64 @@ namespace bypstest
             log.info(")testHandoverStream");
         }
 
+
+          /**
+           * Test with a stream class which properties are unavailable until the stream is opened.
+           * @throws IOException 
+           */
+        [TestMethod]
+        public void testStreamWithDeferedProperties()
+        {
+            log.info("testStreamWithDeferedProperties(");
+
+            BContentStream bstrm = (BContentStream)remote.GetStreamDeferedProperies();
+            TestUtils.assertEquals(log, "contentType", "", bstrm.ContentType);
+            TestUtils.assertEquals(log, "contentLength", -1L, bstrm.ContentLength);
+            TestUtils.assertEquals(log, "fileName", "", bstrm.FileName);
+            TestUtils.assertEquals(log, "attachmentCode", 0, bstrm.AttachmentCode);
+
+            bstrm.ensureProperties();
+            TestUtils.assertEquals(log, "contentType", "application/mycontentype", bstrm.ContentType);
+            TestUtils.assertEquals(log, "contentLength", 5L, bstrm.ContentLength);
+            TestUtils.assertEquals(log, "fileName", "myfilename", bstrm.FileName);
+            TestUtils.assertEquals(log, "attachmentCode", BContentStream.ATTACHMENT, bstrm.AttachmentCode);
+
+            log.info(")testStreamWithDeferedProperties");
+        }
+
+          /**
+           * Test with a stream class which properties are unavailable until the stream is opened.
+           * The stream is passed back to the server and in turn read from the server. 
+           * The stream properties must be unavailable until ensureProperties is called.
+           * @throws IOException 
+           */
+        [TestMethod]
+        public void testHandoverStreamWithDeferedProperties()
+        {
+            log.info("testHandoverStreamWithDeferedProperties(");
+
+            BContentStream bstrm1 = (BContentStream)remote.GetStreamDeferedProperies();
+            TestUtils.assertEquals(log, "contentType", "", bstrm1.ContentType);
+            TestUtils.assertEquals(log, "contentLength", -1L, bstrm1.ContentLength);
+            TestUtils.assertEquals(log, "fileName", "", bstrm1.FileName);
+            TestUtils.assertEquals(log, "attachmentCode", 0, bstrm1.AttachmentCode);
+
+            remote.SetStreamDoNotMaterialize(bstrm1);
+            BContentStream bstrm = (BContentStream)remote.GetStreamDoNotClone();
+
+            TestUtils.assertEquals(log, "contentType", "", bstrm.ContentType);
+            TestUtils.assertEquals(log, "contentLength", -1L, bstrm.ContentLength);
+            TestUtils.assertEquals(log, "fileName", "", bstrm.FileName);
+            TestUtils.assertEquals(log, "attachmentCode", 0, bstrm.AttachmentCode);
+
+            bstrm.ensureProperties();
+            TestUtils.assertEquals(log, "contentType", "application/mycontentype", bstrm.ContentType);
+            TestUtils.assertEquals(log, "contentLength", 5L, bstrm.ContentLength);
+            TestUtils.assertEquals(log, "fileName", "myfilename", bstrm.FileName);
+            TestUtils.assertEquals(log, "attachmentCode", BContentStream.ATTACHMENT, bstrm.AttachmentCode);
+
+            log.info(")testHandoverStreamWithDeferedProperties");
+        }
+
     }
 }

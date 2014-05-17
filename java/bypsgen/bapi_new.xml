@@ -7671,6 +7671,28 @@
             <since>0.0.0.0</since>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteStreams_getStreamDeferedProperies</typeName>
+            <typeId>1205766796</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteStreams_getStreamDoNotClone</typeName>
+            <typeId>692369677</typeId>
+            <members/>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteStreams_getTextStream</typeName>
             <typeId>818823403</typeId>
             <members/>
@@ -7718,6 +7740,27 @@
                 <member>
                     <name>doNotReadStreamAtKey</name>
                     <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
+        </serial>
+        <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteStreams_setStreamDoNotMaterialize</typeName>
+            <typeId>199832593</typeId>
+            <members>
+                <member>
+                    <name>stream</name>
+                    <typeName>java.io.InputStream</typeName>
                     <isTransient>false</isTransient>
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
@@ -12278,6 +12321,73 @@
                     <resultTypeName>byps.test.api.BResult_15</resultTypeName>
                     <exceptionTypeNames/>
                     <comments/>
+                </method>
+                <method>
+                    <name>getStreamDeferedProperies</name>
+                    <remoteName>byps.test.api.remote.RemoteStreams</remoteName>
+                    <since>0.0.0.0</since>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteStreams_getStreamDeferedProperies</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_15</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Return stream without properties.</text>
+                        </comment>
+                        <comment>
+                            <kind>@remarks</kind>
+                            <text>The properties must be made explicitly available on the client-side by calling 
+ BContentStream.ensureProperties()</text>
+                        </comment>
+                        <comment>
+                            <kind>@return</kind>
+                            <text>InputStream</text>
+                        </comment>
+                        <comment>
+                            <kind>@throws</kind>
+                            <text>RemoteException</text>
+                        </comment>
+                    </comments>
+                </method>
+                <method>
+                    <name>setStreamDoNotMaterialize</name>
+                    <remoteName>byps.test.api.remote.RemoteStreams</remoteName>
+                    <since>0.0.0.0</since>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteStreams_setStreamDoNotMaterialize</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_19</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Stores a stream reference but does not create an internal copy (does not materialize)</text>
+                        </comment>
+                        <comment>
+                            <kind>@param</kind>
+                            <text>stream</text>
+                        </comment>
+                        <comment>
+                            <kind>@throws</kind>
+                            <text>RemoteException</text>
+                        </comment>
+                    </comments>
+                </method>
+                <method>
+                    <name>getStreamDoNotClone</name>
+                    <remoteName>byps.test.api.remote.RemoteStreams</remoteName>
+                    <since>0.0.0.0</since>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteStreams_getStreamDoNotClone</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_15</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Return stream, do not call BContentStream.cloneStream().</text>
+                        </comment>
+                        <comment>
+                            <kind>@throws</kind>
+                            <text>RemoteException</text>
+                        </comment>
+                    </comments>
                 </method>
             </methods>
             <comments/>

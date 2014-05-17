@@ -5,6 +5,243 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace ver { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_EvolveIF_setEvolve
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve() : BMethodRequest(15377840) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::ver::BRequest_EvolveIF_setEvolve::BRequest_EvolveIF_setEvolve(const PEvolve& obj)
+	: BMethodRequest(15377840) 
+	, obj(obj)
+	{}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::ver::BRequest_EvolveIF_setEvolve::serialize(BIO& ar, const BVERSION version) {
+	ar & this->obj;
+}
+void byps::test::api::ver::BRequest_EvolveIF_setEvolve::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PEvolveIF __byps__remoteT = byps_ptr_cast<EvolveIF>(__byps__remote);
+	__byps__remoteT->setEvolve(obj, [__byps__asyncResult](bool __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_1064683365(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::ver::BRequest_EvolveIF_setEvolve& r = * dynamic_cast< byps::test::api::ver::BRequest_EvolveIF_setEvolve*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::ver::BRequest_EvolveIF_setEvolve());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
+// Implementation of class Evolve
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+Evolve::Evolve() {
+	bool1 = false;
+	byte1 = 0;
+	char1 = '\0';
+	short1 = 0;
+	int1 = 0;
+	long1 = 0;
+	float1 = 0;
+	double1 = 0;
+	bool2 = false;
+	byte2 = 0;
+	char2 = '\0';
+	short2 = 0;
+	int2 = 0;
+	long2 = 0;
+	float2 = 0;
+	double2 = 0;
+	bool3 = false;
+	byte3 = 0;
+	char3 = '\0';
+	short3 = 0;
+	int3 = 0;
+	long3 = 0;
+	float3 = 0;
+	double3 = 0;
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::ver::Evolve::Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const PArrayBoolean& bools1, const PBytes& bytes1, const PArrayChar& chars1, const PArrayShort& shorts1, const PArrayInt& ints1, const PArrayLong& longs1, const PArrayFloat& floats1, const PArrayDouble& doubles1, const ::std::wstring& str1, const PSerializable& obj1, const PEvolve2& evo1, const byps::PVectorInteger& list1, const byps::PSetInteger& set1, const byps::PMapIntegerInteger& map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, const PArrayBoolean& bools2, const PBytes& bytes2, const PArrayChar& chars2, const PArrayShort& shorts2, const PArrayInt& ints2, const PArrayLong& longs2, const PArrayFloat& floats2, const PArrayDouble& doubles2, const ::std::wstring& str2, const PSerializable& obj2, const PEvolve2& evo2, const byps::PVectorInteger& list2, const byps::PSetInteger& set2, const byps::PMapIntegerInteger& map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, const PArrayBoolean& bools3, const PBytes& bytes3, const PArrayChar& chars3, const PArrayShort& shorts3, const PArrayInt& ints3, const PArrayLong& longs3, const PArrayFloat& floats3, const PArrayDouble& doubles3, const ::std::wstring& str3, const PSerializable& obj3, const PEvolve2& evo3, const byps::PVectorInteger& list3, const byps::PSetInteger& set3, const byps::PMapIntegerInteger& map3)
+	: bool1(bool1)
+	, byte1(byte1)
+	, char1(char1)
+	, short1(short1)
+	, int1(int1)
+	, long1(long1)
+	, float1(float1)
+	, double1(double1)
+	, bools1(bools1)
+	, bytes1(bytes1)
+	, chars1(chars1)
+	, shorts1(shorts1)
+	, ints1(ints1)
+	, longs1(longs1)
+	, floats1(floats1)
+	, doubles1(doubles1)
+	, str1(str1)
+	, obj1(obj1)
+	, evo1(evo1)
+	, list1(list1)
+	, set1(set1)
+	, map1(map1)
+	, bool2(bool2)
+	, byte2(byte2)
+	, char2(char2)
+	, short2(short2)
+	, int2(int2)
+	, long2(long2)
+	, float2(float2)
+	, double2(double2)
+	, bools2(bools2)
+	, bytes2(bytes2)
+	, chars2(chars2)
+	, shorts2(shorts2)
+	, ints2(ints2)
+	, longs2(longs2)
+	, floats2(floats2)
+	, doubles2(doubles2)
+	, str2(str2)
+	, obj2(obj2)
+	, evo2(evo2)
+	, list2(list2)
+	, set2(set2)
+	, map2(map2)
+	, bool3(bool3)
+	, byte3(byte3)
+	, char3(char3)
+	, short3(short3)
+	, int3(int3)
+	, long3(long3)
+	, float3(float3)
+	, double3(double3)
+	, bools3(bools3)
+	, bytes3(bytes3)
+	, chars3(chars3)
+	, shorts3(shorts3)
+	, ints3(ints3)
+	, longs3(longs3)
+	, floats3(floats3)
+	, doubles3(doubles3)
+	, str3(str3)
+	, obj3(obj3)
+	, evo3(evo3)
+	, list3(list3)
+	, set3(set3)
+	, map3(map3)
+	{}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::ver::Evolve::serialize(BIO& ar, const BVERSION version) {
+	ar & this->bool1;
+	ar & this->byte1;
+	ar & this->char1;
+	ar & this->double1;
+	ar & this->float1;
+	ar & this->int1;
+	ar & this->long1;
+	ar & this->short1;
+	ar & this->str1;
+	if (version >= 2) {
+		ar & this->bool2;
+		ar & this->byte2;
+		ar & this->char2;
+		ar & this->double2;
+		ar & this->float2;
+		ar & this->int2;
+		ar & this->long2;
+		ar & this->short2;
+		ar & this->str2;
+		if (version >= 3) {
+			ar & this->bool3;
+			ar & this->byte3;
+			ar & this->char3;
+			ar & this->double3;
+			ar & this->float3;
+			ar & this->int3;
+			ar & this->long3;
+			ar & this->short3;
+			ar & this->str3;
+		}
+	}
+	ar & this->bools1;
+	ar & this->bytes1;
+	ar & this->chars1;
+	ar & this->doubles1;
+	ar & this->evo1;
+	ar & this->floats1;
+	ar & this->ints1;
+	ar & this->list1;
+	ar & this->longs1;
+	ar & this->map1;
+	ar & this->obj1;
+	ar & this->set1;
+	ar & this->shorts1;
+	if (version >= 2) {
+		ar & this->bools2;
+		ar & this->bytes2;
+		ar & this->chars2;
+		ar & this->doubles2;
+		ar & this->evo2;
+		ar & this->floats2;
+		ar & this->ints2;
+		ar & this->list2;
+		ar & this->longs2;
+		ar & this->map2;
+		ar & this->obj2;
+		ar & this->set2;
+		ar & this->shorts2;
+		if (version >= 3) {
+			ar & this->bools3;
+			ar & this->bytes3;
+			ar & this->chars3;
+			ar & this->doubles3;
+			ar & this->evo3;
+			ar & this->floats3;
+			ar & this->ints3;
+			ar & this->list3;
+			ar & this->longs3;
+			ar & this->map3;
+			ar & this->obj3;
+			ar & this->set3;
+			ar & this->shorts3;
+		}
+	}
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_1391985860(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::ver::Evolve& r = * dynamic_cast< byps::test::api::ver::Evolve*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::ver::Evolve());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace ver { 
+
+//-------------------------------------------------
 // Implementation of class Evolve2
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1243,195 +1480,4 @@ void BStub_BioFruitService::squeeze(::std::function< void (::std::wstring, BExce
 	transport->sendMethod(req, outerResult);
 }
 }}}}
-
-// checkpoint byps.gen.cpp.GenRemoteStub:224
-namespace byps { namespace test { namespace api { 
-void BSerializer_363642571(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new byps::test::api::inherit::BStub_BioFruitService(transport));
-	}
-	else {
-		BRemote* r = dynamic_cast<BRemote*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
-	}
-}
-}}}
-
-
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-BStub_LemonService::BStub_LemonService(PTransport transport) 
-	: BStub(transport) {}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-::std::wstring BStub_LemonService::grow()  {
-	BSyncResultT< ::std::wstring > syncResult;	
-	grow([&syncResult](::std::wstring v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_LemonService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_PlantService_grow());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-::std::wstring BStub_LemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  {
-	BSyncResultT< ::std::wstring > syncResult;	
-	pick(sess, fromTree, [&syncResult](::std::wstring v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_LemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_LemonService_pick(sess, fromTree));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-::std::wstring BStub_LemonService::squeeze()  {
-	BSyncResultT< ::std::wstring > syncResult;	
-	squeeze([&syncResult](::std::wstring v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_LemonService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_FruitService_squeeze());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenRemoteStub:224
-namespace byps { namespace test { namespace api { 
-void BSerializer_605543968(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new byps::test::api::inherit::BStub_LemonService(transport));
-	}
-	else {
-		BRemote* r = dynamic_cast<BRemote*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
-	}
-}
-}}}
-
-
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-BStub_BioLemonService::BStub_BioLemonService(PTransport transport) 
-	: BStub(transport) {}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-bool BStub_BioLemonService::certify(const ::std::wstring& param)  {
-	BSyncResultT< bool > syncResult;	
-	certify(param, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_BioLemonService::certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_BioFruitService_certify(param));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_1 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-::std::wstring BStub_BioLemonService::grow()  {
-	BSyncResultT< ::std::wstring > syncResult;	
-	grow([&syncResult](::std::wstring v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_BioLemonService::grow(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_PlantService_grow());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-::std::wstring BStub_BioLemonService::squeeze()  {
-	BSyncResultT< ::std::wstring > syncResult;	
-	squeeze([&syncResult](::std::wstring v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_BioLemonService::squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_FruitService_squeeze());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-::std::wstring BStub_BioLemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)  {
-	BSyncResultT< ::std::wstring > syncResult;	
-	pick(sess, fromTree, [&syncResult](::std::wstring v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_BioLemonService::pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_LemonService_pick(sess, fromTree));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< ::std::wstring, byps::test::api::BResult_10 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace inherit { 
-int32_t BStub_BioLemonService::useParing()  {
-	BSyncResultT< int32_t > syncResult;	
-	useParing([&syncResult](int32_t v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_BioLemonService::useParing(::std::function< void (int32_t, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_BioLemonService_useParing());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenRemoteStub:224
-namespace byps { namespace test { namespace api { 
-void BSerializer_474058508(BIO& bio, POBJECT& , PSerializable& pObjS, void* ){
-	BSerializable* p = pObjS.get();
-	if (bio.is_loading) {
-		if (p) return;
-		BTargetId targetId;
-		bio & targetId;
-		PTransport transport(new BTransport(*bio.transport, targetId));
-		pObjS = PSerializable(new byps::test::api::inherit::BStub_BioLemonService(transport));
-	}
-	else {
-		BRemote* r = dynamic_cast<BRemote*>(p);
-		BTargetId targetId = r->BRemote_getTargetId();
-		bio & targetId;
-	}
-}
-}}}
 

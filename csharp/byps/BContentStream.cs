@@ -40,7 +40,7 @@ namespace byps
         {
             get
             {
-                return contentTypeVal;
+                return contentTypeVal != null ? contentTypeVal : "";
             }
             set
             {
@@ -64,7 +64,7 @@ namespace byps
         {
             get
             {
-                return fileNameVal;
+                return fileNameVal != null ? fileNameVal : "";
             }
             set
             {
@@ -142,13 +142,16 @@ namespace byps
 
         public virtual void copyProperties(BContentStream rhs)
         {
-            contentTypeVal = rhs.contentTypeVal;
-            contentLengthVal = rhs.contentLengthVal;
-            fileNameVal = rhs.fileNameVal;
-            attachmentCodeVal = rhs.attachmentCodeVal;
+            contentTypeVal = rhs.ContentType;
+            contentLengthVal = rhs.ContentLength;
+            fileNameVal = rhs.FileName;
+            attachmentCodeVal = rhs.AttachmentCode;
             targetIdVal = rhs.TargetId;
         }
 
+        public virtual void ensureProperties()
+        {
+        }
      }
 
 }

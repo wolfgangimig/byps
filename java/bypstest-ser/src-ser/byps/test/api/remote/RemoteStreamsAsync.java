@@ -52,5 +52,36 @@ public interface RemoteStreamsAsync extends BRemote,
 	// checkpoint byps.gen.j.PrintContext:409
 	public void getTextStream(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
+	/**
+	 * Return stream without properties.
+	 * The properties must be made explicitly available on the client-side by calling
+	 * BContentStream.ensureProperties()
+	 * @return InputStream
+	 * @throws RemoteException
+	*/
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getStreamDeferedProperies() throws RemoteException;
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getStreamDeferedProperies(final BAsyncResult<java.io.InputStream> asyncResult) ;
+	
+	/**
+	 * Stores a stream reference but does not create an internal copy (does not materialize)
+	 * @param stream
+	 * @throws RemoteException
+	*/
+	// checkpoint byps.gen.j.PrintContext:365
+	public void setStreamDoNotMaterialize(java.io.InputStream stream) throws RemoteException;
+	// checkpoint byps.gen.j.PrintContext:409
+	public void setStreamDoNotMaterialize(java.io.InputStream stream, final BAsyncResult<Object> asyncResult) ;
+	
+	/**
+	 * Return stream, do not call BContentStream.cloneStream().
+	 * @throws RemoteException
+	*/
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getStreamDoNotClone() throws RemoteException;
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getStreamDoNotClone(final BAsyncResult<java.io.InputStream> asyncResult) ;
+	
 	
 }

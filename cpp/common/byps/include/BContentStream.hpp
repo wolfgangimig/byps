@@ -60,10 +60,10 @@ namespace byps {
 
   BINLINE void BContentStream::copyProperties(const PContentStream& rhs) {
     if (rhs) {
-      contentType = rhs->contentType;
-      contentLength = rhs->contentLength;
-      fileName = rhs->fileName;
-      attachmentCode = rhs->attachmentCode;
+      contentType = rhs->getContentType();
+      contentLength = rhs->getContentLength();
+      fileName = rhs->getFileName();
+      attachmentCode = rhs->getAttachmentCode();
       targetId = rhs->getTargetId();
     }
   }
@@ -172,60 +172,6 @@ namespace byps {
   BINLINE PStream BContentStreamWrapper::getStdStream() {
     return stdStream;
   }
-
-  BINLINE wstring BContentStreamWrapper::getContentType() const {
-    wstring s = this->contentType;
-    if (s.size()) return s;
-    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
-    PContentStream strm = pThis->ensureStream();
-    s = this->contentType;
-    if (s.size()) return s;
-    if (strm) {
-      pThis->contentType = s = strm->getContentType();
-    }
-    return s;
-  }
-
-  BINLINE int64_t BContentStreamWrapper::getContentLength() const {
-    int64_t s = this->contentLength;
-    if (s >= 0) return s;
-    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
-    PContentStream strm = pThis->ensureStream();
-    s = this->contentLength;
-    if (s >= 0) return s;
-    if (strm) {
-      pThis->contentLength = s = strm->getContentLength();
-    }
-    return s;
-  }
-
-  BINLINE wstring BContentStreamWrapper::getFileName() const {
-    wstring s = this->fileName;
-    if (s.size()) return s;
-    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
-    PContentStream strm = pThis->ensureStream();
-    s = this->fileName;
-    if (s.size()) return s;
-    if (strm) {
-      pThis->fileName = s = strm->getFileName();
-    }
-    return s;
-  }
-
-  BINLINE int32_t BContentStreamWrapper::getAttachmentCode() const {
-    int32_t s = this->attachmentCode;
-    if (s != 0) return s;
-    BContentStreamWrapper* pThis = const_cast<BContentStreamWrapper*>(this);
-    PContentStream strm = pThis->ensureStream();
-    s = this->attachmentCode;
-    if (s != 0) return s;
-    if (strm) {
-      pThis->attachmentCode = s = strm->getAttachmentCode();
-    }
-    return s;
-  }
-
-
 
 }
 

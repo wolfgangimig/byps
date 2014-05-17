@@ -70,6 +70,10 @@ namespace byps
             {
                 BContentStream strm = bin.transport.getWire().getStream(targetId);
                 bin.onObjectCreated(strm);
+                strm.ContentLength = contentLength;
+                strm.ContentType = contentType;
+                strm.AttachmentCode = attachmentCode;
+                strm.FileName = fileName;
                 return strm;
             }
             catch (IOException e)

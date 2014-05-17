@@ -925,6 +925,82 @@ void BSerializer_1911998634(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_RemoteStreams_getStreamDeferedProperies
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteStreams_getStreamDeferedProperies::BRequest_RemoteStreams_getStreamDeferedProperies() : BMethodRequest(1043578866) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteStreams_getStreamDeferedProperies::serialize(BIO& ar, const BVERSION version) {
+}
+void byps::test::api::remote::BRequest_RemoteStreams_getStreamDeferedProperies::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteStreams __byps__remoteT = byps_ptr_cast<RemoteStreams>(__byps__remote);
+	__byps__remoteT->getStreamDeferedProperies([__byps__asyncResult](PContentStream __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_15(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_1205766796(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteStreams_getStreamDeferedProperies& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteStreams_getStreamDeferedProperies*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteStreams_getStreamDeferedProperies());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_RemoteStreams_getStreamDoNotClone
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteStreams_getStreamDoNotClone::BRequest_RemoteStreams_getStreamDoNotClone() : BMethodRequest(1043578866) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:877
+void byps::test::api::remote::BRequest_RemoteStreams_getStreamDoNotClone::serialize(BIO& ar, const BVERSION version) {
+}
+void byps::test::api::remote::BRequest_RemoteStreams_getStreamDoNotClone::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteStreams __byps__remoteT = byps_ptr_cast<RemoteStreams>(__byps__remote);
+	__byps__remoteT->getStreamDoNotClone([__byps__asyncResult](PContentStream __byps__result, BException __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_15(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:934
+namespace byps { namespace test { namespace api { 
+void BSerializer_692369677(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		byps::test::api::remote::BRequest_RemoteStreams_getStreamDoNotClone& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteStreams_getStreamDoNotClone*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteStreams_getStreamDoNotClone());
+	}
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_RemoteStreams_getTextStream
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1048,95 +1124,6 @@ void BSerializer_2126615710(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBa
 		bio & r;
 	} else {
 		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteStreams_setImages());
-	}
-}
-}}}
-namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_RemoteStreams_throwLastException
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteStreams_throwLastException::BRequest_RemoteStreams_throwLastException() : BMethodRequest(1043578866) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:877
-void byps::test::api::remote::BRequest_RemoteStreams_throwLastException::serialize(BIO& ar, const BVERSION version) {
-}
-void byps::test::api::remote::BRequest_RemoteStreams_throwLastException::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemoteStreams __byps__remoteT = byps_ptr_cast<RemoteStreams>(__byps__remote);
-	__byps__remoteT->throwLastException([__byps__asyncResult](bool __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:934
-namespace byps { namespace test { namespace api { 
-void BSerializer_2127402965(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		byps::test::api::remote::BRequest_RemoteStreams_throwLastException& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteStreams_throwLastException*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteStreams_throwLastException());
-	}
-}
-}}}
-namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_RemoteWithAuthentication_doit
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteWithAuthentication_doit::BRequest_RemoteWithAuthentication_doit() : BMethodRequest(1983670399) {
-	value = 0;
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteWithAuthentication_doit::BRequest_RemoteWithAuthentication_doit(int32_t value)
-	: BMethodRequest(1983670399) 
-	, value(value)
-	{}
-// checkpoint byps.gen.cpp.GenApiClass:877
-void byps::test::api::remote::BRequest_RemoteWithAuthentication_doit::serialize(BIO& ar, const BVERSION version) {
-	ar & this->value;
-	ar & this->sess;
-}
-void byps::test::api::remote::BRequest_RemoteWithAuthentication_doit::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemoteWithAuthentication __byps__remoteT = byps_ptr_cast<RemoteWithAuthentication>(__byps__remote);
-	__byps__remoteT->doit(sess, value, [__byps__asyncResult](int32_t __byps__result, BException __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_5(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-// checkpoint byps.gen.cpp.GenApiClass:845
-void byps::test::api::remote::BRequest_RemoteWithAuthentication_doit::setSession(PSerializable __byps__sess) {
-	sess = byps_ptr_cast<byps::test::api::auth::SessionInfo>(__byps__sess);
-}
-
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:934
-namespace byps { namespace test { namespace api { 
-void BSerializer_1251509013(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
-	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
-	if (p) { 
-		byps::test::api::remote::BRequest_RemoteWithAuthentication_doit& r = * dynamic_cast< byps::test::api::remote::BRequest_RemoteWithAuthentication_doit*>(p);
-		bio & r;
-	} else {
-		pObjS = PSerializable(new byps::test::api::remote::BRequest_RemoteWithAuthentication_doit());
 	}
 }
 }}}

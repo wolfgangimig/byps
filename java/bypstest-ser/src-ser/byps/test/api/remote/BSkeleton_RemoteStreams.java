@@ -102,5 +102,47 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 		}
 	}
 	
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getStreamDeferedProperies() throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getStreamDeferedProperies(final BAsyncResult<java.io.InputStream> asyncResult) {
+		try {
+			java.io.InputStream ret = getStreamDeferedProperies();
+			asyncResult.setAsyncResult(ret, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public void setStreamDoNotMaterialize(java.io.InputStream stream) throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void setStreamDoNotMaterialize(java.io.InputStream stream, final BAsyncResult<Object> asyncResult) {
+		try {
+			setStreamDoNotMaterialize(stream);
+			asyncResult.setAsyncResult(null, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getStreamDoNotClone() throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getStreamDoNotClone(final BAsyncResult<java.io.InputStream> asyncResult) {
+		try {
+			java.io.InputStream ret = getStreamDoNotClone();
+			asyncResult.setAsyncResult(ret, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
 	
 }

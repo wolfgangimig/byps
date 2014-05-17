@@ -115,6 +115,56 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
+		public virtual System.IO.Stream GetStreamDeferedProperies() {
+			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
+			GetStreamDeferedProperies(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public virtual void GetStreamDeferedProperies(BAsyncResult<System.IO.Stream> asyncResult) {
+			BRequest_RemoteStreams_getStreamDeferedProperies req = new BRequest_RemoteStreams_getStreamDeferedProperies();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<System.IO.Stream> GetStreamDeferedProperiesAsync(){
+			BRequest_RemoteStreams_getStreamDeferedProperies req = new BRequest_RemoteStreams_getStreamDeferedProperies();			
+			Task<System.IO.Stream> task = Task<System.IO.Stream>.Factory.FromAsync(transport.BeginSend<System.IO.Stream>, transport.EndSend<System.IO.Stream>, req, null);
+			return await task;
+		}
+		
+		public virtual void SetStreamDoNotMaterialize(System.IO.Stream stream) {
+			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
+			SetStreamDoNotMaterialize(stream, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
+			asyncResult.GetResult();			
+		}
+		public virtual void SetStreamDoNotMaterialize(System.IO.Stream stream, BAsyncResult<Object> asyncResult) {
+			BRequest_RemoteStreams_setStreamDoNotMaterialize req = new BRequest_RemoteStreams_setStreamDoNotMaterialize();			
+			req.streamValue = stream;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task SetStreamDoNotMaterializeAsync(System.IO.Stream stream){
+			BRequest_RemoteStreams_setStreamDoNotMaterialize req = new BRequest_RemoteStreams_setStreamDoNotMaterialize();			
+			req.streamValue = stream;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
+		}
+		
+		public virtual System.IO.Stream GetStreamDoNotClone() {
+			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
+			GetStreamDoNotClone(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public virtual void GetStreamDoNotClone(BAsyncResult<System.IO.Stream> asyncResult) {
+			BRequest_RemoteStreams_getStreamDoNotClone req = new BRequest_RemoteStreams_getStreamDoNotClone();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<System.IO.Stream> GetStreamDoNotCloneAsync(){
+			BRequest_RemoteStreams_getStreamDoNotClone req = new BRequest_RemoteStreams_getStreamDoNotClone();			
+			Task<System.IO.Stream> task = Task<System.IO.Stream>.Factory.FromAsync(transport.BeginSend<System.IO.Stream>, transport.EndSend<System.IO.Stream>, req, null);
+			return await task;
+		}
+		
 		
 	}
 }
