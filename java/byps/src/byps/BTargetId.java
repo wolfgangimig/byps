@@ -143,10 +143,6 @@ public class BTargetId {
     return sbuf.toString();
   }
   
-  public String makeHeaderString() {
-    return makeSerializeString(0);
-  }
-
   public String makeSerializeString(int bversion) {
     if (isZero())
       return "";

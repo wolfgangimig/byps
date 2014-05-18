@@ -168,7 +168,7 @@ public class BMessageHeader {
 		bbuf.putInt("error", error);
 		bbuf.putInt("flags", flags);
 		bbuf.putInt("bversion", bversion);
-		bbuf.putString("targetId", targetId.makeHeaderString());
+		bbuf.putString("targetId", targetId.makeSerializeString(bversion));
 		bbuf.putLong("messageId", messageId);
    
 		if ((flags & FLAG_TIMEOUT) != 0) {
