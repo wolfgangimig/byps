@@ -108,22 +108,46 @@ namespace byps
 
         public static BTargetId parseString(String s)
         {
-            int serverId = 0;
-            long v1 = 0, v2 = 0;
-            int p = s.IndexOf('.');
-            if (p >= 0)
+            int serverId = 0, remoteId = 0;
+            long v1 = 0, v2 = 0, v3 = 0;
+            int p = 0;
+            int e = s.IndexOf('.', p);
+            if (e < 0) e = s.Length;
+            serverId = Convert.ToInt32(s.Substring(p, e-p));
+
+            p = e + 1;
+            if (p < s.Length)
             {
-                serverId = Convert.ToInt32(s.Substring(0, p));
-                p++;
-                int e = s.IndexOf('.', p);
-                if (e >= 0)
+                e = s.IndexOf('.', p);
+                if (e < 0) e = s.Length;
+                v1 = Convert.ToInt64(s.Substring(p, e - p));
+
+                p = e + 1;
+                if (p < s.Length)
                 {
-                    v1 = Convert.ToInt64(s.Substring(p, e - p));
-                    e++;
-                    v2 = Convert.ToInt64(s.Substring(e));
+                    e = s.IndexOf('.', p);
+                    if (e < 0) e = s.Length;
+                    v2 = Convert.ToInt64(s.Substring(p, e - p));
+
+                    p = e + 1;
+                    if (p < s.Length)
+                    {
+                        e = s.IndexOf('.', p);
+                        if (e < 0) e = s.Length;
+                        remoteId = Convert.ToInt32(s.Substring(p, e - p));
+
+                        p = e + 1;
+                        if (p < s.Length)
+                        {
+                            e = s.IndexOf('.', p);
+                            if (e < 0) e = s.Length;
+                            v3 = Convert.ToInt64(s.Substring(p, e - p));
+                        }
+                    }
                 }
             }
-            return new BTargetId(serverId, v1, v2);
+
+            return new BTargetId(serverId, remoteId, v1, v2, v3);
  	    }
 
 	    public override int GetHashCode() {
