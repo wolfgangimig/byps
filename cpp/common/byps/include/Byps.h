@@ -10,7 +10,6 @@
 #define BINLINE
 #endif
 
-
 #include <stdint.h>
 #include <ctime>
 #include <string>
@@ -24,7 +23,6 @@
 #include <functional>
 
 #include "platform/platform-api.h"
-
 
 namespace byps {
 
@@ -180,5 +178,13 @@ typedef byps_ptr<BContentStreamWrapper> PContentStreamWrapper;
 #include "BDateTime.h"
 #include "BValueClass.h"
 #include "BFile.h"
+
+
+////////////////////////////////////////////////////////////////////////
+// Undefine constants defined by C headers
+
+#undef min
+#undef max
+
 
 #endif

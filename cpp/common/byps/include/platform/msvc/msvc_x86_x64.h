@@ -196,4 +196,11 @@ namespace byps {
 
 #endif // _MSC_VER
 
+////////////////////////////////////////////////////////////////////////
+// Undefine constants defined by Windows
+
+#undef REGISTERED
+#undef ERROR
+#undef RGB
+
 #endif /* MSVC_X86_X64_H_ */
