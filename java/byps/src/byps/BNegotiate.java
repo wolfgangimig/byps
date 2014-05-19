@@ -115,7 +115,7 @@ public class BNegotiate {
 		}
 
 		final BTargetId tid = (targetId != null ? targetId : BTargetId.ZERO);
-		bbuf.putString(tid.makeSerializeString(BMessageHeader.BYPS_VERSION_CURRENT));
+		bbuf.putString(tid.makeSerializeString(bversion));
 		
 		if (bversion != 0) {
 		  bbuf.putInt(bversion);
