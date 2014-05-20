@@ -1,5 +1,8 @@
 package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
@@ -9,6 +12,7 @@ import org.junit.Test;
 
 import byps.BException;
 import byps.BInput;
+import byps.BMessageHeader;
 import byps.BOutput;
 import byps.BProtocolJson;
 import byps.BTargetId;
@@ -102,6 +106,36 @@ public class TestSerializeInlineInstances {
 		TestUtils.assertEquals(log, "obj", obj, objR);
 	}
 	
-	
+	 @Test
+	  public void testSerializeJsonSpecialChars() throws IOException {
+	  }
 
+
+	
+//	@Test
+//	public void testSerializationProblemsJSON() throws IOException {
+//	  ByteBuffer buf = readAll("d:/temp/byps.json.txt");
+//	  TestUtils.printBuffer(log, buf);
+//	  
+//	  BTransport transport = TestUtils.createTransportJson();
+//	  BInput inp = transport.getInput(null, buf);
+//	  Object obj = inp.load();
+//	  
+//	  log.info("obj=" + obj);
+//	}
+
+	public ByteBuffer readAll(String fileName) throws IOException {
+	  FileInputStream fis = null;
+	    File file = new File(fileName);
+	    try {
+	      fis = new FileInputStream(file);
+	      byte[] buf = new byte[(int)file.length()];
+	      fis.read(buf);
+	      return ByteBuffer.wrap(buf);
+	    }
+	    finally {
+	      if (fis != null) fis.close();
+	    }
+	}
+	
 }

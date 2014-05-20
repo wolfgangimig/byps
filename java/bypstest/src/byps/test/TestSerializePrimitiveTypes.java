@@ -114,6 +114,7 @@ public class TestSerializePrimitiveTypes {
 		internalTestSerializeStringUTF8("\n");
 		internalTestSerializeStringUTF8("\\");
 		internalTestSerializeStringUTF8("\t\r\n");
+		internalTestSerializeStringUTF8("\u0001");
 		
 		internalTestSerializeStringUTF8("c:\\Program Files\\WILUTIONS\\");
 		internalTestSerializeStringUTF8("c:\\Program Files\\\\WILUTIONS\\");
@@ -140,7 +141,7 @@ public class TestSerializePrimitiveTypes {
 	public void internalTestSerializeStringUTF8(String text) {
 		log.info("internalTestSerializeStringUTF8(" + ((text != null) ? text.substring(0, Math.min(100, text.length())) : text));
 		ByteBuffer buf = ByteBuffer.allocate(1);
-		BBuffer bbuf = BBuffer.create(BBinaryModel.MEDIUM, buf);
+		BBuffer bbuf = BBuffer.create(TestUtils.protocol, buf);
 		bbuf.putString(text);
 		bbuf.flip();
 		if (text == null || text.length() <= 100) {

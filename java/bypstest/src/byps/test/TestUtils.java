@@ -52,8 +52,8 @@ import byps.test.api.prim.PrimitiveTypes;
 public class TestUtils {
 
 	private static Log log = LogFactory.getLog(TestUtils.class);
-	public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
-	//public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
+	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
+	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	public static boolean TEST_LARGE_STREAMS = false;
 	
 	public static BTransport createTransport() {
@@ -89,6 +89,24 @@ public class TestUtils {
 	
 		return transport;
 	}
+	
+	 public static BTransport createTransportJson() {
+	    BWire wire = new MyWire(0);
+	    
+	    BApiDescriptor apiDesc = new BApiDescriptor("TestSerialize",
+	        BApiDescriptor_Testser.instance().basePackage, 
+	        BMessageHeader.BYPS_VERSION_CURRENT, 
+	        BApiDescriptor_Testser.instance().uniqueObjects);
+	    
+	    apiDesc.addRegistry(new JRegistry_Testser());
+	    
+	    BProtocol proto = new BProtocolJson(apiDesc);
+	    BTransport transport = new BTransport(apiDesc, wire, null);
+	    transport.setProtocol(proto);
+	  
+	    return transport;
+	 }
+	  
 	
 	private static class MyWire extends BWire {
 		private HashMap<Long, HashMap<Long, ByteBuffer> > mapStreams = new HashMap<Long, HashMap<Long, ByteBuffer>>();
