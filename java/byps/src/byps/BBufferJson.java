@@ -450,14 +450,15 @@ public class BBufferJson extends BBuffer {
 		}
 		else if (z < 0x20) {
 			buf.putInt(('\\' << 24) | ('u' << 16) | ('0' << 8) | '0');
-			String s = Integer.toHexString((int)z);
-			if (s.length() == 1) buf.put((byte)'0');
-			buf.put((byte)s.charAt(0));
+      buf.put(hexCharBytes[(z & 0xF0) >> 4]);
+      buf.put(hexCharBytes[z & 0x0F]);
 		}
 		else {
 			buf.put((byte)z);
 		}
 	}
+	
+	private final static byte hexCharBytes[] = "0123456789ABCDEF".getBytes(); 
 	
 	/**
 	 * Write a null value.
