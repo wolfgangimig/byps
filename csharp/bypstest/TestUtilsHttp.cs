@@ -28,6 +28,7 @@ namespace bypstest
             {
                 ServicePointManager.DefaultConnectionLimit = 1000;
 
+
                 BWire wire = new HWireClient(url, flags, 120);
                 BTransportFactory transportFactory = new HTransportFactoryClient(BApiDescriptor_Testser.instance, wire, 1);
 

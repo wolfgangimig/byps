@@ -1,6 +1,5 @@
 package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import byps.BExceptionO;
 
 
 /**
@@ -93,7 +92,7 @@ public class BException extends byps.RemoteException {
 	 */
 	@Override
 	public String getMessage() {
-		return BExceptionO.formatMessage(code, msg, details, super.getCause());
+		return BExceptionO.formatMessage.formatMessage(code, msg, details, super.getCause());
 	}
 	
 	@Override

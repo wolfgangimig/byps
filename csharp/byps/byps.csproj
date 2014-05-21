@@ -63,6 +63,7 @@
     <Compile Include="BContentStreamWrapper.cs" />
     <Compile Include="BException.cs" />
     <Compile Include="BExceptionC.cs" />
+    <Compile Include="BExceptionO.cs" />
     <Compile Include="BInput.cs" />
     <Compile Include="BInputBin.cs" />
     <Compile Include="BInputS.cs" />

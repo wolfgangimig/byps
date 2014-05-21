@@ -31,7 +31,7 @@ namespace byps
 
         public override string ToString()
         {
-            return "[BYPS:" + Code + "]" + "[" + base.Message + "]" + "[" + Details + "]";
+            return BExceptionO.FormatMessage(Code, base.Message, Details, null);
         }
 
         public readonly int Code;
