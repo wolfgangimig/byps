@@ -114,8 +114,7 @@ public class TestSerializePrimitiveTypes {
 		internalTestSerializeStringUTF8("\n");
 		internalTestSerializeStringUTF8("\\");
 		internalTestSerializeStringUTF8("\t\r\n");
-		internalTestSerializeStringUTF8("Ref\u0010");
-		internalTestSerializeStringUTF8(new String(new byte[]{0,1,2}));
+		internalTestSerializeStringUTF8(new String(new byte[]{0,1,15,16,17,31}));
 		
 		internalTestSerializeStringUTF8("c:\\Program Files\\WILUTIONS\\");
 		internalTestSerializeStringUTF8("c:\\Program Files\\\\WILUTIONS\\");
