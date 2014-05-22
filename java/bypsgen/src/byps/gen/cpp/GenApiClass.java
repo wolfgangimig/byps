@@ -940,41 +940,17 @@ class GenApiClass {
 		
 		CodePrinter mpr = prC.print("void ")
 			.print("BSerializer_" + serInfo.typeId);
-		if (serInfo.isInheritable()) {
-			mpr.print("(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase)");
-		}
-		else {
-			mpr.print("(BIO& bio, POBJECT& pObj, PSerializable& , void* )");
-		}			
-		mpr.println(" {");
+    mpr.print("(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase)").println(" {");
 		
 		prC.beginBlock();
 		
-		String cast = "";
 		if (serInfo.isInheritable()) {
-			prC.println("BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();");
-			cast = "dynamic_cast";
+			prC.print("BSerializer_ObjS_Template<").print(className).print(">(bio, pObj, pObjS, pBase);");
 		}
 		else {
-			prC.println("void* p = pObj.get();");
-			cast = "reinterpret_cast";
+      prC.print("BSerializer_Obj_Template<").print(className).print(">(bio, pObj, pObjS, pBase);");
 		}
-		
-		prC.println("if (p) { ");
-		prC.beginBlock();
-		prC.print(className).print("& r = * ").print(cast).print("< ").print(className).print("*>(p);").println();
-		prC.print("bio & r;").println();
-		prC.endBlock();
-		prC.println("} else {");
-		prC.beginBlock();
-		if (serInfo.isInheritable()) {
-			prC.print("pObjS = PSerializable(new ").print(className).println("());");
-		}
-		else {
-			prC.print("pObj = POBJECT(new ").print(className).println("());");
-		}
-		prC.endBlock();
-		prC.println("}");
+		prC.println();
 		
 		prC.endBlock();
 		prC.println("}");

@@ -40,6 +40,31 @@ public:
 };
 
 
+// ----------------
+// This definitions help to define a serializer for an API class.
+
+template <typename _Type> void BSerializer_ObjS_Template(BIO& bio, POBJECT& , PSerializable& pObjS, void* pBase) {
+	BSerializable* p = pBase ? reinterpret_cast<BSerializable*>(pBase) : pObjS.get();
+	if (p) { 
+		_Type& r = * dynamic_cast<_Type*>(p);
+		bio & r;
+	} else {
+		pObjS = PSerializable(new _Type());
+	}
+}
+
+template <typename _Type> void BSerializer_Obj_Template(BIO& bio, POBJECT& pObj, PSerializable& , void* ) {
+	void* p = pObj.get();
+	if (p) { 
+		_Type & r = * reinterpret_cast< _Type* >(p);
+		bio & r;
+	} else {
+		pObj = POBJECT(new _Type());
+	}
+}
+
+// -------------------
+
 // -----------------
 // This definitions help to define a serializer for a remote
 

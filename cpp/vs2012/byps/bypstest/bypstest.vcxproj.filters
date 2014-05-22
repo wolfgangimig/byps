@@ -107,9 +107,6 @@
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-015.cpp">
       <Filter>bypstest-gen\impl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-016.cpp">
-      <Filter>bypstest-gen\impl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\common\bypstest\TestBase.cpp">
       <Filter>test</Filter>
     </ClCompile>
@@ -157,9 +154,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteWithAuthentication.cpp">
       <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-017.cpp">
-      <Filter>bypstest-gen\impl</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
