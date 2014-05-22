@@ -12,8 +12,8 @@ class BMethodRequest : public BSerializable {
 public:
     const BTYPEID remoteId;
     BMethodRequest(BTYPEID remoteId) : remoteId(remoteId) {}
-    virtual void execute(PRemote remote, PAsyncResult methodResult) = 0;
-    virtual void setSession(PSerializable) {}
+    virtual void execute(const PRemote& remote, PAsyncResult methodResult) = 0;
+    virtual void setSession(const PSerializable& ) {}
 };
 
 //template <BTYPEID _remoteId> class BMethodRequestT : public BMethodRequest {

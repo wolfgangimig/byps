@@ -147,7 +147,7 @@ class GenRemoteSkeleton {
 		prH.beginBlock();
 		prH.println();
 		
-		pctxt.print_BSerializable_getTypeId(rinfo, prH);
+		pctxt.print_BSerializable_getTypeId(cppInfo, prH, prC);
 
     HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
     pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
