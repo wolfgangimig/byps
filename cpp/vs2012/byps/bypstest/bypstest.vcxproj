@@ -182,6 +182,7 @@
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-013.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-014.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-015.cpp" />
+    <ClCompile Include="..\..\..\common\bypstest\bypstest-gen\impl\Testser-impl-016.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestBase.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteArrays.cpp" />
     <ClCompile Include="..\..\..\common\bypstest\TestRemoteArrays4Dim.cpp" />

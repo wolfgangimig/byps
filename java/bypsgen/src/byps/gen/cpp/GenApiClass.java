@@ -649,7 +649,8 @@ class GenApiClass {
 	
 	private void beginClass(CodePrinter pr, String className, int typeId) throws IOException {
 		pr.println();
-		pctxt.printLine(pr);
+    pr.checkpoint();
+    pctxt.printLine(pr);
 		pr.print("// ").println(className);
 		pr.print("// typeId=" + typeId).println();
 		pr.println();
@@ -749,7 +750,7 @@ class GenApiClass {
 		printConstructors();
 		prH.println();
 		
-		pctxt.print_BSerializable_getTypeId(serInfo, prH);
+		pctxt.print_BSerializable_getTypeId(cppInfo, prH, prC);
 		
 		//printDestructor();
 
@@ -806,7 +807,7 @@ class GenApiClass {
 		String resultClassName = methodInfo.resultInfo.name;
 
 		if (pctxt.lambdaSupported) {
-			mpr.print("[__byps__asyncResult](").print(rtype).print(" __byps__result, BException __byps__ex) {").println();
+			mpr.print("[__byps__asyncResult](").print(rtype).print(" __byps__result, const BException& __byps__ex) {").println();
 			prC.beginBlock();
 			prC.println("if (__byps__ex) {");
 			prC.beginBlock();
@@ -844,11 +845,11 @@ class GenApiClass {
         prH.checkpoint();
         prC.checkpoint();
         
-        prH.println("public: virtual void setSession(PSerializable __byps__sess);");
+        prH.println("public: virtual void setSession(const PSerializable& __byps__sess);");
         
         prC.print("void ")
            .print(cppInfo.getClassName(""))
-           .print("::setSession(PSerializable __byps__sess) {");
+           .print("::setSession(const PSerializable& __byps__sess) {");
         prC.println();
         prC.beginBlock();
         
@@ -876,7 +877,7 @@ class GenApiClass {
 
 		prC.checkpoint();
 		prC.print("void ")
-			.print(cppInfo.getClassName(""))
+			.print(cppInfo.getClassName(cppInfo.tinfo.pack))
 			.print("::serialize(BIO& ").print("ar")
 			.print(", const BVERSION ").print("version")
 			.println(") {");

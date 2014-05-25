@@ -453,12 +453,14 @@ class PrintContext extends PrintContextBase {
 	public TypeInfoCpp getStubTypeInfoCpp(RemoteInfo rinfo) {
 		String cs = "BStub_" + rinfo.name;
 		TypeInfo regInfo = new TypeInfo(cs, rinfo.pack + "." + cs, "", null, false, false, false);
+    regInfo.typeId = rinfo.typeId;
 		return new TypeInfoCpp(regInfo, apiPack);
 	}
 	
 	public TypeInfoCpp getSkeletonTypeInfoCpp(RemoteInfo rinfo) {
 		String cs = "BSkeleton_" + rinfo.name;
 		TypeInfo regInfo = new TypeInfo(cs, rinfo.pack + "." + cs, "", null, false, false, false);
+		regInfo.typeId = rinfo.typeId;
 		return new TypeInfoCpp(regInfo, apiPack);
 	}
 	
@@ -489,10 +491,14 @@ class PrintContext extends PrintContextBase {
 		return tdescClassName;
 	}
 
-	public void print_BSerializable_getTypeId(TypeInfo tinfo, CodePrinter prH) {
-		prH.print("public: virtual BTYPEID BSerializable_getTypeId() { ")
-			.print("return " + tinfo.typeId + "; ").println("}");
-		prH.println();
+	public void print_BSerializable_getTypeId(TypeInfoCpp cppInfo, CodePrinter prH, CodePrinter prC) {
+		prH.println("public: virtual BTYPEID BSerializable_getTypeId();");
+		prC.checkpoint();
+		prC.print("BTYPEID ").print(cppInfo.getClassName("")).println("::BSerializable_getTypeId() {");
+		prC.beginBlock();
+		prC.println("return " + cppInfo.tinfo.typeId + "; ");
+		prC.endBlock();
+		prC.println("}");
 	}
 
 	public void printSetChangedMember(CodePrinter pr, SerialInfo serInfo, MemberInfo minfo) {

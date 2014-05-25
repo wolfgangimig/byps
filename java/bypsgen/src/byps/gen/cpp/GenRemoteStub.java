@@ -273,8 +273,8 @@ class GenRemoteStub {
 		
 		printConstructor();
 		
-		pctxt.print_BSerializable_getTypeId(rinfo, prH);
-		
+    pctxt.print_BSerializable_getTypeId(cppInfo, prH, prC);
+
     HashMap<String, RemoteInfo> remotes = new HashMap<String, RemoteInfo>();
     pctxt.collectAllRemotesForStubOrSkeleton(rinfo, remotes);
     for (RemoteInfo r : remotes.values()) {
