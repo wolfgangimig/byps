@@ -777,11 +777,11 @@ class GenApiClass {
 	}
 
 	private void printExecute() {
-		prH.println("public: virtual void execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult);");
+		prH.println("public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);");
 		
 		prC.print("void ")
 		   .print(cppInfo.getClassName(""))
-		   .print("::execute(PRemote __byps__remote, PAsyncResult __byps__asyncResult) {");
+		   .print("::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {");
 		prC.println();
 		prC.beginBlock();
 		
