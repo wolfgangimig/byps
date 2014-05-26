@@ -3,11 +3,9 @@ package byps.http;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.LinkedBlockingQueue;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -37,7 +35,8 @@ public class HWireClientR extends BWire {
 
     // Notify the threads inside the server waiting for results that the
     // their calls are canceled.
-    for (BAsyncResult<BMessage> asyncResult : mapAsyncResults.values()) {
+    ArrayList<BAsyncResult<BMessage>> asyncResults = mapAsyncResults.getAndRemoveAll();
+    for (BAsyncResult<BMessage> asyncResult : asyncResults) {
       // Gib iBuf an den Thread weiter, der auf das Resultat wartet.
       synchronized (asyncResult) {
         if (log.isDebugEnabled()) log.debug("pass cancel message to asyncResult, notify thread waiting in send()");
@@ -51,15 +50,14 @@ public class HWireClientR extends BWire {
     }
 
     // Notify the client that the long-poll has finished.
-    for (AsyncRequestFromLongpoll lrequest : lonpollRequests) {
+    final ArrayList<AsyncRequestFromLongpoll> lrequests = lonpollRequests.getAndRemoveAll();
+    for (AsyncRequestFromLongpoll lrequest : lrequests) {
       try {
         lrequest.request.setAsyncResult(null, bex);
       } catch (Throwable ignored) {
         // happens, if the HTTP session has already been invalidated
       }
     }
-    lonpollRequests.clear();
-
     if (log.isDebugEnabled()) log.debug(")done");
   }
 
@@ -298,22 +296,7 @@ public class HWireClientR extends BWire {
    * @return Removed long-poll requests.
    */
   protected ArrayList<AsyncRequestFromLongpoll> removeExpiredLongpolls() {
-    ArrayList<AsyncRequestFromLongpoll> ret = new ArrayList<AsyncRequestFromLongpoll>();
-    
-    boolean found = true;
-    while (found) {
-      found = false;
-      for (Iterator<AsyncRequestFromLongpoll> it = lonpollRequests.iterator(); it.hasNext(); ) {
-        AsyncRequestFromLongpoll lrequest = it.next();
-        if (lrequest.isExpired()) {
-          ret.add(lrequest);
-          it.remove();
-          found = true;
-          break;
-        }
-      }
-    }
-    
+    ArrayList<AsyncRequestFromLongpoll> ret = lonpollRequests.getAndRemoveExpired();
     return ret;
   }
 
@@ -323,22 +306,7 @@ public class HWireClientR extends BWire {
    * for a long-poll.
    */
   protected ArrayList<PendingMessage> getExpiredMessages() {
-    ArrayList<PendingMessage> ret = new ArrayList<PendingMessage>();
-
-    boolean foundOne = true;
-    while (foundOne) {
-      foundOne = false;
-      for (Iterator<PendingMessage> it = pendingMessages.iterator(); it.hasNext(); ) {
-        PendingMessage pendingMessage = it.next();
-        if (pendingMessage.isExpired()) {
-          it.remove();
-          ret.add(pendingMessage);
-          foundOne = true;
-          break;
-        }
-      }    
-    }
-    
+    ArrayList<PendingMessage> ret = pendingMessages.getAndRemoveExpired();
     return ret;
   }
   
@@ -383,11 +351,112 @@ public class HWireClientR extends BWire {
     }
   }
 
-  private final BlockingQueue<AsyncRequestFromLongpoll> lonpollRequests = new LinkedBlockingQueue<AsyncRequestFromLongpoll>();
-  private final ConcurrentHashMap<Long, BAsyncResult<BMessage>> mapAsyncResults = new ConcurrentHashMap<Long, BAsyncResult<BMessage>>();
-  private final BlockingQueue<PendingMessage> pendingMessages = new LinkedBlockingQueue<PendingMessage>();
+  private final LongPollRequests lonpollRequests = new LongPollRequests();
+  private final MapAsyncResults mapAsyncResults = new MapAsyncResults();
+  private final PendingMessages pendingMessages = new PendingMessages();
   private final BWire wireServer;
   private final static Log log = LogFactory.getLog(HWireClientR.class);
   private volatile boolean canceled;
 
+  private static class PendingMessages {
+    private final ArrayList<PendingMessage> arr = new ArrayList<PendingMessage>();
+
+    public synchronized PendingMessage poll() {
+      PendingMessage ret = null;
+      if (arr.size() != 0) {
+        ret = arr.remove(0);
+      }
+      return ret;
+    }
+
+    public synchronized boolean offer(PendingMessage pendingMessage) {
+      arr.add(pendingMessage);
+      return true;
+    }
+    
+    public synchronized ArrayList<PendingMessage> getAndRemoveExpired() {
+      ArrayList<PendingMessage> ret = new ArrayList<PendingMessage>();
+
+      boolean foundOne = true;
+      while (foundOne) {
+        foundOne = false;
+        for (Iterator<PendingMessage> it = arr.iterator(); it.hasNext(); ) {
+          PendingMessage pendingMessage = it.next();
+          if (pendingMessage.isExpired()) {
+            it.remove();
+            ret.add(pendingMessage);
+            foundOne = true;
+            break;
+          }
+        }    
+      }
+      
+      return ret;
+    }
+    
+    
+  }
+  
+  private static class MapAsyncResults {
+    private final HashMap<Long, BAsyncResult<BMessage>> map = new HashMap<Long, BAsyncResult<BMessage>>();
+    
+    public synchronized ArrayList<BAsyncResult<BMessage>> getAndRemoveAll() {
+      ArrayList<BAsyncResult<BMessage>> ret = new ArrayList<BAsyncResult<BMessage>>(map.values());
+      map.clear();
+      return ret;
+    }
+
+    public synchronized void put(long messageId, BAsyncResult<BMessage> asyncResult) {
+      map.put(messageId, asyncResult);
+    }
+
+    public synchronized BAsyncResult<BMessage> remove(long messageId) {
+      return map.remove(messageId);
+    }
+    
+  }
+  
+  private static class LongPollRequests {
+    private final ArrayList<AsyncRequestFromLongpoll> arr = new ArrayList<AsyncRequestFromLongpoll>();
+    
+    public synchronized ArrayList<AsyncRequestFromLongpoll> getAndRemoveAll() {
+      ArrayList<AsyncRequestFromLongpoll> ret = new ArrayList<AsyncRequestFromLongpoll>(arr);
+      arr.clear();
+      return ret;
+    }
+
+    public synchronized AsyncRequestFromLongpoll poll() {
+      AsyncRequestFromLongpoll lrequest = null;
+      if (arr.size() != 0) {
+        lrequest = arr.remove(0);
+      }
+      return lrequest;
+    }
+
+    public synchronized int size() {
+      return arr.size();
+    }
+
+    public synchronized void add(AsyncRequestFromLongpoll asyncRequestFromLongpoll) {
+      arr.add(asyncRequestFromLongpoll);
+    }
+    
+    public synchronized ArrayList<AsyncRequestFromLongpoll> getAndRemoveExpired() {
+      ArrayList<AsyncRequestFromLongpoll> ret = new ArrayList<AsyncRequestFromLongpoll>();
+      boolean found = true;
+      while (found) {
+        found = false;
+        for (Iterator<AsyncRequestFromLongpoll> it = arr.iterator(); it.hasNext(); ) {
+          AsyncRequestFromLongpoll lrequest = it.next();
+          if (lrequest.isExpired()) {
+            ret.add(lrequest);
+            it.remove();
+            found = true;
+            break;
+          }
+        }
+      }
+      return ret;
+    }
+  }
 }
