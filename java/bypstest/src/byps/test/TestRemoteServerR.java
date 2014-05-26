@@ -8,6 +8,10 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 import junit.framework.Assert;
 
@@ -17,6 +21,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import byps.BAsyncResult;
+import byps.BAsyncResultIgnored;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
@@ -30,6 +36,7 @@ import byps.test.api.BClient_Testser;
 import byps.test.api.srvr.BSkeleton_ClientIF;
 import byps.test.api.srvr.ClientIF;
 import byps.test.api.srvr.ServerIF;
+import byps.test.api.srvr.ServerIFAsync;
 
 /**
  * The test cases in this class verify that the server is able to invoke an 
@@ -42,7 +49,7 @@ import byps.test.api.srvr.ServerIF;
 public class TestRemoteServerR {
 	
 	BClient_Testser client;
-	ServerIF remote;
+	ServerIFAsync remote;
 	private Log log = LogFactory.getLog(TestRemoteServerR.class);
 
 	@Before
@@ -939,10 +946,90 @@ public class TestRemoteServerR {
     log.info(")handoverStreamFromClientToClient");
     
   }
-	
-/**
- *   * This is especially useful for a JavaScript client that receives a 
-   * stream an wants to send it to a helper service (acts as another client).
-	
- */
+
+  
+  /**
+   * This test simulates a pause time where the client has no active long-pool 
+   * and the server tries to contact the client.
+   * @throws RemoteException
+   * @throws InterruptedException
+   */
+  @Test
+  public void testServerCallsClientNoActiveLongPoll() throws RemoteException, InterruptedException{
+    log.info("testServerCallsClientNoActiveLongPoll(");
+        
+    final boolean[] holdClient = new boolean[] {true};
+    final AtomicInteger r1 = new AtomicInteger();
+    final AtomicInteger r2 = new AtomicInteger();
+    final AtomicInteger r3 = new AtomicInteger();
+    final AtomicReference<Throwable> ex = new AtomicReference<Throwable>();
+    final CountDownLatch countDown = new CountDownLatch(3);
+    
+    BClient_Testser client = TestUtilsHttp.createClient(1);
+    ServerIFAsync remote = client.getServerIF();
+    
+    // Provide implementation for interface ClientIF
+    client.addRemote(new BSkeleton_ClientIF() {
+      @Override
+      public int incrementInt(int a) throws RemoteException {
+        log.info("incrementInt(" + a + ")");
+        
+        try {
+          synchronized(holdClient) {
+            while (holdClient[0]) {
+              // (1) wait until (4)
+              holdClient.wait(100*1000);
+            }
+          }
+        }
+        catch (Throwable e) {
+        }
+
+        return a + 1;
+      }
+    });
+    
+    // (2) Trigger one client invocation to allocate the current active long-poll.
+    // The client will receive the request and will wait in (1).
+    remote.callClientIncrementInt(0, new BAsyncResultIgnored<Integer>());
+    
+    // (3) Trigger server to invoke client.
+    // Server will try to send requests to the client but there is no open long-poll.
+    // Server has to wait until it receives a long-poll.
+    internalCallClientAsync(remote, 5, r1, ex, countDown);
+    internalCallClientAsync(remote, 6, r2, ex, countDown);
+    internalCallClientAsync(remote, 7, r3, ex, countDown);
+    
+    // (4) release the long-pool hold in (1).
+    synchronized(holdClient) {
+      holdClient[0] = false;
+      holdClient.notifyAll();
+    }
+    
+    // Now the server can send the pending requests from (3) 
+    // to the client.
+    
+    // Wait until all requests were processed.
+    countDown.await(10, TimeUnit.SECONDS);
+    
+    TestUtils.assertEquals(log, "r1", 6, r1.get());
+    TestUtils.assertEquals(log, "r2", 7, r2.get());
+    TestUtils.assertEquals(log, "r3", 8, r3.get());
+
+    log.info(")testServerCallsClientNoActiveLongPoll");
+  }
+
+  private void internalCallClientAsync(ServerIFAsync remote, int value, final AtomicInteger r1, final AtomicReference<Throwable> ex, final CountDownLatch countDown) {
+    remote.callClientIncrementInt(value, new BAsyncResult<Integer>() {
+      public void setAsyncResult(Integer result, Throwable exception) {
+        if (exception != null) {
+          ex.set(exception);
+        }
+        else {
+          r1.set(result);
+        }
+        countDown.countDown();
+      }
+    });
+  }
 }
