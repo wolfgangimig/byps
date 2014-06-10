@@ -607,12 +607,12 @@ public class PrintContext extends PrintContextBase {
 			mpr = mpr.print(arg).print(");");
 		}
 		
-		// Item für int[]
 		else {
+		  tinfo = toCSharp(tinfo);
 			String fnct = PrintHelper.streamPutMember(tinfo);
 			String arg = varName;
 			if (tinfo.isEnum) {
-				arg = "(int)((" + tinfo.qname + ")" + varName + ")";
+				arg = "(int)((" + tinfo + ")" + varName + ")";
 			}
 			mpr = pr.print("bbuf." + fnct + "(");
 			if (jsKeyName != null) mpr = mpr.print(jsKeyName).print(", ");
