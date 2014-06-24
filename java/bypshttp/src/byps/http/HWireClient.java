@@ -9,7 +9,6 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,6 +24,7 @@ import byps.BContentStream;
 import byps.BContentStreamAsyncCallback;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BNegotiate;
@@ -67,7 +67,7 @@ public class HWireClient extends BWire {
                                                                        // of
                                                                        // CHUNK_SIZE
   protected final static Log log = LogFactory.getLog(HWireClient.class);
-  protected final ConcurrentHashMap<RequestToCancel, Boolean> openRequestsToCancel = new ConcurrentHashMap<RequestToCancel, Boolean>();
+  protected final BHashMap<RequestToCancel, Boolean> openRequestsToCancel = new BHashMap<RequestToCancel, Boolean>();
   // protected final Map<RequestToCancel, Boolean> openRequestsToCancel =
   // Collections.synchronizedMap(new HashMap<RequestToCancel, Boolean>());
   protected final Executor threadPool;
@@ -744,7 +744,7 @@ public class HWireClient extends BWire {
   protected void internalCancelAllRequests(long cancelMessageId) {
     if (log.isDebugEnabled()) log.debug("internalCancelAllRequests(");
 
-    ArrayList<RequestToCancel> arr = new ArrayList<RequestToCancel>(openRequestsToCancel.keySet());
+    ArrayList<RequestToCancel> arr = new ArrayList<RequestToCancel>(openRequestsToCancel.keys());
     openRequestsToCancel.clear();
 
     if (log.isDebugEnabled()) log.debug("cancel requests on client, #requests=" + arr.size());

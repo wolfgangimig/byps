@@ -1,7 +1,5 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
@@ -9,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 
 import byps.BApiDescriptor;
 import byps.BClient;
+import byps.BHashMap;
 import byps.BServer;
 import byps.BTargetId;
 import byps.BTransportFactory;
@@ -131,7 +130,7 @@ public abstract class HSession
 
 
   public static final HSession getSession(BTargetId targetId) {
-    Map<BTargetId, HSession> sessions = HSessionListener.getAllSessions();
+    BHashMap<BTargetId, HSession> sessions = HSessionListener.getAllSessions();
     return sessions.get(targetId);
   }
 

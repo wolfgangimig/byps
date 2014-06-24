@@ -2,7 +2,6 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -15,6 +14,7 @@ import byps.BApiDescriptor;
 import byps.BClient;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BHashMap;
 import byps.BRemote;
 import byps.BServerRegistry;
 import byps.BSyncResult;
@@ -29,7 +29,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
    * BClient objects per server.
    * One BClient object is mapped to each server ID.  
    */
-	private final ConcurrentHashMap<Integer, BClient> forwardClientMap = new ConcurrentHashMap<Integer, BClient>();
+	private final BHashMap<Integer, BClient> forwardClientMap = new BHashMap<Integer, BClient>();
 	
 	private final ExecutorService tpool = Executors.newCachedThreadPool(new PoolThreadFactory());
 	private final HConfig config;

@@ -1,11 +1,11 @@
 package byps.test.servlet;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
 import byps.BAsyncResult;
 import byps.BClient;
+import byps.BHashMap;
 import byps.BRemote;
 import byps.BServerRegistry;
 import byps.RemoteException;
@@ -15,7 +15,7 @@ import byps.test.api.remote.BSkeleton_RemoteServerCtrl;
 public class MyRemoteServerCtrl extends BSkeleton_RemoteServerCtrl {
 	
 	private BServerRegistry serverRegistry;
-	private final static ConcurrentHashMap<String, BRemote> publishedRemotes = new ConcurrentHashMap<String, BRemote>();
+	private final static BHashMap<String, BRemote> publishedRemotes = new BHashMap<String, BRemote>();
 	
 	public MyRemoteServerCtrl() {
 	}

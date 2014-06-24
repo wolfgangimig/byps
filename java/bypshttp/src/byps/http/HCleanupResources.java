@@ -1,20 +1,20 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
-import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BHashMap;
 import byps.BTargetId;
 
 public class HCleanupResources {
 	
-	protected final Map<BTargetId, HSession> sessions;
+	protected final BHashMap<BTargetId, HSession> sessions;
 	protected final MyCleanupThread cleanupThread;
 	protected final HServerContext serverContext;
 	
-	public HCleanupResources(Map<BTargetId, HSession> sessions, HServerContext serverContext) {
+	public HCleanupResources(BHashMap<BTargetId, HSession> sessions, HServerContext serverContext) {
 		this.sessions = sessions;
 		this.serverContext = serverContext;
 		this.cleanupThread = new MyCleanupThread();

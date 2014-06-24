@@ -1,7 +1,6 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
@@ -11,13 +10,14 @@ import javax.servlet.http.HttpSessionListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BHashMap;
 import byps.BTargetId;
 
 @WebListener
 public class HSessionListener implements HttpSessionListener {
 
   private final static Log log = LogFactory.getLog(HSessionListener.class);
-  private final static ConcurrentHashMap<BTargetId, HSession> sessions = new ConcurrentHashMap<BTargetId, HSession>();
+  private final static BHashMap<BTargetId, HSession> sessions = new BHashMap<BTargetId, HSession>();
   
   public HSessionListener() {
     sessions.clear(); // just to be able to set a breakpoint
@@ -52,7 +52,7 @@ public class HSessionListener implements HttpSessionListener {
 
   }
 
-  public static Map<BTargetId, HSession> getAllSessions() {
+  public static BHashMap<BTargetId, HSession> getAllSessions() {
     return sessions;
   }
 }

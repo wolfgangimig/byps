@@ -3,8 +3,9 @@ package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.nio.ByteBuffer;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,7 +20,7 @@ public class BServer {
 	public BServer(BTransport transport, BClient clientR) {
 		this.transport = transport;
 		this.clientR = clientR;
-		this.remotes = new ConcurrentHashMap<Integer, BSkeleton>();
+		this.remotes = Collections.synchronizedMap(new HashMap<Integer, BSkeleton>());
 	}
 	
 	public BServer(BServer rhs) {

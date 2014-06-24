@@ -8,7 +8,6 @@ import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.AsyncEvent;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +20,7 @@ import byps.BContentStream;
 import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BHashMap;
 import byps.BMessageHeader;
 import byps.BTargetId;
 
@@ -30,14 +30,14 @@ public class HActiveMessages {
 	 * Messages currently in process.
 	 * Includes the long-polls.
 	 */
-	private final ConcurrentHashMap<Long, HActiveMessage> activeMessages = new ConcurrentHashMap<Long,HActiveMessage>();
+	private final BHashMap<Long, HActiveMessage> activeMessages = new BHashMap<Long,HActiveMessage>();
 	
 	/**
 	 * Streams posted by HTML file upload.
 	 * Streams uploaded by HTML are received independent from a message. 
 	 */
-	private final ConcurrentHashMap<Long, BContentStream> incomingStreams = new ConcurrentHashMap<Long, BContentStream>();
-	private final ConcurrentHashMap<Long, BContentStream> outgoingStreams = new ConcurrentHashMap<Long, BContentStream>();
+	private final BHashMap<Long, BContentStream> incomingStreams = new BHashMap<Long, BContentStream>();
+	private final BHashMap<Long, BContentStream> outgoingStreams = new BHashMap<Long, BContentStream>();
 	
 	private final static Log log = LogFactory.getLog(HActiveMessages.class);
 	private final File tempDir;
@@ -213,12 +213,12 @@ public class HActiveMessages {
 		if (log.isDebugEnabled()) log.debug("cleanup(");
 		
 		// HashSet for all active incoming streams
-		HashSet<Long> activeIncomingStreamIds = new HashSet<Long>(incomingStreams.keySet());
+		HashSet<Long> activeIncomingStreamIds = new HashSet<Long>(incomingStreams.keys());
 		
 		// HashSet for referenced incoming streams.
 		// Initialize with outgoing streams because incoming streams might be used in 
 		// return values or sent to other clients.
-		HashSet<Long> referencedIncomingStreamIds = new HashSet<Long>(outgoingStreams.keySet());
+		HashSet<Long> referencedIncomingStreamIds = new HashSet<Long>(outgoingStreams.keys());
 		
 		// Cleanup messages.
 		ArrayList<HActiveMessage> arr = new ArrayList<HActiveMessage>(activeMessages.values());

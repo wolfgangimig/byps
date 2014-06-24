@@ -7,7 +7,6 @@ import java.io.InterruptedIOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,9 +16,9 @@ import org.apache.commons.logging.LogFactory;
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BException;
+import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
-import byps.BServerR;
 import byps.BTargetId;
 import byps.BWire;
 
@@ -27,7 +26,7 @@ public class HWireServer extends BWire {
 
   private final HWriteResponseHelper writeHelper;
   private final HActiveMessages activeMessages;
-  private final ConcurrentHashMap<Long, Long> activeMessageIds = new ConcurrentHashMap<Long, Long>();
+  private final BHashMap<Long, Long> activeMessageIds = new BHashMap<Long, Long>();
   private final static Log log = LogFactory.getLog(HWireServer.class);
 
   public HWireServer(HActiveMessages activeMessages, HWriteResponseHelper writeHelper) {
@@ -48,7 +47,7 @@ public class HWireServer extends BWire {
   }
 
   public void cancelAllMessages() {
-    ArrayList<Long> messageIds = new ArrayList<Long>(activeMessageIds.keySet());
+    ArrayList<Long> messageIds = new ArrayList<Long>(activeMessageIds.keys());
     for (Long messageId : messageIds) {
       cancelMessage(messageId);
     }
