@@ -28,13 +28,19 @@ namespace byps {
       serverR->done();
     }
 
-    // Call BWire::done in background thread, since this function
-    // could be called in a thread that belongs to the internal thread pool
-    // and would kill itself.
-    {
-      std::thread th(internalDone, shared_from_this());
-      th.detach();
-    }
+    //// Call BWire::done in background thread, since this function
+    //// could be called in a thread that belongs to the internal thread pool
+    //// and would kill itself.
+    //{
+    //  An access violation can occure if this thread does not exit before the 
+    //  main thread of the process uninitializes the STL. Until I do not have
+    //  an appropriate solution for this problem, the BClient::done method should
+    //  not be called in a BAsyncResult function.
+    //  std::thread th(internalDone, shared_from_this());
+    //  th.detach();
+    //}
+
+    internalDone(shared_from_this());
 
   }
 
