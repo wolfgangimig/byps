@@ -68,7 +68,7 @@ public class HWriteResponseHelper {
       
       if (log.isDebugEnabled()) log.debug("copy to servlet output");
       boolean isJson = BMessageHeader.detectProtocol(obuf) == BMessageHeader.MAGIC_JSON;
-      resp.setContentType(isJson ? "application/json" : "application/byps");
+      resp.setContentType(isJson ? "application/json; charset=UTF-8" : "application/byps");
       resp.setContentLength(obuf.remaining());
       OutputStream os = resp.getOutputStream();
 

@@ -47,7 +47,7 @@ public class AsfPost extends AsfRequest {
     Throwable returnException = null;
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
     final boolean isJson = BMessageHeader.detectProtocol(buf) == BMessageHeader.MAGIC_JSON;
-    final String contentType = isJson ? "application/json" : "application/byps";
+    final String contentType = isJson ? "application/json;charset=UTF-8" : "application/byps";
 
     try {
 
