@@ -81,7 +81,12 @@ public abstract class HSession
       // HttpSession.invalidate() will call via HSessionListener done() again.
       // To avoid recursion, set the httpSess reference as null.
       httpSess = null;
-      hsess.invalidate();
+      try {
+        hsess.invalidate();
+      }
+      catch (Throwable e) {
+        // Assume the session is expired.
+      }
     }
 
     // HWireServer.done() could interrupt the current thread.
