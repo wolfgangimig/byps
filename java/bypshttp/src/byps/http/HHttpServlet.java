@@ -41,6 +41,7 @@ import byps.BClient;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BProtocol;
@@ -361,9 +362,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     final String cancelStr = request.getParameter("cancel");
     if (log.isDebugEnabled()) log.debug("cancel=" + cancelStr);
 
-    final HSession sess = getSessionFromRequest(request, response, false);
-    if (sess == null) return;
-
     if (streamIdStr != null && streamIdStr.length() != 0) {
       if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
       
@@ -386,20 +384,26 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     }
     else if (cancelStr != null && cancelStr.length() != 0) {
 
-      long messageId = BBufferJson.parseLong(messageIdStr);
-
-      if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
-        if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
-        sess.wireServer.cancelAllMessages();
+      final HSession sess = getSessionFromRequest(request, response, false);
+      if (sess != null) {
+      
+        long messageId = BBufferJson.parseLong(messageIdStr);
+  
+        if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
+          if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
+          sess.wireServer.cancelAllMessages();
+        }
+        else if (messageId == HWireClient.MESSAGEID_DISCONNECT) {
+          if (log.isDebugEnabled()) log.debug("sess.done");
+          sess.done();
+        }
+        else {
+          if (log.isDebugEnabled()) log.debug("activeMessages.cancelMessage");
+          sess.wireServer.cancelMessage(messageId);
+        }
+        
       }
-      else if (messageId == HWireClient.MESSAGEID_DISCONNECT) {
-        if (log.isDebugEnabled()) log.debug("sess.done");
-        sess.done();
-      }
-      else {
-        if (log.isDebugEnabled()) log.debug("activeMessages.cancelMessage");
-        sess.wireServer.cancelMessage(messageId);
-      }
+      
       response.setStatus(HttpServletResponse.SC_OK);
       response.getOutputStream().close();
 
@@ -437,10 +441,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
     HRequestContext rctxt = null;
 
-    final HSession sess = getSessionFromRequest(request, response, false);
-    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) return;
-
     try {
       // NDC.push(hsess.getId());
 
@@ -448,6 +448,9 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       final BMessageHeader header = new BMessageHeader();
       header.read(ibuf);
 
+      final BHashMap<BTargetId, HSession> sessions = HSessionListener.getAllSessions();
+      final HSession sess = sessions.get(header.targetId);
+      
       final boolean isClientR = (header.flags & BMessageHeader.FLAG_LONGPOLL) != 0;
 
       if (log.isDebugEnabled()) log.debug("longpoll=" + isClientR);
@@ -550,15 +553,35 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     if (log.isDebugEnabled()) log.debug(")doMessage");
   }
 
-  protected void doNegotiate(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf) throws ServletException {
+  protected void doNegotiate(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf) throws ServletException, BException {
     if (log.isDebugEnabled()) log.debug("doNegotiate(");
 
-    // Erstelle neue JSESSIONID für Lastverteilung
+    // Initialization finished?
+    if (!isInitialized.get()) {
+      int httpStatus = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
+      if (log.isInfoEnabled()) log.info("HHttpServlet not initialized. Return " + httpStatus);
+      response.setStatus(httpStatus);
+      return;
+    }
 
-    final HSession sess = getSessionFromRequest(request, response, true);
-    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) return;
+    // Create new JSESSIONID to support load balancing
+    // We do not rely on the JSESSIONID to identify the BYPS session in incoming requests.
+    // Instead, we always read the targetId from the message and lookup the BYPS session in the session map.
+    // Otherwise two JSON connections in a browser window could not be distinguished.
+    HttpSession hsess = request.getSession(true);
+    if (log.isDebugEnabled()) log.debug("JSESSIONID=" + hsess.getId());
 
+    // Create new BYPS session
+    final HTargetIdFactory targetIdFactory = getTargetIdFactory();
+    final BTargetId targetId = targetIdFactory.createTargetId();
+    final HSession sess = createSession(request, response, hsess);
+    sess.setTargetId(targetId);
+    if (log.isDebugEnabled()) log.debug("targetId=" + targetId);
+    
+    
+    
+    // Process Negotiate message
+    
     final HRequestContext rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
 
     final BAsyncResult<ByteBuffer> asyncResponse = new BAsyncResult<ByteBuffer>() {
@@ -629,10 +652,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
   private void doPutStream(final long messageId, final long streamId, HttpServletRequest request, HttpServletResponse response) throws IOException {
     if (log.isDebugEnabled()) log.debug("doPutStream(");
-
-    final HSession sess = getSessionFromRequest(request, response, false);
-    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) return;
 
     try {
       // NDC.push(hsess.getId());
@@ -727,10 +746,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
   protected void doHtmlUpload(HttpServletRequest request, HttpServletResponse response) throws IOException {
     if (log.isDebugEnabled()) log.debug("doHtmlUpload(");
 
-    final HSession sess = getSessionFromRequest(request, response, false);
-    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) return;
-
     try {
       // NDC.push(hsess.getId());
 
@@ -765,7 +780,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         boolean formField = item.isFormField();
         if (log.isDebugEnabled()) log.debug("formField=" + formField);
         if (!formField && fileName.length() == 0) continue;
-        Long streamId = formField ? 0L : sess.wireServer.makeMessageId();
+        long streamId = formField ? 0L : (System.currentTimeMillis() ^ ((((long)fileName.hashCode()) << 16L) | (long)System.identityHashCode(this)) ); // used as pseudo random number
 
         HFileUploadItem uploadItem = new HFileUploadItem(formField, fieldName, fileName, item.getContentType(), item.getSize(), Long.toString(streamId));
         uploadItems.add(uploadItem);
@@ -773,7 +788,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
         if (item.isFormField()) continue;
 
-        final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), 0, streamId.longValue());
+        final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), 0, streamId);
         getActiveMessages().addIncomingUploadStream(new HFileUploadItemIncomingStream(item, targetId, getConfig().getTempDir()));
 
       }
@@ -829,52 +844,46 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     return clientR;
   }
   
+  @SuppressWarnings("deprecation")
   protected HSession getSessionFromRequest(HttpServletRequest request, HttpServletResponse response, boolean createNewIfNotEx) {
     HSession sess = null;
     int httpStatus = HttpServletResponse.SC_UNAUTHORIZED;
 
-    HttpSession hsess = request.getSession(false);
+    final BHashMap<BTargetId, HSession> sessions = HSessionListener.getAllSessions();
+    BTargetId targetId = null;
+    
+    // JSESSIONID erstellen, wird nur zur Lastverteilung benötigt.
+    HttpSession hsess = request.getSession(createNewIfNotEx);
     if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
-    if (hsess == null) {
-      if (createNewIfNotEx) {
-        hsess = request.getSession(true);
-        if (log.isDebugEnabled()) log.debug("new http session=" + hsess.getId());
-      }
+
+    
+    // Old client application, targetId is not supplied as request param.
+    // It has be found in the session object.
+    if (targetId == null) {
+      targetId = (BTargetId)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
+      if (log.isDebugEnabled()) log.debug("targetId from jsession=" + targetId);
     }
-
-    if (hsess != null) {
+    
+    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
+    sess = sessions.get(targetId != null ? targetId : BTargetId.ZERO);
+    if (sess == null) {
       try {
-        sess = (HSession) hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-        if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-        if (sess == null) {
-
-          if (createNewIfNotEx) {
-            
-            if (!isInitialized.get()) {
-              throw new IOException("Not initialized. Try again later.");
-            }
-
-            HTargetIdFactory targetIdFactory = getTargetIdFactory();
-
-            // Initialized?
-            if (log.isDebugEnabled()) log.debug("targetIdFactory=" + targetIdFactory);
-            if (targetIdFactory != null) {
-              sess = createSession(request, response, hsess);
-              if (log.isDebugEnabled()) log.debug("new byps session=" + sess);
-
-              sess.setTargetId(targetIdFactory.createTargetId());
-
-              HSessionListener.attachBSession(hsess, sess);
-            }
-            else {
-              httpStatus = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
-            }
-          }
+        if (createNewIfNotEx) {
+          
         }
+        
       } catch (Exception e) {
         log.debug("Cannot get/create session", e);
         httpStatus = HttpServletResponse.SC_FORBIDDEN;
       }
+    }
+    else if (sess.isExpired()) {
+      log.debug("session is expired");
+      sess.done();
+      sess = null;
+    }
+    else {
+      sess.touch();
     }
 
     if (sess == null) {

@@ -347,6 +347,14 @@ public class BWire {
 	  return 0;
 	}
 	
+  public BTargetId getTargetId() {
+    return targetId;
+  }
+
+  public void setTargetId(BTargetId targetId) {
+    this.targetId = targetId;
+  }
+
   public String toString() {
     return "[]";
   }
@@ -355,5 +363,6 @@ public class BWire {
 	protected Object sess;
 	protected int flags;
 	private final static Log log = LogFactory.getLog(BWire.class);
+  private volatile BTargetId targetId = BTargetId.ZERO;
 
 }

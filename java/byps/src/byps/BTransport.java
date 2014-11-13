@@ -5,7 +5,6 @@ package byps;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -583,6 +582,7 @@ public class BTransport {
   public synchronized void setTargetId(BTargetId v) {
     this.targetId = v;
     this.connectedServerId = v.getServerId();
+    this.wire.setTargetId(v);
   }
   
   public synchronized int getConnectedServerId() {

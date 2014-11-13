@@ -363,9 +363,8 @@ byps.BSerializer_15 = function() {
 			streamId = targetId.getStreamId();
 		}
 		
-		var url = bin.transport.wire.url;
-		url += (url.indexOf('?') != url.length - 1) ? '?' : '&';
-		obj.url = url + "serverid=" + serverId + "&messageid=" + messageId + "&streamid=" + streamId;
+		var destUrl = bin.transport.wire.getUrlStringBuilder("", false);
+		obj.url = destUrl + "&serverid=" + serverId + "&messageid=" + messageId + "&streamid=" + streamId;
 	
 		return obj;
 	};
@@ -538,15 +537,15 @@ byps.BStreamRequest = function() {
 	this.messageId = "";
 
 	// JavaScript kennt keinen InputStream.
-	// Man könnte hier mit HTML 5 Blobs arbeiten. Die sind aber noch sehr neu.
-	// Statt des InputStream nehme ich für
+	// Man kï¿½nnte hier mit HTML 5 Blobs arbeiten. Die sind aber noch sehr neu.
+	// Statt des InputStream nehme ich fï¿½r
 	// den Download eine URL,
 	// den Upload die Stream-ID.
 	// Die Download-URL wird beim Deserialisieren aus messageId und streamId
 	// gebildet.
-	// Das Hochladen erfolgt über das HTML-file-Formular. Als Antwort wird eine
+	// Das Hochladen erfolgt ï¿½ber das HTML-file-Formular. Als Antwort wird eine
 	// vom Server
-	// gebildete streamId zurückgegeben. Diese Stream-ID nehme ich als
+	// gebildete streamId zurï¿½ckgegeben. Diese Stream-ID nehme ich als
 	// "InputStream".
 
 	this.downloadUrl = "";
@@ -605,8 +604,9 @@ byps.BAsyncResult = function(result, exception) {
 byps.BWireClient = function(url, flags, timeoutSeconds) {
 
 	var me = this;
-	this.url = url;
+	this._url = url;
 	this.flags = flags || 0;
+	this.targetId = "";
 
 	this.timeoutMillisClient = timeoutSeconds ? (timeoutSeconds * 1000) : (-1);
 
@@ -621,14 +621,14 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	this.sendR = function(requestMessage, asyncResult) {
 		this._internalSend(requestMessage, asyncResult, true, true);
 	};
-
+	
 	this._internalSend = function(requestMessage, asyncResult, isReverse, processAsync) {
 		var requestId = Math.random();
 		var xhr = new XMLHttpRequest();
 
 		this.openRequestsToCancel[requestId] = xhr;
 
-		var destUrl = me.url;
+		var destUrl = "";
 
 		var isNegotiate = byps.BNegotiate_isNegotiateMessage(requestMessage.jsonText);
 
@@ -639,17 +639,22 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 
 			var servletPath = me.getServletPathForNegotiationAndAuthentication();
 
-			destUrl = me.makeUrl(servletPath, [ "negotiate", negoStr ]);
+			destUrl = me.getUrlStringBuilder(servletPath, false);
+			destUrl += "&negotiate=" + negoStr;
 		}
 		else if (isReverse) {
 
 			var servletPath = me.getServletPathForReverseRequest();
 
-			destUrl = me.makeUrl(servletPath);
+			destUrl = me.getUrlStringBuilder(servletPath, true);
+		}
+		else {
+			
+			destUrl = me.getUrlStringBuilder("", true);
+			
 		}
 
-		destUrl += (destUrl.indexOf("?") < 0) ? "?" : "&";
-		destUrl += "__ts=";
+		destUrl += "&__ts=";
 		destUrl += new Date().getTime();
 
 		xhr.open(isNegotiate ? 'GET' : 'POST', destUrl, processAsync);
@@ -776,7 +781,8 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	};
 	
 	this._sendCancelMessage = function(cancelMessageId, asyncResult) {
-		var destUrl = me.url + "?messageid=" + cancelMessageId + "&cancel=1";
+		var destUrl = this.getUrlStringBuilder("", true);
+		destUrl += "&messageid=" + cancelMessageId + "&cancel=1";
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', destUrl, true);
 		xhr.withCredentials = true;
@@ -790,7 +796,7 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	};
 
 	this.getServletPathForNegotiationAndAuthentication = function() {
-		var ret = this.url;
+		var ret = this._url;
 		var p = ret.lastIndexOf('/');
 		if (p >= 0) {
 			ret = ret.substring(p);
@@ -799,7 +805,7 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	};
 
 	this.getServletPathForReverseRequest = function() {
-		var ret = this.url;
+		var ret = this._url;
 		var p = ret.lastIndexOf('/');
 		if (p >= 0) {
 			ret = ret.substring(p);
@@ -807,19 +813,31 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		return ret;
 	};
 
-	this.makeUrl = function(servletPath, params) {
-		var ret = this.url;
-		var p = ret.lastIndexOf('/');
-		if (p >= 0) ret = ret.substring(0, p);
-		ret += servletPath;
-		if (params) {
-			for ( var i = 0; i < params.length; i += 2) {
-				ret += (i == 0) ? "?" : "&";
-				ret += params[i] + "=" + params[i + 1];
+	this.getUrlStringBuilder(servletPath, withTargetId) {
+		var ret = this._url;
+		if (servletPath.length) {
+			var p = ret.lastIndexOf('/');
+			if (p >= 0) ret = ret.substring(0, p);
+			ret += servletPath;
+			if (params) {
+				for ( var i = 0; i < params.length; i += 2) {
+					ret += (i == 0) ? "?" : "&";
+					ret += params[i] + "=" + params[i + 1];
+				}
 			}
 		}
+		
+		ret += "?";
+		if (withTargetId) {
+			ret += "__targetId=" + targetId.toString();
+		}
+		else {
+			ret += "a=a";
+		}
+		
 		return ret;
 	};
+
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -1351,7 +1369,7 @@ byps.BInputOutput = function(transport, header, jsonText) {
 		else if (typeof elm === 'object') {
 
 			// Ein Objekt-Element muss eine Referenz sein.
-			// Andernfalls würden wir einen Serialisierer das zweite mal
+			// Andernfalls wï¿½rden wir einen Serialisierer das zweite mal
 			// durchlaufen.
 			var id = elm["*i"];
 			if (!id || id >= 0) {
@@ -1366,10 +1384,10 @@ byps.BInputOutput = function(transport, header, jsonText) {
 
 			// Wenn es noch keine ID hat, dann wurde es noch nicht
 			// deserialisiert.
-			// (Objekt is null für ersten Longpoll.)
+			// (Objekt is null fï¿½r ersten Longpoll.)
 			if (elm && !elm["*i"]) {
 
-				// Gib dem Objekt eine ID, damit ich weiß, dass ich es
+				// Gib dem Objekt eine ID, damit ich weiï¿½, dass ich es
 				// deserialisiert habe.
 				elm["*i"] = id;
 

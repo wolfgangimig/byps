@@ -388,7 +388,7 @@ public class HWireClient extends BWire {
     if (log.isDebugEnabled()) log.debug("isJson=" + isJson);
 
     try {
-      String destUrl = surl;
+      StringBuilder destUrl = null;
 
       // Negotiate?
       if (isNegotiate) {
@@ -398,7 +398,9 @@ public class HWireClient extends BWire {
         String negoStr = new String(requestDataBuffer.array(), requestDataBuffer.position(), requestDataBuffer.limit(), "UTF-8");
         negoStr = URLEncoder.encode(negoStr, "UTF-8");
 
-        destUrl = makeUrl(getServletPathForNegotiationAndAuthentication(), new String[] { "negotiate", negoStr });
+        String negoServlet = getServletPathForNegotiationAndAuthentication();
+        destUrl = getUrlStringBuilder(negoServlet);
+        destUrl.append("&negotiate=").append(negoStr);
         
         // Clear session Cookie
         httpClient.clearHttpSession();
@@ -406,13 +408,23 @@ public class HWireClient extends BWire {
 
       // Reverse request (long-poll) ?
       else if ((msg.header.flags & BMessageHeader.FLAG_RESPONSE) != 0) {
-        destUrl = makeUrl(getServletPathForReverseRequest(), null);
+        
+        String longpollServlet = getServletPathForReverseRequest();
+        destUrl = getUrlStringBuilder(longpollServlet);
+        
         timeoutSecondsRequest = 0; // timeout controlled by server, 10min by
                                    // default.
       }
+      
+      // Ordinary request
+      else {
+        destUrl = getUrlStringBuilder("");
+      }
 
       if (log.isDebugEnabled()) log.debug("open connection, url=" + destUrl);
-      final HHttpRequest httpRequest = isNegotiate ? httpClient.get(destUrl, requestToCancel) : httpClient.post(destUrl, requestDataBuffer, requestToCancel);
+      final HHttpRequest httpRequest = isNegotiate ? 
+          httpClient.get(destUrl.toString(), requestToCancel) : 
+          httpClient.post(destUrl.toString(), requestDataBuffer, requestToCancel);
 
       httpRequest.setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
       
@@ -435,8 +447,8 @@ public class HWireClient extends BWire {
 
     final long messageId = stream.getTargetId().getMessageId();
     final long streamId = stream.getTargetId().getStreamId();
-    StringBuilder destUrl = new StringBuilder(surl);
-    destUrl.append("?&messageid=").append(messageId).append("&streamid=").append(streamId);
+    StringBuilder destUrl = getUrlStringBuilder("");
+    destUrl.append("&messageid=").append(messageId).append("&streamid=").append(streamId);
 
     final RequestToCancel requestToCancel = new RequestToCancel(messageId, streamId, 0L, asyncResult);
     final HHttpRequest httpRequest = httpClient.putStream(destUrl.toString(), stream, requestToCancel);
@@ -454,8 +466,8 @@ public class HWireClient extends BWire {
     final long messageId = targetId.getMessageId();
     final long streamId = targetId.getStreamId();
     
-    StringBuilder destUrl = new StringBuilder(surl);
-    destUrl.append("?").append("serverid=").append(targetId.getServerId())
+    StringBuilder destUrl = getUrlStringBuilder("");
+    destUrl.append("&serverid=").append(targetId.getServerId())
       .append("&messageid=").append(messageId)
       .append("&streamid=").append(streamId);
 
@@ -480,8 +492,10 @@ public class HWireClient extends BWire {
       }
     });
 
-    String destUrl = surl + "?messageid=" + messageId + "&cancel=1";
-    final HHttpRequest httpRequest = httpClient.get(destUrl, requestToCancel);
+    StringBuilder destUrl = getUrlStringBuilder("");
+    destUrl.append("&messageid=").append(messageId).append("&cancel=1");
+
+    final HHttpRequest httpRequest = httpClient.get(destUrl.toString(), requestToCancel);
 
     requestToCancel.setHttpRequest(httpRequest);
 
@@ -899,23 +913,25 @@ public class HWireClient extends BWire {
     return longUrl;
   }
 
-  private String makeUrl(String servletPath, String[] params) {
+  private StringBuilder getUrlStringBuilder(String servletPath) {
     StringBuilder sbuf = new StringBuilder();
-    int p = surl.lastIndexOf("/");
-    if (p < 0) p = surl.length();
-    sbuf.append(surl.substring(0, p));
-    sbuf.append(servletPath);
-    if (params != null) {
-      for (int i = 0; i < params.length; i += 2) {
-        sbuf.append(i == 0 ? "?" : "&");
-        sbuf.append(params[i]);
-        sbuf.append("=");
-        sbuf.append(params[i + 1]);
-      }
+    if (servletPath.length() != 0) {
+      int p = surl.lastIndexOf("/");
+      if (p < 0) p = surl.length();
+      sbuf.append(surl.substring(0, p));
+      sbuf.append(servletPath);
     }
-    return sbuf.toString();
-  }
+    else {
+      sbuf.append(surl);
+    }
 
+    // We always want to start adding new parameters with '&'.
+    // That's why somthing has to be added to the url which currently ends with '?'
+    sbuf.append("?a=a");
+    
+    return sbuf;
+  }
+  
   public String toString() {
     return "[url=" + surl + ", #openreq=" + openRequestsToCancel.size() + ", done=" + isDone + "]";
   }

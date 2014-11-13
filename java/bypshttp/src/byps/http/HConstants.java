@@ -77,6 +77,7 @@ public class HConstants {
   /**
    * HttpSession attribute name for BYPS session.
    */
+  @Deprecated
   public final static String HTTP_SESSION_ATTRIBUTE_NAME = "BHttpServlet.Session";
 
   /**
@@ -97,4 +98,8 @@ public class HConstants {
    */
   public final static long CONNECTION_RETRY_PAUSE = 60 * 1000L;
   
+  
+  public final static String HTTP_SESSION_ATTRIBUTE_TARGETID = "__targetid";
+  
+  public final static int DEFAULT_INACTIVE_SECONDS_AUTHENTICATED = 10 * 60 * 1000;
  }
