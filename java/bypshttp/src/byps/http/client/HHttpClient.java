@@ -70,6 +70,7 @@ public interface HHttpClient {
   /**
    * Clear HTTP Session cookie.
    */
+  @Deprecated
   public void clearHttpSession();
   
 }

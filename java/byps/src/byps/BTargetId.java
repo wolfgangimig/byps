@@ -34,6 +34,7 @@ public class BTargetId {
    * Constant object to be used instead of a null reference.
    */
   public final static BTargetId ZERO = new BTargetId(0, 0, 0);
+  public static final String SESSIONID_ZERO = ZERO.toSessionId();
 
   /**
    * Constructor.
@@ -259,6 +260,44 @@ public class BTargetId {
 
   public long getSignature() {
     return signature;
+  }
+  
+  public String toSessionId() {
+    return toSessionId(v1, v2);
+  }
+  
+  private static String toSessionId(long v1, long v2) {
+    StringBuilder sbuf = new StringBuilder();
+    String s1 = Long.toHexString(v1);
+    int d = s1.length();
+    while (d++ < 16) sbuf.append('0'); 
+    sbuf.append(s1);
+    s1 = Long.toHexString(v2);
+    d = s1.length();
+    while (d++ < 16) sbuf.append('0');
+    sbuf.append(s1);
+    return sbuf.toString();
+  }
+  
+  private static long parseHexLong(String s16) {
+    long v = Long.parseLong(s16.substring(2), 16);
+    long u = Integer.parseInt(s16.substring(0,2), 16);
+    long r = (u << 56L) | v;
+    return r;
+  }
+  
+  public static void writeSessionId(ByteBuffer buf, String sessionId) {
+    long v1 = parseHexLong(sessionId.substring(0, 16));
+    long v2 = parseHexLong(sessionId.substring(16, 32));
+    buf.putLong(v1);
+    buf.putLong(v2);
+  }
+  
+  public static String readSessionId(ByteBuffer buf) {
+    long v1 = buf.getLong();
+    long v2 = buf.getLong();
+    String s = toSessionId(v1, v2);
+    return s;
   }
 
   // /**

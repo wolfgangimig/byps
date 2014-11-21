@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ser" default="build">
+
+	<property name="bypsgen.home" value="../../lib/java"/>
+	
+	<target name="build">
+	
+		<java jar="${bypsgen.home}/bypsgen.jar" fork="true" >
+			
+			<arg value="--sourcepath"/> 		<arg value="./src-ureq"/>
+
+			<arg value="-genj.dir-ser"/> 		<arg value="./src-ureq-ser"/>
+
+			<arg value="-gencs.dir-ser"/>     	<arg value="d:/git/byps/csharp/byps/src-ureq"/>
+			
+			<arg value="-genjs.dest"/> 			<arg value="../bypstest-srv/WebContent/ureq.js"/>
+
+			<arg value="-gencpp.dir-api" /> 		<arg value="d:/git/byps/cpp/common/byps/ureq/api" />
+			<arg value="-gencpp.dir-impl" /> 		<arg value="d:/git/byps/cpp/common/byps/ureq/impl" />
+			
+		</java>
+	
+	</target>
+
+</project>

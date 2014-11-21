@@ -26,13 +26,13 @@ public abstract class BRegistry {
   public final static int TYPEID_STREAM = 15;
   public final static int TYPEID_STUB = 16;
   public final static int TYPEID_DATE = 17;
+  public final static int TYPEID_VOID = 19;
   public final static int TYPEID_EXCEPTION = 20;
   public final static int TYPEID_OBJECT = 21;
   public final static int TYPEID_VALUECLASS = 22;
   public final static int TYPEID_PUBLISH_CLIENT = 23;
   public final static int TYPEID_HEADER = 30;
 
-  public final static int TYPEID_VOID = 19;
   public final static int TYPEID_STRING_UTF16 = TYPEID_STRING;
 
   public final static int TYPEID_MIN_USER = 64;
@@ -60,7 +60,7 @@ public abstract class BRegistry {
     throw new IllegalStateException();
   }
 
-  public BSerializer getSerializer(int typeId) throws BException {
+  protected BSerializer internalGetSerializer(int typeId) throws BException {
     BRegisteredSerializer[] ssers = getSortedSerializers();
     int left = 0, right = ssers.length;
     while (left <= right) {
@@ -85,11 +85,15 @@ public abstract class BRegistry {
     }
 
     BSerializer ser = getBuiltInSerializer(typeId);
-    if (ser != null) return ser;
-
-    throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+    return ser;
   }
 
+  public BSerializer getSerializer(int typeId) throws BException {
+    BSerializer ser = internalGetSerializer(typeId);
+    if (ser != null) return ser;
+    throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+  }
+  
   public BSerializer getSerializer(Object obj, boolean throwEx) throws BException {
     Class<?> clazz = obj.getClass();
     BSerializer ser = null;

@@ -181,10 +181,11 @@ public class JcnnPutStream extends JcnnRequest {
           returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
         }
         catch (IOException e) {
-          if (log.isDebugEnabled()) log.debug("Failed to read response", e);
-          InputStream errStrm = conn.getErrorStream();
-          BWire.bufferFromStream(errStrm, false);
-          
+          if (conn != null) {
+            if (log.isDebugEnabled()) log.debug("Failed to read response", e);
+            InputStream errStrm = conn.getErrorStream();
+            BWire.bufferFromStream(errStrm, false);
+          }          
           throw new BException(statusCode, "Put stream failed", e);
         }
         finally {

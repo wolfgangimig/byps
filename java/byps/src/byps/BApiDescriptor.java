@@ -2,7 +2,6 @@ package byps;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
-import java.util.HashMap;
 
 /**
  * This class describes a generated API.
@@ -42,7 +41,8 @@ public class BApiDescriptor {
 	/**
 	 * Registry of serialization classes.
 	 */
-	private final HashMap<BBinaryModel, BRegistry> registries = new HashMap<BBinaryModel, BRegistry>();
+	private final BRegistryCollection binaryRegistry = new BRegistryCollection(BBinaryModel.MEDIUM);
+	private final BRegistryCollection jsonRegistry = new BRegistryCollection(BBinaryModel.JSON);
 	
 	public BApiDescriptor( 
 			String name, String apiPack,
@@ -64,12 +64,23 @@ public class BApiDescriptor {
 	 * @see BNegotiate#JSON
 	 */
 	public BApiDescriptor addRegistry(BRegistry registry) {
-		registries.put(registry.bmodel, registry);
+	  if (binaryRegistry.bmodel == registry.bmodel) {
+	    binaryRegistry.add(registry);
+	  }
+	  else {
+	    jsonRegistry.add(registry);
+	  }
 		return this;
 	}
 	
 	public BRegistry getRegistry(BBinaryModel protocol) {
-		BRegistry ret = registries.get(protocol);
+	  BRegistry ret = null;
+	  if (protocol == binaryRegistry.bmodel) {
+	    ret = binaryRegistry;
+	  }
+	  else if (protocol == jsonRegistry.bmodel) {
+	    ret = jsonRegistry;
+	  }
 		if (ret == null) {
 			throw new IllegalStateException("No registry for protocol=" + protocol);
 		}
@@ -79,9 +90,9 @@ public class BApiDescriptor {
 	public String getProtocolIds() {
 		StringBuilder sbuf = new StringBuilder();
 		// First: optimized binary protocol
-    if (registries.containsKey(BBinaryModel.MEDIUM)) sbuf.append(BBinaryModel.MEDIUM.getProtocolId());
+    if (!binaryRegistry.isEmpty()) sbuf.append(BBinaryModel.MEDIUM.getProtocolId());
     // Last: fallback to JSON
-    if (registries.containsKey(BBinaryModel.JSON)) sbuf.append(BBinaryModel.JSON.getProtocolId());
+    if (!jsonRegistry.isEmpty()) sbuf.append(BBinaryModel.JSON.getProtocolId());
 		return sbuf.toString();
 	}
 	

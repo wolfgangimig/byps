@@ -91,9 +91,11 @@ public class JcnnPost extends JcnnRequest {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
 
       try {
-        is = c.getErrorStream();
-        BWire.bufferFromStream(is, false);
-        is = null;
+        if (c != null) {
+          is = c.getErrorStream();
+          BWire.bufferFromStream(is, false);
+          is = null;
+        }
       }
       catch (IOException ignored) {
       }

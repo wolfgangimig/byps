@@ -19,6 +19,8 @@ public class BTransport {
 
   private BTargetId targetId;
   
+  private String sessionId;
+  
   /**
    * Server ID to which this BTransport is connected.
    * If this object belongs to a foreign interface, 
@@ -35,6 +37,7 @@ public class BTransport {
     this.apiDesc = apiDesc;
     this.wire = wire;
     this.targetId = BTargetId.ZERO;
+    this.sessionId = BTargetId.SESSIONID_ZERO;
     this.serverRegistry = serverRegistry;
   }
 
@@ -42,6 +45,7 @@ public class BTransport {
     this.apiDesc = rhs.apiDesc;
     this.wire = rhs.wire;
     this.targetId = targetId;
+    this.sessionId = rhs.sessionId;
     this.protocol = rhs.getProtocol();
     
     // This constructor is called, if a stub maybe from another client is deserialized.
@@ -84,20 +88,53 @@ public class BTransport {
   public synchronized BOutput getResponse(BMessageHeader requestHeader) throws BException {
     if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
     BMessageHeader responseHeader = requestHeader.createResponse();
-    BOutput bout = protocol.getOutput(this, responseHeader);
+    BOutput bout = null;
+    
+    if (protocol instanceof BProtocolS) {
+      if (!responseHeader.isBinaryMessage()) {
+        bout = new BOutputJson(this, responseHeader);
+      }
+    }
+    else {
+      if (responseHeader.isBinaryMessage()) {
+        throw new BException(BExceptionC.CORRUPT, "JSON protocol expected.");
+      }
+    }
+    
+    if (bout == null) {
+      bout = protocol.getOutput(this, responseHeader);
+    }
+    
     return bout;
   }
 
   public synchronized BInput getInput(BMessageHeader header, ByteBuffer buf) throws BException {
-    if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
+    BInput bin = null;
 
-    // header is null in the test cases that check the serialization.
+    // header is null in the test cases that check serialization.
     if (header == null) {
       header = new BMessageHeader();
       header.read(buf);
     }
 
-    return protocol.getInput(this, header, buf);
+    if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
+    
+    if (protocol instanceof BProtocolS) {
+      if (!header.isBinaryMessage()) {
+        bin = new BInputJson(header, buf, this);
+      }
+    }
+    else {
+      if (header.isBinaryMessage()) {
+        throw new BException(BExceptionC.CORRUPT, "JSON protocol expected.");
+      }
+    }
+
+    if (bin == null) {
+      bin = protocol.getInput(this, header, buf);
+    }
+    
+    return bin;
   }
   
   public <T> void sendMethod(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
@@ -228,7 +265,7 @@ public class BTransport {
     if (log.isDebugEnabled()) log.debug(")send");
   }
 
-  private <T> void reloginAndRetrySend(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
+  protected <T> void reloginAndRetrySend(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("re-login");
     try {
 
@@ -325,29 +362,40 @@ public class BTransport {
   }
 
   protected void forwardMessage(final BClient client, final BTargetId clientTargetId, final Object methodObj, final BAsyncResult<Object> methodResult) throws BException {
-    BOutput bout = client.getTransport().getOutput();
-    bout.header.targetId = clientTargetId;
-    bout.store(methodObj);
-    BMessage forwardMessage = bout.toMessage();
+//    BOutput bout = client.getTransport().getOutput();
+//    bout.header.targetId = clientTargetId;
+//    bout.store(methodObj);
+//    BMessage forwardMessage = bout.toMessage();
+//
+//    BAsyncResult<BMessage> messageResult = new BAsyncResult<BMessage>() {
+//      public void setAsyncResult(BMessage result, Throwable ex) {
+//        try {
+//          if (ex != null) {
+//            methodResult.setAsyncResult(null, ex);
+//          }
+//          else {
+//            BInput bin = client.getTransport().getInput(result.header, result.buf);
+//            Object obj = bin.load();
+//            methodResult.setAsyncResult(obj, null);
+//          }
+//        } catch (Exception e) {
+//          methodResult.setAsyncResult(null, e);
+//        }
+//      }
+//    };
+//
+//    client.getTransport().wire.send(forwardMessage, messageResult);
+    
+    BAsyncResult<Object> outerResult = new BAsyncResult<Object>() {
 
-    BAsyncResult<BMessage> messageResult = new BAsyncResult<BMessage>() {
-      public void setAsyncResult(BMessage result, Throwable ex) {
-        try {
-          if (ex != null) {
-            methodResult.setAsyncResult(null, ex);
-          }
-          else {
-            BInput bin = client.getTransport().getInput(result.header, result.buf);
-            Object obj = bin.load();
-            methodResult.setAsyncResult(obj, null);
-          }
-        } catch (Exception e) {
-          methodResult.setAsyncResult(null, e);
-        }
+      @Override
+      public void setAsyncResult(Object result, Throwable exception) {
+        methodResult.setAsyncResult(result, exception);
       }
+      
     };
-
-    client.getTransport().wire.send(forwardMessage, messageResult);
+    
+    client.getTransport().send(methodObj, outerResult);
   }
 
   public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) {
@@ -396,8 +444,8 @@ public class BTransport {
     try {
       if (log.isDebugEnabled()) log.debug("build nego message");
       ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
-      final BNegotiate nego = new BNegotiate(apiDesc);
-      nego.write(buf);
+      final BNegotiate negoRequest = new BNegotiate(apiDesc);
+      negoRequest.write(buf);
       buf.flip();
   
       BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
@@ -407,10 +455,20 @@ public class BTransport {
           try {
             if (log.isDebugEnabled()) log.debug("nego result=" + msg + ", ex=" + e);
             if (e == null) {
-              nego.read(msg.buf);
+              
+              BNegotiate negoResponse = null;
+              if (msg.header.messageObject != null) {
+                negoResponse = (BNegotiate)msg.header.messageObject;
+              }
+              else {
+                negoResponse = new BNegotiate();
+                negoResponse.read(msg.buf);
+              }
+              
               synchronized (BTransport.this) {
-                protocol = createNegotiatedProtocol(nego);
-                setTargetId(nego.targetId);
+                protocol = createNegotiatedProtocol(negoResponse);
+                setSessionId(negoResponse.targetId.toSessionId());
+                setTargetId(negoResponse.targetId);
                 if (log.isDebugEnabled()) log.debug("targetId=" + targetId + ", protocol=" + protocol);
               }
   
@@ -557,7 +615,8 @@ public class BTransport {
 
       synchronized (this) {
         this.protocol = ret = createNegotiatedProtocol(nego);
-        this.targetId = targetId;
+        setSessionId(targetId.toSessionId());
+        setTargetId(targetId);
       }
 
       ByteBuffer bout = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
@@ -582,9 +641,16 @@ public class BTransport {
   public synchronized void setTargetId(BTargetId v) {
     this.targetId = v;
     this.connectedServerId = v.getServerId();
-    this.wire.setTargetId(v);
   }
   
+  public synchronized String getSessionId() {
+    return sessionId;
+  }
+
+  public synchronized void setSessionId(String sessionId) {
+    this.sessionId = sessionId;
+  }
+
   public synchronized int getConnectedServerId() {
     return this.connectedServerId;
   }

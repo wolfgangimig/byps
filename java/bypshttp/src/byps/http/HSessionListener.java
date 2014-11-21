@@ -3,19 +3,18 @@ package byps.http;
 import javax.servlet.annotation.WebListener;
 
 import byps.BHashMap;
-import byps.BTargetId;
 
 @WebListener
 public class HSessionListener {
 
   //private final static Log log = LogFactory.getLog(HSessionListener.class);
-  private final static BHashMap<BTargetId, HSession> sessions = new BHashMap<BTargetId, HSession>();
+  private final static BHashMap<String, HSession> sessions = new BHashMap<String, HSession>();
   
   public HSessionListener() {
     sessions.clear(); // just to be able to set a breakpoint
   }
 
-  public static BHashMap<BTargetId, HSession> getAllSessions() {
+  public static BHashMap<String, HSession> getAllSessions() {
     return sessions;
   }
 }

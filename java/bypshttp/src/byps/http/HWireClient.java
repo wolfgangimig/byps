@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BApiDescriptor;
 import byps.BAsyncResult;
 import byps.BBufferJson;
 import byps.BContentStream;
@@ -28,14 +29,22 @@ import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BNegotiate;
+import byps.BProtocol;
+import byps.BProtocolJson;
 import byps.BSyncResult;
 import byps.BTargetId;
 import byps.BTestAdapter;
+import byps.BTransport;
+import byps.BTransportFactory;
 import byps.BWire;
 import byps.http.client.HHttpClient;
 import byps.http.client.HHttpClientFactory;
 import byps.http.client.HHttpRequest;
 import byps.http.client.jcnn.JcnnClientFactory;
+import byps.ureq.BApiDescriptor_UtilityRequests;
+import byps.ureq.BClient_UtilityRequests;
+import byps.ureq.BRegistry_UtilityRequests;
+import byps.ureq.JRegistry_UtilityRequests;
 
 /**
  * BWire implementation for HTTP.
@@ -209,14 +218,11 @@ public class HWireClient extends BWire {
 
   @Override
   public synchronized void send(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
-    // internalSendMessageAndStreams(msg, asyncResult,
-    // this.timeoutSecondsClient);
     internalSendMessageAndStreams(msg, asyncResult);
   }
 
   @Override
   public void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult) {
-    // internalSendMessageAndStreams(msg, asyncResult, 0);
     internalSendMessageAndStreams(msg, asyncResult);
   }
 
@@ -369,7 +375,7 @@ public class HWireClient extends BWire {
 
     if (log.isDebugEnabled()) log.debug(")internalSendStreamsThenMessage");
   }
-
+  
   protected RequestToCancel createRequestForMessage(BMessage msg, BAsyncResult<BMessage> asyncResult, int timeoutSecondsRequest) {
     if (log.isDebugEnabled()) log.debug("createRequestForMessage(" + msg);
     ByteBuffer requestDataBuffer = msg.buf;
@@ -386,13 +392,13 @@ public class HWireClient extends BWire {
     final boolean isNegotiate = BNegotiate.isNegotiateMessage(requestDataBuffer);
     final boolean isJson = isNegotiate || BMessageHeader.detectProtocol(requestDataBuffer) == BMessageHeader.MAGIC_JSON;
     if (log.isDebugEnabled()) log.debug("isJson=" + isJson);
-
+    
     try {
       StringBuilder destUrl = null;
 
       // Negotiate?
       if (isNegotiate) {
-
+        
         // Send a GET request and pass the negotiate string as parameter
 
         String negoStr = new String(requestDataBuffer.array(), requestDataBuffer.position(), requestDataBuffer.limit(), "UTF-8");
@@ -487,17 +493,23 @@ public class HWireClient extends BWire {
   }
 
   protected RequestToCancel createRequestForCancelMessage(long messageId) {
+
     final RequestToCancel requestToCancel = new RequestToCancel(0L, 0L, messageId, new BAsyncResult<BMessage>() {
       public void setAsyncResult(BMessage msg, Throwable ex) {
       }
     });
 
-    StringBuilder destUrl = getUrlStringBuilder("");
-    destUrl.append("&messageid=").append(messageId).append("&cancel=1");
-
-    final HHttpRequest httpRequest = httpClient.get(destUrl.toString(), requestToCancel);
-
-    requestToCancel.setHttpRequest(httpRequest);
+    
+////    HashMap<String,String> params = new HashMap<String,String>();
+////    params.put("cancel", "1");
+////    params.put("messageid", Long.toString(messageId));
+////    ByteBuffer bbuf = createUtilityRequest(params);
+//
+//    final StringBuilder destUrl = getUrlStringBuilder("");
+//
+//    final HHttpRequest httpRequest = httpClient.post(destUrl.toString(), bbuf, requestToCancel);
+//
+//    requestToCancel.setHttpRequest(httpRequest);
 
     addRequest(requestToCancel);
     return requestToCancel;
@@ -540,7 +552,17 @@ public class HWireClient extends BWire {
             BMessageHeader header = new BMessageHeader();
             try {
               if (BNegotiate.isNegotiateMessage(buf)) {
+                
+                BNegotiate nego = new BNegotiate();
+                nego.read(buf);
+
+                header.messageObject = nego;
                 header.messageId = messageId;
+                
+                BTransport utransport = getClientUtilityRequests().getTransport(); 
+                utransport.setTargetId(nego.targetId);
+                utransport.setSessionId(nego.targetId.toSessionId());
+                
               }
               else {
                 header.read(buf);
@@ -812,10 +834,9 @@ public class HWireClient extends BWire {
   protected void sendCancelMessage(final long messageId) {
     if (log.isDebugEnabled()) log.debug("sendCancelMessage(messageId=" + messageId);
     try {
-      RequestToCancel r = createRequestForCancelMessage(messageId);
-      executeRequest(r);
+      getClientUtilityRequests().getUtilityRequests().cancelMessage(messageId);
     }
-    catch (BException e) {
+    catch (Exception e) {
       log.warn("Exception", e);
     }
     if (log.isDebugEnabled()) log.debug(")sendCancelMessage");
@@ -938,5 +959,20 @@ public class HWireClient extends BWire {
 
   public HHttpClient getHttpClient() {
     return this.httpClient;
+  }
+  
+  private BClient_UtilityRequests clientUtilityRequests;
+  
+  public BClient_UtilityRequests getClientUtilityRequests() {
+    if (clientUtilityRequests == null) {
+      BApiDescriptor apiDesc = BApiDescriptor_UtilityRequests.instance();
+      apiDesc.addRegistry(new BRegistry_UtilityRequests());
+      apiDesc.addRegistry(new JRegistry_UtilityRequests());
+      final BTransportFactory transportFactory = new HTransportFactoryClient(apiDesc, this, 0); 
+      clientUtilityRequests = BClient_UtilityRequests.createClient(transportFactory);
+      BProtocol protocol = new BProtocolJson(apiDesc);
+      clientUtilityRequests.getTransport().setProtocol(protocol);
+    }
+    return clientUtilityRequests;
   }
 }

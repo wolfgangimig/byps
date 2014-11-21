@@ -21,7 +21,8 @@ public class JcnnGetStream extends JcnnRequest {
   private static Log log = LogFactory.getLog(JcnnGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
-  protected JcnnGetStream(String url, BAsyncResult<BContentStream> asyncResult, CookieManager cookieManager) {
+  protected JcnnGetStream(String url, BAsyncResult<BContentStream> asyncResult,
+      CookieManager cookieManager) {
     super(url, cookieManager);
     this.asyncResult = asyncResult;
   }
@@ -68,15 +69,18 @@ public class JcnnGetStream extends JcnnRequest {
     }
     catch (SocketException e) {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
-      returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
+      returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED,
+          "Socket error", e);
     }
     catch (Throwable e) {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
 
       try {
-        is = c.getErrorStream();
-        BWire.bufferFromStream(is, false);
-        is = null;
+        if (c != null) {
+          is = c.getErrorStream();
+          BWire.bufferFromStream(is, false);
+          is = null;
+        }
       }
       catch (IOException ignored) {
       }
@@ -87,11 +91,13 @@ public class JcnnGetStream extends JcnnRequest {
     }
 
     final BException ex2 = returnException;
-    BContentStream stream = new BContentStreamWrapper(is, contentType, contentLength) {
+    BContentStream stream = new BContentStreamWrapper(is, contentType,
+        contentLength) {
       public InputStream ensureStream() throws IOException {
         if (ex2 != null) throw ex2;
         return super.ensureStream();
       }
+
       public void close() throws IOException {
         super.close();
         JcnnGetStream.this.done();

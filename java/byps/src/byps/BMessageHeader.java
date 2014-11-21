@@ -31,13 +31,16 @@ public class BMessageHeader {
 		
   public final static int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
   public final static int BYPS_VERSION_ENCRYPTED_TARGETID = 2;
-  public final static int BYPS_VERSION_CURRENT = BYPS_VERSION_ENCRYPTED_TARGETID;
+  public final static int BYPS_VERSION_WITH_SESSIONID = 3;
+  public final static int BYPS_VERSION_CURRENT = BYPS_VERSION_WITH_SESSIONID;
 		
 	public final static int FLAG_BYPS_VERSION = 1;
 	public final static int FLAG_RESPONSE = 2; 
 	public final static int FLAG_LONGPOLL = 2;
 	public final static int FLAG_TIMEOUT = 4;
 	public final static int FLAG_LONGPOLL_WITH_TIMEOUT = FLAG_LONGPOLL + 4;
+	
+	public final static int SESSIONID_LENGTH = 16;
 	
 	public int magic;
 	public int error;
@@ -46,6 +49,7 @@ public class BMessageHeader {
 	public long version;
 	public BTargetId targetId;
 	public long messageId;
+	public String sessionId = BTargetId.SESSIONID_ZERO;
 	
 	/**
 	 * Timeout.
@@ -90,6 +94,7 @@ public class BMessageHeader {
 		this.messageId = rhs.messageId;
 		this.targetId = rhs.targetId;
 		this.timeoutSeconds = rhs.timeoutSeconds;
+		this.sessionId = rhs.sessionId;
 	}
 	
 	public final BMessageHeader createResponse() {
@@ -161,6 +166,10 @@ public class BMessageHeader {
 		if ((flags & FLAG_TIMEOUT) != 0) {
 		  buf.putInt(timeoutSeconds);
 		}
+		
+		if (bversion >= BYPS_VERSION_WITH_SESSIONID) {
+		  BTargetId.writeSessionId(buf, sessionId);
+		}
 	}
 
 	protected void writeJson(BBufferJson bbuf) {
@@ -175,6 +184,10 @@ public class BMessageHeader {
       bbuf.putInt("timeout", timeoutSeconds);
     }
 
+    if (bversion >= BYPS_VERSION_WITH_SESSIONID) {
+      bbuf.putString("sessionId", sessionId);
+    }
+    
 		bbuf.endObject();
 	}
 	
@@ -194,6 +207,9 @@ public class BMessageHeader {
       timeoutSeconds = buf.getInt();
     }
 
+    if (bversion >= BYPS_VERSION_WITH_SESSIONID) {
+      sessionId = BTargetId.readSessionId(buf); 
+    }
 	}
 	
 	public final void read(ByteBuffer buf) throws BException {
@@ -242,6 +258,10 @@ public class BMessageHeader {
 		if ((flags & FLAG_TIMEOUT) != 0) {
 		  timeoutSeconds = jsonObj.getInt("timeout");
 		}
+
+    if (bversion >= BYPS_VERSION_WITH_SESSIONID) {
+      sessionId = jsonObj.getString("sessionId");
+    }
 	}
 	
 //	public final boolean isStreamRequest() {
@@ -257,10 +277,23 @@ public class BMessageHeader {
 			.append(", version=").append(version)
 			.append(", targetId=").append(targetId)
 			.append(", messageId=").append(messageId)
-			.append(", timeout=").append(timeoutSeconds)
+      .append(", timeout=").append(timeoutSeconds)
+      .append(", sessionId=").append(sessionId)
 			.append(", messageObject=").append(messageObject)
 			.append("]");
 		return sbuf.toString();
+	}
+	
+	public boolean isBinaryMessage() {
+	  boolean ret = false;
+	  switch (magic) {
+    case MAGIC_BINARY_STREAM:
+      // fall through
+    case MAGIC_BINARY_STREAM_LE:
+      ret = true;
+      break;
+	  }
+	  return ret;
 	}
 	
 }

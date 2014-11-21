@@ -51,6 +51,10 @@ import byps.BSyncResult;
 import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
+import byps.RemoteException;
+import byps.ureq.BRegistry_UtilityRequests;
+import byps.ureq.BSkeleton_UtilityRequests;
+import byps.ureq.JRegistry_UtilityRequests;
 
 public abstract class HHttpServlet extends HttpServlet implements HServerContext {
   private static final long serialVersionUID = 1L;
@@ -197,7 +201,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         };
         
         activeMessages_use_getActiveMessages = new HActiveMessages(config.getTempDir());
-
+        
         cleanupThread = new HCleanupResources(HSessionListener.getAllSessions(), HHttpServlet.this);
         
         initializationFinished();
@@ -328,6 +332,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doGet(");
 
+    // Test adapter function?
     final String testAdapterStr = request.getParameter(HTestAdapter.KEY_PARAM);
     if (testAdapterStr != null && testAdapterStr.length() != 0) {
       doTestAdapter(request, response);
@@ -335,6 +340,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       return;
     }
 
+    // Negotiate?
     final String negoStr = request.getParameter("negotiate");
     if (log.isDebugEnabled()) log.debug("negotiate=" + negoStr);
     if (negoStr != null && negoStr.length() != 0) {
@@ -344,7 +350,11 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       doNegotiate(request, response, ibuf);
       return;
     }
-
+    
+    
+    // Get stream or old utility request
+    
+    // Parameter messageid
     final String messageIdStr = request.getParameter("messageid");
     if (log.isDebugEnabled()) log.debug("messageId=" + messageIdStr);
     if (messageIdStr == null || messageIdStr.length() == 0) {
@@ -358,33 +368,13 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     if (log.isDebugEnabled()) log.debug("streamId=" + streamIdStr);
 
     // Parameter cancel is set, if the message given by messageid must be
-    // canceled.
+    // canceled. For newer clients, this functionality is replaced by the UtilityRequest interface.
+    // To support older clients, it is still handled here.
     final String cancelStr = request.getParameter("cancel");
     if (log.isDebugEnabled()) log.debug("cancel=" + cancelStr);
+    if (cancelStr != null && cancelStr.length() != 0) {
 
-    if (streamIdStr != null && streamIdStr.length() != 0) {
-      if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
-      
-      final long messageId = BBufferJson.parseLong(messageIdStr);
-      final long streamId = BBufferJson.parseLong(streamIdStr);
-      final String serverIdStr = request.getParameter("serverid");
-      
-      final BServerRegistry serverRegistry = getServerRegistry();
-      final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer.valueOf(serverIdStr) : getConfig().getMyServerId();
-      final BTargetId targetIdEncr = new BTargetId(serverId, messageId, streamId);
-      final BTargetId targetId = serverRegistry.encryptTargetId(targetIdEncr, false);
-
-      final BClient forwardClient = serverId != 0 ? serverRegistry.getForwardClientIfForeignTargetId(targetId) : null;
-      
-      final BContentStream stream = forwardClient != null ? 
-        forwardClient.getTransport().getWire().getStream(targetId) :
-        getActiveMessages().getOutgoingStream(targetId);
-      
-      sendOutgoingStream(stream, response);
-    }
-    else if (cancelStr != null && cancelStr.length() != 0) {
-
-      final HSession sess = getSessionFromRequest(request, response, false);
+      final HSession sess = getSessionFromMessageHeaderOrHttpRequest(null, request);
       if (sess != null) {
       
         long messageId = BBufferJson.parseLong(messageIdStr);
@@ -408,6 +398,30 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       response.getOutputStream().close();
 
     }
+    
+    // Read a stream
+    else if (streamIdStr != null && streamIdStr.length() != 0) {
+      if (log.isDebugEnabled()) log.debug("sendOutgoingStream");
+      
+      final long messageId = BBufferJson.parseLong(messageIdStr);
+      final long streamId = BBufferJson.parseLong(streamIdStr);
+      final String serverIdStr = request.getParameter("serverid");
+      
+      final BServerRegistry serverRegistry = getServerRegistry();
+      final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer.valueOf(serverIdStr) : getConfig().getMyServerId();
+      final BTargetId targetIdEncr = new BTargetId(serverId, messageId, streamId);
+      final BTargetId targetId = serverRegistry.encryptTargetId(targetIdEncr, false);
+
+      final BClient forwardClient = serverId != 0 ? serverRegistry.getForwardClientIfForeignTargetId(targetId) : null;
+      
+      final BContentStream stream = forwardClient != null ? 
+        forwardClient.getTransport().getWire().getStream(targetId) :
+        getActiveMessages().getOutgoingStream(targetId);
+      
+      sendOutgoingStream(stream, response);
+    }
+    
+    // Bad request
     else {
       response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
       response.getOutputStream().close();
@@ -418,7 +432,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
   protected void doPostMessage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doPostMessage(");
-
+    
     if (log.isDebugEnabled()) log.debug("read message");
     String contentType = request.getContentType();
     String contentLength = request.getHeader("Content-Length");
@@ -435,6 +449,41 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
     if (log.isDebugEnabled()) log.debug(")doPostMessage");
   }
+  
+  private HSession getSessionFromMessageHeaderOrHttpRequest(BMessageHeader header, HttpServletRequest request) {
+    if (log.isDebugEnabled()) log.debug("getSessionFromMessageHeaderOrHttpRequest(");
+    final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
+    HSession sess = null;
+
+    if (log.isDebugEnabled()) log.debug("header=" + header);
+    
+    if (header != null) {
+      if (log.isDebugEnabled()) log.debug("header.sessionId=" + header.sessionId);
+      final HSession sessFromTargetId = sessions.get(header.sessionId);
+      if (log.isDebugEnabled()) log.debug("sessFromTargetId=" + sessFromTargetId);
+      
+      if (sessFromTargetId != null) {
+        if (log.isDebugEnabled()) log.debug("sess expired=" + sessFromTargetId.isExpired());
+        
+        if (!sessFromTargetId.isExpired()) {
+          sess = sessFromTargetId;
+        }
+      }
+    }
+    
+    // Old client?
+//    if (sess == null) {
+//      HttpSession hsess = request.getSession();
+//      final String bsessionId = hsess != null ? (String)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME) : null;
+//      sess = bsessionId != null ? sessions.get(bsessionId) : null;
+//    }
+    
+    if (sess != null) {
+      sess.touch();
+    }
+    
+    return sess;
+  }
 
   protected void doMessage(final HttpServletRequest request, final HttpServletResponse response, final ByteBuffer ibuf) throws IOException {
     if (log.isDebugEnabled()) log.debug("doMessage(");
@@ -448,8 +497,14 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       final BMessageHeader header = new BMessageHeader();
       header.read(ibuf);
 
-      final BHashMap<BTargetId, HSession> sessions = HSessionListener.getAllSessions();
-      final HSession sess = sessions.get(header.targetId);
+      // Get HSession. 
+      // Newer clients: header.sessionId
+      // Older clients: request.getSession()
+      final HSession sess = getSessionFromMessageHeaderOrHttpRequest(header, request);
+      if (sess == null) {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        return;
+      }
       
       final boolean isClientR = (header.flags & BMessageHeader.FLAG_LONGPOLL) != 0;
 
@@ -564,21 +619,30 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       return;
     }
 
-    // Create new JSESSIONID to support load balancing
-    // We do not rely on the JSESSIONID to identify the BYPS session in incoming requests.
-    // Instead, we always read the targetId from the message and lookup the BYPS session in the session map.
+    // Create new JSESSIONID to support load balancing.
+    // For newer clients, we do not rely on the JSESSIONID to identify the BYPS session in incoming requests.
     // Otherwise two JSON connections in a browser window could not be distinguished.
+    // Older clients still need to reach their HSession by the JSESSIONID.
     HttpSession hsess = request.getSession(true);
     if (log.isDebugEnabled()) log.debug("JSESSIONID=" + hsess.getId());
-
+    
     // Create new BYPS session
     final HTargetIdFactory targetIdFactory = getTargetIdFactory();
     final BTargetId targetId = targetIdFactory.createTargetId();
     final HSession sess = createSession(request, response, hsess);
     sess.setTargetId(targetId);
     if (log.isDebugEnabled()) log.debug("targetId=" + targetId);
+
+    // Add session to session map
+    final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
+    final String bsessionId = targetId.toSessionId();
+    sessions.put(bsessionId, sess);
+
+    // Add session to HTTP-session to support older clients. 
+    hsess.setAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME, bsessionId);
     
-    
+    // Add BRemote for utility requests.
+    addUtilityRequestsInterface(sess);
     
     // Process Negotiate message
     
@@ -694,10 +758,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
-
-    final HSession sess = getSessionFromRequest(request, response, false);
-    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    if (sess == null) return;
 
     final String testAdapter = request.getParameter(HTestAdapter.KEY_PARAM);
     if (testAdapter == null) {
@@ -844,55 +904,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     return clientR;
   }
   
-  @SuppressWarnings("deprecation")
-  protected HSession getSessionFromRequest(HttpServletRequest request, HttpServletResponse response, boolean createNewIfNotEx) {
-    HSession sess = null;
-    int httpStatus = HttpServletResponse.SC_UNAUTHORIZED;
-
-    final BHashMap<BTargetId, HSession> sessions = HSessionListener.getAllSessions();
-    BTargetId targetId = null;
-    
-    // JSESSIONID erstellen, wird nur zur Lastverteilung benötigt.
-    HttpSession hsess = request.getSession(createNewIfNotEx);
-    if (log.isDebugEnabled()) log.debug("http session=" + (hsess != null ? hsess.getId() : null));
-
-    
-    // Old client application, targetId is not supplied as request param.
-    // It has be found in the session object.
-    if (targetId == null) {
-      targetId = (BTargetId)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-      if (log.isDebugEnabled()) log.debug("targetId from jsession=" + targetId);
-    }
-    
-    if (log.isDebugEnabled()) log.debug("byps session=" + sess);
-    sess = sessions.get(targetId != null ? targetId : BTargetId.ZERO);
-    if (sess == null) {
-      try {
-        if (createNewIfNotEx) {
-          
-        }
-        
-      } catch (Exception e) {
-        log.debug("Cannot get/create session", e);
-        httpStatus = HttpServletResponse.SC_FORBIDDEN;
-      }
-    }
-    else if (sess.isExpired()) {
-      log.debug("session is expired");
-      sess.done();
-      sess = null;
-    }
-    else {
-      sess.touch();
-    }
-
-    if (sess == null) {
-      response.setStatus(httpStatus);
-    }
-
-    return sess;
-  }
-
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("service(");
@@ -953,6 +964,33 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     }
     sbuf.append(") = ").append(status);
     return sbuf.toString();
+  }
+  
+  private void addUtilityRequestsInterface(final HSession sess) {
+    BTransport transport = sess.getServer().getTransport();
+    BApiDescriptor apiDesc = transport.getApiDesc();
+    apiDesc.addRegistry(new BRegistry_UtilityRequests());
+    apiDesc.addRegistry(new JRegistry_UtilityRequests());
+    
+    sess.getServer().addRemote((int)BSkeleton_UtilityRequests.serialVersionUID, new BSkeleton_UtilityRequests() {
+      @Override
+      public void cancelMessage(long messageId) throws RemoteException {
+        if (log.isDebugEnabled()) log.debug("cancelMessage(" + messageId);
+        if (messageId == HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS) {
+          if (log.isDebugEnabled()) log.debug("activeMessages.cleanup");
+          sess.wireServer.cancelAllMessages();
+        }
+        else if (messageId == HWireClient.MESSAGEID_DISCONNECT) {
+          if (log.isDebugEnabled()) log.debug("sess.done");
+          sess.done();
+        }
+        else {
+          if (log.isDebugEnabled()) log.debug("activeMessages.cancelMessage");
+          sess.wireServer.cancelMessage(messageId);
+        }
+        if (log.isDebugEnabled()) log.debug(")cancelMessage");
+      }
+    });
   }
 
   private static Log log = LogFactory.getLog(HHttpServlet.class);

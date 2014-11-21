@@ -30,8 +30,13 @@ public class BServer {
 	}
 	
   public void setTargetId(BTargetId targetId) {
+    String sessionId = targetId.toSessionId();
     transport.setTargetId(targetId);
-    if (clientR != null) clientR.getTransport().setTargetId(targetId);
+    transport.setSessionId(sessionId);
+    if (clientR != null) {
+      clientR.getTransport().setTargetId(targetId);
+      clientR.getTransport().setSessionId(sessionId);
+    }
   }
   
   public BTargetId getTargetId() {

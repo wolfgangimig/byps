@@ -12,8 +12,6 @@ import byps.BTransportFactory;
 
 /**
  * This class represents a session.
- * Objects of this class are added to the application server session under the key
- * {@link HConstants#HTTP_SESSION_ATTRIBUTE_NAME}
  * 
  * A HSession object is already created for negotiation, but it keeps alive only
  * for a short time {@link HConstants#MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED} 
@@ -68,8 +66,9 @@ public abstract class HSession
   public void done() {
     if (log.isDebugEnabled()) log.debug("done(");
     
-    BHashMap<BTargetId, HSession> sessions = HSessionListener.getAllSessions(); 
-    sessions.remove(getTargetId());
+    BHashMap<String, HSession> sessions = HSessionListener.getAllSessions(); 
+    sessions.remove(getTargetId().toSessionId());
+    if (log.isDebugEnabled()) log.debug("remove sessionId=" + getTargetId().toSessionId());
 
     // HWireServer.done() could interrupt the current thread.
     // Delete the interrupt signal that might be set in this function.
@@ -109,13 +108,17 @@ public abstract class HSession
   }
 
   public void removeExpiredResources() {
-    if (isExpired()) {
+    if (log.isDebugEnabled()) log.debug("removeExpiredResources(");
+    boolean exp = isExpired();
+    if (log.isDebugEnabled()) log.debug("sesionId=" + getTargetId().toSessionId() + ", expired=" + isExpired());
+    if (exp) {
       done();
     }
     else {
       wireServer.cleanup();
       wireClientR.cleanup();
     }
+    if (log.isDebugEnabled()) log.debug(")removeExpiredResources");
   }
   
 //  public Collection<BClient> getForwardClientsToOtherServers() throws RemoteException {
@@ -132,8 +135,8 @@ public abstract class HSession
 
 
   public static final HSession getSession(BTargetId targetId) {
-    BHashMap<BTargetId, HSession> sessions = HSessionListener.getAllSessions();
-    return sessions.get(targetId);
+    BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
+    return sessions.get(targetId.toSessionId());
   }
 
   public abstract BServer getServer();

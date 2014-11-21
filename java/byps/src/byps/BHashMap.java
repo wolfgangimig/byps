@@ -1,5 +1,6 @@
 package byps;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,8 +11,9 @@ import java.util.HashMap;
  * @param <K>
  * @param <V>
  */
-public class BHashMap<K, V> {
+public class BHashMap<K, V> implements Serializable {
   
+  private static final long serialVersionUID = BRegistry.TYPEID_MAP;
   private HashMap<K, V> map = new HashMap<K,V>();
 
   public BHashMap() {

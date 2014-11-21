@@ -332,7 +332,9 @@ public class TestRemoteServerR {
 		
 		// Create second client connected to Server2
 		BClient_Testser client2 = TestUtilsHttp.createClient2();
-		client2.addRemote(remoteImplOfClient2);
+    client2.getRemotePrimitiveTypes().getBool();
+
+    client2.addRemote(remoteImplOfClient2);
 		
 		// Publish the interface to all servers
 		client2.getRemoteServerCtrl().publishRemote("remoteOfClient2", remoteImplOfClient2, true);

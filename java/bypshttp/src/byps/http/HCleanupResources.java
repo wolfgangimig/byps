@@ -6,15 +6,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import byps.BHashMap;
-import byps.BTargetId;
 
 public class HCleanupResources {
 	
-	protected final BHashMap<BTargetId, HSession> sessions;
+	protected final BHashMap<String, HSession> sessions;
 	protected final MyCleanupThread cleanupThread;
 	protected final HServerContext serverContext;
 	
-	public HCleanupResources(BHashMap<BTargetId, HSession> sessions, HServerContext serverContext) {
+	public HCleanupResources(BHashMap<String, HSession> sessions, HServerContext serverContext) {
 		this.sessions = sessions;
 		this.serverContext = serverContext;
 		this.cleanupThread = new MyCleanupThread();

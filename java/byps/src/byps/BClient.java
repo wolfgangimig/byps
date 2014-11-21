@@ -155,6 +155,10 @@ public abstract class BClient {
           if (ex == null) {
             if (serverR != null) {
               try {
+                
+                String sessionId = getTransport().getSessionId();
+                serverR.transport.setSessionId(sessionId);
+                
                 serverR.start();
               } catch (BException ex2) {
                 ex = ex2;

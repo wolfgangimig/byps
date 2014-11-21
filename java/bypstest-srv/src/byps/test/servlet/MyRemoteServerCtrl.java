@@ -36,19 +36,26 @@ public class MyRemoteServerCtrl extends BSkeleton_RemoteServerCtrl {
 			
 				final Collection<BClient> clients = serverRegistry.getForwardClientsToOtherServers();
 				
-				BAsyncResult<Object> outerResult = new BAsyncResult<Object>() {
-					CountDownLatch cdl = new CountDownLatch(clients.size());
-					public void setAsyncResult(Object obj, Throwable e) {
-						cdl.countDown();
-						if (cdl.getCount() == 0) {
-							asyncResult.setAsyncResult(obj, e);
-						}
-					}
-				};
+				if (clients.size() != 0) {
 				
-				for (BClient client : clients) {
-					BClient_Testser myclient = (BClient_Testser)client;
-					myclient.getRemoteServerCtrl().publishRemote(name, remote, false, outerResult);
+  				BAsyncResult<Object> outerResult = new BAsyncResult<Object>() {
+  					CountDownLatch cdl = new CountDownLatch(clients.size());
+  					public void setAsyncResult(Object obj, Throwable e) {
+  						cdl.countDown();
+  						if (cdl.getCount() == 0) {
+  							asyncResult.setAsyncResult(obj, e);
+  						}
+  					}
+  				};
+  				
+  				for (BClient client : clients) {
+  					BClient_Testser myclient = (BClient_Testser)client;
+  					myclient.getRemoteServerCtrl().publishRemote(name, remote, false, outerResult);
+  				}
+  				
+				}
+				else {
+				  asyncResult.setAsyncResult(null, null);
 				}
 			
 			}

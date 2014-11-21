@@ -3,5 +3,7 @@
         <wb-resource deploy-path="/" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/src-ser-bin"/>
         <wb-resource deploy-path="/" source-path="/src-ser-json"/>
+        <wb-resource deploy-path="/" source-path="/src-ureq"/>
+        <wb-resource deploy-path="/" source-path="/src-ureq-ser"/>
     </wb-module>
 </project-modules>

@@ -162,6 +162,7 @@ public class BNegotiate {
 		else {
 		  bversion = 0;
 		}
+		
 	}
 	
 }

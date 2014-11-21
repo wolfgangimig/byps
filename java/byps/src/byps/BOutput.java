@@ -22,6 +22,7 @@ public abstract class BOutput {
 		this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
 		this.header = new BMessageHeader(streamHeaderMagic, negotiatedBypsVersion, negotiatedVersion, negotiatedByteOrder, transport.getWire().makeMessageId());
 		this.header.targetId = transport.getTargetId();
+		this.header.sessionId = transport.getSessionId();
 		this.transport = transport;
 		this.registry = registry;
 		this.streams = null;
@@ -31,6 +32,7 @@ public abstract class BOutput {
 		this.objMap = transport.getApiDesc().uniqueObjects ? null : new BObjMap();
 		this.header = messageHeader;
 		this.header.targetId = transport.getTargetId();
+		this.header.sessionId = transport.getSessionId();
 		this.transport = transport;
 		this.registry = registry;
 		this.streams = null;
