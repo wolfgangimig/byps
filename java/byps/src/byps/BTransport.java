@@ -467,7 +467,7 @@ public class BTransport {
               
               synchronized (BTransport.this) {
                 protocol = createNegotiatedProtocol(negoResponse);
-                setSessionId(negoResponse.targetId.toSessionId());
+                setSessionId(negoResponse.sessionId);
                 setTargetId(negoResponse.targetId);
                 if (log.isDebugEnabled()) log.debug("targetId=" + targetId + ", protocol=" + protocol);
               }
@@ -622,6 +622,7 @@ public class BTransport {
       ByteBuffer bout = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
       try {
         nego.targetId = targetId;
+        nego.sessionId = targetId.toSessionId();
         nego.write(bout);
         bout.flip();
         asyncResult.setAsyncResult(bout, null);

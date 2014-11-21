@@ -507,6 +507,7 @@ byps.BTargetId.prototype.toString = function() {
 	return str;
 };
 
+
 //------------------------------------------------------------------------------------------------
 
 byps.BNegotiate = function(apiDesc) {
@@ -515,6 +516,7 @@ byps.BNegotiate = function(apiDesc) {
 	this.protocols = this.JSON;
 	this.version = apiDesc.version;
 	this.targetId = new byps.BTargetId();
+	this.sessionId = "";
 
 	this.toArray = function() {
 		return [ "N", "J", this.version, "_", this.targetId.toString() ];
@@ -523,6 +525,10 @@ byps.BNegotiate = function(apiDesc) {
 	this.fromArray = function(arr) {
 		if (!arr || arr.length < 5 || arr[0] != "N") throw new byps.BException(byps.BException_CORRUPT, "Invalid negotiate message.");
 		this.targetId = new byps.BTargetId(arr[4]);
+		
+		if (arr.length > 5) {
+			this.sessionId = arr[5];
+		}
 	};
 };
 
@@ -568,6 +574,7 @@ byps.BMessageHeader = function(messageId_or_rhs) {
 	this.flags = 0;
 	this.targetId = null;
 	this.messageId = "";
+	this.sessionId = "";
 
 	if (typeof messageId_or_rhs == 'string') {
 		this.messageId = messageId_or_rhs;
@@ -577,6 +584,7 @@ byps.BMessageHeader = function(messageId_or_rhs) {
 		this.flags = messageId_or_rhs.flags;
 		this.messageId = messageId_or_rhs.messageId;
 		this.targetId = messageId_or_rhs.targetId;
+		this.sessionId = messageId_or_rhs.sessionId;
 	}
 
 	this.createResponse = function(rhs) {
@@ -611,6 +619,8 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	this.timeoutMillisClient = timeoutSeconds ? (timeoutSeconds * 1000) : (-1);
 
 	this.openRequestsToCancel = {};
+	
+	this.clientUtilityRequests = null;
 
 	// Send function.
 	// The streams are already sent by a HTML file upload.
@@ -685,6 +695,11 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 					var responseMessage = new byps.BMessage();
 					responseMessage.jsonText = xhr.responseText; 
 					// msg.jsonText = { header: [...], objectTable: [...] }
+					
+					if (isNegotiate) {
+						me.setSessionForUtilityRequests(xhr.responseText);
+					}
+					
 					asyncResult(responseMessage, null);
 				}
 				else {
@@ -737,8 +752,11 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 
 			if (xhr.status == 200) {
 				result.jsonText = xhr.responseText; // msg.jsonText = { header:
-				// [ ... message header ...
-				// ], objectTable: [ ] }
+				// [ ... message header ... ], objectTable: [ ] }
+				
+				if (isNegotiate) {
+					me.setSessionForUtilityRequests(xhr.responseText);
+				}
 			}
 			else {
 				exception = new byps.BException(xhr.status, "HTTP status " + xhr.status, xhr.responseText);
@@ -781,18 +799,13 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	};
 	
 	this._sendCancelMessage = function(cancelMessageId, asyncResult) {
-		var destUrl = this.getUrlStringBuilder("", true);
-		destUrl += "&messageid=" + cancelMessageId + "&cancel=1";
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', destUrl, true);
-		xhr.withCredentials = true;
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState != 4) return;
-			if (asyncResult) {
-				asyncResult(true, null);
-			}
-		};
-		xhr.send();
+       try {
+           this.getClientUtilityRequests().utilityRequests.cancelMessage(cancelMessageId, asyncResult);
+       }
+       catch (e) {
+    	   if (!asyncResult) throw e;
+  		   asyncResult(null, e);
+       }
 	};
 
 	this.getServletPathForNegotiationAndAuthentication = function() {
@@ -813,29 +826,34 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		return ret;
 	};
 
-	this.getUrlStringBuilder(servletPath, withTargetId) {
+	this.getUrlStringBuilder = function(servletPath, withTargetId) {
 		var ret = this._url;
 		if (servletPath.length) {
 			var p = ret.lastIndexOf('/');
 			if (p >= 0) ret = ret.substring(0, p);
 			ret += servletPath;
-			if (params) {
-				for ( var i = 0; i < params.length; i += 2) {
-					ret += (i == 0) ? "?" : "&";
-					ret += params[i] + "=" + params[i + 1];
-				}
-			}
 		}
 		
-		ret += "?";
-		if (withTargetId) {
-			ret += "__targetId=" + targetId.toString();
-		}
-		else {
-			ret += "a=a";
-		}
-		
+		ret += "?a=a";
 		return ret;
+	};
+
+	this.getClientUtilityRequests = function() {
+		if (!this.clientUtilityRequests) {
+			var apiDesc = byps.ureq.BApiDescriptor_UtilityRequests.instance();
+			var transportFactory = new byps.BTransportFactory(apiDesc, this, 0);
+			this.clientUtilityRequests = byps.ureq.createClient_UtilityRequests(transportFactory);
+		} 
+		return this.clientUtilityRequests;
+	};
+
+	this.setSessionForUtilityRequests = function(responseText) {
+		var utransport = this.getClientUtilityRequests().transport;
+		var nego = new byps.BNegotiate(utransport.apiDesc);
+		var arr = JSON.parse(responseText);
+		nego.fromArray(arr);
+		utransport.setTargetId(nego.targetId);
+		utransport.setSessionId(nego.sessionId);
 	};
 
 };
@@ -872,6 +890,14 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 		this.connectedToServerId = targetId.serverId;
 	};
 	this.setTargetId(targetId);
+	
+	this.setSessionId = function(sessionId) {
+		this.sessionId = sessionId;
+	};
+	
+	this.getSessionId = function() {
+		return this.sessionId;
+	};
 
 	this.getOutput = function() {
 		return new byps.BInputOutput(this);
@@ -1082,6 +1108,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 					var arr = JSON.parse(responseMessage.jsonText);
 					nego.fromArray(arr);
 					me.setTargetId(nego.targetId);
+					me.setSessionId(nego.sessionId);
 				}
 			}
 			catch (ex2) {
@@ -1219,6 +1246,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 byps.createTransportForRemote = function(transport, targetId) {
 	var t = new byps.BTransport(transport.apiDesc, transport.wire, targetId);
 	t.connectedToServerId = transport.connectedToServerId;
+	t.sessionId = transport.sessionId;
 	return t;
 };
 
@@ -1230,6 +1258,7 @@ byps.BInputOutput = function(transport, header, jsonText) {
 	this.registry = transport.apiDesc.registry;
 	this.header = header || new byps.BMessageHeader(transport.wire.makeMessageId());
 	this.header.targetId = transport.targetId.toString();
+	this.header.sessionId = transport.sessionId;
 
 	this.store = function(root) {
 		this._root = root;
@@ -1517,6 +1546,8 @@ byps.BClient = function() {
 				  if (!ex) {
 					  if (me._serverR) {
 						  try {
+				              var sessionId = me.transport.getSessionId();
+				              me._serverR.transport.setSessionId(sessionId);
 							  me._serverR.start();
 						  }
 						  catch (ex2) {
@@ -1752,3 +1783,185 @@ byps.BServerR = function(transport, server) {
 	};
 
 };
+
+/**
+ * ----------------------------------------------
+ * Declare packages.
+ * ----------------------------------------------
+*/
+var byps = byps || {};
+byps.ureq = byps.ureq || {};
+
+/**
+ * ----------------------------------------------
+ * API Descriptor
+ * ----------------------------------------------
+*/
+byps.ureq.BApiDescriptor_UtilityRequests = {
+	/**
+	 * API serialisation version: 0.0.0.1
+	 */
+	VERSION : "0.0.0.1",
+	
+	/**
+	 * Internal used API Desciptor.
+	*/
+	instance : function() {
+		return new byps.BApiDescriptor(
+			"UtilityRequests",
+			"byps.ureq",
+			"0.0.0.1",
+			false, // uniqueObjects
+			new byps.ureq.BRegistry_UtilityRequests()
+		);
+	}
+};
+
+
+/**
+ * ----------------------------------------------
+ * Client class
+ * ----------------------------------------------
+*/
+
+byps.ureq.createClient_UtilityRequests = function(transportFactory) {
+	return new byps.ureq.BClient_UtilityRequests(transportFactory);
+};
+
+byps.ureq.BClient_UtilityRequests = function(transportFactory) { 
+
+	this.transport = transportFactory.createClientTransport();
+	
+	this._serverR = transportFactory.createServerR(
+		new byps.ureq.BServer_UtilityRequests(transportFactory.createServerTransport())
+	);
+	
+	this.utilityRequests = new byps.ureq.BStub_UtilityRequests(this.transport);
+};
+byps.ureq.BClient_UtilityRequests.prototype = new byps.BClient();
+
+
+/**
+ * ----------------------------------------------
+ * API value classes
+ * ----------------------------------------------
+*/
+
+
+/**
+ * ----------------------------------------------
+ * API constant types
+ * ----------------------------------------------
+*/
+
+
+/**
+ * ----------------------------------------------
+ * API constants
+ * ----------------------------------------------
+*/
+
+
+/**
+ * ----------------------------------------------
+ * Skeleton classes
+ * ----------------------------------------------
+*/
+
+
+/**
+ * ----------------------------------------------
+ * Stub classes
+ * ----------------------------------------------
+*/
+
+/**
+*/
+byps.ureq.BStub_UtilityRequests = function(transport) {
+	
+	this._typeId = 363558736;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+*/
+byps.ureq.BStub_UtilityRequests.prototype.cancelMessage = function(messageId, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 648161469, messageId : messageId };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+
+/**
+ * ----------------------------------------------
+ * Server class
+ * ----------------------------------------------
+*/
+
+byps.ureq.BServer_UtilityRequests = function(transport) { 
+
+	this.transport = transport;
+	this._remotes = {};
+	
+	this._methodMap = {
+		
+		// Remote Interface UtilityRequests			
+			// Method cancelMessage
+			648161469 : [ // _typeId of request class
+				363558736, // _typeId of remote interface
+				1845498599, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_cancelMessage(methodObj.messageId, methodResult);
+				}
+			],
+		
+	};
+};
+byps.ureq.BServer_UtilityRequests.prototype = new byps.BServer();
+
+
+/**
+ * ----------------------------------------------
+ * Registry
+ * ----------------------------------------------
+*/
+
+byps.ureq.BRegistry_UtilityRequests = function() { 
+	
+	this._serializerMap = {
+		
+		// byps.ureq.BRequest_UtilityRequests_cancelMessage
+		648161469 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"messageId":6 // long
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.ureq.BResult_19
+		1845498599 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"result":19 // void
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.ureq.BStub_UtilityRequests
+		363558736 : new byps.BSerializer_16(byps.ureq.BStub_UtilityRequests),
+	};
+};
+byps.ureq.BRegistry_UtilityRequests.prototype = new byps.BRegistry();

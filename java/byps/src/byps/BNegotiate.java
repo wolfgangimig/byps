@@ -31,6 +31,7 @@ public class BNegotiate {
 	public ByteOrder byteOrder; 
 	public BTargetId targetId;
 	public int bversion;
+	public String sessionId;
 	
 	public BNegotiate() {
 	}
@@ -121,6 +122,10 @@ public class BNegotiate {
 		  bbuf.putInt(bversion);
 		}
 		
+		if (sessionId != null) {
+		  bbuf.putString(sessionId);
+		}
+		
 		bbuf.endArray();
 
 	}
@@ -163,6 +168,9 @@ public class BNegotiate {
 		  bversion = 0;
 		}
 		
+    if (bbuf.nextJsonChar(true) == ',') {
+      sessionId = bbuf.getString();
+    }		
 	}
 	
 }

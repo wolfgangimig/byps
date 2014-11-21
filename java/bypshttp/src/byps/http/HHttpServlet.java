@@ -454,32 +454,45 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     if (log.isDebugEnabled()) log.debug("getSessionFromMessageHeaderOrHttpRequest(");
     final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
     HSession sess = null;
+    HttpSession hsess = request.getSession();
 
-    if (log.isDebugEnabled()) log.debug("header=" + header);
+    if (log.isDebugEnabled()) log.debug("header=" + header + ", request.session=" + hsess);
     
+    // New client: sessionId found in message header.
     if (header != null) {
       if (log.isDebugEnabled()) log.debug("header.sessionId=" + header.sessionId);
-      final HSession sessFromTargetId = sessions.get(header.sessionId);
-      if (log.isDebugEnabled()) log.debug("sessFromTargetId=" + sessFromTargetId);
-      
-      if (sessFromTargetId != null) {
-        if (log.isDebugEnabled()) log.debug("sess expired=" + sessFromTargetId.isExpired());
+      sess = sessions.get(header.sessionId);
+      if (log.isDebugEnabled()) log.debug("sess from header, session=" + sess);
+    }
+    
+    // Old client: sessionId found in HTTP cookie. 
+    if (sess == null) {
+      if (hsess != null) {
+        final String bsessionId = (String)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
+        if (log.isDebugEnabled()) log.debug("sessionId from request.session=" + bsessionId);
         
-        if (!sessFromTargetId.isExpired()) {
-          sess = sessFromTargetId;
+        if (bsessionId != null) {
+          sess = sessions.get(bsessionId);
+          if (log.isDebugEnabled()) log.debug("sess from cookie, session=" + sess);
         }
       }
     }
     
-    // Old client?
-    if (sess == null) {
-      HttpSession hsess = request.getSession();
-      final String bsessionId = hsess != null ? (String)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME) : null;
-      sess = bsessionId != null ? sessions.get(bsessionId) : null;
+    if (sess != null) {
+      if (log.isDebugEnabled()) log.debug("sess expired=" + sess.isExpired());
+      if (sess.isExpired()) {
+        sess.done();
+        sess = null;
+      }
     }
     
     if (sess != null) {
-      sess.touch();
+        sess.touch();
+    }
+    else {
+      if (hsess != null) {
+        hsess.invalidate();
+      }
     }
     
     return sess;

@@ -10,7 +10,14 @@
 
   <script type="text/javascript">
 	  var url = "/bypstest-srv/bypsservlet";
-	  var client = byps.test.api.createClient_Testser(url, true);
+	  
+		var wire = new byps.BWireClient(url);
+		var transportFactory = new byps.BTransportFactory(
+				byps.test.api.BApiDescriptor_Testser.instance(),
+				wire, 0);
+		var client = new byps.test.api.BClient_Testser(
+				transportFactory);
+		client.start();
   </script>
 
 </head>
