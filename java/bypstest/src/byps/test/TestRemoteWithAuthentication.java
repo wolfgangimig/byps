@@ -11,9 +11,12 @@ import byps.BAuthentication;
 import byps.BClient;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BMessageHeader;
 import byps.BTransport;
+import byps.BWire;
 import byps.RemoteException;
 import byps.http.HConstants;
+import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.BClient_Testser;
 import byps.test.api.auth.SessionInfo;
 import byps.test.api.remote.RemoteWithAuthenticationAuth;
@@ -287,5 +290,30 @@ public class TestRemoteWithAuthentication {
       log.info(")authenticate");
     };
 
-  }  
+  }
+  
+  /**
+   * Check that clients are still supported that do not send a sessionId in the message header.
+   */
+  @Test
+  public void testBypsVersionWithoutSessionId() {
+    log.info("testBypsVersionWithoutSessionId(");
+    
+    try {
+      BMessageHeader.BYPS_VERSION_CURRENT = BMessageHeader.BYPS_VERSION_WITH_SESSIONID-1;
+      
+      BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID, BApiDescriptor_Testser.VERSION, 1);
+      client.start();
+      
+      client.getRemotePrimitiveTypes().setInt(5);
+      int value = client.getRemotePrimitiveTypes().getInt();
+      TestUtils.assertEquals(log, "int value", 5, value);
+      
+    }
+    catch (Throwable e) {
+      TestUtils.fail(log, e.toString());
+    }
+
+    log.info(")testBypsVersionWithoutSessionId");
+  }
 }

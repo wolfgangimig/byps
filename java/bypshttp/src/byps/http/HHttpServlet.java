@@ -472,11 +472,11 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     }
     
     // Old client?
-//    if (sess == null) {
-//      HttpSession hsess = request.getSession();
-//      final String bsessionId = hsess != null ? (String)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME) : null;
-//      sess = bsessionId != null ? sessions.get(bsessionId) : null;
-//    }
+    if (sess == null) {
+      HttpSession hsess = request.getSession();
+      final String bsessionId = hsess != null ? (String)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME) : null;
+      sess = bsessionId != null ? sessions.get(bsessionId) : null;
+    }
     
     if (sess != null) {
       sess.touch();
