@@ -16,6 +16,7 @@ namespace byps
         private readonly long signature;
 
         public static readonly BTargetId ZERO = new BTargetId();
+        public static readonly string SESSIONID_ZERO = "00000000000000000000000000000000";
 
         public BTargetId(int serverId, long v1, long v2)
             : this(serverId, 0, v1, v2, 0)
@@ -92,19 +93,6 @@ namespace byps
             builder.Append(']');
             return builder.ToString();
         }
-
-        //public String makeHeaderString()
-        //{
-        //    StringBuilder builder = new StringBuilder();
-        //    builder.Append(serverId).Append('.');
-        //    builder.Append(v1).Append('.');
-        //    builder.Append(v2);
-        //    if (remoteId != 0)
-        //    {
-        //        builder.Append(remoteId).Append('.').Append(signature);
-        //    }
-        //    return builder.ToString();
-        //}
 
         public static BTargetId parseString(String s)
         {
@@ -187,5 +175,52 @@ namespace byps
             return v1;
         }
 
+        public String toSessionId()
+        {
+            return toSessionId(v1, v2);
+        }
+
+        private static String toSessionId(long v1, long v2)
+        {
+            StringBuilder sbuf = new StringBuilder();
+            String s1 = v1.ToString("X2");
+            int d = s1.Length;
+            while (d++ < 16) sbuf.Append('0');
+            sbuf.Append(s1);
+            s1 = v2.ToString("X2");
+            d = s1.Length;
+            while (d++ < 16) sbuf.Append('0');
+            sbuf.Append(s1);
+            return sbuf.ToString();
+        }
+
+        private static long parseHexLong(String s16)
+        {
+            ulong v = Convert.ToUInt64(s16, 16);
+            return (long)v;
+        }
+
+        public static void writeSessionId(ByteBuffer buf, String sessionId)
+        {
+            long v1 = parseHexLong(sessionId.Substring(0, 16));
+            long v2 = parseHexLong(sessionId.Substring(16, 16));
+            ByteOrder bo = buf.order();
+            buf.order(ByteOrder.BIG_ENDIAN);
+            buf.putLong(v1);
+            buf.putLong(v2);
+            buf.order(bo);
+        }
+
+        public static String readSessionId(ByteBuffer buf)
+        {
+            ByteOrder bo = buf.order();
+            buf.order(ByteOrder.BIG_ENDIAN);
+            long v1 = buf.getLong();
+            long v2 = buf.getLong();
+            buf.order(bo);
+            return toSessionId(v1, v2);
+        }
+
     }
+
 }

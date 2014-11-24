@@ -24,6 +24,7 @@ namespace byps
         public long version;
         public ByteOrder byteOrder;
         public BTargetId targetId;
+        public String sessionId;
 
         public BNegotiate()
         {
@@ -77,6 +78,11 @@ namespace byps
             if (bversion != 0)
             {
                 sbuf.Append(",").Append(bversion);
+            }
+
+            if (sessionId != null)
+            {
+                sbuf.Append(",\"").Append(sessionId).Append("\"");
             }
 
             sbuf.Append("]");
@@ -133,6 +139,17 @@ namespace byps
                                 if (items.Length >= 6)
                                 {
                                     bversion = Convert.ToInt32(items[5]);
+                                }
+
+                                if (items.Length >= 7)
+                                {
+                                    sessionId = items[6];
+                                    if (sessionId.Length > 0)
+                                    {
+                                        int p = (sessionId[0] == '\"') ? 1 : 0;
+                                        int q = (sessionId[sessionId.Length-1] == '\"') ? sessionId.Length-1 : 0;
+                                        sessionId = sessionId.Substring(p, q - p);
+                                    }
                                 }
 
                                 return; // OK

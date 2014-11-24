@@ -101,6 +101,10 @@ namespace byps {
         }
         else {
           if (client->serverR) {
+
+            string sessionId = client->getTransport()->getSessionId();
+            client->serverR->transport->setSessionId(sessionId);
+
             client->serverR->start();
           }
           internalSetAsyncResult(result);

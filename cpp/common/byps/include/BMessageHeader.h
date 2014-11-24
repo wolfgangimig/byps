@@ -15,7 +15,8 @@ const int32_t BMAGIC_BINARY_STREAM_LE = 1397774658; // 0x53505942
 
 const int32_t BHEADER_BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
 const int32_t BHEADER_BYPS_VERSION_ENCRYPTED_TARGETID = 2;
-const int32_t BHEADER_BYPS_VERSION_CURRENT = BHEADER_BYPS_VERSION_ENCRYPTED_TARGETID;
+const int32_t BHEADER_BYPS_VERSION_WITH_SESSIONID = 3;
+const int32_t BHEADER_BYPS_VERSION_CURRENT = BHEADER_BYPS_VERSION_WITH_SESSIONID;
 
 const int32_t BHEADER_FLAG_BYPS_VERSION = 1;
 const int32_t BHEADER_FLAG_RESPONSE = 2;
@@ -30,6 +31,7 @@ public:
     BByteOrder byteOrder;
     int64_t messageId;
     BTargetId targetId;
+    string sessionId;
 
     BMessageHeader(int32_t nMagic, int32_t bversion, BVERSION nNegotiatedVersion, BByteOrder negotiatedByteOrder, int64_t messageId);
     BMessageHeader();

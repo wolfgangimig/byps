@@ -29,7 +29,7 @@ namespace byps
             {
                 innerResult.setAsyncResult(result, e);
             }
-            else
+            else if (fnct != null)
             {
                 fnct(result, e);
             }

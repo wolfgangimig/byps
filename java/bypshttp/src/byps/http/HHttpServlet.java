@@ -450,7 +450,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     if (log.isDebugEnabled()) log.debug(")doPostMessage");
   }
   
-  private HSession getSessionFromMessageHeaderOrHttpRequest(BMessageHeader header, HttpServletRequest request) {
+  protected HSession getSessionFromMessageHeaderOrHttpRequest(BMessageHeader header, HttpServletRequest request) {
     if (log.isDebugEnabled()) log.debug("getSessionFromMessageHeaderOrHttpRequest(");
     final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
     HSession sess = null;

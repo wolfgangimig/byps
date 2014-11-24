@@ -99,6 +99,50 @@ namespace byps {
     bbuf.setCompressInteger(cpr);
   }
 
+  BINLINE string BTargetId::toSessionId() const {
+    return toSessionId(v1, v2);
+  }
+  
+  BINLINE string BTargetId::toSessionId(int64_t v1, int64_t v2) {
+    stringstream ss;
+    ss << std::hex << v1 << v2;
+    return ss.str();
+  }
+  
+  BINLINE void BTargetId::writeSessionId(BBuffer& buf, const string& sessionId) {
+    int64_t v1 = 0, v2 = 0;
+    if (sessionId.size()) {
+      size_t endIdx = 0;
+      v1 = (int64_t)std::stoull(sessionId.substr(0,16).c_str(), &endIdx, 16);
+      endIdx = 0;
+      v2 = (int64_t)std::stoull(sessionId.substr(16,16).c_str(), &endIdx, 16);
+    }
+
+    bool cpr = buf.isCompressInteger();
+    buf.setCompressInteger(false);
+    BByteOrder bo = buf.getByteOrder();
+    buf.setByteOrder(BBIG_ENDIAN);
+    buf.serialize(v1);
+    buf.serialize(v2);
+    buf.setCompressInteger(cpr);
+    buf.setByteOrder(bo);
+  }
+  
+  BINLINE string BTargetId::readSessionId(BBuffer& buf) {
+    bool cpr = buf.isCompressInteger();
+    buf.setCompressInteger(false);
+    BByteOrder bo = buf.getByteOrder();
+    buf.setByteOrder(BBIG_ENDIAN);
+    int64_t v1 = 0;
+    int64_t v2 = 0;
+    buf.serialize(v1);
+    buf.serialize(v2);
+    buf.setCompressInteger(cpr);
+    buf.setByteOrder(bo);
+
+    string s = toSessionId(v1,v2);
+    return s;
+  }
 
 
 }

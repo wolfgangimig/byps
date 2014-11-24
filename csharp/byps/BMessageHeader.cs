@@ -16,7 +16,8 @@ namespace byps
 
         public const int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
         public const int BYPS_VERSION_ENCRYPTED_TARGETID = 2;
-        public const int BYPS_VERSION_CURRENT = BYPS_VERSION_ENCRYPTED_TARGETID;
+        public const int BYPS_VERSION_WITH_SESSIONID = 3;
+        public const int BYPS_VERSION_CURRENT = BYPS_VERSION_WITH_SESSIONID;
 
         public const int FLAG_BYPS_VERSION = 1;
         public const int FLAG_RESPONSE = 2;
@@ -28,6 +29,7 @@ namespace byps
         public long version;
         public BTargetId targetId;
         public long messageId;
+        public String sessionId = BTargetId.SESSIONID_ZERO;
 
         public ByteOrder byteOrder;
 
@@ -58,6 +60,7 @@ namespace byps
             this.flags = rhs.flags;
             this.messageId = rhs.messageId;
             this.targetId = rhs.targetId;
+            this.sessionId = rhs.sessionId;
         }
 
         public BMessageHeader createResponse()
@@ -107,6 +110,11 @@ namespace byps
             buf.putLong(version);
             targetId.write(buf, bversion);
             buf.putLong(messageId);
+
+            if (bversion >= BYPS_VERSION_WITH_SESSIONID)
+            {
+                BTargetId.writeSessionId(buf, sessionId);
+            }
         }
 
         private void readBinaryWithoutMagic(ByteBuffer buf)
@@ -122,7 +130,12 @@ namespace byps
             version = buf.getLong();
             targetId = BTargetId.read(buf, bversion);
             messageId = buf.getLong();
-         }
+        
+            if (bversion >= BYPS_VERSION_WITH_SESSIONID)
+            {
+                sessionId = BTargetId.readSessionId(buf);
+            }
+        }
 
         public void read(ByteBuffer buf)
         {

@@ -1,6 +1,7 @@
 package byps;
 
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
@@ -286,18 +287,43 @@ public class BTargetId {
     return r;
   }
   
+//  private static int charToNibble(char c) {
+//    if (c >= '0' && c <= '9') return (c - '0') & 0xF; 
+//    if (c >= 'A' && c <= 'F') return ((c - 'A') & 0xF) + 0xA;
+//    if (c >= 'a' && c <= 'f') return ((c - 'a') & 0xF) + 0xA;
+//    throw new IllegalStateException("Invalid character " + c + " cannot be converted to byte.");
+//  }
+//  
+//  private static char nibbleToChar(int b) {
+//    if (b >= 0 && b <= 9) return (char)('0' + b);
+//    if (b >= 10 && b <= 15) return (char)('A' + (b - 10));
+//    throw new IllegalStateException("Invalid byte " + b + " cannot be converted to character.");
+//  }
+//  
+//  private static int charsToByte(char h, char l) {
+//    int hb = charToNibble(h);
+//    int lb = charToNibble(l);
+//    int r = ((hb << 4) | lb) & 0xFF;
+//    return r;
+//  }
+  
   public static void writeSessionId(ByteBuffer buf, String sessionId) {
     long v1 = parseHexLong(sessionId.substring(0, 16));
     long v2 = parseHexLong(sessionId.substring(16, 32));
+    ByteOrder bo = buf.order();
+    buf.order(ByteOrder.BIG_ENDIAN);
     buf.putLong(v1);
     buf.putLong(v2);
+    buf.order(bo);
   }
   
   public static String readSessionId(ByteBuffer buf) {
+    ByteOrder bo = buf.order();
+    buf.order(ByteOrder.BIG_ENDIAN);
     long v1 = buf.getLong();
     long v2 = buf.getLong();
-    String s = toSessionId(v1, v2);
-    return s;
+    buf.order(bo);
+    return toSessionId(v1, v2);
   }
 
   // /**

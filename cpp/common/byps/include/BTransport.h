@@ -24,6 +24,8 @@ namespace byps {
 
     BTargetId getTargetId();
     void setTargetId(BTargetId targetId);
+    string getSessionId();
+    void setSessionId(const string& sessionId);
     int32_t getConnectedServerId();
 
     PProtocol getProtocol();
@@ -48,6 +50,7 @@ namespace byps {
     PApiDescriptor apiDesc;
     PProtocol protocol;
     BTargetId targetId;
+    string sessionId;
     int32_t connectedServerId;
     PAuthentication authentication;
     byps_atomic<bool> negotiateActive;

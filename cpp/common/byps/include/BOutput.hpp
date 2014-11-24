@@ -10,7 +10,8 @@ namespace byps {
     : BIO(transport, BBinaryModel::MEDIUM(), bversion, negotiatedVersion, negotiatedByteOrder)
     , nextPointer(0)
   {
-    header.targetId = transport->targetId;
+    header.targetId = transport->getTargetId();
+    header.sessionId = transport->getSessionId();
   }
 
   BINLINE BOutput::BOutput(PTransport transport, const BMessageHeader &responseHeader)
@@ -18,7 +19,8 @@ namespace byps {
     , nextPointer(0)
   {
     header = responseHeader;
-    header.targetId = transport->targetId;
+    header.targetId = transport->getTargetId();
+    header.sessionId = transport->getSessionId();
   }
 
 

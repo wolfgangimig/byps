@@ -78,6 +78,13 @@ public class BTransport {
   public synchronized BProtocol getProtocol() {
     return protocol;
   }
+
+  public synchronized void applyNegotiate(BNegotiate negoResponse) throws BException {
+    protocol = createNegotiatedProtocol(negoResponse);
+    setSessionId(negoResponse.sessionId);
+    setTargetId(negoResponse.targetId);
+    if (log.isDebugEnabled()) log.debug("targetId=" + targetId + ", protocol=" + protocol);
+  }
   
   public synchronized BOutput getOutput() throws BException {
     if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
@@ -464,13 +471,8 @@ public class BTransport {
                 negoResponse = new BNegotiate();
                 negoResponse.read(msg.buf);
               }
-              
-              synchronized (BTransport.this) {
-                protocol = createNegotiatedProtocol(negoResponse);
-                setSessionId(negoResponse.sessionId);
-                setTargetId(negoResponse.targetId);
-                if (log.isDebugEnabled()) log.debug("targetId=" + targetId + ", protocol=" + protocol);
-              }
+
+              applyNegotiate(negoResponse);
   
               internalAuthenticate(asyncResult);
             }

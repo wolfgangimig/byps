@@ -492,29 +492,6 @@ public class HWireClient extends BWire {
     return requestToCancel;
   }
 
-  protected RequestToCancel createRequestForCancelMessage(long messageId) {
-
-    final RequestToCancel requestToCancel = new RequestToCancel(0L, 0L, messageId, new BAsyncResult<BMessage>() {
-      public void setAsyncResult(BMessage msg, Throwable ex) {
-      }
-    });
-
-    
-////    HashMap<String,String> params = new HashMap<String,String>();
-////    params.put("cancel", "1");
-////    params.put("messageid", Long.toString(messageId));
-////    ByteBuffer bbuf = createUtilityRequest(params);
-//
-//    final StringBuilder destUrl = getUrlStringBuilder("");
-//
-//    final HHttpRequest httpRequest = httpClient.post(destUrl.toString(), bbuf, requestToCancel);
-//
-//    requestToCancel.setHttpRequest(httpRequest);
-
-    addRequest(requestToCancel);
-    return requestToCancel;
-  }
-
   protected class RequestToCancel implements Runnable, BAsyncResult<ByteBuffer>, Comparable<RequestToCancel> {
 
     final ERequestDirection requestDirection;
@@ -560,9 +537,7 @@ public class HWireClient extends BWire {
                 header.messageId = messageId;
                 
                 BTransport utransport = getClientUtilityRequests().getTransport(); 
-                utransport.setTargetId(nego.targetId);
-                utransport.setSessionId(nego.targetId.toSessionId());
-                
+                utransport.applyNegotiate(nego);
               }
               else {
                 header.read(buf);
@@ -970,8 +945,6 @@ public class HWireClient extends BWire {
       apiDesc.addRegistry(new JRegistry_UtilityRequests());
       final BTransportFactory transportFactory = new HTransportFactoryClient(apiDesc, this, 0); 
       clientUtilityRequests = BClient_UtilityRequests.createClient(transportFactory);
-      BProtocol protocol = new BProtocolJson(apiDesc);
-      clientUtilityRequests.getTransport().setProtocol(protocol);
     }
     return clientUtilityRequests;
   }

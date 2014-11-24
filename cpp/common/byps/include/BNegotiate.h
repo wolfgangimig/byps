@@ -25,6 +25,7 @@ public:
     BByteOrder byteOrder;
     BTargetId targetId;
     int32_t bversion;
+    string sessionId;
 
 	BNegotiate();
 	BNegotiate(PApiDescriptor apiDesc);

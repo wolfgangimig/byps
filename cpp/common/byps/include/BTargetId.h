@@ -40,6 +40,11 @@ namespace byps {
     std::wstring makeHeaderString() const;
     std::wstring toString() const;
 
+    string toSessionId() const;
+
+    static void writeSessionId(BBuffer& bbuf, const string& sessionId);
+    static string readSessionId(BBuffer& bbuf);
+
     template <typename _CHAR> 
     friend std::basic_ostream<_CHAR>& operator << (std::basic_ostream<_CHAR>& os, const BTargetId& targetId) {
       os << (_CHAR)'[' << targetId.serverId << (_CHAR)'.' << targetId.v1 << (_CHAR)'.' << targetId.v2;
@@ -49,6 +54,10 @@ namespace byps {
       os << (_CHAR)']';
       return os;
     }
+
+  private:
+    static string toSessionId(int64_t v1, int64_t v2);
+
   };
 
 

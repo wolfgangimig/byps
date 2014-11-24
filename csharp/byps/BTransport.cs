@@ -1,4 +1,5 @@
-﻿using System;
+﻿/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace byps
         private BTargetId targetId;
 
         private int connectedServerId;
+
+        private String sessionId;
 
         private BProtocol protocol;
 
@@ -42,15 +45,26 @@ namespace byps
             this.connectedServerId = rhs.targetId.getServerId();
         }
 
-        public void setProtocol(BProtocol protocol) {
-            lock(this)
-            {/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-
-		        this.protocol = protocol;
+        public void setProtocol(BProtocol protocol)
+        {
+            lock (this)
+            {
+                this.protocol = protocol;
             }
-	    }
-	
-	    public BProtocol getProtocol() {
+        }
+
+        public void applyNegotiate(BNegotiate nego)
+        {
+            lock (this)
+            {
+                protocol = createNegotiatedProtocol(nego);
+                setTargetId(nego.targetId);
+                setSessionId(nego.sessionId);
+            }
+        }
+
+        public BProtocol getProtocol()
+        {
             lock (this)
             {
                 return protocol;
@@ -71,6 +85,22 @@ namespace byps
             lock (this)
             {
                 return targetId;
+            }
+        }
+
+        public void setSessionId(String sessionId)
+        {
+            lock (this)
+            {
+                this.sessionId = sessionId;
+            }
+        }
+
+        public String getSessionId()
+        {
+            lock (this)
+            {
+                return this.sessionId;
             }
         }
 
@@ -420,11 +450,7 @@ namespace byps
                         if (log.isDebugEnabled()) log.debug("read message");
                         BNegotiate nego = new BNegotiate();
                         nego.read(msg.buf);
-                        lock (transport)
-                        {
-                            transport.protocol = transport.createNegotiatedProtocol(nego);
-                            transport.setTargetId(nego.targetId);
-                        }
+                        transport.applyNegotiate(nego);
                         if (log.isDebugEnabled()) log.debug("protocol=" + transport.protocol + ", targetId=" + transport.targetId);
 
                         transport.internalAuthenticate(innerResult);
@@ -484,12 +510,14 @@ namespace byps
 			    lock(this) {
 				    this.protocol = ret = createNegotiatedProtocol(nego);
 				    this.setTargetId(targetId);
+                    this.setSessionId(targetId.toSessionId());
 			    }
                 if (log.isDebugEnabled()) log.debug("protocol=" + this.protocol + ", targetId=" + this.targetId);
 			
 			    ByteBuffer bout = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
 			    try {
 				    nego.targetId = targetId;
+                    nego.sessionId = targetId.toSessionId();
 				    nego.write(bout);
 				    bout.flip();
 				    asyncResult.setAsyncResult(bout, null);

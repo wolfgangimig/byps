@@ -109,6 +109,17 @@
     <Compile Include="BServerR.cs" />
     <Compile Include="ByteOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ureq\BApiDescriptor_UtilityRequests.cs" />
+    <Compile Include="ureq\BClient_UtilityRequests.cs" />
+    <Compile Include="ureq\BRegistry_UtilityRequests.cs" />
+    <Compile Include="ureq\BRequest_UtilityRequests_cancelMessage.cs" />
+    <Compile Include="ureq\BResult_19.cs" />
+    <Compile Include="ureq\BSerializer_1845498599.cs" />
+    <Compile Include="ureq\BSerializer_363558736.cs" />
+    <Compile Include="ureq\BSerializer_648161469.cs" />
+    <Compile Include="ureq\BServer_UtilityRequests.cs" />
+    <Compile Include="ureq\BStub_UtilityRequests.cs" />
+    <Compile Include="ureq\UtilityRequests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="byps.snk" />

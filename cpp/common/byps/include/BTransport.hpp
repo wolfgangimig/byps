@@ -69,6 +69,16 @@ namespace byps {
     this->connectedServerId = targetId.getServerId();
   }
 
+  BINLINE string BTransport::getSessionId() {
+    byps_unique_lock lock(mtx);
+    return sessionId;
+  }
+
+  BINLINE void BTransport::setSessionId(const string& sessionId) {
+    byps_unique_lock lock(mtx);
+    this->sessionId = sessionId;
+  }
+
   BINLINE PProtocol BTransport::getProtocol() {
     byps_unique_lock lock(mtx);
     return protocol;
@@ -146,6 +156,7 @@ namespace byps {
             transport->protocol = transport->createNegotiatedProtocol(nego);
             transport->targetId = nego.targetId;
             transport->connectedServerId = nego.targetId.getServerId();
+            transport->sessionId = nego.sessionId;
           }
 
           transport->internalAuthenticate(innerResult);
@@ -278,10 +289,12 @@ namespace byps {
           byps_unique_lock lock(mtx);
           protocol = createNegotiatedProtocol(nego);
           this->targetId = targetId;
+          this->sessionId = targetId.toSessionId();
         }
 
         PBytes bytes = BBytes::create(NEGOTIATE_MAX_SIZE);
         nego.targetId = targetId;
+        nego.sessionId = sessionId;
         nego.write(bytes);
 
         asyncResult->setAsyncResult(BVariant(bytes));

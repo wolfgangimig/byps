@@ -7,6 +7,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
+using byps.ureq;
 // using System.Threading.Tasks;
 
 namespace byps
@@ -208,14 +209,6 @@ namespace byps
         {
 			public void setAsyncResult(BMessage msg, Exception e) {}
         }
-
-        public RequestToCancel createRequestForCancelMessage(long messageId)
-        {
-            RequestToCancel r = new RequestToCancel(this, ERequestDirection.FORWARD, 0L, null, null, 0L, messageId, 
-                timeoutMillisClient, timeoutMillisClient, new CancelResult());
-		    addRequest(r);
-		    return r;
-	    }
 
         public bool executeRequest(RequestToCancel r)
         {
@@ -652,7 +645,7 @@ namespace byps
                 {
                     try
                     {
-                        if (ex == null && buf.remaining() != 0)
+                        if (ex == null && buf != null && buf.remaining() != 0)
                         {
 
                             BMessageHeader header = new BMessageHeader();
@@ -660,7 +653,13 @@ namespace byps
                             bool nego = BNegotiate.isNegotiateMessage(buf);
                             if (nego)
                             {
+                                BNegotiate negoResponse = new BNegotiate();
+                                negoResponse.read(buf);
+
                                 header.messageId = messageId;
+
+                                BTransport utransport = wire.getClientUtilityRequests().getTransport();
+                                utransport.applyNegotiate(negoResponse);
                             }
                             else
                             {
@@ -777,9 +776,15 @@ namespace byps
 
 	    protected void sendCancelMessage(long messageId) {
 		    if (log.isDebugEnabled()) log.debug("sendCancelMessage(messageId=" + messageId);
-			RequestToCancel r = createRequestForCancelMessage(messageId);
-			executeRequest(r);
-		    if (log.isDebugEnabled()) log.debug(")sendCancelMessage");
+            try
+            {
+                getClientUtilityRequests().UtilityRequests.CancelMessage(messageId);
+            }
+            catch (Exception e)
+            {
+                log.warn("Exception", e);
+            }
+            if (log.isDebugEnabled()) log.debug(")sendCancelMessage");
 	    }
 	
 
@@ -889,6 +894,17 @@ namespace byps
             return sbuf.ToString();
 	    }
 
+        public BClient_UtilityRequests getClientUtilityRequests()
+        {
+            if (clientUtilityRequests == null)
+            {
+                BApiDescriptor apiDesc = BApiDescriptor_UtilityRequests.instance;
+                BTransportFactory transportFactory = new HTransportFactoryClient(apiDesc, this, 0);
+                clientUtilityRequests = BClient_UtilityRequests.createClient(transportFactory);
+            }
+            return clientUtilityRequests;
+        }
+
         protected readonly static long MESSAGEID_CANCEL_ALL_REQUESTS = -1;
         protected readonly static long MESSAGEID_DISCONNECT = -2;
         protected String url;
@@ -901,5 +917,6 @@ namespace byps
         protected int timeoutMillisClient;
         private Log log = LogFactory.getLog(typeof(HWireClient));
         public enum ERequestDirection { FORWARD, REVERSE };
+        private BClient_UtilityRequests clientUtilityRequests;
     }
 }

@@ -11,12 +11,14 @@
 
 			<arg value="-genj.dir-ser"/> 		<arg value="./src-ureq-ser"/>
 
-			<arg value="-gencs.dir-ser"/>     	<arg value="d:/git/byps/csharp/byps/src-ureq"/>
+			<arg value="-gencs.dir-ser"/>     	<arg value="d:/git/byps/csharp/byps/ureq"/>
 			
 			<arg value="-genjs.dest"/> 			<arg value="../bypstest-srv/WebContent/ureq.js"/>
 
-			<arg value="-gencpp.dir-api" /> 		<arg value="d:/git/byps/cpp/common/byps/ureq/api" />
-			<arg value="-gencpp.dir-impl" /> 		<arg value="d:/git/byps/cpp/common/byps/ureq/impl" />
+			<!-- Weiß aktuell nicht, wie ich mit der CPP umgehen soll. byps soll ja möglichst eine Header-Only-Lib bleiben.
+			<arg value="-gencpp.dir-api" /> 		<arg value="d:/git/byps/cpp/common/byps/include/ureq" />
+			<arg value="-gencpp.dir-impl" /> 		<arg value="d:/git/byps/cpp/common/byps/include/ureq" />
+			-->
 			
 		</java>
 	

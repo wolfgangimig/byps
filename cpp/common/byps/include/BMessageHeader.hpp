@@ -23,7 +23,7 @@ namespace byps {
     bversion(0),
     version(0),
     byteOrder(BBIG_ENDIAN),
-    messageId(0) {
+    messageId(0){
   }
 
   BINLINE BMessageHeader::BMessageHeader(const BMessageHeader& rhs)
@@ -34,7 +34,9 @@ namespace byps {
     , version(rhs.version)
     , byteOrder(rhs.byteOrder)
     , messageId(rhs.messageId)
-    , targetId(rhs.targetId){
+    , targetId(rhs.targetId)
+    , sessionId(rhs.sessionId)
+  {
   }
 
   BINLINE void BMessageHeader::write(BBuffer& bbuf) {
@@ -52,6 +54,10 @@ namespace byps {
     targetId.serialize(bbuf, bversion);
     bbuf.serialize(messageId);
     bbuf.setCompressInteger(cmpr);
+
+    if (bversion >= BHEADER_BYPS_VERSION_WITH_SESSIONID) {
+      BTargetId::writeSessionId(bbuf, sessionId);
+    }
   }
 
   BINLINE void BMessageHeader::read(BBuffer& bbuf) {
@@ -83,6 +89,10 @@ namespace byps {
     bbuf.serialize(messageId);
 
     bbuf.setCompressInteger(cmpr);
+
+    if (bversion >= BHEADER_BYPS_VERSION_WITH_SESSIONID) {
+      sessionId = BTargetId::readSessionId(bbuf);
+    }
   }
 
 }
