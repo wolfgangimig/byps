@@ -308,13 +308,19 @@ public class BTargetId {
 //  }
   
   public static void writeSessionId(ByteBuffer buf, String sessionId) {
-    long v1 = parseHexLong(sessionId.substring(0, 16));
-    long v2 = parseHexLong(sessionId.substring(16, 32));
-    ByteOrder bo = buf.order();
-    buf.order(ByteOrder.BIG_ENDIAN);
-    buf.putLong(v1);
-    buf.putLong(v2);
-    buf.order(bo);
+    if (sessionId != null && sessionId.length() == 32) {
+      long v1 = parseHexLong(sessionId.substring(0, 16));
+      long v2 = parseHexLong(sessionId.substring(16, 32));
+      ByteOrder bo = buf.order();
+      buf.order(ByteOrder.BIG_ENDIAN);
+      buf.putLong(v1);
+      buf.putLong(v2);
+      buf.order(bo);
+    }
+    else {
+      buf.putLong(0);
+      buf.putLong(0);
+    }
   }
   
   public static String readSessionId(ByteBuffer buf) {
