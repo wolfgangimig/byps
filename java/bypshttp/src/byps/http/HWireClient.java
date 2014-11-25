@@ -812,7 +812,7 @@ public class HWireClient extends BWire {
       getClientUtilityRequests().getUtilityRequests().cancelMessage(messageId);
     }
     catch (Exception e) {
-      log.warn("Exception", e);
+      log.debug("Exception", e);
     }
     if (log.isDebugEnabled()) log.debug(")sendCancelMessage");
   }
