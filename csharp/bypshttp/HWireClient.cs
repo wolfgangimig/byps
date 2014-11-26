@@ -366,8 +366,16 @@ namespace byps
                 }
                 else
                 {
-                    int code = Convert.ToInt32(((HttpWebResponse)e.Response).StatusCode);
-                    bex = new BException(code, "HTTP Status " + code);
+                    if (e.Response != null)
+                    {
+                        int code = Convert.ToInt32(((HttpWebResponse)e.Response).StatusCode);
+                        bex = new BException(code, "HTTP Status " + code);
+                    }
+                    else
+                    {
+                        int code = Convert.ToInt32(HttpStatusCode.BadRequest);
+                        bex = new BException(code, e.ToString());
+                    }
                 }
                 returnException = bex;
             }
