@@ -492,6 +492,21 @@ public class HWireClient extends BWire {
     return requestToCancel;
   }
 
+  protected RequestToCancel createRequestForCancelMessage(long messageId) {
+    final RequestToCancel requestToCancel = new RequestToCancel(0L, 0L, messageId, new BAsyncResult<BMessage>() {
+      public void setAsyncResult(BMessage msg, Throwable ex) {
+      }
+    });
+
+    String destUrl = surl + "?messageid=" + messageId + "&cancel=1";
+    final HHttpRequest httpRequest = httpClient.get(destUrl, requestToCancel);
+
+    requestToCancel.setHttpRequest(httpRequest);
+
+    addRequest(requestToCancel);
+    return requestToCancel;
+  }
+  
   protected class RequestToCancel implements Runnable, BAsyncResult<ByteBuffer>, Comparable<RequestToCancel> {
 
     final ERequestDirection requestDirection;
@@ -535,9 +550,8 @@ public class HWireClient extends BWire {
 
                 header.messageObject = nego;
                 header.messageId = messageId;
-                
-                BTransport utransport = getClientUtilityRequests().getTransport(); 
-                utransport.applyNegotiate(nego);
+
+                applyNegotiateForUtilityRequests(nego);
               }
               else {
                 header.read(buf);
@@ -809,7 +823,14 @@ public class HWireClient extends BWire {
   protected void sendCancelMessage(final long messageId) {
     if (log.isDebugEnabled()) log.debug("sendCancelMessage(messageId=" + messageId);
     try {
-      getClientUtilityRequests().getBUtilityRequests().cancelMessage(messageId);
+      BClient_BUtilityRequests bclientU = clientUtilityRequests;
+      if (bclientU != null) {
+        bclientU.getBUtilityRequests().cancelMessage(messageId);
+      }
+      else {
+        RequestToCancel r = createRequestForCancelMessage(messageId);
+        executeRequest(r);
+      }
     }
     catch (Exception e) {
       log.debug("Exception", e);
@@ -834,7 +855,9 @@ public class HWireClient extends BWire {
           map.put(args[i], i < args.length-1 ? args[i+1] : "");
         }
       }
-      Map<String,String> rmap = getClientUtilityRequests().getBUtilityRequests().testAdapter(fnct, map);
+      
+      BClient_BUtilityRequests bclientU = clientUtilityRequests;
+      Map<String,String> rmap = bclientU.getBUtilityRequests().testAdapter(fnct, map);
       ret = rmap != null && rmap.size() != 0 ? rmap.entrySet().iterator().next().getValue() : "";
     }
     catch (IOException ignored) {
@@ -927,16 +950,19 @@ public class HWireClient extends BWire {
     return this.httpClient;
   }
   
-  private BClient_BUtilityRequests clientUtilityRequests;
+  private volatile BClient_BUtilityRequests clientUtilityRequests;
   
-  public BClient_BUtilityRequests getClientUtilityRequests() {
-    if (clientUtilityRequests == null) {
+  public void applyNegotiateForUtilityRequests(BNegotiate nego) throws BException {
+    if (nego.sessionId != null && nego.sessionId.length() != 0 && !nego.sessionId.equals(BTargetId.SESSIONID_ZERO)) {
+      if (log.isDebugEnabled()) log.debug("utility requests supported");
       BApiDescriptor apiDesc = BApiDescriptor_BUtilityRequests.instance();
       apiDesc.addRegistry(new BRegistry_BUtilityRequests());
       apiDesc.addRegistry(new JRegistry_BUtilityRequests());
       final BTransportFactory transportFactory = new HTransportFactoryClient(apiDesc, this, 0); 
-      clientUtilityRequests = BClient_BUtilityRequests.createClient(transportFactory);
+      BClient_BUtilityRequests bclient = BClient_BUtilityRequests.createClient(transportFactory);
+      BTransport utransport = bclient.getTransport(); 
+      utransport.applyNegotiate(nego);
+      clientUtilityRequests = bclient;
     }
-    return clientUtilityRequests;
   }
 }
