@@ -31,7 +31,7 @@ public class BNegotiate {
 	public ByteOrder byteOrder; 
 	public BTargetId targetId;
 	public int bversion;
-	public String sessionId;
+	public String sessionId = BTargetId.SESSIONID_ZERO;
 	
 	public BNegotiate() {
 	}
@@ -169,7 +169,12 @@ public class BNegotiate {
 		
 		// Target ID
 		targetId = BTargetId.parseString(bbuf.getString());
-		
+
+		// BYPS Version.
+		// Due to a bug in versions before BYPS_VERSION_WITH_SESSIONID, 
+		// this value is not correctly negotiated. If no sessionId is
+		// found, the bversion is ignored and set to the version number
+		// prior to BYPS_VERSION_WITH_SESSIONID.
 		if (bbuf.nextJsonChar(true) == ',') {
 		  bversion = bbuf.getInt();
 		}
@@ -179,7 +184,10 @@ public class BNegotiate {
 		
     if (bbuf.nextJsonChar(true) == ',') {
       sessionId = bbuf.getString();
-    }		
+    }
+    else {
+      bversion = BMessageHeader.BYPS_VERSION_WITH_SESSIONID-1;
+    }
 	}
 	
 }

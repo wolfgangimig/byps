@@ -597,6 +597,7 @@ public class BTransport {
       nego.protocols = BProtocolS.BINARY_MODEL.getProtocolId();
       if (nego.byteOrder == null) nego.byteOrder = ByteOrder.BIG_ENDIAN;
       nego.version = negotiatedVersion;
+      nego.bversion = negotiatedBypsVersion;
       protocol = new BProtocolS(apiDesc, negotiatedBypsVersion, negotiatedVersion, nego.byteOrder);
     }
     else if (nego.protocols.startsWith(BProtocolJson.BINARY_MODEL.getProtocolId())) {
