@@ -8,7 +8,9 @@ import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,8 +31,6 @@ import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BNegotiate;
-import byps.BProtocol;
-import byps.BProtocolJson;
 import byps.BSyncResult;
 import byps.BTargetId;
 import byps.BTestAdapter;
@@ -41,10 +41,10 @@ import byps.http.client.HHttpClient;
 import byps.http.client.HHttpClientFactory;
 import byps.http.client.HHttpRequest;
 import byps.http.client.jcnn.JcnnClientFactory;
-import byps.ureq.BApiDescriptor_UtilityRequests;
-import byps.ureq.BClient_UtilityRequests;
-import byps.ureq.BRegistry_UtilityRequests;
-import byps.ureq.JRegistry_UtilityRequests;
+import byps.ureq.BApiDescriptor_BUtilityRequests;
+import byps.ureq.BClient_BUtilityRequests;
+import byps.ureq.BRegistry_BUtilityRequests;
+import byps.ureq.JRegistry_BUtilityRequests;
 
 /**
  * BWire implementation for HTTP.
@@ -809,7 +809,7 @@ public class HWireClient extends BWire {
   protected void sendCancelMessage(final long messageId) {
     if (log.isDebugEnabled()) log.debug("sendCancelMessage(messageId=" + messageId);
     try {
-      getClientUtilityRequests().getUtilityRequests().cancelMessage(messageId);
+      getClientUtilityRequests().getBUtilityRequests().cancelMessage(messageId);
     }
     catch (Exception e) {
       log.debug("Exception", e);
@@ -828,26 +828,17 @@ public class HWireClient extends BWire {
     }
 
     try {
-      StringBuilder uparams = new StringBuilder();
+      HashMap<String,String> map = new HashMap<String,String>();
       if (args != null) {
-        for (String arg : args) {
-          uparams.append("&").append(arg);
+        for (int i = 0; i < args.length; i+=2) {
+          map.put(args[i], i < args.length-1 ? args[i+1] : "");
         }
       }
-
-      final String destUrl = surl + "?testAdapter=" + fnct + uparams;
-
-      final BSyncResult<ByteBuffer> syncResult = new BSyncResult<ByteBuffer>();
-      final HHttpRequest httpRequest = httpClient.get(destUrl, syncResult);
-
-      httpRequest.run();
-
-      ByteBuffer buf = syncResult.getResult();
-      if (buf != null) {
-        ret = new String(buf.array(), buf.position(), buf.remaining(), "UTF-8");
-      }
+      Map<String,String> rmap = getClientUtilityRequests().getBUtilityRequests().testAdapter(fnct, map);
+      ret = rmap != null && rmap.size() != 0 ? rmap.entrySet().iterator().next().getValue() : "";
     }
     catch (IOException ignored) {
+      log.debug("ignored=" + ignored);
     }
 
     if (log.isDebugEnabled()) log.debug(")testAdapter=" + ret);
@@ -936,15 +927,15 @@ public class HWireClient extends BWire {
     return this.httpClient;
   }
   
-  private BClient_UtilityRequests clientUtilityRequests;
+  private BClient_BUtilityRequests clientUtilityRequests;
   
-  public BClient_UtilityRequests getClientUtilityRequests() {
+  public BClient_BUtilityRequests getClientUtilityRequests() {
     if (clientUtilityRequests == null) {
-      BApiDescriptor apiDesc = BApiDescriptor_UtilityRequests.instance();
-      apiDesc.addRegistry(new BRegistry_UtilityRequests());
-      apiDesc.addRegistry(new JRegistry_UtilityRequests());
+      BApiDescriptor apiDesc = BApiDescriptor_BUtilityRequests.instance();
+      apiDesc.addRegistry(new BRegistry_BUtilityRequests());
+      apiDesc.addRegistry(new JRegistry_BUtilityRequests());
       final BTransportFactory transportFactory = new HTransportFactoryClient(apiDesc, this, 0); 
-      clientUtilityRequests = BClient_UtilityRequests.createClient(transportFactory);
+      clientUtilityRequests = BClient_BUtilityRequests.createClient(transportFactory);
     }
     return clientUtilityRequests;
   }

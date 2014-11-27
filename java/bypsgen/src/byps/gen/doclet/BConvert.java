@@ -112,13 +112,13 @@ public class BConvert {
 		// Try to find the API descirptor: the BApi class.
 		// Every API definition needs exactly one BApi class.
 		
-		log.info("API Descriptor -------------------");
+		log.info("API Descriptor --------------------");
 		
 		log.debug("search for API descriptor");
 		boolean apiDescFound = false;
 		for (ClassDoc c : classes) {
 			if (c.simpleTypeName().equals("BApi")) {
-				log.debug("found API descriptor=" + c);
+				log.info("found API descriptor=" + c);
 				BApiDescriptor apiDesc = makeApiDescriptor(c, constReader);
 				log.info("API Descriptor=" + apiDesc);
 				apiDescFound = true;

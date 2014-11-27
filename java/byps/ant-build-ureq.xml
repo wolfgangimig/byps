@@ -4,10 +4,14 @@
 	<property name="bypsgen.home" value="../../lib/java"/>
 	
 	<target name="build">
+		
+		<echo message="current directory=${basedir}" />
 	
 		<java jar="${bypsgen.home}/bypsgen.jar" fork="true" >
 			
 			<arg value="--sourcepath"/> 		<arg value="./src-ureq"/>
+			
+			<arg value="-verbose" />
 
 			<arg value="-genj.dir-ser"/> 		<arg value="./src-ureq-ser"/>
 

@@ -30,6 +30,16 @@ namespace byps
         {
         }
 
+        public BNegotiate(BNegotiate rhs)
+        {
+            protocols = rhs.protocols;
+            bversion = rhs.bversion;
+            version = rhs.version;
+            byteOrder = rhs.byteOrder;
+            targetId = rhs.targetId;
+            sessionId = rhs.sessionId;
+        }
+
         public BNegotiate(BApiDescriptor apiDesc)
         {
             this.protocols = SUPPORTED_PROTOCOLS;

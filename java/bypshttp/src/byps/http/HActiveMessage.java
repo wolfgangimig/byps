@@ -36,6 +36,10 @@ public class HActiveMessage {
   public synchronized boolean isLongPoll() {
     return workerThread == null && rctxtMessage != null;
   }
+  
+  public synchronized Thread getWorkerThread() {
+    return workerThread;
+  }
 
   public synchronized void setRequestContext(HRequestContext rctxt, Thread workerThread) {
     this.waitingForRequestContext = false;

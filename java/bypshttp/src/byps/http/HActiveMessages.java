@@ -281,13 +281,15 @@ public class HActiveMessages {
 	 * @param inclLongPolls
 	 * @return
 	 */
-	public List<Long> getActiveMessageIds(boolean inclLongPolls) {
+	public List<Long> getActiveMessageIds(boolean inclLongPolls, Thread excludeThread) {
 		List<Long> list = new ArrayList<Long>();
 		List<HActiveMessage> msgs = new ArrayList<HActiveMessage>(activeMessages.values());
 		for (HActiveMessage msg : msgs) {
-			if (inclLongPolls || !msg.isLongPoll()) {
-				list.add(msg.messageId);
-			}
+		  if (msg.getWorkerThread() != excludeThread) {
+  			if (inclLongPolls || !msg.isLongPoll()) {
+  				list.add(msg.messageId);
+  			}
+		  }
 		}
 		return list;
 	}

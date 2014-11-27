@@ -57,7 +57,8 @@ namespace byps
         {
             lock (this)
             {
-                protocol = createNegotiatedProtocol(nego);
+                BNegotiate negoCopy = new BNegotiate(nego);
+                protocol = createNegotiatedProtocol(negoCopy);
                 setTargetId(nego.targetId);
                 setSessionId(nego.sessionId);
             }

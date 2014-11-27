@@ -35,6 +35,15 @@ public class BNegotiate {
 	
 	public BNegotiate() {
 	}
+	
+	public BNegotiate(BNegotiate rhs) {
+	  this.protocols = rhs.protocols;
+	  this.version = rhs.version;
+	  this.byteOrder = rhs.byteOrder;
+	  this.targetId = rhs.targetId;
+	  this.bversion = rhs.bversion;
+	  this.sessionId = rhs.sessionId;
+	}
 
 	/**
 	 * 

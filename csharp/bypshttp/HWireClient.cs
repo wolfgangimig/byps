@@ -786,7 +786,7 @@ namespace byps
 		    if (log.isDebugEnabled()) log.debug("sendCancelMessage(messageId=" + messageId);
             try
             {
-                getClientUtilityRequests().UtilityRequests.CancelMessage(messageId);
+                getClientUtilityRequests().BUtilityRequests.CancelMessage(messageId);
             }
             catch (Exception e)
             {
@@ -902,13 +902,13 @@ namespace byps
             return sbuf.ToString();
 	    }
 
-        public BClient_UtilityRequests getClientUtilityRequests()
+        public BClient_BUtilityRequests getClientUtilityRequests()
         {
             if (clientUtilityRequests == null)
             {
-                BApiDescriptor apiDesc = BApiDescriptor_UtilityRequests.instance;
+                BApiDescriptor apiDesc = BApiDescriptor_BUtilityRequests.instance;
                 BTransportFactory transportFactory = new HTransportFactoryClient(apiDesc, this, 0);
-                clientUtilityRequests = BClient_UtilityRequests.createClient(transportFactory);
+                clientUtilityRequests = BClient_BUtilityRequests.createClient(transportFactory);
             }
             return clientUtilityRequests;
         }
@@ -925,6 +925,6 @@ namespace byps
         protected int timeoutMillisClient;
         private Log log = LogFactory.getLog(typeof(HWireClient));
         public enum ERequestDirection { FORWARD, REVERSE };
-        private BClient_UtilityRequests clientUtilityRequests;
+        private BClient_BUtilityRequests clientUtilityRequests;
     }
 }

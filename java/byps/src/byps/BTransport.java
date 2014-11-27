@@ -80,7 +80,8 @@ public class BTransport {
   }
 
   public synchronized void applyNegotiate(BNegotiate negoResponse) throws BException {
-    protocol = createNegotiatedProtocol(negoResponse);
+    BNegotiate nego = new BNegotiate(negoResponse);
+    protocol = createNegotiatedProtocol(nego);
     setSessionId(negoResponse.sessionId);
     setTargetId(negoResponse.targetId);
     if (log.isDebugEnabled()) log.debug("targetId=" + targetId + ", protocol=" + protocol);

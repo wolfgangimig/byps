@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.servlet.ServletConfig;
@@ -52,9 +54,9 @@ import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
-import byps.ureq.BRegistry_UtilityRequests;
-import byps.ureq.BSkeleton_UtilityRequests;
-import byps.ureq.JRegistry_UtilityRequests;
+import byps.ureq.BRegistry_BUtilityRequests;
+import byps.ureq.BSkeleton_BUtilityRequests;
+import byps.ureq.JRegistry_BUtilityRequests;
 
 public abstract class HHttpServlet extends HttpServlet implements HServerContext {
   private static final long serialVersionUID = 1L;
@@ -785,7 +787,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       String inclLongPollsStr = request.getParameter(HTestAdapter.INCL_LONG_POLLS);
       boolean inclLongPolls = (inclLongPollsStr != null && inclLongPollsStr.length() != 0) ? Boolean.parseBoolean(inclLongPollsStr) : true;
 
-      List<Long> messageIds = getActiveMessages().getActiveMessageIds(inclLongPolls);
+      List<Long> messageIds = getActiveMessages().getActiveMessageIds(inclLongPolls, Thread.currentThread());
       if (log.isDebugEnabled()) log.debug("active messageIds=" + messageIds);
       PrintWriter wr = response.getWriter();
       for (Long messageId : messageIds) {
@@ -982,10 +984,65 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
   private void addUtilityRequestsInterface(final HSession sess) {
     BTransport transport = sess.getServer().getTransport();
     BApiDescriptor apiDesc = transport.getApiDesc();
-    apiDesc.addRegistry(new BRegistry_UtilityRequests());
-    apiDesc.addRegistry(new JRegistry_UtilityRequests());
+    apiDesc.addRegistry(new BRegistry_BUtilityRequests());
+    apiDesc.addRegistry(new JRegistry_BUtilityRequests());
     
-    sess.getServer().addRemote((int)BSkeleton_UtilityRequests.serialVersionUID, new BSkeleton_UtilityRequests() {
+    sess.getServer().addRemote((int)BSkeleton_BUtilityRequests.serialVersionUID, new BSkeleton_BUtilityRequests() {
+      
+      @Override
+      public Map<String,String> testAdapter(String functionName, Map<String,String> params)
+          throws RemoteException {
+        if (log.isDebugEnabled()) log.debug("testAdapter(" + functionName + ", " + params);
+        
+        Map<String,String> ret = new HashMap<String,String>();
+        
+        if (!getConfig().isTestAdapterEnabled()) {
+          throw new BException(HttpServletResponse.SC_UNAUTHORIZED, "testAdapter failed.");
+        }
+
+        // Return the active messages.
+        if (functionName.equals(HTestAdapter.ACTIVE_MESSAGES)) {
+          
+          String inclLongPollsStr = params.get(HTestAdapter.INCL_LONG_POLLS);
+          boolean inclLongPolls = inclLongPollsStr != null ? Boolean.parseBoolean(inclLongPollsStr) : false;
+          
+          getActiveMessages().cleanup(false);
+
+          List<Long> messageIds = getActiveMessages().getActiveMessageIds(inclLongPolls, Thread.currentThread());
+          if (log.isDebugEnabled()) log.debug("active messageIds=" + messageIds);
+          StringBuilder wr = new StringBuilder();
+          for (Long messageId : messageIds) {
+            wr.append(messageId).append("\r\n");
+          }
+          ret.put("return", wr.toString());
+        }
+
+        // Print a line into the servers log file.
+        else if (functionName.equals(HTestAdapter.PRINT_LOG)) {
+          String line = params.get(HTestAdapter.PRINT_LOG_LINE);
+          log.info(line);
+        }
+
+        // Return the file names in the temporary directory.
+        else if (functionName.equals(HTestAdapter.TEMP_FILES)) {
+          File[] files = getConfig().getTempDir().listFiles();
+          StringBuilder wr = new StringBuilder();
+          for (File file : files) {
+            wr.append(file.getName()).append("\r\n");
+          }
+          ret.put("return", wr.toString());
+        }
+        
+        if (log.isDebugEnabled()) log.debug(")testAdapter=" + ret);
+        return ret;
+      }
+
+      @Override
+      public Map<String,String> execute(String functionName, Map<String,String> params)
+          throws RemoteException {
+        return super.execute(functionName, params);
+      }
+
       @Override
       public void cancelMessage(long messageId) throws RemoteException {
         if (log.isDebugEnabled()) log.debug("cancelMessage(" + messageId);

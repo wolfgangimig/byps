@@ -7,10 +7,10 @@ import byps.BProtocolJson;
 import byps.BProtocolS;
 import byps.BServer;
 import byps.BTransportFactory;
-import byps.ureq.BApiDescriptor_UtilityRequests;
-import byps.ureq.BRegistry_UtilityRequests;
-import byps.ureq.BServer_UtilityRequests;
-import byps.ureq.JRegistry_UtilityRequests;
+import byps.ureq.BApiDescriptor_BUtilityRequests;
+import byps.ureq.BRegistry_BUtilityRequests;
+import byps.ureq.BServer_BUtilityRequests;
+import byps.ureq.JRegistry_BUtilityRequests;
 
 /**
  * 
@@ -20,13 +20,13 @@ import byps.ureq.JRegistry_UtilityRequests;
 public class HSessionForUtilityRequests extends HSession {
   
   final BTransportFactory transportFactory;
-  final BApiDescriptor apiDesc = BApiDescriptor_UtilityRequests.instance();
+  final BApiDescriptor apiDesc = BApiDescriptor_BUtilityRequests.instance();
   
   public HSessionForUtilityRequests(HServerContext serverContext) {
     super("Remote user is HSessionForUtilityRequests", serverContext);
 
-    apiDesc.addRegistry(new JRegistry_UtilityRequests());
-    apiDesc.addRegistry(new BRegistry_UtilityRequests());
+    apiDesc.addRegistry(new JRegistry_BUtilityRequests());
+    apiDesc.addRegistry(new BRegistry_BUtilityRequests());
 
     // Create BTransportFacotry without serverRegistry.
     // This prevents BTransport from forwarding the requests to other servers. 
@@ -35,7 +35,7 @@ public class HSessionForUtilityRequests extends HSession {
   
   public HSession createForTarget(BMessageHeader header) {
     
-    final BServer server = BServer_UtilityRequests.createServer(transportFactory);
+    final BServer server = BServer_BUtilityRequests.createServer(transportFactory);
     
     BProtocol protocol = null;
     
