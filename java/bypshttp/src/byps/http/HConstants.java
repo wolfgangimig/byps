@@ -75,11 +75,15 @@ public class HConstants {
   public final static int INCOMING_STREAM_BUFFER = 1000 * 1000;
 
   /**
-   * HttpSession attribute name for BYPS session.
-   * This attribute is used to support older clients that do not send the 
-   * session ID in the BMessageHeader.sessionId. 
+   * HttpSession attribute name for BYPS session ID.
+   * Older clients do not send the session ID in the BMessageHeader. For this clients,
+   * the server finds the session ID in the application server's session object under 
+   * this key. This key stores a set of session IDs, because several BYPS sessions 
+   * could use the same application server's session, e.g. if the several sessions 
+   * are opened in the same browser window. 
+   * @see HHttpSessionObject
    */
-  public final static String HTTP_SESSION_ATTRIBUTE_NAME = "BHttpServlet.Session";
+  public final static String HTTP_SESSION_BYPS_SESSIONS = "BHttpServlet.Session";
 
   /**
    * Inactive seconds before session is authenticated.

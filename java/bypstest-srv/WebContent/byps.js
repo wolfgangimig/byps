@@ -517,6 +517,7 @@ byps.BNegotiate = function(apiDesc) {
 	this.version = apiDesc.version;
 	this.targetId = new byps.BTargetId();
 	this.sessionId = "";
+	this.bversion = 0;
 
 	this.toArray = function() {
 		return [ "N", "J", this.version, "_", this.targetId.toString() ];
@@ -526,8 +527,12 @@ byps.BNegotiate = function(apiDesc) {
 		if (!arr || arr.length < 5 || arr[0] != "N") throw new byps.BException(byps.BException_CORRUPT, "Invalid negotiate message.");
 		this.targetId = new byps.BTargetId(arr[4]);
 		
+		if (arr.length > 4) {
+			this.bversion = arr[5];
+		}
+		
 		if (arr.length > 5) {
-			this.sessionId = arr[5];
+			this.sessionId = arr[6];
 		}
 	};
 };
@@ -800,7 +805,25 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 	
 	this._sendCancelMessage = function(cancelMessageId, asyncResult) {
        try {
-           this.getClientUtilityRequests().bUtilityRequests.cancelMessage(cancelMessageId, asyncResult);
+    	   if (this.clientUtilityRequests) {
+    		   this.clientUtilityRequests.bUtilityRequests.cancelMessage(cancelMessageId, asyncResult);
+    	   }
+    	   else {
+    		   // Older servers doe not support the utility API
+    			this._sendCancelMessage = function(cancelMessageId, asyncResult) {
+    				var destUrl = me.url + "?messageid=" + cancelMessageId + "&cancel=1";
+    				var xhr = new XMLHttpRequest();
+    				xhr.open('GET', destUrl, true);
+    				xhr.withCredentials = true;
+    				xhr.onreadystatechange = function() {
+    					if (xhr.readyState != 4) return;
+    					if (asyncResult) {
+    						asyncResult(true, null);
+    					}
+    				};
+    				xhr.send();
+    			};
+    	   }
        }
        catch (e) {
     	   if (!asyncResult) throw e;
@@ -838,22 +861,23 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		return ret;
 	};
 
-	this.getClientUtilityRequests = function() {
-		if (!this.clientUtilityRequests) {
-			var apiDesc = byps.ureq.BApiDescriptor_BUtilityRequests.instance();
-			var transportFactory = new byps.BTransportFactory(apiDesc, this, 0);
-			this.clientUtilityRequests = byps.ureq.createClient_BUtilityRequests(transportFactory);
-		} 
-		return this.clientUtilityRequests;
-	};
-
 	this.setSessionForUtilityRequests = function(responseText) {
-		var utransport = this.getClientUtilityRequests().transport;
-		var nego = new byps.BNegotiate(utransport.apiDesc);
+		
+		var apiDesc = byps.ureq.BApiDescriptor_BUtilityRequests.instance();
+		var transportFactory = new byps.BTransportFactory(apiDesc, this, 0);
+		
+		var nego = new byps.BNegotiate(apiDesc);
 		var arr = JSON.parse(responseText);
 		nego.fromArray(arr);
-		utransport.setTargetId(nego.targetId);
-		utransport.setSessionId(nego.sessionId);
+
+		if (nego.sessionId && nego.sessionId != "00000000000000000000000000000000") {
+
+			this.clientUtilityRequests = byps.ureq.createClient_BUtilityRequests(transportFactory);
+
+			var utransport = this.clientUtilityRequests.transport;
+			utransport.setTargetId(nego.targetId);
+			utransport.setSessionId(nego.sessionId);
+		}
 	};
 
 };
@@ -1034,7 +1058,6 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 			catch (ex2) {
 				ex = ex2;
 			}
-			;
 
 			var relogin = me._internalIsReloginException(ex, 0);
 			if (relogin) {

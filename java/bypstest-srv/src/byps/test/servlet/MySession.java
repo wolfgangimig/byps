@@ -34,7 +34,7 @@ public class MySession extends HSession {
 	public static volatile boolean useAuthentication = false;
 
 	public MySession(HttpSession hsess, String remoteUser, HServerContext serverContext) {
-		super(remoteUser, serverContext);
+		super(hsess, remoteUser, serverContext);
 		
 		if (log.isDebugEnabled()) log.debug("MySession(");
 		

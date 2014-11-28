@@ -470,13 +470,8 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     // Old client: sessionId found in HTTP cookie. 
     if (sess == null) {
       if (hsess != null) {
-        final String bsessionId = (String)hsess.getAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME);
-        if (log.isDebugEnabled()) log.debug("sessionId from request.session=" + bsessionId);
-        
-        if (bsessionId != null) {
-          sess = sessions.get(bsessionId);
-          if (log.isDebugEnabled()) log.debug("sess from cookie, session=" + sess);
-        }
+        sess = getFirstBypsSessionFromHttpSession(hsess);
+        if (log.isDebugEnabled()) log.debug("sess from cookie, session=" + sess);
       }
     }
     
@@ -490,11 +485,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     
     if (sess != null) {
         sess.touch();
-    }
-    else {
-      if (hsess != null) {
-        hsess.invalidate();
-      }
     }
     
     return sess;
@@ -640,7 +630,13 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     // Older clients still need to reach their HSession by the JSESSIONID.
     HttpSession hsess = request.getSession(true);
     if (log.isDebugEnabled()) log.debug("JSESSIONID=" + hsess.getId());
-    
+
+    // Assign a set of BYPS session objects to the app server's session.
+    hsess.setAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS, new HHttpSessionObject());
+
+    // Constrain the lifetime of the session to 10s. It is extended, if the session gets authenticated.  
+    hsess.setMaxInactiveInterval(HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
+
     // Create new BYPS session
     final HTargetIdFactory targetIdFactory = getTargetIdFactory();
     final BTargetId targetId = targetIdFactory.createTargetId();
@@ -653,9 +649,6 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     final String bsessionId = targetId.toSessionId();
     sessions.put(bsessionId, sess);
 
-    // Add session to HTTP-session to support older clients. 
-    hsess.setAttribute(HConstants.HTTP_SESSION_ATTRIBUTE_NAME, bsessionId);
-    
     // Add BRemote for utility requests.
     addUtilityRequestsInterface(sess);
     
@@ -1061,6 +1054,25 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         if (log.isDebugEnabled()) log.debug(")cancelMessage");
       }
     });
+  }
+
+  /**
+   * Get first BYPS session from application server's session.
+   * Old client applications do not send the session ID in the BMessageHeader.
+   * For this clients, the BYPS session is found in the application server's session.  
+   * @param hsess Application server's session.
+   * @return BYPS session, or null
+   */
+  protected synchronized HSession getFirstBypsSessionFromHttpSession(HttpSession hsess) {
+    HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+    HSession ret = null;
+    if (sessObj != null) {
+      ret = sessObj.getFirstSessionOrNull();
+    }
+    if (ret == null) {
+      hsess.invalidate();
+    }
+    return ret;
   }
 
   private static Log log = LogFactory.getLog(HHttpServlet.class);
