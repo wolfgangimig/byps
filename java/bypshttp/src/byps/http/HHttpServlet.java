@@ -70,14 +70,12 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
   /**
    * Create a session.
-   * @param request Servlet request
-   * @param response Servlet response
-   * @param hsess 
-   * @param hsess Application server session
+   * @param hsess HttpSession 
+   * @param remoteUser Request attribute REMOTE_USER.
    * @return HSession object 
    * @throws BExeption with code=BExceptionC.FORBIDDEN if authentication has failed.
    */
-  protected abstract HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess) throws BException;
+  protected abstract HSession createSession(HttpSession hsess, String remoteUser) throws BException;
   
 
   /**
@@ -421,6 +419,14 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
         getActiveMessages().getOutgoingStream(targetId);
       
       sendOutgoingStream(stream, response);
+      
+      // Session verlängern. Wichtig für den Upload sehr großer Dateien.
+      final HActiveMessage msg = getActiveMessages().getActiveMessage(messageId);
+      final String sessionId = msg != null ? msg.getSessionId() : null;
+      final HSession sess = sessionId != null ? HSessionListener.getAllSessions().get(sessionId) : null;
+      if (sess != null) {
+        sess.touch();
+      }
     }
     
     // Bad request
@@ -624,33 +630,7 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
       return;
     }
 
-    // Create new JSESSIONID to support load balancing.
-    // For newer clients, we do not rely on the JSESSIONID to identify the BYPS session in incoming requests.
-    // Otherwise two JSON connections in a browser window could not be distinguished.
-    // Older clients still need to reach their HSession by the JSESSIONID.
-    HttpSession hsess = request.getSession(true);
-    if (log.isDebugEnabled()) log.debug("JSESSIONID=" + hsess.getId());
-
-    // Assign a set of BYPS session objects to the app server's session.
-    hsess.setAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS, new HHttpSessionObject());
-
-    // Constrain the lifetime of the session to 10s. It is extended, if the session gets authenticated.  
-    hsess.setMaxInactiveInterval(HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
-
-    // Create new BYPS session
-    final HTargetIdFactory targetIdFactory = getTargetIdFactory();
-    final BTargetId targetId = targetIdFactory.createTargetId();
-    final HSession sess = createSession(request, response, hsess);
-    sess.setTargetId(targetId);
-    if (log.isDebugEnabled()) log.debug("targetId=" + targetId);
-
-    // Add session to session map
-    final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
-    final String bsessionId = targetId.toSessionId();
-    sessions.put(bsessionId, sess);
-
-    // Add BRemote for utility requests.
-    addUtilityRequestsInterface(sess);
+    final HSession sess = doCreateSession(request);
     
     // Process Negotiate message
     
@@ -717,6 +697,37 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
     if (log.isDebugEnabled()) log.debug(")doNegotiate");
   }
 
+  protected HSession doCreateSession(final HttpServletRequest request) throws BException {
+    // Create new JSESSIONID to support load balancing.
+    // For newer clients, we do not rely on the JSESSIONID to identify the BYPS session in incoming requests.
+    // Otherwise two JSON connections in a browser window could not be distinguished.
+    // Older clients still need to reach their HSession by the JSESSIONID.
+    HttpSession hsess = request.getSession(true);
+    if (log.isDebugEnabled()) log.debug("JSESSIONID=" + hsess.getId());
+
+    // Assign a set of BYPS session objects to the app server's session.
+    hsess.setAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS, new HHttpSessionObject());
+
+    // Constrain the lifetime of the session to 10s. It is extended, if the session gets authenticated.  
+    hsess.setMaxInactiveInterval(HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
+
+    // Create new BYPS session
+    final HTargetIdFactory targetIdFactory = getTargetIdFactory();
+    final BTargetId targetId = targetIdFactory.createTargetId();
+    final HSession sess = createSession(hsess, request.getRemoteUser());
+    sess.setTargetId(targetId);
+    if (log.isDebugEnabled()) log.debug("targetId=" + targetId);
+
+    // Add session to session map
+    final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
+    final String bsessionId = targetId.toSessionId();
+    sessions.put(bsessionId, sess);
+
+    // Add BRemote for utility requests.
+    addUtilityRequestsInterface(sess);
+    return sess;
+  }
+
   private HRequestContext createRequestContext(HttpServletRequest request, HttpServletResponse response, boolean async) {
     final HRequestContext rctxt = async ? new HAsyncContext(request.startAsync(request, response)) : new HSyncContext(request, response);
     return rctxt;
@@ -735,7 +746,15 @@ public abstract class HHttpServlet extends HttpServlet implements HServerContext
 
       try {
         final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), messageId, streamId);
-        getActiveMessages().addIncomingStream(targetId, rctxt);
+        final HActiveMessage msg = getActiveMessages().addIncomingStream(targetId, rctxt);
+        
+        // Session verlängern. Wichtig für den Upload sehr großer Dateien.
+        final String sessionId = msg.getSessionId();
+        final HSession sess = sessionId != null ? HSessionListener.getAllSessions().get(sessionId) : null;
+        if (sess != null) {
+          sess.touch();
+        }
+        
       } catch (BException e) {
         int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
         if (e.code == BExceptionC.CANCELLED) {

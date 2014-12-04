@@ -74,6 +74,7 @@ public class HActiveMessages {
 		if (log.isDebugEnabled()) log.debug("addMessage(" + header + ", rctxt=" + rctxt);
 		
 		HActiveMessage msg = getOrCreateActiveMessage(header.messageId);
+		msg.setSessionid(header.sessionId);
 		
 		HAsyncErrorListener alsn = new HAsyncErrorListener() {
 		  
@@ -320,7 +321,7 @@ public class HActiveMessages {
     if (log.isDebugEnabled()) log.debug(")addOutgoingStreams");
   }
 
-  public void addIncomingStream(final BTargetId targetId, final HRequestContext rctxt) throws BException {
+  public HActiveMessage addIncomingStream(final BTargetId targetId, final HRequestContext rctxt) throws BException {
     if (rctxt.isAsync()) {
       addIncomingStreamAsync(targetId, rctxt);
     }
@@ -330,6 +331,8 @@ public class HActiveMessages {
     
     final HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
     msg.addIncomingStream(targetId.getStreamId());
+    
+    return msg;
   }
 
   private void addIncomingStreamAsync(final BTargetId targetId, HRequestContext rctxt) throws BException {
@@ -519,6 +522,10 @@ public class HActiveMessages {
     
     if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
     return stream;
+  }
+
+  public HActiveMessage getActiveMessage(long messageId) {
+    return activeMessages.get(messageId);
   }
 
 	

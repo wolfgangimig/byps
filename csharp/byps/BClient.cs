@@ -51,9 +51,15 @@ namespace byps
                     }
                     else
                     {
-                        if (client.serverR != null)
+                        BServerR serverR = client.serverR;
+                        if (serverR != null)
                         {
-                            client.serverR.start();
+                            BTargetId targetId = client.getTransport().getTargetId();
+                            String sessionId = client.getTransport().getSessionId();
+                            serverR.transport.setTargetId(targetId);
+                            serverR.transport.setSessionId(sessionId);
+
+                            serverR.start();
                         }
                         innerResult(true, null);
                     }

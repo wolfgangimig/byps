@@ -915,6 +915,10 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	};
 	this.setTargetId(targetId);
 	
+	this.getTargetId = function() {
+		return this.targetId;
+	}
+	
 	this.setSessionId = function(sessionId) {
 		this.sessionId = sessionId;
 	};
@@ -1569,8 +1573,12 @@ byps.BClient = function() {
 				  if (!ex) {
 					  if (me._serverR) {
 						  try {
-				              var sessionId = me.transport.getSessionId();
+				              
+							  var sessionId = me.transport.getSessionId();
+				              var targetId = me.transport.getTargetId();
 				              me._serverR.transport.setSessionId(sessionId);
+				              me._serverR.transport.setTargetId(targetId);
+				              
 							  me._serverR.start();
 						  }
 						  catch (ex2) {

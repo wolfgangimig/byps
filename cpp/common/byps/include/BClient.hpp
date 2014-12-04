@@ -102,7 +102,9 @@ namespace byps {
         else {
           if (client->serverR) {
 
+            BTargetId targetId = client->getTransport()->getTargetId();
             string sessionId = client->getTransport()->getSessionId();
+            client->serverR->transport->setTargetId(targetId);
             client->serverR->transport->setSessionId(sessionId);
 
             client->serverR->start();

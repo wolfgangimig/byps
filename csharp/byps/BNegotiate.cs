@@ -24,7 +24,7 @@ namespace byps
         public long version;
         public ByteOrder byteOrder;
         public BTargetId targetId;
-        public String sessionId;
+        public String sessionId = BTargetId.SESSIONID_ZERO;
 
         public BNegotiate()
         {

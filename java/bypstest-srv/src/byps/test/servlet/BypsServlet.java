@@ -62,9 +62,8 @@ public class BypsServlet extends HHttpServlet {
   }
 
   @Override
-  protected HSession createSession(HttpServletRequest request, HttpServletResponse response, HttpSession hsess) {
+  protected HSession createSession(HttpSession hsess, String remoteUser) {
     if (log.isDebugEnabled()) log.debug("createSession(");
-    String remoteUser = request.getRemoteUser();
     if (log.isDebugEnabled()) log.debug("remoteUser=" + remoteUser);
     
     HSession sess = new MySession(hsess, remoteUser, this);

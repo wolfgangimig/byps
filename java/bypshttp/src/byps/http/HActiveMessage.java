@@ -23,6 +23,7 @@ public class HActiveMessage {
   private ArrayList<Long> incomingStreams = new ArrayList<Long>();
   private Thread workerThread;
   private volatile boolean canceled;
+  private volatile String sessionId;
 
   HActiveMessage(Long messageId) {
     this.messageId = messageId;
@@ -31,6 +32,13 @@ public class HActiveMessage {
 
   public boolean isCanceled() {
     return canceled;
+  }
+  
+  public String getSessionId() {
+    return sessionId;
+  }
+  public void setSessionid(String s) {
+    sessionId = s;
   }
   
   public synchronized boolean isLongPoll() {

@@ -157,7 +157,9 @@ public abstract class BClient {
               try {
                 
                 String sessionId = getTransport().getSessionId();
+                BTargetId targetId = getTransport().getTargetId();
                 serverR.transport.setSessionId(sessionId);
+                serverR.transport.setTargetId(targetId);
                 
                 serverR.start();
               } catch (BException ex2) {
