@@ -111,6 +111,11 @@ namespace byps {
 
     idx++; // skip \"
 
+    // BYPS Version.
+    // Due to a bug in versions before BYPS_VERSION_WITH_SESSIONID, 
+    // this value is not correctly negotiated. If no sessionId is
+    // found, the bversion is ignored and set to the version number
+    // prior to BYPS_VERSION_WITH_SESSIONID.
     if (idx < bytes->length && p[idx] == ',') {
       idx++;
       stringstream ss;
@@ -134,6 +139,9 @@ namespace byps {
         sessionId = ss.str();
         idx++; // skip \"
       }
+    }
+    else if (bversion >= BHEADER_BYPS_VERSION_CURRENT) {
+      bversion = BHEADER_BYPS_VERSION_CURRENT-1;
     }
   }
 

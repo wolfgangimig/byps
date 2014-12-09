@@ -146,9 +146,19 @@ namespace byps
                                     targetId = BTargetId.parseString(targetIdStr);
                                 }
 
+                                // BYPS Version.
+                                // Due to a bug in versions before BYPS_VERSION_WITH_SESSIONID, 
+                                // this value is not correctly negotiated. If no sessionId is
+                                // found, the bversion is ignored and set to the version number
+                                // prior to BYPS_VERSION_WITH_SESSIONID.
+
                                 if (items.Length >= 6)
                                 {
                                     bversion = Convert.ToInt32(items[5]);
+                                }
+                                else
+                                {
+                                    bversion = 0;
                                 }
 
                                 if (items.Length >= 7)
@@ -160,6 +170,10 @@ namespace byps
                                         int q = (sessionId[sessionId.Length-1] == '\"') ? sessionId.Length-1 : 0;
                                         sessionId = sessionId.Substring(p, q - p);
                                     }
+                                }
+                                else if (bversion >= BMessageHeader.BYPS_VERSION_WITH_SESSIONID)
+                                {
+                                    bversion = BMessageHeader.BYPS_VERSION_WITH_SESSIONID - 1;
                                 }
 
                                 return; // OK

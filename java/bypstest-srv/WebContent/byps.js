@@ -517,23 +517,36 @@ byps.BNegotiate = function(apiDesc) {
 	this.version = apiDesc.version;
 	this.targetId = new byps.BTargetId();
 	this.sessionId = "";
-	this.bversion = 0;
+	this.bversion = byps.BMessageHeaderC.BYPS_VERSION_WITH_SESSIONID;
 
 	this.toArray = function() {
-		return [ "N", "J", this.version, "_", this.targetId.toString() ];
+		return [ "N", "J", this.version, "_", this.targetId.toString(), this.bversion, this.sessionId ];
 	};
 
 	this.fromArray = function(arr) {
 		if (!arr || arr.length < 5 || arr[0] != "N") throw new byps.BException(byps.BException_CORRUPT, "Invalid negotiate message.");
 		this.targetId = new byps.BTargetId(arr[4]);
 		
-		if (arr.length > 4) {
-			this.bversion = arr[5];
-		}
+        // BYPS Version.
+        // Due to a bug in versions before BYPS_VERSION_WITH_SESSIONID, 
+        // this value is not correctly negotiated. If no sessionId is
+        // found, the bversion is ignored and set to the version number
+        // prior to BYPS_VERSION_WITH_SESSIONID.
 		
 		if (arr.length > 5) {
+			this.bversion = arr[5];
+		}
+		else {
+			this.bversion = 0;
+		}
+		
+		if (arr.length > 6) {
 			this.sessionId = arr[6];
 		}
+		else if (this.bversion >= byps.BMessageHeaderC.BYPS_VERSION_WITH_SESSIONID){
+			this.bversion = byps.BMessageHeaderC.BYPS_VERSION_WITH_SESSIONID-1;
+		}
+		
 	};
 };
 
@@ -604,7 +617,8 @@ byps.BMessageHeaderC = {
 	FLAG_RESPONSE : 2,
 	FLAG_LONGPOLL : 2,
 	FLAG_TIMEOUT : 4,
-	FLAG_LONGPOLL_TIMEOUT : 6
+	FLAG_LONGPOLL_TIMEOUT : 6,
+	BYPS_VERSION_WITH_SESSIONID : 3
 };
 
 // ------------------------------------------------------------------------------------------------

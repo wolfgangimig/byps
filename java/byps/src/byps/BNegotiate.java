@@ -185,7 +185,7 @@ public class BNegotiate {
     if (bbuf.nextJsonChar(true) == ',') {
       sessionId = bbuf.getString();
     }
-    else {
+    else if (bversion >= BMessageHeader.BYPS_VERSION_WITH_SESSIONID) {
       bversion = BMessageHeader.BYPS_VERSION_WITH_SESSIONID-1;
     }
 	}
