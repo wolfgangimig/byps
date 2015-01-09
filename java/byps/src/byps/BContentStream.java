@@ -17,7 +17,21 @@ public abstract class BContentStream extends InputStream {
 	 */
   public final static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
   
+  /**
+   * Explicitly add this URL parameter for range requests.
+   * This parameter tells the server, that the stream should not be closed after the request.
+   * If this parameter is not set, the HTTP range request header is ignored. 
+   */
+  public final static String URL_PARAM_ACCEPT_RANGES = "accept-ranges";
+  
+  /**
+   * Controls HTTP header Content-Disposition.
+   */
   public final static int ATTACHMENT = 1;
+
+  /**
+   * Controls HTTP header Content-Disposition.
+   */
   public final static int INLINE = 2;
 
 	/**

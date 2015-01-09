@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import byps.BContentStream;
+
 /**
  * Range request information.
  * @see http://stackoverflow.com/questions/8293687/sample-http-range-request-session
@@ -30,7 +32,7 @@ public class HRangeRequest {
 
     HRangeRequest ret = new HRangeRequest();
 
-    ret.valid = positionSupported && request.getParameter("accept-ranges") != null;
+    ret.valid = positionSupported && request.getParameter(BContentStream.URL_PARAM_ACCEPT_RANGES) != null;
     ret.contentLength = contentLength;
     
     if (ret.valid) {
