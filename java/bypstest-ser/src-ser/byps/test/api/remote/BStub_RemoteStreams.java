@@ -105,6 +105,20 @@ public class BStub_RemoteStreams extends BStub implements RemoteStreamsAsync, ja
 	}
 	
 	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<java.io.InputStream> asyncResult = new BSyncResult<java.io.InputStream>();		
+		getVideoCheckSupportByteRange(asyncResult);
+		return asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getVideoCheckSupportByteRange(final BAsyncResult<java.io.InputStream> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteStreams_getVideoCheckSupportByteRange req = new BRequest_RemoteStreams_getVideoCheckSupportByteRange();		
+		transport.sendMethod(req, asyncResult);
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.io.InputStream getStreamDeferedProperies() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<java.io.InputStream> asyncResult = new BSyncResult<java.io.InputStream>();		

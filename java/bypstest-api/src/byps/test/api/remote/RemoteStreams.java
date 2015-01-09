@@ -22,6 +22,14 @@ public interface RemoteStreams extends BRemote {
 	public InputStream getTextStream() throws RemoteException;
 	
 	/**
+	 * Return a large video stream to be able to test that byte ranges are correctly handled.
+	 * This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
+	 * @return InputStream
+	 * @throws RemoteException
+	 */
+	public InputStream getVideoCheckSupportByteRange() throws RemoteException;
+	
+	/**
 	 * Return stream without properties.
 	 * The properties must be made explicitly available on the client-side by calling 
 	 * BContentStream.ensureProperties()

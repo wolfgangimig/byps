@@ -53,6 +53,17 @@ public interface RemoteStreamsAsync extends BRemote,
 	public void getTextStream(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	/**
+	 * Return a large video stream to be able to test that byte ranges are correctly handled.
+	 * This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
+	 * @return InputStream
+	 * @throws RemoteException
+	*/
+	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException;
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getVideoCheckSupportByteRange(final BAsyncResult<java.io.InputStream> asyncResult) ;
+	
+	/**
 	 * Return stream without properties.
 	 * The properties must be made explicitly available on the client-side by calling
 	 * BContentStream.ensureProperties()

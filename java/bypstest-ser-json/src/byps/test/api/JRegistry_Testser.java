@@ -245,6 +245,7 @@ public class JRegistry_Testser extends BRegistry {
 		new BRegisteredSerializer(996163680, "byps.test.api.JSerializer_996163680"),
 		new BRegisteredSerializer(996206823, "byps.test.api.JSerializer_996206823"),
 		new BRegisteredSerializer(998004147, "byps.test.api.ver.JSerializer_998004147"),
+		new BRegisteredSerializer(1006919505, "byps.test.api.remote.JSerializer_1006919505"),
 		new BRegisteredSerializer(1011932613, "byps.test.api.remote.JSerializer_1011932613"),
 		new BRegisteredSerializer(1022088379, "byps.test.api.inherit.JSerializer_1022088379"),
 		new BRegisteredSerializer(1023819749, "byps.test.api.remote.JSerializer_1023819749"),

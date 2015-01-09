@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -89,7 +90,12 @@ public class BContentStreamWrapper extends BContentStream {
 	}
 	
 	public InputStream ensureStream() throws IOException {
-		if (innerStream != null) return innerStream;
+	  
+	  extendLifetime();
+	  
+		if (innerStream != null) {
+		  return innerStream;
+		}
 		
 		synchronized(this) {
 			if (innerStream == null) {
@@ -235,6 +241,7 @@ public class BContentStreamWrapper extends BContentStream {
 	public int read(byte[] b, int off, int len) throws IOException {
 		return ensureStream().read(b, off, len);
 	}
+	
 	@Override
 	public boolean markSupported() {
 		try {
@@ -250,6 +257,41 @@ public class BContentStreamWrapper extends BContentStream {
 	@Override
 	public long skip(long n) throws IOException {
 		return ensureStream().skip(n);
+	}
+	
+	public boolean positionSupported() {
+	  try {
+      InputStream is = ensureStream();
+      if (is instanceof FileInputStream || is instanceof ByteArrayInputStream) {
+        return true;
+      }
+      else if (is instanceof BContentStream) {
+        return ((BContentStream)is).positionSupported();
+      }
+    }
+    catch (IOException e) {
+    }
+    return false;
+	}
+
+	@Override
+	public void position(long pos)
+	    throws IOException {
+	  
+	  InputStream is = ensureStream();
+
+    if (is instanceof BContentStream) {
+	    ((BContentStream)is).position(pos);
+	  }
+    else if (is instanceof FileInputStream) {
+      FileChannel  fc = ((FileInputStream)is).getChannel();
+      fc.position(pos);
+    }
+    else if (is.markSupported()) {
+	    is.reset();
+	    is.skip(pos);
+	  }
+	  
 	}
 	
 }

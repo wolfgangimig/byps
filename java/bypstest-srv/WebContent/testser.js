@@ -2995,6 +2995,20 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__by
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
+ * Return a large video stream to be able to test that byte ranges are correctly handled.
+ * This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
+ * @return InputStream
+ * @throws RemoteException
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.getVideoCheckSupportByteRange = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1006919505 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
  * Return stream without properties.
  * The properties must be made explicitly available on the client-side by calling
  * BContentStream.ensureProperties()
@@ -5203,6 +5217,15 @@ byps.test.api.BServer_Testser = function(transport) {
 				534004416, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getTextStream(methodResult);
+				}
+			],
+			
+			// Method getVideoCheckSupportByteRange
+			1006919505 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004416, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getVideoCheckSupportByteRange(methodResult);
 				}
 			],
 			
@@ -10461,6 +10484,16 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_getTextStream
 		818823403 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteStreams_getVideoCheckSupportByteRange
+		1006919505 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
 			// checkpoint byps.gen.js.GenRegistry:138

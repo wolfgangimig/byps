@@ -328,6 +328,27 @@ public abstract class BContentStream extends InputStream {
     this.targetId = targetId;
   }
   
+  /**
+   * Returns true, if the stream supports random access.
+   * If random access is supported, the function {@link #position(long)} can 
+   * be used to read data at an arbitrary position in the stream. 
+   * Function {@link #getContentLength()} must return the number of bytes in the stream, if
+   * random access is supported.
+   * @return true, if random access supported.
+   */
+  public boolean positionSupported() {
+    return false;
+  }
+  
+  /**
+   * Set the stream position to the given value.
+   * @param pos Stream offset from the beginning
+   * @see #positionSupported()
+   */
+  public void position(long pos) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+  
   @Override
   public void close() throws IOException {
     super.close();

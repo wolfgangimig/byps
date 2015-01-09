@@ -1,6 +1,7 @@
 package byps.test.servlet;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -196,5 +197,17 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	@Override
 	public InputStream getStreamDoNotClone() throws RemoteException {
 	  return imageStream;
+	}
+	
+	@Override
+	public InputStream getVideoCheckSupportByteRange() throws RemoteException {
+	  BContentStream stream = null;
+    try {
+      stream = new BContentStreamWrapper(new java.io.File("d:/temp/bypssrv-data/video.mp4"));
+    }
+    catch (FileNotFoundException e) {
+      throw new BException(BExceptionC.INTERNAL, e.toString());
+    }
+	  return stream;
 	}
 }

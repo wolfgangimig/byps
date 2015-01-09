@@ -103,6 +103,20 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 	}
 	
 	// checkpoint byps.gen.j.PrintContext:365
+	public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:409
+	public void getVideoCheckSupportByteRange(final BAsyncResult<java.io.InputStream> asyncResult) {
+		try {
+			java.io.InputStream ret = getVideoCheckSupportByteRange();
+			asyncResult.setAsyncResult(ret, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:365
 	public java.io.InputStream getStreamDeferedProperies() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}

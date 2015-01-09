@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Test Byte Range</title>
+
+<script type="text/javascript" src="../json2.js"></script>
+<script type="text/javascript" src="../byps.js"></script>
+<script type="text/javascript" src="../testser.js"></script>
+
+<script type="text/javascript">
+	var url = "/bypstest-srv/bypsservlet";
+	var wire = new byps.BWireClient(url, 0, 60);
+	var transportFactory = new byps.BTransportFactory(
+			byps.test.api.BApiDescriptor_Testser.instance(), wire);
+	var client = byps.test.api.createClient_Testser(transportFactory);
+	client.start();
+
+	function getVideo() {
+		try {
+			var stream = client.remoteStreams.getVideoCheckSupportByteRange();
+
+			var elmProps = document.getElementById("videoProps");
+			elmProps.innerHTML = "Content-Length=\"" + stream.contentLength
+					+ "\", Content-Type=\"" + stream.contentType + "\"";
+
+			var elmVideo = document.getElementById("video");
+			elmVideo.src = stream.url + "&accept-ranges=true";
+		} catch (e) {
+			alert(e);
+		}
+
+	}
+</script>
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td><h1>Test HTTP byte range requests.</h1></td>
+		</tr>
+
+		<tr>
+			<td>This test calls the
+				RemoteStream.getVideoCheckSupportByteRange() to receive a large
+				video stream. This stream is passed to the HTML video object. In
+				order to check byte range handling, change the streaming position
+				while the video is played.
+		<tr>
+			<td>
+		<tr>
+			<td>
+
+				<table border="2">
+
+					<tr>
+						<td><input type="button" value="Get video from server"
+							onclick="getVideo()" /></td>
+						<td>
+							<div id="videoProps"></div>
+						</td>
+					</tr>
+
+					<tr>
+						<td><video controls id="video" width="570" height="480" /></td>
+						<td><video controls id="video" width="570" height="480">
+							<source src="video.mp4" type="video/mp4"> </source></video></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+	</table>
+</body>
+</html>
