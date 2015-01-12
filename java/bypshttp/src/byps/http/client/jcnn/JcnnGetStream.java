@@ -48,7 +48,7 @@ public class JcnnGetStream extends JcnnRequest {
 
       statusCode = getResponseCode(c);
 
-      if (statusCode != HttpURLConnection.HTTP_OK) {
+      if (statusCode != HttpURLConnection.HTTP_OK && statusCode != HttpURLConnection.HTTP_PARTIAL) {
         throw new IOException("HTTP status " + statusCode);
       }
 
