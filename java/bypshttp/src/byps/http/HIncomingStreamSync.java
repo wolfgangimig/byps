@@ -348,6 +348,9 @@ public class HIncomingStreamSync extends BContentStream {
 		int n = 0;
 		synchronized(HIncomingStreamSync.this) {
 			switch (bytesSource) {
+			case NO_BYTES:
+			  n = 0;
+			  break;
 			case FIRST_BYTES:
 				n = firstBytes != null ? (firstBytes.length - readPos) : 0;
 				break;

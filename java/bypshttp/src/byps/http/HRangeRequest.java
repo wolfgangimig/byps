@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import byps.BContentStream;
+import byps.BTargetId;
 
 /**
  * Range request information.
@@ -14,9 +15,11 @@ import byps.BContentStream;
 public class HRangeRequest {
   
   private boolean valid;
+  private String rangeHeader;
   private long offset;
   private long length = -1;
   private long contentLength = 0;
+  private BTargetId targetId = BTargetId.ZERO;
   
   /**
    * Parse request header "Range:".
@@ -28,63 +31,60 @@ public class HRangeRequest {
    * @return HRangeRequest object.
    * @throws IOException 
    */
-  public static HRangeRequest parse(HttpServletRequest request, long contentLength, boolean positionSupported) throws IOException {
-
-    HRangeRequest ret = new HRangeRequest();
-
-    ret.valid = positionSupported && request.getParameter(BContentStream.URL_PARAM_ACCEPT_RANGES) != null;
-    ret.contentLength = contentLength;
-    
-    if (ret.valid) {
-    
-      String rangeHeader = request.getHeader("Range");
-      if (rangeHeader != null) {
-  
-        int p = rangeHeader.indexOf("bytes=");
-        if (p >= 0) {
-  
-          String range = rangeHeader.substring(p + 6);
-          String[] beginEnd = range.split("-");
-          if (beginEnd.length > 0) {
-  
-            ret.offset = Long.parseLong(beginEnd[0]);
-            
-            if (beginEnd.length > 1 && beginEnd[1].length() != 0) {
-  
-              long offsetEnd = Long.parseLong(beginEnd[1]);
-              ret.length = offsetEnd - ret.offset + 1;
-  
-              // Header "Range: 0-123/124":
-              // -> return 206, Content-Type, Content-Length, Accept-Ranges,
-              // Content-Range: bytes 0-123/124
-              // and data.
-            }
-            else {
-  
-              // Header "Range: 0-":
-              // -> return 206, Content-Type, Content-Length, Accept-Ranges,
-              // Content-Range: bytes 0-123/124
-  
-            }
-          }
-          else {
-          }
-  
-        }
-        else {
-        }
-      }
-      
-    }
-    
-    if (ret.length < 0) {
-      ret.length = contentLength - ret.offset;
-    }
-    
-    return ret;
+  public HRangeRequest(HttpServletRequest request) throws IOException {
+    valid = request.getParameter(BContentStream.URL_PARAM_ACCEPT_RANGES) != null;
+    rangeHeader = request.getHeader("Range");
   }
   
-  public void setResponseHeaders(HttpServletResponse response, String etag) {
+  public void evaluateByteRange(BContentStream stream) throws IOException {
+    
+    // If the given stream object is a BContentStreamWrapper, make sure that ensureStream has been called.
+    // Otherwise the stream.getContentLength() might return a wrong value.
+    stream.available();
+    
+    targetId = stream.getTargetId();
+    contentLength = stream.getContentLength();
+    
+    valid &= stream.positionSupported();
+    if (valid && rangeHeader != null) {
+      
+      int p = rangeHeader.indexOf("bytes=");
+      if (p >= 0) {
+
+        String range = rangeHeader.substring(p + 6);
+        String[] beginEnd = range.split("-");
+        if (beginEnd.length > 0) {
+
+          offset = Long.parseLong(beginEnd[0]);
+          
+          if (beginEnd.length > 1 && beginEnd[1].length() != 0) {
+
+            long offsetEnd = Long.parseLong(beginEnd[1]);
+            length = offsetEnd - offset + 1;
+
+            // Header "Range: 0-123/124":
+            // -> return 206, Content-Type, Content-Length, Accept-Ranges,
+            // Content-Range: bytes 0-123/124
+            // and data.
+          }
+          else {
+
+            // Header "Range: 0-":
+            // -> return 206, Content-Type, Content-Length, Accept-Ranges,
+            // Content-Range: bytes 0-123/124
+
+          }
+        }
+      }
+    }
+    
+    if (length < 0) {
+      length = contentLength - offset;
+    }
+    
+  }
+  
+  public void setResponseHeaders(HttpServletResponse response) {
     
     if (isValid()) {
       
@@ -93,7 +93,7 @@ public class HRangeRequest {
     
       // IE requires to have an ETAG header in order to send range requests
       // https://social.msdn.microsoft.com/forums/ie/en-US/dc3cf477-4bd2-43a3-a36f-8be19c5a8a2c/internet-explorer-http-header-acceptranges
-      response.setHeader("ETAG", "\"" + etag + "\"");
+      response.setHeader("ETAG", "\"" + targetId.toString() + "\"");
       
       // Content-Range header. 
       response.setHeader("Content-Range", "bytes " + offset + "-" + (offset + length - 1) + "/" + contentLength);

@@ -292,13 +292,13 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (log.isDebugEnabled()) log.debug("sendOutgoingStream(stream=" + is);
 
     OutputStream os = null;
-    byte[] buf = null;
+    byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
     int len = 0;
     
     try {
       
-      buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
-      os = response.getOutputStream();
+      // Evaluate offset, length, etc.
+      rangeRequest.evaluateByteRange(is);
       
       // Position the stream to the given offset
       if (rangeRequest.isValid()) {
@@ -307,6 +307,7 @@ public abstract class HHttpServlet extends HttpServlet implements
 
       // Before setting headers, read the first bytes to return. 
       // This makes sure that the stream can be read before the response code is set to 200 or 206.
+      // Furthermore, if the stream is a BContentStreamWrapper, it calls ensureStream() which initializes the stream properties (contentLength, ....)
       len = is.read(buf);
       
       // Always return Content-Type and Content-Disposition 
@@ -319,11 +320,12 @@ public abstract class HHttpServlet extends HttpServlet implements
       }
 
       // Set headers Accept-Ranges, Content-Range, ETAG, Content-Length,...
-      rangeRequest.setResponseHeaders(response, is.getTargetId().toString());
+      rangeRequest.setResponseHeaders(response);
       
       // Copy bytes to socket -------------
       long bytesWritten = 0;
-      while (len != -1 && bytesWritten < rangeRequest.getLength()) {
+      os = response.getOutputStream();
+      while (len != -1) {
         
         // Browsers use to send a "Range: 123-" header only with an start offset but without an end offset. 
         // If the user e.g. changes the play position of a video, the browser resets the socket and 
@@ -334,7 +336,12 @@ public abstract class HHttpServlet extends HttpServlet implements
         
         bytesWritten += len;
 
-        int bytesToRead = (int)Math.min(rangeRequest.getLength() - bytesWritten, buf.length);
+        int bytesToRead = buf.length;
+        if (rangeRequest.getLength() != -1) {
+          bytesToRead = (int)Math.min(rangeRequest.getLength() - bytesWritten, buf.length);
+        }
+        
+        if (bytesToRead == 0) break;
         len = is.read(buf, 0, bytesToRead);
       }
       
@@ -459,10 +466,9 @@ public abstract class HHttpServlet extends HttpServlet implements
       // Range: bytes=0-
       // Range: bytes=64312833-64657026
 
-      final BContentStream stream = doGetStream(serverIdStr, messageIdStr,
-          streamIdStr);
+      final BContentStream stream = doGetStream(serverIdStr, messageIdStr, streamIdStr);
 
-      HRangeRequest rangeRequest = HRangeRequest.parse(request, stream.getContentLength(), stream.positionSupported());
+      HRangeRequest rangeRequest = new HRangeRequest(request);
       
       sendOutgoingStream(stream, response, rangeRequest);
     }

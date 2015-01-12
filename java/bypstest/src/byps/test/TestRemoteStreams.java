@@ -203,7 +203,7 @@ public class TestRemoteStreams {
     for (int i = 0; i < nbOfStreams; i++) {
       InputStream istrm = new ByteArrayInputStream(streamBytes.get(i));
       InputStream istrmR = istrmsR.get(i);
-      TestUtils.assertEquals(log, "stream", istrm, istrmR);
+      TestUtils.assertEquals(log, "stream-" +i , istrm, istrmR);
       istrmR.close();
     }
   }
