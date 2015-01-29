@@ -17,8 +17,8 @@ namespace byps
 
     public class LogConfig
     {
-        public LogLevel level = LogLevel.DEBUG;
-        public String fileName = @"d:\temp\log\cs-client.log";
+        public LogLevel level = LogLevel.ERROR;
+        public String fileName = "";
     }
 
     public interface ILogWriter
