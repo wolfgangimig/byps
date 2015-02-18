@@ -1257,14 +1257,19 @@ public abstract class HHttpServlet extends HttpServlet implements
    */
   protected synchronized HSession getFirstBypsSessionFromHttpSession(
       HttpSession hsess) {
-    HHttpSessionObject sessObj = (HHttpSessionObject) hsess
-        .getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
     HSession ret = null;
-    if (sessObj != null) {
-      ret = sessObj.getFirstSessionOrNull();
+    try {
+      HHttpSessionObject sessObj = (HHttpSessionObject) hsess
+          .getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+      if (sessObj != null) {
+        ret = sessObj.getFirstSessionOrNull();
+      }
+      if (ret == null) {
+        hsess.invalidate();
+      }
     }
-    if (ret == null) {
-      hsess.invalidate();
+    catch (IllegalStateException ignored) {
+      // HttpSession could be already invalidated.
     }
     return ret;
   }
