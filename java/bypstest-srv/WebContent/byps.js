@@ -1278,7 +1278,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	this.isReloginException = function(ex, typeId) {
 		var ret = false;
 		if (ex && ex.code) {
-			ret = ex.code == byps.BExceptionC.UNAUTHORIZED;
+			ret = ex.code == byps.BExceptionC.UNAUTHORIZED || byps.BExceptionC.CLIENT_DIED;
 		}
 		return ret;
 	};
