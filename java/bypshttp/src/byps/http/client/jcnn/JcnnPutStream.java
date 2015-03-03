@@ -1,6 +1,5 @@
 package byps.http.client.jcnn;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,6 +17,7 @@ import byps.BException;
 import byps.BExceptionC;
 import byps.BWire;
 import byps.BWire.OutputStreamByteCount;
+import byps.io.ByteArrayInputStream;
 
 public class JcnnPutStream extends JcnnRequest {
   

@@ -1,7 +1,7 @@
 package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import byps.io.ByteArrayInputStream;
+import byps.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

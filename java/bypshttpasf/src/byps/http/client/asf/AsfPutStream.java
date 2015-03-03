@@ -1,6 +1,5 @@
 package byps.http.client.asf;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -21,6 +20,7 @@ import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.io.ByteArrayInputStream;
 
 public class AsfPutStream extends AsfRequest {
   
