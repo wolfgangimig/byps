@@ -45,7 +45,7 @@ public class ByteArrayOutputStream extends OutputStream {
   public void writeTo(OutputStream out) throws IOException {
     byte[] buf = bbuf.array();
     int offs = 0;
-    int len = bbuf.limit();
+    int len = bbuf.position();
     out.write(buf, offs, len);
   }
 
