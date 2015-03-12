@@ -93,7 +93,7 @@ public class HConstants {
    * not handle HTTP authentication. The lifetime of such an half-life session 
    * is given by this value.
    */
-  public final static int MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED = 10;
+  public final static int MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED = 60;
   
   /**
    * Retry pause time when connection to server fails.
