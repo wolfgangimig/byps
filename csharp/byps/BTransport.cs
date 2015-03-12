@@ -472,16 +472,36 @@ namespace byps
         public void negotiateProtocolClient(BAsyncResultIF<Boolean> asyncResult)
         {
             if (log.isDebugEnabled()) log.debug("negotiateProtocolClient(");
+            if (log.isDebugEnabled()) log.debug("negotiateActive=" + negotiateActive);
 
             // Check that we do not run into recursive authentication requests.
-            if (Interlocked.CompareExchange(ref negotiateActive, 1, 0) != 0) 
+            lock(asyncResultsWaitingForAuthentication) 
             {
-                BException ex = new BException(BExceptionC.FORBIDDEN,
-                    "Authentication procedure failed. Server returned 401 for every request. "
-                    + "A common reason for this error is slow authentication handling.");
-                // ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
-                asyncResult.setAsyncResult(false, ex);
-                return;
+                // Already have an active negotiation request?
+                if (negotiateActive)
+                {
+                    // Are there threads waiting?
+                    if (asyncResultsWaitingForAuthentication.Count != 0)
+                    {
+                        // Most likely slow or recursive authentication 
+                        BException ex = new BException(BExceptionC.FORBIDDEN,
+                            "Authentication procedure failed. Server returned 401 for every request. "
+                            + "A common reason for this error is slow authentication handling.");
+                        // ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
+                        asyncResult.setAsyncResult(false, ex);
+                        return;
+                    }
+                    else
+                    {
+                        // Correction: if no threads are waiting then there cannot be an aktive negotiation request.
+                        negotiateActive = true;
+                    }
+                }
+                else
+                {
+                    // Now, this is the active negotiation request.
+                    negotiateActive = true;
+                }
             }
 
 
@@ -603,13 +623,20 @@ namespace byps
 
                 List<BAsyncResultIF<bool>> copyResults = null;
                 lock (transport.asyncResultsWaitingForAuthentication) {
+
                     copyResults = new List<BAsyncResultIF<bool>>(transport.asyncResultsWaitingForAuthentication);
                     transport.asyncResultsWaitingForAuthentication.Clear();
-                    transport.lastAuthenticationTime = DateTime.Now.Ticks / 10000;
+                    transport.lastAuthenticationTime = DateTime.Now;
                     transport.lastAuthenticationException = ex;
+
+                    // Now, the authentication is assumed to be valid for RETRY_AUTHENTICATION_AFTER_SECONDS.
+                    // If there are threads currently waiting at (1), they will not trigger an authentication
+                    // but will set the result immediately.
+
+                    if (log.isDebugEnabled()) log.debug("reset negotiateActive");
+                    transport.negotiateActive = false;
                 }
 
-                transport.negotiateActive = 0;
 
                 if (log.isDebugEnabled()) log.debug("Call setAsyncResult for collected result objects, #=" + copyResults.Count);
                 for (int i = 0; i < copyResults.Count; i++)
@@ -636,7 +663,8 @@ namespace byps
                 bool assumeAuthenticationIsValid = false;
                 lock (asyncResultsWaitingForAuthentication)
                 {
-                    assumeAuthenticationIsValid = lastAuthenticationTime + RETRY_AUTHENTICATION_AFTER_MILLIS >= DateTime.Now.Ticks / 10000;
+                    DateTime authenticationValidUntil = lastAuthenticationTime.AddMilliseconds(RETRY_AUTHENTICATION_AFTER_MILLIS);
+                    assumeAuthenticationIsValid = authenticationValidUntil >= DateTime.Now;
                     if (!assumeAuthenticationIsValid)
                     {
                         first = asyncResultsWaitingForAuthentication.Count == 0;
@@ -680,7 +708,7 @@ namespace byps
                 authentication = auth;
                 asyncResultsWaitingForAuthentication.Clear();
                 lastAuthenticationException = null;
-                lastAuthenticationTime = 0;
+                lastAuthenticationTime = new DateTime(0);
             }
         }
 
@@ -692,7 +720,7 @@ namespace byps
         /**
         * Sytem millis when authentication was perfomed the last time.
         */
-        internal long lastAuthenticationTime = 0;
+        internal DateTime lastAuthenticationTime = new DateTime(0);
   
         /**
         * Exception received from the last authentication.
@@ -708,7 +736,7 @@ namespace byps
         /**
          * This member is not null, if a negotiate request is currently active.
          */
-        private int negotiateActive;
+        private bool negotiateActive;
 
         private Log log = LogFactory.getLog(typeof(BTransport));
     }
