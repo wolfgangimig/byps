@@ -68,7 +68,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   public void done() {
     if (log.isDebugEnabled()) log.debug("done(" + this);
     HttpURLConnection c = conn.getAndSet(null);
-    if (c != null) {
+    if (c != null && isCloseConnectionAfterRequest()) {
       if (log.isDebugEnabled()) log.debug("disconnect");
       try {
         c.disconnect();
@@ -127,5 +127,21 @@ public abstract class JcnnRequest implements HHttpRequest {
       }
     }
   }
+  
+  /**
+   * Soll HttpURLConnection.disconnect zum Abschluss der Anfrage aufgerufen werden.
+   * Meinen Untersuchungen nach macht es zumindest unter Windows keinen Unterschied. 
+   * Die javadoc zu Android verlangt aber ein disconnect().
+   * @return
+   */
+  private boolean isCloseConnectionAfterRequest() {
+    if (closeConnectionAfterRequest == null) {
+      String s = System.getProperty("de.elo.ix.closeConnectionAfterRequest", "true");
+      closeConnectionAfterRequest = new Boolean(Boolean.parseBoolean(s));
+    }
+    return closeConnectionAfterRequest.booleanValue();
+  }
+  
+  private Boolean closeConnectionAfterRequest;
   
 }
