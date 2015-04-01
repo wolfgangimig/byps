@@ -9,6 +9,8 @@ import java.nio.channels.ReadableByteChannel;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
@@ -17,9 +19,11 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import byps.BAsyncResult;
+import byps.BBufferJson;
 import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BWire;
 import byps.io.ByteArrayInputStream;
 
 public class AsfPutStream extends AsfRequest {
@@ -183,6 +187,7 @@ public class AsfPutStream extends AsfRequest {
       throw new BException(BExceptionC.CANCELLED, "");
     }
     
+    InputStream is = null;
     CloseableHttpResponse response = null;
     
     try {
@@ -208,8 +213,41 @@ public class AsfPutStream extends AsfRequest {
         throw new IOException("HTTP status " + statusCode);
       }
       
+      
+      HttpEntity entity = response.getEntity();
+      
+      boolean gzip = false;
+      {
+        Header header = entity.getContentEncoding();
+        if (header != null) {
+          String enc = header.getValue();
+          gzip = enc != null && enc.equals("gzip");
+        }
+      }
+
+      is = entity.getContent();
+
+      if (log.isDebugEnabled()) log.debug("read stream");
+      ByteBuffer obuf = BWire.bufferFromStream(is, gzip);
+      if (log.isDebugEnabled()) {
+        log.debug("received #bytes=" + obuf.remaining());
+        obuf.mark();
+        BBufferJson bbuf2 = new BBufferJson(obuf);
+        log.debug(bbuf2.toDetailString());
+        obuf.reset();
+      }
+
+      is = null;
+ 
     }
     finally {
+      if (is != null) {
+        try {
+          is.close();
+        }
+        catch (IOException e) {
+        }
+      }
       if (response != null) {
         try {
           response.close();
