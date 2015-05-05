@@ -12,6 +12,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import byps.BAsyncResult;
@@ -25,8 +26,8 @@ public class AsfGet extends AsfRequest {
   private static Log log = LogFactory.getLog(AsfGet.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
   
-  protected AsfGet(String url, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient) {
-    super(url, httpClient);
+  protected AsfGet(String url, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
+    super(url, httpClient, context);
     this.asyncResult = asyncResult;
   }
 
@@ -47,7 +48,7 @@ public class AsfGet extends AsfRequest {
       request.setHeader("Accept", "application/json, application/byps, text/plain, text/html");
       request.setHeader("Accept-Encoding", "gzip");
 
-      response = httpClient.execute(request);
+      response = httpClient.execute(request, context);
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK) {

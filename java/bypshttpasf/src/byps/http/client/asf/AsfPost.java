@@ -12,6 +12,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -29,8 +30,8 @@ public class AsfPost extends AsfRequest {
   private final ByteBuffer buf;
   private final BAsyncResult<ByteBuffer> asyncResult;
   
-  protected AsfPost(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient) {
-    super(url, httpClient);
+  protected AsfPost(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
+    super(url, httpClient, context);
     this.buf = buf;
     this.asyncResult = asyncResult;
   }

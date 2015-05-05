@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import byps.http.client.HHttpRequest;
@@ -15,8 +16,9 @@ import byps.http.client.HHttpRequest;
 public abstract class AsfRequest implements HHttpRequest {
 
   protected AtomicReference<HttpURLConnection> conn = new AtomicReference<HttpURLConnection>();
-  protected String url;
-  protected CloseableHttpClient httpClient;
+  protected final String url;
+  protected final CloseableHttpClient httpClient;
+  protected final HttpClientContext context;
   protected volatile HttpRequestBase request;
   protected int connectTimeoutSeconds;
   protected int sendRecvTimeoutSeconds;
@@ -28,9 +30,10 @@ public abstract class AsfRequest implements HHttpRequest {
    */
   private int responseCode = -1;
 
-  protected AsfRequest(String url, CloseableHttpClient httpClient) {
+  protected AsfRequest(String url, CloseableHttpClient httpClient, HttpClientContext context) {
     this.url = url;
     this.httpClient = httpClient;
+    this.context = context;
   }
 
   @Override
