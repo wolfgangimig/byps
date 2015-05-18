@@ -23,9 +23,10 @@ public class CodePrinter {
 	
 	public CodePrinter(OutputStream os, boolean utf8) throws IOException {
 		if (utf8) {
-			os.write((byte)0xEF);
-			os.write((byte)0xBB);
-			os.write((byte)0xBF);
+			os.write(0xEF);
+			os.write(0xBB);
+			os.write(0xBF);
+			os.flush();
 		}
 		OutputStreamWriter wr = utf8 ? new OutputStreamWriter(os, "UTF-8") : new OutputStreamWriter(os); 
 		this.pr = new PrintWriter(wr);

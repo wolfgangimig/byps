@@ -35,7 +35,7 @@ public class ByteArrayOutputStream extends OutputStream {
   }
 
   public void write(int b) {
-    ensureAdd(1).put((byte) 1);
+    ensureAdd(1).put((byte)(b & 0xFF));
   }
 
   public void write(byte b[], int off, int len) {
