@@ -623,10 +623,9 @@ namespace byps { namespace http { namespace winhttp {
 
     std::chrono::milliseconds timeout(100 * 1000);
 
-    if (request->waitForReadComplete.wait_for(lock, timeout, [this](){ 
+    if (!request->waitForReadComplete.wait_for(lock, timeout, [this](){ 
       return request->ex || request->bufferLimit < 0 || request->bufferPos < request->bufferLimit; 
-    }) 
-      == std::cv_status::timeout) {
+    })) {
 
         request->ex = BException(BExceptionC::TIMEOUT, L"Read timeout");
         throw request->ex;
