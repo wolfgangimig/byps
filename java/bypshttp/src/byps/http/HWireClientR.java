@@ -244,9 +244,10 @@ public class HWireClientR extends BWire {
         // Notify the caller of send() with an exception.
         bex = new BException(BExceptionC.CLIENT_DIED, "", innerException);
       }
+
+      asyncResult.setAsyncResult(null, bex);
     }
     
-    asyncResult.setAsyncResult(null, bex);
   }
   
   /**
