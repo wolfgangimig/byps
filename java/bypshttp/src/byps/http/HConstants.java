@@ -105,4 +105,11 @@ public class HConstants {
   
   
   public final static int DEFAULT_INACTIVE_SECONDS_AUTHENTICATED = 10 * 60;
+
+  /**
+   * Send response header Keep-Alive: timeout=...
+   * The timeout value is read from the system property "byps.keepAliveTimeoutSeconds".
+   * if the system property is not set, the Keep-Alive header is not sent.
+   */
+  public static final String RESPONSE_HEADER_KEEP_ALIVE_TIMEOUT = "byps.keepAliveTimeoutSeconds";
  }

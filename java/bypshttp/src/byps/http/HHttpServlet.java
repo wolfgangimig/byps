@@ -68,6 +68,26 @@ public abstract class HHttpServlet extends HttpServlet implements
    */
   public HHttpServlet() {
     if (log.isDebugEnabled()) log.debug("BHttpServlet()");
+    
+    // Get Keep-Alive header value.
+    httpHeaderkeepAliveTimeout = getBypsHeaderKeepAliveFromSystemProperty();
+  }
+
+  private static Integer getBypsHeaderKeepAliveFromSystemProperty() {
+    Integer httpHeaderkeepAliveTimeout = null;
+    String prop = System.getProperty(HConstants.RESPONSE_HEADER_KEEP_ALIVE_TIMEOUT);
+    if (prop != null && prop.length() != 0) {
+      try {
+        httpHeaderkeepAliveTimeout = Integer.parseInt(prop); 
+        if (httpHeaderkeepAliveTimeout < 0) {
+          throw new IllegalStateException();
+        }
+      }
+      catch (Exception e) {
+        log.error("Property must be a positive integer: " + HConstants.RESPONSE_HEADER_KEEP_ALIVE_TIMEOUT + "=" + prop);
+      }
+    }
+    return httpHeaderkeepAliveTimeout;
   }
 
   /**
@@ -502,7 +522,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         .getTransport().getWire().getStream(targetId) : getActiveMessages()
         .getOutgoingStream(targetId);
 
-    // Session verlängern. Wichtig für den Download sehr großer Dateien.
+    // Session verlï¿½ngern. Wichtig fï¿½r den Download sehr groï¿½er Dateien.
     final HActiveMessage msg = getActiveMessages().getActiveMessage(messageId);
     final String sessionId = msg != null ? msg.getSessionId() : null;
     final HSession sess = sessionId != null ? HSessionListener.getAllSessions()
@@ -786,8 +806,8 @@ public abstract class HHttpServlet extends HttpServlet implements
               .getTargetId(), ibuf, asyncResponse);
 
           // Teile dem Reverse-Client das ausgehandelte Protokoll mit.
-          // Server und ClientR müssen dasselbe Protokoll verwenden, andernfalls
-          // bräuchten sie separate Sessions
+          // Server und ClientR mï¿½ssen dasselbe Protokoll verwenden, andernfalls
+          // brï¿½uchten sie separate Sessions
 
           BClient clientR = sess.getClientR();
           if (clientR != null) {
@@ -874,7 +894,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         final HActiveMessage msg = getActiveMessages().addIncomingStream(
             targetId, rctxt);
 
-        // Session verlängern. Wichtig für den Upload sehr großer Dateien.
+        // Session verlï¿½ngern. Wichtig fï¿½r den Upload sehr groï¿½er Dateien.
         final String sessionId = msg.getSessionId();
         final HSession sess = sessionId != null ? HSessionListener
             .getAllSessions().get(sessionId) : null;
@@ -1094,6 +1114,11 @@ public abstract class HHttpServlet extends HttpServlet implements
     Throwable ex = null;
 
     try {
+      
+      if (httpHeaderkeepAliveTimeout != null) {
+        response.addHeader("Connection", "Keep-Alive");
+        response.addHeader("Keep-Alive", "timeout=" + httpHeaderkeepAliveTimeout);
+      }
 
       super.service(request, response);
       status = response.getStatus();
@@ -1280,6 +1305,7 @@ public abstract class HHttpServlet extends HttpServlet implements
   private volatile HActiveMessages activeMessages_use_getActiveMessages;
   private HCleanupResources cleanupThread;
   private AtomicBoolean isInitialized = new AtomicBoolean();
+  private final Integer httpHeaderkeepAliveTimeout;
 
   private final static HServerListener defaultListener = new HServerListener() {
     @Override
