@@ -84,6 +84,7 @@ public class HTargetIdFactory {
   	  
       try {
         Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding", "SunJCE");
+        //Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
         cipher.init(encryptNotDecrypt ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE, key, ivkey);
         byte[] bytes = cipher.doFinal(buf.array());
         
