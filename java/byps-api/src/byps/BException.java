@@ -38,9 +38,13 @@ public class BException extends byps.RemoteException {
       this.msg = msg;
       this.details = ex.getMessage();
 	  }
-	  else {
+	  else if (ex != null) {
       this.msg = ex.toString();
       this.details = "";
+	  }
+	  else {
+	    this.msg = "";
+	    this.details = "";
 	  }
 	}
 	
