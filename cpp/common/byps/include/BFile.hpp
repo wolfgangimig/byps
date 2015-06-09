@@ -56,9 +56,17 @@ namespace byps {
   }
 
   BINLINE int64_t BFile::size() const {
-    string n = getFullNameUtf8();
-    struct stat stat_buf;
-    int rc = stat(n.c_str(), &stat_buf);
+
+#ifdef _MSC_VER
+	  wstring n = getFullName();
+	  struct _stat64 stat_buf;
+	  int rc = _wstat64(n.c_str(), &stat_buf);
+#else
+	  string n = getFullNameUtf8();
+	  struct stat stat_buf;
+	  int rc = stat(n.c_str(), &stat_buf);
+#endif
+
     return rc == 0 ? stat_buf.st_size : -1;
   }
 
@@ -87,17 +95,31 @@ namespace byps {
   }
 
   byps_ptr<ifstream> BFile::open(ios_base::openmode mode) const {
-     ifstream* fstrm = new ifstream(getFullNameUtf8().c_str(), mode);
-     return byps_ptr<ifstream>(fstrm);
+#ifdef _MSC_VER
+	ifstream* fstrm = new ifstream(getFullName().c_str(), mode);
+	return byps_ptr<ifstream>(fstrm);
+#else 
+    ifstream* fstrm = new ifstream(getFullNameUtf8().c_str(), mode);
+    return byps_ptr<ifstream>(fstrm);
+#endif
   }
 
   byps_ptr<ofstream> BFile::openWrite(ios_base::openmode mode) const {
-     ofstream* fstrm = new ofstream(getFullNameUtf8().c_str(), mode);
-     return byps_ptr<ofstream>(fstrm);
+#ifdef _MSC_VER
+    ofstream* fstrm = new ofstream(getFullName().c_str(), mode);
+	return byps_ptr<ofstream>(fstrm);
+#else 
+	ofstream* fstrm = new ofstream(getFullNameUtf8().c_str(), mode);
+    return byps_ptr<ofstream>(fstrm);
+#endif
   }
 
   bool BFile::delet() const {
+#ifdef _MSC_VER
+	  bool ret = _wremove(getFullName().c_str()) == 0;
+#else
     bool ret = remove(getFullNameUtf8().c_str()) == 0;
+#endif
     return ret;
   }
 }
