@@ -24,6 +24,11 @@ public abstract class BClient {
 	 * Server side of the subscriber.
 	 */
 	protected final BServerR serverR;
+	
+	/**
+	 * Start server for reverse requests after protocol is negotiated.
+	 */
+	protected volatile boolean startR;
 		
 	/**
 	 * Constructor used by generated derived classes.
@@ -88,13 +93,21 @@ public abstract class BClient {
 	 */
 	public void start(final BAsyncResult<Boolean> asyncResult) {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
-
-		// Negotiate the protocol and authenticate.
-		// This function will call ClientAuthentication.authenticate()
-		// which starts the BServerR.
-		transport.negotiateProtocolClient(asyncResult);
-				
+		start(asyncResult, true);
 		if (log.isDebugEnabled()) log.debug(")negotiateTransportProtocol");
+	}
+	
+	/**
+	 * Start communication and maybe start reverse server.
+	 * @param asyncResult
+	 * @param startR
+	 */
+	public void start(final BAsyncResult<Boolean> asyncResult, boolean startR) {
+	  this.startR = startR;
+    // Negotiate the protocol and authenticate.
+    // This function will call ClientAuthentication.authenticate()
+    // which starts the BServerR.
+    transport.negotiateProtocolClient(asyncResult);
 	}
 	
 	/**
@@ -102,12 +115,41 @@ public abstract class BClient {
 	 * @see #start(BAsyncResult)
 	 * @throws RemoteException
 	 */
-	public void start() throws RemoteException {
-	  BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();
-	  start(asyncResult);
-	  asyncResult.getResult();
-	}
-	
+  public void start() throws RemoteException {
+    BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();
+    start(asyncResult);
+    asyncResult.getResult();
+  }
+
+  /**
+   * Start server for reverse requests.
+   * @param asyncResult if not null, this object receives a possibly thrown exception.
+   * @throws RemoteException
+   */
+  public void startR(BAsyncResult<Boolean> asyncResult) {
+    RemoteException ex = null;
+    this.startR = true;
+    try {
+      serverR.start();
+    }
+    catch (RemoteException e) {
+      ex = e;
+    }
+    if (asyncResult != null) {
+      asyncResult.setAsyncResult(ex == null, ex);
+    }
+  }
+
+  /**
+   * Start server for reverse requests.
+   * @throws RemoteException
+   */
+  public void startR() throws RemoteException {
+    BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
+    startR(syncResult);
+    syncResult.getResult();
+  }
+  
 	/**
 	 * Assign authentication functionality.
 	 * This function should be called immediately after the BClient object was created 
@@ -154,16 +196,18 @@ public abstract class BClient {
           
           if (ex == null) {
             if (serverR != null) {
-              try {
-                
-                String sessionId = getTransport().getSessionId();
-                BTargetId targetId = getTransport().getTargetId();
-                serverR.transport.setSessionId(sessionId);
-                serverR.transport.setTargetId(targetId);
-                
-                serverR.start();
-              } catch (BException ex2) {
-                ex = ex2;
+              if (startR) { // start server automatically?
+                try {
+                  
+                  String sessionId = getTransport().getSessionId();
+                  BTargetId targetId = getTransport().getTargetId();
+                  serverR.transport.setSessionId(sessionId);
+                  serverR.transport.setTargetId(targetId);
+                  
+                  serverR.start();
+                } catch (BException ex2) {
+                  ex = ex2;
+                }
               }
             }
           }
