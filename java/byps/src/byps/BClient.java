@@ -88,7 +88,12 @@ public abstract class BClient {
 	 */
 	public void start(final BAsyncResult<Boolean> asyncResult) {
 		if (log.isDebugEnabled()) log.debug("negotiateTransportProtocol(");
-		start(asyncResult, true);
+
+		// Negotiate the protocol and authenticate.
+		// This function will call ClientAuthentication.authenticate()
+		// which starts the BServerR.
+		transport.negotiateProtocolClient(asyncResult);
+				
 		if (log.isDebugEnabled()) log.debug(")negotiateTransportProtocol");
 	}
 	
@@ -104,29 +109,6 @@ public abstract class BClient {
 	}
 	
 	/**
-	 * Start client and optionally start server for reverse requests.
-	 * @param asyncResult 
-	 * @param startR
-	 */
-	public void start(final BAsyncResult<Boolean> asyncResult, boolean startR) {
-	  BAsyncResult<Boolean> outerResult = asyncResult;
-	  if (startR) {
-	    outerResult = new MyAsyncResultStartServer( asyncResult);
-	  }
-	  transport.negotiateProtocolClient(outerResult);
-	}
-	
-	/**
-	 * Start server for reverse requests.
-	 * @param asyncResult
-	 */
-	public void startR(final BAsyncResult<Boolean> asyncResult) {
-	  BAsyncResult<Boolean> outerResult = new MyAsyncResultStartServer( asyncResult);
-	  outerResult.setAsyncResult(Boolean.TRUE, null);
-	}
-	
-	/**
-	 * 
 	 * Assign authentication functionality.
 	 * This function should be called immediately after the BClient object was created 
 	 * and before the client is started by {@link BClient#start(BAsyncResult)}.
@@ -169,6 +151,23 @@ public abstract class BClient {
       
       BAsyncResult<Boolean> outerResult = new BAsyncResult<Boolean>() {
         public void setAsyncResult(Boolean ignored, Throwable ex) {
+          
+          if (ex == null) {
+            if (serverR != null) {
+              try {
+                
+                String sessionId = getTransport().getSessionId();
+                BTargetId targetId = getTransport().getTargetId();
+                serverR.transport.setSessionId(sessionId);
+                serverR.transport.setTargetId(targetId);
+                
+                serverR.start();
+              } catch (BException ex2) {
+                ex = ex2;
+              }
+            }
+          }
+          
           asyncResult.setAsyncResult(ignored, ex);
         }
       };
@@ -209,36 +208,6 @@ public abstract class BClient {
     return "[" + getClass().getSimpleName() + ", transport=" + transport.toString() + "]";
   }
 	
-  private class MyAsyncResultStartServer implements BAsyncResult<Boolean> 
-  {
-    final BAsyncResult<Boolean> innerResult;
-    
-      MyAsyncResultStartServer(BAsyncResult<Boolean> innerResult)
-      {
-          this.innerResult = innerResult;
-      }
-
-      public void setAsyncResult(Boolean ignored, Throwable ex) {
-        if (ex == null) {
-          if (serverR != null) {
-            try {
-              
-              String sessionId = getTransport().getSessionId();
-              BTargetId targetId = getTransport().getTargetId();
-              serverR.transport.setSessionId(sessionId);
-              serverR.transport.setTargetId(targetId);
-              
-              serverR.start();
-            } catch (BException ex2) {
-              ex = ex2;
-            }
-          }
-        }
-        innerResult.setAsyncResult(ex != null, ex);
-      }
-
-  }
-
   private final static Log log = LogFactory.getLog(BClient.class);
 
 }
