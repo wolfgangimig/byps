@@ -11,6 +11,7 @@ namespace byps
     {
 	    protected BTransport transportVal;
 	    protected BServerR serverR;
+        private volatile bool startRVal;
 	
 	    public BClient(BTransport transport, BServerR serverR) {
             this.transportVal = transport;
@@ -54,12 +55,15 @@ namespace byps
                         BServerR serverR = client.serverR;
                         if (serverR != null)
                         {
-                            BTargetId targetId = client.getTransport().getTargetId();
-                            String sessionId = client.getTransport().getSessionId();
-                            serverR.transport.setTargetId(targetId);
-                            serverR.transport.setSessionId(sessionId);
+                            if (client.startRVal)
+                            {
+                                BTargetId targetId = client.getTransport().getTargetId();
+                                String sessionId = client.getTransport().getSessionId();
+                                serverR.transport.setTargetId(targetId);
+                                serverR.transport.setSessionId(sessionId);
 
-                            serverR.start();
+                                serverR.start();
+                            }
                         }
                         innerResult(true, null);
                     }
@@ -74,11 +78,30 @@ namespace byps
             private readonly BClient client;
         }
 
-	    public void start(BAsyncResult<bool> asyncResult)
+	    public void start(BAsyncResult<bool> asyncResult, bool startR)
         {
+            this.startRVal = startR;
             getTransport().negotiateProtocolClient(BAsyncResultHelper.FromDelegate<bool>(asyncResult));
 	    }
 
+        public void start(BAsyncResult<bool> asyncResult)
+        {
+            start(asyncResult, true);
+        }
+
+        public void startR(BAsyncResult<bool> asyncResult)
+        {
+            this.startRVal = true;
+            MyNegoAsyncResult outerResult = new MyNegoAsyncResult(this, asyncResult);
+            outerResult.setAsyncResult(true, null);
+        }
+
+        public void startR()
+        {
+            BSyncResult<bool> syncResult = new BSyncResult<bool>();
+            startR(BAsyncResultHelper.ToDelegate(syncResult));
+            syncResult.GetResult();
+        }
 
         private class ClientAuthentication : BAuthentication
         {
