@@ -39,6 +39,7 @@ namespace byps
             this.apiDesc = rhs.apiDesc;
             this.wire = rhs.wire;
             this.targetId = targetId;
+            this.sessionId = rhs.sessionId;
             this.protocol = rhs.getProtocol();
 
             // Still connected to the server given by rhs.
