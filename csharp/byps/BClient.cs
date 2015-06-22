@@ -33,9 +33,9 @@ namespace byps
             getTransport().getWire().done();
 	    }
 	
-        private class MyNegoAsyncResult : BAsyncResultIF<bool> 
+        private class MyAsyncResultStartServer : BAsyncResultIF<bool> 
         {
-            public MyNegoAsyncResult(BClient client, BAsyncResult<bool> innerResult)
+            public MyAsyncResultStartServer(BClient client, BAsyncResult<bool> innerResult)
             {
                 this.client = client;
                 this.innerResult = innerResult;
@@ -74,10 +74,26 @@ namespace byps
             private readonly BClient client;
         }
 
-	    public void start(BAsyncResult<bool> asyncResult)
+        public void start(BAsyncResult<bool> asyncResult, bool startR)
         {
-            getTransport().negotiateProtocolClient(BAsyncResultHelper.FromDelegate<bool>(asyncResult));
-	    }
+            BAsyncResultIF<bool> outerResult = BAsyncResultHelper.FromDelegate<bool>(asyncResult);
+            if (startR)
+            {
+                outerResult = new MyAsyncResultStartServer(this, asyncResult);
+            }
+            getTransport().negotiateProtocolClient(outerResult);
+        }
+
+        public void start(BAsyncResult<bool> asyncResult)
+        {
+            start(asyncResult, true);
+        }
+
+        public void startR(BAsyncResult<bool> asyncResult)
+        {
+            BAsyncResultIF<bool> outerResult = new MyAsyncResultStartServer(this, asyncResult);
+            outerResult.setAsyncResult(true, null);
+        }
 
 
         private class ClientAuthentication : BAuthentication
@@ -94,17 +110,16 @@ namespace byps
             public void authenticate(BClient ignored, BAsyncResult<bool> asyncResult) 
             {
                 if (log.isDebugEnabled()) log.debug("authenticate(");
-                BAsyncResultIF<bool> outerResult = new MyNegoAsyncResult(client, asyncResult);
       
                 if (innerAuth != null) 
                 {
                     if (log.isDebugEnabled()) log.debug("innerAuth.authenticate");
-                    innerAuth.authenticate(client, BAsyncResultHelper.ToDelegate(outerResult));
+                    innerAuth.authenticate(client, asyncResult);
                 }
                 else 
                 {
                     if (log.isDebugEnabled()) log.debug("return true");
-                    outerResult.setAsyncResult(true, null);
+                    asyncResult(true, null);
                 }
                 if (log.isDebugEnabled()) log.debug(")authenticate");
             }
