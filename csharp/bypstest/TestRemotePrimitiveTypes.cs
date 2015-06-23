@@ -104,16 +104,26 @@ namespace bypstest
         {
             log.info("testRemotePrimitiveTypesAsync(");
 
-            BSyncResult<Object> result = new BSyncResult<Object>();
+            BSyncResult<int> result = new BSyncResult<int>();
+
             remote.SetInt(1122, (ignored, ex) =>
                 {
-                    if (ex != null) TestUtils.fail(log, ex.ToString());
-                    remote.GetInt((valueR, ex2) =>
+                    if (ex != null)
+                    {
+                        result.setAsyncResult(0, ex);
+                    }
+                    else
+                    {
+                        remote.GetInt((valueR, ex2) =>
                         {
-                            if (ex != null) TestUtils.fail(log, ex2.ToString());
-                            TestUtils.assertEquals(log, "GetInt", 1122, valueR);
+                            result.setAsyncResult(valueR, ex2);
                         });
+
+                    }
                 });
+
+            int intResult = result.GetResult();
+            TestUtils.assertEquals(log, "GetInt", 1122, intResult);
 
             log.info(")testRemotePrimitiveTypesAsync");
         }
