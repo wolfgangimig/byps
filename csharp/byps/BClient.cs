@@ -57,12 +57,7 @@ namespace byps
                         {
                             if (client.startRVal)
                             {
-                                BTargetId targetId = client.getTransport().getTargetId();
-                                String sessionId = client.getTransport().getSessionId();
-                                serverR.transport.setTargetId(targetId);
-                                serverR.transport.setSessionId(sessionId);
-
-                                serverR.start();
+                                client.internalStartR();
                             }
                         }
                         innerResult(true, null);
@@ -89,18 +84,10 @@ namespace byps
             start(asyncResult, true);
         }
 
-        public void startR(BAsyncResult<bool> asyncResult)
-        {
-            this.startRVal = true;
-            MyNegoAsyncResult outerResult = new MyNegoAsyncResult(this, asyncResult);
-            outerResult.setAsyncResult(true, null);
-        }
-
         public void startR()
         {
-            BSyncResult<bool> syncResult = new BSyncResult<bool>();
-            startR(BAsyncResultHelper.ToDelegate(syncResult));
-            syncResult.GetResult();
+            this.startRVal = true;
+            internalStartR();
         }
 
         private class ClientAuthentication : BAuthentication
@@ -184,5 +171,14 @@ namespace byps
         }
 
         private Log log = LogFactory.getLog(typeof(BClient));
+
+        private void internalStartR()
+        {
+            BTargetId targetId = getTransport().getTargetId();
+            String sessionId = getTransport().getSessionId();
+            serverR.transport.setTargetId(targetId);
+            serverR.transport.setSessionId(sessionId);
+            serverR.start();
+        }
     }
 }

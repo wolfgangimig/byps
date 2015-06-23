@@ -86,7 +86,7 @@ public class HConstants {
   public final static String HTTP_SESSION_BYPS_SESSIONS = "BHttpServlet.Session";
 
   /**
-   * Inactive seconds before session is authenticated.
+   * Inactive seconds for non-authenticated session.
    * A J2EE session has to be created in the negotiation request to make sure,
    * that subsequent requests are directed to the same server. This
    * session is still not authenticated, if the negotiation request does
@@ -94,7 +94,12 @@ public class HConstants {
    * is given by this value.
    */
   public final static int MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED = 60;
-  
+
+  /**
+   * This option overrides MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED. 
+   */
+  public final static String OPTION_MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED = "byps.maxSecondsNotAuth";
+
   /**
    * Retry pause time when connection to server fails.
    * This value is used when connecting from one server to other servers. 
@@ -103,7 +108,9 @@ public class HConstants {
    */
   public final static long CONNECTION_RETRY_PAUSE = 60 * 1000L;
   
-  
+  /**
+   * Inactive seconds for authenticated session.
+   */
   public final static int DEFAULT_INACTIVE_SECONDS_AUTHENTICATED = 10 * 60;
 
   /**

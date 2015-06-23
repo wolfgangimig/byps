@@ -123,31 +123,23 @@ public abstract class BClient {
 
   /**
    * Start server for reverse requests.
-   * @param asyncResult if not null, this object receives a possibly thrown exception.
    * @throws RemoteException
    */
-  public void startR(BAsyncResult<Boolean> asyncResult) {
-    RemoteException ex = null;
+  public void startR() throws RemoteException {
     this.startR = true;
-    try {
-      serverR.start();
-    }
-    catch (RemoteException e) {
-      ex = e;
-    }
-    if (asyncResult != null) {
-      asyncResult.setAsyncResult(ex == null, ex);
-    }
+    internalStartR();
   }
 
   /**
    * Start server for reverse requests.
    * @throws RemoteException
    */
-  public void startR() throws RemoteException {
-    BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
-    startR(syncResult);
-    syncResult.getResult();
+  private void internalStartR() throws BException {
+    String sessionId = getTransport().getSessionId();
+    BTargetId targetId = getTransport().getTargetId();
+    serverR.transport.setSessionId(sessionId);
+    serverR.transport.setTargetId(targetId);
+    serverR.start();
   }
   
 	/**
@@ -198,13 +190,7 @@ public abstract class BClient {
             if (serverR != null) {
               if (startR) { // start server automatically?
                 try {
-                  
-                  String sessionId = getTransport().getSessionId();
-                  BTargetId targetId = getTransport().getTargetId();
-                  serverR.transport.setSessionId(sessionId);
-                  serverR.transport.setTargetId(targetId);
-                  
-                  serverR.start();
+                  internalStartR();
                 } catch (BException ex2) {
                   ex = ex2;
                 }

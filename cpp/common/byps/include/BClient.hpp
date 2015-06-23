@@ -58,9 +58,9 @@ namespace byps {
     }
   };
 
-  BINLINE void BClient::start(function<void (bool, BException)> asyncResult) {
+  BINLINE void BClient::start(function<void (bool, BException)> asyncResult, bool startR) {
     PAsyncResult outerResult = new BClientStart_BAsyncResultT(asyncResult);
-    internalStart(outerResult);
+    internalStart(outerResult, startR);
   }
 
 #else
@@ -71,9 +71,9 @@ namespace byps {
 
 #endif
 
-  BINLINE void BClient::start() {
+  BINLINE void BClient::start(bool startR) {
     BSyncResultT<PClient> syncResult;
-    internalStart(&syncResult);
+    internalStart(&syncResult, startR);
     syncResult.getResult();
   }
 
@@ -100,14 +100,8 @@ namespace byps {
           internalSetAsyncResult(result);
         }
         else {
-          if (client->serverR) {
-
-            BTargetId targetId = client->getTransport()->getTargetId();
-            string sessionId = client->getTransport()->getSessionId();
-            client->serverR->transport->setTargetId(targetId);
-            client->serverR->transport->setSessionId(sessionId);
-
-            client->serverR->start();
+          if (client->serverR && client->startRVal) {
+			  client->internalStartR();
           }
           internalSetAsyncResult(result);
         }
@@ -194,11 +188,12 @@ namespace byps {
   };
 
   BINLINE BClient::BClient(PTransport transport, PServerR serverR)
-    : transport(transport), serverR(serverR) {
+	  : transport(transport), serverR(serverR), startRVal(true) {
   }
 
-  BINLINE void BClient::internalStart(PAsyncResult asyncResult) {
-  
+  BINLINE void BClient::internalStart(PAsyncResult asyncResult, bool startR) {
+	this->startRVal = startR;
+
     if (!transport->hasAuthentication()) {
       setAuthentication(PAuthentication());
     }
@@ -206,6 +201,13 @@ namespace byps {
     getTransport()->negotiateProtocolClient(asyncResult);
   }
 
+  BINLINE void BClient::internalStartR() {
+	  BTargetId targetId = getTransport()->getTargetId();
+	  string sessionId = getTransport()->getSessionId();
+	  serverR->transport->setTargetId(targetId);
+	  serverR->transport->setSessionId(sessionId);
+	  serverR->start();
+  }
 
   BINLINE void BClient::setAuthentication(PAuthentication innerAuth) {
     getTransport()->setAuthentication(

@@ -11,6 +11,7 @@ using namespace ::std;
 class BClient : public byps_enable_shared_from_this<BClient> {
 protected:
 	PTransport transport;
+	volatile bool startRVal;
 public:
 
     BClient(PTransport transport, PServerR serverR);
@@ -19,10 +20,10 @@ public:
     virtual PRemote getStub(int remoteId) = 0;
 	virtual PTransport getTransport();
 
-	void start();
+	void start(bool startR = true);
 
 #ifdef CPP11_LAMBDA
-    void start(function<void (bool, BException)> asyncResult);
+    void start(function<void (bool, BException)> asyncResult, bool startR = true);
 #else
 	void start(byps_ptr<BAsyncResultT<bool> > asyncResult);
 #endif
@@ -39,7 +40,8 @@ public:
 
 protected:   
 
-    virtual void internalStart(PAsyncResult asyncResult);
+    virtual void internalStart(PAsyncResult asyncResult, bool startR);
+	virtual void internalStartR();
 	static void internalDone(PClient client);
 
 	const PServerR serverR;

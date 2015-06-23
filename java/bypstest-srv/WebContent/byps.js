@@ -1531,8 +1531,17 @@ byps.BClient = function() {
 	// Implemented by subclass:
 	// this.transport;
 	// this._serverR;
+	
+	/**
+	 * Start reverse server.
+	 */
+	this._startRVal = true; 
 
-	this.start = function(asyncResult) { // BAsyncResult<BClient>
+	this.start = function(asyncResult, startR) { // BAsyncResult<BClient>
+		
+		if (startR != undefined) {
+			this._startRVal = !!startR;
+		}
 		
 		if (!this.transport.hasAuthentication()) {
 			this.setAuthentication(null);
@@ -1547,6 +1556,11 @@ byps.BClient = function() {
 
 		this.transport.negotiateProtocolClient(asyncResult, processAsync);
 	};
+	
+	this.startR = function() {
+		this._startRVal = true;
+		this._internalStartR();
+	}
 
 	this.done = function(asyncResult) {
 		this.transport.wire.done(asyncResult);
@@ -1585,15 +1599,9 @@ byps.BClient = function() {
 			  var outerResult = function(result, ex) {
 
 				  if (!ex) {
-					  if (me._serverR) {
+					  if (me._serverR && me._startRVal) {
 						  try {
-				              
-							  var sessionId = me.transport.getSessionId();
-				              var targetId = me.transport.getTargetId();
-				              me._serverR.transport.setSessionId(sessionId);
-				              me._serverR.transport.setTargetId(targetId);
-				              
-							  me._serverR.start();
+							  me._internalStartR();
 						  }
 						  catch (ex2) {
 							  ex = ex2;
@@ -1655,6 +1663,14 @@ byps.BClient = function() {
 		};
 
 		this.transport.setAuthentication(authentication);
+	};
+	
+	this._internalStartR = function() {
+		var sessionId = this.transport.getSessionId();
+		var targetId = this.transport.getTargetId();
+		this._serverR.transport.setSessionId(sessionId);
+		this._serverR.transport.setTargetId(targetId);
+		this._serverR.start();
 	};
 };
 

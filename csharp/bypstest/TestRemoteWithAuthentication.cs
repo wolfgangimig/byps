@@ -178,7 +178,7 @@ namespace bypstest
         {
             log.info("testAuthenticateTooSlow(");
 
-            int waitMillis = (60 + 1) * 1000;
+            int waitMillis = 11 * 1000;
             MyAuthenticationTooSlow auth = new MyAuthenticationTooSlow("Fritz", "abc", waitMillis);
             client.setAuthentication(auth);
 

@@ -172,7 +172,7 @@ public class TestRemoteWithAuthentication {
   public void testAuthenticateTooSlow() throws RemoteException {
     log.info("testAuthenticateTooSlow(");
     
-    long waitMillis = (HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED + 1) * 1000;
+    long waitMillis = 11 * 1000; // see BypsServlet constructor: authentication timeout reduced to 10s.
     MyAuthenticationTooSlow auth = new MyAuthenticationTooSlow("Fritz", "abc", waitMillis);
     client.setAuthentication(auth);
 

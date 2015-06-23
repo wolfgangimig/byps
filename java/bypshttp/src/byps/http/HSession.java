@@ -35,6 +35,8 @@ public abstract class HSession
   protected volatile long lastAccessTime;
   protected volatile int maxInactiveSeconds;
 
+  protected final static int MAX_INACTIVE_SECONDS_NOT_AUTH = getOptionMaxInactiveSecondsAuth(); 
+  
   /**
    * Construtor
    * @param hsess HTTP session object, can be null.
@@ -64,8 +66,7 @@ public abstract class HSession
     // Shorten the lifetime of the HTTP session, 
     // if there is no authenticated user.
     int inactiveSeconds = (remoteUser == null || remoteUser.length() == 0) ?
-        HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED :
-        HConstants.DEFAULT_INACTIVE_SECONDS_AUTHENTICATED;
+        MAX_INACTIVE_SECONDS_NOT_AUTH : HConstants.DEFAULT_INACTIVE_SECONDS_AUTHENTICATED;
     setMaxInactiveSeconds(inactiveSeconds);
     
     touch();
@@ -243,6 +244,22 @@ public abstract class HSession
 
   public HServerContext getServerContext() {
     return serverContext;
+  }
+  
+  private static int getOptionMaxInactiveSecondsAuth() {
+    int ret = HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED;
+    try {
+      String opt = System.getProperty(HConstants.OPTION_MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
+      if (opt != null && opt.length() != 0) {
+        ret = Integer.parseInt(opt);
+        if (ret <= 0) {
+          ret = HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED;
+        }
+      }
+    }
+    catch (Exception ignored) {
+    }
+    return ret;
   }
   
   private final static Log log = LogFactory.getLog(HSession.class);

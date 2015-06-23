@@ -17,6 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BApiDescriptor;
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
+import byps.http.HConstants;
 import byps.http.HFileUploadItem;
 import byps.http.HHttpServlet;
 import byps.http.HSession;
@@ -49,6 +50,12 @@ initParams = { @WebInitParam(name = "testAdapterEnabled", value = "true")
 public class BypsServlet extends HHttpServlet {
   private static final long serialVersionUID = 1L;
   private File tempDir = new File("d:\\temp\\bypssrv");
+  
+  static {
+    // Shorten the accepted duration for authentication so that some tests do not have 
+    // to wait for a long time.
+    System.setProperty(HConstants.OPTION_MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED, "10");
+  }
 
   public BypsServlet() {
     // temp. Verzeichnis für Streams
