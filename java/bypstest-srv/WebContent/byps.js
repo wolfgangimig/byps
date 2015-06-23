@@ -1558,8 +1558,10 @@ byps.BClient = function() {
 	};
 	
 	this.startR = function() {
-		this._startRVal = true;
-		this._internalStartR();
+		if (!this._startRVal) {
+			this._startRVal = true;
+			this._internalStartR();
+		}
 	}
 
 	this.done = function(asyncResult) {

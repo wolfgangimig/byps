@@ -22,6 +22,8 @@ public:
 
 	void start(bool startR = true);
 
+	void startR();
+
 #ifdef CPP11_LAMBDA
     void start(function<void (bool, BException)> asyncResult, bool startR = true);
 #else

@@ -77,6 +77,13 @@ namespace byps {
     syncResult.getResult();
   }
 
+  BINLINE void BClient::startR() {
+	  if (!startRVal) {
+		  startRVal = true;
+		  internalStartR();
+	  }
+  }
+
   class  BClient_MyNegoAsyncResult : public BAsyncResult {
     PClient client;
     PAsyncResult innerResult;

@@ -122,12 +122,14 @@ public abstract class BClient {
   }
 
   /**
-   * Start server for reverse requests.
+   * Start server for reverse requests, if it is not already started.
    * @throws RemoteException
    */
   public void startR() throws RemoteException {
-    this.startR = true;
-    internalStartR();
+    if (!this.startR) {
+      this.startR = true;
+      internalStartR();
+    }
   }
 
   /**

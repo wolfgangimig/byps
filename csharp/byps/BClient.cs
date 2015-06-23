@@ -86,8 +86,11 @@ namespace byps
 
         public void startR()
         {
-            this.startRVal = true;
-            internalStartR();
+            if (!this.startRVal)
+            {
+                this.startRVal = true;
+                internalStartR();
+            }
         }
 
         private class ClientAuthentication : BAuthentication
