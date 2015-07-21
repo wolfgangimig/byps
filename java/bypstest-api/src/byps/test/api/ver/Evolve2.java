@@ -11,4 +11,10 @@ public class Evolve2 implements Serializable {
 	public Evolve2(int n1) {
 		this.n1 = n1;
 	}
+  public int getN1() {
+    return n1;
+  }
+  public void setN1(int n1) {
+    this.n1 = n1;
+  }
 }

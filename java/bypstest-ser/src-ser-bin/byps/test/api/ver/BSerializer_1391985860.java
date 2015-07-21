@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=66
+// #members=67
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -63,6 +63,9 @@ public class BSerializer_1391985860 extends BSerializer {
 				bbuf.putLong(obj.long3);
 				bbuf.putShort(obj.short3);
 				bbuf.putString(obj.str3);
+				if (version >= 793L) {
+					bbuf.putInt(obj.since793);
+				}
 			}
 		}
 		bout.writeObj(obj.bools1, false, byps.test.api.BSerializer_2058423690.instance);
@@ -146,6 +149,9 @@ public class BSerializer_1391985860 extends BSerializer {
 				obj.long3 = bbuf.getLong();
 				obj.short3 = bbuf.getShort();
 				obj.str3 = bbuf.getString();
+				if (version >= 793L) {
+					obj.since793 = bbuf.getInt();
+				}
 			}
 		}
 		obj.bools1 = (boolean[])bin.readObj(false, byps.test.api.BSerializer_2058423690.instance);

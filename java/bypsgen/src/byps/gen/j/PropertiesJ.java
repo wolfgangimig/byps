@@ -54,6 +54,10 @@ public class PropertiesJ extends GeneratorProperties {
    */
   public final static String GENERATE_UTF8_SOURCE = "-genj.utf8";
   
+  /**
+   * Generate JUnit tests to ensure compatibility between API versions.
+   */
+  public final static String DEST_DIR_TEST = "-genj.dir-test";
 	
 	/**
 	 * Constructor

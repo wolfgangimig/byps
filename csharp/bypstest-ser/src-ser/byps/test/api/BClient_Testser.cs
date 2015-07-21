@@ -21,6 +21,10 @@ namespace byps.test.api
 			return this;
 		}
 		
+		public virtual byps.test.api.comp.IncompatibleChangeIF IncompatibleChangeIF
+		{
+			get { return incompatibleChangeIFVal; }
+		}
 		public virtual byps.test.api.inherit.BioFruitServiceAuth BioFruitService
 		{
 			get { return bioFruitServiceVal; }
@@ -111,6 +115,7 @@ namespace byps.test.api
 		}
 		
 		public override BRemote getStub(int remoteId) {
+			if (remoteId == 88979576) return incompatibleChangeIFVal;
 			if (remoteId == 363642571) return bioFruitServiceVal;
 			if (remoteId == 474058508) return bioLemonServiceVal;
 			if (remoteId == 715959905) return fruitServiceVal;
@@ -153,6 +158,7 @@ namespace byps.test.api
 			initStubs(transportVal);
 		}
 		
+		protected byps.test.api.comp.IncompatibleChangeIF incompatibleChangeIFVal;
 		protected byps.test.api.inherit.BioFruitServiceAuth bioFruitServiceVal;
 		protected byps.test.api.inherit.BioLemonServiceAuth bioLemonServiceVal;
 		protected byps.test.api.inherit.FruitServiceAuth fruitServiceVal;
@@ -177,6 +183,7 @@ namespace byps.test.api
 		protected byps.test.api.ver.EvolveIF evolveIFVal;
 		
 		private void initStubs(BTransport transport) {
+			incompatibleChangeIFVal = new byps.test.api.comp.BStub_IncompatibleChangeIF(transport);
 			bioFruitServiceVal = new byps.test.api.inherit.BStub_BioFruitService(transport);
 			bioLemonServiceVal = new byps.test.api.inherit.BStub_BioLemonService(transport);
 			fruitServiceVal = new byps.test.api.inherit.BStub_FruitService(transport);

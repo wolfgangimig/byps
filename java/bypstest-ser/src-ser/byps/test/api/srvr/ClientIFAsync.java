@@ -12,30 +12,30 @@ public interface ClientIFAsync extends BRemote,
 	ClientIF {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public int incrementInt(int a) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void incrementInt(int a, final BAsyncResult<Integer> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getStreams(int ctrl, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public ChatStructure sendChat(ChatStructure cs) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void sendChat(ChatStructure cs, final BAsyncResult<ChatStructure> asyncResult) ;
 	
 	

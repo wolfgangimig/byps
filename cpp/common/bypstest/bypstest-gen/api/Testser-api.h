@@ -312,6 +312,26 @@ namespace byps {
 			} // byps::test::api::auth
 			
 			//--------------------------------------------------------
+			// Forward Definitions for Namespace byps::test::api::comp
+			//--------------------------------------------------------
+			
+			namespace comp {
+			
+				// byps.test.api.comp.BStub_IncompatibleChangeIF
+				class BStub_IncompatibleChangeIF; 
+				typedef byps_ptr< BStub_IncompatibleChangeIF > PStub_IncompatibleChangeIF; 
+				
+				// byps.test.api.comp.IncompatibleChangeInfo
+				class IncompatibleChangeInfo; 
+				typedef byps_ptr< IncompatibleChangeInfo > PIncompatibleChangeInfo; 
+				
+				// byps.test.api.comp.IncompatibleChangeIF
+				class IncompatibleChangeIF; 
+				typedef byps_ptr< IncompatibleChangeIF > PIncompatibleChangeIF; 
+				
+			} // byps::test::api::comp
+			
+			//--------------------------------------------------------
 			// Forward Definitions for Namespace byps::test::api::cons
 			//--------------------------------------------------------
 			
@@ -979,6 +999,37 @@ class SessionInfo : public BSerializable {
 	public: SessionInfo();
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: SessionInfo(const ::std::wstring& sessionID);	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:872
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
+// IncompatibleChangeInfo
+// typeId=1107425749
+
+namespace byps { namespace test { namespace api { namespace comp { 
+
+using namespace ::byps;
+
+/// <summary>
+/// Class with incompatible changes.
+/// </summary>
+/// <remarks>
+/// This class has in API version 793 an int member.
+/// In version 794, this member was changed to String.
+/// Serializing this API from 793 to 794 cause an exception.
+/// </remarks>
+class IncompatibleChangeInfo : public BSerializable {
+	public: int32_t intValueChangedToString;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: IncompatibleChangeInfo();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: IncompatibleChangeInfo(int32_t intValueChangedToString);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	// checkpoint byps.gen.cpp.GenApiClass:872
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -1756,11 +1807,12 @@ class Evolve : public BSerializable {
 	public: byps::PVectorInteger list3;
 	public: byps::PSetInteger set3;
 	public: byps::PMapIntegerInteger map3;
+	public: int32_t since793;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: Evolve();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const PArrayBoolean& bools1, const PBytes& bytes1, const PArrayChar& chars1, const PArrayShort& shorts1, const PArrayInt& ints1, const PArrayLong& longs1, const PArrayFloat& floats1, const PArrayDouble& doubles1, const ::std::wstring& str1, const PSerializable& obj1, const PEvolve2& evo1, const byps::PVectorInteger& list1, const byps::PSetInteger& set1, const byps::PMapIntegerInteger& map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, const PArrayBoolean& bools2, const PBytes& bytes2, const PArrayChar& chars2, const PArrayShort& shorts2, const PArrayInt& ints2, const PArrayLong& longs2, const PArrayFloat& floats2, const PArrayDouble& doubles2, const ::std::wstring& str2, const PSerializable& obj2, const PEvolve2& evo2, const byps::PVectorInteger& list2, const byps::PSetInteger& set2, const byps::PMapIntegerInteger& map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, const PArrayBoolean& bools3, const PBytes& bytes3, const PArrayChar& chars3, const PArrayShort& shorts3, const PArrayInt& ints3, const PArrayLong& longs3, const PArrayFloat& floats3, const PArrayDouble& doubles3, const ::std::wstring& str3, const PSerializable& obj3, const PEvolve2& evo3, const byps::PVectorInteger& list3, const byps::PSetInteger& set3, const byps::PMapIntegerInteger& map3);	
+	public: Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const PArrayBoolean& bools1, const PBytes& bytes1, const PArrayChar& chars1, const PArrayShort& shorts1, const PArrayInt& ints1, const PArrayLong& longs1, const PArrayFloat& floats1, const PArrayDouble& doubles1, const ::std::wstring& str1, const PSerializable& obj1, const PEvolve2& evo1, const byps::PVectorInteger& list1, const byps::PSetInteger& set1, const byps::PMapIntegerInteger& map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, const PArrayBoolean& bools2, const PBytes& bytes2, const PArrayChar& chars2, const PArrayShort& shorts2, const PArrayInt& ints2, const PArrayLong& longs2, const PArrayFloat& floats2, const PArrayDouble& doubles2, const ::std::wstring& str2, const PSerializable& obj2, const PEvolve2& evo2, const byps::PVectorInteger& list2, const byps::PSetInteger& set2, const byps::PMapIntegerInteger& map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, const PArrayBoolean& bools3, const PBytes& bytes3, const PArrayChar& chars3, const PArrayShort& shorts3, const PArrayInt& ints3, const PArrayLong& longs3, const PArrayFloat& floats3, const PArrayDouble& doubles3, const ::std::wstring& str3, const PSerializable& obj3, const PEvolve2& evo3, const byps::PVectorInteger& list3, const byps::PSetInteger& set3, const byps::PMapIntegerInteger& map3, int32_t since793);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	// checkpoint byps.gen.cpp.GenApiClass:872
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -1792,6 +1844,78 @@ class Evolve2 : public BSerializable {
 };
 
 }}}}
+
+//-------------------------------------------------
+// IncompatibleChangeIF
+
+namespace byps { namespace test { namespace api { namespace comp { 
+
+using namespace ::byps;
+
+/// <summary>
+/// This interface with incompatible changes.
+/// </summary>
+class IncompatibleChangeIF : public virtual BRemote {
+	
+	/// <summary>
+	/// Function with changed return type.
+	/// </summary>
+	/// <remarks>
+	/// The return type was int in version 793. In 794 it has been changed to String.
+	/// Calling this function must cause an exception.
+	/// </remarks>
+	public: virtual int32_t changedReturnType()  = 0;
+	public: virtual void changedReturnType(::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Function with changed parameter type.
+	/// </summary>
+	/// <remarks>
+	/// The parameter type was int in version 793. In 794 it has been changed to String.
+	/// Calling this function must cause an exception.
+	/// </remarks>
+	public: virtual void changedParameterType(int32_t intParamChangedToString)  = 0;
+	public: virtual void changedParameterType(int32_t intParamChangedToString, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Function with changed parameter class.
+	/// </summary>
+	/// <remarks>
+	/// The class has been incompatibly changed in version 794.
+	/// Calling this function must cause an exception.
+	/// </remarks>
+	public: virtual void changedClass(const PIncompatibleChangeInfo& param)  = 0;
+	public: virtual void changedClass(const PIncompatibleChangeInfo& param, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	
+};
+
+}}}}
+//-------------------------------------------------
+// Stub class BStub_IncompatibleChangeIF
+
+namespace byps { namespace test { namespace api { namespace comp { 
+
+using namespace ::byps;
+
+class BStub_IncompatibleChangeIF;
+typedef byps_ptr<BStub_IncompatibleChangeIF> PStub_IncompatibleChangeIF;
+
+class BStub_IncompatibleChangeIF : public BStub, public virtual IncompatibleChangeIF {
+	
+	public: BStub_IncompatibleChangeIF(PTransport transport);	
+	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	public: virtual int32_t changedReturnType() ;
+	public: virtual void changedReturnType(::std::function< void (int32_t, BException ex) > asyncResult) ;
+	public: virtual void changedParameterType(int32_t intParamChangedToString) ;
+	public: virtual void changedParameterType(int32_t intParamChangedToString, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual void changedClass(const PIncompatibleChangeInfo& param) ;
+	public: virtual void changedClass(const PIncompatibleChangeInfo& param, ::std::function< void (bool, BException ex) > asyncResult) ;
+	
+};
+}}}}
+
 
 //-------------------------------------------------
 // PlantService
@@ -1957,12 +2081,12 @@ class BStub_BioFruitService : public BStub, public virtual BioFruitServiceAuth {
 	public: BStub_BioFruitService(PTransport transport);	
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	public: virtual ::std::wstring grow() ;
-	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	public: virtual bool certify(const ::std::wstring& param) ;
 	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
 	public: virtual ::std::wstring squeeze() ;
 	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	public: virtual ::std::wstring grow() ;
+	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 };
 }}}}
@@ -2018,12 +2142,12 @@ class BStub_LemonService : public BStub, public virtual LemonServiceAuth {
 	public: BStub_LemonService(PTransport transport);	
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
+	public: virtual ::std::wstring squeeze() ;
+	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	public: virtual ::std::wstring grow() ;
 	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
 	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	public: virtual ::std::wstring squeeze() ;
-	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	
 };
 }}}}
@@ -2081,16 +2205,16 @@ class BStub_BioLemonService : public BStub, public virtual BioLemonServiceAuth {
 	public: BStub_BioLemonService(PTransport transport);	
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	public: virtual bool certify(const ::std::wstring& param) ;
-	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
-	public: virtual ::std::wstring grow() ;
-	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	public: virtual ::std::wstring squeeze() ;
 	public: virtual void squeeze(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
-	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
-	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	public: virtual ::std::wstring grow() ;
+	public: virtual void grow(::std::function< void (::std::wstring, BException ex) > asyncResult) ;
 	public: virtual int32_t useParing() ;
 	public: virtual void useParing(::std::function< void (int32_t, BException ex) > asyncResult) ;
+	public: virtual ::std::wstring pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree) ;
+	public: virtual void pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree, ::std::function< void (::std::wstring, BException ex) > asyncResult) ;
+	public: virtual bool certify(const ::std::wstring& param) ;
+	public: virtual void certify(const ::std::wstring& param, ::std::function< void (bool, BException ex) > asyncResult) ;
 	
 };
 }}}}
@@ -3489,6 +3613,15 @@ class RemoteStreams : public virtual BRemote {
 	public: virtual void getTextStream(::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
 	
 	/// <summary>
+	/// Return a large video stream to be able to test that byte ranges are correctly handled.
+	/// </summary>
+	/// <remarks>
+	/// This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
+	/// </remarks>
+	public: virtual PContentStream getVideoCheckSupportByteRange()  = 0;
+	public: virtual void getVideoCheckSupportByteRange(::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
 	/// Return stream without properties.
 	/// </summary>
 	/// <remarks>
@@ -3541,6 +3674,8 @@ class BStub_RemoteStreams : public BStub, public virtual RemoteStreams {
 	public: virtual void throwLastException(::std::function< void (bool, BException ex) > asyncResult) ;
 	public: virtual PContentStream getTextStream() ;
 	public: virtual void getTextStream(::std::function< void (PContentStream, BException ex) > asyncResult) ;
+	public: virtual PContentStream getVideoCheckSupportByteRange() ;
+	public: virtual void getVideoCheckSupportByteRange(::std::function< void (PContentStream, BException ex) > asyncResult) ;
 	public: virtual PContentStream getStreamDeferedProperies() ;
 	public: virtual void getStreamDeferedProperies(::std::function< void (PContentStream, BException ex) > asyncResult) ;
 	public: virtual void setStreamDoNotMaterialize(const PContentStream& stream) ;
@@ -3923,9 +4058,9 @@ using namespace ::byps;
 
 class BApiDescriptor_Testser { 
 	/**
-	 * API serialisation version: 0.0.0.792
+	 * API serialisation version: 0.0.0.793
 	 */
-	public: const static int64_t VERSION = 792LL;
+	public: const static int64_t VERSION = 793LL;
 	public: static PApiDescriptor instance();
 };
 
@@ -3952,6 +4087,7 @@ class BClient_Testser : public BClient {
 	
 	public: virtual ~BClient_Testser() {}
 	
+	virtual byps::test::api::comp::PIncompatibleChangeIF getIncompatibleChangeIF();	
 	virtual byps::test::api::inherit::PBioFruitServiceAuth getBioFruitService();	
 	virtual byps::test::api::inherit::PBioLemonServiceAuth getBioLemonService();	
 	virtual byps::test::api::inherit::PFruitServiceAuth getFruitService();	
@@ -3977,6 +4113,7 @@ class BClient_Testser : public BClient {
 	
 	public: virtual PRemote getStub(int remoteId);
 	
+	protected: byps::test::api::comp::PIncompatibleChangeIF incompatibleChangeIF;
 	protected: byps::test::api::inherit::PBioFruitServiceAuth bioFruitService;
 	protected: byps::test::api::inherit::PBioLemonServiceAuth bioLemonService;
 	protected: byps::test::api::inherit::PFruitServiceAuth fruitService;

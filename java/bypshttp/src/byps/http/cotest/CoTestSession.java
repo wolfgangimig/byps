@@ -1,0 +1,62 @@
+package byps.http.cotest;
+
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+import java.lang.reflect.Method;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import byps.BApiDescriptor;
+import byps.BServer;
+import byps.BTransportFactory;
+import byps.http.HServerContext;
+import byps.http.HSession;
+
+public class CoTestSession extends HSession {
+  
+  private final BServer server;
+  
+  public CoTestSession(HttpSession hsess, String remoteUser, HServerContext serverContext) {
+    super(hsess, remoteUser, serverContext);
+    if (log.isDebugEnabled()) log.debug("MySession(");
+    
+    setSessionAuthenticated();
+    
+    BApiDescriptor myDesc = CoTestProcess.getGlobalServerInstance().getApiDesc();
+    BTransportFactory transportFactory = getTransportFactory(myDesc);
+    
+    // BServer_Testser.createServer
+    try {
+      String className = myDesc.basePackage + ".BServer_" + myDesc.name;
+      Class<?> serverClass = Class.forName(className);
+      Method m = serverClass.getMethod("createServer", BTransportFactory.class);
+      server = (BServer)m.invoke(null, transportFactory);
+    }
+    catch (Exception e) {
+      throw new IllegalStateException(e);
+    }
+
+    //TestCompatibleApi_Testser.addRemotes(server);
+    try {
+      String className = myDesc.basePackage + ".TestCompatibleApi_" + myDesc.name;
+      Class<?> serverClass = Class.forName(className);
+      Method m = serverClass.getMethod("addRemotes", BServer.class);
+      m.invoke(null, server);
+    }
+    catch (Exception e) {
+      throw new IllegalStateException(e);
+    }
+
+    if (log.isDebugEnabled()) log.debug(")MySession");
+  }
+  
+  @Override
+  public BServer getServer() {
+    return server;
+  }
+
+  private final Log log = LogFactory.getLog(CoTestSession.class);
+}
+

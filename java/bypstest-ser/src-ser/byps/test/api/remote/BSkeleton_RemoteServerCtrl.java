@@ -18,11 +18,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 	
 	public final static long serialVersionUID = 1652234479L;
 	
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) {
 		try {
 			publishRemote(name, remote, fowardToOtherServers);
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) {
 		try {
 			BRemote ret = getPublishedRemote(name);
@@ -46,11 +46,11 @@ public class BSkeleton_RemoteServerCtrl extends BSkeleton implements RemoteServe
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void removePublishedRemote(java.lang.String name) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) {
 		try {
 			removePublishedRemote(name);

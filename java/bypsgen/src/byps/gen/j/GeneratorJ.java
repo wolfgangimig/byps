@@ -42,17 +42,19 @@ public class GeneratorJ implements Generator {
 		
 		buildRemotes(classDB);
 		
+		buildTests(classDB);
+		
 		log.debug(")build");
 	}
 	
-	private void buildSerials(ClassDB classDB) throws IOException {
-		Collection<SerialInfo> serials = classDB.getSerials();
-		for (SerialInfo serInfo : serials) {
-			GenApiClass.generate(pctxt, serInfo);
-			GenSerClass.generate(pctxt, serInfo, BBinaryModel.MEDIUM);
-			GenSerClass.generate(pctxt, serInfo, BBinaryModel.JSON);
-		}
-	}
+  private void buildSerials(ClassDB classDB) throws IOException {
+    Collection<SerialInfo> serials = classDB.getSerials();
+    for (SerialInfo serInfo : serials) {
+      GenApiClass.generate(pctxt, serInfo);
+      GenSerClass.generate(pctxt, serInfo, BBinaryModel.MEDIUM);
+      GenSerClass.generate(pctxt, serInfo, BBinaryModel.JSON);
+    }
+  }
 
 	private void buildRemotes(ClassDB classDB) throws IOException {
 		Collection<RemoteInfo> remotes = classDB.getRemotes();
@@ -67,6 +69,12 @@ public class GeneratorJ implements Generator {
 			GenRemoteSkeleton.generate(pctxt, rinfo);
 		}		
 	}
+	
+  private void buildTests(ClassDB classDB) throws IOException {
+    Collection<SerialInfo> serials = classDB.getSerials();
+    Collection<RemoteInfo> remotes = classDB.getRemotes();
+    GenTestCompatibleApi.generate(pctxt, serials, remotes);
+  }
 	
 	private void purgeOutputDirs() throws IOException {
 		Utils.purgeDirs(new File[] {

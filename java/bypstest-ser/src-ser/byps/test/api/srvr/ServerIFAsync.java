@@ -12,65 +12,65 @@ public interface ServerIFAsync extends BRemote,
 	ServerIF {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public int callClientIncrementInt(int v) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void setPartner(ClientIF client) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void setPartner(ClientIF client, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public ClientIF getPartner() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getPartner(final BAsyncResult<ClientIF> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getStreamsFromClient(boolean materializeOnServer, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void registerWithClientMap(int id) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void registerWithClientMap(int id, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public ClientIF getClient(int id) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getClient(int id, final BAsyncResult<ClientIF> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public int callClientParallel(int v) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void callClientParallel(int v, final BAsyncResult<Integer> asyncResult) ;
 	
 	

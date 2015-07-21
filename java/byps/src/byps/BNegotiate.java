@@ -188,6 +188,7 @@ public class BNegotiate {
     else if (bversion >= BMessageHeader.BYPS_VERSION_WITH_SESSIONID) {
       bversion = BMessageHeader.BYPS_VERSION_WITH_SESSIONID-1;
     }
+    
 	}
 	
 }

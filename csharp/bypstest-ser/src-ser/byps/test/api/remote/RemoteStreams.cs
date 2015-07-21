@@ -34,6 +34,22 @@ namespace byps.test.api.remote
 		Task<System.IO.Stream> GetTextStreamAsync();
 		
 		/// <summary>
+		/// Return a large video stream to be able to test that byte ranges are correctly handled.
+		/// </summary>
+		/// <remarks>
+		/// This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
+		/// </remarks>
+		System.IO.Stream GetVideoCheckSupportByteRange();
+		void GetVideoCheckSupportByteRange(BAsyncResult<System.IO.Stream> asyncResult) ;
+		/// <summary>
+		/// Return a large video stream to be able to test that byte ranges are correctly handled.
+		/// </summary>
+		/// <remarks>
+		/// This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
+		/// </remarks>
+		Task<System.IO.Stream> GetVideoCheckSupportByteRangeAsync();
+		
+		/// <summary>
 		/// Return stream without properties.
 		/// </summary>
 		/// <remarks>

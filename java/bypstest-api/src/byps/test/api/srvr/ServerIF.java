@@ -26,5 +26,5 @@ public interface ServerIF extends BRemote {
 	public Set<Integer> getClientIds() throws RemoteException;
 
 	public int callClientParallel(int v) throws RemoteException;
-	
+
 }

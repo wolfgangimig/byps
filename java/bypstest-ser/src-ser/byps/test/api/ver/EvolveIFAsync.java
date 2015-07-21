@@ -12,37 +12,37 @@ public interface EvolveIFAsync extends BRemote,
 	EvolveIF {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void setEvolve(Evolve obj) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public Evolve getEvolve() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getEvolve(final BAsyncResult<Evolve> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void setClient(EvolveIF partner) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public EvolveIF getClient() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getClient(final BAsyncResult<EvolveIF> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void sendEvolveToClient() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void sendEvolveToClient(final BAsyncResult<Object> asyncResult) ;
 	
 	

@@ -558,6 +558,7 @@ public class BDoclet extends Doclet {
   private static String[] bypstest_ser = new String[] {
 
   "-genj.dir-ser", "..\\bypstest-ser\\src-ser", "-genj.dir-ser-bin", "..\\bypstest-ser\\src-ser-bin", "-genj.dir-ser-json", "..\\bypstest-ser-json\\src",
+  "-genj.dir-test", "..\\bypstest-ser\\src-test",
 
   "-gencs.dir-ser", "d:\\git\\byps\\csharp\\bypstest-ser\\src-ser", "-gencs.upfirst", "true",
 

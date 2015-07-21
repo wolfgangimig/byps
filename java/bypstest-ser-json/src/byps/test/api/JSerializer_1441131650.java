@@ -46,7 +46,7 @@ public class JSerializer_1441131650 extends JSerializer_Array {
 		final byps.test.api.enu.EnumPlanets[] a0 = arr;
 		bbuf.beginArray();
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:343
+			// checkpoint byps.gen.j.PrintContext:357
 			bbuf.putInt(a0[i0] != null ? ((byps.test.api.enu.EnumPlanets)a0[i0]).ordinal() : 0);
 		}
 		bbuf.endArray();

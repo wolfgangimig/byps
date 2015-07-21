@@ -64,11 +64,13 @@ public class BApiDescriptor {
 	 * @see BNegotiate#JSON
 	 */
 	public BApiDescriptor addRegistry(BRegistry registry) {
-	  if (binaryRegistry.bmodel == registry.bmodel) {
-	    binaryRegistry.add(registry);
-	  }
-	  else {
-	    jsonRegistry.add(registry);
+	  if (registry != null) {
+  	  if (binaryRegistry.bmodel == registry.bmodel) {
+  	    binaryRegistry.add(registry);
+  	  }
+  	  else {
+  	    jsonRegistry.add(registry);
+  	  }
 	  }
 		return this;
 	}

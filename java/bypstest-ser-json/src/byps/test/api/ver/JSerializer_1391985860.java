@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=66
+// #members=67
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -59,6 +59,7 @@ public class JSerializer_1391985860 extends JSerializer_Object {
 		bbuf.putLong("long3", obj.long3);
 		bbuf.putShort("short3", obj.short3);
 		bbuf.putString("str3", obj.str3);
+		bbuf.putInt("since793", obj.since793);
 		bout.writeObj("bools1",obj.bools1, false, byps.test.api.JSerializer_2058423690.instance);
 		bbuf.putArrayByte("bytes1", obj.bytes1);
 		bout.writeObj("chars1",obj.chars1, false, byps.test.api.JSerializer_1361632968.instance);
@@ -132,6 +133,7 @@ public class JSerializer_1391985860 extends JSerializer_Object {
 		obj.long3 = js.getLong("long3");
 		obj.short3 = js.getShort("short3");
 		obj.str3 = js.getString("str3");
+		obj.since793 = js.getInt("since793");
 		obj.bools1 = (boolean[])bin.readObj("bools1", false, byps.test.api.JSerializer_2058423690.instance);
 		obj.bytes1 = js.getArrayByte("bytes1");
 		obj.chars1 = (char[])bin.readObj("chars1", false, byps.test.api.JSerializer_1361632968.instance);

@@ -1967,6 +1967,76 @@ class BResult_955752991 : public BSerializable {
 
 // checkpoint byps.gen.cpp.GenApiClass:652
 //-------------------------------------------------
+// BRequest_IncompatibleChangeIF_changedClass
+// typeId=1831430414
+
+namespace byps { namespace test { namespace api { namespace comp { 
+
+using namespace ::byps;
+
+class BRequest_IncompatibleChangeIF_changedClass : public BMethodRequest {
+	public: PIncompatibleChangeInfo param;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_IncompatibleChangeIF_changedClass();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: BRequest_IncompatibleChangeIF_changedClass(const PIncompatibleChangeInfo& param);	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:872
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
+// BRequest_IncompatibleChangeIF_changedParameterType
+// typeId=214991897
+
+namespace byps { namespace test { namespace api { namespace comp { 
+
+using namespace ::byps;
+
+class BRequest_IncompatibleChangeIF_changedParameterType : public BMethodRequest {
+	public: int32_t intParamChangedToString;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_IncompatibleChangeIF_changedParameterType();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: BRequest_IncompatibleChangeIF_changedParameterType(int32_t intParamChangedToString);	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:872
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
+// BRequest_IncompatibleChangeIF_changedReturnType
+// typeId=262583988
+
+namespace byps { namespace test { namespace api { namespace comp { 
+
+using namespace ::byps;
+
+class BRequest_IncompatibleChangeIF_changedReturnType : public BMethodRequest {
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_IncompatibleChangeIF_changedReturnType();
+	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:872
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
 // BRequest_BioFruitService_certify
 // typeId=1435417025
 
@@ -6665,6 +6735,28 @@ class BRequest_RemoteStreams_getTextStream : public BMethodRequest {
 
 // checkpoint byps.gen.cpp.GenApiClass:652
 //-------------------------------------------------
+// BRequest_RemoteStreams_getVideoCheckSupportByteRange
+// typeId=1006919505
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemoteStreams_getVideoCheckSupportByteRange : public BMethodRequest {
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_RemoteStreams_getVideoCheckSupportByteRange();
+	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:872
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
 // BRequest_RemoteStreams_setImage
 // typeId=622789839
 
@@ -7517,6 +7609,16 @@ void BSerializer_2001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase
 void BSerializer_2004(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.auth.SessionInfo
 void BSerializer_65775978(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.comp.BRequest_IncompatibleChangeIF_changedClass
+void BSerializer_1831430414(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.comp.BRequest_IncompatibleChangeIF_changedParameterType
+void BSerializer_214991897(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.comp.BRequest_IncompatibleChangeIF_changedReturnType
+void BSerializer_262583988(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.comp.BStub_IncompatibleChangeIF
+void BSerializer_88979576(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.comp.IncompatibleChangeInfo
+void BSerializer_1107425749(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.AllTypesC
 void BSerializer_930294276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.AllTypesZ
@@ -7989,6 +8091,8 @@ void BSerializer_1205766796(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_692369677(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_getTextStream
 void BSerializer_818823403(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_getVideoCheckSupportByteRange
+void BSerializer_1006919505(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImage
 void BSerializer_622789839(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImages

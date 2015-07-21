@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src-ser"/>
 	<classpathentry kind="src" path="src-ser-bin"/>
+	<classpathentry kind="src" path="src-test"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
@@ -16,5 +17,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/log4j-1.2.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

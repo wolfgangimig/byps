@@ -7,20 +7,21 @@ var byps = byps || {};
 byps.test = byps.test || {};
 byps.test.api = byps.test.api || {};
 byps.test.api.arr = byps.test.api.arr || {};
-byps.test.api.set = byps.test.api.set || {};
-byps.test.api.enu = byps.test.api.enu || {};
-byps.test.api.list = byps.test.api.list || {};
+byps.test.api.comp = byps.test.api.comp || {};
 byps.test.api.ver = byps.test.api.ver || {};
-byps.test.api.inherit = byps.test.api.inherit || {};
-byps.test.api.remote = byps.test.api.remote || {};
+byps.test.api.set = byps.test.api.set || {};
+byps.test.api.auth = byps.test.api.auth || {};
 byps.test.api.inl = byps.test.api.inl || {};
+byps.test.api.strm = byps.test.api.strm || {};
+byps.test.api.list = byps.test.api.list || {};
+byps.test.api.remote = byps.test.api.remote || {};
+byps.test.api.enu = byps.test.api.enu || {};
+byps.test.api.srvr = byps.test.api.srvr || {};
 byps.test.api.prim = byps.test.api.prim || {};
 byps.test.api.refs = byps.test.api.refs || {};
-byps.test.api.map = byps.test.api.map || {};
-byps.test.api.strm = byps.test.api.strm || {};
+byps.test.api.inherit = byps.test.api.inherit || {};
 byps.test.api.priv = byps.test.api.priv || {};
-byps.test.api.auth = byps.test.api.auth || {};
-byps.test.api.srvr = byps.test.api.srvr || {};
+byps.test.api.map = byps.test.api.map || {};
 byps.test.api.cons = byps.test.api.cons || {};
 
 /**
@@ -30,9 +31,9 @@ byps.test.api.cons = byps.test.api.cons || {};
 */
 byps.test.api.BApiDescriptor_Testser = {
 	/**
-	 * API serialisation version: 0.0.0.792
+	 * API serialisation version: 0.0.0.793
 	 */
-	VERSION : "0.0.0.792",
+	VERSION : "0.0.0.793",
 	
 	/**
 	 * Internal used API Desciptor.
@@ -41,7 +42,7 @@ byps.test.api.BApiDescriptor_Testser = {
 		return new byps.BApiDescriptor(
 			"Testser",
 			"byps.test.api",
-			"0.0.0.792",
+			"0.0.0.793",
 			false, // uniqueObjects
 			new byps.test.api.BRegistry_Testser()
 		);
@@ -67,6 +68,7 @@ byps.test.api.BClient_Testser = function(transportFactory) {
 		new byps.test.api.BServer_Testser(transportFactory.createServerTransport())
 	);
 	
+	this.incompatibleChangeIF = new byps.test.api.comp.BStub_IncompatibleChangeIF(this.transport);
 	this.bioFruitService = new byps.test.api.inherit.BStub_BioFruitService(this.transport);
 	this.bioLemonService = new byps.test.api.inherit.BStub_BioLemonService(this.transport);
 	this.fruitService = new byps.test.api.inherit.BStub_FruitService(this.transport);
@@ -141,6 +143,19 @@ byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4, short4, int4
 byps.test.api.auth.SessionInfo = function(sessionID) {
 	this._typeId = 65775978;
 	this.sessionID = sessionID || "";
+};
+
+
+/**
+ * Class with incompatible changes.
+ * This class has in API version 793 an int member.
+ * In version 794, this member was changed to String.
+ * Serializing this API from 793 to 794 cause an exception.
+ * @since 793
+*/
+byps.test.api.comp.IncompatibleChangeInfo = function(intValueChangedToString) {
+	this._typeId = 1107425749;
+	this.intValueChangedToString = intValueChangedToString || 0;
 };
 
 
@@ -428,7 +443,7 @@ byps.test.api.strm.Stream1 = function(is1, contentType, arrStream, listStream, m
 /**
  * Example class with elements that belong to different versions.
 */
-byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, int1, long1, float1, double1, bools1, bytes1, chars1, shorts1, ints1, longs1, floats1, doubles1, str1, obj1, evo1, list1, set1, map1, bool2, byte2, char2, short2, int2, long2, float2, double2, bools2, bytes2, chars2, shorts2, ints2, longs2, floats2, doubles2, str2, obj2, evo2, list2, set2, map2, bool3, byte3, char3, short3, int3, long3, float3, double3, bools3, bytes3, chars3, shorts3, ints3, longs3, floats3, doubles3, str3, obj3, evo3, list3, set3, map3) {
+byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, int1, long1, float1, double1, bools1, bytes1, chars1, shorts1, ints1, longs1, floats1, doubles1, str1, obj1, evo1, list1, set1, map1, bool2, byte2, char2, short2, int2, long2, float2, double2, bools2, bytes2, chars2, shorts2, ints2, longs2, floats2, doubles2, str2, obj2, evo2, list2, set2, map2, bool3, byte3, char3, short3, int3, long3, float3, double3, bools3, bytes3, chars3, shorts3, ints3, longs3, floats3, doubles3, str3, obj3, evo3, list3, set3, map3, since793) {
 	this._typeId = 1391985860;
 	this.bool1 = bool1 || false;
 	this.byte1 = byte1 || 0;
@@ -496,6 +511,7 @@ byps.test.api.ver.Evolve = function(bool1, byte1, char1, short1, int1, long1, fl
 	this.list3 = list3 || null;
 	this.set3 = set3 || null;
 	this.map3 = map3 || null;
+	this.since793 = since793 || 0;
 };
 
 
@@ -681,6 +697,64 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __
 */
 
 /**
+ * This interface with incompatible changes.
+ * @since 793
+ * @since 793
+*/
+byps.test.api.comp.BStub_IncompatibleChangeIF = function(transport) {
+	
+	this._typeId = 88979576;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * Function with changed return type.
+ * The return type was int in version 793. In 794 it has been changed to String.
+ * Calling this function must cause an exception.
+ * @return value
+ * @throws RemoteException
+*/
+byps.test.api.comp.BStub_IncompatibleChangeIF.prototype.changedReturnType = function(__byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 262583988 };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * Function with changed parameter type.
+ * The parameter type was int in version 793. In 794 it has been changed to String.
+ * Calling this function must cause an exception.
+ * @param intParamChangedToString value
+ * @throws RemoteException
+*/
+byps.test.api.comp.BStub_IncompatibleChangeIF.prototype.changedParameterType = function(intParamChangedToString, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 214991897, intParamChangedToString : intParamChangedToString };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * Function with changed parameter class.
+ * The class has been incompatibly changed in version 794.
+ * Calling this function must cause an exception.
+ * @param param value
+ * @throws RemoteException
+*/
+byps.test.api.comp.BStub_IncompatibleChangeIF.prototype.changedClass = function(param, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1831430414, param : param };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
@@ -695,9 +769,9 @@ byps.test.api.inherit.BStub_BioFruitService = function(transport) {
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_BioFruitService.prototype.certify = function(param, __byps__asyncResult) {
+byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1435417025, param : param };
+	var req =  { _typeId : 1290167289 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -715,9 +789,9 @@ byps.test.api.inherit.BStub_BioFruitService.prototype.grow = function(__byps__as
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps__asyncResult) {
+byps.test.api.inherit.BStub_BioFruitService.prototype.certify = function(param, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1290167289 };
+	var req =  { _typeId : 1435417025, param : param };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -737,9 +811,9 @@ byps.test.api.inherit.BStub_BioLemonService = function(transport) {
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_BioLemonService.prototype.certify = function(param, __byps__asyncResult) {
+byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1435417025, param : param };
+	var req =  { _typeId : 1290167289 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -757,9 +831,9 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.grow = function(__byps__as
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps__asyncResult) {
+byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(sess, fromTree, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1290167289 };
+	var req =  { _typeId : 1022088379, sess : sess, fromTree : fromTree };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -767,9 +841,9 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps_
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(sess, fromTree, __byps__asyncResult) {
+byps.test.api.inherit.BStub_BioLemonService.prototype.certify = function(param, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1022088379, sess : sess, fromTree : fromTree };
+	var req =  { _typeId : 1435417025, param : param };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -799,9 +873,9 @@ byps.test.api.inherit.BStub_FruitService = function(transport) {
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__asyncResult) {
+byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 695716901 };
+	var req =  { _typeId : 1290167289 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -809,9 +883,9 @@ byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__async
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__asyncResult) {
+byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1290167289 };
+	var req =  { _typeId : 695716901 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -831,9 +905,9 @@ byps.test.api.inherit.BStub_LemonService = function(transport) {
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__asyncResult) {
+byps.test.api.inherit.BStub_LemonService.prototype.squeeze = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 695716901 };
+	var req =  { _typeId : 1290167289 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -841,9 +915,9 @@ byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__async
 // checkpoint byps.gen.js.PrintContext:133
 /**
 */
-byps.test.api.inherit.BStub_LemonService.prototype.squeeze = function(__byps__asyncResult) {
+byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
-	var req =  { _typeId : 1290167289 };
+	var req =  { _typeId : 695716901 };
 	var ret = this.transport.sendMethod(req, __byps__asyncResult);
 	return ret;
 };
@@ -3357,6 +3431,35 @@ byps.test.api.BServer_Testser = function(transport) {
 	this._remotes = {};
 	
 	this._methodMap = {
+		
+		// Remote Interface IncompatibleChangeIF			
+			// Method changedReturnType
+			262583988 : [ // _typeId of request class
+				88979576, // _typeId of remote interface
+				432867943, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_changedReturnType(methodResult);
+				}
+			],
+			
+			// Method changedParameterType
+			214991897 : [ // _typeId of request class
+				88979576, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_changedParameterType(methodObj.intParamChangedToString, methodResult);
+				}
+			],
+			
+			// Method changedClass
+			1831430414 : [ // _typeId of request class
+				88979576, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_changedClass(methodObj.param, methodResult);
+				}
+			],
+		
 		
 		// Remote Interface BioFruitService			
 			// Method certify
@@ -7114,6 +7217,58 @@ byps.test.api.BRegistry_Testser = function() {
 			// names of persistent elements
 			{
 				"sessionID":10 // java.lang.String
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.comp.BRequest_IncompatibleChangeIF_changedClass
+		1831430414 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"param":1107425749 // byps.test.api.comp.IncompatibleChangeInfo
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.comp.BRequest_IncompatibleChangeIF_changedParameterType
+		214991897 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"intParamChangedToString":5 // int
+			},
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.comp.BRequest_IncompatibleChangeIF_changedReturnType
+		262583988 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// checkpoint byps.gen.js.GenRegistry:138
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.comp.BStub_IncompatibleChangeIF
+		88979576 : new byps.BSerializer_16(byps.test.api.comp.BStub_IncompatibleChangeIF),
+		
+		// byps.test.api.comp.IncompatibleChangeInfo
+		1107425749 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:138
+			// names of persistent elements
+			{
+				"intValueChangedToString":5 // int
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			null,
@@ -11153,7 +11308,9 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of persistent elements
 				"set3":1493282670, // java.util.Set<java.lang.Integer>
 				// names of persistent elements
-				"map3":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
+				"map3":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
+				// names of persistent elements
+				"since793":5 // int
 			},
 			// checkpoint byps.gen.js.GenRegistry:138
 			// names of inline elements
@@ -11222,7 +11379,7 @@ byps.test.api.BRegistry_Testser = function() {
 				// names of inline elements
 				"set3":1493282670, // java.util.Set<java.lang.Integer>
 				// names of inline elements
-				"map3":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
+				"map3":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
 			},
 			// inlineInstance
 			false

@@ -83,6 +83,10 @@ namespace byps.test.api.ver
 					bbuf.putShort(obj.Short3);
 					// checkpoint byps.gen.cs.PrintContext:494
 					bbuf.putString(obj.Str3);
+					if (version >= 793L) {
+						// checkpoint byps.gen.cs.PrintContext:494
+						bbuf.putInt(obj.Since793);
+					}
 				}
 			}
 			// checkpoint byps.gen.cs.PrintContext:494
@@ -231,6 +235,10 @@ namespace byps.test.api.ver
 					obj.Short3 = bbuf.getShort();
 					// checkpoint byps.gen.cs.PrintContext:449
 					obj.Str3 = bbuf.getString();
+					if (version >= 793L) {
+						// checkpoint byps.gen.cs.PrintContext:449
+						obj.Since793 = bbuf.getInt();
+					}
 				}
 			}
 			// checkpoint byps.gen.cs.PrintContext:449

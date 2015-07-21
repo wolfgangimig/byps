@@ -115,6 +115,22 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
+		public virtual System.IO.Stream GetVideoCheckSupportByteRange() {
+			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
+			GetVideoCheckSupportByteRange(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public virtual void GetVideoCheckSupportByteRange(BAsyncResult<System.IO.Stream> asyncResult) {
+			BRequest_RemoteStreams_getVideoCheckSupportByteRange req = new BRequest_RemoteStreams_getVideoCheckSupportByteRange();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<System.IO.Stream> GetVideoCheckSupportByteRangeAsync(){
+			BRequest_RemoteStreams_getVideoCheckSupportByteRange req = new BRequest_RemoteStreams_getVideoCheckSupportByteRange();			
+			Task<System.IO.Stream> task = Task<System.IO.Stream>.Factory.FromAsync(transport.BeginSend<System.IO.Stream>, transport.EndSend<System.IO.Stream>, req, null);
+			return await task;
+		}
+		
 		public virtual System.IO.Stream GetStreamDeferedProperies() {
 			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
 			GetStreamDeferedProperies(BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));

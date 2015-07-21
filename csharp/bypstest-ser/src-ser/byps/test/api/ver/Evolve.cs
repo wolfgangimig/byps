@@ -21,7 +21,7 @@ namespace byps.test.api.ver
 		public Evolve() {
 		}		
 		
-		public Evolve(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, bool[] @bools1, byte[] @bytes1, char[] @chars1, short[] @shorts1, int[] @ints1, long[] @longs1, float[] @floats1, double[] @doubles1, String @str1, Object @obj1, Evolve2 @evo1, IList<int> @list1, ISet<int> @set1, IDictionary<int,int> @map1, bool @bool2, byte @byte2, char @char2, short @short2, int @int2, long @long2, float @float2, double @double2, bool[] @bools2, byte[] @bytes2, char[] @chars2, short[] @shorts2, int[] @ints2, long[] @longs2, float[] @floats2, double[] @doubles2, String @str2, Object @obj2, Evolve2 @evo2, IList<int> @list2, ISet<int> @set2, IDictionary<int,int> @map2, bool @bool3, byte @byte3, char @char3, short @short3, int @int3, long @long3, float @float3, double @double3, bool[] @bools3, byte[] @bytes3, char[] @chars3, short[] @shorts3, int[] @ints3, long[] @longs3, float[] @floats3, double[] @doubles3, String @str3, Object @obj3, Evolve2 @evo3, IList<int> @list3, ISet<int> @set3, IDictionary<int,int> @map3) {
+		public Evolve(bool @bool1, byte @byte1, char @char1, short @short1, int @int1, long @long1, float @float1, double @double1, bool[] @bools1, byte[] @bytes1, char[] @chars1, short[] @shorts1, int[] @ints1, long[] @longs1, float[] @floats1, double[] @doubles1, String @str1, Object @obj1, Evolve2 @evo1, IList<int> @list1, ISet<int> @set1, IDictionary<int,int> @map1, bool @bool2, byte @byte2, char @char2, short @short2, int @int2, long @long2, float @float2, double @double2, bool[] @bools2, byte[] @bytes2, char[] @chars2, short[] @shorts2, int[] @ints2, long[] @longs2, float[] @floats2, double[] @doubles2, String @str2, Object @obj2, Evolve2 @evo2, IList<int> @list2, ISet<int> @set2, IDictionary<int,int> @map2, bool @bool3, byte @byte3, char @char3, short @short3, int @int3, long @long3, float @float3, double @double3, bool[] @bools3, byte[] @bytes3, char[] @chars3, short[] @shorts3, int[] @ints3, long[] @longs3, float[] @floats3, double[] @doubles3, String @str3, Object @obj3, Evolve2 @evo3, IList<int> @list3, ISet<int> @set3, IDictionary<int,int> @map3, int @since793) {
 			this.bool1Value = @bool1;
 			this.byte1Value = @byte1;
 			this.char1Value = @char1;
@@ -88,6 +88,7 @@ namespace byps.test.api.ver
 			this.list3Value = @list3;
 			this.set3Value = @set3;
 			this.map3Value = @map3;
+			this.since793Value = @since793;
 		}		
 		
 		public Evolve(Evolve rhs)
@@ -158,6 +159,7 @@ namespace byps.test.api.ver
 			this.list3Value = rhs.list3Value;
 			this.set3Value = rhs.set3Value;
 			this.map3Value = rhs.map3Value;
+			this.since793Value = rhs.since793Value;
 		}		
 		
 		#endregion
@@ -1022,6 +1024,19 @@ namespace byps.test.api.ver
 		}
 		
 		
+		public int Since793
+		{
+			get
+			{
+				return since793Value;
+			}
+			set
+			{
+				this.since793Value = value;
+			}
+		}
+		
+		
 		#endregion
 		
 		#region Fields
@@ -1157,6 +1172,8 @@ namespace byps.test.api.ver
 		protected ISet<int> set3Value;
 
 		protected IDictionary<int,int> map3Value;
+
+		protected int since793Value;
 
 		#endregion
 		

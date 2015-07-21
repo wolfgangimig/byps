@@ -8,7 +8,7 @@ public class HebrewZ implements Serializable {
 	
 	private String core;
 	
-	protected HebrewZ() {
+	public HebrewZ() {
 		
 	}
 	

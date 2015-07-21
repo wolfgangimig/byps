@@ -12,16 +12,16 @@ public interface RemoteReferencesAsync extends BRemote,
 	RemoteReferences {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public byps.test.api.refs.Node getNode() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getNode(final BAsyncResult<byps.test.api.refs.Node> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void setNode(byps.test.api.refs.Node v) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void setNode(byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) ;
 	
 	

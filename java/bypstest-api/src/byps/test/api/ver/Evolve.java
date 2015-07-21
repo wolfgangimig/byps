@@ -230,4 +230,9 @@ public class Evolve implements Serializable {
 	 * @since 3
 	 */
 	public Map<Integer, Integer> map3;
+	
+	/**
+	 * @since 793
+	 */
+	public int since793;
 }	

@@ -18,11 +18,11 @@ public class BSkeleton_RemoteEnums extends BSkeleton implements RemoteEnumsAsync
 	
 	public final static long serialVersionUID = 485761455L;
 	
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void getPlanet(final BAsyncResult<byps.test.api.enu.EnumPlanets> asyncResult) {
 		try {
 			byps.test.api.enu.EnumPlanets ret = getPlanet();
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteEnums extends BSkeleton implements RemoteEnumsAsync
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:365
+	// checkpoint byps.gen.j.PrintContext:383
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:409
+	// checkpoint byps.gen.j.PrintContext:427
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPlanet(planet);

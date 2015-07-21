@@ -82,7 +82,7 @@ public class JSerializer_949340697 extends JSerializer_Array {
 					final byps.test.api.inl.Point2D[] a0 = a1[i1];
 					bbuf.beginArray();
 					for (int i0 = 0; i0 < n0; i0++) {
-						// checkpoint byps.gen.j.PrintContext:313
+						// checkpoint byps.gen.j.PrintContext:327
 						bout.writeObj(null, a0[i0], false, byps.test.api.inl.JSerializer_1835035436.instance);
 					}
 					bbuf.endArray();

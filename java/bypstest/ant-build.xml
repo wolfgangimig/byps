@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ser" default="build">
+
+	<property name="bypstest.jar" value="./bypstest_793.jar" />
+
+	<target name="build">
+		<delete file="${bypstest.jar}" />
+
+		<jar destfile="${bypstest.jar}">
+
+			<fileset dir="../bypshttp/bin" />
+			<fileset dir="../bypshttpasf/bin" />
+			<fileset dir="../byps/bin" />
+			<fileset dir="../byps-api/bin" />
+			<fileset dir="../byps-override/bin" />
+
+			<fileset dir="../bypstest/bin">
+				<exclude name="**/log4j.properties" />
+			</fileset>
+			<fileset dir="../bypstest-api/bin" />
+			<fileset dir="../bypstest-ser/bin" />
+			<fileset dir="../bypstest-ser-json/bin" />
+
+		</jar>
+	</target>
+
+</project>

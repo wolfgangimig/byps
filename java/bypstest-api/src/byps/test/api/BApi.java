@@ -5,7 +5,7 @@ package byps.test.api;
  */
 public class BApi {
 	
-	public final static String VERSION = "792";
+	public final static String VERSION = "793";
 	public final static String NAME = "Testser";
 	
 //	public final static boolean UNIQUE_OBJECTS = false;

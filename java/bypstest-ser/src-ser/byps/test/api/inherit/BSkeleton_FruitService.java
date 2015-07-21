@@ -18,28 +18,28 @@ public class BSkeleton_FruitService extends BSkeleton implements FruitServiceAsy
 	
 	public final static long serialVersionUID = 715959905L;
 	
-	// checkpoint byps.gen.j.PrintContext:365
-	public java.lang.String squeeze() throws RemoteException {
+	// checkpoint byps.gen.j.PrintContext:383
+	public java.lang.String grow() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:409
-	public void squeeze(final BAsyncResult<String> asyncResult) {
+	// checkpoint byps.gen.j.PrintContext:427
+	public void grow(final BAsyncResult<String> asyncResult) {
 		try {
-			java.lang.String ret = squeeze();
+			java.lang.String ret = grow();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:365
-	public java.lang.String grow() throws RemoteException {
+	// checkpoint byps.gen.j.PrintContext:383
+	public java.lang.String squeeze() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:409
-	public void grow(final BAsyncResult<String> asyncResult) {
+	// checkpoint byps.gen.j.PrintContext:427
+	public void squeeze(final BAsyncResult<String> asyncResult) {
 		try {
-			java.lang.String ret = grow();
+			java.lang.String ret = squeeze();
 			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);

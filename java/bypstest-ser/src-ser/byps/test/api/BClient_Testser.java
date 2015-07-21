@@ -17,6 +17,12 @@ public class BClient_Testser extends BClient {
 		return new BClient_Testser(transport);
 	}
 	
+	public BClient_Testser addRemote(byps.test.api.comp.BSkeleton_IncompatibleChangeIF remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(88979576, remoteSkeleton);
+		return this;
+	}
+	
 	public BClient_Testser addRemote(byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 		serverR.server.addRemote(363642571, remoteSkeleton);
@@ -149,6 +155,9 @@ public class BClient_Testser extends BClient {
 		return this;
 	}
 	
+	public byps.test.api.comp.IncompatibleChangeIFAsync getIncompatibleChangeIF() {
+		return incompatibleChangeIF;
+	}
 	public byps.test.api.inherit.BioFruitServiceAuth getBioFruitService() {
 		return bioFruitService;
 	}
@@ -218,6 +227,7 @@ public class BClient_Testser extends BClient {
 	
 	@Override
 	public BRemote getStub(int remoteId) {
+		if (remoteId == 88979576) return incompatibleChangeIF;
 		if (remoteId == 363642571) return bioFruitService;
 		if (remoteId == 474058508) return bioLemonService;
 		if (remoteId == 715959905) return fruitService;
@@ -258,6 +268,7 @@ public class BClient_Testser extends BClient {
 		initStubs(transport);
 	}
 	
+	protected byps.test.api.comp.IncompatibleChangeIFAsync incompatibleChangeIF;
 	protected byps.test.api.inherit.BioFruitServiceAuth bioFruitService;
 	protected byps.test.api.inherit.BioLemonServiceAuth bioLemonService;
 	protected byps.test.api.inherit.FruitServiceAuth fruitService;
@@ -282,6 +293,7 @@ public class BClient_Testser extends BClient {
 	protected byps.test.api.ver.EvolveIFAsync evolveIF;
 	
 	private void initStubs(BTransport transport) {
+		incompatibleChangeIF = new byps.test.api.comp.BStub_IncompatibleChangeIF(transport);
 		bioFruitService = new byps.test.api.inherit.BStub_BioFruitService(transport);
 		bioLemonService = new byps.test.api.inherit.BStub_BioLemonService(transport);
 		fruitService = new byps.test.api.inherit.BStub_FruitService(transport);

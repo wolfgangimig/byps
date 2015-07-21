@@ -13,22 +13,6 @@ namespace byps.test.api.inherit
 		public BStub_BioFruitService(BTransport transport)
 			: base(transport) {}			
 		
-		public virtual String Grow() {
-			BSyncResult<String> asyncResult = new BSyncResult<String>();			
-			Grow(BAsyncResultHelper.ToDelegate<String>(asyncResult));
-			return asyncResult.GetResult();			
-		}
-		public virtual void Grow(BAsyncResult<String> asyncResult) {
-			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
-			transport.sendMethod(req, asyncResult);
-		}
-		// checkpoint byps.gen.cs.GenRemoteStub:133
-		public async Task<String> GrowAsync(){
-			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
-			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
-			return await task;
-		}
-		
 		public virtual bool Certify(String param) {
 			BSyncResult<bool> asyncResult = new BSyncResult<bool>();			
 			Certify(param, BAsyncResultHelper.ToDelegate<bool>(asyncResult));
@@ -59,6 +43,22 @@ namespace byps.test.api.inherit
 		// checkpoint byps.gen.cs.GenRemoteStub:133
 		public async Task<String> SqueezeAsync(){
 			BRequest_FruitService_squeeze req = new BRequest_FruitService_squeeze();			
+			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
+			return await task;
+		}
+		
+		public virtual String Grow() {
+			BSyncResult<String> asyncResult = new BSyncResult<String>();			
+			Grow(BAsyncResultHelper.ToDelegate<String>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public virtual void Grow(BAsyncResult<String> asyncResult) {
+			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<String> GrowAsync(){
+			BRequest_PlantService_grow req = new BRequest_PlantService_grow();			
 			Task<String> task = Task<String>.Factory.FromAsync(transport.BeginSend<String>, transport.EndSend<String>, req, null);
 			return await task;
 		}

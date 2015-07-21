@@ -34,11 +34,13 @@ class PrintContext extends PrintContextBase {
 		dirSer = props.getMandatoryPropertyFile(PropertiesJ.DEST_DIR_SER);
 		dirSerBin = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_SER_BIN, dirSer);
 		dirSerJson = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_SER_Json, dirSer);
+		dirTest = props.getOptionalPropertyFile(PropertiesJ.DEST_DIR_TEST, null);
 	
 		if (dirApi != null) dirApi.mkdirs();
 		dirSerBin.mkdirs();
 		dirSerJson.mkdirs();
 		dirSer.mkdirs();
+		if (dirTest != null) dirTest.mkdirs();
 
 		logProperties();
 		
@@ -73,6 +75,18 @@ class PrintContext extends PrintContextBase {
 		return new CodePrinter(new FileOutputStream(file), generateUtf8Source);
 	}
 	
+  CodePrinter getPrinterForTestClass() throws IOException {
+    CodePrinter pr = null;
+    if (dirTest != null) {
+      String packDirs = Utils.getPackageAsSubdir(classDB.getApiDescriptor().basePackage); 
+      File file = new File(dirTest, packDirs);
+      file.mkdirs();
+      file = new File(file, getTestClassName() + ".java");
+      pr = new CodePrinter(new FileOutputStream(file), generateUtf8Source);
+    }
+    return pr;
+  }
+  
 	public String getRegistryClassName(BBinaryModel pformat) {
 		String tdescClassName = pformat == BBinaryModel.JSON ? "JRegistry_" : "BRegistry_";
 		return tdescClassName + apiName;
@@ -149,7 +163,7 @@ class PrintContext extends PrintContextBase {
 		}
 	}
 	
-	String getterForMember(String name, boolean isPrivate, TypeInfo tinfo) {
+	public String getterForMember(String name, boolean isPrivate, TypeInfo tinfo) {
 		if (isPrivate) {
 			int p = name.indexOf('.');
 			String objName = (p >= 0) ? name.substring(0, p+1) : "";
@@ -163,7 +177,7 @@ class PrintContext extends PrintContextBase {
 		}
 	}
 	
-	private String setterForMember(String name, boolean isPrivate, String value) {
+	public String setterForMember(String name, boolean isPrivate, String value) {
 		if (isPrivate) {
 			return "set" + Utils.firstCharToUpper(name) + "(" + value + ")";
 		}
@@ -360,12 +374,16 @@ class PrintContext extends PrintContextBase {
 		}
 	}
 
-	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo) {
+	 public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo) {
+	   return printDeclareMethod(pr, rinfo, methodInfo, rinfo.pack);
+	 }
+	 
+	public CodePrinter printDeclareMethod(CodePrinter pr, RemoteInfo rinfo, MethodInfo methodInfo, String pack) {
 	  
 	  pr.checkpoint();
-		
+
 		MemberInfo returnInfo = methodInfo.resultInfo.members.get(0);
-		String rtype = returnInfo.type.toString(rinfo.pack);
+		String rtype = returnInfo.type.toString(pack);
 		CodePrinter mpr = pr.print("public ")
 		  .print(rtype).print(" ")
 		  .print(methodInfo.name).print("(");
@@ -377,7 +395,7 @@ class PrintContext extends PrintContextBase {
 		  if (isSessionParam(rinfo, pinfo)) continue;
 		  
 			if (first) first = false; else mpr.print(", ");
-			mpr.print(pinfo.type.toString(rinfo.pack)).print(" ").print(pinfo.name);
+			mpr.print(pinfo.type.toString(pack)).print(" ").print(pinfo.name);
 		}
 		
 		String throwsClause = "throws RemoteException";
@@ -385,7 +403,7 @@ class PrintContext extends PrintContextBase {
 			TypeInfo exInfo = methodInfo.exceptions.get(i);
 			if (exInfo.qname.equals(BException.class.getName())) continue;
 			if (exInfo.qname.equals(InterruptedException.class.getName())) continue;
-			throwsClause += ", " + exInfo.toString(rinfo.pack);
+			throwsClause += ", " + exInfo.toString(pack);
 		}
 		
 		mpr.print(") ").print(throwsClause);
@@ -496,13 +514,15 @@ class PrintContext extends PrintContextBase {
     return baseRemote;
   }
 
-
-  
+  public String getTestClassName() {
+    return "TestCompatibleApi_" + classDB.getApiDescriptor().name;
+  }
   
 	public final File dirApi;
 	public final File dirSerBin;
 	public final File dirSerJson;
 	public final File dirSer;
+	public final File dirTest;
 	private boolean generateHashCodeAndEquals;
 	private final boolean generateUtf8Source;
 	private Log log = LogFactory.getLog(PrintContext.class);

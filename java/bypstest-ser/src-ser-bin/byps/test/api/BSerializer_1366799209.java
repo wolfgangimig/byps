@@ -39,9 +39,9 @@ public class BSerializer_1366799209 extends BSerializer_13 {
 		int n = map.size();
 		bbuf.putLength(n);
 		for (Map.Entry<java.lang.String,java.util.Date> obj : map.entrySet()) {
-			// checkpoint byps.gen.j.PrintContext:332
+			// checkpoint byps.gen.j.PrintContext:346
 			bbuf.putString(obj.getKey() != null ? (String)obj.getKey() : "");
-			// checkpoint byps.gen.j.PrintContext:343
+			// checkpoint byps.gen.j.PrintContext:357
 			bbuf.putDate((java.util.Date)obj.getValue());
 		}
 	}
