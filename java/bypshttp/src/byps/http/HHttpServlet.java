@@ -932,13 +932,13 @@ public abstract class HHttpServlet extends HttpServlet implements
       HttpServletResponse response) throws IOException {
 
     if (!getConfig().isTestAdapterEnabled()) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
 
     final String testAdapter = request.getParameter(HTestAdapter.KEY_PARAM);
     if (testAdapter == null) {
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
     if (log.isDebugEnabled()) log.debug("check testAdapter=" + testAdapter);
@@ -1199,7 +1199,7 @@ public abstract class HHttpServlet extends HttpServlet implements
             Map<String, String> ret = new HashMap<String, String>();
 
             if (!getConfig().isTestAdapterEnabled()) {
-              throw new BException(HttpServletResponse.SC_UNAUTHORIZED,
+              throw new BException(HttpServletResponse.SC_FORBIDDEN,
                   "testAdapter failed.");
             }
 
