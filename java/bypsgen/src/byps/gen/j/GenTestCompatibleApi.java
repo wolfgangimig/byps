@@ -7,6 +7,8 @@ import java.util.Collection;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BProtocol;
+import byps.BProtocolS;
 import byps.BRegistry;
 import byps.gen.api.MemberAccess;
 import byps.gen.api.MemberInfo;
@@ -87,18 +89,26 @@ public class GenTestCompatibleApi {
   }
 
   private void generatePublicTestMethod() {
-    pr.println("public static void test(Object oclient) throws Exception {");
+    pr.println("public static void test(BClient bclient) throws Exception {");
     pr.beginBlock();
+
+    // Tried to verify that incompatible API changes causes exceptions. 
+    // But cancelled it because some changes do not result in serialization errors, e.g. int to String.
+//    pr.println("BProtocol protocol = bclient.getTransport().getProtocol();");
+//    pr.println("boolean isBinaryProtocol = (protocol instanceof BProtocolS);");
+    
     pr.println("log.info(\"test(\");");
     for (RemoteInfo rinfo : remotes) {
       generateCallTestMethods(rinfo);
     }
+    
     pr.println("log.info(\")test\");");
     pr.endBlock();
     pr.println("}");
   }
   
   private void generateCallTestMethods(RemoteInfo rinfo) {
+    pr.print("// ").print(rinfo.toString()).println();
     pr.println("{");
     pr.beginBlock();
     printGetRemote(rinfo);
@@ -107,11 +117,36 @@ public class GenTestCompatibleApi {
     }
     pr.endBlock();
     pr.println("}");
+    pr.println();
   }
 
   private void printCallTestMethod(RemoteInfo rinfo, MethodInfo minfo) {
+    boolean exceptionExpected = rinfo.qname.equals("byps.test.api.comp.IncompatibleChangeIF");
     String testFunctionName = getTestFunctionName(rinfo,minfo);
+    if (exceptionExpected) {
+      pr.println("if (isBinaryProtocol) {");
+      pr.beginBlock();
+      pr.println("try {");
+      pr.beginBlock();
+    }
     pr.print(testFunctionName).println("(remote);");
+    if (exceptionExpected) {
+      pr.println("throw new IllegalStateException(\"Exception expected.\");");
+      pr.endBlock();
+      pr.println("}");
+      pr.println("catch(ClassCastException ex) {");
+      pr.beginBlock();
+      pr.println("log.info(\"OK: \", ex);");
+      pr.endBlock();
+      pr.println("}");
+      pr.println("catch(RemoteException ex) {");
+      pr.beginBlock();
+      pr.println("log.info(\"OK: \", ex);");
+      pr.endBlock();
+      pr.println("}");
+      pr.endBlock();
+      pr.println("}");
+    }
   }
 
   private void generateTestRemoteImpl(RemoteInfo rinfo) {
@@ -128,14 +163,14 @@ public class GenTestCompatibleApi {
   private void printGetRemote(RemoteInfo rinfo) {
     String stubName = pctxt.getStubClassQName(rinfo, pctxt.apiPack);
     pr.print(stubName).print(" remote = (").print(stubName).print(")")
-      .print("oclient.getClass().getDeclaredMethod(\"get").print(Utils.firstCharToUpper(rinfo.name)).println("\").invoke(oclient);");
+      .print("bclient.getClass().getDeclaredMethod(\"get").print(Utils.firstCharToUpper(rinfo.name)).println("\").invoke(bclient);");
   }
 
   private void printTestMethod(RemoteInfo rinfo, MethodInfo minfo) {
     String stubName = pctxt.getStubClassQName(rinfo, pctxt.apiPack);
     String testFunctionName = getTestFunctionName(rinfo,minfo);
     pr.print("public static void ").print(testFunctionName).print("(")
-      .print(stubName).println(" remote) throws Exception {");
+      .print(stubName).println(" remote) throws RemoteException {");
     
     pr.beginBlock();
 

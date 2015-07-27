@@ -18,7 +18,7 @@ public class TestCompatibleApi {
   @Test
   public void testCompatible_793() throws Exception {
     log.info("testCompatible_793(");
-    CoTest.test(BApiDescriptor_Testser.instance(), "bypstest_793.jar", 9051, logFileOther);
+    CoTest.test(BApiDescriptor_Testser.instance(), "bypstest_793_incompatible.jar", 9051, logFileOther);
     log.info(")testCompatible_793");
   }
 

@@ -33,11 +33,6 @@ public class BServer_Testser extends BServer {
 		);
 	}
 	
-	public BServer_Testser addRemote(byps.test.api.comp.BSkeleton_IncompatibleChangeIF remoteSkeleton) {
-		addRemote(88979576, remoteSkeleton);
-		return this;
-	}
-	
 	public BServer_Testser addRemote(byps.test.api.inherit.BSkeleton_BioFruitService remoteSkeleton) {
 		addRemote(363642571, remoteSkeleton);
 		return this;

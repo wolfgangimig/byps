@@ -31,7 +31,7 @@ public class CoTestParams {
       public void run(BClient client, BAsyncResult<Boolean> asyncResult) {
         try {
           Class<?> serverClass = Class.forName(apiDesc.basePackage + ".TestCompatibleApi_" + apiDesc.name);
-          Method m = serverClass.getMethod("test", Object.class);
+          Method m = serverClass.getMethod("test", BClient.class);
           m.invoke(null, client);
           asyncResult.setAsyncResult(Boolean.TRUE, null);
         }

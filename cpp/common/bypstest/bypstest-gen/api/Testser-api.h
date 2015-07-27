@@ -312,26 +312,6 @@ namespace byps {
 			} // byps::test::api::auth
 			
 			//--------------------------------------------------------
-			// Forward Definitions for Namespace byps::test::api::comp
-			//--------------------------------------------------------
-			
-			namespace comp {
-			
-				// byps.test.api.comp.BStub_IncompatibleChangeIF
-				class BStub_IncompatibleChangeIF; 
-				typedef byps_ptr< BStub_IncompatibleChangeIF > PStub_IncompatibleChangeIF; 
-				
-				// byps.test.api.comp.IncompatibleChangeInfo
-				class IncompatibleChangeInfo; 
-				typedef byps_ptr< IncompatibleChangeInfo > PIncompatibleChangeInfo; 
-				
-				// byps.test.api.comp.IncompatibleChangeIF
-				class IncompatibleChangeIF; 
-				typedef byps_ptr< IncompatibleChangeIF > PIncompatibleChangeIF; 
-				
-			} // byps::test::api::comp
-			
-			//--------------------------------------------------------
 			// Forward Definitions for Namespace byps::test::api::cons
 			//--------------------------------------------------------
 			
@@ -999,37 +979,6 @@ class SessionInfo : public BSerializable {
 	public: SessionInfo();
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: SessionInfo(const ::std::wstring& sessionID);	
-	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
-	public: void serialize(BIO& ar, const BVERSION version);
-};
-
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:652
-//-------------------------------------------------
-// IncompatibleChangeInfo
-// typeId=1107425749
-
-namespace byps { namespace test { namespace api { namespace comp { 
-
-using namespace ::byps;
-
-/// <summary>
-/// Class with incompatible changes.
-/// </summary>
-/// <remarks>
-/// This class has in API version 793 an int member.
-/// In version 794, this member was changed to String.
-/// Serializing this API from 793 to 794 cause an exception.
-/// </remarks>
-class IncompatibleChangeInfo : public BSerializable {
-	public: int32_t intValueChangedToString;
-	
-	// checkpoint byps.gen.cpp.GenApiClass:488
-	public: IncompatibleChangeInfo();
-	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: IncompatibleChangeInfo(int32_t intValueChangedToString);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	// checkpoint byps.gen.cpp.GenApiClass:872
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -1844,78 +1793,6 @@ class Evolve2 : public BSerializable {
 };
 
 }}}}
-
-//-------------------------------------------------
-// IncompatibleChangeIF
-
-namespace byps { namespace test { namespace api { namespace comp { 
-
-using namespace ::byps;
-
-/// <summary>
-/// This interface with incompatible changes.
-/// </summary>
-class IncompatibleChangeIF : public virtual BRemote {
-	
-	/// <summary>
-	/// Function with changed return type.
-	/// </summary>
-	/// <remarks>
-	/// The return type was int in version 793. In 794 it has been changed to String.
-	/// Calling this function must cause an exception.
-	/// </remarks>
-	public: virtual int32_t changedReturnType()  = 0;
-	public: virtual void changedReturnType(::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
-	
-	/// <summary>
-	/// Function with changed parameter type.
-	/// </summary>
-	/// <remarks>
-	/// The parameter type was int in version 793. In 794 it has been changed to String.
-	/// Calling this function must cause an exception.
-	/// </remarks>
-	public: virtual void changedParameterType(int32_t intParamChangedToString)  = 0;
-	public: virtual void changedParameterType(int32_t intParamChangedToString, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
-	
-	/// <summary>
-	/// Function with changed parameter class.
-	/// </summary>
-	/// <remarks>
-	/// The class has been incompatibly changed in version 794.
-	/// Calling this function must cause an exception.
-	/// </remarks>
-	public: virtual void changedClass(const PIncompatibleChangeInfo& param)  = 0;
-	public: virtual void changedClass(const PIncompatibleChangeInfo& param, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
-	
-	
-};
-
-}}}}
-//-------------------------------------------------
-// Stub class BStub_IncompatibleChangeIF
-
-namespace byps { namespace test { namespace api { namespace comp { 
-
-using namespace ::byps;
-
-class BStub_IncompatibleChangeIF;
-typedef byps_ptr<BStub_IncompatibleChangeIF> PStub_IncompatibleChangeIF;
-
-class BStub_IncompatibleChangeIF : public BStub, public virtual IncompatibleChangeIF {
-	
-	public: BStub_IncompatibleChangeIF(PTransport transport);	
-	
-	public: virtual BTYPEID BSerializable_getTypeId();
-	public: virtual int32_t changedReturnType() ;
-	public: virtual void changedReturnType(::std::function< void (int32_t, BException ex) > asyncResult) ;
-	public: virtual void changedParameterType(int32_t intParamChangedToString) ;
-	public: virtual void changedParameterType(int32_t intParamChangedToString, ::std::function< void (bool, BException ex) > asyncResult) ;
-	public: virtual void changedClass(const PIncompatibleChangeInfo& param) ;
-	public: virtual void changedClass(const PIncompatibleChangeInfo& param, ::std::function< void (bool, BException ex) > asyncResult) ;
-	
-};
-}}}}
-
 
 //-------------------------------------------------
 // PlantService
@@ -4087,7 +3964,6 @@ class BClient_Testser : public BClient {
 	
 	public: virtual ~BClient_Testser() {}
 	
-	virtual byps::test::api::comp::PIncompatibleChangeIF getIncompatibleChangeIF();	
 	virtual byps::test::api::inherit::PBioFruitServiceAuth getBioFruitService();	
 	virtual byps::test::api::inherit::PBioLemonServiceAuth getBioLemonService();	
 	virtual byps::test::api::inherit::PFruitServiceAuth getFruitService();	
@@ -4113,7 +3989,6 @@ class BClient_Testser : public BClient {
 	
 	public: virtual PRemote getStub(int remoteId);
 	
-	protected: byps::test::api::comp::PIncompatibleChangeIF incompatibleChangeIF;
 	protected: byps::test::api::inherit::PBioFruitServiceAuth bioFruitService;
 	protected: byps::test::api::inherit::PBioLemonServiceAuth bioLemonService;
 	protected: byps::test::api::inherit::PFruitServiceAuth fruitService;

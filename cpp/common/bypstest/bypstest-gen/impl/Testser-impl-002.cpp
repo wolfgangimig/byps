@@ -985,157 +985,6 @@ void BSerializer_65775978(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* p
 	BSerializer_ObjS_Template<byps::test::api::auth::SessionInfo>(bio, pObj, pObjS, pBase);	
 }
 }}}
-namespace byps { namespace test { namespace api { namespace comp { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_IncompatibleChangeIF_changedClass
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_IncompatibleChangeIF_changedClass::BRequest_IncompatibleChangeIF_changedClass() : BMethodRequest(88979576) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::comp::BRequest_IncompatibleChangeIF_changedClass::BRequest_IncompatibleChangeIF_changedClass(const PIncompatibleChangeInfo& param)
-	: BMethodRequest(88979576) 
-	, param(param)
-	{}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::comp::BRequest_IncompatibleChangeIF_changedClass::BSerializable_getTypeId() {
-	return 1831430414; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:878
-void BRequest_IncompatibleChangeIF_changedClass::serialize(BIO& ar, const BVERSION version) {
-	ar & this->param;
-}
-void byps::test::api::comp::BRequest_IncompatibleChangeIF_changedClass::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PIncompatibleChangeIF __byps__remoteT = byps_ptr_cast<IncompatibleChangeIF>(__byps__remote);
-	__byps__remoteT->changedClass(param, [__byps__asyncResult](bool __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:935
-namespace byps { namespace test { namespace api { 
-void BSerializer_1831430414(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::comp::BRequest_IncompatibleChangeIF_changedClass>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace comp { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_IncompatibleChangeIF_changedParameterType
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_IncompatibleChangeIF_changedParameterType::BRequest_IncompatibleChangeIF_changedParameterType() : BMethodRequest(88979576) {
-	intParamChangedToString = 0;
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::comp::BRequest_IncompatibleChangeIF_changedParameterType::BRequest_IncompatibleChangeIF_changedParameterType(int32_t intParamChangedToString)
-	: BMethodRequest(88979576) 
-	, intParamChangedToString(intParamChangedToString)
-	{}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::comp::BRequest_IncompatibleChangeIF_changedParameterType::BSerializable_getTypeId() {
-	return 214991897; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:878
-void BRequest_IncompatibleChangeIF_changedParameterType::serialize(BIO& ar, const BVERSION version) {
-	ar & this->intParamChangedToString;
-}
-void byps::test::api::comp::BRequest_IncompatibleChangeIF_changedParameterType::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PIncompatibleChangeIF __byps__remoteT = byps_ptr_cast<IncompatibleChangeIF>(__byps__remote);
-	__byps__remoteT->changedParameterType(intParamChangedToString, [__byps__asyncResult](bool __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:935
-namespace byps { namespace test { namespace api { 
-void BSerializer_214991897(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::comp::BRequest_IncompatibleChangeIF_changedParameterType>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace comp { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_IncompatibleChangeIF_changedReturnType
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_IncompatibleChangeIF_changedReturnType::BRequest_IncompatibleChangeIF_changedReturnType() : BMethodRequest(88979576) {
-}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::comp::BRequest_IncompatibleChangeIF_changedReturnType::BSerializable_getTypeId() {
-	return 262583988; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:878
-void BRequest_IncompatibleChangeIF_changedReturnType::serialize(BIO& ar, const BVERSION version) {
-}
-void byps::test::api::comp::BRequest_IncompatibleChangeIF_changedReturnType::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PIncompatibleChangeIF __byps__remoteT = byps_ptr_cast<IncompatibleChangeIF>(__byps__remote);
-	__byps__remoteT->changedReturnType([__byps__asyncResult](int32_t __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_5(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:935
-namespace byps { namespace test { namespace api { 
-void BSerializer_262583988(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::comp::BRequest_IncompatibleChangeIF_changedReturnType>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace comp { 
-
-//-------------------------------------------------
-// Implementation of class IncompatibleChangeInfo
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-IncompatibleChangeInfo::IncompatibleChangeInfo() {
-	intValueChangedToString = 0;
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::comp::IncompatibleChangeInfo::IncompatibleChangeInfo(int32_t intValueChangedToString)
-	: intValueChangedToString(intValueChangedToString)
-	{}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::comp::IncompatibleChangeInfo::BSerializable_getTypeId() {
-	return 1107425749; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:878
-void IncompatibleChangeInfo::serialize(BIO& ar, const BVERSION version) {
-	ar & this->intValueChangedToString;
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:935
-namespace byps { namespace test { namespace api { 
-void BSerializer_1107425749(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::comp::IncompatibleChangeInfo>(bio, pObj, pObjS, pBase);	
-}
-}}}
 namespace byps { namespace test { namespace api { namespace cons { 
 
 //-------------------------------------------------
@@ -1457,5 +1306,167 @@ void HebrewZ::serialize(BIO& ar, const BVERSION version) {
 namespace byps { namespace test { namespace api { 
 void BSerializer_1518668429(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::cons::HebrewZ>(bio, pObj, pObjS, pBase);	
+}
+}}}
+// checkpoint byps.gen.cpp.GenApiClass:935
+namespace byps { namespace test { namespace api { 
+void BSerializer_92445340(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_Obj_Template<::byps::BArray1< byps::test::api::cons::PHebrewZ > >(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace enu { 
+
+//-------------------------------------------------
+// Implementation of class UsePlanets
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+UsePlanets::UsePlanets() {
+	planet = byps::test::api::enu::EnumPlanets::Mercury;
+	planet2 = byps::test::api::enu::EnumPlanets::Mercury;
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::enu::UsePlanets::UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets)
+	: planet(planet)
+	, planet2(planet2)
+	, arrayOfPlanets(arrayOfPlanets)
+	, listOfPlanets(listOfPlanets)
+	, mapOfPlanets(mapOfPlanets)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::enu::UsePlanets::BSerializable_getTypeId() {
+	return 10000; 
+}
+void UsePlanets::setPlanet2(EnumPlanets v) {
+	planet2 = v;
+}
+// checkpoint byps.gen.cpp.GenApiClass:878
+void UsePlanets::serialize(BIO& ar, const BVERSION version) {
+	ar & this->planet;
+	ar & this->planet2;
+	ar & this->arrayOfPlanets;
+	ar & this->listOfPlanets;
+	ar & this->mapOfPlanets;
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:935
+namespace byps { namespace test { namespace api { 
+void BSerializer_10000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::enu::UsePlanets>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace inherit { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_BioFruitService_certify
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_BioFruitService_certify::BRequest_BioFruitService_certify() : BMethodRequest(363642571) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::inherit::BRequest_BioFruitService_certify::BRequest_BioFruitService_certify(const ::std::wstring& param)
+	: BMethodRequest(363642571) 
+	, param(param)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::inherit::BRequest_BioFruitService_certify::BSerializable_getTypeId() {
+	return 1435417025; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:878
+void BRequest_BioFruitService_certify::serialize(BIO& ar, const BVERSION version) {
+	ar & this->param;
+}
+void byps::test::api::inherit::BRequest_BioFruitService_certify::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PBioFruitService __byps__remoteT = byps_ptr_cast<BioFruitService>(__byps__remote);
+	__byps__remoteT->certify(param, [__byps__asyncResult](bool __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_1(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:935
+namespace byps { namespace test { namespace api { 
+void BSerializer_1435417025(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_BioFruitService_certify>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace inherit { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_BioLemonService_useParing
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_BioLemonService_useParing::BRequest_BioLemonService_useParing() : BMethodRequest(474058508) {
+}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::inherit::BRequest_BioLemonService_useParing::BSerializable_getTypeId() {
+	return 2108700976; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:878
+void BRequest_BioLemonService_useParing::serialize(BIO& ar, const BVERSION version) {
+}
+void byps::test::api::inherit::BRequest_BioLemonService_useParing::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PBioLemonService __byps__remoteT = byps_ptr_cast<BioLemonService>(__byps__remote);
+	__byps__remoteT->useParing([__byps__asyncResult](int32_t __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_5(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:935
+namespace byps { namespace test { namespace api { 
+void BSerializer_2108700976(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_BioLemonService_useParing>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace inherit { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_FruitService_squeeze
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_FruitService_squeeze::BRequest_FruitService_squeeze() : BMethodRequest(715959905) {
+}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::inherit::BRequest_FruitService_squeeze::BSerializable_getTypeId() {
+	return 1290167289; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:878
+void BRequest_FruitService_squeeze::serialize(BIO& ar, const BVERSION version) {
+}
+void byps::test::api::inherit::BRequest_FruitService_squeeze::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PFruitService __byps__remoteT = byps_ptr_cast<FruitService>(__byps__remote);
+	__byps__remoteT->squeeze([__byps__asyncResult](::std::wstring __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_10(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:935
+namespace byps { namespace test { namespace api { 
+void BSerializer_1290167289(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_FruitService_squeeze>(bio, pObj, pObjS, pBase);	
 }
 }}}
