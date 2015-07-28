@@ -200,8 +200,10 @@ public class CoTestProcess {
   }
 
   private BClient startClient() throws Exception {
+    log.info("startClient(");
     String url = params.getUrl();
     BApiDescriptor apiDesc = params.getApiDesc();
+    log.info("url=" + url + ", apiDesc=" + apiDesc);
     
     BWire wire = new HWireClient(url, 0, 600, null);
     final BTransportFactory transportFactory = new HTransportFactoryClient(apiDesc, wire, 0); 
@@ -209,6 +211,7 @@ public class CoTestProcess {
     //BClient_Testser.createClient(transportFactory);
     BClient client = null;
     {
+      log.info("BClient.createClient");
       Class<?> serverClass = Class.forName(apiDesc.basePackage + ".BClient_" + apiDesc.name);
       Method m = serverClass.getMethod("createClient", BTransportFactory.class);
       client = (BClient)m.invoke(null, transportFactory);
@@ -218,20 +221,24 @@ public class CoTestProcess {
     for (int i = 0; i < retries; i++) {
       Thread.sleep(1000);
       try {
+        log.info("client.start");
         BSyncResult<Boolean> syncResult = new BSyncResult<Boolean>();
         client.start(syncResult);
         syncResult.getResult();
         break;
       }
       catch (Exception e) {
+        log.info("client.start failed, e=" + e);
         if (i == retries-1) throw e;
       }
     }
-    
+
+    log.info(")startClient=" + client);
     return client;
   }
 
   private void startHttpServer(boolean waitForStop) throws Exception {
+    log.info("startHttpServer(wait=" + waitForStop);
     globalServerInstance = this;
     
     int port = params.getPort();
@@ -257,8 +264,13 @@ public class CoTestProcess {
     server.start();
 
     if (waitForStop) {
-      serverStopped.await(100, TimeUnit.SECONDS);
+      boolean isTimedout = serverStopped.await(100, TimeUnit.SECONDS);
+      if (!isTimedout) {
+        log.error("timeout");
+        server.stop();
+      }
     }
+    log.info(")startHttpServer");
   }
 
   // Called from CoTestServlet
