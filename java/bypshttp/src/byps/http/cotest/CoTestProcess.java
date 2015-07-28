@@ -2,7 +2,6 @@ package byps.http.cotest;
 
 import io.undertow.Handlers;
 import io.undertow.Undertow;
-import io.undertow.examples.servlet.ServletServer;
 import io.undertow.server.handlers.PathHandler;
 import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
@@ -239,7 +238,7 @@ public class CoTestProcess {
     log.info("start at port " + port);
     DeploymentInfo servletBuilder = Servlets
         .deployment()
-        .setClassLoader(ServletServer.class.getClassLoader())
+        .setClassLoader(CoTestServlet.class.getClassLoader())
         .setContextPath("/comptest")
         .setDeploymentName("comptest.war")
         .addServlets(
