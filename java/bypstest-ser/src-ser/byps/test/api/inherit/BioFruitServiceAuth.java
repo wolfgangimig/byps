@@ -11,6 +11,7 @@ import byps.*;
 public interface BioFruitServiceAuth extends BRemote, 
 	byps.test.api.inherit.FruitServiceAuth {
 	/**
+	 * @since 1
 	*/
 	// checkpoint byps.gen.j.PrintContext:383
 	public boolean certify(java.lang.String param) throws RemoteException;

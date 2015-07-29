@@ -7,8 +7,6 @@ import java.util.Collection;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import byps.BProtocol;
-import byps.BProtocolS;
 import byps.BRegistry;
 import byps.gen.api.MemberAccess;
 import byps.gen.api.MemberInfo;
@@ -92,10 +90,9 @@ public class GenTestCompatibleApi {
     pr.println("public static void test(BClient bclient) throws Exception {");
     pr.beginBlock();
 
-    // Tried to verify that incompatible API changes causes exceptions. 
-    // But cancelled it because some changes do not result in serialization errors, e.g. int to String.
-//    pr.println("BProtocol protocol = bclient.getTransport().getProtocol();");
-//    pr.println("boolean isBinaryProtocol = (protocol instanceof BProtocolS);");
+    pr.println("BProtocol protocol = bclient.getTransport().getProtocol();");
+    //pr.println("boolean isBinaryProtocol = (protocol instanceof BProtocolS);");
+    pr.println("long negotiatedVersion = protocol.negotiatedVersion;");
     
     pr.println("log.info(\"test(\");");
     for (RemoteInfo rinfo : remotes) {
@@ -123,6 +120,14 @@ public class GenTestCompatibleApi {
   private void printCallTestMethod(RemoteInfo rinfo, MethodInfo minfo) {
     boolean exceptionExpected = rinfo.qname.equals("byps.test.api.comp.IncompatibleChangeIF");
     String testFunctionName = getTestFunctionName(rinfo,minfo);
+
+    // Tried to verify that incompatible API changes causes exceptions. 
+    // But cancelled it because some changes do not result in serialization errors, e.g. int to String.
+    // Thus, exceptionExpected is always false.
+    
+    pr.print("if (negotiatedVersion >= ").print(minfo.since).println(") {");
+    pr.beginBlock();
+    
     if (exceptionExpected) {
       pr.println("if (isBinaryProtocol) {");
       pr.beginBlock();
@@ -147,6 +152,9 @@ public class GenTestCompatibleApi {
       pr.endBlock();
       pr.println("}");
     }
+    
+    pr.endBlock();
+    pr.println("}");
   }
 
   private void generateTestRemoteImpl(RemoteInfo rinfo) {

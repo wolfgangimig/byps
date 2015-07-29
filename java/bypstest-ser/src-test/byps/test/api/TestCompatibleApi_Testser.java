@@ -15,346 +15,806 @@ public class TestCompatibleApi_Testser {
 	
 	public static void test(BClient bclient) throws Exception {
 		BProtocol protocol = bclient.getTransport().getProtocol();
-		boolean isBinaryProtocol = (protocol instanceof BProtocolS);
+		long negotiatedVersion = protocol.negotiatedVersion;
 		log.info("test(");
 		// byps.test.api.inherit.BioFruitService
 		{
 			byps.test.api.inherit.BStub_BioFruitService remote = (byps.test.api.inherit.BStub_BioFruitService)bclient.getClass().getDeclaredMethod("getBioFruitService").invoke(bclient);
-			internalTest_byps_test_api_inherit_BioFruitService_certify(remote);
+			if (negotiatedVersion >= 1) {
+				internalTest_byps_test_api_inherit_BioFruitService_certify(remote);
+			}
 		}
 		
 		// byps.test.api.inherit.BioLemonService
 		{
 			byps.test.api.inherit.BStub_BioLemonService remote = (byps.test.api.inherit.BStub_BioLemonService)bclient.getClass().getDeclaredMethod("getBioLemonService").invoke(bclient);
-			internalTest_byps_test_api_inherit_BioLemonService_useParing(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_inherit_BioLemonService_useParing(remote);
+			}
 		}
 		
 		// byps.test.api.inherit.FruitService
 		{
 			byps.test.api.inherit.BStub_FruitService remote = (byps.test.api.inherit.BStub_FruitService)bclient.getClass().getDeclaredMethod("getFruitService").invoke(bclient);
-			internalTest_byps_test_api_inherit_FruitService_squeeze(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_inherit_FruitService_squeeze(remote);
+			}
 		}
 		
 		// byps.test.api.inherit.LemonService
 		{
 			byps.test.api.inherit.BStub_LemonService remote = (byps.test.api.inherit.BStub_LemonService)bclient.getClass().getDeclaredMethod("getLemonService").invoke(bclient);
-			internalTest_byps_test_api_inherit_LemonService_pick(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_inherit_LemonService_pick(remote);
+			}
 		}
 		
 		// byps.test.api.inherit.PlantService
 		{
 			byps.test.api.inherit.BStub_PlantService remote = (byps.test.api.inherit.BStub_PlantService)bclient.getClass().getDeclaredMethod("getPlantService").invoke(bclient);
-			internalTest_byps_test_api_inherit_PlantService_grow(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_inherit_PlantService_grow(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteArrayTypes1dim
 		{
 			byps.test.api.remote.BStub_RemoteArrayTypes1dim remote = (byps.test.api.remote.BStub_RemoteArrayTypes1dim)bclient.getClass().getDeclaredMethod("getRemoteArrayTypes1dim").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setBool(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setByte(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setChar(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setShort(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setInt(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setLong(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setFloat(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setDouble(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setString(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setPrimitiveTypes(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setObject(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setDate(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getBool(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getByte(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getChar(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getShort(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getInt(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getLong(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getFloat(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getDouble(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getString(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getPrimitiveTypes(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getObject(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getDate(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setBool(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setByte(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setChar(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setShort(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setLong(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setFloat(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setDouble(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setString(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setPrimitiveTypes(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setObject(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setDate(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getBool(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getByte(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getChar(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getShort(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getLong(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getFloat(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getDouble(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getString(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getPrimitiveTypes(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getObject(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_getDate(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteArrayTypes23
 		{
 			byps.test.api.remote.BStub_RemoteArrayTypes23 remote = (byps.test.api.remote.BStub_RemoteArrayTypes23)bclient.getClass().getDeclaredMethod("getRemoteArrayTypes23").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysInt(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysString(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysClass(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysObject(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysInline(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysString(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysClass(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysObject(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysInline(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteArrayTypes4dim
 		{
 			byps.test.api.remote.BStub_RemoteArrayTypes4dim remote = (byps.test.api.remote.BStub_RemoteArrayTypes4dim)bclient.getClass().getDeclaredMethod("getRemoteArrayTypes4dim").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setBool(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setByte(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setChar(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setShort(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setInt(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setLong(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setFloat(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setDouble(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setString(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setPrimitiveTypes(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setObject(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setDate(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getBool(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getByte(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getChar(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getShort(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getInt(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getLong(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getFloat(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getDouble(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getString(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getPrimitiveTypes(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getObject(remote);
-			internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getDate(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setBool(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setByte(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setChar(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setShort(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setLong(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setFloat(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setDouble(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setString(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setPrimitiveTypes(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setObject(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setDate(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getBool(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getByte(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getChar(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getShort(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getLong(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getFloat(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getDouble(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getString(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getPrimitiveTypes(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getObject(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_getDate(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteConstants
 		{
 			byps.test.api.remote.BStub_RemoteConstants remote = (byps.test.api.remote.BStub_RemoteConstants)bclient.getClass().getDeclaredMethod("getRemoteConstants").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteConstants_compare_HebrewC(remote);
-			internalTest_byps_test_api_remote_RemoteConstants_compare_AllTypesC(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteConstants_compare_HebrewC(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteConstants_compare_AllTypesC(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteEnums
 		{
 			byps.test.api.remote.BStub_RemoteEnums remote = (byps.test.api.remote.BStub_RemoteEnums)bclient.getClass().getDeclaredMethod("getRemoteEnums").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteEnums_getPlanet(remote);
-			internalTest_byps_test_api_remote_RemoteEnums_setPlanet(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteEnums_getPlanet(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteEnums_setPlanet(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteInlineInstance
 		{
 			byps.test.api.remote.BStub_RemoteInlineInstance remote = (byps.test.api.remote.BStub_RemoteInlineInstance)bclient.getClass().getDeclaredMethod("getRemoteInlineInstance").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_setActor(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_getActor(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DArray1dim(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DArray1dim(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DArray4dim(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DArray4dim(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DList(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DList(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DListList(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DListList(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DMap(remote);
-			internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DMap(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_setActor(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_getActor(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DArray1dim(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DArray1dim(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DArray4dim(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DArray4dim(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DList(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DList(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DListList(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DListList(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_setPoint2DMap(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteInlineInstance_getPoint2DMap(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteListTypes
 		{
 			byps.test.api.remote.BStub_RemoteListTypes remote = (byps.test.api.remote.BStub_RemoteListTypes)bclient.getClass().getDeclaredMethod("getRemoteListTypes").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteListTypes_getBoolean1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setBoolean1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getByte1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setByte1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getChar1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setChar1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getShort1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setShort1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getInt1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setInt1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getLong1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setLong1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getFloat1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setFloat1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getDouble1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setDouble1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getString1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setString1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getPrimitiveTypes1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setPrimitiveTypes1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getByte2(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setByte2(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getInt2(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setInt2(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getObj1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setObj1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setDate1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getDate1(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getInt3(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setInt3(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_getInt4(remote);
-			internalTest_byps_test_api_remote_RemoteListTypes_setInt4(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getBoolean1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setBoolean1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getByte1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setByte1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getChar1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setChar1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getShort1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setShort1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getInt1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setInt1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getLong1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setLong1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getFloat1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setFloat1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getDouble1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setDouble1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getString1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setString1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getPrimitiveTypes1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setPrimitiveTypes1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getByte2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setByte2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getInt2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setInt2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getObj1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setObj1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setDate1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getDate1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getInt3(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setInt3(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_getInt4(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteListTypes_setInt4(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteMapTypes
 		{
 			byps.test.api.remote.BStub_RemoteMapTypes remote = (byps.test.api.remote.BStub_RemoteMapTypes)bclient.getClass().getDeclaredMethod("getRemoteMapTypes").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getBoolean1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setBoolean1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getByte1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setByte1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getChar1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setChar1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getShort1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setShort1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getInt1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setInt1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getLong1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setLong1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getFloat1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setFloat1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getDouble1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setDouble1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getString1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setString1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getPrimitiveTypes1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setPrimitiveTypes1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getByte2(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setByte2(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getInt2(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setInt2(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getObj1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setObj1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_getDate1(remote);
-			internalTest_byps_test_api_remote_RemoteMapTypes_setDate1(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getBoolean1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setBoolean1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getByte1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setByte1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getChar1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setChar1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getShort1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setShort1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getInt1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setInt1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getLong1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setLong1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getFloat1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setFloat1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getDouble1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setDouble1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getString1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setString1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getPrimitiveTypes1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setPrimitiveTypes1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getByte2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setByte2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getInt2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setInt2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getObj1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setObj1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_getDate1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteMapTypes_setDate1(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemotePrimitiveTypes
 		{
 			byps.test.api.remote.BStub_RemotePrimitiveTypes remote = (byps.test.api.remote.BStub_RemotePrimitiveTypes)bclient.getClass().getDeclaredMethod("getRemotePrimitiveTypes").invoke(bclient);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_voidFunctionVoid(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setBool(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setByte(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setChar(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setShort(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setInt(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setLong(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setFloat(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setDouble(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setString(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setPrimitiveTypes(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setObject(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_setDate(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getBool(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getByte(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getChar(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getShort(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getInt(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getLong(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getFloat(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getDouble(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getString(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getPrimitiveTypes(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getObject(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_getDate(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_sendAllTypes(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_add(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_makeDate(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_parseDate(remote);
-			internalTest_byps_test_api_remote_RemotePrimitiveTypes_throwException(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_voidFunctionVoid(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setBool(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setByte(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setChar(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setShort(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setLong(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setFloat(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setDouble(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setString(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setPrimitiveTypes(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setObject(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_setDate(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getBool(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getByte(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getChar(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getShort(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getLong(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getFloat(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getDouble(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getString(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getPrimitiveTypes(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getObject(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getDate(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_sendAllTypes(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_add(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_makeDate(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_parseDate(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_throwException(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteReferences
 		{
 			byps.test.api.remote.BStub_RemoteReferences remote = (byps.test.api.remote.BStub_RemoteReferences)bclient.getClass().getDeclaredMethod("getRemoteReferences").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteReferences_getNode(remote);
-			internalTest_byps_test_api_remote_RemoteReferences_setNode(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteReferences_getNode(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteReferences_setNode(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteServerCtrl
 		{
 			byps.test.api.remote.BStub_RemoteServerCtrl remote = (byps.test.api.remote.BStub_RemoteServerCtrl)bclient.getClass().getDeclaredMethod("getRemoteServerCtrl").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteServerCtrl_publishRemote(remote);
-			internalTest_byps_test_api_remote_RemoteServerCtrl_getPublishedRemote(remote);
-			internalTest_byps_test_api_remote_RemoteServerCtrl_removePublishedRemote(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteServerCtrl_publishRemote(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteServerCtrl_getPublishedRemote(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteServerCtrl_removePublishedRemote(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteSetTypes
 		{
 			byps.test.api.remote.BStub_RemoteSetTypes remote = (byps.test.api.remote.BStub_RemoteSetTypes)bclient.getClass().getDeclaredMethod("getRemoteSetTypes").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getBoolean1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setBoolean1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getByte1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setByte1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getChar1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setChar1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getShort1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setShort1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getInt1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setInt1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getLong1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setLong1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getFloat1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setFloat1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getDouble1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setDouble1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getString1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setString1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getPrimitiveTypes1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setPrimitiveTypes1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getByte2(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setByte2(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getInt2(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setInt2(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getObj1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setObj1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_setDate1(remote);
-			internalTest_byps_test_api_remote_RemoteSetTypes_getDate1(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getBoolean1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setBoolean1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getByte1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setByte1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getChar1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setChar1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getShort1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setShort1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getInt1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setInt1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getLong1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setLong1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getFloat1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setFloat1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getDouble1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setDouble1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getString1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setString1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getPrimitiveTypes1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setPrimitiveTypes1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getByte2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setByte2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getInt2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setInt2(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getObj1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setObj1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_setDate1(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteSetTypes_getDate1(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteStreams
 		{
 			byps.test.api.remote.BStub_RemoteStreams remote = (byps.test.api.remote.BStub_RemoteStreams)bclient.getClass().getDeclaredMethod("getRemoteStreams").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteStreams_getImage(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_setImage(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_getImages(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_setImages(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_throwLastException(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_getTextStream(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_getVideoCheckSupportByteRange(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_getStreamDeferedProperies(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_setStreamDoNotMaterialize(remote);
-			internalTest_byps_test_api_remote_RemoteStreams_getStreamDoNotClone(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_getImage(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_setImage(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_getImages(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_setImages(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_throwLastException(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_getTextStream(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_getVideoCheckSupportByteRange(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_getStreamDeferedProperies(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_setStreamDoNotMaterialize(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteStreams_getStreamDoNotClone(remote);
+			}
 		}
 		
 		// byps.test.api.remote.RemoteWithAuthentication
 		{
 			byps.test.api.remote.BStub_RemoteWithAuthentication remote = (byps.test.api.remote.BStub_RemoteWithAuthentication)bclient.getClass().getDeclaredMethod("getRemoteWithAuthentication").invoke(bclient);
-			internalTest_byps_test_api_remote_RemoteWithAuthentication_setUseAuthentication(remote);
-			internalTest_byps_test_api_remote_RemoteWithAuthentication_login(remote);
-			internalTest_byps_test_api_remote_RemoteWithAuthentication_doit(remote);
-			internalTest_byps_test_api_remote_RemoteWithAuthentication_expire(remote);
-			internalTest_byps_test_api_remote_RemoteWithAuthentication_setReloginCount(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteWithAuthentication_setUseAuthentication(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteWithAuthentication_login(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteWithAuthentication_doit(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteWithAuthentication_expire(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_remote_RemoteWithAuthentication_setReloginCount(remote);
+			}
 		}
 		
 		// byps.test.api.srvr.ClientIF
 		{
 			byps.test.api.srvr.BStub_ClientIF remote = (byps.test.api.srvr.BStub_ClientIF)bclient.getClass().getDeclaredMethod("getClientIF").invoke(bclient);
-			internalTest_byps_test_api_srvr_ClientIF_incrementInt(remote);
-			internalTest_byps_test_api_srvr_ClientIF_getStreams(remote);
-			internalTest_byps_test_api_srvr_ClientIF_putStreams(remote);
-			internalTest_byps_test_api_srvr_ClientIF_sendChat(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ClientIF_incrementInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ClientIF_getStreams(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ClientIF_putStreams(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ClientIF_sendChat(remote);
+			}
 		}
 		
 		// byps.test.api.srvr.ServerIF
 		{
 			byps.test.api.srvr.BStub_ServerIF remote = (byps.test.api.srvr.BStub_ServerIF)bclient.getClass().getDeclaredMethod("getServerIF").invoke(bclient);
-			internalTest_byps_test_api_srvr_ServerIF_callClientIncrementInt(remote);
-			internalTest_byps_test_api_srvr_ServerIF_setPartner(remote);
-			internalTest_byps_test_api_srvr_ServerIF_getPartner(remote);
-			internalTest_byps_test_api_srvr_ServerIF_getStreamsFromClient(remote);
-			internalTest_byps_test_api_srvr_ServerIF_putStreamsOnClient(remote);
-			internalTest_byps_test_api_srvr_ServerIF_registerWithClientMap(remote);
-			internalTest_byps_test_api_srvr_ServerIF_getClient(remote);
-			internalTest_byps_test_api_srvr_ServerIF_getClientIds(remote);
-			internalTest_byps_test_api_srvr_ServerIF_callClientParallel(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_callClientIncrementInt(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_setPartner(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_getPartner(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_getStreamsFromClient(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_putStreamsOnClient(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_registerWithClientMap(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_getClient(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_getClientIds(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_srvr_ServerIF_callClientParallel(remote);
+			}
 		}
 		
 		// byps.test.api.ver.EvolveIF
 		{
 			byps.test.api.ver.BStub_EvolveIF remote = (byps.test.api.ver.BStub_EvolveIF)bclient.getClass().getDeclaredMethod("getEvolveIF").invoke(bclient);
-			internalTest_byps_test_api_ver_EvolveIF_setEvolve(remote);
-			internalTest_byps_test_api_ver_EvolveIF_getEvolve(remote);
-			internalTest_byps_test_api_ver_EvolveIF_setClient(remote);
-			internalTest_byps_test_api_ver_EvolveIF_getClient(remote);
-			internalTest_byps_test_api_ver_EvolveIF_sendEvolveToClient(remote);
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_ver_EvolveIF_setEvolve(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_ver_EvolveIF_getEvolve(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_ver_EvolveIF_setClient(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_ver_EvolveIF_getClient(remote);
+			}
+			if (negotiatedVersion >= 0) {
+				internalTest_byps_test_api_ver_EvolveIF_sendEvolveToClient(remote);
+			}
 		}
 		
 		log.info(")test");

@@ -12,6 +12,7 @@ public interface BioFruitServiceAsync extends BRemote,
 	BioFruitService, 
 	byps.test.api.inherit.FruitServiceAsync {
 	/**
+	 * @since 1
 	*/
 	// checkpoint byps.gen.j.PrintContext:383
 	public boolean certify(java.lang.String param) throws RemoteException;

@@ -7,5 +7,8 @@ import byps.RemoteException;
  */
 public interface BioFruitService extends FruitService {
 
+  /**
+   * @since 1 
+   */
   boolean certify(String param) throws RemoteException;
 }

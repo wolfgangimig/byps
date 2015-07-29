@@ -10300,11 +10300,16 @@
                 <method>
                     <name>certify</name>
                     <remoteName>byps.test.api.inherit.BioFruitService</remoteName>
-                    <since>0.0.0.0</since>
+                    <since>0.0.0.1</since>
                     <requestTypeName>byps.test.api.inherit.BRequest_BioFruitService_certify</requestTypeName>
                     <resultTypeName>byps.test.api.BResult_1</resultTypeName>
                     <exceptionTypeNames/>
-                    <comments/>
+                    <comments>
+                        <comment>
+                            <kind>@since</kind>
+                            <text>1</text>
+                        </comment>
+                    </comments>
                 </method>
             </methods>
             <comments>

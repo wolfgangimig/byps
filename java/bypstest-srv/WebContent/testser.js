@@ -715,6 +715,7 @@ byps.test.api.inherit.BStub_BioFruitService.prototype.grow = function(__byps__as
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
+ * @since 1
 */
 byps.test.api.inherit.BStub_BioFruitService.prototype.certify = function(param, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
@@ -767,6 +768,7 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(sess, from
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
+ * @since 1
 */
 byps.test.api.inherit.BStub_BioLemonService.prototype.certify = function(param, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
