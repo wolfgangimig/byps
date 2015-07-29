@@ -51,6 +51,7 @@ public class GenTestCompatibleApi {
 
     String className = pctxt.getTestClassName();
 
+    pr.println("@SuppressWarnings(\"all\")");
     pr.print("public class ").print(className).println(" {");
     pr.println();
     
@@ -125,7 +126,7 @@ public class GenTestCompatibleApi {
     // But cancelled it because some changes do not result in serialization errors, e.g. int to String.
     // Thus, exceptionExpected is always false.
     
-    pr.print("if (negotiatedVersion >= ").print(minfo.since).println(") {");
+    pr.print("if (negotiatedVersion >= ").print(minfo.since).println("L) {");
     pr.beginBlock();
     
     if (exceptionExpected) {
