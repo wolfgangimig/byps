@@ -367,7 +367,7 @@ public class CoTestProcess {
     classPath = classPath.replace(';', classpathSeparator.charAt(0));
     
     File javaHome = new File(System.getProperty("java.home"));
-    String javaExe = (new File(new File(javaHome, "bin"), "java.exe")).toString();
+    String javaExe = (new File(new File(javaHome, "bin"), "java")).toString();
     
     String [] args = new String[] {
         javaExe,
