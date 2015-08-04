@@ -29,6 +29,7 @@ import byps.gen.j.PropertiesJ;
 import byps.gen.js.GeneratorJS;
 import byps.gen.js.PropertiesJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
+import byps.gen.utils.CodePrinter;
 import byps.gen.utils.Utils;
 
 import com.sun.javadoc.Doclet;
@@ -133,6 +134,10 @@ public class BDoclet extends Doclet {
    */
   public static boolean start(RootDoc root) {
     log.debug("start(");
+    
+    // Enable printing checkpoints
+    CodePrinter.enableCheckpoints(true);
+    
     try {
 
       // -----------------------------------------------

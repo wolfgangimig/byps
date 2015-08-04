@@ -21,5 +21,4 @@ public class ArrayTypes1dim implements Serializable {
 	public Date[] date1;
 	public PrimitiveTypes[] primitiveTypes1;
 	
-	
 }

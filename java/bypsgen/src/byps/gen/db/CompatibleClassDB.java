@@ -230,11 +230,11 @@ public class CompatibleClassDB {
     else if (since == 0) {
       viols.add(qname + ": missing @since tag for " + memberName + ". Value " + BVersioning.longToString(ver) + " is expected.");
     }
-//    else if (since <= verP) {
-//      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
-//    }
-    else if (since != ver) {
-      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be equal to current API version=" + BVersioning.longToString(ver));
+    else if (since <= verP) {
+      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be newer version than previsous API version=" + BVersioning.longToString(verP));
+    }
+    else if (since > ver) {
+      viols.add(qname + ": @since tag for " + memberName + ", value=" + BVersioning.longToString(since) + ", must be less or equal to current API version=" + BVersioning.longToString(ver));
     }
 	}
 	

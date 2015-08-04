@@ -89,6 +89,8 @@ public class CodePrinter {
 	}
 	
 	public void checkpoint() {
+	  if (isPrintCheckpoints()) {
+	  
 	    int lineNumber = 0;
 	    StackTraceElement[] stackTraceElement = Thread.currentThread()
 	            .getStackTrace();
@@ -105,10 +107,24 @@ public class CodePrinter {
 	    String className = stackTraceElement[currentIndex].getClassName();
 	    
 	    println("// checkpoint " + className + ":" + lineNumber);
+	    
+	  }
 	}
 	
+	public static void enableCheckpoints(boolean en) {
+	  System.setProperty("printCheckpoints", Boolean.toString(en));
+	}
+	
+	private boolean isPrintCheckpoints() {
+	  if (printCheckpoints == null) {
+	    String s = System.getProperty("printCheckpoints");
+	    printCheckpoints = Boolean.parseBoolean(s != null ? s : "false");
+	  }
+	  return printCheckpoints;
+	}
 	
 	private PrintWriter pr;
 	private String indent = "";
 	private String sepline = "--------------------------------------------------------";
+	private Boolean printCheckpoints;
 }
