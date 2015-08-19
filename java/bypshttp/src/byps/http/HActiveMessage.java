@@ -2,7 +2,9 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +12,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import byps.BException;
+import byps.BExceptionC;
 
 public class HActiveMessage {
   private final static Log log = LogFactory.getLog(HActiveMessage.class);
@@ -24,6 +27,7 @@ public class HActiveMessage {
   private Thread workerThread;
   private volatile boolean canceled;
   private volatile String sessionId;
+  private AtomicLong cleanupAtMillis = new AtomicLong(0L);
 
   HActiveMessage(Long messageId) {
     this.messageId = messageId;
@@ -41,6 +45,19 @@ public class HActiveMessage {
     sessionId = s;
   }
   
+  public boolean queryCleanup() {
+    boolean ret = false;
+    long ms = cleanupAtMillis.get();
+    if (ms != 0) {
+      ret = ms < System.currentTimeMillis();
+    }
+    else if (isCanceled() || isFinished()) { // just to make sure that I never forget to cleanup a message,
+      // cleanupAtMillis should already be set if the message is finished 
+      cleanupAtMillis.compareAndSet(0, System.currentTimeMillis() + HConstants.KEEP_MESSAGE_AFTER_FINISHED);
+    }
+    return ret;
+  }
+  
   public synchronized boolean isLongPoll() {
     return workerThread == null && rctxtMessage != null;
   }
@@ -56,7 +73,17 @@ public class HActiveMessage {
     if (log.isDebugEnabled()) log.debug("assigned rctxt=" + rctxt + ", workerThread=" + workerThread);
   }
   
-  public synchronized void addIncomingStream(Long streamId) {
+  public synchronized void addIncomingStream(Long streamId) throws BException {
+    if (isCanceled()) {
+      if (log.isDebugEnabled()) log.debug("Message was canceled");
+      throw new BException(BExceptionC.CANCELLED, "Message was canceled");
+    }
+    if (isFinished()) {
+      if (log.isDebugEnabled()) log.debug("Message was finished");
+      throw new BException(BExceptionC.CANCELLED, "Message was finished");
+    }
+    
+    if (log.isDebugEnabled()) log.debug("add incoming stream " + streamId);
     incomingStreams.add(streamId);
   }
   
@@ -103,6 +130,7 @@ public class HActiveMessage {
   public synchronized void removeWorker() {
     if (log.isDebugEnabled()) log.debug("removeWorker(" + messageId);
     workerThread = null;
+    cleanupAtMillis.compareAndSet(0, System.currentTimeMillis() + HConstants.KEEP_MESSAGE_AFTER_FINISHED);
     checkFinished();
     if (log.isDebugEnabled()) log.debug(")removeWorker");
   }
@@ -111,7 +139,8 @@ public class HActiveMessage {
     if (log.isDebugEnabled()) log.debug("cancelMessage(" + messageId);
 
     canceled = true;
-
+    cleanupAtMillis.compareAndSet(0, System.currentTimeMillis() + HConstants.KEEP_MESSAGE_AFTER_FINISHED);
+    
     // Threads might wait in getIncomingStream()
     this.notifyAll();
 
@@ -146,7 +175,7 @@ public class HActiveMessage {
     incomingStreams.clear();
     
     checkFinished();
-
+    
     if (log.isDebugEnabled()) log.debug(")cancelMessage");
   }
 
@@ -156,6 +185,7 @@ public class HActiveMessage {
     sbuf.append("[").append(messageId);
     if (workerThread != null) sbuf.append(",").append(workerThread.getName());
     if (canceled) sbuf.append(",canceled");
+    if (cleanupAtMillis.get() != 0) sbuf.append(",cleanupAt=" + new Date(cleanupAtMillis.get()));
     sbuf.append("]");
     return sbuf.toString();
   }

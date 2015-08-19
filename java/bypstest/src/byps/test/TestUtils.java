@@ -54,7 +54,7 @@ public class TestUtils {
 	private static Log log = LogFactory.getLog(TestUtils.class);
 	public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
 	//public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
-	public static boolean TEST_LARGE_STREAMS = false;
+	public static boolean TEST_LARGE_STREAMS = true;
 	
 	public static BTransport createTransport() {
 		return createTransport(BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, 0);
@@ -244,7 +244,7 @@ public class TestUtils {
 					boolean[] x = (boolean[])a;
 					boolean[] y = (boolean[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + " a[].length != b[].length");
+						throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -254,7 +254,7 @@ public class TestUtils {
 					byte[] x = (byte[])a;
 					byte[] y = (byte[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + " a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -264,7 +264,7 @@ public class TestUtils {
 					char[] x = (char[])a;
 					char[] y = (char[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + " a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -274,7 +274,7 @@ public class TestUtils {
 					short[] x = (short[])a;
 					short[] y = (short[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + " a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -284,7 +284,7 @@ public class TestUtils {
 					int[] x = (int[])a;
 					int[] y = (int[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -294,7 +294,7 @@ public class TestUtils {
 					long[] x = (long[])a;
 					long[] y = (long[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -304,7 +304,7 @@ public class TestUtils {
 					float[] x = (float[])a;
 					float[] y = (float[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -314,7 +314,7 @@ public class TestUtils {
 					double[] x = (double[])a;
 					double[] y = (double[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -324,7 +324,7 @@ public class TestUtils {
 					String[] x = (String[])a;
 					String[] y = (String[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + " a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -334,7 +334,7 @@ public class TestUtils {
 					Object[] x = (Object[])a;
 					Object[] y = (Object[])b;
 					if (x.length != y.length) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+            throw new AssertionError(msg + " expected length=" + x.length + ", read=" + y.length);
 					}
 					for (int i = 0; i < x.length; i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x[i], y[i], alreadyCheckedObjs);
@@ -344,7 +344,7 @@ public class TestUtils {
 					List x = (List)a;
 					List y = (List)b;
 					if (x.size() != y.size()) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+            throw new AssertionError(msg + " expected size=" + x.size() + ", read=" + y.size());
 					}
 					for (int i = 0; i < x.size(); i++) {
 						internalAssertEquals(log, msg + "[" + i + "]", x.get(i), y.get(i), alreadyCheckedObjs);
@@ -354,7 +354,7 @@ public class TestUtils {
 					Set x = (Set)a;
 					Set y = (Set)b;
 					if (x.size() != y.size()) {
-						throw new AssertionError(msg + "a[].length != b[].length");
+            throw new AssertionError(msg + " expected size=" + x.size() + ", read=" + y.size());
 					}
 					
 					for (Iterator i = x.iterator(); i.hasNext(); ) {
@@ -388,7 +388,7 @@ public class TestUtils {
 					Map x = (Map)a;
 					Map y = (Map)b;
 					if (x.size() != y.size()) {
-						throw new AssertionError(msg + " a[].length != b[].length");
+            throw new AssertionError(msg + " expected size=" + x.size() + ", read=" + y.size());
 					}
 					for (Iterator i = x.keySet().iterator(); i.hasNext(); ) {
 						Object k = i.next();
@@ -651,7 +651,8 @@ public class TestUtils {
 		
         byte[] ebuf = new byte[10 * 1000];
 	    byte[] rbuf = new byte[10 * 1000];
-        int n = 0, p = 0;
+        int n = 0;
+        long p = 0;
         do
         {
             n = estrm.read(ebuf, 0, ebuf.length);
@@ -667,8 +668,9 @@ public class TestUtils {
                 int n2 = 0;
                 while (n2 < n)
                 {
+                    p += n2;
                     int n3 = rstrm.read(rbuf, n2, n - n2);
-                    TestUtils.assertTrue(log, msg + ". Unexpected end of stream", n3 > 0);
+                    TestUtils.assertTrue(log, msg + ". Unexpected end of stream, p=" + p, n3 > 0);
                     n2 += n3;
                 }
 

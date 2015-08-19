@@ -36,6 +36,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 		streamParts.put(partId, streamPart);
 		if (isLastPart) maxPartId = partId+1;
 		notifyAll(); // notify thread that might wait in read()
+		extendLifetime();
 		if (log.isDebugEnabled()) log.debug(")addStream");
 	}
 	

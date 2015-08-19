@@ -21,21 +21,25 @@ public class HOutgoingStream extends BContentStreamWrapper {
 	}
 	
 	public InputStream ensureStream() throws IOException {
-	  if (isOpen) return innerStream;
 	  
-    if (innerStream instanceof BContentStreamWrapper) {
-      BContentStreamWrapper bstream = (BContentStreamWrapper)innerStream;
-      bstream.ensureStream();
-      bstream.ensureProperties();
-      copyProperties(bstream);
-    }
-    else if (innerStream instanceof BContentStream) {
-      BContentStream bstream = (BContentStream)innerStream;
-      bstream.ensureProperties();
-      copyProperties(bstream);
-    }
-    
-    isOpen = true;
+	  if (!isOpen) {
+	  
+      if (innerStream instanceof BContentStreamWrapper) {
+        BContentStreamWrapper bstream = (BContentStreamWrapper)innerStream;
+        bstream.ensureStream();
+        bstream.ensureProperties();
+        copyProperties(bstream);
+      }
+      else if (innerStream instanceof BContentStream) {
+        BContentStream bstream = (BContentStream)innerStream;
+        bstream.ensureProperties();
+        copyProperties(bstream);
+      }
+      
+      isOpen = true;
+	  }
+	  
+	  extendLifetime();
     
 		return innerStream;
 	}

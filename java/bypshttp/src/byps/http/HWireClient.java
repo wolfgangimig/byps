@@ -166,6 +166,12 @@ public class HWireClient extends BWire {
       this.messageId = messageId;
       this.nbOfOutstandingResults = nbOfRequests;
     }
+    
+    private boolean unsync_gotException() {
+      if (ex != null) return true;
+      if (result != null && result.header != null && result.header.error != 0) return true;
+      return false;
+    }
 
     @Override
     public void setAsyncResult(BMessage msg, Throwable ex) {
@@ -182,14 +188,19 @@ public class HWireClient extends BWire {
         if (log.isDebugEnabled()) log.debug("isLastResult=" + isLastResult);
 
         if (ex != null) {
-          cancelMessage = this.ex == null;
+          cancelMessage = !unsync_gotException();
           if (cancelMessage) this.ex = ex;
           if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
         }
-
+        
         if (msg != null && msg.buf != null) {
           if (log.isDebugEnabled()) log.debug("set result=" + msg);
           this.result = msg;
+          
+          if (msg.header.error != 0) {
+            if (log.isDebugEnabled()) log.debug("msg.header.error=" + msg.header.error);
+            cancelMessage = !unsync_gotException();
+          }
         }
         else {
           // Stream result OK
@@ -200,7 +211,7 @@ public class HWireClient extends BWire {
           innerEx = this.ex;
         }
 
-      }
+      } // synchronized
 
       if (isLastResult) {
         if (log.isDebugEnabled()) log.debug("innerResult.setAsyncResult(result=" + innerMsg + ", ex=" + innerEx);

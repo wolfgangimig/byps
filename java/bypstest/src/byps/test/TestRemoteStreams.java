@@ -5,14 +5,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InterruptedIOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import junit.framework.Assert;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,6 +30,7 @@ import byps.RemoteException;
 import byps.http.HConstants;
 import byps.test.api.BClient_Testser;
 import byps.test.api.remote.RemoteStreams;
+import junit.framework.Assert;
 
 /**
  * Tests for interface functions with stream types. This test requires the
@@ -207,6 +208,51 @@ public class TestRemoteStreams {
       istrmR.close();
     }
   }
+  
+  /**
+   * Read/write large stream
+   * @throws InterruptedException
+   * @throws IOException
+   */
+  @Test
+  public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsLargeStream(");
+    if (TestUtils.TEST_LARGE_STREAMS) {
+      long contentLength = Double.valueOf(120.0e9).longValue() + 1;
+//      InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
+//      remote.setImage(istrm);
+  
+      InputStream istrmR = remote.getImage();
+      InputStream istrmE = new TestUtils.MyContentStream(contentLength, false);
+      TestUtils.assertEquals(log, "stream", istrmE, istrmR);
+    }
+    else {
+      log.info("skipped");
+    }
+    log.info(")testRemoteStreamsLargeStream");
+  }
+
+  /**
+   * Read/write stream slowly.
+   * Ensure that the function call is finished after the server detects that the stream is not available.
+   * This test lasts more than 20 seconds.
+   * @throws InterruptedException
+   * @throws IOException
+   */
+  @Test
+  public void testRemoteStreamsSlowStream() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsSlowStream(");
+    try {
+      long contentLength = 123456; 
+      InputStream istrm = new MySlowStream(contentLength, 2 * HConstants.KEEP_MESSAGE_AFTER_FINISHED);
+      remote.setImage(istrm);
+      TestUtils.fail(log, "Exception expected");
+    }
+    catch (BException e){
+      TestUtils.assertTrue(log, "Expected Exception \"Wait for stream failed\"", e.toString().indexOf("Wait for stream") >= 0);
+    }
+    log.info(")testRemoteStreamsSlowStream");
+  }
 
   /**
    * Wrapper class for ByteArrayInputStream. - helps to check that all streams
@@ -359,16 +405,13 @@ public class TestRemoteStreams {
     try {
       // There should be no active messages on the server after the client side
       // has been finished.
-      long[] messageIds = null;
-      int keepMessageSeconds = ((int) HConstants.KEEP_MESSAGE_AFTER_FINISHED / 1000);
-      int cleanupSeconds = (int) HConstants.CLEANUP_MILLIS / 1000;
-      int waitUntilMessagesExpired = 2 * Math.max(cleanupSeconds, keepMessageSeconds) + 1;
-      for (int retry = 0; retry < waitUntilMessagesExpired; retry++) {
-        messageIds = client.getTransport().getWire().getTestAdapter().getAcitveMessagesOnServer(false);
-        if (messageIds.length == 0) break;
-        Thread.sleep(1000);
-      }
+      long waitMillis = 2 * Math.max(HConstants.KEEP_MESSAGE_AFTER_FINISHED, HConstants.CLEANUP_MILLIS);
+      Thread.sleep(waitMillis);
+      
+      long[] messageIds = client.getTransport().getWire().getTestAdapter().getAcitveMessagesOnServer(false);
+      log.info("messageIds=" + Arrays.toString(messageIds));
       TestUtils.assertEquals(log, "active messages: ", new long[0], messageIds);
+      
     } finally {
       client.done();
       client = null;
@@ -631,6 +674,37 @@ public class TestRemoteStreams {
     TestUtils.assertEquals(log, "attachmentCode", BContentStream.ATTACHMENT, bstrm.getAttachmentCode());
  
     log.info(")testHandoverStreamWithDeferedProperties");
+  }
+
+  public static class MySlowStream extends InputStream {
+    private long pos;
+    private final long nbOfBytes;
+    private final long waitMillis;
+    
+    public MySlowStream(long nbOfBytes, long waitMillis) {
+      this.nbOfBytes = nbOfBytes;
+      this.waitMillis = waitMillis;
+    }
+
+    @Override
+    public int read() throws IOException {
+      if (nbOfBytes == pos) {
+        return -1;
+      }
+      else {
+        if (pos == 0 && waitMillis != 0) {
+          try {
+            Thread.sleep(waitMillis);
+          }
+          catch (InterruptedException e) {
+            throw new InterruptedIOException();
+          }
+        }
+        int ret = (int)(pos++ & 0xFF);
+        if ((ret % 5) == 0) ret = 0; 
+        return ret;
+      }
+    }
   }
 
 }

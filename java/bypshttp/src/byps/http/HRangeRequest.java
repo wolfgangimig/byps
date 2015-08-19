@@ -122,4 +122,14 @@ public class HRangeRequest {
     return valid;
   }
 
+  public String toString() {
+    String ret = "";
+    if (valid) {
+      ret = "[contentLength=" + contentLength + ", offset=" + offset + ", length=" + length + "]";
+    }
+    else {
+      ret = "[invalid]";
+    }
+    return ret;
+  }
 }

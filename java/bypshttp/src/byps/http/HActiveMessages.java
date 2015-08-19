@@ -26,12 +26,12 @@ import byps.BTargetId;
 
 public class HActiveMessages {
 	
-	/**
-	 * Messages currently in process.
-	 * Includes the long-polls.
-	 */
-	private final BHashMap<Long, HActiveMessage> activeMessages = new BHashMap<Long,HActiveMessage>();
-	
+  /**
+   * Messages currently in process.
+   * Includes the long-polls.
+   */
+  private final BHashMap<Long, HActiveMessage> activeMessages = new BHashMap<Long,HActiveMessage>();
+  
 	/**
 	 * Streams posted by HTML file upload.
 	 * Streams uploaded by HTML are received independent from a message. 
@@ -59,6 +59,10 @@ public class HActiveMessages {
 		if (msg.isCanceled()) {
 			if (log.isDebugEnabled()) log.debug("Message was canceled");
 			throw new BException(BExceptionC.CANCELLED, "Message was canceled");
+		}
+		if (msg.isFinished()) {
+      if (log.isDebugEnabled()) log.debug("Message was finished");
+      throw new BException(BExceptionC.CANCELLED, "Message was finished");
 		}
 		return msg;
 	}
@@ -211,7 +215,7 @@ public class HActiveMessages {
 	 * @param all false: cleanup expired, true: cleanup all
 	 */
 	public void cleanup(final boolean all) {
-		if (log.isDebugEnabled()) log.debug("cleanup(");
+		if (log.isDebugEnabled()) log.debug("cleanup(all=" + all);
 		
 		// HashSet for all active incoming streams
 		HashSet<Long> activeIncomingStreamIds = new HashSet<Long>(incomingStreams.keys());
@@ -228,7 +232,9 @@ public class HActiveMessages {
 			if (all || msg.checkReferencedStreamIds(activeIncomingStreamIds, referencedIncomingStreamIds)) {
 				if (log.isDebugEnabled()) log.debug("remove message=" + msg);
 				if (all) msg.cancelMessage();
-				activeMessages.remove(msg.messageId);
+				if (all || msg.queryCleanup()) {
+				  activeMessages.remove(msg.messageId);
+				}
 			}
 			else if (log.isDebugEnabled() && !msg.isLongPoll()) {
 	       log.debug("active message=" + msg);
@@ -236,13 +242,16 @@ public class HActiveMessages {
 		}
 		
 		// Cleanup expired or not referenced incoming streams
+    if (log.isDebugEnabled()) log.debug("cleanup incoming streams");
 		for (Long streamId : activeIncomingStreamIds) {
 			BContentStream stream = incomingStreams.get(streamId);
 			if (stream == null) continue;
 			
+			if (log.isDebugEnabled()) log.debug("stream=" + stream + ", expired=" + stream.isExpired() + ", referenced=" + referencedIncomingStreamIds.contains(streamId));
+			
 		  if (all || stream.isExpired() || !referencedIncomingStreamIds.contains(streamId)) {
 		    try {
-		      if (log.isDebugEnabled()) log.debug("close/remove incoming stream=" + stream);
+		      if (log.isDebugEnabled()) log.debug("close/remove");
 		      stream.close(); // removes from incomingStreams or outgoingStreams
 		      incomingStreams.remove(streamId);
 		    }
@@ -257,11 +266,13 @@ public class HActiveMessages {
 		
 		// Cleanup expired outgoing streams.
 		// And cleanup expired upload streams.
+    if (log.isDebugEnabled()) log.debug("cleanup outgoing streams");
 		ArrayList<BContentStream> ostreams = new ArrayList<BContentStream>(outgoingStreams.values());
     for (BContentStream stream : ostreams) {
+      if (log.isDebugEnabled()) log.debug("stream=" + stream + ", expired=" + stream.isExpired());
       if (all || stream.isExpired()) {
         try {
-          if (log.isDebugEnabled()) log.debug("close/remove outgoing stream=" + stream);
+          if (log.isDebugEnabled()) log.debug("close/remove");
           stream.close(); // removes from incomingStreams or outgoingStreams
           outgoingStreams.remove(stream.getTargetId().getStreamId());
         }
@@ -280,18 +291,22 @@ public class HActiveMessages {
 	/**
 	 * Returns the IDs of the messages.
 	 * @param inclLongPolls
+	 * @param excludeThread 
 	 * @return
 	 */
 	public List<Long> getActiveMessageIds(boolean inclLongPolls, Thread excludeThread) {
+	  if (log.isDebugEnabled()) log.debug("getActiveMessageIds(");
 		List<Long> list = new ArrayList<Long>();
 		List<HActiveMessage> msgs = new ArrayList<HActiveMessage>(activeMessages.values());
 		for (HActiveMessage msg : msgs) {
 		  if (msg.getWorkerThread() != excludeThread) {
   			if (inclLongPolls || !msg.isLongPoll()) {
+  			  if (log.isDebugEnabled()) log.debug("activeMessage=" + msg);
   				list.add(msg.messageId);
   			}
 		  }
 		}
+    if (log.isDebugEnabled()) log.debug(")getActiveMessageIds #=" + list.size());
 		return list;
 	}
 
@@ -322,6 +337,9 @@ public class HActiveMessages {
   }
 
   public HActiveMessage addIncomingStream(final BTargetId targetId, final HRequestContext rctxt) throws BException {
+    
+    final HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
+    
     if (rctxt.isAsync()) {
       addIncomingStreamAsync(targetId, rctxt);
     }
@@ -329,7 +347,6 @@ public class HActiveMessages {
       addIncomingStreamSync(targetId, rctxt);
     }
     
-    final HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
     msg.addIncomingStream(targetId.getStreamId());
     
     return msg;

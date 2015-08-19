@@ -91,6 +91,7 @@ public abstract class JcnnRequest implements HHttpRequest {
    * @throws IOException
    */
   protected int getResponseCode(HttpURLConnection c) throws IOException {
+    if (log.isDebugEnabled()) log.debug("getResponseCode(");
     if (responseCode == -1) {
       try {
         responseCode = c.getResponseCode();
@@ -100,6 +101,7 @@ public abstract class JcnnRequest implements HHttpRequest {
         responseCode = HttpURLConnection.HTTP_UNAUTHORIZED;
       }
     }
+    if (log.isDebugEnabled()) log.debug(")getResponseCode=" + responseCode);
     return responseCode;
   }
   

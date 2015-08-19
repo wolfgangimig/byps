@@ -19,7 +19,7 @@ public class HIncomingStreamAsync extends BContentStream  {
 
 	private static Log log = LogFactory.getLog(HIncomingStreamAsync.class);
 	protected InputStream is;
-	protected final HRequestContext rctxt;
+	protected HRequestContext rctxt;
 	protected final File tempDir;
 	
 	protected long readPos = 0;
@@ -71,15 +71,28 @@ public class HIncomingStreamAsync extends BContentStream  {
 			// The stream data must be completely read.
 			// Otherwise the data remains in the socket and 
 			// disturbs the next request.
-			while (is.read() != -1) {
-				//if (log.isDebugEnabled()) log.debug("read before close, " + (char)c);
+			try {
+  			long n = 0;
+  			while (is.read() != -1) {
+  				n++;
+  			}
+  		  if (log.isDebugEnabled()) log.debug("have read #bytes=" + n + ", before close");
+			} 
+			catch (Throwable ignored) { // Observed an NPE during testing
 			}
-			is.close();
+			finally {
+			  try { is.close(); } catch (Throwable ignored) {}
+	      is = null;
+			}
 			
-			HttpServletResponse response = (HttpServletResponse)rctxt.getResponse();
-			response.getOutputStream().close();
-			response.setStatus(HttpServletResponse.SC_OK);
+			try {
+	      HttpServletResponse response = (HttpServletResponse)rctxt.getResponse();
+			  response.getOutputStream().close();
+	      response.setStatus(HttpServletResponse.SC_OK);
+			} catch (Throwable ignored) {}
+			
 			rctxt.complete();
+			rctxt = null;
 			
 			super.close();
 		}

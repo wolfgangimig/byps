@@ -28,7 +28,9 @@ import byps.test.api.JRegistry_Testser;
 
 public class TestUtilsHttp {
 
-	private static Log log = LogFactory.getLog(TestUtilsHttp.class);
+	private static final int READ_TIMEOUT = 60;
+
+  private static Log log = LogFactory.getLog(TestUtilsHttp.class);
 	
 	//public static String url = "http://www.wilutions.com/bypstest-srv/bypsservlet";
 	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
@@ -68,7 +70,7 @@ public class TestUtilsHttp {
 		
 		myDesc.addRegistry(registry);
 
-		BWire wire = new HWireClient(url, flags, 600, tpool);
+		BWire wire = new HWireClient(url, flags, READ_TIMEOUT, tpool);
 		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, nbOfReverseRequests); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
@@ -82,7 +84,7 @@ public class TestUtilsHttp {
 	
 	public static BClient_Testser createClient2() throws RemoteException {
 		
-		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, 600, tpool);
+		BWire wire = new HWireClient(url2, BWire.FLAG_DEFAULT, READ_TIMEOUT, tpool);
 		
 		final BTransportFactory transportFactory = new HTransportFactoryClient(
 				BApiDescriptor_Testser.instance(), wire, 3); 
@@ -115,7 +117,8 @@ public class TestUtilsHttp {
 		ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*2, false));
     ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER*100, false));
 		if (TestUtils.TEST_LARGE_STREAMS) {
-			ret.add(new TestUtils.MyContentStream(0x100000000L, false));
+		  long contentLength = Double.valueOf(4.0e9).longValue();
+			ret.add(new TestUtils.MyContentStream(contentLength, false));
 		}
 		log.info(")makeTestStreams=" + ret);
 		return ret;

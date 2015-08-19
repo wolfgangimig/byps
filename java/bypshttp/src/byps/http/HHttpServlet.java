@@ -314,11 +314,14 @@ public abstract class HHttpServlet extends HttpServlet implements
     OutputStream os = null;
     byte[] buf = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
     int len = 0;
+    final long BYTES_WRITTEN_GRANULARITY = 100*1000*1000;
+    final long BYTES_WRITTEN_MB = 1000*1000;
     
     try {
       
       // Evaluate offset, length, etc.
       rangeRequest.evaluateByteRange(is);
+      if (log.isDebugEnabled()) log.debug("rangeRequest=" + rangeRequest);
       
       // Position the stream to the given offset
       if (rangeRequest.isValid()) {
@@ -355,6 +358,11 @@ public abstract class HHttpServlet extends HttpServlet implements
         os.write(buf, 0, len);
         
         bytesWritten += len;
+        if (log.isDebugEnabled()) {
+          if (bytesWritten != 0 && (bytesWritten % BYTES_WRITTEN_GRANULARITY == 0)) {
+            if (log.isDebugEnabled()) log.debug("bytesWritten=" + (bytesWritten / BYTES_WRITTEN_MB) + "MB");
+          }
+        }
 
         int bytesToRead = buf.length;
         if (rangeRequest.getLength() != -1) {
@@ -364,7 +372,14 @@ public abstract class HHttpServlet extends HttpServlet implements
         if (bytesToRead == 0) break;
         len = is.read(buf, 0, bytesToRead);
       }
-      
+
+      if (log.isDebugEnabled()) {
+        long totalMB = bytesWritten / BYTES_WRITTEN_MB;
+        if (totalMB != 0) {
+          if (log.isDebugEnabled()) log.debug("total bytesWritten=" + totalMB + "MB");
+        }
+      }
+
     }
     catch (BException e) {
       log.debug("Read stream failed", e);
@@ -1132,13 +1147,13 @@ public abstract class HHttpServlet extends HttpServlet implements
           status = HttpServletResponse.SC_NOT_FOUND;
         }
 
-        try {
-          response.sendError(status, e.getMessage());
-        }
-        catch (Throwable e2) {
-          // java.lang.IllegalStateException: Cannot call sendError() after the
-          // response has been committed
-          log.debug("ex2=" + e2 + " caused by:", e);
+        if (!response.isCommitted()) {
+          try {
+            response.sendError(status, e.getMessage());
+          }
+          catch (Throwable e2) {
+            log.debug("ex2=" + e2 + " caused by:", e);
+          }
         }
       }
 
