@@ -2,6 +2,53 @@
 var byps = byps || {};
 
 /**
+ * Optional: function to create a HTML5 compatible Promise.
+ * If this member is set, all function calls are executed asynchronously and 
+ * return a Promise object. 
+ * Example: function(cb) { return new Promise(cb); }
+ * The created Promise object must supply the callback function cb with two parameters: 
+ * a resolve function and a reject function. 
+ */
+byps.createPromise = null;
+
+/**
+ * Initialize default asynchronous processing.
+ * After this function has been called, all byps functions are processed asynchronously and return a Promise 
+ * object. If the JavaScript environment does not provide a Promise "class", include a jQuery library that supports
+ * $.Deferred (tested with jquery 2.1.).
+ */
+byps.initPromiseDefaultImpl = function() {
+	var ret = null;
+	
+	// HTML5 Promise available?
+	if (typeof Promise != 'undefined') {
+		ret = function(cb) { 
+			return new Promise(cb); 
+		};
+	}
+	
+	// jquery 
+	else if (typeof $ != 'undefined' && typeof $.Deferred != 'undefined') {
+	  ret = function(cb) { 
+        var D = $.Deferred(function(d) {
+    	    var resolve = d.resolve;
+    	    var reject = d.reject;
+  	      	cb(resolve, reject);
+    	  });
+        return D; 
+	  };
+	}
+	
+	// Angular JS - not tested
+	else if (typeof $q != 'undefined') {
+	  ret = $q(cb);
+	}
+	
+	byps.createPromise = ret;
+	return ret;
+};
+
+/**
  * Longpoll timeout.
  * Usually a timeout of 30s is used in client applications communicating over the internet.
  * E.g. the default browser on my Android tablet ignores XHR.timeout and always uses 30s.
@@ -900,7 +947,7 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 
 byps.BAuthentication = function() {
 	this.authenticate = function(client, asyncResult) {
-		;
+		var dummy = 0;
 	};
 	this.isReloginException = function(client, ex, typeId) {
 		return false;
@@ -931,7 +978,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	
 	this.getTargetId = function() {
 		return this.targetId;
-	}
+	};
 	
 	this.setSessionId = function(sessionId) {
 		this.sessionId = sessionId;
@@ -961,11 +1008,34 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	this.getInput = function(jsonText) {
 		return new byps.BInputOutput(this, null, jsonText);
 	};
-
+	
 	this.sendMethod = function(methodRequest, asyncResult) {
 		var ret = null;
-		if (asyncResult) {
+		var me = this;
+		if (!asyncResult && byps.createPromise) {
+			ret = byps.createPromise(function(resolve, reject) {
+				me.internalSendMethod(methodRequest, function(result, ex) {
+					if (ex) {
+						reject(ex);
+					}
+					else {
+						resolve(result);
+					}
+				});
+			});
+		}
+		else {
+			ret = me.internalSendMethod(methodRequest, asyncResult);
+		}
+		
+		return ret;
+	};
 
+	this.internalSendMethod = function(methodRequest, asyncResult) {
+		var ret = null;
+
+		if (asyncResult) {
+			
 			this._assignSessionThenSendMethod(methodRequest, function(methodResult, ex) {
 				var ret = methodResult ? methodResult.result : null;
 				asyncResult(ret, ex);
@@ -1536,8 +1606,48 @@ byps.BClient = function() {
 	 * Start reverse server.
 	 */
 	this._startRVal = true; 
+	
+	this.start = function(asyncResultOrStartR, startROrNothing) { // BAsyncResult<BClient>
+		var ret = null;
+		var me = this;
+		
+		var asyncResult = null;
+		var startR = true;
+		
+		if (asyncResultOrStartR) {
+			if (asyncResultOrStartR instanceof Function) {
+				// Example: this.start(function(...), true);
+				asyncResult = asyncResultOrStartR;
+				if (typeof startROrNothing != 'undefined') startR = !!startROrNothing;  
+			}
+			else {
+				// Example: this.start(true);
+				asyncResult = null;
+				startR = !!asyncResultOrStartR;
+			}
+		}
+		else {
+			// Example: this.start(null, true);
+			asyncResult = null;
+			if (typeof startROrNothing != 'undefined') startR = !!startROrNothing;  
+		}
+		
+		if (!asyncResult && byps.createPromise) {
+			var cb = function(resolve, reject) {
+				me._internalStart(function(result, ex) {
+					if (ex) reject(ex); else resolve(me);
+				}, startR);
+			};
+			ret = byps.createPromise(cb);
+		}
+		else {
+			ret = me._internalStart(asyncResult, startR);
+		}
+		
+		return ret;
+	}
 
-	this.start = function(asyncResult, startR) { // BAsyncResult<BClient>
+	this._internalStart = function(asyncResult, startR) { // BAsyncResult<BClient>
 		
 		if (startR != undefined) {
 			this._startRVal = !!startR;
@@ -1564,7 +1674,23 @@ byps.BClient = function() {
 		}
 	}
 
-	this.done = function(asyncResult) {
+	this.done = function(asyncResult) { 
+		var ret = null;
+		var me = this;
+		if (!asyncResult && byps.createPromise) {
+			ret = byps.createPromise(function(resolve, reject) {
+				me._internalDone(function(result, ex) {
+					if (ex) reject(ex); else resolve(result);
+				});
+			});
+		}
+		else {
+			ret = me._internalDone(asyncResult);
+		}
+		return ret;
+	}
+
+	this._internalDone = function(asyncResult) {
 		this.transport.wire.done(asyncResult);
 	};
 
