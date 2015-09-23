@@ -736,14 +736,15 @@ public abstract class HHttpServlet extends HttpServlet implements
 
     }
     catch (Throwable e) {
-      if (log.isInfoEnabled()) log.info("Failed to process message.", e);
-      HttpServletResponse resp = rctxt != null ? (HttpServletResponse) rctxt
-          .getResponse() : response;
-      resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-      resp.getWriter().print(e.toString());
-      resp.getWriter().close();
-      if (rctxt != null) {
-        rctxt.complete();
+      HttpServletResponse resp = rctxt != null ? (HttpServletResponse) rctxt.getResponse() : response;
+      if (!resp.isCommitted()) {
+        if (log.isInfoEnabled()) log.info("Failed to process message.", e);
+        resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        resp.getWriter().print(e.toString());
+        resp.getWriter().close();
+        if (rctxt != null) {
+          rctxt.complete();
+        }
       }
     }
     finally {
@@ -794,8 +795,7 @@ public abstract class HHttpServlet extends HttpServlet implements
 
         }
         catch (Throwable ex) {
-          if (log.isInfoEnabled()) log.info("Failed to write negotiate result",
-              e);
+          if (log.isInfoEnabled()) log.info("Failed to write negotiate result", e);
           try {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             e.printStackTrace(resp.getWriter());
@@ -1063,10 +1063,12 @@ public abstract class HHttpServlet extends HttpServlet implements
 
     }
     catch (Throwable e) {
-      if (log.isInfoEnabled()) log.info("Failed to process message.", e);
-      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-      response.getWriter().print(e.toString());
-      response.getWriter().close();
+      if (!response.isCommitted()) {
+        if (log.isInfoEnabled()) log.info("Failed to process message.", e);
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.getWriter().print(e.toString());
+        response.getWriter().close();
+      }
     }
     finally {
       // NDC.pop();
