@@ -222,7 +222,7 @@ public abstract class HSession
     // the time for unauthorized pending sessions, set it to the default
     // lifetime.
     int n = maxInactiveSeconds;
-    if (n == HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED) {
+    if (n == getOptionMaxInactiveSecondsAuth()) {
       maxInactiveSeconds = n = HConstants.DEFAULT_INACTIVE_SECONDS_AUTHENTICATED;
     }
     
