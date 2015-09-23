@@ -14,6 +14,11 @@ public class HConstants {
    * milliseconds.
    */
   public final static long REQUEST_TIMEOUT_MILLIS = 10 * 60 * 1000L;
+  
+  /**
+   * An incoming stream must be available after this millis.
+   */
+  public final static long INCOMING_STREAM_TIMEOUT_MILLIS = 10 * 1000L;
 
   /**
    * Time for internal cleanup operations.

@@ -139,7 +139,7 @@ public class HActiveMessages {
 	public BContentStream getIncomingStream(BTargetId targetId) throws IOException {
   	if (log.isDebugEnabled()) log.debug("getIncomingStream(" + targetId);
   	
-    long timeoutMillis = HConstants.REQUEST_TIMEOUT_MILLIS;
+    long timeoutMillis = HConstants.INCOMING_STREAM_TIMEOUT_MILLIS;
   	BContentStream stream = getIncomingOrOutgoingStream(targetId.getStreamId(), timeoutMillis);
     	
 		if (log.isDebugEnabled()) log.debug(")getIncomingStream=" + stream);
@@ -510,7 +510,7 @@ public class HActiveMessages {
     long t1 = System.currentTimeMillis();
     BContentStream stream = null;
 
-    while (timeoutMillis > 0) {
+    while (true) {
 
       stream = incomingStreams != null ? incomingStreams.get(streamId) : null;
       if (stream != null) break;
@@ -520,20 +520,20 @@ public class HActiveMessages {
 
       // Wait until the requested stream is received
       long t2 = System.currentTimeMillis();
-      timeoutMillis = timeoutMillis - (t2 - t1);
-      if (timeoutMillis <= 0) {
-        if (log.isDebugEnabled()) log.debug("Stream not found, streamId=" + streamId);
-        throw new FileNotFoundException("Stream not found, streamId=" + streamId);
+      if (timeoutMillis < (t2 - t1)) {
+        String msg = "Wait for stream=" + streamId + " timed out after " + timeoutMillis + "ms";
+        if (log.isDebugEnabled()) log.debug(msg);
+        throw new BException(BExceptionC.TIMEOUT, msg);
       }
 
       // Wait not more than 10s to make sure,
       // that we never will hang here because of a lost notify().
-      long to = Math.min(timeoutMillis, 10 * 1000);
+      long to = Math.min(timeoutMillis, HConstants.INCOMING_STREAM_TIMEOUT_MILLIS/10);
       if (log.isDebugEnabled()) log.debug("wait for stream=" + streamId + ", timeout=" + to);
       try {
         wait(to);
       } catch (InterruptedException e) {
-        throw new InterruptedIOException("Wait for stream=" + streamId + " interrupted.");
+        throw new BException(BExceptionC.TIMEOUT, "Wait for stream=" + streamId + " interrupted.");
       }
     }
     

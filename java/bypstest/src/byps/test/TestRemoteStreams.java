@@ -210,7 +210,7 @@ public class TestRemoteStreams {
   }
   
   /**
-   * Read/write large stream
+   * Read/write large stream, 120GB
    * @throws InterruptedException
    * @throws IOException
    */
@@ -219,8 +219,8 @@ public class TestRemoteStreams {
     log.info("testRemoteStreamsLargeStream(");
     if (TestUtils.TEST_LARGE_STREAMS) {
       long contentLength = Double.valueOf(120.0e9).longValue() + 1;
-//      InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
-//      remote.setImage(istrm);
+      InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
+      remote.setImage(istrm);
   
       InputStream istrmR = remote.getImage();
       InputStream istrmE = new TestUtils.MyContentStream(contentLength, false);
@@ -244,11 +244,12 @@ public class TestRemoteStreams {
     log.info("testRemoteStreamsSlowStream(");
     try {
       long contentLength = 123456; 
-      InputStream istrm = new MySlowStream(contentLength, 2 * HConstants.KEEP_MESSAGE_AFTER_FINISHED);
+      InputStream istrm = new MySlowStream(contentLength, 2 * HConstants.INCOMING_STREAM_TIMEOUT_MILLIS);
       remote.setImage(istrm);
       TestUtils.fail(log, "Exception expected");
     }
     catch (BException e){
+      log.info("exception "+ e);
       TestUtils.assertTrue(log, "Expected Exception \"Wait for stream failed\"", e.toString().indexOf("Wait for stream") >= 0);
     }
     log.info(")testRemoteStreamsSlowStream");

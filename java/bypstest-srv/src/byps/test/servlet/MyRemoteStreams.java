@@ -52,13 +52,14 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 		    if (log.isDebugEnabled()) log.debug("materialize stream ...");
 				imageStream = BContentStream.materialize(istrm);
         if (log.isDebugEnabled()) log.debug("materialize stream OK");
-			} catch (BException e) {
-        if (log.isDebugEnabled()) log.debug("BException=" + e);
-			  throw e;
-			} catch (IOException e) {
-        if (log.isDebugEnabled()) log.debug("IOException=" + e);
-				throw new BException(BExceptionC.IOERROR, "", e);
-			}
+	     } catch (BException e) {
+	        log.error("Exception=", e);
+	        throw e;
+	    }
+			catch (Throwable e) {
+        log.error("Exception=", e);
+        throw new BException(BExceptionC.IOERROR, "", e);
+      }
 		}
 		if (log.isDebugEnabled()) log.debug(")setImage");
 	}
@@ -67,9 +68,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	public InputStream getImage() throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("getImage()=" + imageStream);
 		try {
-      //BContentStream ret = imageStream.cloneStream();
-		  BContentStream ret = new BContentStreamWrapper(new FileInputStream("d:\\temp\\bypssrv\\bupload_2310762754877767153.tmp"), "application/byps-120000000001", 120000000001L);
-		  ret.setContentDisposition("attachment; filename=file-120000000001.txt");
+      BContentStream ret = imageStream.cloneStream();
       return ret;
     } catch (IOException e) {
       throw new RemoteException("Failed to clone stream.", e);
