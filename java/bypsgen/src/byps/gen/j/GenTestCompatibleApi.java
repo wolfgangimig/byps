@@ -107,7 +107,7 @@ public class GenTestCompatibleApi {
   
   private void generateCallTestMethods(RemoteInfo rinfo) {
     pr.print("// ").print(rinfo.toString()).println();
-    pr.println("{");
+    pr.print("if (negotiatedVersion >= ").print(rinfo.since).println("L) {");
     pr.beginBlock();
     printGetRemote(rinfo);
     for (MethodInfo minfo : rinfo.methods){

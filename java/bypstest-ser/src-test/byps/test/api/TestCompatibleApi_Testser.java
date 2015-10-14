@@ -19,7 +19,7 @@ public class TestCompatibleApi_Testser {
 		long negotiatedVersion = protocol.negotiatedVersion;
 		log.info("test(");
 		// byps.test.api.inherit.BioFruitService
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.inherit.BStub_BioFruitService remote = (byps.test.api.inherit.BStub_BioFruitService)bclient.getClass().getDeclaredMethod("getBioFruitService").invoke(bclient);
 			if (negotiatedVersion >= 1L) {
 				internalTest_byps_test_api_inherit_BioFruitService_certify(remote);
@@ -27,7 +27,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.inherit.BioLemonService
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.inherit.BStub_BioLemonService remote = (byps.test.api.inherit.BStub_BioLemonService)bclient.getClass().getDeclaredMethod("getBioLemonService").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_inherit_BioLemonService_useParing(remote);
@@ -35,7 +35,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.inherit.FruitService
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.inherit.BStub_FruitService remote = (byps.test.api.inherit.BStub_FruitService)bclient.getClass().getDeclaredMethod("getFruitService").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_inherit_FruitService_squeeze(remote);
@@ -43,7 +43,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.inherit.LemonService
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.inherit.BStub_LemonService remote = (byps.test.api.inherit.BStub_LemonService)bclient.getClass().getDeclaredMethod("getLemonService").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_inherit_LemonService_pick(remote);
@@ -51,7 +51,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.inherit.PlantService
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.inherit.BStub_PlantService remote = (byps.test.api.inherit.BStub_PlantService)bclient.getClass().getDeclaredMethod("getPlantService").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_inherit_PlantService_grow(remote);
@@ -59,7 +59,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteArrayTypes1dim
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteArrayTypes1dim remote = (byps.test.api.remote.BStub_RemoteArrayTypes1dim)bclient.getClass().getDeclaredMethod("getRemoteArrayTypes1dim").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteArrayTypes1dim_setBool(remote);
@@ -136,7 +136,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteArrayTypes23
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteArrayTypes23 remote = (byps.test.api.remote.BStub_RemoteArrayTypes23)bclient.getClass().getDeclaredMethod("getRemoteArrayTypes23").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteArrayTypes23_sendArraysInt(remote);
@@ -156,7 +156,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteArrayTypes4dim
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteArrayTypes4dim remote = (byps.test.api.remote.BStub_RemoteArrayTypes4dim)bclient.getClass().getDeclaredMethod("getRemoteArrayTypes4dim").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteArrayTypes4dim_setBool(remote);
@@ -233,7 +233,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteConstants
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteConstants remote = (byps.test.api.remote.BStub_RemoteConstants)bclient.getClass().getDeclaredMethod("getRemoteConstants").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteConstants_compare_HebrewC(remote);
@@ -244,7 +244,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteEnums
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteEnums remote = (byps.test.api.remote.BStub_RemoteEnums)bclient.getClass().getDeclaredMethod("getRemoteEnums").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteEnums_getPlanet(remote);
@@ -255,7 +255,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteInlineInstance
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteInlineInstance remote = (byps.test.api.remote.BStub_RemoteInlineInstance)bclient.getClass().getDeclaredMethod("getRemoteInlineInstance").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteInlineInstance_setActor(remote);
@@ -296,7 +296,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteListTypes
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteListTypes remote = (byps.test.api.remote.BStub_RemoteListTypes)bclient.getClass().getDeclaredMethod("getRemoteListTypes").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteListTypes_getBoolean1(remote);
@@ -397,7 +397,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteMapTypes
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteMapTypes remote = (byps.test.api.remote.BStub_RemoteMapTypes)bclient.getClass().getDeclaredMethod("getRemoteMapTypes").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteMapTypes_getBoolean1(remote);
@@ -486,7 +486,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemotePrimitiveTypes
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemotePrimitiveTypes remote = (byps.test.api.remote.BStub_RemotePrimitiveTypes)bclient.getClass().getDeclaredMethod("getRemotePrimitiveTypes").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemotePrimitiveTypes_voidFunctionVoid(remote);
@@ -581,7 +581,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteReferences
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteReferences remote = (byps.test.api.remote.BStub_RemoteReferences)bclient.getClass().getDeclaredMethod("getRemoteReferences").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteReferences_getNode(remote);
@@ -592,7 +592,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteServerCtrl
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteServerCtrl remote = (byps.test.api.remote.BStub_RemoteServerCtrl)bclient.getClass().getDeclaredMethod("getRemoteServerCtrl").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteServerCtrl_publishRemote(remote);
@@ -606,7 +606,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteSetTypes
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteSetTypes remote = (byps.test.api.remote.BStub_RemoteSetTypes)bclient.getClass().getDeclaredMethod("getRemoteSetTypes").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteSetTypes_getBoolean1(remote);
@@ -695,7 +695,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteStreams
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteStreams remote = (byps.test.api.remote.BStub_RemoteStreams)bclient.getClass().getDeclaredMethod("getRemoteStreams").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteStreams_getImage(remote);
@@ -730,7 +730,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.remote.RemoteWithAuthentication
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteWithAuthentication remote = (byps.test.api.remote.BStub_RemoteWithAuthentication)bclient.getClass().getDeclaredMethod("getRemoteWithAuthentication").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemoteWithAuthentication_setUseAuthentication(remote);
@@ -750,7 +750,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.srvr.ClientIF
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.srvr.BStub_ClientIF remote = (byps.test.api.srvr.BStub_ClientIF)bclient.getClass().getDeclaredMethod("getClientIF").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_srvr_ClientIF_incrementInt(remote);
@@ -767,7 +767,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.srvr.ServerIF
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.srvr.BStub_ServerIF remote = (byps.test.api.srvr.BStub_ServerIF)bclient.getClass().getDeclaredMethod("getServerIF").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_srvr_ServerIF_callClientIncrementInt(remote);
@@ -799,7 +799,7 @@ public class TestCompatibleApi_Testser {
 		}
 		
 		// byps.test.api.ver.EvolveIF
-		{
+		if (negotiatedVersion >= 0L) {
 			byps.test.api.ver.BStub_EvolveIF remote = (byps.test.api.ver.BStub_EvolveIF)bclient.getClass().getDeclaredMethod("getEvolveIF").invoke(bclient);
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_ver_EvolveIF_setEvolve(remote);

@@ -3,7 +3,7 @@
     <apiDesc>
         <name>Testser</name>
         <apiPack>byps.test.api</apiPack>
-        <version>0.0.0.792</version>
+        <version>0.0.0.793</version>
         <uniqueObjects>false</uniqueObjects>
     </apiDesc>
     <serials>
@@ -9274,6 +9274,19 @@
                     <access>PUBLIC</access>
                     <since>0.0.0.3</since>
                 </member>
+                <member>
+                    <name>since793</name>
+                    <comments>
+                        <kind>@since</kind>
+                        <text>793</text>
+                    </comments>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.793</since>
+                </member>
             </members>
             <comments>
                 <comment>
@@ -10287,11 +10300,16 @@
                 <method>
                     <name>certify</name>
                     <remoteName>byps.test.api.inherit.BioFruitService</remoteName>
-                    <since>0.0.0.0</since>
+                    <since>0.0.0.1</since>
                     <requestTypeName>byps.test.api.inherit.BRequest_BioFruitService_certify</requestTypeName>
                     <resultTypeName>byps.test.api.BResult_1</resultTypeName>
                     <exceptionTypeNames/>
-                    <comments/>
+                    <comments>
+                        <comment>
+                            <kind>@since</kind>
+                            <text>1</text>
+                        </comment>
+                    </comments>
                 </method>
             </methods>
             <comments>
