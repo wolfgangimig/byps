@@ -742,7 +742,9 @@ public class BBufferJson extends BBuffer {
 				case '\n':
 				case '\r':
 				case '\t':
-				  buf.position(buf.position()+1);
+				  if (!eat) {
+				    buf.position(buf.position()+1);
+				  }
 					break;
 				default: {
 					lastChar = c;
