@@ -8,6 +8,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache HTTP Components"/>
 	<classpathentry kind="lib" path="D:/git/byps/lib/java/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/git/byps/lib/java/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="D:/git/byps/lib/java/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
