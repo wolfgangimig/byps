@@ -135,7 +135,13 @@ public class BMessageHeader {
 				char c = bbuf.nextJsonChar(true);
 				if (c != '{') return 0;
 				c = bbuf.nextJsonChar(true);
-				if (c != '\"' && c != '\'') return 0;
+				switch(c) {
+				case '\"' : 
+				case '\'' :	
+					break;
+				default: 
+					return 0;
+				}
 				c = bbuf.nextJsonChar(true);
 				if (c != 'h') return 0;
 				buf.position(pos);

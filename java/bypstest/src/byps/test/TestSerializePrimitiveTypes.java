@@ -1,16 +1,13 @@
 package byps.test;
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import byps.io.ByteArrayInputStream;
-import byps.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.file.Files;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.TimeZone;
-
-import junit.framework.Assert;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,8 +25,12 @@ import byps.BProtocolJson;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+import byps.io.ByteArrayInputStream;
+import byps.io.ByteArrayOutputStream;
 import byps.test.api.list.ListTypes;
 import byps.test.api.prim.PrimitiveTypes;
+import junit.framework.Assert;
 
 /**
  * This class provides tests to check the 
@@ -669,5 +670,17 @@ public class TestSerializePrimitiveTypes {
 				
 	}
 
-
+	@Test
+	public void testBMessageHeader() throws BException {
+		try {
+			byte[] buf = Files.readAllBytes(new File("d:\\temp\\sol.invoice.IncomingInvoice.json").toPath());
+			ByteBuffer bbuf = ByteBuffer.wrap(buf);
+			BMessageHeader hdr = new BMessageHeader();
+			hdr.read(bbuf);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

@@ -22,7 +22,8 @@ public class BMessage {
 	
 	public String toString() {
 		StringBuilder sbuf = new StringBuilder();
-		sbuf.append("[").append(header.messageId).append(",").append(buf).append(",").append(streams).append("]");
+		sbuf.append("[").append(header);
+		sbuf.append(",").append(buf).append(",").append(streams).append("]");
 		return sbuf.toString();
 	}
 }
