@@ -156,9 +156,12 @@ public:
 		TASSERT(L"float", 1.2f, remote->getFloat());
 		remote->setDouble(1.8);
 		TASSERT(L"double", 1.8, remote->getDouble());
-		remote->setString(L"ABC€€€DEF€€€GHI€€€JKL€€€MNO€€€PQR€€€STU€€€VWX€€€YZ1€€€");
-		TASSERT(L"string", std::wstring(L"ABC€€€DEF€€€GHI€€€JKL€€€MNO€€€PQR€€€STU€€€VWX€€€YZ1€€€"), remote->getString());
-		remote->setDate(BDateTime::fromString(L"2013-11-12T13:14:15.16Z"));
+
+    wstring str = L"A€ اختبار";
+		remote->setString(str);
+		TASSERT(L"string", str, remote->getString());
+		
+    remote->setDate(BDateTime::fromString(L"2013-11-12T13:14:15.16Z"));
 		TASSERT(L"date", BDateTime::fromString(L"2013-11-12T13:14:15.16Z"), remote->getDate());
 
 		PPrimitiveTypes pt = TestUtils::createObjectPrimitiveTypes();
