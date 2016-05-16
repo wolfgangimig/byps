@@ -300,7 +300,7 @@ namespace byps {
         wchar_t c = (wchar_t)(*p);
         p++;
         int16_t u4bits = (c & 0xF0);
-        if (u4bits == 0xC0) {
+        if (u4bits == 0xC0 || u4bits == 0xD0) {
           c &= 0x1F;
           c <<= 6;
           c |= (wchar_t)((*p++ & 0x3F));
