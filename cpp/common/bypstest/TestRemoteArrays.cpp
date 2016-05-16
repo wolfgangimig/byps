@@ -389,7 +389,7 @@ public:
 			primitiveTypes1->at(i) = TestUtils::createObjectPrimitiveTypes();
 		}
 
-		time_point<high_resolution_clock> t1, t2, t3, t4;
+		time_point<system_clock> t1, t2, t3, t4;
 
 		//t1 = system_clock::now();
 
@@ -456,7 +456,7 @@ public:
 		}
 
 
-		time_point<high_resolution_clock> t1, t2, t3, t4;
+		time_point<system_clock> t1, t2, t3, t4;
 
 		t1 = system_clock::now();
 		for (int i = 0; i < loopCount; i++) {

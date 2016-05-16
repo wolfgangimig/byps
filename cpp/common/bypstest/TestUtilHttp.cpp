@@ -2,7 +2,7 @@
 
 #include "TestUtilHttp.h"
 #include <string.h>
-
+#include <algorithm>
 #undef min
 
 static std::wstring url = L"http://localhost:6080/bypstest-srv/bypsservlet";
