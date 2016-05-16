@@ -964,6 +964,7 @@ namespace byps { namespace http { namespace winhttp {
       UrlComps.dwHostNameLength  = ARRAYSIZE(szHost)-1;
       UrlComps.dwUrlPathLength   = (DWORD)-1;
       UrlComps.dwExtraInfoLength = (DWORD)-1;
+      WINHTTP_PROXY_INFO proxyInfo = { 0 };
 
       BOOL succ = WinHttpCrackUrl(
         url.c_str(), 
@@ -994,12 +995,32 @@ namespace byps { namespace http { namespace winhttp {
 
       if (credentials) {
         if (credentials->nameProxy.size()) {
+          l_debug << L"set proxy credentials, name=" << credentials->nameProxy;
           WinHttpSetCredentials(hRequest, WINHTTP_AUTH_TARGET_PROXY, WINHTTP_AUTH_SCHEME_BASIC, 
             credentials->nameProxy.c_str(), credentials->pwdProxy.c_str(), NULL);
         }
         if (credentials->name.size()) {
-          WinHttpSetCredentials(hRequest, WINHTTP_AUTH_TARGET_SERVER, WINHTTP_AUTH_SCHEME_BASIC, 
+          l_debug << L"set request credentials, name=" << credentials->name;
+          WinHttpSetCredentials(hRequest, WINHTTP_AUTH_TARGET_SERVER, WINHTTP_AUTH_SCHEME_BASIC,
             credentials->name.c_str(), credentials->pwd.c_str(), NULL);
+        }
+      }
+
+      // Detect proxy server
+      // https://msdn.microsoft.com/de-de/library/windows/desktop/aa384122(v=vs.85).aspx
+      if(false)
+      {
+        WINHTTP_AUTOPROXY_OPTIONS  AutoProxyOptions = { 0 };
+        AutoProxyOptions.dwFlags = WINHTTP_AUTOPROXY_AUTO_DETECT;
+        AutoProxyOptions.dwAutoDetectFlags = WINHTTP_AUTO_DETECT_TYPE_DHCP | WINHTTP_AUTO_DETECT_TYPE_DNS_A;
+        AutoProxyOptions.fAutoLogonIfChallenged = TRUE;
+        BOOL succ = WinHttpGetProxyForUrl(hConnection, url.c_str(), &AutoProxyOptions, &proxyInfo);
+        l_debug << L"WinHttpGetProxyForUrl(" << url << L")=" << succ;
+        if (succ) {
+          if (!WinHttpSetOption(hRequest, WINHTTP_OPTION_PROXY, &proxyInfo, sizeof(proxyInfo))) {
+            DWORD err = GetLastError();
+            throw HException(L"WinHttpSetOption WINHTTP_OPTION_PROXY", err);
+          }
         }
       }
 
