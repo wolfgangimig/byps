@@ -7,7 +7,10 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/log4j-1.2.17.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.utility"/>
 		</attributes>
@@ -17,8 +20,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="D:/java/lib/byps/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/java/lib/byps/log4j-1.2.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

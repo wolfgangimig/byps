@@ -7,7 +7,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp"/>
 	<classpathentry kind="lib" path="D:/git/byps/lib/java/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/git/byps/lib/java/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="D:/git/byps/lib/java/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="D:/java/lib/httpcomponents-client-4.3.2/lib/httpclient-4.3.2.jar"/>
 	<classpathentry kind="lib" path="D:/java/lib/httpcomponents-client-4.3.2/lib/httpcore-4.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>

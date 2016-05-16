@@ -11,7 +11,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
 	<classpathentry kind="lib" path="D:/java/lib/byps/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/java/lib/byps/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/log4j-1.2.17.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttpasf"/>
 	<classpathentry kind="lib" path="D:/java/lib/undertow/undertow-examples-1.0.6.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
