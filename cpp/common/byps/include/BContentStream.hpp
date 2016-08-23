@@ -93,7 +93,11 @@ namespace byps {
     wss << ((getAttachmentCode()==ATTACHMENT) ? L"attachment;" : L"inline;") ;
     wstring fileName = getFileName();
     if (fileName.size()) {
-      wss << L" filename=" << fileName;
+	  wss << L" filename=";
+	  bool qu = fileName.find(' ') != wstring::npos;
+	  if (qu) wss << L"\"";
+	  wss << fileName;
+	  if (qu) wss << L"\"";
     }
     return wss.str();
   }
@@ -157,7 +161,11 @@ namespace byps {
       if (cs.size() == 0) cs = BYPS_DEFAULT_CONTENT_TYPE;
     }
     this->contentType = cs;
-    this->fileName = file.getName();
+    
+	// Ignore file name.
+	// Could contain characters which cause an invalid Content-Disposition header.
+	//this->fileName = file.getName();
+
     stdStream = file.open();
   }
 
