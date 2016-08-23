@@ -5503,12 +5503,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1
 		432867947 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1 // boolean
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -5516,12 +5516,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_10
 		534004421 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -5529,12 +5529,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1000
 		2077138821 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1000 // byps.test.api.prim.PrimitiveTypes
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -5542,12 +5542,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_100361105
 		498939805 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":100361105 // int[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":100361105 // int[]
@@ -5558,12 +5558,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1050216688
 		70523627 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1050216688 // java.util.List<java.lang.Long>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1050216688 // java.util.List<java.lang.Long>
@@ -5574,12 +5574,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1059148284
 		698727944 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1059148284 // java.util.List<java.lang.Byte>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1059148284 // java.util.List<java.lang.Byte>
@@ -5590,12 +5590,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1097129250
 		200721390 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1097129250 // long[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1097129250 // long[]
@@ -5606,12 +5606,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1097919350
 		428832038 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1097919350 // java.util.Set<java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1097919350 // java.util.Set<java.util.Date>
@@ -5622,12 +5622,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1174971318
 		1068483136 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1174971318 // java.util.List<byte[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1174971318 // java.util.List<byte[]>
@@ -5638,12 +5638,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_12
 		534004419 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":12 // java.util.List<java.lang.Object>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":12 // java.util.List<java.lang.Object>
@@ -5654,12 +5654,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1201775504
 		1521577218 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1201775504 // byte[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1201775504 // byte[][][][]
@@ -5670,12 +5670,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1218831438
 		911793767 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1218831438 // java.util.List<java.io.InputStream>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1218831438 // java.util.List<java.io.InputStream>
@@ -5686,12 +5686,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_124584219
 		996163680 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":124584219 // java.lang.Object[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":124584219 // java.lang.Object[][][][]
@@ -5702,12 +5702,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1279823631
 		629604454 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
@@ -5718,12 +5718,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1320560671
 		2041057155 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1320560671 // java.util.Set<java.lang.Double>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1320560671 // java.util.Set<java.lang.Double>
@@ -5734,12 +5734,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1347703734
 		881037921 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
@@ -5750,12 +5750,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1358523233
 		1693860029 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
@@ -5766,12 +5766,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1359468275
 		1738389572 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1359468275 // double[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1359468275 // double[]
@@ -5782,12 +5782,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1361632968
 		1548641599 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1361632968 // char[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1361632968 // char[]
@@ -5798,12 +5798,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1365696060
 		809340660 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1365696060 // java.util.Set<java.lang.Boolean>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1365696060 // java.util.Set<java.lang.Boolean>
@@ -5814,12 +5814,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1366799209
 		1725564610 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1366799209 // java.util.Map<java.lang.String,java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1366799209 // java.util.Map<java.lang.String,java.util.Date>
@@ -5830,12 +5830,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1374008726
 		1484626910 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1374008726 // byte[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1374008726 // byte[]
@@ -5846,12 +5846,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1375035164
 		1920161159 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1375035164 // byps.test.api.enu.EnumPlanets
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -5859,12 +5859,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1391985860
 		1722268526 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1391985860 // byps.test.api.ver.Evolve
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -5872,12 +5872,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_14
 		534004417 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":14 // java.util.Set<java.lang.Object>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":14 // java.util.Set<java.lang.Object>
@@ -5888,12 +5888,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1406124761
 		2127200796 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1406124761 // java.util.Set<int[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1406124761 // java.util.Set<int[]>
@@ -5904,12 +5904,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1406664368
 		1980364794 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1406664368 // java.util.Date[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1406664368 // java.util.Date[]
@@ -5920,12 +5920,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1457164460
 		1111888832 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1457164460 // java.util.Set<java.lang.Long>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1457164460 // java.util.Set<java.lang.Long>
@@ -5936,12 +5936,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1487265161
 		149769063 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
@@ -5952,12 +5952,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1488550492
 		822552572 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
@@ -5968,12 +5968,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1493282670
 		1955210948 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1493282670 // java.util.Set<java.lang.Integer>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1493282670 // java.util.Set<java.lang.Integer>
@@ -5984,12 +5984,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_15
 		534004416 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":15 // java.io.InputStream
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -5997,12 +5997,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1504867122
 		1210513700 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1504867122 // java.util.List<java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1504867122 // java.util.List<java.util.Date>
@@ -6013,12 +6013,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1516687588
 		2043070523 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1516687588 // float[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1516687588 // float[][][][]
@@ -6029,12 +6029,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1555345627
 		343940505 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1555345627 // java.util.List<java.lang.Double>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1555345627 // java.util.List<java.lang.Double>
@@ -6045,12 +6045,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1596367810
 		1073221568 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
@@ -6061,12 +6061,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_16
 		534004415 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":16 // byps.BRemote
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6074,12 +6074,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1617670280
 		1330811042 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1617670280 // java.util.List<java.lang.Boolean>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1617670280 // java.util.List<java.lang.Boolean>
@@ -6090,12 +6090,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1628501332
 		368905437 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1628501332 // java.util.List<java.lang.Float>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1628501332 // java.util.List<java.lang.Float>
@@ -6106,12 +6106,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1633500852
 		1231328865 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
@@ -6122,12 +6122,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1633750383
 		1293200061 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1633750383 // java.util.Map<java.lang.Integer,int[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1633750383 // java.util.Map<java.lang.Integer,int[]>
@@ -6138,12 +6138,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1661807911
 		475882038 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1661807911 // java.util.List<java.lang.Character>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1661807911 // java.util.List<java.lang.Character>
@@ -6154,12 +6154,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_17
 		534004414 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":17 // java.util.Date
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":17 // java.util.Date
@@ -6170,12 +6170,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1710660846
 		1899847531 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1710660846 // java.util.Map<java.lang.String,java.lang.String>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1710660846 // java.util.Map<java.lang.String,java.lang.String>
@@ -6186,12 +6186,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_171948703
 		871356108 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":171948703 // byps.test.api.inl.Actor
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6199,12 +6199,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1746702954
 		408452669 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
@@ -6215,12 +6215,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1752158699
 		1912328929 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1752158699 // java.util.List<int[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1752158699 // java.util.List<int[]>
@@ -6231,12 +6231,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1799280818
 		2052610089 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1799280818 // java.util.Map<java.lang.Integer,byte[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1799280818 // java.util.Map<java.lang.Integer,byte[]>
@@ -6247,12 +6247,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_181681714
 		1763202727 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":181681714 // java.util.List<java.lang.Integer>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":181681714 // java.util.List<java.lang.Integer>
@@ -6263,12 +6263,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1823330785
 		114088296 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
@@ -6279,12 +6279,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1831201218
 		50516327 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
@@ -6295,12 +6295,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_183594037
 		15818284 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":183594037 // java.lang.Object[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":183594037 // java.lang.Object[]
@@ -6311,12 +6311,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_184101377
 		748770738 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":184101377 // byps.test.api.inl.Point2D[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":184101377 // byps.test.api.inl.Point2D[]
@@ -6327,12 +6327,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1859644668
 		2130431383 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1859644668 // short[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1859644668 // short[][][][]
@@ -6343,12 +6343,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1888107655
 		2063745441 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1888107655 // java.lang.String[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1888107655 // java.lang.String[]
@@ -6359,12 +6359,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1888799711
 		2051074845 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1888799711 // java.util.Set<java.lang.String>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1888799711 // java.util.Set<java.lang.String>
@@ -6375,12 +6375,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1898022288
 		515346332 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1898022288 // java.util.Set<java.lang.Float>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1898022288 // java.util.Set<java.lang.Float>
@@ -6391,12 +6391,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_19
 		534004412 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":19 // void
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6404,12 +6404,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1972793385
 		1958357790 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
@@ -6420,12 +6420,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1973996106
 		1391760319 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
@@ -6436,12 +6436,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_1997002548
 		1082818537 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":1997002548 // java.util.List<java.lang.Short>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":1997002548 // java.util.List<java.lang.Short>
@@ -6452,12 +6452,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2
 		432867946 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2 // byte
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6465,12 +6465,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2028443792
 		1664501789 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2028443792 // java.util.Set<java.lang.Short>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2028443792 // java.util.Set<java.lang.Short>
@@ -6481,12 +6481,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2052431866
 		1566928477 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2052431866 // java.util.Set<byte[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2052431866 // java.util.Set<byte[]>
@@ -6497,12 +6497,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2053507648
 		1814499786 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2053507648 // byps.test.api.prim.PrimitiveTypes[]
@@ -6513,12 +6513,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2058423690
 		1698849803 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2058423690 // boolean[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2058423690 // boolean[]
@@ -6529,12 +6529,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2064980445
 		937508540 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2064980445 // java.util.List<byps.test.api.inl.Point2D>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2064980445 // java.util.List<byps.test.api.inl.Point2D>
@@ -6545,12 +6545,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2067161310
 		925799231 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2067161310 // short[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2067161310 // short[]
@@ -6561,12 +6561,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2087445849
 		1650981375 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2087445849 // double[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2087445849 // double[][][][]
@@ -6577,12 +6577,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_21
 		534004389 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":21 // java.lang.Object
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6590,12 +6590,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_2123584667
 		253151806 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2123584667 // java.util.List<java.lang.String>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":2123584667 // java.util.List<java.lang.String>
@@ -6606,12 +6606,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_3
 		432867945 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":3 // short
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6619,12 +6619,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_31512998
 		1620912700 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":31512998 // java.util.HashSet<java.lang.Byte>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":31512998 // java.util.HashSet<java.lang.Byte>
@@ -6635,12 +6635,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_39910537
 		245460547 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":39910537 // int[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":39910537 // int[][][][]
@@ -6651,12 +6651,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_4
 		432867944 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":4 // char
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6664,12 +6664,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_476459792
 		255681041 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":476459792 // java.util.TreeMap<java.lang.Integer,java.io.InputStream>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":476459792 // java.util.TreeMap<java.lang.Integer,java.io.InputStream>
@@ -6680,12 +6680,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_5
 		432867943 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6693,12 +6693,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_51898890
 		905019472 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":51898890 // java.util.Date[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":51898890 // java.util.Date[][][][]
@@ -6709,12 +6709,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_564008001
 		1405156912 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":15377840 // byps.test.api.ver.EvolveIF
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6722,12 +6722,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_588723219
 		1537615291 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":588723219 // java.lang.String[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":588723219 // java.lang.String[][][][]
@@ -6738,12 +6738,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_6
 		432867942 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":6 // long
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6751,12 +6751,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_601099730
 		856233055 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
@@ -6767,12 +6767,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_65775978
 		1872312576 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":65775978 // byps.test.api.auth.SessionInfo
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6780,12 +6780,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_673917574
 		2098743607 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
@@ -6796,12 +6796,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_7
 		432867941 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":7 // float
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6809,12 +6809,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_7007
 		2076960068 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":7007 // byps.test.api.srvr.ChatStructure
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6822,12 +6822,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_758319514
 		1168951451 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
@@ -6838,12 +6838,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_766441794
 		1167917980 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":766441794 // float[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":766441794 // float[]
@@ -6854,12 +6854,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_769021986
 		580900026 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":769021986 // char[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":769021986 // char[][][][]
@@ -6870,12 +6870,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_8
 		432867940 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":8 // double
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6883,12 +6883,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_846419204
 		167272824 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":846419204 // long[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":846419204 // long[][][][]
@@ -6899,12 +6899,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_8789515
 		323111619 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
@@ -6915,12 +6915,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_9001
 		2076900492 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":9001 // byps.test.api.refs.Node
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -6928,12 +6928,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_936607009
 		968248604 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":936607009 // java.util.TreeSet<java.lang.Character>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":936607009 // java.util.TreeSet<java.lang.Character>
@@ -6944,12 +6944,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_94341197
 		1800858646 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
@@ -6960,12 +6960,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_945713488
 		1852992857 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":945713488 // boolean[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":945713488 // boolean[][][][]
@@ -6976,12 +6976,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_949340697
 		996206823 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"result":949340697 // byps.test.api.inl.Point2D[][][][]
@@ -6992,12 +6992,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.BResult_955752991
 		695494982 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"result":2049072174 // byps.test.api.srvr.ClientIF
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7005,54 +7005,34 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.arr.ArrayTypes1dim
 		2001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean1":2058423690, // boolean[]
-				// names of persistent elements
 				"byte1":1374008726, // byte[]
-				// names of persistent elements
 				"char1":1361632968, // char[]
-				// names of persistent elements
 				"short1":2067161310, // short[]
-				// names of persistent elements
 				"int1":100361105, // int[]
-				// names of persistent elements
 				"long1":1097129250, // long[]
-				// names of persistent elements
 				"float1":766441794, // float[]
-				// names of persistent elements
 				"double1":1359468275, // double[]
-				// names of persistent elements
 				"string1":1888107655, // java.lang.String[]
-				// names of persistent elements
 				"date1":1406664368, // java.util.Date[]
-				// names of persistent elements
 				"primitiveTypes1":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean1":2058423690, // boolean[]
-				// names of inline elements
 				"byte1":1374008726, // byte[]
-				// names of inline elements
 				"char1":1361632968, // char[]
-				// names of inline elements
 				"short1":2067161310, // short[]
-				// names of inline elements
 				"int1":100361105, // int[]
-				// names of inline elements
 				"long1":1097129250, // long[]
-				// names of inline elements
 				"float1":766441794, // float[]
-				// names of inline elements
 				"double1":1359468275, // double[]
-				// names of inline elements
 				"string1":1888107655, // java.lang.String[]
-				// names of inline elements
 				"date1":1406664368, // java.util.Date[]
-				// names of inline elements
 				"primitiveTypes1":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
 			// inlineInstance
@@ -7061,50 +7041,32 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.arr.ArrayTypes4dim
 		2004 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean4":945713488, // boolean[][][][]
-				// names of persistent elements
 				"byte4":1201775504, // byte[][][][]
-				// names of persistent elements
 				"char4":769021986, // char[][][][]
-				// names of persistent elements
 				"short4":1859644668, // short[][][][]
-				// names of persistent elements
 				"int4":39910537, // int[][][][]
-				// names of persistent elements
 				"long4":846419204, // long[][][][]
-				// names of persistent elements
 				"float4":1516687588, // float[][][][]
-				// names of persistent elements
 				"double4":2087445849, // double[][][][]
-				// names of persistent elements
 				"string4":588723219, // java.lang.String[][][][]
-				// names of persistent elements
 				"primitiveTypes4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean4":945713488, // boolean[][][][]
-				// names of inline elements
 				"byte4":1201775504, // byte[][][][]
-				// names of inline elements
 				"char4":769021986, // char[][][][]
-				// names of inline elements
 				"short4":1859644668, // short[][][][]
-				// names of inline elements
 				"int4":39910537, // int[][][][]
-				// names of inline elements
 				"long4":846419204, // long[][][][]
-				// names of inline elements
 				"float4":1516687588, // float[][][][]
-				// names of inline elements
 				"double4":2087445849, // double[][][][]
-				// names of inline elements
 				"string4":588723219, // java.lang.String[][][][]
-				// names of inline elements
 				"primitiveTypes4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
 			// inlineInstance
@@ -7113,12 +7075,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.auth.SessionInfo
 		65775978 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"sessionID":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7126,56 +7088,35 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.cons.AllTypesC
 		930294276 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"bool1s":1, // boolean
-				// names of persistent elements
 				"bool2s":1, // boolean
-				// names of persistent elements
 				"byte1s":2, // byte
-				// names of persistent elements
 				"char1s":4, // char
-				// names of persistent elements
 				"stringNull":10, // java.lang.String
-				// names of persistent elements
 				"char2s":4, // char
-				// names of persistent elements
 				"short1s":3, // short
-				// names of persistent elements
 				"int1s":5, // int
-				// names of persistent elements
 				"long1s":6, // long
-				// names of persistent elements
 				"float1s":7, // float
-				// names of persistent elements
 				"double1s":8, // double
-				// names of persistent elements
 				"string1s":10, // java.lang.String
-				// names of persistent elements
 				"ALL":142458, // byps.test.api.cons.AllTypesZ
-				// names of persistent elements
 				"arrInt":100361105, // int[]
-				// names of persistent elements
 				"arrInt4":39910537, // int[][][][]
-				// names of persistent elements
 				"arrStrings":1888107655, // java.lang.String[]
-				// names of persistent elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
-				// names of persistent elements
 				"arrALL":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arrInt":100361105, // int[]
-				// names of inline elements
 				"arrInt4":39910537, // int[][][][]
-				// names of inline elements
 				"arrStrings":1888107655, // java.lang.String[]
-				// names of inline elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
-				// names of inline elements
 				"arrALL":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
 			// inlineInstance
@@ -7184,46 +7125,30 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.cons.AllTypesZ
 		142458 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"bool1":1, // boolean
-				// names of persistent elements
 				"byte1":2, // byte
-				// names of persistent elements
 				"char1":4, // char
-				// names of persistent elements
 				"short1":3, // short
-				// names of persistent elements
 				"int1":5, // int
-				// names of persistent elements
 				"long1":6, // long
-				// names of persistent elements
 				"float1":7, // float
-				// names of persistent elements
 				"double1":8, // double
-				// names of persistent elements
 				"string1":10, // java.lang.String
-				// names of persistent elements
 				"hebrew1":1518668429, // byps.test.api.cons.HebrewZ
-				// names of persistent elements
 				"byte2":1374008726, // byte[]
-				// names of persistent elements
 				"int2":100361105, // int[]
-				// names of persistent elements
 				"string2":1888107655, // java.lang.String[]
-				// names of persistent elements
 				"hebrew2":92445340 // byps.test.api.cons.HebrewZ[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"byte2":1374008726, // byte[]
-				// names of inline elements
 				"int2":100361105, // int[]
-				// names of inline elements
 				"string2":1888107655, // java.lang.String[]
-				// names of inline elements
 				"hebrew2":92445340 // byps.test.api.cons.HebrewZ[]
 			},
 			// inlineInstance
@@ -7238,18 +7163,15 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.cons.HebrewC
 		1770673942 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"aleph":10, // java.lang.String
-				// names of persistent elements
 				"beth":10, // java.lang.String
-				// names of persistent elements
 				"ALEPH":1518668429, // byps.test.api.cons.HebrewZ
-				// names of persistent elements
 				"BETH":1518668429 // byps.test.api.cons.HebrewZ
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7257,12 +7179,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.cons.HebrewZ
 		1518668429 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"core":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7282,26 +7204,20 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.enu.UsePlanets
 		10000 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"planet":1375035164, // byps.test.api.enu.EnumPlanets
-				// names of persistent elements
 				"planet2":1375035164, // byps.test.api.enu.EnumPlanets
-				// names of persistent elements
 				"arrayOfPlanets":1441131650, // byps.test.api.enu.EnumPlanets[]
-				// names of persistent elements
 				"listOfPlanets":819140569, // java.util.ArrayList<byps.test.api.enu.EnumPlanets>
-				// names of persistent elements
 				"mapOfPlanets":493795497 // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arrayOfPlanets":1441131650, // byps.test.api.enu.EnumPlanets[]
-				// names of inline elements
 				"listOfPlanets":819140569, // java.util.ArrayList<byps.test.api.enu.EnumPlanets>
-				// names of inline elements
 				"mapOfPlanets":493795497 // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
 			},
 			// inlineInstance
@@ -7310,12 +7226,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.BRequest_BioFruitService_certify
 		1435417025 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"param":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7323,9 +7239,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.BRequest_BioLemonService_useParing
 		2108700976 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7333,9 +7249,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.BRequest_FruitService_squeeze
 		1290167289 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7343,14 +7259,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.BRequest_LemonService_pick
 		1022088379 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"sess":65775978, // byps.test.api.auth.SessionInfo
-				// names of persistent elements
 				"fromTree":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7358,9 +7273,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.BRequest_PlantService_grow
 		695716901 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7383,14 +7298,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.Class1
 		6001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int1":5, // int
-				// names of persistent elements
 				"nextClass1":6001 // byps.test.api.inherit.Class1
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7398,22 +7312,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.Class1Collections
 		6004 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"list1":510524840, // java.util.List<byps.test.api.inherit.Class1>
-				// names of persistent elements
 				"map1":2058676657, // java.util.Map<java.lang.String,byps.test.api.inherit.Class1>
-				// names of persistent elements
 				"set1":484881308 // java.util.Set<byps.test.api.inherit.Class1>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"list1":510524840, // java.util.List<byps.test.api.inherit.Class1>
-				// names of inline elements
 				"map1":2058676657, // java.util.Map<java.lang.String,byps.test.api.inherit.Class1>
-				// names of inline elements
 				"set1":484881308 // java.util.Set<byps.test.api.inherit.Class1>
 			},
 			// inlineInstance
@@ -7422,12 +7332,14 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.Class2
 		6002 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
-				"int2":5 // int
+				"int2":5, // int
+				"int1":5, // int
+				"nextClass1":6001 // byps.test.api.inherit.Class1
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7435,12 +7347,15 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inherit.Class3
 		6003 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
-				"int3":5 // int
+				"int3":5, // int
+				"int2":5, // int
+				"int1":5, // int
+				"nextClass1":6001 // byps.test.api.inherit.Class1
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7448,18 +7363,16 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inl.Actor
 		171948703 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"shape":184101377, // byps.test.api.inl.Point2D[]
-				// names of persistent elements
 				"position":135329019 // byps.test.api.inl.Matrix2D
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"shape":184101377, // byps.test.api.inl.Point2D[]
-				// names of inline elements
 				"position":135329019 // byps.test.api.inl.Matrix2D
 			},
 			// inlineInstance
@@ -7468,28 +7381,20 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inl.Matrix2D
 		135329019 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"_11":7, // float
-				// names of persistent elements
 				"_12":7, // float
-				// names of persistent elements
 				"_13":7, // float
-				// names of persistent elements
 				"_21":7, // float
-				// names of persistent elements
 				"_22":7, // float
-				// names of persistent elements
 				"_23":7, // float
-				// names of persistent elements
 				"_31":7, // float
-				// names of persistent elements
 				"_32":7, // float
-				// names of persistent elements
 				"_33":7 // float
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			true
@@ -7497,14 +7402,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.inl.Point2D
 		1835035436 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"x":3, // short
-				// names of persistent elements
 				"y":3 // short
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			true
@@ -7536,22 +7440,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.list.ListListTypes
 		3002 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int2":1746702954, // java.util.List<java.util.List<java.lang.Integer>>
-				// names of persistent elements
 				"int3":1633500852, // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
-				// names of persistent elements
 				"int24":1865834185 // java.util.List<java.util.List<int[][][][]>>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int2":1746702954, // java.util.List<java.util.List<java.lang.Integer>>
-				// names of inline elements
 				"int3":1633500852, // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
-				// names of inline elements
 				"int24":1865834185 // java.util.List<java.util.List<int[][][][]>>
 			},
 			// inlineInstance
@@ -7560,70 +7460,42 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.list.ListTypes
 		3001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean1":1617670280, // java.util.List<java.lang.Boolean>
-				// names of persistent elements
 				"byte1":1059148284, // java.util.List<java.lang.Byte>
-				// names of persistent elements
 				"char1":1661807911, // java.util.List<java.lang.Character>
-				// names of persistent elements
 				"short1":1997002548, // java.util.List<java.lang.Short>
-				// names of persistent elements
 				"int1":181681714, // java.util.List<java.lang.Integer>
-				// names of persistent elements
 				"long1":1050216688, // java.util.List<java.lang.Long>
-				// names of persistent elements
 				"float1":1628501332, // java.util.List<java.lang.Float>
-				// names of persistent elements
 				"double1":1555345627, // java.util.List<java.lang.Double>
-				// names of persistent elements
 				"string1":2123584667, // java.util.List<java.lang.String>
-				// names of persistent elements
 				"date1":1504867122, // java.util.List<java.util.Date>
-				// names of persistent elements
 				"primitiveTypes1":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
-				// names of persistent elements
 				"byte2":1174971318, // java.util.List<byte[]>
-				// names of persistent elements
 				"int2":1752158699, // java.util.List<int[]>
-				// names of persistent elements
 				"int4":1088217157, // java.util.List<int[][][][]>
-				// names of persistent elements
 				"obj1":12 // java.util.List<java.lang.Object>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean1":1617670280, // java.util.List<java.lang.Boolean>
-				// names of inline elements
 				"byte1":1059148284, // java.util.List<java.lang.Byte>
-				// names of inline elements
 				"char1":1661807911, // java.util.List<java.lang.Character>
-				// names of inline elements
 				"short1":1997002548, // java.util.List<java.lang.Short>
-				// names of inline elements
 				"int1":181681714, // java.util.List<java.lang.Integer>
-				// names of inline elements
 				"long1":1050216688, // java.util.List<java.lang.Long>
-				// names of inline elements
 				"float1":1628501332, // java.util.List<java.lang.Float>
-				// names of inline elements
 				"double1":1555345627, // java.util.List<java.lang.Double>
-				// names of inline elements
 				"string1":2123584667, // java.util.List<java.lang.String>
-				// names of inline elements
 				"date1":1504867122, // java.util.List<java.util.Date>
-				// names of inline elements
 				"primitiveTypes1":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
-				// names of inline elements
 				"byte2":1174971318, // java.util.List<byte[]>
-				// names of inline elements
 				"int2":1752158699, // java.util.List<int[]>
-				// names of inline elements
 				"int4":1088217157, // java.util.List<int[][][][]>
-				// names of inline elements
 				"obj1":12 // java.util.List<java.lang.Object>
 			},
 			// inlineInstance
@@ -7632,66 +7504,40 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.map.MapTypes
 		4001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean1":1279823631, // java.util.Map<java.lang.String,java.lang.Boolean>
-				// names of persistent elements
 				"byte1":1972793385, // java.util.HashMap<java.lang.Double,java.lang.Byte>
-				// names of persistent elements
 				"char1":8789515, // java.util.TreeMap<java.lang.Float,java.lang.Character>
-				// names of persistent elements
 				"short1":601099730, // java.util.Map<java.lang.Long,java.lang.Short>
-				// names of persistent elements
 				"int1":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
-				// names of persistent elements
 				"long1":1973996106, // java.util.Map<java.lang.Short,java.lang.Long>
-				// names of persistent elements
 				"float1":94341197, // java.util.Map<java.lang.Character,java.lang.Float>
-				// names of persistent elements
 				"double1":1487265161, // java.util.Map<java.lang.Byte,java.lang.Double>
-				// names of persistent elements
 				"string1":1710660846, // java.util.Map<java.lang.String,java.lang.String>
-				// names of persistent elements
 				"primitiveTypes1":1831201218, // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
-				// names of persistent elements
 				"byte2":1799280818, // java.util.Map<java.lang.Integer,byte[]>
-				// names of persistent elements
 				"int2":1633750383, // java.util.Map<java.lang.Integer,int[]>
-				// names of persistent elements
 				"obj1":1488550492, // java.util.Map<java.lang.String,java.lang.Object>
-				// names of persistent elements
 				"date1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean1":1279823631, // java.util.Map<java.lang.String,java.lang.Boolean>
-				// names of inline elements
 				"byte1":1972793385, // java.util.HashMap<java.lang.Double,java.lang.Byte>
-				// names of inline elements
 				"char1":8789515, // java.util.TreeMap<java.lang.Float,java.lang.Character>
-				// names of inline elements
 				"short1":601099730, // java.util.Map<java.lang.Long,java.lang.Short>
-				// names of inline elements
 				"int1":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
-				// names of inline elements
 				"long1":1973996106, // java.util.Map<java.lang.Short,java.lang.Long>
-				// names of inline elements
 				"float1":94341197, // java.util.Map<java.lang.Character,java.lang.Float>
-				// names of inline elements
 				"double1":1487265161, // java.util.Map<java.lang.Byte,java.lang.Double>
-				// names of inline elements
 				"string1":1710660846, // java.util.Map<java.lang.String,java.lang.String>
-				// names of inline elements
 				"primitiveTypes1":1831201218, // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
-				// names of inline elements
 				"byte2":1799280818, // java.util.Map<java.lang.Integer,byte[]>
-				// names of inline elements
 				"int2":1633750383, // java.util.Map<java.lang.Integer,int[]>
-				// names of inline elements
 				"obj1":1488550492, // java.util.Map<java.lang.String,java.lang.Object>
-				// names of inline elements
 				"date1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
 			},
 			// inlineInstance
@@ -7700,36 +7546,24 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.prim.PrimitiveTypes
 		1000 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolVal":1, // boolean
-				// names of persistent elements
 				"byteVal":2, // byte
-				// names of persistent elements
 				"charVal":4, // char
-				// names of persistent elements
 				"shortVal":3, // short
-				// names of persistent elements
 				"intVal":5, // int
-				// names of persistent elements
 				"longVal":6, // long
-				// names of persistent elements
 				"floatVal":7, // float
-				// names of persistent elements
 				"doubleVal":8, // double
-				// names of persistent elements
 				"stringVal":10, // java.lang.String
-				// names of persistent elements
 				"dateVal":17, // java.util.Date
-				// names of persistent elements
 				"objVal":21, // java.lang.Object
-				// names of persistent elements
 				"objVal2":21, // java.lang.Object
-				// names of persistent elements
 				"value":1, // boolean
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"dateVal":17, // java.util.Date
@@ -7764,70 +7598,42 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.priv.PrivateMembers
 		8001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolVal":1, // boolean
-				// names of persistent elements
 				"byteVal":2, // byte
-				// names of persistent elements
 				"charVal":4, // char
-				// names of persistent elements
 				"shortVal":3, // short
-				// names of persistent elements
 				"intVal":5, // int
-				// names of persistent elements
 				"longVal":6, // long
-				// names of persistent elements
 				"floatVal":7, // float
-				// names of persistent elements
 				"doubleVal":8, // double
-				// names of persistent elements
 				"stringVal":10, // java.lang.String
-				// names of persistent elements
 				"primitiveTypes":1000, // byps.test.api.prim.PrimitiveTypes
-				// names of persistent elements
 				"arrBool":2058423690, // boolean[]
-				// names of persistent elements
 				"arrInt":100361105, // int[]
-				// names of persistent elements
 				"arrString":1888107655, // java.lang.String[]
-				// names of persistent elements
 				"arrPrimitiveTypes":2053507648, // byps.test.api.prim.PrimitiveTypes[]
-				// names of persistent elements
 				"listBool":1617670280, // java.util.List<java.lang.Boolean>
-				// names of persistent elements
 				"listInt":181681714, // java.util.List<java.lang.Integer>
-				// names of persistent elements
 				"listString":2123584667, // java.util.List<java.lang.String>
-				// names of persistent elements
 				"listPrimitiveTypes":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
-				// names of persistent elements
 				"mapIntListString":132175071, // java.util.Map<java.lang.Integer,java.util.List<java.lang.String>>
-				// names of persistent elements
 				"protInt":5, // int
-				// names of persistent elements
 				"pprotInt":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arrBool":2058423690, // boolean[]
-				// names of inline elements
 				"arrInt":100361105, // int[]
-				// names of inline elements
 				"arrString":1888107655, // java.lang.String[]
-				// names of inline elements
 				"arrPrimitiveTypes":2053507648, // byps.test.api.prim.PrimitiveTypes[]
-				// names of inline elements
 				"listBool":1617670280, // java.util.List<java.lang.Boolean>
-				// names of inline elements
 				"listInt":181681714, // java.util.List<java.lang.Integer>
-				// names of inline elements
 				"listString":2123584667, // java.util.List<java.lang.String>
-				// names of inline elements
 				"listPrimitiveTypes":1596367810, // java.util.List<byps.test.api.prim.PrimitiveTypes>
-				// names of inline elements
 				"mapIntListString":132175071, // java.util.Map<java.lang.Integer,java.util.List<java.lang.String>>
 			},
 			// inlineInstance
@@ -7836,22 +7642,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.refs.Node
 		9001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"next":9001, // byps.test.api.refs.Node
-				// names of persistent elements
 				"me":9001, // byps.test.api.refs.Node
-				// names of persistent elements
 				"mapOfNodes":2011881553, // java.util.Map<java.lang.String,byps.test.api.refs.Node>
-				// names of persistent elements
 				"listOfNodes":1442786648 // java.util.List<byps.test.api.refs.Node>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"mapOfNodes":2011881553, // java.util.Map<java.lang.String,byps.test.api.refs.Node>
-				// names of inline elements
 				"listOfNodes":1442786648 // java.util.List<byps.test.api.refs.Node>
 			},
 			// inlineInstance
@@ -7860,9 +7662,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getBool
 		2033416644 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7870,9 +7672,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getByte
 		2033426402 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7880,9 +7682,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getChar
 		2033439280 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7890,9 +7692,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDate
 		2033462920 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7900,9 +7702,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getDouble
 		39293909 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7910,9 +7712,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getFloat
 		1384988990 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7920,9 +7722,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getInt
 		1874061867 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7930,9 +7732,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getLong
 		2033714518 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7940,9 +7742,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getObject
 		263295897 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7950,9 +7752,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getPrimitiveTypes
 		1992537556 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7960,9 +7762,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getShort
 		1373101854 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7970,9 +7772,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_getString
 		394678379 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -7980,12 +7782,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setBool
 		201441072 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":2058423690 // boolean[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":2058423690 // boolean[]
@@ -7996,12 +7798,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setByte
 		201431314 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1374008726 // byte[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1374008726 // byte[]
@@ -8012,12 +7814,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setChar
 		201418436 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1361632968 // char[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1361632968 // char[]
@@ -8028,12 +7830,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDate
 		201394796 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1406664368 // java.util.Date[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1406664368 // java.util.Date[]
@@ -8044,12 +7846,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setDouble
 		253910985 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1359468275 // double[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1359468275 // double[]
@@ -8060,12 +7862,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setFloat
 		1946101450 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":766441794 // float[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":766441794 // float[]
@@ -8076,12 +7878,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setInt
 		1530512055 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":100361105 // int[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":100361105 // int[]
@@ -8092,12 +7894,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setLong
 		201143198 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1097129250 // long[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1097129250 // long[]
@@ -8108,12 +7910,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setObject
 		48678821 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":183594037 // java.lang.Object[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":183594037 // java.lang.Object[]
@@ -8124,12 +7926,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setPrimitiveTypes
 		1362276920 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":2053507648 // byps.test.api.prim.PrimitiveTypes[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":2053507648 // byps.test.api.prim.PrimitiveTypes[]
@@ -8140,12 +7942,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setShort
 		1934214314 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":2067161310 // short[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":2067161310 // short[]
@@ -8156,12 +7958,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes1dim_setString
 		180061303 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1888107655 // java.lang.String[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1888107655 // java.lang.String[]
@@ -8172,22 +7974,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysClass
 		330036060 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"arr2":2030857950, // byps.test.api.prim.PrimitiveTypes[][]
-				// names of persistent elements
 				"arr3":1739334652, // byps.test.api.prim.PrimitiveTypes[][][]
-				// names of persistent elements
 				"arr4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arr2":2030857950, // byps.test.api.prim.PrimitiveTypes[][]
-				// names of inline elements
 				"arr3":1739334652, // byps.test.api.prim.PrimitiveTypes[][][]
-				// names of inline elements
 				"arr4":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
 			// inlineInstance
@@ -8196,22 +7994,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInline
 		1467243283 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"arr2":827767075, // byps.test.api.inl.Point2D[][]
-				// names of persistent elements
 				"arr3":915212229, // byps.test.api.inl.Point2D[][][]
-				// names of persistent elements
 				"arr4":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arr2":827767075, // byps.test.api.inl.Point2D[][]
-				// names of inline elements
 				"arr3":915212229, // byps.test.api.inl.Point2D[][][]
-				// names of inline elements
 				"arr4":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
 			// inlineInstance
@@ -8220,22 +8014,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysInt
 		1828268517 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"arr2":1957744307, // int[][]
-				// names of persistent elements
 				"arr3":196606293, // int[][][]
-				// names of persistent elements
 				"arr4":39910537 // int[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arr2":1957744307, // int[][]
-				// names of inline elements
 				"arr3":196606293, // int[][][]
-				// names of inline elements
 				"arr4":39910537 // int[][][][]
 			},
 			// inlineInstance
@@ -8244,22 +8034,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysObject
 		1306614381 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"arr2":340213335, // java.lang.Object[][]
-				// names of persistent elements
 				"arr3":527503353, // java.lang.Object[][][]
-				// names of persistent elements
 				"arr4":124584219 // java.lang.Object[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arr2":340213335, // java.lang.Object[][]
-				// names of inline elements
 				"arr3":527503353, // java.lang.Object[][][]
-				// names of inline elements
 				"arr4":124584219 // java.lang.Object[][][][]
 			},
 			// inlineInstance
@@ -8268,22 +8054,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes23_sendArraysString
 		1175231899 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"arr2":1995260457, // java.lang.String[][]
-				// names of persistent elements
 				"arr3":1889888075, // java.lang.String[][][]
-				// names of persistent elements
 				"arr4":588723219 // java.lang.String[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arr2":1995260457, // java.lang.String[][]
-				// names of inline elements
 				"arr3":1889888075, // java.lang.String[][][]
-				// names of inline elements
 				"arr4":588723219 // java.lang.String[][][][]
 			},
 			// inlineInstance
@@ -8292,9 +8074,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getBool
 		1874302495 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8302,9 +8084,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getByte
 		1874292737 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8312,9 +8094,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getChar
 		1874279859 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8322,9 +8104,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDate
 		1874256219 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8332,9 +8114,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getDouble
 		1555969784 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8342,9 +8124,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getFloat
 		2029769285 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8352,9 +8134,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getInt
 		1325018648 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8362,9 +8144,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getLong
 		1874004621 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8372,9 +8154,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getObject
 		1253379978 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8382,9 +8164,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getPrimitiveTypes
 		483228169 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8392,9 +8174,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getShort
 		2041656421 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8402,9 +8184,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_getString
 		1121997496 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8412,12 +8194,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setBool
 		185807085 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":945713488 // boolean[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":945713488 // boolean[][][][]
@@ -8428,12 +8210,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setByte
 		185816843 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1201775504 // byte[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1201775504 // byte[][][][]
@@ -8444,12 +8226,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setChar
 		185829721 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":769021986 // char[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":769021986 // char[][][][]
@@ -8460,12 +8242,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDate
 		185853361 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":51898890 // java.util.Date[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":51898890 // java.util.Date[][][][]
@@ -8476,12 +8258,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setDouble
 		1770586860 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":2087445849 // double[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":2087445849 // double[][][][]
@@ -8492,12 +8274,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setFloat
 		1468656825 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1516687588 // float[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1516687588 // float[][][][]
@@ -8508,12 +8290,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setInt
 		1668568460 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":39910537 // int[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":39910537 // int[][][][]
@@ -8524,12 +8306,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setLong
 		186104959 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":846419204 // long[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":846419204 // long[][][][]
@@ -8540,12 +8322,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setObject
 		1467997054 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":124584219 // java.lang.Object[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":124584219 // java.lang.Object[][][][]
@@ -8556,12 +8338,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setPrimitiveTypes
 		456924651 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":758319514 // byps.test.api.prim.PrimitiveTypes[][][][]
@@ -8572,12 +8354,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setShort
 		1480543961 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1859644668 // short[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":1859644668 // short[][][][]
@@ -8588,12 +8370,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteArrayTypes4dim_setString
 		1336614572 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":588723219 // java.lang.String[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":588723219 // java.lang.String[][][][]
@@ -8604,54 +8386,34 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteConstants_compare_AllTypesC
 		1609344203 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"bool1s":1, // boolean
-				// names of persistent elements
 				"bool2s":1, // boolean
-				// names of persistent elements
 				"char1s":4, // char
-				// names of persistent elements
 				"stringNull":10, // java.lang.String
-				// names of persistent elements
 				"char2s":4, // char
-				// names of persistent elements
 				"short1s":3, // short
-				// names of persistent elements
 				"int1s":5, // int
-				// names of persistent elements
 				"long1s":6, // long
-				// names of persistent elements
 				"float1s":7, // float
-				// names of persistent elements
 				"double1s":8, // double
-				// names of persistent elements
 				"string1s":10, // java.lang.String
-				// names of persistent elements
 				"ALL":142458, // byps.test.api.cons.AllTypesZ
-				// names of persistent elements
 				"arrInt":100361105, // int[]
-				// names of persistent elements
 				"arrInt4":39910537, // int[][][][]
-				// names of persistent elements
 				"arrStrings":1888107655, // java.lang.String[]
-				// names of persistent elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
-				// names of persistent elements
 				"arrAll":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arrInt":100361105, // int[]
-				// names of inline elements
 				"arrInt4":39910537, // int[][][][]
-				// names of inline elements
 				"arrStrings":1888107655, // java.lang.String[]
-				// names of inline elements
 				"arrStrings4":588723219, // java.lang.String[][][][]
-				// names of inline elements
 				"arrAll":81775365 // byps.test.api.cons.AllTypesZ[][]
 			},
 			// inlineInstance
@@ -8660,14 +8422,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteConstants_compare_HebrewC
 		1711871378 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"ALEPH":1518668429, // byps.test.api.cons.HebrewZ
-				// names of persistent elements
 				"BETH":1518668429 // byps.test.api.cons.HebrewZ
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8675,9 +8436,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteEnums_getPlanet
 		6352043 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8685,12 +8446,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteEnums_setPlanet
 		220969119 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"planet":1375035164 // byps.test.api.enu.EnumPlanets
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8698,9 +8459,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_getActor
 		600892860 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8708,9 +8469,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray1dim
 		188393247 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8718,9 +8479,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DArray4dim
 		188482620 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8728,9 +8489,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DList
 		1428313263 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8738,9 +8499,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DListList
 		1650554387 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8748,9 +8509,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_getPoint2DMap
 		646661333 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8758,12 +8519,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_setActor
 		1162005320 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"act":171948703 // byps.test.api.inl.Actor
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8771,12 +8532,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray1dim
 		1355334613 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"pointArray":184101377 // byps.test.api.inl.Point2D[]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"pointArray":184101377 // byps.test.api.inl.Point2D[]
@@ -8787,12 +8548,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DArray4dim
 		1355245240 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"pointArray":949340697 // byps.test.api.inl.Point2D[][][][]
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"pointArray":949340697 // byps.test.api.inl.Point2D[][][][]
@@ -8803,12 +8564,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DList
 		343422941 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"pointList":2064980445 // java.util.List<byps.test.api.inl.Point2D>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"pointList":2064980445 // java.util.List<byps.test.api.inl.Point2D>
@@ -8819,12 +8580,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DListList
 		730520735 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"pointListList":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"pointListList":1823330785 // java.util.List<java.util.List<byps.test.api.inl.Point2D>>
@@ -8835,12 +8596,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteInlineInstance_setPoint2DMap
 		127469879 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"pointMap":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"pointMap":1358523233 // java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>
@@ -8851,9 +8612,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getBoolean1
 		2058662161 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8861,9 +8622,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getByte1
 		608486403 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8871,9 +8632,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getByte2
 		608486404 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8881,9 +8642,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getChar1
 		608885621 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8891,9 +8652,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getDate1
 		609618461 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8901,9 +8662,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getDouble1
 		2129490906 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8911,9 +8672,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getFloat1
 		1785569467 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8921,9 +8682,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getInt1
 		2098036488 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8931,9 +8692,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getInt2
 		2098036489 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8941,9 +8702,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getInt3
 		2098036490 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8951,9 +8712,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getInt4
 		2098036491 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8961,9 +8722,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getLong1
 		617417999 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8971,9 +8732,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getObj1
 		2098203392 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8981,9 +8742,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getPrimitiveTypes1
 		1679973895 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -8991,9 +8752,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getShort1
 		2140896613 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9001,9 +8762,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_getString1
 		1597237350 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9011,12 +8772,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setBoolean1
 		2147241989 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean1":1617670280 // java.util.List<java.lang.Boolean>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean1":1617670280 // java.util.List<java.lang.Boolean>
@@ -9027,12 +8788,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setByte1
 		47373943 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"byte1":1059148284 // java.util.List<java.lang.Byte>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"byte1":1059148284 // java.util.List<java.lang.Byte>
@@ -9043,12 +8804,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setByte2
 		47373944 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"byte2":1174971318 // java.util.List<byte[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"byte2":1174971318 // java.util.List<byte[]>
@@ -9059,12 +8820,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setChar1
 		47773161 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"char1":1661807911 // java.util.List<java.lang.Character>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"char1":1661807911 // java.util.List<java.lang.Character>
@@ -9075,12 +8836,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setDate1
 		48506001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"obj1":1504867122 // java.util.List<java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"obj1":1504867122 // java.util.List<java.util.Date>
@@ -9091,12 +8852,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setDouble1
 		228671154 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"double1":1555345627 // java.util.List<java.lang.Double>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"double1":1555345627 // java.util.List<java.lang.Double>
@@ -9107,12 +8868,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setFloat1
 		1570952391 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"float1":1628501332 // java.util.List<java.lang.Float>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"float1":1628501332 // java.util.List<java.lang.Float>
@@ -9123,12 +8884,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setInt1
 		136821228 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int1":181681714 // java.util.List<java.lang.Integer>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int1":181681714 // java.util.List<java.lang.Integer>
@@ -9139,12 +8900,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setInt2
 		136821227 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int2":1752158699 // java.util.List<int[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int2":1752158699 // java.util.List<int[]>
@@ -9155,12 +8916,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setInt3
 		136821226 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int3":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int3":1746702954 // java.util.List<java.util.List<java.lang.Integer>>
@@ -9171,12 +8932,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setInt4
 		136821225 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int4":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int4":1633500852 // java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>
@@ -9187,12 +8948,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setLong1
 		56305539 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"long1":1050216688 // java.util.List<java.lang.Long>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"long1":1050216688 // java.util.List<java.lang.Long>
@@ -9203,12 +8964,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setObj1
 		136654324 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"obj1":12 // java.util.List<java.lang.Object>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"obj1":12 // java.util.List<java.lang.Object>
@@ -9219,12 +8980,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setPrimitiveTypes1
 		759940243 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"primitiveTypes1":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"primitiveTypes1":1596367810 // java.util.List<byps.test.api.prim.PrimitiveTypes>
@@ -9235,12 +8996,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setShort1
 		1939453607 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"short1":1997002548 // java.util.List<java.lang.Short>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"short1":1997002548 // java.util.List<java.lang.Short>
@@ -9251,12 +9012,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteListTypes_setString1
 		339567886 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"string1":2123584667 // java.util.List<java.lang.String>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"string1":2123584667 // java.util.List<java.lang.String>
@@ -9267,9 +9028,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getBoolean1
 		885803255 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9277,9 +9038,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getByte1
 		124722647 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9287,9 +9048,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getByte2
 		124722646 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9297,9 +9058,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getChar1
 		124323429 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9307,9 +9068,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getDate1
 		123590589 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9317,9 +9078,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getDouble1
 		1890230400 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9327,9 +9088,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getFloat1
 		530925397 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9337,9 +9098,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getInt1
 		827458594 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9347,9 +9108,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getInt2
 		827458595 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9357,9 +9118,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getLong1
 		115791051 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9367,9 +9128,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getObj1
 		827625498 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9377,9 +9138,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getPrimitiveTypes1
 		1745799327 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9387,9 +9148,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getShort1
 		899426613 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9397,9 +9158,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_getString1
 		1836497856 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9407,12 +9168,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setBoolean1
 		974383083 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean1":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean1":1279823631 // java.util.Map<java.lang.String,java.lang.Boolean>
@@ -9423,12 +9184,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setByte1
 		685835107 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"byte1":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"byte1":1972793385 // java.util.HashMap<java.lang.Double,java.lang.Byte>
@@ -9439,12 +9200,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setByte2
 		685835106 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"byte2":1799280818 // java.util.Map<java.lang.Integer,byte[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"byte2":1799280818 // java.util.Map<java.lang.Integer,byte[]>
@@ -9455,12 +9216,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setChar1
 		685435889 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"char1":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"char1":8789515 // java.util.TreeMap<java.lang.Float,java.lang.Character>
@@ -9471,12 +9232,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setDate1
 		684703049 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"obj1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"obj1":1366799209 // java.util.Map<java.lang.String,java.util.Date>
@@ -9487,12 +9248,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setDouble1
 		467931660 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"double1":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"double1":1487265161 // java.util.Map<java.lang.Byte,java.lang.Double>
@@ -9503,12 +9264,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setFloat1
 		316308321 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"float1":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"float1":94341197 // java.util.Map<java.lang.Character,java.lang.Float>
@@ -9519,12 +9280,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setInt1
 		1407399122 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int1":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int1":1347703734 // java.util.Map<java.lang.Integer,java.lang.Integer>
@@ -9535,12 +9296,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setInt2
 		1407399121 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int2":1633750383 // java.util.Map<java.lang.Integer,int[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int2":1633750383 // java.util.Map<java.lang.Integer,int[]>
@@ -9551,12 +9312,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setLong1
 		676903511 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"long1":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"long1":1973996106 // java.util.Map<java.lang.Short,java.lang.Long>
@@ -9567,12 +9328,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setObj1
 		1407232218 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"obj1":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"obj1":1488550492 // java.util.Map<java.lang.String,java.lang.Object>
@@ -9583,12 +9344,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setPrimitiveTypes1
 		1629134317 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"primitiveTypes1":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"primitiveTypes1":1831201218 // java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>
@@ -9599,12 +9360,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setShort1
 		684809537 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"short1":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"short1":601099730 // java.util.Map<java.lang.Long,java.lang.Short>
@@ -9615,12 +9376,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteMapTypes_setString1
 		100307380 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"string1":1710660846 // java.util.Map<java.lang.String,java.lang.String>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"string1":1710660846 // java.util.Map<java.lang.String,java.lang.String>
@@ -9631,14 +9392,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_add
 		362528512 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"a":5, // int
-				// names of persistent elements
 				"b":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9646,9 +9406,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getBool
 		1816157633 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9656,9 +9416,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getByte
 		1816147875 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9666,9 +9426,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getChar
 		1816134997 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9676,9 +9436,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDate
 		1816111357 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9686,9 +9446,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getDouble
 		1513332250 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9696,9 +9456,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getFloat
 		462707289 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9706,9 +9466,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getInt
 		1582599686 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9716,9 +9476,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getLong
 		1815859759 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9726,9 +9486,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getObject
 		1210742444 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9736,9 +9496,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getPrimitiveTypes
 		714626279 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9746,9 +9506,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getShort
 		450820153 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9756,9 +9516,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
 		1079359962 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9766,24 +9526,18 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_makeDate
 		1918934973 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"year":5, // int
-				// names of persistent elements
 				"month":5, // int
-				// names of persistent elements
 				"day":5, // int
-				// names of persistent elements
 				"hour":5, // int
-				// names of persistent elements
 				"minute":5, // int
-				// names of persistent elements
 				"second":5, // int
-				// names of persistent elements
 				"millisecond":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9791,12 +9545,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_parseDate
 		578007072 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"date":17 // java.util.Date
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"date":17 // java.util.Date
@@ -9807,30 +9561,21 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_sendAllTypes
 		677876863 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"b":1, // boolean
-				// names of persistent elements
 				"c":4, // char
-				// names of persistent elements
 				"s":3, // short
-				// names of persistent elements
 				"i":5, // int
-				// names of persistent elements
 				"l":6, // long
-				// names of persistent elements
 				"f":7, // float
-				// names of persistent elements
 				"d":8, // double
-				// names of persistent elements
 				"str":10, // java.lang.String
-				// names of persistent elements
 				"pt":1000, // byps.test.api.prim.PrimitiveTypes
-				// names of persistent elements
 				"o":21 // java.lang.Object
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9838,12 +9583,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setBool
 		243951947 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1 // boolean
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9851,12 +9596,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setByte
 		243961705 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":2 // byte
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9864,12 +9609,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setChar
 		243974583 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":4 // char
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9877,12 +9622,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDate
 		243998223 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":17 // java.util.Date
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"v":17 // java.util.Date
@@ -9893,12 +9638,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setDouble
 		1727949326 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":8 // double
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9906,12 +9651,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setFloat
 		1023819749 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":7 // float
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9919,12 +9664,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setInt
 		1239049874 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9932,12 +9677,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setLong
 		244249821 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":6 // long
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9945,12 +9690,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setObject
 		1425359520 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":21 // java.lang.Object
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9958,12 +9703,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setPrimitiveTypes
 		225526541 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":1000 // byps.test.api.prim.PrimitiveTypes
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9971,12 +9716,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setShort
 		1011932613 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":3 // short
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9984,12 +9729,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_setString
 		1293977038 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -9997,9 +9742,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_throwException
 		1278149706 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10007,9 +9752,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
 		2033139391 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10017,9 +9762,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteReferences_getNode
 		1366991859 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10027,12 +9772,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteReferences_setNode
 		693117721 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":9001 // byps.test.api.refs.Node
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10040,12 +9785,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteServerCtrl_getPublishedRemote
 		648762723 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"name":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10053,16 +9798,14 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteServerCtrl_publishRemote
 		1543768912 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"name":10, // java.lang.String
-				// names of persistent elements
 				"remote":16, // byps.BRemote
-				// names of persistent elements
 				"fowardToOtherServers":1 // boolean
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10070,12 +9813,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteServerCtrl_removePublishedRemote
 		135366859 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"name":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10083,9 +9826,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getBoolean1
 		2114990909 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10093,9 +9836,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getByte1
 		901695825 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10103,9 +9846,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getByte2
 		901695824 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10113,9 +9856,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getChar1
 		901296607 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10123,9 +9866,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getDate1
 		900563767 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10133,9 +9876,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getDouble1
 		1751651450 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10143,9 +9886,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getFloat1
 		2080406641 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10153,9 +9896,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getInt1
 		1772226268 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10163,9 +9906,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getInt2
 		1772226269 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10173,9 +9916,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getLong1
 		892764229 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10183,9 +9926,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getObj1
 		1772393172 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10193,9 +9936,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getPrimitiveTypes1
 		669274715 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10203,9 +9946,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getShort1
 		1711905425 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10213,9 +9956,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_getString1
 		1183412410 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10223,12 +9966,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setBoolean1
 		2091396559 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean1":1365696060 // java.util.Set<java.lang.Boolean>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean1":1365696060 // java.util.Set<java.lang.Boolean>
@@ -10239,12 +9982,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setByte1
 		1462808285 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"byte1":31512998 // java.util.HashSet<java.lang.Byte>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"byte1":31512998 // java.util.HashSet<java.lang.Byte>
@@ -10255,12 +9998,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setByte2
 		1462808284 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"byte2":2052431866 // java.util.Set<byte[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"byte2":2052431866 // java.util.Set<byte[]>
@@ -10271,12 +10014,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setChar1
 		1462409067 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"char1":936607009 // java.util.TreeSet<java.lang.Character>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"char1":936607009 // java.util.TreeSet<java.lang.Character>
@@ -10287,12 +10030,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setDate1
 		1461676227 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"obj1":1097919350 // java.util.Set<java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"obj1":1097919350 // java.util.Set<java.util.Date>
@@ -10303,12 +10046,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setDouble1
 		185153786 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"double1":1320560671 // java.util.Set<java.lang.Double>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"double1":1320560671 // java.util.Set<java.lang.Double>
@@ -10319,12 +10062,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setFloat1
 		1999943579 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"float1":1898022288 // java.util.Set<java.lang.Float>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"float1":1898022288 // java.util.Set<java.lang.Float>
@@ -10335,12 +10078,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setInt1
 		462631448 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int1":1493282670 // java.util.Set<java.lang.Integer>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int1":1493282670 // java.util.Set<java.lang.Integer>
@@ -10351,12 +10094,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setInt2
 		462631447 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"int2":1406124761 // java.util.Set<int[]>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"int2":1406124761 // java.util.Set<int[]>
@@ -10367,12 +10110,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setLong1
 		1453876689 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"long1":1457164460 // java.util.Set<java.lang.Long>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"long1":1457164460 // java.util.Set<java.lang.Long>
@@ -10383,12 +10126,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setObj1
 		462464544 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"obj1":14 // java.util.Set<java.lang.Object>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"obj1":14 // java.util.Set<java.lang.Object>
@@ -10399,12 +10142,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setPrimitiveTypes1
 		250758937 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"primitiveTypes1":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"primitiveTypes1":673917574 // java.util.Set<byps.test.api.prim.PrimitiveTypes>
@@ -10415,12 +10158,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setShort1
 		1926522501 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"short1":2028443792 // java.util.Set<java.lang.Short>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"short1":2028443792 // java.util.Set<java.lang.Short>
@@ -10431,12 +10174,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteSetTypes_setString1
 		753392826 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"string1":1888799711 // java.util.Set<java.lang.String>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"string1":1888799711 // java.util.Set<java.lang.String>
@@ -10447,9 +10190,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_getImage
 		61677379 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10457,9 +10200,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_getImages
 		1911998634 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10467,9 +10210,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_getStreamDeferedProperies
 		1205766796 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10477,9 +10220,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_getStreamDoNotClone
 		692369677 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10487,9 +10230,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_getTextStream
 		818823403 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10497,9 +10240,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_getVideoCheckSupportByteRange
 		1006919505 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10507,12 +10250,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_setImage
 		622789839 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"istrm":15 // java.io.InputStream
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10520,14 +10263,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_setImages
 		2126615710 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"istrms":779528402, // java.util.Map<java.lang.Integer,java.io.InputStream>
-				// names of persistent elements
 				"doNotReadStreamAtKey":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"istrms":779528402, // java.util.Map<java.lang.Integer,java.io.InputStream>
@@ -10538,12 +10280,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_setStreamDoNotMaterialize
 		199832593 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"stream":15 // java.io.InputStream
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10551,9 +10293,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteStreams_throwLastException
 		2127402965 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10561,14 +10303,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteWithAuthentication_doit
 		1251509013 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"sess":65775978, // byps.test.api.auth.SessionInfo
-				// names of persistent elements
 				"value":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10576,12 +10317,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteWithAuthentication_expire
 		72176172 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"sess":65775978 // byps.test.api.auth.SessionInfo
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10589,16 +10330,14 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteWithAuthentication_login
 		134687724 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"sess":65775978, // byps.test.api.auth.SessionInfo
-				// names of persistent elements
 				"userName":10, // java.lang.String
-				// names of persistent elements
 				"userPwd":10 // java.lang.String
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10606,12 +10345,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteWithAuthentication_setReloginCount
 		802968058 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"count":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10619,12 +10358,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BRequest_RemoteWithAuthentication_setUseAuthentication
 		946544530 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"useAuth":1 // boolean
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10674,66 +10413,40 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.set.SetTypes
 		5001 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"boolean1":1365696060, // java.util.Set<java.lang.Boolean>
-				// names of persistent elements
 				"byte1":31512998, // java.util.HashSet<java.lang.Byte>
-				// names of persistent elements
 				"char1":936607009, // java.util.TreeSet<java.lang.Character>
-				// names of persistent elements
 				"short1":2028443792, // java.util.Set<java.lang.Short>
-				// names of persistent elements
 				"int1":1493282670, // java.util.Set<java.lang.Integer>
-				// names of persistent elements
 				"long1":1457164460, // java.util.Set<java.lang.Long>
-				// names of persistent elements
 				"float1":1898022288, // java.util.Set<java.lang.Float>
-				// names of persistent elements
 				"double1":1320560671, // java.util.Set<java.lang.Double>
-				// names of persistent elements
 				"string1":1888799711, // java.util.Set<java.lang.String>
-				// names of persistent elements
 				"primitiveTypes1":673917574, // java.util.Set<byps.test.api.prim.PrimitiveTypes>
-				// names of persistent elements
 				"byte2":2052431866, // java.util.Set<byte[]>
-				// names of persistent elements
 				"int2":1406124761, // java.util.Set<int[]>
-				// names of persistent elements
 				"obj1":14, // java.util.Set<java.lang.Object>
-				// names of persistent elements
 				"date1":1097919350 // java.util.Set<java.util.Date>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"boolean1":1365696060, // java.util.Set<java.lang.Boolean>
-				// names of inline elements
 				"byte1":31512998, // java.util.HashSet<java.lang.Byte>
-				// names of inline elements
 				"char1":936607009, // java.util.TreeSet<java.lang.Character>
-				// names of inline elements
 				"short1":2028443792, // java.util.Set<java.lang.Short>
-				// names of inline elements
 				"int1":1493282670, // java.util.Set<java.lang.Integer>
-				// names of inline elements
 				"long1":1457164460, // java.util.Set<java.lang.Long>
-				// names of inline elements
 				"float1":1898022288, // java.util.Set<java.lang.Float>
-				// names of inline elements
 				"double1":1320560671, // java.util.Set<java.lang.Double>
-				// names of inline elements
 				"string1":1888799711, // java.util.Set<java.lang.String>
-				// names of inline elements
 				"primitiveTypes1":673917574, // java.util.Set<byps.test.api.prim.PrimitiveTypes>
-				// names of inline elements
 				"byte2":2052431866, // java.util.Set<byte[]>
-				// names of inline elements
 				"int2":1406124761, // java.util.Set<int[]>
-				// names of inline elements
 				"obj1":14, // java.util.Set<java.lang.Object>
-				// names of inline elements
 				"date1":1097919350 // java.util.Set<java.util.Date>
 			},
 			// inlineInstance
@@ -10742,12 +10455,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ClientIF_getStreams
 		1654980071 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"ctrl":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10755,12 +10468,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ClientIF_incrementInt
 		1685952420 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"a":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10768,14 +10481,13 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ClientIF_putStreams
 		2016865344 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"strm":1218831438, // java.util.List<java.io.InputStream>
-				// names of persistent elements
 				"ctrl":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"strm":1218831438, // java.util.List<java.io.InputStream>
@@ -10786,12 +10498,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ClientIF_sendChat
 		41050276 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"cs":7007 // byps.test.api.srvr.ChatStructure
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10799,12 +10511,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_callClientIncrementInt
 		389860173 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10812,12 +10524,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_callClientParallel
 		772308436 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"v":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10825,12 +10537,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_getClient
 		190669475 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"id":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10838,9 +10550,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_getClientIds
 		2007476251 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10848,9 +10560,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_getPartner
 		1025664374 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10858,12 +10570,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_getStreamsFromClient
 		1679867754 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"materializeOnServer":1 // boolean
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10871,12 +10583,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_putStreamsOnClient
 		1934886286 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"streams":1218831438 // java.util.List<java.io.InputStream>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"streams":1218831438 // java.util.List<java.io.InputStream>
@@ -10887,12 +10599,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_registerWithClientMap
 		1533268444 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"id":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10900,12 +10612,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.BRequest_ServerIF_setPartner
 		1332497686 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"client":2049072174 // byps.test.api.srvr.ClientIF
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10919,16 +10631,14 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.srvr.ChatStructure
 		7007 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"msg":10, // java.lang.String
-				// names of persistent elements
 				"sentAt":8, // double
-				// names of persistent elements
 				"receivedAt":8 // double
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10936,26 +10646,20 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.strm.Stream1
 		1541129345 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"is1":15, // java.io.InputStream
-				// names of persistent elements
 				"contentType":10, // java.lang.String
-				// names of persistent elements
 				"arrStream":1950626768, // java.io.InputStream[]
-				// names of persistent elements
 				"listStream":1218831438, // java.util.List<java.io.InputStream>
-				// names of persistent elements
 				"mapStream":779528402 // java.util.Map<java.lang.Integer,java.io.InputStream>
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arrStream":1950626768, // java.io.InputStream[]
-				// names of inline elements
 				"listStream":1218831438, // java.util.List<java.io.InputStream>
-				// names of inline elements
 				"mapStream":779528402 // java.util.Map<java.lang.Integer,java.io.InputStream>
 			},
 			// inlineInstance
@@ -10964,9 +10668,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.ver.BRequest_EvolveIF_getClient
 		1212621223 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10974,9 +10678,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.ver.BRequest_EvolveIF_getEvolve
 		1279300441 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10984,9 +10688,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.ver.BRequest_EvolveIF_sendEvolveToClient
 		714115141 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -10994,12 +10698,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.ver.BRequest_EvolveIF_setClient
 		998004147 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"partner":15377840 // byps.test.api.ver.EvolveIF
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -11007,12 +10711,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.ver.BRequest_EvolveIF_setEvolve
 		1064683365 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"obj":1391985860 // byps.test.api.ver.Evolve
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false
@@ -11023,210 +10727,112 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.ver.Evolve
 		1391985860 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"bool1":1, // boolean
-				// names of persistent elements
 				"byte1":2, // byte
-				// names of persistent elements
 				"char1":4, // char
-				// names of persistent elements
 				"short1":3, // short
-				// names of persistent elements
 				"int1":5, // int
-				// names of persistent elements
 				"long1":6, // long
-				// names of persistent elements
 				"float1":7, // float
-				// names of persistent elements
 				"double1":8, // double
-				// names of persistent elements
 				"bools1":2058423690, // boolean[]
-				// names of persistent elements
 				"bytes1":1374008726, // byte[]
-				// names of persistent elements
 				"chars1":1361632968, // char[]
-				// names of persistent elements
 				"shorts1":2067161310, // short[]
-				// names of persistent elements
 				"ints1":100361105, // int[]
-				// names of persistent elements
 				"longs1":1097129250, // long[]
-				// names of persistent elements
 				"floats1":766441794, // float[]
-				// names of persistent elements
 				"doubles1":1359468275, // double[]
-				// names of persistent elements
 				"str1":10, // java.lang.String
-				// names of persistent elements
 				"obj1":21, // java.lang.Object
-				// names of persistent elements
 				"evo1":573592593, // byps.test.api.ver.Evolve2
-				// names of persistent elements
 				"list1":181681714, // java.util.List<java.lang.Integer>
-				// names of persistent elements
 				"set1":1493282670, // java.util.Set<java.lang.Integer>
-				// names of persistent elements
 				"map1":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
-				// names of persistent elements
 				"bool2":1, // boolean
-				// names of persistent elements
 				"byte2":2, // byte
-				// names of persistent elements
 				"char2":4, // char
-				// names of persistent elements
 				"short2":3, // short
-				// names of persistent elements
 				"int2":5, // int
-				// names of persistent elements
 				"long2":6, // long
-				// names of persistent elements
 				"float2":7, // float
-				// names of persistent elements
 				"double2":8, // double
-				// names of persistent elements
 				"bools2":2058423690, // boolean[]
-				// names of persistent elements
 				"bytes2":1374008726, // byte[]
-				// names of persistent elements
 				"chars2":1361632968, // char[]
-				// names of persistent elements
 				"shorts2":2067161310, // short[]
-				// names of persistent elements
 				"ints2":100361105, // int[]
-				// names of persistent elements
 				"longs2":1097129250, // long[]
-				// names of persistent elements
 				"floats2":766441794, // float[]
-				// names of persistent elements
 				"doubles2":1359468275, // double[]
-				// names of persistent elements
 				"str2":10, // java.lang.String
-				// names of persistent elements
 				"obj2":21, // java.lang.Object
-				// names of persistent elements
 				"evo2":573592593, // byps.test.api.ver.Evolve2
-				// names of persistent elements
 				"list2":181681714, // java.util.List<java.lang.Integer>
-				// names of persistent elements
 				"set2":1493282670, // java.util.Set<java.lang.Integer>
-				// names of persistent elements
 				"map2":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
-				// names of persistent elements
 				"bool3":1, // boolean
-				// names of persistent elements
 				"byte3":2, // byte
-				// names of persistent elements
 				"char3":4, // char
-				// names of persistent elements
 				"short3":3, // short
-				// names of persistent elements
 				"int3":5, // int
-				// names of persistent elements
 				"long3":6, // long
-				// names of persistent elements
 				"float3":7, // float
-				// names of persistent elements
 				"double3":8, // double
-				// names of persistent elements
 				"bools3":2058423690, // boolean[]
-				// names of persistent elements
 				"bytes3":1374008726, // byte[]
-				// names of persistent elements
 				"chars3":1361632968, // char[]
-				// names of persistent elements
 				"shorts3":2067161310, // short[]
-				// names of persistent elements
 				"ints3":100361105, // int[]
-				// names of persistent elements
 				"longs3":1097129250, // long[]
-				// names of persistent elements
 				"floats3":766441794, // float[]
-				// names of persistent elements
 				"doubles3":1359468275, // double[]
-				// names of persistent elements
 				"str3":10, // java.lang.String
-				// names of persistent elements
 				"obj3":21, // java.lang.Object
-				// names of persistent elements
 				"evo3":573592593, // byps.test.api.ver.Evolve2
-				// names of persistent elements
 				"list3":181681714, // java.util.List<java.lang.Integer>
-				// names of persistent elements
 				"set3":1493282670, // java.util.Set<java.lang.Integer>
-				// names of persistent elements
 				"map3":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
-				// names of persistent elements
 				"since793":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"bools1":2058423690, // boolean[]
-				// names of inline elements
 				"bytes1":1374008726, // byte[]
-				// names of inline elements
 				"chars1":1361632968, // char[]
-				// names of inline elements
 				"shorts1":2067161310, // short[]
-				// names of inline elements
 				"ints1":100361105, // int[]
-				// names of inline elements
 				"longs1":1097129250, // long[]
-				// names of inline elements
 				"floats1":766441794, // float[]
-				// names of inline elements
 				"doubles1":1359468275, // double[]
-				// names of inline elements
 				"list1":181681714, // java.util.List<java.lang.Integer>
-				// names of inline elements
 				"set1":1493282670, // java.util.Set<java.lang.Integer>
-				// names of inline elements
 				"map1":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
-				// names of inline elements
 				"bools2":2058423690, // boolean[]
-				// names of inline elements
 				"bytes2":1374008726, // byte[]
-				// names of inline elements
 				"chars2":1361632968, // char[]
-				// names of inline elements
 				"shorts2":2067161310, // short[]
-				// names of inline elements
 				"ints2":100361105, // int[]
-				// names of inline elements
 				"longs2":1097129250, // long[]
-				// names of inline elements
 				"floats2":766441794, // float[]
-				// names of inline elements
 				"doubles2":1359468275, // double[]
-				// names of inline elements
 				"list2":181681714, // java.util.List<java.lang.Integer>
-				// names of inline elements
 				"set2":1493282670, // java.util.Set<java.lang.Integer>
-				// names of inline elements
 				"map2":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
-				// names of inline elements
 				"bools3":2058423690, // boolean[]
-				// names of inline elements
 				"bytes3":1374008726, // byte[]
-				// names of inline elements
 				"chars3":1361632968, // char[]
-				// names of inline elements
 				"shorts3":2067161310, // short[]
-				// names of inline elements
 				"ints3":100361105, // int[]
-				// names of inline elements
 				"longs3":1097129250, // long[]
-				// names of inline elements
 				"floats3":766441794, // float[]
-				// names of inline elements
 				"doubles3":1359468275, // double[]
-				// names of inline elements
 				"list3":181681714, // java.util.List<java.lang.Integer>
-				// names of inline elements
 				"set3":1493282670, // java.util.Set<java.lang.Integer>
-				// names of inline elements
 				"map3":1347703734, // java.util.Map<java.lang.Integer,java.lang.Integer>
 			},
 			// inlineInstance
@@ -11235,12 +10841,12 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.ver.Evolve2
 		573592593 : new byps.BSerializer(
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			// names of persistent elements
 			{
 				"n1":5 // int
 			},
-			// checkpoint byps.gen.js.GenRegistry:138
+			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance
 			false

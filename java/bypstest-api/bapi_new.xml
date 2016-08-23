@@ -2392,7 +2392,7 @@
                     </comments>
                     <comments>
                         <kind>@remarks</kind>
-                        <text>It is defined &quot;final static&quot; and thus cannot be changed.</text>
+                        <text>It is defined "final static" and thus cannot be changed.</text>
                     </comments>
                     <typeName>char</typeName>
                     <isTransient>false</isTransient>
@@ -12490,7 +12490,7 @@
                         </comment>
                         <comment>
                             <kind>@remarks</kind>
-                            <text>Only user &quot;Fritz&quot; is allowed to login.</text>
+                            <text>Only user "Fritz" is allowed to login.</text>
                         </comment>
                         <comment>
                             <kind>@param</kind>

@@ -10,7 +10,7 @@
         <jar destfile="${javalibdir}/bypsgen.jar">
             <manifest>
                 <attribute name="Main-Class" value="byps.gen.doclet.BDoclet"/>
-                <attribute name="Class-Path" value=". tools.jar log4j-1.2.15.jar commons-logging-1.1.1.jar jargs-1.0.jar"/>
+                <attribute name="Class-Path" value=". tools.jar log4j-1.2.17.jar commons-logging-1.1.1.jar jargs-1.0.jar"/>
             </manifest>
             <fileset dir="../bypsgen/bin"/>
             <fileset dir="../byps/bin"/>

@@ -1,6 +1,7 @@
 package byps.gen.js;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -131,14 +132,24 @@ public class GenRegistry {
 	   }
 	   return false;
 	}
+	
+	private void collectMembersInclusiveInheritedMembers(SerialInfo serInfo, ArrayList<MemberInfo> allMembers) {
+		if (serInfo != null) {
+			allMembers.addAll(serInfo.members);
+			collectMembersInclusiveInheritedMembers(serInfo.baseInfo, allMembers);
+		}
+	}
 
 	protected void printMembers(SerialInfo serInfo, boolean onlyInline) {
 		boolean hasMember = false;
 		
 		pr.checkpoint();
 		
-		for (int i = 0; i < serInfo.members.size(); i++) {
-			MemberInfo minfo = serInfo.members.get(i);
+		ArrayList<MemberInfo> allMembers = new ArrayList<MemberInfo>();
+		collectMembersInclusiveInheritedMembers(serInfo, allMembers);
+
+		for (int i = 0; i < allMembers.size(); i++) {
+			MemberInfo minfo = allMembers.get(i);
 			
 			if (minfo.isTransient) continue;
       //if (minfo.isStatic) continue; 
@@ -149,15 +160,14 @@ public class GenRegistry {
 			    !minfo.type.isCollectionType() &&
 			    !minfo.type.isDateType()) continue;
 
-      pr.println( onlyInline ? "// names of inline elements" : "// names of persistent elements" );
-			
 			if (!hasMember) {
+		    pr.println( onlyInline ? "// names of inline elements" : "// names of persistent elements" );
 				pr.println("{");
 				pr.beginBlock();
 			}
 			
 			CodePrinter mpr = pr.print("\"").print(minfo.name).print("\":").print(minfo.type.typeId);
-			if (i != serInfo.members.size()-1) mpr = mpr.print(",");
+			if (i != allMembers.size()-1) mpr = mpr.print(",");
 			mpr.print(" // ").print(minfo.type.toString());
 			mpr.println();
 			

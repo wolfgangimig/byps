@@ -13,7 +13,7 @@
 			<arg value="-genj.dir-ser-bin"/>    <arg value="..\\bypstest-ser\\src-ser-bin"/>
 			<arg value="-genj.dir-ser-json"/> 	<arg value="..\\bypstest-ser-json\\src"/>
 
-			<arg value="-gencs.dir-ser"/>     	<arg value="D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser"/>
+			<!--arg value="-gencs.dir-ser"/>     	<arg value="D:\\dev\\BYPS2\\csharp\\byps\\bypstest-ser\\src-ser"/ -->
 			
 			<arg value="-genjs.dest"/> 			<arg value="..\\bypstest-srv\\WebContent\\testser.js"/>
 						
