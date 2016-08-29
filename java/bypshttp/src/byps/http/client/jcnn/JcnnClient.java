@@ -15,6 +15,8 @@ public class JcnnClient implements HHttpClient {
   
   private final CookieManager cookieManager;
   
+  public final static int MAX_RETRIES = 3;
+  
   public JcnnClient(String url) {
     cookieManager = new CookieManager(); 
     cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);

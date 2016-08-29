@@ -129,72 +129,86 @@ public class JcnnPutStream extends JcnnRequest {
           .append("&last=").append(lastPart ? 1 : 0)
           .append("&total=").append(totalLength);
           
-        if (log.isDebugEnabled()) log.debug("open connection, url=" + destUrl);
-        
-        HttpURLConnection conn = createConnection(destUrl.toString());
-        OutputStream os = null;
-        OutputStreamByteCount osbc = null;
-        
-        conn.setConnectTimeout(super.connectTimeoutSeconds * 1000);
-        conn.setReadTimeout(sendRecvTimeoutSeconds * 1000);
-  
-        conn.setDoInput(true);
-        conn.setDoOutput(true);
-        conn.setRequestMethod("PUT");
-        conn.setRequestProperty("Content-Type", contentType);
-        
-        if (contentDisposition != null && contentDisposition.length() != 0) {
-          conn.setRequestProperty("Content-Disposition", contentDisposition);
-        }
-        
-        applySession(this);
-        
-        if (log.isDebugEnabled()) log.debug("write to output stream");
-        
-        os = osbc = new OutputStreamByteCount(conn.getOutputStream());      
-        
-        long sum = 0;
-        while (len != -1) {
-          os.write(buf, 0, len);
-          sum += len;
-          if (sum >= MAX_STREAM_PART_SIZE) break;
-          len = stream.read(buf, 0, buf.length);
-        }
-        
-        os.flush();
-        os.close();
-        os = null;
-        if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
-        
-        int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
-        try {
-          statusCode = getResponseCode(conn);
-          if (statusCode != HttpURLConnection.HTTP_OK) {
-            throw new IOException("HTTP " + statusCode); 
+        int retry = 0;
+        do {
+
+          if (isCancelled()) {
+            if (log.isDebugEnabled()) log.debug("request is cancelled.");
+            break;
+          }
+
+          if (log.isDebugEnabled()) log.debug("open connection, url=" + destUrl);
+          
+          HttpURLConnection conn = createConnection(destUrl.toString());
+          OutputStream os = null;
+          OutputStreamByteCount osbc = null;
+          
+          conn.setConnectTimeout(super.connectTimeoutSeconds * 1000);
+          conn.setReadTimeout(sendRecvTimeoutSeconds * 1000);
+    
+          conn.setDoInput(true);
+          conn.setDoOutput(true);
+          conn.setRequestMethod("PUT");
+          conn.setRequestProperty("Content-Type", contentType);
+          
+          if (contentDisposition != null && contentDisposition.length() != 0) {
+            conn.setRequestProperty("Content-Disposition", contentDisposition);
           }
           
-          InputStream isResp = conn.getInputStream();
-          BWire.bufferFromStream(isResp, false); // closes isResp
-        }
-        catch (SocketException e) {
-          if (log.isDebugEnabled()) log.debug("received exception=" + e);
-          returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
-        }
-        catch (IOException e) {
-          if (conn != null) {
-            if (log.isDebugEnabled()) log.debug("Failed to read response", e);
-            InputStream errStrm = conn.getErrorStream();
-            BWire.bufferFromStream(errStrm, false);
-          }          
-          throw new BException(statusCode, "Put stream failed", e);
-        }
-        finally {
-          if (conn != null) {
-            conn.disconnect();
+          applySession(this);
+          
+          if (log.isDebugEnabled()) log.debug("write to output stream");
+          
+          os = osbc = new OutputStreamByteCount(conn.getOutputStream());      
+          
+          long sum = 0;
+          while (len != -1) {
+            os.write(buf, 0, len);
+            sum += len;
+            if (sum >= MAX_STREAM_PART_SIZE) break;
+            len = stream.read(buf, 0, buf.length);
           }
-        }
-  
-      }
+          
+          os.flush();
+          os.close();
+          os = null;
+          if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.sum + ", wait for response");
+          
+          int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
+          try {
+            statusCode = getResponseCode(conn);
+            if (statusCode != HttpURLConnection.HTTP_OK) {
+              throw new IOException("HTTP " + statusCode); 
+            }
+            
+            InputStream isResp = conn.getInputStream();
+            BWire.bufferFromStream(isResp, false); // closes isResp
+          }
+          catch (SocketException e) {
+            if (log.isDebugEnabled()) log.debug("received exception=" + e);
+            returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
+          }
+          catch (IOException e) {
+            if (conn != null) {
+              if (log.isDebugEnabled()) log.debug("Failed to read response", e);
+              InputStream errStrm = conn.getErrorStream();
+              BWire.bufferFromStream(errStrm, false);
+            }          
+            throw new BException(statusCode, "Put stream failed", e);
+          }
+          finally {
+            if (conn != null) {
+              conn.disconnect();
+            }
+          }
+          
+          retry++;
+          
+        } while(retry < JcnnClient.MAX_RETRIES && 
+          returnException != null && 
+          returnException.code == BExceptionC.CONNECTION_TO_SERVER_FAILED);
+        
+      } // for ...part...
     }
     catch (BException e) {
       // thrown in RequestToCancel.setConnection

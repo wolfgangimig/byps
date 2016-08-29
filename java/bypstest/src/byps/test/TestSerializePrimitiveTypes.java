@@ -670,17 +670,17 @@ public class TestSerializePrimitiveTypes {
 				
 	}
 
-	@Test
-	public void testBMessageHeader() throws BException {
-		try {
-			byte[] buf = Files.readAllBytes(new File("d:\\temp\\sol.invoice.IncomingInvoice.json").toPath());
-			ByteBuffer bbuf = ByteBuffer.wrap(buf);
-			BMessageHeader hdr = new BMessageHeader();
-			hdr.read(bbuf);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	@Test
+//	public void testBMessageHeader() throws BException {
+//		try {
+//			byte[] buf = Files.readAllBytes(new File("d:\\temp\\sol.invoice.IncomingInvoice.json").toPath());
+//			ByteBuffer bbuf = ByteBuffer.wrap(buf);
+//			BMessageHeader hdr = new BMessageHeader();
+//			hdr.read(bbuf);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 }

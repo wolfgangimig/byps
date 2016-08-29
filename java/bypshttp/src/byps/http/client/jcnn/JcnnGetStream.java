@@ -37,58 +37,66 @@ public class JcnnGetStream extends JcnnRequest {
     String contentType = null;
     long contentLength = -1;
     String contentDisposition = null;
+    int retry = 0;
 
-    try {
-      c = createConnection(url);
-
-      c.setDoInput(true);
-      c.setDoOutput(false);
-
-      c.setRequestMethod("GET");
-
-      statusCode = getResponseCode(c);
-
-      if (statusCode != HttpURLConnection.HTTP_OK && statusCode != HttpURLConnection.HTTP_PARTIAL) {
-        throw new IOException("HTTP status " + statusCode);
-      }
-
-      contentType = c.getContentType();
-      contentDisposition = c.getHeaderField("Content-Disposition");
-
-      contentLength = -1L;
+    do {
       try {
-        String s = c.getHeaderField("Content-Length");
-        if (s != null && s.length() != 0) {
-          contentLength = Long.parseLong(s);
+        c = createConnection(url);
+  
+        c.setDoInput(true);
+        c.setDoOutput(false);
+  
+        c.setRequestMethod("GET");
+  
+        statusCode = getResponseCode(c);
+  
+        if (statusCode != HttpURLConnection.HTTP_OK && statusCode != HttpURLConnection.HTTP_PARTIAL) {
+          throw new IOException("HTTP status " + statusCode);
         }
-      }
-      catch (NumberFormatException ex) {
-      }
-
-      is = c.getInputStream();
-    }
-    catch (SocketException e) {
-      if (log.isDebugEnabled()) log.debug("received exception=" + e);
-      returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED,
-          "Socket error", e);
-    }
-    catch (Throwable e) {
-      if (log.isDebugEnabled()) log.debug("received exception=" + e);
-
-      try {
-        if (c != null) {
-          is = c.getErrorStream();
-          BWire.bufferFromStream(is, false);
-          is = null;
+  
+        contentType = c.getContentType();
+        contentDisposition = c.getHeaderField("Content-Disposition");
+  
+        contentLength = -1L;
+        try {
+          String s = c.getHeaderField("Content-Length");
+          if (s != null && s.length() != 0) {
+            contentLength = Long.parseLong(s);
+          }
         }
+        catch (NumberFormatException ex) {
+        }
+  
+        is = c.getInputStream();
       }
-      catch (IOException ignored) {
+      catch (SocketException e) {
+        if (log.isDebugEnabled()) log.debug("received exception=" + e);
+        returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED,
+            "Socket error", e);
       }
-
-      returnException = new BException(statusCode, "Send message failed", e);
-    }
-    finally {
-    }
+      catch (Throwable e) {
+        if (log.isDebugEnabled()) log.debug("received exception=" + e);
+  
+        try {
+          if (c != null) {
+            is = c.getErrorStream();
+            BWire.bufferFromStream(is, false);
+            is = null;
+          }
+        }
+        catch (IOException ignored) {
+        }
+  
+        returnException = new BException(statusCode, "Send message failed", e);
+      }
+      finally {
+      }
+      
+      retry++;
+      
+    } while(retry < JcnnClient.MAX_RETRIES && 
+      returnException != null && 
+      returnException.code == BExceptionC.CONNECTION_TO_SERVER_FAILED);   
 
     final BException ex2 = returnException;
     BContentStream stream = new BContentStreamWrapper(is, contentType,
