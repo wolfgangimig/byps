@@ -1,5 +1,8 @@
 package byps;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 /**
@@ -22,12 +25,13 @@ public class BVersioning {
 	public static long stringToLong(String sver) {
 		long ver = 0;
 		if (sver != null && sver.length() != 0) {
-			String[] arr = sver.split("\\.");
-			for (int i = 0; i < arr.length; i++) {
+			ArrayList<String> arr = new ArrayList<String>(Arrays.asList(sver.split("\\.")));
+			while (arr.size() < 4) arr.add("0");
+			for (int i = 0; i < Math.min(arr.size(), 4); i++) {
 				ver *= 10000;
-				if (i == arr.length-1) ver *= 100;
-				if (arr[i].length() != 0) {
-					ver += Integer.parseInt(arr[i]);
+				if (i == 3) ver *= 100;
+				if (arr.get(i).length() != 0) {
+					ver += Integer.parseInt(arr.get(i));
 				}
 			}
 		}
