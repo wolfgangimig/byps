@@ -43,7 +43,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		bbuf.putLong(obj.long1);
 		bbuf.putShort(obj.short1);
 		bbuf.putString(obj.str1);
-		if (version >= 2L) {
+		if (version >= 200000000000000L) {
 			bbuf.putBoolean(obj.bool2);
 			bbuf.putByte(obj.byte2);
 			bbuf.putChar(obj.char2);
@@ -53,7 +53,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			bbuf.putLong(obj.long2);
 			bbuf.putShort(obj.short2);
 			bbuf.putString(obj.str2);
-			if (version >= 3L) {
+			if (version >= 300000000000000L) {
 				bbuf.putBoolean(obj.bool3);
 				bbuf.putByte(obj.byte3);
 				bbuf.putChar(obj.char3);
@@ -63,7 +63,7 @@ public class BSerializer_1391985860 extends BSerializer {
 				bbuf.putLong(obj.long3);
 				bbuf.putShort(obj.short3);
 				bbuf.putString(obj.str3);
-				if (version >= 793L) {
+				if (version >= 79300000000000000L) {
 					bbuf.putInt(obj.since793);
 				}
 			}
@@ -81,7 +81,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		bout.writeObj(obj.obj1, false, null);
 		bout.writeObj(obj.set1, false, byps.test.api.BSerializer_1493282670.instance);
 		bout.writeObj(obj.shorts1, false, byps.test.api.BSerializer_2067161310.instance);
-		if (version >= 2L) {
+		if (version >= 200000000000000L) {
 			bout.writeObj(obj.bools2, false, byps.test.api.BSerializer_2058423690.instance);
 			bout.writeObj(obj.bytes2, false, byps.test.api.BSerializer_1374008726.instance);
 			bout.writeObj(obj.chars2, false, byps.test.api.BSerializer_1361632968.instance);
@@ -95,7 +95,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			bout.writeObj(obj.obj2, false, null);
 			bout.writeObj(obj.set2, false, byps.test.api.BSerializer_1493282670.instance);
 			bout.writeObj(obj.shorts2, false, byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 3L) {
+			if (version >= 300000000000000L) {
 				bout.writeObj(obj.bools3, false, byps.test.api.BSerializer_2058423690.instance);
 				bout.writeObj(obj.bytes3, false, byps.test.api.BSerializer_1374008726.instance);
 				bout.writeObj(obj.chars3, false, byps.test.api.BSerializer_1361632968.instance);
@@ -129,7 +129,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		obj.long1 = bbuf.getLong();
 		obj.short1 = bbuf.getShort();
 		obj.str1 = bbuf.getString();
-		if (version >= 2L) {
+		if (version >= 200000000000000L) {
 			obj.bool2 = bbuf.getBoolean();
 			obj.byte2 = bbuf.getByte();
 			obj.char2 = bbuf.getChar();
@@ -139,7 +139,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			obj.long2 = bbuf.getLong();
 			obj.short2 = bbuf.getShort();
 			obj.str2 = bbuf.getString();
-			if (version >= 3L) {
+			if (version >= 300000000000000L) {
 				obj.bool3 = bbuf.getBoolean();
 				obj.byte3 = bbuf.getByte();
 				obj.char3 = bbuf.getChar();
@@ -149,7 +149,7 @@ public class BSerializer_1391985860 extends BSerializer {
 				obj.long3 = bbuf.getLong();
 				obj.short3 = bbuf.getShort();
 				obj.str3 = bbuf.getString();
-				if (version >= 793L) {
+				if (version >= 79300000000000000L) {
 					obj.since793 = bbuf.getInt();
 				}
 			}
@@ -167,7 +167,7 @@ public class BSerializer_1391985860 extends BSerializer {
 		obj.obj1 = (java.lang.Object)bin.readObj(false, null);
 		obj.set1 = (java.util.Set<java.lang.Integer>)bin.readObj(false, byps.test.api.BSerializer_1493282670.instance);
 		obj.shorts1 = (short[])bin.readObj(false, byps.test.api.BSerializer_2067161310.instance);
-		if (version >= 2L) {
+		if (version >= 200000000000000L) {
 			obj.bools2 = (boolean[])bin.readObj(false, byps.test.api.BSerializer_2058423690.instance);
 			obj.bytes2 = (byte[])bin.readObj(false, byps.test.api.BSerializer_1374008726.instance);
 			obj.chars2 = (char[])bin.readObj(false, byps.test.api.BSerializer_1361632968.instance);
@@ -181,7 +181,7 @@ public class BSerializer_1391985860 extends BSerializer {
 			obj.obj2 = (java.lang.Object)bin.readObj(false, null);
 			obj.set2 = (java.util.Set<java.lang.Integer>)bin.readObj(false, byps.test.api.BSerializer_1493282670.instance);
 			obj.shorts2 = (short[])bin.readObj(false, byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 3L) {
+			if (version >= 300000000000000L) {
 				obj.bools3 = (boolean[])bin.readObj(false, byps.test.api.BSerializer_2058423690.instance);
 				obj.bytes3 = (byte[])bin.readObj(false, byps.test.api.BSerializer_1374008726.instance);
 				obj.chars3 = (char[])bin.readObj(false, byps.test.api.BSerializer_1361632968.instance);

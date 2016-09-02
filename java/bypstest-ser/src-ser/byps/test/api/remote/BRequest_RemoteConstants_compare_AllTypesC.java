@@ -60,11 +60,11 @@ public final class BRequest_RemoteConstants_compare_AllTypesC extends BMethodReq
 		s.append(",").append(double1s);
 		s.append(",").append(string1s);
 		s.append(",").append(ALL);
-		s.append(",").append(arrInt);
-		s.append(",").append(arrInt4);
-		s.append(",").append(arrStrings);
-		s.append(",").append(arrStrings4);
-		s.append(",").append(arrAll);
+		s.append(",").append(arrInt != null ? java.util.Arrays.toString(arrInt) : "null");
+		s.append(",").append(arrInt4 != null ? java.util.Arrays.toString(arrInt4) : "null");
+		s.append(",").append(arrStrings != null ? java.util.Arrays.toString(arrStrings) : "null");
+		s.append(",").append(arrStrings4 != null ? java.util.Arrays.toString(arrStrings4) : "null");
+		s.append(",").append(arrAll != null ? java.util.Arrays.toString(arrAll) : "null");
 		s.append(")]");
 		return s.toString();
 	}

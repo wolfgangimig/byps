@@ -32,7 +32,7 @@ public final class BRequest_RemoteArrayTypes4dim_setDouble extends BMethodReques
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteArrayTypes4dim.setDouble(");
-		s.append(v);
+		s.append(v != null ? java.util.Arrays.toString(v) : "null");
 		s.append(")]");
 		return s.toString();
 	}

@@ -30,9 +30,9 @@ byps.test.api.cons = byps.test.api.cons || {};
 */
 byps.test.api.BApiDescriptor_Testser = {
 	/**
-	 * API serialisation version: 0.0.0.793
+	 * API serialisation version: 793.0.0.0
 	 */
-	VERSION : "0.0.0.793",
+	VERSION : "793.0.0.0",
 	
 	/**
 	 * Internal used API Desciptor.
@@ -41,7 +41,7 @@ byps.test.api.BApiDescriptor_Testser = {
 		return new byps.BApiDescriptor(
 			"Testser",
 			"byps.test.api",
-			"0.0.0.793",
+			"793.0.0.0",
 			false, // uniqueObjects
 			new byps.test.api.BRegistry_Testser()
 		);

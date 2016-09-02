@@ -5,6 +5,7 @@ package byps;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,6 +33,8 @@ public class BTransport {
   private BProtocol protocol;
 
   protected BAuthentication authentication;
+  
+  protected AtomicLong requestCounter = new AtomicLong();
 
   public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
     this.apiDesc = apiDesc;
@@ -197,6 +200,11 @@ public class BTransport {
 
   public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
+    
+    final long requestId = requestCounter.incrementAndGet(); 
+    if (log.isInfoEnabled()) log.info("send-" + requestId + " Request=" + obj);
+    final long t0 = System.currentTimeMillis();
+    
     try {
       final BOutput bout = getOutput();
       
@@ -219,6 +227,8 @@ public class BTransport {
               // BYPS relogin error? (HTTP 403)
               relogin = internalIsReloginException(e, protocol.getRegistry().getSerializer(obj, true).typeId);
               if (!relogin) {
+                long t1 = System.currentTimeMillis();
+                if (log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + e);
                 asyncResult.setAsyncResult(null, e);
               }
 
@@ -227,7 +237,8 @@ public class BTransport {
               final BInput bin = getInput(msgRecv.header, msgRecv.buf);
               if (log.isDebugEnabled()) log.debug("load object");
               T ret = (T) bin.load();
-              if (log.isDebugEnabled()) log.debug("ret = " + ret);
+              long t1 = System.currentTimeMillis();
+              if (log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ret);
               asyncResult.setAsyncResult(ret, e);
             }
 
@@ -241,6 +252,8 @@ public class BTransport {
             if (log.isDebugEnabled()) log.debug("isReloginException=" + relogin);
 
             if (!relogin) {
+              long t1 = System.currentTimeMillis();
+              if (log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ex);
               asyncResult.setAsyncResult(null, ex);
             }
 
@@ -253,6 +266,7 @@ public class BTransport {
             // The server is responsible for killing long-polls of invalid sessions.
             // So we do not need to stop the serverR before re-login.
             
+            if (log.isInfoEnabled()) log.debug("Re-login");
             reloginAndRetrySend((BMethodRequest)obj, asyncResult);
 
           }

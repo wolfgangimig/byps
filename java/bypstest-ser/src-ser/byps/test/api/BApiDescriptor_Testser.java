@@ -10,9 +10,9 @@ import byps.*;
 public class BApiDescriptor_Testser { 
 
 	/**
-	 * API serialisation version: 0.0.0.793
+	 * API serialisation version: 793.0.0.0
 	 */
-	public final static long VERSION = 793L;
+	public final static long VERSION = 79300000000000000L;
 	
 	public final static BApiDescriptor instance() {
 		return new BApiDescriptor(
