@@ -32,7 +32,7 @@ public final class BRequest_RemoteWithAuthentication_setReloginCount extends BMe
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteWithAuthentication.setReloginCount(");
-		s.append(count);
+		s.append(BBuffer.paramToString(count));
 		s.append(")]");
 		return s.toString();
 	}

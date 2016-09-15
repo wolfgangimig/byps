@@ -746,14 +746,9 @@ class GenApiClass {
     boolean first = true;
     for (MemberInfo pinfo : methodInfo.requestInfo.members) {
       if (first)  mpr = pr.print("s."); else mpr = pr.print("s.append(\",\").");
-      mpr.print("append(");
-      if (pinfo.type.isArrayType()) {
-        mpr.print(pinfo.name + " != null ? java.util.Arrays.toString(" + pinfo.name + ") : \"null\"");
-      }
-      else {
-        mpr.print(pinfo.name);
-      }
-      mpr.print(");").println();
+      mpr.print("append(BBuffer.paramToString(");
+      mpr.print(pinfo.name);
+      mpr.print("));").println();
       first = false;
     }
     

@@ -33,8 +33,8 @@ public final class BRequest_RemotePrimitiveTypes_add extends BMethodRequest impl
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemotePrimitiveTypes.add(");
-		s.append(a);
-		s.append(",").append(b);
+		s.append(BBuffer.paramToString(a));
+		s.append(",").append(BBuffer.paramToString(b));
 		s.append(")]");
 		return s.toString();
 	}

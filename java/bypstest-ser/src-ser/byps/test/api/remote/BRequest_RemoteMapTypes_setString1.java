@@ -32,7 +32,7 @@ public final class BRequest_RemoteMapTypes_setString1 extends BMethodRequest imp
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteMapTypes.setString1(");
-		s.append(string1);
+		s.append(BBuffer.paramToString(string1));
 		s.append(")]");
 		return s.toString();
 	}

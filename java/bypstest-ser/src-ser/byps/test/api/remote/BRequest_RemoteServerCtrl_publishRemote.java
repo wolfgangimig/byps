@@ -34,9 +34,9 @@ public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodReques
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteServerCtrl.publishRemote(");
-		s.append(name);
-		s.append(",").append(remote);
-		s.append(",").append(fowardToOtherServers);
+		s.append(BBuffer.paramToString(name));
+		s.append(",").append(BBuffer.paramToString(remote));
+		s.append(",").append(BBuffer.paramToString(fowardToOtherServers));
 		s.append(")]");
 		return s.toString();
 	}

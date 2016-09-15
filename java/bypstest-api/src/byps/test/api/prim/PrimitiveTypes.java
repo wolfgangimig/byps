@@ -47,4 +47,14 @@ public class PrimitiveTypes implements Serializable {
 	
 	
 	public transient Object temp;
+
+
+  @Override
+  public String toString() {
+    return "PrimitiveTypes [boolVal=" + boolVal + ", byteVal=" + byteVal + ", charVal=" + charVal + ", shortVal=" + shortVal + ", intVal=" + intVal
+        + ", longVal=" + longVal + ", floatVal=" + floatVal + ", doubleVal=" + doubleVal + ", stringVal=" + stringVal + ", dateVal=" + dateVal
+        + ", objVal=" + objVal + ", objVal2=" + objVal2 + ", value=" + value + "]";
+  }
+	
+	
 }

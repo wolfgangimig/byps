@@ -38,13 +38,13 @@ public final class BRequest_RemotePrimitiveTypes_makeDate extends BMethodRequest
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemotePrimitiveTypes.makeDate(");
-		s.append(year);
-		s.append(",").append(month);
-		s.append(",").append(day);
-		s.append(",").append(hour);
-		s.append(",").append(minute);
-		s.append(",").append(second);
-		s.append(",").append(millisecond);
+		s.append(BBuffer.paramToString(year));
+		s.append(",").append(BBuffer.paramToString(month));
+		s.append(",").append(BBuffer.paramToString(day));
+		s.append(",").append(BBuffer.paramToString(hour));
+		s.append(",").append(BBuffer.paramToString(minute));
+		s.append(",").append(BBuffer.paramToString(second));
+		s.append(",").append(BBuffer.paramToString(millisecond));
 		s.append(")]");
 		return s.toString();
 	}

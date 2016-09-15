@@ -32,7 +32,7 @@ public final class BRequest_RemotePrimitiveTypes_setLong extends BMethodRequest 
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemotePrimitiveTypes.setLong(");
-		s.append(v);
+		s.append(BBuffer.paramToString(v));
 		s.append(")]");
 		return s.toString();
 	}

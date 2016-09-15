@@ -32,7 +32,7 @@ public final class BRequest_ServerIF_callClientParallel extends BMethodRequest i
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[ServerIF.callClientParallel(");
-		s.append(v);
+		s.append(BBuffer.paramToString(v));
 		s.append(")]");
 		return s.toString();
 	}

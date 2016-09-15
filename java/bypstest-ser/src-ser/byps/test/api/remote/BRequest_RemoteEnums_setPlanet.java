@@ -32,7 +32,7 @@ public final class BRequest_RemoteEnums_setPlanet extends BMethodRequest impleme
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteEnums.setPlanet(");
-		s.append(planet);
+		s.append(BBuffer.paramToString(planet));
 		s.append(")]");
 		return s.toString();
 	}

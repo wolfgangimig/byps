@@ -32,7 +32,7 @@ public final class BRequest_RemoteListTypes_setShort1 extends BMethodRequest imp
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteListTypes.setShort1(");
-		s.append(short1);
+		s.append(BBuffer.paramToString(short1));
 		s.append(")]");
 		return s.toString();
 	}

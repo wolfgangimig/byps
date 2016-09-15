@@ -32,7 +32,7 @@ public final class BRequest_RemoteWithAuthentication_setUseAuthentication extend
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteWithAuthentication.setUseAuthentication(");
-		s.append(useAuth);
+		s.append(BBuffer.paramToString(useAuth));
 		s.append(")]");
 		return s.toString();
 	}

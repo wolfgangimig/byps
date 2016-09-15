@@ -32,7 +32,7 @@ public final class BRequest_RemotePrimitiveTypes_parseDate extends BMethodReques
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemotePrimitiveTypes.parseDate(");
-		s.append(date);
+		s.append(BBuffer.paramToString(date));
 		s.append(")]");
 		return s.toString();
 	}

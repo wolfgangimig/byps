@@ -33,8 +33,8 @@ public final class BRequest_LemonService_pick extends BMethodRequest implements 
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[LemonService.pick(");
-		s.append(sess);
-		s.append(",").append(fromTree);
+		s.append(BBuffer.paramToString(sess));
+		s.append(",").append(BBuffer.paramToString(fromTree));
 		s.append(")]");
 		return s.toString();
 	}

@@ -41,16 +41,16 @@ public final class BRequest_RemotePrimitiveTypes_sendAllTypes extends BMethodReq
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemotePrimitiveTypes.sendAllTypes(");
-		s.append(b);
-		s.append(",").append(c);
-		s.append(",").append(s);
-		s.append(",").append(i);
-		s.append(",").append(l);
-		s.append(",").append(f);
-		s.append(",").append(d);
-		s.append(",").append(str);
-		s.append(",").append(pt);
-		s.append(",").append(o);
+		s.append(BBuffer.paramToString(b));
+		s.append(",").append(BBuffer.paramToString(c));
+		s.append(",").append(BBuffer.paramToString(s));
+		s.append(",").append(BBuffer.paramToString(i));
+		s.append(",").append(BBuffer.paramToString(l));
+		s.append(",").append(BBuffer.paramToString(f));
+		s.append(",").append(BBuffer.paramToString(d));
+		s.append(",").append(BBuffer.paramToString(str));
+		s.append(",").append(BBuffer.paramToString(pt));
+		s.append(",").append(BBuffer.paramToString(o));
 		s.append(")]");
 		return s.toString();
 	}

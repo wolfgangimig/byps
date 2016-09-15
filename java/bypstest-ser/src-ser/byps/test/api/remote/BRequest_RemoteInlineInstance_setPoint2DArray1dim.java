@@ -32,7 +32,7 @@ public final class BRequest_RemoteInlineInstance_setPoint2DArray1dim extends BMe
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteInlineInstance.setPoint2DArray1dim(");
-		s.append(pointArray != null ? java.util.Arrays.toString(pointArray) : "null");
+		s.append(BBuffer.paramToString(pointArray));
 		s.append(")]");
 		return s.toString();
 	}

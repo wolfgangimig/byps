@@ -32,7 +32,7 @@ public final class BRequest_RemoteSetTypes_setByte2 extends BMethodRequest imple
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteSetTypes.setByte2(");
-		s.append(byte2);
+		s.append(BBuffer.paramToString(byte2));
 		s.append(")]");
 		return s.toString();
 	}

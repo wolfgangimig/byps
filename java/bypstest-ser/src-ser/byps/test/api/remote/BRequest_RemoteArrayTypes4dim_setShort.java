@@ -32,7 +32,7 @@ public final class BRequest_RemoteArrayTypes4dim_setShort extends BMethodRequest
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteArrayTypes4dim.setShort(");
-		s.append(v != null ? java.util.Arrays.toString(v) : "null");
+		s.append(BBuffer.paramToString(v));
 		s.append(")]");
 		return s.toString();
 	}

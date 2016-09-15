@@ -33,8 +33,8 @@ public final class BRequest_RemoteStreams_setImages extends BMethodRequest imple
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteStreams.setImages(");
-		s.append(istrms);
-		s.append(",").append(doNotReadStreamAtKey);
+		s.append(BBuffer.paramToString(istrms));
+		s.append(",").append(BBuffer.paramToString(doNotReadStreamAtKey));
 		s.append(")]");
 		return s.toString();
 	}

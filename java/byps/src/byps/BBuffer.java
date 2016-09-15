@@ -3,6 +3,7 @@ package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.util.Date;
 
@@ -246,4 +247,48 @@ public abstract class BBuffer {
 	protected final BBinaryModel bmodel;
 	protected ByteBuffer buf;
 
+	private static String internalToString(Object result, boolean resultNotParam) {
+	  if (result == null) {
+	    if (resultNotParam) {
+	      return "(void)";
+	    }
+	    else {
+        return "null";
+	    }
+	  }
+	  else if (result.getClass().isArray()) {
+      int max = 3;
+      StringBuilder sbuf = new StringBuilder();
+      int length = Array.getLength(result);
+      sbuf.append("[#").append(length).append("=[");
+      for (int i = 0; i < length; i++) {
+        if (i != 0) sbuf.append(",");
+        if (i < max) {
+          sbuf.append(internalToString(Array.get(result, i), false));
+        }
+        else {
+          sbuf.append("...");
+          break;
+        }
+      }
+      sbuf.append("]]");
+      return sbuf.toString();
+    }
+    else {
+      try {
+        return result.toString();
+      }
+      catch (Exception e) {
+        return result.getClass().getName() + "@" + System.identityHashCode(result);
+      }
+    }
+  }
+
+  public static String paramToString(Object result) {
+    return internalToString(result, false);
+  }
+
+  public static String resultToString(Object result) {
+    return internalToString(result, true);
+  }
 }

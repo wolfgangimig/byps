@@ -32,7 +32,7 @@ public final class BRequest_RemoteListTypes_setLong1 extends BMethodRequest impl
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteListTypes.setLong1(");
-		s.append(long1);
+		s.append(BBuffer.paramToString(long1));
 		s.append(")]");
 		return s.toString();
 	}

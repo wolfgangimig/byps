@@ -32,7 +32,7 @@ public final class BRequest_RemoteListTypes_setInt4 extends BMethodRequest imple
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteListTypes.setInt4(");
-		s.append(int4);
+		s.append(BBuffer.paramToString(int4));
 		s.append(")]");
 		return s.toString();
 	}

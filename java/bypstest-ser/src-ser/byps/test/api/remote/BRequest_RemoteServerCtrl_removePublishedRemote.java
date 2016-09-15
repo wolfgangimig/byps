@@ -32,7 +32,7 @@ public final class BRequest_RemoteServerCtrl_removePublishedRemote extends BMeth
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteServerCtrl.removePublishedRemote(");
-		s.append(name);
+		s.append(BBuffer.paramToString(name));
 		s.append(")]");
 		return s.toString();
 	}

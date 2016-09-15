@@ -32,7 +32,7 @@ public final class BRequest_RemoteListTypes_setDate1 extends BMethodRequest impl
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteListTypes.setDate1(");
-		s.append(obj1);
+		s.append(BBuffer.paramToString(obj1));
 		s.append(")]");
 		return s.toString();
 	}

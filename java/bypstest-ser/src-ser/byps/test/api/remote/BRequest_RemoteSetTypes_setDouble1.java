@@ -32,7 +32,7 @@ public final class BRequest_RemoteSetTypes_setDouble1 extends BMethodRequest imp
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteSetTypes.setDouble1(");
-		s.append(double1);
+		s.append(BBuffer.paramToString(double1));
 		s.append(")]");
 		return s.toString();
 	}

@@ -32,7 +32,7 @@ public final class BRequest_RemoteStreams_setStreamDoNotMaterialize extends BMet
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteStreams.setStreamDoNotMaterialize(");
-		s.append(stream);
+		s.append(BBuffer.paramToString(stream));
 		s.append(")]");
 		return s.toString();
 	}

@@ -32,7 +32,7 @@ public final class BRequest_ServerIF_putStreamsOnClient extends BMethodRequest i
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[ServerIF.putStreamsOnClient(");
-		s.append(streams);
+		s.append(BBuffer.paramToString(streams));
 		s.append(")]");
 		return s.toString();
 	}

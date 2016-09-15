@@ -32,7 +32,7 @@ public final class BRequest_RemoteSetTypes_setBoolean1 extends BMethodRequest im
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteSetTypes.setBoolean1(");
-		s.append(boolean1);
+		s.append(BBuffer.paramToString(boolean1));
 		s.append(")]");
 		return s.toString();
 	}

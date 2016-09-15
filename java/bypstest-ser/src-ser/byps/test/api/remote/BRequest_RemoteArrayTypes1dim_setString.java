@@ -32,7 +32,7 @@ public final class BRequest_RemoteArrayTypes1dim_setString extends BMethodReques
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteArrayTypes1dim.setString(");
-		s.append(v != null ? java.util.Arrays.toString(v) : "null");
+		s.append(BBuffer.paramToString(v));
 		s.append(")]");
 		return s.toString();
 	}

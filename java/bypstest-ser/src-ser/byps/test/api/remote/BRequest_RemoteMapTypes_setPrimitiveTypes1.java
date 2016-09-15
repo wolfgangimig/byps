@@ -32,7 +32,7 @@ public final class BRequest_RemoteMapTypes_setPrimitiveTypes1 extends BMethodReq
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteMapTypes.setPrimitiveTypes1(");
-		s.append(primitiveTypes1);
+		s.append(BBuffer.paramToString(primitiveTypes1));
 		s.append(")]");
 		return s.toString();
 	}

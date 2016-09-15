@@ -32,7 +32,7 @@ public final class BRequest_RemoteListTypes_setChar1 extends BMethodRequest impl
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteListTypes.setChar1(");
-		s.append(char1);
+		s.append(BBuffer.paramToString(char1));
 		s.append(")]");
 		return s.toString();
 	}

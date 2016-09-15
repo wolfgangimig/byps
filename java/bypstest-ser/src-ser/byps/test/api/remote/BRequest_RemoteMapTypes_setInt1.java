@@ -32,7 +32,7 @@ public final class BRequest_RemoteMapTypes_setInt1 extends BMethodRequest implem
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteMapTypes.setInt1(");
-		s.append(int1);
+		s.append(BBuffer.paramToString(int1));
 		s.append(")]");
 		return s.toString();
 	}

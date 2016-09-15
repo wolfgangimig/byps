@@ -32,7 +32,7 @@ public final class BRequest_ServerIF_getStreamsFromClient extends BMethodRequest
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[ServerIF.getStreamsFromClient(");
-		s.append(materializeOnServer);
+		s.append(BBuffer.paramToString(materializeOnServer));
 		s.append(")]");
 		return s.toString();
 	}

@@ -34,9 +34,9 @@ public final class BRequest_RemoteArrayTypes23_sendArraysObject extends BMethodR
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemoteArrayTypes23.sendArraysObject(");
-		s.append(arr2 != null ? java.util.Arrays.toString(arr2) : "null");
-		s.append(",").append(arr3 != null ? java.util.Arrays.toString(arr3) : "null");
-		s.append(",").append(arr4 != null ? java.util.Arrays.toString(arr4) : "null");
+		s.append(BBuffer.paramToString(arr2));
+		s.append(",").append(BBuffer.paramToString(arr3));
+		s.append(",").append(BBuffer.paramToString(arr4));
 		s.append(")]");
 		return s.toString();
 	}
