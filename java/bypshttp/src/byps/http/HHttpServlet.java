@@ -579,19 +579,16 @@ public abstract class HHttpServlet extends HttpServlet implements
     HSession sess = null;
     HttpSession hsess = request.getSession();
 
-    if (log.isDebugEnabled()) log.debug("header=" + header
-        + ", request.session=" + hsess);
+    if (log.isDebugEnabled()) log.debug("header=" + header + ", request.session=" + hsess);
 
     // New client: sessionId found in message header.
-    if (header != null) {
-      if (log.isDebugEnabled()) log.debug("header.sessionId="
-          + header.sessionId);
+    if (header != null && header.bversion >= BMessageHeader.BYPS_VERSION_WITH_SESSIONID) {
+      if (log.isDebugEnabled()) log.debug("header.sessionId=" + header.sessionId);
       sess = sessions.get(header.sessionId);
       if (log.isDebugEnabled()) log.debug("sess from header, session=" + sess);
     }
-
     // Old client: sessionId found in HTTP cookie.
-    if (sess == null) {
+    else {
       if (hsess != null) {
         sess = getFirstBypsSessionFromHttpSession(hsess);
         if (log.isDebugEnabled()) log
