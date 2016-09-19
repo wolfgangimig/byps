@@ -683,7 +683,31 @@ public class HWireClient extends BWire {
       throwExceptionIf();
       return super.ensureStream();
     }
+    
+    @Override
+    public long getContentLength() {
+      try {
+        ensureStream();
+      } catch (IOException e) { throw new IllegalStateException(e); }
+      return super.getContentLength();
+    }
 
+    @Override
+    public String getContentType() {
+      try {
+        ensureStream();
+      } catch (IOException e) { throw new IllegalStateException(e); }
+      return super.getContentType();
+    }
+    
+    @Override
+    public String getContentDisposition() {
+      try {
+        ensureStream();
+      } catch (IOException e) { throw new IllegalStateException(e); }
+      return super.getContentDisposition();
+    }
+    
     @Override
     protected InputStream openStream() throws IOException {
       if (log.isDebugEnabled()) log.debug("openStream(");
