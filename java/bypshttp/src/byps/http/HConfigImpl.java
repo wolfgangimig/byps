@@ -157,9 +157,12 @@ public class HConfigImpl implements HConfig {
         tempDir.mkdirs();
       }
     }
-    catch (Throwable e) {
+    catch (Throwable ignore) { }
+    
+    if (tempDir == null) {
       String tempDirStr = System.getProperty("java.io.tmpdir");
-      tempDir = new File(tempDirStr);
+      tempDir = new File(tempDirStr, "byps.http.HConfigImpl");
+      tempDir.mkdirs();
     }
   }
 

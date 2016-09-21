@@ -20,6 +20,10 @@ public class HTempFile {
 		HTempFile t = new HTempFile();
     if (streamId != 0) {
       String fileName = "bupload_" + streamId + ".tmp";
+      if (tempDir == null) {
+        tempDir = new File(System.getProperty("java.io.tmpdir"), "byps.http.HTempFile");
+        tempDir.mkdirs();
+      }
       t.file = new File(tempDir, fileName);
     }
     else {
