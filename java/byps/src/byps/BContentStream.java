@@ -25,6 +25,23 @@ public abstract class BContentStream extends InputStream {
   public final static String URL_PARAM_ACCEPT_RANGES = "accept-ranges";
   
   /**
+   * URL parameter used when uploading files in HTML forms or by JavaScript.
+   */
+  public final static String URL_PARAM_UPLOAD_HANDLER = "uploadHandler";
+
+  /**
+   * Value for URL_PARAM_UPLOAD_HANDLER.
+   * The upload response is wrapped into HTML and BODY tags. 
+   */
+  public final static String UPLOAD_HANDLER_HTML_FORM = "htmlform";
+  
+  /**
+   * Value for URL_PARAM_UPLOAD_HANDLER.
+   * The upload response is not wrapped. 
+   */
+  public final static String UPLOAD_HANDLER_HTML5 = "html5";
+  
+  /**
    * Controls HTTP header Content-Disposition.
    */
   public final static int ATTACHMENT = 1;

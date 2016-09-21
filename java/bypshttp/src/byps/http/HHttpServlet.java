@@ -299,7 +299,7 @@ public abstract class HHttpServlet extends HttpServlet implements
       throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doPost(");
 
-    if (request.getParameter("uploadHandler") != null) {
+    if (request.getParameter(BContentStream.URL_PARAM_UPLOAD_HANDLER) != null) {
       doHtmlUpload(request, response);
     }
     else {
@@ -1079,7 +1079,13 @@ public abstract class HHttpServlet extends HttpServlet implements
       throws IOException {
     response.setContentType("text/html");
     PrintWriter wr = response.getWriter();
-    wr.print("<html><body>[");
+    String uploadHandler = request.getParameter(BContentStream.URL_PARAM_UPLOAD_HANDLER);
+    
+    boolean wrapIntoHTML = uploadHandler != null && uploadHandler.equals(BContentStream.UPLOAD_HANDLER_HTML_FORM);
+    if (wrapIntoHTML) {
+      wr.print("<html><body>");
+    }
+    wr.print("[");
     boolean first = true;
     for (HFileUploadItem item : items) {
       if (first) first = !first;
@@ -1088,7 +1094,10 @@ public abstract class HHttpServlet extends HttpServlet implements
       wr.print(item.streamId);
       wr.print("\"");
     }
-    wr.print("]</body></html>");
+    wr.print("]");
+    if (wrapIntoHTML) {
+      wr.print("</body></html>");
+    }
     response.getWriter().close();
   }
 

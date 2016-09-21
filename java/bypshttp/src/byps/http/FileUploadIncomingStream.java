@@ -22,6 +22,8 @@ class HFileUploadItemIncomingStream extends BContentStreamWrapper {
     this.targetId = targetId;
     this.tempDir = tempDir;
     this.setFileName(fileItem.getName());
+    this.setContentType(fileItem.getContentType());
+    this.setContentLength(fileItem.getSize());
   }
 
   @Override
