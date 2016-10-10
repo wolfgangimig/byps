@@ -1,5 +1,7 @@
 package byps;
 
+import java.io.BufferedInputStream;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.io.File;
@@ -43,7 +45,7 @@ public class BContentStreamWrapper extends BContentStream {
 	
 	public BContentStreamWrapper(InputStream innerStream, String contentType, long contentLength, long lifetimeMillis) {
 	  super(contentType, contentLength, lifetimeMillis);
-		this.innerStream = innerStream;
+		this.innerStream = new BufferedInputStream(innerStream);
 	}
 	
   public BContentStreamWrapper(BContentStream innerStream, long lifetimeMillis) {
@@ -53,7 +55,7 @@ public class BContentStreamWrapper extends BContentStream {
   
 	public BContentStreamWrapper(File file) throws FileNotFoundException {
 	  super(getFileContentType(file), file.length());
-	  innerStream = new FileInputStream(file);
+	  innerStream = new BufferedInputStream(new FileInputStream(file));
 	  setContentDisposition(file.getName(), false);
 	}
 	
