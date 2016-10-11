@@ -1,5 +1,6 @@
 package byps.http;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,10 +15,9 @@ class HFileUploadItemIncomingStream extends BContentStreamWrapper {
 
   private final FileItem fileItem;
   private final File tempDir;
-  private InputStream is;
 
   HFileUploadItemIncomingStream(FileItem fileItem, BTargetId targetId, File tempDir) throws IOException {
-    super(null, fileItem.getContentType(), fileItem.getSize(), HConstants.REQUEST_TIMEOUT_MILLIS);
+    super(fileItem.getInputStream(), fileItem.getContentType(), fileItem.getSize(), HConstants.REQUEST_TIMEOUT_MILLIS);
     this.fileItem = fileItem;
     this.targetId = targetId;
     this.tempDir = tempDir;
@@ -27,20 +27,9 @@ class HFileUploadItemIncomingStream extends BContentStreamWrapper {
   }
 
   @Override
-  protected synchronized InputStream openStream() throws IOException {
-    return is = fileItem.getInputStream();
-  }
-
-  @Override
   public synchronized void close() throws IOException {
-    if (is != null) {
-      try {
-        is.close();
-      } catch (IOException ignored) {
-      }
-    }
-    fileItem.delete();
     super.close();
+    fileItem.delete();
   }
 
   @Override
