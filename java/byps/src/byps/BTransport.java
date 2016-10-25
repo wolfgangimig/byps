@@ -35,7 +35,7 @@ public class BTransport {
   protected BAuthentication authentication;
   
   protected AtomicLong requestCounter = new AtomicLong();
-
+  
   public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
     this.apiDesc = apiDesc;
     this.wire = wire;
@@ -202,7 +202,7 @@ public class BTransport {
     if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
     
     final long requestId = requestCounter.incrementAndGet(); 
-    if (log.isInfoEnabled()) log.info("send-" + requestId + " Request=" + obj);
+    if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " Request=" + obj);
     final long t0 = System.currentTimeMillis();
     
     try {
@@ -228,7 +228,7 @@ public class BTransport {
               relogin = internalIsReloginException(e, protocol.getRegistry().getSerializer(obj, true).typeId);
               if (!relogin) {
                 long t1 = System.currentTimeMillis();
-                if (log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + e);
+                if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + e);
                 asyncResult.setAsyncResult(null, e);
               }
 
@@ -238,7 +238,7 @@ public class BTransport {
               if (log.isDebugEnabled()) log.debug("load object");
               T ret = (T) bin.load();
               long t1 = System.currentTimeMillis();
-              if (log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ret);
+              if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ret);
               asyncResult.setAsyncResult(ret, e);
             }
 
@@ -253,7 +253,7 @@ public class BTransport {
 
             if (!relogin) {
               long t1 = System.currentTimeMillis();
-              if (log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ex);
+              if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ex);
               asyncResult.setAsyncResult(null, ex);
             }
 
@@ -728,6 +728,14 @@ public class BTransport {
     }
   }
 
+  public boolean isPrintRequestIntoLogger() {
+    return printRequestIntoLogger;
+  }
+
+  public void setPrintRequestIntoLogger(boolean printRequestIntoLogger) {
+    this.printRequestIntoLogger = printRequestIntoLogger;
+  }
+
   /**
    * List of BAsyncResult objects from requests waiting for authentication.
    */
@@ -749,6 +757,11 @@ public class BTransport {
    */
   public final static long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
   
+  /**
+   * Print requests into logger.
+   */
+  protected boolean printRequestIntoLogger = true;
+
   protected boolean negotiateActive;
   
   private final static Log log = LogFactory.getLog(BTransport.class);
