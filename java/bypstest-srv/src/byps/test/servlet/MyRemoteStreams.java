@@ -47,7 +47,19 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 		if (log.isDebugEnabled()) log.debug("setImage(" + istrm);
 		closeImageStream();
 		if (istrm != null) {
+		  
 			try {
+			  
+			  if (!istrm.markSupported()) {
+			    throw new BException(BExceptionC.IOERROR, "markSupported must return true");
+			  }
+			  else {
+	        byte[] someBytes = new byte[10];
+	        istrm.mark(10);
+	        istrm.read(someBytes);
+	        istrm.reset();
+	      }
+
 				// Clone the stream to be able to store it in a member variable
 		    if (log.isDebugEnabled()) log.debug("materialize stream ...");
 				imageStream = BContentStream.materialize(istrm);

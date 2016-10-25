@@ -248,7 +248,8 @@ public class BContentStreamWrapper extends BContentStream {
 	@Override
 	public boolean markSupported() {
 		try {
-			return ensureStream().markSupported();
+			InputStream istream = ensureStream();
+			return istream.markSupported();
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}

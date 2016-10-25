@@ -1,5 +1,7 @@
 package byps.http;
 
+import java.io.BufferedInputStream;
+import java.io.File;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,10 +29,12 @@ public class HWireServer extends BWire {
   private final HWriteResponseHelper writeHelper;
   private final HActiveMessages activeMessages;
   private final BHashMap<Long, Long> activeMessageIds = new BHashMap<Long, Long>();
+  private final HConfig hConfig;
   private final static Log log = LogFactory.getLog(HWireServer.class);
-
-  public HWireServer(HActiveMessages activeMessages, HWriteResponseHelper writeHelper) {
+  
+  public HWireServer(HConfig hConfig, HActiveMessages activeMessages, HWriteResponseHelper writeHelper) {
     super(FLAG_DEFAULT);
+    this.hConfig = hConfig;
     this.writeHelper = writeHelper;
     this.activeMessages = activeMessages;
   }
@@ -84,17 +88,22 @@ public class HWireServer extends BWire {
     protected InputStream openStream() throws IOException {
       if (log.isDebugEnabled()) log.debug("openStream(");
 
-      BContentStream is = null;
+      InputStream ret = null;
+      
       try {
-        is = activeMessages.getIncomingStream(targetId);
+        BContentStream is = activeMessages.getIncomingStream(targetId);
         if (log.isDebugEnabled()) log.debug("stream for targetId=" + targetId + ", is=" + is);
-
         if (is == null) {
           throw new IOException("Timeout while waiting for stream");
         }
         
         this.copyProperties(is);
         
+        ret = is;
+        if (!ret.markSupported()) {
+          ret = new BufferedInputStream(ret);
+        }
+
       }
       catch (InterruptedIOException e) {
         
@@ -106,17 +115,26 @@ public class HWireServer extends BWire {
         throw e;
       }
 
-      if (log.isDebugEnabled()) log.debug(")openStream=" + is);
-      return is;
+      if (log.isDebugEnabled()) log.debug(")openStream=" + ret);
+      return ret;
     }
 
     @Override
     public BContentStream materialize() throws IOException {
       if (log.isDebugEnabled()) log.debug("cloneInputStream(");
-      final BContentStream src = (BContentStream) ensureStream();
-      final BContentStream ret = src.materialize();
-      ret.copyProperties(this);
+      InputStream stream = ensureStream();
+      BContentStream ret = null;
       
+      if (stream instanceof BContentStream) {
+        ret = ((BContentStream)stream).materialize();
+        ret.copyProperties(this);
+      }
+      else {
+        File tempDir = hConfig.getTempDir();
+        ret = new HIncomingStreamSync(this, 0, tempDir);
+        ((HIncomingStreamSync)ret).assignStream(stream);
+      }
+
       // Reset stream IDs. 
       // Otherwise the stream would not be sent, see BOutput.createStreamRequest.
       ret.setTargetId(BTargetId.ZERO);

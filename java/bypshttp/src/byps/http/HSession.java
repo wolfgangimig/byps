@@ -54,7 +54,7 @@ public abstract class HSession
 
     writeHelper = new HWriteResponseHelper(serverContext.getListener());
 
-    wireServer = new HWireServer(serverContext.getActiveMessages(), writeHelper);
+    wireServer = new HWireServer(serverContext.getConfig(), serverContext.getActiveMessages(), writeHelper);
 
     wireClientR = new HWireClientR(wireServer);
 

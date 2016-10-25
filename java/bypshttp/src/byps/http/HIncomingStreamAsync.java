@@ -1,4 +1,5 @@
 package byps.http;
+import java.io.BufferedInputStream;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
 import java.io.IOException;
@@ -22,16 +23,13 @@ public class HIncomingStreamAsync extends BContentStream  {
 	protected HRequestContext rctxt;
 	protected final File tempDir;
 	
-	protected long readPos = 0;
-	protected long readMark = 0;
-	
 	private AtomicBoolean closed = new AtomicBoolean();
 
 	HIncomingStreamAsync(BTargetId targetId, String contentType, long contentLength, String contentDisposition, long lifetimeMillis, File tempDir, HRequestContext rctxt) throws IOException {
 		super(contentType, contentLength, lifetimeMillis);
 		this.setTargetId(targetId);
 		this.rctxt = rctxt;
-		this.is = rctxt.getRequest().getInputStream();
+		this.is = new BufferedInputStream(rctxt.getRequest().getInputStream());
 		this.tempDir = tempDir;
 		setContentDisposition(contentDisposition);
 	}
@@ -48,7 +46,6 @@ public class HIncomingStreamAsync extends BContentStream  {
 	public int read() throws IOException {
 		if (log.isDebugEnabled()) log.debug("read(");
 		int b = strm().read();
-		readPos++;
 		if (log.isDebugEnabled()) log.debug(")read=" + b);
 		return b;
 	}
@@ -101,7 +98,6 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	@Override
 	public void mark(int readlimit) {
-		readMark = readPos;
 		is.mark(readlimit);
 	}
 	
@@ -118,9 +114,6 @@ public class HIncomingStreamAsync extends BContentStream  {
 	public int read(byte[] b, int off, int len) throws IOException {
 		try {
 			int n = strm().read(b, off, len);
-			if (n != -1) {
-			  readPos += n;
-			}
 	    //if (log.isDebugEnabled()) log.debug("read " + targetId + " (len=" + len + ")=" + n);
 			return n;
 		}
@@ -132,19 +125,16 @@ public class HIncomingStreamAsync extends BContentStream  {
 	
 	@Override
 	public void reset() throws IOException {
-		readPos = readMark;
 		strm().reset();
 	}
 	
 	@Override
 	public long skip(long n) throws IOException {
-		readPos += n;
 		return strm().skip(n);
 	}
 
 	@Override
 	public synchronized BContentStream materialize() throws BException {
-		if (readPos != 0) throw new BException(BExceptionC.INTERNAL, "InputStream cannot be copied after bytes alread have been read.");
 		HIncomingStreamSync istrm = null;
 		try {
 		  istrm = new HIncomingStreamSync(this, lifetimeMillis, tempDir);

@@ -1,7 +1,9 @@
 package byps.http;
+import java.io.BufferedInputStream;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,9 +27,10 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	private int bytesSource = NO_BYTES;
 	private int readPos;
+	private int markPos;
 	private byte[] firstBytes;
 	private byte[] secondBytes;
-	private FileInputStream fis;
+	private BufferedInputStream fis;
 	private HTempFile file;
 	private boolean closed;
 	private byte[] readBuf1 = new byte[1];
@@ -164,11 +167,34 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	@Override
 	public synchronized void reset() throws IOException {
-	  readPos = 0;
-	  if (fis != null ){
-	    fis.close();
-	    fis = null;
+	  if (bytesSource == FILE_BYTES) {
+	    if (fis != null) {
+	      fis.reset();
+	    }
 	  }
+	  else {
+	    readPos = markPos;
+	  }
+	}
+	
+	@Override
+	public synchronized void mark(int readlimit) {
+    if (bytesSource == FILE_BYTES) {
+      try {
+        ensureFileInputStream();
+      } catch (FileNotFoundException e) {
+        throw new IllegalStateException(e);
+      }
+      fis.mark(readlimit);
+    }
+    else {
+      markPos = readPos;
+    }
+	}
+	
+	@Override
+	public boolean markSupported() {
+	  return true;
 	}
 	
 	public void addStream(HRequestContext rctxt, long partId, boolean lastPart) throws BException {
@@ -297,10 +323,8 @@ public class HIncomingStreamSync extends BContentStream {
 			}
 			else if (bytesSource == FILE_BYTES) {
 			  if (file != null) {
-  				if (fis == null) {
-  					fis = new FileInputStream(file.getFile());
-  					fis.skip(readPos);
-  				}
+			    ensureFileInputStream();
+			    fis.skip(readPos);
   				bytesRead = fis.read(b, offs, len);
   				if (bytesRead >= 0) {
   					break;
@@ -339,6 +363,13 @@ public class HIncomingStreamSync extends BContentStream {
 		extendLifetime();
 		
 		return bytesRead;
+	}
+	
+	private InputStream ensureFileInputStream() throws FileNotFoundException {
+	  if (fis == null) {
+	    fis = new BufferedInputStream(new FileInputStream(file.getFile()));
+	  }
+	  return fis;
 	}
 	
 	@Override
