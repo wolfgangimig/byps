@@ -18,7 +18,7 @@ public class HConstants {
   /**
    * An incoming stream must be available after this millis.
    */
-  public final static long INCOMING_STREAM_TIMEOUT_MILLIS = 10 * 1000L;
+  public final static long INCOMING_STREAM_TIMEOUT_MILLIS = 30 * 1000L;
 
   /**
    * Time for internal cleanup operations.
@@ -54,7 +54,7 @@ public class HConstants {
    * otherwise create a new message object. The value is measured in
    * milliseconds.
    */
-  public final static long KEEP_MESSAGE_AFTER_FINISHED = 10L * 1000L;
+  public final static long KEEP_MESSAGE_AFTER_FINISHED = INCOMING_STREAM_TIMEOUT_MILLIS + (10L * 1000L);
 
   /**
    * Use Servlet 3.0 asynchronous processing. 
