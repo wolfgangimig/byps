@@ -14,6 +14,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.ByteArrayEntity;
@@ -34,6 +35,16 @@ public class AsfPutStream extends AsfRequest {
   private final BAsyncResult<ByteBuffer> asyncResult;
   private final static int CHUNK_SIZE = 10 * 1000;
   private final static int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE; // should be a multiple of CHUNK_SIZE
+
+  /**
+   * Send stream as POST message.
+   */
+  private static boolean sendAsPost = true;
+  
+  static {
+    String s = System.getProperty("byps.http.putStreamAsPost", "");
+    if (s != null && !s.isEmpty()) sendAsPost = Boolean.parseBoolean(s);
+  }
 
   protected AsfPutStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
     super(url, httpClient, context);
@@ -179,6 +190,7 @@ public class AsfPutStream extends AsfRequest {
     
     StringBuilder destUrl = new StringBuilder();
     destUrl.append(url)
+      .append("&putstream=1")
       .append("&partid=").append(partId)
       .append("&last=").append(lastPart ? 1 : 0)
       .append("&total=").append(totalLength);
@@ -193,7 +205,7 @@ public class AsfPutStream extends AsfRequest {
     
     try {
 
-      request = new HttpPut(destUrl.toString());
+      request = sendAsPost ? new HttpPost(destUrl.toString()) : new HttpPut(destUrl.toString());
       request.setHeader("Content-Type", contentType);
       
       if (contentDisposition != null && contentDisposition.length() != 0) {

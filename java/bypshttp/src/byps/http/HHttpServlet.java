@@ -302,6 +302,9 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (request.getParameter(BContentStream.URL_PARAM_UPLOAD_HANDLER) != null) {
       doHtmlUpload(request, response);
     }
+    else if (request.getParameter("putstream") != null) {
+      doPut(request, response);
+    }
     else {
       doPostMessage(request, response);
     }

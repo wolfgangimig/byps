@@ -26,6 +26,16 @@ public class JcnnPutStream extends JcnnRequest {
   private final BAsyncResult<ByteBuffer> asyncResult;
   private final static int CHUNK_SIZE = 10 * 1000;
   private final static int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE; // should be a multiple of CHUNK_SIZE
+  
+  /**
+   * Send stream as POST message.
+   */
+  private static boolean sendAsPost = true;
+  
+  static {
+    String s = System.getProperty("byps.http.putStreamAsPost", "");
+    if (s != null && !s.isEmpty()) sendAsPost = Boolean.parseBoolean(s);
+  }
 
   protected JcnnPutStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
     super(url, cookieManager);
@@ -125,6 +135,7 @@ public class JcnnPutStream extends JcnnRequest {
         
         StringBuilder destUrl = new StringBuilder();
         destUrl.append(url)
+          .append("&putstream=1")
           .append("&partid=").append(partId)
           .append("&last=").append(lastPart ? 1 : 0)
           .append("&total=").append(totalLength);
@@ -148,7 +159,7 @@ public class JcnnPutStream extends JcnnRequest {
     
           conn.setDoInput(true);
           conn.setDoOutput(true);
-          conn.setRequestMethod("PUT");
+          conn.setRequestMethod(sendAsPost ? "POST" : "PUT");
           conn.setRequestProperty("Content-Type", contentType);
           
           if (contentDisposition != null && contentDisposition.length() != 0) {
