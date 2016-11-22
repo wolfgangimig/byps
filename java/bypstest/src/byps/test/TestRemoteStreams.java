@@ -244,7 +244,7 @@ public class TestRemoteStreams {
     log.info("testRemoteStreamsSlowStream(");
     try {
       long contentLength = 123456; 
-      InputStream istrm = new MySlowStream(contentLength, 2 * HConstants.INCOMING_STREAM_TIMEOUT_MILLIS);
+      InputStream istrm = new MySlowStream(contentLength, 7000); // Tomcat -Dbyps.http.incomingStreamTimeoutSeconds=5 
       remote.setImage(istrm);
       TestUtils.fail(log, "Exception expected");
     }

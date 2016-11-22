@@ -18,7 +18,7 @@ public class HConstants {
   /**
    * An incoming stream must be available after this millis.
    */
-  public final static long INCOMING_STREAM_TIMEOUT_MILLIS = 30 * 1000L;
+  public static long INCOMING_STREAM_TIMEOUT_MILLIS = 60 * 1000L;
 
   /**
    * Time for internal cleanup operations.
@@ -54,7 +54,7 @@ public class HConstants {
    * otherwise create a new message object. The value is measured in
    * milliseconds.
    */
-  public final static long KEEP_MESSAGE_AFTER_FINISHED = INCOMING_STREAM_TIMEOUT_MILLIS + (10L * 1000L);
+  public static long KEEP_MESSAGE_AFTER_FINISHED = INCOMING_STREAM_TIMEOUT_MILLIS + CLEANUP_MILLIS;
 
   /**
    * Use Servlet 3.0 asynchronous processing. 
@@ -124,4 +124,27 @@ public class HConstants {
    * if the system property is not set, the Keep-Alive header is not sent.
    */
   public static final String RESPONSE_HEADER_KEEP_ALIVE_TIMEOUT = "byps.keepAliveTimeoutSeconds";
- }
+
+  
+  static
+  {
+    INCOMING_STREAM_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.incomingStreamTimeoutSeconds", INCOMING_STREAM_TIMEOUT_MILLIS / 1000) * 1000;
+    KEEP_MESSAGE_AFTER_FINISHED = INCOMING_STREAM_TIMEOUT_MILLIS + CLEANUP_MILLIS;
+  }
+
+  private static long getSystemPropertyLong(String prop, long defaultValue) {
+    long ret = defaultValue;
+    String s = System.getProperty(prop);
+    try {
+      if (s != null) {
+         ret = Long.parseLong(s);
+      }
+    }
+    catch (Exception e) {
+      System.err.println("Invalid option " + prop + "=" + s);
+      e.printStackTrace();
+    }
+    return ret;
+  }
+
+}
