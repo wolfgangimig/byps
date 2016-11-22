@@ -195,12 +195,13 @@ public class HWireClient extends BWire {
         
         if (msg != null && msg.buf != null) {
           if (log.isDebugEnabled()) log.debug("set result=" + msg);
-          this.result = msg;
           
           if (msg.header.error != 0) {
             if (log.isDebugEnabled()) log.debug("msg.header.error=" + msg.header.error);
             cancelMessage = !unsync_gotException();
           }
+          
+          this.result = msg;
         }
         else {
           // Stream result OK
