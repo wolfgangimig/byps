@@ -235,7 +235,8 @@ public class TestRemoteStreams {
   /**
    * Read/write stream slowly.
    * Ensure that the function call is finished after the server detects that the stream is not available.
-   * This test lasts more than 20 seconds.
+   * This test lasts about 7s. 
+   * Tomcat has to be started with JVM argument: -Dbyps.http.incomingStreamTimeoutSeconds=5
    * @throws InterruptedException
    * @throws IOException
    */
