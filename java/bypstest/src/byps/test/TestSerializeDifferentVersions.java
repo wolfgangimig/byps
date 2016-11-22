@@ -15,6 +15,7 @@ import byps.BInput;
 import byps.BMessageHeader;
 import byps.BOutput;
 import byps.BTransport;
+import byps.BVersioning;
 import byps.BWire;
 import byps.test.api.strm.Stream1;
 import byps.test.api.ver.Evolve;
@@ -34,14 +35,16 @@ public class TestSerializeDifferentVersions {
     
     for (int appVersion = 0; appVersion < 5; appVersion++) {
       for (int negotiatedVersion = 0; negotiatedVersion <= appVersion; negotiatedVersion++) {
-        internalTestDifferentVersions(appVersion, 0, negotiatedVersion);
+        long appVersionLong = BVersioning.stringToLong(Integer.toString(appVersion));
+        long negotiatedVersionLong = BVersioning.stringToLong(Integer.toString(negotiatedVersion));
+        internalTestDifferentVersions(appVersionLong, 0, negotiatedVersionLong);
       }
     }
     
     log.info(")testDifferentVersions");
   }
   
-  private void internalTestDifferentVersions(int appVersion, int bypsVersion, int negotiatedVersion) throws BException {
+  private void internalTestDifferentVersions(long appVersion, int bypsVersion, long negotiatedVersion) throws BException {
 		log.info("internalTestDifferentVersions(appVersion=" + appVersion + ", negotiatedVersion=" + negotiatedVersion);
 		Evolve obj = createEvolve(appVersion);
 		
@@ -61,7 +64,7 @@ public class TestSerializeDifferentVersions {
 		log.info(")internalTestdifferentVersions");
 	}
 	
-	public static Evolve createEvolve(int version) {
+	public static Evolve createEvolve(long version) {
 		Evolve ev = new Evolve();
 		ev.bool1 = true;
 		ev.byte1 = (byte)1;
@@ -87,7 +90,7 @@ public class TestSerializeDifferentVersions {
 		ev.map1 = new HashMap<Integer,Integer>();
 		ev.map1.put(18,19); ev.map1.put(20,21);
 		
-		if (version >= 2) {
+		if (version >= BVersioning.stringToLong("2")) {
 			ev.bool2 = false;
 			ev.byte2 = (byte)2;
 			ev.char2 = 'b';
@@ -113,7 +116,7 @@ public class TestSerializeDifferentVersions {
 			ev.map1.put(18,19); ev.map1.put(20,21); ev.map1.put(22,23);
 		}
 		
-		if (version >= 3) {
+		if (version >= BVersioning.stringToLong("3")) {
 			ev.bool3 = false;
 			ev.byte3 = (byte)3;
 			ev.char3 = 'c';
@@ -142,8 +145,8 @@ public class TestSerializeDifferentVersions {
 		return ev;
 	}
 	
-	public static void compareEvolve(Log log, Evolve lhs, Evolve rhs, int clientVersion, int serverVersion) {
-		int negotiatedVersion = Math.min(clientVersion, serverVersion);
+	public static void compareEvolve(Log log, Evolve lhs, Evolve rhs, long clientVersion, long serverVersion) {
+		long negotiatedVersion = Math.min(clientVersion, serverVersion);
 		String msg = clientVersion + "/" + serverVersion + " ";
 		TestUtils.assertEquals(log, msg+"bool1", lhs.bool1, rhs.bool1);
 		TestUtils.assertEquals(log, msg+"byte1", lhs.byte1, rhs.byte1);
@@ -168,7 +171,7 @@ public class TestSerializeDifferentVersions {
 		TestUtils.assertEquals(log, msg+"set1", lhs.set1, rhs.set1);
 		TestUtils.assertEquals(log, msg+"map1", lhs.map1, rhs.map1);
 	
-		if (negotiatedVersion >= 2) {
+		if (negotiatedVersion >= BVersioning.stringToLong("2")) {
 			TestUtils.assertEquals(log, msg+"bool2", lhs.bool2, rhs.bool2);
 			TestUtils.assertEquals(log, msg+"byte2", lhs.byte2, rhs.byte2);
 			TestUtils.assertEquals(log, msg+"char2", lhs.char2, rhs.char2);
@@ -193,7 +196,7 @@ public class TestSerializeDifferentVersions {
 			TestUtils.assertEquals(log, msg+"map2", lhs.map2, rhs.map2);
 		}
 		
-		if (negotiatedVersion >= 3) {
+		if (negotiatedVersion >= BVersioning.stringToLong("3")) {
 			TestUtils.assertEquals(log, msg+"bool3", lhs.bool3, rhs.bool3);
 			TestUtils.assertEquals(log, msg+"byte3", lhs.byte3, rhs.byte3);
 			TestUtils.assertEquals(log, msg+"char3", lhs.char3, rhs.char3);

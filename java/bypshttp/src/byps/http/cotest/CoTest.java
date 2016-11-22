@@ -17,9 +17,9 @@ public class CoTest {
     // Starting client and server in this process can be useful for debugging.
     internalTestLocalClientAndServer(params);
     
-    internalTestOtherServer(params);
-    
     internalTestOtherClient(params);
+
+    internalTestOtherServer(params);
   }
 
   private static void internalTestLocalClientAndServer(CoTestParams params) throws Exception {
