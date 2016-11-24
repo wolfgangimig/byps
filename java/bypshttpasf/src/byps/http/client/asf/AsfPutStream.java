@@ -39,7 +39,7 @@ public class AsfPutStream extends AsfRequest {
   /**
    * Send stream as POST message.
    */
-  private static boolean sendAsPost = true;
+  private static boolean sendAsPost = false;
   
   static {
     String s = System.getProperty("byps.http.putStreamAsPost", "");
