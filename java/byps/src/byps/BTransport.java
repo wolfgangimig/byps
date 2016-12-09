@@ -314,7 +314,9 @@ public class BTransport {
   
   public void recv(BServer server, BMessage msg, final BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("recv(");
-
+    final long requestId = requestCounter.incrementAndGet(); 
+    final long t0 = System.currentTimeMillis();
+    
     try {
       
       final BInput bin = getInput(msg.header, msg.buf);
@@ -324,6 +326,13 @@ public class BTransport {
         @Override
         public void setAsyncResult(Object obj, Throwable e) {
           if (log.isDebugEnabled()) log.debug("setAsyncResultOrException(");
+          
+          if (printRequestIntoLogger && log.isInfoEnabled()) {
+            long t1 = System.currentTimeMillis();
+            Object resp = e != null ? e : obj;
+            log.info("recv-" + requestId + " [" + (t1-t0) + "] Response=" + resp);
+          }
+
           try {
             BOutput bout = getResponse(bin.header);
             if (e != null) {
@@ -367,7 +376,8 @@ public class BTransport {
       // Read message
       final Object methodObj = bin.load();
       if (log.isDebugEnabled()) log.debug("messageId=" + bin.header.messageId);
-
+      if (printRequestIntoLogger && log.isInfoEnabled()) log.info("recv-" + requestId + " Request=" + methodObj);
+      
       // Forward message to other server?
       if (client != null) {
         forwardMessage(client, clientTargetId, methodObj, methodResult);
@@ -377,6 +387,12 @@ public class BTransport {
         server.recv(clientTargetId, methodObj, methodResult);
       }
     } catch (Exception e) {
+      
+      if (printRequestIntoLogger && log.isInfoEnabled()) {
+        long t1 = System.currentTimeMillis();
+        log.info("recv-" + requestId + " [" + (t1-t0) + "] Response=" + e);
+      }
+
       asyncResult.setAsyncResult(null, e);
     }
 

@@ -115,6 +115,8 @@ public class HServerR extends BServerR {
             }
             else {
               BException ex = (BException) e;
+              log.info("Reverse request received exception=" + ex);
+              
               switch (ex.code) {
 
               case BExceptionC.SESSION_CLOSED: // Session was invalidated.
