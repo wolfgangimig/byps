@@ -121,31 +121,10 @@ public class BMessageHeader {
 			switch (magic) {
 			case MAGIC_BINARY_STREAM: return magic; 
 			case MAGIC_BINARY_STREAM_LE: return magic;
-			case MAGIC_JSON: {
+			default: {
+			  magic = MAGIC_JSON;
 				buf.position(pos);
 				return magic;
-			}
-			case MAGIC_JSON_SINGLE_QUOTE: {
-				buf.position(pos);
-				return MAGIC_JSON;
-			}
-			default: {
-				buf.position(pos);
-				BBufferJson bbuf = new BBufferJson(buf);
-				char c = bbuf.nextJsonChar(true);
-				if (c != '{') return 0;
-				c = bbuf.nextJsonChar(true);
-				switch(c) {
-				case '\"' : 
-				case '\'' :	
-					break;
-				default: 
-					return 0;
-				}
-				c = bbuf.nextJsonChar(true);
-				if (c != 'h') return 0;
-				buf.position(pos);
-				return MAGIC_JSON;
 			}
 			}
 		}
