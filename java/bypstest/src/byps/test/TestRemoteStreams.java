@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -707,6 +708,57 @@ public class TestRemoteStreams {
         return ret;
       }
     }
+  }
+
+  /**
+   * Cancel reading a stream.
+   * The stream must be closed on the server side.
+   * Network connections must not increase permanently.
+   * OutOfMemory exceptions must not occur.
+   * 
+   * @throws InterruptedException
+   * @throws IOException
+   */
+  @Test
+  @SuppressWarnings("rawtypes")
+  public void testRemoteStreamsCancelDownload() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsCancelDownload(");
+
+    InputStream istrm = new TestUtils.MyContentStream(101, false);
+    remote.setImage(istrm);
+
+    final int NB_OF_DOWNLOADS = 10 * 1000;
+    final int NB_OF_PARALLEL_DOWNLOADS = 10;
+    try {
+      for (int i = 0; i < NB_OF_DOWNLOADS/NB_OF_PARALLEL_DOWNLOADS; i++) {
+        CompletableFuture[] completableFutures = new CompletableFuture[NB_OF_PARALLEL_DOWNLOADS];
+        for (int j = 0; j < completableFutures.length; j++) {
+          completableFutures[j] = CompletableFuture.supplyAsync(() -> { 
+            try {
+              InputStream istrmR = remote.getImage();
+              istrmR.read(); // read only one byte
+              istrmR.close();
+            }
+            catch (Exception e) {
+              throw new IllegalStateException(e);
+            }
+            return true;
+          });
+        }
+        CompletableFuture all = CompletableFuture.allOf(completableFutures);
+        all.get();
+        if ((i % 1000) == 0) log.info("#downloads=" + (i));
+      }
+    }
+    catch (Exception e) {
+      log.error("Download failed", e);
+      TestUtils.fail(log, e.toString());
+    }
+
+    remote.setImage(null);
+    TestUtils.checkTempDirEmpty(client);
+
+    log.info(")testRemoteStreamsCancelDownload");
   }
 
 }

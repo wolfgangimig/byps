@@ -73,6 +73,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
         throw new BException(BExceptionC.IOERROR, "", e);
       }
 		}
+    System.gc();
 		if (log.isDebugEnabled()) log.debug(")setImage");
 	}
 	
