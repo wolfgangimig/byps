@@ -1,15 +1,4 @@
 package byps;
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import byps.BException;
-import byps.BInput;
-import byps.BInputBin;
-import byps.BOutput;
-import byps.BOutputBin;
-import byps.BRegistry;
-import byps.BSerializer;
-import byps.BValueClass;
-
-
 
 public class BSerializer_22 extends BSerializer {
 
@@ -28,18 +17,28 @@ public class BSerializer_22 extends BSerializer {
 		final BOutputBin bout = ((BOutputBin)bout1);
 		final BValueClass obj = (BValueClass)obj1;
 		bout.bbuf.putLong(obj.changedMembers);
+    if (bout1.header.bversion >= BMessageHeader.BYPS_VERSION_SEALED_VALUE_CLASS) {
+      bout.bbuf.putInt(obj.flags);
+    }
 	}
 
 	@Override
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		final BInputBin bin = ((BInputBin)bin1);
 		final long v = bin.bbuf.getLong();
+    
 		BValueClass obj = (BValueClass)obj1;
 		if (obj == null) {
 			obj = new BValueClass();
 			bin.onObjectCreated(obj);
 		}
-		obj.setChangedMember(v);
+		obj.changedMembers = v;
+		
+    if (bin.header.bversion >= BMessageHeader.BYPS_VERSION_SEALED_VALUE_CLASS) {
+      int flags = bin.bbuf.getInt();
+      obj.flags = flags;
+    }
+		
 		return obj;
 	}
 

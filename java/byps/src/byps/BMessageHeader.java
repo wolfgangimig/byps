@@ -32,7 +32,8 @@ public class BMessageHeader {
   public final static int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
   public final static int BYPS_VERSION_ENCRYPTED_TARGETID = 2;
   public final static int BYPS_VERSION_WITH_SESSIONID = 3;
-  public static int BYPS_VERSION_CURRENT = BYPS_VERSION_WITH_SESSIONID;
+  public final static int BYPS_VERSION_SEALED_VALUE_CLASS = 4;
+  public static int BYPS_VERSION_CURRENT = BYPS_VERSION_SEALED_VALUE_CLASS;
 		
 	public final static int FLAG_BYPS_VERSION = 1;
 	public final static int FLAG_RESPONSE = 2; 
