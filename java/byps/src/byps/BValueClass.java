@@ -8,7 +8,7 @@ public class BValueClass implements Serializable {
   
   protected long changedMembers;
   
-  protected int flags; 
+  protected transient int flags; 
   
   protected final static int FLAG_SEALED = 1;
 	

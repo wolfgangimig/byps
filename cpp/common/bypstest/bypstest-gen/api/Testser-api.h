@@ -3935,9 +3935,9 @@ using namespace ::byps;
 
 class BApiDescriptor_Testser { 
 	/**
-	 * API serialisation version: 0.0.0.793
+	 * API serialisation version: 793.0.0.0
 	 */
-	public: const static int64_t VERSION = 793LL;
+	public: const static int64_t VERSION = 79300000000000000LL;
 	public: static PApiDescriptor instance();
 };
 

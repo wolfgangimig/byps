@@ -21,7 +21,7 @@ public class TestCompatibleApi_Testser {
 		// byps.test.api.inherit.BioFruitService
 		if (negotiatedVersion >= 0L) {
 			byps.test.api.inherit.BStub_BioFruitService remote = (byps.test.api.inherit.BStub_BioFruitService)bclient.getClass().getDeclaredMethod("getBioFruitService").invoke(bclient);
-			if (negotiatedVersion >= 1L) {
+			if (negotiatedVersion >= 100000000000000L) {
 				internalTest_byps_test_api_inherit_BioFruitService_certify(remote);
 			}
 		}

@@ -3,7 +3,7 @@
     <apiDesc>
         <name>Testser</name>
         <apiPack>byps.test.api</apiPack>
-        <version>0.0.0.793</version>
+        <version>793.0.0.0</version>
         <uniqueObjects>false</uniqueObjects>
     </apiDesc>
     <serials>
@@ -8713,7 +8713,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>byte2</name>
@@ -8726,7 +8726,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>char2</name>
@@ -8739,7 +8739,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>short2</name>
@@ -8752,7 +8752,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>int2</name>
@@ -8765,7 +8765,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>long2</name>
@@ -8778,7 +8778,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>float2</name>
@@ -8791,7 +8791,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>double2</name>
@@ -8804,7 +8804,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>bools2</name>
@@ -8817,7 +8817,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>bytes2</name>
@@ -8830,7 +8830,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>chars2</name>
@@ -8843,7 +8843,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>shorts2</name>
@@ -8856,7 +8856,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>ints2</name>
@@ -8869,7 +8869,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>longs2</name>
@@ -8882,7 +8882,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>floats2</name>
@@ -8895,7 +8895,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>doubles2</name>
@@ -8908,7 +8908,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>str2</name>
@@ -8921,7 +8921,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>obj2</name>
@@ -8934,7 +8934,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>evo2</name>
@@ -8947,7 +8947,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>list2</name>
@@ -8960,7 +8960,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>set2</name>
@@ -8973,7 +8973,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>map2</name>
@@ -8986,7 +8986,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.2</since>
+                    <since>2.0.0.0</since>
                 </member>
                 <member>
                     <name>bool3</name>
@@ -8999,7 +8999,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>byte3</name>
@@ -9012,7 +9012,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>char3</name>
@@ -9025,7 +9025,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>short3</name>
@@ -9038,7 +9038,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>int3</name>
@@ -9051,7 +9051,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>long3</name>
@@ -9064,7 +9064,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>float3</name>
@@ -9077,7 +9077,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>double3</name>
@@ -9090,7 +9090,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>bools3</name>
@@ -9103,7 +9103,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>bytes3</name>
@@ -9116,7 +9116,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>chars3</name>
@@ -9129,7 +9129,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>shorts3</name>
@@ -9142,7 +9142,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>ints3</name>
@@ -9155,7 +9155,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>longs3</name>
@@ -9168,7 +9168,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>floats3</name>
@@ -9181,7 +9181,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>doubles3</name>
@@ -9194,7 +9194,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>str3</name>
@@ -9207,7 +9207,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>obj3</name>
@@ -9220,7 +9220,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>evo3</name>
@@ -9233,7 +9233,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>list3</name>
@@ -9246,7 +9246,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>set3</name>
@@ -9259,7 +9259,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>map3</name>
@@ -9272,7 +9272,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.3</since>
+                    <since>3.0.0.0</since>
                 </member>
                 <member>
                     <name>since793</name>
@@ -9285,7 +9285,7 @@
                     <isStatic>false</isStatic>
                     <isFinal>false</isFinal>
                     <access>PUBLIC</access>
-                    <since>0.0.0.793</since>
+                    <since>793.0.0.0</since>
                 </member>
             </members>
             <comments>
@@ -10300,7 +10300,7 @@
                 <method>
                     <name>certify</name>
                     <remoteName>byps.test.api.inherit.BioFruitService</remoteName>
-                    <since>0.0.0.1</since>
+                    <since>1.0.0.0</since>
                     <requestTypeName>byps.test.api.inherit.BRequest_BioFruitService_certify</requestTypeName>
                     <resultTypeName>byps.test.api.BResult_1</resultTypeName>
                     <exceptionTypeNames/>

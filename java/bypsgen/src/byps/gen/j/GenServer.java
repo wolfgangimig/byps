@@ -36,7 +36,10 @@ public class GenServer {
 		
 		pctxt.printDoNotModify(pr, getClass());
 
-		pr.println("import byps.*;");
+    pr.println("import byps.*;");
+    pr.println("import java.util.Arrays;");
+    pr.println("import java.util.Collections;");
+    pr.println("import java.util.List;");
 		pr.println();
 
 		pr.println("@SuppressWarnings(\"all\")");
@@ -62,6 +65,9 @@ public class GenServer {
 			printAddRemote(rinfo);
 			pr.println();
 		}
+		
+		printAllInterfaces();
+		pr.println();
 		
 		pr.endBlock();
 		
@@ -139,6 +145,27 @@ public class GenServer {
 		pr.println("return this;");
 		pr.endBlock();
 		pr.println("}");
+	}
+	
+	/**
+	 * Print a constant member that lists all BRemote interfaces.
+	 */
+	protected void printAllInterfaces() {
+	  pr.println("/**");
+	  pr.println(" * Readonly list of all API interfaces.");
+	  pr.println(" */");
+	  pr.println("public final static List<Class> allRemotes = Collections.unmodifiableList(Arrays.asList(new Class[] {");
+	  pr.beginBlock();
+	  boolean first = true;
+	  CodePrinter mpr = pr;
+	  for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
+      if (first) first = false; else mpr.println(",");
+      mpr = pr;
+	    mpr = pr.print(rinfo.qname).print(".class");
+	  }
+	  pr.println();
+	  pr.endBlock();
+	  pr.println("}));");
 	}
 
 	private CodePrinter pr;

@@ -6,6 +6,9 @@ package byps.test.api;
  */
 
 import byps.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @SuppressWarnings("all")
 public class BServer_Testser extends BServer { 
@@ -142,5 +145,33 @@ public class BServer_Testser extends BServer {
 		addRemote(15377840, remoteSkeleton);
 		return this;
 	}
+	
+	/**
+	 * Readonly list of all API interfaces.
+	 */
+	public final static List<Class> allRemotes = Collections.unmodifiableList(Arrays.asList(new Class[] {
+		byps.test.api.inherit.BioFruitService.class,
+		byps.test.api.inherit.BioLemonService.class,
+		byps.test.api.inherit.FruitService.class,
+		byps.test.api.inherit.LemonService.class,
+		byps.test.api.inherit.PlantService.class,
+		byps.test.api.remote.RemoteArrayTypes1dim.class,
+		byps.test.api.remote.RemoteArrayTypes23.class,
+		byps.test.api.remote.RemoteArrayTypes4dim.class,
+		byps.test.api.remote.RemoteConstants.class,
+		byps.test.api.remote.RemoteEnums.class,
+		byps.test.api.remote.RemoteInlineInstance.class,
+		byps.test.api.remote.RemoteListTypes.class,
+		byps.test.api.remote.RemoteMapTypes.class,
+		byps.test.api.remote.RemotePrimitiveTypes.class,
+		byps.test.api.remote.RemoteReferences.class,
+		byps.test.api.remote.RemoteServerCtrl.class,
+		byps.test.api.remote.RemoteSetTypes.class,
+		byps.test.api.remote.RemoteStreams.class,
+		byps.test.api.remote.RemoteWithAuthentication.class,
+		byps.test.api.srvr.ClientIF.class,
+		byps.test.api.srvr.ServerIF.class,
+		byps.test.api.ver.EvolveIF.class		
+	}));
 	
 }

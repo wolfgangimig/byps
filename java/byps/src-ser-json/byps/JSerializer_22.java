@@ -26,7 +26,6 @@ public class JSerializer_22 extends JSerializer_Object {
 	protected void internalWrite(final Object obj1, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		final BValueClass obj = (BValueClass)obj1;
 		bbuf.putLong("changedMembers", obj.changedMembers);
-		bbuf.putInt("flags", obj.flags);
 	}
 
 	@Override
@@ -38,7 +37,6 @@ public class JSerializer_22 extends JSerializer_Object {
 			bin.onObjectCreated(obj);
 		}
 		obj.changedMembers = v;
-		obj.flags = bin.currentObject.getInt("flags");
 		return obj;
 	}
 

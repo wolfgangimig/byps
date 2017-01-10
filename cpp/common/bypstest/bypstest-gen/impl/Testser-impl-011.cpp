@@ -765,7 +765,7 @@ void Evolve::serialize(BIO& ar, const BVERSION version) {
 	ar & this->long1;
 	ar & this->short1;
 	ar & this->str1;
-	if (version >= 2) {
+	if (version >= 200000000000000) {
 		ar & this->bool2;
 		ar & this->byte2;
 		ar & this->char2;
@@ -775,7 +775,7 @@ void Evolve::serialize(BIO& ar, const BVERSION version) {
 		ar & this->long2;
 		ar & this->short2;
 		ar & this->str2;
-		if (version >= 3) {
+		if (version >= 300000000000000) {
 			ar & this->bool3;
 			ar & this->byte3;
 			ar & this->char3;
@@ -785,7 +785,7 @@ void Evolve::serialize(BIO& ar, const BVERSION version) {
 			ar & this->long3;
 			ar & this->short3;
 			ar & this->str3;
-			if (version >= 793) {
+			if (version >= 79300000000000000) {
 				ar & this->since793;
 			}
 		}
@@ -803,7 +803,7 @@ void Evolve::serialize(BIO& ar, const BVERSION version) {
 	ar & this->obj1;
 	ar & this->set1;
 	ar & this->shorts1;
-	if (version >= 2) {
+	if (version >= 200000000000000) {
 		ar & this->bools2;
 		ar & this->bytes2;
 		ar & this->chars2;
@@ -817,7 +817,7 @@ void Evolve::serialize(BIO& ar, const BVERSION version) {
 		ar & this->obj2;
 		ar & this->set2;
 		ar & this->shorts2;
-		if (version >= 3) {
+		if (version >= 300000000000000) {
 			ar & this->bools3;
 			ar & this->bytes3;
 			ar & this->chars3;

@@ -45,7 +45,7 @@ namespace byps.test.api.ver
 			bbuf.putShort(obj.Short1);
 			// checkpoint byps.gen.cs.PrintContext:494
 			bbuf.putString(obj.Str1);
-			if (version >= 2L) {
+			if (version >= 200000000000000L) {
 				// checkpoint byps.gen.cs.PrintContext:494
 				bbuf.putBoolean(obj.Bool2);
 				// checkpoint byps.gen.cs.PrintContext:494
@@ -64,7 +64,7 @@ namespace byps.test.api.ver
 				bbuf.putShort(obj.Short2);
 				// checkpoint byps.gen.cs.PrintContext:494
 				bbuf.putString(obj.Str2);
-				if (version >= 3L) {
+				if (version >= 300000000000000L) {
 					// checkpoint byps.gen.cs.PrintContext:494
 					bbuf.putBoolean(obj.Bool3);
 					// checkpoint byps.gen.cs.PrintContext:494
@@ -83,7 +83,7 @@ namespace byps.test.api.ver
 					bbuf.putShort(obj.Short3);
 					// checkpoint byps.gen.cs.PrintContext:494
 					bbuf.putString(obj.Str3);
-					if (version >= 793L) {
+					if (version >= 79300000000000000L) {
 						// checkpoint byps.gen.cs.PrintContext:494
 						bbuf.putInt(obj.Since793);
 					}
@@ -115,7 +115,7 @@ namespace byps.test.api.ver
 			bout.writeObj(obj.Set1, false, byps.test.api.BSerializer_1493282670.instance);
 			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.Shorts1, false, byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 2L) {
+			if (version >= 200000000000000L) {
 				// checkpoint byps.gen.cs.PrintContext:494
 				bout.writeObj(obj.Bools2, false, byps.test.api.BSerializer_2058423690.instance);
 				// checkpoint byps.gen.cs.PrintContext:494
@@ -142,7 +142,7 @@ namespace byps.test.api.ver
 				bout.writeObj(obj.Set2, false, byps.test.api.BSerializer_1493282670.instance);
 				// checkpoint byps.gen.cs.PrintContext:494
 				bout.writeObj(obj.Shorts2, false, byps.test.api.BSerializer_2067161310.instance);
-				if (version >= 3L) {
+				if (version >= 300000000000000L) {
 					// checkpoint byps.gen.cs.PrintContext:494
 					bout.writeObj(obj.Bools3, false, byps.test.api.BSerializer_2058423690.instance);
 					// checkpoint byps.gen.cs.PrintContext:494
@@ -197,7 +197,7 @@ namespace byps.test.api.ver
 			obj.Short1 = bbuf.getShort();
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.Str1 = bbuf.getString();
-			if (version >= 2L) {
+			if (version >= 200000000000000L) {
 				// checkpoint byps.gen.cs.PrintContext:449
 				obj.Bool2 = bbuf.getBoolean();
 				// checkpoint byps.gen.cs.PrintContext:449
@@ -216,7 +216,7 @@ namespace byps.test.api.ver
 				obj.Short2 = bbuf.getShort();
 				// checkpoint byps.gen.cs.PrintContext:449
 				obj.Str2 = bbuf.getString();
-				if (version >= 3L) {
+				if (version >= 300000000000000L) {
 					// checkpoint byps.gen.cs.PrintContext:449
 					obj.Bool3 = bbuf.getBoolean();
 					// checkpoint byps.gen.cs.PrintContext:449
@@ -235,7 +235,7 @@ namespace byps.test.api.ver
 					obj.Short3 = bbuf.getShort();
 					// checkpoint byps.gen.cs.PrintContext:449
 					obj.Str3 = bbuf.getString();
-					if (version >= 793L) {
+					if (version >= 79300000000000000L) {
 						// checkpoint byps.gen.cs.PrintContext:449
 						obj.Since793 = bbuf.getInt();
 					}
@@ -267,7 +267,7 @@ namespace byps.test.api.ver
 			obj.Set1 = (ISet<int>)bin.readObj(false, null);
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.Shorts1 = (short[])bin.readObj(false, byps.test.api.BSerializer_2067161310.instance);
-			if (version >= 2L) {
+			if (version >= 200000000000000L) {
 				// checkpoint byps.gen.cs.PrintContext:449
 				obj.Bools2 = (bool[])bin.readObj(false, byps.test.api.BSerializer_2058423690.instance);
 				// checkpoint byps.gen.cs.PrintContext:449
@@ -294,7 +294,7 @@ namespace byps.test.api.ver
 				obj.Set2 = (ISet<int>)bin.readObj(false, null);
 				// checkpoint byps.gen.cs.PrintContext:449
 				obj.Shorts2 = (short[])bin.readObj(false, byps.test.api.BSerializer_2067161310.instance);
-				if (version >= 3L) {
+				if (version >= 300000000000000L) {
 					// checkpoint byps.gen.cs.PrintContext:449
 					obj.Bools3 = (bool[])bin.readObj(false, byps.test.api.BSerializer_2058423690.instance);
 					// checkpoint byps.gen.cs.PrintContext:449
