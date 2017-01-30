@@ -44,7 +44,7 @@ public class HConstants {
    * appropriate values in BMessageHeader. This is applied in byps.js 
    * for browser clients, where a timeout of 30s is passed.
    */
-  public final static long TIMEOUT_LONGPOLL_MILLIS = 5 * 60 * 1000L;
+  public static long TIMEOUT_LONGPOLL_MILLIS = 5 * 60 * 1000L;
 
   /**
    * Keep message in memory after it was finished. After a message is canceled,
@@ -130,6 +130,8 @@ public class HConstants {
   {
     INCOMING_STREAM_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.incomingStreamTimeoutSeconds", INCOMING_STREAM_TIMEOUT_MILLIS / 1000) * 1000;
     KEEP_MESSAGE_AFTER_FINISHED = INCOMING_STREAM_TIMEOUT_MILLIS + CLEANUP_MILLIS;
+    
+    TIMEOUT_LONGPOLL_MILLIS = getSystemPropertyLong("byps.http.longPollTimeoutSeconds", TIMEOUT_LONGPOLL_MILLIS / 1000) * 1000;
   }
 
   private static long getSystemPropertyLong(String prop, long defaultValue) {

@@ -83,11 +83,12 @@ public class HWireClientR extends BWire {
    * @throws IOException
    */
   public void recvLongPoll(BMessage ibuf, final BAsyncResult<BMessage> nextRequest) throws IOException {
-    if (log.isDebugEnabled()) log.debug("recvLongPoll(messageId=" + ibuf.header.messageId);
+    if (log.isDebugEnabled()) log.debug(this + ".recvLongPoll(messageId=" + ibuf.header.messageId);
 
     if (log.isDebugEnabled()) log.debug("message buffer=" + ibuf);
 
     // Function send() has stored its parameter BAsyncResult mapped under the messageId.  
+    if (log.isDebugEnabled()) log.debug("mapAsyncResults.keys=" + mapAsyncResults);
     BAsyncResult<BMessage> asyncResult = mapAsyncResults.remove(ibuf.header.messageId);
     if (log.isDebugEnabled()) log.debug("asyncResult for messageId: " + asyncResult);
 
@@ -106,6 +107,7 @@ public class HWireClientR extends BWire {
     // If function send() could not find a pending long-poll, it pushed 
     // the message into the queue of pending messages.
     PendingMessage pendingMessage = pendingMessages.poll(); 
+    if (log.isDebugEnabled()) log.debug("pendingMessage=" + pendingMessage);
         
     // Pending message available? ...
     if (pendingMessage != null) {
@@ -125,20 +127,22 @@ public class HWireClientR extends BWire {
 
   @Override
   public void send(BMessage msg, BAsyncResult<BMessage> asyncResult) {
-    if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
+    if (log.isDebugEnabled()) log.debug(this + ".send(" + msg + ", asyncResult=" + asyncResult);
+
+    final long messageId = msg.header.messageId;
 
     try {
-      
-      final long messageId = msg.header.messageId;
       
       // Save result object for next long-poll
       if (log.isDebugEnabled()) log.debug("map messageId=" + messageId + " to asyncResult=" + asyncResult);
       mapAsyncResults.put(messageId, asyncResult);
       
-      for (int i = 0; i < 2; i++) {
+      int retries = 100;
+      while (--retries >= 0) {
         
         // If canceled, set BExceptionC.CLIENT_DIED to asyncResult 
         if (canceled) {
+          if (log.isDebugEnabled()) log.debug("canceled=" + canceled);
           terminateMessage(messageId, null);
           break;
         }
@@ -157,6 +161,7 @@ public class HWireClientR extends BWire {
         // Send the message
         try {
           
+          if (log.isDebugEnabled()) log.debug("asyncResult.setAsyncResult");
           asyncRequest.setAsyncResult(msg, null);
           break;
           
@@ -175,33 +180,53 @@ public class HWireClientR extends BWire {
         }
 
       }
+      
+      if (retries < 0) {
+        // More than 100 longpolls which are not usable.
+        // Maybe the cleanup thread has died.
+        BException ex = new BException(BExceptionC.TOO_MANY_REQUESTS, "Too many unusable long poll requests.");
+        terminateMessage(messageId, ex);
+      }
 
     } catch (Throwable e) {
       if (log.isWarnEnabled()) log.warn("Failed to send reverse message.", e);
-      asyncResult.setAsyncResult(null, e);
+      terminateMessage(messageId, e);
     }
 
     if (log.isDebugEnabled()) log.debug(")send");
   }
   
   protected BAsyncResult<BMessage> getNextLongpollRequestOrPushMessage(BMessage msg) {
+    if (log.isDebugEnabled()) log.debug("getNextLongpollRequestOrPushMessage(" + msg);
     
     // Get next long-poll request from queue.
     AsyncRequestFromLongpoll longpollRequest = lonpollRequests.poll();
-    
+    if (log.isDebugEnabled()) log.debug("longpollRequest=" + longpollRequest);
+
     // long-poll active? ...
-    if (longpollRequest != null) return longpollRequest.request;
+    if (longpollRequest != null) {
+      if (log.isDebugEnabled()) log.debug(")getNextLongpollRequestOrPushMessage=" + longpollRequest.request);
+      return longpollRequest.request;
+    }
     
     // Push message into the queue of pending messages.
     // This message will be immediately sent at the next time recvLongPoll is called.
+    if (log.isDebugEnabled()) log.debug("pendingMessages.offer");
     if (!pendingMessages.offer(new PendingMessage(msg))) {
+      
+      // --- never executed  {
       
       // Queue is full, terminate message with error.
       if (log.isDebugEnabled()) log.debug("Failed to add pending msg=" + msg);
       BException ex = new BException(BExceptionC.TOO_MANY_REQUESTS, "Failed to add pending message.");
       terminateMessage(msg.header.messageId, ex);
+      
+      
+      // }  --- never executed
+
     }
     
+    if (log.isDebugEnabled()) log.debug(")getNextLongpollRequestOrPushMessage=null");
     return null;
   }
 
@@ -222,12 +247,13 @@ public class HWireClientR extends BWire {
    * @param e Exception used for BException detail.
    */
   protected void terminateMessage(final long messageId, Throwable e) {
-    
+    if (log.isDebugEnabled()) log.debug("terminateMessage(" + messageId + ", ex=" + e);
     BException bex = null;
     
     // Get the asyncResult pushed from the send() method into the
     // asyncResults_access_sync map.
     BAsyncResult<BMessage> asyncResult = mapAsyncResults.remove(messageId);
+    if (log.isDebugEnabled()) log.debug("asyncResult=" + asyncResult);
     if (asyncResult != null) {
   
       if (e instanceof BException) {
@@ -245,9 +271,11 @@ public class HWireClientR extends BWire {
         bex = new BException(BExceptionC.CLIENT_DIED, "", innerException);
       }
 
+      if (log.isDebugEnabled()) log.debug("asyncResult.setAsyncResult ex=" + bex);
       asyncResult.setAsyncResult(null, bex);
     }
     
+    if (log.isDebugEnabled()) log.debug(")terminateMessage");
   }
   
   /**
@@ -255,9 +283,13 @@ public class HWireClientR extends BWire {
    * The client application receives a status code 204 for a long-poll. 
    */
   public void cleanup() {
+    if (log.isDebugEnabled()) log.debug(this + ".cleanup(");
     
     ArrayList<AsyncRequestFromLongpoll> lpolls = removeExpiredLongpolls();
+    if (log.isDebugEnabled()) log.debug("exprired lpolls=" + lpolls);
+    
     ArrayList<PendingMessage> msgs = getExpiredMessages();
+    if (log.isDebugEnabled()) log.debug("exprired messages=" + msgs);
     
     if (lpolls.size() != 0) {
 
@@ -267,6 +299,7 @@ public class HWireClientR extends BWire {
       BException ex = new BException(BExceptionC.RESEND_LONG_POLL, "");
       for (AsyncRequestFromLongpoll lrequest : lpolls) {
         try {
+          if (log.isDebugEnabled()) log.debug("lrequest.request.setAsyncResult ex=" + ex);
           lrequest.request.setAsyncResult(null, ex);
         }
         catch (Throwable e) {
@@ -290,6 +323,7 @@ public class HWireClientR extends BWire {
       }
     }
 
+    if (log.isDebugEnabled()) log.debug(")cleanup");
   }
   
   /**
@@ -395,6 +429,9 @@ public class HWireClientR extends BWire {
       return ret;
     }
     
+    public synchronized String toString() {
+      return arr.toString();
+    }
     
   }
   
@@ -415,6 +452,9 @@ public class HWireClientR extends BWire {
       return map.remove(messageId);
     }
     
+    public synchronized String toString() {
+      return map.keySet().toString();
+    }
   }
   
   private static class LongPollRequests {
@@ -459,5 +499,10 @@ public class HWireClientR extends BWire {
       }
       return ret;
     }
+    
+    public synchronized String toString() {
+      return arr.toString();
+    }
+
   }
 }
