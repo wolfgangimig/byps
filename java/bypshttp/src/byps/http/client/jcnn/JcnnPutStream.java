@@ -154,9 +154,6 @@ public class JcnnPutStream extends JcnnRequest {
           OutputStream os = null;
           OutputStreamByteCount osbc = null;
           
-          conn.setConnectTimeout(super.connectTimeoutSeconds * 1000);
-          conn.setReadTimeout(sendRecvTimeoutSeconds * 1000);
-    
           conn.setDoInput(true);
           conn.setDoOutput(true);
           conn.setRequestMethod(sendAsPost ? "POST" : "PUT");

@@ -42,6 +42,8 @@ public abstract class JcnnRequest implements HHttpRequest {
     if (cancelled.get()) throw new BException(BExceptionC.CANCELLED, "Request cancelled");
     HttpURLConnection c = (HttpURLConnection) new URL(destUrl).openConnection();
     conn.set(c);
+    c.setConnectTimeout(connectTimeoutSeconds * 1000);
+    c.setReadTimeout(connectTimeoutSeconds * 1000);
     applySession(this);
     return c;
   }
