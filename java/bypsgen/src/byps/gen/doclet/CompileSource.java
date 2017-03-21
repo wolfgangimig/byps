@@ -42,7 +42,7 @@ public class CompileSource implements ConstFieldReader {
 		
 		String jhome = System.getProperty("java.home");
 		params.add("-bootclasspath");
-		params.add(jhome + "\\lib\\rt.jar");
+		params.add(jhome + File.separator + "lib" + File.separator + "rt.jar");
 		
 		params.add("-source");
 		params.add("1.5");
