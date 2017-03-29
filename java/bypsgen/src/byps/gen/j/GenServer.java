@@ -156,17 +156,25 @@ public class GenServer {
 	  pr.println(" */");
 	  pr.println("public final static List<Class> allRemotes = Collections.unmodifiableList(Arrays.asList(new Class[] {");
 	  pr.beginBlock();
+	  boolean first = true;
+	  CodePrinter prl = pr;
 	  for (RemoteInfo rinfo : pctxt.classDB.getRemotes()) {
-	    
-	    pr.print(rinfo.qname).println(".class,");
+	    if (first) first = false; else prl.println(",");
+
+	    prl = pr.print(rinfo.qname).print(".class");
       
 	    RemoteInfo rinfoAsync = rinfo.getRemoteAsync();
-      if (rinfoAsync != null) pr.print(rinfoAsync.qname).println(".class,");
+      if (rinfoAsync != null) {
+        prl.println(",");
+        prl = pr.print(rinfoAsync.qname).print(".class");
+      }
       
       RemoteInfo rinfoAuth = rinfo.getRemoteAuth();
-      if (rinfoAuth != null) pr.print(rinfoAuth.qname).println(".class,");
+      if (rinfoAuth != null) {
+        prl.println(",");
+        prl = pr.print(rinfoAuth.qname).print(".class");
+      }
 	  }
-	  pr.println("String.class // This last entry simplifies the generator code.");
 	  pr.println();
 	  pr.endBlock();
 	  pr.println("}));");

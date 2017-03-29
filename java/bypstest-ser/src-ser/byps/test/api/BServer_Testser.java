@@ -199,9 +199,7 @@ public class BServer_Testser extends BServer {
 		byps.test.api.srvr.ServerIF.class,
 		byps.test.api.srvr.ServerIFAsync.class,
 		byps.test.api.ver.EvolveIF.class,
-		byps.test.api.ver.EvolveIFAsync.class,
-		String.class // This last entry simplifies the generator code.
-		
+		byps.test.api.ver.EvolveIFAsync.class		
 	}));
 	
 }
