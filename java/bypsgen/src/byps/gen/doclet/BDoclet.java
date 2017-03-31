@@ -382,7 +382,7 @@ public class BDoclet extends Doclet {
             if (arg.startsWith("-")) break;
 
             if (isPackages) {
-              javadocPacks = Arrays.asList(arg.split(";"));
+              javadocPacks = Arrays.asList(arg.split(File.pathSeparator));
             }
             else if (isSourcePath) {
 
@@ -390,7 +390,7 @@ public class BDoclet extends Doclet {
 
               javadocPacksInSourceDirs = new HashSet<String>();
 
-              sourceDirs = arg.split(";");
+              sourceDirs = arg.split(File.pathSeparator);
               for (int i = 0; i < sourceDirs.length; i++) {
                 File dir = new File(sourceDirs[i]);
                 if (!dir.exists()) {
@@ -402,13 +402,13 @@ public class BDoclet extends Doclet {
             else if (isClassPath) {
 
               classpath = System.getProperty("java.class.path");
-              String[] elms = arg.split(";");
+              String[] elms = arg.split(File.pathSeparator);
               for (int i = 0; i < elms.length; i++) {
                 File file = new File(elms[i]);
                 if (!file.exists()) {
                   throw new IOException("classpath=" + file.getAbsolutePath() + " does not exist");
                 }
-                classpath += ";" + file.getAbsolutePath();
+                classpath += File.pathSeparator + file.getAbsolutePath();
               }
             }
             else {

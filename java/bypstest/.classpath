@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="D:/git/byps/lib/java/log4j-1.2.17.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttpasf"/>
 	<classpathentry kind="lib" path="D:/git/byps/lib/java/undertow/undertow-examples-1.3.0.Beta5.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp-shmem"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
