@@ -34,11 +34,11 @@ import byps.stdio.common.StdioChannel;
 
 public class StdioServletRequest implements HttpServletRequest {
   
-  private int method;
-  private BHttpRequest request;
-  private StdioServletInputStream istream;
+  private final int method;
+  private final BHttpRequest request;
+  private final StdioServletInputStream istream;
 
-  public void init(int method, BHttpRequest request) {
+  public StdioServletRequest(int method, BHttpRequest request) {
     this.method = method;
     this.request = request;
     this.istream = new StdioServletInputStream(request.getBody());

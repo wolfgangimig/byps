@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.ByteBuffer;
 
+/**
+ * Program that sends received bytes from stdin to stdout.
+ * Compile this program as a runnable jar, e.g. use make-echoprogram.xml 
+ *
+ */
 public class EchoProgram {
   
   private final static int ERROR_IO = 1;

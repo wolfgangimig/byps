@@ -3,7 +3,6 @@ package byps.stdio.client;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -26,13 +25,11 @@ public class StdioServer extends StdioCommunication {
   private final Executor tpool;
   private final BTransport transport;
   private final Random rand = new Random();
-  private final ArrayList<RequestContext> requestContexts;
   
   public StdioServer(String programPath, MessageHandler handler, int maxThreads) {
     super(programPath);
     this.handler = handler;
     this.tpool = ensureExecutor(maxThreads);
-    this.requestContexts = createRequestContexts(maxThreads);
     this.transport = StdioTransport.createTransport();
   }
   
@@ -40,7 +37,6 @@ public class StdioServer extends StdioCommunication {
     super(system_in, system_out);
     this.handler = handler;
     this.tpool = ensureExecutor(maxThreads);
-    this.requestContexts = createRequestContexts(maxThreads);
     this.transport = StdioTransport.createTransport();
   }
   
@@ -60,41 +56,12 @@ public class StdioServer extends StdioCommunication {
     e.printStackTrace();
   }
   
-  private synchronized RequestContext allocateRequestContext(int messageId, int method, BHttpRequest httpRequest) {
-    
-    while (requestContexts.isEmpty()) {
-      if (stopEvent) throw new IllegalStateException("Server already shut down.");
-      try {
-        wait(1000);
-      } catch (InterruptedException e) {
-        throw new IllegalStateException("Server interrupted.");
-      }
-    }
-    
-    RequestContext ctxt = requestContexts.remove(requestContexts.size()-1);
-    
-    ctxt.asyncResult.init(this, messageId, method);
-
-    // Wrap request object into a HttpServletRequest compatible object.
-    ctxt.servletRequest.init(method, httpRequest);
-
-    // Wrap response object into a HttpServletRespnose compatible object.
-    ctxt.servletResponse.init(ctxt.asyncResult);
-    
-    return ctxt;
-  }
-  
-  private synchronized void freeRequestContext(RequestContext ctxt) {
-    requestContexts.add(ctxt);
-    notifyAll();
-  }
-  
   private static class AsyncMessageResult implements BAsyncResult<BHttpRequest> {
-    private StdioServer server;
-    private int method;
-    private int messageId;
+    private final StdioServer server;
+    private final int method;
+    private final int messageId;
     
-    void init(StdioServer server, int messageId, int method) {
+    AsyncMessageResult(StdioServer server, int messageId, int method) {
       this.server = server;
       this.messageId = messageId;
       this.method = method;
@@ -119,30 +86,27 @@ public class StdioServer extends StdioCommunication {
   }
 
   protected void handleReceivedMessageAsync(int messageId, int method, ByteBuffer request) {
-    
-    RequestContext ctxt = null; 
+
+    AsyncMessageResult asyncResult = new AsyncMessageResult(this, messageId, method);
     
     try {
       BHttpRequest httpRequest = StdRequest.deserializeHttpRequest(transport, request);
       
-      ctxt = allocateRequestContext(messageId, method, httpRequest);
+      // Wrap request object into a HttpServletRequest compatible object.
+      StdioServletRequest servletRequest = new StdioServletRequest(method, httpRequest);
+
+      // Wrap response object into a HttpServletRespnose compatible object.
+      StdioServletResponse servletResponse = new StdioServletResponse(asyncResult);
       
       // Process request
-      handler.handle(ctxt.servletRequest, ctxt.servletResponse);
+      handler.handle(servletRequest, servletResponse);
       
       // Make sure the StdioServletOutputStream is closed an the OnSendResponse is fired.
-      ctxt.servletResponse.getOutputStream().close();
+      servletResponse.getOutputStream().close();
   
     } catch (Exception e) {
       
-      if (ctxt == null) {
-        ctxt = allocateRequestContext(messageId, method, new BHttpRequest());
-      }
-      
-      ctxt.asyncResult.setAsyncResult(null, e);
-    }
-    finally {
-      freeRequestContext(ctxt);
+      asyncResult.setAsyncResult(null, e);
     }
   }
   
@@ -182,19 +146,4 @@ public class StdioServer extends StdioCommunication {
     return tpool;
   }
   
-  private static class RequestContext {
-    final StdioServletRequest servletRequest = new StdioServletRequest();
-    final StdioServletResponse servletResponse = new StdioServletResponse();
-    final AsyncMessageResult asyncResult = new AsyncMessageResult();
-  }
-  
-  private static ArrayList<RequestContext> createRequestContexts(int maxThreads) {
-    ArrayList<RequestContext> arr = new ArrayList<RequestContext>(maxThreads);
-    for (int i = 0; i < maxThreads; i++) {
-      RequestContext ctxt = new RequestContext();
-      arr.add(ctxt);
-    }
-    return arr;
-  }
-
 }

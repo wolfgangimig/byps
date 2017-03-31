@@ -17,15 +17,15 @@ import byps.BHttpRequest;
 
 public class StdioServletResponse implements HttpServletResponse {
   
-  private StdioServletOutputStream ostream;
-  private BHttpRequest response = new BHttpRequest();
-  private BAsyncResult<BHttpRequest> asyncResult;
+  private final StdioServletOutputStream ostream;
+  private final BHttpRequest response = new BHttpRequest();
+  private final BAsyncResult<BHttpRequest> asyncResult;
   
   public static interface OnSendResponse {
     public void handle(BHttpRequest response);
   }
   
-  void init(BAsyncResult<BHttpRequest> asyncResult) {
+  public StdioServletResponse(BAsyncResult<BHttpRequest> asyncResult) {
     this.asyncResult = asyncResult;
     
     // Initialize ServletOutputStream. Pass a handler for 

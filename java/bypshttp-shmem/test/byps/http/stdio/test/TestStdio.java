@@ -15,6 +15,11 @@ import byps.stdio.common.RecvChannel;
 import byps.stdio.common.SendChannel;
 import byps.stdio.common.StdioChannel;
 
+/**
+ * Test communication via stdin/stdout between processes.
+ * This class starts the program byps.stdio.common.EchoProgram.class
+ * to simulate communication over stdin/stdout.
+ */
 public class TestStdio {
   
   private OutputStream system_out;
