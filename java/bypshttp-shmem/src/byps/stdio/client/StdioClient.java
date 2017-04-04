@@ -16,7 +16,7 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
 
   private HashMap<Integer, BAsyncResult<ByteBuffer>> expectingResults = new HashMap<>();
   private int nextMessageId = 0;
-  protected final BTransport transport;
+  public final BTransport transport;
 
   public StdioClient(String programPath) {
     super(programPath);

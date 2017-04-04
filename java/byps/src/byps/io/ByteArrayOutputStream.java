@@ -80,6 +80,7 @@ public class ByteArrayOutputStream extends OutputStream {
   }
 
   public ByteBuffer toByteBuffer() {
+    bbuf.flip();
     return bbuf;
   }
 }

@@ -3,6 +3,7 @@ package byps.stdio.client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,11 +35,13 @@ import byps.stdio.common.StdioChannel;
 
 public class StdioServletRequest implements HttpServletRequest {
   
+  private final StdioHttpSession httpSession;
   private final int method;
   private final BHttpRequest request;
   private final StdioServletInputStream istream;
 
-  public StdioServletRequest(int method, BHttpRequest request) {
+  public StdioServletRequest(StdioHttpSession httpSession, int method, BHttpRequest request) {
+    this.httpSession = httpSession;
     this.method = method;
     this.request = request;
     this.istream = new StdioServletInputStream(request.getBody());
@@ -80,7 +83,7 @@ public class StdioServletRequest implements HttpServletRequest {
 
   @Override
   public String getContentType() {
-    return request.getHeaders().get("Content-Type");
+    return getHeader("Content-Type");
   }
 
   @Override
@@ -120,35 +123,53 @@ public class StdioServletRequest implements HttpServletRequest {
 
   @Override
   public String getParameter(String key) {
-    String param = "";
-    String url = request.getUrl();
-    String params = url.substring(url.indexOf('?')+1);
-    StringTokenizer stokParams = new StringTokenizer(params, "&");
-    while (stokParams.hasMoreTokens()) {
-      String token = stokParams.nextToken();
-      int p = token.indexOf('=');
-      String paramName = p >= 0 ? token.substring(0, p) : token;
-      if (paramName.equals(key)) {
-        String paramValue = p >= 0 ? token.substring(p+1) : "";
-        param = paramValue;
-        break;
+    String param = null;
+    if (method == StdioChannel.HTTP_POST) {
+    }
+    else {
+      String url = request.getUrl();
+      String params = url.substring(url.indexOf('?')+1);
+      StringTokenizer stokParams = new StringTokenizer(params, "&");
+      while (stokParams.hasMoreTokens()) {
+        String token = stokParams.nextToken();
+        int p = token.indexOf('=');
+        String paramName = p >= 0 ? token.substring(0, p) : token;
+        if (paramName.equals(key)) {
+          String paramValue = p >= 0 ? token.substring(p+1) : "";
+          param = paramValue;
+          param = decodeUrlParam(param);
+          break;
+        }
       }
     }
     return param;
   }
 
+  private String decodeUrlParam(String param) {
+    try {
+      param = URLDecoder.decode(param, "UTF-8");
+    } catch (UnsupportedEncodingException e) {}
+    return param;
+  }
+
   @Override
   public Map<String, String[]> getParameterMap() {
-    HashMap<String, String[]> map = new HashMap<>();
-    String url = request.getUrl();
-    String params = url.substring(url.indexOf('?')+1);
-    StringTokenizer stokParams = new StringTokenizer(params, "&");
-    while (stokParams.hasMoreTokens()) {
-      String token = stokParams.nextToken();
-      int p = token.indexOf('=');
-      String paramName = p >= 0 ? token.substring(0, p) : token;
-      String paramValue = p >= 0 ? token.substring(p+1) : "";
-      map.put(paramName, new String[] {paramValue});
+    Map<String, String[]> map = Collections.emptyMap();
+    if (method == StdioChannel.HTTP_POST) {
+    }
+    else {
+      map = new HashMap<>();
+      String url = request.getUrl();
+      String params = url.substring(url.indexOf('?')+1);
+      StringTokenizer stokParams = new StringTokenizer(params, "&");
+      while (stokParams.hasMoreTokens()) {
+        String token = stokParams.nextToken();
+        int p = token.indexOf('=');
+        String paramName = p >= 0 ? token.substring(0, p) : token;
+        String paramValue = p >= 0 ? token.substring(p+1) : "";
+        paramValue = decodeUrlParam(paramValue);
+        map.put(paramName, new String[] {paramValue});
+      }
     }
     return map;
   }
@@ -312,17 +333,17 @@ public class StdioServletRequest implements HttpServletRequest {
 
   @Override
   public String getHeader(String key) {
-    return request.getHeaders().get(key);
+    return internalGetHeaders().get(key);
   }
 
   @Override
   public Enumeration<String> getHeaderNames() {
-    return Collections.enumeration(request.getHeaders().keySet());
+    return Collections.enumeration(internalGetHeaders().keySet());
   }
 
   @Override
   public Enumeration<String> getHeaders(String key) {
-    List<String> list = Arrays.asList(request.getHeaders().get(key));
+    List<String> list = Arrays.asList(internalGetHeaders().get(key));
     return Collections.enumeration(list);
   }
 
@@ -370,7 +391,7 @@ public class StdioServletRequest implements HttpServletRequest {
 
   @Override
   public String getRemoteUser() {
-    throw new UnsupportedOperationException();
+    return null;
   }
 
   @Override
@@ -397,12 +418,12 @@ public class StdioServletRequest implements HttpServletRequest {
 
   @Override
   public HttpSession getSession() {
-    return null;
+    return getSession(false);
   }
 
   @Override
-  public HttpSession getSession(boolean arg0) {
-    return null;
+  public HttpSession getSession(boolean createIfNotExist) {
+    return httpSession;
   }
 
   @Override
@@ -449,4 +470,10 @@ public class StdioServletRequest implements HttpServletRequest {
     throw new UnsupportedOperationException();
   }
 
+  private Map<String,String> internalGetHeaders() {
+    Map<String,String> ret = request.getHeaders();
+    return ret != null ? ret : EMPTY_HEADERS;
+  }
+  
+  private final static Map<String,String> EMPTY_HEADERS = new HashMap<>(0);
 }

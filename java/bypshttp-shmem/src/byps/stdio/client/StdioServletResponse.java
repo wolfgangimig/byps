@@ -20,6 +20,9 @@ public class StdioServletResponse implements HttpServletResponse {
   private final StdioServletOutputStream ostream;
   private final BHttpRequest response = new BHttpRequest();
   private final BAsyncResult<BHttpRequest> asyncResult;
+  private volatile int status;
+  private volatile String statusMessage;
+  private volatile PrintWriter writer;
   
   public static interface OnSendResponse {
     public void handle(BHttpRequest response);
@@ -79,7 +82,8 @@ public class StdioServletResponse implements HttpServletResponse {
 
   @Override
   public PrintWriter getWriter() throws IOException {
-    throw new UnsupportedOperationException();
+    if (writer == null) writer = new PrintWriter(ostream);
+    return writer;
   }
 
   @Override
@@ -219,10 +223,13 @@ public class StdioServletResponse implements HttpServletResponse {
 
   @Override
   public void setStatus(int arg0) {
+    status = arg0;
   }
 
   @Override
   public void setStatus(int arg0, String arg1) {
+    status = arg0;
+    statusMessage = arg1;
   }
 
 
