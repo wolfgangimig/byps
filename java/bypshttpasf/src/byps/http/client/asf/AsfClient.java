@@ -60,9 +60,12 @@ public class AsfClient implements HHttpClient {
     boolean skipPortAtKerberosDatabaseLookup = true;
     Lookup<AuthSchemeProvider> authSchemeRegistry = RegistryBuilder.<AuthSchemeProvider>create()
         .register(AuthSchemes.SPNEGO, new SPNegoSchemeFactory(skipPortAtKerberosDatabaseLookup))
-        .register(AuthSchemes.NTLM, new NTLMSchemeFactory())
+        //.register(AuthSchemes.NTLM, new NTLMSchemeFactory())
         .build();
-    
+
+    // SSO über NTLM funktioniert nicht, weil der Apache HTTP Client das Kennwort des Benutzers benötigt. 
+    // SSO über SPNEGO/Kerberos funktioniert nur, wenn der Test unter einem Windows-Benutzerkonto läuft, dass nicht lokaler Administrator ist.
+
     CloseableHttpClient httpclient = HttpClients.custom()
             .setConnectionManager(cm)
             .setDefaultAuthSchemeRegistry(authSchemeRegistry)
@@ -83,15 +86,15 @@ public class AsfClient implements HHttpClient {
     BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
     // This may seem odd, but specifying 'null' as principal tells java to use the logged in user's credentials
-    // Use NTCredentials to allow NTLM for SSO
-    Credentials useJaasCreds = new NTCredentials("username", "password", "workstation", "domain") {
-        public String getPassword() {
-            return null;
-        }
-        public Principal getUserPrincipal() {
-            return null;
-        }
-    };
+    Credentials useJaasCreds = new Credentials() {
+      public String getPassword() {
+          return null;
+      }
+      public Principal getUserPrincipal() {
+          return null;
+      }
+  };
+
     credentialsProvider.setCredentials( new AuthScope(null, -1, null), useJaasCreds );
     context.setCredentialsProvider(credentialsProvider);
     return context;
