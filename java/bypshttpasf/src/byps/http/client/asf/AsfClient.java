@@ -8,10 +8,12 @@ import java.security.Principal;
 import org.apache.http.auth.AuthSchemeProvider;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
+import org.apache.http.auth.NTCredentials;
 import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Lookup;
 import org.apache.http.config.RegistryBuilder;
+import org.apache.http.impl.auth.NTLMSchemeFactory;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -58,6 +60,7 @@ public class AsfClient implements HHttpClient {
     boolean skipPortAtKerberosDatabaseLookup = true;
     Lookup<AuthSchemeProvider> authSchemeRegistry = RegistryBuilder.<AuthSchemeProvider>create()
         .register(AuthSchemes.SPNEGO, new SPNegoSchemeFactory(skipPortAtKerberosDatabaseLookup))
+        .register(AuthSchemes.NTLM, new NTLMSchemeFactory())
         .build();
     
     CloseableHttpClient httpclient = HttpClients.custom()
@@ -80,7 +83,8 @@ public class AsfClient implements HHttpClient {
     BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
     // This may seem odd, but specifying 'null' as principal tells java to use the logged in user's credentials
-    Credentials useJaasCreds = new Credentials() {
+    // Use NTCredentials to allow NTLM for SSO
+    Credentials useJaasCreds = new NTCredentials("username", "password", "workstation", "domain") {
         public String getPassword() {
             return null;
         }
