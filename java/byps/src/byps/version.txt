@@ -1,3 +1,7 @@
+5.11 2017-06-21
+
+- Use NTCredentials to allow NTLM for SSO
+
 5.10 2017-02-21
 
  - HTTP connection and read timeout values were not applied. 
