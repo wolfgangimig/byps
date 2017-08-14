@@ -11,5 +11,8 @@
 	<classpathentry kind="lib" path="D:/git/byps/lib/java/httpcomponents-client-4.5.2/lib/httpclient-4.5.2.jar" sourcepath="D:/java/lib/byps/httpcomponents-client-4.5.2-src.zip"/>
 	<classpathentry kind="lib" path="D:/git/byps/lib/java/httpcomponents-client-4.5.2/lib/httpcore-4.4.4.jar"/>
 	<classpathentry kind="lib" path="D:/java/lib/byps/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/httpcomponents-client-4.5.2/lib/httpclient-win-4.5.2.jar" sourcepath="D:/java/lib/byps/httpcomponents-client-4.5.2-src.zip"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/httpcomponents-client-4.5.2/lib/jna-4.1.0.jar"/>
+	<classpathentry kind="lib" path="D:/java/lib/byps/httpcomponents-client-4.5.2/lib/jna-platform-4.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

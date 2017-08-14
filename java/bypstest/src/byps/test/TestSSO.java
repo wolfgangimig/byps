@@ -13,6 +13,8 @@ public class TestSSO {
   @Test
   public void testSSOAsf() {
     System.setProperty("byps.http.client.factory", "byps.http.client.asf.AsfClientFactory");
+    System.setProperty("byps.http.client.asf.auth", "NTLM");
+    System.setProperty("byps.http.client.asf.spn", "srvp03.elo.local");
     System.setProperty("sun.security.krb5.debug", "true");
 
     AsfClientFactory httpClientFactory = new AsfClientFactory();
