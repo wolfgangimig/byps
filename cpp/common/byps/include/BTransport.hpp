@@ -14,7 +14,6 @@ namespace byps {
     , apiDesc(apiDesc)
     , protocol(PProtocol())
     , connectedServerId(0)
-    , negotiateActive(false)
   {
   }
 
@@ -25,7 +24,6 @@ namespace byps {
     , protocol(rhs.protocol)
     , targetId(targetId)
     , connectedServerId(rhs.targetId.getServerId())
-    , negotiateActive(false)
   {
   }
 
@@ -101,10 +99,10 @@ namespace byps {
 
   class BTransport_ReloginAndRetrySend : public BAsyncResult {
     PTransport transport;
-    PSerializable requestObject; 
+    PSerializable requestObject;
     PAsyncResult innerResult;
   public:
-    BTransport_ReloginAndRetrySend(PTransport transport, PSerializable requestObject, PAsyncResult innerResult) 
+    BTransport_ReloginAndRetrySend(PTransport transport, PSerializable requestObject, PAsyncResult innerResult)
       : transport(transport)
       , requestObject(requestObject)
       , innerResult(innerResult)
@@ -172,10 +170,10 @@ namespace byps {
 
   class BTransport_DeserlializeMethodResultMaybeRelogin : public BAsyncResult {
     PTransport transport;
-    PSerializable requestObject; 
+    PSerializable requestObject;
     PAsyncResult innerResult;
   public:
-    BTransport_DeserlializeMethodResultMaybeRelogin(PTransport transport, PSerializable requestObject, PAsyncResult innerResult) 
+    BTransport_DeserlializeMethodResultMaybeRelogin(PTransport transport, PSerializable requestObject, PAsyncResult innerResult)
       : transport(transport)
       , requestObject(requestObject)
       , innerResult(innerResult)
@@ -184,7 +182,7 @@ namespace byps {
 
     virtual ~BTransport_DeserlializeMethodResultMaybeRelogin() {}
 
-    virtual void setAsyncResult(const BVariant& result) { 
+    virtual void setAsyncResult(const BVariant& result) {
       bool relogin = false;
 
       try {
@@ -251,17 +249,6 @@ namespace byps {
   BINLINE void BTransport::negotiateProtocolClient(PAsyncResult asyncResult) {
     PTransport pthis = shared_from_this();
     if (!pthis) return;
-
-    // Check that we do not run into recursive authentication requests.
-    bool expectedActive = false;
-    if (negotiateActive.compare_exchange_strong(expectedActive, true) == false) {
-      BException ex(BExceptionC::FORBIDDEN,
-          L"Authentication procedure failed. Server returned 401 for every request. "
-          L"A common reason for this error is slow authentication handling.");
-      // ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
-      asyncResult->setAsyncResult(BVariant(ex));
-      return;
-    }
 
     PBytes bytes = BBytes::create(NEGOTIATE_MAX_SIZE);
     BNegotiate nego(apiDesc);
@@ -360,7 +347,7 @@ namespace byps {
     PSerializable requestObject;
     PAsyncResult asyncResult;
   public:
-    BTransport_AssingSessionThenSendMethod(PTransport pTransport, PSerializable requestObject, PAsyncResult asyncResult) 
+    BTransport_AssingSessionThenSendMethod(PTransport pTransport, PSerializable requestObject, PAsyncResult asyncResult)
       : pTransport(pTransport), requestObject(requestObject), asyncResult(asyncResult) {
     }
     virtual void setAsyncResult(const BVariant& result) {
@@ -454,11 +441,11 @@ namespace byps {
     return ret;
   }
 
-  BINLINE bool BTransport::isReloginException(BException ex, int ) {
+  BINLINE bool BTransport::isReloginException(BException ex, int) {
     bool ret = false;
 
     // Check exception
-    if (ex) 
+    if (ex)
     {
       ret = ex.getCode() == BExceptionC::UNAUTHORIZED;
     }
@@ -466,80 +453,10 @@ namespace byps {
     return ret;
   }
 
-
-  class BTransport_InternalAuthenticate_BAsyncResult : public BAsyncResult
-  {
-  public:
-    BTransport_InternalAuthenticate_BAsyncResult(PTransport transport)
-      : transport(transport)
-    {
-    }
-
-    virtual void setAsyncResult(const BVariant& result) {
-
-      BException ex = result.getException();
-      std::vector<PAsyncResult> copyResults;
-
-      {
-        byps_unique_lock lock(transport->mtx);
-        copyResults = transport->asyncResultsWaitingForAuthentication;
-        transport->asyncResultsWaitingForAuthentication.clear();
-        transport->lastAuthenticationTime = system_clock::now();
-        transport->lastAuthenticationException = ex;
-      }
-
-      transport->negotiateActive = false;
-
-      for (size_t i = 0; i < copyResults.size(); i++)
-      {
-        copyResults[i]->setAsyncResult(result);
-      }
-
-      delete this;
-    }
-
-  private:
-    PTransport transport;
-  };
-
-
-  const unsigned RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
-
   BINLINE void BTransport::internalAuthenticate(PAsyncResult innerResult) {
 
     if (authentication) {
-
-      bool first = false;
-      bool assumeAuthenticationIsValid = false;
-
-      {
-        byps_unique_lock lock(mtx);
-
-        system_clock::time_point now = system_clock::now();
-        milliseconds diff = duration_cast<milliseconds>(now - lastAuthenticationTime);
-        assumeAuthenticationIsValid = RETRY_AUTHENTICATION_AFTER_MILLIS >= diff.count();
-
-        if (!assumeAuthenticationIsValid)
-        {
-          first = asyncResultsWaitingForAuthentication.size() == 0;
-          asyncResultsWaitingForAuthentication.push_back(innerResult);
-        }
-      }
-
-      if (first) {
-
-        PAsyncResult authResult(new BTransport_InternalAuthenticate_BAsyncResult(shared_from_this()));
-        authentication->authenticate(PClient(), authResult);
-
-      }
-      else if (assumeAuthenticationIsValid) {
-        innerResult->setAsyncResult(BVariant(lastAuthenticationException));
-      }
-      else {
-        // innerResult has been added to asyncResultsWaitingForAuthentication 
-        // and will be called in InternalAuthenticate_BAsyncResult
-      }
-
+      authentication->authenticate(PClient(), innerResult);
     }
     else {
       innerResult->setAsyncResult(BVariant(true));
@@ -548,11 +465,7 @@ namespace byps {
 
   BINLINE void BTransport::setAuthentication(const PAuthentication& auth) {
     byps_unique_lock lock(mtx);
-
     authentication = auth;
-    lastAuthenticationException = BException();
-    lastAuthenticationTime = system_clock::time_point();
-    asyncResultsWaitingForAuthentication.clear();
   }
 
   BINLINE bool BTransport::hasAuthentication() {

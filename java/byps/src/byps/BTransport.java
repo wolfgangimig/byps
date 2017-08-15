@@ -4,7 +4,6 @@ package byps;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.logging.Log;
@@ -198,7 +197,7 @@ public class BTransport {
     }
   }
 
-  public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
+  protected <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
     
     final long requestId = requestCounter.incrementAndGet(); 
@@ -207,6 +206,7 @@ public class BTransport {
     
     try {
       final BOutput bout = getOutput();
+      final int typeId = protocol.getRegistry().getSerializer(obj, true).typeId;
       
       if (log.isDebugEnabled()) log.debug("store object");
       bout.store(obj);
@@ -224,11 +224,12 @@ public class BTransport {
 
             if (e != null) {
 
-              // BYPS relogin error? (HTTP 403)
-              relogin = internalIsReloginException(e, protocol.getRegistry().getSerializer(obj, true).typeId);
+              // BYPS relogin error? (HTTP 401)
+              relogin = internalIsReloginException(e, typeId);
+              long t1 = System.currentTimeMillis();
+              if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + e + ", relogin=" + relogin);
+
               if (!relogin) {
-                long t1 = System.currentTimeMillis();
-                if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + e);
                 asyncResult.setAsyncResult(null, e);
               }
 
@@ -246,9 +247,7 @@ public class BTransport {
             if (log.isDebugEnabled()) log.debug("Received exception.", ex);
 
             // Application relogin error?
-            try {
-              relogin = internalIsReloginException(ex, bout.registry.getSerializer(obj, true).typeId);
-            } catch (BException ignored) {}
+            relogin = internalIsReloginException(ex, typeId);
             if (log.isDebugEnabled()) log.debug("isReloginException=" + relogin);
 
             if (!relogin) {
@@ -290,7 +289,6 @@ public class BTransport {
   protected <T> void reloginAndRetrySend(final BMethodRequest methodRequest, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("re-login");
     try {
-
       final BAsyncResult<Boolean> loginResult = new BAsyncResult<Boolean>() {
         
         public void setAsyncResult(Boolean succ, Throwable e2) {
@@ -439,46 +437,6 @@ public class BTransport {
   public void negotiateProtocolClient(final BAsyncResult<Boolean> asyncResult) {
     if (log.isDebugEnabled()) log.debug("negotiateProtocolClient(");
     
-    if (log.isDebugEnabled()) log.debug("negotiateActive=" + negotiateActive);
-
-    // Check that we do not run into recursive authentication requests.
-  
-    // Observed in production environments: negotateActive==true and no authentication request active
-    // The reason for this problem might be that I did not set negotiateActive=false and asyncResultsWaitingForAuthentication.clear() in the same synchronized block. 
-    // To make authentication more stable, the number of outstanding authentication requests are checked. 
-    // If there are no authentication requests active, the flag negotiateActive is reset.  
-    
-    synchronized (asyncResultsWaitingForAuthentication) {
-      
-      // Already have an active negotiation request?
-      if (negotiateActive) {
-      
-        // Are there threads waiting?
-        if (asyncResultsWaitingForAuthentication.size() != 0) {
-          
-          // Most likely slow or recursive authentication 
-          BException ex = new BException(BExceptionC.FORBIDDEN, 
-              "Authentication procedure failed. Server returned 401 for every request. "
-              + "A common reason for this error is slow authentication handling.");
-              // ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
-          asyncResult.setAsyncResult(false, ex);      
-          return;
-          
-        }
-        else {
-          
-          // Correction: if no threads are waiting then there cannot be an aktive negotiation request.
-          negotiateActive = false;
-        }
-        
-      }
-      else {
-        
-        // Now, this is the active negotiation request.
-        negotiateActive = true;
-      }
-    }
-
     try {
       if (log.isDebugEnabled()) log.debug("build nego message");
       ByteBuffer buf = ByteBuffer.allocate(BNegotiate.NEGOTIATE_MAX_SIZE);
@@ -528,6 +486,7 @@ public class BTransport {
       if (log.isDebugEnabled()) log.debug("nego failed, ", e);
       asyncResult.setAsyncResult(Boolean.FALSE, e);
     }
+
     if (log.isDebugEnabled()) log.debug(")negotiateProtocolClient");
  }
 
@@ -538,76 +497,8 @@ public class BTransport {
     // Authentication enabled?
     if (authentication != null) {
 
-      // (1)
-      // If the session has expired, all threads will receive an re-login
-      // exception and run through this block.
-      // Only the first one will perform an authentication. From the
-      // other threads the BAsyncResult objects are collected and triggered
-      // when authentication will have been done, see (2).
-
-      boolean first = false;
-      boolean assumeAuthenticationIsValid = false;
-      synchronized (asyncResultsWaitingForAuthentication) {
-        assumeAuthenticationIsValid = lastAuthenticationTime + RETRY_AUTHENTICATION_AFTER_MILLIS >= System.currentTimeMillis();
-        if (!assumeAuthenticationIsValid) {
-          first = asyncResultsWaitingForAuthentication.size() == 0;
-          asyncResultsWaitingForAuthentication.add(asyncResult);
-        }
-      }
-      if (log.isDebugEnabled()) log.debug("valid auth=" + assumeAuthenticationIsValid);
-     
-      // First thread in this block performs authentication.
-      if (log.isDebugEnabled()) log.debug("first auth=" + first);
-      if (first) {
-
-        BAsyncResult<Boolean> authResult = new BAsyncResult<Boolean>() {
-
-          // (2)
-          // Authentication has been performed and either succeeded or failed,
-          // if this function is called. The function triggers all collected
-          // BAsyncResult objects.
-          public void setAsyncResult(Boolean ignored, Throwable ex) {
-
-            ArrayList<BAsyncResult<Boolean>> copyResults = null;
-            synchronized (asyncResultsWaitingForAuthentication) {
-              copyResults = new ArrayList<BAsyncResult<Boolean>>(asyncResultsWaitingForAuthentication);
-              asyncResultsWaitingForAuthentication.clear();
-              lastAuthenticationTime = System.currentTimeMillis();
-              lastAuthenticationException = ex;
-              
-              // Now, the authentication is assumed to be valid for RETRY_AUTHENTICATION_AFTER_SECONDS.
-              // If there are threads currently waiting at (1), they will not trigger an authentication
-              // but will set the result immediately.
-  
-              if (log.isDebugEnabled()) log.debug("reset negotiateActive");
-              negotiateActive = false;
-            }
-              
-            if (log.isDebugEnabled()) log.debug("notify pending=#" + copyResults.size());
-            for (int i = 0; i < copyResults.size(); i++) {
-              copyResults.get(i).setAsyncResult(ignored, ex);
-            }
-          }
-        };
-
-        if (log.isDebugEnabled()) log.debug("call authenticate");
-        authentication.authenticate(null, authResult);
-
-      }
-      
-      // Last authentication was performed just a few seconds before.
-      else if (assumeAuthenticationIsValid) {
-        
-        // Assume that the session is still valid or that
-        // the exception from the last authentication would
-        // be received again at this time.
-        asyncResult.setAsyncResult(Boolean.FALSE, lastAuthenticationException);
-      }
-      else {
-          // innerResult has been added to asyncResultsWaitingForAuthentication 
-          // and will be called in InternalAuthenticate_BAsyncResult
-      }
-
+      if (log.isDebugEnabled()) log.debug("call authenticate");
+      authentication.authenticate(null, asyncResult);
     }
     
     // Authentication is not used. The session is valid per definition.
@@ -736,12 +627,7 @@ public class BTransport {
    * @param auth Authentication object
    */
   protected void setAuthentication(BAuthentication auth) {
-    synchronized (asyncResultsWaitingForAuthentication) {
-      authentication = auth;
-      asyncResultsWaitingForAuthentication.clear();
-      lastAuthenticationException = null;
-      lastAuthenticationTime = 0;
-    }
+    authentication = auth;
   }
 
   public boolean isPrintRequestIntoLogger() {
@@ -753,22 +639,6 @@ public class BTransport {
   }
 
   /**
-   * List of BAsyncResult objects from requests waiting for authentication.
-   */
-  protected final ArrayList<BAsyncResult<Boolean>> asyncResultsWaitingForAuthentication = new ArrayList<BAsyncResult<Boolean>>();
-  
-  /**
-   * Sytem millis when authentication was perfomed the last time.
-   */
-  protected long lastAuthenticationTime = 0;
-  
-  /**
-   * Exception received from the last authentication.
-   * Is null, if authentication was successful.
-   */
-  protected Throwable lastAuthenticationException = null;
-  
-  /**
    * Last authentication result is assumed to be valid for this time.
    */
   public final static long RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
@@ -778,8 +648,6 @@ public class BTransport {
    */
   protected boolean printRequestIntoLogger = true;
 
-  protected boolean negotiateActive;
-  
   private final static Log log = LogFactory.getLog(BTransport.class);
 
 }
