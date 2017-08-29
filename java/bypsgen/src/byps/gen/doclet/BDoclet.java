@@ -13,6 +13,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.PropertyConfigurator;
 
+import com.sun.javadoc.Doclet;
+import com.sun.javadoc.LanguageVersion;
+import com.sun.javadoc.RootDoc;
+
 import byps.BException;
 import byps.gen.api.ErrorInfo;
 import byps.gen.api.GeneratorException;
@@ -31,10 +35,6 @@ import byps.gen.js.PropertiesJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.CodePrinter;
 import byps.gen.utils.Utils;
-
-import com.sun.javadoc.Doclet;
-import com.sun.javadoc.LanguageVersion;
-import com.sun.javadoc.RootDoc;
 
 /**
  * This class reads the API definition and generates the serialization classes.
@@ -119,6 +119,12 @@ public class BDoclet extends Doclet {
    * Object that invokes the Java compiler.
    */
   private static CompileSource compileSource;
+  
+  /**
+   * Exit code of main function.
+   * If generator fails, exitCode is set to a non zero value.
+   */
+  private static int exitCode = 0;
 
   /**
    * Logger
@@ -194,6 +200,7 @@ public class BDoclet extends Doclet {
 
     } catch (Exception e) {
       log.error("Failed", e);
+      exitCode = 1;
       return false;
     }
 
@@ -492,10 +499,15 @@ public class BDoclet extends Doclet {
       com.sun.tools.javadoc.Main.execute(javadocArgs);
 
       System.out.println("Finished");
+      
     } catch (Exception e) {
+      if (exitCode == 0) exitCode = 1;
       e.printStackTrace();
     }
 
+    if (exitCode != 0) {
+      System.exit(exitCode);
+    }
   }
 
   /**
