@@ -180,6 +180,7 @@ public class BDoclet extends Doclet {
         log.info("Check compatibility ==============");
         CompatibleClassDB compClassDB = new CompatibleClassDB(prevClassDB, jdocClassDB);
         if (!compClassDB.ensureCompatible()) {
+          exitCode = 2;
           return false;
         }
         log.info("");
