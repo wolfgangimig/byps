@@ -964,11 +964,6 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	this.wire = wire;
 
 	this._authentication = null;
-	this._lastAuthenticationTime = 0;
-	this._lastAuthenticationException = null;
-	this._asyncResultsWaitingForAuthentication = [];
-	this._RETRY_AUTHENTICATION_AFTER_MILLIS = 1 * 1000;
-	this._negotiateActive = false;
 	
 	this.setTargetId = function(targetId) {
 		this.targetId = targetId;
@@ -1191,16 +1186,6 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 
 	this.negotiateProtocolClient = function(asyncResult, processAsync) { // BAsyncResult<Boolean>
 		
-		if (this._negotiateActive) {
-			var ex = new byps.BException(byps.BExceptionC.FORBIDDEN,
-					"Authentication procedure failed. Server returned 401 for every request. " +
-					"A common reason for this error is slow authentication handling.");
-					// ... or calling a function that requires authentication in BAuthentication.authenticate() - see. TestRemoteWithAuthentication.testAuthenticateBlocksRecursion 
-			asyncResult(null, ex);
-			return;
-		}
-		this._negotiateActive = true;
-
 		var me = this;
 
 		var nego = new byps.BNegotiate(apiDesc);
@@ -1225,7 +1210,6 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 			catch (ex2) {
 				exception = ex2;
 			}
-			;
 
 			if (exception) {
 				asyncResult(null, exception);
@@ -1246,9 +1230,6 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 
 	this.setAuthentication = function(auth) {
 		this._authentication = auth;
-		this._asyncResultsWaitingForAuthentication = [];
-		this._lastAuthenticationTime = 0;
-		this._lastAuthenticationException = null;
 	};
 	
 	this.hasAuthentication = function() {
@@ -1256,54 +1237,22 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	};
 
 	this._internalAuthenticate = function(asyncResult, processAsync) {
-
+		var result = null;
+		
 		if (this._authentication) {
 
-			var assumeAuthenticationIsValid = this._lastAuthenticationTime + this._RETRY_AUTHENTICATION_AFTER_MILLIS >= ((new Date()).getTime());
-
-			if (assumeAuthenticationIsValid) {
-				asyncResult(true, this._lastAuthenticationException);
-			}
-			else {
-				var first = this._asyncResultsWaitingForAuthentication.length == 0;
-				this._asyncResultsWaitingForAuthentication.push(asyncResult);
-
-				if (first) {
-
-					var me = this;
-					var authResult = function(result, ex) {
-						var arr = me._asyncResultsWaitingForAuthentication;
-						me._asyncResultsWaitingForAuthentication = [];
-						me._lastAuthenticationTime = (new Date()).getTime();
-						me._lastAuthenticationException = ex;
-
-						me._negotiateActive = false;
-						
-						for ( var i = 0; i < arr.length; i++) {
-							var result_i = arr[i];
-							result_i(result, ex);
-						}
-					};
-
-					var result = null;
-					var exception = null;
-
-					try {
-						result = this._authentication.authenticate(null, processAsync ? authResult : null);
-					}
-					catch (ex) {
-						exception = ex;
-					}
-
-					if (!processAsync) {
-						authResult(result, exception);
-					}
-				}
-			}
+			result = this._authentication.authenticate(null, processAsync ? authResult : null);
 		}
 		else {
-			asyncResult(true, null);
+			if (processAsync) {
+				result = true;
+			}
+			else {
+				asyncResult(true, null);
+			}
 		}
+		
+		return result;
 	};
 
 	this._internalIsReloginException = function(ex, typeId) {

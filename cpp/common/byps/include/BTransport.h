@@ -53,12 +53,7 @@ namespace byps {
     string sessionId;
     int32_t connectedServerId;
     PAuthentication authentication;
-    byps_atomic<bool> negotiateActive;
     byps_mutex mtx;
-
-    std::chrono::system_clock::time_point lastAuthenticationTime;
-    std::vector<PAsyncResult> asyncResultsWaitingForAuthentication;
-    BException lastAuthenticationException;
 
     void setAuthentication(const PAuthentication& auth);
     bool hasAuthentication();

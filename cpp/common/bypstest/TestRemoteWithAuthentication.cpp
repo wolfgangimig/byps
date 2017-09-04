@@ -51,46 +51,6 @@ public:
 
 BLogger MyAuthentication::log(typeid(MyAuthentication).name());
 
-class MyAuthenticationTooSlow : public MyAuthentication
-{
-public:
-  int waitMillis;
-
-  MyAuthenticationTooSlow(std::wstring userName, std::wstring pwd, int waitMillis) 
-    : MyAuthentication(userName, pwd) {
-      this->waitMillis = waitMillis;
-  }
-
-  virtual void authenticate(PClient client, function<void (bool, BException)> asyncResult) {
-    std::this_thread::sleep_for(std::chrono::milliseconds(waitMillis));
-    MyAuthentication::authenticate(client, asyncResult);
-  }
-};
-
-class MyAuthenticationCausesRecursion : public BAuthentication {
-public:
-
-  virtual void authenticate(PClient client, function<void (bool, BException)> asyncResult) {
-
-    PClient_Testser myclient = byps_ptr_cast<BClient_Testser>(client);
-
-    function<void (int, BException)> outerResult = [this, asyncResult](int, BException ex) {
-      asyncResult(false, ex);
-    };
-
-    PRemoteWithAuthenticationAuth remote = myclient->getRemoteWithAuthentication();
-    remote->doit(1, outerResult);
-  }
-
-  virtual bool isReloginException(PClient client, BException ex, int typeId) {
-    return client->getTransport()->isReloginException(ex, typeId);
-  }
-
-  virtual void getSession(PClient , BTYPEID , std::function<void (PSerializable, BException)> asyncResult) {
-    asyncResult(PSessionInfo(), BException());
-  }
-
-};
 
 class TestRemoteWithAuthentication : public TestBase {
   static BLogger log;
@@ -208,54 +168,8 @@ public:
     l_info << L")testAuthenticationRelogin";
   }
 
-  void testAuthenticateBlocksRecursion() {
-    l_info << L"testAuthenticateBlocksRecursion(";
-
-    client->setAuthentication(PAuthentication(new MyAuthenticationCausesRecursion()));
-
-    PRemoteWithAuthenticationAuth remote = client->getRemoteWithAuthentication();
-
-    try {
-      l_info << L"1 remote.Doit ... ";
-      remote->doit(1);
-      
-    }
-    catch (BException& ex) {
-      TASSERT(L"exception code", BExceptionC::FORBIDDEN, ex.getCode());
-    }
-    
-    l_info << L")testAuthenticateBlocksRecursion";
-  }
-
-  void testAuthenticateTooSlow() {
-    l_info << L"testAuthenticateTooSlow(";
-
-    int waitMillis = 11 * 1000;
-    MyAuthenticationTooSlow* auth = new MyAuthenticationTooSlow(L"Fritz", L"abc", waitMillis);
-    client->setAuthentication(PAuthentication(auth));
-
-    PRemoteWithAuthenticationAuth remote = client->getRemoteWithAuthentication();
-
-    try {
-      l_info << L"1 remote.Doit ... ";
-      remote->doit(1);
-      TFAIL(L"exception expected");
-    }
-    catch (BException& ex) {
-      TASSERT(L"exception code", BExceptionC::FORBIDDEN, ex.getCode());
-    }
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(BTransport::RETRY_AUTHENTICATION_AFTER_MILLIS));
-
-    auth->waitMillis = 0;
-    remote->doit(1);
-    
-    l_info << L")testAuthenticateTooSlow";
-  }
 
   virtual void init() {
-    ADD_TEST(testAuthenticateTooSlow);
-    ADD_TEST(testAuthenticateBlocksRecursion);
     ADD_TEST(testNoAuthObjectSupplied);
     ADD_TEST(testAuthentication);
     ADD_TEST(testAuthenticationFails);
