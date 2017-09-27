@@ -55,6 +55,16 @@ public class BValueClass implements Serializable {
 	  return obj;
 	}
 	
+	/**
+	 * Set all objects in the given array as invariant.
+	 * @param arr Array
+	 */
+  public static <T extends BValueClass> T[] seal(T[] arr) {
+    for (T obj : arr) BValueClass.seal(obj);
+    return arr;
+  }
+
+	
   public Object getDbHelper() {
     return dbHelper;
   }
