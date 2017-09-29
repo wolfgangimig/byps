@@ -61,6 +61,10 @@ public abstract class BRegistry {
   }
 
   protected BSerializer internalGetSerializer(int typeId) throws BException {
+    
+    // Reverted commit "Cache for BSerializer" f31a5a13ffceaf09c63561a72a4c221eb8c60653
+    // Cache has to be static in the subclass of BRegistry.
+    
     BRegisteredSerializer[] ssers = getSortedSerializers();
     int left = 0, right = ssers.length;
     while (left <= right) {
