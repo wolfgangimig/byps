@@ -4,8 +4,6 @@ package byps;
 
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 public abstract class BRegistry {
 
@@ -62,41 +60,31 @@ public abstract class BRegistry {
     throw new IllegalStateException();
   }
 
-  private Map<Integer, BRegisteredSerializer> serializerCache;
-  
-  private Map<Integer, BRegisteredSerializer> buildCache(BRegisteredSerializer[] ssers) {
-    Map<Integer, BRegisteredSerializer> ret = new HashMap<Integer, BRegisteredSerializer>(ssers.length);
-    for (BRegisteredSerializer ser : ssers) {
-      ret.put(ser.typeId, ser);
-    }
-    return ret;
-  }
-  
   protected BSerializer internalGetSerializer(int typeId) throws BException {
-    BSerializer ser = null;
-    
-    if (serializerCache == null) {
-      BRegisteredSerializer[] ssers = getSortedSerializers();
-      serializerCache = buildCache(ssers);
-    }
-    
-    BRegisteredSerializer rser = serializerCache.get(typeId);
-    if (rser != null) {
-      if (rser.instance == null) {
-        Class<?> c;
-        try {
-          c = Class.forName(rser.name);
-          rser.instance = (BSerializer) c.newInstance();
-        } catch (Exception e) {
-          throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+    BRegisteredSerializer[] ssers = getSortedSerializers();
+    int left = 0, right = ssers.length;
+    while (left <= right) {
+      int idx = (right + left) / 2;
+      
+      BRegisteredSerializer rser = ssers[idx];
+      if (rser.typeId == typeId) {
+        if (rser.instance == null) {
+          Class<?> c;
+          try {
+            c = Class.forName(rser.name);
+            rser.instance = (BSerializer) c.newInstance();
+          } catch (Exception e) {
+            throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+          }
         }
+        return rser.instance;
       }
-      ser = rser.instance;
-    }
-    else {
-      ser = getBuiltInSerializer(typeId);
+      
+      if (rser.typeId < typeId) left = idx + 1;
+      if (rser.typeId > typeId) right = idx - 1;
     }
 
+    BSerializer ser = getBuiltInSerializer(typeId);
     return ser;
   }
 
