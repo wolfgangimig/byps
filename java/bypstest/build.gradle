@@ -33,6 +33,7 @@ repositories {
 
 dependencies {
 	compile project(":bypshttp")
+	compile project(":bypshttpasf")
 	compile project(":bypstest-api")
 	compile project(":bypstest-ser")
 	compile project(":bypstest-ser-json")
