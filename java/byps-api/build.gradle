@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+version = '5.12'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            
+        }
+    }
+}
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'BYPS-API',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    
+//   flatDir {
+//        dirs 'lib'
+//    }
+}
+
+dependencies {
+	compile project(':byps-override')
+}
+
+

@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+version = '5.12'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            srcDir 'src-ser-bin'
+            srcDir 'src-ser-json'
+            srcDir 'src-ureq'
+            srcDir 'src-ureq-ser'
+        }
+        resources {
+            
+        }
+    }
+}
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'BYPS',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    
+//   flatDir {
+//        dirs 'lib'
+//    }
+}
+
+dependencies {
+	compile project(":byps-api")
+	compile project(":byps-override")
+	
+	compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
+	compile group: 'log4j', name: 'log4j', version: '1.2.17'
+}
+

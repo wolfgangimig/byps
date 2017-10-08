@@ -1,29 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="bypstest-srv">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="bypshttp.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bypshttp/bypshttp">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="byps-api.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/byps-api/byps-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="byps.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/byps/byps">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="bypstest-api.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bypstest-api/bypstest-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="byps-override.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/byps-override/byps-override">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="bypstest-ser-json.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bypstest-ser-json/bypstest-ser-json">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="bypstest-ser.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bypstest-ser/bypstest-ser">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <property name="context-root" value="bypstest-srv"/>
-        <property name="java-output-path" value="/bypstest-srv/build/classes"/>
-    </wb-module>
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="bypstest-srv">
+		<property name="context-root" value="bypstest-srv"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src"/>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/bypshttp/bypshttp">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/byps-api/byps-api">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/byps-override/byps-override">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/byps/byps">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/bypstest-api/bypstest-api">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/bypstest-ser/bypstest-ser">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/bypstest-ser-json/bypstest-ser-json">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+	</wb-module>
 </project-modules>

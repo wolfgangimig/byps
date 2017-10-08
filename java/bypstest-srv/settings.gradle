@@ -1,0 +1,29 @@
+include ("byps") 
+project(":byps").projectDir = new File("$settingsDir/../byps")
+
+include ("byps-api") 
+project(":byps-api").projectDir = new File("$settingsDir/../byps-api")
+
+include ("byps-override") 
+project(":byps-override").projectDir = new File("$settingsDir/../byps-override")
+
+include ("bypsgen") 
+project(":bypsgen").projectDir = new File("$settingsDir/../bypsgen")
+
+include ("bypshttpasf") 
+project(":bypshttpasf").projectDir = new File("$settingsDir/../bypshttpasf")
+
+include ("bypshttp") 
+project(":bypshttp").projectDir = new File("$settingsDir/../bypshttp")
+
+include ("bypstest-api") 
+project(":bypstest-api").projectDir = new File("$settingsDir/../bypstest-api")
+
+include ("bypstest-ser") 
+project(":bypstest-ser").projectDir = new File("$settingsDir/../bypstest-ser")
+
+include ("bypstest-ser-json") 
+project(":bypstest-ser-json").projectDir = new File("$settingsDir/../bypstest-ser-json")
+
+include ("bypstest") 
+project(":bypstest").projectDir = new File("$settingsDir/../bypstest")

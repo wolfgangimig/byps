@@ -1,0 +1,44 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+version = '5.12'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            
+        }
+    }
+}
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'BYPS-test',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    
+//   flatDir {
+//        dirs 'lib'
+//    }
+}
+
+dependencies {
+	compile project(":bypshttp")
+	compile project(":bypstest-api")
+	compile project(":bypstest-ser")
+	compile project(":bypstest-ser-json")
+	
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+	
+}
+
+

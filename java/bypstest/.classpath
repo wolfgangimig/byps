@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-ser"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttp"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-ser-json"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypstest-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/byps-override"/>
-	<classpathentry kind="lib" path="D:/java/lib/byps/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/git/byps/lib/java/log4j-1.2.17.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bypshttpasf"/>
-	<classpathentry kind="lib" path="D:/git/byps/lib/java/undertow/undertow-examples-1.3.0.Beta5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
